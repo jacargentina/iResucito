@@ -1,0 +1,3 @@
+rootProject.name = 'iResucito'
+
+include ':app'
