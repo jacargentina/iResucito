@@ -1,15 +1,35 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
 import { DrawerNavigator, DrawerItems } from 'react-navigation';
-import HomeScreen from './screens/HomeScreen';
+import { Provider } from 'react-redux';
+import store from './components/store';
 
-const App = DrawerNavigator({
-   Home: {
-    screen: HomeScreen
+import HomeScreen from './components/screens/HomeScreen';
+
+const AppWihDrawer = DrawerNavigator(
+  {
+    Home: {
+      screen: HomeScreen
+    }
+  },
+  {
+    drawerWidth: 200,
+    contentComponent: props => (
+      <ScrollView>
+        <DrawerItems {...props} />
+      </ScrollView>
+    )
   }
-}, {
-  drawerWidth: 200,
-  contentComponent: props => <ScrollView><DrawerItems {...props} /></ScrollView>
-});
+);
 
-export default App;
+class Root extends React.Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <AppWihDrawer />
+      </Provider>
+    );
+  }
+}
+
+export default Root;
