@@ -1,35 +1,32 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
-import { DrawerNavigator, DrawerItems } from 'react-navigation';
-import { Provider } from 'react-redux';
-import store from './components/store';
+import { connect, Provider } from 'react-redux';
+import { addNavigationHelpers } from 'react-navigation';
+import AppNavigator from './components/navigator';
+import Store from './components/store';
 
-import HomeScreen from './components/screens/HomeScreen';
+const App = props => {
+  return (
+    <AppNavigator
+      navigation={addNavigationHelpers({
+        dispatch: props.dispatch,
+        state: props.nav
+      })}
+    />
+  );
+};
 
-const AppWihDrawer = DrawerNavigator(
-  {
-    Home: {
-      screen: HomeScreen
-    }
-  },
-  {
-    drawerWidth: 200,
-    contentComponent: props => (
-      <ScrollView>
-        <DrawerItems {...props} />
-      </ScrollView>
-    )
-  }
-);
+const mapStateToProps = state => ({
+  nav: state.nav
+});
 
-class Root extends React.Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <AppWihDrawer />
-      </Provider>
-    );
-  }
-}
+const AppWithNavigationState = connect(mapStateToProps)(App);
+
+const Root = props => {
+  return (
+    <Provider store={Store}>
+      <AppWithNavigationState />
+    </Provider>
+  );
+};
 
 export default Root;

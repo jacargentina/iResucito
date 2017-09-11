@@ -1,37 +1,18 @@
 import React from 'react';
-import {
-  Container,
-  Header,
-  Title,
-  Subtitle,
-  Content,
-  Footer,
-  FooterTab,
-  Button,
-  Left,
-  Right,
-  Body,
-  Icon,
-  Text
-} from 'native-base';
+import { connect } from 'react-redux';
+import BaseScreen from './BaseScreen';
+import { Text } from 'native-base';
 
-export default class HomeScreen extends React.Component {
+const HomeScreen = props => {
+  return (
+    <BaseScreen title={HomeScreen.navigationOptions.title} {...props}>
+      <Text> Lista </Text>
+    </BaseScreen>
+  );
+};
 
-  render() {
-    return (
-      <Container>
-        <Header style={{backgroundColor: '#3589de'}}>
-          <Left>
-            <Button transparent>
-              <Icon name="menu" style={{color: 'white'}}/>
-            </Button>
-          </Left>
-          <Body>
-            <Title style={{color: 'white'}}>Salmos</Title>
-          </Body>
-          <Right />
-        </Header>
-      </Container>
-    );
-  }
-}
+HomeScreen.navigationOptions = {
+  title: 'Salmos'
+};
+
+export default connect()(HomeScreen);
