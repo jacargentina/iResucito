@@ -1,1 +1,1 @@
-export const ACTION = "ACTION";
+export const INITIALIZE_DONE = "INITIALIZE_DONE";

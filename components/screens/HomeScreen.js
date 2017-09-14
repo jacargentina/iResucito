@@ -1,12 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import BaseScreen from './BaseScreen';
-import { Text } from 'native-base';
+import { List, ListItem, Text } from 'native-base';
 
 const HomeScreen = props => {
+  var items = ['Aleluya', 'El lagarero'];
   return (
     <BaseScreen title={HomeScreen.navigationOptions.title} {...props}>
-      <Text> Lista </Text>
+      <List
+        dataArray={items}
+        renderRow={item => (
+          <ListItem>
+            <Text>{item}</Text>
+          </ListItem>
+        )}
+      />
     </BaseScreen>
   );
 };
