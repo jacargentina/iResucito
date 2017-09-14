@@ -32,15 +32,35 @@ const mapStateToProps = state => ({
   nav: state.nav
 });
 
+const loadRecursive = (key, path) => {
+  return RNFS.readDir(path)
+    .then(result => {
+      var loads = result.map(r => {
+        if (r.isDirectory()) {
+          return loadRecursive(r.name, r.path);
+        }
+        return r.path;
+      });
+      return Promise.all(loads);
+    })
+    .then(files => {
+      return { [key]: files };
+    });
+};
+
 const mapDispatchToProps = dispatch => {
   return {
     dispatch,
     init: () => {
       // Cargar la lista de salmos
-      console.log('MainBundlePath', RNFS.MainBundlePath);
-      return RNFS.readDir(RNFS.MainBundlePath) // On Android, use "RNFS.DocumentDirectoryPath" (MainBundlePath is not defined)
-        .then(result => {
-          console.log('GOT RESULT', result);
+      // On Android, use "RNFS.DocumentDirectoryPath" (MainBundlePath is not defined)
+      var salmosPath = RNFS.MainBundlePath + '/Salmos';
+      loadRecursive('root', salmosPath)
+        .then(items => {
+          console.log('items', items);
+        })
+        .catch(err => {
+          console.log('ERR', err);
         });
     }
   };
