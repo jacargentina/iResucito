@@ -4,14 +4,13 @@ import BaseScreen from './BaseScreen';
 import { List, ListItem, Text } from 'native-base';
 
 const HomeScreen = props => {
-  var items = ['Aleluya', 'El lagarero'];
   return (
     <BaseScreen title={HomeScreen.navigationOptions.title} {...props}>
       <List
-        dataArray={items}
+        dataArray={props.items}
         renderRow={item => (
           <ListItem>
-            <Text>{item}</Text>
+            <Text>{item.name}</Text>
           </ListItem>
         )}
       />
@@ -19,8 +18,15 @@ const HomeScreen = props => {
   );
 };
 
+const mapStateToProps = state => {
+  var salmos = state.ui.get('salmos');
+  return {
+    items: salmos ? salmos.alfabetico : []
+  };
+};
+
 HomeScreen.navigationOptions = {
   title: 'Salmos'
 };
 
-export default connect()(HomeScreen);
+export default connect(mapStateToProps)(HomeScreen);

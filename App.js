@@ -39,7 +39,7 @@ const loadRecursive = (key, path) => {
         if (r.isDirectory()) {
           return loadRecursive(r.name, r.path);
         }
-        return r.path;
+        return { name: r.name, path: r.path };
       });
       return Promise.all(loads);
     })
@@ -57,7 +57,21 @@ const mapDispatchToProps = dispatch => {
       var salmosPath = RNFS.MainBundlePath + '/Salmos';
       loadRecursive('root', salmosPath)
         .then(items => {
-          console.log('items', items);
+          var categorias = {};
+          for (var etapa in items.root) {
+            categorias = Object.assign(categorias, items.root[etapa]);
+          }
+          var todos = [];
+          for (var etapa in categorias) {
+            todos = todos.concat(categorias[etapa]);
+          }
+          todos = todos.filter(s => s.name.endsWith('.pdf'));
+          var salmos = { categorias: categorias, alfabetico: todos };
+          console.log('salmos', salmos);
+          dispatch({
+            type: INITIALIZE_DONE,
+            salmos: salmos
+          });
         })
         .catch(err => {
           console.log('ERR', err);
