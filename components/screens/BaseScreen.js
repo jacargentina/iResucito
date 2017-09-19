@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { View } from 'react-native';
 
 import {
   Container,
@@ -14,10 +15,27 @@ import {
   Right,
   Body,
   Icon,
-  Text
+  Text,
+  Input,
+  Item
 } from 'native-base';
 
 const BaseScreen = props => {
+  if (props.searchHandler) {
+    var searchView = (
+      <View>
+        <Item>
+          <Input
+            placeholder="Buscar..."
+            onChangeText={text => props.searchHandler(text)}
+            returnKeyType='search'
+            autoCapitalize='none'
+            clearButtonMode='always'
+          />
+        </Item>
+      </View>
+    );
+  }
   return (
     <Container>
       <Header style={{ backgroundColor: '#3589de' }}>
@@ -35,6 +53,7 @@ const BaseScreen = props => {
         </Body>
         <Right />
       </Header>
+      {searchView}
       <Content>{props.children}</Content>
     </Container>
   );
