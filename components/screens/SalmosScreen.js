@@ -1,22 +1,33 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { List, ListItem, Text } from 'native-base';
+import { List, ListItem, Left, Right, Body, Text, Badge } from 'native-base';
 import { _ } from 'lodash';
 import BaseScreen from './BaseScreen';
 
 import { SET_SALMOS_FILTER } from '../actions';
 
-const HomeScreen = props => {
+const SalmosScreen = props => {
   return (
     <BaseScreen
-      title={HomeScreen.navigationOptions.title}
+      title={SalmosScreen.navigationOptions.title}
       {...props}
       searchHandler={props.filtrarHandler}>
       <List
         dataArray={props.items}
         renderRow={item => (
-          <ListItem>
-            <Text>{item.name}</Text>
+          <ListItem avatar>
+            <Left>
+              <Badge
+                style={{ backgroundColor: item.categoria.style.background }}>
+                <Text style={{ color: item.categoria.style.color }}>
+                  {item.categoria.letra}
+                </Text>
+              </Badge>
+            </Left>
+            <Body>
+              <Text>{item.titulo}</Text>
+              <Text note>{item.fuente}</Text>
+            </Body>
           </ListItem>
         )}
       />
@@ -30,7 +41,7 @@ const mapStateToProps = state => {
   var filter = state.ui.get('salmos_filter');
   if (filter) {
     items = items.filter(s => {
-      return s.name.includes(filter);
+      return s.nombre.includes(filter);
     });
   }
   return {
@@ -49,8 +60,8 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-HomeScreen.navigationOptions = {
+SalmosScreen.navigationOptions = {
   title: 'Salmos'
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(SalmosScreen);

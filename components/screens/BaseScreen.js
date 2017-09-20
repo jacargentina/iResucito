@@ -31,6 +31,7 @@ const BaseScreen = props => {
             returnKeyType='search'
             autoCapitalize='none'
             clearButtonMode='always'
+            autoCorrect={false}
           />
         </Item>
       </View>

@@ -39,7 +39,46 @@ const loadRecursive = (key, path) => {
         if (r.isDirectory()) {
           return loadRecursive(r.name, r.path);
         }
-        return { name: r.name, path: r.path };
+        var separador = r.name.includes('-')
+          ? r.name.indexOf('-')
+          : r.name.indexOf('.');
+        var extension = r.name.indexOf('.');
+        var titulo = r.name.substring(0, separador).trim();
+        var fuente =
+          separador !== extension
+            ? r.name.substring(separador + 1, extension).trim()
+            : '';
+        var categoria_nombre = key;
+        var categoria_letra = key[0];
+        switch (categoria_letra) {
+          case 'P':
+            categoria_backcolor = '#ecf0f1';
+            categoria_color = 'black';
+            break;
+          case 'L':
+            categoria_backcolor = '#f1c40f';
+            categoria_color = 'white';
+            break;
+          case 'E':
+            categoria_backcolor = '#2ecc71';
+            categoria_color = 'white';
+            break;
+          case 'C':
+            categoria_backcolor = '#3498db';
+            categoria_color = 'white';
+            break;
+        }
+        return {
+          categoria: {
+            nombre: categoria_nombre,
+            letra: categoria_letra,
+            style: { background: categoria_backcolor, color: categoria_color }
+          },
+          titulo: titulo,
+          fuente: fuente,
+          nombre: r.name,
+          path: r.path
+        };
       });
       return Promise.all(loads);
     })
@@ -65,7 +104,16 @@ const mapDispatchToProps = dispatch => {
           for (var etapa in categorias) {
             todos = todos.concat(categorias[etapa]);
           }
-          todos = todos.filter(s => s.name.endsWith('.pdf'));
+          todos = todos.filter(s => s.nombre.endsWith('.pdf'));
+          todos.sort((a, b) => {
+            if (a.titulo < b.titulo) {
+              return -1;
+            }
+            if (a.titulo > b.titulo) {
+              return 1;
+            }
+            return 0;
+          });
           var salmos = { categorias: categorias, alfabetico: todos };
           console.log('salmos', salmos);
           dispatch({

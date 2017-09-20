@@ -2,12 +2,12 @@ import React from 'react';
 import { ScrollView } from 'react-native';
 import { DrawerNavigator, DrawerItems } from 'react-navigation';
 
-import HomeScreen from './screens/HomeScreen';
+import SalmosScreen from './screens/SalmosScreen';
 
 const AppNavigator = DrawerNavigator(
   {
-    Home: {
-      screen: HomeScreen
+    Salmos: {
+      screen: SalmosScreen
     }
   },
   {
