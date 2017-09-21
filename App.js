@@ -2,6 +2,7 @@ import React from 'react';
 import { connect, Provider } from 'react-redux';
 import { addNavigationHelpers } from 'react-navigation';
 import RNFS from 'react-native-fs';
+import { Platform } from 'react-native';
 
 import Store from './components/store';
 import AppNavigator from './components/navigator';
@@ -33,7 +34,9 @@ const mapStateToProps = state => ({
 });
 
 const loadRecursive = (key, path) => {
-  return RNFS.readDir(path)
+  var promise =
+    Platform.OS == 'ios' ? RNFS.readDir(path) : RNFS.readDirAssets(path);
+  return promise
     .then(result => {
       var loads = result.map(r => {
         if (r.isDirectory()) {
@@ -93,8 +96,8 @@ const mapDispatchToProps = dispatch => {
     init: () => {
       // Cargar la lista de salmos
       // On Android, use "RNFS.DocumentDirectoryPath" (MainBundlePath is not defined)
-      var salmosPath = RNFS.MainBundlePath + '/Salmos';
-      loadRecursive('root', salmosPath)
+      var base = Platform.OS == 'ios' ? `${RNFS.MainBundlePath}/` : '';
+      loadRecursive('root', `${base}Salmos`)
         .then(items => {
           var categorias = {};
           for (var etapa in items.root) {
