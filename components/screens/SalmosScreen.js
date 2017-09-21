@@ -24,7 +24,9 @@ const SalmosScreen = props => {
                 </Text>
               </Badge>
             </Left>
-            <Body>
+            <Body
+              onPress={() =>
+                props.navigation.navigate('Salmo', { path: item.path })}>
               <Text>{item.titulo}</Text>
               <Text note>{item.fuente}</Text>
             </Body>

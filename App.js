@@ -5,7 +5,7 @@ import RNFS from 'react-native-fs';
 import { Platform } from 'react-native';
 
 import Store from './components/store';
-import AppNavigator from './components/navigator';
+import AppNavigator from './components/AppNavigator';
 import { INITIALIZE_DONE } from './components/actions';
 
 class App extends React.Component {

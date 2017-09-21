@@ -1,13 +1,13 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
+import { StackNavigator } from 'react-navigation';
+import SalmosNavigator from './SalmosNavigator';
 import { DrawerNavigator, DrawerItems } from 'react-navigation';
-
-import SalmosScreen from './screens/SalmosScreen';
 
 const AppNavigator = DrawerNavigator(
   {
-    Salmos: {
-      screen: SalmosScreen
+    Home: {
+      screen: SalmosNavigator
     }
   },
   {
