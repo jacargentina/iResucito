@@ -145,3 +145,14 @@ task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
 }
+
+task copyToAssets(type: Copy) {
+    def toDir = rootProject.file('app/src/main/assets/Salmos')
+    from '../../Salmos/'
+    into toDir
+    include '**/*'
+}
+
+project.afterEvaluate {
+    preBuild.dependsOn copyToAssets
+}
