@@ -6,8 +6,17 @@ import { DrawerNavigator, DrawerItems } from 'react-navigation';
 
 const AppNavigator = DrawerNavigator(
   {
-    Home: {
-      screen: SalmosNavigator
+    Alfabetico: {
+      screen: SalmosNavigator,
+      navigationOptions: {
+        title: 'Alfabetico'
+      }
+    },
+    Catecumenado: {
+      screen: SalmosNavigator,
+      navigationOptions: {
+        title: 'Catecumenado'
+      }
     }
   },
   {

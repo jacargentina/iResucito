@@ -9,7 +9,6 @@ import { SET_SALMOS_FILTER } from '../actions';
 const SalmosScreen = props => {
   return (
     <BaseScreen
-      title={SalmosScreen.navigationOptions.title}
       {...props}
       searchHandler={props.filtrarHandler}>
       <List
@@ -39,6 +38,7 @@ const SalmosScreen = props => {
 
 const mapStateToProps = state => {
   var salmos = state.ui.get('salmos');
+  var categoria = state.ui.get('salmos_categoria');
   var items = salmos ? salmos.alfabetico : [];
   var filter = state.ui.get('salmos_filter');
   if (filter) {
@@ -47,7 +47,8 @@ const mapStateToProps = state => {
     });
   }
   return {
-    items: items
+    items: items,
+    title: categoria ? categoria : 'Alfabético'
   };
 };
 

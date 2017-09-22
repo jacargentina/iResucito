@@ -1,8 +1,12 @@
 import { INITIALIZE_DONE, SET_SALMOS_FILTER } from '../actions';
-
+import { NavigationActions } from 'react-navigation';
 import { Map } from 'immutable';
 
-const initialState = Map({ salmos: null, salmos_filter: null });
+const initialState = Map({
+  salmos: null,
+  salmos_filter: null,
+  salmos_categoria: null
+});
 
 export default function ui(state = initialState, action) {
   switch (action.type) {
@@ -10,6 +14,16 @@ export default function ui(state = initialState, action) {
       return state.set('salmos', action.salmos);
     case SET_SALMOS_FILTER:
       return state.set('salmos_filter', action.filter);
+    case NavigationActions.NAVIGATE:
+      switch (action.routeName) {
+        case 'Alfabetico':
+          return state.set('salmos_categoria', null);
+          break;
+        case 'Catecumenado':
+          return state.set('salmos_categoria', 'Catecumenado');
+          break;
+      }
+      return state;
     default:
       return state;
   }

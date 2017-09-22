@@ -118,7 +118,7 @@ const mapDispatchToProps = dispatch => {
             return 0;
           });
           var salmos = { categorias: categorias, alfabetico: todos };
-          console.log('salmos', salmos);
+          console.log('Salmos cargados');
           dispatch({
             type: INITIALIZE_DONE,
             salmos: salmos

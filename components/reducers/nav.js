@@ -1,6 +1,6 @@
 import AppNavigator from '../AppNavigator';
 
-const initialState = AppNavigator.router.getStateForAction('Home');
+const initialState = AppNavigator.router.getStateForAction('Alfabetico');
 
 export default function nav(state = initialState, action) {
   const nextState = AppNavigator.router.getStateForAction(action, state);
