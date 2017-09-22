@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { List, ListItem, Left, Right, Body, Text, Badge } from 'native-base';
+import { ListItem, Left, Right, Body, Text, Badge } from 'native-base';
+import { FlatList } from 'react-native';
 import { _ } from 'lodash';
 import BaseScreen from './BaseScreen';
 
@@ -8,12 +9,11 @@ import { SET_SALMOS_FILTER } from '../actions';
 
 const SalmosScreen = props => {
   return (
-    <BaseScreen
-      {...props}
-      searchHandler={props.filtrarHandler}>
-      <List
-        dataArray={props.items}
-        renderRow={item => (
+    <BaseScreen {...props} searchHandler={props.filtrarHandler}>
+      <FlatList
+        data={props.items}
+        keyExtractor={item => item.path}
+        renderItem={({ item }) => (
           <ListItem avatar>
             <Left>
               <Badge
