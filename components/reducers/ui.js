@@ -6,7 +6,7 @@ const initialState = Map({
   salmos: null,
   salmos_filter: null,
   salmos_categoria: null,
-  salmoActual: null
+  salmo_detail: null
 });
 
 export default function ui(state = initialState, action) {
@@ -17,17 +17,14 @@ export default function ui(state = initialState, action) {
       return state.set('salmos_filter', action.filter);
     case NavigationActions.NAVIGATE:
       switch (action.routeName) {
-        case 'Alfabetico':
-          return state.set('salmos_categoria', null);
-          break;
-        case 'Precatecumenado':
-        case 'Catecumenado':
-        case 'Eleccion':
-        case 'Liturgia':
-          return state.set('salmos_categoria', action.routeName);
+        case 'List':
+          return state.set(
+            'salmos_categoria',
+            action.params ? action.params.categoria : null
+          );
           break;
         case 'Detail':
-          return state.set('salmoActual', action.params.salmo);
+          return state.set('salmo_detail', action.params.salmo);
           break;
       }
       return state;

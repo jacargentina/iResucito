@@ -13,7 +13,6 @@ const SalmosNavigator = StackNavigator(
     }
   },
   {
-    headerMode: 'screen',
     cardStyle: {
       backgroundColor: 'white'
     }

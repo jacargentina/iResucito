@@ -39,21 +39,6 @@ const BaseScreen = props => {
   }
   return (
     <Container>
-      <Header style={{ backgroundColor: '#3589de' }}>
-        <Left>
-          <Button
-            transparent
-            onPress={() => {
-              props.navigation.navigate('DrawerOpen');
-            }}>
-            <Icon name="menu" style={{ color: 'white' }} />
-          </Button>
-        </Left>
-        <Body>
-          <Title style={{ color: 'white' }}>{props.title}</Title>
-        </Body>
-        <Right />
-      </Header>
       {searchView}
       <Content>{props.children}</Content>
     </Container>

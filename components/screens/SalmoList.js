@@ -80,8 +80,17 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-SalmoList.navigationOptions = {
-  title: 'Salmos'
+const CountText = props => {
+  return (
+    <Text style={{ marginRight: 8, fontSize: 10 }}>{props.items.length}</Text>
+  );
 };
+
+const ConnectedCountText = connect(mapStateToProps)(CountText);
+
+SalmoList.navigationOptions = props => ({
+  title: 'Salmos',
+  headerRight: <ConnectedCountText />
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(SalmoList);

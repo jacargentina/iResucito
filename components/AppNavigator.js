@@ -1,49 +1,25 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-import SalmosNavigator from './SalmosNavigator';
-import { DrawerNavigator, DrawerItems } from 'react-navigation';
+import MenuScreen from './screens/MenuScreen';
+import SalmoList from './screens/SalmoList';
+import SalmoDetail from './screens/SalmoDetail';
 
-const AppNavigator = DrawerNavigator(
+const AppNavigator = StackNavigator(
   {
-    Alfabetico: {
-      screen: SalmosNavigator,
-      navigationOptions: {
-        title: 'Alfabetico'
-      }
+    Menu: {
+      screen: MenuScreen
     },
-    Precatecumenado: {
-      screen: SalmosNavigator,
-      navigationOptions: {
-        title: 'Precatecumenado'
-      }
+    List: {
+      screen: SalmoList
     },
-    Catecumenado: {
-      screen: SalmosNavigator,
-      navigationOptions: {
-        title: 'Catecumenado'
-      }
-    },
-    Eleccion: {
-      screen: SalmosNavigator,
-      navigationOptions: {
-        title: 'Eleccion'
-      }
-    },
-    Liturgia: {
-      screen: SalmosNavigator,
-      navigationOptions: {
-        title: 'Liturgia'
-      }
+    Detail: {
+      screen: SalmoDetail
     }
   },
   {
-    drawerWidth: 200,
-    contentComponent: props => (
-      <ScrollView>
-        <DrawerItems {...props} />
-      </ScrollView>
-    )
+    cardStyle: {
+      backgroundColor: 'white'
+    }
   }
 );
 
