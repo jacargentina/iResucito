@@ -1,19 +1,19 @@
 import React from 'react';
 import { StackNavigator } from 'react-navigation';
-import SalmosScreen from './screens/SalmosScreen';
-import SalmoScreen from './screens/SalmoScreen';
+import SalmoList from './screens/SalmoList';
+import SalmoDetail from './screens/SalmoDetail';
 
 const SalmosNavigator = StackNavigator(
   {
-    Salmos: {
-      screen: SalmosScreen
+    List: {
+      screen: SalmoList
     },
-    Salmo: {
-      screen: SalmoScreen
+    Detail: {
+      screen: SalmoDetail
     }
   },
   {
-    headerMode: 'none',
+    headerMode: 'screen',
     cardStyle: {
       backgroundColor: 'white'
     }

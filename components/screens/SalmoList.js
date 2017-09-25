@@ -7,30 +7,39 @@ import BaseScreen from './BaseScreen';
 
 import { SET_SALMOS_FILTER } from '../actions';
 
-const SalmosScreen = props => {
+const SalmoList = props => {
   return (
     <BaseScreen {...props} searchHandler={props.filtrarHandler}>
       <FlatList
         data={props.items}
         keyExtractor={item => item.path}
-        renderItem={({ item }) => (
-          <ListItem avatar>
-            <Left>
-              <Badge
-                style={{ backgroundColor: item.categoria.style.background }}>
-                <Text style={{ color: item.categoria.style.color }}>
-                  {item.categoria.letra}
-                </Text>
-              </Badge>
-            </Left>
-            <Body
-              onPress={() =>
-                props.navigation.navigate('Salmo', { path: item.path })}>
-              <Text>{item.titulo}</Text>
-              <Text note>{item.fuente}</Text>
-            </Body>
-          </ListItem>
-        )}
+        renderItem={({ item }) => {
+          if (props.showBadge) {
+            var badge = (
+              <Left>
+                <Badge
+                  style={{ backgroundColor: item.categoria.style.background }}>
+                  <Text style={{ color: item.categoria.style.color }}>
+                    {item.categoria.letra}
+                  </Text>
+                </Badge>
+              </Left>
+            );
+          }
+          return (
+            <ListItem
+              avatar={props.showBadge}
+              onPress={() => {
+                props.navigation.navigate('Detail', { salmo: item });
+              }}>
+              {badge}
+              <Body>
+                <Text>{item.titulo}</Text>
+                <Text note>{item.fuente}</Text>
+              </Body>
+            </ListItem>
+          );
+        }}
       />
     </BaseScreen>
   );
@@ -55,7 +64,8 @@ const mapStateToProps = state => {
   }
   return {
     items: items,
-    title: categoria ? categoria : 'Alfabético'
+    title: categoria ? categoria : 'Alfabético',
+    showBadge: categoria == null
   };
 };
 
@@ -70,8 +80,8 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-SalmosScreen.navigationOptions = {
+SalmoList.navigationOptions = {
   title: 'Salmos'
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SalmosScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(SalmoList);

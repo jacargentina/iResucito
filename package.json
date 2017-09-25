@@ -22,7 +22,7 @@
     "native-base": "^2.3.2",
     "react": "16.0.0-alpha.12",
     "react-native": "^0.48.4",
-    "react-native-fs": "^2.5.1",
+    "react-native-fs": "jacargentina/react-native-fs",
     "react-native-vector-icons": "^4.4.0",
     "react-navigation": "^1.0.0-beta.11",
     "react-redux": "^5.0.6",

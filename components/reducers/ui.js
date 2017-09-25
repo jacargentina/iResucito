@@ -5,7 +5,8 @@ import { Map } from 'immutable';
 const initialState = Map({
   salmos: null,
   salmos_filter: null,
-  salmos_categoria: null
+  salmos_categoria: null,
+  salmoActual: null
 });
 
 export default function ui(state = initialState, action) {
@@ -24,6 +25,9 @@ export default function ui(state = initialState, action) {
         case 'Eleccion':
         case 'Liturgia':
           return state.set('salmos_categoria', action.routeName);
+          break;
+        case 'Detail':
+          return state.set('salmoActual', action.params.salmo);
           break;
       }
       return state;
