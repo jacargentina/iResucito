@@ -19,8 +19,11 @@ export default function ui(state = initialState, action) {
         case 'Alfabetico':
           return state.set('salmos_categoria', null);
           break;
+        case 'Precatecumenado':
         case 'Catecumenado':
-          return state.set('salmos_categoria', 'Catecumenado');
+        case 'Eleccion':
+        case 'Liturgia':
+          return state.set('salmos_categoria', action.routeName);
           break;
       }
       return state;

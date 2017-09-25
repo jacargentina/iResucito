@@ -39,7 +39,14 @@ const SalmosScreen = props => {
 const mapStateToProps = state => {
   var salmos = state.ui.get('salmos');
   var categoria = state.ui.get('salmos_categoria');
-  var items = salmos ? salmos.alfabetico : [];
+  var items = [];
+  if (salmos) {
+    if (categoria) {
+      items = salmos.categorias[categoria];
+    } else {
+      items = salmos.alfabetico;
+    }
+  }
   var filter = state.ui.get('salmos_filter');
   if (filter) {
     items = items.filter(s => {

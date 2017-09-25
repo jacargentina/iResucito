@@ -12,10 +12,28 @@ const AppNavigator = DrawerNavigator(
         title: 'Alfabetico'
       }
     },
+    Precatecumenado: {
+      screen: SalmosNavigator,
+      navigationOptions: {
+        title: 'Precatecumenado'
+      }
+    },
     Catecumenado: {
       screen: SalmosNavigator,
       navigationOptions: {
         title: 'Catecumenado'
+      }
+    },
+    Eleccion: {
+      screen: SalmosNavigator,
+      navigationOptions: {
+        title: 'Eleccion'
+      }
+    },
+    Liturgia: {
+      screen: SalmosNavigator,
+      navigationOptions: {
+        title: 'Liturgia'
       }
     }
   },

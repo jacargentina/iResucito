@@ -86,8 +86,21 @@ const loadRecursive = (key, path) => {
       return Promise.all(loads);
     })
     .then(files => {
+      if (key !== 'root') {
+        files = files.filter(r => r.nombre.endsWith('.pdf'));
+      }
       return { [key]: files };
     });
+};
+
+const ordenAlfabetico = (a, b) => {
+  if (a.titulo < b.titulo) {
+    return -1;
+  }
+  if (a.titulo > b.titulo) {
+    return 1;
+  }
+  return 0;
 };
 
 const mapDispatchToProps = dispatch => {
@@ -100,23 +113,16 @@ const mapDispatchToProps = dispatch => {
       loadRecursive('root', `${base}Salmos`)
         .then(items => {
           var categorias = {};
-          for (var etapa in items.root) {
-            categorias = Object.assign(categorias, items.root[etapa]);
-          }
           var todos = [];
-          for (var etapa in categorias) {
-            todos = todos.concat(categorias[etapa]);
+          for (var etapa in items.root) {
+            var salmosCategoria = items.root[etapa];
+            var nombreCategoria = Object.keys(salmosCategoria)[0];
+            var salmos = salmosCategoria[nombreCategoria];
+            salmos.sort(ordenAlfabetico);
+            categorias = Object.assign(categorias, salmosCategoria);
+            todos = todos.concat(salmos);
           }
-          todos = todos.filter(s => s.nombre.endsWith('.pdf'));
-          todos.sort((a, b) => {
-            if (a.titulo < b.titulo) {
-              return -1;
-            }
-            if (a.titulo > b.titulo) {
-              return 1;
-            }
-            return 0;
-          });
+          todos.sort(ordenAlfabetico);
           var salmos = { categorias: categorias, alfabetico: todos };
           console.log('Salmos cargados');
           dispatch({
