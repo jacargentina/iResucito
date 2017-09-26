@@ -12,36 +12,51 @@ import {
   Button
 } from 'native-base';
 
+const screens = [
+  { title: 'Alfabético', route: 'List' },
+  {
+    title: 'Precatecumenado',
+    route: 'List',
+    params: { categoria: 'Precatecumenado' }
+  },
+  {
+    title: 'Catecumenado',
+    route: 'List',
+    params: { categoria: 'Catecumenado' }
+  },
+  {
+    title: 'Eleccion',
+    route: 'List',
+    params: { categoria: 'Eleccion' }
+  },
+  {
+    title: 'Liturgia',
+    route: 'List',
+    params: { categoria: 'Liturgia' }
+  }
+];
+
 const MenuScreen = props => {
   return (
     <Container>
-      <Content padder>
-        <Button
-          full
-          style={{ margin: 10 }}
-          onPress={() => {
-            props.navigation.navigate('List');
-          }}>
-          <Text>Alfabetico</Text>
-        </Button>
-        <Button
-          full
-          style={{ margin: 10 }}
-          onPress={() => {
-            props.navigation.navigate('List', { categoria: 'Precatecumenado' });
-          }}>
-          <Text>Precatecumenado</Text>
-        </Button>
-        <Button full style={{ margin: 10 }}>
-          <Text>Catecumenado</Text>
-        </Button>
-        <Button full style={{ margin: 10 }}>
-          <Text>Eleccion</Text>
-        </Button>
-        <Button full style={{ margin: 10 }}>
-          <Text>Liturgia</Text>
-        </Button>
-      </Content>
+      <FlatList
+        data={screens}
+        keyExtractor={item => item.title}
+        renderItem={({ item }) => {
+          return (
+            <ListItem>
+              <Button
+                full
+                block
+                onPress={() => {
+                  props.navigation.navigate(item.route, item.params);
+                }}>
+                <Text>{item.title}</Text>
+              </Button>
+            </ListItem>
+          );
+        }}
+      />
     </Container>
   );
 };
