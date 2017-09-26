@@ -3,6 +3,7 @@ import { connect, Provider } from 'react-redux';
 import { addNavigationHelpers } from 'react-navigation';
 import RNFS from 'react-native-fs';
 import { Platform } from 'react-native';
+import SplashScreen from 'react-native-splash-screen';
 
 import Store from './components/store';
 import AppNavigator from './components/AppNavigator';
@@ -14,7 +15,9 @@ class App extends React.Component {
   }
 
   componentWillMount() {
-    this.props.init();
+    this.props.init().then(() => {
+      SplashScreen.hide();
+    });
   }
 
   render() {
@@ -51,32 +54,8 @@ const loadRecursive = (key, path) => {
           separador !== extension
             ? r.name.substring(separador + 1, extension).trim()
             : '';
-        var categoria_nombre = key;
-        var categoria_letra = key[0];
-        switch (categoria_letra) {
-          case 'P':
-            categoria_backcolor = '#ecf0f1';
-            categoria_color = 'black';
-            break;
-          case 'L':
-            categoria_backcolor = '#f1c40f';
-            categoria_color = 'white';
-            break;
-          case 'E':
-            categoria_backcolor = '#2ecc71';
-            categoria_color = 'white';
-            break;
-          case 'C':
-            categoria_backcolor = '#3498db';
-            categoria_color = 'white';
-            break;
-        }
         return {
-          categoria: {
-            nombre: categoria_nombre,
-            letra: categoria_letra,
-            style: { background: categoria_backcolor, color: categoria_color }
-          },
+          categoria: key,
           titulo: titulo,
           fuente: fuente,
           nombre: r.name,
@@ -108,9 +87,8 @@ const mapDispatchToProps = dispatch => {
     dispatch,
     init: () => {
       // Cargar la lista de salmos
-      // On Android, use "RNFS.DocumentDirectoryPath" (MainBundlePath is not defined)
       var base = Platform.OS == 'ios' ? `${RNFS.MainBundlePath}/` : '';
-      loadRecursive('root', `${base}Salmos`)
+      return loadRecursive('root', `${base}Salmos`)
         .then(items => {
           var categorias = {};
           var todos = [];

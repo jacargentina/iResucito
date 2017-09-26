@@ -15,16 +15,7 @@ const SalmoList = props => {
         keyExtractor={item => item.path}
         renderItem={({ item }) => {
           if (props.showBadge) {
-            var badge = (
-              <Left>
-                <Badge
-                  style={{ backgroundColor: item.categoria.style.background }}>
-                  <Text style={{ color: item.categoria.style.color }}>
-                    {item.categoria.letra}
-                  </Text>
-                </Badge>
-              </Left>
-            );
+            var badgeWrapper = <Left>{props.badges[item.categoria]}</Left>;
           }
           return (
             <ListItem
@@ -32,7 +23,7 @@ const SalmoList = props => {
               onPress={() => {
                 props.navigation.navigate('Detail', { salmo: item });
               }}>
-              {badge}
+              {badgeWrapper}
               <Body>
                 <Text>{item.titulo}</Text>
                 <Text note>{item.fuente}</Text>
@@ -48,6 +39,8 @@ const SalmoList = props => {
 const mapStateToProps = state => {
   var salmos = state.ui.get('salmos');
   var categoria = state.ui.get('salmos_categoria');
+  var menu = state.ui.get('menu');
+  var badges = state.ui.get('badges');
   var items = [];
   if (salmos) {
     if (categoria) {
@@ -64,8 +57,8 @@ const mapStateToProps = state => {
   }
   return {
     items: items,
-    title: categoria ? categoria : 'Alfabético',
-    showBadge: categoria == null
+    showBadge: categoria == null,
+    badges: badges
   };
 };
 
@@ -89,7 +82,9 @@ const CountText = props => {
 const ConnectedCountText = connect(mapStateToProps)(CountText);
 
 SalmoList.navigationOptions = props => ({
-  title: 'Salmos',
+  title: props.navigation.state.params
+    ? props.navigation.state.params.categoria
+    : 'Alfabético',
   headerRight: <ConnectedCountText />
 });
 

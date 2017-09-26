@@ -1,58 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { FlatList, View } from 'react-native';
-import {
-  Container,
-  Content,
-  ListItem,
-  Left,
-  Right,
-  Body,
-  Text,
-  Button
-} from 'native-base';
-
-const screens = [
-  { title: 'Alfabético', route: 'List' },
-  {
-    title: 'Precatecumenado',
-    route: 'List',
-    params: { categoria: 'Precatecumenado' }
-  },
-  {
-    title: 'Catecumenado',
-    route: 'List',
-    params: { categoria: 'Catecumenado' }
-  },
-  {
-    title: 'Eleccion',
-    route: 'List',
-    params: { categoria: 'Eleccion' }
-  },
-  {
-    title: 'Liturgia',
-    route: 'List',
-    params: { categoria: 'Liturgia' }
-  }
-];
+import { Container, ListItem, Left, Right, Body, Text } from 'native-base';
 
 const MenuScreen = props => {
   return (
     <Container>
       <FlatList
-        data={screens}
+        data={props.screens}
         keyExtractor={item => item.title}
         renderItem={({ item }) => {
           return (
-            <ListItem>
-              <Button
-                full
-                block
-                onPress={() => {
-                  props.navigation.navigate(item.route, item.params);
-                }}>
+            <ListItem
+              avatar
+              onPress={() => {
+                props.navigation.navigate(item.route, item.params);
+              }}>
+              <Left>{item.badge}</Left>
+              <Body>
                 <Text>{item.title}</Text>
-              </Button>
+                <Text note>{item.note}</Text>
+              </Body>
             </ListItem>
           );
         }}
@@ -65,4 +33,10 @@ MenuScreen.navigationOptions = {
   title: 'iResucitó'
 };
 
-export default connect()(MenuScreen);
+const mapStateToProps = state => {
+  return {
+    screens: state.ui.get('menu')
+  };
+};
+
+export default connect(mapStateToProps)(MenuScreen);

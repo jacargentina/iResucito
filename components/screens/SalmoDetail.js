@@ -12,7 +12,7 @@ const SalmoDetail = props => {
 };
 
 const mapStateToProps = state => {
-  var salmo = state.ui.get('salmoActual');
+  var salmo = state.ui.get('salmo_detail');
   return {
     salmo: salmo,
     title: salmo.titulo
@@ -23,8 +23,10 @@ const mapDispatchToProps = dispatch => {
   return {};
 };
 
-SalmoDetail.navigationOptions = {
-  title: 'Salmo'
-};
+SalmoDetail.navigationOptions = props => ({
+  title: props.navigation.state.params
+    ? props.navigation.state.params.titulo
+    : 'Salmo'
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(SalmoDetail);
