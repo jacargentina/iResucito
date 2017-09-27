@@ -66,7 +66,7 @@ const loadRecursive = (key, path) => {
     })
     .then(files => {
       if (key !== 'root') {
-        files = files.filter(r => r.nombre.endsWith('.pdf'));
+        files = files.filter(r => r.nombre.endsWith('.txt'));
       }
       return { [key]: files };
     });

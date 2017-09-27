@@ -1,6 +1,10 @@
 import React from 'react';
 import { Badge, Text } from 'native-base';
-import { INITIALIZE_DONE, SET_SALMOS_FILTER } from '../actions';
+import {
+  INITIALIZE_DONE,
+  SET_SALMOS_FILTER,
+  SET_SALMO_CONTENT
+} from '../actions';
 import { NavigationActions } from 'react-navigation';
 import { Map } from 'immutable';
 
@@ -25,6 +29,7 @@ const menu = [
     title: 'Alfabético',
     note: 'Todos los salmos en orden alfabético',
     route: 'List',
+    params: { categoria: null },
     badge: badges.Alfabético
   },
   {
@@ -62,6 +67,7 @@ const initialState = Map({
   salmos_filter: null,
   salmos_categoria: null,
   salmo_detail: null,
+  salmo_content: null,
   menu: menu,
   badges: badges
 });
@@ -72,13 +78,28 @@ export default function ui(state = initialState, action) {
       return state.set('salmos', action.salmos);
     case SET_SALMOS_FILTER:
       return state.set('salmos_filter', action.filter);
+    case SET_SALMO_CONTENT:
+      // Quitar caracteres invisibles del comienzo
+      var lineas = action.content.split('\n');
+      while (
+        !lineas[0].includes(' Do ') &&
+        !lineas[0].includes(' Re ') &&
+        !lineas[0].includes(' Mi ') &&
+        !lineas[0].includes(' Fa ') &&
+        !lineas[0].includes(' Sol ') &&
+        !lineas[0].includes(' La ') &&
+        !lineas[0].includes(' Si ')
+      ) {
+        lineas.shift();
+      }
+      var lineas = lineas.filter(l => !l.includes('Page (0) Break'));
+      var texto = lineas.join('\n');
+      return state.set('salmo_content', texto);
+      break;
     case NavigationActions.NAVIGATE:
       switch (action.routeName) {
         case 'List':
-          return state.set(
-            'salmos_categoria',
-            action.params ? action.params.categoria : null
-          );
+          return state.set('salmos_categoria', action.params.categoria);
           break;
         case 'Detail':
           return state.set('salmo_detail', action.params.salmo);

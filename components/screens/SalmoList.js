@@ -82,9 +82,10 @@ const CountText = props => {
 const ConnectedCountText = connect(mapStateToProps)(CountText);
 
 SalmoList.navigationOptions = props => ({
-  title: props.navigation.state.params
-    ? props.navigation.state.params.categoria
-    : 'Alfabético',
+  title:
+    props.navigation.state.params && props.navigation.state.params.categoria
+      ? props.navigation.state.params.categoria
+      : 'Alfabético',
   headerRight: <ConnectedCountText />
 });
 
