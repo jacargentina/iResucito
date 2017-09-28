@@ -7,6 +7,7 @@ import {
 } from '../actions';
 import { NavigationActions } from 'react-navigation';
 import { Map } from 'immutable';
+import { esLineaDeNotas } from '../screens/SalmoDetail';
 
 const createBadge = (backgroundColor, color, text) => {
   return (
@@ -67,7 +68,7 @@ const initialState = Map({
   salmos_filter: null,
   salmos_categoria: null,
   salmo_detail: null,
-  salmo_content: null,
+  salmo_lines: null,
   menu: menu,
   badges: badges
 });
@@ -81,20 +82,11 @@ export default function ui(state = initialState, action) {
     case SET_SALMO_CONTENT:
       // Quitar caracteres invisibles del comienzo
       var lineas = action.content.split('\n');
-      while (
-        !lineas[0].includes(' Do ') &&
-        !lineas[0].includes(' Re ') &&
-        !lineas[0].includes(' Mi ') &&
-        !lineas[0].includes(' Fa ') &&
-        !lineas[0].includes(' Sol ') &&
-        !lineas[0].includes(' La ') &&
-        !lineas[0].includes(' Si ')
-      ) {
+      while (!esLineaDeNotas(lineas[0])) {
         lineas.shift();
       }
       var lineas = lineas.filter(l => !l.includes('Page (0) Break'));
-      var texto = lineas.join('\n');
-      return state.set('salmo_content', texto);
+      return state.set('salmo_lines', lineas);
       break;
     case NavigationActions.NAVIGATE:
       switch (action.routeName) {
