@@ -141,6 +141,7 @@ class SalmoDetail extends React.Component {
         </Text>
       );
     });
+    items.push(<Text key="spacer">{'\n\n\n'}</Text>);
     return (
       <Container style={{ backgroundColor: this.props.background }}>
         <ScrollView horizontal style={{ marginLeft: 10 }}>
@@ -169,7 +170,11 @@ const mapStateToProps = state => {
 
 const loadSalmo = salmo => {
   return (dispatch, getState) => {
-    RNFS.readFile(salmo.path).then(content => {
+    var promise =
+      Platform.OS == 'ios'
+        ? RNFS.readFile(salmo.path)
+        : RNFS.readFileAssets(salmo.path);
+    promise.then(content => {
       dispatch({ type: SET_SALMO_CONTENT, content });
     });
   };
