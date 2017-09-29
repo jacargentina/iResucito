@@ -17,21 +17,32 @@ const createBadge = (backgroundColor, color, text) => {
   );
 };
 
-const badges = {
-  Alfabético: createBadge('blue', 'white', 'A'),
-  Precatecumenado: createBadge('#ecf0f1', 'black', 'P'),
-  Catecumenado: createBadge('#3498db', 'white', 'C'),
-  Eleccion: createBadge('#2ecc71', 'white', 'E'),
-  Liturgia: createBadge('#f1c40f', 'white', 'L')
+const colors = {
+  Precatecumenado: '#EEEEEE',
+  Catecumenado: '#81D4FA',
+  Eleccion: '#C5E1A5',
+  Liturgia: '#FFF59D'
 };
 
-const menu = [
+const badges = {
+  Alfabético: createBadge('#e67e22', 'white', 'A'),
+  Precatecumenado: createBadge(colors.Precatecumenado, 'black', 'P'),
+  Catecumenado: createBadge(colors.Catecumenado, 'black', 'C'),
+  Eleccion: createBadge(colors.Eleccion, 'black', 'E'),
+  Liturgia: createBadge(colors.Liturgia, 'black', 'L')
+};
+
+var menu = [
   {
     title: 'Alfabético',
     note: 'Todos los salmos en orden alfabético',
     route: 'List',
     params: { categoria: null },
     badge: badges.Alfabético
+  },
+  {
+    title: 'Por Etapa',
+    divider: true
   },
   {
     title: 'Precatecumenado',
@@ -48,7 +59,7 @@ const menu = [
     badge: badges.Catecumenado
   },
   {
-    title: 'Eleccion',
+    title: 'Elección',
     note: 'Los salmos para la etapa de la Elección',
     route: 'List',
     params: { categoria: 'Eleccion' },
@@ -63,6 +74,13 @@ const menu = [
   }
 ];
 
+menu = menu.map(item => {
+  if (item.params) {
+    item.params.title = item.title;
+  }
+  return item;
+});
+
 const initialState = Map({
   salmos: null,
   salmos_filter: null,
@@ -70,7 +88,8 @@ const initialState = Map({
   salmo_detail: null,
   salmo_lines: null,
   menu: menu,
-  badges: badges
+  badges: badges,
+  colors: colors,
 });
 
 export default function ui(state = initialState, action) {

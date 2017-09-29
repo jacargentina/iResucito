@@ -10,6 +10,13 @@ const MenuScreen = props => {
         data={props.screens}
         keyExtractor={item => item.title}
         renderItem={({ item }) => {
+          if (item.divider) {
+            return (
+              <ListItem itemDivider>
+                <Text>{item.title}</Text>
+              </ListItem>
+            );
+          }
           return (
             <ListItem
               avatar
