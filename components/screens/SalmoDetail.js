@@ -1,12 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Platform, StyleSheet, ScrollView } from 'react-native';
-import { Container, Content, Text } from 'native-base';
+import { Dimensions, Platform, StyleSheet, ScrollView } from 'react-native';
+import { Container, Content, Text, getTheme } from 'native-base';
 import RNFS from 'react-native-fs';
 import BaseScreen from './BaseScreen';
 import { SET_SALMO_CONTENT } from '../actions';
 
 var mono = Platform.OS == 'ios' ? 'Courier' : 'monospace';
+
+var fontSizeNotas = 12.2;
 
 var styles = StyleSheet.create({
   titulo: {
@@ -14,32 +16,29 @@ var styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'red',
     fontSize: 22,
-    textAlign: 'center',
     marginTop: 8,
     marginBottom: 8
   },
   fuente: {
     fontFamily: mono,
-    color: 'gray',
-    fontSize: 14,
-    textAlign: 'center'
+    color: 'gray'
   },
   lineaNotas: {
     fontFamily: mono,
     color: 'red',
-    fontSize: 11
+    fontSize: fontSizeNotas
   },
   lineaNotasConMargen: {
     fontFamily: mono,
     color: 'red',
-    fontSize: 11,
-    marginTop: 20
+    fontSize: fontSizeNotas,
+    marginTop: 15
   },
   lineaNormal: {
     fontFamily: mono,
     color: 'black',
     fontSize: 14,
-    marginBottom: 14
+    marginBottom: 8
   },
   prefijo: {
     fontFamily: mono,
@@ -81,27 +80,26 @@ export function esLineaDeNotas(text) {
 }
 
 function preprocesarLinea(text, nextText) {
-  var linea = text.trim();
-  if (linea.startsWith('S.')) {
+  if (text.startsWith('S.')) {
     // Indicador de Salmista
     var it = {
       prefijo: 'S. ',
-      texto: linea.substring(2).trim(),
+      texto: text.substring(2).trim(),
       style: styles.lineaNormal,
       prefijoStyle: styles.prefijo
     };
-  } else if (linea.startsWith('A.')) {
+  } else if (text.startsWith('A.')) {
     // Indicador de Asamblea
     var it = {
       prefijo: 'A. ',
-      texto: linea.substring(2).trim(),
+      texto: text.substring(2).trim(),
       style: styles.lineaNormal,
       prefijoStyle: styles.prefijo
     };
-  } else if (esLineaDeNotas(linea)) {
+  } else if (esLineaDeNotas(text)) {
     var it = {
-      prefijo: '    ',
-      texto: linea.replace(/  /g, ' ').trimRight(),
+      prefijo: '   ',
+      texto: text.replace(/  /g, ' ').trimRight(),
       style: styles.lineaNotas
     };
     if (nextText) {
@@ -142,15 +140,27 @@ class SalmoDetail extends React.Component {
       );
     });
     items.push(<Text key="spacer">{'\n\n\n'}</Text>);
+    var margin = 10;
+    var minWidth = Dimensions.get('window').width - margin * 2;
     return (
       <Container style={{ backgroundColor: this.props.background }}>
-        <ScrollView horizontal style={{ marginLeft: 10 }}>
+        <ScrollView
+          horizontal
+          style={{
+            marginLeft: margin,
+            marginRight: margin
+          }}>
           <ScrollView>
-            <Content padder>
-              <Text style={styles.titulo}>{this.props.salmo.titulo}</Text>
-              <Text style={styles.fuente}>{this.props.salmo.fuente}</Text>
+            <Content
+              style={{
+                minWidth: minWidth
+              }}>
+              <Text style={styles.titulo}>
+                {this.props.salmo.titulo}{' '}
+                <Text style={styles.fuente}>{this.props.salmo.fuente}</Text>
+              </Text>
+              {items}
             </Content>
-            {items}
           </ScrollView>
         </ScrollView>
       </Container>
