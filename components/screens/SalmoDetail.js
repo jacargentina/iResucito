@@ -3,19 +3,20 @@ import { connect } from 'react-redux';
 import { Dimensions, Platform, StyleSheet, ScrollView } from 'react-native';
 import { Container, Content, Text, getTheme } from 'native-base';
 import RNFS from 'react-native-fs';
-import BaseScreen from './BaseScreen';
+import DeviceInfo from 'react-native-device-info';
 import { SET_SALMO_CONTENT } from '../actions';
 
-var mono = Platform.OS == 'ios' ? 'Courier' : 'monospace';
-
-var fontSizeNotas = 12.2;
+var mono = Platform.OS == 'ios' ? 'Menlo-Bold' : 'monospace';
+var isTablet = DeviceInfo.isTablet();
+var fontSizeTitulo = isTablet ? 25 : 22;
+var fontSizeTexto = isTablet ? 17 : 14;
+var fontSizeNotas = isTablet ? 15.2 : 12.2;
 
 var styles = StyleSheet.create({
   titulo: {
     fontFamily: mono,
-    fontWeight: 'bold',
     color: 'red',
-    fontSize: 22,
+    fontSize: fontSizeTitulo,
     marginTop: 8,
     marginBottom: 8
   },
@@ -37,13 +38,13 @@ var styles = StyleSheet.create({
   lineaNormal: {
     fontFamily: mono,
     color: 'black',
-    fontSize: 14,
+    fontSize: fontSizeTexto,
     marginBottom: 8
   },
   prefijo: {
     fontFamily: mono,
     color: 'gray',
-    fontSize: 14
+    fontSize: fontSizeTexto
   }
 });
 
