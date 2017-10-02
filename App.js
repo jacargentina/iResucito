@@ -8,6 +8,7 @@ import SplashScreen from 'react-native-splash-screen';
 import Store from './components/store';
 import AppNavigator from './components/AppNavigator';
 import { INITIALIZE_DONE } from './components/actions';
+import Indice from './Indice';
 
 class App extends React.Component {
   constructor(props) {
@@ -15,9 +16,8 @@ class App extends React.Component {
   }
 
   componentWillMount() {
-    this.props.init().then(() => {
-      SplashScreen.hide();
-    });
+    this.props.init();
+    SplashScreen.hide();
   }
 
   render() {
@@ -36,42 +36,6 @@ const mapStateToProps = state => ({
   nav: state.nav
 });
 
-const loadRecursive = (key, path) => {
-  var promise =
-    Platform.OS == 'ios' ? RNFS.readDir(path) : RNFS.readDirAssets(path);
-  return promise
-    .then(result => {
-      var loads = result.map(r => {
-        if (r.isDirectory()) {
-          return loadRecursive(r.name, r.path);
-        }
-        var separador = r.name.includes('-')
-          ? r.name.indexOf('-')
-          : r.name.indexOf('.');
-        var extension = r.name.indexOf('.');
-        var titulo = r.name.substring(0, separador).trim();
-        var fuente =
-          separador !== extension
-            ? r.name.substring(separador + 1, extension).trim()
-            : '';
-        return {
-          categoria: key,
-          titulo: titulo,
-          fuente: fuente,
-          nombre: r.name,
-          path: r.path
-        };
-      });
-      return Promise.all(loads);
-    })
-    .then(files => {
-      if (key !== 'root') {
-        files = files.filter(r => r.nombre.endsWith('.txt'));
-      }
-      return { [key]: files };
-    });
-};
-
 const ordenAlfabetico = (a, b) => {
   if (a.titulo < b.titulo) {
     return -1;
@@ -82,35 +46,39 @@ const ordenAlfabetico = (a, b) => {
   return 0;
 };
 
+const basePath = Platform.OS == 'ios' ? `${RNFS.MainBundlePath}/` : '';
+
+const preprocesar = nombre => {
+  var titulo = nombre.includes('-')
+    ? nombre.substring(0, nombre.indexOf('-')).trim()
+    : nombre;
+  var fuente =
+    titulo !== nombre ? nombre.substring(nombre.indexOf('-') + 1).trim() : '';
+
+  return {
+    titulo: titulo,
+    fuente: fuente,
+    nombre: nombre,
+    path: `${basePath}Salmos/${nombre}.content.txt`
+  };
+};
+
 const mapDispatchToProps = dispatch => {
   return {
     dispatch,
     init: () => {
       // Cargar la lista de salmos
-      var base = Platform.OS == 'ios' ? `${RNFS.MainBundlePath}/` : '';
-      return loadRecursive('root', `${base}Salmos`)
-        .then(items => {
-          var categorias = {};
-          var todos = [];
-          for (var etapa in items.root) {
-            var salmosCategoria = items.root[etapa];
-            var nombreCategoria = Object.keys(salmosCategoria)[0];
-            var salmos = salmosCategoria[nombreCategoria];
-            salmos.sort(ordenAlfabetico);
-            categorias = Object.assign(categorias, salmosCategoria);
-            todos = todos.concat(salmos);
-          }
-          todos.sort(ordenAlfabetico);
-          var salmos = { categorias: categorias, alfabetico: todos };
-          console.log('Salmos cargados');
-          dispatch({
-            type: INITIALIZE_DONE,
-            salmos: salmos
-          });
-        })
-        .catch(err => {
-          console.log('ERR', err);
-        });
+      var todos = Object.keys(Indice);
+      todos = todos.map(s => {
+        var info = preprocesar(s);
+        return Object.assign(Indice[s], info);
+      });
+      todos.sort(ordenAlfabetico);
+      console.log('Salmos cargados');
+      dispatch({
+        type: INITIALIZE_DONE,
+        salmos: todos
+      });
     }
   };
 };

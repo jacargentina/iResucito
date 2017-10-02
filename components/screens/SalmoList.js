@@ -15,7 +15,7 @@ const SalmoList = props => {
         keyExtractor={item => item.path}
         renderItem={({ item }) => {
           if (props.showBadge) {
-            var badgeWrapper = <Left>{props.badges[item.categoria]}</Left>;
+            var badgeWrapper = <Left>{props.badges[item.etapa]}</Left>;
           }
           return (
             <ListItem
@@ -38,15 +38,15 @@ const SalmoList = props => {
 
 const mapStateToProps = state => {
   var salmos = state.ui.get('salmos');
-  var categoria = state.ui.get('salmos_categoria');
+  var etapa = state.ui.get('salmos_etapa');
   var menu = state.ui.get('menu');
   var badges = state.ui.get('badges');
   var items = [];
   if (salmos) {
-    if (categoria) {
-      items = salmos.categorias[categoria];
+    if (etapa) {
+      items = salmos.filter(s => s.etapa == etapa);
     } else {
-      items = salmos.alfabetico;
+      items = salmos;
     }
   }
   var filter = state.ui.get('salmos_filter');
@@ -57,7 +57,7 @@ const mapStateToProps = state => {
   }
   return {
     items: items,
-    showBadge: categoria == null,
+    showBadge: etapa == null,
     badges: badges
   };
 };

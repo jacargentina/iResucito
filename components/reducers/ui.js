@@ -37,7 +37,7 @@ var menu = [
     title: 'Alfabético',
     note: 'Todos los salmos en orden alfabético',
     route: 'List',
-    params: { categoria: null },
+    params: { etapa: null },
     badge: badges.Alfabético
   },
   {
@@ -48,28 +48,28 @@ var menu = [
     title: 'Precatecumenado',
     note: 'Los salmos para la etapa del Precatecumenado',
     route: 'List',
-    params: { categoria: 'Precatecumenado' },
+    params: { etapa: 'Precatecumenado' },
     badge: badges.Precatecumenado
   },
   {
     title: 'Catecumenado',
     note: 'Los salmos para la etapa del Catecumenado',
     route: 'List',
-    params: { categoria: 'Catecumenado' },
+    params: { etapa: 'Catecumenado' },
     badge: badges.Catecumenado
   },
   {
     title: 'Elección',
     note: 'Los salmos para la etapa de la Elección',
     route: 'List',
-    params: { categoria: 'Eleccion' },
+    params: { etapa: 'Eleccion' },
     badge: badges.Eleccion
   },
   {
     title: 'Liturgia',
     note: 'Los salmos para las celebraciones litúrgicas',
     route: 'List',
-    params: { categoria: 'Liturgia' },
+    params: { etapa: 'Liturgia' },
     badge: badges.Liturgia
   }
 ];
@@ -84,7 +84,7 @@ menu = menu.map(item => {
 const initialState = Map({
   salmos: null,
   salmos_filter: null,
-  salmos_categoria: null,
+  salmos_etapa: null,
   salmo_detail: null,
   salmo_lines: null,
   menu: menu,
@@ -110,7 +110,7 @@ export default function ui(state = initialState, action) {
     case NavigationActions.NAVIGATE:
       switch (action.routeName) {
         case 'List':
-          return state.set('salmos_categoria', action.params.categoria);
+          return state.set('salmos_etapa', action.params.etapa);
           break;
         case 'Detail':
           return state.set('salmo_detail', action.params.salmo);

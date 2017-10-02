@@ -1,6 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Dimensions, Platform, StyleSheet, ScrollView } from 'react-native';
+import {
+  Dimensions,
+  Platform,
+  StyleSheet,
+  ScrollView,
+  Alert
+} from 'react-native';
 import { Container, Content, Text, getTheme } from 'native-base';
 import RNFS from 'react-native-fs';
 import DeviceInfo from 'react-native-device-info';
@@ -175,7 +181,7 @@ const mapStateToProps = state => {
   return {
     salmo: salmo,
     lines: salmo_lines || [],
-    background: state.ui.get('colors')[salmo.categoria]
+    background: state.ui.get('colors')[salmo.etapa]
   };
 };
 
@@ -185,9 +191,13 @@ const loadSalmo = salmo => {
       Platform.OS == 'ios'
         ? RNFS.readFile(salmo.path)
         : RNFS.readFileAssets(salmo.path);
-    promise.then(content => {
-      dispatch({ type: SET_SALMO_CONTENT, content });
-    });
+    promise
+      .then(content => {
+        dispatch({ type: SET_SALMO_CONTENT, content });
+      })
+      .catch(err => {
+        Alert.alert('Error', err.message);
+      });
   };
 };
 
