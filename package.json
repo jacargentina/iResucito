@@ -12,7 +12,8 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios --simulator='iPhone 7 Plus'",
     "ios-ipad": "react-native run-ios --simulator='iPad Pro (9.7-inch)'",
-    "test": "node node_modules/jest/bin/jest.js --watch"
+    "test": "node node_modules/jest/bin/jest.js --watch",
+    "postversion": "react-native-version --never-amend"
   },
   "jest": {
     "preset": "jest-expo"
@@ -27,6 +28,7 @@
     "react-native-fs": "jacargentina/react-native-fs",
     "react-native-splash-screen": "^3.0.1",
     "react-native-vector-icons": "^4.4.0",
+    "react-native-version": "^2.3.1",
     "react-navigation": "^1.0.0-beta.11",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
