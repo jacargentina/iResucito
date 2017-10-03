@@ -591,7 +591,9 @@ const Indice = {
     comunion: true
   },
   'Señor, escucha mi oración - Sal 143': {
-    etapa: 'Precatecumenado'
+    etapa: 'Precatecumenado',
+    cuaresma: true,
+    entrada: true
   },
   'Señor, no me corrijas en tu cólera - Sal 6': {
     etapa: 'Precatecumenado'
