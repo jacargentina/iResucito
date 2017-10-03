@@ -41,7 +41,7 @@ var menu = [
     badge: badges.Alfabético
   },
   {
-    title: 'Por Etapa',
+    title: 'Etapa del Camino',
     divider: true
   },
   {
@@ -73,7 +73,7 @@ var menu = [
     badge: badges.Liturgia
   },
   {
-    title: 'Por Tiempo Litúrgico',
+    title: 'Tiempo litúrgico',
     divider: true
   },
   {
@@ -112,25 +112,8 @@ var menu = [
     badge: null
   },
   {
-    title: 'Cantos a la Virgen',
-    note: 'Los salmos dedicados a la Virgen María',
-    route: 'List',
-    params: { filter: { virgen: true } },
-    badge: null
-  },
-  {
-    title: 'Cantos de los Niños',
-    note: 'Los salmos para los niños',
-    route: 'List',
-    params: { filter: { niños: true } },
-    badge: null
-  },
-  {
-    title: 'Laúdes y Vísperas',
-    note: 'Los salmos de Laúdes y Vísperas',
-    route: 'List',
-    params: { filter: { laudes: true } },
-    badge: null
+    title: 'Orden litúrgico',
+    divider: true
   },
   {
     title: 'Entrada',
@@ -165,6 +148,27 @@ var menu = [
     note: 'Los salmos para la salida de las liturgias',
     route: 'List',
     params: { filter: { final: true } },
+    badge: null
+  },
+  {
+    title: 'Cantos a la Virgen',
+    note: 'Los salmos dedicados a la Virgen María',
+    route: 'List',
+    params: { filter: { virgen: true } },
+    badge: null
+  },
+  {
+    title: 'Cantos de los Niños',
+    note: 'Los salmos para los niños',
+    route: 'List',
+    params: { filter: { niños: true } },
+    badge: null
+  },
+  {
+    title: 'Laúdes y Vísperas',
+    note: 'Los salmos de Laúdes y Vísperas',
+    route: 'List',
+    params: { filter: { laudes: true } },
     badge: null
   }
 ];
