@@ -96,8 +96,8 @@ He aquí que nuestro espejo es el Señor      218
 Hermosa eres, amiga mía            242 
 Himno a Cristo Luz                87 
 Himno de Pascua               . 91 
-Huye, amado mío              .. 
-244 Me robaste el corazón              249 
+Huye, amado mío              .. 244 
+Me robaste el corazón              249 
 No está aquí, resucitó              112 
 Noli me tangere               .. 251 
 Oh muerte, ¿dónde está tu victoria?      .. 117 
@@ -139,7 +139,8 @@ María, madre del camino ardiente       . 105
 María, pequeña María            .. 106 
 Paloma incorrupta              . 120 
 Salve, reina de los cielos           . 
-132 Shlom-lej Mariam              . 138 
+132 
+Shlom-lej Mariam              . 138 
 Sola a Solo                 . 144 
 Stabat mater dolorosa            . 145 
 Tú has cubierto de vergüenza la muerte      229 
@@ -221,8 +222,8 @@ Cantad al Señor                .49
 Como el impulso que siente la ira       .. 207 
 Consolad a mi pueblo              208 
 Cristo es la luz                 55 
-Cuando el Señor                56 D
-ecidle a los de corazón cansado        .61 
+Cuando el Señor                56 
+Decidle a los de corazón cansado        .61 
 El combate escatológico            210
 El sembrador                .. 213 
 El Señor anuncia una noticia          .. 68 
