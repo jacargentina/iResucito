@@ -4,6 +4,7 @@ import { ListItem, Left, Right, Body, Text, Badge } from 'native-base';
 import { FlatList } from 'react-native';
 import { _ } from 'lodash';
 import BaseScreen from './BaseScreen';
+import { appNavigatorConfig } from '../AppNavigator';
 
 import { SET_SALMOS_FILTER } from '../actions';
 
@@ -38,26 +39,28 @@ const SalmoList = props => {
 
 const mapStateToProps = state => {
   var salmos = state.ui.get('salmos');
-  var etapa = state.ui.get('salmos_etapa');
+  var filter = state.ui.get('salmos_filter');
   var menu = state.ui.get('menu');
   var badges = state.ui.get('badges');
   var items = [];
   if (salmos) {
-    if (etapa) {
-      items = salmos.filter(s => s.etapa == etapa);
+    if (filter) {
+      for (var name in filter) {
+        items = salmos.filter(s => s[name] == filter[name]);
+      }
     } else {
       items = salmos;
     }
   }
-  var filter = state.ui.get('salmos_filter');
-  if (filter) {
+  var text_filter = state.ui.get('salmos_text_filter');
+  if (text_filter) {
     items = items.filter(s => {
-      return s.nombre.includes(filter);
+      return s.nombre.toLowerCase().includes(text_filter.toLowerCase());
     });
   }
   return {
     items: items,
-    showBadge: etapa == null,
+    showBadge: filter == null || !filter.hasOwnProperty('etapa'),
     badges: badges
   };
 };
@@ -75,7 +78,14 @@ const mapDispatchToProps = dispatch => {
 
 const CountText = props => {
   return (
-    <Text style={{ marginRight: 8, fontSize: 10 }}>{props.items.length}</Text>
+    <Text
+      style={{
+        marginRight: 8,
+        fontSize: 10,
+        color: appNavigatorConfig.navigationOptions.headerTitleStyle.color
+      }}>
+      {props.items.length}
+    </Text>
   );
 };
 

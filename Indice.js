@@ -17,37 +17,57 @@ const Tiempos = [
 const Indice = {
   'Así habla el amén - Ap 3, 14-22': {
     etapa: 'Catecumenado',
-    tiempos: []
+    cuaresma: true
   },
   'Como el impulso que siente la ira - Oda 7 de Salomón': {
-    etapa: 'Catecumenado'
+    etapa: 'Catecumenado',
+    laudes: true,
+    entrada: true,
+    comunion: true
   },
   'Consolad a mi pueblo - Is 40, 1-11': {
-    etapa: 'Catecumenado'
+    etapa: 'Catecumenado',
+    adviento: true,
+    entrada: true,
+    paz: true,
+    final: true
   },
   'Cuando dormía - Ct 5, 2ss': {
-    etapa: 'Catecumenado'
+    etapa: 'Catecumenado',
+    laudes: true,
+    comunion: true,
+    pascua: true
   },
   'Débora - Jc 5': {
-    etapa: 'Catecumenado'
+    etapa: 'Catecumenado',
+    adviento: true,
+    virgen: true
   },
   'Dichoso el hombre - Sal 1': {
     etapa: 'Catecumenado'
   },
   'El Señor me ha dado lengua de discípulo - Is 50, 4-10': {
-    etapa: 'Catecumenado'
+    etapa: 'Catecumenado',
+    fraccion: true
   },
   'El combate escatológico - Ap 19, 11-20': {
-    etapa: 'Catecumenado'
+    etapa: 'Catecumenado',
+    pascua: true,
+    entrada: true
   },
   'El lagarero - Is 63, 1-6': {
-    etapa: 'Catecumenado'
+    etapa: 'Catecumenado',
+    fraccion: true
   },
   'El sembrador - Mc 4, 3ss': {
-    etapa: 'Catecumenado'
+    etapa: 'Catecumenado',
+    entrada: true
   },
   'He aquí que nuestro espejo es el Señor - Oda 13 de Salomón': {
-    etapa: 'Catecumenado'
+    etapa: 'Catecumenado',
+    cuaresma: true,
+    pascua: true,
+    laudes: true
   },
   'Jacob - Gn 32, 23-29': {
     etapa: 'Catecumenado'
@@ -62,16 +82,25 @@ const Indice = {
     etapa: 'Catecumenado'
   },
   'Shemá Israel - Dt 6, 4-9': {
-    etapa: 'Catecumenado'
+    etapa: 'Catecumenado',
+    pentecostes: true
   },
   'Siéntate solitario y silencioso - Lm 3': {
-    etapa: 'Catecumenado'
+    etapa: 'Catecumenado',
+    cuaresma: true
   },
   'Tú has cubierto de vergüenza la muerte - Melitón de Sardes': {
-    etapa: 'Catecumenado'
+    etapa: 'Catecumenado',
+    viergen: true,
+    fraccion: true,
+    pascua: true
   },
   'A la víctima pascual - Secuencia de Pascua': {
-    etapa: 'Precatecumenado'
+    etapa: 'Precatecumenado',
+    pentecostes: true,
+    pascua: true,
+    entrada: true,
+    comunion: true,
   },
   'A nadie demos ocasión de tropiezo - 2 Co 6, 3ss': {
     etapa: 'Precatecumenado'

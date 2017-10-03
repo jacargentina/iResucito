@@ -73,6 +73,7 @@ export function esLineaDeNotas(text) {
     linea.includes('Fa') ||
     linea.includes('Fa7') ||
     linea.includes('Fa#') ||
+    linea.includes('Fa#-') ||
     linea.includes('Sol') ||
     linea.includes('Sol7') ||
     linea.includes('Sol\u2013') ||
