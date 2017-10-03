@@ -1,11 +1,45 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { FlatList, View } from 'react-native';
-import { Container, ListItem, Left, Right, Body, Text } from 'native-base';
+import { FlatList, Modal, View } from 'react-native';
+import {
+  Content,
+  Header,
+  Title,
+  Container,
+  ListItem,
+  Left,
+  Right,
+  Body,
+  Text,
+  Icon,
+  Button,
+  H1
+} from 'native-base';
+import DeviceInfo from 'react-native-device-info';
+import { appNavigatorConfig } from '../AppNavigator';
+import { SET_ABOUT_VISIBLE } from '../actions';
 
 const MenuScreen = props => {
   return (
     <Container>
+      <Modal animationTyper="slide" visible={props.aboutVisible}>
+        <View
+          style={{
+            flex: 1,
+            alignItems: 'center',
+            justifyContent: 'space-around'
+          }}>
+          <H1>iResucitó</H1>
+          <Text>{DeviceInfo.getReadableVersion()}</Text>
+          <Text>Javier Castro</Text>
+          <Button
+            bordered
+            onPress={() => props.closeAbout()}
+            style={{ alignSelf: 'auto' }}>
+            <Text>Aceptar</Text>
+          </Button>
+        </View>
+      </Modal>
       <FlatList
         data={props.screens}
         keyExtractor={item => item.title}
@@ -36,14 +70,44 @@ const MenuScreen = props => {
   );
 };
 
-MenuScreen.navigationOptions = {
-  title: 'iResucitó'
-};
-
 const mapStateToProps = state => {
   return {
-    screens: state.ui.get('menu')
+    screens: state.ui.get('menu'),
+    aboutVisible: state.ui.get('about_visible')
   };
 };
 
-export default connect(mapStateToProps)(MenuScreen);
+const mapDispatchToProps = dispatch => {
+  return {
+    showAbout: () => {
+      dispatch({ type: SET_ABOUT_VISIBLE, visible: true });
+    },
+    closeAbout: () => {
+      dispatch({ type: SET_ABOUT_VISIBLE, visible: false });
+    }
+  };
+};
+
+const AboutIcon = props => {
+  return (
+    <Icon
+      name="help-circle"
+      style={{
+        color: props.navigationOptions.headerTitleStyle.color,
+        paddingRight: 10
+      }}
+      onPress={() => props.showAbout()}
+    />
+  );
+};
+
+const ConnectedAboutIcon = connect(mapStateToProps, mapDispatchToProps)(
+  AboutIcon
+);
+
+MenuScreen.navigationOptions = props => ({
+  title: 'iResucitó',
+  headerRight: <ConnectedAboutIcon {...props} />
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MenuScreen);

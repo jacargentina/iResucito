@@ -7,7 +7,7 @@ import {
   ScrollView,
   Alert
 } from 'react-native';
-import { Container, Content, Text, getTheme } from 'native-base';
+import { Container, Content, Text } from 'native-base';
 import RNFS from 'react-native-fs';
 import DeviceInfo from 'react-native-device-info';
 import { SET_SALMO_CONTENT } from '../actions';

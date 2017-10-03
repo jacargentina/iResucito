@@ -3,7 +3,8 @@ import { Badge, Text } from 'native-base';
 import {
   INITIALIZE_DONE,
   SET_SALMOS_FILTER,
-  SET_SALMO_CONTENT
+  SET_SALMO_CONTENT,
+  SET_ABOUT_VISIBLE
 } from '../actions';
 import { NavigationActions } from 'react-navigation';
 import { Map } from 'immutable';
@@ -188,7 +189,8 @@ const initialState = Map({
   salmo_lines: null,
   menu: menu,
   badges: badges,
-  colors: colors
+  colors: colors,
+  about_visible: false
 });
 
 export default function ui(state = initialState, action) {
@@ -197,6 +199,8 @@ export default function ui(state = initialState, action) {
       return state.set('salmos', action.salmos);
     case SET_SALMOS_FILTER:
       return state.set('salmos_text_filter', action.filter);
+    case SET_ABOUT_VISIBLE:
+      return state.set('about_visible', action.visible);
     case SET_SALMO_CONTENT:
       // Quitar caracteres invisibles del comienzo
       var lineas = action.content.split('\n');
