@@ -35,9 +35,15 @@ const MenuScreen = props => {
             style={{ width: 300, height: 400 }}
             resizeMode="contain"
           />
-          <H1 style={{ color: 'red', fontWeight: 'bold' }}>iResucitó</H1>
-          <Text>Versión: {DeviceInfo.getReadableVersion()}</Text>
-          <Text>Javier Castro, 2017</Text>
+          <H1 style={{ color: 'red', fontWeight: 'bold', fontStyle: 'italic' }}>
+            iResucitó
+          </H1>
+          <Text style={{ textAlign: 'center' }}>
+            Versión: {DeviceInfo.getReadableVersion()}
+            {'\n'}
+            <Icon name="contact" style={{ fontSize: 16 }} active /> Javier
+            Castro, 2017
+          </Text>
         </TouchableOpacity>
       </Modal>
       <FlatList
