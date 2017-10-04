@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { FlatList, Modal, View } from 'react-native';
+import { FlatList, Modal, TouchableOpacity, Image } from 'react-native';
 import {
   Content,
   Header,
@@ -23,22 +23,22 @@ const MenuScreen = props => {
   return (
     <Container>
       <Modal animationTyper="slide" visible={props.aboutVisible}>
-        <View
+        <TouchableOpacity
           style={{
             flex: 1,
             alignItems: 'center',
             justifyContent: 'space-around'
-          }}>
-          <H1>iResucitó</H1>
-          <Text>{DeviceInfo.getReadableVersion()}</Text>
-          <Text>Javier Castro</Text>
-          <Button
-            bordered
-            onPress={() => props.closeAbout()}
-            style={{ alignSelf: 'auto' }}>
-            <Text>Aceptar</Text>
-          </Button>
-        </View>
+          }}
+          onPress={() => props.closeAbout()}>
+          <Image
+            source={require('../../img/cristo.jpg')}
+            style={{ width: 300, height: 400 }}
+            resizeMode="contain"
+          />
+          <H1 style={{ color: 'red', fontWeight: 'bold' }}>iResucitó</H1>
+          <Text>Versión: {DeviceInfo.getReadableVersion()}</Text>
+          <Text>Javier Castro, 2017</Text>
+        </TouchableOpacity>
       </Modal>
       <FlatList
         data={props.screens}
