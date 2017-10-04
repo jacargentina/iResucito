@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -51,6 +52,8 @@
 		748F40AB429C4A0FAC8D22EA /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD78560C86FC44869544EFBB /* Zocial.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		889530361F6C320D009638BA /* Salmos in Resources */ = {isa = PBXBuildFile; fileRef = 889530351F6C320D009638BA /* Salmos */; };
+		88BC43B31F8526BF006B7672 /* cristo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 88BC43B11F8526BF006B7672 /* cristo.jpg */; };
+		88BC43B41F8526BF006B7672 /* resucito.gif in Resources */ = {isa = PBXBuildFile; fileRef = 88BC43B21F8526BF006B7672 /* resucito.gif */; };
 		9113E9F9F9684DF9949CFA8E /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 132628F95CC84637AE5D60DF /* Entypo.ttf */; };
 		97134C16B3A5498E9C250334 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0E787F1AF734FB4A91410B7 /* Entypo.ttf */; };
 		9CA9B7D974E74558A1A3E046 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18028CD90BF940AEAB60BB7E /* SimpleLineIcons.ttf */; };
@@ -362,6 +365,8 @@
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		889530351F6C320D009638BA /* Salmos */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Salmos; path = ../Salmos; sourceTree = "<group>"; };
+		88BC43B11F8526BF006B7672 /* cristo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cristo.jpg; sourceTree = "<group>"; };
+		88BC43B21F8526BF006B7672 /* resucito.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = resucito.gif; sourceTree = "<group>"; };
 		970DFC9314F6408AA8E8B8C0 /* Roboto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto.ttf; path = "../node_modules/native-base/Fonts/Roboto.ttf"; sourceTree = "<group>"; };
 		9D04B6ED69204A3AB26B56BD /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
 		AE212A10ECDB4578A3FD3A87 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/native-base/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
@@ -627,6 +632,8 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				88BC43B11F8526BF006B7672 /* cristo.jpg */,
+				88BC43B21F8526BF006B7672 /* resucito.gif */,
 				889530351F6C320D009638BA /* Salmos */,
 				13B07FAE1A68108700A75B9A /* iResucito */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -1142,6 +1149,7 @@
 				3C97AAA002BE4C57993874E2 /* Ionicons.ttf in Resources */,
 				21AC0D2DCC82413683F2A15C /* MaterialIcons.ttf in Resources */,
 				482AE53302704635A770EFE2 /* Octicons.ttf in Resources */,
+				88BC43B41F8526BF006B7672 /* resucito.gif in Resources */,
 				62731765067B40EC9EB845D1 /* Roboto_medium.ttf in Resources */,
 				D15A5A052E6540D39529524C /* Roboto.ttf in Resources */,
 				F2E96E0C3AD34AE491C86E73 /* rubicon-icon-font.ttf in Resources */,
@@ -1151,6 +1159,7 @@
 				B62A32DFD36A4B6BB991A731 /* EvilIcons.ttf in Resources */,
 				6DAB2CF5F78049BFA6E26210 /* Feather.ttf in Resources */,
 				530B8F8B3D1E44189147BCD6 /* FontAwesome.ttf in Resources */,
+				88BC43B31F8526BF006B7672 /* cristo.jpg in Resources */,
 				64FEC01C39544101A3F57078 /* Foundation.ttf in Resources */,
 				60EA954AD2164F79A365A06F /* Ionicons.ttf in Resources */,
 				D1B1117E36AB46689D5B6F5F /* MaterialCommunityIcons.ttf in Resources */,
