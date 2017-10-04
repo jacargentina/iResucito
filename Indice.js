@@ -284,6 +284,7 @@ const Indice = {
   },
   'El Señor anuncia una noticia - Sal 68 (67)': {
     etapa: 'Precatecumenado',
+    adviento: true,
     entrada: true
   },
   'El Señor es mi pastor - Sal 23 (24)': {
@@ -359,10 +360,12 @@ const Indice = {
     fraccion: true
   },
   'He aquí que vengo presto - Ap 22, 12-16': {
-    etapa: 'Precatecumenado'
+    etapa: 'Precatecumenado',
+    adviento: true
   },
   'He esperado en el Señor - Sal 40 (39)': {
     etapa: 'Precatecumenado',
+    adviento: true,
     cuaresma: true
   },
   'Hijas de Jerusalén - Lc 23, 28-46': {
@@ -379,7 +382,8 @@ const Indice = {
     fraccion: true
   },
   'Himno de Adviento - Himno': {
-    etapa: 'Precatecumenado'
+    etapa: 'Precatecumenado',
+    adviento: true
   },
   'Himno de Pascua - Himno': {
     etapa: 'Precatecumenado',
@@ -435,6 +439,7 @@ const Indice = {
   },
   'Llévame al cielo - Flp 1, 23': {
     etapa: 'Precatecumenado',
+    adviento: true,
     pentecostes: true,
     final: true
   },
@@ -467,6 +472,7 @@ const Indice = {
   },
   'Me enseñarás el camino de la vida - Sal 15': {
     etapa: 'Precatecumenado',
+    adviento: true,
     entrada: true
   },
   'Me has seducido Señor - Jr 20, 7-18': {
@@ -508,7 +514,8 @@ const Indice = {
     entrada: true
   },
   'Oh cielos, lloved de lo alto - Is 45, 8': {
-    etapa: 'Precatecumenado'
+    etapa: 'Precatecumenado',
+    adviento: true
   },
   'Oh muerte, dónde está tu victoria - 1 Co 15': {
     etapa: 'Precatecumenado',
@@ -638,6 +645,7 @@ const Indice = {
   },
   'Tú eres mi esperanza, Señor - Oda 29 de Salomón': {
     etapa: 'Precatecumenado',
+    adviento: true,
     cuaresma: true
   },
   'Un retoño brota del tronco de Jesé - Is 11, 1-11': {
@@ -647,6 +655,7 @@ const Indice = {
   },
   'Una gran señal - Ap 12': {
     etapa: 'Precatecumenado',
+    adviento: true,
     pentecostes: true,
     virgen: true
   },
@@ -668,6 +677,7 @@ const Indice = {
   },
   'Ven, hijo del hombre - Ap 21, 17ss': {
     etapa: 'Precatecumenado',
+    adviento: true,
     final: true
   },
   'Veni creator - Himno': {
@@ -676,6 +686,7 @@ const Indice = {
   },
   'Viene el Señor - Sal 93 (92) - Ap 1, 5-6': {
     etapa: 'Precatecumenado',
+    adviento: true,
     pentecostes: true
   },
   'Virgen de la maravilla - Himno': {
@@ -684,6 +695,7 @@ const Indice = {
   },
   'Vivid alegres - Flp 4, 4ss': {
     etapa: 'Precatecumenado',
+    adviento: true,
     niños: true
   },
   'Vosotros sois la luz del mundo - Mt 5, 14-16': {
