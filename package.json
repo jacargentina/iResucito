@@ -1,6 +1,6 @@
 {
   "name": "iResucito",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "private": true,
   "devDependencies": {
     "babel-preset-react-native-stage-0": "^1.0.1",

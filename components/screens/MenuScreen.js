@@ -36,7 +36,7 @@ const MenuScreen = props => {
             resizeMode="contain"
           />
           <H1 style={{ color: 'red', fontWeight: 'bold', fontStyle: 'italic' }}>
-            iResucitó
+            {require('../../app.json').displayName}
           </H1>
           <Text style={{ textAlign: 'center' }}>
             Versión: {DeviceInfo.getReadableVersion()}
