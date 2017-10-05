@@ -1,25 +1,9 @@
-const Tiempos = [
-  'Adviento',
-  'Navidad',
-  'Cuaresma',
-  'Pascua',
-  'Pentecostés',
-  'Virgen',
-  'Niños',
-  'Laúdes/Vísperas',
-  'Entrada',
-  'Paz/Ofrendas',
-  'Fracción del Pan',
-  'Comunión',
-  'Final'
-];
-
-const Indice = {
-  'Así habla el amén - Ap 3, 14-22': {
+﻿const Indice = {
+  'Así habla el amén - Ap 3, 14-22': {
     etapa: 'Catecumenado',
     cuaresma: true
   },
-  'Como el impulso que siente la ira - Oda 7 de Salomón': {
+  'Como el impulso que siente la ira - Oda 7 de Salomón': {
     etapa: 'Catecumenado',
     laudes: true,
     entrada: true,
@@ -32,7 +16,7 @@ const Indice = {
     paz: true,
     final: true
   },
-  'Cuando dormía - Ct 5, 2ss': {
+  'Cuando dormía - Ct 5, 2ss': {
     etapa: 'Catecumenado',
     laudes: true,
     comunion: true,
@@ -46,11 +30,11 @@ const Indice = {
   'Dichoso el hombre - Sal 1': {
     etapa: 'Catecumenado'
   },
-  'El Señor me ha dado lengua de discípulo - Is 50, 4-10': {
+  'El Señor me ha dado lengua de discípulo - Is 50, 4-10': {
     etapa: 'Catecumenado',
     fraccion: true
   },
-  'El combate escatológico - Ap 19, 11-20': {
+  'El combate escatológico - Ap 19, 11-20': {
     etapa: 'Catecumenado',
     pascua: true,
     entrada: true
@@ -63,7 +47,7 @@ const Indice = {
     etapa: 'Catecumenado',
     entrada: true
   },
-  'He aquí que nuestro espejo es el Señor - Oda 13 de Salomón': {
+  'He aquí que nuestro espejo es el Señor - Oda 13 de Salomón': {
     etapa: 'Catecumenado',
     cuaresma: true,
     pascua: true,
@@ -72,16 +56,16 @@ const Indice = {
   'Jacob - Gn 32, 23-29': {
     etapa: 'Catecumenado'
   },
-  'Ninguno puede servir a dos señores - Mt 6, 24-33': {
+  'Ninguno puede servir a dos señores - Mt 6, 24-33': {
     etapa: 'Catecumenado'
   },
-  'Oh Señor, mi corazón ya no es ambicioso - Sal 131 (130)': {
+  'Oh Señor, mi corazón ya no es ambicioso - Sal 131 (130)': {
     etapa: 'Catecumenado'
   },
-  'Señor, tú me escrutas - Sal 139 (138)': {
+  'Señor, tú me escrutas - Sal 139 (138)': {
     etapa: 'Catecumenado'
   },
-  'Shemá Israel - Dt 6, 4-9': {
+  'Shemá Israel - Dt 6, 4-9': {
     etapa: 'Catecumenado',
     pentecostes: true
   },
@@ -89,35 +73,35 @@ const Indice = {
     etapa: 'Catecumenado',
     cuaresma: true
   },
-  'Tú has cubierto de vergüenza la muerte - Melitón de Sardes': {
+  'Tú has cubierto de vergüenza la muerte - Melitón de Sardes': {
     etapa: 'Catecumenado',
     virgen: true,
     fraccion: true,
     pascua: true
   },
-  'A la víctima pascual - Secuencia de Pascua': {
+  'A la víctima pascual - Secuencia de Pascua': {
     etapa: 'Precatecumenado',
     pentecostes: true,
     pascua: true,
     entrada: true,
     comunion: true
   },
-  'A nadie demos ocasión de tropiezo - 2 Co 6, 3ss': {
+  'A nadie demos ocasión de tropiezo - 2 Co 6, 3ss': {
     etapa: 'Precatecumenado'
   },
   'A ti levanto mis ojos - Sal 123 (122)': {
     etapa: 'Precatecumenado',
     cuaresma: true
   },
-  'A ti, Señor, en mi clamor imploro - Sal 142 (141)': {
+  'A ti, Señor, en mi clamor imploro - Sal 142 (141)': {
     etapa: 'Precatecumenado',
     cuaresma: true
   },
-  'A ti, Señor, levanto mi alma - Sal 25 (24)': {
+  'A ti, Señor, levanto mi alma - Sal 25 (24)': {
     etapa: 'Precatecumenado',
     cuaresma: true
   },
-  'A ti, Señor, se debe la alabanza en Sión - Sal 65 (64)': {
+  'A ti, Señor, se debe la alabanza en Sión - Sal 65 (64)': {
     etapa: 'Precatecumenado',
     cuaresma: true,
     laudes: true
@@ -127,7 +111,7 @@ const Indice = {
     laudes: true,
     entrada: true
   },
-  'Aclamad al Señor - Sal 100 (99)': {
+  'Aclamad al Señor - Sal 100 (99)': {
     etapa: 'Precatecumenado',
     laudes: true,
     final: true
@@ -137,22 +121,22 @@ const Indice = {
     cuaresma: true,
     laudes: true
   },
-  'Alabad al Señor en el cielo - Sal 148': {
+  'Alabad al Señor en el cielo - Sal 148': {
     etapa: 'Precatecumenado',
     laudes: true
   },
-  'Aleluya, alabad al Señor - Sal 150': {
+  'Aleluya, alabad al Señor - Sal 150': {
     etapa: 'Precatecumenado',
     pascua: true,
     final: true
   },
-  'Aleluya, bendecid al Señor - Sal 134 (133)': {
+  'Aleluya, bendecid al Señor - Sal 134 (133)': {
     etapa: 'Precatecumenado',
     pascua: true,
     niños: true,
     paz: true
   },
-  'Aleluya, ya llegó el reino - Ap 19, 6-9': {
+  'Aleluya, ya llegó el reino - Ap 19, 6-9': {
     etapa: 'Precatecumenado',
     laudes: true,
     comunion: true
@@ -161,7 +145,7 @@ const Indice = {
     etapa: 'Precatecumenado',
     entrada: true
   },
-  'Amo al Señor - Sal 116 (114-115)': {
+  'Amo al Señor - Sal 116 (114-115)': {
     etapa: 'Precatecumenado',
     cuaresma: true,
     laudes: true
@@ -172,11 +156,11 @@ const Indice = {
     niños: true,
     fraccion: true
   },
-  'Ave María I - Lc 1, 28ss': {
+  'Ave María I - Lc 1, 28ss': {
     etapa: 'Precatecumenado',
     virgen: true
   },
-  'Ave María II (1984) - Lc 1, 28ss': {
+  'Ave María II (1984) - Lc 1, 28ss': {
     etapa: 'Precatecumenado',
     virgen: true,
     final: true
@@ -192,29 +176,29 @@ const Indice = {
     comunion: true,
     final: true
   },
-  'Bendeciré al Señor en todo tiempo - Sal 34 (33)': {
+  'Bendeciré al Señor en todo tiempo - Sal 34 (33)': {
     etapa: 'Precatecumenado',
     cuaresma: true,
     laudes: true
   },
-  'Bendice, alma mía, a Yahveh - Sal 103 (102)': {
+  'Bendice, alma mía, a Yahveh - Sal 103 (102)': {
     etapa: 'Precatecumenado',
     cuaresma: true,
     laudes: true
   },
-  'Bendita eres tú, María - Lc 1, 42-45': {
+  'Bendita eres tú, María - Lc 1, 42-45': {
     etapa: 'Precatecumenado',
     virgen: true,
     entrada: true,
     final: true
   },
-  'Bendito eres, Señor - Dn 3, 52-57': {
+  'Bendito eres, Señor - Dn 3, 52-57': {
     etapa: 'Precatecumenado'
   },
   'Benedictus - Lc 1, 67-80': {
     etapa: 'Precatecumenado'
   },
-  'Cantad al Señor - Sal 117 (116)': {
+  'Cantad al Señor - Sal 117 (116)': {
     etapa: 'Precatecumenado',
     laudes: true,
     entrada: true,
@@ -227,7 +211,7 @@ const Indice = {
   'Caritas Christi urget nos - 2 Co 5, 14-15': {
     etapa: 'Precatecumenado'
   },
-  'Cántico de los tres jóvenes - Dn 3, 57-58': {
+  'Cántico de los tres jóvenes - Dn 3, 57-58': {
     etapa: 'Precatecumenado',
     laudes: true
   },
@@ -236,7 +220,7 @@ const Indice = {
     cuaresma: true,
     laudes: true
   },
-  'Cómo es maravilloso - Sal 133 (132)': {
+  'Cómo es maravilloso - Sal 133 (132)': {
     etapa: 'Precatecumenado',
     paz: true
   },
@@ -244,18 +228,18 @@ const Indice = {
     etapa: 'Precatecumenado',
     entrada: true
   },
-  'Cuando Israel salió de Egipto - Sal 114 (113)': {
+  'Cuando Israel salió de Egipto - Sal 114 (113)': {
     etapa: 'Precatecumenado',
     pascua: true,
     laudes: true
   },
-  'Cuando el Señor - Sal 126 (125)': {
+  'Cuando el Señor - Sal 126 (125)': {
     etapa: 'Precatecumenado',
     cuaresma: true,
     entrada: true,
     final: true
   },
-  Dayenú: {
+  Dayenú: {
     etapa: 'Precatecumenado',
     pascua: true,
     paz: true,
@@ -265,29 +249,29 @@ const Indice = {
     etapa: 'Precatecumenado',
     cuaresma: true
   },
-  'Decid a los de corazón cansado - Is 35 4ss': {
+  'Decid a los de corazón cansado - Is 35 4ss': {
     etapa: 'Precatecumenado',
     cuaresma: true,
     entrada: true
   },
-  'Delante de los ángeles - Sal 138 (137)': {
+  'Delante de los ángeles - Sal 138 (137)': {
     etapa: 'Precatecumenado',
     laudes: true
   },
-  'Dice el Señor a mi Señor - Sal 110 (109)': {
+  'Dice el Señor a mi Señor - Sal 110 (109)': {
     etapa: 'Precatecumenado',
     laudes: true
   },
-  'Día de reposo - Jn 8, 52': {
+  'Día de reposo - Jn 8, 52': {
     etapa: 'Precatecumenado',
     final: true
   },
-  'El Señor anuncia una noticia - Sal 68 (67)': {
+  'El Señor anuncia una noticia - Sal 68 (67)': {
     etapa: 'Precatecumenado',
     adviento: true,
     entrada: true
   },
-  'El Señor es mi pastor - Sal 23 (24)': {
+  'El Señor es mi pastor - Sal 23 (24)': {
     etapa: 'Precatecumenado',
     comunion: true
   },
@@ -302,7 +286,7 @@ const Indice = {
   'El pueblo que caminaba en las tinieblas - Is 9, 1-5': {
     etapa: 'Precatecumenado'
   },
-  'Elí, Elí, lamá sabactaní - Sal 22 (21)': {
+  'Elí, Elí, lamá sabactaní - Sal 22 (21)': {
     etapa: 'Precatecumenado',
     cuaresma: true
   },
@@ -316,21 +300,21 @@ const Indice = {
     entrada: true,
     final: true
   },
-  'Escóndeme en lo oculto de tu tienda - Sal 27 (26)': {
+  'Escóndeme en lo oculto de tu tienda - Sal 27 (26)': {
     etapa: 'Precatecumenado',
     laudes: true
   },
-  'Están rotas mis ataduras - Carmen 63': {
+  'Están rotas mis ataduras - Carmen 63': {
     etapa: 'Precatecumenado'
   },
   'Evenu Shalom Alejem - Canto popular hebreo': {
     etapa: 'Precatecumenado',
     paz: true
   },
-  'Exultad, justos, en el Señor - Sal 32': {
+  'Exultad, justos, en el Señor - Sal 32': {
     etapa: 'Precatecumenado'
   },
-  'Éste es el día en que actuó el Señor - Sal 118 (117)': {
+  'Éste es el día en que actuó el Señor - Sal 118 (117)': {
     etapa: 'Precatecumenado'
   },
   'Felicidad para el hombre - Sal 128 (127)': {
@@ -351,19 +335,19 @@ const Indice = {
     etapa: 'Precatecumenado',
     entrada: true
   },
-  'Hasta cuándo - Sal 13 (12)': {
+  'Hasta cuándo - Sal 13 (12)': {
     etapa: 'Precatecumenado',
     cuaresma: true
   },
-  'He aquí mi siervo - Is 42': {
+  'He aquí mi siervo - Is 42': {
     etapa: 'Precatecumenado',
     fraccion: true
   },
-  'He aquí que vengo presto - Ap 22, 12-16': {
+  'He aquí que vengo presto - Ap 22, 12-16': {
     etapa: 'Precatecumenado',
     adviento: true
   },
-  'He esperado en el Señor - Sal 40 (39)': {
+  'He esperado en el Señor - Sal 40 (39)': {
     etapa: 'Precatecumenado',
     adviento: true,
     cuaresma: true
@@ -390,11 +374,11 @@ const Indice = {
     pascua: true,
     laudes: true
   },
-  'Himno de la Ascensión - Himno': {
+  'Himno de la Ascensión - Himno': {
     etapa: 'Precatecumenado',
     laudes: true
   },
-  'Huye amado mío - Ct 8, 10-14': {
+  'Huye amado mío - Ct 8, 10-14': {
     etapa: 'Precatecumenado',
     pascua: true,
     comunion: true,
@@ -443,46 +427,46 @@ const Indice = {
     pentecostes: true,
     final: true
   },
-  'Magníficat - Lc 1, 46-55': {
+  'Magníficat - Lc 1, 46-55': {
     etapa: 'Precatecumenado',
     virgen: true,
     laudes: true
   },
-  'María de Jasna Göra - Himno': {
+  'María de Jasna Göra - Himno': {
     etapa: 'Precatecumenado',
     virgen: true
   },
-  'María, casa de bendición - Jn 2,1-11': {
+  'María, casa de bendición - Jn 2,1-11': {
     etapa: 'Precatecumenado',
     virgen: true,
     entrada: true
   },
-  'María, madre de la Iglesia - Jn 19, 26-34': {
+  'María, madre de la Iglesia - Jn 19, 26-34': {
     etapa: 'Precatecumenado',
     cuaresma: true
   },
-  'María, madre del camino ardiente - Himno': {
+  'María, madre del camino ardiente - Himno': {
     etapa: 'Precatecumenado',
     virgen: true
   },
-  'María, pequena Maria - Himno': {
+  'María, pequena Maria - Himno': {
     etapa: 'Precatecumenado',
     cuaresma: true,
     virgen: true
   },
-  'Me enseñarás el camino de la vida - Sal 15': {
+  'Me enseñarás el camino de la vida - Sal 15': {
     etapa: 'Precatecumenado',
     adviento: true,
     entrada: true
   },
-  'Me has seducido Señor - Jr 20, 7-18': {
+  'Me has seducido Señor - Jr 20, 7-18': {
     etapa: 'Precatecumenado'
   },
   'Mirad que estupendo - Sal 133 (132)': {
     etapa: 'Precatecumenado',
     paz: true
   },
-  'Misericordia mía, misericordia - Sal 51 (50)': {
+  'Misericordia mía, misericordia - Sal 51 (50)': {
     etapa: 'Precatecumenado',
     cuaresma: true,
     laudes: true
@@ -490,7 +474,7 @@ const Indice = {
   'Mucho me han perseguido - Sal 129': {
     etapa: 'Precatecumenado'
   },
-  'No está aquí, resucitó - Mt 28, 1-8': {
+  'No está aquí, resucitó - Mt 28, 1-8': {
     etapa: 'Precatecumenado',
     pascua: true,
     comunion: true
@@ -499,16 +483,16 @@ const Indice = {
     etapa: 'Precatecumenado',
     fraccion: true
   },
-  'Oh Dios, por tu nombre sálvame - Sal 54 (53)': {
+  'Oh Dios, por tu nombre sálvame - Sal 54 (53)': {
     etapa: 'Precatecumenado'
   },
-  'Oh Jesús, amor mío - Himno': {
+  'Oh Jesús, amor mío - Himno': {
     etapa: 'Precatecumenado',
     cuaresma: true,
     fraccion: true,
     comunion: true
   },
-  'Oh Señor, nuestro Dios - Sal 8': {
+  'Oh Señor, nuestro Dios - Sal 8': {
     etapa: 'Precatecumenado',
     laudes: true,
     entrada: true
@@ -517,7 +501,7 @@ const Indice = {
     etapa: 'Precatecumenado',
     adviento: true
   },
-  'Oh muerte, dónde está tu victoria - 1 Co 15': {
+  'Oh muerte, dónde está tu victoria - 1 Co 15': {
     etapa: 'Precatecumenado',
     pascua: true,
     comunion: true
@@ -535,7 +519,7 @@ const Indice = {
     etapa: 'Precatecumenado',
     paz: true
   },
-  'Por qué esta noche es diferente - Canto de los niños': {
+  'Por qué esta noche es diferente - Canto de los niños': {
     etapa: 'Precatecumenado',
     pascua: true,
     niños: true,
@@ -551,15 +535,15 @@ const Indice = {
     cuaresma: true,
     laudes: true
   },
-  'Que amables son tus moradas, Señor - Sal 84 (83)': {
+  'Que amables son tus moradas, Señor - Sal 84 (83)': {
     etapa: 'Precatecumenado',
     entrada: true
   },
-  'Qué estupendo, qué alegría - Sal 133 (132)': {
+  'Qué estupendo, qué alegría - Sal 133 (132)': {
     etapa: 'Precatecumenado',
     paz: true
   },
-  'Quiero andar madre a Jerusalén - Canto sefardí': {
+  'Quiero andar madre a Jerusalén - Canto sefardí': {
     etapa: 'Precatecumenado',
     final: true
   },
@@ -572,12 +556,12 @@ const Indice = {
     comunion: true,
     final: true
   },
-  'Quién nos separará - Rm 8, 33-39': {
+  'Quién nos separará - Rm 8, 33-39': {
     etapa: 'Precatecumenado',
     laudes: true,
     comunion: true
   },
-  'Resucitó - Himno pascual': {
+  'Resucitó - Himno pascual': {
     etapa: 'Precatecumenado',
     pascua: true,
     comunion: true
@@ -587,43 +571,43 @@ const Indice = {
     virgen: true,
     final: true
   },
-  'Se encontraron dos ángeles - Canto de los niños': {
+  'Se encontraron dos ángeles - Canto de los niños': {
     etapa: 'Precatecumenado',
     niños: true,
     paz: true
   },
-  'Señor, ayúdame a no dudar de ti - Himno': {
+  'Señor, ayúdame a no dudar de ti - Himno': {
     etapa: 'Precatecumenado',
     cuaresma: true,
     comunion: true
   },
-  'Señor, escucha mi oración - Sal 143': {
+  'Señor, escucha mi oración - Sal 143': {
     etapa: 'Precatecumenado',
     cuaresma: true,
     entrada: true
   },
-  'Señor, no me corrijas en tu cólera - Sal 6': {
+  'Señor, no me corrijas en tu cólera - Sal 6': {
     etapa: 'Precatecumenado'
   },
-  'Shlom-lej Mariam - Ave María en arameo antiguo': {
+  'Shlom-lej Mariam - Ave María en arameo antiguo': {
     etapa: 'Precatecumenado',
     virgen: true,
     final: true
   },
-  'Si el Señor no construye la casa - Sal 127 (126)': {
+  'Si el Señor no construye la casa - Sal 127 (126)': {
     etapa: 'Precatecumenado',
     laudes: true,
     entrada: true
   },
-  'Si hoy escucháis su voz - Sal 95 (94)': {
+  'Si hoy escucháis su voz - Sal 95 (94)': {
     etapa: 'Precatecumenado',
     laudes: true
   },
-  'Si me he refugiado en el Señor - Sal 11 (10)': {
+  'Si me he refugiado en el Señor - Sal 11 (10)': {
     etapa: 'Precatecumenado',
     cuaresma: true
   },
-  'Sión, madre de todos los pueblos - Sal 87 (86)': {
+  'Sión, madre de todos los pueblos - Sal 87 (86)': {
     etapa: 'Precatecumenado',
     final: true
   },
@@ -636,30 +620,30 @@ const Indice = {
     cuaresma: true,
     virgen: true
   },
-  'Te estoy llamando, Señor - Sal 141 (140)': {
+  'Te estoy llamando, Señor - Sal 141 (140)': {
     etapa: 'Precatecumenado'
   },
   'Te he manifestado mi pecado - Sal 32 (31)': {
     etapa: 'Precatecumenado',
     cuaresma: true
   },
-  'Tú eres mi esperanza, Señor - Oda 29 de Salomón': {
+  'Tú eres mi esperanza, Señor - Oda 29 de Salomón': {
     etapa: 'Precatecumenado',
     adviento: true,
     cuaresma: true
   },
-  'Un retoño brota del tronco de Jesé - Is 11, 1-11': {
+  'Un retoño brota del tronco de Jesé - Is 11, 1-11': {
     etapa: 'Precatecumenado',
     pentecostes: true,
     comunion: true
   },
-  'Una gran señal - Ap 12': {
+  'Una gran señal - Ap 12': {
     etapa: 'Precatecumenado',
     adviento: true,
     pentecostes: true,
     virgen: true
   },
-  'Urí, urí, urá - Villancico': {
+  'Urí, urí, urá - Villancico': {
     etapa: 'Precatecumenado',
     niños: true
   },
@@ -667,11 +651,11 @@ const Indice = {
     etapa: 'Precatecumenado',
     niños: true
   },
-  'Ven Espíritu Santo - Secuencia de Pentecostés': {
+  'Ven Espíritu Santo - Secuencia de Pentecostés': {
     etapa: 'Precatecumenado',
     pentecostes: true
   },
-  'Ven del Líbano - Ct 4, 8ss': {
+  'Ven del Líbano - Ct 4, 8ss': {
     etapa: 'Precatecumenado',
     entrada: true
   },
@@ -684,7 +668,7 @@ const Indice = {
     etapa: 'Precatecumenado',
     pentecostes: true
   },
-  'Viene el Señor - Sal 93 (92) - Ap 1, 5-6': {
+  'Viene el Señor - Sal 93 (92) - Ap 1, 5-6': {
     etapa: 'Precatecumenado',
     adviento: true,
     pentecostes: true
@@ -705,12 +689,12 @@ const Indice = {
     etapa: 'Precatecumenado',
     niños: true
   },
-  'Yahveh, tú eres mi Dios - Is 25': {
+  'Yahveh, tú eres mi Dios - Is 25': {
     etapa: 'Precatecumenado',
     cuaresma: true,
     laudes: true
   },
-  'Yo te amo, Señor - Sal 18': {
+  'Yo te amo, Señor - Sal 18': {
     etapa: 'Precatecumenado'
   },
   'Yo vengo a reunir - Is 66, 18-21': {
@@ -723,7 +707,7 @@ const Indice = {
     pascua: true,
     laudes: true
   },
-  'Abbaá Padre - Rm 8, 15-17': {
+  'Abbaá Padre - Rm 8, 15-17': {
     etapa: 'Eleccion',
     laudes: true,
     comunion: true
@@ -744,7 +728,7 @@ const Indice = {
     pascua: true,
     comunion: true
   },
-  'El Espiritu del Senor está sobre mi - Lc 4, 18 - Is 61, 1-3': {
+  'El Espiritu del Senor está sobre mi - Lc 4, 18 - Is 61, 1-3': {
     etapa: 'Eleccion',
     laudes: true,
     final: true
@@ -803,7 +787,7 @@ const Indice = {
     cuaresma: true,
     laudes: true
   },
-  'No resistáis al mal - Mt 5, 38ss': {
+  'No resistáis al mal - Mt 5, 38ss': {
     etapa: 'Eleccion',
     comunion: true
   },

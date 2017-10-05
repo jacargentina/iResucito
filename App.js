@@ -74,7 +74,6 @@ const mapDispatchToProps = dispatch => {
         return Object.assign(Indice[s], info);
       });
       todos.sort(ordenAlfabetico);
-      console.log('Salmos cargados');
       dispatch({
         type: INITIALIZE_DONE,
         salmos: todos
