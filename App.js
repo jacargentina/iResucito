@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect, Provider } from 'react-redux';
-import { addNavigationHelpers } from 'react-navigation';
+import { BackHandler } from 'react-native';
+import { addNavigationHelpers, NavigationActions } from 'react-navigation';
 import RNFS from 'react-native-fs';
 import { Platform } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
@@ -13,6 +14,24 @@ import Indice from './Indice';
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.onBackPress = this.onBackPress.bind(this);
+  }
+
+  componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', this.onBackPress);
+  }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', this.onBackPress);
+  }
+
+  onBackPress() {
+    const { dispatch, nav } = this.props;
+    if (nav.index === 0) {
+      return false;
+    }
+    dispatch(NavigationActions.back());
+    return true;
   }
 
   componentWillMount() {
