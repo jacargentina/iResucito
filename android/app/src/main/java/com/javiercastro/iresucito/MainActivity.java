@@ -1,4 +1,4 @@
-package com.iresucito;
+package com.javiercastro.iresucito;
 
 import com.facebook.react.ReactActivity;
 import org.devio.rn.splashscreen.SplashScreen;

@@ -1,4 +1,4 @@
-package com.iresucito;
+package com.javiercastro.iresucito;
 
 import android.app.Application;
 
