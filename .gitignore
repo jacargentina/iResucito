@@ -35,6 +35,7 @@ build/
 local.properties
 *.iml
 android/app/src/main/assets/Salmos/
+android/app/**/*.apk
 
 # node.js
 #
