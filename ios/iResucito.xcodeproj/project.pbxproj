@@ -1369,7 +1369,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.javier.alejandro.castro.iResucito;
+				PRODUCT_BUNDLE_IDENTIFIER = com.javiercastro.iresucito;
 				PRODUCT_NAME = iResucito;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1396,7 +1396,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.javier.alejandro.castro.iResucito;
+				PRODUCT_BUNDLE_IDENTIFIER = com.javiercastro.iresucito;
 				PRODUCT_NAME = iResucito;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
