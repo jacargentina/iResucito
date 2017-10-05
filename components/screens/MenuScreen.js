@@ -22,7 +22,10 @@ import { SET_ABOUT_VISIBLE } from '../actions';
 const MenuScreen = props => {
   return (
     <Container>
-      <Modal animationTyper="slide" visible={props.aboutVisible}>
+      <Modal
+        animationTyper="slide"
+        visible={props.aboutVisible}
+        onRequestClose={() => props.closeAbout()}>
         <TouchableOpacity
           style={{
             flex: 1,
