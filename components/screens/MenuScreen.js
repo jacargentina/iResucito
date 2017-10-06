@@ -97,26 +97,26 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const AboutIcon = props => {
+const SettingsIcon = props => {
   return (
     <Icon
-      name="help-circle"
+      name="settings"
       style={{
         color: props.navigationOptions.headerTitleStyle.color,
         paddingRight: 10
       }}
-      onPress={() => props.showAbout()}
+      onPress={() => props.navigation.navigate('Settings')}
     />
   );
 };
 
-const ConnectedAboutIcon = connect(mapStateToProps, mapDispatchToProps)(
-  AboutIcon
+const ConnectedSettingsIcon = connect(mapStateToProps, mapDispatchToProps)(
+  SettingsIcon
 );
 
 MenuScreen.navigationOptions = props => ({
   title: 'iResucitó',
-  headerRight: <ConnectedAboutIcon {...props} />
+  headerRight: <ConnectedSettingsIcon {...props} />
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MenuScreen);

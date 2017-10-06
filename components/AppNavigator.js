@@ -1,8 +1,10 @@
 import React from 'react';
 import { StackNavigator } from 'react-navigation';
+import { Animated, Easing } from 'react-native';
 import MenuScreen from './screens/MenuScreen';
 import SalmoList from './screens/SalmoList';
 import SalmoDetail from './screens/SalmoDetail';
+import SettingsScreen from './screens/SettingsScreen';
 
 export const appNavigatorConfig = {
   navigationOptions: {
@@ -32,6 +34,9 @@ const AppNavigator = StackNavigator(
     },
     Detail: {
       screen: SalmoDetail
+    },
+    Settings: {
+      screen: SettingsScreen
     }
   },
   appNavigatorConfig
