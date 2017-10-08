@@ -9,6 +9,7 @@ import SplashScreen from 'react-native-splash-screen';
 import Store from './components/store';
 import AppNavigator from './components/AppNavigator';
 import { INITIALIZE_DONE } from './components/actions';
+import data  from './components/data';
 import Indice from './Indice';
 
 class App extends React.Component {
@@ -93,10 +94,20 @@ const mapDispatchToProps = dispatch => {
         return Object.assign(Indice[s], info);
       });
       todos.sort(ordenAlfabetico);
-      dispatch({
+      var action = {
         type: INITIALIZE_DONE,
-        salmos: todos
-      });
+        salmos: todos,
+        settings: null
+      };
+      data
+        .load({ key: 'settings' })
+        .then(settings => {
+          action.settings = settings;
+          dispatch(action);
+        })
+        .catch(err => {
+          dispatch(action);
+        });
     }
   };
 };

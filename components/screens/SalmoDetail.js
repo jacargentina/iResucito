@@ -10,6 +10,7 @@ import {
 import { Container, Content, Text } from 'native-base';
 import RNFS from 'react-native-fs';
 import DeviceInfo from 'react-native-device-info';
+import KeepAwake from 'react-native-keep-awake';
 import { SET_SALMO_CONTENT } from '../actions';
 
 var mono = Platform.OS == 'ios' ? 'Menlo-Bold' : 'monospace';
@@ -132,7 +133,16 @@ class SalmoDetail extends React.Component {
   }
 
   componentWillMount() {
+    if (this.props.keepAwake) {
+      KeepAwake.activate();
+    }
     this.props.load(this.props.salmo);
+  }
+
+  componentWillUnmount() {
+    if (this.props.keepAwake) {
+      KeepAwake.deactivate();
+    }
   }
 
   render() {
@@ -179,10 +189,12 @@ class SalmoDetail extends React.Component {
 const mapStateToProps = state => {
   var salmo = state.ui.get('salmo_detail');
   var salmo_lines = state.ui.get('salmo_lines');
+  var keepAwake = state.ui.getIn(['settings', 'keepAwake']);
   return {
     salmo: salmo,
     lines: salmo_lines || [],
-    background: state.ui.get('colors')[salmo.etapa]
+    background: state.ui.get('colors')[salmo.etapa],
+    keepAwake: keepAwake
   };
 };
 

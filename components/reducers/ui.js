@@ -4,11 +4,13 @@ import {
   INITIALIZE_DONE,
   SET_SALMOS_FILTER,
   SET_SALMO_CONTENT,
-  SET_ABOUT_VISIBLE
+  SET_ABOUT_VISIBLE,
+  SET_SETTINGS_VALUE
 } from '../actions';
 import { NavigationActions } from 'react-navigation';
 import { Map } from 'immutable';
 import { esLineaDeNotas } from '../screens/SalmoDetail';
+import data from '../data';
 
 const createBadge = (backgroundColor, color, text) => {
   return (
@@ -190,17 +192,28 @@ const initialState = Map({
   menu: menu,
   badges: badges,
   colors: colors,
-  about_visible: false
+  about_visible: false,
+  settings: Map({
+    keepAwake: true
+  })
 });
 
 export default function ui(state = initialState, action) {
   switch (action.type) {
     case INITIALIZE_DONE:
-      return state.set('salmos', action.salmos);
+      state = state.set('salmos', action.salmos);
+      if (action.settings) {
+        state = state.set('settings', Map(action.settings));
+      }
+      return state;
     case SET_SALMOS_FILTER:
       return state.set('salmos_text_filter', action.filter);
     case SET_ABOUT_VISIBLE:
       return state.set('about_visible', action.visible);
+    case SET_SETTINGS_VALUE:
+      state = state.setIn(['settings', action.key], action.value);
+      data.save({ key: 'settings', data: state.get('settings').toJS() });
+      return state;
     case SET_SALMO_CONTENT:
       // Quitar caracteres invisibles del comienzo
       var lineas = action.content.split('\n');
@@ -209,16 +222,13 @@ export default function ui(state = initialState, action) {
       }
       var lineas = lineas.filter(l => !l.includes('Page (0) Break'));
       return state.set('salmo_lines', lineas);
-      break;
     case NavigationActions.NAVIGATE:
       switch (action.routeName) {
         case 'List':
           state = state.set('salmos_text_filter', null);
           return state.set('salmos_filter', action.params.filter);
-          break;
         case 'Detail':
           return state.set('salmo_detail', action.params.salmo);
-          break;
       }
       return state;
     default:
