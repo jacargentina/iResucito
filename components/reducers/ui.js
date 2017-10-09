@@ -5,7 +5,10 @@ import {
   SET_SALMOS_FILTER,
   SET_SALMO_CONTENT,
   SET_ABOUT_VISIBLE,
-  SET_SETTINGS_VALUE
+  SET_SETTINGS_VALUE,
+  SET_SALMOS_ADD_VISIBLE,
+  SALMO_SELECTED,
+  SALMO_ADD_TO_LIST
 } from '../actions';
 import { NavigationActions } from 'react-navigation';
 import { Map } from 'immutable';
@@ -186,8 +189,9 @@ menu = menu.map(item => {
 const initialState = Map({
   salmos: null,
   salmos_text_filter: null,
+  salmos_add_visible: false,
   salmos_filter: null,
-  salmo_detail: null,
+  salmo_selected: null,
   salmo_lines: null,
   menu: menu,
   badges: badges,
@@ -208,12 +212,19 @@ export default function ui(state = initialState, action) {
       return state;
     case SET_SALMOS_FILTER:
       return state.set('salmos_text_filter', action.filter);
+    case SET_SALMOS_ADD_VISIBLE:
+      return state.set('salmos_add_visible', action.visible);
     case SET_ABOUT_VISIBLE:
       return state.set('about_visible', action.visible);
     case SET_SETTINGS_VALUE:
       state = state.setIn(['settings', action.key], action.value);
       data.save({ key: 'settings', data: state.get('settings').toJS() });
       return state;
+    case SALMO_SELECTED:
+      //TODO
+      return state;
+    case SALMO_ADD_TO_LIST:
+      return state.set('salmo_selected', action.salmo);
     case SET_SALMO_CONTENT:
       // Quitar caracteres invisibles del comienzo
       var lineas = action.content.split('\n');
@@ -228,7 +239,7 @@ export default function ui(state = initialState, action) {
           state = state.set('salmos_text_filter', null);
           return state.set('salmos_filter', action.params.filter);
         case 'Detail':
-          return state.set('salmo_detail', action.params.salmo);
+          return state.set('salmo_selected', action.params.salmo);
       }
       return state;
     default:

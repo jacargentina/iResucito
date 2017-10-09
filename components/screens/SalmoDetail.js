@@ -187,7 +187,7 @@ class SalmoDetail extends React.Component {
 }
 
 const mapStateToProps = state => {
-  var salmo = state.ui.get('salmo_detail');
+  var salmo = state.ui.get('salmo_selected');
   var salmo_lines = state.ui.get('salmo_lines');
   var keepAwake = state.ui.getIn(['settings', 'keepAwake']);
   return {

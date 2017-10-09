@@ -27,6 +27,7 @@
     "react-native-device-info": "^0.11.0",
     "react-native-fs": "github:itinance/react-native-fs",
     "react-native-keep-awake": "^2.0.5",
+    "react-native-modal": "^4.0.0",
     "react-native-splash-screen": "^3.0.1",
     "react-native-storage": "^0.2.2",
     "react-native-vector-icons": "^4.4.0",
