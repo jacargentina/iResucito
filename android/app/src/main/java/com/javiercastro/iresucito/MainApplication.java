@@ -35,6 +35,11 @@ public class MainApplication extends Application implements ReactApplication {
             new RNFSPackage()
       );
     }
+
+    @Override
+    public String getJSMainModuleName() {
+      return "index";
+    }
   };
 
   @Override
