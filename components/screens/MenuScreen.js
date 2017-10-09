@@ -15,9 +15,7 @@ import {
   Button,
   H1
 } from 'native-base';
-import DeviceInfo from 'react-native-device-info';
 import { appNavigatorConfig } from '../AppNavigator';
-import { SET_ABOUT_VISIBLE } from '../actions';
 
 const MenuScreen = props => {
   return (
