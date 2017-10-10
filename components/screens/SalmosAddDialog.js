@@ -82,8 +82,11 @@ class SalmosAddDialog extends React.Component {
                     <Icon name="list" />
                   </Left>
                   <Body>
-                    <Text>{item}</Text>
+                    <Text>{item.name}</Text>
                   </Body>
+                  <Right>
+                    <Text>{item.count}</Text>
+                  </Right>
                 </ListItem>
               );
             }}
@@ -101,15 +104,20 @@ const mapStateToProps = state => {
   var visible = state.ui.get('salmos_add_visible');
   var list_create_name = state.ui.get('list_create_name');
   var list_create_enabled = state.ui.get('list_create_enabled');
-  var lists = state.ui
-    .get('lists')
-    .keySeq()
-    .toArray();
+  var lists = state.ui.get('lists');
+  var listNames = lists.keySeq().toArray();
+  var listsWithCount = listNames.map(name => {
+    var list = lists.get(name);
+    return {
+      name: name,
+      count: list.size
+    };
+  });
   return {
     visible: visible,
     listCreateName: list_create_name,
     listCreateEnabled: list_create_enabled,
-    lists: lists
+    lists: listsWithCount
   };
 };
 

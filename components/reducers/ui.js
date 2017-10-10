@@ -13,7 +13,7 @@ import {
   LIST_ADD_SALMO
 } from '../actions';
 import { NavigationActions } from 'react-navigation';
-import { Map } from 'immutable';
+import { List, Map } from 'immutable';
 import { esLineaDeNotas } from '../screens/SalmoDetail';
 import data from '../data';
 
@@ -241,7 +241,13 @@ export default function ui(state = initialState, action) {
       var targetList = action.list
         ? action.list
         : state.get('list_create_name');
-      return state.setIn(['lists', targetList], state.get('salmo_selected'));
+      var salmo = state.get('salmo_selected');
+      /* crear la lista si aun no está presente */
+      if (!state.getIn(['lists', targetList])) {
+        state = state.setIn(['lists', targetList], List());
+      }
+      var list = state.getIn(['lists', targetList]);
+      return state.setIn(['lists', targetList, list.size], salmo.nombre);
     case SET_SALMO_CONTENT:
       // Quitar caracteres invisibles del comienzo
       var lineas = action.content.split('\n');
