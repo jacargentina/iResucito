@@ -229,7 +229,14 @@ export default function ui(state = initialState, action) {
       return state.set('salmo_selected', action.salmo);
     case LIST_CREATE_NAME:
       state = state.set('list_create_name', action.name);
-      return state.set('list_create_enabled', action.name !== '');
+      var lists = state
+        .get('lists')
+        .keySeq()
+        .toArray();
+      return state.set(
+        'list_create_enabled',
+        action.name !== '' && !lists.includes(action.name)
+      );
     case LIST_ADD_SALMO:
       var targetList = action.list
         ? action.list

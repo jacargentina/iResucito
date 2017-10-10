@@ -12,6 +12,7 @@ import {
   Content,
   Container,
   Button,
+  H1,
   H2,
   Input,
   Item,
@@ -31,6 +32,8 @@ class SalmosAddDialog extends React.Component {
   }
 
   render() {
+    var listsTitle =
+      this.props.lists.length > 0 ? 'Seleccionar lista' : 'No hay listas';
     return (
       <Modal
         isVisible={this.props.visible}
@@ -42,6 +45,7 @@ class SalmosAddDialog extends React.Component {
             backgroundColor: 'white',
             padding: 20
           }}>
+          <H1 style={{ paddingBottom: 30 }}>Agregar a Lista</H1>
           <H2 style={{ paddingBottom: 15 }}>Crear lista</H2>
           <Item style={{ marginBottom: 30 }} floatingLabel>
             <Label>Nombre</Label>
@@ -59,26 +63,26 @@ class SalmosAddDialog extends React.Component {
             onPress={() => {
               this.props.salmosAddToList();
             }}
-            enabled={this.props.listCreateEnabled}>
+            disabled={!this.props.listCreateEnabled}>
             <Text>Agregar</Text>
           </Button>
-          <H2 style={{ paddingTop: 30, paddingBottom: 15 }}>Agregar a lista</H2>
+          <H2 style={{ paddingTop: 30, paddingBottom: 15 }}>{listsTitle}</H2>
           <FlatList
             data={this.props.lists}
-            keyExtractor={item => item.name}
+            keyExtractor={item => item}
             renderItem={({ item }) => {
               return (
                 <ListItem
                   style={{ marginLeft: 0, paddingLeft: 0 }}
                   icon
                   onPress={() => {
-                    this.props.salmosAddToList(item.name);
+                    this.props.salmosAddToList(item);
                   }}>
                   <Left>
                     <Icon name="list" />
                   </Left>
                   <Body>
-                    <Text>{item.name}</Text>
+                    <Text>{item}</Text>
                   </Body>
                 </ListItem>
               );
