@@ -56,10 +56,7 @@ var styles = StyleSheet.create({
 });
 
 export function esLineaDeNotas(text) {
-  var linea = text
-    .trim()
-    .split(' ')
-    .filter(i => i.length > 0);
+  var linea = text.trim().split(' ').filter(i => i.length > 0);
   var contieneNota =
     linea.includes('Do') ||
     linea.includes('Do7') ||
@@ -89,9 +86,10 @@ export function esLineaDeNotas(text) {
 }
 
 function preprocesarLinea(text, nextText) {
+  var it = {};
   if (text.startsWith('S.')) {
     // Indicador de Salmista
-    var it = {
+    it = {
       prefijo: 'S. ',
       texto: text.substring(2).trim(),
       style: styles.lineaNormal,
@@ -99,16 +97,16 @@ function preprocesarLinea(text, nextText) {
     };
   } else if (text.startsWith('A.')) {
     // Indicador de Asamblea
-    var it = {
+    it = {
       prefijo: 'A. ',
       texto: text.substring(2).trim(),
       style: styles.lineaNormal,
       prefijoStyle: styles.prefijo
     };
   } else if (esLineaDeNotas(text)) {
-    var it = {
+    it = {
       prefijo: '   ',
-      texto: text.replace(/  /g, ' ').trimRight(),
+      texto: text.replace(/ {2}/g, ' ').trimRight(),
       style: styles.lineaNotas
     };
     if (nextText) {
@@ -118,7 +116,7 @@ function preprocesarLinea(text, nextText) {
       }
     }
   } else {
-    var it = {
+    it = {
       prefijo: '   ',
       texto: text.trimRight(),
       style: styles.lineaNormal
@@ -200,10 +198,9 @@ const mapStateToProps = state => {
 
 const loadSalmo = salmo => {
   return (dispatch, getState) => {
-    var promise =
-      Platform.OS == 'ios'
-        ? RNFS.readFile(salmo.path)
-        : RNFS.readFileAssets(salmo.path);
+    var promise = Platform.OS == 'ios'
+      ? RNFS.readFile(salmo.path)
+      : RNFS.readFileAssets(salmo.path);
     promise
       .then(content => {
         dispatch({ type: SET_SALMO_CONTENT, content });

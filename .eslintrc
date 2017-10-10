@@ -1,0 +1,39 @@
+{
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "parser": "babel-eslint",
+  "rules": {
+    'no-unused-vars': 'off',
+    indent: [2, 2, { SwitchCase: 1 }],
+    'linebreak-style': ['error', 'unix'],
+    quotes: ['error', 'single'],
+    semi: ['error', 'always'],
+    "react/jsx-closing-bracket-location": "off",
+    "react/jsx-curly-spacing": "warn",
+    "react/jsx-max-props-per-line": ["warn", {"maximum": 3}],
+    "react/jsx-no-duplicate-props": "warn",
+    "react/jsx-no-undef": "warn",
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
+    "react/jsx-wrap-multilines": "warn",
+    "react/no-direct-mutation-state": "warn",
+    "react/prop-types": "off",
+    "react/react-in-jsx-scope": "error",
+    "react/self-closing-comp": "warn",
+    "react/sort-comp": "warn",
+  },
+  "plugins": [
+    "babel",
+    "react"
+  ]
+}

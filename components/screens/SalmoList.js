@@ -100,7 +100,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   var filtrar = text => {
-    console.log('Filtar', text);
     dispatch({ type: SET_SALMOS_FILTER, filter: text });
   };
 

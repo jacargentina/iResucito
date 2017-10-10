@@ -248,7 +248,7 @@ export default function ui(state = initialState, action) {
       while (!esLineaDeNotas(lineas[0])) {
         lineas.shift();
       }
-      var lineas = lineas.filter(l => !l.includes('Page (0) Break'));
+      lineas = lineas.filter(l => !l.includes('Page (0) Break'));
       return state.set('salmo_lines', lineas);
     case NavigationActions.NAVIGATE:
       switch (action.routeName) {

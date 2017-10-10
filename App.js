@@ -18,12 +18,14 @@ class App extends React.Component {
     this.onBackPress = this.onBackPress.bind(this);
   }
 
-  componentDidMount() {
-    BackHandler.addEventListener('hardwareBackPress', this.onBackPress);
+  componentWillMount() {
+    BackHandler.removeEventListener('hardwareBackPress', this.onBackPress);
+    this.props.init();
+    SplashScreen.hide();
   }
 
-  componentWillUnmount() {
-    BackHandler.removeEventListener('hardwareBackPress', this.onBackPress);
+  componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', this.onBackPress);
   }
 
   onBackPress() {
@@ -33,11 +35,6 @@ class App extends React.Component {
     }
     dispatch(NavigationActions.back());
     return true;
-  }
-
-  componentWillMount() {
-    this.props.init();
-    SplashScreen.hide();
   }
 
   render() {

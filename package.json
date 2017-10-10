@@ -19,6 +19,10 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "babel-eslint": "^8.0.1",
+    "eslint": "^4.8.0",
+    "eslint-plugin-babel": "^4.1.2",
+    "eslint-plugin-react": "^7.4.0",
     "immutable": "^4.0.0-rc.4",
     "lodash": "^4.17.4",
     "native-base": "^2.3.2",
