@@ -20,11 +20,12 @@ import { FlatList, View } from 'react-native';
 import Modal from 'react-native-modal';
 import { _ } from 'lodash';
 import BaseScreen from './BaseScreen';
+import SalmosAddDialog from './SalmosAddDialog';
 import { appNavigatorConfig } from '../AppNavigator';
 import {
   SET_SALMOS_FILTER,
   SET_SALMOS_ADD_VISIBLE,
-  SALMO_SELECT,
+  SET_SALMOS_SELECTED,
   SALMO_ADD_TO_LIST
 } from '../actions';
 
@@ -39,51 +40,7 @@ const SalmoList = props => {
   return (
     <BaseScreen {...props} searchHandler={props.filtrarHandler}>
       {sinItems}
-      <Modal
-        isVisible={props.salmos_add_visible}
-        onBackButtonPress={() => props.closeSalmosAdd()}
-        onBackdropPress={() => props.closeSalmosAdd()}>
-        <View
-          style={{
-            flex: 1,
-            backgroundColor: 'white',
-            padding: 20
-          }}>
-          <H2 style={{ paddingBottom: 15 }}>Crear lista</H2>
-          <Item style={{ marginBottom: 30 }} floatingLabel>
-            <Label>Nombre</Label>
-            <Input />
-          </Item>
-          <Button primary block>
-            <Text onPress={() => props.closeSalmosAdd()}>Agregar</Text>
-          </Button>
-          <H2 style={{ paddingTop: 30, paddingBottom: 15 }}>Agregar a lista</H2>
-          <FlatList
-            data={props.lists}
-            keyExtractor={item => item.name}
-            renderItem={({ item }) => {
-              return (
-                <ListItem
-                  style={{ marginLeft: 0, paddingLeft: 0 }}
-                  icon
-                  onPress={() => {
-                    //todo
-                  }}>
-                  <Left>
-                    <Icon name="list" />
-                  </Left>
-                  <Body>
-                    <Text>{item.name}</Text>
-                  </Body>
-                </ListItem>
-              );
-            }}
-          />
-          <Button danger block>
-            <Text onPress={() => props.closeSalmosAdd()}>Cancelar</Text>
-          </Button>
-        </View>
-      </Modal>
+      <SalmosAddDialog />
       <FlatList
         data={props.items}
         keyExtractor={item => item.path}
@@ -96,13 +53,15 @@ const SalmoList = props => {
               avatar={props.showBadge}
               onPress={() => {
                 props.navigation.navigate('Detail', { salmo: item });
-              }}
-              onLongPress={() => props.showSalmosAdd(item)}>
+              }}>
               {badgeWrapper}
               <Body>
                 <Text>{item.titulo}</Text>
                 <Text note>{item.fuente}</Text>
               </Body>
+              <Right>
+                <Icon name="add" onPress={() => props.showSalmosAdd(item)} />
+              </Right>
             </ListItem>
           );
         }}
@@ -116,7 +75,6 @@ const mapStateToProps = state => {
   var filter = state.ui.get('salmos_filter');
   var menu = state.ui.get('menu');
   var badges = state.ui.get('badges');
-  var salmos_add_visible = state.ui.get('salmos_add_visible');
   var items = [];
   if (salmos) {
     if (filter) {
@@ -135,10 +93,8 @@ const mapStateToProps = state => {
   }
   return {
     items: items,
-    lists: [{ name: 'Prueba' }, { name: 'Segunda lista' }],
     showBadge: filter == null || !filter.hasOwnProperty('etapa'),
-    badges: badges,
-    salmos_add_visible: salmos_add_visible
+    badges: badges
   };
 };
 
@@ -151,14 +107,8 @@ const mapDispatchToProps = dispatch => {
   return {
     filtrarHandler: _.debounce(filtrar, 600),
     showSalmosAdd: salmo => {
-      dispatch({ type: SALMO_SELECT, salmo: salmo });
+      dispatch({ type: SET_SALMOS_SELECTED, salmo: salmo });
       dispatch({ type: SET_SALMOS_ADD_VISIBLE, visible: true });
-    },
-    closeSalmosAdd: () => {
-      dispatch({ type: SET_SALMOS_ADD_VISIBLE, visible: false });
-    },
-    salmosAddToList: () => {
-      dispatch({ type: SALMO_ADD_TO_LIST });
     }
   };
 };

@@ -7,8 +7,10 @@ import {
   SET_ABOUT_VISIBLE,
   SET_SETTINGS_VALUE,
   SET_SALMOS_ADD_VISIBLE,
-  SALMO_SELECTED,
-  SALMO_ADD_TO_LIST
+  SET_SALMOS_SELECTED,
+  SALMO_ADD_TO_LIST,
+  LIST_CREATE_NAME,
+  LIST_ADD_SALMO
 } from '../actions';
 import { NavigationActions } from 'react-navigation';
 import { Map } from 'immutable';
@@ -197,6 +199,9 @@ const initialState = Map({
   badges: badges,
   colors: colors,
   about_visible: false,
+  list_create_name: '',
+  list_create_enabled: false,
+  lists: Map(),
   settings: Map({
     keepAwake: true
   })
@@ -220,11 +225,16 @@ export default function ui(state = initialState, action) {
       state = state.setIn(['settings', action.key], action.value);
       data.save({ key: 'settings', data: state.get('settings').toJS() });
       return state;
-    case SALMO_SELECTED:
-      //TODO
-      return state;
-    case SALMO_ADD_TO_LIST:
+    case SET_SALMOS_SELECTED:
       return state.set('salmo_selected', action.salmo);
+    case LIST_CREATE_NAME:
+      state = state.set('list_create_name', action.name);
+      return state.set('list_create_enabled', action.name !== '');
+    case LIST_ADD_SALMO:
+      var targetList = action.list
+        ? action.list
+        : state.get('list_create_name');
+      return state.setIn(['lists', targetList], state.get('salmo_selected'));
     case SET_SALMO_CONTENT:
       // Quitar caracteres invisibles del comienzo
       var lineas = action.content.split('\n');
