@@ -14,7 +14,7 @@ import {
   LIST_ADD_SALMO
 } from '../actions';
 import { NavigationActions } from 'react-navigation';
-import { List, Map } from 'immutable';
+import { List, Map, fromJS } from 'immutable';
 import { esLineaDeNotas } from '../screens/SalmoDetail';
 import data from '../data';
 
@@ -215,6 +215,9 @@ export default function ui(state = initialState, action) {
       if (action.settings) {
         state = state.set('settings', Map(action.settings));
       }
+      if (action.lists) {
+        state = state.set('lists', fromJS(action.lists));
+      }
       return state;
     case SET_SALMOS_FILTER:
       return state.set('salmos_text_filter', action.filter);
@@ -243,6 +246,7 @@ export default function ui(state = initialState, action) {
       if (!state.getIn(['lists', listName])) {
         state = state.setIn(['lists', listName], List());
       }
+      data.save({ key: 'lists', data: state.get('lists').toJS() });
       state = state.set('list_create_name', null);
       state = state.set('list_create_enabled', false);
       return state;
@@ -252,7 +256,9 @@ export default function ui(state = initialState, action) {
       if (list.includes(salmo.nombre)) {
         return state;
       }
-      return state.setIn(['lists', action.list.name, list.size], salmo.nombre);
+      state = state.setIn(['lists', action.list.name, list.size], salmo.nombre);
+      data.save({ key: 'lists', data: state.get('lists').toJS() });
+      return state;
     case SET_SALMO_CONTENT:
       // Quitar caracteres invisibles del comienzo
       var lineas = action.content.split('\n');

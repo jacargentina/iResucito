@@ -9,7 +9,7 @@ import SplashScreen from 'react-native-splash-screen';
 import Store from './components/store';
 import AppNavigator from './components/AppNavigator';
 import { INITIALIZE_DONE } from './components/actions';
-import data  from './components/data';
+import data from './components/data';
 import Indice from './Indice';
 
 class App extends React.Component {
@@ -97,9 +97,14 @@ const mapDispatchToProps = dispatch => {
         settings: null
       };
       data
-        .load({ key: 'settings' })
-        .then(settings => {
-          action.settings = settings;
+        .getBatchData([{ key: 'settings' }, { key: 'lists' }])
+        .then(result => {
+          if (result[0]) {
+            action.settings = result[0];
+          }
+          if (result[1]) {
+            action.lists = result[1];
+          }
           dispatch(action);
         })
         .catch(err => {

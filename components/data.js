@@ -20,7 +20,14 @@ const data = new Storage({
   // the corresponding sync method will be invoked and return
   // the latest data.
   sync: {
-    // we'll talk about the details later.
+    settings(params) {
+      let { resolve } = params;
+      resolve();
+    },
+    lists(params) {
+      let { resolve } = params;
+      resolve();
+    }
   }
 });
 
