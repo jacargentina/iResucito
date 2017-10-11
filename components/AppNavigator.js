@@ -1,10 +1,11 @@
 import React from 'react';
-import { StackNavigator } from 'react-navigation';
+import { StackNavigator, TabNavigator } from 'react-navigation';
 import { Animated, Easing } from 'react-native';
 import MenuScreen from './screens/MenuScreen';
 import SalmoList from './screens/SalmoList';
 import SalmoDetail from './screens/SalmoDetail';
 import SettingsScreen from './screens/SettingsScreen';
+import ListsScreen from './screens/ListsScreen';
 
 export const appNavigatorConfig = {
   navigationOptions: {
@@ -24,10 +25,15 @@ export const appNavigatorConfig = {
   }
 };
 
+const MenuNavigator = TabNavigator({
+  Menu: { screen: MenuScreen },
+  Lists: { screen: ListsScreen }
+});
+
 const AppNavigator = StackNavigator(
   {
     Menu: {
-      screen: MenuScreen
+      screen: MenuNavigator
     },
     List: {
       screen: SalmoList

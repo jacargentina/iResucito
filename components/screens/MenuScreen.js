@@ -15,7 +15,6 @@ import {
   Button,
   H1
 } from 'native-base';
-import { appNavigatorConfig } from '../AppNavigator';
 
 const MenuScreen = props => {
   return (
@@ -65,7 +64,9 @@ const SettingsIcon = props => {
     <Icon
       name="settings"
       style={{
-        color: props.navigationOptions.headerTitleStyle.color,
+        color: props.navigationOptions.headerTitleStyle
+          ? props.navigationOptions.headerTitleStyle.color
+          : 'white',
         paddingRight: 10
       }}
       onPress={() => props.navigation.navigate('Settings')}
@@ -78,7 +79,10 @@ const ConnectedSettingsIcon = connect(mapStateToProps, mapDispatchToProps)(
 );
 
 MenuScreen.navigationOptions = props => ({
-  title: 'iResucitó',
+  title: 'Búsqueda',
+  tabBarIcon: ({ tintColor }) => {
+    return <Icon name="menu" style={{ color: tintColor }} />;
+  },
   headerRight: <ConnectedSettingsIcon {...props} />
 });
 
