@@ -6,9 +6,10 @@ import {
   SET_SALMO_CONTENT,
   SET_ABOUT_VISIBLE,
   SET_SETTINGS_VALUE,
-  SET_SALMOS_ADD_VISIBLE,
+  SET_LIST_DIALOG_VISIBLE,
   SET_SALMOS_SELECTED,
   SALMO_ADD_TO_LIST,
+  LIST_CREATE,
   LIST_CREATE_NAME,
   LIST_ADD_SALMO
 } from '../actions';
@@ -191,7 +192,7 @@ menu = menu.map(item => {
 const initialState = Map({
   salmos: null,
   salmos_text_filter: null,
-  salmos_add_visible: false,
+  list_dialog_visible: false,
   salmos_filter: null,
   salmo_selected: null,
   salmo_lines: null,
@@ -217,8 +218,6 @@ export default function ui(state = initialState, action) {
       return state;
     case SET_SALMOS_FILTER:
       return state.set('salmos_text_filter', action.filter);
-    case SET_SALMOS_ADD_VISIBLE:
-      return state.set('salmos_add_visible', action.visible);
     case SET_ABOUT_VISIBLE:
       return state.set('about_visible', action.visible);
     case SET_SETTINGS_VALUE:
@@ -227,6 +226,8 @@ export default function ui(state = initialState, action) {
       return state;
     case SET_SALMOS_SELECTED:
       return state.set('salmo_selected', action.salmo);
+    case SET_LIST_DIALOG_VISIBLE:
+      return state.set('list_dialog_visible', action.visible);
     case LIST_CREATE_NAME:
       state = state.set('list_create_name', action.name);
       var lists = state
@@ -237,17 +238,21 @@ export default function ui(state = initialState, action) {
         'list_create_enabled',
         action.name !== '' && !lists.includes(action.name)
       );
-    case LIST_ADD_SALMO:
-      var targetList = action.list
-        ? action.list
-        : state.get('list_create_name');
-      var salmo = state.get('salmo_selected');
-      /* crear la lista si aun no está presente */
-      if (!state.getIn(['lists', targetList])) {
-        state = state.setIn(['lists', targetList], List());
+    case LIST_CREATE:
+      var listName = state.get('list_create_name');
+      if (!state.getIn(['lists', listName])) {
+        state = state.setIn(['lists', listName], List());
       }
-      var list = state.getIn(['lists', targetList]);
-      return state.setIn(['lists', targetList, list.size], salmo.nombre);
+      state = state.set('list_create_name', null);
+      state = state.set('list_create_enabled', false);
+      return state;
+    case LIST_ADD_SALMO:
+      var salmo = state.get('salmo_selected');
+      var list = state.getIn(['lists', action.list.name]);
+      if (list.includes(salmo.nombre)) {
+        return state;
+      }
+      return state.setIn(['lists', action.list.name, list.size], salmo.nombre);
     case SET_SALMO_CONTENT:
       // Quitar caracteres invisibles del comienzo
       var lineas = action.content.split('\n');

@@ -24,9 +24,8 @@ import SalmosAddDialog from './SalmosAddDialog';
 import { appNavigatorConfig } from '../AppNavigator';
 import {
   SET_SALMOS_FILTER,
-  SET_SALMOS_ADD_VISIBLE,
-  SET_SALMOS_SELECTED,
-  SALMO_ADD_TO_LIST
+  SET_LIST_DIALOG_VISIBLE,
+  SET_SALMOS_SELECTED
 } from '../actions';
 
 const SalmoList = props => {
@@ -60,7 +59,13 @@ const SalmoList = props => {
                 <Text note>{item.fuente}</Text>
               </Body>
               <Right>
-                <Icon name="add" onPress={() => props.showSalmosAdd(item)} />
+                <Button
+                  small
+                  bordered
+                  rounded
+                  onPress={() => props.showSalmosAdd(item)}>
+                  <Icon name="add" />
+                </Button>
               </Right>
             </ListItem>
           );
@@ -107,7 +112,7 @@ const mapDispatchToProps = dispatch => {
     filtrarHandler: _.debounce(filtrar, 600),
     showSalmosAdd: salmo => {
       dispatch({ type: SET_SALMOS_SELECTED, salmo: salmo });
-      dispatch({ type: SET_SALMOS_ADD_VISIBLE, visible: true });
+      dispatch({ type: SET_LIST_DIALOG_VISIBLE, visible: true });
     }
   };
 };
