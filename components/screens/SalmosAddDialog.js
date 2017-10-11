@@ -12,8 +12,6 @@ import {
   Content,
   Container,
   Button,
-  H1,
-  H2,
   Input,
   Item,
   Label
@@ -43,34 +41,17 @@ class SalmosAddDialog extends React.Component {
         <View
           style={{
             flex: 1,
-            backgroundColor: 'white',
-            padding: 20
+            padding: 20,
+            backgroundColor: 'white'
           }}>
-          <H1 style={{ paddingBottom: 15 }}>Agregar a Lista</H1>
-          <Text style={{ fontStyle: 'italic', paddingBottom: 30 }}>
+          <Text note style={{ fontStyle: 'italic', marginBottom: 20 }}>
             {this.props.salmo}
           </Text>
-          <H2 style={{ paddingBottom: 15 }}>Crear lista</H2>
-          <Item style={{ marginBottom: 30 }} floatingLabel>
-            <Label>Nombre</Label>
-            <Input
-              onChangeText={text => this.props.updateNewListName(text)}
-              value={this.props.listCreateName}
-              clearButtonMode="always"
-              autoCorrect={false}
-            />
-          </Item>
-          <Button
-            primary
-            block
-            onPress={() => {
-              this.props.createNewList();
-            }}
-            disabled={!this.props.listCreateEnabled}>
-            <Text>Agregar</Text>
-          </Button>
-          <H2 style={{ paddingTop: 30, paddingBottom: 15 }}>{listsTitle}</H2>
+          <Text style={{ fontWeight: 'bold', marginBottom: 20 }}>
+            {listsTitle}
+          </Text>
           <FlatList
+            style={{ marginBottom: 20 }}
             data={this.props.lists}
             keyExtractor={item => item.name}
             renderItem={({ item }) => {
@@ -94,6 +75,28 @@ class SalmosAddDialog extends React.Component {
               );
             }}
           />
+          <Text style={{ fontWeight: 'bold', marginBottom: 20 }}>
+            Crear lista
+          </Text>
+          <Item style={{ marginBottom: 20 }} floatingLabel>
+            <Label>Nombre</Label>
+            <Input
+              onChangeText={text => this.props.updateNewListName(text)}
+              value={this.props.listCreateName}
+              clearButtonMode="always"
+              autoCorrect={false}
+            />
+          </Item>
+          <Button
+            style={{ marginBottom: 20 }}
+            primary
+            block
+            onPress={() => {
+              this.props.createNewList();
+            }}
+            disabled={!this.props.listCreateEnabled}>
+            <Text>Agregar</Text>
+          </Button>
           <Button danger block onPress={() => this.props.closeSalmosAdd()}>
             <Text>Cancelar</Text>
           </Button>
