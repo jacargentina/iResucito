@@ -24,6 +24,7 @@ import {
   LIST_CREATE,
   LIST_CREATE_NAME
 } from '../actions';
+import { getProcessedLists } from '../selectors';
 
 class SalmosAddDialog extends React.Component {
   constructor(props) {
@@ -111,21 +112,13 @@ const mapStateToProps = state => {
   var visible = state.ui.get('list_dialog_visible');
   var list_create_name = state.ui.get('list_create_name');
   var list_create_enabled = state.ui.get('list_create_enabled');
-  var lists = state.ui.get('lists');
-  var listNames = lists.keySeq().toArray();
-  var listsWithCount = listNames.map(name => {
-    var list = lists.get(name);
-    return {
-      name: name,
-      count: list.size
-    };
-  });
+  var lists = getProcessedLists(state);
   return {
     salmo: salmo ? salmo.titulo : '',
     visible: visible,
     listCreateName: list_create_name,
     listCreateEnabled: list_create_enabled,
-    lists: listsWithCount
+    lists: lists
   };
 };
 

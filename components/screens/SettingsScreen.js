@@ -101,7 +101,10 @@ const mapDispatchToProps = dispatch => {
 };
 
 SettingsScreen.navigationOptions = props => ({
-  title: 'Configuración'
+  title: 'Configuración',
+  tabBarIcon: ({ tintColor }) => {
+    return <Icon name="settings" style={{ color: tintColor }} />;
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SettingsScreen);

@@ -26,6 +26,7 @@ import {
   SET_LIST_DIALOG_VISIBLE,
   SET_SALMOS_SELECTED
 } from '../actions';
+import { getProcessedLists } from '../selectors';
 
 const ListsScreen = props => {
   if (props.items.length == 0) {
@@ -41,7 +42,7 @@ const ListsScreen = props => {
       <SalmosAddDialog />
       <FlatList
         data={props.items}
-        keyExtractor={item => item}
+        keyExtractor={item => item.name}
         renderItem={({ item }) => {
           return (
             <ListItem icon>
@@ -63,7 +64,6 @@ const ListsScreen = props => {
 };
 
 const mapStateToProps = state => {
-  var lists = state.ui.get('lists');
   // var filter = state.ui.get('salmos_filter');
   // var menu = state.ui.get('menu');
   // var badges = state.ui.get('badges');
@@ -84,7 +84,7 @@ const mapStateToProps = state => {
   //   });
   // }
   return {
-    items: lists.keySeq().toArray()
+    items: getProcessedLists(state)
   };
 };
 

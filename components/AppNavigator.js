@@ -27,7 +27,8 @@ export const appNavigatorConfig = {
 
 const MenuNavigator = TabNavigator({
   Menu: { screen: MenuScreen },
-  Lists: { screen: ListsScreen }
+  Lists: { screen: ListsScreen },
+  Settings: { screen: SettingsScreen }
 });
 
 const AppNavigator = StackNavigator(
@@ -40,9 +41,6 @@ const AppNavigator = StackNavigator(
     },
     Detail: {
       screen: SalmoDetail
-    },
-    Settings: {
-      screen: SettingsScreen
     }
   },
   appNavigatorConfig

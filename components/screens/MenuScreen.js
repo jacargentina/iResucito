@@ -59,31 +59,11 @@ const mapDispatchToProps = dispatch => {
   return {};
 };
 
-const SettingsIcon = props => {
-  return (
-    <Icon
-      name="settings"
-      style={{
-        color: props.navigationOptions.headerTitleStyle
-          ? props.navigationOptions.headerTitleStyle.color
-          : 'white',
-        paddingRight: 10
-      }}
-      onPress={() => props.navigation.navigate('Settings')}
-    />
-  );
-};
-
-const ConnectedSettingsIcon = connect(mapStateToProps, mapDispatchToProps)(
-  SettingsIcon
-);
-
 MenuScreen.navigationOptions = props => ({
   title: 'Búsqueda',
   tabBarIcon: ({ tintColor }) => {
     return <Icon name="menu" style={{ color: tintColor }} />;
-  },
-  headerRight: <ConnectedSettingsIcon {...props} />
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MenuScreen);
