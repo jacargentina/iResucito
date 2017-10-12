@@ -1,24 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { View } from 'react-native';
-
-import {
-  Container,
-  Header,
-  Title,
-  Subtitle,
-  Content,
-  Footer,
-  FooterTab,
-  Button,
-  Left,
-  Right,
-  Body,
-  Icon,
-  Text,
-  Input,
-  Item
-} from 'native-base';
+import { Container, Content, Input, Item } from 'native-base';
 
 const BaseScreen = props => {
   if (props.searchHandler) {
@@ -28,9 +11,9 @@ const BaseScreen = props => {
           <Input
             placeholder="Buscar..."
             onChangeText={text => props.searchHandler(text)}
-            returnKeyType='search'
-            autoCapitalize='none'
-            clearButtonMode='always'
+            returnKeyType="search"
+            autoCapitalize="none"
+            clearButtonMode="always"
             autoCorrect={false}
           />
         </Item>

@@ -1,6 +1,4 @@
-import React from 'react';
 import { StackNavigator, TabNavigator } from 'react-navigation';
-import { Animated, Easing } from 'react-native';
 import MenuScreen from './screens/MenuScreen';
 import SalmoList from './screens/SalmoList';
 import SalmoDetail from './screens/SalmoDetail';

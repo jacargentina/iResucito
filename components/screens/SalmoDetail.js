@@ -56,7 +56,10 @@ var styles = StyleSheet.create({
 });
 
 export function esLineaDeNotas(text) {
-  var linea = text.trim().split(' ').filter(i => i.length > 0);
+  var linea = text
+    .trim()
+    .split(' ')
+    .filter(i => i.length > 0);
   var contieneNota =
     linea.includes('Do') ||
     linea.includes('Do7') ||
@@ -197,10 +200,11 @@ const mapStateToProps = state => {
 };
 
 const loadSalmo = salmo => {
-  return (dispatch, getState) => {
-    var promise = Platform.OS == 'ios'
-      ? RNFS.readFile(salmo.path)
-      : RNFS.readFileAssets(salmo.path);
+  return dispatch => {
+    var promise =
+      Platform.OS == 'ios'
+        ? RNFS.readFile(salmo.path)
+        : RNFS.readFileAssets(salmo.path);
     promise
       .then(content => {
         dispatch({ type: SET_SALMO_CONTENT, content });

@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import {
   ListItem,
   Left,
@@ -8,9 +7,6 @@ import {
   Body,
   Icon,
   Text,
-  Badge,
-  Content,
-  Container,
   Button,
   Input,
   Item,
@@ -130,7 +126,7 @@ const mapDispatchToProps = dispatch => {
     updateNewListName: text => {
       dispatch({ type: LIST_CREATE_NAME, name: text });
     },
-    createNewList: list => {
+    createNewList: () => {
       dispatch({ type: LIST_CREATE });
     },
     salmosAddToList: list => {

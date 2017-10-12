@@ -97,6 +97,7 @@ const mapDispatchToProps = dispatch => {
         settings: null,
         lists: null
       };
+      /* eslint-disable no-console */
       localdata
         .getBatchData([{ key: 'settings' }, { key: 'lists' }])
         .then(result => {
@@ -109,10 +110,10 @@ const mapDispatchToProps = dispatch => {
           dispatch(action);
         })
         .catch(err => {
+          console.log('error loading from localdata', err);
           dispatch(action);
         });
       clouddata.load({ key: 'lists' }).then(res => {
-        /* eslint-disable no-console */
         console.log('loaded from cloud', res);
       });
     }
@@ -123,7 +124,7 @@ const AppWithNavigationState = connect(mapStateToProps, mapDispatchToProps)(
   App
 );
 
-const Root = props => {
+const Root = () => {
   return (
     <Provider store={Store}>
       <AppWithNavigationState />

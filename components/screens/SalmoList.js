@@ -1,23 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {
-  ListItem,
-  Left,
-  Right,
-  Body,
-  Icon,
-  Text,
-  Badge,
-  Content,
-  Container,
-  Button,
-  H2,
-  Input,
-  Item,
-  Label
-} from 'native-base';
-import { FlatList, View } from 'react-native';
-import Modal from 'react-native-modal';
+import { ListItem, Left, Right, Body, Icon, Text, Button } from 'native-base';
+import { FlatList } from 'react-native';
 import { _ } from 'lodash';
 import BaseScreen from './BaseScreen';
 import SalmosAddDialog from './SalmosAddDialog';
@@ -78,7 +62,6 @@ const SalmoList = props => {
 const mapStateToProps = state => {
   var salmos = state.ui.get('salmos');
   var filter = state.ui.get('salmos_filter');
-  var menu = state.ui.get('menu');
   var badges = state.ui.get('badges');
   var items = [];
   if (salmos) {

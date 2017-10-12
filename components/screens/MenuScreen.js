@@ -2,18 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { FlatList } from 'react-native';
 import {
-  Content,
-  Header,
-  Title,
   Container,
   ListItem,
   Left,
-  Right,
   Body,
   Text,
   Icon,
-  Button,
-  H1
 } from 'native-base';
 
 const MenuScreen = props => {
@@ -55,6 +49,7 @@ const mapStateToProps = state => {
   };
 };
 
+/* eslint-disable no-unused-vars */
 const mapDispatchToProps = dispatch => {
   return {};
 };

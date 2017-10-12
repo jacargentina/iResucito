@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { ScrollView, Modal, TouchableOpacity, Image } from 'react-native';
+import { Modal, TouchableOpacity, Image } from 'react-native';
 import {
   Container,
   Content,
@@ -12,8 +12,7 @@ import {
   Icon,
   Right,
   Switch,
-  H1,
-  Button
+  H1
 } from 'native-base';
 import DeviceInfo from 'react-native-device-info';
 import { SET_SETTINGS_VALUE, SET_ABOUT_VISIBLE } from '../actions';
@@ -100,7 +99,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-SettingsScreen.navigationOptions = props => ({
+SettingsScreen.navigationOptions = () => ({
   title: 'Configuración',
   tabBarIcon: ({ tintColor }) => {
     return <Icon name="settings" style={{ color: tintColor }} />;

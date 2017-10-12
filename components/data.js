@@ -67,7 +67,7 @@ class CloudData {
   save(item) {
     return iCloudStorage
       .setItem(item.key, JSON.stringify(item.data))
-      .then(res => {
+      .then(() => {
         console.log('saved to icloud');
       })
       .catch(err => {
