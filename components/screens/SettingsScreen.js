@@ -1,8 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {
-  Container,
-  Content,
   List,
   ListItem,
   Left,
@@ -13,11 +11,16 @@ import {
   Switch
 } from 'native-base';
 import { SET_SETTINGS_VALUE, SET_ABOUT_VISIBLE } from '../actions';
+import BaseScreen from './BaseScreen';
 
-const SettingsScreen = props => {
-  return (
-    <Container>
-      <Content>
+class SettingsScreen extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <BaseScreen>
         <List>
           <ListItem>
             <Body>
@@ -28,9 +31,9 @@ const SettingsScreen = props => {
             </Body>
             <Right>
               <Switch
-                value={props.keepAwake}
+                value={this.props.keepAwake}
                 onValueChange={checked =>
-                  props.updateSetting('keepAwake', checked)}
+                  this.props.updateSetting('keepAwake', checked)}
               />
             </Right>
           </ListItem>
@@ -39,14 +42,14 @@ const SettingsScreen = props => {
               <Icon name="help-circle" />
             </Left>
             <Body>
-              <Text onPress={() => props.showAbout()}>Acerca de</Text>
+              <Text onPress={() => this.props.showAbout()}>Acerca de</Text>
             </Body>
           </ListItem>
         </List>
-      </Content>
-    </Container>
-  );
-};
+      </BaseScreen>
+    );
+  }
+}
 const mapStateToProps = state => {
   var set = state.ui.get('settings');
   return {

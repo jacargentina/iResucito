@@ -16,6 +16,7 @@ class AcercaDe extends React.Component {
   render() {
     return (
       <Modal
+        animationType="slide"
         visible={this.props.aboutVisible}
         onBackButtonPress={() => this.props.closeAbout()}
         onBackdropPress={() => this.props.closeAbout()}>
