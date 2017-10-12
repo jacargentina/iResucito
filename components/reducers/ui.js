@@ -9,6 +9,7 @@ import {
   SET_SETTINGS_VALUE,
   SET_LIST_CHOOSER_VISIBLE,
   SET_LIST_ADD_VISIBLE,
+  SET_LIST_CREATE_NEW,
   SET_SALMOS_SELECTED,
   LIST_CREATE,
   LIST_CREATE_NAME,
@@ -194,8 +195,6 @@ menu = menu.map(item => {
 const initialState = Map({
   salmos: null,
   salmos_text_filter: null,
-  list_chooser_visible: false,
-  list_add_visible: false,
   salmos_filter: null,
   salmo_selected: null,
   salmo_lines: null,
@@ -205,6 +204,9 @@ const initialState = Map({
   about_visible: false,
   list_create_name: '',
   list_create_enabled: false,
+  list_chooser_visible: false,
+  list_add_visible: false,
+  list_create_new: false,
   lists: Map(),
   settings: Map({
     keepAwake: true
@@ -245,6 +247,8 @@ export default function ui(state = initialState, action) {
       return state.set('list_chooser_visible', action.visible);
     case SET_LIST_ADD_VISIBLE:
       return state.set('list_add_visible', action.visible);
+    case SET_LIST_CREATE_NEW:
+      return state.set('list_create_new', action.value);
     case LIST_CREATE_NAME:
       state = state.set('list_create_name', action.name);
       var lists = state
@@ -253,7 +257,7 @@ export default function ui(state = initialState, action) {
         .toArray();
       return state.set(
         'list_create_enabled',
-        action.name !== '' && !lists.includes(action.name)
+        action.name && action.name.trim() !== '' && !lists.includes(action.name)
       );
     case LIST_CREATE:
       var listName = state.get('list_create_name');

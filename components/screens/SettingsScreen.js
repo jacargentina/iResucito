@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Modal, TouchableOpacity, Image } from 'react-native';
 import {
   Container,
   Content,
@@ -11,42 +10,13 @@ import {
   Text,
   Icon,
   Right,
-  Switch,
-  H1
+  Switch
 } from 'native-base';
-import DeviceInfo from 'react-native-device-info';
 import { SET_SETTINGS_VALUE, SET_ABOUT_VISIBLE } from '../actions';
 
 const SettingsScreen = props => {
   return (
     <Container>
-      <Modal
-        animationTyper="slide"
-        visible={props.aboutVisible}
-        onRequestClose={() => props.closeAbout()}>
-        <TouchableOpacity
-          style={{
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'space-around'
-          }}
-          onPress={() => props.closeAbout()}>
-          <Image
-            source={require('../../img/cristo.jpg')}
-            style={{ width: 300, height: 400 }}
-            resizeMode="contain"
-          />
-          <H1 style={{ color: 'red', fontWeight: 'bold', fontStyle: 'italic' }}>
-            {require('../../app.json').displayName}
-          </H1>
-          <Text style={{ textAlign: 'center' }}>
-            Versión: {DeviceInfo.getReadableVersion()}
-            {'\n'}
-            <Icon name="contact" style={{ fontSize: 16 }} active /> Javier
-            Castro, 2017
-          </Text>
-        </TouchableOpacity>
-      </Modal>
       <Content>
         <List>
           <ListItem>
@@ -92,9 +62,6 @@ const mapDispatchToProps = dispatch => {
     },
     showAbout: () => {
       dispatch({ type: SET_ABOUT_VISIBLE, visible: true });
-    },
-    closeAbout: () => {
-      dispatch({ type: SET_ABOUT_VISIBLE, visible: false });
     }
   };
 };

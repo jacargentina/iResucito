@@ -1,18 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { FlatList } from 'react-native';
-import {
-  Container,
-  ListItem,
-  Left,
-  Body,
-  Text,
-  Icon,
-} from 'native-base';
+import { ListItem, Left, Body, Text, Icon } from 'native-base';
+import BaseScreen from './BaseScreen';
+import AcercaDe from './AcercaDe';
 
 const MenuScreen = props => {
   return (
-    <Container>
+    <BaseScreen>
+      <AcercaDe />
       <FlatList
         data={props.screens}
         keyExtractor={item => item.title}
@@ -39,7 +35,7 @@ const MenuScreen = props => {
           );
         }}
       />
-    </Container>
+    </BaseScreen>
   );
 };
 
@@ -57,7 +53,7 @@ const mapDispatchToProps = dispatch => {
 MenuScreen.navigationOptions = props => ({
   title: 'Búsqueda',
   tabBarIcon: ({ tintColor }) => {
-    return <Icon name="menu" style={{ color: tintColor }} />;
+    return <Icon name="search" style={{ color: tintColor }} />;
   }
 });
 

@@ -18,7 +18,7 @@ const ListScreen = props => {
     );
   }
   return (
-    <BaseScreen {...props}>
+    <BaseScreen>
       {sinItems}
       <ListAddDialog />
       <FlatList
@@ -92,7 +92,8 @@ const AddList = props => {
     <Icon
       name="add"
       style={{
-        marginRight: 10,
+        marginTop: 4,
+        marginRight: 12,
         color: appNavigatorConfig.navigationOptions.headerTitleStyle.color
       }}
       onPress={() => props.listAdd()}
