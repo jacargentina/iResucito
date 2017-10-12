@@ -4,11 +4,11 @@ import { ListItem, Left, Right, Body, Icon, Text, Button } from 'native-base';
 import { FlatList } from 'react-native';
 import { _ } from 'lodash';
 import BaseScreen from './BaseScreen';
-import SalmosAddDialog from './SalmosAddDialog';
+import ListChooser from './ListChooser';
 import { appNavigatorConfig } from '../AppNavigator';
 import {
   SET_SALMOS_FILTER,
-  SET_LIST_DIALOG_VISIBLE,
+  SET_LIST_CHOOSER_VISIBLE,
   SET_SALMOS_SELECTED
 } from '../actions';
 
@@ -23,7 +23,7 @@ const SalmoList = props => {
   return (
     <BaseScreen {...props} searchHandler={props.filtrarHandler}>
       {sinItems}
-      <SalmosAddDialog />
+      <ListChooser />
       <FlatList
         data={props.items}
         keyExtractor={item => item.path}
@@ -95,7 +95,7 @@ const mapDispatchToProps = dispatch => {
     filtrarHandler: _.debounce(filtrar, 600),
     showSalmosAdd: salmo => {
       dispatch({ type: SET_SALMOS_SELECTED, salmo: salmo });
-      dispatch({ type: SET_LIST_DIALOG_VISIBLE, visible: true });
+      dispatch({ type: SET_LIST_CHOOSER_VISIBLE, visible: true });
     }
   };
 };

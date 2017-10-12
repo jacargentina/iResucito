@@ -1,28 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {
-  ListItem,
-  Left,
-  Right,
-  Body,
-  Icon,
-  Text,
-  Button,
-  Input,
-  Item,
-  Label
-} from 'native-base';
+import { ListItem, Left, Right, Body, Icon, Text, Button } from 'native-base';
 import { FlatList, View } from 'react-native';
 import Modal from 'react-native-modal';
-import {
-  SET_LIST_DIALOG_VISIBLE,
-  LIST_ADD_SALMO,
-  LIST_CREATE,
-  LIST_CREATE_NAME
-} from '../actions';
+import { SET_LIST_CHOOSER_VISIBLE, LIST_ADD_SALMO } from '../actions';
 import { getProcessedLists } from '../selectors';
+import ListAdd from './ListAdd';
 
-class SalmosAddDialog extends React.Component {
+class ListChooser extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -72,28 +57,7 @@ class SalmosAddDialog extends React.Component {
               );
             }}
           />
-          <Text style={{ fontWeight: 'bold', marginBottom: 20 }}>
-            Crear lista
-          </Text>
-          <Item style={{ marginBottom: 20 }} floatingLabel>
-            <Label>Nombre</Label>
-            <Input
-              onChangeText={text => this.props.updateNewListName(text)}
-              value={this.props.listCreateName}
-              clearButtonMode="always"
-              autoCorrect={false}
-            />
-          </Item>
-          <Button
-            style={{ marginBottom: 20 }}
-            primary
-            block
-            onPress={() => {
-              this.props.createNewList();
-            }}
-            disabled={!this.props.listCreateEnabled}>
-            <Text>Agregar</Text>
-          </Button>
+          <ListAdd {...this.props} />
           <Button danger block onPress={() => this.props.closeSalmosAdd()}>
             <Text>Cancelar</Text>
           </Button>
@@ -104,16 +68,12 @@ class SalmosAddDialog extends React.Component {
 }
 
 const mapStateToProps = state => {
+  var visible = state.ui.get('list_chooser_visible');
   var salmo = state.ui.get('salmo_selected');
-  var visible = state.ui.get('list_dialog_visible');
-  var list_create_name = state.ui.get('list_create_name');
-  var list_create_enabled = state.ui.get('list_create_enabled');
   var lists = getProcessedLists(state);
   return {
-    salmo: salmo ? salmo.titulo : '',
     visible: visible,
-    listCreateName: list_create_name,
-    listCreateEnabled: list_create_enabled,
+    salmo: salmo ? salmo.titulo : '',
     lists: lists
   };
 };
@@ -121,19 +81,13 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     closeSalmosAdd: () => {
-      dispatch({ type: SET_LIST_DIALOG_VISIBLE, visible: false });
-    },
-    updateNewListName: text => {
-      dispatch({ type: LIST_CREATE_NAME, name: text });
-    },
-    createNewList: () => {
-      dispatch({ type: LIST_CREATE });
+      dispatch({ type: SET_LIST_CHOOSER_VISIBLE, visible: false });
     },
     salmosAddToList: list => {
       dispatch({ type: LIST_ADD_SALMO, list: list });
-      dispatch({ type: SET_LIST_DIALOG_VISIBLE, visible: false });
+      dispatch({ type: SET_LIST_CHOOSER_VISIBLE, visible: false });
     }
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SalmosAddDialog);
+export default connect(mapStateToProps, mapDispatchToProps)(ListChooser);

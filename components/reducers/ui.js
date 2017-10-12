@@ -7,11 +7,13 @@ import {
   SET_SALMO_CONTENT,
   SET_ABOUT_VISIBLE,
   SET_SETTINGS_VALUE,
-  SET_LIST_DIALOG_VISIBLE,
+  SET_LIST_CHOOSER_VISIBLE,
+  SET_LIST_ADD_VISIBLE,
   SET_SALMOS_SELECTED,
   LIST_CREATE,
   LIST_CREATE_NAME,
-  LIST_ADD_SALMO
+  LIST_ADD_SALMO,
+  LIST_DELETE
 } from '../actions';
 import { NavigationActions } from 'react-navigation';
 import { List, Map, fromJS } from 'immutable';
@@ -192,7 +194,8 @@ menu = menu.map(item => {
 const initialState = Map({
   salmos: null,
   salmos_text_filter: null,
-  list_dialog_visible: false,
+  list_chooser_visible: false,
+  list_add_visible: false,
   salmos_filter: null,
   salmo_selected: null,
   salmo_lines: null,
@@ -238,8 +241,10 @@ export default function ui(state = initialState, action) {
       return state;
     case SET_SALMOS_SELECTED:
       return state.set('salmo_selected', action.salmo);
-    case SET_LIST_DIALOG_VISIBLE:
-      return state.set('list_dialog_visible', action.visible);
+    case SET_LIST_CHOOSER_VISIBLE:
+      return state.set('list_chooser_visible', action.visible);
+    case SET_LIST_ADD_VISIBLE:
+      return state.set('list_add_visible', action.visible);
     case LIST_CREATE_NAME:
       state = state.set('list_create_name', action.name);
       var lists = state
@@ -266,6 +271,10 @@ export default function ui(state = initialState, action) {
         return state;
       }
       state = state.setIn(['lists', action.list.name, list.size], salmo.nombre);
+      saveLists(state);
+      return state;
+    case LIST_DELETE:
+      state = state.deleteIn(['lists', action.list.name]);
       saveLists(state);
       return state;
     case SET_SALMO_CONTENT:

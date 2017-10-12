@@ -3,7 +3,7 @@ import MenuScreen from './screens/MenuScreen';
 import SalmoList from './screens/SalmoList';
 import SalmoDetail from './screens/SalmoDetail';
 import SettingsScreen from './screens/SettingsScreen';
-import ListsScreen from './screens/ListsScreen';
+import ListScreen from './screens/ListScreen';
 
 export const appNavigatorConfig = {
   navigationOptions: {
@@ -25,7 +25,7 @@ export const appNavigatorConfig = {
 
 const MenuNavigator = TabNavigator({
   Menu: { screen: MenuScreen },
-  Lists: { screen: ListsScreen },
+  Lists: { screen: ListScreen },
   Settings: { screen: SettingsScreen }
 });
 
