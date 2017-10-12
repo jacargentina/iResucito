@@ -1,7 +1,7 @@
 import Storage from 'react-native-storage';
 import { AsyncStorage } from 'react-native';
 
-const data = new Storage({
+export const localdata = new Storage({
   // maximum capacity, default 1000
   size: 1000,
 
@@ -31,4 +31,49 @@ const data = new Storage({
   }
 });
 
-export default data;
+import { NativeEventEmitter } from 'react-native';
+import iCloudStorage from 'react-native-icloudstore';
+
+class CloudData {
+  constructor() {
+    this.eventEmitter = new NativeEventEmitter(iCloudStorage);
+    this.eventEmitter.addListener(
+      'iCloudStoreDidChangeRemotely',
+      this.loadData
+    );
+  }
+
+  loadData(userInfo) {
+    const changedKeys = userInfo.changedKeys;
+    if (changedKeys != null && changedKeys.includes('lists')) {
+      iCloudStorage.getItem('lists').then(result => {
+        /* eslint-disable no-console */
+        console.log('lists on icloud are loaded!', result);
+      });
+    }
+  }
+
+  load(item) {
+    return iCloudStorage
+      .getItem(item.key)
+      .then(res => {
+        return JSON.parse(res);
+      })
+      .catch(err => {
+        console.log('error loading from icloud', err);
+      });
+  }
+
+  save(item) {
+    return iCloudStorage
+      .setItem(item.key, JSON.stringify(item.data))
+      .then(res => {
+        console.log('saved to icloud');
+      })
+      .catch(err => {
+        console.log('erroir saving to icloud', err);
+      });
+  }
+}
+
+export const clouddata = new CloudData();

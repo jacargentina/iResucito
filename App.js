@@ -9,7 +9,7 @@ import SplashScreen from 'react-native-splash-screen';
 import Store from './components/store';
 import AppNavigator from './components/AppNavigator';
 import { INITIALIZE_DONE } from './components/actions';
-import data from './components/data';
+import { localdata, clouddata } from './components/data';
 import Indice from './Indice';
 
 class App extends React.Component {
@@ -94,9 +94,10 @@ const mapDispatchToProps = dispatch => {
       var action = {
         type: INITIALIZE_DONE,
         salmos: todos,
-        settings: null
+        settings: null,
+        lists: null
       };
-      data
+      localdata
         .getBatchData([{ key: 'settings' }, { key: 'lists' }])
         .then(result => {
           if (result[0]) {
@@ -110,6 +111,10 @@ const mapDispatchToProps = dispatch => {
         .catch(err => {
           dispatch(action);
         });
+      clouddata.load({ key: 'lists' }).then(res => {
+        /* eslint-disable no-console */
+        console.log('loaded from cloud', res);
+      });
     }
   };
 };

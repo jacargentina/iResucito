@@ -1,4 +1,5 @@
 import React from 'react';
+import { Platform } from 'react-native';
 import { Badge, Text } from 'native-base';
 import {
   INITIALIZE_DONE,
@@ -16,7 +17,7 @@ import {
 import { NavigationActions } from 'react-navigation';
 import { List, Map, fromJS } from 'immutable';
 import { esLineaDeNotas } from '../screens/SalmoDetail';
-import data from '../data';
+import { localdata, clouddata } from '../data';
 
 const createBadge = (backgroundColor, color, text) => {
   return (
@@ -208,6 +209,15 @@ const initialState = Map({
   })
 });
 
+const saveLists = state => {
+  var listsJS = state.get('lists').toJS();
+  var item = { key: 'lists', data: listsJS };
+  localdata.save(item);
+  if (Platform.OS == 'ios') {
+    clouddata.save(item);
+  }
+};
+
 export default function ui(state = initialState, action) {
   switch (action.type) {
     case INITIALIZE_DONE:
@@ -225,7 +235,7 @@ export default function ui(state = initialState, action) {
       return state.set('about_visible', action.visible);
     case SET_SETTINGS_VALUE:
       state = state.setIn(['settings', action.key], action.value);
-      data.save({ key: 'settings', data: state.get('settings').toJS() });
+      localdata.save({ key: 'settings', data: state.get('settings').toJS() });
       return state;
     case SET_SALMOS_SELECTED:
       return state.set('salmo_selected', action.salmo);
@@ -246,7 +256,7 @@ export default function ui(state = initialState, action) {
       if (!state.getIn(['lists', listName])) {
         state = state.setIn(['lists', listName], List());
       }
-      data.save({ key: 'lists', data: state.get('lists').toJS() });
+      saveLists(state);
       state = state.set('list_create_name', null);
       state = state.set('list_create_enabled', false);
       return state;
@@ -257,7 +267,7 @@ export default function ui(state = initialState, action) {
         return state;
       }
       state = state.setIn(['lists', action.list.name, list.size], salmo.nombre);
-      data.save({ key: 'lists', data: state.get('lists').toJS() });
+      saveLists(state);
       return state;
     case SET_SALMO_CONTENT:
       // Quitar caracteres invisibles del comienzo

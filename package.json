@@ -30,6 +30,7 @@
     "react-native": "^0.49.3",
     "react-native-device-info": "^0.11.0",
     "react-native-fs": "github:itinance/react-native-fs",
+    "react-native-icloudstore": "^0.9.0",
     "react-native-keep-awake": "^2.0.5",
     "react-native-modal": "^4.0.0",
     "react-native-splash-screen": "^3.0.1",
