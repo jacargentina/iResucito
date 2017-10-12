@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Text } from 'native-base';
+import { Text, Icon } from 'native-base';
 import { Alert, FlatList } from 'react-native';
 import Swipeout from 'react-native-swipeout';
 import BaseScreen from './BaseScreen';
-import { LIST_REMOVE_SALMO } from '../actions';
 import SalmoListItem from './SalmoListItem';
+import { LIST_REMOVE_SALMO, LIST_SHARE } from '../actions';
 import { getSalmosFromList } from '../selectors';
+import { appNavigatorConfig } from '../AppNavigator';
 
 const ListDetail = props => {
   if (props.items.length == 0) {
@@ -72,14 +73,35 @@ const mapDispatchToProps = dispatch => {
           style: 'cancel'
         }
       ]);
+    },
+    listShare: (list, items) => {
+      dispatch({ type: LIST_SHARE, list: list, items: items });
     }
   };
 };
 
+const ShareList = props => {
+  return (
+    <Icon
+      name="share"
+      style={{
+        marginTop: 4,
+        marginRight: 12,
+        color: appNavigatorConfig.navigationOptions.headerTitleStyle.color
+      }}
+      onPress={() =>
+        props.listShare(props.navigation.state.params.list, props.items)}
+    />
+  );
+};
+
+const ShareListButton = connect(mapStateToProps, mapDispatchToProps)(ShareList);
+
 ListDetail.navigationOptions = props => ({
   title: props.navigation.state.params
     ? props.navigation.state.params.list.name
-    : 'Lista'
+    : 'Lista',
+  headerRight: <ShareListButton {...props} />
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListDetail);

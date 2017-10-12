@@ -1,4 +1,4 @@
-import { Platform } from 'react-native';
+import { Platform, Share } from 'react-native';
 import {
   INITIALIZE_DONE,
   SET_SALMOS_FILTER,
@@ -13,7 +13,8 @@ import {
   LIST_CREATE_NAME,
   LIST_ADD_SALMO,
   LIST_REMOVE_SALMO,
-  LIST_DELETE
+  LIST_DELETE,
+  LIST_SHARE
 } from '../actions';
 import { NavigationActions } from 'react-navigation';
 import { List, Map, fromJS } from 'immutable';
@@ -111,6 +112,19 @@ export default function ui(state = initialState, action) {
     case LIST_DELETE:
       state = state.deleteIn(['lists', action.list.name]);
       saveLists(state);
+      return state;
+    case LIST_SHARE:
+      var textItems = action.items.map((item, i) => {
+        return `${i + 1}. ${item.titulo}`;
+      });
+      Share.share(
+        {
+          message: textItems.join('\n'),
+          title: `Lista iResucitó ${action.list.name}`,
+          url: undefined
+        },
+        { dialogTitle: 'Compartir lista iResucitó' }
+      );
       return state;
     case SET_SALMO_CONTENT:
       // Quitar caracteres invisibles del comienzo

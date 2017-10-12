@@ -12,3 +12,4 @@ export const LIST_CREATE = 'LIST_CREATE';
 export const LIST_ADD_SALMO = 'LIST_ADD_SALMO';
 export const LIST_REMOVE_SALMO = 'LIST_REMOVE_SALMO';
 export const LIST_DELETE = 'LIST_DELETE';
+export const LIST_SHARE = 'LIST_SHARE';
