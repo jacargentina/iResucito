@@ -68,8 +68,9 @@ class ListAddDialog extends React.Component {
                 marginRight: 5,
                 alignSelf: 'flex-end'
               }}
-              primary
+              bordered
               block
+              primary
               onPress={() => this.props.createNewList()}
               disabled={!this.props.listCreateEnabled}>
               <Text>Agregar</Text>
@@ -80,8 +81,9 @@ class ListAddDialog extends React.Component {
                 marginLeft: 5,
                 alignSelf: 'flex-end'
               }}
-              danger
+              bordered
               block
+              danger
               onPress={() => this.props.closeListAdd()}>
               <Text>Cancelar</Text>
             </Button>

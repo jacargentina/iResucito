@@ -12,6 +12,7 @@ import RNFS from 'react-native-fs';
 import DeviceInfo from 'react-native-device-info';
 import KeepAwake from 'react-native-keep-awake';
 import { SET_SALMO_CONTENT } from '../actions';
+import colors from '../colors';
 
 var mono = Platform.OS == 'ios' ? 'Menlo-Bold' : 'monospace';
 var isTablet = DeviceInfo.isTablet();
@@ -194,7 +195,7 @@ const mapStateToProps = state => {
   return {
     salmo: salmo,
     lines: salmo_lines || [],
-    background: state.ui.get('colors')[salmo.etapa],
+    background: colors[salmo.etapa],
     keepAwake: keepAwake
   };
 };

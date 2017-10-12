@@ -79,8 +79,9 @@ class ListChooser extends React.Component {
                 marginRight: 5,
                 alignSelf: 'flex-end'
               }}
-              primary
+              bordered
               block
+              primary
               onPress={() => this.props.closeAndAddToNewList()}>
               <Text>Crear</Text>
             </Button>
@@ -90,8 +91,9 @@ class ListChooser extends React.Component {
                 marginLeft: 5,
                 alignSelf: 'flex-end'
               }}
-              danger
+              bordered
               block
+              danger
               onPress={() => this.props.closeSalmosAdd()}>
               <Text>Cancelar</Text>
             </Button>
@@ -131,6 +133,7 @@ const mapDispatchToProps = dispatch => {
     openNewDialog: listCreateNew => {
       if (listCreateNew) {
         dispatch({ type: SET_LIST_ADD_VISIBLE, visible: true });
+        dispatch({ type: SET_LIST_CREATE_NEW, value: false });
       }
     }
   };

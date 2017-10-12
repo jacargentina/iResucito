@@ -40,7 +40,13 @@ const ListScreen = props => {
               right={swipeoutBtns}
               backgroundColor="white"
               autoClose={true}>
-              <ListItem icon>
+              <ListItem
+                icon
+                onPress={() => {
+                  props.navigation.navigate('ListDetail', {
+                    list: item
+                  });
+                }}>
                 <Left>
                   <Icon name="list" />
                 </Left>

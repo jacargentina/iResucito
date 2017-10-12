@@ -4,13 +4,14 @@ import { FlatList } from 'react-native';
 import { ListItem, Left, Body, Text, Icon } from 'native-base';
 import BaseScreen from './BaseScreen';
 import AcercaDe from './AcercaDe';
+import menu from '../menu';
 
 const MenuScreen = props => {
   return (
     <BaseScreen>
       <AcercaDe />
       <FlatList
-        data={props.screens}
+        data={menu}
         keyExtractor={item => item.title}
         renderItem={({ item }) => {
           if (item.divider) {
@@ -39,22 +40,11 @@ const MenuScreen = props => {
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    screens: state.ui.get('menu')
-  };
-};
-
-/* eslint-disable no-unused-vars */
-const mapDispatchToProps = dispatch => {
-  return {};
-};
-
-MenuScreen.navigationOptions = props => ({
+MenuScreen.navigationOptions = () => ({
   title: 'Búsqueda',
   tabBarIcon: ({ tintColor }) => {
     return <Icon name="search" style={{ color: tintColor }} />;
   }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(MenuScreen);
+export default connect()(MenuScreen);

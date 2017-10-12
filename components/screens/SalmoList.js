@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { ListItem, Left, Right, Body, Icon, Text, Button } from 'native-base';
+import { Icon, Text, Button } from 'native-base';
 import { FlatList } from 'react-native';
 import { _ } from 'lodash';
 import BaseScreen from './BaseScreen';
 import ListChooser from './ListChooser';
+import SalmoListItem from './SalmoListItem';
 import { appNavigatorConfig } from '../AppNavigator';
 import {
   SET_SALMOS_FILTER,
@@ -28,30 +29,23 @@ const SalmoList = props => {
         data={props.items}
         keyExtractor={item => item.path}
         renderItem={({ item }) => {
-          if (props.showBadge) {
-            var badgeWrapper = <Left>{props.badges[item.etapa]}</Left>;
-          }
+          var buttons = (
+            <Button
+              small
+              bordered
+              rounded
+              onPress={() => props.showSalmosAdd(item)}>
+              <Icon name="add" />
+            </Button>
+          );
           return (
-            <ListItem
-              avatar={props.showBadge}
-              onPress={() => {
-                props.navigation.navigate('Detail', { salmo: item });
-              }}>
-              {badgeWrapper}
-              <Body>
-                <Text>{item.titulo}</Text>
-                <Text note>{item.fuente}</Text>
-              </Body>
-              <Right>
-                <Button
-                  small
-                  bordered
-                  rounded
-                  onPress={() => props.showSalmosAdd(item)}>
-                  <Icon name="add" />
-                </Button>
-              </Right>
-            </ListItem>
+            <SalmoListItem
+              key={item.nombre}
+              showBadge={props.showBadge}
+              salmo={item}
+              rightButtons={buttons}
+              navigation={props.navigation}
+            />
           );
         }}
       />
@@ -62,7 +56,6 @@ const SalmoList = props => {
 const mapStateToProps = state => {
   var salmos = state.ui.get('salmos');
   var filter = state.ui.get('salmos_filter');
-  var badges = state.ui.get('badges');
   var items = [];
   if (salmos) {
     if (filter) {
@@ -81,8 +74,7 @@ const mapStateToProps = state => {
   }
   return {
     items: items,
-    showBadge: filter == null || !filter.hasOwnProperty('etapa'),
-    badges: badges
+    showBadge: filter == null || !filter.hasOwnProperty('etapa')
   };
 };
 

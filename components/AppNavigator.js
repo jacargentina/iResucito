@@ -4,6 +4,7 @@ import SalmoList from './screens/SalmoList';
 import SalmoDetail from './screens/SalmoDetail';
 import SettingsScreen from './screens/SettingsScreen';
 import ListScreen from './screens/ListScreen';
+import ListDetail from './screens/ListDetail';
 
 export const appNavigatorConfig = {
   navigationOptions: {
@@ -34,11 +35,14 @@ const AppNavigator = StackNavigator(
     Menu: {
       screen: MenuNavigator
     },
-    List: {
+    SalmoList: {
       screen: SalmoList
     },
-    Detail: {
+    SalmoDetail: {
       screen: SalmoDetail
+    },
+    ListDetail: {
+      screen: ListDetail
     }
   },
   appNavigatorConfig
