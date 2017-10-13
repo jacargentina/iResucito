@@ -24,11 +24,20 @@ export const appNavigatorConfig = {
   }
 };
 
-const MenuNavigator = TabNavigator({
-  Menu: { screen: MenuScreen },
-  Lists: { screen: ListScreen },
-  Settings: { screen: SettingsScreen }
-});
+const MenuNavigator = TabNavigator(
+  {
+    Menu: { screen: MenuScreen },
+    Lists: { screen: ListScreen },
+    Settings: { screen: SettingsScreen }
+  },
+  {
+    tabBarOptions: {
+      style: {
+        backgroundColor: '#A1887F'
+      }
+    }
+  }
+);
 
 const AppNavigator = StackNavigator(
   {

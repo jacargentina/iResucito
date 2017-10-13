@@ -19,7 +19,7 @@ class AcercaDe extends React.Component {
         animationType="slide"
         visible={this.props.aboutVisible}
         onBackButtonPress={() => this.props.closeAbout()}
-        onBackdropPress={() => this.props.closeAbout()}>
+        onRequestClose={() => this.props.closeAbout()}>
         <TouchableOpacity
           style={{
             flex: 1,
