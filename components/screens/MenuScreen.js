@@ -47,8 +47,14 @@ const MenuScreen = props => {
 
 MenuScreen.navigationOptions = () => ({
   title: 'Búsqueda',
-  tabBarIcon: ({ tintColor }) => {
-    return <Icon name="search" style={{ color: tintColor }} />;
+  tabBarIcon: ({ focused, tintColor }) => {
+    return (
+      <Icon
+        name="search"
+        active={focused}
+        style={{ marginTop: 6, color: tintColor }}
+      />
+    );
   }
 });
 

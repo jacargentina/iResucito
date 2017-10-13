@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Icon, Text, Button } from 'native-base';
+import { Icon, Text } from 'native-base';
 import { FlatList } from 'react-native';
 import { _ } from 'lodash';
 import BaseScreen from './BaseScreen';
@@ -12,6 +12,7 @@ import {
   SET_LIST_ADD_VISIBLE,
   SET_SALMOS_SELECTED
 } from '../actions';
+import commonColor from '../../native-base-theme/variables/commonColor';
 
 const SalmoList = props => {
   if (props.items.length == 0) {
@@ -29,13 +30,16 @@ const SalmoList = props => {
         keyExtractor={item => item.path}
         renderItem={({ item }) => {
           var buttons = (
-            <Button
-              small
-              bordered
-              rounded
-              onPress={() => props.showSalmosAdd(props.showChooser, item)}>
-              <Icon name="add" />
-            </Button>
+            <Icon
+              style={{
+                width: 32,
+                fontSize: 40,
+                textAlign: 'center',
+                color: commonColor.brandPrimary
+              }}
+              name="bookmark"
+              onPress={() => props.showSalmosAdd(props.showChooser, item)}
+            />
           );
           return (
             <SalmoListItem

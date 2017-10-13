@@ -26,11 +26,17 @@ export const appNavigatorConfig = {
   }
 };
 
+var tabBarOptions = {};
+
 if (Platform.OS == 'android') {
-  var tabBarOptions = {
-    style: {
-      backgroundColor: '#A1887F'
-    }
+  tabBarOptions.style = {
+    backgroundColor: '#A1887F'
+  };
+} else {
+  tabBarOptions.labelStyle = {
+    fontSize: 14
+  };
+  tabBarOptions.style = {
   };
 }
 

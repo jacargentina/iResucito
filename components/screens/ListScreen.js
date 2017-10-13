@@ -48,7 +48,7 @@ const ListScreen = props => {
                 }}>
                 <Left>
                   <Badge style={{ backgroundColor: 'transparent' }}>
-                    <Icon name="list" />
+                    <Icon name="bookmark" />
                   </Badge>
                 </Left>
                 <Body>
@@ -113,8 +113,14 @@ const AddListButton = connect(mapStateToProps, mapDispatchToProps)(AddList);
 
 ListScreen.navigationOptions = props => ({
   title: 'Listas',
-  tabBarIcon: ({ tintColor }) => {
-    return <Icon name="list" style={{ color: tintColor }} />;
+  tabBarIcon: ({ focused, tintColor }) => {
+    return (
+      <Icon
+        name="bookmark"
+        active={focused}
+        style={{ marginTop: 6, color: tintColor }}
+      />
+    );
   },
   headerRight: <AddListButton />
 });

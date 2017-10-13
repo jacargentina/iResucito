@@ -48,7 +48,7 @@ class ListChooser extends React.Component {
                 }}>
                 <Left>
                   <Badge style={{ backgroundColor: 'transparent' }}>
-                    <Icon name="list" />
+                    <Icon name="bookmark" />
                   </Badge>
                 </Left>
                 <Body>
