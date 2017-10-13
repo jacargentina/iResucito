@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { ListItem, Left, Right, Body, Icon, Text } from 'native-base';
+import { ListItem, Left, Body, Icon, Badge, Text } from 'native-base';
 import { FlatList } from 'react-native';
 import {
   SET_LIST_CHOOSER_VISIBLE,
@@ -17,8 +17,7 @@ class ListChooser extends React.Component {
   }
 
   render() {
-    var listsTitle =
-      this.props.lists.length > 0 ? 'Seleccionar lista' : 'No hay listas';
+    var listsTitle = this.props.lists.length > 0 ? 'Agregar en...' : '';
     return (
       <BaseModal
         visible={this.props.visible}
@@ -27,7 +26,13 @@ class ListChooser extends React.Component {
         acceptModal={() => this.props.closeAndAddToNewList()}
         acceptText="Crear Lista"
         title={listsTitle}>
-        <Text note style={{ fontStyle: 'italic', marginBottom: 20 }}>
+        <Text
+          style={{
+            fontStyle: 'italic',
+            color: 'gray',
+            marginLeft: 20,
+            marginBottom: 20
+          }}>
           {this.props.salmo}
         </Text>
         <FlatList
@@ -37,19 +42,21 @@ class ListChooser extends React.Component {
             return (
               <ListItem
                 style={{ marginLeft: 0, paddingLeft: 0 }}
-                icon
+                avatar
                 onPress={() => {
                   this.props.salmosAddToList(item);
                 }}>
                 <Left>
-                  <Icon name="list" />
+                  <Badge style={{ backgroundColor: 'transparent' }}>
+                    <Icon name="list" />
+                  </Badge>
                 </Left>
                 <Body>
-                  <Text>{item.name}</Text>
+                  <Text>
+                    {item.name}
+                    <Text note> ({item.count})</Text>
+                  </Text>
                 </Body>
-                <Right>
-                  <Text>{item.count}</Text>
-                </Right>
               </ListItem>
             );
           }}

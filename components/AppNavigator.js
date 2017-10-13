@@ -18,7 +18,8 @@ export const appNavigatorConfig = {
     headerBackTitleStyle: {
       color: 'white'
     },
-    headerTintColor: 'white'
+    headerTintColor: 'white',
+    headerTruncatedBackTitle: 'Atrás'
   },
   cardStyle: {
     backgroundColor: 'white'

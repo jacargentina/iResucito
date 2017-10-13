@@ -71,7 +71,11 @@ const mapStateToProps = state => {
       return s.nombre.toLowerCase().includes(text_filter.toLowerCase());
     });
   }
-  var hasLists = state.ui.get('lists').keySeq().length > 0;
+  var hasLists =
+    state.ui
+      .get('lists')
+      .keySeq()
+      .count() > 0;
   return {
     showChooser: hasLists,
     items: items,

@@ -5,7 +5,9 @@ import { addNavigationHelpers, NavigationActions } from 'react-navigation';
 import RNFS from 'react-native-fs';
 import { Platform } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
-
+import getTheme from './native-base-theme/components';
+import { StyleProvider } from 'native-base';
+import commonTheme from './native-base-theme/variables/platform';
 import Store from './components/store';
 import AppNavigator from './components/AppNavigator';
 import { INITIALIZE_DONE } from './components/actions';
@@ -39,12 +41,14 @@ class App extends React.Component {
 
   render() {
     return (
-      <AppNavigator
-        navigation={addNavigationHelpers({
-          dispatch: this.props.dispatch,
-          state: this.props.nav
-        })}
-      />
+      <StyleProvider style={getTheme(commonTheme)}>
+        <AppNavigator
+          navigation={addNavigationHelpers({
+            dispatch: this.props.dispatch,
+            state: this.props.nav
+          })}
+        />
+      </StyleProvider>
     );
   }
 }

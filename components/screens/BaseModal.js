@@ -19,7 +19,7 @@ const BaseModal = props => {
       <View
         style={{
           flex: 1,
-          padding: 20,
+          padding: 10,
           backgroundColor: 'white'
         }}>
         <View
@@ -28,8 +28,8 @@ const BaseModal = props => {
             flexDirection: 'row',
             justifyContent: 'space-between',
             alignItems: 'center',
-            marginBottom: 20,
-            marginTop: 20
+            marginBottom: 10,
+            marginTop: 10
           }}>
           <Text
             style={{
@@ -40,6 +40,9 @@ const BaseModal = props => {
           <Icon
             name="close"
             style={{
+              width: 32,
+              fontSize: 40,
+              textAlign: 'center',
               color: 'red'
             }}
             onPress={() => props.closeModal()}

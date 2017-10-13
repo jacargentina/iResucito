@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { ListItem, Left, Right, Body, Icon, Text } from 'native-base';
+import { ListItem, Left, Body, Icon, Text, Badge } from 'native-base';
 import { Alert, FlatList, Platform } from 'react-native';
 import Swipeout from 'react-native-swipeout';
 import BaseScreen from './BaseScreen';
@@ -33,28 +33,28 @@ const ListScreen = props => {
               }
             }
           ];
-
+          var note = item.count > 0 ? `${item.count} salmos` : 'vacía';
           return (
             <Swipeout
               right={swipeoutBtns}
               backgroundColor="white"
               autoClose={true}>
               <ListItem
-                icon
+                avatar
                 onPress={() => {
                   props.navigation.navigate('ListDetail', {
                     list: item
                   });
                 }}>
                 <Left>
-                  <Icon name="list" />
+                  <Badge style={{ backgroundColor: 'transparent' }}>
+                    <Icon name="list" />
+                  </Badge>
                 </Left>
                 <Body>
                   <Text>{item.name}</Text>
+                  <Text note>{note}</Text>
                 </Body>
-                <Right>
-                  <Text>{item.count}</Text>
-                </Right>
               </ListItem>
             </Swipeout>
           );
@@ -98,7 +98,10 @@ const AddList = props => {
       name="add"
       style={{
         marginTop: 4,
-        marginRight: 12,
+        marginRight: 8,
+        width: 32,
+        fontSize: 40,
+        textAlign: 'center',
         color: appNavigatorConfig.navigationOptions.headerTitleStyle.color
       }}
       onPress={() => props.listAdd()}
