@@ -4,7 +4,6 @@ import { ListItem, Left, Right, Body, Icon, Text } from 'native-base';
 import { Alert, FlatList } from 'react-native';
 import Swipeout from 'react-native-swipeout';
 import BaseScreen from './BaseScreen';
-import ListAddDialog from './ListAddDialog';
 import { getProcessedLists } from '../selectors';
 import { SET_LIST_ADD_VISIBLE, LIST_DELETE } from '../actions';
 import { appNavigatorConfig } from '../AppNavigator';
@@ -20,7 +19,6 @@ const ListScreen = props => {
   return (
     <BaseScreen>
       {sinItems}
-      <ListAddDialog />
       <FlatList
         data={props.items}
         keyExtractor={item => item.name}

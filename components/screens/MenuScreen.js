@@ -1,15 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { FlatList } from 'react-native';
+import { FlatList, ScrollView } from 'react-native';
 import { ListItem, Left, Body, Text, Icon } from 'native-base';
-import BaseScreen from './BaseScreen';
+//import BaseScreen from './BaseScreen';
+import ListAddDialog from './ListAddDialog';
 import AcercaDe from './AcercaDe';
 import menu from '../menu';
 
 const MenuScreen = props => {
   return (
-    <BaseScreen>
+    <ScrollView
+      keyboardShouldPersistTaps="always"
+      keyboardDismissMode="on-drag">
       <AcercaDe />
+      <ListAddDialog />
       <FlatList
         data={menu}
         keyExtractor={item => item.title}
@@ -36,7 +40,7 @@ const MenuScreen = props => {
           );
         }}
       />
-    </BaseScreen>
+    </ScrollView>
   );
 };
 
