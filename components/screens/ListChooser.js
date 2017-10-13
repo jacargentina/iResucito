@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { ListItem, Left, Right, Body, Icon, Text, Button } from 'native-base';
-import { FlatList, View } from 'react-native';
-import Modal from 'react-native-modal';
+import { ListItem, Left, Right, Body, Icon, Text } from 'native-base';
+import { FlatList } from 'react-native';
 import {
   SET_LIST_CHOOSER_VISIBLE,
   LIST_ADD_SALMO,
@@ -10,6 +9,7 @@ import {
   SET_LIST_CREATE_NEW
 } from '../actions';
 import { getProcessedLists } from '../selectors';
+import BaseModal from './BaseModal';
 
 class ListChooser extends React.Component {
   constructor(props) {
@@ -20,86 +20,41 @@ class ListChooser extends React.Component {
     var listsTitle =
       this.props.lists.length > 0 ? 'Seleccionar lista' : 'No hay listas';
     return (
-      <Modal
-        isVisible={this.props.visible}
-        onBackButtonPress={() => this.props.closeSalmosAdd()}
-        onBackdropPress={() => this.props.closeSalmosAdd()}
-        onModalHide={() => this.props.openNewDialog(this.props.listCreateNew)}>
-        <View
-          style={{
-            flex: 1,
-            padding: 20,
-            backgroundColor: 'white'
-          }}>
-          <View
-            style={{
-              flex: 9
-            }}>
-            <Text note style={{ fontStyle: 'italic', marginBottom: 20 }}>
-              {this.props.salmo}
-            </Text>
-            <Text style={{ fontWeight: 'bold', marginBottom: 20 }}>
-              {listsTitle}
-            </Text>
-            <FlatList
-              style={{ marginBottom: 20 }}
-              data={this.props.lists}
-              keyExtractor={item => item.name}
-              renderItem={({ item }) => {
-                return (
-                  <ListItem
-                    style={{ marginLeft: 0, paddingLeft: 0 }}
-                    icon
-                    onPress={() => {
-                      this.props.salmosAddToList(item);
-                    }}>
-                    <Left>
-                      <Icon name="list" />
-                    </Left>
-                    <Body>
-                      <Text>{item.name}</Text>
-                    </Body>
-                    <Right>
-                      <Text>{item.count}</Text>
-                    </Right>
-                  </ListItem>
-                );
-              }}
-            />
-          </View>
-          <View
-            style={{
-              flex: 1,
-              flexDirection: 'row',
-              justifyContent: 'space-around'
-            }}>
-            <Button
-              style={{
-                flex: 1,
-                marginRight: 5,
-                alignSelf: 'flex-end'
-              }}
-              bordered
-              block
-              primary
-              onPress={() => this.props.closeAndAddToNewList()}>
-              <Text>Crear</Text>
-            </Button>
-            <Button
-              style={{
-                flex: 1,
-                marginLeft: 5,
-                alignSelf: 'flex-end'
-              }}
-              bordered
-              block
-              danger
-              onPress={() => this.props.closeSalmosAdd()}>
-              <Text>Cancelar</Text>
-            </Button>
-          </View>
-        </View>
-      </Modal>
+      <BaseModal
+        visible={this.props.visible}
+        modalHide={() => this.props.openNewDialog(this.props.listCreateNew)}
+        closeModal={() => this.props.closeSalmosAdd()}
+        acceptModal={() => this.props.closeAndAddToNewList()}
+        acceptText="Crear Lista"
+        title={listsTitle}>
+        <Text note style={{ fontStyle: 'italic', marginBottom: 20 }}>
+          {this.props.salmo}
+        </Text>
+        <FlatList
+          data={this.props.lists}
+          keyExtractor={item => item.name}
+          renderItem={({ item }) => {
+            return (
+              <ListItem
+                style={{ marginLeft: 0, paddingLeft: 0 }}
+                icon
+                onPress={() => {
+                  this.props.salmosAddToList(item);
+                }}>
+                <Left>
+                  <Icon name="list" />
+                </Left>
+                <Body>
+                  <Text>{item.name}</Text>
+                </Body>
+                <Right>
+                  <Text>{item.count}</Text>
+                </Right>
+              </ListItem>
+            );
+          }}
+        />
+      </BaseModal>
     );
   }
 }

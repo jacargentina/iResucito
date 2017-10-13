@@ -1,17 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Text, Button, Item, Input, Label } from 'native-base';
-import { View } from 'react-native';
-import Modal from 'react-native-modal';
+import { Text, Input, Item, Label } from 'native-base';
 import {
   SET_LIST_ADD_VISIBLE,
   LIST_CREATE,
   LIST_CREATE_NAME
 } from '../actions';
+import BaseModal from './BaseModal';
 
 class ListAddDialog extends React.Component {
   constructor(props) {
     super(props);
+    this.focusInput = this.focusInput.bind(this);
+  }
+
+  focusInput() {
+    this.listNameInput._root.focus();
   }
 
   render() {
@@ -22,74 +26,34 @@ class ListAddDialog extends React.Component {
           : 'Ingrese un nombre no vacío';
     }
     return (
-      <Modal
-        isVisible={this.props.visible}
-        onBackButtonPress={() => this.props.closeListAdd()}
-        onBackdropPress={() => this.props.closeListAdd()}>
-        <View
-          style={{
-            flex: 1,
-            padding: 20,
-            backgroundColor: 'white'
-          }}>
-          <View
-            style={{
-              flex: 9
-            }}>
-            <Text style={{ fontWeight: 'bold', marginBottom: 20 }}>
-              Crear lista
-            </Text>
-            <Item
-              style={{ marginBottom: 20 }}
-              floatingLabel
-              error={!this.props.listCreateEnabled}
-              success={this.props.listCreateEnabled}>
-              <Label>Nombre</Label>
-              <Input
-                onChangeText={text => this.props.updateNewListName(text)}
-                value={this.props.listCreateName}
-                clearButtonMode="always"
-                autoCorrect={false}
-              />
-            </Item>
-            <Text danger note>
-              {disabledReasonText}
-            </Text>
-          </View>
-          <View
-            style={{
-              flex: 1,
-              flexDirection: 'row',
-              justifyContent: 'space-around'
-            }}>
-            <Button
-              style={{
-                flex: 1,
-                marginRight: 5,
-                alignSelf: 'flex-end'
-              }}
-              bordered
-              block
-              primary
-              onPress={() => this.props.createNewList()}
-              disabled={!this.props.listCreateEnabled}>
-              <Text>Agregar</Text>
-            </Button>
-            <Button
-              style={{
-                flex: 1,
-                marginLeft: 5,
-                alignSelf: 'flex-end'
-              }}
-              bordered
-              block
-              danger
-              onPress={() => this.props.closeListAdd()}>
-              <Text>Cancelar</Text>
-            </Button>
-          </View>
-        </View>
-      </Modal>
+      <BaseModal
+        visible={this.props.visible}
+        modalShow={() => this.focusInput()}
+        closeModal={() => this.props.closeListAdd()}
+        acceptModal={() => this.props.createNewList(this.props.listCreateName)}
+        acceptDisabled={!this.props.listCreateEnabled}
+        acceptText="Agregar"
+        title="Crear Lista">
+        <Item
+          style={{ marginBottom: 20 }}
+          floatingLabel
+          error={!this.props.listCreateEnabled}
+          success={this.props.listCreateEnabled}>
+          <Label>Nombre</Label>
+          <Input
+            getRef={input => {
+              this.listNameInput = input;
+            }}
+            onChangeText={text => this.props.updateNewListName(text)}
+            value={this.props.listCreateName}
+            clearButtonMode="always"
+            autoCorrect={false}
+          />
+        </Item>
+        <Text danger note>
+          {disabledReasonText}
+        </Text>
+      </BaseModal>
     );
   }
 }
@@ -113,8 +77,8 @@ const mapDispatchToProps = dispatch => {
     updateNewListName: text => {
       dispatch({ type: LIST_CREATE_NAME, name: text });
     },
-    createNewList: () => {
-      dispatch({ type: LIST_CREATE });
+    createNewList: name => {
+      dispatch({ type: LIST_CREATE, name: name });
       dispatch({ type: SET_LIST_ADD_VISIBLE, visible: false });
     }
   };

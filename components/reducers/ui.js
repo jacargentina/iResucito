@@ -72,7 +72,12 @@ export default function ui(state = initialState, action) {
     case SET_LIST_CHOOSER_VISIBLE:
       return state.set('list_chooser_visible', action.visible);
     case SET_LIST_ADD_VISIBLE:
-      return state.set('list_add_visible', action.visible);
+      state = state.set('list_add_visible', action.visible);
+      if (!action.visible) {
+        state = state.set('list_create_name', null);
+        state = state.set('list_create_enabled', false);
+      }
+      return state;
     case SET_LIST_CREATE_NEW:
       return state.set('list_create_new', action.value);
     case LIST_CREATE_NAME:
@@ -81,18 +86,18 @@ export default function ui(state = initialState, action) {
         .get('lists')
         .keySeq()
         .toArray();
-      return state.set(
-        'list_create_enabled',
-        action.name && action.name.trim() !== '' && !lists.includes(action.name)
-      );
+      var result = action.name.trim() !== '' && !lists.includes(action.name);
+      return state.set('list_create_enabled', result);
     case LIST_CREATE:
-      var listName = state.get('list_create_name');
-      if (!state.getIn(['lists', listName])) {
-        state = state.setIn(['lists', listName], List());
+      if (!state.getIn(['lists', action.name])) {
+        state = state.setIn(['lists', action.name], List());
+        var salmoSel = state.get('salmo_selected');
+        if (salmoSel) {
+          state = state.setIn(['lists', action.name, 0], salmoSel.nombre);
+          state = state.set('salmo_selected', null);
+        }
       }
       saveLists(state);
-      state = state.set('list_create_name', null);
-      state = state.set('list_create_enabled', false);
       return state;
     case LIST_ADD_SALMO:
       var salmo = state.get('salmo_selected');

@@ -57,7 +57,10 @@ class CloudData {
     return iCloudStorage
       .getItem(item.key)
       .then(res => {
-        return JSON.parse(res);
+        if (res) {
+          return JSON.parse(res);
+        }
+        return null;
       })
       .catch(err => {
         console.log('error loading from icloud', err);
