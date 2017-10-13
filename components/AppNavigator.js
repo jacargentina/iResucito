@@ -1,3 +1,4 @@
+import { Platform } from 'react-native';
 import { StackNavigator, TabNavigator } from 'react-navigation';
 import MenuScreen from './screens/MenuScreen';
 import SalmoList from './screens/SalmoList';
@@ -24,6 +25,14 @@ export const appNavigatorConfig = {
   }
 };
 
+if (Platform.OS == 'android') {
+  var tabBarOptions = {
+    style: {
+      backgroundColor: '#A1887F'
+    }
+  };
+}
+
 const MenuNavigator = TabNavigator(
   {
     Menu: { screen: MenuScreen },
@@ -31,11 +40,8 @@ const MenuNavigator = TabNavigator(
     Settings: { screen: SettingsScreen }
   },
   {
-    tabBarOptions: {
-      style: {
-        backgroundColor: '#A1887F'
-      }
-    }
+    swipeEnabled: false,
+    tabBarOptions: tabBarOptions
   }
 );
 

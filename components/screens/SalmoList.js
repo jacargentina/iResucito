@@ -4,12 +4,12 @@ import { Icon, Text, Button } from 'native-base';
 import { FlatList } from 'react-native';
 import { _ } from 'lodash';
 import BaseScreen from './BaseScreen';
-import ListChooser from './ListChooser';
 import SalmoListItem from './SalmoListItem';
 import { appNavigatorConfig } from '../AppNavigator';
 import {
   SET_SALMOS_FILTER,
   SET_LIST_CHOOSER_VISIBLE,
+  SET_LIST_ADD_VISIBLE,
   SET_SALMOS_SELECTED
 } from '../actions';
 
@@ -24,7 +24,6 @@ const SalmoList = props => {
   return (
     <BaseScreen {...props} searchHandler={props.filtrarHandler}>
       {sinItems}
-      <ListChooser />
       <FlatList
         data={props.items}
         keyExtractor={item => item.path}
@@ -34,7 +33,7 @@ const SalmoList = props => {
               small
               bordered
               rounded
-              onPress={() => props.showSalmosAdd(item)}>
+              onPress={() => props.showSalmosAdd(props.showChooser, item)}>
               <Icon name="add" />
             </Button>
           );
@@ -72,7 +71,9 @@ const mapStateToProps = state => {
       return s.nombre.toLowerCase().includes(text_filter.toLowerCase());
     });
   }
+  var hasLists = state.ui.get('lists').keySeq().length > 0;
   return {
+    showChooser: hasLists,
     items: items,
     showBadge: filter == null || !filter.hasOwnProperty('etapa')
   };
@@ -85,9 +86,13 @@ const mapDispatchToProps = dispatch => {
 
   return {
     filtrarHandler: _.debounce(filtrar, 600),
-    showSalmosAdd: salmo => {
+    showSalmosAdd: (showChooser, salmo) => {
       dispatch({ type: SET_SALMOS_SELECTED, salmo: salmo });
-      dispatch({ type: SET_LIST_CHOOSER_VISIBLE, visible: true });
+      if (showChooser) {
+        dispatch({ type: SET_LIST_CHOOSER_VISIBLE, visible: true });
+      } else {
+        dispatch({ type: SET_LIST_ADD_VISIBLE, visible: true });
+      }
     }
   };
 };

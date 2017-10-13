@@ -1,13 +1,16 @@
 import React from 'react';
 import { Text, Button, Icon } from 'native-base';
-import { View } from 'react-native';
+import { View, Platform } from 'react-native';
 import Modal from 'react-native-modal';
 
 const BaseModal = props => {
+  // Por algun motivo que desconozco, en Android con true
+  // en vez de solucionar, lo rompe. Lo dejo solo para iOS
+  var avoidKeyboard = Platform.OS == 'ios' ? true : false;
   return (
     <Modal
       style={{ margin: 0 }}
-      avoidKeyboard={true}
+      avoidKeyboard={avoidKeyboard}
       isVisible={props.visible}
       onBackButtonPress={() => props.closeModal()}
       onBackdropPress={() => props.closeModal()}

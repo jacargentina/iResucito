@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { ListItem, Left, Right, Body, Icon, Text } from 'native-base';
-import { Alert, FlatList } from 'react-native';
+import { Alert, FlatList, Platform } from 'react-native';
 import Swipeout from 'react-native-swipeout';
 import BaseScreen from './BaseScreen';
 import { getProcessedLists } from '../selectors';
@@ -26,7 +26,8 @@ const ListScreen = props => {
           var swipeoutBtns = [
             {
               text: 'Eliminar',
-              type: 'delete',
+              type: Platform.OS == 'ios' ? 'delete' : 'default',
+              backgroundColor: Platform.OS == 'android' ? '#e57373' : null,
               onPress: () => {
                 props.listDelete(item);
               }
