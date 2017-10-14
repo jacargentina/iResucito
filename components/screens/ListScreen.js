@@ -77,7 +77,7 @@ const mapDispatchToProps = dispatch => {
       Alert.alert(`Eliminar "${list.name}"`, '¿Confirma el borrado?', [
         {
           text: 'Eliminar',
-          onPress: () => dispatch({ type: LIST_DELETE, list: list }),
+          onPress: () => dispatch({ type: LIST_DELETE, list: list.name }),
           style: 'destructive'
         },
         {

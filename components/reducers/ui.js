@@ -5,10 +5,9 @@ import {
   SET_SALMO_CONTENT,
   SET_ABOUT_VISIBLE,
   SET_SETTINGS_VALUE,
-  SET_LIST_CHOOSER_VISIBLE,
+  SET_LIST_CHOOSER_SALMO,
   SET_LIST_ADD_VISIBLE,
   SET_LIST_CREATE_NEW,
-  SET_SALMOS_SELECTED,
   LIST_CREATE,
   LIST_CREATE_NAME,
   LIST_ADD_SALMO,
@@ -25,13 +24,13 @@ const initialState = Map({
   salmos: null,
   salmos_text_filter: null,
   salmos_filter: null,
-  salmo_selected: null,
   salmo_lines: null,
   about_visible: false,
   list_create_name: '',
   list_create_enabled: false,
-  list_chooser_visible: false,
+  list_chooser_salmo: null,
   list_add_visible: false,
+  list_add_salmo: null,
   list_create_new: false,
   lists: Map(),
   settings: Map({
@@ -67,12 +66,11 @@ export default function ui(state = initialState, action) {
       state = state.setIn(['settings', action.key], action.value);
       localdata.save({ key: 'settings', data: state.get('settings').toJS() });
       return state;
-    case SET_SALMOS_SELECTED:
-      return state.set('salmo_selected', action.salmo);
-    case SET_LIST_CHOOSER_VISIBLE:
-      return state.set('list_chooser_visible', action.visible);
+    case SET_LIST_CHOOSER_SALMO:
+      return state.set('list_chooser_salmo', action.salmo);
     case SET_LIST_ADD_VISIBLE:
       state = state.set('list_add_visible', action.visible);
+      state = state.set('list_add_salmo', action.salmo);
       if (!action.visible) {
         state = state.set('list_create_name', null);
         state = state.set('list_create_enabled', false);
@@ -91,31 +89,28 @@ export default function ui(state = initialState, action) {
     case LIST_CREATE:
       if (!state.getIn(['lists', action.name])) {
         state = state.setIn(['lists', action.name], List());
-        var salmoSel = state.get('salmo_selected');
-        if (salmoSel) {
-          state = state.setIn(['lists', action.name, 0], salmoSel.nombre);
-          state = state.set('salmo_selected', null);
-        }
       }
       saveLists(state);
       return state;
     case LIST_ADD_SALMO:
-      var salmo = state.get('salmo_selected');
-      var list = state.getIn(['lists', action.list.name]);
-      if (list.includes(salmo.nombre)) {
+      var list = state.getIn(['lists', action.list]);
+      if (list.includes(action.salmo.nombre)) {
         return state;
       }
-      state = state.setIn(['lists', action.list.name, list.size], salmo.nombre);
+      state = state.setIn(
+        ['lists', action.list, list.size],
+        action.salmo.nombre
+      );
       saveLists(state);
       return state;
     case LIST_REMOVE_SALMO:
-      var rList = state.getIn(['lists', action.list.name]);
+      var rList = state.getIn(['lists', action.list]);
       var index = rList.indexOf(action.salmo.nombre);
-      state = state.deleteIn(['lists', action.list.name, index]);
+      state = state.deleteIn(['lists', action.list, index]);
       saveLists(state);
       return state;
     case LIST_DELETE:
-      state = state.deleteIn(['lists', action.list.name]);
+      state = state.deleteIn(['lists', action.list]);
       saveLists(state);
       return state;
     case LIST_SHARE:
@@ -125,7 +120,7 @@ export default function ui(state = initialState, action) {
       Share.share(
         {
           message: textItems.join('\n'),
-          title: `Lista iResucitó ${action.list.name}`,
+          title: `Lista iResucitó ${action.list}`,
           url: undefined
         },
         { dialogTitle: 'Compartir lista iResucitó' }
@@ -144,8 +139,6 @@ export default function ui(state = initialState, action) {
         case 'SalmoList':
           state = state.set('salmos_text_filter', null);
           return state.set('salmos_filter', action.params.filter);
-        case 'SalmoDetail':
-          return state.set('salmo_selected', action.params.salmo);
       }
       return state;
     default:

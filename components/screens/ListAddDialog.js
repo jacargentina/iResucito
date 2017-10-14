@@ -4,7 +4,8 @@ import { Text, Input, Item, Label } from 'native-base';
 import {
   SET_LIST_ADD_VISIBLE,
   LIST_CREATE,
-  LIST_CREATE_NAME
+  LIST_CREATE_NAME,
+  LIST_ADD_SALMO
 } from '../actions';
 import BaseModal from './BaseModal';
 
@@ -30,7 +31,8 @@ class ListAddDialog extends React.Component {
         visible={this.props.visible}
         modalShow={() => this.focusInput()}
         closeModal={() => this.props.closeListAdd()}
-        acceptModal={() => this.props.createNewList(this.props.listCreateName)}
+        acceptModal={() =>
+          this.props.createNewList(this.props.listCreateName, this.props.salmo)}
         acceptDisabled={!this.props.listCreateEnabled}
         acceptText="Agregar"
         title="Crear Lista">
@@ -60,10 +62,12 @@ class ListAddDialog extends React.Component {
 
 const mapStateToProps = state => {
   var visible = state.ui.get('list_add_visible');
+  var salmo = state.ui.get('list_add_salmo');
   var list_create_name = state.ui.get('list_create_name');
   var list_create_enabled = state.ui.get('list_create_enabled');
   return {
     visible: visible,
+    salmo: salmo,
     listCreateName: list_create_name,
     listCreateEnabled: list_create_enabled
   };
@@ -72,14 +76,17 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     closeListAdd: () => {
-      dispatch({ type: SET_LIST_ADD_VISIBLE, visible: false });
+      dispatch({ type: SET_LIST_ADD_VISIBLE, visible: false, salmo: null });
     },
     updateNewListName: text => {
       dispatch({ type: LIST_CREATE_NAME, name: text });
     },
-    createNewList: name => {
+    createNewList: (name, salmo) => {
       dispatch({ type: LIST_CREATE, name: name });
-      dispatch({ type: SET_LIST_ADD_VISIBLE, visible: false });
+      if (salmo) {
+        dispatch({ type: LIST_ADD_SALMO, list: name, salmo: salmo });
+      }
+      dispatch({ type: SET_LIST_ADD_VISIBLE, visible: false, salmo: null });
     }
   };
 };

@@ -65,7 +65,11 @@ const mapDispatchToProps = dispatch => {
         {
           text: 'Eliminar',
           onPress: () =>
-            dispatch({ type: LIST_REMOVE_SALMO, list: list, salmo: salmo }),
+            dispatch({
+              type: LIST_REMOVE_SALMO,
+              list: list.name,
+              salmo: salmo
+            }),
           style: 'destructive'
         },
         {
@@ -75,7 +79,7 @@ const mapDispatchToProps = dispatch => {
       ]);
     },
     listShare: (list, items) => {
-      dispatch({ type: LIST_SHARE, list: list, items: items });
+      dispatch({ type: LIST_SHARE, list: list.name, items: items });
     }
   };
 };

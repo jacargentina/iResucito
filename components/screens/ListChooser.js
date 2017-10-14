@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { ListItem, Left, Body, Icon, Badge, Text } from 'native-base';
 import { FlatList } from 'react-native';
 import {
-  SET_LIST_CHOOSER_VISIBLE,
+  SET_LIST_CHOOSER_SALMO,
   LIST_ADD_SALMO,
   SET_LIST_ADD_VISIBLE,
   SET_LIST_CREATE_NEW
@@ -20,7 +20,7 @@ class ListChooser extends React.Component {
     var listsTitle = this.props.lists.length > 0 ? 'Agregar en...' : '';
     return (
       <BaseModal
-        visible={this.props.visible}
+        visible={this.props.salmo !== null}
         modalHide={() => this.props.openNewDialog(this.props.listCreateNew)}
         closeModal={() => this.props.closeSalmosAdd()}
         acceptModal={() => this.props.closeAndAddToNewList()}
@@ -33,7 +33,7 @@ class ListChooser extends React.Component {
             marginLeft: 20,
             marginBottom: 20
           }}>
-          {this.props.salmo}
+          {this.props.salmo ? this.props.salmo.titulo : ''}
         </Text>
         <FlatList
           data={this.props.lists}
@@ -44,7 +44,7 @@ class ListChooser extends React.Component {
                 style={{ marginLeft: 0, paddingLeft: 0 }}
                 avatar
                 onPress={() => {
-                  this.props.salmosAddToList(item);
+                  this.props.salmoAddToList(this.props.salmo, item);
                 }}>
                 <Left>
                   <Badge style={{ backgroundColor: 'transparent' }}>
@@ -67,13 +67,11 @@ class ListChooser extends React.Component {
 }
 
 const mapStateToProps = state => {
-  var visible = state.ui.get('list_chooser_visible');
+  var salmo = state.ui.get('list_chooser_salmo');
   var listCreateNew = state.ui.get('list_create_new');
-  var salmo = state.ui.get('salmo_selected');
   var lists = getProcessedLists(state);
   return {
-    visible: visible,
-    salmo: salmo ? salmo.titulo : '',
+    salmo: salmo,
     lists: lists,
     listCreateNew: listCreateNew
   };
@@ -82,14 +80,14 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     closeSalmosAdd: () => {
-      dispatch({ type: SET_LIST_CHOOSER_VISIBLE, visible: false });
+      dispatch({ type: SET_LIST_CHOOSER_SALMO, salmo: null });
     },
-    salmosAddToList: list => {
-      dispatch({ type: LIST_ADD_SALMO, list: list });
-      dispatch({ type: SET_LIST_CHOOSER_VISIBLE, visible: false });
+    salmoAddToList: (salmo, list) => {
+      dispatch({ type: LIST_ADD_SALMO, list: list.name, salmo: salmo });
+      dispatch({ type: SET_LIST_CHOOSER_SALMO, salmo: null });
     },
     closeAndAddToNewList: () => {
-      dispatch({ type: SET_LIST_CHOOSER_VISIBLE, visible: false });
+      dispatch({ type: SET_LIST_CHOOSER_SALMO, salmo: null });
       dispatch({ type: SET_LIST_CREATE_NEW, value: true });
     },
     openNewDialog: listCreateNew => {

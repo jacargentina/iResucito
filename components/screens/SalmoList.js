@@ -8,9 +8,8 @@ import SalmoListItem from './SalmoListItem';
 import { appNavigatorConfig } from '../AppNavigator';
 import {
   SET_SALMOS_FILTER,
-  SET_LIST_CHOOSER_VISIBLE,
-  SET_LIST_ADD_VISIBLE,
-  SET_SALMOS_SELECTED
+  SET_LIST_CHOOSER_SALMO,
+  SET_LIST_ADD_VISIBLE
 } from '../actions';
 import commonColor from '../../native-base-theme/variables/commonColor';
 
@@ -95,11 +94,10 @@ const mapDispatchToProps = dispatch => {
   return {
     filtrarHandler: _.debounce(filtrar, 600),
     showSalmosAdd: (showChooser, salmo) => {
-      dispatch({ type: SET_SALMOS_SELECTED, salmo: salmo });
       if (showChooser) {
-        dispatch({ type: SET_LIST_CHOOSER_VISIBLE, visible: true });
+        dispatch({ type: SET_LIST_CHOOSER_SALMO, salmo: salmo });
       } else {
-        dispatch({ type: SET_LIST_ADD_VISIBLE, visible: true });
+        dispatch({ type: SET_LIST_ADD_VISIBLE, visible: true, salmo: salmo });
       }
     }
   };
