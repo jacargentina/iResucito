@@ -1,5 +1,5 @@
 ﻿const Indice = {
-  'Así habla el amén - Ap 3, 14-22': {
+  'Así habla el amén - Ap 3, 14-22': {
     etapa: 'Catecumenado',
     cuaresma: true
   },
@@ -22,7 +22,7 @@
     comunion: true,
     pascua: true
   },
-  'Débora - Jc 5': {
+  'Débora - Jc 5': {
     etapa: 'Catecumenado',
     adviento: true,
     virgen: true
@@ -69,7 +69,7 @@
     etapa: 'Catecumenado',
     pentecostes: true
   },
-  'Siéntate solitario y silencioso - Lm 3': {
+  'Siéntate solitario y silencioso - Lm 3': {
     etapa: 'Catecumenado',
     cuaresma: true
   },
@@ -176,7 +176,7 @@
     comunion: true,
     final: true
   },
-  'Bendeciré al Señor en todo tiempo - Sal 34 (33)': {
+  'Bendeciré al Señor en todo tiempo - Sal 34 (33)': {
     etapa: 'Precatecumenado',
     cuaresma: true,
     laudes: true
@@ -204,7 +204,7 @@
     entrada: true,
     final: true
   },
-  'Canto de Moisés - Ex 15, 1-18': {
+  'Canto de Moisés - Ex 15, 1-18': {
     etapa: 'Precatecumenado',
     pascua: true
   },
@@ -352,7 +352,7 @@
     adviento: true,
     cuaresma: true
   },
-  'Hijas de Jerusalén - Lc 23, 28-46': {
+  'Hijas de Jerusalén - Lc 23, 28-46': {
     etapa: 'Precatecumenado',
     cuaresma: true
   },
@@ -392,7 +392,7 @@
     etapa: 'Precatecumenado',
     cuaresma: true
   },
-  'Jerusalén reconstruida - Tb 13, 11-17': {
+  'Jerusalén reconstruida - Tb 13, 11-17': {
     etapa: 'Precatecumenado',
     cuaresma: true,
     paz: true
@@ -421,7 +421,7 @@
     laudes: true,
     entrada: true
   },
-  'Llévame al cielo - Flp 1, 23': {
+  'Llévame al cielo - Flp 1, 23': {
     etapa: 'Precatecumenado',
     adviento: true,
     pentecostes: true,
@@ -479,7 +479,7 @@
     pascua: true,
     comunion: true
   },
-  'No hay en él parecer - Is 53, 2ss': {
+  'No hay en él parecer - Is 53, 2ss': {
     etapa: 'Precatecumenado',
     fraccion: true
   },
@@ -506,11 +506,11 @@
     pascua: true,
     comunion: true
   },
-  'Os tomaré de entre las naciones - Ez 36, 24-28': {
+  'Os tomaré de entre las naciones - Ez 36, 24-28': {
     etapa: 'Precatecumenado',
     entrada: true
   },
-  'Pentecostés - Himno': {
+  'Pentecostés - Himno': {
     etapa: 'Precatecumenado',
     pentecostes: true,
     comunion: true
@@ -519,13 +519,13 @@
     etapa: 'Precatecumenado',
     paz: true
   },
-  'Por qué esta noche es diferente - Canto de los niños': {
+  'Por qué esta noche es diferente - Canto de los niños': {
     etapa: 'Precatecumenado',
     pascua: true,
     niños: true,
     paz: true
   },
-  'Por qué las gentes conjuran - Sal 2': {
+  'Por qué las gentes conjuran - Sal 2': {
     etapa: 'Precatecumenado',
     cuaresma: true,
     laudes: true
@@ -539,11 +539,11 @@
     etapa: 'Precatecumenado',
     entrada: true
   },
-  'Qué estupendo, qué alegría - Sal 133 (132)': {
+  'Qué estupendo, qué alegría - Sal 133 (132)': {
     etapa: 'Precatecumenado',
     paz: true
   },
-  'Quiero andar madre a Jerusalén - Canto sefardí': {
+  'Quiero andar madre a Jerusalén - Canto sefardí': {
     etapa: 'Precatecumenado',
     final: true
   },
@@ -551,12 +551,12 @@
     etapa: 'Precatecumenado',
     cuaresma: true
   },
-  'Quién es ésta que sube del desierto - Ct 8, 5-7': {
+  'Quién es ésta que sube del desierto - Ct 8, 5-7': {
     etapa: 'Precatecumenado',
     comunion: true,
     final: true
   },
-  'Quién nos separará - Rm 8, 33-39': {
+  'Quién nos separará - Rm 8, 33-39': {
     etapa: 'Precatecumenado',
     laudes: true,
     comunion: true
@@ -632,7 +632,7 @@
     adviento: true,
     cuaresma: true
   },
-  'Un retoño brota del tronco de Jesé - Is 11, 1-11': {
+  'Un retoño brota del tronco de Jesé - Is 11, 1-11': {
     etapa: 'Precatecumenado',
     pentecostes: true,
     comunion: true
@@ -651,7 +651,7 @@
     etapa: 'Precatecumenado',
     niños: true
   },
-  'Ven Espíritu Santo - Secuencia de Pentecostés': {
+  'Ven Espíritu Santo - Secuencia de Pentecostés': {
     etapa: 'Precatecumenado',
     pentecostes: true
   },
