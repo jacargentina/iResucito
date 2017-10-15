@@ -284,7 +284,8 @@
     etapa: 'Precatecumenado'
   },
   'El pueblo que caminaba en las tinieblas - Is 9, 1-5': {
-    etapa: 'Precatecumenado'
+    etapa: 'Precatecumenado',
+    navidad: true
   },
   'Elí, Elí, lamá sabactaní - Sal 22 (21)': {
     etapa: 'Precatecumenado',
@@ -635,7 +636,8 @@
   'Un retoño brota del tronco de Jesé - Is 11, 1-11': {
     etapa: 'Precatecumenado',
     pentecostes: true,
-    comunion: true
+    comunion: true,
+    navidad: true
   },
   'Una gran señal - Ap 12': {
     etapa: 'Precatecumenado',
@@ -645,11 +647,13 @@
   },
   'Urí, urí, urá - Villancico': {
     etapa: 'Precatecumenado',
-    niños: true
+    niños: true,
+    navidad: true
   },
   'Vamos ya, pastores - Villancico': {
     etapa: 'Precatecumenado',
-    niños: true
+    niños: true,
+    navidad: true
   },
   'Ven Espíritu Santo - Secuencia de Pentecostés': {
     etapa: 'Precatecumenado',
@@ -687,7 +691,8 @@
   },
   'Ya viene mi Dios - Villancico': {
     etapa: 'Precatecumenado',
-    niños: true
+    niños: true,
+    navidad: true
   },
   'Yahveh, tú eres mi Dios - Is 25': {
     etapa: 'Precatecumenado',
@@ -771,6 +776,7 @@
   },
   'La cordera de Dios - Mt 1, 18ss': {
     etapa: 'Eleccion',
+    navidad: true,
     virgen: true
   },
   'La paloma volo - Oda 24 de Salomon': {
@@ -832,7 +838,7 @@
     etapa: 'Liturgia',
     pascua: true
   },
-  'Letanas penitenciales II': {
+  'Letanias penitenciales II': {
     etapa: 'Liturgia'
   },
   'Letania del Cordero de Dios - Himno Agnus Dei': {
