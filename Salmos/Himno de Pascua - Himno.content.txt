@@ -1,6 +1,4 @@
-  
-88 
-88 HIMNO DE PASCUA 
+HIMNO DE PASCUA 
 Himno 
  
 La– 
@@ -38,5 +36,4 @@ NI PESARES,
 ¡RESUCITÓ! ¡RESUCITÓ! 
       
 BIS  
-BIS  
-
+BIS 
