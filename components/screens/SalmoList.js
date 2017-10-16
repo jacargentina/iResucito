@@ -5,7 +5,7 @@ import { FlatList } from 'react-native';
 import { _ } from 'lodash';
 import BaseScreen from './BaseScreen';
 import SalmoListItem from './SalmoListItem';
-import { appNavigatorConfig } from '../AppNavigator';
+import AppNavigatorConfig from '../AppNavigatorConfig';
 import { SET_SALMOS_FILTER, decideSalmoAddDialog } from '../actions';
 import commonColor from '../../native-base-theme/variables/commonColor';
 
@@ -95,7 +95,7 @@ const CountText = props => {
       style={{
         marginRight: 8,
         fontSize: 10,
-        color: appNavigatorConfig.navigationOptions.headerTitleStyle.color
+        color: AppNavigatorConfig.navigationOptions.headerTitleStyle.color
       }}>
       {props.items.length}
     </Text>

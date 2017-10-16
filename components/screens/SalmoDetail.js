@@ -12,8 +12,8 @@ import RNFS from 'react-native-fs';
 import DeviceInfo from 'react-native-device-info';
 import KeepAwake from 'react-native-keep-awake';
 import { SET_SALMO_CONTENT, decideSalmoAddDialog } from '../actions';
+import AppNavigatorConfig from '../AppNavigatorConfig';
 import colors from '../colors';
-import { appNavigatorConfig } from '../AppNavigator';
 
 var mono = Platform.OS == 'ios' ? 'Menlo-Bold' : 'monospace';
 var isTablet = DeviceInfo.isTablet();
@@ -236,7 +236,7 @@ const AddToList = props => {
         width: 32,
         fontSize: 40,
         textAlign: 'center',
-        color: appNavigatorConfig.navigationOptions.headerTitleStyle.color
+        color: AppNavigatorConfig.navigationOptions.headerTitleStyle.color
       }}
       onPress={() => props.showSalmosAdd(props.salmo)}
     />
@@ -249,7 +249,7 @@ SalmoDetail.navigationOptions = props => ({
   title: props.navigation.state.params
     ? props.navigation.state.params.salmo.titulo
     : 'Salmo',
-  headerRight: <AddToListButton />
+  headerRight: <AddToListButton {...props} />
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SalmoDetail);

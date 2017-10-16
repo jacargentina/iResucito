@@ -6,25 +6,7 @@ import SalmoDetail from './screens/SalmoDetail';
 import SettingsScreen from './screens/SettingsScreen';
 import ListScreen from './screens/ListScreen';
 import ListDetail from './screens/ListDetail';
-
-export const appNavigatorConfig = {
-  navigationOptions: {
-    headerStyle: {
-      backgroundColor: '#8D6E63'
-    },
-    headerTitleStyle: {
-      color: 'white'
-    },
-    headerBackTitleStyle: {
-      color: 'white'
-    },
-    headerTintColor: 'white',
-    headerTruncatedBackTitle: 'Atrás'
-  },
-  cardStyle: {
-    backgroundColor: 'white'
-  }
-};
+import AppNavigatorConfig from './AppNavigatorConfig';
 
 var tabBarOptions = {};
 
@@ -67,7 +49,7 @@ const AppNavigator = StackNavigator(
       screen: ListDetail
     }
   },
-  appNavigatorConfig
+  AppNavigatorConfig
 );
 
 export default AppNavigator;

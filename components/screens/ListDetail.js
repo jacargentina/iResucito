@@ -7,7 +7,7 @@ import BaseScreen from './BaseScreen';
 import SalmoListItem from './SalmoListItem';
 import { LIST_REMOVE_SALMO, LIST_SHARE } from '../actions';
 import { getSalmosFromList } from '../selectors';
-import { appNavigatorConfig } from '../AppNavigator';
+import AppNavigatorConfig from '../AppNavigator';
 
 const ListDetail = props => {
   if (props.items.length == 0) {
@@ -94,7 +94,7 @@ const ShareList = props => {
       style={{
         marginTop: 4,
         marginRight: 12,
-        color: appNavigatorConfig.navigationOptions.headerTitleStyle.color
+        color: AppNavigatorConfig.navigationOptions.headerTitleStyle.color
       }}
       onPress={() =>
         props.listShare(props.navigation.state.params.list, props.items)}

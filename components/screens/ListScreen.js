@@ -6,7 +6,7 @@ import Swipeout from 'react-native-swipeout';
 import BaseScreen from './BaseScreen';
 import { getProcessedLists } from '../selectors';
 import { SET_LIST_ADD_VISIBLE, LIST_DELETE } from '../actions';
-import { appNavigatorConfig } from '../AppNavigator';
+import AppNavigatorConfig  from '../AppNavigatorConfig';
 
 const ListScreen = props => {
   if (props.items.length == 0) {
@@ -102,7 +102,7 @@ const AddList = props => {
         width: 32,
         fontSize: 40,
         textAlign: 'center',
-        color: appNavigatorConfig.navigationOptions.headerTitleStyle.color
+        color: AppNavigatorConfig.navigationOptions.headerTitleStyle.color
       }}
       onPress={() => props.listAdd()}
     />
