@@ -7,7 +7,7 @@ import BaseScreen from './BaseScreen';
 import SalmoListItem from './SalmoListItem';
 import { LIST_REMOVE_SALMO, LIST_SHARE } from '../actions';
 import { getSalmosFromList } from '../selectors';
-import AppNavigatorConfig from '../AppNavigator';
+import AppNavigatorConfig from '../AppNavigatorConfig';
 
 const ListDetail = props => {
   if (props.items.length == 0) {

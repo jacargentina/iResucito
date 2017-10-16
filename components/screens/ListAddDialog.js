@@ -5,7 +5,7 @@ import {
   SET_LIST_ADD_VISIBLE,
   LIST_CREATE,
   LIST_CREATE_NAME,
-  LIST_ADD_SALMO
+  addSalmoToList
 } from '../actions';
 import BaseModal from './BaseModal';
 import Toast from 'react-native-simple-toast';
@@ -84,15 +84,20 @@ const mapDispatchToProps = dispatch => {
     },
     createNewList: (name, salmo) => {
       dispatch({ type: LIST_CREATE, name: name });
-      if (salmo) {
-        dispatch({ type: LIST_ADD_SALMO, list: name, salmo: salmo });
-        setTimeout(() => {
-          Toast.showWithGravity(
-            `Creaste la lista "${name}" y agregaste "${salmo.titulo}"`, Toast.SHORT, Toast.BOTTOM
-          );
-        }, 350);
-      }
       dispatch({ type: SET_LIST_ADD_VISIBLE, visible: false, salmo: null });
+      if (salmo) {
+        dispatch(addSalmoToList(salmo, name))
+          .then(message => {
+            setTimeout(() => {
+              Toast.showWithGravity(message, Toast.SHORT, Toast.BOTTOM);
+            }, 350);
+          })
+          .catch(error => {
+            setTimeout(() => {
+              Toast.showWithGravity(error, Toast.SHORT, Toast.BOTTOM);
+            }, 350);
+          });
+      }
     }
   };
 };

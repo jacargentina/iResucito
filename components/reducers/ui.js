@@ -8,6 +8,7 @@ import {
   SET_LIST_CHOOSER_SALMO,
   SET_LIST_ADD_VISIBLE,
   SET_LIST_CREATE_NEW,
+  SET_LIST_ADD_RESULT,
   LIST_CREATE,
   LIST_CREATE_NAME,
   LIST_ADD_SALMO,
@@ -31,6 +32,7 @@ const initialState = Map({
   list_chooser_salmo: null,
   list_add_visible: false,
   list_add_salmo: null,
+  list_add_result: null,
   list_create_new: false,
   lists: Map(),
   settings: Map({
@@ -68,6 +70,8 @@ export default function ui(state = initialState, action) {
       return state;
     case SET_LIST_CHOOSER_SALMO:
       return state.set('list_chooser_salmo', action.salmo);
+    case SET_LIST_ADD_RESULT:
+      return state.set('list_add_result', action.message);
     case SET_LIST_ADD_VISIBLE:
       state = state.set('list_add_visible', action.visible);
       state = state.set('list_add_salmo', action.salmo);
@@ -94,9 +98,6 @@ export default function ui(state = initialState, action) {
       return state;
     case LIST_ADD_SALMO:
       var list = state.getIn(['lists', action.list]);
-      if (list.includes(action.salmo.nombre)) {
-        return state;
-      }
       state = state.setIn(
         ['lists', action.list, list.size],
         action.salmo.nombre

@@ -4,9 +4,9 @@ import { ListItem, Left, Body, Icon, Badge, Text } from 'native-base';
 import { FlatList } from 'react-native';
 import {
   SET_LIST_CHOOSER_SALMO,
-  LIST_ADD_SALMO,
   SET_LIST_ADD_VISIBLE,
-  SET_LIST_CREATE_NEW
+  SET_LIST_CREATE_NEW,
+  addSalmoToList
 } from '../actions';
 import { getProcessedLists } from '../selectors';
 import BaseModal from './BaseModal';
@@ -45,7 +45,7 @@ class ListChooser extends React.Component {
                 style={{ marginLeft: 0, paddingLeft: 0 }}
                 avatar
                 onPress={() => {
-                  this.props.salmoAddToList(this.props.salmo, item);
+                  this.props.salmoAddToList(this.props.salmo, item.name);
                 }}>
                 <Left>
                   <Badge style={{ backgroundColor: 'transparent' }}>
@@ -84,15 +84,18 @@ const mapDispatchToProps = dispatch => {
       dispatch({ type: SET_LIST_CHOOSER_SALMO, salmo: null });
     },
     salmoAddToList: (salmo, list) => {
-      dispatch({ type: LIST_ADD_SALMO, list: list.name, salmo: salmo });
       dispatch({ type: SET_LIST_CHOOSER_SALMO, salmo: null });
-      setTimeout(() => {
-        Toast.showWithGravity(
-          `Agregaste "${salmo.titulo}" a la lista "${list.name}"`,
-          Toast.SHORT,
-          Toast.BOTTOM
-        );
-      }, 350);
+      dispatch(addSalmoToList(salmo, list))
+        .then(message => {
+          setTimeout(() => {
+            Toast.showWithGravity(message, Toast.SHORT, Toast.BOTTOM);
+          }, 350);
+        })
+        .catch(error => {
+          setTimeout(() => {
+            Toast.showWithGravity(error, Toast.SHORT, Toast.BOTTOM);
+          }, 350);
+        });
     },
     closeAndAddToNewList: () => {
       dispatch({ type: SET_LIST_CHOOSER_SALMO, salmo: null });
