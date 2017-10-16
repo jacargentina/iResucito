@@ -85,6 +85,9 @@ const mapDispatchToProps = dispatch => {
 };
 
 const ShareList = props => {
+  if (props.items.length == 0) {
+    return null;
+  }
   return (
     <Icon
       name="share"

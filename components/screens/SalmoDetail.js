@@ -7,12 +7,13 @@ import {
   ScrollView,
   Alert
 } from 'react-native';
-import { Container, Content, Text } from 'native-base';
+import { Container, Content, Text, Icon } from 'native-base';
 import RNFS from 'react-native-fs';
 import DeviceInfo from 'react-native-device-info';
 import KeepAwake from 'react-native-keep-awake';
-import { SET_SALMO_CONTENT } from '../actions';
+import { SET_SALMO_CONTENT, decideSalmoAddDialog } from '../actions';
 import colors from '../colors';
+import { appNavigatorConfig } from '../AppNavigator';
 
 var mono = Platform.OS == 'ios' ? 'Menlo-Bold' : 'monospace';
 var isTablet = DeviceInfo.isTablet();
@@ -218,14 +219,37 @@ const loadSalmo = salmo => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    load: salmo => dispatch(loadSalmo(salmo))
+    load: salmo => dispatch(loadSalmo(salmo)),
+    showSalmosAdd: salmo => {
+      dispatch(decideSalmoAddDialog(salmo));
+    }
   };
 };
+
+const AddToList = props => {
+  return (
+    <Icon
+      name="add"
+      style={{
+        marginTop: 4,
+        marginRight: 8,
+        width: 32,
+        fontSize: 40,
+        textAlign: 'center',
+        color: appNavigatorConfig.navigationOptions.headerTitleStyle.color
+      }}
+      onPress={() => props.showSalmosAdd(props.salmo)}
+    />
+  );
+};
+
+const AddToListButton = connect(mapStateToProps, mapDispatchToProps)(AddToList);
 
 SalmoDetail.navigationOptions = props => ({
   title: props.navigation.state.params
     ? props.navigation.state.params.salmo.titulo
-    : 'Salmo'
+    : 'Salmo',
+  headerRight: <AddToListButton />
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SalmoDetail);
