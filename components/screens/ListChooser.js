@@ -10,6 +10,7 @@ import {
 } from '../actions';
 import { getProcessedLists } from '../selectors';
 import BaseModal from './BaseModal';
+import Toast from 'react-native-simple-toast';
 
 class ListChooser extends React.Component {
   constructor(props) {
@@ -85,6 +86,13 @@ const mapDispatchToProps = dispatch => {
     salmoAddToList: (salmo, list) => {
       dispatch({ type: LIST_ADD_SALMO, list: list.name, salmo: salmo });
       dispatch({ type: SET_LIST_CHOOSER_SALMO, salmo: null });
+      setTimeout(() => {
+        Toast.showWithGravity(
+          `Agregaste "${salmo.titulo}" a la lista "${list.name}"`,
+          Toast.SHORT,
+          Toast.BOTTOM
+        );
+      }, 350);
     },
     closeAndAddToNewList: () => {
       dispatch({ type: SET_LIST_CHOOSER_SALMO, salmo: null });

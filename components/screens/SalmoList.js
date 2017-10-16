@@ -6,11 +6,7 @@ import { _ } from 'lodash';
 import BaseScreen from './BaseScreen';
 import SalmoListItem from './SalmoListItem';
 import { appNavigatorConfig } from '../AppNavigator';
-import {
-  SET_SALMOS_FILTER,
-  SET_LIST_CHOOSER_SALMO,
-  SET_LIST_ADD_VISIBLE
-} from '../actions';
+import { SET_SALMOS_FILTER, decideSalmoAddDialog } from '../actions';
 import commonColor from '../../native-base-theme/variables/commonColor';
 
 const SalmoList = props => {
@@ -37,7 +33,7 @@ const SalmoList = props => {
                 color: commonColor.brandPrimary
               }}
               name="bookmark"
-              onPress={() => props.showSalmosAdd(props.showChooser, item)}
+              onPress={() => props.showSalmosAdd(item)}
             />
           );
           return (
@@ -74,13 +70,7 @@ const mapStateToProps = state => {
       return s.nombre.toLowerCase().includes(text_filter.toLowerCase());
     });
   }
-  var hasLists =
-    state.ui
-      .get('lists')
-      .keySeq()
-      .count() > 0;
   return {
-    showChooser: hasLists,
     items: items,
     showBadge: filter == null || !filter.hasOwnProperty('etapa')
   };
@@ -93,12 +83,8 @@ const mapDispatchToProps = dispatch => {
 
   return {
     filtrarHandler: _.debounce(filtrar, 600),
-    showSalmosAdd: (showChooser, salmo) => {
-      if (showChooser) {
-        dispatch({ type: SET_LIST_CHOOSER_SALMO, salmo: salmo });
-      } else {
-        dispatch({ type: SET_LIST_ADD_VISIBLE, visible: true, salmo: salmo });
-      }
+    showSalmosAdd: salmo => {
+      dispatch(decideSalmoAddDialog(salmo));
     }
   };
 };

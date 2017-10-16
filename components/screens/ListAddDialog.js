@@ -8,6 +8,7 @@ import {
   LIST_ADD_SALMO
 } from '../actions';
 import BaseModal from './BaseModal';
+import Toast from 'react-native-simple-toast';
 
 class ListAddDialog extends React.Component {
   constructor(props) {
@@ -85,6 +86,11 @@ const mapDispatchToProps = dispatch => {
       dispatch({ type: LIST_CREATE, name: name });
       if (salmo) {
         dispatch({ type: LIST_ADD_SALMO, list: name, salmo: salmo });
+        setTimeout(() => {
+          Toast.showWithGravity(
+            `Creaste la lista "${name}" y agregaste "${salmo.titulo}"`, Toast.SHORT, Toast.BOTTOM
+          );
+        }, 350);
       }
       dispatch({ type: SET_LIST_ADD_VISIBLE, visible: false, salmo: null });
     }

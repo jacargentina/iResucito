@@ -12,3 +12,19 @@ export const LIST_ADD_SALMO = 'LIST_ADD_SALMO';
 export const LIST_REMOVE_SALMO = 'LIST_REMOVE_SALMO';
 export const LIST_DELETE = 'LIST_DELETE';
 export const LIST_SHARE = 'LIST_SHARE';
+
+export const decideSalmoAddDialog = salmo => {
+  return (dispatch, getState) => {
+    let state = getState();
+    var hasLists =
+      state.ui
+        .get('lists')
+        .keySeq()
+        .count() > 0;
+    if (hasLists) {
+      dispatch({ type: SET_LIST_CHOOSER_SALMO, salmo: salmo });
+    } else {
+      dispatch({ type: SET_LIST_ADD_VISIBLE, visible: true, salmo: salmo });
+    }
+  };
+};
