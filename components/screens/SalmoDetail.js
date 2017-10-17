@@ -14,6 +14,7 @@ import KeepAwake from 'react-native-keep-awake';
 import { SET_SALMO_CONTENT, decideSalmoAddDialog } from '../actions';
 import AppNavigatorConfig from '../AppNavigatorConfig';
 import colors from '../colors';
+import color from 'color';
 
 var mono = Platform.OS == 'ios' ? 'Menlo-Bold' : 'monospace';
 var isTablet = DeviceInfo.isTablet();
@@ -193,10 +194,12 @@ const mapStateToProps = (state, props) => {
   var salmo = props.navigation.state.params.salmo;
   var salmo_lines = state.ui.get('salmo_lines');
   var keepAwake = state.ui.getIn(['settings', 'keepAwake']);
+  var backColor = color(colors[salmo.etapa]);
+  var colorStr = backColor.lighten(0.1).string();
   return {
     salmo: salmo,
     lines: salmo_lines || [],
-    background: colors[salmo.etapa],
+    background: colorStr,
     keepAwake: keepAwake
   };
 };
