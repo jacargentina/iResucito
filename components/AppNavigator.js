@@ -1,6 +1,6 @@
 import { Platform } from 'react-native';
 import { StackNavigator, TabNavigator } from 'react-navigation';
-import MenuScreen from './screens/MenuScreen';
+import SalmoSearch from './screens/SalmoSearch';
 import SalmoList from './screens/SalmoList';
 import SalmoDetail from './screens/SalmoDetail';
 import SettingsScreen from './screens/SettingsScreen';
@@ -12,19 +12,29 @@ var tabBarOptions = {};
 
 if (Platform.OS == 'android') {
   tabBarOptions.style = {
-    backgroundColor: '#A1887F'
+    backgroundColor: '#8D6E63'
   };
+  tabBarOptions.iconStyle = {
+    height: 30
+  };
+  // tabBarOptions.activeTintColor = '#A1887F';
+  // tabBarOptions.inactiveTintColor = 'gray';
+  tabBarOptions.indicatorStyle = {
+    backgroundColor: 'white',
+    height: 3
+  };
+  tabBarOptions.showIcon = true;
+  tabBarOptions.showLabel = false;
 } else {
   tabBarOptions.labelStyle = {
     fontSize: 14
   };
-  tabBarOptions.style = {
-  };
+  tabBarOptions.style = {};
 }
 
 const MenuNavigator = TabNavigator(
   {
-    Menu: { screen: MenuScreen },
+    Search: { screen: SalmoSearch },
     Lists: { screen: ListScreen },
     Settings: { screen: SettingsScreen }
   },

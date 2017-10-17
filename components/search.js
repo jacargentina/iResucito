@@ -1,6 +1,6 @@
 import badges from './badges';
 
-var menu = [
+var search = [
   {
     title: 'Alfabético',
     note: 'Todos los salmos en orden alfabético',
@@ -141,11 +141,11 @@ var menu = [
   }
 ];
 
-menu = menu.map(item => {
+search = search.map(item => {
   if (item.params) {
     item.params.title = item.title;
   }
   return item;
 });
 
-export default menu;
+export default search;

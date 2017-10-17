@@ -5,9 +5,9 @@ import { ListItem, Left, Body, Text, Icon } from 'native-base';
 import ListChooser from './ListChooser';
 import ListAddDialog from './ListAddDialog';
 import AcercaDe from './AcercaDe';
-import menu from '../menu';
+import search from '../search';
 
-const MenuScreen = props => {
+const SalmoSearch = props => {
   return (
     <ScrollView
       keyboardShouldPersistTaps="always"
@@ -16,7 +16,7 @@ const MenuScreen = props => {
       <ListAddDialog />
       <ListChooser />
       <FlatList
-        data={menu}
+        data={search}
         keyExtractor={item => item.title}
         renderItem={({ item }) => {
           if (item.divider) {
@@ -45,8 +45,8 @@ const MenuScreen = props => {
   );
 };
 
-MenuScreen.navigationOptions = () => ({
-  title: 'Búsqueda',
+SalmoSearch.navigationOptions = () => ({
+  title: 'Buscar',
   tabBarIcon: ({ focused, tintColor }) => {
     return (
       <Icon
@@ -58,4 +58,4 @@ MenuScreen.navigationOptions = () => ({
   }
 });
 
-export default connect()(MenuScreen);
+export default connect()(SalmoSearch);
