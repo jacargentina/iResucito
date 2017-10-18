@@ -61,7 +61,7 @@ var styles = StyleSheet.create({
 export function esLineaDeNotas(text) {
   var linea = text
     .trim()
-    .replace(/\[|\]|#|7|9|-|\u2013|aum/g, '')
+    .replace(/\[|\]|#|7|9|-|\/|\u2013|aum/g, '')
     .split(' ')
     .filter(i => i.length > 0);
   var soloNotas = linea.filter(palabra => {
