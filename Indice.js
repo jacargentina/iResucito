@@ -208,7 +208,7 @@
     etapa: 'Precatecumenado',
     pascua: true
   },
-  'Caritas Christi urget nos - 2 Co 5, 14-15': {
+  'Caritas Christi urget nos - 2 Co 5, 14-15. 17. 21': {
     etapa: 'Precatecumenado'
   },
   'Cántico de los tres jóvenes - Dn 3, 57-58': {
@@ -720,7 +720,7 @@
   'Bendito sea Dios - Ef 1, 3-13': {
     etapa: 'Eleccion'
   },
-  'Como condenados a muerte - 1 Co 4, 9': {
+  'Como condenados a muerte - 1 Co 4, 9.13': {
     etapa: 'Eleccion'
   },
   'Como destila la miel - Oda 40 de Salomon': {

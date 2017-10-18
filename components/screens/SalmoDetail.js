@@ -61,50 +61,29 @@ var styles = StyleSheet.create({
 export function esLineaDeNotas(text) {
   var linea = text
     .trim()
+    .replace(/\[|\]|#|7|9|-|\u2013|aum/g, '')
     .split(' ')
     .filter(i => i.length > 0);
-  var contieneNota =
-    linea.includes('Do') ||
-    linea.includes('Do7') ||
-    linea.includes('Do\u2013') ||
-    linea.includes('Re') ||
-    linea.includes('Re7') ||
-    linea.includes('Re\u2013') ||
-    linea.includes('Re-') ||
-    linea.includes('Mi') ||
-    linea.includes('Mi7') ||
-    linea.includes('Mi\u2013') ||
-    linea.includes('Fa') ||
-    linea.includes('Fa7') ||
-    linea.includes('Fa#') ||
-    linea.includes('Fa#-') ||
-    linea.includes('Sol') ||
-    linea.includes('Sol7') ||
-    linea.includes('Sol\u2013') ||
-    linea.includes('La') ||
-    linea.includes('La7') ||
-    linea.includes('La\u2013') ||
-    linea.includes('La-') ||
-    linea.includes('Si') ||
-    linea.includes('Si7') ||
-    linea.includes('Si\u2013');
-  return contieneNota;
+  var soloNotas = linea.filter(palabra => {
+    return (
+      palabra == 'Do' ||
+      palabra == 'Re' ||
+      palabra == 'Mi' ||
+      palabra == 'Fa' ||
+      palabra == 'Sol' ||
+      palabra == 'La' ||
+      palabra == 'Si'
+    );
+  });
+  return soloNotas.length == linea.length;
 }
 
 function preprocesarLinea(text, nextText) {
   var it = {};
-  if (text.startsWith('S.')) {
-    // Indicador de Salmista
+  if (text.startsWith('S.') || text.startsWith('A.') || text.startsWith('P.')) {
+    // Indicador de Salmista, Asamblea, Presbitero
     it = {
-      prefijo: 'S. ',
-      texto: text.substring(2).trim(),
-      style: styles.lineaNormal,
-      prefijoStyle: styles.prefijo
-    };
-  } else if (text.startsWith('A.')) {
-    // Indicador de Asamblea
-    it = {
-      prefijo: 'A. ',
+      prefijo: text.substring(0, 2) + ' ',
       texto: text.substring(2).trim(),
       style: styles.lineaNormal,
       prefijoStyle: styles.prefijo
