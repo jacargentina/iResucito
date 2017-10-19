@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Text, Input, Item, Label } from 'native-base';
+import { Text, Input, Item } from 'native-base';
 import {
   SET_LIST_ADD_VISIBLE,
   LIST_CREATE,
@@ -39,12 +39,10 @@ class ListAddDialog extends React.Component {
         title="Crear Lista">
         <Item
           style={{ marginBottom: 20 }}
-          floatingLabel
           error={!this.props.listCreateEnabled}
           success={this.props.listCreateEnabled}>
-          <Label>Nombre</Label>
           <Input
-            getRef={input => {
+            ref={input => {
               this.listNameInput = input;
             }}
             onChangeText={text => this.props.updateNewListName(text)}

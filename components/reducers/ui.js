@@ -84,11 +84,12 @@ export default function ui(state = initialState, action) {
       return state.set('list_create_new', action.value);
     case LIST_CREATE_NAME:
       state = state.set('list_create_name', action.name);
+      var candidateName = action.name.trim();
       var lists = state
         .get('lists')
         .keySeq()
         .toArray();
-      var result = action.name.trim() !== '' && !lists.includes(action.name);
+      var result = candidateName !== '' && !lists.includes(candidateName);
       return state.set('list_create_enabled', result);
     case LIST_CREATE:
       if (!state.getIn(['lists', action.name])) {
