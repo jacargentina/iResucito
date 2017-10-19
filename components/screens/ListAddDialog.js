@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Text, Input, Item } from 'native-base';
+import { Text, Input, Item, Button } from 'native-base';
 import {
   SET_LIST_ADD_VISIBLE,
   LIST_CREATE,
@@ -27,15 +27,52 @@ class ListAddDialog extends React.Component {
           ? 'Ya existe una lista con el mismo nombre'
           : 'Ingrese un nombre no vacío';
     }
+    var acceptButtons = [
+      <Button
+        key="0"
+        primary
+        onPress={() =>
+          this.props.createNewList(
+            this.props.listCreateName,
+            'palabra',
+            this.props.salmo
+          )}
+        disabled={!this.props.listCreateEnabled}>
+        <Text>Palabra</Text>
+      </Button>,
+      <Button
+        key="1"
+        style={{ marginLeft: 3 }}
+        primary
+        onPress={() =>
+          this.props.createNewList(
+            this.props.listCreateName,
+            'eucaristia',
+            this.props.salmo
+          )}
+        disabled={!this.props.listCreateEnabled}>
+        <Text>Eucaristía</Text>
+      </Button>,
+      <Button
+        key="2"
+        style={{ marginLeft: 3 }}
+        primary
+        onPress={() =>
+          this.props.createNewList(
+            this.props.listCreateName,
+            'libre',
+            this.props.salmo
+          )}
+        disabled={!this.props.listCreateEnabled}>
+        <Text>Libre</Text>
+      </Button>
+    ];
     return (
       <BaseModal
         visible={this.props.visible}
         modalShow={() => this.focusInput()}
         closeModal={() => this.props.closeListAdd()}
-        acceptModal={() =>
-          this.props.createNewList(this.props.listCreateName, this.props.salmo)}
-        acceptDisabled={!this.props.listCreateEnabled}
-        acceptText="Agregar"
+        acceptButtons={acceptButtons}
         title="Crear Lista">
         <Item
           style={{ marginBottom: 20 }}
@@ -80,7 +117,7 @@ const mapDispatchToProps = dispatch => {
     updateNewListName: text => {
       dispatch({ type: LIST_CREATE_NAME, name: text });
     },
-    createNewList: (name, salmo) => {
+    createNewList: (name, type, salmo) => {
       dispatch({ type: LIST_CREATE, name: name });
       dispatch({ type: SET_LIST_ADD_VISIBLE, visible: false, salmo: null });
       if (salmo) {

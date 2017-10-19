@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { ListItem, Left, Body, Icon, Badge, Text } from 'native-base';
+import { ListItem, Left, Body, Icon, Badge, Text, Button } from 'native-base';
 import { FlatList } from 'react-native';
 import {
   SET_LIST_CHOOSER_SALMO,
@@ -19,13 +19,22 @@ class ListChooser extends React.Component {
 
   render() {
     var listsTitle = this.props.lists.length > 0 ? 'Agregar en...' : '';
+    var acceptButtons = (
+      <Button
+        style={{
+          alignSelf: 'flex-end'
+        }}
+        primary
+        onPress={() => this.props.closeAndAddToNewList()}>
+        <Text>Crear Lista</Text>
+      </Button>
+    );
     return (
       <BaseModal
         visible={this.props.salmo !== null}
         modalHide={() => this.props.openNewDialog(this.props.listCreateNew)}
         closeModal={() => this.props.closeSalmosAdd()}
-        acceptModal={() => this.props.closeAndAddToNewList()}
-        acceptText="Crear Lista"
+        acceptButtons={acceptButtons}
         title={listsTitle}>
         <Text
           style={{

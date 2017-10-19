@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, Button, Icon } from 'native-base';
+import { Text, Icon } from 'native-base';
 import { View, Platform } from 'react-native';
 import Modal from 'react-native-modal';
 
@@ -61,15 +61,13 @@ const BaseModal = props => {
             }}>
             {props.children}
           </View>
-          <Button
+          <View
             style={{
-              alignSelf: 'flex-end'
-            }}
-            primary
-            onPress={() => props.acceptModal()}
-            disabled={props.acceptDisabled}>
-            <Text>{props.acceptText}</Text>
-          </Button>
+              flexDirection: 'row',
+              justifyContent: 'flex-end'
+            }}>
+            {props.acceptButtons}
+          </View>
         </View>
       </View>
     </Modal>
@@ -79,12 +77,9 @@ const BaseModal = props => {
 BaseModal.defaultProps = {
   visible: false,
   title: '',
-  acceptDisabled: false,
-  acceptText: 'Aceptar',
   closeModal: () => {},
   modalShow: () => {},
-  modalHide: () => {},
-  acceptModal: () => {}
+  modalHide: () => {}
 };
 
 export default BaseModal;
