@@ -35,9 +35,14 @@ const SalmoChooser = props => {
   var salmo = props.listMap.get(props.listKey);
   var textoBoton = !salmo ? 'Sin seleccionar' : salmo.titulo;
   return (
-    <View style={{ flex: 1, padding: 5, alignItems: 'center' }}>
+    <View
+      style={{
+        flex: 1,
+        padding: 5,
+        alignItems: 'center'
+      }}>
       <H3 style={{ marginBottom: 15 }}>{titulo}</H3>
-      <Button style={{ alignSelf: 'center' }} small bordered>
+      <Button small style={{ alignSelf: 'center' }}>
         <Text>{textoBoton}</Text>
       </Button>
     </View>
