@@ -30,6 +30,7 @@ class ListAddDialog extends React.Component {
     var acceptButtons = [
       <Button
         key="0"
+        style={{ flex: 1, margin: 2, justifyContent: 'center' }}
         primary
         onPress={() =>
           this.props.createNewList(
@@ -42,7 +43,7 @@ class ListAddDialog extends React.Component {
       </Button>,
       <Button
         key="1"
-        style={{ marginLeft: 3 }}
+        style={{ flex: 1, margin: 2, justifyContent: 'center' }}
         primary
         onPress={() =>
           this.props.createNewList(
@@ -55,7 +56,7 @@ class ListAddDialog extends React.Component {
       </Button>,
       <Button
         key="2"
-        style={{ marginLeft: 3 }}
+        style={{ flex: 1, margin: 2, justifyContent: 'center' }}
         primary
         onPress={() =>
           this.props.createNewList(

@@ -6,19 +6,24 @@ import Swipeout from 'react-native-swipeout';
 import BaseScreen from './BaseScreen';
 import { getProcessedLists } from '../selectors';
 import { SET_LIST_ADD_VISIBLE, LIST_DELETE } from '../actions';
-import AppNavigatorConfig  from '../AppNavigatorConfig';
+import AppNavigatorConfig from '../AppNavigatorConfig';
+import BaseCallToAction from './BaseCallToAction';
 
 const ListScreen = props => {
-  if (props.items.length == 0) {
-    var sinItems = (
-      <Text note style={{ textAlign: 'center', paddingTop: 20 }}>
-        Ningúna lista definida
-      </Text>
+  if (props.items.length == 0)
+    return (
+      <BaseCallToAction
+        icon="bookmark"
+        title="Agregar listas"
+        text="
+          Las listas te permiten organizar una celebración litúrgica para
+          recordar o compartir con los hermanos de la comunidad"
+        buttonHandler={() => props.listAdd()}
+        buttonText="Crear una lista"
+      />
     );
-  }
   return (
     <BaseScreen>
-      {sinItems}
       <FlatList
         data={props.items}
         keyExtractor={item => item.name}

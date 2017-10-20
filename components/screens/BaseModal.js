@@ -64,7 +64,7 @@ const BaseModal = props => {
           <View
             style={{
               flexDirection: 'row',
-              justifyContent: 'flex-end'
+              justifyContent: 'space-between'
             }}>
             {props.acceptButtons}
           </View>

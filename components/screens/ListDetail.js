@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Text, Icon } from 'native-base';
+import { Icon } from 'native-base';
 import { Alert, FlatList } from 'react-native';
 import Swipeout from 'react-native-swipeout';
 import BaseScreen from './BaseScreen';
@@ -8,18 +8,22 @@ import SalmoListItem from './SalmoListItem';
 import { LIST_REMOVE_SALMO, LIST_SHARE } from '../actions';
 import { getSalmosFromList } from '../selectors';
 import AppNavigatorConfig from '../AppNavigatorConfig';
+import BaseCallToAction from './BaseCallToAction';
 
 const ListDetail = props => {
-  if (props.items.length == 0) {
-    var sinItems = (
-      <Text note style={{ textAlign: 'center', paddingTop: 20 }}>
-        Ningún salmo agregado
-      </Text>
+  if (props.items.length == 0)
+    return (
+      <BaseCallToAction
+        icon="add"
+        title={props.navigation.state.params.list.name}
+        text="
+          La lista aún no contiene elementos. Agrega los salmos para cada parte de la liturgia"
+        //buttonHandler={() => }
+        buttonText="Agregar un salmo"
+      />
     );
-  }
   return (
     <BaseScreen>
-      {sinItems}
       <FlatList
         data={props.items}
         keyExtractor={item => item.path}
