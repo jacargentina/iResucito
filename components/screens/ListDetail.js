@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Icon, Text } from 'native-base';
-import { Alert, FlatList, View } from 'react-native';
+import { Icon } from 'native-base';
+import { Alert, FlatList, ScrollView } from 'react-native';
 import Swipeout from 'react-native-swipeout';
 import BaseScreen from './BaseScreen';
 import SalmoListItem from './SalmoListItem';
@@ -45,7 +45,7 @@ const ListDetail = props => {
     );
   }
   return (
-    <View
+    <ScrollView
       style={{
         flex: 1,
         padding: 20
@@ -64,7 +64,7 @@ const ListDetail = props => {
         <SalmoChooser listMap={props.listMap} listKey="comunion" />
       )}
       <SalmoChooser listMap={props.listMap} listKey="salida" />
-    </View>
+    </ScrollView>
   );
 };
 
