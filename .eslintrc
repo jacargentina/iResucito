@@ -20,7 +20,7 @@
     semi: ['error', 'always'],
     "react/jsx-closing-bracket-location": "off",
     "react/jsx-curly-spacing": "warn",
-    "react/jsx-max-props-per-line": ["warn", {"maximum": 3}],
+    "react/jsx-max-props-per-line": "off",
     "react/jsx-no-duplicate-props": "warn",
     "react/jsx-no-undef": "warn",
     "react/jsx-uses-react": "error",

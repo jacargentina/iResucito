@@ -42,7 +42,7 @@ const SalmoChooser = props => {
         alignItems: 'center'
       }}>
       <H3 style={{ marginBottom: 15 }}>{titulo}</H3>
-      <Button small style={{ alignSelf: 'center' }}>
+      <Button bordered primary small style={{ alignSelf: 'center' }}>
         <Text>{textoBoton}</Text>
       </Button>
     </View>
