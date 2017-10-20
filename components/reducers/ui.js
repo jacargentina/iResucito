@@ -16,7 +16,7 @@ import {
   LIST_SHARE
 } from '../actions';
 import { NavigationActions } from 'react-navigation';
-import { Map, OrderedMap, fromJS } from 'immutable';
+import { Map, fromJS } from 'immutable';
 import { esLineaDeNotas } from '../screens/SalmoDetail';
 import { localdata, clouddata } from '../data';
 
@@ -89,36 +89,29 @@ export default function ui(state = initialState, action) {
       return state.set('list_create_enabled', result);
     case LIST_CREATE:
       if (!state.getIn(['lists', action.name])) {
-        let schema = null;
+        let schema = Map({ type: action.list_type });
         switch (action.list_type) {
           case 'libre':
-            schema = {};
             break;
           case 'palabra':
-            schema = {
-              type: action.list_type,
-              entrada: null,
-              1: null,
-              2: null,
-              3: null,
-              4: null,
-              salida: null
-            };
+            schema = schema.set('entrada', null);
+            schema = schema.set('1', null);
+            schema = schema.set('2', null);
+            schema = schema.set('3', null);
+            schema = schema.set('4', null);
+            schema = schema.set('salida', null);
             break;
           case 'eucaristia':
-            schema = {
-              type: action.list_type,
-              entrada: null,
-              1: null,
-              2: null,
-              3: null,
-              paz: null,
-              comunion: null,
-              salida: null
-            };
+            schema = schema.set('entrada', null);
+            schema = schema.set('1', null);
+            schema = schema.set('2', null);
+            schema = schema.set('3', null);
+            schema = schema.set('paz', null);
+            schema = schema.set('comunion', null);
+            schema = schema.set('salida', null);
             break;
         }
-        state = state.setIn(['lists', action.name], OrderedMap(schema));
+        state = state.setIn(['lists', action.name], schema);
       }
       saveLists(state);
       return state;

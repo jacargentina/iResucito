@@ -1,64 +1,77 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Icon } from 'native-base';
-import { Alert, FlatList } from 'react-native';
+import { Icon, Text } from 'native-base';
+import { Alert, FlatList, View } from 'react-native';
 import Swipeout from 'react-native-swipeout';
 import BaseScreen from './BaseScreen';
 import SalmoListItem from './SalmoListItem';
+import SalmoChooser from './SalmoChooser';
 import { LIST_REMOVE_SALMO, LIST_SHARE } from '../actions';
 import { getSalmosFromList } from '../selectors';
 import AppNavigatorConfig from '../AppNavigatorConfig';
-import BaseCallToAction from './BaseCallToAction';
 
 const ListDetail = props => {
-  if (props.items.length == 0)
+  if (props.list.type == 'libre') {
     return (
-      <BaseCallToAction
-        icon="add"
-        title={props.navigation.state.params.list.name}
-        text="
-          La lista aún no contiene elementos. Agrega los salmos para cada parte de la liturgia"
-        //buttonHandler={() => }
-        buttonText="Agregar un salmo"
-      />
-    );
-  return (
-    <BaseScreen>
-      <FlatList
-        data={props.items}
-        keyExtractor={item => item.path}
-        renderItem={({ item }) => {
-          var swipeoutBtns = [
-            {
-              text: 'Eliminar',
-              type: 'delete',
-              onPress: () => {
-                props.salmoDelete(props.list, item);
+      <BaseScreen>
+        <FlatList
+          data={props.items}
+          keyExtractor={item => item.path}
+          renderItem={({ item }) => {
+            var swipeoutBtns = [
+              {
+                text: 'Eliminar',
+                type: 'delete',
+                onPress: () => {
+                  props.salmoDelete(props.list, item);
+                }
               }
-            }
-          ];
-          return (
-            <Swipeout
-              right={swipeoutBtns}
-              backgroundColor="white"
-              autoClose={true}>
-              <SalmoListItem
-                showBadge={true}
-                salmo={item}
-                navigation={props.navigation}
-              />
-            </Swipeout>
-          );
-        }}
-      />
-    </BaseScreen>
+            ];
+            return (
+              <Swipeout
+                right={swipeoutBtns}
+                backgroundColor="white"
+                autoClose={true}>
+                <SalmoListItem
+                  showBadge={true}
+                  salmo={item}
+                  navigation={props.navigation}
+                />
+              </Swipeout>
+            );
+          }}
+        />
+      </BaseScreen>
+    );
+  }
+  return (
+    <View
+      style={{
+        flex: 1,
+        padding: 20
+      }}>
+      <SalmoChooser listMap={props.listMap} listKey="entrada" />
+      <SalmoChooser listMap={props.listMap} listKey="1" />
+      <SalmoChooser listMap={props.listMap} listKey="2" />
+      <SalmoChooser listMap={props.listMap} listKey="3" />
+      {props.listMap.has('4') && (
+        <SalmoChooser listMap={props.listMap} listKey="4" />
+      )}
+      {props.listMap.has('paz') && (
+        <SalmoChooser listMap={props.listMap} listKey="paz" />
+      )}
+      {props.listMap.has('comunion') && (
+        <SalmoChooser listMap={props.listMap} listKey="comunion" />
+      )}
+      <SalmoChooser listMap={props.listMap} listKey="salida" />
+    </View>
   );
 };
 
 const mapStateToProps = (state, props) => {
   return {
     list: props.navigation.state.params.list,
-    items: getSalmosFromList(state, props)
+    listMap: getSalmosFromList(state, props)
   };
 };
 
@@ -89,7 +102,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 const ShareList = props => {
-  if (props.items.length == 0) {
+  if (props.listMap.keys().length == 0) {
     return null;
   }
   return (

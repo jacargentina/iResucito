@@ -5,10 +5,10 @@ const getLists = state => state.ui.get('lists');
 export const getProcessedLists = createSelector(getLists, lists => {
   var listNames = lists.keySeq().toArray();
   return listNames.map(name => {
-    var orderedMap = lists.get(name);
+    var listMap = lists.get(name);
     return {
       name: name,
-      type: orderedMap.get('type')
+      type: listMap.get('type')
     };
   });
 });
@@ -24,10 +24,13 @@ const getListFromNavigation = (state, props) => {
 export const getSalmosFromList = createSelector(
   getSalmos,
   getListFromNavigation,
-  (salmos, list) => {
-    var salmosDeList = list.map(nombre => {
-      return salmos.find(s => s.nombre == nombre);
+  (salmos, listMap) => {
+    var result = listMap.map((valor, clave) => {
+      if (clave !== 'type' && valor !== null) {
+        return salmos.find(s => s.nombre == valor);
+      }
+      return valor;
     });
-    return salmosDeList.toJS();
+    return result;
   }
 );
