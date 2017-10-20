@@ -119,7 +119,7 @@ const mapDispatchToProps = dispatch => {
       dispatch({ type: LIST_CREATE_NAME, name: text });
     },
     createNewList: (name, type, salmo) => {
-      dispatch({ type: LIST_CREATE, name: name });
+      dispatch({ type: LIST_CREATE, name: name, list_type: type });
       dispatch({ type: SET_LIST_ADD_VISIBLE, visible: false, salmo: null });
       if (salmo) {
         dispatch(addSalmoToList(salmo, name))

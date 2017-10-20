@@ -38,7 +38,6 @@ const ListScreen = props => {
               }
             }
           ];
-          var note = item.count > 0 ? `${item.count} salmos` : 'vacía';
           return (
             <Swipeout
               right={swipeoutBtns}
@@ -58,7 +57,7 @@ const ListScreen = props => {
                 </Left>
                 <Body>
                   <Text>{item.name}</Text>
-                  <Text note>{note}</Text>
+                  <Text note>{item.type}</Text>
                 </Body>
               </ListItem>
             </Swipeout>

@@ -8,7 +8,6 @@ import {
   SET_LIST_CHOOSER_SALMO,
   SET_LIST_ADD_VISIBLE,
   SET_LIST_CREATE_NEW,
-  SET_LIST_ADD_RESULT,
   LIST_CREATE,
   LIST_CREATE_NAME,
   LIST_ADD_SALMO,
@@ -17,7 +16,7 @@ import {
   LIST_SHARE
 } from '../actions';
 import { NavigationActions } from 'react-navigation';
-import { List, Map, fromJS } from 'immutable';
+import { Map, OrderedMap, fromJS } from 'immutable';
 import { esLineaDeNotas } from '../screens/SalmoDetail';
 import { localdata, clouddata } from '../data';
 
@@ -32,7 +31,6 @@ const initialState = Map({
   list_chooser_salmo: null,
   list_add_visible: false,
   list_add_salmo: null,
-  list_add_result: null,
   list_create_new: false,
   lists: Map(),
   settings: Map({
@@ -70,8 +68,6 @@ export default function ui(state = initialState, action) {
       return state;
     case SET_LIST_CHOOSER_SALMO:
       return state.set('list_chooser_salmo', action.salmo);
-    case SET_LIST_ADD_RESULT:
-      return state.set('list_add_result', action.message);
     case SET_LIST_ADD_VISIBLE:
       state = state.set('list_add_visible', action.visible);
       state = state.set('list_add_salmo', action.salmo);
@@ -93,7 +89,36 @@ export default function ui(state = initialState, action) {
       return state.set('list_create_enabled', result);
     case LIST_CREATE:
       if (!state.getIn(['lists', action.name])) {
-        state = state.setIn(['lists', action.name], List());
+        let schema = null;
+        switch (action.list_type) {
+          case 'libre':
+            schema = {};
+            break;
+          case 'palabra':
+            schema = {
+              type: action.list_type,
+              entrada: null,
+              1: null,
+              2: null,
+              3: null,
+              4: null,
+              salida: null
+            };
+            break;
+          case 'eucaristia':
+            schema = {
+              type: action.list_type,
+              entrada: null,
+              1: null,
+              2: null,
+              3: null,
+              paz: null,
+              comunion: null,
+              salida: null
+            };
+            break;
+        }
+        state = state.setIn(['lists', action.name], OrderedMap(schema));
       }
       saveLists(state);
       return state;
