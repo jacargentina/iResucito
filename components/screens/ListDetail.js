@@ -47,8 +47,7 @@ const ListDetail = props => {
   return (
     <ScrollView
       style={{
-        flex: 1,
-        padding: 20
+        flex: 1
       }}>
       <SalmoChooser listMap={props.listMap} listKey="entrada" />
       <SalmoChooser listMap={props.listMap} listKey="1" />

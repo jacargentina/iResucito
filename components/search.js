@@ -112,7 +112,7 @@ var search = [
     badge: null
   },
   {
-    title: 'Final',
+    title: 'Salida',
     note: 'Los salmos para la salida de las liturgias',
     route: 'SalmoList',
     params: { filter: { final: true } },

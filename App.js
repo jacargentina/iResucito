@@ -1,12 +1,11 @@
 import React from 'react';
 import { connect, Provider } from 'react-redux';
-import { BackHandler } from 'react-native';
+import { BackHandler, Platform } from 'react-native';
 import { addNavigationHelpers, NavigationActions } from 'react-navigation';
 import RNFS from 'react-native-fs';
-import { Platform } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
-import getTheme from './native-base-theme/components';
 import { StyleProvider } from 'native-base';
+import getTheme from './native-base-theme/components';
 import commonTheme from './native-base-theme/variables/platform';
 import Store from './components/store';
 import AppNavigator from './components/AppNavigator';
