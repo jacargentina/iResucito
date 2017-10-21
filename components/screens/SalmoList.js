@@ -1,13 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Icon, Text } from 'native-base';
+import { Text } from 'native-base';
 import { FlatList } from 'react-native';
 import { _ } from 'lodash';
 import BaseScreen from './BaseScreen';
 import SalmoListItem from './SalmoListItem';
 import AppNavigatorConfig from '../AppNavigatorConfig';
-import { SET_SALMOS_FILTER, decideSalmoAddDialog } from '../actions';
-import commonColor from '../../native-base-theme/variables/commonColor';
+import { filterSalmoList } from '../actions';
 
 const SalmoList = props => {
   if (props.items.length == 0) {
@@ -24,24 +23,11 @@ const SalmoList = props => {
         data={props.items}
         keyExtractor={item => item.path}
         renderItem={({ item }) => {
-          var buttons = (
-            <Icon
-              style={{
-                width: 32,
-                fontSize: 40,
-                textAlign: 'center',
-                color: commonColor.brandPrimary
-              }}
-              name="bookmark"
-              onPress={() => props.showSalmosAdd(item)}
-            />
-          );
           return (
             <SalmoListItem
               key={item.nombre}
               showBadge={props.showBadge}
               salmo={item}
-              rightButtons={buttons}
               navigation={props.navigation}
             />
           );
@@ -78,14 +64,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   var filtrar = text => {
-    dispatch({ type: SET_SALMOS_FILTER, filter: text });
+    dispatch(filterSalmoList(text));
   };
 
   return {
-    filtrarHandler: _.debounce(filtrar, 600),
-    showSalmosAdd: salmo => {
-      dispatch(decideSalmoAddDialog(salmo));
-    }
+    filtrarHandler: _.debounce(filtrar, 600)
   };
 };
 

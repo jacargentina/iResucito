@@ -46,3 +46,7 @@ export const addSalmoToList = (salmo, listName) => {
     );
   };
 };
+
+export const filterSalmoList = text => {
+  return { type: SET_SALMOS_FILTER, filter: text };
+};

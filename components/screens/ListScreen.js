@@ -15,9 +15,7 @@ const ListScreen = props => {
       <BaseCallToAction
         icon="bookmark"
         title="Agregar listas"
-        text="
-          Las listas te permiten organizar una celebración litúrgica para
-          recordar o compartir con los hermanos de la comunidad"
+        text="Las listas te permiten organizar una celebración litúrgica para recordar o compartir con los hermanos de la comunidad"
         buttonHandler={() => props.listAdd()}
         buttonText="Crear una lista"
       />

@@ -5,7 +5,7 @@ import { Alert, FlatList, ScrollView } from 'react-native';
 import Swipeout from 'react-native-swipeout';
 import BaseScreen from './BaseScreen';
 import SalmoListItem from './SalmoListItem';
-import SalmoChooser from './SalmoChooser';
+import LiturgiaChooser from './LiturgiaChooser';
 import { LIST_REMOVE_SALMO, LIST_SHARE } from '../actions';
 import { getSalmosFromList } from '../selectors';
 import AppNavigatorConfig from '../AppNavigatorConfig';
@@ -49,20 +49,36 @@ const ListDetail = props => {
       style={{
         flex: 1
       }}>
-      <SalmoChooser listMap={props.listMap} listKey="entrada" />
-      <SalmoChooser listMap={props.listMap} listKey="1" />
-      <SalmoChooser listMap={props.listMap} listKey="2" />
-      <SalmoChooser listMap={props.listMap} listKey="3" />
-      {props.listMap.has('4') && (
-        <SalmoChooser listMap={props.listMap} listKey="4" />
+      <LiturgiaChooser listMap={props.listMap} listKey="ambiental" />
+      <LiturgiaChooser listMap={props.listMap} listKey="entrada" />
+      <LiturgiaChooser listMap={props.listMap} listKey="1-monicion" />
+      <LiturgiaChooser listMap={props.listMap} listKey="1" />
+      {props.listMap.has('1-salmo') && (
+        <LiturgiaChooser listMap={props.listMap} listKey="1-salmo" />
       )}
+      <LiturgiaChooser listMap={props.listMap} listKey="2-monicion" />
+      <LiturgiaChooser listMap={props.listMap} listKey="2" />
+      {props.listMap.has('2-salmo') && (
+        <LiturgiaChooser listMap={props.listMap} listKey="2-salmo" />
+      )}
+      {props.listMap.has('3-monicion') && (
+        <LiturgiaChooser listMap={props.listMap} listKey="3-monicion" />
+      )}
+      {props.listMap.has('3') && (
+        <LiturgiaChooser listMap={props.listMap} listKey="3" />
+      )}
+      {props.listMap.has('3-salmo') && (
+        <LiturgiaChooser listMap={props.listMap} listKey="3-salmo" />
+      )}
+      <LiturgiaChooser listMap={props.listMap} listKey="evangelio-monicion" />
+      <LiturgiaChooser listMap={props.listMap} listKey="evangelio" />
       {props.listMap.has('paz') && (
-        <SalmoChooser listMap={props.listMap} listKey="paz" />
+        <LiturgiaChooser listMap={props.listMap} listKey="paz" />
       )}
       {props.listMap.has('comunion') && (
-        <SalmoChooser listMap={props.listMap} listKey="comunion" />
+        <LiturgiaChooser listMap={props.listMap} listKey="comunion" />
       )}
-      <SalmoChooser listMap={props.listMap} listKey="salida" />
+      <LiturgiaChooser listMap={props.listMap} listKey="salida" />
     </ScrollView>
   );
 };

@@ -94,18 +94,30 @@ export default function ui(state = initialState, action) {
           case 'libre':
             break;
           case 'palabra':
+            schema = schema.set('ambiental', null);
             schema = schema.set('entrada', null);
+            schema = schema.set('1-monicion', null);
             schema = schema.set('1', null);
+            schema = schema.set('1-salmo', null);
+            schema = schema.set('2-monicion', null);
             schema = schema.set('2', null);
+            schema = schema.set('2-salmo', null);
+            schema = schema.set('3-monicion', null);
             schema = schema.set('3', null);
-            schema = schema.set('4', null);
+            schema = schema.set('3-salmo', null);
+            schema = schema.set('evangelio-monicion', null);
+            schema = schema.set('evangelio', null);
             schema = schema.set('salida', null);
             break;
           case 'eucaristia':
+            schema = schema.set('ambiental', null);
             schema = schema.set('entrada', null);
+            schema = schema.set('1-monicion', null);
             schema = schema.set('1', null);
+            schema = schema.set('2-monicion', null);
             schema = schema.set('2', null);
-            schema = schema.set('3', null);
+            schema = schema.set('evangelio-monicion', null);
+            schema = schema.set('evangelio', null);
             schema = schema.set('paz', null);
             schema = schema.set('comunion', null);
             schema = schema.set('salida', null);
