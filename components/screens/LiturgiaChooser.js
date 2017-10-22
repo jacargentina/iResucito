@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Text, Button, Icon, ListItem, Left, Body, Input } from 'native-base';
 import { View, Alert } from 'react-native';
 import Swipeout from 'react-native-swipeout';
+import { openSalmoChooserDialog } from '../actions';
 
 const LiturgiaChooser = props => {
   var titulo = '';
@@ -63,8 +64,8 @@ const LiturgiaChooser = props => {
     props.listKey == '3' ||
     props.listKey == 'evangelio'
   ) {
-    var cita = props.listMap.get(props.listKey);
-    var textoCita = !cita ? 'Cita...' : cita;
+    // var cita = props.listMap.get(props.listKey);
+    // var textoCita = !cita ? 'Cita...' : cita;
     var swipeoutBtns = [
       {
         text: 'Limpiar',
@@ -95,8 +96,8 @@ const LiturgiaChooser = props => {
     props.listKey.includes('monicion') ||
     props.listKey.includes('ambiental')
   ) {
-    var nombre = props.listMap.get(props.listKey);
-    var textoMonicion = !nombre ? 'Seleccionar...' : nombre;
+    // var nombre = props.listMap.get(props.listKey);
+    // var textoMonicion = !nombre ? 'Seleccionar...' : nombre;
     item = (
       <Swipeout right={null} backgroundColor="white" autoClose={true}>
         <ListItem icon>
@@ -124,7 +125,11 @@ const LiturgiaChooser = props => {
             <Icon name="musical-notes" />
           </Left>
           <Body>
-            <Button transparent small>
+            <Button
+              transparent
+              small
+              onPress={() =>
+                props.openSalmoChooser(props.listMap, props.listKey)}>
               <Text>{textoSalmo}</Text>
             </Button>
           </Body>
@@ -149,10 +154,13 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-const mapDispatchToProps = () => {
+const mapDispatchToProps = dispatch => {
   return {
-    cleanItem: (listMap, listKey) => {
-      Alert.alert('Falta implementar');
+    openSalmoChooser: (list, key) => {
+      dispatch(openSalmoChooserDialog(list, key));
+    },
+    cleanItem: (list, key) => {
+      Alert.alert('Falta implementar', key);
     }
   };
 };

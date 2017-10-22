@@ -6,7 +6,8 @@ var search = [
     note: 'Todos los salmos en orden alfabético',
     route: 'SalmoList',
     params: {},
-    badge: badges.Alfabético
+    badge: badges.Alfabético,
+    chooser: 'Todos'
   },
   {
     title: 'Etapa del Camino',
@@ -88,42 +89,48 @@ var search = [
     note: 'Los salmos para inicio de las liturgias',
     route: 'SalmoList',
     params: { filter: { entrada: true } },
-    badge: null
+    badge: null,
+    chooser: 'Entrada'
   },
   {
     title: 'Paz y Ofrendas',
     note: 'Los salmos para el saludo de la paz y las ofrendas',
     route: 'SalmoList',
     params: { filter: { paz: true } },
-    badge: null
+    badge: null,
+    chooser: 'Paz/Ofrendas'
   },
   {
     title: 'Fracción del Pan',
     note: 'Los salmos para la fracción del pan',
     route: 'SalmoList',
     params: { filter: { fraccion: true } },
-    badge: null
+    badge: null,
+    chooser: 'Fracción Pan'
   },
   {
     title: 'Comunión',
     note: 'Los salmos para la comunión',
     route: 'SalmoList',
     params: { filter: { comunion: true } },
-    badge: null
+    badge: null,
+    chooser: 'Comunión'
   },
   {
     title: 'Salida',
     note: 'Los salmos para la salida de las liturgias',
     route: 'SalmoList',
     params: { filter: { final: true } },
-    badge: null
+    badge: null,
+    chooser: 'Salida'
   },
   {
     title: 'Cantos a la Virgen',
     note: 'Los salmos dedicados a la Virgen María',
     route: 'SalmoList',
     params: { filter: { virgen: true } },
-    badge: null
+    badge: null,
+    chooser: 'Virgen'
   },
   {
     title: 'Cantos de los Niños',

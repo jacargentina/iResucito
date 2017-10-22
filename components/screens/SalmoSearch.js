@@ -4,6 +4,7 @@ import { FlatList, ScrollView } from 'react-native';
 import { ListItem, Left, Body, Text, Icon } from 'native-base';
 import ListChooser from './ListChooser';
 import ListAddDialog from './ListAddDialog';
+import SalmoChooserDialog from './SalmoChooserDialog';
 import AcercaDe from './AcercaDe';
 import search from '../search';
 
@@ -15,6 +16,7 @@ const SalmoSearch = props => {
       <AcercaDe />
       <ListAddDialog />
       <ListChooser />
+      <SalmoChooserDialog />
       <FlatList
         data={search}
         keyExtractor={item => item.title}

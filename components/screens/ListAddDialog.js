@@ -4,11 +4,9 @@ import { Text, Input, Item, Button } from 'native-base';
 import {
   SET_LIST_ADD_VISIBLE,
   LIST_CREATE,
-  LIST_CREATE_NAME,
-  addSalmoToList
+  LIST_CREATE_NAME
 } from '../actions';
 import BaseModal from './BaseModal';
-import Toast from 'react-native-simple-toast';
 
 class ListAddDialog extends React.Component {
   constructor(props) {
@@ -33,11 +31,7 @@ class ListAddDialog extends React.Component {
         style={{ flex: 1, margin: 2, justifyContent: 'center' }}
         primary
         onPress={() =>
-          this.props.createNewList(
-            this.props.listCreateName,
-            'palabra',
-            this.props.salmo
-          )}
+          this.props.createNewList(this.props.listCreateName, 'palabra')}
         disabled={!this.props.listCreateEnabled}>
         <Text>Palabra</Text>
       </Button>,
@@ -46,11 +40,7 @@ class ListAddDialog extends React.Component {
         style={{ flex: 1, margin: 2, justifyContent: 'center' }}
         primary
         onPress={() =>
-          this.props.createNewList(
-            this.props.listCreateName,
-            'eucaristia',
-            this.props.salmo
-          )}
+          this.props.createNewList(this.props.listCreateName, 'eucaristia')}
         disabled={!this.props.listCreateEnabled}>
         <Text>Eucaristía</Text>
       </Button>,
@@ -59,11 +49,7 @@ class ListAddDialog extends React.Component {
         style={{ flex: 1, margin: 2, justifyContent: 'center' }}
         primary
         onPress={() =>
-          this.props.createNewList(
-            this.props.listCreateName,
-            'libre',
-            this.props.salmo
-          )}
+          this.props.createNewList(this.props.listCreateName, 'libre')}
         disabled={!this.props.listCreateEnabled}>
         <Text>Libre</Text>
       </Button>
@@ -99,12 +85,10 @@ class ListAddDialog extends React.Component {
 
 const mapStateToProps = state => {
   var visible = state.ui.get('list_add_visible');
-  var salmo = state.ui.get('list_add_salmo');
   var list_create_name = state.ui.get('list_create_name');
   var list_create_enabled = state.ui.get('list_create_enabled');
   return {
     visible: visible,
-    salmo: salmo,
     listCreateName: list_create_name,
     listCreateEnabled: list_create_enabled
   };
@@ -113,27 +97,14 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     closeListAdd: () => {
-      dispatch({ type: SET_LIST_ADD_VISIBLE, visible: false, salmo: null });
+      dispatch({ type: SET_LIST_ADD_VISIBLE, visible: false });
     },
     updateNewListName: text => {
       dispatch({ type: LIST_CREATE_NAME, name: text });
     },
-    createNewList: (name, type, salmo) => {
+    createNewList: (name, type) => {
       dispatch({ type: LIST_CREATE, name: name, list_type: type });
-      dispatch({ type: SET_LIST_ADD_VISIBLE, visible: false, salmo: null });
-      if (salmo) {
-        dispatch(addSalmoToList(salmo, name))
-          .then(message => {
-            setTimeout(() => {
-              Toast.showWithGravity(message, Toast.SHORT, Toast.BOTTOM);
-            }, 350);
-          })
-          .catch(error => {
-            setTimeout(() => {
-              Toast.showWithGravity(error, Toast.SHORT, Toast.BOTTOM);
-            }, 350);
-          });
-      }
+      dispatch({ type: SET_LIST_ADD_VISIBLE, visible: false });
     }
   };
 };

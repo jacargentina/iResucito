@@ -5,7 +5,7 @@ import {
   SET_SALMO_CONTENT,
   SET_ABOUT_VISIBLE,
   SET_SETTINGS_VALUE,
-  SET_LIST_CHOOSER_SALMO,
+  SET_CHOOSER_TARGETLIST,
   SET_LIST_ADD_VISIBLE,
   SET_LIST_CREATE_NEW,
   LIST_CREATE,
@@ -23,15 +23,15 @@ import { localdata, clouddata } from '../data';
 const initialState = Map({
   salmos: null,
   salmos_text_filter: null,
-  salmos_filter: null,
   salmo_lines: null,
   about_visible: false,
   list_create_name: '',
   list_create_enabled: false,
   list_chooser_salmo: null,
   list_add_visible: false,
-  list_add_salmo: null,
   list_create_new: false,
+  chooser_target_list: null,
+  chooser_target_key: null,
   lists: Map(),
   settings: Map({
     keepAwake: true
@@ -66,11 +66,12 @@ export default function ui(state = initialState, action) {
       state = state.setIn(['settings', action.key], action.value);
       localdata.save({ key: 'settings', data: state.get('settings').toJS() });
       return state;
-    case SET_LIST_CHOOSER_SALMO:
-      return state.set('list_chooser_salmo', action.salmo);
+    case SET_CHOOSER_TARGETLIST:
+      state = state.set('chooser_target_list', action.list);
+      state = state.set('chooser_target_key', action.key);
+      return state;
     case SET_LIST_ADD_VISIBLE:
       state = state.set('list_add_visible', action.visible);
-      state = state.set('list_add_salmo', action.salmo);
       if (!action.visible) {
         state = state.set('list_create_name', null);
         state = state.set('list_create_enabled', false);
@@ -169,8 +170,7 @@ export default function ui(state = initialState, action) {
     case NavigationActions.NAVIGATE:
       switch (action.routeName) {
         case 'SalmoList':
-          state = state.set('salmos_text_filter', null);
-          return state.set('salmos_filter', action.params.filter);
+          return state = state.set('salmos_text_filter', null);
       }
       return state;
     default:

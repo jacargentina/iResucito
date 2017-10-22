@@ -37,9 +37,11 @@ const SalmoList = props => {
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, props) => {
   var salmos = state.ui.get('salmos');
-  var filter = state.ui.get('salmos_filter');
+  var filter = props.navigation
+    ? props.navigation.state.params.filter
+    : props.filter;
   var items = [];
   if (salmos) {
     if (filter) {
@@ -92,7 +94,7 @@ SalmoList.navigationOptions = props => ({
     props.navigation.state.params && props.navigation.state.params.title
       ? props.navigation.state.params.title
       : 'Sin titulo',
-  headerRight: <ConnectedCountText />
+  headerRight: <ConnectedCountText {...props} />
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SalmoList);
