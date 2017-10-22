@@ -30,24 +30,54 @@ export const closeSalmoChooserDialog = () => {
 };
 
 export const addSalmoToList = (salmo, listName, listKey) => {
-  return (dispatch, getState) => {
-    // let state = getState();
-    // var theList = state.ui.getIn(['lists', listName]);
-    // if (theList.includes(salmo.nombre)) {
-    //   return Promise.reject('El salmo ya estaba en la lista');
-    // }
-    dispatch({
-      type: LIST_ADD_SALMO,
-      list: listName,
-      key: listKey,
-      salmo: salmo
-    });
-    return Promise.resolve(
-      `Agregaste "${salmo.titulo}" a la lista "${listName}"`
-    );
+  return {
+    type: LIST_ADD_SALMO,
+    list: listName,
+    key: listKey,
+    salmo: salmo
   };
+};
+
+export const shareList = (listName, listMap) => {
+  return { type: LIST_SHARE, list: listName, listMap: listMap };
+};
+
+export const deleteList = listName => {
+  return { type: LIST_DELETE, list: listName };
+};
+
+export const showListAddDialog = () => {
+  return { type: SET_LIST_ADD_VISIBLE, visible: true };
+};
+
+export const hideListAddDialog = () => {
+  return { type: SET_LIST_ADD_VISIBLE, visible: false };
 };
 
 export const filterSalmoList = text => {
   return { type: SET_SALMOS_FILTER, filter: text };
+};
+
+export const showAbout = () => {
+  return { type: SET_ABOUT_VISIBLE, visible: true };
+};
+
+export const hideAbout = () => {
+  return { type: SET_ABOUT_VISIBLE, visible: false };
+};
+
+export const updateNewListName = text => {
+  return { type: LIST_CREATE_NAME, name: text };
+};
+
+export const createList = (name, type) => {
+  return { type: LIST_CREATE, name: name, list_type: type };
+};
+
+export const setSalmoContent = content => {
+  return { type: SET_SALMO_CONTENT, content };
+};
+
+export const saveSetting = (key, value) => {
+  return { type: SET_SETTINGS_VALUE, key: key, value: value };
 };

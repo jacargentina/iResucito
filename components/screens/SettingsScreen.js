@@ -10,7 +10,7 @@ import {
   Right,
   Switch
 } from 'native-base';
-import { SET_SETTINGS_VALUE, SET_ABOUT_VISIBLE } from '../actions';
+import { saveSetting, showAbout } from '../actions';
 import BaseScreen from './BaseScreen';
 
 class SettingsScreen extends React.Component {
@@ -61,10 +61,10 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     updateSetting: (key, value) => {
-      dispatch({ type: SET_SETTINGS_VALUE, key: key, value: value });
+      dispatch(saveSetting(key, value));
     },
     showAbout: () => {
-      dispatch({ type: SET_ABOUT_VISIBLE, visible: true });
+      dispatch(showAbout());
     }
   };
 };

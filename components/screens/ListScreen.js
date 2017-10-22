@@ -5,7 +5,7 @@ import { Alert, FlatList, Platform } from 'react-native';
 import Swipeout from 'react-native-swipeout';
 import BaseScreen from './BaseScreen';
 import { getProcessedLists } from '../selectors';
-import { SET_LIST_ADD_VISIBLE, LIST_DELETE } from '../actions';
+import { showListAddDialog, deleteList } from '../actions';
 import AppNavigatorConfig from '../AppNavigatorConfig';
 import BaseCallToAction from './BaseCallToAction';
 
@@ -79,7 +79,7 @@ const mapDispatchToProps = dispatch => {
       Alert.alert(`Eliminar "${list.name}"`, '¿Confirma el borrado?', [
         {
           text: 'Eliminar',
-          onPress: () => dispatch({ type: LIST_DELETE, list: list.name }),
+          onPress: () => dispatch(deleteList(list.name)),
           style: 'destructive'
         },
         {
@@ -89,7 +89,7 @@ const mapDispatchToProps = dispatch => {
       ]);
     },
     listAdd: () => {
-      dispatch({ type: SET_LIST_ADD_VISIBLE, visible: true });
+      dispatch(showListAddDialog());
     }
   };
 };

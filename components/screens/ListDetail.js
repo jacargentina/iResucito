@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Icon, List } from 'native-base';
 import BaseScreen from './BaseScreen';
 import LiturgiaChooser from './LiturgiaChooser';
-import { LIST_SHARE } from '../actions';
+import { shareList } from '../actions';
 import { getSalmosFromList } from '../selectors';
 import AppNavigatorConfig from '../AppNavigatorConfig';
 
@@ -119,8 +119,8 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    listShare: (list, items) => {
-      dispatch({ type: LIST_SHARE, list: list.name, items: items });
+    listShare: (list, listMap) => {
+      dispatch(shareList(list.name, listMap));
     }
   };
 };
@@ -138,7 +138,7 @@ const ShareList = props => {
         color: AppNavigatorConfig.navigationOptions.headerTitleStyle.color
       }}
       onPress={() =>
-        props.listShare(props.navigation.state.params.list, props.items)}
+        props.listShare(props.navigation.state.params.list, props.listMap)}
     />
   );
 };

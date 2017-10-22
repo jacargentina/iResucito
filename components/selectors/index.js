@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import { getEsSalmo } from '../util';
 
 const getLists = state => state.ui.get('lists');
 
@@ -26,7 +27,7 @@ export const getSalmosFromList = createSelector(
   getListFromNavigation,
   (salmos, listMap) => {
     var result = listMap.map((valor, clave) => {
-      if (clave !== 'type' && valor !== null) {
+      if (getEsSalmo(clave) && valor !== null) {
         return salmos.find(s => s.nombre == valor);
       }
       return valor;

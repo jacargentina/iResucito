@@ -7,14 +7,14 @@ import {
   ScrollView,
   Alert
 } from 'react-native';
-import { Container, Content, Text, Icon } from 'native-base';
+import { Container, Content, Text } from 'native-base';
 import RNFS from 'react-native-fs';
 import DeviceInfo from 'react-native-device-info';
 import KeepAwake from 'react-native-keep-awake';
-import { SET_SALMO_CONTENT, decideSalmoAddDialog } from '../actions';
-import AppNavigatorConfig from '../AppNavigatorConfig';
+import { setSalmoContent } from '../actions';
 import colors from '../colors';
 import color from 'color';
+import { esLineaDeNotas } from '../util';
 
 var mono = Platform.OS == 'ios' ? 'Menlo-Bold' : 'monospace';
 var isTablet = DeviceInfo.isTablet();
@@ -57,26 +57,6 @@ var styles = StyleSheet.create({
     fontSize: fontSizeTexto
   }
 });
-
-export function esLineaDeNotas(text) {
-  var linea = text
-    .trim()
-    .replace(/\[|\]|#|7|9|-|\/|\u2013|aum/g, '')
-    .split(' ')
-    .filter(i => i.length > 0);
-  var soloNotas = linea.filter(palabra => {
-    return (
-      palabra == 'Do' ||
-      palabra == 'Re' ||
-      palabra == 'Mi' ||
-      palabra == 'Fa' ||
-      palabra == 'Sol' ||
-      palabra == 'La' ||
-      palabra == 'Si'
-    );
-  });
-  return soloNotas.length == linea.length;
-}
 
 function preprocesarLinea(text, nextText) {
   var it = {};
@@ -191,7 +171,7 @@ const loadSalmo = salmo => {
         : RNFS.readFileAssets(salmo.path);
     promise
       .then(content => {
-        dispatch({ type: SET_SALMO_CONTENT, content });
+        dispatch(setSalmoContent(content));
       })
       .catch(err => {
         Alert.alert('Error', err.message);
@@ -201,37 +181,14 @@ const loadSalmo = salmo => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    load: salmo => dispatch(loadSalmo(salmo)),
-    showSalmosAdd: salmo => {
-      dispatch(decideSalmoAddDialog(salmo));
-    }
+    load: salmo => dispatch(loadSalmo(salmo))
   };
 };
-
-const AddToList = props => {
-  return (
-    <Icon
-      name="add"
-      style={{
-        marginTop: 4,
-        marginRight: 8,
-        width: 32,
-        fontSize: 40,
-        textAlign: 'center',
-        color: AppNavigatorConfig.navigationOptions.headerTitleStyle.color
-      }}
-      onPress={() => props.showSalmosAdd(props.salmo)}
-    />
-  );
-};
-
-const AddToListButton = connect(mapStateToProps, mapDispatchToProps)(AddToList);
 
 SalmoDetail.navigationOptions = props => ({
   title: props.navigation.state.params
     ? props.navigation.state.params.salmo.titulo
-    : 'Salmo',
-  headerRight: <AddToListButton {...props} />
+    : 'Salmo'
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SalmoDetail);

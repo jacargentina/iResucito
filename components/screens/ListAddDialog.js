@@ -1,11 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Text, Input, Item, Button } from 'native-base';
-import {
-  SET_LIST_ADD_VISIBLE,
-  LIST_CREATE,
-  LIST_CREATE_NAME
-} from '../actions';
+import { hideListAddDialog, createList, updateNewListName } from '../actions';
 import BaseModal from './BaseModal';
 
 class ListAddDialog extends React.Component {
@@ -97,14 +93,14 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     closeListAdd: () => {
-      dispatch({ type: SET_LIST_ADD_VISIBLE, visible: false });
+      dispatch(hideListAddDialog());
     },
     updateNewListName: text => {
-      dispatch({ type: LIST_CREATE_NAME, name: text });
+      dispatch(updateNewListName(text));
     },
     createNewList: (name, type) => {
-      dispatch({ type: LIST_CREATE, name: name, list_type: type });
-      dispatch({ type: SET_LIST_ADD_VISIBLE, visible: false });
+      dispatch(createList(name, type));
+      dispatch(hideListAddDialog());
     }
   };
 };

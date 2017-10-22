@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { FlatList, ScrollView } from 'react-native';
 import { ListItem, Left, Body, Text, Icon } from 'native-base';
-import ListChooser from './ListChooser';
 import ListAddDialog from './ListAddDialog';
 import SalmoChooserDialog from './SalmoChooserDialog';
 import AcercaDe from './AcercaDe';
@@ -15,7 +14,6 @@ const SalmoSearch = props => {
       keyboardDismissMode="on-drag">
       <AcercaDe />
       <ListAddDialog />
-      <ListChooser />
       <SalmoChooserDialog />
       <FlatList
         data={search}

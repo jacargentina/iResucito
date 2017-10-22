@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { TouchableOpacity, Image, Modal } from 'react-native';
 import { Text, Icon, H1 } from 'native-base';
 import DeviceInfo from 'react-native-device-info';
-import { SET_ABOUT_VISIBLE } from '../actions';
+import { hideAbout } from '../actions';
 
 var pack = require('../../app.json');
 var cristo = require('../../img/cristo.jpg');
@@ -60,7 +60,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     closeAbout: () => {
-      dispatch({ type: SET_ABOUT_VISIBLE, visible: false });
+      dispatch(hideAbout());
     }
   };
 };

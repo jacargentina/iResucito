@@ -19,6 +19,7 @@ import { NavigationActions } from 'react-navigation';
 import { Map, fromJS } from 'immutable';
 import { esLineaDeNotas } from '../screens/SalmoDetail';
 import { localdata, clouddata } from '../data';
+import { getFriendlyText, getEsSalmo } from '../util';
 
 const initialState = Map({
   salmos: null,
@@ -45,6 +46,17 @@ const saveLists = state => {
   if (Platform.OS == 'ios') {
     clouddata.save(item);
   }
+};
+
+const getListMapTitleValue = (listMap, key) => {
+  if (listMap.has(key)) {
+    var valor = listMap.get(key);
+    if (getEsSalmo(key)) {
+      valor = valor.titulo;
+    }
+    return getFriendlyText(key) + ': ' + valor;
+  }
+  return null;
 };
 
 export default function ui(state = initialState, action) {
@@ -144,9 +156,25 @@ export default function ui(state = initialState, action) {
       saveLists(state);
       return state;
     case LIST_SHARE:
-      var textItems = action.items.map((item, i) => {
-        return `${i + 1}. ${item.titulo}`;
-      });
+      var textItems = [];
+      textItems.push(getListMapTitleValue(action.listMap, 'ambiental'));
+      textItems.push(getListMapTitleValue(action.listMap, 'entrada'));
+      textItems.push(getListMapTitleValue(action.listMap, '1-monicion'));
+      textItems.push(getListMapTitleValue(action.listMap, '1'));
+      textItems.push(getListMapTitleValue(action.listMap, '1-salmo'));
+      textItems.push(getListMapTitleValue(action.listMap, '2-monicion'));
+      textItems.push(getListMapTitleValue(action.listMap, '2'));
+      textItems.push(getListMapTitleValue(action.listMap, '2-salmo'));
+      textItems.push(getListMapTitleValue(action.listMap, '3-monicion'));
+      textItems.push(getListMapTitleValue(action.listMap, '3'));
+      textItems.push(getListMapTitleValue(action.listMap, '3-salmo'));
+      textItems.push(
+        getListMapTitleValue(action.listMap, 'evangelio-monicion')
+      );
+      textItems.push(getListMapTitleValue(action.listMap, 'evangelio'));
+      textItems.push(getListMapTitleValue(action.listMap, 'paz'));
+      textItems.push(getListMapTitleValue(action.listMap, 'comunion'));
+      textItems.push(getListMapTitleValue(action.listMap, 'salida'));
       Share.share(
         {
           message: textItems.join('\n'),
