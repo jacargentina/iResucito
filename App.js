@@ -21,8 +21,9 @@ class App extends React.Component {
 
   componentWillMount() {
     BackHandler.removeEventListener('hardwareBackPress', this.onBackPress);
-    this.props.init();
-    SplashScreen.hide();
+    this.props.init().then(() => {
+      SplashScreen.hide();
+    });
   }
 
   componentDidMount() {
@@ -100,25 +101,31 @@ const mapDispatchToProps = dispatch => {
         settings: null,
         lists: null
       };
+      var promises = [];
       /* eslint-disable no-console */
-      localdata
-        .getBatchData([{ key: 'settings' }, { key: 'lists' }])
-        .then(result => {
-          if (result[0]) {
-            action.settings = result[0];
-          }
-          if (result[1]) {
-            action.lists = result[1];
-          }
-          dispatch(action);
+      promises.push(
+        localdata
+          .getBatchData([{ key: 'settings' }, { key: 'lists' }])
+          .then(result => {
+            if (result[0]) {
+              action.settings = result[0];
+            }
+            if (result[1]) {
+              action.lists = result[1];
+            }
+            dispatch(action);
+          })
+          .catch(err => {
+            console.log('error loading from localdata', err);
+            dispatch(action);
+          })
+      );
+      promises.push(
+        clouddata.load({ key: 'lists' }).then(res => {
+          console.log('loaded from cloud', res);
         })
-        .catch(err => {
-          console.log('error loading from localdata', err);
-          dispatch(action);
-        });
-      clouddata.load({ key: 'lists' }).then(res => {
-        console.log('loaded from cloud', res);
-      });
+      );
+      return Promise.all(promises);
     }
   };
 };

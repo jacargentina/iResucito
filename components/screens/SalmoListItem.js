@@ -13,7 +13,7 @@ const SalmoListItem = props => {
     <ListItem
       avatar={props.showBadge}
       onPress={() => {
-        props.navigation.navigate('SalmoDetail', { salmo: props.salmo });
+        props.onPress(props.salmo);
       }}>
       {badgeWrapper}
       <Body>

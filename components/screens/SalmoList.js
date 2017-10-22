@@ -28,7 +28,7 @@ const SalmoList = props => {
               key={item.nombre}
               showBadge={props.showBadge}
               salmo={item}
-              navigation={props.navigation}
+              onPress={props.onPress}
             />
           );
         }}
@@ -39,9 +39,10 @@ const SalmoList = props => {
 
 const mapStateToProps = (state, props) => {
   var salmos = state.ui.get('salmos');
-  var filter = props.navigation
-    ? props.navigation.state.params.filter
-    : props.filter;
+  var filter =
+    props.navigation && props.navigation.state.params
+      ? props.navigation.state.params.filter
+      : props.filter;
   var items = [];
   if (salmos) {
     if (filter) {
@@ -64,13 +65,20 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, props) => {
   var filtrar = text => {
     dispatch(filterSalmoList(text));
   };
 
   return {
-    filtrarHandler: _.debounce(filtrar, 600)
+    filtrarHandler: _.debounce(filtrar, 600),
+    onPress: salmo => {
+      if (props.onPress) {
+        props.onPress(salmo);
+      } else {
+        props.navigation.navigate('SalmoDetail', { salmo: salmo });
+      }
+    }
   };
 };
 

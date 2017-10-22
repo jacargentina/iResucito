@@ -129,17 +129,14 @@ export default function ui(state = initialState, action) {
       saveLists(state);
       return state;
     case LIST_ADD_SALMO:
-      var list = state.getIn(['lists', action.list]);
       state = state.setIn(
-        ['lists', action.list, list.size],
+        ['lists', action.list, action.key],
         action.salmo.nombre
       );
       saveLists(state);
       return state;
     case LIST_REMOVE_SALMO:
-      var rList = state.getIn(['lists', action.list]);
-      var index = rList.indexOf(action.salmo.nombre);
-      state = state.deleteIn(['lists', action.list, index]);
+      state = state.updateIn(['lists', action.list, action.key], null);
       saveLists(state);
       return state;
     case LIST_DELETE:
@@ -170,7 +167,7 @@ export default function ui(state = initialState, action) {
     case NavigationActions.NAVIGATE:
       switch (action.routeName) {
         case 'SalmoList':
-          return state = state.set('salmos_text_filter', null);
+          return (state = state.set('salmos_text_filter', null));
       }
       return state;
     default:

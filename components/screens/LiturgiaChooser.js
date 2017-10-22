@@ -129,7 +129,7 @@ const LiturgiaChooser = props => {
               transparent
               small
               onPress={() =>
-                props.openSalmoChooser(props.listMap, props.listKey)}>
+                props.openSalmoChooser(props.listName, props.listKey)}>
               <Text>{textoSalmo}</Text>
             </Button>
           </Body>
@@ -150,6 +150,7 @@ const LiturgiaChooser = props => {
 const mapStateToProps = (state, props) => {
   return {
     listMap: props.listMap,
+    listName: props.listName,
     listKey: props.listKey
   };
 };
