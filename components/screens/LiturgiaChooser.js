@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Text, Button, H3, Icon } from 'native-base';
-import { View } from 'react-native';
+import { Text, Button, Icon, ListItem, Left, Body, Input } from 'native-base';
+import { View, Alert } from 'react-native';
+import Swipeout from 'react-native-swipeout';
 
 const LiturgiaChooser = props => {
   var titulo = '';
@@ -64,52 +65,78 @@ const LiturgiaChooser = props => {
   ) {
     var cita = props.listMap.get(props.listKey);
     var textoCita = !cita ? 'Cita...' : cita;
+    var swipeoutBtns = [
+      {
+        text: 'Limpiar',
+        type: 'delete',
+        onPress: () => {
+          props.cleanItem(props.listMap, props.listKey);
+        }
+      }
+    ];
     item = (
-      <View
-        style={{
-          flexDirection: 'row'
-        }}>
-        <Button transparent iconLeft primary>
-          <Icon name="add" />
-          <Text>{textoCita}</Text>
-        </Button>
-      </View>
+      <Swipeout right={swipeoutBtns} backgroundColor="white" autoClose={true}>
+        <ListItem icon>
+          <Left>
+            <Icon name="book" />
+          </Left>
+          <Body>
+            <Input
+              onChangeText={null} //text => this.props.updateNewListName(text)
+              value=""
+              clearButtonMode="always"
+              autoCorrect={false}
+            />
+          </Body>
+        </ListItem>
+      </Swipeout>
     );
   } else if (
     props.listKey.includes('monicion') ||
     props.listKey.includes('ambiental')
   ) {
     var nombre = props.listMap.get(props.listKey);
-    var textoMonicion = !nombre ? 'Elegir hermano...' : nombre;
+    var textoMonicion = !nombre ? 'Seleccionar...' : nombre;
     item = (
-      <View
-        style={{
-          flexDirection: 'row'
-        }}>
-        <Button transparent iconLeft primary>
-          <Icon name="add" />
-          <Text>{textoMonicion}</Text>
-        </Button>
-      </View>
+      <Swipeout right={null} backgroundColor="white" autoClose={true}>
+        <ListItem icon>
+          <Left>
+            <Icon name="person" />
+          </Left>
+          <Body>
+            <Input
+              onChangeText={null} //text => this.props.updateNewListName(text)
+              value=""
+              clearButtonMode="always"
+              autoCorrect={false}
+            />
+          </Body>
+        </ListItem>
+      </Swipeout>
     );
   } else {
     var salmo = props.listMap.get(props.listKey);
-    var textoSalmo = !salmo ? 'Elegir salmo...' : salmo.titulo;
+    var textoSalmo = !salmo ? 'Buscar...' : salmo.titulo;
     item = (
-      <View
-        style={{
-          flexDirection: 'row'
-        }}>
-        <Button transparent iconLeft primary>
-          <Icon name="add" />
-          <Text>{textoSalmo}</Text>
-        </Button>
-      </View>
+      <Swipeout right={null} backgroundColor="white" autoClose={true}>
+        <ListItem icon>
+          <Left>
+            <Icon name="musical-notes" />
+          </Left>
+          <Body>
+            <Button transparent small>
+              <Text>{textoSalmo}</Text>
+            </Button>
+          </Body>
+        </ListItem>
+      </Swipeout>
     );
   }
   return (
-    <View style={{ marginTop: 15, marginBottom: 15, alignItems: 'center' }}>
-      <H3 style={{ marginBottom: 15 }}>{titulo}</H3>
+    <View>
+      <ListItem itemDivider>
+        <Text>{titulo}</Text>
+      </ListItem>
       {item}
     </View>
   );
@@ -123,6 +150,10 @@ const mapStateToProps = (state, props) => {
 };
 
 const mapDispatchToProps = () => {
-  return {};
+  return {
+    cleanItem: (listMap, listKey) => {
+      Alert.alert('Falta implementar');
+    }
+  };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(LiturgiaChooser);
