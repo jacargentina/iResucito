@@ -9,6 +9,7 @@ export const SET_LIST_ADD_VISIBLE = 'SET_LIST_ADD_VISIBLE';
 export const LIST_CREATE_NAME = 'LIST_CREATE_NAME';
 export const LIST_CREATE = 'LIST_CREATE';
 export const LIST_ADD_SALMO = 'LIST_ADD_SALMO';
+export const LIST_ADD_TEXT = 'LIST_ADD_TEXT';
 export const LIST_REMOVE_SALMO = 'LIST_REMOVE_SALMO';
 export const LIST_DELETE = 'LIST_DELETE';
 export const LIST_SHARE = 'LIST_SHARE';
@@ -40,6 +41,10 @@ export const addSalmoToList = (salmo, listName, listKey) => {
 
 export const shareList = (listName, listMap) => {
   return { type: LIST_SHARE, list: listName, listMap: listMap };
+};
+
+export const updateListMapText = (listName, key, text) => {
+  return { type: LIST_ADD_TEXT, list: listName, key: key, text: text };
 };
 
 export const deleteList = listName => {

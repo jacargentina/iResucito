@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Icon, List } from 'native-base';
 import BaseScreen from './BaseScreen';
-import LiturgiaChooser from './LiturgiaChooser';
+import ListDetailItem from './ListDetailItem';
 import { shareList } from '../actions';
 import { getSalmosFromList } from '../selectors';
 import AppNavigatorConfig from '../AppNavigatorConfig';
@@ -11,99 +11,99 @@ const ListDetail = props => {
   return (
     <BaseScreen>
       <List>
-        <LiturgiaChooser
+        <ListDetailItem
           listName={props.list.name}
-          listMap={props.listMap}
           listKey="ambiental"
+          listText={props.listMap.get('ambiental')}
         />
-        <LiturgiaChooser
+        <ListDetailItem
           listName={props.list.name}
-          listMap={props.listMap}
           listKey="entrada"
+          listText={props.listMap.get('entrada')}
         />
-        <LiturgiaChooser
+        <ListDetailItem
           listName={props.list.name}
-          listMap={props.listMap}
           listKey="1-monicion"
+          listText={props.listMap.get('1-monicion')}
         />
-        <LiturgiaChooser
+        <ListDetailItem
           listName={props.list.name}
-          listMap={props.listMap}
           listKey="1"
+          listText={props.listMap.get('1')}
         />
         {props.listMap.has('1-salmo') && (
-          <LiturgiaChooser
+          <ListDetailItem
             listName={props.list.name}
-            listMap={props.listMap}
             listKey="1-salmo"
+            listText={props.listMap.get('1-salmo')}
           />
         )}
-        <LiturgiaChooser
+        <ListDetailItem
           listName={props.list.name}
-          listMap={props.listMap}
           listKey="2-monicion"
+          listText={props.listMap.get('2-monicion')}
         />
-        <LiturgiaChooser
+        <ListDetailItem
           listName={props.list.name}
-          listMap={props.listMap}
           listKey="2"
+          listText={props.listMap.get('2')}
         />
         {props.listMap.has('2-salmo') && (
-          <LiturgiaChooser
+          <ListDetailItem
             listName={props.list.name}
-            listMap={props.listMap}
             listKey="2-salmo"
+            listText={props.listMap.get('2-salmo')}
           />
         )}
         {props.listMap.has('3-monicion') && (
-          <LiturgiaChooser
+          <ListDetailItem
             listName={props.list.name}
-            listMap={props.listMap}
             listKey="3-monicion"
+            listText={props.listMap.get('3-monicion')}
           />
         )}
         {props.listMap.has('3') && (
-          <LiturgiaChooser
+          <ListDetailItem
             listName={props.list.name}
-            listMap={props.listMap}
             listKey="3"
+            listText={props.listMap.get('3')}
           />
         )}
         {props.listMap.has('3-salmo') && (
-          <LiturgiaChooser
+          <ListDetailItem
             listName={props.list.name}
-            listMap={props.listMap}
             listKey="3-salmo"
+            listText={props.listMap.get('3-salmo')}
           />
         )}
-        <LiturgiaChooser
+        <ListDetailItem
           listName={props.list.name}
-          listMap={props.listMap}
           listKey="evangelio-monicion"
+          listText={props.listMap.get('evangelio-monicion')}
         />
-        <LiturgiaChooser
+        <ListDetailItem
           listName={props.list.name}
-          listMap={props.listMap}
           listKey="evangelio"
+          listText={props.listMap.get('evangelio')}
         />
         {props.listMap.has('paz') && (
-          <LiturgiaChooser
+          <ListDetailItem
             listName={props.list.name}
-            listMap={props.listMap}
             listKey="paz"
+            listText={props.listMap.get('paz')}
           />
         )}
         {props.listMap.has('comunion') && (
-          <LiturgiaChooser
+          <ListDetailItem
             listName={props.list.name}
-            listMap={props.listMap}
             listKey="comunion"
+            listText={props.listMap.get('comunion')}
           />
         )}
-        <LiturgiaChooser
+        <ListDetailItem
           listName={props.list.name}
-          listMap={props.listMap}
           listKey="salida"
+          listText={props.listMap.get('salida')}
         />
       </List>
     </BaseScreen>

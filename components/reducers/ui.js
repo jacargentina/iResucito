@@ -11,6 +11,7 @@ import {
   LIST_CREATE,
   LIST_CREATE_NAME,
   LIST_ADD_SALMO,
+  LIST_ADD_TEXT,
   LIST_REMOVE_SALMO,
   LIST_DELETE,
   LIST_SHARE
@@ -48,13 +49,15 @@ const saveLists = state => {
   }
 };
 
-const getListMapTitleValue = (listMap, key) => {
+const getItemForShare = (listMap, key) => {
   if (listMap.has(key)) {
     var valor = listMap.get(key);
-    if (getEsSalmo(key)) {
+    if (valor !== null && getEsSalmo(key)) {
       valor = valor.titulo;
     }
-    return getFriendlyText(key) + ': ' + valor;
+    if (valor) {
+      return getFriendlyText(key) + ': ' + valor;
+    }
   }
   return null;
 };
@@ -147,6 +150,10 @@ export default function ui(state = initialState, action) {
       );
       saveLists(state);
       return state;
+    case LIST_ADD_TEXT:
+      state = state.setIn(['lists', action.list, action.key], action.text);
+      saveLists(state);
+      return state;
     case LIST_REMOVE_SALMO:
       state = state.updateIn(['lists', action.list, action.key], null);
       saveLists(state);
@@ -156,28 +163,29 @@ export default function ui(state = initialState, action) {
       saveLists(state);
       return state;
     case LIST_SHARE:
-      var textItems = [];
-      textItems.push(getListMapTitleValue(action.listMap, 'ambiental'));
-      textItems.push(getListMapTitleValue(action.listMap, 'entrada'));
-      textItems.push(getListMapTitleValue(action.listMap, '1-monicion'));
-      textItems.push(getListMapTitleValue(action.listMap, '1'));
-      textItems.push(getListMapTitleValue(action.listMap, '1-salmo'));
-      textItems.push(getListMapTitleValue(action.listMap, '2-monicion'));
-      textItems.push(getListMapTitleValue(action.listMap, '2'));
-      textItems.push(getListMapTitleValue(action.listMap, '2-salmo'));
-      textItems.push(getListMapTitleValue(action.listMap, '3-monicion'));
-      textItems.push(getListMapTitleValue(action.listMap, '3'));
-      textItems.push(getListMapTitleValue(action.listMap, '3-salmo'));
-      textItems.push(
-        getListMapTitleValue(action.listMap, 'evangelio-monicion')
-      );
-      textItems.push(getListMapTitleValue(action.listMap, 'evangelio'));
-      textItems.push(getListMapTitleValue(action.listMap, 'paz'));
-      textItems.push(getListMapTitleValue(action.listMap, 'comunion'));
-      textItems.push(getListMapTitleValue(action.listMap, 'salida'));
+      var items = [];
+      items.push(getItemForShare(action.listMap, 'ambiental'));
+      items.push(getItemForShare(action.listMap, 'entrada'));
+      items.push(getItemForShare(action.listMap, '1-monicion'));
+      items.push(getItemForShare(action.listMap, '1'));
+      items.push(getItemForShare(action.listMap, '1-salmo'));
+      items.push(getItemForShare(action.listMap, '2-monicion'));
+      items.push(getItemForShare(action.listMap, '2'));
+      items.push(getItemForShare(action.listMap, '2-salmo'));
+      items.push(getItemForShare(action.listMap, '3-monicion'));
+      items.push(getItemForShare(action.listMap, '3'));
+      items.push(getItemForShare(action.listMap, '3-salmo'));
+      items.push(getItemForShare(action.listMap, 'evangelio-monicion'));
+      items.push(getItemForShare(action.listMap, 'evangelio'));
+      items.push(getItemForShare(action.listMap, 'paz'));
+      items.push(getItemForShare(action.listMap, 'comunion'));
+      items.push(getItemForShare(action.listMap, 'salida'));
+      var message = items.filter(n => n).join('\n');
+      /* eslint-disable no-console */
+      console.log('Texto para compartir', message);
       Share.share(
         {
-          message: textItems.join('\n'),
+          message: message,
           title: `Lista iResucitó ${action.list}`,
           url: undefined
         },

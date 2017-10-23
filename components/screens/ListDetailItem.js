@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import { Text, Button, Icon, ListItem, Left, Body, Input } from 'native-base';
 import { View, Alert } from 'react-native';
 import Swipeout from 'react-native-swipeout';
-import { openSalmoChooserDialog } from '../actions';
+import { openSalmoChooserDialog, updateListMapText } from '../actions';
 import { getFriendlyText } from '../util';
 
-const LiturgiaChooser = props => {
+const ListDetailItem = props => {
   var titulo = getFriendlyText(props.listKey);
   var item = null;
   if (
@@ -15,14 +15,12 @@ const LiturgiaChooser = props => {
     props.listKey == '3' ||
     props.listKey == 'evangelio'
   ) {
-    // var cita = props.listMap.get(props.listKey);
-    // var textoCita = !cita ? 'Cita...' : cita;
     var swipeoutBtns = [
       {
         text: 'Limpiar',
         type: 'delete',
         onPress: () => {
-          props.cleanItem(props.listMap, props.listKey);
+          props.cleanItem(props.listName, props.listKey);
         }
       }
     ];
@@ -34,8 +32,9 @@ const LiturgiaChooser = props => {
           </Left>
           <Body>
             <Input
-              onChangeText={null} //text => this.props.updateNewListName(text)
-              value=""
+              onChangeText={text =>
+                props.updateItem(props.listName, props.listKey, text)}
+              value={props.listText}
               clearButtonMode="always"
               autoCorrect={false}
             />
@@ -47,8 +46,6 @@ const LiturgiaChooser = props => {
     props.listKey.includes('monicion') ||
     props.listKey.includes('ambiental')
   ) {
-    // var nombre = props.listMap.get(props.listKey);
-    // var textoMonicion = !nombre ? 'Seleccionar...' : nombre;
     item = (
       <Swipeout right={null} backgroundColor="white" autoClose={true}>
         <ListItem icon>
@@ -57,8 +54,9 @@ const LiturgiaChooser = props => {
           </Left>
           <Body>
             <Input
-              onChangeText={null} //text => this.props.updateNewListName(text)
-              value=""
+              onChangeText={text =>
+                props.updateItem(props.listName, props.listKey, text)}
+              value={props.listText}
               clearButtonMode="always"
               autoCorrect={false}
             />
@@ -67,8 +65,7 @@ const LiturgiaChooser = props => {
       </Swipeout>
     );
   } else {
-    var salmo = props.listMap.get(props.listKey);
-    var textoSalmo = !salmo ? 'Buscar...' : salmo.titulo;
+    var text = props.listText == null ? 'Buscar...' : props.listText.titulo;
     item = (
       <Swipeout right={null} backgroundColor="white" autoClose={true}>
         <ListItem icon>
@@ -81,7 +78,7 @@ const LiturgiaChooser = props => {
               small
               onPress={() =>
                 props.openSalmoChooser(props.listName, props.listKey)}>
-              <Text>{textoSalmo}</Text>
+              <Text>{text}</Text>
             </Button>
           </Body>
         </ListItem>
@@ -100,9 +97,9 @@ const LiturgiaChooser = props => {
 
 const mapStateToProps = (state, props) => {
   return {
-    listMap: props.listMap,
     listName: props.listName,
-    listKey: props.listKey
+    listKey: props.listKey,
+    listText: props.listText
   };
 };
 
@@ -113,7 +110,11 @@ const mapDispatchToProps = dispatch => {
     },
     cleanItem: (list, key) => {
       Alert.alert('Falta implementar', key);
+    },
+    updateItem: (list, key, text) => {
+      dispatch(updateListMapText(list, key, text));
     }
   };
 };
-export default connect(mapStateToProps, mapDispatchToProps)(LiturgiaChooser);
+
+export default connect(mapStateToProps, mapDispatchToProps)(ListDetailItem);
