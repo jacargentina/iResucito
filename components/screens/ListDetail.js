@@ -20,6 +20,7 @@ const ListDetail = props => {
           listName={props.list.name}
           listKey="entrada"
           listText={props.listMap.get('entrada')}
+          navigation={props.navigation}
         />
         <ListDetailItem
           listName={props.list.name}
@@ -36,6 +37,7 @@ const ListDetail = props => {
             listName={props.list.name}
             listKey="1-salmo"
             listText={props.listMap.get('1-salmo')}
+            navigation={props.navigation}
           />
         )}
         <ListDetailItem
@@ -53,6 +55,7 @@ const ListDetail = props => {
             listName={props.list.name}
             listKey="2-salmo"
             listText={props.listMap.get('2-salmo')}
+            navigation={props.navigation}
           />
         )}
         {props.listMap.has('3-monicion') && (
@@ -74,6 +77,7 @@ const ListDetail = props => {
             listName={props.list.name}
             listKey="3-salmo"
             listText={props.listMap.get('3-salmo')}
+            navigation={props.navigation}
           />
         )}
         <ListDetailItem
@@ -91,6 +95,7 @@ const ListDetail = props => {
             listName={props.list.name}
             listKey="paz"
             listText={props.listMap.get('paz')}
+            navigation={props.navigation}
           />
         )}
         {props.listMap.has('comunion') && (
@@ -98,12 +103,14 @@ const ListDetail = props => {
             listName={props.list.name}
             listKey="comunion"
             listText={props.listMap.get('comunion')}
+            navigation={props.navigation}
           />
         )}
         <ListDetailItem
           listName={props.list.name}
           listKey="salida"
           listText={props.listMap.get('salida')}
+          navigation={props.navigation}
         />
       </List>
     </BaseScreen>

@@ -18,7 +18,7 @@ import {
 } from '../actions';
 import { NavigationActions } from 'react-navigation';
 import { Map, fromJS } from 'immutable';
-import { esLineaDeNotas } from '../screens/SalmoDetail';
+import { esLineaDeNotas } from '../util';
 import { localdata, clouddata } from '../data';
 import { getFriendlyText, getEsSalmo } from '../util';
 

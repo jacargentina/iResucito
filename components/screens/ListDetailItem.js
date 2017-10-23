@@ -1,10 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Text, Button, Icon, ListItem, Left, Body, Input } from 'native-base';
+import {
+  Text,
+  Button,
+  Icon,
+  ListItem,
+  Left,
+  Body,
+  Input,
+  Right
+} from 'native-base';
 import { View, Alert } from 'react-native';
 import Swipeout from 'react-native-swipeout';
 import { openSalmoChooserDialog, updateListMapText } from '../actions';
 import { getFriendlyText } from '../util';
+import commonTheme from '../../native-base-theme/variables/platform';
 
 const ListDetailItem = props => {
   var titulo = getFriendlyText(props.listKey);
@@ -81,6 +91,16 @@ const ListDetailItem = props => {
               <Text>{text}</Text>
             </Button>
           </Body>
+          <Right>
+            <Icon
+              name="open"
+              style={{ color: commonTheme.brandPrimary }}
+              onPress={() =>
+                props.navigation.navigate('SalmoDetail', {
+                  salmo: props.listText
+                })}
+            />
+          </Right>
         </ListItem>
       </Swipeout>
     );
