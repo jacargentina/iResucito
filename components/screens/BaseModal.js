@@ -7,11 +7,15 @@ const BaseModal = props => {
   // Por algun motivo que desconozco, en Android con true
   // en vez de solucionar, lo rompe. Lo dejo solo para iOS
   var avoidKeyboard = Platform.OS == 'ios' ? true : false;
+  var animationIn = props.fade ? 'fadeIn' : 'slideInUp';
+  var animationOut = props.fade ? 'fadeOut' : 'slideOutDown';
   return (
     <Modal
       style={{ margin: 0 }}
       avoidKeyboard={avoidKeyboard}
       isVisible={props.visible}
+      animationIn={animationIn}
+      animationOut={animationOut}
       onBackButtonPress={() => props.closeModal()}
       onBackdropPress={() => props.closeModal()}
       onModalHide={() => props.modalHide()}

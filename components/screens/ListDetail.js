@@ -8,6 +8,13 @@ import { getSalmosFromList } from '../selectors';
 import AppNavigatorConfig from '../AppNavigatorConfig';
 
 const ListDetail = props => {
+  if (props.listMap.get('type') == 'libre') {
+    return (
+      <BaseScreen>
+        <List />
+      </BaseScreen>
+    );
+  }
   return (
     <BaseScreen>
       <List>
