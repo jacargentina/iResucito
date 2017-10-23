@@ -22,7 +22,9 @@ class App extends React.Component {
   componentWillMount() {
     BackHandler.removeEventListener('hardwareBackPress', this.onBackPress);
     this.props.init().then(() => {
-      SplashScreen.hide();
+      setTimeout(() => {
+        SplashScreen.hide();
+      }, 2500);
     });
   }
 
