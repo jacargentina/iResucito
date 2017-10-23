@@ -7,25 +7,33 @@ import SettingsScreen from './screens/SettingsScreen';
 import ListScreen from './screens/ListScreen';
 import ListDetail from './screens/ListDetail';
 import AppNavigatorConfig from './AppNavigatorConfig';
+import commonTheme from '../native-base-theme/variables/platform';
+import color from 'color';
 
 var tabBarOptions = {};
 
 if (Platform.OS == 'android') {
+  tabBarOptions.activeTintColor = 'white';
+  tabBarOptions.inactiveTintColor = color(tabBarOptions.activeTintColor)
+    .darken(0.1)
+    .string();
   tabBarOptions.style = {
-    backgroundColor: '#8D6E63'
+    backgroundColor: color(commonTheme.brandPrimary)
+      .lighten(0.2)
+      .string()
   };
   tabBarOptions.iconStyle = {
     height: 30
   };
-  // tabBarOptions.activeTintColor = '#A1887F';
   // tabBarOptions.inactiveTintColor = 'gray';
   tabBarOptions.indicatorStyle = {
-    backgroundColor: 'white',
+    backgroundColor: tabBarOptions.activeTintColor,
     height: 3
   };
   tabBarOptions.showIcon = true;
   tabBarOptions.showLabel = false;
 } else {
+  tabBarOptions.activeTintColor = commonTheme.brandPrimary;
   tabBarOptions.labelStyle = {
     fontSize: 14
   };

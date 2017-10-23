@@ -109,7 +109,7 @@ export default {
   cardDefaultBg: "#fff",
 
   // Color
-  brandPrimary: platform === "ios" ? "#007aff" : "#3F51B5",
+  brandPrimary: platform === "ios" ? "#8D6E63" : "#8D6E63",
   brandInfo: "#62B1F6",
   brandSuccess: "#5cb85c",
   brandDanger: "#d9534f",
@@ -146,12 +146,12 @@ export default {
   tabActiveBgColor: platform === "ios" ? "#cde1f9" : "#3F51B5",
 
   // Tab
-  tabDefaultBg: platform === "ios" ? "#F8F8F8" : "#3F51B5",
-  topTabBarTextColor: platform === "ios" ? "#6b6b6b" : "#b3c7f9",
-  topTabBarActiveTextColor: platform === "ios" ? "#007aff" : "#fff",
-  topTabActiveBgColor: platform === "ios" ? "#cde1f9" : undefined,
-  topTabBarBorderColor: platform === "ios" ? "#a7a6ab" : "#fff",
-  topTabBarActiveBorderColor: platform === "ios" ? "#007aff" : "#fff",
+  tabDefaultBg: "#F8F8F8",
+  topTabBarTextColor: "#6b6b6b",
+  topTabBarActiveTextColor: "#8D6E63",
+  topTabActiveBgColor: "#cde1f9",
+  topTabBarBorderColor: "#a7a6ab",
+  topTabBarActiveBorderColor: "#8D6E63",
 
   // Header
   toolbarBtnColor: platform === "ios" ? "#007aff" : "#fff",

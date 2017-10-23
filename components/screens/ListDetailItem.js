@@ -76,6 +76,17 @@ const ListDetailItem = props => {
     );
   } else {
     var text = props.listText == null ? 'Buscar...' : props.listText.titulo;
+    var navigateSalmo =
+      props.listText != null ? (
+        <Icon
+          name="open"
+          style={{ color: commonTheme.brandPrimary }}
+          onPress={() =>
+            props.navigation.navigate('SalmoDetail', {
+              salmo: props.listText
+            })}
+        />
+      ) : null;
     item = (
       <Swipeout right={null} backgroundColor="white" autoClose={true}>
         <ListItem icon>
@@ -85,22 +96,12 @@ const ListDetailItem = props => {
           <Body>
             <Button
               transparent
-              small
               onPress={() =>
                 props.openSalmoChooser(props.listName, props.listKey)}>
               <Text>{text}</Text>
             </Button>
           </Body>
-          <Right>
-            <Icon
-              name="open"
-              style={{ color: commonTheme.brandPrimary }}
-              onPress={() =>
-                props.navigation.navigate('SalmoDetail', {
-                  salmo: props.listText
-                })}
-            />
-          </Right>
+          <Right>{navigateSalmo}</Right>
         </ListItem>
       </Swipeout>
     );

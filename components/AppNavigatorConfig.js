@@ -1,7 +1,9 @@
+import commonTheme from '../native-base-theme/variables/platform';
+
 const AppNavigatorConfig = {
   navigationOptions: {
     headerStyle: {
-      backgroundColor: '#8D6E63'
+      backgroundColor: commonTheme.brandPrimary
     },
     headerTitleStyle: {
       color: 'white'

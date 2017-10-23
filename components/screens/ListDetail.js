@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Icon, List } from 'native-base';
+import { Icon, List, Text } from 'native-base';
 import BaseScreen from './BaseScreen';
 import ListDetailItem from './ListDetailItem';
 import { shareList } from '../actions';
@@ -11,7 +11,7 @@ const ListDetail = props => {
   if (props.listMap.get('type') == 'libre') {
     return (
       <BaseScreen>
-        <List />
+        <Text>BETA. Aún no implementado</Text>
       </BaseScreen>
     );
   }
