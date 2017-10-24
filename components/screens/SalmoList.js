@@ -9,16 +9,13 @@ import AppNavigatorConfig from '../AppNavigatorConfig';
 import { filterSalmoList } from '../actions';
 
 const SalmoList = props => {
-  if (props.items.length == 0) {
-    var sinItems = (
-      <Text note style={{ textAlign: 'center', paddingTop: 20 }}>
-        Ningún salmo encontrado
-      </Text>
-    );
-  }
   return (
     <BaseScreen {...props} searchHandler={props.filtrarHandler}>
-      {sinItems}
+      {props.items.length == 0 && (
+        <Text note style={{ textAlign: 'center', paddingTop: 20 }}>
+          Ningún salmo encontrado
+        </Text>
+      )}
       <FlatList
         data={props.items}
         keyExtractor={item => item.path}
