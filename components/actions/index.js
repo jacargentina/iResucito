@@ -8,6 +8,8 @@ export const SET_CHOOSER_TARGETLIST = 'SET_CHOOSER_TARGETLIST';
 export const SET_LIST_CREATE_NEW = 'SET_LIST_CREATE_NEW';
 export const SET_LIST_ADD_VISIBLE = 'SET_LIST_ADD_VISIBLE';
 export const SET_CONTACT_IMPORT_VISIBLE = 'SET_CONTACT_IMPORT_VISIBLE';
+export const SET_CONTACT_IMPORT_LOADING = 'SET_CONTACT_IMPORT_LOADING';
+export const SET_CONTACT_IMPORT_ITEMS = 'SET_CONTACT_IMPORT_ITEMS';
 
 export const LIST_CREATE_NAME = 'LIST_CREATE_NAME';
 export const LIST_CREATE = 'LIST_CREATE';
@@ -18,6 +20,9 @@ export const LIST_DELETE = 'LIST_DELETE';
 export const LIST_SHARE = 'LIST_SHARE';
 
 export const CONTACT_DELETE = 'CONTACT_DELETE';
+
+import { Alert, Platform } from 'react-native';
+import Contacts from 'react-native-contacts';
 
 export const openSalmoChooserDialog = (listName, listKey) => {
   return {
@@ -93,7 +98,23 @@ export const saveSetting = (key, value) => {
 };
 
 export const showContactImportDialog = () => {
-  return { type: SET_CONTACT_IMPORT_VISIBLE, visible: true };
+  return dispatch => {
+    dispatch({ type: SET_CONTACT_IMPORT_LOADING, loading: true });
+    Contacts.getAll((err, contacts) => {
+      dispatch({ type: SET_CONTACT_IMPORT_LOADING, loading: false });
+      if (err) {
+        let message = 'No se pueden cargar los contactos. ';
+        if (Platform.OS == 'ios') {
+          message +=
+            'Otorga el permiso en la pantalla de Configuración -> iResucito -> Contactos';
+        }
+        Alert.alert('Contactos - Acceso denegado', message);
+      } else {
+        dispatch({ type: SET_CONTACT_IMPORT_ITEMS, contacts: contacts });
+        dispatch({ type: SET_CONTACT_IMPORT_VISIBLE, visible: true });
+      }
+    });
+  };
 };
 
 export const hideContactImportDialog = () => {

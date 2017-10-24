@@ -140,8 +140,8 @@ var search = [
     badge: null
   },
   {
-    title: 'Laúdes y Vísperas',
-    note: 'Los cantos de Laúdes y Vísperas',
+    title: 'Laudes y Vísperas',
+    note: 'Los salmos de Laudes y Vísperas',
     route: 'SalmoList',
     params: { filter: { laudes: true } },
     badge: null

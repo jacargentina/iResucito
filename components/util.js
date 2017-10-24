@@ -49,31 +49,31 @@ export function getFriendlyText(listKey) {
       text = 'Canto de Salida';
       break;
     case '1-monicion':
-      text = 'Monición 1er Lectura';
+      text = 'Monición 1a Lectura';
       break;
     case '1':
-      text = '1er Lectura';
+      text = '1a Lectura';
       break;
     case '1-salmo':
-      text = 'Canto 1er Lectura';
+      text = 'Canto 1a Lectura';
       break;
     case '2-monicion':
-      text = 'Monición 2da Lectura';
+      text = 'Monición 2a Lectura';
       break;
     case '2':
-      text = '2da Lectura';
+      text = '2a Lectura';
       break;
     case '2-salmo':
-      text = 'Canto 2da Lectura';
+      text = 'Canto 2a Lectura';
       break;
     case '3-monicion':
-      text = 'Monición 3ra Lectura';
+      text = 'Monición 3a Lectura';
       break;
     case '3':
-      text = '3ra Lectura';
+      text = '3a Lectura';
       break;
     case '3-salmo':
-      text = 'Canto 3ra Lectura';
+      text = 'Canto 3a Lectura';
       break;
     case 'evangelio-monicion':
       text = 'Monición Evangelio';

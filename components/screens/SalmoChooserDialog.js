@@ -59,16 +59,6 @@ const mapDispatchToProps = dispatch => {
     },
     salmoSelected: (salmo, list, key) => {
       dispatch(addSalmoToList(salmo, list, key));
-      // .then(message => {
-      //   setTimeout(() => {
-      //     Toast.showWithGravity(message, Toast.SHORT, Toast.BOTTOM);
-      //   }, 350);
-      // })
-      // .catch(error => {
-      //   setTimeout(() => {
-      //     Toast.showWithGravity(error, Toast.SHORT, Toast.BOTTOM);
-      //   }, 350);
-      // });
       dispatch(closeSalmoChooserDialog());
     }
   };

@@ -9,6 +9,8 @@ import {
   SET_LIST_ADD_VISIBLE,
   SET_LIST_CREATE_NEW,
   SET_CONTACT_IMPORT_VISIBLE,
+  SET_CONTACT_IMPORT_LOADING,
+  SET_CONTACT_IMPORT_ITEMS,
   LIST_CREATE,
   LIST_CREATE_NAME,
   LIST_ADD_SALMO,
@@ -37,6 +39,8 @@ const initialState = Map({
   chooser_target_list: null,
   chooser_target_key: null,
   contact_import_visible: false,
+  contact_import_loading: false,
+  contact_import_items: [],
   lists: Map(),
   contacts: Map(),
   settings: Map({
@@ -107,6 +111,10 @@ export default function ui(state = initialState, action) {
       return state;
     case SET_CONTACT_IMPORT_VISIBLE:
       return state.set('contact_import_visible', action.visible);
+    case SET_CONTACT_IMPORT_LOADING:
+      return state.set('contact_import_loading', action.loading);
+    case SET_CONTACT_IMPORT_ITEMS:
+      return state.set('contact_import_items', action.contacts);
     case SET_LIST_CREATE_NEW:
       return state.set('list_create_new', action.value);
     case LIST_CREATE_NAME:

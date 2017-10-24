@@ -14,10 +14,10 @@ const ListScreen = props => {
     return (
       <BaseCallToAction
         icon="people"
-        title="Importar hermanos"
+        title="Lista de la Comunidad"
         text="Puede importar desde tus contactos los nombres de los hermanos de la comunidad y usarlos al crear las listas"
         buttonHandler={() => props.contactImport()}
-        buttonText="Importar"
+        buttonText="Importar contactos"
       />
     );
   return (
