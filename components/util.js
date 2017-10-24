@@ -1,7 +1,7 @@
 export function esLineaDeNotas(text) {
   var linea = text
     .trim()
-    .replace(/\[|\]|#|7|b7|9|-|\/|\u2013|aum/g, '')
+    .replace(/\[|\]|#|7|b7|b|9|-|\/|\u2013|aum/g, '')
     .split(' ')
     .filter(i => i.length > 0);
   var soloNotas = linea.filter(palabra => {
@@ -49,31 +49,31 @@ export function getFriendlyText(listKey) {
       text = 'Canto de Salida';
       break;
     case '1-monicion':
-      text = 'Monición 1er Palabra';
+      text = 'Monición 1er Lectura';
       break;
     case '1':
-      text = '1er Palabra';
+      text = '1er Lectura';
       break;
     case '1-salmo':
-      text = 'Rta. 1er Palabra';
+      text = 'Canto 1er Lectura';
       break;
     case '2-monicion':
-      text = 'Monición 2da Palabra';
+      text = 'Monición 2da Lectura';
       break;
     case '2':
-      text = '2da Palabra';
+      text = '2da Lectura';
       break;
     case '2-salmo':
-      text = 'Rta. 2da Palabra';
+      text = 'Canto 2da Lectura';
       break;
     case '3-monicion':
-      text = 'Monición 3ra Palabra';
+      text = 'Monición 3ra Lectura';
       break;
     case '3':
-      text = '3ra Palabra';
+      text = '3ra Lectura';
       break;
     case '3-salmo':
-      text = 'Rta. 3ra Palabra';
+      text = 'Canto 3ra Lectura';
       break;
     case 'evangelio-monicion':
       text = 'Monición Evangelio';

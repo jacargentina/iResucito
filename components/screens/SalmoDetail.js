@@ -60,11 +60,17 @@ var styles = StyleSheet.create({
 
 function preprocesarLinea(text, nextText) {
   var it = {};
-  if (text.startsWith('S.') || text.startsWith('A.') || text.startsWith('P.')) {
+  if (
+    text.startsWith('S.') ||
+    text.startsWith('A.') ||
+    text.startsWith('P.') ||
+    text.startsWith('Niños.')
+  ) {
     // Indicador de Salmista, Asamblea, Presbitero
+    var pointIndex = text.indexOf('.');
     it = {
-      prefijo: text.substring(0, 2) + ' ',
-      texto: text.substring(2).trim(),
+      prefijo: text.substring(0, pointIndex + 1) + ' ',
+      texto: text.substring(pointIndex + 1).trim(),
       style: styles.lineaNormal,
       prefijoStyle: styles.prefijo
     };

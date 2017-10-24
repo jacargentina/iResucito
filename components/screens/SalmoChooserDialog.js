@@ -31,7 +31,7 @@ const SalmoChooserDialog = props => {
     <BaseModal
       visible={props.visible}
       closeModal={() => props.close()}
-      title="Buscar Salmo"
+      title="Buscar Canto"
       fade={true}>
       <Tabs initialPage={0} renderTabBar={() => <ScrollableTab />}>
         {items}

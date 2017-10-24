@@ -8,13 +8,15 @@ import {
   SET_CHOOSER_TARGETLIST,
   SET_LIST_ADD_VISIBLE,
   SET_LIST_CREATE_NEW,
+  SET_CONTACT_IMPORT_VISIBLE,
   LIST_CREATE,
   LIST_CREATE_NAME,
   LIST_ADD_SALMO,
   LIST_ADD_TEXT,
   LIST_REMOVE_SALMO,
   LIST_DELETE,
-  LIST_SHARE
+  LIST_SHARE,
+  CONTACT_DELETE
 } from '../actions';
 import { NavigationActions } from 'react-navigation';
 import { Map, fromJS } from 'immutable';
@@ -34,7 +36,9 @@ const initialState = Map({
   list_create_new: false,
   chooser_target_list: null,
   chooser_target_key: null,
+  contact_import_visible: false,
   lists: Map(),
+  contacts: Map(),
   settings: Map({
     keepAwake: true
   })
@@ -43,6 +47,15 @@ const initialState = Map({
 const saveLists = state => {
   var listsJS = state.get('lists').toJS();
   var item = { key: 'lists', data: listsJS };
+  localdata.save(item);
+  if (Platform.OS == 'ios') {
+    clouddata.save(item);
+  }
+};
+
+const saveContacts = state => {
+  var contactsJS = state.get('contacts').toJS();
+  var item = { key: 'contacts', data: contactsJS };
   localdata.save(item);
   if (Platform.OS == 'ios') {
     clouddata.save(item);
@@ -92,6 +105,8 @@ export default function ui(state = initialState, action) {
         state = state.set('list_create_enabled', false);
       }
       return state;
+    case SET_CONTACT_IMPORT_VISIBLE:
+      return state.set('contact_import_visible', action.visible);
     case SET_LIST_CREATE_NEW:
       return state.set('list_create_new', action.value);
     case LIST_CREATE_NAME:
@@ -162,6 +177,10 @@ export default function ui(state = initialState, action) {
       state = state.deleteIn(['lists', action.list]);
       saveLists(state);
       return state;
+    case CONTACT_DELETE:
+      state = state.deleteIn(['contacts', action.contact]);
+      saveContacts(state);
+      return state;
     case LIST_SHARE:
       var items = [];
       items.push(getItemForShare(action.listMap, 'ambiental'));
@@ -198,7 +217,6 @@ export default function ui(state = initialState, action) {
       while (!esLineaDeNotas(lineas[0])) {
         lineas.shift();
       }
-      lineas = lineas.filter(l => !l.includes('Page (0) Break'));
       return state.set('salmo_lines', lineas);
     case NavigationActions.NAVIGATE:
       switch (action.routeName) {

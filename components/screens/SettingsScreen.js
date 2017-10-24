@@ -70,7 +70,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 SettingsScreen.navigationOptions = () => ({
-  title: 'Configuración',
+  title: 'Configurar',
   tabBarIcon: ({ focused, tintColor }) => {
     return (
       <Icon

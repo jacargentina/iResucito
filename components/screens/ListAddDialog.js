@@ -47,7 +47,7 @@ class ListAddDialog extends React.Component {
         onPress={() =>
           this.props.createNewList(this.props.listCreateName, 'libre')}
         disabled={!this.props.listCreateEnabled}>
-        <Text>Libre</Text>
+        <Text>Otras</Text>
       </Button>
     ];
     return (

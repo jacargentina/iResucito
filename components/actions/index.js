@@ -1,4 +1,5 @@
 export const INITIALIZE_DONE = 'INITIALIZE_DONE';
+
 export const SET_SALMOS_FILTER = 'SET_SALMOS_FILTER';
 export const SET_SALMO_CONTENT = 'SET_SALMO_CONTENT';
 export const SET_ABOUT_VISIBLE = 'SET_ABOUT_VISIBLE';
@@ -6,6 +7,8 @@ export const SET_SETTINGS_VALUE = 'SET_SETTINGS_VALUE';
 export const SET_CHOOSER_TARGETLIST = 'SET_CHOOSER_TARGETLIST';
 export const SET_LIST_CREATE_NEW = 'SET_LIST_CREATE_NEW';
 export const SET_LIST_ADD_VISIBLE = 'SET_LIST_ADD_VISIBLE';
+export const SET_CONTACT_IMPORT_VISIBLE = 'SET_CONTACT_IMPORT_VISIBLE';
+
 export const LIST_CREATE_NAME = 'LIST_CREATE_NAME';
 export const LIST_CREATE = 'LIST_CREATE';
 export const LIST_ADD_SALMO = 'LIST_ADD_SALMO';
@@ -13,6 +16,8 @@ export const LIST_ADD_TEXT = 'LIST_ADD_TEXT';
 export const LIST_REMOVE_SALMO = 'LIST_REMOVE_SALMO';
 export const LIST_DELETE = 'LIST_DELETE';
 export const LIST_SHARE = 'LIST_SHARE';
+
+export const CONTACT_DELETE = 'CONTACT_DELETE';
 
 export const openSalmoChooserDialog = (listName, listKey) => {
   return {
@@ -85,4 +90,16 @@ export const setSalmoContent = content => {
 
 export const saveSetting = (key, value) => {
   return { type: SET_SETTINGS_VALUE, key: key, value: value };
+};
+
+export const showContactImportDialog = () => {
+  return { type: SET_CONTACT_IMPORT_VISIBLE, visible: true };
+};
+
+export const hideContactImportDialog = () => {
+  return { type: SET_CONTACT_IMPORT_VISIBLE, visible: false };
+};
+
+export const deleteContact = contactName => {
+  return { type: CONTACT_DELETE, contact: contactName };
 };

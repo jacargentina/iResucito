@@ -35,3 +35,9 @@ export const getSalmosFromList = createSelector(
     return result;
   }
 );
+
+const getContacts = state => state.ui.get('contacts');
+
+export const getProcessedContacts = createSelector(getContacts, contacts => {
+  return contacts.toArray();
+});

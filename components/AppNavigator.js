@@ -6,6 +6,7 @@ import SalmoDetail from './screens/SalmoDetail';
 import SettingsScreen from './screens/SettingsScreen';
 import ListScreen from './screens/ListScreen';
 import ListDetail from './screens/ListDetail';
+import CommunityScreen from './screens/CommunityScreen';
 import AppNavigatorConfig from './AppNavigatorConfig';
 import commonTheme from '../native-base-theme/variables/platform';
 import color from 'color';
@@ -35,7 +36,7 @@ if (Platform.OS == 'android') {
 } else {
   tabBarOptions.activeTintColor = commonTheme.brandPrimary;
   tabBarOptions.labelStyle = {
-    fontSize: 14
+    fontSize: 12
   };
   tabBarOptions.style = {};
 }
@@ -44,6 +45,7 @@ const MenuNavigator = TabNavigator(
   {
     Search: { screen: SalmoSearch },
     Lists: { screen: ListScreen },
+    Community: { screen: CommunityScreen },
     Settings: { screen: SettingsScreen }
   },
   {
