@@ -4,7 +4,7 @@ import { BackHandler, Platform } from 'react-native';
 import { addNavigationHelpers, NavigationActions } from 'react-navigation';
 import RNFS from 'react-native-fs';
 import SplashScreen from 'react-native-splash-screen';
-import { StyleProvider } from 'native-base';
+import { Root, StyleProvider } from 'native-base';
 import getTheme from './native-base-theme/components';
 import commonTheme from './native-base-theme/variables/platform';
 import Store from './components/store';
@@ -44,12 +44,14 @@ class App extends React.Component {
   render() {
     return (
       <StyleProvider style={getTheme(commonTheme)}>
-        <AppNavigator
-          navigation={addNavigationHelpers({
-            dispatch: this.props.dispatch,
-            state: this.props.nav
-          })}
-        />
+        <Root>
+          <AppNavigator
+            navigation={addNavigationHelpers({
+              dispatch: this.props.dispatch,
+              state: this.props.nav
+            })}
+          />
+        </Root>
       </StyleProvider>
     );
   }
@@ -136,7 +138,7 @@ const AppWithNavigationState = connect(mapStateToProps, mapDispatchToProps)(
   App
 );
 
-const Root = () => {
+const AppWithReduxStore = () => {
   return (
     <Provider store={Store}>
       <AppWithNavigationState />
@@ -144,4 +146,4 @@ const Root = () => {
   );
 };
 
-export default Root;
+export default AppWithReduxStore;

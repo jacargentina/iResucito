@@ -18,7 +18,8 @@ import {
   LIST_REMOVE_SALMO,
   LIST_DELETE,
   LIST_SHARE,
-  CONTACT_SYNC
+  CONTACT_SYNC,
+  CONTACT_TOGGLE_ATTRIBUTE
 } from '../actions';
 import { NavigationActions } from 'react-navigation';
 import { Map, List, fromJS } from 'immutable';
@@ -200,6 +201,18 @@ export default function ui(state = initialState, action) {
           c => c.get('recordID') == action.contact.recordID
         );
         state = state.deleteIn(['contacts', index]);
+      }
+      saveContacts(state);
+      return state;
+    case CONTACT_TOGGLE_ATTRIBUTE:
+      var tContacts = state.get('contacts');
+      var tIndex = tContacts.findIndex(
+        c => c.get('recordID') == action.contact.recordID
+      );
+      if (state.getIn(['contacts', tIndex, action.attribute]) == true) {
+        state = state.setIn(['contacts', tIndex, action.attribute], false);
+      } else {
+        state = state.setIn(['contacts', tIndex, action.attribute], true);
       }
       saveContacts(state);
       return state;

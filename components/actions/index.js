@@ -20,6 +20,7 @@ export const LIST_DELETE = 'LIST_DELETE';
 export const LIST_SHARE = 'LIST_SHARE';
 
 export const CONTACT_SYNC = 'CONTACT_SYNC';
+export const CONTACT_TOGGLE_ATTRIBUTE = 'CONTACT_TOGGLE_ATTRIBUTE';
 
 import { Alert, Platform } from 'react-native';
 import Contacts from 'react-native-contacts';
@@ -123,4 +124,8 @@ export const hideContactImportDialog = () => {
 
 export const syncContact = (contact, isImported) => {
   return { type: CONTACT_SYNC, contact: contact, imported: isImported };
+};
+
+export const setContactAttribute = (contact, attribute) => {
+  return { type: CONTACT_TOGGLE_ATTRIBUTE, contact: contact, attribute: attribute };
 };
