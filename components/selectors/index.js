@@ -36,8 +36,17 @@ export const getSalmosFromList = createSelector(
   }
 );
 
+const getContactImportItems = state => state.ui.get('contact_import_items');
 const getContacts = state => state.ui.get('contacts');
 
-export const getProcessedContacts = createSelector(getContacts, contacts => {
-  return contacts.toArray();
-});
+export const getProcessedContactsForImport = createSelector(
+  getContactImportItems,
+  getContacts,
+  (allContacts, importedContacts) => {
+    return allContacts.map(c => {
+      var found = importedContacts.find(x => x.recordID === c.recordID);
+      c.imported = found !== undefined;
+      return c;
+    });
+  }
+);

@@ -19,7 +19,7 @@ export const LIST_REMOVE_SALMO = 'LIST_REMOVE_SALMO';
 export const LIST_DELETE = 'LIST_DELETE';
 export const LIST_SHARE = 'LIST_SHARE';
 
-export const CONTACT_DELETE = 'CONTACT_DELETE';
+export const CONTACT_SYNC = 'CONTACT_SYNC';
 
 import { Alert, Platform } from 'react-native';
 import Contacts from 'react-native-contacts';
@@ -121,6 +121,6 @@ export const hideContactImportDialog = () => {
   return { type: SET_CONTACT_IMPORT_VISIBLE, visible: false };
 };
 
-export const deleteContact = contactName => {
-  return { type: CONTACT_DELETE, contact: contactName };
+export const syncContact = (contact, isImported) => {
+  return { type: CONTACT_SYNC, contact: contact, imported: isImported };
 };

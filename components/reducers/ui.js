@@ -18,10 +18,10 @@ import {
   LIST_REMOVE_SALMO,
   LIST_DELETE,
   LIST_SHARE,
-  CONTACT_DELETE
+  CONTACT_SYNC
 } from '../actions';
 import { NavigationActions } from 'react-navigation';
-import { Map, fromJS } from 'immutable';
+import { Map, List, fromJS } from 'immutable';
 import { esLineaDeNotas } from '../util';
 import { localdata, clouddata } from '../data';
 import { getFriendlyText, getEsSalmo } from '../util';
@@ -42,7 +42,7 @@ const initialState = Map({
   contact_import_loading: false,
   contact_import_items: [],
   lists: Map(),
-  contacts: Map(),
+  contacts: List(),
   settings: Map({
     keepAwake: true
   })
@@ -185,8 +185,16 @@ export default function ui(state = initialState, action) {
       state = state.deleteIn(['lists', action.list]);
       saveLists(state);
       return state;
-    case CONTACT_DELETE:
-      state = state.deleteIn(['contacts', action.contact]);
+    case CONTACT_SYNC:
+      var contactsList = state.get('contacts');
+      if (action.imported) {
+        state = state.setIn(['contacts', contactsList.size], action.contact);
+      } else {
+        var index = contactsList.findIndex(
+          c => c.recordID == action.contact.recordID
+        );
+        state = state.deleteIn(['contacts', index]);
+      }
       saveContacts(state);
       return state;
     case LIST_SHARE:

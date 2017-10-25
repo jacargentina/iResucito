@@ -4,7 +4,6 @@ import { ListItem, Left, Body, Icon, Text, Badge } from 'native-base';
 import { Alert, FlatList, Platform } from 'react-native';
 import Swipeout from 'react-native-swipeout';
 import BaseScreen from './BaseScreen';
-import { getProcessedContacts } from '../selectors';
 import { showContactImportDialog, deleteContact } from '../actions';
 import AppNavigatorConfig from '../AppNavigatorConfig';
 import BaseCallToAction from './BaseCallToAction';
@@ -38,6 +37,7 @@ const ListScreen = props => {
           ];
           return (
             <Swipeout
+              key={item.recordID}
               right={swipeoutBtns}
               backgroundColor="white"
               autoClose={true}>
@@ -48,8 +48,8 @@ const ListScreen = props => {
                   </Badge>
                 </Left>
                 <Body>
-                  <Text>{item.name}</Text>
-                  <Text note>{item.type}</Text>
+                  <Text>{item.givenName}</Text>
+                  <Text note>{item.familyName}</Text>
                 </Body>
               </ListItem>
             </Swipeout>
@@ -61,8 +61,9 @@ const ListScreen = props => {
 };
 
 const mapStateToProps = state => {
+  var contacts = state.ui.get('contacts').toArray();
   return {
-    items: getProcessedContacts(state)
+    items: contacts
   };
 };
 

@@ -11,7 +11,8 @@ import {
   Switch
 } from 'native-base';
 import { FlatList, Platform } from 'react-native';
-import { importContacts, hideContactImportDialog } from '../actions';
+import { syncContact, hideContactImportDialog } from '../actions';
+import { getProcessedContactsForImport } from '../selectors';
 
 var unknown = require('../../img/avatar.png');
 
@@ -58,7 +59,10 @@ const ContactImportDialog = props => {
                 </Text>
               </Body>
               <Right>
-                <Switch />
+                <Switch
+                  value={item.imported}
+                  onValueChange={checked => props.syncContact(item, checked)}
+                />
               </Right>
             </ListItem>
           );
@@ -70,10 +74,9 @@ const ContactImportDialog = props => {
 
 const mapStateToProps = state => {
   var visible = state.ui.get('contact_import_visible');
-  var items = state.ui.get('contact_import_items');
   return {
     visible: visible,
-    items: items
+    items: getProcessedContactsForImport(state)
   };
 };
 
@@ -82,9 +85,8 @@ const mapDispatchToProps = dispatch => {
     close: () => {
       dispatch(hideContactImportDialog());
     },
-    importContacts: selectedContacts => {
-      dispatch(importContacts(selectedContacts));
-      dispatch(hideContactImportDialog());
+    syncContact: (contact, isImported) => {
+      dispatch(syncContact(contact, isImported));
     }
   };
 };
