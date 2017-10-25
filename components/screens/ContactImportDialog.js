@@ -1,20 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import BaseModal from './BaseModal';
-import {
-  Text,
-  ListItem,
-  Thumbnail,
-  Left,
-  Body,
-  Right,
-  Switch
-} from 'native-base';
+import { Text, ListItem, Thumbnail, Left, Body, Right } from 'native-base';
+import Switch from '../widgets/switch';
 import { FlatList, Platform } from 'react-native';
 import { syncContact, hideContactImportDialog } from '../actions';
 import { getProcessedContactsForImport } from '../selectors';
 
-var unknown = require('../../img/avatar.png');
+const unknown = require('../../img/avatar.png');
 
 const ContactImportDialog = props => {
   return (

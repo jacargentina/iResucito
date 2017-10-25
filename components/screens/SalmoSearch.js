@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { FlatList, ScrollView } from 'react-native';
-import { ListItem, Left, Body, Text, Icon } from 'native-base';
+import { ListItem, Left, Body, Text, Icon, Separator } from 'native-base';
 import ListAddDialog from './ListAddDialog';
 import SalmoChooserDialog from './SalmoChooserDialog';
+import ContactChooserDialog from './ContactChooserDialog';
 import ContactImportDialog from './ContactImportDialog';
 import AcercaDe from './AcercaDe';
 import search from '../search';
@@ -17,19 +18,22 @@ const SalmoSearch = props => {
       <ListAddDialog />
       <SalmoChooserDialog />
       <ContactImportDialog />
+      <ContactChooserDialog />
       <FlatList
         data={search}
         keyExtractor={item => item.title}
-        renderItem={({ item }) => {
+        renderItem={({ item, index }) => {
+          var nextItem = search[index + 1];
           if (item.divider) {
             return (
-              <ListItem itemDivider>
+              <Separator bordered>
                 <Text>{item.title}</Text>
-              </ListItem>
+              </Separator>
             );
           }
           return (
             <ListItem
+              last={nextItem && nextItem.divider}
               avatar
               onPress={() => {
                 props.navigation.navigate(item.route, item.params);

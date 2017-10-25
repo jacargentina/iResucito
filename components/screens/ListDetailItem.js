@@ -11,7 +11,7 @@ import {
   Separator
 } from 'native-base';
 import { View } from 'react-native';
-import { openSalmoChooserDialog, updateListMapText } from '../actions';
+import { openChooserDialog, updateListMapText } from '../actions';
 import { getFriendlyText } from '../util';
 import commonTheme from '../../native-base-theme/variables/platform';
 
@@ -58,6 +58,14 @@ const ListDetailItem = props => {
             autoCorrect={false}
           />
         </Body>
+        <Right>
+          <Icon
+            name="search"
+            style={{ color: commonTheme.brandPrimary }}
+            onPress={() =>
+              props.openChooser('Contact', props.listName, props.listKey)}
+          />
+        </Right>
       </ListItem>
     );
   } else {
@@ -80,7 +88,8 @@ const ListDetailItem = props => {
         icon
         last
         button
-        onPress={() => props.openSalmoChooser(props.listName, props.listKey)}>
+        onPress={() =>
+          props.openChooser('Salmo', props.listName, props.listKey)}>
         <Left>
           <Icon name="musical-notes" />
         </Left>
@@ -111,8 +120,8 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    openSalmoChooser: (list, key) => {
-      dispatch(openSalmoChooserDialog(list, key));
+    openChooser: (type, list, key) => {
+      dispatch(openChooserDialog(type, list, key));
     },
     updateItem: (list, key, text) => {
       dispatch(updateListMapText(list, key, text));

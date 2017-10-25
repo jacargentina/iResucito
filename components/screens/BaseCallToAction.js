@@ -1,8 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Icon, Text, H1, Button } from 'native-base';
 import { View } from 'react-native';
-import AppNavigatorConfig from '../AppNavigatorConfig';
+import commonTheme from '../../native-base-theme/variables/platform';
 
 const BaseCallToAction = props => {
   return (
@@ -22,19 +21,24 @@ const BaseCallToAction = props => {
           name={props.icon}
           style={{
             fontSize: 120,
-            color:
-              AppNavigatorConfig.navigationOptions.headerStyle.backgroundColor,
+            color: commonTheme.brandPrimary,
             alignSelf: 'center'
           }}
         />
       </View>
       <H1 style={{ flex: 1, paddingTop: 20 }}>{props.title}</H1>
-      <Text note style={{ flex: 3 }}>
+      <Text note style={{ flex: 2 }}>
         {props.text}
       </Text>
-      <Button block full onPress={props.buttonHandler}>
-        <Text>{props.buttonText}</Text>
-      </Button>
+      <View
+        style={{
+          flex: 2,
+          justifyContent: 'space-around'
+        }}>
+        <Button rounded block onPress={props.buttonHandler}>
+          <Text>{props.buttonText}</Text>
+        </Button>
+      </View>
     </View>
   );
 };

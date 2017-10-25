@@ -15,6 +15,7 @@ import {
   LIST_CREATE_NAME,
   LIST_ADD_SALMO,
   LIST_ADD_TEXT,
+  LIST_ADD_CONTACT,
   LIST_REMOVE_SALMO,
   LIST_DELETE,
   LIST_SHARE,
@@ -37,6 +38,7 @@ const initialState = Map({
   list_chooser_salmo: null,
   list_add_visible: false,
   list_create_new: false,
+  chooser: null,
   chooser_target_list: null,
   chooser_target_key: null,
   contact_import_visible: false,
@@ -103,6 +105,7 @@ export default function ui(state = initialState, action) {
       localdata.save({ key: 'settings', data: state.get('settings').toJS() });
       return state;
     case SET_CHOOSER_TARGETLIST:
+      state = state.set('chooser', action.chooser);
       state = state.set('chooser_target_list', action.list);
       state = state.set('chooser_target_key', action.key);
       return state;
@@ -179,6 +182,11 @@ export default function ui(state = initialState, action) {
       return state;
     case LIST_ADD_TEXT:
       state = state.setIn(['lists', action.list, action.key], action.text);
+      saveLists(state);
+      return state;
+    case LIST_ADD_CONTACT:
+      var text = action.contact.givenName;
+      state = state.setIn(['lists', action.list, action.key], text);
       saveLists(state);
       return state;
     case LIST_REMOVE_SALMO:

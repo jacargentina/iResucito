@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Tab, Tabs, ScrollableTab } from 'native-base';
 import BaseModal from './BaseModal';
 import SalmoList from './SalmoList';
-import { addSalmoToList, closeSalmoChooserDialog } from '../actions';
+import { addSalmoToList, closeChooserDialog } from '../actions';
 import search from '../search';
 
 const styles = StyleSheet.create({
@@ -41,13 +41,14 @@ const SalmoChooserDialog = props => {
 };
 
 const mapStateToProps = state => {
+  var chooser = state.ui.get('chooser');
   var chooser_target_list = state.ui.get('chooser_target_list');
   var chooser_target_key = state.ui.get('chooser_target_key');
   var tabs = search.filter(x => x.chooser != undefined);
   return {
     listName: chooser_target_list,
     listKey: chooser_target_key,
-    visible: chooser_target_list !== null,
+    visible: chooser === 'Salmo',
     tabs: tabs
   };
 };
@@ -55,11 +56,11 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     close: () => {
-      dispatch(closeSalmoChooserDialog());
+      dispatch(closeChooserDialog());
     },
     salmoSelected: (salmo, list, key) => {
       dispatch(addSalmoToList(salmo, list, key));
-      dispatch(closeSalmoChooserDialog());
+      dispatch(closeChooserDialog());
     }
   };
 };

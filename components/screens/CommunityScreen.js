@@ -7,7 +7,6 @@ import {
   Body,
   Icon,
   Text,
-  Badge,
   Thumbnail,
   ActionSheet
 } from 'native-base';
@@ -23,9 +22,22 @@ import BaseCallToAction from './BaseCallToAction';
 import { getProcessedContacts } from '../selectors';
 import colors from '../colors';
 
-var unknown = require('../../img/avatar.png');
+const unknown = require('../../img/avatar.png');
+const contactAttributes = [
+  // 'Responsable',
+  'Salmista',
+  // 'Ostiario',
+  'Borrar',
+  'Cancelar'
+];
 
-const ListScreen = props => {
+const Responsable_Index = contactAttributes.indexOf('Responsable');
+const Salmista_Index = contactAttributes.indexOf('Salmista');
+const Ostiario_Index = contactAttributes.indexOf('Ostiario');
+const Borrar_Index = contactAttributes.indexOf('Borrar');
+const Cancelar_Index = contactAttributes.indexOf('Cancelar');
+
+const CommunityScreen = props => {
   if (props.items.length == 0)
     return (
       <BaseCallToAction
@@ -66,53 +78,6 @@ const ListScreen = props => {
               )}
             </View>
           );
-
-          var flags = (
-            <View style={{ flexDirection: 'row' }}>
-              {item.r === true && (
-                <Badge
-                  style={{
-                    backgroundColor: colors.Responsable
-                  }}>
-                  <Text
-                    style={{
-                      fontSize: 10,
-                      color: 'white'
-                    }}>
-                    Resp.
-                  </Text>
-                </Badge>
-              )}
-              {item.s === true && (
-                <Badge
-                  style={{
-                    backgroundColor: colors.Salmista
-                  }}>
-                  <Text
-                    style={{
-                      fontSize: 10,
-                      color: 'white'
-                    }}>
-                    Salm.
-                  </Text>
-                </Badge>
-              )}
-              {item.o === true && (
-                <Badge
-                  style={{
-                    backgroundColor: colors.Ostiario
-                  }}>
-                  <Text
-                    style={{
-                      fontSize: 10,
-                      color: 'white'
-                    }}>
-                    Ost.
-                  </Text>
-                </Badge>
-              )}
-            </View>
-          );
           return (
             <ListItem
               avatar
@@ -120,29 +85,23 @@ const ListScreen = props => {
               onLongPress={() => {
                 ActionSheet.show(
                   {
-                    options: [
-                      'Responsable',
-                      'Salmista',
-                      'Ostiario',
-                      'Borrar',
-                      'Cancelar'
-                    ],
-                    cancelButtonIndex: 4,
-                    destructiveButtonIndex: 3,
+                    options: contactAttributes,
+                    cancelButtonIndex: Cancelar_Index,
+                    destructiveButtonIndex: Borrar_Index,
                     title: 'Acciones'
                   },
                   index => {
                     switch (index) {
-                      case 0:
+                      case Responsable_Index:
                         props.contactToggleAttibute(item, 'r');
                         break;
-                      case 1:
+                      case Salmista_Index:
                         props.contactToggleAttibute(item, 's');
                         break;
-                      case 2:
+                      case Ostiario_Index:
                         props.contactToggleAttibute(item, 'o');
                         break;
-                      case 3:
+                      case Borrar_Index:
                         props.contactDelete(item);
                         break;
                     }
@@ -204,12 +163,12 @@ const mapDispatchToProps = dispatch => {
 const ImportContacts = props => {
   return (
     <Icon
-      name="person-add"
+      name="sync"
       style={{
         marginTop: 4,
         marginRight: 8,
         width: 32,
-        fontSize: 40,
+        fontSize: 32,
         textAlign: 'center',
         color: AppNavigatorConfig.navigationOptions.headerTitleStyle.color
       }}
@@ -222,12 +181,12 @@ const ImportContactsButton = connect(mapStateToProps, mapDispatchToProps)(
   ImportContacts
 );
 
-ListScreen.navigationOptions = props => ({
+CommunityScreen.navigationOptions = props => ({
   title: 'Comunidad',
   tabBarIcon: ({ focused, tintColor }) => {
     return (
       <Icon
-        name="people"
+        name="contacts"
         active={focused}
         style={{ marginTop: 6, color: tintColor }}
       />
@@ -236,4 +195,4 @@ ListScreen.navigationOptions = props => ({
   headerRight: <ImportContactsButton />
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ListScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(CommunityScreen);

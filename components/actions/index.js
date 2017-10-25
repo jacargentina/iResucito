@@ -15,6 +15,7 @@ export const LIST_CREATE_NAME = 'LIST_CREATE_NAME';
 export const LIST_CREATE = 'LIST_CREATE';
 export const LIST_ADD_SALMO = 'LIST_ADD_SALMO';
 export const LIST_ADD_TEXT = 'LIST_ADD_TEXT';
+export const LIST_ADD_CONTACT = 'LIST_ADD_CONTACT';
 export const LIST_REMOVE_SALMO = 'LIST_REMOVE_SALMO';
 export const LIST_DELETE = 'LIST_DELETE';
 export const LIST_SHARE = 'LIST_SHARE';
@@ -25,17 +26,19 @@ export const CONTACT_TOGGLE_ATTRIBUTE = 'CONTACT_TOGGLE_ATTRIBUTE';
 import { Alert, Platform } from 'react-native';
 import Contacts from 'react-native-contacts';
 
-export const openSalmoChooserDialog = (listName, listKey) => {
+export const openChooserDialog = (chooser, listName, listKey) => {
   return {
     type: SET_CHOOSER_TARGETLIST,
+    chooser: chooser,
     list: listName,
     key: listKey
   };
 };
 
-export const closeSalmoChooserDialog = () => {
+export const closeChooserDialog = () => {
   return {
     type: SET_CHOOSER_TARGETLIST,
+    chooser: null,
     list: null,
     key: null
   };
@@ -47,6 +50,15 @@ export const addSalmoToList = (salmo, listName, listKey) => {
     list: listName,
     key: listKey,
     salmo: salmo
+  };
+};
+
+export const addContactToList = (contact, listName, listKey) => {
+  return {
+    type: LIST_ADD_CONTACT,
+    list: listName,
+    key: listKey,
+    contact: contact
   };
 };
 
@@ -127,5 +139,9 @@ export const syncContact = (contact, isImported) => {
 };
 
 export const setContactAttribute = (contact, attribute) => {
-  return { type: CONTACT_TOGGLE_ATTRIBUTE, contact: contact, attribute: attribute };
+  return {
+    type: CONTACT_TOGGLE_ATTRIBUTE,
+    contact: contact,
+    attribute: attribute
+  };
 };

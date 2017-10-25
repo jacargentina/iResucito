@@ -109,14 +109,14 @@ export default {
   cardDefaultBg: "#fff",
 
   // Color
-  brandPrimary: platform === "ios" ? "#8D6E63" : "#8D6E63",
+  brandPrimary: "#ff5252",
   brandInfo: "#62B1F6",
   brandSuccess: "#5cb85c",
   brandDanger: "#d9534f",
   brandWarning: "#f0ad4e",
   brandSidebar: "#252932",
-  brandDark: "#000",
-  brandLight: "#f4f4f4",
+  brandDark: "#b71c1c",
+  brandLight: "#ef9a9a",
 
   // Font
   fontFamily: platform === "ios" ? "System" : "Roboto",

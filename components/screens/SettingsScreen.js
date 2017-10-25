@@ -1,15 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {
-  List,
-  ListItem,
-  Left,
-  Body,
-  Text,
-  Icon,
-  Right,
-  Switch
-} from 'native-base';
+import { List, ListItem, Left, Body, Text, Icon, Right } from 'native-base';
+import Switch from '../widgets/switch';
 import { saveSetting, showAbout } from '../actions';
 import BaseScreen from './BaseScreen';
 
