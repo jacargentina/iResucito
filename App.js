@@ -101,20 +101,20 @@ const mapDispatchToProps = dispatch => {
         type: INITIALIZE_DONE,
         salmos: todos,
         settings: null,
-        lists: null
+        lists: null,
+        contacts: []
       };
       var promises = [];
       /* eslint-disable no-console */
       promises.push(
         localdata
-          .getBatchData([{ key: 'settings' }, { key: 'lists' }])
+          .getBatchData([
+            { key: 'settings' },
+            { key: 'lists' },
+            { key: 'contacts' }
+          ])
           .then(result => {
-            if (result[0]) {
-              action.settings = result[0];
-            }
-            if (result[1]) {
-              action.lists = result[1];
-            }
+            [action.settings, action.lists, action.contacts] = result;
             dispatch(action);
           })
           .catch(err => {

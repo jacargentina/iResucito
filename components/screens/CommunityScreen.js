@@ -1,12 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { ListItem, Left, Body, Icon, Text, Badge } from 'native-base';
+import { ListItem, Left, Body, Icon, Text, Thumbnail } from 'native-base';
 import { Alert, FlatList, Platform } from 'react-native';
 import Swipeout from 'react-native-swipeout';
 import BaseScreen from './BaseScreen';
-import { showContactImportDialog, deleteContact } from '../actions';
+import { showContactImportDialog, syncContact } from '../actions';
 import AppNavigatorConfig from '../AppNavigatorConfig';
 import BaseCallToAction from './BaseCallToAction';
+import { getProcessedContacts } from '../selectors';
+
+var unknown = require('../../img/avatar.png');
 
 const ListScreen = props => {
   if (props.items.length == 0)
@@ -23,7 +26,7 @@ const ListScreen = props => {
     <BaseScreen>
       <FlatList
         data={props.items}
-        keyExtractor={item => item.name}
+        keyExtractor={item => item.recordID}
         renderItem={({ item }) => {
           var swipeoutBtns = [
             {
@@ -35,6 +38,11 @@ const ListScreen = props => {
               }
             }
           ];
+          var contactFullName =
+            Platform.OS == 'ios'
+              ? `${item.givenName} ${item.familyName}`
+              : item.givenName;
+
           return (
             <Swipeout
               key={item.recordID}
@@ -43,13 +51,16 @@ const ListScreen = props => {
               autoClose={true}>
               <ListItem avatar>
                 <Left>
-                  <Badge style={{ backgroundColor: 'transparent' }}>
-                    <Icon name="person" />
-                  </Badge>
+                  <Thumbnail
+                    small
+                    source={
+                      item.hasThumbnail ? { uri: item.thumbnailPath } : unknown
+                    }
+                  />
                 </Left>
                 <Body>
                   <Text>{item.givenName}</Text>
-                  <Text note>{item.familyName}</Text>
+                  <Text note>{contactFullName}</Text>
                 </Body>
               </ListItem>
             </Swipeout>
@@ -61,20 +72,18 @@ const ListScreen = props => {
 };
 
 const mapStateToProps = state => {
-  var contacts = state.ui.get('contacts').toArray();
   return {
-    items: contacts
+    items: getProcessedContacts(state)
   };
 };
 
-/* eslint-disable no-unused-vars */
 const mapDispatchToProps = dispatch => {
   return {
     contactDelete: contact => {
-      Alert.alert(`Eliminar "${contact.name}"`, '¿Confirma el borrado?', [
+      Alert.alert(`Eliminar "${contact.givenName}"`, '¿Confirma el borrado?', [
         {
           text: 'Eliminar',
-          onPress: () => dispatch(deleteContact(contact.name)),
+          onPress: () => dispatch(syncContact(contact, false)),
           style: 'destructive'
         },
         {
@@ -89,6 +98,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
+/* eslint-disable no-unused-vars */
 const ImportContacts = props => {
   return (
     <Icon

@@ -89,6 +89,9 @@ export default function ui(state = initialState, action) {
       if (action.lists) {
         state = state.set('lists', fromJS(action.lists));
       }
+      if (action.contacts) {
+        state = state.set('contacts', fromJS(action.contacts));
+      }
       return state;
     case SET_SALMOS_FILTER:
       return state.set('salmos_text_filter', action.filter);
@@ -188,10 +191,13 @@ export default function ui(state = initialState, action) {
     case CONTACT_SYNC:
       var contactsList = state.get('contacts');
       if (action.imported) {
-        state = state.setIn(['contacts', contactsList.size], action.contact);
+        state = state.setIn(
+          ['contacts', contactsList.size],
+          Map(action.contact)
+        );
       } else {
         var index = contactsList.findIndex(
-          c => c.recordID == action.contact.recordID
+          c => c.get('recordID') == action.contact.recordID
         );
         state = state.deleteIn(['contacts', index]);
       }

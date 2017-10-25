@@ -39,14 +39,35 @@ export const getSalmosFromList = createSelector(
 const getContactImportItems = state => state.ui.get('contact_import_items');
 const getContacts = state => state.ui.get('contacts');
 
+const ordenAlfabetico = (a, b) => {
+  if (a.givenName < b.givenName) {
+    return -1;
+  }
+  if (a.givenName > b.givenName) {
+    return 1;
+  }
+  return 0;
+};
+
 export const getProcessedContactsForImport = createSelector(
   getContactImportItems,
   getContacts,
   (allContacts, importedContacts) => {
-    return allContacts.map(c => {
-      var found = importedContacts.find(x => x.recordID === c.recordID);
+    var contactsWithImportFlag = allContacts.map(c => {
+      var found = importedContacts.find(x => x.get('recordID') === c.recordID);
       c.imported = found !== undefined;
       return c;
     });
+    contactsWithImportFlag.sort(ordenAlfabetico);
+    return contactsWithImportFlag;
+  }
+);
+
+export const getProcessedContacts = createSelector(
+  getContacts,
+  importedContacts => {
+    var contactsArray = importedContacts.toJS();
+    contactsArray.sort(ordenAlfabetico);
+    return contactsArray;
   }
 );
