@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { NavigationActions } from 'react-navigation';
 import { Text, Input, Item, Button } from 'native-base';
 import { hideListAddDialog, createList, updateListAddName } from '../actions';
 import BaseModal from './BaseModal';
@@ -88,6 +89,14 @@ const mapDispatchToProps = dispatch => {
     createNewList: (name, type) => {
       dispatch(createList(name, type));
       dispatch(hideListAddDialog());
+      dispatch(
+        NavigationActions.navigate({
+          routeName: 'ListDetail',
+          params: {
+            list: { name: name }
+          }
+        })
+      );
     }
   };
 };

@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import BaseModal from './BaseModal';
-import { Text, ListItem, Thumbnail, Left, Body } from 'native-base';
-import { FlatList, Platform } from 'react-native';
+import { Text, ListItem, Thumbnail, Left, Body, Icon } from 'native-base';
+import { FlatList, Platform, View } from 'react-native';
 import { addContactToList, closeChooserDialog } from '../actions';
 import { getProcessedContacts } from '../selectors';
+import commonTheme from '../../native-base-theme/variables/platform';
 
 const unknown = require('../../img/avatar.png');
 
@@ -16,10 +17,24 @@ const ContactChooserDialog = props => {
       title="Comunidad"
       fade={true}>
       {props.items.length == 0 && (
-        <Text note style={{ textAlign: 'center', paddingTop: 20 }}>
-          Sin nombres importados. Para elegir mediante la lista, debes importar
-          desde tus contactos en la opción Comunidad.
-        </Text>
+        <View
+          style={{
+            flex: 3,
+            justifyContent: 'space-around'
+          }}>
+          <Icon
+            name="contacts"
+            style={{
+              fontSize: 120,
+              color: commonTheme.brandPrimary,
+              alignSelf: 'center'
+            }}
+          />
+          <Text note style={{ textAlign: 'center' }}>
+            Sin nombres importados. Para elegir mediante la lista, debes
+            importar desde tus contactos en la opción Comunidad.
+          </Text>
+        </View>
       )}
       <FlatList
         data={props.items}

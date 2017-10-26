@@ -168,7 +168,7 @@ const ImportContacts = props => {
         marginTop: 4,
         marginRight: 8,
         width: 32,
-        fontSize: 32,
+        fontSize: 30,
         textAlign: 'center',
         color: AppNavigatorConfig.navigationOptions.headerTitleStyle.color
       }}

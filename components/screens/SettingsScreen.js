@@ -29,12 +29,12 @@ class SettingsScreen extends React.Component {
               />
             </Right>
           </ListItem>
-          <ListItem icon>
+          <ListItem icon button onPress={() => this.props.showAbout()}>
             <Left>
               <Icon name="help-circle" />
             </Left>
             <Body>
-              <Text onPress={() => this.props.showAbout()}>Acerca de</Text>
+              <Text>Acerca de</Text>
             </Body>
           </ListItem>
         </List>

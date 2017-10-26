@@ -21,7 +21,7 @@ const ContactImportDialog = props => {
         </Text>
       )}
       {props.items.length > 0 && (
-        <Text note style={{ marginBottom: 20 }}>
+        <Text note style={{ textAlign: 'center', marginBottom: 20 }}>
           Marca a los hermanos de tu comunidad. Puedes cargarlos previamente en
           los contactos de tu dispositivo.
         </Text>

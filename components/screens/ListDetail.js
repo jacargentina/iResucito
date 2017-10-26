@@ -11,7 +11,9 @@ const ListDetail = props => {
   if (props.listMap.get('type') == 'libre') {
     return (
       <BaseScreen>
-        <Text>BETA. Aún no implementado</Text>
+        <Text note style={{ textAlign: 'center', padding: 20 }}>
+          No implementado
+        </Text>
       </BaseScreen>
     );
   }

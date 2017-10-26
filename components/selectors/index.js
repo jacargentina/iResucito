@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { getEsSalmo } from '../util';
+import { getEsSalmo, getFriendlyTextForListType } from '../util';
 
 const getLists = state => state.ui.get('lists');
 
@@ -9,7 +9,7 @@ export const getProcessedLists = createSelector(getLists, lists => {
     var listMap = lists.get(name);
     return {
       name: name,
-      type: listMap.get('type')
+      type: getFriendlyTextForListType(listMap.get('type'))
     };
   });
 });
