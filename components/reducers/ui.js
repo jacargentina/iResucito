@@ -7,12 +7,12 @@ import {
   SET_SETTINGS_VALUE,
   SET_CHOOSER_TARGETLIST,
   SET_LIST_ADD_VISIBLE,
-  SET_LIST_CREATE_NEW,
+  SET_LIST_ADD_TYPE,
   SET_CONTACT_IMPORT_VISIBLE,
   SET_CONTACT_IMPORT_LOADING,
   SET_CONTACT_IMPORT_ITEMS,
   LIST_CREATE,
-  LIST_CREATE_NAME,
+  SET_LIST_ADD_NAME,
   LIST_ADD_SALMO,
   LIST_ADD_TEXT,
   LIST_ADD_CONTACT,
@@ -37,7 +37,7 @@ const initialState = Map({
   list_create_enabled: false,
   list_chooser_salmo: null,
   list_add_visible: false,
-  list_create_new: false,
+  list_create_type: null,
   chooser: null,
   chooser_target_list: null,
   chooser_target_key: null,
@@ -122,9 +122,9 @@ export default function ui(state = initialState, action) {
       return state.set('contact_import_loading', action.loading);
     case SET_CONTACT_IMPORT_ITEMS:
       return state.set('contact_import_items', action.contacts);
-    case SET_LIST_CREATE_NEW:
-      return state.set('list_create_new', action.value);
-    case LIST_CREATE_NAME:
+    case SET_LIST_ADD_TYPE:
+      return state.set('list_create_type', action.value);
+    case SET_LIST_ADD_NAME:
       state = state.set('list_create_name', action.name);
       var candidateName = action.name.trim();
       var lists = state

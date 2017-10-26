@@ -84,3 +84,14 @@ export function getFriendlyText(listKey) {
   }
   return text;
 }
+
+export function getFriendlyTextForListType(listType) {
+  switch (listType) {
+    case 'eucaristia':
+      return 'Eucaristía';
+    case 'palabra':
+      return 'Palabra';
+    case 'libre':
+      return 'Otras';
+  }
+}

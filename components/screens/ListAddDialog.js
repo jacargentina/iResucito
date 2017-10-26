@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Text, Input, Item, Button } from 'native-base';
-import { hideListAddDialog, createList, updateNewListName } from '../actions';
+import { hideListAddDialog, createList, updateListAddName } from '../actions';
 import BaseModal from './BaseModal';
+import { getFriendlyTextForListType } from '../util';
 
 class ListAddDialog extends React.Component {
   constructor(props) {
@@ -21,42 +22,26 @@ class ListAddDialog extends React.Component {
           ? 'Ya existe una lista con el mismo nombre'
           : 'Ingrese un nombre no vacío';
     }
-    var acceptButtons = [
+    var acceptButtons = (
       <Button
-        key="0"
-        style={{ flex: 1, margin: 2, justifyContent: 'center' }}
         primary
         onPress={() =>
-          this.props.createNewList(this.props.listCreateName, 'palabra')}
+          this.props.createNewList(
+            this.props.listCreateName,
+            this.props.listCreateType
+          )}
         disabled={!this.props.listCreateEnabled}>
-        <Text>Palabra</Text>
-      </Button>,
-      <Button
-        key="1"
-        style={{ flex: 1, margin: 2, justifyContent: 'center' }}
-        primary
-        onPress={() =>
-          this.props.createNewList(this.props.listCreateName, 'eucaristia')}
-        disabled={!this.props.listCreateEnabled}>
-        <Text>Eucaristía</Text>
-      </Button>,
-      <Button
-        key="2"
-        style={{ flex: 1, margin: 2, justifyContent: 'center' }}
-        primary
-        onPress={() =>
-          this.props.createNewList(this.props.listCreateName, 'libre')}
-        disabled={!this.props.listCreateEnabled}>
-        <Text>Otras</Text>
+        <Text>Crear</Text>
       </Button>
-    ];
+    );
+    var titleSuffix = getFriendlyTextForListType(this.props.listCreateType);
     return (
       <BaseModal
         visible={this.props.visible}
         modalShow={() => this.focusInput()}
         closeModal={() => this.props.closeListAdd()}
         acceptButtons={acceptButtons}
-        title="Crear Lista">
+        title={`Crear Lista (${titleSuffix})`}>
         <Item
           style={{ marginBottom: 20 }}
           error={!this.props.listCreateEnabled}
@@ -65,7 +50,7 @@ class ListAddDialog extends React.Component {
             ref={input => {
               this.listNameInput = input;
             }}
-            onChangeText={text => this.props.updateNewListName(text)}
+            onChangeText={text => this.props.listNameChanged(text)}
             value={this.props.listCreateName}
             clearButtonMode="always"
             autoCorrect={false}
@@ -81,10 +66,12 @@ class ListAddDialog extends React.Component {
 
 const mapStateToProps = state => {
   var visible = state.ui.get('list_add_visible');
+  var list_create_type = state.ui.get('list_create_type');
   var list_create_name = state.ui.get('list_create_name');
   var list_create_enabled = state.ui.get('list_create_enabled');
   return {
     visible: visible,
+    listCreateType: list_create_type,
     listCreateName: list_create_name,
     listCreateEnabled: list_create_enabled
   };
@@ -95,8 +82,8 @@ const mapDispatchToProps = dispatch => {
     closeListAdd: () => {
       dispatch(hideListAddDialog());
     },
-    updateNewListName: text => {
-      dispatch(updateNewListName(text));
+    listNameChanged: text => {
+      dispatch(updateListAddName(text));
     },
     createNewList: (name, type) => {
       dispatch(createList(name, type));

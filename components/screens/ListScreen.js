@@ -1,11 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { ListItem, Left, Body, Icon, Text, Badge } from 'native-base';
+import {
+  ListItem,
+  Left,
+  Body,
+  Icon,
+  Text,
+  Badge,
+  ActionSheet
+} from 'native-base';
 import { Alert, FlatList, Platform } from 'react-native';
 import Swipeout from 'react-native-swipeout';
 import BaseScreen from './BaseScreen';
 import { getProcessedLists } from '../selectors';
-import { showListAddDialog, deleteList } from '../actions';
+import { showListAddDialog, updateListAddType, deleteList } from '../actions';
 import AppNavigatorConfig from '../AppNavigatorConfig';
 import BaseCallToAction from './BaseCallToAction';
 
@@ -89,7 +97,31 @@ const mapDispatchToProps = dispatch => {
       ]);
     },
     listAdd: () => {
-      dispatch(showListAddDialog());
+      ActionSheet.show(
+        {
+          options: ['Eucaristía', 'Palabra', 'Otras', 'Cancelar'],
+          cancelButtonIndex: 3,
+          title: 'Tipo de lista'
+        },
+        index => {
+          var type = null;
+          switch (index) {
+            case 0:
+              type = 'eucaristia';
+              break;
+            case 1:
+              type = 'palabra';
+              break;
+            case 2:
+              type = 'libre';
+              break;
+          }
+          if (type) {
+            dispatch(updateListAddType(type));
+            dispatch(showListAddDialog());
+          }
+        }
+      );
     }
   };
 };

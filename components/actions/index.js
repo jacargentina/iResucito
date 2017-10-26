@@ -5,13 +5,13 @@ export const SET_SALMO_CONTENT = 'SET_SALMO_CONTENT';
 export const SET_ABOUT_VISIBLE = 'SET_ABOUT_VISIBLE';
 export const SET_SETTINGS_VALUE = 'SET_SETTINGS_VALUE';
 export const SET_CHOOSER_TARGETLIST = 'SET_CHOOSER_TARGETLIST';
-export const SET_LIST_CREATE_NEW = 'SET_LIST_CREATE_NEW';
 export const SET_LIST_ADD_VISIBLE = 'SET_LIST_ADD_VISIBLE';
+export const SET_LIST_ADD_TYPE = 'SET_LIST_ADD_TYPE';
+export const SET_LIST_ADD_NAME = 'SET_LIST_ADD_NAME';
 export const SET_CONTACT_IMPORT_VISIBLE = 'SET_CONTACT_IMPORT_VISIBLE';
 export const SET_CONTACT_IMPORT_LOADING = 'SET_CONTACT_IMPORT_LOADING';
 export const SET_CONTACT_IMPORT_ITEMS = 'SET_CONTACT_IMPORT_ITEMS';
 
-export const LIST_CREATE_NAME = 'LIST_CREATE_NAME';
 export const LIST_CREATE = 'LIST_CREATE';
 export const LIST_ADD_SALMO = 'LIST_ADD_SALMO';
 export const LIST_ADD_TEXT = 'LIST_ADD_TEXT';
@@ -94,8 +94,12 @@ export const hideAbout = () => {
   return { type: SET_ABOUT_VISIBLE, visible: false };
 };
 
-export const updateNewListName = text => {
-  return { type: LIST_CREATE_NAME, name: text };
+export const updateListAddName = text => {
+  return { type: SET_LIST_ADD_NAME, name: text };
+};
+
+export const updateListAddType = type => {
+  return { type: SET_LIST_ADD_TYPE, value: type };
 };
 
 export const createList = (name, type) => {
