@@ -21,6 +21,7 @@ import AppNavigatorConfig from '../AppNavigatorConfig';
 import BaseCallToAction from './BaseCallToAction';
 import { getProcessedContacts } from '../selectors';
 import colors from '../colors';
+import commonTheme from '../../native-base-theme/variables/platform';
 
 const unknown = require('../../img/avatar.png');
 const contactAttributes = [
@@ -70,7 +71,7 @@ const CommunityScreen = props => {
               {item.s === true && (
                 <Icon
                   name="musical-notes"
-                  style={{ marginRight: 4, color: colors.Salmista }}
+                  style={{ marginRight: 4, color: commonTheme.brandPrimary }}
                 />
               )}
               {item.o === true && (

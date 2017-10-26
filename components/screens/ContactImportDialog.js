@@ -6,14 +6,30 @@ import Switch from '../widgets/switch';
 import { FlatList, Platform } from 'react-native';
 import { syncContact, hideContactImportDialog } from '../actions';
 import { getProcessedContactsForImport } from '../selectors';
+import commonTheme from '../../native-base-theme/variables/platform';
 
 const unknown = require('../../img/avatar.png');
 
 const ContactImportDialog = props => {
+  var readyButton = (
+    <Text
+      style={{
+        alignSelf: 'center',
+        color: commonTheme.brandPrimary
+      }}
+      onPress={() => props.close()}>
+      Listo
+    </Text>
+  );
+  var importedText =
+    props.imported > 0
+      ? `${props.imported} seleccionados`
+      : 'Ningún contacto seleccionado';
   return (
     <BaseModal
       visible={props.visible}
       closeModal={() => props.close()}
+      closeButton={readyButton}
       title="Importar Contactos">
       {props.items.length == 0 && (
         <Text note style={{ textAlign: 'center', paddingTop: 20 }}>
@@ -21,11 +37,14 @@ const ContactImportDialog = props => {
         </Text>
       )}
       {props.items.length > 0 && (
-        <Text note style={{ textAlign: 'center', marginBottom: 20 }}>
+        <Text note style={{ textAlign: 'center', marginBottom: 10 }}>
           Marca a los hermanos de tu comunidad. Puedes cargarlos previamente en
           los contactos de tu dispositivo.
         </Text>
       )}
+      <Text note style={{ textAlign: 'center', marginBottom: 20 }}>
+        {importedText}
+      </Text>
       <FlatList
         data={props.items}
         keyExtractor={item => item.recordID}
@@ -44,8 +63,12 @@ const ContactImportDialog = props => {
             <ListItem avatar>
               <Left>{photo}</Left>
               <Body>
-                <Text>{contactFullName}</Text>
-                <Text note>
+                <Text
+                  style={{ fontSize: 15, fontWeight: 'bold' }}
+                  numberOfLines={1}>
+                  {contactFullName}
+                </Text>
+                <Text note numberOfLines={1}>
                   {item.emailAddresses.length > 0 ? (
                     item.emailAddresses[0].email
                   ) : null}
@@ -67,9 +90,11 @@ const ContactImportDialog = props => {
 
 const mapStateToProps = state => {
   var visible = state.ui.get('contact_import_visible');
+  var result = getProcessedContactsForImport(state);
   return {
     visible: visible,
-    items: getProcessedContactsForImport(state)
+    items: result.items,
+    imported: result.importedCount
   };
 };
 

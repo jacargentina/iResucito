@@ -61,7 +61,12 @@ const ListDetailItem = props => {
         <Right>
           <Icon
             name="search"
-            style={{ color: commonTheme.brandPrimary }}
+            style={{
+              color: commonTheme.brandPrimary,
+              width: 40,
+              height: 40,
+              fontSize: 30,
+            }}
             onPress={() =>
               props.openChooser('Contact', props.listName, props.listKey)}
           />
@@ -75,7 +80,12 @@ const ListDetailItem = props => {
         <Right>
           <Icon
             name="open"
-            style={{ color: commonTheme.brandPrimary }}
+            style={{
+              color: commonTheme.brandPrimary,
+              width: 40,
+              height: 40,
+              fontSize: 30,
+            }}
             onPress={() =>
               props.navigation.navigate('SalmoDetail', {
                 salmo: props.listText
@@ -94,7 +104,7 @@ const ListDetailItem = props => {
           <Icon name="musical-notes" />
         </Left>
         <Body>
-          <Text>{text}</Text>
+          <Text numberOfLines={1}>{text}</Text>
         </Body>
         {navigateSalmo}
       </ListItem>

@@ -53,13 +53,17 @@ export const getProcessedContactsForImport = createSelector(
   getContactImportItems,
   getContacts,
   (allContacts, importedContacts) => {
-    var contactsWithImportFlag = allContacts.map(c => {
+    var result = { importedCount: 0, items: [] };
+    result.items = allContacts.map(c => {
       var found = importedContacts.find(x => x.get('recordID') === c.recordID);
       c.imported = found !== undefined;
+      if (c.imported) {
+        result.importedCount += 1;
+      }
       return c;
     });
-    contactsWithImportFlag.sort(ordenAlfabetico);
-    return contactsWithImportFlag;
+    result.items.sort(ordenAlfabetico);
+    return result;
   }
 );
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, Icon } from 'native-base';
 import { View, Platform } from 'react-native';
 import Modal from 'react-native-modal';
+import commonTheme from '../../native-base-theme/variables/platform';
 
 const BaseModal = props => {
   // Por algun motivo que desconozco, en Android con true
@@ -9,6 +10,20 @@ const BaseModal = props => {
   var avoidKeyboard = Platform.OS == 'ios' ? true : false;
   var animationIn = props.fade ? 'fadeIn' : 'slideInUp';
   var animationOut = props.fade ? 'fadeOut' : 'slideOutDown';
+  var closeButton = props.closeButton ? (
+    props.closeButton
+  ) : (
+    <Icon
+      name="close"
+      style={{
+        width: 32,
+        fontSize: 40,
+        textAlign: 'center',
+        color: commonTheme.brandPrimary
+      }}
+      onPress={() => props.closeModal()}
+    />
+  );
   return (
     <Modal
       style={{ margin: 0 }}
@@ -32,8 +47,7 @@ const BaseModal = props => {
             flexDirection: 'row',
             justifyContent: 'space-between',
             alignItems: 'center',
-            marginBottom: 10,
-            marginTop: 10
+            margin: 5
           }}>
           <Text
             style={{
@@ -41,16 +55,7 @@ const BaseModal = props => {
             }}>
             {props.title}
           </Text>
-          <Icon
-            name="close"
-            style={{
-              width: 32,
-              fontSize: 40,
-              textAlign: 'center',
-              color: 'red'
-            }}
-            onPress={() => props.closeModal()}
-          />
+          {closeButton}
         </View>
         <View
           style={{

@@ -121,7 +121,10 @@ export default function ui(state = initialState, action) {
     case SET_CONTACT_IMPORT_LOADING:
       return state.set('contact_import_loading', action.loading);
     case SET_CONTACT_IMPORT_ITEMS:
-      return state.set('contact_import_items', action.contacts);
+      var filtered = action.contacts.filter(
+        c => c.givenName.length > 0 || c.familyName.length > 0
+      );
+      return state.set('contact_import_items', filtered);
     case SET_LIST_ADD_TYPE:
       return state.set('list_create_type', action.value);
     case SET_LIST_ADD_NAME:
