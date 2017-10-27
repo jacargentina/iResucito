@@ -11,6 +11,7 @@ import {
   SET_CONTACT_IMPORT_VISIBLE,
   SET_CONTACT_IMPORT_LOADING,
   SET_CONTACT_IMPORT_ITEMS,
+  SET_CONTACT_IMPORT_FILTER,
   LIST_CREATE,
   SET_LIST_ADD_NAME,
   LIST_ADD_SALMO,
@@ -44,6 +45,7 @@ const initialState = Map({
   contact_import_visible: false,
   contact_import_loading: false,
   contact_import_items: [],
+  contact_import_text_filter: null,
   lists: Map(),
   contacts: List(),
   settings: Map({
@@ -125,6 +127,8 @@ export default function ui(state = initialState, action) {
         c => c.givenName.length > 0 || c.familyName.length > 0
       );
       return state.set('contact_import_items', filtered);
+    case SET_CONTACT_IMPORT_FILTER:
+      return state.set('contact_import_text_filter', action.filter);
     case SET_LIST_ADD_TYPE:
       return state.set('list_create_type', action.value);
     case SET_LIST_ADD_NAME:
@@ -202,16 +206,19 @@ export default function ui(state = initialState, action) {
       return state;
     case CONTACT_SYNC:
       var contactsList = state.get('contacts');
-      if (action.imported) {
+      var index = contactsList.findIndex(
+        c => c.get('recordID') == action.contact.recordID
+      );
+      // Ya esta importado
+      if (index !== -1) {
+        state = state.deleteIn(['contacts', index]);
+      } else {
+        // Importarlo
         state = state.setIn(
           ['contacts', contactsList.size],
           Map(action.contact)
         );
-      } else {
-        var index = contactsList.findIndex(
-          c => c.get('recordID') == action.contact.recordID
-        );
-        state = state.deleteIn(['contacts', index]);
+        state = state.set('contact_import_text_filter', '');
       }
       saveContacts(state);
       return state;

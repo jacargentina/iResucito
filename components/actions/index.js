@@ -11,6 +11,7 @@ export const SET_LIST_ADD_NAME = 'SET_LIST_ADD_NAME';
 export const SET_CONTACT_IMPORT_VISIBLE = 'SET_CONTACT_IMPORT_VISIBLE';
 export const SET_CONTACT_IMPORT_LOADING = 'SET_CONTACT_IMPORT_LOADING';
 export const SET_CONTACT_IMPORT_ITEMS = 'SET_CONTACT_IMPORT_ITEMS';
+export const SET_CONTACT_IMPORT_FILTER = 'SET_CONTACT_IMPORT_FILTER';
 
 export const LIST_CREATE = 'LIST_CREATE';
 export const LIST_ADD_SALMO = 'LIST_ADD_SALMO';
@@ -138,8 +139,8 @@ export const hideContactImportDialog = () => {
   return { type: SET_CONTACT_IMPORT_VISIBLE, visible: false };
 };
 
-export const syncContact = (contact, isImported) => {
-  return { type: CONTACT_SYNC, contact: contact, imported: isImported };
+export const syncContact = contact => {
+  return { type: CONTACT_SYNC, contact: contact };
 };
 
 export const setContactAttribute = (contact, attribute) => {
@@ -148,4 +149,8 @@ export const setContactAttribute = (contact, attribute) => {
     contact: contact,
     attribute: attribute
   };
+};
+
+export const filterContactImportList = text => {
+  return { type: SET_CONTACT_IMPORT_FILTER, filter: text };
 };

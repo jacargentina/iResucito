@@ -7,10 +7,13 @@ import BaseScreen from './BaseScreen';
 import SalmoListItem from './SalmoListItem';
 import AppNavigatorConfig from '../AppNavigatorConfig';
 import { filterSalmoList } from '../actions';
+import { getProcessedSalmos, getShowSalmosBadge } from '../selectors';
 
 const SalmoList = props => {
   return (
-    <BaseScreen {...props} searchHandler={props.filtrarHandler}>
+    <BaseScreen
+      searchTextFilter={props.textFilter}
+      searchHandler={props.filtrarHandler}>
       {props.items.length == 0 && (
         <Text note style={{ textAlign: 'center', paddingTop: 20 }}>
           Ningún salmo encontrado
@@ -34,31 +37,12 @@ const SalmoList = props => {
   );
 };
 
-const mapStateToProps = (state, props) => {
-  var salmos = state.ui.get('salmos');
-  var filter =
-    props.navigation && props.navigation.state.params
-      ? props.navigation.state.params.filter
-      : props.filter;
-  var items = [];
-  if (salmos) {
-    if (filter) {
-      for (var name in filter) {
-        items = salmos.filter(s => s[name] == filter[name]);
-      }
-    } else {
-      items = salmos;
-    }
-  }
-  var text_filter = state.ui.get('salmos_text_filter');
-  if (text_filter) {
-    items = items.filter(s => {
-      return s.nombre.toLowerCase().includes(text_filter.toLowerCase());
-    });
-  }
+const mapStateToProps = state => {
+  var textFilter = state.ui.get('salmos_text_filter');
   return {
-    items: items,
-    showBadge: filter == null || !filter.hasOwnProperty('etapa')
+    textFilter: textFilter,
+    items: getProcessedSalmos(state),
+    showBadge: getShowSalmosBadge(state)
   };
 };
 

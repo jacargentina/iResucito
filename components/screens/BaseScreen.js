@@ -11,6 +11,7 @@ const BaseScreen = props => {
           <Input
             placeholder="Buscar..."
             onChangeText={text => props.searchHandler(text)}
+            value={props.searchTextFilter}
             returnKeyType="search"
             autoCapitalize="none"
             clearButtonMode="always"
