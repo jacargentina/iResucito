@@ -28,9 +28,13 @@ platform :ios do
 
   desc "Submit a new Beta Build to Apple TestFlight"
   desc "This will also make sure the profile is up to date"
-  lane :beta do
+  lane :beta do |options|
     match(type: "appstore") # more information: https://codesigning.guide
-    increment_build_number
+    if options[:newVersion]
+      increment_version_number
+    else
+      increment_build_number
+    end
     gym(scheme: "iResucito") # Build your app - more options available
     pilot
 
