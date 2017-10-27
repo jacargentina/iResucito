@@ -52,6 +52,8 @@
 		6DAB2CF5F78049BFA6E26210 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D6DCE21DD9CB407A8F1729FF /* Feather.ttf */; };
 		748F40AB429C4A0FAC8D22EA /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD78560C86FC44869544EFBB /* Zocial.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		884E86991FA3C68600389135 /* iResucitoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884E86981FA3C68600389135 /* iResucitoUITests.swift */; };
+		884E86D01FA3C76300389135 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884E86CF1FA3C76200389135 /* SnapshotHelper.swift */; };
 		889530361F6C320D009638BA /* Salmos in Resources */ = {isa = PBXBuildFile; fileRef = 889530351F6C320D009638BA /* Salmos */; };
 		88BC43B31F8526BF006B7672 /* cristo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 88BC43B11F8526BF006B7672 /* cristo.jpg */; };
 		88BC43B41F8526BF006B7672 /* resucito.gif in Resources */ = {isa = PBXBuildFile; fileRef = 88BC43B21F8526BF006B7672 /* resucito.gif */; };
@@ -318,6 +320,27 @@
 			remoteGlobalIDString = 3D7682761D8E76B80014119E;
 			remoteInfo = SplashScreen;
 		};
+		884E869B1FA3C68600389135 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
+			remoteInfo = iResucito;
+		};
+		884E86C41FA3C68600389135 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9936F3131F5F2E4B0010BF04;
+			remoteInfo = privatedata;
+		};
+		884E86C61FA3C68600389135 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9936F32F1F5F2E5B0010BF04;
+			remoteInfo = "privatedata-tvOS";
+		};
 		8888C8B61F82736100D88592 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3FD3AB8DEF6F4977A4BEB865 /* RNDeviceInfo.xcodeproj */;
@@ -423,6 +446,10 @@
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		7DD1C81B56284101A22C3274 /* icloudstorage.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = icloudstorage.xcodeproj; path = "../node_modules/react-native-icloudstore/icloudstorage.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		884E86961FA3C68600389135 /* iResucitoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iResucitoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		884E86981FA3C68600389135 /* iResucitoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iResucitoUITests.swift; sourceTree = "<group>"; };
+		884E869A1FA3C68600389135 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		884E86CF1FA3C76200389135 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		889530351F6C320D009638BA /* Salmos */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Salmos; path = ../Salmos; sourceTree = "<group>"; };
 		88BC43B11F8526BF006B7672 /* cristo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cristo.jpg; sourceTree = "<group>"; };
 		88BC43B21F8526BF006B7672 /* resucito.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = resucito.gif; sourceTree = "<group>"; };
@@ -496,6 +523,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		2D02E48D1E0B4A5D006451C7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		884E86931FA3C68600389135 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -613,6 +647,8 @@
 				88029AC21F6B071A00A3CAE2 /* libthird-party.a */,
 				88029AC41F6B071A00A3CAE2 /* libdouble-conversion.a */,
 				88029AC61F6B071A00A3CAE2 /* libdouble-conversion.a */,
+				884E86C51FA3C68600389135 /* libprivatedata.a */,
+				884E86C71FA3C68600389135 /* libprivatedata-tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -709,6 +745,7 @@
 				13B07FAE1A68108700A75B9A /* iResucito */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* iResucitoTests */,
+				884E86971FA3C68600389135 /* iResucitoUITests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				18894D70EBD44971AEF2BC65 /* Resources */,
 				889530151F6C31EA009638BA /* Recovered References */,
@@ -724,6 +761,7 @@
 				00E356EE1AD99517003FC87E /* iResucitoTests.xctest */,
 				2D02E47B1E0B4A5D006451C7 /* iResucito-tvOS.app */,
 				2D02E4901E0B4A5D006451C7 /* iResucito-tvOSTests.xctest */,
+				884E86961FA3C68600389135 /* iResucitoUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -751,6 +789,16 @@
 				8814E4651F7AA0CC0058914A /* libRNVectorIcons.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		884E86971FA3C68600389135 /* iResucitoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				884E86CF1FA3C76200389135 /* SnapshotHelper.swift */,
+				884E86981FA3C68600389135 /* iResucitoUITests.swift */,
+				884E869A1FA3C68600389135 /* Info.plist */,
+			);
+			path = iResucitoUITests;
 			sourceTree = "<group>";
 		};
 		8888C8B31F82736100D88592 /* Products */ = {
@@ -884,12 +932,31 @@
 			productReference = 2D02E4901E0B4A5D006451C7 /* iResucito-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		884E86951FA3C68600389135 /* iResucitoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 884E86CE1FA3C68600389135 /* Build configuration list for PBXNativeTarget "iResucitoUITests" */;
+			buildPhases = (
+				884E86921FA3C68600389135 /* Sources */,
+				884E86931FA3C68600389135 /* Frameworks */,
+				884E86941FA3C68600389135 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				884E869C1FA3C68600389135 /* PBXTargetDependency */,
+			);
+			name = iResucitoUITests;
+			productName = iResucitoUITests;
+			productReference = 884E86961FA3C68600389135 /* iResucitoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0910;
 				LastUpgradeCheck = 900;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
@@ -908,6 +975,12 @@
 						CreatedOnToolsVersion = 8.2.1;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 2D02E47A1E0B4A5D006451C7;
+					};
+					884E86951FA3C68600389135 = {
+						CreatedOnToolsVersion = 9.1;
+						DevelopmentTeam = GHJ7J9LTV8;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 				};
 			};
@@ -1006,6 +1079,7 @@
 				00E356ED1AD99517003FC87E /* iResucitoTests */,
 				2D02E47A1E0B4A5D006451C7 /* iResucito-tvOS */,
 				2D02E48F1E0B4A5D006451C7 /* iResucito-tvOSTests */,
+				884E86951FA3C68600389135 /* iResucitoUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -1242,6 +1316,20 @@
 			remoteRef = 8814E4671F7AA0CC0058914A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		884E86C51FA3C68600389135 /* libprivatedata.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libprivatedata.a;
+			remoteRef = 884E86C41FA3C68600389135 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		884E86C71FA3C68600389135 /* libprivatedata-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libprivatedata-tvOS.a";
+			remoteRef = 884E86C61FA3C68600389135 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		8888C8B71F82736100D88592 /* libRNDeviceInfo.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1358,6 +1446,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		884E86941FA3C68600389135 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -1426,6 +1521,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		884E86921FA3C68600389135 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				884E86991FA3C68600389135 /* iResucitoUITests.swift in Sources */,
+				884E86D01FA3C76300389135 /* SnapshotHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1438,6 +1542,11 @@
 			isa = PBXTargetDependency;
 			target = 2D02E47A1E0B4A5D006451C7 /* iResucito-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
+		};
+		884E869C1FA3C68600389135 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 13B07F861A680F5B00A75B9A /* iResucito */;
+			targetProxy = 884E869B1FA3C68600389135 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1541,7 +1650,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = GHJ7J9LTV8;
 				HEADER_SEARCH_PATHS = (
@@ -1573,7 +1682,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = GHJ7J9LTV8;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1855,6 +1964,58 @@
 			};
 			name = Release;
 		};
+		884E869D1FA3C68600389135 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = GHJ7J9LTV8;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = iResucitoUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.javiercastro.iResucitoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = iResucito;
+			};
+			name = Debug;
+		};
+		884E869E1FA3C68600389135 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = GHJ7J9LTV8;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = iResucitoUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.javiercastro.iResucitoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = iResucito;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1899,6 +2060,15 @@
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
 				83CBBA211A601CBA00E9B192 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		884E86CE1FA3C68600389135 /* Build configuration list for PBXNativeTarget "iResucitoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				884E869D1FA3C68600389135 /* Debug */,
+				884E869E1FA3C68600389135 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

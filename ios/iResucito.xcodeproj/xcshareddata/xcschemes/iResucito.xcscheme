@@ -67,6 +67,16 @@
                ReferencedContainer = "container:iResucito.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "884E86951FA3C68600389135"
+               BuildableName = "iResucitoUITests.xctest"
+               BlueprintName = "iResucitoUITests"
+               ReferencedContainer = "container:iResucito.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
