@@ -39,7 +39,6 @@ const BaseModal = props => {
         style={{
           flex: 1,
           paddingTop: 20,
-          padding: 10,
           backgroundColor: 'white'
         }}>
         <View
@@ -52,7 +51,8 @@ const BaseModal = props => {
           }}>
           <Text
             style={{
-              fontWeight: 'bold'
+              fontWeight: 'bold',
+              paddingLeft: 10
             }}>
             {props.title}
           </Text>

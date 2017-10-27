@@ -1,13 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { View } from 'react-native';
-import { Container, Content, Input, Item } from 'native-base';
+import { Container, Input, Item } from 'native-base';
 import debounce from 'lodash/debounce';
+import commonTheme from '../../native-base-theme/variables/platform';
 
 class DebouncedInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: ''
+      text: props.searchTextFilter
     };
     this.handleTextChange = this.handleTextChange.bind(this);
     this.sendTextChange = this.sendTextChange.bind(this);
@@ -15,7 +17,15 @@ class DebouncedInput extends React.Component {
 
   componentDidMount() {
     this.sendTextChange = debounce(this.sendTextChange, 500);
-    this.setState({ text: this.props.text });
+    this.setState({ text: this.props.searchTextFilter });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.text !== nextProps.searchTextFilter) {
+      this.setState({
+        text: nextProps.searchTextFilter
+      });
+    }
   }
 
   handleTextChange(text) {
@@ -30,6 +40,10 @@ class DebouncedInput extends React.Component {
   render() {
     return (
       <Input
+        style={{
+          lineHeight: 24,
+          height: commonTheme.searchBarHeight
+        }}
         placeholder="Buscar..."
         onChangeText={this.handleTextChange}
         value={this.state.text}
@@ -45,8 +59,18 @@ class DebouncedInput extends React.Component {
 const SearchBarView = props => {
   if (props.searchHandler && props.searchTextFilterId) {
     var searchView = (
-      <View>
-        <Item>
+      <View
+        style={{
+          backgroundColor: commonTheme.toolbarInputColor,
+          borderRadius: 25,
+          margin: 10
+        }}>
+        <Item
+          style={{
+            height: commonTheme.searchBarHeight,
+            borderColor: 'transparent',
+            paddingHorizontal: 15
+          }}>
           <DebouncedInput
             searchHandler={props.searchHandler}
             searchTextFilter={props.searchTextFilter}
@@ -59,9 +83,9 @@ const SearchBarView = props => {
   return (
     <Container>
       {searchView}
-      <Content>{props.children}</Content>
+      <View>{props.children}</View>
     </Container>
   );
 };
 
-export default SearchBarView;
+export default connect()(SearchBarView);

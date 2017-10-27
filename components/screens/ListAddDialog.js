@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { NavigationActions } from 'react-navigation';
-import { Text, Input, Item, Button } from 'native-base';
+import { Text, Input, Item, Button, View } from 'native-base';
 import { hideListAddDialog, createList, updateListAddName } from '../actions';
 import BaseModal from './BaseModal';
 import { getFriendlyTextForListType } from '../util';
@@ -25,6 +25,7 @@ class ListAddDialog extends React.Component {
     }
     var acceptButtons = (
       <Button
+        style={{ marginRight: 10, marginBottom: 10 }}
         primary
         onPress={() =>
           this.props.createNewList(
@@ -43,23 +44,25 @@ class ListAddDialog extends React.Component {
         closeModal={() => this.props.closeListAdd()}
         acceptButtons={acceptButtons}
         title={`Crear Lista (${titleSuffix})`}>
-        <Item
-          style={{ marginBottom: 20 }}
-          error={!this.props.listCreateEnabled}
-          success={this.props.listCreateEnabled}>
-          <Input
-            ref={input => {
-              this.listNameInput = input;
-            }}
-            onChangeText={text => this.props.listNameChanged(text)}
-            value={this.props.listCreateName}
-            clearButtonMode="always"
-            autoCorrect={false}
-          />
-        </Item>
-        <Text danger note>
-          {disabledReasonText}
-        </Text>
+        <View style={{ padding: 10 }}>
+          <Item
+            style={{ marginBottom: 20 }}
+            error={!this.props.listCreateEnabled}
+            success={this.props.listCreateEnabled}>
+            <Input
+              ref={input => {
+                this.listNameInput = input;
+              }}
+              onChangeText={text => this.props.listNameChanged(text)}
+              value={this.props.listCreateName}
+              clearButtonMode="always"
+              autoCorrect={false}
+            />
+          </Item>
+          <Text danger note>
+            {disabledReasonText}
+          </Text>
+        </View>
       </BaseModal>
     );
   }
