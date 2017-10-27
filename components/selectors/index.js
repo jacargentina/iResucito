@@ -37,6 +37,7 @@ export const getSalmosFromList = createSelector(
 );
 
 const getContactImportItems = state => state.ui.get('contact_import_items');
+
 const getContacts = state => state.ui.get('contacts');
 
 const ordenAlfabetico = (a, b) => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { View } from 'react-native';
-import { Container, Input, Item } from 'native-base';
+import { View, StyleSheet } from 'react-native';
+import { Container, Input, Item, Icon } from 'native-base';
 import debounce from 'lodash/debounce';
 import commonTheme from '../../native-base-theme/variables/platform';
 
@@ -44,7 +44,8 @@ class DebouncedInput extends React.Component {
           lineHeight: 24,
           height: commonTheme.searchBarHeight
         }}
-        placeholder="Buscar..."
+        placeholder="Buscar"
+        //placeholderTextColor={commonTheme.listBorderColor}
         onChangeText={this.handleTextChange}
         value={this.state.text}
         returnKeyType="search"
@@ -62,7 +63,7 @@ const SearchBarView = props => {
       <View
         style={{
           backgroundColor: commonTheme.toolbarInputColor,
-          borderRadius: 25,
+          borderRadius: 16,
           margin: 10
         }}>
         <Item
@@ -71,6 +72,7 @@ const SearchBarView = props => {
             borderColor: 'transparent',
             paddingHorizontal: 15
           }}>
+          <Icon name="search" />
           <DebouncedInput
             searchHandler={props.searchHandler}
             searchTextFilter={props.searchTextFilter}
@@ -83,7 +85,13 @@ const SearchBarView = props => {
   return (
     <Container>
       {searchView}
-      <View>{props.children}</View>
+      <View
+        style={{
+          borderTopWidth: StyleSheet.hairlineWidth,
+          borderTopColor: commonTheme.listBorderColor
+        }}>
+        {props.children}
+      </View>
     </Container>
   );
 };

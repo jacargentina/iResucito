@@ -16,7 +16,8 @@ import {
   Platform,
   View,
   TouchableOpacity,
-  Keyboard
+  Keyboard,
+  StyleSheet
 } from 'react-native';
 import {
   syncContact,
@@ -26,8 +27,7 @@ import {
 import {
   getCurrentRouteKey,
   getCurrentRouteContactsTextFilter,
-  getFilteredContactsForImport,
-  getProcessedContacts
+  getFilteredContactsForImport
 } from '../selectors';
 import commonTheme from '../../native-base-theme/variables/platform';
 
@@ -41,7 +41,7 @@ const ContactImportDialog = props => {
         color: commonTheme.brandPrimary,
         marginRight: 10
       }}
-      onPress={() => props.close()}>
+      onPress={() => props.close(props.textFilterId)}>
       Listo
     </Text>
   );
@@ -60,7 +60,7 @@ const ContactImportDialog = props => {
           <View
             style={{
               padding: 10,
-              borderBottomWidth: 1,
+              borderBottomWidth: StyleSheet.hairlineWidth,
               borderBottomColor: commonTheme.listBorderColor
             }}>
             <FlatList
@@ -143,6 +143,7 @@ const ContactImportDialog = props => {
                 </Body>
                 <Right>
                   <CheckBox
+                    style={{ marginRight: 15 }}
                     checked={item.imported}
                     onPress={() => props.syncContact(item, props.textFilterId)}
                   />
@@ -158,20 +159,21 @@ const ContactImportDialog = props => {
 
 const mapStateToProps = state => {
   var visible = state.ui.get('contact_import_visible');
-  var t = getCurrentRouteContactsTextFilter(state);
+  var imported = state.ui.get('contacts').toJS();
   return {
     visible: visible,
+    imported: imported,
     textFilterId: getCurrentRouteKey(state),
-    textFilter: t,
-    items: getFilteredContactsForImport(state),
-    imported: getProcessedContacts(state)
+    textFilter: getCurrentRouteContactsTextFilter(state),
+    items: getFilteredContactsForImport(state)
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    close: () => {
+    close: inputId => {
       dispatch(hideContactImportDialog());
+      dispatch(setContactsFilterText(inputId, ''));
     },
     syncContact: (contact, inputId) => {
       dispatch(syncContact(contact));

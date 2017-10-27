@@ -38,7 +38,7 @@ const BaseModal = props => {
       <View
         style={{
           flex: 1,
-          paddingTop: 20,
+          paddingTop: 23,
           backgroundColor: 'white'
         }}>
         <View
@@ -51,6 +51,7 @@ const BaseModal = props => {
           }}>
           <Text
             style={{
+              fontSize: commonTheme.fontSizeBase + 3,
               fontWeight: 'bold',
               paddingLeft: 10
             }}>
