@@ -37,8 +37,6 @@ export const getSalmosFromList = createSelector(
 );
 
 const getContactImportItems = state => state.ui.get('contact_import_items');
-const getContactImportTextFilter = state =>
-  state.ui.get('contact_import_text_filter');
 const getContacts = state => state.ui.get('contacts');
 
 const ordenAlfabetico = (a, b) => {
@@ -49,6 +47,20 @@ const ordenAlfabetico = (a, b) => {
     return 1;
   }
   return 0;
+};
+
+const getCurrentRouteFilter = state => {
+  const i = state.nav.index;
+  const route = state.nav.routes[i];
+  return route.params ? route.params.filter : null;
+};
+
+export const getCurrentRouteKey = state => {
+  return state.nav.routes[state.nav.index].key;
+};
+
+export const getCurrentRouteContactsTextFilter = state => {
+  return state.ui.getIn(['contacts_text_filter', getCurrentRouteKey(state)]);
 };
 
 export const getProcessedContactsForImport = createSelector(
@@ -67,7 +79,7 @@ export const getProcessedContactsForImport = createSelector(
 
 export const getFilteredContactsForImport = createSelector(
   getProcessedContactsForImport,
-  getContactImportTextFilter,
+  getCurrentRouteContactsTextFilter,
   (contacts, text_filter) => {
     if (text_filter) {
       return contacts.filter(c => {
@@ -90,19 +102,14 @@ export const getProcessedContacts = createSelector(
   }
 );
 
-const getCurrentRouteFilter = state => {
-  const i = state.nav.index;
-  const route = state.nav.routes[i];
-  return route.params ? route.params.filter : null;
+export const getCurrentRouteSalmosTextFilter = state => {
+  return state.ui.getIn(['salmos_text_filter', getCurrentRouteKey(state)]);
 };
 
-const getSalmosTextFilter = state => state.ui.get('salmos_text_filter');
-
-export const getProcessedSalmos = createSelector(
+export const getCurrentRouteSalmos = createSelector(
   getSalmos,
   getCurrentRouteFilter,
-  getSalmosTextFilter,
-  (salmos, filter, text_filter) => {
+  (salmos, filter) => {
     var items = [];
     if (salmos) {
       if (filter) {
@@ -113,12 +120,20 @@ export const getProcessedSalmos = createSelector(
         items = salmos;
       }
     }
+    return items;
+  }
+);
+
+export const getProcessedSalmos = createSelector(
+  getCurrentRouteSalmos,
+  getCurrentRouteSalmosTextFilter,
+  (salmos, text_filter) => {
     if (text_filter) {
-      items = items.filter(s => {
+      salmos = salmos.filter(s => {
         return s.nombre.toLowerCase().includes(text_filter.toLowerCase());
       });
     }
-    return items;
+    return salmos;
   }
 );
 

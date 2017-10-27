@@ -2,18 +2,18 @@ import { Platform, Share } from 'react-native';
 import {
   INITIALIZE_DONE,
   SET_SALMOS_FILTER,
+  SET_CONTACTS_FILTER,
   SET_SALMO_CONTENT,
   SET_ABOUT_VISIBLE,
   SET_SETTINGS_VALUE,
   SET_CHOOSER_TARGETLIST,
   SET_LIST_ADD_VISIBLE,
   SET_LIST_ADD_TYPE,
+  SET_LIST_ADD_NAME,
   SET_CONTACT_IMPORT_VISIBLE,
   SET_CONTACT_IMPORT_LOADING,
   SET_CONTACT_IMPORT_ITEMS,
-  SET_CONTACT_IMPORT_FILTER,
   LIST_CREATE,
-  SET_LIST_ADD_NAME,
   LIST_ADD_SALMO,
   LIST_ADD_TEXT,
   LIST_ADD_CONTACT,
@@ -23,7 +23,7 @@ import {
   CONTACT_SYNC,
   CONTACT_TOGGLE_ATTRIBUTE
 } from '../actions';
-import { NavigationActions } from 'react-navigation';
+//import { NavigationActions } from 'react-navigation';
 import { Map, List, fromJS } from 'immutable';
 import { esLineaDeNotas } from '../util';
 import { localdata, clouddata } from '../data';
@@ -31,7 +31,8 @@ import { getFriendlyText, getEsSalmo } from '../util';
 
 const initialState = Map({
   salmos: null,
-  salmos_text_filter: null,
+  salmos_text_filter: Map(),
+  contacts_text_filter: Map(),
   salmo_lines: null,
   about_visible: false,
   list_create_name: '',
@@ -45,7 +46,6 @@ const initialState = Map({
   contact_import_visible: false,
   contact_import_loading: false,
   contact_import_items: [],
-  contact_import_text_filter: null,
   lists: Map(),
   contacts: List(),
   settings: Map({
@@ -99,7 +99,12 @@ export default function ui(state = initialState, action) {
       }
       return state;
     case SET_SALMOS_FILTER:
-      return state.set('salmos_text_filter', action.filter);
+      return state.setIn(['salmos_text_filter', action.inputId], action.filter);
+    case SET_CONTACTS_FILTER:
+      return state.setIn(
+        ['contacts_text_filter', action.inputId],
+        action.filter
+      );
     case SET_ABOUT_VISIBLE:
       return state.set('about_visible', action.visible);
     case SET_SETTINGS_VALUE:
@@ -127,8 +132,6 @@ export default function ui(state = initialState, action) {
         c => c.givenName.length > 0 || c.familyName.length > 0
       );
       return state.set('contact_import_items', filtered);
-    case SET_CONTACT_IMPORT_FILTER:
-      return state.set('contact_import_text_filter', action.filter);
     case SET_LIST_ADD_TYPE:
       return state.set('list_create_type', action.value);
     case SET_LIST_ADD_NAME:
@@ -218,7 +221,6 @@ export default function ui(state = initialState, action) {
           ['contacts', contactsList.size],
           Map(action.contact)
         );
-        state = state.set('contact_import_text_filter', '');
       }
       saveContacts(state);
       return state;
@@ -271,12 +273,6 @@ export default function ui(state = initialState, action) {
         lineas.shift();
       }
       return state.set('salmo_lines', lineas);
-    case NavigationActions.NAVIGATE:
-      switch (action.routeName) {
-        case 'SalmoList':
-          return (state = state.set('salmos_text_filter', null));
-      }
-      return state;
     default:
       return state;
   }

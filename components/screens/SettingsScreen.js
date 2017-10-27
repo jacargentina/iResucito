@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { View } from 'react-native';
 import { List, ListItem, Left, Body, Text, Icon, Right } from 'native-base';
 import Switch from '../widgets/switch';
 import { saveSetting, showAbout } from '../actions';
-import BaseScreen from './BaseScreen';
 
 class SettingsScreen extends React.Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class SettingsScreen extends React.Component {
 
   render() {
     return (
-      <BaseScreen>
+      <View>
         <List>
           <ListItem>
             <Body>
@@ -38,7 +38,7 @@ class SettingsScreen extends React.Component {
             </Body>
           </ListItem>
         </List>
-      </BaseScreen>
+      </View>
     );
   }
 }

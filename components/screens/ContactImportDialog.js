@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import BaseModal from './BaseModal';
-import BaseScreen from './BaseScreen';
-import { _ } from 'lodash';
+import SearchBarView from './SearchBarView';
 import {
   Text,
   ListItem,
@@ -16,9 +15,13 @@ import { FlatList, Platform } from 'react-native';
 import {
   syncContact,
   hideContactImportDialog,
-  filterContactImportList
+  setContactsFilterText
 } from '../actions';
-import { getFilteredContactsForImport } from '../selectors';
+import {
+  getCurrentRouteKey,
+  getCurrentRouteContactsTextFilter,
+  getFilteredContactsForImport
+} from '../selectors';
 import commonTheme from '../../native-base-theme/variables/platform';
 
 const unknown = require('../../img/avatar.png');
@@ -41,7 +44,8 @@ const ContactImportDialog = props => {
       closeButton={readyButton}
       title="Importar Contactos"
       fade={true}>
-      <BaseScreen
+      <SearchBarView
+        searchTextFilterId={props.textFilterId}
         searchTexFilter={props.textFilter}
         searchHandler={props.filtrarHandler}>
         <FlatList
@@ -85,26 +89,22 @@ const ContactImportDialog = props => {
             );
           }}
         />
-      </BaseScreen>
+      </SearchBarView>
     </BaseModal>
   );
 };
 
 const mapStateToProps = state => {
   var visible = state.ui.get('contact_import_visible');
-  var textFilter = state.ui.get('contact_import_text_filter');
-  var items = getFilteredContactsForImport(state);
   return {
     visible: visible,
-    items: items,
-    textFilter: textFilter
+    textFilterId: getCurrentRouteKey(state),
+    textFilter: getCurrentRouteContactsTextFilter(state),
+    items: getFilteredContactsForImport(state)
   };
 };
 
 const mapDispatchToProps = dispatch => {
-  var filtrar = text => {
-    dispatch(filterContactImportList(text));
-  };
   return {
     close: () => {
       dispatch(hideContactImportDialog());
@@ -112,7 +112,9 @@ const mapDispatchToProps = dispatch => {
     syncContact: (contact, isImported) => {
       dispatch(syncContact(contact, isImported));
     },
-    filtrarHandler: _.debounce(filtrar, 600)
+    filtrarHandler: (inputId, text) => {
+      dispatch(setContactsFilterText(inputId, text));
+    }
   };
 };
 

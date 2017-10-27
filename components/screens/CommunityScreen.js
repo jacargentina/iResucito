@@ -11,7 +11,7 @@ import {
   ActionSheet
 } from 'native-base';
 import { Alert, FlatList, Platform, View } from 'react-native';
-import BaseScreen from './BaseScreen';
+import SearchBarView from './SearchBarView';
 import {
   showContactImportDialog,
   syncContact,
@@ -50,7 +50,7 @@ const CommunityScreen = props => {
       />
     );
   return (
-    <BaseScreen>
+    <SearchBarView>
       <FlatList
         data={props.items}
         keyExtractor={item => item.recordID}
@@ -126,7 +126,7 @@ const CommunityScreen = props => {
           );
         }}
       />
-    </BaseScreen>
+    </SearchBarView>
   );
 };
 

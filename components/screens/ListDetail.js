@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { View } from 'react-native';
 import { Icon, List, Text } from 'native-base';
-import BaseScreen from './BaseScreen';
 import ListDetailItem from './ListDetailItem';
 import { shareList } from '../actions';
 import { getSalmosFromList } from '../selectors';
@@ -10,15 +10,15 @@ import AppNavigatorConfig from '../AppNavigatorConfig';
 const ListDetail = props => {
   if (props.listMap.get('type') == 'libre') {
     return (
-      <BaseScreen>
+      <View>
         <Text note style={{ textAlign: 'center', padding: 20 }}>
           No implementado
         </Text>
-      </BaseScreen>
+      </View>
     );
   }
   return (
-    <BaseScreen>
+    <View>
       <List>
         <ListDetailItem
           listName={props.list.name}
@@ -122,7 +122,7 @@ const ListDetail = props => {
           navigation={props.navigation}
         />
       </List>
-    </BaseScreen>
+    </View>
   );
 };
 

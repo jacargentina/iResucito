@@ -1,6 +1,7 @@
 export const INITIALIZE_DONE = 'INITIALIZE_DONE';
 
 export const SET_SALMOS_FILTER = 'SET_SALMOS_FILTER';
+export const SET_CONTACTS_FILTER = 'SET_CONTACTS_FILTER';
 export const SET_SALMO_CONTENT = 'SET_SALMO_CONTENT';
 export const SET_ABOUT_VISIBLE = 'SET_ABOUT_VISIBLE';
 export const SET_SETTINGS_VALUE = 'SET_SETTINGS_VALUE';
@@ -11,7 +12,6 @@ export const SET_LIST_ADD_NAME = 'SET_LIST_ADD_NAME';
 export const SET_CONTACT_IMPORT_VISIBLE = 'SET_CONTACT_IMPORT_VISIBLE';
 export const SET_CONTACT_IMPORT_LOADING = 'SET_CONTACT_IMPORT_LOADING';
 export const SET_CONTACT_IMPORT_ITEMS = 'SET_CONTACT_IMPORT_ITEMS';
-export const SET_CONTACT_IMPORT_FILTER = 'SET_CONTACT_IMPORT_FILTER';
 
 export const LIST_CREATE = 'LIST_CREATE';
 export const LIST_ADD_SALMO = 'LIST_ADD_SALMO';
@@ -83,8 +83,12 @@ export const hideListAddDialog = () => {
   return { type: SET_LIST_ADD_VISIBLE, visible: false };
 };
 
-export const filterSalmoList = text => {
-  return { type: SET_SALMOS_FILTER, filter: text };
+export const setSalmosFilterText = (inputId, text) => {
+  return { type: SET_SALMOS_FILTER, inputId: inputId, filter: text };
+};
+
+export const setContactsFilterText = (inputId, text) => {
+  return { type: SET_CONTACTS_FILTER, inputId: inputId, filter: text };
 };
 
 export const showAbout = () => {
@@ -149,8 +153,4 @@ export const setContactAttribute = (contact, attribute) => {
     contact: contact,
     attribute: attribute
   };
-};
-
-export const filterContactImportList = text => {
-  return { type: SET_CONTACT_IMPORT_FILTER, filter: text };
 };

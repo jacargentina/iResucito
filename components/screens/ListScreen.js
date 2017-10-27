@@ -11,7 +11,7 @@ import {
 } from 'native-base';
 import { Alert, FlatList, Platform } from 'react-native';
 import Swipeout from 'react-native-swipeout';
-import BaseScreen from './BaseScreen';
+import SearchBarView from './SearchBarView';
 import { getProcessedLists } from '../selectors';
 import { showListAddDialog, updateListAddType, deleteList } from '../actions';
 import AppNavigatorConfig from '../AppNavigatorConfig';
@@ -29,7 +29,7 @@ const ListScreen = props => {
       />
     );
   return (
-    <BaseScreen>
+    <SearchBarView>
       <FlatList
         data={props.items}
         keyExtractor={item => item.name}
@@ -70,7 +70,7 @@ const ListScreen = props => {
           );
         }}
       />
-    </BaseScreen>
+    </SearchBarView>
   );
 };
 

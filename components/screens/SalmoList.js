@@ -2,16 +2,21 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Text } from 'native-base';
 import { FlatList } from 'react-native';
-import { _ } from 'lodash';
-import BaseScreen from './BaseScreen';
+import SearchBarView from './SearchBarView';
 import SalmoListItem from './SalmoListItem';
 import AppNavigatorConfig from '../AppNavigatorConfig';
-import { filterSalmoList } from '../actions';
-import { getProcessedSalmos, getShowSalmosBadge } from '../selectors';
+import { setSalmosFilterText } from '../actions';
+import {
+  getProcessedSalmos,
+  getShowSalmosBadge,
+  getCurrentRouteKey,
+  getCurrentRouteSalmosTextFilter
+} from '../selectors';
 
 const SalmoList = props => {
   return (
-    <BaseScreen
+    <SearchBarView
+      searchTextFilterId={props.textFilterId}
       searchTextFilter={props.textFilter}
       searchHandler={props.filtrarHandler}>
       {props.items.length == 0 && (
@@ -33,26 +38,24 @@ const SalmoList = props => {
           );
         }}
       />
-    </BaseScreen>
+    </SearchBarView>
   );
 };
 
 const mapStateToProps = state => {
-  var textFilter = state.ui.get('salmos_text_filter');
   return {
-    textFilter: textFilter,
+    textFilterId: getCurrentRouteKey(state),
+    textFilter: getCurrentRouteSalmosTextFilter(state),
     items: getProcessedSalmos(state),
     showBadge: getShowSalmosBadge(state)
   };
 };
 
 const mapDispatchToProps = (dispatch, props) => {
-  var filtrar = text => {
-    dispatch(filterSalmoList(text));
-  };
-
   return {
-    filtrarHandler: _.debounce(filtrar, 600),
+    filtrarHandler: (inputId, text) => {
+      dispatch(setSalmosFilterText(inputId, text));
+    },
     onPress: salmo => {
       if (props.onPress) {
         props.onPress(salmo);

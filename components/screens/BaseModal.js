@@ -38,12 +38,13 @@ const BaseModal = props => {
       <View
         style={{
           flex: 1,
+          paddingTop: 20,
           padding: 10,
           backgroundColor: 'white'
         }}>
         <View
           style={{
-            flex: 1,
+            flex: 0,
             flexDirection: 'row',
             justifyContent: 'space-between',
             alignItems: 'center',
