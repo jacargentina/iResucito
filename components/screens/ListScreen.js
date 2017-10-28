@@ -105,6 +105,7 @@ const mapDispatchToProps = dispatch => {
         },
         index => {
           var type = null;
+          index = Number(index);
           switch (index) {
             case 0:
               type = 'eucaristia';

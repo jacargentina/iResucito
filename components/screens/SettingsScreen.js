@@ -31,7 +31,7 @@ class SettingsScreen extends React.Component {
           </ListItem>
           <ListItem icon button onPress={() => this.props.showAbout()}>
             <Left>
-              <Icon name="help-circle" />
+              <Icon name="checkmark" />
             </Left>
             <Body>
               <Text>Acerca de</Text>

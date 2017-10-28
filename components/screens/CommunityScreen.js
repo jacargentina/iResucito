@@ -7,9 +7,9 @@ import {
   Body,
   Icon,
   Text,
-  Thumbnail,
-  ActionSheet
+  Thumbnail
 } from 'native-base';
+import Swipeout from 'react-native-swipeout';
 import { Alert, FlatList, Platform, View } from 'react-native';
 import SearchBarView from './SearchBarView';
 import {
@@ -20,23 +20,9 @@ import {
 import AppNavigatorConfig from '../AppNavigatorConfig';
 import BaseCallToAction from './BaseCallToAction';
 import { getProcessedContacts } from '../selectors';
-import colors from '../colors';
 import commonTheme from '../../native-base-theme/variables/platform';
 
 const unknown = require('../../img/avatar.png');
-const contactAttributes = [
-  // 'Responsable',
-  'Salmista',
-  // 'Ostiario',
-  'Borrar',
-  'Cancelar'
-];
-
-const Responsable_Index = contactAttributes.indexOf('Responsable');
-const Salmista_Index = contactAttributes.indexOf('Salmista');
-const Ostiario_Index = contactAttributes.indexOf('Ostiario');
-const Borrar_Index = contactAttributes.indexOf('Borrar');
-const Cancelar_Index = contactAttributes.indexOf('Cancelar');
 
 const CommunityScreen = props => {
   if (props.items.length == 0)
@@ -62,67 +48,51 @@ const CommunityScreen = props => {
 
           var flags = (
             <View style={{ flexDirection: 'row' }}>
-              {item.r === true && (
-                <Icon
-                  name="trophy"
-                  style={{ marginRight: 4, color: colors.Responsable }}
-                />
-              )}
               {item.s === true && (
                 <Icon
                   name="musical-notes"
                   style={{ marginRight: 4, color: commonTheme.brandPrimary }}
                 />
               )}
-              {item.o === true && (
-                <Icon name="water" style={{ color: colors.Ostiario }} />
-              )}
             </View>
           );
+          var swipeoutBtns = [
+            {
+              text: 'Salmista',
+              type: 'primary',
+              onPress: () => {
+                props.contactToggleAttibute(item, 's');
+              }
+            },
+            {
+              text: 'Eliminar',
+              type: 'delete',
+              onPress: () => {
+                props.contactDelete(item);
+              }
+            }
+          ];
           return (
-            <ListItem
-              avatar
-              button
-              onLongPress={() => {
-                ActionSheet.show(
-                  {
-                    options: contactAttributes,
-                    cancelButtonIndex: Cancelar_Index,
-                    destructiveButtonIndex: Borrar_Index,
-                    title: 'Acciones'
-                  },
-                  index => {
-                    switch (index) {
-                      case Responsable_Index:
-                        props.contactToggleAttibute(item, 'r');
-                        break;
-                      case Salmista_Index:
-                        props.contactToggleAttibute(item, 's');
-                        break;
-                      case Ostiario_Index:
-                        props.contactToggleAttibute(item, 'o');
-                        break;
-                      case Borrar_Index:
-                        props.contactDelete(item);
-                        break;
+            <Swipeout
+              right={swipeoutBtns}
+              backgroundColor="white"
+              autoClose={true}>
+              <ListItem avatar>
+                <Left>
+                  <Thumbnail
+                    small
+                    source={
+                      item.hasThumbnail ? { uri: item.thumbnailPath } : unknown
                     }
-                  }
-                );
-              }}>
-              <Left>
-                <Thumbnail
-                  small
-                  source={
-                    item.hasThumbnail ? { uri: item.thumbnailPath } : unknown
-                  }
-                />
-              </Left>
-              <Body>
-                <Text>{item.givenName}</Text>
-                <Text note>{contactFullName}</Text>
-              </Body>
-              <Right>{flags}</Right>
-            </ListItem>
+                  />
+                </Left>
+                <Body>
+                  <Text>{item.givenName}</Text>
+                  <Text note>{contactFullName}</Text>
+                </Body>
+                <Right>{flags}</Right>
+              </ListItem>
+            </Swipeout>
           );
         }}
       />

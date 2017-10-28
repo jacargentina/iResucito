@@ -1,20 +1,19 @@
 import { Platform } from 'react-native';
 import commonTheme from '../native-base-theme/variables/platform';
-import color from 'color';
 
 var tabBarOptions = {};
 tabBarOptions.showLabel = false;
+tabBarOptions.activeTintColor = commonTheme.brandPrimary;
+tabBarOptions.style = {
+  backgroundColor: 'white'
+};
 
 if (Platform.OS == 'android') {
-  tabBarOptions.activeTintColor = 'white';
-  tabBarOptions.inactiveTintColor = color(tabBarOptions.activeTintColor)
-    .darken(0.1)
-    .string();
+  tabBarOptions.inactiveTintColor = 'gray';
   tabBarOptions.style = {
-    backgroundColor: color(commonTheme.brandPrimary)
-      .lighten(0.2)
-      .string()
+    backgroundColor: 'white'
   };
+  tabBarOptions.pressColor = commonTheme.brandPrimary;
   tabBarOptions.iconStyle = {
     height: 30
   };
@@ -23,11 +22,6 @@ if (Platform.OS == 'android') {
     height: 3
   };
   tabBarOptions.showIcon = true;
-} else {
-  tabBarOptions.activeTintColor = commonTheme.brandPrimary;
-  tabBarOptions.style = {
-    backgroundColor: 'white'
-  };
 }
 
 const MenuNavigatorConfig = {

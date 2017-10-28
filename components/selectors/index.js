@@ -86,7 +86,8 @@ export const getFilteredContactsForImport = createSelector(
       return contacts.filter(c => {
         return (
           c.givenName.toLowerCase().includes(text_filter.toLowerCase()) ||
-          c.familyName.toLowerCase().includes(text_filter.toLowerCase())
+          (c.familyName &&
+            c.familyName.toLowerCase().includes(text_filter.toLowerCase()))
         );
       });
     }
