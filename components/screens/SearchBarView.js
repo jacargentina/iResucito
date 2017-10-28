@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { View, StyleSheet } from 'react-native';
-import { Container, Input, Item, Icon } from 'native-base';
+import { Input, Item, Icon } from 'native-base';
 import debounce from 'lodash/debounce';
 import commonTheme from '../../native-base-theme/variables/platform';
 
@@ -83,16 +83,17 @@ const SearchBarView = props => {
     );
   }
   return (
-    <Container>
+    <View style={{ flex: 1 }}>
       {searchView}
       <View
         style={{
+          flex: 1,
           borderTopWidth: StyleSheet.hairlineWidth,
           borderTopColor: commonTheme.listBorderColor
         }}>
         {props.children}
       </View>
-    </Container>
+    </View>
   );
 };
 

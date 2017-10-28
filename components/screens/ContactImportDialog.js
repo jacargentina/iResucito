@@ -103,9 +103,6 @@ const ContactImportDialog = props => {
           </Text>
         )}
         <FlatList
-          contentContainerStyle={{
-            marginTop: 10
-          }}
           onScrollBeginDrag={() => Keyboard.dismiss()}
           keyboardShouldPersistTaps="always"
           data={props.items}

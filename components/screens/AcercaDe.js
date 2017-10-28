@@ -90,7 +90,7 @@ const mapDispatchToProps = dispatch => {
     },
     sendMail: version => {
       Linking.openURL(
-        `mailto:javier.alejandro.castro@gmail.com&subject=iResucitó ${version}`
+        `mailto:javier.alejandro.castro@gmail.com&subject=iResucitó%20${version}`
       ).catch(err => {
         Alert.alert('Error', err.message);
       });

@@ -61,24 +61,16 @@ const BaseModal = props => {
         </View>
         <View
           style={{
-            flex: 10,
-            flexDirection: 'column',
-            justifyContent: 'space-between'
+            flex: 1,
           }}>
-          <View
-            style={{
-              flex: 1,
-              justifyContent: 'flex-start'
-            }}>
-            {props.children}
-          </View>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'flex-end'
-            }}>
-            {props.acceptButtons}
-          </View>
+          {props.children}
+        </View>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'flex-end'
+          }}>
+          {props.acceptButtons}
         </View>
       </View>
     </Modal>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { View } from 'react-native';
+import { ScrollView } from 'react-native';
 import { Icon, List, Text } from 'native-base';
 import ListDetailItem from './ListDetailItem';
 import { shareList } from '../actions';
@@ -10,15 +10,15 @@ import AppNavigatorConfig from '../AppNavigatorConfig';
 const ListDetail = props => {
   if (props.listMap.get('type') == 'libre') {
     return (
-      <View>
+      <ScrollView>
         <Text note style={{ textAlign: 'center', padding: 20 }}>
           No implementado
         </Text>
-      </View>
+      </ScrollView>
     );
   }
   return (
-    <View>
+    <ScrollView>
       <List>
         <ListDetailItem
           listName={props.list.name}
@@ -122,7 +122,7 @@ const ListDetail = props => {
           navigation={props.navigation}
         />
       </List>
-    </View>
+    </ScrollView>
   );
 };
 
