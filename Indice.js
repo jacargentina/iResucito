@@ -385,7 +385,7 @@
     comunion: true,
     final: true
   },
-  'Id y anunciad a mis hermanos - Mt 28, 7-10': {
+  'Id y anunciad a mis hermanos - Mt 28, 7-10.16-20': {
     etapa: 'Precatecumenado',
     final: true
   },
@@ -536,7 +536,7 @@
     cuaresma: true,
     laudes: true
   },
-  'Que amables son tus moradas, Señor - Sal 84 (83)': {
+  'Qué amables son tus moradas, Señor - Sal 84 (83)': {
     etapa: 'Precatecumenado',
     entrada: true
   },
@@ -723,7 +723,7 @@
   'Como condenados a muerte - 1 Co 4, 9.13': {
     etapa: 'Eleccion'
   },
-  'Como destila la miel - Oda 40 de Salomon': {
+  'Como destila la miel - Oda 40 de Salomón': {
     etapa: 'Eleccion',
     pascua: true,
     comunion: true
@@ -733,7 +733,7 @@
     pascua: true,
     comunion: true
   },
-  'El Espiritu del Senor está sobre mi - Lc 4, 18 - Is 61, 1-3': {
+  'El Espiritu del Señor está sobre mi - Lc 4, 18 - Is 61, 1-3': {
     etapa: 'Eleccion',
     laudes: true,
     final: true
@@ -751,7 +751,7 @@
     entrada: true,
     fraccion: true
   },
-  'Extiendo mis manos - Oda 27 de Salomon': {
+  'Extiendo mis manos - Oda 27 de Salomón': {
     etapa: 'Eleccion',
     cuaresma: true,
     fraccion: true
@@ -771,7 +771,7 @@
     laudes: true,
     entrada: true
   },
-  'Jesus recorria las ciudades - Mt 9, 35ss': {
+  'Jesús recorria las ciudades - Mt 9, 35ss': {
     etapa: 'Eleccion'
   },
   'La cordera de Dios - Mt 1, 18ss': {
@@ -779,7 +779,7 @@
     navidad: true,
     virgen: true
   },
-  'La paloma volo - Oda 24 de Salomon': {
+  'La paloma volo - Oda 24 de Salomón': {
     etapa: 'Eleccion',
     laudes: true,
     comunion: true
@@ -805,7 +805,7 @@
     etapa: 'Eleccion',
     pascua: true
   },
-  'Sermon de la montana - Lc 6, 20-38': {
+  'Sermon de la montaña - Lc 6, 20-38': {
     etapa: 'Eleccion',
     comunion: true
   },
@@ -815,39 +815,39 @@
   'Aleluya interleccional antes del Evangelio': {
     etapa: 'Liturgia'
   },
-  'Amen, amen, amen - Ap 7, 12-14': {
+  'Amén, amén, amén - Ap 7, 12-14': {
     etapa: 'Liturgia',
     entrada: true
   },
-  'Anafora de la Sal': {
+  'Anáfora de la Sal': {
     etapa: 'Liturgia'
   },
-  'Antifona interleccional para el tiempo de Cuaresma': {
+  'Antífona interleccional para el tiempo de Cuaresma': {
     etapa: 'Liturgia'
   },
-  'Bendicion del agua': {
+  'Bendición del agua': {
     etapa: 'Liturgia'
   },
-  'Bendicion penitencial - oracion conclusiva de accion de gracias': {
+  'Bendición penitencial - oracion conclusiva de accion de gracias': {
     etapa: 'Liturgia'
   },
-  'Credo - Simbolo apostolico': {
+  'Credo - Símbolo apostolico': {
     etapa: 'Liturgia'
   },
   'Gloria a Dios en lo alto del cielo - Himno liturgico': {
     etapa: 'Liturgia',
     pascua: true
   },
-  'Letanias penitenciales II': {
+  'Letanías penitenciales II': {
     etapa: 'Liturgia'
   },
-  'Letania del Cordero de Dios - Himno Agnus Dei': {
+  'Letanía del Cordero de Dios - Himno Agnus Dei': {
     etapa: 'Liturgia'
   },
-  'Letanias bautismales de los santos': {
+  'Letanías bautismales de los santos': {
     etapa: 'Liturgia'
   },
-  'Letanias penitenciales I': {
+  'Letanías penitenciales I': {
     etapa: 'Liturgia'
   },
   'Padre Nuestro': {
@@ -874,7 +874,7 @@
   'Prefacio Pascual I': {
     etapa: 'Liturgia'
   },
-  'Pregon Pascual': {
+  'Pregón Pascual': {
     etapa: 'Liturgia'
   },
   'Santo 1982 - Tiempo Ordinario': {

@@ -84,7 +84,8 @@ const preprocesar = nombre => {
     titulo: titulo,
     fuente: fuente,
     nombre: nombre,
-    path: `${basePath}Salmos/${nombre}.content.txt`
+    path: `${basePath}Salmos/${nombre}.content.txt`,
+    content: null
   };
 };
 
@@ -107,7 +108,20 @@ const mapDispatchToProps = dispatch => {
         contacts: []
       };
       var promises = [];
-      /* eslint-disable no-console */
+      var i = 0;
+      todos.forEach(salmo => {
+        var loadSalmo =
+          Platform.OS == 'ios'
+            ? RNFS.readFile(salmo.path)
+            : RNFS.readFileAssets(salmo.path);
+        loadSalmo.then(content => {
+          salmo.content = content;
+          i += 1;
+          /* eslint-disable no-console */
+          console.log('cargados total: ', i, todos.length);
+        });
+        promises.push(loadSalmo);
+      });
       promises.push(
         localdata
           .getBatchData([
@@ -120,12 +134,14 @@ const mapDispatchToProps = dispatch => {
             dispatch(action);
           })
           .catch(err => {
+            /* eslint-disable no-console */
             console.log('error loading from localdata', err);
             dispatch(action);
           })
       );
       promises.push(
         clouddata.load({ key: 'lists' }).then(res => {
+          /* eslint-disable no-console */
           console.log('loaded from cloud', res);
         })
       );
