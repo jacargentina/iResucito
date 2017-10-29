@@ -834,7 +834,7 @@
   'Credo - Símbolo apostolico': {
     etapa: 'Liturgia'
   },
-  'Gloria a Dios en lo alto del cielo - Himno liturgico': {
+  'Gloria a Dios en lo alto del cielo - Himno litúrgico': {
     etapa: 'Liturgia',
     pascua: true
   },
