@@ -1,17 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {
-  Dimensions,
-  Platform,
-  StyleSheet,
-  ScrollView,
-  Alert
-} from 'react-native';
+import { Dimensions, Platform, StyleSheet, ScrollView } from 'react-native';
 import { Container, Content, Text } from 'native-base';
-import RNFS from 'react-native-fs';
 import DeviceInfo from 'react-native-device-info';
 import KeepAwake from 'react-native-keep-awake';
-import { setSalmoContent } from '../actions';
 import colors from '../colors';
 import color from 'color';
 import { esLineaDeNotas } from '../util';
@@ -105,7 +97,6 @@ class SalmoDetail extends React.Component {
     if (this.props.keepAwake) {
       KeepAwake.activate();
     }
-    this.props.load(this.props.salmo);
   }
 
   componentWillUnmount() {
@@ -157,38 +148,25 @@ class SalmoDetail extends React.Component {
 
 const mapStateToProps = (state, props) => {
   var salmo = props.navigation.state.params.salmo;
-  var salmo_lines = state.ui.get('salmo_lines');
+  // Quitar caracteres invisibles del comienzo
+  var lineas = salmo.content.split('\n');
+  while (!esLineaDeNotas(lineas[0])) {
+    lineas.shift();
+  }
   var keepAwake = state.ui.getIn(['settings', 'keepAwake']);
   var backColor = color(colors[salmo.etapa]);
   var colorStr = backColor.lighten(0.1).string();
   return {
     salmo: salmo,
-    lines: salmo_lines || [],
+    lines: lineas || [],
     background: colorStr,
     keepAwake: keepAwake
   };
 };
 
-const loadSalmo = salmo => {
-  return dispatch => {
-    var promise =
-      Platform.OS == 'ios'
-        ? RNFS.readFile(salmo.path)
-        : RNFS.readFileAssets(salmo.path);
-    promise
-      .then(content => {
-        dispatch(setSalmoContent(content));
-      })
-      .catch(err => {
-        Alert.alert('Error', err.message);
-      });
-  };
-};
-
+/* eslint-disable no-unused-vars */
 const mapDispatchToProps = dispatch => {
-  return {
-    load: salmo => dispatch(loadSalmo(salmo))
-  };
+  return {};
 };
 
 SalmoDetail.navigationOptions = props => ({

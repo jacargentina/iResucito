@@ -2,7 +2,6 @@ export const INITIALIZE_DONE = 'INITIALIZE_DONE';
 
 export const SET_SALMOS_FILTER = 'SET_SALMOS_FILTER';
 export const SET_CONTACTS_FILTER = 'SET_CONTACTS_FILTER';
-export const SET_SALMO_CONTENT = 'SET_SALMO_CONTENT';
 export const SET_ABOUT_VISIBLE = 'SET_ABOUT_VISIBLE';
 export const SET_SETTINGS_VALUE = 'SET_SETTINGS_VALUE';
 export const SET_CHOOSER_TARGETLIST = 'SET_CHOOSER_TARGETLIST';
@@ -109,10 +108,6 @@ export const updateListAddType = type => {
 
 export const createList = (name, type) => {
   return { type: LIST_CREATE, name: name, list_type: type };
-};
-
-export const setSalmoContent = content => {
-  return { type: SET_SALMO_CONTENT, content };
 };
 
 export const saveSetting = (key, value) => {

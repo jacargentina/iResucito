@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect, Provider } from 'react-redux';
-import { BackHandler, Platform } from 'react-native';
+import { BackHandler, Platform, Alert } from 'react-native';
 import { addNavigationHelpers, NavigationActions } from 'react-navigation';
 import RNFS from 'react-native-fs';
 import SplashScreen from 'react-native-splash-screen';
@@ -114,12 +114,17 @@ const mapDispatchToProps = dispatch => {
           Platform.OS == 'ios'
             ? RNFS.readFile(salmo.path)
             : RNFS.readFileAssets(salmo.path);
-        loadSalmo.then(content => {
-          salmo.content = content;
-          i += 1;
-          /* eslint-disable no-console */
-          console.log('cargados total: ', i, todos.length);
-        });
+        loadSalmo
+          .then(content => {
+            salmo.content = content;
+            i += 1;
+            /* eslint-disable no-console */
+            console.log('cargados total: ', i, todos.length);
+          })
+          .catch(err => {
+            /* eslint-disable no-console */
+            Alert.alert('Error', err.message);
+          });
         promises.push(loadSalmo);
       });
       promises.push(

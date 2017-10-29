@@ -3,7 +3,6 @@ import {
   INITIALIZE_DONE,
   SET_SALMOS_FILTER,
   SET_CONTACTS_FILTER,
-  SET_SALMO_CONTENT,
   SET_ABOUT_VISIBLE,
   SET_SETTINGS_VALUE,
   SET_CHOOSER_TARGETLIST,
@@ -23,9 +22,7 @@ import {
   CONTACT_SYNC,
   CONTACT_TOGGLE_ATTRIBUTE
 } from '../actions';
-//import { NavigationActions } from 'react-navigation';
 import { Map, List, fromJS } from 'immutable';
-import { esLineaDeNotas } from '../util';
 import { localdata, clouddata } from '../data';
 import { getFriendlyText, getEsSalmo } from '../util';
 
@@ -266,13 +263,6 @@ export default function ui(state = initialState, action) {
         { dialogTitle: 'Compartir lista iResucitó' }
       );
       return state;
-    case SET_SALMO_CONTENT:
-      // Quitar caracteres invisibles del comienzo
-      var lineas = action.content.split('\n');
-      while (!esLineaDeNotas(lineas[0])) {
-        lineas.shift();
-      }
-      return state.set('salmo_lines', lineas);
     default:
       return state;
   }
