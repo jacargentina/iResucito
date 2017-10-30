@@ -905,13 +905,17 @@
     laudes: true
   },
   'Zaqueo - Lc 19, 1–10': {
+    etapa: 'Precatecumenado',
     entrada: true,
     comunion: true,
     cuaresma: true,
     laudes: true
   },
-  'El Mesías, León para vencer - Vittorino de Pettau': {},
+  'El Mesías, León para vencer - Vittorino de Pettau': {
+    etapa: 'Precatecumenado'
+  },
   'En medio de aquel gentío - Lc 8,42b-48': {
+    etapa: 'Precatecumenado',
     entrada: true,
     comunion: true
   }
