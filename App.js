@@ -11,6 +11,7 @@ import Store from './components/store';
 import AppNavigator from './components/AppNavigator';
 import { INITIALIZE_DONE } from './components/actions';
 import { localdata, clouddata } from './components/data';
+import { esLineaDeNotas } from './components/util';
 import Indice from './Indice';
 
 class App extends React.Component {
@@ -85,7 +86,8 @@ const preprocesar = nombre => {
     fuente: fuente,
     nombre: nombre,
     path: `${basePath}Salmos/${nombre}.content.txt`,
-    content: null
+    fullText: null,
+    lines: null
   };
 };
 
@@ -116,7 +118,13 @@ const mapDispatchToProps = dispatch => {
             : RNFS.readFileAssets(salmo.path);
         loadSalmo
           .then(content => {
-            salmo.content = content;
+            // Separar en lineas, y quitar todas hasta llegar a las notas
+            var lineas = content.split('\n');
+            while (!esLineaDeNotas(lineas[0])) {
+              lineas.shift();
+            }
+            salmo.lines = lineas;
+            salmo.fullText = lineas.join(' ');
             i += 1;
             /* eslint-disable no-console */
             console.log('cargados total: ', i, todos.length);

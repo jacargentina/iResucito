@@ -132,7 +132,10 @@ export const getProcessedSalmos = createSelector(
   (salmos, text_filter) => {
     if (text_filter) {
       salmos = salmos.filter(s => {
-        return s.nombre.toLowerCase().includes(text_filter.toLowerCase());
+        return (
+          s.nombre.toLowerCase().includes(text_filter.toLowerCase()) ||
+          s.fullText.toLowerCase().includes(text_filter.toLowerCase())
+        );
       });
     }
     return salmos;

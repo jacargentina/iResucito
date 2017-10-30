@@ -1,11 +1,20 @@
 import React from 'react';
 import { Badge, Text } from 'native-base';
 import colors from './colors';
+import commonTheme from '../native-base-theme/variables/platform';
+import textTheme from '../native-base-theme/components/Text';
+
+const noteStyles = textTheme(commonTheme)['.note'];
 
 const createBadge = (backgroundColor, color, text) => {
   return (
-    <Badge style={{ backgroundColor: backgroundColor }}>
-      <Text style={{ color: color }}>{text}</Text>
+    <Badge
+      style={{
+        backgroundColor: backgroundColor
+      }}>
+      <Text style={{ color: color, fontSize: noteStyles.fontSize }}>
+        {text}
+      </Text>
     </Badge>
   );
 };

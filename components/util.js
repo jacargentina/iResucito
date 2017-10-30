@@ -1,7 +1,7 @@
 export function esLineaDeNotas(text) {
   var linea = text
     .trim()
-    .replace(/\[|\]|#|7|b7|b|9|-|\/|\u2013|aum/g, '')
+    .replace(/\[|\]|#|\*|5|7|b7|b|9|-|\/|\u2013|\u2217|aum/g, '')
     .split(' ')
     .filter(i => i.length > 0);
   var soloNotas = linea.filter(palabra => {

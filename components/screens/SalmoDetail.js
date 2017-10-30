@@ -31,6 +31,11 @@ var styles = StyleSheet.create({
     color: 'red',
     fontSize: fontSizeNotas
   },
+  lineaNotaEspecial: {
+    fontFamily: mono,
+    color: 'gray',
+    fontSize: fontSizeNotas
+  },
   lineaNotasConMargen: {
     fontFamily: mono,
     color: 'red',
@@ -78,6 +83,14 @@ function preprocesarLinea(text, nextText) {
         it.style = styles.lineaNotasConMargen;
       }
     }
+  } else if (text.startsWith('\u2217')) {
+    // Nota especial
+    it = {
+      prefijo: '\u2217  ',
+      texto: text.substring(1).trim(),
+      style: styles.lineaNotaEspecial,
+      prefijoStyle: styles.lineaNotas
+    };
   } else {
     it = {
       prefijo: '   ',
@@ -148,17 +161,12 @@ class SalmoDetail extends React.Component {
 
 const mapStateToProps = (state, props) => {
   var salmo = props.navigation.state.params.salmo;
-  // Quitar caracteres invisibles del comienzo
-  var lineas = salmo.content.split('\n');
-  while (!esLineaDeNotas(lineas[0])) {
-    lineas.shift();
-  }
   var keepAwake = state.ui.getIn(['settings', 'keepAwake']);
   var backColor = color(colors[salmo.etapa]);
   var colorStr = backColor.lighten(0.1).string();
   return {
     salmo: salmo,
-    lines: lineas || [],
+    lines: salmo.lines || [],
     background: colorStr,
     keepAwake: keepAwake
   };

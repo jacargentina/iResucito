@@ -35,6 +35,9 @@ class DebouncedInput extends React.Component {
 
   sendTextChange(text) {
     this.props.searchHandler(this.props.searchTextFilterId, text);
+    if (this.props.afterSearchHandler) {
+      this.props.afterSearchHandler();
+    }
   }
 
   render() {
@@ -77,6 +80,7 @@ const SearchBarView = props => {
             searchHandler={props.searchHandler}
             searchTextFilter={props.searchTextFilter}
             searchTextFilterId={props.searchTextFilterId}
+            afterSearchHandler={props.afterSearchHandler}
           />
         </Item>
       </View>

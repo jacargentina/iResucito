@@ -1,28 +1,101 @@
 import React from 'react';
-import { ListItem, Left, Right, Body, Text } from 'native-base';
+import { TouchableOpacity } from 'react-native';
+import { ListItem, Left, Right, Body, Text, Badge } from 'native-base';
+import Highlighter from 'react-native-highlight-words';
+import Collapsible from 'react-native-collapsible';
 import badges from '../badges';
+import commonTheme from '../../native-base-theme/variables/platform';
+import textTheme from '../../native-base-theme/components/Text';
 
-const SalmoListItem = props => {
-  if (props.showBadge) {
-    var badgeWrapper = <Left>{badges[props.salmo.etapa]}</Left>;
+class SalmoListItem extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isCollapsed: true
+    };
+    this.textStyles = textTheme(commonTheme);
+    this.noteStyles = this.textStyles['.note'];
+    delete this.textStyles['.note'];
   }
-  if (props.rightButtons) {
-    var rightSide = <Right>{props.rightButtons}</Right>;
+
+  render() {
+    if (this.props.showBadge) {
+      var badgeWrapper = <Left style={{marginLeft: -8}}>{badges[this.props.salmo.etapa]}</Left>;
+    }
+    if (
+      this.props.resaltar &&
+      this.props.salmo.fullText
+        .toLowerCase()
+        .includes(this.props.resaltar.toLowerCase())
+    ) {
+      var lineasParaResaltar = this.props.salmo.lines.filter(l =>
+        l.toLowerCase().includes(this.props.resaltar.toLowerCase())
+      );
+      var children = lineasParaResaltar.map((l, i) => {
+        return (
+          <Highlighter
+            key={i}
+            highlightStyle={{
+              backgroundColor: 'yellow'
+            }}
+            searchWords={[this.props.resaltar]}
+            textToHighlight={l}
+          />
+        );
+      });
+      var primerResaltado = children.shift();
+      if (children.length > 1) {
+        var restoResaltado = (
+          <Collapsible collapsed={this.state.isCollapsed}>
+            {children}
+          </Collapsible>
+        );
+        var abrirRestoResaltado = (
+          <Right>
+            <TouchableOpacity
+              onPress={() => {
+                this.setState({ isCollapsed: !this.state.isCollapsed });
+              }}>
+              <Badge warning>
+                <Text>{children.length}+</Text>
+              </Badge>
+            </TouchableOpacity>
+          </Right>
+        );
+      }
+    }
+    return (
+      <ListItem avatar={this.props.showBadge} style={{ paddingHorizontal: 5 }}>
+        {badgeWrapper}
+        <Body>
+          <TouchableOpacity
+            onPress={() => {
+              this.props.onPress(this.props.salmo);
+            }}>
+            <Highlighter
+              style={this.textStyles}
+              highlightStyle={{
+                backgroundColor: 'yellow'
+              }}
+              searchWords={[this.props.resaltar]}
+              textToHighlight={this.props.salmo.titulo}
+            />
+            <Highlighter
+              style={this.noteStyles}
+              highlightStyle={{
+                backgroundColor: 'yellow'
+              }}
+              searchWords={[this.props.resaltar]}
+              textToHighlight={this.props.salmo.fuente}
+            />
+            {primerResaltado}
+            {restoResaltado}
+          </TouchableOpacity>
+        </Body>
+        {abrirRestoResaltado}
+      </ListItem>
+    );
   }
-  return (
-    <ListItem
-      avatar={props.showBadge}
-      onPress={() => {
-        props.onPress(props.salmo);
-      }}>
-      {badgeWrapper}
-      <Body>
-        <Text>{props.salmo.titulo}</Text>
-        <Text note>{props.salmo.fuente}</Text>
-      </Body>
-      {rightSide}
-    </ListItem>
-  );
-};
+}
 
 export default SalmoListItem;
