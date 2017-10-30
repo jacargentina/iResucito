@@ -31,10 +31,15 @@ var styles = StyleSheet.create({
     color: 'red',
     fontSize: fontSizeNotas
   },
+  lineaTituloNotaEspecial: {
+    fontFamily: mono,
+    color: 'red',
+    fontSize: fontSizeTitulo - 2
+  },
   lineaNotaEspecial: {
     fontFamily: mono,
-    color: 'gray',
-    fontSize: fontSizeNotas
+    fontSize: fontSizeNotas,
+    color: '#222'
   },
   lineaNotasConMargen: {
     fontFamily: mono,
@@ -90,6 +95,20 @@ function preprocesarLinea(text, nextText) {
       texto: text.substring(1).trim(),
       style: styles.lineaNotaEspecial,
       prefijoStyle: styles.lineaNotas
+    };
+  } else if (text.trim().startsWith('**') && text.trim().endsWith('**')) {
+    // Titulo especial
+    it = {
+      prefijo: '',
+      texto: text.replace(/\*/g,''),
+      style: styles.lineaTituloNotaEspecial
+    };
+  } else if (text.startsWith('-')) {
+    // Texto especial
+    it = {
+      prefijo: '',
+      texto: text.replace('-',''),
+      style: styles.lineaNotaEspecial
     };
   } else {
     it = {
