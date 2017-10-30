@@ -903,6 +903,17 @@
   'Te deum - Himno': {
     etapa: 'Liturgia',
     laudes: true
+  },
+  'Zaqueo - Lc 19, 1–10': {
+    entrada: true,
+    comunion: true,
+    cuaresma: true,
+    laudes: true
+  },
+  'El Mesías, León para vencer - Vittorino de Pettau': {},
+  'En medio de aquel gentío - Lc 8,42b-48': {
+    entrada: true,
+    comunion: true
   }
 };
 
