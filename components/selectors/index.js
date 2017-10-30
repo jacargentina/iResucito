@@ -78,18 +78,19 @@ export const getProcessedContactsForImport = createSelector(
   }
 );
 
+const contactFilterByText = (c, text) => {
+  return (
+    c.givenName.toLowerCase().includes(text.toLowerCase()) ||
+    (c.familyName && c.familyName.toLowerCase().includes(text.toLowerCase()))
+  );
+};
+
 export const getFilteredContactsForImport = createSelector(
   getProcessedContactsForImport,
   getCurrentRouteContactsTextFilter,
   (contacts, text_filter) => {
     if (text_filter) {
-      return contacts.filter(c => {
-        return (
-          c.givenName.toLowerCase().includes(text_filter.toLowerCase()) ||
-          (c.familyName &&
-            c.familyName.toLowerCase().includes(text_filter.toLowerCase()))
-        );
-      });
+      return contacts.filter(c => contactFilterByText(c, text_filter));
     }
     return contacts;
   }
@@ -97,8 +98,14 @@ export const getFilteredContactsForImport = createSelector(
 
 export const getProcessedContacts = createSelector(
   getContacts,
-  importedContacts => {
+  getCurrentRouteContactsTextFilter,
+  (importedContacts, text_filter) => {
     var contactsArray = importedContacts.toJS();
+    if (text_filter) {
+      contactsArray = contactsArray.filter(c =>
+        contactFilterByText(c, text_filter)
+      );
+    }
     contactsArray.sort(ordenAlfabetico);
     return contactsArray;
   }

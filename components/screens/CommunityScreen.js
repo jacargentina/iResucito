@@ -15,11 +15,16 @@ import SearchBarView from './SearchBarView';
 import {
   showContactImportDialog,
   syncContact,
-  setContactAttribute
+  setContactAttribute,
+  setContactsFilterText
 } from '../actions';
 import AppNavigatorConfig from '../AppNavigatorConfig';
 import BaseCallToAction from './BaseCallToAction';
-import { getProcessedContacts } from '../selectors';
+import {
+  getCurrentRouteKey,
+  getCurrentRouteContactsTextFilter,
+  getProcessedContacts
+} from '../selectors';
 import commonTheme from '../../native-base-theme/variables/platform';
 
 const unknown = require('../../img/avatar.png');
@@ -36,7 +41,10 @@ const CommunityScreen = props => {
       />
     );
   return (
-    <SearchBarView>
+    <SearchBarView
+      searchTextFilterId={props.textFilterId}
+      searchTextFilter={props.textFilter}
+      searchHandler={props.filtrarHandler}>
       <FlatList
         data={props.items}
         keyExtractor={item => item.recordID}
@@ -102,12 +110,17 @@ const CommunityScreen = props => {
 
 const mapStateToProps = state => {
   return {
+    textFilterId: getCurrentRouteKey(state),
+    textFilter: getCurrentRouteContactsTextFilter(state),
     items: getProcessedContacts(state)
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
+    filtrarHandler: (inputId, text) => {
+      dispatch(setContactsFilterText(inputId, text));
+    },
     contactDelete: contact => {
       Alert.alert(`Eliminar "${contact.givenName}"`, '¿Confirma el borrado?', [
         {
