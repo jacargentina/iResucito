@@ -60,7 +60,45 @@ var styles = StyleSheet.create({
   }
 });
 
-function preprocesarLinea(text, nextText) {
+const notas = [
+  'Do',
+  'Do#',
+  'Re',
+  'Mib',
+  'Mi',
+  'Fa',
+  'Fa#',
+  'Sol',
+  'Sol#',
+  'La',
+  'Sib',
+  'Si'
+];
+
+/* eslint-disable no-console */
+const transportarNotas = (lineaNotas, destino) => {
+  var result = '';
+  var i = 0;
+  while (i < lineaNotas.length) {
+    // Buscar primer caracter de una nota...
+    while (lineaNotas[i] == ' ' && i < lineaNotas.length) {
+      result += ' ';
+      i += 1;
+    }
+    // Leer hasta encontrar el siguiente espacio
+    var nota = '';
+    while (lineaNotas[i] !== ' ' && i < lineaNotas.length) {
+      nota += lineaNotas[i];
+      i += 1;
+    }
+    if (nota) {
+      console.log(`La nota es ${nota} transportar a ${destino}`);
+    }
+  }
+  return result;
+};
+
+function preprocesarLinea(text, nextText, transportTo) {
   var it = {};
   if (
     text.startsWith('S.') ||
@@ -82,6 +120,9 @@ function preprocesarLinea(text, nextText) {
       texto: text.replace(/ {2}/g, ' ').trimRight(),
       style: styles.lineaNotas
     };
+    if (transportTo) {
+      it.texto = transportarNotas(it.texto, transportTo);
+    }
     if (nextText) {
       var next_it = preprocesarLinea(nextText);
       if (next_it.prefijo.trim() !== '') {
@@ -100,14 +141,14 @@ function preprocesarLinea(text, nextText) {
     // Titulo especial
     it = {
       prefijo: '',
-      texto: text.replace(/\*/g,''),
+      texto: text.replace(/\*/g, ''),
       style: styles.lineaTituloNotaEspecial
     };
   } else if (text.startsWith('-')) {
     // Texto especial
     it = {
       prefijo: '',
-      texto: text.replace('-',''),
+      texto: text.replace('-', ''),
       style: styles.lineaNotaEspecial
     };
   } else {
