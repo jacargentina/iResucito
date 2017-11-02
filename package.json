@@ -39,6 +39,7 @@
     "react-native-icloudstore": "^0.9.0",
     "react-native-keep-awake": "^2.0.6",
     "react-native-modal": "^4.1.1",
+    "react-native-popup-menu": "^0.8.4",
     "react-native-simple-toast": "0.0.7",
     "react-native-splash-screen": "^3.0.1",
     "react-native-storage": "^0.2.2",

@@ -1,12 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Dimensions, Platform, StyleSheet, ScrollView } from 'react-native';
-import { Container, Content, Text } from 'native-base';
+import { Container, Content, Text, Icon } from 'native-base';
 import DeviceInfo from 'react-native-device-info';
 import KeepAwake from 'react-native-keep-awake';
+import {
+  Menu,
+  MenuOptions,
+  MenuOption,
+  MenuTrigger
+} from 'react-native-popup-menu';
 import colors from '../colors';
 import color from 'color';
 import { esLineaDeNotas, calcularTransporte, transportarNotas } from '../util';
+import AppNavigatorConfig from '../AppNavigatorConfig';
 
 var mono = Platform.OS == 'ios' ? 'Menlo-Bold' : 'monospace';
 var isTablet = DeviceInfo.isTablet();
@@ -211,7 +218,38 @@ const mapDispatchToProps = dispatch => {
 SalmoDetail.navigationOptions = props => ({
   title: props.navigation.state.params
     ? props.navigation.state.params.salmo.titulo
-    : 'Salmo'
+    : 'Salmo',
+  headerRight: (
+    <Menu onSelect={value => alert(`Transportar a: ${value}`)}>
+      <MenuTrigger>
+        <Icon
+          name="musical-note"
+          style={{
+            marginTop: 4,
+            marginRight: 8,
+            width: 32,
+            fontSize: 30,
+            textAlign: 'center',
+            color: AppNavigatorConfig.navigationOptions.headerTitleStyle.color
+          }}
+        />
+      </MenuTrigger>
+      <MenuOptions>
+        <MenuOption value={'Do'} text="Do" />
+        <MenuOption value={'Do#'} text="Do#" />
+        <MenuOption value={'Re'} text="Re" />
+        <MenuOption value={'Mib'} text="Mib" />
+        <MenuOption value={'Mi'} text="Mi" />
+        <MenuOption value={'Fa'} text="Fa" />
+        <MenuOption value={'Fa#'} text="Fa#" />
+        <MenuOption value={'Sol'} text="Sol" />
+        <MenuOption value={'Sol#'} text="Sol#" />
+        <MenuOption value={'La'} text="La" />
+        <MenuOption value={'Sib'} text="Sib" />
+        <MenuOption value={'Si'} text="Si" />
+      </MenuOptions>
+    </Menu>
+  )
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SalmoDetail);

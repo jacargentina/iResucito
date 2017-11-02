@@ -13,6 +13,7 @@ import { INITIALIZE_DONE } from './components/actions';
 import { localdata, clouddata } from './components/data';
 import { esLineaDeNotas } from './components/util';
 import Indice from './Indice';
+import { MenuContext } from 'react-native-popup-menu';
 
 class App extends React.Component {
   constructor(props) {
@@ -46,12 +47,14 @@ class App extends React.Component {
     return (
       <StyleProvider style={getTheme(commonTheme)}>
         <Root>
-          <AppNavigator
-            navigation={addNavigationHelpers({
-              dispatch: this.props.dispatch,
-              state: this.props.nav
-            })}
-          />
+          <MenuContext>
+            <AppNavigator
+              navigation={addNavigationHelpers({
+                dispatch: this.props.dispatch,
+                state: this.props.nav
+              })}
+            />
+          </MenuContext>
         </Root>
       </StyleProvider>
     );
