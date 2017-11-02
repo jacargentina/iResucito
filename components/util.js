@@ -95,3 +95,59 @@ export function getFriendlyTextForListType(listType) {
       return 'Otras';
   }
 }
+
+export const notas = [
+  'Do',
+  'Do#',
+  'Re',
+  'Mib',
+  'Mi',
+  'Fa',
+  'Fa#',
+  'Sol',
+  'Sol#',
+  'La',
+  'Sib',
+  'Si'
+];
+
+export const notasInverted = notas.reverse();
+
+export const notaInicial = linea => {
+  var pedazos = linea.split(' ');
+  var primero = pedazos[0];
+  return primero.replace(/-|5|6|7|9/g, '');
+};
+
+export const transportarNotas = (lineaNotas, diferencia) => {
+  var pedazos = lineaNotas.split(' ');
+  var result = pedazos.map(item => {
+    var notaLimpia = item.replace(/-|5|6|7|9/g, '');
+    var notaIndex = notas.indexOf(notaLimpia);
+    if (notaIndex !== -1) {
+      var notaNuevoIndex = (notaIndex + diferencia) % 12;
+      var transporte =
+        notaNuevoIndex < 0
+          ? notasInverted[notaNuevoIndex * -1]
+          : notas[notaNuevoIndex];
+      if (notaLimpia.length !== item.length)
+        transporte += item.substring(notaLimpia.length);
+      return transporte;
+    }
+    return item;
+  });
+  return result.join(' ');
+};
+
+export const calcularTransporte = (primerLineaNotas, notaDestino) => {
+  var notaOrigen = notaInicial(primerLineaNotas);
+  var inicio = notas.indexOf(notaOrigen);
+  var destino = notas.indexOf(notaDestino);
+  return destino - inicio;
+};
+
+var linea = 'Re-   Re7    Sol- Sib7     La';
+var diferencia = calcularTransporte(linea, 'Do');
+/* eslint-disable no-console */
+console.log('linea', linea);
+console.log('resultado', transportarNotas(linea, diferencia));

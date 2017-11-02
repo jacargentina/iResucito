@@ -6,7 +6,7 @@ import DeviceInfo from 'react-native-device-info';
 import KeepAwake from 'react-native-keep-awake';
 import colors from '../colors';
 import color from 'color';
-import { esLineaDeNotas } from '../util';
+import { esLineaDeNotas, calcularTransporte, transportarNotas } from '../util';
 
 var mono = Platform.OS == 'ios' ? 'Menlo-Bold' : 'monospace';
 var isTablet = DeviceInfo.isTablet();
@@ -59,52 +59,15 @@ var styles = StyleSheet.create({
     fontSize: fontSizeTexto
   }
 });
-
-const notas = [
-  'Do',
-  'Do#',
-  'Re',
-  'Mib',
-  'Mi',
-  'Fa',
-  'Fa#',
-  'Sol',
-  'Sol#',
-  'La',
-  'Sib',
-  'Si'
-];
-
-/* eslint-disable no-console */
-const transportarNotas = (lineaNotas, destino) => {
-  var result = '';
-  var i = 0;
-  while (i < lineaNotas.length) {
-    // Buscar primer caracter de una nota...
-    while (lineaNotas[i] == ' ' && i < lineaNotas.length) {
-      result += ' ';
-      i += 1;
-    }
-    // Leer hasta encontrar el siguiente espacio
-    var nota = '';
-    while (lineaNotas[i] !== ' ' && i < lineaNotas.length) {
-      nota += lineaNotas[i];
-      i += 1;
-    }
-    if (nota) {
-      console.log(`La nota es ${nota} transportar a ${destino}`);
-    }
-  }
-  return result;
-};
-
-function preprocesarLinea(text, nextText, transportTo) {
+/* eslint-disable no-unused-vars */
+function preprocesarLinea(text, nextText) {
   var it = {};
   if (
     text.startsWith('S.') ||
     text.startsWith('A.') ||
     text.startsWith('P.') ||
-    text.startsWith('Niños.')
+    text.startsWith('Niños.') ||
+    text.startsWith('N.')
   ) {
     // Indicador de Salmista, Asamblea, Presbitero
     var pointIndex = text.indexOf('.');
@@ -118,11 +81,9 @@ function preprocesarLinea(text, nextText, transportTo) {
     it = {
       prefijo: '   ',
       texto: text.replace(/ {2}/g, ' ').trimRight(),
-      style: styles.lineaNotas
+      style: styles.lineaNotas,
+      notas: true
     };
-    if (transportTo) {
-      it.texto = transportarNotas(it.texto, transportTo);
-    }
     if (nextText) {
       var next_it = preprocesarLinea(nextText);
       if (next_it.prefijo.trim() !== '') {
@@ -179,8 +140,16 @@ class SalmoDetail extends React.Component {
   }
 
   render() {
-    var items = this.props.lines.map((l, i) => {
-      var it = preprocesarLinea(l, this.props.lines[i + 1]);
+    var lines = this.props.lines;
+    var diferencia = 0;
+    if (this.props.transportToNote) {
+      diferencia = calcularTransporte(lines[0], this.props.transportToNote);
+    }
+    var items = lines.map((l, i) => {
+      var it = preprocesarLinea(l, lines[i + 1]);
+      if (it.notas && diferencia !== 0) {
+        it.texto = transportarNotas(it.texto, diferencia);
+      }
       return (
         <Text numberOfLines={1} key={i + 'texto'} style={it.style}>
           <Text key={i + 'prefijo'} style={it.prefijoStyle || it.style}>
@@ -224,11 +193,13 @@ const mapStateToProps = (state, props) => {
   var keepAwake = state.ui.getIn(['settings', 'keepAwake']);
   var backColor = color(colors[salmo.etapa]);
   var colorStr = backColor.lighten(0.1).string();
+  var transportToNote = state.ui.get('salmos_transport_note');
   return {
     salmo: salmo,
     lines: salmo.lines || [],
     background: colorStr,
-    keepAwake: keepAwake
+    keepAwake: keepAwake,
+    transportToNote: transportToNote
   };
 };
 
