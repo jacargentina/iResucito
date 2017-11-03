@@ -26,7 +26,9 @@ class SalmoList extends React.Component {
         searchHandler={this.props.filtrarHandler}
         afterSearchHandler={() => {
           if (this.props.items.length > 0) {
-            this.listRef.scrollToIndex({ index: 0, animated: true });
+            setTimeout(() => {
+              this.listRef.scrollToIndex({ index: 0, animated: true });
+            }, 10);
           }
         }}>
         {this.props.items.length == 0 && (
