@@ -47,7 +47,7 @@ class App extends React.Component {
     return (
       <StyleProvider style={getTheme(commonTheme)}>
         <Root>
-          <MenuContext>
+          <MenuContext backHandler={true}>
             <AppNavigator
               navigation={addNavigationHelpers({
                 dispatch: this.props.dispatch,
@@ -113,7 +113,6 @@ const mapDispatchToProps = dispatch => {
         contacts: []
       };
       var promises = [];
-      var i = 0;
       todos.forEach(salmo => {
         var loadSalmo =
           Platform.OS == 'ios'
@@ -128,9 +127,6 @@ const mapDispatchToProps = dispatch => {
             }
             salmo.lines = lineas;
             salmo.fullText = lineas.join(' ');
-            i += 1;
-            /* eslint-disable no-console */
-            console.log('cargados total: ', i, todos.length);
           })
           .catch(err => {
             /* eslint-disable no-console */

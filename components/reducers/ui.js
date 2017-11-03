@@ -12,6 +12,7 @@ import {
   SET_CONTACT_IMPORT_VISIBLE,
   SET_CONTACT_IMPORT_LOADING,
   SET_CONTACT_IMPORT_ITEMS,
+  SALMO_TRANSPORT,
   LIST_CREATE,
   LIST_ADD_SALMO,
   LIST_ADD_TEXT,
@@ -234,6 +235,8 @@ export default function ui(state = initialState, action) {
       }
       saveContacts(state);
       return state;
+    case SALMO_TRANSPORT:
+      return state.set('salmos_transport_note', action.transportTo);
     case LIST_SHARE:
       var items = [];
       items.push(getItemForShare(action.listMap, 'ambiental'));

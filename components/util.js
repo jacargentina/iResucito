@@ -1,7 +1,9 @@
+const limpiarNotasRegex = /\[|\]|#|\*|5|6|7|9|b|-|\/|\u2013|\u2217|aum/g;
+
 export function esLineaDeNotas(text) {
   var linea = text
     .trim()
-    .replace(/\[|\]|#|\*|5|6|7|9|b|-|\/|\u2013|\u2217|aum/g, '')
+    .replace(limpiarNotasRegex, '')
     .split(' ')
     .filter(i => i.length > 0);
   var soloNotas = linea.filter(palabra => {
@@ -15,7 +17,7 @@ export function esLineaDeNotas(text) {
       palabra == 'Si'
     );
   });
-  return soloNotas.length == linea.length;
+  return soloNotas.length > 0 && soloNotas.length == linea.length;
 }
 
 export function getEsSalmo(listKey) {
@@ -111,18 +113,18 @@ export const notas = [
   'Si'
 ];
 
-export const notasInverted = notas.reverse();
+export const notasInverted = notas.slice().reverse();
 
 export const notaInicial = linea => {
   var pedazos = linea.split(' ');
   var primero = pedazos[0];
-  return primero.replace(/-|5|6|7|9/g, '');
+  return primero.replace(limpiarNotasRegex, '');
 };
 
 export const transportarNotas = (lineaNotas, diferencia) => {
   var pedazos = lineaNotas.split(' ');
   var result = pedazos.map(item => {
-    var notaLimpia = item.replace(/-|5|6|7|9/g, '');
+    var notaLimpia = item.replace(limpiarNotasRegex, '');
     var notaIndex = notas.indexOf(notaLimpia);
     if (notaIndex !== -1) {
       var notaNuevoIndex = (notaIndex + diferencia) % 12;
@@ -146,8 +148,8 @@ export const calcularTransporte = (primerLineaNotas, notaDestino) => {
   return destino - inicio;
 };
 
-var linea = 'Re-   Re7    Sol- Sib7     La';
-var diferencia = calcularTransporte(linea, 'Do');
-/* eslint-disable no-console */
-console.log('linea', linea);
-console.log('resultado', transportarNotas(linea, diferencia));
+// var linea = 'Re-   Re7    Sol- Sib7     La';
+// var diferencia = calcularTransporte(linea, 'Do');
+//  eslint-disable no-console
+// console.log('linea', linea);
+// console.log('resultado', transportarNotas(linea, diferencia));

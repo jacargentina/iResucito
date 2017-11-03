@@ -12,8 +12,15 @@ import {
 } from 'react-native-popup-menu';
 import colors from '../colors';
 import color from 'color';
-import { esLineaDeNotas, calcularTransporte, transportarNotas } from '../util';
+import {
+  esLineaDeNotas,
+  calcularTransporte,
+  transportarNotas,
+  notas
+} from '../util';
+import { salmoTransport } from '../actions';
 import AppNavigatorConfig from '../AppNavigatorConfig';
+import commonTheme from '../../native-base-theme/variables/platform';
 
 var mono = Platform.OS == 'ios' ? 'Menlo-Bold' : 'monospace';
 var isTablet = DeviceInfo.isTablet();
@@ -123,8 +130,17 @@ function preprocesarLinea(text, nextText) {
     it = {
       prefijo: '   ',
       texto: text.trimRight(),
-      style: styles.lineaNormal
+      style: styles.lineaNormal,
+      canto: true
     };
+    // si es un texto vacio, y el siguiente son notas
+    // aplicar formato especifico
+    if (it.texto.trim() == '' && nextText) {
+      var next_itm = preprocesarLinea(nextText);
+      if (next_itm.canto) {
+        it.style = styles.lineaNotas;
+      }
+    }
   }
   return it;
 }
@@ -212,15 +228,39 @@ const mapStateToProps = (state, props) => {
 
 /* eslint-disable no-unused-vars */
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    transportNote: transportTo => {
+      dispatch(salmoTransport(transportTo));
+    }
+  };
 };
 
-SalmoDetail.navigationOptions = props => ({
-  title: props.navigation.state.params
-    ? props.navigation.state.params.salmo.titulo
-    : 'Salmo',
-  headerRight: (
-    <Menu onSelect={value => alert(`Transportar a: ${value}`)}>
+const TransportNotesMenu = props => {
+  var menuOptionItems = notas.map((nota, i) => {
+    return (
+      <MenuOption
+        key={i}
+        value={nota}
+        text={nota}
+        customStyles={
+          props.transportToNote === nota ? (
+            {
+              optionWrapper: {
+                backgroundColor: commonTheme.brandPrimary,
+                paddingHorizontal: 10,
+                paddingVertical: 10
+              },
+              optionText: {
+                color: 'white'
+              }
+            }
+          ) : null
+        }
+      />
+    );
+  });
+  return (
+    <Menu onSelect={value => props.transportNote(value)}>
       <MenuTrigger>
         <Icon
           name="musical-note"
@@ -234,22 +274,28 @@ SalmoDetail.navigationOptions = props => ({
           }}
         />
       </MenuTrigger>
-      <MenuOptions>
-        <MenuOption value={'Do'} text="Do" />
-        <MenuOption value={'Do#'} text="Do#" />
-        <MenuOption value={'Re'} text="Re" />
-        <MenuOption value={'Mib'} text="Mib" />
-        <MenuOption value={'Mi'} text="Mi" />
-        <MenuOption value={'Fa'} text="Fa" />
-        <MenuOption value={'Fa#'} text="Fa#" />
-        <MenuOption value={'Sol'} text="Sol" />
-        <MenuOption value={'Sol#'} text="Sol#" />
-        <MenuOption value={'La'} text="La" />
-        <MenuOption value={'Sib'} text="Sib" />
-        <MenuOption value={'Si'} text="Si" />
+      <MenuOptions
+        customStyles={{
+          optionWrapper: { paddingHorizontal: 10, paddingVertical: 10 }
+        }}>
+        {props.transportToNote != null && (
+          <MenuOption value={null} text="Original" />
+        )}
+        {menuOptionItems}
       </MenuOptions>
     </Menu>
-  )
+  );
+};
+
+const ConnectedMenu = connect(mapStateToProps, mapDispatchToProps)(
+  TransportNotesMenu
+);
+
+SalmoDetail.navigationOptions = props => ({
+  title: props.navigation.state.params
+    ? props.navigation.state.params.salmo.titulo
+    : 'Salmo',
+  headerRight: <ConnectedMenu {...props} />
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SalmoDetail);

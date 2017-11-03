@@ -12,6 +12,8 @@ export const SET_CONTACT_IMPORT_VISIBLE = 'SET_CONTACT_IMPORT_VISIBLE';
 export const SET_CONTACT_IMPORT_LOADING = 'SET_CONTACT_IMPORT_LOADING';
 export const SET_CONTACT_IMPORT_ITEMS = 'SET_CONTACT_IMPORT_ITEMS';
 
+export const SALMO_TRANSPORT = 'SALMO_TRANSPORT';
+
 export const LIST_CREATE = 'LIST_CREATE';
 export const LIST_ADD_SALMO = 'LIST_ADD_SALMO';
 export const LIST_ADD_TEXT = 'LIST_ADD_TEXT';
@@ -84,6 +86,10 @@ export const hideListAddDialog = () => {
 
 export const setSalmosFilterText = (inputId, text) => {
   return { type: SET_SALMOS_FILTER, inputId: inputId, filter: text };
+};
+
+export const salmoTransport = transportTo => {
+  return { type: SALMO_TRANSPORT, transportTo: transportTo };
 };
 
 export const setContactsFilterText = (inputId, text) => {
