@@ -73,7 +73,7 @@
     etapa: 'Catecumenado',
     cuaresma: true
   },
-  'Tú has cubierto de vergüenza la muerte - Melitón de Sardes': {
+  'Tú has cubierto de vergüenza la muerte - Melitón de Sardes': {
     etapa: 'Catecumenado',
     virgen: true,
     fraccion: true,
@@ -315,7 +315,7 @@
   'Exultad, justos, en el Señor - Sal 32': {
     etapa: 'Precatecumenado'
   },
-  'Éste es el día en que actuó el Señor - Sal 118 (117)': {
+  'Éste es el día en que actuó el Señor - Sal 118 (117)': {
     etapa: 'Precatecumenado'
   },
   'Felicidad para el hombre - Sal 128 (127)': {
@@ -433,7 +433,7 @@
     virgen: true,
     laudes: true
   },
-  'María de Jasna Göra - Himno': {
+  'María de Jasna Göra - Himno': {
     etapa: 'Precatecumenado',
     virgen: true
   },
@@ -838,16 +838,16 @@
     etapa: 'Liturgia',
     pascua: true
   },
-  'Letanías penitenciales II': {
+  'Letanías penitenciales II': {
     etapa: 'Liturgia'
   },
   'Letanía del Cordero de Dios - Himno Agnus Dei': {
     etapa: 'Liturgia'
   },
-  'Letanías bautismales de los santos': {
+  'Letanías bautismales de los santos': {
     etapa: 'Liturgia'
   },
-  'Letanías penitenciales I': {
+  'Letanías penitenciales I': {
     etapa: 'Liturgia'
   },
   'Padre Nuestro': {
@@ -911,10 +911,10 @@
     cuaresma: true,
     laudes: true
   },
-  'El Mesías, León para vencer - Vittorino de Pettau': {
+  'El Mesías, León para vencer - Vittorino de Pettau': {
     etapa: 'Precatecumenado'
   },
-  'En medio de aquel gentío - Lc 8,42b-48': {
+  'En medio de aquel gentío - Lc 8,42b-48': {
     etapa: 'Precatecumenado',
     entrada: true,
     comunion: true
