@@ -1,3 +1,8 @@
+def VERSION_MAJOR=1
+def VERSION_MINOR=0
+def VERSION_PATCH=1
+def VERSION_BUILD=3
+
 apply plugin: "com.android.application"
 
 import com.android.build.OutputFile
@@ -101,8 +106,8 @@ android {
         applicationId "com.javiercastro.iresucito"
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 3   
-        versionName "1.0.1"
+        versionCode VERSION_BUILD
+        versionName VERSION_MAJOR + "." + VERSION_MINOR + "." + VERSION_PATCH
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
