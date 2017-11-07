@@ -40,7 +40,6 @@
 		34BA3BD945614B649802C516 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A59CE7044F44D3597315156 /* MaterialIcons.ttf */; };
 		3B0B678B832048DAA3D9B469 /* libRNDeviceInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FDA6CF5E51E54B448C1E5042 /* libRNDeviceInfo.a */; };
 		3C97AAA002BE4C57993874E2 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BCF4FD30ECAA4A2DA8933E29 /* Ionicons.ttf */; };
-		4095D26050434A09A8845193 /* libLRDRCTSimpleToast.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A6C8C3BACB43EB936C7627 /* libLRDRCTSimpleToast.a */; };
 		482AE53302704635A770EFE2 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D4BCECAEB6524958922C83C1 /* Octicons.ttf */; };
 		4FEEA694ED6A4BD3A4102102 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E3A1973FD5BA477B9930B92E /* Octicons.ttf */; };
 		530B8F8B3D1E44189147BCD6 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4843654AB71B4457B0D1D647 /* FontAwesome.ttf */; };
@@ -355,13 +354,6 @@
 			remoteGlobalIDString = E72EC1401F7ABB5A0001BC90;
 			remoteInfo = "RNDeviceInfo-tvOS";
 		};
-		88B3A5D91F9E82E2004EF80C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C9ED54088D064187B8006359 /* LRDRCTSimpleToast.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 15209BEF1D250F63000D0F44;
-			remoteInfo = LRDRCTSimpleToast;
-		};
 		88B3A5DC1F9E82E2004EF80C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1B2CF75DD2D14CF6BC9CE592 /* RCTContacts.xcodeproj */;
@@ -431,7 +423,6 @@
 		210569E15271402A887E5ADC /* libRCTContacts.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTContacts.a; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* iResucito-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iResucito-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* iResucito-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iResucito-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		33A6C8C3BACB43EB936C7627 /* libLRDRCTSimpleToast.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libLRDRCTSimpleToast.a; sourceTree = "<group>"; };
 		3A59CE7044F44D3597315156 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		3FD3AB8DEF6F4977A4BEB865 /* RNDeviceInfo.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNDeviceInfo.xcodeproj; path = "../node_modules/react-native-device-info/RNDeviceInfo.xcodeproj"; sourceTree = "<group>"; };
 		413FCE5DE9C3411A90B2869F /* Roboto_medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto_medium.ttf; path = "../node_modules/native-base/Fonts/Roboto_medium.ttf"; sourceTree = "<group>"; };
@@ -459,7 +450,6 @@
 		BB58BC5B20894F9CA4D6C216 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		BCF4FD30ECAA4A2DA8933E29 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/native-base/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		C0971599E8774AEDB6C436A9 /* libSplashScreen.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libSplashScreen.a; sourceTree = "<group>"; };
-		C9ED54088D064187B8006359 /* LRDRCTSimpleToast.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = LRDRCTSimpleToast.xcodeproj; path = "../node_modules/react-native-simple-toast/ios/LRDRCTSimpleToast.xcodeproj"; sourceTree = "<group>"; };
 		D0D2779093904E29B00F63E4 /* KCKeepAwake.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = KCKeepAwake.xcodeproj; path = "../node_modules/react-native-keep-awake/ios/KCKeepAwake.xcodeproj"; sourceTree = "<group>"; };
 		D0E787F1AF734FB4A91410B7 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/native-base/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		D4BCECAEB6524958922C83C1 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/native-base/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
@@ -502,7 +492,6 @@
 				3B0B678B832048DAA3D9B469 /* libRNDeviceInfo.a in Frameworks */,
 				BADC12E9073F4925B5B65D17 /* libKCKeepAwake.a in Frameworks */,
 				DD36E66E56594736930D56FC /* libicloudstorage.a in Frameworks */,
-				4095D26050434A09A8845193 /* libLRDRCTSimpleToast.a in Frameworks */,
 				FFA39A98BA3147AA952DFF18 /* libRCTContacts.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -721,7 +710,6 @@
 				3FD3AB8DEF6F4977A4BEB865 /* RNDeviceInfo.xcodeproj */,
 				D0D2779093904E29B00F63E4 /* KCKeepAwake.xcodeproj */,
 				7DD1C81B56284101A22C3274 /* icloudstorage.xcodeproj */,
-				C9ED54088D064187B8006359 /* LRDRCTSimpleToast.xcodeproj */,
 				1B2CF75DD2D14CF6BC9CE592 /* RCTContacts.xcodeproj */,
 			);
 			name = Libraries;
@@ -819,7 +807,6 @@
 				FDA6CF5E51E54B448C1E5042 /* libRNDeviceInfo.a */,
 				1636CA483BA84A5FAA98641C /* libKCKeepAwake.a */,
 				78B9AEBA0EAD4B029C4ECABB /* libicloudstorage.a */,
-				33A6C8C3BACB43EB936C7627 /* libLRDRCTSimpleToast.a */,
 				210569E15271402A887E5ADC /* libRCTContacts.a */,
 			);
 			name = "Recovered References";
@@ -829,14 +816,6 @@
 			isa = PBXGroup;
 			children = (
 				88B3A5DD1F9E82E2004EF80C /* libRCTContacts.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		88B3A5D61F9E82E2004EF80C /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				88B3A5DA1F9E82E2004EF80C /* libLRDRCTSimpleToast.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -956,7 +935,7 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0910;
+				LastSwiftUpdateCheck = 910;
 				LastUpgradeCheck = 900;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
@@ -1003,10 +982,6 @@
 				{
 					ProductGroup = 88EDBCF01F9132C100DA267F /* Products */;
 					ProjectRef = D0D2779093904E29B00F63E4 /* KCKeepAwake.xcodeproj */;
-				},
-				{
-					ProductGroup = 88B3A5D61F9E82E2004EF80C /* Products */;
-					ProjectRef = C9ED54088D064187B8006359 /* LRDRCTSimpleToast.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
@@ -1344,13 +1319,6 @@
 			remoteRef = 88B3A5CE1F9E82E2004EF80C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		88B3A5DA1F9E82E2004EF80C /* libLRDRCTSimpleToast.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libLRDRCTSimpleToast.a;
-			remoteRef = 88B3A5D91F9E82E2004EF80C /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		88B3A5DD1F9E82E2004EF80C /* libRCTContacts.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1650,7 +1618,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 0;
+				CURRENT_PROJECT_VERSION = 2;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = GHJ7J9LTV8;
 				HEADER_SEARCH_PATHS = (
@@ -1682,7 +1650,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 0;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = GHJ7J9LTV8;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
