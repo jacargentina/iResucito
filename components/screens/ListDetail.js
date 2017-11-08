@@ -6,6 +6,7 @@ import ListDetailItem from './ListDetailItem';
 import { shareList } from '../actions';
 import { getSalmosFromList } from '../selectors';
 import AppNavigatorConfig from '../AppNavigatorConfig';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 const ListDetail = props => {
   if (props.listMap.get('type') == 'libre') {
@@ -18,7 +19,7 @@ const ListDetail = props => {
     );
   }
   return (
-    <ScrollView>
+    <KeyboardAwareScrollView>
       <List>
         <ListDetailItem
           listName={props.list.name}
@@ -107,11 +108,19 @@ const ListDetail = props => {
             navigation={props.navigation}
           />
         )}
-        {props.listMap.has('comunion') && (
+        {props.listMap.has('comunion-pan') && (
           <ListDetailItem
             listName={props.list.name}
-            listKey="comunion"
-            listText={props.listMap.get('comunion')}
+            listKey="comunion-pan"
+            listText={props.listMap.get('comunion-pan')}
+            navigation={props.navigation}
+          />
+        )}
+        {props.listMap.has('comunion-caliz') && (
+          <ListDetailItem
+            listName={props.list.name}
+            listKey="comunion-caliz"
+            listText={props.listMap.get('comunion-caliz')}
             navigation={props.navigation}
           />
         )}
@@ -121,8 +130,14 @@ const ListDetail = props => {
           listText={props.listMap.get('salida')}
           navigation={props.navigation}
         />
+        <ListDetailItem
+          listName={props.list.name}
+          listKey="nota"
+          listText={props.listMap.get('nota')}
+          navigation={props.navigation}
+        />
       </List>
-    </ScrollView>
+    </KeyboardAwareScrollView>
   );
 };
 

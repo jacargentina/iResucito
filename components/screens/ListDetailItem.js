@@ -10,7 +10,7 @@ import {
   Right,
   Separator
 } from 'native-base';
-import { View } from 'react-native';
+import { View, TextInput } from 'react-native';
 import { openChooserDialog, updateListMapText } from '../actions';
 import { getFriendlyText } from '../util';
 import commonTheme from '../../native-base-theme/variables/platform';
@@ -65,12 +65,26 @@ const ListDetailItem = props => {
               color: commonTheme.brandPrimary,
               width: 40,
               height: 40,
-              fontSize: 30,
+              fontSize: 30
             }}
             onPress={() =>
               props.openChooser('Contact', props.listName, props.listKey)}
           />
         </Right>
+      </ListItem>
+    );
+  } else if (props.listKey == 'nota') {
+    item = (
+      <ListItem>
+        <Body>
+          <TextInput
+            multiline
+            onChangeText={text =>
+              props.updateItem(props.listName, props.listKey, text)}
+            value={props.listText}
+            autoCorrect={false}
+          />
+        </Body>
       </ListItem>
     );
   } else {
@@ -84,7 +98,7 @@ const ListDetailItem = props => {
               color: commonTheme.brandPrimary,
               width: 40,
               height: 40,
-              fontSize: 30,
+              fontSize: 30
             }}
             onPress={() =>
               props.navigation.navigate('SalmoDetail', {

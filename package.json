@@ -37,6 +37,7 @@
     "react-native-highlight-words": "github:smartkarma/react-native-highlight-words",
     "react-native-icloudstore": "^0.9.0",
     "react-native-keep-awake": "^2.0.6",
+    "react-native-keyboard-aware-scroll-view": "^0.4.1",
     "react-native-modal": "^4.1.1",
     "react-native-popup-menu": "^0.9.0",
     "react-native-splash-screen": "^3.0.6",

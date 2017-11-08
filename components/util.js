@@ -27,7 +27,8 @@ export function getEsSalmo(listKey) {
     listKey == '2-salmo' ||
     listKey == '3-salmo' ||
     listKey == 'paz' ||
-    listKey == 'comunion' ||
+    listKey == 'comunion-pan' ||
+    listKey == 'comunion-caliz' ||
     listKey == 'salida'
   );
 }
@@ -44,8 +45,11 @@ export function getFriendlyText(listKey) {
     case 'paz':
       text = 'Paz y Ofrendas';
       break;
-    case 'comunion':
-      text = 'Comunión';
+    case 'comunion-pan':
+      text = 'Pan';
+      break;
+    case 'comunion-caliz':
+      text = 'Cáliz';
       break;
     case 'salida':
       text = 'Canto de Salida';
@@ -82,6 +86,9 @@ export function getFriendlyText(listKey) {
       break;
     case 'evangelio':
       text = 'Evangelio';
+      break;
+    case 'nota':
+      text = 'Nota';
       break;
   }
   return text;

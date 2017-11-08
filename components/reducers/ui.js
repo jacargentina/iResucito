@@ -163,6 +163,7 @@ export default function ui(state = initialState, action) {
             schema = schema.set('evangelio-monicion', null);
             schema = schema.set('evangelio', null);
             schema = schema.set('salida', null);
+            schema = schema.set('nota', null);
             break;
           case 'eucaristia':
             schema = schema.set('ambiental', null);
@@ -174,8 +175,10 @@ export default function ui(state = initialState, action) {
             schema = schema.set('evangelio-monicion', null);
             schema = schema.set('evangelio', null);
             schema = schema.set('paz', null);
-            schema = schema.set('comunion', null);
+            schema = schema.set('comunion-pan', null);
+            schema = schema.set('comunion-caliz', null);
             schema = schema.set('salida', null);
+            schema = schema.set('nota', null);
             break;
         }
         state = state.setIn(['lists', action.name], schema);
@@ -253,8 +256,10 @@ export default function ui(state = initialState, action) {
       items.push(getItemForShare(action.listMap, 'evangelio-monicion'));
       items.push(getItemForShare(action.listMap, 'evangelio'));
       items.push(getItemForShare(action.listMap, 'paz'));
-      items.push(getItemForShare(action.listMap, 'comunion'));
+      items.push(getItemForShare(action.listMap, 'comunion-pan'));
+      items.push(getItemForShare(action.listMap, 'comunion-caliz'));
       items.push(getItemForShare(action.listMap, 'salida'));
+      items.push(getItemForShare(action.listMap, 'nota'));
       var message = items.filter(n => n).join('\n');
       /* eslint-disable no-console */
       console.log('Texto para compartir', message);
