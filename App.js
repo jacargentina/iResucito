@@ -15,6 +15,22 @@ import { esLineaDeNotas } from './components/util';
 import Indice from './Indice';
 import { MenuContext } from 'react-native-popup-menu';
 
+if (Platform.OS == 'android') {
+  // Reemplazar startsWith en Android
+  // por bug detallado aqui
+  // https://github.com/facebook/react-native/issues/11370
+  String.prototype.startsWith = function(search) {
+    'use strict';
+    if (this == null) {
+      throw TypeError();
+    }
+    var string = String(this);
+    var pos = arguments.length > 1 ? Number(arguments[1]) || 0 : 0;
+    var start = Math.min(Math.max(pos, 0), string.length);
+    return string.indexOf(String(search), pos) === start;
+  };
+}
+
 class App extends React.Component {
   constructor(props) {
     super(props);
