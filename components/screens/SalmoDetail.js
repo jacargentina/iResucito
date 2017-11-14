@@ -76,7 +76,16 @@ var styles = StyleSheet.create({
 /* eslint-disable no-unused-vars */
 function preprocesarLinea(text, nextText) {
   var it = {};
-  if (
+  if (text.startsWith('S. A.')) {
+    // Indicador de Salmista Y Asamblea
+    var secondPoint = 4;
+    it = {
+      prefijo: text.substring(0, secondPoint + 1) + ' ',
+      texto: text.substring(secondPoint + 1).trim(),
+      style: styles.lineaNormal,
+      prefijoStyle: styles.prefijo
+    };    
+  } else if (
     text.startsWith('S.') ||
     text.startsWith('A.') ||
     text.startsWith('P.') ||
