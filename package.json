@@ -5,8 +5,8 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-react-native-stage-0": "^1.0.1",
-    "jest-expo": "~23.0.0",
-    "react-test-renderer": "16.1.1"
+    "jest-expo": "~23.0.1",
+    "react-test-renderer": "16.2.0"
   },
   "scripts": {
     "start": "react-native start",
@@ -20,26 +20,26 @@
     "preset": "jest-expo"
   },
   "dependencies": {
-    "babel-eslint": "^8.0.2",
+    "babel-eslint": "^8.0.3",
     "color": "^2.0.1",
-    "eslint": "^4.12.0",
+    "eslint": "^4.12.1",
     "eslint-plugin-babel": "^4.1.2",
     "eslint-plugin-react": "^7.5.1",
     "immutable": "^4.0.0-rc.4",
     "lodash": "^4.17.4",
     "native-base": "^2.3.3",
-    "react": "16.1.1",
+    "react": "16.2.0",
     "react-native": "^0.50.4",
     "react-native-collapsible": "^0.9.0",
-    "react-native-contacts": "^1.0.4",
-    "react-native-device-info": "^0.12.1",
+    "react-native-contacts": "^2.0.0",
+    "react-native-device-info": "^0.13.0",
     "react-native-fs": "github:itinance/react-native-fs",
     "react-native-highlight-words": "github:smartkarma/react-native-highlight-words",
     "react-native-icloudstore": "^0.9.0",
     "react-native-keep-awake": "^2.0.6",
     "react-native-keyboard-aware-scroll-view": "^0.4.1",
     "react-native-modal": "^4.1.1",
-    "react-native-popup-menu": "^0.9.0",
+    "react-native-popup-menu": "^0.9.1",
     "react-native-splash-screen": "^3.0.6",
     "react-native-storage": "^0.2.2",
     "react-native-swipeout": "^2.3.1",
