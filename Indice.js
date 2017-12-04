@@ -918,6 +918,15 @@
     etapa: 'Precatecumenado',
     entrada: true,
     comunion: true
+  },
+  'Me robaste el corazón - Ct 4, 9-16.5,1': {
+    etapa: 'Precatecumenado'
+  },
+  'Maria paloma incorrupta - Himno' :{
+    etapa: 'Precatecumenado'
+  },
+  'Si habéis resucitado con Cristo - Col 3,1-4': {
+    etapa: 'Precatecumenado'
   }
 };
 
