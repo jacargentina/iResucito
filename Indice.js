@@ -930,6 +930,9 @@
   },
   'Resurrexit - Jn 11, 25-27': {
     etapa: 'Precatecumenado'
+  },
+  'Este es el mandamiento mio - Jn 15, 12ss' : {
+    etapa: 'Precatecumenado'
   }
 };
 
