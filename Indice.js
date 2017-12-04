@@ -927,6 +927,9 @@
   },
   'Si habéis resucitado con Cristo - Col 3,1-4': {
     etapa: 'Precatecumenado'
+  },
+  'Resurrexit - Jn 11, 25-27': {
+    etapa: 'Precatecumenado'
   }
 };
 
