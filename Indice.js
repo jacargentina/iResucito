@@ -920,19 +920,31 @@
     comunion: true
   },
   'Me robaste el corazón - Ct 4, 9-16.5,1': {
-    etapa: 'Precatecumenado'
+    etapa: 'Precatecumenado',
+    pascua: true,
+    comunion: true
   },
   'Maria paloma incorrupta - Himno' :{
     etapa: 'Precatecumenado'
   },
   'Si habéis resucitado con Cristo - Col 3,1-4': {
-    etapa: 'Precatecumenado'
+    etapa: 'Precatecumenado',
+    adviento: true,
+    pascua: true
   },
   'Resurrexit - Jn 11, 25-27': {
     etapa: 'Precatecumenado'
   },
-  'Este es el mandamiento mio - Jn 15, 12ss' : {
-    etapa: 'Precatecumenado'
+  'Este es el mandamiento mio - Jn 15, 12ss': {
+    etapa: 'Precatecumenado',
+    pascua: true,
+    fraccion: true,
+    comunion: true
+  },
+  'Oh Dios, tú eres mi Dios - Sal 63 (62)': {
+    etapa: 'Precatecumenado',
+    adviento: true,
+    laudes: true
   }
 };
 
