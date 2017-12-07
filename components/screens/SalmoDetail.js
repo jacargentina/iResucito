@@ -43,7 +43,8 @@ var styles = StyleSheet.create({
   lineaNotas: {
     fontFamily: mono,
     color: 'red',
-    fontSize: fontSizeNotas
+    fontSize: fontSizeNotas,
+    marginLeft: 4
   },
   lineaTituloNotaEspecial: {
     fontFamily: mono,
@@ -59,7 +60,8 @@ var styles = StyleSheet.create({
     fontFamily: mono,
     color: 'red',
     fontSize: fontSizeNotas,
-    marginTop: 15
+    marginTop: 15,
+    marginLeft: 4
   },
   lineaNormal: {
     fontFamily: mono,
@@ -74,7 +76,7 @@ var styles = StyleSheet.create({
   }
 });
 /* eslint-disable no-unused-vars */
-function preprocesarLinea(text, nextText) {
+function preprocesarLinea(text) {
   var it = {};
   if (text.startsWith('S. A.')) {
     // Indicador de Salmista Y Asamblea
@@ -84,7 +86,7 @@ function preprocesarLinea(text, nextText) {
       texto: text.substring(secondPoint + 1).trim(),
       style: styles.lineaNormal,
       prefijoStyle: styles.prefijo
-    };    
+    };
   } else if (
     text.startsWith('S.') ||
     text.startsWith('A.') ||
@@ -102,17 +104,11 @@ function preprocesarLinea(text, nextText) {
     };
   } else if (esLineaDeNotas(text)) {
     it = {
-      prefijo: '   ',
+      prefijo: '',
       texto: text.replace(/ {2}/g, ' ').trimRight(),
       style: styles.lineaNotas,
       notas: true
     };
-    if (nextText) {
-      var next_it = preprocesarLinea(nextText);
-      if (next_it.prefijo.trim() !== '') {
-        it.style = styles.lineaNotasConMargen;
-      }
-    }
   } else if (text.startsWith('\u2217')) {
     // Nota especial
     it = {
@@ -137,19 +133,11 @@ function preprocesarLinea(text, nextText) {
     };
   } else {
     it = {
-      prefijo: '   ',
+      prefijo: '',
       texto: text.trimRight(),
       style: styles.lineaNormal,
       canto: true
     };
-    // si es un texto vacio, y el siguiente son notas
-    // aplicar formato especifico
-    if (it.texto.trim() == '' && nextText) {
-      var next_itm = preprocesarLinea(nextText);
-      if (next_itm.canto) {
-        it.style = styles.lineaNotas;
-      }
-    }
   }
   return it;
 }
@@ -177,11 +165,43 @@ class SalmoDetail extends React.Component {
     if (this.props.transportToNote) {
       diferencia = calcularTransporte(lines[0], this.props.transportToNote);
     }
-    var items = lines.map((l, i) => {
-      var it = preprocesarLinea(l, lines[i + 1]);
+    var firstPass = lines.map(l => {
+      var it = preprocesarLinea(l);
       if (it.notas && diferencia !== 0) {
         it.texto = transportarNotas(it.texto, diferencia);
       }
+      return it;
+    });
+    var secondPass = firstPass.map((it, i) => {
+      // Ajustar margen izquierdo por prefijos
+      if (it.prefijo == '' && i > 0) {
+        var prevIt = firstPass[i - 1];
+        if (prevIt.prefijo !== '') {
+          it.prefijo = ' '.repeat(prevIt.prefijo.length);
+        }
+      } else if (it.prefijo == '' && i < firstPass.length - 1) {
+        var nextIt = firstPass[i + 1];
+        if (nextIt.prefijo !== '') {
+          it.prefijo = ' '.repeat(nextIt.prefijo.length);
+        }
+      }
+      // Ajustar estilo para las notas
+      if (it.texto.trim() == '' && i < firstPass.length - 1) {
+        var nextItm = firstPass[i + 1];
+        if (nextItm.canto) {
+          it.style = styles.lineaNotas;
+        }
+      }
+      // Ajustar estilo para las notas si es la primer linea
+      if (it.notas && i < firstPass.length - 1) {
+        var nextItmn = firstPass[i + 1];
+        if (nextItmn.prefijo !== '') {
+          it.style = styles.lineaNotasConMargen;  
+        }
+      }
+      return it;
+    });
+    var items = secondPass.map((it, i) => {
       return (
         <Text numberOfLines={1} key={i + 'texto'} style={it.style}>
           <Text key={i + 'prefijo'} style={it.prefijoStyle || it.style}>
