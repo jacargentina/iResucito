@@ -945,6 +945,9 @@
     etapa: 'Precatecumenado',
     adviento: true,
     laudes: true
+  },
+  'Madre dolorosa - Himno de San Romano el Mélodo': {
+    etapa: 'Precatecumenado'
   }
 };
 
