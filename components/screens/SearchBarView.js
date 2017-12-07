@@ -11,6 +11,7 @@ class DebouncedInput extends React.Component {
     this.state = {
       text: props.searchTextFilter
     };
+    this.inSearch = false;
     this.handleTextChange = this.handleTextChange.bind(this);
     this.sendTextChange = this.sendTextChange.bind(this);
   }
@@ -29,15 +30,19 @@ class DebouncedInput extends React.Component {
   }
 
   handleTextChange(text) {
-    this.setState({ text: text });
-    this.sendTextChange(text.trim());
+    if (!this.inSearch) {
+      this.setState({ text: text });
+      this.sendTextChange(text.trim());
+    }
   }
 
   sendTextChange(text) {
+    this.inSearch = true;
     this.props.searchHandler(this.props.searchTextFilterId, text);
     if (this.props.afterSearchHandler) {
       this.props.afterSearchHandler();
     }
+    this.inSearch = false;
   }
 
   render() {
@@ -48,7 +53,6 @@ class DebouncedInput extends React.Component {
           height: commonTheme.searchBarHeight
         }}
         placeholder="Buscar"
-        //placeholderTextColor={commonTheme.listBorderColor}
         onChangeText={this.handleTextChange}
         value={this.state.text}
         returnKeyType="search"
