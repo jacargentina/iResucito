@@ -32,7 +32,6 @@ const initialState = Map({
   salmos_text_filter: Map(),
   salmos_transport_note: null,
   contacts_text_filter: Map(),
-  salmo_lines: null,
   about_visible: false,
   list_create_name: '',
   list_create_enabled: false,
