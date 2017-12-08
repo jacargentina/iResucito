@@ -154,9 +154,3 @@ export const calcularTransporte = (primerLineaNotas, notaDestino) => {
   var destino = notas.indexOf(notaDestino);
   return destino - inicio;
 };
-
-// var linea = 'Re-   Re7    Sol- Sib7     La';
-// var diferencia = calcularTransporte(linea, 'Do');
-//  eslint-disable no-console
-// console.log('linea', linea);
-// console.log('resultado', transportarNotas(linea, diferencia));
