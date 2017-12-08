@@ -54,7 +54,7 @@ platform :ios do
       increment_build_number
     end
     gym(scheme: "iResucito") # Build your app - more options available
-    deliver(force: true)
+    deliver(force: true, run_precheck_before_submit: false)
     # frameit
   end
 
