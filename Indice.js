@@ -941,7 +941,7 @@
     fraccion: true,
     comunion: true
   },
-  'Oh Dios, tú eres mi Dios - Sal 63 (62)': {
+  'Oh Dios, tú eres mi Dios - Sal 63 (62)': {
     etapa: 'Precatecumenado',
     adviento: true,
     laudes: true
