@@ -952,6 +952,10 @@
   'Adónde te escondiste amado - Cántico Espiritual' :{
     etapa: 'Precatecumenado',
     pascua: true
+  },
+  'Alegría, ha nacido el salvador - Villancico': {
+    etapa: 'Precatecumenado',
+    navidad: true
   }
 };
 
