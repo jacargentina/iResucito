@@ -945,6 +945,7 @@
 					};
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = GHJ7J9LTV8;
+						ProvisioningStyle = Manual;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1618,7 +1619,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 13;
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 22;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = GHJ7J9LTV8;
 				HEADER_SEARCH_PATHS = (
@@ -1641,6 +1643,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.javiercastro.iresucito;
 				PRODUCT_NAME = iResucito;
+				PROVISIONING_PROFILE = "45cb670c-f1f1-4c5b-8f04-f54fcdb7b3ba";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development com.javiercastro.iresucito";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1650,7 +1654,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 13;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = GHJ7J9LTV8;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1672,6 +1678,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.javiercastro.iresucito;
 				PRODUCT_NAME = iResucito;
+				PROVISIONING_PROFILE = "16fbeb12-a251-490d-9be4-670418f63d08";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.javiercastro.iresucito";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};

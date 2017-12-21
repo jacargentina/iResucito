@@ -5,32 +5,32 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: Verifying required fastlane version" time="0.021898">
+      <testcase classname="fastlane.lanes" name="0: Verifying required fastlane version" time="0.008652">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: default_platform" time="0.004375">
+      <testcase classname="fastlane.lanes" name="1: default_platform" time="0.00177">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="2: match" time="14.786229">
+      <testcase classname="fastlane.lanes" name="2: match" time="11.959316">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="3: increment_build_number" time="0.970565">
+      <testcase classname="fastlane.lanes" name="3: increment_build_number" time="0.657685">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="4: gym" time="110.488176">
+      <testcase classname="fastlane.lanes" name="4: gym" time="109.297545">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="5: pilot" time="492.642346">
+      <testcase classname="fastlane.lanes" name="5: pilot" time="2861.927028">
         
       </testcase>
     
