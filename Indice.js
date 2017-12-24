@@ -920,7 +920,7 @@
     comunion: true
   },
   'Me robaste el corazón - Ct 4, 9-16.5,1': {
-    etapa: 'Precatecumenado',
+    etapa: 'Eleccion',
     pascua: true,
     comunion: true
   },
@@ -950,7 +950,7 @@
     etapa: 'Precatecumenado'
   },
   'Adónde te escondiste amado - Cántico Espiritual' :{
-    etapa: 'Precatecumenado',
+    etapa: 'Eleccion',
     pascua: true
   },
   'Alegría, ha nacido el salvador - Villancico': {
