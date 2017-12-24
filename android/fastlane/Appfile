@@ -1,2 +1,2 @@
-json_key_file "/Users/javiercastro/Downloads/Google Play Android Developer-0e398c6ba930.json" # Path to the json secret file - Follow https://github.com/fastlane/supply#setup to get one
+json_key_file "/Users/javiercastro/Downloads/Google Play Android Developer-f59115410a37.json" # Path to the json secret file - Follow https://github.com/fastlane/supply#setup to get one
 package_name "com.javiercastro.iresucito" # e.g. com.krausefx.app
