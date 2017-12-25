@@ -949,11 +949,11 @@
   'Madre dolorosa - Himno de San Romano el Mélodo': {
     etapa: 'Precatecumenado'
   },
-  'Adónde te escondiste amado - Cántico Espiritual' :{
+  'Adónde te escondiste amado - Cántico Espiritual' :{
     etapa: 'Eleccion',
     pascua: true
   },
-  'Alegría, ha nacido el salvador - Villancico': {
+  'Alegría, ha nacido el salvador - Villancico': {
     etapa: 'Precatecumenado',
     navidad: true
   }
