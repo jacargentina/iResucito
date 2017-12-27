@@ -95,7 +95,7 @@ var search = [
   },
   {
     title: I18n.t('search_title.peace and offerings'),
-    note: I18n.t('search_pote.peace and offerings'),
+    note: I18n.t('search_note.peace and offerings'),
     route: 'SalmoList',
     params: { filter: { paz: true } },
     badge: null,

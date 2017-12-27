@@ -4,6 +4,7 @@ import { View } from 'react-native';
 import { List, ListItem, Left, Body, Text, Icon, Right } from 'native-base';
 import Switch from '../widgets/switch';
 import { saveSetting, showAbout } from '../actions';
+import I18n from '../../i18n';
 
 class SettingsScreen extends React.Component {
   constructor(props) {
@@ -16,16 +17,15 @@ class SettingsScreen extends React.Component {
         <List>
           <ListItem>
             <Body>
-              <Text>Mantener despierto</Text>
-              <Text note>
-                Evitar que el dispositivo entre en reposo al visualizar un salmo
-              </Text>
+              <Text>{I18n.t('settings_title.keep awake')}</Text>
+              <Text note>{I18n.t('settings_note.keep awake')}</Text>
             </Body>
             <Right>
               <Switch
                 value={this.props.keepAwake}
                 onValueChange={checked =>
-                  this.props.updateSetting('keepAwake', checked)}
+                  this.props.updateSetting('keepAwake', checked)
+                }
               />
             </Right>
           </ListItem>
@@ -34,7 +34,7 @@ class SettingsScreen extends React.Component {
               <Icon name="checkmark" />
             </Left>
             <Body>
-              <Text>Acerca de</Text>
+              <Text>{I18n.t('settings_title.about')}</Text>
             </Body>
           </ListItem>
         </List>
@@ -62,7 +62,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 SettingsScreen.navigationOptions = () => ({
-  title: 'Configurar',
+  title: I18n.t('screen_title.settings'),
   tabBarIcon: ({ focused, tintColor }) => {
     return (
       <Icon

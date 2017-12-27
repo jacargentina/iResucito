@@ -8,6 +8,7 @@ import ContactChooserDialog from './ContactChooserDialog';
 import ContactImportDialog from './ContactImportDialog';
 import AcercaDe from './AcercaDe';
 import search from '../search';
+import I18n from '../../i18n';
 
 const SalmoSearch = props => {
   return (
@@ -52,7 +53,7 @@ const SalmoSearch = props => {
 };
 
 SalmoSearch.navigationOptions = () => ({
-  title: 'Buscar',
+  title: I18n.t('screen_title.search'),
   tabBarIcon: ({ focused, tintColor }) => {
     return (
       <Icon

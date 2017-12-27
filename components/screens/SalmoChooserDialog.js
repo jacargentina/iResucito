@@ -6,6 +6,7 @@ import BaseModal from './BaseModal';
 import SalmoList from './SalmoList';
 import { addSalmoToList, closeChooserDialog } from '../actions';
 import search from '../search';
+import I18n from '../../i18n';
 
 const styles = StyleSheet.create({
   tabs: { fontSize: 14 }
@@ -31,7 +32,7 @@ const SalmoChooserDialog = props => {
     <BaseModal
       visible={props.visible}
       closeModal={() => props.close()}
-      title="Buscar Canto"
+      title={I18n.t('screen_title.find song')}
       fade={true}>
       <Tabs initialPage={0} renderTabBar={() => <ScrollableTab />}>
         {items}

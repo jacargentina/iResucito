@@ -16,16 +16,17 @@ import { getProcessedLists } from '../selectors';
 import { showListAddDialog, updateListAddType, deleteList } from '../actions';
 import AppNavigatorConfig from '../AppNavigatorConfig';
 import BaseCallToAction from './BaseCallToAction';
+import I18n from '../../i18n';
 
 const ListScreen = props => {
   if (props.items.length == 0)
     return (
       <BaseCallToAction
         icon="bookmark"
-        title="Agregar listas"
-        text="Las listas te permiten organizar una celebración litúrgica para recordar o compartir con los hermanos de la comunidad"
+        title={I18n.t('call_to_action_title.add lists')}
+        text={I18n.t('call_to_action_text.add lists')}
         buttonHandler={() => props.listAdd()}
-        buttonText="Crear una lista"
+        buttonText={I18n.t('call_to_action_button.add lists')}
       />
     );
   return (
@@ -147,7 +148,7 @@ const AddList = props => {
 const AddListButton = connect(mapStateToProps, mapDispatchToProps)(AddList);
 
 ListScreen.navigationOptions = props => ({
-  title: 'Listas',
+  title: I18n.t('screen_title.lists'),
   tabBarIcon: ({ focused, tintColor }) => {
     return (
       <Icon

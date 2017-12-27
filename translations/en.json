@@ -17,10 +17,10 @@
     "peace and offerings": "Peace and Offerings",
     "fraction of bread": "Fraction of Bread",
     "communion": "Communion",
-    "exit": "Salida",
-    "signing to the virgin": "Cantos a la Virgen",
-    "children's songs": "Cantos de los Niños",
-    "lutes and vespers": "Laúdes y Vísperas"
+    "exit": "Exit",
+    "signing to the virgin": "Songs to the Virgin",
+    "children's songs": "Songs for Children",
+    "lutes and vespers": "Lauds and Vespers"
   },
   "search_note": {
     "alpha": "All the songs in alphabetical order",
@@ -34,12 +34,41 @@
     "easter": "The songs for Easter time",
     "pentecost": "The songs for Pentecost time",
     "entrance": "The songs for the beginning of the liturgies",
-    "peace and offerings": "The songs for the greeting of peace and the offerings",
+    "peace and offerings":
+      "The songs for the greeting of peace and the offerings",
     "fraction of bread": "The songs for the fraction of bread",
     "communion": "The songs for the communion",
     "exit": "The songs for the ending of the liturgies",
     "signing to the virgin": "The songs dedicated to the Virgin Mary",
     "children's songs": "Songs for children",
     "lutes and vespers": "The psalms of Lauds and Vespers"
+  },
+  "screen_title": {
+    "search": "Search",
+    "settings": "Settings",
+    "find song": "Find Song",
+    "lists": "Lists",
+    "community": "Community"
+  },
+  "call_to_action_title": {
+    "add lists": "Add lists",
+    "community list": "Community list"
+  },
+  "call_to_action_text": {
+    "add lists":
+      "The lists allow you to organize a liturgical celebration to remember or share with the brothers of the community",
+    "community list":
+      "You can import from your contacts the names of the brothers in the community and use them when creating the lists"
+  },
+  "call_to_action_button": {
+    "add lists": "Create a list",
+    "community list": "Import contacts"
+  },
+  "settings_title": {
+    "keep awake": "Keep awake",
+    "about": "About"
+  },
+  "settings_note": {
+    "keep awake": "Prevent the device from resting when viewing a psalm"
   }
 }

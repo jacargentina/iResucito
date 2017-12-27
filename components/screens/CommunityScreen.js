@@ -26,6 +26,7 @@ import {
   getProcessedContacts
 } from '../selectors';
 import commonTheme from '../../native-base-theme/variables/platform';
+import I18n from '../../i18n';
 
 const unknown = require('../../img/avatar.png');
 
@@ -34,10 +35,10 @@ const CommunityScreen = props => {
     return (
       <BaseCallToAction
         icon="people"
-        title="Lista de la Comunidad"
-        text="Puede importar desde tus contactos los nombres de los hermanos de la comunidad y usarlos al crear las listas"
+        title={I18n.t('call_to_action_title.community list')}
+        text={I18n.t('call_to_action_text.community list')}
         buttonHandler={() => props.contactImport()}
-        buttonText="Importar contactos"
+        buttonText={I18n.t('call_to_action_button.community list')}
       />
     );
   return (
@@ -166,7 +167,7 @@ const ImportContactsButton = connect(mapStateToProps, mapDispatchToProps)(
 );
 
 CommunityScreen.navigationOptions = props => ({
-  title: 'Comunidad',
+  title: I18n.t('screen_title.community'),
   tabBarIcon: ({ focused, tintColor }) => {
     return (
       <Icon
