@@ -1,147 +1,148 @@
 import badges from './badges';
+import I18n from '../i18n';
 
 var search = [
   {
-    title: 'Alfabético',
-    note: 'Todos los cantos en orden alfabético',
+    title: I18n.t('search_title.alpha'),
+    note: I18n.t('search_note.alpha'),
     route: 'SalmoList',
     params: {},
     badge: badges.Alfabético,
     chooser: 'Todos'
   },
   {
-    title: 'Etapa del Camino',
+    title: I18n.t('search_title.stage'),
     divider: true
   },
   {
-    title: 'Precatecumenado',
-    note: 'Los cantos para la etapa del Precatecumenado',
+    title: I18n.t('search_title.precatechumenate'),
+    note: I18n.t('search_note.precatechumenate'),
     route: 'SalmoList',
     params: { filter: { etapa: 'Precatecumenado' } },
     badge: badges.Precatecumenado
   },
   {
-    title: 'Catecumenado',
-    note: 'Los cantos para la etapa del Catecumenado',
+    title: I18n.t('search_title.catechumenate'),
+    note: I18n.t('search_note.catechumenate'),
     route: 'SalmoList',
     params: { filter: { etapa: 'Catecumenado' } },
     badge: badges.Catecumenado
   },
   {
-    title: 'Elección',
-    note: 'Los cantos para la etapa de la Elección',
+    title: I18n.t('search_title.election'),
+    note: I18n.t('search_note.election'),
     route: 'SalmoList',
     params: { filter: { etapa: 'Eleccion' } },
     badge: badges.Eleccion
   },
   {
-    title: 'Liturgia',
-    note: 'Los cantos para las celebraciones litúrgicas',
+    title: I18n.t('search_title.liturgy'),
+    note: I18n.t('search_note.liturgy'),
     route: 'SalmoList',
     params: { filter: { etapa: 'Liturgia' } },
     badge: badges.Liturgia
   },
   {
-    title: 'Tiempo litúrgico',
+    title: I18n.t('search_title.liturgical time'),
     divider: true
   },
   {
-    title: 'Adviento',
-    note: 'Los cantos para tiempo de Adviento',
+    title: I18n.t('search_title.advent'),
+    note: I18n.t('search_note.advent'),
     route: 'SalmoList',
     params: { filter: { adviento: true } },
     badge: null
   },
   {
-    title: 'Navidad',
-    note: 'Los cantos para tiempo de Navidad',
+    title: I18n.t('search_title.christmas'),
+    note: I18n.t('search_note.christmas'),
     route: 'SalmoList',
     params: { filter: { navidad: true } },
     badge: null
   },
   {
-    title: 'Cuaresma',
-    note: 'Los cantos para tiempo de Cuaresma',
+    title: I18n.t('search_title.lent'),
+    note: I18n.t('search_note.lent'),
     route: 'SalmoList',
     params: { filter: { cuaresma: true } },
     badge: null
   },
   {
-    title: 'Pascua',
-    note: 'Los cantos para tiempo de Pascua',
+    title: I18n.t('search_title.easter'),
+    note: I18n.t('search_note.easter'),
     route: 'SalmoList',
     params: { filter: { pascua: true } },
     badge: null
   },
   {
-    title: 'Pentecostés',
-    note: 'Los cantos para tiempo de Pentecostés',
+    title: I18n.t('search_title.pentecost'),
+    note: I18n.t('search_note.pentecost'),
     route: 'SalmoList',
     params: { filter: { pentecostes: true } },
     badge: null
   },
   {
-    title: 'Orden litúrgico',
+    title: I18n.t('search_title.liturgical order'),
     divider: true
   },
   {
-    title: 'Entrada',
-    note: 'Los cantos para inicio de las liturgias',
+    title: I18n.t('search_title.entrance'),
+    note: I18n.t('search_note.entrance'),
     route: 'SalmoList',
     params: { filter: { entrada: true } },
     badge: null,
     chooser: 'Entrada'
   },
   {
-    title: 'Paz y Ofrendas',
-    note: 'Los cantos para el saludo de la paz y las ofrendas',
+    title: I18n.t('search_title.peace and offerings'),
+    note: I18n.t('search_pote.peace and offerings'),
     route: 'SalmoList',
     params: { filter: { paz: true } },
     badge: null,
     chooser: 'Paz/Ofrendas'
   },
   {
-    title: 'Fracción del Pan',
-    note: 'Los cantos para la fracción del pan',
+    title: I18n.t('search_title.fraction of bread'),
+    note: I18n.t('search_note.fraction of bread'),
     route: 'SalmoList',
     params: { filter: { fraccion: true } },
     badge: null,
     chooser: 'Fracción Pan'
   },
   {
-    title: 'Comunión',
-    note: 'Los cantos para la comunión',
+    title: I18n.t('search_title.communion'),
+    note: I18n.t('search_note.communion'),
     route: 'SalmoList',
     params: { filter: { comunion: true } },
     badge: null,
     chooser: 'Comunión'
   },
   {
-    title: 'Salida',
-    note: 'Los cantos para la salida de las liturgias',
+    title: I18n.t('search_title.exit'),
+    note: I18n.t('search_note.exit'),
     route: 'SalmoList',
     params: { filter: { final: true } },
     badge: null,
     chooser: 'Salida'
   },
   {
-    title: 'Cantos a la Virgen',
-    note: 'Los cantos dedicados a la Virgen María',
+    title: I18n.t('search_title.signing to the virgin'),
+    note: I18n.t('search_note.signing to the virgin'),
     route: 'SalmoList',
     params: { filter: { virgen: true } },
     badge: null,
     chooser: 'Virgen'
   },
   {
-    title: 'Cantos de los Niños',
-    note: 'Los cantos para los niños',
+    title: I18n.t('search_title.children\'s songs'),
+    note: I18n.t('search_note.children\'s songs'),
     route: 'SalmoList',
     params: { filter: { niños: true } },
     badge: null
   },
   {
-    title: 'Laudes y Vísperas',
-    note: 'Los salmos de Laudes y Vísperas',
+    title: I18n.t('search_title.lutes and vespers'),
+    note: I18n.t('search_note.lutes and vespers'),
     route: 'SalmoList',
     params: { filter: { laudes: true } },
     badge: null

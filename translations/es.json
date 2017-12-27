@@ -1,0 +1,46 @@
+{
+    "search": {
+        "alpha": "Alfabético",
+        "wayStage": "Etapa del Camino",
+        "precatechumenate": "Precatecumenado",
+        "catechumenate": "Catecumenado",
+        "election": "Elección",
+        "liturgy": "Liturgia",
+        "liturgical time": "Tiempo litúrgico",
+        "advent": "Adviento",
+        "christmas": "Navidad",
+        "lent": "Cuaresma",
+        "easter": "Pascua",
+        "pentecost": "Pentecostés",
+        "liturgical order": "Orden litúrgico",
+        "entrance": "Entrada",
+        "peace and offerings": "Paz y Ofrendas",
+        "fraction of bread": "Fracción del Pan",
+        "communion": "Comunión",
+        "exit": "Salida",
+        "signing to the virgin": "Cantos a la Virgen",
+        "children's songs": "Cantos de los Niños",
+        "lutes and vespers": "Laúdes y Vísperas"
+    },
+    "search_note": {
+        "alpha": "Todos los cantos en orden alfabético",
+        "precatechumenate": "Los cantos para la etapa del Precatecumenado",
+        "catechumenate": "Los cantos para la etapa del Catecumenado",
+        "election": "Los cantos para la etapa de la Elección",
+        "liturgy": "Los cantos para las celebraciones litúrgicas",
+        "advent": "Los cantos para tiempo de Adviento",
+        "christmas": "Los cantos para tiempo de Navidad",
+        "lent": "Los cantos para tiempo de Cuaresma",
+        "easter": "Los cantos para tiempo de Pascua",
+        "pentecost": "Los cantos para tiempo de Pentecostés",
+        "entrance": "Los cantos para inicio de las liturgias",
+        "peace and offerings":
+            "Los cantos para el saludo de la paz y las ofrendas",
+        "fraction of bread": "Los cantos para la fracción del pan",
+        "communion": "Los cantos para la comunión",
+        "exit": "Los cantos para la salida de las liturgias",
+        "signing to the virgin": "Los cantos dedicados a la Virgen María",
+        "children's songs": "Los cantos para los niños",
+        "lutes and vespers": "Los salmos de Laudes y Vísperas"
+    }
+}
