@@ -15,6 +15,9 @@ import { esLineaDeNotas } from './components/util';
 import Indice from './Indice';
 import { MenuContext } from 'react-native-popup-menu';
 
+import I18n from './i18n';
+const locale = I18n.currentLocale().split('-')[0];
+
 if (Platform.OS == 'android') {
   // Reemplazar startsWith en Android
   // por bug detallado aqui
@@ -91,9 +94,21 @@ const ordenAlfabetico = (a, b) => {
   return 0;
 };
 
-const basePath = Platform.OS == 'ios' ? `${RNFS.MainBundlePath}/` : '';
+const salmosBasePath = () => {
+  var basePath = Platform.OS == 'ios' ? `${RNFS.MainBundlePath}/` : '';
 
-const preprocesar = nombre => {
+  var pathForLocale = `${basePath}Salmos/${locale}`;
+  return RNFS.stat(pathForLocale)
+    .then(() => {
+      return pathForLocale;
+    })
+    .catch(() => {
+      //console.log('stat err:', err);
+      return `${basePath}Salmos/es`;
+    });
+};
+
+const preprocesar = (rootPath, nombre) => {
   var titulo = nombre.includes('-')
     ? nombre.substring(0, nombre.indexOf('-')).trim()
     : nombre;
@@ -104,7 +119,7 @@ const preprocesar = nombre => {
     titulo: titulo,
     fuente: fuente,
     nombre: nombre,
-    path: `${basePath}Salmos/${nombre}.content.txt`,
+    path: `${rootPath}/${nombre}.content.txt`,
     fullText: null,
     lines: null
   };
@@ -115,65 +130,67 @@ const mapDispatchToProps = dispatch => {
     dispatch,
     init: () => {
       // Cargar la lista de salmos
-      var todos = Object.keys(Indice);
-      todos = todos.map(s => {
-        var info = preprocesar(s);
-        return Object.assign(Indice[s], info);
-      });
-      todos.sort(ordenAlfabetico);
-      var action = {
-        type: INITIALIZE_DONE,
-        salmos: todos,
-        settings: null,
-        lists: null,
-        contacts: []
-      };
-      var promises = [];
-      todos.forEach(salmo => {
-        var loadSalmo =
-          Platform.OS == 'ios'
-            ? RNFS.readFile(salmo.path)
-            : RNFS.readFileAssets(salmo.path);
-        loadSalmo
-          .then(content => {
-            // Separar en lineas, y quitar todas hasta llegar a las notas
-            var lineas = content.split('\n');
-            while (!esLineaDeNotas(lineas[0])) {
-              lineas.shift();
-            }
-            salmo.lines = lineas;
-            salmo.fullText = lineas.join(' ');
-          })
-          .catch(err => {
+      return salmosBasePath().then(basePath => {
+        var todos = Object.keys(Indice);
+        todos = todos.map(s => {
+          var info = preprocesar(basePath, s);
+          return Object.assign(Indice[s], info);
+        });
+        todos.sort(ordenAlfabetico);
+        var action = {
+          type: INITIALIZE_DONE,
+          salmos: todos,
+          settings: null,
+          lists: null,
+          contacts: []
+        };
+        var promises = [];
+        todos.forEach(salmo => {
+          var loadSalmo =
+            Platform.OS == 'ios'
+              ? RNFS.readFile(salmo.path)
+              : RNFS.readFileAssets(salmo.path);
+          loadSalmo
+            .then(content => {
+              // Separar en lineas, y quitar todas hasta llegar a las notas
+              var lineas = content.split('\n');
+              while (!esLineaDeNotas(lineas[0])) {
+                lineas.shift();
+              }
+              salmo.lines = lineas;
+              salmo.fullText = lineas.join(' ');
+            })
+            .catch(err => {
+              /* eslint-disable no-console */
+              Alert.alert('Error', err.message);
+            });
+          promises.push(loadSalmo);
+        });
+        promises.push(
+          localdata
+            .getBatchData([
+              { key: 'settings' },
+              { key: 'lists' },
+              { key: 'contacts' }
+            ])
+            .then(result => {
+              [action.settings, action.lists, action.contacts] = result;
+              dispatch(action);
+            })
+            .catch(err => {
+              /* eslint-disable no-console */
+              console.log('error loading from localdata', err);
+              dispatch(action);
+            })
+        );
+        promises.push(
+          clouddata.load({ key: 'lists' }).then(res => {
             /* eslint-disable no-console */
-            Alert.alert('Error', err.message);
-          });
-        promises.push(loadSalmo);
+            console.log('loaded from cloud', res);
+          })
+        );
+        return Promise.all(promises);
       });
-      promises.push(
-        localdata
-          .getBatchData([
-            { key: 'settings' },
-            { key: 'lists' },
-            { key: 'contacts' }
-          ])
-          .then(result => {
-            [action.settings, action.lists, action.contacts] = result;
-            dispatch(action);
-          })
-          .catch(err => {
-            /* eslint-disable no-console */
-            console.log('error loading from localdata', err);
-            dispatch(action);
-          })
-      );
-      promises.push(
-        clouddata.load({ key: 'lists' }).then(res => {
-          /* eslint-disable no-console */
-          console.log('loaded from cloud', res);
-        })
-      );
-      return Promise.all(promises);
     }
   };
 };

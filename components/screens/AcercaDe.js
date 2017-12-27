@@ -11,6 +11,7 @@ import {
 import { Text, Icon, H1, Button } from 'native-base';
 import DeviceInfo from 'react-native-device-info';
 import { hideAbout } from '../actions';
+import I18n from '../../i18n';
 
 var pack = require('../../app.json');
 var cristo = require('../../img/cristo.jpg');
@@ -44,7 +45,7 @@ class AcercaDe extends React.Component {
             {this.props.appName}
           </H1>
           <Text style={{ textAlign: 'center', fontSize: 12 }}>
-            Versión: {this.props.version}
+            {I18n.t('ui.version')}: {this.props.version}
             {'\n'}
             <Icon name="contact" style={{ fontSize: 18 }} active /> Javier
             Castro, 2017

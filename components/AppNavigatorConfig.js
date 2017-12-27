@@ -1,4 +1,5 @@
 import commonTheme from '../native-base-theme/variables/platform';
+import I18n from '../i18n';
 
 const AppNavigatorConfig = {
   navigationOptions: {
@@ -12,7 +13,7 @@ const AppNavigatorConfig = {
       color: 'white'
     },
     headerTintColor: 'white',
-    headerTruncatedBackTitle: 'Atrás'
+    headerTruncatedBackTitle: I18n.t('ui.back')
   },
   cardStyle: {
     backgroundColor: 'white'

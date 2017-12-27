@@ -67,14 +67,14 @@ const CommunityScreen = props => {
           );
           var swipeoutBtns = [
             {
-              text: 'Salmista',
+              text: I18n.t('ui.psalmist'),
               type: 'primary',
               onPress: () => {
                 props.contactToggleAttibute(item, 's');
               }
             },
             {
-              text: 'Eliminar',
+              text: I18n.t('ui.delete'),
               type: 'delete',
               onPress: () => {
                 props.contactDelete(item);
@@ -123,17 +123,21 @@ const mapDispatchToProps = dispatch => {
       dispatch(setContactsFilterText(inputId, text));
     },
     contactDelete: contact => {
-      Alert.alert(`Eliminar "${contact.givenName}"`, '¿Confirma el borrado?', [
-        {
-          text: 'Eliminar',
-          onPress: () => dispatch(syncContact(contact, false)),
-          style: 'destructive'
-        },
-        {
-          text: 'Cancelar',
-          style: 'cancel'
-        }
-      ]);
+      Alert.alert(
+        `${I18n.t('ui.delete')} "${contact.givenName}"`,
+        I18n.t('ui.delete confirmation'),
+        [
+          {
+            text: I18n.t('ui.delete'),
+            onPress: () => dispatch(syncContact(contact, false)),
+            style: 'destructive'
+          },
+          {
+            text: I18n.t('ui.cancel'),
+            style: 'cancel'
+          }
+        ]
+      );
     },
     contactImport: () => {
       dispatch(showContactImportDialog());

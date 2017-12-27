@@ -1,4 +1,12 @@
 {
+  "ui": {
+    "back": "Back",
+    "version": "Version",
+    "psalmist": "Psalmist",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "delete confirmation": "Do you confirm deleting?"
+  },
   "search_title": {
     "alpha": "Alphabetic",
     "stage": "Neocatechumenal stage",

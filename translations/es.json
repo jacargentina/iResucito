@@ -1,4 +1,12 @@
 {
+  "ui": {
+    "back": "Atrás",
+    "version": "Versión",
+    "psalmist": "Salmista",
+    "delete": "Eliminar",
+    "cancel": "Cancelar",
+    "delete confirmation": "¿Confirma el borrado?"
+  },
   "search_title": {
     "alpha": "Alfabético",
     "stage": "Etapa del Camino",
