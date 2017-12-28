@@ -4,6 +4,7 @@ import { View, StyleSheet } from 'react-native';
 import { Input, Item, Icon } from 'native-base';
 import debounce from 'lodash/debounce';
 import commonTheme from '../../native-base-theme/variables/platform';
+import I18n from '../../i18n';
 
 class DebouncedInput extends React.Component {
   constructor(props) {
@@ -52,7 +53,7 @@ class DebouncedInput extends React.Component {
           lineHeight: 24,
           height: commonTheme.searchBarHeight
         }}
-        placeholder="Buscar"
+        placeholder={I18n.t('ui.search placeholder')}
         onChangeText={this.handleTextChange}
         value={this.state.text}
         returnKeyType="search"

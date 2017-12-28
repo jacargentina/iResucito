@@ -1,3 +1,25 @@
 {
-  
+  "ui": {
+    "back": "Ritorno",
+    "done": "Fatto",
+    "version": "Versione",
+    "psalmist": "Salmista",
+    "delete": "Elimina",
+    "cancel": "Annulla",
+    "delete confirmation": "¿Conferma la rimozione?",
+    "lists": {
+      "already exists": "Esiste già una lista con lo stesso nome",
+      "non-empty name": "Inserisci un nome non vuoto",
+      "create": "Creare una Lista",
+      "type": "Tipo di lista"
+    },
+    "community empty":
+      "Senza nomi importati Per scegliere dall'elenco, è necessario importare dai contatti nell'opzione Community.",
+      "search placeholder": "Ricerca"
+  },
+  "list_type": {
+    "eucharist": "Eucaristia",
+    "word": "Parola",
+    "other": "Altro"
+  }
 }

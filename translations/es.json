@@ -1,11 +1,26 @@
 {
   "ui": {
     "back": "Atrás",
+    "done": "Listo",
     "version": "Versión",
     "psalmist": "Salmista",
     "delete": "Eliminar",
     "cancel": "Cancelar",
-    "delete confirmation": "¿Confirma el borrado?"
+    "delete confirmation": "¿Confirma el borrado?",
+    "lists": {
+      "already exists": "Ya existe una lista con el mismo nombre",
+      "non-empty name": "Ingrese un nombre no vacío",
+      "create": "Crear Lista",
+      "type": "Tipo de lista"
+    },
+    "community empty":
+      "Sin nombres importados. Para elegir mediante la lista, debes importar desde tus contactos en la opción Comunidad.",
+    "search placeholder": "Buscar"
+  },
+  "list_type": {
+    "eucharist": "Eucaristía",
+    "word": "Palabra",
+    "other": "Otras"
   },
   "search_title": {
     "alpha": "Alfabético",
@@ -55,7 +70,8 @@
     "settings": "Configurar",
     "find song": "Buscar Canto",
     "lists": "Listas",
-    "community": "Comunidad"
+    "community": "Comunidad",
+    "import contacts": "Importar Contactos"
   },
   "call_to_action_title": {
     "add lists": "Agregar listas",

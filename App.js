@@ -94,106 +94,97 @@ const ordenAlfabetico = (a, b) => {
   return 0;
 };
 
-const salmosBasePath = () => {
-  var basePath = Platform.OS == 'ios' ? `${RNFS.MainBundlePath}/` : '';
-
-  var pathForLocale = `${basePath}Salmos/${locale}`;
-  return RNFS.stat(pathForLocale)
-    .then(() => {
-      return pathForLocale;
-    })
-    .catch(() => {
-      //console.log('stat err:', err);
-      return `${basePath}Salmos/es`;
-    });
-};
-
-const preprocesar = (rootPath, nombre) => {
-  var titulo = nombre.includes('-')
-    ? nombre.substring(0, nombre.indexOf('-')).trim()
-    : nombre;
-  var fuente =
-    titulo !== nombre ? nombre.substring(nombre.indexOf('-') + 1).trim() : '';
-
-  return {
-    titulo: titulo,
-    fuente: fuente,
-    nombre: nombre,
-    path: `${rootPath}/${nombre}.txt`,
-    fullText: null,
-    lines: null
-  };
-};
+var basePath = Platform.OS == 'ios' ? `${RNFS.MainBundlePath}/` : '';
 
 const mapDispatchToProps = dispatch => {
   return {
     dispatch,
     init: () => {
       // Cargar la lista de salmos
-      return salmosBasePath().then(basePath => {
-        var cantos = Object.keys(Indice);
-        cantos = cantos.map(key => {
-          var nombre = Indice[key].files.hasOwnProperty(locale)
-            ? Indice[key].files[locale]
-            : Indice[key].files['es'];
-          var info = preprocesar(basePath, nombre);
-          return Object.assign(Indice[key], info);
-        });
-        cantos.sort(ordenAlfabetico);
-        var action = {
-          type: INITIALIZE_DONE,
-          salmos: cantos,
-          settings: null,
-          lists: null,
-          contacts: []
+      var cantos = Object.keys(Indice);
+      cantos = cantos.map(key => {
+        var nombre = Indice[key].files.hasOwnProperty(locale)
+          ? Indice[key].files[locale]
+          : Indice[key].files['es'];
+
+        var path = Indice[key].files.hasOwnProperty(locale)
+          ? `${basePath}Salmos/${locale}/${nombre}.txt`
+          : `${basePath}Salmos/es/${nombre}.txt`;
+
+        var titulo = nombre.includes('-')
+          ? nombre.substring(0, nombre.indexOf('-')).trim()
+          : nombre;
+
+        var fuente =
+          titulo !== nombre
+            ? nombre.substring(nombre.indexOf('-') + 1).trim()
+            : '';
+
+        var info = {
+          titulo: titulo,
+          fuente: fuente,
+          nombre: nombre,
+          path: path,
+          fullText: null,
+          lines: null
         };
-        var promises = [];
-        cantos.forEach(salmo => {
-          var loadSalmo =
-            Platform.OS == 'ios'
-              ? RNFS.readFile(salmo.path)
-              : RNFS.readFileAssets(salmo.path);
-          loadSalmo
-            .then(content => {
-              // Separar en lineas, y quitar todas hasta llegar a las notas
-              var lineas = content.split('\n');
-              while (!esLineaDeNotas(lineas[0])) {
-                lineas.shift();
-              }
-              salmo.lines = lineas;
-              salmo.fullText = lineas.join(' ');
-            })
-            .catch(err => {
-              /* eslint-disable no-console */
-              Alert.alert('Error', err.message);
-            });
-          promises.push(loadSalmo);
-        });
-        promises.push(
-          localdata
-            .getBatchData([
-              { key: 'settings' },
-              { key: 'lists' },
-              { key: 'contacts' }
-            ])
-            .then(result => {
-              [action.settings, action.lists, action.contacts] = result;
-              dispatch(action);
-            })
-            .catch(err => {
-              /* eslint-disable no-console */
-              console.log('error loading from localdata', err);
-              dispatch(action);
-            })
-        );
-        promises.push(
-          clouddata.load({ key: 'lists' }).then(res => {
-            /* eslint-disable no-console */
-            console.log('loaded from cloud', res);
-          })
-        );
-        return Promise.all(promises);
+
+        return Object.assign(Indice[key], info);
       });
+      cantos.sort(ordenAlfabetico);
+      var action = {
+        type: INITIALIZE_DONE,
+        salmos: cantos,
+        settings: null,
+        lists: null,
+        contacts: []
+      };
+      var promises = [];
+      cantos.forEach(canto => {
+        var loadSalmo =
+          Platform.OS == 'ios'
+            ? RNFS.readFile(canto.path)
+            : RNFS.readFileAssets(canto.path);
+        loadSalmo
+          .then(content => {
+            // Separar en lineas, y quitar todas hasta llegar a las notas
+            var lineas = content.split('\n');
+            while (!esLineaDeNotas(lineas[0])) {
+              lineas.shift();
+            }
+            canto.lines = lineas;
+            canto.fullText = lineas.join(' ');
+          })
+          .catch(err => {
+            /* eslint-disable no-console */
+            Alert.alert('Error', err.message);
+          });
+        promises.push(loadSalmo);
+      });
+      promises.push(
+        localdata
+          .getBatchData([
+            { key: 'settings' },
+            { key: 'lists' },
+            { key: 'contacts' }
+          ])
+          .then(result => {
+            [action.settings, action.lists, action.contacts] = result;
+            dispatch(action);
+          })
+          .catch(err => {
+            /* eslint-disable no-console */
+            console.log('error loading from localdata', err);
+            dispatch(action);
+          })
+      );
+      promises.push(
+        clouddata.load({ key: 'lists' }).then(res => {
+          /* eslint-disable no-console */
+          console.log('loaded from cloud', res);
+        })
+      );
+      return Promise.all(promises);
     }
   };
 };

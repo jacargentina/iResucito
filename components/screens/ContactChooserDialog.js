@@ -6,6 +6,7 @@ import { FlatList, Platform, View } from 'react-native';
 import { addContactToList, closeChooserDialog } from '../actions';
 import { getProcessedContacts } from '../selectors';
 import commonTheme from '../../native-base-theme/variables/platform';
+import I18n from '../../i18n';
 
 const unknown = require('../../img/avatar.png');
 
@@ -14,7 +15,7 @@ const ContactChooserDialog = props => {
     <BaseModal
       visible={props.visible}
       closeModal={() => props.close()}
-      title="Comunidad"
+      title={I18n.t('screen_title.community')}
       fade={true}>
       {props.items.length == 0 && (
         <View
@@ -31,8 +32,7 @@ const ContactChooserDialog = props => {
             }}
           />
           <Text note style={{ textAlign: 'center' }}>
-            Sin nombres importados. Para elegir mediante la lista, debes
-            importar desde tus contactos en la opción Comunidad.
+            {I18n.t('ui.community empty')}
           </Text>
         </View>
       )}

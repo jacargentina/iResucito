@@ -30,6 +30,7 @@ import {
   getFilteredContactsForImport
 } from '../selectors';
 import commonTheme from '../../native-base-theme/variables/platform';
+import I18n from '../../i18n';
 
 const unknown = require('../../img/avatar.png');
 
@@ -42,7 +43,7 @@ const ContactImportDialog = props => {
         marginRight: 10
       }}
       onPress={() => props.close(props.textFilterId)}>
-      Listo
+      {I18n.t('ui.done')}
     </Text>
   );
   return (
@@ -50,7 +51,7 @@ const ContactImportDialog = props => {
       visible={props.visible}
       closeModal={() => props.close()}
       closeButton={readyButton}
-      title="Importar Contactos"
+      title={I18n.t('screen_title.import contacts')}
       fade={true}>
       <SearchBarView
         searchTextFilterId={props.textFilterId}

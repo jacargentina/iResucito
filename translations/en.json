@@ -1,11 +1,26 @@
 {
   "ui": {
     "back": "Back",
+    "done": "Done",
     "version": "Version",
     "psalmist": "Psalmist",
     "delete": "Delete",
     "cancel": "Cancel",
-    "delete confirmation": "Do you confirm deleting?"
+    "delete confirmation": "Do you confirm deletion?",
+    "lists": {
+      "already exists": "A list with the same name already exists",
+      "non-empty name": "Enter a non-empty name",
+      "create": "Create List",
+      "type": "List type"
+    },
+    "community empty":
+      "Without imported names. To choose from the list, you must import from your contacts in the Community option.",
+    "search placeholder": "Search"
+  },
+  "list_type": {
+    "eucharist": "Eucharist",
+    "word": "Word",
+    "other": "Other"
   },
   "search_title": {
     "alpha": "Alphabetic",
@@ -56,7 +71,8 @@
     "settings": "Settings",
     "find song": "Find Song",
     "lists": "Lists",
-    "community": "Community"
+    "community": "Community",
+    "import contacts": "Import Contacts"
   },
   "call_to_action_title": {
     "add lists": "Add lists",

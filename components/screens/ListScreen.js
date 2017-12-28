@@ -37,7 +37,7 @@ const ListScreen = props => {
         renderItem={({ item }) => {
           var swipeoutBtns = [
             {
-              text: 'Eliminar',
+              text: I18n.t('ui.delete'),
               type: Platform.OS == 'ios' ? 'delete' : 'default',
               backgroundColor: Platform.OS == 'android' ? '#e57373' : null,
               onPress: () => {
@@ -85,24 +85,33 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     listDelete: list => {
-      Alert.alert(`Eliminar "${list.name}"`, '¿Confirma el borrado?', [
-        {
-          text: 'Eliminar',
-          onPress: () => dispatch(deleteList(list.name)),
-          style: 'destructive'
-        },
-        {
-          text: 'Cancelar',
-          style: 'cancel'
-        }
-      ]);
+      Alert.alert(
+        `${I18n.t('ui.delete')} "${list.name}"`,
+        I18n.t('ui.delete confirmation'),
+        [
+          {
+            text: I18n.t('ui.delete'),
+            onPress: () => dispatch(deleteList(list.name)),
+            style: 'destructive'
+          },
+          {
+            text: I18n.t('ui.cancel'),
+            style: 'cancel'
+          }
+        ]
+      );
     },
     listAdd: () => {
       ActionSheet.show(
         {
-          options: ['Eucaristía', 'Palabra', 'Otras', 'Cancelar'],
+          options: [
+            I18n.t('list_type.eucharist'),
+            I18n.t('list_type.word'),
+            I18n.t('list_type.other'),
+            I18n.t('ui.cancel')
+          ],
           cancelButtonIndex: 3,
-          title: 'Tipo de lista'
+          title: I18n.t('ui.lists.type')
         },
         index => {
           var type = null;

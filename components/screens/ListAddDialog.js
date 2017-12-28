@@ -5,6 +5,7 @@ import { Text, Input, Item, Button, View } from 'native-base';
 import { hideListAddDialog, createList, updateListAddName } from '../actions';
 import BaseModal from './BaseModal';
 import { getFriendlyTextForListType } from '../util';
+import I18n from '../../i18n';
 
 class ListAddDialog extends React.Component {
   constructor(props) {
@@ -20,8 +21,8 @@ class ListAddDialog extends React.Component {
     if (!this.props.listCreateEnabled) {
       var disabledReasonText =
         this.props.listCreateName && this.props.listCreateName.trim() !== ''
-          ? 'Ya existe una lista con el mismo nombre'
-          : 'Ingrese un nombre no vacío';
+          ? I18n.t('ui.lists.already exists')
+          : I18n.t('ui.lists.non-empty name');
     }
     var acceptButtons = (
       <Button
@@ -31,7 +32,8 @@ class ListAddDialog extends React.Component {
           this.props.createNewList(
             this.props.listCreateName,
             this.props.listCreateType
-          )}
+          )
+        }
         disabled={!this.props.listCreateEnabled}>
         <Text>Crear</Text>
       </Button>
@@ -43,7 +45,7 @@ class ListAddDialog extends React.Component {
         modalShow={() => this.focusInput()}
         closeModal={() => this.props.closeListAdd()}
         acceptButtons={acceptButtons}
-        title={`Crear Lista (${titleSuffix})`}>
+        title={`${I18n.t('ui.lists.create')} (${titleSuffix})`}>
         <View style={{ padding: 10 }}>
           <Item
             style={{ marginBottom: 20 }}
