@@ -12,7 +12,7 @@ import AppNavigator from './components/AppNavigator';
 import { INITIALIZE_DONE } from './components/actions';
 import { localdata, clouddata } from './components/data';
 import { esLineaDeNotas } from './components/util';
-import Indice from './Indice';
+import Indice from './Indice.json';
 import { MenuContext } from 'react-native-popup-menu';
 
 import I18n from './i18n';
@@ -131,21 +131,24 @@ const mapDispatchToProps = dispatch => {
     init: () => {
       // Cargar la lista de salmos
       return salmosBasePath().then(basePath => {
-        var todos = Object.keys(Indice);
-        todos = todos.map(s => {
-          var info = preprocesar(basePath, s);
-          return Object.assign(Indice[s], info);
+        var cantos = Object.keys(Indice);
+        cantos = cantos.map(key => {
+          var nombre = Indice[key].files.hasOwnProperty(locale)
+            ? Indice[key].files[locale]
+            : Indice[key].files['es'];
+          var info = preprocesar(basePath, nombre);
+          return Object.assign(Indice[key], info);
         });
-        todos.sort(ordenAlfabetico);
+        cantos.sort(ordenAlfabetico);
         var action = {
           type: INITIALIZE_DONE,
-          salmos: todos,
+          salmos: cantos,
           settings: null,
           lists: null,
           contacts: []
         };
         var promises = [];
-        todos.forEach(salmo => {
+        cantos.forEach(salmo => {
           var loadSalmo =
             Platform.OS == 'ios'
               ? RNFS.readFile(salmo.path)
