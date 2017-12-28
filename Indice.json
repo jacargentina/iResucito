@@ -161,7 +161,8 @@
   "etapa": "Precatecumenado",
   "cuaresma": true,
   "files": {
-   "es": "A ti, Señor, en mi clamor imploro - Sal 142 (141)"
+   "es": "A ti, Señor, en mi clamor imploro - Sal 142 (141)",
+   "it": "A te, Signore, con la mia voce - Sal 142 (141)"
   }
  },
  "23": {
@@ -169,7 +170,7 @@
   "cuaresma": true,
   "files": {
    "es": "A ti, Señor, levanto mi alma - Sal 25 (24)",
-   "it": "A te, Signor, innalzo la mia anima - Sal 25 (24)"
+   "it": "A te, Signore, innalzo la mia anima - Sal 25 (24)"
   }
  },
  "24": {
