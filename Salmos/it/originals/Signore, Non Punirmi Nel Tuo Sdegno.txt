@@ -1,7 +1,7 @@
 SIGNORE, NON PUNIRMI NEL TUO SDEGNO. Sal 6
 
        Fad*           Sol             Fad
-C.+A.  SIGNORE, NON PUNIRMI NEL TUO SDEGNO,
+   A.  SIGNORE, NON PUNIRMI NEL TUO SDEGNO,
                 Sol             Fad
        NON CASTIGARMI NEL TUO FURORE.
 
@@ -36,7 +36,7 @@ C.+A.  SIGNORE, NON PUNIRMI NEL TUO SDEGNO,
    C.  né negli inferi si cantano le tue lodi.    
 
 
-C.+A.  SIGNORE, NON PUNIRMI...
+   A.  SIGNORE, NON PUNIRMI...
 
 
        Si-
@@ -55,7 +55,7 @@ C.+A.  SIGNORE, NON PUNIRMI...
        ché il Signore accoglie la mia preghiera.
 
 
-C.+A.  SIGNORE, NON PUNIRMI...
+   A.  SIGNORE, NON PUNIRMI...
 _______________
 
 (*) PRIVATE

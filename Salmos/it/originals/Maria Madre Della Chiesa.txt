@@ -12,7 +12,7 @@ C.     Donna, ecco il tuo figlio,
 
 
        La-             Sol7*        La-
-C.+A.  MARIA MADRE MIA, MARIA MADRE NOSTRA,
+   A.  MARIA MADRE MIA, MARIA MADRE NOSTRA,
        Sol               Mi
        VIENI A VIVERE CON ME,
        Sol          Mi
@@ -38,7 +38,7 @@ C.     "Ho sete, ho sete,
 
 
        La-
-C.+A.  MARIA MADRE MIA...
+   A.  MARIA MADRE MIA...
 
 
        Mi
@@ -58,7 +58,7 @@ C.     Vennero dunque i soldati
 
 
        La-             Sol7*        La-
-C.+A.  MARIA MADRE MIA, MARIA MADRE NOSTRA,
+   A.  MARIA MADRE MIA, MARIA MADRE NOSTRA,
        Sol                 Mi
        TU SEI MADRE DELLA CHIESA,
            Mi7*                 Fa*

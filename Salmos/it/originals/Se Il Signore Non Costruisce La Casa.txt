@@ -2,7 +2,7 @@
 SE IL SIGNORE NON COSTRUISCE LA CASA. Sal 126(127)
 
        Re                      Si-      Sol
-C.+A.  SE IL SIGNORE NON COSTRUISCE LA CASA,
+   A.  SE IL SIGNORE NON COSTRUISCE LA CASA,
          La                     Re
        INVANO LAVORANO I COSTRUTTORI
 
@@ -15,7 +15,7 @@ C.     Se il Signore non custodisce la città,
        se il Signore non custodisce la città.
 
 
-C.+A.  SE IL SIGNORE NON COSTRUISCE LA CASA,
+   A.  SE IL SIGNORE NON COSTRUISCE LA CASA,
        INVANO LAVORANO I COSTRUTTORI
 
 
@@ -33,7 +33,7 @@ C.     Invano vi alzate presto al mattino,
 A.     DIO LO DONA AI SUOI AMICI NEL SONNO.
 
 
-C.+A.  SE IL SIGNORE NON COSTRUISCE LA CASA,
+   A.  SE IL SIGNORE NON COSTRUISCE LA CASA,
        INVANO LAVORANO I COSTRUTTORI
 
 
@@ -49,5 +49,5 @@ C.     Dono del Signore sono i figli,
        non tremerà in faccia ai suoi nemici!
 
 
-C.+A.  SE IL SIGNORE NON COSTRUISCE LA CASA,
+   A.  SE IL SIGNORE NON COSTRUISCE LA CASA,
        INVANO LAVORANO I COSTRUTTORI

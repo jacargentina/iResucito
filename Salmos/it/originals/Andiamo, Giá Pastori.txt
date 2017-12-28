@@ -19,7 +19,7 @@ ANDIAMO, GIÀ PASTORI.
 
 
                      La-        Si7       Mi-
-C.+A.  ALLEGRIA, ALLEGRIA, ALLEGRIA, ALLEGRIA, 
+   A.  ALLEGRIA, ALLEGRIA, ALLEGRIA, ALLEGRIA, 
                      La-          Si7           Mi-
        ALLEGRIA, ALLEGRIA, OGGI È NATO IL SALVATOR!
 
@@ -35,4 +35,4 @@ C.+A.  ALLEGRIA, ALLEGRIA, ALLEGRIA, ALLEGRIA,
    A.  SUA MADRE È MARIA, SUO PADRE È GIUSEPPE.
 
 
-C.+A.  ALLEGRIA...
+   A.  ALLEGRIA...
