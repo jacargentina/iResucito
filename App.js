@@ -119,7 +119,7 @@ const preprocesar = (rootPath, nombre) => {
     titulo: titulo,
     fuente: fuente,
     nombre: nombre,
-    path: `${rootPath}/${nombre}.content.txt`,
+    path: `${rootPath}/${nombre}.txt`,
     fullText: null,
     lines: null
   };
