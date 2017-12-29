@@ -37,13 +37,13 @@ class AcercaDe extends React.Component {
           onPress={() => this.props.closeAbout()}>
           <Image
             source={this.props.cristo}
-            style={{ width: 300, height: 400, marginTop: 20 }}
+            style={{ width: 200, height: 300, marginTop: 20 }}
             resizeMode="contain"
           />
           <H1 style={{ color: 'red', fontWeight: 'bold', fontStyle: 'italic' }}>
             {this.props.appName}
           </H1>
-          <Text style={{ textAlign: 'center', fontSize: 12 }}>
+          <Text style={{ textAlign: 'center', fontSize: 13 }}>
             Versión: {this.props.version}
             {'\n'}
             <Icon name="contact" style={{ fontSize: 18 }} active /> Javier
@@ -66,6 +66,16 @@ class AcercaDe extends React.Component {
               rounded
               onPress={() => this.props.sendTwitter()}>
               <Icon name="logo-twitter" />
+            </Button>
+          </View>
+          <Text style={{ margin: 5, textAlign: 'center', fontSize: 11 }}>
+            Ayuda haciendo una donación: se usará para desarrolladores
+            que traduzcan a todos los idiomas posibles. La Paz!
+          </Text>
+          <View>
+            <Button iconLeft success onPress={() => this.props.makeDonation()}>
+              <Icon name="logo-usd" />
+              <Text>Donar</Text>
             </Button>
           </View>
         </TouchableOpacity>
@@ -97,6 +107,11 @@ const mapDispatchToProps = dispatch => {
     },
     sendTwitter: () => {
       Linking.openURL('https://www.twitter.com/javi_ale_castro').catch(err => {
+        Alert.alert('Error', err.message);
+      });
+    },
+    makeDonation: () => {
+      Linking.openURL('https://paypal.me/JaviAleCastro').catch(err => {
         Alert.alert('Error', err.message);
       });
     }
