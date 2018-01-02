@@ -1,25 +1,97 @@
 {
   "ui": {
-    "back": "Ritorno",
-    "done": "Fatto",
-    "version": "Versione",
+    "back": "Atrás",
+    "done": "Listo",
+    "version": "Versión",
     "psalmist": "Salmista",
-    "delete": "Elimina",
-    "cancel": "Annulla",
-    "delete confirmation": "Â¿Conferma la rimozione?",
+    "delete": "Eliminar",
+    "cancel": "Cancelar",
+    "delete confirmation": "¿Confirma el borrado?",
     "lists": {
-      "already exists": "Esiste giÃ  una lista con lo stesso nome",
-      "non-empty name": "Inserisci un nome non vuoto",
-      "create": "Creare una Lista",
-      "type": "Tipo di lista"
+      "already exists": "Ya existe una lista con el mismo nombre",
+      "non-empty name": "Ingrese un nombre no vacío",
+      "create": "Crear Lista",
+      "type": "Tipo de lista"
     },
     "community empty":
-      "Senza nomi importati Per scegliere dall'elenco, Ã¨ necessario importare dai contatti nell'opzione Community.",
-      "search placeholder": "Ricerca"
+      "Sin nombres importados. Para elegir mediante la lista, debes importar desde tus contactos en la opción Comunidad.",
+    "search placeholder": "Buscar"
   },
   "list_type": {
-    "eucharist": "Eucaristia",
-    "word": "Parola",
-    "other": "Altro"
+    "eucharist": "Eucaristía",
+    "word": "Palabra",
+    "other": "Otras"
+  },
+  "search_title": {
+    "alpha": "Alfabetico",
+    "stage": "Tappa di Camino",
+    "precatechumenate": "Precatecumenato",
+    "catechumenate": "Catecumenato",
+    "election": "Elezione",
+    "liturgy": "Liturgia",
+    "liturgical time": "Tempo liturgico",
+    "advent": "Avvento",
+    "christmas": "Natale",
+    "lent": "Quaresima",
+    "easter": "Pasqua",
+    "pentecost": "Pentecoste",
+    "liturgical order": "Ordine liturgico",
+    "entrance": "Ingresso",
+    "peace and offerings": "Pace y Offertorio",
+    "fraction of bread": "Frazione del pane",
+    "communion": "Communione",
+    "exit": "Finale",
+    "signing to the virgin": "Canti della Vergine",
+    "children's songs": "Canti dei Bambini",
+    "lutes and vespers": "Lodi e Vespri"
+  },
+  "search_note": {
+    "alpha": "Tutti i canti in ordine alfabetico",
+    "precatechumenate": "I canti per la tappa del Precatecumenato",
+    "catechumenate": "I canti per la tappa del Catecumenato",
+    "election": "I canti per la tappa dell'Elezione",
+    "liturgy": "I canti per le celebrazioni liturgiche",
+    "advent": "I canti per il tempo d'Avvento",
+    "christmas": "I canti per il tempo di Natale",
+    "lent": "I canti per il tempo di Quaresima",
+    "easter": "I canti per il tempo di Pasqua",
+    "pentecost": "I canti per il tempo di Pentecoste",
+    "entrance": "I canti per l'inizio delle liturgie",
+    "peace and offerings": "I canti per il saluto della pace e l'offertorio",
+    "fraction of bread": "Icanti per la frazione del pane",
+    "communion": "I canti per la communione",
+    "exit": "I canti per il finale delle liturgie",
+    "signing to the virgin": "I canti dedicati alla Vergine Maria",
+    "children's songs": "I canti dei Bambini",
+    "lutes and vespers": "I salmi di lodi 'e Vespri"
+  },
+  "screen_title": {
+    "search": "Cercare",
+    "settings": "Configurare",
+    "find song": "Cercare Canto",
+    "lists": "Elenco",
+    "community": "Comunità"
+  },
+  "call_to_action_title": {
+    "add lists": "Aggiungere liste",
+    "community list": "Elenco della Comunità"
+  },
+  "call_to_action_text": {
+    "add lists":
+      "Gli elenchi ti permettono organizzare una celebrazione liturgica per ricordare o condividere con i fretelli della comunità",
+    "community list":
+      "Puo importare dai i tuoi contatti i nomi dei fratelli della comunitàe usarli per creare un elenco"
+  },
+  "call_to_action_button": {
+    "add lists": "Creare elenco",
+    "community list": "Importa contatti"
+  },
+  "settings_title": {
+    "keep awake": "Mantere svegli",
+    "about": "Su"
+  },
+  "settings_note": {
+    "keep awake":
+      "Evitare que il dispositivo entri in riposo al momento di visualizzare un salmo"
   }
 }
