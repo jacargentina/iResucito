@@ -17,7 +17,12 @@
       "Without imported names. To choose from the list, you must import from your contacts in the Community option.",
     "search placeholder": "Search",
     "locale warning title": "Incomplete translation",
-    "locale warning message": "The song has not yet been incorporated into your language",
+    "locale warning message":
+      "The song has not yet been incorporated into your language",
+    "donate message":
+      "Help making a donation: it will be used for developers who translate to all possible languages. Peace!",
+    "donate button":
+      "Donate"
   },
   "list_type": {
     "eucharist": "Eucharist",

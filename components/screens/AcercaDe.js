@@ -70,13 +70,12 @@ class AcercaDe extends React.Component {
             </Button>
           </View>
           <Text style={{ margin: 5, textAlign: 'center', fontSize: 11 }}>
-            Ayuda haciendo una donación: se usará para desarrolladores
-            que traduzcan a todos los idiomas posibles. La Paz!
+            {I18n.t('ui.donate message')}
           </Text>
           <View>
             <Button iconLeft success onPress={() => this.props.makeDonation()}>
               <Icon name="logo-usd" />
-              <Text>Donar</Text>
+              <Text>{I18n.t('ui.donate button')}</Text>
             </Button>
           </View>
         </TouchableOpacity>

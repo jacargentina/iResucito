@@ -18,6 +18,10 @@
     "search placeholder": "Buscar",
     "locale warning title": "Traducción incompleta",
     "locale warning message": "El canto aún no se ha incorporado a su idioma",
+    "donate message":
+      "Ayuda haciendo una donación: se usará para desarrolladores que traduzcan a todos los idiomas posibles. La Paz!",
+    "donate button":
+      "Donar"
   },
   "list_type": {
     "eucharist": "Eucaristía",
