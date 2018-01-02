@@ -24,6 +24,10 @@ console.log(`${sin_locale.length} sin it; ${cantos.length} archivos`);
 
 function processNext() {
   var current = cantos[i];
+  if (current == undefined) {
+    console.log('Hecho!');
+    process.exit();
+  }
   console.log(current);
 
   rl.question('Cual es la clave? ', answer => {
