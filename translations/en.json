@@ -15,7 +15,9 @@
     },
     "community empty":
       "Without imported names. To choose from the list, you must import from your contacts in the Community option.",
-    "search placeholder": "Search"
+    "search placeholder": "Search",
+    "locale warning title": "Incomplete translation",
+    "locale warning message": "The song has not yet been incorporated into your language",
   },
   "list_type": {
     "eucharist": "Eucharist",

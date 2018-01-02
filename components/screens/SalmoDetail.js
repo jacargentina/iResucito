@@ -89,6 +89,7 @@ function preprocesarLinea(text) {
     };
   } else if (
     text.startsWith('S.') ||
+    text.startsWith('C.') ||
     text.startsWith('A.') ||
     text.startsWith('P.') ||
     text.startsWith('Niños.') ||

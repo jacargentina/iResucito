@@ -15,7 +15,9 @@
     },
     "community empty":
       "Sin nombres importados. Para elegir mediante la lista, debes importar desde tus contactos en la opción Comunidad.",
-    "search placeholder": "Buscar"
+    "search placeholder": "Buscar",
+    "locale warning title": "Traducción incompleta",
+    "locale warning message": "El canto aún no se ha incorporado a su idioma",
   },
   "list_type": {
     "eucharist": "Eucaristía",

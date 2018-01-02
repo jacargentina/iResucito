@@ -160,7 +160,6 @@ const mapDispatchToProps = dispatch => {
             canto.fullText = lineas.join(' ');
           })
           .catch(err => {
-            /* eslint-disable no-console */
             Alert.alert('Error', err.message);
           });
         promises.push(loadSalmo);

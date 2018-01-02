@@ -8,14 +8,16 @@
     "cancel": "Annullare",
     "delete confirmation": "Confermate la rimozione?",
     "lists": {
-      "already exists": "Esiste gi‡ un elenco con lo stesso nome",
+      "already exists": "Esiste gi√† un elenco con lo stesso nome",
       "non-empty name": "Inserisci un nome non vuoto",
       "create": "Creare elenco",
       "type": "Tipo di elenco"
     },
     "community empty":
-      "Senza nomi importati Per scegliere dall'elenco, Ë necessario importare dai contatti nell'opzione Comunit‡.",
-    "search placeholder": "Cercare"
+      "Senza nomi importati Per scegliere dall'elenco, √® necessario importare dai contatti nell'opzione Comunit√†.",
+    "search placeholder": "Cercare",
+    "locale warning title": "Traduzione incompleta",
+    "locale warning message": "La canzone non √® stata ancora incorporata nella tua lingua",
   },
   "list_type": {
     "eucharist": "Eucaristia",
@@ -70,17 +72,17 @@
     "settings": "Configurare",
     "find song": "Cercare Canto",
     "lists": "Elenco",
-    "community": "Comunit‡"
+    "community": "Comunit√†"
   },
   "call_to_action_title": {
     "add lists": "Aggiungere elenchi",
-    "community list": "Elenco della Comunit‡"
+    "community list": "Elenco della Comunit√†"
   },
   "call_to_action_text": {
     "add lists":
-      "Gli elenchi ti permettono organizzare una celebrazione liturgica per ricordare o condividere con i fretelli della comunit‡",
+      "Gli elenchi ti permettono organizzare una celebrazione liturgica per ricordare o condividere con i fretelli della comunit√†",
     "community list":
-      "Puo importare dai i tuoi contatti i nomi dei fratelli della comunit‡e usarli per creare un elenco"
+      "Puo importare dai i tuoi contatti i nomi dei fratelli della comunit√†e usarli per creare un elenco"
   },
   "call_to_action_button": {
     "add lists": "Creare elenco",

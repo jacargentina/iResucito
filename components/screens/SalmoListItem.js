@@ -1,11 +1,12 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
-import { ListItem, Left, Right, Body, Text, Badge } from 'native-base';
+import { TouchableOpacity, Alert } from 'react-native';
+import { ListItem, Left, Right, Body, Text, Badge, Icon } from 'native-base';
 import Highlighter from 'react-native-highlight-words';
 import Collapsible from 'react-native-collapsible';
 import badges from '../badges';
 import commonTheme from '../../native-base-theme/variables/platform';
 import textTheme from '../../native-base-theme/components/Text';
+import I18n from '../../i18n';
 
 class SalmoListItem extends React.Component {
   constructor(props) {
@@ -20,7 +21,9 @@ class SalmoListItem extends React.Component {
 
   render() {
     if (this.props.showBadge) {
-      var badgeWrapper = <Left style={{marginLeft: -8}}>{badges[this.props.salmo.etapa]}</Left>;
+      var badgeWrapper = (
+        <Left style={{ marginLeft: -8 }}>{badges[this.props.salmo.etapa]}</Left>
+      );
     }
     if (
       this.props.resaltar &&
@@ -64,6 +67,25 @@ class SalmoListItem extends React.Component {
         );
       }
     }
+    if (this.props.salmo.locale === false && !abrirRestoResaltado) {
+      var advertenciaSinLocale = (
+        <Right>
+          <Icon
+            name="warning"
+            style={{
+              fontSize: 32,
+              color: commonTheme.brandPrimary
+            }}
+            onPress={() => {
+              Alert.alert(
+                I18n.t('ui.locale warning title'),
+                I18n.t('ui.locale warning message')
+              );
+            }}
+          />
+        </Right>
+      );
+    }
     return (
       <ListItem avatar={this.props.showBadge} style={{ paddingHorizontal: 5 }}>
         {badgeWrapper}
@@ -93,6 +115,7 @@ class SalmoListItem extends React.Component {
           </TouchableOpacity>
         </Body>
         {abrirRestoResaltado}
+        {advertenciaSinLocale}
       </ListItem>
     );
   }
