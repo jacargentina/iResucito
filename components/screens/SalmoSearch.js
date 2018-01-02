@@ -1,7 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { FlatList, ScrollView } from 'react-native';
-import { ListItem, Left, Body, Text, Icon, Separator } from 'native-base';
+import {
+  ListItem,
+  Left,
+  Right,
+  Body,
+  Text,
+  Icon,
+  Separator
+} from 'native-base';
 import ListAddDialog from './ListAddDialog';
 import SalmoChooserDialog from './SalmoChooserDialog';
 import ContactChooserDialog from './ContactChooserDialog';
@@ -32,6 +40,13 @@ const SalmoSearch = props => {
               </Separator>
             );
           }
+          if (item.locale === false) {
+            var right = (
+              <Right>
+                <Icon name="warning" />
+              </Right>
+            );
+          }
           return (
             <ListItem
               last={nextItem && nextItem.divider}
@@ -44,6 +59,7 @@ const SalmoSearch = props => {
                 <Text>{item.title}</Text>
                 <Text note>{item.note}</Text>
               </Body>
+              {right}
             </ListItem>
           );
         }}

@@ -1,26 +1,26 @@
 {
   "ui": {
-    "back": "Atrás",
-    "done": "Listo",
-    "version": "Versión",
-    "psalmist": "Salmista",
-    "delete": "Eliminar",
-    "cancel": "Cancelar",
-    "delete confirmation": "¿Confirma el borrado?",
+    "back": "Ritorno",
+    "done": "Completato",
+    "version": "Versione",
+    "psalmist": "Cantore",
+    "delete": "Rimuovere",
+    "cancel": "Annullare",
+    "delete confirmation": "Confermate la rimozione?",
     "lists": {
-      "already exists": "Ya existe una lista con el mismo nombre",
-      "non-empty name": "Ingrese un nombre no vacío",
-      "create": "Crear Lista",
-      "type": "Tipo de lista"
+      "already exists": "Esiste già un elenco con lo stesso nome",
+      "non-empty name": "Inserisci un nome non vuoto",
+      "create": "Creare elenco",
+      "type": "Tipo di elenco"
     },
     "community empty":
-      "Sin nombres importados. Para elegir mediante la lista, debes importar desde tus contactos en la opción Comunidad.",
-    "search placeholder": "Buscar"
+      "Senza nomi importati Per scegliere dall'elenco, è necessario importare dai contatti nell'opzione Comunità.",
+    "search placeholder": "Cercare"
   },
   "list_type": {
-    "eucharist": "Eucaristía",
-    "word": "Palabra",
-    "other": "Otras"
+    "eucharist": "Eucaristia",
+    "word": "Parola",
+    "other": "Altro"
   },
   "search_title": {
     "alpha": "Alfabetico",

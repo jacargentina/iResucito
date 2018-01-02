@@ -1,6 +1,9 @@
 const limpiarNotasRegex = /\[|\]|#|\*|5|6|7|9|b|-|\+|\/|\u2013|\u2217|aum|dim/g;
 
 export function esLineaDeNotas(text) {
+  if (text === undefined) {
+    throw 'esLineaDeNotas: no se puede procesar "undefined"';
+  }
   var linea = text
     .trim()
     .replace(limpiarNotasRegex, '')

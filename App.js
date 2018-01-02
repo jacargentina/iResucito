@@ -103,11 +103,14 @@ const mapDispatchToProps = dispatch => {
       // Cargar la lista de salmos
       var cantos = Object.keys(Indice);
       cantos = cantos.map(key => {
-        var nombre = Indice[key].files.hasOwnProperty(locale)
+
+        var localeOk = Indice[key].files.hasOwnProperty(locale);
+
+        var nombre = localeOk
           ? Indice[key].files[locale]
           : Indice[key].files['es'];
 
-        var path = Indice[key].files.hasOwnProperty(locale)
+        var path = localeOk
           ? `${basePath}Salmos/${locale}/${nombre}.txt`
           : `${basePath}Salmos/es/${nombre}.txt`;
 
@@ -126,7 +129,8 @@ const mapDispatchToProps = dispatch => {
           nombre: nombre,
           path: path,
           fullText: null,
-          lines: null
+          lines: null,
+          locale: localeOk
         };
 
         return Object.assign(Indice[key], info);
