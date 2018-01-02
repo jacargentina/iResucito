@@ -27,12 +27,21 @@ function processNext() {
 
   rl.question(`Cual es la clave? `, answer => {
     if (answer !== '') {
-      indice[answer].files.it = current;
-      fs.copyFileSync(`${sourcePath}${current}`, `${targetPath}${current}`);
-      fs.unlinkSync(`${sourcePath}${current}`);
+      if (!indice[answer].files.it) {
+        indice[answer].files.it = current.replace('.txt', '');
+        fs.copyFileSync(`${sourcePath}${current}`, `${targetPath}${current}`);
+        fs.unlinkSync(`${sourcePath}${current}`);
+        fs.writeFileSync('./Indice.json', JSON.stringify(indice, 2, ' '));
+        i++;
+        processNext();
+      } else {
+        console.log('Clave ya asignada.');
+        processNext();
+      }
+    } else {
+      i++;
+      processNext();
     }
-    i++;
-    processNext();
   });
 }
 

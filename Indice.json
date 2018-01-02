@@ -3,7 +3,8 @@
   "etapa": "Catecumenado",
   "cuaresma": true,
   "files": {
-   "es": "Así habla el amén - Ap 3, 14-22"
+   "es": "Así habla el amén - Ap 3, 14-22",
+   "it": "Cosﬁ parla l'amen - Ap 3, 14-22"
   }
  },
  "2": {
@@ -12,7 +13,8 @@
   "entrada": true,
   "comunion": true,
   "files": {
-   "es": "Como el impulso que siente la ira - Oda 7 de Salomón"
+   "es": "Como el impulso que siente la ira - Oda 7 de Salomón",
+   "it": "Come lo slancio dell'ira - Ode 7 di Salomone"
   }
  },
  "3": {
@@ -22,7 +24,8 @@
   "paz": true,
   "final": true,
   "files": {
-   "es": "Consolad a mi pueblo - Is 40, 1-11"
+   "es": "Consolad a mi pueblo - Is 40, 1-11",
+   "it": "Consolate il mio popolo - Is 40, 1-11"
   }
  },
  "4": {
@@ -39,20 +42,23 @@
   "adviento": true,
   "virgen": true,
   "files": {
-   "es": "Débora - Jc 5"
+   "es": "Débora - Jc 5",
+   "it": "Debora - Jc 5"
   }
  },
  "6": {
   "etapa": "Catecumenado",
   "files": {
-   "es": "Dichoso el hombre - Sal 1"
+   "es": "Dichoso el hombre - Sal 1",
+   "it": "Felice l'uomo - Sal 1"
   }
  },
  "7": {
   "etapa": "Catecumenado",
   "fraccion": true,
   "files": {
-   "es": "El Señor me ha dado lengua de discípulo - Is 50, 4-10"
+   "es": "El Señor me ha dado lengua de discípulo - Is 50, 4-10",
+   "it": "Il signore mi ha dato - iii canto del servo - Is. 50, 4-10"
   }
  },
  "8": {
@@ -67,14 +73,16 @@
   "etapa": "Catecumenado",
   "fraccion": true,
   "files": {
-   "es": "El lagarero - Is 63, 1-6"
+   "es": "El lagarero - Is 63, 1-6",
+   "it": "Il pigiatore - Is. 63, 1-6"
   }
  },
  "10": {
   "etapa": "Catecumenado",
   "entrada": true,
   "files": {
-   "es": "El sembrador - Mc 4, 3ss"
+   "es": "El sembrador - Mc 4, 3ss",
+   "it": "Il seminatore - Mc. 4, 3 ss"
   }
  },
  "11": {
@@ -83,13 +91,15 @@
   "pascua": true,
   "laudes": true,
   "files": {
-   "es": "He aquí que nuestro espejo es el Señor - Oda 13 de Salomón"
+   "es": "He aquí que nuestro espejo es el Señor - Oda 13 de Salomón",
+   "it": "Ecco lo specchio nostro - Ode 13 di Salomone"
   }
  },
  "12": {
   "etapa": "Catecumenado",
   "files": {
-   "es": "Jacob - Gn 32, 23-29"
+   "es": "Jacob - Gn 32, 23-29",
+   "it": "Giacobbe - Gn 32, 23-29"
   }
  },
  "13": {
@@ -140,7 +150,8 @@
   "entrada": true,
   "comunion": true,
   "files": {
-   "es": "A la víctima pascual - Secuencia de Pascua"
+   "es": "A la víctima pascual - Secuencia de Pascua",
+   "it": "Alla vittima pasquale - Sequenza pasquale"
   }
  },
  "20": {
@@ -186,7 +197,8 @@
   "laudes": true,
   "entrada": true,
   "files": {
-   "es": "Abraham - Gn 18, 1-5"
+   "es": "Abraham - Gn 18, 1-5",
+   "it": "Abramo - Gn 18, 1-5"
   }
  },
  "26": {
@@ -194,7 +206,8 @@
   "laudes": true,
   "final": true,
   "files": {
-   "es": "Aclamad al Señor - Sal 100 (99)"
+   "es": "Aclamad al Señor - Sal 100 (99)",
+   "it": "Acclamate al signore - Sal 100 (99)"
   }
  },
  "27": {
@@ -202,7 +215,8 @@
   "cuaresma": true,
   "laudes": true,
   "files": {
-   "es": "Al despertar - Sal 17 (16)"
+   "es": "Al despertar - Sal 17 (16)",
+   "it": "Al risveglio mi sazier„ del tuo volto, signor - Sal 17 (16)"
   }
  },
  "28": {
@@ -226,7 +240,8 @@
   "niños": true,
   "paz": true,
   "files": {
-   "es": "Aleluya, bendecid al Señor - Sal 134 (133)"
+   "es": "Aleluya, bendecid al Señor - Sal 134 (133)",
+   "it": "Benedite il signore - Sal 134 (133)"
   }
  },
  "31": {
@@ -234,14 +249,16 @@
   "laudes": true,
   "comunion": true,
   "files": {
-   "es": "Aleluya, ya llegó el reino - Ap 19, 6-9"
+   "es": "Aleluya, ya llegó el reino - Ap 19, 6-9",
+   "it": "Giá viene il regno - Ap 19, 6-9"
   }
  },
  "32": {
   "etapa": "Precatecumenado",
   "entrada": true,
   "files": {
-   "es": "Alzaos puertas - Sal 24 (23)"
+   "es": "Alzaos puertas - Sal 24 (23)",
+   "it": "Alzate o porte - Sal 24 (23)"
   }
  },
  "33": {
@@ -249,7 +266,8 @@
   "cuaresma": true,
   "laudes": true,
   "files": {
-   "es": "Amo al Señor - Sal 116 (114-115)"
+   "es": "Amo al Señor - Sal 116 (114-115)",
+   "it": "Amo il signore - Sal 116 (114-115)"
   }
  },
  "34": {
@@ -258,14 +276,16 @@
   "niños": true,
   "fraccion": true,
   "files": {
-   "es": "Aquedah - Gn 22, 1-19"
+   "es": "Aquedah - Gn 22, 1-19",
+   "it": "Akedá - Gn 22, 1-19"
   }
  },
  "35": {
   "etapa": "Precatecumenado",
   "virgen": true,
   "files": {
-   "es": "Ave María I - Lc 1, 28ss"
+   "es": "Ave María I - Lc 1, 28ss",
+   "it": "Ave Maria I - Lc 1, 28ss"
   }
  },
  "36": {
@@ -273,7 +293,8 @@
   "virgen": true,
   "final": true,
   "files": {
-   "es": "Ave María II (1984) - Lc 1, 28ss"
+   "es": "Ave María II (1984) - Lc 1, 28ss",
+   "it": "Ave Maria II (1984) - Lc 1, 28ss"
   }
  },
  "37": {
@@ -290,7 +311,8 @@
   "comunion": true,
   "final": true,
   "files": {
-   "es": "Balaam - Nm 23, 7-24"
+   "es": "Balaam - Nm 23, 7-24",
+   "it": "Canto di Balaam - Nm 23, 7-24"
   }
  },
  "39": {
@@ -298,7 +320,8 @@
   "cuaresma": true,
   "laudes": true,
   "files": {
-   "es": "Bendeciré al Señor en todo tiempo - Sal 34 (33)"
+   "es": "Bendeciré al Señor en todo tiempo - Sal 34 (33)",
+   "it": "Benediró il signore in ogni tempo - Sal 34 (33)"
   }
  },
  "40": {
@@ -306,7 +329,8 @@
   "cuaresma": true,
   "laudes": true,
   "files": {
-   "es": "Bendice, alma mía, a Yahveh - Sal 103 (102)"
+   "es": "Bendice, alma mía, a Yahveh - Sal 103 (102)",
+   "it": "Benedici anima mia Jahvé - Sal 103 (102)"
   }
  },
  "41": {
@@ -315,19 +339,22 @@
   "entrada": true,
   "final": true,
   "files": {
-   "es": "Bendita eres tú, María - Lc 1, 42-45"
+   "es": "Bendita eres tú, María - Lc 1, 42-45",
+   "it": "Benedetta sei tu, Maria - Lc 1, 42-45"
   }
  },
  "42": {
   "etapa": "Precatecumenado",
   "files": {
-   "es": "Bendito eres, Señor - Dn 3, 52-57"
+   "es": "Bendito eres, Señor - Dn 3, 52-57",
+   "it": "Benedetto sei tu signore - Dn 3, 52-57"
   }
  },
  "43": {
   "etapa": "Precatecumenado",
   "files": {
-   "es": "Benedictus - Lc 1, 67-80"
+   "es": "Benedictus - Lc 1, 67-80",
+   "it": "Cantico di Zaccaria - Lc 1, 67-80"
   }
  },
  "44": {
@@ -343,20 +370,23 @@
   "etapa": "Precatecumenado",
   "pascua": true,
   "files": {
-   "es": "Canto de Moisés - Ex 15, 1-18"
+   "es": "Canto de Moisés - Ex 15, 1-18",
+   "it": "Cantico di Mosé - Ex 15, 1-18"
   }
  },
  "46": {
   "etapa": "Precatecumenado",
   "files": {
-   "es": "Caritas Christi urget nos - 2 Co 5, 14-15. 17. 21"
+   "es": "Caritas Christi urget nos - 2 Co 5, 14-15. 17. 21",
+   "it": "Caritas christi urget nos - 2 Co 5, 14-15. 17. 21"
   }
  },
  "47": {
   "etapa": "Precatecumenado",
   "laudes": true,
   "files": {
-   "es": "Cántico de los tres jóvenes - Dn 3, 57-58"
+   "es": "Cántico de los tres jóvenes - Dn 3, 57-58",
+   "it": "Canto dei tre giovani nella fornace - Dn 3, 57-58"
   }
  },
  "48": {
@@ -364,14 +394,16 @@
   "cuaresma": true,
   "laudes": true,
   "files": {
-   "es": "Como la cierva - Sal 42-43 (41-42)"
+   "es": "Como la cierva - Sal 42-43 (41-42)",
+   "it": "Come una cerva anela - Sal 42-43 (41-42)"
   }
  },
  "49": {
   "etapa": "Precatecumenado",
   "paz": true,
   "files": {
-   "es": "Cómo es maravilloso - Sal 133 (132)"
+   "es": "Cómo es maravilloso - Sal 133 (132)",
+   "it": "Come é bello, come dá gioia - Sal 133 (132)"
   }
  },
  "50": {
@@ -404,14 +436,16 @@
   "paz": true,
   "final": true,
   "files": {
-   "es": "Dayenú"
+   "es": "Dayenú",
+   "it": "Dajenú"
   }
  },
  "54": {
   "etapa": "Precatecumenado",
   "cuaresma": true,
   "files": {
-   "es": "De profundis - Sal 130 (129)"
+   "es": "De profundis - Sal 130 (129)",
+   "it": "Dal profondo a te grido - Sal 130 (129)"
   }
  },
  "55": {
@@ -419,28 +453,32 @@
   "cuaresma": true,
   "entrada": true,
   "files": {
-   "es": "Decid a los de corazón cansado - Is 35 4ss"
+   "es": "Decid a los de corazón cansado - Is 35 4ss",
+   "it": "Dite agli smarriti di cuore - Is 35 4ss"
   }
  },
  "56": {
   "etapa": "Precatecumenado",
   "laudes": true,
   "files": {
-   "es": "Delante de los ángeles - Sal 138 (137)"
+   "es": "Delante de los ángeles - Sal 138 (137)",
+   "it": "Davanti agli angeli - Sal 138 (137)"
   }
  },
  "57": {
   "etapa": "Precatecumenado",
   "laudes": true,
   "files": {
-   "es": "Dice el Señor a mi Señor - Sal 110 (109)"
+   "es": "Dice el Señor a mi Señor - Sal 110 (109)",
+   "it": "Dice il signore al mio signore - Sal 110 (109)"
   }
  },
  "58": {
   "etapa": "Precatecumenado",
   "final": true,
   "files": {
-   "es": "Día de reposo - Jn 8, 52"
+   "es": "Día de reposo - Jn 8, 52",
+   "it": "Giorno di riposo - Jn 8, 52"
   }
  },
  "59": {
@@ -448,14 +486,16 @@
   "adviento": true,
   "entrada": true,
   "files": {
-   "es": "El Señor anuncia una noticia - Sal 68 (67)"
+   "es": "El Señor anuncia una noticia - Sal 68 (67)",
+   "it": "Il signore annuncia una notizia - Sal 68 (67)"
   }
  },
  "60": {
   "etapa": "Precatecumenado",
   "comunion": true,
   "files": {
-   "es": "El Señor es mi pastor - Sal 23 (24)"
+   "es": "El Señor es mi pastor - Sal 23 (24)",
+   "it": "Il signore é il mio pastore - Sal 23 (22)"
   }
  },
  "61": {
@@ -463,27 +503,31 @@
   "pascua": true,
   "comunion": true,
   "files": {
-   "es": "El jacal de los pastores - Ct 1, 2-8"
+   "es": "El jacal de los pastores - Ct 1, 2-8",
+   "it": "Che mi baci - Ct 1, 2-8"
   }
  },
  "62": {
   "etapa": "Precatecumenado",
   "files": {
-   "es": "El necio piensa que Dios no existe - Sal 13 (14)"
+   "es": "El necio piensa que Dios no existe - Sal 13 (14)",
+   "it": "Fino a quando - Sal 13 (12)"
   }
  },
  "63": {
   "etapa": "Precatecumenado",
   "navidad": true,
   "files": {
-   "es": "El pueblo que caminaba en las tinieblas - Is 9, 1-5"
+   "es": "El pueblo que caminaba en las tinieblas - Is 9, 1-5",
+   "it": "Il popolo che camminava nelle tenebre - Is 9, 1-5"
   }
  },
  "64": {
   "etapa": "Precatecumenado",
   "cuaresma": true,
   "files": {
-   "es": "Elí, Elí, lamá sabactaní - Sal 22 (21)"
+   "es": "Elí, Elí, lamá sabactaní - Sal 22 (21)",
+   "it": "Eli, eli, lammá sabactani - Sal 22 (21)"
   }
  },
  "65": {
@@ -491,7 +535,8 @@
   "laudes": true,
   "fraccion": true,
   "files": {
-   "es": "Eres digno de tomar el libro - Ap 5, 9ss"
+   "es": "Eres digno de tomar el libro - Ap 5, 9ss",
+   "it": "Canto dell'agnello - Ap 5, 9ss"
   }
  },
  "66": {
@@ -526,7 +571,8 @@
  "70": {
   "etapa": "Precatecumenado",
   "files": {
-   "es": "Exultad, justos, en el Señor - Sal 32"
+   "es": "Exultad, justos, en el Señor - Sal 32",
+   "it": "Esultate giusti nel signore - Sal 32"
   }
  },
  "71": {
@@ -538,7 +584,8 @@
  "72": {
   "etapa": "Precatecumenado",
   "files": {
-   "es": "Felicidad para el hombre - Sal 128 (127)"
+   "es": "Felicidad para el hombre - Sal 128 (127)",
+   "it": "Felicitá per l'uomo - Sal 128 (127)"
   }
  },
  "73": {
@@ -547,7 +594,8 @@
   "comunion": true,
   "final": true,
   "files": {
-   "es": "Gracias a Yahveh - Sal 136 (135)"
+   "es": "Gracias a Yahveh - Sal 136 (135)",
+   "it": "Grazie a jahvé - Sal 136 (135)"
   }
  },
  "74": {
@@ -555,7 +603,8 @@
   "entrada": true,
   "final": true,
   "files": {
-   "es": "Gritad jubilosos - Is 12"
+   "es": "Gritad jubilosos - Is 12",
+   "it": "Gridate con gioia - Is 12, 1 ss"
   }
  },
  "75": {
@@ -583,7 +632,8 @@
   "etapa": "Precatecumenado",
   "adviento": true,
   "files": {
-   "es": "He aquí que vengo presto - Ap 22, 12-16"
+   "es": "He aquí que vengo presto - Ap 22, 12-16",
+   "it": "Ecco qui io vengo presto - Ap 22, 12-16"
   }
  },
  "79": {
@@ -591,14 +641,16 @@
   "adviento": true,
   "cuaresma": true,
   "files": {
-   "es": "He esperado en el Señor - Sal 40 (39)"
+   "es": "He esperado en el Señor - Sal 40 (39)",
+   "it": "Ho sperato, ho sperato nel signore - Sal 40 (39)"
   }
  },
  "80": {
   "etapa": "Precatecumenado",
   "cuaresma": true,
   "files": {
-   "es": "Hijas de Jerusalén - Lc 23, 28-46"
+   "es": "Hijas de Jerusalén - Lc 23, 28-46",
+   "it": "Figlie di gerusalemme - Lc 23, 28-46"
   }
  },
  "81": {
@@ -613,7 +665,8 @@
   "cuaresma": true,
   "fraccion": true,
   "files": {
-   "es": "Himno a la kenosis - Flp 2, 1-11"
+   "es": "Himno a la kenosis - Flp 2, 1-11",
+   "it": "Cristo gesú é il signore - Flp 2, 1-11"
   }
  },
  "83": {
@@ -651,7 +704,8 @@
   "etapa": "Precatecumenado",
   "final": true,
   "files": {
-   "es": "Id y anunciad a mis hermanos - Mt 28, 7-10.16-20"
+   "es": "Id y anunciad a mis hermanos - Mt 28, 7-10.16-20",
+   "it": "Andate ed annunziate ai miei fratelli - Mt 28, 7-10.16-20"
   }
  },
  "88": {
@@ -666,7 +720,8 @@
   "cuaresma": true,
   "paz": true,
   "files": {
-   "es": "Jerusalén reconstruida - Tb 13, 11-17"
+   "es": "Jerusalén reconstruida - Tb 13, 11-17",
+   "it": "Benedici anima mia il signore - Tb 13, 11-17"
   }
  },
  "90": {
@@ -696,7 +751,8 @@
   "laudes": true,
   "entrada": true,
   "files": {
-   "es": "Levanto mis ojos a los montes - Sal 121 (120)"
+   "es": "Levanto mis ojos a los montes - Sal 121 (120)",
+   "it": "Alzo gli occhi verso i monti - Sal 121 (120)"
   }
  },
  "94": {
@@ -705,7 +761,8 @@
   "laudes": true,
   "entrada": true,
   "files": {
-   "es": "Llegue hasta tu presencia mi clamor - Sal 119 (118)"
+   "es": "Llegue hasta tu presencia mi clamor - Sal 119 (118)",
+   "it": "Giunga la mia preghiera fino a te - Sal 119 (118)"
   }
  },
  "95": {
@@ -780,7 +837,8 @@
   "etapa": "Precatecumenado",
   "paz": true,
   "files": {
-   "es": "Mirad que estupendo - Sal 133 (132)"
+   "es": "Mirad que estupendo - Sal 133 (132)",
+   "it": "Guardate com'é bello, gustate quant'é soave - Sal 133 (132)"
   }
  },
  "105": {
@@ -878,7 +936,8 @@
   "niños": true,
   "paz": true,
   "files": {
-   "es": "Por qué esta noche es diferente - Canto de los niños"
+   "es": "Por qué esta noche es diferente - Canto de los niños",
+   "it": "Che cosa c'è di diverso questa notte - canzone per bambini"
   }
  },
  "118": {
@@ -930,7 +989,8 @@
   "comunion": true,
   "final": true,
   "files": {
-   "es": "Quién es ésta que sube del desierto - Ct 8, 5-7"
+   "es": "Quién es ésta que sube del desierto - Ct 8, 5-7",
+   "it": "Chi é colei - Ct 8, 5-7"
   }
  },
  "125": {
@@ -938,7 +998,8 @@
   "laudes": true,
   "comunion": true,
   "files": {
-   "es": "Quién nos separará - Rm 8, 33-39"
+   "es": "Quién nos separará - Rm 8, 33-39",
+   "it": "Chi ci separerá - Rm 8, 33-39"
   }
  },
  "126": {
@@ -962,7 +1023,8 @@
   "niños": true,
   "paz": true,
   "files": {
-   "es": "Se encontraron dos ángeles - Canto de los niños"
+   "es": "Se encontraron dos ángeles - Canto de los niños",
+   "it": "C'erano due angeli - canzone per bambini"
   }
  },
  "129": {
@@ -1091,7 +1153,8 @@
   "niños": true,
   "navidad": true,
   "files": {
-   "es": "Vamos ya, pastores - Villancico"
+   "es": "Vamos ya, pastores - Villancico",
+   "it": "Andiamo, giá pastori - Canto natalizio"
   }
  },
  "146": {
@@ -1157,7 +1220,8 @@
   "niños": true,
   "navidad": true,
   "files": {
-   "es": "Ya viene mi Dios - Villancico"
+   "es": "Ya viene mi Dios - Villancico",
+   "it": "Giá viene il mio dio - Canto natalizio"
   }
  },
  "155": {
@@ -1179,7 +1243,8 @@
   "entrada": true,
   "final": true,
   "files": {
-   "es": "Yo vengo a reunir - Is 66, 18-21"
+   "es": "Yo vengo a reunir - Is 66, 18-21",
+   "it": "Gloria, gloria, gloria - Is 66, 18 ss"
   }
  },
  "158": {
@@ -1195,19 +1260,22 @@
   "laudes": true,
   "comunion": true,
   "files": {
-   "es": "Abbaá Padre - Rm 8, 15-17"
+   "es": "Abbaá Padre - Rm 8, 15-17",
+   "it": "Abbá padre - Rm 8, 15-17"
   }
  },
  "160": {
   "etapa": "Eleccion",
   "files": {
-   "es": "Bendito sea Dios - Ef 1, 3-13"
+   "es": "Bendito sea Dios - Ef 1, 3-13",
+   "it": "Benedetto sia iddio - Ef 1, 3-13"
   }
  },
  "161": {
   "etapa": "Eleccion",
   "files": {
-   "es": "Como condenados a muerte - 1 Co 4, 9.13"
+   "es": "Como condenados a muerte - 1 Co 4, 9.13",
+   "it": "Come condannati a morte - 1 Co 4, 9.13"
   }
  },
  "162": {
@@ -1215,7 +1283,8 @@
   "pascua": true,
   "comunion": true,
   "files": {
-   "es": "Como destila la miel - Oda 40 de Salomón"
+   "es": "Como destila la miel - Oda 40 de Salomón",
+   "it": "Come stilla il miele - Ode 40 di Salomone"
   }
  },
  "163": {
@@ -1245,7 +1314,8 @@
   "etapa": "Eleccion",
   "fraccion": true,
   "files": {
-   "es": "En una noche oscura - San Juan de la Cruz"
+   "es": "En una noche oscura - San Juan de la Cruz",
+   "it": "In una notte oscura - S. Giovanni della Croce"
   }
  },
  "167": {
@@ -1261,7 +1331,8 @@
   "cuaresma": true,
   "fraccion": true,
   "files": {
-   "es": "Extiendo mis manos - Oda 27 de Salomón"
+   "es": "Extiendo mis manos - Oda 27 de Salomón",
+   "it": "Ho steso le mie mani - Ode 27 di Salomone"
   }
  },
  "169": {
@@ -1291,7 +1362,8 @@
  "172": {
   "etapa": "Eleccion",
   "files": {
-   "es": "Jesús recorria las ciudades - Mt 9, 35ss"
+   "es": "Jesús recorria las ciudades - Mt 9, 35ss",
+   "it": "Gesú percorreva tutte le cittá - Mt 9, 35ss"
   }
  },
  "173": {
@@ -1350,13 +1422,15 @@
   "etapa": "Eleccion",
   "comunion": true,
   "files": {
-   "es": "Sermon de la montaña - Lc 6, 20-38"
+   "es": "Sermon de la montaña - Lc 6, 20-38",
+   "it": "Il sermone della montagna"
   }
  },
  "181": {
   "etapa": "Liturgia",
   "files": {
-   "es": "Aleluya Pascual"
+   "es": "Aleluya Pascual",
+   "it": "Alleluja pasquale"
   }
  },
  "182": {
@@ -1369,7 +1443,8 @@
   "etapa": "Liturgia",
   "entrada": true,
   "files": {
-   "es": "Amén, amén, amén - Ap 7, 12-14"
+   "es": "Amén, amén, amén - Ap 7, 12-14",
+   "it": "Amen, amen, amen - Ap 7, 12-14"
   }
  },
  "184": {
@@ -1387,13 +1462,15 @@
  "186": {
   "etapa": "Liturgia",
   "files": {
-   "es": "Bendición del agua"
+   "es": "Bendición del agua",
+   "it": "Benedizione dell'acqua"
   }
  },
  "187": {
   "etapa": "Liturgia",
   "files": {
-   "es": "Bendición penitencial - oracion conclusiva de accion de gracias"
+   "es": "Bendición penitencial - oracion conclusiva de accion de gracias",
+   "it": "Benedizione penitenziale - preghiera conclusiva di ringraziamento"
   }
  },
  "188": {
