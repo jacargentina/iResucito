@@ -21,13 +21,32 @@
       "The song has not yet been incorporated into your language",
     "donate message":
       "Help making a donation: it will be used for developers who translate to all possible languages. Peace!",
-    "donate button":
-      "Donate"
+    "donate button": "Donate"
   },
   "list_type": {
     "eucharist": "Eucharist",
     "word": "Word",
     "other": "Other"
+  },
+  "list_item": {
+    "ambiental": "",
+    "entrada": "",
+    "paz": "",
+    "comunion-pan": "",
+    "comunion-caliz": "",
+    "salida": "",
+    "1-monicion": "",
+    "1": "",
+    "1-salmo": "",
+    "2-monicion": "",
+    "2": "",
+    "2-salmo": "",
+    "3-monicion": "",
+    "3": "",
+    "3-salmo": "",
+    "evangelio-monicion": "",
+    "evangelio": "",
+    "nota": ""
   },
   "search_title": {
     "alpha": "Alphabetic",

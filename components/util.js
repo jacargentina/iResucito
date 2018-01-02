@@ -1,3 +1,5 @@
+import I18n from '../i18n';
+
 const limpiarNotasRegex = /\[|\]|#|\*|5|6|7|9|b|-|\+|\/|\u2013|\u2217|aum|dim/g;
 
 export function esLineaDeNotas(text) {
@@ -37,74 +39,17 @@ export function getEsSalmo(listKey) {
 }
 
 export function getFriendlyText(listKey) {
-  var text = '';
-  switch (listKey) {
-    case 'ambiental':
-      text = 'Monición Ambiental';
-      break;
-    case 'entrada':
-      text = 'Canto de Entrada';
-      break;
-    case 'paz':
-      text = 'Paz y Ofrendas';
-      break;
-    case 'comunion-pan':
-      text = 'Pan';
-      break;
-    case 'comunion-caliz':
-      text = 'Cáliz';
-      break;
-    case 'salida':
-      text = 'Canto de Salida';
-      break;
-    case '1-monicion':
-      text = 'Monición 1a Lectura';
-      break;
-    case '1':
-      text = '1a Lectura';
-      break;
-    case '1-salmo':
-      text = 'Canto 1a Lectura';
-      break;
-    case '2-monicion':
-      text = 'Monición 2a Lectura';
-      break;
-    case '2':
-      text = '2a Lectura';
-      break;
-    case '2-salmo':
-      text = 'Canto 2a Lectura';
-      break;
-    case '3-monicion':
-      text = 'Monición 3a Lectura';
-      break;
-    case '3':
-      text = '3a Lectura';
-      break;
-    case '3-salmo':
-      text = 'Canto 3a Lectura';
-      break;
-    case 'evangelio-monicion':
-      text = 'Monición Evangelio';
-      break;
-    case 'evangelio':
-      text = 'Evangelio';
-      break;
-    case 'nota':
-      text = 'Nota';
-      break;
-  }
-  return text;
+  return I18n.t(`list_item.${listKey}`);
 }
 
 export function getFriendlyTextForListType(listType) {
   switch (listType) {
     case 'eucaristia':
-      return 'Eucaristía';
+      return I18n.t('list_type.eucharist');
     case 'palabra':
-      return 'Palabra';
+      return I18n.t('list_type.word');
     case 'libre':
-      return 'Otras';
+      return I18n.t('list_type.other');
   }
 }
 

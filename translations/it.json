@@ -17,14 +17,36 @@
       "Senza nomi importati Per scegliere dall'elenco, è necessario importare dai contatti nell'opzione Comunità.",
     "search placeholder": "Cercare",
     "locale warning title": "Traduzione incompleta",
-    "locale warning message": "La canzone non è stata ancora incorporata nella tua lingua",
-    "donate message": "Contribuisci a fare una donazione: verrà utilizzata per gli sviluppatori che traducono in tutte le lingue possibili. Pace!",
+    "locale warning message":
+      "La canzone non è stata ancora incorporata nella tua lingua",
+    "donate message":
+      "Contribuisci a fare una donazione: verrà utilizzata per gli sviluppatori che traducono in tutte le lingue possibili. Pace!",
     "donate button": "Donare"
   },
   "list_type": {
     "eucharist": "Eucaristia",
     "word": "Parola",
     "other": "Altro"
+  },
+  "list_item": {
+    "ambiental": "Ammonizione Ambientale",
+    "entrada": "Canzone d'ingresso",
+    "paz": "Pace e Offertorio",
+    "comunion-pan": "Pane",
+    "comunion-caliz": "Calice",
+    "salida": "Canzone finale",
+    "1-monicion": "Ammonizione 1a Lettura",
+    "1": "1a Lettura",
+    "1-salmo": "Canzone 1a lettura",
+    "2-monicion": "Ammonizione 2a Lettura",
+    "2": "2a Lettura",
+    "2-salmo": "Canzone 2a lettura",
+    "3-monicion": "Ammonizione 3a Lettura",
+    "3": "3a Lettura",
+    "3-salmo": "Canzone 3a lettura",
+    "evangelio-monicion": "Ammonizione Vangelo",
+    "evangelio": "Vangelo",
+    "nota": "Nota"
   },
   "search_title": {
     "alpha": "Alfabetico",
@@ -41,7 +63,7 @@
     "pentecost": "Pentecoste",
     "liturgical order": "Ordine liturgico",
     "entrance": "Ingresso",
-    "peace and offerings": "Pace y Offertorio",
+    "peace and offerings": "Pace e Offertorio",
     "fraction of bread": "Frazione del pane",
     "communion": "Communione",
     "exit": "Finale",
@@ -74,7 +96,8 @@
     "settings": "Configurare",
     "find song": "Cercare Canto",
     "lists": "Elenco",
-    "community": "Comunità"
+    "community": "Comunità",
+    "import contacts": "Importa Contatti"
   },
   "call_to_action_title": {
     "add lists": "Aggiungere elenchi",

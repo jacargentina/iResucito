@@ -20,13 +20,32 @@
     "locale warning message": "El canto aún no se ha incorporado a su idioma",
     "donate message":
       "Ayuda haciendo una donación: se usará para desarrolladores que traduzcan a todos los idiomas posibles. La Paz!",
-    "donate button":
-      "Donar"
+    "donate button": "Donar"
   },
   "list_type": {
     "eucharist": "Eucaristía",
     "word": "Palabra",
     "other": "Otras"
+  },
+  "list_item": {
+    "ambiental": "Monición Ambiental",
+    "entrada": "Canto de Entrada",
+    "paz": "Paz y Ofrendas",
+    "comunion-pan": "Pan",
+    "comunion-caliz": "Cáliz",
+    "salida": "Canto final",
+    "1-monicion": "Monición 1a Lectura",
+    "1": "1a Lectura",
+    "1-salmo": "Canto 1a Lectura",
+    "2-monicion": "Monición 2a Lectura",
+    "2": "2a Lectura",
+    "2-salmo": "Canto 2a Lectura",
+    "3-monicion": "Monición 3a Lectura",
+    "3": "3a Lectura",
+    "3-salmo": "Canto 3a Lectura",
+    "evangelio-monicion": "Monición Evangelio",
+    "evangelio": "Evangelio",
+    "nota": "Nota"
   },
   "search_title": {
     "alpha": "Alfabético",
