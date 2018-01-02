@@ -223,7 +223,8 @@
   "etapa": "Precatecumenado",
   "laudes": true,
   "files": {
-   "es": "Alabad al Señor en el cielo - Sal 148"
+   "es": "Alabad al Señor en el cielo - Sal 148",
+   "it": "Lodate il signore dai cieli - Sal 148"
   }
  },
  "29": {
@@ -231,7 +232,8 @@
   "pascua": true,
   "final": true,
   "files": {
-   "es": "Aleluya, alabad al Señor - Sal 150"
+   "es": "Aleluya, alabad al Señor - Sal 150",
+   "it": "Lodate iddio - Sal 150"
   }
  },
  "30": {
@@ -363,7 +365,8 @@
   "entrada": true,
   "final": true,
   "files": {
-   "es": "Cantad al Señor - Sal 117 (116)"
+   "es": "Cantad al Señor - Sal 117 (116)",
+   "it": "Lodate il signore - Sal 117 (116)"
   }
  },
  "45": {
@@ -673,7 +676,8 @@
   "etapa": "Precatecumenado",
   "adviento": true,
   "files": {
-   "es": "Himno de Adviento - Himno"
+   "es": "Himno de Adviento - Himno",
+   "it": "Inno di Avvento - Inno"
   }
  },
  "84": {
@@ -681,7 +685,8 @@
   "pascua": true,
   "laudes": true,
   "files": {
-   "es": "Himno de Pascua - Himno"
+   "es": "Himno de Pascua - Himno",
+   "it": "Inno di Pasqua - Inno"
   }
  },
  "85": {
@@ -728,7 +733,8 @@
   "etapa": "Precatecumenado",
   "cuaresma": true,
   "files": {
-   "es": "La marcha es dura - Himno"
+   "es": "La marcha es dura - Himno",
+   "it": "La marcia é dura - Inno"
   }
  },
  "91": {
@@ -742,7 +748,8 @@
   "etapa": "Precatecumenado",
   "final": true,
   "files": {
-   "es": "La siega de las naciones - Jn 4, 31-38"
+   "es": "La siega de las naciones - Jn 4, 31-38",
+   "it": "La mietitura delle nazioni - Jn 4, 31-38"
   }
  },
  "93": {
@@ -779,14 +786,16 @@
   "virgen": true,
   "laudes": true,
   "files": {
-   "es": "Magníficat - Lc 1, 46-55"
+   "es": "Magníficat - Lc 1, 46-55",
+   "it": "Magnificat - Lc 1, 46-55"
   }
  },
  "97": {
   "etapa": "Precatecumenado",
   "virgen": true,
   "files": {
-   "es": "María de Jasna Göra - Himno"
+   "es": "María de Jasna Göra - Himno",
+   "it": "Maria di jasna góra - Inno"
   }
  },
  "98": {
@@ -794,21 +803,24 @@
   "virgen": true,
   "entrada": true,
   "files": {
-   "es": "María, casa de bendición - Jn 2,1-11"
+   "es": "María, casa de bendición - Jn 2,1-11",
+   "it": "Maria, casa di benedizione - Jn 2,1-11"
   }
  },
  "99": {
   "etapa": "Precatecumenado",
   "cuaresma": true,
   "files": {
-   "es": "María, madre de la Iglesia - Jn 19, 26-34"
+   "es": "María, madre de la Iglesia - Jn 19, 26-34",
+   "it": "Maria madre della chiesa - Jn 19, 26-34"
   }
  },
  "100": {
   "etapa": "Precatecumenado",
   "virgen": true,
   "files": {
-   "es": "María, madre del camino ardiente - Himno"
+   "es": "María, madre del camino ardiente - Himno",
+   "it": "Maria, madre del cammino ardente - Inno"
   }
  },
  "101": {
@@ -816,7 +828,8 @@
   "cuaresma": true,
   "virgen": true,
   "files": {
-   "es": "María, pequena Maria - Himno"
+   "es": "María, pequeña Maria - Himno",
+   "it": "Maria, piccola Maria - Inno"
   }
  },
  "102": {
@@ -1083,7 +1096,8 @@
   "etapa": "Precatecumenado",
   "final": true,
   "files": {
-   "es": "Sión, madre de todos los pueblos - Sal 87 (86)"
+   "es": "Sión, madre de todos los pueblos - Sal 87 (86)",
+   "it": "Le sue fondamenta - Sal 87 (86)"
   }
  },
  "137": {
@@ -1229,7 +1243,8 @@
   "cuaresma": true,
   "laudes": true,
   "files": {
-   "es": "Yahveh, tú eres mi Dios - Is 25"
+   "es": "Yahveh, tú eres mi Dios - Is 25",
+   "it": "Jahvé tu sei il mio dio - Is 25"
   }
  },
  "156": {
@@ -1292,7 +1307,8 @@
   "pascua": true,
   "comunion": true,
   "files": {
-   "es": "Como lirio entre los cardos - Ct 1, 13ss"
+   "es": "Como lirio entre los cardos - Ct 1, 13ss",
+   "it": "La mia diletta é per me - Ct 1, 13ss"
   }
  },
  "164": {
@@ -1300,14 +1316,16 @@
   "laudes": true,
   "final": true,
   "files": {
-   "es": "El Espiritu del Señor está sobre mi - Lc 4, 18 - Is 61, 1-3"
+   "es": "El Espiritu del Señor está sobre mi - Lc 4, 18 - Is 61, 1-3",
+   "it": "Lo spirito del signore é sopra di me - Lc 4, 18 - Is 61, 1-3"
   }
  },
  "165": {
   "etapa": "Eleccion",
   "comunion": true,
   "files": {
-   "es": "El mismo Dios - 2 Co 4, 6-12"
+   "es": "El mismo Dios - 2 Co 4, 6-12",
+   "it": "Lo stesso iddio - 2 Co 4, 6-12"
   }
  },
  "166": {
@@ -1348,7 +1366,8 @@
   "pentecostes": true,
   "comunion": true,
   "files": {
-   "es": "Himno a la caridad - 1 Co 13, 1-13"
+   "es": "Himno a la caridad - 1 Co 13, 1-13",
+   "it": "Inno alla caritá - 1 Co 13, 1-13"
   }
  },
  "171": {
@@ -1356,7 +1375,8 @@
   "laudes": true,
   "entrada": true,
   "files": {
-   "es": "Himno a la cruz gloriosa - Himno"
+   "es": "Himno a la cruz gloriosa - Himno",
+   "it": "Inno alla croce gloriosa - Inno"
   }
  },
  "172": {
@@ -1379,14 +1399,16 @@
   "laudes": true,
   "comunion": true,
   "files": {
-   "es": "La paloma volo - Oda 24 de Salomón"
+   "es": "La paloma volo - Oda 24 de Salomón",
+   "it": "La colomba voló - Ode 24 de Salomone"
   }
  },
  "175": {
   "etapa": "Eleccion",
   "comunion": true,
   "files": {
-   "es": "La voz de mi amado - Ct 2, 8-17"
+   "es": "La voz de mi amado - Ct 2, 8-17",
+   "it": "La voce del mio amato - Ct 2, 8-17"
   }
  },
  "176": {
@@ -1483,7 +1505,8 @@
   "etapa": "Liturgia",
   "pascua": true,
   "files": {
-   "es": "Gloria a Dios en lo alto del cielo - Himno litúrgico"
+   "es": "Gloria a Dios en lo alto del cielo - Himno litúrgico",
+   "it": "Gloria a dio mell'alto dai cieli - Inno liturgico"
   }
  },
  "190": {

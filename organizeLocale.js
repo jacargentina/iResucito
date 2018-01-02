@@ -12,7 +12,7 @@ var fs = require('fs');
 var cantos = fs.readdirSync(sourcePath);
 var i = 0;
 
-console.log('Claves sin IT');
+/* eslint-disable no-console */
 var keys = Object.keys(indice);
 var sin_locale = keys.filter(
   k => !Object.hasOwnProperty(indice[k].files, 'it')
@@ -20,12 +20,13 @@ var sin_locale = keys.filter(
 sin_locale.forEach(k => {
   console.log(`${k}: ${indice[k].files.es}`);
 });
+console.log(`${sin_locale.length} sin it; ${cantos.length} archivos`);
 
 function processNext() {
   var current = cantos[i];
-  console.log(`Archivo ${current}`);
+  console.log(current);
 
-  rl.question(`Cual es la clave? `, answer => {
+  rl.question('Cual es la clave? ', answer => {
     if (answer !== '') {
       if (!indice[answer].files.it) {
         indice[answer].files.it = current.replace('.txt', '');
