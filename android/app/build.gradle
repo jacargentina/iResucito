@@ -172,12 +172,18 @@ task copyDownloadableDepsToLibs(type: Copy) {
     into 'libs'
 }
 
+task deleteAssets(type: Delete) {
+    delete 'app/src/main/assets/Salmos'
+}
+
 task copyToAssets(type: Copy) {
     def toDir = rootProject.file('app/src/main/assets/Salmos')
     from '../../Salmos/'
     into toDir
     include '**/*'
 }
+
+copyToAssets.dependsOn deleteAssets
 
 project.afterEvaluate {
     preBuild.dependsOn copyToAssets
