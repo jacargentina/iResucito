@@ -58,5 +58,9 @@
     "color-convert": "1.9.1",
     "uglify-js": "github:alexlamsl/UglifyJS2#issue-2449"
   },
-  "eslintIgnore": ["android/**", "ios/**", "native-base-theme/**"]
+  "eslintIgnore": [
+    "android/**",
+    "ios/**",
+    "native-base-theme/**"
+  ]
 }
