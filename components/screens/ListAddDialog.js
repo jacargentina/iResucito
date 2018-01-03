@@ -35,7 +35,7 @@ class ListAddDialog extends React.Component {
           )
         }
         disabled={!this.props.listCreateEnabled}>
-        <Text>Crear</Text>
+        <Text>{I18n.t('ui.create')}</Text>
       </Button>
     );
     var titleSuffix = getFriendlyTextForListType(this.props.listCreateType);

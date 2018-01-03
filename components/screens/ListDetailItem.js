@@ -14,6 +14,7 @@ import { View, TextInput } from 'react-native';
 import { openChooserDialog, updateListMapText } from '../actions';
 import { getFriendlyText } from '../util';
 import commonTheme from '../../native-base-theme/variables/platform';
+import I18n from '../../i18n';
 
 const ListDetailItem = props => {
   var titulo = getFriendlyText(props.listKey);
@@ -32,7 +33,8 @@ const ListDetailItem = props => {
         <Body>
           <Input
             onChangeText={text =>
-              props.updateItem(props.listName, props.listKey, text)}
+              props.updateItem(props.listName, props.listKey, text)
+            }
             value={props.listText}
             clearButtonMode="always"
             autoCorrect={false}
@@ -52,7 +54,8 @@ const ListDetailItem = props => {
         <Body>
           <Input
             onChangeText={text =>
-              props.updateItem(props.listName, props.listKey, text)}
+              props.updateItem(props.listName, props.listKey, text)
+            }
             value={props.listText}
             clearButtonMode="always"
             autoCorrect={false}
@@ -68,7 +71,8 @@ const ListDetailItem = props => {
               fontSize: 30
             }}
             onPress={() =>
-              props.openChooser('Contact', props.listName, props.listKey)}
+              props.openChooser('Contact', props.listName, props.listKey)
+            }
           />
         </Right>
       </ListItem>
@@ -80,7 +84,8 @@ const ListDetailItem = props => {
           <TextInput
             multiline
             onChangeText={text =>
-              props.updateItem(props.listName, props.listKey, text)}
+              props.updateItem(props.listName, props.listKey, text)
+            }
             value={props.listText}
             autoCorrect={false}
           />
@@ -88,7 +93,10 @@ const ListDetailItem = props => {
       </ListItem>
     );
   } else {
-    var text = props.listText == null ? 'Buscar...' : props.listText.titulo;
+    var text =
+      props.listText == null
+        ? I18n.t('ui.search placeholder') + '...'
+        : props.listText.titulo;
     var navigateSalmo =
       props.listText != null ? (
         <Right>
@@ -103,7 +111,8 @@ const ListDetailItem = props => {
             onPress={() =>
               props.navigation.navigate('SalmoDetail', {
                 salmo: props.listText
-              })}
+              })
+            }
           />
         </Right>
       ) : null;
@@ -113,7 +122,8 @@ const ListDetailItem = props => {
         last
         button
         onPress={() =>
-          props.openChooser('Salmo', props.listName, props.listKey)}>
+          props.openChooser('Salmo', props.listName, props.listKey)
+        }>
         <Left>
           <Icon name="musical-notes" />
         </Left>
