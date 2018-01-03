@@ -6,6 +6,7 @@
     "psalmist": "Cantore",
     "delete": "Rimuovere",
     "cancel": "Annullare",
+    "create": "Creare",
     "delete confirmation": "Confermate la rimozione?",
     "lists": {
       "already exists": "Esiste già un elenco con lo stesso nome",
@@ -70,6 +71,15 @@
     "signing to the virgin": "Canti della Vergine",
     "children's songs": "Canti dei Bambini",
     "lutes and vespers": "Lodi e Vespri"
+  },
+  "search_tabs": {
+    "all": "Tutto",
+    "entrance": "Ingresso",
+    "peace and offerings": "Pace/Offertorio",
+    "fraction of bread": "Pane",
+    "communion": "Communione",
+    "exit": "Finale",
+    "signing to the virgin": "Vergine"
   },
   "search_note": {
     "alpha": "Tutti i canti in ordine alfabetico",

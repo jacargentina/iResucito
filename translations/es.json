@@ -6,6 +6,7 @@
     "psalmist": "Salmista",
     "delete": "Eliminar",
     "cancel": "Cancelar",
+    "create": "Crear",
     "delete confirmation": "¿Confirma el borrado?",
     "lists": {
       "already exists": "Ya existe una lista con el mismo nombre",
@@ -69,6 +70,15 @@
     "signing to the virgin": "Cantos a la Virgen",
     "children's songs": "Cantos de los Niños",
     "lutes and vespers": "Laúdes y Vísperas"
+  },
+  "search_tabs": {
+    "all": "Todos",
+    "entrance": "Entrada",
+    "peace and offerings": "Paz/Ofrendas",
+    "fraction of bread": "Fracción Pan",
+    "communion": "Comunión",
+    "exit": "Salida",
+    "signing to the virgin": "Virgen"
   },
   "search_note": {
     "alpha": "Todos los cantos en orden alfabético",

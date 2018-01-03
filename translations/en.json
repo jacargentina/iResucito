@@ -6,6 +6,7 @@
     "psalmist": "Psalmist",
     "delete": "Delete",
     "cancel": "Cancel",
+    "create": "Create",
     "delete confirmation": "Do you confirm deletion?",
     "lists": {
       "already exists": "A list with the same name already exists",
@@ -70,6 +71,15 @@
     "signing to the virgin": "Songs to the Virgin",
     "children's songs": "Songs for Children",
     "lutes and vespers": "Lauds and Vespers"
+  },
+  "search_tabs": {
+    "all": "All",
+    "entrance": "Entrance",
+    "peace and offerings": "Peace/Offerings",
+    "fraction of bread": "Bread",
+    "communion": "Communion",
+    "exit": "Exit",
+    "signing to the virgin": "Virgin"
   },
   "search_note": {
     "alpha": "All the songs in alphabetical order",
