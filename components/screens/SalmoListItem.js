@@ -67,7 +67,26 @@ class SalmoListItem extends React.Component {
         );
       }
     }
-    if (this.props.salmo.locale === false && !abrirRestoResaltado) {
+    if (this.props.salmo.error) {
+      var errorDeCarga = (
+        <Right>
+          <Icon
+            name="bug"
+            style={{
+              fontSize: 32,
+              color: commonTheme.brandPrimary
+            }}
+            onPress={() => {
+              Alert.alert(
+                'Error',
+                this.props.salmo.error
+              );
+            }}
+          />
+        </Right>
+      );
+    }
+    else if (this.props.salmo.locale === false && !abrirRestoResaltado) {
       var advertenciaSinLocale = (
         <Right>
           <Icon
@@ -116,6 +135,7 @@ class SalmoListItem extends React.Component {
         </Body>
         {abrirRestoResaltado}
         {advertenciaSinLocale}
+        {errorDeCarga}
       </ListItem>
     );
   }

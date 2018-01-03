@@ -22,7 +22,8 @@
       "La canzone non è stata ancora incorporata nella tua lingua",
     "donate message":
       "Contribuisci a fare una donazione: verrà utilizzata per gli sviluppatori che traducono in tutte le lingue possibili. Pace!",
-    "donate button": "Donare"
+    "donate button": "Donare",
+    "no songs found": "Nessuna canzone trovata"
   },
   "list_type": {
     "eucharist": "Eucaristia",

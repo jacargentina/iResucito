@@ -12,6 +12,7 @@ import {
   getCurrentRouteKey,
   getCurrentRouteSalmosTextFilter
 } from '../selectors';
+import I18n from '../../i18n';
 
 class SalmoList extends React.Component {
   constructor(props) {
@@ -33,7 +34,7 @@ class SalmoList extends React.Component {
         }}>
         {this.props.items.length == 0 && (
           <Text note style={{ textAlign: 'center', paddingTop: 20 }}>
-            Ningún salmo encontrado
+            {I18n.t('ui.no songs found')}
           </Text>
         )}
         <FlatList

@@ -22,7 +22,8 @@
       "The song has not yet been incorporated into your language",
     "donate message":
       "Help making a donation: it will be used for developers who translate to all possible languages. Peace!",
-    "donate button": "Donate"
+    "donate button": "Donate",
+    "no songs found": "No songs found"
   },
   "list_type": {
     "eucharist": "Eucharist",

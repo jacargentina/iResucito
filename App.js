@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect, Provider } from 'react-redux';
-import { BackHandler, Platform, Alert } from 'react-native';
+import { BackHandler, Platform } from 'react-native';
 import { addNavigationHelpers, NavigationActions } from 'react-navigation';
 import RNFS from 'react-native-fs';
 import SplashScreen from 'react-native-splash-screen';
@@ -160,7 +160,7 @@ const mapDispatchToProps = dispatch => {
             canto.fullText = lineas.join(' ');
           })
           .catch(err => {
-            Alert.alert('Error', err.message);
+            canto.error = err.message;
           });
         promises.push(loadSalmo);
       });
