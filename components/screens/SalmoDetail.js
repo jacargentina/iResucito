@@ -103,6 +103,12 @@ function preprocesarLinea(text) {
       style: styles.lineaNormal,
       prefijoStyle: styles.prefijo
     };
+    // Si tiene indicador de Nota?
+    if (it.texto.endsWith('\u2217')) {
+      it.texto = it.texto.replace('\u2217', '');
+      it.sufijo = '\u2217';
+      it.sufijoStyle = styles.lineaNotas;
+    }
   } else if (esLineaDeNotas(text)) {
     it = {
       prefijo: '',
@@ -197,18 +203,26 @@ class SalmoDetail extends React.Component {
       if (it.notas && i < firstPass.length - 1) {
         var nextItmn = firstPass[i + 1];
         if (nextItmn.prefijo !== '') {
-          it.style = styles.lineaNotasConMargen;  
+          it.style = styles.lineaNotasConMargen;
         }
       }
       return it;
     });
     var items = secondPass.map((it, i) => {
+      if (it.sufijo) {
+        var sufijo = (
+          <Text key={i + 'sufijo'} style={it.sufijoStyle}>
+            {it.sufijo}
+          </Text>
+        );
+      }
       return (
         <Text numberOfLines={1} key={i + 'texto'} style={it.style}>
           <Text key={i + 'prefijo'} style={it.prefijoStyle || it.style}>
             {it.prefijo}
           </Text>
           {it.texto}
+          {sufijo}
         </Text>
       );
     });
@@ -267,25 +281,23 @@ const mapDispatchToProps = dispatch => {
 
 const TransportNotesMenu = props => {
   var menuOptionItems = notas.map((nota, i) => {
+    if (props.transportToNote === nota)
+      var customStyles = {
+        optionWrapper: {
+          backgroundColor: commonTheme.brandPrimary,
+          paddingHorizontal: 10,
+          paddingVertical: 10
+        },
+        optionText: {
+          color: 'white'
+        }
+      };
     return (
       <MenuOption
         key={i}
         value={nota}
         text={nota}
-        customStyles={
-          props.transportToNote === nota ? (
-            {
-              optionWrapper: {
-                backgroundColor: commonTheme.brandPrimary,
-                paddingHorizontal: 10,
-                paddingVertical: 10
-              },
-              optionText: {
-                color: 'white'
-              }
-            }
-          ) : null
-        }
+        customStyles={customStyles}
       />
     );
   });
