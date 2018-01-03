@@ -8,7 +8,7 @@ var search = [
     route: 'SalmoList',
     params: {},
     badge: badges.Alfabético,
-    chooser: 'Todos'
+    chooser: I18n.t('search_tabs.all')
   },
   {
     title: I18n.t('search_title.stage'),
@@ -91,7 +91,7 @@ var search = [
     route: 'SalmoList',
     params: { filter: { entrada: true } },
     badge: null,
-    chooser: 'Entrada'
+    chooser: I18n.t('search_tabs.entrance')
   },
   {
     title: I18n.t('search_title.peace and offerings'),
@@ -99,7 +99,7 @@ var search = [
     route: 'SalmoList',
     params: { filter: { paz: true } },
     badge: null,
-    chooser: 'Paz/Ofrendas'
+    chooser: I18n.t('search_tabs.peace and offerings')
   },
   {
     title: I18n.t('search_title.fraction of bread'),
@@ -107,7 +107,7 @@ var search = [
     route: 'SalmoList',
     params: { filter: { fraccion: true } },
     badge: null,
-    chooser: 'Fracción Pan'
+    chooser: I18n.t('search_tabs.fraction of bread')
   },
   {
     title: I18n.t('search_title.communion'),
@@ -115,7 +115,7 @@ var search = [
     route: 'SalmoList',
     params: { filter: { comunion: true } },
     badge: null,
-    chooser: 'Comunión'
+    chooser: I18n.t('search_tabs.communion')
   },
   {
     title: I18n.t('search_title.exit'),
@@ -123,7 +123,7 @@ var search = [
     route: 'SalmoList',
     params: { filter: { final: true } },
     badge: null,
-    chooser: 'Salida'
+    chooser: I18n.t('search_tabs.exit')
   },
   {
     title: I18n.t('search_title.signing to the virgin'),
@@ -131,7 +131,7 @@ var search = [
     route: 'SalmoList',
     params: { filter: { virgen: true } },
     badge: null,
-    chooser: 'Virgen'
+    chooser: I18n.t('search_tabs.signing to the virgin')
   },
   {
     title: I18n.t('search_title.children\'s songs'),

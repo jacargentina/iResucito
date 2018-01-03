@@ -7,7 +7,7 @@ import SalmoListItem from './SalmoListItem';
 import AppNavigatorConfig from '../AppNavigatorConfig';
 import { setSalmosFilterText } from '../actions';
 import {
-  getProcessedSalmos,
+  makeGetProcessedSalmos,
   getShowSalmosBadge,
   getCurrentRouteKey,
   getCurrentRouteSalmosTextFilter
@@ -61,13 +61,17 @@ class SalmoList extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    textFilterId: getCurrentRouteKey(state),
-    textFilter: getCurrentRouteSalmosTextFilter(state),
-    items: getProcessedSalmos(state),
-    showBadge: getShowSalmosBadge(state)
+const makeMapStateToProps = () => {
+  const getProcessedSalmos = makeGetProcessedSalmos();
+  const mapStateToProps = (state, props) => {
+    return {
+      textFilterId: getCurrentRouteKey(state),
+      textFilter: getCurrentRouteSalmosTextFilter(state),
+      items: getProcessedSalmos(state, props),
+      showBadge: getShowSalmosBadge(state)
+    };
   };
+  return mapStateToProps;
 };
 
 const mapDispatchToProps = (dispatch, props) => {
@@ -98,7 +102,7 @@ const CountText = props => {
   );
 };
 
-const ConnectedCountText = connect(mapStateToProps)(CountText);
+const ConnectedCountText = connect(makeMapStateToProps)(CountText);
 
 SalmoList.navigationOptions = props => ({
   title:
@@ -108,4 +112,4 @@ SalmoList.navigationOptions = props => ({
   headerRight: <ConnectedCountText {...props} />
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(SalmoList);
+export default connect(makeMapStateToProps, mapDispatchToProps)(SalmoList);

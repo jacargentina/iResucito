@@ -133,10 +133,18 @@ export const getCurrentRouteSalmos = createSelector(
   }
 );
 
+export const getFilterFromProps = (state, props) => props.filter;
+
 export const getProcessedSalmos = createSelector(
   getCurrentRouteSalmos,
+  getFilterFromProps,
   getCurrentRouteSalmosTextFilter,
-  (salmos, text_filter) => {
+  (salmos, props_filter, text_filter) => {
+    if (props_filter) {
+      for (var name in props_filter) {
+        salmos = salmos.filter(s => s[name] == props_filter[name]);
+      }
+    }
     if (text_filter) {
       salmos = salmos.filter(s => {
         return (
@@ -155,3 +163,7 @@ export const getShowSalmosBadge = createSelector(
     return filter == null || !filter.hasOwnProperty('etapa');
   }
 );
+
+export const makeGetProcessedSalmos = () => {
+  return createSelector(getProcessedSalmos, salmos => salmos);
+};
