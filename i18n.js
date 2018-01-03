@@ -1,4 +1,4 @@
-import I18n, { getLanguages } from 'react-native-i18n';
+import I18n from 'react-native-i18n';
 
 I18n.fallbacks = true;
 
@@ -8,9 +8,5 @@ I18n.translations = {
   en: require('./translations/en'),
   it: require('./translations/it')
 };
-
-getLanguages().then(langs => {
-  console.log('i18n languages', langs);
-});
 
 export default I18n;
