@@ -90,6 +90,8 @@ function preprocesarLinea(text) {
   } else if (
     text.startsWith('S.') ||
     text.startsWith('C.') ||
+    text.startsWith('D.') ||
+    text.startsWith('U.') ||
     text.startsWith('A.') ||
     text.startsWith('P.') ||
     text.startsWith('Niños.') ||
