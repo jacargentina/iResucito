@@ -1,5 +1,6 @@
 {
   "ui": {
+    "default": "Predeterminado",
     "back": "Atrás",
     "done": "Listo",
     "version": "Versión",
@@ -20,7 +21,7 @@
     "locale warning title": "Traducción incompleta",
     "locale warning message": "El canto aún no se ha incorporado a su idioma",
     "donate message":
-      "Ayuda haciendo una donación: se usará para desarrolladores que traduzcan a todos los idiomas posibles. La Paz!",
+      "Ayuda haciendo una donación. La Paz!",
     "donate button": "Donar",
     "no songs found": "Ningún canto encontrado"
   },
@@ -38,16 +39,16 @@
     "salida": "Canto final",
     "1-monicion": "Monición 1a Lectura",
     "1": "1a Lectura",
-    "1-salmo": "Canto 1a Lectura",
+    "1-salmo": "1a Canto",
     "2-monicion": "Monición 2a Lectura",
     "2": "2a Lectura",
-    "2-salmo": "Canto 2a Lectura",
+    "2-salmo": "2a Canto",
     "3-monicion": "Monición 3a Lectura",
     "3": "3a Lectura",
-    "3-salmo": "Canto 3a Lectura",
-    "evangelio-monicion": "Monición Evangelio",
+    "3-salmo": "3a Canto",
+    "evangelio-monicion": "Monición al Evangelio",
     "evangelio": "Evangelio",
-    "nota": "Nota"
+    "nota": "Notas"
   },
   "search_title": {
     "alpha": "Alfabético",
@@ -124,10 +125,12 @@
     "community list": "Importar contactos"
   },
   "settings_title": {
+    "locale": "Lenguaje",
     "keep awake": "Mantener despierto",
     "about": "Acerca de"
   },
   "settings_note": {
+    "locale": "Traduce la app a un lenguaje disponible",
     "keep awake":
       "Evitar que el dispositivo entre en reposo al visualizar un salmo"
   }

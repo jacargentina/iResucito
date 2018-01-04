@@ -1,5 +1,6 @@
 {
   "ui": {
+    "default": "Predefinito",
     "back": "Ritorno",
     "done": "Completato",
     "version": "Versione",
@@ -21,7 +22,7 @@
     "locale warning message":
       "La canzone non è stata ancora incorporata nella tua lingua",
     "donate message":
-      "Contribuisci a fare una donazione: verrà utilizzata per gli sviluppatori che traducono in tutte le lingue possibili. Pace!",
+      "Contribuisci a fare una donazione. Pace!",
     "donate button": "Donare",
     "no songs found": "Nessuna canzone trovata"
   },
@@ -39,16 +40,16 @@
     "salida": "Canzone finale",
     "1-monicion": "Ammonizione 1a Lettura",
     "1": "1a Lettura",
-    "1-salmo": "Canzone 1a lettura",
+    "1-salmo": "1a Canzone",
     "2-monicion": "Ammonizione 2a Lettura",
     "2": "2a Lettura",
-    "2-salmo": "Canzone 2a lettura",
+    "2-salmo": "2a Canzone",
     "3-monicion": "Ammonizione 3a Lettura",
     "3": "3a Lettura",
-    "3-salmo": "Canzone 3a lettura",
+    "3-salmo": "3a Canzone",
     "evangelio-monicion": "Ammonizione Vangelo",
     "evangelio": "Vangelo",
-    "nota": "Nota"
+    "nota": "Notas"
   },
   "search_title": {
     "alpha": "Alfabetico",
@@ -125,10 +126,12 @@
     "community list": "Importa contatti"
   },
   "settings_title": {
+    "locale": "Lingua",
     "keep awake": "Mantere svegli",
     "about": "Su"
   },
   "settings_note": {
+    "locale": "Traduci l'app in una lingua disponibile",
     "keep awake":
       "Evitare que il dispositivo entri in riposo al momento di visualizzare un salmo"
   }

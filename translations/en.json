@@ -1,5 +1,6 @@
 {
   "ui": {
+    "default": "Default",
     "back": "Back",
     "done": "Done",
     "version": "Version",
@@ -21,7 +22,7 @@
     "locale warning message":
       "The song has not yet been incorporated into your language",
     "donate message":
-      "Help making a donation: it will be used for developers who translate to all possible languages. Peace!",
+      "Help making a donation. Peace!",
     "donate button": "Donate",
     "no songs found": "No songs found"
   },
@@ -33,22 +34,22 @@
   "list_item": {
     "ambiental": "General Admonition",
     "entrada": "Entrance Song",
-    "paz": "Peace and Offerings",
+    "paz": "Peace and Offertory",
     "comunion-pan": "Bread",
     "comunion-caliz": "Chalice",
     "salida": "Final Song",
     "1-monicion": "1st Admonition",
     "1": "1st Reading",
-    "1-salmo": "1st Reading Song",
+    "1-salmo": "1st Song",
     "2-monicion": "2nd Admonition",
     "2": "2nd Reading",
-    "2-salmo": "2nd Reading Song",
+    "2-salmo": "2nd Song",
     "3-monicion": "3rd Admonition",
     "3": "3rd Reading",
-    "3-salmo": "3rd Reading Song",
-    "evangelio-monicion": "Gospel Admonition",
+    "3-salmo": "3rd Song",
+    "evangelio-monicion": "Admonition to the Gospel",
     "evangelio": "Gospel",
-    "nota": "Note"
+    "nota": "Notes"
   },
   "search_title": {
     "alpha": "Alphabetic",
@@ -68,7 +69,7 @@
     "peace and offerings": "Peace and Offerings",
     "fraction of bread": "Fraction of Bread",
     "communion": "Communion",
-    "exit": "Exit",
+    "exit": "Final Songs",
     "signing to the virgin": "Songs to the Virgin",
     "children's songs": "Songs for Children",
     "lutes and vespers": "Lauds and Vespers"
@@ -79,7 +80,7 @@
     "peace and offerings": "Peace/Offerings",
     "fraction of bread": "Bread",
     "communion": "Communion",
-    "exit": "Exit",
+    "exit": "Final",
     "signing to the virgin": "Virgin"
   },
   "search_note": {
@@ -87,21 +88,21 @@
     "precatechumenate": "All the songs for the Precatechumenate stage",
     "catechumenate": "All the songs for the Catechumenate stage",
     "election": "All the songs for the Election stage",
-    "liturgy": "The songs for liturgical celebrations",
-    "advent": "The songs for Advent time",
-    "christmas": "The songs for Christmas time",
-    "lent": "The songs for Lent time",
-    "easter": "The songs for Easter time",
-    "pentecost": "The songs for Pentecost time",
-    "entrance": "The songs for the beginning of the liturgies",
+    "liturgy": "Songs for liturgical celebrations",
+    "advent": "Songs for Advent Season",
+    "christmas": "Songs for Christmas Season",
+    "lent": "Songs for Lent Season",
+    "easter": "Songs for Easter Season",
+    "pentecost": "Songs for Pentecost",
+    "entrance": "Songs for the beginning of the liturgies",
     "peace and offerings":
-      "The songs for the greeting of peace and the offerings",
-    "fraction of bread": "The songs for the fraction of bread",
-    "communion": "The songs for the communion",
-    "exit": "The songs for the ending of the liturgies",
-    "signing to the virgin": "The songs dedicated to the Virgin Mary",
+      "Songs for the greeting of peace and the offerings",
+    "fraction of bread": "Songs for the fraction of bread",
+    "communion": "Songs for the communion",
+    "exit": "Songs for the ending of the liturgies",
+    "signing to the virgin": "Songs dedicated to the Virgin Mary",
     "children's songs": "Songs for children",
-    "lutes and vespers": "The psalms of Lauds and Vespers"
+    "lutes and vespers": "Psalms of Lauds and Vespers"
   },
   "screen_title": {
     "search": "Search",
@@ -117,19 +118,21 @@
   },
   "call_to_action_text": {
     "add lists":
-      "The lists allow you to organize a liturgical celebration to remember or share with the brothers of the community",
+      "The lists allow you to organize a liturgical celebration to remember or share with the brothers and sisters of the community",
     "community list":
-      "You can import from your contacts the names of the brothers in the community and use them when creating the lists"
+      "You can import from your contacts the names of the brothers and sisters in the community and use them when creating the lists"
   },
   "call_to_action_button": {
     "add lists": "Create a list",
     "community list": "Import contacts"
   },
   "settings_title": {
+    "locale": "Language",
     "keep awake": "Keep awake",
     "about": "About"
   },
   "settings_note": {
-    "keep awake": "Prevent the device from resting when viewing a psalm"
+    "locale": "Translate the app to available languages",
+    "keep awake": "Prevent the device from shutting off when viewing a song"
   }
 }
