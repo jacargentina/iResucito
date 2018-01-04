@@ -5,7 +5,6 @@ import { Tab, Tabs, ScrollableTab } from 'native-base';
 import BaseModal from './BaseModal';
 import SalmoList from './SalmoList';
 import { addSalmoToList, closeChooserDialog } from '../actions';
-import search from '../search';
 import I18n from '../../i18n';
 
 const styles = StyleSheet.create({
@@ -23,7 +22,8 @@ const SalmoChooserDialog = props => {
         <SalmoList
           filter={v.params.filter}
           onPress={salmo =>
-            props.salmoSelected(salmo, props.listName, props.listKey)}
+            props.salmoSelected(salmo, props.listName, props.listKey)
+          }
         />
       </Tab>
     );
@@ -43,6 +43,7 @@ const SalmoChooserDialog = props => {
 
 const mapStateToProps = state => {
   var chooser = state.ui.get('chooser');
+  var search = state.ui.get('search');
   var chooser_target_list = state.ui.get('chooser_target_list');
   var chooser_target_key = state.ui.get('chooser_target_key');
   var tabs = search.filter(x => x.chooser != undefined);

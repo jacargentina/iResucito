@@ -2,21 +2,15 @@ import React from 'react';
 import { connect, Provider } from 'react-redux';
 import { BackHandler, Platform } from 'react-native';
 import { addNavigationHelpers, NavigationActions } from 'react-navigation';
-import RNFS from 'react-native-fs';
 import SplashScreen from 'react-native-splash-screen';
 import { Root, StyleProvider } from 'native-base';
 import getTheme from './native-base-theme/components';
 import commonTheme from './native-base-theme/variables/platform';
 import Store from './components/store';
 import AppNavigator from './components/AppNavigator';
-import { INITIALIZE_DONE } from './components/actions';
-import { localdata, clouddata } from './components/data';
-import { esLineaDeNotas } from './components/util';
-import Indice from './Indice.json';
 import { MenuContext } from 'react-native-popup-menu';
-
-import I18n from './i18n';
-const locale = I18n.currentLocale().split('-')[0];
+import { localdata, clouddata } from './components/data';
+import { initializeSetup, initializeLocale } from './components/actions';
 
 if (Platform.OS == 'android') {
   // Reemplazar startsWith en Android
@@ -84,86 +78,13 @@ const mapStateToProps = state => ({
   nav: state.nav
 });
 
-const ordenAlfabetico = (a, b) => {
-  if (a.titulo < b.titulo) {
-    return -1;
-  }
-  if (a.titulo > b.titulo) {
-    return 1;
-  }
-  return 0;
-};
-
-var basePath = Platform.OS == 'ios' ? `${RNFS.MainBundlePath}/` : '';
-
 const mapDispatchToProps = dispatch => {
   return {
     dispatch,
     init: () => {
-      // Cargar la lista de salmos
-      var cantos = Object.keys(Indice);
-      cantos = cantos.map(key => {
-
-        var localeOk = Indice[key].files.hasOwnProperty(locale);
-
-        var nombre = localeOk
-          ? Indice[key].files[locale]
-          : Indice[key].files['es'];
-
-        var path = localeOk
-          ? `${basePath}Salmos/${locale}/${nombre}.txt`
-          : `${basePath}Salmos/es/${nombre}.txt`;
-
-        var titulo = nombre.includes('-')
-          ? nombre.substring(0, nombre.indexOf('-')).trim()
-          : nombre;
-
-        var fuente =
-          titulo !== nombre
-            ? nombre.substring(nombre.indexOf('-') + 1).trim()
-            : '';
-
-        var info = {
-          titulo: titulo,
-          fuente: fuente,
-          nombre: nombre,
-          path: path,
-          fullText: null,
-          lines: null,
-          locale: localeOk
-        };
-
-        return Object.assign(Indice[key], info);
-      });
-      cantos.sort(ordenAlfabetico);
-      var action = {
-        type: INITIALIZE_DONE,
-        salmos: cantos,
-        settings: null,
-        lists: null,
-        contacts: []
-      };
+      /* eslint-disable no-console */
       var promises = [];
-      cantos.forEach(canto => {
-        var loadSalmo =
-          Platform.OS == 'ios'
-            ? RNFS.readFile(canto.path)
-            : RNFS.readFileAssets(canto.path);
-        loadSalmo
-          .then(content => {
-            // Separar en lineas, y quitar todas hasta llegar a las notas
-            var lineas = content.split('\n');
-            while (!esLineaDeNotas(lineas[0])) {
-              lineas.shift();
-            }
-            canto.lines = lineas;
-            canto.fullText = lineas.join(' ');
-          })
-          .catch(err => {
-            canto.error = err.message;
-          });
-        promises.push(loadSalmo);
-      });
+      // Cargar configuracion
       promises.push(
         localdata
           .getBatchData([
@@ -172,19 +93,21 @@ const mapDispatchToProps = dispatch => {
             { key: 'contacts' }
           ])
           .then(result => {
-            [action.settings, action.lists, action.contacts] = result;
-            dispatch(action);
+            dispatch(
+              initializeSetup(result.settings, result.lists, result.contacts)
+            );
           })
           .catch(err => {
-            /* eslint-disable no-console */
             console.log('error loading from localdata', err);
-            dispatch(action);
+          })
+          .finally(() => {
+            dispatch(initializeLocale());
           })
       );
+      // Cargar listas desde iCloud
       promises.push(
         clouddata.load({ key: 'lists' }).then(res => {
-          /* eslint-disable no-console */
-          console.log('loaded from cloud', res);
+          console.log('loaded from iCloud', res);
         })
       );
       return Promise.all(promises);

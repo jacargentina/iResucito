@@ -7,8 +7,8 @@ import SalmoChooserDialog from './SalmoChooserDialog';
 import ContactChooserDialog from './ContactChooserDialog';
 import ContactImportDialog from './ContactImportDialog';
 import AcercaDe from './AcercaDe';
-import search from '../search';
 import I18n from '../../i18n';
+import { getSearchItems } from '../selectors';
 
 const SalmoSearch = props => {
   return (
@@ -21,10 +21,10 @@ const SalmoSearch = props => {
       <ContactImportDialog />
       <ContactChooserDialog />
       <FlatList
-        data={search}
+        data={props.items}
         keyExtractor={item => item.title}
         renderItem={({ item, index }) => {
-          var nextItem = search[index + 1];
+          var nextItem = props.items[index + 1];
           if (item.divider) {
             return (
               <Separator bordered>
@@ -65,4 +65,10 @@ SalmoSearch.navigationOptions = () => ({
   }
 });
 
-export default connect()(SalmoSearch);
+const mapStateToProps = state => {
+  return {
+    items: getSearchItems(state)
+  };
+};
+
+export default connect(mapStateToProps)(SalmoSearch);

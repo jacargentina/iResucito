@@ -1,6 +1,8 @@
 import { Platform, Share } from 'react-native';
 import {
-  INITIALIZE_DONE,
+  INITIALIZE_SETUP,
+  INITIALIZE_SEARCH,
+  INITIALIZE_SONGS,
   SET_SALMOS_FILTER,
   SET_CONTACTS_FILTER,
   SET_ABOUT_VISIBLE,
@@ -28,6 +30,7 @@ import { localdata, clouddata } from '../data';
 import { getFriendlyText, getEsSalmo } from '../util';
 
 const initialState = Map({
+  search: [],
   salmos: null,
   salmos_text_filter: Map(),
   salmos_transport_note: null,
@@ -47,7 +50,8 @@ const initialState = Map({
   lists: Map(),
   contacts: List(),
   settings: Map({
-    keepAwake: true
+    keepAwake: true,
+    locale: 'default'
   })
 });
 
@@ -84,8 +88,11 @@ const getItemForShare = (listMap, key) => {
 
 export default function ui(state = initialState, action) {
   switch (action.type) {
-    case INITIALIZE_DONE:
-      state = state.set('salmos', action.salmos);
+    case INITIALIZE_SEARCH:
+      return state.set('search', action.items);
+    case INITIALIZE_SONGS:
+      return state.set('salmos', action.items);
+    case INITIALIZE_SETUP:
       if (action.settings) {
         state = state.set('settings', Map(action.settings));
       }

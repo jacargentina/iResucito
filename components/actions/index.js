@@ -1,4 +1,6 @@
-export const INITIALIZE_DONE = 'INITIALIZE_DONE';
+export const INITIALIZE_SETUP = 'INITIALIZE_SETUP';
+export const INITIALIZE_SONGS = 'INITIALIZE_SONGS';
+export const INITIALIZE_SEARCH = 'INITIALIZE_SEARCH';
 
 export const SET_SALMOS_FILTER = 'SET_SALMOS_FILTER';
 export const SET_CONTACTS_FILTER = 'SET_CONTACTS_FILTER';
@@ -27,6 +29,27 @@ export const CONTACT_TOGGLE_ATTRIBUTE = 'CONTACT_TOGGLE_ATTRIBUTE';
 
 import { Alert, Platform } from 'react-native';
 import Contacts from 'react-native-contacts';
+import RNFS from 'react-native-fs';
+import I18n from '../../i18n';
+import { esLineaDeNotas } from '../util';
+import search from '../search';
+import Indice from '../../Indice.json';
+
+export const initializeSetup = (settings, lists, contacts) => {
+  return {
+    type: INITIALIZE_SETUP,
+    settings: settings,
+    lists: lists,
+    contacts: contacts || []
+  };
+};
+
+export const initializeSongs = songs => {
+  return {
+    type: INITIALIZE_SONGS,
+    items: songs
+  };
+};
 
 export const openChooserDialog = (chooser, listName, listKey) => {
   return {
@@ -153,5 +176,92 @@ export const setContactAttribute = (contact, attribute) => {
     type: CONTACT_TOGGLE_ATTRIBUTE,
     contact: contact,
     attribute: attribute
+  };
+};
+
+const ordenAlfabetico = (a, b) => {
+  if (a.titulo < b.titulo) {
+    return -1;
+  }
+  if (a.titulo > b.titulo) {
+    return 1;
+  }
+  return 0;
+};
+
+export const processSongsMetadata = rawLocale => {
+  var locale = rawLocale.split('-')[0];
+  var basePath = Platform.OS == 'ios' ? `${RNFS.MainBundlePath}/` : '';
+  var songs = Object.keys(Indice);
+  songs = songs.map(key => {
+    var localeOk = Indice[key].files.hasOwnProperty(locale);
+    var nombre = localeOk ? Indice[key].files[locale] : Indice[key].files['es'];
+    var path = localeOk
+      ? `${basePath}Salmos/${locale}/${nombre}.txt`
+      : `${basePath}Salmos/es/${nombre}.txt`;
+    var titulo = nombre.includes('-')
+      ? nombre.substring(0, nombre.indexOf('-')).trim()
+      : nombre;
+    var fuente =
+      titulo !== nombre ? nombre.substring(nombre.indexOf('-') + 1).trim() : '';
+    var info = {
+      titulo: titulo,
+      fuente: fuente,
+      nombre: nombre,
+      path: path,
+      fullText: null,
+      lines: null,
+      locale: localeOk
+    };
+    return Object.assign(Indice[key], info);
+  });
+  songs.sort(ordenAlfabetico);
+  return songs;
+};
+
+export const initializeSearch = () => {
+  return {
+    type: INITIALIZE_SEARCH,
+    items: search()
+  };
+};
+
+export const loadSongs = songs => {
+  return songs.map(canto => {
+    var loadSalmo =
+      Platform.OS == 'ios'
+        ? RNFS.readFile(canto.path)
+        : RNFS.readFileAssets(canto.path);
+    return loadSalmo
+      .then(content => {
+        // Separar en lineas, y quitar todas hasta llegar a las notas
+        var lineas = content.split('\n');
+        while (!esLineaDeNotas(lineas[0])) {
+          lineas.shift();
+        }
+        canto.lines = lineas;
+        canto.fullText = lineas.join(' ');
+      })
+      .catch(err => {
+        canto.error = err.message;
+      });
+  });
+};
+
+export const initializeLocale = () => {
+  return (dispatch, getState) => {
+    var locale = getState().ui.getIn(['settings','locale']);
+    if (locale === 'default') {
+      locale = require('react-native').NativeModules.RNI18n.languages[0];
+    }
+    I18n.defaultLocale = locale;
+    I18n.locale = locale;
+    // Construir menu de búsqueda
+    dispatch(initializeSearch());
+    // Construir metadatos de cantos
+    var songs = processSongsMetadata(locale);
+    return Promise.all(loadSongs(songs)).then(() => {
+      dispatch(initializeSongs(songs));
+    });
   };
 };

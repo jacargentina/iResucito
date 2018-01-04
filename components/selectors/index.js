@@ -18,6 +18,10 @@ const getSalmos = state => {
   return state.ui.get('salmos');
 };
 
+export const getSearchItems = state => {
+  return state.ui.get('search');
+};
+
 const getListFromNavigation = (state, props) => {
   return state.ui.getIn(['lists', props.navigation.state.params.list.name]);
 };
