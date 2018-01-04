@@ -27,6 +27,10 @@ export const localdata = new Storage({
     lists(params) {
       let { resolve } = params;
       resolve();
+    },
+    contacts(params) {
+      let { resolve } = params;
+      resolve();
     }
   }
 });
