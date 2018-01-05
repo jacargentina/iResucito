@@ -135,8 +135,8 @@ const buildItems = () => {
       chooser: I18n.t('search_tabs.signing to the virgin')
     },
     {
-      title: I18n.t('search_title.children\\\'s songs'),
-      note: I18n.t('search_note.children\\\'s songs'),
+      title: I18n.t('search_title.children\'s songs'),
+      note: I18n.t('search_note.children\'s songs'),
       route: 'SalmoList',
       params: { filter: { niños: true } },
       badge: null
