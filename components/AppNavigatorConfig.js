@@ -1,5 +1,5 @@
 import commonTheme from '../native-base-theme/variables/platform';
-import I18n from '../i18n';
+import I18n from './translations';
 
 const AppNavigatorConfig = {
   navigationOptions: {

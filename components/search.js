@@ -1,5 +1,5 @@
 import badges from './badges';
-import I18n from '../i18n';
+import I18n from './translations';
 
 const buildItems = () => {
   var items = [

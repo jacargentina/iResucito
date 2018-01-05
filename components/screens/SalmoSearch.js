@@ -7,7 +7,7 @@ import SalmoChooserDialog from './SalmoChooserDialog';
 import ContactChooserDialog from './ContactChooserDialog';
 import ContactImportDialog from './ContactImportDialog';
 import AcercaDe from './AcercaDe';
-import I18n from '../../i18n';
+import I18n from '../translations';
 import { getSearchItems } from '../selectors';
 
 const SalmoSearch = props => {

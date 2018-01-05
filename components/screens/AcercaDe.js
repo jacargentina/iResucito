@@ -11,7 +11,7 @@ import {
 import { Text, Icon, H1, Button } from 'native-base';
 import DeviceInfo from 'react-native-device-info';
 import { hideAbout } from '../actions';
-import I18n from '../../i18n';
+import I18n from '../translations';
 
 var pack = require('../../app.json');
 var cristo = require('../../img/cristo.jpg');

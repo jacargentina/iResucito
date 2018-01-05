@@ -30,10 +30,10 @@ export const CONTACT_TOGGLE_ATTRIBUTE = 'CONTACT_TOGGLE_ATTRIBUTE';
 import { Alert, Platform } from 'react-native';
 import Contacts from 'react-native-contacts';
 import RNFS from 'react-native-fs';
-import I18n from '../../i18n';
+import I18n from '../translations';
 import { esLineaDeNotas, getDefaultLocale } from '../util';
 import search from '../search';
-import Indice from '../../Indice.json';
+import SongsIndex from '../../songs';
 import { localdata, clouddata } from '../data';
 
 export const initializeSetup = (settings, lists, contacts) => {
@@ -193,13 +193,13 @@ const ordenAlfabetico = (a, b) => {
 export const processSongsMetadata = rawLocale => {
   var locale = rawLocale.split('-')[0];
   var basePath = Platform.OS == 'ios' ? `${RNFS.MainBundlePath}/` : '';
-  var songs = Object.keys(Indice);
+  var songs = Object.keys(SongsIndex);
   songs = songs.map(key => {
-    var localeOk = Indice[key].files.hasOwnProperty(locale);
-    var nombre = localeOk ? Indice[key].files[locale] : Indice[key].files['es'];
+    var localeOk = SongsIndex[key].files.hasOwnProperty(locale);
+    var nombre = localeOk ? SongsIndex[key].files[locale] : SongsIndex[key].files['es'];
     var path = localeOk
-      ? `${basePath}Salmos/${locale}/${nombre}.txt`
-      : `${basePath}Salmos/es/${nombre}.txt`;
+      ? `${basePath}songs/${locale}/${nombre}.txt`
+      : `${basePath}songs/es/${nombre}.txt`;
     var titulo = nombre.includes('-')
       ? nombre.substring(0, nombre.indexOf('-')).trim()
       : nombre;
@@ -214,7 +214,7 @@ export const processSongsMetadata = rawLocale => {
       lines: null,
       locale: localeOk
     };
-    return Object.assign(Indice[key], info);
+    return Object.assign(SongsIndex[key], info);
   });
   songs.sort(ordenAlfabetico);
   return songs;

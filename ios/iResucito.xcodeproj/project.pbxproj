@@ -56,7 +56,7 @@
 		88382CCA1FFD514E0060A761 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88382CC91FFD514E0060A761 /* GameKit.framework */; };
 		884E86991FA3C68600389135 /* iResucitoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884E86981FA3C68600389135 /* iResucitoUITests.swift */; };
 		884E86D01FA3C76300389135 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884E86CF1FA3C76200389135 /* SnapshotHelper.swift */; };
-		889530361F6C320D009638BA /* Salmos in Resources */ = {isa = PBXBuildFile; fileRef = 889530351F6C320D009638BA /* Salmos */; };
+		889530361F6C320D009638BA /* songs in Resources */ = {isa = PBXBuildFile; fileRef = 889530351F6C320D009638BA /* songs */; };
 		88BC43B31F8526BF006B7672 /* cristo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 88BC43B11F8526BF006B7672 /* cristo.jpg */; };
 		88BC43B41F8526BF006B7672 /* resucito.gif in Resources */ = {isa = PBXBuildFile; fileRef = 88BC43B21F8526BF006B7672 /* resucito.gif */; };
 		9113E9F9F9684DF9949CFA8E /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 132628F95CC84637AE5D60DF /* Entypo.ttf */; };
@@ -460,7 +460,7 @@
 		884E86981FA3C68600389135 /* iResucitoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iResucitoUITests.swift; sourceTree = "<group>"; };
 		884E869A1FA3C68600389135 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		884E86CF1FA3C76200389135 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
-		889530351F6C320D009638BA /* Salmos */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Salmos; path = ../Salmos; sourceTree = "<group>"; };
+		889530351F6C320D009638BA /* songs */ = {isa = PBXFileReference; lastKnownFileType = folder; name = songs; path = ../songs; sourceTree = "<group>"; };
 		88BC43B11F8526BF006B7672 /* cristo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cristo.jpg; sourceTree = "<group>"; };
 		88BC43B21F8526BF006B7672 /* resucito.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = resucito.gif; sourceTree = "<group>"; };
 		8DE08EA76B664E9299729E72 /* libRNI18n.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNI18n.a; sourceTree = "<group>"; };
@@ -754,7 +754,7 @@
 			children = (
 				88BC43B11F8526BF006B7672 /* cristo.jpg */,
 				88BC43B21F8526BF006B7672 /* resucito.gif */,
-				889530351F6C320D009638BA /* Salmos */,
+				889530351F6C320D009638BA /* songs */,
 				13B07FAE1A68108700A75B9A /* iResucito */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* iResucitoTests */,
@@ -1440,7 +1440,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				889530361F6C320D009638BA /* Salmos in Resources */,
+				889530361F6C320D009638BA /* songs in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				97134C16B3A5498E9C250334 /* Entypo.ttf in Resources */,

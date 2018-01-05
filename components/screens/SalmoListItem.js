@@ -6,7 +6,7 @@ import Collapsible from 'react-native-collapsible';
 import badges from '../badges';
 import commonTheme from '../../native-base-theme/variables/platform';
 import textTheme from '../../native-base-theme/components/Text';
-import I18n from '../../i18n';
+import I18n from '../translations';
 
 class SalmoListItem extends React.Component {
   constructor(props) {

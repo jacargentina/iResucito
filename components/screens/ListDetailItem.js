@@ -14,7 +14,7 @@ import { View, TextInput } from 'react-native';
 import { openChooserDialog, saveLists, updateListMapText } from '../actions';
 import { getFriendlyText } from '../util';
 import commonTheme from '../../native-base-theme/variables/platform';
-import I18n from '../../i18n';
+import I18n from '../translations';
 
 const ListDetailItem = props => {
   var titulo = getFriendlyText(props.listKey);

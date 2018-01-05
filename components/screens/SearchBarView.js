@@ -4,7 +4,7 @@ import { View, StyleSheet } from 'react-native';
 import { Input, Item, Icon } from 'native-base';
 import debounce from 'lodash/debounce';
 import commonTheme from '../../native-base-theme/variables/platform';
-import I18n from '../../i18n';
+import I18n from '../translations';
 
 class DebouncedInput extends React.Component {
   constructor(props) {

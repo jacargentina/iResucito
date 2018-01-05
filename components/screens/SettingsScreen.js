@@ -19,7 +19,7 @@ import {
   showAbout,
   initializeLocale
 } from '../actions';
-import I18n from '../../i18n';
+import I18n from '../translations';
 import AppNavigatorConfig from '../AppNavigatorConfig';
 import { getLocalesForPicker } from '../util';
 

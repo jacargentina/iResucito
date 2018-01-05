@@ -21,7 +21,7 @@ import {
 } from '../actions';
 import AppNavigatorConfig from '../AppNavigatorConfig';
 import BaseCallToAction from './BaseCallToAction';
-import I18n from '../../i18n';
+import I18n from '../translations';
 
 const ListScreen = props => {
   if (props.items.length == 0)

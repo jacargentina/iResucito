@@ -5,7 +5,7 @@ import { Tab, Tabs, ScrollableTab } from 'native-base';
 import BaseModal from './BaseModal';
 import SalmoList from './SalmoList';
 import { addSalmoToList, saveLists, closeChooserDialog } from '../actions';
-import I18n from '../../i18n';
+import I18n from '../translations';
 
 const styles = StyleSheet.create({
   tabs: { fontSize: 14 }

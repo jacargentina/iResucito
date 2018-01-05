@@ -10,7 +10,7 @@ import {
 } from '../actions';
 import BaseModal from './BaseModal';
 import { getFriendlyTextForListType } from '../util';
-import I18n from '../../i18n';
+import I18n from '../translations';
 
 class ListAddDialog extends React.Component {
   constructor(props) {

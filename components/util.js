@@ -1,6 +1,6 @@
-import I18n from '../i18n';
 import langs from 'langs';
 import { NativeModules } from 'react-native';
+import I18n from './translations';
 
 const limpiarNotasRegex = /\[|\]|#|\*|5|6|7|9|b|-|\+|\/|\u2013|\u2217|aum|dim/g;
 
