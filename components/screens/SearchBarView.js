@@ -51,7 +51,7 @@ class DebouncedInput extends React.Component {
       <Input
         style={{
           lineHeight: 24,
-          height: commonTheme.searchBarHeight
+          height: commonTheme.searchBarHeight,
         }}
         placeholder={I18n.t('ui.search placeholder')}
         onChangeText={this.handleTextChange}
