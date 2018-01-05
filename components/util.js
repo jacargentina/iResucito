@@ -1,4 +1,8 @@
 import I18n from '../i18n';
+import langs from 'langs';
+import { NativeModules } from 'react-native';
+
+export const defaultLocale = NativeModules.RNI18n.languages[0];
 
 const limpiarNotasRegex = /\[|\]|#|\*|5|6|7|9|b|-|\+|\/|\u2013|\u2217|aum|dim/g;
 
@@ -101,4 +105,15 @@ export const calcularTransporte = (primerLineaNotas, notaDestino) => {
   var inicio = notas.indexOf(notaOrigen);
   var destino = notas.indexOf(notaDestino);
   return destino - inicio;
+};
+
+export const getLocalesForPicker = () => {
+  var locales = [
+    { label: `${I18n.t('ui.default')} (${defaultLocale})`, value: 'default' }
+  ];
+  for (var code in I18n.translations) {
+    var l = langs.where('1', code);
+    locales.push({ label: `${l.local} (${code})`, value: code });
+  }
+  return locales;
 };

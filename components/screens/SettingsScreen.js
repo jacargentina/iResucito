@@ -13,11 +13,10 @@ import {
   Item
 } from 'native-base';
 import Switch from '../widgets/switch';
-import { saveSetting, showAbout } from '../actions';
+import { saveSetting, showAbout, initializeLocale } from '../actions';
 import I18n from '../../i18n';
-import langs from 'langs';
 import AppNavigatorConfig from '../AppNavigatorConfig';
-import { initializeLocale } from '../actions';
+import { getLocalesForPicker } from '../util';
 
 class SettingsScreen extends React.Component {
   constructor(props) {
@@ -94,15 +93,10 @@ class SettingsScreen extends React.Component {
 }
 const mapStateToProps = state => {
   var set = state.ui.get('settings');
-  var locales = [{ label: I18n.t('ui.default'), value: 'default' }];
-  for (var code in I18n.translations) {
-    var l = langs.where('1', code);
-    locales.push({ label: l.local, value: code });
-  }
   return {
     locale: set.get('locale'),
     keepAwake: set.get('keepAwake'),
-    locales: locales,
+    locales: getLocalesForPicker(),
     aboutVisible: state.ui.get('about_visible')
   };
 };
