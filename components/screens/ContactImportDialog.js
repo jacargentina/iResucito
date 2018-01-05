@@ -6,7 +6,6 @@ import {
   Text,
   ListItem,
   Thumbnail,
-  Left,
   Body,
   Right,
   CheckBox
@@ -111,7 +110,7 @@ const ContactImportDialog = props => {
           renderItem={({ item }) => {
             var photo = (
               <Thumbnail
-                small
+                square
                 source={
                   item.hasThumbnail ? { uri: item.thumbnailPath } : unknown
                 }
@@ -123,13 +122,12 @@ const ContactImportDialog = props => {
                 : item.givenName;
             return (
               <ListItem
-                avatar
                 button
                 onPress={() => props.syncContact(item, props.textFilterId)}>
-                <Left>{photo}</Left>
+                {photo}
                 <Body>
                   <Text
-                    style={{ fontSize: 15, fontWeight: 'bold' }}
+                    style={{ fontSize: 17, fontWeight: 'bold' }}
                     numberOfLines={1}>
                     {contactFullName}
                   </Text>

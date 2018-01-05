@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {
   ListItem,
-  Left,
   Right,
   Body,
   Icon,
@@ -60,7 +59,7 @@ const CommunityScreen = props => {
               {item.s === true && (
                 <Icon
                   name="musical-notes"
-                  style={{ marginRight: 4, color: commonTheme.brandPrimary }}
+                  style={{ marginRight: 4, color: commonTheme.brandPrimary, fontSize: 28 }}
                 />
               )}
             </View>
@@ -86,15 +85,12 @@ const CommunityScreen = props => {
               right={swipeoutBtns}
               backgroundColor="white"
               autoClose={true}>
-              <ListItem avatar>
-                <Left>
-                  <Thumbnail
-                    small
-                    source={
-                      item.hasThumbnail ? { uri: item.thumbnailPath } : unknown
-                    }
-                  />
-                </Left>
+              <ListItem>
+                <Thumbnail
+                  source={
+                    item.hasThumbnail ? { uri: item.thumbnailPath } : unknown
+                  }
+                />
                 <Body>
                   <Text>{item.givenName}</Text>
                   <Text note>{contactFullName}</Text>
