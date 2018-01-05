@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Tab, Tabs, ScrollableTab } from 'native-base';
 import BaseModal from './BaseModal';
 import SalmoList from './SalmoList';
-import { addSalmoToList, closeChooserDialog } from '../actions';
+import { addSalmoToList, saveLists, closeChooserDialog } from '../actions';
 import I18n from '../../i18n';
 
 const styles = StyleSheet.create({
@@ -62,6 +62,7 @@ const mapDispatchToProps = dispatch => {
     },
     salmoSelected: (salmo, list, key) => {
       dispatch(addSalmoToList(salmo, list, key));
+      dispatch(saveLists());
       dispatch(closeChooserDialog());
     }
   };

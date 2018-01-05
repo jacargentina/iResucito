@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import BaseModal from './BaseModal';
 import { Text, ListItem, Thumbnail, Left, Body, Icon } from 'native-base';
 import { FlatList, Platform, View } from 'react-native';
-import { addContactToList, closeChooserDialog } from '../actions';
+import { addContactToList, saveLists, closeChooserDialog } from '../actions';
 import { getProcessedContacts } from '../selectors';
 import commonTheme from '../../native-base-theme/variables/platform';
 import I18n from '../../i18n';
@@ -90,6 +90,7 @@ const mapDispatchToProps = dispatch => {
     },
     contactSelected: (contact, list, key) => {
       dispatch(addContactToList(contact, list, key));
+      dispatch(saveLists());
       dispatch(closeChooserDialog());
     }
   };

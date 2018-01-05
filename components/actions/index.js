@@ -31,9 +31,10 @@ import { Alert, Platform } from 'react-native';
 import Contacts from 'react-native-contacts';
 import RNFS from 'react-native-fs';
 import I18n from '../../i18n';
-import { esLineaDeNotas } from '../util';
+import { esLineaDeNotas, getDefaultLocale } from '../util';
 import search from '../search';
 import Indice from '../../Indice.json';
+import { localdata, clouddata } from '../data';
 
 export const initializeSetup = (settings, lists, contacts) => {
   return {
@@ -139,7 +140,7 @@ export const createList = (name, type) => {
   return { type: LIST_CREATE, name: name, list_type: type };
 };
 
-export const saveSetting = (key, value) => {
+export const applySetting = (key, value) => {
   return { type: SET_SETTINGS_VALUE, key: key, value: value };
 };
 
@@ -250,9 +251,9 @@ export const loadSongs = songs => {
 
 export const initializeLocale = () => {
   return (dispatch, getState) => {
-    var locale = getState().ui.getIn(['settings','locale']);
+    var locale = getState().ui.getIn(['settings', 'locale']);
     if (locale === 'default') {
-      locale = require('react-native').NativeModules.RNI18n.languages[0];
+      locale = getDefaultLocale();
     }
     I18n.defaultLocale = locale;
     I18n.locale = locale;
@@ -262,6 +263,43 @@ export const initializeLocale = () => {
     var songs = processSongsMetadata(locale);
     return Promise.all(loadSongs(songs)).then(() => {
       dispatch(initializeSongs(songs));
+    });
+  };
+};
+
+export const saveLists = () => {
+  return (dispatch, getState) => {
+    var listsJS = getState()
+      .ui.get('lists')
+      .toJS();
+    var item = { key: 'lists', data: listsJS };
+    localdata.save(item);
+    if (Platform.OS == 'ios') {
+      clouddata.save(item);
+    }
+  };
+};
+
+export const saveContacts = () => {
+  return (dispatch, getState) => {
+    var contactsJS = getState()
+      .ui.get('contacts')
+      .toJS();
+    var item = { key: 'contacts', data: contactsJS };
+    localdata.save(item);
+    if (Platform.OS == 'ios') {
+      clouddata.save(item);
+    }
+  };
+};
+
+export const saveSettings = () => {
+  return (dispatch, getState) => {
+    return localdata.save({
+      key: 'settings',
+      data: getState()
+        .ui.get('settings')
+        .toJS()
     });
   };
 };

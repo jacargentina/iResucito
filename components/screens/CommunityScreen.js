@@ -1,19 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {
-  ListItem,
-  Right,
-  Body,
-  Icon,
-  Text,
-  Thumbnail
-} from 'native-base';
+import { ListItem, Right, Body, Icon, Text, Thumbnail } from 'native-base';
 import Swipeout from 'react-native-swipeout';
 import { Alert, FlatList, Platform, View } from 'react-native';
 import SearchBarView from './SearchBarView';
 import {
   showContactImportDialog,
   syncContact,
+  saveContacts,
   setContactAttribute,
   setContactsFilterText
 } from '../actions';
@@ -59,7 +53,11 @@ const CommunityScreen = props => {
               {item.s === true && (
                 <Icon
                   name="musical-notes"
-                  style={{ marginRight: 4, color: commonTheme.brandPrimary, fontSize: 28 }}
+                  style={{
+                    marginRight: 4,
+                    color: commonTheme.brandPrimary,
+                    fontSize: 28
+                  }}
                 />
               )}
             </View>
@@ -125,7 +123,10 @@ const mapDispatchToProps = dispatch => {
         [
           {
             text: I18n.t('ui.delete'),
-            onPress: () => dispatch(syncContact(contact, false)),
+            onPress: () => {
+              dispatch(syncContact(contact, false));
+              dispatch(saveContacts());
+            },
             style: 'destructive'
           },
           {
@@ -140,6 +141,7 @@ const mapDispatchToProps = dispatch => {
     },
     contactToggleAttibute: (contact, attribute) => {
       dispatch(setContactAttribute(contact, attribute));
+      dispatch(saveContacts());
     }
   };
 };

@@ -1,4 +1,4 @@
-import { Platform, Share } from 'react-native';
+import { Share } from 'react-native';
 import {
   INITIALIZE_SETUP,
   INITIALIZE_SEARCH,
@@ -26,7 +26,6 @@ import {
   CONTACT_TOGGLE_ATTRIBUTE
 } from '../actions';
 import { Map, List, fromJS } from 'immutable';
-import { localdata, clouddata } from '../data';
 import { getFriendlyText, getEsSalmo } from '../util';
 
 const initialState = Map({
@@ -54,24 +53,6 @@ const initialState = Map({
     locale: 'default'
   })
 });
-
-const saveLists = state => {
-  var listsJS = state.get('lists').toJS();
-  var item = { key: 'lists', data: listsJS };
-  localdata.save(item);
-  if (Platform.OS == 'ios') {
-    clouddata.save(item);
-  }
-};
-
-const saveContacts = state => {
-  var contactsJS = state.get('contacts').toJS();
-  var item = { key: 'contacts', data: contactsJS };
-  localdata.save(item);
-  if (Platform.OS == 'ios') {
-    clouddata.save(item);
-  }
-};
 
 const getItemForShare = (listMap, key) => {
   if (listMap.has(key)) {
@@ -113,9 +94,7 @@ export default function ui(state = initialState, action) {
     case SET_ABOUT_VISIBLE:
       return state.set('about_visible', action.visible);
     case SET_SETTINGS_VALUE:
-      state = state.setIn(['settings', action.key], action.value);
-      localdata.save({ key: 'settings', data: state.get('settings').toJS() });
-      return state;
+      return state.setIn(['settings', action.key], action.value);
     case SET_CHOOSER_TARGETLIST:
       state = state.set('chooser', action.chooser);
       state = state.set('chooser_target_list', action.list);
@@ -189,31 +168,25 @@ export default function ui(state = initialState, action) {
         }
         state = state.setIn(['lists', action.name], schema);
       }
-      saveLists(state);
       return state;
     case LIST_ADD_SALMO:
       state = state.setIn(
         ['lists', action.list, action.key],
         action.salmo.nombre
       );
-      saveLists(state);
       return state;
     case LIST_ADD_TEXT:
       state = state.setIn(['lists', action.list, action.key], action.text);
-      saveLists(state);
       return state;
     case LIST_ADD_CONTACT:
       var text = action.contact.givenName;
       state = state.setIn(['lists', action.list, action.key], text);
-      saveLists(state);
       return state;
     case LIST_REMOVE_SALMO:
       state = state.updateIn(['lists', action.list, action.key], null);
-      saveLists(state);
       return state;
     case LIST_DELETE:
       state = state.deleteIn(['lists', action.list]);
-      saveLists(state);
       return state;
     case CONTACT_SYNC:
       var contactsList = state.get('contacts');
@@ -230,7 +203,6 @@ export default function ui(state = initialState, action) {
           Map(action.contact)
         );
       }
-      saveContacts(state);
       return state;
     case CONTACT_TOGGLE_ATTRIBUTE:
       var tContacts = state.get('contacts');
@@ -242,7 +214,6 @@ export default function ui(state = initialState, action) {
       } else {
         state = state.setIn(['contacts', tIndex, action.attribute], true);
       }
-      saveContacts(state);
       return state;
     case SALMO_TRANSPORT:
       return state.set('salmos_transport_note', action.transportTo);

@@ -2,8 +2,6 @@ import I18n from '../i18n';
 import langs from 'langs';
 import { NativeModules } from 'react-native';
 
-export const defaultLocale = NativeModules.RNI18n.languages[0];
-
 const limpiarNotasRegex = /\[|\]|#|\*|5|6|7|9|b|-|\+|\/|\u2013|\u2217|aum|dim/g;
 
 export function esLineaDeNotas(text) {
@@ -107,9 +105,16 @@ export const calcularTransporte = (primerLineaNotas, notaDestino) => {
   return destino - inicio;
 };
 
+export const getDefaultLocale = () => {
+  return NativeModules.RNI18n.languages[0];
+};
+
 export const getLocalesForPicker = () => {
   var locales = [
-    { label: `${I18n.t('ui.default')} (${defaultLocale})`, value: 'default' }
+    {
+      label: `${I18n.t('ui.default')} (${getDefaultLocale()})`,
+      value: 'default'
+    }
   ];
   for (var code in I18n.translations) {
     var l = langs.where('1', code);

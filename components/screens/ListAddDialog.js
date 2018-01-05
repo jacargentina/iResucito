@@ -2,7 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { NavigationActions } from 'react-navigation';
 import { Text, Input, Item, Button, View } from 'native-base';
-import { hideListAddDialog, createList, updateListAddName } from '../actions';
+import {
+  hideListAddDialog,
+  createList,
+  saveLists,
+  updateListAddName
+} from '../actions';
 import BaseModal from './BaseModal';
 import { getFriendlyTextForListType } from '../util';
 import I18n from '../../i18n';
@@ -93,6 +98,7 @@ const mapDispatchToProps = dispatch => {
     },
     createNewList: (name, type) => {
       dispatch(createList(name, type));
+      dispatch(saveLists());
       dispatch(hideListAddDialog());
       dispatch(
         NavigationActions.navigate({

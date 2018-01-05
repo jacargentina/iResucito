@@ -13,7 +13,12 @@ import {
   Item
 } from 'native-base';
 import Switch from '../widgets/switch';
-import { saveSetting, showAbout, initializeLocale } from '../actions';
+import {
+  applySetting,
+  saveSettings,
+  showAbout,
+  initializeLocale
+} from '../actions';
 import I18n from '../../i18n';
 import AppNavigatorConfig from '../AppNavigatorConfig';
 import { getLocalesForPicker } from '../util';
@@ -24,9 +29,11 @@ class SettingsScreen extends React.Component {
   }
 
   render() {
-    var localeItems = this.props.locales.map(l => {
-      return <Item key={l.value} label={l.label} value={l.value} />;
-    });
+    if (!this.localesItems) {
+      this.localesItems = getLocalesForPicker().map(l => {
+        return <Item key={l.value} label={l.label} value={l.value} />;
+      });
+    }
     return (
       <View>
         <List>
@@ -37,7 +44,6 @@ class SettingsScreen extends React.Component {
               <Picker
                 headerBackButtonText={I18n.t('ui.back')}
                 iosHeader={I18n.t('settings_title.locale')}
-                mode="dropdown"
                 textStyle={{
                   padding: 0,
                   margin: 0
@@ -57,10 +63,9 @@ class SettingsScreen extends React.Component {
                 }}
                 selectedValue={this.props.locale}
                 onValueChange={val => {
-                  this.props.updateSetting('locale', val);
-                  this.forceUpdate();
+                  this.props.updateSetting('locale', val, this);
                 }}>
-                {localeItems}
+                {this.localesItems}
               </Picker>
             </Body>
           </ListItem>
@@ -96,18 +101,21 @@ const mapStateToProps = state => {
   return {
     locale: set.get('locale'),
     keepAwake: set.get('keepAwake'),
-    locales: getLocalesForPicker(),
     aboutVisible: state.ui.get('about_visible')
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateSetting: (key, value) => {
-      dispatch(saveSetting(key, value));
-      if (key == 'locale') {
-        dispatch(initializeLocale());
-      }
+    updateSetting: (key, value, componentForUpdate) => {
+      dispatch(applySetting(key, value));
+      dispatch(saveSettings()).then(() => {
+        if (key == 'locale') {
+          dispatch(initializeLocale()).then(() => {
+            componentForUpdate.forceUpdate();
+          });
+        }
+      });
     },
     showAbout: () => {
       dispatch(showAbout());

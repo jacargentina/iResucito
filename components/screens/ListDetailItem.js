@@ -11,7 +11,7 @@ import {
   Separator
 } from 'native-base';
 import { View, TextInput } from 'react-native';
-import { openChooserDialog, updateListMapText } from '../actions';
+import { openChooserDialog, saveLists, updateListMapText } from '../actions';
 import { getFriendlyText } from '../util';
 import commonTheme from '../../native-base-theme/variables/platform';
 import I18n from '../../i18n';
@@ -159,6 +159,7 @@ const mapDispatchToProps = dispatch => {
     },
     updateItem: (list, key, text) => {
       dispatch(updateListMapText(list, key, text));
+      dispatch(saveLists());
     }
   };
 };

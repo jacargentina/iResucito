@@ -13,7 +13,12 @@ import { Alert, FlatList, Platform } from 'react-native';
 import Swipeout from 'react-native-swipeout';
 import SearchBarView from './SearchBarView';
 import { getProcessedLists } from '../selectors';
-import { showListAddDialog, updateListAddType, deleteList } from '../actions';
+import {
+  showListAddDialog,
+  saveLists,
+  updateListAddType,
+  deleteList
+} from '../actions';
 import AppNavigatorConfig from '../AppNavigatorConfig';
 import BaseCallToAction from './BaseCallToAction';
 import I18n from '../../i18n';
@@ -91,7 +96,10 @@ const mapDispatchToProps = dispatch => {
         [
           {
             text: I18n.t('ui.delete'),
-            onPress: () => dispatch(deleteList(list.name)),
+            onPress: () => {
+              dispatch(deleteList(list.name));
+              dispatch(saveLists());
+            },
             style: 'destructive'
           },
           {
