@@ -63,7 +63,7 @@ class SettingsScreen extends React.Component {
                 }}
                 selectedValue={this.props.locale}
                 onValueChange={val => {
-                  this.props.updateSetting('locale', val, this);
+                  this.props.updateSetting('locale', val);
                 }}>
                 {this.localesItems}
               </Picker>
@@ -107,15 +107,12 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateSetting: (key, value, componentForUpdate) => {
+    updateSetting: (key, value) => {
+      if (key == 'locale') {
+        dispatch(initializeLocale(value));
+      }
       dispatch(applySetting(key, value));
-      dispatch(saveSettings()).then(() => {
-        if (key == 'locale') {
-          dispatch(initializeLocale()).then(() => {
-            componentForUpdate.forceUpdate();
-          });
-        }
-      });
+      dispatch(saveSettings());
     },
     showAbout: () => {
       dispatch(showAbout());

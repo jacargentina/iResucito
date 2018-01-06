@@ -62,6 +62,9 @@ class App extends React.Component {
         <Root>
           <MenuContext backHandler={true}>
             <AppNavigator
+              ref={nav => {
+                this.appNav = nav;
+              }}
               navigation={addNavigationHelpers({
                 dispatch: this.props.dispatch,
                 state: this.props.nav
@@ -74,9 +77,11 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  nav: state.nav
-});
+const mapStateToProps = state => {
+  return {
+    nav: state.nav
+  };
+};
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -85,6 +90,7 @@ const mapDispatchToProps = dispatch => {
       /* eslint-disable no-console */
       var promises = [];
       // Cargar configuracion
+      var locale = 'default';
       promises.push(
         localdata
           .getBatchData([
@@ -94,13 +100,14 @@ const mapDispatchToProps = dispatch => {
           ])
           .then(result => {
             var [settings, lists, contacts] = result;
+            locale = settings.locale;
             dispatch(initializeSetup(settings, lists, contacts));
           })
           .catch(err => {
             console.log('error loading from localdata', err);
           })
           .finally(() => {
-            dispatch(initializeLocale());
+            dispatch(initializeLocale(locale));
           })
       );
       // Cargar listas desde iCloud

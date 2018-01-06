@@ -196,7 +196,9 @@ export const processSongsMetadata = rawLocale => {
   var songs = Object.keys(SongsIndex);
   songs = songs.map(key => {
     var localeOk = SongsIndex[key].files.hasOwnProperty(locale);
-    var nombre = localeOk ? SongsIndex[key].files[locale] : SongsIndex[key].files['es'];
+    var nombre = localeOk
+      ? SongsIndex[key].files[locale]
+      : SongsIndex[key].files['es'];
     var path = localeOk
       ? `${basePath}songs/${locale}/${nombre}.txt`
       : `${basePath}songs/es/${nombre}.txt`;
@@ -249,9 +251,8 @@ export const loadSongs = songs => {
   });
 };
 
-export const initializeLocale = () => {
-  return (dispatch, getState) => {
-    var locale = getState().ui.getIn(['settings', 'locale']);
+export const initializeLocale = locale => {
+  return dispatch => {
     if (locale === 'default') {
       locale = getDefaultLocale();
     }
