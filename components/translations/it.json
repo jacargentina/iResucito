@@ -33,23 +33,23 @@
   },
   "list_item": {
     "ambiental": "Ammonizione Ambientale",
-    "entrada": "Canzone d'ingresso",
+    "entrada": "Canto d'ingresso",
     "paz": "Pace e Offertorio",
     "comunion-pan": "Pane",
     "comunion-caliz": "Calice",
-    "salida": "Canzone finale",
+    "salida": "Canto finale",
     "1-monicion": "Ammonizione 1a Lettura",
     "1": "1a Lettura",
-    "1-salmo": "1a Canzone",
+    "1-salmo": "1a Canto",
     "2-monicion": "Ammonizione 2a Lettura",
     "2": "2a Lettura",
-    "2-salmo": "2a Canzone",
+    "2-salmo": "2a Canto",
     "3-monicion": "Ammonizione 3a Lettura",
     "3": "3a Lettura",
-    "3-salmo": "3a Canzone",
+    "3-salmo": "3a Canto",
     "evangelio-monicion": "Ammonizione Vangelo",
     "evangelio": "Vangelo",
-    "nota": "Notas"
+    "nota": "Appunti"
   },
   "search_title": {
     "alpha": "Alfabetico",
@@ -85,23 +85,23 @@
   },
   "search_note": {
     "alpha": "Tutti i canti in ordine alfabetico",
-    "precatechumenate": "I canti per la tappa del Precatecumenato",
-    "catechumenate": "I canti per la tappa del Catecumenato",
-    "election": "I canti per la tappa dell'Elezione",
-    "liturgy": "I canti per le celebrazioni liturgiche",
-    "advent": "I canti per il tempo d'Avvento",
-    "christmas": "I canti per il tempo di Natale",
-    "lent": "I canti per il tempo di Quaresima",
-    "easter": "I canti per il tempo di Pasqua",
-    "pentecost": "I canti per il tempo di Pentecoste",
-    "entrance": "I canti per l'inizio delle liturgie",
-    "peace and offerings": "I canti per il saluto della pace e l'offertorio",
+    "precatechumenate": "Canti per il Precatecumenato",
+    "catechumenate": "Canti per il Catecumenato",
+    "election": "Canti per la Elezione",
+    "liturgy": "Canti per le celebrazioni liturgiche",
+    "advent": "Canti per il tempo d'Avvento",
+    "christmas": "Canti per il tempo di Natale",
+    "lent": "Canti per il tempo Quaresimale",
+    "easter": "Canti per il tempo Pasquale",
+    "pentecost": "Canti per Pentecoste",
+    "entrance": "Canti per l'inizio delle liturgie",
+    "peace and offerings": "Canti per il saluto della pace e l'offertorio",
     "fraction of bread": "Icanti per la frazione del pane",
-    "communion": "I canti per la communione",
-    "exit": "I canti per il finale delle liturgie",
-    "signing to the virgin": "I canti dedicati alla Vergine Maria",
-    "children's songs": "I canti dei Bambini",
-    "lutes and vespers": "I salmi di lodi 'e Vespri"
+    "communion": "Canti per la communione",
+    "exit": "Canti alla fine della liturgie",
+    "signing to the virgin": "Canti dedicati alla Vergine Maria",
+    "children's songs": "Canti dei Bambini",
+    "lutes and vespers": "Salmi di lodi 'e Vespri"
   },
   "screen_title": {
     "search": "Cercare",
@@ -133,6 +133,6 @@
   "settings_note": {
     "locale": "Traduci l'app in una lingua disponibile",
     "keep awake":
-      "Evitare que il dispositivo entri in riposo al momento di visualizzare un salmo"
+      "Evitare che il dispositivo entri in riposo al momento di visualizzare un salmo"
   }
 }
