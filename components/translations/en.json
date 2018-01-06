@@ -21,10 +21,10 @@
     "locale warning title": "Incomplete translation",
     "locale warning message":
       "The song has not yet been incorporated into your language",
-    "donate message":
-      "Help making a donation. Peace!",
+    "donate message": "Help making a donation. Peace!",
     "donate button": "Donate",
-    "no songs found": "No songs found"
+    "no songs found": "No songs found",
+    "no contacts found": "No contacts found"
   },
   "list_type": {
     "eucharist": "Eucharist",
@@ -66,7 +66,7 @@
     "pentecost": "Pentecost",
     "liturgical order": "Liturgical order",
     "entrance": "Entrance",
-    "peace and offerings": "Peace and Offerings",
+    "peace and offerings": "Peace and Offertory",
     "fraction of bread": "Fraction of Bread",
     "communion": "Communion",
     "exit": "Final Songs",
@@ -77,7 +77,7 @@
   "search_tabs": {
     "all": "All",
     "entrance": "Entrance",
-    "peace and offerings": "Peace/Offerings",
+    "peace and offerings": "Peace/Offertory",
     "fraction of bread": "Bread",
     "communion": "Communion",
     "exit": "Final",
@@ -94,12 +94,11 @@
     "lent": "Songs for Lenten Season",
     "easter": "Songs for Easter Season",
     "pentecost": "Songs for Pentecost",
-    "entrance": "Songs for the beginning of the liturgies",
-    "peace and offerings":
-      "Songs for the greeting of peace and the offerings",
+    "entrance": "Songs at the beginning of the liturgies",
+    "peace and offerings": "Songs for the Sign of peace and the Offertory",
     "fraction of bread": "Songs for the fraction of bread",
     "communion": "Songs for the communion",
-    "exit": "Songs for the ending of the liturgies",
+    "exit": "Songs at the end of the liturgies",
     "signing to the virgin": "Songs dedicated to the Virgin Mary",
     "children's songs": "Songs for children",
     "lutes and vespers": "Psalms of Lauds and Vespers"

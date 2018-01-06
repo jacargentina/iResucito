@@ -21,10 +21,10 @@
     "locale warning title": "Traduzione incompleta",
     "locale warning message":
       "La canzone non è stata ancora incorporata nella tua lingua",
-    "donate message":
-      "Contribuisci a fare una donazione. Pace!",
+    "donate message": "Contribuisci a fare una donazione. Pace!",
     "donate button": "Donare",
-    "no songs found": "Nessuna canzone trovata"
+    "no songs found": "Nessuna canzone trovata",
+    "no contacts found": "Nessun contatto trovato"
   },
   "list_type": {
     "eucharist": "Eucaristia",
@@ -40,13 +40,13 @@
     "salida": "Canto finale",
     "1-monicion": "Ammonizione 1a Lettura",
     "1": "1a Lettura",
-    "1-salmo": "1a Canto",
+    "1-salmo": "1mo Canto",
     "2-monicion": "Ammonizione 2a Lettura",
     "2": "2a Lettura",
-    "2-salmo": "2a Canto",
+    "2-salmo": "2do Canto",
     "3-monicion": "Ammonizione 3a Lettura",
     "3": "3a Lettura",
-    "3-salmo": "3a Canto",
+    "3-salmo": "3zo Canto",
     "evangelio-monicion": "Ammonizione Vangelo",
     "evangelio": "Vangelo",
     "nota": "Appunti"
@@ -94,9 +94,9 @@
     "lent": "Canti per il tempo Quaresimale",
     "easter": "Canti per il tempo Pasquale",
     "pentecost": "Canti per Pentecoste",
-    "entrance": "Canti per l'inizio delle liturgie",
+    "entrance": "Canti all'inizio delle liturgie",
     "peace and offerings": "Canti per il saluto della pace e l'offertorio",
-    "fraction of bread": "Icanti per la frazione del pane",
+    "fraction of bread": "Canti per la frazione del pane",
     "communion": "Canti per la communione",
     "exit": "Canti alla fine della liturgie",
     "signing to the virgin": "Canti dedicati alla Vergine Maria",

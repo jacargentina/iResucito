@@ -23,7 +23,8 @@
     "donate message":
       "Ayuda haciendo una donación. La Paz!",
     "donate button": "Donar",
-    "no songs found": "Ningún canto encontrado"
+    "no songs found": "Ningún canto encontrado",
+    "no contacts found":  "Ningún contacto encontrado"
   },
   "list_type": {
     "eucharist": "Eucaristía",
@@ -39,13 +40,13 @@
     "salida": "Canto final",
     "1-monicion": "Monición 1a Lectura",
     "1": "1a Lectura",
-    "1-salmo": "1a Canto",
+    "1-salmo": "1er Canto",
     "2-monicion": "Monición 2a Lectura",
     "2": "2a Lectura",
-    "2-salmo": "2a Canto",
+    "2-salmo": "2do Canto",
     "3-monicion": "Monición 3a Lectura",
     "3": "3a Lectura",
-    "3-salmo": "3a Canto",
+    "3-salmo": "3er Canto",
     "evangelio-monicion": "Monición al Evangelio",
     "evangelio": "Evangelio",
     "nota": "Notas"

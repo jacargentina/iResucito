@@ -24,7 +24,7 @@ import I18n from '../translations';
 const unknown = require('../../img/avatar.png');
 
 const CommunityScreen = props => {
-  if (props.items.length == 0)
+  if (props.items.length == 0 && !props.textFilter)
     return (
       <BaseCallToAction
         icon="people"
@@ -39,6 +39,11 @@ const CommunityScreen = props => {
       searchTextFilterId={props.textFilterId}
       searchTextFilter={props.textFilter}
       searchHandler={props.filtrarHandler}>
+      {props.items.length == 0 && (
+        <Text note style={{ textAlign: 'center', paddingTop: 20 }}>
+          {I18n.t('ui.no contacts found')}
+        </Text>
+      )}
       <FlatList
         data={props.items}
         keyExtractor={item => item.recordID}
