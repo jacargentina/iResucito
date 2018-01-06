@@ -283,7 +283,6 @@
  "34": {
   "etapa": "Precatecumenado",
   "pascua": true,
-  "niños": true,
   "fraccion": true,
   "files": {
    "es": "Aquedah - Gn 22, 1-19",
@@ -1271,7 +1270,6 @@
  "152": {
   "etapa": "Precatecumenado",
   "adviento": true,
-  "niños": true,
   "files": {
    "es": "Vivid alegres - Flp 4, 4ss"
   }
