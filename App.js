@@ -93,9 +93,8 @@ const mapDispatchToProps = dispatch => {
             { key: 'contacts' }
           ])
           .then(result => {
-            dispatch(
-              initializeSetup(result.settings, result.lists, result.contacts)
-            );
+            var [settings, lists, contacts] = result;
+            dispatch(initializeSetup(settings, lists, contacts));
           })
           .catch(err => {
             console.log('error loading from localdata', err);
