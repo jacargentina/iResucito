@@ -173,12 +173,12 @@ task copyDownloadableDepsToLibs(type: Copy) {
 }
 
 task deleteAssets(type: Delete) {
-    delete 'app/src/main/assets/Salmos'
+    delete 'app/src/main/assets/songs'
 }
 
 task copyToAssets(type: Copy) {
-    def toDir = rootProject.file('app/src/main/assets/Salmos')
-    from '../../Salmos/'
+    def toDir = rootProject.file('app/src/main/assets/songs')
+    from '../../songs/'
     into toDir
     include '**/*'
 }
