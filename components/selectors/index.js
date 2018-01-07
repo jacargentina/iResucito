@@ -3,7 +3,9 @@ import { getEsSalmo, getFriendlyTextForListType } from '../util';
 
 const getLists = state => state.ui.get('lists');
 
-export const getProcessedLists = createSelector(getLists, lists => {
+const getLocale = state => state.ui.getIn(['settings', 'locale']);
+
+export const getProcessedLists = createSelector(getLists, getLocale, lists => {
   var listNames = lists.keySeq().toArray();
   return listNames.map(name => {
     var listMap = lists.get(name);
@@ -103,6 +105,7 @@ export const getFilteredContactsForImport = createSelector(
 export const getProcessedContacts = createSelector(
   getContacts,
   getCurrentRouteContactsTextFilter,
+  getLocale,
   (importedContacts, text_filter) => {
     var contactsArray = importedContacts.toJS();
     if (text_filter) {

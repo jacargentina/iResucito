@@ -24,11 +24,6 @@ import BaseCallToAction from './BaseCallToAction';
 import I18n from '../translations';
 
 const ListScreen = props => {
-  console.log(
-    'ListScreen rendering',
-    props.locale,
-    I18n.locale
-  );
   if (props.items.length == 0)
     return (
       <BaseCallToAction
@@ -86,10 +81,8 @@ const ListScreen = props => {
 };
 
 const mapStateToProps = state => {
-  var locale = state.ui.getIn(['settings', 'locale']);
   return {
-    items: getProcessedLists(state),
-    locale: locale
+    items: getProcessedLists(state)
   };
 };
 
