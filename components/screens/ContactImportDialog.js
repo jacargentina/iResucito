@@ -21,6 +21,7 @@ import {
 import {
   syncContact,
   hideContactImportDialog,
+  saveContacts,
   setContactsFilterText
 } from '../actions';
 import {
@@ -169,6 +170,7 @@ const mapDispatchToProps = dispatch => {
   return {
     close: inputId => {
       dispatch(hideContactImportDialog());
+      dispatch(saveContacts());
       dispatch(setContactsFilterText(inputId, ''));
     },
     syncContact: (contact, inputId) => {
