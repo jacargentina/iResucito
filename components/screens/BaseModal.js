@@ -38,7 +38,7 @@ const BaseModal = props => {
       <View
         style={{
           flex: 1,
-          paddingTop: 23,
+          paddingTop: Platform.OS == 'ios' ? 23 : 0,
           backgroundColor: 'white'
         }}>
         <View
