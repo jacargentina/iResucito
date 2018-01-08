@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect, Provider } from 'react-redux';
 import { BackHandler, Platform } from 'react-native';
+import RNFS from 'react-native-fs';
 import { addNavigationHelpers, NavigationActions } from 'react-navigation';
 import SplashScreen from 'react-native-splash-screen';
 import { Root, StyleProvider } from 'native-base';
@@ -10,7 +11,11 @@ import Store from './components/store';
 import AppNavigator from './components/AppNavigator';
 import { MenuContext } from 'react-native-popup-menu';
 import { localdata, clouddata } from './components/data';
-import { initializeSetup, initializeLocale } from './components/actions';
+import {
+  initializeSetup,
+  initializeLocale,
+  refreshContactsThumbs
+} from './components/actions';
 
 if (Platform.OS == 'android') {
   // Reemplazar startsWith en Android
@@ -96,12 +101,19 @@ const mapDispatchToProps = dispatch => {
           .getBatchData([
             { key: 'settings' },
             { key: 'lists' },
-            { key: 'contacts' }
+            { key: 'contacts' },
+            { key: 'lastCachesDirectoryPath' }
           ])
           .then(result => {
-            var [settings, lists, contacts] = result;
+            var [settings, lists, contacts, lastCachesDirectoryPath] = result;
             locale = settings.locale;
             dispatch(initializeSetup(settings, lists, contacts));
+            dispatch(
+              refreshContactsThumbs(
+                lastCachesDirectoryPath,
+                RNFS.CachesDirectoryPath
+              )
+            );
           })
           .catch(err => {
             console.log('error loading from localdata', err);

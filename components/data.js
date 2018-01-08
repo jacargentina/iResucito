@@ -1,5 +1,6 @@
 import Storage from 'react-native-storage';
 import { AsyncStorage } from 'react-native';
+import RNFS from 'react-native-fs';
 
 export const localdata = new Storage({
   // maximum capacity, default 1000
@@ -31,6 +32,10 @@ export const localdata = new Storage({
     contacts(params) {
       let { resolve } = params;
       resolve();
+    },
+    lastCachesDirectoryPath(params) {
+      let { resolve } = params;
+      resolve(RNFS.CachesDirectoryPath);
     }
   }
 });

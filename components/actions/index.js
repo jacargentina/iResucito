@@ -304,3 +304,31 @@ export const saveSettings = () => {
     });
   };
 };
+
+export const refreshContactsThumbs = (lastCacheDir, newCacheDir) => {
+  return (dispatch, getState) => {
+    // sólo actualizar si cambió el directorio de caches
+    if (lastCacheDir !== newCacheDir) {
+      console.log('contactos: refrescando por cambio de directorio caché...');
+      var contactsJS = getState()
+        .ui.get('contacts')
+        .toJS();
+      return Contacts.getAll((err, currentContacts) => {
+        contactsJS = contactsJS.map(c => {
+          // tomar los datos actualizados
+          var currContact = currentContacts.find(
+            x => x.recordID === c.recordID
+          );
+          c.thumbnailPath = currContact.thumbnailPath;
+        });
+      }).then(() => {
+        // guardar directorio nuevo
+        var item = { key: 'lastCachesDirectoryPath', data: newCacheDir };
+        return localdata.save(item);
+      }).then(()=> {
+        // guardar contactos refrescados
+        dispatch(saveContacts());
+      });
+    }
+  };
+};
