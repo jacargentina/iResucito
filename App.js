@@ -2,6 +2,7 @@ import React from 'react';
 import { connect, Provider } from 'react-redux';
 import { BackHandler, Platform } from 'react-native';
 import RNFS from 'react-native-fs';
+import DeviceInfo from 'react-native-device-info';
 import { addNavigationHelpers, NavigationActions } from 'react-navigation';
 import SplashScreen from 'react-native-splash-screen';
 import { Root, StyleProvider } from 'native-base';
@@ -108,6 +109,10 @@ const mapDispatchToProps = dispatch => {
             var [settings, lists, contacts, lastCachesDirectoryPath] = result;
             locale = settings.locale;
             dispatch(initializeSetup(settings, lists, contacts));
+            // Forzar la actualizacion si estamos emulando
+            if (DeviceInfo.isEmulator()) {
+              lastCachesDirectoryPath = null;
+            }
             dispatch(
               refreshContactsThumbs(
                 lastCachesDirectoryPath,

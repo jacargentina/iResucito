@@ -23,6 +23,7 @@ import {
   LIST_DELETE,
   LIST_SHARE,
   CONTACT_SYNC,
+  CONTACT_UPDATE,
   CONTACT_TOGGLE_ATTRIBUTE
 } from '../actions';
 import { Map, List, fromJS } from 'immutable';
@@ -189,21 +190,27 @@ export default function ui(state = initialState, action) {
       state = state.deleteIn(['lists', action.list]);
       return state;
     case CONTACT_SYNC:
-      var contactsList = state.get('contacts');
-      var index = contactsList.findIndex(
+      var sContactsList = state.get('contacts');
+      var sIndex = sContactsList.findIndex(
         c => c.get('recordID') == action.contact.recordID
       );
       // Ya esta importado
-      if (index !== -1) {
-        state = state.deleteIn(['contacts', index]);
+      if (sIndex !== -1) {
+        state = state.deleteIn(['contacts', sIndex]);
       } else {
         // Importarlo
         state = state.setIn(
-          ['contacts', contactsList.size],
+          ['contacts', sContactsList.size],
           Map(action.contact)
         );
       }
       return state;
+    case CONTACT_UPDATE:
+      var uContactsList = state.get('contacts');
+      var uIndex = uContactsList.findIndex(
+        c => c.get('recordID') == action.contact.recordID
+      );
+      return state.setIn(['contacts', uIndex], Map(action.contact));
     case CONTACT_TOGGLE_ATTRIBUTE:
       var tContacts = state.get('contacts');
       var tIndex = tContacts.findIndex(

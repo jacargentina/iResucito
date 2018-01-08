@@ -26,6 +26,7 @@ export const LIST_SHARE = 'LIST_SHARE';
 
 export const CONTACT_SYNC = 'CONTACT_SYNC';
 export const CONTACT_TOGGLE_ATTRIBUTE = 'CONTACT_TOGGLE_ATTRIBUTE';
+export const CONTACT_UPDATE = 'CONTACT_UPDATE';
 
 import { Alert, Platform } from 'react-native';
 import Contacts from 'react-native-contacts';
@@ -172,6 +173,10 @@ export const syncContact = contact => {
   return { type: CONTACT_SYNC, contact: contact };
 };
 
+export const updateContact = contact => {
+  return { type: CONTACT_UPDATE, contact: contact };
+};
+
 export const setContactAttribute = (contact, attribute) => {
   return {
     type: CONTACT_TOGGLE_ATTRIBUTE,
@@ -305,30 +310,42 @@ export const saveSettings = () => {
   };
 };
 
+const getContacts = () => {
+  return new Promise((resolve, reject) => {
+    Contacts.getAll((err, contacts) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(contacts);
+      }
+    });
+  });
+};
+
 export const refreshContactsThumbs = (lastCacheDir, newCacheDir) => {
   return (dispatch, getState) => {
     // sólo actualizar si cambió el directorio de caches
     if (lastCacheDir !== newCacheDir) {
-      console.log('contactos: refrescando por cambio de directorio caché...');
       var contactsJS = getState()
         .ui.get('contacts')
         .toJS();
-      return Contacts.getAll((err, currentContacts) => {
-        contactsJS = contactsJS.map(c => {
-          // tomar los datos actualizados
-          var currContact = currentContacts.find(
-            x => x.recordID === c.recordID
-          );
-          c.thumbnailPath = currContact.thumbnailPath;
+      return getContacts()
+        .then(currentContacts => {
+          contactsJS.forEach(c => {
+            // tomar los datos actualizados
+            var currContact = currentContacts.find(
+              x => x.recordID === c.recordID
+            );
+            dispatch(updateContact(currContact));
+          });
+          // guardar directorio nuevo
+          var item = { key: 'lastCachesDirectoryPath', data: newCacheDir };
+          return localdata.save(item);
+        })
+        .then(() => {
+          // guardar contactos refrescados
+          dispatch(saveContacts());
         });
-      }).then(() => {
-        // guardar directorio nuevo
-        var item = { key: 'lastCachesDirectoryPath', data: newCacheDir };
-        return localdata.save(item);
-      }).then(()=> {
-        // guardar contactos refrescados
-        dispatch(saveContacts());
-      });
     }
   };
 };
