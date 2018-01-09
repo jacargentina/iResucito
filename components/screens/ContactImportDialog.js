@@ -25,8 +25,6 @@ import commonTheme from '../../native-base-theme/variables/platform';
 import I18n from '../translations';
 import ContactPhoto from './ContactPhoto';
 
-//const unknown = require('../../img/avatar.png');
-
 const ContactImportDialog = props => {
   var readyButton = (
     <Text

@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { ListItem, Right, Body, Icon, Text, Thumbnail } from 'native-base';
+import { ListItem, Right, Body, Icon, Text } from 'native-base';
 import Swipeout from 'react-native-swipeout';
-import { Alert, FlatList, Platform, View } from 'react-native';
+import { Alert, FlatList, View } from 'react-native';
 import SearchBarView from './SearchBarView';
 import {
   showContactImportDialog,
@@ -20,8 +20,7 @@ import {
 } from '../selectors';
 import commonTheme from '../../native-base-theme/variables/platform';
 import I18n from '../translations';
-
-const unknown = require('../../img/avatar.png');
+import ContactPhoto from './ContactPhoto';
 
 const CommunityScreen = props => {
   if (props.items.length == 0 && !props.textFilter)
@@ -48,11 +47,7 @@ const CommunityScreen = props => {
         data={props.items}
         keyExtractor={item => item.recordID}
         renderItem={({ item }) => {
-          var contactFullName =
-            Platform.OS == 'ios'
-              ? `${item.givenName} ${item.familyName}`
-              : item.givenName;
-
+          var contactFullName = `${item.givenName} ${item.familyName}`;
           var flags = (
             <View style={{ flexDirection: 'row' }}>
               {item.s === true && (
@@ -89,11 +84,7 @@ const CommunityScreen = props => {
               backgroundColor="white"
               autoClose={true}>
               <ListItem>
-                <Thumbnail
-                  source={
-                    item.hasThumbnail ? { uri: item.thumbnailPath } : unknown
-                  }
-                />
+                <ContactPhoto item={item} />
                 <Body>
                   <Text>{item.givenName}</Text>
                   <Text note>{contactFullName}</Text>

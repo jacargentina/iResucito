@@ -1,14 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import BaseModal from './BaseModal';
-import { Text, ListItem, Thumbnail, Left, Body, Icon } from 'native-base';
+import { Text, ListItem, Left, Body, Icon } from 'native-base';
 import { FlatList, View } from 'react-native';
 import { addContactToList, saveLists, closeChooserDialog } from '../actions';
 import { getProcessedContacts } from '../selectors';
 import commonTheme from '../../native-base-theme/variables/platform';
 import I18n from '../translations';
-
-const unknown = require('../../img/avatar.png');
+import ContactPhoto from './ContactPhoto';
 
 const ContactChooserDialog = props => {
   return (
@@ -49,12 +48,7 @@ const ContactChooserDialog = props => {
                 props.contactSelected(item, props.listName, props.listKey);
               }}>
               <Left>
-                <Thumbnail
-                  small
-                  source={
-                    item.hasThumbnail ? { uri: item.thumbnailPath } : unknown
-                  }
-                />
+                <ContactPhoto item={item} />
               </Left>
               <Body>
                 <Text>{item.givenName}</Text>
