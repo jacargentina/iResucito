@@ -2,17 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import BaseModal from './BaseModal';
 import SearchBarView from './SearchBarView';
-import {
-  Text,
-  ListItem,
-  Thumbnail,
-  Body,
-  Right,
-  CheckBox
-} from 'native-base';
+import { Text, ListItem, Body, Right, CheckBox } from 'native-base';
 import {
   FlatList,
-  Platform,
   View,
   TouchableOpacity,
   Keyboard,
@@ -31,8 +23,9 @@ import {
 } from '../selectors';
 import commonTheme from '../../native-base-theme/variables/platform';
 import I18n from '../translations';
+import ContactPhoto from './ContactPhoto';
 
-const unknown = require('../../img/avatar.png');
+//const unknown = require('../../img/avatar.png');
 
 const ContactImportDialog = props => {
   var readyButton = (
@@ -74,15 +67,7 @@ const ContactImportDialog = props => {
                   <TouchableOpacity
                     style={{ marginRight: 10, width: 56 }}
                     onPress={() => props.syncContact(item)}>
-                    <Thumbnail
-                      source={
-                        item.hasThumbnail ? (
-                          { uri: item.thumbnailPath }
-                        ) : (
-                          unknown
-                        )
-                      }
-                    />
+                    <ContactPhoto item={item} />
                     <Text
                       numberOfLines={1}
                       style={{
@@ -109,23 +94,12 @@ const ContactImportDialog = props => {
           data={props.items}
           keyExtractor={item => item.recordID}
           renderItem={({ item }) => {
-            var photo = (
-              <Thumbnail
-                square
-                source={
-                  item.hasThumbnail ? { uri: item.thumbnailPath } : unknown
-                }
-              />
-            );
-            var contactFullName =
-              Platform.OS == 'ios'
-                ? `${item.givenName} ${item.familyName}`
-                : item.givenName;
+            var contactFullName = `${item.givenName} ${item.familyName}`;
             return (
               <ListItem
                 button
                 onPress={() => props.syncContact(item, props.textFilterId)}>
-                {photo}
+                <ContactPhoto item={item} />
                 <Body>
                   <Text
                     style={{ fontSize: 17, fontWeight: 'bold' }}
@@ -133,9 +107,9 @@ const ContactImportDialog = props => {
                     {contactFullName}
                   </Text>
                   <Text note numberOfLines={1}>
-                    {item.emailAddresses.length > 0 ? (
-                      item.emailAddresses[0].email
-                    ) : null}
+                    {item.emailAddresses.length > 0
+                      ? item.emailAddresses[0].email
+                      : null}
                   </Text>
                 </Body>
                 <Right>

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import BaseModal from './BaseModal';
 import { Text, ListItem, Thumbnail, Left, Body, Icon } from 'native-base';
-import { FlatList, Platform, View } from 'react-native';
+import { FlatList, View } from 'react-native';
 import { addContactToList, saveLists, closeChooserDialog } from '../actions';
 import { getProcessedContacts } from '../selectors';
 import commonTheme from '../../native-base-theme/variables/platform';
@@ -40,10 +40,7 @@ const ContactChooserDialog = props => {
         data={props.items}
         keyExtractor={item => item.recordID}
         renderItem={({ item }) => {
-          var contactFullName =
-            Platform.OS == 'ios'
-              ? `${item.givenName} ${item.familyName}`
-              : item.givenName;
+          var contactFullName = `${item.givenName} ${item.familyName}`;
           return (
             <ListItem
               avatar
