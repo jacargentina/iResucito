@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect, Provider } from 'react-redux';
-import { BackHandler, Platform } from 'react-native';
+import { BackHandler, Platform, View, Text } from 'react-native';
 import RNFS from 'react-native-fs';
 import DeviceInfo from 'react-native-device-info';
 import { addNavigationHelpers, NavigationActions } from 'react-navigation';
@@ -68,7 +68,16 @@ class App extends React.Component {
 
   render() {
     if (!this.state.initialized) {
-      return null;
+      return (
+        <View
+          style={{
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}>
+          <Text>Inicializando...</Text>
+        </View>
+      );
     }
     return (
       <StyleProvider style={getTheme(commonTheme)}>
