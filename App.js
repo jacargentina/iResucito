@@ -38,19 +38,23 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.onBackPress = this.onBackPress.bind(this);
+    this.state = {
+      initialized: false
+    };
   }
 
   componentWillMount() {
     BackHandler.removeEventListener('hardwareBackPress', this.onBackPress);
-    this.props.init().then(() => {
-      setTimeout(() => {
-        SplashScreen.hide();
-      }, 2500);
-    });
   }
 
   componentDidMount() {
     BackHandler.addEventListener('hardwareBackPress', this.onBackPress);
+    this.props.init().then(() => {
+      setTimeout(() => {
+        SplashScreen.hide();
+        this.setState({ initialized: true });
+      }, 2500);
+    });
   }
 
   onBackPress() {
@@ -63,14 +67,14 @@ class App extends React.Component {
   }
 
   render() {
+    if (!this.state.initialized) {
+      return null;
+    }
     return (
       <StyleProvider style={getTheme(commonTheme)}>
         <Root>
           <MenuContext backHandler={true}>
             <AppNavigator
-              ref={nav => {
-                this.appNav = nav;
-              }}
               navigation={addNavigationHelpers({
                 dispatch: this.props.dispatch,
                 state: this.props.nav
