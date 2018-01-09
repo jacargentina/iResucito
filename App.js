@@ -10,7 +10,7 @@ import getTheme from './native-base-theme/components';
 import commonTheme from './native-base-theme/variables/platform';
 import Store from './components/store';
 import AppNavigator from './components/AppNavigator';
-import { MenuContext } from 'react-native-popup-menu';
+import { MenuProvider } from 'react-native-popup-menu';
 import { localdata, clouddata } from './components/data';
 import {
   initializeSetup,
@@ -73,14 +73,14 @@ class App extends React.Component {
     return (
       <StyleProvider style={getTheme(commonTheme)}>
         <Root>
-          <MenuContext backHandler={true}>
+          <MenuProvider backHandler={true}>
             <AppNavigator
               navigation={addNavigationHelpers({
                 dispatch: this.props.dispatch,
                 state: this.props.nav
               })}
             />
-          </MenuContext>
+          </MenuProvider>
         </Root>
       </StyleProvider>
     );
