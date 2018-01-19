@@ -44,6 +44,29 @@ export const getSalmosFromList = createSelector(
 
 const getContactImportItems = state => state.ui.get('contact_import_items');
 
+const getContactImportSanitizedItems = createSelector(
+  getContactImportItems,
+  allContacts => {
+    var grouped = allContacts.reduce(function(groups, item) {
+      var fullname = `${item.givenName} ${item.familyName}`;
+      groups[fullname] = groups[fullname] || [];
+      groups[fullname].push(item);
+      return groups;
+    }, {});
+    var unique = [];
+    for (var fullname in grouped) {
+      if (grouped[fullname].length > 1) {
+        var conMiniatura = grouped[fullname].find(c => c.hasThumbnail === true);
+        unique.push(conMiniatura || grouped[fullname][0]);
+      }
+      else {
+        unique.push(grouped[fullname][0]);
+      }
+    }
+    return unique;
+  }
+);
+
 const getContacts = state => state.ui.get('contacts');
 
 const ordenAlfabetico = (a, b) => {
@@ -71,7 +94,7 @@ export const getCurrentRouteContactsTextFilter = state => {
 };
 
 export const getProcessedContactsForImport = createSelector(
-  getContactImportItems,
+  getContactImportSanitizedItems,
   getContacts,
   (allContacts, importedContacts) => {
     var items = allContacts.map(c => {
