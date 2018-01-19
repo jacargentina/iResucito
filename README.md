@@ -1,5 +1,7 @@
 La app definitiva para el hermano del Camino Neocatecumenal.
 
+![Cristo](img/cristo.jpg)
+
 ## Cantos
 Todos los cantos y salmos, categorizados según la etapa y el tiempo litúrgico
 
