@@ -120,7 +120,7 @@ const mapDispatchToProps = dispatch => {
           ])
           .then(result => {
             var [settings, lists, contacts, lastCachesDirectoryPath] = result;
-            locale = settings.locale;
+            locale = (settings && settings.locale) || 'default';
             dispatch(initializeSetup(settings, lists, contacts));
             // Forzar la actualizacion si estamos emulando
             if (DeviceInfo.isEmulator()) {
