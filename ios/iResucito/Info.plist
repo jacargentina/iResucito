@@ -38,7 +38,7 @@
 	<key>NSContactsUsageDescription</key>
 	<string>Permitir acceso a la lista de contactos</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Entypo.ttf</string>
