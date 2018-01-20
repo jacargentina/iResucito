@@ -43,6 +43,7 @@
     "react-native-keep-awake": "^2.0.6",
     "react-native-keyboard-aware-scroll-view": "^0.4.3",
     "react-native-modal": "^4.1.1",
+    "react-native-pdf-lib": "^0.1.1",
     "react-native-popup-menu": "^0.12.2",
     "react-native-run-android": "0.0.1",
     "react-native-splash-screen": "^3.0.6",

@@ -137,6 +137,9 @@ android {
             signingConfig signingConfigs.release
         }
     }
+    dexOptions {
+      jumboMode = true
+    }
     // applicationVariants are e.g. debug, release
     applicationVariants.all { variant ->
         variant.outputs.each { output ->
@@ -153,6 +156,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-pdf-lib')
     compile project(':react-native-i18n')
     compile project(':react-native-contacts')
     compile project(':react-native-keep-awake')

@@ -3,6 +3,7 @@ package com.javiercastro.iresucito;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.hopding.pdflib.PDFLibPackage;
 import com.AlexanderZaytsev.RNI18n.RNI18nPackage;
 import com.rt2zz.reactnativecontacts.ReactNativeContacts;
 import com.corbt.keepawake.KCKeepAwakePackage;
@@ -30,6 +31,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new PDFLibPackage(),
             new RNI18nPackage(),
             new ReactNativeContacts(),
             new KCKeepAwakePackage(),

@@ -1,6 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Dimensions, Platform, StyleSheet, ScrollView } from 'react-native';
+import {
+  Dimensions,
+  Platform,
+  StyleSheet,
+  ScrollView,
+  View
+} from 'react-native';
 import { Container, Content, Text, Icon } from 'native-base';
 import DeviceInfo from 'react-native-device-info';
 import KeepAwake from 'react-native-keep-awake';
@@ -18,7 +24,7 @@ import {
   transportarNotas,
   notas
 } from '../util';
-import { salmoTransport } from '../actions';
+import { salmoTransport, generatePDF } from '../actions';
 import AppNavigatorConfig from '../AppNavigatorConfig';
 import commonTheme from '../../native-base-theme/variables/platform';
 
@@ -277,6 +283,9 @@ const mapDispatchToProps = dispatch => {
   return {
     transportNote: transportTo => {
       dispatch(salmoTransport(transportTo));
+    },
+    shareSong: canto => {
+      dispatch(generatePDF(canto));
     }
   };
 };
@@ -331,15 +340,41 @@ const TransportNotesMenu = props => {
   );
 };
 
-const ConnectedMenu = connect(mapStateToProps, mapDispatchToProps)(
+const ConnectedTransportNotes = connect(mapStateToProps, mapDispatchToProps)(
   TransportNotesMenu
+);
+
+const ShareSong = props => {
+  return (
+    <Icon
+      name="share"
+      style={{
+        marginTop: 4,
+        marginRight: 8,
+        width: 32,
+        fontSize: 30,
+        textAlign: 'center',
+        color: AppNavigatorConfig.navigationOptions.headerTitleStyle.color
+      }}
+      onPress={() => props.shareSong(props.salmo)}
+    />
+  );
+};
+
+const ConnectedShareSong = connect(mapStateToProps, mapDispatchToProps)(
+  ShareSong
 );
 
 SalmoDetail.navigationOptions = props => ({
   title: props.navigation.state.params
     ? props.navigation.state.params.salmo.titulo
     : 'Salmo',
-  headerRight: <ConnectedMenu {...props} />
+  headerRight: (
+    <View style={{ flexDirection: 'row' }}>
+      <ConnectedShareSong {...props} />
+      <ConnectedTransportNotes {...props} />
+    </View>
+  )
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SalmoDetail);

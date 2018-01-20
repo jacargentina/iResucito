@@ -36,6 +36,7 @@ import { esLineaDeNotas, getDefaultLocale } from '../util';
 import search from '../search';
 import SongsIndex from '../../songs';
 import { localdata, clouddata } from '../data';
+import { PDFDocument, PDFPage } from 'react-native-pdf-lib';
 
 export const initializeSetup = (settings, lists, contacts) => {
   return {
@@ -347,5 +348,41 @@ export const refreshContactsThumbs = (lastCacheDir, newCacheDir) => {
           dispatch(saveContacts());
         });
     }
+  };
+};
+
+// http://www.papersizes.org/a-sizes-in-pixels.htm
+// A4 (apaisado) 842 x 595
+export const generatePDF = canto => {
+  return dispatch => {
+    // Create a PDF page with text and rectangles
+    const page1 = PDFPage.create().setMediaBox(842, 595);
+    var y = 560;
+    var x = 20;
+    page1.drawText(canto.titulo.toUpperCase(), {
+      x: x,
+      y: y,
+      color: '#ff0000',
+      fontSize: 20
+    });
+    y -= 25;
+    canto.lines.forEach(l => {
+      page1.drawText(l, {
+        x: x,
+        y: y,
+        color: '#000',
+        fontSize: 10
+      });
+      y -= 15;
+    });
+    const docsDir = RNFS.TemporaryDirectoryPath;
+    const pdfPath = `${docsDir}/sample.pdf`;
+    PDFDocument.create(pdfPath)
+      .addPages(page1)
+      .write() // Returns a promise that resolves with the PDF's path
+      .then(path => {
+        console.log('PDF created at: ' + path);
+        // Do stuff with your shiny new PDF!
+      });
   };
 };
