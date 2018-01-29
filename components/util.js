@@ -1,5 +1,6 @@
 import langs from 'langs';
-import { NativeModules } from 'react-native';
+import { NativeModules, StyleSheet, Platform } from 'react-native';
+import DeviceInfo from 'react-native-device-info';
 import I18n from './translations';
 
 const limpiarNotasRegex = /\[|\]|#|\*|5|6|7|9|b|-|\+|\/|\u2013|\u2217|aum|dim/g;
@@ -121,4 +122,186 @@ export const getLocalesForPicker = () => {
     locales.push({ label: `${l.local} (${code})`, value: code });
   }
   return locales;
+};
+
+var mono = Platform.OS == 'ios' ? 'Menlo-Bold' : 'monospace';
+var isTablet = DeviceInfo.isTablet();
+var fontSizeTitulo = isTablet ? 25 : 22;
+var fontSizeTexto = isTablet ? 17 : 14;
+var fontSizeNotas = isTablet ? 15.2 : 12.2;
+
+export const stylesObj = {
+  titulo: {
+    fontFamily: mono,
+    color: '#ff0000',
+    fontSize: fontSizeTitulo,
+    marginTop: 8,
+    marginBottom: 8
+  },
+  fuente: {
+    fontFamily: mono,
+    color: '#777777'
+  },
+  lineaNotas: {
+    fontFamily: mono,
+    color: '#ff0000',
+    fontSize: fontSizeNotas,
+    marginLeft: 4
+  },
+  lineaTituloNotaEspecial: {
+    fontFamily: mono,
+    color: '#ff0000',
+    fontSize: fontSizeTitulo - 2
+  },
+  lineaNotaEspecial: {
+    fontFamily: mono,
+    fontSize: fontSizeNotas,
+    color: '#222222'
+  },
+  lineaNotasConMargen: {
+    fontFamily: mono,
+    color: '#ff0000',
+    fontSize: fontSizeNotas,
+    marginTop: 15,
+    marginLeft: 4
+  },
+  lineaNormal: {
+    fontFamily: mono,
+    color: '#000000',
+    fontSize: fontSizeTexto,
+    marginBottom: 8
+  },
+  prefijo: {
+    fontFamily: mono,
+    color: '#777777',
+    fontSize: fontSizeTexto
+  }
+};
+
+export const styles = StyleSheet.create(stylesObj);
+
+/* eslint-disable no-unused-vars */
+export const preprocesarLinea = (text, target) => {
+  var it = {};
+  if (text.startsWith('S. A.')) {
+    // Indicador de Salmista Y Asamblea
+    var secondPoint = 4;
+    it = {
+      prefijo: text.substring(0, secondPoint + 1) + ' ',
+      texto: text.substring(secondPoint + 1).trim(),
+      style: styles.lineaNormal,
+      prefijoStyle: styles.prefijo,
+      cantoConIndicador: true
+    };
+  } else if (
+    text.startsWith('S.') ||
+    text.startsWith('C.') ||
+    text.startsWith('D.') ||
+    text.startsWith('U.') ||
+    text.startsWith('A.') ||
+    text.startsWith('P.') ||
+    text.startsWith('Niños.') ||
+    text.startsWith('N.')
+  ) {
+    // Indicador de Salmista, Asamblea, Presbitero
+    var pointIndex = text.indexOf('.');
+    it = {
+      prefijo: text.substring(0, pointIndex + 1) + ' ',
+      texto: text.substring(pointIndex + 1).trim(),
+      style: styles.lineaNormal,
+      prefijoStyle: styles.prefijo,
+      cantoConIndicador: true
+    };
+    // Si tiene indicador de Nota?
+    if (it.texto.endsWith('\u2217')) {
+      it.texto = it.texto.replace('\u2217', '');
+      it.sufijo = '\u2217';
+      it.sufijoStyle = styles.lineaNotas;
+    }
+  } else if (esLineaDeNotas(text)) {
+    text =
+      target === 'view'
+        ? text.replace(/ {2}/g, ' ').trimRight()
+        : text.trimRight();
+    it = {
+      prefijo: '',
+      texto: text,
+      style: styles.lineaNotas,
+      notas: true
+    };
+  } else if (text.startsWith('\u2217')) {
+    // Nota especial
+    it = {
+      prefijo: '\u2217  ',
+      texto: text.substring(1).trim(),
+      style: styles.lineaNotaEspecial,
+      prefijoStyle: styles.lineaNotas,
+      notaEspecial: true
+    };
+  } else if (text.trim().startsWith('**') && text.trim().endsWith('**')) {
+    // Titulo especial
+    it = {
+      prefijo: '',
+      texto: text.replace(/\*/g, ''),
+      style: styles.lineaTituloNotaEspecial,
+      tituloEspecial: true
+    };
+  } else if (text.startsWith('-')) {
+    // Texto especial
+    it = {
+      prefijo: '',
+      texto: text.replace('-', ''),
+      style: styles.lineaNotaEspecial,
+      textoEspecial: true
+    };
+  } else {
+    it = {
+      prefijo: '',
+      texto: text.trimRight(),
+      style: styles.lineaNormal,
+      canto: true
+    };
+  }
+  return it;
+};
+
+export const preprocesarCanto = (lines, diferenciaTransporte, target) => {
+  var firstPass = lines.map(l => {
+    var it = preprocesarLinea(l, target);
+    if (it.notas && diferenciaTransporte !== 0) {
+      it.texto = transportarNotas(it.texto, diferenciaTransporte);
+    }
+    return it;
+  });
+  return firstPass.map((it, i) => {
+    // Ajustar margen izquierdo por prefijos
+    if (it.prefijo == '' && i > 0) {
+      var prevIt = firstPass[i - 1];
+      if (prevIt.prefijo !== '') {
+        it.prefijo = ' '.repeat(prevIt.prefijo.length);
+      }
+    } else if (it.prefijo == '' && i < firstPass.length - 1) {
+      var nextIt = firstPass[i + 1];
+      if (nextIt.prefijo !== '') {
+        it.prefijo = ' '.repeat(nextIt.prefijo.length);
+      }
+    }
+    // Ajustar estilo para las notas
+    if (it.texto.trim() == '' && i < firstPass.length - 1) {
+      var nextItm = firstPass[i + 1];
+      if (nextItm.canto) {
+        it.style = styles.lineaNotas;
+        it.notas = true;
+      }
+    }
+    // Ajustar estilo para las notas si es la primer linea
+    if (it.notas && i < firstPass.length - 1) {
+      var nextItmn = firstPass[i + 1];
+      if (nextItmn.prefijo !== '') {
+        it.style = styles.lineaNotasConMargen;
+        it.notasConMargen = true;
+      }
+    }
+    return it;
+  });
 };
