@@ -5,9 +5,6 @@ import Modal from 'react-native-modal';
 import commonTheme from '../../native-base-theme/variables/platform';
 
 const BaseModal = props => {
-  // Por algun motivo que desconozco, en Android con true
-  // en vez de solucionar, lo rompe. Lo dejo solo para iOS
-  var avoidKeyboard = Platform.OS == 'ios' ? true : false;
   var animationIn = props.fade ? 'fadeIn' : 'slideInUp';
   var animationOut = props.fade ? 'fadeOut' : 'slideOutDown';
   var closeButton = props.closeButton ? (
@@ -27,7 +24,7 @@ const BaseModal = props => {
   return (
     <Modal
       style={{ margin: 0 }}
-      avoidKeyboard={avoidKeyboard}
+      avoidKeyboard={true}
       isVisible={props.visible}
       animationIn={animationIn}
       animationOut={animationOut}

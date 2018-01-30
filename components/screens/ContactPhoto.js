@@ -21,7 +21,7 @@ const ContactPhoto = props => {
           fontSize: 18,
           fontWeight: 'bold'
         }}>
-        {props.item.givenName[0]} {props.item.familyName[0]}
+        {props.item.givenName[0]} {props.item.familyName && props.item.familyName.length > 0 ? props.item.familyName[0] : ''}
       </Text>
     </Badge>
   );

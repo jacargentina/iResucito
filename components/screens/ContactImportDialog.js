@@ -92,7 +92,10 @@ const ContactImportDialog = props => {
           data={props.items}
           keyExtractor={item => item.recordID}
           renderItem={({ item }) => {
-            var contactFullName = `${item.givenName} ${item.familyName}`;
+            var contactFullName = item.givenName;
+            if (item.familyName) {
+              contactFullName += ` ${item.familyName}`;
+            }
             return (
               <ListItem
                 button
