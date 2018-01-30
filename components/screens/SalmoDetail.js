@@ -108,8 +108,10 @@ const mapDispatchToProps = dispatch => {
     transportNote: transportTo => {
       dispatch(salmoTransport(transportTo));
     },
-    shareSong: canto => {
-      dispatch(generatePDF(canto));
+    shareSong: (canto, navigation) => {
+      dispatch(generatePDF(canto)).then(path => {
+        navigation.navigate('PDFViewer', { uri: path });
+      });
     }
   };
 };
@@ -180,7 +182,7 @@ const ShareSong = props => {
         textAlign: 'center',
         color: AppNavigatorConfig.navigationOptions.headerTitleStyle.color
       }}
-      onPress={() => props.shareSong(props.salmo)}
+      onPress={() => props.shareSong(props.salmo, props.navigation)}
     />
   );
 };

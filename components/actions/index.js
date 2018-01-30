@@ -355,7 +355,7 @@ import { stylesObj } from '../util';
 
 var titleSpacing = 25;
 var lineSpacing = 11;
-var indicadorSpacing = 10;
+var indicadorSpacing = 16;
 var notesFontSize = 9;
 var textFontSize = 11;
 // http://www.papersizes.org/a-sizes-in-pixels.htm
@@ -378,8 +378,11 @@ export const generatePDF = canto => {
     var preprocesarItems = preprocesarCanto(canto.lines, 0, 'pdf');
     preprocesarItems.forEach(it => {
       if (it.notas === true) {
+        if (it.agregarEspacio === true) {
+          y -= lineSpacing;
+        }
         page1.drawText(it.texto, {
-          x: x,
+          x: x + indicadorSpacing,
           y: y,
           color: stylesObj.lineaNotas.color,
           fontSize: notesFontSize,
@@ -417,14 +420,17 @@ export const generatePDF = canto => {
         y -= lineSpacing;
       }
     });
-    const docsDir = RNFS.TemporaryDirectoryPath;
+    const docsDir =
+      Platform.OS == 'ios'
+        ? RNFS.TemporaryDirectoryPath
+        : RNFS.CachesDirectoryPath + '/';
     const pdfPath = `${docsDir}sample.pdf`;
-    PDFDocument.create(pdfPath)
+    return PDFDocument.create(pdfPath)
       .addPages(page1)
       .write() // Returns a promise that resolves with the PDF's path
       .then(path => {
         console.log('PDF created at: ' + path);
-        // Do stuff with your shiny new PDF!
+        return path;
       });
   };
 };
