@@ -1,6 +1,7 @@
 {
   "ui": {
     "default": "Default",
+    "share": "Share",
     "back": "Back",
     "done": "Done",
     "version": "Version",
@@ -133,5 +134,9 @@
   "settings_note": {
     "locale": "Translate the app to available languages",
     "keep awake": "Prevent the device from shutting off when viewing a song"
+  },
+  "share_action": {
+    "view pdf": "View as PDF",
+    "share pdf": "Share as PDF..."
   }
 }

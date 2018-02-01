@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Dimensions, ScrollView, View } from 'react-native';
-import { Container, Content, Text, Icon } from 'native-base';
+import { Container, Content, Text, Icon, ActionSheet } from 'native-base';
 import KeepAwake from 'react-native-keep-awake';
 import {
   Menu,
@@ -12,9 +12,10 @@ import {
 import colors from '../colors';
 import color from 'color';
 import { preprocesarCanto, calcularTransporte, notas, styles } from '../util';
-import { salmoTransport, generatePDF } from '../actions';
+import { salmoTransport, generatePDF, sharePDF } from '../actions';
 import AppNavigatorConfig from '../AppNavigatorConfig';
 import commonTheme from '../../native-base-theme/variables/platform';
+import I18n from '../translations';
 
 class SalmoDetail extends React.Component {
   constructor(props) {
@@ -109,9 +110,29 @@ const mapDispatchToProps = dispatch => {
       dispatch(salmoTransport(transportTo));
     },
     shareSong: (canto, navigation) => {
-      dispatch(generatePDF(canto)).then(path => {
-        navigation.navigate('PDFViewer', { uri: path });
-      });
+      ActionSheet.show(
+        {
+          options: [
+            I18n.t('share_action.view pdf'),
+            I18n.t('share_action.share pdf'),
+            I18n.t('ui.cancel')
+          ],
+          cancelButtonIndex: 2,
+          title: I18n.t('ui.share')
+        },
+        index => {
+          index = Number(index);
+          if (index !== 2) {
+            dispatch(generatePDF(canto)).then(path => {
+              if (index === 0) {
+                navigation.navigate('PDFViewer', { uri: path });
+              } else {
+                dispatch(sharePDF(canto, path));
+              }
+            });
+          }
+        }
+      );
     }
   };
 };

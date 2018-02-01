@@ -1,6 +1,7 @@
 {
   "ui": {
     "default": "Predefinito",
+    "share": "Inviare",
     "back": "Ritorno",
     "done": "Completato",
     "version": "Versione",
@@ -134,5 +135,9 @@
     "locale": "Traduci l'app in una lingua disponibile",
     "keep awake":
       "Evitare che il dispositivo entri in riposo al momento di visualizzare un salmo"
+  },
+  "share_action": {
+    "view pdf": "Visualizza come PDF",
+    "share pdf": "Inviare come PDF..."
   }
 }

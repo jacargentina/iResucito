@@ -1,4 +1,3 @@
-import { Share } from 'react-native';
 import {
   INITIALIZE_SETUP,
   INITIALIZE_SEARCH,
@@ -21,13 +20,11 @@ import {
   LIST_ADD_CONTACT,
   LIST_REMOVE_SALMO,
   LIST_DELETE,
-  LIST_SHARE,
   CONTACT_SYNC,
   CONTACT_UPDATE,
   CONTACT_TOGGLE_ATTRIBUTE
 } from '../actions';
 import { Map, List, fromJS } from 'immutable';
-import { getFriendlyText, getEsSalmo } from '../util';
 
 const initialState = Map({
   search: [],
@@ -54,19 +51,6 @@ const initialState = Map({
     locale: 'default'
   })
 });
-
-const getItemForShare = (listMap, key) => {
-  if (listMap.has(key)) {
-    var valor = listMap.get(key);
-    if (valor !== null && getEsSalmo(key)) {
-      valor = valor.titulo;
-    }
-    if (valor) {
-      return getFriendlyText(key) + ': ' + valor;
-    }
-  }
-  return null;
-};
 
 export default function ui(state = initialState, action) {
   switch (action.type) {
@@ -224,38 +208,6 @@ export default function ui(state = initialState, action) {
       return state;
     case SALMO_TRANSPORT:
       return state.set('salmos_transport_note', action.transportTo);
-    case LIST_SHARE:
-      var items = [];
-      items.push(getItemForShare(action.listMap, 'ambiental'));
-      items.push(getItemForShare(action.listMap, 'entrada'));
-      items.push(getItemForShare(action.listMap, '1-monicion'));
-      items.push(getItemForShare(action.listMap, '1'));
-      items.push(getItemForShare(action.listMap, '1-salmo'));
-      items.push(getItemForShare(action.listMap, '2-monicion'));
-      items.push(getItemForShare(action.listMap, '2'));
-      items.push(getItemForShare(action.listMap, '2-salmo'));
-      items.push(getItemForShare(action.listMap, '3-monicion'));
-      items.push(getItemForShare(action.listMap, '3'));
-      items.push(getItemForShare(action.listMap, '3-salmo'));
-      items.push(getItemForShare(action.listMap, 'evangelio-monicion'));
-      items.push(getItemForShare(action.listMap, 'evangelio'));
-      items.push(getItemForShare(action.listMap, 'paz'));
-      items.push(getItemForShare(action.listMap, 'comunion-pan'));
-      items.push(getItemForShare(action.listMap, 'comunion-caliz'));
-      items.push(getItemForShare(action.listMap, 'salida'));
-      items.push(getItemForShare(action.listMap, 'nota'));
-      var message = items.filter(n => n).join('\n');
-      /* eslint-disable no-console */
-      console.log('Texto para compartir', message);
-      Share.share(
-        {
-          message: message,
-          title: `Lista iResucitó ${action.list}`,
-          url: undefined
-        },
-        { dialogTitle: 'Compartir lista iResucitó' }
-      );
-      return state;
     default:
       return state;
   }

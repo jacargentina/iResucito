@@ -28,11 +28,17 @@ export const CONTACT_SYNC = 'CONTACT_SYNC';
 export const CONTACT_TOGGLE_ATTRIBUTE = 'CONTACT_TOGGLE_ATTRIBUTE';
 export const CONTACT_UPDATE = 'CONTACT_UPDATE';
 
-import { Alert, Platform } from 'react-native';
+import { Alert, Platform, Share } from 'react-native';
 import Contacts from 'react-native-contacts';
 import RNFS from 'react-native-fs';
 import I18n from '../translations';
-import { esLineaDeNotas, getDefaultLocale, preprocesarCanto } from '../util';
+import {
+  esLineaDeNotas,
+  getDefaultLocale,
+  preprocesarCanto,
+  getFriendlyText,
+  getEsSalmo
+} from '../util';
 import search from '../search';
 import SongsIndex from '../../songs';
 import { localdata, clouddata } from '../data';
@@ -90,8 +96,66 @@ export const addContactToList = (contact, listName, listKey) => {
   };
 };
 
+const getItemForShare = (listMap, key) => {
+  if (listMap.has(key)) {
+    var valor = listMap.get(key);
+    if (valor !== null && getEsSalmo(key)) {
+      valor = valor.titulo;
+    }
+    if (valor) {
+      return getFriendlyText(key) + ': ' + valor;
+    }
+  }
+  return null;
+};
+
 export const shareList = (listName, listMap) => {
-  return { type: LIST_SHARE, list: listName, listMap: listMap };
+  /* eslint-disable no-unused-vars */
+  return dispatch => {
+    var items = [];
+    items.push(getItemForShare(listMap, 'ambiental'));
+    items.push(getItemForShare(listMap, 'entrada'));
+    items.push(getItemForShare(listMap, '1-monicion'));
+    items.push(getItemForShare(listMap, '1'));
+    items.push(getItemForShare(listMap, '1-salmo'));
+    items.push(getItemForShare(listMap, '2-monicion'));
+    items.push(getItemForShare(listMap, '2'));
+    items.push(getItemForShare(listMap, '2-salmo'));
+    items.push(getItemForShare(listMap, '3-monicion'));
+    items.push(getItemForShare(listMap, '3'));
+    items.push(getItemForShare(listMap, '3-salmo'));
+    items.push(getItemForShare(listMap, 'evangelio-monicion'));
+    items.push(getItemForShare(listMap, 'evangelio'));
+    items.push(getItemForShare(listMap, 'paz'));
+    items.push(getItemForShare(listMap, 'comunion-pan'));
+    items.push(getItemForShare(listMap, 'comunion-caliz'));
+    items.push(getItemForShare(listMap, 'salida'));
+    items.push(getItemForShare(listMap, 'nota'));
+    var message = items.filter(n => n).join('\n');
+    /* eslint-disable no-console */
+    console.log('Texto para compartir', message);
+    Share.share(
+      {
+        message: message,
+        title: `Lista iResucitó ${listName}`,
+        url: undefined
+      },
+      { dialogTitle: I18n.t('ui.share') }
+    );
+  };
+};
+
+export const sharePDF = (canto, pdfPath) => {
+  /* eslint-disable no-unused-vars */
+  return dispatch => {
+    Share.share(
+      {
+        title: `iResucitó - ${canto.titulo}`,
+        url: pdfPath
+      },
+      { dialogTitle: I18n.t('ui.share') }
+    );
+  };
 };
 
 export const updateListMapText = (listName, key, text) => {
@@ -353,15 +417,16 @@ export const refreshContactsThumbs = (lastCacheDir, newCacheDir) => {
 
 import { stylesObj } from '../util';
 
+var titleFontSize = 19;
 var titleSpacing = 11;
-var fuenteSpacing = 20;
-var lineSpacing = 11;
-var indicadorSpacing = 16;
-var notesFontSize = 9;
-var textFontSize = 11;
-var titleFontSize = 22;
 var fuenteFontSize = 10;
+var fuenteSpacing = 20;
+var cantoFontSize = 12;
+var cantoSpacing = 12;
 var fontName = 'Franklin Gothic Medium';
+var indicadorSpacing = 18;
+var bloqueSpacing = 5;
+var notesFontSize = 10;
 var widthHeightPixels = 598; // 21,1 cm
 var primerColumnaX = 30;
 var segundaColumnaX = 330;
@@ -410,13 +475,13 @@ export const generatePDF = canto => {
             // pintarse por completo el bloque sin cortes; caso contrario
             // generamos la 2da columna
             if (it.notasCantoConIndicador && x === primerColumnaX) {
-              var altoBloque = lineSpacing * 2; // la linea de notas y del canto con indicador
+              var altoBloque = cantoSpacing * 2; // la linea de notas y del canto con indicador
               var i = index + 2; // Comenzar en la linea siguiente al canto con indicador
               while (
                 i < preprocesarItems.length &&
                 !preprocesarItems[i].cantoConIndicador
               ) {
-                altoBloque += lineSpacing;
+                altoBloque += cantoSpacing;
                 i += 1;
               }
               if (y - altoBloque <= 35) {
@@ -425,6 +490,9 @@ export const generatePDF = canto => {
               }
             }
             if (it.notas === true) {
+              if (it.notasCantoConIndicador) {
+                y -= bloqueSpacing;
+              }
               page1.drawText(it.texto, {
                 x: x + indicadorSpacing,
                 y: y,
@@ -437,7 +505,7 @@ export const generatePDF = canto => {
                 x: x + indicadorSpacing,
                 y: y,
                 color: stylesObj.lineaNormal.color,
-                fontSize: textFontSize,
+                fontSize: cantoFontSize,
                 fontName: fontName
               });
             } else if (it.cantoConIndicador === true) {
@@ -446,18 +514,18 @@ export const generatePDF = canto => {
                   x: x,
                   y: y,
                   color: stylesObj.prefijo.color,
-                  fontSize: textFontSize,
+                  fontSize: cantoFontSize,
                   fontName: fontName
                 })
                 .drawText(it.texto, {
                   x: x + indicadorSpacing,
                   y: y,
                   color: stylesObj.lineaNormal.color,
-                  fontSize: textFontSize,
+                  fontSize: cantoFontSize,
                   fontName: fontName
                 });
             }
-            y -= lineSpacing;
+            y -= cantoSpacing;
           });
           const docsDir =
             Platform.OS == 'ios'
