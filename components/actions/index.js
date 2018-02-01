@@ -353,94 +353,124 @@ export const refreshContactsThumbs = (lastCacheDir, newCacheDir) => {
 
 import { stylesObj } from '../util';
 
-var titleSpacing = 25;
+var titleSpacing = 11;
+var fuenteSpacing = 20;
 var lineSpacing = 11;
 var indicadorSpacing = 16;
 var notesFontSize = 9;
 var textFontSize = 11;
 var titleFontSize = 22;
+var fuenteFontSize = 10;
 var fontName = 'Franklin Gothic Medium';
 var widthHeightPixels = 598; // 21,1 cm
-// http://www.papersizes.org/a-sizes-in-pixels.htm
-// A4 (apaisado) 842 x 595
+var primerColumnaX = 30;
+var segundaColumnaX = 330;
 /* eslint-disable */
 export const generatePDF = canto => {
   return dispatch => {
-    return PDFLib.measureText(canto.titulo.toUpperCase(), fontName, titleFontSize)
-      .then(res => {
-        console.log('Measures', res);
-        const page1 = PDFPage.create().setMediaBox(widthHeightPixels, widthHeightPixels);
-        var y = 560;
-        var x = 30;
-        var titleX = widthHeightPixels - res.width / 2;
-        page1.drawText(canto.titulo.toUpperCase(), {
-          x: titleX,
-          y: y,
-          color: stylesObj.titulo.color,
-          fontSize: titleFontSize,
-          fontName: fontName
-        });
-        y -= titleSpacing;
-        var preprocesarItems = preprocesarCanto(canto.lines, 0, 'pdf');
-        preprocesarItems.forEach(it => {
-          if (it.notas === true) {
-            if (it.agregarEspacio === true) {
-              y -= lineSpacing;
+    // Para centrar titulo
+    return PDFLib.measureText(
+      canto.titulo.toUpperCase(),
+      fontName,
+      titleFontSize
+    ).then(sizeTitle => {
+      // Para centrar fuente
+      return PDFLib.measureText(canto.fuente, fontName, fuenteFontSize)
+        .then(sizeFuente => {
+          const page1 = PDFPage.create().setMediaBox(
+            widthHeightPixels,
+            widthHeightPixels
+          );
+          var y = 560;
+          var x = primerColumnaX;
+          var titleX = (widthHeightPixels - sizeTitle.width) / 2;
+          page1.drawText(canto.titulo.toUpperCase(), {
+            x: titleX,
+            y: y,
+            color: stylesObj.titulo.color,
+            fontSize: titleFontSize,
+            fontName: fontName
+          });
+          y -= titleSpacing;
+          var fuenteX = (widthHeightPixels - sizeFuente.width) / 2;
+          page1.drawText(canto.fuente, {
+            x: fuenteX,
+            y: y,
+            color: stylesObj.lineaNormal.color,
+            fontSize: fuenteFontSize,
+            fontName: fontName
+          });
+          y -= fuenteSpacing;
+          var yStart = y;
+          var preprocesarItems = preprocesarCanto(canto.lines, 0, 'pdf');
+          preprocesarItems.forEach((it, index) => {
+            // Mantener los bloques siempre juntos
+            // Los bloques comienzan donde hay notas del 'canto con indicador' (A. S. etc)
+            // Solo si estamos en la primer columna, calculamos si puede
+            // pintarse por completo el bloque sin cortes; caso contrario
+            // generamos la 2da columna
+            if (it.notasCantoConIndicador && x === primerColumnaX) {
+              var altoBloque = lineSpacing * 2; // la linea de notas y del canto con indicador
+              var i = index + 2; // Comenzar en la linea siguiente al canto con indicador
+              while (
+                i < preprocesarItems.length &&
+                !preprocesarItems[i].cantoConIndicador
+              ) {
+                altoBloque += lineSpacing;
+                i += 1;
+              }
+              if (y - altoBloque <= 35) {
+                x = segundaColumnaX;
+                y = yStart;
+              }
             }
-            page1.drawText(it.texto, {
-              x: x + indicadorSpacing,
-              y: y,
-              color: stylesObj.lineaNotas.color,
-              fontSize: notesFontSize,
-              fontName: fontName
-            });
-          } else if (it.canto === true) {
-            page1.drawText(it.texto, {
-              x: x + indicadorSpacing,
-              y: y,
-              color: stylesObj.lineaNormal.color,
-              fontSize: textFontSize,
-              fontName: fontName
-            });
-          } else if (it.cantoConIndicador === true) {
-            page1
-              .drawText(it.prefijo, {
-                x: x,
+            if (it.notas === true) {
+              page1.drawText(it.texto, {
+                x: x + indicadorSpacing,
                 y: y,
-                color: stylesObj.prefijo.color,
-                fontSize: textFontSize,
+                color: stylesObj.lineaNotas.color,
+                fontSize: notesFontSize,
                 fontName: fontName
-              })
-              .drawText(it.texto, {
+              });
+            } else if (it.canto === true) {
+              page1.drawText(it.texto, {
                 x: x + indicadorSpacing,
                 y: y,
                 color: stylesObj.lineaNormal.color,
                 fontSize: textFontSize,
                 fontName: fontName
               });
-          }
-          if (y - lineSpacing <= 35 && it.canto === true) {
-            y = 560 - titleSpacing;
-            x += 400;
-          } else {
+            } else if (it.cantoConIndicador === true) {
+              page1
+                .drawText(it.prefijo, {
+                  x: x,
+                  y: y,
+                  color: stylesObj.prefijo.color,
+                  fontSize: textFontSize,
+                  fontName: fontName
+                })
+                .drawText(it.texto, {
+                  x: x + indicadorSpacing,
+                  y: y,
+                  color: stylesObj.lineaNormal.color,
+                  fontSize: textFontSize,
+                  fontName: fontName
+                });
+            }
             y -= lineSpacing;
-          }
-        });
-        const docsDir =
-          Platform.OS == 'ios'
-            ? RNFS.TemporaryDirectoryPath
-            : RNFS.CachesDirectoryPath + '/';
-        const pdfPath = `${docsDir}sample.pdf`;
-        return PDFDocument.create(pdfPath)
-          .addPages(page1)
-          .write() // Returns a promise that resolves with the PDF's path
-          .then(path => {
-            console.log('PDF created at: ' + path);
-            return path;
           });
-      })
-      .catch(err => {
-        console.log('ERROR Measures', err);
-      });
+          const docsDir =
+            Platform.OS == 'ios'
+              ? RNFS.TemporaryDirectoryPath
+              : RNFS.CachesDirectoryPath + '/';
+          const pdfPath = `${docsDir}${canto.titulo}.pdf`;
+          return PDFDocument.create(pdfPath)
+            .addPages(page1)
+            .write();
+        })
+        .catch(err => {
+          console.log('ERROR Measures', err);
+        });
+    });
   };
 };

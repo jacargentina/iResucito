@@ -299,7 +299,7 @@ export const preprocesarCanto = (lines, diferenciaTransporte, target) => {
       var nextItmn = firstPass[i + 1];
       if (nextItmn.prefijo !== '') {
         it.style = styles.lineaNotasConMargen;
-        it.agregarEspacio = true;
+        it.notasCantoConIndicador = true;
       }
     }
     return it;
