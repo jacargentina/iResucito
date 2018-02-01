@@ -36,7 +36,7 @@ import { esLineaDeNotas, getDefaultLocale, preprocesarCanto } from '../util';
 import search from '../search';
 import SongsIndex from '../../songs';
 import { localdata, clouddata } from '../data';
-import { PDFDocument, PDFPage } from 'react-native-pdf-lib';
+import PDFLib, { PDFDocument, PDFPage } from 'react-native-pdf-lib';
 
 export const initializeSetup = (settings, lists, contacts) => {
   return {
@@ -358,79 +358,89 @@ var lineSpacing = 11;
 var indicadorSpacing = 16;
 var notesFontSize = 9;
 var textFontSize = 11;
+var titleFontSize = 22;
+var fontName = 'Franklin Gothic Medium';
+var widthHeightPixels = 598; // 21,1 cm
 // http://www.papersizes.org/a-sizes-in-pixels.htm
 // A4 (apaisado) 842 x 595
 /* eslint-disable */
 export const generatePDF = canto => {
   return dispatch => {
-    // Create a PDF page with text and rectangles
-    const page1 = PDFPage.create().setMediaBox(842, 595);
-    var y = 560;
-    var x = 30;
-    page1.drawText(canto.titulo.toUpperCase(), {
-      x: x,
-      y: y,
-      color: stylesObj.titulo.color,
-      fontSize: textFontSize * 2,
-      fontName: 'Franklin Gothic Medium'
-    });
-    y -= titleSpacing;
-    var preprocesarItems = preprocesarCanto(canto.lines, 0, 'pdf');
-    preprocesarItems.forEach(it => {
-      if (it.notas === true) {
-        if (it.agregarEspacio === true) {
-          y -= lineSpacing;
-        }
-        page1.drawText(it.texto, {
-          x: x + indicadorSpacing,
+    return PDFLib.measureText(canto.titulo.toUpperCase(), fontName, titleFontSize)
+      .then(res => {
+        console.log('Measures', res);
+        const page1 = PDFPage.create().setMediaBox(widthHeightPixels, widthHeightPixels);
+        var y = 560;
+        var x = 30;
+        var titleX = widthHeightPixels - res.width / 2;
+        page1.drawText(canto.titulo.toUpperCase(), {
+          x: titleX,
           y: y,
-          color: stylesObj.lineaNotas.color,
-          fontSize: notesFontSize,
-          fontName: 'Franklin Gothic Medium'
+          color: stylesObj.titulo.color,
+          fontSize: titleFontSize,
+          fontName: fontName
         });
-      } else if (it.canto === true) {
-        page1.drawText(it.texto, {
-          x: x + indicadorSpacing,
-          y: y,
-          color: stylesObj.lineaNormal.color,
-          fontSize: textFontSize,
-          fontName: 'Franklin Gothic Medium'
+        y -= titleSpacing;
+        var preprocesarItems = preprocesarCanto(canto.lines, 0, 'pdf');
+        preprocesarItems.forEach(it => {
+          if (it.notas === true) {
+            if (it.agregarEspacio === true) {
+              y -= lineSpacing;
+            }
+            page1.drawText(it.texto, {
+              x: x + indicadorSpacing,
+              y: y,
+              color: stylesObj.lineaNotas.color,
+              fontSize: notesFontSize,
+              fontName: fontName
+            });
+          } else if (it.canto === true) {
+            page1.drawText(it.texto, {
+              x: x + indicadorSpacing,
+              y: y,
+              color: stylesObj.lineaNormal.color,
+              fontSize: textFontSize,
+              fontName: fontName
+            });
+          } else if (it.cantoConIndicador === true) {
+            page1
+              .drawText(it.prefijo, {
+                x: x,
+                y: y,
+                color: stylesObj.prefijo.color,
+                fontSize: textFontSize,
+                fontName: fontName
+              })
+              .drawText(it.texto, {
+                x: x + indicadorSpacing,
+                y: y,
+                color: stylesObj.lineaNormal.color,
+                fontSize: textFontSize,
+                fontName: fontName
+              });
+          }
+          if (y - lineSpacing <= 35 && it.canto === true) {
+            y = 560 - titleSpacing;
+            x += 400;
+          } else {
+            y -= lineSpacing;
+          }
         });
-      } else if (it.cantoConIndicador === true) {
-        page1
-          .drawText(it.prefijo, {
-            x: x,
-            y: y,
-            color: stylesObj.prefijo.color,
-            fontSize: textFontSize,
-            fontName: 'Franklin Gothic Medium'
-          })
-          .drawText(it.texto, {
-            x: x + indicadorSpacing,
-            y: y,
-            color: stylesObj.lineaNormal.color,
-            fontSize: textFontSize,
-            fontName: 'Franklin Gothic Medium'
+        const docsDir =
+          Platform.OS == 'ios'
+            ? RNFS.TemporaryDirectoryPath
+            : RNFS.CachesDirectoryPath + '/';
+        const pdfPath = `${docsDir}sample.pdf`;
+        return PDFDocument.create(pdfPath)
+          .addPages(page1)
+          .write() // Returns a promise that resolves with the PDF's path
+          .then(path => {
+            console.log('PDF created at: ' + path);
+            return path;
           });
-      }
-      if (y - lineSpacing <= 35 && it.canto === true) {
-        y = 560 - titleSpacing;
-        x += 400;
-      } else {
-        y -= lineSpacing;
-      }
-    });
-    const docsDir =
-      Platform.OS == 'ios'
-        ? RNFS.TemporaryDirectoryPath
-        : RNFS.CachesDirectoryPath + '/';
-    const pdfPath = `${docsDir}sample.pdf`;
-    return PDFDocument.create(pdfPath)
-      .addPages(page1)
-      .write() // Returns a promise that resolves with the PDF's path
-      .then(path => {
-        console.log('PDF created at: ' + path);
-        return path;
+      })
+      .catch(err => {
+        console.log('ERROR Measures', err);
       });
   };
 };
