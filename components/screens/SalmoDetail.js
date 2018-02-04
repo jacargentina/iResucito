@@ -125,7 +125,7 @@ const mapDispatchToProps = dispatch => {
           if (index !== 2) {
             dispatch(generatePDF(canto)).then(path => {
               if (index === 0) {
-                navigation.navigate('PDFViewer', { uri: path });
+                navigation.navigate('PDFViewer', { uri: path, title: canto.titulo });
               } else {
                 dispatch(sharePDF(canto, path));
               }

@@ -20,4 +20,8 @@ const PDFViewer = props => {
   );
 };
 
+PDFViewer.navigationOptions = props => ({
+  title: props.navigation.state.params.title
+});
+
 export default PDFViewer;
