@@ -10,7 +10,7 @@ const PDFViewer = props => {
       }}>
       <Pdf
         source={{ uri: props.navigation.state.params.uri }}
-        scale={3}
+        scale={1.4}
         style={{
           flex: 1,
           width: Dimensions.get('window').width
