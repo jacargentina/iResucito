@@ -4,6 +4,7 @@ import { BackHandler, Platform, View, Text } from 'react-native';
 import RNFS from 'react-native-fs';
 import DeviceInfo from 'react-native-device-info';
 import { addNavigationHelpers, NavigationActions } from 'react-navigation';
+import { createReduxBoundAddListener } from 'react-navigation-redux-helpers';
 import SplashScreen from 'react-native-splash-screen';
 import { Root, StyleProvider } from 'native-base';
 import getTheme from './native-base-theme/components';
@@ -33,6 +34,8 @@ if (Platform.OS == 'android') {
     return string.indexOf(String(search), pos) === start;
   };
 }
+
+const addListener = createReduxBoundAddListener('root');
 
 class App extends React.Component {
   constructor(props) {
@@ -86,7 +89,8 @@ class App extends React.Component {
             <AppNavigator
               navigation={addNavigationHelpers({
                 dispatch: this.props.dispatch,
-                state: this.props.nav
+                state: this.props.nav,
+                addListener
               })}
             />
           </MenuProvider>
