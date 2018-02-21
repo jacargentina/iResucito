@@ -448,7 +448,7 @@ export const generatePDF = canto => {
           );
           var y = 560;
           var x = primerColumnaX;
-          var titleX = (widthHeightPixels - sizeTitle.width) / 2;
+          var titleX = parseInt((widthHeightPixels - sizeTitle.width) / 2);
           page1.drawText(canto.titulo.toUpperCase(), {
             x: titleX,
             y: y,
@@ -457,7 +457,7 @@ export const generatePDF = canto => {
             fontName: fontName
           });
           y -= titleSpacing;
-          var fuenteX = (widthHeightPixels - sizeFuente.width) / 2;
+          var fuenteX = parseInt((widthHeightPixels - sizeFuente.width) / 2);
           page1.drawText(canto.fuente, {
             x: fuenteX,
             y: y,
