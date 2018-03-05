@@ -4,13 +4,19 @@ import { BackHandler, Platform, View, Text } from 'react-native';
 import RNFS from 'react-native-fs';
 import DeviceInfo from 'react-native-device-info';
 import { addNavigationHelpers, NavigationActions } from 'react-navigation';
-import { createReduxBoundAddListener } from 'react-navigation-redux-helpers';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import { initializeListeners } from 'react-navigation-redux-helpers';
 import SplashScreen from 'react-native-splash-screen';
 import { Root, StyleProvider } from 'native-base';
 import getTheme from './native-base-theme/components';
 import commonTheme from './native-base-theme/variables/platform';
-import Store from './components/store';
+import reducer from './components/reducers';
 import AppNavigator from './components/AppNavigator';
+import {
+  navMiddleware,
+  addListener
+} from './components/navigation';
 import { MenuProvider } from 'react-native-popup-menu';
 import { localdata, clouddata } from './components/data';
 import {
@@ -35,8 +41,6 @@ if (Platform.OS == 'android') {
   };
 }
 
-const addListener = createReduxBoundAddListener('root');
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -47,6 +51,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    initializeListeners('root', this.props.nav);
     BackHandler.addEventListener('hardwareBackPress', this.onBackPress);
     this.props.init().then(() => {
       setTimeout(() => {
@@ -155,9 +160,11 @@ const AppWithNavigationState = connect(mapStateToProps, mapDispatchToProps)(
   App
 );
 
+let store = createStore(reducer, applyMiddleware(thunk, navMiddleware));
+
 const AppWithReduxStore = () => {
   return (
-    <Provider store={Store}>
+    <Provider store={store}>
       <AppWithNavigationState />
     </Provider>
   );
