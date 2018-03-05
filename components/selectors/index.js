@@ -1,5 +1,10 @@
 import { createSelector } from 'reselect';
-import { getEsSalmo, getFriendlyTextForListType } from '../util';
+import {
+  getEsSalmo,
+  getFriendlyTextForListType,
+  preprocesarCanto,
+  calcularTransporte
+} from '../util';
 
 const getLists = state => state.ui.get('lists');
 
@@ -58,8 +63,7 @@ const getContactImportSanitizedItems = createSelector(
       if (grouped[fullname].length > 1) {
         var conMiniatura = grouped[fullname].find(c => c.hasThumbnail === true);
         unique.push(conMiniatura || grouped[fullname][0]);
-      }
-      else {
+      } else {
         unique.push(grouped[fullname][0]);
       }
     }
@@ -197,3 +201,22 @@ export const getShowSalmosBadge = createSelector(
 export const makeGetProcessedSalmos = () => {
   return createSelector(getProcessedSalmos, salmos => salmos);
 };
+
+export const getSalmoFromProps = (state, props) =>
+  props.navigation.state.params.salmo;
+
+export const getTransportToNote = state =>
+  state.ui.get('salmos_transport_note');
+
+export const getSalmoTransported = createSelector(
+  getSalmoFromProps,
+  getTransportToNote,
+  (salmo, transportToNote) => {
+    var lines = salmo.lines;
+    var diferencia = 0;
+    if (transportToNote) {
+      diferencia = calcularTransporte(lines[0], transportToNote);
+    }
+    return preprocesarCanto(lines, diferencia);
+  }
+);

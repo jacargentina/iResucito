@@ -431,7 +431,7 @@ var widthHeightPixels = 598; // 21,1 cm
 var primerColumnaX = 30;
 var segundaColumnaX = 330;
 /* eslint-disable */
-export const generatePDF = canto => {
+export const generatePDF = (canto, lines) => {
   return dispatch => {
     // Para centrar titulo
     return PDFLib.measureText(
@@ -467,8 +467,7 @@ export const generatePDF = canto => {
           });
           y -= fuenteSpacing;
           var yStart = y;
-          var preprocesarItems = preprocesarCanto(canto.lines, 0, 'pdf');
-          preprocesarItems.forEach((it, index) => {
+          lines.forEach((it, index) => {
             // Mantener los bloques siempre juntos
             // Los bloques comienzan donde hay notas del 'canto con indicador' (A. S. etc)
             // Solo si estamos en la primer columna, calculamos si puede
@@ -478,8 +477,8 @@ export const generatePDF = canto => {
               var altoBloque = cantoSpacing * 2; // la linea de notas y del canto con indicador
               var i = index + 2; // Comenzar en la linea siguiente al canto con indicador
               while (
-                i < preprocesarItems.length &&
-                !preprocesarItems[i].cantoConIndicador
+                i < lines.length &&
+                !lines[i].cantoConIndicador
               ) {
                 altoBloque += cantoSpacing;
                 i += 1;

@@ -181,7 +181,7 @@ export const stylesObj = {
 export const styles = StyleSheet.create(stylesObj);
 
 /* eslint-disable no-unused-vars */
-export const preprocesarLinea = (text, target) => {
+export const preprocesarLinea = (text) => {
   var it = {};
   if (text.startsWith('S. A.')) {
     // Indicador de Salmista Y Asamblea
@@ -219,13 +219,9 @@ export const preprocesarLinea = (text, target) => {
       it.sufijoStyle = styles.lineaNotas;
     }
   } else if (esLineaDeNotas(text)) {
-    text =
-      target === 'view'
-        ? text.replace(/ {2}/g, ' ').trimRight()
-        : text.trimRight();
     it = {
       prefijo: '',
-      texto: text,
+      texto: text.trimRight(),
       style: styles.lineaNotas,
       notas: true
     };
@@ -265,9 +261,9 @@ export const preprocesarLinea = (text, target) => {
   return it;
 };
 
-export const preprocesarCanto = (lines, diferenciaTransporte, target) => {
+export const preprocesarCanto = (lines, diferenciaTransporte) => {
   var firstPass = lines.map(l => {
-    var it = preprocesarLinea(l, target);
+    var it = preprocesarLinea(l);
     if (it.notas && diferenciaTransporte !== 0) {
       it.texto = transportarNotas(it.texto, diferenciaTransporte);
     }

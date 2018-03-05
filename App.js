@@ -46,10 +46,6 @@ class App extends React.Component {
     };
   }
 
-  componentWillMount() {
-    BackHandler.removeEventListener('hardwareBackPress', this.onBackPress);
-  }
-
   componentDidMount() {
     BackHandler.addEventListener('hardwareBackPress', this.onBackPress);
     this.props.init().then(() => {

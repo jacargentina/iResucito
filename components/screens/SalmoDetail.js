@@ -11,8 +11,13 @@ import {
 } from 'react-native-popup-menu';
 import colors from '../colors';
 import color from 'color';
-import { preprocesarCanto, calcularTransporte, notas, styles } from '../util';
+import { notas, styles } from '../util';
 import { salmoTransport, generatePDF, sharePDF } from '../actions';
+import {
+  getSalmoFromProps,
+  getSalmoTransported,
+  getTransportToNote
+} from '../selectors';
 import AppNavigatorConfig from '../AppNavigatorConfig';
 import commonTheme from '../../native-base-theme/variables/platform';
 import I18n from '../translations';
@@ -35,13 +40,7 @@ class SalmoDetail extends React.Component {
   }
 
   render() {
-    var lines = this.props.lines;
-    var diferencia = 0;
-    if (this.props.transportToNote) {
-      diferencia = calcularTransporte(lines[0], this.props.transportToNote);
-    }
-    var preprocesarItems = preprocesarCanto(lines, diferencia, 'view');
-    var items = preprocesarItems.map((it, i) => {
+    var render_items = this.props.lines.map((it, i) => {
       if (it.sufijo) {
         var sufijo = (
           <Text key={i + 'sufijo'} style={it.sufijoStyle}>
@@ -59,7 +58,7 @@ class SalmoDetail extends React.Component {
         </Text>
       );
     });
-    items.push(<Text key="spacer">{'\n\n\n'}</Text>);
+    render_items.push(<Text key="spacer">{'\n\n\n'}</Text>);
     var margin = 10;
     var minWidth = Dimensions.get('window').width - margin * 2;
     return (
@@ -79,7 +78,7 @@ class SalmoDetail extends React.Component {
                 {this.props.salmo.titulo}{' '}
                 <Text style={styles.fuente}>{this.props.salmo.fuente}</Text>
               </Text>
-              {items}
+              {render_items}
             </Content>
           </ScrollView>
         </ScrollView>
@@ -89,14 +88,21 @@ class SalmoDetail extends React.Component {
 }
 
 const mapStateToProps = (state, props) => {
-  var salmo = props.navigation.state.params.salmo;
+  var salmo = getSalmoFromProps(state, props);
   var keepAwake = state.ui.getIn(['settings', 'keepAwake']);
   var backColor = color(colors[salmo.etapa]);
   var colorStr = backColor.lighten(0.1).string();
-  var transportToNote = state.ui.get('salmos_transport_note');
+  var transportToNote = getTransportToNote(state);
+  var itemsToRender = getSalmoTransported(state, props);
+  // Ajuste final para renderizado en screen
+  itemsToRender.forEach(it => {
+    if (it.notes === true) {
+      it.texto = it.texto.replace(/ {2}/g, ' ');
+    }
+  });
   return {
     salmo: salmo,
-    lines: salmo.lines || [],
+    lines: itemsToRender,
     background: colorStr,
     keepAwake: keepAwake,
     transportToNote: transportToNote
@@ -109,7 +115,7 @@ const mapDispatchToProps = dispatch => {
     transportNote: transportTo => {
       dispatch(salmoTransport(transportTo));
     },
-    shareSong: (canto, navigation) => {
+    shareSong: (salmo, lines, navigation) => {
       ActionSheet.show(
         {
           options: [
@@ -123,11 +129,14 @@ const mapDispatchToProps = dispatch => {
         index => {
           index = Number(index);
           if (index !== 2) {
-            dispatch(generatePDF(canto)).then(path => {
+            dispatch(generatePDF(salmo, lines)).then(path => {
               if (index === 0) {
-                navigation.navigate('PDFViewer', { uri: path, title: canto.titulo });
+                navigation.navigate('PDFViewer', {
+                  uri: path,
+                  title: salmo.titulo
+                });
               } else {
-                dispatch(sharePDF(canto, path));
+                dispatch(sharePDF(salmo, path));
               }
             });
           }
@@ -203,7 +212,9 @@ const ShareSong = props => {
         textAlign: 'center',
         color: AppNavigatorConfig.navigationOptions.headerTitleStyle.color
       }}
-      onPress={() => props.shareSong(props.salmo, props.navigation)}
+      onPress={() =>
+        props.shareSong(props.salmo, props.lines, props.navigation)
+      }
     />
   );
 };
