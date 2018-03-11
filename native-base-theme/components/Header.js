@@ -1,4 +1,4 @@
-import { PixelRatio } from "react-native";
+import { PixelRatio, StatusBar } from "react-native";
 
 import variable from "./../variables/platform";
 
@@ -59,6 +59,23 @@ export default (variables = variable) => {
       shadowRadius: null,
       shadowOpacity: null,
       borderBottomWidth: null,
+      "NativeBase.Left": {
+        flex: 0.3,
+      },
+      "NativeBase.Right": {
+        flex: 0.3,
+      },
+      "NativeBase.Body": {
+        flex: 1,
+        "NativeBase.Segment": {
+          marginRight: 0,
+          alignSelf: 'center',
+          "NativeBase.Button": {
+            paddingLeft: 0,
+            paddingRight: 0
+          }
+        },
+      },
     },
     "NativeBase.Button": {
       justifyContent: "center",
@@ -299,7 +316,7 @@ export default (variables = variable) => {
     paddingTop: platform === "ios" ? (variables.isIphoneX ? 39 : 15) : 0,
     borderBottomWidth: platform === "ios" ? 1 / PixelRatio.getPixelSizeForLayoutSize(1) : 0,
     borderBottomColor: variables.toolbarDefaultBorder,
-    height: variables.toolbarHeight,
+    height: variables.platform === "ios" && variables.platformStyle === "material" ? (variables.toolbarHeight + StatusBar.height) : variables.toolbarHeight,
     elevation: 3,
     shadowColor: platformStyle === "material" ? "#000" : undefined,
     shadowOffset: platformStyle === "material" ? { width: 0, height: 2 } : undefined,

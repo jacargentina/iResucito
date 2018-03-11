@@ -86,9 +86,9 @@ export default {
   CheckboxBorderWidth: platform === "ios" ? 1 : 2,
   CheckboxPaddingLeft: platform === "ios" ? 4 : 2,
   CheckboxPaddingBottom: platform === "ios" ? 0 : 5,
-  CheckboxIconSize: platform === "ios" ? 21 : 14,
+  CheckboxIconSize: platform === "ios" ? 21 : 16,
   CheckboxIconMarginTop: platform === "ios" ? undefined : 1,
-  CheckboxFontSize: platform === "ios" ? 23 / 0.9 : 18,
+  CheckboxFontSize: platform === "ios" ? 23 / 0.9 : 17,
   DefaultFontSize: 22,
   checkboxBgColor: "#ff5252",
   checkboxSize: 20,
@@ -118,7 +118,7 @@ export default {
 
   // Footer
   footerHeight: isIphoneX ? 89 : 55,
-  footerDefaultBg: platform === "ios" ? "#F8F8F8" : "#4179F7",
+  footerDefaultBg: platform === "ios" ? "#F8F8F8" : "#3F51B5",
   footerPaddingBottom: isIphoneX ? 34 : 0,
 
   // FooterTab
@@ -193,7 +193,9 @@ export default {
   radioBtnSize: platform === "ios" ? 25 : 23,
   radioSelectedColorAndroid: "#3F51B5",
   radioBtnLineHeight: platform === "ios" ? 29 : 24,
-  radioColor: this.brandPrimary,
+  get radioColor() {
+    return this.brandPrimary;
+  },
 
   // Segment
   segmentBackgroundColor: platform === "ios" ? "#F8F8F8" : "#3F51B5",
