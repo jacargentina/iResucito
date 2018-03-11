@@ -96,7 +96,7 @@ const mapStateToProps = (state, props) => {
   var itemsToRender = getSalmoTransported(state, props);
   // Ajuste final para renderizado en screen
   itemsToRender.forEach(it => {
-    if (it.notes === true) {
+    if (it.notas === true) {
       it.texto = it.texto.replace(/ {2}/g, ' ');
     }
   });
