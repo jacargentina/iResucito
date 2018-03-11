@@ -5,6 +5,7 @@
   "env": {
     "development": {
       "plugins": [
+        "transform-runtime",
         "transform-react-jsx-source"
       ]
     }
