@@ -16,6 +16,7 @@ rl.question('Cual locale? ', locale => {
       return SongsIndex[key].files['es'];
     });
     songs.sort();
+    /* eslint-disable */
     console.log(`Cantos (es) sin locale ${locale}`);
     console.log(songs);
   }

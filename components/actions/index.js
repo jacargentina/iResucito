@@ -35,7 +35,6 @@ import I18n from '../translations';
 import {
   esLineaDeNotas,
   getDefaultLocale,
-  preprocesarCanto,
   getFriendlyText,
   getEsSalmo
 } from '../util';
@@ -476,10 +475,7 @@ export const generatePDF = (canto, lines) => {
             if (it.notasCantoConIndicador && x === primerColumnaX) {
               var altoBloque = cantoSpacing * 2; // la linea de notas y del canto con indicador
               var i = index + 2; // Comenzar en la linea siguiente al canto con indicador
-              while (
-                i < lines.length &&
-                !lines[i].cantoConIndicador
-              ) {
+              while (i < lines.length && !lines[i].cantoConIndicador) {
                 altoBloque += cantoSpacing;
                 i += 1;
               }
