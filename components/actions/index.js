@@ -472,7 +472,10 @@ export const generatePDF = (canto, lines) => {
             // Solo si estamos en la primer columna, calculamos si puede
             // pintarse por completo el bloque sin cortes; caso contrario
             // generamos la 2da columna
-            if (it.notasCantoConIndicador && x === primerColumnaX) {
+            // Si es el primer bloque de todos, no tenerlo en cuenta: hay cantos 
+            // cuyo primer bloque es muy largo (ej. "Adónde te escondiste amado"
+            //  y en este caso hay que cortarlo forzosamente
+            if (it.notasCantoConIndicador && y !== yStart && x === primerColumnaX) {
               var altoBloque = cantoSpacing * 2; // la linea de notas y del canto con indicador
               var i = index + 2; // Comenzar en la linea siguiente al canto con indicador
               while (i < lines.length && !lines[i].cantoConIndicador) {
