@@ -3,10 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-plugin-root-import": "^5.1.0",
     "babel-preset-react-native-stage-0": "^1.0.1",
-    "jest-expo": "~26.0.0",
     "react-test-renderer": "16.3.0"
   },
   "scripts": {
@@ -19,12 +16,10 @@
     "postversion": "react-native-version --never-amend"
   },
   "jest": {
-    "preset": "jest-expo"
+    "preset": "react-native"
   },
   "dependencies": {
     "babel-eslint": "^8.2.2",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-runtime": "^6.26.0",
     "color": "^3.0.0",
     "eslint": "^4.19.1",
     "eslint-plugin-babel": "^5.0.0",
