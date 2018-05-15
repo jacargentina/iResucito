@@ -3,7 +3,7 @@ import { connect, Provider } from 'react-redux';
 import { BackHandler, Platform } from 'react-native';
 import RNFS from 'react-native-fs';
 import DeviceInfo from 'react-native-device-info';
-import { addNavigationHelpers, NavigationActions } from 'react-navigation';
+import { NavigationActions } from 'react-navigation';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { initializeListeners } from 'react-navigation-redux-helpers';
@@ -68,13 +68,7 @@ class App extends React.Component {
       <StyleProvider style={getTheme(commonTheme)}>
         <Root>
           <MenuProvider backHandler={true}>
-            <AppNavigator
-              navigation={addNavigationHelpers({
-                dispatch: this.props.dispatch,
-                state: this.props.nav,
-                addListener
-              })}
-            />
+            <AppNavigator />
           </MenuProvider>
         </Root>
       </StyleProvider>
