@@ -96,7 +96,7 @@ const CountText = props => {
       style={{
         marginRight: 8,
         fontSize: 10,
-        color: AppNavigatorConfig.navigationOptions.headerTitleStyle.color
+        color: AppNavigatorConfig.navigationOptions(props).headerTitleStyle.color
       }}>
       {props.items.length}
     </Text>

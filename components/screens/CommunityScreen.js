@@ -153,7 +153,7 @@ const ImportContacts = props => {
         width: 32,
         fontSize: 30,
         textAlign: 'center',
-        color: AppNavigatorConfig.navigationOptions.headerTitleStyle.color
+        color: AppNavigatorConfig.navigationOptions(props).headerTitleStyle.color
       }}
       onPress={() => props.contactImport()}
     />

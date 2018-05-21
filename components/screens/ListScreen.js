@@ -155,7 +155,7 @@ const AddList = props => {
         width: 32,
         fontSize: 40,
         textAlign: 'center',
-        color: AppNavigatorConfig.navigationOptions.headerTitleStyle.color
+        color: AppNavigatorConfig.navigationOptions(props).headerTitleStyle.color
       }}
       onPress={() => props.listAdd()}
     />

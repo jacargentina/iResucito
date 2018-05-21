@@ -49,23 +49,23 @@ class SettingsScreen extends React.Component {
                   margin: 0
                 }}
                 headerStyle={{
-                  backgroundColor:
-                    AppNavigatorConfig.navigationOptions.headerStyle
-                      .backgroundColor
+                  backgroundColor: AppNavigatorConfig.navigationOptions(
+                    this.props
+                  ).headerStyle.backgroundColor
                 }}
                 headerBackButtonTextStyle={{
-                  color:
-                    AppNavigatorConfig.navigationOptions.headerTitleStyle.color
+                  color: AppNavigatorConfig.navigationOptions(this.props)
+                    .headerTitleStyle.color
                 }}
                 headerTitleStyle={{
-                  color:
-                    AppNavigatorConfig.navigationOptions.headerTitleStyle.color
+                  color: AppNavigatorConfig.navigationOptions(this.props)
+                    .headerTitleStyle.color
                 }}
                 selectedValue={this.props.locale}
                 onValueChange={val => {
                   this.props.updateSetting('locale', val);
                   // Para forzar refresco del titulo segun idioma nuevo
-                  this.props.navigation.setParams({title: ''});
+                  this.props.navigation.setParams({ title: '' });
                 }}>
                 {this.localesItems}
               </Picker>

@@ -166,7 +166,7 @@ const ShareList = props => {
       style={{
         marginTop: 4,
         marginRight: 12,
-        color: AppNavigatorConfig.navigationOptions.headerTitleStyle.color
+        color: AppNavigatorConfig.navigationOptions(props).headerTitleStyle.color
       }}
       onPress={() =>
         props.listShare(props.navigation.state.params.list, props.listMap)}

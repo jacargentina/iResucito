@@ -8,21 +8,11 @@ import MenuNavigator from './MenuNavigator';
 
 const AppNavigator = createStackNavigator(
   {
-    Menu: {
-      screen: MenuNavigator
-    },
-    SalmoList: {
-      screen: SalmoList
-    },
-    SalmoDetail: {
-      screen: SalmoDetail
-    },
-    PDFViewer: {
-      screen: PDFViewer
-    },
-    ListDetail: {
-      screen: ListDetail
-    },
+    Menu: MenuNavigator,
+    SalmoList: SalmoList,
+    SalmoDetail: SalmoDetail,
+    PDFViewer: PDFViewer,
+    ListDetail: ListDetail
   },
   AppNavigatorConfig
 );
