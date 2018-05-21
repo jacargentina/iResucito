@@ -63,12 +63,10 @@ const ListScreen = props => {
                   });
                 }}>
                 <Left>
-                  <Badge style={{ backgroundColor: 'transparent' }}>
-                    <Icon name="bookmark" />
-                  </Badge>
+                  <Icon name="bookmark" style={{ fontSize: 36 }} />
                 </Left>
                 <Body>
-                  <Text>{item.name}</Text>
+                  <Text style={{ fontSize: 26 }}>{item.name}</Text>
                   <Text note>{item.type}</Text>
                 </Body>
               </ListItem>
@@ -155,7 +153,8 @@ const AddList = props => {
         width: 32,
         fontSize: 40,
         textAlign: 'center',
-        color: AppNavigatorConfig.navigationOptions(props).headerTitleStyle.color
+        color: AppNavigatorConfig.navigationOptions(props).headerTitleStyle
+          .color
       }}
       onPress={() => props.listAdd()}
     />
