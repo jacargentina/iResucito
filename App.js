@@ -13,7 +13,7 @@ import getTheme from './native-base-theme/components';
 import commonTheme from './native-base-theme/variables/platform';
 import reducer from './components/reducers';
 import AppNavigator from './components/AppNavigator';
-import { navMiddleware, addListener } from './components/navigation';
+import { navMiddleware } from './components/navigation';
 import { MenuProvider } from 'react-native-popup-menu';
 import { localdata, clouddata } from './components/data';
 import {
@@ -42,6 +42,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.onBackPress = this.onBackPress.bind(this);
+    this.state = { initialized: false };
   }
 
   componentDidMount() {
@@ -49,6 +50,7 @@ class App extends React.Component {
     BackHandler.addEventListener('hardwareBackPress', this.onBackPress);
     this.props.init().then(() => {
       setTimeout(() => {
+        this.setState({ initialized: true });
         SplashScreen.hide();
       }, 2500);
     });
@@ -64,6 +66,9 @@ class App extends React.Component {
   }
 
   render() {
+    if (!this.state.initialized) {
+      return null;
+    }
     return (
       <StyleProvider style={getTheme(commonTheme)}>
         <Root>
