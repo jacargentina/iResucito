@@ -15,10 +15,10 @@ import {
   SET_CONTACT_IMPORT_ITEMS,
   SALMO_TRANSPORT,
   LIST_CREATE,
-  LIST_ADD_SALMO,
+  LIST_ADD_SONG,
   LIST_ADD_TEXT,
   LIST_ADD_CONTACT,
-  LIST_REMOVE_SALMO,
+  LIST_REMOVE_SONG,
   LIST_DELETE,
   CONTACT_SYNC,
   CONTACT_UPDATE,
@@ -117,6 +117,7 @@ export default function ui(state = initialState, action) {
         let schema = Map({ type: action.list_type });
         switch (action.list_type) {
           case 'libre':
+            schema = schema.set('items', List());
             break;
           case 'palabra':
             schema = schema.set('ambiental', null);
@@ -154,11 +155,20 @@ export default function ui(state = initialState, action) {
         state = state.setIn(['lists', action.name], schema);
       }
       return state;
-    case LIST_ADD_SALMO:
-      state = state.setIn(
-        ['lists', action.list, action.key],
-        action.salmo.nombre
-      );
+    case LIST_ADD_SONG:
+      // Las listas de tipo 'libre' tienen claves numericas
+      // y se colocan los salmos en la propiedad 'items'
+      if (typeof action.key == 'number') {
+        state = state.setIn(
+          ['lists', action.list, 'items', action.key],
+          action.salmo.nombre
+        );
+      } else {
+        state = state.setIn(
+          ['lists', action.list, action.key],
+          action.salmo.nombre
+        );
+      }
       return state;
     case LIST_ADD_TEXT:
       state = state.setIn(['lists', action.list, action.key], action.text);
@@ -167,8 +177,8 @@ export default function ui(state = initialState, action) {
       var text = action.contact.givenName;
       state = state.setIn(['lists', action.list, action.key], text);
       return state;
-    case LIST_REMOVE_SALMO:
-      state = state.updateIn(['lists', action.list, action.key], null);
+    case LIST_REMOVE_SONG:
+      state = state.deleteIn(['lists', action.list, 'items', action.key]);
       return state;
     case LIST_DELETE:
       state = state.deleteIn(['lists', action.list]);

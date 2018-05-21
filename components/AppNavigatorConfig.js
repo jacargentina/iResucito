@@ -21,7 +21,6 @@ const AppNavigatorConfig = {
       var current = navigation.state.routes[navigation.state.index];
       var screen = MenuNavigator.router.getComponentForRouteName(current.key);
       options.title = screen.navigationOptions().title;
-      console.log('assigned title', options.title, I18n.locale);
     }
     return options;
   },

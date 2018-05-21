@@ -38,7 +38,12 @@ export const getSalmosFromList = createSelector(
   getListFromNavigation,
   (salmos, listMap) => {
     var result = listMap.map((valor, clave) => {
-      if (getEsSalmo(clave) && valor !== null) {
+      // Si es de tipo 'libre', los salmos están dentro de 'items'
+      if (clave === 'items') {
+        valor = valor.map(nombre => {
+          return salmos.find(s => s.nombre == nombre);
+        });
+      } else if (getEsSalmo(clave) && valor !== null) {
         return salmos.find(s => s.nombre == valor);
       }
       return valor;

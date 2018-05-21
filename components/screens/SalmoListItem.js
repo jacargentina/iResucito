@@ -77,16 +77,12 @@ class SalmoListItem extends React.Component {
               color: commonTheme.brandPrimary
             }}
             onPress={() => {
-              Alert.alert(
-                'Error',
-                this.props.salmo.error
-              );
+              Alert.alert('Error', this.props.salmo.error);
             }}
           />
         </Right>
       );
-    }
-    else if (this.props.salmo.locale === false && !abrirRestoResaltado) {
+    } else if (this.props.salmo.locale === false && !abrirRestoResaltado) {
       var advertenciaSinLocale = (
         <Right>
           <Icon
@@ -111,7 +107,9 @@ class SalmoListItem extends React.Component {
         <Body>
           <TouchableOpacity
             onPress={() => {
-              this.props.onPress(this.props.salmo);
+              if (this.props.onPress) {
+                this.props.onPress(this.props.salmo);
+              }
             }}>
             <Highlighter
               style={this.textStyles}

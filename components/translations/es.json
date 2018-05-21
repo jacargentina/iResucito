@@ -25,7 +25,8 @@
       "Ayuda haciendo una donación. La Paz!",
     "donate button": "Donar",
     "no songs found": "Ningún canto encontrado",
-    "no contacts found":  "Ningún contacto encontrado"
+    "no contacts found":  "Ningún contacto encontrado",
+    "empty songs list": "Lista de cantos vacía"
   },
   "list_type": {
     "eucharist": "Eucaristía",

@@ -27,7 +27,7 @@ class SalmoDetail extends React.Component {
     super(props);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     if (this.props.keepAwake) {
       KeepAwake.activate();
     }

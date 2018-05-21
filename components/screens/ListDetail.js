@@ -1,21 +1,56 @@
 import React from 'react';
+import { Alert, View, Platform } from 'react-native';
 import { connect } from 'react-redux';
-import { ScrollView } from 'react-native';
 import { Icon, List, Text } from 'native-base';
+import Swipeout from 'react-native-swipeout';
 import ListDetailItem from './ListDetailItem';
-import { shareList } from '../actions';
+import { openChooserDialog, shareList, deleteListSong } from '../actions';
 import { getSalmosFromList } from '../selectors';
 import AppNavigatorConfig from '../AppNavigatorConfig';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import I18n from '../translations';
 
 const ListDetail = props => {
   if (props.listMap.get('type') == 'libre') {
-    return (
-      <ScrollView>
-        <Text note style={{ textAlign: 'center', padding: 20 }}>
-          No implementado
+    var songs = props.listMap.get('items').toArray();
+    if (songs.length === 0) {
+      return (
+        <Text note style={{ textAlign: 'center', marginTop: 20 }}>
+          {I18n.t('ui.empty songs list')}
         </Text>
-      </ScrollView>
+      );
+    }
+    return (
+      <KeyboardAwareScrollView>
+        <List>
+          {songs.map((song, key) => {
+            var swipeoutBtns = [
+              {
+                text: I18n.t('ui.delete'),
+                type: Platform.OS == 'ios' ? 'delete' : 'default',
+                backgroundColor: Platform.OS == 'android' ? '#e57373' : null,
+                onPress: () => {
+                  props.listDeleteSong(song.titulo, props.list.name, key);
+                }
+              }
+            ];
+            return (
+              <Swipeout
+                key={key}
+                right={swipeoutBtns}
+                backgroundColor="white"
+                autoClose={true}>
+                <ListDetailItem
+                  listName={props.list.name}
+                  listKey={key}
+                  listText={song}
+                  navigation={props.navigation}
+                />
+              </Swipeout>
+            );
+          })}
+        </List>
+      </KeyboardAwareScrollView>
     );
   }
   return (
@@ -142,9 +177,11 @@ const ListDetail = props => {
 };
 
 const mapStateToProps = (state, props) => {
+  var listMap = getSalmosFromList(state, props);
   return {
     list: props.navigation.state.params.list,
-    listMap: getSalmosFromList(state, props)
+    listMap: listMap,
+    listCount: listMap.get('items') ? listMap.get('items').size : 0
   };
 };
 
@@ -152,6 +189,29 @@ const mapDispatchToProps = dispatch => {
   return {
     listShare: (list, listMap) => {
       dispatch(shareList(list.name, listMap));
+    },
+    openChooser: (type, list, key) => {
+      dispatch(openChooserDialog(type, list, key));
+    },
+    listDeleteSong: (songTitle, list, key) => {
+      Alert.alert(
+        `${I18n.t('ui.delete')} "${songTitle}"`,
+        I18n.t('ui.delete confirmation'),
+        [
+          {
+            text: I18n.t('ui.delete'),
+            onPress: () => {
+              dispatch(deleteListSong(list, key));
+              dispatch(saveLists());
+            },
+            style: 'destructive'
+          },
+          {
+            text: I18n.t('ui.cancel'),
+            style: 'cancel'
+          }
+        ]
+      );
     }
   };
 };
@@ -166,21 +226,53 @@ const ShareList = props => {
       style={{
         marginTop: 4,
         marginRight: 12,
-        color: AppNavigatorConfig.navigationOptions(props).headerTitleStyle.color
+        color: AppNavigatorConfig.navigationOptions(props).headerTitleStyle
+          .color
       }}
       onPress={() =>
-        props.listShare(props.navigation.state.params.list, props.listMap)}
+        props.listShare(props.navigation.state.params.list, props.listMap)
+      }
     />
   );
 };
 
 const ShareListButton = connect(mapStateToProps, mapDispatchToProps)(ShareList);
 
+const AddSong = props => {
+  if (props.listMap.get('type') !== 'libre') {
+    return null;
+  }
+  return (
+    <Icon
+      name="add"
+      style={{
+        marginTop: 4,
+        marginRight: 8,
+        width: 32,
+        fontSize: 30,
+        textAlign: 'center',
+        color: AppNavigatorConfig.navigationOptions(props).headerTitleStyle
+          .color
+      }}
+      onPress={() =>
+        props.openChooser('Salmo', props.list.name, props.listCount)
+      }
+    />
+  );
+};
+
+const ConnectedAddSong = connect(mapStateToProps, mapDispatchToProps)(AddSong);
+
 ListDetail.navigationOptions = props => ({
   title: props.navigation.state.params
     ? props.navigation.state.params.list.name
     : 'Lista',
-  headerRight: <ShareListButton {...props} />
+  headerRight: (
+    <View style={{ flexDirection: 'row' }}>
+      <ShareListButton {...props} />
+      <ConnectedAddSong {...props} />
+    </View>
+  )
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListDetail);

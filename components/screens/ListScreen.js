@@ -1,14 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {
-  ListItem,
-  Left,
-  Body,
-  Icon,
-  Text,
-  Badge,
-  ActionSheet
-} from 'native-base';
+import { ListItem, Left, Body, Icon, Text, ActionSheet } from 'native-base';
 import { Alert, FlatList, Platform } from 'react-native';
 import Swipeout from 'react-native-swipeout';
 import SearchBarView from './SearchBarView';

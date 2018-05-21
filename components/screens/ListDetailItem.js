@@ -17,13 +17,12 @@ import commonTheme from '../../native-base-theme/variables/platform';
 import I18n from '../translations';
 
 const ListDetailItem = props => {
-  var titulo = getFriendlyText(props.listKey);
   var item = null;
   if (
-    props.listKey == '1' ||
-    props.listKey == '2' ||
-    props.listKey == '3' ||
-    props.listKey == 'evangelio'
+    props.listKey === '1' ||
+    props.listKey === '2' ||
+    props.listKey === '3' ||
+    props.listKey === 'evangelio'
   ) {
     item = (
       <ListItem icon last>
@@ -43,8 +42,8 @@ const ListDetailItem = props => {
       </ListItem>
     );
   } else if (
-    props.listKey.includes('monicion') ||
-    props.listKey.includes('ambiental')
+    typeof props.listKey == 'string' &&
+    (props.listKey.includes('monicion') || props.listKey.includes('ambiental'))
   ) {
     item = (
       <ListItem icon last>
@@ -77,7 +76,7 @@ const ListDetailItem = props => {
         </Right>
       </ListItem>
     );
-  } else if (props.listKey == 'nota') {
+  } else if (props.listKey === 'nota') {
     item = (
       <ListItem>
         <Body>
@@ -93,6 +92,7 @@ const ListDetailItem = props => {
       </ListItem>
     );
   } else {
+    // Cualquier otro caso, es un canto
     var text =
       props.listText == null
         ? I18n.t('ui.search placeholder') + '...'
@@ -134,11 +134,18 @@ const ListDetailItem = props => {
       </ListItem>
     );
   }
+  // Solo las claves de tipo string, llevan los titulos (eucaristia, palabra)
+  if (typeof props.listKey === 'string') {
+    var friendlyText = getFriendlyText(props.listKey);
+    var separator = (
+      <Separator bordered>
+        <Text>{friendlyText}</Text>
+      </Separator>
+    );
+  }
   return (
     <View>
-      <Separator bordered>
-        <Text>{titulo}</Text>
-      </Separator>
+      {separator}
       {item}
     </View>
   );

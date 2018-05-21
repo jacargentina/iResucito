@@ -83,7 +83,7 @@ const ContactImportDialog = props => {
         )}
         {props.items.length === 0 && (
           <Text note style={{ textAlign: 'center', marginTop: 20 }}>
-            No hay contactos
+            {I18n.t('ui.no contacts found')}
           </Text>
         )}
         <FlatList

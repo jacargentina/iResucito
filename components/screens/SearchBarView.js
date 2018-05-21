@@ -17,17 +17,17 @@ class DebouncedInput extends React.Component {
     this.sendTextChange = this.sendTextChange.bind(this);
   }
 
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (prevState.text !== nextProps.searchTextFilter) {
+      return {
+        text: nextProps.searchTextFilter
+      };
+    }
+  }
+
   componentDidMount() {
     this.sendTextChange = debounce(this.sendTextChange, 500);
     this.setState({ text: this.props.searchTextFilter });
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (this.props.text !== nextProps.searchTextFilter) {
-      this.setState({
-        text: nextProps.searchTextFilter
-      });
-    }
   }
 
   handleTextChange(text) {
@@ -51,7 +51,7 @@ class DebouncedInput extends React.Component {
       <Input
         style={{
           lineHeight: 20,
-          height: commonTheme.searchBarHeight,
+          height: commonTheme.searchBarHeight
         }}
         placeholder={I18n.t('ui.search placeholder')}
         onChangeText={this.handleTextChange}

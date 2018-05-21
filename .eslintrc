@@ -1,5 +1,9 @@
 {
-  "extends": "eslint:recommended",
+  extends: [
+    'plugin:react/recommended',
+    'plugin:import/errors',
+    'plugin:import/warnings'
+  ],
   "parserOptions": {
     "ecmaVersion": 6,
     "sourceType": "module",
@@ -31,6 +35,7 @@
     "react/react-in-jsx-scope": "error",
     "react/self-closing-comp": "warn",
     "react/sort-comp": "warn",
+    "react/display-name": "off"
   },
   "plugins": [
     "babel",

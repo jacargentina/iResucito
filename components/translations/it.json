@@ -25,7 +25,8 @@
     "donate message": "Contribuisci a fare una donazione. Pace!",
     "donate button": "Donare",
     "no songs found": "Nessuna canzone trovata",
-    "no contacts found": "Nessun contatto trovato"
+    "no contacts found": "Nessun contatto trovato",
+    "empty songs list": "Elenco di canzoni vuote"
   },
   "list_type": {
     "eucharist": "Eucarestia",

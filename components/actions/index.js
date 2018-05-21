@@ -17,10 +17,10 @@ export const SET_CONTACT_IMPORT_ITEMS = 'SET_CONTACT_IMPORT_ITEMS';
 export const SALMO_TRANSPORT = 'SALMO_TRANSPORT';
 
 export const LIST_CREATE = 'LIST_CREATE';
-export const LIST_ADD_SALMO = 'LIST_ADD_SALMO';
+export const LIST_ADD_SONG = 'LIST_ADD_SONG';
 export const LIST_ADD_TEXT = 'LIST_ADD_TEXT';
 export const LIST_ADD_CONTACT = 'LIST_ADD_CONTACT';
-export const LIST_REMOVE_SALMO = 'LIST_REMOVE_SALMO';
+export const LIST_REMOVE_SONG = 'LIST_REMOVE_SONG';
 export const LIST_DELETE = 'LIST_DELETE';
 export const LIST_SHARE = 'LIST_SHARE';
 
@@ -36,7 +36,8 @@ import {
   esLineaDeNotas,
   getDefaultLocale,
   getFriendlyText,
-  getEsSalmo
+  getEsSalmo,
+  stylesObj
 } from '../util';
 import search from '../search';
 import SongsIndex from '../../songs';
@@ -79,7 +80,7 @@ export const closeChooserDialog = () => {
 
 export const addSalmoToList = (salmo, listName, listKey) => {
   return {
-    type: LIST_ADD_SALMO,
+    type: LIST_ADD_SONG,
     list: listName,
     key: listKey,
     salmo: salmo
@@ -163,6 +164,10 @@ export const updateListMapText = (listName, key, text) => {
 
 export const deleteList = listName => {
   return { type: LIST_DELETE, list: listName };
+};
+
+export const deleteListSong = (listName, key) => {
+  return { type: LIST_REMOVE_SONG, list: listName, key: key };
 };
 
 export const showListAddDialog = () => {
@@ -414,8 +419,6 @@ export const refreshContactsThumbs = (lastCacheDir, newCacheDir) => {
   };
 };
 
-import { stylesObj } from '../util';
-
 var titleFontSize = 19;
 var titleSpacing = 11;
 var fuenteFontSize = 10;
@@ -472,10 +475,14 @@ export const generatePDF = (canto, lines) => {
             // Solo si estamos en la primer columna, calculamos si puede
             // pintarse por completo el bloque sin cortes; caso contrario
             // generamos la 2da columna
-            // Si es el primer bloque de todos, no tenerlo en cuenta: hay cantos 
+            // Si es el primer bloque de todos, no tenerlo en cuenta: hay cantos
             // cuyo primer bloque es muy largo (ej. "Adónde te escondiste amado"
             //  y en este caso hay que cortarlo forzosamente
-            if (it.notasCantoConIndicador && y !== yStart && x === primerColumnaX) {
+            if (
+              it.notasCantoConIndicador &&
+              y !== yStart &&
+              x === primerColumnaX
+            ) {
               var altoBloque = cantoSpacing * 2; // la linea de notas y del canto con indicador
               var i = index + 2; // Comenzar en la linea siguiente al canto con indicador
               while (i < lines.length && !lines[i].cantoConIndicador) {

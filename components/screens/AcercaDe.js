@@ -47,8 +47,8 @@ class AcercaDe extends React.Component {
           <Text style={{ textAlign: 'center', fontSize: 12 }}>
             {I18n.t('ui.version')}: {this.props.version}
             {'\n'}
-            <Icon name="contact" style={{ fontSize: 18 }} active />{' '}
-            Javier Castro, 2017-2018
+            <Icon name="contact" style={{ fontSize: 18 }} active /> Javier
+            Castro, 2017-2018
           </Text>
           <View
             style={{
