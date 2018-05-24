@@ -4,7 +4,12 @@ import { connect } from 'react-redux';
 import { Icon, List, Text } from 'native-base';
 import Swipeout from 'react-native-swipeout';
 import ListDetailItem from './ListDetailItem';
-import { openChooserDialog, shareList, deleteListSong } from '../actions';
+import {
+  openChooserDialog,
+  shareList,
+  deleteListSong,
+  saveLists
+} from '../actions';
 import { getSalmosFromList } from '../selectors';
 import AppNavigatorConfig from '../AppNavigatorConfig';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';

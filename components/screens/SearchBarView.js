@@ -23,6 +23,7 @@ class DebouncedInput extends React.Component {
         text: nextProps.searchTextFilter
       };
     }
+    return null;
   }
 
   componentDidMount() {

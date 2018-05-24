@@ -113,27 +113,32 @@ export const shareList = (listName, listMap) => {
   /* eslint-disable no-unused-vars */
   return dispatch => {
     var items = [];
-    items.push(getItemForShare(listMap, 'ambiental'));
-    items.push(getItemForShare(listMap, 'entrada'));
-    items.push(getItemForShare(listMap, '1-monicion'));
-    items.push(getItemForShare(listMap, '1'));
-    items.push(getItemForShare(listMap, '1-salmo'));
-    items.push(getItemForShare(listMap, '2-monicion'));
-    items.push(getItemForShare(listMap, '2'));
-    items.push(getItemForShare(listMap, '2-salmo'));
-    items.push(getItemForShare(listMap, '3-monicion'));
-    items.push(getItemForShare(listMap, '3'));
-    items.push(getItemForShare(listMap, '3-salmo'));
-    items.push(getItemForShare(listMap, 'evangelio-monicion'));
-    items.push(getItemForShare(listMap, 'evangelio'));
-    items.push(getItemForShare(listMap, 'paz'));
-    items.push(getItemForShare(listMap, 'comunion-pan'));
-    items.push(getItemForShare(listMap, 'comunion-caliz'));
-    items.push(getItemForShare(listMap, 'salida'));
-    items.push(getItemForShare(listMap, 'nota'));
+    if (listMap.get('type') === 'libre') {
+      var cantos = listMap.get('items').toArray();
+      cantos.forEach((canto, i) => {
+        items.push(`${i}: ${canto.titulo}`);
+      });
+    } else {
+      items.push(getItemForShare(listMap, 'ambiental'));
+      items.push(getItemForShare(listMap, 'entrada'));
+      items.push(getItemForShare(listMap, '1-monicion'));
+      items.push(getItemForShare(listMap, '1'));
+      items.push(getItemForShare(listMap, '1-salmo'));
+      items.push(getItemForShare(listMap, '2-monicion'));
+      items.push(getItemForShare(listMap, '2'));
+      items.push(getItemForShare(listMap, '2-salmo'));
+      items.push(getItemForShare(listMap, '3-monicion'));
+      items.push(getItemForShare(listMap, '3'));
+      items.push(getItemForShare(listMap, '3-salmo'));
+      items.push(getItemForShare(listMap, 'evangelio-monicion'));
+      items.push(getItemForShare(listMap, 'evangelio'));
+      items.push(getItemForShare(listMap, 'paz'));
+      items.push(getItemForShare(listMap, 'comunion-pan'));
+      items.push(getItemForShare(listMap, 'comunion-caliz'));
+      items.push(getItemForShare(listMap, 'salida'));
+      items.push(getItemForShare(listMap, 'nota'));
+    }
     var message = items.filter(n => n).join('\n');
-    /* eslint-disable no-console */
-    console.log('Texto para compartir', message);
     Share.share(
       {
         message: message,
