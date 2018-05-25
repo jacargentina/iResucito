@@ -1,6 +1,5 @@
 // @flow
 import commonTheme from '../native-base-theme/variables/platform';
-import I18n from './translations';
 
 const AppNavigatorOptions = {
   headerStyle: {
@@ -13,7 +12,7 @@ const AppNavigatorOptions = {
     color: 'white'
   },
   headerTintColor: 'white',
-  headerTruncatedBackTitle: I18n.t('ui.back')
+  headerTruncatedBackTitle: 'Back'
 };
 
 export default AppNavigatorOptions;
