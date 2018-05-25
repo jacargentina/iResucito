@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { Alert, View, Platform } from 'react-native';
 import { connect } from 'react-redux';
@@ -15,7 +16,7 @@ import AppNavigatorConfig from '../AppNavigatorConfig';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import I18n from '../translations';
 
-const ListDetail = props => {
+const ListDetail = (props: any) => {
   if (props.listMap.get('type') == 'libre') {
     var songs = props.listMap.get('items').toArray();
     if (songs.length === 0) {

@@ -1,3 +1,4 @@
+// @flow
 import AppNavigator from '../AppNavigator';
 
 const initialState = AppNavigator.router.getStateForAction('Menu');

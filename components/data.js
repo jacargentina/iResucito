@@ -1,3 +1,4 @@
+// @flow
 import Storage from 'react-native-storage';
 import { AsyncStorage } from 'react-native';
 import RNFS from 'react-native-fs';

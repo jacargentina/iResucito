@@ -1,13 +1,15 @@
+// @flow
 import badges from './badges';
 import I18n from './translations';
 
-const buildItems = () => {
-  var items = [
+/* eslint-disable */
+const buildItems = (): Array<SearchItem> => {
+  var items: Array<SearchItem> = [
     {
       title: I18n.t('search_title.alpha'),
       note: I18n.t('search_note.alpha'),
       route: 'SalmoList',
-      params: {},
+      params: null,
       badge: badges.Alfabético,
       chooser: I18n.t('search_tabs.all')
     },
@@ -135,8 +137,8 @@ const buildItems = () => {
       chooser: I18n.t('search_tabs.signing to the virgin')
     },
     {
-      title: I18n.t('search_title.children\'s songs'),
-      note: I18n.t('search_note.children\'s songs'),
+      title: I18n.t("search_title.children's songs"),
+      note: I18n.t("search_note.children's songs"),
       route: 'SalmoList',
       params: { filter: { niños: true } },
       badge: null

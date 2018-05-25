@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { connect } from 'react-redux';
 import { View } from 'react-native';
@@ -23,10 +24,25 @@ import I18n from '../translations';
 import AppNavigatorConfig from '../AppNavigatorConfig';
 import { getLocalesForPicker } from '../util';
 
-class SettingsScreen extends React.Component {
+class SettingsScreen extends React.Component<any> {
+  localesItems: Array<any>;
+
   constructor(props) {
     super(props);
   }
+
+  static navigationOptions = () => ({
+    title: I18n.t('screen_title.settings'),
+    tabBarIcon: ({ focused, tintColor }) => {
+      return (
+        <Icon
+          name="settings"
+          active={focused}
+          style={{ marginTop: 6, color: tintColor }}
+        />
+      );
+    }
+  });
 
   render() {
     if (!this.localesItems) {
@@ -121,18 +137,5 @@ const mapDispatchToProps = dispatch => {
     }
   };
 };
-
-SettingsScreen.navigationOptions = () => ({
-  title: I18n.t('screen_title.settings'),
-  tabBarIcon: ({ focused, tintColor }) => {
-    return (
-      <Icon
-        name="settings"
-        active={focused}
-        style={{ marginTop: 6, color: tintColor }}
-      />
-    );
-  }
-});
 
 export default connect(mapStateToProps, mapDispatchToProps)(SettingsScreen);

@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { connect } from 'react-redux';
 import { ListItem, Left, Body, Icon, Text, ActionSheet } from 'native-base';
@@ -15,7 +16,7 @@ import AppNavigatorConfig from '../AppNavigatorConfig';
 import BaseCallToAction from './BaseCallToAction';
 import I18n from '../translations';
 
-const ListScreen = props => {
+const ListScreen = (props: any) => {
   if (props.items.length == 0)
     return (
       <BaseCallToAction

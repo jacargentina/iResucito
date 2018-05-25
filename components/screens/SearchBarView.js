@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { connect } from 'react-redux';
 import { View, StyleSheet } from 'react-native';
@@ -6,7 +7,15 @@ import debounce from 'lodash/debounce';
 import commonTheme from '../../native-base-theme/variables/platform';
 import I18n from '../translations';
 
-class DebouncedInput extends React.Component {
+type State = {
+  text: string
+};
+
+class DebouncedInput extends React.Component<any, State> {
+  inSearch: boolean;
+  handleTextChange: Function;
+  sendTextChange: Function;
+
   constructor(props) {
     super(props);
     this.state = {

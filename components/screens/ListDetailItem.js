@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { connect } from 'react-redux';
 import {
@@ -16,7 +17,7 @@ import { getFriendlyText } from '../util';
 import commonTheme from '../../native-base-theme/variables/platform';
 import I18n from '../translations';
 
-const ListDetailItem = props => {
+const ListDetailItem = (props: any) => {
   var item = null;
   if (
     props.listKey === '1' ||

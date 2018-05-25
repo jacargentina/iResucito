@@ -1,8 +1,9 @@
+// @flow
 import React from 'react';
 import Pdf from 'react-native-pdf';
 import { View, Dimensions } from 'react-native';
 
-const PDFViewer = props => {
+const PDFViewer = (props: any) => {
   return (
     <View
       style={{

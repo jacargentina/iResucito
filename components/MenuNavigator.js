@@ -1,3 +1,4 @@
+// @flow
 import { createBottomTabNavigator } from 'react-navigation';
 import SalmoSearch from './screens/SalmoSearch';
 import SettingsScreen from './screens/SettingsScreen';

@@ -1,3 +1,4 @@
+// @flow
 import { Platform } from 'react-native';
 import commonTheme from '../native-base-theme/variables/platform';
 

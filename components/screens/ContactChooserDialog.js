@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { connect } from 'react-redux';
 import BaseModal from './BaseModal';
@@ -9,7 +10,7 @@ import commonTheme from '../../native-base-theme/variables/platform';
 import I18n from '../translations';
 import ContactPhoto from './ContactPhoto';
 
-const ContactChooserDialog = props => {
+const ContactChooserDialog = (props: any) => {
   return (
     <BaseModal
       visible={props.visible}

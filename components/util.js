@@ -1,3 +1,4 @@
+// @flow
 import langs from 'langs';
 import { NativeModules, StyleSheet, Platform } from 'react-native';
 import DeviceInfo from 'react-native-device-info';
@@ -5,7 +6,7 @@ import I18n from './translations';
 
 const limpiarNotasRegex = /\[|\]|#|\*|5|6|7|9|b|-|\+|\/|\u2013|\u2217|aum|dim/g;
 
-export function esLineaDeNotas(text) {
+export function esLineaDeNotas(text: string) {
   if (text === undefined) {
     throw 'esLineaDeNotas: no se puede procesar "undefined"';
   }
@@ -28,7 +29,7 @@ export function esLineaDeNotas(text) {
   return soloNotas.length > 0 && soloNotas.length == linea.length;
 }
 
-export function getEsSalmo(listKey) {
+export function getEsSalmo(listKey: string) {
   return (
     listKey == 'entrada' ||
     listKey == '1-salmo' ||
@@ -41,11 +42,11 @@ export function getEsSalmo(listKey) {
   );
 }
 
-export function getFriendlyText(listKey) {
+export function getFriendlyText(listKey: string) {
   return I18n.t(`list_item.${listKey}`);
 }
 
-export function getFriendlyTextForListType(listType) {
+export function getFriendlyTextForListType(listType: string): string {
   switch (listType) {
     case 'eucaristia':
       return I18n.t('list_type.eucharist');
@@ -53,6 +54,8 @@ export function getFriendlyTextForListType(listType) {
       return I18n.t('list_type.word');
     case 'libre':
       return I18n.t('list_type.other');
+    default:
+      return '';
   }
 }
 
@@ -73,13 +76,13 @@ export const notas = [
 
 export const notasInverted = notas.slice().reverse();
 
-export const notaInicial = linea => {
+export const notaInicial = (linea: string) => {
   var pedazos = linea.split(' ');
   var primero = pedazos[0];
   return primero.replace(limpiarNotasRegex, '');
 };
 
-export const transportarNotas = (lineaNotas, diferencia) => {
+export const transportarNotas = (lineaNotas: string, diferencia: number) => {
   var pedazos = lineaNotas.split(' ');
   var result = pedazos.map(item => {
     var notaLimpia = item.replace(limpiarNotasRegex, '');
@@ -99,7 +102,10 @@ export const transportarNotas = (lineaNotas, diferencia) => {
   return result.join(' ');
 };
 
-export const calcularTransporte = (primerLineaNotas, notaDestino) => {
+export const calcularTransporte = (
+  primerLineaNotas: string,
+  notaDestino: string
+) => {
   var notaOrigen = notaInicial(primerLineaNotas);
   var inicio = notas.indexOf(notaOrigen);
   var destino = notas.indexOf(notaDestino);
@@ -181,8 +187,8 @@ export const stylesObj = {
 export const styles = StyleSheet.create(stylesObj);
 
 /* eslint-disable no-unused-vars */
-export const preprocesarLinea = (text) => {
-  var it = {};
+export const preprocesarLinea = (text: string): SongLine => {
+  var it: SongLine = {};
   if (text.startsWith('S. A.')) {
     // Indicador de Salmista Y Asamblea
     var secondPoint = 4;
@@ -261,7 +267,10 @@ export const preprocesarLinea = (text) => {
   return it;
 };
 
-export const preprocesarCanto = (lines, diferenciaTransporte) => {
+export const preprocesarCanto = (
+  lines: Array<string>,
+  diferenciaTransporte: number
+) => {
   var firstPass = lines.map(l => {
     var it = preprocesarLinea(l);
     if (it.notas && diferenciaTransporte !== 0) {

@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { connect } from 'react-redux';
 import { FlatList, ScrollView } from 'react-native';
@@ -10,7 +11,7 @@ import AcercaDe from './AcercaDe';
 import I18n from '../translations';
 import { getSearchItems } from '../selectors';
 
-const SalmoSearch = props => {
+const SalmoSearch = (props: any) => {
   return (
     <ScrollView
       keyboardShouldPersistTaps="always"

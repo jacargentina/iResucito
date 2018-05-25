@@ -1,3 +1,4 @@
+// @flow
 const colors = {
   Precatecumenado: '#EEEEEE',
   Catecumenado: '#81D4FA',

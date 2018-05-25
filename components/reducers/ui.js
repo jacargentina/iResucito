@@ -1,3 +1,4 @@
+// @flow
 import {
   INITIALIZE_SETUP,
   INITIALIZE_SEARCH,

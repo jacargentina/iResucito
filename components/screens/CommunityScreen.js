@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { connect } from 'react-redux';
 import { ListItem, Right, Body, Icon, Text } from 'native-base';
@@ -22,7 +23,7 @@ import commonTheme from '../../native-base-theme/variables/platform';
 import I18n from '../translations';
 import ContactPhoto from './ContactPhoto';
 
-const CommunityScreen = props => {
+const CommunityScreen = (props: any) => {
   if (props.items.length == 0 && !props.textFilter)
     return (
       <BaseCallToAction

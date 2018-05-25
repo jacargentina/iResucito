@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { connect } from 'react-redux';
 import BaseModal from './BaseModal';
@@ -25,7 +26,7 @@ import commonTheme from '../../native-base-theme/variables/platform';
 import I18n from '../translations';
 import ContactPhoto from './ContactPhoto';
 
-const ContactImportDialog = props => {
+const ContactImportDialog = (props: any) => {
   var readyButton = (
     <Text
       style={{

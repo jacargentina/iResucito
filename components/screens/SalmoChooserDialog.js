@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
@@ -11,7 +12,7 @@ const styles = StyleSheet.create({
   tabs: { fontSize: 14 }
 });
 
-const SalmoChooserDialog = props => {
+const SalmoChooserDialog = (props: any) => {
   var items = props.tabs.map((v, i) => {
     return (
       <Tab

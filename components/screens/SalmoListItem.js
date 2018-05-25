@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { TouchableOpacity, Alert } from 'react-native';
 import { ListItem, Left, Right, Body, Text, Badge, Icon } from 'native-base';
@@ -8,8 +9,15 @@ import commonTheme from '../../native-base-theme/variables/platform';
 import textTheme from '../../native-base-theme/components/Text';
 import I18n from '../translations';
 
-class SalmoListItem extends React.Component {
-  constructor(props) {
+type State = {
+  isCollapsed: boolean
+};
+
+class SalmoListItem extends React.Component<any, State> {
+  textStyles: any;
+  noteStyles: any;
+
+  constructor(props: any) {
     super(props);
     this.state = {
       isCollapsed: true

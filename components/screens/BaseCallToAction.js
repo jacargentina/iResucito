@@ -1,9 +1,10 @@
+// @flow
 import React from 'react';
 import { Icon, Text, H1, Button } from 'native-base';
 import { View } from 'react-native';
 import commonTheme from '../../native-base-theme/variables/platform';
 
-const BaseCallToAction = props => {
+const BaseCallToAction = (props: any) => {
   return (
     <View
       style={{

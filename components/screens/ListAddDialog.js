@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { connect } from 'react-redux';
 import { NavigationActions } from 'react-navigation';
@@ -12,7 +13,10 @@ import BaseModal from './BaseModal';
 import { getFriendlyTextForListType } from '../util';
 import I18n from '../translations';
 
-class ListAddDialog extends React.Component {
+class ListAddDialog extends React.Component<any> {
+  focusInput: Function;
+  listNameInput: any;
+
   constructor(props) {
     super(props);
     this.focusInput = this.focusInput.bind(this);

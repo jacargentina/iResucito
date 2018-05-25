@@ -1,10 +1,11 @@
+// @flow
 import React from 'react';
 import { Text, Icon } from 'native-base';
 import { View, Platform } from 'react-native';
 import Modal from 'react-native-modal';
 import commonTheme from '../../native-base-theme/variables/platform';
 
-const BaseModal = props => {
+const BaseModal = (props: any) => {
   var animationIn = props.fade ? 'fadeIn' : 'slideInUp';
   var animationOut = props.fade ? 'fadeOut' : 'slideOutDown';
   var closeButton = props.closeButton ? (

@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { Platform } from 'react-native';
 import { Switch as SwitchNB } from 'native-base';

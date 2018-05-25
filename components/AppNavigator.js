@@ -1,3 +1,4 @@
+// @flow
 import { createStackNavigator } from 'react-navigation';
 import SalmoList from './screens/SalmoList';
 import SalmoDetail from './screens/SalmoDetail';

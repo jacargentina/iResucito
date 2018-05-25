@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { connect } from 'react-redux';
 import { Text } from 'native-base';
@@ -14,7 +15,17 @@ import {
 } from '../selectors';
 import I18n from '../translations';
 
-class SalmoList extends React.Component {
+class SalmoList extends React.Component<any> {
+  listRef: any;
+
+  static navigationOptions = (props: any) => ({
+    title:
+      props.navigation.state.params && props.navigation.state.params.title
+        ? props.navigation.state.params.title
+        : 'Sin titulo',
+    headerRight: <ConnectedCountText {...props} />
+  });
+
   constructor(props) {
     super(props);
   }
@@ -96,7 +107,8 @@ const CountText = props => {
       style={{
         marginRight: 8,
         fontSize: 14,
-        color: AppNavigatorConfig.navigationOptions(props).headerTitleStyle.color
+        color: AppNavigatorConfig.navigationOptions(props).headerTitleStyle
+          .color
       }}>
       {props.items.length}
     </Text>
@@ -104,13 +116,5 @@ const CountText = props => {
 };
 
 const ConnectedCountText = connect(makeMapStateToProps)(CountText);
-
-SalmoList.navigationOptions = props => ({
-  title:
-    props.navigation.state.params && props.navigation.state.params.title
-      ? props.navigation.state.params.title
-      : 'Sin titulo',
-  headerRight: <ConnectedCountText {...props} />
-});
 
 export default connect(makeMapStateToProps, mapDispatchToProps)(SalmoList);

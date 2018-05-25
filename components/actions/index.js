@@ -1,3 +1,4 @@
+// @flow
 export const INITIALIZE_SETUP = 'INITIALIZE_SETUP';
 export const INITIALIZE_SONGS = 'INITIALIZE_SONGS';
 export const INITIALIZE_SEARCH = 'INITIALIZE_SEARCH';
@@ -44,7 +45,7 @@ import SongsIndex from '../../songs';
 import { localdata, clouddata } from '../data';
 import PDFLib, { PDFDocument, PDFPage } from 'react-native-pdf-lib';
 
-export const initializeSetup = (settings, lists, contacts) => {
+export const initializeSetup = (settings: any, lists: any, contacts: any) => {
   return {
     type: INITIALIZE_SETUP,
     settings: settings,
@@ -53,14 +54,18 @@ export const initializeSetup = (settings, lists, contacts) => {
   };
 };
 
-export const initializeSongs = songs => {
+export const initializeSongs = (songs: Array<Song>) => {
   return {
     type: INITIALIZE_SONGS,
     items: songs
   };
 };
 
-export const openChooserDialog = (chooser, listName, listKey) => {
+export const openChooserDialog = (
+  chooser: string,
+  listName: string,
+  listKey: string
+) => {
   return {
     type: SET_CHOOSER_TARGETLIST,
     chooser: chooser,
@@ -78,7 +83,11 @@ export const closeChooserDialog = () => {
   };
 };
 
-export const addSalmoToList = (salmo, listName, listKey) => {
+export const addSalmoToList = (
+  salmo: Song,
+  listName: string,
+  listKey: string
+) => {
   return {
     type: LIST_ADD_SONG,
     list: listName,
@@ -87,7 +96,11 @@ export const addSalmoToList = (salmo, listName, listKey) => {
   };
 };
 
-export const addContactToList = (contact, listName, listKey) => {
+export const addContactToList = (
+  contact: any,
+  listName: string,
+  listKey: string
+) => {
   return {
     type: LIST_ADD_CONTACT,
     list: listName,
@@ -96,7 +109,7 @@ export const addContactToList = (contact, listName, listKey) => {
   };
 };
 
-const getItemForShare = (listMap, key) => {
+const getItemForShare = (listMap: any, key: string) => {
   if (listMap.has(key)) {
     var valor = listMap.get(key);
     if (valor !== null && getEsSalmo(key)) {
@@ -109,9 +122,9 @@ const getItemForShare = (listMap, key) => {
   return null;
 };
 
-export const shareList = (listName, listMap) => {
+export const shareList = (listName: string, listMap: any) => {
   /* eslint-disable no-unused-vars */
-  return dispatch => {
+  return (dispatch: Function) => {
     var items = [];
     if (listMap.get('type') === 'libre') {
       var cantos = listMap.get('items').toArray();
@@ -150,9 +163,9 @@ export const shareList = (listName, listMap) => {
   };
 };
 
-export const sharePDF = (canto, pdfPath) => {
+export const sharePDF = (canto: Song, pdfPath: string) => {
   /* eslint-disable no-unused-vars */
-  return dispatch => {
+  return (dispatch: Function) => {
     Share.share(
       {
         title: `iResucitó - ${canto.titulo}`,
@@ -163,15 +176,19 @@ export const sharePDF = (canto, pdfPath) => {
   };
 };
 
-export const updateListMapText = (listName, key, text) => {
+export const updateListMapText = (
+  listName: string,
+  key: string,
+  text: string
+) => {
   return { type: LIST_ADD_TEXT, list: listName, key: key, text: text };
 };
 
-export const deleteList = listName => {
+export const deleteList = (listName: string) => {
   return { type: LIST_DELETE, list: listName };
 };
 
-export const deleteListSong = (listName, key) => {
+export const deleteListSong = (listName: string, key: string) => {
   return { type: LIST_REMOVE_SONG, list: listName, key: key };
 };
 
@@ -183,15 +200,15 @@ export const hideListAddDialog = () => {
   return { type: SET_LIST_ADD_VISIBLE, visible: false };
 };
 
-export const setSalmosFilterText = (inputId, text) => {
+export const setSalmosFilterText = (inputId: string, text: string) => {
   return { type: SET_SALMOS_FILTER, inputId: inputId, filter: text };
 };
 
-export const salmoTransport = transportTo => {
+export const salmoTransport = (transportTo: string) => {
   return { type: SALMO_TRANSPORT, transportTo: transportTo };
 };
 
-export const setContactsFilterText = (inputId, text) => {
+export const setContactsFilterText = (inputId: string, text: string) => {
   return { type: SET_CONTACTS_FILTER, inputId: inputId, filter: text };
 };
 
@@ -203,24 +220,24 @@ export const hideAbout = () => {
   return { type: SET_ABOUT_VISIBLE, visible: false };
 };
 
-export const updateListAddName = text => {
+export const updateListAddName = (text: string) => {
   return { type: SET_LIST_ADD_NAME, name: text };
 };
 
-export const updateListAddType = type => {
+export const updateListAddType = (type: string) => {
   return { type: SET_LIST_ADD_TYPE, value: type };
 };
 
-export const createList = (name, type) => {
+export const createList = (name: string, type) => {
   return { type: LIST_CREATE, name: name, list_type: type };
 };
 
-export const applySetting = (key, value) => {
+export const applySetting = (key: string, value: any) => {
   return { type: SET_SETTINGS_VALUE, key: key, value: value };
 };
 
 export const showContactImportDialog = () => {
-  return dispatch => {
+  return (dispatch: Function) => {
     dispatch({ type: SET_CONTACT_IMPORT_LOADING, loading: true });
     Contacts.getAll((err, contacts) => {
       dispatch({ type: SET_CONTACT_IMPORT_LOADING, loading: false });
@@ -243,15 +260,15 @@ export const hideContactImportDialog = () => {
   return { type: SET_CONTACT_IMPORT_VISIBLE, visible: false };
 };
 
-export const syncContact = contact => {
+export const syncContact = (contact: any) => {
   return { type: CONTACT_SYNC, contact: contact };
 };
 
-export const updateContact = contact => {
+export const updateContact = (contact: any) => {
   return { type: CONTACT_UPDATE, contact: contact };
 };
 
-export const setContactAttribute = (contact, attribute) => {
+export const setContactAttribute = (contact: any, attribute: any) => {
   return {
     type: CONTACT_TOGGLE_ATTRIBUTE,
     contact: contact,
@@ -259,7 +276,7 @@ export const setContactAttribute = (contact, attribute) => {
   };
 };
 
-const ordenAlfabetico = (a, b) => {
+const ordenAlfabetico = (a: Song, b: Song) => {
   if (a.titulo < b.titulo) {
     return -1;
   }
@@ -269,7 +286,7 @@ const ordenAlfabetico = (a, b) => {
   return 0;
 };
 
-export const processSongsMetadata = rawLocale => {
+export const processSongsMetadata = (rawLocale: string) => {
   var locale = rawLocale.split('-')[0];
   var basePath = Platform.OS == 'ios' ? `${RNFS.MainBundlePath}/` : '';
   var songs = Object.keys(SongsIndex);
@@ -286,7 +303,7 @@ export const processSongsMetadata = rawLocale => {
       : nombre;
     var fuente =
       titulo !== nombre ? nombre.substring(nombre.indexOf('-') + 1).trim() : '';
-    var info = {
+    var info: Song = {
       titulo: titulo,
       fuente: fuente,
       nombre: nombre,
@@ -308,7 +325,7 @@ export const initializeSearch = () => {
   };
 };
 
-export const loadSongs = songs => {
+export const loadSongs = (songs: Array<Song>) => {
   return songs.map(canto => {
     var loadSalmo =
       Platform.OS == 'ios'
@@ -330,8 +347,8 @@ export const loadSongs = songs => {
   });
 };
 
-export const initializeLocale = locale => {
-  return dispatch => {
+export const initializeLocale = (locale: string) => {
+  return (dispatch: Function) => {
     if (locale === 'default') {
       locale = getDefaultLocale();
     }
@@ -348,7 +365,7 @@ export const initializeLocale = locale => {
 };
 
 export const saveLists = () => {
-  return (dispatch, getState) => {
+  return (dispatch: Function, getState: Function) => {
     var listsJS = getState()
       .ui.get('lists')
       .toJS();
@@ -361,7 +378,7 @@ export const saveLists = () => {
 };
 
 export const saveContacts = () => {
-  return (dispatch, getState) => {
+  return (dispatch: Function, getState: Function) => {
     var contactsJS = getState()
       .ui.get('contacts')
       .toJS();
@@ -374,7 +391,7 @@ export const saveContacts = () => {
 };
 
 export const saveSettings = () => {
-  return (dispatch, getState) => {
+  return (dispatch: Function, getState: Function) => {
     return localdata.save({
       key: 'settings',
       data: getState()
@@ -396,8 +413,11 @@ const getContacts = () => {
   });
 };
 
-export const refreshContactsThumbs = (lastCacheDir, newCacheDir) => {
-  return (dispatch, getState) => {
+export const refreshContactsThumbs = (
+  lastCacheDir: string,
+  newCacheDir: string
+) => {
+  return (dispatch: Function, getState: Function) => {
     // sólo actualizar si cambió el directorio de caches
     if (lastCacheDir !== newCacheDir) {
       var contactsJS = getState()
@@ -438,8 +458,8 @@ var widthHeightPixels = 598; // 21,1 cm
 var primerColumnaX = 30;
 var segundaColumnaX = 330;
 /* eslint-disable */
-export const generatePDF = (canto, lines) => {
-  return dispatch => {
+export const generatePDF = (canto: Song, lines: Array<SongLine>) => {
+  return (dispatch: Function) => {
     // Para centrar titulo
     return PDFLib.measureText(
       canto.titulo.toUpperCase(),

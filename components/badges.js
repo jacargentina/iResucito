@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { Badge, Text } from 'native-base';
 import colors from './colors';

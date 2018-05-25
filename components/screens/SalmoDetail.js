@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { connect } from 'react-redux';
 import { Dimensions, ScrollView, View } from 'react-native';
@@ -22,7 +23,19 @@ import AppNavigatorConfig from '../AppNavigatorConfig';
 import commonTheme from '../../native-base-theme/variables/platform';
 import I18n from '../translations';
 
-class SalmoDetail extends React.Component {
+class SalmoDetail extends React.Component<any> {
+  static navigationOptions = (props: any) => ({
+    title: props.navigation.state.params
+      ? props.navigation.state.params.salmo.titulo
+      : 'Salmo',
+    headerRight: (
+      <View style={{ flexDirection: 'row' }}>
+        <ConnectedShareSong {...props} />
+        <ConnectedTransportNotes {...props} />
+      </View>
+    )
+  });
+
   constructor(props) {
     super(props);
   }
@@ -179,7 +192,8 @@ const TransportNotesMenu = props => {
             width: 32,
             fontSize: 30,
             textAlign: 'center',
-            color: AppNavigatorConfig.navigationOptions(props).headerTitleStyle.color
+            color: AppNavigatorConfig.navigationOptions(props).headerTitleStyle
+              .color
           }}
         />
       </MenuTrigger>
@@ -210,7 +224,8 @@ const ShareSong = props => {
         width: 32,
         fontSize: 30,
         textAlign: 'center',
-        color: AppNavigatorConfig.navigationOptions(props).headerTitleStyle.color
+        color: AppNavigatorConfig.navigationOptions(props).headerTitleStyle
+          .color
       }}
       onPress={() =>
         props.shareSong(props.salmo, props.lines, props.navigation)
@@ -222,17 +237,5 @@ const ShareSong = props => {
 const ConnectedShareSong = connect(mapStateToProps, mapDispatchToProps)(
   ShareSong
 );
-
-SalmoDetail.navigationOptions = props => ({
-  title: props.navigation.state.params
-    ? props.navigation.state.params.salmo.titulo
-    : 'Salmo',
-  headerRight: (
-    <View style={{ flexDirection: 'row' }}>
-      <ConnectedShareSong {...props} />
-      <ConnectedTransportNotes {...props} />
-    </View>
-  )
-});
 
 export default connect(mapStateToProps, mapDispatchToProps)(SalmoDetail);

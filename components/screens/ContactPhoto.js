@@ -1,7 +1,8 @@
+// @flow
 import React from 'react';
 import { Text, Badge, Thumbnail } from 'native-base';
 
-const ContactPhoto = props => {
+const ContactPhoto = (props: any) => {
   if (props.item.hasThumbnail) {
     return <Thumbnail source={{ uri: props.item.thumbnailPath }} />;
   }
