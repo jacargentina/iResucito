@@ -6,7 +6,7 @@ import I18n from './translations';
 
 const limpiarNotasRegex = /\[|\]|#|\*|5|6|7|9|b|-|\+|\/|\u2013|\u2217|aum|dim/g;
 
-export function esLineaDeNotas(text: string) {
+export function esLineaDeNotas(text: string): boolean {
   if (text === undefined) {
     throw 'esLineaDeNotas: no se puede procesar "undefined"';
   }
@@ -29,7 +29,7 @@ export function esLineaDeNotas(text: string) {
   return soloNotas.length > 0 && soloNotas.length == linea.length;
 }
 
-export function getEsSalmo(listKey: string) {
+export function getEsSalmo(listKey: string): boolean {
   return (
     listKey == 'entrada' ||
     listKey == '1-salmo' ||
@@ -42,7 +42,7 @@ export function getEsSalmo(listKey: string) {
   );
 }
 
-export function getFriendlyText(listKey: string) {
+export function getFriendlyText(listKey: string): string {
   return I18n.t(`list_item.${listKey}`);
 }
 
@@ -76,13 +76,16 @@ export const notas = [
 
 export const notasInverted = notas.slice().reverse();
 
-export const notaInicial = (linea: string) => {
+export const notaInicial = (linea: string): string => {
   var pedazos = linea.split(' ');
   var primero = pedazos[0];
   return primero.replace(limpiarNotasRegex, '');
 };
 
-export const transportarNotas = (lineaNotas: string, diferencia: number) => {
+export const transportarNotas = (
+  lineaNotas: string,
+  diferencia: number
+): string => {
   var pedazos = lineaNotas.split(' ');
   var result = pedazos.map(item => {
     var notaLimpia = item.replace(limpiarNotasRegex, '');
@@ -105,7 +108,7 @@ export const transportarNotas = (lineaNotas: string, diferencia: number) => {
 export const calcularTransporte = (
   primerLineaNotas: string,
   notaDestino: string
-) => {
+): number => {
   var notaOrigen = notaInicial(primerLineaNotas);
   var inicio = notas.indexOf(notaOrigen);
   var destino = notas.indexOf(notaDestino);
@@ -188,17 +191,25 @@ export const styles = StyleSheet.create(stylesObj);
 
 /* eslint-disable no-unused-vars */
 export const preprocesarLinea = (text: string): SongLine => {
-  var it: SongLine = {};
   if (text.startsWith('S. A.')) {
     // Indicador de Salmista Y Asamblea
     var secondPoint = 4;
-    it = {
-      prefijo: text.substring(0, secondPoint + 1) + ' ',
+    var it: SongLine = {
       texto: text.substring(secondPoint + 1).trim(),
       style: styles.lineaNormal,
+      prefijo: text.substring(0, secondPoint + 1) + ' ',
       prefijoStyle: styles.prefijo,
-      cantoConIndicador: true
+      sufijo: '',
+      sufijoStyle: null,
+      canto: false,
+      cantoConIndicador: true,
+      notas: false,
+      notasCantoConIndicador: false,
+      notaEspecial: false,
+      tituloEspecial: false,
+      textoEspecial: false
     };
+    return it;
   } else if (
     text.startsWith('S.') ||
     text.startsWith('C.') ||
@@ -211,12 +222,20 @@ export const preprocesarLinea = (text: string): SongLine => {
   ) {
     // Indicador de Salmista, Asamblea, Presbitero
     var pointIndex = text.indexOf('.');
-    it = {
-      prefijo: text.substring(0, pointIndex + 1) + ' ',
+    var it: SongLine = {
       texto: text.substring(pointIndex + 1).trim(),
       style: styles.lineaNormal,
+      prefijo: text.substring(0, pointIndex + 1) + ' ',
       prefijoStyle: styles.prefijo,
-      cantoConIndicador: true
+      sufijo: '',
+      sufijoStyle: null,
+      canto: false,
+      cantoConIndicador: true,
+      notas: false,
+      notasCantoConIndicador: false,
+      notaEspecial: false,
+      tituloEspecial: false,
+      textoEspecial: false
     };
     // Si tiene indicador de Nota?
     if (it.texto.endsWith('\u2217')) {
@@ -224,53 +243,104 @@ export const preprocesarLinea = (text: string): SongLine => {
       it.sufijo = '\u2217';
       it.sufijoStyle = styles.lineaNotas;
     }
+    return it;
   } else if (esLineaDeNotas(text)) {
-    it = {
-      prefijo: '',
+    var it: SongLine = {
       texto: text.trimRight(),
       style: styles.lineaNotas,
-      notas: true
+      prefijo: '',
+      prefijoStyle: null,
+      sufijo: '',
+      sufijoStyle: null,
+      canto: false,
+      cantoConIndicador: true,
+      notas: true,
+      notasCantoConIndicador: false,
+      notaEspecial: false,
+      tituloEspecial: false,
+      textoEspecial: false
     };
+    return it;
   } else if (text.startsWith('\u2217')) {
     // Nota especial
-    it = {
-      prefijo: '\u2217  ',
+    var it: SongLine = {
       texto: text.substring(1).trim(),
       style: styles.lineaNotaEspecial,
+      prefijo: '\u2217  ',
       prefijoStyle: styles.lineaNotas,
-      notaEspecial: true
+      sufijo: '',
+      sufijoStyle: null,
+      canto: false,
+      cantoConIndicador: true,
+      notas: false,
+      notasCantoConIndicador: false,
+      notaEspecial: true,
+      tituloEspecial: false,
+      textoEspecial: false
     };
+    return it;
   } else if (text.trim().startsWith('**') && text.trim().endsWith('**')) {
     // Titulo especial
-    it = {
-      prefijo: '',
+    var it: SongLine = {
+      canto: false,
       texto: text.replace(/\*/g, ''),
       style: styles.lineaTituloNotaEspecial,
-      tituloEspecial: true
+      prefijo: '',
+      prefijoStyle: null,
+      sufijo: '',
+      sufijoStyle: null,
+      canto: false,
+      cantoConIndicador: true,
+      notas: false,
+      notasCantoConIndicador: false,
+      notaEspecial: false,
+      tituloEspecial: true,
+      textoEspecial: false
     };
+    return it;
   } else if (text.startsWith('-')) {
     // Texto especial
-    it = {
-      prefijo: '',
+    var it: SongLine = {
+      canto: false,
       texto: text.replace('-', ''),
       style: styles.lineaNotaEspecial,
+      prefijo: '',
+      prefijoStyle: null,
+      sufijo: '',
+      sufijoStyle: null,
+      canto: false,
+      cantoConIndicador: true,
+      notas: false,
+      notasCantoConIndicador: false,
+      notaEspecial: false,
+      tituloEspecial: false,
       textoEspecial: true
     };
+    return it;
   } else {
-    it = {
-      prefijo: '',
+    var it: SongLine = {
       texto: text.trimRight(),
       style: styles.lineaNormal,
-      canto: true
+      prefijo: '',
+      prefijoStyle: null,
+      sufijo: '',
+      sufijoStyle: null,
+      canto: true,
+      cantoConIndicador: true,
+      notas: false,
+      notasCantoConIndicador: false,
+      notaEspecial: false,
+      tituloEspecial: false,
+      textoEspecial: false
     };
+    return it;
   }
-  return it;
 };
 
 export const preprocesarCanto = (
   lines: Array<string>,
   diferenciaTransporte: number
-) => {
+): Array<SongLine> => {
   var firstPass = lines.map(l => {
     var it = preprocesarLinea(l);
     if (it.notas && diferenciaTransporte !== 0) {

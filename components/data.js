@@ -45,6 +45,8 @@ import { NativeEventEmitter } from 'react-native';
 import iCloudStorage from 'react-native-icloudstore';
 
 class CloudData {
+  eventEmitter: NativeEventEmitter;
+
   constructor() {
     this.eventEmitter = new NativeEventEmitter(iCloudStorage);
     this.eventEmitter.addListener(
@@ -53,7 +55,7 @@ class CloudData {
     );
   }
 
-  loadData(userInfo) {
+  loadData(userInfo: any) {
     const changedKeys = userInfo.changedKeys;
     if (changedKeys != null && changedKeys.includes('lists')) {
       iCloudStorage.getItem('lists').then(result => {
@@ -63,7 +65,7 @@ class CloudData {
     }
   }
 
-  load(item) {
+  load(item: any) {
     return iCloudStorage
       .getItem(item.key)
       .then(res => {
@@ -77,7 +79,7 @@ class CloudData {
       });
   }
 
-  save(item) {
+  save(item: any) {
     return iCloudStorage
       .setItem(item.key, JSON.stringify(item.data))
       .then(() => {

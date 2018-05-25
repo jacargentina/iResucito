@@ -17,7 +17,7 @@ import I18n from '../translations';
 var pack = require('../../app.json');
 var cristo = require('../../img/cristo.jpg');
 
-class AcercaDe extends React.Component {
+class AcercaDe extends React.Component<any> {
   constructor(props) {
     super(props);
   }
@@ -85,7 +85,7 @@ class AcercaDe extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state: any) => {
   return {
     aboutVisible: state.ui.get('about_visible'),
     version: DeviceInfo.getReadableVersion(),

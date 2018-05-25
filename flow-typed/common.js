@@ -2,15 +2,18 @@
 
 declare type SongLine = {
   texto: string,
-  prefijo: string,
   style: any,
+  prefijo: string,
   prefijoStyle: any,
+  sufijo: string,
+  sufijoStyle: any,
   canto: boolean,
   cantoConIndicador: boolean,
   notas: boolean,
   notasCantoConIndicador: boolean,
   notaEspecial: boolean,
-  tituloEspecial: boolean
+  tituloEspecial: boolean,
+  textoEspecial: boolean
 };
 
 declare type Song = {
@@ -19,8 +22,9 @@ declare type Song = {
   path: string,
   nombre: string,
   fullText: string,
-  lines: Array<SongLine>,
-  locale: string
+  lines: Array<string>,
+  locale: string,
+  error?: any
 };
 
 declare type SearchParams = {
@@ -37,3 +41,5 @@ declare type SearchItem = {
   badge?: any,
   chooser?: string
 };
+
+declare type ListType = 'eucaristia' | 'palabra' | 'libre';

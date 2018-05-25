@@ -121,7 +121,7 @@ const mapDispatchToProps = dispatch => {
           {
             text: I18n.t('ui.delete'),
             onPress: () => {
-              dispatch(syncContact(contact, false));
+              dispatch(syncContact(contact));
               dispatch(saveContacts());
             },
             style: 'destructive'

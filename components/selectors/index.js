@@ -7,9 +7,9 @@ import {
   calcularTransporte
 } from '../util';
 
-const getLists = state => state.ui.get('lists');
+const getLists = (state: any) => state.ui.get('lists');
 
-const getLocale = state => state.ui.getIn(['settings', 'locale']);
+const getLocale = (state: any) => state.ui.getIn(['settings', 'locale']);
 
 export const getProcessedLists = createSelector(getLists, getLocale, lists => {
   var listNames = lists.keySeq().toArray();
@@ -22,15 +22,15 @@ export const getProcessedLists = createSelector(getLists, getLocale, lists => {
   });
 });
 
-const getSalmos = state => {
+const getSalmos = (state: any) => {
   return state.ui.get('salmos');
 };
 
-export const getSearchItems = state => {
+export const getSearchItems = (state: any) => {
   return state.ui.get('search');
 };
 
-const getListFromNavigation = (state, props) => {
+const getListFromNavigation = (state: any, props: any) => {
   return state.ui.getIn(['lists', props.navigation.state.params.list.name]);
 };
 
@@ -53,7 +53,8 @@ export const getSalmosFromList = createSelector(
   }
 );
 
-const getContactImportItems = state => state.ui.get('contact_import_items');
+const getContactImportItems = (state: any) =>
+  state.ui.get('contact_import_items');
 
 const getContactImportSanitizedItems = createSelector(
   getContactImportItems,
@@ -77,7 +78,7 @@ const getContactImportSanitizedItems = createSelector(
   }
 );
 
-const getContacts = state => state.ui.get('contacts');
+const getContacts = (state: any) => state.ui.get('contacts');
 
 const ordenAlfabetico = (a, b) => {
   if (a.givenName < b.givenName) {
@@ -89,17 +90,17 @@ const ordenAlfabetico = (a, b) => {
   return 0;
 };
 
-const getCurrentRouteFilter = state => {
+const getCurrentRouteFilter = (state: any) => {
   const i = state.nav.index;
   const route = state.nav.routes[i];
   return route.params ? route.params.filter : null;
 };
 
-export const getCurrentRouteKey = state => {
+export const getCurrentRouteKey = (state: any) => {
   return state.nav.routes[state.nav.index].key;
 };
 
-export const getCurrentRouteContactsTextFilter = state => {
+export const getCurrentRouteContactsTextFilter = (state: any) => {
   return state.ui.getIn(['contacts_text_filter', getCurrentRouteKey(state)]);
 };
 
@@ -117,7 +118,7 @@ export const getProcessedContactsForImport = createSelector(
   }
 );
 
-const contactFilterByText = (c, text) => {
+const contactFilterByText = (c, text: string) => {
   return (
     c.givenName.toLowerCase().includes(text.toLowerCase()) ||
     (c.familyName && c.familyName.toLowerCase().includes(text.toLowerCase()))
@@ -151,7 +152,7 @@ export const getProcessedContacts = createSelector(
   }
 );
 
-export const getCurrentRouteSalmosTextFilter = state => {
+export const getCurrentRouteSalmosTextFilter = (state: any) => {
   return state.ui.getIn(['salmos_text_filter', getCurrentRouteKey(state)]);
 };
 
@@ -173,7 +174,7 @@ export const getCurrentRouteSalmos = createSelector(
   }
 );
 
-export const getFilterFromProps = (state, props) => props.filter;
+export const getFilterFromProps = (state: any, props: any) => props.filter;
 
 export const getProcessedSalmos = createSelector(
   getCurrentRouteSalmos,
@@ -208,10 +209,10 @@ export const makeGetProcessedSalmos = () => {
   return createSelector(getProcessedSalmos, salmos => salmos);
 };
 
-export const getSalmoFromProps = (state, props) =>
+export const getSalmoFromProps = (state: any, props: any) =>
   props.navigation.state.params.salmo;
 
-export const getTransportToNote = state =>
+export const getTransportToNote = (state: any) =>
   state.ui.get('salmos_transport_note');
 
 export const getSalmoTransported = createSelector(

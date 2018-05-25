@@ -228,7 +228,7 @@ export const updateListAddType = (type: string) => {
   return { type: SET_LIST_ADD_TYPE, value: type };
 };
 
-export const createList = (name: string, type) => {
+export const createList = (name: string, type: ListType) => {
   return { type: LIST_CREATE, name: name, list_type: type };
 };
 
@@ -286,7 +286,7 @@ const ordenAlfabetico = (a: Song, b: Song) => {
   return 0;
 };
 
-export const processSongsMetadata = (rawLocale: string) => {
+export const processSongsMetadata = (rawLocale: string): Array<Song> => {
   var locale = rawLocale.split('-')[0];
   var basePath = Platform.OS == 'ios' ? `${RNFS.MainBundlePath}/` : '';
   var songs = Object.keys(SongsIndex);
@@ -308,8 +308,8 @@ export const processSongsMetadata = (rawLocale: string) => {
       fuente: fuente,
       nombre: nombre,
       path: path,
-      fullText: null,
-      lines: null,
+      fullText: '',
+      lines: [],
       locale: localeOk
     };
     return Object.assign(SongsIndex[key], info);
@@ -325,7 +325,7 @@ export const initializeSearch = () => {
   };
 };
 
-export const loadSongs = (songs: Array<Song>) => {
+export const loadSongs = (songs: Array<Song>): Array<Song> => {
   return songs.map(canto => {
     var loadSalmo =
       Platform.OS == 'ios'
