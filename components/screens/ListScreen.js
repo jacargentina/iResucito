@@ -12,7 +12,7 @@ import {
   updateListAddType,
   deleteList
 } from '../actions';
-import AppNavigatorConfig from '../AppNavigatorConfig';
+import AppNavigatorOptions from '../AppNavigatorOptions';
 import BaseCallToAction from './BaseCallToAction';
 import I18n from '../translations';
 
@@ -146,8 +146,7 @@ const AddList = props => {
         width: 32,
         fontSize: 40,
         textAlign: 'center',
-        color: AppNavigatorConfig.navigationOptions(props).headerTitleStyle
-          .color
+        color: AppNavigatorOptions.headerTitleStyle.color
       }}
       onPress={() => props.listAdd()}
     />

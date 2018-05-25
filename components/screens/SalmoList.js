@@ -5,7 +5,7 @@ import { Text } from 'native-base';
 import { FlatList, Keyboard } from 'react-native';
 import SearchBarView from './SearchBarView';
 import SalmoListItem from './SalmoListItem';
-import AppNavigatorConfig from '../AppNavigatorConfig';
+import AppNavigatorOptions from '../AppNavigatorOptions';
 import { setSalmosFilterText } from '../actions';
 import {
   makeGetProcessedSalmos,
@@ -107,8 +107,7 @@ const CountText = props => {
       style={{
         marginRight: 8,
         fontSize: 14,
-        color: AppNavigatorConfig.navigationOptions(props).headerTitleStyle
-          .color
+        color: AppNavigatorOptions.headerTitleStyle.color
       }}>
       {props.items.length}
     </Text>

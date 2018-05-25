@@ -12,7 +12,7 @@ import {
   saveLists
 } from '../actions';
 import { getSalmosFromList } from '../selectors';
-import AppNavigatorConfig from '../AppNavigatorConfig';
+import AppNavigatorOptions from '../AppNavigatorOptions';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import I18n from '../translations';
 
@@ -232,8 +232,7 @@ const ShareList = props => {
       style={{
         marginTop: 4,
         marginRight: 12,
-        color: AppNavigatorConfig.navigationOptions(props).headerTitleStyle
-          .color
+        color: AppNavigatorOptions.headerTitleStyle.color
       }}
       onPress={() =>
         props.listShare(props.navigation.state.params.list, props.listMap)
@@ -257,7 +256,7 @@ const AddSong = props => {
         width: 32,
         fontSize: 30,
         textAlign: 'center',
-        color: AppNavigatorConfig.navigationOptions(props).headerTitleStyle
+        color: AppNavigatorOptions.navigationOptions(props).headerTitleStyle
           .color
       }}
       onPress={() =>

@@ -12,7 +12,7 @@ import {
   setContactAttribute,
   setContactsFilterText
 } from '../actions';
-import AppNavigatorConfig from '../AppNavigatorConfig';
+import AppNavigatorOptions from '../AppNavigatorOptions';
 import BaseCallToAction from './BaseCallToAction';
 import {
   getCurrentRouteKey,
@@ -154,7 +154,7 @@ const ImportContacts = props => {
         width: 32,
         fontSize: 30,
         textAlign: 'center',
-        color: AppNavigatorConfig.navigationOptions(props).headerTitleStyle.color
+        color: AppNavigatorOptions.headerTitleStyle.color
       }}
       onPress={() => props.contactImport()}
     />

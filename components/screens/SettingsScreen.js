@@ -21,7 +21,7 @@ import {
   initializeLocale
 } from '../actions';
 import I18n from '../translations';
-import AppNavigatorConfig from '../AppNavigatorConfig';
+import AppNavigatorOptions from '../AppNavigatorOptions';
 import { getLocalesForPicker } from '../util';
 
 class SettingsScreen extends React.Component<any> {
@@ -65,17 +65,14 @@ class SettingsScreen extends React.Component<any> {
                   margin: 0
                 }}
                 headerStyle={{
-                  backgroundColor: AppNavigatorConfig.navigationOptions(
-                    this.props
-                  ).headerStyle.backgroundColor
+                  backgroundColor:
+                    AppNavigatorOptions.headerStyle.backgroundColor
                 }}
                 headerBackButtonTextStyle={{
-                  color: AppNavigatorConfig.navigationOptions(this.props)
-                    .headerTitleStyle.color
+                  color: AppNavigatorOptions.headerTitleStyle.color
                 }}
                 headerTitleStyle={{
-                  color: AppNavigatorConfig.navigationOptions(this.props)
-                    .headerTitleStyle.color
+                  color: AppNavigatorOptions.headerTitleStyle.color
                 }}
                 selectedValue={this.props.locale}
                 onValueChange={val => {

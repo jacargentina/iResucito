@@ -19,7 +19,7 @@ import {
   getSalmoTransported,
   getTransportToNote
 } from '../selectors';
-import AppNavigatorConfig from '../AppNavigatorConfig';
+import AppNavigatorOptions from '../AppNavigatorOptions';
 import commonTheme from '../../native-base-theme/variables/platform';
 import I18n from '../translations';
 
@@ -192,8 +192,7 @@ const TransportNotesMenu = props => {
             width: 32,
             fontSize: 30,
             textAlign: 'center',
-            color: AppNavigatorConfig.navigationOptions(props).headerTitleStyle
-              .color
+            color: AppNavigatorOptions.headerTitleStyle.color
           }}
         />
       </MenuTrigger>
@@ -224,7 +223,7 @@ const ShareSong = props => {
         width: 32,
         fontSize: 30,
         textAlign: 'center',
-        color: AppNavigatorConfig.navigationOptions(props).headerTitleStyle
+        color: AppNavigatorOptions.navigationOptions(props).headerTitleStyle
           .color
       }}
       onPress={() =>
