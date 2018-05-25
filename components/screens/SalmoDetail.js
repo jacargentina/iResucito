@@ -49,6 +49,8 @@ class SalmoDetail extends React.Component<any> {
   componentWillUnmount() {
     if (this.props.keepAwake) {
       KeepAwake.deactivate();
+      // Quitar cualquier transporte aplicado
+      this.props.transportNote();
     }
   }
 
@@ -223,8 +225,7 @@ const ShareSong = props => {
         width: 32,
         fontSize: 30,
         textAlign: 'center',
-        color: AppNavigatorOptions.navigationOptions(props).headerTitleStyle
-          .color
+        color: AppNavigatorOptions.headerTitleStyle.color
       }}
       onPress={() =>
         props.shareSong(props.salmo, props.lines, props.navigation)

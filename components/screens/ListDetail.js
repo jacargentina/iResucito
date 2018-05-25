@@ -256,8 +256,7 @@ const AddSong = props => {
         width: 32,
         fontSize: 30,
         textAlign: 'center',
-        color: AppNavigatorOptions.navigationOptions(props).headerTitleStyle
-          .color
+        color: AppNavigatorOptions.headerTitleStyle.color
       }}
       onPress={() =>
         props.openChooser('Salmo', props.list.name, props.listCount)
