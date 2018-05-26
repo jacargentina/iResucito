@@ -26,7 +26,6 @@ const AppNavigator = createStackNavigator(
         var screen = MenuNavigator.router.getComponentForRouteName(current.key);
         options = Object.assign(options, screen.navigationOptions(props));
       }
-      console.log('opts', options);
       return options;
     },
     cardStyle: {
