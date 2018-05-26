@@ -18,7 +18,7 @@ const AppNavigator = createStackNavigator(
   },
   {
     navigationOptions: (props: any) => {
-      var options = AppNavigatorOptions;
+      var options = Object.assign({}, AppNavigatorOptions);
       options.headerTruncatedBackTitle = I18n.t('ui.back');
       var navigation = props.navigation;
       if (typeof navigation.state.index == 'number') {
