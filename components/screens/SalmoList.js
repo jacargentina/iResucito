@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { connect } from 'react-redux';
-import { Text } from 'native-base';
+import { Badge, Text } from 'native-base';
 import { FlatList, Keyboard } from 'react-native';
 import SearchBarView from './SearchBarView';
 import SalmoListItem from './SalmoListItem';
@@ -18,13 +18,12 @@ import I18n from '../translations';
 class SalmoList extends React.Component<any> {
   listRef: any;
 
-  static navigationOptions = (props: any) => ({
-    title:
-      props.navigation.state.params && props.navigation.state.params.title
-        ? props.navigation.state.params.title
-        : 'Sin titulo',
-    headerRight: <ConnectedCountText {...props} />
-  });
+  static navigationOptions = (props: any) => {
+    return {
+      title: props.navigation.getParam('title', 'Sin título'),
+      headerRight: <ConnectedCountText {...props} />
+    };
+  };
 
   constructor(props) {
     super(props);
@@ -103,14 +102,18 @@ const mapDispatchToProps = (dispatch, props) => {
 
 const CountText = props => {
   return (
-    <Text
-      style={{
-        marginRight: 8,
-        fontSize: 14,
-        color: AppNavigatorOptions.headerTitleStyle.color
-      }}>
-      {props.items.length}
-    </Text>
+    <Badge style={{ marginTop: 8, marginRight: 6 }}>
+      <Text
+        style={{
+          fontSize: 12,
+          fontWeight: 'bold',
+          fontStyle: 'italic',
+          textAlign: 'center',
+          color: AppNavigatorOptions.headerTitleStyle.color
+        }}>
+        {props.items.length}
+      </Text>
+    </Badge>
   );
 };
 

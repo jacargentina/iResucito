@@ -2,7 +2,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Dimensions, ScrollView, View } from 'react-native';
-import { Container, Content, Text, Icon, ActionSheet } from 'native-base';
+import {
+  Container,
+  Content,
+  Text,
+  Icon,
+  ActionSheet,
+  Badge
+} from 'native-base';
 import KeepAwake from 'react-native-keep-awake';
 import {
   Menu,
@@ -183,21 +190,36 @@ const TransportNotesMenu = props => {
       />
     );
   });
-  return (
-    <Menu onSelect={value => props.transportNote(value)}>
-      <MenuTrigger>
-        <Icon
-          name="musical-note"
+  var trigger =
+    props.transportToNote === null || props.transportToNote === undefined ? (
+      <Icon
+        name="musical-note"
+        style={{
+          marginTop: 4,
+          marginRight: 8,
+          width: 32,
+          fontSize: 30,
+          textAlign: 'center',
+          color: AppNavigatorOptions.headerTitleStyle.color
+        }}
+      />
+    ) : (
+      <Badge style={{ marginTop: 6, marginRight: 6 }}>
+        <Text
           style={{
-            marginTop: 4,
-            marginRight: 8,
-            width: 32,
-            fontSize: 30,
+            fontSize: 12,
+            fontWeight: 'bold',
+            fontStyle: 'italic',
             textAlign: 'center',
             color: AppNavigatorOptions.headerTitleStyle.color
-          }}
-        />
-      </MenuTrigger>
+          }}>
+          {props.transportToNote}
+        </Text>
+      </Badge>
+    );
+  return (
+    <Menu onSelect={value => props.transportNote(value)}>
+      <MenuTrigger>{trigger}</MenuTrigger>
       <MenuOptions
         customStyles={{
           optionWrapper: { paddingHorizontal: 10, paddingVertical: 10 }
