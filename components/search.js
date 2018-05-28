@@ -9,8 +9,9 @@ const buildItems = (): Array<SearchItem> => {
       title: I18n.t('search_title.alpha'),
       note: I18n.t('search_note.alpha'),
       route: 'SalmoList',
+      chooser: I18n.t('search_tabs.all'),
+      params: {},
       badge: badges.Alfabético,
-      chooser: I18n.t('search_tabs.all')
     },
     {
       title: I18n.t('search_title.stage'),
