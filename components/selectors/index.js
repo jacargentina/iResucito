@@ -175,7 +175,9 @@ export const getCurrentRouteSalmos = createSelector(
 );
 
 export const getFilterFromProps = (state: any, props: any) => {
-  return props.navigation.getParam('filter', undefined);
+  if (props.navigation) {
+    return props.navigation.getParam('filter', undefined);
+  }
 };
 
 export const getProcessedSalmos = createSelector(
