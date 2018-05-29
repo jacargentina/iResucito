@@ -217,12 +217,14 @@ export const preprocesarLinea = (text: string): SongLine => {
     text.startsWith('C.') ||
     text.startsWith('D.') ||
     text.startsWith('U.') ||
+    text.startsWith('H.') ||
+    text.startsWith('M.') ||
     text.startsWith('A.') ||
     text.startsWith('P.') ||
     text.startsWith('Niños.') ||
     text.startsWith('N.')
   ) {
-    // Indicador de Salmista, Asamblea, Presbitero
+    // Indicador de Salmista, Asamblea, Presbitero, Hombres, Mujeres, etc
     var pointIndex = text.indexOf('.');
     var it: SongLine = {
       texto: text.substring(pointIndex + 1).trim(),
