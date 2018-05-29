@@ -96,10 +96,8 @@ class SalmoDetail extends React.Component<any> {
               style={{
                 minWidth: minWidth
               }}>
-              <Text style={styles.titulo}>
-                {this.props.salmo.titulo}{' '}
-                <Text style={styles.fuente}>{this.props.salmo.fuente}</Text>
-              </Text>
+              <Text style={styles.titulo}>{this.props.salmo.titulo}</Text>
+              <Text style={styles.fuente}>{this.props.salmo.fuente}</Text>
               {render_items}
             </Content>
           </ScrollView>

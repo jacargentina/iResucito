@@ -135,7 +135,7 @@ export const getLocalesForPicker = () => {
 
 var mono = Platform.OS == 'ios' ? 'Menlo-Bold' : 'monospace';
 var isTablet = DeviceInfo.isTablet();
-var fontSizeTitulo = isTablet ? 25 : 22;
+var fontSizeTitulo = isTablet ? 25 : 20;
 var fontSizeTexto = isTablet ? 17 : 14;
 var fontSizeNotas = isTablet ? 15.2 : 12.2;
 
@@ -145,11 +145,13 @@ export const stylesObj = {
     color: '#ff0000',
     fontSize: fontSizeTitulo,
     marginTop: 8,
-    marginBottom: 8
+    marginBottom: 4
   },
   fuente: {
     fontFamily: mono,
-    color: '#777777'
+    color: '#777777',
+    fontSize: fontSizeTexto - 1,
+    marginBottom: 8
   },
   lineaNotas: {
     fontFamily: mono,
