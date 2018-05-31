@@ -178,6 +178,7 @@ export const getFilterFromProps = (state: any, props: any) => {
   if (props.navigation) {
     return props.navigation.getParam('filter', undefined);
   }
+  return props.filter;
 };
 
 export const getProcessedSalmos = createSelector(
