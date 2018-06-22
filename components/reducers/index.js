@@ -1,7 +1,7 @@
 // @flow
 import { combineReducers } from 'redux';
+import { navReducer } from '../AppNavigator';
 
 import ui from './ui';
-import nav from './nav';
 
-export default combineReducers({ ui, nav });
+export default combineReducers({ ui, nav: navReducer });

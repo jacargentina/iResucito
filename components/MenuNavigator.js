@@ -1,5 +1,6 @@
 // @flow
 import { createBottomTabNavigator } from 'react-navigation';
+import { createNavigationReducer } from 'react-navigation-redux-helpers';
 import SalmoSearch from './screens/SalmoSearch';
 import SettingsScreen from './screens/SettingsScreen';
 import ListScreen from './screens/ListScreen';
@@ -16,4 +17,6 @@ const MenuNavigator = createBottomTabNavigator(
   MenuNavigatorConfig
 );
 
-export default MenuNavigator;
+const navReducer = createNavigationReducer(MenuNavigator);
+
+export { MenuNavigator, navReducer };

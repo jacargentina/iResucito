@@ -4,16 +4,18 @@ import { BackHandler, Platform } from 'react-native';
 import RNFS from 'react-native-fs';
 import DeviceInfo from 'react-native-device-info';
 import { NavigationActions } from 'react-navigation';
+import {
+  reduxifyNavigator,
+  createReactNavigationReduxMiddleware
+} from 'react-navigation-redux-helpers';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import { initializeListeners } from 'react-navigation-redux-helpers';
 import SplashScreen from 'react-native-splash-screen';
 import { Root, StyleProvider } from 'native-base';
 import getTheme from './native-base-theme/components';
 import commonTheme from './native-base-theme/variables/platform';
 import reducer from './components/reducers';
-import AppNavigator from './components/AppNavigator';
-import { navMiddleware } from './components/navigation';
+import { AppNavigator } from './components/AppNavigator';
 import { MenuProvider } from 'react-native-popup-menu';
 import { localdata, clouddata } from './components/data';
 import {
@@ -38,6 +40,8 @@ if (Platform.OS == 'android') {
   };
 }
 
+const ReduxedAppNavigator = reduxifyNavigator(AppNavigator, 'root');
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -46,7 +50,6 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    initializeListeners('root', this.props.nav);
     BackHandler.addEventListener('hardwareBackPress', this.onBackPress);
     this.props.init().then(() => {
       setTimeout(() => {
@@ -73,7 +76,7 @@ class App extends React.Component {
       <StyleProvider style={getTheme(commonTheme)}>
         <Root>
           <MenuProvider backHandler={true}>
-            <AppNavigator />
+            <ReduxedAppNavigator />
           </MenuProvider>
         </Root>
       </StyleProvider>
@@ -83,7 +86,7 @@ class App extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    nav: state.nav
+    state: state.nav
   };
 };
 
@@ -135,6 +138,11 @@ const mapDispatchToProps = dispatch => {
     }
   };
 };
+
+const navMiddleware = createReactNavigationReduxMiddleware(
+  'root',
+  state => state.nav
+);
 
 const AppWithNavigationState = connect(mapStateToProps, mapDispatchToProps)(
   App
