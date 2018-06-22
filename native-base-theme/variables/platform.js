@@ -18,6 +18,7 @@ export default {
   iconStyle: "#000",
   contentStyle: "#f5f4f5",
   expandedIconStyle: "#000",
+  accordionBorderColor: "#d3d3d3",
 
   // Android
   androidRipple: true,
@@ -86,6 +87,8 @@ export default {
   // Card
   cardDefaultBg: "#fff",
   cardBorderColor: "#ccc",
+  cardBorderRadius: 2,
+  cardItemPadding: platform === "ios" ? 10 : 12,
 
   // CheckBox
   CheckboxRadius: platform === "ios" ? 13 : 0,
@@ -113,7 +116,7 @@ export default {
   datePickerBg: "transparent",
 
   // Font
-  DefaultFontSize: 22,
+  DefaultFontSize: 17,
   fontFamily: platform === "ios" ? "System" : "Roboto",
   fontSizeBase: 15,
   get fontSizeH1() {
