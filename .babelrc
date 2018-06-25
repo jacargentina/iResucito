@@ -4,7 +4,10 @@
   ],
   "env": {
     "development": {
-        "plugins": ["@babel/plugin-transform-react-jsx-source"]
+        "plugins": [
+          "@babel/plugin-transform-react-jsx-source", 
+          ["@babel/plugin-proposal-decorators", { "legacy": true }]
+        ]
     }
   },
   "sourceMaps": "inline"
