@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "color": "^3.0.0",
-    "eslint": "^5.0.0",
+    "eslint": "^5.0.1",
     "eslint-import-resolver-node": "^0.3.2",
     "eslint-import-resolver-webpack": "^0.10.1",
     "eslint-plugin-babel": "^5.1.0",
@@ -63,7 +63,7 @@
     "react-native-storage": "^0.2.2",
     "react-native-swipeout": "^2.3.3",
     "react-native-version": "^2.6.2",
-    "react-navigation": "^2.5.2",
+    "react-navigation": "^2.5.3",
     "react-navigation-redux-helpers": "^2.0.2",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
