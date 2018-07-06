@@ -76,9 +76,9 @@ const makeMapStateToProps = () => {
   const getProcessedSalmos = makeGetProcessedSalmos();
   const mapStateToProps = (state, props) => {
     return {
-      textFilterId: getCurrentRouteKey(state),
-      textFilter: getCurrentRouteSalmosTextFilter(state),
-      items: getProcessedSalmos(state, props),
+      textFilterId: getCurrentRouteKey(state, props.navigation),
+      textFilter: getCurrentRouteSalmosTextFilter(state, props.navigation),
+      items: getProcessedSalmos(state, props.navigation),
       showBadge: getShowSalmosBadge(state)
     };
   };

@@ -3,19 +3,15 @@ import { connect, Provider } from 'react-redux';
 import { BackHandler, Platform } from 'react-native';
 import RNFS from 'react-native-fs';
 import DeviceInfo from 'react-native-device-info';
-import { NavigationActions } from 'react-navigation';
-import {
-  reduxifyNavigator,
-  createReactNavigationReduxMiddleware
-} from 'react-navigation-redux-helpers';
+import { AndroidBackHandler } from 'react-navigation-backhandler';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import SplashScreen from 'react-native-splash-screen';
 import { Root, StyleProvider } from 'native-base';
 import getTheme from './native-base-theme/components';
 import commonTheme from './native-base-theme/variables/platform';
+import AppNavigator from './components/AppNavigator';
 import reducer from './components/reducers';
-import { AppNavigator } from './components/AppNavigator';
 import { MenuProvider } from 'react-native-popup-menu';
 import { localdata, clouddata } from './components/data';
 import {
@@ -40,17 +36,13 @@ if (Platform.OS == 'android') {
   };
 }
 
-const ReduxedAppNavigator = reduxifyNavigator(AppNavigator, 'root');
-
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.onBackPress = this.onBackPress.bind(this);
     this.state = { initialized: false };
   }
 
   componentDidMount() {
-    BackHandler.addEventListener('hardwareBackPress', this.onBackPress);
     this.props.init().then(() => {
       setTimeout(() => {
         this.setState({ initialized: true });
@@ -59,12 +51,7 @@ class App extends React.Component {
     });
   }
 
-  onBackPress() {
-    const { dispatch, nav } = this.props;
-    if (nav.index === 0) {
-      return false;
-    }
-    dispatch(NavigationActions.back());
+  onBackButtonPressAndroid() {
     return true;
   }
 
@@ -73,22 +60,18 @@ class App extends React.Component {
       return null;
     }
     return (
-      <StyleProvider style={getTheme(commonTheme)}>
-        <Root>
-          <MenuProvider backHandler={true}>
-            <ReduxedAppNavigator />
-          </MenuProvider>
-        </Root>
-      </StyleProvider>
+      <AndroidBackHandler onBackPress={this.onBackButtonPressAndroid}>
+        <StyleProvider style={getTheme(commonTheme)}>
+          <Root>
+            <MenuProvider backHandler={true}>
+              <AppNavigator />
+            </MenuProvider>
+          </Root>
+        </StyleProvider>
+      </AndroidBackHandler>
     );
   }
 }
-
-const mapStateToProps = state => {
-  return {
-    state: state.nav
-  };
-};
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -139,21 +122,14 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const navMiddleware = createReactNavigationReduxMiddleware(
-  'root',
-  state => state.nav
-);
+const ConnectedApp = connect(null, mapDispatchToProps)(App);
 
-const AppWithNavigationState = connect(mapStateToProps, mapDispatchToProps)(
-  App
-);
-
-let store = createStore(reducer, applyMiddleware(thunk, navMiddleware));
+let store = createStore(reducer, applyMiddleware(thunk));
 
 const AppWithReduxStore = () => {
   return (
     <Provider store={store}>
-      <AppWithNavigationState />
+      <ConnectedApp />
     </Provider>
   );
 };

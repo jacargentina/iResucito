@@ -100,10 +100,10 @@ const CommunityScreen = (props: any) => {
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, props) => {
   return {
-    textFilterId: getCurrentRouteKey(state),
-    textFilter: getCurrentRouteContactsTextFilter(state),
+    textFilterId: getCurrentRouteKey(state, props.navigation),
+    textFilter: getCurrentRouteContactsTextFilter(state, props.navigation),
     items: getProcessedContacts(state)
   };
 };

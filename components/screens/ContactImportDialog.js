@@ -130,14 +130,14 @@ const ContactImportDialog = (props: any) => {
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, props) => {
   var visible = state.ui.get('contact_import_visible');
   var imported = state.ui.get('contacts').toJS();
   return {
     visible: visible,
     imported: imported,
-    textFilterId: getCurrentRouteKey(state),
-    textFilter: getCurrentRouteContactsTextFilter(state),
+    textFilterId: getCurrentRouteKey(state, props.navigation),
+    textFilter: getCurrentRouteContactsTextFilter(state, props.navigation),
     items: getFilteredContactsForImport(state)
   };
 };

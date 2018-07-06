@@ -10,8 +10,8 @@ const buildItems = (): Array<SearchItem> => {
       note: I18n.t('search_note.alpha'),
       route: 'SalmoList',
       chooser: I18n.t('search_tabs.all'),
-      params: {},
-      badge: badges.Alfabético,
+      params: { filter: null },
+      badge: badges.Alfabético
     },
     {
       title: I18n.t('search_title.stage'),

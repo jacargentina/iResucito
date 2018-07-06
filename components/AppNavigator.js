@@ -1,12 +1,11 @@
 // @flow
 import { createStackNavigator } from 'react-navigation';
-import { createNavigationReducer } from 'react-navigation-redux-helpers';
 import SalmoList from './screens/SalmoList';
 import SalmoDetail from './screens/SalmoDetail';
 import ListDetail from './screens/ListDetail';
 import PDFViewer from './screens/PDFViewer';
 import AppNavigatorOptions from './AppNavigatorOptions';
-import { MenuNavigator } from './MenuNavigator';
+import MenuNavigator from './MenuNavigator';
 import I18n from './translations';
 
 const AppNavigator = createStackNavigator(
@@ -35,6 +34,4 @@ const AppNavigator = createStackNavigator(
   }
 );
 
-const navReducer = createNavigationReducer(AppNavigator);
-
-export { AppNavigator, navReducer };
+export default AppNavigator;

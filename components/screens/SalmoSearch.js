@@ -16,11 +16,11 @@ const SalmoSearch = (props: any) => {
     <ScrollView
       keyboardShouldPersistTaps="always"
       keyboardDismissMode="on-drag">
-      <AcercaDe />
-      <ListAddDialog />
-      <SalmoChooserDialog />
-      <ContactImportDialog />
-      <ContactChooserDialog />
+      <AcercaDe navigation={props.navigation} />
+      <ListAddDialog navigation={props.navigation} />
+      <SalmoChooserDialog navigation={props.navigation} />
+      <ContactImportDialog navigation={props.navigation} />
+      <ContactChooserDialog navigation={props.navigation} />
       <FlatList
         data={props.items}
         keyExtractor={item => item.title}

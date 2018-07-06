@@ -30,8 +30,8 @@ export const getSearchItems = (state: any) => {
   return state.ui.get('search');
 };
 
-const getListFromNavigation = (state: any, props: any) => {
-  return state.ui.getIn(['lists', props.navigation.state.params.list.name]);
+const getListFromNavigation = (state: any, navigation: any) => {
+  return state.ui.getIn(['lists', navigation.state.params.list.name]);
 };
 
 export const getSalmosFromList = createSelector(
@@ -90,18 +90,25 @@ const ordenAlfabetico = (a, b) => {
   return 0;
 };
 
-const getCurrentRouteFilter = (state: any) => {
-  const i = state.nav.index;
-  const route = state.nav.routes[i];
-  return route.params ? route.params.filter : null;
+const getCurrentRouteFilter = (state: any, navigation: any) => {
+  if (navigation && navigation.state)
+    return navigation.state.params ? navigation.state.params.filter : null;
+  return null;
 };
 
-export const getCurrentRouteKey = (state: any) => {
-  return state.nav.routes[state.nav.index].key;
+export const getCurrentRouteKey = (state: any, navigation: any) => {
+  if (navigation && navigation.state) return navigation.state.key;
+  return null;
 };
 
-export const getCurrentRouteContactsTextFilter = (state: any) => {
-  return state.ui.getIn(['contacts_text_filter', getCurrentRouteKey(state)]);
+export const getCurrentRouteContactsTextFilter = (
+  state: any,
+  navigation: any
+) => {
+  return state.ui.getIn([
+    'contacts_text_filter',
+    getCurrentRouteKey(state, navigation)
+  ]);
 };
 
 export const getProcessedContactsForImport = createSelector(
@@ -152,8 +159,14 @@ export const getProcessedContacts = createSelector(
   }
 );
 
-export const getCurrentRouteSalmosTextFilter = (state: any) => {
-  return state.ui.getIn(['salmos_text_filter', getCurrentRouteKey(state)]);
+export const getCurrentRouteSalmosTextFilter = (
+  state: any,
+  navigation: any
+) => {
+  return state.ui.getIn([
+    'salmos_text_filter',
+    getCurrentRouteKey(state, navigation)
+  ]);
 };
 
 export const getCurrentRouteSalmos = createSelector(
@@ -174,16 +187,13 @@ export const getCurrentRouteSalmos = createSelector(
   }
 );
 
-export const getFilterFromProps = (state: any, props: any) => {
-  if (props.navigation) {
-    return props.navigation.getParam('filter', undefined);
-  }
-  return props.filter;
+export const getFilterFromNavigation = (state: any, navigation: any) => {
+  return navigation.getParam('filter', undefined);
 };
 
 export const getProcessedSalmos = createSelector(
   getCurrentRouteSalmos,
-  getFilterFromProps,
+  getFilterFromNavigation,
   getCurrentRouteSalmosTextFilter,
   (salmos, nav_filter, text_filter) => {
     if (nav_filter) {
@@ -214,8 +224,8 @@ export const makeGetProcessedSalmos = () => {
   return createSelector(getProcessedSalmos, salmos => salmos);
 };
 
-export const getSalmoFromProps = (state: any, props: any) =>
-  props.navigation.state.params.salmo;
+export const getSalmoFromProps = (state: any, navigation: any) =>
+  navigation.state.params.salmo;
 
 export const getTransportToNote = (state: any) =>
   state.ui.get('salmos_transport_note');
