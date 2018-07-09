@@ -147,8 +147,8 @@ export default {
   toolbarDefaultBg: platform === "ios" ? "#F8F8F8" : "#3F51B5",
   toolbarHeight: platform === "ios" ? 64 : 56,
   toolbarSearchIconSize: platform === "ios" ? 20 : 23,
-  toolbarInputColor: platform === "ios" ? "#CECDD2" : "#fff",
-  searchBarHeight: platform === "ios" ? 30 : 40,
+  toolbarInputColor: platform === "ios" ? "#ededed" : "#fff",
+  searchBarHeight: platform === "ios" ? 35 : 40,
   searchBarInputHeight: platform === "ios" ? 30 : 50,
   toolbarBtnTextColor: platform === "ios" ? "#007aff" : "#fff",
   toolbarDefaultBorder: platform === "ios" ? "#a7a6ab" : "#3F51B5",
@@ -224,11 +224,11 @@ export default {
   inverseSpinnerColor: "#1A191B",
 
   // Tab
-  tabDefaultBg: platform === "ios" ? "#F8F8F8" : "#3F51B5",
-  topTabBarTextColor: platform === "ios" ? "#6b6b6b" : "#b3c7f9",
-  topTabBarActiveTextColor: platform === "ios" ? "#007aff" : "#fff",
-  topTabBarBorderColor: platform === "ios" ? "#a7a6ab" : "#fff",
-  topTabBarActiveBorderColor: platform === "ios" ? "#007aff" : "#fff",
+  tabDefaultBg: "#F8F8F8",
+  topTabBarTextColor: "#ff5252",
+  topTabBarActiveTextColor: "#ff5252",
+  topTabBarBorderColor: "#ff5252",
+  topTabBarActiveBorderColor: "#ff5252",
 
   // Tabs
   tabBgColor: "#F8F8F8",
