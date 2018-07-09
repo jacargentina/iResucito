@@ -22,7 +22,7 @@ import color from 'color';
 import { notas, styles } from '../util';
 import { salmoTransport, generatePDF, sharePDF } from '../actions';
 import {
-  getSalmoFromProps,
+  getSalmoFromProps,  
   getSalmoTransported,
   getTransportToNote
 } from '../selectors';
@@ -108,12 +108,12 @@ class SalmoDetail extends React.Component<any> {
 }
 
 const mapStateToProps = (state, props) => {
-  var salmo = getSalmoFromProps(state, props);
+  var salmo = getSalmoFromProps(state, props.navigation);
   var keepAwake = state.ui.getIn(['settings', 'keepAwake']);
   var backColor = color(colors[salmo.etapa]);
   var colorStr = backColor.lighten(0.1).string();
   var transportToNote = getTransportToNote(state);
-  var itemsToRender = getSalmoTransported(state, props);
+  var itemsToRender = getSalmoTransported(state, props.navigation);
   // Ajuste final para renderizado en screen
   itemsToRender.forEach(it => {
     if (it.notas === true) {

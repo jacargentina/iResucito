@@ -21,6 +21,7 @@ const SalmoChooserDialog = (props: any) => {
         textStyle={styles.tabs}
         activeTextStyle={styles.tabs}>
         <SalmoList
+          navigation={props.navigation}
           filter={v.params ? v.params.filter : null}
           onPress={salmo =>
             props.salmoSelected(salmo, props.listName, props.listKey)

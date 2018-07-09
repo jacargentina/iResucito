@@ -187,13 +187,19 @@ export const getCurrentRouteSalmos = createSelector(
   }
 );
 
-export const getFilterFromNavigation = (state: any, navigation: any) => {
-  return navigation.getParam('filter', undefined);
+export const getFilterFromNavOrProps = (state: any, props: any) => {
+  if (props.navigation) {
+    var filterFromNav = props.navigation.getParam('filter', undefined);
+    if (filterFromNav) {
+      return filterFromNav;
+    }
+  }
+  return props.filter;
 };
 
 export const getProcessedSalmos = createSelector(
   getCurrentRouteSalmos,
-  getFilterFromNavigation,
+  getFilterFromNavOrProps,
   getCurrentRouteSalmosTextFilter,
   (salmos, nav_filter, text_filter) => {
     if (nav_filter) {
