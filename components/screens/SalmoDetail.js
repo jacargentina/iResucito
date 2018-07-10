@@ -22,7 +22,7 @@ import color from 'color';
 import { notas, styles } from '../util';
 import { salmoTransport, generatePDF, sharePDF } from '../actions';
 import {
-  getSalmoFromProps,  
+  getSalmoFromProps,
   getSalmoTransported,
   getTransportToNote
 } from '../selectors';
@@ -115,14 +115,16 @@ const mapStateToProps = (state, props) => {
   var transportToNote = getTransportToNote(state);
   var itemsToRender = getSalmoTransported(state, props.navigation);
   // Ajuste final para renderizado en screen
-  itemsToRender.forEach(it => {
-    if (it.notas === true) {
-      it.texto = it.texto.replace(/ {2}/g, ' ');
+  var lines = itemsToRender.map(it => {
+    var c = Object.assign({}, it);
+    if (c.notas === true) {
+      c.texto = c.texto.replace(/ {2}/g, ' ');
     }
+    return c;
   });
   return {
     salmo: salmo,
-    lines: itemsToRender,
+    lines: lines,
     background: colorStr,
     keepAwake: keepAwake,
     transportToNote: transportToNote
