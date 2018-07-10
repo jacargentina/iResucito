@@ -517,7 +517,8 @@
   "comunion": true,
   "files": {
    "es": "El jacal de los pastores - Ct 1, 2-8",
-   "it": "Che mi baci - Ct 1, 2-8"
+   "it": "Che mi baci - Ct 1, 2-8",
+   "pt": "A cabana dos pastores - Ct 1, 2-8"
   }
  },
  "62": {
@@ -749,7 +750,8 @@
   "cuaresma": true,
   "files": {
    "es": "La marcha es dura - Himno",
-   "it": "La marcia è dura - Inno"
+   "it": "La marcia è dura - Inno",
+   "pt": "A marcha é dura - Hino",
   }
  },
  "91": {
@@ -764,7 +766,8 @@
   "final": true,
   "files": {
    "es": "La siega de las naciones - Jn 4, 31-38",
-   "it": "La mietitura delle nazioni - Jn 4, 31-38"
+   "it": "La mietitura delle nazioni - Jn 4, 31-38",
+   "pt": "A ceifa das nações - Jn 4, 31-38"
   }
  },
  "93": {
@@ -1319,7 +1322,8 @@
   "pascua": true,
   "laudes": true,
   "files": {
-   "es": "A la cena del cordero - Himno"
+   "es": "A la cena del cordero - Himno",
+   "pt": "À ceia do cordeiro - Hino"
   }
  },
  "159": {
@@ -1444,7 +1448,8 @@
   "navidad": true,
   "virgen": true,
   "files": {
-   "es": "La cordera de Dios - Mt 1, 18ss"
+   "es": "La cordera de Dios - Mt 1, 18ss",
+   "pt": "A cordeira de Deus - Mt 1, 18ss"
   }
  },
  "174": {
