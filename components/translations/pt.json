@@ -1,0 +1,143 @@
+{
+  "ui": {
+    "default": "Padrão",
+    "share": "Compartilhar",
+    "back": "Voltar",
+    "done": "Feito",
+    "version": "Versão",
+    "psalmist": "Salmista",
+    "delete": "Excluir",
+    "cancel": "Cancelar",
+    "create": "Criar",
+    "delete confirmation": "Ter certeza que deseja excluir?",
+    "lists": {
+      "already exists": "Uma lista com o mesmo nome já existe",
+      "non-empty name": "Insira um nome não vazio",
+      "create": "Criar lista",
+      "type": "Tipo de lista"
+    },
+    "community empty":
+      "Sem nomes importados. Para escolher da lista, você deve importar dos seus contatos na opção Comunidade.",
+    "search placeholder": "Pesquisar",
+    "locale warning title": "Tradução incompleta",
+    "locale warning message":
+      "O canto não foi incorporado ainda no seu idioma",
+    "donate message": "Ajude fazendo uma doação. A paz!",
+    "donate button": "Doar",
+    "no songs found": "Nenhum canto encontrado",
+    "no contacts found": "Nenhum contato encontrado",
+    "empty songs list": "Lista de cantos vazia"
+  },
+  "list_type": {
+    "eucharist": "Eucaristia",
+    "word": "Palavra",
+    "other": "Outras"
+  },
+  "list_item": {
+    "ambiental": "Monição Ambiental",
+    "entrada": "Canto de Entrada",
+    "paz": "Paz e Ofertório",
+    "comunion-pan": "Pão",
+    "comunion-caliz": "Vinho",
+    "salida": "Canto Final",
+    "1-monicion": "Monição 1ª Leitura",
+    "1": "1ª Leitura",
+    "1-salmo": "1º Salmo",
+    "2-monicion": "Monição 2ª Leitura",
+    "2": "2ª Leitura",
+    "2-salmo": "2º Salmo",
+    "3-monicion": "Monição 3ª Leitura",
+    "3": "3ª Leitura",
+    "3-salmo": "3º Salmo",
+    "evangelio-monicion": "Monição do Evangelho",
+    "evangelio": "Evangelho",
+    "nota": "Notas"
+  },
+  "search_title": {
+    "alpha": "Alfabético",
+    "stage": "Etapa do Caminho",
+    "precatechumenate": "Prá-catecumenato",
+    "catechumenate": "Catecumenato",
+    "election": "Eleição",
+    "liturgy": "Liturgia",
+    "liturgical time": "Tempo Litúrgico",
+    "advent": "Advento",
+    "christmas": "Natal",
+    "lent": "Quaresma",
+    "easter": "Páscoa",
+    "pentecost": "Pentecostes",
+    "liturgical order": "Ordem litúrgica",
+    "entrance": "Entrada",
+    "peace and offerings": "Paz e Ofertório",
+    "fraction of bread": "Fração do Pão",
+    "communion": "Comunhão",
+    "exit": "Saída",
+    "signing to the virgin": "Cantos à Virgem",
+    "children's songs": "Canto das Crianças",
+    "lutes and vespers": "Laudes e Vésperas"
+  },
+  "search_tabs": {
+    "all": "Todos",
+    "entrance": "Entrada",
+    "peace and offerings": "Paz/Ofertório",
+    "fraction of bread": "Fração do Pão",
+    "communion": "Comunhão",
+    "exit": "Final",
+    "signing to the virgin": "Virgem"
+  },
+  "search_note": {
+    "alpha": "Cantos em Ordem Alfabética",
+    "precatechumenate": "Cantos do Pré-catecumenato",
+    "catechumenate": "Cantos do Catecumenato",
+    "election": "Cantos da Eleição",
+    "liturgy": "Cantos Litúrgicos",
+    "advent": "Cantos do Tempo do Advento",
+    "christmas": "Cantos do Tempo do Natal",
+    "lent": "Cantos do Tempo Quaresmal",
+    "easter": "Cantos do Tempo Pascal",
+    "pentecost": "Cantos para Pentecostes",
+    "entrance": "Cantos para o Início das Liturgias",
+    "peace and offerings": "Cantos para a Saudação da Paz e as Oferendas",
+    "fraction of bread": "Cantos para a fração do Pão",
+    "communion": "Cantos para a Comunhão",
+    "exit": "Canto para o final das Liturgias",
+    "signing to the virgin": "Cantos dedicados à Virgem Maria",
+    "children's songs": "Canto das Crianças",
+    "lutes and vespers": "Salmos das Laudes e Vésperas"
+  },
+  "screen_title": {
+    "search": "Pesquisar",
+    "settings": "Configurações",
+    "find song": "Pesquisar Canto",
+    "lists": "Listas",
+    "community": "Comunidade",
+    "import contacts": "Importar Contatos"
+  },
+  "call_to_action_title": {
+    "add lists": "Adicionar Listas",
+    "community list": "Lista da Comunidade"
+  },
+  "call_to_action_text": {
+    "add lists":
+      "As listas te permitem organizar a celebração litúrgica para lembrar ou compartilhar com seus irmãos e irmãs da Comunidade",
+    "community list":
+      "Você pode importar dos seus contatos os nomes dos irmãos e irmãs da comunidade e usá-los ao criar as listas"
+  },
+  "call_to_action_button": {
+    "add lists": "Criar uma Lista",
+    "community list": "Importar Contatos"
+  },
+  "settings_title": {
+    "locale": "Idioma",
+    "keep awake": "Fique acordado",
+    "about": "Sobre"
+  },
+  "settings_note": {
+    "locale": "Traduzir o aplicativo para as línguas disponíveis",
+    "keep awake": "Evitar que o dispositivo apague a tela ao visualizar um canto"
+  },
+  "share_action": {
+    "view pdf": "Ver como PDF",
+    "share pdf": "Compartilhar como PDF..."
+  }
+}
