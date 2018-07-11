@@ -30,3 +30,19 @@ allprojects {
         }
     }
 }
+
+ext {
+    compileSdkVersion = 26
+    buildToolsVersion = '26.0.1'
+}
+
+subprojects { subproject ->
+    afterEvaluate {
+        if ((subproject.plugins.hasPlugin('android') || subproject.plugins.hasPlugin('android-library'))) {
+            android {
+                compileSdkVersion rootProject.ext.compileSdkVersion
+                buildToolsVersion rootProject.ext.buildToolsVersion
+            }
+        }
+    }
+}
