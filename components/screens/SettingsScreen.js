@@ -2,6 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { View } from 'react-native';
+import { AndroidBackHandler } from 'react-navigation-backhandler';
 import {
   List,
   ListItem,
@@ -51,63 +52,65 @@ class SettingsScreen extends React.Component<any> {
       });
     }
     return (
-      <View>
-        <List>
-          <ListItem>
-            <Body>
-              <Text>{I18n.t('settings_title.locale')}</Text>
-              <Text note>{I18n.t('settings_note.locale')}</Text>
-              <Picker
-                headerBackButtonText={I18n.t('ui.back')}
-                iosHeader={I18n.t('settings_title.locale')}
-                textStyle={{
-                  padding: 0,
-                  margin: 0
-                }}
-                headerStyle={{
-                  backgroundColor:
-                    AppNavigatorOptions.headerStyle.backgroundColor
-                }}
-                headerBackButtonTextStyle={{
-                  color: AppNavigatorOptions.headerTitleStyle.color
-                }}
-                headerTitleStyle={{
-                  color: AppNavigatorOptions.headerTitleStyle.color
-                }}
-                selectedValue={this.props.locale}
-                onValueChange={val => {
-                  this.props.updateSetting('locale', val);
-                  // Para forzar refresco del titulo segun idioma nuevo
-                  this.props.navigation.setParams({ title: '' });
-                }}>
-                {this.localesItems}
-              </Picker>
-            </Body>
-          </ListItem>
-          <ListItem>
-            <Body>
-              <Text>{I18n.t('settings_title.keep awake')}</Text>
-              <Text note>{I18n.t('settings_note.keep awake')}</Text>
-            </Body>
-            <Right>
-              <Switch
-                value={this.props.keepAwake}
-                onValueChange={checked =>
-                  this.props.updateSetting('keepAwake', checked)
-                }
-              />
-            </Right>
-          </ListItem>
-          <ListItem icon button onPress={() => this.props.showAbout()}>
-            <Left>
-              <Icon name="checkmark" />
-            </Left>
-            <Body>
-              <Text>{I18n.t('settings_title.about')}</Text>
-            </Body>
-          </ListItem>
-        </List>
-      </View>
+      <AndroidBackHandler onBackPress={() => true}>
+        <View>
+          <List>
+            <ListItem>
+              <Body>
+                <Text>{I18n.t('settings_title.locale')}</Text>
+                <Text note>{I18n.t('settings_note.locale')}</Text>
+                <Picker
+                  headerBackButtonText={I18n.t('ui.back')}
+                  iosHeader={I18n.t('settings_title.locale')}
+                  textStyle={{
+                    padding: 0,
+                    margin: 0
+                  }}
+                  headerStyle={{
+                    backgroundColor:
+                      AppNavigatorOptions.headerStyle.backgroundColor
+                  }}
+                  headerBackButtonTextStyle={{
+                    color: AppNavigatorOptions.headerTitleStyle.color
+                  }}
+                  headerTitleStyle={{
+                    color: AppNavigatorOptions.headerTitleStyle.color
+                  }}
+                  selectedValue={this.props.locale}
+                  onValueChange={val => {
+                    this.props.updateSetting('locale', val);
+                    // Para forzar refresco del titulo segun idioma nuevo
+                    this.props.navigation.setParams({ title: '' });
+                  }}>
+                  {this.localesItems}
+                </Picker>
+              </Body>
+            </ListItem>
+            <ListItem>
+              <Body>
+                <Text>{I18n.t('settings_title.keep awake')}</Text>
+                <Text note>{I18n.t('settings_note.keep awake')}</Text>
+              </Body>
+              <Right>
+                <Switch
+                  value={this.props.keepAwake}
+                  onValueChange={checked =>
+                    this.props.updateSetting('keepAwake', checked)
+                  }
+                />
+              </Right>
+            </ListItem>
+            <ListItem icon button onPress={() => this.props.showAbout()}>
+              <Left>
+                <Icon name="checkmark" />
+              </Left>
+              <Body>
+                <Text>{I18n.t('settings_title.about')}</Text>
+              </Body>
+            </ListItem>
+          </List>
+        </View>
+      </AndroidBackHandler>
     );
   }
 }

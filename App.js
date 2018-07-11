@@ -3,7 +3,6 @@ import { connect, Provider } from 'react-redux';
 import { BackHandler, Platform } from 'react-native';
 import RNFS from 'react-native-fs';
 import DeviceInfo from 'react-native-device-info';
-import { AndroidBackHandler } from 'react-navigation-backhandler';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import SplashScreen from 'react-native-splash-screen';
@@ -60,15 +59,13 @@ class App extends React.Component {
       return null;
     }
     return (
-      <AndroidBackHandler onBackPress={this.onBackButtonPressAndroid}>
-        <StyleProvider style={getTheme(commonTheme)}>
-          <Root>
-            <MenuProvider backHandler={true}>
-              <AppNavigator />
-            </MenuProvider>
-          </Root>
-        </StyleProvider>
-      </AndroidBackHandler>
+      <StyleProvider style={getTheme(commonTheme)}>
+        <Root>
+          <MenuProvider backHandler={true}>
+            <AppNavigator />
+          </MenuProvider>
+        </Root>
+      </StyleProvider>
     );
   }
 }

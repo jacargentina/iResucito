@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import { connect } from 'react-redux';
+import { AndroidBackHandler } from 'react-navigation-backhandler';
 import { FlatList, ScrollView } from 'react-native';
 import { ListItem, Left, Body, Text, Icon, Separator } from 'native-base';
 import ListAddDialog from './ListAddDialog';
@@ -13,43 +14,45 @@ import { getSearchItems } from '../selectors';
 
 const SalmoSearch = (props: any) => {
   return (
-    <ScrollView
-      keyboardShouldPersistTaps="always"
-      keyboardDismissMode="on-drag">
-      <AcercaDe navigation={props.navigation} />
-      <ListAddDialog navigation={props.navigation} />
-      <SalmoChooserDialog navigation={props.navigation} />
-      <ContactImportDialog navigation={props.navigation} />
-      <ContactChooserDialog navigation={props.navigation} />
-      <FlatList
-        data={props.items}
-        keyExtractor={item => item.title}
-        renderItem={({ item, index }) => {
-          var nextItem = props.items[index + 1];
-          if (item.divider) {
+    <AndroidBackHandler onBackPress={() => true}>
+      <ScrollView
+        keyboardShouldPersistTaps="always"
+        keyboardDismissMode="on-drag">
+        <AcercaDe navigation={props.navigation} />
+        <ListAddDialog navigation={props.navigation} />
+        <SalmoChooserDialog navigation={props.navigation} />
+        <ContactImportDialog navigation={props.navigation} />
+        <ContactChooserDialog navigation={props.navigation} />
+        <FlatList
+          data={props.items}
+          keyExtractor={item => item.title}
+          renderItem={({ item, index }) => {
+            var nextItem = props.items[index + 1];
+            if (item.divider) {
+              return (
+                <Separator bordered>
+                  <Text>{item.title}</Text>
+                </Separator>
+              );
+            }
             return (
-              <Separator bordered>
-                <Text>{item.title}</Text>
-              </Separator>
+              <ListItem
+                last={nextItem && nextItem.divider}
+                avatar
+                onPress={() => {
+                  props.navigation.navigate(item.route, item.params);
+                }}>
+                <Left>{item.badge}</Left>
+                <Body>
+                  <Text>{item.title}</Text>
+                  <Text note>{item.note}</Text>
+                </Body>
+              </ListItem>
             );
-          }
-          return (
-            <ListItem
-              last={nextItem && nextItem.divider}
-              avatar
-              onPress={() => {
-                props.navigation.navigate(item.route, item.params);
-              }}>
-              <Left>{item.badge}</Left>
-              <Body>
-                <Text>{item.title}</Text>
-                <Text note>{item.note}</Text>
-              </Body>
-            </ListItem>
-          );
-        }}
-      />
-    </ScrollView>
+          }}
+        />
+      </ScrollView>
+    </AndroidBackHandler>
   );
 };
 

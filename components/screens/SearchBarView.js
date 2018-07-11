@@ -1,9 +1,11 @@
 // @flow
 import React from 'react';
 import { connect } from 'react-redux';
+import { AndroidBackHandler } from 'react-navigation-backhandler';
 import { View, StyleSheet } from 'react-native';
 import { Input, Item, Icon } from 'native-base';
 import debounce from 'lodash/debounce';
+import { withNavigation } from 'react-navigation';
 import commonTheme from '../../native-base-theme/variables/platform';
 import I18n from '../translations';
 
@@ -102,18 +104,24 @@ const SearchBarView = props => {
     );
   }
   return (
-    <View style={{ flex: 1 }}>
-      {searchView}
-      <View
-        style={{
-          flex: 1,
-          borderTopWidth: StyleSheet.hairlineWidth,
-          borderTopColor: commonTheme.listBorderColor
-        }}>
-        {props.children}
+    <AndroidBackHandler
+      onBackPress={() => {
+        props.navigation.goBack();
+        return true;
+      }}>
+      <View style={{ flex: 1 }}>
+        {searchView}
+        <View
+          style={{
+            flex: 1,
+            borderTopWidth: StyleSheet.hairlineWidth,
+            borderTopColor: commonTheme.listBorderColor
+          }}>
+          {props.children}
+        </View>
       </View>
-    </View>
+    </AndroidBackHandler>
   );
 };
 
-export default connect()(SearchBarView);
+export default withNavigation(connect()(SearchBarView));
