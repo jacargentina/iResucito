@@ -159,13 +159,15 @@
   "comunion": true,
   "files": {
    "es": "A la víctima pascual - Secuencia de Pascua",
-   "it": "Alla vittima pasquale - Sequenza pasquale"
+   "it": "Alla vittima pasquale - Sequenza pasquale",
+   "pt": "À vítima pascal - Sequência de Páscoa"
   }
  },
  "20": {
   "etapa": "Precatecumenado",
   "files": {
-   "es": "A nadie demos ocasión de tropiezo - 2 Co 6, 3ss"
+   "es": "A nadie demos ocasión de tropiezo - 2 Co 6, 3ss",
+   "pt": "A ninguém demos ocasião de tropeço - 2 Co 6, 3ss"
   }
  },
  "21": {
@@ -173,7 +175,8 @@
   "cuaresma": true,
   "files": {
    "es": "A ti levanto mis ojos - Sal 123 (122)",
-   "it": "A te levo i miei occhi - Sal 123 (122)"
+   "it": "A te levo i miei occhi - Sal 123 (122)",
+   "pt": "A ti levanto meus olhos - Sal 123 (122)"
   }
  },
  "22": {
@@ -181,7 +184,8 @@
   "cuaresma": true,
   "files": {
    "es": "A ti, Señor, en mi clamor imploro - Sal 142 (141)",
-   "it": "A te, Signore, con la mia voce - Sal 142 (141)"
+   "it": "A te, Signore, con la mia voce - Sal 142 (141)",
+   "pt": "A ti, Senhor, com minha voz gritando imploro - Sal 142 (141)"
   }
  },
  "23": {
@@ -1458,7 +1462,8 @@
   "comunion": true,
   "files": {
    "es": "La paloma volo - Oda 24 de Salomón",
-   "it": "La colomba volò - Ode 24 de Salomone"
+   "it": "La colomba volò - Ode 24 de Salomone",
+   "pt": "A pomba voou - Ode 24 de Salomão"
   }
  },
  "175": {
