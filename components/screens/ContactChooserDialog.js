@@ -63,7 +63,7 @@ const ContactChooserDialog = (props: any) => {
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, props) => {
   var chooser = state.ui.get('chooser');
   var chooser_target_list = state.ui.get('chooser_target_list');
   var chooser_target_key = state.ui.get('chooser_target_key');
@@ -71,7 +71,7 @@ const mapStateToProps = state => {
     listName: chooser_target_list,
     listKey: chooser_target_key,
     visible: chooser === 'Contact',
-    items: getProcessedContacts(state)
+    items: getProcessedContacts(state, props)
   };
 };
 

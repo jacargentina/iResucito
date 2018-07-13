@@ -108,12 +108,12 @@ class SalmoDetail extends React.Component<any> {
 }
 
 const mapStateToProps = (state, props) => {
-  var salmo = getSalmoFromProps(state, props.navigation);
+  var salmo = getSalmoFromProps(state, props);
   var keepAwake = state.ui.getIn(['settings', 'keepAwake']);
   var backColor = color(colors[salmo.etapa]);
   var colorStr = backColor.lighten(0.1).string();
   var transportToNote = getTransportToNote(state);
-  var itemsToRender = getSalmoTransported(state, props.navigation);
+  var itemsToRender = getSalmoTransported(state, props);
   // Ajuste final para renderizado en screen
   var lines = itemsToRender.map(it => {
     var c = Object.assign({}, it);

@@ -136,9 +136,9 @@ const mapStateToProps = (state, props) => {
   return {
     visible: visible,
     imported: imported,
-    textFilterId: getCurrentRouteKey(state, props.navigation),
-    textFilter: getCurrentRouteContactsTextFilter(state, props.navigation),
-    items: getFilteredContactsForImport(state)
+    textFilterId: getCurrentRouteKey(state, props),
+    textFilter: getCurrentRouteContactsTextFilter(state, props),
+    items: getFilteredContactsForImport(state, props)
   };
 };
 

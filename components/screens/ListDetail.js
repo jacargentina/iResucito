@@ -183,7 +183,7 @@ const ListDetail = (props: any) => {
 };
 
 const mapStateToProps = (state, props) => {
-  var listMap = getSalmosFromList(state, props.navigation);
+  var listMap = getSalmosFromList(state, props);
   return {
     list: props.navigation.state.params.list,
     listMap: listMap,

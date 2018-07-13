@@ -102,9 +102,9 @@ const CommunityScreen = (props: any) => {
 
 const mapStateToProps = (state, props) => {
   return {
-    textFilterId: getCurrentRouteKey(state, props.navigation),
-    textFilter: getCurrentRouteContactsTextFilter(state, props.navigation),
-    items: getProcessedContacts(state)
+    textFilterId: getCurrentRouteKey(state, props),
+    textFilter: getCurrentRouteContactsTextFilter(state, props),
+    items: getProcessedContacts(state, props)
   };
 };
 
