@@ -19,7 +19,7 @@ A: GLORY, GLORY, GLORY,			               GLORY, GLORY, GLORY.
 C: I will set a sign upon them	                     For as the new heavens
    A                                                                          G#
    and I will send them	                              and the new earth that I am making		
-                    E                                     B             G#
+        E                                     B             G#
    to the distant nations;		                     will endure forever,		
    B                E                                     A                     E
    to announce my glory		                     so they will endure forever,				
@@ -32,7 +32,7 @@ A:GLORY, GLORY, GLORY.                            GLORY, GLORY, GLORY.
 
    C#-                     A
 C: They shall bring your brothers
-              E
+  E
    from all the nations
    B                   E
    as an offering to the Lord

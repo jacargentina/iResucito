@@ -30,7 +30,7 @@ The Sermon on the Mountain
 
    Happy are you that now are weeping
 
-        A            D
+  A            D
 
    for you shall laugh
 
@@ -38,19 +38,19 @@ The Sermon on the Mountain
 
    Happy are you when men hate you
 
-                G
+    G
 
    and insult you
 
-                             F#	    		
+                 F#	    		
 
    on account of the son of man
 
-      G
+G
 
    Rejoice in that day
 
-                              F#	    		
+                  F#	    		
 
    your reward is great in heaven
 
@@ -58,7 +58,7 @@ The Sermon on the Mountain
 
    But woe to you that now are rich
 
-          A                        D    		
+    A                        D    		
 
    for you already have your consolation
 
@@ -70,35 +70,35 @@ The Sermon on the Mountain
 
    But to you who are listening I say:
 
-               A   E
+   A   E
 
    Love your enemies
 
-       B7                  E
+ B7                  E
 
    do good to those who hate you
 
-                      A    E
+          A    E
 
    Bless those who curse you
 
-       B7                    E
+ B7                    E
 
    Pray for those who ill-treat you
 
-                                A   E
+                    A   E
 
    To him who slapped you on one cheek
 
-       B7             E
+ B7             E
 
    offer the other one as well
 
-                           A  E
+               A  E
 
    To him who takes away your cloak
 
-       B7                E
+ B7                E
 
    Do not refuse your tunic
 
@@ -106,7 +106,7 @@ The Sermon on the Mountain
 
    Give to every one who asks you
 
-          C#
+    C#
 
    and from him who takes
 
@@ -114,7 +114,7 @@ The Sermon on the Mountain
 
    your goods do not ask
 
-                F#
+    F#
 
    for their return
 
@@ -130,7 +130,7 @@ The Sermon on the Mountain
 
 
 
-                         G   D
+             G   D
 
    Woe to you that now are full
 
@@ -138,11 +138,11 @@ The Sermon on the Mountain
 
    for you shall go hungry
 
-                             G  D
+                 G  D
 
    Woe to you that now are laughing
 
-             A              D
+ A              D
 
    for you shall mourn and weep
 
@@ -150,7 +150,7 @@ The Sermon on the Mountain
 
    Woe to you when all men speak well of you
 
-                                 F#
+                     F#
 
    so they spoke to the false prophets
 
