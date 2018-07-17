@@ -1,5 +1,5 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFFFFF;"><div>
+
+
 POR AMOR DE MEUS AMIGOS
 Salmo 122 (121)
 Braçadeira 3ª Traste
@@ -71,4 +71,4 @@ A.  QUE ESTEJA A PAZ, QUE ESTEJA A PAZ
     COM AQUELES QUE TE AMAM.
     Mi-
 A.  JERUSALÉM, JERUSALÉM, ...
-</div></body></html>
+

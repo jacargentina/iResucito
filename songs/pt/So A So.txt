@@ -1,9 +1,9 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFFFFF;"><div>
+
+
 SÓ A SÓ
 Hino
 
-    Re- 5*</font> Sol-      La
+    Re- 5* Sol-      La
 S.  Só  a  Só sob a cruz,
                                Re-
     Maria, quem te poderá separar?
@@ -50,7 +50,7 @@ S.  Coluna de amor,
 A.  SÓ A SÓ! ...
 
     _________________________________________________________
-    *</font>Dedilhado: 1ª corda livre, 5ª traste, 4ª traste, 5ª traste,
+    *Dedilhado: 1ª corda livre, 5ª traste, 4ª traste, 5ª traste,
      7ª traste, 5ª traste, 4ª traste, 5ª traste; a 4ª corda com o
      6ª traste três vezes a 1ª corda livre novamente.
-</div></body></html>
+

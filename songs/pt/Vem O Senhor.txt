@@ -1,12 +1,12 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFFFFF;"><div>
+
+
 VEM O SENHOR
 Salmo 93(92) - Apocalipse 1, 5-6
 Braçadeira 2ª Traste
 
-    Mi-                          La-    </font>|
+    Mi-                          La-    |
 A.  VEM O SENHOR VESTIDO DE MAJESTADE,  |
-                           Mi-          </font>| BIS
+                           Mi-          | BIS
     VESTIDO E CINGIDO DE PODER.         |
 
                                      La-
@@ -30,9 +30,9 @@ S.  Aquele, aquele que nos amou
                                     Mi-
     e fez de nós sacerdotes do seu reino.
 
-                          La-     </font>|
+                          La-     |
 A.  A ELE A GLÓRIA E O PODER      |
-                       Mi-        </font>| BIS
+                       Mi-        | BIS
     PELOS SÉCULOS DOS SÉCULOS.    |
 
     Mi-
@@ -52,4 +52,4 @@ A.  A ELE A GLÓRIA E O PODER ...
 
     Mi-
 A.  VEM O SENHOR ...
-</div></body></html>
+

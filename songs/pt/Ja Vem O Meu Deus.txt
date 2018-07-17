@@ -1,5 +1,5 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFFFFF;"><div>
+
+
 JÁ VEM O MEU DEUS
 Canto popular do Natal
 Braçadeira 3ª Traste
@@ -60,4 +60,4 @@ S.  Entrou na morte, entrou o meu Deus,
 
     Mi-
 A.  JÁ VEM O MEU DEUS, ...
-</div></body></html>
+

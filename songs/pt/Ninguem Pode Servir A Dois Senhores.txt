@@ -1,5 +1,5 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #66CCCC;"><div>
+
+
 NINGUÉM PODE SERVIR A DOIS SENHORES
 Mateus 6, 24-33
 
@@ -25,9 +25,9 @@ S.  Ninguém pode servir a dois senhores;
 
     Sol      Si-         
 A.  OLHAI AS AVES DO CEU:            |
-           Si7       Do7 Do          </font>|
+           Si7       Do7 Do          |
     NÃO SEMEIAM, NEM CEIFAM;         |  BIS
-                            Si7      </font>|
+                            Si7      |
     VOSSO PAI CELESTE AS ALIMENTA.   |
 
     Mi-              Re
@@ -43,9 +43,9 @@ S.  E além do mais, quem de vós
 
     Sol      Si-
 A.  OLHAI OS LÍRIOS DO CAMPO:        |
-              Si7        Do7 Do      </font>|
+              Si7        Do7 Do      |
     NÃO SE AFADIGAM, NEM FIAM,       |  BIS
-    Si7                              </font>|
+    Si7                              |
     SALOMÃO NÃO VESTIA COMO ELES.    |
 
     Sol                         Si-
@@ -74,4 +74,4 @@ A.  OLHAI OS LÍRIOS DO CAMPO: ...
     Sol       Si-
 A.  BUSCAI O REINO DE DEUS, ...
     
-</div></body></html>
+

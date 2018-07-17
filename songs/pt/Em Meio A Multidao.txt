@@ -1,13 +1,13 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFFFFF;"><div>
+
+
 EM MEIO A MULTIDÃO
 Lucas 8,42b-48
 
     La-                              
 S.  EM MEIO A MULTIDÃO,              |
-                           Sol       </font>|
+                           Sol       |
     EM MEIO A TODA AQUELA GENTE,     |  BIS A.
-    Mi                  Fa      Mi   </font>|
+    Mi                  Fa      Mi   |
     UMA MULHER, UMA MULHER O TOCOU.  |
 
     La-
@@ -26,9 +26,9 @@ S.  "Quem é que me tocou?
 
     La-
 S.  "QUE SOU UMA MULHER IMPURA,      |
-                          Sol        </font>|
+                          Sol        |
     QUE SOU UMA MULHER IMPURA,       |  BIS A.
-    Fa                  Mi           </font>|
+    Fa                  Mi           |
     QUE SOFRO FLUXO DE SANGUE."      |
 
     La-
@@ -63,4 +63,4 @@ S.  Se queres tocar a Cristo,
     La-
 A.  EM MEIO A MULTIDÃO ...
     
-</div></body></html>
+

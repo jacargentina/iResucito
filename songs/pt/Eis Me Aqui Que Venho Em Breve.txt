@@ -1,5 +1,5 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFFFFF;"><div>
+
+
 EIS-ME AQUI QUE VENHO EM BREVE
 Apocalipse 22, 12-16
 
@@ -37,4 +37,4 @@ S.  Eu sou a raiz da estirpe de Davi,
 
     La7        Re
 A.  BEM AVENTURADOS ...
-</div></body></html>
+

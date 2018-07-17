@@ -1,5 +1,5 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFFFFF;"><div>
+
+
 SALVE RAINHA DOS CÉUS
 Hino
 
@@ -32,4 +32,4 @@ S.  I ... I ... I ... (melisma) salve raiz, salve porta,
 
                          Mi
 A.  ALEGRA-TE, VIRGEM MARIA, ...
-</div></body></html>
+

@@ -1,5 +1,5 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #66CCCC;"><div>
+
+
 EIS O MEU SERVO
 Primero canto do Servo de Iahweh - Isaias 42
 
@@ -38,4 +38,4 @@ S.  E em seu nome, e em seu nome
       Fa        Mi             La
     porão as nações sua esperança.
     
-</div></body></html>
+

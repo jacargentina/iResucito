@@ -1,5 +1,5 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFFFFF;"><div>
+
+
 HINO A CRISTO LUZ
 Hino
 
@@ -34,4 +34,4 @@ S.  Nós te bendizemos ó tríplice luz de uma indivisa glória!
     Mi-
 A.  NÓS TE BENDIZEMOS NESTA HORA ...
     
-</div></body></html>
+

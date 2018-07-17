@@ -1,11 +1,11 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #66CCCC;"><div>
+
+
 O SEMEADOR
 Marcos 4, 3ss
 
     Re-                   Do
 S.  SAIU O SEMEADOR A SEMEAR               |
-           Re-                             </font>|  BIS A.
+           Re-                             |  BIS A.
     E UMA PARTE CAIU NO CAMINHO.           |
     Fa              Sol                    
 S.  Vieram as aves, a comeram,
@@ -16,7 +16,7 @@ A.  A COMERAM.
 
     Re-                  Do                
 S.  SAIU O SEMEADOR A SEMEAR               |
-           Re-                             </font>|  BIS A.
+           Re-                             |  BIS A.
     E UMA PARTE CAIU NAS PEDRAS.           |
     Fa                Sol            La
 S.  Saiu o sol, a queimou, não tinha terra.
@@ -25,7 +25,7 @@ A.  NÃO TINHA TERRA.
 
     Re-                  Do
 S.  SAIU O SEMEADOR A SEMEAR               |
-           Re-                             </font>|  BIS A.
+           Re-                             |  BIS A.
     E UMA PARTE CAIU ENTRE ESPINHOS.       |
     Fa                 Sol
 S.  Cresceu a semente, cresceram os espinhos,
@@ -36,7 +36,7 @@ A.  A SUFOCARAM.
 
     Re-                  Do
 S.  SAIU O SEMEADOR A SEMEAR               |
-           Re-                             </font>|  BIS A.
+           Re-                             |  BIS A.
     E UMA PARTE CAIU NA TERRA.             |
     Fa           Sol                        La
 S.  E deu fruto, alguns trinta, outros sessenta.
@@ -75,4 +75,4 @@ S.  Onde Jesus possa crescer.
            Re- La7       Re-
 A.  ONDE JESUS POSSA CRESCER.
     
-</div></body></html>
+

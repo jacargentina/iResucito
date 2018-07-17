@@ -1,5 +1,5 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFFFFF;"><div>
+
+
 MARIA DE JASNA GÖRA
 Hino à Virgem de Jasna Göra, Chestokowa, Polônia
 
@@ -42,5 +42,5 @@ S.  Mãe do céu:
 A.  MARIA, ...
 
                           ________________________________________
-    * </font>Pode-se substituir esta frase do canto pelo texto em latim: "MARIA, SANCTA MARIA".
-</div></body></html>
+    * Pode-se substituir esta frase do canto pelo texto em latim: "MARIA, SANCTA MARIA".
+

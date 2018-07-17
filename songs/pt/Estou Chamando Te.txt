@@ -1,5 +1,5 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFFFFF;"><div>
+
+
 ESTOU CHAMANDO-TE
 Salmo 141(140)
 
@@ -60,4 +60,4 @@ S.  A ti, Senhor, volto meus olhos,
 
     Re-
 A.  ESTOU CHAMANDO-TE ...
-</div></body></html> 
+ 

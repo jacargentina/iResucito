@@ -1,5 +1,5 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFCC99;"><div>
+
+
 PREGÃO PASCAL
 Pregão solene da Vigília Pascal
 Braçadeira 3ª Traste
@@ -19,9 +19,9 @@ P.  Exultem os coros dos anjos;
 S.  O esplendor do rei
                  Sol   
     destruiu as trevas,
-<font color="#ff0000">                 Fa    
+                 Fa    
     destruiu as trevas,
-<font color="#ff0000">                  Mi   
+                  Mi   
     as trevas do mundo.
 
                     La-           
@@ -195,4 +195,4 @@ A.  QUE É CRISTO TEU FILHO, RESSUSCITADO,
      La-   Sol   La-
 A.  AMÉM, AMÉM, AMÉM.
     
-</div></body></html>
+

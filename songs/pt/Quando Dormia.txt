@@ -1,5 +1,5 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #66CCCC;"><div>
+
+
 QUANDO DORMIA
 Cântico dos Cânticos 5, 2ss
 
@@ -32,11 +32,11 @@ S.  Quando dormia e meu coração velava,
 
     La-
 A.  EU VOS CONJURO,                |
-                    Sol            </font>|
+                    Sol            |
     FILHAS DE JERUSALÉM,           |
-                           Fa      </font>|  BIS A.
+                           Fa      |  BIS A.
     SE ENCONTRARDES O MEU AMADO,   |
-                            Mi     </font>|
+                            Mi     |
     DIZEI-LHE QUE MORRO DE AMOR.   |
 
     Do
@@ -75,4 +75,4 @@ S.  Ah, se tu fosses meu irmão!
     La-                             Sol
 A.  EU VOS CONJURO, FILHAS DE JERUSALÉM, ...
     
-</div></body></html>
+

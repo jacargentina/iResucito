@@ -1,18 +1,18 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #6DD175;"><div>
+
+
 ROUBASTE MEU CORAÇÃO
 Cântico dos Cânticos 4, 9-16.5, 1
 
     O ESPOSO
     Re-                 Sol-
 S.  ROUBASTE O MEU CORAÇÃO,     |
-                        Re-     </font>|
+                        Re-     |
     ROUBASTE O MEU CORAÇÃO,     |
-                   Sol-         </font>|
+                   Sol-         |
     MINHA IRMÃ, ESPOSA,         |  BIS A.
-        La                      </font>|
+        La                      |
     ROUBASTE,                   |
-                        Re-     </font>|
+                        Re-     |
     ROUBASTE O MEU CORAÇÃO.     |
 
     Re-                      Sol-
@@ -85,6 +85,6 @@ A.  AMIGOS, VINDE BEBEI,
     Re-                 Sol-
 A.  ROUBASTE O MEU CORAÇÃO, ...
     
-</div></body> </html>
+ 
  
 

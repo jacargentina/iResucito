@@ -1,5 +1,5 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFCC99;"><div>
+
+
 ORAÇÃO EUCARISTICA II
 Modelo I
 
@@ -56,11 +56,11 @@ P.  Na verdade, é justo e necessário,
 
     La-
 P.  MORRENDO,               |
-                    Sol     </font>|
+                    Sol     |
     DESTRUIU NOSSA MORTE,   |
-            Fa              </font>|  BIS A.
+            Fa              |  BIS A.
     RESSUSCITANDO,          |
-                     Mi     </font>|
+                     Mi     |
     RESTAUROU NOSSA VIDA.   |
 
 
@@ -249,5 +249,5 @@ A.  AMÉM, AMÉM, AMÉM.
       Sol          Do
       AMÉM, AMÉM, AMÉM.
 
-</div></body> </html>
+ 
  

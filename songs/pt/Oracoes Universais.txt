@@ -1,5 +1,5 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFCC99;"><div>
+
+
 ORAÇÕES UNIVERSAIS
 Melodia para utilizar nas Orações universais
 
@@ -64,6 +64,6 @@ A.  ESCUTA-NOS,  O  SENHOR!
 
     
     ___________________________________________
-    *</FONT> O texto em seguida se propõe como ajuda para
+    * O texto em seguida se propõe como ajuda para
     aprender a melodia, não para ser utilizada de forma continua.
-</div></body></html>
+

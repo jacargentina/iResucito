@@ -1,5 +1,5 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFFFFF;"><div>
+
+
 FOGE, Ó MEU AMADO
 Cântico dos Cânticos 8, 10-14
  
@@ -16,7 +16,7 @@ A.  FOGE, Ó MEU AMADO,
                 Mi
     COMO UMA GAZELA,
     Fa#-
-    COMO UM CERVOZINHO,*</font>
+    COMO UM CERVOZINHO,*
     Mi                 La
     PELOS MONTES PERFUMADOS.
 
@@ -33,5 +33,5 @@ S.  Eu sou para o meu amado,
 A.  FOGE, Ó MEU AMADO,...
 
     __________________________
-    *</font>Uma batida em Fa#-, uma batida livre e Mi
-</div></body></html>
+    *Uma batida em Fa#-, uma batida livre e Mi
+

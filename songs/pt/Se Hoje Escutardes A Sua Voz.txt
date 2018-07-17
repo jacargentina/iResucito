@@ -1,11 +1,11 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFFFFF;"><div>
+
+
 SE HOJE ESCUTARDES A SUA VOZ
 Salmo 95(94)
 
     Do                       Re-
 S.  SE HOJE ESCUTARDES A SUA VOZ    |
-               Sol7      Do         </font>|  BIS A.
+               Sol7      Do         |  BIS A.
     NÃO ENDUREÇAIS O CORAÇÃO.       |
     
 
@@ -69,4 +69,4 @@ S.  Oxalá, oxalá ouvísseis hoje a sua voz:
     Por isso não entrarão no meu descanso!"
                              Re-
 A.  SE HOJE ESCUTARDES A SUA VOZ
-</div></body></html>
+

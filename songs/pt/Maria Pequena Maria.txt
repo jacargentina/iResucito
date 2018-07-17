@@ -1,5 +1,5 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFFFFF;"><div>
+
+
 MARIA, PEQUENA MARIA
 Hino
 
@@ -58,4 +58,4 @@ S.  Maria, pequena Maria,
     Re                Fa#-
 A.  VENHA O SENHOR CONOSCO ...
     
-</div></body></html>
+

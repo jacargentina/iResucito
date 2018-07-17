@@ -1,10 +1,10 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFFFFF;"><div>
+
+
 Ó JESUS, MEU AMOR
 Hino
 
     La-            Fa
-S.  Ó Jesus,*</font> meu amor
+S.  Ó Jesus,* meu amor
     
     quanto me amaste,
                 Mi
@@ -74,5 +74,5 @@ S.  De mim, Senhor, tu recebeste o mal,
 A.  Ó JESUS, MEU AMOR ...
 
 ___________________________
-* Melisma</font>
-</div></body></html>
+* Melisma
+

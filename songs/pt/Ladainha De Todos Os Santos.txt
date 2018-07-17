@@ -1,5 +1,5 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFCC99;"><div>
+
+
 LADAINHA DE TODOS OS SANTOS
 Da Liturgia Batismal da Vigília Pascal
 
@@ -93,4 +93,4 @@ S.  Jesus, Filho do Deus vivo.               A.  OUVI-NOS, SENHOR!
 S.  Christe, audi nos.                       A.  CHRISTE, AUDI NOS!
     Re              Fa#-                         Re              Fa#-
 S.  Christe, exaudi nos.                     A.  CHRISTE, EXAUDI NOS!
-</div></body></html>
+

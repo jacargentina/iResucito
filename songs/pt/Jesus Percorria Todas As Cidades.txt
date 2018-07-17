@@ -1,5 +1,5 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #6DD175;"><div>
+
+
 JESUS PERCORRIA TODAS AS CIDADES
 Mateus 9, 35ss
 
@@ -14,9 +14,9 @@ Mateus 9, 35ss
 
      Mi-
   S. ESTAVAM CANSADOS,        |
-                 Fa           </font>| 
+                 Fa           | 
      ESTAVAM ABATIDOS         | BIS A.
-                          Mi  </font>| 
+                          Mi  | 
      COMO OVELHAS SEM PASTOR  |
 
      La-      Fa                    Mi7
@@ -88,4 +88,4 @@ S.A. Quem vos acolhe, ACOLHE A MIM
   A. QUEM A COLHE A MIM,
               Fa             Mi
      ACOLHE A DEUS, ACOLHE A DEUS".
-</div></body></html>
+

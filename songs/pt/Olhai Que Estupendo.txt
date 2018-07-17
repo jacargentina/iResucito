@@ -1,5 +1,5 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFFFFF;"><div>
+
+
 OLHAI QUE ESTUPENDO
 Salmo 133(132)
 Braçadeira 3ª Traste
@@ -64,4 +64,4 @@ A.  PORQUE ALI O SENHOR NOS TEM DADO
 
     Mi-
 A.  OLHAI QUE ESTUPENDO, ...
-</div></body></html>
+

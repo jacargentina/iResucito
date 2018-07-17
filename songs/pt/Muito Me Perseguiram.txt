@@ -1,5 +1,5 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFFFFF;"><div>
+
+
 MUITO ME PERSEGUIRAM 
 Salmo 129(128)
 
@@ -23,23 +23,23 @@ A.  MUITO ME PERSEGUIRAM
 
     La-
 S.  SOBRE AS MINHAS COSTAS      |
-              Mi                </font>|
+              Mi                |
     ARARAM ARADORES,            |
-                                </font>|  BIS A.
+                                |  BIS A.
     SOBRE AS MINHAS COSTAS      |
-                    La-         </font>|
+                    La-         |
     ALONGARAM SEUS SULCOS.      |
 
                          Mi
 S.  MAS O SENHOR, QUE É JUSTO,  |
-                                </font>|
+                                |
     CORTOU AS RÉDEAS            |  BIS A.
-            La-                 </font>|
+            La-                 |
     DOS MALVADOS.               |
 
     La-                        Mi
 S.  RETROCEDAM OS QUE ODEIAM SIÃO,    |
-                               La-    </font>|  BIS A.
+                               La-    |  BIS A.
     RETROCEDAM OS QUE ODEIAM SIÃO!    |
 
     La-
@@ -58,4 +58,4 @@ S.  Que sejam como a erva que
 
     La-                        Mi
 A.  RETROCEDAM OS QUE ODEIAM SIÃO, ...
-</div></body></html>
+

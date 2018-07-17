@@ -1,5 +1,5 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #6DD175;"><div>
+
+
 TU ÉS A MINHA ESPERANÇA, SENHOR
 Ode XXIX de Salomão
 
@@ -35,9 +35,9 @@ A.  TU ME TIRASTE DO PROFUNDO DO XEOL, ...
 
     Re-                          La7
 S.  TU ÉS A MINHA ESPERANÇA, SENHOR,   |
-      Sib7            La7              </font>|  BIS A.
+      Sib7            La7              |  BIS A.
     E NÃO SEREI CONFUNDIDO.            |
 
     Re-                            La7
 A.  TU ME TIRASTE DO PROFUNDO DO XEOL, ...
-</div></body></html>
+

@@ -1,13 +1,13 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFFFFF;"><div>
+
+
 QUERO CANTAR
 Salmo 57 (56)
 
     Re              Fa#-              
 S.  QUERO CANTAR, A TI QUERO CANTAR.  |
-        Sol                           </font>|
+        Sol                           |
     DESPERTA, DESPERTA GLÓRIA MINHA!  |  BIS A.
-        La            Re              </font>|
+        La            Re              |
     DESPERTA, HARPA E CÍTARA!         |
 
     Re                              Fa#-
@@ -60,4 +60,4 @@ S.  Dar-te-ei graças entre os povos, Senhor,
     pois teu amor foi grande para comigo,
     tua bondade mais alta que os céus.
 A.  QUERO CANTAR,...
-</div></body></html>
+

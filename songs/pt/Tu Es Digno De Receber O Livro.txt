@@ -1,5 +1,5 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #66CCCC;"><div>
+
+
 TU ÉS DIGNO DE RECEBER O LIVRO
 Apocalipse 5,9ss
 
@@ -56,4 +56,4 @@ S.  Tu és digno, cordeiro imolado,
 
     Fa         La-
 A.  E FIZESTE DELES, ...
-</div></body></html>
+

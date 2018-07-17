@@ -1,13 +1,13 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFFFFF;"><div>
+
+
 FILHAS DE JERUSALÉM
 Lucas 23, 28-46
 
     La-                     
 S.  FILHAS DE JERUSALÉM,    |
-            Fa              </font>|
+            Fa              |
     NÃO CHOREIS,            |  BIS A.
-                    La-     </font>|
+                    La-     |
     NÃO CHOREIS POR MIM.    |
 
     La-              Fa
@@ -48,4 +48,4 @@ S.  Pai, Pai, em tuas mãos
     La-
 A.  FILHAS DE JERUSALÉM, ...
     
-</div></body></html>
+

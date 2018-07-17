@@ -1,5 +1,5 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFFFFF;"><div>
+
+
 PARA TI MORADA SANTA
 Hino
 
@@ -35,4 +35,4 @@ S.  Somos teu povo santo que hoje caminha unido,
 
     La-             Mi
 A.  PARA TI MORADA SANTA, ...
-</div></body></html>
+

@@ -1,5 +1,5 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFFFFF;"><div>
+
+
 QUE ESTUPENDO, QUE ALEGRIA
 Salmo 133(132)
 
@@ -31,4 +31,4 @@ S.  Abençoa-nos o Senhor do alto, a vida nos dá eternamente,
 
     La-     Re-     La-     Mi
 A.  QUE ESTUPENDO, QUE ALEGRIA ...
-</div></body></html>
+

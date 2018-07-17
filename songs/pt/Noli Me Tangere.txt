@@ -1,5 +1,5 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #6DD175;"><div>
+
+
 NOLI ME TANGERE
 João 20, 15-17
 
@@ -39,23 +39,23 @@ S.  Noli me tangere! Não me toques,
     Sib                    Do
     pois ainda não subi ao Pai.
 
-    Fa-                     Do-   </font>|
+    Fa-                     Do-   |
 S.  VAI E ANUNCIA A MEUS IRMÃOS   |  BIS A.
 
-        Sol#                      </font>|
+        Sol#                      |
     QUE SUBO AO MEU PAI           |
-            Sol                   </font>|  BIS A.
+            Sol                   |  BIS A.
     E VOSSO PAI,                  |
 
-        Sol#         Sol          </font>|
+        Sol#         Sol          |
     MEU DEUS E VOSSO DEUS.        |  BIS A.
 
-        Fa-                       </font>|
+        Fa-                       |
     QUE SUBO AO MEU PAI           |
-            Do-                   </font>|  BIS A.
+            Do-                   |  BIS A.
     E VOSSO PAI,                  |
 
-        Fa-          Do-          </font>|
+        Fa-          Do-          |
     MEU DEUS E VOSSO DEUS.        |  BIS A.
 
         Sol#                    Sol
@@ -63,4 +63,4 @@ S.  Que subo ao meu Pai e vosso Pai,
         Sol#          Sol
     meu Deus e vosso Deus. (melisma)
     
-</div></body></html>
+

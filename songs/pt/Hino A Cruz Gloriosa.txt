@@ -1,5 +1,5 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #66CCCC;"><div>
+
+
 HINO À CRUZ GLORIOSA
 Da homilia "A Santa Páscoa" de um autor anônimo do século II
 
@@ -66,4 +66,4 @@ S.  No temor é a defesa,
 
     Mi              Sol#
 A.  A CRUZ GLORIOSA ...
-</div></body></html>
+

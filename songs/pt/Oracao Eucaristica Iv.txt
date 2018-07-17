@@ -1,5 +1,5 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFCC99;"><div>
+
+
 ORAÇÃO EUCARÍSTICA IV
 (1988)
 
@@ -127,9 +127,9 @@ P.  Nós proclamamos a vossa grandeza, Pai santo,
 
     Do
 P.  RESSUSCITANDO DOS MORTOS,  |
-                               </font>|
+                               |
     VENCEU A MORTE             |  BIS A.
-                 La-           </font>|
+                 La-           |
     E RENOVOU A VIDA.          |
 
     La-                                 Do
@@ -326,5 +326,5 @@ P.  Por Cristo, com Cristo, em Cristo,
 
                   Fa    Mi
 A.  AMÉM, AMÉM, AMÉM, AMÉM.
-</div></body> </html>
+ 
  

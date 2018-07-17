@@ -1,5 +1,5 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFFFFF;"><div>
+
+
 LOUVAI O SENHOR
 Salmo 117(116)
 
@@ -29,4 +29,4 @@ S.  Porque forte é seu Amor por nós,
 
     Sol
 A.  LOUVAI O SENHOR, ...
-</div></body></html>
+

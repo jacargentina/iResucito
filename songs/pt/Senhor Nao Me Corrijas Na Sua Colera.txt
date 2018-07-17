@@ -1,11 +1,11 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFFFFF;"><div>
+
+
 SENHOR, NÃO ME CORRIJAS NA SUA CÓLERA 
 Salmo 6
 
     Fa# 5/9dim         Sol          Fa#
 A.  SENHOR, NÃO ME CORRIJAS NA TUA CÓLERA,  |
-             Sol           Fa#              </font>|  BIS A.
+             Sol           Fa#              |  BIS A.
     NO TEU FUROR NÃO ME CASTIGUES.          |
 
     Si-                                 La
@@ -32,9 +32,9 @@ S.  Volta-te, Senhor, recobra a minha alma,
     cura-me tu, Senhor, por tua misericórdia.
             La
 A.  QUE NINGUÉM ENTRE OS MORTOS     |
-          Fa#             La        </font>|
+          Fa#             La        |
     TE RECORDA, NEM NOS INFERNOS    |  BIS A.
-                       Fa#          </font>|
+                       Fa#          |
     SE CANTA O TEU LOUVOR.          |
 
     Fa# 5/9dim         Sol
@@ -63,4 +63,4 @@ S.  E tu, Senhor, até quando?
       La               Fa#
 A.  E TU, SENHOR, ATÉ QUANDO?
     
-</div></body></html>
+

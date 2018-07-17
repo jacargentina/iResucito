@@ -1,5 +1,5 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #66CCCC;"><div>
+
+
 O MESMO DEUS
 2ª Coríntios 4, 6-12
 
@@ -19,7 +19,7 @@ A.  QUE ESTÁ NO ROSTO DE CRISTO.
 
     Fa#
 S.  MAS LEVAMOS ESTE TESOURO   |
-                               </font>|  BIS A.
+                               |  BIS A.
     EM VASOS DE BARRO.         |
 
     Si-
@@ -56,9 +56,9 @@ A.  LEVANDO SEMPRE...
 
     Fa#
 S.  ENQUANTO NÓS MORREMOS   |
-                            </font>|  BIS A.
+                            |  BIS A.
     O MUNDO RECEBE A VIDA.  |
 
              Si-
 A.  LEVANDO SEMPRE...
-</div></body></html>
+

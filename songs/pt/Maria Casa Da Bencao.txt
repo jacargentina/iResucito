@@ -1,13 +1,13 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFFFFF;"><div>
+
+
 MARIA, CASA DA BÊNÇÃO
 As Bodas de Caná - João 2, 1-11
 
-    Re-     Sol-    Re-           </font>|
+    Re-     Sol-    Re-           |
 S.  MARIA, CASA DA BÊNÇAO,        |
-          Sol-         Re-        </font>|
+          Sol-         Re-        |
     SALVAÇÃO DO NOSSO SÉCULO,     |  BIS A.
-       La7                        </font>|
+       La7                        |
     MORADA TERRESTRE DO HUMILDE.  |
 
     Sol-                     La7
@@ -44,4 +44,4 @@ S.  Aleluia, Alelu, Aleluia.
          Re-    Do       Re-
 A.  ALELUIA, ALELU, ALELUIA.
     
-</div></body></html>
+

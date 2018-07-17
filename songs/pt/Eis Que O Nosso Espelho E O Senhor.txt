@@ -1,5 +1,5 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #66CCCC;"><div>
+
+
 EIS QUE O NOSSO ESPELHO É O SENHOR
 Ode XIII de Salomão
 
@@ -12,11 +12,11 @@ S.  Eis que o nosso espelho é o Senhor,
 
     Re-
 A.  ALELUIA, ALELUIA, ALELUIA.    |
-    Sol-                          </font>|
-S.  Aleluia, alelula, aleluia.    </font>|
-    La                            </font>|  BIS
+    Sol-                          |
+S.  Aleluia, alelula, aleluia.    |
+    La                            |  BIS
 A.  DAI GLÓRIA AO SEU ESPÍRITO,   |
-                                  </font>|
+                                  |
     DAI GLÓRIA AO SEU ESPÍRITO.   |
 
     Re-
@@ -28,13 +28,13 @@ S.  E limpai a imundície do vosso rosto,
 
     Re-
 A.  ALELUIA, ALELUIA, ALELUIA.    |
-    Sol-                          </font>|
-S.  Aleluia, aleiuia, aleluia.    </font>|
-    La                            </font>|  BIS
+    Sol-                          |
+S.  Aleluia, aleiuia, aleluia.    |
+    La                            |  BIS
 A.  DAI GLÓRIA AO SEU ESPÍRITO,   |
-                                  </font>|
+                                  |
     DAI GLÓRIA AO SEU ESPÍRITO,   |
 
                          Re-
 A.  DAI GLÓRIA AO SEU ESPÍRITO.
-</div></body></html>
+

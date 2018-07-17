@@ -1,5 +1,5 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #6DD175;"><div>
+
+
 HINO À CARIDADE
 1ª Coríntios 13, 1-13
 
@@ -55,11 +55,11 @@ A.  PORQUE O AMOR, O AMOR, O AMOR
 
               Do
     TUDO ACREDITA,                   |
-            La-                      </font>|
+            La-                      |
     TUDO DESCULPA,                   |
-            Do                       </font>|  BIS 
+            Do                       |  BIS 
     TUDO ESPERA,                     |
-                                     </font>|
+                                     |
     SUPORTA TUDO, SUPORTA TUDO.      |
     
 
@@ -69,4 +69,4 @@ A.  PORQUE O AMOR, O AMOR, O AMOR
     PORQUE O AMOR
     
     É DEUS, É DEUS, É DEUS.
-</div></body></html>
+

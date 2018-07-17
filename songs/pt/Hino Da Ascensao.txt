@@ -1,15 +1,15 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFFFFF;"><div>
+
+
 HINO DA ASCENSÃO
 Hino das Laudes do tempo Pascal, da Ascensão até Pentecostes
 
     La-            Sol
 S.  O BOM PASTOR SUBIU        |
-                  La-         </font>|
+                  La-         |
     Á DIREITA DO PAI.         |
-                     Sol      </font>|  BIS A.
+                     Sol      |  BIS A.
     VELA O PEQUENO REBANHO    |
-                    La-       </font>|
+                    La-       |
     COM MARIA NO CENÁCULO.    |
 
     La-             Sol
@@ -48,4 +48,4 @@ S.  Ó luz de sabedoria,
     La-
 A.  O BOM PASTOR ...
     
-</div></body></html>
+

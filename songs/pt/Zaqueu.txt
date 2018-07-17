@@ -1,5 +1,5 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFFFFF;"><div>
+
+
 ZAQUEU
 Lucas 19,1-10
 
@@ -70,9 +70,9 @@ S.  "Por que este também é filho de Abraão,
     La-               La-
 A.  TENDO ENTRADO ... HOJE, A SALVAÇÃO ...
 
-    Re-       Mi      </font>|
+    Re-       Mi      |
 S.  ZAQUEU ÉS TU.     | BIS A.
-    Re-    Mi         </font>|
+    Re-    Mi         |
 S.  DESCE LOGO.       | BIS A.
 
     Fa                              Mi
@@ -82,4 +82,4 @@ A.  CONVÉM QUE HOJE EU ENTRE NA TUA CASA
 
     La-               La-
 A.  TENDO ENTRADO ... HOJE, A SALVAÇÃO ...
-</div></body></html>
+

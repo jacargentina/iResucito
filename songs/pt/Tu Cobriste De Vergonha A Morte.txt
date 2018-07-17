@@ -1,20 +1,20 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #66CCCC;"><div>
+
+
 TU COBRISTE DE VERGONHA A MORTE
 Homilía de Melitão de Sares sobre a Páscoa - Ofício das leituras da quarta feira Santa
 
-    Re-                        La7           </font>|
-S.  Tu cobriste de vergonha a morte,         </font>|
-                            Re-              </font>|
-    tu encheste de luto o inferno.           </font>|
-                       La7                   </font>|
-    Golpeaste a iniqüidade,                  </font>|
-                                   Re-       </font>|  BIS A.
-    arrancaste à injustiça os seus filhos,   </font>|
-            Sib7      La7                    </font>|
-    como Moisés ao Faraó,                    </font>|
-            Sib7      La7                    </font>|
-    como Moisés ao Faraó.                    </font>|
+    Re-                        La7           |
+S.  Tu cobriste de vergonha a morte,         |
+                            Re-              |
+    tu encheste de luto o inferno.           |
+                       La7                   |
+    Golpeaste a iniqüidade,                  |
+                                   Re-       |  BIS A.
+    arrancaste à injustiça os seus filhos,   |
+            Sib7      La7                    |
+    como Moisés ao Faraó,                    |
+            Sib7      La7                    |
+    como Moisés ao Faraó.                    |
 
     Re-
 S.  Tu nos passaste
@@ -81,4 +81,4 @@ S.  Tu foste tirado do rebanho,
     tu és o cordeiro nascido de Maria.
     Re-                     La7
 A.  MARIA, CORDEIRA SEM MANCHA, ...
-</div></body></html>
+

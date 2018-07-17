@@ -1,5 +1,5 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFFFFF;"><div>
+
+
 POR QUE ESTA NOITE É DIFERENTE
 Canto das crianças para a Noite de Páscoa - da Hagadá da Páscoa Hebráica
 
@@ -94,5 +94,5 @@ A.  PARA ESTAR LEVANTADOS,
     PARA TER JEJUADO,
            Mi            La-
     PARA ESTAR TODOS ESPERANDO.
-</div></body> </html>
+ 
  

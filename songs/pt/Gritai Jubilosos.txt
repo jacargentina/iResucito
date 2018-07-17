@@ -1,13 +1,13 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFFFFF;"><div>
+
+
 GRITAI JUBILOSOS
 Isaías 12
 
     La-
 A.  GRITAI JUBILOSOS:              |
-                             Sol   </font>|
+                             Sol   |
     "QUE GRANDE É NO MEIO DE TI    |  BIS
-    Fa             Mi              </font>|
+    Fa             Mi              |
     O SANTO DE ISRAEL".            |
 
     Mi
@@ -47,4 +47,4 @@ S.  Cantai ao Senhor que fez maravilhas,
 
     La-
 A.  GRITAI JUBILOSOS: ...
-</div></body></html>
+

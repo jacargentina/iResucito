@@ -1,14 +1,14 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFFFFF;"><div>
+
+
 VIRGEM DA MARAVILHA
-Hino*</font>
+Hino*
 Braçadeira 3ª Traste
 
     Si-     Mi-          Si-
-S.  MARIA, FILHA DO TEU FILHO,**</font>  |
-    Mi-                 Si-       </font>|
+S.  MARIA, FILHA DO TEU FILHO,**  |
+    Mi-                 Si-       |
     MÃE DE JESUS E MÃE NOSSA.     |  BIS A.
-    Sol            Fa#            </font>|
+    Sol            Fa#            |
     VIRGEM DA MARAVILHA!          |
 
     Si-    Mi-      Si-
@@ -46,6 +46,6 @@ S.  Maria, sendo a pequena,
 A.  MARIA, FILHA DO TEU FILHO, ...
     
     _________________________________________
-    *</font>  Inspirado no hino: "Virgem Mãe, Filha do teu Filho" de Dante, Divina Comédia, Paraíso, canto XXXIII
-    **</font>  A assembléia pode se dividir para fazer a segunda voz em um tom mais alto.
-</div></body></html>
+    *  Inspirado no hino: "Virgem Mãe, Filha do teu Filho" de Dante, Divina Comédia, Paraíso, canto XXXIII
+    **  A assembléia pode se dividir para fazer a segunda voz em um tom mais alto.
+

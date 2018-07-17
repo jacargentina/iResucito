@@ -1,15 +1,15 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFFFFF;"><div>
+
+
 SHLOM-LEJ MARIAM
 Ave Maria em Aramaico Antigo
 
     Mi-   Si7   Mi-
 A.  SHLOM-LEJ MARIAM,    |
-            Si7  Mi-     </font>|
+            Si7  Mi-     |
     MALIATH TAI BUTHA.   |
-       Do         Si7    </font>|  BIS A.
+       Do         Si7    |  BIS A.
     MARAN, MARAN AMEJ,   |
-       Do         Si7    </font>|
+       Do         Si7    |
     MARAN, MARAN AMEJ.   |
 
     Mi-
@@ -23,11 +23,11 @@ S.  Ave Maria, cheia de graça.
 
     Mi-
 A.  SANTA, SANTA MARIA,               |
-                                      </font>|
+                                      |
     MÃE, MÃE DE DEUS,                 |
-       Do             Si7             </font>|  BIS A.
+       Do             Si7             |  BIS A.
     ROGAI, ROGAI POR NÓS              |
-         Do                   Si7     </font>|
+         Do                   Si7     |
     QUE SOMOS, QUE SOMOS PECADORES.   |
 
     La-            Si7
@@ -55,4 +55,4 @@ S.  Maria ajudai-nos.
     Mi-
 A.  SHLOM-LEJ MARIAM, ...
     
-</div></body></html>
+

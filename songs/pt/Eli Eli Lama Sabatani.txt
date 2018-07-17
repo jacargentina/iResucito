@@ -1,5 +1,5 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFFFFF;"><div>
+
+
 ELÍ, ELÍ, LAMÁ SABATANI
 Salmo 22(21)
 
@@ -102,4 +102,4 @@ S.  Cães numerosos me rodeiam,
     Seu coração, seu coração, viverá para sempre!
 
 A.  ELI, ELI, LAMÁ SABACTANI? ...    
-</div></body></html>
+

@@ -1,13 +1,13 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFFFFF;"><div>
+
+
 STABAT MATER DOLOROSA
 Sequência do século XIII
 
     Re-5
 A.  STABAT MATER DOLOROSA      |
-    Do7               Sib7     </font>|
+    Do7               Sib7     |
     IUXTA CRUCEM LACRIMOSA     |  BIS A.
-                    La         </font>|
+                    La         |
     DUM PENDEBAT FILIUS.       |
 
     Re-
@@ -60,4 +60,4 @@ S.  Ela vê seu Filho amado
 
       Re-  Sib7   La7
 A.  AMÉM, AMÉM, AMÉM.
-</div></body></html>
+

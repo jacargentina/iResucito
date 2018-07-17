@@ -1,13 +1,13 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFFFFF;"><div>
+
+
 Ó DEUS, TU ÉS MEU DEUS
 Salmo 63(62)
 
     La-                Re-
 S.  Ó DEUS, TU ÉS MEU DEUS,        |
-                           La-     </font>|
+                           La-     |
     EU TE BUSCO DESDE A AURORA,    |  BIS A.
-    Fa          Mi         La-     </font>|
+    Fa          Mi         La-     |
     TEM SEDE DE TI A MINHA ALMA.   |
 
     Fa          Mi         La-
@@ -57,5 +57,5 @@ S.  Saciada de ti está a minha alma;
 
     La-                Re-
 A.  Ó DEUS, TU ÉS MEU DEUS, ...
-</div></body> </html>
+ 
  

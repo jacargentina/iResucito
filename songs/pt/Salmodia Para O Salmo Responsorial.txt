@@ -1,13 +1,13 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFCC99;"><div>
+
+
 SALMODIA PARA O SALMO RESPONSORIAL
 XXII Domingo do Tempo Comum - Ano A
 
     Mi-                     La-
 S.  A MINH'ALMA TEM SEDE DE VÓS   |
-                   Si7            </font>|
+                   Si7            |
     COMO A TERRA SEDENTA,         |  BIS A.
-    Do    Si7                     </font>|
+    Do    Si7                     |
     Ó MEU DEUS!                   |
 
     La-                       Si7
@@ -46,4 +46,4 @@ S.  Para mim fostes sempre um socorro;
     Mi-                     La-
 A.  A MINH'ALMA TEM SEDE DE VÓS ...
     
-</div></body></html>
+

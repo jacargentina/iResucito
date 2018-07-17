@@ -1,16 +1,16 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFFFFF;"><div>
+
+
 ESPEREI, ESPEREI NO SENHOR
 Salmo 40(39)
 Braçadeira 3ª Traste
 
     La-                     Mi-
 S.  ESPEREI, ESPEREI NO SENHOR    |
-    La-                     Mi-   </font>| 
+    La-                     Mi-   | 
     E ELE PARA MIM SE INCLINOU,   |
-      Fa        Mi7               </font>|  BIS
+      Fa        Mi7               |  BIS
     OUVIU MEU GRITO,              |
-      Fa                  Mi      </font>| 
+      Fa                  Mi      | 
     TIROU-ME DA FOSSA DA MORTE.   | 
 
     La-                      Mi-
@@ -70,4 +70,4 @@ S.  No livro está escrito de mim:
     tua palavra nas minhas entranhas!
     La-
 A.  ESPEREI, ...
-</div></body></html>
+

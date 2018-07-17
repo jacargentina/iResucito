@@ -1,5 +1,5 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFFFFF;"><div>
+
+
 LOUVAI O SENHOR NOS CÉUS
 Salmo 148
 
@@ -59,4 +59,4 @@ S.A.  E vós, céus dos céus, LOUVAI-O!
       ele exalta o seu povo em poderio. LOUVAI-O!
       Ele é o louvor de todos os seus fiéis, LOUVAI-O!
       de Israel, o seu povo eleito. LOUVAI-O!
-</div></body></html>
+

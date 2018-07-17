@@ -1,5 +1,5 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFFFFF;"><div>
+
+
 QUEM É ESTA QUE SOBE DO DESERTO
 Cântico dos Cânticos 8, 5-7
 Braçadeira 3ª Traste
@@ -42,4 +42,4 @@ S.  Leva-me, como um selo no teu coração,
 
     La-             Re-       La-
 A.  QUEM É ESTA QUE SOBE DO DESERTO, ...
-</div></body></html>
+

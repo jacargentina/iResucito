@@ -1,5 +1,5 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #6DD175;"><div>
+
+
 SERMÃO DA MONTANHA
 Lucas 6,20-38
 Braçadeira 3ª Traste
@@ -83,5 +83,5 @@ S.A.  NÃO CONDENEIS.
 S.A.  PERDOAI,
            Do#7    Fa#
 S.A.  E SEREIS PERDOADOS.
-</div></body> </html>
+ 
  

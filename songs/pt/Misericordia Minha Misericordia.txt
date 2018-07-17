@@ -1,5 +1,5 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFFFFF;"><div>
+
+
 MISERICÓRDIA MINHA, MISERICÓRDIA
 Salmo 51(50) "Miserere"
 
@@ -68,4 +68,4 @@ A.  DAI-ME DE NOVO UM ESPÍRITO DECIDIDO.
 
     Re-                  Do    Re-
 A.  MISERICÓRDIA MINHA, MISERICÓRDIA ...
-</div></body></html>
+

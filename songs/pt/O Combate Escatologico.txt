@@ -1,5 +1,5 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFFFFF;"><div>
+
+
 O COMBATE ESCATOLÓGICO
 Apocalipse 19, 11-20
 
@@ -21,13 +21,13 @@ S.  Vejo o céu aberto,
 
     Do
 S.  Qual é o seu nome?   |
-                         </font>|
+                         |
     Qual é o seu nome?   |
-               Mi        </font>|
+               Mi        |
 A.  O SEU NOME É,        |  BIS
-                         </font>|
+                         |
     O SEU NOME É         |
-                La-      </font>|
+                La-      |
     PALAVRA DE DEUS.     |
 
     Mi
@@ -68,13 +68,13 @@ A.  ALELUIA, ALELUIA,
 
     Do
 S.  Qual é o seu nome?   |
-                         </font>|
+                         |
     Qual é o seu nome?   |
-               Mi        </font>|
+               Mi        |
 A.  O SEU NOME É,        |  BIS
-                         </font>|
+                         |
     O SEU NOME É         |
-                La-      </font>|
+                La-      |
     PALAVRA DE DEUS.     |
     
-</div></body></html>
+

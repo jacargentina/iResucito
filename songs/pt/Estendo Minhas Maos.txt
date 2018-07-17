@@ -1,15 +1,15 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #6DD175;"><div>
+
+
 ESTENDO MINHAS MÃOS
 Ode XXVII de Salomão
 
     Re    Si-       Sol
 S.  ESTENDO MINHAS MÃOS,     |
-       Mi           La       </font>|
+       Mi           La       |
     ESTENDO MINHAS MÃOS      |
-        Sol        Re        </font>|  BIS
+        Sol        Re        |  BIS
     E GRITO AO SENHOR,       |
-        La         Re        </font>|
+        La         Re        |
     E GRITO AO SENHOR.       |   
 
     Fa#             Sol       Fa#
@@ -33,4 +33,4 @@ S.  Porque o estender minhas mãos
 
     Re    Si-       Sol
 A.  ESTENDO MINHAS MÃOS, ...
-</div></body></html>
+

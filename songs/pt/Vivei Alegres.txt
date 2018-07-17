@@ -1,5 +1,5 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFFFFF;"><div>
+
+
 VIVEI ALEGRES
 Filipenses 4, 4ss
 Braçadeira 3ª Traste
@@ -30,4 +30,4 @@ S.  Coragem, não temais,
 
     La-
 A.  VIVEI ALEGRES,
-</div></body></html>
+

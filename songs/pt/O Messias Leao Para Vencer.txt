@@ -1,11 +1,11 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFFFFF;"><div>
+
+
 O MESSIAS LEÃO PARA VENCER
 (inspirado num texto de S. Vitorino de Pettau +304)
 
     La-                   Mi
 S.  O MESSIAS, LEÃO PARA VENCER     |
-                       La-          </font>|  BIS A.
+                       La-          |  BIS A.
     FEZ-SE CORDEIRO PARA SOFRER.    |
 
      Do                   Mi
@@ -31,4 +31,4 @@ S.  E desceu aos infernos,
 
     La-                   Mi
 A.  O MESSIAS, LEÃO PARA VENCER...
-</div></body></html>
+

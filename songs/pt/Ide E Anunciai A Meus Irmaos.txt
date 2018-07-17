@@ -1,11 +1,11 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFFFFF;"><div>
+
+
 IDE E ANUNCIAI A MEUS IRMÃOS
 Mateus 28,7-10.16-20
 
     La-
 A.  IDE E ANUNCIAI A MEUS IRMÃOS,  |
-             Sol          La-      </font>|  BIS
+             Sol          La-      |  BIS
     QUE SE DIRIJAM À GALILÉIA;     |
          Mi
 S.  que ali me verão,
@@ -69,4 +69,4 @@ A.  ATÉ O FIM DO MUNDO.
     La-
 A.  IDE E ANUNCIAI A MEUS IRMÃOS, ...
     
-</div></body></html>
+

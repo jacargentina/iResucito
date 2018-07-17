@@ -1,5 +1,5 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFFFFF;"><div>
+
+
 HINO DO ADVENTO
 Hino
 
@@ -38,4 +38,4 @@ A.  POR ISSO, EU LHE CANTO ESTA BALADA
     AO PAI, AO FILHO E AO ESPÍRITO.
                       Re-
     QUE ELES VIVAM, AMÉM!
-</div></body></html>
+

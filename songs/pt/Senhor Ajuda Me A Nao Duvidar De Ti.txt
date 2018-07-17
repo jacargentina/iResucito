@@ -1,5 +1,5 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFFFFF;"><div>
+
+
 SENHOR, AJUDA-ME A NÃO DUVIDAR DE TI
 São João da Cruz
 
@@ -56,4 +56,4 @@ A.  SENHOR, AJUDA-ME, SENHOR, ...
 A.  E NESTA CHAMA DE TEU AMOR ...
              Sol                     Fa#
     ... COMO ÁGUA QUE INUNDA TEU JARDIM.
-</div></body></html>
+

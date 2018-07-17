@@ -1,11 +1,11 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" href="file:///android_asset/layout/styles.css" /></head>
-<body class="html_canto" style="background-color: #FFFFFF;"><div>
+
+
 SE O SENHOR NÃO CONSTRÓI A CASA
 Salmo 127(126)
 
     Re                    Si-   Sol
 S.  SE O SENHOR NÃO CONSTRÓI A CASA,    |
-       La                       Re      </font>|  BIS A.
+       La                       Re      |  BIS A.
     EM VÃO TRABALHAM OS CONSTRUTORES.   |
 
     Si-                          Fa#
@@ -47,4 +47,4 @@ S.  Feliz o homem que tem cheia a sua aljava;
     Re
 A.  SE O SENHOR ...
     
-</div></body></html>
+
