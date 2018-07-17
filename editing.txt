@@ -1,0 +1,7 @@
+Edit many txt files
+-------------------
+
+# Convertir \r\n to \n (for sed to work fine)
+dos2unix *
+# Remove leading blank lines
+find . -type f -exec sed -i '/./,$!d' {} \;
