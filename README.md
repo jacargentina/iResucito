@@ -21,11 +21,11 @@ Me puedes contactar a través del correo javier.alejandro.castro@gmail.com, y ta
 ### Desarrollo
 En general, seguimos el flujo de trabajo "fork-y-pull" de Git
 
-- Fork del repositorio en GitHub
-- Clone del proyecto en tu propia máquina
-- Commit de cambios en su propia rama
-- Push del trabajo de vuelta al fork
-- Enviar Pull Request para que podamos revisar los cambios
+- **Fork** del repositorio en GitHub
+- **Clone** del proyecto en tu propia máquina
+- **Commit** de cambios en su propia rama
+- **Push** del trabajo de vuelta al fork
+- **Enviar Pull Request** para que podamos revisar los cambios
 
 NOTA: ¡asegúrate de hacer merge de los últimos cambios de "upstream" antes de enviar un Pull Request!
 
@@ -39,7 +39,7 @@ Los cantos se organizan dentro de la carpeta `/songs`, con una subcarpeta por ca
 
 Los cantos estan en archivos de texto plano, con extensión `.txt`. El nombre del archivo debe tener el formato:
 
-  [nombre del canto] - [fuente].txt
+         `[nombre del canto] - [fuente].txt`
 
   - **nombre del canto** Debe contener solo el titulo del canto, en el idioma apropiado
   - **fuente** Es la cita del origen del canto, tal cual se encuentra en el Resucito oficial del camino
@@ -64,7 +64,9 @@ Para agregar un canto titulado `new song - source.txt` en un determinado lenguaj
 - Crear el archivo `.txt` con el contenido del canto
 - Guardar archivo dentro de `/songs/en/New song - Source.txt`
 - Editar el archivo `/songs/index.json`
-    - Si el canto es NUEVO (no existen otras traducciones), agregar al final una nueva clave, tomando como base el formato:
+
+- Si el canto es NUEVO (no existen otras traducciones), agregar al final una nueva clave, tomando como base el formato:
+
 ```
 "[Ultima clave + 1]": {
   "etapa": [Precatecumenado|Catecumenado|Eleccion|Liturgia],
@@ -82,7 +84,6 @@ Para agregar un canto titulado `new song - source.txt` en un determinado lenguaj
    "en": "New song - Source"
   }
 ```
-
 **Nota**: Cualquier clave booleana no agregada se considera `false` y no deben agregarse por simplicidad.
 
-    - Si el canto ya existe en otro lenguaje, solo debe buscarse el mismo y agregarse dentro de `files` la clave apropiada a la nueva traducción
+- Si el canto ya existe en otro lenguaje, solo debe buscarse el mismo y agregarse dentro de `files` la clave apropiada a la nueva traducción
