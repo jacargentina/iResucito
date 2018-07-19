@@ -1,6 +1,7 @@
 {
   "ui": {
     "default": "Default",
+    "collaborators": "Collaborators",
     "share": "Share",
     "back": "Back",
     "done": "Done",

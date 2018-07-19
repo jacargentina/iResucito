@@ -46,10 +46,16 @@ class AcercaDe extends React.Component<any> {
             {this.props.appName}
           </H1>
           <Text style={{ textAlign: 'center', fontSize: 12 }}>
-            {I18n.t('ui.version')}: {this.props.version}
-            {'\n'}
-            <Icon name="contact" style={{ fontSize: 18 }} active /> Javier
-            Castro, 2017-2018
+            <Text style={{ fontWeight: 'bold' }}>
+              {I18n.t('ui.version')}: {this.props.version}
+            </Text>
+            {'\n'} Javier Castro, 2017-2018
+          </Text>
+          <Text style={{ textAlign: 'center', fontSize: 12 }}>
+            <Text style={{ fontWeight: 'bold' }}>
+              {I18n.t('ui.collaborators')}
+            </Text>
+            {'\n'} Matheus Fragoso (pt)
           </Text>
           <View
             style={{
@@ -74,7 +80,7 @@ class AcercaDe extends React.Component<any> {
             {I18n.t('ui.donate message')}
           </Text>
           <View>
-            <Button iconLeft success onPress={() => this.props.makeDonation()}>
+            <Button iconLeft onPress={() => this.props.makeDonation()}>
               <Icon name="logo-usd" />
               <Text>{I18n.t('ui.donate button')}</Text>
             </Button>

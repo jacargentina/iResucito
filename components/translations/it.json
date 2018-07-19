@@ -1,6 +1,7 @@
 {
   "ui": {
     "default": "Predefinito",
+    "collaborators": "Collaboratori",
     "share": "Inviare",
     "back": "Ritorno",
     "done": "Completato",

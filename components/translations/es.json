@@ -1,6 +1,7 @@
 {
   "ui": {
     "default": "Predeterminado",
+    "collaborators": "Colaboradores",
     "share": "Compartir",
     "back": "Atrás",
     "done": "Listo",
