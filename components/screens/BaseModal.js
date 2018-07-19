@@ -15,7 +15,7 @@ const BaseModal = (props: any) => {
       name="close"
       style={{
         width: 32,
-        fontSize: 40,
+        fontSize: 30,
         textAlign: 'center',
         color: commonTheme.brandPrimary
       }}
