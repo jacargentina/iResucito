@@ -161,13 +161,12 @@ export const stylesObj = {
   },
   lineaTituloNotaEspecial: {
     fontFamily: mono,
-    color: '#ff0000',
-    fontSize: fontSizeTitulo - 2
+    color: '#ff0000'
   },
   lineaNotaEspecial: {
     fontFamily: mono,
     fontSize: fontSizeNotas,
-    color: '#222222'
+    color: '#444444'
   },
   lineaNotasConMargen: {
     fontFamily: mono,
@@ -287,7 +286,7 @@ export const preprocesarLinea = (text: string): SongLine => {
     // Titulo especial
     var it: SongLine = {
       canto: false,
-      texto: text.replace(/\*/g, ''),
+      texto: text.replace(/\*/g, '').trim(),
       style: styles.lineaTituloNotaEspecial,
       prefijo: '',
       prefijoStyle: null,
@@ -296,7 +295,7 @@ export const preprocesarLinea = (text: string): SongLine => {
       canto: false,
       cantoConIndicador: true,
       notas: false,
-      inicioParrafo: false,
+      inicioParrafo: true,
       notaEspecial: false,
       tituloEspecial: true,
       textoEspecial: false
@@ -306,7 +305,7 @@ export const preprocesarLinea = (text: string): SongLine => {
     // Texto especial
     var it: SongLine = {
       canto: false,
-      texto: text.replace('-', ''),
+      texto: text.replace('-', '').trim(),
       style: styles.lineaNotaEspecial,
       prefijo: '',
       prefijoStyle: null,

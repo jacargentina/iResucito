@@ -494,7 +494,7 @@ export const generatePDF = (canto: Song, lines: Array<SongLine>) => {
           });
           y -= fuenteSpacing;
           var yStart = y;
-          lines.forEach((it, index) => {
+          lines.forEach((it: SongLine, index) => {
             // Mantener los bloques siempre juntos
             // Los bloques se indican con inicioParrafo == true
             // Solo si estamos en la primer columna, calculamos si puede
@@ -536,6 +536,9 @@ export const generatePDF = (canto: Song, lines: Array<SongLine>) => {
             if (it.inicioParrafo) {
               y -= parrafoSpacing;
             }
+            if (it.tituloEspecial) {
+             y -= parrafoSpacing * 2;
+            }
             if (it.notas === true) {
               page1.drawText(it.texto, {
                 x: x + indicadorSpacing,
@@ -555,21 +558,38 @@ export const generatePDF = (canto: Song, lines: Array<SongLine>) => {
               });
               y -= cantoSpacing;
             } else if (it.cantoConIndicador === true) {
-              page1
-                .drawText(it.prefijo, {
-                  x: x,
+              page1.drawText(it.prefijo, {
+                x: x,
+                y: y,
+                color: stylesObj.prefijo.color,
+                fontSize: cantoFontSize,
+                fontName: fontName
+              });
+              if (it.tituloEspecial === true) {
+                page1.drawText(it.texto, {
+                  x: x + indicadorSpacing,
                   y: y,
-                  color: stylesObj.prefijo.color,
+                  color: stylesObj.lineaTituloNotaEspecial.color,
                   fontSize: cantoFontSize,
                   fontName: fontName
-                })
-                .drawText(it.texto, {
+                });
+              } else if (it.textoEspecial === true) {
+                page1.drawText(it.texto, {
+                  x: x + indicadorSpacing,
+                  y: y,
+                  color: stylesObj.lineaNotaEspecial.color,
+                  fontSize: cantoFontSize - 3,
+                  fontName: fontName
+                });
+              } else {
+                page1.drawText(it.texto, {
                   x: x + indicadorSpacing,
                   y: y,
                   color: stylesObj.lineaNormal.color,
                   fontSize: cantoFontSize,
                   fontName: fontName
                 });
+              }
               y -= cantoSpacing;
             }
           });
