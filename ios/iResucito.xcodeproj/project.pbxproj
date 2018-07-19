@@ -380,16 +380,16 @@
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RNPdfLib;
 		};
-		888764912100EE4F00C77E36 /* PBXContainerItemProxy */ = {
+		886C5B602101107600F1B950 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 273A693E4F2D4110BEE6E54A /* RNPrint.xcodeproj */;
+			containerPortal = 886C5B5B2101107600F1B950 /* RNPrint.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 1132585C1B99F348005E19FE;
 			remoteInfo = RNPrint;
 		};
-		888764932100EE4F00C77E36 /* PBXContainerItemProxy */ = {
+		886C5B622101107600F1B950 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 273A693E4F2D4110BEE6E54A /* RNPrint.xcodeproj */;
+			containerPortal = 886C5B5B2101107600F1B950 /* RNPrint.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 113258671B99F348005E19FE;
 			remoteInfo = RNPrintTests;
@@ -478,7 +478,6 @@
 		1636CA483BA84A5FAA98641C /* libKCKeepAwake.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libKCKeepAwake.a; sourceTree = "<group>"; };
 		1B2CF75DD2D14CF6BC9CE592 /* RCTContacts.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTContacts.xcodeproj; path = "../node_modules/react-native-contacts/ios/RCTContacts.xcodeproj"; sourceTree = "<group>"; };
 		210569E15271402A887E5ADC /* libRCTContacts.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTContacts.a; sourceTree = "<group>"; };
-		273A693E4F2D4110BEE6E54A /* RNPrint.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNPrint.xcodeproj; path = "../node_modules/react-native-print/ios/RNPrint.xcodeproj"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* iResucito-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iResucito-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* iResucito-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iResucito-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		34924B916FCC4AD59C7FCFB2 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
@@ -499,6 +498,7 @@
 		884E86981FA3C68600389135 /* iResucitoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iResucitoUITests.swift; sourceTree = "<group>"; };
 		884E869A1FA3C68600389135 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		884E86CF1FA3C76200389135 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
+		886C5B5B2101107600F1B950 /* RNPrint.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNPrint.xcodeproj; path = "../node_modules/react-native-print/ios/RNPrint.xcodeproj"; sourceTree = "<group>"; };
 		889530351F6C320D009638BA /* songs */ = {isa = PBXFileReference; lastKnownFileType = folder; name = songs; path = ../songs; sourceTree = "<group>"; };
 		88BC43B11F8526BF006B7672 /* cristo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cristo.jpg; sourceTree = "<group>"; };
 		88BC43B21F8526BF006B7672 /* resucito.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = resucito.gif; sourceTree = "<group>"; };
@@ -757,6 +757,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				886C5B5B2101107600F1B950 /* RNPrint.xcodeproj */,
 				88DE587B2097FF2E002CEFFF /* RNDeviceInfo.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
@@ -778,7 +779,6 @@
 				E6416019F64E4187B8EFAB06 /* RNI18n.xcodeproj */,
 				B1192EF266594C5E9DDE1390 /* RNPDFLib.xcodeproj */,
 				CA5402EEE0964CE5ACCA9847 /* RCTPdf.xcodeproj */,
-				273A693E4F2D4110BEE6E54A /* RNPrint.xcodeproj */,
 				09D4B9D895754BF280E6657F /* RNFetchBlob.xcodeproj */,
 			);
 			name = Libraries;
@@ -893,11 +893,11 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8887645E2100EE4F00C77E36 /* Products */ = {
+		886C5B5C2101107600F1B950 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				888764922100EE4F00C77E36 /* libRNPrint.a */,
-				888764942100EE4F00C77E36 /* RNPrintTests.xctest */,
+				886C5B612101107600F1B950 /* libRNPrint.a */,
+				886C5B632101107600F1B950 /* RNPrintTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1192,8 +1192,8 @@
 					ProjectRef = B1192EF266594C5E9DDE1390 /* RNPDFLib.xcodeproj */;
 				},
 				{
-					ProductGroup = 8887645E2100EE4F00C77E36 /* Products */;
-					ProjectRef = 273A693E4F2D4110BEE6E54A /* RNPrint.xcodeproj */;
+					ProductGroup = 886C5B5C2101107600F1B950 /* Products */;
+					ProjectRef = 886C5B5B2101107600F1B950 /* RNPrint.xcodeproj */;
 				},
 				{
 					ProductGroup = 8814E4611F7AA0CC0058914A /* Products */;
@@ -1503,18 +1503,18 @@
 			remoteRef = 886965E5201CA9BE00F09496 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		888764922100EE4F00C77E36 /* libRNPrint.a */ = {
+		886C5B612101107600F1B950 /* libRNPrint.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRNPrint.a;
-			remoteRef = 888764912100EE4F00C77E36 /* PBXContainerItemProxy */;
+			remoteRef = 886C5B602101107600F1B950 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		888764942100EE4F00C77E36 /* RNPrintTests.xctest */ = {
+		886C5B632101107600F1B950 /* RNPrintTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = RNPrintTests.xctest;
-			remoteRef = 888764932100EE4F00C77E36 /* PBXContainerItemProxy */;
+			remoteRef = 886C5B622101107600F1B950 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		88B3A5DD1F9E82E2004EF80C /* libRCTContacts.a */ = {
@@ -1824,7 +1824,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 6;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = GHJ7J9LTV8;
 				HEADER_SEARCH_PATHS = (
@@ -1865,7 +1865,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = GHJ7J9LTV8;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
