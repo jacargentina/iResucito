@@ -591,7 +591,8 @@ export const generatePDF = (canto: Song, lines: Array<SongLine>) => {
                 });
               }
               y -= cantoSpacing;
-            // } else {
+            }
+            // else {
             //   console.log('Sin dibujar en', y, JSON.stringify(it));
             // }
           });
