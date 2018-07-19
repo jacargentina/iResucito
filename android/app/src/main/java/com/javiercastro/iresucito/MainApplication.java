@@ -5,8 +5,8 @@ import android.content.Context;
 import android.support.multidex.MultiDex;
 
 import com.facebook.react.ReactApplication;
-import com.christopherdro.RNPrint.RNPrintPackage;
 import com.RNFetchBlob.RNFetchBlobPackage;
+import com.christopherdro.RNPrint.RNPrintPackage;
 import org.wonday.pdf.RCTPdfView;
 import com.hopding.pdflib.PDFLibPackage;
 import com.AlexanderZaytsev.RNI18n.RNI18nPackage;
@@ -36,8 +36,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new RNPrintPackage(),
             new RNFetchBlobPackage(),
+            new RNPrintPackage(),
             new RCTPdfView(),
             new PDFLibPackage(),
             new RNI18nPackage(),
