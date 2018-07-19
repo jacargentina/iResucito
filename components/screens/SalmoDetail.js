@@ -20,7 +20,7 @@ import {
 import colors from '../colors';
 import color from 'color';
 import { notas, styles } from '../util';
-import { salmoTransport, generatePDF, sharePDF } from '../actions';
+import { salmoTransport, generatePDF } from '../actions';
 import {
   getSalmoFromProps,
   getSalmoTransported,
@@ -37,7 +37,7 @@ class SalmoDetail extends React.Component<any> {
       : 'Salmo',
     headerRight: (
       <View style={{ flexDirection: 'row' }}>
-        <ConnectedShareSong {...props} />
+        <ConnectedViewPdf {...props} />
         <ConnectedTransportNotes {...props} />
       </View>
     )
@@ -137,33 +137,13 @@ const mapDispatchToProps = dispatch => {
     transportNote: transportTo => {
       dispatch(salmoTransport(transportTo));
     },
-    shareSong: (salmo, lines, navigation) => {
-      ActionSheet.show(
-        {
-          options: [
-            I18n.t('share_action.view pdf'),
-            I18n.t('share_action.share pdf'),
-            I18n.t('ui.cancel')
-          ],
-          cancelButtonIndex: 2,
-          title: I18n.t('ui.share')
-        },
-        index => {
-          index = Number(index);
-          if (index !== 2) {
-            dispatch(generatePDF(salmo, lines)).then(path => {
-              if (index === 0) {
-                navigation.navigate('PDFViewer', {
-                  uri: path,
-                  title: salmo.titulo
-                });
-              } else {
-                dispatch(sharePDF(salmo, path));
-              }
-            });
-          }
-        }
-      );
+    viewPdf: (salmo, lines, navigation) => {
+      dispatch(generatePDF(salmo, lines)).then(path => {
+        navigation.navigate('PDFViewer', {
+          uri: path,
+          salmo: salmo
+        });
+      });
     }
   };
 };
@@ -237,10 +217,10 @@ const ConnectedTransportNotes = connect(mapStateToProps, mapDispatchToProps)(
   TransportNotesMenu
 );
 
-const ShareSong = props => {
+const ViewPdf = props => {
   return (
     <Icon
-      name="share"
+      name="paper"
       style={{
         marginTop: 4,
         marginRight: 8,
@@ -249,15 +229,11 @@ const ShareSong = props => {
         textAlign: 'center',
         color: AppNavigatorOptions.headerTitleStyle.color
       }}
-      onPress={() =>
-        props.shareSong(props.salmo, props.lines, props.navigation)
-      }
+      onPress={() => props.viewPdf(props.salmo, props.lines, props.navigation)}
     />
   );
 };
 
-const ConnectedShareSong = connect(mapStateToProps, mapDispatchToProps)(
-  ShareSong
-);
+const ConnectedViewPdf = connect(mapStateToProps, mapDispatchToProps)(ViewPdf);
 
 export default connect(mapStateToProps, mapDispatchToProps)(SalmoDetail);
