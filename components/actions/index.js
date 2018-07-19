@@ -516,7 +516,7 @@ export const generatePDF = (canto: Song, lines: Array<SongLine>) => {
                   textoParrafo += `${lines[i].texto}\n`;
                   alturaParrafo += cantoSpacing;
                   i += 1;
-                  if (lines[i].inicioParrafo) {
+                  if (i < lines.length && lines[i].inicioParrafo) {
                     break;
                   }
                 }
