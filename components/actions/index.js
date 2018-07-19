@@ -504,7 +504,7 @@ export const generatePDF = (canto: Song, lines: Array<SongLine>) => {
             // cuyo primer bloque es muy largo (ej. "Adónde te escondiste amado"
             //  y en este caso hay que cortarlo forzosamente
             if (it.inicioParrafo && y !== yStart && x === primerColumnaX) {
-              console.log('Inicio de Parrafo:', it.texto);
+              // console.log('Inicio de Parrafo:', it.texto);
               if (y < 0) {
                 x = segundaColumnaX;
                 y = yStart;
@@ -520,13 +520,13 @@ export const generatePDF = (canto: Song, lines: Array<SongLine>) => {
                     break;
                   }
                 }
-                console.log(
-                  'Texto del bloque: %s, y: %s, alturaParrafo: %s, diferencia: %s',
-                  textoParrafo,
-                  y,
-                  alturaParrafo,
-                  y - alturaParrafo
-                );
+                // console.log(
+                //   'Texto del bloque: %s, y: %s, alturaParrafo: %s, diferencia: %s',
+                //   textoParrafo,
+                //   y,
+                //   alturaParrafo,
+                //   y - alturaParrafo
+                // );
                 if (y - alturaParrafo <= 21) {
                   x = segundaColumnaX;
                   y = yStart;
@@ -537,7 +537,7 @@ export const generatePDF = (canto: Song, lines: Array<SongLine>) => {
               y -= parrafoSpacing;
             }
             if (it.tituloEspecial) {
-             y -= parrafoSpacing * 2;
+              y -= parrafoSpacing * 2;
             }
             if (it.notas === true) {
               page1.drawText(it.texto, {
@@ -591,7 +591,9 @@ export const generatePDF = (canto: Song, lines: Array<SongLine>) => {
                 });
               }
               y -= cantoSpacing;
-            }
+            // } else {
+            //   console.log('Sin dibujar en', y, JSON.stringify(it));
+            // }
           });
           const docsDir =
             Platform.OS == 'ios'
