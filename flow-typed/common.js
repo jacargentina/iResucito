@@ -10,7 +10,7 @@ declare type SongLine = {
   canto: boolean,
   cantoConIndicador: boolean,
   notas: boolean,
-  notasCantoConIndicador: boolean,
+  inicioParrafo: boolean,
   notaEspecial: boolean,
   tituloEspecial: boolean,
   textoEspecial: boolean

@@ -449,10 +449,10 @@ var titleSpacing = 11;
 var fuenteFontSize = 10;
 var fuenteSpacing = 20;
 var cantoFontSize = 12;
-var cantoSpacing = 12;
+var cantoSpacing = 11;
 var fontName = 'Franklin Gothic Medium';
 var indicadorSpacing = 18;
-var bloqueSpacing = 5;
+var parrafoSpacing = 6;
 var notesFontSize = 10;
 var widthHeightPixels = 598; // 21,1 cm
 var primerColumnaX = 30;
@@ -469,12 +469,12 @@ export const generatePDF = (canto: Song, lines: Array<SongLine>) => {
       // Para centrar fuente
       return PDFLib.measureText(canto.fuente, fontName, fuenteFontSize)
         .then(sizeFuente => {
+          var y = 560;
+          var x = primerColumnaX;
           const page1 = PDFPage.create().setMediaBox(
             widthHeightPixels,
             widthHeightPixels
           );
-          var y = 560;
-          var x = primerColumnaX;
           var titleX = parseInt((widthHeightPixels - sizeTitle.width) / 2);
           page1.drawText(canto.titulo.toUpperCase(), {
             x: titleX,
@@ -496,33 +496,47 @@ export const generatePDF = (canto: Song, lines: Array<SongLine>) => {
           var yStart = y;
           lines.forEach((it, index) => {
             // Mantener los bloques siempre juntos
-            // Los bloques comienzan donde hay notas del 'canto con indicador' (A. S. etc)
+            // Los bloques se indican con inicioParrafo == true
             // Solo si estamos en la primer columna, calculamos si puede
             // pintarse por completo el bloque sin cortes; caso contrario
             // generamos la 2da columna
             // Si es el primer bloque de todos, no tenerlo en cuenta: hay cantos
             // cuyo primer bloque es muy largo (ej. "Adónde te escondiste amado"
             //  y en este caso hay que cortarlo forzosamente
-            if (
-              it.notasCantoConIndicador &&
-              y !== yStart &&
-              x === primerColumnaX
-            ) {
-              var altoBloque = cantoSpacing * 2; // la linea de notas y del canto con indicador
-              var i = index + 2; // Comenzar en la linea siguiente al canto con indicador
-              while (i < lines.length && !lines[i].cantoConIndicador) {
-                altoBloque += cantoSpacing;
-                i += 1;
-              }
-              if (y - altoBloque <= 35) {
+            if (it.inicioParrafo && y !== yStart && x === primerColumnaX) {
+              console.log('Inicio de Parrafo:', it.texto);
+              if (y < 0) {
                 x = segundaColumnaX;
                 y = yStart;
+              } else {
+                var alturaParrafo = 0;
+                var textoParrafo = '';
+                var i = index; // loop de i
+                while (i < lines.length) {
+                  textoParrafo += `${lines[i].texto}\n`;
+                  alturaParrafo += cantoSpacing;
+                  i += 1;
+                  if (lines[i].inicioParrafo) {
+                    break;
+                  }
+                }
+                console.log(
+                  'Texto del bloque: %s, y: %s, alturaParrafo: %s, diferencia: %s',
+                  textoParrafo,
+                  y,
+                  alturaParrafo,
+                  y - alturaParrafo
+                );
+                if (y - alturaParrafo <= 21) {
+                  x = segundaColumnaX;
+                  y = yStart;
+                }
               }
             }
+            if (it.inicioParrafo) {
+              y -= parrafoSpacing;
+            }
             if (it.notas === true) {
-              if (it.notasCantoConIndicador) {
-                y -= bloqueSpacing;
-              }
               page1.drawText(it.texto, {
                 x: x + indicadorSpacing,
                 y: y,
@@ -530,6 +544,7 @@ export const generatePDF = (canto: Song, lines: Array<SongLine>) => {
                 fontSize: notesFontSize,
                 fontName: fontName
               });
+              y -= cantoSpacing;
             } else if (it.canto === true) {
               page1.drawText(it.texto, {
                 x: x + indicadorSpacing,
@@ -538,6 +553,7 @@ export const generatePDF = (canto: Song, lines: Array<SongLine>) => {
                 fontSize: cantoFontSize,
                 fontName: fontName
               });
+              y -= cantoSpacing;
             } else if (it.cantoConIndicador === true) {
               page1
                 .drawText(it.prefijo, {
@@ -554,8 +570,8 @@ export const generatePDF = (canto: Song, lines: Array<SongLine>) => {
                   fontSize: cantoFontSize,
                   fontName: fontName
                 });
+              y -= cantoSpacing;
             }
-            y -= cantoSpacing;
           });
           const docsDir =
             Platform.OS == 'ios'

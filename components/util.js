@@ -206,7 +206,7 @@ export const preprocesarLinea = (text: string): SongLine => {
       canto: false,
       cantoConIndicador: true,
       notas: false,
-      notasCantoConIndicador: false,
+      inicioParrafo: false,
       notaEspecial: false,
       tituloEspecial: false,
       textoEspecial: false
@@ -236,7 +236,7 @@ export const preprocesarLinea = (text: string): SongLine => {
       canto: false,
       cantoConIndicador: true,
       notas: false,
-      notasCantoConIndicador: false,
+      inicioParrafo: false,
       notaEspecial: false,
       tituloEspecial: false,
       textoEspecial: false
@@ -259,7 +259,7 @@ export const preprocesarLinea = (text: string): SongLine => {
       canto: false,
       cantoConIndicador: true,
       notas: true,
-      notasCantoConIndicador: false,
+      inicioParrafo: false,
       notaEspecial: false,
       tituloEspecial: false,
       textoEspecial: false
@@ -277,7 +277,7 @@ export const preprocesarLinea = (text: string): SongLine => {
       canto: false,
       cantoConIndicador: true,
       notas: false,
-      notasCantoConIndicador: false,
+      inicioParrafo: false,
       notaEspecial: true,
       tituloEspecial: false,
       textoEspecial: false
@@ -296,7 +296,7 @@ export const preprocesarLinea = (text: string): SongLine => {
       canto: false,
       cantoConIndicador: true,
       notas: false,
-      notasCantoConIndicador: false,
+      inicioParrafo: false,
       notaEspecial: false,
       tituloEspecial: true,
       textoEspecial: false
@@ -315,24 +315,25 @@ export const preprocesarLinea = (text: string): SongLine => {
       canto: false,
       cantoConIndicador: true,
       notas: false,
-      notasCantoConIndicador: false,
+      inicioParrafo: false,
       notaEspecial: false,
       tituloEspecial: false,
       textoEspecial: true
     };
     return it;
   } else {
+    var texto = text.trimRight();
     var it: SongLine = {
-      texto: text.trimRight(),
+      texto: texto,
       style: styles.lineaNormal,
       prefijo: '',
       prefijoStyle: null,
       sufijo: '',
       sufijoStyle: null,
-      canto: true,
-      cantoConIndicador: true,
+      canto: texto !== '',
+      cantoConIndicador: texto !== '',
       notas: false,
-      notasCantoConIndicador: false,
+      inicioParrafo: false,
       notaEspecial: false,
       tituloEspecial: false,
       textoEspecial: false
@@ -378,7 +379,14 @@ export const preprocesarCanto = (
       var nextItmn = firstPass[i + 1];
       if (nextItmn.prefijo !== '') {
         it.style = styles.lineaNotasConMargen;
-        it.notasCantoConIndicador = true;
+        it.inicioParrafo = true;
+      }
+    }
+    // Ajustar inicios de parrafo (lineas vacias)
+    if (it.texto === '' && i < firstPass.length - 1) {
+      var nextItmnn = firstPass[i + 1];
+      if (nextItmnn.notas) {
+        it.inicioParrafo = true;
       }
     }
     return it;
