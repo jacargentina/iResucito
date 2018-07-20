@@ -63,7 +63,7 @@
     "react-native-storage": "^0.2.2",
     "react-native-swipeout": "^2.3.3",
     "react-native-version": "^2.6.2",
-    "react-navigation": "^2.7.0",
+    "react-navigation": "^2.8.0",
     "react-navigation-backhandler": "^1.1.1",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
