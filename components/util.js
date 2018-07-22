@@ -384,7 +384,11 @@ export const preprocesarCanto = (
     // Ajustar inicios de parrafo (lineas vacias)
     if (it.texto === '' && i < firstPass.length - 1) {
       var nextItmnn = firstPass[i + 1];
-      if (nextItmnn.notas || nextItmnn.texto === '') {
+      if (
+        nextItmnn.notas ||
+        nextItmnn.texto === '' ||
+        nextItmnn.cantoConIndicador
+      ) {
         it.inicioParrafo = true;
       }
     }
