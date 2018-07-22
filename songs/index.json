@@ -25,7 +25,8 @@
   "final": true,
   "files": {
    "es": "Consolad a mi pueblo - Is 40, 1-11",
-   "it": "Consolate il mio popolo - Is 40, 1-11"
+   "it": "Consolate il mio popolo - Is 40, 1-11",
+   "pt": "Consolai o meu povo - Is 40, 1-11"
   }
  },
  "4": {
@@ -35,7 +36,8 @@
   "pascua": true,
   "files": {
    "es": "Cuando dormía - Ct 5, 2ss",
-   "it": "Quando dormivo - Ct 5, 2ss"
+   "it": "Quando dormivo - Ct 5, 2ss",
+   "pt": "Quando dormia - Ct 5, 2ss"
   }
  },
  "5": {
@@ -51,7 +53,8 @@
   "etapa": "Catecumenado",
   "files": {
    "es": "Dichoso el hombre - Sal 1",
-   "it": "Felice l'uomo - Sal 1"
+   "it": "Felice l'uomo - Sal 1",
+   "pt": "Feliz o homem - Sal 1"
   }
  },
  "7": {
@@ -59,7 +62,8 @@
   "fraccion": true,
   "files": {
    "es": "El Señor me ha dado lengua de discípulo - Is 50, 4-10",
-   "it": "Il signore mi ha dato - iii canto del servo - Is. 50, 4-10"
+   "it": "Il signore mi ha dato - iii canto del servo - Is. 50, 4-10",
+   "pt": "O Senhor me deu - Tercero canto do Servo de Iahweh - Is 50, 4-10"
   }
  },
  "8": {
