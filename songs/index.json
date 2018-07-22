@@ -72,7 +72,8 @@
   "entrada": true,
   "files": {
    "es": "El combate escatológico - Ap 19, 11-20",
-   "it": "Vedo i cieli aperti - Ap 19, 11-20"
+   "it": "Vedo i cieli aperti - Ap 19, 11-20",
+   "pt": "O combate escatológico - Ap 19, 11-20"
   }
  },
  "9": {
@@ -80,7 +81,8 @@
   "fraccion": true,
   "files": {
    "es": "El lagarero - Is 63, 1-6",
-   "it": "Il pigiatore - Is. 63, 1-6"
+   "it": "Il pigiatore - Is. 63, 1-6",
+   "pt": "O lagareiro - Is 63, 1-6"
   }
  },
  "10": {
@@ -88,7 +90,8 @@
   "entrada": true,
   "files": {
    "es": "El sembrador - Mc 4, 3ss",
-   "it": "Il seminatore - Mc. 4, 3 ss"
+   "it": "Il seminatore - Mc. 4, 3 ss",
+   "pt": "O semeador - Mc 4, 3ss"
   }
  },
  "11": {
@@ -98,14 +101,16 @@
   "laudes": true,
   "files": {
    "es": "He aquí que nuestro espejo es el Señor - Oda 13 de Salomón",
-   "it": "Ecco lo specchio nostro - Ode 13 di Salomone"
+   "it": "Ecco lo specchio nostro - Ode 13 di Salomone",
+   "pt": "Eis que o nosso espelho e o Senhor - Ode 13 de Salomão"
   }
  },
  "12": {
   "etapa": "Catecumenado",
   "files": {
    "es": "Jacob - Gn 32, 23-29",
-   "it": "Giacobbe - Gn 32, 23-29"
+   "it": "Giacobbe - Gn 32, 23-29",
+   "pt": "Jacó - Gn 32, 23-29"
   }
  },
  "13": {
