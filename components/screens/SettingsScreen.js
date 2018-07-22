@@ -26,8 +26,6 @@ import AppNavigatorOptions from '../AppNavigatorOptions';
 import { getLocalesForPicker } from '../util';
 
 class SettingsScreen extends React.Component<any> {
-  localesItems: Array<any>;
-
   constructor(props) {
     super(props);
   }
@@ -46,11 +44,9 @@ class SettingsScreen extends React.Component<any> {
   });
 
   render() {
-    if (!this.localesItems) {
-      this.localesItems = getLocalesForPicker().map(l => {
-        return <Item key={l.value} label={l.label} value={l.value} />;
-      });
-    }
+    var localesItems = getLocalesForPicker().map(l => {
+      return <Item key={l.value} label={l.label} value={l.value} />;
+    });
     return (
       <AndroidBackHandler onBackPress={() => true}>
         <View>
@@ -82,7 +78,7 @@ class SettingsScreen extends React.Component<any> {
                     // Para forzar refresco del titulo segun idioma nuevo
                     this.props.navigation.setParams({ title: '' });
                   }}>
-                  {this.localesItems}
+                  {localesItems}
                 </Picker>
               </Body>
             </ListItem>
