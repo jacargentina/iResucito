@@ -5,6 +5,7 @@ import { Badge, Text } from 'native-base';
 import { FlatList, Keyboard } from 'react-native';
 import SearchBarView from './SearchBarView';
 import SalmoListItem from './SalmoListItem';
+import SalmoChooseLocaleDialog from './SalmoChooseLocaleDialog';
 import AppNavigatorOptions from '../AppNavigatorOptions';
 import { setSalmosFilterText } from '../actions';
 import {
@@ -47,6 +48,7 @@ class SalmoList extends React.Component<any> {
             {I18n.t('ui.no songs found')}
           </Text>
         )}
+        <SalmoChooseLocaleDialog navigation={this.props.navigation} />
         <FlatList
           ref={ref => {
             this.listRef = ref;
@@ -62,7 +64,7 @@ class SalmoList extends React.Component<any> {
                 showBadge={this.props.showBadge}
                 salmo={item}
                 onPress={this.props.onPress}
-                resaltar={this.props.textFilter}
+                highlight={this.props.textFilter}
               />
             );
           }}
@@ -78,7 +80,7 @@ const makeMapStateToProps = () => {
     return {
       textFilterId: getCurrentRouteKey(state, props),
       textFilter: getCurrentRouteSalmosTextFilter(state, props),
-      items: getProcessedSalmos(state, props),
+      items: getProcessedSalmos(state, props).toJS(),
       showBadge: getShowSalmosBadge(state, props)
     };
   };

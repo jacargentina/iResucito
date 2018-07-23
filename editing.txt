@@ -1,10 +1,32 @@
 Edit many txt files
 -------------------
 
-# Convertir \r\n to \n (for sed to work fine)
+# Convert \r\n to \n (for sed to work fine)
 dos2unix *
 # Remove leading blank lines
 find . -type f -exec sed -i '/./,$!d' {} \;
 
 # The S. many times had many spaces after it; remove them for just 1 space
 find . -type f -name '*.txt' -exec sed -i '' 's/^S\.( )+/S. /' {} \;
+
+# macOS filenames
+
+In macOS the filenames (in songs/[locale]) are encoded in UTF "decomposed form"
+When reading the filenames with react-native-fs sometimes filenames "look the same", but when
+comparing equality fails. Its all about the UTF composed vs decomposed form.
+
+Reference:
+- https://apple.stackexchange.com/questions/83935/unicode-normalization-for-filenames-and-copied-text-from-pdfs
+
+To convert any filename to be always "composed form":
+
+  iconv -f utf-8-mac -t utf-8
+
+songs/index.json should be always on "composed form"!!
+
+When reading with react-native-fs the filenames should be "normalized".
+
+Reference:
+- https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/String/normalize
+
+  name.normalize();

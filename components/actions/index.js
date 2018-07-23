@@ -1,6 +1,8 @@
 // @flow
 export const INITIALIZE_SETUP = 'INITIALIZE_SETUP';
 export const INITIALIZE_SONGS = 'INITIALIZE_SONGS';
+export const INITIALIZE_SINGLE_SONG = 'INITIALIZE_SINGLE_SONG';
+export const INITIALIZE_LOCALE_SONGS = 'INITIALIZE_LOCALE_SONGS';
 export const INITIALIZE_SEARCH = 'INITIALIZE_SEARCH';
 
 export const SET_SALMOS_FILTER = 'SET_SALMOS_FILTER';
@@ -14,6 +16,8 @@ export const SET_LIST_ADD_NAME = 'SET_LIST_ADD_NAME';
 export const SET_CONTACT_IMPORT_VISIBLE = 'SET_CONTACT_IMPORT_VISIBLE';
 export const SET_CONTACT_IMPORT_LOADING = 'SET_CONTACT_IMPORT_LOADING';
 export const SET_CONTACT_IMPORT_ITEMS = 'SET_CONTACT_IMPORT_ITEMS';
+export const SET_CHOOSE_LOCALE_VISIBLE = 'SET_CHOOSE_LOCALE_VISIBLE';
+export const SET_INDEX_PATCH_EXISTS = 'SET_INDEX_PATCH_EXISTS';
 
 export const SALMO_TRANSPORT = 'SALMO_TRANSPORT';
 
@@ -45,71 +49,79 @@ import SongsIndex from '../../songs';
 import { localdata, clouddata } from '../data';
 import PDFLib, { PDFDocument, PDFPage } from 'react-native-pdf-lib';
 
-export const initializeSetup = (settings: any, lists: any, contacts: any) => {
+const BaseSongsPath =
+  Platform.OS == 'ios' ? `${RNFS.MainBundlePath}/songs` : 'songs';
+
+const SongsIndexPatchPath =
+  RNFS.DocumentDirectoryPath + '/SongsIndexPatch.json';
+
+export function initializeSetup(settings: any, lists: any, contacts: any) {
   return {
     type: INITIALIZE_SETUP,
     settings: settings,
     lists: lists,
     contacts: contacts || []
   };
-};
+}
 
-export const initializeSongs = (songs: Array<Song>) => {
+export function initializeSongs(songs: Array<Song>) {
   return {
     type: INITIALIZE_SONGS,
     items: songs
   };
-};
+}
 
-export const openChooserDialog = (
-  chooser: string,
-  listName: string,
-  listKey: string
-) => {
+export function initializeSingleSong(song: Song) {
+  return {
+    type: INITIALIZE_SINGLE_SONG,
+    song: song
+  };
+}
+
+export function initializeLocaleSongs(songs: Array<string>) {
+  return {
+    type: INITIALIZE_LOCALE_SONGS,
+    items: songs
+  };
+}
+
+export function openChooserDialog(chooser: string, list: string, key: string) {
   return {
     type: SET_CHOOSER_TARGETLIST,
     chooser: chooser,
-    list: listName,
-    key: listKey
+    list: list,
+    key: key
   };
-};
+}
 
-export const closeChooserDialog = () => {
+export function closeChooserDialog() {
   return {
     type: SET_CHOOSER_TARGETLIST,
     chooser: null,
     list: null,
     key: null
   };
-};
+}
 
-export const addSalmoToList = (
-  salmo: Song,
-  listName: string,
-  listKey: string
-) => {
+export function addSalmoToList(salmo: Song, listName: string, listKey: string) {
   return {
     type: LIST_ADD_SONG,
     list: listName,
     key: listKey,
     salmo: salmo
   };
-};
+}
 
-export const addContactToList = (
-  contact: any,
-  listName: string,
-  listKey: string
-) => {
+export function addContactToList(ct: any, listName: string, listKey: string) {
   return {
     type: LIST_ADD_CONTACT,
     list: listName,
     key: listKey,
-    contact: contact
+    contact: ct
   };
-};
+}
 
-const getItemForShare = (listMap: any, key: string) => {
+function getItemForShare(listMap: any, key: string) {
   if (listMap.has(key)) {
     var valor = listMap.get(key);
     if (valor !== null && getEsSalmo(key)) {
@@ -120,9 +132,9 @@ const getItemForShare = (listMap: any, key: string) => {
     }
   }
   return null;
-};
+}
 
-export const shareList = (listName: string, listMap: any) => {
+export function shareList(listName: string, listMap: any) {
   /* eslint-disable no-unused-vars */
   return (dispatch: Function) => {
     var items = [];
@@ -161,9 +173,9 @@ export const shareList = (listName: string, listMap: any) => {
       { dialogTitle: I18n.t('ui.share') }
     );
   };
-};
+}
 
-export const sharePDF = (canto: Song, pdfPath: string) => {
+export function sharePDF(canto: Song, pdfPath: string) {
   /* eslint-disable no-unused-vars */
   return (dispatch: Function) => {
     Share.share(
@@ -174,69 +186,90 @@ export const sharePDF = (canto: Song, pdfPath: string) => {
       { dialogTitle: I18n.t('ui.share') }
     );
   };
-};
+}
 
-export const updateListMapText = (
-  listName: string,
-  key: string,
-  text: string
-) => {
+export function shareIndexPatch() {
+  /* eslint-disable no-unused-vars */
+  return (dispatch: Function) => {
+    Share.share(
+      {
+        title: 'iResucitó - Index patch',
+        url: SongsIndexPatchPath
+      },
+      { dialogTitle: I18n.t('ui.share') }
+    );
+  };
+}
+
+export function updateListMapText(listName: string, key: string, text: string) {
   return { type: LIST_ADD_TEXT, list: listName, key: key, text: text };
-};
+}
 
-export const deleteList = (listName: string) => {
+export function deleteList(listName: string) {
   return { type: LIST_DELETE, list: listName };
-};
+}
 
-export const deleteListSong = (listName: string, key: string) => {
+export function deleteListSong(listName: string, key: string) {
   return { type: LIST_REMOVE_SONG, list: listName, key: key };
-};
+}
 
-export const showListAddDialog = () => {
+export function showListAddDialog() {
   return { type: SET_LIST_ADD_VISIBLE, visible: true };
-};
+}
 
-export const hideListAddDialog = () => {
+export function hideListAddDialog() {
   return { type: SET_LIST_ADD_VISIBLE, visible: false };
-};
+}
 
-export const setSalmosFilterText = (inputId: string, text: string) => {
+export function setSalmosFilterText(inputId: string, text: string) {
   return { type: SET_SALMOS_FILTER, inputId: inputId, filter: text };
-};
+}
 
-export const salmoTransport = (transportTo: string) => {
+export function salmoTransport(transportTo: string) {
   return { type: SALMO_TRANSPORT, transportTo: transportTo };
-};
+}
 
-export const setContactsFilterText = (inputId: string, text: string) => {
+export function showChooseLocaleDialog(salmo: any) {
+  return { type: SET_CHOOSE_LOCALE_VISIBLE, visible: true, salmo: salmo };
+}
+
+export function hideChooseLocaleDialog() {
+  return { type: SET_CHOOSE_LOCALE_VISIBLE, visible: false };
+}
+
+export function setIndexPatchExists(value: boolean) {
+  return { type: SET_INDEX_PATCH_EXISTS, exists: value };
+}
+
+export function setContactsFilterText(inputId: string, text: string) {
   return { type: SET_CONTACTS_FILTER, inputId: inputId, filter: text };
-};
+}
 
-export const showAbout = () => {
+export function showAbout() {
   return { type: SET_ABOUT_VISIBLE, visible: true };
-};
+}
 
-export const hideAbout = () => {
+export function hideAbout() {
   return { type: SET_ABOUT_VISIBLE, visible: false };
-};
+}
 
-export const updateListAddName = (text: string) => {
+export function updateListAddName(text: string) {
   return { type: SET_LIST_ADD_NAME, name: text };
-};
+}
 
-export const updateListAddType = (type: string) => {
+export function updateListAddType(type: string) {
   return { type: SET_LIST_ADD_TYPE, value: type };
-};
+}
 
-export const createList = (name: string, type: ListType) => {
+export function createList(name: string, type: ListType) {
   return { type: LIST_CREATE, name: name, list_type: type };
-};
+}
 
-export const applySetting = (key: string, value: any) => {
+export function applySetting(key: string, value: any) {
   return { type: SET_SETTINGS_VALUE, key: key, value: value };
-};
+}
 
-export const showContactImportDialog = () => {
+export function showContactImportDialog() {
   return (dispatch: Function) => {
     dispatch({ type: SET_CONTACT_IMPORT_LOADING, loading: true });
     Contacts.getAll((err, contacts) => {
@@ -254,29 +287,29 @@ export const showContactImportDialog = () => {
       }
     });
   };
-};
+}
 
-export const hideContactImportDialog = () => {
+export function hideContactImportDialog() {
   return { type: SET_CONTACT_IMPORT_VISIBLE, visible: false };
-};
+}
 
-export const syncContact = (contact: any) => {
+export function syncContact(contact: any) {
   return { type: CONTACT_SYNC, contact: contact };
-};
+}
 
-export const updateContact = (contact: any) => {
+export function updateContact(contact: any) {
   return { type: CONTACT_UPDATE, contact: contact };
-};
+}
 
-export const setContactAttribute = (contact: any, attribute: any) => {
+export function setContactAttribute(contact: any, attribute: any) {
   return {
     type: CONTACT_TOGGLE_ATTRIBUTE,
     contact: contact,
     attribute: attribute
   };
-};
+}
 
-const ordenAlfabetico = (a: Song, b: Song) => {
+function ordenAlfabetico(a: Song, b: Song) {
   if (a.titulo < b.titulo) {
     return -1;
   }
@@ -284,70 +317,123 @@ const ordenAlfabetico = (a: Song, b: Song) => {
     return 1;
   }
   return 0;
-};
+}
 
-export const processSongsMetadata = (rawLocale: string): Array<Song> => {
-  var locale = rawLocale.split('-')[0];
-  var basePath = Platform.OS == 'ios' ? `${RNFS.MainBundlePath}/` : '';
-  var songs = Object.keys(SongsIndex);
-  songs = songs.map(key => {
-    var localeOk = SongsIndex[key].files.hasOwnProperty(locale);
-    var nombre = localeOk
-      ? SongsIndex[key].files[locale]
-      : SongsIndex[key].files['es'];
-    var path = localeOk
-      ? `${basePath}songs/${locale}/${nombre}.txt`
-      : `${basePath}songs/es/${nombre}.txt`;
-    var titulo = nombre.includes('-')
-      ? nombre.substring(0, nombre.indexOf('-')).trim()
-      : nombre;
-    var fuente =
-      titulo !== nombre ? nombre.substring(nombre.indexOf('-') + 1).trim() : '';
-    var info: Song = {
-      titulo: titulo,
-      fuente: fuente,
-      nombre: nombre,
-      path: path,
-      fullText: '',
-      lines: [],
-      locale: localeOk
-    };
-    return Object.assign(SongsIndex[key], info);
+function assignInfoFromFile(info: Song, files: any, locale: string) {
+  var nombre = files[locale];
+  info.nombre = nombre;
+  var path = `${BaseSongsPath}/${locale}/${nombre}.txt`;
+  info.path = path;
+  var titulo = nombre.includes('-')
+    ? nombre.substring(0, nombre.indexOf('-')).trim()
+    : nombre;
+  info.titulo = titulo;
+  var fuente =
+    titulo !== nombre ? nombre.substring(nombre.indexOf('-') + 1).trim() : '';
+  info.fuente = fuente;
+}
+
+export function getSingleSongMeta(
+  key: string,
+  locale: string,
+  patch: any
+): Song {
+  var info: Song = Object.assign({}, SongsIndex[key]);
+  info.key = key;
+  if (!info.files.hasOwnProperty(locale)) {
+    assignInfoFromFile(info, info.files, 'es');
+    info.patchable = true;
+    if (patch && patch.hasOwnProperty(key)) {
+      if (patch[key].hasOwnProperty(locale)) {
+        info.patched = true;
+        info.patchedTitle = info.titulo;
+        assignInfoFromFile(info, patch[key], locale);
+        info.files = Object.assign({}, info.files, patch[key]);
+      }
+    }
+  } else {
+    assignInfoFromFile(info, info.files, locale);
+  }
+  return info;
+}
+
+export function getSongsMeta(rawLoc: string, patch: any): Array<Song> {
+  var locale = rawLoc.split('-')[0];
+  var songs = Object.keys(SongsIndex).map(key => {
+    return getSingleSongMeta(key, locale, patch);
   });
   songs.sort(ordenAlfabetico);
   return songs;
-};
+}
 
-export const initializeSearch = () => {
+export function initializeSearch() {
   return {
     type: INITIALIZE_SEARCH,
     items: search()
   };
-};
+}
 
-export const loadSongs = (songs: Array<Song>): Array<Song> => {
-  return songs.map(canto => {
-    var loadSalmo =
-      Platform.OS == 'ios'
-        ? RNFS.readFile(canto.path)
-        : RNFS.readFileAssets(canto.path);
-    return loadSalmo
-      .then(content => {
-        // Separar en lineas, y quitar todas hasta llegar a las notas
-        var lineas = content.replace('\r\n', '\n').split('\n');
-        while (!esLineaDeNotas(lineas[0])) {
-          lineas.shift();
-        }
-        canto.lines = lineas;
-        canto.fullText = lineas.join(' ');
-      })
-      .catch(err => {
-        canto.error = err.message;
-      });
+export function loadSingleSong(song: Song): Promise<any> {
+  var loadSong =
+    Platform.OS == 'ios'
+      ? RNFS.readFile(song.path)
+      : RNFS.readFileAssets(song.path);
+  return loadSong
+    .then(content => {
+      // Separar en lineas, y quitar todas hasta llegar a las notas
+      var lineas = content.replace('\r\n', '\n').split('\n');
+      while (lineas.length && !esLineaDeNotas(lineas[0])) {
+        lineas.shift();
+      }
+      song.lines = lineas;
+      song.fullText = lineas.join(' ');
+    })
+    .catch(err => {
+      song.error = err.message;
+    });
+}
+
+export function loadSongs(songs: Array<Song>): Array<Promise<any>> {
+  return songs.map(song => {
+    return loadSingleSong(song);
   });
-};
+}
 
-export const initializeLocale = (locale: string) => {
+export function readLocaleSongs(rawLoc: string) {
+  var locale = rawLoc.split('-')[0];
+  return RNFS.readdir(`${BaseSongsPath}/${locale}`).then(items => {
+    // Very important to call "normalize"
+    // See editing.txt for details
+    items = items
+      .filter(i => i.endsWith('.txt'))
+      .map(i => i.replace('.txt', '').normalize());
+    items.sort();
+    return items;
+  });
+}
+
+export function readLocalePatch() {
+  return (dispatch: Function) => {
+    return RNFS.exists(SongsIndexPatchPath).then(exists => {
+      dispatch(setIndexPatchExists(exists));
+      if (exists)
+        return RNFS.readFile(SongsIndexPatchPath).then(patchJSON => {
+          return JSON.parse(patchJSON);
+        });
+    });
+  };
+}
+
+export function saveLocalePatch(patchObj: any) {
+  return (dispatch: Function) => {
+    var json = JSON.stringify(patchObj, null, ' ');
+    return RNFS.writeFile(SongsIndexPatchPath, json, 'utf8').then(() => {
+      return dispatch(setIndexPatchExists(true));
+    });
+  };
+}
+
+export function initializeLocale(locale: string) {
   return (dispatch: Function) => {
     if (locale === 'default') {
       locale = getDefaultLocale();
@@ -356,15 +442,24 @@ export const initializeLocale = (locale: string) => {
     I18n.locale = locale;
     // Construir menu de búsqueda
     dispatch(initializeSearch());
-    // Construir metadatos de cantos
-    var songs = processSongsMetadata(locale);
-    return Promise.all(loadSongs(songs)).then(() => {
-      dispatch(initializeSongs(songs));
-    });
+    // Cargar parche del indice si existe
+    return dispatch(readLocalePatch())
+      .then(patchObj => {
+        // Construir metadatos de cantos
+        var songs = getSongsMeta(locale, patchObj);
+        return Promise.all(loadSongs(songs)).then(() => {
+          dispatch(initializeSongs(songs));
+        });
+      })
+      .then(() => {
+        return readLocaleSongs(locale).then(items => {
+          dispatch(initializeLocaleSongs(items));
+        });
+      });
   };
-};
+}
 
-export const saveLists = () => {
+export function saveLists() {
   return (dispatch: Function, getState: Function) => {
     var listsJS = getState()
       .ui.get('lists')
@@ -375,9 +470,9 @@ export const saveLists = () => {
       clouddata.save(item);
     }
   };
-};
+}
 
-export const saveContacts = () => {
+export function saveContacts() {
   return (dispatch: Function, getState: Function) => {
     var contactsJS = getState()
       .ui.get('contacts')
@@ -388,9 +483,9 @@ export const saveContacts = () => {
       clouddata.save(item);
     }
   };
-};
+}
 
-export const saveSettings = () => {
+export function saveSettings() {
   return (dispatch: Function, getState: Function) => {
     return localdata.save({
       key: 'settings',
@@ -399,9 +494,9 @@ export const saveSettings = () => {
         .toJS()
     });
   };
-};
+}
 
-const getContacts = () => {
+function getContacts() {
   return new Promise((resolve, reject) => {
     Contacts.getAll((err, contacts) => {
       if (err) {
@@ -411,15 +506,12 @@ const getContacts = () => {
       }
     });
   });
-};
+}
 
-export const refreshContactsThumbs = (
-  lastCacheDir: string,
-  newCacheDir: string
-) => {
+export function refreshContactsThumbs(cacheDir: string, newCacheDir: string) {
   return (dispatch: Function, getState: Function) => {
     // sólo actualizar si cambió el directorio de caches
-    if (lastCacheDir !== newCacheDir) {
+    if (cacheDir !== newCacheDir) {
       var contactsJS = getState()
         .ui.get('contacts')
         .toJS();
@@ -442,7 +534,7 @@ export const refreshContactsThumbs = (
         });
     }
   };
-};
+}
 
 var titleFontSize = 19;
 var titleSpacing = 11;
@@ -457,8 +549,9 @@ var notesFontSize = 10;
 var widthHeightPixels = 598; // 21,1 cm
 var primerColumnaX = 30;
 var segundaColumnaX = 330;
+
 /* eslint-disable */
-export const generatePDF = (canto: Song, lines: Array<SongLine>) => {
+export function generatePDF(canto: Song, lines: Array<SongLine>) {
   return (dispatch: Function) => {
     // Para centrar titulo
     return PDFLib.measureText(
@@ -610,4 +703,39 @@ export const generatePDF = (canto: Song, lines: Array<SongLine>) => {
         });
     });
   };
-};
+}
+
+export function setSongLocalePatch(song: Song, locale: string, file?: string) {
+  return (dispatch: Function) => {
+    return dispatch(readLocalePatch()).then(patchObj => {
+      if (!patchObj) patchObj = {};
+      if (!patchObj[song.key]) patchObj[song.key] = {};
+      if (file) {
+        patchObj[song.key][locale] = file;
+      } else {
+        delete patchObj[song.key];
+      }
+      var updatedSong = getSingleSongMeta(song.key, locale, patchObj);
+      return loadSingleSong(updatedSong)
+        .then(() => {
+          return dispatch(initializeSingleSong(updatedSong));
+        })
+        .then(() => {
+          return dispatch(saveLocalePatch(patchObj));
+        });
+    });
+  };
+}
+
+export function clearIndexPatch(locale: string) {
+  return (dispatch: Function) => {
+    return RNFS.exists(SongsIndexPatchPath).then(exists => {
+      if (exists) {
+        return RNFS.unlink(SongsIndexPatchPath).then(() => {
+          dispatch(setIndexPatchExists(false));
+          return dispatch(initializeLocale(locale));
+        });
+      }
+    });
+  };
+}

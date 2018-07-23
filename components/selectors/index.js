@@ -3,6 +3,7 @@ import { createSelector } from 'reselect';
 import {
   getEsSalmo,
   getFriendlyTextForListType,
+  getDefaultLocale,
   preprocesarCanto,
   calcularTransporte
 } from '../util';
@@ -10,6 +11,11 @@ import {
 const getLists = (state: any) => state.ui.get('lists');
 
 const getLocale = (state: any) => state.ui.getIn(['settings', 'locale']);
+
+export const getLocaleReal = createSelector(getLocale, locale => {
+  if (locale === 'default') return getDefaultLocale();
+  return locale;
+});
 
 export const getProcessedLists = createSelector(getLists, getLocale, lists => {
   var listNames = lists.keySeq().toArray();
@@ -22,8 +28,8 @@ export const getProcessedLists = createSelector(getLists, getLocale, lists => {
   });
 });
 
-const getSalmos = (state: any) => {
-  return state.ui.get('salmos');
+const getSongs = (state: any) => {
+  return state.ui.get('songs');
 };
 
 export const getSearchItems = (state: any) => {
@@ -34,18 +40,18 @@ const getListFromNavigation = (state: any, props: any) => {
   return state.ui.getIn(['lists', props.navigation.state.params.list.name]);
 };
 
-export const getSalmosFromList = createSelector(
-  getSalmos,
+export const getSongsFromList = createSelector(
+  getSongs,
   getListFromNavigation,
-  (salmos, listMap) => {
+  (songs, listMap) => {
     var result = listMap.map((valor, clave) => {
       // Si es de tipo 'libre', los salmos están dentro de 'items'
       if (clave === 'items') {
         valor = valor.map(nombre => {
-          return salmos.find(s => s.nombre == nombre);
+          return songs.find(s => s.get('nombre') == nombre);
         });
       } else if (getEsSalmo(clave) && valor !== null) {
-        return salmos.find(s => s.nombre == valor);
+        return songs.find(s => s.get('nombre') == valor);
       }
       return valor;
     });
@@ -167,17 +173,17 @@ export const getCurrentRouteSalmosTextFilter = (state: any, props: any) => {
 };
 
 export const getCurrentRouteSalmos = createSelector(
-  getSalmos,
+  getSongs,
   getCurrentRouteFilter,
-  (salmos, filter) => {
+  (songs, filter) => {
     var items = [];
-    if (salmos) {
+    if (songs) {
       if (filter) {
         for (var name in filter) {
-          items = salmos.filter(s => s[name] == filter[name]);
+          items = songs.filter(s => s.get(name) == filter[name]);
         }
       } else {
-        items = salmos;
+        items = songs;
       }
     }
     return items;
@@ -198,21 +204,27 @@ export const getProcessedSalmos = createSelector(
   getCurrentRouteSalmos,
   getFilterFromNavOrProps,
   getCurrentRouteSalmosTextFilter,
-  (salmos, nav_filter, text_filter) => {
+  (songs, nav_filter, text_filter) => {
     if (nav_filter) {
       for (var name in nav_filter) {
-        salmos = salmos.filter(s => s[name] == nav_filter[name]);
+        songs = songs.filter(s => s[name] == nav_filter[name]);
       }
     }
     if (text_filter) {
-      salmos = salmos.filter(s => {
+      songs = songs.filter(s => {
         return (
-          s.nombre.toLowerCase().includes(text_filter.toLowerCase()) ||
-          s.fullText.toLowerCase().includes(text_filter.toLowerCase())
+          s
+            .get('nombre')
+            .toLowerCase()
+            .includes(text_filter.toLowerCase()) ||
+          s
+            .get('fullText', '')
+            .toLowerCase()
+            .includes(text_filter.toLowerCase())
         );
       });
     }
-    return salmos;
+    return songs;
   }
 );
 
@@ -224,7 +236,7 @@ export const getShowSalmosBadge = createSelector(
 );
 
 export const makeGetProcessedSalmos = () => {
-  return createSelector(getProcessedSalmos, salmos => salmos);
+  return createSelector(getProcessedSalmos, songs => songs);
 };
 
 export const getSalmoFromProps = (state: any, props: any) =>
@@ -236,12 +248,27 @@ export const getTransportToNote = (state: any) =>
 export const getSalmoTransported = createSelector(
   getSalmoFromProps,
   getTransportToNote,
-  (salmo, transportToNote) => {
-    var lines = salmo.lines;
+  (song, transportToNote) => {
+    var lines = song.lines;
     var diferencia = 0;
     if (transportToNote) {
       diferencia = calcularTransporte(lines[0], transportToNote);
     }
     return preprocesarCanto(lines, diferencia);
+  }
+);
+
+export const getLocaleSongs = (state: any) => state.ui.get('localeSongs');
+
+export const getAvailableSongsForPatch = createSelector(
+  getSongs,
+  getLocaleSongs,
+  getLocaleReal,
+  (songs, localeSongs, locale) => {
+    var res = localeSongs.filter(locSong => {
+      var found = songs.find(s => s.getIn(['files', locale]) === locSong);
+      return !found;
+    });
+    return res;
   }
 );

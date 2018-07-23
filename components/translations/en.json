@@ -27,7 +27,8 @@
     "donate button": "Donate",
     "no songs found": "No songs found",
     "no contacts found": "No contacts found",
-    "empty songs list": "Empty songs list"
+    "empty songs list": "Empty songs list",
+    "confirmation": "Confirmation"
   },
   "list_type": {
     "eucharist": "Eucharist",
@@ -112,7 +113,8 @@
     "find song": "Find Song",
     "lists": "Lists",
     "community": "Community",
-    "import contacts": "Import Contacts"
+    "import contacts": "Import Contacts",
+    "choose song": "Choose Song"
   },
   "call_to_action_title": {
     "add lists": "Add lists",
@@ -131,11 +133,15 @@
   "settings_title": {
     "locale": "Language",
     "keep awake": "Keep awake",
-    "about": "About"
+    "about": "About",
+    "developer mode": "Developer mode",
+    "clear index patch": "Clear index patch",
+    "share index patch": "Share index patch"
   },
   "settings_note": {
     "locale": "Translate the app to available languages",
-    "keep awake": "Prevent the device from shutting off when viewing a song"
+    "keep awake": "Prevent the device from shutting off when viewing a song",
+    "developer mode": "Enable only if you are a collaborator in the translation of the songs"
   },
   "share_action": {
     "view pdf": "View as PDF",

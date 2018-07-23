@@ -17,13 +17,17 @@ declare type SongLine = {
 };
 
 declare type Song = {
+  key: string,
   titulo: string,
   fuente: string,
   path: string,
   nombre: string,
+  files: any,
   fullText: string,
   lines: Array<string>,
-  locale: string,
+  patchable?: boolean,
+  patched?: boolean,
+  patchedTitle?: string,
   error?: any
 };
 

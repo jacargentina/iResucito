@@ -22,12 +22,12 @@
     "search placeholder": "Buscar",
     "locale warning title": "Traducción incompleta",
     "locale warning message": "El canto aún no se ha incorporado a su idioma",
-    "donate message":
-      "Ayuda haciendo una donación. La Paz!",
+    "donate message": "Ayuda haciendo una donación. La Paz!",
     "donate button": "Donar",
     "no songs found": "Ningún canto encontrado",
-    "no contacts found":  "Ningún contacto encontrado",
-    "empty songs list": "Lista de cantos vacía"
+    "no contacts found": "Ningún contacto encontrado",
+    "empty songs list": "Lista de cantos vacía",
+    "confirmation": "Confirmación"
   },
   "list_type": {
     "eucharist": "Eucaristía",
@@ -112,7 +112,8 @@
     "find song": "Buscar Canto",
     "lists": "Listas",
     "community": "Comunidad",
-    "import contacts": "Importar Contactos"
+    "import contacts": "Importar Contactos",
+    "choose song": "Elegir Canto"
   },
   "call_to_action_title": {
     "add lists": "Agregar listas",
@@ -131,12 +132,16 @@
   "settings_title": {
     "locale": "Lenguaje",
     "keep awake": "Mantener despierto",
-    "about": "Acerca de"
+    "about": "Acerca de",
+    "developer mode": "Modo desarrollador",
+    "clear index patch": "Limpiar parche del indice",
+    "share index patch": "Compartir parche del indice"
   },
   "settings_note": {
     "locale": "Traduce la app a un lenguaje disponible",
     "keep awake":
-      "Evitar que el dispositivo entre en reposo al visualizar un salmo"
+      "Evitar que el dispositivo entre en reposo al visualizar un salmo",
+    "developer mode": "Habilitar sólo si eres colaborador en la traducción de los cantos"
   },
   "share_action": {
     "view pdf": "Visualizar como PDF",

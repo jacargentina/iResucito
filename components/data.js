@@ -1,6 +1,7 @@
 // @flow
 import Storage from 'react-native-storage';
-import { AsyncStorage } from 'react-native';
+import { NativeEventEmitter, AsyncStorage } from 'react-native';
+import iCloudStorage from 'react-native-icloudstore';
 import RNFS from 'react-native-fs';
 
 export const localdata = new Storage({
@@ -40,9 +41,6 @@ export const localdata = new Storage({
     }
   }
 });
-
-import { NativeEventEmitter } from 'react-native';
-import iCloudStorage from 'react-native-icloudstore';
 
 class CloudData {
   eventEmitter: NativeEventEmitter;

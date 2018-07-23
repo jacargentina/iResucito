@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { connect } from 'react-redux';
-import { View } from 'react-native';
+import { View, Alert } from 'react-native';
 import { AndroidBackHandler } from 'react-navigation-backhandler';
 import {
   List,
@@ -12,18 +12,22 @@ import {
   Icon,
   Right,
   Picker,
-  Item
+  Item,
+  Button
 } from 'native-base';
 import Switch from '../widgets/switch';
 import {
   applySetting,
   saveSettings,
   showAbout,
-  initializeLocale
+  initializeLocale,
+  clearIndexPatch,
+  shareIndexPatch
 } from '../actions';
 import I18n from '../translations';
 import AppNavigatorOptions from '../AppNavigatorOptions';
 import { getLocalesForPicker } from '../util';
+import commonTheme from '../../native-base-theme/variables/platform';
 
 class SettingsScreen extends React.Component<any> {
   constructor(props) {
@@ -96,6 +100,44 @@ class SettingsScreen extends React.Component<any> {
                 />
               </Right>
             </ListItem>
+            <ListItem>
+              <Body>
+                <Text>{I18n.t('settings_title.developer mode')}</Text>
+                <Text note>{I18n.t('settings_note.developer mode')}</Text>
+              </Body>
+              <Right>
+                <Switch
+                  value={this.props.developerMode}
+                  onValueChange={checked =>
+                    this.props.updateSetting('developerMode', checked)
+                  }
+                />
+              </Right>
+            </ListItem>
+            {this.props.developerMode &&
+              this.props.patchExists && (
+                <ListItem>
+                  <Body>
+                    <Text
+                      style={{ color: commonTheme.brandDanger }}
+                      onPress={() =>
+                        this.props.clearIndexPatch(this.props.locale)
+                      }>
+                      {I18n.t('settings_title.clear index patch')}
+                    </Text>
+                  </Body>
+                </ListItem>
+              )}
+            {this.props.developerMode &&
+              this.props.patchExists && (
+                <ListItem>
+                  <Body>
+                    <Text onPress={() => this.props.shareIndexPatch()}>
+                      {I18n.t('settings_title.share index patch')}
+                    </Text>
+                  </Body>
+                </ListItem>
+              )}
             <ListItem icon button onPress={() => this.props.showAbout()}>
               <Left>
                 <Icon name="checkmark" />
@@ -112,9 +154,12 @@ class SettingsScreen extends React.Component<any> {
 }
 const mapStateToProps = state => {
   var set = state.ui.get('settings');
+  var patchExists = state.ui.get('index_patch_exists');
   return {
+    patchExists: patchExists,
     locale: set.get('locale'),
     keepAwake: set.get('keepAwake'),
+    developerMode: set.get('developerMode'),
     aboutVisible: state.ui.get('about_visible')
   };
 };
@@ -130,6 +175,27 @@ const mapDispatchToProps = dispatch => {
     },
     showAbout: () => {
       dispatch(showAbout());
+    },
+    clearIndexPatch: locale => {
+      Alert.alert(
+        I18n.t('ui.confirmation'),
+        I18n.t('ui.delete confirmation'),
+        [
+          {
+            text: I18n.t('ui.delete'),
+            style: 'destructive',
+            onPress: () => dispatch(clearIndexPatch(locale))
+          },
+          {
+            text: I18n.t('ui.cancel'),
+            style: 'cancel'
+          }
+        ],
+        { cancelable: false }
+      );
+    },
+    shareIndexPatch: () => {
+      dispatch(shareIndexPatch());
     }
   };
 };

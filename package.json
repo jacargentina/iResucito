@@ -13,7 +13,7 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^8.2.6",
     "babel-preset-react-native": "^5.0.2",
-    "flow-bin": "^0.76.0",
+    "flow-bin": "^0.77.0",
     "react-test-renderer": "16.4.1"
   },
   "scripts": {
@@ -44,9 +44,9 @@
     "native-base": "^2.7.2",
     "react": "16.4.1",
     "react-native": "^0.56.0",
-    "react-native-collapsible": "^0.12.0",
+    "react-native-collapsible": "^0.13.0",
     "react-native-contacts": "^2.2.2",
-    "react-native-device-info": "^0.21.5",
+    "react-native-device-info": "^0.22.0",
     "react-native-fs": "^2.10.14",
     "react-native-highlight-words": "^1.0.1",
     "react-native-i18n": "^2.0.15",

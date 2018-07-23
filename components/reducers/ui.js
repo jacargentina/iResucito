@@ -3,6 +3,8 @@ import {
   INITIALIZE_SETUP,
   INITIALIZE_SEARCH,
   INITIALIZE_SONGS,
+  INITIALIZE_LOCALE_SONGS,
+  INITIALIZE_SINGLE_SONG,
   SET_SALMOS_FILTER,
   SET_CONTACTS_FILTER,
   SET_ABOUT_VISIBLE,
@@ -14,6 +16,8 @@ import {
   SET_CONTACT_IMPORT_VISIBLE,
   SET_CONTACT_IMPORT_LOADING,
   SET_CONTACT_IMPORT_ITEMS,
+  SET_CHOOSE_LOCALE_VISIBLE,
+  SET_INDEX_PATCH_EXISTS,
   SALMO_TRANSPORT,
   LIST_CREATE,
   LIST_ADD_SONG,
@@ -29,7 +33,9 @@ import { Map, List, fromJS } from 'immutable';
 
 const initialState = Map({
   search: [],
-  salmos: null,
+  songs: null,
+  index_patch_exists: false,
+  localeSongs: null,
   salmos_text_filter: Map(),
   salmos_transport_note: null,
   contacts_text_filter: Map(),
@@ -45,9 +51,12 @@ const initialState = Map({
   contact_import_visible: false,
   contact_import_loading: false,
   contact_import_items: [],
+  locale_choose_visible: false,
+  locale_choose_target_salmo: null,
   lists: Map(),
   contacts: List(),
   settings: Map({
+    developerMode: false,
     keepAwake: true,
     locale: 'default'
   })
@@ -58,7 +67,13 @@ export default function ui(state = initialState, action) {
     case INITIALIZE_SEARCH:
       return state.set('search', action.items);
     case INITIALIZE_SONGS:
-      return state.set('salmos', action.items);
+      return state.set('songs', fromJS(action.items));
+    case INITIALIZE_LOCALE_SONGS:
+      return state.set('localeSongs', action.items);
+    case INITIALIZE_SINGLE_SONG:
+      var songs = state.get('songs');
+      var idx = songs.findIndex(i => i.get('key') == action.song.key);
+      return state.setIn(['songs', idx], fromJS(action.song));
     case INITIALIZE_SETUP:
       if (action.settings) {
         state = state.set('settings', Map(action.settings));
@@ -113,6 +128,14 @@ export default function ui(state = initialState, action) {
         .toArray();
       var result = candidateName !== '' && !lists.includes(candidateName);
       return state.set('list_create_enabled', result);
+    case SET_CHOOSE_LOCALE_VISIBLE:
+      state = state.set('locale_choose_visible', action.visible);
+      if (action.salmo) {
+        state = state.set('locale_choose_target_salmo', action.salmo);
+      }
+      return state;
+    case SET_INDEX_PATCH_EXISTS:
+      return state.set('index_patch_exists', action.exists);
     case LIST_CREATE:
       if (!state.getIn(['lists', action.name])) {
         let schema = Map({ type: action.list_type });

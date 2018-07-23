@@ -21,13 +21,13 @@
       "Sem nomes importados. Para escolher da lista, você deve importar dos seus contatos na opção Comunidade.",
     "search placeholder": "Pesquisar",
     "locale warning title": "Tradução incompleta",
-    "locale warning message":
-      "O canto não foi incorporado ainda no seu idioma",
+    "locale warning message": "O canto não foi incorporado ainda no seu idioma",
     "donate message": "Ajude fazendo uma doação. A paz!",
     "donate button": "Doar",
     "no songs found": "Nenhum canto encontrado",
     "no contacts found": "Nenhum contato encontrado",
-    "empty songs list": "Lista de cantos vazia"
+    "empty songs list": "Lista de cantos vazia",
+    "confirmation": "Confirmação"
   },
   "list_type": {
     "eucharist": "Eucaristia",
@@ -112,7 +112,8 @@
     "find song": "Pesquisar Canto",
     "lists": "Listas",
     "community": "Comunidade",
-    "import contacts": "Importar Contatos"
+    "import contacts": "Importar Contatos",
+    "choose song": "Escolha Canto"
   },
   "call_to_action_title": {
     "add lists": "Adicionar Listas",
@@ -131,11 +132,16 @@
   "settings_title": {
     "locale": "Idioma",
     "keep awake": "Fique acordado",
-    "about": "Sobre"
+    "about": "Sobre",
+    "developer mode": "Modo de desenvolvedor",
+    "clear index patch": "Limpar o patch do índice",
+    "share index patch": "Compartilhar o patch do índice"
   },
   "settings_note": {
     "locale": "Traduzir o aplicativo para as línguas disponíveis",
-    "keep awake": "Evitar que o dispositivo apague a tela ao visualizar um canto"
+    "keep awake":
+      "Evitar que o dispositivo apague a tela ao visualizar um canto",
+    "developer mode": "Ativar somente se você for um colaborador na tradução dos cantos"
   },
   "share_action": {
     "view pdf": "Ver como PDF",

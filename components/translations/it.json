@@ -27,7 +27,8 @@
     "donate button": "Donare",
     "no songs found": "Nessuna canzone trovata",
     "no contacts found": "Nessun contatto trovato",
-    "empty songs list": "Elenco di canzoni vuote"
+    "empty songs list": "Elenco di canzoni vuote",
+    "confirmation": "Conferma"
   },
   "list_type": {
     "eucharist": "Eucarestia",
@@ -112,7 +113,8 @@
     "find song": "Cercare Canto",
     "lists": "Elenco",
     "community": "Comunità",
-    "import contacts": "Importa Contatti"
+    "import contacts": "Importa Contatti",
+    "choose song": "Scegli Canto"
   },
   "call_to_action_title": {
     "add lists": "Aggiungere elenchi",
@@ -131,12 +133,16 @@
   "settings_title": {
     "locale": "Lingua",
     "keep awake": "Mantere svegli",
-    "about": "Su"
+    "about": "Su",
+    "developer mode": "Modalità sviluppatore",
+    "clear index patch": "Cancella la patch dell’indice",
+    "share index patch": "Inviare la patch dell’indice"
   },
   "settings_note": {
     "locale": "Traduci l'app in una lingua disponibile",
     "keep awake":
-      "Evitare che il dispositivo entri in riposo al momento di visualizzare un salmo"
+      "Evitare che il dispositivo entri in riposo al momento di visualizzare un salmo",
+    "developer mode": "Abilita solo se sei un collaboratore nella traduzione delle canzoni"
   },
   "share_action": {
     "view pdf": "Visualizza come PDF",
