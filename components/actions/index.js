@@ -401,10 +401,15 @@ export function loadSongs(songs: Array<Song>): Array<Promise<any>> {
 
 export function readLocaleSongs(rawLoc: string) {
   var locale = rawLoc.split('-')[0];
-  return RNFS.readdir(`${BaseSongsPath}/${locale}`).then(items => {
+  var loadSongs =
+    Platform.OS == 'ios'
+      ? RNFS.readDir(`${BaseSongsPath}/${locale}`)
+      : RNFS.readDirAssets(`${BaseSongsPath}/${locale}`);
+  return loadSongs.then(items => {
     // Very important to call "normalize"
     // See editing.txt for details
     items = items
+      .map(i => i.name)
       .filter(i => i.endsWith('.txt'))
       .map(i => i.replace('.txt', '').normalize());
     items.sort();
