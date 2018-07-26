@@ -78,9 +78,14 @@ class SettingsScreen extends React.Component<any> {
                   }}
                   selectedValue={this.props.locale}
                   onValueChange={val => {
-                    this.props.updateSetting('locale', val);
-                    // Para forzar refresco del titulo segun idioma nuevo
-                    this.props.navigation.setParams({ title: '' });
+                    // IMPORTANTE!
+                    // Workaround de problema en Android
+                    // https://github.com/facebook/react-native/issues/15556
+                    setTimeout(() => {
+                      this.props.updateSetting('locale', val);
+                      // Para forzar refresco del titulo segun idioma nuevo
+                      this.props.navigation.setParams({ title: '' });
+                    }, 10);
                   }}>
                   {localesItems}
                 </Picker>
