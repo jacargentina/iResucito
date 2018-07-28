@@ -48,10 +48,10 @@ export const getSongsFromList = createSelector(
       // Si es de tipo 'libre', los salmos están dentro de 'items'
       if (clave === 'items') {
         valor = valor.map(nombre => {
-          return songs.find(s => s.get('nombre') == nombre);
+          return songs.find(s => s.get('nombre') == nombre).toJS();
         });
       } else if (getEsSalmo(clave) && valor !== null) {
-        return songs.find(s => s.get('nombre') == valor);
+        return songs.find(s => s.get('nombre') == valor).toJS();
       }
       return valor;
     });
