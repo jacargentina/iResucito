@@ -207,7 +207,7 @@ export const getProcessedSalmos = createSelector(
   (songs, nav_filter, text_filter) => {
     if (nav_filter) {
       for (var name in nav_filter) {
-        songs = songs.filter(s => s[name] == nav_filter[name]);
+        songs = songs.filter(s => s.get(name) == nav_filter[name]);
       }
     }
     if (text_filter) {
