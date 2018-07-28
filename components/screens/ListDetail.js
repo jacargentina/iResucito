@@ -11,7 +11,7 @@ import {
   deleteListSong,
   saveLists
 } from '../actions';
-import { getSalmosFromList } from '../selectors';
+import { getSongsFromList } from '../selectors';
 import AppNavigatorOptions from '../AppNavigatorOptions';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import I18n from '../translations';
@@ -183,7 +183,7 @@ const ListDetail = (props: any) => {
 };
 
 const mapStateToProps = (state, props) => {
-  var listMap = getSalmosFromList(state, props);
+  var listMap = getSongsFromList(state, props);
   return {
     list: props.navigation.state.params.list,
     listMap: listMap,

@@ -10,6 +10,8 @@ const ContactPhoto = (props: any) => {
     <Badge
       info
       style={{
+        marginTop: 3,
+        marginBottom: 3,
         width: 56,
         height: 56,
         borderRadius: 50,

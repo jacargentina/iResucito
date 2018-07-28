@@ -21,7 +21,8 @@ const ContactChooserDialog = (props: any) => {
         <View
           style={{
             flex: 3,
-            justifyContent: 'space-around'
+            justifyContent: 'space-around',
+            padding: 10
           }}>
           <Icon
             name="contacts"
