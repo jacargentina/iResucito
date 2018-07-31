@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect, Provider } from 'react-redux';
-import { BackHandler, Platform } from 'react-native';
+import { BackHandler, Platform, Alert, Linking } from 'react-native';
 import RNFS from 'react-native-fs';
 import DeviceInfo from 'react-native-device-info';
 import { createStore, applyMiddleware, compose } from 'redux';
@@ -12,12 +12,54 @@ import commonTheme from './native-base-theme/variables/platform';
 import AppNavigator from './components/AppNavigator';
 import reducer from './components/reducers';
 import { MenuProvider } from 'react-native-popup-menu';
+import {
+  setJSExceptionHandler,
+  setNativeExceptionHandler
+} from 'react-native-exception-handler';
 import { localdata, clouddata } from './components/data';
 import {
   initializeSetup,
   initializeLocale,
   refreshContactsThumbs
 } from './components/actions';
+
+const mailTo = encodeURIComponent('javier.alejandro.castro@gmail.com');
+const mailSubject = 'iResucito Crash';
+
+const sendErrorByMail = e => {
+  const str = typeof e === 'string' ? e : JSON.stringify(e);
+  const body = encodeURIComponent(str);
+  Linking.openURL(`mailto:${mailTo}?subject=${mailSubject}&body=${body}`);
+};
+
+const errorHandler = (e, isFatal) => {
+  if (isFatal) {
+    const detail = e.name && e.message ? `${e.name} ${e.message}` : e;
+    Alert.alert(
+      'Unexpected error occurred',
+      `
+        Error: ${isFatal ? 'Fatal:' : ''} ${detail}
+
+        Press OK to send an email with details to the developer
+        `,
+      [
+        {
+          text: 'OK',
+          onPress: () => {
+            sendErrorByMail(e);
+          }
+        }
+      ]
+    );
+  } else {
+    console.log(e);
+  }
+};
+
+setJSExceptionHandler(errorHandler);
+setNativeExceptionHandler(nativeError => {
+  sendErrorByMail(nativeError);
+});
 
 if (Platform.OS == 'android') {
   // Reemplazar startsWith en Android
