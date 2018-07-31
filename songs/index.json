@@ -46,7 +46,8 @@
   "virgen": true,
   "files": {
    "es": "Débora - Jc 5",
-   "it": "Debora - Jc 5"
+   "it": "Debora - Jc 5",
+   "pt": "Débora - Jz 5"
   }
  },
  "6": {
@@ -325,7 +326,8 @@
   "laudes": true,
   "files": {
    "es": "Babilonia criminal - Sal 137 (136)",
-   "it": "Sui fiumi di babilonia - Sal 137 (136)"
+   "it": "Sui fiumi di babilonia - Sal 137 (136)",
+   "pt": "Babilonia criminal - Sal 137 (136)"
   }
  },
  "38": {
@@ -335,7 +337,8 @@
   "final": true,
   "files": {
    "es": "Balaam - Nm 23, 7-24",
-   "it": "Canto di Balaam - Nm 23, 7-24"
+   "it": "Canto di Balaam - Nm 23, 7-24",
+   "pt": "Balaão - Nm 23, 7-24"
   }
  },
  "39": {
@@ -344,7 +347,8 @@
   "laudes": true,
   "files": {
    "es": "Bendeciré al Señor en todo tiempo - Sal 34 (33)",
-   "it": "Benedirò il signore in ogni tempo - Sal 34 (33)"
+   "it": "Benedirò il signore in ogni tempo - Sal 34 (33)",
+   "pt": "Bendita és tu, Maria - Lc 1, 42-45"
   }
  },
  "40": {
@@ -353,7 +357,8 @@
   "laudes": true,
   "files": {
    "es": "Bendice, alma mía, a Yahveh - Sal 103 (102)",
-   "it": "Benedici anima mia Jahvè - Sal 103 (102)"
+   "it": "Benedici anima mia Jahvè - Sal 103 (102)",
+   "pt": "Benedictus - Lc 1, 67-80"
   }
  },
  "41": {
@@ -463,7 +468,8 @@
   "final": true,
   "files": {
    "es": "Dayenú",
-   "it": "Dajenù"
+   "it": "Dajenù",
+   "pt": "Dayenú - Da Hagadá da Páscoa Hebráica"
   }
  },
  "54": {
@@ -471,7 +477,8 @@
   "cuaresma": true,
   "files": {
    "es": "De profundis - Sal 130 (129)",
-   "it": "Dal profondo a te grido - Sal 130 (129)"
+   "it": "Dal profondo a te grido - Sal 130 (129)",
+   "pt": "De profundis - Sal 130 (129)"
   }
  },
  "55": {
@@ -480,7 +487,8 @@
   "entrada": true,
   "files": {
    "es": "Decid a los de corazón cansado - Is 35 4ss",
-   "it": "Dite agli smarriti di cuore - Is 35 4ss"
+   "it": "Dite agli smarriti di cuore - Is 35 4ss",
+   "pt": "Dizei Aos De Coracao Cansado - Is 35, 4ss"
   }
  },
  "56": {
@@ -488,7 +496,8 @@
   "laudes": true,
   "files": {
    "es": "Delante de los ángeles - Sal 138 (137)",
-   "it": "Davanti agli angeli - Sal 138 (137)"
+   "it": "Davanti agli angeli - Sal 138 (137)",
+   "pt": "Diante dos anjos - Sal 138 (137)"
   }
  },
  "57": {
@@ -496,7 +505,8 @@
   "laudes": true,
   "files": {
    "es": "Dice el Señor a mi Señor - Sal 110 (109)",
-   "it": "Dice il signore al mio signore - Sal 110 (109)"
+   "it": "Dice il signore al mio signore - Sal 110 (109)",
+   "pt": "Diz O Senhor Ao Meu Senhor - Sal 110 (109)"
   }
  },
  "58": {
@@ -504,7 +514,8 @@
   "final": true,
   "files": {
    "es": "Día de reposo - Jn 8, 52",
-   "it": "Giorno di riposo - Jn 8, 52"
+   "it": "Giorno di riposo - Jn 8, 52",
+   "pt": "Dia de repouso - Jo 8, 52"
   }
  },
  "59": {
@@ -513,7 +524,8 @@
   "entrada": true,
   "files": {
    "es": "El Señor anuncia una noticia - Sal 68 (67)",
-   "it": "Il signore annuncia una notizia - Sal 68 (67)"
+   "it": "Il signore annuncia una notizia - Sal 68 (67)",
+   "pt": "O Senhor Anuncia Uma Notícia - Sal 68 (67)"
   }
  },
  "60": {
@@ -521,7 +533,8 @@
   "comunion": true,
   "files": {
    "es": "El Señor es mi pastor - Sal 23 (24)",
-   "it": "Il signore è il mio pastore - Sal 23 (22)"
+   "it": "Il signore è il mio pastore - Sal 23 (22)",
+   "pt": "O Senhor É Minha Luz E Salvação - Sal 27 (26)"
   }
  },
  "61": {
@@ -554,7 +567,8 @@
   "cuaresma": true,
   "files": {
    "es": "Elí, Elí, lamá sabactaní - Sal 22 (21)",
-   "it": "Eli, eli, lammà sabactani - Sal 22 (21)"
+   "it": "Eli, eli, lammà sabactani - Sal 22 (21)",
+   "pt": "Elí Elí Lamá Sabactani - Sal 22 (21)"
   }
  },
  "65": {
@@ -563,7 +577,8 @@
   "fraccion": true,
   "files": {
    "es": "Eres digno de tomar el libro - Ap 5, 9ss",
-   "it": "Canto dell'agnello - Ap 5, 9ss"
+   "it": "Canto dell'agnello - Ap 5, 9ss",
+   "pt": "Tu És Digno De Receber O Livro - Ap 5,9ss"
   }
  },
  "66": {
@@ -579,14 +594,16 @@
   "etapa": "Precatecumenado",
   "laudes": true,
   "files": {
-   "es": "Escóndeme en lo oculto de tu tienda - Sal 27 (26)"
+   "es": "Escóndeme en lo oculto de tu tienda - Sal 27 (26)",
+   "pt": "Esconde-me No Oculto De Tua Tenda - Sal 27 (26)"
   }
  },
  "68": {
   "etapa": "Precatecumenado",
   "files": {
    "es": "Están rotas mis ataduras - Carmen 63",
-   "it": "Sono rotti i miei legami - Carmen '63"
+   "it": "Sono rotti i miei legami - Carmen '63",
+   "pt": "Estão Rotas Minhas Ataduras - Carmen 63 - Pema de Rabindranath Tagore"
   }
  },
  "69": {
@@ -594,7 +611,8 @@
   "paz": true,
   "files": {
    "es": "Evenu Shalom Alejem - Canto popular hebreo",
-   "it": "Evenu Shalom Alejem - Canto ebraico"
+   "it": "Evenu Shalom Alejem - Canto ebraico",
+   "pt": "Evenu Shalom Alehem - Canto Popular Hebraico"
   }
  },
  "70": {
@@ -1387,7 +1405,8 @@
   "final": true,
   "files": {
    "es": "El Espiritu del Señor está sobre mi - Lc 4, 18 - Is 61, 1-3",
-   "it": "Lo spirito del signore è sopra di me - Lc 4, 18 - Is 61, 1-3"
+   "it": "Lo spirito del signore è sopra di me - Lc 4, 18 - Is 61, 1-3",
+   "pt": "O Espírito Do Senhor Está Sobre Mim - Lc 4, 18 - Is 61, 1-3"
   }
  },
  "165": {
@@ -1403,7 +1422,8 @@
   "fraccion": true,
   "files": {
    "es": "En una noche oscura - San Juan de la Cruz",
-   "it": "In una notte oscura - S. Giovanni della Croce"
+   "it": "In una notte oscura - S. Giovanni della Croce",
+   "pt": "Em Uma Noite Escura - Subida ao Monte Carmelo - São João da Cruz"
   }
  },
  "167": {
@@ -1412,7 +1432,8 @@
   "fraccion": true,
   "files": {
    "es": "Escuchad islas lejanas - Is 49, 1-16",
-   "it": "Ti vedranno i re - Is 49, 1-16"
+   "it": "Ti vedranno i re - Is 49, 1-16",
+   "pt": "Esperei Esperei No Senhor - Sal 40 (39)"
   }
  },
  "168": {
@@ -1421,7 +1442,8 @@
   "fraccion": true,
   "files": {
    "es": "Extiendo mis manos - Oda 27 de Salomón",
-   "it": "Ho steso le mie mani - Ode 27 di Salomone"
+   "it": "Ho steso le mie mani - Ode 27 di Salomone",
+   "pt": "Estendo Minhas Mãos - Ode 27 de Salomão"
   }
  },
  "169": {
@@ -1562,7 +1584,8 @@
   "etapa": "Liturgia",
   "files": {
    "es": "Bendición del agua",
-   "it": "Benedizione dell'acqua"
+   "it": "Benedizione dell'acqua",
+   "pt": "Benção penitencial - Oração para concluir a ação de graças para a Celebração Penitencial"
   }
  },
  "187": {
@@ -1732,7 +1755,8 @@
  "212": {
   "etapa": "Precatecumenado",
   "files": {
-   "es": "El Mesías, León para vencer - Vittorino de Pettau"
+   "es": "El Mesías, León para vencer - Vittorino de Pettau",
+   "pt": "O Messias Leão Para Vencer - (inspirado num texto de S. Vitorino de Pettau +304)"
   }
  },
  "213": {
@@ -1740,7 +1764,8 @@
   "entrada": true,
   "comunion": true,
   "files": {
-   "es": "En medio de aquel gentío - Lc 8,42b-48"
+   "es": "En medio de aquel gentío - Lc 8,42b-48",
+   "pt": "Em Meio A Multidão - Lc 8, 42b-48"
   }
  },
  "214": {
@@ -1777,7 +1802,8 @@
   "fraccion": true,
   "comunion": true,
   "files": {
-   "es": "Este es el mandamiento mio - Jn 15, 12ss"
+   "es": "Este es el mandamiento mio - Jn 15, 12ss",
+   "pt": "Este é o Meu Mandamento - Jo 15, 12ss"
   }
  },
  "219": {
