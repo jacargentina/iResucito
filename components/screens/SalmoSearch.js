@@ -8,6 +8,7 @@ import ListAddDialog from './ListAddDialog';
 import SalmoChooserDialog from './SalmoChooserDialog';
 import ContactChooserDialog from './ContactChooserDialog';
 import ContactImportDialog from './ContactImportDialog';
+import SalmoChooseLocaleDialog from './SalmoChooseLocaleDialog';
 import AcercaDe from './AcercaDe';
 import I18n from '../translations';
 import { getSearchItems } from '../selectors';
@@ -23,6 +24,7 @@ const SalmoSearch = (props: any) => {
         <SalmoChooserDialog navigation={props.navigation} />
         <ContactImportDialog navigation={props.navigation} />
         <ContactChooserDialog navigation={props.navigation} />
+        <SalmoChooseLocaleDialog navigation={props.navigation} />
         <FlatList
           data={props.items}
           keyExtractor={item => item.title}

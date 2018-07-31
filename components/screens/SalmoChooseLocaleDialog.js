@@ -72,8 +72,9 @@ const mapDispatchToProps = dispatch => {
       dispatch(hideChooseLocaleDialog());
     },
     localeFileSelected: (salmo, locale, file) => {
-      dispatch(setSongLocalePatch(salmo, locale, file));
-      dispatch(hideChooseLocaleDialog());
+      dispatch(setSongLocalePatch(salmo, locale, file)).then(() => {
+        dispatch(hideChooseLocaleDialog());
+      });
     }
   };
 };

@@ -24,7 +24,8 @@
     "ios-ipad": "react-native run-ios --simulator='iPad Pro (9.7-inch)'",
     "test": "node node_modules/jest/bin/jest.js --watch",
     "postversion": "react-native-version --never-amend",
-    "lint": "eslint components/**/*.js"
+    "lint": "eslint components/**/*.js",
+    "react-devtools": "react-devtools"
   },
   "jest": {
     "preset": "react-native"

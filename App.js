@@ -3,7 +3,7 @@ import { connect, Provider } from 'react-redux';
 import { BackHandler, Platform } from 'react-native';
 import RNFS from 'react-native-fs';
 import DeviceInfo from 'react-native-device-info';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import SplashScreen from 'react-native-splash-screen';
 import { Root, StyleProvider } from 'native-base';
@@ -121,7 +121,9 @@ const mapDispatchToProps = dispatch => {
 
 const ConnectedApp = connect(null, mapDispatchToProps)(App);
 
-let store = createStore(reducer, applyMiddleware(thunk));
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+let store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
 
 const AppWithReduxStore = () => {
   return (

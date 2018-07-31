@@ -5,7 +5,6 @@ import { Badge, Text } from 'native-base';
 import { FlatList, Keyboard } from 'react-native';
 import SearchBarView from './SearchBarView';
 import SalmoListItem from './SalmoListItem';
-import SalmoChooseLocaleDialog from './SalmoChooseLocaleDialog';
 import AppNavigatorOptions from '../AppNavigatorOptions';
 import { setSalmosFilterText } from '../actions';
 import {
@@ -48,7 +47,6 @@ class SalmoList extends React.Component<any> {
             {I18n.t('ui.no songs found')}
           </Text>
         )}
-        <SalmoChooseLocaleDialog navigation={this.props.navigation} />
         <FlatList
           ref={ref => {
             this.listRef = ref;
