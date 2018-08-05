@@ -23,7 +23,7 @@ import {
   refreshContactsThumbs
 } from './components/actions';
 
-const mailTo = encodeURIComponent('javier.alejandro.castro@gmail.com');
+const mailTo = 'javier.alejandro.castro@gmail.com';
 const mailSubject = 'iResucito Crash';
 
 const sendErrorByMail = e => {
