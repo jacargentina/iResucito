@@ -2,7 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import BaseModal from './BaseModal';
-import { Text, ListItem, Body, Icon } from 'native-base';
+import { Text, ListItem, Body, Left, Icon } from 'native-base';
 import { FlatList, View } from 'react-native';
 import { hideChooseLocaleDialog, setSongLocalePatch } from '../actions';
 import { getLocaleReal, getAvailableSongsForPatch } from '../selectors';
@@ -35,6 +35,24 @@ const SalmoChooseLocaleDialog = (props: any) => {
           </Text>
         </View>
       )}
+      {props.targetSalmo && (
+        <ListItem itemDivider>
+          <Text>
+            {I18n.t('ui.list_total_songs', { total: props.items.length })}
+          </Text>
+        </ListItem>
+      )}
+      {props.targetSalmo && (
+        <ListItem icon>
+          <Left>
+            <Icon name="musical-notes" />
+          </Left>
+          <Body>
+            <Text>{props.targetSalmo.titulo}</Text>
+            <Text note>{props.targetSalmo.fuente}</Text>
+          </Body>
+        </ListItem>
+      )}
       <FlatList
         data={props.items}
         keyExtractor={(item, index) => index.toString()}
@@ -42,11 +60,15 @@ const SalmoChooseLocaleDialog = (props: any) => {
           return (
             <ListItem
               onPress={() => {
-                props.localeFileSelected(props.targetSalmo, props.locale, item.nombre);
+                props.localeFileSelected(
+                  props.targetSalmo,
+                  props.locale,
+                  item.nombre
+                );
               }}>
               <Body>
                 <Text>{item.titulo}</Text>
-                <Text>{item.fuente}</Text>
+                <Text note>{item.fuente}</Text>
               </Body>
             </ListItem>
           );

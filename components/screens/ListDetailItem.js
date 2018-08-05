@@ -28,7 +28,7 @@ const ListDetailItem = (props: any) => {
     item = (
       <ListItem icon last>
         <Left>
-          <Icon name="book" />
+          <Icon name='book' />
         </Left>
         <Body>
           <Input

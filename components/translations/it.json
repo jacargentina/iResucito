@@ -28,7 +28,8 @@
     "no songs found": "Nessuna canzone trovata",
     "no contacts found": "Nessun contatto trovato",
     "empty songs list": "Elenco di canzoni vuote",
-    "confirmation": "Conferma"
+    "confirmation": "Conferma",
+    "list_total_songs": "{{total}} canzoni totali"
   },
   "list_type": {
     "eucharist": "Eucarestia",
@@ -142,7 +143,8 @@
     "locale": "Traduci l'app in una lingua disponibile",
     "keep awake":
       "Evitare che il dispositivo entri in riposo al momento di visualizzare un salmo",
-    "developer mode": "Abilita solo se sei un collaboratore nella traduzione delle canzoni"
+    "developer mode":
+      "Abilita solo se sei un collaboratore nella traduzione delle canzoni"
   },
   "share_action": {
     "view pdf": "Visualizza come PDF",

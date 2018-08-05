@@ -27,7 +27,8 @@
     "no songs found": "Nenhum canto encontrado",
     "no contacts found": "Nenhum contato encontrado",
     "empty songs list": "Lista de cantos vazia",
-    "confirmation": "Confirmação"
+    "confirmation": "Confirmação",
+    "list_total_songs": "{{total}} canções totais"
   },
   "list_type": {
     "eucharist": "Eucaristia",

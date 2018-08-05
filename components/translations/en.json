@@ -28,7 +28,8 @@
     "no songs found": "No songs found",
     "no contacts found": "No contacts found",
     "empty songs list": "Empty songs list",
-    "confirmation": "Confirmation"
+    "confirmation": "Confirmation",
+    "list_total_songs": "{{total}} total songs"
   },
   "list_type": {
     "eucharist": "Eucharist",
