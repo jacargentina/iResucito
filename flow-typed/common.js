@@ -16,6 +16,12 @@ declare type SongLine = {
   textoEspecial: boolean
 };
 
+declare type SongFile = {
+  nombre: string,
+  titulo: string,
+  fuente: string
+};
+
 declare type Song = {
   key: string,
   titulo: string,

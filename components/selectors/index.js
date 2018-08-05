@@ -266,7 +266,9 @@ export const getAvailableSongsForPatch = createSelector(
   getLocaleReal,
   (songs, localeSongs, locale) => {
     var res = localeSongs.filter(locSong => {
-      var found = songs.find(s => s.getIn(['files', locale]) === locSong);
+      var found = songs.find(
+        s => s.getIn(['files', locale]) === locSong.nombre
+      );
       return !found;
     });
     return res;

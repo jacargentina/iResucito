@@ -309,7 +309,7 @@ export function setContactAttribute(contact: any, attribute: any) {
   };
 }
 
-function ordenAlfabetico(a: Song, b: Song) {
+function ordenAlfabetico(a: Song | SongFile, b: Song | SongFile) {
   if (a.titulo < b.titulo) {
     return -1;
   }
@@ -319,18 +319,25 @@ function ordenAlfabetico(a: Song, b: Song) {
   return 0;
 }
 
-function assignInfoFromFile(info: Song, files: any, locale: string) {
-  var nombre = files[locale];
-  info.nombre = nombre;
-  var path = `${BaseSongsPath}/${locale}/${nombre}.txt`;
-  info.path = path;
+function getSongFileFromFilename(nombre: string) {
   var titulo = nombre.includes('-')
     ? nombre.substring(0, nombre.indexOf('-')).trim()
     : nombre;
-  info.titulo = titulo;
   var fuente =
     titulo !== nombre ? nombre.substring(nombre.indexOf('-') + 1).trim() : '';
-  info.fuente = fuente;
+  return (SongFile = {
+    nombre: nombre,
+    titulo: titulo,
+    fuente: fuente
+  });
+}
+
+function assignInfoFromFile(info: Song, files: any, locale: string) {
+  var parsed = getSongFileFromFilename(files[locale]);
+  info.nombre = parsed.nombre;
+  info.titulo = parsed.titulo;
+  info.fuente = parsed.fuente;
+  info.path = `${BaseSongsPath}/${locale}/${files[locale]}.txt`;
 }
 
 export function getSingleSongMeta(
@@ -411,8 +418,9 @@ export function readLocaleSongs(rawLoc: string) {
     items = items
       .map(i => i.name)
       .filter(i => i.endsWith('.txt'))
-      .map(i => i.replace('.txt', '').normalize());
-    items.sort();
+      .map(i => i.replace('.txt', '').normalize())
+      .map(i => getSongFileFromFilename(i));
+    items.sort(ordenAlfabetico);
     return items;
   });
 }

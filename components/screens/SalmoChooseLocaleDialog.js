@@ -42,10 +42,11 @@ const SalmoChooseLocaleDialog = (props: any) => {
           return (
             <ListItem
               onPress={() => {
-                props.localeFileSelected(props.targetSalmo, props.locale, item);
+                props.localeFileSelected(props.targetSalmo, props.locale, item.nombre);
               }}>
               <Body>
-                <Text>{item}</Text>
+                <Text>{item.titulo}</Text>
+                <Text>{item.fuente}</Text>
               </Body>
             </ListItem>
           );
