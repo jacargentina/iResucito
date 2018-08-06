@@ -3,6 +3,7 @@ import { createStackNavigator } from 'react-navigation';
 import SalmoList from './screens/SalmoList';
 import SalmoDetail from './screens/SalmoDetail';
 import ListDetail from './screens/ListDetail';
+import UnassignedList from './screens/UnassignedList';
 import PDFViewer from './screens/PDFViewer';
 import AppNavigatorOptions from './AppNavigatorOptions';
 import MenuNavigator from './MenuNavigator';
@@ -14,7 +15,8 @@ const AppNavigator = createStackNavigator(
     SalmoList: SalmoList,
     SalmoDetail: SalmoDetail,
     PDFViewer: PDFViewer,
-    ListDetail: ListDetail
+    ListDetail: ListDetail,
+    UnassignedList: UnassignedList
   },
   {
     navigationOptions: (props: any) => {
