@@ -83,6 +83,7 @@ class SettingsScreen extends React.Component<any> {
                     // https://github.com/facebook/react-native/issues/15556
                     setTimeout(() => {
                       this.props.updateSetting('locale', val);
+                      this.props.reinitializeLocale(val);
                       // Para forzar refresco del titulo segun idioma nuevo
                       this.props.navigation.setParams({ title: '' });
                     }, 10);
@@ -113,9 +114,10 @@ class SettingsScreen extends React.Component<any> {
               <Right>
                 <Switch
                   value={this.props.developerMode}
-                  onValueChange={checked =>
-                    this.props.updateSetting('developerMode', checked)
-                  }
+                  onValueChange={checked => {
+                    this.props.updateSetting('developerMode', checked);
+                    this.props.reinitializeLocale(this.props.locale);
+                  }}
                 />
               </Right>
             </ListItem>
@@ -172,11 +174,11 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     updateSetting: (key, value) => {
-      if (key == 'locale') {
-        dispatch(initializeLocale(value));
-      }
       dispatch(applySetting(key, value));
       dispatch(saveSettings());
+    },
+    reinitializeLocale: locale => {
+      dispatch(initializeLocale(locale));
     },
     showAbout: () => {
       dispatch(showAbout());

@@ -77,7 +77,8 @@
     "exit": "Finale",
     "signing to the virgin": "Canti della Vergine",
     "children's songs": "Canti dei Bambini",
-    "lutes and vespers": "Lodi e Vespri"
+    "lutes and vespers": "Lodi e Vespri",
+    "unasigned": "Non assegnato"
   },
   "search_tabs": {
     "all": "Tutto",
@@ -106,7 +107,8 @@
     "exit": "Canti alla fine della liturgie",
     "signing to the virgin": "Canti dedicati alla Vergine Maria",
     "children's songs": "Canti dei Bambini",
-    "lutes and vespers": "Salmi di lodi 'e Vespri"
+    "lutes and vespers": "Salmi di lodi 'e Vespri",
+    "unnasigned": "Canzoni locali non nell'indice"
   },
   "screen_title": {
     "search": "Cercare",

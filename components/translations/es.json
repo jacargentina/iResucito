@@ -76,7 +76,8 @@
     "exit": "Salida",
     "signing to the virgin": "Cantos a la Virgen",
     "children's songs": "Cantos de los Niños",
-    "lutes and vespers": "Laúdes y Vísperas"
+    "lutes and vespers": "Laúdes y Vísperas",
+    "unassigned": "Sin asignar"
   },
   "search_tabs": {
     "all": "Todos",
@@ -105,7 +106,8 @@
     "exit": "Cantos para la salida de las liturgias",
     "signing to the virgin": "Cantos dedicados a la Virgen María",
     "children's songs": "Cantos de los niños",
-    "lutes and vespers": "Salmos de Laudes y Vísperas"
+    "lutes and vespers": "Salmos de Laudes y Vísperas",
+    "unassigned": "Cantos sin asignar al indice"
   },
   "screen_title": {
     "search": "Buscar",

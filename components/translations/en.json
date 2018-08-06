@@ -77,7 +77,8 @@
     "exit": "Final Songs",
     "signing to the virgin": "Songs to the Virgin",
     "children's songs": "Songs for Children",
-    "lutes and vespers": "Lauds and Vespers"
+    "lutes and vespers": "Lauds and Vespers",
+    "unassigned": "Unassigned"
   },
   "search_tabs": {
     "all": "All",
@@ -106,7 +107,8 @@
     "exit": "Songs at the end of the liturgies",
     "signing to the virgin": "Songs dedicated to the Virgin Mary",
     "children's songs": "Songs for children",
-    "lutes and vespers": "Psalms of Lauds and Vespers"
+    "lutes and vespers": "Psalms of Lauds and Vespers",
+    "unassigned": "Locale songs not in the index"
   },
   "screen_title": {
     "search": "Search",

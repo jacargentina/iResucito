@@ -76,7 +76,8 @@
     "exit": "Saída",
     "signing to the virgin": "Cantos à Virgem",
     "children's songs": "Canto das Crianças",
-    "lutes and vespers": "Laudes e Vésperas"
+    "lutes and vespers": "Laudes e Vésperas",
+    "unassigned": "Não atribuído"
   },
   "search_tabs": {
     "all": "Todos",
@@ -105,7 +106,8 @@
     "exit": "Canto para o final das Liturgias",
     "signing to the virgin": "Cantos dedicados à Virgem Maria",
     "children's songs": "Canto das Crianças",
-    "lutes and vespers": "Salmos das Laudes e Vésperas"
+    "lutes and vespers": "Salmos das Laudes e Vésperas",
+    "unassigned": "Salmos locais não no índice"
   },
   "screen_title": {
     "search": "Pesquisar",
