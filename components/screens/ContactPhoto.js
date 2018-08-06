@@ -10,8 +10,6 @@ const ContactPhoto = (props: any) => {
     <Badge
       info
       style={{
-        marginTop: 3,
-        marginBottom: 3,
         width: 56,
         height: 56,
         borderRadius: 50,
@@ -22,7 +20,8 @@ const ContactPhoto = (props: any) => {
       <Text
         style={{
           fontSize: 18,
-          fontWeight: 'bold'
+          lineHeight: 50,
+          fontWeight: 'bold',
         }}>
         {props.item.givenName[0]} {props.item.familyName && props.item.familyName.length > 0 ? props.item.familyName[0] : ''}
       </Text>
