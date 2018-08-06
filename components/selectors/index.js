@@ -165,9 +165,9 @@ export const getProcessedContacts = createSelector(
   }
 );
 
-export const getCurrentRouteSalmosTextFilter = (state: any, props: any) => {
+export const getCurrentRouteInputTextFilter = (state: any, props: any) => {
   return state.ui.getIn([
-    'salmos_text_filter',
+    'input_text_filter',
     getCurrentRouteKey(state, props)
   ]);
 };
@@ -203,7 +203,7 @@ export const getFilterFromNavOrProps = (state: any, props: any) => {
 export const getProcessedSalmos = createSelector(
   getCurrentRouteSalmos,
   getFilterFromNavOrProps,
-  getCurrentRouteSalmosTextFilter,
+  getCurrentRouteInputTextFilter,
   (songs, nav_filter, text_filter) => {
     if (nav_filter) {
       for (var name in nav_filter) {
@@ -272,5 +272,21 @@ export const getAvailableSongsForPatch = createSelector(
       return !found;
     });
     return res;
+  }
+);
+
+export const getFilteredAvailableSongsForPatch = createSelector(
+  getAvailableSongsForPatch,
+  getCurrentRouteInputTextFilter,
+  (localeSongs, text_filter) => {
+    if (text_filter) {
+      localeSongs = localeSongs.filter(locSong => {
+        return (
+          locSong.titulo.toLowerCase().includes(text_filter.toLowerCase()) ||
+          locSong.fuente.toLowerCase().includes(text_filter.toLowerCase())
+        );
+      });
+    }
+    return localeSongs;
   }
 );

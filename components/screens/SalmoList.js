@@ -6,12 +6,12 @@ import { FlatList, Keyboard } from 'react-native';
 import SearchBarView from './SearchBarView';
 import SalmoListItem from './SalmoListItem';
 import AppNavigatorOptions from '../AppNavigatorOptions';
-import { setSalmosFilterText } from '../actions';
+import { setInputFilterText } from '../actions';
 import {
   makeGetProcessedSalmos,
   getShowSalmosBadge,
   getCurrentRouteKey,
-  getCurrentRouteSalmosTextFilter
+  getCurrentRouteInputTextFilter
 } from '../selectors';
 import I18n from '../translations';
 
@@ -77,7 +77,7 @@ const makeMapStateToProps = () => {
   const mapStateToProps = (state, props) => {
     return {
       textFilterId: getCurrentRouteKey(state, props),
-      textFilter: getCurrentRouteSalmosTextFilter(state, props),
+      textFilter: getCurrentRouteInputTextFilter(state, props),
       items: getProcessedSalmos(state, props).toJS(),
       showBadge: getShowSalmosBadge(state, props)
     };
@@ -88,7 +88,7 @@ const makeMapStateToProps = () => {
 const mapDispatchToProps = (dispatch, props) => {
   return {
     filtrarHandler: (inputId, text) => {
-      dispatch(setSalmosFilterText(inputId, text));
+      dispatch(setInputFilterText(inputId, text));
     },
     onPress: salmo => {
       if (props.onPress) {

@@ -4,13 +4,22 @@ import { connect } from 'react-redux';
 import { Badge, Text, ListItem, Body } from 'native-base';
 import { FlatList, Keyboard } from 'react-native';
 import SearchBarView from './SearchBarView';
+import Highlighter from 'react-native-highlight-words';
 import AppNavigatorOptions from '../AppNavigatorOptions';
-import { setSalmosFilterText } from '../actions';
-import { getAvailableSongsForPatch } from '../selectors';
+import { setInputFilterText } from '../actions';
+import commonTheme from '../../native-base-theme/variables/platform';
+import textTheme from '../../native-base-theme/components/Text';
+import {
+  getFilteredAvailableSongsForPatch,
+  getCurrentRouteKey,
+  getCurrentRouteInputTextFilter
+} from '../selectors';
 import I18n from '../translations';
 
 class UnassignedList extends React.Component<any> {
   listRef: any;
+  textStyles: any;
+  noteStyles: any;
 
   static navigationOptions = (props: any) => {
     return {
@@ -21,6 +30,9 @@ class UnassignedList extends React.Component<any> {
 
   constructor(props) {
     super(props);
+    this.textStyles = textTheme(commonTheme);
+    this.noteStyles = this.textStyles['.note'];
+    delete this.textStyles['.note'];
   }
 
   render() {
@@ -53,8 +65,22 @@ class UnassignedList extends React.Component<any> {
             return (
               <ListItem>
                 <Body>
-                  <Text>{item.titulo}</Text>
-                  <Text note>{item.fuente}</Text>
+                  <Highlighter
+                    style={this.textStyles}
+                    highlightStyle={{
+                      backgroundColor: 'yellow'
+                    }}
+                    searchWords={[this.props.textFilter]}
+                    textToHighlight={item.titulo}
+                  />
+                  <Highlighter
+                    style={this.noteStyles}
+                    highlightStyle={{
+                      backgroundColor: 'yellow'
+                    }}
+                    searchWords={[this.props.textFilter]}
+                    textToHighlight={item.fuente}
+                  />
                 </Body>
               </ListItem>
             );
@@ -65,26 +91,26 @@ class UnassignedList extends React.Component<any> {
   }
 }
 
-const makeMapStateToProps = state => {
+const makeMapStateToProps = (state, props) => {
   return {
-    items: getAvailableSongsForPatch(state),
-    textFilterId: 'myid',
-    textFilter: null
+    items: getFilteredAvailableSongsForPatch(state, props),
+    textFilterId: getCurrentRouteKey(state, props),
+    textFilter: getCurrentRouteInputTextFilter(state, props)
   };
 };
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
     filtrarHandler: (inputId, text) => {
-      dispatch(setSalmosFilterText(inputId, text));
-    },
-    onPress: salmo => {
-      if (props.onPress) {
-        props.onPress(salmo);
-      } else {
-        props.navigation.navigate('SalmoDetail', { salmo: salmo });
-      }
+      dispatch(setInputFilterText(inputId, text));
     }
+    // onPress: salmo => {
+    //   if (props.onPress) {
+    //     props.onPress(salmo);
+    //   } else {
+    //     props.navigation.navigate('SalmoDetail', { salmo: salmo });
+    //   }
+    // }
   };
 };
 

@@ -5,7 +5,7 @@ import {
   INITIALIZE_SONGS,
   INITIALIZE_LOCALE_SONGS,
   INITIALIZE_SINGLE_SONG,
-  SET_SALMOS_FILTER,
+  SET_INPUT_FILTERTEXT,
   SET_CONTACTS_FILTER,
   SET_ABOUT_VISIBLE,
   SET_SETTINGS_VALUE,
@@ -36,7 +36,7 @@ const initialState = Map({
   songs: null,
   index_patch_exists: false,
   localeSongs: null,
-  salmos_text_filter: Map(),
+  input_text_filter: Map(),
   salmos_transport_note: null,
   contacts_text_filter: Map(),
   about_visible: false,
@@ -62,7 +62,7 @@ const initialState = Map({
   })
 });
 
-export default function ui(state = initialState, action) {
+export default function ui(state: any = initialState, action: any) {
   switch (action.type) {
     case INITIALIZE_SEARCH:
       return state.set('search', action.items);
@@ -85,8 +85,8 @@ export default function ui(state = initialState, action) {
         state = state.set('contacts', fromJS(action.contacts));
       }
       return state;
-    case SET_SALMOS_FILTER:
-      return state.setIn(['salmos_text_filter', action.inputId], action.filter);
+    case SET_INPUT_FILTERTEXT:
+      return state.setIn(['input_text_filter', action.inputId], action.filter);
     case SET_CONTACTS_FILTER:
       return state.setIn(
         ['contacts_text_filter', action.inputId],

@@ -5,7 +5,7 @@ export const INITIALIZE_SINGLE_SONG = 'INITIALIZE_SINGLE_SONG';
 export const INITIALIZE_LOCALE_SONGS = 'INITIALIZE_LOCALE_SONGS';
 export const INITIALIZE_SEARCH = 'INITIALIZE_SEARCH';
 
-export const SET_SALMOS_FILTER = 'SET_SALMOS_FILTER';
+export const SET_INPUT_FILTERTEXT = 'SET_INPUT_FILTERTEXT';
 export const SET_CONTACTS_FILTER = 'SET_CONTACTS_FILTER';
 export const SET_ABOUT_VISIBLE = 'SET_ABOUT_VISIBLE';
 export const SET_SETTINGS_VALUE = 'SET_SETTINGS_VALUE';
@@ -221,8 +221,8 @@ export function hideListAddDialog() {
   return { type: SET_LIST_ADD_VISIBLE, visible: false };
 }
 
-export function setSalmosFilterText(inputId: string, text: string) {
-  return { type: SET_SALMOS_FILTER, inputId: inputId, filter: text };
+export function setInputFilterText(inputId: string, text: string) {
+  return { type: SET_INPUT_FILTERTEXT, inputId: inputId, filter: text };
 }
 
 export function salmoTransport(transportTo: string) {
