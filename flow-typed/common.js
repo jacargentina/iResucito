@@ -37,6 +37,8 @@ declare type Song = {
   error?: any
 };
 
+declare type SongRef = Song | SongFile;
+
 declare type SearchParams = {
   filter: any,
   title?: string

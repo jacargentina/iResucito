@@ -309,7 +309,7 @@ export function setContactAttribute(contact: any, attribute: any) {
   };
 }
 
-function ordenAlfabetico(a: Song | SongFile, b: Song | SongFile) {
+function ordenAlfabetico(a: SongRef, b: SongRef) {
   if (a.titulo < b.titulo) {
     return -1;
   }
@@ -320,11 +320,11 @@ function ordenAlfabetico(a: Song | SongFile, b: Song | SongFile) {
 }
 
 function getSongFileFromFilename(nombre: string) {
-  var titulo = nombre.includes('-')
-    ? nombre.substring(0, nombre.indexOf('-')).trim()
+  var titulo = nombre.includes(' - ')
+    ? nombre.substring(0, nombre.indexOf(' - ')).trim()
     : nombre;
   var fuente =
-    titulo !== nombre ? nombre.substring(nombre.indexOf('-') + 1).trim() : '';
+    titulo !== nombre ? nombre.substring(nombre.indexOf(' - ') + 3).trim() : '';
   return (SongFile = {
     nombre: nombre,
     titulo: titulo,
@@ -882,9 +882,10 @@ export function generatePDF(canto: Song, lines: Array<SongLine>) {
   };
 }
 
-export function setSongLocalePatch(song: Song, locale: string, file?: string) {
+export function setSongLocalePatch(song: Song, rawLoc: string, file?: string) {
   return (dispatch: Function) => {
     return dispatch(readLocalePatch()).then(patchObj => {
+      var locale = rawLoc.split('-')[0];
       if (!patchObj) patchObj = {};
       if (!patchObj[song.key]) patchObj[song.key] = {};
       if (file) {

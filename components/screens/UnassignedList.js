@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { connect } from 'react-redux';
-import { Badge, Text, ListItem, Body } from 'native-base';
+import { Badge, Text, ListItem, Body, Right, Icon } from 'native-base';
 import { FlatList, Keyboard } from 'react-native';
 import SearchBarView from './SearchBarView';
 import Highlighter from 'react-native-highlight-words';
@@ -82,6 +82,16 @@ class UnassignedList extends React.Component<any> {
                     textToHighlight={item.fuente}
                   />
                 </Body>
+                <Right>
+                  <Icon
+                    name="link"
+                    style={{
+                      fontSize: 32,
+                      color: commonTheme.brandPrimary
+                    }}
+                    onPress={() => this.props.chooseSongForLocale(item)}
+                  />
+                </Right>
               </ListItem>
             );
           }}
@@ -103,14 +113,10 @@ const mapDispatchToProps = (dispatch, props) => {
   return {
     filtrarHandler: (inputId, text) => {
       dispatch(setInputFilterText(inputId, text));
+    },
+    chooseSongForLocale: item => {
+      // TODO
     }
-    // onPress: salmo => {
-    //   if (props.onPress) {
-    //     props.onPress(salmo);
-    //   } else {
-    //     props.navigation.navigate('SalmoDetail', { salmo: salmo });
-    //   }
-    // }
   };
 };
 

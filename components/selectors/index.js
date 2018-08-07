@@ -12,9 +12,9 @@ const getLists = (state: any) => state.ui.get('lists');
 
 const getLocale = (state: any) => state.ui.getIn(['settings', 'locale']);
 
-export const getLocaleReal = createSelector(getLocale, locale => {
-  if (locale === 'default') return getDefaultLocale();
-  return locale;
+export const getLocaleReal = createSelector(getLocale, rawLoc => {
+  var locale =  (rawLoc === 'default') ? getDefaultLocale() : rawLoc;
+  return locale.split('-')[0];
 });
 
 export const getProcessedLists = createSelector(getLists, getLocale, lists => {
