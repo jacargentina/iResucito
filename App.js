@@ -32,7 +32,8 @@ const sendErrorByMail = e => {
   Linking.openURL(`mailto:${mailTo}?subject=${mailSubject}&body=${body}`);
 };
 
-const errorHandler = (e, isFatal) => {
+function errorHandler(e, isFatal) {
+  console.log('errorHandler', e);
   if (isFatal) {
     const detail = e.name && e.message ? `${e.name} ${e.message}` : e;
     Alert.alert(
@@ -51,10 +52,8 @@ const errorHandler = (e, isFatal) => {
         }
       ]
     );
-  } else {
-    console.log(e);
   }
-};
+}
 
 setJSExceptionHandler(errorHandler);
 setNativeExceptionHandler(nativeError => {
