@@ -55,3 +55,9 @@ declare type SearchItem = {
 };
 
 declare type ListType = 'eucaristia' | 'palabra' | 'libre';
+
+interface IPdfImplementation {
+  writeTitle(title: string): Promise<any>;
+  writeSource(source: string): Promise<any>;
+  writeText(text: string): Promise<any>;
+}
