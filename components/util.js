@@ -3,31 +3,7 @@ import langs from 'langs';
 import { NativeModules, StyleSheet, Platform } from 'react-native';
 import DeviceInfo from 'react-native-device-info';
 import I18n from './translations';
-
-const limpiarNotasRegex = /\[|\]|#|\*|5|6|7|9|b|-|\+|\/|\u2013|\u2217|aum|dim/g;
-
-export function esLineaDeNotas(text: string): boolean {
-  if (text === undefined) {
-    throw 'esLineaDeNotas: no se puede procesar "undefined"';
-  }
-  var linea = text
-    .trim()
-    .replace(limpiarNotasRegex, '')
-    .split(' ')
-    .filter(i => i.length > 0);
-  var soloNotas = linea.filter(palabra => {
-    return (
-      palabra == 'Do' ||
-      palabra == 'Re' ||
-      palabra == 'Mi' ||
-      palabra == 'Fa' ||
-      palabra == 'Sol' ||
-      palabra == 'La' ||
-      palabra == 'Si'
-    );
-  });
-  return soloNotas.length > 0 && soloNotas.length == linea.length;
-}
+import { esLineaDeNotas, limpiarNotasRegex } from './SongsProcessor';
 
 export function getEsSalmo(listKey: string): boolean {
   return (

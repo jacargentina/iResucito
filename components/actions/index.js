@@ -38,22 +38,33 @@ import Contacts from 'react-native-contacts';
 import RNFS from 'react-native-fs';
 import I18n from '../translations';
 import {
-  esLineaDeNotas,
   getDefaultLocale,
   getFriendlyText,
   getEsSalmo,
   stylesObj
 } from '../util';
 import badges from '../badges';
-import SongsIndex from '../../songs';
 import { localdata, clouddata } from '../data';
 import PDFLib, { PDFDocument, PDFPage } from 'react-native-pdf-lib';
+import SongsProcessor from '../SongsProcessor';
 
 const BaseSongsPath =
   Platform.OS == 'ios' ? `${RNFS.MainBundlePath}/songs` : 'songs';
 
+const NativeSongsLoader =
+  Platform.OS == 'ios' ? RNFS.readDir : RNFS.readDirAssets;
+
+const NativeSongReader =
+  Platform.OS == 'ios' ? RNFS.readFile : RNFS.readFileAssets;
+
 const SongsIndexPatchPath =
   RNFS.DocumentDirectoryPath + '/SongsIndexPatch.json';
+
+const appSongs = new SongsProcessor(
+  BaseSongsPath,
+  NativeSongsLoader,
+  NativeSongReader
+);
 
 export function initializeSetup(settings: any, lists: any, contacts: any) {
   return {
@@ -309,70 +320,6 @@ export function setContactAttribute(contact: any, attribute: any) {
   };
 }
 
-function ordenAlfabetico(a: SongRef, b: SongRef) {
-  if (a.titulo < b.titulo) {
-    return -1;
-  }
-  if (a.titulo > b.titulo) {
-    return 1;
-  }
-  return 0;
-}
-
-function getSongFileFromFilename(nombre: string) {
-  var titulo = nombre.includes(' - ')
-    ? nombre.substring(0, nombre.indexOf(' - ')).trim()
-    : nombre;
-  var fuente =
-    titulo !== nombre ? nombre.substring(nombre.indexOf(' - ') + 3).trim() : '';
-  return (SongFile = {
-    nombre: nombre,
-    titulo: titulo,
-    fuente: fuente
-  });
-}
-
-function assignInfoFromFile(info: Song, files: any, locale: string) {
-  var parsed = getSongFileFromFilename(files[locale]);
-  info.nombre = parsed.nombre;
-  info.titulo = parsed.titulo;
-  info.fuente = parsed.fuente;
-  info.path = `${BaseSongsPath}/${locale}/${files[locale]}.txt`;
-}
-
-export function getSingleSongMeta(
-  key: string,
-  locale: string,
-  patch: any
-): Song {
-  var info: Song = Object.assign({}, SongsIndex[key]);
-  info.key = key;
-  if (!info.files.hasOwnProperty(locale)) {
-    assignInfoFromFile(info, info.files, 'es');
-    info.patchable = true;
-    if (patch && patch.hasOwnProperty(key)) {
-      if (patch[key].hasOwnProperty(locale)) {
-        info.patched = true;
-        info.patchedTitle = info.titulo;
-        assignInfoFromFile(info, patch[key], locale);
-        info.files = Object.assign({}, info.files, patch[key]);
-      }
-    }
-  } else {
-    assignInfoFromFile(info, info.files, locale);
-  }
-  return info;
-}
-
-export function getSongsMeta(rawLoc: string, patch: any): Array<Song> {
-  var locale = rawLoc.split('-')[0];
-  var songs = Object.keys(SongsIndex).map(key => {
-    return getSingleSongMeta(key, locale, patch);
-  });
-  songs.sort(ordenAlfabetico);
-  return songs;
-}
-
 function initializeSearch(developerMode: boolean) {
   /* eslint-disable */
   var items: Array<SearchItem> = [
@@ -543,51 +490,6 @@ function initializeSearch(developerMode: boolean) {
   };
 }
 
-export function loadSingleSong(song: Song): Promise<any> {
-  var loadSong =
-    Platform.OS == 'ios'
-      ? RNFS.readFile(song.path)
-      : RNFS.readFileAssets(song.path);
-  return loadSong
-    .then(content => {
-      // Separar en lineas, y quitar todas hasta llegar a las notas
-      var lineas = content.replace('\r\n', '\n').split('\n');
-      while (lineas.length && !esLineaDeNotas(lineas[0])) {
-        lineas.shift();
-      }
-      song.lines = lineas;
-      song.fullText = lineas.join(' ');
-    })
-    .catch(err => {
-      song.error = err.message;
-    });
-}
-
-export function loadSongs(songs: Array<Song>): Array<Promise<any>> {
-  return songs.map(song => {
-    return loadSingleSong(song);
-  });
-}
-
-export function readLocaleSongs(rawLoc: string) {
-  var locale = rawLoc.split('-')[0];
-  var loadSongs =
-    Platform.OS == 'ios'
-      ? RNFS.readDir(`${BaseSongsPath}/${locale}`)
-      : RNFS.readDirAssets(`${BaseSongsPath}/${locale}`);
-  return loadSongs.then(items => {
-    // Very important to call "normalize"
-    // See editing.txt for details
-    items = items
-      .map(i => i.name)
-      .filter(i => i.endsWith('.txt'))
-      .map(i => i.replace('.txt', '').normalize())
-      .map(i => getSongFileFromFilename(i));
-    items.sort(ordenAlfabetico);
-    return items;
-  });
-}
-
 export function readLocalePatch() {
   return (dispatch: Function) => {
     return RNFS.exists(SongsIndexPatchPath).then(exists => {
@@ -623,13 +525,13 @@ export function initializeLocale(locale: string) {
     return dispatch(readLocalePatch())
       .then(patchObj => {
         // Construir metadatos de cantos
-        var songs = getSongsMeta(locale, patchObj);
-        return Promise.all(loadSongs(songs)).then(() => {
+        var songs = appSongs.getSongsMeta(locale, patchObj);
+        return Promise.all(appSongs.loadSongs(songs)).then(() => {
           dispatch(initializeSongs(songs));
         });
       })
       .then(() => {
-        return readLocaleSongs(locale).then(items => {
+        return appSongs.readLocaleSongs(locale).then(items => {
           dispatch(initializeLocaleSongs(items));
         });
       });
@@ -893,8 +795,9 @@ export function setSongLocalePatch(song: Song, rawLoc: string, file?: string) {
       } else {
         delete patchObj[song.key];
       }
-      var updatedSong = getSingleSongMeta(song.key, locale, patchObj);
-      return loadSingleSong(updatedSong)
+      var updatedSong = appSongs.getSingleSongMeta(song.key, locale, patchObj);
+      return appSongs
+        .loadSingleSong(updatedSong)
         .then(() => {
           return dispatch(initializeSingleSong(updatedSong));
         })
