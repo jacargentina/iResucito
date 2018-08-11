@@ -46,11 +46,7 @@ const docsDir = './pdfs/';
 export function generatePDF(canto: Song, lines: Array<SongLine>) {
   // Para centrar titulo
   var doc = new PDFDocument();
-  doc.registerFont(
-    'thefont',
-    'assets/fonts/Franklin Gothic Medium.ttf',
-    'Franklin Gothic Medium'
-  );
+  doc.registerFont('thefont', 'assets/fonts/Franklin Gothic Medium.ttf');
   doc.fontSize(titleFontSize);
   doc.font('thefont').text(canto.titulo.toUpperCase(), {
     width: 410,
@@ -212,6 +208,8 @@ if (process.argv.length == 4) {
     var song = folderSongs.getSingleSongMeta(key, locale);
     folderSongs.loadSingleSong(song).then(() => {
       console.log('Loaded song: %o', song);
+      var songlines = folderSongs.preprocesarCanto(song.lines, 0);
+      generatePDF(song, songlines);
     });
   }
 } else {
