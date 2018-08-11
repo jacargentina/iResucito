@@ -1,16 +1,30 @@
 // @flow
 import PDFDocument from 'pdfkit';
-import SongsProcessor from './components/SongsProcessor';
+import { SongsProcessor } from './SongsProcessor';
 import fs from 'fs';
 
-const readFileAsString = (path: string) => {
+const NodeLister = fs.promises.readdir;
+
+const NodeReader = (path: string) => {
   return fs.promises.readFile(path, { encoding: 'utf8' });
+};
+
+const NodeStyles: SongStyles = {
+  titulo: null,
+  fuente: null,
+  lineaNotas: null,
+  lineaTituloNotaEspecial: null,
+  lineaNotaEspecial: null,
+  lineaNotasConMargen: null,
+  lineaNormal: null,
+  prefijo: null
 };
 
 const folderSongs = new SongsProcessor(
   './songs',
-  fs.promises.readdir,
-  readFileAsString
+  NodeLister,
+  NodeReader,
+  NodeStyles
 );
 
 var titleFontSize = 19;

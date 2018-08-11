@@ -33,38 +33,23 @@ export const CONTACT_SYNC = 'CONTACT_SYNC';
 export const CONTACT_TOGGLE_ATTRIBUTE = 'CONTACT_TOGGLE_ATTRIBUTE';
 export const CONTACT_UPDATE = 'CONTACT_UPDATE';
 
-import { Alert, Platform, Share } from 'react-native';
+import { Alert, Platform, StyleSheet, Share } from 'react-native';
 import Contacts from 'react-native-contacts';
 import RNFS from 'react-native-fs';
 import I18n from '../translations';
 import {
+  NativeSongs,
+  NativeStyles,
   getDefaultLocale,
   getFriendlyText,
-  getEsSalmo,
-  stylesObj
+  getEsSalmo
 } from '../util';
 import badges from '../badges';
 import { localdata, clouddata } from '../data';
 import PDFLib, { PDFDocument, PDFPage } from 'react-native-pdf-lib';
-import SongsProcessor from '../SongsProcessor';
-
-const BaseSongsPath =
-  Platform.OS == 'ios' ? `${RNFS.MainBundlePath}/songs` : 'songs';
-
-const NativeSongsLoader =
-  Platform.OS == 'ios' ? RNFS.readDir : RNFS.readDirAssets;
-
-const NativeSongReader =
-  Platform.OS == 'ios' ? RNFS.readFile : RNFS.readFileAssets;
 
 const SongsIndexPatchPath =
   RNFS.DocumentDirectoryPath + '/SongsIndexPatch.json';
-
-const appSongs = new SongsProcessor(
-  BaseSongsPath,
-  NativeSongsLoader,
-  NativeSongReader
-);
 
 export function initializeSetup(settings: any, lists: any, contacts: any) {
   return {
@@ -525,13 +510,13 @@ export function initializeLocale(locale: string) {
     return dispatch(readLocalePatch())
       .then(patchObj => {
         // Construir metadatos de cantos
-        var songs = appSongs.getSongsMeta(locale, patchObj);
-        return Promise.all(appSongs.loadSongs(songs)).then(() => {
+        var songs = NativeSongs.getSongsMeta(locale, patchObj);
+        return Promise.all(NativeSongs.loadSongs(songs)).then(() => {
           dispatch(initializeSongs(songs));
         });
       })
       .then(() => {
-        return appSongs.readLocaleSongs(locale).then(items => {
+        return NativeSongs.readLocaleSongs(locale).then(items => {
           dispatch(initializeLocaleSongs(items));
         });
       });
@@ -651,7 +636,7 @@ export function generatePDF(canto: Song, lines: Array<SongLine>) {
           page1.drawText(canto.titulo.toUpperCase(), {
             x: titleX,
             y: y,
-            color: stylesObj.titulo.color,
+            color: NativeStyles.titulo.color,
             fontSize: titleFontSize,
             fontName: fontName
           });
@@ -660,7 +645,7 @@ export function generatePDF(canto: Song, lines: Array<SongLine>) {
           page1.drawText(canto.fuente, {
             x: fuenteX,
             y: y,
-            color: stylesObj.lineaNormal.color,
+            color: NativeStyles.lineaNormal.color,
             fontSize: fuenteFontSize,
             fontName: fontName
           });
@@ -715,7 +700,7 @@ export function generatePDF(canto: Song, lines: Array<SongLine>) {
               page1.drawText(it.texto, {
                 x: x + indicadorSpacing,
                 y: y,
-                color: stylesObj.lineaNotas.color,
+                color: NativeStyles.lineaNotas.color,
                 fontSize: notesFontSize,
                 fontName: fontName
               });
@@ -724,7 +709,7 @@ export function generatePDF(canto: Song, lines: Array<SongLine>) {
               page1.drawText(it.texto, {
                 x: x + indicadorSpacing,
                 y: y,
-                color: stylesObj.lineaNormal.color,
+                color: NativeStyles.lineaNormal.color,
                 fontSize: cantoFontSize,
                 fontName: fontName
               });
@@ -733,7 +718,7 @@ export function generatePDF(canto: Song, lines: Array<SongLine>) {
               page1.drawText(it.prefijo, {
                 x: x,
                 y: y,
-                color: stylesObj.prefijo.color,
+                color: NativeStyles.prefijo.color,
                 fontSize: cantoFontSize,
                 fontName: fontName
               });
@@ -741,7 +726,7 @@ export function generatePDF(canto: Song, lines: Array<SongLine>) {
                 page1.drawText(it.texto, {
                   x: x + indicadorSpacing,
                   y: y,
-                  color: stylesObj.lineaTituloNotaEspecial.color,
+                  color: NativeStyles.lineaTituloNotaEspecial.color,
                   fontSize: cantoFontSize,
                   fontName: fontName
                 });
@@ -749,7 +734,7 @@ export function generatePDF(canto: Song, lines: Array<SongLine>) {
                 page1.drawText(it.texto, {
                   x: x + indicadorSpacing,
                   y: y,
-                  color: stylesObj.lineaNotaEspecial.color,
+                  color: NativeStyles.lineaNotaEspecial.color,
                   fontSize: cantoFontSize - 3,
                   fontName: fontName
                 });
@@ -757,7 +742,7 @@ export function generatePDF(canto: Song, lines: Array<SongLine>) {
                 page1.drawText(it.texto, {
                   x: x + indicadorSpacing,
                   y: y,
-                  color: stylesObj.lineaNormal.color,
+                  color: NativeStyles.lineaNormal.color,
                   fontSize: cantoFontSize,
                   fontName: fontName
                 });
@@ -795,9 +780,12 @@ export function setSongLocalePatch(song: Song, rawLoc: string, file?: string) {
       } else {
         delete patchObj[song.key];
       }
-      var updatedSong = appSongs.getSingleSongMeta(song.key, locale, patchObj);
-      return appSongs
-        .loadSingleSong(updatedSong)
+      var updatedSong = NativeSongs.getSingleSongMeta(
+        song.key,
+        locale,
+        patchObj
+      );
+      return NativeSongs.loadSingleSong(updatedSong)
         .then(() => {
           return dispatch(initializeSingleSong(updatedSong));
         })

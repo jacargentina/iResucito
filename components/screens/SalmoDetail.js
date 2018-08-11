@@ -19,7 +19,8 @@ import {
 } from 'react-native-popup-menu';
 import colors from '../colors';
 import color from 'color';
-import { notas, styles } from '../util';
+import { notas } from '../../SongsProcessor';
+import { NativeStyles } from '../util';
 import { salmoTransport, generatePDF } from '../actions';
 import {
   getSalmoFromProps,
@@ -96,8 +97,8 @@ class SalmoDetail extends React.Component<any> {
               style={{
                 minWidth: minWidth
               }}>
-              <Text style={styles.titulo}>{this.props.salmo.titulo}</Text>
-              <Text style={styles.fuente}>{this.props.salmo.fuente}</Text>
+              <Text style={NativeStyles.titulo}>{this.props.salmo.titulo}</Text>
+              <Text style={NativeStyles.fuente}>{this.props.salmo.fuente}</Text>
               {render_items}
             </Content>
           </ScrollView>

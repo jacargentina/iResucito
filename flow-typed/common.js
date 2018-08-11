@@ -1,5 +1,16 @@
 // @flow
 
+declare type SongStyles = {
+  titulo: any,
+  fuente: any,
+  lineaNotas: any,
+  lineaTituloNotaEspecial: any,
+  lineaNotaEspecial: any,
+  lineaNotasConMargen: any,
+  lineaNormal: any,
+  prefijo: any
+};
+
 declare type SongLine = {
   texto: string,
   style: any,

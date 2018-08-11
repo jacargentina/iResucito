@@ -4,16 +4,16 @@ import {
   getEsSalmo,
   getFriendlyTextForListType,
   getDefaultLocale,
-  preprocesarCanto,
-  calcularTransporte
+  NativeSongs
 } from '../util';
+import { calcularTransporte } from '../../SongsProcessor';
 
 const getLists = (state: any) => state.ui.get('lists');
 
 const getLocale = (state: any) => state.ui.getIn(['settings', 'locale']);
 
 export const getLocaleReal = createSelector(getLocale, rawLoc => {
-  var locale =  (rawLoc === 'default') ? getDefaultLocale() : rawLoc;
+  var locale = rawLoc === 'default' ? getDefaultLocale() : rawLoc;
   return locale.split('-')[0];
 });
 
@@ -248,13 +248,13 @@ export const getTransportToNote = (state: any) =>
 export const getSalmoTransported = createSelector(
   getSalmoFromProps,
   getTransportToNote,
-  (song, transportToNote) => {
+  (song: Song, transportToNote) => {
     var lines = song.lines;
     var diferencia = 0;
     if (transportToNote) {
       diferencia = calcularTransporte(lines[0], transportToNote);
     }
-    return preprocesarCanto(lines, diferencia);
+    return NativeSongs.preprocesarCanto(lines, diferencia);
   }
 );
 
