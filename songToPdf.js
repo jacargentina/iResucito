@@ -10,14 +10,14 @@ const NodeReader = (path: string) => {
 };
 
 const NodeStyles: SongStyles = {
-  titulo: null,
-  fuente: null,
-  lineaNotas: null,
-  lineaTituloNotaEspecial: null,
-  lineaNotaEspecial: null,
-  lineaNotasConMargen: null,
-  lineaNormal: null,
-  prefijo: null
+  titulo: { color: '#ff0000' },
+  fuente: { color: '#777777' },
+  lineaNotas: { color: '#ff0000' },
+  lineaTituloNotaEspecial: { color: '#ff0000' },
+  lineaNotaEspecial: { color: '#444444' },
+  lineaNotasConMargen: { color: '#ff0000' },
+  lineaNormal: { color: '#000000' },
+  prefijo: { color: '#777777' }
 };
 
 const folderSongs = new SongsProcessor(
@@ -38,167 +38,129 @@ var indicadorSpacing = 18;
 var parrafoSpacing = 6;
 var notesFontSize = 10;
 var widthHeightPixels = 598; // 21,1 cm
-var primerColumnaX = 30;
+var marginLeftRight = 15;
+var marginTopBottom = 19;
+var primerColumnaX = 15;
 var segundaColumnaX = 330;
 
-const docsDir = './pdfs/';
+const docsDir = './pdf/';
 
 export function generatePDF(canto: Song, lines: Array<SongLine>) {
   // Para centrar titulo
-  var doc = new PDFDocument();
-  doc.registerFont('thefont', 'assets/fonts/Franklin Gothic Medium.ttf');
-  doc.fontSize(titleFontSize);
-  doc.font('thefont').text(canto.titulo.toUpperCase(), {
-    width: 410,
-    align: 'center'
+  var doc = new PDFDocument({
+    size: [widthHeightPixels, widthHeightPixels],
+    margins: {
+      top: marginTopBottom,
+      bottom: marginTopBottom,
+      left: marginLeftRight,
+      right: marginLeftRight
+    }
   });
+  doc.registerFont('thefont', 'assets/fonts/Franklin Gothic Medium.ttf');
+  doc
+    .fillColor(NodeStyles.titulo.color)
+    .fontSize(titleFontSize)
+    .font('thefont')
+    .text(canto.titulo.toUpperCase(), {
+      align: 'center'
+    });
+  doc
+    .fillColor(NodeStyles.fuente.color)
+    .fontSize(fuenteFontSize)
+    .font('thefont')
+    .text(canto.fuente, {
+      align: 'center'
+    });
+  var y = titleFontSize + fuenteFontSize + fuenteSpacing;
+  var x = primerColumnaX;
+  var yStart = y;
+  lines.forEach((it: SongLine, index) => {
+    // Mantener los bloques siempre juntos
+    // Los bloques se indican con inicioParrafo == true
+    // Solo si estamos en la primer columna, calculamos si puede
+    // pintarse por completo el bloque sin cortes; caso contrario
+    // generamos la 2da columna
+    // Si es el primer bloque de todos, no tenerlo en cuenta: hay cantos
+    // cuyo primer bloque es muy largo (ej. "Adónde te escondiste amado"
+    //  y en este caso hay que cortarlo forzosamente
+    if (it.inicioParrafo && y !== yStart && x === primerColumnaX) {
+      // console.log('Inicio de Parrafo:', it.texto);
+      if (y > widthHeightPixels) {
+        x = segundaColumnaX;
+        y = yStart;
+      } else {
+        var alturaParrafo = 0;
+        var textoParrafo = '';
+        var i = index; // loop de i
+        while (i < lines.length) {
+          textoParrafo += `${lines[i].texto}\n`;
+          alturaParrafo += cantoSpacing;
+          i += 1;
+          if (i < lines.length && lines[i].inicioParrafo) {
+            break;
+          }
+        }
+        if (y + alturaParrafo >= widthHeightPixels - marginTopBottom) {
+          x = segundaColumnaX;
+          y = yStart;
+        }
+      }
+    }
+    if (it.inicioParrafo) {
+      y += parrafoSpacing;
+    }
+    if (it.tituloEspecial) {
+      y += parrafoSpacing * 2;
+    }
+    if (it.notas === true) {
+      doc
+        .fillColor(NodeStyles.lineaNotas.color)
+        .fontSize(notesFontSize)
+        .font('thefont')
+        .text(it.texto, x + indicadorSpacing, y + 1);
+      y += cantoSpacing;
+    } else if (it.canto === true) {
+      doc
+        .fillColor(NodeStyles.lineaNormal.color)
+        .fontSize(cantoFontSize)
+        .font('thefont')
+        .text(it.texto, x + indicadorSpacing, y);
+      y += cantoSpacing;
+    } else if (it.cantoConIndicador === true) {
+      doc
+        .fillColor(NodeStyles.prefijo.color)
+        .fontSize(cantoFontSize)
+        .font('thefont')
+        .text(it.prefijo, x, y);
+      if (it.tituloEspecial === true) {
+        doc
+          .fillColor(NodeStyles.lineaTituloNotaEspecial.color)
+          .fontSize(cantoFontSize)
+          .font('thefont')
+          .text(it.texto, x + indicadorSpacing, y);
+      } else if (it.textoEspecial === true) {
+        doc
+          .fillColor(NodeStyles.lineaNotaEspecial.color)
+          .fontSize(cantoFontSize - 3)
+          .font('thefont')
+          .text(it.texto, x + indicadorSpacing, y);
+      } else {
+        doc
+          .fillColor(NodeStyles.lineaNormal.color)
+          .fontSize(cantoFontSize)
+          .font('thefont')
+          .text(it.texto, x + indicadorSpacing, y);
+      }
+      y += cantoSpacing;
+    }
+  });
+  if (!fs.existsSync(docsDir)) {
+    fs.mkdirSync(docsDir);
+  }
   const pdfPath = `${docsDir}${canto.titulo}.pdf`;
   doc.pipe(fs.createWriteStream(pdfPath));
   doc.end();
-  /*
-  // Para centrar fuente
-  return PDFLib.measureText(canto.fuente, fontName, fuenteFontSize)
-    .then(sizeFuente => {
-      var y = 560;
-      var x = primerColumnaX;
-      const page1 = PDFPage.create().setMediaBox(
-        widthHeightPixels,
-        widthHeightPixels
-      );
-      var titleX = parseInt((widthHeightPixels - sizeTitle.width) / 2);
-      page1.drawText(canto.titulo.toUpperCase(), {
-        x: titleX,
-        y: y,
-        color: stylesObj.titulo.color,
-        fontSize: titleFontSize,
-        fontName: fontName
-      });
-      y -= titleSpacing;
-      var fuenteX = parseInt((widthHeightPixels - sizeFuente.width) / 2);
-      page1.drawText(canto.fuente, {
-        x: fuenteX,
-        y: y,
-        color: stylesObj.lineaNormal.color,
-        fontSize: fuenteFontSize,
-        fontName: fontName
-      });
-      y -= fuenteSpacing;
-      var yStart = y;
-      lines.forEach((it: SongLine, index) => {
-        // Mantener los bloques siempre juntos
-        // Los bloques se indican con inicioParrafo == true
-        // Solo si estamos en la primer columna, calculamos si puede
-        // pintarse por completo el bloque sin cortes; caso contrario
-        // generamos la 2da columna
-        // Si es el primer bloque de todos, no tenerlo en cuenta: hay cantos
-        // cuyo primer bloque es muy largo (ej. "Adónde te escondiste amado"
-        //  y en este caso hay que cortarlo forzosamente
-        if (it.inicioParrafo && y !== yStart && x === primerColumnaX) {
-          // console.log('Inicio de Parrafo:', it.texto);
-          if (y < 0) {
-            x = segundaColumnaX;
-            y = yStart;
-          } else {
-            var alturaParrafo = 0;
-            var textoParrafo = '';
-            var i = index; // loop de i
-            while (i < lines.length) {
-              textoParrafo += `${lines[i].texto}\n`;
-              alturaParrafo += cantoSpacing;
-              i += 1;
-              if (i < lines.length && lines[i].inicioParrafo) {
-                break;
-              }
-            }
-            // console.log(
-            //   'Texto del bloque: %s, y: %s, alturaParrafo: %s, diferencia: %s',
-            //   textoParrafo,
-            //   y,
-            //   alturaParrafo,
-            //   y - alturaParrafo
-            // );
-            if (y - alturaParrafo <= 21) {
-              x = segundaColumnaX;
-              y = yStart;
-            }
-          }
-        }
-        if (it.inicioParrafo) {
-          y -= parrafoSpacing;
-        }
-        if (it.tituloEspecial) {
-          y -= parrafoSpacing * 2;
-        }
-        if (it.notas === true) {
-          page1.drawText(it.texto, {
-            x: x + indicadorSpacing,
-            y: y,
-            color: stylesObj.lineaNotas.color,
-            fontSize: notesFontSize,
-            fontName: fontName
-          });
-          y -= cantoSpacing;
-        } else if (it.canto === true) {
-          page1.drawText(it.texto, {
-            x: x + indicadorSpacing,
-            y: y,
-            color: stylesObj.lineaNormal.color,
-            fontSize: cantoFontSize,
-            fontName: fontName
-          });
-          y -= cantoSpacing;
-        } else if (it.cantoConIndicador === true) {
-          page1.drawText(it.prefijo, {
-            x: x,
-            y: y,
-            color: stylesObj.prefijo.color,
-            fontSize: cantoFontSize,
-            fontName: fontName
-          });
-          if (it.tituloEspecial === true) {
-            page1.drawText(it.texto, {
-              x: x + indicadorSpacing,
-              y: y,
-              color: stylesObj.lineaTituloNotaEspecial.color,
-              fontSize: cantoFontSize,
-              fontName: fontName
-            });
-          } else if (it.textoEspecial === true) {
-            page1.drawText(it.texto, {
-              x: x + indicadorSpacing,
-              y: y,
-              color: stylesObj.lineaNotaEspecial.color,
-              fontSize: cantoFontSize - 3,
-              fontName: fontName
-            });
-          } else {
-            page1.drawText(it.texto, {
-              x: x + indicadorSpacing,
-              y: y,
-              color: stylesObj.lineaNormal.color,
-              fontSize: cantoFontSize,
-              fontName: fontName
-            });
-          }
-          y -= cantoSpacing;
-        }
-        // else {
-        //   console.log('Sin dibujar en', y, JSON.stringify(it));
-        // }
-      });
-      const docsDir =
-        Platform.OS == 'ios'
-          ? RNFS.TemporaryDirectoryPath
-          : RNFS.CachesDirectoryPath + '/';
-      const pdfPath = `${docsDir}${canto.titulo}.pdf`;
-      return PDFDocument.create(pdfPath)
-        .addPages(page1)
-        .write();
-    })
-    .catch(err => {
-      console.log('ERROR Measures', err);
-    });
-    */
+  console.log(`Created ${pdfPath}`);
 }
 
 if (process.argv.length == 4) {
@@ -206,11 +168,15 @@ if (process.argv.length == 4) {
   var key = process.argv[3];
   if (key !== '' && locale !== '') {
     var song = folderSongs.getSingleSongMeta(key, locale);
-    folderSongs.loadSingleSong(song).then(() => {
-      console.log('Loaded song: %o', song);
-      var songlines = folderSongs.preprocesarCanto(song.lines, 0);
-      generatePDF(song, songlines);
-    });
+    folderSongs
+      .loadSingleSong(song)
+      .then(() => {
+        var songlines = folderSongs.preprocesarCanto(song.lines, 0);
+        generatePDF(song, songlines);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 } else {
   console.log('node songToPdf [locale] [songKey]');
