@@ -44,7 +44,7 @@ var widthHeightPixels = 598; // 21,1 cm
 var marginLeftRight = 15;
 var marginTopBottom = 19;
 var primerColumnaX = 15;
-var segundaColumnaX = 330;
+var segundaColumnaX = 315;
 
 const docsDir = './pdf/';
 
@@ -103,7 +103,7 @@ export function generatePDF(canto: Song, lines: Array<SongLine>) {
             break;
           }
         }
-        if (y + alturaParrafo >= widthHeightPixels - marginTopBottom) {
+        if (y + alturaParrafo >= widthHeightPixels - marginTopBottom * 2) {
           x = segundaColumnaX;
           y = yStart;
         }
@@ -120,39 +120,39 @@ export function generatePDF(canto: Song, lines: Array<SongLine>) {
         .fillColor(NodeStyles.lineaNotas.color)
         .fontSize(notesFontSize)
         .font('thefont')
-        .text(it.texto, x + indicadorSpacing, y + 1);
+        .text(it.texto, x + indicadorSpacing, y + 1, { lineBreak: false });
       y += cantoSpacing;
     } else if (it.canto === true) {
       doc
         .fillColor(NodeStyles.lineaNormal.color)
         .fontSize(cantoFontSize)
         .font('thefont')
-        .text(it.texto, x + indicadorSpacing, y);
+        .text(it.texto, x + indicadorSpacing, y, { lineBreak: false });
       y += cantoSpacing;
     } else if (it.cantoConIndicador === true) {
       doc
         .fillColor(NodeStyles.prefijo.color)
         .fontSize(cantoFontSize)
         .font('thefont')
-        .text(it.prefijo, x, y);
+        .text(it.prefijo, x, y, { lineBreak: false });
       if (it.tituloEspecial === true) {
         doc
           .fillColor(NodeStyles.lineaTituloNotaEspecial.color)
           .fontSize(cantoFontSize)
           .font('thefont')
-          .text(it.texto, x + indicadorSpacing, y);
+          .text(it.texto, x + indicadorSpacing, y, { lineBreak: false });
       } else if (it.textoEspecial === true) {
         doc
           .fillColor(NodeStyles.lineaNotaEspecial.color)
           .fontSize(cantoFontSize - 3)
           .font('thefont')
-          .text(it.texto, x + indicadorSpacing, y);
+          .text(it.texto, x + indicadorSpacing, y, { lineBreak: false });
       } else {
         doc
           .fillColor(NodeStyles.lineaNormal.color)
           .fontSize(cantoFontSize)
           .font('thefont')
-          .text(it.texto, x + indicadorSpacing, y);
+          .text(it.texto, x + indicadorSpacing, y, { lineBreak: false });
       }
       y += cantoSpacing;
     }
@@ -175,7 +175,11 @@ program
     '-l, --locale [locale]',
     'Locale to use. Defaults to current OS locale'
   )
-  .option('-k, --key <value>', 'Song key', parseInt);
+  .option(
+    '-k, --key [value]',
+    'Song key. Defaults to generate all songs',
+    parseInt
+  );
 
 if (!process.argv.slice(2).length) {
   program.help();
@@ -187,16 +191,29 @@ if (!process.argv.slice(2).length) {
   }
   var locale = program.locale;
   var key = program.key;
-  if (key !== '' && locale !== '') {
-    var song = folderSongs.getSingleSongMeta(key, locale);
-    folderSongs
-      .loadSingleSong(song)
-      .then(() => {
-        var songlines = folderSongs.preprocesarCanto(song.lines, 0);
-        generatePDF(song, songlines);
-      })
-      .catch(err => {
-        console.log(err);
+  if (locale !== '') {
+    if (key) {
+      var song = folderSongs.getSingleSongMeta(key, locale);
+      folderSongs
+        .loadSingleSong(song)
+        .then(() => {
+          console.log('Song: ', song.titulo);
+          var songlines = folderSongs.preprocesarCanto(song.lines, 0);
+          generatePDF(song, songlines);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    } else {
+      var songs = folderSongs.getSongsMeta(locale);
+      console.log(`No key Song. Generating ${songs.length} songs`);
+      Promise.all(folderSongs.loadSongs(songs)).then(() => {
+        songs.forEach(song => {
+          console.log('Song: ', song.titulo);
+          var songlines = folderSongs.preprocesarCanto(song.lines, 0);
+          generatePDF(song, songlines);
+        });
       });
+    }
   }
 }
