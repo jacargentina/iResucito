@@ -135,7 +135,7 @@ const mapDispatchToProps = dispatch => {
             if (DeviceInfo.isEmulator()) {
               lastCachesDirectoryPath = null;
             }
-            dispatch(
+            return dispatch(
               refreshContactsThumbs(
                 lastCachesDirectoryPath,
                 RNFS.CachesDirectoryPath
@@ -146,7 +146,7 @@ const mapDispatchToProps = dispatch => {
             console.log('error loading from localdata', err);
           })
           .finally(() => {
-            dispatch(initializeLocale(locale));
+            return dispatch(initializeLocale(locale));
           })
       );
       // Cargar listas desde iCloud
