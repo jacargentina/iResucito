@@ -1,7 +1,10 @@
+#!/usr/bin/env babel-node
+
 // @flow
 import PDFDocument from 'pdfkit';
 import { SongsProcessor } from './SongsProcessor';
 import fs from 'fs';
+import osLocale from 'os-locale';
 
 const NodeLister = fs.promises.readdir;
 
@@ -163,9 +166,27 @@ export function generatePDF(canto: Song, lines: Array<SongLine>) {
   console.log(`Created ${pdfPath}`);
 }
 
-if (process.argv.length == 4) {
-  var locale = process.argv[2];
-  var key = process.argv[3];
+var program = require('commander');
+
+program
+  .version('1.0')
+  .description('Generate PDF for a given song')
+  .option(
+    '-l, --locale [locale]',
+    'Locale to use. Defaults to current OS locale'
+  )
+  .option('-k, --key <value>', 'Song key', parseInt);
+
+if (!process.argv.slice(2).length) {
+  program.help();
+} else {
+  program.parse(process.argv);
+  if (!program.locale) {
+    program.locale = osLocale.sync();
+    console.log('Locale: detected', program.locale);
+  }
+  var locale = program.locale;
+  var key = program.key;
   if (key !== '' && locale !== '') {
     var song = folderSongs.getSingleSongMeta(key, locale);
     folderSongs
@@ -178,6 +199,4 @@ if (process.argv.length == 4) {
         console.log(err);
       });
   }
-} else {
-  console.log('node songToPdf [locale] [songKey]');
 }
