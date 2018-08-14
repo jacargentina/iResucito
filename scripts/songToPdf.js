@@ -1,8 +1,6 @@
-#!/usr/bin/env babel-node
-
 // @flow
 import PDFDocument from 'pdfkit';
-import { SongsProcessor } from './SongsProcessor';
+import { SongsProcessor } from '../SongsProcessor';
 import fs from 'fs';
 import osLocale from 'os-locale';
 
@@ -24,7 +22,7 @@ const NodeStyles: SongStyles = {
 };
 
 const folderSongs = new SongsProcessor(
-  './songs',
+  '../songs',
   NodeLister,
   NodeReader,
   NodeStyles
@@ -46,7 +44,7 @@ var marginTopBottom = 19;
 var primerColumnaX = 15;
 var segundaColumnaX = 315;
 
-const docsDir = './pdf/';
+const docsDir = '../pdf/';
 
 export function generatePDF(canto: Song, lines: Array<SongLine>) {
   // Para centrar titulo
