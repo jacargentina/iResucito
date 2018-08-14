@@ -2,17 +2,18 @@ var path = require('path');
 var webpack = require('webpack');
 
 var config = {
-  entry: [path.resolve(__dirname, 'scripts/songToPdf.js')],
+  entry: { songToPdf: path.resolve(__dirname, 'scripts/songToPdf.js') },
   output: {
     path: path.resolve(__dirname, 'bin'),
     filename: '[name].js'
   },
+  mode: 'development',
   target: 'node',
   module: {
     rules: [
       {
         test: /\.js$/,
-        exclude: path.resolve(__dirname, 'node_modules'),
+        exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
@@ -20,6 +21,21 @@ var config = {
             presets: ['@babel/preset-env', '@babel/preset-flow']
           }
         }
+      },
+      {
+        test: /fontkit[\/\\]index.js$/,
+        enforce: 'post',
+        loader: 'transform-loader?brfs'
+      },
+      {
+        test: /unicode-properties[\/\\]index.js$/,
+        enforce: 'post',
+        loader: 'transform-loader?brfs'
+      },
+      {
+        test: /linebreak[\/\\]src[\/\\]linebreaker.js/,
+        enforce: 'post',
+        loader: 'transform-loader?brfs'
       }
     ]
   },
