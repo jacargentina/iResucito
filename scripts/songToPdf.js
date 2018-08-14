@@ -2,6 +2,7 @@
 import PDFDocument from 'pdfkit';
 import { SongsProcessor } from '../SongsProcessor';
 import fs from 'fs';
+import path from 'path';
 import osLocale from 'os-locale';
 
 const NodeLister = fs.promises.readdir;
@@ -22,7 +23,7 @@ const NodeStyles: SongStyles = {
 };
 
 const folderSongs = new SongsProcessor(
-  '../songs',
+  path.resolve(__dirname, '../songs'),
   NodeLister,
   NodeReader,
   NodeStyles
