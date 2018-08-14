@@ -48,6 +48,7 @@ class SettingsScreen extends React.Component<any> {
   });
 
   render() {
+    var devModePatch = this.props.developerMode && this.props.patchExists;
     var localesItems = getLocalesForPicker().map(l => {
       return <Item key={l.value} label={l.label} value={l.value} />;
     });
@@ -121,30 +122,28 @@ class SettingsScreen extends React.Component<any> {
                 />
               </Right>
             </ListItem>
-            {this.props.developerMode &&
-              this.props.patchExists && (
-                <ListItem>
-                  <Body>
-                    <Text
-                      style={{ color: commonTheme.brandDanger }}
-                      onPress={() =>
-                        this.props.clearIndexPatch(this.props.locale)
-                      }>
-                      {I18n.t('settings_title.clear index patch')}
-                    </Text>
-                  </Body>
-                </ListItem>
-              )}
-            {this.props.developerMode &&
-              this.props.patchExists && (
-                <ListItem>
-                  <Body>
-                    <Text onPress={() => this.props.shareIndexPatch()}>
-                      {I18n.t('settings_title.share index patch')}
-                    </Text>
-                  </Body>
-                </ListItem>
-              )}
+            {devModePatch && (
+              <ListItem>
+                <Body>
+                  <Text
+                    style={{ color: commonTheme.brandDanger }}
+                    onPress={() =>
+                      this.props.clearIndexPatch(this.props.locale)
+                    }>
+                    {I18n.t('settings_title.clear index patch')}
+                  </Text>
+                </Body>
+              </ListItem>
+            )}
+            {devModePatch && (
+              <ListItem>
+                <Body>
+                  <Text onPress={() => this.props.shareIndexPatch()}>
+                    {I18n.t('settings_title.share index patch')}
+                  </Text>
+                </Body>
+              </ListItem>
+            )}
             <ListItem icon button onPress={() => this.props.showAbout()}>
               <Left>
                 <Icon name="checkmark" />
