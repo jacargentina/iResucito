@@ -87,3 +87,17 @@ Para agregar un canto titulado `new song - source.txt` en un determinado lenguaj
 **Nota**: Cualquier clave booleana no agregada se considera `false` y no deben agregarse por simplicidad.
 
 - Si el canto ya existe en otro lenguaje, solo debe buscarse el mismo y agregarse dentro de `files` la clave apropiada a la nueva traducción
+
+### Para generar archivos PDF
+
+Durante la edición de los cantos puede ser muy útil realizar una previsualización en formato PDF de los cantos, para agilizar el trabajo sin la necesidad de generar una nueva compilacion de la app.
+
+Para ello se puede ejecutar el script npm `genpdf` de la siguiente forma:
+
+```
+npm run genpdf -- -l pt
+// se generan TODOS los cantos de lenguaje 'pt' dentro de la carpeta 'pdf'
+
+npm run genpdf -- -l pt -k 12
+// se generan sólo el canto del indice 12, es decir, 'Jacó' de 'pt' en la carpeta 'pdf'
+```

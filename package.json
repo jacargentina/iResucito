@@ -34,7 +34,8 @@
     "test": "node node_modules/jest/bin/jest.js --watch",
     "postversion": "react-native-version --never-amend",
     "lint": "eslint components/**/*.js",
-    "react-devtools": "react-devtools"
+    "react-devtools": "react-devtools",
+    "genpdf": "babel-node ./scripts/songToPdf.js"
   },
   "jest": {
     "preset": "react-native"
@@ -83,14 +84,8 @@
     "reselect": "^3.0.1",
     "rn-fetch-blob": "^0.10.12"
   },
-  "eslintIgnore": [
-    "android/**",
-    "ios/**",
-    "native-base-theme/**"
-  ],
+  "eslintIgnore": ["android/**", "ios/**", "native-base-theme/**"],
   "rnpm": {
-    "assets": [
-      "./assets/fonts"
-    ]
+    "assets": ["./assets/fonts"]
   }
 }

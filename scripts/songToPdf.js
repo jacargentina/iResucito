@@ -45,7 +45,7 @@ var marginTopBottom = 19;
 var primerColumnaX = 15;
 var segundaColumnaX = 315;
 
-const docsDir = '../pdf/';
+const docsDir = path.resolve(__dirname, '../pdf');
 
 export function generatePDF(canto: Song, lines: Array<SongLine>) {
   // Para centrar titulo
@@ -159,7 +159,7 @@ export function generatePDF(canto: Song, lines: Array<SongLine>) {
   if (!fs.existsSync(docsDir)) {
     fs.mkdirSync(docsDir);
   }
-  const pdfPath = `${docsDir}${canto.titulo}.pdf`;
+  const pdfPath = `${docsDir}/${canto.titulo}.pdf`;
   doc.pipe(fs.createWriteStream(pdfPath));
   doc.end();
   console.log(`Created ${pdfPath}`);
