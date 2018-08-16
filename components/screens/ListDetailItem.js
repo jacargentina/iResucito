@@ -28,7 +28,7 @@ const ListDetailItem = (props: any) => {
     item = (
       <ListItem icon last>
         <Left>
-          <Icon name='book' />
+          <Icon name="book" />
         </Left>
         <Body>
           <Input
@@ -163,7 +163,8 @@ const mapStateToProps = (state, props) => {
 const mapDispatchToProps = dispatch => {
   return {
     openChooser: (type, list, key) => {
-      dispatch(openChooserDialog(type, list, key));
+      var target = { listName: list, listKey: key };
+      dispatch(openChooserDialog(type, target));
     },
     updateItem: (list, key, text) => {
       dispatch(updateListMapText(list, key, text));

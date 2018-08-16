@@ -198,9 +198,13 @@ class SalmoListItem extends React.Component<any, State> {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, props) => {
+  var devMode =
+    props.devModeDisabled === true
+      ? false
+      : state.ui.getIn(['settings', 'developerMode']);
   return {
-    developerMode: state.ui.getIn(['settings', 'developerMode']),
+    developerMode: devMode,
     locale: getLocaleReal(state)
   };
 };

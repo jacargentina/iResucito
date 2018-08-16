@@ -63,6 +63,7 @@ class SalmoList extends React.Component<any> {
                 salmo={item}
                 onPress={this.props.onPress}
                 highlight={this.props.textFilter}
+                devModeDisabled={this.props.devModeDisabled}
               />
             );
           }}
@@ -75,9 +76,13 @@ class SalmoList extends React.Component<any> {
 const makeMapStateToProps = () => {
   const getProcessedSalmos = makeGetProcessedSalmos();
   const mapStateToProps = (state, props) => {
+    var textFilterId = getCurrentRouteKey(state, props);
+    var textFilter = getCurrentRouteInputTextFilter(state, props);
+    console.log('Filtro "%s":"%s"', textFilterId, textFilter);
     return {
-      textFilterId: getCurrentRouteKey(state, props),
-      textFilter: getCurrentRouteInputTextFilter(state, props),
+      devModeDisabled: props.devModeDisabled,
+      textFilterId: textFilterId,
+      textFilter: textFilter,
       items: getProcessedSalmos(state, props).toJS(),
       showBadge: getShowSalmosBadge(state, props)
     };

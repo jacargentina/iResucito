@@ -60,11 +60,7 @@ const SalmoChooseLocaleDialog = (props: any) => {
           return (
             <ListItem
               onPress={() => {
-                props.localeFileSelected(
-                  props.targetSalmo,
-                  props.locale,
-                  item.nombre
-                );
+                props.localeFileSelected(props.targetSalmo, props.locale, item);
               }}>
               <Body>
                 <Text>{item.titulo}</Text>
@@ -94,7 +90,7 @@ const mapDispatchToProps = dispatch => {
     close: () => {
       dispatch(hideChooseLocaleDialog());
     },
-    localeFileSelected: (salmo, locale, file) => {
+    localeFileSelected: (salmo: Song, locale: string, file: SongFile) => {
       dispatch(setSongLocalePatch(salmo, locale, file)).then(() => {
         dispatch(hideChooseLocaleDialog());
       });

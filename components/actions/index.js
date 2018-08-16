@@ -10,7 +10,7 @@ export const SET_INPUT_FILTERTEXT = 'SET_INPUT_FILTERTEXT';
 export const SET_CONTACTS_FILTER = 'SET_CONTACTS_FILTER';
 export const SET_ABOUT_VISIBLE = 'SET_ABOUT_VISIBLE';
 export const SET_SETTINGS_VALUE = 'SET_SETTINGS_VALUE';
-export const SET_CHOOSER_TARGETLIST = 'SET_CHOOSER_TARGETLIST';
+export const SET_CHOOSER_TARGET = 'SET_CHOOSER_TARGET';
 export const SET_LIST_ADD_VISIBLE = 'SET_LIST_ADD_VISIBLE';
 export const SET_LIST_ADD_TYPE = 'SET_LIST_ADD_TYPE';
 export const SET_LIST_ADD_NAME = 'SET_LIST_ADD_NAME';
@@ -88,21 +88,19 @@ export function initializeLocaleSongs(songs: Array<string>) {
   };
 }
 
-export function openChooserDialog(chooser: string, list: string, key: string) {
+export function openChooserDialog(chooser: string, target: any) {
   return {
-    type: SET_CHOOSER_TARGETLIST,
+    type: SET_CHOOSER_TARGET,
     chooser: chooser,
-    list: list,
-    key: key
+    target: target
   };
 }
 
 export function closeChooserDialog() {
   return {
-    type: SET_CHOOSER_TARGETLIST,
+    type: SET_CHOOSER_TARGET,
     chooser: null,
-    list: null,
-    key: null
+    target: null
   };
 }
 
@@ -776,14 +774,17 @@ export function generatePDF(canto: Song, lines: Array<SongLine>) {
   };
 }
 
-export function setSongLocalePatch(song: Song, rawLoc: string, file?: string) {
+export function setSongLocalePatch(song: Song, rawLoc: string, file?: SongFile) {
+  if (file && file.nombre.endsWith('.txt'))
+    throw new Error('file con .txt! Pasar sin extension.');
+
   return (dispatch: Function) => {
     return dispatch(readLocalePatch()).then(patchObj => {
       var locale = rawLoc.split('-')[0];
       if (!patchObj) patchObj = {};
       if (!patchObj[song.key]) patchObj[song.key] = {};
       if (file) {
-        patchObj[song.key][locale] = file;
+        patchObj[song.key][locale] = file.nombre;
       } else {
         delete patchObj[song.key];
       }

@@ -10,7 +10,7 @@ import {
   SET_CONTACTS_FILTER,
   SET_ABOUT_VISIBLE,
   SET_SETTINGS_VALUE,
-  SET_CHOOSER_TARGETLIST,
+  SET_CHOOSER_TARGET,
   SET_LIST_ADD_VISIBLE,
   SET_LIST_ADD_TYPE,
   SET_LIST_ADD_NAME,
@@ -48,8 +48,7 @@ const initialState = Map({
   list_add_visible: false,
   list_create_type: null,
   chooser: null,
-  chooser_target_list: null,
-  chooser_target_key: null,
+  chooser_target: null,
   contact_import_visible: false,
   contact_import_loading: false,
   contact_import_items: [],
@@ -100,10 +99,9 @@ export default function ui(state: any = initialState, action: any) {
       return state.set('about_visible', action.visible);
     case SET_SETTINGS_VALUE:
       return state.setIn(['settings', action.key], action.value);
-    case SET_CHOOSER_TARGETLIST:
+    case SET_CHOOSER_TARGET:
       state = state.set('chooser', action.chooser);
-      state = state.set('chooser_target_list', action.list);
-      state = state.set('chooser_target_key', action.key);
+      state = state.set('chooser_target', fromJS(action.target));
       return state;
     case SET_LIST_ADD_VISIBLE:
       state = state.set('list_add_visible', action.visible);

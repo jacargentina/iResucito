@@ -6,10 +6,11 @@ import { FlatList, Keyboard } from 'react-native';
 import SearchBarView from './SearchBarView';
 import Highlighter from 'react-native-highlight-words';
 import AppNavigatorOptions from '../AppNavigatorOptions';
-import { setInputFilterText } from '../actions';
+import { setInputFilterText, openChooserDialog } from '../actions';
 import commonTheme from '../../native-base-theme/variables/platform';
 import textTheme from '../../native-base-theme/components/Text';
 import {
+  getLocaleReal,
   getFilteredAvailableSongsForPatch,
   getCurrentRouteKey,
   getCurrentRouteInputTextFilter
@@ -89,7 +90,7 @@ class UnassignedList extends React.Component<any> {
                       fontSize: 32,
                       color: commonTheme.brandPrimary
                     }}
-                    onPress={() => this.props.chooseSongForLocale(item)}
+                    onPress={() => this.props.chooseSongForLocale(this.props.locale, item)}
                   />
                 </Right>
               </ListItem>
@@ -103,6 +104,7 @@ class UnassignedList extends React.Component<any> {
 
 const makeMapStateToProps = (state, props) => {
   return {
+    locale: getLocaleReal(state),
     items: getFilteredAvailableSongsForPatch(state, props),
     textFilterId: getCurrentRouteKey(state, props),
     textFilter: getCurrentRouteInputTextFilter(state, props)
@@ -114,8 +116,9 @@ const mapDispatchToProps = (dispatch, props) => {
     filtrarHandler: (inputId, text) => {
       dispatch(setInputFilterText(inputId, text));
     },
-    chooseSongForLocale: item => {
-      // TODO
+    chooseSongForLocale: (locale, file) => {
+      var target = { locale: locale, file: file };
+      dispatch(openChooserDialog('Salmo', target));
     }
   };
 };

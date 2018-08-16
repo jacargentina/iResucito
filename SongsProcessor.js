@@ -89,19 +89,20 @@ export class SongsProcessor {
     this.songStyles = songStyles;
   }
 
-  getSongFileFromFilename(nombre: string) {
-    var titulo = nombre.includes(' - ')
-      ? nombre.substring(0, nombre.indexOf(' - ')).trim()
-      : nombre;
+  getSongFileFromFilename(filename: string): SongFile {
+    var titulo = filename.includes(' - ')
+      ? filename.substring(0, filename.indexOf(' - ')).trim()
+      : filename;
     var fuente =
-      titulo !== nombre
-        ? nombre.substring(nombre.indexOf(' - ') + 3).trim()
+      titulo !== filename
+        ? filename.substring(filename.indexOf(' - ') + 3).trim()
         : '';
-    return (SongFile = {
+    var nombre = filename.replace('.txt', '');
+    return {
       nombre: nombre,
       titulo: titulo,
       fuente: fuente
-    });
+    };
   }
 
   assignInfoFromFile(info: Song, files: any, locale: string) {
@@ -109,7 +110,7 @@ export class SongsProcessor {
     info.nombre = parsed.nombre;
     info.titulo = parsed.titulo;
     info.fuente = parsed.fuente;
-    info.path = `${this.basePath}/${locale}/${files[locale]}.txt`;
+    info.path = `${this.basePath}/${locale}/${parsed.nombre}.txt`;
   }
 
   getSingleSongMeta(key: string, locale: string, patch: any): Song {

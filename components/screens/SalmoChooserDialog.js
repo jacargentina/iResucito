@@ -5,7 +5,12 @@ import { connect } from 'react-redux';
 import { Tab, Tabs, ScrollableTab } from 'native-base';
 import BaseModal from './BaseModal';
 import SalmoList from './SalmoList';
-import { addSalmoToList, saveLists, closeChooserDialog } from '../actions';
+import {
+  addSalmoToList,
+  setSongLocalePatch,
+  saveLists,
+  closeChooserDialog
+} from '../actions';
 import I18n from '../translations';
 
 const styles = StyleSheet.create({
@@ -23,9 +28,8 @@ const SalmoChooserDialog = (props: any) => {
         <SalmoList
           navigation={props.navigation}
           filter={v.params ? v.params.filter : null}
-          onPress={salmo =>
-            props.salmoSelected(salmo, props.listName, props.listKey)
-          }
+          devModeDisabled={true}
+          onPress={salmo => props.songAssign(salmo, props.target)}
         />
       </Tab>
     );
@@ -46,12 +50,10 @@ const SalmoChooserDialog = (props: any) => {
 const mapStateToProps = state => {
   var chooser = state.ui.get('chooser');
   var search = state.ui.get('search');
-  var chooser_target_list = state.ui.get('chooser_target_list');
-  var chooser_target_key = state.ui.get('chooser_target_key');
+  var chooser_target = state.ui.get('chooser_target');
   var tabs = search.filter(x => x.chooser != undefined);
   return {
-    listName: chooser_target_list,
-    listKey: chooser_target_key,
+    target: chooser_target ? chooser_target.toJS() : null,
     visible: chooser === 'Salmo',
     tabs: tabs
   };
@@ -62,10 +64,18 @@ const mapDispatchToProps = dispatch => {
     close: () => {
       dispatch(closeChooserDialog());
     },
-    salmoSelected: (salmo, list, key) => {
-      dispatch(addSalmoToList(salmo, list, key));
-      dispatch(saveLists());
-      dispatch(closeChooserDialog());
+    songAssign: (salmo, target) => {
+      if (target.listName && target.listKey) {
+        dispatch(addSalmoToList(salmo, target.listName, target.listKey));
+        dispatch(saveLists());
+        dispatch(closeChooserDialog());
+      } else if (target.locale && target.file) {
+        dispatch(setSongLocalePatch(salmo, target.locale, target.file)).then(
+          () => {
+            dispatch(closeChooserDialog());
+          }
+        );
+      }
     }
   };
 };

@@ -28,14 +28,17 @@ class DebouncedInput extends React.Component<any, State> {
     this.sendTextChange = this.sendTextChange.bind(this);
   }
 
-  static getDerivedStateFromProps(nextProps, prevState) {
-    if (prevState.text !== nextProps.searchTextFilter) {
-      return {
-        text: nextProps.searchTextFilter
-      };
-    }
-    return null;
-  }
+  // android: no funciona busqueda debido a este codigo
+  // en iOS la ultima beta 3.0.0-19 funciona ok;
+  // por ahora, lo comento
+  // static getDerivedStateFromProps(nextProps, prevState) {
+  //   if (prevState.text !== nextProps.searchTextFilter) {
+  //     return {
+  //       text: nextProps.searchTextFilter
+  //     };
+  //   }
+  //   return null;
+  // }
 
   componentDidMount() {
     this.sendTextChange = debounce(this.sendTextChange, 500);
