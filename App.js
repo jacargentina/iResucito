@@ -20,6 +20,7 @@ import { localdata, clouddata } from './components/data';
 import {
   initializeSetup,
   initializeLocale,
+  initializeDone,
   refreshContactsThumbs
 } from './components/actions';
 
@@ -79,16 +80,14 @@ if (Platform.OS == 'android') {
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { initialized: false };
   }
 
   componentDidMount() {
-    this.props.init().then(() => {
-      setTimeout(() => {
-        this.setState({ initialized: true });
-        SplashScreen.hide();
-      }, 2500);
-    });
+    // Splash minimo por 1.5 segundos
+    setTimeout(() => {
+      SplashScreen.hide();
+    }, 1500);
+    this.props.initializeApp();
   }
 
   onBackButtonPressAndroid() {
@@ -96,9 +95,6 @@ class App extends React.Component {
   }
 
   render() {
-    if (!this.state.initialized) {
-      return null;
-    }
     return (
       <StyleProvider style={getTheme(commonTheme)}>
         <Root>
@@ -113,8 +109,7 @@ class App extends React.Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    dispatch,
-    init: () => {
+    initializeApp: () => {
       /* eslint-disable no-console */
       var promises = [];
       // Cargar configuracion
@@ -155,7 +150,10 @@ const mapDispatchToProps = dispatch => {
           console.log('loaded from iCloud', res);
         })
       );
-      return Promise.all(promises);
+      // Indicar finalizacion de inicializacion
+      return Promise.all(promises).then(() => {
+        return dispatch(initializeDone());
+      });
     }
   };
 };

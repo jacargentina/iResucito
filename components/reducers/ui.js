@@ -5,6 +5,7 @@ import {
   INITIALIZE_SONGS,
   INITIALIZE_LOCALE_SONGS,
   INITIALIZE_SINGLE_SONG,
+  SET_INITIALIZED,
   SET_INPUT_FILTERTEXT,
   SET_CONTACTS_FILTER,
   SET_ABOUT_VISIBLE,
@@ -32,10 +33,11 @@ import {
 import { Map, List, fromJS } from 'immutable';
 
 const initialState = Map({
+  initialized: false,
   search: [],
-  songs: null,
+  songs: [],
   index_patch_exists: false,
-  localeSongs: null,
+  localeSongs: [],
   input_text_filter: Map(),
   salmos_transport_note: null,
   contacts_text_filter: Map(),
@@ -85,6 +87,8 @@ export default function ui(state: any = initialState, action: any) {
         state = state.set('contacts', fromJS(action.contacts));
       }
       return state;
+    case SET_INITIALIZED:
+      return state.set('initialized', true);
     case SET_INPUT_FILTERTEXT:
       return state.setIn(['input_text_filter', action.inputId], action.filter);
     case SET_CONTACTS_FILTER:

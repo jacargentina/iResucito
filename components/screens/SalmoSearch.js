@@ -2,8 +2,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { AndroidBackHandler } from 'react-navigation-backhandler';
-import { FlatList, ScrollView } from 'react-native';
+import { FlatList, ScrollView, View } from 'react-native';
 import { ListItem, Left, Body, Text, Icon, Separator } from 'native-base';
+import * as Animatable from 'react-native-animatable';
 import ListAddDialog from './ListAddDialog';
 import SalmoChooserDialog from './SalmoChooserDialog';
 import ContactChooserDialog from './ContactChooserDialog';
@@ -11,6 +12,7 @@ import ContactImportDialog from './ContactImportDialog';
 import SalmoChooseLocaleDialog from './SalmoChooseLocaleDialog';
 import AcercaDe from './AcercaDe';
 import I18n from '../translations';
+import AppNavigatorOptions from '../AppNavigatorOptions';
 import { getSearchItems } from '../selectors';
 
 const SalmoSearch = (props: any) => {
@@ -58,7 +60,45 @@ const SalmoSearch = (props: any) => {
   );
 };
 
-SalmoSearch.navigationOptions = () => ({
+const mapStateToProps = state => {
+  return {
+    loading: !state.ui.get('initialized'),
+    items: getSearchItems(state)
+  };
+};
+
+class Loading extends React.Component<any> {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    var { style } = this.props;
+    if (this.props.loading) {
+      return (
+        <View style={style}>
+          <Icon
+            active
+            name="refresh"
+            style={{
+              width: 32,
+              fontSize: 30,
+              textAlign: 'center',
+              color: AppNavigatorOptions.headerTitleStyle.color
+            }}
+          />
+        </View>
+      );
+    }
+    return null;
+  }
+}
+
+const ConnectedLoading = connect(mapStateToProps, null)(Loading);
+
+const AnimatedLoading = Animatable.createAnimatableComponent(ConnectedLoading);
+
+SalmoSearch.navigationOptions = (props: any) => ({
   title: I18n.t('screen_title.search'),
   tabBarIcon: ({ focused, tintColor }) => {
     return (
@@ -68,13 +108,14 @@ SalmoSearch.navigationOptions = () => ({
         style={{ marginTop: 6, color: tintColor }}
       />
     );
-  }
+  },
+  headerRight: (
+    <AnimatedLoading
+      animation="rotate"
+      iterationCount="infinite"
+      {...props}
+    />
+  )
 });
-
-const mapStateToProps = state => {
-  return {
-    items: getSearchItems(state)
-  };
-};
 
 export default connect(mapStateToProps)(SalmoSearch);

@@ -5,6 +5,7 @@ export const INITIALIZE_SINGLE_SONG = 'INITIALIZE_SINGLE_SONG';
 export const INITIALIZE_LOCALE_SONGS = 'INITIALIZE_LOCALE_SONGS';
 export const INITIALIZE_SEARCH = 'INITIALIZE_SEARCH';
 
+export const SET_INITIALIZED = 'SET_INITIALIZED';
 export const SET_INPUT_FILTERTEXT = 'SET_INPUT_FILTERTEXT';
 export const SET_CONTACTS_FILTER = 'SET_CONTACTS_FILTER';
 export const SET_ABOUT_VISIBLE = 'SET_ABOUT_VISIBLE';
@@ -50,6 +51,12 @@ import PDFLib, { PDFDocument, PDFPage } from 'react-native-pdf-lib';
 
 const SongsIndexPatchPath =
   RNFS.DocumentDirectoryPath + '/SongsIndexPatch.json';
+
+export function initializeDone() {
+  return {
+    type: SET_INITIALIZED
+  };
+}
 
 export function initializeSetup(settings: any, lists: any, contacts: any) {
   return {

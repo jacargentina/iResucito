@@ -147,7 +147,7 @@ const mapDispatchToProps = dispatch => {
 const ImportContacts = props => {
   return (
     <Icon
-      name="sync"
+      name="refresh"
       style={{
         marginTop: 4,
         marginRight: 8,
