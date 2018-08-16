@@ -22,8 +22,7 @@
     "flow-bin": "^0.78.0",
     "os-locale": "^3.0.0",
     "pdfkit": "^0.8.3",
-    "react-test-renderer": "16.4.2",
-    "transform-loader": "^0.2.4"
+    "react-test-renderer": "16.4.2"
   },
   "scripts": {
     "start": "react-native start",
