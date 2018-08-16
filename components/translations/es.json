@@ -144,10 +144,21 @@
     "locale": "Traduce la app a un lenguaje disponible",
     "keep awake":
       "Evitar que el dispositivo entre en reposo al visualizar un salmo",
-    "developer mode": "Habilitar sólo si eres colaborador en la traducción de los cantos"
+    "developer mode":
+      "Habilitar sólo si eres colaborador en la traducción de los cantos"
   },
   "share_action": {
     "view pdf": "Visualizar como PDF",
     "share pdf": "Compatir como PDF..."
+  },
+  "alert_title": {
+    "corrupt patch": "Parche corrupto",
+    "contacts permission": "Permiso a Contactos"
+  },
+  "alert_message": {
+    "corrupt patch": "El archivo del parche estaba corrupto y ha sido borrado",
+    "contacts permission": "No se pueden leer los contactos",
+    "contacts permission ios":
+      "Otorga el permiso en la pantalla Configuración -> iResucito -> Contactos"
   }
 }

@@ -151,5 +151,15 @@
   "share_action": {
     "view pdf": "Visualizza come PDF",
     "share pdf": "Inviare come PDF..."
+  },
+  "alert_title": {
+    "corrupt patch": "Patch corrotta",
+    "contacts permission": "Autorizzazione ai contatti"
+  },
+  "alert_message": {
+    "corrupt patch": "Il file di la patch era corrotta ed è stata cancellata",
+    "contacts permission": "I contatti non possono essere letti",
+    "contacts permission ios":
+      "Concedere l'autorizzazione nella schermata Impostazioni -> iResucito -> Contatti"
   }
 }

@@ -144,10 +144,20 @@
     "locale": "Traduzir o aplicativo para as línguas disponíveis",
     "keep awake":
       "Evitar que o dispositivo apague a tela ao visualizar um canto",
-    "developer mode": "Ativar somente se você for um colaborador na tradução dos cantos"
+    "developer mode":
+      "Ativar somente se você for um colaborador na tradução dos cantos"
   },
   "share_action": {
     "view pdf": "Ver como PDF",
     "share pdf": "Compartilhar como PDF..."
+  },
+  "alert_title": {
+    "corrupt patch": "Patch corruto",
+    "contacts permission": "Permissão de contatos"
+  },
+  "alert_message": {
+    "corrupt patch": "O arquivo de patch estava corrompido e foi excluído",
+    "contacts permission": "Contatos não podem ser lidos",
+    "contacts permission ios": ""
   }
 }

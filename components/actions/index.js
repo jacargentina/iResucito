@@ -276,12 +276,11 @@ export function showContactImportDialog() {
     Contacts.getAll((err, contacts) => {
       dispatch({ type: SET_CONTACT_IMPORT_LOADING, loading: false });
       if (err) {
-        let message = 'No se pueden cargar los contactos. ';
+        let message = I18n.t('alert_message.contacts permission');
         if (Platform.OS == 'ios') {
-          message +=
-            'Otorga el permiso en la pantalla de Configuración -> iResucito -> Contactos';
+          message += I18n.t('alert_message.contacts permission ios');
         }
-        Alert.alert('Contactos - Acceso denegado', message);
+        Alert.alert(I18n.t('alert_title.contacts permission'), message);
       } else {
         dispatch({ type: SET_CONTACT_IMPORT_ITEMS, contacts: contacts });
         dispatch({ type: SET_CONTACT_IMPORT_VISIBLE, visible: true });
@@ -485,9 +484,18 @@ export function readLocalePatch() {
     return RNFS.exists(SongsIndexPatchPath).then(exists => {
       dispatch(setIndexPatchExists(exists));
       if (exists)
-        return RNFS.readFile(SongsIndexPatchPath).then(patchJSON => {
-          return JSON.parse(patchJSON);
-        });
+        return RNFS.readFile(SongsIndexPatchPath)
+          .then(patchJSON => {
+            return JSON.parse(patchJSON);
+          })
+          .catch(err => {
+            return RNFS.unlink(SongsIndexPatchPath).then(() => {
+              Alert.alert(
+                I18n.t('alert_title.corrupt patch'),
+                I18n.t('alert_message.corrupt patch')
+              );
+            });
+          });
     });
   };
 }
@@ -774,7 +782,11 @@ export function generatePDF(canto: Song, lines: Array<SongLine>) {
   };
 }
 
-export function setSongLocalePatch(song: Song, rawLoc: string, file?: SongFile) {
+export function setSongLocalePatch(
+  song: Song,
+  rawLoc: string,
+  file?: SongFile
+) {
   if (file && file.nombre.endsWith('.txt'))
     throw new Error('file con .txt! Pasar sin extension.');
 

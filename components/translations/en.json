@@ -144,10 +144,20 @@
   "settings_note": {
     "locale": "Translate the app to available languages",
     "keep awake": "Prevent the device from shutting off when viewing a song",
-    "developer mode": "Enable only if you are a collaborator in the translation of the songs"
+    "developer mode":
+      "Enable only if you are a collaborator in the translation of the songs"
   },
   "share_action": {
     "view pdf": "View as PDF",
     "share pdf": "Share as PDF..."
+  },
+  "alert_title": {
+    "corrupt patch": "Corrupt Patch",
+    "contacts permission": "Contacts permission",
+  },
+  "alert_message": {
+    "corrupt patch": "The patch file was corrupt and was deleted",
+    "contacts permission": "Contacts cannot be read",
+    "contacts permission ios": "Conceda a permissão na tela Configurações -> iResucito -> Contatos",
   }
 }
