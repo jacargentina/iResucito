@@ -36,7 +36,7 @@ platform :ios do
     elsif !options[:skipBuild]
       increment_build_number
     end
-    gym(scheme: "iResucito", configuration: "Debug") # Build your app - more options available
+    gym(scheme: "iResucito", configuration: options[:config]) # Build your app - more options available
     pilot
 
     # sh "your_script.sh"
