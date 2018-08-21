@@ -197,7 +197,8 @@ const mapDispatchToProps = dispatch => {
       dispatch(shareList(list.name, listMap));
     },
     openChooser: (type, list, key) => {
-      dispatch(openChooserDialog(type, list, key));
+      var target = { listName: list, listKey: key };
+      dispatch(openChooserDialog(type, target));
     },
     listDeleteSong: (songTitle, list, key) => {
       Alert.alert(

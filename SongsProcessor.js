@@ -34,7 +34,7 @@ export const calcularTransporte = (
   return destino - inicio;
 };
 
-export const notasInverted = notas.slice().reverse();
+const notasInverted = notas.slice().reverse();
 
 export function esLineaDeNotas(text: string): boolean {
   if (text === undefined) {
