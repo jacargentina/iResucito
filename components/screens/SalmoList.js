@@ -78,7 +78,6 @@ const makeMapStateToProps = () => {
   const mapStateToProps = (state, props) => {
     var textFilterId = getCurrentRouteKey(state, props);
     var textFilter = getCurrentRouteInputTextFilter(state, props);
-    console.log('Filtro "%s":"%s"', textFilterId, textFilter);
     return {
       devModeDisabled: props.devModeDisabled,
       textFilterId: textFilterId,
