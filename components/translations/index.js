@@ -6,8 +6,8 @@ I18n.fallbacks = true;
 I18n.translations = {
   es: require('./es'),
   en: require('./en'),
-  it: require('./it')
-  //pt: require('./pt')
+  it: require('./it'),
+  pt: require('./pt')
 };
 
 export default I18n;
