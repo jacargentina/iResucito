@@ -514,7 +514,6 @@ export function initializeLocale(locale: string) {
     if (locale === 'default') {
       locale = getDefaultLocale();
     }
-    I18n.defaultLocale = locale;
     I18n.locale = locale;
     const developerMode = getState().ui.getIn(['settings', 'developerMode']);
     // Construir menu de búsqueda
