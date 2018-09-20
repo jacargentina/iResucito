@@ -34,7 +34,13 @@ export const CONTACT_SYNC = 'CONTACT_SYNC';
 export const CONTACT_TOGGLE_ATTRIBUTE = 'CONTACT_TOGGLE_ATTRIBUTE';
 export const CONTACT_UPDATE = 'CONTACT_UPDATE';
 
-import { Alert, Platform, StyleSheet, Share } from 'react-native';
+import {
+  Alert,
+  Platform,
+  StyleSheet,
+  Share,
+  PermissionsAndroid
+} from 'react-native';
 import Contacts from 'react-native-contacts';
 import RNFS from 'react-native-fs';
 import I18n from '../translations';
@@ -270,22 +276,55 @@ export function applySetting(key: string, value: any) {
   return { type: SET_SETTINGS_VALUE, key: key, value: value };
 }
 
+function checkContactsPermission(): Promise<boolean> {
+  if (Platform.OS == 'android') {
+    return PermissionsAndroid.request(
+      PermissionsAndroid.PERMISSIONS.READ_CONTACTS
+    )
+      .then(granted => {
+        return granted === PermissionsAndroid.RESULTS.GRANTED;
+      })
+      .catch(err => {
+        return false;
+      });
+  }
+  return Promise.resolve(true);
+}
+
+function getContacts(): Promise<any> {
+  return new Promise((resolve, reject) => {
+    checkContactsPermission().then(hasPermission => {
+      if (hasPermission) {
+        Contacts.getAll((err, contacts) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(contacts);
+          }
+        });
+      } else {
+        reject();
+      }
+    });
+  });
+}
+
 export function showContactImportDialog() {
   return (dispatch: Function) => {
     dispatch({ type: SET_CONTACT_IMPORT_LOADING, loading: true });
-    Contacts.getAll((err, contacts) => {
-      dispatch({ type: SET_CONTACT_IMPORT_LOADING, loading: false });
-      if (err) {
+    getContacts()
+      .then(contacts => {
+        dispatch({ type: SET_CONTACT_IMPORT_LOADING, loading: false });
+        dispatch({ type: SET_CONTACT_IMPORT_ITEMS, contacts: contacts });
+        dispatch({ type: SET_CONTACT_IMPORT_VISIBLE, visible: true });
+      })
+      .catch(err => {
         let message = I18n.t('alert_message.contacts permission');
         if (Platform.OS == 'ios') {
           message += I18n.t('alert_message.contacts permission ios');
         }
         Alert.alert(I18n.t('alert_title.contacts permission'), message);
-      } else {
-        dispatch({ type: SET_CONTACT_IMPORT_ITEMS, contacts: contacts });
-        dispatch({ type: SET_CONTACT_IMPORT_VISIBLE, visible: true });
-      }
-    });
+      });
   };
 }
 
@@ -570,18 +609,6 @@ export function saveSettings() {
         .toJS()
     });
   };
-}
-
-function getContacts() {
-  return new Promise((resolve, reject) => {
-    Contacts.getAll((err, contacts) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(contacts);
-      }
-    });
-  });
 }
 
 export function refreshContactsThumbs(cacheDir: string, newCacheDir: string) {
