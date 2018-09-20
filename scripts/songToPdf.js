@@ -37,7 +37,7 @@ var cantoFontSize = 12;
 var cantoSpacing = 11;
 var fontName = 'Franklin Gothic Medium';
 var indicadorSpacing = 18;
-var parrafoSpacing = 6;
+var parrafoSpacing = 12;
 var notesFontSize = 10;
 var widthHeightPixels = 598; // 21,1 cm
 var marginLeftRight = 15;
@@ -178,7 +178,8 @@ program
     '-k, --key [value]',
     'Song key. Defaults to generate all songs',
     parseInt
-  );
+  )
+  .option('-D, --debug', 'Show debugging data (only development)');
 
 if (!process.argv.slice(2).length) {
   program.help();
@@ -198,6 +199,9 @@ if (!process.argv.slice(2).length) {
         .then(() => {
           console.log('Song: ', song.titulo);
           var songlines = folderSongs.preprocesarCanto(song.lines, 0);
+          if (program.debug) {
+            console.log(songlines);
+          }
           generatePDF(song, songlines);
         })
         .catch(err => {
