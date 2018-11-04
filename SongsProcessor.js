@@ -119,7 +119,8 @@ export class SongsProcessor {
     var info: Song = Object.assign({}, SongsIndex[key]);
     info.key = key;
     if (!info.files.hasOwnProperty(locale)) {
-      this.assignInfoFromFile(info, info.files, 'es');
+      const defaultLocale = Object.getOwnPropertyNames(info.files)[0];
+      this.assignInfoFromFile(info, info.files, defaultLocale);
       info.patchable = true;
       if (patch && patch.hasOwnProperty(key)) {
         if (patch[key].hasOwnProperty(locale)) {
@@ -177,6 +178,8 @@ export class SongsProcessor {
       })
       .catch(err => {
         song.error = err.message;
+        song.lines = [];
+        song.fullText = '';
       });
   }
 

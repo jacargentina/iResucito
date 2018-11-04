@@ -39,6 +39,7 @@ class SalmoListItem extends React.Component<any, State> {
     }
     if (
       this.props.highlight &&
+      !this.props.salmo.error &&
       this.props.salmo.fullText
         .toLowerCase()
         .includes(this.props.highlight.toLowerCase())

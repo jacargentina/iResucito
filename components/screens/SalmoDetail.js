@@ -63,25 +63,29 @@ class SalmoDetail extends React.Component<any> {
   }
 
   render() {
-    var render_items = this.props.lines.map((it, i) => {
-      if (it.sufijo) {
-        var sufijo = (
-          <Text key={i + 'sufijo'} style={it.sufijoStyle}>
-            {it.sufijo}
+    if (this.props.salmo.error) {
+      var render_items = <Text>{this.props.salmo.error}</Text>;
+    } else {
+      var render_items = this.props.lines.map((it, i) => {
+        if (it.sufijo) {
+          var sufijo = (
+            <Text key={i + 'sufijo'} style={it.sufijoStyle}>
+              {it.sufijo}
+            </Text>
+          );
+        }
+        return (
+          <Text numberOfLines={1} key={i + 'texto'} style={it.style}>
+            <Text key={i + 'prefijo'} style={it.prefijoStyle || it.style}>
+              {it.prefijo}
+            </Text>
+            {it.texto}
+            {sufijo}
           </Text>
         );
-      }
-      return (
-        <Text numberOfLines={1} key={i + 'texto'} style={it.style}>
-          <Text key={i + 'prefijo'} style={it.prefijoStyle || it.style}>
-            {it.prefijo}
-          </Text>
-          {it.texto}
-          {sufijo}
-        </Text>
-      );
-    });
-    render_items.push(<Text key="spacer">{'\n\n\n'}</Text>);
+      });
+      render_items.push(<Text key="spacer">{'\n\n\n'}</Text>);
+    }
     var margin = 10;
     var minWidth = Dimensions.get('window').width - margin * 2;
     return (
