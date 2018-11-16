@@ -321,7 +321,7 @@ export function showContactImportDialog() {
       .catch(err => {
         let message = I18n.t('alert_message.contacts permission');
         if (Platform.OS == 'ios') {
-          message += I18n.t('alert_message.contacts permission ios');
+          message += "\n\n" + I18n.t('alert_message.contacts permission ios');
         }
         Alert.alert(I18n.t('alert_title.contacts permission'), message);
       });

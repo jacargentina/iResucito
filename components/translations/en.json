@@ -158,6 +158,6 @@
   "alert_message": {
     "corrupt patch": "The patch file was corrupt and was deleted",
     "contacts permission": "Contacts cannot be read",
-    "contacts permission ios": "Conceda a permissão na tela Configurações -> iResucito -> Contatos",
+    "contacts permission ios": "Grant the permission in the Settings screen -> iResucito -> Contacts",
   }
 }
