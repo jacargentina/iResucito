@@ -54,6 +54,7 @@
 		884E86991FA3C68600389135 /* iResucitoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884E86981FA3C68600389135 /* iResucitoUITests.swift */; };
 		884E86D01FA3C76300389135 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884E86CF1FA3C76200389135 /* SnapshotHelper.swift */; };
 		889530361F6C320D009638BA /* songs in Resources */ = {isa = PBXBuildFile; fileRef = 889530351F6C320D009638BA /* songs */; };
+		88A22322219F738500FF8350 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88A222EE219F738500FF8350 /* Default-568h@2x.png */; };
 		88BC43B31F8526BF006B7672 /* cristo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 88BC43B11F8526BF006B7672 /* cristo.jpg */; };
 		88BC43B41F8526BF006B7672 /* resucito.gif in Resources */ = {isa = PBXBuildFile; fileRef = 88BC43B21F8526BF006B7672 /* resucito.gif */; };
 		90A36348099D4D2A9C7336B5 /* libRCTPdf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AB3A13E75E54FB2BAFE0609 /* libRCTPdf.a */; };
@@ -506,6 +507,7 @@
 		8880F021219F6F6700B8D566 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = it; path = it.lproj/Info.plist; sourceTree = "<group>"; };
 		8880F022219F6F6F00B8D566 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "pt-BR"; path = "pt-BR.lproj/Info.plist"; sourceTree = "<group>"; };
 		889530351F6C320D009638BA /* songs */ = {isa = PBXFileReference; lastKnownFileType = folder; name = songs; path = ../songs; sourceTree = "<group>"; };
+		88A222EE219F738500FF8350 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		88BC43B11F8526BF006B7672 /* cristo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cristo.jpg; sourceTree = "<group>"; };
 		88BC43B21F8526BF006B7672 /* resucito.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = resucito.gif; sourceTree = "<group>"; };
 		88DE587B2097FF2E002CEFFF /* RNDeviceInfo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNDeviceInfo.xcodeproj; path = "../node_modules/react-native-device-info/ios/RNDeviceInfo.xcodeproj"; sourceTree = "<group>"; };
@@ -805,6 +807,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				88A222EE219F738500FF8350 /* Default-568h@2x.png */,
 				88BC43B11F8526BF006B7672 /* cristo.jpg */,
 				88BC43B21F8526BF006B7672 /* resucito.gif */,
 				889530351F6C320D009638BA /* songs */,
@@ -1623,6 +1626,7 @@
 				E83F2E881110405E81D7195D /* Feather.ttf in Resources */,
 				35A428D22254463497BE7E6C /* FontAwesome.ttf in Resources */,
 				671FE3BC2B5E4C6FAA4A2D90 /* Foundation.ttf in Resources */,
+				88A22322219F738500FF8350 /* Default-568h@2x.png in Resources */,
 				70A2BC84C441424DBD5FF3EE /* Ionicons.ttf in Resources */,
 				187FC818BFD54AFF9AB0B078 /* MaterialCommunityIcons.ttf in Resources */,
 				69DF8814F42A4D06AB362262 /* MaterialIcons.ttf in Resources */,
