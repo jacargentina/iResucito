@@ -25,14 +25,17 @@ Runs all the tests
 ```
 fastlane ios beta
 ```
-Submit a new Beta Build to Apple TestFlight
-
-This will also make sure the profile is up to date
+Enviar version beta a TestFlight (ej 3.0.1-0) Apple TestFlight
 ### ios release
 ```
 fastlane ios release
 ```
-Deploy a new version to the App Store
+Enviar version nueva al AppStore (ej 3.0.1-0)
+### ios release_update
+```
+fastlane ios release_update
+```
+Enviar version existente (nuevo build) al AppStore (ej 3.0.1-0 => 3.0.1-1)
 
 ----
 
