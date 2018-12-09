@@ -1,5 +1,5 @@
 // @flow
-import { createStackNavigator } from 'react-navigation';
+import { createAppContainer, createStackNavigator } from 'react-navigation';
 import SalmoList from './screens/SalmoList';
 import SalmoDetail from './screens/SalmoDetail';
 import ListDetail from './screens/ListDetail';
@@ -19,7 +19,7 @@ const AppNavigator = createStackNavigator(
     UnassignedList: UnassignedList
   },
   {
-    navigationOptions: (props: any) => {
+    defaultNavigationOptions: (props: any) => {
       var options = Object.assign({}, AppNavigatorOptions);
       options.headerTruncatedBackTitle = I18n.t('ui.back');
       var navigation = props.navigation;
@@ -36,4 +36,4 @@ const AppNavigator = createStackNavigator(
   }
 );
 
-export default AppNavigator;
+export default createAppContainer(AppNavigator);

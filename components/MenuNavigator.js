@@ -40,7 +40,7 @@ const MenuNavigator = createBottomTabNavigator(
   {
     swipeEnabled: false,
     tabBarOptions: tabBarOptions,
-    navigationOptions: (props: any) => {
+    defaultNavigationOptions: (props: any) => {
       var navigation = props.navigation;
       switch (navigation.state.routeName) {
         case 'Search':

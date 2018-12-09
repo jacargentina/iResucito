@@ -23,21 +23,11 @@ export const localdata = new Storage({
   // the corresponding sync method will be invoked and return
   // the latest data.
   sync: {
-    settings(params) {
-      let { resolve } = params;
-      resolve();
-    },
-    lists(params) {
-      let { resolve } = params;
-      resolve();
-    },
-    contacts(params) {
-      let { resolve } = params;
-      resolve();
-    },
-    lastCachesDirectoryPath(params) {
-      let { resolve } = params;
-      resolve(RNFS.CachesDirectoryPath);
+    async settings(params) {},
+    async lists(params) {},
+    async contacts(params) {},
+    async lastCachesDirectoryPath(params) {
+      return RNFS.CachesDirectoryPath;
     }
   }
 });
