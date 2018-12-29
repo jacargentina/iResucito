@@ -37,10 +37,10 @@ san Ignacio de Antioquía
 A. RUEGA POR NOSOTROS. 
 san Lorenzo            
 A. RUEGA POR NOSOTROS. 
-Sol             Mi–       Do      Re7 
+Sol               Mi–        Do      Re7 
 santas Perpetua y Felicidad       
 A. ROGAD POR NOSOTROS. 
-Sol           Mi–           Do      Re7 
+Sol     Mi–    Do    Re7 
 santa Inés
 A. RUEGA POR NOSOTROS. 
 san Gregorio            
@@ -54,10 +54,10 @@ A. RUEGA POR NOSOTROS.
 san Martín            
 A. RUEGA POR NOSOTROS. 
 san Benito            
-Sol                Mi–       Do       Re7 
+Sol               Mi–        Do      Re7 
 santos Francisco y Domingo       
 A. ROGAD POR NOSOTROS. 
-Sol             Mi–         Do      Re7 
+Sol               Mi–        Do      Re7 
 san Francisco Javier         
 A. RUEGA POR NOSOTROS. 
 san Juan María Vianney         
@@ -67,13 +67,13 @@ A. RUEGA POR NOSOTROS.
                                                    
 ∗ Las estrofas que agrupan varios santos se hace por alto, tanto la parte del solista como la asamblea. 
 
-  
-Se nombran los santos propios del lugar (ejemplo) 
+- Se nombran los santos propios del lugar (ejemplo) 
  
 Sol 
-Santos Isidro Labrador       Mi–                                                     Do                                 Re7 
+Santos Isidro Labrador
+Mi–        Do      Re7 
 y María de la Cabeza
-Sol                                    Mi–                                                                     Do                                 Re7 
+Sol               Mi–        Do      Re7 
 Santa Teresa de Ávila
 A. RUEGA POR NOSOTROS. 
 Santa Catalina Labouré         
@@ -96,11 +96,11 @@ Por tu muerte y resurrección
 A. LÍBRANOS, SEÑOR. 
 Por el envío del Espíritu Santo
 A. LÍBRANOS, SEÑOR. 
-Sol                                                        Mi–                                                          Do                                        Re7 
+ Sol      Mi–         Do       Re7 
 Nosotros que somos pecadores      
 A. TE ROGAMOS, ÓYENOS. 
  
-Si hay bautizos se nombran los nombres de cada uno de los bautizandos  
+- Si hay bautizos se nombran los nombres de cada uno de los bautizandos  
 
 Sol        
 Para que regeneres a ... N     
@@ -113,7 +113,7 @@ Mi–     Do     Re7
 elegidos con la gracia del Bautismo.                   
 A. TE ROGAMOS, ÓYENOS. 
  
-Si no hay bautizos  
+- Si no hay bautizos  
 
 Sol       
 Para que santifiques esta agua     
