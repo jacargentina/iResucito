@@ -239,12 +239,6 @@ export class SongsProcessor {
         tituloEspecial: false,
         textoEspecial: false
       };
-      // Si tiene indicador de Nota?
-      if (it.texto.endsWith('\u2217')) {
-        it.texto = it.texto.replace('\u2217', '');
-        it.sufijo = '\u2217';
-        it.sufijoStyle = this.songStyles.lineaNotas;
-      }
       return it;
     } else if (esLineaDeNotas(text)) {
       var it: SongLine = {
@@ -366,6 +360,12 @@ export class SongsProcessor {
   ): Array<SongLine> {
     var firstPass = lines.map(l => {
       var it = this.preprocesarLinea(l);
+      // Detectar indicadores de Nota al pie (un asterisco)
+      if (it.texto.endsWith('\u2217')) {
+        it.texto = it.texto.replace('\u2217', '');
+        it.sufijo = '\u2217';
+        it.sufijoStyle = this.songStyles.lineaNotas;
+      }
       if (it.notas && diferenciaTransporte !== 0) {
         it.texto = this.transportarNotas(it.texto, diferenciaTransporte);
       }
