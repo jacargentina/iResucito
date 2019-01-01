@@ -1,0 +1,2 @@
+• Elenchi gratuiti: ora è possibile creare elenchi di brani "gratuiti", con qualsiasi ordine e numero di brani
+• Regolazioni delle dimensioni del carattere per la quantità di brani visualizzati nelle ricerche
