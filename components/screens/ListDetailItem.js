@@ -1,6 +1,5 @@
 // @flow
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useContext, useState, useEffect } from 'react';
 import {
   Text,
   Icon,
@@ -12,12 +11,19 @@ import {
   Separator
 } from 'native-base';
 import { View, TextInput } from 'react-native';
-import { openChooserDialog, saveLists, updateListMapText } from '../actions';
+import { DataContext } from '../../DataContext';
 import { getFriendlyText } from '../util';
 import commonTheme from '../../native-base-theme/variables/platform';
 import I18n from '../translations';
 
 const ListDetailItem = (props: any) => {
+  const data = useContext(DataContext);
+  const [, , , getList, setList, save] = data.lists;
+  const [, , , , , showContactDialog] = data.contactChooserDialog;
+  const [, showSalmoDialog] = data.salmoChooserDialog;
+
+  const listText = getList(props.listName, props.listKey);
+
   var item = null;
   if (
     props.listKey === '1' ||
@@ -32,10 +38,11 @@ const ListDetailItem = (props: any) => {
         </Left>
         <Body>
           <Input
-            onChangeText={text =>
-              props.updateItem(props.listName, props.listKey, text)
-            }
-            value={props.listText}
+            onChangeText={text => {
+              setList(props.listName, props.listKey, text);
+              save();
+            }}
+            value={listText}
             clearButtonMode="always"
             autoCorrect={false}
           />
@@ -53,10 +60,11 @@ const ListDetailItem = (props: any) => {
         </Left>
         <Body>
           <Input
-            onChangeText={text =>
-              props.updateItem(props.listName, props.listKey, text)
-            }
-            value={props.listText}
+            onChangeText={text => {
+              setList(props.listName, props.listKey, text);
+              save();
+            }}
+            value={listText}
             clearButtonMode="always"
             autoCorrect={false}
           />
@@ -70,9 +78,7 @@ const ListDetailItem = (props: any) => {
               height: 40,
               fontSize: 30
             }}
-            onPress={() =>
-              props.openChooser('Contact', props.listName, props.listKey)
-            }
+            onPress={() => showContactDialog(props.listName, props.listKey)}
           />
         </Right>
       </ListItem>
@@ -83,10 +89,11 @@ const ListDetailItem = (props: any) => {
         <Body>
           <TextInput
             multiline
-            onChangeText={text =>
-              props.updateItem(props.listName, props.listKey, text)
-            }
-            value={props.listText}
+            onChangeText={text => {
+              setList(props.listName, props.listKey, text);
+              save();
+            }}
+            value={listText}
             autoCorrect={false}
           />
         </Body>
@@ -95,11 +102,11 @@ const ListDetailItem = (props: any) => {
   } else {
     // Cualquier otro caso, es un canto
     var text =
-      props.listText == null
+      listText == null
         ? I18n.t('ui.search placeholder') + '...'
-        : props.listText.titulo;
+        : listText.titulo;
     var navigateSalmo =
-      props.listText != null ? (
+      listText != null ? (
         <Right>
           <Icon
             name="open"
@@ -111,7 +118,7 @@ const ListDetailItem = (props: any) => {
             }}
             onPress={() =>
               props.navigation.navigate('SalmoDetail', {
-                salmo: props.listText
+                salmo: listText
               })
             }
           />
@@ -122,9 +129,7 @@ const ListDetailItem = (props: any) => {
         icon
         last
         button
-        onPress={() =>
-          props.openChooser('Salmo', props.listName, props.listKey)
-        }>
+        onPress={() => showSalmoDialog(props.listName, props.listKey)}>
         <Left>
           <Icon name="musical-notes" />
         </Left>
@@ -152,25 +157,4 @@ const ListDetailItem = (props: any) => {
   );
 };
 
-const mapStateToProps = (state, props) => {
-  return {
-    listName: props.listName,
-    listKey: props.listKey,
-    listText: props.listText
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    openChooser: (type, list, key) => {
-      var target = { listName: list, listKey: key };
-      dispatch(openChooserDialog(type, target));
-    },
-    updateItem: (list, key, text) => {
-      dispatch(updateListMapText(list, key, text));
-      dispatch(saveLists());
-    }
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ListDetailItem);
+export default ListDetailItem;

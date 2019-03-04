@@ -1,51 +1,66 @@
 // @flow
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useContext, useState, useEffect } from 'react';
 import { ListItem, Right, Body, Icon, Text } from 'native-base';
 import Swipeout from 'react-native-swipeout';
 import { Alert, FlatList, View } from 'react-native';
 import SearchBarView from './SearchBarView';
-import {
-  showContactImportDialog,
-  syncContact,
-  saveContacts,
-  setContactAttribute,
-  setContactsFilterText
-} from '../actions';
+import { DataContext } from '../../DataContext';
 import AppNavigatorOptions from '../AppNavigatorOptions';
 import BaseCallToAction from './BaseCallToAction';
-import {
-  getCurrentRouteKey,
-  getCurrentRouteContactsTextFilter,
-  getProcessedContacts
-} from '../selectors';
 import commonTheme from '../../native-base-theme/variables/platform';
 import I18n from '../translations';
 import ContactPhoto from './ContactPhoto';
 
 const CommunityScreen = (props: any) => {
-  if (props.items.length == 0 && !props.textFilter)
+  const data = useContext(DataContext);
+  const [contacts, filter, setFilter, save, remove] = data.community;
+
+  const contactDelete = contact => {
+    Alert.alert(
+      `${I18n.t('ui.delete')} "${contact.givenName}"`,
+      I18n.t('ui.delete confirmation'),
+      [
+        {
+          text: I18n.t('ui.delete'),
+          onPress: () => {
+            remove(contact);
+            save();
+          },
+          style: 'destructive'
+        },
+        {
+          text: I18n.t('ui.cancel'),
+          style: 'cancel'
+        }
+      ]
+    );
+  };
+
+  const contactToggleAttibute = (contact, attribute) => {
+    // TODO
+    //dispatch(setContactAttribute(contact, attribute));
+    save();
+  };
+
+  if (contacts.length == 0 && !props.textFilter)
     return (
       <BaseCallToAction
         icon="people"
         title={I18n.t('call_to_action_title.community list')}
         text={I18n.t('call_to_action_text.community list')}
-        buttonHandler={() => props.contactImport()}
+        buttonHandler={data.contactImportDialog.show}
         buttonText={I18n.t('call_to_action_button.community list')}
       />
     );
   return (
-    <SearchBarView
-      searchTextFilterId={props.textFilterId}
-      searchTextFilter={props.textFilter}
-      searchHandler={props.filtrarHandler}>
-      {props.items.length == 0 && (
+    <SearchBarView value={filter} setValue={setFilter}>
+      {contacts.length == 0 && (
         <Text note style={{ textAlign: 'center', paddingTop: 20 }}>
           {I18n.t('ui.no contacts found')}
         </Text>
       )}
       <FlatList
-        data={props.items}
+        data={contacts}
         keyExtractor={item => item.recordID}
         renderItem={({ item }) => {
           var contactFullName = `${item.givenName} ${item.familyName}`;
@@ -68,14 +83,14 @@ const CommunityScreen = (props: any) => {
               text: I18n.t('ui.psalmist'),
               type: 'primary',
               onPress: () => {
-                props.contactToggleAttibute(item, 's');
+                contactToggleAttibute(item, 's');
               }
             },
             {
               text: I18n.t('ui.delete'),
               type: 'delete',
               onPress: () => {
-                props.contactDelete(item);
+                contactDelete(item);
               }
             }
           ];
@@ -100,51 +115,8 @@ const CommunityScreen = (props: any) => {
   );
 };
 
-const mapStateToProps = (state, props) => {
-  return {
-    textFilterId: getCurrentRouteKey(state, props),
-    textFilter: getCurrentRouteContactsTextFilter(state, props),
-    items: getProcessedContacts(state, props)
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    filtrarHandler: (inputId, text) => {
-      dispatch(setContactsFilterText(inputId, text));
-    },
-    contactDelete: contact => {
-      Alert.alert(
-        `${I18n.t('ui.delete')} "${contact.givenName}"`,
-        I18n.t('ui.delete confirmation'),
-        [
-          {
-            text: I18n.t('ui.delete'),
-            onPress: () => {
-              dispatch(syncContact(contact));
-              dispatch(saveContacts());
-            },
-            style: 'destructive'
-          },
-          {
-            text: I18n.t('ui.cancel'),
-            style: 'cancel'
-          }
-        ]
-      );
-    },
-    contactImport: () => {
-      dispatch(showContactImportDialog());
-    },
-    contactToggleAttibute: (contact, attribute) => {
-      dispatch(setContactAttribute(contact, attribute));
-      dispatch(saveContacts());
-    }
-  };
-};
-
-/* eslint-disable no-unused-vars */
-const ImportContacts = props => {
+const ImportContactsButton = props => {
+  const data = useContext(DataContext);
   return (
     <Icon
       name="refresh"
@@ -156,14 +128,10 @@ const ImportContacts = props => {
         textAlign: 'center',
         color: AppNavigatorOptions.headerTitleStyle.color
       }}
-      onPress={() => props.contactImport()}
+      onPress={data.contactImportDialog.show}
     />
   );
 };
-
-const ImportContactsButton = connect(mapStateToProps, mapDispatchToProps)(
-  ImportContacts
-);
 
 CommunityScreen.navigationOptions = props => ({
   title: I18n.t('screen_title.community'),
@@ -179,4 +147,4 @@ CommunityScreen.navigationOptions = props => ({
   headerRight: <ImportContactsButton />
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CommunityScreen);
+export default CommunityScreen;

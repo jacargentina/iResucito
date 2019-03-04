@@ -1,22 +1,33 @@
 // @flow
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useContext, useState, useEffect } from 'react';
 import BaseModal from './BaseModal';
 import { Text, ListItem, Body, Left, Icon } from 'native-base';
 import { FlatList, View } from 'react-native';
-import { hideChooseLocaleDialog, setSongLocalePatch } from '../actions';
-import { getLocaleReal, getAvailableSongsForPatch } from '../selectors';
+import { DataContext } from '../../DataContext';
 import commonTheme from '../../native-base-theme/variables/platform';
 import I18n from '../translations';
 
 const SalmoChooseLocaleDialog = (props: any) => {
+  const data = useContext(DataContext);
+
+  const [, , , getLocaleReal] = data.settings;
+
+  const [visible, items, , hide, target] = data.salmoLocaleChooserDialog;
+  const [, , , , , , , setSongLocalePatch] = data.songsMeta;
+
+  const localeFileSelected = file => {
+    const locale = getLocaleReal();
+    setSongLocalePatch(target, locale, file);
+    hide();
+  };
+
   return (
     <BaseModal
-      visible={props.visible}
-      closeModal={() => props.close()}
+      visible={visible}
+      closeModal={() => close()}
       title={I18n.t('screen_title.choose song')}
       fade={true}>
-      {props.items.length == 0 && (
+      {items.length == 0 && (
         <View
           style={{
             flex: 3,
@@ -35,36 +46,34 @@ const SalmoChooseLocaleDialog = (props: any) => {
           </Text>
         </View>
       )}
-      {props.targetSalmo && (
+      {target && (
         <ListItem itemDivider>
-          <Text>
-            {I18n.t('ui.list_total_songs', { total: props.items.length })}
-          </Text>
+          <Text>{I18n.t('ui.list_total_songs', { total: items.length })}</Text>
         </ListItem>
       )}
-      {props.targetSalmo && (
+      {target && (
         <ListItem icon>
           <Left>
             <Icon name="musical-notes" />
           </Left>
           <Body>
-            <Text>{props.targetSalmo.titulo}</Text>
-            <Text note>{props.targetSalmo.fuente}</Text>
+            <Text>{target.titulo}</Text>
+            <Text note>{target.fuente}</Text>
           </Body>
         </ListItem>
       )}
       <FlatList
-        data={props.items}
+        data={items}
         keyExtractor={(item, index) => index.toString()}
-        renderItem={({ item }) => {
+        renderItem={({ file }) => {
           return (
             <ListItem
               onPress={() => {
-                props.localeFileSelected(props.targetSalmo, props.locale, item);
+                localeFileSelected(file);
               }}>
               <Body>
-                <Text>{item.titulo}</Text>
-                <Text note>{item.fuente}</Text>
+                <Text>{file.titulo}</Text>
+                <Text note>{file.fuente}</Text>
               </Body>
             </ListItem>
           );
@@ -74,30 +83,4 @@ const SalmoChooseLocaleDialog = (props: any) => {
   );
 };
 
-const mapStateToProps = (state, props) => {
-  var visible = state.ui.get('locale_choose_visible');
-  var targetSalmo = state.ui.get('locale_choose_target_salmo');
-  return {
-    targetSalmo: targetSalmo,
-    visible: visible,
-    locale: getLocaleReal(state),
-    items: getAvailableSongsForPatch(state)
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    close: () => {
-      dispatch(hideChooseLocaleDialog());
-    },
-    localeFileSelected: (salmo: Song, locale: string, file: SongFile) => {
-      dispatch(setSongLocalePatch(salmo, locale, file)).then(() => {
-        dispatch(hideChooseLocaleDialog());
-      });
-    }
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(
-  SalmoChooseLocaleDialog
-);
+export default SalmoChooseLocaleDialog;

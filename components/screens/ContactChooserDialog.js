@@ -1,23 +1,42 @@
 // @flow
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useContext, useState, useEffect } from 'react';
 import BaseModal from './BaseModal';
 import { Text, ListItem, Left, Body, Icon } from 'native-base';
 import { FlatList, View } from 'react-native';
-import { addContactToList, saveLists, closeChooserDialog } from '../actions';
-import { getProcessedContacts } from '../selectors';
+import { DataContext } from '../../DataContext';
 import commonTheme from '../../native-base-theme/variables/platform';
 import I18n from '../translations';
 import ContactPhoto from './ContactPhoto';
 
 const ContactChooserDialog = (props: any) => {
+  const data = useContext(DataContext);
+
+  const [
+    visible,
+    loading,
+    items,
+    filter,
+    setFilter,
+    show,
+    hide,
+    target
+  ] = data.contactChooserDialog;
+
+  const [lists, , , , , setList, , , save] = data.lists;
+
+  const contactSelected = contact => {
+    setList(target.listName, target.listKey, contact);
+    save();
+    hide();
+  };
+
   return (
     <BaseModal
-      visible={props.visible}
-      closeModal={() => props.close()}
+      visible={visible}
+      closeModal={hide}
       title={I18n.t('screen_title.community')}
       fade={true}>
-      {props.items.length == 0 && (
+      {items.length == 0 && (
         <View
           style={{
             flex: 3,
@@ -38,7 +57,7 @@ const ContactChooserDialog = (props: any) => {
         </View>
       )}
       <FlatList
-        data={props.items}
+        data={items}
         keyExtractor={item => item.recordID}
         renderItem={({ item }) => {
           var contactFullName = `${item.givenName} ${item.familyName}`;
@@ -47,7 +66,7 @@ const ContactChooserDialog = (props: any) => {
               avatar
               button
               onPress={() => {
-                props.contactSelected(item, props.listName, props.listKey);
+                contactSelected(item);
               }}>
               <Left>
                 <ContactPhoto item={item} />
@@ -64,31 +83,4 @@ const ContactChooserDialog = (props: any) => {
   );
 };
 
-const mapStateToProps = (state, props) => {
-  var chooser = state.ui.get('chooser');
-  var chooser_target_list = state.ui.get('chooser_target_list');
-  var chooser_target_key = state.ui.get('chooser_target_key');
-  return {
-    listName: chooser_target_list,
-    listKey: chooser_target_key,
-    visible: chooser === 'Contact',
-    items: getProcessedContacts(state, props)
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    close: () => {
-      dispatch(closeChooserDialog());
-    },
-    contactSelected: (contact, list, key) => {
-      dispatch(addContactToList(contact, list, key));
-      dispatch(saveLists());
-      dispatch(closeChooserDialog());
-    }
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(
-  ContactChooserDialog
-);
+export default ContactChooserDialog;

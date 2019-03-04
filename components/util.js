@@ -7,7 +7,8 @@ import I18n from './translations';
 import {
   SongsProcessor,
   esLineaDeNotas,
-  limpiarNotasRegex
+  limpiarNotasRegex,
+  calcularTransporte
 } from '../SongsProcessor';
 
 export function getEsSalmo(listKey: string): boolean {
@@ -130,3 +131,12 @@ export const NativeSongs = new SongsProcessor(
   NativeSongReader,
   NativeStyles
 );
+
+export const getSalmoTransported = (song: Song, transportToNote: any) => {
+  var lines = song.lines;
+  var diferencia = 0;
+  if (transportToNote) {
+    diferencia = calcularTransporte(lines[0], transportToNote);
+  }
+  return NativeSongs.preprocesarCanto(lines, diferencia);
+};

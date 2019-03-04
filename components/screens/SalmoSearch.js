@@ -1,6 +1,5 @@
 // @flow
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useContext, useState, useEffect } from 'react';
 import { AndroidBackHandler } from 'react-navigation-backhandler';
 import { FlatList, ScrollView, View } from 'react-native';
 import { ListItem, Left, Body, Text, Icon, Separator } from 'native-base';
@@ -13,9 +12,11 @@ import SalmoChooseLocaleDialog from './SalmoChooseLocaleDialog';
 import AcercaDe from './AcercaDe';
 import I18n from '../translations';
 import AppNavigatorOptions from '../AppNavigatorOptions';
-import { getSearchItems } from '../selectors';
+import { DataContext } from '../../DataContext';
 
 const SalmoSearch = (props: any) => {
+  const data = useContext(DataContext);
+  const { search } = data;
   return (
     <AndroidBackHandler onBackPress={() => true}>
       <ScrollView
@@ -28,10 +29,10 @@ const SalmoSearch = (props: any) => {
         <ContactChooserDialog navigation={props.navigation} />
         <SalmoChooseLocaleDialog navigation={props.navigation} />
         <FlatList
-          data={props.items}
+          data={search}
           keyExtractor={item => item.title}
           renderItem={({ item, index }) => {
-            var nextItem = props.items[index + 1];
+            var nextItem = search[index + 1];
             if (item.divider) {
               return (
                 <Separator bordered>
@@ -58,13 +59,6 @@ const SalmoSearch = (props: any) => {
       </ScrollView>
     </AndroidBackHandler>
   );
-};
-
-const mapStateToProps = state => {
-  return {
-    loading: !state.ui.get('initialized'),
-    items: getSearchItems(state)
-  };
 };
 
 class Loading extends React.Component<any> {
@@ -94,9 +88,7 @@ class Loading extends React.Component<any> {
   }
 }
 
-const ConnectedLoading = connect(mapStateToProps, null)(Loading);
-
-const AnimatedLoading = Animatable.createAnimatableComponent(ConnectedLoading);
+const AnimatedLoading = Animatable.createAnimatableComponent(Loading);
 
 SalmoSearch.navigationOptions = (props: any) => ({
   title: I18n.t('screen_title.search'),
@@ -110,12 +102,8 @@ SalmoSearch.navigationOptions = (props: any) => ({
     );
   },
   headerRight: (
-    <AnimatedLoading
-      animation="rotate"
-      iterationCount="infinite"
-      {...props}
-    />
+    <AnimatedLoading animation="rotate" iterationCount="infinite" {...props} />
   )
 });
 
-export default connect(mapStateToProps)(SalmoSearch);
+export default SalmoSearch;

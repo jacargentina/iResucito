@@ -51,7 +51,6 @@
     "eslint-plugin-flowtype": "^3.4.2",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-react": "^7.12.4",
-    "immutable": "^4.0.0-rc.12",
     "langs": "^2.0.0",
     "lodash": "^4.17.11",
     "native-base": "^2.12.0",
@@ -63,7 +62,7 @@
     "react-native-device-info": "^0.26.4",
     "react-native-exception-handler": "^2.10.6",
     "react-native-fs": "^2.13.3",
-    "react-native-gesture-handler": "^1.0.16",
+    "react-native-gesture-handler": "^1.1.0",
     "react-native-highlight-words": "^1.0.1",
     "react-native-i18n": "^2.0.15",
     "react-native-icloudstore": "^0.9.0",
@@ -85,7 +84,8 @@
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
-    "rn-fetch-blob": "^0.10.15"
+    "rn-fetch-blob": "^0.10.15",
+    "use-debounce": "^1.0.0"
   },
   "eslintIgnore": [
     "android/**",

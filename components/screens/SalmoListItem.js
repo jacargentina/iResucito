@@ -1,6 +1,5 @@
 // @flow
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useContext, useState, useEffect } from 'react';
 import { TouchableOpacity, Alert } from 'react-native';
 import { ListItem, Left, Right, Body, Text, Badge, Icon } from 'native-base';
 import Highlighter from 'react-native-highlight-words';
@@ -9,144 +8,96 @@ import badges from '../badges';
 import commonTheme from '../../native-base-theme/variables/platform';
 import textTheme from '../../native-base-theme/components/Text';
 import I18n from '../translations';
+import { DataContext } from '../../DataContext';
 
-import { showChooseLocaleDialog, setSongLocalePatch } from '../actions';
-import { getLocaleReal } from '../selectors';
+const textStyles = textTheme(commonTheme);
+const noteStyles = textStyles['.note'];
+delete textStyles['.note'];
 
-type State = {
-  isCollapsed: boolean
-};
+const SalmoListItem = (props: any) => {
+  const [isCollapsed, setIsCollapsed] = useState(true);
+  const data = useContext(DataContext);
+  const [keys, , getLocaleReal] = data.settings;
+  const [, showSalmoDialog] = data.salmoChooserDialog;
+  const [, , , , , , , setSongLocalePatch] = data.songsMeta;
 
-class SalmoListItem extends React.Component<any, State> {
-  textStyles: any;
-  noteStyles: any;
+  var devMode = props.devModeDisabled === true ? false : keys.developerMode;
+  var developerMode = devMode;
+  var locale = getLocaleReal();
 
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      isCollapsed: true
-    };
-    this.textStyles = textTheme(commonTheme);
-    this.noteStyles = this.textStyles['.note'];
-    delete this.textStyles['.note'];
+  if (props.showBadge) {
+    var badgeWrapper = (
+      <Left style={{ marginLeft: -8 }}>{badges[props.salmo.etapa]}</Left>
+    );
   }
-
-  render() {
-    if (this.props.showBadge) {
-      var badgeWrapper = (
-        <Left style={{ marginLeft: -8 }}>{badges[this.props.salmo.etapa]}</Left>
+  if (
+    props.highlight &&
+    !props.salmo.error &&
+    props.salmo.fullText.toLowerCase().includes(props.highlight.toLowerCase())
+  ) {
+    var linesToHighlight = props.salmo.lines.filter(l =>
+      l.toLowerCase().includes(props.highlight.toLowerCase())
+    );
+    var children = linesToHighlight.map((l, i) => {
+      return (
+        <Highlighter
+          key={i}
+          highlightStyle={{
+            backgroundColor: 'yellow'
+          }}
+          searchWords={[props.highlight]}
+          textToHighlight={l}
+        />
       );
-    }
-    if (
-      this.props.highlight &&
-      !this.props.salmo.error &&
-      this.props.salmo.fullText
-        .toLowerCase()
-        .includes(this.props.highlight.toLowerCase())
-    ) {
-      var linesToHighlight = this.props.salmo.lines.filter(l =>
-        l.toLowerCase().includes(this.props.highlight.toLowerCase())
+    });
+    var firstHighlighted = children.shift();
+    if (children.length > 1) {
+      var highlightedRest = (
+        <Collapsible collapsed={isCollapsed}>{children}</Collapsible>
       );
-      var children = linesToHighlight.map((l, i) => {
-        return (
-          <Highlighter
-            key={i}
-            highlightStyle={{
-              backgroundColor: 'yellow'
-            }}
-            searchWords={[this.props.highlight]}
-            textToHighlight={l}
-          />
-        );
-      });
-      var firstHighlighted = children.shift();
-      if (children.length > 1) {
-        var highlightedRest = (
-          <Collapsible collapsed={this.state.isCollapsed}>
-            {children}
-          </Collapsible>
-        );
-        var openHighlightedRest = (
-          <Right>
-            <TouchableOpacity
-              onPress={() => {
-                this.setState({ isCollapsed: !this.state.isCollapsed });
-              }}>
-              <Badge warning>
-                <Text>{children.length}+</Text>
-              </Badge>
-            </TouchableOpacity>
-          </Right>
-        );
-      }
-    }
-    if (this.props.salmo.error) {
-      var loadingError = (
+      var openHighlightedRest = (
         <Right>
-          <Icon
-            name="bug"
-            style={{
-              fontSize: 32,
-              color: commonTheme.brandPrimary
-            }}
+          <TouchableOpacity
             onPress={() => {
-              Alert.alert('Error', this.props.salmo.error);
-            }}
-          />
+              setIsCollapsed(!isCollapsed);
+            }}>
+            <Badge warning>
+              <Text>{children.length}+</Text>
+            </Badge>
+          </TouchableOpacity>
         </Right>
       );
-    } else if (
-      this.props.developerMode &&
-      this.props.salmo.patchable &&
-      !openHighlightedRest
-    ) {
-      if (this.props.salmo.patched) {
-        var patchableSection = (
-          <TouchableOpacity
-            onPress={() =>
-              this.props.unsetFileForLocale(this.props.salmo, this.props.locale)
-            }
-            style={{ flex: 1, flexDirection: 'row-reverse' }}>
-            <Icon
-              name="trash"
-              style={{
-                marginTop: 2,
-                marginRight: 20,
-                fontSize: 20,
-                color: commonTheme.brandPrimary
-              }}
-            />
-            <Text style={{ ...this.noteStyles, marginRight: 5, marginTop: 5 }}>
-              {this.props.salmo.patchedTitle}
-            </Text>
-          </TouchableOpacity>
-        );
-      } else {
-        var chooseFileForLocale = (
-          <Right>
-            <Icon
-              name="link"
-              style={{
-                fontSize: 32,
-                color: commonTheme.brandPrimary
-              }}
-              onPress={() => this.props.chooseFileForLocale(this.props.salmo)}
-            />
-          </Right>
-        );
-      }
-    } else if (this.props.salmo.patchable && !this.props.developerMode) {
+    }
+  }
+  if (props.salmo.error) {
+    var loadingError = (
+      <Right>
+        <Icon
+          name="bug"
+          style={{
+            fontSize: 32,
+            color: commonTheme.brandPrimary
+          }}
+          onPress={() => {
+            Alert.alert('Error', props.salmo.error);
+          }}
+        />
+      </Right>
+    );
+  } else if (
+    props.developerMode &&
+    props.salmo.patchable &&
+    !openHighlightedRest
+  ) {
+    if (props.salmo.patched) {
       var patchableSection = (
         <TouchableOpacity
-          onPress={() => {
-            Alert.alert(
-              I18n.t('ui.locale warning title'),
-              I18n.t('ui.locale warning message')
-            );
-          }}
+          onPress={() =>
+            setSongLocalePatch(props.salmo, props.locale, undefined)
+          }
           style={{ flex: 1, flexDirection: 'row-reverse' }}>
           <Icon
-            name="bug"
+            name="trash"
             style={{
               marginTop: 2,
               marginRight: 20,
@@ -154,71 +105,86 @@ class SalmoListItem extends React.Component<any, State> {
               color: commonTheme.brandPrimary
             }}
           />
-          <Text style={{ ...this.noteStyles, marginRight: 5, marginTop: 5 }}>
-            {I18n.t('ui.locale warning title')}
+          <Text style={{ ...noteStyles, marginRight: 5, marginTop: 5 }}>
+            {props.salmo.patchedTitle}
           </Text>
         </TouchableOpacity>
       );
+    } else {
+      var chooseFileForLocale = (
+        <Right>
+          <Icon
+            name="link"
+            style={{
+              fontSize: 32,
+              color: commonTheme.brandPrimary
+            }}
+            onPress={() => showSalmoDialog(props.salmo)}
+          />
+        </Right>
+      );
     }
-    return (
-      <ListItem avatar={this.props.showBadge} style={{ paddingHorizontal: 5 }}>
-        {badgeWrapper}
-        <Body>
-          <TouchableOpacity
-            onPress={() => {
-              if (this.props.onPress) {
-                this.props.onPress(this.props.salmo);
-              }
-            }}>
-            <Highlighter
-              style={this.textStyles}
-              highlightStyle={{
-                backgroundColor: 'yellow'
-              }}
-              searchWords={[this.props.highlight]}
-              textToHighlight={this.props.salmo.titulo}
-            />
-            <Highlighter
-              style={this.noteStyles}
-              highlightStyle={{
-                backgroundColor: 'yellow'
-              }}
-              searchWords={[this.props.highlight]}
-              textToHighlight={this.props.salmo.fuente}
-            />
-            {firstHighlighted}
-            {highlightedRest}
-          </TouchableOpacity>
-          {patchableSection}
-        </Body>
-        {openHighlightedRest}
-        {chooseFileForLocale}
-        {loadingError}
-      </ListItem>
+  } else if (props.salmo.patchable && !props.developerMode) {
+    var patchableSection = (
+      <TouchableOpacity
+        onPress={() => {
+          Alert.alert(
+            I18n.t('ui.locale warning title'),
+            I18n.t('ui.locale warning message')
+          );
+        }}
+        style={{ flex: 1, flexDirection: 'row-reverse' }}>
+        <Icon
+          name="bug"
+          style={{
+            marginTop: 2,
+            marginRight: 20,
+            fontSize: 20,
+            color: commonTheme.brandPrimary
+          }}
+        />
+        <Text style={{ ...noteStyles, marginRight: 5, marginTop: 5 }}>
+          {I18n.t('ui.locale warning title')}
+        </Text>
+      </TouchableOpacity>
     );
   }
-}
-
-const mapStateToProps = (state, props) => {
-  var devMode =
-    props.devModeDisabled === true
-      ? false
-      : state.ui.getIn(['settings', 'developerMode']);
-  return {
-    developerMode: devMode,
-    locale: getLocaleReal(state)
-  };
+  return (
+    <ListItem avatar={props.showBadge} style={{ paddingHorizontal: 5 }}>
+      {badgeWrapper}
+      <Body>
+        <TouchableOpacity
+          onPress={() => {
+            if (props.onPress) {
+              props.onPress(props.salmo);
+            }
+          }}>
+          <Highlighter
+            style={textStyles}
+            highlightStyle={{
+              backgroundColor: 'yellow'
+            }}
+            searchWords={[props.highlight]}
+            textToHighlight={props.salmo.titulo}
+          />
+          <Highlighter
+            style={noteStyles}
+            highlightStyle={{
+              backgroundColor: 'yellow'
+            }}
+            searchWords={[props.highlight]}
+            textToHighlight={props.salmo.fuente}
+          />
+          {firstHighlighted}
+          {highlightedRest}
+        </TouchableOpacity>
+        {patchableSection}
+      </Body>
+      {openHighlightedRest}
+      {chooseFileForLocale}
+      {loadingError}
+    </ListItem>
+  );
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    chooseFileForLocale: salmo => {
-      dispatch(showChooseLocaleDialog(salmo));
-    },
-    unsetFileForLocale: (salmo, locale) => {
-      dispatch(setSongLocalePatch(salmo, locale, undefined));
-    }
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(SalmoListItem);
+export default SalmoListItem;

@@ -1,5 +1,5 @@
 // @flow
-import React from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Text, Badge, Thumbnail } from 'native-base';
 
 const ContactPhoto = (props: any) => {

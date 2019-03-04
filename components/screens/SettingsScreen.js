@@ -1,6 +1,5 @@
 // @flow
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useContext, useState, useEffect } from 'react';
 import { View, Alert } from 'react-native';
 import { AndroidBackHandler } from 'react-navigation-backhandler';
 import {
@@ -16,194 +15,164 @@ import {
   Button
 } from 'native-base';
 import Switch from '../widgets/switch';
-import {
-  applySetting,
-  saveSettings,
-  showAbout,
-  initializeLocale,
-  clearIndexPatch,
-  shareIndexPatch
-} from '../actions';
+import { DataContext } from '../../DataContext';
 import I18n from '../translations';
 import AppNavigatorOptions from '../AppNavigatorOptions';
 import { getLocalesForPicker } from '../util';
 import commonTheme from '../../native-base-theme/variables/platform';
 
-class SettingsScreen extends React.Component<any> {
-  constructor(props) {
-    super(props);
-  }
+const SettingsScreen = (props: any) => {
+  const data = useContext(DataContext);
+  const { initializeLocale, shareIndexPatch } = data;
+  const [, , , , , , indexPatchExists, , clearIndexPatch] = data.songsMeta;
+  const [keys, setKey, save] = data.settings;
+  const [, showAbout] = data.aboutDialog;
 
-  static navigationOptions = () => ({
-    title: I18n.t('screen_title.settings'),
-    tabBarIcon: ({ focused, tintColor }) => {
-      return (
-        <Icon
-          name="settings"
-          active={focused}
-          style={{ marginTop: 6, color: tintColor }}
-        />
-      );
-    }
+  const updateSetting = (key, value) => {
+    setKey(key, value);
+    save();
+  };
+
+  const confirmClearIndexPatch = locale => {
+    Alert.alert(
+      I18n.t('ui.confirmation'),
+      I18n.t('ui.delete confirmation'),
+      [
+        {
+          text: I18n.t('ui.delete'),
+          style: 'destructive',
+          onPress: () => {
+            clearIndexPatch().then(() => {
+              initializeLocale(locale);
+            });
+          }
+        },
+        {
+          text: I18n.t('ui.cancel'),
+          style: 'cancel'
+        }
+      ],
+      { cancelable: false }
+    );
+  };
+
+  var devModePatch = keys.developerMode && indexPatchExists;
+  var localesItems = getLocalesForPicker().map(l => {
+    return <Item key={l.value} label={l.label} value={l.value} />;
   });
+  return (
+    <AndroidBackHandler onBackPress={() => true}>
+      <View>
+        <List>
+          <ListItem>
+            <Body>
+              <Text>{I18n.t('settings_title.locale')}</Text>
+              <Text note>{I18n.t('settings_note.locale')}</Text>
+              <Picker
+                headerBackButtonText={I18n.t('ui.back')}
+                iosHeader={I18n.t('settings_title.locale')}
+                textStyle={{
+                  padding: 0,
+                  margin: 0
+                }}
+                headerStyle={{
+                  backgroundColor:
+                    AppNavigatorOptions.headerStyle.backgroundColor
+                }}
+                headerBackButtonTextStyle={{
+                  color: AppNavigatorOptions.headerTitleStyle.color
+                }}
+                headerTitleStyle={{
+                  color: AppNavigatorOptions.headerTitleStyle.color
+                }}
+                selectedValue={keys.locale}
+                onValueChange={val => {
+                  // IMPORTANTE!
+                  // Workaround de problema en Android
+                  // https://github.com/facebook/react-native/issues/15556
+                  setTimeout(() => {
+                    updateSetting('locale', val);
+                    initializeLocale(val);
+                    // Para forzar refresco del titulo segun idioma nuevo
+                    props.navigation.setParams({ title: '' });
+                  }, 10);
+                }}>
+                {localesItems}
+              </Picker>
+            </Body>
+          </ListItem>
+          <ListItem>
+            <Body>
+              <Text>{I18n.t('settings_title.keep awake')}</Text>
+              <Text note>{I18n.t('settings_note.keep awake')}</Text>
+            </Body>
+            <Right>
+              <Switch
+                value={keys.keepAwake}
+                onValueChange={checked => updateSetting('keepAwake', checked)}
+              />
+            </Right>
+          </ListItem>
+          <ListItem>
+            <Body>
+              <Text>{I18n.t('settings_title.developer mode')}</Text>
+              <Text note>{I18n.t('settings_note.developer mode')}</Text>
+            </Body>
+            <Right>
+              <Switch
+                value={keys.developerMode}
+                onValueChange={checked => {
+                  updateSetting('developerMode', checked);
+                  initializeLocale(keys.locale);
+                }}
+              />
+            </Right>
+          </ListItem>
+          {devModePatch && (
+            <ListItem>
+              <Body>
+                <Text
+                  style={{ color: commonTheme.brandDanger }}
+                  onPress={() => confirmClearIndexPatch(keys.locale)}>
+                  {I18n.t('settings_title.clear index patch')}
+                </Text>
+              </Body>
+            </ListItem>
+          )}
+          {devModePatch && (
+            <ListItem>
+              <Body>
+                <Text onPress={shareIndexPatch}>
+                  {I18n.t('settings_title.share index patch')}
+                </Text>
+              </Body>
+            </ListItem>
+          )}
+          <ListItem icon button onPress={showAbout}>
+            <Left>
+              <Icon name="checkmark" />
+            </Left>
+            <Body>
+              <Text>{I18n.t('settings_title.about')}</Text>
+            </Body>
+          </ListItem>
+        </List>
+      </View>
+    </AndroidBackHandler>
+  );
+};
 
-  render() {
-    var devModePatch = this.props.developerMode && this.props.patchExists;
-    var localesItems = getLocalesForPicker().map(l => {
-      return <Item key={l.value} label={l.label} value={l.value} />;
-    });
+SettingsScreen.navigationOptions = () => ({
+  title: I18n.t('screen_title.settings'),
+  tabBarIcon: ({ focused, tintColor }) => {
     return (
-      <AndroidBackHandler onBackPress={() => true}>
-        <View>
-          <List>
-            <ListItem>
-              <Body>
-                <Text>{I18n.t('settings_title.locale')}</Text>
-                <Text note>{I18n.t('settings_note.locale')}</Text>
-                <Picker
-                  headerBackButtonText={I18n.t('ui.back')}
-                  iosHeader={I18n.t('settings_title.locale')}
-                  textStyle={{
-                    padding: 0,
-                    margin: 0
-                  }}
-                  headerStyle={{
-                    backgroundColor:
-                      AppNavigatorOptions.headerStyle.backgroundColor
-                  }}
-                  headerBackButtonTextStyle={{
-                    color: AppNavigatorOptions.headerTitleStyle.color
-                  }}
-                  headerTitleStyle={{
-                    color: AppNavigatorOptions.headerTitleStyle.color
-                  }}
-                  selectedValue={this.props.locale}
-                  onValueChange={val => {
-                    // IMPORTANTE!
-                    // Workaround de problema en Android
-                    // https://github.com/facebook/react-native/issues/15556
-                    setTimeout(() => {
-                      this.props.updateSetting('locale', val);
-                      this.props.reinitializeLocale(val);
-                      // Para forzar refresco del titulo segun idioma nuevo
-                      this.props.navigation.setParams({ title: '' });
-                    }, 10);
-                  }}>
-                  {localesItems}
-                </Picker>
-              </Body>
-            </ListItem>
-            <ListItem>
-              <Body>
-                <Text>{I18n.t('settings_title.keep awake')}</Text>
-                <Text note>{I18n.t('settings_note.keep awake')}</Text>
-              </Body>
-              <Right>
-                <Switch
-                  value={this.props.keepAwake}
-                  onValueChange={checked =>
-                    this.props.updateSetting('keepAwake', checked)
-                  }
-                />
-              </Right>
-            </ListItem>
-            <ListItem>
-              <Body>
-                <Text>{I18n.t('settings_title.developer mode')}</Text>
-                <Text note>{I18n.t('settings_note.developer mode')}</Text>
-              </Body>
-              <Right>
-                <Switch
-                  value={this.props.developerMode}
-                  onValueChange={checked => {
-                    this.props.updateSetting('developerMode', checked);
-                    this.props.reinitializeLocale(this.props.locale);
-                  }}
-                />
-              </Right>
-            </ListItem>
-            {devModePatch && (
-              <ListItem>
-                <Body>
-                  <Text
-                    style={{ color: commonTheme.brandDanger }}
-                    onPress={() =>
-                      this.props.clearIndexPatch(this.props.locale)
-                    }>
-                    {I18n.t('settings_title.clear index patch')}
-                  </Text>
-                </Body>
-              </ListItem>
-            )}
-            {devModePatch && (
-              <ListItem>
-                <Body>
-                  <Text onPress={() => this.props.shareIndexPatch()}>
-                    {I18n.t('settings_title.share index patch')}
-                  </Text>
-                </Body>
-              </ListItem>
-            )}
-            <ListItem icon button onPress={() => this.props.showAbout()}>
-              <Left>
-                <Icon name="checkmark" />
-              </Left>
-              <Body>
-                <Text>{I18n.t('settings_title.about')}</Text>
-              </Body>
-            </ListItem>
-          </List>
-        </View>
-      </AndroidBackHandler>
+      <Icon
+        name="settings"
+        active={focused}
+        style={{ marginTop: 6, color: tintColor }}
+      />
     );
   }
-}
-const mapStateToProps = state => {
-  var set = state.ui.get('settings');
-  var patchExists = state.ui.get('index_patch_exists');
-  return {
-    patchExists: patchExists,
-    locale: set.get('locale'),
-    keepAwake: set.get('keepAwake'),
-    developerMode: set.get('developerMode'),
-    aboutVisible: state.ui.get('about_visible')
-  };
-};
+});
 
-const mapDispatchToProps = dispatch => {
-  return {
-    updateSetting: (key, value) => {
-      dispatch(applySetting(key, value));
-      dispatch(saveSettings());
-    },
-    reinitializeLocale: locale => {
-      dispatch(initializeLocale(locale));
-    },
-    showAbout: () => {
-      dispatch(showAbout());
-    },
-    clearIndexPatch: locale => {
-      Alert.alert(
-        I18n.t('ui.confirmation'),
-        I18n.t('ui.delete confirmation'),
-        [
-          {
-            text: I18n.t('ui.delete'),
-            style: 'destructive',
-            onPress: () => dispatch(clearIndexPatch(locale))
-          },
-          {
-            text: I18n.t('ui.cancel'),
-            style: 'cancel'
-          }
-        ],
-        { cancelable: false }
-      );
-    },
-    shareIndexPatch: () => {
-      dispatch(shareIndexPatch());
-    }
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(SettingsScreen);
+export default SettingsScreen;

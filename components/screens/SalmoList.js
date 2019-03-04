@@ -1,110 +1,79 @@
 // @flow
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useContext, useState, useEffect, useRef } from 'react';
 import { Badge, Text } from 'native-base';
 import { FlatList, Keyboard } from 'react-native';
 import SearchBarView from './SearchBarView';
 import SalmoListItem from './SalmoListItem';
 import AppNavigatorOptions from '../AppNavigatorOptions';
-import { setInputFilterText } from '../actions';
-import {
-  makeGetProcessedSalmos,
-  getShowSalmosBadge,
-  getCurrentRouteKey,
-  getCurrentRouteInputTextFilter
-} from '../selectors';
 import I18n from '../translations';
+import { DataContext, useSearchSongs } from '../../DataContext';
 
-class SalmoList extends React.Component<any> {
-  listRef: any;
+const SalmoList = (props: any) => {
+  const listRef = useRef();
+  const data = useContext(DataContext);
+  const [songs] = data.songsMeta;
+  const [
+    search,
+    navFilter,
+    setNavFilter,
+    textFilter,
+    setTextFilter,
+    showSalmosBadge
+  ] = useSearchSongs(songs, props);
 
-  static navigationOptions = (props: any) => {
-    return {
-      title: props.navigation.getParam('title', 'Sin título'),
-      headerRight: <ConnectedCountText {...props} />
-    };
-  };
+  const [keys] = data.settings;
 
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <SearchBarView
-        searchTextFilterId={this.props.textFilterId}
-        searchTextFilter={this.props.textFilter}
-        searchHandler={this.props.filtrarHandler}
-        afterSearchHandler={() => {
-          if (this.props.items.length > 0) {
-            setTimeout(() => {
-              this.listRef.scrollToIndex({ index: 0, animated: true });
-            }, 10);
-          }
-        }}>
-        {this.props.items.length == 0 && (
-          <Text note style={{ textAlign: 'center', paddingTop: 20 }}>
-            {I18n.t('ui.no songs found')}
-          </Text>
-        )}
-        <FlatList
-          ref={ref => {
-            this.listRef = ref;
-          }}
-          onScrollBeginDrag={() => Keyboard.dismiss()}
-          keyboardShouldPersistTaps="always"
-          data={this.props.items}
-          keyExtractor={item => item.path}
-          renderItem={({ item }) => {
-            return (
-              <SalmoListItem
-                key={item.nombre}
-                showBadge={this.props.showBadge}
-                salmo={item}
-                onPress={this.props.onPress}
-                highlight={this.props.textFilter}
-                devModeDisabled={this.props.devModeDisabled}
-              />
-            );
-          }}
-        />
-      </SearchBarView>
-    );
-  }
-}
-
-const makeMapStateToProps = () => {
-  const getProcessedSalmos = makeGetProcessedSalmos();
-  const mapStateToProps = (state, props) => {
-    var textFilterId = getCurrentRouteKey(state, props);
-    var textFilter = getCurrentRouteInputTextFilter(state, props);
-    return {
-      devModeDisabled: props.devModeDisabled,
-      textFilterId: textFilterId,
-      textFilter: textFilter,
-      items: getProcessedSalmos(state, props).toJS(),
-      showBadge: getShowSalmosBadge(state, props)
-    };
-  };
-  return mapStateToProps;
-};
-
-const mapDispatchToProps = (dispatch, props) => {
-  return {
-    filtrarHandler: (inputId, text) => {
-      dispatch(setInputFilterText(inputId, text));
-    },
-    onPress: salmo => {
-      if (props.onPress) {
-        props.onPress(salmo);
-      } else {
-        props.navigation.navigate('SalmoDetail', { salmo: salmo });
-      }
+  const onPress = salmo => {
+    if (props.onPress) {
+      props.onPress(salmo);
+    } else {
+      props.navigation.navigate('SalmoDetail', { salmo: salmo });
     }
   };
+
+  return (
+    <SearchBarView
+      value={textFilter}
+      setValue={setTextFilter}
+      afterSearchHandler={() => {
+        if (search.length > 0) {
+          setTimeout(() => {
+            listRef.scrollToIndex({ index: 0, animated: true });
+          }, 10);
+        }
+      }}>
+      {search.length == 0 && (
+        <Text note style={{ textAlign: 'center', paddingTop: 20 }}>
+          {I18n.t('ui.no songs found')}
+        </Text>
+      )}
+      <FlatList
+        ref={listRef}
+        onScrollBeginDrag={() => Keyboard.dismiss()}
+        keyboardShouldPersistTaps="always"
+        data={search}
+        keyExtractor={item => item.path}
+        renderItem={({ item }) => {
+          return (
+            <SalmoListItem
+              key={item.nombre}
+              showBadge={showSalmosBadge}
+              salmo={item}
+              onPress={onPress}
+              highlight={textFilter}
+              devModeDisabled={props.devModeDisabled}
+            />
+          );
+        }}
+      />
+    </SearchBarView>
+  );
 };
 
 const CountText = props => {
+  const data = useContext(DataContext);
+  const [songs] = data.songsMeta;
+  const [search] = useSearchSongs(songs, props);
   return (
     <Badge style={{ marginTop: 8, marginRight: 6 }}>
       <Text
@@ -115,12 +84,17 @@ const CountText = props => {
           textAlign: 'center',
           color: AppNavigatorOptions.headerTitleStyle.color
         }}>
-        {props.items.length}
+        {search.length}
       </Text>
     </Badge>
   );
 };
 
-const ConnectedCountText = connect(makeMapStateToProps)(CountText);
+SalmoList.navigationOptions = (props: any) => {
+  return {
+    title: props.navigation.getParam('title', 'Sin título'),
+    headerRight: <CountText {...props} />
+  };
+};
 
-export default connect(makeMapStateToProps, mapDispatchToProps)(SalmoList);
+export default SalmoList;

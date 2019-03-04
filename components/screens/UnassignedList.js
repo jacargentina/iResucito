@@ -1,23 +1,16 @@
 // @flow
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useContext, useState, useEffect } from 'react';
 import { Badge, Text, ListItem, Body, Right, Icon } from 'native-base';
 import { FlatList, Keyboard } from 'react-native';
 import SearchBarView from './SearchBarView';
 import Highlighter from 'react-native-highlight-words';
 import AppNavigatorOptions from '../AppNavigatorOptions';
-import { setInputFilterText, openChooserDialog } from '../actions';
 import commonTheme from '../../native-base-theme/variables/platform';
 import textTheme from '../../native-base-theme/components/Text';
-import {
-  getLocaleReal,
-  getFilteredAvailableSongsForPatch,
-  getCurrentRouteKey,
-  getCurrentRouteInputTextFilter
-} from '../selectors';
+import { DataContext } from '../../DataContext';
 import I18n from '../translations';
 
-class UnassignedList extends React.Component<any> {
+class UnassignedListX extends React.Component<any> {
   listRef: any;
   textStyles: any;
   noteStyles: any;
@@ -25,7 +18,7 @@ class UnassignedList extends React.Component<any> {
   static navigationOptions = (props: any) => {
     return {
       title: I18n.t('search_title.unassigned'),
-      headerRight: <ConnectedCountText {...props} />
+      headerRight: <CountText {...props} />
     };
   };
 
@@ -90,7 +83,9 @@ class UnassignedList extends React.Component<any> {
                       fontSize: 32,
                       color: commonTheme.brandPrimary
                     }}
-                    onPress={() => this.props.chooseSongForLocale(this.props.locale, item)}
+                    onPress={() =>
+                      this.props.chooseSongForLocale(this.props.locale, item)
+                    }
                   />
                 </Right>
               </ListItem>
@@ -140,6 +135,8 @@ const CountText = props => {
   );
 };
 
-const ConnectedCountText = connect(makeMapStateToProps)(CountText);
+const UnassignedList = () => {
+  return null;
+};
 
-export default connect(makeMapStateToProps, mapDispatchToProps)(UnassignedList);
+export default UnassignedList;

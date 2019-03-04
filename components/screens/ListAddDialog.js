@@ -1,119 +1,104 @@
 // @flow
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useContext, useState, useEffect, useRef } from 'react';
 import { NavigationActions } from 'react-navigation';
 import { Text, Input, Item, Button, View } from 'native-base';
-import {
-  hideListAddDialog,
-  createList,
-  saveLists,
-  updateListAddName
-} from '../actions';
+import { DataContext } from '../../DataContext';
 import BaseModal from './BaseModal';
 import { getFriendlyTextForListType } from '../util';
 import I18n from '../translations';
 
-class ListAddDialog extends React.Component<any> {
-  focusInput: Function;
-  listNameInput: any;
+const ListAddDialog = () => {
+  const data = useContext(DataContext);
+  const [disabledReasonText, setDisabledReasonText] = useState(null);
+  const [listCreateEnabled, setListCreateEnabled] = useState(false);
+  const inputRef = useRef();
 
-  constructor(props) {
-    super(props);
-    this.focusInput = this.focusInput.bind(this);
-  }
+  const [
+    visible,
+    listCreateType,
+    listCreateName,
+    setListCreateName,
+    show,
+    hide
+  ] = data.listAddDialog;
 
-  focusInput() {
-    this.listNameInput._root.focus();
-  }
+  const [lists, , addList, , , , , , save, ,] = data.lists;
 
-  render() {
-    if (!this.props.listCreateEnabled) {
-      var disabledReasonText =
-        this.props.listCreateName && this.props.listCreateName.trim() !== ''
+  useEffect(() => {
+    if (listCreateName !== '') {
+      var candidateName = listCreateName.trim();
+      var listNames = Object.keys(lists);
+      var result = candidateName !== '' && !listNames.includes(candidateName);
+      setListCreateEnabled(result);
+    }
+  }, [listCreateName]);
+
+  const focusInput = () => {
+    if (inputRef.current._root) {
+      inputRef.current._root.focus();
+    }
+  };
+
+  const createNewList = (name, type) => {
+    addList(name, type);
+    save();
+    hide();
+    NavigationActions.navigate({
+      routeName: 'ListDetail',
+      params: {
+        list: { name: name }
+      }
+    });
+  };
+
+  useEffect(() => {
+    if (!listCreateEnabled) {
+      var text =
+        listCreateName && listCreateName.trim() !== ''
           ? I18n.t('ui.lists.already exists')
           : I18n.t('ui.lists.non-empty name');
+      setDisabledReasonText(text);
+    } else {
+      setDisabledReasonText(null);
     }
-    var acceptButtons = (
-      <Button
-        style={{ marginRight: 10, marginBottom: 10 }}
-        primary
-        onPress={() =>
-          this.props.createNewList(
-            this.props.listCreateName,
-            this.props.listCreateType
-          )
-        }
-        disabled={!this.props.listCreateEnabled}>
-        <Text>{I18n.t('ui.create')}</Text>
-      </Button>
-    );
-    var titleSuffix = getFriendlyTextForListType(this.props.listCreateType);
-    return (
-      <BaseModal
-        visible={this.props.visible}
-        modalShow={() => this.focusInput()}
-        closeModal={() => this.props.closeListAdd()}
-        acceptButtons={acceptButtons}
-        title={`${I18n.t('ui.lists.create')} (${titleSuffix})`}>
-        <View style={{ padding: 10 }}>
-          <Item
-            style={{ marginBottom: 20 }}
-            error={!this.props.listCreateEnabled}
-            success={this.props.listCreateEnabled}>
-            <Input
-              ref={input => {
-                this.listNameInput = input;
-              }}
-              onChangeText={text => this.props.listNameChanged(text)}
-              value={this.props.listCreateName}
-              clearButtonMode="always"
-              autoCorrect={false}
-            />
-          </Item>
-          <Text danger note>
-            {disabledReasonText}
-          </Text>
-        </View>
-      </BaseModal>
-    );
-  }
-}
+  }, [listCreateEnabled, listCreateName]);
 
-const mapStateToProps = state => {
-  var visible = state.ui.get('list_add_visible');
-  var list_create_type = state.ui.get('list_create_type');
-  var list_create_name = state.ui.get('list_create_name');
-  var list_create_enabled = state.ui.get('list_create_enabled');
-  return {
-    visible: visible,
-    listCreateType: list_create_type,
-    listCreateName: list_create_name,
-    listCreateEnabled: list_create_enabled
-  };
+  var acceptButtons = (
+    <Button
+      style={{ marginRight: 10, marginBottom: 10 }}
+      primary
+      onPress={() => createNewList(listCreateName, listCreateType)}
+      disabled={!listCreateEnabled}>
+      <Text>{I18n.t('ui.create')}</Text>
+    </Button>
+  );
+  var titleSuffix = getFriendlyTextForListType(listCreateType);
+  return (
+    <BaseModal
+      visible={visible}
+      modalShow={focusInput}
+      closeModal={hide}
+      acceptButtons={acceptButtons}
+      title={`${I18n.t('ui.lists.create')} (${titleSuffix})`}>
+      <View style={{ padding: 10 }}>
+        <Item
+          style={{ marginBottom: 20 }}
+          error={!listCreateEnabled}
+          success={listCreateEnabled}>
+          <Input
+            ref={inputRef}
+            onChangeText={setListCreateName}
+            value={listCreateName}
+            clearButtonMode="always"
+            autoCorrect={false}
+          />
+        </Item>
+        <Text danger note>
+          {disabledReasonText}
+        </Text>
+      </View>
+    </BaseModal>
+  );
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    closeListAdd: () => {
-      dispatch(hideListAddDialog());
-    },
-    listNameChanged: text => {
-      dispatch(updateListAddName(text));
-    },
-    createNewList: (name, type) => {
-      dispatch(createList(name, type));
-      dispatch(saveLists());
-      dispatch(hideListAddDialog());
-      dispatch(
-        NavigationActions.navigate({
-          routeName: 'ListDetail',
-          params: {
-            list: { name: name }
-          }
-        })
-      );
-    }
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ListAddDialog);
+export default ListAddDialog;

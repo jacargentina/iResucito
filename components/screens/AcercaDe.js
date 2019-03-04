@@ -1,6 +1,5 @@
 // @flow
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useContext } from 'react';
 import {
   TouchableOpacity,
   Image,
@@ -11,118 +10,95 @@ import {
 } from 'react-native';
 import { Text, Icon, H1, Button } from 'native-base';
 import DeviceInfo from 'react-native-device-info';
-import { hideAbout } from '../actions';
 import I18n from '../translations';
+import { DataContext } from '../../DataContext';
 
-var pack = require('../../app.json');
-var cristo = require('../../img/cristo.jpg');
+const pack = require('../../app.json');
+const cristo = require('../../img/cristo.jpg');
+const version = DeviceInfo.getReadableVersion();
+const appName = pack.displayName;
 
-class AcercaDe extends React.Component<any> {
-  constructor(props) {
-    super(props);
-  }
+const AcercaDe = () => {
+  const data = useContext(DataContext);
+  const [visible, , hide] = data.aboutDialog;
 
-  render() {
-    return (
-      <Modal
-        animationType="slide"
-        visible={this.props.aboutVisible}
-        onBackButtonPress={() => this.props.closeAbout()}
-        onRequestClose={() => this.props.closeAbout()}>
-        <TouchableOpacity
+  const sendMail = () => {
+    Linking.openURL(
+      `mailto:javier.alejandro.castro@gmail.com&subject=iResucitó%20${version}`
+    ).catch(err => {
+      Alert.alert('Error', err.message);
+    });
+  };
+
+  const sendTwitter = () => {
+    Linking.openURL('https://www.twitter.com/javi_ale_castro').catch(err => {
+      Alert.alert('Error', err.message);
+    });
+  };
+
+  const makeDonation = () => {
+    Linking.openURL('https://paypal.me/JaviAleCastro').catch(err => {
+      Alert.alert('Error', err.message);
+    });
+  };
+
+  return (
+    <Modal
+      animationType="slide"
+      visible={visible}
+      onBackButtonPress={hide}
+      onRequestClose={hide}>
+      <TouchableOpacity
+        style={{
+          flex: 1,
+          backgroundColor: 'white',
+          alignItems: 'center',
+          justifyContent: 'space-around'
+        }}
+        onPress={hide}>
+        <Image
+          source={cristo}
+          style={{ width: 200, height: 300, marginTop: 20 }}
+          resizeMode="contain"
+        />
+        <H1 style={{ color: 'red', fontWeight: 'bold', fontStyle: 'italic' }}>
+          {appName}
+        </H1>
+        <Text style={{ textAlign: 'center', fontSize: 12 }}>
+          <Text style={{ fontWeight: 'bold' }}>
+            {I18n.t('ui.version')}: {version}
+          </Text>
+          {'\n'} Javier Castro, 2017-2019
+        </Text>
+        <Text style={{ textAlign: 'center', fontSize: 12 }}>
+          <Text style={{ fontWeight: 'bold' }}>
+            {I18n.t('ui.collaborators')}
+          </Text>
+          {'\n'} Matheus Fragoso (pt)
+        </Text>
+        <View
           style={{
-            flex: 1,
-            backgroundColor: 'white',
-            alignItems: 'center',
-            justifyContent: 'space-around'
-          }}
-          onPress={() => this.props.closeAbout()}>
-          <Image
-            source={this.props.cristo}
-            style={{ width: 200, height: 300, marginTop: 20 }}
-            resizeMode="contain"
-          />
-          <H1 style={{ color: 'red', fontWeight: 'bold', fontStyle: 'italic' }}>
-            {this.props.appName}
-          </H1>
-          <Text style={{ textAlign: 'center', fontSize: 12 }}>
-            <Text style={{ fontWeight: 'bold' }}>
-              {I18n.t('ui.version')}: {this.props.version}
-            </Text>
-            {'\n'} Javier Castro, 2017-2018
-          </Text>
-          <Text style={{ textAlign: 'center', fontSize: 12 }}>
-            <Text style={{ fontWeight: 'bold' }}>
-              {I18n.t('ui.collaborators')}
-            </Text>
-            {'\n'} Matheus Fragoso (pt)
-          </Text>
-          <View
-            style={{
-              flexDirection: 'row'
-            }}>
-            <Button
-              style={{ margin: 5 }}
-              primary
-              rounded
-              onPress={() => this.props.sendMail(this.props.version)}>
-              <Icon name="mail" />
-            </Button>
-            <Button
-              style={{ margin: 5 }}
-              primary
-              rounded
-              onPress={() => this.props.sendTwitter()}>
-              <Icon name="logo-twitter" />
-            </Button>
-          </View>
-          <Text style={{ margin: 5, textAlign: 'center', fontSize: 11 }}>
-            {I18n.t('ui.donate message')}
-          </Text>
-          <View>
-            <Button iconLeft onPress={() => this.props.makeDonation()}>
-              <Icon name="logo-usd" />
-              <Text>{I18n.t('ui.donate button')}</Text>
-            </Button>
-          </View>
-        </TouchableOpacity>
-      </Modal>
-    );
-  }
-}
-
-const mapStateToProps = (state: any) => {
-  return {
-    aboutVisible: state.ui.get('about_visible'),
-    version: DeviceInfo.getReadableVersion(),
-    appName: pack.displayName,
-    cristo: cristo
-  };
+            flexDirection: 'row'
+          }}>
+          <Button style={{ margin: 5 }} primary rounded onPress={sendMail}>
+            <Icon name="mail" />
+          </Button>
+          <Button style={{ margin: 5 }} primary rounded onPress={sendTwitter}>
+            <Icon name="logo-twitter" />
+          </Button>
+        </View>
+        <Text style={{ margin: 5, textAlign: 'center', fontSize: 11 }}>
+          {I18n.t('ui.donate message')}
+        </Text>
+        <View>
+          <Button iconLeft onPress={makeDonation}>
+            <Icon name="logo-usd" />
+            <Text>{I18n.t('ui.donate button')}</Text>
+          </Button>
+        </View>
+      </TouchableOpacity>
+    </Modal>
+  );
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    closeAbout: () => {
-      dispatch(hideAbout());
-    },
-    sendMail: version => {
-      Linking.openURL(
-        `mailto:javier.alejandro.castro@gmail.com&subject=iResucitó%20${version}`
-      ).catch(err => {
-        Alert.alert('Error', err.message);
-      });
-    },
-    sendTwitter: () => {
-      Linking.openURL('https://www.twitter.com/javi_ale_castro').catch(err => {
-        Alert.alert('Error', err.message);
-      });
-    },
-    makeDonation: () => {
-      Linking.openURL('https://paypal.me/JaviAleCastro').catch(err => {
-        Alert.alert('Error', err.message);
-      });
-    }
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(AcercaDe);
+export default AcercaDe;

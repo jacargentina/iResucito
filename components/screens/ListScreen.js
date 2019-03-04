@@ -1,36 +1,92 @@
 // @flow
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useContext, useState, useEffect } from 'react';
 import { ListItem, Left, Body, Icon, Text, ActionSheet } from 'native-base';
 import { Alert, FlatList, Platform } from 'react-native';
 import Swipeout from 'react-native-swipeout';
 import SearchBarView from './SearchBarView';
-import { getProcessedLists } from '../selectors';
-import {
-  showListAddDialog,
-  saveLists,
-  updateListAddType,
-  deleteList
-} from '../actions';
+import { DataContext } from '../../DataContext';
 import AppNavigatorOptions from '../AppNavigatorOptions';
 import BaseCallToAction from './BaseCallToAction';
 import I18n from '../translations';
 
+const listAdd = showFunc => {
+  ActionSheet.show(
+    {
+      options: [
+        I18n.t('list_type.eucharist'),
+        I18n.t('list_type.word'),
+        I18n.t('list_type.other'),
+        I18n.t('ui.cancel')
+      ],
+      cancelButtonIndex: 3,
+      title: I18n.t('ui.lists.type')
+    },
+    index => {
+      var type = null;
+      index = Number(index);
+      switch (index) {
+        case 0:
+          type = 'eucaristia';
+          break;
+        case 1:
+          type = 'palabra';
+          break;
+        case 2:
+          type = 'libre';
+          break;
+      }
+      if (type) {
+        showFunc(type);
+      }
+    }
+  );
+};
+
 const ListScreen = (props: any) => {
-  if (props.items.length == 0)
+  const data = useContext(DataContext);
+  const [lists, , , removeList, , , , , save, filter, setFilter] = data.lists;
+  const [, , , , show] = data.listAddDialog;
+
+  const listDelete = list => {
+    Alert.alert(
+      `${I18n.t('ui.delete')} "${list.name}"`,
+      I18n.t('ui.delete confirmation'),
+      [
+        {
+          text: I18n.t('ui.delete'),
+          onPress: () => {
+            removeList(list.name);
+            save();
+          },
+          style: 'destructive'
+        },
+        {
+          text: I18n.t('ui.cancel'),
+          style: 'cancel'
+        }
+      ]
+    );
+  };
+
+  if (Object.keys(lists).length == 0)
     return (
       <BaseCallToAction
         icon="bookmark"
         title={I18n.t('call_to_action_title.add lists')}
         text={I18n.t('call_to_action_text.add lists')}
-        buttonHandler={() => props.listAdd()}
+        buttonHandler={() => listAdd(show)}
         buttonText={I18n.t('call_to_action_button.add lists')}
       />
     );
+
+  var listsArray = Object.keys(lists).map(name => {
+    return { name: name, type: lists[name].type };
+  });
+
   return (
-    <SearchBarView>
+    <SearchBarView value={filter} setValue={setFilter}>
       <FlatList
-        data={props.items}
+        data={listsArray}
         keyExtractor={item => item.name}
         renderItem={({ item }) => {
           var swipeoutBtns = [
@@ -39,7 +95,7 @@ const ListScreen = (props: any) => {
               type: Platform.OS == 'ios' ? 'delete' : 'default',
               backgroundColor: Platform.OS == 'android' ? '#e57373' : null,
               onPress: () => {
-                props.listDelete(item);
+                listDelete(item);
               }
             }
           ];
@@ -71,72 +127,9 @@ const ListScreen = (props: any) => {
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    items: getProcessedLists(state)
-  };
-};
-
-/* eslint-disable no-unused-vars */
-const mapDispatchToProps = dispatch => {
-  return {
-    listDelete: list => {
-      Alert.alert(
-        `${I18n.t('ui.delete')} "${list.name}"`,
-        I18n.t('ui.delete confirmation'),
-        [
-          {
-            text: I18n.t('ui.delete'),
-            onPress: () => {
-              dispatch(deleteList(list.name));
-              dispatch(saveLists());
-            },
-            style: 'destructive'
-          },
-          {
-            text: I18n.t('ui.cancel'),
-            style: 'cancel'
-          }
-        ]
-      );
-    },
-    listAdd: () => {
-      ActionSheet.show(
-        {
-          options: [
-            I18n.t('list_type.eucharist'),
-            I18n.t('list_type.word'),
-            I18n.t('list_type.other'),
-            I18n.t('ui.cancel')
-          ],
-          cancelButtonIndex: 3,
-          title: I18n.t('ui.lists.type')
-        },
-        index => {
-          var type = null;
-          index = Number(index);
-          switch (index) {
-            case 0:
-              type = 'eucaristia';
-              break;
-            case 1:
-              type = 'palabra';
-              break;
-            case 2:
-              type = 'libre';
-              break;
-          }
-          if (type) {
-            dispatch(updateListAddType(type));
-            dispatch(showListAddDialog());
-          }
-        }
-      );
-    }
-  };
-};
-
 const AddList = props => {
+  const data = useContext(DataContext);
+  const [, , , , show] = data.listAddDialog;
   return (
     <Icon
       name="add"
@@ -148,12 +141,10 @@ const AddList = props => {
         textAlign: 'center',
         color: AppNavigatorOptions.headerTitleStyle.color
       }}
-      onPress={() => props.listAdd()}
+      onPress={() => listAdd(show)}
     />
   );
 };
-
-const AddListButton = connect(mapStateToProps, mapDispatchToProps)(AddList);
 
 ListScreen.navigationOptions = props => ({
   title: I18n.t('screen_title.lists'),
@@ -166,7 +157,7 @@ ListScreen.navigationOptions = props => ({
       />
     );
   },
-  headerRight: <AddListButton />
+  headerRight: <AddList />
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ListScreen);
+export default ListScreen;

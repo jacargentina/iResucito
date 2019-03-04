@@ -1,28 +1,23 @@
-import React from 'react';
-import { connect, Provider } from 'react-redux';
+// @flow
+import React, { useContext, useState, useEffect } from 'react';
+import DataContextWrapper, { DataContext } from './DataContext';
 import { BackHandler, Platform, Alert, Linking } from 'react-native';
 import RNFS from 'react-native-fs';
 import DeviceInfo from 'react-native-device-info';
-import { createStore, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
 import SplashScreen from 'react-native-splash-screen';
 import { Root, StyleProvider } from 'native-base';
 import getTheme from './native-base-theme/components';
 import commonTheme from './native-base-theme/variables/platform';
 import AppNavigator from './components/AppNavigator';
-import reducer from './components/reducers';
 import { MenuProvider } from 'react-native-popup-menu';
 import {
   setJSExceptionHandler,
   setNativeExceptionHandler
 } from 'react-native-exception-handler';
 import { localdata, clouddata } from './components/data';
-import {
-  initializeSetup,
-  initializeLocale,
-  initializeDone,
-  refreshContactsThumbs
-} from './components/actions';
+import { NativeSongs, getDefaultLocale } from './components/util';
+import I18n from './components/translations';
+import badges from './components/badges';
 
 const mailTo = 'javier.alejandro.castro@gmail.com';
 const mailSubject = 'iResucito Crash';
@@ -77,99 +72,86 @@ if (Platform.OS == 'android') {
   };
 }
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+const AppContent = () => {
+  const [initialized, setInitialized] = useState(false);
+  const data = useContext(DataContext);
 
-  componentDidMount() {
+  const [, setLists] = data.lists;
+  const [, setKeys] = data.settings;
+  const [, , , , refreshThumbs, setContacts] = data.community;
+
+  const initializeApp = () => {
+    var promises = [];
+    // Cargar configuracion
+    var locale = 'default';
+    promises.push(
+      localdata
+        .getBatchData([
+          { key: 'settings' },
+          { key: 'lists' },
+          { key: 'contacts' },
+          { key: 'lastCachesDirectoryPath' }
+        ])
+        .then(result => {
+          var [settings, lists, contacts, lastCachesDirectoryPath] = result;
+          locale = (settings && settings.locale) || 'default';
+          setKeys(settings);
+          setContacts(contacts || []);
+          setLists(lists || []);
+          // Forzar la actualizacion si estamos emulando
+          if (DeviceInfo.isEmulator()) {
+            lastCachesDirectoryPath = null;
+          }
+          return refreshThumbs(
+            lastCachesDirectoryPath,
+            RNFS.CachesDirectoryPath
+          );
+        })
+        .catch(err => {
+          console.log('error loading from localdata', err);
+        })
+        .finally(() => {
+          data.initializeLocale(locale);
+        })
+    );
+    // Cargar listas desde iCloud
+    promises.push(
+      clouddata.load({ key: 'lists' }).then(res => {
+        console.log('loaded from iCloud', res);
+      })
+    );
+    // Indicar finalizacion de inicializacion
+    Promise.all(promises).then(() => {
+      setInitialized(true);
+    });
+  };
+
+  useEffect(() => {
     // Splash minimo por 1.5 segundos
     setTimeout(() => {
       SplashScreen.hide();
     }, 1500);
-    this.props.initializeApp();
-  }
+    // Arrancar app
+    initializeApp();
+  }, []);
 
-  onBackButtonPressAndroid() {
-    return true;
-  }
-
-  render() {
-    return (
-      <StyleProvider style={getTheme(commonTheme)}>
-        <Root>
-          <MenuProvider backHandler={true}>
-            <AppNavigator />
-          </MenuProvider>
-        </Root>
-      </StyleProvider>
-    );
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return {
-    initializeApp: () => {
-      /* eslint-disable no-console */
-      var promises = [];
-      // Cargar configuracion
-      var locale = 'default';
-      promises.push(
-        localdata
-          .getBatchData([
-            { key: 'settings' },
-            { key: 'lists' },
-            { key: 'contacts' },
-            { key: 'lastCachesDirectoryPath' }
-          ])
-          .then(result => {
-            var [settings, lists, contacts, lastCachesDirectoryPath] = result;
-            locale = (settings && settings.locale) || 'default';
-            dispatch(initializeSetup(settings, lists, contacts));
-            // Forzar la actualizacion si estamos emulando
-            if (DeviceInfo.isEmulator()) {
-              lastCachesDirectoryPath = null;
-            }
-            return dispatch(
-              refreshContactsThumbs(
-                lastCachesDirectoryPath,
-                RNFS.CachesDirectoryPath
-              )
-            );
-          })
-          .catch(err => {
-            console.log('error loading from localdata', err);
-          })
-          .finally(() => {
-            return dispatch(initializeLocale(locale));
-          })
-      );
-      // Cargar listas desde iCloud
-      promises.push(
-        clouddata.load({ key: 'lists' }).then(res => {
-          console.log('loaded from iCloud', res);
-        })
-      );
-      // Indicar finalizacion de inicializacion
-      return Promise.all(promises).then(() => {
-        return dispatch(initializeDone());
-      });
-    }
-  };
-};
-
-const ConnectedApp = connect(null, mapDispatchToProps)(App);
-
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-let store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
-
-const AppWithReduxStore = () => {
   return (
-    <Provider store={store}>
-      <ConnectedApp />
-    </Provider>
+    <StyleProvider style={getTheme(commonTheme)}>
+      <Root>
+        <MenuProvider backHandler={true}>
+          <AppNavigator />
+        </MenuProvider>
+      </Root>
+    </StyleProvider>
   );
 };
 
-export default AppWithReduxStore;
+const App = () => {
+  return (
+    <DataContextWrapper>
+      <AppContent />
+    </DataContextWrapper>
+  );
+};
+
+export default App;

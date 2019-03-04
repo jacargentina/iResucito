@@ -1,6 +1,5 @@
 // @flow
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useContext, useState, useEffect } from 'react';
 import BaseModal from './BaseModal';
 import SearchBarView from './SearchBarView';
 import { Text, ListItem, Body, Right, CheckBox } from 'native-base';
@@ -11,22 +10,37 @@ import {
   Keyboard,
   StyleSheet
 } from 'react-native';
-import {
-  syncContact,
-  hideContactImportDialog,
-  saveContacts,
-  setContactsFilterText
-} from '../actions';
-import {
-  getCurrentRouteKey,
-  getCurrentRouteContactsTextFilter,
-  getFilteredContactsForImport
-} from '../selectors';
+import { DataContext } from '../../DataContext';
 import commonTheme from '../../native-base-theme/variables/platform';
 import I18n from '../translations';
 import ContactPhoto from './ContactPhoto';
 
 const ContactImportDialog = (props: any) => {
+  const data = useContext(DataContext);
+
+  const [
+    visible,
+    loading,
+    items,
+    filter,
+    setFilter,
+    show,
+    hide
+  ] = data.contactImportDialog;
+
+  const [imported, , , save] = data.community;
+
+  const close = () => {
+    hide();
+    save();
+    setFilter('');
+  };
+
+  const handleContact = contact => {
+    handleContact(contact);
+    setFilter('');
+  };
+
   var readyButton = (
     <Text
       style={{
@@ -34,22 +48,19 @@ const ContactImportDialog = (props: any) => {
         color: commonTheme.brandPrimary,
         marginRight: 10
       }}
-      onPress={() => props.close(props.textFilterId)}>
+      onPress={close}>
       {I18n.t('ui.done')}
     </Text>
   );
   return (
     <BaseModal
-      visible={props.visible}
-      closeModal={() => props.close()}
+      visible={visible}
+      closeModal={() => close()}
       closeButton={readyButton}
       title={I18n.t('screen_title.import contacts')}
       fade={true}>
-      <SearchBarView
-        searchTextFilterId={props.textFilterId}
-        searchTextFilter={props.textFilter}
-        searchHandler={props.filtrarHandler}>
-        {props.imported.length > 0 && (
+      <SearchBarView value={filter} setValue={setFilter}>
+        {imported && imported.length > 0 && (
           <View
             style={{
               padding: 10,
@@ -59,13 +70,13 @@ const ContactImportDialog = (props: any) => {
             <FlatList
               horizontal={true}
               keyboardShouldPersistTaps="always"
-              data={props.imported}
+              data={imported}
               keyExtractor={item => item.recordID}
               renderItem={({ item }) => {
                 return (
                   <TouchableOpacity
                     style={{ marginRight: 10, width: 56 }}
-                    onPress={() => props.syncContact(item)}>
+                    onPress={() => handleContact(item)}>
                     <ContactPhoto item={item} />
                     <Text
                       numberOfLines={1}
@@ -82,7 +93,7 @@ const ContactImportDialog = (props: any) => {
             />
           </View>
         )}
-        {props.items.length === 0 && (
+        {imported && imported.length === 0 && (
           <Text note style={{ textAlign: 'center', marginTop: 20 }}>
             {I18n.t('ui.no contacts found')}
           </Text>
@@ -90,7 +101,7 @@ const ContactImportDialog = (props: any) => {
         <FlatList
           onScrollBeginDrag={() => Keyboard.dismiss()}
           keyboardShouldPersistTaps="always"
-          data={props.items}
+          data={imported}
           keyExtractor={item => item.recordID}
           renderItem={({ item }) => {
             var contactFullName = item.givenName;
@@ -98,9 +109,7 @@ const ContactImportDialog = (props: any) => {
               contactFullName += ` ${item.familyName}`;
             }
             return (
-              <ListItem
-                button
-                onPress={() => props.syncContact(item, props.textFilterId)}>
+              <ListItem button onPress={() => handleContact(item)}>
                 <ContactPhoto item={item} />
                 <Body>
                   <Text
@@ -118,7 +127,7 @@ const ContactImportDialog = (props: any) => {
                   <CheckBox
                     style={{ marginRight: 15 }}
                     checked={item.imported}
-                    onPress={() => props.syncContact(item, props.textFilterId)}
+                    onPress={() => handleContact(item)}
                   />
                 </Right>
               </ListItem>
@@ -130,37 +139,4 @@ const ContactImportDialog = (props: any) => {
   );
 };
 
-const mapStateToProps = (state, props) => {
-  var visible = state.ui.get('contact_import_visible');
-  var imported = state.ui.get('contacts').toJS();
-  return {
-    visible: visible,
-    imported: imported,
-    textFilterId: getCurrentRouteKey(state, props),
-    textFilter: getCurrentRouteContactsTextFilter(state, props),
-    items: getFilteredContactsForImport(state, props)
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    close: inputId => {
-      dispatch(hideContactImportDialog());
-      dispatch(saveContacts());
-      dispatch(setContactsFilterText(inputId, ''));
-    },
-    syncContact: (contact, inputId) => {
-      dispatch(syncContact(contact));
-      if (inputId) {
-        dispatch(setContactsFilterText(inputId, ''));
-      }
-    },
-    filtrarHandler: (inputId, text) => {
-      dispatch(setContactsFilterText(inputId, text));
-    }
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(
-  ContactImportDialog
-);
+export default ContactImportDialog;

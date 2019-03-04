@@ -1,16 +1,10 @@
 // @flow
-import React from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { StyleSheet } from 'react-native';
-import { connect } from 'react-redux';
 import { Tab, Tabs, ScrollableTab } from 'native-base';
 import BaseModal from './BaseModal';
 import SalmoList from './SalmoList';
-import {
-  addSalmoToList,
-  setSongLocalePatch,
-  saveLists,
-  closeChooserDialog
-} from '../actions';
+import { DataContext } from '../../DataContext';
 import I18n from '../translations';
 
 const styles = StyleSheet.create({
@@ -18,7 +12,37 @@ const styles = StyleSheet.create({
 });
 
 const SalmoChooserDialog = (props: any) => {
-  var items = props.tabs.map((v, i) => {
+  const data = useContext(DataContext);
+
+  const [visible, tabs, show, hide, target] = data.salmoChooserDialog;
+  const [
+    lists,
+    setLists,
+    addList,
+    removeList,
+    getList,
+    setList,
+    getSongsFromList,
+    shareList,
+    save,
+    filter,
+    setFilter
+  ] = data.lists;
+  const [, , , , , , setSongLocalePatch] = data.songsMeta;
+
+  const songAssign = salmo => {
+    if (target.listName && target.listKey) {
+      setList(target.listName, target.listKey, salmo);
+      save();
+      hide();
+    } else if (target.locale && target.file) {
+      setSongLocalePatch(salmo, target.locale, target.file).then(() => {
+        hide();
+      });
+    }
+  };
+
+  var items = tabs.map((v, i) => {
     return (
       <Tab
         key={i}
@@ -29,15 +53,16 @@ const SalmoChooserDialog = (props: any) => {
           navigation={props.navigation}
           filter={v.params ? v.params.filter : null}
           devModeDisabled={true}
-          onPress={salmo => props.songAssign(salmo, props.target)}
+          onPress={salmo => songAssign(salmo)}
         />
       </Tab>
     );
   });
+
   return (
     <BaseModal
-      visible={props.visible}
-      closeModal={() => props.close()}
+      visible={visible}
+      closeModal={hide}
       title={I18n.t('screen_title.find song')}
       fade={true}>
       <Tabs initialPage={0} renderTabBar={() => <ScrollableTab />}>
@@ -47,37 +72,4 @@ const SalmoChooserDialog = (props: any) => {
   );
 };
 
-const mapStateToProps = state => {
-  var chooser = state.ui.get('chooser');
-  var search = state.ui.get('search');
-  var chooser_target = state.ui.get('chooser_target');
-  var tabs = search.filter(x => x.chooser != undefined);
-  return {
-    target: chooser_target ? chooser_target.toJS() : null,
-    visible: chooser === 'Salmo',
-    tabs: tabs
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    close: () => {
-      dispatch(closeChooserDialog());
-    },
-    songAssign: (salmo, target) => {
-      if (target.listName && target.listKey) {
-        dispatch(addSalmoToList(salmo, target.listName, target.listKey));
-        dispatch(saveLists());
-        dispatch(closeChooserDialog());
-      } else if (target.locale && target.file) {
-        dispatch(setSongLocalePatch(salmo, target.locale, target.file)).then(
-          () => {
-            dispatch(closeChooserDialog());
-          }
-        );
-      }
-    }
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(SalmoChooserDialog);
+export default SalmoChooserDialog;
