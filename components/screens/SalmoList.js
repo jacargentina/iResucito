@@ -11,17 +11,12 @@ import { DataContext, useSearchSongs } from '../../DataContext';
 const SalmoList = (props: any) => {
   const listRef = useRef();
   const data = useContext(DataContext);
-  const [songs] = data.songsMeta;
-  const [
-    search,
-    navFilter,
-    setNavFilter,
-    textFilter,
-    setTextFilter,
-    showSalmosBadge
-  ] = useSearchSongs(songs, props);
-
-  const [keys] = data.settings;
+  const { songs } = data.songsMeta;
+  const { keys } = data.settings;
+  const { search, textFilter, setTextFilter, showSalmosBadge } = useSearchSongs(
+    songs,
+    props
+  );
 
   const onPress = salmo => {
     if (props.onPress) {
@@ -72,8 +67,8 @@ const SalmoList = (props: any) => {
 
 const CountText = props => {
   const data = useContext(DataContext);
-  const [songs] = data.songsMeta;
-  const [search] = useSearchSongs(songs, props);
+  const { songs } = data.songsMeta;
+  const { search } = useSearchSongs(songs, props);
   return (
     <Badge style={{ marginTop: 8, marginRight: 6 }}>
       <Text

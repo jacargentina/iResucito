@@ -18,9 +18,9 @@ import I18n from '../translations';
 
 const ListDetailItem = (props: any) => {
   const data = useContext(DataContext);
-  const [, , , getList, setList, save] = data.lists;
-  const [, , , , , showContactDialog] = data.contactChooserDialog;
-  const [, showSalmoDialog] = data.salmoChooserDialog;
+  const { getList, setList, save } = data.lists;
+  const { showContactDialog } = data.contactChooserDialog;
+  const { showSalmoDialog } = data.salmoChooserDialog;
 
   const listText = getList(props.listName, props.listKey);
 

@@ -76,9 +76,9 @@ const AppContent = () => {
   const [initialized, setInitialized] = useState(false);
   const data = useContext(DataContext);
 
-  const [, setLists] = data.lists;
-  const [, setKeys] = data.settings;
-  const [, , , , refreshThumbs, setContacts] = data.community;
+  const { initLists } = data.lists;
+  const { initKeys } = data.settings;
+  const { refreshThumbs, initBrothers } = data.community;
 
   const initializeApp = () => {
     var promises = [];
@@ -95,9 +95,9 @@ const AppContent = () => {
         .then(result => {
           var [settings, lists, contacts, lastCachesDirectoryPath] = result;
           locale = (settings && settings.locale) || 'default';
-          setKeys(settings);
-          setContacts(contacts || []);
-          setLists(lists || []);
+          initKeys(settings);
+          initBrothers(contacts || []);
+          initLists(lists || []);
           // Forzar la actualizacion si estamos emulando
           if (DeviceInfo.isEmulator()) {
             lastCachesDirectoryPath = null;

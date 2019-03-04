@@ -13,16 +13,15 @@ const ListAddDialog = () => {
   const [listCreateEnabled, setListCreateEnabled] = useState(false);
   const inputRef = useRef();
 
-  const [
+  const {
     visible,
     listCreateType,
     listCreateName,
     setListCreateName,
-    show,
     hide
-  ] = data.listAddDialog;
+  } = data.listAddDialog;
 
-  const [lists, , addList, , , , , , save, ,] = data.lists;
+  const { lists, addList, save } = data.lists;
 
   useEffect(() => {
     if (listCreateName !== '') {

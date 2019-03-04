@@ -11,8 +11,6 @@ import { useDebounce } from 'use-debounce';
 const DebouncedInput = (props: any) => {
   const [searchTerm, setSearchTerm] = useState(props.value);
   const [debouncedTerm] = useDebounce(searchTerm, 800);
-  const setTerm = (e, { value }) => setSearchTerm(value);
-  const clearTerm = () => setSearchTerm('');
 
   useEffect(() => {
     props.setValue(debouncedTerm);

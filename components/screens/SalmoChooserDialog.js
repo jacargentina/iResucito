@@ -14,21 +14,9 @@ const styles = StyleSheet.create({
 const SalmoChooserDialog = (props: any) => {
   const data = useContext(DataContext);
 
-  const [visible, tabs, show, hide, target] = data.salmoChooserDialog;
-  const [
-    lists,
-    setLists,
-    addList,
-    removeList,
-    getList,
-    setList,
-    getSongsFromList,
-    shareList,
-    save,
-    filter,
-    setFilter
-  ] = data.lists;
-  const [, , , , , , setSongLocalePatch] = data.songsMeta;
+  const { visible, tabs, hide, target } = data.salmoChooserDialog;
+  const { setList, save, filter } = data.lists;
+  const { setSongLocalePatch } = data.songsMeta;
 
   const songAssign = salmo => {
     if (target.listName && target.listKey) {

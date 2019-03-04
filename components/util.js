@@ -1,6 +1,12 @@
 // @flow
 import langs from 'langs';
-import { NativeModules, StyleSheet, Platform } from 'react-native';
+import {
+  NativeModules,
+  StyleSheet,
+  Platform,
+  PermissionsAndroid
+} from 'react-native';
+import Contacts from 'react-native-contacts';
 import RNFS from 'react-native-fs';
 import DeviceInfo from 'react-native-device-info';
 import I18n from './translations';
@@ -10,6 +16,62 @@ import {
   limpiarNotasRegex,
   calcularTransporte
 } from '../SongsProcessor';
+
+function checkContactsPermission(): Promise<boolean> {
+  if (Platform.OS == 'android') {
+    return PermissionsAndroid.request(
+      PermissionsAndroid.PERMISSIONS.READ_CONTACTS
+    )
+      .then(granted => {
+        return granted === PermissionsAndroid.RESULTS.GRANTED;
+      })
+      .catch(err => {
+        return false;
+      });
+  }
+  return Promise.resolve(true);
+}
+
+export function getContacts(): Promise<any> {
+  return new Promise((resolve, reject) => {
+    checkContactsPermission().then(hasPermission => {
+      if (hasPermission) {
+        Contacts.getAll((err, contacts) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(contacts);
+          }
+        });
+      } else {
+        reject();
+      }
+    });
+  });
+}
+
+export function ordenAlfabetico(a: any, b: any) {
+  if (a.givenName < b.givenName) {
+    return -1;
+  }
+  if (a.givenName > b.givenName) {
+    return 1;
+  }
+  return 0;
+}
+
+export function getContactsForImport(
+  allContacts: Array<any>,
+  importedContacts: Array<any>
+): Array<any> {
+  var items = allContacts.map(c => {
+    var found = importedContacts.find(x => x.recordID === c.recordID);
+    c.imported = found !== undefined;
+    return c;
+  });
+  items.sort(ordenAlfabetico);
+  return items;
+}
 
 export function getEsSalmo(listKey: string): boolean {
   return (
@@ -40,6 +102,17 @@ export function getFriendlyTextForListType(listType: string): string {
       return '';
   }
 }
+
+export const getProcessedLists = (lists: any): any => {
+  var listNames = Object.keys(lists);
+  return listNames.map(name => {
+    var listMap = lists[name];
+    return {
+      name: name,
+      type: getFriendlyTextForListType(listMap.type)
+    };
+  });
+};
 
 export const getDefaultLocale = () => {
   return NativeModules.RNI18n.languages[0];

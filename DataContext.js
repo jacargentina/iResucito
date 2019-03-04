@@ -1,13 +1,6 @@
 // @flow
 import React, { useState, useEffect } from 'react';
-import {
-  Alert,
-  Platform,
-  StyleSheet,
-  Share,
-  PermissionsAndroid
-} from 'react-native';
-import Contacts from 'react-native-contacts';
+import { Alert, Platform, StyleSheet, Share } from 'react-native';
 import RNFS from 'react-native-fs';
 import I18n from './components/translations';
 import badges from './components/badges';
@@ -15,26 +8,16 @@ import { localdata, clouddata } from './components/data';
 import PDFLib, { PDFDocument, PDFPage } from 'react-native-pdf-lib';
 import {
   getEsSalmo,
-  getFriendlyTextForListType,
   getDefaultLocale,
   getFriendlyText,
+  ordenAlfabetico,
+  getContacts,
   NativeSongs,
   NativeStyles
 } from './components/util';
 
 const SongsIndexPatchPath =
   RNFS.DocumentDirectoryPath + '/SongsIndexPatch.json';
-
-export const getProcessedLists = (lists: any): any => {
-  var listNames = Object.keys(lists);
-  return listNames.map(name => {
-    var listMap = lists[name];
-    return {
-      name: name,
-      type: getFriendlyTextForListType(listMap.type)
-    };
-  });
-};
 
 const getContactImportSanitizedItems = allContacts => {
   var grouped = allContacts.reduce(function(groups, item) {
@@ -53,42 +36,6 @@ const getContactImportSanitizedItems = allContacts => {
     }
   }
   return unique;
-};
-
-const ordenAlfabetico = (a, b) => {
-  if (a.givenName < b.givenName) {
-    return -1;
-  }
-  if (a.givenName > b.givenName) {
-    return 1;
-  }
-  return 0;
-};
-
-export const getCurrentRouteKey = (state: any, props: any) => {
-  if (props.navigation && props.navigation.state)
-    return props.navigation.state.key;
-  return null;
-};
-
-export const getCurrentRouteContactsTextFilter = (state: any, props: any) => {
-  return state.ui.getIn([
-    'contacts_text_filter',
-    getCurrentRouteKey(state, props)
-  ]);
-};
-
-export const getContactsForImport = (
-  allContacts: Array<any>,
-  importedContacts: Array<any>
-): Array<any> => {
-  var items = allContacts.map(c => {
-    var found = importedContacts.find(x => x.recordID === c.recordID);
-    c.imported = found !== undefined;
-    return c;
-  });
-  items.sort(ordenAlfabetico);
-  return items;
 };
 
 export const getProcessedContacts = (
@@ -135,39 +82,6 @@ export const getFilteredAvailableSongsForPatch = (
   }
   return localeSongs;
 };
-
-function checkContactsPermission(): Promise<boolean> {
-  if (Platform.OS == 'android') {
-    return PermissionsAndroid.request(
-      PermissionsAndroid.PERMISSIONS.READ_CONTACTS
-    )
-      .then(granted => {
-        return granted === PermissionsAndroid.RESULTS.GRANTED;
-      })
-      .catch(err => {
-        return false;
-      });
-  }
-  return Promise.resolve(true);
-}
-
-function getContacts(): Promise<any> {
-  return new Promise((resolve, reject) => {
-    checkContactsPermission().then(hasPermission => {
-      if (hasPermission) {
-        Contacts.getAll((err, contacts) => {
-          if (err) {
-            reject(err);
-          } else {
-            resolve(contacts);
-          }
-        });
-      } else {
-        reject();
-      }
-    });
-  });
-}
 
 var titleFontSize = 19;
 var titleSpacing = 11;
@@ -384,7 +298,7 @@ const useContactImportDialog = () => {
     setVisible(false);
   };
 
-  return [visible, loading, contacts, filter, setFilter, show, hide];
+  return { visible, loading, contacts, filter, setFilter, show, hide };
 };
 
 const useAboutDialog = () => {
@@ -398,7 +312,7 @@ const useAboutDialog = () => {
     setVisible(false);
   };
 
-  return [visible, show, hide];
+  return { visible, show, hide };
 };
 
 const useContactChooserDialog = () => {
@@ -445,7 +359,7 @@ const useContactChooserDialog = () => {
     setVisible(false);
   };
 
-  return [visible, loading, contacts, filter, setFilter, show, hide, target];
+  return { visible, loading, contacts, filter, setFilter, show, hide, target };
 };
 
 const useListAddDialog = () => {
@@ -462,14 +376,14 @@ const useListAddDialog = () => {
     setVisible(false);
   };
 
-  return [
+  return {
     visible,
     listCreateType,
     listCreateName,
     setListCreateName,
     show,
     hide
-  ];
+  };
 };
 
 const useSalmoChooserDialog = search => {
@@ -494,7 +408,7 @@ const useSalmoChooserDialog = search => {
     setVisible(false);
   };
 
-  return [visible, tabs, show, hide, target];
+  return { visible, tabs, show, hide, target };
 };
 
 const useSalmoLocaleChooserDialog = (songs, localeSongs, getLocaleReal) => {
@@ -522,41 +436,41 @@ const useSalmoLocaleChooserDialog = (songs, localeSongs, getLocaleReal) => {
     setVisible(false);
   };
 
-  return [visible, items, show, hide, target];
+  return { visible, items, show, hide, target };
 };
 
 const useCommunity = () => {
-  const [contacts, setContacts] = useState([]);
+  const [brothers, initBrothers] = useState([]);
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
     var filteredContacts = [];
     if (filter !== '') {
-      filteredContacts = contacts.filter(c => contactFilterByText(c, filter));
+      filteredContacts = brothers.filter(c => contactFilterByText(c, filter));
     }
     filteredContacts.sort(ordenAlfabetico);
-    setContacts(filteredContacts);
+    initBrothers(filteredContacts);
   }, [filter]);
 
   const add = item => {
-    var changedContacts = [...contacts, item];
-    setContacts(changedContacts);
+    var changedContacts = [...brothers, item];
+    initBrothers(changedContacts);
   };
 
   const update = (id, item) => {
-    var keepContacts = contacts.filter(c => c.recordID !== id);
+    var keepContacts = brothers.filter(c => c.recordID !== id);
     var changedContacts = [...keepContacts, item];
-    setContacts(changedContacts);
+    initBrothers(changedContacts);
   };
 
   const remove = item => {
-    var idx = contacts.indexOf(item);
-    var changedContacts = contacts.filter((l, i) => i !== idx);
-    setContacts(changedContacts);
+    var idx = brothers.indexOf(item);
+    var changedContacts = brothers.filter((l, i) => i !== idx);
+    initBrothers(changedContacts);
   };
 
   const save = () => {
-    var item = { key: 'contacts', data: contacts };
+    var item = { key: 'contacts', data: brothers };
     localdata.save(item);
     if (Platform.OS == 'ios') {
       clouddata.save(item);
@@ -568,7 +482,7 @@ const useCommunity = () => {
     if (cacheDir !== newCacheDir) {
       return getContacts()
         .then(currentContacts => {
-          contacts.forEach(c => {
+          brothers.forEach(c => {
             // tomar los datos actualizados
             var currContact = currentContacts.find(
               x => x.recordID === c.recordID
@@ -587,21 +501,29 @@ const useCommunity = () => {
   };
 
   const addOrRemove = contact => {
-    var i = contacts.findIndex(c => c.recordID == contact.recordID);
+    var i = brothers.findIndex(c => c.recordID == contact.recordID);
     // Ya esta importado
     if (i !== -1) {
-      var item = contacts[i];
+      var item = brothers[i];
       remove(item);
     } else {
       add(contact);
     }
   };
 
-  return [contacts, filter, setFilter, save, refreshThumbs, setContacts];
+  return {
+    brothers,
+    filter,
+    setFilter,
+    save,
+    refreshThumbs,
+    addOrRemove,
+    initBrothers
+  };
 };
 
 const useSettings = () => {
-  const [keys, setKeys] = useState({
+  const [keys, initKeys] = useState({
     developerMode: false,
     keepAwake: true,
     locale: 'default'
@@ -609,7 +531,7 @@ const useSettings = () => {
 
   const setKey = (key, value) => {
     const updatedKeys = Object.assign({}, keys, { [key]: value });
-    setKeys(updatedKeys);
+    initKeys(updatedKeys);
   };
 
   const getLocaleReal = () => {
@@ -625,7 +547,7 @@ const useSettings = () => {
     });
   };
 
-  return [keys, setKey, save, getLocaleReal];
+  return { keys, initKeys, setKey, save, getLocaleReal };
 };
 
 const useSongsMeta = () => {
@@ -700,7 +622,7 @@ const useSongsMeta = () => {
     });
   };
 
-  return [
+  return {
     songs,
     setSongs,
     localeSongs,
@@ -710,10 +632,10 @@ const useSongsMeta = () => {
     indexPatchExists,
     setSongLocalePatch,
     clearIndexPatch
-  ];
+  };
 };
 
-export const useSearchSongs = (songs: any, props: any) => {
+export const useSearchSongs = (songs: any, props: any): any => {
   const [navFilter, setNavFilter] = useState();
   const [textFilter, setTextFilter] = useState('');
   const [search, setSearch] = useState([]);
@@ -750,18 +672,18 @@ export const useSearchSongs = (songs: any, props: any) => {
     setSearch(result);
   }, [navFilter, textFilter]);
 
-  return [
+  return {
     search,
     navFilter,
     setNavFilter,
     textFilter,
     setTextFilter,
     showSalmosBadge
-  ];
+  };
 };
 
-const useLists = songs => {
-  const [lists, setLists] = useState({});
+const useLists = (songs: any) => {
+  const [lists, initLists] = useState({});
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
@@ -770,7 +692,7 @@ const useLists = songs => {
     } else {
       var filteredLists = lists;
     }
-    setLists(filteredLists);
+    initLists(filteredLists);
   }, [filter]);
 
   const addList = (listName, type) => {
@@ -817,12 +739,13 @@ const useLists = songs => {
         break;
     }
     const changedLists = Object.assign({}, lists, { [listName]: schema });
-    setLists(changedLists);
+    initLists(changedLists);
   };
 
   const removeList = listName => {
-    delete lists[listName];
-    setLists(lists);
+    const changedLists = Object.assign({}, lists);
+    delete changedLists[listName];
+    initLists(changedLists);
   };
 
   const getList = (listName, listKey) => {
@@ -839,7 +762,7 @@ const useLists = songs => {
       let { [listKey]: omit, ...schema } = targetList;
     }
     const changedLists = Object.assign({}, lists, { [listName]: schema });
-    setLists(changedLists);
+    initLists(changedLists);
   };
 
   const getSongsFromList = (listName: any) => {
@@ -918,9 +841,9 @@ const useLists = songs => {
     }
   };
 
-  return [
+  return {
     lists,
-    setLists,
+    initLists,
     addList,
     removeList,
     getList,
@@ -930,13 +853,13 @@ const useLists = songs => {
     save,
     filter,
     setFilter
-  ];
+  };
 };
 
 const useSearch = () => {
-  const [items, setItems] = useState();
+  const [searchItems, setSearchItems] = useState();
 
-  const initialize = (developerMode: boolean) => {
+  const initSearch = (developerMode: boolean) => {
     var items: Array<SearchItem> = [
       {
         title: I18n.t('search_title.alpha'),
@@ -1101,10 +1024,10 @@ const useSearch = () => {
         badge: null
       });
     }
-    setItems(items);
+    setSearchItems(items);
   };
 
-  return [items, initialize];
+  return { searchItems, initSearch };
 };
 
 export const DataContext = React.createContext();
@@ -1114,22 +1037,22 @@ const DataContextWrapper = (props: any) => {
   const community = useCommunity();
   const settings = useSettings();
   const songsMeta = useSongsMeta();
-  const [search, initSearch] = useSearch();
+  const { searchItems, initSearch } = useSearch();
   const aboutDialog = useAboutDialog();
   const contactImportDialog = useContactImportDialog();
   const contactChooserDialog = useContactChooserDialog();
   const listAddDialog = useListAddDialog();
 
-  const [keys, setKey, save, getLocaleReal] = settings;
-  const [
+  const { keys, setKey, save, getLocaleReal } = settings;
+  const {
     songs,
     setSongs,
     localeSongs,
     setLocaleSongs,
     readLocalePatch
-  ] = songsMeta;
+  } = songsMeta;
   const lists = useLists(songs);
-  const salmoChooserDialog = useSalmoChooserDialog(search);
+  const salmoChooserDialog = useSalmoChooserDialog(searchItems);
   const salmoLocaleChooserDialog = useSalmoLocaleChooserDialog(
     songs,
     localeSongs,
@@ -1184,7 +1107,7 @@ const DataContextWrapper = (props: any) => {
       value={{
         initializeLocale,
         songsMeta,
-        search,
+        searchItems,
         settings,
         community,
         lists,

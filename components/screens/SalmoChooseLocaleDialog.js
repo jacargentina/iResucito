@@ -10,10 +10,9 @@ import I18n from '../translations';
 const SalmoChooseLocaleDialog = (props: any) => {
   const data = useContext(DataContext);
 
-  const [, , , getLocaleReal] = data.settings;
-
-  const [visible, items, , hide, target] = data.salmoLocaleChooserDialog;
-  const [, , , , , , , setSongLocalePatch] = data.songsMeta;
+  const { getLocaleReal } = data.settings;
+  const { visible, items, hide, target } = data.salmoLocaleChooserDialog;
+  const { setSongLocalePatch } = data.songsMeta;
 
   const localeFileSelected = file => {
     const locale = getLocaleReal();

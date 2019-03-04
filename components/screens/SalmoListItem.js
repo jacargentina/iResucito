@@ -15,11 +15,11 @@ const noteStyles = textStyles['.note'];
 delete textStyles['.note'];
 
 const SalmoListItem = (props: any) => {
-  const [isCollapsed, setIsCollapsed] = useState(true);
   const data = useContext(DataContext);
-  const [keys, , getLocaleReal] = data.settings;
-  const [, showSalmoDialog] = data.salmoChooserDialog;
-  const [, , , , , , , setSongLocalePatch] = data.songsMeta;
+  const [isCollapsed, setIsCollapsed] = useState(true);
+  const { keys, getLocaleReal } = data.settings;
+  const { showSalmoDialog } = data.salmoChooserDialog;
+  const { setSongLocalePatch } = data.songsMeta;
 
   var devMode = props.devModeDisabled === true ? false : keys.developerMode;
   var developerMode = devMode;
@@ -84,17 +84,11 @@ const SalmoListItem = (props: any) => {
         />
       </Right>
     );
-  } else if (
-    props.developerMode &&
-    props.salmo.patchable &&
-    !openHighlightedRest
-  ) {
+  } else if (developerMode && props.salmo.patchable && !openHighlightedRest) {
     if (props.salmo.patched) {
       var patchableSection = (
         <TouchableOpacity
-          onPress={() =>
-            setSongLocalePatch(props.salmo, props.locale, undefined)
-          }
+          onPress={() => setSongLocalePatch(props.salmo, locale, undefined)}
           style={{ flex: 1, flexDirection: 'row-reverse' }}>
           <Icon
             name="trash"

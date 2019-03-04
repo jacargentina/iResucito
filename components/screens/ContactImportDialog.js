@@ -14,21 +14,20 @@ import { DataContext } from '../../DataContext';
 import commonTheme from '../../native-base-theme/variables/platform';
 import I18n from '../translations';
 import ContactPhoto from './ContactPhoto';
+import { getContacts, getContactsForImport } from '../util';
 
 const ContactImportDialog = (props: any) => {
   const data = useContext(DataContext);
+  const [contacts, setContacts] = useState([]);
+  const { visible, filter, setFilter, hide } = data.contactImportDialog;
+  const { brothers, save } = data.community;
 
-  const [
-    visible,
-    loading,
-    items,
-    filter,
-    setFilter,
-    show,
-    hide
-  ] = data.contactImportDialog;
-
-  const [imported, , , save] = data.community;
+  useEffect(() => {
+    getContacts().then(allContacts => {
+      var result = getContactsForImport(allContacts, brothers);
+      setContacts(result);
+    });
+  }, [brothers]);
 
   const close = () => {
     hide();
@@ -60,7 +59,7 @@ const ContactImportDialog = (props: any) => {
       title={I18n.t('screen_title.import contacts')}
       fade={true}>
       <SearchBarView value={filter} setValue={setFilter}>
-        {imported && imported.length > 0 && (
+        {brothers && brothers.length > 0 && (
           <View
             style={{
               padding: 10,
@@ -70,7 +69,7 @@ const ContactImportDialog = (props: any) => {
             <FlatList
               horizontal={true}
               keyboardShouldPersistTaps="always"
-              data={imported}
+              data={brothers}
               keyExtractor={item => item.recordID}
               renderItem={({ item }) => {
                 return (
@@ -93,7 +92,7 @@ const ContactImportDialog = (props: any) => {
             />
           </View>
         )}
-        {imported && imported.length === 0 && (
+        {brothers && brothers.length === 0 && (
           <Text note style={{ textAlign: 'center', marginTop: 20 }}>
             {I18n.t('ui.no contacts found')}
           </Text>
@@ -101,7 +100,7 @@ const ContactImportDialog = (props: any) => {
         <FlatList
           onScrollBeginDrag={() => Keyboard.dismiss()}
           keyboardShouldPersistTaps="always"
-          data={imported}
+          data={contacts}
           keyExtractor={item => item.recordID}
           renderItem={({ item }) => {
             var contactFullName = item.givenName;

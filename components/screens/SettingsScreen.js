@@ -11,8 +11,7 @@ import {
   Icon,
   Right,
   Picker,
-  Item,
-  Button
+  Item
 } from 'native-base';
 import Switch from '../widgets/switch';
 import { DataContext } from '../../DataContext';
@@ -24,9 +23,9 @@ import commonTheme from '../../native-base-theme/variables/platform';
 const SettingsScreen = (props: any) => {
   const data = useContext(DataContext);
   const { initializeLocale, shareIndexPatch } = data;
-  const [, , , , , , indexPatchExists, , clearIndexPatch] = data.songsMeta;
-  const [keys, setKey, save] = data.settings;
-  const [, showAbout] = data.aboutDialog;
+  const { indexPatchExists, clearIndexPatch } = data.songsMeta;
+  const { keys, setKey, save } = data.settings;
+  const { show } = data.aboutDialog;
 
   const updateSetting = (key, value) => {
     setKey(key, value);
@@ -148,7 +147,7 @@ const SettingsScreen = (props: any) => {
               </Body>
             </ListItem>
           )}
-          <ListItem icon button onPress={showAbout}>
+          <ListItem icon button onPress={show}>
             <Left>
               <Icon name="checkmark" />
             </Left>

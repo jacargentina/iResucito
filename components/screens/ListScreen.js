@@ -8,6 +8,7 @@ import { DataContext } from '../../DataContext';
 import AppNavigatorOptions from '../AppNavigatorOptions';
 import BaseCallToAction from './BaseCallToAction';
 import I18n from '../translations';
+import { getProcessedLists } from '../util';
 
 const listAdd = showFunc => {
   ActionSheet.show(
@@ -44,8 +45,10 @@ const listAdd = showFunc => {
 
 const ListScreen = (props: any) => {
   const data = useContext(DataContext);
-  const [lists, , , removeList, , , , , save, filter, setFilter] = data.lists;
-  const [, , , , show] = data.listAddDialog;
+  const { lists, removeList, save, filter, setFilter } = data.lists;
+  const { show } = data.listAddDialog;
+
+  const listsArray = getProcessedLists(lists);
 
   const listDelete = list => {
     Alert.alert(
@@ -68,7 +71,7 @@ const ListScreen = (props: any) => {
     );
   };
 
-  if (Object.keys(lists).length == 0)
+  if (listsArray.length == 0)
     return (
       <BaseCallToAction
         icon="bookmark"
@@ -78,10 +81,6 @@ const ListScreen = (props: any) => {
         buttonText={I18n.t('call_to_action_button.add lists')}
       />
     );
-
-  var listsArray = Object.keys(lists).map(name => {
-    return { name: name, type: lists[name].type };
-  });
 
   return (
     <SearchBarView value={filter} setValue={setFilter}>
@@ -129,7 +128,7 @@ const ListScreen = (props: any) => {
 
 const AddList = props => {
   const data = useContext(DataContext);
-  const [, , , , show] = data.listAddDialog;
+  const { show } = data.listAddDialog;
   return (
     <Icon
       name="add"

@@ -20,7 +20,7 @@ const appName = pack.displayName;
 
 const AcercaDe = () => {
   const data = useContext(DataContext);
-  const [visible, , hide] = data.aboutDialog;
+  const { visible, hide } = data.aboutDialog;
 
   const sendMail = () => {
     Linking.openURL(

@@ -28,7 +28,7 @@ import I18n from '../translations';
 const SalmoDetail = (props: any) => {
   const data = useContext(DataContext);
   const { transportNote } = data;
-  const [keys] = data.settings;
+  const { keys } = data.settings;
 
   var salmo = props.navigation.state.params.salmo;
   var backColor = color(colors[salmo.etapa]);

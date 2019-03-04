@@ -16,7 +16,7 @@ import { DataContext } from '../../DataContext';
 
 const SalmoSearch = (props: any) => {
   const data = useContext(DataContext);
-  const { search } = data;
+  const { searchItems } = data;
   return (
     <AndroidBackHandler onBackPress={() => true}>
       <ScrollView
@@ -29,10 +29,10 @@ const SalmoSearch = (props: any) => {
         <ContactChooserDialog navigation={props.navigation} />
         <SalmoChooseLocaleDialog navigation={props.navigation} />
         <FlatList
-          data={search}
+          data={searchItems}
           keyExtractor={item => item.title}
           renderItem={({ item, index }) => {
-            var nextItem = search[index + 1];
+            var nextItem = searchItems[index + 1];
             if (item.divider) {
               return (
                 <Separator bordered>

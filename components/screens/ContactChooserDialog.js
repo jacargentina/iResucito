@@ -10,19 +10,8 @@ import ContactPhoto from './ContactPhoto';
 
 const ContactChooserDialog = (props: any) => {
   const data = useContext(DataContext);
-
-  const [
-    visible,
-    loading,
-    items,
-    filter,
-    setFilter,
-    show,
-    hide,
-    target
-  ] = data.contactChooserDialog;
-
-  const [lists, , , , , setList, , , save] = data.lists;
+  const { visible, contacts, hide, target } = data.contactChooserDialog;
+  const { setList, save } = data.lists;
 
   const contactSelected = contact => {
     setList(target.listName, target.listKey, contact);
@@ -36,7 +25,7 @@ const ContactChooserDialog = (props: any) => {
       closeModal={hide}
       title={I18n.t('screen_title.community')}
       fade={true}>
-      {items.length == 0 && (
+      {contacts.length == 0 && (
         <View
           style={{
             flex: 3,
@@ -57,7 +46,7 @@ const ContactChooserDialog = (props: any) => {
         </View>
       )}
       <FlatList
-        data={items}
+        data={contacts}
         keyExtractor={item => item.recordID}
         renderItem={({ item }) => {
           var contactFullName = `${item.givenName} ${item.familyName}`;

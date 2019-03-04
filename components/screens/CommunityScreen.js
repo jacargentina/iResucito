@@ -13,7 +13,7 @@ import ContactPhoto from './ContactPhoto';
 
 const CommunityScreen = (props: any) => {
   const data = useContext(DataContext);
-  const [contacts, filter, setFilter, save, remove] = data.community;
+  const { brothers, filter, setFilter, save, addOrRemove } = data.community;
 
   const contactDelete = contact => {
     Alert.alert(
@@ -23,7 +23,7 @@ const CommunityScreen = (props: any) => {
         {
           text: I18n.t('ui.delete'),
           onPress: () => {
-            remove(contact);
+            addOrRemove(contact);
             save();
           },
           style: 'destructive'
@@ -42,7 +42,7 @@ const CommunityScreen = (props: any) => {
     save();
   };
 
-  if (contacts.length == 0 && !props.textFilter)
+  if (brothers.length == 0 && !props.textFilter)
     return (
       <BaseCallToAction
         icon="people"
@@ -54,13 +54,13 @@ const CommunityScreen = (props: any) => {
     );
   return (
     <SearchBarView value={filter} setValue={setFilter}>
-      {contacts.length == 0 && (
+      {brothers.length == 0 && (
         <Text note style={{ textAlign: 'center', paddingTop: 20 }}>
           {I18n.t('ui.no contacts found')}
         </Text>
       )}
       <FlatList
-        data={contacts}
+        data={brothers}
         keyExtractor={item => item.recordID}
         renderItem={({ item }) => {
           var contactFullName = `${item.givenName} ${item.familyName}`;
@@ -117,6 +117,7 @@ const CommunityScreen = (props: any) => {
 
 const ImportContactsButton = props => {
   const data = useContext(DataContext);
+  const { show } = data.contactImportDialog;
   return (
     <Icon
       name="refresh"
@@ -128,7 +129,7 @@ const ImportContactsButton = props => {
         textAlign: 'center',
         color: AppNavigatorOptions.headerTitleStyle.color
       }}
-      onPress={data.contactImportDialog.show}
+      onPress={show}
     />
   );
 };

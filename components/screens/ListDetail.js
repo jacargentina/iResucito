@@ -11,19 +11,7 @@ import I18n from '../translations';
 
 const ListDetail = (props: any) => {
   const data = useContext(DataContext);
-  const [
-    lists,
-    setLists,
-    addList,
-    removeList,
-    getList,
-    setList,
-    getSongsFromList,
-    shareList,
-    save,
-    filter,
-    setFilter
-  ] = data.lists;
+  const { lists, setList, getSongsFromList, shareList, save } = data.lists;
 
   const listName = props.navigation.state.params.list.name;
   const list = getSongsFromList(listName);
@@ -229,9 +217,8 @@ const AddSong = props => {
   }
   const listName = props.navigation.state.params.list.name;
   const data = useContext(DataContext);
-  const [lists] = data.lists;
-  const targetList = lists[listName];
-  const [, , show] = data.salmoChooserDialog;
+  const targetList = data.lists[listName];
+  const { show } = data.salmoChooserDialog;
   return (
     <Icon
       name="add"
