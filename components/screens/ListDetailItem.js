@@ -19,10 +19,8 @@ import I18n from '../translations';
 const ListDetailItem = (props: any) => {
   const data = useContext(DataContext);
   const { getList, setList, save } = data.lists;
-  const { showContactDialog } = data.contactChooserDialog;
-  const { showSalmoDialog } = data.salmoChooserDialog;
-
-  const listText = getList(props.listName, props.listKey);
+  const { show: showContactDialog } = data.contactChooserDialog;
+  const { show: showSalmoDialog } = data.salmoChooserDialog;
 
   var item = null;
   if (
@@ -42,7 +40,7 @@ const ListDetailItem = (props: any) => {
               setList(props.listName, props.listKey, text);
               save();
             }}
-            value={listText}
+            value={props.listText}
             clearButtonMode="always"
             autoCorrect={false}
           />
@@ -64,7 +62,7 @@ const ListDetailItem = (props: any) => {
               setList(props.listName, props.listKey, text);
               save();
             }}
-            value={listText}
+            value={props.listText}
             clearButtonMode="always"
             autoCorrect={false}
           />
@@ -93,7 +91,7 @@ const ListDetailItem = (props: any) => {
               setList(props.listName, props.listKey, text);
               save();
             }}
-            value={listText}
+            value={props.listText}
             autoCorrect={false}
           />
         </Body>
@@ -102,11 +100,11 @@ const ListDetailItem = (props: any) => {
   } else {
     // Cualquier otro caso, es un canto
     var text =
-      listText == null
+      props.listText == null
         ? I18n.t('ui.search placeholder') + '...'
-        : listText.titulo;
+        : props.listText.titulo;
     var navigateSalmo =
-      listText != null ? (
+      props.listText != null ? (
         <Right>
           <Icon
             name="open"
@@ -118,7 +116,7 @@ const ListDetailItem = (props: any) => {
             }}
             onPress={() =>
               props.navigation.navigate('SalmoDetail', {
-                salmo: listText
+                salmo: props.listText
               })
             }
           />

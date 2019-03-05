@@ -10,6 +10,7 @@ import {
   getEsSalmo,
   getDefaultLocale,
   getFriendlyText,
+  getFriendlyTextForListType,
   ordenAlfabetico,
   getContacts,
   NativeSongs,
@@ -399,8 +400,7 @@ const useSalmoChooserDialog = search => {
   }, [search]);
 
   const show = (target, key) => {
-    if (target && key) setTarget({ listName: target, listKey: key });
-    else setTarget({ salmo: target });
+    setTarget({ listName: target, listKey: key });
     setVisible(true);
   };
 
@@ -646,7 +646,8 @@ export const useSearchSongs = (songs: any, props: any): any => {
       if (filterFromNav) {
         setNavFilter(filterFromNav);
       }
-    } else if (props.filter) {
+    }
+    if (props.filter) {
       setNavFilter(props.filter);
     }
   }, [props.navigation, props.filter]);
@@ -756,33 +757,50 @@ const useLists = (songs: any) => {
   const setList = (listName, listKey, listValue) => {
     const targetList = lists[listName];
     var schema;
-    if (listValue)
-      schema = Object.assign({}, targetList, { [listKey]: listValue });
-    else {
+    if (listValue !== undefined) {
+      if (typeof listKey == 'string')
+        schema = Object.assign({}, targetList, { [listKey]: listValue });
+      else if (typeof listKey == 'number') {
+        var newItems = Object.assign([], targetList.items);
+        newItems[listKey] = listValue;
+        schema = Object.assign({}, targetList, { items: newItems });
+      }
+    } else {
       let { [listKey]: omit, ...schema } = targetList;
     }
     const changedLists = Object.assign({}, lists, { [listName]: schema });
     initLists(changedLists);
   };
 
-  const getSongsFromList = (listName: any) => {
-    var list = lists[listName];
-    var result = Object.entries(list).map(([clave, valor]) => {
+  const getListForUI = (listName: any) => {
+    var uiList = Object.assign({}, lists[listName]);
+    Object.entries(uiList).forEach(([clave, valor]) => {
       // Si es de tipo 'libre', los salmos están dentro de 'items'
       if (clave === 'items') {
         valor = valor.map(nombre => {
           return songs.find(s => s.nombre == nombre);
         });
       } else if (getEsSalmo(clave) && valor !== null) {
-        return songs.find(s => s.nombre == valor);
+        valor = songs.find(s => s.nombre == valor);
       }
-      return valor;
+      uiList[clave] = valor;
     });
-    return result;
+    return uiList;
+  };
+
+  const getListsForUI = () => {
+    var listNames = Object.keys(lists);
+    return listNames.map(name => {
+      var listMap = lists[name];
+      return {
+        name: name,
+        type: getFriendlyTextForListType(listMap.type)
+      };
+    });
   };
 
   const getItemForShare = (list: any, key: string) => {
-    if (list.hasOwnPropery(key)) {
+    if (list.hasOwnProperty(key)) {
       var valor = list[key];
       if (valor !== null && getEsSalmo(key)) {
         valor = valor.titulo;
@@ -795,7 +813,7 @@ const useLists = (songs: any) => {
   };
 
   const shareList = (listName: string) => {
-    var list = getSongsFromList(listName);
+    var list = getListForUI(listName);
     var items = [];
     if (list['type'] === 'libre') {
       var cantos = list['items'].toArray();
@@ -848,7 +866,8 @@ const useLists = (songs: any) => {
     removeList,
     getList,
     setList,
-    getSongsFromList,
+    getListForUI,
+    getListsForUI,
     shareList,
     save,
     filter,

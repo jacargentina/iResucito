@@ -103,17 +103,6 @@ export function getFriendlyTextForListType(listType: string): string {
   }
 }
 
-export const getProcessedLists = (lists: any): any => {
-  var listNames = Object.keys(lists);
-  return listNames.map(name => {
-    var listMap = lists[name];
-    return {
-      name: name,
-      type: getFriendlyTextForListType(listMap.type)
-    };
-  });
-};
-
 export const getDefaultLocale = () => {
   return NativeModules.RNI18n.languages[0];
 };

@@ -45,10 +45,20 @@ const listAdd = showFunc => {
 
 const ListScreen = (props: any) => {
   const data = useContext(DataContext);
-  const { lists, removeList, save, filter, setFilter } = data.lists;
+  const [uiLists, setUILists] = useState([]);
+  const {
+    lists,
+    getListsForUI,
+    removeList,
+    save,
+    filter,
+    setFilter
+  } = data.lists;
   const { show } = data.listAddDialog;
 
-  const listsArray = getProcessedLists(lists);
+  useEffect(() => {
+    setUILists(getListsForUI());
+  }, [lists]);
 
   const listDelete = list => {
     Alert.alert(
@@ -71,7 +81,7 @@ const ListScreen = (props: any) => {
     );
   };
 
-  if (listsArray.length == 0)
+  if (uiLists.length == 0)
     return (
       <BaseCallToAction
         icon="bookmark"
@@ -85,7 +95,7 @@ const ListScreen = (props: any) => {
   return (
     <SearchBarView value={filter} setValue={setFilter}>
       <FlatList
-        data={listsArray}
+        data={uiLists}
         keyExtractor={item => item.name}
         renderItem={({ item }) => {
           var swipeoutBtns = [

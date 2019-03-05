@@ -11,10 +11,13 @@ import I18n from '../translations';
 
 const ListDetail = (props: any) => {
   const data = useContext(DataContext);
-  const { lists, setList, getSongsFromList, shareList, save } = data.lists;
-
+  const [uiList, setUIList] = useState();
+  const { lists, setList, getListForUI, shareList, save } = data.lists;
   const listName = props.navigation.state.params.list.name;
-  const list = getSongsFromList(listName);
+
+  useEffect(() => {
+    setUIList(getListForUI(listName));
+  }, [lists]);
 
   const confirmListDeleteSong = (songTitle, list, key) => {
     Alert.alert(
@@ -37,8 +40,12 @@ const ListDetail = (props: any) => {
     );
   };
 
-  if (list['type'] == 'libre') {
-    var songs = list['items'];
+  if (!uiList) {
+    return null;
+  }
+
+  if (uiList.type == 'libre') {
+    var songs = uiList.items;
     if (songs.length === 0) {
       return (
         <Text note style={{ textAlign: 'center', marginTop: 20 }}>
@@ -56,7 +63,7 @@ const ListDetail = (props: any) => {
                 type: Platform.OS == 'ios' ? 'delete' : 'default',
                 backgroundColor: Platform.OS == 'android' ? '#e57373' : null,
                 onPress: () => {
-                  confirmListDeleteSong(song.titulo, list.name, key);
+                  confirmListDeleteSong(song.titulo, listName, key);
                 }
               }
             ];
@@ -67,7 +74,7 @@ const ListDetail = (props: any) => {
                 backgroundColor="white"
                 autoClose={true}>
                 <ListDetailItem
-                  listName={list.name}
+                  listName={listName}
                   listKey={key}
                   listText={song}
                   navigation={props.navigation}
@@ -83,110 +90,118 @@ const ListDetail = (props: any) => {
     <KeyboardAwareScrollView>
       <List>
         <ListDetailItem
-          listName={list.name}
+          listName={listName}
           listKey="ambiental"
-          listText={list['ambiental']}
+          listText={uiList.ambiental}
         />
         <ListDetailItem
-          listName={list.name}
+          listName={listName}
           listKey="entrada"
-          listText={list['entrada']}
+          listText={uiList.entrada}
           navigation={props.navigation}
         />
         <ListDetailItem
-          listName={list.name}
+          listName={listName}
           listKey="1-monicion"
-          listText={list['1-monicion']}
+          listText={uiList['1-monicion']}
         />
-        <ListDetailItem listName={list.name} listKey="1" listText={list['1']} />
-        {list.hasOwnProperty('1-salmo') && (
+        <ListDetailItem
+          listName={listName}
+          listKey="1"
+          listText={uiList['1']}
+        />
+        {uiList.hasOwnProperty('1-salmo') && (
           <ListDetailItem
-            listName={list.name}
+            listName={listName}
             listKey="1-salmo"
-            listText={list['1-salmo']}
+            listText={uiList['1-salmo']}
             navigation={props.navigation}
           />
         )}
         <ListDetailItem
-          listName={list.name}
+          listName={listName}
           listKey="2-monicion"
-          listText={list['2-monicion']}
+          listText={uiList['2-monicion']}
         />
-        <ListDetailItem listName={list.name} listKey="2" listText={list['2']} />
-        {list.hasOwnProperty('2-salmo') && (
+        <ListDetailItem
+          listName={listName}
+          listKey="2"
+          listText={uiList['2']}
+        />
+        {uiList.hasOwnProperty('2-salmo') && (
           <ListDetailItem
-            listName={list.name}
+            listName={listName}
             listKey="2-salmo"
-            listText={list['2-salmo']}
+            listText={uiList['2-salmo']}
             navigation={props.navigation}
           />
         )}
-        {list.hasOwnProperty('3-monicion') && (
+        {uiList.hasOwnProperty('3-monicion') && (
           <ListDetailItem
-            listName={list.name}
+            listName={listName}
             listKey="3-monicion"
-            listText={list['3-monicion']}
+            listText={uiList['3-monicion']}
           />
         )}
-        {list.hasOwnProperty('3') && (
+        {uiList.hasOwnProperty('3') && (
           <ListDetailItem
-            listName={list.name}
+            listName={listName}
             listKey="3"
-            listText={list['3']}
+            listText={uiList['3']}
           />
         )}
-        {list.hasOwnProperty('3-salmo') && (
+        {uiList.hasOwnProperty('3-salmo') && (
           <ListDetailItem
-            listName={list.name}
+            listName={listName}
             listKey="3-salmo"
-            listText={list['3-salmo']}
+            listText={uiList['3-salmo']}
             navigation={props.navigation}
           />
         )}
         <ListDetailItem
-          listName={list.name}
+          listName={listName}
           listKey="evangelio-monicion"
-          listText={list['evangelio-monicion']}
+          listText={uiList['evangelio-monicion']}
         />
         <ListDetailItem
-          listName={list.name}
+          listName={listName}
           listKey="evangelio"
-          listText={list['evangelio']}
+          listText={uiList['evangelio']}
         />
-        {list.hasOwnProperty('paz') && (
+        {uiList.hasOwnProperty('paz') && (
           <ListDetailItem
-            listName={list.name}
+            listName={listName}
             listKey="paz"
-            listText={list['paz']}
+            listText={uiList['paz']}
             navigation={props.navigation}
           />
         )}
-        {list.hasOwnProperty('comunion-pan') && (
+        {uiList.hasOwnProperty('comunion-pan') && (
           <ListDetailItem
-            listName={list.name}
+            listName={listName}
             listKey="comunion-pan"
-            listText={list['comunion-pan']}
+            listText={uiList['comunion-pan']}
             navigation={props.navigation}
           />
         )}
-        {list.hasOwnProperty('comunion-caliz') && (
+        {uiList.hasOwnProperty('comunion-caliz') && (
           <ListDetailItem
-            listName={list.name}
+            listName={listName}
             listKey="comunion-caliz"
-            listText={list['comunion-caliz']}
+            listText={uiList['comunion-caliz']}
             navigation={props.navigation}
           />
         )}
         <ListDetailItem
-          listName={list.name}
+          listName={listName}
           listKey="salida"
-          listText={list['salida']}
+          listText={uiList.salida}
           navigation={props.navigation}
         />
         <ListDetailItem
-          listName={list.name}
+          listName={listName}
           listKey="nota"
-          listText={list['nota']}
+          listText={uiList.nota}
           navigation={props.navigation}
         />
       </List>
@@ -197,7 +212,7 @@ const ListDetail = (props: any) => {
 const ShareList = props => {
   const listName = props.navigation.state.params.list.name;
   const data = useContext(DataContext);
-  const [, , , , , , , shareList] = data.lists;
+  const { shareList } = data.lists;
   return (
     <Icon
       name="share"
@@ -212,12 +227,13 @@ const ShareList = props => {
 };
 
 const AddSong = props => {
-  if (props.navigation.state.params.list.type !== 'libre') {
+  const data = useContext(DataContext);
+  const { lists } = data.lists;
+  const listName = props.navigation.state.params.list.name;
+  const targetList = lists[listName];
+  if (targetList.type !== 'libre') {
     return null;
   }
-  const listName = props.navigation.state.params.list.name;
-  const data = useContext(DataContext);
-  const targetList = data.lists[listName];
   const { show } = data.salmoChooserDialog;
   return (
     <Icon

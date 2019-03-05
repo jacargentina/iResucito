@@ -14,7 +14,7 @@ const ContactChooserDialog = (props: any) => {
   const { setList, save } = data.lists;
 
   const contactSelected = contact => {
-    setList(target.listName, target.listKey, contact);
+    setList(target.listName, target.listKey, contact.givenName);
     save();
     hide();
   };
