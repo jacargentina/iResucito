@@ -80,10 +80,6 @@
     "react-native-version": "^2.6.8",
     "react-navigation": "^3.3.2",
     "react-navigation-backhandler": "^1.2.0",
-    "react-redux": "^6.0.1",
-    "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0",
-    "reselect": "^4.0.0",
     "rn-fetch-blob": "^0.10.15",
     "use-debounce": "^1.0.0"
   },
