@@ -8,7 +8,6 @@ import { DataContext } from '../../DataContext';
 import AppNavigatorOptions from '../AppNavigatorOptions';
 import BaseCallToAction from './BaseCallToAction';
 import I18n from '../translations';
-import { getProcessedLists } from '../util';
 
 const listAdd = showFunc => {
   ActionSheet.show(

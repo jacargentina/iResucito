@@ -761,12 +761,22 @@ const useLists = (songs: any) => {
       if (typeof listKey == 'string')
         schema = Object.assign({}, targetList, { [listKey]: listValue });
       else if (typeof listKey == 'number') {
+        var isPresent = targetList.items.find(s => s == listValue);
+        if (isPresent) {
+          return;
+        }
         var newItems = Object.assign([], targetList.items);
         newItems[listKey] = listValue;
         schema = Object.assign({}, targetList, { items: newItems });
       }
     } else {
-      let { [listKey]: omit, ...schema } = targetList;
+      if (typeof listKey == 'string') {
+        let { [listKey]: omit, ...schema } = targetList;
+      } else if (typeof listKey == 'number') {
+        var newItems = Object.assign([], targetList.items);
+        newItems.splice(listKey, 1);
+        schema = Object.assign({}, targetList, { items: newItems });
+      }
     }
     const changedLists = Object.assign({}, lists, { [listName]: schema });
     initLists(changedLists);
@@ -815,10 +825,10 @@ const useLists = (songs: any) => {
   const shareList = (listName: string) => {
     var list = getListForUI(listName);
     var items = [];
-    if (list['type'] === 'libre') {
-      var cantos = list['items'].toArray();
+    if (list.type === 'libre') {
+      var cantos = list.items;
       cantos.forEach((canto, i) => {
-        items.push(`${i}: ${canto.titulo}`);
+        items.push(`${i + 1} - ${canto.titulo}`);
       });
     } else {
       items.push(getItemForShare(list, 'ambiental'));

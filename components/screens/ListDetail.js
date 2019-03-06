@@ -27,7 +27,7 @@ const ListDetail = (props: any) => {
         {
           text: I18n.t('ui.delete'),
           onPress: () => {
-            setList(list, key, undefined);
+            setList(list, key);
             save();
           },
           style: 'destructive'
