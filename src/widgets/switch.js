@@ -2,7 +2,7 @@
 import React from 'react';
 import { Platform } from 'react-native';
 import { Switch as SwitchNB } from 'native-base';
-import commonTheme from '../../native-base-theme/variables/platform';
+import commonTheme from '../native-base-theme/variables/platform';
 
 const Switch = (props: any) => {
   var themeProps = {

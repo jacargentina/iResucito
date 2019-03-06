@@ -4,7 +4,7 @@ import { Alert, View, Platform } from 'react-native';
 import { Icon, List, Text } from 'native-base';
 import Swipeout from 'react-native-swipeout';
 import ListDetailItem from './ListDetailItem';
-import { DataContext } from '../../DataContext';
+import { DataContext } from '../DataContext';
 import AppNavigatorOptions from '../AppNavigatorOptions';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import I18n from '../translations';

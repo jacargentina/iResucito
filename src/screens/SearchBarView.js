@@ -4,7 +4,7 @@ import { AndroidBackHandler } from 'react-navigation-backhandler';
 import { View, StyleSheet } from 'react-native';
 import { Input, Item, Icon } from 'native-base';
 import { withNavigation } from 'react-navigation';
-import commonTheme from '../../native-base-theme/variables/platform';
+import commonTheme from '../native-base-theme/variables/platform';
 import I18n from '../translations';
 import { useDebounce } from 'use-debounce';
 

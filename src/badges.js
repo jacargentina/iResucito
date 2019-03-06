@@ -2,8 +2,8 @@
 import React from 'react';
 import { Badge, Text } from 'native-base';
 import colors from './colors';
-import commonTheme from '../native-base-theme/variables/platform';
-import textTheme from '../native-base-theme/components/Text';
+import commonTheme from './native-base-theme/variables/platform';
+import textTheme from './native-base-theme/components/Text';
 
 const noteStyles = textTheme(commonTheme)['.note'];
 

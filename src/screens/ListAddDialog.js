@@ -2,7 +2,7 @@
 import React, { useContext, useState, useEffect, useRef } from 'react';
 import { NavigationActions } from 'react-navigation';
 import { Text, Input, Item, Button, View } from 'native-base';
-import { DataContext } from '../../DataContext';
+import { DataContext } from '../DataContext';
 import BaseModal from './BaseModal';
 import { getFriendlyTextForListType } from '../util';
 import I18n from '../translations';

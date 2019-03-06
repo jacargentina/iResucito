@@ -14,11 +14,11 @@ import {
   Item
 } from 'native-base';
 import Switch from '../widgets/switch';
-import { DataContext } from '../../DataContext';
+import { DataContext } from '../DataContext';
 import I18n from '../translations';
 import AppNavigatorOptions from '../AppNavigatorOptions';
 import { getLocalesForPicker } from '../util';
-import commonTheme from '../../native-base-theme/variables/platform';
+import commonTheme from '../native-base-theme/variables/platform';
 
 const SettingsScreen = (props: any) => {
   const data = useContext(DataContext);

@@ -10,8 +10,8 @@ import {
   Keyboard,
   StyleSheet
 } from 'react-native';
-import { DataContext } from '../../DataContext';
-import commonTheme from '../../native-base-theme/variables/platform';
+import { DataContext } from '../DataContext';
+import commonTheme from '../native-base-theme/variables/platform';
 import I18n from '../translations';
 import ContactPhoto from './ContactPhoto';
 import { getContacts, getContactsForImport } from '../util';

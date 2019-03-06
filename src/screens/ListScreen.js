@@ -4,7 +4,7 @@ import { ListItem, Left, Body, Icon, Text, ActionSheet } from 'native-base';
 import { Alert, FlatList, Platform } from 'react-native';
 import Swipeout from 'react-native-swipeout';
 import SearchBarView from './SearchBarView';
-import { DataContext } from '../../DataContext';
+import { DataContext } from '../DataContext';
 import AppNavigatorOptions from '../AppNavigatorOptions';
 import BaseCallToAction from './BaseCallToAction';
 import I18n from '../translations';

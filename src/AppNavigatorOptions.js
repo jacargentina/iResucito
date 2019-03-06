@@ -1,5 +1,5 @@
 // @flow
-import commonTheme from '../native-base-theme/variables/platform';
+import commonTheme from './native-base-theme/variables/platform';
 
 const AppNavigatorOptions = {
   headerStyle: {

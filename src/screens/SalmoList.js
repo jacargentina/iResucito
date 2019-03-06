@@ -6,7 +6,7 @@ import SearchBarView from './SearchBarView';
 import SalmoListItem from './SalmoListItem';
 import AppNavigatorOptions from '../AppNavigatorOptions';
 import I18n from '../translations';
-import { DataContext, useSearchSongs } from '../../DataContext';
+import { DataContext, useSearchSongs } from '../DataContext';
 
 const SalmoList = (props: any) => {
   const listRef = useRef();

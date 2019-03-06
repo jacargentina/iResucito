@@ -1,6 +1,6 @@
 // @flow
 import { Platform } from 'react-native';
-import commonTheme from '../native-base-theme/variables/platform';
+import commonTheme from './native-base-theme/variables/platform';
 import { createBottomTabNavigator } from 'react-navigation';
 import SalmoSearch from './screens/SalmoSearch';
 import SettingsScreen from './screens/SettingsScreen';

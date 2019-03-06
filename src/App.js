@@ -8,16 +8,15 @@ import SplashScreen from 'react-native-splash-screen';
 import { Root, StyleProvider } from 'native-base';
 import getTheme from './native-base-theme/components';
 import commonTheme from './native-base-theme/variables/platform';
-import AppNavigator from './components/AppNavigator';
+import AppNavigator from './AppNavigator';
 import { MenuProvider } from 'react-native-popup-menu';
 import {
   setJSExceptionHandler,
   setNativeExceptionHandler
 } from 'react-native-exception-handler';
-import { localdata, clouddata } from './components/data';
-import { NativeSongs, getDefaultLocale } from './components/util';
-import I18n from './components/translations';
-import badges from './components/badges';
+import { localdata, clouddata } from './data';
+import I18n from './translations';
+import badges from './badges';
 
 const mailTo = 'javier.alejandro.castro@gmail.com';
 const mailSubject = 'iResucito Crash';

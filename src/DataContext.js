@@ -1,10 +1,10 @@
 // @flow
 import React, { useState, useEffect } from 'react';
-import { Alert, Platform, StyleSheet, Share } from 'react-native';
+import { Alert, Platform, Share } from 'react-native';
 import RNFS from 'react-native-fs';
-import I18n from './components/translations';
-import badges from './components/badges';
-import { localdata, clouddata } from './components/data';
+import I18n from './translations';
+import badges from './badges';
+import { localdata, clouddata } from './data';
 import PDFLib, { PDFDocument, PDFPage } from 'react-native-pdf-lib';
 import {
   getEsSalmo,
@@ -15,7 +15,7 @@ import {
   getContacts,
   NativeSongs,
   NativeStyles
-} from './components/util';
+} from './util';
 
 const SongsIndexPatchPath =
   RNFS.DocumentDirectoryPath + '/SongsIndexPatch.json';

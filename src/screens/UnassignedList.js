@@ -5,9 +5,9 @@ import { FlatList, Keyboard } from 'react-native';
 import SearchBarView from './SearchBarView';
 import Highlighter from 'react-native-highlight-words';
 import AppNavigatorOptions from '../AppNavigatorOptions';
-import commonTheme from '../../native-base-theme/variables/platform';
-import textTheme from '../../native-base-theme/components/Text';
-import { DataContext } from '../../DataContext';
+import commonTheme from '../native-base-theme/variables/platform';
+import textTheme from '../native-base-theme/components/Text';
+import { DataContext } from '../DataContext';
 import I18n from '../translations';
 
 class UnassignedListX extends React.Component<any> {

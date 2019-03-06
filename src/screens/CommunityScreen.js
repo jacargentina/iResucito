@@ -4,10 +4,10 @@ import { ListItem, Right, Body, Icon, Text } from 'native-base';
 import Swipeout from 'react-native-swipeout';
 import { Alert, FlatList, View } from 'react-native';
 import SearchBarView from './SearchBarView';
-import { DataContext } from '../../DataContext';
+import { DataContext } from '../DataContext';
 import AppNavigatorOptions from '../AppNavigatorOptions';
 import BaseCallToAction from './BaseCallToAction';
-import commonTheme from '../../native-base-theme/variables/platform';
+import commonTheme from '../native-base-theme/variables/platform';
 import I18n from '../translations';
 import ContactPhoto from './ContactPhoto';
 

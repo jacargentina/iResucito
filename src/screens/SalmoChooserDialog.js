@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native';
 import { Tab, Tabs, ScrollableTab } from 'native-base';
 import BaseModal from './BaseModal';
 import SalmoList from './SalmoList';
-import { DataContext } from '../../DataContext';
+import { DataContext } from '../DataContext';
 import I18n from '../translations';
 
 const styles = StyleSheet.create({

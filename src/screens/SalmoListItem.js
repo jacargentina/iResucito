@@ -5,10 +5,10 @@ import { ListItem, Left, Right, Body, Text, Badge, Icon } from 'native-base';
 import Highlighter from 'react-native-highlight-words';
 import Collapsible from 'react-native-collapsible';
 import badges from '../badges';
-import commonTheme from '../../native-base-theme/variables/platform';
-import textTheme from '../../native-base-theme/components/Text';
+import commonTheme from '../native-base-theme/variables/platform';
+import textTheme from '../native-base-theme/components/Text';
 import I18n from '../translations';
-import { DataContext } from '../../DataContext';
+import { DataContext } from '../DataContext';
 
 const textStyles = textTheme(commonTheme);
 const noteStyles = textStyles['.note'];

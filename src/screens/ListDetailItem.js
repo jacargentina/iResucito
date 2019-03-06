@@ -11,9 +11,9 @@ import {
   Separator
 } from 'native-base';
 import { View, TextInput } from 'react-native';
-import { DataContext } from '../../DataContext';
+import { DataContext } from '../DataContext';
 import { getFriendlyText } from '../util';
-import commonTheme from '../../native-base-theme/variables/platform';
+import commonTheme from '../native-base-theme/variables/platform';
 import I18n from '../translations';
 
 const ListDetailItem = (props: any) => {

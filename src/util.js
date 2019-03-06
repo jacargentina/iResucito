@@ -10,12 +10,7 @@ import Contacts from 'react-native-contacts';
 import RNFS from 'react-native-fs';
 import DeviceInfo from 'react-native-device-info';
 import I18n from './translations';
-import {
-  SongsProcessor,
-  esLineaDeNotas,
-  limpiarNotasRegex,
-  calcularTransporte
-} from '../SongsProcessor';
+import { SongsProcessor, calcularTransporte } from './SongsProcessor';
 
 function checkContactsPermission(): Promise<boolean> {
   if (Platform.OS == 'android') {

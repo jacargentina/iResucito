@@ -3,7 +3,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { Text, Icon } from 'native-base';
 import { View, Platform, SafeAreaView } from 'react-native';
 import Modal from 'react-native-modal';
-import commonTheme from '../../native-base-theme/variables/platform';
+import commonTheme from '../native-base-theme/variables/platform';
 
 const BaseModal = (props: any) => {
   var animationIn = props.fade ? 'fadeIn' : 'slideInUp';

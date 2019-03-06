@@ -3,7 +3,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { AndroidBackHandler } from 'react-navigation-backhandler';
 import { Icon, Text, H1, Button } from 'native-base';
 import { View } from 'react-native';
-import commonTheme from '../../native-base-theme/variables/platform';
+import commonTheme from '../native-base-theme/variables/platform';
 
 const BaseCallToAction = (props: any) => {
   return (

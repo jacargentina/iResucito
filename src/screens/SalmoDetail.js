@@ -1,14 +1,7 @@
 // @flow
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Dimensions, ScrollView, View } from 'react-native';
-import {
-  Container,
-  Content,
-  Text,
-  Icon,
-  ActionSheet,
-  Badge
-} from 'native-base';
+import { Container, Content, Text, Icon, Badge } from 'native-base';
 import KeepAwake from 'react-native-keep-awake';
 import {
   Menu,
@@ -18,11 +11,11 @@ import {
 } from 'react-native-popup-menu';
 import colors from '../colors';
 import color from 'color';
-import { notas } from '../../SongsProcessor';
+import { notas } from '../SongsProcessor';
 import { NativeStyles, getSalmoTransported } from '../util';
-import { DataContext } from '../../DataContext';
+import { DataContext } from '../DataContext';
 import AppNavigatorOptions from '../AppNavigatorOptions';
-import commonTheme from '../../native-base-theme/variables/platform';
+import commonTheme from '../native-base-theme/variables/platform';
 import I18n from '../translations';
 
 const SalmoDetail = (props: any) => {

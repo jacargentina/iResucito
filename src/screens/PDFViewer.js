@@ -5,7 +5,7 @@ import { Icon } from 'native-base';
 import { View, Dimensions } from 'react-native';
 import AppNavigatorOptions from '../AppNavigatorOptions';
 import RNPrint from 'react-native-print';
-import { DataContext } from '../../DataContext';
+import { DataContext } from '../DataContext';
 
 const PDFViewer = (props: any) => {
   return (
