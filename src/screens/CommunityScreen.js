@@ -10,6 +10,7 @@ import BaseCallToAction from './BaseCallToAction';
 import commonTheme from '../native-base-theme/variables/platform';
 import I18n from '../translations';
 import ContactPhoto from './ContactPhoto';
+import ContactImportDialog from './ContactImportDialog';
 
 const CommunityScreen = (props: any) => {
   const data = useContext(DataContext);
@@ -54,6 +55,7 @@ const CommunityScreen = (props: any) => {
     );
   return (
     <SearchBarView value={filter} setValue={setFilter}>
+      <ContactImportDialog />
       {brothers.length == 0 && (
         <Text note style={{ textAlign: 'center', paddingTop: 20 }}>
           {I18n.t('ui.no contacts found')}

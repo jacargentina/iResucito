@@ -19,6 +19,7 @@ import I18n from '../translations';
 import AppNavigatorOptions from '../AppNavigatorOptions';
 import { getLocalesForPicker } from '../util';
 import commonTheme from '../native-base-theme/variables/platform';
+import AcercaDe from './AcercaDe';
 
 const SettingsScreen = (props: any) => {
   const data = useContext(DataContext);
@@ -61,6 +62,7 @@ const SettingsScreen = (props: any) => {
   });
   return (
     <AndroidBackHandler onBackPress={() => true}>
+      <AcercaDe />
       <View>
         <List>
           <ListItem>

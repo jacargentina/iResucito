@@ -1,5 +1,5 @@
 // @flow
-import React, { useContext, useState, useEffect } from 'react';
+import React, { Fragment, useContext, useState, useEffect } from 'react';
 import { Alert, View, Platform } from 'react-native';
 import { Icon, List, Text } from 'native-base';
 import Swipeout from 'react-native-swipeout';

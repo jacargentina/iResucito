@@ -9,6 +9,7 @@ import commonTheme from '../native-base-theme/variables/platform';
 import textTheme from '../native-base-theme/components/Text';
 import { DataContext } from '../DataContext';
 import I18n from '../translations';
+import SalmoChooseLocaleDialog from './SalmoChooseLocaleDialog';
 
 class UnassignedListX extends React.Component<any> {
   listRef: any;
@@ -47,6 +48,7 @@ class UnassignedListX extends React.Component<any> {
             {I18n.t('ui.no songs found')}
           </Text>
         )}
+        <SalmoChooseLocaleDialog />
         <FlatList
           ref={ref => {
             this.listRef = ref;

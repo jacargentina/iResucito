@@ -4,12 +4,6 @@ import { AndroidBackHandler } from 'react-navigation-backhandler';
 import { FlatList, ScrollView, View } from 'react-native';
 import { ListItem, Left, Body, Text, Icon, Separator } from 'native-base';
 import * as Animatable from 'react-native-animatable';
-import ListAddDialog from './ListAddDialog';
-import SalmoChooserDialog from './SalmoChooserDialog';
-import ContactChooserDialog from './ContactChooserDialog';
-import ContactImportDialog from './ContactImportDialog';
-import SalmoChooseLocaleDialog from './SalmoChooseLocaleDialog';
-import AcercaDe from './AcercaDe';
 import I18n from '../translations';
 import AppNavigatorOptions from '../AppNavigatorOptions';
 import { DataContext } from '../DataContext';
@@ -22,12 +16,6 @@ const SalmoSearch = (props: any) => {
       <ScrollView
         keyboardShouldPersistTaps="always"
         keyboardDismissMode="on-drag">
-        <AcercaDe navigation={props.navigation} />
-        <ListAddDialog navigation={props.navigation} />
-        <SalmoChooserDialog navigation={props.navigation} />
-        <ContactImportDialog navigation={props.navigation} />
-        <ContactChooserDialog navigation={props.navigation} />
-        <SalmoChooseLocaleDialog navigation={props.navigation} />
         <FlatList
           data={searchItems}
           keyExtractor={item => item.title}
