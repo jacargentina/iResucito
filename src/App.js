@@ -1,7 +1,7 @@
 // @flow
 import React, { useContext, useState, useEffect } from 'react';
 import DataContextWrapper, { DataContext } from './DataContext';
-import { BackHandler, Platform, Alert, Linking } from 'react-native';
+import { Platform, Alert, Linking } from 'react-native';
 import RNFS from 'react-native-fs';
 import DeviceInfo from 'react-native-device-info';
 import SplashScreen from 'react-native-splash-screen';
@@ -17,6 +17,12 @@ import {
 import { localdata, clouddata } from './data';
 import I18n from './translations';
 import badges from './badges';
+import ListAddDialog from './screens/ListAddDialog';
+import ContactChooserDialog from './screens/ContactChooserDialog';
+import SalmoChooserDialog from './screens/SalmoChooserDialog';
+import SalmoChooseLocaleDialog from './screens/SalmoChooseLocaleDialog';
+import ContactImportDialog from './screens/ContactImportDialog';
+import { getContacts } from './util';
 
 const mailTo = 'javier.alejandro.castro@gmail.com';
 const mailSubject = 'iResucito Crash';
@@ -73,12 +79,38 @@ if (Platform.OS == 'android') {
 
 const AppContent = () => {
   const [initialized, setInitialized] = useState(false);
+  const [lastThumbsCacheDir, setLastThumbsCacheDir] = useState();
   const data = useContext(DataContext);
 
   const { initializeLocale } = data;
   const { initLists } = data.lists;
   const { keys, initKeys } = data.settings;
-  const { refreshThumbs, initBrothers } = data.community;
+  const { brothers, initBrothers, update, save } = data.community;
+
+  useEffect(() => {
+    if (lastThumbsCacheDir && brothers) {
+      // sólo actualizar si cambió el directorio de caches
+      if (lastThumbsCacheDir !== RNFS.CachesDirectoryPath) {
+        getContacts().then(currentContacts => {
+          brothers.forEach(c => {
+            // tomar los datos actualizados
+            var currContact = currentContacts.find(
+              x => x.recordID === c.recordID
+            );
+            update(c.recordID, currContact);
+          });
+          // guardar directorio nuevo
+          var item = {
+            key: 'lastCachesDirectoryPath',
+            data: RNFS.CachesDirectoryPath
+          };
+          localdata.save(item);
+          // guardar contactos refrescados
+          save();
+        });
+      }
+    }
+  }, [lastThumbsCacheDir, brothers]);
 
   const initializeApp = () => {
     var promises = [];
@@ -93,17 +125,16 @@ const AppContent = () => {
         ])
         .then(result => {
           var [settings, lists, contacts, lastCachesDirectoryPath] = result;
+          var loadedContacts = contacts || [];
+          var loadedLists = lists || [];
           initKeys(settings);
-          initBrothers(contacts || []);
-          initLists(lists || []);
+          initBrothers(loadedContacts);
+          initLists(loadedLists);
           // Forzar la actualizacion si estamos emulando
           if (DeviceInfo.isEmulator()) {
             lastCachesDirectoryPath = null;
           }
-          return refreshThumbs(
-            lastCachesDirectoryPath,
-            RNFS.CachesDirectoryPath
-          );
+          setLastThumbsCacheDir(lastCachesDirectoryPath);
         })
         .catch(err => {
           console.log('error loading from localdata', err);
@@ -142,6 +173,11 @@ const AppContent = () => {
     <StyleProvider style={getTheme(commonTheme)}>
       <Root>
         <MenuProvider backHandler={true}>
+          <SalmoChooserDialog />
+          <SalmoChooseLocaleDialog />
+          <ContactChooserDialog />
+          <ContactImportDialog />
+          <ListAddDialog />
           <AppNavigator />
         </MenuProvider>
       </Root>

@@ -252,20 +252,16 @@ const useAboutDialog = () => {
   return { visible, show, hide };
 };
 
-const useContactChooserDialog = () => {
+const useContactChooserDialog = (brothers: any) => {
   const [visible, setVisible] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [target, setTarget] = useState();
   const [contacts, setContacts] = useState([]);
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
+    var filteredContacts = Object.assign([], brothers);
     if (filter !== '') {
-      var filteredContacts = contacts.filter(c =>
-        contactFilterByText(c, filter)
-      );
-    } else {
-      filteredContacts = contacts;
+      filteredContacts = brothers.filter(c => contactFilterByText(c, filter));
     }
     filteredContacts.sort(ordenAlfabetico);
     setContacts(filteredContacts);
@@ -273,30 +269,14 @@ const useContactChooserDialog = () => {
 
   const show = (target, key) => {
     setTarget({ listName: target, listKey: key });
-    setLoading(true);
-    getContacts()
-      .then(contacts => {
-        var filtered = contacts.filter(
-          c => c.givenName.length > 0 || c.familyName.length > 0
-        );
-        setContacts(filtered);
-        setLoading(false);
-        setVisible(true);
-      })
-      .catch(err => {
-        let message = I18n.t('alert_message.contacts permission');
-        if (Platform.OS == 'ios') {
-          message += '\n\n' + I18n.t('alert_message.contacts permission ios');
-        }
-        Alert.alert(I18n.t('alert_title.contacts permission'), message);
-      });
+    setVisible(true);
   };
 
   const hide = () => {
     setVisible(false);
   };
 
-  return { visible, loading, contacts, filter, setFilter, show, hide, target };
+  return { visible, contacts, filter, setFilter, show, hide, target };
 };
 
 const useListAddDialog = () => {
@@ -394,9 +374,11 @@ const useCommunity = () => {
   };
 
   const update = (id, item) => {
-    var keepContacts = brothers.filter(c => c.recordID !== id);
-    var changedContacts = [...keepContacts, item];
-    initBrothers(changedContacts);
+    var contact = brothers.find(c => c.recordID === id);
+    var idx = brothers.indexOf(contact);
+    var updatedContacts = [...brothers];
+    updatedContacts[idx] = Object.assign(contact, item);
+    initBrothers(updatedContacts);
   };
 
   const remove = item => {
@@ -410,29 +392,6 @@ const useCommunity = () => {
     localdata.save(item);
     if (Platform.OS == 'ios') {
       clouddata.save(item);
-    }
-  };
-
-  const refreshThumbs = (cacheDir: string, newCacheDir: string) => {
-    // sólo actualizar si cambió el directorio de caches
-    if (cacheDir !== newCacheDir) {
-      return getContacts()
-        .then(currentContacts => {
-          brothers.forEach(c => {
-            // tomar los datos actualizados
-            var currContact = currentContacts.find(
-              x => x.recordID === c.recordID
-            );
-            update(c.recordID, currContact);
-          });
-          // guardar directorio nuevo
-          var item = { key: 'lastCachesDirectoryPath', data: newCacheDir };
-          return localdata.save(item);
-        })
-        .then(() => {
-          // guardar contactos refrescados
-          save();
-        });
     }
   };
 
@@ -452,8 +411,8 @@ const useCommunity = () => {
     filter,
     setFilter,
     save,
-    refreshThumbs,
     addOrRemove,
+    update,
     initBrothers
   };
 };
@@ -1033,7 +992,7 @@ const DataContextWrapper = (props: any) => {
   const search = useSearch();
   const aboutDialog = useAboutDialog();
   const contactImportDialog = useContactImportDialog();
-  const contactChooserDialog = useContactChooserDialog();
+  const contactChooserDialog = useContactChooserDialog(community.brothers);
   const listAddDialog = useListAddDialog();
 
   const { getLocaleReal } = settings;

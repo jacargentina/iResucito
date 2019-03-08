@@ -10,11 +10,17 @@ import BaseCallToAction from './BaseCallToAction';
 import commonTheme from '../native-base-theme/variables/platform';
 import I18n from '../translations';
 import ContactPhoto from './ContactPhoto';
-import ContactImportDialog from './ContactImportDialog';
 
 const CommunityScreen = (props: any) => {
   const data = useContext(DataContext);
-  const { brothers, filter, setFilter, save, addOrRemove } = data.community;
+  const {
+    brothers,
+    filter,
+    setFilter,
+    save,
+    addOrRemove,
+    update
+  } = data.community;
 
   const contactDelete = contact => {
     Alert.alert(
@@ -38,12 +44,13 @@ const CommunityScreen = (props: any) => {
   };
 
   const contactToggleAttibute = (contact, attribute) => {
-    // TODO
-    //dispatch(setContactAttribute(contact, attribute));
+    const newValue = !(contact[attribute] === true);
+    var updatedContact = Object.assign({}, contact, { [attribute]: newValue });
+    update(contact.recordID, updatedContact);
     save();
   };
 
-  if (brothers.length == 0 && !props.textFilter)
+  if (brothers.length == 0 && filter !== '')
     return (
       <BaseCallToAction
         icon="people"
@@ -55,7 +62,6 @@ const CommunityScreen = (props: any) => {
     );
   return (
     <SearchBarView value={filter} setValue={setFilter}>
-      <ContactImportDialog />
       {brothers.length == 0 && (
         <Text note style={{ textAlign: 'center', paddingTop: 20 }}>
           {I18n.t('ui.no contacts found')}

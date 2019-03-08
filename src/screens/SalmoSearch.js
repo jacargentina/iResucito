@@ -7,7 +7,6 @@ import * as Animatable from 'react-native-animatable';
 import I18n from '../translations';
 import AppNavigatorOptions from '../AppNavigatorOptions';
 import { DataContext } from '../DataContext';
-import SalmoChooserDialog from './SalmoChooserDialog';
 
 const SalmoSearch = (props: any) => {
   const data = useContext(DataContext);
@@ -22,7 +21,6 @@ const SalmoSearch = (props: any) => {
       <ScrollView
         keyboardShouldPersistTaps="always"
         keyboardDismissMode="on-drag">
-        <SalmoChooserDialog />
         <FlatList
           data={searchItems}
           keyExtractor={item => item.title}

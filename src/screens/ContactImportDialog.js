@@ -20,7 +20,7 @@ const ContactImportDialog = (props: any) => {
   const data = useContext(DataContext);
   const [contacts, setContacts] = useState([]);
   const { visible, filter, setFilter, hide } = data.contactImportDialog;
-  const { brothers, save } = data.community;
+  const { brothers, addOrRemove, save } = data.community;
 
   useEffect(() => {
     getContacts().then(allContacts => {
@@ -36,7 +36,7 @@ const ContactImportDialog = (props: any) => {
   };
 
   const handleContact = contact => {
-    handleContact(contact);
+    addOrRemove(contact);
     setFilter('');
   };
 
