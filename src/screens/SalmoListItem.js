@@ -18,11 +18,15 @@ const SalmoListItem = (props: any) => {
   const data = useContext(DataContext);
   const [isCollapsed, setIsCollapsed] = useState(true);
   const { keys, getLocaleReal } = data.settings;
-  const { showSalmoDialog } = data.salmoChooserDialog;
+  const { show: showSalmoChooser } = data.salmoChooserDialog;
   const { setSongLocalePatch } = data.songsMeta;
+  const [developerMode, setDeveloperMode] = useState();
 
-  var devMode = props.devModeDisabled === true ? false : keys.developerMode;
-  var developerMode = devMode;
+  useEffect(() => {
+    var isOn = props.devModeDisabled === true ? false : keys.developerMode;
+    setDeveloperMode(isOn);
+  }, [keys]);
+
   var locale = getLocaleReal();
 
   if (props.showBadge) {
@@ -113,12 +117,12 @@ const SalmoListItem = (props: any) => {
               fontSize: 32,
               color: commonTheme.brandPrimary
             }}
-            onPress={() => showSalmoDialog(props.salmo)}
+            onPress={() => showSalmoChooser(props.salmo)}
           />
         </Right>
       );
     }
-  } else if (props.salmo.patchable && !props.developerMode) {
+  } else if (props.salmo.patchable && !developerMode) {
     var patchableSection = (
       <TouchableOpacity
         onPress={() => {

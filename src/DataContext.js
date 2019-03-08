@@ -20,70 +20,6 @@ import {
 const SongsIndexPatchPath =
   RNFS.DocumentDirectoryPath + '/SongsIndexPatch.json';
 
-const getContactImportSanitizedItems = allContacts => {
-  var grouped = allContacts.reduce(function(groups, item) {
-    var fullname = `${item.givenName} ${item.familyName}`;
-    groups[fullname] = groups[fullname] || [];
-    groups[fullname].push(item);
-    return groups;
-  }, {});
-  var unique = [];
-  for (var fullname in grouped) {
-    if (grouped[fullname].length > 1) {
-      var conMiniatura = grouped[fullname].find(c => c.hasThumbnail === true);
-      unique.push(conMiniatura || grouped[fullname][0]);
-    } else {
-      unique.push(grouped[fullname][0]);
-    }
-  }
-  return unique;
-};
-
-export const getProcessedContacts = (
-  importedContacts: Array<any>,
-  text_filter: string
-) => {
-  if (text_filter) {
-    importedContacts = importedContacts.filter(c =>
-      contactFilterByText(c, text_filter)
-    );
-  }
-  importedContacts.sort(ordenAlfabetico);
-  return importedContacts;
-};
-
-export const getCurrentRouteSalmos = (
-  songs: Array<any>,
-  filter: any
-): Array<any> => {
-  var items = [];
-  if (songs) {
-    if (filter) {
-      for (var name in filter) {
-        items = songs.filter(s => s.get(name) == filter[name]);
-      }
-    } else {
-      items = songs;
-    }
-  }
-  return items;
-};
-
-export const getFilteredAvailableSongsForPatch = (
-  localeSongs: Array<any>,
-  text_filter: string
-) => {
-  if (text_filter) {
-    localeSongs = localeSongs.filter(locSong => {
-      return (
-        locSong.titulo.toLowerCase().includes(text_filter.toLowerCase()) ||
-        locSong.fuente.toLowerCase().includes(text_filter.toLowerCase())
-      );
-    });
-  }
-  return localeSongs;
-};
-
 var titleFontSize = 19;
 var titleSpacing = 11;
 var fuenteFontSize = 10;
@@ -683,6 +619,34 @@ export const useSearchSongs = (songs: any, props: any): any => {
   };
 };
 
+export const useSearchUnassignedSongs = (songs, localeSongs, getLocaleReal) => {
+  const [textFilter, setTextFilter] = useState('');
+  const [search, setSearch] = useState([]);
+
+  useEffect(() => {
+    const locale = getLocaleReal();
+    var result = localeSongs.filter(locSong => {
+      var found = songs.find(s => s.files[locale] === locSong.nombre);
+      return !found;
+    });
+    if (textFilter) {
+      result = result.filter(locSong => {
+        return (
+          locSong.titulo.toLowerCase().includes(textFilter.toLowerCase()) ||
+          locSong.fuente.toLowerCase().includes(textFilter.toLowerCase())
+        );
+      });
+    }
+    setSearch(result);
+  }, [textFilter]);
+
+  return {
+    search,
+    textFilter,
+    setTextFilter
+  };
+};
+
 const useLists = (songs: any) => {
   const [lists, initLists] = useState({});
   const [filter, setFilter] = useState('');
@@ -1066,13 +1030,13 @@ const DataContextWrapper = (props: any) => {
   const community = useCommunity();
   const settings = useSettings();
   const songsMeta = useSongsMeta();
-  const { searchItems, initSearch } = useSearch();
+  const search = useSearch();
   const aboutDialog = useAboutDialog();
   const contactImportDialog = useContactImportDialog();
   const contactChooserDialog = useContactChooserDialog();
   const listAddDialog = useListAddDialog();
 
-  const { keys, setKey, save, getLocaleReal } = settings;
+  const { getLocaleReal } = settings;
   const {
     songs,
     setSongs,
@@ -1081,7 +1045,7 @@ const DataContextWrapper = (props: any) => {
     readLocalePatch
   } = songsMeta;
   const lists = useLists(songs);
-  const salmoChooserDialog = useSalmoChooserDialog(searchItems);
+  const salmoChooserDialog = useSalmoChooserDialog(search.searchItems);
   const salmoLocaleChooserDialog = useSalmoLocaleChooserDialog(
     songs,
     localeSongs,
@@ -1094,7 +1058,7 @@ const DataContextWrapper = (props: any) => {
     }
     I18n.locale = locale;
     // Construir menu de búsqueda
-    initSearch(keys.developerMode);
+    search.initSearch(settings.keys.developerMode);
     // Cargar parche del indice si existe
     return readLocalePatch()
       .then(patchObj => {
@@ -1136,7 +1100,7 @@ const DataContextWrapper = (props: any) => {
       value={{
         initializeLocale,
         songsMeta,
-        searchItems,
+        search,
         settings,
         community,
         lists,

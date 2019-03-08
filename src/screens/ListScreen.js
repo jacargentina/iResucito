@@ -9,7 +9,6 @@ import AppNavigatorOptions from '../AppNavigatorOptions';
 import BaseCallToAction from './BaseCallToAction';
 import I18n from '../translations';
 import ListAddDialog from './ListAddDialog';
-import SalmoChooserDialog from './SalmoChooserDialog';
 import ContactChooserDialog from './ContactChooserDialog';
 
 const listAdd = showFunc => {
@@ -97,7 +96,6 @@ const ListScreen = (props: any) => {
   return (
     <SearchBarView value={filter} setValue={setFilter}>
       <ListAddDialog />
-      <SalmoChooserDialog />
       <ContactChooserDialog />
       <FlatList
         data={uiLists}

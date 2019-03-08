@@ -7,15 +7,22 @@ import * as Animatable from 'react-native-animatable';
 import I18n from '../translations';
 import AppNavigatorOptions from '../AppNavigatorOptions';
 import { DataContext } from '../DataContext';
+import SalmoChooserDialog from './SalmoChooserDialog';
 
 const SalmoSearch = (props: any) => {
   const data = useContext(DataContext);
-  const { searchItems } = data;
+  const { searchItems } = data.search;
+
+  useEffect(() => {
+    // Para refrescar la lista al cambiar los items
+  }, [searchItems]);
+
   return (
     <AndroidBackHandler onBackPress={() => true}>
       <ScrollView
         keyboardShouldPersistTaps="always"
         keyboardDismissMode="on-drag">
+        <SalmoChooserDialog />
         <FlatList
           data={searchItems}
           keyExtractor={item => item.title}

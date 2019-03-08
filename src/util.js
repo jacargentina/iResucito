@@ -59,7 +59,24 @@ export function getContactsForImport(
   allContacts: Array<any>,
   importedContacts: Array<any>
 ): Array<any> {
-  var items = allContacts.map(c => {
+  // Fitrar y generar contactos únicos
+  var grouped = allContacts.reduce((groups, item) => {
+    var fullname = `${item.givenName} ${item.familyName}`;
+    groups[fullname] = groups[fullname] || [];
+    groups[fullname].push(item);
+    return groups;
+  }, {});
+  var unique = [];
+  for (var fullname in grouped) {
+    if (grouped[fullname].length > 1) {
+      var conMiniatura = grouped[fullname].find(c => c.hasThumbnail === true);
+      unique.push(conMiniatura || grouped[fullname][0]);
+    } else {
+      unique.push(grouped[fullname][0]);
+    }
+  }
+  // De los únicos, marcar cuales ya estan importados
+  var items = unique.map(c => {
     var found = importedContacts.find(x => x.recordID === c.recordID);
     c.imported = found !== undefined;
     return c;

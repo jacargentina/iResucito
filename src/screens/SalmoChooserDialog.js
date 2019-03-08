@@ -19,6 +19,7 @@ const SalmoChooserDialog = (props: any) => {
   const { setSongLocalePatch } = data.songsMeta;
 
   const songAssign = salmo => {
+    debugger;
     if (target.listName && target.listKey !== undefined) {
       setList(target.listName, target.listKey, salmo.nombre);
       save();

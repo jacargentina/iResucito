@@ -75,14 +75,14 @@ const AppContent = () => {
   const [initialized, setInitialized] = useState(false);
   const data = useContext(DataContext);
 
+  const { initializeLocale } = data;
   const { initLists } = data.lists;
-  const { initKeys } = data.settings;
+  const { keys, initKeys } = data.settings;
   const { refreshThumbs, initBrothers } = data.community;
 
   const initializeApp = () => {
     var promises = [];
     // Cargar configuracion
-    var locale = 'default';
     promises.push(
       localdata
         .getBatchData([
@@ -93,7 +93,6 @@ const AppContent = () => {
         ])
         .then(result => {
           var [settings, lists, contacts, lastCachesDirectoryPath] = result;
-          locale = (settings && settings.locale) || 'default';
           initKeys(settings);
           initBrothers(contacts || []);
           initLists(lists || []);
@@ -108,9 +107,6 @@ const AppContent = () => {
         })
         .catch(err => {
           console.log('error loading from localdata', err);
-        })
-        .finally(() => {
-          data.initializeLocale(locale);
         })
     );
     // Cargar listas desde iCloud
@@ -133,6 +129,14 @@ const AppContent = () => {
     // Arrancar app
     initializeApp();
   }, []);
+
+  useEffect(() => {
+    if (initialized && keys) {
+      var locale = (keys && keys.locale) || 'default';
+      // Configurar dependiendo del lenguaje
+      initializeLocale(locale);
+    }
+  }, [keys, initialized]);
 
   return (
     <StyleProvider style={getTheme(commonTheme)}>

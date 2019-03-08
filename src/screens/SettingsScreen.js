@@ -93,7 +93,6 @@ const SettingsScreen = (props: any) => {
                   // https://github.com/facebook/react-native/issues/15556
                   setTimeout(() => {
                     updateSetting('locale', val);
-                    initializeLocale(val);
                     // Para forzar refresco del titulo segun idioma nuevo
                     props.navigation.setParams({ title: '' });
                   }, 10);
@@ -124,7 +123,6 @@ const SettingsScreen = (props: any) => {
                 value={keys.developerMode}
                 onValueChange={checked => {
                   updateSetting('developerMode', checked);
-                  initializeLocale(keys.locale);
                 }}
               />
             </Right>

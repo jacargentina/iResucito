@@ -7,6 +7,7 @@ import SalmoListItem from './SalmoListItem';
 import AppNavigatorOptions from '../AppNavigatorOptions';
 import I18n from '../translations';
 import { DataContext, useSearchSongs } from '../DataContext';
+import SalmoChooseLocaleDialog from './SalmoChooseLocaleDialog';
 
 const SalmoList = (props: any) => {
   const listRef = useRef();
@@ -42,6 +43,7 @@ const SalmoList = (props: any) => {
           {I18n.t('ui.no songs found')}
         </Text>
       )}
+      <SalmoChooseLocaleDialog />
       <FlatList
         ref={listRef}
         onScrollBeginDrag={() => Keyboard.dismiss()}
