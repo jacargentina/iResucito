@@ -1,5 +1,5 @@
 // @flow
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import { ListItem, Right, Body, Icon, Text } from 'native-base';
 import Swipeout from 'react-native-swipeout';
 import { Alert, FlatList, View } from 'react-native';
@@ -11,7 +11,8 @@ import commonTheme from '../native-base-theme/variables/platform';
 import I18n from '../translations';
 import ContactPhoto from './ContactPhoto';
 
-const CommunityScreen = (props: any) => {
+const CommunityScreen = () => {
+  const listRef = useRef();
   const data = useContext(DataContext);
   const {
     brothers,
@@ -21,6 +22,14 @@ const CommunityScreen = (props: any) => {
     addOrRemove,
     update
   } = data.community;
+
+  useEffect(() => {
+    if (brothers.length > 0) {
+      setTimeout(() => {
+        listRef.current.scrollToIndex({ index: 0, animated: true });
+      }, 10);
+    }
+  }, [brothers]);
 
   const contactDelete = contact => {
     Alert.alert(
@@ -68,6 +77,7 @@ const CommunityScreen = (props: any) => {
         </Text>
       )}
       <FlatList
+        ref={listRef}
         data={brothers}
         keyExtractor={item => item.recordID}
         renderItem={({ item }) => {
@@ -123,7 +133,7 @@ const CommunityScreen = (props: any) => {
   );
 };
 
-const ImportContactsButton = props => {
+const ImportContactsButton = () => {
   const data = useContext(DataContext);
   const { show } = data.contactImportDialog;
   return (
@@ -142,7 +152,7 @@ const ImportContactsButton = props => {
   );
 };
 
-CommunityScreen.navigationOptions = props => ({
+CommunityScreen.navigationOptions = () => ({
   title: I18n.t('screen_title.community'),
   tabBarIcon: ({ focused, tintColor }) => {
     return (

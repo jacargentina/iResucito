@@ -20,7 +20,7 @@ function checkContactsPermission(): Promise<boolean> {
       .then(granted => {
         return granted === PermissionsAndroid.RESULTS.GRANTED;
       })
-      .catch(err => {
+      .catch(() => {
         return false;
       });
   }

@@ -16,7 +16,7 @@ import I18n from '../translations';
 import ContactPhoto from './ContactPhoto';
 import { getContacts, getContactsForImport } from '../util';
 
-const ContactImportDialog = (props: any) => {
+const ContactImportDialog = () => {
   const data = useContext(DataContext);
   const [contacts, setContacts] = useState([]);
   const { visible, filter, setFilter, hide } = data.contactImportDialog;

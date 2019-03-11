@@ -1,10 +1,9 @@
 // @flow
-import React, { useContext, useState, useEffect, useRef } from 'react';
-import { Badge, Text, ListItem, Body, Right, Icon } from 'native-base';
+import React, { useContext, useEffect, useRef } from 'react';
+import { Text, ListItem, Body, Right, Icon } from 'native-base';
 import { FlatList, Keyboard } from 'react-native';
 import SearchBarView from './SearchBarView';
 import Highlighter from 'react-native-highlight-words';
-import AppNavigatorOptions from '../AppNavigatorOptions';
 import commonTheme from '../native-base-theme/variables/platform';
 import textTheme from '../native-base-theme/components/Text';
 import { DataContext, useSearchUnassignedSongs } from '../DataContext';
@@ -26,17 +25,16 @@ const UnassignedList = () => {
     getLocaleReal
   );
 
+  useEffect(() => {
+    if (search.length > 0) {
+      setTimeout(() => {
+        listRef.scrollToIndex({ index: 0, animated: true });
+      }, 10);
+    }
+  }, [search]);
+
   return (
-    <SearchBarView
-      value={textFilter}
-      setValue={setTextFilter}
-      afterSearchHandler={() => {
-        if (search.length > 0) {
-          setTimeout(() => {
-            listRef.scrollToIndex({ index: 0, animated: true });
-          }, 10);
-        }
-      }}>
+    <SearchBarView value={textFilter} setValue={setTextFilter}>
       {search.length == 0 && (
         <Text note style={{ textAlign: 'center', paddingTop: 20 }}>
           {I18n.t('ui.no songs found')}
@@ -87,7 +85,7 @@ const UnassignedList = () => {
   );
 };
 
-UnassignedList.navigationOptions = (props: any) => {
+UnassignedList.navigationOptions = () => {
   return {
     title: I18n.t('search_title.unassigned')
   };

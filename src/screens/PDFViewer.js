@@ -1,5 +1,5 @@
 // @flow
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import Pdf from 'react-native-pdf';
 import { Icon } from 'native-base';
 import { View, Dimensions } from 'react-native';

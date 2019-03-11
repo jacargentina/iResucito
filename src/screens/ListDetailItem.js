@@ -1,5 +1,5 @@
 // @flow
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import {
   Text,
   Icon,
@@ -18,7 +18,7 @@ import I18n from '../translations';
 
 const ListDetailItem = (props: any) => {
   const data = useContext(DataContext);
-  const { getList, setList, save } = data.lists;
+  const { setList, save } = data.lists;
   const { show: showContactDialog } = data.contactChooserDialog;
   const { show: showSalmoDialog } = data.salmoChooserDialog;
 

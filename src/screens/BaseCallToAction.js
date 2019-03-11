@@ -1,5 +1,5 @@
 // @flow
-import React, { useContext, useState, useEffect } from 'react';
+import React from 'react';
 import { AndroidBackHandler } from 'react-navigation-backhandler';
 import { Icon, Text, H1, Button } from 'native-base';
 import { View } from 'react-native';

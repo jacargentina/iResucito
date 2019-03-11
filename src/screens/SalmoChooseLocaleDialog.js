@@ -1,5 +1,5 @@
 // @flow
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import BaseModal from './BaseModal';
 import { Text, ListItem, Body, Left, Icon } from 'native-base';
 import { FlatList, View } from 'react-native';
@@ -7,7 +7,7 @@ import { DataContext } from '../DataContext';
 import commonTheme from '../native-base-theme/variables/platform';
 import I18n from '../translations';
 
-const SalmoChooseLocaleDialog = (props: any) => {
+const SalmoChooseLocaleDialog = () => {
   const data = useContext(DataContext);
 
   const { getLocaleReal } = data.settings;

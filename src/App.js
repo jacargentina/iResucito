@@ -127,7 +127,9 @@ const AppContent = () => {
           var [settings, lists, contacts, lastCachesDirectoryPath] = result;
           var loadedContacts = contacts || [];
           var loadedLists = lists || [];
-          initKeys(settings);
+          if (settings) {
+            initKeys(settings);
+          }
           initBrothers(loadedContacts);
           initLists(loadedLists);
           // Forzar la actualizacion si estamos emulando

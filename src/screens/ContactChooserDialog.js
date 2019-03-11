@@ -1,5 +1,5 @@
 // @flow
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import BaseModal from './BaseModal';
 import { Text, ListItem, Left, Body, Icon } from 'native-base';
 import { FlatList, View } from 'react-native';
@@ -8,7 +8,7 @@ import commonTheme from '../native-base-theme/variables/platform';
 import I18n from '../translations';
 import ContactPhoto from './ContactPhoto';
 
-const ContactChooserDialog = (props: any) => {
+const ContactChooserDialog = () => {
   const data = useContext(DataContext);
   const { visible, contacts, hide, target } = data.contactChooserDialog;
   const { setList, save } = data.lists;

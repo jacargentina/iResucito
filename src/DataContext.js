@@ -85,10 +85,10 @@ const generatePDF = (canto: Song, lines: Array<SongLine>) => {
               y = yStart;
             } else {
               var alturaParrafo = 0;
-              var textoParrafo = '';
+              //var textoParrafo = '';
               var i = index; // loop de i
               while (i < lines.length) {
-                textoParrafo += `${lines[i].texto}\n`;
+                //textoParrafo += `${lines[i].texto}\n`;
                 alturaParrafo += cantoSpacing;
                 i += 1;
                 if (i < lines.length && lines[i].inicioParrafo) {
@@ -222,7 +222,7 @@ const useContactImportDialog = () => {
         setLoading(false);
         setVisible(true);
       })
-      .catch(err => {
+      .catch(() => {
         let message = I18n.t('alert_message.contacts permission');
         if (Platform.OS == 'ios') {
           message += '\n\n' + I18n.t('alert_message.contacts permission ios');
@@ -464,7 +464,7 @@ const useSongsMeta = () => {
           .then(patchJSON => {
             return JSON.parse(patchJSON);
           })
-          .catch(err => {
+          .catch(() => {
             return RNFS.unlink(SongsIndexPatchPath).then(() => {
               Alert.alert(
                 I18n.t('alert_title.corrupt patch'),
@@ -694,7 +694,7 @@ const useLists = (songs: any) => {
       }
     } else {
       if (typeof listKey == 'string') {
-        let { [listKey]: omit, ...schema } = targetList;
+        var { [listKey]: omit, ...schema } = targetList;
       } else if (typeof listKey == 'number') {
         var newItems = Object.assign([], targetList.items);
         newItems.splice(listKey, 1);

@@ -1,5 +1,5 @@
 // @flow
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet } from 'react-native';
 import { Tab, Tabs, ScrollableTab } from 'native-base';
 import BaseModal from './BaseModal';
@@ -15,7 +15,7 @@ const SalmoChooserDialog = (props: any) => {
   const data = useContext(DataContext);
 
   const { visible, tabs, hide, target } = data.salmoChooserDialog;
-  const { setList, save, filter } = data.lists;
+  const { setList, save } = data.lists;
   const { setSongLocalePatch } = data.songsMeta;
 
   const songAssign = salmo => {

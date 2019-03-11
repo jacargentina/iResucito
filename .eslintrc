@@ -1,4 +1,9 @@
 {
+  settings: {
+    react: {
+      version: 'detect'
+    }
+  },
   extends: [
     'plugin:react/recommended',
     'plugin:import/errors',
@@ -19,6 +24,7 @@
   },
   "parser": "babel-eslint",
   "rules": {
+    "no-unused-vars": "warn",
     indent: [2, 2, { SwitchCase: 1 }],
     'linebreak-style': ['error', 'unix'],
     quotes: ['error', 'single'],

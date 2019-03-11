@@ -135,7 +135,7 @@ const ListScreen = (props: any) => {
   );
 };
 
-const AddList = props => {
+const AddList = () => {
   const data = useContext(DataContext);
   const { show } = data.listAddDialog;
   return (
@@ -154,7 +154,7 @@ const AddList = props => {
   );
 };
 
-ListScreen.navigationOptions = props => ({
+ListScreen.navigationOptions = () => ({
   title: I18n.t('screen_title.lists'),
   tabBarIcon: ({ focused, tintColor }) => {
     return (

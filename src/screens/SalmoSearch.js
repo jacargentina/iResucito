@@ -1,5 +1,5 @@
 // @flow
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { AndroidBackHandler } from 'react-navigation-backhandler';
 import { FlatList, ScrollView, View } from 'react-native';
 import { ListItem, Left, Body, Text, Icon, Separator } from 'native-base';
@@ -11,10 +11,6 @@ import { DataContext } from '../DataContext';
 const SalmoSearch = (props: any) => {
   const data = useContext(DataContext);
   const { searchItems } = data.search;
-
-  useEffect(() => {
-    // Para refrescar la lista al cambiar los items
-  }, [searchItems]);
 
   return (
     <AndroidBackHandler onBackPress={() => true}>

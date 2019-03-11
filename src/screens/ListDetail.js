@@ -1,5 +1,5 @@
 // @flow
-import React, { Fragment, useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Alert, View, Platform } from 'react-native';
 import { Icon, List, Text } from 'native-base';
 import Swipeout from 'react-native-swipeout';
@@ -12,7 +12,7 @@ import I18n from '../translations';
 const ListDetail = (props: any) => {
   const data = useContext(DataContext);
   const [uiList, setUIList] = useState();
-  const { lists, setList, getListForUI, shareList, save } = data.lists;
+  const { lists, setList, getListForUI, save } = data.lists;
   const listName = props.navigation.state.params.list.name;
 
   useEffect(() => {

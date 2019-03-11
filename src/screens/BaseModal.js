@@ -1,5 +1,5 @@
 // @flow
-import React, { useContext, useState, useEffect } from 'react';
+import React from 'react';
 import { Text, Icon } from 'native-base';
 import { View, Platform, SafeAreaView } from 'react-native';
 import Modal from 'react-native-modal';

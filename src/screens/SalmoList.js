@@ -1,5 +1,5 @@
 // @flow
-import React, { useContext, useState, useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import { Badge, Text } from 'native-base';
 import { FlatList, Keyboard } from 'react-native';
 import SearchBarView from './SearchBarView';
@@ -12,11 +12,18 @@ const SalmoList = (props: any) => {
   const listRef = useRef();
   const data = useContext(DataContext);
   const { songs } = data.songsMeta;
-  const { keys } = data.settings;
   const { search, textFilter, setTextFilter, showSalmosBadge } = useSearchSongs(
     songs,
     props
   );
+
+  useEffect(() => {
+    if (search.length > 0) {
+      setTimeout(() => {
+        listRef.current.scrollToIndex({ index: 0, animated: true });
+      }, 10);
+    }
+  }, [search]);
 
   const onPress = salmo => {
     if (props.onPress) {
@@ -27,16 +34,7 @@ const SalmoList = (props: any) => {
   };
 
   return (
-    <SearchBarView
-      value={textFilter}
-      setValue={setTextFilter}
-      afterSearchHandler={() => {
-        if (search.length > 0) {
-          setTimeout(() => {
-            listRef.scrollToIndex({ index: 0, animated: true });
-          }, 10);
-        }
-      }}>
+    <SearchBarView value={textFilter} setValue={setTextFilter}>
       {search.length == 0 && (
         <Text note style={{ textAlign: 'center', paddingTop: 20 }}>
           {I18n.t('ui.no songs found')}

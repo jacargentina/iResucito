@@ -16,7 +16,6 @@ import { NativeStyles, getSalmoTransported } from '../util';
 import { DataContext } from '../DataContext';
 import AppNavigatorOptions from '../AppNavigatorOptions';
 import commonTheme from '../native-base-theme/variables/platform';
-import I18n from '../translations';
 
 const SalmoDetail = (props: any) => {
   const data = useContext(DataContext);
@@ -93,7 +92,7 @@ const SalmoDetail = (props: any) => {
   );
 };
 
-const TransportNotesMenu = props => {
+const TransportNotesMenu = () => {
   const data = useContext(DataContext);
   const { transportNote, setTransportNote } = data;
 
