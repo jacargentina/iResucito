@@ -1,27 +1,32 @@
 // @flow
-import React, { useContext, useEffect, useRef } from 'react';
-import { Badge, Text } from 'native-base';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { FlatList, Keyboard } from 'react-native';
+import { Text, ListItem } from 'native-base';
 import SearchBarView from './SearchBarView';
 import SalmoListItem from './SalmoListItem';
-import AppNavigatorOptions from '../AppNavigatorOptions';
 import I18n from '../translations';
 import { DataContext, useSearchSongs } from '../DataContext';
 
 const SalmoList = (props: any) => {
   const listRef = useRef();
   const data = useContext(DataContext);
+  const [totalText, setTotalText] = useState(I18n.t('ui.loading'));
   const { songs } = data.songsMeta;
   const { search, textFilter, setTextFilter, showSalmosBadge } = useSearchSongs(
     songs,
-    props
+    props.navigation.getParam('filter', undefined),
+    props.filter
   );
 
   useEffect(() => {
-    if (search.length > 0) {
+    if (search && search.length > 0) {
       setTimeout(() => {
         listRef.current.scrollToIndex({ index: 0, animated: true });
       }, 10);
+      setTotalText(I18n.t('ui.list total songs', { total: search.length }));
+    }
+    if (search && search.length === 0) {
+      setTotalText(I18n.t('ui.no songs found'));
     }
   }, [search]);
 
@@ -35,16 +40,14 @@ const SalmoList = (props: any) => {
 
   return (
     <SearchBarView value={textFilter} setValue={setTextFilter}>
-      {search.length == 0 && (
-        <Text note style={{ textAlign: 'center', paddingTop: 20 }}>
-          {I18n.t('ui.no songs found')}
-        </Text>
-      )}
+      <ListItem itemDivider>
+        <Text note>{totalText}</Text>
+      </ListItem>
       <FlatList
         ref={listRef}
         onScrollBeginDrag={() => Keyboard.dismiss()}
         keyboardShouldPersistTaps="always"
-        data={search}
+        data={search || []}
         keyExtractor={item => item.path}
         renderItem={({ item }) => {
           return (
@@ -63,30 +66,9 @@ const SalmoList = (props: any) => {
   );
 };
 
-const CountText = props => {
-  const data = useContext(DataContext);
-  const { songs } = data.songsMeta;
-  const { search } = useSearchSongs(songs, props);
-  return (
-    <Badge style={{ marginTop: 8, marginRight: 6 }}>
-      <Text
-        style={{
-          fontSize: 12,
-          fontWeight: 'bold',
-          fontStyle: 'italic',
-          textAlign: 'center',
-          color: AppNavigatorOptions.headerTitleStyle.color
-        }}>
-        {search.length}
-      </Text>
-    </Badge>
-  );
-};
-
 SalmoList.navigationOptions = (props: any) => {
   return {
-    title: props.navigation.getParam('title', 'Sin título'),
-    headerRight: <CountText {...props} />
+    title: props.navigation.getParam('title', 'Sin título')
   };
 };
 

@@ -47,7 +47,7 @@ const SalmoChooseLocaleDialog = () => {
       )}
       {target && (
         <ListItem itemDivider>
-          <Text>{I18n.t('ui.list_total_songs', { total: items.length })}</Text>
+          <Text>{I18n.t('ui.list total songs', { total: items.length })}</Text>
         </ListItem>
       )}
       {target && (

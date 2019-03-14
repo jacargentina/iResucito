@@ -1,6 +1,7 @@
 {
   "ui": {
     "default": "Default",
+    "loading":  "Loading...",
     "collaborators": "Collaborators",
     "share": "Share",
     "back": "Back",
@@ -29,7 +30,7 @@
     "no contacts found": "No contacts found",
     "empty songs list": "Empty songs list",
     "confirmation": "Confirmation",
-    "list_total_songs": "{{total}} total songs"
+    "list total songs": "{{total}} total songs"
   },
   "list_type": {
     "eucharist": "Eucharist",

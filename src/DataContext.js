@@ -530,25 +530,24 @@ const useSongsMeta = () => {
   };
 };
 
-export const useSearchSongs = (songs: any, props: any): any => {
+export const useSearchSongs = (
+  songs: any,
+  filterParam: any,
+  filterProp: any
+): any => {
   const [navFilter, setNavFilter] = useState();
+  const [showSalmosBadge, setShowSalmosBadge] = useState();
   const [textFilter, setTextFilter] = useState('');
-  const [search, setSearch] = useState([]);
+  const [search, setSearch] = useState();
 
   useEffect(() => {
-    if (props.navigation) {
-      var filterFromNav = props.navigation.getParam('filter', undefined);
-      if (filterFromNav) {
-        setNavFilter(filterFromNav);
-      }
+    if (filterParam) {
+      setNavFilter(filterParam);
     }
-    if (props.filter) {
-      setNavFilter(props.filter);
+    if (filterProp) {
+      setNavFilter(filterProp);
     }
-  }, [props.navigation, props.filter]);
-
-  const showSalmosBadge =
-    navFilter == null || !navFilter.hasOwnProperty('etapa');
+  }, [filterParam, filterProp]);
 
   useEffect(() => {
     var result = songs;
@@ -565,6 +564,7 @@ export const useSearchSongs = (songs: any, props: any): any => {
         );
       });
     }
+    setShowSalmosBadge(navFilter == null || !navFilter.hasOwnProperty('etapa'));
     setSearch(result);
   }, [navFilter, textFilter]);
 

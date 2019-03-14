@@ -1,6 +1,7 @@
 {
   "ui": {
     "default": "Predeterminado",
+    "loading":  "Cargando...",
     "collaborators": "Colaboradores",
     "share": "Compartir",
     "back": "Atrás",
@@ -28,7 +29,7 @@
     "no contacts found": "Ningún contacto encontrado",
     "empty songs list": "Lista de cantos vacía",
     "confirmation": "Confirmación",
-    "list_total_songs": "{{total}} cantos en total"
+    "list total songs": "{{total}} cantos en total"
   },
   "list_type": {
     "eucharist": "Eucaristía",
