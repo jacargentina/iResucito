@@ -137,17 +137,23 @@ export class SongsProcessor {
   }
 
   getSongsMeta(rawLoc: string, patch: any): Array<Song> {
-    var locale = rawLoc.split('-')[0];
     var songs = Object.keys(SongsIndex).map(key => {
-      return this.getSingleSongMeta(key, locale, patch);
+      // First load with raw locale (country included)
+      var songMeta = this.getSingleSongMeta(key, rawLoc, patch);
+      // If specific locale file is not found, return load without country
+      if (!songMeta.files.hasOwnProperty(rawLoc)) {
+        var locale = rawLoc.split('-')[0];
+        return this.getSingleSongMeta(key, locale, patch);
+      }
+      return songMeta;
     });
     songs.sort(ordenAlfabetico);
     return songs;
   }
 
   readLocaleSongs(rawLoc: string) {
-    var locale = rawLoc.split('-')[0];
-    return this.songsLister(`${this.basePath}/${locale}`)
+    // First try specific locale (with country included)
+    return this.songsLister(`${this.basePath}/${rawLoc}`)
       .then(items => {
         // Very important to call "normalize"
         // See editing.txt for details
@@ -160,7 +166,13 @@ export class SongsProcessor {
         return items;
       })
       .catch(() => {
-        // No existe el locale suministrado
+        var locale = rawLoc.split('-')[0];
+        if (locale !== rawLoc) {
+          // If error, and locale contains country
+          // code, try with country code removed
+          return this.readLocaleSongs(locale);
+        }
+        // Locale inexistent
         return [];
       });
   }
@@ -168,7 +180,7 @@ export class SongsProcessor {
   loadSingleSong(song: Song): Promise<any> {
     return this.songReader(song.path)
       .then(content => {
-        // Separar en lineas, y quitar todas hasta llegar a las notas
+        // Split lines, remove until reaching song notes
         var lineas = content.replace('\r\n', '\n').split('\n');
         while (lineas.length && !esLineaDeNotas(lineas[0])) {
           lineas.shift();

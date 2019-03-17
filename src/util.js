@@ -127,7 +127,7 @@ export const getLocalesForPicker = () => {
     }
   ];
   for (var code in I18n.translations) {
-    var l = langs.where('1', code);
+    var l = langs.where('1', code.split('-')[0]);
     locales.push({ label: `${l.local} (${code})`, value: code });
   }
   return locales;
