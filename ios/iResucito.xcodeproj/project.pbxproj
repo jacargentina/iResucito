@@ -425,6 +425,13 @@
 			remoteGlobalIDString = 1132585C1B99F348005E19FE;
 			remoteInfo = RNPrint;
 		};
+		88AD08CD224013D4004F10E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 07DD1D5BE3F84074A7E45709 /* RNGestureHandler.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B5C32A36220C603B000FFB8D;
+			remoteInfo = "RNGestureHandler-tvOS";
+		};
 		88B3A5DC1F9E82E2004EF80C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1B2CF75DD2D14CF6BC9CE592 /* RCTContacts.xcodeproj */;
@@ -933,6 +940,7 @@
 			isa = PBXGroup;
 			children = (
 				8840D9D121C7ECC500D907C3 /* libRNGestureHandler.a */,
+				88AD08CE224013D4004F10E1 /* libRNGestureHandler-tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1629,6 +1637,13 @@
 			remoteRef = 886C5B602101107600F1B950 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		88AD08CE224013D4004F10E1 /* libRNGestureHandler-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libRNGestureHandler-tvOS.a";
+			remoteRef = 88AD08CD224013D4004F10E1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		88B3A5DD1F9E82E2004EF80C /* libRCTContacts.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1964,6 +1979,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 0;
 				DEAD_CODE_STRIPPING = NO;
