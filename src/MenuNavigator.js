@@ -1,8 +1,8 @@
 // @flow
 import { Platform } from 'react-native';
-import commonTheme from './native-base-theme/variables/platform';
 import { createBottomTabNavigator } from 'react-navigation';
-import SalmoSearch from './screens/SalmoSearch';
+import commonTheme from './native-base-theme/variables/platform';
+import SalmosNavigator from './SalmosNavigator';
 import SettingsScreen from './screens/SettingsScreen';
 import ListScreen from './screens/ListScreen';
 import CommunityScreen from './screens/CommunityScreen';
@@ -32,29 +32,17 @@ if (Platform.OS == 'android') {
 
 const MenuNavigator = createBottomTabNavigator(
   {
-    Search: { screen: SalmoSearch },
-    Lists: { screen: ListScreen },
-    Community: { screen: CommunityScreen },
-    Settings: { screen: SettingsScreen }
+    Salmos: SalmosNavigator,
+    Lists: ListScreen,
+    Community: CommunityScreen,
+    Settings: SettingsScreen
   },
   {
     swipeEnabled: false,
-    tabBarOptions: tabBarOptions,
-    defaultNavigationOptions: (props: any) => {
-      var navigation = props.navigation;
-      switch (navigation.state.routeName) {
-        case 'Search':
-          return SalmoSearch.navigationOptions;
-        case 'Lists':
-          return ListScreen.navigationOptions;
-        case 'Community':
-          return CommunityScreen.navigationOptions;
-        case 'Settings':
-          return SettingsScreen.navigationOptions;
-      }
-      return null;
-    }
+    tabBarOptions: tabBarOptions
   }
 );
+
+MenuNavigator.rootNavigation = null;
 
 export default MenuNavigator;

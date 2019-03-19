@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import Pdf from 'react-native-pdf';
 import { Icon } from 'native-base';
 import { View, Dimensions } from 'react-native';
-import AppNavigatorOptions from '../AppNavigatorOptions';
+import SalmosNavigatorOptions from '../SalmosNavigatorOptions';
 import RNPrint from 'react-native-print';
 import { DataContext } from '../DataContext';
 
@@ -37,7 +37,7 @@ const Share = props => {
         width: 32,
         fontSize: 30,
         textAlign: 'center',
-        color: AppNavigatorOptions.headerTitleStyle.color
+        color: SalmosNavigatorOptions.headerTitleStyle.color
       }}
       onPress={() => sharePDF(props.salmo, props.uri)}
     />
@@ -57,7 +57,7 @@ const Print = props => {
         width: 32,
         fontSize: 30,
         textAlign: 'center',
-        color: AppNavigatorOptions.headerTitleStyle.color
+        color: SalmosNavigatorOptions.headerTitleStyle.color
       }}
       onPress={() => printSong(props.uri)}
     />

@@ -14,7 +14,7 @@ import color from 'color';
 import { notas } from '../SongsProcessor';
 import { NativeStyles, getSalmoTransported } from '../util';
 import { DataContext } from '../DataContext';
-import AppNavigatorOptions from '../AppNavigatorOptions';
+import SalmosNavigatorOptions from '../SalmosNavigatorOptions';
 import commonTheme from '../native-base-theme/variables/platform';
 
 const SalmoDetail = (props: any) => {
@@ -127,7 +127,7 @@ const TransportNotesMenu = () => {
           width: 32,
           fontSize: 30,
           textAlign: 'center',
-          color: AppNavigatorOptions.headerTitleStyle.color
+          color: SalmosNavigatorOptions.headerTitleStyle.color
         }}
       />
     ) : (
@@ -138,7 +138,7 @@ const TransportNotesMenu = () => {
             fontWeight: 'bold',
             fontStyle: 'italic',
             textAlign: 'center',
-            color: AppNavigatorOptions.headerTitleStyle.color
+            color: SalmosNavigatorOptions.headerTitleStyle.color
           }}>
           {transportNote}
         </Text>
@@ -180,7 +180,7 @@ const ViewPdf = props => {
         width: 32,
         fontSize: 30,
         textAlign: 'center',
-        color: AppNavigatorOptions.headerTitleStyle.color
+        color: SalmosNavigatorOptions.headerTitleStyle.color
       }}
       onPress={() => viewPdf(props.salmo, props.lines, props.navigation)}
     />

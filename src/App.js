@@ -1,6 +1,8 @@
 // @flow
 import React, { useContext, useState, useEffect } from 'react';
+import { createAppContainer } from 'react-navigation';
 import DataContextWrapper, { DataContext } from './DataContext';
+import MenuNavigator from './MenuNavigator';
 import { Platform, Alert, Linking } from 'react-native';
 import RNFS from 'react-native-fs';
 import DeviceInfo from 'react-native-device-info';
@@ -8,15 +10,12 @@ import SplashScreen from 'react-native-splash-screen';
 import { Root, StyleProvider } from 'native-base';
 import getTheme from './native-base-theme/components';
 import commonTheme from './native-base-theme/variables/platform';
-import AppNavigator from './AppNavigator';
 import { MenuProvider } from 'react-native-popup-menu';
 import {
   setJSExceptionHandler,
   setNativeExceptionHandler
 } from 'react-native-exception-handler';
 import { localdata, clouddata } from './data';
-import I18n from './translations';
-import badges from './badges';
 import ListAddDialog from './screens/ListAddDialog';
 import ContactChooserDialog from './screens/ContactChooserDialog';
 import SalmoChooserDialog from './screens/SalmoChooserDialog';
@@ -77,7 +76,7 @@ if (Platform.OS == 'android') {
   };
 }
 
-const AppContent = () => {
+const AppContainerWithInit = () => {
   const [initialized, setInitialized] = useState(false);
   const [lastThumbsCacheDir, setLastThumbsCacheDir] = useState();
   const data = useContext(DataContext);
@@ -171,26 +170,32 @@ const AppContent = () => {
     }
   }, [keys, initialized]);
 
+  const AppContainer = createAppContainer(MenuNavigator);
+
   return (
-    <StyleProvider style={getTheme(commonTheme)}>
-      <Root>
-        <MenuProvider backHandler={true}>
-          <SalmoChooserDialog />
-          <SalmoChooseLocaleDialog />
-          <ContactChooserDialog />
-          <ContactImportDialog />
-          <ListAddDialog />
-          <AppNavigator />
-        </MenuProvider>
-      </Root>
-    </StyleProvider>
+    <AppContainer
+      ref={navigation => {
+        MenuNavigator.rootNavigation = navigation;
+      }}
+    />
   );
 };
 
 const App = () => {
   return (
     <DataContextWrapper>
-      <AppContent />
+      <StyleProvider style={getTheme(commonTheme)}>
+        <Root>
+          <MenuProvider backHandler={true}>
+            <SalmoChooserDialog />
+            <SalmoChooseLocaleDialog />
+            <ContactChooserDialog />
+            <ContactImportDialog />
+            <ListAddDialog />
+            <AppContainerWithInit />
+          </MenuProvider>
+        </Root>
+      </StyleProvider>
     </DataContextWrapper>
   );
 };

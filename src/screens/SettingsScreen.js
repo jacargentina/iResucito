@@ -16,7 +16,7 @@ import {
 import Switch from '../widgets/switch';
 import { DataContext } from '../DataContext';
 import I18n from '../translations';
-import AppNavigatorOptions from '../AppNavigatorOptions';
+import SalmosNavigatorOptions from '../SalmosNavigatorOptions';
 import { getLocalesForPicker } from '../util';
 import commonTheme from '../native-base-theme/variables/platform';
 import AcercaDe from './AcercaDe';
@@ -78,13 +78,13 @@ const SettingsScreen = (props: any) => {
                 }}
                 headerStyle={{
                   backgroundColor:
-                    AppNavigatorOptions.headerStyle.backgroundColor
+                    SalmosNavigatorOptions.headerStyle.backgroundColor
                 }}
                 headerBackButtonTextStyle={{
-                  color: AppNavigatorOptions.headerTitleStyle.color
+                  color: SalmosNavigatorOptions.headerTitleStyle.color
                 }}
                 headerTitleStyle={{
-                  color: AppNavigatorOptions.headerTitleStyle.color
+                  color: SalmosNavigatorOptions.headerTitleStyle.color
                 }}
                 selectedValue={keys.locale}
                 onValueChange={val => {

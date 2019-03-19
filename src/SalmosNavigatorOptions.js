@@ -1,7 +1,8 @@
 // @flow
 import commonTheme from './native-base-theme/variables/platform';
+import I18n from './translations';
 
-const AppNavigatorOptions = {
+const SalmosNavigatorOptions = {
   headerStyle: {
     backgroundColor: commonTheme.brandPrimary
   },
@@ -12,7 +13,7 @@ const AppNavigatorOptions = {
     color: 'white'
   },
   headerTintColor: 'white',
-  headerTruncatedBackTitle: 'Back'
+  headerTruncatedBackTitle: I18n.t('ui.back')
 };
 
-export default AppNavigatorOptions;
+export default SalmosNavigatorOptions;

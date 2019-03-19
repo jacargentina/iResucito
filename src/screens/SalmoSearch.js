@@ -5,7 +5,7 @@ import { FlatList, ScrollView, View } from 'react-native';
 import { ListItem, Left, Body, Text, Icon, Separator } from 'native-base';
 import * as Animatable from 'react-native-animatable';
 import I18n from '../translations';
-import AppNavigatorOptions from '../AppNavigatorOptions';
+import SalmosNavigatorOptions from '../SalmosNavigatorOptions';
 import { DataContext } from '../DataContext';
 
 const SalmoSearch = (props: any) => {
@@ -67,7 +67,7 @@ class Loading extends React.Component<any> {
               width: 32,
               fontSize: 30,
               textAlign: 'center',
-              color: AppNavigatorOptions.headerTitleStyle.color
+              color: SalmosNavigatorOptions.headerTitleStyle.color
             }}
           />
         </View>

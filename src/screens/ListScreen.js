@@ -5,7 +5,7 @@ import { Alert, FlatList, Platform } from 'react-native';
 import Swipeout from 'react-native-swipeout';
 import SearchBarView from './SearchBarView';
 import { DataContext } from '../DataContext';
-import AppNavigatorOptions from '../AppNavigatorOptions';
+import SalmosNavigatorOptions from '../SalmosNavigatorOptions';
 import BaseCallToAction from './BaseCallToAction';
 import I18n from '../translations';
 
@@ -147,7 +147,7 @@ const AddList = () => {
         width: 32,
         fontSize: 30,
         textAlign: 'center',
-        color: AppNavigatorOptions.headerTitleStyle.color
+        color: SalmosNavigatorOptions.headerTitleStyle.color
       }}
       onPress={() => listAdd(show)}
     />

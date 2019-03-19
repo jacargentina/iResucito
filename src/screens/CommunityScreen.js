@@ -5,7 +5,7 @@ import Swipeout from 'react-native-swipeout';
 import { Alert, FlatList, View } from 'react-native';
 import SearchBarView from './SearchBarView';
 import { DataContext } from '../DataContext';
-import AppNavigatorOptions from '../AppNavigatorOptions';
+import SalmosNavigatorOptions from '../SalmosNavigatorOptions';
 import BaseCallToAction from './BaseCallToAction';
 import commonTheme from '../native-base-theme/variables/platform';
 import I18n from '../translations';
@@ -145,7 +145,7 @@ const ImportContactsButton = () => {
         width: 32,
         fontSize: 30,
         textAlign: 'center',
-        color: AppNavigatorOptions.headerTitleStyle.color
+        color: SalmosNavigatorOptions.headerTitleStyle.color
       }}
       onPress={show}
     />
