@@ -1,7 +1,5 @@
 // @flow
 import React, { useContext, useState, useEffect } from 'react';
-import NavigationService from '../NavigationService';
-import { StackActions, NavigationActions } from 'react-navigation';
 import { Text, Input, Item, Button, View } from 'native-base';
 import { DataContext } from '../DataContext';
 import BaseModal from './BaseModal';
@@ -33,7 +31,7 @@ const ListAddDialog = (props: any) => {
   const createNewList = (name, type) => {
     addList(name, type);
     save();
-    navigation.navigate('Lists', { list: { name } });
+    navigation.navigate('ListDetail', { list: { name } });
   };
 
   useEffect(() => {
