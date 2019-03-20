@@ -1,12 +1,10 @@
 // @flow
 import React, { useContext } from 'react';
 import { AndroidBackHandler } from 'react-navigation-backhandler';
-import { FlatList, ScrollView, View } from 'react-native';
-import { ListItem, Left, Body, Text, Icon, Separator } from 'native-base';
-import * as Animatable from 'react-native-animatable';
-import I18n from '../translations';
-import SalmosNavigatorOptions from '../SalmosNavigatorOptions';
+import { FlatList, ScrollView } from 'react-native';
+import { ListItem, Left, Body, Text, Separator } from 'native-base';
 import { DataContext } from '../DataContext';
+import I18n from '../translations';
 
 const SalmoSearch = (props: any) => {
   const data = useContext(DataContext);
@@ -50,49 +48,8 @@ const SalmoSearch = (props: any) => {
   );
 };
 
-class Loading extends React.Component<any> {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    var { style } = this.props;
-    if (this.props.loading) {
-      return (
-        <View style={style}>
-          <Icon
-            active
-            name="refresh"
-            style={{
-              width: 32,
-              fontSize: 30,
-              textAlign: 'center',
-              color: SalmosNavigatorOptions.headerTitleStyle.color
-            }}
-          />
-        </View>
-      );
-    }
-    return null;
-  }
-}
-
-const AnimatedLoading = Animatable.createAnimatableComponent(Loading);
-
-SalmoSearch.navigationOptions = (props: any) => ({
-  title: I18n.t('screen_title.search'),
-  tabBarIcon: ({ focused, tintColor }) => {
-    return (
-      <Icon
-        name="search"
-        active={focused}
-        style={{ marginTop: 6, color: tintColor }}
-      />
-    );
-  },
-  headerRight: (
-    <AnimatedLoading animation="rotate" iterationCount="infinite" {...props} />
-  )
+SalmoSearch.navigationOptions = () => ({
+  title: I18n.t('screen_title.search')
 });
 
 export default SalmoSearch;

@@ -279,30 +279,6 @@ const useContactChooserDialog = (brothers: any) => {
   return { visible, contacts, filter, setFilter, show, hide, target };
 };
 
-const useListAddDialog = () => {
-  const [visible, setVisible] = useState(false);
-  const [listCreateType, setListCreateType] = useState();
-  const [listCreateName, setListCreateName] = useState('');
-
-  const show = type => {
-    setListCreateType(type);
-    setVisible(true);
-  };
-
-  const hide = () => {
-    setVisible(false);
-  };
-
-  return {
-    visible,
-    listCreateType,
-    listCreateName,
-    setListCreateName,
-    show,
-    hide
-  };
-};
-
 const useSalmoChooserDialog = search => {
   const [visible, setVisible] = useState(false);
   const [tabs, setTabs] = useState([]);
@@ -993,7 +969,6 @@ const DataContextWrapper = (props: any) => {
   const aboutDialog = useAboutDialog();
   const contactImportDialog = useContactImportDialog();
   const contactChooserDialog = useContactChooserDialog(community.brothers);
-  const listAddDialog = useListAddDialog();
 
   const { getLocaleReal } = settings;
   const {
@@ -1068,7 +1043,6 @@ const DataContextWrapper = (props: any) => {
         contactChooserDialog,
         salmoChooserDialog,
         salmoLocaleChooserDialog,
-        listAddDialog,
         sharePDF,
         generatePDF,
         shareIndexPatch,

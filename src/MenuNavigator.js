@@ -2,10 +2,10 @@
 import { Platform } from 'react-native';
 import { createBottomTabNavigator } from 'react-navigation';
 import commonTheme from './native-base-theme/variables/platform';
-import SalmosNavigator from './SalmosNavigator';
-import SettingsScreen from './screens/SettingsScreen';
-import ListScreen from './screens/ListScreen';
-import CommunityScreen from './screens/CommunityScreen';
+import SongsNavigator from './SongsNavigator';
+import ListsNavigator from './ListsNavigator';
+import CommunityNavigator from './CommunityNavigator';
+import SettingsNavigator from './SettingsNavigator';
 
 var tabBarOptions = {};
 tabBarOptions.showLabel = false;
@@ -32,17 +32,15 @@ if (Platform.OS == 'android') {
 
 const MenuNavigator = createBottomTabNavigator(
   {
-    Salmos: SalmosNavigator,
-    Lists: ListScreen,
-    Community: CommunityScreen,
-    Settings: SettingsScreen
+    Songs: SongsNavigator,
+    Lists: ListsNavigator,
+    Community: CommunityNavigator,
+    Settings: SettingsNavigator
   },
   {
     swipeEnabled: false,
     tabBarOptions: tabBarOptions
   }
 );
-
-MenuNavigator.rootNavigation = null;
 
 export default MenuNavigator;

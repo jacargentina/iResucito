@@ -1,15 +1,16 @@
 // @flow
 import React, { useContext, useState, useEffect } from 'react';
+import { withNavigation } from 'react-navigation';
 import { ListItem, Left, Body, Icon, Text, ActionSheet } from 'native-base';
 import { Alert, FlatList, Platform } from 'react-native';
 import Swipeout from 'react-native-swipeout';
 import SearchBarView from './SearchBarView';
 import { DataContext } from '../DataContext';
-import SalmosNavigatorOptions from '../SalmosNavigatorOptions';
+import StackNavigatorOptions from '../StackNavigatorOptions';
 import BaseCallToAction from './BaseCallToAction';
 import I18n from '../translations';
 
-const listAdd = showFunc => {
+const listAdd = (navigation: any) => {
   ActionSheet.show(
     {
       options: [
@@ -35,15 +36,14 @@ const listAdd = showFunc => {
           type = 'libre';
           break;
       }
-      if (type) {
-        showFunc(type);
-      }
+      navigation.navigate('ListAdd', { type });
     }
   );
 };
 
 const ListScreen = (props: any) => {
   const data = useContext(DataContext);
+  const { navigation } = props;
   const [uiLists, setUILists] = useState([]);
   const {
     lists,
@@ -53,7 +53,6 @@ const ListScreen = (props: any) => {
     filter,
     setFilter
   } = data.lists;
-  const { show } = data.listAddDialog;
 
   useEffect(() => {
     setUILists(getListsForUI());
@@ -86,7 +85,7 @@ const ListScreen = (props: any) => {
         icon="bookmark"
         title={I18n.t('call_to_action_title.add lists')}
         text={I18n.t('call_to_action_text.add lists')}
-        buttonHandler={() => listAdd(show)}
+        buttonHandler={() => listAdd(navigation)}
         buttonText={I18n.t('call_to_action_button.add lists')}
       />
     );
@@ -115,7 +114,7 @@ const ListScreen = (props: any) => {
               <ListItem
                 avatar
                 onPress={() => {
-                  props.navigation.navigate('ListDetail', {
+                  navigation.navigate('ListDetail', {
                     list: item
                   });
                 }}>
@@ -135,9 +134,8 @@ const ListScreen = (props: any) => {
   );
 };
 
-const AddList = () => {
-  const data = useContext(DataContext);
-  const { show } = data.listAddDialog;
+const AddList = withNavigation((props: any) => {
+  const { navigation } = props;
   return (
     <Icon
       name="add"
@@ -147,24 +145,15 @@ const AddList = () => {
         width: 32,
         fontSize: 30,
         textAlign: 'center',
-        color: SalmosNavigatorOptions.headerTitleStyle.color
+        color: StackNavigatorOptions.headerTitleStyle.color
       }}
-      onPress={() => listAdd(show)}
+      onPress={() => listAdd(navigation)}
     />
   );
-};
+});
 
 ListScreen.navigationOptions = () => ({
   title: I18n.t('screen_title.lists'),
-  tabBarIcon: ({ focused, tintColor }) => {
-    return (
-      <Icon
-        name="bookmark"
-        active={focused}
-        style={{ marginTop: 6, color: tintColor }}
-      />
-    );
-  },
   headerRight: <AddList />
 });
 

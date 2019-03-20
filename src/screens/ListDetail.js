@@ -5,7 +5,7 @@ import { Icon, List, Text } from 'native-base';
 import Swipeout from 'react-native-swipeout';
 import ListDetailItem from './ListDetailItem';
 import { DataContext } from '../DataContext';
-import SalmosNavigatorOptions from '../SalmosNavigatorOptions';
+import StackNavigatorOptions from '../StackNavigatorOptions';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import I18n from '../translations';
 
@@ -219,7 +219,7 @@ const ShareList = props => {
       style={{
         marginTop: 4,
         marginRight: 12,
-        color: SalmosNavigatorOptions.headerTitleStyle.color
+        color: StackNavigatorOptions.headerTitleStyle.color
       }}
       onPress={() => shareList(listName)}
     />
@@ -244,7 +244,7 @@ const AddSong = props => {
         width: 32,
         fontSize: 30,
         textAlign: 'center',
-        color: SalmosNavigatorOptions.headerTitleStyle.color
+        color: StackNavigatorOptions.headerTitleStyle.color
       }}
       onPress={() => show(listName, targetList.items.length)}
     />

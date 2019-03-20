@@ -5,7 +5,7 @@ import Swipeout from 'react-native-swipeout';
 import { Alert, FlatList, View } from 'react-native';
 import SearchBarView from './SearchBarView';
 import { DataContext } from '../DataContext';
-import SalmosNavigatorOptions from '../SalmosNavigatorOptions';
+import StackNavigatorOptions from '../StackNavigatorOptions';
 import BaseCallToAction from './BaseCallToAction';
 import commonTheme from '../native-base-theme/variables/platform';
 import I18n from '../translations';
@@ -145,7 +145,7 @@ const ImportContactsButton = () => {
         width: 32,
         fontSize: 30,
         textAlign: 'center',
-        color: SalmosNavigatorOptions.headerTitleStyle.color
+        color: StackNavigatorOptions.headerTitleStyle.color
       }}
       onPress={show}
     />
@@ -154,15 +154,6 @@ const ImportContactsButton = () => {
 
 CommunityScreen.navigationOptions = () => ({
   title: I18n.t('screen_title.community'),
-  tabBarIcon: ({ focused, tintColor }) => {
-    return (
-      <Icon
-        name="contacts"
-        active={focused}
-        style={{ marginTop: 6, color: tintColor }}
-      />
-    );
-  },
   headerRight: <ImportContactsButton />
 });
 

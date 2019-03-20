@@ -2,7 +2,7 @@
 import commonTheme from './native-base-theme/variables/platform';
 import I18n from './translations';
 
-const SalmosNavigatorOptions = {
+const StackNavigatorOptions = {
   headerStyle: {
     backgroundColor: commonTheme.brandPrimary
   },
@@ -16,4 +16,4 @@ const SalmosNavigatorOptions = {
   headerTruncatedBackTitle: I18n.t('ui.back')
 };
 
-export default SalmosNavigatorOptions;
+export default StackNavigatorOptions;

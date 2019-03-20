@@ -2,7 +2,8 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { createAppContainer } from 'react-navigation';
 import DataContextWrapper, { DataContext } from './DataContext';
-import MenuNavigator from './MenuNavigator';
+import NavigationService from './NavigationService';
+import RootNavigator from './RootNavigator';
 import { Platform, Alert, Linking } from 'react-native';
 import RNFS from 'react-native-fs';
 import DeviceInfo from 'react-native-device-info';
@@ -16,11 +17,6 @@ import {
   setNativeExceptionHandler
 } from 'react-native-exception-handler';
 import { localdata, clouddata } from './data';
-import ListAddDialog from './screens/ListAddDialog';
-import ContactChooserDialog from './screens/ContactChooserDialog';
-import SalmoChooserDialog from './screens/SalmoChooserDialog';
-import SalmoChooseLocaleDialog from './screens/SalmoChooseLocaleDialog';
-import ContactImportDialog from './screens/ContactImportDialog';
 import { getContacts } from './util';
 
 const mailTo = 'javier.alejandro.castro@gmail.com';
@@ -170,12 +166,15 @@ const AppContainerWithInit = () => {
     }
   }, [keys, initialized]);
 
-  const AppContainer = createAppContainer(MenuNavigator);
+  const AppContainer = createAppContainer(RootNavigator);
 
   return (
     <AppContainer
+      onNavigationStateChange={(prevState, newState, action) => {
+        console.log({ prevState, newState, action });
+      }}
       ref={navigation => {
-        MenuNavigator.rootNavigation = navigation;
+        NavigationService.setTopLevelNavigator(navigation);
       }}
     />
   );
@@ -187,11 +186,6 @@ const App = () => {
       <StyleProvider style={getTheme(commonTheme)}>
         <Root>
           <MenuProvider backHandler={true}>
-            <SalmoChooserDialog />
-            <SalmoChooseLocaleDialog />
-            <ContactChooserDialog />
-            <ContactImportDialog />
-            <ListAddDialog />
             <AppContainerWithInit />
           </MenuProvider>
         </Root>

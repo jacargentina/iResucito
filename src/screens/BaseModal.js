@@ -1,13 +1,13 @@
 // @flow
 import React from 'react';
+import { withNavigation } from 'react-navigation';
 import { Text, Icon } from 'native-base';
 import { View, Platform, SafeAreaView } from 'react-native';
-import Modal from 'react-native-modal';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import commonTheme from '../native-base-theme/variables/platform';
 
 const BaseModal = (props: any) => {
-  var animationIn = props.fade ? 'fadeIn' : 'slideInUp';
-  var animationOut = props.fade ? 'fadeOut' : 'slideOutDown';
+  const { navigation } = props;
   var closeButton = props.closeButton ? (
     props.closeButton
   ) : (
@@ -19,20 +19,11 @@ const BaseModal = (props: any) => {
         textAlign: 'center',
         color: commonTheme.brandPrimary
       }}
-      onPress={() => props.closeModal()}
+      onPress={() => navigation.goBack(null)}
     />
   );
   return (
-    <Modal
-      style={{ margin: 0 }}
-      avoidKeyboard={true}
-      isVisible={props.visible}
-      animationIn={animationIn}
-      animationOut={animationOut}
-      onBackButtonPress={() => props.closeModal()}
-      onBackdropPress={() => props.closeModal()}
-      onModalHide={() => props.modalHide()}
-      onModalShow={() => props.modalShow()}>
+    <KeyboardAwareScrollView>
       <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
         <View
           style={{
@@ -73,16 +64,8 @@ const BaseModal = (props: any) => {
           </View>
         </View>
       </SafeAreaView>
-    </Modal>
+    </KeyboardAwareScrollView>
   );
 };
 
-BaseModal.defaultProps = {
-  visible: false,
-  title: '',
-  closeModal: () => {},
-  modalShow: () => {},
-  modalHide: () => {}
-};
-
-export default BaseModal;
+export default withNavigation(BaseModal);

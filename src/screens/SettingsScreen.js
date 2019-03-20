@@ -16,7 +16,7 @@ import {
 import Switch from '../widgets/switch';
 import { DataContext } from '../DataContext';
 import I18n from '../translations';
-import SalmosNavigatorOptions from '../SalmosNavigatorOptions';
+import StackNavigatorOptions from '../StackNavigatorOptions';
 import { getLocalesForPicker } from '../util';
 import commonTheme from '../native-base-theme/variables/platform';
 import AcercaDe from './AcercaDe';
@@ -78,13 +78,13 @@ const SettingsScreen = (props: any) => {
                 }}
                 headerStyle={{
                   backgroundColor:
-                    SalmosNavigatorOptions.headerStyle.backgroundColor
+                    StackNavigatorOptions.headerStyle.backgroundColor
                 }}
                 headerBackButtonTextStyle={{
-                  color: SalmosNavigatorOptions.headerTitleStyle.color
+                  color: StackNavigatorOptions.headerTitleStyle.color
                 }}
                 headerTitleStyle={{
-                  color: SalmosNavigatorOptions.headerTitleStyle.color
+                  color: StackNavigatorOptions.headerTitleStyle.color
                 }}
                 selectedValue={keys.locale}
                 onValueChange={val => {
@@ -162,16 +162,7 @@ const SettingsScreen = (props: any) => {
 };
 
 SettingsScreen.navigationOptions = () => ({
-  title: I18n.t('screen_title.settings'),
-  tabBarIcon: ({ focused, tintColor }) => {
-    return (
-      <Icon
-        name="settings"
-        active={focused}
-        style={{ marginTop: 6, color: tintColor }}
-      />
-    );
-  }
+  title: I18n.t('screen_title.settings')
 });
 
 export default SettingsScreen;

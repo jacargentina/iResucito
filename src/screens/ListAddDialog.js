@@ -1,53 +1,39 @@
 // @flow
-import React, { useContext, useState, useEffect, useRef } from 'react';
-import { NavigationActions } from 'react-navigation';
+import React, { useContext, useState, useEffect } from 'react';
+import NavigationService from '../NavigationService';
+import { StackActions, NavigationActions } from 'react-navigation';
 import { Text, Input, Item, Button, View } from 'native-base';
 import { DataContext } from '../DataContext';
 import BaseModal from './BaseModal';
 import { getFriendlyTextForListType } from '../util';
 import I18n from '../translations';
 
-const ListAddDialog = () => {
+const ListAddDialog = (props: any) => {
   const data = useContext(DataContext);
   const [disabledReasonText, setDisabledReasonText] = useState(null);
   const [listCreateEnabled, setListCreateEnabled] = useState(false);
-  const inputRef = useRef();
+  const [listCreateName, setListCreateName] = useState('');
+  const { navigation } = props;
 
-  const {
-    visible,
-    listCreateType,
-    listCreateName,
-    setListCreateName,
-    hide
-  } = data.listAddDialog;
+  const listCreateType = navigation.getParam('type');
 
   const { lists, addList, save } = data.lists;
 
   useEffect(() => {
-    if (listCreateName !== '') {
+    if (listCreateName) {
       var candidateName = listCreateName.trim();
       var listNames = Object.keys(lists);
       var result = candidateName !== '' && !listNames.includes(candidateName);
       setListCreateEnabled(result);
+    } else {
+      setListCreateEnabled(false);
     }
   }, [listCreateName]);
-
-  const focusInput = () => {
-    if (inputRef.current._root) {
-      inputRef.current._root.focus();
-    }
-  };
 
   const createNewList = (name, type) => {
     addList(name, type);
     save();
-    hide();
-    NavigationActions.navigate({
-      routeName: 'ListDetail',
-      params: {
-        list: { name: name }
-      }
-    });
+    navigation.navigate('Lists', { list: { name } });
   };
 
   useEffect(() => {
@@ -74,9 +60,6 @@ const ListAddDialog = () => {
   var titleSuffix = getFriendlyTextForListType(listCreateType);
   return (
     <BaseModal
-      visible={visible}
-      modalShow={focusInput}
-      closeModal={hide}
       acceptButtons={acceptButtons}
       title={`${I18n.t('ui.lists.create')} (${titleSuffix})`}>
       <View style={{ padding: 10 }}>
@@ -85,7 +68,7 @@ const ListAddDialog = () => {
           error={!listCreateEnabled}
           success={listCreateEnabled}>
           <Input
-            ref={inputRef}
+            autoFocus
             onChangeText={setListCreateName}
             value={listCreateName}
             clearButtonMode="always"
