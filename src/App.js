@@ -2,8 +2,8 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { createAppContainer } from 'react-navigation';
 import DataContextWrapper, { DataContext } from './DataContext';
-import NavigationService from './NavigationService';
-import RootNavigator from './RootNavigator';
+import NavigationService from './navigation/NavigationService';
+import RootNavigator from './navigation/RootNavigator';
 import { Platform, Alert, Linking } from 'react-native';
 import RNFS from 'react-native-fs';
 import DeviceInfo from 'react-native-device-info';
