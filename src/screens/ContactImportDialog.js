@@ -8,31 +8,63 @@ import {
   View,
   TouchableOpacity,
   Keyboard,
-  StyleSheet
+  StyleSheet,
+  Platform,
+  Alert
 } from 'react-native';
 import { DataContext } from '../DataContext';
 import commonTheme from '../native-base-theme/variables/platform';
 import I18n from '../translations';
 import ContactPhoto from './ContactPhoto';
-import { getContacts, getContactsForImport } from '../util';
+import {
+  getContacts,
+  getContactsForImport,
+  contactFilterByText,
+  ordenAlfabetico
+} from '../util';
 
-const ContactImportDialog = () => {
+const ContactImportDialog = (props: any) => {
   const data = useContext(DataContext);
-  const [contacts, setContacts] = useState([]);
-  const { visible, filter, setFilter, hide } = data.contactImportDialog;
+  const { navigation } = props;
   const { brothers, addOrRemove, save } = data.community;
+  const [loading, setLoading] = useState(false);
+  const [contacts, setContacts] = useState([]);
+  const [filtered, setFiltered] = useState();
+  const [filter, setFilter] = useState('');
 
   useEffect(() => {
-    getContacts().then(allContacts => {
-      var result = getContactsForImport(allContacts, brothers);
-      setContacts(result);
-    });
+    var result = [...contacts];
+    if (filter !== '') {
+      result = result.filter(c => contactFilterByText(c, filter));
+    }
+    result.sort(ordenAlfabetico);
+    setFiltered(result);
+  }, [contacts, filter]);
+
+  useEffect(() => {
+    setLoading(true);
+    getContacts()
+      .then(contacts => {
+        var withName = contacts.filter(
+          c => c.givenName.length > 0 || c.familyName.length > 0
+        );
+        var result = getContactsForImport(withName, brothers);
+        setContacts(result);
+        setLoading(false);
+      })
+      .catch(() => {
+        let message = I18n.t('alert_message.contacts permission');
+        if (Platform.OS == 'ios') {
+          message += '\n\n' + I18n.t('alert_message.contacts permission ios');
+        }
+        Alert.alert(I18n.t('alert_title.contacts permission'), message);
+      });
   }, [brothers]);
 
   const close = () => {
-    hide();
     save();
     setFilter('');
+    navigation.goBack(null);
   };
 
   const handleContact = contact => {
@@ -53,8 +85,6 @@ const ContactImportDialog = () => {
   );
   return (
     <BaseModal
-      visible={visible}
-      closeModal={() => close()}
       closeButton={readyButton}
       title={I18n.t('screen_title.import contacts')}
       fade={true}>
@@ -69,6 +99,7 @@ const ContactImportDialog = () => {
             <FlatList
               horizontal={true}
               keyboardShouldPersistTaps="always"
+              refreshing={loading}
               data={brothers}
               keyExtractor={item => item.recordID}
               renderItem={({ item }) => {
@@ -92,15 +123,10 @@ const ContactImportDialog = () => {
             />
           </View>
         )}
-        {brothers && brothers.length === 0 && (
-          <Text note style={{ textAlign: 'center', marginTop: 20 }}>
-            {I18n.t('ui.no contacts found')}
-          </Text>
-        )}
         <FlatList
           onScrollBeginDrag={() => Keyboard.dismiss()}
           keyboardShouldPersistTaps="always"
-          data={contacts}
+          data={filtered}
           keyExtractor={item => item.recordID}
           renderItem={({ item }) => {
             var contactFullName = item.givenName;

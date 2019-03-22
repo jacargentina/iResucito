@@ -14,7 +14,7 @@ import color from 'color';
 import { notas } from '../SongsProcessor';
 import { NativeStyles, getSalmoTransported } from '../util';
 import { DataContext } from '../DataContext';
-import StackNavigatorOptions from '../StackNavigatorOptions';
+import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
 import commonTheme from '../native-base-theme/variables/platform';
 
 const SalmoDetail = (props: any) => {

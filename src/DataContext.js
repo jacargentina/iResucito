@@ -11,8 +11,6 @@ import {
   getDefaultLocale,
   getFriendlyText,
   getFriendlyTextForListType,
-  ordenAlfabetico,
-  getContacts,
   NativeSongs,
   NativeStyles
 } from './util';
@@ -186,213 +184,6 @@ const generatePDF = (canto: Song, lines: Array<SongLine>) => {
   });
 };
 
-const contactFilterByText = (c, text) => {
-  return (
-    c.givenName.toLowerCase().includes(text.toLowerCase()) ||
-    (c.familyName && c.familyName.toLowerCase().includes(text.toLowerCase()))
-  );
-};
-
-const useContactImportDialog = () => {
-  const [visible, setVisible] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [contacts, setContacts] = useState([]);
-  const [filter, setFilter] = useState('');
-
-  useEffect(() => {
-    if (filter !== '') {
-      var filteredContacts = contacts.filter(c =>
-        contactFilterByText(c, filter)
-      );
-    } else {
-      var filteredContacts = contacts;
-    }
-    filteredContacts.sort(ordenAlfabetico);
-    setContacts(filteredContacts);
-  }, [filter]);
-
-  const show = () => {
-    setLoading(true);
-    getContacts()
-      .then(contacts => {
-        var filtered = contacts.filter(
-          c => c.givenName.length > 0 || c.familyName.length > 0
-        );
-        setContacts(filtered);
-        setLoading(false);
-        setVisible(true);
-      })
-      .catch(() => {
-        let message = I18n.t('alert_message.contacts permission');
-        if (Platform.OS == 'ios') {
-          message += '\n\n' + I18n.t('alert_message.contacts permission ios');
-        }
-        Alert.alert(I18n.t('alert_title.contacts permission'), message);
-      });
-  };
-
-  const hide = () => {
-    setVisible(false);
-  };
-
-  return { visible, loading, contacts, filter, setFilter, show, hide };
-};
-
-const useAboutDialog = () => {
-  const [visible, setVisible] = useState(false);
-
-  const show = () => {
-    setVisible(true);
-  };
-
-  const hide = () => {
-    setVisible(false);
-  };
-
-  return { visible, show, hide };
-};
-
-const useContactChooserDialog = (brothers: any) => {
-  const [visible, setVisible] = useState(false);
-  const [target, setTarget] = useState();
-  const [contacts, setContacts] = useState([]);
-  const [filter, setFilter] = useState('');
-
-  useEffect(() => {
-    var filteredContacts = Object.assign([], brothers);
-    if (filter !== '') {
-      filteredContacts = brothers.filter(c => contactFilterByText(c, filter));
-    }
-    filteredContacts.sort(ordenAlfabetico);
-    setContacts(filteredContacts);
-  }, [filter]);
-
-  const show = (target, key) => {
-    setTarget({ listName: target, listKey: key });
-    setVisible(true);
-  };
-
-  const hide = () => {
-    setVisible(false);
-  };
-
-  return { visible, contacts, filter, setFilter, show, hide, target };
-};
-
-const useSalmoChooserDialog = search => {
-  const [visible, setVisible] = useState(false);
-  const [tabs, setTabs] = useState([]);
-  const [target, setTarget] = useState();
-
-  useEffect(() => {
-    if (search) {
-      var tabs = search.filter(x => x.chooser != undefined);
-      setTabs(tabs);
-    }
-  }, [search]);
-
-  const show = (target, key) => {
-    setTarget({ listName: target, listKey: key });
-    setVisible(true);
-  };
-
-  const hide = () => {
-    setVisible(false);
-  };
-
-  return { visible, tabs, show, hide, target };
-};
-
-const useSalmoLocaleChooserDialog = (songs, localeSongs, getLocaleReal) => {
-  const [visible, setVisible] = useState(false);
-  const [items, setItems] = useState([]);
-  const [target, setTarget] = useState();
-
-  useEffect(() => {
-    if (localeSongs) {
-      const locale = getLocaleReal();
-      var res = localeSongs.filter(locSong => {
-        var found = songs.find(s => s.files[locale] === locSong.nombre);
-        return !found;
-      });
-      setItems(res);
-    }
-  }, [localeSongs]);
-
-  const show = salmo => {
-    setTarget(salmo);
-    setVisible(true);
-  };
-
-  const hide = () => {
-    setVisible(false);
-  };
-
-  return { visible, items, show, hide, target };
-};
-
-const useCommunity = () => {
-  const [brothers, initBrothers] = useState([]);
-  const [filter, setFilter] = useState('');
-
-  useEffect(() => {
-    var filteredContacts = [];
-    if (filter !== '') {
-      filteredContacts = brothers.filter(c => contactFilterByText(c, filter));
-    }
-    filteredContacts.sort(ordenAlfabetico);
-    initBrothers(filteredContacts);
-  }, [filter]);
-
-  const add = item => {
-    var changedContacts = [...brothers, item];
-    initBrothers(changedContacts);
-  };
-
-  const update = (id, item) => {
-    var contact = brothers.find(c => c.recordID === id);
-    var idx = brothers.indexOf(contact);
-    var updatedContacts = [...brothers];
-    updatedContacts[idx] = Object.assign(contact, item);
-    initBrothers(updatedContacts);
-  };
-
-  const remove = item => {
-    var idx = brothers.indexOf(item);
-    var changedContacts = brothers.filter((l, i) => i !== idx);
-    initBrothers(changedContacts);
-  };
-
-  const save = () => {
-    var item = { key: 'contacts', data: brothers };
-    localdata.save(item);
-    if (Platform.OS == 'ios') {
-      clouddata.save(item);
-    }
-  };
-
-  const addOrRemove = contact => {
-    var i = brothers.findIndex(c => c.recordID == contact.recordID);
-    // Ya esta importado
-    if (i !== -1) {
-      var item = brothers[i];
-      remove(item);
-    } else {
-      add(contact);
-    }
-  };
-
-  return {
-    brothers,
-    filter,
-    setFilter,
-    save,
-    addOrRemove,
-    update,
-    initBrothers
-  };
-};
-
 const useSettings = () => {
   const [keys, initKeys] = useState({
     developerMode: false,
@@ -554,34 +345,6 @@ export const useSearchSongs = (
   };
 };
 
-export const useSearchUnassignedSongs = (songs, localeSongs, getLocaleReal) => {
-  const [textFilter, setTextFilter] = useState('');
-  const [search, setSearch] = useState([]);
-
-  useEffect(() => {
-    const locale = getLocaleReal();
-    var result = localeSongs.filter(locSong => {
-      var found = songs.find(s => s.files[locale] === locSong.nombre);
-      return !found;
-    });
-    if (textFilter) {
-      result = result.filter(locSong => {
-        return (
-          locSong.titulo.toLowerCase().includes(textFilter.toLowerCase()) ||
-          locSong.fuente.toLowerCase().includes(textFilter.toLowerCase())
-        );
-      });
-    }
-    setSearch(result);
-  }, [textFilter]);
-
-  return {
-    search,
-    textFilter,
-    setTextFilter
-  };
-};
-
 const useLists = (songs: any) => {
   const [lists, initLists] = useState({});
   const [filter, setFilter] = useState('');
@@ -670,6 +433,7 @@ const useLists = (songs: any) => {
       }
     } else {
       if (typeof listKey == 'string') {
+        /* eslint-disable no-unused-vars */
         var { [listKey]: omit, ...schema } = targetList;
       } else if (typeof listKey == 'number') {
         var newItems = Object.assign([], targetList.items);
@@ -685,7 +449,7 @@ const useLists = (songs: any) => {
     var uiList = Object.assign({}, lists[listName]);
     Object.entries(uiList).forEach(([clave, valor]) => {
       // Si es de tipo 'libre', los salmos están dentro de 'items'
-      if (clave === 'items') {
+      if (clave === 'items' && Array.isArray(valor)) {
         valor = valor.map(nombre => {
           return songs.find(s => s.nombre == nombre);
         });
@@ -958,17 +722,58 @@ const useSearch = () => {
   return { searchItems, initSearch };
 };
 
-export const DataContext = React.createContext();
+const useCommunity = () => {
+  const [brothers, initBrothers] = useState([]);
+
+  const add = item => {
+    var changedContacts = [...brothers, item];
+    initBrothers(changedContacts);
+  };
+
+  const update = (id, item) => {
+    var contact = brothers.find(c => c.recordID === id);
+    var idx = brothers.indexOf(contact);
+    var updatedContacts = [...brothers];
+    updatedContacts[idx] = Object.assign(contact, item);
+    initBrothers(updatedContacts);
+  };
+
+  const remove = item => {
+    var idx = brothers.indexOf(item);
+    var changedContacts = brothers.filter((l, i) => i !== idx);
+    initBrothers(changedContacts);
+  };
+
+  const save = () => {
+    var item = { key: 'contacts', data: brothers };
+    localdata.save(item);
+    if (Platform.OS == 'ios') {
+      clouddata.save(item);
+    }
+  };
+
+  const addOrRemove = contact => {
+    var i = brothers.findIndex(c => c.recordID == contact.recordID);
+    // Ya esta importado
+    if (i !== -1) {
+      var item = brothers[i];
+      remove(item);
+    } else {
+      add(contact);
+    }
+  };
+
+  return { brothers, initBrothers, add, update, remove, addOrRemove, save };
+};
+
+export const DataContext: any = React.createContext();
 
 const DataContextWrapper = (props: any) => {
   const [transportNote, setTransportNode] = useState();
-  const community = useCommunity();
   const settings = useSettings();
   const songsMeta = useSongsMeta();
   const search = useSearch();
-  const aboutDialog = useAboutDialog();
-  const contactImportDialog = useContactImportDialog();
-  const contactChooserDialog = useContactChooserDialog(community.brothers);
+  const community = useCommunity();
 
   const { getLocaleReal } = settings;
   const {
@@ -978,13 +783,8 @@ const DataContextWrapper = (props: any) => {
     setLocaleSongs,
     readLocalePatch
   } = songsMeta;
+
   const lists = useLists(songs);
-  const salmoChooserDialog = useSalmoChooserDialog(search.searchItems);
-  const salmoLocaleChooserDialog = useSalmoLocaleChooserDialog(
-    songs,
-    localeSongs,
-    getLocaleReal
-  );
 
   const initializeLocale = (locale: string) => {
     if (locale === 'default') {
@@ -1036,13 +836,8 @@ const DataContextWrapper = (props: any) => {
         songsMeta,
         search,
         settings,
-        community,
         lists,
-        aboutDialog,
-        contactImportDialog,
-        contactChooserDialog,
-        salmoChooserDialog,
-        salmoLocaleChooserDialog,
+        community,
         sharePDF,
         generatePDF,
         shareIndexPatch,

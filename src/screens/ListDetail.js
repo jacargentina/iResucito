@@ -1,19 +1,22 @@
 // @flow
 import React, { useContext, useState, useEffect } from 'react';
+import { withNavigation } from 'react-navigation';
 import { Alert, View, Platform } from 'react-native';
 import { Icon, List, Text } from 'native-base';
 import Swipeout from 'react-native-swipeout';
 import ListDetailItem from './ListDetailItem';
 import { DataContext } from '../DataContext';
-import StackNavigatorOptions from '../StackNavigatorOptions';
+import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import I18n from '../translations';
 
 const ListDetail = (props: any) => {
   const data = useContext(DataContext);
+  const { navigation } = props;
   const [uiList, setUIList] = useState();
   const { lists, setList, getListForUI, save } = data.lists;
-  const listName = props.navigation.state.params.list.name;
+
+  const listName = navigation.getParam('list.name');
 
   useEffect(() => {
     setUIList(getListForUI(listName));
@@ -77,7 +80,6 @@ const ListDetail = (props: any) => {
                   listName={listName}
                   listKey={key}
                   listText={song}
-                  navigation={props.navigation}
                 />
               </Swipeout>
             );
@@ -98,7 +100,6 @@ const ListDetail = (props: any) => {
           listName={listName}
           listKey="entrada"
           listText={uiList.entrada}
-          navigation={props.navigation}
         />
         <ListDetailItem
           listName={listName}
@@ -115,7 +116,6 @@ const ListDetail = (props: any) => {
             listName={listName}
             listKey="1-salmo"
             listText={uiList['1-salmo']}
-            navigation={props.navigation}
           />
         )}
         <ListDetailItem
@@ -133,7 +133,6 @@ const ListDetail = (props: any) => {
             listName={listName}
             listKey="2-salmo"
             listText={uiList['2-salmo']}
-            navigation={props.navigation}
           />
         )}
         {uiList.hasOwnProperty('3-monicion') && (
@@ -155,7 +154,6 @@ const ListDetail = (props: any) => {
             listName={listName}
             listKey="3-salmo"
             listText={uiList['3-salmo']}
-            navigation={props.navigation}
           />
         )}
         <ListDetailItem
@@ -173,7 +171,6 @@ const ListDetail = (props: any) => {
             listName={listName}
             listKey="paz"
             listText={uiList['paz']}
-            navigation={props.navigation}
           />
         )}
         {uiList.hasOwnProperty('comunion-pan') && (
@@ -181,7 +178,6 @@ const ListDetail = (props: any) => {
             listName={listName}
             listKey="comunion-pan"
             listText={uiList['comunion-pan']}
-            navigation={props.navigation}
           />
         )}
         {uiList.hasOwnProperty('comunion-caliz') && (
@@ -189,28 +185,25 @@ const ListDetail = (props: any) => {
             listName={listName}
             listKey="comunion-caliz"
             listText={uiList['comunion-caliz']}
-            navigation={props.navigation}
           />
         )}
         <ListDetailItem
           listName={listName}
           listKey="salida"
           listText={uiList.salida}
-          navigation={props.navigation}
         />
         <ListDetailItem
           listName={listName}
           listKey="nota"
           listText={uiList.nota}
-          navigation={props.navigation}
         />
       </List>
     </KeyboardAwareScrollView>
   );
 };
 
-const ShareList = props => {
-  const listName = props.navigation.state.params.list.name;
+const ShareList = withNavigation(props => {
+  const list = props.navigation.getParam('list');
   const data = useContext(DataContext);
   const { shareList } = data.lists;
   return (
@@ -221,16 +214,19 @@ const ShareList = props => {
         marginRight: 12,
         color: StackNavigatorOptions.headerTitleStyle.color
       }}
-      onPress={() => shareList(listName)}
+      onPress={() => shareList(list.name)}
     />
   );
-};
+});
 
-const AddSong = props => {
+const AddSong = withNavigation(props => {
   const data = useContext(DataContext);
+  const list = props.navigation.getParam('list');
+  if (!list) {
+    return null;
+  }
   const { lists } = data.lists;
-  const listName = props.navigation.state.params.list.name;
-  const targetList = lists[listName];
+  const targetList = lists[list.name];
   if (targetList.type !== 'libre') {
     return null;
   }
@@ -246,21 +242,22 @@ const AddSong = props => {
         textAlign: 'center',
         color: StackNavigatorOptions.headerTitleStyle.color
       }}
-      onPress={() => show(listName, targetList.items.length)}
+      onPress={() => show(list.name, targetList.items.length)}
     />
   );
-};
-
-ListDetail.navigationOptions = props => ({
-  title: props.navigation.state.params
-    ? props.navigation.state.params.list.name
-    : 'Lista',
-  headerRight: (
-    <View style={{ flexDirection: 'row' }}>
-      <ShareList {...props} />
-      <AddSong {...props} />
-    </View>
-  )
 });
+
+ListDetail.navigationOptions = props => {
+  const list = props.navigation.getParam('list');
+  return {
+    title: list ? list.name : 'Lista',
+    headerRight: (
+      <View style={{ flexDirection: 'row' }}>
+        <ShareList />
+        <AddSong />
+      </View>
+    )
+  };
+};
 
 export default ListDetail;

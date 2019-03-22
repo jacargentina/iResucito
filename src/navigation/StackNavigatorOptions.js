@@ -1,6 +1,6 @@
 // @flow
-import commonTheme from './native-base-theme/variables/platform';
-import I18n from './translations';
+import commonTheme from '../native-base-theme/variables/platform';
+import I18n from '../translations';
 
 const StackNavigatorOptions = {
   headerStyle: {

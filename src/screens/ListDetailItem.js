@@ -1,5 +1,6 @@
 // @flow
 import React, { useContext } from 'react';
+import { withNavigation } from 'react-navigation';
 import {
   Text,
   Icon,
@@ -18,9 +19,8 @@ import I18n from '../translations';
 
 const ListDetailItem = (props: any) => {
   const data = useContext(DataContext);
+  const { navigation } = props;
   const { setList, save } = data.lists;
-  const { show: showContactDialog } = data.contactChooserDialog;
-  const { show: showSalmoDialog } = data.salmoChooserDialog;
 
   var item = null;
   if (
@@ -76,7 +76,11 @@ const ListDetailItem = (props: any) => {
               height: 40,
               fontSize: 30
             }}
-            onPress={() => showContactDialog(props.listName, props.listKey)}
+            onPress={() =>
+              navigation.navigate('ContactChooser', {
+                target: { listName: props.listName, key: props.listKey }
+              })
+            }
           />
         </Right>
       </ListItem>
@@ -115,7 +119,7 @@ const ListDetailItem = (props: any) => {
               fontSize: 30
             }}
             onPress={() =>
-              props.navigation.navigate('SalmoDetail', {
+              navigation.navigate('SalmoDetail', {
                 salmo: props.listText
               })
             }
@@ -127,7 +131,11 @@ const ListDetailItem = (props: any) => {
         icon
         last
         button
-        onPress={() => showSalmoDialog(props.listName, props.listKey)}>
+        onPress={() =>
+          navigation.navigate('SalmoChooser', {
+            target: { listName: props.listName, key: props.listKey }
+          })
+        }>
         <Left>
           <Icon name="musical-notes" />
         </Left>
@@ -155,4 +163,4 @@ const ListDetailItem = (props: any) => {
   );
 };
 
-export default ListDetailItem;
+export default withNavigation(ListDetailItem);

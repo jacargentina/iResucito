@@ -1,5 +1,5 @@
 // @flow
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import BaseModal from './BaseModal';
 import { Text, ListItem, Left, Body, Icon } from 'native-base';
 import { FlatList, View } from 'react-native';
@@ -7,24 +7,36 @@ import { DataContext } from '../DataContext';
 import commonTheme from '../native-base-theme/variables/platform';
 import I18n from '../translations';
 import ContactPhoto from './ContactPhoto';
+import { contactFilterByText, ordenAlfabetico } from '../util';
 
-const ContactChooserDialog = () => {
+const ContactChooserDialog = (props: any) => {
   const data = useContext(DataContext);
-  const { visible, contacts, hide, target } = data.contactChooserDialog;
+  const { navigation } = props;
   const { setList, save } = data.lists;
+  const { brothers } = data.community;
+  const [contacts, setContacts] = useState([]);
+  const [filter, setFilter] = useState('');
+  const { target } = navigation.getParam('target');
+
+  useEffect(() => {
+    var filteredContacts = Object.assign([], brothers);
+    if (filter !== '') {
+      filteredContacts = filteredContacts.filter(c =>
+        contactFilterByText(c, filter)
+      );
+    }
+    filteredContacts.sort(ordenAlfabetico);
+    setContacts(filteredContacts);
+  }, [filter]);
 
   const contactSelected = contact => {
     setList(target.listName, target.listKey, contact.givenName);
     save();
-    hide();
+    navigation.goBack(null);
   };
 
   return (
-    <BaseModal
-      visible={visible}
-      closeModal={hide}
-      title={I18n.t('screen_title.community')}
-      fade={true}>
+    <BaseModal title={I18n.t('screen_title.community')} fade={true}>
       {contacts.length == 0 && (
         <View
           style={{

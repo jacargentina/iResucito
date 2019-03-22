@@ -5,7 +5,7 @@ import { Icon, Text, H1, Button } from 'native-base';
 import { View } from 'react-native';
 import commonTheme from '../native-base-theme/variables/platform';
 
-const BaseCallToAction = (props: any) => {
+const CallToAction = (props: any) => {
   return (
     <AndroidBackHandler onBackPress={() => true}>
       <View
@@ -47,4 +47,4 @@ const BaseCallToAction = (props: any) => {
   );
 };
 
-export default BaseCallToAction;
+export default CallToAction;

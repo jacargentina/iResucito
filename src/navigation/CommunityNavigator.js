@@ -3,7 +3,7 @@ import React from 'react';
 import { createStackNavigator } from 'react-navigation';
 import StackNavigatorOptions from './StackNavigatorOptions';
 import { Icon } from 'native-base';
-import CommunityScreen from './screens/CommunityScreen';
+import CommunityScreen from '../screens/CommunityScreen';
 
 const CommunityNavigator = createStackNavigator(
   {

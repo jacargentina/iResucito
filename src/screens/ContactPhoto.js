@@ -21,9 +21,12 @@ const ContactPhoto = (props: any) => {
         style={{
           fontSize: 18,
           lineHeight: 50,
-          fontWeight: 'bold',
+          fontWeight: 'bold'
         }}>
-        {props.item.givenName[0]} {props.item.familyName && props.item.familyName.length > 0 ? props.item.familyName[0] : ''}
+        {props.item.givenName[0]}{' '}
+        {props.item.familyName && props.item.familyName.length > 0
+          ? props.item.familyName[0]
+          : ''}
       </Text>
     </Badge>
   );

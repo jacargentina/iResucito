@@ -1,35 +1,52 @@
 // @flow
-import React, { useContext, useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
+import { withNavigation } from 'react-navigation';
 import { ListItem, Right, Body, Icon, Text } from 'native-base';
 import Swipeout from 'react-native-swipeout';
 import { Alert, FlatList, View } from 'react-native';
 import SearchBarView from './SearchBarView';
 import { DataContext } from '../DataContext';
-import StackNavigatorOptions from '../StackNavigatorOptions';
-import BaseCallToAction from './BaseCallToAction';
+import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
+import CallToAction from './CallToAction';
 import commonTheme from '../native-base-theme/variables/platform';
 import I18n from '../translations';
 import ContactPhoto from './ContactPhoto';
+import { contactFilterByText, ordenAlfabetico } from '../util';
 
 const CommunityScreen = () => {
-  const listRef = useRef();
   const data = useContext(DataContext);
-  const {
-    brothers,
-    filter,
-    setFilter,
-    save,
-    addOrRemove,
-    update
-  } = data.community;
+  const { brothers, update, remove, add, save } = data.community;
+  const [filtered, setFiltered] = useState();
+  const listRef = useRef();
+  const [filter, setFilter] = useState('');
 
   useEffect(() => {
-    if (brothers.length > 0) {
+    var result = [...brothers];
+    if (filter !== '') {
+      result = result.filter(c => contactFilterByText(c, filter));
+    }
+    result.sort(ordenAlfabetico);
+    setFiltered(result);
+  }, [brothers, filter]);
+
+  const addOrRemove = contact => {
+    var i = brothers.findIndex(c => c.recordID == contact.recordID);
+    // Ya esta importado
+    if (i !== -1) {
+      var item = brothers[i];
+      remove(item);
+    } else {
+      add(contact);
+    }
+  };
+  useEffect(() => {
+    if (filtered && filtered.length > 0) {
       setTimeout(() => {
-        listRef.current.scrollToIndex({ index: 0, animated: true });
+        if (listRef.current)
+          listRef.current.scrollToIndex({ index: 0, animated: true });
       }, 10);
     }
-  }, [brothers]);
+  }, [filtered]);
 
   const contactDelete = contact => {
     Alert.alert(
@@ -61,7 +78,7 @@ const CommunityScreen = () => {
 
   if (brothers.length == 0 && filter !== '')
     return (
-      <BaseCallToAction
+      <CallToAction
         icon="people"
         title={I18n.t('call_to_action_title.community list')}
         text={I18n.t('call_to_action_text.community list')}
@@ -78,7 +95,7 @@ const CommunityScreen = () => {
       )}
       <FlatList
         ref={listRef}
-        data={brothers}
+        data={filtered}
         keyExtractor={item => item.recordID}
         renderItem={({ item }) => {
           var contactFullName = `${item.givenName} ${item.familyName}`;
@@ -133,24 +150,21 @@ const CommunityScreen = () => {
   );
 };
 
-const ImportContactsButton = () => {
-  const data = useContext(DataContext);
-  const { show } = data.contactImportDialog;
+const ImportContactsButton = withNavigation((props: any) => {
+  const { navigation } = props;
   return (
     <Icon
-      name="refresh"
+      name="add"
       style={{
         marginTop: 4,
         marginRight: 8,
-        width: 32,
-        fontSize: 30,
         textAlign: 'center',
         color: StackNavigatorOptions.headerTitleStyle.color
       }}
-      onPress={show}
+      onPress={() => navigation.navigate('ContactImport')}
     />
   );
-};
+});
 
 CommunityScreen.navigationOptions = () => ({
   title: I18n.t('screen_title.community'),

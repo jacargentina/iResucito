@@ -3,7 +3,7 @@ import React from 'react';
 import { createStackNavigator } from 'react-navigation';
 import StackNavigatorOptions from './StackNavigatorOptions';
 import { Icon } from 'native-base';
-import SettingsScreen from './screens/SettingsScreen';
+import SettingsScreen from '../screens/SettingsScreen';
 
 const SettingsNavigator = createStackNavigator(
   {

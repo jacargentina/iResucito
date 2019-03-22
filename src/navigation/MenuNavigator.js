@@ -1,7 +1,7 @@
 // @flow
 import { Platform } from 'react-native';
 import { createBottomTabNavigator } from 'react-navigation';
-import commonTheme from './native-base-theme/variables/platform';
+import commonTheme from '../native-base-theme/variables/platform';
 import SongsNavigator from './SongsNavigator';
 import ListsNavigator from './ListsNavigator';
 import CommunityNavigator from './CommunityNavigator';

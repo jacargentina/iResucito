@@ -72,7 +72,7 @@ if (Platform.OS == 'android') {
   };
 }
 
-const AppContainerWithInit = () => {
+const InitializeApp = () => {
   const [initialized, setInitialized] = useState(false);
   const [lastThumbsCacheDir, setLastThumbsCacheDir] = useState();
   const data = useContext(DataContext);
@@ -166,27 +166,23 @@ const AppContainerWithInit = () => {
     }
   }, [keys, initialized]);
 
-  const AppContainer = createAppContainer(RootNavigator);
-
-  return (
-    <AppContainer
-      onNavigationStateChange={(prevState, newState, action) => {
-        console.log({ prevState, newState, action });
-      }}
-      ref={navigation => {
-        NavigationService.setTopLevelNavigator(navigation);
-      }}
-    />
-  );
+  return null;
 };
 
 const App = () => {
+  const AppContainer = createAppContainer(RootNavigator);
+
   return (
     <DataContextWrapper>
       <StyleProvider style={getTheme(commonTheme)}>
         <Root>
           <MenuProvider backHandler={true}>
-            <AppContainerWithInit />
+            <InitializeApp />
+            <AppContainer
+              ref={navigation => {
+                NavigationService.setTopLevelNavigator(navigation);
+              }}
+            />
           </MenuProvider>
         </Root>
       </StyleProvider>

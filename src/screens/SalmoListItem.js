@@ -1,5 +1,6 @@
 // @flow
 import React, { useContext, useState, useEffect } from 'react';
+import { withNavigation } from 'react-navigation';
 import { TouchableOpacity, Alert } from 'react-native';
 import { ListItem, Left, Right, Body, Text, Badge, Icon } from 'native-base';
 import Highlighter from 'react-native-highlight-words';
@@ -16,9 +17,9 @@ delete textStyles['.note'];
 
 const SalmoListItem = (props: any) => {
   const data = useContext(DataContext);
+  const { navigation } = props;
   const [isCollapsed, setIsCollapsed] = useState(true);
   const { keys, getLocaleReal } = data.settings;
-  const { show: showSalmoChooser } = data.salmoChooserDialog;
   const { setSongLocalePatch } = data.songsMeta;
   const [developerMode, setDeveloperMode] = useState();
 
@@ -117,7 +118,11 @@ const SalmoListItem = (props: any) => {
               fontSize: 32,
               color: commonTheme.brandPrimary
             }}
-            onPress={() => showSalmoChooser(props.salmo)}
+            onPress={() =>
+              navigation.navigate('SalmoChooseLocale', {
+                salmo: props.salmo
+              })
+            }
           />
         </Right>
       );
@@ -185,4 +190,4 @@ const SalmoListItem = (props: any) => {
   );
 };
 
-export default SalmoListItem;
+export default withNavigation(SalmoListItem);

@@ -214,3 +214,10 @@ export const getSalmoTransported = (song: Song, transportToNote: any) => {
   }
   return NativeSongs.preprocesarCanto(lines, diferencia);
 };
+
+export const contactFilterByText = (c: any, text: string) => {
+  return (
+    c.givenName.toLowerCase().includes(text.toLowerCase()) ||
+    (c.familyName && c.familyName.toLowerCase().includes(text.toLowerCase()))
+  );
+};

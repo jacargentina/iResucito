@@ -3,11 +3,11 @@ import { StackActions, NavigationActions } from 'react-navigation';
 
 let navigator;
 
-function setTopLevelNavigator(navigatorRef) {
+function setTopLevelNavigator(navigatorRef: any) {
   navigator = navigatorRef;
 }
 
-function navigate(routeName, params) {
+function navigate(routeName: string, params: any) {
   navigator.dispatch(
     NavigationActions.navigate({
       routeName,
@@ -16,7 +16,7 @@ function navigate(routeName, params) {
   );
 }
 
-function applyCancelHandler(router) {
+function applyCancelHandler(router: any) {
   const defaultGetStateForAction = router.getStateForAction;
   router.getStateForAction = (action, state) => {
     if (state && action.type === NavigationActions.BACK) {

@@ -1,9 +1,10 @@
 // @flow
 import React, { useContext } from 'react';
 import Pdf from 'react-native-pdf';
+import { withNavigation } from 'react-navigation';
 import { Icon } from 'native-base';
 import { View, Dimensions } from 'react-native';
-import StackNavigatorOptions from '../StackNavigatorOptions';
+import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
 import RNPrint from 'react-native-print';
 import { DataContext } from '../DataContext';
 
@@ -25,8 +26,9 @@ const PDFViewer = (props: any) => {
   );
 };
 
-const Share = props => {
+const Share = withNavigation(props => {
   const data = useContext(DataContext);
+  const { navigation } = props;
   const { sharePDF } = data;
   return (
     <Icon
@@ -39,12 +41,15 @@ const Share = props => {
         textAlign: 'center',
         color: StackNavigatorOptions.headerTitleStyle.color
       }}
-      onPress={() => sharePDF(props.salmo, props.uri)}
+      onPress={() =>
+        sharePDF(navigation.getParam('salmo', navigation.getParam('uri')))
+      }
     />
   );
-};
+});
 
-const Print = props => {
+const Print = withNavigation(props => {
+  const { navigation } = props;
   const printSong = uri => {
     RNPrint.print({ filePath: uri, isLandscape: true });
   };
@@ -59,17 +64,17 @@ const Print = props => {
         textAlign: 'center',
         color: StackNavigatorOptions.headerTitleStyle.color
       }}
-      onPress={() => printSong(props.uri)}
+      onPress={() => printSong(navigation.getParam('uri'))}
     />
   );
-};
+});
 
 PDFViewer.navigationOptions = props => ({
-  title: `PDF - ${props.navigation.state.params.salmo.titulo}`,
+  title: `PDF - ${props.navigation.getParam('salmo.titulo')}`,
   headerRight: (
     <View style={{ flexDirection: 'row' }}>
-      <Share {...props.navigation.state.params} />
-      <Print {...props.navigation.state.params} />
+      <Share />
+      <Print />
     </View>
   )
 });

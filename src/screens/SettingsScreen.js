@@ -16,17 +16,16 @@ import {
 import Switch from '../widgets/switch';
 import { DataContext } from '../DataContext';
 import I18n from '../translations';
-import StackNavigatorOptions from '../StackNavigatorOptions';
+import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
 import { getLocalesForPicker } from '../util';
 import commonTheme from '../native-base-theme/variables/platform';
-import AcercaDe from './AcercaDe';
 
 const SettingsScreen = (props: any) => {
   const data = useContext(DataContext);
+  const { navigation } = props;
   const { initializeLocale, shareIndexPatch } = data;
   const { indexPatchExists, clearIndexPatch } = data.songsMeta;
   const { keys, setKey, save } = data.settings;
-  const { show } = data.aboutDialog;
 
   const updateSetting = (key, value) => {
     setKey(key, value);
@@ -62,7 +61,6 @@ const SettingsScreen = (props: any) => {
   });
   return (
     <AndroidBackHandler onBackPress={() => true}>
-      <AcercaDe />
       <View>
         <List>
           <ListItem>
@@ -147,7 +145,7 @@ const SettingsScreen = (props: any) => {
               </Body>
             </ListItem>
           )}
-          <ListItem icon button onPress={show}>
+          <ListItem icon button onPress={() => navigation.navigate('About')}>
             <Left>
               <Icon name="checkmark" />
             </Left>

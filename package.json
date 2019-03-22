@@ -33,7 +33,7 @@
     "ios-ipad": "react-native run-ios --simulator='iPad Pro (9.7-inch)'",
     "test": "node node_modules/jest/bin/jest.js --watch",
     "postversion": "react-native-version --never-amend",
-    "lint": "eslint components/**/*.js",
+    "lint": "eslint . --ext .js --ignore-pattern '/src/native-base-theme/*'",
     "react-devtools": "react-devtools",
     "genpdf": "babel-node ./scripts/songToPdf.js"
   },

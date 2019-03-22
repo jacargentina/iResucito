@@ -6,8 +6,8 @@ import { Alert, FlatList, Platform } from 'react-native';
 import Swipeout from 'react-native-swipeout';
 import SearchBarView from './SearchBarView';
 import { DataContext } from '../DataContext';
-import StackNavigatorOptions from '../StackNavigatorOptions';
-import BaseCallToAction from './BaseCallToAction';
+import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
+import CallToAction from './CallToAction';
 import I18n from '../translations';
 
 const listAdd = (navigation: any) => {
@@ -36,7 +36,13 @@ const listAdd = (navigation: any) => {
           type = 'libre';
           break;
       }
-      navigation.navigate('ListAdd', { type });
+      if (type !== null)
+        navigation.navigate('ListAdd', {
+          type,
+          onCreated: name => {
+            navigation.navigate('ListDetail', { list: { name } });
+          }
+        });
     }
   );
 };
@@ -81,7 +87,7 @@ const ListScreen = (props: any) => {
 
   if (uiLists.length == 0)
     return (
-      <BaseCallToAction
+      <CallToAction
         icon="bookmark"
         title={I18n.t('call_to_action_title.add lists')}
         text={I18n.t('call_to_action_text.add lists')}

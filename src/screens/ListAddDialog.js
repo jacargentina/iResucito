@@ -8,14 +8,22 @@ import I18n from '../translations';
 
 const ListAddDialog = (props: any) => {
   const data = useContext(DataContext);
+  const { navigation } = props;
+  const { lists, addList, save } = data.lists;
   const [disabledReasonText, setDisabledReasonText] = useState(null);
   const [listCreateEnabled, setListCreateEnabled] = useState(false);
   const [listCreateName, setListCreateName] = useState('');
-  const { navigation } = props;
 
   const listCreateType = navigation.getParam('type');
 
-  const { lists, addList, save } = data.lists;
+  const createNewList = (name, type) => {
+    addList(name, type);
+    save();
+    const onCreated = navigation.getParam('onCreated');
+    if (onCreated) {
+      onCreated(name);
+    }
+  };
 
   useEffect(() => {
     if (listCreateName) {
@@ -27,12 +35,6 @@ const ListAddDialog = (props: any) => {
       setListCreateEnabled(false);
     }
   }, [listCreateName]);
-
-  const createNewList = (name, type) => {
-    addList(name, type);
-    save();
-    navigation.navigate('ListDetail', { list: { name } });
-  };
 
   useEffect(() => {
     if (!listCreateEnabled) {

@@ -1,6 +1,6 @@
 // @flow
 import PDFDocument from 'pdfkit';
-import { SongsProcessor } from '../SongsProcessor';
+import { SongsProcessor } from '../src/SongsProcessor';
 import fs from 'fs';
 import path from 'path';
 import osLocale from 'os-locale';
@@ -30,12 +30,10 @@ const folderSongs = new SongsProcessor(
 );
 
 var titleFontSize = 19;
-var titleSpacing = 11;
 var fuenteFontSize = 10;
 var fuenteSpacing = 20;
 var cantoFontSize = 12;
 var cantoSpacing = 11;
-var fontName = 'Franklin Gothic Medium';
 var indicadorSpacing = 18;
 var parrafoSpacing = 12;
 var notesFontSize = 10;
@@ -92,10 +90,8 @@ export function generatePDF(canto: Song, lines: Array<SongLine>) {
         y = yStart;
       } else {
         var alturaParrafo = 0;
-        var textoParrafo = '';
         var i = index; // loop de i
         while (i < lines.length) {
-          textoParrafo += `${lines[i].texto}\n`;
           alturaParrafo += cantoSpacing;
           i += 1;
           if (i < lines.length && lines[i].inicioParrafo) {

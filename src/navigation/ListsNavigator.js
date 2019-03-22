@@ -3,8 +3,8 @@ import React from 'react';
 import { createStackNavigator } from 'react-navigation';
 import StackNavigatorOptions from './StackNavigatorOptions';
 import { Icon } from 'native-base';
-import ListScreen from './screens/ListScreen';
-import ListDetail from './screens/ListDetail';
+import ListScreen from '../screens/ListScreen';
+import ListDetail from '../screens/ListDetail';
 
 const ListsNavigator = createStackNavigator(
   {

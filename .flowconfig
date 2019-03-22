@@ -3,3 +3,4 @@
 
 [untyped]
 .*/node_modules/react-native
+.*/native-base-theme/

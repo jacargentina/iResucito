@@ -1,5 +1,6 @@
 // @flow
 import React, { useContext, useEffect, useRef, useState } from 'react';
+import { withNavigation } from 'react-navigation';
 import { FlatList, Keyboard } from 'react-native';
 import { Text, ListItem } from 'native-base';
 import SearchBarView from './SearchBarView';
@@ -21,7 +22,8 @@ const SalmoList = (props: any) => {
   useEffect(() => {
     if (search && search.length > 0) {
       setTimeout(() => {
-        listRef.current.scrollToIndex({ index: 0, animated: true });
+        if (listRef.current)
+          listRef.current.scrollToIndex({ index: 0, animated: true });
       }, 10);
       setTotalText(I18n.t('ui.list total songs', { total: search.length }));
     }
@@ -72,4 +74,4 @@ SalmoList.navigationOptions = (props: any) => {
   };
 };
 
-export default SalmoList;
+export default withNavigation(SalmoList);
