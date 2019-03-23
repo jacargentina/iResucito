@@ -9,12 +9,17 @@ import I18n from '../translations';
 import { useDebounce } from 'use-debounce';
 
 const DebouncedInput = (props: any) => {
-  const [searchTerm, setSearchTerm] = useState(props.value);
+  const { value } = props;
+  const [searchTerm, setSearchTerm] = useState(value);
   const [debouncedTerm] = useDebounce(searchTerm, 800);
 
   useEffect(() => {
     props.setValue(debouncedTerm);
   }, [debouncedTerm]);
+
+  useEffect(() => {
+    setSearchTerm(value);
+  }, [value]);
 
   return (
     <Input
@@ -34,26 +39,6 @@ const DebouncedInput = (props: any) => {
 };
 
 const SearchBarView = (props: any) => {
-  if (props.setValue) {
-    var searchView = (
-      <View
-        style={{
-          backgroundColor: commonTheme.toolbarInputColor,
-          borderRadius: 16,
-          margin: 10
-        }}>
-        <Item
-          style={{
-            height: commonTheme.searchBarHeight,
-            borderColor: 'transparent',
-            paddingHorizontal: 15
-          }}>
-          <Icon name="search" />
-          <DebouncedInput value={props.value} setValue={props.setValue} />
-        </Item>
-      </View>
-    );
-  }
   return (
     <AndroidBackHandler
       onBackPress={() => {
@@ -61,7 +46,22 @@ const SearchBarView = (props: any) => {
         return true;
       }}>
       <View style={{ flex: 1 }}>
-        {searchView}
+        <View
+          style={{
+            backgroundColor: commonTheme.toolbarInputColor,
+            borderRadius: 16,
+            margin: 10
+          }}>
+          <Item
+            style={{
+              height: commonTheme.searchBarHeight,
+              borderColor: 'transparent',
+              paddingHorizontal: 15
+            }}>
+            <Icon name="search" />
+            <DebouncedInput value={props.value} setValue={props.setValue} />
+          </Item>
+        </View>
         <View
           style={{
             flex: 1,

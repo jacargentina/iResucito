@@ -88,6 +88,7 @@ const ListDetailItem = (props: any) => {
       <ListItem>
         <Body>
           <TextInput
+            style={{ fontSize: 18 }}
             multiline
             onChangeText={text => {
               setList(listName, listKey, text);

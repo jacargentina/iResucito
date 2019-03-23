@@ -1,5 +1,6 @@
 // @flow
 import React, { useState, useEffect } from 'react';
+import DeviceInfo from 'react-native-device-info';
 import { Alert, Platform, Share } from 'react-native';
 import RNFS from 'react-native-fs';
 import I18n from './translations';
@@ -11,6 +12,7 @@ import {
   getDefaultLocale,
   getFriendlyText,
   getFriendlyTextForListType,
+  getContacts,
   NativeSongs,
   NativeStyles
 } from './util';
@@ -185,6 +187,7 @@ const generatePDF = (canto: Song, lines: Array<SongLine>) => {
 };
 
 const useSettings = () => {
+  const [initialized, setInitialized] = useState(false);
   const [keys, initKeys] = useState({
     developerMode: false,
     keepAwake: true,
@@ -193,26 +196,40 @@ const useSettings = () => {
 
   const setKey = (key, value) => {
     const updatedKeys = Object.assign({}, keys, { [key]: value });
+    I18n.locale = getLocaleReal(updatedKeys.locale);
     initKeys(updatedKeys);
   };
 
-  const getLocaleReal = () => {
-    var rawLoc = keys.locale;
+  const getLocaleReal = (rawLoc: string) => {
     var locale = rawLoc === 'default' ? getDefaultLocale() : rawLoc;
     return locale.split('-')[0];
   };
 
-  const save = () => {
-    return localdata.save({
-      key: 'settings',
-      data: keys
-    });
-  };
+  useEffect(() => {
+    if (keys && initialized) {
+      localdata.save({
+        key: 'settings',
+        data: keys
+      });
+    }
+  }, [keys, initialized]);
 
-  return { keys, initKeys, setKey, save, getLocaleReal };
+  useEffect(() => {
+    localdata
+      .load({
+        key: 'settings'
+      })
+      .then(data => {
+        I18n.locale = getLocaleReal(data.locale);
+        initKeys(data);
+        setInitialized(true);
+      });
+  }, []);
+
+  return { keys, initKeys, setKey, getLocaleReal };
 };
 
-const useSongsMeta = () => {
+const useSongsMeta = (locale: any) => {
   const [indexPatchExists, setIndexPatchExists] = useState(false);
   const [songs, setSongs] = useState([]);
   const [localeSongs, setLocaleSongs] = useState([]);
@@ -284,6 +301,25 @@ const useSongsMeta = () => {
     });
   };
 
+  useEffect(() => {
+    if (locale) {
+      // Cargar parche del indice si existe
+      readLocalePatch()
+        .then(patchObj => {
+          // Construir metadatos de cantos
+          var metaData = NativeSongs.getSongsMeta(locale, patchObj);
+          return Promise.all(NativeSongs.loadSongs(metaData)).then(() => {
+            setSongs(metaData);
+          });
+        })
+        .then(() => {
+          return NativeSongs.readLocaleSongs(locale).then(items => {
+            setLocaleSongs(items);
+          });
+        });
+    }
+  }, [locale, indexPatchExists]);
+
   return {
     songs,
     setSongs,
@@ -346,6 +382,7 @@ export const useSearchSongs = (
 };
 
 const useLists = (songs: any) => {
+  const [initialized, setInitialized] = useState(false);
   const [lists, initLists] = useState({});
 
   const addList = (listName, type) => {
@@ -514,13 +551,33 @@ const useLists = (songs: any) => {
     );
   };
 
-  const save = () => {
-    var item = { key: 'lists', data: lists };
-    localdata.save(item);
-    if (Platform.OS == 'ios') {
-      clouddata.save(item);
+  useEffect(() => {
+    if (lists && initialized) {
+      var item = { key: 'lists', data: lists };
+      localdata.save(item);
+      if (Platform.OS == 'ios') {
+        clouddata.save(item);
+      }
     }
-  };
+  }, [lists, initialized]);
+
+  useEffect(() => {
+    localdata
+      .load({
+        key: 'lists'
+      })
+      .then(data => {
+        initLists(data);
+        setInitialized(true);
+      });
+    // TODO
+    // IDEA: al abrir la pantalla de listas, cargar las
+    // listas desde iCloud, y si hay cambios, consultar
+    // al usuario si desea tomar los cambios y aplicarlos
+    // clouddata.load({ key: 'lists' }).then(res => {
+    //   console.log('loaded from iCloud', res);
+    // });
+  }, []);
 
   return {
     lists,
@@ -531,13 +588,18 @@ const useLists = (songs: any) => {
     setList,
     getListForUI,
     getListsForUI,
-    shareList,
-    save
+    shareList
   };
 };
 
-const useSearch = () => {
+const useSearch = (locale: string, developerMode: boolean) => {
   const [searchItems, setSearchItems] = useState();
+
+  useEffect(() => {
+    console.log({ locale, developerMode, i18n: I18n.locale });
+    // Construir menu de búsqueda
+    initSearch(developerMode);
+  }, [locale, developerMode]);
 
   const initSearch = (developerMode: boolean) => {
     var items: Array<SearchItem> = [
@@ -711,7 +773,9 @@ const useSearch = () => {
 };
 
 const useCommunity = () => {
+  const [initialized, setInitialized] = useState(false);
   const [brothers, initBrothers] = useState([]);
+  const [lastThumbsCacheDir, setLastThumbsCacheDir] = useState();
 
   const add = item => {
     var changedContacts = [...brothers, item];
@@ -732,14 +796,6 @@ const useCommunity = () => {
     initBrothers(changedContacts);
   };
 
-  const save = () => {
-    var item = { key: 'contacts', data: brothers };
-    localdata.save(item);
-    if (Platform.OS == 'ios') {
-      clouddata.save(item);
-    }
-  };
-
   const addOrRemove = contact => {
     var i = brothers.findIndex(c => c.recordID == contact.recordID);
     // Ya esta importado
@@ -751,51 +807,63 @@ const useCommunity = () => {
     }
   };
 
-  return { brothers, initBrothers, add, update, remove, addOrRemove, save };
+  useEffect(() => {
+    if (brothers && initialized && lastThumbsCacheDir) {
+      // sólo actualizar si cambió el directorio de caches
+      if (lastThumbsCacheDir !== RNFS.CachesDirectoryPath) {
+        getContacts().then(currentContacts => {
+          brothers.forEach(c => {
+            // tomar los datos actualizados
+            var currContact = currentContacts.find(
+              x => x.recordID === c.recordID
+            );
+            update(c.recordID, currContact);
+          });
+          // guardar directorio nuevo
+          localdata.save({
+            key: 'lastCachesDirectoryPath',
+            data: RNFS.CachesDirectoryPath
+          });
+        });
+      }
+    }
+  }, [brothers, initialized, lastThumbsCacheDir]);
+
+  useEffect(() => {
+    if (brothers && initialized) {
+      var item = { key: 'contacts', data: brothers };
+      localdata.save(item);
+      if (Platform.OS == 'ios') {
+        clouddata.save(item);
+      }
+    }
+  }, [brothers, initialized]);
+
+  useEffect(() => {
+    localdata
+      .getBatchData([{ key: 'contacts' }, { key: 'lastCachesDirectoryPath' }])
+      .then(result => {
+        const [contacts, lastCachesDirectoryPath] = result;
+        initBrothers(contacts);
+        setLastThumbsCacheDir(
+          DeviceInfo.isEmulator() ? null : lastCachesDirectoryPath
+        );
+        setInitialized(true);
+      });
+  }, []);
+
+  return { brothers, initBrothers, add, update, remove, addOrRemove };
 };
 
 export const DataContext: any = React.createContext();
 
 const DataContextWrapper = (props: any) => {
   const [transportNote, setTransportNote] = useState();
-  const settings = useSettings();
-  const songsMeta = useSongsMeta();
-  const search = useSearch();
   const community = useCommunity();
-
-  const { getLocaleReal } = settings;
-  const {
-    songs,
-    setSongs,
-    localeSongs,
-    setLocaleSongs,
-    readLocalePatch
-  } = songsMeta;
-
-  const lists = useLists(songs);
-
-  const initializeLocale = (locale: string) => {
-    if (locale === 'default') {
-      locale = getDefaultLocale();
-    }
-    I18n.locale = locale;
-    // Construir menu de búsqueda
-    search.initSearch(settings.keys.developerMode);
-    // Cargar parche del indice si existe
-    return readLocalePatch()
-      .then(patchObj => {
-        // Construir metadatos de cantos
-        var metaData = NativeSongs.getSongsMeta(locale, patchObj);
-        return Promise.all(NativeSongs.loadSongs(metaData)).then(() => {
-          setSongs(metaData);
-        });
-      })
-      .then(() => {
-        return NativeSongs.readLocaleSongs(locale).then(items => {
-          setLocaleSongs(items);
-        });
-      });
-  };
+  const settings = useSettings();
+  const songsMeta = useSongsMeta(settings.keys.locale);
+  const search = useSearch(settings.keys.locale, settings.keys.developerMode);
+  const lists = useLists(songsMeta.songs);
 
   const sharePDF = (canto: Song, pdfPath: string) => {
     Share.share(
@@ -820,10 +888,9 @@ const DataContextWrapper = (props: any) => {
   return (
     <DataContext.Provider
       value={{
-        initializeLocale,
+        settings,
         songsMeta,
         search,
-        settings,
         lists,
         community,
         sharePDF,

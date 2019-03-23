@@ -1,12 +1,10 @@
 // @flow
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { createAppContainer } from 'react-navigation';
-import DataContextWrapper, { DataContext } from './DataContext';
+import DataContextWrapper from './DataContext';
 import NavigationService from './navigation/NavigationService';
 import RootNavigator from './navigation/RootNavigator';
 import { Platform, Alert, Linking } from 'react-native';
-import RNFS from 'react-native-fs';
-import DeviceInfo from 'react-native-device-info';
 import SplashScreen from 'react-native-splash-screen';
 import { Root, StyleProvider } from 'native-base';
 import getTheme from './native-base-theme/components';
@@ -16,8 +14,6 @@ import {
   setJSExceptionHandler,
   setNativeExceptionHandler
 } from 'react-native-exception-handler';
-import { localdata, clouddata } from './data';
-import { getContacts } from './util';
 
 const mailTo = 'javier.alejandro.castro@gmail.com';
 const mailSubject = 'iResucito Crash';
@@ -73,98 +69,12 @@ if (Platform.OS == 'android') {
 }
 
 const InitializeApp = () => {
-  const [initialized, setInitialized] = useState(false);
-  const [lastThumbsCacheDir, setLastThumbsCacheDir] = useState();
-  const data = useContext(DataContext);
-
-  const { initializeLocale } = data;
-  const { initLists } = data.lists;
-  const { keys, initKeys } = data.settings;
-  const { brothers, initBrothers, update, save } = data.community;
-
-  useEffect(() => {
-    if (lastThumbsCacheDir && brothers) {
-      // sólo actualizar si cambió el directorio de caches
-      if (lastThumbsCacheDir !== RNFS.CachesDirectoryPath) {
-        getContacts().then(currentContacts => {
-          brothers.forEach(c => {
-            // tomar los datos actualizados
-            var currContact = currentContacts.find(
-              x => x.recordID === c.recordID
-            );
-            update(c.recordID, currContact);
-          });
-          // guardar directorio nuevo
-          var item = {
-            key: 'lastCachesDirectoryPath',
-            data: RNFS.CachesDirectoryPath
-          };
-          localdata.save(item);
-          // guardar contactos refrescados
-          save();
-        });
-      }
-    }
-  }, [lastThumbsCacheDir, brothers]);
-
-  const initializeApp = () => {
-    var promises = [];
-    // Cargar configuracion
-    promises.push(
-      localdata
-        .getBatchData([
-          { key: 'settings' },
-          { key: 'lists' },
-          { key: 'contacts' },
-          { key: 'lastCachesDirectoryPath' }
-        ])
-        .then(result => {
-          var [settings, lists, contacts, lastCachesDirectoryPath] = result;
-          var loadedContacts = contacts || [];
-          var loadedLists = lists || [];
-          if (settings) {
-            initKeys(settings);
-          }
-          initBrothers(loadedContacts);
-          initLists(loadedLists);
-          // Forzar la actualizacion si estamos emulando
-          if (DeviceInfo.isEmulator()) {
-            lastCachesDirectoryPath = null;
-          }
-          setLastThumbsCacheDir(lastCachesDirectoryPath);
-        })
-        .catch(err => {
-          console.log('error loading from localdata', err);
-        })
-    );
-    // Cargar listas desde iCloud
-    promises.push(
-      clouddata.load({ key: 'lists' }).then(res => {
-        console.log('loaded from iCloud', res);
-      })
-    );
-    // Indicar finalizacion de inicializacion
-    Promise.all(promises).then(() => {
-      setInitialized(true);
-    });
-  };
-
   useEffect(() => {
     // Splash minimo por 1.5 segundos
     setTimeout(() => {
       SplashScreen.hide();
     }, 1500);
-    // Arrancar app
-    initializeApp();
   }, []);
-
-  useEffect(() => {
-    if (initialized && keys) {
-      var locale = (keys && keys.locale) || 'default';
-      // Configurar dependiendo del lenguaje
-      initializeLocale(locale);
-    }
-  }, [keys, initialized]);
 
   return null;
 };

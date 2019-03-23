@@ -83,6 +83,7 @@ const ContactImportDialog = (props: any) => {
       {I18n.t('ui.done')}
     </Text>
   );
+
   return (
     <BaseModal
       closeButton={readyButton}

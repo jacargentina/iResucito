@@ -20,7 +20,7 @@ import commonTheme from '../native-base-theme/variables/platform';
 const ListScreen = (props: any) => {
   const data = useContext(DataContext);
   const { navigation } = props;
-  const { lists, getListsForUI, removeList, save } = data.lists;
+  const { lists, getListsForUI, removeList } = data.lists;
   const [filtered, setFiltered] = useState();
   const [filter, setFilter] = useState('');
   const allLists = useMemo(() => getListsForUI(), [lists]);
@@ -31,7 +31,7 @@ const ListScreen = (props: any) => {
       result = result.filter(c => c.name.includes(filter));
     }
     setFiltered(result);
-  }, [filter]);
+  }, [allLists, filter]);
 
   const listAdd = () => {
     ActionSheet.show(
@@ -61,10 +61,7 @@ const ListScreen = (props: any) => {
         }
         if (type !== null)
           navigation.navigate('ListAdd', {
-            type,
-            onCreated: name => {
-              navigation.navigate('ListDetail', { list: { name } });
-            }
+            type
           });
       }
     );
@@ -79,7 +76,6 @@ const ListScreen = (props: any) => {
           text: I18n.t('ui.delete'),
           onPress: () => {
             removeList(list.name);
-            save();
           },
           style: 'destructive'
         },

@@ -23,16 +23,11 @@ import commonTheme from '../native-base-theme/variables/platform';
 const SettingsScreen = (props: any) => {
   const data = useContext(DataContext);
   const { navigation } = props;
-  const { initializeLocale, shareIndexPatch } = data;
+  const { shareIndexPatch } = data;
   const { indexPatchExists, clearIndexPatch } = data.songsMeta;
-  const { keys, setKey, save } = data.settings;
+  const { keys, setKey: updateSetting } = data.settings;
 
-  const updateSetting = (key, value) => {
-    setKey(key, value);
-    save();
-  };
-
-  const confirmClearIndexPatch = locale => {
+  const confirmClearIndexPatch = () => {
     Alert.alert(
       I18n.t('ui.confirmation'),
       I18n.t('ui.delete confirmation'),
@@ -41,9 +36,7 @@ const SettingsScreen = (props: any) => {
           text: I18n.t('ui.delete'),
           style: 'destructive',
           onPress: () => {
-            clearIndexPatch().then(() => {
-              initializeLocale(locale);
-            });
+            clearIndexPatch();
           }
         },
         {
@@ -130,7 +123,7 @@ const SettingsScreen = (props: any) => {
               <Body>
                 <Text
                   style={{ color: commonTheme.brandDanger }}
-                  onPress={() => confirmClearIndexPatch(keys.locale)}>
+                  onPress={() => confirmClearIndexPatch()}>
                   {I18n.t('settings_title.clear index patch')}
                 </Text>
               </Body>

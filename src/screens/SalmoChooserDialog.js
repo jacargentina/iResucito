@@ -15,7 +15,7 @@ const SalmoChooserDialog = (props: any) => {
   const data = useContext(DataContext);
   const { navigation } = props;
   const { search } = data;
-  const { setList, save } = data.lists;
+  const { setList } = data.lists;
   const { setSongLocalePatch } = data.songsMeta;
   const [tabs, setTabs] = useState([]);
 
@@ -31,7 +31,6 @@ const SalmoChooserDialog = (props: any) => {
   const songAssign = salmo => {
     if (target.listName && target.listKey !== undefined) {
       setList(target.listName, target.listKey, salmo.nombre);
-      save();
       navigation.goBack(null);
     } else if (target.locale && target.file) {
       setSongLocalePatch(salmo, target.locale, target.file).then(() => {
