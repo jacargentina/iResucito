@@ -188,11 +188,7 @@ const generatePDF = (canto: Song, lines: Array<SongLine>) => {
 
 const useSettings = () => {
   const [initialized, setInitialized] = useState(false);
-  const [keys, initKeys] = useState({
-    developerMode: false,
-    keepAwake: true,
-    locale: 'default'
-  });
+  const [keys, initKeys] = useState();
 
   const setKey = (key, value) => {
     const updatedKeys = Object.assign({}, keys, { [key]: value });
@@ -202,7 +198,7 @@ const useSettings = () => {
 
   const getLocaleReal = (rawLoc: string) => {
     var locale = rawLoc === 'default' ? getDefaultLocale() : rawLoc;
-    return locale.split('-')[0];
+    return locale;
   };
 
   useEffect(() => {
@@ -220,6 +216,13 @@ const useSettings = () => {
         key: 'settings'
       })
       .then(data => {
+        if (!data) {
+          data = {
+            developerMode: false,
+            keepAwake: true,
+            locale: 'default'
+          };
+        }
         I18n.locale = getLocaleReal(data.locale);
         initKeys(data);
         setInitialized(true);
@@ -593,15 +596,12 @@ const useLists = (songs: any) => {
 };
 
 const useSearch = (locale: string, developerMode: boolean) => {
+  const [initialized, setInitialized] = useState(false);
   const [searchItems, setSearchItems] = useState();
 
   useEffect(() => {
-    console.log({ locale, developerMode, i18n: I18n.locale });
     // Construir menu de búsqueda
-    initSearch(developerMode);
-  }, [locale, developerMode]);
-
-  const initSearch = (developerMode: boolean) => {
+    setInitialized(false);
     var items: Array<SearchItem> = [
       {
         title: I18n.t('search_title.alpha'),
@@ -767,9 +767,10 @@ const useSearch = (locale: string, developerMode: boolean) => {
       });
     }
     setSearchItems(items);
-  };
+    setInitialized(true);
+  }, [locale, developerMode]);
 
-  return { searchItems, initSearch };
+  return { initialized, searchItems };
 };
 
 const useCommunity = () => {
@@ -861,8 +862,12 @@ const DataContextWrapper = (props: any) => {
   const [transportNote, setTransportNote] = useState();
   const community = useCommunity();
   const settings = useSettings();
-  const songsMeta = useSongsMeta(settings.keys.locale);
-  const search = useSearch(settings.keys.locale, settings.keys.developerMode);
+
+  const locale = settings.keys ? settings.keys.locale : 'default';
+  const developerMode = settings.keys ? settings.keys.developerMode : false;
+
+  const songsMeta = useSongsMeta(locale);
+  const search = useSearch(locale, developerMode);
   const lists = useLists(songsMeta.songs);
 
   const sharePDF = (canto: Song, pdfPath: string) => {
