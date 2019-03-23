@@ -2,7 +2,7 @@
 import React from 'react';
 import { withNavigation } from 'react-navigation';
 import { Text, Icon } from 'native-base';
-import { View, Platform, SafeAreaView } from 'react-native';
+import { View, KeyboardAvoidingView, SafeAreaView } from 'react-native';
 import commonTheme from '../native-base-theme/variables/platform';
 
 const BaseModal = (props: any) => {
@@ -23,12 +23,7 @@ const BaseModal = (props: any) => {
   );
   return (
     <SafeAreaView style={{ flexGrow: 1, backgroundColor: 'white' }}>
-      <View
-        style={{
-          flex: 1,
-          paddingTop: Platform.OS == 'ios' ? 10 : 0,
-          backgroundColor: 'white'
-        }}>
+      <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
         <View
           style={{
             flex: 0,
@@ -55,12 +50,13 @@ const BaseModal = (props: any) => {
         </View>
         <View
           style={{
+            flex: 0,
             flexDirection: 'row',
             justifyContent: 'flex-end'
           }}>
           {props.acceptButtons}
         </View>
-      </View>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 };

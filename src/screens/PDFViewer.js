@@ -9,13 +9,14 @@ import RNPrint from 'react-native-print';
 import { DataContext } from '../DataContext';
 
 const PDFViewer = (props: any) => {
+  const { navigation } = props;
   return (
     <View
       style={{
         flex: 1
       }}>
       <Pdf
-        source={{ uri: props.navigation.state.params.uri }}
+        source={{ uri: navigation.getParam('uri') }}
         scale={1.4}
         style={{
           flex: 1,
@@ -30,6 +31,8 @@ const Share = withNavigation(props => {
   const data = useContext(DataContext);
   const { navigation } = props;
   const { sharePDF } = data;
+  const salmo = navigation.getParam('salmo');
+  const uri = navigation.getParam('uri');
   return (
     <Icon
       name="share"
@@ -41,18 +44,14 @@ const Share = withNavigation(props => {
         textAlign: 'center',
         color: StackNavigatorOptions.headerTitleStyle.color
       }}
-      onPress={() =>
-        sharePDF(navigation.getParam('salmo', navigation.getParam('uri')))
-      }
+      onPress={() => sharePDF(salmo, uri)}
     />
   );
 });
 
 const Print = withNavigation(props => {
   const { navigation } = props;
-  const printSong = uri => {
-    RNPrint.print({ filePath: uri, isLandscape: true });
-  };
+  const uri = navigation.getParam('uri');
   return (
     <Icon
       name="print"
@@ -64,19 +63,25 @@ const Print = withNavigation(props => {
         textAlign: 'center',
         color: StackNavigatorOptions.headerTitleStyle.color
       }}
-      onPress={() => printSong(navigation.getParam('uri'))}
+      onPress={() => {
+        RNPrint.print({ filePath: uri, isLandscape: true });
+      }}
     />
   );
 });
 
-PDFViewer.navigationOptions = props => ({
-  title: `PDF - ${props.navigation.getParam('salmo.titulo')}`,
-  headerRight: (
-    <View style={{ flexDirection: 'row' }}>
-      <Share />
-      <Print />
-    </View>
-  )
-});
+PDFViewer.navigationOptions = props => {
+  const { navigation } = props;
+  const { titulo } = navigation.getParam('salmo');
+  return {
+    title: `PDF - ${titulo}`,
+    headerRight: (
+      <View style={{ flexDirection: 'row' }}>
+        <Share />
+        <Print />
+      </View>
+    )
+  };
+};
 
 export default PDFViewer;

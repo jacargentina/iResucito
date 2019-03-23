@@ -1,14 +1,15 @@
 // @flow
-import React, { useContext, useState } from 'react';
+import React, { Fragment, useContext, useState } from 'react';
 import { withNavigation } from 'react-navigation';
 import { Alert, View, Platform } from 'react-native';
-import { Icon, List, Text } from 'native-base';
+import { Icon, List, Text, Fab } from 'native-base';
 import Swipeout from 'react-native-swipeout';
 import ListDetailItem from './ListDetailItem';
 import { DataContext } from '../DataContext';
 import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import I18n from '../translations';
+import commonTheme from '../native-base-theme/variables/platform';
 
 const ListDetail = (props: any) => {
   const data = useContext(DataContext);
@@ -44,44 +45,57 @@ const ListDetail = (props: any) => {
 
   if (uiList.type == 'libre') {
     var songs = uiList.items;
-    if (songs.length === 0) {
-      return (
-        <Text note style={{ textAlign: 'center', marginTop: 20 }}>
-          {I18n.t('ui.empty songs list')}
-        </Text>
-      );
-    }
-
     return (
-      <KeyboardAwareScrollView contentContainerStyle={{ flexGrow: 1 }}>
-        <List>
-          {songs.map((song, key) => {
-            var swipeoutBtns = [
-              {
-                text: I18n.t('ui.delete'),
-                type: Platform.OS == 'ios' ? 'delete' : 'default',
-                backgroundColor: Platform.OS == 'android' ? '#e57373' : null,
-                onPress: () => {
-                  confirmListDeleteSong(song.titulo, listName, key);
-                }
-              }
-            ];
-            return (
-              <Swipeout
-                key={key}
-                right={swipeoutBtns}
-                backgroundColor="white"
-                autoClose={true}>
-                <ListDetailItem
-                  listName={listName}
-                  listKey={key}
-                  listText={song}
-                />
-              </Swipeout>
-            );
-          })}
-        </List>
-      </KeyboardAwareScrollView>
+      <Fragment>
+        <KeyboardAwareScrollView contentContainerStyle={{ flexGrow: 1 }}>
+          {songs.length === 0 && (
+            <Text note style={{ textAlign: 'center', marginTop: 20 }}>
+              {I18n.t('ui.empty songs list')}
+            </Text>
+          )}
+          {songs.length > 0 && (
+            <List>
+              {songs.map((song, key) => {
+                var swipeoutBtns = [
+                  {
+                    text: I18n.t('ui.delete'),
+                    type: Platform.OS == 'ios' ? 'delete' : 'default',
+                    backgroundColor:
+                      Platform.OS == 'android' ? '#e57373' : null,
+                    onPress: () => {
+                      confirmListDeleteSong(song.titulo, listName, key);
+                    }
+                  }
+                ];
+                return (
+                  <Swipeout
+                    key={key}
+                    right={swipeoutBtns}
+                    backgroundColor="white"
+                    autoClose={true}>
+                    <ListDetailItem
+                      listName={listName}
+                      listKey={key}
+                      listText={song}
+                    />
+                  </Swipeout>
+                );
+              })}
+            </List>
+          )}
+        </KeyboardAwareScrollView>
+        <Fab
+          containerStyle={{}}
+          style={{ backgroundColor: commonTheme.brandPrimary }}
+          position="bottomRight"
+          onPress={() =>
+            navigation.navigate('SalmoChooser', {
+              target: { listName: listName, listKey: uiList.items.length }
+            })
+          }>
+          <Icon name="add" />
+        </Fab>
+      </Fragment>
     );
   }
   return (
@@ -230,34 +244,6 @@ const ShareList = withNavigation(props => {
   );
 });
 
-const AddSong = withNavigation(props => {
-  const data = useContext(DataContext);
-  const list = props.navigation.getParam('list');
-  if (!list) {
-    return null;
-  }
-  const { lists } = data.lists;
-  const targetList = lists[list.name];
-  if (targetList.type !== 'libre') {
-    return null;
-  }
-  const { show } = data.salmoChooserDialog;
-  return (
-    <Icon
-      name="add"
-      style={{
-        marginTop: 4,
-        marginRight: 8,
-        width: 32,
-        fontSize: 30,
-        textAlign: 'center',
-        color: StackNavigatorOptions.headerTitleStyle.color
-      }}
-      onPress={() => show(list.name, targetList.items.length)}
-    />
-  );
-});
-
 ListDetail.navigationOptions = props => {
   const list = props.navigation.getParam('list');
   return {
@@ -265,7 +251,6 @@ ListDetail.navigationOptions = props => {
     headerRight: (
       <View style={{ flexDirection: 'row' }}>
         <ShareList />
-        <AddSong />
       </View>
     )
   };

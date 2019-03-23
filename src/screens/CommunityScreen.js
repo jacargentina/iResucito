@@ -13,8 +13,9 @@ import I18n from '../translations';
 import ContactPhoto from './ContactPhoto';
 import { contactFilterByText, ordenAlfabetico } from '../util';
 
-const CommunityScreen = () => {
+const CommunityScreen = (props: any) => {
   const data = useContext(DataContext);
+  const { navigation } = props;
   const { brothers, update, remove, add, save } = data.community;
   const [filtered, setFiltered] = useState();
   const listRef = useRef();
@@ -40,11 +41,19 @@ const CommunityScreen = () => {
     }
   };
   useEffect(() => {
-    if (filtered && filtered.length > 0) {
-      setTimeout(() => {
-        if (listRef.current)
-          listRef.current.scrollToIndex({ index: 0, animated: true });
-      }, 10);
+    if (filtered) {
+      if (filtered.length > 0) {
+        if (listRef.current) {
+          setTimeout(() => {
+            listRef.current.scrollToIndex({
+              index: 0,
+              animated: true,
+              viewOffset: 0,
+              viewPosition: 1
+            });
+          }, 50);
+        }
+      }
     }
   }, [filtered]);
 
@@ -76,19 +85,19 @@ const CommunityScreen = () => {
     save();
   };
 
-  if (brothers.length == 0 && filter !== '')
+  if (brothers.length == 0 && !filter)
     return (
       <CallToAction
         icon="people"
         title={I18n.t('call_to_action_title.community list')}
         text={I18n.t('call_to_action_text.community list')}
-        buttonHandler={data.contactImportDialog.show}
+        buttonHandler={() => navigation.navigate('ContactImport')}
         buttonText={I18n.t('call_to_action_button.community list')}
       />
     );
   return (
     <SearchBarView value={filter} setValue={setFilter}>
-      {brothers.length == 0 && (
+      {filtered && filtered.length == 0 && (
         <Text note style={{ textAlign: 'center', paddingTop: 20 }}>
           {I18n.t('ui.no contacts found')}
         </Text>

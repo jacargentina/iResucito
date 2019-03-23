@@ -1,5 +1,6 @@
 // @flow
 import React, { useContext, useEffect } from 'react';
+import { withNavigation } from 'react-navigation';
 import { Dimensions, ScrollView, View } from 'react-native';
 import { Container, Content, Text, Icon, Badge } from 'native-base';
 import KeepAwake from 'react-native-keep-awake';
@@ -19,13 +20,16 @@ import commonTheme from '../native-base-theme/variables/platform';
 
 const SalmoDetail = (props: any) => {
   const data = useContext(DataContext);
+  const { navigation } = props;
   const { transportNote } = data;
   const { keys } = data.settings;
 
-  var salmo = props.navigation.state.params.salmo;
+  var salmo = navigation.getParam('salmo');
+
   var backColor = color(colors[salmo.etapa]);
   var background = backColor.lighten(0.1).string();
   var itemsToRender = getSalmoTransported(salmo, transportNote);
+
   // Ajuste final para renderizado en screen
   var lines = itemsToRender.map(it => {
     var c = Object.assign({}, it);
@@ -92,7 +96,7 @@ const SalmoDetail = (props: any) => {
   );
 };
 
-const TransportNotesMenu = () => {
+const TransportNotesMenu = withNavigation(() => {
   const data = useContext(DataContext);
   const { transportNote, setTransportNote } = data;
 
@@ -156,20 +160,13 @@ const TransportNotesMenu = () => {
       </MenuOptions>
     </Menu>
   );
-};
+});
 
-const ViewPdf = props => {
+const ViewPdf = withNavigation(props => {
   const data = useContext(DataContext);
-  const { generatePDF } = data;
-
-  const viewPdf = (salmo, lines, navigation) => {
-    generatePDF(salmo, lines).then(path => {
-      navigation.navigate('PDFViewer', {
-        uri: path,
-        salmo: salmo
-      });
-    });
-  };
+  const { navigation } = props;
+  const { transportNote, generatePDF } = data;
+  const salmo = navigation.getParam('salmo');
 
   return (
     <Icon
@@ -182,21 +179,30 @@ const ViewPdf = props => {
         textAlign: 'center',
         color: StackNavigatorOptions.headerTitleStyle.color
       }}
-      onPress={() => viewPdf(props.salmo, props.lines, props.navigation)}
+      onPress={() => {
+        const lines = getSalmoTransported(salmo, transportNote);
+        generatePDF(salmo, lines).then(path => {
+          navigation.navigate('PDFViewer', {
+            uri: path,
+            salmo: salmo
+          });
+        });
+      }}
     />
   );
-};
-
-SalmoDetail.navigationOptions = (props: any) => ({
-  title: props.navigation.state.params
-    ? props.navigation.state.params.salmo.titulo
-    : 'Salmo',
-  headerRight: (
-    <View style={{ flexDirection: 'row' }}>
-      <ViewPdf {...props} />
-      <TransportNotesMenu {...props} />
-    </View>
-  )
 });
+
+SalmoDetail.navigationOptions = (props: any) => {
+  const salmo = props.navigation.getParam('salmo');
+  return {
+    title: salmo ? salmo.titulo : 'Salmo',
+    headerRight: (
+      <View style={{ flexDirection: 'row' }}>
+        <ViewPdf />
+        <TransportNotesMenu />
+      </View>
+    )
+  };
+};
 
 export default SalmoDetail;

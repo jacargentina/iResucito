@@ -769,7 +769,7 @@ const useCommunity = () => {
 export const DataContext: any = React.createContext();
 
 const DataContextWrapper = (props: any) => {
-  const [transportNote, setTransportNode] = useState();
+  const [transportNote, setTransportNote] = useState();
   const settings = useSettings();
   const songsMeta = useSongsMeta();
   const search = useSearch();
@@ -842,7 +842,7 @@ const DataContextWrapper = (props: any) => {
         generatePDF,
         shareIndexPatch,
         transportNote,
-        setTransportNode
+        setTransportNote
       }}>
       {props.children}
     </DataContext.Provider>
