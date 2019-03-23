@@ -1,68 +1,74 @@
 // @flow
-import React, { useContext, useState, useEffect } from 'react';
-import { withNavigation } from 'react-navigation';
-import { ListItem, Left, Body, Icon, Text, ActionSheet } from 'native-base';
+import React, { useContext, useState, useMemo, useEffect } from 'react';
+import {
+  ListItem,
+  Left,
+  Body,
+  Icon,
+  Text,
+  ActionSheet,
+  Fab
+} from 'native-base';
 import { Alert, FlatList, Platform } from 'react-native';
 import Swipeout from 'react-native-swipeout';
 import SearchBarView from './SearchBarView';
 import { DataContext } from '../DataContext';
-import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
 import CallToAction from './CallToAction';
 import I18n from '../translations';
-
-const listAdd = (navigation: any) => {
-  ActionSheet.show(
-    {
-      options: [
-        I18n.t('list_type.eucharist'),
-        I18n.t('list_type.word'),
-        I18n.t('list_type.other'),
-        I18n.t('ui.cancel')
-      ],
-      cancelButtonIndex: 3,
-      title: I18n.t('ui.lists.type')
-    },
-    index => {
-      var type = null;
-      index = Number(index);
-      switch (index) {
-        case 0:
-          type = 'eucaristia';
-          break;
-        case 1:
-          type = 'palabra';
-          break;
-        case 2:
-          type = 'libre';
-          break;
-      }
-      if (type !== null)
-        navigation.navigate('ListAdd', {
-          type,
-          onCreated: name => {
-            navigation.navigate('ListDetail', { list: { name } });
-          }
-        });
-    }
-  );
-};
+import commonTheme from '../native-base-theme/variables/platform';
 
 const ListScreen = (props: any) => {
   const data = useContext(DataContext);
   const { navigation } = props;
-  const [uiLists, setUILists] = useState([]);
-  const {
-    lists,
-    getListsForUI,
-    removeList,
-    save,
-    filter,
-    setFilter
-  } = data.lists;
+  const { lists, getListsForUI, removeList, save } = data.lists;
+  const [filtered, setFiltered] = useState();
+  const [filter, setFilter] = useState('');
+  const allLists = useMemo(() => getListsForUI(), [lists]);
 
   useEffect(() => {
-    setUILists(getListsForUI());
-  }, [lists]);
+    var result = allLists;
+    if (filter !== '') {
+      result = result.filter(c => c.name.includes(filter));
+    }
+    setFiltered(result);
+  }, [filter]);
+
+  const listAdd = () => {
+    ActionSheet.show(
+      {
+        options: [
+          I18n.t('list_type.eucharist'),
+          I18n.t('list_type.word'),
+          I18n.t('list_type.other'),
+          I18n.t('ui.cancel')
+        ],
+        cancelButtonIndex: 3,
+        title: I18n.t('ui.lists.type')
+      },
+      index => {
+        var type = null;
+        index = Number(index);
+        switch (index) {
+          case 0:
+            type = 'eucaristia';
+            break;
+          case 1:
+            type = 'palabra';
+            break;
+          case 2:
+            type = 'libre';
+            break;
+        }
+        if (type !== null)
+          navigation.navigate('ListAdd', {
+            type,
+            onCreated: name => {
+              navigation.navigate('ListDetail', { list: { name } });
+            }
+          });
+      }
+    );
+  };
 
   const listDelete = list => {
     Alert.alert(
@@ -85,21 +91,26 @@ const ListScreen = (props: any) => {
     );
   };
 
-  if (uiLists.length == 0)
+  if (allLists.length == 0)
     return (
       <CallToAction
         icon="bookmark"
         title={I18n.t('call_to_action_title.add lists')}
         text={I18n.t('call_to_action_text.add lists')}
-        buttonHandler={() => listAdd(navigation)}
+        buttonHandler={listAdd}
         buttonText={I18n.t('call_to_action_button.add lists')}
       />
     );
 
   return (
     <SearchBarView value={filter} setValue={setFilter}>
+      {filtered && filtered.length == 0 && (
+        <Text note style={{ textAlign: 'center', paddingTop: 20 }}>
+          {I18n.t('ui.no lists found')}
+        </Text>
+      )}
       <FlatList
-        data={uiLists}
+        data={filtered}
         keyExtractor={item => item.name}
         renderItem={({ item }) => {
           var swipeoutBtns = [
@@ -136,31 +147,19 @@ const ListScreen = (props: any) => {
           );
         }}
       />
+      <Fab
+        containerStyle={{}}
+        style={{ backgroundColor: commonTheme.brandPrimary }}
+        position="bottomRight"
+        onPress={listAdd}>
+        <Icon name="add" />
+      </Fab>
     </SearchBarView>
   );
 };
 
-const AddList = withNavigation((props: any) => {
-  const { navigation } = props;
-  return (
-    <Icon
-      name="add"
-      style={{
-        marginTop: 4,
-        marginRight: 8,
-        width: 32,
-        fontSize: 30,
-        textAlign: 'center',
-        color: StackNavigatorOptions.headerTitleStyle.color
-      }}
-      onPress={() => listAdd(navigation)}
-    />
-  );
-});
-
 ListScreen.navigationOptions = () => ({
-  title: I18n.t('screen_title.lists'),
-  headerRight: <AddList />
+  title: I18n.t('screen_title.lists')
 });
 
 export default ListScreen;

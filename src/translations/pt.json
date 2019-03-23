@@ -18,13 +18,13 @@
       "create": "Criar lista",
       "type": "Tipo de lista"
     },
-    "community empty":
-      "Sem nomes importados. Para escolher da lista, você deve importar dos seus contatos na opção Comunidade.",
+    "community empty": "Sem nomes importados. Para escolher da lista, você deve importar dos seus contatos na opção Comunidade.",
     "search placeholder": "Pesquisar",
     "locale warning title": "Tradução incompleta",
     "locale warning message": "O canto não foi incorporado ainda no seu idioma",
     "donate message": "Ajude fazendo uma doação. A paz!",
     "donate button": "Doar",
+    "no lists found": "Nenhuma lista encontrada",
     "no songs found": "Nenhum canto encontrado",
     "no contacts found": "Nenhum contato encontrado",
     "empty songs list": "Lista de cantos vazia",
@@ -124,10 +124,8 @@
     "community list": "Lista da Comunidade"
   },
   "call_to_action_text": {
-    "add lists":
-      "As listas te permitem organizar a celebração litúrgica para lembrar ou compartilhar com seus irmãos e irmãs da Comunidade",
-    "community list":
-      "Você pode importar dos seus contatos os nomes dos irmãos e irmãs da comunidade e usá-los ao criar as listas"
+    "add lists": "As listas te permitem organizar a celebração litúrgica para lembrar ou compartilhar com seus irmãos e irmãs da Comunidade",
+    "community list": "Você pode importar dos seus contatos os nomes dos irmãos e irmãs da comunidade e usá-los ao criar as listas"
   },
   "call_to_action_button": {
     "add lists": "Criar uma Lista",
@@ -143,10 +141,8 @@
   },
   "settings_note": {
     "locale": "Traduzir o aplicativo para as línguas disponíveis",
-    "keep awake":
-      "Evitar que o dispositivo apague a tela ao visualizar um canto",
-    "developer mode":
-      "Ativar somente se você for um colaborador na tradução dos cantos"
+    "keep awake": "Evitar que o dispositivo apague a tela ao visualizar um canto",
+    "developer mode": "Ativar somente se você for um colaborador na tradução dos cantos"
   },
   "share_action": {
     "view pdf": "Ver como PDF",

@@ -347,16 +347,6 @@ export const useSearchSongs = (
 
 const useLists = (songs: any) => {
   const [lists, initLists] = useState({});
-  const [filter, setFilter] = useState('');
-
-  useEffect(() => {
-    if (filter !== '') {
-      var filteredLists = lists.filter(c => c.name.contains(filter));
-    } else {
-      var filteredLists = lists;
-    }
-    initLists(filteredLists);
-  }, [filter]);
 
   const addList = (listName, type) => {
     let schema = { type: type };
@@ -542,9 +532,7 @@ const useLists = (songs: any) => {
     getListForUI,
     getListsForUI,
     shareList,
-    save,
-    filter,
-    setFilter
+    save
   };
 };
 

@@ -1,7 +1,7 @@
 {
   "ui": {
     "default": "Predefinito",
-    "loading":  "Caricamento in corso...",
+    "loading": "Caricamento in corso...",
     "collaborators": "Collaboratori",
     "share": "Inviare",
     "back": "Ritorno",
@@ -18,14 +18,13 @@
       "create": "Creare elenco",
       "type": "Tipo di elenco"
     },
-    "community empty":
-      "Senza nomi importati Per scegliere dall'elenco, è necessario importare dai contatti nell'opzione Comunità.",
+    "community empty": "Senza nomi importati Per scegliere dall'elenco, è necessario importare dai contatti nell'opzione Comunità.",
     "search placeholder": "Cercare",
     "locale warning title": "Traduzione incompleta",
-    "locale warning message":
-      "La canzone non è stata ancora incorporata nella tua lingua",
+    "locale warning message": "La canzone non è stata ancora incorporata nella tua lingua",
     "donate message": "Contribuisci a fare una donazione. Pace!",
     "donate button": "Donare",
+    "no lists found": "Nessun elenco trovato",
     "no songs found": "Nessuna canzone trovata",
     "no contacts found": "Nessun contatto trovato",
     "empty songs list": "Elenco di canzoni vuote",
@@ -125,10 +124,8 @@
     "community list": "Elenco della Comunità"
   },
   "call_to_action_text": {
-    "add lists":
-      "Gli elenchi ti permettono organizzare una celebrazione liturgica per ricordare o condividere con i fretelli della comunità",
-    "community list":
-      "Puo importare dai i tuoi contatti i nomi dei fratelli della comunitàe usarli per creare un elenco"
+    "add lists": "Gli elenchi ti permettono organizzare una celebrazione liturgica per ricordare o condividere con i fretelli della comunità",
+    "community list": "Puo importare dai i tuoi contatti i nomi dei fratelli della comunitàe usarli per creare un elenco"
   },
   "call_to_action_button": {
     "add lists": "Creare elenco",
@@ -144,10 +141,8 @@
   },
   "settings_note": {
     "locale": "Traduci l'app in una lingua disponibile",
-    "keep awake":
-      "Evitare che il dispositivo entri in riposo al momento di visualizzare un salmo",
-    "developer mode":
-      "Abilita solo se sei un collaboratore nella traduzione delle canzoni"
+    "keep awake": "Evitare che il dispositivo entri in riposo al momento di visualizzare un salmo",
+    "developer mode": "Abilita solo se sei un collaboratore nella traduzione delle canzoni"
   },
   "share_action": {
     "view pdf": "Visualizza come PDF",
@@ -160,7 +155,6 @@
   "alert_message": {
     "corrupt patch": "Il file di la patch era corrotta ed è stata cancellata",
     "contacts permission": "I contatti non possono essere letti",
-    "contacts permission ios":
-      "Concedere l'autorizzazione nella schermata Impostazioni -> iResucito -> Contatti"
+    "contacts permission ios": "Concedere l'autorizzazione nella schermata Impostazioni -> iResucito -> Contatti"
   }
 }

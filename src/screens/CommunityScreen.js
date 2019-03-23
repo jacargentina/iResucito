@@ -1,12 +1,10 @@
 // @flow
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { withNavigation } from 'react-navigation';
-import { ListItem, Right, Body, Icon, Text } from 'native-base';
+import { ListItem, Right, Body, Icon, Text, Fab } from 'native-base';
 import Swipeout from 'react-native-swipeout';
 import { Alert, FlatList, View } from 'react-native';
 import SearchBarView from './SearchBarView';
 import { DataContext } from '../DataContext';
-import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
 import CallToAction from './CallToAction';
 import commonTheme from '../native-base-theme/variables/platform';
 import I18n from '../translations';
@@ -85,6 +83,10 @@ const CommunityScreen = (props: any) => {
     save();
   };
 
+  const contactImport = () => {
+    navigation.navigate('ContactImport');
+  };
+
   if (brothers.length == 0 && !filter)
     return (
       <CallToAction
@@ -95,6 +97,7 @@ const CommunityScreen = (props: any) => {
         buttonText={I18n.t('call_to_action_button.community list')}
       />
     );
+
   return (
     <SearchBarView value={filter} setValue={setFilter}>
       {filtered && filtered.length == 0 && (
@@ -155,29 +158,19 @@ const CommunityScreen = (props: any) => {
           );
         }}
       />
+      <Fab
+        containerStyle={{}}
+        style={{ backgroundColor: commonTheme.brandPrimary }}
+        position="bottomRight"
+        onPress={contactImport}>
+        <Icon name="add" />
+      </Fab>
     </SearchBarView>
   );
 };
 
-const ImportContactsButton = withNavigation((props: any) => {
-  const { navigation } = props;
-  return (
-    <Icon
-      name="add"
-      style={{
-        marginTop: 4,
-        marginRight: 8,
-        textAlign: 'center',
-        color: StackNavigatorOptions.headerTitleStyle.color
-      }}
-      onPress={() => navigation.navigate('ContactImport')}
-    />
-  );
-});
-
 CommunityScreen.navigationOptions = () => ({
-  title: I18n.t('screen_title.community'),
-  headerRight: <ImportContactsButton />
+  title: I18n.t('screen_title.community')
 });
 
 export default CommunityScreen;
