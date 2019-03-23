@@ -21,14 +21,10 @@ const ListDetailItem = (props: any) => {
   const data = useContext(DataContext);
   const { navigation } = props;
   const { setList, save } = data.lists;
+  const { listName, listKey, listText, inputProps } = props;
 
   var item = null;
-  if (
-    props.listKey === '1' ||
-    props.listKey === '2' ||
-    props.listKey === '3' ||
-    props.listKey === 'evangelio'
-  ) {
+  if (['1', '2', '3', 'evangelio'].includes(listKey)) {
     item = (
       <ListItem icon last>
         <Left>
@@ -37,19 +33,20 @@ const ListDetailItem = (props: any) => {
         <Body>
           <Input
             onChangeText={text => {
-              setList(props.listName, props.listKey, text);
+              setList(listName, listKey, text);
               save();
             }}
-            value={props.listText}
+            value={listText}
             clearButtonMode="always"
             autoCorrect={false}
+            {...inputProps}
           />
         </Body>
       </ListItem>
     );
   } else if (
-    typeof props.listKey == 'string' &&
-    (props.listKey.includes('monicion') || props.listKey.includes('ambiental'))
+    typeof listKey == 'string' &&
+    (listKey.includes('monicion') || listKey.includes('ambiental'))
   ) {
     item = (
       <ListItem icon last>
@@ -59,12 +56,13 @@ const ListDetailItem = (props: any) => {
         <Body>
           <Input
             onChangeText={text => {
-              setList(props.listName, props.listKey, text);
+              setList(listName, listKey, text);
               save();
             }}
-            value={props.listText}
+            value={listText}
             clearButtonMode="always"
             autoCorrect={false}
+            {...inputProps}
           />
         </Body>
         <Right>
@@ -78,25 +76,26 @@ const ListDetailItem = (props: any) => {
             }}
             onPress={() =>
               navigation.navigate('ContactChooser', {
-                target: { listName: props.listName, key: props.listKey }
+                target: { listName: listName, listKey: listKey }
               })
             }
           />
         </Right>
       </ListItem>
     );
-  } else if (props.listKey === 'nota') {
+  } else if (listKey === 'nota') {
     item = (
       <ListItem>
         <Body>
           <TextInput
             multiline
             onChangeText={text => {
-              setList(props.listName, props.listKey, text);
+              setList(listName, listKey, text);
               save();
             }}
-            value={props.listText}
+            value={listText}
             autoCorrect={false}
+            {...inputProps}
           />
         </Body>
       </ListItem>
@@ -104,11 +103,11 @@ const ListDetailItem = (props: any) => {
   } else {
     // Cualquier otro caso, es un canto
     var text =
-      props.listText == null
+      listText == null
         ? I18n.t('ui.search placeholder') + '...'
-        : props.listText.titulo;
+        : listText.titulo;
     var navigateSalmo =
-      props.listText != null ? (
+      listText != null ? (
         <Right>
           <Icon
             name="open"
@@ -120,7 +119,7 @@ const ListDetailItem = (props: any) => {
             }}
             onPress={() =>
               navigation.navigate('SalmoDetail', {
-                salmo: props.listText
+                salmo: listText
               })
             }
           />
@@ -133,7 +132,7 @@ const ListDetailItem = (props: any) => {
         button
         onPress={() =>
           navigation.navigate('SalmoChooser', {
-            target: { listName: props.listName, key: props.listKey }
+            target: { listName: listName, listKey: listKey }
           })
         }>
         <Left>
@@ -147,8 +146,8 @@ const ListDetailItem = (props: any) => {
     );
   }
   // Solo las claves de tipo string, llevan los titulos (eucaristia, palabra)
-  if (typeof props.listKey === 'string') {
-    var friendlyText = getFriendlyText(props.listKey);
+  if (typeof listKey === 'string') {
+    var friendlyText = getFriendlyText(listKey);
     var separator = (
       <Separator bordered>
         <Text>{friendlyText}</Text>

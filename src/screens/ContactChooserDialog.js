@@ -16,7 +16,8 @@ const ContactChooserDialog = (props: any) => {
   const { brothers } = data.community;
   const [contacts, setContacts] = useState([]);
   const [filter, setFilter] = useState('');
-  const { target } = navigation.getParam('target');
+
+  const target = navigation.getParam('target');
 
   useEffect(() => {
     var filteredContacts = Object.assign([], brothers);

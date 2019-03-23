@@ -1,6 +1,6 @@
 // @flow
 import React, { useContext, useEffect, useState } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Tab, Tabs, ScrollableTab } from 'native-base';
 import BaseModal from './BaseModal';
 import SalmoList from './SalmoList';
@@ -19,7 +19,7 @@ const SalmoChooserDialog = (props: any) => {
   const { setSongLocalePatch } = data.songsMeta;
   const [tabs, setTabs] = useState([]);
 
-  const { target } = navigation.getParam('target');
+  const target = navigation.getParam('target');
 
   useEffect(() => {
     if (search.searchItems) {
@@ -40,25 +40,28 @@ const SalmoChooserDialog = (props: any) => {
     }
   };
 
+  var items = tabs.map((v, i) => {
+    return (
+      <Tab
+        key={i}
+        heading={v.chooser.toUpperCase()}
+        textStyle={styles.tabs}
+        activeTextStyle={styles.tabs}>
+        <SalmoList
+          filter={v.params ? v.params.filter : null}
+          devModeDisabled={true}
+          onPress={salmo => songAssign(salmo)}
+        />
+      </Tab>
+    );
+  });
+
   return (
-    <BaseModal title={I18n.t('screen_title.find song')} fade={true}>
-      <Tabs initialPage={0} renderTabBar={() => <ScrollableTab />}>
-        {tabs &&
-          tabs.map((v, i) => {
-            return (
-              <Tab
-                key={i}
-                heading={v.chooser.toUpperCase()}
-                textStyle={styles.tabs}
-                activeTextStyle={styles.tabs}>
-                <SalmoList
-                  filter={v.params ? v.params.filter : null}
-                  devModeDisabled={true}
-                  onPress={salmo => songAssign(salmo)}
-                />
-              </Tab>
-            );
-          })}
+    <BaseModal title={I18n.t('screen_title.find song')}>
+      <Tabs
+        initialPage={0}
+        renderTabBar={() => (items.length > 0 ? <ScrollableTab /> : <View />)}>
+        {items}
       </Tabs>
     </BaseModal>
   );

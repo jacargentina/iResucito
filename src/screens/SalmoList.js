@@ -20,15 +20,22 @@ const SalmoList = (props: any) => {
   );
 
   useEffect(() => {
-    if (search && search.length > 0) {
-      setTimeout(() => {
-        if (listRef.current)
-          listRef.current.scrollToIndex({ index: 0, animated: true });
-      }, 10);
-      setTotalText(I18n.t('ui.list total songs', { total: search.length }));
-    }
-    if (search && search.length === 0) {
-      setTotalText(I18n.t('ui.no songs found'));
+    if (search) {
+      if (search.length > 0) {
+        if (listRef.current) {
+          setTimeout(() => {
+            listRef.current.scrollToIndex({
+              index: 0,
+              animated: true,
+              viewOffset: 0,
+              viewPosition: 1
+            });
+          }, 50);
+        }
+        setTotalText(I18n.t('ui.list total songs', { total: search.length }));
+      } else {
+        setTotalText(I18n.t('ui.no songs found'));
+      }
     }
   }, [search]);
 

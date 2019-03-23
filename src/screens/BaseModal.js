@@ -3,7 +3,6 @@ import React from 'react';
 import { withNavigation } from 'react-navigation';
 import { Text, Icon } from 'native-base';
 import { View, Platform, SafeAreaView } from 'react-native';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import commonTheme from '../native-base-theme/variables/platform';
 
 const BaseModal = (props: any) => {
@@ -23,48 +22,46 @@ const BaseModal = (props: any) => {
     />
   );
   return (
-    <KeyboardAwareScrollView>
-      <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
+    <SafeAreaView style={{ flexGrow: 1, backgroundColor: 'white' }}>
+      <View
+        style={{
+          flex: 1,
+          paddingTop: Platform.OS == 'ios' ? 10 : 0,
+          backgroundColor: 'white'
+        }}>
         <View
           style={{
-            flex: 1,
-            paddingTop: Platform.OS == 'ios' ? 10 : 0,
-            backgroundColor: 'white'
+            flex: 0,
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            margin: 5
           }}>
-          <View
+          <Text
             style={{
-              flex: 0,
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              margin: 5
+              fontSize: commonTheme.fontSizeBase + 3,
+              fontWeight: 'bold',
+              paddingLeft: 10
             }}>
-            <Text
-              style={{
-                fontSize: commonTheme.fontSizeBase + 3,
-                fontWeight: 'bold',
-                paddingLeft: 10
-              }}>
-              {props.title}
-            </Text>
-            {closeButton}
-          </View>
-          <View
-            style={{
-              flex: 1
-            }}>
-            {props.children}
-          </View>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'flex-end'
-            }}>
-            {props.acceptButtons}
-          </View>
+            {props.title}
+          </Text>
+          {closeButton}
         </View>
-      </SafeAreaView>
-    </KeyboardAwareScrollView>
+        <View
+          style={{
+            flex: 1
+          }}>
+          {props.children}
+        </View>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'flex-end'
+          }}>
+          {props.acceptButtons}
+        </View>
+      </View>
+    </SafeAreaView>
   );
 };
 

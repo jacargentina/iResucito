@@ -1,5 +1,5 @@
 // @flow
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import { withNavigation } from 'react-navigation';
 import { Alert, View, Platform } from 'react-native';
 import { Icon, List, Text } from 'native-base';
@@ -12,15 +12,12 @@ import I18n from '../translations';
 
 const ListDetail = (props: any) => {
   const data = useContext(DataContext);
+  const [scroll, setScroll] = useState();
+  const [noteFocused, setNoteFocused] = useState(false);
   const { navigation } = props;
-  const [uiList, setUIList] = useState();
-  const { lists, setList, getListForUI, save } = data.lists;
+  const { setList, getListForUI, save } = data.lists;
 
-  const listName = navigation.getParam('list.name');
-
-  useEffect(() => {
-    setUIList(getListForUI(listName));
-  }, [lists]);
+  const { name: listName } = navigation.getParam('list');
 
   const confirmListDeleteSong = (songTitle, list, key) => {
     Alert.alert(
@@ -43,9 +40,7 @@ const ListDetail = (props: any) => {
     );
   };
 
-  if (!uiList) {
-    return null;
-  }
+  const uiList = getListForUI(listName);
 
   if (uiList.type == 'libre') {
     var songs = uiList.items;
@@ -56,8 +51,9 @@ const ListDetail = (props: any) => {
         </Text>
       );
     }
+
     return (
-      <KeyboardAwareScrollView>
+      <KeyboardAwareScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <List>
           {songs.map((song, key) => {
             var swipeoutBtns = [
@@ -89,7 +85,9 @@ const ListDetail = (props: any) => {
     );
   }
   return (
-    <KeyboardAwareScrollView>
+    <KeyboardAwareScrollView
+      contentContainerStyle={{ flexGrow: 1 }}
+      innerRef={ref => setScroll(ref)}>
       <List>
         <ListDetailItem
           listName={listName}
@@ -196,6 +194,19 @@ const ListDetail = (props: any) => {
           listName={listName}
           listKey="nota"
           listText={uiList.nota}
+          inputProps={{
+            onFocus: () => {
+              setNoteFocused(true);
+            },
+            onBlur: () => {
+              setNoteFocused(false);
+            },
+            onContentSizeChange: () => {
+              if (noteFocused && scroll) {
+                scroll.props.scrollToEnd();
+              }
+            }
+          }}
         />
       </List>
     </KeyboardAwareScrollView>
