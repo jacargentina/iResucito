@@ -24,7 +24,7 @@
     "locale warning message": "Das Lied wurde noch nicht in deine Sprache hinzugefügt",
     "donate message": "Hilf mit einer Spende. Friede!",
     "donate button": "Spende",
-    "no lists found": "Keine Listen gefunden",
+    "no lists found": "Keine Tabelle gefunden",
     "no songs found": "Keine Lieder gefunden",
     "no contacts found": "Keine Kontakte gefunden",
     "empty songs list": "Tabelle ohne Lieder",
@@ -91,7 +91,7 @@
   },
   "search_note": {
     "alpha": "Lieder in alphabetischer Reihenfolge",
-    "precatechumenate": "Lieder für das Vor-Katechuenat",
+    "precatechumenate": "Lieder für das Vor-Katechumenat",
     "catechumenate": "Lieder für das Katechumenat",
     "election": "Lieder für die Auserwählung",
     "liturgy": "Lieder für Liturgien",
