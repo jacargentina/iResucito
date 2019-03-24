@@ -64,8 +64,4 @@ const SalmoSearch = (props: any) => {
   );
 };
 
-SalmoSearch.navigationOptions = () => ({
-  title: I18n.t('screen_title.search')
-});
-
 export default SalmoSearch;

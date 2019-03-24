@@ -154,8 +154,4 @@ const ListScreen = (props: any) => {
   );
 };
 
-ListScreen.navigationOptions = () => ({
-  title: I18n.t('screen_title.lists')
-});
-
 export default ListScreen;

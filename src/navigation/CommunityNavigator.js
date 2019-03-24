@@ -4,10 +4,11 @@ import { createStackNavigator } from 'react-navigation';
 import StackNavigatorOptions from './StackNavigatorOptions';
 import { Icon } from 'native-base';
 import CommunityScreen from '../screens/CommunityScreen';
+import withI18nTitle from './withI18nTitle';
 
 const CommunityNavigator = createStackNavigator(
   {
-    Community: CommunityScreen
+    Community: withI18nTitle(CommunityScreen, 'screen_title.community')
   },
   {
     defaultNavigationOptions: StackNavigatorOptions

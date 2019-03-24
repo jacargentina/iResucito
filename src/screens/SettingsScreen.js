@@ -152,8 +152,4 @@ const SettingsScreen = (props: any) => {
   );
 };
 
-SettingsScreen.navigationOptions = () => ({
-  title: I18n.t('screen_title.settings')
-});
-
 export default SettingsScreen;

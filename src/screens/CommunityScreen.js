@@ -169,8 +169,4 @@ const CommunityScreen = (props: any) => {
   );
 };
 
-CommunityScreen.navigationOptions = () => ({
-  title: I18n.t('screen_title.community')
-});
-
 export default CommunityScreen;

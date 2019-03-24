@@ -8,10 +8,11 @@ import SalmoList from '../screens/SalmoList';
 import SalmoDetail from '../screens/SalmoDetail';
 import UnassignedList from '../screens/UnassignedList';
 import PDFViewer from '../screens/PDFViewer';
+import withI18nTitle from './withI18nTitle';
 
 const SongsNavigator = createStackNavigator(
   {
-    SalmoSearch: SalmoSearch,
+    SalmoSearch: withI18nTitle(SalmoSearch, 'screen_title.search'),
     SalmoList: SalmoList,
     SalmoDetail: SalmoDetail,
     PDFViewer: PDFViewer,
