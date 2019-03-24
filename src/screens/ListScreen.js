@@ -60,8 +60,9 @@ const ListScreen = (props: any) => {
             break;
         }
         if (type !== null)
-          navigation.navigate('ListAdd', {
-            type
+          navigation.navigate('ListName', {
+            action: 'create',
+            type: type
           });
       }
     );
@@ -87,6 +88,13 @@ const ListScreen = (props: any) => {
     );
   };
 
+  const listRename = list => {
+    navigation.navigate('ListName', {
+      action: 'rename',
+      list: list
+    });
+  };
+
   if (allLists.length == 0)
     return (
       <CallToAction
@@ -110,6 +118,13 @@ const ListScreen = (props: any) => {
         keyExtractor={item => item.name}
         renderItem={({ item }) => {
           var swipeoutBtns = [
+            {
+              text: I18n.t('ui.rename'),
+              type: 'primary',
+              onPress: () => {
+                listRename(item);
+              }
+            },
             {
               text: I18n.t('ui.delete'),
               type: Platform.OS == 'ios' ? 'delete' : 'default',

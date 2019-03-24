@@ -8,6 +8,7 @@
     "done": "Done",
     "version": "Version",
     "psalmist": "Psalmist",
+    "rename": "Rename",
     "delete": "Delete",
     "cancel": "Cancel",
     "create": "Create",
@@ -16,6 +17,7 @@
       "already exists": "A list with the same name already exists",
       "non-empty name": "Enter a non-empty name",
       "create": "Create List",
+      "rename": "Rename List",
       "type": "List type"
     },
     "community empty":

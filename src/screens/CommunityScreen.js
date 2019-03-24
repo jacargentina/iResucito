@@ -14,7 +14,7 @@ import { contactFilterByText, ordenAlfabetico } from '../util';
 const CommunityScreen = (props: any) => {
   const data = useContext(DataContext);
   const { navigation } = props;
-  const { brothers, update, remove, add, save } = data.community;
+  const { brothers, update, remove, add } = data.community;
   const [filtered, setFiltered] = useState();
   const listRef = useRef();
   const [filter, setFilter] = useState('');
@@ -64,7 +64,6 @@ const CommunityScreen = (props: any) => {
           text: I18n.t('ui.delete'),
           onPress: () => {
             addOrRemove(contact);
-            save();
           },
           style: 'destructive'
         },
@@ -80,7 +79,6 @@ const CommunityScreen = (props: any) => {
     const newValue = !(contact[attribute] === true);
     var updatedContact = Object.assign({}, contact, { [attribute]: newValue });
     update(contact.recordID, updatedContact);
-    save();
   };
 
   const contactImport = () => {

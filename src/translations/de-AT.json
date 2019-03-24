@@ -8,6 +8,7 @@
     "done": "Fertig",
     "version": "Version",
     "psalmist": "Kantor",
+    "rename": "Umbenennen",
     "delete": "Löschen",
     "cancel": "Abbrechen",
     "create": "Erstellen",
@@ -16,6 +17,7 @@
       "already exists": "Es existiert bereits eine Tabelle mit demselben Namen",
       "non-empty name": "Geben Sie einen nicht leeren Namen ein",
       "create": "Tabelle erstellen",
+      "rename": "Tabelle umbenennen",
       "type": "Art der Tabelle"
     },
     "community empty": "Ohne importierte Namen. Um aus der Tabelle auszuwählen, sollst du in der Gemeinschaft-Option von deinen Kontakten importieren.",

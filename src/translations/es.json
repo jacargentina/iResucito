@@ -8,6 +8,7 @@
     "done": "Listo",
     "version": "Versión",
     "psalmist": "Salmista",
+    "rename": "Renombrar",
     "delete": "Eliminar",
     "cancel": "Cancelar",
     "create": "Crear",
@@ -16,6 +17,7 @@
       "already exists": "Ya existe una lista con el mismo nombre",
       "non-empty name": "Ingrese un nombre no vacío",
       "create": "Crear Lista",
+      "rename": "Renombrar Lista",
       "type": "Tipo de lista"
     },
     "community empty":

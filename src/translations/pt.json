@@ -8,6 +8,7 @@
     "done": "Feito",
     "version": "Versão",
     "psalmist": "Salmista",
+    "rename": "Renomear",
     "delete": "Excluir",
     "cancel": "Cancelar",
     "create": "Criar",
@@ -16,6 +17,7 @@
       "already exists": "Uma lista com o mesmo nome já existe",
       "non-empty name": "Insira um nome não vazio",
       "create": "Criar lista",
+      "rename": "Renomear lista",
       "type": "Tipo de lista"
     },
     "community empty": "Sem nomes importados. Para escolher da lista, você deve importar dos seus contatos na opção Comunidade.",

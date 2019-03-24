@@ -441,6 +441,13 @@ const useLists = (songs: any) => {
     initLists(changedLists);
   };
 
+  const renameList = (listName, newName) => {
+    const list = lists[listName];
+    delete lists[listName];
+    const changedLists = Object.assign({}, lists, { [newName]: list });
+    initLists(changedLists);
+  };
+
   const getList = (listName, listKey) => {
     const targetList = lists[listName];
     return targetList[listKey];
@@ -587,6 +594,7 @@ const useLists = (songs: any) => {
     initLists,
     addList,
     removeList,
+    renameList,
     getList,
     setList,
     getListForUI,

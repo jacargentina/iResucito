@@ -7,7 +7,7 @@ import SalmoChooserDialog from '../screens/SalmoChooserDialog';
 import SalmoChooseLocaleDialog from '../screens/SalmoChooseLocaleDialog';
 import ContactChooserDialog from '../screens/ContactChooserDialog';
 import ContactImportDialog from '../screens/ContactImportDialog';
-import ListAddDialog from '../screens/ListAddDialog';
+import ListNameDialog from '../screens/ListNameDialog';
 
 const RootNavigator = createStackNavigator(
   {
@@ -17,7 +17,7 @@ const RootNavigator = createStackNavigator(
     SalmoChooseLocale: SalmoChooseLocaleDialog,
     ContactChooser: ContactChooserDialog,
     ContactImport: ContactImportDialog,
-    ListAdd: ListAddDialog
+    ListName: ListNameDialog
   },
   {
     mode: 'modal',

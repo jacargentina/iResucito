@@ -8,6 +8,7 @@
     "done": "Completato",
     "version": "Versione",
     "psalmist": "Cantore",
+    "rename": "Rinominare",
     "delete": "Rimuovere",
     "cancel": "Annullare",
     "create": "Creare",
@@ -16,6 +17,7 @@
       "already exists": "Esiste già un elenco con lo stesso nome",
       "non-empty name": "Inserisci un nome non vuoto",
       "create": "Creare elenco",
+      "rename": "Rinominare elenco",
       "type": "Tipo di elenco"
     },
     "community empty": "Senza nomi importati Per scegliere dall'elenco, è necessario importare dai contatti nell'opzione Comunità.",
