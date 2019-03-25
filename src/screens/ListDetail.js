@@ -16,7 +16,7 @@ const ListDetail = (props: any) => {
   const [scroll, setScroll] = useState();
   const [noteFocused, setNoteFocused] = useState(false);
   const { navigation } = props;
-  const { setList, getListForUI, save } = data.lists;
+  const { setList, getListForUI } = data.lists;
 
   const { name: listName } = navigation.getParam('list');
 
@@ -29,7 +29,6 @@ const ListDetail = (props: any) => {
           text: I18n.t('ui.delete'),
           onPress: () => {
             setList(list, key);
-            save();
           },
           style: 'destructive'
         },
