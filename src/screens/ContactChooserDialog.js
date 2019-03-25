@@ -12,7 +12,7 @@ import { contactFilterByText, ordenAlfabetico } from '../util';
 const ContactChooserDialog = (props: any) => {
   const data = useContext(DataContext);
   const { navigation } = props;
-  const { setList, save } = data.lists;
+  const { setList } = data.lists;
   const { brothers } = data.community;
   const [contacts, setContacts] = useState([]);
   const [filter, setFilter] = useState('');
@@ -32,7 +32,6 @@ const ContactChooserDialog = (props: any) => {
 
   const contactSelected = contact => {
     setList(target.listName, target.listKey, contact.givenName);
-    save();
     navigation.goBack(null);
   };
 
