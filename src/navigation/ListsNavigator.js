@@ -6,11 +6,10 @@ import { Icon } from 'native-base';
 import ListScreen from '../screens/ListScreen';
 import ListDetail from '../screens/ListDetail';
 import SalmoDetail from '../screens/SalmoDetail';
-import withI18nTitle from './withI18nTitle';
 
 const ListsNavigator = createStackNavigator(
   {
-    Lists: withI18nTitle(ListScreen, 'screen_title.lists'),
+    Lists: ListScreen,
     ListDetail: ListDetail,
     SalmoDetail: SalmoDetail
   },

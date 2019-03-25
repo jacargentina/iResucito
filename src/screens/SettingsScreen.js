@@ -1,5 +1,5 @@
 // @flow
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { View, Alert } from 'react-native';
 import { AndroidBackHandler } from 'react-navigation-backhandler';
 import {
@@ -20,12 +20,20 @@ import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
 import { getLocalesForPicker } from '../util';
 import commonTheme from '../native-base-theme/variables/platform';
 
+const titleLocaleKey = 'screen_title.settings';
+
 const SettingsScreen = (props: any) => {
   const data = useContext(DataContext);
   const { navigation } = props;
+  const { settings } = data;
+  const locale = settings.keys ? settings.keys.locale : 'default';
   const { shareIndexPatch } = data;
   const { indexPatchExists, clearIndexPatch } = data.songsMeta;
   const { keys, setKey: updateSetting } = data.settings;
+
+  useEffect(() => {
+    navigation.setParams({ title: I18n.t(titleLocaleKey) });
+  }, [locale]);
 
   const confirmClearIndexPatch = () => {
     Alert.alert(
@@ -150,6 +158,10 @@ const SettingsScreen = (props: any) => {
       </View>
     </AndroidBackHandler>
   );
+};
+
+SettingsScreen.navigationOptions = () => {
+  return { title: I18n.t(titleLocaleKey) };
 };
 
 export default SettingsScreen;

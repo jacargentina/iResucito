@@ -11,6 +11,9 @@ import { DataContext, useSearchSongs } from '../DataContext';
 const SalmoList = (props: any) => {
   const listRef = useRef();
   const data = useContext(DataContext);
+  const { navigation } = props;
+  const { settings } = data;
+  const locale = settings.keys ? settings.keys.locale : 'default';
   const [totalText, setTotalText] = useState(I18n.t('ui.loading'));
   const { songs } = data.songsMeta;
   const { search, textFilter, setTextFilter, showSalmosBadge } = useSearchSongs(
@@ -18,6 +21,10 @@ const SalmoList = (props: any) => {
     props.navigation.getParam('filter', undefined),
     props.filter
   );
+
+  useEffect(() => {
+    navigation.setParams({ title: I18n.t(navigation.getParam('title_key')) });
+  }, [locale]);
 
   useEffect(() => {
     if (search) {
@@ -77,7 +84,7 @@ const SalmoList = (props: any) => {
 
 SalmoList.navigationOptions = (props: any) => {
   return {
-    title: props.navigation.getParam('title', 'Sin título')
+    title: I18n.t(props.navigation.getParam('title_key'))
   };
 };
 

@@ -17,13 +17,21 @@ import CallToAction from './CallToAction';
 import I18n from '../translations';
 import commonTheme from '../native-base-theme/variables/platform';
 
+const titleLocaleKey = 'screen_title.lists';
+
 const ListScreen = (props: any) => {
   const data = useContext(DataContext);
   const { navigation } = props;
+  const { settings } = data;
+  const locale = settings.keys ? settings.keys.locale : 'default';
   const { lists, getListsForUI, removeList } = data.lists;
   const [filtered, setFiltered] = useState();
   const [filter, setFilter] = useState('');
   const allLists = useMemo(() => getListsForUI(), [lists]);
+
+  useEffect(() => {
+    navigation.setParams({ title: I18n.t(titleLocaleKey) });
+  }, [locale]);
 
   useEffect(() => {
     var result = allLists;
@@ -167,6 +175,10 @@ const ListScreen = (props: any) => {
       </Fab>
     </SearchBarView>
   );
+};
+
+ListScreen.navigationOptions = () => {
+  return { title: I18n.t(titleLocaleKey) };
 };
 
 export default ListScreen;

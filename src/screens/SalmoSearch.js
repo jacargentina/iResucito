@@ -1,11 +1,13 @@
 // @flow
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { AndroidBackHandler } from 'react-navigation-backhandler';
 import { FlatList, ScrollView, View } from 'react-native';
 import { Spinner, ListItem, Left, Body, Text, Separator } from 'native-base';
 import { DataContext } from '../DataContext';
 import I18n from '../translations';
 import commonTheme from '../native-base-theme/variables/platform';
+
+const titleLocaleKey = 'screen_title.search';
 
 const Loading = () => {
   return (
@@ -20,7 +22,14 @@ const Loading = () => {
 
 const SalmoSearch = (props: any) => {
   const data = useContext(DataContext);
+  const { navigation } = props;
   const { initialized, searchItems } = data.search;
+  const { settings } = data;
+  const locale = settings.keys ? settings.keys.locale : 'default';
+
+  useEffect(() => {
+    navigation.setParams({ title: I18n.t(titleLocaleKey) });
+  }, [locale]);
 
   if (!initialized) {
     return <Loading />;
@@ -33,13 +42,13 @@ const SalmoSearch = (props: any) => {
         keyboardDismissMode="on-drag">
         <FlatList
           data={searchItems}
-          keyExtractor={item => item.title}
+          keyExtractor={(item, i) => String(i)}
           renderItem={({ item, index }) => {
             var nextItem = searchItems[index + 1];
             if (item.divider) {
               return (
                 <Separator bordered>
-                  <Text>{item.title}</Text>
+                  <Text>{I18n.t(item.title_key)}</Text>
                 </Separator>
               );
             }
@@ -52,7 +61,7 @@ const SalmoSearch = (props: any) => {
                 }}>
                 <Left>{item.badge}</Left>
                 <Body>
-                  <Text>{item.title}</Text>
+                  <Text>{I18n.t(item.title_key)}</Text>
                   <Text note>{item.note}</Text>
                 </Body>
               </ListItem>
@@ -62,6 +71,10 @@ const SalmoSearch = (props: any) => {
       </ScrollView>
     </AndroidBackHandler>
   );
+};
+
+SalmoSearch.navigationOptions = () => {
+  return { title: I18n.t(titleLocaleKey) };
 };
 
 export default SalmoSearch;

@@ -11,13 +11,21 @@ import I18n from '../translations';
 import ContactPhoto from './ContactPhoto';
 import { contactFilterByText, ordenAlfabetico } from '../util';
 
+const titleLocaleKey = 'screen_title.community';
+
 const CommunityScreen = (props: any) => {
   const data = useContext(DataContext);
+  const { settings } = data;
+  const locale = settings.keys ? settings.keys.locale : 'default';
   const { navigation } = props;
   const { brothers, update, remove, add } = data.community;
   const [filtered, setFiltered] = useState();
   const listRef = useRef();
   const [filter, setFilter] = useState('');
+
+  useEffect(() => {
+    navigation.setParams({ title: I18n.t(titleLocaleKey) });
+  }, [locale]);
 
   useEffect(() => {
     var result = [...brothers];
@@ -165,6 +173,10 @@ const CommunityScreen = (props: any) => {
       </Fab>
     </SearchBarView>
   );
+};
+
+CommunityScreen.navigationOptions = () => {
+  return { title: I18n.t(titleLocaleKey) };
 };
 
 export default CommunityScreen;

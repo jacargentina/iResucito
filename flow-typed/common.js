@@ -52,11 +52,11 @@ declare type SongRef = Song | SongFile;
 
 declare type SearchParams = {
   filter: any,
-  title?: string
+  title_key?: string
 };
 
 declare type SearchItem = {
-  title: string,
+  title_key: string,
   divider?: boolean,
   note?: string,
   route?: string,

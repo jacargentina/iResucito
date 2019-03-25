@@ -42,7 +42,7 @@
   },
   "dependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.4.0",
-    "@react-native-community/cli": "^1.5.1",
+    "@react-native-community/cli": "^1.4.6",
     "color": "^3.1.0",
     "eslint": "^5.15.3",
     "eslint-import-resolver-node": "^0.3.2",

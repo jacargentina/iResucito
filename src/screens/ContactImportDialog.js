@@ -26,7 +26,7 @@ import {
 const ContactImportDialog = (props: any) => {
   const data = useContext(DataContext);
   const { navigation } = props;
-  const { brothers, addOrRemove, save } = data.community;
+  const { brothers, addOrRemove } = data.community;
   const [loading, setLoading] = useState(false);
   const [contacts, setContacts] = useState([]);
   const [filtered, setFiltered] = useState();
@@ -62,7 +62,6 @@ const ContactImportDialog = (props: any) => {
   }, [brothers]);
 
   const close = () => {
-    save();
     setFilter('');
     navigation.goBack(null);
   };
