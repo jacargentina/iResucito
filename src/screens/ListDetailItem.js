@@ -20,7 +20,7 @@ import I18n from '../translations';
 const ListDetailItem = (props: any) => {
   const data = useContext(DataContext);
   const { navigation } = props;
-  const { setList, save } = data.lists;
+  const { setList } = data.lists;
   const { listName, listKey, listText, inputProps } = props;
 
   var item = null;
@@ -28,13 +28,12 @@ const ListDetailItem = (props: any) => {
     item = (
       <ListItem icon last>
         <Left>
-          <Icon name="book" />
+          <Icon name="book" style={{ color: commonTheme.brandInfo }} />
         </Left>
         <Body>
           <Input
             onChangeText={text => {
               setList(listName, listKey, text);
-              save();
             }}
             value={listText}
             clearButtonMode="always"
@@ -51,13 +50,12 @@ const ListDetailItem = (props: any) => {
     item = (
       <ListItem icon last>
         <Left>
-          <Icon name="person" />
+          <Icon name="person" style={{ color: commonTheme.brandInfo }} />
         </Left>
         <Body>
           <Input
             onChangeText={text => {
               setList(listName, listKey, text);
-              save();
             }}
             value={listText}
             clearButtonMode="always"
@@ -92,7 +90,6 @@ const ListDetailItem = (props: any) => {
             multiline
             onChangeText={text => {
               setList(listName, listKey, text);
-              save();
             }}
             value={listText}
             autoCorrect={false}
@@ -137,7 +134,7 @@ const ListDetailItem = (props: any) => {
           })
         }>
         <Left>
-          <Icon name="musical-notes" />
+          <Icon name="musical-notes" style={{ color: commonTheme.brandInfo }} />
         </Left>
         <Body>
           <Text numberOfLines={1}>{text}</Text>

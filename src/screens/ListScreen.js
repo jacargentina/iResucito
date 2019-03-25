@@ -155,7 +155,10 @@ const ListScreen = (props: any) => {
                   });
                 }}>
                 <Left>
-                  <Icon name="bookmark" style={{ fontSize: 36 }} />
+                  <Icon
+                    name="bookmark"
+                    style={{ fontSize: 36, color: commonTheme.brandInfo }}
+                  />
                 </Left>
                 <Body>
                   <Text style={{ fontSize: 26 }}>{item.name}</Text>
