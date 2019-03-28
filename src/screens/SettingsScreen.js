@@ -25,15 +25,13 @@ const titleLocaleKey = 'screen_title.settings';
 const SettingsScreen = (props: any) => {
   const data = useContext(DataContext);
   const { navigation } = props;
-  const { settings } = data;
-  const locale = settings.keys ? settings.keys.locale : 'default';
   const { shareIndexPatch } = data;
   const { indexPatchExists, clearIndexPatch } = data.songsMeta;
   const { keys, setKey: updateSetting } = data.settings;
 
   useEffect(() => {
     navigation.setParams({ title: I18n.t(titleLocaleKey) });
-  }, [locale]);
+  }, [I18n.locale]);
 
   const confirmClearIndexPatch = () => {
     Alert.alert(

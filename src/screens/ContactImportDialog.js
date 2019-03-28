@@ -8,16 +8,13 @@ import {
   View,
   TouchableOpacity,
   Keyboard,
-  StyleSheet,
-  Platform,
-  Alert
+  StyleSheet
 } from 'react-native';
 import { DataContext } from '../DataContext';
 import commonTheme from '../native-base-theme/variables/platform';
 import I18n from '../translations';
 import ContactPhoto from './ContactPhoto';
 import {
-  getContacts,
   getContactsForImport,
   contactFilterByText,
   ordenAlfabetico
@@ -26,7 +23,7 @@ import {
 const ContactImportDialog = (props: any) => {
   const data = useContext(DataContext);
   const { navigation } = props;
-  const { brothers, addOrRemove } = data.community;
+  const { brothers, deviceContacts, addOrRemove } = data.community;
   const [loading, setLoading] = useState(false);
   const [contacts, setContacts] = useState([]);
   const [filtered, setFiltered] = useState();
@@ -42,23 +39,12 @@ const ContactImportDialog = (props: any) => {
   }, [contacts, filter]);
 
   useEffect(() => {
-    setLoading(true);
-    getContacts()
-      .then(contacts => {
-        var withName = contacts.filter(
-          c => c.givenName.length > 0 || c.familyName.length > 0
-        );
-        var result = getContactsForImport(withName, brothers);
-        setContacts(result);
-        setLoading(false);
-      })
-      .catch(() => {
-        let message = I18n.t('alert_message.contacts permission');
-        if (Platform.OS == 'ios') {
-          message += '\n\n' + I18n.t('alert_message.contacts permission ios');
-        }
-        Alert.alert(I18n.t('alert_title.contacts permission'), message);
-      });
+    var withName = deviceContacts.filter(
+      c => c.givenName.length > 0 || c.familyName.length > 0
+    );
+    var result = getContactsForImport(withName, brothers);
+    setContacts(result);
+    setLoading(false);
   }, [brothers]);
 
   const close = () => {

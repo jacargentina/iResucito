@@ -24,12 +24,10 @@ const SalmoSearch = (props: any) => {
   const data = useContext(DataContext);
   const { navigation } = props;
   const { initialized, searchItems } = data.search;
-  const { settings } = data;
-  const locale = settings.keys ? settings.keys.locale : 'default';
 
   useEffect(() => {
     navigation.setParams({ title: I18n.t(titleLocaleKey) });
-  }, [locale]);
+  }, [I18n.locale]);
 
   if (!initialized) {
     return <Loading />;

@@ -28,7 +28,7 @@ const SalmoListItem = (props: any) => {
     setDeveloperMode(isOn);
   }, [keys]);
 
-  var locale = getLocaleReal();
+  var locale = getLocaleReal(keys.locale);
 
   if (props.showBadge) {
     var badgeWrapper = (

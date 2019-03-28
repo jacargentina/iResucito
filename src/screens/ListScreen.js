@@ -22,8 +22,6 @@ const titleLocaleKey = 'screen_title.lists';
 const ListScreen = (props: any) => {
   const data = useContext(DataContext);
   const { navigation } = props;
-  const { settings } = data;
-  const locale = settings.keys ? settings.keys.locale : 'default';
   const { lists, getListsForUI, removeList } = data.lists;
   const [filtered, setFiltered] = useState();
   const [filter, setFilter] = useState('');
@@ -31,7 +29,7 @@ const ListScreen = (props: any) => {
 
   useEffect(() => {
     navigation.setParams({ title: I18n.t(titleLocaleKey) });
-  }, [locale]);
+  }, [I18n.locale]);
 
   useEffect(() => {
     var result = allLists;
@@ -123,6 +121,7 @@ const ListScreen = (props: any) => {
       )}
       <FlatList
         data={filtered}
+        extraData={I18n.locale}
         keyExtractor={item => item.name}
         renderItem={({ item }) => {
           var swipeoutBtns = [

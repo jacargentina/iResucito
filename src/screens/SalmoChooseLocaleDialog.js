@@ -11,24 +11,24 @@ const SalmoChooseLocaleDialog = (props: any) => {
   const data = useContext(DataContext);
   const { navigation } = props;
   const { songs, localeSongs, setSongLocalePatch } = data.songsMeta;
-  const { getLocaleReal } = data.settings;
+  const { keys, getLocaleReal } = data.settings;
   const [items, setItems] = useState([]);
 
-  const { target } = navigation.getParam('target');
+  const target = navigation.getParam('target');
 
   useEffect(() => {
-    if (localeSongs) {
-      const locale = getLocaleReal();
+    if (keys && localeSongs) {
+      const locale = getLocaleReal(keys.locale);
       var res = localeSongs.filter(locSong => {
         var found = songs.find(s => s.files[locale] === locSong.nombre);
         return !found;
       });
       setItems(res);
     }
-  }, [localeSongs]);
+  }, [keys, localeSongs]);
 
   const localeFileSelected = file => {
-    const locale = getLocaleReal();
+    const locale = getLocaleReal(keys.locale);
     setSongLocalePatch(target, locale, file);
     navigation.goBack(null);
   };

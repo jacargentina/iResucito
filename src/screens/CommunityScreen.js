@@ -1,6 +1,7 @@
 // @flow
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { ListItem, Right, Body, Icon, Text, Fab } from 'native-base';
+import { withNavigationFocus } from 'react-navigation';
 import Swipeout from 'react-native-swipeout';
 import { Alert, FlatList, View } from 'react-native';
 import SearchBarView from './SearchBarView';
@@ -15,9 +16,7 @@ const titleLocaleKey = 'screen_title.community';
 
 const CommunityScreen = (props: any) => {
   const data = useContext(DataContext);
-  const { settings } = data;
-  const locale = settings.keys ? settings.keys.locale : 'default';
-  const { navigation } = props;
+  const { navigation, isFocused } = props;
   const { brothers, update, remove, add } = data.community;
   const [filtered, setFiltered] = useState();
   const listRef = useRef();
@@ -25,7 +24,7 @@ const CommunityScreen = (props: any) => {
 
   useEffect(() => {
     navigation.setParams({ title: I18n.t(titleLocaleKey) });
-  }, [locale]);
+  }, [I18n.locale]);
 
   useEffect(() => {
     var result = [...brothers];
@@ -48,7 +47,7 @@ const CommunityScreen = (props: any) => {
   };
   useEffect(() => {
     if (filtered) {
-      if (filtered.length > 0) {
+      if (filtered.length > 0 && isFocused) {
         if (listRef.current) {
           setTimeout(() => {
             listRef.current.scrollToIndex({
@@ -61,7 +60,7 @@ const CommunityScreen = (props: any) => {
         }
       }
     }
-  }, [filtered]);
+  }, [filtered, isFocused]);
 
   const contactDelete = contact => {
     Alert.alert(
@@ -114,6 +113,7 @@ const CommunityScreen = (props: any) => {
       <FlatList
         ref={listRef}
         data={filtered}
+        extraData={I18n.locale}
         keyExtractor={item => item.recordID}
         renderItem={({ item }) => {
           var contactFullName = `${item.givenName} ${item.familyName}`;
@@ -179,4 +179,4 @@ CommunityScreen.navigationOptions = () => {
   return { title: I18n.t(titleLocaleKey) };
 };
 
-export default CommunityScreen;
+export default withNavigationFocus(CommunityScreen);

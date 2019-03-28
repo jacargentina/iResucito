@@ -1,34 +1,51 @@
 // @flow
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { withNavigation } from 'react-navigation';
+import { withNavigation, withNavigationFocus } from 'react-navigation';
 import { FlatList, Keyboard } from 'react-native';
 import { Text, ListItem } from 'native-base';
 import SearchBarView from './SearchBarView';
 import SalmoListItem from './SalmoListItem';
 import I18n from '../translations';
-import { DataContext, useSearchSongs } from '../DataContext';
+import { DataContext } from '../DataContext';
 
 const SalmoList = (props: any) => {
   const listRef = useRef();
   const data = useContext(DataContext);
-  const { navigation } = props;
-  const { settings } = data;
-  const locale = settings.keys ? settings.keys.locale : 'default';
+  const { navigation, filter, isFocused } = props;
   const [totalText, setTotalText] = useState(I18n.t('ui.loading'));
   const { songs } = data.songsMeta;
-  const { search, textFilter, setTextFilter, showSalmosBadge } = useSearchSongs(
-    songs,
-    props.navigation.getParam('filter', undefined),
-    props.filter
-  );
+
+  const navFilter = Object.assign({}, navigation.getParam('filter'), filter);
+  const [showSalmosBadge, setShowSalmosBadge] = useState();
+  const [textFilter, setTextFilter] = useState('');
+  const [search, setSearch] = useState();
+
+  useEffect(() => {
+    var result = songs;
+    if (navFilter) {
+      for (var name in navFilter) {
+        result = result.filter(s => s[name] == navFilter[name]);
+      }
+    }
+    if (textFilter) {
+      result = result.filter(s => {
+        return (
+          s.nombre.toLowerCase().includes(textFilter.toLowerCase()) ||
+          s.fullText.toLowerCase().includes(textFilter.toLowerCase())
+        );
+      });
+    }
+    setShowSalmosBadge(navFilter == null || !navFilter.hasOwnProperty('etapa'));
+    setSearch(result);
+  }, [navFilter, textFilter]);
 
   useEffect(() => {
     navigation.setParams({ title: I18n.t(navigation.getParam('title_key')) });
-  }, [locale]);
+  }, [I18n.locale]);
 
   useEffect(() => {
     if (search) {
-      if (search.length > 0) {
+      if (search.length > 0 && isFocused) {
         if (listRef.current) {
           setTimeout(() => {
             listRef.current.scrollToIndex({
@@ -44,7 +61,7 @@ const SalmoList = (props: any) => {
         setTotalText(I18n.t('ui.no songs found'));
       }
     }
-  }, [search]);
+  }, [search, isFocused]);
 
   const onPress = salmo => {
     if (props.onPress) {
@@ -88,4 +105,4 @@ SalmoList.navigationOptions = (props: any) => {
   };
 };
 
-export default withNavigation(SalmoList);
+export default withNavigationFocus(withNavigation(SalmoList));

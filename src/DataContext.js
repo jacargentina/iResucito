@@ -1,6 +1,5 @@
 // @flow
 import React, { useState, useEffect } from 'react';
-import DeviceInfo from 'react-native-device-info';
 import { Alert, Platform, Share } from 'react-native';
 import RNFS from 'react-native-fs';
 import I18n from './translations';
@@ -336,54 +335,6 @@ const useSongsMeta = (locale: any) => {
   };
 };
 
-export const useSearchSongs = (
-  songs: any,
-  filterParam: any,
-  filterProp: any
-): any => {
-  const [navFilter, setNavFilter] = useState();
-  const [showSalmosBadge, setShowSalmosBadge] = useState();
-  const [textFilter, setTextFilter] = useState('');
-  const [search, setSearch] = useState();
-
-  useEffect(() => {
-    if (filterParam) {
-      setNavFilter(filterParam);
-    }
-    if (filterProp) {
-      setNavFilter(filterProp);
-    }
-  }, [filterParam, filterProp]);
-
-  useEffect(() => {
-    var result = songs;
-    if (navFilter) {
-      for (var name in navFilter) {
-        result = result.filter(s => s[name] == navFilter[name]);
-      }
-    }
-    if (textFilter) {
-      result = result.filter(s => {
-        return (
-          s.nombre.toLowerCase().includes(textFilter.toLowerCase()) ||
-          s.fullText.toLowerCase().includes(textFilter.toLowerCase())
-        );
-      });
-    }
-    setShowSalmosBadge(navFilter == null || !navFilter.hasOwnProperty('etapa'));
-    setSearch(result);
-  }, [navFilter, textFilter]);
-
-  return {
-    search,
-    navFilter,
-    setNavFilter,
-    textFilter,
-    setTextFilter,
-    showSalmosBadge
-  };
-};
-
 const useLists = (songs: any) => {
   const [initialized, setInitialized] = useState(false);
   const [lists, initLists] = useState({});
@@ -577,7 +528,9 @@ const useLists = (songs: any) => {
         key: 'lists'
       })
       .then(data => {
-        initLists(data);
+        if (data) {
+          initLists(data);
+        }
         setInitialized(true);
       });
     // TODO
@@ -783,7 +736,8 @@ const useSearch = (locale: string, developerMode: boolean) => {
 const useCommunity = () => {
   const [initialized, setInitialized] = useState(false);
   const [brothers, initBrothers] = useState([]);
-  const [lastThumbsCacheDir, setLastThumbsCacheDir] = useState();
+  const [deviceContacts, initDeviceContacts] = useState();
+  const [updateThumbs, setUpdateThumbs] = useState();
 
   const add = item => {
     var changedContacts = [...brothers, item];
@@ -816,26 +770,26 @@ const useCommunity = () => {
   };
 
   useEffect(() => {
-    if (brothers && initialized && lastThumbsCacheDir) {
-      // sólo actualizar si cambió el directorio de caches
-      if (lastThumbsCacheDir !== RNFS.CachesDirectoryPath) {
-        getContacts().then(currentContacts => {
+    if (brothers && deviceContacts && updateThumbs === true) {
+      // guardar directorio nuevo
+      localdata
+        .save({
+          key: 'lastCachesDirectoryPath',
+          data: RNFS.CachesDirectoryPath
+        })
+        .then(() => {
+          // Evitar nuevas actualizaciones recursivas!
+          setUpdateThumbs(false);
           brothers.forEach(c => {
-            // tomar los datos actualizados
-            var currContact = currentContacts.find(
+            // tomar el contacto actualizado
+            var devContact = deviceContacts.find(
               x => x.recordID === c.recordID
             );
-            update(c.recordID, currContact);
-          });
-          // guardar directorio nuevo
-          localdata.save({
-            key: 'lastCachesDirectoryPath',
-            data: RNFS.CachesDirectoryPath
+            update(c.recordID, devContact);
           });
         });
-      }
     }
-  }, [brothers, initialized, lastThumbsCacheDir]);
+  }, [brothers, deviceContacts, updateThumbs]);
 
   useEffect(() => {
     if (brothers && initialized) {
@@ -848,19 +802,43 @@ const useCommunity = () => {
   }, [brothers, initialized]);
 
   useEffect(() => {
-    localdata
-      .getBatchData([{ key: 'contacts' }, { key: 'lastCachesDirectoryPath' }])
-      .then(result => {
-        const [contacts, lastCachesDirectoryPath] = result;
-        initBrothers(contacts);
-        setLastThumbsCacheDir(
-          DeviceInfo.isEmulator() ? null : lastCachesDirectoryPath
-        );
-        setInitialized(true);
+    getContacts()
+      .then(contacts => {
+        initDeviceContacts(contacts);
+        localdata
+          .getBatchData([
+            { key: 'contacts' },
+            { key: 'lastCachesDirectoryPath' }
+          ])
+          .then(result => {
+            const [contacts, lastCachesDirectoryPath] = result;
+            if (contacts) {
+              initBrothers(contacts);
+            }
+            // sólo actualizar si cambió el directorio de caches
+            var updThumbs =
+              RNFS.CachesDirectoryPath !== lastCachesDirectoryPath;
+            setUpdateThumbs(updThumbs);
+            setInitialized(true);
+          });
+      })
+      .catch(err => {
+        let message = I18n.t('alert_message.contacts permission');
+        if (Platform.OS == 'ios') {
+          message += '\n\n' + I18n.t('alert_message.contacts permission ios');
+        }
+        Alert.alert(I18n.t('alert_title.contacts permission'), message);
       });
   }, []);
 
-  return { brothers, initBrothers, add, update, remove, addOrRemove };
+  return {
+    brothers,
+    deviceContacts,
+    add,
+    update,
+    remove,
+    addOrRemove
+  };
 };
 
 export const DataContext: any = React.createContext();
