@@ -11,11 +11,11 @@ import { DataContext } from '../DataContext';
 const SalmoList = (props: any) => {
   const listRef = useRef();
   const data = useContext(DataContext);
-  const { navigation, filter, isFocused } = props;
+  const { navigation, isFocused } = props;
   const [totalText, setTotalText] = useState(I18n.t('ui.loading'));
   const { songs } = data.songsMeta;
 
-  const navFilter = Object.assign({}, navigation.getParam('filter'), filter);
+  const navFilter = navigation.getParam('filter', props.filter);
   const [showSalmosBadge, setShowSalmosBadge] = useState();
   const [textFilter, setTextFilter] = useState('');
   const [search, setSearch] = useState();

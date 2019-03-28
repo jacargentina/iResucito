@@ -18,15 +18,19 @@ const SalmoChooserDialog = (props: any) => {
   const { setList } = data.lists;
   const { setSongLocalePatch } = data.songsMeta;
   const [tabs, setTabs] = useState([]);
+  const [initialTab, setInitialTab] = useState(0);
 
   const target = navigation.getParam('target');
 
   useEffect(() => {
-    if (search.searchItems) {
-      var tabs = search.searchItems.filter(x => x.chooser != undefined);
-      setTabs(tabs);
+    var tabs = search.searchItems.filter(x => x.chooser != undefined);
+    setTabs(tabs);
+    if (target.listName && target.listKey) {
+      var initialTab = tabs.find(t => t.chooser_listKey === target.listKey);
+      var tabIndex = initialTab ? tabs.indexOf(initialTab) : 0;
+      setInitialTab(tabIndex);
     }
-  }, [search.searchItems]);
+  }, []);
 
   const songAssign = salmo => {
     if (target.listName && target.listKey !== undefined) {
@@ -58,7 +62,7 @@ const SalmoChooserDialog = (props: any) => {
   return (
     <BaseModal title={I18n.t('screen_title.find song')}>
       <Tabs
-        initialPage={0}
+        initialPage={initialTab}
         renderTabBar={() => (items.length > 0 ? <ScrollableTab /> : <View />)}>
         {items}
       </Tabs>
