@@ -22,7 +22,7 @@ const BaseModal = (props: any) => {
   );
   return (
     <SafeAreaView style={{ flexGrow: 1, backgroundColor: 'white' }}>
-      <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
+      <KeyboardAvoidingView style={{ flexGrow: 1 }} behavior="padding">
         <View
           style={{
             flex: 0,
@@ -43,7 +43,7 @@ const BaseModal = (props: any) => {
         </View>
         <View
           style={{
-            flex: 1
+            flexGrow: 1
           }}>
           {props.children}
         </View>
