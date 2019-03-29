@@ -1,17 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.javiercastro.iresucito"
-    android:versionCode="1"
-    android:versionName="1.0">
+    package="com.javiercastro.iresucito">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> 
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-    
-    <uses-sdk
-        android:minSdkVersion="16"
-        android:targetSdkVersion="27" />
 
     <application
       android:name=".MainApplication"
