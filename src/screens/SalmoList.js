@@ -37,31 +37,26 @@ const SalmoList = (props: any) => {
     }
     setShowSalmosBadge(navFilter == null || !navFilter.hasOwnProperty('etapa'));
     setSearch(result);
-  }, [navFilter, textFilter]);
+    if (result.length > 0 && isFocused) {
+      if (listRef.current) {
+        setTimeout(() => {
+          listRef.current.scrollToIndex({
+            index: 0,
+            animated: true,
+            viewOffset: 0,
+            viewPosition: 1
+          });
+        }, 50);
+      }
+      setTotalText(I18n.t('ui.list total songs', { total: result.length }));
+    } else {
+      setTotalText(I18n.t('ui.no songs found'));
+    }
+  }, [navFilter, textFilter, isFocused]);
 
   useEffect(() => {
     navigation.setParams({ title: I18n.t(navigation.getParam('title_key')) });
   }, [I18n.locale]);
-
-  useEffect(() => {
-    if (search) {
-      if (search.length > 0 && isFocused) {
-        if (listRef.current) {
-          setTimeout(() => {
-            listRef.current.scrollToIndex({
-              index: 0,
-              animated: true,
-              viewOffset: 0,
-              viewPosition: 1
-            });
-          }, 50);
-        }
-        setTotalText(I18n.t('ui.list total songs', { total: search.length }));
-      } else {
-        setTotalText(I18n.t('ui.no songs found'));
-      }
-    }
-  }, [search, isFocused]);
 
   const onPress = salmo => {
     if (props.onPress) {

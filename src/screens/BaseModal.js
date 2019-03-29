@@ -13,8 +13,7 @@ const BaseModal = (props: any) => {
     <Icon
       name="close"
       style={{
-        width: 32,
-        fontSize: 30,
+        marginRight: 18,
         textAlign: 'center',
         color: commonTheme.brandPrimary
       }}

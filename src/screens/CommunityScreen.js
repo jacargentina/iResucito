@@ -27,27 +27,14 @@ const CommunityScreen = (props: any) => {
   }, [I18n.locale]);
 
   useEffect(() => {
-    var result = [...brothers];
-    if (filter !== '') {
-      result = result.filter(c => contactFilterByText(c, filter));
-    }
-    result.sort(ordenAlfabetico);
-    setFiltered(result);
-  }, [brothers, filter]);
-
-  const addOrRemove = contact => {
-    var i = brothers.findIndex(c => c.recordID == contact.recordID);
-    // Ya esta importado
-    if (i !== -1) {
-      var item = brothers[i];
-      remove(item);
-    } else {
-      add(contact);
-    }
-  };
-  useEffect(() => {
-    if (filtered) {
-      if (filtered.length > 0 && isFocused) {
+    if (brothers) {
+      var result = [...brothers];
+      if (filter !== '') {
+        result = result.filter(c => contactFilterByText(c, filter));
+      }
+      result.sort(ordenAlfabetico);
+      setFiltered(result);
+      if (result.length > 0 && isFocused) {
         if (listRef.current) {
           setTimeout(() => {
             listRef.current.scrollToIndex({
@@ -60,7 +47,18 @@ const CommunityScreen = (props: any) => {
         }
       }
     }
-  }, [filtered, isFocused]);
+  }, [filter, isFocused]);
+
+  const addOrRemove = contact => {
+    var i = brothers.findIndex(c => c.recordID == contact.recordID);
+    // Ya esta importado
+    if (i !== -1) {
+      var item = brothers[i];
+      remove(item);
+    } else {
+      add(contact);
+    }
+  };
 
   const contactDelete = contact => {
     Alert.alert(
@@ -113,7 +111,7 @@ const CommunityScreen = (props: any) => {
       <FlatList
         ref={listRef}
         data={filtered}
-        extraData={I18n.locale}
+        extraData={{ locale: I18n.locale, brothers }}
         keyExtractor={item => item.recordID}
         renderItem={({ item }) => {
           var contactFullName = `${item.givenName} ${item.familyName}`;

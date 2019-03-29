@@ -46,12 +46,7 @@ const UnassignedList = (props: any) => {
         });
       }
       setSearch(result);
-    }
-  }, [keys, textFilter]);
-
-  useEffect(() => {
-    if (search) {
-      if (search.length > 0 && isFocused) {
+      if (result.length > 0 && isFocused) {
         setTimeout(() => {
           if (listRef.current)
             listRef.current.scrollToIndex({
@@ -63,7 +58,7 @@ const UnassignedList = (props: any) => {
         }, 50);
       }
     }
-  }, [search, isFocused]);
+  }, [keys, textFilter, isFocused]);
 
   return (
     <SearchBarView value={textFilter} setValue={setTextFilter}>
