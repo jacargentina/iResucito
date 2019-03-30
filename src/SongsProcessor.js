@@ -42,7 +42,7 @@ export function esLineaDeNotas(text: string): boolean {
   }
   var linea = text
     .trim()
-    .replace(limpiarNotasRegex, '')
+    .replace(limpiarNotasRegex, ' ')
     .split(' ')
     .filter(i => i.length > 0);
   var soloNotas = linea.filter(palabra => {
@@ -413,7 +413,7 @@ export class SongsProcessor {
         }
       }
       // Ajustar inicios de parrafo (lineas vacias)
-      if (it.texto === '' && i < firstPass.length - 1) {
+      if (!it.notas && it.texto === '' && i < firstPass.length - 1) {
         var nextItmnn = firstPass[i + 1];
         if (nextItmnn.notas || nextItmnn.texto !== '') {
           it.inicioParrafo = true;
