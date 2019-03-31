@@ -67,51 +67,22 @@ const generatePDF = (canto: Song, lines: Array<SongLine>) => {
           fontName: fontName
         });
         y -= fuenteSpacing;
-        var yStart = y;
-        lines.forEach((it: SongLine, index) => {
-          // Mantener los bloques siempre juntos
-          // Los bloques se indican con inicioParrafo == true
-          // Solo si estamos en la primer columna, calculamos si puede
-          // pintarse por completo el bloque sin cortes; caso contrario
-          // generamos la 2da columna
-          // Si es el primer bloque de todos, no tenerlo en cuenta: hay cantos
-          // cuyo primer bloque es muy largo (ej. "Adónde te escondiste amado"
-          //  y en este caso hay que cortarlo forzosamente
-          if (it.inicioParrafo && y !== yStart && x === primerColumnaX) {
-            // console.log('Inicio de Parrafo:', it.texto);
-            if (y < 0) {
-              x = segundaColumnaX;
-              y = yStart;
-            } else {
-              var alturaParrafo = 0;
-              //var textoParrafo = '';
-              var i = index; // loop de i
-              while (i < lines.length) {
-                //textoParrafo += `${lines[i].texto}\n`;
-                alturaParrafo += cantoSpacing;
-                i += 1;
-                if (i < lines.length && lines[i].inicioParrafo) {
-                  break;
-                }
-              }
-              // console.log(
-              //   'Texto del bloque: %s, y: %s, alturaParrafo: %s, diferencia: %s',
-              //   textoParrafo,
-              //   y,
-              //   alturaParrafo,
-              //   y - alturaParrafo
-              // );
-              if (y - alturaParrafo <= 21) {
-                x = segundaColumnaX;
-                y = yStart;
-              }
-            }
-          }
+        var yStart = y - parrafoSpacing;
+        lines.forEach((it: SongLine) => {
           if (it.inicioParrafo) {
             y -= parrafoSpacing;
           }
           if (it.tituloEspecial) {
             y -= parrafoSpacing * 2;
+          }
+          var limiteHoja = 21;
+          var alturaExtra = 0;
+          if (it.notas) {
+            alturaExtra = cantoSpacing;
+          }
+          if (y - alturaExtra <= limiteHoja) {
+            x = segundaColumnaX;
+            y = yStart;
           }
           if (it.notas === true) {
             page1.drawText(it.texto, {
