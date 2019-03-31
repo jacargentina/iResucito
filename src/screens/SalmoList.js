@@ -52,7 +52,7 @@ const SalmoList = (props: any) => {
     } else {
       setTotalText(I18n.t('ui.no songs found'));
     }
-  }, [navFilter, textFilter, isFocused]);
+  }, [navFilter, textFilter]);
 
   useEffect(() => {
     navigation.setParams({ title: I18n.t(navigation.getParam('title_key')) });

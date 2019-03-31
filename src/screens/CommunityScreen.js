@@ -47,7 +47,7 @@ const CommunityScreen = (props: any) => {
         }
       }
     }
-  }, [filter, isFocused]);
+  }, [filter]);
 
   const addOrRemove = contact => {
     var i = brothers.findIndex(c => c.recordID == contact.recordID);

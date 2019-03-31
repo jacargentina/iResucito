@@ -34,8 +34,7 @@ const UnassignedList = (props: any) => {
     if (keys) {
       const locale = getLocaleReal(keys.locale);
       var result = localeSongs.filter(locSong => {
-        var found = songs.find(s => s.files[locale] === locSong.nombre);
-        return !found;
+        return !songs.find(s => s.files[locale] === locSong.nombre);
       });
       if (textFilter) {
         result = result.filter(locSong => {
@@ -58,7 +57,7 @@ const UnassignedList = (props: any) => {
         }, 50);
       }
     }
-  }, [keys, textFilter, isFocused]);
+  }, [keys, textFilter]);
 
   return (
     <SearchBarView value={textFilter} setValue={setTextFilter}>
