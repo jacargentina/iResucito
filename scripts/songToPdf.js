@@ -73,42 +73,22 @@ export function generatePDF(canto: Song, lines: Array<SongLine>) {
     });
   var y = titleFontSize + fuenteFontSize + fuenteSpacing;
   var x = primerColumnaX;
-  var yStart = y;
-  lines.forEach((it: SongLine, index) => {
-    // Mantener los bloques siempre juntos
-    // Los bloques se indican con inicioParrafo == true
-    // Solo si estamos en la primer columna, calculamos si puede
-    // pintarse por completo el bloque sin cortes; caso contrario
-    // generamos la 2da columna
-    // Si es el primer bloque de todos, no tenerlo en cuenta: hay cantos
-    // cuyo primer bloque es muy largo (ej. "Adónde te escondiste amado"
-    //  y en este caso hay que cortarlo forzosamente
-    if (it.inicioParrafo && y !== yStart && x === primerColumnaX) {
-      // console.log('Inicio de Parrafo:', it.texto);
-      if (y > widthHeightPixels) {
-        x = segundaColumnaX;
-        y = yStart;
-      } else {
-        var alturaParrafo = 0;
-        var i = index; // loop de i
-        while (i < lines.length) {
-          alturaParrafo += cantoSpacing;
-          i += 1;
-          if (i < lines.length && lines[i].inicioParrafo) {
-            break;
-          }
-        }
-        if (y + alturaParrafo >= widthHeightPixels - marginTopBottom * 2) {
-          x = segundaColumnaX;
-          y = yStart;
-        }
-      }
-    }
+  var yStart = y + parrafoSpacing;
+  lines.forEach((it: SongLine) => {
     if (it.inicioParrafo) {
       y += parrafoSpacing;
     }
     if (it.tituloEspecial) {
       y += parrafoSpacing * 2;
+    }
+    var limiteHoja = widthHeightPixels - marginTopBottom * 2;
+    var alturaExtra = 0;
+    if (it.notas) {
+      alturaExtra = cantoSpacing;
+    }
+    if (y + alturaExtra >= limiteHoja) {
+      x = segundaColumnaX;
+      y = yStart;
     }
     if (it.notas === true) {
       doc
