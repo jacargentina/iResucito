@@ -1,6 +1,6 @@
 // @flow
 import React, { useContext, useEffect, useRef, useState, useMemo } from 'react';
-import { ListItem, Right, Body, Icon, Text, Fab } from 'native-base';
+import { Icon, Text, Fab } from 'native-base';
 import { withNavigationFocus } from 'react-navigation';
 import Swipeout from 'react-native-swipeout';
 import { Alert, FlatList, View } from 'react-native';
@@ -9,7 +9,7 @@ import { DataContext } from '../DataContext';
 import CallToAction from './CallToAction';
 import commonTheme from '../native-base-theme/variables/platform';
 import I18n from '../translations';
-import ContactPhoto from './ContactPhoto';
+import ContactListItem from './ContactListItem';
 import { contactFilterByText, ordenAlfabetico } from '../util';
 
 const titleLocaleKey = 'screen_title.community';
@@ -147,14 +147,7 @@ const CommunityScreen = (props: any) => {
               right={swipeoutBtns}
               backgroundColor="white"
               autoClose={true}>
-              <ListItem>
-                <ContactPhoto item={item} />
-                <Body>
-                  <Text>{item.givenName}</Text>
-                  <Text note>{contactFullName}</Text>
-                </Body>
-                <Right>{flags}</Right>
-              </ListItem>
+              <ContactListItem item={item} />
             </Swipeout>
           );
         }}
