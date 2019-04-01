@@ -1,5 +1,5 @@
 // @flow
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { withNavigation } from 'react-navigation';
 import { Dimensions, ScrollView, View } from 'react-native';
 import { Container, Content, Text, Icon, Badge } from 'native-base';
@@ -13,16 +13,16 @@ import {
 import colors from '../colors';
 import color from 'color';
 import { notas } from '../SongsProcessor';
-import { NativeStyles, getSalmoTransported } from '../util';
+import { NativeStyles, getSalmoTransported, generatePDF } from '../util';
 import { DataContext } from '../DataContext';
 import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
 import commonTheme from '../native-base-theme/variables/platform';
 
 const SalmoDetail = (props: any) => {
   const data = useContext(DataContext);
-  const { navigation } = props;
-  const { transportNote } = data;
   const { keys } = data.settings;
+  const { navigation } = props;
+  const [transportNote, setTransportNote] = useState();
 
   var salmo = navigation.getParam('salmo');
 
@@ -38,6 +38,10 @@ const SalmoDetail = (props: any) => {
     }
     return c;
   });
+
+  useEffect(() => {
+    navigation.setParams({ transportNote, setTransportNote });
+  }, [transportNote, setTransportNote]);
 
   useEffect(() => {
     if (keys.keepAwake) {
@@ -96,9 +100,10 @@ const SalmoDetail = (props: any) => {
   );
 };
 
-const TransportNotesMenu = withNavigation(() => {
-  const data = useContext(DataContext);
-  const { transportNote, setTransportNote } = data;
+const TransportNotesMenu = withNavigation((props: any) => {
+  const { navigation } = props;
+  const transportNote = navigation.getParam('transportNote');
+  const setTransportNote = navigation.getParam('setTransportNote');
 
   var menuOptionItems = notas.map((nota, i) => {
     if (transportNote === nota)
@@ -163,10 +168,9 @@ const TransportNotesMenu = withNavigation(() => {
 });
 
 const ViewPdf = withNavigation(props => {
-  const data = useContext(DataContext);
   const { navigation } = props;
-  const { transportNote, generatePDF } = data;
   const salmo = navigation.getParam('salmo');
+  const transportNote = navigation.getParam('transportNote');
 
   return (
     <Icon
