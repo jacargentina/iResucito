@@ -1,4 +1,12 @@
 {
+  "songs": {
+    "psalmist": "C.",
+    "assembly": "A.",
+    "priest": "P.",
+    "men": "U.",
+    "women": "D.",
+    "children": "N."
+  },
   "ui": {
     "default": "Predefinito",
     "loading": "Caricamento in corso...",

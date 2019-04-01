@@ -1,4 +1,12 @@
 {
+  "songs": {
+    "psalmist": "S.",
+    "assembly": "A.",
+    "priest": "P.",
+    "men": "H.",
+    "women": "M.",
+    "children": "C."
+  },
   "ui": {
     "default": "Padrão",
     "loading": "Carregando...",

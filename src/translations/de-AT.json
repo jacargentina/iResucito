@@ -1,4 +1,12 @@
 {
+  "songs": {
+    "psalmist": "K.",
+    "assembly": "V.",
+    "priest": "?",
+    "men": "?",
+    "women": "?",
+    "children": "?"
+  },
   "ui": {
     "default": "Vorgegeben",
     "loading": "Aufladend...",
