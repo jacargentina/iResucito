@@ -1,5 +1,5 @@
 // @flow
-import React, { useContext, useEffect, useState, useRef } from 'react';
+import React, { useContext, useEffect, useState, useRef, useMemo } from 'react';
 import { Text, ListItem, Body, Right, Icon } from 'native-base';
 import { withNavigationFocus } from 'react-navigation';
 import { FlatList, Keyboard } from 'react-native';
@@ -21,43 +21,39 @@ const UnassignedList = (props: any) => {
   const listRef = useRef();
   const { navigation, isFocused } = props;
   const { songs, localeSongs } = data.songsMeta;
-  const { keys, getLocaleReal } = data.settings;
 
-  const [search, setSearch] = useState([]);
   const [textFilter, setTextFilter] = useState('');
 
   useEffect(() => {
     navigation.setParams({ title: I18n.t(titleLocaleKey) });
   }, [I18n.locale]);
 
+  const search = useMemo(() => {
+    var result = localeSongs.filter(locSong => {
+      return !songs.find(s => s.files[I18n.locale] === locSong.nombre);
+    });
+    return result.filter(locSong => {
+      return (
+        locSong.titulo.toLowerCase().includes(textFilter.toLowerCase()) ||
+        locSong.fuente.toLowerCase().includes(textFilter.toLowerCase())
+      );
+    });
+  }, [localeSongs, textFilter]);
+
   useEffect(() => {
-    if (keys) {
-      const locale = getLocaleReal(keys.locale);
-      var result = localeSongs.filter(locSong => {
-        return !songs.find(s => s.files[locale] === locSong.nombre);
-      });
-      if (textFilter) {
-        result = result.filter(locSong => {
-          return (
-            locSong.titulo.toLowerCase().includes(textFilter.toLowerCase()) ||
-            locSong.fuente.toLowerCase().includes(textFilter.toLowerCase())
-          );
-        });
-      }
-      setSearch(result);
-      if (result.length > 0 && isFocused) {
+    if (search.length > 0 && isFocused) {
+      if (listRef.current) {
         setTimeout(() => {
-          if (listRef.current)
-            listRef.current.scrollToIndex({
-              index: 0,
-              animated: true,
-              viewOffset: 0,
-              viewPosition: 1
-            });
+          listRef.current.scrollToIndex({
+            index: 0,
+            animated: true,
+            viewOffset: 0,
+            viewPosition: 1
+          });
         }, 50);
       }
     }
-  }, [keys, textFilter]);
+  }, [search.length]);
 
   return (
     <SearchBarView value={textFilter} setValue={setTextFilter}>

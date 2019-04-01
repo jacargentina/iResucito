@@ -1,5 +1,5 @@
 // @flow
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState, useMemo } from 'react';
 import { ListItem, Right, Body, Icon, Text, Fab } from 'native-base';
 import { withNavigationFocus } from 'react-navigation';
 import Swipeout from 'react-native-swipeout';
@@ -18,7 +18,6 @@ const CommunityScreen = (props: any) => {
   const data = useContext(DataContext);
   const { navigation, isFocused } = props;
   const { brothers, update, remove, add } = data.community;
-  const [filtered, setFiltered] = useState();
   const listRef = useRef();
   const [filter, setFilter] = useState('');
 
@@ -26,28 +25,26 @@ const CommunityScreen = (props: any) => {
     navigation.setParams({ title: I18n.t(titleLocaleKey) });
   }, [I18n.locale]);
 
+  const filtered = useMemo(() => {
+    var result = brothers.filter(c => contactFilterByText(c, filter));
+    result.sort(ordenAlfabetico);
+    return result;
+  }, [brothers, filter]);
+
   useEffect(() => {
-    if (brothers) {
-      var result = [...brothers];
-      if (filter !== '') {
-        result = result.filter(c => contactFilterByText(c, filter));
-      }
-      result.sort(ordenAlfabetico);
-      setFiltered(result);
-      if (result.length > 0 && isFocused) {
-        if (listRef.current) {
-          setTimeout(() => {
-            listRef.current.scrollToIndex({
-              index: 0,
-              animated: true,
-              viewOffset: 0,
-              viewPosition: 1
-            });
-          }, 50);
-        }
+    if (filtered.length > 0 && isFocused) {
+      if (listRef.current) {
+        setTimeout(() => {
+          listRef.current.scrollToIndex({
+            index: 0,
+            animated: true,
+            viewOffset: 0,
+            viewPosition: 1
+          });
+        }, 50);
       }
     }
-  }, [filter]);
+  }, [filtered.length]);
 
   const addOrRemove = contact => {
     var i = brothers.findIndex(c => c.recordID == contact.recordID);

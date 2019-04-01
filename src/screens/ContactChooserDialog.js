@@ -1,5 +1,5 @@
 // @flow
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState, useMemo } from 'react';
 import BaseModal from './BaseModal';
 import { Text, ListItem, Left, Body, Icon } from 'native-base';
 import { FlatList, View } from 'react-native';
@@ -14,21 +14,15 @@ const ContactChooserDialog = (props: any) => {
   const { navigation } = props;
   const { setList } = data.lists;
   const { brothers } = data.community;
-  const [contacts, setContacts] = useState([]);
   const [filter, setFilter] = useState('');
 
   const target = navigation.getParam('target');
 
-  useEffect(() => {
-    var filteredContacts = Object.assign([], brothers);
-    if (filter !== '') {
-      filteredContacts = filteredContacts.filter(c =>
-        contactFilterByText(c, filter)
-      );
-    }
-    filteredContacts.sort(ordenAlfabetico);
-    setContacts(filteredContacts);
-  }, [filter]);
+  const contacts = useMemo(() => {
+    var result = brothers.filter(c => contactFilterByText(c, filter));
+    result.sort(ordenAlfabetico);
+    return result;
+  }, [brothers, filter]);
 
   const contactSelected = contact => {
     setList(target.listName, target.listKey, contact.givenName);

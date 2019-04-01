@@ -1,5 +1,5 @@
 // @flow
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, useMemo } from 'react';
 import BaseModal from './BaseModal';
 import SearchBarView from './SearchBarView';
 import { Text, ListItem, Body, Right, CheckBox } from 'native-base';
@@ -26,17 +26,7 @@ const ContactImportDialog = (props: any) => {
   const { brothers, deviceContacts, addOrRemove } = data.community;
   const [loading, setLoading] = useState(false);
   const [contacts, setContacts] = useState([]);
-  const [filtered, setFiltered] = useState();
   const [filter, setFilter] = useState('');
-
-  useEffect(() => {
-    var result = [...contacts];
-    if (filter !== '') {
-      result = result.filter(c => contactFilterByText(c, filter));
-    }
-    result.sort(ordenAlfabetico);
-    setFiltered(result);
-  }, [contacts, filter]);
 
   useEffect(() => {
     var withName = deviceContacts.filter(
@@ -46,6 +36,12 @@ const ContactImportDialog = (props: any) => {
     setContacts(result);
     setLoading(false);
   }, [brothers]);
+
+  const filtered = useMemo(() => {
+    var result = contacts.filter(c => contactFilterByText(c, filter));
+    result.sort(ordenAlfabetico);
+    return result;
+  }, [contacts, filter]);
 
   const close = () => {
     setFilter('');

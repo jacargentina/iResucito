@@ -1,5 +1,6 @@
 //@flow
 import SongsIndex from '../songs/index.json';
+import I18n from './translations';
 
 export const limpiarNotasRegex = /\[|\]|#|\*|5|6|7|9|b|-|\+|\/|\u2013|\u2217|aum|dim/g;
 
