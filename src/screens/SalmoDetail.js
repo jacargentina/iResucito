@@ -102,9 +102,14 @@ const SalmoDetail = (props: any) => {
 
 const TransportNotesMenu = withNavigation((props: any) => {
   const { navigation } = props;
+  const salmo = navigation.getParam('salmo');
+  if (!salmo) {
+    return null;
+  }
+
+  const chords = getChordsScale(salmo.locale);
   const transportNote = navigation.getParam('transportNote');
   const setTransportNote = navigation.getParam('setTransportNote');
-  const chords = getChordsScale();
 
   var menuOptionItems = chords.map((nota, i) => {
     if (transportNote === nota)

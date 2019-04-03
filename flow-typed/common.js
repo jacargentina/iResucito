@@ -39,6 +39,7 @@ declare type Song = {
   fuente: string,
   path: string,
   nombre: string,
+  locale: string,
   files: any,
   fullText: string,
   lines: Array<string>,

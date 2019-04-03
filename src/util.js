@@ -208,12 +208,15 @@ export const NativeSongs = new SongsProcessor(
 );
 
 export const getSalmoTransported = (song: Song, transportToNote: any) => {
-  var lines = song.lines;
   var diferencia = 0;
   if (transportToNote) {
-    diferencia = calcularTransporte(lines[0], transportToNote);
+    diferencia = calcularTransporte(
+      song.lines[0],
+      transportToNote,
+      song.locale
+    );
   }
-  return NativeSongs.preprocesarCanto(lines, diferencia);
+  return NativeSongs.preprocesarCanto(song, diferencia, song.locale);
 };
 
 export const contactFilterByText = (c: any, text: string) => {
@@ -359,4 +362,3 @@ export const generatePDF = (canto: Song, lines: Array<SongLine>) => {
       });
   });
 };
-

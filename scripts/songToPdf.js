@@ -4,6 +4,7 @@ import { SongsProcessor } from '../src/SongsProcessor';
 import fs from 'fs';
 import path from 'path';
 import osLocale from 'os-locale';
+import I18n from '../src/translations';
 
 const NodeLister = fs.promises.readdir;
 
@@ -161,11 +162,13 @@ if (!process.argv.slice(2).length) {
   program.help();
 } else {
   program.parse(process.argv);
-  if (!program.locale) {
-    program.locale = osLocale.sync();
-    console.log('Locale: detected', program.locale);
-  }
   var locale = program.locale;
+  if (!locale) {
+    locale = osLocale.sync();
+    console.log('Locale: detected', locale);
+  }
+  I18n.locale = locale;
+  console.log('Configured locale', I18n.locale);
   var key = program.key;
   if (locale !== '') {
     if (key) {
@@ -190,6 +193,9 @@ if (!process.argv.slice(2).length) {
         songs.forEach(song => {
           console.log('Song: ', song.titulo);
           var songlines = folderSongs.preprocesarCanto(song.lines, 0);
+          if (program.debug) {
+            console.log(songlines);
+          }
           generatePDF(song, songlines);
         });
       });

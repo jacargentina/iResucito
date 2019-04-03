@@ -4,8 +4,10 @@ import I18n from './translations';
 
 export const cleanChordsRegex = /\[|\]|#|\*|5|6|7|9|b|-|\+|\/|\u2013|\u2217|aum|dim/g;
 
-export const getChordsScale = () => {
-  return I18n.t('chords.scale').split(' ');
+export const getChordsScale = (locale: string) => {
+  return I18n.t('chords.scale', { locale })
+    .toLowerCase()
+    .split(' ');
 };
 
 export const getInitialChord = (linea: string): string => {
@@ -16,22 +18,24 @@ export const getInitialChord = (linea: string): string => {
 
 export const calcularTransporte = (
   startingChordsLine: string,
-  targetChord: string
+  targetChord: string,
+  locale: string
 ): number => {
-  const chords = getChordsScale();
+  const chords = getChordsScale(locale);
   const initialChord = getInitialChord(startingChordsLine);
   const start = chords.indexOf(initialChord);
   const target = chords.indexOf(targetChord);
   return target - start;
 };
 
-export function esLineaDeNotas(text: string): boolean {
-  if (text === undefined) {
-    throw 'esLineaDeNotas: no se puede procesar "undefined"';
+export function isChordsLine(text: string, locale: string): boolean {
+  if (text === undefined || locale === undefined) {
+    throw 'isChordsLine: text or locale invalid';
   }
-  const chords = getChordsScale();
+  const chords = getChordsScale(locale);
   const line = text
     .trim()
+    .toLowerCase()
     .replace(cleanChordsRegex, ' ')
     .split(' ')
     .filter(i => i.length > 0);
@@ -92,6 +96,7 @@ export class SongsProcessor {
     info.nombre = parsed.nombre;
     info.titulo = parsed.titulo;
     info.fuente = parsed.fuente;
+    info.locale = locale;
     info.path = `${this.basePath}/${locale}/${parsed.nombre}.txt`;
   }
 
@@ -164,7 +169,7 @@ export class SongsProcessor {
       .then(content => {
         // Split lines, remove until reaching song notes
         var lineas = content.replace('\r\n', '\n').split('\n');
-        while (lineas.length && !esLineaDeNotas(lineas[0])) {
+        while (lineas.length && !isChordsLine(lineas[0], song.locale)) {
           lineas.shift();
         }
         song.lines = lineas;
@@ -184,8 +189,13 @@ export class SongsProcessor {
   }
 
   /* eslint-disable no-unused-vars */
-  preprocesarLinea(text: string): SongLine {
-    if (text.startsWith('S. A.')) {
+  preprocesarLinea(text: string, locale: string): SongLine {
+    const psalmistAndAssembly = `${I18n.t('songs.psalmist', {
+      locale
+    })} ${I18n.t('songs.assembly', {
+      locale
+    })}`;
+    if (text.startsWith(psalmistAndAssembly)) {
       // Indicador de Salmista Y Asamblea
       var secondPoint = 4;
       var it: SongLine = {
@@ -205,16 +215,36 @@ export class SongsProcessor {
       };
       return it;
     } else if (
-      text.startsWith('S.') ||
-      text.startsWith('C.') ||
-      text.startsWith('D.') ||
-      text.startsWith('U.') ||
-      text.startsWith('H.') ||
-      text.startsWith('M.') ||
-      text.startsWith('A.') ||
-      text.startsWith('P.') ||
-      text.startsWith('Niños.') ||
-      text.startsWith('N.')
+      text.startsWith(
+        I18n.t('songs.psalmist', {
+          locale
+        })
+      ) ||
+      text.startsWith(
+        I18n.t('songs.assembly', {
+          locale
+        })
+      ) ||
+      text.startsWith(
+        I18n.t('songs.priest', {
+          locale
+        })
+      ) ||
+      text.startsWith(
+        I18n.t('songs.men', {
+          locale
+        })
+      ) ||
+      text.startsWith(
+        I18n.t('songs.women', {
+          locale
+        })
+      ) ||
+      text.startsWith(
+        I18n.t('songs.children', {
+          locale
+        })
+      )
     ) {
       // Indicador de Salmista, Asamblea, Presbitero, Hombres, Mujeres, etc
       var pointIndex = text.indexOf('.');
@@ -234,7 +264,7 @@ export class SongsProcessor {
         textoEspecial: false
       };
       return it;
-    } else if (esLineaDeNotas(text)) {
+    } else if (isChordsLine(text, locale)) {
       var it: SongLine = {
         texto: text.trimRight(),
         style: this.songStyles.lineaNotas,
@@ -328,8 +358,12 @@ export class SongsProcessor {
     }
   }
 
-  transportarNotas(lineaNotas: string, diferencia: number): string {
-    const notas = getChordsScale();
+  transportarNotas(
+    lineaNotas: string,
+    diferencia: number,
+    locale: string
+  ): string {
+    const notas = getChordsScale(locale);
     const notasInverted = notas.slice().reverse();
     const pedazos = lineaNotas.split(' ');
     const result = pedazos.map(item => {
@@ -351,11 +385,12 @@ export class SongsProcessor {
   }
 
   preprocesarCanto(
-    lines: Array<string>,
-    diferenciaTransporte: number
+    song: Song,
+    diferenciaTransporte: number,
+    locale: string
   ): Array<SongLine> {
-    const firstPass = lines.map(l => {
-      const it = this.preprocesarLinea(l);
+    const firstPass = song.lines.map(l => {
+      const it = this.preprocesarLinea(l, locale);
       // Detectar indicadores de Nota al pie (un asterisco)
       if (it.texto.endsWith('\u2217')) {
         it.texto = it.texto.replace('\u2217', '');
@@ -363,7 +398,11 @@ export class SongsProcessor {
         it.sufijoStyle = this.songStyles.lineaNotas;
       }
       if (it.notas && diferenciaTransporte !== 0) {
-        it.texto = this.transportarNotas(it.texto, diferenciaTransporte);
+        it.texto = this.transportarNotas(
+          it.texto,
+          diferenciaTransporte,
+          song.locale
+        );
       }
       return it;
     });
