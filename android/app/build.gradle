@@ -172,6 +172,7 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-localize')
     compile project(':react-native-gesture-handler')
     compile project(':react-native-exception-handler')
     compile project(':rn-fetch-blob')
