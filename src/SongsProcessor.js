@@ -2,62 +2,43 @@
 import SongsIndex from '../songs/index.json';
 import I18n from './translations';
 
-export const limpiarNotasRegex = /\[|\]|#|\*|5|6|7|9|b|-|\+|\/|\u2013|\u2217|aum|dim/g;
+export const cleanChordsRegex = /\[|\]|#|\*|5|6|7|9|b|-|\+|\/|\u2013|\u2217|aum|dim/g;
 
-export const notas = [
-  'Do',
-  'Do#',
-  'Re',
-  'Mib',
-  'Mi',
-  'Fa',
-  'Fa#',
-  'Sol',
-  'Sol#',
-  'La',
-  'Sib',
-  'Si'
-];
+export const getChordsScale = () => {
+  return I18n.t('chords.scale').split(' ');
+};
 
-export const notaInicial = (linea: string): string => {
+export const getInitialChord = (linea: string): string => {
   var pedazos = linea.split(' ');
   var primero = pedazos[0];
-  return primero.replace(limpiarNotasRegex, '');
+  return primero.replace(cleanChordsRegex, '');
 };
 
 export const calcularTransporte = (
-  primerLineaNotas: string,
-  notaDestino: string
+  startingChordsLine: string,
+  targetChord: string
 ): number => {
-  var notaOrigen = notaInicial(primerLineaNotas);
-  var inicio = notas.indexOf(notaOrigen);
-  var destino = notas.indexOf(notaDestino);
-  return destino - inicio;
+  const chords = getChordsScale();
+  const initialChord = getInitialChord(startingChordsLine);
+  const start = chords.indexOf(initialChord);
+  const target = chords.indexOf(targetChord);
+  return target - start;
 };
-
-const notasInverted = notas.slice().reverse();
 
 export function esLineaDeNotas(text: string): boolean {
   if (text === undefined) {
     throw 'esLineaDeNotas: no se puede procesar "undefined"';
   }
-  var linea = text
+  const chords = getChordsScale();
+  const line = text
     .trim()
-    .replace(limpiarNotasRegex, ' ')
+    .replace(cleanChordsRegex, ' ')
     .split(' ')
     .filter(i => i.length > 0);
-  var soloNotas = linea.filter(palabra => {
-    return (
-      palabra == 'Do' ||
-      palabra == 'Re' ||
-      palabra == 'Mi' ||
-      palabra == 'Fa' ||
-      palabra == 'Sol' ||
-      palabra == 'La' ||
-      palabra == 'Si'
-    );
+  const onlyChords = line.filter(word => {
+    return chords.includes(word);
   });
-  return soloNotas.length > 0 && soloNotas.length == linea.length;
+  return onlyChords.length > 0 && onlyChords.length == line.length;
 }
 
 export function ordenAlfabetico(a: SongRef, b: SongRef) {
@@ -348,12 +329,14 @@ export class SongsProcessor {
   }
 
   transportarNotas(lineaNotas: string, diferencia: number): string {
-    var pedazos = lineaNotas.split(' ');
-    var result = pedazos.map(item => {
-      var notaLimpia = item.replace(limpiarNotasRegex, '');
-      var notaIndex = notas.indexOf(notaLimpia);
+    const notas = getChordsScale();
+    const notasInverted = notas.slice().reverse();
+    const pedazos = lineaNotas.split(' ');
+    const result = pedazos.map(item => {
+      const notaLimpia = item.replace(cleanChordsRegex, '');
+      const notaIndex = notas.indexOf(notaLimpia);
       if (notaIndex !== -1) {
-        var notaNuevoIndex = (notaIndex + diferencia) % 12;
+        const notaNuevoIndex = (notaIndex + diferencia) % 12;
         var transporte =
           notaNuevoIndex < 0
             ? notasInverted[notaNuevoIndex * -1]
@@ -371,8 +354,8 @@ export class SongsProcessor {
     lines: Array<string>,
     diferenciaTransporte: number
   ): Array<SongLine> {
-    var firstPass = lines.map(l => {
-      var it = this.preprocesarLinea(l);
+    const firstPass = lines.map(l => {
+      const it = this.preprocesarLinea(l);
       // Detectar indicadores de Nota al pie (un asterisco)
       if (it.texto.endsWith('\u2217')) {
         it.texto = it.texto.replace('\u2217', '');
@@ -387,19 +370,19 @@ export class SongsProcessor {
     return firstPass.map((it, i) => {
       // Ajustar margen izquierdo por prefijos
       if (it.prefijo == '' && i > 0) {
-        var prevIt = firstPass[i - 1];
+        const prevIt = firstPass[i - 1];
         if (prevIt.prefijo !== '') {
           it.prefijo = ' '.repeat(prevIt.prefijo.length);
         }
       } else if (it.prefijo == '' && i < firstPass.length - 1) {
-        var nextIt = firstPass[i + 1];
+        const nextIt = firstPass[i + 1];
         if (nextIt.prefijo !== '') {
           it.prefijo = ' '.repeat(nextIt.prefijo.length);
         }
       }
       // Ajustar estilo para las notas
       if (it.texto.trim() == '' && i < firstPass.length - 1) {
-        var nextItm = firstPass[i + 1];
+        const nextItm = firstPass[i + 1];
         if (nextItm.canto) {
           it.style = this.songStyles.lineaNotas;
           it.notas = true;
@@ -407,7 +390,7 @@ export class SongsProcessor {
       }
       // Ajustar estilo para las notas si es la primer linea
       if (it.notas && i < firstPass.length - 1) {
-        var nextItmn = firstPass[i + 1];
+        const nextItmn = firstPass[i + 1];
         if (nextItmn.prefijo !== '') {
           it.style = this.songStyles.lineaNotasConMargen;
           it.inicioParrafo = true;
@@ -415,7 +398,7 @@ export class SongsProcessor {
       }
       // Ajustar inicios de parrafo (lineas vacias)
       if (!it.notas && it.texto === '' && i < firstPass.length - 1) {
-        var nextItmnn = firstPass[i + 1];
+        const nextItmnn = firstPass[i + 1];
         if (nextItmnn.notas || nextItmnn.texto !== '') {
           it.inicioParrafo = true;
         }

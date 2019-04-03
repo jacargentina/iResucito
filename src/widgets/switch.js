@@ -15,6 +15,7 @@ const Switch = (props: any) => {
     },
     thumbColor: undefined
   };
+  /* eslint-disable indent */
   if (Platform.OS === 'android') {
     themeProps.thumbColor = props.value
       ? commonTheme.brandPrimary

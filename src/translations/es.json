@@ -7,9 +7,12 @@
     "women": "M.",
     "children": "N."
   },
+  "chords": {
+    "scale": "Do Do# Re Mib Mi Fa Fa# Sol Sol# La Sib Si"
+  },
   "ui": {
     "default": "Predeterminado",
-    "loading":  "Cargando...",
+    "loading": "Cargando...",
     "collaborators": "Colaboradores",
     "share": "Compartir",
     "back": "Atrás",
@@ -28,8 +31,7 @@
       "rename": "Renombrar Lista",
       "type": "Tipo de lista"
     },
-    "community empty":
-      "Sin nombres importados. Para elegir mediante la lista, debes importar desde tus contactos en la opción Comunidad.",
+    "community empty": "Sin nombres importados. Para elegir mediante la lista, debes importar desde tus contactos en la opción Comunidad.",
     "search placeholder": "Buscar",
     "locale warning title": "Traducción incompleta",
     "locale warning message": "El canto aún no se ha incorporado a su idioma",
@@ -135,10 +137,8 @@
     "community list": "Lista de la Comunidad"
   },
   "call_to_action_text": {
-    "add lists":
-      "Las listas te permiten organizar una celebración litúrgica para recordar o compartir con los hermanos de la comunidad",
-    "community list":
-      "Puede importar desde tus contactos los nombres de los hermanos de la comunidad y usarlos al crear las listas"
+    "add lists": "Las listas te permiten organizar una celebración litúrgica para recordar o compartir con los hermanos de la comunidad",
+    "community list": "Puede importar desde tus contactos los nombres de los hermanos de la comunidad y usarlos al crear las listas"
   },
   "call_to_action_button": {
     "add lists": "Crear una lista",
@@ -154,10 +154,8 @@
   },
   "settings_note": {
     "locale": "Traduce la app a un lenguaje disponible",
-    "keep awake":
-      "Evitar que el dispositivo entre en reposo al visualizar un salmo",
-    "developer mode":
-      "Habilitar sólo si eres colaborador en la traducción de los cantos"
+    "keep awake": "Evitar que el dispositivo entre en reposo al visualizar un salmo",
+    "developer mode": "Habilitar sólo si eres colaborador en la traducción de los cantos"
   },
   "share_action": {
     "view pdf": "Visualizar como PDF",
@@ -170,7 +168,6 @@
   "alert_message": {
     "corrupt patch": "El archivo del parche estaba corrupto y ha sido borrado",
     "contacts permission": "No se pueden leer los contactos",
-    "contacts permission ios":
-      "Otorga el permiso en la pantalla Configuración -> iResucito -> Contactos"
+    "contacts permission ios": "Otorga el permiso en la pantalla Configuración -> iResucito -> Contactos"
   }
 }

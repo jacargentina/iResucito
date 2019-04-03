@@ -7,9 +7,12 @@
     "women": "W.",
     "children": "?"
   },
+  "chords": {
+    "scale": "C C# D EB E F F# G G# A Bb B"
+  },
   "ui": {
     "default": "Default",
-    "loading":  "Loading...",
+    "loading": "Loading...",
     "collaborators": "Collaborators",
     "share": "Share",
     "back": "Back",
@@ -28,12 +31,10 @@
       "rename": "Rename List",
       "type": "List type"
     },
-    "community empty":
-      "Without imported names. To choose from the list, you must import from your contacts in the Community option.",
+    "community empty": "Without imported names. To choose from the list, you must import from your contacts in the Community option.",
     "search placeholder": "Search",
     "locale warning title": "Incomplete translation",
-    "locale warning message":
-      "The song has not yet been incorporated into your language",
+    "locale warning message": "The song has not yet been incorporated into your language",
     "donate message": "Help making a donation. Peace!",
     "donate button": "Donate",
     "no lists found": "No lists found",
@@ -136,10 +137,8 @@
     "community list": "Community list"
   },
   "call_to_action_text": {
-    "add lists":
-      "The lists allow you to organize a liturgical celebration to remember or share with the brothers and sisters of the community",
-    "community list":
-      "You can import from your contacts the names of the brothers and sisters in the community and use them when creating the lists"
+    "add lists": "The lists allow you to organize a liturgical celebration to remember or share with the brothers and sisters of the community",
+    "community list": "You can import from your contacts the names of the brothers and sisters in the community and use them when creating the lists"
   },
   "call_to_action_button": {
     "add lists": "Create a list",
@@ -156,8 +155,7 @@
   "settings_note": {
     "locale": "Translate the app to available languages",
     "keep awake": "Prevent the device from shutting off when viewing a song",
-    "developer mode":
-      "Enable only if you are a collaborator in the translation of the songs"
+    "developer mode": "Enable only if you are a collaborator in the translation of the songs"
   },
   "share_action": {
     "view pdf": "View as PDF",
@@ -165,11 +163,11 @@
   },
   "alert_title": {
     "corrupt patch": "Corrupt Patch",
-    "contacts permission": "Contacts permission",
+    "contacts permission": "Contacts permission"
   },
   "alert_message": {
     "corrupt patch": "The patch file was corrupt and was deleted",
     "contacts permission": "Contacts cannot be read",
-    "contacts permission ios": "Grant the permission in the Settings screen -> iResucito -> Contacts",
+    "contacts permission ios": "Grant the permission in the Settings screen -> iResucito -> Contacts"
   }
 }

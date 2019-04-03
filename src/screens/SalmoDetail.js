@@ -12,7 +12,7 @@ import {
 } from 'react-native-popup-menu';
 import colors from '../colors';
 import color from 'color';
-import { notas } from '../SongsProcessor';
+import { getChordsScale } from '../SongsProcessor';
 import { NativeStyles, getSalmoTransported, generatePDF } from '../util';
 import { DataContext } from '../DataContext';
 import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
@@ -104,8 +104,9 @@ const TransportNotesMenu = withNavigation((props: any) => {
   const { navigation } = props;
   const transportNote = navigation.getParam('transportNote');
   const setTransportNote = navigation.getParam('setTransportNote');
+  const chords = getChordsScale();
 
-  var menuOptionItems = notas.map((nota, i) => {
+  var menuOptionItems = chords.map((nota, i) => {
     if (transportNote === nota)
       var customStyles = {
         optionWrapper: {

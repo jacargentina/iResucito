@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useRef, useState, useMemo } from 'react';
 import { Icon, Text, Fab } from 'native-base';
 import { withNavigationFocus } from 'react-navigation';
 import Swipeout from 'react-native-swipeout';
-import { Alert, FlatList, View } from 'react-native';
+import { Alert, FlatList } from 'react-native';
 import SearchBarView from './SearchBarView';
 import { DataContext } from '../DataContext';
 import CallToAction from './CallToAction';
@@ -111,21 +111,6 @@ const CommunityScreen = (props: any) => {
         extraData={{ locale: I18n.locale, brothers }}
         keyExtractor={item => item.recordID}
         renderItem={({ item }) => {
-          var contactFullName = `${item.givenName} ${item.familyName}`;
-          var flags = (
-            <View style={{ flexDirection: 'row' }}>
-              {item.s === true && (
-                <Icon
-                  name="musical-notes"
-                  style={{
-                    marginRight: 4,
-                    color: commonTheme.brandPrimary,
-                    fontSize: 28
-                  }}
-                />
-              )}
-            </View>
-          );
           var swipeoutBtns = [
             {
               text: I18n.t('ui.psalmist'),

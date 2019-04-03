@@ -7,6 +7,9 @@
     "women": "?",
     "children": "?"
   },
+  "chords": {
+    "scale": "C C# D EB E F F# G G# A Bb B"
+  },
   "ui": {
     "default": "Vorgegeben",
     "loading": "Aufladend...",
