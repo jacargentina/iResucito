@@ -12,8 +12,7 @@ const StackNavigatorOptions = {
   headerBackTitleStyle: {
     color: 'white'
   },
-  headerTintColor: 'white',
-  headerTruncatedBackTitle: I18n.t('ui.back')
+  headerTintColor: 'white'
 };
 
 export default StackNavigatorOptions;

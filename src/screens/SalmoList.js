@@ -96,7 +96,9 @@ const SalmoList = (props: any) => {
 
 SalmoList.navigationOptions = (props: any) => {
   return {
-    title: I18n.t(props.navigation.getParam('title_key'))
+    title: I18n.t(props.navigation.getParam('title_key')),
+    headerBackTitle: I18n.t('ui.back'),
+    headerTruncatedBackTitle: I18n.t('ui.back')
   };
 };
 

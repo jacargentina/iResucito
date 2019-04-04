@@ -72,7 +72,7 @@ const SalmoSearch = (props: any) => {
 };
 
 SalmoSearch.navigationOptions = () => {
-  return { title: I18n.t(titleLocaleKey) };
+  return { title: I18n.t(titleLocaleKey), headerBackTitle: I18n.t('ui.back') };
 };
 
 export default SalmoSearch;
