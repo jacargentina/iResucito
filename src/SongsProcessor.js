@@ -5,9 +5,7 @@ import I18n from './translations';
 export const cleanChordsRegex = /\[|\]|#|\*|5|6|7|9|b|-|\+|\/|\u2013|\u2217|aum|dim/g;
 
 export const getChordsScale = (locale: string) => {
-  return I18n.t('chords.scale', { locale })
-    .toLowerCase()
-    .split(' ');
+  return I18n.t('chords.scale', { locale }).split(' ');
 };
 
 export const getInitialChord = (linea: string): string => {
@@ -40,7 +38,7 @@ export function isChordsLine(text: string, locale: string): boolean {
     .split(' ')
     .filter(i => i.length > 0);
   const onlyChords = line.filter(word => {
-    return chords.includes(word);
+    return chords.find(ch => ch.toLowerCase() === word);
   });
   return onlyChords.length > 0 && onlyChords.length == line.length;
 }
