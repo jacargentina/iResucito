@@ -179,7 +179,6 @@ dependencies {
     compile project(':react-native-print')
     compile project(':react-native-pdf')
     compile project(':react-native-pdf-lib')
-    compile project(':react-native-i18n')
     compile project(':react-native-contacts')
     compile project(':react-native-keep-awake')
     compile project(':react-native-device-info')

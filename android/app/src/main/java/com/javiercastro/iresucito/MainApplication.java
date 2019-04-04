@@ -12,7 +12,6 @@ import com.RNFetchBlob.RNFetchBlobPackage;
 import com.christopherdro.RNPrint.RNPrintPackage;
 import org.wonday.pdf.RCTPdfView;
 import com.hopding.pdflib.PDFLibPackage;
-import com.AlexanderZaytsev.RNI18n.RNI18nPackage;
 import com.rt2zz.reactnativecontacts.ReactNativeContacts;
 import com.corbt.keepawake.KCKeepAwakePackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
@@ -46,7 +45,6 @@ public class MainApplication extends Application implements ReactApplication {
             new RNPrintPackage(),
             new RCTPdfView(),
             new PDFLibPackage(),
-            new RNI18nPackage(),
             new ReactNativeContacts(),
             new KCKeepAwakePackage(),
             new RNDeviceInfo(),
