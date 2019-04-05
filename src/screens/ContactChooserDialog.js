@@ -8,21 +8,22 @@ import commonTheme from '../native-base-theme/variables/platform';
 import I18n from '../translations';
 import ContactListItem from './ContactListItem';
 import { contactFilterByText, ordenAlfabetico } from '../util';
+import SearchBarView from './SearchBarView';
 
 const ContactChooserDialog = (props: any) => {
   const data = useContext(DataContext);
   const { navigation } = props;
   const { setList } = data.lists;
   const { brothers } = data.community;
-  const [filter, setFilter] = useState('');
+  const [textFilter, setTextFilter] = useState('');
 
   const target = navigation.getParam('target');
 
-  const contacts = useMemo(() => {
-    var result = brothers.filter(c => contactFilterByText(c, filter));
+  const filtered = useMemo(() => {
+    var result = brothers.filter(c => contactFilterByText(c, textFilter));
     result.sort(ordenAlfabetico);
     return result;
-  }, [brothers, filter]);
+  }, [brothers, textFilter]);
 
   const contactSelected = contact => {
     setList(target.listName, target.listKey, contact.givenName);
@@ -31,7 +32,7 @@ const ContactChooserDialog = (props: any) => {
 
   return (
     <BaseModal title={I18n.t('screen_title.community')} fade={true}>
-      {contacts.length == 0 && (
+      {brothers.length == 0 && (
         <View
           style={{
             flex: 3,
@@ -51,21 +52,23 @@ const ContactChooserDialog = (props: any) => {
           </Text>
         </View>
       )}
-      <FlatList
-        style={{ flex: 1 }}
-        data={contacts}
-        keyExtractor={item => item.recordID}
-        renderItem={({ item }) => {
-          return (
-            <ContactListItem
-              item={item}
-              onPress={() => {
-                contactSelected(item);
-              }}
-            />
-          );
-        }}
-      />
+      <SearchBarView value={textFilter} setValue={setTextFilter}>
+        <FlatList
+          style={{ flex: 1 }}
+          data={filtered}
+          keyExtractor={item => item.recordID}
+          renderItem={({ item }) => {
+            return (
+              <ContactListItem
+                item={item}
+                onPress={() => {
+                  contactSelected(item);
+                }}
+              />
+            );
+          }}
+        />
+      </SearchBarView>
     </BaseModal>
   );
 };

@@ -4,7 +4,7 @@ import { createAppContainer } from 'react-navigation';
 import DataContextWrapper from './DataContext';
 import NavigationService from './navigation/NavigationService';
 import RootNavigator from './navigation/RootNavigator';
-import { Platform, Alert, Linking } from 'react-native';
+import { Alert, Linking } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import { Root, StyleProvider } from 'native-base';
 import getTheme from './native-base-theme/components';
@@ -51,22 +51,6 @@ setJSExceptionHandler(errorHandler);
 setNativeExceptionHandler(nativeError => {
   sendErrorByMail(nativeError);
 });
-
-if (Platform.OS == 'android') {
-  // Reemplazar startsWith en Android
-  // por bug detallado aqui
-  // https://github.com/facebook/react-native/issues/11370
-  String.prototype.startsWith = function(search) {
-    'use strict';
-    if (this == null) {
-      throw TypeError();
-    }
-    var string = String(this);
-    var pos = arguments.length > 1 ? Number(arguments[1]) || 0 : 0;
-    var start = Math.min(Math.max(pos, 0), string.length);
-    return string.indexOf(String(search), pos) === start;
-  };
-}
 
 const InitializeApp = () => {
   useEffect(() => {

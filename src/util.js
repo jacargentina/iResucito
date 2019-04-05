@@ -1,11 +1,7 @@
 // @flow
 import langs from 'langs';
-import {
-  NativeModules,
-  StyleSheet,
-  Platform,
-  PermissionsAndroid
-} from 'react-native';
+import { StyleSheet, Platform, PermissionsAndroid } from 'react-native';
+import * as RNLocalize from 'react-native-localize';
 import Contacts from 'react-native-contacts';
 import RNFS from 'react-native-fs';
 import DeviceInfo from 'react-native-device-info';
@@ -117,7 +113,7 @@ export function getFriendlyTextForListType(listType: string): string {
 }
 
 export const getDefaultLocale = () => {
-  return NativeModules.RNI18n.languages[0];
+  return RNLocalize.getLocales()[0].languageTag;
 };
 
 export const getLocalesForPicker = () => {
@@ -216,7 +212,7 @@ export const getSalmoTransported = (song: Song, transportToNote: any) => {
       song.locale
     );
   }
-  return NativeSongs.preprocesarCanto(song, diferencia, song.locale);
+  return NativeSongs.preprocesarCanto(song, diferencia);
 };
 
 export const contactFilterByText = (c: any, text: string) => {

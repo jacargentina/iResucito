@@ -18,7 +18,7 @@ const CommunityScreen = (props: any) => {
   const data = useContext(DataContext);
   const { navigation, isFocused } = props;
   const { brothers, update, remove, add } = data.community;
-  const listRef = useRef();
+  const listRef = useRef<?FlatList>();
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
@@ -33,16 +33,16 @@ const CommunityScreen = (props: any) => {
 
   useEffect(() => {
     if (filtered.length > 0 && isFocused) {
-      if (listRef.current) {
-        setTimeout(() => {
+      setTimeout(() => {
+        if (listRef.current) {
           listRef.current.scrollToIndex({
             index: 0,
             animated: true,
             viewOffset: 0,
             viewPosition: 1
           });
-        }, 50);
-      }
+        }
+      }, 50);
     }
   }, [filtered.length]);
 

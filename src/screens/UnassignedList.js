@@ -18,7 +18,7 @@ const titleLocaleKey = 'search_title.unassigned';
 
 const UnassignedList = (props: any) => {
   const data = useContext(DataContext);
-  const listRef = useRef();
+  const listRef = useRef<?FlatList>();
   const { navigation, isFocused } = props;
   const { songs, localeSongs } = data.songsMeta;
 
@@ -42,16 +42,16 @@ const UnassignedList = (props: any) => {
 
   useEffect(() => {
     if (search.length > 0 && isFocused) {
-      if (listRef.current) {
-        setTimeout(() => {
+      setTimeout(() => {
+        if (listRef.current) {
           listRef.current.scrollToIndex({
             index: 0,
             animated: true,
             viewOffset: 0,
             viewPosition: 1
           });
-        }, 50);
-      }
+        }
+      }, 50);
     }
   }, [search.length]);
 

@@ -9,18 +9,17 @@ import I18n from '../translations';
 import { DataContext } from '../DataContext';
 
 const SalmoList = (props: any) => {
-  const listRef = useRef();
+  const listRef = useRef<?FlatList>();
   const data = useContext(DataContext);
   const { navigation, isFocused } = props;
   const [totalText, setTotalText] = useState(I18n.t('ui.loading'));
   const { songs } = data.songsMeta;
-
-  const navFilter = navigation.getParam('filter', props.filter);
   const [showSalmosBadge, setShowSalmosBadge] = useState();
   const [textFilter, setTextFilter] = useState('');
   const [search, setSearch] = useState();
 
   useEffect(() => {
+    const navFilter = navigation.getParam('filter', props.filter);
     var result = songs;
     if (navFilter) {
       for (var name in navFilter) {
@@ -38,21 +37,22 @@ const SalmoList = (props: any) => {
     setShowSalmosBadge(navFilter == null || !navFilter.hasOwnProperty('etapa'));
     setSearch(result);
     if (result.length > 0 && isFocused) {
-      if (listRef.current) {
-        setTimeout(() => {
+      setTimeout(() => {
+        if (listRef.current) {
           listRef.current.scrollToIndex({
             index: 0,
             animated: true,
             viewOffset: 0,
             viewPosition: 1
           });
-        }, 50);
-      }
+        }
+      }, 50);
+
       setTotalText(I18n.t('ui.list total songs', { total: result.length }));
     } else {
       setTotalText(I18n.t('ui.no songs found'));
     }
-  }, [navFilter, textFilter]);
+  }, [textFilter]);
 
   useEffect(() => {
     navigation.setParams({ title: I18n.t(navigation.getParam('title_key')) });
@@ -62,7 +62,7 @@ const SalmoList = (props: any) => {
     if (props.onPress) {
       props.onPress(salmo);
     } else {
-      props.navigation.navigate('SalmoDetail', { salmo: salmo });
+      navigation.navigate('SalmoDetail', { salmo: salmo });
     }
   };
 

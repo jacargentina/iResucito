@@ -295,7 +295,7 @@ const useLists = (songs: any) => {
   const getItemForShare = (list: any, key: string) => {
     if (list.hasOwnProperty(key)) {
       var valor = list[key];
-      if (valor !== null && getEsSalmo(key)) {
+      if (valor && getEsSalmo(key)) {
         valor = valor.titulo;
       }
       if (valor) {

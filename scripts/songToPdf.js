@@ -177,7 +177,7 @@ if (!process.argv.slice(2).length) {
         .loadSingleSong(song)
         .then(() => {
           console.log('Song: ', song.titulo);
-          var songlines = folderSongs.preprocesarCanto(song.lines, 0);
+          var songlines = folderSongs.preprocesarCanto(song, 0);
           if (program.debug) {
             console.log(songlines);
           }
@@ -192,7 +192,7 @@ if (!process.argv.slice(2).length) {
       Promise.all(folderSongs.loadSongs(songs)).then(() => {
         songs.forEach(song => {
           console.log('Song: ', song.titulo);
-          var songlines = folderSongs.preprocesarCanto(song.lines, 0);
+          var songlines = folderSongs.preprocesarCanto(song, 0);
           if (program.debug) {
             console.log(songlines);
           }

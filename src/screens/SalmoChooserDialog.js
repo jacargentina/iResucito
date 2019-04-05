@@ -1,5 +1,5 @@
 // @flow
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useRef } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Tab, Tabs, ScrollableTab } from 'native-base';
 import BaseModal from './BaseModal';
@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
 
 const SalmoChooserDialog = (props: any) => {
   const data = useContext(DataContext);
+  const tabsRef = useRef<?Tabs>();
   const { navigation } = props;
   const { search } = data;
   const { setList } = data.lists;
@@ -51,6 +52,7 @@ const SalmoChooserDialog = (props: any) => {
         textStyle={styles.tabs}
         activeTextStyle={styles.tabs}>
         <SalmoList
+          customkey={`tab-${v.chooser.toUpperCase()}`}
           filter={v.params ? v.params.filter : null}
           devModeDisabled={true}
           onPress={salmo => songAssign(salmo)}
@@ -59,10 +61,16 @@ const SalmoChooserDialog = (props: any) => {
     );
   });
 
+  useEffect(() => {
+    if (tabsRef && tabsRef.current) {
+      tabsRef.current.goToPage(initialTab);
+    }
+  }, [initialTab]);
+
   return (
     <BaseModal title={I18n.t('screen_title.find song')}>
       <Tabs
-        initialPage={initialTab}
+        ref={tabsRef}
         renderTabBar={() => (items.length > 0 ? <ScrollableTab /> : <View />)}>
         {items}
       </Tabs>

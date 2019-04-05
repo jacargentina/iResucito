@@ -382,13 +382,9 @@ export class SongsProcessor {
     return result.join(' ');
   }
 
-  preprocesarCanto(
-    song: Song,
-    diferenciaTransporte: number,
-    locale: string
-  ): Array<SongLine> {
+  preprocesarCanto(song: Song, diferenciaTransporte: number): Array<SongLine> {
     const firstPass = song.lines.map(l => {
-      const it = this.preprocesarLinea(l, locale);
+      const it = this.preprocesarLinea(l, song.locale);
       // Detectar indicadores de Nota al pie (un asterisco)
       if (it.texto.endsWith('\u2217')) {
         it.texto = it.texto.replace('\u2217', '');
