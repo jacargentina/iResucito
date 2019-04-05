@@ -22,6 +22,7 @@ const UnassignedList = (props: any) => {
   const { navigation, isFocused } = props;
   const { songs, localeSongs } = data.songsMeta;
 
+  const [totalText, setTotalText] = useState(I18n.t('ui.loading'));
   const [textFilter, setTextFilter] = useState('');
 
   useEffect(() => {
@@ -32,12 +33,14 @@ const UnassignedList = (props: any) => {
     var result = localeSongs.filter(locSong => {
       return !songs.find(s => s.files[I18n.locale] === locSong.nombre);
     });
-    return result.filter(locSong => {
+    var result = result.filter(locSong => {
       return (
         locSong.titulo.toLowerCase().includes(textFilter.toLowerCase()) ||
         locSong.fuente.toLowerCase().includes(textFilter.toLowerCase())
       );
     });
+    setTotalText(I18n.t('ui.list total songs', { total: result.length }));
+    return result;
   }, [localeSongs, textFilter]);
 
   useEffect(() => {
@@ -57,11 +60,9 @@ const UnassignedList = (props: any) => {
 
   return (
     <SearchBarView value={textFilter} setValue={setTextFilter}>
-      {search.length == 0 && (
-        <Text note style={{ textAlign: 'center', paddingTop: 20 }}>
-          {I18n.t('ui.no songs found')}
-        </Text>
-      )}
+      <ListItem itemDivider>
+        <Text note>{totalText}</Text>
+      </ListItem>
       <FlatList
         ref={listRef}
         onScrollBeginDrag={() => Keyboard.dismiss()}

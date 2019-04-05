@@ -118,10 +118,16 @@ const useSongsMeta = (locale: any) => {
         locale,
         patchObj
       );
-      return NativeSongs.loadSingleSong(updatedSong).then(() => {
-        initializeSingleSong(updatedSong);
-        return saveLocalePatch(patchObj);
-      });
+      return NativeSongs.loadSingleSong(updatedSong)
+        .then(() => {
+          initializeSingleSong(updatedSong);
+          return saveLocalePatch(patchObj);
+        })
+        .then(() => {
+          return NativeSongs.readLocaleSongs(locale).then(items => {
+            setLocaleSongs(items);
+          });
+        });
     });
   };
 

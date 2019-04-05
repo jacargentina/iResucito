@@ -47,7 +47,6 @@ const SalmoList = (props: any) => {
           });
         }
       }, 50);
-
       setTotalText(I18n.t('ui.list total songs', { total: result.length }));
     } else {
       setTotalText(I18n.t('ui.no songs found'));

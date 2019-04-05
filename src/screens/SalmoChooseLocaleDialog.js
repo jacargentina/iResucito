@@ -1,92 +1,82 @@
 // @flow
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState, useMemo } from 'react';
 import BaseModal from './BaseModal';
+import SearchBarView from './SearchBarView';
 import { Text, ListItem, Body, Left, Icon } from 'native-base';
-import { FlatList, View } from 'react-native';
+import { FlatList } from 'react-native';
 import { DataContext } from '../DataContext';
-import commonTheme from '../native-base-theme/variables/platform';
 import I18n from '../translations';
+import commonTheme from '../native-base-theme/variables/platform';
 
 const SalmoChooseLocaleDialog = (props: any) => {
   const data = useContext(DataContext);
   const { navigation } = props;
-  const { songs, localeSongs, setSongLocalePatch } = data.songsMeta;
-  const { keys, getLocaleReal } = data.settings;
-  const [items, setItems] = useState([]);
+  const { songs, setSongLocalePatch } = data.songsMeta;
+  const [textFilter, setTextFilter] = useState('');
 
   const target = navigation.getParam('target');
 
-  useEffect(() => {
-    if (keys && localeSongs) {
-      const locale = getLocaleReal(keys.locale);
-      var res = localeSongs.filter(locSong => {
-        var found = songs.find(s => s.files[locale] === locSong.nombre);
-        return !found;
+  const items = useMemo(() => {
+    var result = songs.filter(s => !s.files[I18n.locale]);
+    if (textFilter) {
+      result = result.filter(s => {
+        return (
+          s.nombre.toLowerCase().includes(textFilter.toLowerCase()) ||
+          s.titulo.toLowerCase().includes(textFilter.toLowerCase()) ||
+          s.fuente.toLowerCase().includes(textFilter.toLowerCase())
+        );
       });
-      setItems(res);
     }
-  }, [keys, localeSongs]);
+    return result;
+  }, [I18n.locale, songs, textFilter]);
 
-  const localeFileSelected = file => {
-    const locale = getLocaleReal(keys.locale);
-    setSongLocalePatch(target, locale, file);
+  const localeFileSelected = song => {
+    setSongLocalePatch(song, I18n.locale, target);
     navigation.goBack(null);
   };
 
   return (
     <BaseModal title={I18n.t('screen_title.choose song')} fade={true}>
-      {items.length == 0 && (
-        <View
-          style={{
-            flex: 3,
-            justifyContent: 'space-around'
-          }}>
-          <Icon
-            name="link"
-            style={{
-              fontSize: 120,
-              color: commonTheme.brandPrimary,
-              alignSelf: 'center'
-            }}
-          />
-          <Text note style={{ textAlign: 'center' }}>
-            {I18n.t('ui.empty songs list')}
-          </Text>
-        </View>
-      )}
-      {target && (
-        <ListItem itemDivider>
-          <Text>{I18n.t('ui.list total songs', { total: items.length })}</Text>
-        </ListItem>
-      )}
-      {target && (
-        <ListItem icon>
-          <Left>
-            <Icon name="musical-notes" />
-          </Left>
-          <Body>
-            <Text>{target.titulo}</Text>
-            <Text note>{target.fuente}</Text>
-          </Body>
-        </ListItem>
-      )}
-      <FlatList
-        data={items}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={({ file }) => {
-          return (
-            <ListItem
-              onPress={() => {
-                localeFileSelected(file);
-              }}>
-              <Body>
-                <Text>{file.titulo}</Text>
-                <Text note>{file.fuente}</Text>
-              </Body>
-            </ListItem>
-          );
-        }}
-      />
+      <SearchBarView value={textFilter} setValue={setTextFilter}>
+        {target && (
+          <ListItem icon button last>
+            <Left>
+              <Icon
+                name="musical-notes"
+                style={{ color: commonTheme.brandInfo }}
+              />
+            </Left>
+            <Body>
+              <Text>{target.titulo}</Text>
+              <Text note>{target.fuente}</Text>
+            </Body>
+          </ListItem>
+        )}
+        {target && (
+          <ListItem itemDivider>
+            <Text note>
+              {I18n.t('ui.list total songs', { total: items.length })}
+            </Text>
+          </ListItem>
+        )}
+        <FlatList
+          data={items}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={({ item }) => {
+            return (
+              <ListItem
+                onPress={() => {
+                  localeFileSelected(item);
+                }}>
+                <Body>
+                  <Text>{item.titulo}</Text>
+                  <Text note>{item.fuente}</Text>
+                </Body>
+              </ListItem>
+            );
+          }}
+        />
+      </SearchBarView>
     </BaseModal>
   );
 };
