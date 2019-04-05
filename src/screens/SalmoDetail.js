@@ -15,6 +15,7 @@ import color from 'color';
 import { getChordsScale } from '../SongsProcessor';
 import { NativeStyles, getSalmoTransported, generatePDF } from '../util';
 import { DataContext } from '../DataContext';
+import I18n from '../translations';
 import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
 import commonTheme from '../native-base-theme/variables/platform';
 
@@ -206,6 +207,8 @@ SalmoDetail.navigationOptions = (props: any) => {
   const salmo = props.navigation.getParam('salmo');
   return {
     title: salmo ? salmo.titulo : 'Salmo',
+    headerBackTitle: I18n.t('ui.back'),
+    headerTruncatedBackTitle: I18n.t('ui.back'),
     headerRight: (
       <View style={{ flexDirection: 'row' }}>
         <ViewPdf />
