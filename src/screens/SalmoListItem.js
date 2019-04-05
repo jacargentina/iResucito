@@ -17,86 +17,117 @@ delete textStyles['.note'];
 
 const SalmoListItem = (props: any) => {
   const data = useContext(DataContext);
-  const { navigation } = props;
+  const { navigation, highlight, salmo, devModeDisabled } = props;
   const [isCollapsed, setIsCollapsed] = useState(true);
   const { keys, getLocaleReal } = data.settings;
   const { setSongLocalePatch } = data.songsMeta;
   const [developerMode, setDeveloperMode] = useState();
+  const [firstHighlighted, setFirstHighlighted] = useState();
+  const [highlightedRest, setHighlightedRest] = useState();
+  const [openHighlightedRest, setOpenHighlightedRest] = useState();
+  const [patchableSection, setPatchableSection] = useState();
+  const [chooseFileForLocale, setChooseFileForLocale] = useState();
 
   useEffect(() => {
-    var isOn = props.devModeDisabled === true ? false : keys.developerMode;
+    var isOn = devModeDisabled === true ? false : keys.developerMode;
     setDeveloperMode(isOn);
   }, [keys]);
 
-  var locale = getLocaleReal(keys.locale);
-
-  if (props.showBadge) {
-    var badgeWrapper = (
-      <Left style={{ marginLeft: -8 }}>{badges[props.salmo.etapa]}</Left>
-    );
-  }
-  if (
-    props.highlight &&
-    !props.salmo.error &&
-    props.salmo.fullText.toLowerCase().includes(props.highlight.toLowerCase())
-  ) {
-    var linesToHighlight = props.salmo.lines.filter(l =>
-      l.toLowerCase().includes(props.highlight.toLowerCase())
-    );
-    var children = linesToHighlight.map((l, i) => {
-      return (
-        <Highlighter
-          key={i}
-          highlightStyle={{
-            backgroundColor: 'yellow'
-          }}
-          searchWords={[props.highlight]}
-          textToHighlight={l}
-        />
+  useEffect(() => {
+    if (
+      highlight &&
+      !salmo.error &&
+      salmo.fullText.toLowerCase().includes(highlight.toLowerCase())
+    ) {
+      var linesToHighlight = salmo.lines.filter(l =>
+        l.toLowerCase().includes(highlight.toLowerCase())
       );
-    });
-    var firstHighlighted = children.shift();
-    if (children.length > 1) {
-      var highlightedRest = (
-        <Collapsible collapsed={isCollapsed}>{children}</Collapsible>
-      );
-      var openHighlightedRest = (
-        <Right>
-          <TouchableOpacity
-            onPress={() => {
-              setIsCollapsed(!isCollapsed);
-            }}>
-            <Badge warning>
-              <Text>{children.length}+</Text>
-            </Badge>
-          </TouchableOpacity>
-        </Right>
-      );
+      var children = linesToHighlight.map((l, i) => {
+        return (
+          <Highlighter
+            key={i}
+            highlightStyle={{
+              backgroundColor: 'yellow'
+            }}
+            searchWords={[highlight]}
+            textToHighlight={l}
+          />
+        );
+      });
+      setFirstHighlighted(children.shift());
+      if (children.length > 1) {
+        setHighlightedRest(
+          <Collapsible collapsed={isCollapsed}>{children}</Collapsible>
+        );
+        setOpenHighlightedRest(
+          <Right>
+            <TouchableOpacity
+              onPress={() => {
+                setIsCollapsed(!isCollapsed);
+              }}>
+              <Badge warning>
+                <Text>{children.length}+</Text>
+              </Badge>
+            </TouchableOpacity>
+          </Right>
+        );
+      }
     }
-  }
-  if (props.salmo.error) {
-    var loadingError = (
-      <Right>
-        <Icon
-          name="bug"
-          style={{
-            fontSize: 32,
-            color: commonTheme.brandPrimary
-          }}
-          onPress={() => {
-            Alert.alert('Error', props.salmo.error);
-          }}
-        />
-      </Right>
-    );
-  } else if (developerMode && props.salmo.patchable && !openHighlightedRest) {
-    if (props.salmo.patched) {
-      var patchableSection = (
+  }, [highlight, developerMode]);
+
+  useEffect(() => {
+    if (developerMode && salmo.patchable && !openHighlightedRest) {
+      if (salmo.patched) {
+        setPatchableSection(
+          <TouchableOpacity
+            onPress={() =>
+              setSongLocalePatch(salmo, getLocaleReal(keys.locale), undefined)
+            }
+            style={{ flex: 1, flexDirection: 'row-reverse' }}>
+            <Icon
+              name="trash"
+              style={{
+                marginTop: 2,
+                marginRight: 20,
+                fontSize: 20,
+                color: commonTheme.brandPrimary
+              }}
+            />
+            <Text style={{ ...noteStyles, marginRight: 5, marginTop: 5 }}>
+              {salmo.patchedTitle}
+            </Text>
+          </TouchableOpacity>
+        );
+      } else {
+        setChooseFileForLocale(
+          <Right>
+            <Icon
+              name="link"
+              style={{
+                fontSize: 32,
+                color: commonTheme.brandPrimary
+              }}
+              onPress={() =>
+                navigation.navigate('SalmoChooseLocale', {
+                  salmo: salmo
+                })
+              }
+            />
+          </Right>
+        );
+      }
+    } else if (salmo.patchable && !developerMode) {
+      setPatchableSection(
         <TouchableOpacity
-          onPress={() => setSongLocalePatch(props.salmo, locale, undefined)}
+          onPress={() => {
+            Alert.alert(
+              I18n.t('ui.locale warning title'),
+              I18n.t('ui.locale warning message')
+            );
+          }}
           style={{ flex: 1, flexDirection: 'row-reverse' }}>
           <Icon
-            name="trash"
+            name="bug"
             style={{
               marginTop: 2,
               marginRight: 20,
@@ -105,61 +136,23 @@ const SalmoListItem = (props: any) => {
             }}
           />
           <Text style={{ ...noteStyles, marginRight: 5, marginTop: 5 }}>
-            {props.salmo.patchedTitle}
+            {I18n.t('ui.locale warning title')}
           </Text>
         </TouchableOpacity>
       );
-    } else {
-      var chooseFileForLocale = (
-        <Right>
-          <Icon
-            name="link"
-            style={{
-              fontSize: 32,
-              color: commonTheme.brandPrimary
-            }}
-            onPress={() =>
-              navigation.navigate('SalmoChooseLocale', {
-                salmo: props.salmo
-              })
-            }
-          />
-        </Right>
-      );
     }
-  } else if (props.salmo.patchable && !developerMode) {
-    var patchableSection = (
-      <TouchableOpacity
-        onPress={() => {
-          Alert.alert(
-            I18n.t('ui.locale warning title'),
-            I18n.t('ui.locale warning message')
-          );
-        }}
-        style={{ flex: 1, flexDirection: 'row-reverse' }}>
-        <Icon
-          name="bug"
-          style={{
-            marginTop: 2,
-            marginRight: 20,
-            fontSize: 20,
-            color: commonTheme.brandPrimary
-          }}
-        />
-        <Text style={{ ...noteStyles, marginRight: 5, marginTop: 5 }}>
-          {I18n.t('ui.locale warning title')}
-        </Text>
-      </TouchableOpacity>
-    );
-  }
+  }, [developerMode, openHighlightedRest]);
+
   return (
     <ListItem avatar={props.showBadge} style={{ paddingHorizontal: 5 }}>
-      {badgeWrapper}
+      {props.showBadge && (
+        <Left style={{ marginLeft: -8 }}>{badges[salmo.etapa]}</Left>
+      )}
       <Body>
         <TouchableOpacity
           onPress={() => {
             if (props.onPress) {
-              props.onPress(props.salmo);
+              props.onPress(salmo);
             }
           }}>
           <Highlighter
@@ -167,16 +160,16 @@ const SalmoListItem = (props: any) => {
             highlightStyle={{
               backgroundColor: 'yellow'
             }}
-            searchWords={[props.highlight]}
-            textToHighlight={props.salmo.titulo}
+            searchWords={[highlight]}
+            textToHighlight={salmo.titulo}
           />
           <Highlighter
             style={noteStyles}
             highlightStyle={{
               backgroundColor: 'yellow'
             }}
-            searchWords={[props.highlight]}
-            textToHighlight={props.salmo.fuente}
+            searchWords={[highlight]}
+            textToHighlight={salmo.fuente}
           />
           {firstHighlighted}
           {highlightedRest}
@@ -185,7 +178,20 @@ const SalmoListItem = (props: any) => {
       </Body>
       {openHighlightedRest}
       {chooseFileForLocale}
-      {loadingError}
+      {salmo.error && (
+        <Right>
+          <Icon
+            name="bug"
+            style={{
+              fontSize: 32,
+              color: commonTheme.brandPrimary
+            }}
+            onPress={() => {
+              Alert.alert('Error', salmo.error);
+            }}
+          />
+        </Right>
+      )}
     </ListItem>
   );
 };

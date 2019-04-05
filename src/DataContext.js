@@ -486,7 +486,7 @@ const useSearch = (locale: string, developerMode: boolean) => {
         params: { filter: { entrada: true } },
         badge: null,
         chooser: I18n.t('search_tabs.entrance'),
-        chooser_listKey: 'entrada'
+        chooser_listKey: ['entrada']
       },
       {
         title_key: 'search_title.peace and offerings',
@@ -495,7 +495,7 @@ const useSearch = (locale: string, developerMode: boolean) => {
         params: { filter: { paz: true } },
         badge: null,
         chooser: I18n.t('search_tabs.peace and offerings'),
-        chooser_listKey: 'paz'
+        chooser_listKey: ['paz']
       },
       {
         title_key: 'search_title.fraction of bread',
@@ -504,7 +504,7 @@ const useSearch = (locale: string, developerMode: boolean) => {
         params: { filter: { fraccion: true } },
         badge: null,
         chooser: I18n.t('search_tabs.fraction of bread'),
-        chooser_listKey: 'comunion-pan'
+        chooser_listKey: ['comunion-pan']
       },
       {
         title_key: 'search_title.communion',
@@ -513,7 +513,7 @@ const useSearch = (locale: string, developerMode: boolean) => {
         params: { filter: { comunion: true } },
         badge: null,
         chooser: I18n.t('search_tabs.communion'),
-        chooser_listKey: 'comunion-pan'
+        chooser_listKey: ['comunion-pan', 'comunion-caliz']
       },
       {
         title_key: 'search_title.exit',
@@ -522,7 +522,7 @@ const useSearch = (locale: string, developerMode: boolean) => {
         params: { filter: { final: true } },
         badge: null,
         chooser: I18n.t('search_tabs.exit'),
-        chooser_listKey: 'salida'
+        chooser_listKey: ['salida']
       },
       {
         title_key: 'search_title.signing to the virgin',

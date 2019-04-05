@@ -1,37 +1,79 @@
 // @flow
 import React, { useContext, useEffect, useState, useRef } from 'react';
-import { StyleSheet, View } from 'react-native';
-import { Tab, Tabs, ScrollableTab } from 'native-base';
+import { ScrollView } from 'react-native';
+import { Button, Text, Segment } from 'native-base';
 import BaseModal from './BaseModal';
 import SalmoList from './SalmoList';
 import { DataContext } from '../DataContext';
 import I18n from '../translations';
 
-const styles = StyleSheet.create({
-  tabs: { fontSize: 14 }
-});
-
 const SalmoChooserDialog = (props: any) => {
   const data = useContext(DataContext);
-  const tabsRef = useRef<?Tabs>();
+  const scrollToActiveRef = useRef<?ScrollView>();
   const { navigation } = props;
   const { search } = data;
   const { setList } = data.lists;
   const { setSongLocalePatch } = data.songsMeta;
-  const [tabs, setTabs] = useState([]);
-  const [initialTab, setInitialTab] = useState(0);
+  const [segments, setSegments] = useState([]);
+  const [activeSegment, setActiveSegment] = useState();
+  const [scrollToActiveX, setScrollToActiveX] = useState();
+  const [scrollToActive, setScrollToActive] = useState(false);
 
   const target = navigation.getParam('target');
 
   useEffect(() => {
-    var tabs = search.searchItems.filter(x => x.chooser != undefined);
-    setTabs(tabs);
+    var choosers = search.searchItems.filter(x => x.chooser != undefined);
     if (target.listName && target.listKey) {
-      var initialTab = tabs.find(t => t.chooser_listKey === target.listKey);
-      var tabIndex = initialTab ? tabs.indexOf(initialTab) : 0;
-      setInitialTab(tabIndex);
+      var defChooser = choosers.find(
+        t => t.chooser_listKey && t.chooser_listKey.includes(target.listKey)
+      );
+      if (defChooser) {
+        setActiveSegment(defChooser);
+        setScrollToActive(true);
+      }
     }
   }, []);
+
+  useEffect(() => {
+    var choosers = search.searchItems.filter(x => x.chooser != undefined);
+    setSegments(
+      choosers.map((v, i) => {
+        const isActive = activeSegment && activeSegment.chooser === v.chooser;
+        return (
+          <Button
+            key={i}
+            first={i === 0}
+            last={i === choosers.length - 1}
+            onPress={() => setActiveSegment(v)}
+            active={isActive}
+            ref={btn => {
+              if (isActive && btn && btn._root)
+                btn._root.measure(x => {
+                  if (x > 0) {
+                    setScrollToActiveX(x);
+                  }
+                });
+            }}>
+            <Text>{v.chooser.toUpperCase()}</Text>
+          </Button>
+        );
+      })
+    );
+  }, [activeSegment]);
+
+  useEffect(() => {
+    if (
+      scrollToActive === true &&
+      scrollToActiveX &&
+      scrollToActiveRef &&
+      scrollToActiveRef.current
+    ) {
+      scrollToActiveRef.current.scrollTo({
+        x: scrollToActiveX,
+        animated: true
+      });
+    }
+  }, [scrollToActive, scrollToActiveRef, scrollToActiveX]);
 
   const songAssign = salmo => {
     if (target.listName && target.listKey !== undefined) {
@@ -44,36 +86,24 @@ const SalmoChooserDialog = (props: any) => {
     }
   };
 
-  var items = tabs.map((v, i) => {
-    return (
-      <Tab
-        key={i}
-        heading={v.chooser.toUpperCase()}
-        textStyle={styles.tabs}
-        activeTextStyle={styles.tabs}>
-        <SalmoList
-          customkey={`tab-${v.chooser.toUpperCase()}`}
-          filter={v.params ? v.params.filter : null}
-          devModeDisabled={true}
-          onPress={salmo => songAssign(salmo)}
-        />
-      </Tab>
-    );
-  });
-
-  useEffect(() => {
-    if (tabsRef && tabsRef.current) {
-      tabsRef.current.goToPage(initialTab);
-    }
-  }, [initialTab]);
-
   return (
     <BaseModal title={I18n.t('screen_title.find song')}>
-      <Tabs
-        ref={tabsRef}
-        renderTabBar={() => (items.length > 0 ? <ScrollableTab /> : <View />)}>
-        {items}
-      </Tabs>
+      <ScrollView
+        ref={scrollToActiveRef}
+        style={{ flexGrow: 0, marginLeft: 8, marginRight: 8 }}
+        horizontal={true}>
+        <Segment>{segments}</Segment>
+      </ScrollView>
+      <SalmoList
+        style={{ flexGrow: 1 }}
+        filter={
+          activeSegment && activeSegment.params
+            ? activeSegment.params.filter
+            : null
+        }
+        devModeDisabled={true}
+        onPress={salmo => songAssign(salmo)}
+      />
     </BaseModal>
   );
 };
