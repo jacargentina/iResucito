@@ -1,4 +1,6 @@
-var SongsIndex = require('../songs/index.json');
+var path = require('path');
+var indexPath = path.resolve('../songs/index.json');
+var SongsIndex = require(indexPath);
 var fs = require('fs');
 
 String.prototype.replaceAt = function(index, replacement) {
@@ -20,12 +22,13 @@ Object.entries(SongsIndex).forEach(([key, value]) => {
 
     var renameTo = titulo + '-' + fuente;
 
-    fs.renameSync(`../songs/pt/${original}.txt`, `../songs/pt/${renameTo}.txt`);
-
+    var oldPath = path.resolve(`../songs/pt/${original}.txt`);
+    var newPath = path.resolve(`../songs/pt/${renameTo}.txt`);
+    fs.renameSync(oldPath, newPath);
     value.files['pt'] = renameTo;
 
-    console.log({ original, renameTo });
+    console.log({ original, renameTo, oldPath, newPath });
   }
 });
 console.log(SongsIndex);
-fs.writeFileSync('../songs/index.json', JSON.stringify(SongsIndex, null, ' '));
+fs.writeFileSync(indexPath, JSON.stringify(SongsIndex, null, ' '));
