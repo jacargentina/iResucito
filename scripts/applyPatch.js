@@ -1,4 +1,4 @@
-var SongsIndex = require('./songs/index.json');
+var SongsIndex = require('../songs/index.json');
 var fs = require('fs');
 
 if (process.argv.length == 3) {
