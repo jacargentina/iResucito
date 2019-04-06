@@ -1,5 +1,7 @@
 const readline = require('readline');
-var SongsIndex = require('./songs/index.json');
+var path = require('path');
+var indexPath = path.resolve('../songs/index.json');
+var SongsIndex = require(indexPath);
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -19,5 +21,6 @@ rl.question('Cual locale? ', locale => {
     /* eslint-disable */
     console.log(`Cantos (es) sin locale ${locale}`);
     console.log(songs);
+    process.exit();
   }
 });

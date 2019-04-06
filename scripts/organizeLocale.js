@@ -1,53 +1,63 @@
 const readline = require('readline');
+var path = require('path');
+var indexPath = path.resolve('../songs/index.json');
+var SongsIndex = require(indexPath);
+var fs = require('fs');
 
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
 
-var sourcePath = './Salmos/it/originals/';
-var targetPath = './Salmos/it/';
-var indice = require('./Indice.json');
-var fs = require('fs');
-var cantos = fs.readdirSync(sourcePath);
-var i = 0;
+rl.question('Cual locale? ', locale => {
+  var sourcePath = `../songs/${locale}/`;
+  var cantos = fs.readdirSync(sourcePath);
+  var i = 0;
 
-/* eslint-disable no-console */
-var keys = Object.keys(indice);
-var sin_locale = keys.filter(
-  k => !Object.hasOwnProperty(indice[k].files, 'it')
-);
-sin_locale.forEach(k => {
-  console.log(`${k}: ${indice[k].files.es}`);
-});
-console.log(`${sin_locale.length} sin it; ${cantos.length} archivos`);
+  /* eslint-disable no-console */
+  var keys = Object.keys(SongsIndex);
+  var sin_locale = keys.filter(
+    k => !SongsIndex[k].files.hasOwnProperty(locale)
+  );
+  sin_locale.forEach(k => {
+    console.log(`${k}: ${SongsIndex[k].files.es}`);
+  });
+  console.log(`${sin_locale.length} sin ${locale}; ${cantos.length} archivos`);
 
-function processNext() {
-  var current = cantos[i];
-  if (current == undefined) {
-    console.log('Hecho!');
-    process.exit();
-  }
-  console.log(current);
-
-  rl.question('Cual es la clave? ', answer => {
-    if (answer !== '') {
-      if (!indice[answer].files.it) {
-        indice[answer].files.it = current.replace('.txt', '');
-        fs.copyFileSync(`${sourcePath}${current}`, `${targetPath}${current}`);
-        fs.unlinkSync(`${sourcePath}${current}`);
-        fs.writeFileSync('./Indice.json', JSON.stringify(indice, 2, ' '));
-        i++;
-        processNext();
-      } else {
-        console.log('Clave ya asignada.');
-        processNext();
-      }
-    } else {
+  function processNext() {
+    var current = cantos[i];
+    var currentName = current.replace('.txt', '');
+    var fileInIndex = keys.find(
+      k => SongsIndex[k].files[locale] === currentName
+    );
+    if (fileInIndex) {
       i++;
       processNext();
-    }
-  });
-}
+    } else {
+      if (current == undefined) {
+        console.log('Hecho!');
+        process.exit();
+      }
+      console.log(current);
 
-processNext();
+      rl.question('Cual es la clave? ', answer => {
+        if (answer !== '') {
+          if (!SongsIndex[answer].files[locale]) {
+            SongsIndex[answer].files[locale] = currentName;
+            fs.writeFileSync(indexPath, JSON.stringify(SongsIndex, null, ' '));
+            i++;
+            processNext();
+          } else {
+            console.log('Clave ya asignada.');
+            processNext();
+          }
+        } else {
+          i++;
+          processNext();
+        }
+      });
+    }
+  }
+
+  processNext();
+});
