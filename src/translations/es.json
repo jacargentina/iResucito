@@ -42,7 +42,9 @@
     "no contacts found": "Ningún contacto encontrado",
     "empty songs list": "Lista de cantos vacía",
     "confirmation": "Confirmación",
-    "list total songs": "{{total}} cantos en total"
+    "list total songs": "{{total}} cantos en total",
+    "locale patch added": "Parchado {{song}} con {{file}}",
+    "locale patch removed": "Quitado parche de {{song}}"
   },
   "list_type": {
     "eucharist": "Eucaristía",

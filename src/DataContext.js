@@ -1,6 +1,7 @@
 // @flow
 import React, { useState, useEffect } from 'react';
 import { Alert, Platform, Share } from 'react-native';
+import { Toast } from 'native-base';
 import RNFS from 'react-native-fs';
 import I18n from './translations';
 import badges from './badges';
@@ -110,8 +111,23 @@ const useSongsMeta = (locale: any) => {
       if (!patchObj[song.key]) patchObj[song.key] = {};
       if (file) {
         patchObj[song.key][locale] = file.nombre;
+        Toast.show({
+          text: I18n.t('locale patch added', {
+            song: song.titulo,
+            file: file.nombre
+          }),
+          duration: 5000,
+          type: 'success',
+          buttonText: 'Ok'
+        });
       } else {
         delete patchObj[song.key];
+        Toast.show({
+          text: I18n.t('locale patch removed', { song: song.titulo }),
+          duration: 5000,
+          type: 'success',
+          buttonText: 'Ok'
+        });
       }
       var updatedSong = NativeSongs.getSingleSongMeta(
         song.key,
