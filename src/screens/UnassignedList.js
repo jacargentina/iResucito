@@ -98,7 +98,7 @@ const UnassignedList = (props: any) => {
                     color: commonTheme.brandPrimary
                   }}
                   onPress={() =>
-                    navigation.navigate('SalmoChooseLocale', { target: item })
+                    navigation.navigate('SalmoChooseLocale', { target: item, targetType: 'file' })
                   }
                 />
               </Right>

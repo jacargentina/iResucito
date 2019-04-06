@@ -19,7 +19,7 @@ const SalmoListItem = (props: any) => {
   const data = useContext(DataContext);
   const { navigation, highlight, salmo, devModeDisabled } = props;
   const [isCollapsed, setIsCollapsed] = useState(true);
-  const { keys, getLocaleReal } = data.settings;
+  const { keys } = data.settings;
   const { setSongLocalePatch } = data.songsMeta;
   const [developerMode, setDeveloperMode] = useState();
   const [firstHighlighted, setFirstHighlighted] = useState();
@@ -31,7 +31,7 @@ const SalmoListItem = (props: any) => {
   useEffect(() => {
     var isOn = devModeDisabled === true ? false : keys.developerMode;
     setDeveloperMode(isOn);
-  }, [keys]);
+  }, [keys.developerMode]);
 
   useEffect(() => {
     if (
@@ -76,13 +76,11 @@ const SalmoListItem = (props: any) => {
   }, [highlight, developerMode]);
 
   useEffect(() => {
-    if (developerMode && salmo.patchable && !openHighlightedRest) {
+    if (developerMode === true && salmo.patchable && !openHighlightedRest) {
       if (salmo.patched) {
         setPatchableSection(
           <TouchableOpacity
-            onPress={() =>
-              setSongLocalePatch(salmo, getLocaleReal(keys.locale), undefined)
-            }
+            onPress={() => setSongLocalePatch(salmo, I18n.locale, undefined)}
             style={{ flex: 1, flexDirection: 'row-reverse' }}>
             <Icon
               name="trash"
@@ -109,14 +107,16 @@ const SalmoListItem = (props: any) => {
               }}
               onPress={() =>
                 navigation.navigate('SalmoChooseLocale', {
-                  salmo: salmo
+                  target: salmo,
+                  targetType: 'song'
                 })
               }
             />
           </Right>
         );
       }
-    } else if (salmo.patchable && !developerMode) {
+    }
+    if (salmo.patchable && developerMode === false) {
       setPatchableSection(
         <TouchableOpacity
           onPress={() => {
@@ -141,7 +141,7 @@ const SalmoListItem = (props: any) => {
         </TouchableOpacity>
       );
     }
-  }, [developerMode, openHighlightedRest]);
+  }, [developerMode, salmo.patchable, openHighlightedRest]);
 
   return (
     <ListItem avatar={props.showBadge} style={{ paddingHorizontal: 5 }}>

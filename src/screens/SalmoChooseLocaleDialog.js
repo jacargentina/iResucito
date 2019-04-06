@@ -11,27 +11,49 @@ import commonTheme from '../native-base-theme/variables/platform';
 const SalmoChooseLocaleDialog = (props: any) => {
   const data = useContext(DataContext);
   const { navigation } = props;
-  const { songs, setSongLocalePatch } = data.songsMeta;
+  const { songs, localeSongs, setSongLocalePatch } = data.songsMeta;
   const [textFilter, setTextFilter] = useState('');
 
   const target = navigation.getParam('target');
+  const targetType = navigation.getParam('targetType');
 
   const items = useMemo(() => {
-    var result = songs.filter(s => !s.files[I18n.locale]);
-    if (textFilter) {
-      result = result.filter(s => {
+    if (targetType == 'file') {
+      // cuales songs no tienen el idioma actual establecido ?
+      var result = songs.filter(s => !s.files[I18n.locale]);
+      if (textFilter) {
+        result = result.filter(s => {
+          return (
+            s.nombre.toLowerCase().includes(textFilter.toLowerCase()) ||
+            s.titulo.toLowerCase().includes(textFilter.toLowerCase()) ||
+            s.fuente.toLowerCase().includes(textFilter.toLowerCase())
+          );
+        });
+      }
+      return result;
+    } else if (targetType == 'song') {
+      // cuales archivos no estan en ningun song del locale actual?
+      var result = localeSongs.filter(locSong => {
+        return !songs.find(s => s.files[I18n.locale] === locSong.nombre);
+      });
+      result = result.filter(locSong => {
         return (
-          s.nombre.toLowerCase().includes(textFilter.toLowerCase()) ||
-          s.titulo.toLowerCase().includes(textFilter.toLowerCase()) ||
-          s.fuente.toLowerCase().includes(textFilter.toLowerCase())
+          locSong.titulo.toLowerCase().includes(textFilter.toLowerCase()) ||
+          locSong.fuente.toLowerCase().includes(textFilter.toLowerCase())
         );
       });
+      return result;
     }
-    return result;
-  }, [I18n.locale, songs, textFilter]);
+  }, [I18n.locale, songs, localeSongs, textFilter]);
 
-  const localeFileSelected = song => {
-    setSongLocalePatch(song, I18n.locale, target);
+  const localeFileSelected = item => {
+    if (targetType == 'file') {
+      // item es un song
+      setSongLocalePatch(item, I18n.locale, target);
+    } else if (targetType == 'song') {
+      // item es un file
+      setSongLocalePatch(target, I18n.locale, item);
+    }
     navigation.goBack(null);
   };
 
