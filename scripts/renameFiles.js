@@ -35,8 +35,8 @@ rl.question('Cual locale? ', locale => {
           index: indexName,
           disk: name
         });
-        var oldPath = path.resolve(`../songs/pt/${name}.txt`);
-        var newPath = path.resolve(`../songs/pt/${indexName}.txt`);
+        var oldPath = path.resolve(`../songs/${locale}/${name}.txt`);
+        var newPath = path.resolve(`../songs/${locale}/${indexName}.txt`);
         execSync(`git mv '${oldPath}' '${newPath}'`);
       }
     }
