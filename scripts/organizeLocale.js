@@ -1,3 +1,6 @@
+// Para un locale elegido, ir agregando al indice
+// los archivos que estan presentes en el disco
+// pero aun no estan enlazados
 const readline = require('readline');
 var path = require('path');
 var indexPath = path.resolve('../songs/index.json');

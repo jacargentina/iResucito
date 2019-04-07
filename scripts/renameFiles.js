@@ -1,3 +1,6 @@
+// Cuando lo nombres de archivos ya estan en el indice
+// pero los nombres difieren en el disco en la capitalizacion
+// usar este script
 var path = require('path');
 var indexPath = path.resolve('../songs/index.json');
 var SongsIndex = require(indexPath);

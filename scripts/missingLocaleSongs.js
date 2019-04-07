@@ -1,3 +1,6 @@
+// Para un locale indicado,
+// ver cuales archivos del español (la referencia principal)
+// no estan en ese locale en el indice
 const readline = require('readline');
 var path = require('path');
 var indexPath = path.resolve('../songs/index.json');

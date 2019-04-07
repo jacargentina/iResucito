@@ -1,3 +1,6 @@
+// Tomar el indice como referencia
+// y mostrar cuales archivos no estan
+// en el disco con el nombre indicado
 var path = require('path');
 var indexPath = path.resolve('../songs/index.json');
 var SongsIndex = require(indexPath);
