@@ -1734,7 +1734,8 @@
  "190": {
   "etapa": "Liturgia",
   "files": {
-   "es": "Letanías penitenciales II"
+   "es": "Letanías penitenciales II",
+   "pt": "Ladainha penitencial II"
   }
  },
  "191": {
@@ -1755,7 +1756,8 @@
   "etapa": "Liturgia",
   "files": {
    "es": "Letanías penitenciales I",
-   "de-AT": "Kurze Busslitanei"
+   "de-AT": "Kurze Busslitanei",
+   "pt": "Ladainha Penitencial I"
   }
  },
  "194": {
@@ -1798,13 +1800,15 @@
  "200": {
   "etapa": "Liturgia",
   "files": {
-   "es": "Plegaria Eucaristica IV - Prefacio (1988)"
+   "es": "Plegaria Eucaristica IV - Prefacio (1988)",
+   "pt": "Oração Eucarística IV - Prefácio (1988)"
   }
  },
  "201": {
   "etapa": "Liturgia",
   "files": {
-   "es": "Prefacio Pascual I"
+   "es": "Prefacio Pascual I",
+   "pt": "Prefácio Pascual I"
   }
  },
  "202": {

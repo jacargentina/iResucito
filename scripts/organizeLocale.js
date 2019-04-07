@@ -26,6 +26,10 @@ rl.question('Cual locale? ', locale => {
 
   function processNext() {
     var current = cantos[i];
+    if (current == undefined) {
+      console.log('Hecho!');
+      process.exit();
+    }
     var currentName = current.replace('.txt', '');
     var fileInIndex = keys.find(
       k => SongsIndex[k].files[locale] === currentName
@@ -34,12 +38,7 @@ rl.question('Cual locale? ', locale => {
       i++;
       processNext();
     } else {
-      if (current == undefined) {
-        console.log('Hecho!');
-        process.exit();
-      }
       console.log(current);
-
       rl.question('Cual es la clave? ', answer => {
         if (answer !== '') {
           if (!SongsIndex[answer].files[locale]) {
