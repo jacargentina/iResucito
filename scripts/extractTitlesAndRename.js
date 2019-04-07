@@ -1,0 +1,57 @@
+// Extraer de los archivos dentro del locale
+// la primer linea que es el titulo, formatearla
+// y renombrar el archivo de forma acorde
+const readline = require('readline');
+var path = require('path');
+var fs = require('fs');
+const { execSync } = require('child_process');
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+String.prototype.replaceAt = function(index, replacement) {
+  return (
+    this.substr(0, index) +
+    replacement +
+    this.substr(index + replacement.length)
+  );
+};
+
+rl.question('Cual locale? ', locale => {
+  var sourcePath = `../songs/${locale}/originals`;
+  var archivos = fs.readdirSync(sourcePath);
+
+  archivos.forEach(filename => {
+    var oldPath = path.resolve(`${sourcePath}/${filename}`);
+    var content = fs.readFileSync(oldPath, 'utf8');
+    var titulo = content
+      .split('\n')[0]
+      .trim()
+      .replace(/\"/g, '')
+      .toLowerCase();
+
+    if (titulo.length > 3) {
+      renameTo = titulo.replace(/  /g, ' ');
+      renameTo = renameTo.replace('(*)', '');
+      var parts = renameTo.split('-');
+      if (parts.length > 1) {
+        const [p1, p2] = parts;
+
+        if (p1.toLowerCase().includes('psalm')) {
+          var fuente = p1.trim().replaceAt(0, p1.trim()[0].toUpperCase());
+          renameTo = p2.trim() + ' - ' + fuente;
+        }
+      }
+
+      renameTo = renameTo.replaceAt(0, renameTo[0].toUpperCase());
+
+      var newPath = path.resolve(`../songs/${locale}/${renameTo}.txt`);
+      //execSync(`git mv "${oldPath}" "${newPath}"`);
+      console.log({ oldPath, newPath });
+    }
+  });
+
+  process.exit();
+});
