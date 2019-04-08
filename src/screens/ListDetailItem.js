@@ -116,7 +116,7 @@ const ListDetailItem = (props: any) => {
               fontSize: 30
             }}
             onPress={() =>
-              navigation.navigate('SalmoDetail', {
+              navigation.navigate('SongDetail', {
                 salmo: listText
               })
             }

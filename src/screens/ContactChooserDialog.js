@@ -1,6 +1,6 @@
 // @flow
 import React, { useContext, useState, useMemo } from 'react';
-import BaseModal from './BaseModal';
+import ModalView from './ModalView';
 import { Text, Icon } from 'native-base';
 import { FlatList, View } from 'react-native';
 import { DataContext } from '../DataContext';
@@ -31,7 +31,7 @@ const ContactChooserDialog = (props: any) => {
   };
 
   return (
-    <BaseModal title={I18n.t('screen_title.community')} fade={true}>
+    <ModalView title={I18n.t('screen_title.community')} fade={true}>
       {brothers.length == 0 && (
         <View
           style={{
@@ -69,7 +69,7 @@ const ContactChooserDialog = (props: any) => {
           }}
         />
       </SearchBarView>
-    </BaseModal>
+    </ModalView>
   );
 };
 

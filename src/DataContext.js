@@ -421,7 +421,7 @@ const useSearch = (locale: string, developerMode: boolean) => {
       {
         title_key: 'search_title.alpha',
         note: I18n.t('search_note.alpha'),
-        route: 'SalmoList',
+        route: 'SongList',
         chooser: I18n.t('search_tabs.all'),
         params: { filter: null },
         badge: badges.Alfabético
@@ -433,28 +433,28 @@ const useSearch = (locale: string, developerMode: boolean) => {
       {
         title_key: 'search_title.precatechumenate',
         note: I18n.t('search_note.precatechumenate'),
-        route: 'SalmoList',
+        route: 'SongList',
         params: { filter: { etapa: 'Precatecumenado' } },
         badge: badges.Precatecumenado
       },
       {
         title_key: 'search_title.catechumenate',
         note: I18n.t('search_note.catechumenate'),
-        route: 'SalmoList',
+        route: 'SongList',
         params: { filter: { etapa: 'Catecumenado' } },
         badge: badges.Catecumenado
       },
       {
         title_key: 'search_title.election',
         note: I18n.t('search_note.election'),
-        route: 'SalmoList',
+        route: 'SongList',
         params: { filter: { etapa: 'Eleccion' } },
         badge: badges.Eleccion
       },
       {
         title_key: 'search_title.liturgy',
         note: I18n.t('search_note.liturgy'),
-        route: 'SalmoList',
+        route: 'SongList',
         params: { filter: { etapa: 'Liturgia' } },
         badge: badges.Liturgia
       },
@@ -465,35 +465,35 @@ const useSearch = (locale: string, developerMode: boolean) => {
       {
         title_key: 'search_title.advent',
         note: I18n.t('search_note.advent'),
-        route: 'SalmoList',
+        route: 'SongList',
         params: { filter: { adviento: true } },
         badge: null
       },
       {
         title_key: 'search_title.christmas',
         note: I18n.t('search_note.christmas'),
-        route: 'SalmoList',
+        route: 'SongList',
         params: { filter: { navidad: true } },
         badge: null
       },
       {
         title_key: 'search_title.lent',
         note: I18n.t('search_note.lent'),
-        route: 'SalmoList',
+        route: 'SongList',
         params: { filter: { cuaresma: true } },
         badge: null
       },
       {
         title_key: 'search_title.easter',
         note: I18n.t('search_note.easter'),
-        route: 'SalmoList',
+        route: 'SongList',
         params: { filter: { pascua: true } },
         badge: null
       },
       {
         title_key: 'search_title.pentecost',
         note: I18n.t('search_note.pentecost'),
-        route: 'SalmoList',
+        route: 'SongList',
         params: { filter: { pentecostes: true } },
         badge: null
       },
@@ -504,7 +504,7 @@ const useSearch = (locale: string, developerMode: boolean) => {
       {
         title_key: 'search_title.entrance',
         note: I18n.t('search_note.entrance'),
-        route: 'SalmoList',
+        route: 'SongList',
         params: { filter: { entrada: true } },
         badge: null,
         chooser: I18n.t('search_tabs.entrance'),
@@ -513,7 +513,7 @@ const useSearch = (locale: string, developerMode: boolean) => {
       {
         title_key: 'search_title.peace and offerings',
         note: I18n.t('search_note.peace and offerings'),
-        route: 'SalmoList',
+        route: 'SongList',
         params: { filter: { paz: true } },
         badge: null,
         chooser: I18n.t('search_tabs.peace and offerings'),
@@ -522,7 +522,7 @@ const useSearch = (locale: string, developerMode: boolean) => {
       {
         title_key: 'search_title.fraction of bread',
         note: I18n.t('search_note.fraction of bread'),
-        route: 'SalmoList',
+        route: 'SongList',
         params: { filter: { fraccion: true } },
         badge: null,
         chooser: I18n.t('search_tabs.fraction of bread'),
@@ -531,7 +531,7 @@ const useSearch = (locale: string, developerMode: boolean) => {
       {
         title_key: 'search_title.communion',
         note: I18n.t('search_note.communion'),
-        route: 'SalmoList',
+        route: 'SongList',
         params: { filter: { comunion: true } },
         badge: null,
         chooser: I18n.t('search_tabs.communion'),
@@ -540,7 +540,7 @@ const useSearch = (locale: string, developerMode: boolean) => {
       {
         title_key: 'search_title.exit',
         note: I18n.t('search_note.exit'),
-        route: 'SalmoList',
+        route: 'SongList',
         params: { filter: { final: true } },
         badge: null,
         chooser: I18n.t('search_tabs.exit'),
@@ -549,7 +549,7 @@ const useSearch = (locale: string, developerMode: boolean) => {
       {
         title_key: 'search_title.signing to the virgin',
         note: I18n.t('search_note.signing to the virgin'),
-        route: 'SalmoList',
+        route: 'SongList',
         params: { filter: { virgen: true } },
         badge: null,
         chooser: I18n.t('search_tabs.signing to the virgin')
@@ -558,14 +558,14 @@ const useSearch = (locale: string, developerMode: boolean) => {
         /* eslint-disable quotes */
         title_key: `search_title.children's songs`,
         note: I18n.t(`search_note.children's songs`),
-        route: 'SalmoList',
+        route: 'SongList',
         params: { filter: { niños: true } },
         badge: null
       },
       {
         title_key: 'search_title.lutes and vespers',
         note: I18n.t('search_note.lutes and vespers'),
-        route: 'SalmoList',
+        route: 'SongList',
         params: { filter: { laudes: true } },
         badge: null
       }

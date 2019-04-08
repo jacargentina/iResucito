@@ -15,7 +15,7 @@ const textStyles = textTheme(commonTheme);
 const noteStyles = textStyles['.note'];
 delete textStyles['.note'];
 
-const SalmoListItem = (props: any) => {
+const SongListItem = (props: any) => {
   const data = useContext(DataContext);
   const { navigation, highlight, salmo, devModeDisabled } = props;
   const [isCollapsed, setIsCollapsed] = useState(true);
@@ -196,4 +196,4 @@ const SalmoListItem = (props: any) => {
   );
 };
 
-export default withNavigation(SalmoListItem);
+export default withNavigation(SongListItem);

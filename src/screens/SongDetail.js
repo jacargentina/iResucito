@@ -19,7 +19,7 @@ import I18n from '../translations';
 import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
 import commonTheme from '../native-base-theme/variables/platform';
 
-const SalmoDetail = (props: any) => {
+const SongDetail = (props: any) => {
   const data = useContext(DataContext);
   const { keys } = data.settings;
   const { navigation } = props;
@@ -203,7 +203,7 @@ const ViewPdf = withNavigation(props => {
   );
 });
 
-SalmoDetail.navigationOptions = (props: any) => {
+SongDetail.navigationOptions = (props: any) => {
   const salmo = props.navigation.getParam('salmo');
   return {
     title: salmo ? salmo.titulo : 'Salmo',
@@ -218,4 +218,4 @@ SalmoDetail.navigationOptions = (props: any) => {
   };
 };
 
-export default SalmoDetail;
+export default SongDetail;

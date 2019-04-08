@@ -1,6 +1,6 @@
 // @flow
 import React, { useContext, useState, useEffect, useMemo } from 'react';
-import BaseModal from './BaseModal';
+import ModalView from './ModalView';
 import SearchBarView from './SearchBarView';
 import { Text, ListItem, Body, Right, CheckBox } from 'native-base';
 import {
@@ -66,7 +66,7 @@ const ContactImportDialog = (props: any) => {
   );
 
   return (
-    <BaseModal
+    <ModalView
       closeButton={readyButton}
       title={I18n.t('screen_title.import contacts')}
       fade={true}>
@@ -142,7 +142,7 @@ const ContactImportDialog = (props: any) => {
           }}
         />
       </SearchBarView>
-    </BaseModal>
+    </ModalView>
   );
 };
 

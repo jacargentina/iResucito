@@ -22,7 +22,7 @@ const rl = readline.createInterface({
 });
 
 rl.question('Cual locale? ', locale => {
-  Object.entries(SongsIndex).forEach(([key, value]) => {
+  Object.entries(SongsIndex).forEach(([, value]) => {
     if (value.files[locale]) {
       var original = value.files[locale];
       var titulo = original.substr(0, original.indexOf('-'));

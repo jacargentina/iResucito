@@ -3,17 +3,17 @@ import React from 'react';
 import { createStackNavigator } from 'react-navigation';
 import StackNavigatorOptions from './StackNavigatorOptions';
 import { Icon } from 'native-base';
-import SalmoSearch from '../screens/SalmoSearch';
-import SalmoList from '../screens/SalmoList';
-import SalmoDetail from '../screens/SalmoDetail';
+import SongSearch from '../screens/SongSearch';
+import SongList from '../screens/SongList';
+import SongDetail from '../screens/SongDetail';
 import UnassignedList from '../screens/UnassignedList';
 import PDFViewer from '../screens/PDFViewer';
 
 const SongsNavigator = createStackNavigator(
   {
-    SalmoSearch: SalmoSearch,
-    SalmoList: SalmoList,
-    SalmoDetail: SalmoDetail,
+    SongSearch: SongSearch,
+    SongList: SongList,
+    SongDetail: SongDetail,
     PDFViewer: PDFViewer,
     UnassignedList: UnassignedList
   },

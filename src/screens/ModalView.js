@@ -5,7 +5,7 @@ import { Text, Icon } from 'native-base';
 import { View, KeyboardAvoidingView, SafeAreaView } from 'react-native';
 import commonTheme from '../native-base-theme/variables/platform';
 
-const BaseModal = (props: any) => {
+const ModalView = (props: any) => {
   const { navigation } = props;
   var closeButton = props.closeButton ? (
     props.closeButton
@@ -60,4 +60,4 @@ const BaseModal = (props: any) => {
   );
 };
 
-export default withNavigation(BaseModal);
+export default withNavigation(ModalView);

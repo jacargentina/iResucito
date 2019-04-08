@@ -2,12 +2,12 @@
 import React, { useContext, useEffect, useState, useRef } from 'react';
 import { ScrollView } from 'react-native';
 import { Button, Text, Segment } from 'native-base';
-import BaseModal from './BaseModal';
-import SalmoList from './SalmoList';
+import ModalView from './ModalView';
+import SongList from './SongList';
 import { DataContext } from '../DataContext';
 import I18n from '../translations';
 
-const SalmoChooserDialog = (props: any) => {
+const SongChooserDialog = (props: any) => {
   const data = useContext(DataContext);
   const scrollToActiveRef = useRef<?ScrollView>();
   const { navigation } = props;
@@ -87,14 +87,14 @@ const SalmoChooserDialog = (props: any) => {
   };
 
   return (
-    <BaseModal title={I18n.t('screen_title.find song')}>
+    <ModalView title={I18n.t('screen_title.find song')}>
       <ScrollView
         ref={scrollToActiveRef}
         style={{ flexGrow: 0, marginLeft: 8, marginRight: 8 }}
         horizontal={true}>
         <Segment>{segments}</Segment>
       </ScrollView>
-      <SalmoList
+      <SongList
         style={{ flexGrow: 1 }}
         filter={
           activeSegment && activeSegment.params
@@ -104,8 +104,8 @@ const SalmoChooserDialog = (props: any) => {
         devModeDisabled={true}
         onPress={salmo => songAssign(salmo)}
       />
-    </BaseModal>
+    </ModalView>
   );
 };
 
-export default SalmoChooserDialog;
+export default SongChooserDialog;

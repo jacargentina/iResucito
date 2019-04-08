@@ -4,11 +4,11 @@ import { withNavigation, withNavigationFocus } from 'react-navigation';
 import { FlatList, Keyboard } from 'react-native';
 import { Text, ListItem } from 'native-base';
 import SearchBarView from './SearchBarView';
-import SalmoListItem from './SalmoListItem';
+import SongListItem from './SongListItem';
 import I18n from '../translations';
 import { DataContext } from '../DataContext';
 
-const SalmoList = (props: any) => {
+const SongList = (props: any) => {
   const listRef = useRef<?FlatList>();
   const data = useContext(DataContext);
   const { navigation, isFocused } = props;
@@ -61,7 +61,7 @@ const SalmoList = (props: any) => {
     if (props.onPress) {
       props.onPress(salmo);
     } else {
-      navigation.navigate('SalmoDetail', { salmo: salmo });
+      navigation.navigate('SongDetail', { salmo: salmo });
     }
   };
 
@@ -78,7 +78,7 @@ const SalmoList = (props: any) => {
         keyExtractor={item => item.path}
         renderItem={({ item }) => {
           return (
-            <SalmoListItem
+            <SongListItem
               key={item.nombre}
               showBadge={showSalmosBadge}
               salmo={item}
@@ -93,7 +93,7 @@ const SalmoList = (props: any) => {
   );
 };
 
-SalmoList.navigationOptions = (props: any) => {
+SongList.navigationOptions = (props: any) => {
   return {
     title: I18n.t(props.navigation.getParam('title_key')),
     headerBackTitle: I18n.t('ui.back'),
@@ -101,4 +101,4 @@ SalmoList.navigationOptions = (props: any) => {
   };
 };
 
-export default withNavigationFocus(withNavigation(SalmoList));
+export default withNavigationFocus(withNavigation(SongList));

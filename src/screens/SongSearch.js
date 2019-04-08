@@ -20,7 +20,7 @@ const Loading = () => {
   );
 };
 
-const SalmoSearch = (props: any) => {
+const SongSearch = (props: any) => {
   const data = useContext(DataContext);
   const { navigation } = props;
   const { initialized, searchItems } = data.search;
@@ -71,8 +71,8 @@ const SalmoSearch = (props: any) => {
   );
 };
 
-SalmoSearch.navigationOptions = () => {
+SongSearch.navigationOptions = () => {
   return { title: I18n.t(titleLocaleKey), headerBackTitle: I18n.t('ui.back') };
 };
 
-export default SalmoSearch;
+export default SongSearch;

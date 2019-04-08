@@ -5,13 +5,13 @@ import StackNavigatorOptions from './StackNavigatorOptions';
 import { Icon } from 'native-base';
 import ListScreen from '../screens/ListScreen';
 import ListDetail from '../screens/ListDetail';
-import SalmoDetail from '../screens/SalmoDetail';
+import SongDetail from '../screens/SongDetail';
 
 const ListsNavigator = createStackNavigator(
   {
     Lists: ListScreen,
     ListDetail: ListDetail,
-    SalmoDetail: SalmoDetail
+    SongDetail: SongDetail
   },
   {
     defaultNavigationOptions: StackNavigatorOptions

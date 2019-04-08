@@ -1,6 +1,6 @@
 // @flow
 import React, { useContext, useState, useMemo } from 'react';
-import BaseModal from './BaseModal';
+import ModalView from './ModalView';
 import SearchBarView from './SearchBarView';
 import { Text, ListItem, Body, Left, Icon } from 'native-base';
 import { FlatList } from 'react-native';
@@ -8,7 +8,7 @@ import { DataContext } from '../DataContext';
 import I18n from '../translations';
 import commonTheme from '../native-base-theme/variables/platform';
 
-const SalmoChooseLocaleDialog = (props: any) => {
+const SongChooseLocaleDialog = (props: any) => {
   const data = useContext(DataContext);
   const { navigation } = props;
   const { songs, localeSongs, setSongLocalePatch } = data.songsMeta;
@@ -18,9 +18,10 @@ const SalmoChooseLocaleDialog = (props: any) => {
   const targetType = navigation.getParam('targetType');
 
   const items = useMemo(() => {
+    var result = [];
     if (targetType == 'file') {
       // cuales songs no tienen el idioma actual establecido ?
-      var result = songs.filter(s => !s.files[I18n.locale]);
+      result = songs.filter(s => !s.files[I18n.locale]);
       if (textFilter) {
         result = result.filter(s => {
           return (
@@ -30,10 +31,9 @@ const SalmoChooseLocaleDialog = (props: any) => {
           );
         });
       }
-      return result;
     } else if (targetType == 'song') {
       // cuales archivos no estan en ningun song del locale actual?
-      var result = localeSongs.filter(locSong => {
+      result = localeSongs.filter(locSong => {
         return !songs.find(s => s.files[I18n.locale] === locSong.nombre);
       });
       result = result.filter(locSong => {
@@ -42,8 +42,8 @@ const SalmoChooseLocaleDialog = (props: any) => {
           locSong.fuente.toLowerCase().includes(textFilter.toLowerCase())
         );
       });
-      return result;
     }
+    return result;
   }, [I18n.locale, songs, localeSongs, textFilter]);
 
   const localeFileSelected = item => {
@@ -58,7 +58,7 @@ const SalmoChooseLocaleDialog = (props: any) => {
   };
 
   return (
-    <BaseModal title={I18n.t('screen_title.choose song')} fade={true}>
+    <ModalView title={I18n.t('screen_title.choose song')} fade={true}>
       <SearchBarView value={textFilter} setValue={setTextFilter}>
         {target && (
           <ListItem icon button last>
@@ -99,8 +99,8 @@ const SalmoChooseLocaleDialog = (props: any) => {
           }}
         />
       </SearchBarView>
-    </BaseModal>
+    </ModalView>
   );
 };
 
-export default SalmoChooseLocaleDialog;
+export default SongChooseLocaleDialog;
