@@ -32,25 +32,27 @@ rl.question('Cual locale? ', locale => {
       .replace(/\"/g, '')
       .toLowerCase();
 
-    if (titulo.length > 3) {
-      renameTo = titulo.replace(/  /g, ' ');
-      renameTo = renameTo.replace('(*)', '');
-      var parts = renameTo.split('-');
-      if (parts.length > 1) {
-        const [p1, p2] = parts;
+    titulo =
+      titulo.length > 3
+        ? titulo
+        : 'Buscar titulo ' + filename.replace('.txt', '');
+        
+    renameTo = titulo.replace(/  /g, ' ');
+    renameTo = renameTo.replace('(*)', '');
+    var parts = renameTo.split('-');
+    if (parts.length > 1) {
+      const [p1, p2] = parts;
 
-        if (p1.toLowerCase().includes('psalm')) {
-          var fuente = p1.trim().replaceAt(0, p1.trim()[0].toUpperCase());
-          renameTo = p2.trim() + ' - ' + fuente;
-        }
+      if (p1.toLowerCase().includes('psalm')) {
+        var fuente = p1.trim().replaceAt(0, p1.trim()[0].toUpperCase());
+        renameTo = p2.trim() + ' - ' + fuente;
       }
-
-      renameTo = renameTo.replaceAt(0, renameTo[0].toUpperCase());
-
-      var newPath = path.resolve(`../songs/${locale}/${renameTo}.txt`);
-      //execSync(`git mv "${oldPath}" "${newPath}"`);
-      console.log({ oldPath, newPath });
     }
+
+    renameTo = renameTo.replaceAt(0, renameTo[0].toUpperCase());
+
+    var newPath = path.resolve(`../songs/${locale}/${renameTo}.txt`);
+    execSync(`git mv "${oldPath}" "${newPath}"`);
   });
 
   process.exit();
