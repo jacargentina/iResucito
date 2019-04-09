@@ -25,11 +25,11 @@ const SongDetail = (props: any) => {
   const { navigation } = props;
   const [transportNote, setTransportNote] = useState();
 
-  var salmo = navigation.getParam('salmo');
+  var song = navigation.getParam('song');
 
-  var backColor = color(colors[salmo.etapa]);
+  var backColor = color(colors[song.etapa]);
   var background = backColor.lighten(0.1).string();
-  var itemsToRender = getSalmoTransported(salmo, transportNote);
+  var itemsToRender = getSalmoTransported(song, transportNote);
 
   // Ajuste final para renderizado en screen
   var lines = itemsToRender.map(it => {
@@ -53,8 +53,8 @@ const SongDetail = (props: any) => {
     }
   }, []);
 
-  if (salmo.error) {
-    var render_items = <Text>{salmo.error}</Text>;
+  if (song.error) {
+    var render_items = <Text>{song.error}</Text>;
   } else {
     var render_items = lines.map((it, i) => {
       if (it.sufijo) {
@@ -91,8 +91,8 @@ const SongDetail = (props: any) => {
             style={{
               minWidth: minWidth
             }}>
-            <Text style={NativeStyles.titulo}>{salmo.titulo}</Text>
-            <Text style={NativeStyles.fuente}>{salmo.fuente}</Text>
+            <Text style={NativeStyles.titulo}>{song.titulo}</Text>
+            <Text style={NativeStyles.fuente}>{song.fuente}</Text>
             {render_items}
           </Content>
         </ScrollView>
@@ -103,12 +103,12 @@ const SongDetail = (props: any) => {
 
 const TransportNotesMenu = withNavigation((props: any) => {
   const { navigation } = props;
-  const salmo = navigation.getParam('salmo');
-  if (!salmo) {
+  const song = navigation.getParam('song');
+  if (!song) {
     return null;
   }
 
-  const chords = getChordsScale(salmo.locale);
+  const chords = getChordsScale(song.locale);
   const transportNote = navigation.getParam('transportNote');
   const setTransportNote = navigation.getParam('setTransportNote');
 
@@ -176,7 +176,7 @@ const TransportNotesMenu = withNavigation((props: any) => {
 
 const ViewPdf = withNavigation(props => {
   const { navigation } = props;
-  const salmo = navigation.getParam('salmo');
+  const song = navigation.getParam('song');
   const transportNote = navigation.getParam('transportNote');
 
   return (
@@ -191,11 +191,11 @@ const ViewPdf = withNavigation(props => {
         color: StackNavigatorOptions.headerTitleStyle.color
       }}
       onPress={() => {
-        const lines = getSalmoTransported(salmo, transportNote);
-        generatePDF(salmo, lines).then(path => {
+        const lines = getSalmoTransported(song, transportNote);
+        generatePDF(song, lines).then(path => {
           navigation.navigate('PDFViewer', {
             uri: path,
-            salmo: salmo
+            song: song
           });
         });
       }}
@@ -204,9 +204,9 @@ const ViewPdf = withNavigation(props => {
 });
 
 SongDetail.navigationOptions = (props: any) => {
-  const salmo = props.navigation.getParam('salmo');
+  const song = props.navigation.getParam('song');
   return {
-    title: salmo ? salmo.titulo : 'Salmo',
+    title: song ? song.titulo : 'Salmo',
     headerBackTitle: I18n.t('ui.back'),
     headerTruncatedBackTitle: I18n.t('ui.back'),
     headerRight: (

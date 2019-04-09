@@ -17,7 +17,14 @@ delete textStyles['.note'];
 
 const SongListItem = (props: any) => {
   const data = useContext(DataContext);
-  const { navigation, highlight, salmo, devModeDisabled } = props;
+  const {
+    navigation,
+    highlight,
+    song,
+    showBadge,
+    devModeDisabled,
+    patchSectionDisabled
+  } = props;
   const [isCollapsed, setIsCollapsed] = useState(true);
   const { keys } = data.settings;
   const { setSongLocalePatch } = data.songsMeta;
@@ -36,10 +43,10 @@ const SongListItem = (props: any) => {
   useEffect(() => {
     if (
       highlight &&
-      !salmo.error &&
-      salmo.fullText.toLowerCase().includes(highlight.toLowerCase())
+      !song.error &&
+      song.fullText.toLowerCase().includes(highlight.toLowerCase())
     ) {
-      var linesToHighlight = salmo.lines.filter(l =>
+      var linesToHighlight = song.lines.filter(l =>
         l.toLowerCase().includes(highlight.toLowerCase())
       );
       var children = linesToHighlight.map((l, i) => {
@@ -76,11 +83,16 @@ const SongListItem = (props: any) => {
   }, [highlight, developerMode]);
 
   useEffect(() => {
-    if (developerMode === true && salmo.patchable && !openHighlightedRest) {
-      if (salmo.patched) {
+    if (
+      developerMode === true &&
+      song.patchable &&
+      !openHighlightedRest &&
+      !patchSectionDisabled
+    ) {
+      if (song.patched) {
         setPatchableSection(
           <TouchableOpacity
-            onPress={() => setSongLocalePatch(salmo, I18n.locale, undefined)}
+            onPress={() => setSongLocalePatch(song, undefined)}
             style={{ flex: 1, flexDirection: 'row-reverse' }}>
             <Icon
               name="trash"
@@ -92,7 +104,7 @@ const SongListItem = (props: any) => {
               }}
             />
             <Text style={{ ...noteStyles, marginRight: 5, marginTop: 5 }}>
-              {salmo.patchedTitle}
+              {song.patchedTitle}
             </Text>
           </TouchableOpacity>
         );
@@ -106,8 +118,8 @@ const SongListItem = (props: any) => {
                 color: commonTheme.brandPrimary
               }}
               onPress={() =>
-                navigation.navigate('SalmoChooseLocale', {
-                  target: salmo,
+                navigation.navigate('SongChooseLocale', {
+                  target: song,
                   targetType: 'song'
                 })
               }
@@ -116,7 +128,7 @@ const SongListItem = (props: any) => {
         );
       }
     }
-    if (salmo.patchable && developerMode === false) {
+    if (song.patchable && developerMode === false && !patchSectionDisabled) {
       setPatchableSection(
         <TouchableOpacity
           onPress={() => {
@@ -141,18 +153,23 @@ const SongListItem = (props: any) => {
         </TouchableOpacity>
       );
     }
-  }, [developerMode, salmo.patchable, openHighlightedRest]);
+  }, [
+    developerMode,
+    patchSectionDisabled,
+    song.patchable,
+    openHighlightedRest
+  ]);
 
   return (
-    <ListItem avatar={props.showBadge} style={{ paddingHorizontal: 5 }}>
-      {props.showBadge && (
-        <Left style={{ marginLeft: -8 }}>{badges[salmo.etapa]}</Left>
+    <ListItem avatar={showBadge} style={{ paddingHorizontal: 5 }}>
+      {showBadge && (
+        <Left style={{ marginLeft: -8 }}>{badges[song.etapa]}</Left>
       )}
       <Body>
         <TouchableOpacity
           onPress={() => {
             if (props.onPress) {
-              props.onPress(salmo);
+              props.onPress(song);
             }
           }}>
           <Highlighter
@@ -161,7 +178,7 @@ const SongListItem = (props: any) => {
               backgroundColor: 'yellow'
             }}
             searchWords={[highlight]}
-            textToHighlight={salmo.titulo}
+            textToHighlight={song.titulo}
           />
           <Highlighter
             style={noteStyles}
@@ -169,7 +186,7 @@ const SongListItem = (props: any) => {
               backgroundColor: 'yellow'
             }}
             searchWords={[highlight]}
-            textToHighlight={salmo.fuente}
+            textToHighlight={song.fuente}
           />
           {firstHighlighted}
           {highlightedRest}
@@ -178,7 +195,7 @@ const SongListItem = (props: any) => {
       </Body>
       {openHighlightedRest}
       {chooseFileForLocale}
-      {salmo.error && (
+      {song.error && (
         <Right>
           <Icon
             name="bug"
@@ -187,7 +204,7 @@ const SongListItem = (props: any) => {
               color: commonTheme.brandPrimary
             }}
             onPress={() => {
-              Alert.alert('Error', salmo.error);
+              Alert.alert('Error', song.error);
             }}
           />
         </Right>

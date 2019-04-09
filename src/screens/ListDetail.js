@@ -88,7 +88,7 @@ const ListDetail = (props: any) => {
           style={{ backgroundColor: commonTheme.brandPrimary }}
           position="bottomRight"
           onPress={() =>
-            navigation.navigate('SalmoChooser', {
+            navigation.navigate('SongChooser', {
               target: { listName: listName, listKey: uiList.items.length }
             })
           }>

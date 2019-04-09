@@ -1,6 +1,7 @@
 //@flow
 import SongsIndex from '../songs/index.json';
 import I18n from './translations';
+import { getSongFileFromString } from './util';
 
 export const cleanChordsRegex = /\[|\]|#|\*|5|6|7|9|b|-|\+|\/|\u2013|\u2217|aum|dim/g;
 
@@ -73,24 +74,7 @@ export class SongsProcessor {
     this.songStyles = songStyles;
   }
 
-  getSongFileFromFilename(filename: string): SongFile {
-    var titulo = filename.includes(' - ')
-      ? filename.substring(0, filename.indexOf(' - ')).trim()
-      : filename;
-    var fuente =
-      titulo !== filename
-        ? filename.substring(filename.indexOf(' - ') + 3).trim()
-        : '';
-    var nombre = filename.replace('.txt', '');
-    return {
-      nombre: nombre,
-      titulo: titulo,
-      fuente: fuente
-    };
-  }
-
-  assignInfoFromFile(info: Song, files: any, locale: string) {
-    var parsed = this.getSongFileFromFilename(files[locale]);
+  assignInfoFromFile(info: Song, locale: string, parsed: SongFile) {
     info.nombre = parsed.nombre;
     info.titulo = parsed.titulo;
     info.fuente = parsed.fuente;
@@ -98,30 +82,49 @@ export class SongsProcessor {
     info.path = `${this.basePath}/${locale}/${parsed.nombre}.txt`;
   }
 
-  getSingleSongMeta(key: string, locale: string, patch: any): Song {
+  getSingleSongMeta(key: string, locale: string, patch?: SongIndexPatch): Song {
     if (!SongsIndex.hasOwnProperty(key))
       throw new Error(`There is no key = ${key} on the Index!`);
     var info: Song = Object.assign({}, SongsIndex[key]);
     info.key = key;
-    if (!info.files.hasOwnProperty(locale)) {
+    if (info.files.hasOwnProperty(locale)) {
+      // El canto ya esta en el locale
+      const parsed = getSongFileFromString(info.files[locale]);
+      this.assignInfoFromFile(info, locale, parsed);
+    } else {
+      // El canto no existe en el idioma
+      // Copiar informacion del primer idioma disponible
       const defaultLocale = Object.getOwnPropertyNames(info.files)[0];
-      this.assignInfoFromFile(info, info.files, defaultLocale);
+      const parsed = getSongFileFromString(info.files[defaultLocale]);
+      this.assignInfoFromFile(info, defaultLocale, parsed);
       info.patchable = true;
-      if (patch && patch.hasOwnProperty(key)) {
-        if (patch[key].hasOwnProperty(locale)) {
-          info.patched = true;
-          info.patchedTitle = info.titulo;
-          this.assignInfoFromFile(info, patch[key], locale);
-          info.files = Object.assign({}, info.files, patch[key]);
+      // Si se aplico un parche
+      // Asignar los valores del mismo
+      if (
+        patch &&
+        patch.hasOwnProperty(key) &&
+        patch[key].hasOwnProperty(locale)
+      ) {
+        info.patched = true;
+        info.patchedTitle = info.titulo;
+        const { file, rename } = patch[key][locale];
+        const parsed = getSongFileFromString(file);
+        this.assignInfoFromFile(info, locale, parsed);
+        info.files = Object.assign({}, info.files, {
+          [locale]: file
+        });
+        if (rename) {
+          const renamed = getSongFileFromString(rename);
+          info.nombre = renamed.nombre;
+          info.titulo = renamed.titulo;
+          info.fuente = renamed.fuente;
         }
       }
-    } else {
-      this.assignInfoFromFile(info, info.files, locale);
     }
     return info;
   }
 
-  getSongsMeta(rawLoc: string, patch: any): Array<Song> {
+  getSongsMeta(rawLoc: string, patch?: SongIndexPatch): Array<Song> {
     var songs = Object.keys(SongsIndex).map(key => {
       // First load with raw locale (country included)
       var songMeta = this.getSingleSongMeta(key, rawLoc, patch);
@@ -136,7 +139,7 @@ export class SongsProcessor {
     return songs;
   }
 
-  readLocaleSongs(rawLoc: string) {
+  readLocaleSongs(rawLoc: string): Promise<Array<SongFile>> {
     // First try specific locale (with country included)
     return this.songsLister(`${this.basePath}/${rawLoc}`)
       .then(items => {
@@ -146,7 +149,7 @@ export class SongsProcessor {
           .map(i => i.name)
           .filter(i => i.endsWith('.txt'))
           .map(i => i.replace('.txt', '').normalize())
-          .map(i => this.getSongFileFromFilename(i));
+          .map(i => getSongFileFromString(i));
         items.sort(ordenAlfabetico);
         return items;
       })

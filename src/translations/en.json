@@ -11,6 +11,8 @@
     "scale": "C C# D EB E F F# G G# A Bb B"
   },
   "ui": {
+    "yes": "Yes",
+    "no": "No",
     "default": "Default",
     "loading": "Loading...",
     "collaborators": "Collaborators",
@@ -24,6 +26,7 @@
     "cancel": "Cancel",
     "create": "Create",
     "delete confirmation": "Do you confirm deletion?",
+    "apply": "Apply",
     "lists": {
       "already exists": "A list with the same name already exists",
       "non-empty name": "Enter a non-empty name",
@@ -44,7 +47,11 @@
     "confirmation": "Confirmation",
     "list total songs": "{{total}} total songs",
     "locale patch added": "Patched {{song}} with {{file}}",
-    "locale patch removed": "Removed {{song}} patch"
+    "locale patch removed": "Removed {{song}} patch",
+    "locale patch rename message": "Do you want to fix the song title?",
+    "original song": "Original song",
+    "patched song": "Patched song",
+    "song change name help": "Fix the string to match the following standard: [The song title] - [Source]. In case the source is empty, just use [The song title]"
   },
   "list_type": {
     "eucharist": "Eucharist",

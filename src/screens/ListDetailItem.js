@@ -129,7 +129,7 @@ const ListDetailItem = (props: any) => {
         last
         button
         onPress={() =>
-          navigation.navigate('SalmoChooser', {
+          navigation.navigate('SongChooser', {
             target: { listName: listName, listKey: listKey }
           })
         }>

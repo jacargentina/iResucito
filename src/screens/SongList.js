@@ -57,11 +57,11 @@ const SongList = (props: any) => {
     navigation.setParams({ title: I18n.t(navigation.getParam('title_key')) });
   }, [I18n.locale]);
 
-  const onPress = salmo => {
+  const onPress = song => {
     if (props.onPress) {
-      props.onPress(salmo);
+      props.onPress(song);
     } else {
-      navigation.navigate('SongDetail', { salmo: salmo });
+      navigation.navigate('SongDetail', { song: song });
     }
   };
 
@@ -81,7 +81,7 @@ const SongList = (props: any) => {
             <SongListItem
               key={item.nombre}
               showBadge={showSalmosBadge}
-              salmo={item}
+              song={item}
               onPress={onPress}
               highlight={textFilter}
               devModeDisabled={props.devModeDisabled}

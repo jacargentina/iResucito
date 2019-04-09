@@ -11,6 +11,8 @@
     "scale": "C C# D EB E F F# G G# A Hb H"
   },
   "ui": {
+    "yes": "Ja",
+    "no": "Nein",
     "default": "Vorgegeben",
     "loading": "Aufladend...",
     "collaborators": "Kollaborateure",
@@ -24,6 +26,7 @@
     "cancel": "Abbrechen",
     "create": "Erstellen",
     "delete confirmation": "Möchtest du wirklich löschen?",
+    "apply": "Sich bewerben",
     "lists": {
       "already exists": "Es existiert bereits eine Tabelle mit demselben Namen",
       "non-empty name": "Geben Sie einen nicht leeren Namen ein",
@@ -44,7 +47,11 @@
     "confirmation": "Bestätigung",
     "list total songs": "{{total}} Gefundene Lieder",
     "locale patch added": "Gepatcht {{song}} mit {{file}}",
-    "locale patch removed": "Löschen {{song}} patch"
+    "locale patch removed": "Löschen {{song}} patch",
+    "locale patch rename message": "Möchten Sie den Titel des Songs festlegen?",
+    "original song": "Ursprüngliches Lieder",
+    "patched song": "Patch Lieder",
+    "song change name help": "Fix ze string to matsh ze foloving standard: [Ze song title] - [Surse]. In kase ze surse is empty, just use [Ze song title]"
   },
   "list_type": {
     "eucharist": "Eucharistie",

@@ -71,7 +71,13 @@ const UnassignedList = (props: any) => {
         keyExtractor={item => item.nombre}
         renderItem={({ item }) => {
           return (
-            <ListItem>
+            <ListItem
+              onPress={() =>
+                navigation.navigate('SongChooseLocale', {
+                  target: item,
+                  targetType: 'file'
+                })
+              }>
               <Body>
                 <Highlighter
                   style={textStyles}
@@ -97,9 +103,6 @@ const UnassignedList = (props: any) => {
                     fontSize: 32,
                     color: commonTheme.brandPrimary
                   }}
-                  onPress={() =>
-                    navigation.navigate('SalmoChooseLocale', { target: item, targetType: 'file' })
-                  }
                 />
               </Right>
             </ListItem>

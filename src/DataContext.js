@@ -75,7 +75,7 @@ const useSongsMeta = (locale: any) => {
     setSongs(songs);
   };
 
-  const readLocalePatch = () => {
+  const readLocalePatch = (): Promise<SongIndexPatch> => {
     return RNFS.exists(SongsIndexPatchPath).then(exists => {
       setIndexPatchExists(exists);
       if (exists)
@@ -94,25 +94,36 @@ const useSongsMeta = (locale: any) => {
     });
   };
 
-  const saveLocalePatch = (patchObj: any) => {
+  const saveLocalePatch = (patchObj: SongIndexPatch) => {
     var json = JSON.stringify(patchObj, null, ' ');
     return RNFS.writeFile(SongsIndexPatchPath, json, 'utf8').then(() => {
       setIndexPatchExists(true);
     });
   };
 
-  const setSongLocalePatch = (song: Song, rawLoc: string, file?: SongFile) => {
+  const setSongLocalePatch = (
+    song: Song,
+    file?: SongFile,
+    renameTo: string
+  ) => {
     if (file && file.nombre.endsWith('.txt'))
       throw new Error('file con .txt! Pasar sin extension.');
 
     return readLocalePatch().then(patchObj => {
-      var locale = rawLoc.split('-')[0];
       if (!patchObj) patchObj = {};
-      if (!patchObj[song.key]) patchObj[song.key] = {};
+      if (!patchObj[song.key]) {
+        patchObj[song.key] = {};
+      }
       if (file) {
-        patchObj[song.key][locale] = file.nombre;
+        const localePatch: SongPatch = {
+          [I18n.locale]: {
+            file: file.nombre,
+            rename: renameTo
+          }
+        };
+        patchObj[song.key] = Object.assign({}, patchObj[song.key], localePatch);
         Toast.show({
-          text: I18n.t('locale patch added', {
+          text: I18n.t('ui.locale patch added', {
             song: song.titulo,
             file: file.nombre
           }),
@@ -121,9 +132,9 @@ const useSongsMeta = (locale: any) => {
           buttonText: 'Ok'
         });
       } else {
-        delete patchObj[song.key];
+        delete patchObj[song.key][I18n.locale];
         Toast.show({
-          text: I18n.t('locale patch removed', { song: song.titulo }),
+          text: I18n.t('ui.locale patch removed', { song: song.titulo }),
           duration: 5000,
           type: 'success',
           buttonText: 'Ok'
@@ -131,7 +142,7 @@ const useSongsMeta = (locale: any) => {
       }
       var updatedSong = NativeSongs.getSingleSongMeta(
         song.key,
-        locale,
+        I18n.locale,
         patchObj
       );
       return NativeSongs.loadSingleSong(updatedSong)
@@ -140,7 +151,7 @@ const useSongsMeta = (locale: any) => {
           return saveLocalePatch(patchObj);
         })
         .then(() => {
-          return NativeSongs.readLocaleSongs(locale).then(items => {
+          return NativeSongs.readLocaleSongs(I18n.locale).then(items => {
             setLocaleSongs(items);
           });
         });
@@ -161,7 +172,7 @@ const useSongsMeta = (locale: any) => {
     if (locale) {
       // Cargar parche del indice si existe
       readLocalePatch()
-        .then(patchObj => {
+        .then((patchObj: SongIndexPatch) => {
           // Construir metadatos de cantos
           var metaData = NativeSongs.getSongsMeta(locale, patchObj);
           return Promise.all(NativeSongs.loadSongs(metaData)).then(() => {

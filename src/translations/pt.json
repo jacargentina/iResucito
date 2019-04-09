@@ -11,6 +11,8 @@
     "scale": "Do Do# Re Mib Mi Fa Fa# Sol Sol# La Sib Si"
   },
   "ui": {
+    "yes": "Sim",
+    "no": "Não",
     "default": "Padrão",
     "loading": "Carregando...",
     "collaborators": "Colaboradores",
@@ -24,6 +26,7 @@
     "cancel": "Cancelar",
     "create": "Criar",
     "delete confirmation": "Ter certeza que deseja excluir?",
+    "apply": "Aplique",
     "lists": {
       "already exists": "Uma lista com o mesmo nome já existe",
       "non-empty name": "Insira um nome não vazio",
@@ -44,7 +47,11 @@
     "confirmation": "Confirmação",
     "list total songs": "{{total}} canções totais",
     "locale patch added": "Remendado {{song}} com {{file}}",
-    "locale patch removed": "Patch removido de {{song}}"
+    "locale patch removed": "Patch removido de {{song}}",
+    "locale patch rename message": "Você quer consertar o título da música?",
+    "original song": "Canto original",
+    "patched song": "Canto fixa",
+    "song change name help": "Corrija a string para corresponder ao seguinte padrão: [O título da música] - [Source]. Caso a fonte esteja vazia, use apenas [O título da música]"
   },
   "list_type": {
     "eucharist": "Eucaristia",

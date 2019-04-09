@@ -80,7 +80,7 @@ const SongChooserDialog = (props: any) => {
       setList(target.listName, target.listKey, salmo.nombre);
       navigation.goBack(null);
     } else if (target.locale && target.file) {
-      setSongLocalePatch(salmo, target.locale, target.file).then(() => {
+      setSongLocalePatch(salmo, target.file).then(() => {
         navigation.goBack(null);
       });
     }

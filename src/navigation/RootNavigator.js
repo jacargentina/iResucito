@@ -8,16 +8,18 @@ import SongChooseLocaleDialog from '../screens/SongChooseLocaleDialog';
 import ContactChooserDialog from '../screens/ContactChooserDialog';
 import ContactImportDialog from '../screens/ContactImportDialog';
 import ListNameDialog from '../screens/ListNameDialog';
+import SongChangeNameDialog from '../screens/SongChangeNameDialog';
 
 const RootNavigator = createStackNavigator(
   {
     Menu: MenuNavigator,
     About: AboutDialog,
-    SalmoChooser: SongChooserDialog,
-    SalmoChooseLocale: SongChooseLocaleDialog,
+    SongChooser: SongChooserDialog,
+    SongChooseLocale: SongChooseLocaleDialog,
     ContactChooser: ContactChooserDialog,
     ContactImport: ContactImportDialog,
-    ListName: ListNameDialog
+    ListName: ListNameDialog,
+    SongChangeName: SongChangeNameDialog
   },
   {
     mode: 'modal',

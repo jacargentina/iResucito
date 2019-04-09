@@ -31,7 +31,7 @@ const Share = withNavigation(props => {
   const data = useContext(DataContext);
   const { navigation } = props;
   const { sharePDF } = data;
-  const salmo = navigation.getParam('salmo');
+  const song = navigation.getParam('song');
   const uri = navigation.getParam('uri');
   return (
     <Icon
@@ -44,7 +44,7 @@ const Share = withNavigation(props => {
         textAlign: 'center',
         color: StackNavigatorOptions.headerTitleStyle.color
       }}
-      onPress={() => sharePDF(salmo, uri)}
+      onPress={() => sharePDF(song, uri)}
     />
   );
 });
@@ -72,7 +72,7 @@ const Print = withNavigation(props => {
 
 PDFViewer.navigationOptions = props => {
   const { navigation } = props;
-  const { titulo } = navigation.getParam('salmo');
+  const { titulo } = navigation.getParam('song');
   return {
     title: `PDF - ${titulo}`,
     headerRight: (

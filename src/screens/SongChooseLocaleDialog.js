@@ -3,7 +3,7 @@ import React, { useContext, useState, useMemo } from 'react';
 import ModalView from './ModalView';
 import SearchBarView from './SearchBarView';
 import { Text, ListItem, Body, Left, Icon } from 'native-base';
-import { FlatList } from 'react-native';
+import { FlatList, Alert } from 'react-native';
 import { DataContext } from '../DataContext';
 import I18n from '../translations';
 import commonTheme from '../native-base-theme/variables/platform';
@@ -47,14 +47,39 @@ const SongChooseLocaleDialog = (props: any) => {
   }, [I18n.locale, songs, localeSongs, textFilter]);
 
   const localeFileSelected = item => {
-    if (targetType == 'file') {
-      // item es un song
-      setSongLocalePatch(item, I18n.locale, target);
-    } else if (targetType == 'song') {
-      // item es un file
-      setSongLocalePatch(target, I18n.locale, item);
-    }
-    navigation.goBack(null);
+    var song = targetType == 'file' ? item : target;
+    var songFile = targetType == 'file' ? target : item;
+
+    // Definir funcion para llamar
+    // en ambos casos del dialogo
+    const applyChanges = renameTo => {
+      setSongLocalePatch(song, songFile, renameTo);
+      navigation.goBack(null);
+    };
+
+    // Permitir elegir al usuario
+    Alert.alert(
+      `${I18n.t('ui.rename')}`,
+      I18n.t('ui.locale patch rename message'),
+      [
+        {
+          text: I18n.t('ui.yes'),
+          onPress: () => {
+            navigation.navigate('SongChangeName', {
+              song: song,
+              songFile: songFile,
+              action: applyChanges
+            });
+          }
+        },
+        {
+          text: I18n.t('ui.no'),
+          onPress: () => {
+            applyChanges();
+          }
+        }
+      ]
+    );
   };
 
   return (
