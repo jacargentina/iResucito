@@ -51,7 +51,7 @@
     "locale patch rename message": "Möchten Sie den Titel des Songs festlegen?",
     "original song": "Ursprüngliches Lieder",
     "patched song": "Patch Lieder",
-    "song change name help": "Fix ze string to matsh ze foloving standard: [Ze song title] - [Surse]. In kase ze surse is empty, just use [Ze song title]"
+    "song change name help": "Ändere den Namen, damit er dem folgenden Standard entspricht: [Liedname] - [Quelle]. Wenn die Quelle leer ist, benutze nur [Liedname]"
   },
   "list_type": {
     "eucharist": "Eucharistie",
