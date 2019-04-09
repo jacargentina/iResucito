@@ -83,7 +83,7 @@ const SongChooseLocaleDialog = (props: any) => {
   };
 
   return (
-    <ModalView title={I18n.t('screen_title.choose song')} fade={true}>
+    <ModalView title={I18n.t('screen_title.choose song')}>
       <SearchBarView value={textFilter} setValue={setTextFilter}>
         {target && (
           <ListItem icon button last>
