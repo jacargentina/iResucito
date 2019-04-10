@@ -5,18 +5,19 @@ var SongsIndex = require(indexPath);
 var fs = require('fs');
 
 if (process.argv.length == 3) {
-  var path = process.argv[2];
-  if (path !== '') {
-    var json = fs.readFileSync(path, 'utf8').normalize();
+  var patchPath = process.argv[2];
+  if (patchPath !== '') {
+    var json = fs.readFileSync(patchPath, 'utf8').normalize();
     var patch = JSON.parse(json);
     Object.entries(patch).forEach(([key, value]) => {
       var songToPatch = SongsIndex[key];
-      Object.entries(value).foreach(([locale, item]) => {
+      Object.entries(value).forEach(([locale, item]) => {
         const { file, rename } = item;
         if (rename) {
           var oldName = path.resolve(`../songs/${locale}/${file}.txt`);
           var newName = path.resolve(`../songs/${locale}/${rename}.txt`);
-          execSync(`git mv "${oldName}" "${newName}"`);
+          execSync(`git mv --force "${oldName}" "${newName}"`);
+          file = rename;
         }
         Object.assign(songToPatch.files, { [locale]: file });
       });
