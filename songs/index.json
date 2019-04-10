@@ -176,7 +176,8 @@
   "files": {
    "es": "A la víctima pascual - Secuencia de Pascua",
    "it": "Alla vittima pasquale - Sequenza pasquale",
-   "pt": "À vítima pascal - Sequência de Páscoa"
+   "pt": "À vítima pascal - Sequência de Páscoa",
+   "de-AT": "Zum österlichen Lamm - Ostersequenz"
   }
  },
  "20": {
@@ -209,7 +210,8 @@
   "cuaresma": true,
   "files": {
    "es": "A ti, Señor, levanto mi alma - Sal 25 (24)",
-   "it": "A te, Signore, innalzo la mia anima - Sal 25 (24)"
+   "it": "A te, Signore, innalzo la mia anima - Sal 25 (24)",
+   "de-AT": "Zu dir o herr erheb' ich meine Seele - Psalm 25"
   }
  },
  "24": {
@@ -218,7 +220,8 @@
   "laudes": true,
   "files": {
    "es": "A ti, Señor, se debe la alabanza en Sión - Sal 65 (64)",
-   "it": "A te Signore si deve lode in Sion - Sal 65 (64)"
+   "it": "A te Signore si deve lode in Sion - Sal 65 (64)",
+   "de-AT": "Dir o herr gebührt Lobgesang in Zion - Psalm 65"
   }
  },
  "25": {
@@ -227,7 +230,8 @@
   "entrada": true,
   "files": {
    "es": "Abraham - Gn 18, 1-5",
-   "it": "Abramo - Gn 18, 1-5"
+   "it": "Abramo - Gn 18, 1-5",
+   "de-AT": "Abraham - Gn 18, 1-5"
   }
  },
  "26": {
@@ -236,7 +240,8 @@
   "final": true,
   "files": {
    "es": "Aclamad al Señor - Sal 100 (99)",
-   "it": "Acclamate al Signore - Sal 100 (99)"
+   "it": "Acclamate al Signore - Sal 100 (99)",
+   "de-AT": "Jubelt dem Herrn - Psalm 100"
   }
  },
  "27": {
@@ -245,7 +250,8 @@
   "laudes": true,
   "files": {
    "es": "Al despertar - Sal 17 (16)",
-   "it": "Al risveglio mi sazier„ del tuo volto, signor - Sal 17 (16)"
+   "it": "Al risveglio mi sazier„ del tuo volto, signor - Sal 17 (16)",
+   "de-AT": "Beim Erwachen - Psalm 17"
   }
  },
  "28": {
@@ -254,7 +260,8 @@
   "files": {
    "es": "Alabad al Señor en el cielo - Sal 148",
    "it": "Lodate il Signore dai cieli - Sal 148",
-   "pt": "Louvai o Senhor nos céus - Sal 148"
+   "pt": "Louvai o Senhor nos céus - Sal 148",
+   "de-AT": "Lobet den Herrn vom Himmel her - Psalm 148"
   }
  },
  "29": {
