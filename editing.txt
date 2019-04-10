@@ -3,8 +3,12 @@ Edit many txt files
 
 # Convert \r\n to \n (for sed to work fine)
 dos2unix *
+
 # Remove leading blank lines
 find . -type f -exec sed -i '/./,$!d' {} \;
+
+# Remove leading whitespace from each line
+find . -type f -exec sed -i 's/^[ \t]*//' {} \;
 
 # The S. many times had many spaces after it; remove them for just 1 space
 find . -type f -name '*.txt' -exec sed -i '' 's/^S\.( )+/S. /' {} \;
