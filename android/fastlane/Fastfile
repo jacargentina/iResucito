@@ -25,10 +25,12 @@ platform :android do
     gradle(task: "test")
   end
 
-  desc "Submit a new Beta Build to Crashlytics Beta"
+  desc "Submit a new Beta Build to Play Store Beta track"
   lane :beta do
+    increment_android_version_code(path: "app/build.gradle")
+    gradle(task: "clean") 
     gradle(task: "assembleRelease")
-    crashlytics
+    upload_to_play_store(track: 'beta')
 
     # sh "your_script.sh"
     # You can also use other beta testing services here
