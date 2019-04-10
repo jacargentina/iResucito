@@ -1,47 +1,47 @@
-                          "ALS ICH NOCH SCHLIEF (HL 5 2 ff )"                             
-                                                       
-     C                           C                       
-    K. "Als ich noch schlief "                          K. "Ich öffnete  ich öffnete meinem Geliebten "                       
-                  E                        E7                 
-     "doch mein Herz war wach "                           "er war nicht da  "                       
-                       a                  a              
-     da hörte ich die Stimme meines Geliebten:                           schon war er vorbei.                       
-     d             E7                    d                    
-     """Tu mir auf  meine Schwester "                           Ich geriet außer mir                       
-     d          E7                           E7                
-     "tu mir auf  meine Taube "                           wegen seiner Flucht;                       
-                                                       
-     denn mein Haupt                           "ich suchte ihn  "                       
-                                                       
-     ist voll von Tau                           "fand ihn nicht "                       
-                                                       
-     und meine Locken                           "rief nach ihm  rief nach ihm -"                       
-                a                      a                    
-     "von Tropfen der Nacht."""                           keine Antwort.                       
-     C                                                  
-     Er streckte die Hand                           Mich trafen die Wächter                       
-           E                            G                  
-     "durch die Öffnung "                           "auf ihrer Runde "                       
-              a                          False               
-     da bebte mir das Innerste.                           "sie zogen mich aus  "                       
-          d    E7                                         
-     Ich stand auf und lief.                           "sie schlugen mich "                       
-                                          E             
-     "Meine Hände tropften von Myrrhe "                           die Wächter der Mauern.                       
-                                      a                 
-     meine Finger von flüssiger Myrrhe                          V. Ich beschwöre ...                       
-                  a                 a             G           
-     über die Riegel des Tores.                          K. Ach! Wärest du mein Bruder                       
-                                        False               
-    V. Ich beschwöre euch                           ich könnte dich küssen                       
-             G                               E            
-     "Töchter von Jerusalem "                           ohne daß sie sich empören.                       
-                  F         2x            a    *             
-     "wenn ihr den Geliebten findet "                          V. Ich beschwöre ...                       
-                    E                                      
-     "sagt ihm  ich sterbe vor Liebe. "                                                  
-     "* Während die Versammlung den Kehrvers am Schluss singt  wiederholt der Kantor.... Ach! Wärest du mein Bruder..."                                                  
-                                                       
-                                                       
-                                                       
-                                                       
+"ALS ICH NOCH SCHLIEF (HL 5 2 ff )"                             
+
+C                           C                       
+K. "Als ich noch schlief "                          K. "Ich öffnete  ich öffnete meinem Geliebten "                       
+E                        E7                 
+"doch mein Herz war wach "                           "er war nicht da  "                       
+a                  a              
+da hörte ich die Stimme meines Geliebten:                           schon war er vorbei.                       
+d             E7                    d                    
+"""Tu mir auf  meine Schwester "                           Ich geriet außer mir                       
+d          E7                           E7                
+"tu mir auf  meine Taube "                           wegen seiner Flucht;                       
+
+denn mein Haupt                           "ich suchte ihn  "                       
+
+ist voll von Tau                           "fand ihn nicht "                       
+
+und meine Locken                           "rief nach ihm  rief nach ihm -"                       
+a                      a                    
+"von Tropfen der Nacht."""                           keine Antwort.                       
+C                                                  
+Er streckte die Hand                           Mich trafen die Wächter                       
+E                            G                  
+"durch die Öffnung "                           "auf ihrer Runde "                       
+a                          False               
+da bebte mir das Innerste.                           "sie zogen mich aus  "                       
+d    E7                                         
+Ich stand auf und lief.                           "sie schlugen mich "                       
+E             
+"Meine Hände tropften von Myrrhe "                           die Wächter der Mauern.                       
+a                 
+meine Finger von flüssiger Myrrhe                          V. Ich beschwöre ...                       
+a                 a             G           
+über die Riegel des Tores.                          K. Ach! Wärest du mein Bruder                       
+False               
+V. Ich beschwöre euch                           ich könnte dich küssen                       
+G                               E            
+"Töchter von Jerusalem "                           ohne daß sie sich empören.                       
+F         2x            a    *             
+"wenn ihr den Geliebten findet "                          V. Ich beschwöre ...                       
+E                                      
+"sagt ihm  ich sterbe vor Liebe. "                                                  
+"* Während die Versammlung den Kehrvers am Schluss singt  wiederholt der Kantor.... Ach! Wärest du mein Bruder..."                                                  
+
+
+
+
