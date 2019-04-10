@@ -1,21 +1,20 @@
 // @flow
 import React, { useState, useEffect } from 'react';
-import { Text, Input, Item, Button, View } from 'native-base';
+import { Text, Input, Item, Button } from 'native-base';
+import { View } from 'react-native';
 import ModalView from './ModalView';
 import SongListItem from './SongListItem';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import I18n from '../translations';
 import { getSongFileFromString } from '../util';
 
 const SongChangeNameDialog = (props: any) => {
   const { navigation } = props;
   const song = navigation.getParam('song');
-  const songFile = navigation.getParam('songFile');
+  const nameToEdit = navigation.getParam('nameToEdit');
   const action = navigation.getParam('action');
 
-  //const [disabledReasonText, setDisabledReasonText] = useState(null);
   const [actionEnabled, setActionEnabled] = useState(false);
-  const [name, setName] = useState(songFile.nombre);
+  const [name, setName] = useState(nameToEdit);
   const [changeSong, setChangeSong] = useState(song);
 
   const runAction = () => {
@@ -24,22 +23,13 @@ const SongChangeNameDialog = (props: any) => {
   };
 
   useEffect(() => {
-    if (name) {
-      setActionEnabled(name !== songFile.nombre);
+    if (name !== undefined) {
+      setActionEnabled(name.length > 0 && name !== nameToEdit);
       const parsed = getSongFileFromString(name);
       const changed = Object.assign({}, song, parsed);
       setChangeSong(changed);
     }
   }, [name]);
-
-  // useEffect(() => {
-  //   if (!actionEnabled) {
-  //     var text = null;
-  //     setDisabledReasonText(text);
-  //   } else {
-  //     setDisabledReasonText(null);
-  //   }
-  // }, [actionEnabled, name]);
 
   const acceptButtons = (
     <Button
@@ -53,8 +43,7 @@ const SongChangeNameDialog = (props: any) => {
 
   return (
     <ModalView acceptButtons={acceptButtons} title={I18n.t('ui.rename')}>
-      <KeyboardAwareScrollView
-        contentContainerStyle={{ flexGrow: 1, padding: 10 }}>
+      <View style={{ padding: 10 }}>
         <Item error={!actionEnabled} success={actionEnabled}>
           <Input
             autoFocus
@@ -89,7 +78,7 @@ const SongChangeNameDialog = (props: any) => {
             patchSectionDisabled={true}
           />
         </View>
-      </KeyboardAwareScrollView>
+      </View>
     </ModalView>
   );
 };

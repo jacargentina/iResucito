@@ -53,7 +53,7 @@ const SongChooseLocaleDialog = (props: any) => {
     // Definir funcion para llamar
     // en ambos casos del dialogo
     const applyChanges = renameTo => {
-      setSongLocalePatch(song, songFile, renameTo);
+      setSongLocalePatch(song, songFile.nombre, renameTo);
       navigation.goBack(null);
     };
 
@@ -67,7 +67,7 @@ const SongChooseLocaleDialog = (props: any) => {
           onPress: () => {
             navigation.navigate('SongChangeName', {
               song: song,
-              songFile: songFile,
+              nameToEdit: songFile.nombre,
               action: applyChanges
             });
           }
@@ -94,8 +94,10 @@ const SongChooseLocaleDialog = (props: any) => {
               />
             </Left>
             <Body>
-              <Text>{target.titulo}</Text>
-              <Text note>{target.fuente}</Text>
+              <Text numberOfLines={1}>{target.titulo}</Text>
+              <Text numberOfLines={1} note>
+                {target.fuente}
+              </Text>
             </Body>
           </ListItem>
         )}
@@ -116,8 +118,10 @@ const SongChooseLocaleDialog = (props: any) => {
                   localeFileSelected(item);
                 }}>
                 <Body>
-                  <Text>{item.titulo}</Text>
-                  <Text note>{item.fuente}</Text>
+                  <Text numberOfLines={1}>{item.titulo}</Text>
+                  <Text numberOfLines={1} note>
+                    {item.fuente}
+                  </Text>
                 </Body>
               </ListItem>
             );

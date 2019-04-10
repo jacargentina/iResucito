@@ -101,36 +101,44 @@ const useSongsMeta = (locale: any) => {
     });
   };
 
+  const getSongLocalePatch = (song: Song): SongPatch => {
+    return readLocalePatch().then(patchObj => {
+      if (patchObj[song.key]) {
+        return patchObj[song.key];
+      }
+    });
+  };
+
   const setSongLocalePatch = (
     song: Song,
-    file?: SongFile,
+    filename: string,
     renameTo: string
   ) => {
-    if (file && file.nombre.endsWith('.txt'))
+    if (filename && filename.endsWith('.txt'))
       throw new Error('file con .txt! Pasar sin extension.');
 
     return readLocalePatch().then(patchObj => {
       if (!patchObj) patchObj = {};
-      if (!patchObj[song.key]) {
-        patchObj[song.key] = {};
-      }
-      if (file) {
+      if (filename) {
         const localePatch: SongPatch = {
           [I18n.locale]: {
-            file: file.nombre,
+            file: filename,
             rename: renameTo
           }
         };
+        if (!patchObj[song.key]) {
+          patchObj[song.key] = {};
+          Toast.show({
+            text: I18n.t('ui.locale patch added', {
+              song: song.titulo,
+              file: filename
+            }),
+            duration: 5000,
+            type: 'success',
+            buttonText: 'Ok'
+          });
+        }
         patchObj[song.key] = Object.assign({}, patchObj[song.key], localePatch);
-        Toast.show({
-          text: I18n.t('ui.locale patch added', {
-            song: song.titulo,
-            file: file.nombre
-          }),
-          duration: 5000,
-          type: 'success',
-          buttonText: 'Ok'
-        });
       } else {
         delete patchObj[song.key][I18n.locale];
         Toast.show({
@@ -195,6 +203,7 @@ const useSongsMeta = (locale: any) => {
     readLocalePatch,
     saveLocalePatch,
     indexPatchExists,
+    getSongLocalePatch,
     setSongLocalePatch,
     clearIndexPatch
   };

@@ -2,7 +2,16 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { withNavigation } from 'react-navigation';
 import { TouchableOpacity, Alert } from 'react-native';
-import { ListItem, Left, Right, Body, Text, Badge, Icon } from 'native-base';
+import {
+  ListItem,
+  Left,
+  Right,
+  Body,
+  Text,
+  Badge,
+  Icon,
+  Button
+} from 'native-base';
 import Highlighter from 'react-native-highlight-words';
 import Collapsible from 'react-native-collapsible';
 import badges from '../badges';
@@ -27,13 +36,49 @@ const SongListItem = (props: any) => {
   } = props;
   const [isCollapsed, setIsCollapsed] = useState(true);
   const { keys } = data.settings;
-  const { setSongLocalePatch } = data.songsMeta;
+  const { getSongLocalePatch, setSongLocalePatch } = data.songsMeta;
   const [developerMode, setDeveloperMode] = useState();
   const [firstHighlighted, setFirstHighlighted] = useState();
   const [highlightedRest, setHighlightedRest] = useState();
   const [openHighlightedRest, setOpenHighlightedRest] = useState();
-  const [patchableSection, setPatchableSection] = useState();
-  const [chooseFileForLocale, setChooseFileForLocale] = useState();
+  const [bodyExtraContent, setBodyExtraContent] = useState();
+  const [rightContent, setRightContent] = useState();
+
+  const changeName = () => {
+    getSongLocalePatch(song).then(patchObj => {
+      const patch = patchObj[I18n.locale];
+      // Definir cambio a realizar sobre el patch
+      const applyChanges = renameTo => {
+        setSongLocalePatch(song, patch.file, renameTo);
+      };
+      navigation.navigate('SongChangeName', {
+        song: song,
+        nameToEdit: patch.rename ? patch.rename : patch.file,
+        action: applyChanges
+      });
+    });
+  };
+
+  const confirmClearSongPatch = () => {
+    Alert.alert(
+      I18n.t('ui.confirmation'),
+      I18n.t('ui.delete confirmation'),
+      [
+        {
+          text: I18n.t('ui.delete'),
+          style: 'destructive',
+          onPress: () => {
+            setSongLocalePatch(song, undefined);
+          }
+        },
+        {
+          text: I18n.t('ui.cancel'),
+          style: 'cancel'
+        }
+      ],
+      { cancelable: false }
+    );
+  };
 
   useEffect(() => {
     var isOn = devModeDisabled === true ? false : keys.developerMode;
@@ -90,26 +135,26 @@ const SongListItem = (props: any) => {
       !patchSectionDisabled
     ) {
       if (song.patched) {
-        setPatchableSection(
-          <TouchableOpacity
-            onPress={() => setSongLocalePatch(song, undefined)}
-            style={{ flex: 1, flexDirection: 'row-reverse' }}>
+        setBodyExtraContent(
+          <Button iconRight transparent onPress={() => changeName()}>
+            <Text style={{ ...noteStyles }}>{song.patchedTitle}</Text>
+            <Icon name="create" />
+          </Button>
+        );
+        setRightContent(
+          <Right>
             <Icon
-              name="trash"
+              name="remove-circle-outline"
               style={{
-                marginTop: 2,
-                marginRight: 20,
-                fontSize: 20,
+                fontSize: 32,
                 color: commonTheme.brandPrimary
               }}
+              onPress={confirmClearSongPatch}
             />
-            <Text style={{ ...noteStyles, marginRight: 5, marginTop: 5 }}>
-              {song.patchedTitle}
-            </Text>
-          </TouchableOpacity>
+          </Right>
         );
       } else {
-        setChooseFileForLocale(
+        setRightContent(
           <Right>
             <Icon
               name="link"
@@ -129,7 +174,7 @@ const SongListItem = (props: any) => {
       }
     }
     if (song.patchable && developerMode === false && !patchSectionDisabled) {
-      setPatchableSection(
+      setBodyExtraContent(
         <TouchableOpacity
           onPress={() => {
             Alert.alert(
@@ -173,6 +218,7 @@ const SongListItem = (props: any) => {
             }
           }}>
           <Highlighter
+            numberOfLines={1}
             style={textStyles}
             highlightStyle={{
               backgroundColor: 'yellow'
@@ -181,6 +227,7 @@ const SongListItem = (props: any) => {
             textToHighlight={song.titulo}
           />
           <Highlighter
+            numberOfLines={1}
             style={noteStyles}
             highlightStyle={{
               backgroundColor: 'yellow'
@@ -191,10 +238,10 @@ const SongListItem = (props: any) => {
           {firstHighlighted}
           {highlightedRest}
         </TouchableOpacity>
-        {patchableSection}
+        {bodyExtraContent}
       </Body>
       {openHighlightedRest}
-      {chooseFileForLocale}
+      {rightContent}
       {song.error && (
         <Right>
           <Icon
