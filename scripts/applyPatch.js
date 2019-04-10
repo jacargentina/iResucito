@@ -17,9 +17,10 @@ if (process.argv.length == 3) {
           var oldName = path.resolve(`../songs/${locale}/${file}.txt`);
           var newName = path.resolve(`../songs/${locale}/${rename}.txt`);
           execSync(`git mv --force "${oldName}" "${newName}"`);
-          file = rename;
+          Object.assign(songToPatch.files, { [locale]: rename });
+        } else {
+          Object.assign(songToPatch.files, { [locale]: file });
         }
-        Object.assign(songToPatch.files, { [locale]: file });
       });
     });
     console.log(SongsIndex);
