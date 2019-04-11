@@ -51,7 +51,9 @@
     "locale patch rename message": "¿Quiere arreglar el título del canto?",
     "original song": "Canto original",
     "patched song": "Canto parchado",
-    "song change name help": "Arregla la cadena de texto para seguir el siguiente standard: [Titulo del canto] - [Fuente]. En el caso de fuente vacía, sólo usar [Titulo del canto]"
+    "song change name help": "Arregla la cadena de texto para seguir el siguiente standard: [Titulo del canto] - [Fuente]. En el caso de fuente vacía, sólo usar [Titulo del canto]",
+    "reload": "Recargar",
+    "reload confirmation": "¿Quieres recargar pendiendo cualquier cambio realizado?"
   },
   "list_type": {
     "eucharist": "Eucaristía",

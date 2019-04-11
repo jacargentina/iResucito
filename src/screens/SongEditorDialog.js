@@ -3,41 +3,62 @@ import React, { useState } from 'react';
 import ModalView from './ModalView';
 import { withNavigation } from 'react-navigation';
 import { TextInput, View, Alert, ScrollView } from 'react-native';
-import { Text, Fab, Icon } from 'native-base';
+import { Text, Button, Icon } from 'native-base';
 import I18n from '../translations';
 import commonTheme from '../native-base-theme/variables/platform';
+import useUndo from 'use-undo';
 
 const SongEditorDialog = (props: any) => {
   const { navigation } = props;
   var song = navigation.getParam('song');
-  const [selection, setSelection] = useState([0, 0]);
-  const [lines, setLines] = useState(song.lines.join('\n'));
-  const [cut, setCut] = useState([]);
+  const [selection, setSelection] = useState({ start: 0, end: 0 });
+  const [
+    linesState,
+    {
+      set: setLines,
+      reset: resetLines,
+      undo: undoLines,
+      redo: redoLines,
+      canRedo: canRedoLines,
+      canUndo: canUndoLines
+    }
+  ] = useUndo(song.lines.join('\n'));
 
-  const save = () => {
-    Alert.alert('save', 'save');
+  const { present: lines } = linesState;
+
+  const confirmReload = () => {
+    Alert.alert(
+      `${I18n.t('ui.reload')} "${song.titulo}"`,
+      I18n.t('ui.reload confirmation'),
+      [
+        {
+          text: I18n.t('ui.yes'),
+          onPress: () => {
+            resetLines(song.lines.join('\n'));
+          },
+          style: 'destructive'
+        },
+        {
+          text: I18n.t('ui.cancel'),
+          style: 'cancel'
+        }
+      ]
+    );
+  };
+  const applyChanges = () => {
+    // todo SAVE
+    navigation.goBack(null);
   };
 
   const cutToNextNewline = () => {
-    const nextNewline = lines.indexOf('\n', selection[0]);
-    const value = lines.substring(selection[0], nextNewline);
-    setCut(cut => [...cut, value]);
-    setLines(
-      str => (str = str.replace(str.substring(selection[0], nextNewline), ''))
-    );
+    const nextNewline = lines.indexOf('\n', selection.start);
+    const sectionMove = '\n' + lines.substring(selection.start, nextNewline);
+    const updatedLines =
+      lines.replace(lines.substring(selection.start, nextNewline), '') +
+      sectionMove;
+    setLines(updatedLines);
   };
 
-  const pasteCutted = () => {
-    const toPaste = cut.join('\n');
-    setLines(
-      str =>
-        (str =
-          str.substring(0, selection[0]) +
-          toPaste +
-          str.substring(selection[0]))
-    );
-    setCut([]);
-  };
   var cancelButton = (
     <Text
       style={{
@@ -57,7 +78,7 @@ const SongEditorDialog = (props: any) => {
         color: commonTheme.brandPrimary,
         marginRight: 10
       }}
-      onPress={save}>
+      onPress={applyChanges}>
       {I18n.t('ui.done')}
     </Text>
   );
@@ -69,18 +90,19 @@ const SongEditorDialog = (props: any) => {
       left={cancelButton}>
       <View style={{ flex: 1 }}>
         <Text
+          onPress={confirmReload}
           style={{
-            fontSize: 11,
+            fontSize: 13,
             fontWeight: 'bold',
             textAlign: 'center',
             padding: 10,
             backgroundColor: commonTheme.listDividerBg
           }}>
-          {song.titulo}
+          {song.titulo} {I18n.t('ui.reload')}
         </Text>
         <ScrollView horizontal>
           <TextInput
-            style={{ fontSize: 14, flex: 0, padding: 10 }}
+            style={{ fontSize: 14, padding: 10 }}
             multiline
             onChangeText={text => {
               setLines(text);
@@ -88,25 +110,41 @@ const SongEditorDialog = (props: any) => {
             value={lines}
             autoCorrect={false}
             onSelectionChange={event => {
-              const selection = event.nativeEvent.selection;
-              setSelection([selection.start, selection.end]);
+              setSelection(event.nativeEvent.selection);
             }}
           />
         </ScrollView>
-        <Fab
-          containerStyle={{}}
-          style={{ backgroundColor: commonTheme.brandPrimary }}
-          position="bottomRight"
-          onPress={cutToNextNewline}>
-          <Icon name="cut" />
-        </Fab>
-        <Fab
-          containerStyle={{}}
-          style={{ backgroundColor: commonTheme.brandPrimary }}
-          position="bottomLeft"
-          onPress={pasteCutted}>
-          <Icon name="clipboard" />
-        </Fab>
+        <View
+          style={{
+            margin: 20,
+            flex: 0,
+            flexDirection: 'row-reverse',
+            justifyContent: 'space-between'
+          }}>
+          <Button
+            rounded
+            style={{ backgroundColor: commonTheme.brandPrimary }}
+            onPress={cutToNextNewline}>
+            <Icon name="arrow-down" />
+          </Button>
+
+          {canRedoLines && (
+            <Button
+              rounded
+              style={{ backgroundColor: commonTheme.brandPrimary }}
+              onPress={redoLines}>
+              <Icon name="redo" />
+            </Button>
+          )}
+          {canUndoLines && (
+            <Button
+              rounded
+              style={{ backgroundColor: commonTheme.brandPrimary }}
+              onPress={undoLines}>
+              <Icon name="undo" />
+            </Button>
+          )}
+        </View>
       </View>
     </ModalView>
   );

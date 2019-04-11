@@ -149,20 +149,16 @@ const SongListItem = (props: any) => {
             <View style={{ flexDirection: 'row' }}>
               <Button
                 style={{ margin: 5 }}
-                iconLeft
                 bordered
                 small
                 onPress={() => changeName()}>
-                <Icon name="create" />
                 <Text>Renombrar</Text>
               </Button>
               <Button
                 style={{ margin: 5 }}
-                iconLeft
                 bordered
                 small
                 onPress={() => showEditor()}>
-                <Icon name="eye" />
                 <Text>Editar</Text>
               </Button>
             </View>

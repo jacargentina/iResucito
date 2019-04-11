@@ -51,7 +51,9 @@
     "locale patch rename message": "Möchten Sie den Titel des Songs festlegen?",
     "original song": "Ursprüngliches Lieder",
     "patched song": "Patch Lieder",
-    "song change name help": "Korregiere den Satz um den folgenden Standard zu folgen: [Lieds Titel] - [Quelle]. Wenn die  Quelle leer ist, benutz nur [Lieds Titel]"
+    "song change name help": "Korregiere den Satz um den folgenden Standard zu folgen: [Lieds Titel] - [Quelle]. Wenn die  Quelle leer ist, benutz nur [Lieds Titel]",
+    "reload": "Reload",
+    "reload confirmation": "Do you want to reload losing any changes made?"
   },
   "list_type": {
     "eucharist": "Eucharistie",
