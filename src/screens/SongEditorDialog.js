@@ -157,6 +157,7 @@ const SongEditorDialog = (props: any) => {
             style={{
               fontSize: 16,
               padding: 10,
+              paddingBottom: 70,
               minWidth: Dimensions.get('window').width
             }}
             multiline
