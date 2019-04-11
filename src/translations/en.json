@@ -139,7 +139,8 @@
     "lists": "Lists",
     "community": "Community",
     "import contacts": "Import Contacts",
-    "choose song": "Choose Song"
+    "choose song": "Choose Song",
+    "song edit": "Song Edit"
   },
   "call_to_action_title": {
     "add lists": "Add lists",

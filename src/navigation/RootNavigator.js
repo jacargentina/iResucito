@@ -9,6 +9,7 @@ import ContactChooserDialog from '../screens/ContactChooserDialog';
 import ContactImportDialog from '../screens/ContactImportDialog';
 import ListNameDialog from '../screens/ListNameDialog';
 import SongChangeNameDialog from '../screens/SongChangeNameDialog';
+import SongEditorDialog from '../screens/SongEditorDialog';
 
 const RootNavigator = createStackNavigator(
   {
@@ -19,7 +20,8 @@ const RootNavigator = createStackNavigator(
     ContactChooser: ContactChooserDialog,
     ContactImport: ContactImportDialog,
     ListName: ListNameDialog,
-    SongChangeName: SongChangeNameDialog
+    SongChangeName: SongChangeNameDialog,
+    SongEditor: SongEditorDialog
   },
   {
     mode: 'modal',

@@ -6,10 +6,8 @@ import { View, KeyboardAvoidingView, SafeAreaView } from 'react-native';
 import commonTheme from '../native-base-theme/variables/platform';
 
 const ModalView = (props: any) => {
-  const { navigation } = props;
-  var closeButton = props.closeButton ? (
-    props.closeButton
-  ) : (
+  const { navigation, left, right } = props;
+  const defaultClose = (
     <Icon
       name="close"
       style={{
@@ -31,15 +29,16 @@ const ModalView = (props: any) => {
             alignItems: 'center',
             margin: 5
           }}>
+          {left}
           <Text
             style={{
               fontSize: commonTheme.fontSizeBase + 3,
               fontWeight: 'bold',
-              paddingLeft: 10
+              paddingLeft: !left ? 10 : 0
             }}>
             {props.title}
           </Text>
-          {closeButton}
+          {right || defaultClose}
         </View>
         <View
           style={{

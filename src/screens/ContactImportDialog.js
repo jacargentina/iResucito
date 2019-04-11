@@ -67,7 +67,7 @@ const ContactImportDialog = (props: any) => {
 
   return (
     <ModalView
-      closeButton={readyButton}
+      right={readyButton}
       title={I18n.t('screen_title.import contacts')}>
       <SearchBarView value={filter} setValue={setFilter}>
         {brothers && brothers.length > 0 && (

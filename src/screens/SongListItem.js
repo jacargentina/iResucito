@@ -1,7 +1,7 @@
 // @flow
-import React, { useContext, useState, useEffect } from 'react';
+import React, { Fragment, useContext, useState, useEffect } from 'react';
 import { withNavigation } from 'react-navigation';
-import { TouchableOpacity, Alert } from 'react-native';
+import { TouchableOpacity, Alert, View } from 'react-native';
 import {
   ListItem,
   Left,
@@ -56,6 +56,12 @@ const SongListItem = (props: any) => {
         nameToEdit: patch.rename ? patch.rename : patch.file,
         action: applyChanges
       });
+    });
+  };
+
+  const showEditor = () => {
+    navigation.navigate('SongEditor', {
+      song: song
     });
   };
 
@@ -136,10 +142,31 @@ const SongListItem = (props: any) => {
     ) {
       if (song.patched) {
         setBodyExtraContent(
-          <Button iconRight transparent onPress={() => changeName()}>
-            <Text style={{ ...noteStyles }}>{song.patchedTitle}</Text>
-            <Icon name="create" />
-          </Button>
+          <Fragment>
+            <Text style={{ ...noteStyles, margin: 5 }}>
+              {song.patchedTitle}
+            </Text>
+            <View style={{ flexDirection: 'row' }}>
+              <Button
+                style={{ margin: 5 }}
+                iconLeft
+                bordered
+                small
+                onPress={() => changeName()}>
+                <Icon name="create" />
+                <Text>Renombrar</Text>
+              </Button>
+              <Button
+                style={{ margin: 5 }}
+                iconLeft
+                bordered
+                small
+                onPress={() => showEditor()}>
+                <Icon name="eye" />
+                <Text>Editar</Text>
+              </Button>
+            </View>
+          </Fragment>
         );
         setRightContent(
           <Right>
