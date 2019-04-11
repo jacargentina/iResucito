@@ -3,7 +3,8 @@
 declare type SongPatch = {
   [locale: string]: {
     file: string,
-    rename?: string
+    rename?: string,
+    lines?: string
   }
 };
 

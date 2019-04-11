@@ -52,8 +52,8 @@
     "original song": "Ursprüngliches Lieder",
     "patched song": "Patch Lieder",
     "song change name help": "Korregiere den Satz um den folgenden Standard zu folgen: [Lieds Titel] - [Quelle]. Wenn die  Quelle leer ist, benutz nur [Lieds Titel]",
-    "reload": "Reload",
-    "reload confirmation": "Do you want to reload losing any changes made?"
+    "reload": "Wieder aufladen",
+    "reload confirmation": "Willst du wieder aufladen und Änderungen verlieren?"
   },
   "list_type": {
     "eucharist": "Eucharistie",

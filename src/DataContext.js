@@ -112,7 +112,8 @@ const useSongsMeta = (locale: any) => {
   const setSongLocalePatch = (
     song: Song,
     filename: string,
-    renameTo: string
+    renameTo: string,
+    lines: string
   ) => {
     if (filename && filename.endsWith('.txt'))
       throw new Error('file con .txt! Pasar sin extension.');
@@ -123,7 +124,8 @@ const useSongsMeta = (locale: any) => {
         const localePatch: SongPatch = {
           [I18n.locale]: {
             file: filename,
-            rename: renameTo
+            rename: renameTo,
+            lines: lines
           }
         };
         if (!patchObj[song.key]) {
