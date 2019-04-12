@@ -13,9 +13,16 @@ if (process.argv.length == 3) {
       var songToPatch = SongsIndex[key];
       Object.entries(value).forEach(([locale, item]) => {
         const { file, rename } = item;
-        if (rename) {
-          var oldName = path.resolve(`../songs/${locale}/${file}.txt`);
-          var newName = path.resolve(`../songs/${locale}/${rename}.txt`);
+        var oldName = path.resolve(`../songs/${locale}/${file}.txt`);
+        var newName = rename
+          ? path.resolve(`../songs/${locale}/${rename}.txt`)
+          : null;
+        if (!fs.existsSync(oldName) && newName && fs.existsSync(newName)) {
+          console.log(`Key ${key}, renombrado previamente.`);
+        } else {
+          console.log(`Key ${key}, file ${file} inexistente`);
+        }
+        if (newName) {
           execSync(`git mv --force "${oldName}" "${newName}"`);
           Object.assign(songToPatch.files, { [locale]: rename });
         } else {
