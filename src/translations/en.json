@@ -57,7 +57,9 @@
     "reload confirmation": "Do you want to reload losing any changes made?",
     "preview type": "Preview type",
     "screen": "Screen",
-    "pdf": "PDF"
+    "pdf": "PDF",
+    "link file": "Link file",
+    "unlink file": "Unlink file"
   },
   "list_type": {
     "eucharist": "Eucharist",

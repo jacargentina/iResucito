@@ -1,7 +1,7 @@
 // @flow
-import React, { Fragment, useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { withNavigation } from 'react-navigation';
-import { TouchableOpacity, Alert, View } from 'react-native';
+import { TouchableOpacity, Alert } from 'react-native';
 import {
   ListItem,
   Left,
@@ -10,7 +10,7 @@ import {
   Text,
   Badge,
   Icon,
-  Button
+  ActionSheet
 } from 'native-base';
 import Highlighter from 'react-native-highlight-words';
 import Collapsible from 'react-native-collapsible';
@@ -24,6 +24,31 @@ const textStyles = textTheme(commonTheme);
 const noteStyles = textStyles['.note'];
 delete textStyles['.note'];
 
+const NoLocaleWarning = () => {
+  return (
+    <TouchableOpacity
+      onPress={() => {
+        Alert.alert(
+          I18n.t('ui.locale warning title'),
+          I18n.t('ui.locale warning message')
+        );
+      }}
+      style={{ flex: 1, flexDirection: 'row-reverse' }}>
+      <Icon
+        name="bug"
+        style={{
+          marginTop: 2,
+          marginRight: 20,
+          fontSize: 20,
+          color: commonTheme.brandPrimary
+        }}
+      />
+      <Text style={{ ...noteStyles, marginRight: 5, marginTop: 5 }}>
+        {I18n.t('ui.locale warning title')}
+      </Text>
+    </TouchableOpacity>
+  );
+};
 const SongListItem = (props: any) => {
   const data = useContext(DataContext);
   const {
@@ -41,8 +66,50 @@ const SongListItem = (props: any) => {
   const [firstHighlighted, setFirstHighlighted] = useState();
   const [highlightedRest, setHighlightedRest] = useState();
   const [openHighlightedRest, setOpenHighlightedRest] = useState();
-  const [bodyExtraContent, setBodyExtraContent] = useState();
-  const [rightContent, setRightContent] = useState();
+
+  const showDeveloperMenu = () => {
+    var options = [
+      I18n.t('ui.rename'),
+      I18n.t('ui.edit'),
+      I18n.t('ui.link file')
+    ];
+    if (song.patched) {
+      options.push(I18n.t('ui.unlink file'));
+    }
+    options.push(I18n.t('ui.cancel'));
+    ActionSheet.show(
+      {
+        options: options,
+        cancelButtonIndex: options.indexOf(I18n.t('ui.cancel')),
+        title: I18n.t('settings_title.developer mode')
+      },
+      index => {
+        index = Number(index);
+        const title = options[index];
+        switch (title) {
+          case I18n.t('ui.rename'):
+            changeName();
+            break;
+          case I18n.t('ui.edit'):
+            showEditor();
+            break;
+          case I18n.t('ui.link file'):
+            linkPatch();
+            break;
+          case I18n.t('ui.unlink file'):
+            confirmClearSongPatch();
+            break;
+        }
+      }
+    );
+  };
+
+  const linkPatch = () => {
+    navigation.navigate('SongChooseLocale', {
+      target: song,
+      targetType: 'song'
+    });
+  };
 
   const changeName = () => {
     getSongLocalePatch(song).then(patchObj => {
@@ -138,97 +205,6 @@ const SongListItem = (props: any) => {
     }
   }, [highlight, developerMode]);
 
-  useEffect(() => {
-    if (
-      developerMode === true &&
-      !openHighlightedRest &&
-      !patchSectionDisabled
-    ) {
-      setBodyExtraContent(
-        <Fragment>
-          {song.patched && (
-            <Text style={{ ...noteStyles, margin: 5 }}>
-              {song.patchedTitle}
-            </Text>
-          )}
-          <View style={{ flexDirection: 'row' }}>
-            <Button
-              style={{ margin: 5 }}
-              bordered
-              small
-              onPress={() => changeName()}>
-              <Text>{I18n.t('ui.rename')}</Text>
-            </Button>
-            <Button
-              style={{ margin: 5 }}
-              bordered
-              small
-              onPress={() => showEditor()}>
-              <Text>{I18n.t('ui.edit')}</Text>
-            </Button>
-          </View>
-        </Fragment>
-      );
-      if (song.patched) {
-        setRightContent(
-          <Right>
-            <Icon
-              name="remove-circle-outline"
-              style={{
-                fontSize: 32,
-                color: commonTheme.brandPrimary
-              }}
-              onPress={confirmClearSongPatch}
-            />
-          </Right>
-        );
-      } else {
-        setRightContent(
-          <Right>
-            <Icon
-              name="link"
-              style={{
-                fontSize: 32,
-                color: commonTheme.brandPrimary
-              }}
-              onPress={() =>
-                navigation.navigate('SongChooseLocale', {
-                  target: song,
-                  targetType: 'song'
-                })
-              }
-            />
-          </Right>
-        );
-      }
-    }
-    if (developerMode === false && !patchSectionDisabled) {
-      setBodyExtraContent(
-        <TouchableOpacity
-          onPress={() => {
-            Alert.alert(
-              I18n.t('ui.locale warning title'),
-              I18n.t('ui.locale warning message')
-            );
-          }}
-          style={{ flex: 1, flexDirection: 'row-reverse' }}>
-          <Icon
-            name="bug"
-            style={{
-              marginTop: 2,
-              marginRight: 20,
-              fontSize: 20,
-              color: commonTheme.brandPrimary
-            }}
-          />
-          <Text style={{ ...noteStyles, marginRight: 5, marginTop: 5 }}>
-            {I18n.t('ui.locale warning title')}
-          </Text>
-        </TouchableOpacity>
-      );
-    }
-  }, [developerMode, patchSectionDisabled, openHighlightedRest]);
-
   return (
     <ListItem avatar={showBadge} noIndent>
       {showBadge && <Left>{badges[song.etapa]}</Left>}
@@ -260,10 +236,25 @@ const SongListItem = (props: any) => {
           {firstHighlighted}
           {highlightedRest}
         </TouchableOpacity>
-        {bodyExtraContent}
+        {developerMode && !patchSectionDisabled && song.patched && (
+          <Text style={{ ...noteStyles, margin: 5 }}>{song.patchedTitle}</Text>
+        )}
+        {!developerMode &&
+          !patchSectionDisabled &&
+          song.locale !== I18n.locale && <NoLocaleWarning />}
       </Body>
       {openHighlightedRest}
-      {rightContent}
+      {developerMode && !patchSectionDisabled && (
+        <Right>
+          <Icon
+            name="more"
+            style={{
+              color: commonTheme.brandPrimary
+            }}
+            onPress={showDeveloperMenu}
+          />
+        </Right>
+      )}
       {song.error && (
         <Right>
           <Icon

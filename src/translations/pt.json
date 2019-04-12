@@ -57,7 +57,9 @@
     "reload confirmation": "¿Recarregar pendente quaisquer alterações feitas?",
     "preview type": "Tipo de pré-visualização",
     "screen": "Tela",
-    "pdf": "PDF"
+    "pdf": "PDF",
+    "link file": "Linkar arquivo",
+    "unlink file": "Desvincular arquivo"
   },
   "list_type": {
     "eucharist": "Eucaristia",

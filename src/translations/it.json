@@ -57,7 +57,9 @@
     "reload confirmation": "¿Ricarica in attesa di eventuali modifiche apportate?",
     "preview type": "Tipo di Visualizzazione",
     "screen": "Schermo",
-    "pdf": "PDF"
+    "pdf": "PDF",
+    "link file": "Collega file",
+    "unlink file": "Scollegare file"
   },
   "list_type": {
     "eucharist": "Eucarestia",

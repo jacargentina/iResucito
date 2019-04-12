@@ -1,11 +1,12 @@
 // @flow
 import React, { useState, useEffect } from 'react';
-import { Text, Input, Item, Button } from 'native-base';
+import { Text, Input, Item } from 'native-base';
 import { View } from 'react-native';
 import ModalView from './ModalView';
 import SongListItem from './SongListItem';
 import I18n from '../translations';
 import { getSongFileFromString } from '../util';
+import commonTheme from '../native-base-theme/variables/platform';
 
 const SongChangeNameDialog = (props: any) => {
   const { navigation } = props;
@@ -31,18 +32,39 @@ const SongChangeNameDialog = (props: any) => {
     }
   }, [name]);
 
-  const acceptButtons = (
-    <Button
-      style={{ marginRight: 10, marginBottom: 10 }}
-      primary
-      onPress={() => runAction()}
-      disabled={!actionEnabled}>
-      <Text>{I18n.t('ui.apply')}</Text>
-    </Button>
+  const saveButton = (
+    <Text
+      style={{
+        alignSelf: 'center',
+        color: commonTheme.brandPrimary,
+        marginRight: 10
+      }}
+      onPress={() => {
+        if (actionEnabled) {
+          runAction();
+        }
+      }}>
+      {I18n.t('ui.apply')}
+    </Text>
+  );
+
+  const cancelButton = (
+    <Text
+      style={{
+        alignSelf: 'center',
+        color: commonTheme.brandPrimary,
+        marginLeft: 10
+      }}
+      onPress={() => navigation.goBack(null)}>
+      {I18n.t('ui.cancel')}
+    </Text>
   );
 
   return (
-    <ModalView acceptButtons={acceptButtons} title={I18n.t('ui.rename')}>
+    <ModalView
+      title={I18n.t('ui.rename')}
+      right={saveButton}
+      left={cancelButton}>
       <View style={{ padding: 10 }}>
         <Item error={!actionEnabled} success={actionEnabled}>
           <Input

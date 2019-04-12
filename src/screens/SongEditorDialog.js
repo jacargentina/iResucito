@@ -76,7 +76,7 @@ const SongEditorDialog = (props: any) => {
     getSongLocalePatch(song).then(patchObj => {
       var lines = song.lines.join('\n');
       if (patchObj) {
-        lines = patchObj[I18n.locale].lines;
+        lines = patchObj[song.locale].lines;
         setCanDeletePatch(true);
       } else {
         setCanDeletePatch(false);
@@ -90,8 +90,8 @@ const SongEditorDialog = (props: any) => {
       var file = song.nombre;
       var rename = undefined;
       if (patchObj) {
-        file = patchObj[I18n.locale].file;
-        rename = patchObj[I18n.locale].rename;
+        file = patchObj[song.locale].file;
+        rename = patchObj[song.locale].rename;
       }
       return setSongLocalePatch(song, file, rename, text);
     });
@@ -160,7 +160,7 @@ const SongEditorDialog = (props: any) => {
       style={{
         alignSelf: 'center',
         color: commonTheme.brandPrimary,
-        marginRight: 10
+        marginLeft: 10
       }}
       onPress={() => navigation.goBack(null)}>
       {I18n.t('ui.cancel')}
@@ -200,6 +200,8 @@ const SongEditorDialog = (props: any) => {
         />
         <ScrollView horizontal>
           <TextInput
+            multiline
+            textAlignVertical="top"
             style={{
               backgroundColor: '#222',
               color: 'white',
@@ -210,7 +212,6 @@ const SongEditorDialog = (props: any) => {
               paddingBottom: 60,
               minWidth: Dimensions.get('window').width
             }}
-            multiline
             onChangeText={text => {
               setLines(text);
             }}
