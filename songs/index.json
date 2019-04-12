@@ -792,7 +792,8 @@
   "files": {
    "es": "Himno de Adviento - Himno",
    "it": "Inno di Avvento - Inno",
-   "pt": "Hino do Advento - Hino"
+   "pt": "Hino do Advento - Hino",
+   "de-AT": "Adventhymnus"
   }
  },
  "84": {
@@ -830,7 +831,8 @@
   "files": {
    "es": "Id y anunciad a mis hermanos - Mt 28, 7-10.16-20",
    "it": "Andate ed annunziate ai miei fratelli - Mt 28, 7-10.16-20",
-   "pt": "Ide e anunciai a meus irmãos - Mt 28,7-10.16-20"
+   "pt": "Ide e anunciai a meus irmãos - Mt 28,7-10.16-20",
+   "de-AT": "Geht und verkündet meinen Brüdern - Mt 28, 16-20"
   }
  },
  "88": {
@@ -848,7 +850,8 @@
   "files": {
    "es": "Jerusalén reconstruida - Tb 13, 11-17",
    "it": "Benedici anima mia il Signore - Tb 13, 11-17",
-   "pt": "Jerusalém reconstruída - Tb 13, 11-17"
+   "pt": "Jerusalém reconstruída - Tb 13, 11-17",
+   "de-AT": "Preise meine Seele den Herrn - Tob 13, 10-18"
   }
  },
  "90": {
@@ -884,7 +887,8 @@
   "files": {
    "es": "Levanto mis ojos a los montes - Sal 121 (120)",
    "it": "Alzo gli occhi verso i monti - Sal 121 (120)",
-   "pt": "Levanto meus olhos para os montes - Sal 121 (120)"
+   "pt": "Levanto meus olhos para os montes - Sal 121 (120)",
+   "de-AT": "Ich hebe meine Augen zu den Bergen - Ps 121"
   }
  },
  "94": {
@@ -895,7 +899,8 @@
   "files": {
    "es": "Llegue hasta tu presencia mi clamor - Sal 119 (118)",
    "it": "Giunga la mia preghiera fino a te - Sal 119 (118)",
-   "pt": "Chegue a tua presença o meu clamor - Sal 119 (118)"
+   "pt": "Chegue a tua presença o meu clamor - Sal 119 (118)",
+   "de-AT": "Zu dir gelange mein Bitten - Ps 119"
   }
  },
  "95": {
@@ -916,7 +921,8 @@
   "files": {
    "es": "Magníficat - Lc 1, 46-55",
    "it": "Magnificat - Lc 1, 46-55",
-   "pt": "Magnificat - Lc 1, 46-55"
+   "pt": "Magnificat - Lc 1, 46-55",
+   "de-AT": "Magnificat - Lk 1, 46-55"
   }
  },
  "97": {
@@ -944,7 +950,8 @@
   "files": {
    "es": "María, madre de la Iglesia - Jn 19, 26-34",
    "it": "Maria madre della chiesa - Jn 19, 26-34",
-   "pt": "Maria mãe da igreja - Jo 19, 26-34"
+   "pt": "Maria mãe da igreja - Jo 19, 26-34",
+   "de-AT": "Maria Mutter der Kirche - Joh 19, 26-34"
   }
  },
  "100": {
@@ -953,7 +960,8 @@
   "files": {
    "es": "María, madre del camino ardiente - Himno",
    "it": "Maria, madre del cammino ardente - Inno",
-   "pt": "Maria mãe do caminho ardente - Hino à Virgem do Terceiro Milênio"
+   "pt": "Maria mãe do caminho ardente - Hino à Virgem do Terceiro Milênio",
+   "de-AT": "Maria, Mutter des brennenden Weges"
   }
  },
  "101": {
@@ -963,7 +971,8 @@
   "files": {
    "es": "María, pequeña María - Himno",
    "it": "Maria, piccola Maria - Inno",
-   "pt": "Maria pequena maria - Hino"
+   "pt": "Maria pequena maria - Hino",
+   "de-AT": "Maria,  kleine Maria"
   }
  },
  "102": {
@@ -973,7 +982,8 @@
   "files": {
    "es": "Me enseñarás el camino de la vida - Sal 15",
    "it": "Mi indicherai il sentiero della vita - Sal 15",
-   "pt": "Mostrar-me-ás o Caminho Da Vida - Sal 16 (15)"
+   "pt": "Mostrar-me-ás o Caminho Da Vida - Sal 16 (15)",
+   "de-AT": "Du wirst mich den Weg des Lebens weisen - Ps 16"
   }
  },
  "103": {
@@ -981,7 +991,8 @@
   "files": {
    "es": "Me has seducido Señor - Jr 20, 7-18",
    "it": "Mi hai sedotto, Signore - Jr 20, 7-18",
-   "pt": "Seduziste me Senhor - Jr 20, 7-18"
+   "pt": "Seduziste me Senhor - Jr 20, 7-18",
+   "de-AT": "Du hast mich verführt o Herr - Jer 20, 7-18"
   }
  },
  "104": {
@@ -990,7 +1001,8 @@
   "files": {
    "es": "Mirad que estupendo - Sal 133 (132)",
    "it": "Guardate com'è bello, gustate quant'è soave - Sal 133 (132)",
-   "pt": "Olhai que estupendo - Sal 133 (132)"
+   "pt": "Olhai que estupendo - Sal 133 (132)",
+   "de-AT": "Seht wie es schön ist kostet wie lieblich - Ps 133"
   }
  },
  "105": {
@@ -1000,7 +1012,8 @@
   "files": {
    "es": "Misericordia mía, misericordia - Sal 51 (50)",
    "it": "Misericordia dio, misericordia - Sal 51 (50)",
-   "pt": "Misericórdia minha misericórdia - Sal 51 (50)"
+   "pt": "Misericórdia minha misericórdia - Sal 51 (50)",
+   "de-AT": "Gott sei mir gnädig - Ps 51"
   }
  },
  "106": {
@@ -1008,7 +1021,8 @@
   "files": {
    "es": "Mucho me han perseguido - Sal 129",
    "it": "Molto mi hanno perseguitato - Sal 129",
-   "pt": "Muito me perseguiram - Sal 129 (128)"
+   "pt": "Muito me perseguiram - Sal 129 (128)",
+   "de-AT": "Oft haben sie mich verfolgt - Ps 129"
   }
  },
  "107": {
@@ -1026,7 +1040,8 @@
   "files": {
    "es": "No hay en él parecer - Is 53, 2ss",
    "it": "Non c'è in lui bellezza - Is 53, 2ss",
-   "pt": "Não há nele aparência - Quarto canto do Servo de Iahweh - Is 53, 2ss"
+   "pt": "Não há nele aparência - Quarto canto do Servo de Iahweh - Is 53, 2ss",
+   "de-AT": "An ihm ist keine Schönheit: IV. Gottesknechtkied - Jes 53, 2 ff"
   }
  },
  "109": {
@@ -1034,7 +1049,8 @@
   "files": {
    "es": "Oh Dios, por tu nombre sálvame - Sal 54 (53)",
    "it": "Oh dio per il tuo nome salvami - Sal 54 (53)",
-   "pt": "Ó deus pelo teu nome salva-Me - Sal 54 (53)"
+   "pt": "Ó deus pelo teu nome salva-Me - Sal 54 (53)",
+   "de-AT": "O Gott durch deinen Namen rette mich - Ps 54"
   }
  },
  "110": {
@@ -1045,7 +1061,8 @@
   "files": {
    "es": "Oh Jesús, amor mío - Himno",
    "it": "O gesù amore mio - Inno",
-   "pt": "Ó jesus meu amor - Hino"
+   "pt": "Ó jesus meu amor - Hino",
+   "de-AT": "O Jesus, meine Liebe"
   }
  },
  "111": {
@@ -1055,7 +1072,8 @@
   "files": {
    "es": "Oh Señor, nuestro Dios - Sal 8",
    "it": "O Signore nostro dio - Sal 8",
-   "pt": "Ó Senhor nosso deus - Sal 8"
+   "pt": "Ó Senhor nosso deus - Sal 8",
+   "de-AT": "O mein Herr, du unser Gott - Ps 8"
   }
  },
  "112": {
@@ -1064,7 +1082,8 @@
   "files": {
    "es": "Oh cielos, lloved de lo alto - Is 45, 8",
    "it": "O cieli piovete dall'alto - Is 45, 8",
-   "pt": "Ó ceus chovei do alto - Is 45, 8"
+   "pt": "Ó ceus chovei do alto - Is 45, 8",
+   "de-AT": "O Himmel lasst regnen von oben - Jes 45, 8"
   }
  },
  "113": {
@@ -1074,7 +1093,8 @@
   "files": {
    "es": "Oh muerte, dónde está tu victoria - 1 Co 15",
    "it": "O morte dov'è la tua vittoria - 1 Co 15",
-   "pt": "Ó morte onde está tua vitória - 1 Cor 15"
+   "pt": "Ó morte onde está tua vitória - 1 Cor 15",
+   "de-AT": "O Tod wo ist dein Sieg? - 1 Kor 15"
   }
  },
  "114": {
@@ -1092,7 +1112,8 @@
   "files": {
    "es": "Pentecostés - Himno",
    "it": "Pentecoste - Inno",
-   "pt": "Pentecostes - Hino"
+   "pt": "Pentecostes - Hino",
+   "de-AT": "Pfingsten"
   }
  },
  "116": {
@@ -1101,7 +1122,8 @@
   "files": {
    "es": "Por el amor de mis amigos - Sal 122 (121)",
    "it": "Per amore dei miei fratelli - Sal 122 (121)",
-   "pt": "Por amor de meus amigos - Sal 122 (121)"
+   "pt": "Por amor de meus amigos - Sal 122 (121)",
+   "de-AT": "Aus Liebe zu meinen Brüdern - Ps 122"
   }
  },
  "117": {
@@ -1112,7 +1134,8 @@
   "files": {
    "es": "Por qué esta noche es diferente - Canto de los niños",
    "it": "Che cosa c'è di diverso questa notte - canzone per bambini",
-   "pt": "Por que esta noite é diferente - Canto das crianças para a Noite de Páscoa - da Hagadá da Páscoa Hebráica"
+   "pt": "Por que esta noite é diferente - Canto das crianças para a Noite de Páscoa - da Hagadá da Páscoa Hebráica",
+   "de-AT": "Was ist denn anders - Kinderlied für die Osternacht"
   }
  },
  "118": {
@@ -1122,7 +1145,8 @@
   "files": {
    "es": "Por qué las gentes conjuran - Sal 2",
    "it": "Perchè le genti congiurano - Sal 2",
-   "pt": "Por que confabulam as nações - Sal 2"
+   "pt": "Por que confabulam as nações - Sal 2",
+   "de-AT": "Warum toben die Völker - Ps 2"
   }
  },
  "119": {
@@ -1141,7 +1165,8 @@
   "files": {
    "es": "Qué amables son tus moradas, Señor - Sal 84 (83)",
    "it": "Quanto sono amabili le tue dimore - Sal 84 (83)",
-   "pt": "Como são amáveis tuas moradas - Sal 84 (83)"
+   "pt": "Como são amáveis tuas moradas - Sal 84 (83)",
+   "de-AT": "Wie lieblich sind deine Wohnungen - Ps 84"
   }
  },
  "121": {
@@ -1167,7 +1192,8 @@
   "files": {
    "es": "Quiero cantar - Sal 57 (56)",
    "it": "Voglio cantare - Sal 57 (56)",
-   "pt": "Quero cantar - Sal 57 (56)"
+   "pt": "Quero cantar - Sal 57 (56)",
+   "de-AT": "Ich möchte singen - Ps 57"
   }
  },
  "124": {
@@ -1177,7 +1203,8 @@
   "files": {
    "es": "Quién es ésta que sube del desierto - Ct 8, 5-7",
    "it": "Chi è colei - Ct 8, 5-7",
-   "pt": "Quem é esta que sobe do deserto - Ct 8, 5-7"
+   "pt": "Quem é esta que sobe do deserto - Ct 8, 5-7",
+   "de-AT": "Wer ist diese - Hld 8, 5-7"
   }
  },
  "125": {
@@ -1187,7 +1214,8 @@
   "files": {
    "es": "Quién nos separará - Rm 8, 33-39",
    "it": "Chi ci separerà - Rm 8, 33-39",
-   "pt": "Quem nos separará - Rm 8, 33-39"
+   "pt": "Quem nos separará - Rm 8, 33-39",
+   "de-AT": "Wer wird uns trennen - Röm 8, 33-39"
   }
  },
  "126": {
@@ -1197,7 +1225,8 @@
   "files": {
    "es": "Resucitó - Himno pascual",
    "it": "Risuscitò - Inno pasquale",
-   "pt": "Ressuscitou - 1 Cor 15"
+   "pt": "Ressuscitou - 1 Cor 15",
+   "de-AT": "Er ist auferstanden - 1 Kor 15"
   }
  },
  "127": {
@@ -1227,7 +1256,8 @@
   "files": {
    "es": "Señor, ayúdame a no dudar de ti - Himno",
    "it": "Signore aiutami, Signore - Inno",
-   "pt": "Senhor ajuda-Me A Não Duvidar De Ti - São João da Cruz"
+   "pt": "Senhor ajuda-Me A Não Duvidar De Ti - São João da Cruz",
+   "de-AT": "O Herr, hilf mir, o Herr"
   }
  },
  "130": {
@@ -1237,7 +1267,8 @@
   "files": {
    "es": "Señor, escucha mi oración - Sal 143",
    "it": "Signore ascolta la mia preghiera - Sal 143",
-   "pt": "Tu que és fiel - Sal 143 (142)"
+   "pt": "Tu que és fiel - Sal 143 (142)",
+   "de-AT": "Herr, höre mein Gebet - Ps 143"
   }
  },
  "131": {
@@ -1274,7 +1305,8 @@
   "files": {
    "es": "Si hoy escucháis su voz - Sal 95 (94)",
    "it": "Se oggi ascoltate la sua voce - Sal 95 (94)",
-   "pt": "Se hoje escutardes a sua voz - Sal 95 (94)"
+   "pt": "Se hoje escutardes a sua voz - Sal 95 (94)",
+   "de-AT": "Wenn ihr heute - Ps 95"
   }
  },
  "135": {
@@ -1292,7 +1324,8 @@
   "files": {
    "es": "Sión, madre de todos los pueblos - Sal 87 (86)",
    "it": "Le sue fondamenta - Sal 87 (86)",
-   "pt": "Sião mãe de todos os povos - Sal 87 (86)"
+   "pt": "Sião mãe de todos os povos - Sal 87 (86)",
+   "de-AT": "Ihre Grundmauern - Ps 87"
   }
  },
  "137": {
@@ -1317,7 +1350,8 @@
   "files": {
    "es": "Te estoy llamando, Señor - Sal 141 (140)",
    "it": "Ti sto chiamando - Sal 141 (140)",
-   "pt": "Estou chamando-te - Sal 141 (140)"
+   "pt": "Estou chamando-te - Sal 141 (140)",
+   "de-AT": "Ich rufe zu dir - Ps 141"
   }
  },
  "140": {
@@ -1326,7 +1360,8 @@
   "files": {
    "es": "Te he manifestado mi pecado - Sal 32 (31)",
    "it": "Ti ho manifestato il mio peccato - Sal 32 (31)",
-   "pt": "Confessei a ti o meu pecado - Sal 32 (31)"
+   "pt": "Confessei a ti o meu pecado - Sal 32 (31)",
+   "de-AT": "Meine Sünde hab ich dir bekannt - Ps 32"
   }
  },
  "141": {
@@ -1336,7 +1371,8 @@
   "files": {
    "es": "Tú eres mi esperanza, Señor - Oda 29 de Salomón",
    "it": "Tu sei la mia speranza Signore - Ode 29 di Salomone",
-   "pt": "Tu és a minha esperança Senhor - Ode 29 de Salomão"
+   "pt": "Tu és a minha esperança Senhor - Ode 29 de Salomão",
+   "de-AT": "Du bist meine Hoffnung Herr - XXIX. Ode Salomos"
   }
  },
  "142": {
@@ -1369,7 +1405,8 @@
   "files": {
    "es": "Urí, urí, urá - Villancico",
    "it": "Urì, urì, urà - Canto natalizio",
-   "pt": "Urí urí urí urá - Cantico de Natal"
+   "pt": "Urí urí urí urá - Cantico de Natal",
+   "de-AT": "Urì, urì, urà"
   }
  },
  "145": {
@@ -1387,7 +1424,8 @@
   "pentecostes": true,
   "files": {
    "es": "Ven Espíritu Santo - Secuencia de Pentecostés",
-   "pt": "Vem Espírito Santo - Sequencia de Pentecostes"
+   "pt": "Vem Espírito Santo - Sequencia de Pentecostes",
+   "de-AT": "Pfingstsequenz - Komm heiliger Geist"
   }
  },
  "147": {
@@ -1396,7 +1434,8 @@
   "files": {
    "es": "Ven del Líbano - Ct 4, 8ss",
    "it": "Vieni dal Libano - Ct 4, 8ss",
-   "pt": "Vem do Líbano - Ct 4, 8ss"
+   "pt": "Vem do Líbano - Ct 4, 8ss",
+   "de-AT": "Komm vom Libanon - Hld 4, 8 ff"
   }
  },
  "148": {
@@ -1406,7 +1445,8 @@
   "files": {
    "es": "Ven, hijo del hombre - Ap 21, 17ss",
    "it": "Vieni, figlio dell'uomo - Ap 21, 17ss",
-   "pt": "Vem filho do homem - Ap 21, 17ss"
+   "pt": "Vem filho do homem - Ap 21, 17ss",
+   "de-AT": "Komm Sohn des Menschen - Offb 22, 17 ff"
   }
  },
  "149": {
@@ -1424,7 +1464,8 @@
   "files": {
    "es": "Viene el Señor - Sal 93 (92) - Ap 1, 5-6",
    "it": "Viene il Signore vestito di maestà - Sal 93 (92) - Ap 1, 5-6",
-   "pt": "Vem o Senhor - Sal 93 (92) - Ap 1, 5-6"
+   "pt": "Vem o Senhor - Sal 93 (92) - Ap 1, 5-6",
+   "de-AT": "Es kommt der Herr bekleidet mit Majestät - Ps 93 (92)"
   }
  },
  "151": {
@@ -1448,7 +1489,8 @@
   "etapa": "Precatecumenado",
   "files": {
    "es": "Vosotros sois la luz del mundo - Mt 5, 14-16",
-   "pt": "Vós sois a luz do mundo - Mt 5, 14-16"
+   "pt": "Vós sois a luz do mundo - Mt 5, 14-16",
+   "de-AT": "Ihr seid das Licht der Welt - Mt 5, 14-16"
   }
  },
  "154": {
@@ -1476,7 +1518,8 @@
   "files": {
    "es": "Yo te amo, Señor - Sal 18",
    "it": "Ti amo Signore - Sal 18",
-   "pt": "Eu te amo Senhor - Sal 18 (17)"
+   "pt": "Eu te amo Senhor - Sal 18 (17)",
+   "de-AT": "Ich liebe dich Herr - Ps 18"
   }
  },
  "157": {
@@ -1573,7 +1616,8 @@
   "files": {
    "es": "En una noche oscura - San Juan de la Cruz",
    "it": "In una notte oscura - San Giovanni della Croce",
-   "pt": "Em uma noite escura - São João da Cruz"
+   "pt": "Em uma noite escura - São João da Cruz",
+   "de-AT": "In einer dunklen Nacht - Johannes vom Kreuz"
   }
  },
  "167": {
@@ -1583,7 +1627,8 @@
   "files": {
    "es": "Escuchad islas lejanas - Is 49, 1-16",
    "it": "Ti vedranno i re - Is 49, 1-16",
-   "pt": "Escutai ilhas de longe - Is 49, 1-16"
+   "pt": "Escutai ilhas de longe - Is 49, 1-16",
+   "de-AT": "Es werden Könige dich sehen: II. Gottesknechtlied - Jes 49, 1-16"
   }
  },
  "168": {
@@ -1612,7 +1657,8 @@
   "files": {
    "es": "Himno a la caridad - 1 Co 13, 1-13",
    "it": "Inno alla carità - 1 Co 13, 1-13",
-   "pt": "Hino à caridade - 1 Co 13, 1-13"
+   "pt": "Hino à caridade - 1 Co 13, 1-13",
+   "de-AT": "Das Hohelied der Liebe - 1 Kor 13, 1-13"
   }
  },
  "171": {
@@ -1630,7 +1676,8 @@
   "files": {
    "es": "Jesús recorria las ciudades - Mt 9, 35ss",
    "it": "Gesù percorreva tutte le città - Mt 9, 35ss",
-   "pt": "Jesus percorria todas as cidades - Mt 9, 35ss"
+   "pt": "Jesus percorria todas as cidades - Mt 9, 35ss",
+   "de-AT": "Jesus zog durch alle Städte - Mt 9, 35 ff; 10"
   }
  },
  "173": {
@@ -1649,7 +1696,8 @@
   "files": {
    "es": "La paloma volo - Oda 24 de Salomón",
    "it": "La colomba volò - Ode 24 de Salomone",
-   "pt": "A pomba voou - Ode 24 de Salomão"
+   "pt": "A pomba voou - Ode 24 de Salomão",
+   "de-AT": "Die Taube flog - XXIV. Ode Salomos"
   }
  },
  "175": {
@@ -1657,7 +1705,8 @@
   "comunion": true,
   "files": {
    "es": "La voz de mi amado - Ct 2, 8-17",
-   "it": "La voce del mio amato - Ct 2, 8-17"
+   "it": "La voce del mio amato - Ct 2, 8-17",
+   "de-AT": "Die Stimme meines Geliebten - Hld 2, 8-17"
   }
  },
  "176": {
@@ -1666,7 +1715,8 @@
   "laudes": true,
   "files": {
    "es": "Las armas de la luz - Ef 6, 11ss",
-   "it": "Rivestitevi dell'armatura di dio - Ef 6, 11ss"
+   "it": "Rivestitevi dell'armatura di dio - Ef 6, 11ss",
+   "de-AT": "Bekleidet euch mit der Waffenrüstung des Herrn - Eph 6, 11 ff"
   }
  },
  "177": {
@@ -1675,7 +1725,8 @@
   "files": {
    "es": "No resistáis al mal - Mt 5, 38ss",
    "it": "Non resistete al male - Mt 5, 38ss",
-   "pt": "Não resistais ao mal - Mt 5, 38ss"
+   "pt": "Não resistais ao mal - Mt 5, 38ss",
+   "de-AT": "Widersteht nicht dem Bösen - Mt 5, 38 ff"
   }
  },
  "178": {
@@ -1684,7 +1735,8 @@
   "files": {
    "es": "No sufras por los malvados - Sal 37 (36)",
    "it": "Non ti adirare - Sal 37 (36)",
-   "pt": "Não sofras pelos malvados - Sal 37 (36)"
+   "pt": "Não sofras pelos malvados - Sal 37 (36)",
+   "de-AT": "Erzürne nicht - Ps 37"
   }
  },
  "179": {
@@ -1693,7 +1745,8 @@
   "files": {
    "es": "Noli me tangere - Jn 20, 15-17",
    "it": "Noli me tangere - Jn 20, 15-17",
-   "pt": "Noli me tangere - Jo 20, 15-17"
+   "pt": "Noli me tangere - Jo 20, 15-17",
+   "de-AT": "Noli me tangere - Joh 20, 13-17"
   }
  },
  "180": {
@@ -1997,7 +2050,8 @@
   "files": {
    "es": "Oh Dios, tú eres mi Dios - Sal 63 (62)",
    "it": "O dio tu sei il mio dio - Sal 63 (62)",
-   "pt": "Ó deus tu és meu deus - Sal 63 (62)"
+   "pt": "Ó deus tu és meu deus - Sal 63 (62)",
+   "de-AT": "O Gott, du bist mein Gott - Ps 63"
   }
  },
  "220": {
