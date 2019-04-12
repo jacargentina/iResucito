@@ -18,6 +18,8 @@ import {
 const SongsIndexPatchPath =
   RNFS.DocumentDirectoryPath + '/SongsIndexPatch.json';
 
+const SongsRatingsPath = RNFS.DocumentDirectoryPath + '/SongsRating.json';
+
 const useSettings = () => {
   const [initialized, setInitialized] = useState(false);
   const [keys, initKeys] = useState();
@@ -178,6 +180,44 @@ const useSongsMeta = (locale: any) => {
     });
   };
 
+  const readSongsRatingFile = (): Promise<SongRatingFile> => {
+    return RNFS.exists(SongsRatingsPath).then(exists => {
+      if (exists)
+        return RNFS.readFile(SongsRatingsPath).then(ratingsJSON => {
+          return JSON.parse(ratingsJSON);
+        });
+    });
+  };
+
+  const saveSongsRatingFile = (ratingsObj: SongRatingFile) => {
+    var json = JSON.stringify(ratingsObj, null, ' ');
+    return RNFS.writeFile(SongsRatingsPath, json, 'utf8');
+  };
+
+  const getSongRating = (songKey: string): Promise<number> => {
+    return readSongsRatingFile().then(ratings => {
+      if (ratings && ratings[songKey]) {
+        return ratings[songKey][I18n.locale];
+      }
+      return 0;
+    });
+  };
+
+  const setSongRating = (songKey: string, value: number) => {
+    return readSongsRatingFile().then(ratings => {
+      if (!ratings) {
+        ratings = {};
+      }
+      if (!ratings[songKey]) {
+        ratings[songKey] = {};
+      }
+      ratings[songKey] = Object.assign({}, ratings[songKey], {
+        [I18n.locale]: value
+      });
+      return saveSongsRatingFile(ratings);
+    });
+  };
+
   useEffect(() => {
     if (locale) {
       // Cargar parche del indice si existe
@@ -207,7 +247,9 @@ const useSongsMeta = (locale: any) => {
     indexPatchExists,
     getSongLocalePatch,
     setSongLocalePatch,
-    clearIndexPatch
+    clearIndexPatch,
+    getSongRating,
+    setSongRating
   };
 };
 

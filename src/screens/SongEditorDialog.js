@@ -125,6 +125,7 @@ const SongEditorDialog = (props: any) => {
           case 0:
             navigation.navigate('SongPreviewScreen', {
               data: {
+                key: song.key,
                 lines: lines.split('\n'),
                 locale: song.locale,
                 titulo: song.titulo,

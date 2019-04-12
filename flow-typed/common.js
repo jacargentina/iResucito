@@ -12,6 +12,14 @@ declare type SongIndexPatch = {
   [key: string]: SongPatch
 };
 
+declare type SongRating = {
+  [locale: string]: number
+};
+
+declare type SongRatingFile = {
+  [key: string]: SongRating
+};
+
 declare type SongStyles = {
   titulo: any,
   fuente: any,
