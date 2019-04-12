@@ -19,10 +19,7 @@ if (process.argv.length == 3) {
           : null;
         if (!fs.existsSync(oldName) && newName && fs.existsSync(newName)) {
           console.log(`Key ${key}, renombrado previamente.`);
-        } else {
-          console.log(`Key ${key}, file ${file} inexistente`);
-        }
-        if (newName) {
+        } else if (newName) {
           execSync(`git mv --force "${oldName}" "${newName}"`);
           Object.assign(songToPatch.files, { [locale]: rename });
         } else {
