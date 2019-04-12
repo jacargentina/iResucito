@@ -124,7 +124,7 @@ const useSongsMeta = (locale: any) => {
         const localePatch: SongPatch = {
           [I18n.locale]: {
             file: filename,
-            rename: renameTo,
+            rename: renameTo.trim(),
             lines: lines
           }
         };

@@ -12,7 +12,8 @@ if (process.argv.length == 3) {
     Object.entries(patch).forEach(([key, value]) => {
       var songToPatch = SongsIndex[key];
       Object.entries(value).forEach(([locale, item]) => {
-        const { file, rename, lines } = item;
+        var { file, rename, lines } = item;
+        rename = rename.trim();
         var oldName = path.resolve(`../songs/${locale}/${file}.txt`);
         var newName = rename
           ? path.resolve(`../songs/${locale}/${rename}.txt`)
