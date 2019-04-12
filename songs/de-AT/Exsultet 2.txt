@@ -3,7 +3,7 @@ a                              a
 V. DIES IST DIE NACHT                              V. DIES IST DIE NACHT                            
 G                              G            
 IN DER CHRISTUS DEN TOD ZERBRACH                              IN DER CHRISTUS DEN TOD ZERBRACH                           
-False                              F                  
+F                              F                  
 UND AUS DER UNTERWELT                              UND AUS DER UNTERWELT                           
 E                               E                 
 ALS SIEGER EMPORSTEIGT. (2x)                              ALS SIEGER EMPORSTEIGT. (2x)                           
@@ -35,7 +35,7 @@ G             a     a                       G
 O Nacht  die das Böse besiegt  die reinigt von Schuld!                              Christus dein Sohn  der von den Toten erstand                            
 G                    F         E                  
 O wahrhaft ruhmreiche Nacht                               erstrahlt als helles Licht.                           
-False                 E              a     G     a                
+F                 E              a     G     a                
 die den Menschen wieder mit Gott verbindet.                             V. AMEN  AMEN  AMEN! (2x)                           
 
 92                                

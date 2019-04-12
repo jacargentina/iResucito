@@ -3,9 +3,9 @@ TÖCHTER VON JERUSALEM (Lk 23  28.31.34.43.46)
 
 a                                        
 V. Töchter von Jerusalem                                        
-False             a                        
+F             a                        
 weinet nicht  weinet nicht über mich.                                        
-False                               
+F                               
 K. Denn wenn man dies am grünen Holze tut                                         
 G             a                        
 was wird mit dem dürren geschehen                                         
@@ -17,7 +17,7 @@ a
 K. Vater  vergib ihnen                                         
 F            a                         
 denn sie wissen nicht  was sie tun;                                        
-False        E       a                         
+F        E       a                         
 vergib ihnen  vergib ihnen. Ahi!                                        
 a                                        
 V. Töchter von Jerusalem ...                                        
@@ -27,7 +27,7 @@ F        E
 Heute wirst du mit mir im Paradies sein.                                        
 a                                        
 V. Töchter von Jerusalem ...                                        
-a    False                                    
+a    F                                    
 K. Vater  Vater                                         
 G           a                       
 in deinen Hände lege ich meinen Geist.                                         

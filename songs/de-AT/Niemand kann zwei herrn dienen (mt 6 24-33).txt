@@ -4,13 +4,13 @@ a       G          F                    d     F         E
 K. Niemand kann zwei Herrn dienen.                             Und was sorgt ihr euch um eure Kleidung?                         
 G          F    a               C     e                    
 Wenn er den einen liebt  verachtet er den anderen.                             Seht die Lilien des Feldes:                         
-d        (G7)   False        E              E7         F7    F          
+d        (G7)   F        E              E7         F7    F          
 ihr könnt nicht Gott dienen und dem Geld.                             sie weben nicht und spinnen nicht                          
 a                                      E        
 Darum sage ich euch:                             Salomon war nicht gekleidet wie sie.                         
-G      False                       C     e                    
+G      F                       C     e                    
 Sorgt euch nicht um euer Leben                             V. Seht die Lilien des Feldes:                         
-G            False                    E7         F7    F          
+G            F                    E7         F7    F          
 was ihr essen werdet  was ihr trinken werdet                              sie weben nicht und spinnen nicht                          
 a                                              E        
 was ihr anziehen werdet;                             Salomon war nicht gekleidet wie sie.                         
@@ -22,18 +22,18 @@ E                        F                  E
 mehr wert als die Kleidung?                             Ihr könnt nicht Gott dienen und dem Geld.                         
 C       e                        C          e               
 Seht die Vögel des Himmels:                            V. Suchet zuerst das Reich Gottes                         
-E7        F7    False                E7             F7              
+E7        F7    F                E7             F7              
 sie säen nicht und ernten nicht                             und alles wird euch gegeben.                         
 E                   F             E          
 und doch ernährt sie euer Vater.                             Ihr könnt nicht zwei Herren dienen.                         
 C       e                                                 
 V. Seht die Vögel des Himmels:                            K. Niemand kann zwei Herrn dienen.                         
-E7       F7    False                                         
+E7       F7    F                                         
 sie säen nicht und ernten nicht                             Wenn er den einen liebt  verachtet er den anderen.                         
 E                                        
 und doch ernährt sie euer Vater.                             ihr könnt nicht Gott dienen und dem Geld.                         
-a       G           False                                    
+a       G           F                                    
 K. Und wer von euch kann mit seinen Sorgen                            V. (Die Versammlung wiederholt die drei Kehrverse)                         
-G           False       a                                       
+G           F       a                                       
 sein Leben um eine Stunde verlängern?                                                      
 

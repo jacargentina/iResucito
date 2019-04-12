@@ -8,11 +8,11 @@ der ganze Himmel tönt von Lobpreis                           viele Wächter bew
 in Jubel jauchzt die Erde                           doch Christus fährt auf im Triumphe                        
 c                              c         
 und klagend stöhnt die Unterwelt.                           aus dem Tod ersteht er als Sieger.                       
-False              c  
+F              c  
 Vorbei die Trauer  das Weinen  die Schmerzen                        
-False                         G7         c        
+F                         G7         c        
 V. Während der König  Christus  alle rettet                           Christus erstand  Christus erstand!                       
-c               G7              False              c  
+c               G7              F              c  
 aus dem Kerker  aus dem Dunkel des Todes                        2x  V. Vorbei die Trauer  das Weinen  die Schmerzen                        
 c                      G7         c        
 und er führt uns zum Leben.                           Christus erstand  Christus erstand!                       

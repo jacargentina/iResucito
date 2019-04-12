@@ -6,7 +6,7 @@ E                           a
 nichts wird mir fehlen                           denn du bist bei mir.                       
 E7                           G                      
 auf grünenden Wiesen                          Dein Stock und dein Stab                       
-a                          False              E    
+a                          F              E    
 läßt er mich lagern.                          geben mir Zuversicht  ja sie geben mir Zuversicht.                       
 a          F                a                       
 V. Der Herr ist mein Hirte                          V. Der Herr ...                       
@@ -16,17 +16,17 @@ E7                                   F
 zu den Wassern des Lebens                          vor meinem Angesicht                        
 a                                 E           
 führt er mich.                          vor den Augen meiner Feinde.                       
-G                          G                    False   
+G                          G                    F   
 K. Er stärkt meine Kräfte                          Du salbst meinen Kopf mit kostbarem Öl                        
-False                                  E           
+F                                  E           
 und er führt mich                          siehe  mein Becher ist voll!                       
 E                a                       
 auf den Weg der Liebe.                         V. Der Herr ...                       
-G                          G              False         
+G                          G              F         
 Er stärkt meine Kräfte                         K. Ja  die Freude und deine Liebe                       
-False                               E              
+F                               E              
 und er führt mich                          werden mich begleiten.                       
-E                G        False               
+E                G        F               
 zum Ruhm seines Namens.                         V. Ja  ich werde wohnen                        
 a                                                 
 V. Der Herr ...                          in deinem Haus                        

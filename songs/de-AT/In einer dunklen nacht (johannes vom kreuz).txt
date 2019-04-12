@@ -4,7 +4,7 @@ a                          a          d
 K. In einer dunklen Nacht                          Und dieses führte mich                          
 d                E                              a         
 mit Sehnsüchten  in Liebe entflammt                          gewisser als das Sonnenlicht des Mittags                          
-False                               E               
+F                               E               
 o seliges Geschick                          dorthin  wo auf mich wartete                          
 d                    a                 
 ging ich hinaus  ward nicht vernommen                          der  den ich gut kannte                          
@@ -16,7 +16,7 @@ a
 In Dunkelheit und sicher                          a         d                 
 d         E          V. O Nacht  die du führtest                           
 über die geheime Leiter  verkleidet                                            a         
-False                   o Nacht  mehr zu lieben als das Morgenrot                           
+F                   o Nacht  mehr zu lieben als das Morgenrot                           
 o seliges Geschick                                      E                
 d                o Nacht  die du verbandest                          
 im Dunklen  gut verborgen                                    F                 
@@ -27,7 +27,7 @@ die Geliebte in den Geliebten verwandelt.
 
 d        E                                            
 In der seligen Nacht                                                    
-d                    False                                
+d                    F                                
 im Geheimen gab es niemand  der mich sah                                                     
 
 noch schaute ich auf etwas                                                     

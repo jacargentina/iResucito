@@ -22,7 +22,7 @@ C
 Er streckte die Hand                           Mich trafen die Wächter                       
 E                            G                  
 durch die Öffnung                            auf ihrer Runde                        
-a                          False               
+a                          F               
 da bebte mir das Innerste.                           sie zogen mich aus                         
 d    E7                                         
 Ich stand auf und lief.                           sie schlugen mich                        
@@ -32,7 +32,7 @@ a
 meine Finger von flüssiger Myrrhe                          V. Ich beschwöre ...                       
 a                 a             G           
 über die Riegel des Tores.                          K. Ach! Wärest du mein Bruder                       
-False               
+F               
 V. Ich beschwöre euch                           ich könnte dich küssen                       
 G                               E            
 Töchter von Jerusalem                            ohne daß sie sich empören.                       

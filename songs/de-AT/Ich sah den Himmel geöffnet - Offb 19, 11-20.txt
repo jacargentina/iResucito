@@ -2,15 +2,15 @@ ICH SAH DEN HIMMEL GEÖFFNET (Apk 19 11-20)
 
 E                                 G                  
 K. Ich sah den Himmel geöffnet                          mit dem Mantel                       
-False                       F        E           
+F                       F        E           
 und ein weißes Pferd                          voll von Blut  voll von Blut.                       
-G         False                  a                   
+G         F                  a                   
 und sein Reiter trägt einen Mantel                         K. Und er tritt                         
 E                                            
 voll von Blut voll von Blut.                          er allein die Kelter                        
-E              False               E                    
+E              F               E                    
 Seine Augen flammendes Feuer                          des grimmigen                        
-G           False              a                  
+G           F              a                  
 in seinem Mund ein scharfes Schwert                          Zornes Gottes.                       
 E                           a                   
 zum Verletzen zum Verletzen.                         V. Und er tritt                         
@@ -26,7 +26,7 @@ a                             a
 sein Name ist Wort Gottes.                           und mit ihm auch der Prophet                       
 E                                         E          
 K. Ich sah ein Tier                          von dem Reiter auf dem Pferd                       
-False                                 a          
+F                                 a          
 und einen Propheten                           mit dem Mantel voll von Blut.                       
 G                             E                
 die sich versammeln                         V. Halleluja  halleluja.                       
@@ -34,6 +34,6 @@ F                            a
 um Krieg zu führen                           Halleluja  halleluja.                       
 E                            E      a           
 um Krieg zu führen.                          Halleluja  halleluja. Halleluja!                       
-E              False            C                       
+E              F            C                       
 Gegen den Reiter auf dem Pferd                         K. Wie ist sein Name ...                       
 

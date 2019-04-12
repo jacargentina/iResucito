@@ -6,7 +6,7 @@ B                              F          A7
 Sie hatten die Netze ins Wasser geworfen                             Ihre Augen waren tränenleer.                          
 F           A7                  d                       
 sie hatten die Steuer am Tor eingehoben.                            Ihr Gesicht war grau von Fieber und Furcht.                          
-d              False                 F                       
+d              F                 F                       
 Es gab unter ihnen keinen Doktor                              Sie dachten an ihren verlorenen Freund                           
 B                     
 keinen Weisen                             an die Frauen  die sie zu Hause gelassen                           
@@ -16,21 +16,21 @@ F         A7                     d
 auch er war tot und begraben.                           V. Wenn du hörst ...                          
 d            C                 d                    
 V. Wenn du hörst einen Hauch vom Himmel                            K. Und der Wind klopfte an die Tür des Hauses                           
-d         A                 False                        
+d         A                 F                        
 einen Wind an der Türe rütteln.                            betrat mit Gewalt das ganze Zimmer.                          
 d         C                     B                       
 Hör zu: Dich ruft eine Stimme                             Ihre Augen und Stimmen wurden wie Feuer                           
-d           A              False            A7              
+d           A              F            A7              
 die dich einlädt  in die Ferne zu geh'n.                            sie traten hinaus ihre Freude zu singen.                          
 d     G                       d                         
 Ein Feuer entsteht                             Mensch  der du wartest im Schatten verborgen                           
 A      d                       F                       
 in dem  der erwartet                             die Stimme  die ruft  ist gerade für dich.                          
-False                      B                       
+F                      B                       
 der Hoffnung auf Liebe                            Sie bringt dir die Freude  eine gute Nachricht:                          
 A7     d                          F           A7            
 im Herzen bewahrt.                            Das Reich Jesu Christi ist heute schon da.                          
-d                  False               d                     
+d                  F               d                     
 K. Sie hatten ein Herz in der Brust  wie ich  wie du                            V. Wenn du hörst ...                          
 
 

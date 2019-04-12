@@ -4,7 +4,7 @@ a             d
 V. O Gott  du bist mein Gott                            und so will ich dich segnen                         
 a                 in deinem Namen die Hände erheben.                         
 dich suche ich am Morgen.                                                    
-False     E         a        V. O Gott  du bist ...                         
+F     E         a        V. O Gott  du bist ...                         
 Meine Seele  o Herr  dürstet nach dir.                                                    
 F      E         a           K. Meine Seele hängt fest an dir                          
 K. Ja  meine Seele dürstet nach dir                            es hält mich fest deine Rechte                          

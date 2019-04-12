@@ -6,7 +6,7 @@ a       E        a                      G
 V. Der Geist des Herrn ruht auf mir.                            Darum salbte er mich ...                       
 G                               a              
 K. Darum salbte er mich                            K. Damit die Blinden sehen                        
-False                                G                 
+F                                G                 
 er sandte mich                             die Lahmen gehen                        
 E                             F              
 das Heil zu verkündigen;                            die Aussätzigen rein sind;                       
@@ -14,7 +14,7 @@ a                            E
 V. Das Heil zu verkündigen                             das Heil zu verkündigen.                       
 G                         a                    
 das Heil zu verkündigen                           V. Der Geist ...                       
-False                E                   G              
+F                E                   G              
 allen Armen  deren Herz gebrochen ist.                            Darum salbte er mich  ...                       
 
 SIEHE  UNSER SPIEGEL (XIII. ODE SALOMOS)                             

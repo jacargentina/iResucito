@@ -12,7 +12,7 @@ G7                           G7
 Er warf ins Rote Meer                          zerschmettert den Feind.                       
 C7                              C7             
 Rosse und Reiter.                         V. Er warf ins Rote Meer ...                       
-C7             False              C7        F               
+C7             F              C7        F               
 V. Meine Stärke und mein Lied                         K. Da sagte der Feind:                       
 A7                                  A7           
 ist der Herr.                          Ich jage nach  ich hole ein                        
@@ -24,7 +24,7 @@ C7                            G7
 Er warf ins Rote Meer                          meine Hand wird sie plündern.                       
 C7             
 Rosse und Reiter. (2)                         V. Er warf ins Rote Meer ...                       
-C7         F                  C7             False          
+C7         F                  C7             F          
 K. Der Herr ist ein Kriegsheld                         K. Du hauchtest mit deinem Atem:                       
 A7                            A7            
 Jahwe ist sein Name                           da bedeckte sie das Meer.                       

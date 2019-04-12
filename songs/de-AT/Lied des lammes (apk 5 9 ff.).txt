@@ -12,9 +12,9 @@ d                          d
 Menschen aus allen Völkern                           Menschen aus allen Völkern                        
 
 Sprachen  Stämmen und Nationen.                          Sprachen  Stämmen und Nationen.                       
-False      a        F                False                   
+F      a        F                F                   
 Und du hast sie für unseren Gott                          V. Und du hast sie ...                       
-a              False                              
+a              F                              
 zu einem Königreich von Priestern gemacht                                                  
 a                                   
 V. und sie herrschen  und sie herrschen                                                 

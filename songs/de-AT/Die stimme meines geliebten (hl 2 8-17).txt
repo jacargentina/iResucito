@@ -7,7 +7,7 @@ E       F        E         F                 E
 er springt über die Berge; er hüpft über die Hügel.                               komm  steh auf  du Schöne und komm!                       
 C                  a             C                E         
 Mein Geliebter gleicht einer Gazelle                               Komm  steh auf  du meine Freundin                        
-False                      F                 E       
+F                      F                 E       
 oder dem jungen Hirschkalb                                komm  steh auf  du Schöne und komm!                       
 E                d                       
 mein Geliebter gleicht einer Gazelle.                              K. O du meine Taube                        
@@ -21,7 +21,7 @@ C                E                             E
 Komm  steh auf  du meine Freundin                                laß mich deine Stimme hören.                       
 F                 E               C               E          
 komm  steh auf  du Schöne und komm!                               Jagt die Füchse weg  die kleinen jungen Füchse                        
-C                E                      False        E          
+C                E                      F        E          
 V. Komm  steh auf  du meine Freundin                                die den Weinberg so verwüsten                        
 F                 E               G             F         E    
 komm  steh auf  du Schöne und komm!                              K+V. weil ja doch unser Weinberg in Blüte steht                        
@@ -29,7 +29,7 @@ d                E                G             F         E
 K. Denn siehe  der Winter ist vergangen                                weil ja doch unser Weinberg in Blüte steht!                       
 d              E               C                       
 versiegt ist der Regen  er ist vorbei                               V. Komm  steh auf  ...                       
-False                           d             E      d        E 
+F                           d             E      d        E 
 auf der Erde sind erschienen die Blumen                               K. Mein Geliebter lebt für mich  und ich lebe für ihn;                       
 E                  d             E             
 die Zeit zum Singen ist gekommen                               und bevor die Brise weht                        

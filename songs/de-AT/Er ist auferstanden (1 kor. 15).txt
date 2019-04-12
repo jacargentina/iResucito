@@ -2,7 +2,7 @@ ER IST AUFERSTANDEN (1 Kor. 15)
 
 a                G                        
 V. Er ist auferstanden  er ist auferstanden                                        
-False       E7                           
+F       E7                           
 er ist auferstanden  halleluja.                                        
 a    G     F    E7                       
 Halleluja  halleluja  halleluja  halleluja.                                        
@@ -12,7 +12,7 @@ a                        a
 K. Tod                        K. Danken wir.                        
 G                          G              
 wo bist du Tod?                        danken wir dem Vater                        
-F                         False               
+F                         F               
 Wo ist mein Tod?                        der uns in sein Reich führt                       
 E7                           E7             
 Wo ist sein Sieg?                        wo man die Liebe lebt.                       
