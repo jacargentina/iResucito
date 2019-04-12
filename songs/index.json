@@ -289,7 +289,8 @@
   "comunion": true,
   "files": {
    "es": "Aleluya, ya llegó el reino - Ap 19, 6-9",
-   "it": "Già viene il regno - Ap 19, 6-9"
+   "it": "Già viene il regno - Ap 19, 6-9",
+   "de-AT": "Schon kommt das Reich - Apk 19, 6-9"
   }
  },
  "32": {
@@ -315,7 +316,8 @@
   "fraccion": true,
   "files": {
    "es": "Aquedah - Gn 22, 1-19",
-   "it": "Akedà - Gn 22, 1-19"
+   "it": "Akedà - Gn 22, 1-19",
+   "de-AT": "Akedà - Gen 22, 1-19"
   }
  },
  "35": {
@@ -353,7 +355,8 @@
   "files": {
    "es": "Balaam - Nm 23, 7-24",
    "it": "Canto di Balaam - Nm 23, 7-24",
-   "pt": "Balaão - Nm 23, 7-24"
+   "pt": "Balaão - Nm 23, 7-24",
+   "de-AT": "Lied des Bileam - Num 23, 7-24"
   }
  },
  "39": {
@@ -384,7 +387,8 @@
   "files": {
    "es": "Bendita eres tú, María - Lc 1, 42-45",
    "it": "Benedetta sei tu, Maria - Lc 1, 42-45",
-   "pt": "Bendita és tu, Maria - Lc 1, 42-45"
+   "pt": "Bendita és tu, Maria - Lc 1, 42-45",
+   "de-AT": "Maria, selige Maria - Lk 1, 42-44"
   }
  },
  "42": {
@@ -392,7 +396,8 @@
   "files": {
    "es": "Bendito eres, Señor - Dn 3, 52-57",
    "it": "Benedetto sei tu Signore - Dn 3, 52-57",
-   "pt": "Bendito sejas Senhor - Dn 3, 52-57"
+   "pt": "Bendito sejas Senhor - Dn 3, 52-57",
+   "de-AT": "Lobgesang der drei Jünglinge im Feuerofen 1. Teil - Dan 3, 52-57"
   }
  },
  "43": {
@@ -400,7 +405,8 @@
   "files": {
    "es": "Benedictus - Lc 1, 67-80",
    "it": "Cantico di Zaccaria - Lc 1, 67-80",
-   "pt": "Benedictus - Lc 1, 67-80"
+   "pt": "Benedictus - Lc 1, 67-80",
+   "de-AT": "Benedictus - Lk 1, 67-80"
   }
  },
  "44": {
@@ -428,7 +434,8 @@
   "files": {
    "es": "Caritas Christi urget nos - 2 Co 5, 14-15. 17. 21",
    "it": "Caritas Christi urget nos - 2 Co 5, 14-15. 17. 21",
-   "pt": "Caritas Christi urget nos - 2 Co 5, 14-15. 17. 21"
+   "pt": "Caritas Christi urget nos - 2 Co 5, 14-15. 17. 21",
+   "de-AT": "Caritas christi - 2 Kor 5, 14-17.21; 1 Kor 9 16b"
   }
  },
  "47": {
@@ -1485,7 +1492,8 @@
   "files": {
    "es": "Bendito sea Dios - Ef 1, 3-13",
    "it": "Benedetto sia iddio - Ef 1, 3-13",
-   "pt": "Bendito seja Deus - Ef 1, 3-13"
+   "pt": "Bendito seja Deus - Ef 1, 3-13",
+   "de-AT": "Gepriesen sei der Gott - Eph 1, 3-13"
   }
  },
  "161": {
@@ -1493,7 +1501,8 @@
   "files": {
    "es": "Como condenados a muerte - 1 Co 4, 9.13",
    "it": "Come condannati a morte - 1 Co 4, 9.13",
-   "pt": "Como condenados a morte - 1 Co 4, 9.13"
+   "pt": "Como condenados a morte - 1 Co 4, 9.13",
+   "de-AT": "Wie zum Tod Verdammte - 1 Kor 4, 9-13"
   }
  },
  "162": {
@@ -1503,7 +1512,8 @@
   "files": {
    "es": "Como destila la miel - Oda 40 de Salomón",
    "it": "Come stilla il miele - Ode 40 di Salomone",
-   "pt": "Como escorre o mel - Ode 40 de Salomão"
+   "pt": "Como escorre o mel - Ode 40 de Salomão",
+   "de-AT": "Wie der Honig träufelt - XL. Ode Salomons"
   }
  },
  "163": {
@@ -1677,7 +1687,8 @@
   "etapa": "Liturgia",
   "files": {
    "es": "Aleluya Pascual",
-   "it": "Alleluja Pasquale"
+   "it": "Alleluja Pasquale",
+   "de-AT": "Osterhalleluja "
   }
  },
  "182": {

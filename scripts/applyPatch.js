@@ -17,7 +17,8 @@ if (process.argv.length == 3) {
         var newName = rename
           ? path.resolve(`../songs/${locale}/${rename}.txt`)
           : null;
-        if (!fs.existsSync(oldName) && newName && fs.existsSync(newName)) {
+        var existeNuevo = newName && fs.existsSync(newName);
+        if (existeNuevo || !fs.existsSync(oldName)) {
           console.log(`Key ${key}, renombrado previamente.`);
         } else if (newName) {
           execSync(`git mv --force "${oldName}" "${newName}"`);
@@ -27,7 +28,6 @@ if (process.argv.length == 3) {
         }
       });
     });
-    console.log(SongsIndex);
     fs.writeFileSync(indexPath, JSON.stringify(SongsIndex, null, ' '));
   }
 } else {
