@@ -12,7 +12,7 @@ if (process.argv.length == 3) {
     Object.entries(patch).forEach(([key, value]) => {
       var songToPatch = SongsIndex[key];
       Object.entries(value).forEach(([locale, item]) => {
-        const { file, rename } = item;
+        const { file, rename, lines } = item;
         var oldName = path.resolve(`../songs/${locale}/${file}.txt`);
         var newName = rename
           ? path.resolve(`../songs/${locale}/${rename}.txt`)
@@ -25,6 +25,16 @@ if (process.argv.length == 3) {
           Object.assign(songToPatch.files, { [locale]: rename });
         } else {
           Object.assign(songToPatch.files, { [locale]: file });
+        }
+        if (lines) {
+          const theSong = songToPatch.files[locale];
+          const text = fs.readFileSync(theSong, 'utf8');
+          if (text === lines) {
+            console.log(`Key ${key}, texto no aplicable.`);
+          } else {
+            fs.writeFileSync(theSong, lines);
+            console.log(`Key ${key}, aplicado texto.`);
+          }
         }
       });
     });
