@@ -1,22 +1,22 @@
-"WER IST DIESE (HL 8  5-7)"                             
+WER IST DIESE (HL 8  5-7)                             
 
 Barré auf dem IV. Bund                                                    
 a                            G           False        a    
-V. "Wer ist diese  die von der Wüste kommt "                           K. "Drücke mich wie ein Siegel auf dein Herz "                       
+V. Wer ist diese  die von der Wüste kommt                            K. Drücke mich wie ein Siegel auf dein Herz                        
 G     False        a          
-"wer ist diese  die von der Wüste kommt "                            "wie Tätowierung auf den Arm "                       
+wer ist diese  die von der Wüste kommt                             wie Tätowierung auf den Arm                        
 False                   E           False            E       
-"gestützt auf ihren Geliebten  auf ihren Geliebten "                            denn stark wie der Tod ist die Liebe                       
+gestützt auf ihren Geliebten  auf ihren Geliebten                             denn stark wie der Tod ist die Liebe                       
 False        E                        False           E      
-gestützt auf ihren Geliebten.                            "sie ist ein Feuer  das vom Herrn kommt "                       
+gestützt auf ihren Geliebten.                            sie ist ein Feuer  das vom Herrn kommt                        
 G               a                False            E      
-K. "Unter dem Apfelbaum weckte ich dich "                            und die Wasser werden sie nicht löschen.                       
+K. Unter dem Apfelbaum weckte ich dich                             und die Wasser werden sie nicht löschen.                       
 G      F            a                    False               E   
-"dort  wo dich deine Mutter empfing "                            Bötest du alle Güter des Hauses für die Liebe                       
+dort  wo dich deine Mutter empfing                             Bötest du alle Güter des Hauses für die Liebe                       
 F                  E             F               E         
-"dort  wo dich deine Mutter gebar"                            würdest du nur Verachtung finden.                       
+dort  wo dich deine Mutter gebar                            würdest du nur Verachtung finden.                       
 F                  a             a                       
-"dort  wo dich deine Mutter gebar."                           V. Wer ist diese ...                       
+dort  wo dich deine Mutter gebar.                           V. Wer ist diese ...                       
 a                                                   
 V. Wer ist diese ...                                                   
 
