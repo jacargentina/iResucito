@@ -1,8 +1,8 @@
 // @flow
 import React, { useContext, useEffect, useState } from 'react';
 import { withNavigation } from 'react-navigation';
-import { Dimensions, ScrollView, View } from 'react-native';
-import { Container, Content, Text, Icon, Badge } from 'native-base';
+import { View } from 'react-native';
+import { Text, Icon, Badge } from 'native-base';
 import KeepAwake from 'react-native-keep-awake';
 import {
   Menu,
@@ -10,14 +10,13 @@ import {
   MenuOption,
   MenuTrigger
 } from 'react-native-popup-menu';
-import colors from '../colors';
-import color from 'color';
-import { getChordsScale } from '../SongsProcessor';
-import { NativeStyles, getSalmoTransported, generatePDF } from '../util';
+import { getChordsScale, getChordsDiff } from '../SongsProcessor';
+import { NativeSongs, generatePDF } from '../util';
 import { DataContext } from '../DataContext';
 import I18n from '../translations';
 import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
 import commonTheme from '../native-base-theme/variables/platform';
+import SongViewFrame from './SongViewFrame';
 
 const SongDetail = (props: any) => {
   const data = useContext(DataContext);
@@ -26,19 +25,6 @@ const SongDetail = (props: any) => {
   const [transportNote, setTransportNote] = useState();
 
   var song = navigation.getParam('song');
-
-  var backColor = color(colors[song.etapa]);
-  var background = backColor.lighten(0.1).string();
-  var itemsToRender = getSalmoTransported(song, transportNote);
-
-  // Ajuste final para renderizado en screen
-  var lines = itemsToRender.map(it => {
-    var c = Object.assign({}, it);
-    if (c.notas === true) {
-      c.texto = c.texto.replace(/ {2}/g, ' ');
-    }
-    return c;
-  });
 
   useEffect(() => {
     navigation.setParams({ transportNote, setTransportNote });
@@ -53,52 +39,7 @@ const SongDetail = (props: any) => {
     }
   }, []);
 
-  if (song.error) {
-    var render_items = <Text>{song.error}</Text>;
-  } else {
-    var render_items = lines.map((it, i) => {
-      if (it.sufijo) {
-        var sufijo = (
-          <Text key={i + 'sufijo'} style={it.sufijoStyle}>
-            {it.sufijo}
-          </Text>
-        );
-      }
-      return (
-        <Text numberOfLines={1} key={i + 'texto'} style={it.style}>
-          <Text key={i + 'prefijo'} style={it.prefijoStyle || it.style}>
-            {it.prefijo}
-          </Text>
-          {it.texto}
-          {sufijo}
-        </Text>
-      );
-    });
-    render_items.push(<Text key="spacer">{'\n\n\n'}</Text>);
-  }
-  var margin = 10;
-  var minWidth = Dimensions.get('window').width - margin * 2;
-  return (
-    <Container style={{ backgroundColor: background }}>
-      <ScrollView
-        horizontal
-        style={{
-          marginLeft: margin,
-          marginRight: margin
-        }}>
-        <ScrollView>
-          <Content
-            style={{
-              minWidth: minWidth
-            }}>
-            <Text style={NativeStyles.titulo}>{song.titulo}</Text>
-            <Text style={NativeStyles.fuente}>{song.fuente}</Text>
-            {render_items}
-          </Content>
-        </ScrollView>
-      </ScrollView>
-    </Container>
-  );
+  return <SongViewFrame {...song} />;
 };
 
 const TransportNotesMenu = withNavigation((props: any) => {
@@ -177,7 +118,7 @@ const TransportNotesMenu = withNavigation((props: any) => {
 const ViewPdf = withNavigation(props => {
   const { navigation } = props;
   const song = navigation.getParam('song');
-  const transportNote = navigation.getParam('transportNote');
+  const transportToNote = navigation.getParam('transportNote');
 
   return (
     <Icon
@@ -191,8 +132,17 @@ const ViewPdf = withNavigation(props => {
         color: StackNavigatorOptions.headerTitleStyle.color
       }}
       onPress={() => {
-        const lines = getSalmoTransported(song, transportNote);
-        generatePDF(song, lines).then(path => {
+        const { locale, lines } = song;
+        var diff = 0;
+        if (transportToNote) {
+          diff = getChordsDiff(lines[0], transportToNote, locale);
+        }
+        const itemsToRender = NativeSongs.getSongLinesForRender(
+          lines,
+          locale,
+          diff
+        );
+        generatePDF(song, itemsToRender).then(path => {
           navigation.navigate('PDFViewer', {
             uri: path,
             song: song

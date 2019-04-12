@@ -10,6 +10,8 @@ import ContactImportDialog from '../screens/ContactImportDialog';
 import ListNameDialog from '../screens/ListNameDialog';
 import SongChangeNameDialog from '../screens/SongChangeNameDialog';
 import SongEditorDialog from '../screens/SongEditorDialog';
+import SongPreviewScreenDialog from '../screens/SongPreviewScreenDialog';
+import SongPreviewPdfDialog from '../screens/SongPreviewPdfDialog';
 
 const RootNavigator = createStackNavigator(
   {
@@ -21,7 +23,9 @@ const RootNavigator = createStackNavigator(
     ContactImport: ContactImportDialog,
     ListName: ListNameDialog,
     SongChangeName: SongChangeNameDialog,
-    SongEditor: SongEditorDialog
+    SongEditor: SongEditorDialog,
+    SongPreviewScreen: SongPreviewScreenDialog,
+    SongPreviewPdf: SongPreviewPdfDialog
   },
   {
     mode: 'modal',

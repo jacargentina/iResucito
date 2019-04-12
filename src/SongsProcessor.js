@@ -15,7 +15,7 @@ export const getInitialChord = (linea: string): string => {
   return primero.replace(cleanChordsRegex, '');
 };
 
-export const calcularTransporte = (
+export const getChordsDiff = (
   startingChordsLine: string,
   targetChord: string,
   locale: string
@@ -190,7 +190,7 @@ export class SongsProcessor {
   }
 
   /* eslint-disable no-unused-vars */
-  preprocesarLinea(text: string, locale: string): SongLine {
+  getSongLineFromString(text: string, locale: string): SongLine {
     const psalmistAndAssembly = `${I18n.t('songs.psalmist', {
       locale
     })} ${I18n.t('songs.assembly', {
@@ -359,19 +359,19 @@ export class SongsProcessor {
     }
   }
 
-  transportarNotas(
-    lineaNotas: string,
-    diferencia: number,
+  getChordsTransported(
+    chordsLine: string,
+    diff: number,
     locale: string
   ): string {
     const notas = getChordsScale(locale);
     const notasInverted = notas.slice().reverse();
-    const pedazos = lineaNotas.split(' ');
+    const pedazos = chordsLine.split(' ');
     const result = pedazos.map(item => {
       const notaLimpia = item.replace(cleanChordsRegex, '');
       const notaIndex = notas.indexOf(notaLimpia);
       if (notaIndex !== -1) {
-        const notaNuevoIndex = (notaIndex + diferencia) % 12;
+        const notaNuevoIndex = (notaIndex + diff) % 12;
         var transporte =
           notaNuevoIndex < 0
             ? notasInverted[notaNuevoIndex * -1]
@@ -385,21 +385,21 @@ export class SongsProcessor {
     return result.join(' ');
   }
 
-  preprocesarCanto(song: Song, diferenciaTransporte: number): Array<SongLine> {
-    const firstPass = song.lines.map(l => {
-      const it = this.preprocesarLinea(l, song.locale);
+  getSongLinesForRender(
+    lines: Array<string>,
+    locale: string,
+    transportDiff?: number
+  ): Array<SongLine> {
+    const firstPass = lines.map(l => {
+      const it = this.getSongLineFromString(l, locale);
       // Detectar indicadores de Nota al pie (un asterisco)
       if (it.texto.endsWith('\u2217')) {
         it.texto = it.texto.replace('\u2217', '');
         it.sufijo = '\u2217';
         it.sufijoStyle = this.songStyles.lineaNotas;
       }
-      if (it.notas && diferenciaTransporte !== 0) {
-        it.texto = this.transportarNotas(
-          it.texto,
-          diferenciaTransporte,
-          song.locale
-        );
+      if (it.notas && transportDiff && transportDiff !== 0) {
+        it.texto = this.getChordsTransported(it.texto, transportDiff, locale);
       }
       return it;
     });

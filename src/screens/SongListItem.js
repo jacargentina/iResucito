@@ -152,14 +152,14 @@ const SongListItem = (props: any) => {
                 bordered
                 small
                 onPress={() => changeName()}>
-                <Text>Renombrar</Text>
+                <Text>{I18n.t('ui.rename')}</Text>
               </Button>
               <Button
                 style={{ margin: 5 }}
                 bordered
                 small
                 onPress={() => showEditor()}>
-                <Text>Editar</Text>
+                <Text>{I18n.t('ui.edit')}</Text>
               </Button>
             </View>
           </Fragment>

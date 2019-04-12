@@ -25,6 +25,7 @@
     "delete": "Löschen",
     "cancel": "Abbrechen",
     "create": "Erstellen",
+    "edit": "Bearbeiten",
     "delete confirmation": "Möchtest du wirklich löschen?",
     "apply": "Verwenden",
     "lists": {
@@ -53,7 +54,10 @@
     "patched song": "Patch Lieder",
     "song change name help": "Korregiere den Satz um den folgenden Standard zu folgen: [Lieds Titel] - [Quelle]. Wenn die  Quelle leer ist, benutz nur [Lieds Titel]",
     "reload": "Wieder aufladen",
-    "reload confirmation": "Willst du wieder aufladen und Änderungen verlieren?"
+    "reload confirmation": "Willst du wieder aufladen und Änderungen verlieren?",
+    "preview type": "Vorschau-Typ",
+    "screen": "Bildschirm",
+    "pdf": "PDF"
   },
   "list_type": {
     "eucharist": "Eucharistie",
@@ -142,7 +146,8 @@
     "community": "Gemeinschaft",
     "import contacts": "Kontakte Importieren",
     "choose song": "Liede aussuchen",
-    "song edit": "Liede bearbeiten"
+    "song edit": "Liede bearbeiten",
+    "preview": "Test anzeigen"
   },
   "call_to_action_title": {
     "add lists": "Tabelle erstellen",

@@ -4,11 +4,12 @@ import ModalView from './ModalView';
 import SongListItem from './SongListItem';
 import { withNavigation } from 'react-navigation';
 import { TextInput, View, Alert, ScrollView, Dimensions } from 'react-native';
-import { Text, Button, Icon } from 'native-base';
+import { Text, Button, Icon, ActionSheet } from 'native-base';
 import { DataContext } from '../DataContext';
 import I18n from '../translations';
 import commonTheme from '../native-base-theme/variables/platform';
 import useUndo from 'use-undo';
+import { NativeSongs, generatePDF } from '../util';
 
 const SongEditorDialog = (props: any) => {
   const data = useContext(DataContext);
@@ -106,6 +107,44 @@ const SongEditorDialog = (props: any) => {
     }
   };
 
+  const choosePreview = () => {
+    ActionSheet.show(
+      {
+        options: [I18n.t('ui.screen'), I18n.t('ui.pdf'), I18n.t('ui.cancel')],
+        cancelButtonIndex: 2,
+        title: I18n.t('ui.preview type')
+      },
+      index => {
+        index = Number(index);
+        switch (index) {
+          case 0:
+            navigation.navigate('SongPreviewScreen', {
+              data: {
+                lines: lines.split('\n'),
+                locale: I18n.locale,
+                titulo: song.titulo,
+                fuente: song.fuente,
+                etapa: song.etapa
+              }
+            });
+            break;
+          case 1:
+            const itemsToRender = NativeSongs.getSongLinesForRender(
+              lines.split('\n'),
+              I18n.locale
+            );
+            generatePDF(song, itemsToRender).then(path => {
+              navigation.navigate('SongPreviewPdf', {
+                uri: path,
+                song: song
+              });
+            });
+            break;
+        }
+      }
+    );
+  };
+
   useEffect(() => {
     reload();
   }, []);
@@ -151,13 +190,18 @@ const SongEditorDialog = (props: any) => {
           devModeDisabled={true}
           showBadge={true}
           patchSectionDisabled={true}
+          onPress={choosePreview}
         />
         <ScrollView horizontal>
           <TextInput
             style={{
+              backgroundColor: '#222',
+              color: 'white',
               fontSize: 16,
-              padding: 10,
-              paddingBottom: 70,
+              paddingTop: 20,
+              paddingLeft: 10,
+              paddingRight: 10,
+              paddingBottom: 60,
               minWidth: Dimensions.get('window').width
             }}
             multiline

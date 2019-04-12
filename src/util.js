@@ -6,7 +6,7 @@ import Contacts from 'react-native-contacts';
 import RNFS from 'react-native-fs';
 import DeviceInfo from 'react-native-device-info';
 import I18n from './translations';
-import { SongsProcessor, calcularTransporte } from './SongsProcessor';
+import { SongsProcessor } from './SongsProcessor';
 import PDFLib, { PDFDocument, PDFPage } from 'react-native-pdf-lib';
 
 function checkContactsPermission(): Promise<boolean> {
@@ -202,18 +202,6 @@ export const NativeSongs = new SongsProcessor(
   NativeSongReader,
   NativeStyles
 );
-
-export const getSalmoTransported = (song: Song, transportToNote: any) => {
-  var diferencia = 0;
-  if (transportToNote) {
-    diferencia = calcularTransporte(
-      song.lines[0],
-      transportToNote,
-      song.locale
-    );
-  }
-  return NativeSongs.preprocesarCanto(song, diferencia);
-};
 
 export const contactFilterByText = (c: any, text: string) => {
   return (

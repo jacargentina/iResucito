@@ -25,6 +25,7 @@
     "delete": "Eliminar",
     "cancel": "Cancelar",
     "create": "Crear",
+    "edit": "Editar",
     "delete confirmation": "¿Confirma el borrado?",
     "apply": "Aplicar",
     "lists": {
@@ -53,7 +54,10 @@
     "patched song": "Canto parchado",
     "song change name help": "Arregla la cadena de texto para seguir el siguiente standard: [Titulo del canto] - [Fuente]. En el caso de fuente vacía, sólo usar [Titulo del canto]",
     "reload": "Recargar",
-    "reload confirmation": "¿Quieres recargar pendiendo cualquier cambio realizado?"
+    "reload confirmation": "¿Quieres recargar pendiendo cualquier cambio realizado?",
+    "preview type": "Tipo de Previsualización",
+    "screen": "Pantalla",
+    "pdf": "PDF"
   },
   "list_type": {
     "eucharist": "Eucaristía",
@@ -142,7 +146,8 @@
     "community": "Comunidad",
     "import contacts": "Importar Contactos",
     "choose song": "Elegir Canto",
-    "song edit": "Editar Canto"
+    "song edit": "Editar Canto",
+    "preview": "Previsualización"
   },
   "call_to_action_title": {
     "add lists": "Agregar listas",
