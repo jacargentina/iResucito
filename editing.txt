@@ -13,6 +13,9 @@ find . -type f -exec sed -i 's/^[ \t]*//' {} \;
 # The S. many times had many spaces after it; remove them for just 1 space
 find . -type f -name '*.txt' -exec sed -i '' 's/^S\.( )+/S. /' {} \;
 
+# Remove a specific character from all songs, for example in this case "
+find . -type f -exec sed -i '' -e 's/"//g' {} \;
+
 # macOS filenames
 
 In macOS the filenames (in songs/[locale]) are encoded in UTF "decomposed form"
