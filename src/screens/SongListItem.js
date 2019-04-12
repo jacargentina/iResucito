@@ -46,14 +46,19 @@ const SongListItem = (props: any) => {
 
   const changeName = () => {
     getSongLocalePatch(song).then(patchObj => {
-      const patch = patchObj[I18n.locale];
+      var file = song.nombre;
+      var rename = undefined;
+      if (patchObj) {
+        file = patchObj[I18n.locale].file;
+        rename = patchObj[I18n.locale].rename;
+      }
       // Definir cambio a realizar sobre el patch
       const applyChanges = renameTo => {
-        setSongLocalePatch(song, patch.file, renameTo);
+        setSongLocalePatch(song, file, renameTo);
       };
       navigation.navigate('SongChangeName', {
         song: song,
-        nameToEdit: patch.rename ? patch.rename : patch.file,
+        nameToEdit: rename ? rename : file,
         action: applyChanges
       });
     });
@@ -136,34 +141,35 @@ const SongListItem = (props: any) => {
   useEffect(() => {
     if (
       developerMode === true &&
-      song.patchable &&
       !openHighlightedRest &&
       !patchSectionDisabled
     ) {
-      if (song.patched) {
-        setBodyExtraContent(
-          <Fragment>
+      setBodyExtraContent(
+        <Fragment>
+          {song.patched && (
             <Text style={{ ...noteStyles, margin: 5 }}>
               {song.patchedTitle}
             </Text>
-            <View style={{ flexDirection: 'row' }}>
-              <Button
-                style={{ margin: 5 }}
-                bordered
-                small
-                onPress={() => changeName()}>
-                <Text>{I18n.t('ui.rename')}</Text>
-              </Button>
-              <Button
-                style={{ margin: 5 }}
-                bordered
-                small
-                onPress={() => showEditor()}>
-                <Text>{I18n.t('ui.edit')}</Text>
-              </Button>
-            </View>
-          </Fragment>
-        );
+          )}
+          <View style={{ flexDirection: 'row' }}>
+            <Button
+              style={{ margin: 5 }}
+              bordered
+              small
+              onPress={() => changeName()}>
+              <Text>{I18n.t('ui.rename')}</Text>
+            </Button>
+            <Button
+              style={{ margin: 5 }}
+              bordered
+              small
+              onPress={() => showEditor()}>
+              <Text>{I18n.t('ui.edit')}</Text>
+            </Button>
+          </View>
+        </Fragment>
+      );
+      if (song.patched) {
         setRightContent(
           <Right>
             <Icon
@@ -196,7 +202,7 @@ const SongListItem = (props: any) => {
         );
       }
     }
-    if (song.patchable && developerMode === false && !patchSectionDisabled) {
+    if (developerMode === false && !patchSectionDisabled) {
       setBodyExtraContent(
         <TouchableOpacity
           onPress={() => {
@@ -221,18 +227,11 @@ const SongListItem = (props: any) => {
         </TouchableOpacity>
       );
     }
-  }, [
-    developerMode,
-    patchSectionDisabled,
-    song.patchable,
-    openHighlightedRest
-  ]);
+  }, [developerMode, patchSectionDisabled, openHighlightedRest]);
 
   return (
-    <ListItem avatar={showBadge} style={{ paddingHorizontal: 5 }}>
-      {showBadge && (
-        <Left style={{ marginLeft: -8 }}>{badges[song.etapa]}</Left>
-      )}
+    <ListItem avatar={showBadge} noIndent>
+      {showBadge && <Left>{badges[song.etapa]}</Left>}
       <Body>
         <TouchableOpacity
           onPress={() => {

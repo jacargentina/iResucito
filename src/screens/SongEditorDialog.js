@@ -14,7 +14,7 @@ import { NativeSongs, generatePDF } from '../util';
 const SongEditorDialog = (props: any) => {
   const data = useContext(DataContext);
   const { navigation } = props;
-  var song = navigation.getParam('song');
+  const song = navigation.getParam('song');
 
   const { getSongLocalePatch, setSongLocalePatch } = data.songsMeta;
   const [selection, setSelection] = useState({ start: 0, end: 0 });
@@ -74,21 +74,26 @@ const SongEditorDialog = (props: any) => {
 
   const reload = () => {
     getSongLocalePatch(song).then(patchObj => {
-      const patch = patchObj[I18n.locale];
-      if (patch.lines && patch.lines !== '') {
+      var lines = song.lines.join('\n');
+      if (patchObj) {
+        lines = patchObj[I18n.locale].lines;
         setCanDeletePatch(true);
-        resetLines(patch.lines);
       } else {
         setCanDeletePatch(false);
-        resetLines(song.lines.join('\n'));
       }
+      resetLines(lines);
     });
   };
 
   const saveWithLines = (text?: string) => {
     return getSongLocalePatch(song).then(patchObj => {
-      const patch = patchObj[I18n.locale];
-      return setSongLocalePatch(song, patch.file, patch.rename, text);
+      var file = song.nombre;
+      var rename = undefined;
+      if (patchObj) {
+        file = patchObj[I18n.locale].file;
+        rename = patchObj[I18n.locale].rename;
+      }
+      return setSongLocalePatch(song, file, rename, text);
     });
   };
 
@@ -121,7 +126,7 @@ const SongEditorDialog = (props: any) => {
             navigation.navigate('SongPreviewScreen', {
               data: {
                 lines: lines.split('\n'),
-                locale: I18n.locale,
+                locale: song.locale,
                 titulo: song.titulo,
                 fuente: song.fuente,
                 etapa: song.etapa
@@ -131,7 +136,7 @@ const SongEditorDialog = (props: any) => {
           case 1:
             const itemsToRender = NativeSongs.getSongLinesForRender(
               lines.split('\n'),
-              I18n.locale
+              song.locale
             );
             generatePDF(song, itemsToRender).then(path => {
               navigation.navigate('SongPreviewPdf', {
@@ -149,7 +154,7 @@ const SongEditorDialog = (props: any) => {
     reload();
   }, []);
 
-  var cancelButton = (
+  const cancelButton = (
     <Text
       style={{
         alignSelf: 'center',
@@ -161,7 +166,7 @@ const SongEditorDialog = (props: any) => {
     </Text>
   );
 
-  var saveButton = (
+  const saveButton = (
     <Text
       style={{
         alignSelf: 'center',
@@ -184,7 +189,7 @@ const SongEditorDialog = (props: any) => {
       title={I18n.t('screen_title.song edit')}
       right={saveButton}
       left={cancelButton}>
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, backgroundColor: '#222' }}>
         <SongListItem
           song={song}
           devModeDisabled={true}

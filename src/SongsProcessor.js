@@ -97,7 +97,6 @@ export class SongsProcessor {
       const defaultLocale = Object.getOwnPropertyNames(info.files)[0];
       const parsed = getSongFileFromString(info.files[defaultLocale]);
       this.assignInfoFromFile(info, defaultLocale, parsed);
-      info.patchable = true;
       // Si se aplico un parche
       // Asignar los valores del mismo
       if (
