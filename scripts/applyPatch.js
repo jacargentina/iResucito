@@ -28,11 +28,12 @@ if (process.argv.length == 3) {
         }
         if (lines) {
           const theSong = songToPatch.files[locale];
-          const text = fs.readFileSync(theSong, 'utf8');
+          const songPath = path.resolve(`../songs/${locale}/${theSong}.txt`);
+          const text = fs.readFileSync(songPath, 'utf8');
           if (text === lines) {
             console.log(`Key ${key}, texto no aplicable.`);
           } else {
-            fs.writeFileSync(theSong, lines);
+            fs.writeFileSync(songPath, lines);
             console.log(`Key ${key}, aplicado texto.`);
           }
         }
