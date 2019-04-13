@@ -34,6 +34,10 @@ const SongList = (props: any) => {
         );
       });
     }
+    const navSort = navigation.getParam('sort', props.sort);
+    if (navSort) {
+      // todo
+    }
     setShowSalmosBadge(navFilter == null || !navFilter.hasOwnProperty('etapa'));
     setSearch(result);
     if (result.length > 0 && isFocused) {

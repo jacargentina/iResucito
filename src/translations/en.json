@@ -108,7 +108,8 @@
     "signing to the virgin": "Songs to the Virgin",
     "children's songs": "Songs for Children",
     "lutes and vespers": "Lauds and Vespers",
-    "unassigned": "Unassigned"
+    "unassigned": "Unassigned",
+    "ratings": "Ratings"
   },
   "search_tabs": {
     "all": "All",
@@ -138,7 +139,8 @@
     "signing to the virgin": "Songs dedicated to the Virgin Mary",
     "children's songs": "Songs for children",
     "lutes and vespers": "Psalms of Lauds and Vespers",
-    "unassigned": "Locale songs not in the index"
+    "unassigned": "Locale songs not in the index",
+    "ratings": "Songs in ratings order"
   },
   "screen_title": {
     "search": "Search",

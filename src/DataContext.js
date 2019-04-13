@@ -483,6 +483,13 @@ const useSearch = (locale: string, developerMode: boolean) => {
     setInitialized(false);
     var items: Array<SearchItem> = [
       {
+        title_key: 'search_title.ratings',
+        note: I18n.t('search_note.ratings'),
+        route: 'SongList',
+        params: { filter: null, sort: null },
+        badge: null
+      },
+      {
         title_key: 'search_title.alpha',
         note: I18n.t('search_note.alpha'),
         route: 'SongList',

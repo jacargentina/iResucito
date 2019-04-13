@@ -108,7 +108,8 @@
     "signing to the virgin": "Cantos a la Virgen",
     "children's songs": "Cantos de los Niños",
     "lutes and vespers": "Laúdes y Vísperas",
-    "unassigned": "Sin asignar"
+    "unassigned": "Sin asignar",
+    "ratings": "Calificaciones"
   },
   "search_tabs": {
     "all": "Todos",
@@ -120,7 +121,7 @@
     "signing to the virgin": "Virgen"
   },
   "search_note": {
-    "alpha": "Todos los cantos en orden alfabético",
+    "alpha": "Cantos en orden alfabético",
     "precatechumenate": "Cantos para el Precatecumenado",
     "catechumenate": "Cantos para el Catecumenado",
     "election": "Cantos para la Elección",
@@ -138,7 +139,8 @@
     "signing to the virgin": "Cantos dedicados a la Virgen María",
     "children's songs": "Cantos de los niños",
     "lutes and vespers": "Salmos de Laudes y Vísperas",
-    "unassigned": "Cantos sin asignar al indice"
+    "unassigned": "Cantos sin asignar al indice",
+    "ratings": "Cantos ordenados según calificación"
   },
   "screen_title": {
     "search": "Buscar",

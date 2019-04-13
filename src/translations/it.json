@@ -108,7 +108,8 @@
     "signing to the virgin": "Canti della Vergine",
     "children's songs": "Canti dei Bambini",
     "lutes and vespers": "Lodi e Vespri",
-    "unasigned": "Non assegnato"
+    "unasigned": "Non assegnato",
+    "ratings": "Valutazione"
   },
   "search_tabs": {
     "all": "Tutto",
@@ -138,7 +139,8 @@
     "signing to the virgin": "Canti dedicati alla Vergine Maria",
     "children's songs": "Canti dei Bambini",
     "lutes and vespers": "Salmi di lodi 'e Vespri",
-    "unnasigned": "Canzoni locali non nell'indice"
+    "unnasigned": "Canzoni locali non nell'indice",
+    "ratings": "Canzoni ordinate per valutazione"
   },
   "screen_title": {
     "search": "Cercare",

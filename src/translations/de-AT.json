@@ -108,7 +108,8 @@
     "signing to the virgin": "Marienlieder",
     "children's songs": "Kinderlieder",
     "lutes and vespers": "Laudes und Vespers",
-    "unassigned": "Unbestimmte"
+    "unassigned": "Unbestimmte",
+    "ratings": "Bewertungen"
   },
   "search_tabs": {
     "all": "Alle",
@@ -138,7 +139,8 @@
     "signing to the virgin": "Marianische Lieder",
     "children's songs": "Kinder Lieder",
     "lutes and vespers": "Psalms für Laudes und Vespers",
-    "unassigned": "Unbestimmte Lieder"
+    "unassigned": "Unbestimmte Lieder",
+    "ratings": "Songs sortiert nach Bewertung"
   },
   "screen_title": {
     "search": "Suchen",

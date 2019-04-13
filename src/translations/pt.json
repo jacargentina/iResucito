@@ -108,7 +108,8 @@
     "signing to the virgin": "Cantos à Virgem",
     "children's songs": "Canto das Crianças",
     "lutes and vespers": "Laudes e Vésperas",
-    "unassigned": "Não atribuído"
+    "unassigned": "Não atribuído",
+    "ratings": "Classificação"
   },
   "search_tabs": {
     "all": "Todos",
@@ -138,7 +139,8 @@
     "signing to the virgin": "Cantos dedicados à Virgem Maria",
     "children's songs": "Canto das Crianças",
     "lutes and vespers": "Salmos das Laudes e Vésperas",
-    "unassigned": "Salmos locais não no índice"
+    "unassigned": "Salmos locais não no índice",
+    "ratings": "Cantos classificados por classificação"
   },
   "screen_title": {
     "search": "Pesquisar",
