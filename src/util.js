@@ -54,10 +54,10 @@ export function ordenAlfabetico(a: any, b: any) {
 
 export function ordenClasificacion(a: Song, b: Song) {
   if (a.rating < b.rating || (a.rating === undefined && b.rating)) {
-    return -1;
+    return 1;
   }
   if (a.rating > b.rating || (a.rating && b.rating === undefined)) {
-    return 1;
+    return -1;
   }
   return 0;
 }
