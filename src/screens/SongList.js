@@ -55,7 +55,7 @@ const SongList = (props: any) => {
     } else {
       setTotalText(I18n.t('ui.no songs found'));
     }
-  }, [textFilter, props.filter]);
+  }, [textFilter, props.filter, I18n.locale]);
 
   useEffect(() => {
     navigation.setParams({ title: I18n.t(navigation.getParam('title_key')) });

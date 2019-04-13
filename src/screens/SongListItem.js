@@ -69,13 +69,12 @@ const SongListItem = (props: any) => {
   const [openHighlightedRest, setOpenHighlightedRest] = useState();
 
   const showDeveloperMenu = () => {
-    var options = [
-      I18n.t('ui.rename'),
-      I18n.t('ui.edit'),
-      I18n.t('ui.link file')
-    ];
+    var options = [I18n.t('ui.rename'), I18n.t('ui.edit')];
+    if (song.locale !== 'es') {
+      options.push(I18n.t('ui.link file'));
+    }
     if (song.patched) {
-      options.push(I18n.t('ui.unlink file'));
+      options.push(I18n.t('ui.remove patch'));
     }
     options.push(I18n.t('ui.cancel'));
     ActionSheet.show(
@@ -97,7 +96,7 @@ const SongListItem = (props: any) => {
           case I18n.t('ui.link file'):
             linkPatch();
             break;
-          case I18n.t('ui.unlink file'):
+          case I18n.t('ui.remove patch'):
             confirmClearSongPatch();
             break;
         }
@@ -116,7 +115,7 @@ const SongListItem = (props: any) => {
     getSongLocalePatch(song).then(patchObj => {
       var file = song.nombre;
       var rename = undefined;
-      if (patchObj) {
+      if (patchObj && patchObj[I18n.locale]) {
         file = patchObj[I18n.locale].file;
         rename = patchObj[I18n.locale].rename;
       }
@@ -238,7 +237,9 @@ const SongListItem = (props: any) => {
           {highlightedRest}
         </TouchableOpacity>
         {developerMode && !patchSectionDisabled && song.patched && (
-          <Text style={{ ...noteStyles, margin: 5 }}>{song.patchedTitle}</Text>
+          <Text style={{ ...noteStyles, margin: 5 }}>
+            {I18n.t('ui.original song')}: {song.patchedTitle}
+          </Text>
         )}
         {!developerMode &&
           !patchSectionDisabled &&

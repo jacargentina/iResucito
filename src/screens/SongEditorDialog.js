@@ -75,7 +75,7 @@ const SongEditorDialog = (props: any) => {
   const reload = () => {
     getSongLocalePatch(song).then(patchObj => {
       var lines = song.lines.join('\n');
-      if (patchObj) {
+      if (patchObj && patchObj[song.locale]) {
         lines = patchObj[song.locale].lines;
         setCanDeletePatch(true);
       } else {
@@ -89,7 +89,7 @@ const SongEditorDialog = (props: any) => {
     return getSongLocalePatch(song).then(patchObj => {
       var file = song.nombre;
       var rename = undefined;
-      if (patchObj) {
+      if (patchObj && patchObj[song.locale]) {
         file = patchObj[song.locale].file;
         rename = patchObj[song.locale].rename;
       }

@@ -47,7 +47,7 @@
     "empty songs list": "Elenco di canzoni vuote",
     "confirmation": "Conferma",
     "list total songs": "{{total}} canzoni totali",
-    "locale patch added": "Patch applicata {{song}} con {{file}}",
+    "locale patch added": "Patch applicata {{song}}",
     "locale patch removed": "Patch rimossa da {{song}}",
     "locale patch rename message": "Vuoi sistemare il titolo della canzone?",
     "original song": "Canzone originale",
@@ -59,7 +59,7 @@
     "screen": "Schermo",
     "pdf": "PDF",
     "link file": "Collega file",
-    "unlink file": "Scollegare file"
+    "remove patch": "Rimuovi la patch"
   },
   "list_type": {
     "eucharist": "Eucarestia",

@@ -47,7 +47,7 @@
     "empty songs list": "Empty songs list",
     "confirmation": "Confirmation",
     "list total songs": "{{total}} total songs",
-    "locale patch added": "Patched {{song}} with {{file}}",
+    "locale patch added": "Patched {{song}}",
     "locale patch removed": "Removed {{song}} patch",
     "locale patch rename message": "Do you want to fix the song title?",
     "original song": "Original song",
@@ -59,7 +59,7 @@
     "screen": "Screen",
     "pdf": "PDF",
     "link file": "Link file",
-    "unlink file": "Unlink file"
+    "remove patch": "Remove patch"
   },
   "list_type": {
     "eucharist": "Eucharist",

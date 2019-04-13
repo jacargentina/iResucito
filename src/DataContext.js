@@ -135,21 +135,20 @@ const useSongsMeta = (locale: any) => {
           };
           if (!patchObj[song.key]) {
             patchObj[song.key] = {};
-            Toast.show({
-              text: I18n.t('ui.locale patch added', {
-                song: song.titulo,
-                file: filename
-              }),
-              duration: 5000,
-              type: 'success',
-              buttonText: 'Ok'
-            });
           }
           patchObj[song.key] = Object.assign(
             {},
             patchObj[song.key],
             localePatch
           );
+          Toast.show({
+            text: I18n.t('ui.locale patch added', {
+              song: song.titulo
+            }),
+            duration: 5000,
+            type: 'success',
+            buttonText: 'Ok'
+          });
         } else {
           delete patchObj[song.key][song.locale];
           Toast.show({
