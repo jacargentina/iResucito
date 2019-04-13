@@ -82,7 +82,12 @@ export class SongsProcessor {
     info.path = `${this.basePath}/${locale}/${parsed.nombre}.txt`;
   }
 
-  getSingleSongMeta(key: string, locale: string, patch?: SongIndexPatch): Song {
+  getSingleSongMeta(
+    key: string,
+    locale: string,
+    patch?: SongIndexPatch,
+    ratings?: SongRatingFile
+  ): Song {
     if (!SongsIndex.hasOwnProperty(key))
       throw new Error(`There is no key = ${key} on the Index!`);
     var info: Song = Object.assign({}, SongsIndex[key]);
@@ -97,40 +102,53 @@ export class SongsProcessor {
       const defaultLocale = Object.getOwnPropertyNames(info.files)[0];
       const parsed = getSongFileFromString(info.files[defaultLocale]);
       this.assignInfoFromFile(info, defaultLocale, parsed);
-      // Si se aplico un parche
-      // Asignar los valores del mismo
-      if (
-        patch &&
-        patch.hasOwnProperty(key) &&
-        patch[key].hasOwnProperty(locale)
-      ) {
-        info.patched = true;
-        info.patchedTitle = info.titulo;
-        const { file, rename } = patch[key][locale];
-        const parsed = getSongFileFromString(file);
-        this.assignInfoFromFile(info, locale, parsed);
-        info.files = Object.assign({}, info.files, {
-          [locale]: file
-        });
-        if (rename) {
-          const renamed = getSongFileFromString(rename);
-          info.nombre = renamed.nombre;
-          info.titulo = renamed.titulo;
-          info.fuente = renamed.fuente;
-        }
+    }
+    // Si se aplico un parche
+    // Asignar los valores del mismo
+    if (
+      patch &&
+      patch.hasOwnProperty(key) &&
+      patch[key].hasOwnProperty(locale)
+    ) {
+      info.patched = true;
+      info.patchedTitle = info.titulo;
+      const { file, rename } = patch[key][locale];
+      const parsed = getSongFileFromString(file);
+      this.assignInfoFromFile(info, locale, parsed);
+      info.files = Object.assign({}, info.files, {
+        [locale]: file
+      });
+      if (rename) {
+        const renamed = getSongFileFromString(rename);
+        info.nombre = renamed.nombre;
+        info.titulo = renamed.titulo;
+        info.fuente = renamed.fuente;
       }
+    }
+    // Si se aplico un rating
+    // Aplicar los valores
+    if (
+      ratings &&
+      ratings.hasOwnProperty(key) &&
+      ratings[key].hasOwnProperty(locale)
+    ) {
+      info.rating = ratings[key][locale];
     }
     return info;
   }
 
-  getSongsMeta(rawLoc: string, patch?: SongIndexPatch): Array<Song> {
+  getSongsMeta(
+    rawLoc: string,
+    patch?: SongIndexPatch,
+    ratings?: SongRatingFile
+  ): Array<Song> {
     var songs = Object.keys(SongsIndex).map(key => {
       // First load with raw locale (country included)
-      var songMeta = this.getSingleSongMeta(key, rawLoc, patch);
+      var songMeta = this.getSingleSongMeta(key, rawLoc, patch, ratings);
       // If specific locale file is not found, return load without country
       if (!songMeta.files.hasOwnProperty(rawLoc)) {
         var locale = rawLoc.split('-')[0];
-        return this.getSingleSongMeta(key, locale, patch);
+        return this.getSingleSongMeta(key, locale, patch, ratings);
       }
       return songMeta;
     });

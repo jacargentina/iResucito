@@ -78,7 +78,8 @@ declare type Song = {
   patchable?: boolean,
   patched?: boolean,
   patchedTitle?: string,
-  error?: any
+  error?: any,
+  rating: number
 };
 
 declare type SongRef = Song | SongFile;

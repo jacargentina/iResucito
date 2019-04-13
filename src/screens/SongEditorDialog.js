@@ -176,9 +176,7 @@ const SongEditorDialog = (props: any) => {
       }}
       onPress={() => {
         // Solo guardar si hay alguna modificacion
-        if (canUndoLines) {
-          saveWithLines(lines);
-        }
+        saveWithLines(lines);
         navigation.goBack(null);
       }}>
       {I18n.t('ui.done')}

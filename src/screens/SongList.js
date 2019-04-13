@@ -36,7 +36,7 @@ const SongList = (props: any) => {
     }
     const navSort = navigation.getParam('sort', props.sort);
     if (navSort) {
-      // todo
+      result = result.sort(navSort);
     }
     setShowSalmosBadge(navFilter == null || !navFilter.hasOwnProperty('etapa'));
     setSearch(result);

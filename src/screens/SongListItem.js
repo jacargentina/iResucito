@@ -17,6 +17,7 @@ import Collapsible from 'react-native-collapsible';
 import badges from '../badges';
 import commonTheme from '../native-base-theme/variables/platform';
 import textTheme from '../native-base-theme/components/Text';
+import StarRating from 'react-native-star-rating';
 import I18n from '../translations';
 import { DataContext } from '../DataContext';
 
@@ -242,6 +243,14 @@ const SongListItem = (props: any) => {
         {!developerMode &&
           !patchSectionDisabled &&
           song.locale !== I18n.locale && <NoLocaleWarning />}
+        <StarRating
+          containerStyle={{ paddingTop: 10, width: '50%' }}
+          disabled={true}
+          maxStars={5}
+          starSize={15}
+          rating={song.rating}
+          fullStarColor={commonTheme.brandPrimary}
+        />
       </Body>
       {openHighlightedRest}
       {developerMode && !patchSectionDisabled && (

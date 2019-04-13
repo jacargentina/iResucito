@@ -12,6 +12,7 @@ import {
   getFriendlyText,
   getFriendlyTextForListType,
   getContacts,
+  ordenClasificacion,
   NativeSongs
 } from './util';
 
@@ -120,54 +121,62 @@ const useSongsMeta = (locale: any) => {
     if (filename && filename.endsWith('.txt'))
       throw new Error('file con .txt! Pasar sin extension.');
 
-    return readLocalePatch().then(patchObj => {
-      if (!patchObj) patchObj = {};
-      if (filename) {
-        const localePatch: SongPatch = {
-          [song.locale]: {
-            file: filename,
-            rename: renameTo ? renameTo.trim() : undefined,
-            lines: lines
+    return Promise.all([readLocalePatch(), readSongsRatingFile()]).then(
+      values => {
+        var [patchObj: SongIndexPatch, ratingsObj: SongRatingFile] = values;
+        if (!patchObj) patchObj = {};
+        if (filename) {
+          const localePatch: SongPatch = {
+            [song.locale]: {
+              file: filename,
+              rename: renameTo ? renameTo.trim() : undefined,
+              lines: lines
+            }
+          };
+          if (!patchObj[song.key]) {
+            patchObj[song.key] = {};
+            Toast.show({
+              text: I18n.t('ui.locale patch added', {
+                song: song.titulo,
+                file: filename
+              }),
+              duration: 5000,
+              type: 'success',
+              buttonText: 'Ok'
+            });
           }
-        };
-        if (!patchObj[song.key]) {
-          patchObj[song.key] = {};
+          patchObj[song.key] = Object.assign(
+            {},
+            patchObj[song.key],
+            localePatch
+          );
+        } else {
+          delete patchObj[song.key][song.locale];
           Toast.show({
-            text: I18n.t('ui.locale patch added', {
-              song: song.titulo,
-              file: filename
-            }),
+            text: I18n.t('ui.locale patch removed', { song: song.titulo }),
             duration: 5000,
             type: 'success',
             buttonText: 'Ok'
           });
         }
-        patchObj[song.key] = Object.assign({}, patchObj[song.key], localePatch);
-      } else {
-        delete patchObj[song.key][song.locale];
-        Toast.show({
-          text: I18n.t('ui.locale patch removed', { song: song.titulo }),
-          duration: 5000,
-          type: 'success',
-          buttonText: 'Ok'
-        });
-      }
-      var updatedSong = NativeSongs.getSingleSongMeta(
-        song.key,
-        song.locale,
-        patchObj
-      );
-      return NativeSongs.loadSingleSong(updatedSong)
-        .then(() => {
-          initializeSingleSong(updatedSong);
-          return saveLocalePatch(patchObj);
-        })
-        .then(() => {
-          return NativeSongs.readLocaleSongs(song.locale).then(items => {
-            setLocaleSongs(items);
+        var updatedSong = NativeSongs.getSingleSongMeta(
+          song.key,
+          song.locale,
+          patchObj,
+          ratingsObj
+        );
+        return NativeSongs.loadSingleSong(updatedSong)
+          .then(() => {
+            initializeSingleSong(updatedSong);
+            return saveLocalePatch(patchObj);
+          })
+          .then(() => {
+            return NativeSongs.readLocaleSongs(song.locale).then(items => {
+              setLocaleSongs(items);
+            });
           });
-        });
-    });
+      }
+    );
   };
 
   const clearIndexPatch = () => {
@@ -221,10 +230,11 @@ const useSongsMeta = (locale: any) => {
   useEffect(() => {
     if (locale) {
       // Cargar parche del indice si existe
-      readLocalePatch()
-        .then((patchObj: SongIndexPatch) => {
+      Promise.all([readLocalePatch(), readSongsRatingFile()])
+        .then(values => {
+          const [patchObj: SongIndexPatch, ratingsObj: SongRatingFile] = values;
           // Construir metadatos de cantos
-          var metaData = NativeSongs.getSongsMeta(locale, patchObj);
+          var metaData = NativeSongs.getSongsMeta(locale, patchObj, ratingsObj);
           return Promise.all(NativeSongs.loadSongs(metaData)).then(() => {
             setSongs(metaData);
           });
@@ -486,7 +496,7 @@ const useSearch = (locale: string, developerMode: boolean) => {
         title_key: 'search_title.ratings',
         note: I18n.t('search_note.ratings'),
         route: 'SongList',
-        params: { filter: null, sort: null },
+        params: { filter: null, sort: ordenClasificacion },
         badge: null
       },
       {
