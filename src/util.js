@@ -140,11 +140,11 @@ export const getLocalesForPicker = () => {
   return locales;
 };
 
-var mono = Platform.OS == 'ios' ? 'Menlo-Bold' : 'monospace';
+var mono = Platform.OS == 'ios' ? 'Franklin Gothic Medium' : 'monospace';
 var isTablet = DeviceInfo.isTablet();
-var fontSizeTitulo = isTablet ? 25 : 20;
-var fontSizeTexto = isTablet ? 17 : 14;
-var fontSizeNotas = isTablet ? 15.2 : 12.2;
+var fontSizeTitulo = isTablet ? 25 : 22;
+var fontSizeTexto = isTablet ? 17 : 15;
+var fontSizeNotas = isTablet ? 15.2 : 12.5;
 
 export const stylesObj: SongStyles = {
   titulo: {
