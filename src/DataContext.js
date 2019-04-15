@@ -23,7 +23,7 @@ const SongsRatingsPath = RNFS.DocumentDirectoryPath + '/SongsRating.json';
 
 const useSettings = () => {
   const [initialized, setInitialized] = useState(false);
-  const [keys, initKeys] = useState();
+  const [keys, initKeys] = useState({});
 
   const setKey = (key, value) => {
     const updatedKeys = Object.assign({}, keys, { [key]: value });
@@ -67,7 +67,7 @@ const useSettings = () => {
   return { keys, initKeys, setKey, getLocaleReal };
 };
 
-const useSongsMeta = (locale: any) => {
+const useSongsMeta = () => {
   const [indexPatchExists, setIndexPatchExists] = useState(false);
   const [songs, setSongs] = useState([]);
   const [localeSongs, setLocaleSongs] = useState([]);
@@ -227,24 +227,28 @@ const useSongsMeta = (locale: any) => {
   };
 
   useEffect(() => {
-    if (locale) {
+    if (I18n.locale) {
       // Cargar parche del indice si existe
       Promise.all([readLocalePatch(), readSongsRatingFile()])
         .then(values => {
           const [patchObj: SongIndexPatch, ratingsObj: SongRatingFile] = values;
           // Construir metadatos de cantos
-          var metaData = NativeSongs.getSongsMeta(locale, patchObj, ratingsObj);
+          var metaData = NativeSongs.getSongsMeta(
+            I18n.locale,
+            patchObj,
+            ratingsObj
+          );
           return Promise.all(NativeSongs.loadSongs(metaData)).then(() => {
             setSongs(metaData);
           });
         })
         .then(() => {
-          return NativeSongs.readLocaleSongs(locale).then(items => {
+          return NativeSongs.readLocaleSongs(I18n.locale).then(items => {
             setLocaleSongs(items);
           });
         });
     }
-  }, [locale, indexPatchExists]);
+  }, [I18n.locale, indexPatchExists]);
 
   return {
     songs,
@@ -483,7 +487,7 @@ const useLists = (songs: any) => {
   };
 };
 
-const useSearch = (locale: string, developerMode: boolean) => {
+const useSearch = (keys: any) => {
   const [initialized, setInitialized] = useState(false);
   const [searchItems, setSearchItems] = useState();
 
@@ -656,7 +660,7 @@ const useSearch = (locale: string, developerMode: boolean) => {
       }
       return item;
     });
-    if (developerMode) {
+    if (keys.developerMode) {
       items.unshift({
         title_key: 'search_title.unassigned',
         note: I18n.t('search_note.unassigned'),
@@ -667,7 +671,7 @@ const useSearch = (locale: string, developerMode: boolean) => {
     }
     setSearchItems(items);
     setInitialized(true);
-  }, [locale, developerMode]);
+  }, [I18n.locale, keys.developerMode]);
 
   return { initialized, searchItems };
 };
@@ -785,12 +789,8 @@ export const DataContext: any = React.createContext();
 const DataContextWrapper = (props: any) => {
   const community = useCommunity();
   const settings = useSettings();
-
-  const locale = settings.keys ? settings.keys.locale : 'default';
-  const developerMode = settings.keys ? settings.keys.developerMode : false;
-
-  const songsMeta = useSongsMeta(locale);
-  const search = useSearch(locale, developerMode);
+  const songsMeta = useSongsMeta();
+  const search = useSearch(settings.keys);
   const lists = useLists(songsMeta.songs);
 
   const sharePDF = (canto: Song, pdfPath: string) => {
