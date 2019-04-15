@@ -34,17 +34,16 @@ const NoLocaleWarning = () => {
           I18n.t('ui.locale warning message')
         );
       }}
-      style={{ flex: 1, flexDirection: 'row-reverse' }}>
+      style={{ flex: 1, flexDirection: 'row' }}>
       <Icon
         name="bug"
         style={{
-          marginTop: 2,
-          marginRight: 20,
-          fontSize: 20,
+          margin: 5,
+          fontSize: 18,
           color: commonTheme.brandPrimary
         }}
       />
-      <Text style={{ ...noteStyles, marginRight: 5, marginTop: 5 }}>
+      <Text style={{ ...noteStyles, margin: 5 }}>
         {I18n.t('ui.locale warning title')}
       </Text>
     </TouchableOpacity>
@@ -67,6 +66,7 @@ const SongListItem = (props: any) => {
   const [firstHighlighted, setFirstHighlighted] = useState();
   const [highlightedRest, setHighlightedRest] = useState();
   const [openHighlightedRest, setOpenHighlightedRest] = useState();
+  const notUsingSpanish = I18n.locale.split('-')[0] !== 'es';
 
   const showDeveloperMenu = () => {
     var options = [I18n.t('ui.rename'), I18n.t('ui.edit')];
@@ -241,8 +241,8 @@ const SongListItem = (props: any) => {
             {I18n.t('ui.original song')}: {song.patchedTitle}
           </Text>
         )}
-        {!developerMode &&
-          !patchSectionDisabled &&
+        {!patchSectionDisabled &&
+          notUsingSpanish &&
           song.locale !== I18n.locale && <NoLocaleWarning />}
         <StarRating
           containerStyle={{ paddingTop: 10, width: '50%' }}
