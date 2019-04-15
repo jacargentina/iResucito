@@ -1,31 +1,29 @@
-PSALM 16 - DU WIRST MICH DEN WEG DES LEBENS WEISEN                                 
+PSALM 16 - DU WIRST MICH DEN WEG DES LEBENS WEISEN
 
-a                     F   d     a                     F     
-V. Du wirst mich den Weg des Lebens weisen                          K. Ich preise den Herrn  denn Er hat mich beraten                          
-a        d                          
-Du wirst mich den Weg des Lebens weisen                           Auch in der Nacht lehrt Er mein Herz.                          
-E                           E                          
-Freude in Fülle vor deinem Angesicht                           Ich habe den Herrn beständig vor Augen.                          
-d    F         E              d                       E    
-ewige Wonne zu deiner Rechten.                           Er steht mir zur Rechten  so kann ich nicht wanken.                          
-a         F            a      a                          
-K. Behüte mich  o Gott: Ich flüchte mich zu Dir.                          V. Du wirst mich den Weg des Lebens weisen...                          
-F           a          a             F             
-Ich sagte zu Gott: mein Herr bist Du                          K. Darüber freut sich mein Herz;                          
-E                           d        a         E          
-Ohne Dich  habe ich kein Gut im Leben.                           jubelt meine Seele; auch mein Leib ruht in Sicherheit                          
-a                           d                         E 
-V. Du wirst mich den Weg des Lebens weisen...                           denn Du wirst mein Leben nicht dem Grab preis geben.                          
-a                  F         d                          E  
-K. Der Herr ist mein Erbteil und mein Kelch                           Noch lässt Du Deinen Heiligen schauen die Verwesung                           
-d               a             d       E                      
-in Deinen Händen ist mein Leben.                           die Verwesung.                          
-a                    F        a                          
-Mein Anteil fiel mir zu auf lieblichem Land                          V. Du wirst mich den Weg des Lebens weisen...                          
-d        E                                             
-Mein Erbe ist wunderbar.                                                     
-
-
+a                     F   d     a                     F
+V. Du wirst mich den Weg des Lebens weisen                          K. Ich preise den Herrn  denn Er hat mich beraten
+a        d
+Du wirst mich den Weg des Lebens weisen                           Auch in der Nacht lehrt Er mein Herz.
+E                           E
+Freude in Fülle vor deinem Angesicht                           Ich habe den Herrn beständig vor Augen.
+d    F         E              d                       E
+ewige Wonne zu deiner Rechten.                           Er steht mir zur Rechten  so kann ich nicht wanken.
+a         F            a      a
+K. Behüte mich  o Gott: Ich flüchte mich zu Dir.                          V. Du wirst mich den Weg des Lebens weisen...
+F           a          a             F
+Ich sagte zu Gott: mein Herr bist Du                          K. Darüber freut sich mein Herz;
+E                           d        a         E
+Ohne Dich  habe ich kein Gut im Leben.                           jubelt meine Seele; auch mein Leib ruht in Sicherheit
+a                           d                         E
+V. Du wirst mich den Weg des Lebens weisen...                           denn Du wirst mein Leben nicht dem Grab preis geben.
+a                  F         d                          E
+K. Der Herr ist mein Erbteil und mein Kelch                           Noch lässt Du Deinen Heiligen schauen die Verwesung
+d               a             d       E
+in Deinen Händen ist mein Leben.                           die Verwesung.
+a                    F        a
+Mein Anteil fiel mir zu auf lieblichem Land                          V. Du wirst mich den Weg des Lebens weisen...
+d        E
+Mein Erbe ist wunderbar.
 
 
 
@@ -33,4 +31,6 @@ Mein Erbe ist wunderbar.
 
 
 
-(*) Man kann es auch in C singen.                                                      
+
+
+(*) Man kann es auch in C singen.
