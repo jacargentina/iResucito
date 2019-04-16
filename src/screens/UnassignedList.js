@@ -31,7 +31,12 @@ const UnassignedList = (props: any) => {
 
   const search = useMemo(() => {
     var result = localeSongs.filter(locSong => {
-      return !songs.find(s => s.files[I18n.locale] === locSong.nombre);
+      const rawLoc = I18n.locale;
+      if (!songs.find(s => s.files[rawLoc] === locSong.nombre)) {
+        const locale = rawLoc.split('-')[0];
+        return !songs.find(s => s.files[locale] === locSong.nombre);
+      }
+      return false;
     });
     var result = result.filter(locSong => {
       return (
