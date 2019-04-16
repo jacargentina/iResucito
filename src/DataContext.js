@@ -69,13 +69,15 @@ const useSettings = () => {
 
 const useSongsMeta = () => {
   const [indexPatchExists, setIndexPatchExists] = useState(false);
+  const [ratingsFileExists, setRatingsFileExists] = useState(false);
   const [songs, setSongs] = useState([]);
   const [localeSongs, setLocaleSongs] = useState([]);
 
   const initializeSingleSong = song => {
     var idx = songs.findIndex(i => i.key == song.key);
-    songs[idx] = Object.assign({}, song);
-    setSongs(songs);
+    var prev = songs.slice(0, idx);
+    var next = songs.slice(idx + 1);
+    setSongs([...prev, song, ...next]);
   };
 
   const readLocalePatch = (): Promise<SongIndexPatch> => {
@@ -88,6 +90,7 @@ const useSongsMeta = () => {
           })
           .catch(() => {
             return RNFS.unlink(SongsIndexPatchPath).then(() => {
+              setIndexPatchExists(false);
               Alert.alert(
                 I18n.t('alert_title.corrupt patch'),
                 I18n.t('alert_message.corrupt patch')
@@ -190,6 +193,7 @@ const useSongsMeta = () => {
 
   const readSongsRatingFile = (): Promise<SongRatingFile> => {
     return RNFS.exists(SongsRatingsPath).then(exists => {
+      setRatingsFileExists(exists);
       if (exists)
         return RNFS.readFile(SongsRatingsPath).then(ratingsJSON => {
           return JSON.parse(ratingsJSON);
@@ -199,19 +203,12 @@ const useSongsMeta = () => {
 
   const saveSongsRatingFile = (ratingsObj: SongRatingFile) => {
     var json = JSON.stringify(ratingsObj, null, ' ');
-    return RNFS.writeFile(SongsRatingsPath, json, 'utf8');
-  };
-
-  const getSongRating = (songKey: string): Promise<number> => {
-    return readSongsRatingFile().then(ratings => {
-      if (ratings && ratings[songKey]) {
-        return ratings[songKey][I18n.locale];
-      }
-      return 0;
+    return RNFS.writeFile(SongsRatingsPath, json, 'utf8').then(() => {
+      setRatingsFileExists(true);
     });
   };
 
-  const setSongRating = (songKey: string, value: number) => {
+  const setSongRating = (songKey: string, locale: string, value: number) => {
     return readSongsRatingFile().then(ratings => {
       if (!ratings) {
         ratings = {};
@@ -220,9 +217,29 @@ const useSongsMeta = () => {
         ratings[songKey] = {};
       }
       ratings[songKey] = Object.assign({}, ratings[songKey], {
-        [I18n.locale]: value
+        [locale]: value
       });
-      return saveSongsRatingFile(ratings);
+      return saveSongsRatingFile(ratings).then(() => {
+        var updatedSong = NativeSongs.getSingleSongMeta(
+          songKey,
+          locale,
+          undefined,
+          ratings
+        );
+        return NativeSongs.loadSingleSong(updatedSong).then(() => {
+          initializeSingleSong(updatedSong);
+        });
+      });
+    });
+  };
+
+  const clearSongsRatings = () => {
+    return RNFS.exists(SongsRatingsPath).then(exists => {
+      if (exists) {
+        return RNFS.unlink(SongsRatingsPath).then(() => {
+          setRatingsFileExists(false);
+        });
+      }
     });
   };
 
@@ -248,7 +265,7 @@ const useSongsMeta = () => {
           });
         });
     }
-  }, [I18n.locale, indexPatchExists]);
+  }, [I18n.locale, indexPatchExists, ratingsFileExists]);
 
   return {
     songs,
@@ -261,7 +278,8 @@ const useSongsMeta = () => {
     getSongLocalePatch,
     setSongLocalePatch,
     clearIndexPatch,
-    getSongRating,
+    ratingsFileExists,
+    clearSongsRatings,
     setSongRating
   };
 };

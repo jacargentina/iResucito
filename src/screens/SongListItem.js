@@ -1,5 +1,5 @@
 // @flow
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useMemo, useEffect } from 'react';
 import { withNavigation } from 'react-navigation';
 import { TouchableOpacity, Alert } from 'react-native';
 import {
@@ -54,14 +54,22 @@ const SongListItem = (props: any) => {
   const {
     navigation,
     highlight,
-    song,
+    songKey,
     showBadge,
     devModeDisabled,
     patchSectionDisabled
   } = props;
   const [isCollapsed, setIsCollapsed] = useState(true);
   const { keys } = data.settings;
-  const { getSongLocalePatch, setSongLocalePatch } = data.songsMeta;
+  const {
+    getSongLocalePatch,
+    setSongLocalePatch,
+    setSongRating,
+    songs
+  } = data.songsMeta;
+  const song = useMemo(() => {
+    return songs.find(i => i.key == songKey);
+  }, [songs]);
   const [developerMode, setDeveloperMode] = useState();
   const [firstHighlighted, setFirstHighlighted] = useState();
   const [highlightedRest, setHighlightedRest] = useState();
@@ -246,10 +254,11 @@ const SongListItem = (props: any) => {
           song.locale !== I18n.locale && <NoLocaleWarning />}
         <StarRating
           containerStyle={{ paddingTop: 10, width: '50%' }}
-          disabled={true}
+          disabled={false}
           maxStars={5}
           starSize={15}
           rating={song.rating}
+          selectedStar={value => setSongRating(song.key, song.locale, value)}
           fullStarColor={commonTheme.brandPrimary}
         />
       </Body>

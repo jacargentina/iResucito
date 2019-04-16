@@ -83,7 +83,7 @@ const SongChangeNameDialog = (props: any) => {
             {I18n.t('ui.original song')}
           </Text>
           <SongListItem
-            song={song}
+            songKey={song.key}
             devModeDisabled={true}
             showBadge={true}
             patchSectionDisabled={true}

@@ -59,7 +59,9 @@
     "screen": "Screen",
     "pdf": "PDF",
     "link file": "Link file",
-    "remove patch": "Remove patch"
+    "remove patch": "Remove patch",
+    "clear ratings": "Clear ratings",
+    "clear ratings confirmation": "Bestätigen Sie, die Bewertungen zu löschen?"
   },
   "list_type": {
     "eucharist": "Eucharist",

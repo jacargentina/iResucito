@@ -1,5 +1,5 @@
 // @flow
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import SongViewFrame from './SongViewFrame';
 import ModalView from './ModalView';
 import I18n from '../translations';
@@ -9,22 +9,22 @@ import commonTheme from '../native-base-theme/variables/platform';
 
 const SongPreviewScreenDialog = (props: any) => {
   const data = useContext(DataContext);
-  const { getSongRating, setSongRating } = data.songsMeta;
+  const { setSongRating } = data.songsMeta;
   const { navigation } = props;
-  const { lines, locale, titulo, fuente, etapa, key } = navigation.getParam(
-    'data'
-  );
-  const [rating, setRating] = useState(0);
-
-  useEffect(() => {
-    getSongRating(key).then(value => {
-      setRating(value);
-    });
-  }, []);
+  const {
+    lines,
+    locale,
+    titulo,
+    fuente,
+    etapa,
+    rating,
+    key
+  } = navigation.getParam('data');
+  const [ratingValue, setRatingValue] = useState(rating);
 
   const changeRating = newValue => {
-    setRating(newValue);
-    setSongRating(key, newValue);
+    setRatingValue(newValue);
+    setSongRating(key, locale, newValue);
   };
 
   return (
@@ -40,7 +40,7 @@ const SongPreviewScreenDialog = (props: any) => {
         containerStyle={{ padding: 10 }}
         disabled={false}
         maxStars={5}
-        rating={rating}
+        rating={ratingValue}
         selectedStar={changeRating}
         fullStarColor={commonTheme.brandPrimary}
       />

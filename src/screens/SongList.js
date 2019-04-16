@@ -1,12 +1,13 @@
 // @flow
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { withNavigation, withNavigationFocus } from 'react-navigation';
-import { FlatList, Keyboard } from 'react-native';
-import { Text, ListItem } from 'native-base';
+import { FlatList, Keyboard, Alert } from 'react-native';
+import { Text, ListItem, Icon } from 'native-base';
 import SearchBarView from './SearchBarView';
 import SongListItem from './SongListItem';
 import I18n from '../translations';
 import { DataContext } from '../DataContext';
+import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
 
 const SongList = (props: any) => {
   const listRef = useRef<?FlatList>();
@@ -85,7 +86,7 @@ const SongList = (props: any) => {
             <SongListItem
               key={item.nombre}
               showBadge={showSalmosBadge}
-              song={item}
+              songKey={item.key}
               onPress={onPress}
               highlight={textFilter}
               devModeDisabled={props.devModeDisabled}
@@ -97,11 +98,54 @@ const SongList = (props: any) => {
   );
 };
 
+const ClearRatings = () => {
+  const data = useContext(DataContext);
+  const { ratingsFileExists, clearSongsRatings } = data.songsMeta;
+
+  if (!ratingsFileExists) {
+    return null;
+  }
+
+  return (
+    <Icon
+      name="star-outline"
+      style={{
+        marginTop: 4,
+        marginRight: 8,
+        width: 32,
+        fontSize: 30,
+        textAlign: 'center',
+        color: StackNavigatorOptions.headerTitleStyle.color
+      }}
+      onPress={() => {
+        Alert.alert(
+          `${I18n.t('ui.clear ratings')}`,
+          I18n.t('ui.clear ratings confirmation'),
+          [
+            {
+              text: I18n.t('ui.yes'),
+              onPress: () => {
+                clearSongsRatings();
+              },
+              style: 'destructive'
+            },
+            {
+              text: I18n.t('ui.cancel'),
+              style: 'cancel'
+            }
+          ]
+        );
+      }}
+    />
+  );
+};
+
 SongList.navigationOptions = (props: any) => {
   return {
     title: I18n.t(props.navigation.getParam('title_key')),
     headerBackTitle: I18n.t('ui.back'),
-    headerTruncatedBackTitle: I18n.t('ui.back')
+    headerTruncatedBackTitle: I18n.t('ui.back'),
+    headerRight: <ClearRatings />
   };
 };
 

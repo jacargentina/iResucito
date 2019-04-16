@@ -84,39 +84,40 @@ export class SongsProcessor {
 
   getSingleSongMeta(
     key: string,
-    locale: string,
+    rawLoc: string,
     patch?: SongIndexPatch,
     ratings?: SongRatingFile
   ): Song {
     if (!SongsIndex.hasOwnProperty(key))
       throw new Error(`There is no key = ${key} on the Index!`);
+    const files = SongsIndex[key].files;
+    var loc = null;
+    // If specific locale file is found...
+    if (files.hasOwnProperty(rawLoc)) {
+      loc = rawLoc;
+    } else {
+      // Else remove country code...
+      const locale = rawLoc.split('-')[0];
+      if (files.hasOwnProperty(locale)) {
+        loc = locale;
+      } else {
+        loc = Object.getOwnPropertyNames(files)[0];
+      }
+    }
     var info: Song = Object.assign({}, SongsIndex[key]);
     info.key = key;
-    if (info.files.hasOwnProperty(locale)) {
-      // El canto ya esta en el locale
-      const parsed = getSongFileFromString(info.files[locale]);
-      this.assignInfoFromFile(info, locale, parsed);
-    } else {
-      // El canto no existe en el idioma
-      // Copiar informacion del primer idioma disponible
-      const defaultLocale = Object.getOwnPropertyNames(info.files)[0];
-      const parsed = getSongFileFromString(info.files[defaultLocale]);
-      this.assignInfoFromFile(info, defaultLocale, parsed);
-    }
+    const parsed = getSongFileFromString(info.files[loc]);
+    this.assignInfoFromFile(info, loc, parsed);
     // Si se aplico un parche
     // Asignar los valores del mismo
-    if (
-      patch &&
-      patch.hasOwnProperty(key) &&
-      patch[key].hasOwnProperty(locale)
-    ) {
+    if (patch && patch.hasOwnProperty(key) && patch[key].hasOwnProperty(loc)) {
       info.patched = true;
       info.patchedTitle = info.titulo;
-      const { file, rename } = patch[key][locale];
+      const { file, rename } = patch[key][loc];
       const parsed = getSongFileFromString(file);
-      this.assignInfoFromFile(info, locale, parsed);
+      this.assignInfoFromFile(info, loc, parsed);
       info.files = Object.assign({}, info.files, {
-        [locale]: file
+        [loc]: file
       });
       if (rename) {
         const renamed = getSongFileFromString(rename);
@@ -130,9 +131,9 @@ export class SongsProcessor {
     if (
       ratings &&
       ratings.hasOwnProperty(key) &&
-      ratings[key].hasOwnProperty(locale)
+      ratings[key].hasOwnProperty(loc)
     ) {
-      info.rating = ratings[key][locale];
+      info.rating = ratings[key][loc];
     }
     return info;
   }
@@ -143,14 +144,7 @@ export class SongsProcessor {
     ratings?: SongRatingFile
   ): Array<Song> {
     var songs = Object.keys(SongsIndex).map(key => {
-      // First load with raw locale (country included)
-      var songMeta = this.getSingleSongMeta(key, rawLoc, patch, ratings);
-      // If specific locale file is not found, return load without country
-      if (!songMeta.files.hasOwnProperty(rawLoc)) {
-        var locale = rawLoc.split('-')[0];
-        return this.getSingleSongMeta(key, locale, patch, ratings);
-      }
-      return songMeta;
+      return this.getSingleSongMeta(key, rawLoc, patch, ratings);
     });
     songs.sort(ordenAlfabetico);
     return songs;

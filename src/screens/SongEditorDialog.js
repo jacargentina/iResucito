@@ -126,6 +126,7 @@ const SongEditorDialog = (props: any) => {
             navigation.navigate('SongPreviewScreen', {
               data: {
                 key: song.key,
+                rating: song.rating,
                 lines: lines.split('\n'),
                 locale: song.locale,
                 titulo: song.titulo,
@@ -190,7 +191,7 @@ const SongEditorDialog = (props: any) => {
       left={cancelButton}>
       <View style={{ flex: 1, backgroundColor: '#222' }}>
         <SongListItem
-          song={song}
+          songKey={song.key}
           devModeDisabled={true}
           showBadge={true}
           patchSectionDisabled={true}
