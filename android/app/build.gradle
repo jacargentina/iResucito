@@ -1,7 +1,7 @@
 def VERSION_MAJOR=3
 def VERSION_MINOR=0
 def VERSION_PATCH=0
-def VERSION_BUILD=33
+def VERSION_BUILD=34
 
 apply plugin: "com.android.application"
 
@@ -199,7 +199,7 @@ task copyDownloadableDepsToLibs(type: Copy) {
 }
 
 task deleteAssets(type: Delete) {
-    delete 'app/src/main/assets/songs'
+    delete rootProject.file('app/src/main/assets/songs').listFiles()
 }
 
 task copyToAssets(type: Copy) {
