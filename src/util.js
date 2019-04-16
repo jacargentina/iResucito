@@ -220,20 +220,6 @@ export const contactFilterByText = (c: any, text: string) => {
   );
 };
 
-export const getSongFileFromString = (str: string): SongFile => {
-  var titulo = str.includes(' - ')
-    ? str.substring(0, str.indexOf(' - ')).trim()
-    : str;
-  var fuente =
-    titulo !== str ? str.substring(str.indexOf(' - ') + 3).trim() : '';
-  var nombre = str.replace('.txt', '');
-  return {
-    nombre: nombre,
-    titulo: titulo,
-    fuente: fuente
-  };
-};
-
 var titleFontSize = 19;
 var titleSpacing = 11;
 var fuenteFontSize = 10;

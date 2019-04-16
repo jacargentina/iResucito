@@ -5,7 +5,7 @@ import { View } from 'react-native';
 import ModalView from './ModalView';
 import SongListItem from './SongListItem';
 import I18n from '../translations';
-import { getSongFileFromString } from '../util';
+import { getSongFileFromString } from '../SongsProcessor';
 import commonTheme from '../native-base-theme/variables/platform';
 
 const SongChangeNameDialog = (props: any) => {

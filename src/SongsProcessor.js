@@ -1,7 +1,20 @@
 //@flow
 import SongsIndex from '../songs/index.json';
 import I18n from './translations';
-import { getSongFileFromString } from './util';
+
+export const getSongFileFromString = (str: string): SongFile => {
+  var titulo = str.includes(' - ')
+    ? str.substring(0, str.indexOf(' - ')).trim()
+    : str;
+  var fuente =
+    titulo !== str ? str.substring(str.indexOf(' - ') + 3).trim() : '';
+  var nombre = str.replace('.txt', '');
+  return {
+    nombre: nombre,
+    titulo: titulo,
+    fuente: fuente
+  };
+};
 
 export const cleanChordsRegex = /\[|\]|#|\*|5|6|7|9|b|-|\+|\/|\u2013|\u2217|aum|dim/g;
 

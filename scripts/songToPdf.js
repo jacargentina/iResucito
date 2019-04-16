@@ -173,38 +173,46 @@ if (!process.argv.slice(2).length) {
   if (locale !== '') {
     if (key) {
       var song = folderSongs.getSingleSongMeta(key, locale);
-      folderSongs
-        .loadSingleSong(song)
-        .then(() => {
-          console.log('Song: ', song.titulo);
-          var songlines = folderSongs.getSongLinesForRender(
-            song.lines,
-            song.locale,
-            0
-          );
-          if (program.debug) {
-            console.log(songlines);
-          }
-          generatePDF(song, songlines);
-        })
-        .catch(err => {
-          console.log(err);
-        });
+      if (song.locale === I18n.locale) {
+        folderSongs
+          .loadSingleSong(song)
+          .then(() => {
+            console.log('Song: ', song.titulo);
+            var songlines = folderSongs.getSongLinesForRender(
+              song.lines,
+              song.locale,
+              0
+            );
+            if (program.debug) {
+              console.log(songlines);
+            }
+            generatePDF(song, songlines);
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      } else {
+        console.log('Song not found for given locale');
+      }
     } else {
       var songs = folderSongs.getSongsMeta(locale);
       console.log(`No key Song. Generating ${songs.length} songs`);
       Promise.all(folderSongs.loadSongs(songs)).then(() => {
         songs.forEach(song => {
-          console.log('Song: ', song.titulo);
-          var songlines = folderSongs.getSongLinesForRender(
-            song.lines,
-            song.locale,
-            0
-          );
-          if (program.debug) {
-            console.log(songlines);
+          if (song.locale === I18n.locale) {
+            console.log('Song: ', song.titulo);
+            var songlines = folderSongs.getSongLinesForRender(
+              song.lines,
+              song.locale,
+              0
+            );
+            if (program.debug) {
+              console.log(songlines);
+            }
+            generatePDF(song, songlines);
+          } else {
+            console.log('Song not found for given locale');
           }
-          generatePDF(song, songlines);
         });
       });
     }
