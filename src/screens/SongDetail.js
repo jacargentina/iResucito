@@ -149,7 +149,7 @@ const ViewPdf = withNavigation(props => {
         generatePDF([item]).then(path => {
           navigation.navigate('PDFViewer', {
             uri: path,
-            song: song
+            title: song.titulo
           });
         });
       }}

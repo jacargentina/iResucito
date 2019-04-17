@@ -810,11 +810,12 @@ const DataContextWrapper = (props: any) => {
   const songsMeta = useSongsMeta();
   const search = useSearch(settings.keys);
   const lists = useLists(songsMeta.songs);
+  const loading = useState({ isLoading: false, text: '' });
 
-  const sharePDF = (canto: Song, pdfPath: string) => {
+  const sharePDF = (shareTitleSuffix: string, pdfPath: string) => {
     Share.share(
       {
-        title: `iResucitó - ${canto.titulo}`,
+        title: `iResucitó - ${shareTitleSuffix}`,
         url: pdfPath
       },
       { dialogTitle: I18n.t('ui.share') }
@@ -840,7 +841,8 @@ const DataContextWrapper = (props: any) => {
         lists,
         community,
         sharePDF,
-        shareIndexPatch
+        shareIndexPatch,
+        loading
       }}>
       {props.children}
     </DataContext.Provider>

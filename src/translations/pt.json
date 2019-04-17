@@ -35,6 +35,11 @@
       "rename": "Renomear lista",
       "type": "Tipo de lista"
     },
+    "export": {
+      "type": "Tipo de exportação",
+      "processing songs": "Processando {{total}} cantos...",
+      "pdf viewer title": "Livro completo"
+    },
     "community empty": "Sem nomes importados. Para escolher da lista, você deve importar dos seus contatos na opção Comunidade.",
     "search placeholder": "Pesquisar",
     "locale warning title": "Tradução incompleta",
@@ -62,6 +67,10 @@
     "remove patch": "Quitar remendo",
     "clear ratings": "Qualificações limpas",
     "clear ratings confirmation": "Você quer limpar as classificações?"
+  },
+  "export_type": {
+    "selected songs": "Cantos selecionados",
+    "complete book": "Livro completo"
   },
   "list_type": {
     "eucharist": "Eucaristia",

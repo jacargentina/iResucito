@@ -35,6 +35,11 @@
       "rename": "Rename List",
       "type": "List type"
     },
+    "export": {
+      "type": "Export type",
+      "processing songs": "Processing {{total}} songs...",
+      "pdf viewer title": "Complete book"
+    },
     "community empty": "Without imported names. To choose from the list, you must import from your contacts in the Community option.",
     "search placeholder": "Search",
     "locale warning title": "Incomplete translation",
@@ -62,6 +67,10 @@
     "remove patch": "Remove patch",
     "clear ratings": "Clear ratings",
     "clear ratings confirmation": "Bestätigen Sie, die Bewertungen zu löschen?"
+  },
+  "export_type": {
+    "selected songs": "Selected songs",
+    "complete book": "Complete book"
   },
   "list_type": {
     "eucharist": "Eucharist",

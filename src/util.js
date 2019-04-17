@@ -365,3 +365,14 @@ export const generatePDF = async (songsToPdf: Array<SongToPdf>) => {
   const path = await pdfDoc.write();
   return path;
 };
+
+export const generateMultiPagePDF = (songs: Array<Song>) => {
+  var items = songs.map<SongToPdf>(s => {
+    return {
+      canto: s,
+      lines: NativeSongs.getSongLinesForRender(s.lines, s.locale)
+    };
+  });
+
+  return generatePDF(items);
+};

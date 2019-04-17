@@ -1,13 +1,15 @@
 // @flow
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { withNavigation, withNavigationFocus } from 'react-navigation';
-import { FlatList, Keyboard, Alert } from 'react-native';
-import { Text, ListItem, Icon } from 'native-base';
+import { FlatList, Keyboard, Alert, View } from 'react-native';
+import { Text, ListItem, Icon, ActionSheet, Spinner } from 'native-base';
 import SearchBarView from './SearchBarView';
 import SongListItem from './SongListItem';
 import I18n from '../translations';
 import { DataContext } from '../DataContext';
+import { generateMultiPagePDF } from '../util';
 import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
+import commonTheme from '../native-base-theme/variables/platform';
 
 const SongList = (props: any) => {
   const listRef = useRef<?FlatList>();
@@ -15,6 +17,7 @@ const SongList = (props: any) => {
   const { navigation, isFocused } = props;
   const [totalText, setTotalText] = useState(I18n.t('ui.loading'));
   const { songs } = data.songsMeta;
+  const [loading] = data.loading;
   const [showSalmosBadge, setShowSalmosBadge] = useState();
   const [textFilter, setTextFilter] = useState('');
   const [search, setSearch] = useState();
@@ -69,6 +72,17 @@ const SongList = (props: any) => {
       navigation.navigate('SongDetail', { song: song });
     }
   };
+
+  if (loading.isLoading) {
+    return (
+      <View style={{ flex: 1 }}>
+        <Spinner color={commonTheme.brandPrimary} style={{ flex: 3 }} />
+        <Text note style={{ flex: 1, textAlign: 'center' }}>
+          {loading.text}
+        </Text>
+      </View>
+    );
+  }
 
   return (
     <SearchBarView value={textFilter} setValue={setTextFilter}>
@@ -140,12 +154,82 @@ const ClearRatings = () => {
   );
 };
 
+const ExportToPdf = withNavigation(props => {
+  const data = useContext(DataContext);
+  const { songs } = data.songsMeta;
+  const [, setLoading] = data.loading;
+  const { navigation } = props;
+
+  const chooseExport = () => {
+    ActionSheet.show(
+      {
+        options: [
+          I18n.t('export_type.selected songs'),
+          I18n.t('export_type.complete book'),
+          I18n.t('ui.cancel')
+        ],
+        cancelButtonIndex: 2,
+        title: I18n.t('ui.export.type')
+      },
+      index => {
+        index = Number(index);
+        switch (index) {
+          case 0:
+            Alert.alert('TODO', 'TBD');
+            break;
+          case 1:
+            const localeNoCountry = I18n.locale.split('-')[0];
+            const songToExport = songs.filter(
+              s =>
+                s.files.hasOwnProperty(I18n.locale) ||
+                s.files.hasOwnProperty(localeNoCountry)
+            );
+            setLoading({
+              isLoading: true,
+              text: I18n.t('ui.export.processing songs', {
+                total: songToExport.length
+              })
+            });
+            generateMultiPagePDF(songToExport).then(path => {
+              navigation.navigate('PDFViewer', {
+                uri: path,
+                title: I18n.t('ui.export.pdf viewer title')
+              });
+              setLoading({ isLoading: false, text: '' });
+            });
+            break;
+        }
+      }
+    );
+  };
+
+  return (
+    <Icon
+      name="paper"
+      style={{
+        marginTop: 4,
+        marginRight: 8,
+        width: 32,
+        fontSize: 30,
+        textAlign: 'center',
+        color: StackNavigatorOptions.headerTitleStyle.color
+      }}
+      onPress={chooseExport}
+    />
+  );
+});
+
 SongList.navigationOptions = (props: any) => {
   return {
     title: I18n.t(props.navigation.getParam('title_key')),
     headerBackTitle: I18n.t('ui.back'),
     headerTruncatedBackTitle: I18n.t('ui.back'),
-    headerRight: <ClearRatings />
+    headerRight: (
+      <View style={{ flexDirection: 'row' }}>
+        <ExportToPdf />
+        <ClearRatings />
+      </View>
+    )
   };
 };
 

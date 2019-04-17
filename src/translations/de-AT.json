@@ -35,6 +35,11 @@
       "rename": "Tabelle umbenennen",
       "type": "Art der Tabelle"
     },
+    "export": {
+      "type": "Art der Übertragung",
+      "processing songs": "{{total}} Liedern werden bearbeiten...",
+      "pdf viewer title": "Komplettes Buch"
+    },
     "community empty": "Ohne importierte Namen. Um aus der Tabelle auszuwählen, sollst du in der Gemeinschaft-Option von deinen Kontakten importieren.",
     "search placeholder": "Suchen",
     "locale warning title": "Unvollständige Übersetzung",
@@ -62,6 +67,10 @@
     "remove patch": "Patch entfernen",
     "clear ratings": "Klare Bewertungen",
     "clear ratings confirmation": ""
+  },
+  "export_type": {
+    "selected songs": "Ausgewählte Lieder",
+    "complete book": "Komplettes Buch"
   },
   "list_type": {
     "eucharist": "Eucharistie",
