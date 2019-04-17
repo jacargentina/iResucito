@@ -142,7 +142,11 @@ const ViewPdf = withNavigation(props => {
           locale,
           diff
         );
-        generatePDF(song, itemsToRender).then(path => {
+        const item: SongToPdf = {
+          canto: song,
+          lines: itemsToRender
+        };
+        generatePDF([item]).then(path => {
           navigation.navigate('PDFViewer', {
             uri: path,
             song: song

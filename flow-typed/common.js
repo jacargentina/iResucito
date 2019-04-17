@@ -82,6 +82,11 @@ declare type Song = {
   rating: number
 };
 
+declare type SongToPdf = {
+  canto: Song,
+  lines: Array<SongLine>
+};
+
 declare type SongRef = Song | SongFile;
 
 declare type SearchParams = {

@@ -140,7 +140,11 @@ const SongEditorDialog = (props: any) => {
               lines.split('\n'),
               song.locale
             );
-            generatePDF(song, itemsToRender).then(path => {
+            const item: SongToPdf = {
+              canto: song,
+              lines: itemsToRender
+            };
+            generatePDF([item]).then(path => {
               navigation.navigate('SongPreviewPdf', {
                 uri: path,
                 song: song
