@@ -92,7 +92,6 @@ export class SongsProcessor {
     info.titulo = parsed.titulo;
     info.fuente = parsed.fuente;
     info.locale = locale;
-    info.path = `${this.basePath}/${locale}/${parsed.nombre}.txt`;
   }
 
   getSingleSongMeta(
@@ -119,6 +118,7 @@ export class SongsProcessor {
     }
     var info: Song = Object.assign({}, SongsIndex[key]);
     info.key = key;
+    info.path = `${this.basePath}/${loc}/${info.files[loc]}.txt`;
     const parsed = getSongFileFromString(info.files[loc]);
     this.assignInfoFromFile(info, loc, parsed);
     // Si se aplico un parche
@@ -127,11 +127,14 @@ export class SongsProcessor {
       info.patched = true;
       info.patchedTitle = info.titulo;
       const { file, rename } = patch[key][loc];
-      const parsed = getSongFileFromString(file);
-      this.assignInfoFromFile(info, loc, parsed);
-      info.files = Object.assign({}, info.files, {
-        [loc]: file
-      });
+      if (file) {
+        info.path = `${this.basePath}/${loc}/${file}.txt`;
+        info.files = Object.assign({}, info.files, {
+          [loc]: file
+        });
+        const parsed = getSongFileFromString(file);
+        this.assignInfoFromFile(info, loc, parsed);
+      }
       if (rename) {
         const renamed = getSongFileFromString(rename);
         info.nombre = renamed.nombre;
@@ -201,6 +204,7 @@ export class SongsProcessor {
         song.fullText = lineas.join(' ');
       })
       .catch(err => {
+        debugger;
         song.error = err.message;
         song.lines = [];
         song.fullText = '';

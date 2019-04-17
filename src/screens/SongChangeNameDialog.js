@@ -87,6 +87,7 @@ const SongChangeNameDialog = (props: any) => {
             devModeDisabled={true}
             showBadge={true}
             patchSectionDisabled={true}
+            ratingDisabled={true}
           />
         </View>
         <View style={{ marginTop: 10, marginBottom: 10 }}>
@@ -94,10 +95,11 @@ const SongChangeNameDialog = (props: any) => {
             {I18n.t('ui.patched song')}
           </Text>
           <SongListItem
-            song={changeSong}
+            songMeta={changeSong}
             devModeDisabled={true}
             showBadge={true}
             patchSectionDisabled={true}
+            ratingDisabled={true}
           />
         </View>
       </View>

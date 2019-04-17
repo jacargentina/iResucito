@@ -117,6 +117,7 @@ const useSongsMeta = () => {
 
   const setSongLocalePatch = (
     song: Song,
+    locale: string,
     filename: string,
     renameTo: string,
     lines: string
@@ -130,7 +131,7 @@ const useSongsMeta = () => {
         if (!patchObj) patchObj = {};
         if (filename) {
           const localePatch: SongPatch = {
-            [song.locale]: {
+            [locale]: {
               file: filename,
               rename: renameTo ? renameTo.trim() : undefined,
               lines: lines
@@ -153,7 +154,7 @@ const useSongsMeta = () => {
             buttonText: 'Ok'
           });
         } else {
-          delete patchObj[song.key][song.locale];
+          delete patchObj[song.key][locale];
           Toast.show({
             text: I18n.t('ui.locale patch removed', { song: song.titulo }),
             duration: 5000,
@@ -163,7 +164,7 @@ const useSongsMeta = () => {
         }
         var updatedSong = NativeSongs.getSingleSongMeta(
           song.key,
-          song.locale,
+          locale,
           patchObj,
           ratingsObj
         );
@@ -173,7 +174,7 @@ const useSongsMeta = () => {
             return saveLocalePatch(patchObj);
           })
           .then(() => {
-            return NativeSongs.readLocaleSongs(song.locale).then(items => {
+            return NativeSongs.readLocaleSongs(locale).then(items => {
               setLocaleSongs(items);
             });
           });

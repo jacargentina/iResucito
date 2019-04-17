@@ -53,7 +53,7 @@ const SongChooseLocaleDialog = (props: any) => {
     // Definir funcion para llamar
     // en ambos casos del dialogo
     const applyChanges = renameTo => {
-      setSongLocalePatch(song, songFile.nombre, renameTo);
+      setSongLocalePatch(song, I18n.locale, songFile.nombre, renameTo);
       navigation.goBack(null);
     };
 

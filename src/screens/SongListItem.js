@@ -55,10 +55,13 @@ const SongListItem = (props: any) => {
     navigation,
     highlight,
     songKey,
+    songMeta,
     showBadge,
     devModeDisabled,
+    ratingDisabled,
     patchSectionDisabled
   } = props;
+
   const [isCollapsed, setIsCollapsed] = useState(true);
   const { keys } = data.settings;
   const {
@@ -67,9 +70,14 @@ const SongListItem = (props: any) => {
     setSongRating,
     songs
   } = data.songsMeta;
+
   const song = useMemo(() => {
-    return songs.find(i => i.key == songKey);
-  }, [songs]);
+    if (songKey) {
+      return songs.find(i => i.key == songKey);
+    }
+    return songMeta;
+  }, [songs, songKey, songMeta]);
+
   const [developerMode, setDeveloperMode] = useState();
   const [firstHighlighted, setFirstHighlighted] = useState();
   const [highlightedRest, setHighlightedRest] = useState();
@@ -129,7 +137,7 @@ const SongListItem = (props: any) => {
       }
       // Definir cambio a realizar sobre el patch
       const applyChanges = renameTo => {
-        setSongLocalePatch(song, file, renameTo);
+        setSongLocalePatch(song, song.locale, file, renameTo);
       };
       navigation.navigate('SongChangeName', {
         song: song,
@@ -154,7 +162,7 @@ const SongListItem = (props: any) => {
           text: I18n.t('ui.delete'),
           style: 'destructive',
           onPress: () => {
-            setSongLocalePatch(song, undefined);
+            setSongLocalePatch(song, song.locale, undefined);
           }
         },
         {
@@ -213,6 +221,16 @@ const SongListItem = (props: any) => {
     }
   }, [highlight, developerMode]);
 
+  if (!song) {
+    return (
+      <ListItem avatar={showBadge} noIndent>
+        <Body>
+          <Text>songKey/songMeta not provided</Text>
+        </Body>
+      </ListItem>
+    );
+  }
+
   return (
     <ListItem avatar={showBadge} noIndent>
       {showBadge && <Left>{badges[song.etapa]}</Left>}
@@ -254,7 +272,7 @@ const SongListItem = (props: any) => {
           song.locale !== I18n.locale && <NoLocaleWarning />}
         <StarRating
           containerStyle={{ paddingTop: 10, width: '50%' }}
-          disabled={false}
+          disabled={ratingDisabled}
           maxStars={5}
           starSize={15}
           rating={song.rating}

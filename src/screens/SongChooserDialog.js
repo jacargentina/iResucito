@@ -13,7 +13,6 @@ const SongChooserDialog = (props: any) => {
   const { navigation } = props;
   const { search } = data;
   const { setList } = data.lists;
-  const { setSongLocalePatch } = data.songsMeta;
   const [segments, setSegments] = useState([]);
   const [activeSegment, setActiveSegment] = useState();
   const [scrollToActiveX, setScrollToActiveX] = useState();
@@ -75,14 +74,10 @@ const SongChooserDialog = (props: any) => {
     }
   }, [scrollToActive, scrollToActiveRef, scrollToActiveX]);
 
-  const songAssign = salmo => {
+  const songAssign = song => {
     if (target.listName && target.listKey !== undefined) {
-      setList(target.listName, target.listKey, salmo.nombre);
+      setList(target.listName, target.listKey, song.nombre);
       navigation.goBack(null);
-    } else if (target.locale && target.file) {
-      setSongLocalePatch(salmo, target.file).then(() => {
-        navigation.goBack(null);
-      });
     }
   };
 
@@ -102,7 +97,7 @@ const SongChooserDialog = (props: any) => {
             : null
         }
         devModeDisabled={true}
-        onPress={salmo => songAssign(salmo)}
+        onPress={song => songAssign(song)}
       />
     </ModalView>
   );
