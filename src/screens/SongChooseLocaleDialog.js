@@ -11,7 +11,7 @@ import commonTheme from '../native-base-theme/variables/platform';
 const SongChooseLocaleDialog = (props: any) => {
   const data = useContext(DataContext);
   const { navigation } = props;
-  const { songs, localeSongs, setSongLocalePatch } = data.songsMeta;
+  const { songs, localeSongs, setSongPatch } = data.songsMeta;
   const [textFilter, setTextFilter] = useState('');
 
   const target = navigation.getParam('target');
@@ -53,7 +53,10 @@ const SongChooseLocaleDialog = (props: any) => {
     // Definir funcion para llamar
     // en ambos casos del dialogo
     const applyChanges = renameTo => {
-      setSongLocalePatch(song, I18n.locale, songFile.nombre, renameTo);
+      setSongPatch(song, I18n.locale, {
+        file: songFile.nombre,
+        rename: renameTo
+      });
       navigation.goBack(null);
     };
 

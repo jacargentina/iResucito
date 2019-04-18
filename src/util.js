@@ -8,6 +8,7 @@ import DeviceInfo from 'react-native-device-info';
 import I18n from './translations';
 import { SongsProcessor } from './SongsProcessor';
 import PDFLib, { PDFDocument, PDFPage } from 'react-native-pdf-lib';
+import normalize from 'normalize-strings';
 
 function checkContactsPermission(): Promise<boolean> {
   if (Platform.OS == 'android') {
@@ -241,114 +242,83 @@ async function asyncForEach(array: Array<any>, callback: Function) {
 }
 
 export const generatePDF = async (songsToPdf: Array<SongToPdf>) => {
-  const docsDir =
-    Platform.OS == 'ios'
-      ? RNFS.TemporaryDirectoryPath
-      : RNFS.CachesDirectoryPath + '/';
-  const pdfPath =
-    songsToPdf.length === 1
-      ? `${docsDir}${songsToPdf[0].canto.titulo}.pdf`
-      : `${docsDir}iResucito.pdf`;
-  const pdfDoc = PDFDocument.create(pdfPath);
-  await asyncForEach(songsToPdf, async data => {
-    // Tomar canto y las lineas para renderizar
-    const { canto, lines } = data;
-    // Para centrar titulo
-    const sizeTitle = await PDFLib.measureText(
-      canto.titulo.toUpperCase(),
-      fontName,
-      titleFontSize
-    );
-    // Para centrar fuente
-    const sizeFuente = await PDFLib.measureText(
-      canto.fuente,
-      fontName,
-      fuenteFontSize
-    );
-    var y = 560;
-    var x = primerColumnaX;
-    const page = PDFPage.create().setMediaBox(
-      widthHeightPixels,
-      widthHeightPixels
-    );
-    var titleX = parseInt((widthHeightPixels - sizeTitle.width) / 2);
-    page.drawText(canto.titulo.toUpperCase(), {
-      x: titleX,
-      y: y,
-      color: NativeStyles.titulo.color,
-      fontSize: titleFontSize,
-      fontName: fontName
-    });
-    y -= titleSpacing;
-    var fuenteX = parseInt((widthHeightPixels - sizeFuente.width) / 2);
-    page.drawText(canto.fuente, {
-      x: fuenteX,
-      y: y,
-      color: NativeStyles.lineaNormal.color,
-      fontSize: fuenteFontSize,
-      fontName: fontName
-    });
-    y -= fuenteSpacing;
-    var yStart = y - parrafoSpacing;
-    lines.forEach((it: SongLine) => {
-      if (it.inicioParrafo) {
-        y -= parrafoSpacing;
-      }
-      if (it.tituloEspecial) {
-        y -= parrafoSpacing * 2;
-      }
-      var limiteHoja = 21;
-      var alturaExtra = 0;
-      if (it.notas) {
-        alturaExtra = cantoSpacing;
-      }
-      if (y - alturaExtra <= limiteHoja) {
-        x = segundaColumnaX;
-        y = yStart;
-      }
-      if (it.notas === true) {
-        page.drawText(it.texto, {
-          x: x + indicadorSpacing,
-          y: y,
-          color: NativeStyles.lineaNotas.color,
-          fontSize: notesFontSize,
-          fontName: fontName
-        });
-        y -= cantoSpacing;
-      } else if (it.canto === true) {
-        page.drawText(it.texto, {
-          x: x + indicadorSpacing,
-          y: y,
-          color: NativeStyles.lineaNormal.color,
-          fontSize: cantoFontSize,
-          fontName: fontName
-        });
-        y -= cantoSpacing;
-      } else if (it.cantoConIndicador === true) {
-        page.drawText(it.prefijo, {
-          x: x,
-          y: y,
-          color: NativeStyles.prefijo.color,
-          fontSize: cantoFontSize,
-          fontName: fontName
-        });
-        if (it.tituloEspecial === true) {
+  try {
+    const docsDir =
+      Platform.OS == 'ios'
+        ? RNFS.TemporaryDirectoryPath
+        : RNFS.CachesDirectoryPath + '/';
+    const pdfPath =
+      songsToPdf.length === 1
+        ? `${docsDir}${songsToPdf[0].canto.titulo}.pdf`
+        : `${docsDir}iResucito.pdf`;
+    const pdfPathNorm = normalize(pdfPath);
+    const pdfDoc = PDFDocument.create(pdfPathNorm);
+    await asyncForEach(songsToPdf, async data => {
+      // Tomar canto y las lineas para renderizar
+      const { canto, lines } = data;
+      // Para centrar titulo
+      const sizeTitle = await PDFLib.measureText(
+        canto.titulo.toUpperCase(),
+        fontName,
+        titleFontSize
+      );
+      // Para centrar fuente
+      const sizeFuente = await PDFLib.measureText(
+        canto.fuente,
+        fontName,
+        fuenteFontSize
+      );
+      var y = 560;
+      var x = primerColumnaX;
+      const page = PDFPage.create().setMediaBox(
+        widthHeightPixels,
+        widthHeightPixels
+      );
+      var titleX = parseInt((widthHeightPixels - sizeTitle.width) / 2);
+      page.drawText(canto.titulo.toUpperCase(), {
+        x: titleX,
+        y: y,
+        color: NativeStyles.titulo.color,
+        fontSize: titleFontSize,
+        fontName: fontName
+      });
+      y -= titleSpacing;
+      var fuenteX = parseInt((widthHeightPixels - sizeFuente.width) / 2);
+      page.drawText(canto.fuente, {
+        x: fuenteX,
+        y: y,
+        color: NativeStyles.lineaNormal.color,
+        fontSize: fuenteFontSize,
+        fontName: fontName
+      });
+      y -= fuenteSpacing;
+      var yStart = y - parrafoSpacing;
+      lines.forEach((it: SongLine) => {
+        if (it.inicioParrafo) {
+          y -= parrafoSpacing;
+        }
+        if (it.tituloEspecial) {
+          y -= parrafoSpacing * 2;
+        }
+        var limiteHoja = 21;
+        var alturaExtra = 0;
+        if (it.notas) {
+          alturaExtra = cantoSpacing;
+        }
+        if (y - alturaExtra <= limiteHoja) {
+          x = segundaColumnaX;
+          y = yStart;
+        }
+        if (it.notas === true) {
           page.drawText(it.texto, {
             x: x + indicadorSpacing,
             y: y,
-            color: NativeStyles.lineaTituloNotaEspecial.color,
-            fontSize: cantoFontSize,
+            color: NativeStyles.lineaNotas.color,
+            fontSize: notesFontSize,
             fontName: fontName
           });
-        } else if (it.textoEspecial === true) {
-          page.drawText(it.texto, {
-            x: x + indicadorSpacing,
-            y: y,
-            color: NativeStyles.lineaNotaEspecial.color,
-            fontSize: cantoFontSize - 3,
-            fontName: fontName
-          });
-        } else {
+          y -= cantoSpacing;
+        } else if (it.canto === true) {
           page.drawText(it.texto, {
             x: x + indicadorSpacing,
             y: y,
@@ -356,14 +326,50 @@ export const generatePDF = async (songsToPdf: Array<SongToPdf>) => {
             fontSize: cantoFontSize,
             fontName: fontName
           });
+          y -= cantoSpacing;
+        } else if (it.cantoConIndicador === true) {
+          page.drawText(it.prefijo, {
+            x: x,
+            y: y,
+            color: NativeStyles.prefijo.color,
+            fontSize: cantoFontSize,
+            fontName: fontName
+          });
+          if (it.tituloEspecial === true) {
+            page.drawText(it.texto, {
+              x: x + indicadorSpacing,
+              y: y,
+              color: NativeStyles.lineaTituloNotaEspecial.color,
+              fontSize: cantoFontSize,
+              fontName: fontName
+            });
+          } else if (it.textoEspecial === true) {
+            page.drawText(it.texto, {
+              x: x + indicadorSpacing,
+              y: y,
+              color: NativeStyles.lineaNotaEspecial.color,
+              fontSize: cantoFontSize - 3,
+              fontName: fontName
+            });
+          } else {
+            page.drawText(it.texto, {
+              x: x + indicadorSpacing,
+              y: y,
+              color: NativeStyles.lineaNormal.color,
+              fontSize: cantoFontSize,
+              fontName: fontName
+            });
+          }
+          y -= cantoSpacing;
         }
-        y -= cantoSpacing;
-      }
+      });
+      pdfDoc.addPage(page);
     });
-    pdfDoc.addPage(page);
-  });
-  const path = await pdfDoc.write();
-  return path;
+    const path = await pdfDoc.write();
+    return path;
+  } catch (err) {
+    console.log('generatePDF ERROR', err);
+  }
 };
 
 export const generateMultiPagePDF = (songs: Array<Song>) => {

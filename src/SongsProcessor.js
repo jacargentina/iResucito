@@ -192,8 +192,19 @@ export class SongsProcessor {
       });
   }
 
-  loadSingleSong(song: Song): Promise<any> {
-    return this.songReader(song.path)
+  loadSingleSong(song: Song, patch?: SongIndexPatch): Promise<any> {
+    return Promise.resolve()
+      .then(() => {
+        if (
+          patch &&
+          patch.hasOwnProperty(song.key) &&
+          patch[song.key].hasOwnProperty(song.locale) &&
+          patch[song.key][song.locale].hasOwnProperty('lines')
+        ) {
+          return patch[song.key][song.locale].lines;
+        }
+        return this.songReader(song.path);
+      })
       .then(content => {
         // Split lines, remove until reaching song notes
         var lineas = content.replace('\r\n', '\n').split('\n');
@@ -204,16 +215,16 @@ export class SongsProcessor {
         song.fullText = lineas.join(' ');
       })
       .catch(err => {
-        debugger;
+        console.log('loadSingleSong ERROR', err.message);
         song.error = err.message;
         song.lines = [];
         song.fullText = '';
       });
   }
 
-  loadSongs(songs: Array<Song>): Array<Promise<any>> {
+  loadSongs(songs: Array<Song>, patch?: SongIndexPatch): Array<Promise<any>> {
     return songs.map(song => {
-      return this.loadSingleSong(song);
+      return this.loadSingleSong(song, patch);
     });
   }
 

@@ -66,7 +66,7 @@ const SongListItem = (props: any) => {
   const { keys } = data.settings;
   const {
     getSongLocalePatch,
-    setSongLocalePatch,
+    setSongPatch,
     setSongRating,
     songs
   } = data.songsMeta;
@@ -129,19 +129,17 @@ const SongListItem = (props: any) => {
 
   const changeName = () => {
     getSongLocalePatch(song).then(patchObj => {
-      var file = song.nombre;
-      var rename = undefined;
-      if (patchObj && patchObj[I18n.locale]) {
-        file = patchObj[I18n.locale].file;
+      var rename = song.nombre;
+      if (patchObj && patchObj[I18n.locale] && patchObj[I18n.locale].rename) {
         rename = patchObj[I18n.locale].rename;
       }
       // Definir cambio a realizar sobre el patch
       const applyChanges = renameTo => {
-        setSongLocalePatch(song, song.locale, file, renameTo);
+        setSongPatch(song, song.locale, { rename: renameTo });
       };
       navigation.navigate('SongChangeName', {
         song: song,
-        nameToEdit: rename ? rename : file,
+        nameToEdit: rename,
         action: applyChanges
       });
     });
@@ -162,7 +160,7 @@ const SongListItem = (props: any) => {
           text: I18n.t('ui.delete'),
           style: 'destructive',
           onPress: () => {
-            setSongLocalePatch(song, song.locale, undefined);
+            setSongPatch(song, song.locale, undefined);
           }
         },
         {

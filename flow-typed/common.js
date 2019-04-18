@@ -1,11 +1,13 @@
 // @flow
 
+declare type SongPatchData = {
+  file?: string,
+  rename?: string,
+  lines?: string
+};
+
 declare type SongPatch = {
-  [locale: string]: {
-    file: string,
-    rename?: string,
-    lines?: string
-  }
+  [locale: string]: SongPatchData
 };
 
 declare type SongIndexPatch = {

@@ -16,7 +16,7 @@ const SongEditorDialog = (props: any) => {
   const { navigation } = props;
   const song = navigation.getParam('song');
 
-  const { getSongLocalePatch, setSongLocalePatch } = data.songsMeta;
+  const { getSongLocalePatch, setSongPatch } = data.songsMeta;
   const [selection, setSelection] = useState({ start: 0, end: 0 });
   const [canDeletePatch, setCanDeletePatch] = useState(false);
   const [
@@ -86,17 +86,7 @@ const SongEditorDialog = (props: any) => {
   };
 
   const saveWithLines = (text?: string) => {
-    return getSongLocalePatch(song).then(patchObj => {
-      var file = song.nombre;
-      var rename = undefined;
-      if (patchObj && patchObj[song.locale] && patchObj[song.locale].file) {
-        file = patchObj[song.locale].file;
-      }
-      if (patchObj && patchObj[song.locale] && patchObj[song.locale].rename) {
-        rename = patchObj[song.locale].rename;
-      }
-      return setSongLocalePatch(song, song.locale, file, rename, text);
-    });
+    return setSongPatch(song, song.locale, { lines: text });
   };
 
   const cutToNextNewline = () => {

@@ -115,27 +115,20 @@ const useSongsMeta = () => {
     });
   };
 
-  const setSongLocalePatch = (
-    song: Song,
-    locale: string,
-    filename: string,
-    renameTo: string,
-    lines: string
-  ) => {
-    if (filename && filename.endsWith('.txt'))
+  const setSongPatch = (song: Song, locale: string, patch?: SongPatchData) => {
+    if (patch && patch.file && patch.file.endsWith('.txt'))
       throw new Error('file con .txt! Pasar sin extension.');
 
     return Promise.all([readLocalePatch(), readSongsRatingFile()]).then(
       values => {
         var [patchObj: SongIndexPatch, ratingsObj: SongRatingFile] = values;
         if (!patchObj) patchObj = {};
-        if (filename) {
+        if (patch) {
+          if (patch.rename) {
+            patch.rename = patch.rename.trim();
+          }
           const localePatch: SongPatch = {
-            [locale]: {
-              file: filename,
-              rename: renameTo ? renameTo.trim() : undefined,
-              lines: lines
-            }
+            [locale]: patch
           };
           if (!patchObj[song.key]) {
             patchObj[song.key] = {};
@@ -168,7 +161,7 @@ const useSongsMeta = () => {
           patchObj,
           ratingsObj
         );
-        return NativeSongs.loadSingleSong(updatedSong)
+        return NativeSongs.loadSingleSong(updatedSong, patchObj)
           .then(() => {
             initializeSingleSong(updatedSong);
             return saveLocalePatch(patchObj);
@@ -210,28 +203,31 @@ const useSongsMeta = () => {
   };
 
   const setSongRating = (songKey: string, locale: string, value: number) => {
-    return readSongsRatingFile().then(ratings => {
-      if (!ratings) {
-        ratings = {};
-      }
-      if (!ratings[songKey]) {
-        ratings[songKey] = {};
-      }
-      ratings[songKey] = Object.assign({}, ratings[songKey], {
-        [locale]: value
-      });
-      return saveSongsRatingFile(ratings).then(() => {
-        var updatedSong = NativeSongs.getSingleSongMeta(
-          songKey,
-          locale,
-          undefined,
-          ratings
-        );
-        return NativeSongs.loadSingleSong(updatedSong).then(() => {
-          initializeSingleSong(updatedSong);
+    return Promise.all([readLocalePatch(), readSongsRatingFile()]).then(
+      values => {
+        var [patchObj: SongIndexPatch, ratingsObj: SongRatingFile] = values;
+        if (!ratingsObj) {
+          ratingsObj = {};
+        }
+        if (!ratingsObj[songKey]) {
+          ratingsObj[songKey] = {};
+        }
+        ratingsObj[songKey] = Object.assign({}, ratingsObj[songKey], {
+          [locale]: value
         });
-      });
-    });
+        return saveSongsRatingFile(ratingsObj).then(() => {
+          var updatedSong = NativeSongs.getSingleSongMeta(
+            songKey,
+            locale,
+            patchObj,
+            ratingsObj
+          );
+          return NativeSongs.loadSingleSong(updatedSong, patchObj).then(() => {
+            initializeSingleSong(updatedSong);
+          });
+        });
+      }
+    );
   };
 
   const clearSongsRatings = () => {
@@ -256,9 +252,11 @@ const useSongsMeta = () => {
             patchObj,
             ratingsObj
           );
-          return Promise.all(NativeSongs.loadSongs(metaData)).then(() => {
-            setSongs(metaData);
-          });
+          return Promise.all(NativeSongs.loadSongs(metaData, patchObj)).then(
+            () => {
+              setSongs(metaData);
+            }
+          );
         })
         .then(() => {
           return NativeSongs.readLocaleSongs(I18n.locale).then(items => {
@@ -277,7 +275,7 @@ const useSongsMeta = () => {
     saveLocalePatch,
     indexPatchExists,
     getSongLocalePatch,
-    setSongLocalePatch,
+    setSongPatch,
     clearIndexPatch,
     ratingsFileExists,
     clearSongsRatings,
