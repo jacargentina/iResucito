@@ -5,10 +5,10 @@ Edit many txt files
 dos2unix *
 
 # Remove leading blank lines
-find . -type f -exec sed -i '/./,$!d' {} \;
+find . -type f -exec sed -i '' -e '/./,$!d' {} \;
 
 # Remove leading whitespace from each line
-find . -type f -exec sed -i 's/^[ \t]*//' {} \;
+find . -type f -exec sed -i '' -e 's/^[ \t]*//' {} \;
 
 # The S. many times had many spaces after it; remove them for just 1 space
 find . -type f -name '*.txt' -exec sed -i '' 's/^S\.( )+/S. /' {} \;
