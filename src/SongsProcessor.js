@@ -123,17 +123,21 @@ export class SongsProcessor {
     this.assignInfoFromFile(info, loc, parsed);
     // Si se aplico un parche
     // Asignar los valores del mismo
-    if (patch && patch.hasOwnProperty(key) && patch[key].hasOwnProperty(loc)) {
+    if (
+      patch &&
+      patch.hasOwnProperty(key) &&
+      patch[key].hasOwnProperty(rawLoc)
+    ) {
       info.patched = true;
       info.patchedTitle = info.titulo;
-      const { file, rename } = patch[key][loc];
+      const { file, rename } = patch[key][rawLoc];
       if (file) {
-        info.path = `${this.basePath}/${loc}/${file}.txt`;
+        info.path = `${this.basePath}/${rawLoc}/${file}.txt`;
         info.files = Object.assign({}, info.files, {
-          [loc]: file
+          [rawLoc]: file
         });
         const parsed = getSongFileFromString(file);
-        this.assignInfoFromFile(info, loc, parsed);
+        this.assignInfoFromFile(info, rawLoc, parsed);
       }
       if (rename) {
         const renamed = getSongFileFromString(rename);
@@ -147,9 +151,9 @@ export class SongsProcessor {
     if (
       ratings &&
       ratings.hasOwnProperty(key) &&
-      ratings[key].hasOwnProperty(loc)
+      ratings[key].hasOwnProperty(rawLoc)
     ) {
-      info.rating = ratings[key][loc];
+      info.rating = ratings[key][rawLoc];
     }
     return info;
   }
