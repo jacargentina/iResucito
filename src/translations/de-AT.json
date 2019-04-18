@@ -37,7 +37,7 @@
     },
     "export": {
       "type": "Art der Übertragung",
-      "processing songs": "{{total}} Liedern werden bearbeiten...",
+      "processing songs": "Bearbeitung {{total}} Liedern",
       "pdf viewer title": "Komplettes Buch"
     },
     "community empty": "Ohne importierte Namen. Um aus der Tabelle auszuwählen, sollst du in der Gemeinschaft-Option von deinen Kontakten importieren.",
