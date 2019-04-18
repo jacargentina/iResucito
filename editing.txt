@@ -10,6 +10,9 @@ find . -type f -exec sed -i '' -e '/./,$!d' {} \;
 # Remove leading whitespace from each line
 find . -type f -exec sed -i '' -e 's/^[ \t]*//' {} \;
 
+# Remove trailing whitespace from each line
+find . -type f -exec sed -i '' -e 's/[ ]*$//' {} \;
+
 # The S. many times had many spaces after it; remove them for just 1 space
 find . -type f -name '*.txt' -exec sed -i '' 's/^S\.( )+/S. /' {} \;
 
