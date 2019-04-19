@@ -1,6 +1,13 @@
 // @flow
-import React from 'react';
-import { TouchableOpacity, Image, Linking, Alert, View } from 'react-native';
+import React, { Fragment } from 'react';
+import {
+  TouchableOpacity,
+  Image,
+  Linking,
+  Alert,
+  View,
+  Platform
+} from 'react-native';
 import { Text, Icon, H1, Button } from 'native-base';
 import DeviceInfo from 'react-native-device-info';
 import I18n from '../translations';
@@ -77,15 +84,19 @@ const AboutDialog = (props: any) => {
           <Icon name="logo-twitter" />
         </Button>
       </View>
-      <Text style={{ margin: 5, textAlign: 'center', fontSize: 11 }}>
-        {I18n.t('ui.donate message')}
-      </Text>
-      <View>
-        <Button iconLeft onPress={makeDonation}>
-          <Icon name="logo-usd" />
-          <Text>{I18n.t('ui.donate button')}</Text>
-        </Button>
-      </View>
+      {Platform.OS !== 'android' && (
+        <Fragment>
+          <Text style={{ margin: 5, textAlign: 'center', fontSize: 11 }}>
+            {I18n.t('ui.donate message')}
+          </Text>
+          <View>
+            <Button iconLeft onPress={makeDonation}>
+              <Icon name="logo-usd" />
+              <Text>{I18n.t('ui.donate button')}</Text>
+            </Button>
+          </View>
+        </Fragment>
+      )}
     </TouchableOpacity>
   );
 };
