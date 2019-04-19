@@ -28,8 +28,8 @@ rl.question('Cual locale? ', locale => {
     var content = fs.readFileSync(oldPath, 'utf8');
     var titulo = content
       .split('\n')[0]
+      .replace(/["*]/g, '')
       .trim()
-      .replace(/\"/g, '')
       .toLowerCase();
 
     titulo =
