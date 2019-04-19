@@ -29,6 +29,7 @@ rl.question('Cual locale? ', locale => {
     var titulo = content
       .split('\n')[0]
       .replace(/["*]/g, '')
+      .replace(/\//g, '-')
       .trim()
       .toLowerCase();
 
