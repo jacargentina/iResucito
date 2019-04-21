@@ -185,7 +185,7 @@ const SongEditorDialog = (props: any) => {
       title={I18n.t('screen_title.song edit')}
       right={saveButton}
       left={cancelButton}>
-      <View style={{ flex: 1, backgroundColor: '#222' }}>
+      <View style={{ flexGrow: 1, backgroundColor: '#222' }}>
         <SongListItem
           songKey={song.key}
           devModeDisabled={true}
