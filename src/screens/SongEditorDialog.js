@@ -193,7 +193,7 @@ const SongEditorDialog = (props: any) => {
           patchSectionDisabled={true}
           onPress={choosePreview}
         />
-        <ScrollView horizontal>
+        <ScrollView horizontal style={{ flex: 1 }}>
           <TextInput
             multiline
             textAlignVertical="top"
@@ -201,10 +201,10 @@ const SongEditorDialog = (props: any) => {
               backgroundColor: '#222',
               color: 'white',
               fontSize: 16,
-              paddingTop: 20,
-              paddingLeft: 10,
-              paddingRight: 10,
-              paddingBottom: 60,
+              paddingTop: 5,
+              paddingLeft: 5,
+              paddingRight: 5,
+              paddingBottom: 5,
               minWidth: Dimensions.get('window').width
             }}
             onChangeText={text => {
@@ -220,10 +220,6 @@ const SongEditorDialog = (props: any) => {
         <View
           style={{
             flex: 0,
-            left: 8,
-            right: 8,
-            bottom: 8,
-            position: 'absolute',
             flexDirection: 'row-reverse',
             justifyContent: 'space-between'
           }}>

@@ -2,7 +2,12 @@
 import React from 'react';
 import { withNavigation } from 'react-navigation';
 import { Text, Icon } from 'native-base';
-import { View, KeyboardAvoidingView, SafeAreaView } from 'react-native';
+import {
+  Platform,
+  View,
+  KeyboardAvoidingView,
+  SafeAreaView
+} from 'react-native';
 import commonTheme from '../native-base-theme/variables/platform';
 
 const ModalView = (props: any) => {
@@ -20,7 +25,9 @@ const ModalView = (props: any) => {
   );
   return (
     <SafeAreaView style={{ flexGrow: 1, backgroundColor: 'white' }}>
-      <KeyboardAvoidingView style={{ flexGrow: 1 }} behavior="padding">
+      <KeyboardAvoidingView
+        style={{ flexGrow: 1 }}
+        behavior={Platform.OS == 'android' ? null : 'padding'}>
         <View
           style={{
             flex: 0,
