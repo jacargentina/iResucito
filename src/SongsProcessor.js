@@ -210,13 +210,15 @@ export class SongsProcessor {
         return this.songReader(song.path);
       })
       .then(content => {
-        // Split lines, remove until reaching song notes
-        var lineas = content.replace('\r\n', '\n').split('\n');
-        while (lineas.length && !isChordsLine(lineas[0], song.locale)) {
-          lineas.shift();
+        if (content) {
+          // Split lines, remove until reaching song notes
+          var lineas = content.replace('\r\n', '\n').split('\n');
+          while (lineas.length && !isChordsLine(lineas[0], song.locale)) {
+            lineas.shift();
+          }
+          song.lines = lineas;
+          song.fullText = lineas.join(' ');
         }
-        song.lines = lineas;
-        song.fullText = lineas.join(' ');
       })
       .catch(err => {
         console.log('loadSingleSong ERROR', err.message);
