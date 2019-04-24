@@ -14,10 +14,13 @@ find . -type f -exec sed -i '' -e 's/^[ \t]*//' {} \;
 find . -type f -exec sed -i '' -e 's/[ ]*$//' {} \;
 
 # The S. many times had many spaces after it; remove them for just 1 space
-find . -type f -name '*.txt' -exec sed -i '' 's/^S\.( )+/S. /' {} \;
+find . -type f -exec sed -i '' -e 's/^S\.( )+/S. /' {} \;
 
 # Remove a specific character from all songs, for example in this case "
 find . -type f -exec sed -i '' -e 's/"//g' {} \;
+
+# Fix first line, removing weird characters from title
+find . -type f -exec sed -i '' -e '1 s/*//g' {} \;
 
 # macOS filenames
 
