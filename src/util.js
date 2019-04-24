@@ -1,4 +1,5 @@
 // @flow
+// Utilerias atadas a react-native
 import langs from 'langs';
 import { StyleSheet, Platform, PermissionsAndroid } from 'react-native';
 import * as RNLocalize from 'react-native-localize';
@@ -9,6 +10,7 @@ import I18n from './translations';
 import { SongsProcessor } from './SongsProcessor';
 import PDFLib, { PDFDocument, PDFPage } from 'react-native-pdf-lib';
 import normalize from 'normalize-strings';
+import { asyncForEach } from './common';
 
 function checkContactsPermission(): Promise<boolean> {
   if (Platform.OS == 'android') {
@@ -234,12 +236,6 @@ var notesFontSize = 10;
 var widthHeightPixels = 598; // 21,1 cm
 var primerColumnaX = 30;
 var segundaColumnaX = 330;
-
-async function asyncForEach(array: Array<any>, callback: Function) {
-  for (let index = 0; index < array.length; index++) {
-    await callback(array[index], index, array);
-  }
-}
 
 export const generatePDF = async (songsToPdf: Array<SongToPdf>) => {
   try {
