@@ -65,11 +65,13 @@ export const generatePDF = async (songsToPdf: Array<SongToPdf>) => {
       right: marginLeftRight
     }
   });
+  var pageNumber = 0;
   doc.registerFont('thefont', 'assets/fonts/Franklin Gothic Medium.ttf');
   await asyncForEach(songsToPdf, async data => {
     // Tomar canto y las lineas para renderizar
     const { canto, lines } = data;
     doc.addPage();
+    pageNumber++;
     doc
       .fillColor(NodeStyles.titulo.color)
       .fontSize(titleFontSize)
@@ -87,7 +89,7 @@ export const generatePDF = async (songsToPdf: Array<SongToPdf>) => {
     var y = titleFontSize + fuenteFontSize + fuenteSpacing;
     var x = primerColumnaX;
     var yStart = y + parrafoSpacing;
-    lines.forEach((it: SongLine) => {
+    lines.forEach((it: SongLine, idx) => {
       if (it.inicioParrafo) {
         y += parrafoSpacing;
       }
@@ -100,6 +102,17 @@ export const generatePDF = async (songsToPdf: Array<SongToPdf>) => {
         alturaExtra = cantoSpacing;
       }
       if (y + alturaExtra >= limiteHoja) {
+        // Si ya estamos escribiendo en la 2da columna
+        // el texto quedara sobreecrito, por tanto generar advertencia
+        if (x === segundaColumnaX) {
+          console.log(
+            'Sin lugar (%s, linea %s = "%s"), página %s',
+            canto.titulo,
+            idx,
+            it.texto,
+            pageNumber
+          );
+        }
         x = segundaColumnaX;
         y = yStart;
       }
@@ -231,7 +244,9 @@ if (!process.argv.slice(2).length) {
             };
             items.push(item);
           } else {
-            console.log(`Song ${song.titulo} not found for given locale ${locale}`);
+            console.log(
+              `Song ${song.titulo} not found for given locale ${locale}`
+            );
           }
         });
         generatePDF(items);
