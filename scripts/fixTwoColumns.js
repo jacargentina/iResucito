@@ -74,15 +74,27 @@ inquirer
     var sourcePath = `./songs/${locale}`;
     var archivos = fs.readdirSync(sourcePath);
 
-    var i = 0;
+    for (var i = 0; i < archivos.length; i++) {
+      console.log(`${i} - ${archivos[i]}`);
+    }
 
-    const runLoop = () => {
-      const fpath = path.resolve(`${sourcePath}/${archivos[i]}`);
-      i++;
-      return processFile(locale, fpath).then(() => {
+    inquirer
+      .prompt({
+        type: 'input',
+        name: 'key',
+        message: 'Start key?'
+      })
+      .then(ans => {
+        var i = ans.key;
+
+        const runLoop = () => {
+          const fpath = path.resolve(`${sourcePath}/${archivos[i]}`);
+          i++;
+          return processFile(locale, fpath).then(() => {
+            runLoop();
+          });
+        };
+
         runLoop();
       });
-    };
-
-    runLoop();
   });
