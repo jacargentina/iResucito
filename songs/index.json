@@ -14,7 +14,8 @@
   "comunion": true,
   "files": {
    "es": "Como el impulso que siente la ira - Oda 7 de Salomón",
-   "it": "Come lo slancio dell'ira - Ode 7 di Salomone"
+   "it": "Come lo slancio dell'ira - Ode 7 di Salomone",
+   "de-AT": "Wie der Antrieb des Zornes - VII. Ode Salomos"
   }
  },
  "3": {
@@ -98,7 +99,8 @@
   "files": {
    "es": "El sembrador - Mc 4, 3ss",
    "it": "Il seminatore - Mc. 4, 3 ss",
-   "pt": "O semeador - Mc 4, 3ss"
+   "pt": "O semeador - Mc 4, 3ss",
+   "de-AT": "Der Sämann - Mk 4, 3 ff"
   }
  },
  "11": {
@@ -109,7 +111,8 @@
   "files": {
    "es": "He aquí que nuestro espejo es el Señor - Oda 13 de Salomón",
    "it": "Ecco lo specchio nostro - Ode 13 di Salomone",
-   "pt": "Eis que o nosso espelho e o Senhor - Ode 13 de Salomão"
+   "pt": "Eis que o nosso espelho e o Senhor - Ode 13 de Salomão",
+   "de-AT": "Siehe unser Spiegel - XIII. Ode Salomos"
   }
  },
  "12": {
@@ -117,7 +120,8 @@
   "files": {
    "es": "Jacob - Gn 32, 23-29",
    "it": "Giacobbe - Gn 32, 23-29",
-   "pt": "Jacó - Gn 32, 23-29"
+   "pt": "Jacó - Gn 32, 23-29",
+   "de-AT": "Jakob - Gen 32, 23-29"
   }
  },
  "13": {
@@ -125,7 +129,8 @@
   "files": {
    "es": "Ninguno puede servir a dos señores - Mt 6, 24-33",
    "it": "Nessuno può servire due padroni - Mt 6, 24-33",
-   "pt": "Ninguém pode servir a dois senhores - Mt 6, 24-33"
+   "pt": "Ninguém pode servir a dois senhores - Mt 6, 24-33",
+   "de-AT": "Niemand kann zwei Herrn dienen - Mt 6, 24-33"
   }
  },
  "14": {
@@ -141,7 +146,8 @@
   "files": {
    "es": "Señor, tú me escrutas - Sal 139 (138)",
    "it": "Signore tu mi scruti e mi conosci - Sal 139 (138)",
-   "pt": "Senhor tu me escrutas e conheces - Sal 139 (138)"
+   "pt": "Senhor tu me escrutas e conheces - Sal 139 (138)",
+   "de-AT": "O Herr du erforschest mich - Ps 139"
   }
  },
  "16": {
@@ -150,7 +156,8 @@
   "files": {
    "es": "Shemá Israel - Dt 6, 4-9",
    "it": "Shemà Israel - Dt 6, 4-9",
-   "pt": "Shemá Israel - Dt 6, 4-9"
+   "pt": "Shemá Israel - Dt 6, 4-9",
+   "de-AT": "Shema Israel - Dt 6, 4-9"
   }
  },
  "17": {
@@ -159,7 +166,8 @@
   "files": {
    "es": "Siéntate solitario y silencioso - Lm 3",
    "it": "Siedi solitario e silenzioso - Lm 3",
-   "pt": "Senta te solitário e silencioso - Lm 3"
+   "pt": "Senta te solitário e silencioso - Lm 3",
+   "de-AT": "Einsam sitze und schweige - Klgl 3, 1-33"
   }
  },
  "18": {
@@ -170,7 +178,8 @@
   "files": {
    "es": "Tú has cubierto de vergüenza la muerte - Melitón de Sardes",
    "it": "Omelia pasquale - Melitone di Sardi",
-   "pt": "Tu cobriste de vergonha a morte - Melitão de Sares"
+   "pt": "Tu cobriste de vergonha a morte - Melitão de Sares",
+   "de-AT": "Meliton von Sardes - Osterhomilie"
   }
  },
  "19": {
@@ -276,7 +285,8 @@
   "final": true,
   "files": {
    "es": "Aleluya, alabad al Señor - Sal 150",
-   "it": "Lodate iddio - Sal 150"
+   "it": "Lodate iddio - Sal 150",
+   "de-AT": "Lobet den Herrn - Ps 150"
   }
  },
  "30": {
@@ -313,7 +323,8 @@
   "laudes": true,
   "files": {
    "es": "Amo al Señor - Sal 116 (114-115)",
-   "it": "Amo il Signore - Sal 116 (114-115)"
+   "it": "Amo il Signore - Sal 116 (114-115)",
+   "de-AT": "Ich werde erheben den Kelch des Keils - Ps 116"
   }
  },
  "34": {
@@ -383,7 +394,8 @@
   "files": {
    "es": "Bendice, alma mía, a Yahveh - Sal 103 (102)",
    "it": "Benedici anima mia Jahvè - Sal 103 (102)",
-   "pt": "Bendize minha alma a Iahweh - Sal 103 (102)"
+   "pt": "Bendize minha alma a Iahweh - Sal 103 (102)",
+   "de-AT": "Preise meine Seele Jahwe - Ps 103"
   }
  },
  "41": {
@@ -564,7 +576,8 @@
   "files": {
    "es": "Día de reposo - Jn 8, 52",
    "it": "Giorno di riposo - Jn 8, 52",
-   "pt": "Dia de repouso - Jo 8, 52"
+   "pt": "Dia de repouso - Jo 8, 52",
+   "de-AT": "Dieser Tag der Ruhe - Joh 8, 52"
   }
  },
  "59": {
@@ -623,7 +636,8 @@
   "files": {
    "es": "Elí, Elí, lamá sabactaní - Sal 22 (21)",
    "it": "Eli, Eli, lammà sabactani - Sal 22 (21)",
-   "pt": "Elí, Elí, lamá sabactani - Sal 22 (21)"
+   "pt": "Elí, Elí, lamá sabactani - Sal 22 (21)",
+   "de-AT": "Eli, Eli, Lama Sabachtani - Ps 22"
   }
  },
  "65": {
@@ -668,7 +682,8 @@
   "files": {
    "es": "Evenu Shalom Alejem - Canto hebreo",
    "it": "Evenu Shalom Alejem - Canto ebraico",
-   "pt": "Evenu Shalom Alehem - Canto hebraico"
+   "pt": "Evenu Shalom Alehem - Canto hebraico",
+   "de-AT": "Evenu shalom alechem - Hebräisches Lied"
   }
  },
  "70": {
@@ -676,7 +691,8 @@
   "files": {
    "es": "Exultad, justos, en el Señor - Sal 32",
    "it": "Esultate giusti nel Signore - Sal 32",
-   "pt": "Exultai justos no Senhor - Sal 32"
+   "pt": "Exultai justos no Senhor - Sal 32",
+   "de-AT": "Ihr Gerechten, jubelt vor dem Herrn - Ps 33"
   }
  },
  "71": {
@@ -684,7 +700,8 @@
   "files": {
    "es": "Éste es el día en que actuó el Señor - Sal 118 (117)",
    "it": "Non morirò - Sal 118 (117)",
-   "pt": "Este é o dia que fez o Senhor - Sal 118 (117)"
+   "pt": "Este é o dia que fez o Senhor - Sal 118 (117)",
+   "de-AT": "Ich werde nicht sterben - Ps 118"
   }
  },
  "72": {
@@ -703,7 +720,8 @@
   "files": {
    "es": "Gracias a Yahveh - Sal 136 (135)",
    "it": "Grazie a jahvè - Sal 136 (135)",
-   "pt": "Graças a Iahweh - Sal 136 (135)"
+   "pt": "Graças a Iahweh - Sal 136 (135)",
+   "de-AT": "Danken wir dem Herrn - Ps 136"
   }
  },
  "74": {
@@ -722,14 +740,16 @@
   "files": {
    "es": "Hacia ti, morada santa - Himno",
    "it": "Verso te, o città santa - Inno",
-   "pt": "Para ti morada santa - Hino"
+   "pt": "Para ti morada santa - Hino",
+   "de-AT": "Hin zu dir, Jerusalem"
   }
  },
  "76": {
   "etapa": "Precatecumenado",
   "cuaresma": true,
   "files": {
-   "es": "Hasta cuándo - Sal 13 (12)"
+   "es": "Hasta cuándo - Sal 13 (12)",
+   "de-AT": "Wie lange noch - Ps 13"
   }
  },
  "77": {
@@ -746,7 +766,8 @@
   "files": {
    "es": "He aquí que vengo presto - Ap 22, 12-16",
    "it": "Ecco qui io vengo presto - Ap 22, 12-16",
-   "pt": "Eis me aqui que venho em breve - Ap 22, 12-16"
+   "pt": "Eis me aqui que venho em breve - Ap 22, 12-16",
+   "de-AT": "Siehe da ich komme bald - Offb 22, 12-16"
   }
  },
  "79": {
@@ -756,7 +777,8 @@
   "files": {
    "es": "He esperado en el Señor - Sal 40 (39)",
    "it": "Ho sperato, ho sperato nel Signore - Sal 40 (39)",
-   "pt": "Esperei esperei no Senhor - Sal 40 (39)"
+   "pt": "Esperei esperei no Senhor - Sal 40 (39)",
+   "de-AT": "Ich hoffte auf den Herrn - Ps 40"
   }
  },
  "80": {
@@ -765,7 +787,8 @@
   "files": {
    "es": "Hijas de Jerusalén - Lc 23, 28-46",
    "it": "Figlie di gerusalemme - Lc 23, 28-46",
-   "pt": "Filhas de Jerusalém - Lc 23, 28-46"
+   "pt": "Filhas de Jerusalém - Lc 23, 28-46",
+   "de-AT": "Töchter von Jerusalem - Lk 23, 28.31.34.43.46"
   }
  },
  "81": {
@@ -860,7 +883,8 @@
   "files": {
    "es": "La marcha es dura - Himno",
    "it": "La marcia è dura - Inno",
-   "pt": "A marcha é dura - Hino"
+   "pt": "A marcha é dura - Hino",
+   "de-AT": "Der weg ist hart"
   }
  },
  "91": {
@@ -1183,7 +1207,8 @@
   "files": {
    "es": "Quiero andar madre a Jerusalén - Canto sefardí",
    "it": "Voglio andare a gerusalemme - Canto sefardita",
-   "pt": "Quero andar - Canto Sefardita"
+   "pt": "Quero andar - Canto Sefardita",
+   "de-AT": "Ich will wandern nach Jerusalem - Sepharditisches Lied"
   }
  },
  "123": {
@@ -1315,7 +1340,8 @@
   "files": {
    "es": "Si me he refugiado en el Señor - Sal 11 (10)",
    "it": "Se nel Signore mi sono rifugiato - Sal 11 (10)",
-   "pt": "Se me refugiei no Senhor - Sal 11 (10)"
+   "pt": "Se me refugiei no Senhor - Sal 11 (10)",
+   "de-AT": "Wenn ich beim Herrn habe  Zuflucht gefunden - Ps 11"
   }
  },
  "136": {
@@ -1342,7 +1368,8 @@
   "virgen": true,
   "files": {
    "es": "Stabat mater dolorosa - Himno",
-   "pt": "Stabat mater dolorosa - Sequência do século XIII"
+   "pt": "Stabat mater dolorosa - Sequência do século XIII",
+   "de-AT": "Stabat mater"
   }
  },
  "139": {
@@ -1510,7 +1537,8 @@
   "files": {
    "es": "Yahveh, tú eres mi Dios - Is 25",
    "it": "Jahvè tu sei il mio dio - Is 25",
-   "pt": "Iahweh tu és meu deus - Is 25"
+   "pt": "Iahweh tu és meu deus - Is 25",
+   "de-AT": "Jahwe mein Gott bist du - Jes 25, 1-8"
   }
  },
  "156": {
@@ -1547,7 +1575,8 @@
   "comunion": true,
   "files": {
    "es": "Abbá Padre - Rm 8, 15-17",
-   "it": "Abbà Padre - Rm 8, 15-17"
+   "it": "Abbà Padre - Rm 8, 15-17",
+   "de-AT": "Abba Vater - Röm 8, 15-17"
   }
  },
  "160": {
@@ -1638,7 +1667,8 @@
   "files": {
    "es": "Extiendo mis manos - Oda 27 de Salomón",
    "it": "Ho steso le mie mani - Ode 27 di Salomone",
-   "pt": "Estendo minhas mãos - Ode 27 de Salomão"
+   "pt": "Estendo minhas mãos - Ode 27 de Salomão",
+   "de-AT": "Ich habe meine Hände ausgebreitet - XXVII. Ode Salomons"
   }
  },
  "169": {
@@ -1686,7 +1716,8 @@
   "virgen": true,
   "files": {
    "es": "La cordera de Dios - Mt 1, 18ss",
-   "pt": "A cordeira de Deus - Mt 1, 18ss"
+   "pt": "A cordeira de Deus - Mt 1, 18ss",
+   "de-AT": "Maria Lamm Gottes - Mt 1, 18 ff"
   }
  },
  "174": {
@@ -1797,7 +1828,8 @@
   "files": {
    "es": "Bendición del agua",
    "it": "Benedizione dell'acqua",
-   "pt": "Benção da água"
+   "pt": "Benção da água",
+   "de-AT": "Taufwasserweihe"
   }
  },
  "187": {
