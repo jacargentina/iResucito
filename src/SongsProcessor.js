@@ -35,8 +35,10 @@ export const getChordsDiff = (
 ): number => {
   const chords = getChordsScale(locale);
   const initialChord = getInitialChord(startingChordsLine);
-  const start = chords.indexOf(initialChord);
-  const target = chords.indexOf(targetChord);
+  const st = chords.find(ch => ch.toLowerCase() == initialChord.toLowerCase());
+  const start = chords.indexOf(st);
+  const tg = chords.find(ch => ch.toLowerCase() == targetChord.toLowerCase());
+  const target = chords.indexOf(tg);
   return target - start;
 };
 
@@ -420,7 +422,10 @@ export class SongsProcessor {
       const isLower = cleanChord == cleanChord.toLowerCase();
       // Ej. Do
       // Ej. c
-      const i = chords.indexOf(cleanChord.toUpperCase());
+      const initial = chords.find(
+        ch => ch.toLowerCase() == cleanChord.toLowerCase()
+      );
+      const i = chords.indexOf(initial);
       if (i !== -1) {
         const j = (i + diff) % 12;
         var newChord = j < 0 ? chordsInverted[j * -1] : chords[j];

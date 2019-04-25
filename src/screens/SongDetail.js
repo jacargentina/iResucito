@@ -39,7 +39,7 @@ const SongDetail = (props: any) => {
     }
   }, []);
 
-  return <SongViewFrame {...song} />;
+  return <SongViewFrame {...song} transportNote={transportNote} />;
 };
 
 const TransportNotesMenu = withNavigation((props: any) => {
