@@ -16,7 +16,7 @@ export const getSongFileFromString = (str: string): SongFile => {
   };
 };
 
-export const cleanChordsRegex = /\[|\]|#|\*|5|6|7|9|b|-|\+|\/|\u2013|\u2217|aum|dim/g;
+export const cleanChordsRegex = /\[|\]|\(|\)|#|\*|5|6|7|9|b|-|\+|\/|\u2013|\u2217|aum|dim|is|IS/g;
 
 export const getChordsScale = (locale: string) => {
   return I18n.t('chords.scale', { locale }).split(' ');
@@ -409,25 +409,31 @@ export class SongsProcessor {
     diff: number,
     locale: string
   ): string {
-    const notas = getChordsScale(locale);
-    const notasInverted = notas.slice().reverse();
-    const pedazos = chordsLine.split(' ');
-    const result = pedazos.map(item => {
-      const notaLimpia = item.replace(cleanChordsRegex, '');
-      const notaIndex = notas.indexOf(notaLimpia);
-      if (notaIndex !== -1) {
-        const notaNuevoIndex = (notaIndex + diff) % 12;
-        var transporte =
-          notaNuevoIndex < 0
-            ? notasInverted[notaNuevoIndex * -1]
-            : notas[notaNuevoIndex];
-        if (notaLimpia.length !== item.length)
-          transporte += item.substring(notaLimpia.length);
-        return transporte;
+    const chords = getChordsScale(locale);
+    const chordsInverted = chords.slice().reverse();
+    const allChords = chordsLine.split(' ');
+    const convertedChords = allChords.map(chord => {
+      // Ej. Do#- (latino)
+      // Ej. cis  (anglosajon)
+      const cleanChord = chord.replace(cleanChordsRegex, '');
+      // En de-AT, las notas menores son en minuscula...
+      const isLower = cleanChord == cleanChord.toLowerCase();
+      // Ej. Do
+      // Ej. c
+      const i = chords.indexOf(cleanChord.toUpperCase());
+      if (i !== -1) {
+        const j = (i + diff) % 12;
+        var newChord = j < 0 ? chordsInverted[j * -1] : chords[j];
+        if (isLower) {
+          newChord = newChord.toLowerCase();
+        }
+        if (cleanChord.length !== chord.length)
+          newChord += chord.substring(cleanChord.length);
+        return newChord;
       }
-      return item;
+      return chord;
     });
-    return result.join(' ');
+    return convertedChords.join(' ');
   }
 
   getSongLinesForRender(
