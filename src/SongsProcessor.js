@@ -60,13 +60,7 @@ export function isChordsLine(text: string, locale: string): boolean {
 }
 
 export function ordenAlfabetico(a: SongRef, b: SongRef) {
-  if (a.titulo < b.titulo) {
-    return -1;
-  }
-  if (a.titulo > b.titulo) {
-    return 1;
-  }
-  return 0;
+  return a.titulo.localeCompare(b.titulo);
 }
 
 declare type PathLoaderFunc = (path: string) => Promise<any>;

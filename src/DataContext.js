@@ -525,7 +525,7 @@ const useSearch = (keys: any) => {
         route: 'SongList',
         chooser: I18n.t('search_tabs.all'),
         params: { filter: null },
-        badge: badges.Alfabético
+        badge: badges.alpha
       },
       {
         title_key: 'search_title.stage',
@@ -535,29 +535,29 @@ const useSearch = (keys: any) => {
         title_key: 'search_title.precatechumenate',
         note: I18n.t('search_note.precatechumenate'),
         route: 'SongList',
-        params: { filter: { etapa: 'Precatecumenado' } },
-        badge: badges.Precatecumenado
+        params: { filter: { etapa: 'precatechumenate' } },
+        badge: badges.precatechumenate
       },
       {
         title_key: 'search_title.catechumenate',
         note: I18n.t('search_note.catechumenate'),
         route: 'SongList',
-        params: { filter: { etapa: 'Catecumenado' } },
-        badge: badges.Catecumenado
+        params: { filter: { etapa: 'catechumenate' } },
+        badge: badges.catechumenate
       },
       {
         title_key: 'search_title.election',
         note: I18n.t('search_note.election'),
         route: 'SongList',
-        params: { filter: { etapa: 'Eleccion' } },
-        badge: badges.Eleccion
+        params: { filter: { etapa: 'election' } },
+        badge: badges.election
       },
       {
         title_key: 'search_title.liturgy',
         note: I18n.t('search_note.liturgy'),
         route: 'SongList',
-        params: { filter: { etapa: 'Liturgia' } },
-        badge: badges.Liturgia
+        params: { filter: { etapa: 'liturgy' } },
+        badge: badges.liturgy
       },
       {
         title_key: 'search_title.liturgical time',

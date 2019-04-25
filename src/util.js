@@ -10,7 +10,11 @@ import I18n from './translations';
 import { SongsProcessor } from './SongsProcessor';
 import PDFLib, { PDFDocument, PDFPage } from 'react-native-pdf-lib';
 import normalize from 'normalize-strings';
-import { asyncForEach } from './common';
+import {
+  asyncForEach,
+  getAlphaWithSeparators,
+  getGroupedByEtapa
+} from './common';
 
 function checkContactsPermission(): Promise<boolean> {
   if (Platform.OS == 'android') {
@@ -236,8 +240,80 @@ var notesFontSize = 10;
 var widthHeightPixels = 598; // 21,1 cm
 var primerColumnaX = 30;
 var segundaColumnaX = 330;
+var primerFilaY = 560;
+var limiteHoja = 21;
 
-export const generatePDF = async (songsToPdf: Array<SongToPdf>) => {
+const getNewPage = () => {
+  return PDFPage.create().setMediaBox(widthHeightPixels, widthHeightPixels);
+};
+
+export const generateListing = async (
+  doc: any,
+  page: any,
+  pos: ExportToPdfCoord,
+  title: string,
+  items: any,
+  pageTitle?: string
+): any => {
+  var resetY = primerFilaY;
+  if (pageTitle) {
+    const sizeTitle = await PDFLib.measureText(
+      pageTitle.toUpperCase(),
+      fontName,
+      titleFontSize
+    );
+    var titleX = parseInt((widthHeightPixels - sizeTitle.width) / 2);
+    page.drawText(pageTitle.toUpperCase(), {
+      x: titleX,
+      y: pos.y,
+      color: NativeStyles.titulo.color,
+      fontSize: titleFontSize,
+      fontName: fontName
+    });
+    pos.y -= titleFontSize + cantoSpacing;
+    resetY = pos.y;
+  }
+  page.drawText(title.toUpperCase(), {
+    x: pos.x,
+    y: pos.y,
+    color: NativeStyles.titulo.color,
+    fontSize: cantoFontSize,
+    fontName: fontName
+  });
+  pos.y -= cantoFontSize;
+  items.forEach(str => {
+    if (str !== '') {
+      page.drawText(str, {
+        x: pos.x,
+        y: pos.y,
+        color: NativeStyles.lineaNormal.color,
+        fontSize: fuenteFontSize,
+        fontName: fontName
+      });
+    }
+    // No incrementar caso especial; linea vacia en primer fila de segunda columns
+    if (!(pos.x === segundaColumnaX && str === '' && pos.y === primerFilaY)) {
+      pos.y -= cantoSpacing;
+    }
+    if (pos.y <= limiteHoja) {
+      if (pos.x == segundaColumnaX) {
+        doc.addPage(page);
+        page = getNewPage();
+        pos.x = primerColumnaX;
+        resetY = primerFilaY;
+      } else {
+        pos.x = segundaColumnaX;
+      }
+      pos.y = resetY;
+    }
+  });
+  return page;
+};
+
+export const generatePDF = async (
+  songsToPdf: Array<SongToPdf>,
+  opts: ExportToPdfOptions
+) => {
   try {
     const docsDir =
       Platform.OS == 'ios'
@@ -249,6 +325,42 @@ export const generatePDF = async (songsToPdf: Array<SongToPdf>) => {
         : `${docsDir}iResucito.pdf`;
     const pdfPathNorm = normalize(pdfPath);
     const pdfDoc = PDFDocument.create(pdfPathNorm);
+
+    var pageNumber = 0;
+
+    // Indice
+    if (opts.createIndex) {
+      var page = getNewPage();
+      // Alfabetico
+      var coord = { y: primerFilaY, x: primerColumnaX };
+      var items = getAlphaWithSeparators(songsToPdf);
+      page = await generateListing(
+        pdfDoc,
+        page,
+        coord,
+        I18n.t('search_title.alpha'),
+        items,
+        I18n.t('ui.export.songs index')
+      );
+      // Agrupados por etapa
+      var grouped = getGroupedByEtapa(songsToPdf);
+      await asyncForEach(
+        ['precatechumenate', 'catechumenate', 'election', 'liturgy'],
+        async etapa => {
+          if (coord.y !== primerFilaY) {
+            coord.y -= cantoSpacing;
+          }
+          page = await generateListing(
+            pdfDoc,
+            page,
+            coord,
+            I18n.t(`search_title.${etapa}`),
+            grouped[etapa]
+          );
+        }
+      );
+      pdfDoc.addPage(page);
+    }
     await asyncForEach(songsToPdf, async data => {
       // Tomar canto y las lineas para renderizar
       const { canto, lines } = data;
@@ -264,12 +376,10 @@ export const generatePDF = async (songsToPdf: Array<SongToPdf>) => {
         fontName,
         fuenteFontSize
       );
-      var y = 560;
+      var y = primerFilaY;
       var x = primerColumnaX;
-      const page = PDFPage.create().setMediaBox(
-        widthHeightPixels,
-        widthHeightPixels
-      );
+      const page = getNewPage();
+      pageNumber++;
       var titleX = parseInt((widthHeightPixels - sizeTitle.width) / 2);
       page.drawText(canto.titulo.toUpperCase(), {
         x: titleX,
@@ -296,7 +406,6 @@ export const generatePDF = async (songsToPdf: Array<SongToPdf>) => {
         if (it.tituloEspecial) {
           y -= parrafoSpacing * 2;
         }
-        var limiteHoja = 21;
         var alturaExtra = 0;
         if (it.notas) {
           alturaExtra = cantoSpacing;
@@ -359,6 +468,15 @@ export const generatePDF = async (songsToPdf: Array<SongToPdf>) => {
           y -= cantoSpacing;
         }
       });
+      if (opts.pageNumbers) {
+        page.drawText(pageNumber.toString(), {
+          x: widthHeightPixels / 2,
+          y: limiteHoja,
+          color: NativeStyles.lineaNormal.color,
+          fontSize: cantoFontSize,
+          fontName: fontName
+        });
+      }
       pdfDoc.addPage(page);
     });
     const path = await pdfDoc.write();
@@ -368,7 +486,10 @@ export const generatePDF = async (songsToPdf: Array<SongToPdf>) => {
   }
 };
 
-export const generateMultiPagePDF = (songs: Array<Song>) => {
+export const generateMultiPagePDF = (
+  songs: Array<Song>,
+  opts: ExportToPdfOptions
+) => {
   var items = songs.map<SongToPdf>(s => {
     return {
       canto: s,
@@ -376,5 +497,5 @@ export const generateMultiPagePDF = (songs: Array<Song>) => {
     };
   });
 
-  return generatePDF(items);
+  return generatePDF(items, opts);
 };

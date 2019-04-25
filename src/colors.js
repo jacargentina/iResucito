@@ -1,9 +1,9 @@
 // @flow
 const colors = {
-  Precatecumenado: '#EEEEEE',
-  Catecumenado: '#81D4FA',
-  Eleccion: '#C5E1A5',
-  Liturgia: '#FFF59D'
+  precatechumenate: '#EEEEEE',
+  catechumenate: '#81D4FA',
+  election: '#C5E1A5',
+  liturgy: '#FFF59D'
 };
 
 export default colors;

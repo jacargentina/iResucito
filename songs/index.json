@@ -1,6 +1,6 @@
 {
  "1": {
-  "etapa": "Catecumenado",
+  "etapa": "catechumenate",
   "cuaresma": true,
   "files": {
    "es": "Así habla el amén - Ap 3, 14-22",
@@ -8,7 +8,7 @@
   }
  },
  "2": {
-  "etapa": "Catecumenado",
+  "etapa": "catechumenate",
   "laudes": true,
   "entrada": true,
   "comunion": true,
@@ -19,7 +19,7 @@
   }
  },
  "3": {
-  "etapa": "Catecumenado",
+  "etapa": "catechumenate",
   "adviento": true,
   "entrada": true,
   "paz": true,
@@ -32,7 +32,7 @@
   }
  },
  "4": {
-  "etapa": "Catecumenado",
+  "etapa": "catechumenate",
   "laudes": true,
   "comunion": true,
   "pascua": true,
@@ -44,7 +44,7 @@
   }
  },
  "5": {
-  "etapa": "Catecumenado",
+  "etapa": "catechumenate",
   "adviento": true,
   "virgen": true,
   "files": {
@@ -55,7 +55,7 @@
   }
  },
  "6": {
-  "etapa": "Catecumenado",
+  "etapa": "catechumenate",
   "files": {
    "es": "Dichoso el hombre - Sal 1",
    "it": "Felice l'uomo - Sal 1",
@@ -63,7 +63,7 @@
   }
  },
  "7": {
-  "etapa": "Catecumenado",
+  "etapa": "catechumenate",
   "fraccion": true,
   "files": {
    "es": "El Señor me ha dado lengua de discípulo - Is 50, 4-10",
@@ -73,7 +73,7 @@
   }
  },
  "8": {
-  "etapa": "Catecumenado",
+  "etapa": "catechumenate",
   "pascua": true,
   "entrada": true,
   "files": {
@@ -84,7 +84,7 @@
   }
  },
  "9": {
-  "etapa": "Catecumenado",
+  "etapa": "catechumenate",
   "fraccion": true,
   "files": {
    "es": "El lagarero - Is 63, 1-6",
@@ -94,7 +94,7 @@
   }
  },
  "10": {
-  "etapa": "Catecumenado",
+  "etapa": "catechumenate",
   "entrada": true,
   "files": {
    "es": "El sembrador - Mc 4, 3ss",
@@ -104,7 +104,7 @@
   }
  },
  "11": {
-  "etapa": "Catecumenado",
+  "etapa": "catechumenate",
   "cuaresma": true,
   "pascua": true,
   "laudes": true,
@@ -116,7 +116,7 @@
   }
  },
  "12": {
-  "etapa": "Catecumenado",
+  "etapa": "catechumenate",
   "files": {
    "es": "Jacob - Gn 32, 23-29",
    "it": "Giacobbe - Gn 32, 23-29",
@@ -125,7 +125,7 @@
   }
  },
  "13": {
-  "etapa": "Catecumenado",
+  "etapa": "catechumenate",
   "files": {
    "es": "Ninguno puede servir a dos señores - Mt 6, 24-33",
    "it": "Nessuno può servire due padroni - Mt 6, 24-33",
@@ -134,7 +134,7 @@
   }
  },
  "14": {
-  "etapa": "Catecumenado",
+  "etapa": "catechumenate",
   "files": {
    "es": "Oh Señor, mi corazón ya no es ambicioso - Sal 131 (130)",
    "it": "Signore, il mio cuore non ha più pretese - Sal 131 (130)",
@@ -142,7 +142,7 @@
   }
  },
  "15": {
-  "etapa": "Catecumenado",
+  "etapa": "catechumenate",
   "files": {
    "es": "Señor, tú me escrutas - Sal 139 (138)",
    "it": "Signore tu mi scruti e mi conosci - Sal 139 (138)",
@@ -151,7 +151,7 @@
   }
  },
  "16": {
-  "etapa": "Catecumenado",
+  "etapa": "catechumenate",
   "pentecostes": true,
   "files": {
    "es": "Shemá Israel - Dt 6, 4-9",
@@ -161,7 +161,7 @@
   }
  },
  "17": {
-  "etapa": "Catecumenado",
+  "etapa": "catechumenate",
   "cuaresma": true,
   "files": {
    "es": "Siéntate solitario y silencioso - Lm 3",
@@ -171,7 +171,7 @@
   }
  },
  "18": {
-  "etapa": "Catecumenado",
+  "etapa": "catechumenate",
   "virgen": true,
   "fraccion": true,
   "pascua": true,
@@ -183,7 +183,7 @@
   }
  },
  "19": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "pentecostes": true,
   "pascua": true,
   "entrada": true,
@@ -196,14 +196,14 @@
   }
  },
  "20": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "files": {
    "es": "A nadie demos ocasión de tropiezo - 2 Co 6, 3ss",
    "pt": "A ninguém demos ocasião de tropeço - 2 Co 6, 3ss"
   }
  },
  "21": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "cuaresma": true,
   "files": {
    "es": "A ti levanto mis ojos - Sal 123 (122)",
@@ -212,7 +212,7 @@
   }
  },
  "22": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "cuaresma": true,
   "files": {
    "es": "A ti, Señor, en mi clamor imploro - Sal 142 (141)",
@@ -221,7 +221,7 @@
   }
  },
  "23": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "cuaresma": true,
   "files": {
    "es": "A ti, Señor, levanto mi alma - Sal 25 (24)",
@@ -230,7 +230,7 @@
   }
  },
  "24": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "cuaresma": true,
   "laudes": true,
   "files": {
@@ -240,7 +240,7 @@
   }
  },
  "25": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "laudes": true,
   "entrada": true,
   "files": {
@@ -250,7 +250,7 @@
   }
  },
  "26": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "laudes": true,
   "final": true,
   "files": {
@@ -260,7 +260,7 @@
   }
  },
  "27": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "cuaresma": true,
   "laudes": true,
   "files": {
@@ -270,7 +270,7 @@
   }
  },
  "28": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "laudes": true,
   "files": {
    "es": "Alabad al Señor en el cielo - Sal 148",
@@ -280,7 +280,7 @@
   }
  },
  "29": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "pascua": true,
   "final": true,
   "files": {
@@ -290,7 +290,7 @@
   }
  },
  "30": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "pascua": true,
   "niños": true,
   "paz": true,
@@ -300,7 +300,7 @@
   }
  },
  "31": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "laudes": true,
   "comunion": true,
   "files": {
@@ -310,7 +310,7 @@
   }
  },
  "32": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "entrada": true,
   "files": {
    "es": "Alzaos puertas - Sal 24 (23)",
@@ -318,7 +318,7 @@
   }
  },
  "33": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "cuaresma": true,
   "laudes": true,
   "files": {
@@ -328,7 +328,7 @@
   }
  },
  "34": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "pascua": true,
   "fraccion": true,
   "files": {
@@ -338,7 +338,7 @@
   }
  },
  "35": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "virgen": true,
   "files": {
    "es": "Ave María I - Lc 1, 28ss",
@@ -346,7 +346,7 @@
   }
  },
  "36": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "virgen": true,
   "final": true,
   "files": {
@@ -355,7 +355,7 @@
   }
  },
  "37": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "cuaresma": true,
   "laudes": true,
   "files": {
@@ -366,7 +366,7 @@
   }
  },
  "38": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "paz": true,
   "comunion": true,
   "final": true,
@@ -378,7 +378,7 @@
   }
  },
  "39": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "cuaresma": true,
   "laudes": true,
   "files": {
@@ -388,7 +388,7 @@
   }
  },
  "40": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "cuaresma": true,
   "laudes": true,
   "files": {
@@ -399,7 +399,7 @@
   }
  },
  "41": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "virgen": true,
   "entrada": true,
   "final": true,
@@ -411,7 +411,7 @@
   }
  },
  "42": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "files": {
    "es": "Bendito eres, Señor - Dn 3, 52-57",
    "it": "Benedetto sei tu Signore - Dn 3, 52-57",
@@ -420,7 +420,7 @@
   }
  },
  "43": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "files": {
    "es": "Benedictus - Lc 1, 67-80",
    "it": "Cantico di Zaccaria - Lc 1, 67-80",
@@ -429,7 +429,7 @@
   }
  },
  "44": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "laudes": true,
   "entrada": true,
   "final": true,
@@ -440,7 +440,7 @@
   }
  },
  "45": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "pascua": true,
   "files": {
    "es": "Canto de Moisés - Ex 15, 1-18",
@@ -449,7 +449,7 @@
   }
  },
  "46": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "files": {
    "es": "Caritas Christi urget nos - 2 Co 5, 14-15. 17. 21",
    "it": "Caritas Christi urget nos - 2 Co 5, 14-15. 17. 21",
@@ -458,7 +458,7 @@
   }
  },
  "47": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "laudes": true,
   "files": {
    "es": "Cántico de los tres jóvenes - Dn 3, 57-58",
@@ -468,7 +468,7 @@
   }
  },
  "48": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "cuaresma": true,
   "laudes": true,
   "files": {
@@ -479,7 +479,7 @@
   }
  },
  "49": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "paz": true,
   "files": {
    "es": "Cómo es maravilloso - Sal 133 (132)",
@@ -489,14 +489,14 @@
   }
  },
  "50": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "entrada": true,
   "files": {
    "es": "Cristo es la luz - Himno"
   }
  },
  "51": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "pascua": true,
   "laudes": true,
   "files": {
@@ -507,7 +507,7 @@
   }
  },
  "52": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "cuaresma": true,
   "entrada": true,
   "final": true,
@@ -519,7 +519,7 @@
   }
  },
  "53": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "pascua": true,
   "paz": true,
   "final": true,
@@ -531,7 +531,7 @@
   }
  },
  "54": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "cuaresma": true,
   "files": {
    "es": "De profundis - Sal 130 (129)",
@@ -541,7 +541,7 @@
   }
  },
  "55": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "cuaresma": true,
   "entrada": true,
   "files": {
@@ -552,7 +552,7 @@
   }
  },
  "56": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "laudes": true,
   "files": {
    "es": "Delante de los ángeles - Sal 138 (137)",
@@ -562,7 +562,7 @@
   }
  },
  "57": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "laudes": true,
   "files": {
    "es": "Dice el Señor a mi Señor - Sal 110 (109)",
@@ -571,7 +571,7 @@
   }
  },
  "58": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "final": true,
   "files": {
    "es": "Día de reposo - Jn 8, 52",
@@ -581,7 +581,7 @@
   }
  },
  "59": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "adviento": true,
   "entrada": true,
   "files": {
@@ -592,7 +592,7 @@
   }
  },
  "60": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "comunion": true,
   "files": {
    "es": "El Señor es mi pastor - Sal 23 (24)",
@@ -602,7 +602,7 @@
   }
  },
  "61": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "pascua": true,
   "comunion": true,
   "files": {
@@ -613,7 +613,7 @@
   }
  },
  "62": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "files": {
    "es": "El necio piensa que Dios no existe - Sal 13 (14)",
    "it": "Fino a quando - Sal 13 (12)",
@@ -622,7 +622,7 @@
   }
  },
  "63": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "navidad": true,
   "files": {
    "es": "El pueblo que caminaba en las tinieblas - Is 9, 1-5",
@@ -631,7 +631,7 @@
   }
  },
  "64": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "cuaresma": true,
   "files": {
    "es": "Elí, Elí, lamá sabactaní - Sal 22 (21)",
@@ -641,7 +641,7 @@
   }
  },
  "65": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "laudes": true,
   "fraccion": true,
   "files": {
@@ -651,7 +651,7 @@
   }
  },
  "66": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "entrada": true,
   "final": true,
   "files": {
@@ -661,7 +661,7 @@
   }
  },
  "67": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "laudes": true,
   "files": {
    "es": "Escóndeme en lo oculto de tu tienda - Sal 27 (26)",
@@ -669,7 +669,7 @@
   }
  },
  "68": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "files": {
    "es": "Están rotas mis ataduras - Carmen 63",
    "it": "Sono rotti i miei legami - Carmen 63",
@@ -677,7 +677,7 @@
   }
  },
  "69": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "paz": true,
   "files": {
    "es": "Evenu Shalom Alejem - Canto hebreo",
@@ -687,7 +687,7 @@
   }
  },
  "70": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "files": {
    "es": "Exultad, justos, en el Señor - Sal 32",
    "it": "Esultate giusti nel Signore - Sal 32",
@@ -696,7 +696,7 @@
   }
  },
  "71": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "files": {
    "es": "Éste es el día en que actuó el Señor - Sal 118 (117)",
    "it": "Non morirò - Sal 118 (117)",
@@ -705,7 +705,7 @@
   }
  },
  "72": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "files": {
    "es": "Felicidad para el hombre - Sal 128 (127)",
    "it": "Felicità per l'uomo - Sal 128 (127)",
@@ -713,7 +713,7 @@
   }
  },
  "73": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "paz": true,
   "comunion": true,
   "final": true,
@@ -725,7 +725,7 @@
   }
  },
  "74": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "entrada": true,
   "final": true,
   "files": {
@@ -735,7 +735,7 @@
   }
  },
  "75": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "entrada": true,
   "files": {
    "es": "Hacia ti, morada santa - Himno",
@@ -745,7 +745,7 @@
   }
  },
  "76": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "cuaresma": true,
   "files": {
    "es": "Hasta cuándo - Sal 13 (12)",
@@ -753,7 +753,7 @@
   }
  },
  "77": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "fraccion": true,
   "files": {
    "es": "He aquí mi siervo - Is 42",
@@ -761,7 +761,7 @@
   }
  },
  "78": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "adviento": true,
   "files": {
    "es": "He aquí que vengo presto - Ap 22, 12-16",
@@ -771,7 +771,7 @@
   }
  },
  "79": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "adviento": true,
   "cuaresma": true,
   "files": {
@@ -782,7 +782,7 @@
   }
  },
  "80": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "cuaresma": true,
   "files": {
    "es": "Hijas de Jerusalén - Lc 23, 28-46",
@@ -792,7 +792,7 @@
   }
  },
  "81": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "pascua": true,
   "files": {
    "es": "Himno a Cristo luz - Himno",
@@ -800,7 +800,7 @@
   }
  },
  "82": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "cuaresma": true,
   "fraccion": true,
   "files": {
@@ -810,7 +810,7 @@
   }
  },
  "83": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "adviento": true,
   "files": {
    "es": "Himno de Adviento - Himno",
@@ -820,7 +820,7 @@
   }
  },
  "84": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "pascua": true,
   "laudes": true,
   "files": {
@@ -830,7 +830,7 @@
   }
  },
  "85": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "laudes": true,
   "files": {
    "es": "Himno de la Ascensión - Himno",
@@ -838,7 +838,7 @@
   }
  },
  "86": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "pascua": true,
   "comunion": true,
   "final": true,
@@ -849,7 +849,7 @@
   }
  },
  "87": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "final": true,
   "files": {
    "es": "Id y anunciad a mis hermanos - Mt 28, 7-10.16-20",
@@ -859,7 +859,7 @@
   }
  },
  "88": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "cuaresma": true,
   "files": {
    "es": "Improperios - Himno",
@@ -867,7 +867,7 @@
   }
  },
  "89": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "cuaresma": true,
   "paz": true,
   "files": {
@@ -878,7 +878,7 @@
   }
  },
  "90": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "cuaresma": true,
   "files": {
    "es": "La marcha es dura - Himno",
@@ -888,14 +888,14 @@
   }
  },
  "91": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "virgen": true,
   "files": {
    "es": "La salve - Himno"
   }
  },
  "92": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "final": true,
   "files": {
    "es": "La siega de las naciones - Jn 4, 31-38",
@@ -904,7 +904,7 @@
   }
  },
  "93": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "cuaresma": true,
   "laudes": true,
   "entrada": true,
@@ -916,7 +916,7 @@
   }
  },
  "94": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "cuaresma": true,
   "laudes": true,
   "entrada": true,
@@ -928,7 +928,7 @@
   }
  },
  "95": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "adviento": true,
   "pentecostes": true,
   "final": true,
@@ -939,7 +939,7 @@
   }
  },
  "96": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "virgen": true,
   "laudes": true,
   "files": {
@@ -950,7 +950,7 @@
   }
  },
  "97": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "virgen": true,
   "files": {
    "es": "María de Jasna Göra - Himno",
@@ -959,7 +959,7 @@
   }
  },
  "98": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "virgen": true,
   "entrada": true,
   "files": {
@@ -969,7 +969,7 @@
   }
  },
  "99": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "cuaresma": true,
   "files": {
    "es": "María, madre de la Iglesia - Jn 19, 26-34",
@@ -979,7 +979,7 @@
   }
  },
  "100": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "virgen": true,
   "files": {
    "es": "María, madre del camino ardiente - Himno",
@@ -989,7 +989,7 @@
   }
  },
  "101": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "cuaresma": true,
   "virgen": true,
   "files": {
@@ -1000,7 +1000,7 @@
   }
  },
  "102": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "adviento": true,
   "entrada": true,
   "files": {
@@ -1011,7 +1011,7 @@
   }
  },
  "103": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "files": {
    "es": "Me has seducido Señor - Jr 20, 7-18",
    "it": "Mi hai sedotto, Signore - Jr 20, 7-18",
@@ -1020,7 +1020,7 @@
   }
  },
  "104": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "paz": true,
   "files": {
    "es": "Mirad que estupendo - Sal 133 (132)",
@@ -1030,7 +1030,7 @@
   }
  },
  "105": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "cuaresma": true,
   "laudes": true,
   "files": {
@@ -1041,7 +1041,7 @@
   }
  },
  "106": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "files": {
    "es": "Mucho me han perseguido - Sal 129",
    "it": "Molto mi hanno perseguitato - Sal 129",
@@ -1050,7 +1050,7 @@
   }
  },
  "107": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "pascua": true,
   "comunion": true,
   "files": {
@@ -1059,7 +1059,7 @@
   }
  },
  "108": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "fraccion": true,
   "files": {
    "es": "No hay en él parecer - Is 53, 2ss",
@@ -1069,7 +1069,7 @@
   }
  },
  "109": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "files": {
    "es": "Oh Dios, por tu nombre sálvame - Sal 54 (53)",
    "it": "Oh dio per il tuo nome salvami - Sal 54 (53)",
@@ -1078,7 +1078,7 @@
   }
  },
  "110": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "cuaresma": true,
   "fraccion": true,
   "comunion": true,
@@ -1090,7 +1090,7 @@
   }
  },
  "111": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "laudes": true,
   "entrada": true,
   "files": {
@@ -1101,7 +1101,7 @@
   }
  },
  "112": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "adviento": true,
   "files": {
    "es": "Oh cielos, lloved de lo alto - Is 45, 8",
@@ -1111,7 +1111,7 @@
   }
  },
  "113": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "pascua": true,
   "comunion": true,
   "files": {
@@ -1122,7 +1122,7 @@
   }
  },
  "114": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "entrada": true,
   "files": {
    "es": "Os tomaré de entre las naciones - Ez 36, 24-28",
@@ -1130,7 +1130,7 @@
   }
  },
  "115": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "pentecostes": true,
   "comunion": true,
   "files": {
@@ -1141,7 +1141,7 @@
   }
  },
  "116": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "paz": true,
   "files": {
    "es": "Por el amor de mis amigos - Sal 122 (121)",
@@ -1151,7 +1151,7 @@
   }
  },
  "117": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "pascua": true,
   "niños": true,
   "paz": true,
@@ -1163,7 +1163,7 @@
   }
  },
  "118": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "cuaresma": true,
   "laudes": true,
   "files": {
@@ -1174,7 +1174,7 @@
   }
  },
  "119": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "cuaresma": true,
   "laudes": true,
   "files": {
@@ -1184,7 +1184,7 @@
   }
  },
  "120": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "entrada": true,
   "files": {
    "es": "Qué amables son tus moradas, Señor - Sal 84 (83)",
@@ -1194,7 +1194,7 @@
   }
  },
  "121": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "paz": true,
   "files": {
    "es": "Qué estupendo, qué alegría - Sal 133 (132)",
@@ -1202,7 +1202,7 @@
   }
  },
  "122": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "final": true,
   "files": {
    "es": "Quiero andar madre a Jerusalén - Canto sefardí",
@@ -1212,7 +1212,7 @@
   }
  },
  "123": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "cuaresma": true,
   "files": {
    "es": "Quiero cantar - Sal 57 (56)",
@@ -1222,7 +1222,7 @@
   }
  },
  "124": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "comunion": true,
   "final": true,
   "files": {
@@ -1233,7 +1233,7 @@
   }
  },
  "125": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "laudes": true,
   "comunion": true,
   "files": {
@@ -1244,7 +1244,7 @@
   }
  },
  "126": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "pascua": true,
   "comunion": true,
   "files": {
@@ -1255,7 +1255,7 @@
   }
  },
  "127": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "virgen": true,
   "final": true,
   "files": {
@@ -1265,7 +1265,7 @@
   }
  },
  "128": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "niños": true,
   "paz": true,
   "files": {
@@ -1275,7 +1275,7 @@
   }
  },
  "129": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "cuaresma": true,
   "comunion": true,
   "files": {
@@ -1286,7 +1286,7 @@
   }
  },
  "130": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "cuaresma": true,
   "entrada": true,
   "files": {
@@ -1297,7 +1297,7 @@
   }
  },
  "131": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "files": {
    "es": "Señor, no me corrijas en tu cólera - Sal 6",
    "it": "Signore, non punirmi nel tuo sdegno - Sal 6",
@@ -1305,7 +1305,7 @@
   }
  },
  "132": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "virgen": true,
   "final": true,
   "files": {
@@ -1315,7 +1315,7 @@
   }
  },
  "133": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "laudes": true,
   "entrada": true,
   "files": {
@@ -1325,7 +1325,7 @@
   }
  },
  "134": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "laudes": true,
   "files": {
    "es": "Si hoy escucháis su voz - Sal 95 (94)",
@@ -1335,7 +1335,7 @@
   }
  },
  "135": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "cuaresma": true,
   "files": {
    "es": "Si me he refugiado en el Señor - Sal 11 (10)",
@@ -1345,7 +1345,7 @@
   }
  },
  "136": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "final": true,
   "files": {
    "es": "Sión, madre de todos los pueblos - Sal 87 (86)",
@@ -1355,7 +1355,7 @@
   }
  },
  "137": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "virgen": true,
   "files": {
    "es": "Sola a solo - Himno",
@@ -1363,7 +1363,7 @@
   }
  },
  "138": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "cuaresma": true,
   "virgen": true,
   "files": {
@@ -1373,7 +1373,7 @@
   }
  },
  "139": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "files": {
    "es": "Te estoy llamando, Señor - Sal 141 (140)",
    "it": "Ti sto chiamando - Sal 141 (140)",
@@ -1382,7 +1382,7 @@
   }
  },
  "140": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "cuaresma": true,
   "files": {
    "es": "Te he manifestado mi pecado - Sal 32 (31)",
@@ -1392,7 +1392,7 @@
   }
  },
  "141": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "adviento": true,
   "cuaresma": true,
   "files": {
@@ -1403,7 +1403,7 @@
   }
  },
  "142": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "pentecostes": true,
   "comunion": true,
   "navidad": true,
@@ -1415,7 +1415,7 @@
   }
  },
  "143": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "adviento": true,
   "pentecostes": true,
   "virgen": true,
@@ -1426,7 +1426,7 @@
   }
  },
  "144": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "niños": true,
   "navidad": true,
   "files": {
@@ -1437,7 +1437,7 @@
   }
  },
  "145": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "niños": true,
   "navidad": true,
   "files": {
@@ -1447,7 +1447,7 @@
   }
  },
  "146": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "pentecostes": true,
   "files": {
    "es": "Ven Espíritu Santo - Secuencia de Pentecostés",
@@ -1456,7 +1456,7 @@
   }
  },
  "147": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "entrada": true,
   "files": {
    "es": "Ven del Líbano - Ct 4, 8ss",
@@ -1466,7 +1466,7 @@
   }
  },
  "148": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "adviento": true,
   "final": true,
   "files": {
@@ -1477,7 +1477,7 @@
   }
  },
  "149": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "pentecostes": true,
   "files": {
    "es": "Veni creator - Himno",
@@ -1485,7 +1485,7 @@
   }
  },
  "150": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "adviento": true,
   "pentecostes": true,
   "files": {
@@ -1496,7 +1496,7 @@
   }
  },
  "151": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "virgen": true,
   "files": {
    "es": "Virgen de la maravilla - Himno",
@@ -1505,7 +1505,7 @@
   }
  },
  "152": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "adviento": true,
   "files": {
    "es": "Vivid alegres - Flp 4, 4ss",
@@ -1513,7 +1513,7 @@
   }
  },
  "153": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "files": {
    "es": "Vosotros sois la luz del mundo - Mt 5, 14-16",
    "pt": "Vós sois a luz do mundo - Mt 5, 14-16",
@@ -1521,7 +1521,7 @@
   }
  },
  "154": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "niños": true,
   "navidad": true,
   "files": {
@@ -1531,7 +1531,7 @@
   }
  },
  "155": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "cuaresma": true,
   "laudes": true,
   "files": {
@@ -1542,7 +1542,7 @@
   }
  },
  "156": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "files": {
    "es": "Yo te amo, Señor - Sal 18",
    "it": "Ti amo Signore - Sal 18",
@@ -1551,7 +1551,7 @@
   }
  },
  "157": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "entrada": true,
   "final": true,
   "files": {
@@ -1561,7 +1561,7 @@
   }
  },
  "158": {
-  "etapa": "Eleccion",
+  "etapa": "election",
   "pascua": true,
   "laudes": true,
   "files": {
@@ -1570,7 +1570,7 @@
   }
  },
  "159": {
-  "etapa": "Eleccion",
+  "etapa": "election",
   "laudes": true,
   "comunion": true,
   "files": {
@@ -1580,7 +1580,7 @@
   }
  },
  "160": {
-  "etapa": "Eleccion",
+  "etapa": "election",
   "files": {
    "es": "Bendito sea Dios - Ef 1, 3-13",
    "it": "Benedetto sia iddio - Ef 1, 3-13",
@@ -1589,7 +1589,7 @@
   }
  },
  "161": {
-  "etapa": "Eleccion",
+  "etapa": "election",
   "files": {
    "es": "Como condenados a muerte - 1 Co 4, 9.13",
    "it": "Come condannati a morte - 1 Co 4, 9.13",
@@ -1598,7 +1598,7 @@
   }
  },
  "162": {
-  "etapa": "Eleccion",
+  "etapa": "election",
   "pascua": true,
   "comunion": true,
   "files": {
@@ -1609,7 +1609,7 @@
   }
  },
  "163": {
-  "etapa": "Eleccion",
+  "etapa": "election",
   "pascua": true,
   "comunion": true,
   "files": {
@@ -1619,7 +1619,7 @@
   }
  },
  "164": {
-  "etapa": "Eleccion",
+  "etapa": "election",
   "laudes": true,
   "final": true,
   "files": {
@@ -1630,7 +1630,7 @@
   }
  },
  "165": {
-  "etapa": "Eleccion",
+  "etapa": "election",
   "comunion": true,
   "files": {
    "es": "El mismo Dios - 2 Co 4, 6-12",
@@ -1640,7 +1640,7 @@
   }
  },
  "166": {
-  "etapa": "Eleccion",
+  "etapa": "election",
   "fraccion": true,
   "files": {
    "es": "En una noche oscura - San Juan de la Cruz",
@@ -1650,7 +1650,7 @@
   }
  },
  "167": {
-  "etapa": "Eleccion",
+  "etapa": "election",
   "entrada": true,
   "fraccion": true,
   "files": {
@@ -1661,7 +1661,7 @@
   }
  },
  "168": {
-  "etapa": "Eleccion",
+  "etapa": "election",
   "cuaresma": true,
   "fraccion": true,
   "files": {
@@ -1672,7 +1672,7 @@
   }
  },
  "169": {
-  "etapa": "Eleccion",
+  "etapa": "election",
   "pascua": true,
   "comunion": true,
   "files": {
@@ -1681,7 +1681,7 @@
   }
  },
  "170": {
-  "etapa": "Eleccion",
+  "etapa": "election",
   "pentecostes": true,
   "comunion": true,
   "files": {
@@ -1692,7 +1692,7 @@
   }
  },
  "171": {
-  "etapa": "Eleccion",
+  "etapa": "election",
   "laudes": true,
   "entrada": true,
   "files": {
@@ -1702,7 +1702,7 @@
   }
  },
  "172": {
-  "etapa": "Eleccion",
+  "etapa": "election",
   "files": {
    "es": "Jesús recorria las ciudades - Mt 9, 35ss",
    "it": "Gesù percorreva tutte le città - Mt 9, 35ss",
@@ -1711,7 +1711,7 @@
   }
  },
  "173": {
-  "etapa": "Eleccion",
+  "etapa": "election",
   "navidad": true,
   "virgen": true,
   "files": {
@@ -1721,7 +1721,7 @@
   }
  },
  "174": {
-  "etapa": "Eleccion",
+  "etapa": "election",
   "laudes": true,
   "comunion": true,
   "files": {
@@ -1732,7 +1732,7 @@
   }
  },
  "175": {
-  "etapa": "Eleccion",
+  "etapa": "election",
   "comunion": true,
   "files": {
    "es": "La voz de mi amado - Ct 2, 8-17",
@@ -1741,7 +1741,7 @@
   }
  },
  "176": {
-  "etapa": "Eleccion",
+  "etapa": "election",
   "cuaresma": true,
   "laudes": true,
   "files": {
@@ -1751,7 +1751,7 @@
   }
  },
  "177": {
-  "etapa": "Eleccion",
+  "etapa": "election",
   "comunion": true,
   "files": {
    "es": "No resistáis al mal - Mt 5, 38ss",
@@ -1761,7 +1761,7 @@
   }
  },
  "178": {
-  "etapa": "Eleccion",
+  "etapa": "election",
   "cuaresma": true,
   "files": {
    "es": "No sufras por los malvados - Sal 37 (36)",
@@ -1771,7 +1771,7 @@
   }
  },
  "179": {
-  "etapa": "Eleccion",
+  "etapa": "election",
   "pascua": true,
   "files": {
    "es": "Noli me tangere - Jn 20, 15-17",
@@ -1781,7 +1781,7 @@
   }
  },
  "180": {
-  "etapa": "Eleccion",
+  "etapa": "election",
   "comunion": true,
   "files": {
    "es": "Sermon de la montaña - Lc 6, 20-38",
@@ -1790,7 +1790,7 @@
   }
  },
  "181": {
-  "etapa": "Liturgia",
+  "etapa": "liturgy",
   "files": {
    "es": "Aleluya Pascual",
    "it": "Alleluja Pasquale",
@@ -1798,13 +1798,13 @@
   }
  },
  "182": {
-  "etapa": "Liturgia",
+  "etapa": "liturgy",
   "files": {
    "es": "Aleluya interleccional antes del Evangelio"
   }
  },
  "183": {
-  "etapa": "Liturgia",
+  "etapa": "liturgy",
   "entrada": true,
   "files": {
    "es": "Amén, amén, amén - Ap 7, 12-14",
@@ -1812,19 +1812,19 @@
   }
  },
  "184": {
-  "etapa": "Liturgia",
+  "etapa": "liturgy",
   "files": {
    "es": "Anáfora de la Sal"
   }
  },
  "185": {
-  "etapa": "Liturgia",
+  "etapa": "liturgy",
   "files": {
    "es": "Antífona interleccional para el tiempo de Cuaresma"
   }
  },
  "186": {
-  "etapa": "Liturgia",
+  "etapa": "liturgy",
   "files": {
    "es": "Bendición del agua",
    "it": "Benedizione dell'acqua",
@@ -1833,7 +1833,7 @@
   }
  },
  "187": {
-  "etapa": "Liturgia",
+  "etapa": "liturgy",
   "files": {
    "es": "Bendición penitencial - oracion conclusiva de accion de gracias",
    "it": "Benedizione penitenziale - preghiera conclusiva di ringraziamento",
@@ -1841,14 +1841,14 @@
   }
  },
  "188": {
-  "etapa": "Liturgia",
+  "etapa": "liturgy",
   "files": {
    "es": "Credo - Símbolo apostolico",
    "pt": "Credo - Símbolo apostólico"
   }
  },
  "189": {
-  "etapa": "Liturgia",
+  "etapa": "liturgy",
   "pascua": true,
   "files": {
    "es": "Gloria a Dios en lo alto del cielo - Himno litúrgico",
@@ -1857,28 +1857,28 @@
   }
  },
  "190": {
-  "etapa": "Liturgia",
+  "etapa": "liturgy",
   "files": {
    "es": "Letanías penitenciales II",
    "pt": "Ladainha penitencial II"
   }
  },
  "191": {
-  "etapa": "Liturgia",
+  "etapa": "liturgy",
   "files": {
    "es": "Letanía del Cordero de Dios - Himno Agnus Dei",
    "pt": "Cordeiro de Deus - Ladainha do Cordeiro de Deus"
   }
  },
  "192": {
-  "etapa": "Liturgia",
+  "etapa": "liturgy",
   "files": {
    "es": "Letanías bautismales de los santos",
    "pt": "Ladainha de todos os santos"
   }
  },
  "193": {
-  "etapa": "Liturgia",
+  "etapa": "liturgy",
   "files": {
    "es": "Letanías penitenciales I",
    "de-AT": "Kurze Busslitanei",
@@ -1886,66 +1886,66 @@
   }
  },
  "194": {
-  "etapa": "Liturgia",
+  "etapa": "liturgy",
   "files": {
    "es": "Padre Nuestro",
    "pt": "Pai Nosso"
   }
  },
  "195": {
-  "etapa": "Liturgia",
+  "etapa": "liturgy",
   "files": {
    "es": "Plegaria Eucaristica II - Anamnesis modelo I"
   }
  },
  "196": {
-  "etapa": "Liturgia",
+  "etapa": "liturgy",
   "files": {
    "es": "Plegaria Eucaristica II - Consagracion modelo I"
   }
  },
  "197": {
-  "etapa": "Liturgia",
+  "etapa": "liturgy",
   "files": {
    "es": "Plegaria Eucaristica II - Consagracion modelo II"
   }
  },
  "198": {
-  "etapa": "Liturgia",
+  "etapa": "liturgy",
   "files": {
    "es": "Plegaria Eucaristica II - Prefacio modelo I",
    "pt": "Oração Eucaristica II - Prefácio modelo I"
   }
  },
  "199": {
-  "etapa": "Liturgia",
+  "etapa": "liturgy",
   "files": {
    "es": "Plegaria Eucaristica II - Prefacio modelo II (1986)"
   }
  },
  "200": {
-  "etapa": "Liturgia",
+  "etapa": "liturgy",
   "files": {
    "es": "Plegaria Eucaristica IV - Prefacio (1988)",
    "pt": "Oração Eucarística IV - Prefácio (1988)"
   }
  },
  "201": {
-  "etapa": "Liturgia",
+  "etapa": "liturgy",
   "files": {
    "es": "Prefacio Pascual I",
    "pt": "Prefácio Pascual I"
   }
  },
  "202": {
-  "etapa": "Liturgia",
+  "etapa": "liturgy",
   "files": {
    "es": "Pregón Pascual",
    "pt": "Pregão Pascal"
   }
  },
  "203": {
-  "etapa": "Liturgia",
+  "etapa": "liturgy",
   "files": {
    "es": "Santo 1982 - Tiempo Ordinario",
    "it": "Santo 1982 - Tempo Ordinario",
@@ -1953,21 +1953,21 @@
   }
  },
  "204": {
-  "etapa": "Liturgia",
+  "etapa": "liturgy",
   "files": {
    "es": "Santo 1988 - Tiempo Ordinario",
    "pt": "Santo 1988 - Tempo Comum"
   }
  },
  "205": {
-  "etapa": "Liturgia",
+  "etapa": "liturgy",
   "files": {
    "es": "Santo Hebreo - Cuaresma",
    "pt": "Santo hebraico - Tempo da Quaresma"
   }
  },
  "206": {
-  "etapa": "Liturgia",
+  "etapa": "liturgy",
   "files": {
    "es": "Santo Palestina 74 - Pascua",
    "it": "Santo Palestina 74 - Pasquale",
@@ -1975,14 +1975,14 @@
   }
  },
  "207": {
-  "etapa": "Liturgia",
+  "etapa": "liturgy",
   "files": {
    "es": "Santo Palomeras 65 - Adviento y Navidad",
    "pt": "Santo Palomeras 65 - Tempo do Advento - Natal"
   }
  },
  "208": {
-  "etapa": "Liturgia",
+  "etapa": "liturgy",
   "files": {
    "es": "Santo Roma 77 - Tiempo Ordinario",
    "it": "Santo Roma 77 - Tempo Ordinario",
@@ -1990,7 +1990,7 @@
   }
  },
  "209": {
-  "etapa": "Liturgia",
+  "etapa": "liturgy",
   "pentecostes": true,
   "entrada": true,
   "files": {
@@ -1998,7 +1998,7 @@
   }
  },
  "210": {
-  "etapa": "Liturgia",
+  "etapa": "liturgy",
   "laudes": true,
   "files": {
    "es": "Te deum - Himno",
@@ -2007,7 +2007,7 @@
   }
  },
  "211": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "entrada": true,
   "comunion": true,
   "cuaresma": true,
@@ -2018,14 +2018,14 @@
   }
  },
  "212": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "files": {
    "es": "El Mesías, León para vencer - Vittorino de Pettau",
    "pt": "O messias leão para vencer - Vitorino de Pettau"
   }
  },
  "213": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "entrada": true,
   "comunion": true,
   "files": {
@@ -2034,7 +2034,7 @@
   }
  },
  "214": {
-  "etapa": "Eleccion",
+  "etapa": "election",
   "pascua": true,
   "comunion": true,
   "files": {
@@ -2043,14 +2043,14 @@
   }
  },
  "215": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "files": {
    "es": "María paloma incorrupta - Himno",
    "pt": "Maria pomba incorrupta - Hino"
   }
  },
  "216": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "adviento": true,
   "pascua": true,
   "files": {
@@ -2059,14 +2059,14 @@
   }
  },
  "217": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "files": {
    "es": "Resurrexit - Jn 11, 25-27",
    "pt": "Resurrexit - Jo 11, 25-27"
   }
  },
  "218": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "pascua": true,
   "fraccion": true,
   "comunion": true,
@@ -2076,7 +2076,7 @@
   }
  },
  "219": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "adviento": true,
   "laudes": true,
   "files": {
@@ -2087,28 +2087,28 @@
   }
  },
  "220": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "files": {
    "es": "Madre dolorosa - Himno de San Romano el Mélodo",
    "pt": "Como ovelha que vê - Hino de São Romano o Melodista"
   }
  },
  "221": {
-  "etapa": "Eleccion",
+  "etapa": "election",
   "pascua": true,
   "files": {
    "es": "Adónde te escondiste amado - Cántico Espiritual"
   }
  },
  "222": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "navidad": true,
   "files": {
    "es": "Alegría, ha nacido el salvador - Villancico"
   }
  },
  "223": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "files": {
    "es": "Cuando Israel era un niño - Os 11,1-9",
    "it": "Quando israele era un bimbo - Os 11,1-9",
@@ -2116,20 +2116,20 @@
   }
  },
  "224": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "files": {
    "es": "Sube Dios entre aclamaciones - Sal 47 (46)",
    "pt": "Sobe deus entre aclamações - Sal 47 (46)"
   }
  },
  "225": {
-  "etapa": "Eleccion",
+  "etapa": "election",
   "files": {
    "es": "Suba el esposo al leño de su tálamo - Himno de san Quodvultdeus"
   }
  },
  "226": {
-  "etapa": "Precatecumenado",
+  "etapa": "precatechumenate",
   "files": {
    "it": "Il Signore è mia luce e mia salvezza - Sal 26 (27)",
    "pt": "O Senhor é minha luz e salvação - Sal 27 (26)"

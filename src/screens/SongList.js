@@ -190,7 +190,11 @@ const ExportToPdf = withNavigation(props => {
                 total: songToExport.length
               })
             });
-            generateMultiPagePDF(songToExport).then(path => {
+            const opts: ExportToPdfOptions = {
+              createIndex: true,
+              pageNumbers: true
+            };
+            generateMultiPagePDF(songToExport, opts).then(path => {
               navigation.navigate('PDFViewer', {
                 uri: path,
                 title: I18n.t('ui.export.pdf viewer title')

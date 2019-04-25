@@ -5,7 +5,11 @@ import path from 'path';
 import osLocale from 'os-locale';
 import normalize from 'normalize-strings';
 import I18n from '../src/translations';
-import { asyncForEach } from '../src/common';
+import {
+  asyncForEach,
+  getAlphaWithSeparators,
+  getGroupedByEtapa
+} from '../src/common';
 import { SongsProcessor } from '../src/SongsProcessor';
 
 const NodeLister = fs.promises.readdir;
@@ -45,10 +49,65 @@ var marginLeftRight = 15;
 var marginTopBottom = 19;
 var primerColumnaX = 15;
 var segundaColumnaX = 315;
+var primerFilaY = cantoFontSize + fuenteSpacing;
+var limiteHoja = widthHeightPixels - marginTopBottom * 2;
 
 const docsDir = path.resolve(__dirname, '../pdf');
 
-export const generatePDF = async (songsToPdf: Array<SongToPdf>) => {
+export const generateListing = async (
+  doc: any,
+  pos: ExportToPdfCoord,
+  title: string,
+  items: any,
+  pageTitle?: string
+) => {
+  var resetY = primerFilaY;
+  if (pageTitle) {
+    doc
+      .fillColor(NodeStyles.titulo.color)
+      .fontSize(titleFontSize)
+      .font('thefont')
+      .text(pageTitle.toUpperCase(), {
+        align: 'center'
+      });
+    pos.y += titleFontSize + cantoSpacing;
+    resetY = pos.y;
+  }
+  doc
+    .fillColor(NodeStyles.titulo.color)
+    .fontSize(cantoFontSize)
+    .font('thefont')
+    .text(title.toUpperCase(), pos.x, pos.y);
+  pos.y += cantoFontSize;
+  items.forEach(str => {
+    if (str !== '') {
+      doc
+        .fillColor(NodeStyles.lineaNormal.color)
+        .fontSize(fuenteFontSize)
+        .font('thefont')
+        .text(str, pos.x, pos.y, { lineBreak: false });
+    }
+    // No incrementar caso especial; linea vacia en primer fila de segunda columns
+    if (!(pos.x === segundaColumnaX && str === '' && pos.y === primerFilaY)) {
+      pos.y += cantoSpacing;
+    }
+    if (pos.y >= limiteHoja) {
+      if (pos.x == segundaColumnaX) {
+        doc.addPage();
+        pos.x = primerColumnaX;
+        resetY = primerFilaY;
+      } else {
+        pos.x = segundaColumnaX;
+      }
+      pos.y = resetY;
+    }
+  });
+};
+
+export const generatePDF = async (
+  songsToPdf: Array<SongToPdf>,
+  opts: ExportToPdfOptions
+) => {
   const pdfPath =
     songsToPdf.length === 1
       ? `${docsDir}/${songsToPdf[0].canto.titulo}.pdf`
@@ -56,6 +115,7 @@ export const generatePDF = async (songsToPdf: Array<SongToPdf>) => {
   const pdfPathNorm = normalize(pdfPath);
   // Para centrar titulo
   var doc = new PDFDocument({
+    bufferPages: true,
     autoFirstPage: false,
     size: [widthHeightPixels, widthHeightPixels],
     margins: {
@@ -67,6 +127,41 @@ export const generatePDF = async (songsToPdf: Array<SongToPdf>) => {
   });
   var pageNumber = 0;
   doc.registerFont('thefont', 'assets/fonts/Franklin Gothic Medium.ttf');
+
+  // Indice
+  if (opts.createIndex) {
+    doc.addPage();
+    var coord = {
+      y: primerFilaY,
+      x: primerColumnaX
+    };
+    // Alfabetico
+    var items = getAlphaWithSeparators(songsToPdf);
+    generateListing(
+      doc,
+      coord,
+      I18n.t('search_title.alpha'),
+      items,
+      I18n.t('ui.export.songs index')
+    );
+    // Agrupados por etapa
+    var grouped = getGroupedByEtapa(songsToPdf);
+    ['precatechumenate', 'catechumenate', 'election', 'liturgy'].forEach(
+      etapa => {
+        if (coord.y !== primerFilaY) {
+          coord.y += cantoSpacing;
+        }
+        generateListing(
+          doc,
+          coord,
+          I18n.t(`search_title.${etapa}`),
+          grouped[etapa]
+        );
+      }
+    );
+  }
+
+  // Cantos
   await asyncForEach(songsToPdf, async data => {
     // Tomar canto y las lineas para renderizar
     const { canto, lines } = data;
@@ -96,7 +191,6 @@ export const generatePDF = async (songsToPdf: Array<SongToPdf>) => {
       if (it.tituloEspecial) {
         y += parrafoSpacing * 2;
       }
-      var limiteHoja = widthHeightPixels - marginTopBottom * 2;
       var alturaExtra = 0;
       if (it.notas) {
         alturaExtra = cantoSpacing;
@@ -158,6 +252,16 @@ export const generatePDF = async (songsToPdf: Array<SongToPdf>) => {
         y += cantoSpacing;
       }
     });
+
+    if (opts.pageNumbers) {
+      const pX = (widthHeightPixels - marginLeftRight * 2) / 2;
+      const pY = widthHeightPixels - marginTopBottom - cantoFontSize;
+      doc
+        .fillColor(NodeStyles.lineaNormal.color)
+        .fontSize(cantoFontSize)
+        .font('thefont')
+        .text(pageNumber, pX, pY, { lineBreak: false });
+    }
   });
   if (!fs.existsSync(docsDir)) {
     fs.mkdirSync(docsDir);
@@ -195,6 +299,7 @@ if (!process.argv.slice(2).length) {
   I18n.locale = locale;
   console.log('Configured locale', I18n.locale);
   var key = program.key;
+  var opts = { createIndex: true, pageNumbers: true };
   if (locale !== '') {
     if (key) {
       var song = folderSongs.getSingleSongMeta(key, locale);
@@ -215,7 +320,7 @@ if (!process.argv.slice(2).length) {
               canto: song,
               lines: songlines
             };
-            generatePDF([item]);
+            generatePDF([item], opts);
           })
           .catch(err => {
             console.log(err);
@@ -249,7 +354,7 @@ if (!process.argv.slice(2).length) {
             );
           }
         });
-        generatePDF(items);
+        generatePDF(items, opts);
       });
     }
   }

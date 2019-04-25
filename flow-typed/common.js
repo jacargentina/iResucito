@@ -69,6 +69,7 @@ declare type SongFile = {
 // lines: array de las lineas del canto
 declare type Song = {
   key: string,
+  etapa: string,
   nombre: string,
   titulo: string,
   fuente: string,
@@ -82,6 +83,16 @@ declare type Song = {
   patchedTitle?: string,
   error?: any,
   rating: number
+};
+
+declare type ExportToPdfOptions = {
+  createIndex: boolean,
+  pageNumbers: boolean
+};
+
+declare type ExportToPdfCoord = {
+  x: number,
+  y: number
 };
 
 declare type SongToPdf = {

@@ -21,11 +21,11 @@ const createBadge = (backgroundColor, color, text) => {
 };
 
 const badges = {
-  Alfabético: createBadge('#e67e22', 'white', 'A'),
-  Precatecumenado: createBadge(colors.Precatecumenado, 'black', 'P'),
-  Catecumenado: createBadge(colors.Catecumenado, 'black', 'C'),
-  Eleccion: createBadge(colors.Eleccion, 'black', 'E'),
-  Liturgia: createBadge(colors.Liturgia, 'black', 'L')
+  alpha: createBadge('#e67e22', 'white', 'A'),
+  precatechumenate: createBadge(colors.precatechumenate, 'black', 'P'),
+  catechumenate: createBadge(colors.catechumenate, 'black', 'C'),
+  election: createBadge(colors.election, 'black', 'E'),
+  liturgy: createBadge(colors.liturgy, 'black', 'L')
 };
 
 export default badges;

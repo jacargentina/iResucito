@@ -146,7 +146,11 @@ const ViewPdf = withNavigation(props => {
           canto: song,
           lines: itemsToRender
         };
-        generatePDF([item]).then(path => {
+        const opts: ExportToPdfOptions = {
+          createIndex: true,
+          pageNumbers: true
+        };
+        generatePDF([item], opts).then(path => {
           navigation.navigate('PDFViewer', {
             uri: path,
             title: song.titulo

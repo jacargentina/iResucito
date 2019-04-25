@@ -38,7 +38,8 @@
     "export": {
       "type": "Tipo de exportação",
       "processing songs": "Processando {{total}} cantos...",
-      "pdf viewer title": "Livro completo"
+      "pdf viewer title": "Livro completo",
+      "songs index": "Índice de cantos"
     },
     "community empty": "Sem nomes importados. Para escolher da lista, você deve importar dos seus contatos na opção Comunidade.",
     "search placeholder": "Pesquisar",
