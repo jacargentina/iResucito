@@ -42,7 +42,7 @@ const SongList = (props: any) => {
     if (navSort) {
       result = result.sort(navSort);
     }
-    setShowSalmosBadge(navFilter == null || !navFilter.hasOwnProperty('etapa'));
+    setShowSalmosBadge(navFilter == null || !navFilter.hasOwnProperty('stage'));
     setSearch(result);
     if (result.length > 0 && isFocused) {
       setTimeout(() => {

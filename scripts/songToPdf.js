@@ -8,7 +8,10 @@ import I18n from '../src/translations';
 import {
   asyncForEach,
   getAlphaWithSeparators,
-  getGroupedByEtapa
+  wayStages,
+  getGroupedByStage,
+  liturgicTimes,
+  getGroupedByLiturgicTime
 } from '../src/common';
 import { SongsProcessor } from '../src/SongsProcessor';
 
@@ -75,10 +78,10 @@ export const generateListing = async (
   }
   doc
     .fillColor(NodeStyles.titulo.color)
-    .fontSize(cantoFontSize)
+    .fontSize(fuenteFontSize)
     .font('thefont')
     .text(title.toUpperCase(), pos.x, pos.y);
-  pos.y += cantoFontSize;
+  pos.y += fuenteFontSize;
   items.forEach(str => {
     if (str !== '') {
       doc
@@ -145,20 +148,30 @@ export const generatePDF = async (
       I18n.t('ui.export.songs index')
     );
     // Agrupados por etapa
-    var grouped = getGroupedByEtapa(songsToPdf);
-    ['precatechumenate', 'catechumenate', 'election', 'liturgy'].forEach(
-      etapa => {
-        if (coord.y !== primerFilaY) {
-          coord.y += cantoSpacing;
-        }
-        generateListing(
-          doc,
-          coord,
-          I18n.t(`search_title.${etapa}`),
-          grouped[etapa]
-        );
+    var byStage = getGroupedByStage(songsToPdf);
+    wayStages.forEach(stage => {
+      if (coord.y !== primerFilaY) {
+        coord.y += cantoSpacing;
       }
-    );
+      generateListing(
+        doc,
+        coord,
+        I18n.t(`search_title.${stage}`),
+        byStage[stage]
+      );
+    });
+    // Agrupados por tiempo liturgico
+    var byTime = getGroupedByLiturgicTime(songsToPdf);
+    liturgicTimes.forEach((time, i) => {
+      if (coord.y !== primerFilaY) {
+        coord.y += cantoSpacing;
+      }
+      var title = I18n.t(`search_title.${time}`);
+      if (i === 0) {
+        title = I18n.t('search_title.liturgical time') + ` - ${title}`;
+      }
+      generateListing(doc, coord, title, byTime[time]);
+    });
   }
 
   // Cantos

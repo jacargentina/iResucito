@@ -13,7 +13,10 @@ import normalize from 'normalize-strings';
 import {
   asyncForEach,
   getAlphaWithSeparators,
-  getGroupedByEtapa
+  wayStages,
+  getGroupedByStage,
+  liturgicTimes,
+  getGroupedByLiturgicTime
 } from './common';
 
 function checkContactsPermission(): Promise<boolean> {
@@ -277,10 +280,10 @@ export const generateListing = async (
     x: pos.x,
     y: pos.y,
     color: NativeStyles.titulo.color,
-    fontSize: cantoFontSize,
+    fontSize: fuenteFontSize,
     fontName: fontName
   });
-  pos.y -= cantoFontSize;
+  pos.y -= fuenteFontSize;
   items.forEach(str => {
     if (str !== '') {
       page.drawText(str, {
@@ -342,23 +345,33 @@ export const generatePDF = async (
         items,
         I18n.t('ui.export.songs index')
       );
-      // Agrupados por etapa
-      var grouped = getGroupedByEtapa(songsToPdf);
-      await asyncForEach(
-        ['precatechumenate', 'catechumenate', 'election', 'liturgy'],
-        async etapa => {
-          if (coord.y !== primerFilaY) {
-            coord.y -= cantoSpacing;
-          }
-          page = await generateListing(
-            pdfDoc,
-            page,
-            coord,
-            I18n.t(`search_title.${etapa}`),
-            grouped[etapa]
-          );
+      // Agrupados por stage
+      var byStage = getGroupedByStage(songsToPdf);
+      await asyncForEach(wayStages, async stage => {
+        if (coord.y !== primerFilaY) {
+          coord.y -= cantoSpacing;
         }
-      );
+        page = await generateListing(
+          pdfDoc,
+          page,
+          coord,
+          I18n.t(`search_title.${stage}`),
+          byStage[stage]
+        );
+      });
+      // Agrupados por tiempo liturgico
+      var byTime = getGroupedByLiturgicTime(songsToPdf);
+      liturgicTimes.forEach(async (time, i) => {
+        if (coord.y !== primerFilaY) {
+          coord.y += cantoSpacing;
+        }
+        var title = I18n.t(`search_title.${time}`);
+        if (i === 0) {
+          title = I18n.t('search_title.liturgical time') + ` - ${title}`;
+        }
+        page = await generateListing(pdfDoc, page, coord, title, byTime[time]);
+      });
+
       pdfDoc.addPage(page);
     }
     await asyncForEach(songsToPdf, async data => {

@@ -231,7 +231,7 @@ const SongListItem = (props: any) => {
 
   return (
     <ListItem avatar={showBadge} noIndent style={{ paddingBottom: 0 }}>
-      {showBadge && <Left>{badges[song.etapa]}</Left>}
+      {showBadge && <Left>{badges[song.stage]}</Left>}
       <Body>
         <TouchableOpacity
           onPress={() => {

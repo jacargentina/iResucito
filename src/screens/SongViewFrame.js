@@ -8,8 +8,8 @@ import { NativeStyles } from '../util';
 import SongViewLines from './SongViewLines';
 
 const SongViewFrame = (props: any) => {
-  const { error, locale, etapa, titulo, fuente, lines, transportNote } = props;
-  const backColor = color(colors[etapa]);
+  const { error, locale, stage, titulo, fuente, lines, transportNote } = props;
+  const backColor = color(colors[stage]);
   const background = backColor.lighten(0.1).string();
   const margin = 10;
   const minWidth = Dimensions.get('window').width - margin * 2;

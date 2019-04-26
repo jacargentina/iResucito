@@ -535,28 +535,28 @@ const useSearch = (keys: any) => {
         title_key: 'search_title.precatechumenate',
         note: I18n.t('search_note.precatechumenate'),
         route: 'SongList',
-        params: { filter: { etapa: 'precatechumenate' } },
+        params: { filter: { stage: 'precatechumenate' } },
         badge: badges.precatechumenate
       },
       {
         title_key: 'search_title.catechumenate',
         note: I18n.t('search_note.catechumenate'),
         route: 'SongList',
-        params: { filter: { etapa: 'catechumenate' } },
+        params: { filter: { stage: 'catechumenate' } },
         badge: badges.catechumenate
       },
       {
         title_key: 'search_title.election',
         note: I18n.t('search_note.election'),
         route: 'SongList',
-        params: { filter: { etapa: 'election' } },
+        params: { filter: { stage: 'election' } },
         badge: badges.election
       },
       {
         title_key: 'search_title.liturgy',
         note: I18n.t('search_note.liturgy'),
         route: 'SongList',
-        params: { filter: { etapa: 'liturgy' } },
+        params: { filter: { stage: 'liturgy' } },
         badge: badges.liturgy
       },
       {

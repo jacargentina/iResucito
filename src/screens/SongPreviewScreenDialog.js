@@ -6,7 +6,7 @@ import I18n from '../translations';
 
 const SongPreviewScreenDialog = (props: any) => {
   const { navigation } = props;
-  const { lines, locale, titulo, fuente, etapa } = navigation.getParam('data');
+  const { lines, locale, titulo, fuente, stage } = navigation.getParam('data');
 
   return (
     <ModalView title={I18n.t('screen_title.preview')}>
@@ -15,7 +15,7 @@ const SongPreviewScreenDialog = (props: any) => {
         locale={locale}
         titulo={titulo}
         fuente={fuente}
-        etapa={etapa}
+        stage={stage}
       />
     </ModalView>
   );

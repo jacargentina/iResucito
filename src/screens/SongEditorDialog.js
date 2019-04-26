@@ -123,7 +123,7 @@ const SongEditorDialog = (props: any) => {
                 locale: song.locale,
                 titulo: song.titulo,
                 fuente: song.fuente,
-                etapa: song.etapa
+                stage: song.stage
               }
             });
             break;

@@ -28,12 +28,39 @@ export const getAlphaWithSeparators = (
   return items;
 };
 
-export const getGroupedByEtapa = (songsToPdf: Array<SongToPdf>): any => {
-  // Agrupados por etapa
+export const wayStages = [
+  'precatechumenate',
+  'liturgy',
+  'catechumenate',
+  'election'
+];
+
+export const getGroupedByStage = (songsToPdf: Array<SongToPdf>): any => {
+  // Agrupados por stage
   return songsToPdf.reduce((groups, data) => {
-    var fullname = data.canto.etapa;
-    groups[fullname] = groups[fullname] || [];
-    groups[fullname].push(data.canto.titulo);
+    var groupKey = data.canto.stage;
+    groups[groupKey] = groups[groupKey] || [];
+    groups[groupKey].push(data.canto.titulo);
+    return groups;
+  }, {});
+};
+
+export const liturgicTimes = [
+  'advent',
+  'christmas',
+  'lent',
+  'easter',
+  'pentecost'
+];
+
+export const getGroupedByLiturgicTime = (songsToPdf: Array<SongToPdf>): any => {
+  // Agrupados por tiempo liturgico
+  return songsToPdf.reduce((groups, data) => {
+    var times = liturgicTimes.filter(t => data.canto[t] === true);
+    times.forEach(t => {
+      groups[t] = groups[t] || [];
+      groups[t].push(data.canto.titulo);
+    });
     return groups;
   }, {});
 };
