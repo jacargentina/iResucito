@@ -64,7 +64,7 @@
  },
  "7": {
   "stage": "catechumenate",
-  "fraccion": true,
+  "fraction of bread": true,
   "files": {
    "es": "El Señor me ha dado lengua de discípulo - Is 50, 4-10",
    "it": "Il Signore mi ha dato lingua da discepolo - Is 50, 4-10",
@@ -85,7 +85,7 @@
  },
  "9": {
   "stage": "catechumenate",
-  "fraccion": true,
+  "fraction of bread": true,
   "files": {
    "es": "El lagarero - Is 63, 1-6",
    "it": "Il pigiatore - Is 63, 1-6",
@@ -173,7 +173,7 @@
  "18": {
   "stage": "catechumenate",
   "signing to the virgin": true,
-  "fraccion": true,
+  "fraction of bread": true,
   "easter": true,
   "files": {
    "es": "Tú has cubierto de vergüenza la muerte - Melitón de Sardes",
@@ -292,7 +292,7 @@
  "30": {
   "stage": "precatechumenate",
   "easter": true,
-  "niños": true,
+  "children's songs": true,
   "peace and offerings": true,
   "files": {
    "es": "Aleluya, bendecid al Señor - Sal 134 (133)",
@@ -330,7 +330,7 @@
  "34": {
   "stage": "precatechumenate",
   "easter": true,
-  "fraccion": true,
+  "fraction of bread": true,
   "files": {
    "es": "Aquedah - Gn 22, 1-19",
    "it": "Akedà - Gn 22, 1-19",
@@ -643,7 +643,7 @@
  "65": {
   "stage": "precatechumenate",
   "lutes and vespers": true,
-  "fraccion": true,
+  "fraction of bread": true,
   "files": {
    "es": "Eres digno de tomar el libro - Ap 5, 9ss",
    "it": "Canto dell'agnello - Ap 5, 9ss",
@@ -754,7 +754,7 @@
  },
  "77": {
   "stage": "precatechumenate",
-  "fraccion": true,
+  "fraction of bread": true,
   "files": {
    "es": "He aquí mi siervo - Is 42",
    "pt": "Eis o meu servo - Is 42"
@@ -802,7 +802,7 @@
  "82": {
   "stage": "precatechumenate",
   "lent": true,
-  "fraccion": true,
+  "fraction of bread": true,
   "files": {
    "es": "Himno a la kenosis - Flp 2, 1-11",
    "it": "Cristo gesù è il Signore - Flp 2, 1-11",
@@ -1060,7 +1060,7 @@
  },
  "108": {
   "stage": "precatechumenate",
-  "fraccion": true,
+  "fraction of bread": true,
   "files": {
    "es": "No hay en él parecer - Is 53, 2ss",
    "it": "Non c'è in lui bellezza - Is 53, 2ss",
@@ -1080,7 +1080,7 @@
  "110": {
   "stage": "precatechumenate",
   "lent": true,
-  "fraccion": true,
+  "fraction of bread": true,
   "communion": true,
   "files": {
    "es": "Oh Jesús, amor mío - Himno",
@@ -1153,7 +1153,7 @@
  "117": {
   "stage": "precatechumenate",
   "easter": true,
-  "niños": true,
+  "children's songs": true,
   "peace and offerings": true,
   "files": {
    "es": "Por qué esta noche es diferente - Canto de los niños",
@@ -1266,7 +1266,7 @@
  },
  "128": {
   "stage": "precatechumenate",
-  "niños": true,
+  "children's songs": true,
   "peace and offerings": true,
   "files": {
    "es": "Se encontraron dos ángeles - Canto de los niños",
@@ -1427,7 +1427,7 @@
  },
  "144": {
   "stage": "precatechumenate",
-  "niños": true,
+  "children's songs": true,
   "christmas": true,
   "files": {
    "es": "Urí, urí, urá - Villancico",
@@ -1438,7 +1438,7 @@
  },
  "145": {
   "stage": "precatechumenate",
-  "niños": true,
+  "children's songs": true,
   "christmas": true,
   "files": {
    "es": "Vamos ya, pastores - Villancico",
@@ -1522,7 +1522,7 @@
  },
  "154": {
   "stage": "precatechumenate",
-  "niños": true,
+  "children's songs": true,
   "christmas": true,
   "files": {
    "es": "Ya viene mi Dios - Villancico",
@@ -1641,7 +1641,7 @@
  },
  "166": {
   "stage": "election",
-  "fraccion": true,
+  "fraction of bread": true,
   "files": {
    "es": "En una noche oscura - San Juan de la Cruz",
    "it": "In una notte oscura - San Giovanni della Croce",
@@ -1652,7 +1652,7 @@
  "167": {
   "stage": "election",
   "entrance": true,
-  "fraccion": true,
+  "fraction of bread": true,
   "files": {
    "es": "Escuchad islas lejanas - Is 49, 1-16",
    "it": "Ti vedranno i re - Is 49, 1-16",
@@ -1663,7 +1663,7 @@
  "168": {
   "stage": "election",
   "lent": true,
-  "fraccion": true,
+  "fraction of bread": true,
   "files": {
    "es": "Extiendo mis manos - Oda 27 de Salomón",
    "it": "Ho steso le mie mani - Ode 27 di Salomone",
@@ -2068,7 +2068,7 @@
  "218": {
   "stage": "precatechumenate",
   "easter": true,
-  "fraccion": true,
+  "fraction of bread": true,
   "communion": true,
   "files": {
    "es": "Este es el mandamiento mio - Jn 15, 12ss",

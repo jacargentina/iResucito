@@ -606,7 +606,7 @@ const useSearch = (keys: any) => {
         title_key: 'search_title.entrance',
         note: I18n.t('search_note.entrance'),
         route: 'SongList',
-        params: { filter: { entrada: true } },
+        params: { filter: { entrance: true } },
         badge: null,
         chooser: I18n.t('search_tabs.entrance'),
         chooser_listKey: ['entrada']
@@ -615,7 +615,7 @@ const useSearch = (keys: any) => {
         title_key: 'search_title.peace and offerings',
         note: I18n.t('search_note.peace and offerings'),
         route: 'SongList',
-        params: { filter: { paz: true } },
+        params: { filter: { 'peace and offerings': true } },
         badge: null,
         chooser: I18n.t('search_tabs.peace and offerings'),
         chooser_listKey: ['paz']
@@ -624,7 +624,7 @@ const useSearch = (keys: any) => {
         title_key: 'search_title.fraction of bread',
         note: I18n.t('search_note.fraction of bread'),
         route: 'SongList',
-        params: { filter: { fraccion: true } },
+        params: { filter: { 'fraction of bread': true } },
         badge: null,
         chooser: I18n.t('search_tabs.fraction of bread'),
         chooser_listKey: ['comunion-pan']
@@ -633,7 +633,7 @@ const useSearch = (keys: any) => {
         title_key: 'search_title.communion',
         note: I18n.t('search_note.communion'),
         route: 'SongList',
-        params: { filter: { comunion: true } },
+        params: { filter: { communion: true } },
         badge: null,
         chooser: I18n.t('search_tabs.communion'),
         chooser_listKey: ['comunion-pan', 'comunion-caliz']
@@ -642,7 +642,7 @@ const useSearch = (keys: any) => {
         title_key: 'search_title.exit',
         note: I18n.t('search_note.exit'),
         route: 'SongList',
-        params: { filter: { final: true } },
+        params: { filter: { exit: true } },
         badge: null,
         chooser: I18n.t('search_tabs.exit'),
         chooser_listKey: ['salida']
@@ -651,7 +651,7 @@ const useSearch = (keys: any) => {
         title_key: 'search_title.signing to the virgin',
         note: I18n.t('search_note.signing to the virgin'),
         route: 'SongList',
-        params: { filter: { virgen: true } },
+        params: { filter: { 'signing to the virgin': true } },
         badge: null,
         chooser: I18n.t('search_tabs.signing to the virgin')
       },
@@ -660,14 +660,14 @@ const useSearch = (keys: any) => {
         title_key: `search_title.children's songs`,
         note: I18n.t(`search_note.children's songs`),
         route: 'SongList',
-        params: { filter: { niños: true } },
+        params: { filter: { "children's songs": true } },
         badge: null
       },
       {
         title_key: 'search_title.lutes and vespers',
         note: I18n.t('search_note.lutes and vespers'),
         route: 'SongList',
-        params: { filter: { laudes: true } },
+        params: { filter: { 'lutes and vespers': true } },
         badge: null
       }
     ];

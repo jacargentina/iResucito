@@ -16,7 +16,10 @@ import {
   wayStages,
   getGroupedByStage,
   liturgicTimes,
-  getGroupedByLiturgicTime
+  getGroupedByLiturgicTime,
+  liturgicOrder,
+  getGroupedByLiturgicOrder,
+  pdfValues
 } from './common';
 
 function checkContactsPermission(): Promise<boolean> {
@@ -230,24 +233,21 @@ export const contactFilterByText = (c: any, text: string) => {
   );
 };
 
-var titleFontSize = 19;
-var titleSpacing = 11;
-var fuenteFontSize = 10;
-var fuenteSpacing = 20;
-var cantoFontSize = 12;
-var cantoSpacing = 11;
-var fontName = 'Franklin Gothic Medium';
-var indicadorSpacing = 18;
-var parrafoSpacing = 9;
-var notesFontSize = 10;
-var widthHeightPixels = 598; // 21,1 cm
-var primerColumnaX = 30;
-var segundaColumnaX = 330;
-var primerFilaY = 560;
-var limiteHoja = 21;
+var primerColumnaX = pdfValues.marginLeftRight;
+var segundaColumnaX = pdfValues.widthHeightPixels / 2 + primerColumnaX;
+var primerFilaY = pdfValues.widthHeightPixels - pdfValues.marginTopBottom * 2;
+var limiteHoja = pdfValues.marginTopBottom;
+
+var primerColumnaIndexX =
+  pdfValues.marginLeftRight + pdfValues.indexExtraMarginLeftRight;
+var segundaColumnaIndexX =
+  pdfValues.widthHeightPixels / 2 + primerColumnaIndexX;
 
 const getNewPage = () => {
-  return PDFPage.create().setMediaBox(widthHeightPixels, widthHeightPixels);
+  return PDFPage.create().setMediaBox(
+    pdfValues.widthHeightPixels,
+    pdfValues.widthHeightPixels
+  );
 };
 
 export const generateListing = async (
@@ -262,50 +262,52 @@ export const generateListing = async (
   if (pageTitle) {
     const sizeTitle = await PDFLib.measureText(
       pageTitle.toUpperCase(),
-      fontName,
-      titleFontSize
+      pdfValues.fontName,
+      pdfValues.titleFontSize
     );
-    var titleX = parseInt((widthHeightPixels - sizeTitle.width) / 2);
+    var titleX = parseInt((pdfValues.widthHeightPixels - sizeTitle.width) / 2);
     page.drawText(pageTitle.toUpperCase(), {
       x: titleX,
       y: pos.y,
       color: NativeStyles.titulo.color,
-      fontSize: titleFontSize,
-      fontName: fontName
+      fontSize: pdfValues.titleFontSize,
+      fontName: pdfValues.fontName
     });
-    pos.y -= titleFontSize + cantoSpacing;
+    pos.y -= pdfValues.titleFontSize + pdfValues.indexSpacing;
     resetY = pos.y;
   }
   page.drawText(title.toUpperCase(), {
     x: pos.x,
     y: pos.y,
     color: NativeStyles.titulo.color,
-    fontSize: fuenteFontSize,
-    fontName: fontName
+    fontSize: pdfValues.fuenteFontSize,
+    fontName: pdfValues.fontName
   });
-  pos.y -= fuenteFontSize;
+  pos.y -= pdfValues.fuenteFontSize;
   items.forEach(str => {
     if (str !== '') {
       page.drawText(str, {
         x: pos.x,
         y: pos.y,
         color: NativeStyles.lineaNormal.color,
-        fontSize: fuenteFontSize,
-        fontName: fontName
+        fontSize: pdfValues.fuenteFontSize,
+        fontName: pdfValues.fontName
       });
     }
     // No incrementar caso especial; linea vacia en primer fila de segunda columns
-    if (!(pos.x === segundaColumnaX && str === '' && pos.y === primerFilaY)) {
-      pos.y -= cantoSpacing;
+    if (
+      !(pos.x === segundaColumnaIndexX && str === '' && pos.y === primerFilaY)
+    ) {
+      pos.y -= pdfValues.indexSpacing;
     }
     if (pos.y <= limiteHoja) {
-      if (pos.x == segundaColumnaX) {
+      if (pos.x == segundaColumnaIndexX) {
         doc.addPage(page);
         page = getNewPage();
-        pos.x = primerColumnaX;
+        pos.x = primerColumnaIndexX;
         resetY = primerFilaY;
       } else {
-        pos.x = segundaColumnaX;
+        pos.x = segundaColumnaIndexX;
       }
       pos.y = resetY;
     }
@@ -335,7 +337,7 @@ export const generatePDF = async (
     if (opts.createIndex) {
       var page = getNewPage();
       // Alfabetico
-      var coord = { y: primerFilaY, x: primerColumnaX };
+      var coord = { y: primerFilaY, x: primerColumnaIndexX };
       var items = getAlphaWithSeparators(songsToPdf);
       page = await generateListing(
         pdfDoc,
@@ -349,7 +351,7 @@ export const generatePDF = async (
       var byStage = getGroupedByStage(songsToPdf);
       await asyncForEach(wayStages, async stage => {
         if (coord.y !== primerFilaY) {
-          coord.y -= cantoSpacing;
+          coord.y -= pdfValues.indexSpacing;
         }
         page = await generateListing(
           pdfDoc,
@@ -363,13 +365,29 @@ export const generatePDF = async (
       var byTime = getGroupedByLiturgicTime(songsToPdf);
       liturgicTimes.forEach(async (time, i) => {
         if (coord.y !== primerFilaY) {
-          coord.y += cantoSpacing;
+          coord.y -= pdfValues.indexSpacing;
         }
         var title = I18n.t(`search_title.${time}`);
         if (i === 0) {
           title = I18n.t('search_title.liturgical time') + ` - ${title}`;
         }
         page = await generateListing(pdfDoc, page, coord, title, byTime[time]);
+      });
+
+      // Agrupados por tiempo liturgico
+      var byOrder = getGroupedByLiturgicOrder(songsToPdf);
+      liturgicOrder.forEach(async order => {
+        if (coord.y !== primerFilaY) {
+          coord.y -= pdfValues.indexSpacing;
+        }
+        var title = I18n.t(`search_title.${order}`);
+        page = await generateListing(
+          pdfDoc,
+          page,
+          coord,
+          title,
+          byOrder[order]
+        );
       });
 
       pdfDoc.addPage(page);
@@ -380,48 +398,52 @@ export const generatePDF = async (
       // Para centrar titulo
       const sizeTitle = await PDFLib.measureText(
         canto.titulo.toUpperCase(),
-        fontName,
-        titleFontSize
+        pdfValues.fontName,
+        pdfValues.titleFontSize
       );
       // Para centrar fuente
       const sizeFuente = await PDFLib.measureText(
         canto.fuente,
-        fontName,
-        fuenteFontSize
+        pdfValues.fontName,
+        pdfValues.fuenteFontSize
       );
       var y = primerFilaY;
       var x = primerColumnaX;
       const page = getNewPage();
       pageNumber++;
-      var titleX = parseInt((widthHeightPixels - sizeTitle.width) / 2);
+      var titleX = parseInt(
+        (pdfValues.widthHeightPixels - sizeTitle.width) / 2
+      );
       page.drawText(canto.titulo.toUpperCase(), {
         x: titleX,
         y: y,
         color: NativeStyles.titulo.color,
-        fontSize: titleFontSize,
-        fontName: fontName
+        fontSize: pdfValues.titleFontSize,
+        fontName: pdfValues.fontName
       });
-      y -= titleSpacing;
-      var fuenteX = parseInt((widthHeightPixels - sizeFuente.width) / 2);
+      y -= pdfValues.titleSpacing;
+      var fuenteX = parseInt(
+        (pdfValues.widthHeightPixels - sizeFuente.width) / 2
+      );
       page.drawText(canto.fuente, {
         x: fuenteX,
         y: y,
         color: NativeStyles.lineaNormal.color,
-        fontSize: fuenteFontSize,
-        fontName: fontName
+        fontSize: pdfValues.fuenteFontSize,
+        fontName: pdfValues.fontName
       });
-      y -= fuenteSpacing;
-      var yStart = y - parrafoSpacing;
+      y -= pdfValues.fuenteSpacing;
+      var yStart = y - pdfValues.parrafoSpacing;
       lines.forEach((it: SongLine) => {
         if (it.inicioParrafo) {
-          y -= parrafoSpacing;
+          y -= pdfValues.parrafoSpacing;
         }
         if (it.tituloEspecial) {
-          y -= parrafoSpacing * 2;
+          y -= pdfValues.parrafoSpacing * 2;
         }
         var alturaExtra = 0;
         if (it.notas) {
-          alturaExtra = cantoSpacing;
+          alturaExtra = pdfValues.cantoSpacing;
         }
         if (y - alturaExtra <= limiteHoja) {
           x = segundaColumnaX;
@@ -429,65 +451,65 @@ export const generatePDF = async (
         }
         if (it.notas === true) {
           page.drawText(it.texto, {
-            x: x + indicadorSpacing,
+            x: x + pdfValues.indicadorSpacing,
             y: y,
             color: NativeStyles.lineaNotas.color,
-            fontSize: notesFontSize,
-            fontName: fontName
+            fontSize: pdfValues.notesFontSize,
+            fontName: pdfValues.fontName
           });
-          y -= cantoSpacing;
+          y -= pdfValues.cantoSpacing;
         } else if (it.canto === true) {
           page.drawText(it.texto, {
-            x: x + indicadorSpacing,
+            x: x + pdfValues.indicadorSpacing,
             y: y,
             color: NativeStyles.lineaNormal.color,
-            fontSize: cantoFontSize,
-            fontName: fontName
+            fontSize: pdfValues.cantoFontSize,
+            fontName: pdfValues.fontName
           });
-          y -= cantoSpacing;
+          y -= pdfValues.cantoSpacing;
         } else if (it.cantoConIndicador === true) {
           page.drawText(it.prefijo, {
             x: x,
             y: y,
             color: NativeStyles.prefijo.color,
-            fontSize: cantoFontSize,
-            fontName: fontName
+            fontSize: pdfValues.cantoFontSize,
+            fontName: pdfValues.fontName
           });
           if (it.tituloEspecial === true) {
             page.drawText(it.texto, {
-              x: x + indicadorSpacing,
+              x: x + pdfValues.indicadorSpacing,
               y: y,
               color: NativeStyles.lineaTituloNotaEspecial.color,
-              fontSize: cantoFontSize,
-              fontName: fontName
+              fontSize: pdfValues.cantoFontSize,
+              fontName: pdfValues.fontName
             });
           } else if (it.textoEspecial === true) {
             page.drawText(it.texto, {
-              x: x + indicadorSpacing,
+              x: x + pdfValues.indicadorSpacing,
               y: y,
               color: NativeStyles.lineaNotaEspecial.color,
-              fontSize: cantoFontSize - 3,
-              fontName: fontName
+              fontSize: pdfValues.cantoFontSize - 3,
+              fontName: pdfValues.fontName
             });
           } else {
             page.drawText(it.texto, {
-              x: x + indicadorSpacing,
+              x: x + pdfValues.indicadorSpacing,
               y: y,
               color: NativeStyles.lineaNormal.color,
-              fontSize: cantoFontSize,
-              fontName: fontName
+              fontSize: pdfValues.cantoFontSize,
+              fontName: pdfValues.fontName
             });
           }
-          y -= cantoSpacing;
+          y -= pdfValues.cantoSpacing;
         }
       });
       if (opts.pageNumbers) {
         page.drawText(pageNumber.toString(), {
-          x: widthHeightPixels / 2,
+          x: pdfValues.widthHeightPixels / 2,
           y: limiteHoja,
           color: NativeStyles.lineaNormal.color,
-          fontSize: cantoFontSize,
-          fontName: fontName
+          fontSize: pdfValues.cantoFontSize,
+          fontName: pdfValues.fontName
         });
       }
       pdfDoc.addPage(page);
