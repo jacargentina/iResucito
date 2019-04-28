@@ -147,8 +147,8 @@ const ViewPdf = withNavigation(props => {
           lines: itemsToRender
         };
         const opts: ExportToPdfOptions = {
-          createIndex: true,
-          pageNumbers: true
+          createIndex: false,
+          pageNumbers: false
         };
         generatePDF([item], opts).then(path => {
           navigation.navigate('PDFViewer', {

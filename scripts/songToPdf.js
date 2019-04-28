@@ -302,17 +302,13 @@ export const generatePDF = async (
     });
 
     if (opts.pageNumbers) {
-      const pX =
-        (pdfValues.widthHeightPixels - pdfValues.marginLeftRight * 2) / 2;
-      const pY =
-        pdfValues.widthHeightPixels -
-        pdfValues.marginTopBottom -
-        pdfValues.cantoFontSize;
       doc
         .fillColor(NodeStyles.lineaNormal.color)
         .fontSize(pdfValues.cantoFontSize)
         .font('thefont')
-        .text(pageNumber, pX, pY, { lineBreak: false });
+        .text(pageNumber, pdfValues.widthHeightPixels / 2, limiteHoja, {
+          lineBreak: false
+        });
     }
   });
   if (!fs.existsSync(docsDir)) {

@@ -419,8 +419,10 @@ export const generatePDF = async (
         pdfValues.fontName,
         pdfValues.fuenteFontSize
       );
-      var y = primerFilaY;
-      var x = primerColumnaX;
+      var coord = {
+        y: primerFilaY,
+        x: 0
+      };
       const page = getNewPage();
       pageNumber++;
       var titleX = parseInt(
@@ -428,91 +430,102 @@ export const generatePDF = async (
       );
       page.drawText(canto.titulo.toUpperCase(), {
         x: titleX,
-        y: y,
+        y: coord.y,
         color: NativeStyles.titulo.color,
         fontSize: pdfValues.titleFontSize,
         fontName: pdfValues.fontName
       });
-      y -= pdfValues.titleSpacing;
+      coord.y -= pdfValues.titleSpacing;
       var fuenteX = parseInt(
         (pdfValues.widthHeightPixels - sizeFuente.width) / 2
       );
       page.drawText(canto.fuente, {
         x: fuenteX,
-        y: y,
-        color: NativeStyles.lineaNormal.color,
+        y: coord.y,
+        color: NativeStyles.fuente.color,
         fontSize: pdfValues.fuenteFontSize,
         fontName: pdfValues.fontName
       });
-      y -= pdfValues.fuenteSpacing;
-      var yStart = y - pdfValues.parrafoSpacing;
-      lines.forEach((it: SongLine) => {
+      coord.y -= pdfValues.fuenteSpacing;
+      var yStart = coord.y - pdfValues.parrafoSpacing;
+      lines.forEach((it: SongLine, idx) => {
         if (it.inicioParrafo) {
-          y -= pdfValues.parrafoSpacing;
+          coord.y -= pdfValues.parrafoSpacing;
         }
         if (it.tituloEspecial) {
-          y -= pdfValues.parrafoSpacing * 2;
+          coord.y -= pdfValues.parrafoSpacing * 2;
         }
         var alturaExtra = 0;
         if (it.notas) {
           alturaExtra = pdfValues.cantoSpacing;
         }
-        if (y - alturaExtra <= limiteHoja) {
-          x = segundaColumnaX;
-          y = yStart;
+        if (coord.y - alturaExtra <= limiteHoja) {
+          // Si ya estamos escribiendo en la 2da columna
+          // el texto quedara sobreecrito, por tanto generar advertencia
+          if (coord.x === segundaColumnaX) {
+            console.log(
+              'Sin lugar (%s, linea %s = "%s"), página %s',
+              canto.titulo,
+              idx,
+              it.texto,
+              pageNumber
+            );
+          }
+          coord.x = segundaColumnaX;
+          coord.y = yStart;
         }
         if (it.notas === true) {
           page.drawText(it.texto, {
-            x: x + pdfValues.indicadorSpacing,
-            y: y,
+            x: coord.x + pdfValues.indicadorSpacing,
+            y: coord.y,
             color: NativeStyles.lineaNotas.color,
             fontSize: pdfValues.notesFontSize,
             fontName: pdfValues.fontName
           });
-          y -= pdfValues.cantoSpacing;
+          coord.y -= pdfValues.cantoSpacing;
         } else if (it.canto === true) {
           page.drawText(it.texto, {
-            x: x + pdfValues.indicadorSpacing,
-            y: y,
+            x: coord.x + pdfValues.indicadorSpacing,
+            y: coord.y,
             color: NativeStyles.lineaNormal.color,
             fontSize: pdfValues.cantoFontSize,
             fontName: pdfValues.fontName
           });
-          y -= pdfValues.cantoSpacing;
+          coord.y -= pdfValues.cantoSpacing;
         } else if (it.cantoConIndicador === true) {
           page.drawText(it.prefijo, {
-            x: x,
-            y: y,
+            x: coord.x,
+            y: coord.y,
             color: NativeStyles.prefijo.color,
             fontSize: pdfValues.cantoFontSize,
             fontName: pdfValues.fontName
           });
           if (it.tituloEspecial === true) {
             page.drawText(it.texto, {
-              x: x + pdfValues.indicadorSpacing,
-              y: y,
+              x: coord.x + pdfValues.indicadorSpacing,
+              y: coord.y,
               color: NativeStyles.lineaTituloNotaEspecial.color,
               fontSize: pdfValues.cantoFontSize,
               fontName: pdfValues.fontName
             });
           } else if (it.textoEspecial === true) {
             page.drawText(it.texto, {
-              x: x + pdfValues.indicadorSpacing,
-              y: y,
+              x: coord.x + pdfValues.indicadorSpacing,
+              y: coord.y,
               color: NativeStyles.lineaNotaEspecial.color,
               fontSize: pdfValues.cantoFontSize - 3,
               fontName: pdfValues.fontName
             });
           } else {
             page.drawText(it.texto, {
-              x: x + pdfValues.indicadorSpacing,
-              y: y,
+              x: coord.x + pdfValues.indicadorSpacing,
+              y: coord.y,
               color: NativeStyles.lineaNormal.color,
               fontSize: pdfValues.cantoFontSize,
               fontName: pdfValues.fontName
             });
           }
-          y -= pdfValues.cantoSpacing;
+          coord.y -= pdfValues.cantoSpacing;
         }
       });
       if (opts.pageNumbers) {
