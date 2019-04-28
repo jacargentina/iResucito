@@ -44,7 +44,7 @@ const folderSongs = new SongsProcessor(
 
 var primerColumnaX = pdfValues.marginLeftRight;
 var segundaColumnaX = pdfValues.widthHeightPixels / 2 + primerColumnaX;
-var primerFilaY = pdfValues.cantoFontSize + pdfValues.fuenteSpacing;
+var primerFilaY = pdfValues.marginTopBottom;
 var limiteHoja = pdfValues.widthHeightPixels - pdfValues.marginTopBottom * 2;
 
 var primerColumnaIndexX =
@@ -62,15 +62,35 @@ export const generateListing = async (
   pageTitle?: string
 ) => {
   var resetY = primerFilaY;
+
+  const checkLimits = () => {
+    if (pos.y >= limiteHoja) {
+      if (pos.x == segundaColumnaIndexX) {
+        doc.addPage();
+        pos.x = primerColumnaIndexX;
+        resetY = primerFilaY;
+      } else {
+        pos.x = segundaColumnaIndexX;
+      }
+      pos.y = resetY;
+    }
+  };
+
+  checkLimits();
+
   if (pageTitle) {
+    const width = doc
+      .fontSize(pdfValues.titleFontSize)
+      .font('thefont')
+      .widthOfString(pageTitle.toUpperCase());
+    const titleX = parseInt((pdfValues.widthHeightPixels - width) / 2);
     doc
       .fillColor(NodeStyles.titulo.color)
       .fontSize(pdfValues.titleFontSize)
       .font('thefont')
-      .text(pageTitle.toUpperCase(), {
-        align: 'center'
-      });
-    pos.y += pdfValues.titleFontSize + pdfValues.indexSpacing;
+      .text(pageTitle.toUpperCase(), titleX, pos.y);
+    pos.y = pos.y + pdfValues.titleFontSize + pdfValues.indexSpacing;
+    checkLimits();
     resetY = pos.y;
   }
   doc
@@ -78,7 +98,8 @@ export const generateListing = async (
     .fontSize(pdfValues.fuenteFontSize)
     .font('thefont')
     .text(title.toUpperCase(), pos.x, pos.y);
-  pos.y += pdfValues.indexSpacing;
+  pos.y += pdfValues.fuenteFontSize;
+  checkLimits();
   items.forEach(str => {
     if (str !== '') {
       doc
@@ -93,16 +114,7 @@ export const generateListing = async (
     ) {
       pos.y += pdfValues.indexSpacing;
     }
-    if (pos.y >= limiteHoja) {
-      if (pos.x == segundaColumnaIndexX) {
-        doc.addPage();
-        pos.x = primerColumnaIndexX;
-        resetY = primerFilaY;
-      } else {
-        pos.x = segundaColumnaIndexX;
-      }
-      pos.y = resetY;
-    }
+    checkLimits();
   });
 };
 
@@ -119,13 +131,7 @@ export const generatePDF = async (
   var doc = new PDFDocument({
     bufferPages: true,
     autoFirstPage: false,
-    size: [pdfValues.widthHeightPixels, pdfValues.widthHeightPixels],
-    margins: {
-      top: pdfValues.marginTopBottom,
-      bottom: pdfValues.marginTopBottom,
-      left: pdfValues.marginLeftRight,
-      right: pdfValues.marginLeftRight
-    }
+    size: [pdfValues.widthHeightPixels, pdfValues.widthHeightPixels]
   });
   var pageNumber = 0;
   doc.registerFont('thefont', 'assets/fonts/Franklin Gothic Medium.ttf');
@@ -188,41 +194,49 @@ export const generatePDF = async (
     const { canto, lines } = data;
     doc.addPage();
     pageNumber++;
+    var coord = {
+      y: primerFilaY,
+      x: 0
+    };
+    const width = doc
+      .fontSize(pdfValues.titleFontSize)
+      .font('thefont')
+      .widthOfString(canto.titulo.toUpperCase());
+    coord.x = parseInt((pdfValues.widthHeightPixels - width) / 2);
     doc
       .fillColor(NodeStyles.titulo.color)
       .fontSize(pdfValues.titleFontSize)
       .font('thefont')
-      .text(canto.titulo.toUpperCase(), {
-        align: 'center'
-      });
+      .text(canto.titulo.toUpperCase(), coord.x, coord.y);
+    coord.y += pdfValues.titleFontSize;
+    const widthF = doc
+      .fontSize(pdfValues.fuenteFontSize)
+      .font('thefont')
+      .widthOfString(canto.fuente);
+    coord.x = parseInt((pdfValues.widthHeightPixels - widthF) / 2);
     doc
       .fillColor(NodeStyles.fuente.color)
       .fontSize(pdfValues.fuenteFontSize)
       .font('thefont')
-      .text(canto.fuente, {
-        align: 'center'
-      });
-    var y =
-      pdfValues.titleFontSize +
-      pdfValues.fuenteFontSize +
-      pdfValues.fuenteSpacing;
-    var x = primerColumnaX;
-    var yStart = y + pdfValues.parrafoSpacing;
+      .text(canto.fuente, coord.x, coord.y);
+    coord.y += pdfValues.fuenteFontSize;
+    coord.x = primerColumnaX;
+    var yStart = coord.y + pdfValues.parrafoSpacing;
     lines.forEach((it: SongLine, idx) => {
       if (it.inicioParrafo) {
-        y += pdfValues.parrafoSpacing;
+        coord.y += pdfValues.parrafoSpacing;
       }
       if (it.tituloEspecial) {
-        y += pdfValues.parrafoSpacing * 2;
+        coord.y += pdfValues.parrafoSpacing * 2;
       }
       var alturaExtra = 0;
       if (it.notas) {
         alturaExtra = pdfValues.cantoSpacing;
       }
-      if (y + alturaExtra >= limiteHoja) {
+      if (coord.y + alturaExtra >= limiteHoja) {
         // Si ya estamos escribiendo en la 2da columna
         // el texto quedara sobreecrito, por tanto generar advertencia
-        if (x === segundaColumnaX) {
+        if (coord.x === segundaColumnaX) {
           console.log(
             'Sin lugar (%s, linea %s = "%s"), página %s',
             canto.titulo,
@@ -231,39 +245,39 @@ export const generatePDF = async (
             pageNumber
           );
         }
-        x = segundaColumnaX;
-        y = yStart;
+        coord.x = segundaColumnaX;
+        coord.y = yStart;
       }
       if (it.notas === true) {
         doc
           .fillColor(NodeStyles.lineaNotas.color)
           .fontSize(pdfValues.notesFontSize)
           .font('thefont')
-          .text(it.texto, x + pdfValues.indicadorSpacing, y + 1, {
+          .text(it.texto, coord.x + pdfValues.indicadorSpacing, coord.y, {
             lineBreak: false
           });
-        y += pdfValues.cantoSpacing;
+        coord.y += pdfValues.cantoSpacing;
       } else if (it.canto === true) {
         doc
           .fillColor(NodeStyles.lineaNormal.color)
           .fontSize(pdfValues.cantoFontSize)
           .font('thefont')
-          .text(it.texto, x + pdfValues.indicadorSpacing, y, {
+          .text(it.texto, coord.x + pdfValues.indicadorSpacing, coord.y, {
             lineBreak: false
           });
-        y += pdfValues.cantoSpacing;
+        coord.y += pdfValues.cantoSpacing;
       } else if (it.cantoConIndicador === true) {
         doc
           .fillColor(NodeStyles.prefijo.color)
           .fontSize(pdfValues.cantoFontSize)
           .font('thefont')
-          .text(it.prefijo, x, y, { lineBreak: false });
+          .text(it.prefijo, coord.x, coord.y, { lineBreak: false });
         if (it.tituloEspecial === true) {
           doc
             .fillColor(NodeStyles.lineaTituloNotaEspecial.color)
             .fontSize(pdfValues.cantoFontSize)
             .font('thefont')
-            .text(it.texto, x + pdfValues.indicadorSpacing, y, {
+            .text(it.texto, coord.x + pdfValues.indicadorSpacing, coord.y, {
               lineBreak: false
             });
         } else if (it.textoEspecial === true) {
@@ -271,7 +285,7 @@ export const generatePDF = async (
             .fillColor(NodeStyles.lineaNotaEspecial.color)
             .fontSize(pdfValues.cantoFontSize - 3)
             .font('thefont')
-            .text(it.texto, x + pdfValues.indicadorSpacing, y, {
+            .text(it.texto, coord.x + pdfValues.indicadorSpacing, coord.y, {
               lineBreak: false
             });
         } else {
@@ -279,11 +293,11 @@ export const generatePDF = async (
             .fillColor(NodeStyles.lineaNormal.color)
             .fontSize(pdfValues.cantoFontSize)
             .font('thefont')
-            .text(it.texto, x + pdfValues.indicadorSpacing, y, {
+            .text(it.texto, coord.x + pdfValues.indicadorSpacing, coord.y, {
               lineBreak: false
             });
         }
-        y += pdfValues.cantoSpacing;
+        coord.y += pdfValues.cantoSpacing;
       }
     });
 

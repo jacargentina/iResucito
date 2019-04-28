@@ -259,6 +259,25 @@ export const generateListing = async (
   pageTitle?: string
 ): any => {
   var resetY = primerFilaY;
+  var currPage = page;
+
+  const checkLimits = () => {
+    if (pos.y <= limiteHoja) {
+      if (pos.x == segundaColumnaIndexX) {
+        doc.addPage(currPage);
+        pos.x = primerColumnaIndexX;
+        resetY = primerFilaY;
+        pos.y = resetY;
+        currPage = getNewPage();
+      } else {
+        pos.x = segundaColumnaIndexX;
+        pos.y = resetY;
+      }
+    }
+  };
+
+  checkLimits();
+
   if (pageTitle) {
     const sizeTitle = await PDFLib.measureText(
       pageTitle.toUpperCase(),
@@ -266,17 +285,18 @@ export const generateListing = async (
       pdfValues.titleFontSize
     );
     var titleX = parseInt((pdfValues.widthHeightPixels - sizeTitle.width) / 2);
-    page.drawText(pageTitle.toUpperCase(), {
+    currPage.drawText(pageTitle.toUpperCase(), {
       x: titleX,
       y: pos.y,
       color: NativeStyles.titulo.color,
       fontSize: pdfValues.titleFontSize,
       fontName: pdfValues.fontName
     });
-    pos.y -= pdfValues.titleFontSize + pdfValues.indexSpacing;
+    pos.y = pos.y - pdfValues.titleFontSize - pdfValues.indexSpacing;
+    checkLimits();
     resetY = pos.y;
   }
-  page.drawText(title.toUpperCase(), {
+  currPage.drawText(title.toUpperCase(), {
     x: pos.x,
     y: pos.y,
     color: NativeStyles.titulo.color,
@@ -284,9 +304,10 @@ export const generateListing = async (
     fontName: pdfValues.fontName
   });
   pos.y -= pdfValues.fuenteFontSize;
+  checkLimits();
   items.forEach(str => {
     if (str !== '') {
-      page.drawText(str, {
+      currPage.drawText(str, {
         x: pos.x,
         y: pos.y,
         color: NativeStyles.lineaNormal.color,
@@ -300,19 +321,9 @@ export const generateListing = async (
     ) {
       pos.y -= pdfValues.indexSpacing;
     }
-    if (pos.y <= limiteHoja) {
-      if (pos.x == segundaColumnaIndexX) {
-        doc.addPage(page);
-        page = getNewPage();
-        pos.x = primerColumnaIndexX;
-        resetY = primerFilaY;
-      } else {
-        pos.x = segundaColumnaIndexX;
-      }
-      pos.y = resetY;
-    }
+    checkLimits();
   });
-  return page;
+  return currPage;
 };
 
 export const generatePDF = async (
@@ -361,9 +372,10 @@ export const generatePDF = async (
           byStage[stage]
         );
       });
+
       // Agrupados por tiempo liturgico
       var byTime = getGroupedByLiturgicTime(songsToPdf);
-      liturgicTimes.forEach(async (time, i) => {
+      await asyncForEach(liturgicTimes, async (time, i) => {
         if (coord.y !== primerFilaY) {
           coord.y -= pdfValues.indexSpacing;
         }
@@ -374,9 +386,9 @@ export const generatePDF = async (
         page = await generateListing(pdfDoc, page, coord, title, byTime[time]);
       });
 
-      // Agrupados por tiempo liturgico
+      // Agrupados por orden liturgico
       var byOrder = getGroupedByLiturgicOrder(songsToPdf);
-      liturgicOrder.forEach(async order => {
+      await asyncForEach(liturgicOrder, async order => {
         if (coord.y !== primerFilaY) {
           coord.y -= pdfValues.indexSpacing;
         }
