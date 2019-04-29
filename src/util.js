@@ -458,7 +458,7 @@ export const generatePDF = async (
         }
         var alturaExtra = 0;
         if (it.notas) {
-          alturaExtra = pdfValues.cantoSpacing;
+          alturaExtra = pdfValues.notesFontSize + pdfValues.cantoSpacing;
         }
         if (coord.y - alturaExtra <= limiteHoja) {
           // Si ya estamos escribiendo en la 2da columna
