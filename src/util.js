@@ -233,21 +233,25 @@ export const contactFilterByText = (c: any, text: string) => {
   );
 };
 
-var primerColumnaX = pdfValues.marginLeftRight;
-var segundaColumnaX = pdfValues.widthHeightPixels / 2 + primerColumnaX;
-var primerFilaY = pdfValues.widthHeightPixels - pdfValues.marginTopBottom * 2;
-var limiteHoja = pdfValues.marginTopBottom;
-
-var primerColumnaIndexX =
-  pdfValues.marginLeftRight + pdfValues.indexExtraMarginLeftRight;
-var segundaColumnaIndexX =
-  pdfValues.widthHeightPixels / 2 + primerColumnaIndexX;
+var primerFilaY = pdfValues.widthHeightPixels - pdfValues.marginTop * 2;
+var limiteHoja = pdfValues.marginTop;
+var pageNumber = 1;
 
 const getNewPage = () => {
   return PDFPage.create().setMediaBox(
     pdfValues.widthHeightPixels,
     pdfValues.widthHeightPixels
   );
+};
+
+const writePageNumber = (page: any) => {
+  page.drawText(pageNumber.toString(), {
+    x: pdfValues.widthHeightPixels / 2,
+    y: limiteHoja,
+    color: NativeStyles.lineaNormal.color,
+    fontSize: pdfValues.songText.FontSize,
+    fontName: pdfValues.fontName
+  });
 };
 
 export const generateListing = async (
@@ -261,68 +265,69 @@ export const generateListing = async (
   var resetY = primerFilaY;
   var currPage = page;
 
-  const checkLimits = () => {
-    if (pos.y <= limiteHoja) {
-      if (pos.x == segundaColumnaIndexX) {
+  const checkLimits = (height: number) => {
+    if (pos.y - height <= limiteHoja) {
+      if (pos.x == pdfValues.segundaColumnaIndexX) {
+        writePageNumber(currPage);
         doc.addPage(currPage);
-        pos.x = primerColumnaIndexX;
+        pageNumber++;
+        pos.x = pdfValues.primerColumnaIndexX;
         resetY = primerFilaY;
-        pos.y = resetY;
         currPage = getNewPage();
       } else {
-        pos.x = segundaColumnaIndexX;
-        pos.y = resetY;
+        pos.x = pdfValues.segundaColumnaIndexX;
       }
+      pos.y = resetY;
     }
   };
 
-  checkLimits();
-
   if (pageTitle) {
+    const height = pdfValues.indexTitle.FontSize + pdfValues.indexTitle.Spacing;
+    checkLimits(height);
     const sizeTitle = await PDFLib.measureText(
       pageTitle.toUpperCase(),
       pdfValues.fontName,
-      pdfValues.titleFontSize
+      pdfValues.indexTitle.FontSize
     );
     var titleX = parseInt((pdfValues.widthHeightPixels - sizeTitle.width) / 2);
     currPage.drawText(pageTitle.toUpperCase(), {
       x: titleX,
       y: pos.y,
       color: NativeStyles.titulo.color,
-      fontSize: pdfValues.titleFontSize,
+      fontSize: pdfValues.indexTitle.FontSize,
       fontName: pdfValues.fontName
     });
-    pos.y = pos.y - pdfValues.titleFontSize - pdfValues.indexSpacing;
-    checkLimits();
+    pos.y -= height;
     resetY = pos.y;
   }
+  const height =
+    pdfValues.indexSubtitle.FontSize + pdfValues.indexSubtitle.Spacing;
+  checkLimits(height);
   currPage.drawText(title.toUpperCase(), {
     x: pos.x,
     y: pos.y,
     color: NativeStyles.titulo.color,
-    fontSize: pdfValues.fuenteFontSize,
+    fontSize: pdfValues.indexSubtitle.FontSize,
     fontName: pdfValues.fontName
   });
-  pos.y -= pdfValues.fuenteFontSize;
-  checkLimits();
+  pos.y -= height;
+  const itemHeight = pdfValues.indexText.FontSize + pdfValues.indexText.Spacing;
   items.forEach(str => {
     if (str !== '') {
+      checkLimits(itemHeight);
       currPage.drawText(str, {
         x: pos.x,
         y: pos.y,
         color: NativeStyles.lineaNormal.color,
-        fontSize: pdfValues.fuenteFontSize,
+        fontSize: pdfValues.indexText.FontSize,
         fontName: pdfValues.fontName
       });
     }
-    // No incrementar caso especial; linea vacia en primer fila de segunda columns
-    if (
-      !(pos.x === segundaColumnaIndexX && str === '' && pos.y === primerFilaY)
-    ) {
-      pos.y -= pdfValues.indexSpacing;
-    }
-    checkLimits();
+    pos.y -= itemHeight;
   });
+  if (pos.y !== primerFilaY) {
+    pos.y -= itemHeight;
+  }
   return currPage;
 };
 
@@ -341,14 +346,12 @@ export const generatePDF = async (
         : `${docsDir}iResucito.pdf`;
     const pdfPathNorm = normalize(pdfPath);
     const pdfDoc = PDFDocument.create(pdfPathNorm);
-
-    var pageNumber = 0;
-
+    pageNumber = 1;
     // Indice
     if (opts.createIndex) {
       var page = getNewPage();
       // Alfabetico
-      var coord = { y: primerFilaY, x: primerColumnaIndexX };
+      var coord = { y: primerFilaY, x: pdfValues.primerColumnaIndexX };
       var items = getAlphaWithSeparators(songsToPdf);
       page = await generateListing(
         pdfDoc,
@@ -361,9 +364,6 @@ export const generatePDF = async (
       // Agrupados por stage
       var byStage = getGroupedByStage(songsToPdf);
       await asyncForEach(wayStages, async stage => {
-        if (coord.y !== primerFilaY) {
-          coord.y -= pdfValues.indexSpacing;
-        }
         page = await generateListing(
           pdfDoc,
           page,
@@ -376,9 +376,6 @@ export const generatePDF = async (
       // Agrupados por tiempo liturgico
       var byTime = getGroupedByLiturgicTime(songsToPdf);
       await asyncForEach(liturgicTimes, async (time, i) => {
-        if (coord.y !== primerFilaY) {
-          coord.y -= pdfValues.indexSpacing;
-        }
         var title = I18n.t(`search_title.${time}`);
         if (i === 0) {
           title = I18n.t('search_title.liturgical time') + ` - ${title}`;
@@ -389,9 +386,6 @@ export const generatePDF = async (
       // Agrupados por orden liturgico
       var byOrder = getGroupedByLiturgicOrder(songsToPdf);
       await asyncForEach(liturgicOrder, async order => {
-        if (coord.y !== primerFilaY) {
-          coord.y -= pdfValues.indexSpacing;
-        }
         var title = I18n.t(`search_title.${order}`);
         page = await generateListing(
           pdfDoc,
@@ -401,7 +395,7 @@ export const generatePDF = async (
           byOrder[order]
         );
       });
-
+      writePageNumber(page);
       pdfDoc.addPage(page);
     }
     await asyncForEach(songsToPdf, async data => {
@@ -411,13 +405,13 @@ export const generatePDF = async (
       const sizeTitle = await PDFLib.measureText(
         canto.titulo.toUpperCase(),
         pdfValues.fontName,
-        pdfValues.titleFontSize
+        pdfValues.songTitle.FontSize
       );
       // Para centrar fuente
       const sizeFuente = await PDFLib.measureText(
         canto.fuente,
         pdfValues.fontName,
-        pdfValues.fuenteFontSize
+        pdfValues.songSource.FontSize
       );
       var coord = {
         y: primerFilaY,
@@ -432,10 +426,10 @@ export const generatePDF = async (
         x: titleX,
         y: coord.y,
         color: NativeStyles.titulo.color,
-        fontSize: pdfValues.titleFontSize,
+        fontSize: pdfValues.songTitle.FontSize,
         fontName: pdfValues.fontName
       });
-      coord.y -= pdfValues.titleSpacing;
+      coord.y -= pdfValues.songTitle.Spacing;
       var fuenteX = parseInt(
         (pdfValues.widthHeightPixels - sizeFuente.width) / 2
       );
@@ -443,27 +437,28 @@ export const generatePDF = async (
         x: fuenteX,
         y: coord.y,
         color: NativeStyles.fuente.color,
-        fontSize: pdfValues.fuenteFontSize,
+        fontSize: pdfValues.songSource.FontSize,
         fontName: pdfValues.fontName
       });
-      coord.x = primerColumnaX;
-      coord.y -= pdfValues.fuenteSpacing;
-      var yStart = coord.y - pdfValues.parrafoSpacing;
+      coord.x = pdfValues.primerColumnaX;
+      coord.y -= pdfValues.songSource.Spacing;
+      var yStart = coord.y - pdfValues.songParagraphSpacing;
       lines.forEach((it: SongLine, idx) => {
         if (it.inicioParrafo) {
-          coord.y -= pdfValues.parrafoSpacing;
+          coord.y -= pdfValues.songParagraphSpacing;
         }
         if (it.tituloEspecial) {
-          coord.y -= pdfValues.parrafoSpacing * 2;
+          coord.y -= pdfValues.songParagraphSpacing * 2;
         }
         var alturaExtra = 0;
         if (it.notas) {
-          alturaExtra = pdfValues.notesFontSize + pdfValues.cantoSpacing;
+          alturaExtra =
+            pdfValues.songNote.FontSize + pdfValues.songText.Spacing;
         }
         if (coord.y - alturaExtra <= limiteHoja) {
           // Si ya estamos escribiendo en la 2da columna
           // el texto quedara sobreecrito, por tanto generar advertencia
-          if (coord.x === segundaColumnaX) {
+          if (coord.x === pdfValues.segundaColumnaX) {
             console.log(
               'Sin lugar (%s, linea %s = "%s"), página %s',
               canto.titulo,
@@ -472,71 +467,65 @@ export const generatePDF = async (
               pageNumber
             );
           }
-          coord.x = segundaColumnaX;
+          coord.x = pdfValues.segundaColumnaX;
           coord.y = yStart;
         }
         if (it.notas === true) {
           page.drawText(it.texto, {
-            x: coord.x + pdfValues.indicadorSpacing,
+            x: coord.x + pdfValues.songIndicatorSpacing,
             y: coord.y,
             color: NativeStyles.lineaNotas.color,
-            fontSize: pdfValues.notesFontSize,
+            fontSize: pdfValues.songNote.FontSize,
             fontName: pdfValues.fontName
           });
-          coord.y -= pdfValues.cantoSpacing;
+          coord.y -= pdfValues.songText.Spacing;
         } else if (it.canto === true) {
           page.drawText(it.texto, {
-            x: coord.x + pdfValues.indicadorSpacing,
+            x: coord.x + pdfValues.songIndicatorSpacing,
             y: coord.y,
             color: NativeStyles.lineaNormal.color,
-            fontSize: pdfValues.cantoFontSize,
+            fontSize: pdfValues.songText.FontSize,
             fontName: pdfValues.fontName
           });
-          coord.y -= pdfValues.cantoSpacing;
+          coord.y -= pdfValues.songText.Spacing;
         } else if (it.cantoConIndicador === true) {
           page.drawText(it.prefijo, {
             x: coord.x,
             y: coord.y,
             color: NativeStyles.prefijo.color,
-            fontSize: pdfValues.cantoFontSize,
+            fontSize: pdfValues.songText.FontSize,
             fontName: pdfValues.fontName
           });
           if (it.tituloEspecial === true) {
             page.drawText(it.texto, {
-              x: coord.x + pdfValues.indicadorSpacing,
+              x: coord.x + pdfValues.songIndicatorSpacing,
               y: coord.y,
               color: NativeStyles.lineaTituloNotaEspecial.color,
-              fontSize: pdfValues.cantoFontSize,
+              fontSize: pdfValues.songText.FontSize,
               fontName: pdfValues.fontName
             });
           } else if (it.textoEspecial === true) {
             page.drawText(it.texto, {
-              x: coord.x + pdfValues.indicadorSpacing,
+              x: coord.x + pdfValues.songIndicatorSpacing,
               y: coord.y,
               color: NativeStyles.lineaNotaEspecial.color,
-              fontSize: pdfValues.cantoFontSize - 3,
+              fontSize: pdfValues.songText.FontSize - 3,
               fontName: pdfValues.fontName
             });
           } else {
             page.drawText(it.texto, {
-              x: coord.x + pdfValues.indicadorSpacing,
+              x: coord.x + pdfValues.songIndicatorSpacing,
               y: coord.y,
               color: NativeStyles.lineaNormal.color,
-              fontSize: pdfValues.cantoFontSize,
+              fontSize: pdfValues.songText.FontSize,
               fontName: pdfValues.fontName
             });
           }
-          coord.y -= pdfValues.cantoSpacing;
+          coord.y -= pdfValues.songText.Spacing;
         }
       });
       if (opts.pageNumbers) {
-        page.drawText(pageNumber.toString(), {
-          x: pdfValues.widthHeightPixels / 2,
-          y: limiteHoja,
-          color: NativeStyles.lineaNormal.color,
-          fontSize: pdfValues.cantoFontSize,
-          fontName: pdfValues.fontName
-        });
+        writePageNumber(page);
       }
       pdfDoc.addPage(page);
     });

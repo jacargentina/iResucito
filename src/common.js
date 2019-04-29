@@ -2,23 +2,35 @@
 // Utilerias comunes (no atadas a react-native ni a NodeJS)
 import normalize from 'normalize-strings';
 
-export const pdfValues = {
+var pdfVars = {
   fontName: 'Franklin Gothic Medium',
-  titleFontSize: 19,
-  titleSpacing: 11,
-  fuenteFontSize: 10,
-  fuenteSpacing: 20,
-  cantoFontSize: 12,
-  cantoSpacing: 11,
-  indexSpacing: 12,
-  indexExtraMarginLeftRight: 5,
-  indicadorSpacing: 18,
-  parrafoSpacing: 9,
-  notesFontSize: 10,
+  marginLeft: 25,
+  marginTop: 19,
   widthHeightPixels: 598, // 21,1 cm
-  marginLeftRight: 25,
-  marginTopBottom: 19
+  songTitle: { FontSize: 19, Spacing: 11 },
+  songSource: { FontSize: 10, Spacing: 20 },
+  songText: { FontSize: 12, Spacing: 11 },
+  songNote: { FontSize: 10 },
+  songIndicatorSpacing: 18,
+  songParagraphSpacing: 9,
+  indexTitle: { FontSize: 16, Spacing: 14 },
+  indexSubtitle: { FontSize: 12, Spacing: 4 },
+  indexText: { FontSize: 11, Spacing: 3 },
+  indexExtraMarginLeft: 25,
+  primerColumnaX: 0,
+  segundaColumnaX: 0,
+  primerColumnaIndexX: 0,
+  segundaColumnaIndexX: 0
 };
+
+pdfVars.primerColumnaX = pdfVars.marginLeft;
+pdfVars.segundaColumnaX =
+  pdfVars.widthHeightPixels / 2 + pdfVars.primerColumnaX;
+pdfVars.primerColumnaIndexX = pdfVars.marginLeft + pdfVars.indexExtraMarginLeft;
+pdfVars.segundaColumnaIndexX =
+  pdfVars.widthHeightPixels / 2 + pdfVars.indexExtraMarginLeft;
+
+export const pdfValues = pdfVars;
 
 export const asyncForEach = async (array: Array<any>, callback: Function) => {
   for (let index = 0; index < array.length; index++) {
@@ -31,7 +43,10 @@ export const getAlphaWithSeparators = (
 ): Array<string> => {
   // Alfabetico
   var items = songsToPdf.map(data => {
-    return data.canto.titulo;
+    const sameName = songsToPdf.filter(
+      d => d.canto.titulo === data.canto.titulo
+    );
+    return sameName.length > 1 ? data.canto.nombre : data.canto.titulo;
   });
   var i = 0;
   var letter = normalize(items[i][0]);
@@ -56,9 +71,13 @@ export const wayStages = [
 export const getGroupedByStage = (songsToPdf: Array<SongToPdf>): any => {
   // Agrupados por stage
   return songsToPdf.reduce((groups, data) => {
-    var groupKey = data.canto.stage;
+    const groupKey = data.canto.stage;
     groups[groupKey] = groups[groupKey] || [];
-    groups[groupKey].push(data.canto.titulo);
+    const sameName = songsToPdf.filter(
+      d => d.canto.titulo === data.canto.titulo
+    );
+    const title = sameName.length > 1 ? data.canto.nombre : data.canto.titulo;
+    groups[groupKey].push(title);
     return groups;
   }, {});
 };
@@ -77,7 +96,11 @@ export const getGroupedByLiturgicTime = (songsToPdf: Array<SongToPdf>): any => {
     var times = liturgicTimes.filter(t => data.canto[t] === true);
     times.forEach(t => {
       groups[t] = groups[t] || [];
-      groups[t].push(data.canto.titulo);
+      const sameName = songsToPdf.filter(
+        d => d.canto.titulo === data.canto.titulo
+      );
+      const title = sameName.length > 1 ? data.canto.nombre : data.canto.titulo;
+      groups[t].push(title);
     });
     return groups;
   }, {});
@@ -104,7 +127,11 @@ export const getGroupedByLiturgicOrder = (
     var times = liturgicOrder.filter(t => data.canto[t] === true);
     times.forEach(t => {
       groups[t] = groups[t] || [];
-      groups[t].push(data.canto.titulo);
+      const sameName = songsToPdf.filter(
+        d => d.canto.titulo === data.canto.titulo
+      );
+      const title = sameName.length > 1 ? data.canto.nombre : data.canto.titulo;
+      groups[t].push(title);
     });
     return groups;
   }, {});
