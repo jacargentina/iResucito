@@ -446,6 +446,7 @@ export const generatePDF = async (
         fontSize: pdfValues.fuenteFontSize,
         fontName: pdfValues.fontName
       });
+      coord.x = primerColumnaX;
       coord.y -= pdfValues.fuenteSpacing;
       var yStart = coord.y - pdfValues.parrafoSpacing;
       lines.forEach((it: SongLine, idx) => {
