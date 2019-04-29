@@ -108,19 +108,21 @@ export const generateListing = async (
     .text(title.toUpperCase(), pos.x, pos.y, { lineBreak: false });
   pos.y += height;
   const itemHeight = pdfValues.indexText.FontSize + pdfValues.indexText.Spacing;
-  items.forEach(str => {
-    if (str !== '') {
-      checkLimits(itemHeight);
-      doc
-        .fillColor(NodeStyles.lineaNormal.color)
-        .fontSize(pdfValues.indexText.FontSize)
-        .font('thefont')
-        .text(str, pos.x, pos.y, { lineBreak: false });
+  if (items) {
+    items.forEach(str => {
+      if (str !== '') {
+        checkLimits(itemHeight);
+        doc
+          .fillColor(NodeStyles.lineaNormal.color)
+          .fontSize(pdfValues.indexText.FontSize)
+          .font('thefont')
+          .text(str, pos.x, pos.y, { lineBreak: false });
+      }
+      pos.y += itemHeight;
+    });
+    if (pos.y !== primerFilaY) {
+      pos.y += itemHeight;
     }
-    pos.y += itemHeight;
-  });
-  if (pos.y !== primerFilaY) {
-    pos.y += itemHeight;
   }
 };
 
@@ -128,10 +130,9 @@ export const generatePDF = async (
   songsToPdf: Array<SongToPdf>,
   opts: ExportToPdfOptions
 ) => {
-  const pdfPath =
-    songsToPdf.length === 1
-      ? `${docsDir}/${songsToPdf[0].canto.titulo}.pdf`
-      : `${docsDir}/iResucito.pdf`;
+  const pdfPath = opts.createIndex
+    ? `${docsDir}/iResucito.pdf`
+    : `${docsDir}/${songsToPdf[0].canto.titulo}.pdf`;
   const pdfPathNorm = normalize(pdfPath);
   // Para centrar titulo
   var doc = new PDFDocument({

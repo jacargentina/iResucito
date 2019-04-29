@@ -153,7 +153,6 @@ export const getLocalesForPicker = () => {
   return locales;
 };
 
-var mono = Platform.OS == 'ios' ? 'Franklin Gothic Medium' : 'monospace';
 var isTablet = DeviceInfo.isTablet();
 var fontSizeTitulo = isTablet ? 25 : 22;
 var fontSizeTexto = isTablet ? 17 : 15;
@@ -161,48 +160,48 @@ var fontSizeNotas = isTablet ? 15.2 : 12.5;
 
 export const stylesObj: SongStyles = {
   titulo: {
-    fontFamily: mono,
+    fontFamily: 'Franklin Gothic Medium',
     color: '#ff0000',
     fontSize: fontSizeTitulo,
     marginTop: 8,
     marginBottom: 4
   },
   fuente: {
-    fontFamily: mono,
+    fontFamily: 'Franklin Gothic Medium',
     color: '#777777',
     fontSize: fontSizeTexto - 1,
     marginBottom: 8
   },
   lineaNotas: {
-    fontFamily: mono,
+    fontFamily: 'Franklin Gothic Medium',
     color: '#ff0000',
     fontSize: fontSizeNotas,
     marginLeft: 4
   },
   lineaTituloNotaEspecial: {
-    fontFamily: mono,
+    fontFamily: 'Franklin Gothic Medium',
     color: '#ff0000'
   },
   lineaNotaEspecial: {
-    fontFamily: mono,
+    fontFamily: 'Franklin Gothic Medium',
     fontSize: fontSizeNotas,
     color: '#444444'
   },
   lineaNotasConMargen: {
-    fontFamily: mono,
+    fontFamily: 'Franklin Gothic Medium',
     color: '#ff0000',
     fontSize: fontSizeNotas,
     marginTop: 15,
     marginLeft: 4
   },
   lineaNormal: {
-    fontFamily: mono,
+    fontFamily: 'Franklin Gothic Medium',
     color: '#000000',
     fontSize: fontSizeTexto,
     marginBottom: 8
   },
   prefijo: {
-    fontFamily: mono,
+    fontFamily: 'Franklin Gothic Medium',
     color: '#777777',
     fontSize: fontSizeTexto
   }
@@ -311,22 +310,25 @@ export const generateListing = async (
     fontName: pdfValues.fontName
   });
   pos.y -= height;
-  const itemHeight = pdfValues.indexText.FontSize + pdfValues.indexText.Spacing;
-  items.forEach(str => {
-    if (str !== '') {
-      checkLimits(itemHeight);
-      currPage.drawText(str, {
-        x: pos.x,
-        y: pos.y,
-        color: NativeStyles.lineaNormal.color,
-        fontSize: pdfValues.indexText.FontSize,
-        fontName: pdfValues.fontName
-      });
+  if (items) {
+    const itemHeight =
+      pdfValues.indexText.FontSize + pdfValues.indexText.Spacing;
+    items.forEach(str => {
+      if (str !== '') {
+        checkLimits(itemHeight);
+        currPage.drawText(str, {
+          x: pos.x,
+          y: pos.y,
+          color: NativeStyles.lineaNormal.color,
+          fontSize: pdfValues.indexText.FontSize,
+          fontName: pdfValues.fontName
+        });
+      }
+      pos.y -= itemHeight;
+    });
+    if (pos.y !== primerFilaY) {
+      pos.y -= itemHeight;
     }
-    pos.y -= itemHeight;
-  });
-  if (pos.y !== primerFilaY) {
-    pos.y -= itemHeight;
   }
   return currPage;
 };
@@ -340,10 +342,9 @@ export const generatePDF = async (
       Platform.OS == 'ios'
         ? RNFS.TemporaryDirectoryPath
         : RNFS.CachesDirectoryPath + '/';
-    const pdfPath =
-      songsToPdf.length === 1
-        ? `${docsDir}${songsToPdf[0].canto.titulo}.pdf`
-        : `${docsDir}iResucito.pdf`;
+    const pdfPath = opts.createIndex
+      ? `${docsDir}/iResucito.pdf`
+      : `${docsDir}/${songsToPdf[0].canto.titulo}.pdf`;
     const pdfPathNorm = normalize(pdfPath);
     const pdfDoc = PDFDocument.create(pdfPathNorm);
     pageNumber = 1;
