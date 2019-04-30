@@ -30,6 +30,7 @@ declare type SongStyles = {
   lineaNotaEspecial: any,
   lineaNotasConMargen: any,
   lineaNormal: any,
+  pageNumber: any,
   prefijo: any
 };
 

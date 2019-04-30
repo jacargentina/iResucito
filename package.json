@@ -21,7 +21,7 @@
     "flow-bin": "^0.98.0",
     "metro-react-native-babel-preset": "^0.53.1",
     "os-locale": "^3.1.0",
-    "pdfkit": "^0.9.0",
+    "pdfkit": "^0.9.1",
     "react-test-renderer": "16.8.6",
     "schedule": "^0.5.0"
   },
@@ -61,7 +61,7 @@
     "react-native": "^0.59.5",
     "react-native-collapsible": "^1.4.0",
     "react-native-contacts": "^4.0.1",
-    "react-native-device-info": "^1.5.1",
+    "react-native-device-info": "^1.6.0",
     "react-native-exception-handler": "^2.10.7",
     "react-native-fs": "^2.13.3",
     "react-native-gesture-handler": "^1.2.0",

@@ -49,12 +49,11 @@ export function isChordsLine(text: string, locale: string): boolean {
   const chords = getChordsScale(locale);
   const line = text
     .trim()
-    .toLowerCase()
     .replace(cleanChordsRegex, ' ')
     .split(' ')
     .filter(i => i.length > 0);
   const onlyChords = line.filter(word => {
-    return chords.find(ch => ch.toLowerCase() === word);
+    return chords.find(ch => ch.toLowerCase() === word.toLowerCase());
   });
   return onlyChords.length > 0 && onlyChords.length == line.length;
 }
@@ -237,10 +236,15 @@ export class SongsProcessor {
     })} ${I18n.t('songs.assembly', {
       locale
     })}`;
+    if (text === '                                               Mi ') {
+      debugger;
+    }
+
     if (text.startsWith(psalmistAndAssembly)) {
       // Indicador de Salmista Y Asamblea
       var secondPoint = 4;
       var it: SongLine = {
+        case: 1,
         texto: text.substring(secondPoint + 1).trim(),
         style: this.songStyles.lineaNormal,
         prefijo: text.substring(0, secondPoint + 1) + ' ',
@@ -291,6 +295,7 @@ export class SongsProcessor {
       // Indicador de Salmista, Asamblea, Presbitero, Hombres, Mujeres, etc
       var pointIndex = text.indexOf('.');
       var it: SongLine = {
+        case: 2,
         texto: text.substring(pointIndex + 1).trim(),
         style: this.songStyles.lineaNormal,
         prefijo: text.substring(0, pointIndex + 1) + ' ',
@@ -308,6 +313,7 @@ export class SongsProcessor {
       return it;
     } else if (isChordsLine(text, locale)) {
       var it: SongLine = {
+        case: 3,
         texto: text.trimRight(),
         style: this.songStyles.lineaNotas,
         prefijo: '',
@@ -326,6 +332,7 @@ export class SongsProcessor {
     } else if (text.startsWith('\u2217')) {
       // Nota especial
       var it: SongLine = {
+        case: 4,
         texto: text.substring(1).trim(),
         style: this.songStyles.lineaNotaEspecial,
         prefijo: '\u2217  ',
@@ -344,6 +351,7 @@ export class SongsProcessor {
     } else if (text.trim().startsWith('**') && text.trim().endsWith('**')) {
       // Titulo especial
       var it: SongLine = {
+        case: 5,
         canto: false,
         texto: text.replace(/\*/g, '').trim(),
         style: this.songStyles.lineaTituloNotaEspecial,
@@ -363,6 +371,7 @@ export class SongsProcessor {
     } else if (text.startsWith('-')) {
       // Texto especial
       var it: SongLine = {
+        case: 6,
         canto: false,
         texto: text.replace('-', '').trim(),
         style: this.songStyles.lineaNotaEspecial,
@@ -382,6 +391,7 @@ export class SongsProcessor {
     } else {
       var texto = text.trimRight();
       var it: SongLine = {
+        case: 7,
         texto: texto,
         style: this.songStyles.lineaNormal,
         prefijo: '',

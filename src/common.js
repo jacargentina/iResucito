@@ -1,13 +1,14 @@
 // @flow
 // Utilerias comunes (no atadas a react-native ni a NodeJS)
 import normalize from 'normalize-strings';
+import I18n from './translations';
 
 var pdfVars = {
   fontName: 'Franklin Gothic Medium',
   marginLeft: 25,
   marginTop: 19,
   widthHeightPixels: 598, // 21,1 cm
-  songTitle: { FontSize: 19, Spacing: 11 },
+  songTitle: { FontSize: 19, Spacing: 3 },
   songSource: { FontSize: 10, Spacing: 20 },
   songText: { FontSize: 12, Spacing: 11 },
   songNote: { FontSize: 10 },
@@ -135,4 +136,350 @@ export const getGroupedByLiturgicOrder = (
     });
     return groups;
   }, {});
+};
+
+export class PdfWriter {
+  pos: ExportToPdfCoord;
+  pageNumber: number;
+  resetY: number;
+  limiteHoja: number;
+  primerFilaY: number;
+  pageNumberColor: any;
+  titleColor: any;
+  normalColor: any;
+  sourceColor: any;
+  noteColor: any;
+  prefixColor: any;
+  specialTitleColor: any;
+  specialNoteColor: any;
+
+  constructor(
+    limiteHoja: number,
+    primerFilaY: number,
+    pageNumberColor: any,
+    titleColor: any,
+    normalColor: any,
+    sourceColor: any,
+    noteColor: any,
+    prefixColor: any,
+    specialTitleColor: any,
+    specialNoteColor: any
+  ) {
+    this.limiteHoja = limiteHoja;
+    this.primerFilaY = primerFilaY;
+    this.pageNumberColor = pageNumberColor;
+    this.titleColor = titleColor;
+    this.normalColor = normalColor;
+    this.sourceColor = sourceColor;
+    this.noteColor = noteColor;
+    this.prefixColor = prefixColor;
+    this.specialTitleColor = specialTitleColor;
+    this.specialNoteColor = specialNoteColor;
+    this.pageNumber = 1;
+    this.pos = {
+      x: 0,
+      y: 0
+    };
+  }
+
+  positionIndex() {
+    this.pos = {
+      x: pdfValues.primerColumnaIndexX,
+      y: this.primerFilaY
+    };
+  }
+
+  positionSong() {
+    this.pos = {
+      x: pdfValues.primerColumnaX,
+      y: this.primerFilaY
+    };
+  }
+
+  positionStartLine() {
+    this.pos = {
+      x: pdfValues.primerColumnaX,
+      y: this.pos.y
+    };
+  }
+
+  checkLimitsCore(height: number) {
+    throw 'Not implemented';
+  }
+
+  writeTextCore(
+    text: string,
+    color: any,
+    font: string,
+    size: number,
+    xOffset?: number
+  ) {
+    throw 'Not implemented';
+  }
+
+  createPage() {
+    throw 'Not implemented';
+  }
+
+  addPageToDocument() {
+    throw 'Not implemented';
+  }
+
+  moveToNextLine(height: number) {
+    throw 'Not implemented';
+  }
+
+  setNewColumnY(height: number) {
+    throw 'Not implemented';
+  }
+
+  async writePageNumber() {
+    this.pos.x = pdfValues.widthHeightPixels / 2;
+    this.pos.y = this.limiteHoja;
+    this.writeTextCore(
+      this.pageNumber.toString(),
+      this.pageNumberColor,
+      pdfValues.fontName,
+      pdfValues.songText.FontSize
+    );
+  }
+
+  async checkLimits(height: number, firstCol: number, secondCol: number) {
+    if (this.checkLimitsCore(height)) {
+      if (this.pos.x == secondCol) {
+        await this.writePageNumber();
+        this.addPageToDocument();
+        this.pageNumber++;
+        this.pos.x = firstCol;
+        this.resetY = this.primerFilaY;
+        this.createPage();
+      } else {
+        this.pos.x = secondCol;
+      }
+      this.pos.y = this.resetY;
+    }
+  }
+
+  async getCenteringX(text: string, font: string, size: number) {
+    throw 'Not implemented';
+  }
+
+  async save() {
+    throw 'Not implemented';
+  }
+
+  async writeTextCentered(
+    text: string,
+    color: any,
+    font: string,
+    size: number
+  ) {
+    var saveX = this.pos.x;
+    this.pos.x = await this.getCenteringX(text, font, size);
+    this.writeTextCore(text, color, font, size);
+    this.pos.x = saveX;
+  }
+
+  async generateListing(title: string, items: any) {
+    const height =
+      pdfValues.indexSubtitle.FontSize + pdfValues.indexSubtitle.Spacing;
+    await this.checkLimits(
+      height,
+      pdfValues.primerColumnaIndexX,
+      pdfValues.segundaColumnaIndexX
+    );
+    this.writeTextCore(
+      title.toUpperCase(),
+      this.titleColor,
+      pdfValues.fontName,
+      pdfValues.indexSubtitle.FontSize
+    );
+    this.moveToNextLine(height);
+    if (items) {
+      const itemHeight =
+        pdfValues.indexText.FontSize + pdfValues.indexText.Spacing;
+      await asyncForEach(items, async str => {
+        if (str !== '') {
+          await this.checkLimits(
+            itemHeight,
+            pdfValues.primerColumnaIndexX,
+            pdfValues.segundaColumnaIndexX
+          );
+          this.writeTextCore(
+            str,
+            this.normalColor,
+            pdfValues.fontName,
+            pdfValues.indexText.FontSize
+          );
+        }
+        this.moveToNextLine(itemHeight);
+      });
+      if (this.pos.y !== this.primerFilaY) {
+        this.moveToNextLine(itemHeight);
+      }
+    }
+  }
+}
+
+export const PDFGenerator = async (
+  songsToPdf: Array<SongToPdf>,
+  opts: ExportToPdfOptions,
+  writer: PdfWriter
+) => {
+  try {
+    // Indice
+    if (opts.createIndex) {
+      writer.createPage();
+      writer.positionIndex();
+
+      const height =
+        pdfValues.indexTitle.FontSize + pdfValues.indexTitle.Spacing;
+      await writer.writeTextCentered(
+        I18n.t('ui.export.songs index').toUpperCase(),
+        writer.titleColor,
+        pdfValues.fontName,
+        pdfValues.indexTitle.FontSize
+      );
+      writer.moveToNextLine(height);
+      writer.setNewColumnY(0);
+
+      // Alfabetico
+      var items = getAlphaWithSeparators(songsToPdf);
+      await writer.generateListing(I18n.t('search_title.alpha'), items);
+
+      // Agrupados por stage
+      var byStage = getGroupedByStage(songsToPdf);
+      await asyncForEach(wayStages, async stage => {
+        await writer.generateListing(
+          I18n.t(`search_title.${stage}`),
+          byStage[stage]
+        );
+      });
+
+      // Agrupados por tiempo liturgico
+      var byTime = getGroupedByLiturgicTime(songsToPdf);
+      await asyncForEach(liturgicTimes, async (time, i) => {
+        var title = I18n.t(`search_title.${time}`);
+        if (i === 0) {
+          title = I18n.t('search_title.liturgical time') + ` - ${title}`;
+        }
+        await writer.generateListing(title, byTime[time]);
+      });
+
+      // Agrupados por orden liturgico
+      var byOrder = getGroupedByLiturgicOrder(songsToPdf);
+      await asyncForEach(liturgicOrder, async order => {
+        var title = I18n.t(`search_title.${order}`);
+        await writer.generateListing(title, byOrder[order]);
+      });
+      await writer.writePageNumber();
+      writer.addPageToDocument();
+    }
+
+    // Cantos
+    await asyncForEach(songsToPdf, async data => {
+      // Tomar canto y las lineas para renderizar
+      const { canto, lines } = data;
+      writer.createPage();
+      writer.positionSong();
+      await writer.writeTextCentered(
+        canto.titulo.toUpperCase(),
+        writer.titleColor,
+        pdfValues.fontName,
+        pdfValues.songTitle.FontSize
+      );
+      writer.moveToNextLine(
+        pdfValues.songTitle.FontSize + pdfValues.songTitle.Spacing
+      );
+      await writer.writeTextCentered(
+        canto.fuente,
+        writer.sourceColor,
+        pdfValues.fontName,
+        pdfValues.songSource.FontSize
+      );
+      writer.positionStartLine();
+      writer.moveToNextLine(
+        pdfValues.songSource.FontSize + pdfValues.songSource.Spacing
+      );
+      writer.setNewColumnY(pdfValues.songParagraphSpacing);
+      await asyncForEach(lines, async (it: SongLine) => {
+        if (it.inicioParrafo) {
+          writer.moveToNextLine(pdfValues.songParagraphSpacing);
+        }
+        if (it.tituloEspecial) {
+          writer.moveToNextLine(pdfValues.songParagraphSpacing * 2);
+        }
+        var alturaExtra = 0;
+        if (it.notas) {
+          alturaExtra =
+            pdfValues.songNote.FontSize + pdfValues.songText.Spacing;
+        }
+        await writer.checkLimits(
+          alturaExtra,
+          pdfValues.primerColumnaX,
+          pdfValues.segundaColumnaX
+        );
+        if (it.notas === true) {
+          writer.writeTextCore(
+            it.texto,
+            writer.noteColor,
+            pdfValues.fontName,
+            pdfValues.songNote.FontSize,
+            pdfValues.songIndicatorSpacing
+          );
+          writer.moveToNextLine(pdfValues.songText.Spacing);
+        } else if (it.canto === true) {
+          writer.writeTextCore(
+            it.texto,
+            writer.normalColor,
+            pdfValues.fontName,
+            pdfValues.songText.FontSize,
+            pdfValues.songIndicatorSpacing
+          );
+          writer.moveToNextLine(pdfValues.songText.Spacing);
+        } else if (it.cantoConIndicador === true) {
+          writer.writeTextCore(
+            it.prefijo,
+            writer.prefixColor,
+            pdfValues.fontName,
+            pdfValues.songText.FontSize
+          );
+          if (it.tituloEspecial === true) {
+            writer.writeTextCore(
+              it.texto,
+              writer.specialTitleColor,
+              pdfValues.fontName,
+              pdfValues.songText.FontSize,
+              pdfValues.songIndicatorSpacing
+            );
+          } else if (it.textoEspecial === true) {
+            writer.writeTextCore(
+              it.texto,
+              writer.specialNoteColor,
+              pdfValues.fontName,
+              pdfValues.songText.FontSize - 3,
+              pdfValues.songIndicatorSpacing
+            );
+          } else {
+            writer.writeTextCore(
+              it.texto,
+              writer.normalColor,
+              pdfValues.fontName,
+              pdfValues.songText.FontSize,
+              pdfValues.songIndicatorSpacing
+            );
+          }
+          writer.moveToNextLine(pdfValues.songText.Spacing);
+        }
+      });
+      if (opts.pageNumbers) {
+        await writer.writePageNumber();
+      }
+      writer.addPageToDocument();
+    });
+    const path = await writer.save();
+    return path;
+  } catch (err) {
+    console.log('generatePDF ERROR', err);
+  }
 };
