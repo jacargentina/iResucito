@@ -39,7 +39,9 @@
       "type": "Tipo de exportación",
       "processing songs": "Procesando {{total}} cantos...",
       "pdf viewer title": "Libro completo",
-      "songs index": "Índice de Cantos"
+      "songs index": "Índice de Cantos",
+      "songs book title": "Resucitó",
+      "songs book subtitle": "Cantos para las Comunidades Neocatecumenales"
     },
     "community empty": "Sin nombres importados. Para elegir mediante la lista, debes importar desde tus contactos en la opción Comunidad.",
     "search placeholder": "Buscar",

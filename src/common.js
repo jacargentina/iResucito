@@ -15,6 +15,8 @@ var pdfVars = {
   songIndicatorSpacing: 18,
   songParagraphSpacing: 9,
   indexTitle: { FontSize: 16, Spacing: 14 },
+  bookTitle: { FontSize: 80, Spacing: 10 },
+  bookSubtitle: { FontSize: 14 },
   indexSubtitle: { FontSize: 12, Spacing: 4 },
   indexText: { FontSize: 11, Spacing: 3 },
   indexExtraMarginLeft: 25,
@@ -203,7 +205,16 @@ export class PdfWriter {
     };
   }
 
+  /* eslint-disable no-unused-vars */
   checkLimitsCore(height: number) {
+    throw 'Not implemented';
+  }
+
+  async getCenteringX(text: string, font: string, size: number) {
+    throw 'Not implemented';
+  }
+
+  async getCenteringY(text: string, font: string, size: number) {
     throw 'Not implemented';
   }
 
@@ -217,19 +228,20 @@ export class PdfWriter {
     throw 'Not implemented';
   }
 
-  createPage() {
-    throw 'Not implemented';
-  }
-
-  addPageToDocument() {
-    throw 'Not implemented';
-  }
-
   moveToNextLine(height: number) {
     throw 'Not implemented';
   }
 
   setNewColumnY(height: number) {
+    throw 'Not implemented';
+  }
+  /* eslint-enable no-unused-vars */
+
+  createPage() {
+    throw 'Not implemented';
+  }
+
+  addPageToDocument() {
     throw 'Not implemented';
   }
 
@@ -258,10 +270,6 @@ export class PdfWriter {
       }
       this.pos.y = this.resetY;
     }
-  }
-
-  async getCenteringX(text: string, font: string, size: number) {
-    throw 'Not implemented';
   }
 
   async save() {
@@ -327,11 +335,64 @@ export const PDFGenerator = async (
   writer: PdfWriter
 ) => {
   try {
-    // Indice
     if (opts.createIndex) {
+      // Portada
+      writer.createPage();
+      const title = I18n.t('ui.export.songs book title').toUpperCase();
+      const subtitle = I18n.t('ui.export.songs book subtitle').toUpperCase();
+
+      // Escalar titulo - en español "Resucitó" (9 letras) (A) => pdfValues.bookTitle.FontSize (B)
+      // Para otra longitud, cual seria el font size? "Er ist auferstanden" (19 letras) (C) => (X)
+      // Regla de 3 inversa X = A * B / C
+
+      const A = I18n.t('ui.export.songs book title', {
+        locale: 'es'
+      }).length;
+      const B = pdfValues.bookTitle.FontSize;
+      const C = title.length;
+      const X = (A * B) / C;
+
+      const titleFontSize = Math.trunc(X);
+
+      // Titulo
+      writer.pos.x = await writer.getCenteringX(
+        title,
+        pdfValues.fontName,
+        titleFontSize
+      );
+      writer.pos.y = await writer.getCenteringY(
+        title,
+        pdfValues.fontName,
+        titleFontSize +
+          pdfValues.bookTitle.Spacing +
+          pdfValues.bookSubtitle.FontSize
+      );
+      writer.writeTextCore(
+        title,
+        writer.titleColor,
+        pdfValues.fontName,
+        titleFontSize
+      );
+
+      writer.moveToNextLine(titleFontSize + pdfValues.bookTitle.Spacing);
+
+      // Subtitulo
+      writer.pos.x = await writer.getCenteringX(
+        subtitle,
+        pdfValues.fontName,
+        pdfValues.bookSubtitle.FontSize
+      );
+      writer.writeTextCore(
+        subtitle,
+        writer.normalColor,
+        pdfValues.fontName,
+        pdfValues.bookSubtitle.FontSize
+      );
+      writer.addPageToDocument();
+
+      //Indice
       writer.createPage();
       writer.positionIndex();
-
       const height =
         pdfValues.indexTitle.FontSize + pdfValues.indexTitle.Spacing;
       await writer.writeTextCentered(

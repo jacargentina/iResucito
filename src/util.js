@@ -275,6 +275,11 @@ class NativePdfWriter extends PdfWriter {
     return parseInt((pdfValues.widthHeightPixels - sizeTitle.width) / 2);
   }
 
+  async getCenteringY(text: string, font: string, size: number) {
+    const sizeTitle = await PDFLib.measureText(text, font, size);
+    return parseInt((pdfValues.widthHeightPixels - sizeTitle.height) / 2);
+  }
+
   writeTextCore(
     text: string,
     color: any,

@@ -39,7 +39,9 @@
       "type": "Art der Übertragung",
       "processing songs": "Bearbeitung {{total}} Liedern",
       "pdf viewer title": "Komplettes Buch",
-      "songs index": "Liedindex"
+      "songs index": "Liedindex",
+      "songs book title": "Er ist auferstanden",
+      "songs book subtitle": "Lieder der neokatechumenalen Gemeinschaften"
     },
     "community empty": "Ohne importierte Namen. Um aus der Tabelle auszuwählen, sollst du in der Gemeinschaft-Option von deinen Kontakten importieren.",
     "search placeholder": "Suchen",

@@ -85,6 +85,14 @@ class NodeJsPdfWriter extends PdfWriter {
     return parseInt((pdfValues.widthHeightPixels - width) / 2);
   }
 
+  async getCenteringY(text: string, font: string, size: number) {
+    const height = this.doc
+      .fontSize(size)
+      .font('thefont')
+      .heightOfString(text);
+    return parseInt((pdfValues.widthHeightPixels - height) / 2);
+  }
+
   writeTextCore(
     text: string,
     color: any,
@@ -119,7 +127,7 @@ export const generatePDF = async (
 ) => {
   const docsDir = path.resolve(__dirname, '../pdf');
   const pdfPath = opts.createIndex
-    ? `${docsDir}/iResucito.pdf`
+    ? `${docsDir}/iResucito${opts.fileSuffix}.pdf`
     : `${docsDir}/${songsToPdf[0].canto.titulo}.pdf`;
 
   var writer = new NodeJsPdfWriter(pdfPath);
@@ -155,7 +163,7 @@ if (!process.argv.slice(2).length) {
   I18n.locale = locale;
   console.log('Configured locale', I18n.locale);
   var key = program.key;
-  var opts = { createIndex: true, pageNumbers: true };
+  var opts = { createIndex: true, pageNumbers: true, fileSuffix: `-${locale}` };
   if (locale !== '') {
     if (key) {
       var song = folderSongs.getSingleSongMeta(key, locale);
