@@ -235,9 +235,14 @@ class NativePdfWriter extends PdfWriter {
     super(
       pdfValues.marginTop,
       pdfValues.widthHeightPixels - pdfValues.marginTop * 2,
-      NativeStyles.fuenteNormal.color,
+      NativeStyles.pageNumber.color,
       NativeStyles.titulo.color,
-      NativeStyles.lineaNormal.color
+      NativeStyles.lineaNormal.color,
+      NativeStyles.fuente.color,
+      NativeStyles.lineaNotas.color,
+      NativeStyles.prefijo.color,
+      NativeStyles.lineaTituloNotaEspecial.color,
+      NativeStyles.lineaNotaEspecial.color
     );
     this.doc = PDFDocument.create(normalize(pdfPath));
   }

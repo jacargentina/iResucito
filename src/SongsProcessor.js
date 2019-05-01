@@ -236,10 +236,6 @@ export class SongsProcessor {
     })} ${I18n.t('songs.assembly', {
       locale
     })}`;
-    if (text === '                                               Mi ') {
-      debugger;
-    }
-
     if (text.startsWith(psalmistAndAssembly)) {
       // Indicador de Salmista Y Asamblea
       var secondPoint = 4;
