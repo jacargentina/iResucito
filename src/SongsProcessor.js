@@ -16,7 +16,7 @@ export const getSongFileFromString = (str: string): SongFile => {
   };
 };
 
-export const cleanChordsRegex = /\[|\]|\(|\)|#|\*|5|6|7|9|b|-|\+|\/|\u2013|\u2217|aum|dim|m|is|IS/g;
+export const cleanChordsRegex = /\[|\]|\(|\)|#|\*|5|6|7|9|b|d|-|\+|\/|\u2013|\u2217|aum|dim|m|is|IS/g;
 
 export const getChordsScale = (locale: string) => {
   return I18n.t('chords.scale', { locale }).split(' ');
