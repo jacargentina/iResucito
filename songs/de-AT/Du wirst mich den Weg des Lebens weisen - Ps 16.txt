@@ -25,12 +25,4 @@ Mein Anteil fiel mir zu auf lieblichem Land                          V. Du wirst
 d        E
 Mein Erbe ist wunderbar.
 
-
-
-
-
-
-
-
-
 (*) Man kann es auch in C singen.

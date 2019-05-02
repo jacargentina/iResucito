@@ -8,7 +8,6 @@ Christe, eleison!                    CHRISTE, ELEISON!
 Re          Fa#-                     Re          Fa#-
 Kyrie, eleison!                      KYRIE, ELEISON!
 
-
 La                 Mi Fa#-           Re         Mi
 S. Santa Maria Mãe de Deus,         A. ROGAI POR NÓS!
 São Miguel,                           "         "
@@ -45,7 +44,6 @@ S. Santo Inácio de Antioquía,       A. ROGAI POR NÓS!
 Santo Agostinho,                      "         "
 São Bento,                            "         "
 São Francisco e São Domingos,         "         "
-
 
   Na Ladainha pode-se adicionar alguns nomes de santos,
   especialmente do padroeiro da Igreja, e da região,
@@ -91,4 +89,3 @@ Re            Fa#-                           Re            Fa#-
 S. Christe, audi nos.                       A. CHRISTE, AUDI NOS!
 Re              Fa#-                         Re              Fa#-
 S. Christe, exaudi nos.                     A. CHRISTE, EXAUDI NOS!
-

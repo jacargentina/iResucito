@@ -22,6 +22,9 @@ find . -type f -exec sed -i '' -e 's/"//g' {} \;
 # Fix first line, removing weird characters from title
 find . -type f -exec sed -i '' -e '1 s/*//g' {} \;
 
+# Remove double empty lines, leave just one
+find . -type f -exec sed -i '' -e '/./b' -e :n -e 'N;s/\n$//;tn' {} \;
+
 # macOS filenames
 
 In macOS the filenames (in songs/[locale]) are encoded in UTF "decomposed form"
