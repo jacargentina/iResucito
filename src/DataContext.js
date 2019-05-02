@@ -836,13 +836,20 @@ const DataContextWrapper = (props: any) => {
   };
 
   const shareIndexPatch = () => {
-    Share.share(
-      {
-        title: 'iResucitó - Index patch',
-        url: SongsIndexPatchPath
-      },
-      { dialogTitle: I18n.t('ui.share') }
-    );
+    var promise =
+      Platform.OS == 'android'
+        ? RNFS.readFile(SongsIndexPatchPath)
+        : Promise.resolve();
+    promise.then(patchJSON => {
+      Share.share(
+        {
+          title: 'iResucitó - Index patch',
+          message: patchJSON,
+          url: SongsIndexPatchPath
+        },
+        { dialogTitle: I18n.t('ui.share') }
+      );
+    });
   };
 
   return (
