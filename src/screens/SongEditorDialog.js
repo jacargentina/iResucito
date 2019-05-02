@@ -138,7 +138,8 @@ const SongEditorDialog = (props: any) => {
             };
             const opts: ExportToPdfOptions = {
               createIndex: false,
-              pageNumbers: false
+              pageNumbers: false,
+              fileSuffix: ''
             };
             generatePDF([item], opts).then(path => {
               navigation.navigate('SongPreviewPdf', {
