@@ -166,29 +166,17 @@ export class SongsProcessor {
   }
 
   readLocaleSongs(rawLoc: string): Promise<Array<SongFile>> {
-    // First try specific locale (with country included)
-    return this.songsLister(`${this.basePath}/${rawLoc}`)
-      .then(items => {
-        // Very important to call "normalize"
-        // See editing.txt for details
-        items = items
-          .map(i => i.name)
-          .filter(i => i.endsWith('.txt'))
-          .map(i => i.replace('.txt', '').normalize())
-          .map(i => getSongFileFromString(i));
-        items.sort(ordenAlfabetico);
-        return items;
-      })
-      .catch(() => {
-        var locale = rawLoc.split('-')[0];
-        if (locale !== rawLoc) {
-          // If error, and locale contains country
-          // code, try with country code removed
-          return this.readLocaleSongs(locale);
-        }
-        // Locale inexistent
-        return [];
-      });
+    return this.songsLister(`${this.basePath}/${rawLoc}`).then(items => {
+      // Very important to call "normalize"
+      // See editing.txt for details
+      items = items
+        .map(i => i.name)
+        .filter(i => i.endsWith('.txt'))
+        .map(i => i.replace('.txt', '').normalize())
+        .map(i => getSongFileFromString(i));
+      items.sort(ordenAlfabetico);
+      return items;
+    });
   }
 
   loadSingleSong(song: Song, patch?: SongIndexPatch): Promise<any> {

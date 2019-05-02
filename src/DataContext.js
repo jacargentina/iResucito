@@ -115,6 +115,24 @@ const useSongsMeta = () => {
     });
   };
 
+  const readAllLocaleSongs = (locale: string) => {
+    return NativeSongs.readLocaleSongs(locale)
+      .then(items => {
+        var loc = locale.split('-')[0];
+        if (loc === locale) {
+          return items;
+        }
+        // If locale contains country
+        // try with country code removed
+        return NativeSongs.readLocaleSongs(loc).then(result => {
+          return items.concat(result);
+        });
+      })
+      .then(allItems => {
+        setLocaleSongs(allItems);
+      });
+  };
+
   const setSongPatch = (song: Song, locale: string, patch?: SongPatchData) => {
     if (patch && patch.file && patch.file.endsWith('.txt'))
       throw new Error('file con .txt! Pasar sin extension.');
@@ -167,9 +185,7 @@ const useSongsMeta = () => {
             return saveLocalePatch(patchObj);
           })
           .then(() => {
-            return NativeSongs.readLocaleSongs(locale).then(items => {
-              setLocaleSongs(items);
-            });
+            return readAllLocaleSongs(locale);
           });
       }
     );
@@ -259,9 +275,7 @@ const useSongsMeta = () => {
           );
         })
         .then(() => {
-          return NativeSongs.readLocaleSongs(I18n.locale).then(items => {
-            setLocaleSongs(items);
-          });
+          return readAllLocaleSongs(I18n.locale);
         });
     }
   }, [I18n.locale, indexPatchExists, ratingsFileExists]);
