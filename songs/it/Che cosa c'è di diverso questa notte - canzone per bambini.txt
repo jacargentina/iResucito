@@ -11,7 +11,7 @@ Re-            La-
 da tutte le altre notti?
 
 Mi
-A.  DA TUTTE LE ALTRE NOTTI?
+A. DA TUTTE LE ALTRE NOTTI?
 
 
 B.  Ché tutte le altre notti
@@ -21,7 +21,7 @@ Re-            La-
 e non restiamo alzati?
 
 Re-            La-
-A.  E NON RESTIAMO ALZATI?
+A. E NON RESTIAMO ALZATI?
 
 
 Re-          La-
@@ -30,7 +30,7 @@ Mi            La-
 restiamo tutti alzati.
 
 Re-          La-
-A.  MA QUESTA NOTTE, QUESTA NOTTE
+A. MA QUESTA NOTTE, QUESTA NOTTE
 Mi            La-
 RESTIAMO TUTTI ALZATI.
 
@@ -39,18 +39,18 @@ B.  Che cosa c'è
 di diverso questa notte
 da tutte le altre notti?
 
-A.  DA TUTTE LE ALTRE NOTTI?
+A. DA TUTTE LE ALTRE NOTTI?
 
 B.  Ché tutte le altre notti
 andiamo a letto presto
 dopo aver cenato.
 
-A.  DOPO AVER CENATO
+A. DOPO AVER CENATO
 
 B.  Ma questa notte, questa notte
 abbiamo digiunato.
 
-A.  MA QUESTA NOTTE, QUESTA NOTTE
+A. MA QUESTA NOTTE, QUESTA NOTTE
 ABBIAMO DIGIUNATO.
 
 
@@ -58,18 +58,18 @@ B.  Che cosa c'è
 di diverso questa notte
 da tutte le altre notti?
 
-A.  DA TUTTE LE ALTRE NOTTI?
+A. DA TUTTE LE ALTRE NOTTI?
 
 B.  Ché tutte le altre notti
 andiamo a letto presto
 e non aspettiamo niente.
 
-A.  E NON ASPETTIAMO NIENTE.
+A. E NON ASPETTIAMO NIENTE.
 
 B.  Ma questa notte, questa notte
 restiamo ad aspettare.
 
-A.  MA QUESTA NOTTE, QUESTA NOTTE
+A. MA QUESTA NOTTE, QUESTA NOTTE
 RESTIAMO AD ASPETTARE.
 
 
@@ -81,7 +81,7 @@ Re-            La-
 da tutte le altre notti?
 
 Re-            La-
-A.  DA TUTTE LE ALTRE NOTTI?
+A. DA TUTTE LE ALTRE NOTTI?
 
 Re-
 B.  Per restare alzati,
@@ -91,7 +91,7 @@ Mi            La-
 per restare ad aspettare.
 
 Re-
-A.  PER RESTARE ALZATI
+A. PER RESTARE ALZATI
 La-
 PER RESTARE DIGIUNI
 Mi            La-

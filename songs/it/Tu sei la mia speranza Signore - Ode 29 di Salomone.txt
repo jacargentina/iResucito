@@ -2,7 +2,7 @@
 TU SEI LA MIA SPERANZA SIGNORE. (Ode XXIX di Salomone)
 
 Dod dim. *
-C.  Tu sei la mia speranza Signore,
+C. Tu sei la mia speranza Signore,
 Sib7 **     La7
 e non sarò deluso.
 Dod dim. *
@@ -14,9 +14,8 @@ Mi hai tratto dal profondo dello sheol,
 Sib7             La
 dalla bocca della morte mi hai strappato.
 
-
 Re-                              La
-A.  MI HAI TRATTO DAL PROFONDO DELLO SHEOL,
+A. MI HAI TRATTO DAL PROFONDO DELLO SHEOL,
 Sib7             La
 DALLA BOCCA DELLA MORTE MI HAI STRAPPATO.
 Re-                       La
@@ -24,9 +23,8 @@ PERCHÉ HO CREDUTO NEL TUO MESSIA
 Sib7                      La
 E CHE LUI È IL SIGNORE HO CONFESSATO.
 
-
 Sol-                    La
-C.  Tu mi hai dato il segno grande,
+C. Tu mi hai dato il segno grande,
 Sol-                     La
 il mistero nascosto agli angeli,
 Sib7              La7
@@ -34,9 +32,8 @@ per fare guerra con la tua parola,
 Sib7           La
 e riportare vittoria dalle nazioni.
 
-
 Re-
-A.  MI HAI TRATTO...
+A. MI HAI TRATTO...
 Re-                     La
 TU SEI LA MIA SPERANZA, SIGNORE,
 Sib7         La
@@ -45,8 +42,3 @@ Re-                     La
 TU SEI LA MIA SPERANZA, SIGNORE,
 Sib7         La
 E NON SARÒ DELUSO!
-_________________
-
-PRIVATE INCLUDEPICTURE "..\\9028\\risuscito\\acordes\\a6.gif" \d \* MERGEFORMAT   *  (arpeggiando sulle prime tre corde)
-
-PRIVATE INCLUDEPICTURE "..\\9028\\risuscito\\acordes\\lassib7.gif" \d \* MERGEFORMAT   ** Sib7

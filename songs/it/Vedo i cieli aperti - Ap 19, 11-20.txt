@@ -1,6 +1,6 @@
 VEDO I CIELI APERTI. (Ap 19, 11-20)
 Mi
-C.  Vedo i cieli aperti
+C. Vedo i cieli aperti
 Fa
 e un cavallo bianco
 Sol           Fa
@@ -21,7 +21,7 @@ Qual'è il suo nome?  |
 Qual'è il suo nome?  |
 |
 Mi       |  (2 v.)
-A.  IL SUO NOME È        |
+A. IL SUO NOME È        |
 |
 IL SUO NOME È        |
 La-       |
@@ -29,7 +29,7 @@ PAROLA DI DIO.       |
 
 
 Mi
-C.  Vedo una bestia
+C. Vedo una bestia
 Fa
 e un profeta
 Sol
@@ -55,7 +55,7 @@ collera di Dio.
 
 
 La-
-A.  LUI CALPESTA
+A. LUI CALPESTA
 
 DA SOLO NEL TINO
 Mi
@@ -65,7 +65,7 @@ COLLERA DI DIO.
 
 
 Do                  Mi
-C.  Ecco la bestia è catturata
+C. Ecco la bestia è catturata
 La-
 e con essa il suo profeta
 Mi
@@ -75,7 +75,7 @@ e porta il manto pieno di sangue.
 
 
 Mi
-A.  ALLELUJA, ALLELUJA
+A. ALLELUJA, ALLELUJA
 La-
 ALLELUJA, ALLELUJA
 Mi        La-
@@ -83,4 +83,4 @@ ALLELUJA, ALLELUJA, ALLELUJA.
 
 
 Do
-C.  Qual'è il suo nome,...
+C. Qual'è il suo nome,...
