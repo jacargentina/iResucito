@@ -71,7 +71,6 @@ const AboutDialog = (props: any) => {
         <Text style={{ fontWeight: 'bold' }}>{I18n.t('ui.collaborators')}</Text>
         {'\n'} Javier Suarez Suarez (es)
         {'\n'} Matheus Fragoso (pt)
-        {'\n'} Federico Colautti (de-AT)
       </Text>
       <View
         style={{
