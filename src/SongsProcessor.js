@@ -166,17 +166,21 @@ export class SongsProcessor {
   }
 
   readLocaleSongs(rawLoc: string): Promise<Array<SongFile>> {
-    return this.songsLister(`${this.basePath}/${rawLoc}`).then(items => {
-      // Very important to call "normalize"
-      // See editing.txt for details
-      items = items
-        .map(i => i.name)
-        .filter(i => i.endsWith('.txt'))
-        .map(i => i.replace('.txt', '').normalize())
-        .map(i => getSongFileFromString(i));
-      items.sort(ordenAlfabetico);
-      return items;
-    });
+    return this.songsLister(`${this.basePath}/${rawLoc}`)
+      .then(items => {
+        // Very important to call "normalize"
+        // See editing.txt for details
+        items = items
+          .map(i => i.name)
+          .filter(i => i.endsWith('.txt'))
+          .map(i => i.replace('.txt', '').normalize())
+          .map(i => getSongFileFromString(i));
+        items.sort(ordenAlfabetico);
+        return items;
+      })
+      .catch(() => {
+        return [];
+      });
   }
 
   loadSingleSong(song: Song, patch?: SongIndexPatch): Promise<any> {
