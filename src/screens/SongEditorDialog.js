@@ -228,7 +228,7 @@ const SongEditorDialog = (props: any) => {
         <View
           style={{
             flex: 0,
-            margin: 2,
+            margin: 4,
             flexDirection: 'row-reverse',
             justifyContent: 'space-between'
           }}>

@@ -184,7 +184,7 @@ const SongListItem = (props: any) => {
             break;
           case I18n.t('ui.copy from spanish'):
             newSong = await setSongPatch(song, I18n.locale, {
-              lines: song.fullText
+              lines: song.lines.join('\n')
             });
             break;
         }
