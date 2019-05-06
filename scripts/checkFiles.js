@@ -6,11 +6,23 @@ var indexPath = path.resolve('../songs/index.json');
 var SongsIndex = require(indexPath);
 var fs = require('fs');
 
-Object.entries(SongsIndex).forEach(([, value]) => {
+var fullpath = path.resolve('../songs/');
+var localeFolders = fs.readdirSync(fullpath, { withFileTypes: true });
+var localeSongs = {};
+localeFolders.forEach(dirent => {
+  if (dirent.isDirectory()) {
+    localeSongs[dirent.name] = fs.readdirSync(
+      path.resolve(`../songs/${dirent.name}/`)
+    );
+  }
+});
+
+Object.entries(SongsIndex).forEach(([key, value]) => {
   Object.entries(value.files).forEach(([locale, name]) => {
-    var fullpath = path.resolve(`../songs/${locale}/${name}.txt`);
-    if (!fs.existsSync(fullpath)) {
-      console.log(fullpath);
+    var fileName = `${name}.txt`;
+    var found = localeSongs[locale].find(n => n === fileName);
+    if (!found) {
+      console.log(`Key ${key}, no se encontró ${fileName}`);
     }
   });
 });
