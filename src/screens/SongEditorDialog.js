@@ -75,8 +75,12 @@ const SongEditorDialog = (props: any) => {
   const reload = () => {
     getSongLocalePatch(song).then(patchObj => {
       var lines = song.lines.join('\n');
-      if (patchObj && patchObj[song.locale] && patchObj[song.locale].lines) {
-        lines = patchObj[song.locale].lines;
+      if (
+        patchObj &&
+        patchObj[I18n.locale] &&
+        patchObj[I18n.locale].hasOwnProperty('lines')
+      ) {
+        lines = patchObj[I18n.locale].lines;
         setCanDeletePatch(true);
       } else {
         setCanDeletePatch(false);
@@ -86,7 +90,7 @@ const SongEditorDialog = (props: any) => {
   };
 
   const saveWithLines = (text?: string) => {
-    return setSongPatch(song, song.locale, { lines: text });
+    return setSongPatch(song, I18n.locale, { lines: text });
   };
 
   const cutToNextNewline = () => {
@@ -120,7 +124,6 @@ const SongEditorDialog = (props: any) => {
                 key: song.key,
                 rating: song.rating,
                 lines: lines.split('\n'),
-                locale: song.locale,
                 titulo: song.titulo,
                 fuente: song.fuente,
                 stage: song.stage
@@ -130,7 +133,7 @@ const SongEditorDialog = (props: any) => {
           case 1:
             const itemsToRender = NativeSongs.getSongLinesForRender(
               lines.split('\n'),
-              song.locale
+              I18n.locale
             );
             const item: SongToPdf = {
               canto: song,

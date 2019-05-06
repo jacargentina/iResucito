@@ -82,11 +82,10 @@ export class SongsProcessor {
     this.songStyles = songStyles;
   }
 
-  assignInfoFromFile(info: Song, locale: string, parsed: SongFile) {
+  assignInfoFromFile(info: Song, parsed: SongFile) {
     info.nombre = parsed.nombre;
     info.titulo = parsed.titulo;
     info.fuente = parsed.fuente;
-    info.locale = locale;
   }
 
   getSingleSongMeta(
@@ -115,7 +114,7 @@ export class SongsProcessor {
     info.key = key;
     info.path = `${this.basePath}/${loc}/${info.files[loc]}.txt`;
     const parsed = getSongFileFromString(info.files[loc]);
-    this.assignInfoFromFile(info, loc, parsed);
+    this.assignInfoFromFile(info, parsed);
     // Si se aplico un parche
     // Asignar los valores del mismo
     if (
@@ -132,7 +131,7 @@ export class SongsProcessor {
           [rawLoc]: file
         });
         const parsed = getSongFileFromString(file);
-        this.assignInfoFromFile(info, rawLoc, parsed);
+        this.assignInfoFromFile(info, parsed);
       }
       if (rename) {
         const renamed = getSongFileFromString(rename);
@@ -189,22 +188,24 @@ export class SongsProcessor {
         if (
           patch &&
           patch.hasOwnProperty(song.key) &&
-          patch[song.key].hasOwnProperty(song.locale) &&
-          patch[song.key][song.locale].hasOwnProperty('lines')
+          patch[song.key].hasOwnProperty(I18n.locale) &&
+          patch[song.key][I18n.locale].hasOwnProperty('lines')
         ) {
-          return patch[song.key][song.locale].lines;
+          return patch[song.key][I18n.locale].lines;
         }
         return this.songReader(song.path);
       })
       .then(content => {
-        if (content) {
+        if (typeof content == 'string') {
           // Split lines, remove until reaching song notes
-          var lineas = content.replace('\r\n', '\n').split('\n');
-          while (lineas.length && !isChordsLine(lineas[0], song.locale)) {
-            lineas.shift();
+          var lines = content.replace('\r\n', '\n').split('\n');
+          var firstNotes = lines.find(l => isChordsLine(l, I18n.locale));
+          if (firstNotes) {
+            var idx = lines.indexOf(firstNotes);
+            lines.splice(0, idx - 1);
           }
-          song.lines = lineas;
-          song.fullText = lineas.join(' ');
+          song.lines = lines;
+          song.fullText = lines.join(' ');
         }
       })
       .catch(err => {

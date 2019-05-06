@@ -3,9 +3,10 @@ import React from 'react';
 import { Text } from 'native-base';
 import { getChordsDiff } from '../SongsProcessor';
 import { NativeSongs } from '../util';
+import I18n from '../translations';
 
 const SongViewLines = (props: any) => {
-  const { lines, locale, transportToNote } = props;
+  const { lines, transportToNote } = props;
 
   if (!lines) {
     return null;
@@ -13,10 +14,14 @@ const SongViewLines = (props: any) => {
 
   var diff = 0;
   if (transportToNote) {
-    diff = getChordsDiff(lines[0], transportToNote, locale);
+    diff = getChordsDiff(lines[0], transportToNote, I18n.locale);
   }
 
-  const itemsToRender = NativeSongs.getSongLinesForRender(lines, locale, diff);
+  const itemsToRender = NativeSongs.getSongLinesForRender(
+    lines,
+    I18n.locale,
+    diff
+  );
 
   // Ajuste final para renderizado en screen
   var renderItems = itemsToRender.map<any>((it: SongLine, i) => {

@@ -8,7 +8,7 @@ import { NativeStyles } from '../util';
 import SongViewLines from './SongViewLines';
 
 const SongViewFrame = (props: any) => {
-  const { error, locale, stage, titulo, fuente, lines, transportNote } = props;
+  const { error, stage, titulo, fuente, lines, transportNote } = props;
   const backColor = color(colors[stage]);
   const background = backColor.lighten(0.1).string();
   const margin = 10;
@@ -30,11 +30,7 @@ const SongViewFrame = (props: any) => {
             <Text style={NativeStyles.fuente}>{fuente}</Text>
             {error && <Text>{error}</Text>}
             {!error && (
-              <SongViewLines
-                lines={lines}
-                locale={locale}
-                transportToNote={transportNote}
-              />
+              <SongViewLines lines={lines} transportToNote={transportNote} />
             )}
           </Content>
         </ScrollView>

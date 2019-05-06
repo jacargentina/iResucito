@@ -63,6 +63,7 @@ const SongListItem = (props: any) => {
   } = props;
 
   const [isCollapsed, setIsCollapsed] = useState(true);
+  const [notInLocale, setNotInLocale] = useState(true);
   const { keys } = data.settings;
   const {
     getSongLocalePatch,
@@ -73,10 +74,26 @@ const SongListItem = (props: any) => {
 
   const song = useMemo(() => {
     if (songKey) {
-      return songs.find(i => i.key == songKey);
+      const song = songs.find(i => i.key == songKey);
+      return song;
     }
     return songMeta;
   }, [songs, songKey, songMeta]);
+
+  useEffect(() => {
+    if (song) {
+      getSongLocalePatch(song).then(patchObj => {
+        const result =
+          !song.files.hasOwnProperty(I18n.locale) &&
+          !(
+            patchObj &&
+            patchObj[I18n.locale] &&
+            patchObj[I18n.locale].hasOwnProperty('lines')
+          );
+        setNotInLocale(result);
+      });
+    }
+  }, [song]);
 
   const [developerMode, setDeveloperMode] = useState();
   const [firstHighlighted, setFirstHighlighted] = useState();
@@ -86,7 +103,7 @@ const SongListItem = (props: any) => {
 
   const showDeveloperMenu = () => {
     var options = [I18n.t('ui.rename'), I18n.t('ui.edit')];
-    if (song.locale !== 'es') {
+    if (I18n.locale !== 'es') {
       options.push(I18n.t('ui.link file'));
     }
     if (song.patched) {
@@ -135,7 +152,7 @@ const SongListItem = (props: any) => {
       }
       // Definir cambio a realizar sobre el patch
       const applyChanges = renameTo => {
-        setSongPatch(song, song.locale, { rename: renameTo });
+        setSongPatch(song, I18n.locale, { rename: renameTo });
       };
       navigation.navigate('SongChangeName', {
         song: song,
@@ -145,10 +162,49 @@ const SongListItem = (props: any) => {
     });
   };
 
+  const showAddSongOptions = () => {
+    var options = [
+      I18n.t('ui.add empty'),
+      I18n.t('ui.copy from spanish'),
+      I18n.t('ui.cancel')
+    ];
+    ActionSheet.show(
+      {
+        options: options,
+        cancelButtonIndex: options.indexOf(I18n.t('ui.cancel')),
+        title: I18n.t('ui.how to add')
+      },
+      async index => {
+        index = Number(index);
+        const title = options[index];
+        var newSong = null;
+        switch (title) {
+          case I18n.t('ui.add empty'):
+            newSong = await setSongPatch(song, I18n.locale, { lines: '' });
+            break;
+          case I18n.t('ui.copy from spanish'):
+            newSong = await setSongPatch(song, I18n.locale, {
+              lines: song.fullText
+            });
+            break;
+        }
+        if (newSong !== null) {
+          navigation.navigate('SongEditor', {
+            song: newSong
+          });
+        }
+      }
+    );
+  };
+
   const showEditor = () => {
-    navigation.navigate('SongEditor', {
-      song: song
-    });
+    if (notInLocale) {
+      showAddSongOptions();
+    } else {
+      navigation.navigate('SongEditor', {
+        song: song
+      });
+    }
   };
 
   const confirmClearSongPatch = () => {
@@ -160,7 +216,7 @@ const SongListItem = (props: any) => {
           text: I18n.t('ui.delete'),
           style: 'destructive',
           onPress: () => {
-            setSongPatch(song, song.locale, undefined);
+            setSongPatch(song, I18n.locale, undefined);
           }
         },
         {
@@ -265,9 +321,9 @@ const SongListItem = (props: any) => {
             {I18n.t('ui.original song')}: {song.patchedTitle}
           </Text>
         )}
-        {!patchSectionDisabled &&
-          notUsingSpanish &&
-          song.locale !== I18n.locale && <NoLocaleWarning />}
+        {!patchSectionDisabled && notUsingSpanish && notInLocale && (
+          <NoLocaleWarning />
+        )}
         <StarRating
           containerStyle={{ paddingTop: 10, width: '50%' }}
           disabled={ratingDisabled}

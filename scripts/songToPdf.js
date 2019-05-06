@@ -167,14 +167,14 @@ if (!process.argv.slice(2).length) {
   if (locale !== '') {
     if (key) {
       var song = folderSongs.getSingleSongMeta(key, locale);
-      if (song.locale === I18n.locale) {
+      if (song.files[I18n.locale]) {
         folderSongs
           .loadSingleSong(song)
           .then(() => {
             console.log('Song: ', song.titulo);
             var songlines = folderSongs.getSongLinesForRender(
               song.lines,
-              song.locale,
+              I18n.locale,
               0
             );
             if (program.debug) {
@@ -198,10 +198,10 @@ if (!process.argv.slice(2).length) {
       Promise.all(folderSongs.loadSongs(songs)).then(() => {
         var items = [];
         songs.map(song => {
-          if (song.locale === I18n.locale) {
+          if (song.files[I18n.locale]) {
             var songlines = folderSongs.getSongLinesForRender(
               song.lines,
-              song.locale,
+              I18n.locale,
               0
             );
             if (program.debug) {

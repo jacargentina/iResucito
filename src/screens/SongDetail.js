@@ -49,7 +49,7 @@ const TransportNotesMenu = withNavigation((props: any) => {
     return null;
   }
 
-  const chords = getChordsScale(song.locale);
+  const chords = getChordsScale(I18n.locale);
   const transportNote = navigation.getParam('transportNote');
   const setTransportNote = navigation.getParam('setTransportNote');
 
@@ -132,14 +132,14 @@ const ViewPdf = withNavigation(props => {
         color: StackNavigatorOptions.headerTitleStyle.color
       }}
       onPress={() => {
-        const { locale, lines } = song;
+        const { lines } = song;
         var diff = 0;
         if (transportToNote) {
-          diff = getChordsDiff(lines[0], transportToNote, locale);
+          diff = getChordsDiff(lines[0], transportToNote, I18n.locale);
         }
         const itemsToRender = NativeSongs.getSongLinesForRender(
           lines,
-          locale,
+          I18n.locale,
           diff
         );
         const item: SongToPdf = {

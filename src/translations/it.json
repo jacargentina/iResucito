@@ -69,7 +69,10 @@
     "link file": "Collega file",
     "remove patch": "Rimuovi la patch",
     "clear ratings": "Qualifiche pulite",
-    "clear ratings confirmation": "Vuoi pulire i voti?"
+    "clear ratings confirmation": "Vuoi pulire i voti?",
+    "how to add": "Come aggiungere",
+    "add empty": "Aggiungi senza contenuto",
+    "copy from spanish": "Copia dalla versione spagnola"
   },
   "export_type": {
     "selected songs": "Canzoni selezionate",

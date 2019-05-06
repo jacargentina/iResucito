@@ -69,7 +69,10 @@
     "link file": "Enlazar archivo",
     "remove patch": "Eliminar patch",
     "clear ratings": "Limpiar calificaciones",
-    "clear ratings confirmation": "¿Quiere limpiar las calificaciones?"
+    "clear ratings confirmation": "¿Quiere limpiar las calificaciones?",
+    "how to add": "Cómo agregar",
+    "add empty": "Agregar sin contenido",
+    "copy from spanish": "Copy from Spanish version"
   },
   "export_type": {
     "selected songs": "Cantos seleccionados",

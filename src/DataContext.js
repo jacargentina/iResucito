@@ -15,6 +15,7 @@ import {
   ordenClasificacion,
   NativeSongs
 } from './util';
+const merge = require('deepmerge');
 
 const SongsIndexPatchPath =
   RNFS.DocumentDirectoryPath + '/SongsIndexPatch.json';
@@ -151,11 +152,8 @@ const useSongsMeta = () => {
           if (!patchObj[song.key]) {
             patchObj[song.key] = {};
           }
-          patchObj[song.key] = Object.assign(
-            {},
-            patchObj[song.key],
-            localePatch
-          );
+          var updatedPatch = merge(patchObj[song.key], localePatch);
+          patchObj[song.key] = updatedPatch;
           Toast.show({
             text: I18n.t('ui.locale patch added', {
               song: song.titulo
@@ -186,6 +184,9 @@ const useSongsMeta = () => {
           })
           .then(() => {
             return readAllLocaleSongs(locale);
+          })
+          .then(() => {
+            return updatedSong;
           });
       }
     );

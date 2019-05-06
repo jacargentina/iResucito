@@ -69,7 +69,10 @@
     "link file": "Eine Datei verknüpfen",
     "remove patch": "Patch entfernen",
     "clear ratings": "Klare Bewertungen",
-    "clear ratings confirmation": ""
+    "clear ratings confirmation": "Möchten Sie alle Bewertungen löschen?",
+    "how to add": "Wie man hinzufügen",
+    "add empty": "Hinzufügen ohne Inhalt",
+    "copy from spanish": "Kopieren Sie aus der spanischen Version"
   },
   "export_type": {
     "selected songs": "Ausgewählte Lieder",

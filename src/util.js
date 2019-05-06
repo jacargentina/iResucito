@@ -326,7 +326,7 @@ export const generateMultiPagePDF = (
   var items = songs.map<SongToPdf>(s => {
     return {
       canto: s,
-      lines: NativeSongs.getSongLinesForRender(s.lines, s.locale)
+      lines: NativeSongs.getSongLinesForRender(s.lines, I18n.locale)
     };
   });
 

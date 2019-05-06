@@ -64,7 +64,6 @@ declare type SongFile = {
 // titulo: el titulo del anto
 // fuente: el origen del canto (salmo, palabra, etc)
 // path: el path completo al canto, incluyendo el locale, el nombre del archivo con la extension
-// locale: el idioma del canto
 // files: diccionario con todos los idiomas del canto
 // fullText: el texto completo del canto
 // lines: array de las lineas del canto
@@ -88,11 +87,9 @@ declare type Song = {
   titulo: string,
   fuente: string,
   path: string,
-  locale: string,
   files: any,
   fullText: string,
   lines: Array<string>,
-  patchable?: boolean,
   patched?: boolean,
   patchedTitle?: string,
   error?: any,
