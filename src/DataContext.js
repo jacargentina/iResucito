@@ -65,12 +65,12 @@ const useSettings = () => {
       });
   }, []);
 
-  return { keys, initKeys, setKey, getLocaleReal };
+  return { keys, initialized, initKeys, setKey, getLocaleReal };
 };
 
-const useSongsMeta = () => {
-  const [indexPatchExists, setIndexPatchExists] = useState(false);
-  const [ratingsFileExists, setRatingsFileExists] = useState(false);
+const useSongsMeta = (settingsInitialized: boolean) => {
+  const [indexPatchExists, setIndexPatchExists] = useState();
+  const [ratingsFileExists, setRatingsFileExists] = useState();
   const [songs, setSongs] = useState([]);
   const [localeSongs, setLocaleSongs] = useState([]);
 
@@ -81,27 +81,26 @@ const useSongsMeta = () => {
     setSongs([...prev, song, ...next]);
   };
 
-  const readLocalePatch = (): Promise<SongIndexPatch> => {
-    return RNFS.exists(SongsIndexPatchPath).then(exists => {
-      setIndexPatchExists(exists);
-      if (exists)
-        return RNFS.readFile(SongsIndexPatchPath)
-          .then(patchJSON => {
-            return JSON.parse(patchJSON);
-          })
-          .catch(() => {
-            return RNFS.unlink(SongsIndexPatchPath).then(() => {
-              setIndexPatchExists(false);
-              Alert.alert(
-                I18n.t('alert_title.corrupt patch'),
-                I18n.t('alert_message.corrupt patch')
-              );
-            });
-          });
-    });
+  const readLocalePatch = (): Promise<?SongIndexPatch> => {
+    if (!indexPatchExists) {
+      return Promise.resolve();
+    }
+    return RNFS.readFile(SongsIndexPatchPath)
+      .then(patchJSON => {
+        return JSON.parse(patchJSON);
+      })
+      .catch(() => {
+        return RNFS.unlink(SongsIndexPatchPath).then(() => {
+          setIndexPatchExists(false);
+          Alert.alert(
+            I18n.t('alert_title.corrupt patch'),
+            I18n.t('alert_message.corrupt patch')
+          );
+        });
+      });
   };
 
-  const saveLocalePatch = (patchObj: SongIndexPatch) => {
+  const saveLocalePatch = (patchObj: ?SongIndexPatch) => {
     var json = JSON.stringify(patchObj, null, ' ');
     return RNFS.writeFile(SongsIndexPatchPath, json, 'utf8').then(() => {
       setIndexPatchExists(true);
@@ -193,22 +192,19 @@ const useSongsMeta = () => {
   };
 
   const clearIndexPatch = () => {
-    return RNFS.exists(SongsIndexPatchPath).then(exists => {
-      if (exists) {
-        return RNFS.unlink(SongsIndexPatchPath).then(() => {
-          setIndexPatchExists(false);
-        });
-      }
-    });
+    if (indexPatchExists === true) {
+      return RNFS.unlink(SongsIndexPatchPath).then(() => {
+        setIndexPatchExists(false);
+      });
+    }
   };
 
-  const readSongsRatingFile = (): Promise<SongRatingFile> => {
-    return RNFS.exists(SongsRatingsPath).then(exists => {
-      setRatingsFileExists(exists);
-      if (exists)
-        return RNFS.readFile(SongsRatingsPath).then(ratingsJSON => {
-          return JSON.parse(ratingsJSON);
-        });
+  const readSongsRatingFile = (): Promise<?SongRatingFile> => {
+    if (!ratingsFileExists) {
+      return Promise.resolve();
+    }
+    return RNFS.readFile(SongsRatingsPath).then(ratingsJSON => {
+      return JSON.parse(ratingsJSON);
     });
   };
 
@@ -248,46 +244,57 @@ const useSongsMeta = () => {
   };
 
   const clearSongsRatings = () => {
-    return RNFS.exists(SongsRatingsPath).then(exists => {
-      if (exists) {
-        return RNFS.unlink(SongsRatingsPath).then(() => {
-          setRatingsFileExists(false);
-        });
-      }
+    if (ratingsFileExists === true) {
+      return RNFS.unlink(SongsRatingsPath).then(() => {
+        setRatingsFileExists(false);
+      });
+    }
+  };
+
+  const loadFlags = () => {
+    RNFS.exists(SongsIndexPatchPath).then(exists => {
+      setIndexPatchExists(exists);
+    });
+    RNFS.exists(SongsRatingsPath).then(exists => {
+      setRatingsFileExists(exists);
     });
   };
 
   useEffect(() => {
-    if (I18n.locale) {
+    if (
+      I18n.locale &&
+      settingsInitialized === true &&
+      indexPatchExists !== undefined &&
+      ratingsFileExists !== undefined
+    ) {
       // Cargar parche del indice si existe
-      Promise.all([readLocalePatch(), readSongsRatingFile()])
-        .then(values => {
-          const [patchObj: SongIndexPatch, ratingsObj: SongRatingFile] = values;
-          // Construir metadatos de cantos
-          var metaData = NativeSongs.getSongsMeta(
-            I18n.locale,
-            patchObj,
-            ratingsObj
-          );
-          return Promise.all(NativeSongs.loadSongs(metaData, patchObj)).then(
-            () => {
-              setSongs(metaData);
-            }
-          );
-        })
-        .then(() => {
-          return readAllLocaleSongs(I18n.locale);
-        });
+      Promise.all([readLocalePatch(), readSongsRatingFile()]).then(values => {
+        const [patchObj: SongIndexPatch, ratingsObj: SongRatingFile] = values;
+        // Construir metadatos de cantos
+        var metaData = NativeSongs.getSongsMeta(
+          I18n.locale,
+          patchObj,
+          ratingsObj
+        );
+        return Promise.all(NativeSongs.loadSongs(metaData, patchObj)).then(
+          () => {
+            setSongs(metaData);
+            return readAllLocaleSongs(I18n.locale);
+          }
+        );
+      });
     }
-  }, [I18n.locale, indexPatchExists, ratingsFileExists]);
+  }, [I18n.locale, settingsInitialized, indexPatchExists, ratingsFileExists]);
+
+  useEffect(() => {
+    loadFlags();
+  }, []);
 
   return {
     songs,
     setSongs,
     localeSongs,
     setLocaleSongs,
-    readLocalePatch,
-    saveLocalePatch,
     indexPatchExists,
     getSongLocalePatch,
     setSongPatch,
@@ -821,7 +828,7 @@ export const DataContext: any = React.createContext();
 const DataContextWrapper = (props: any) => {
   const community = useCommunity();
   const settings = useSettings();
-  const songsMeta = useSongsMeta();
+  const songsMeta = useSongsMeta(settings.initialized);
   const search = useSearch(settings.keys);
   const lists = useLists(songsMeta.songs);
   const loading = useState({ isLoading: false, text: '' });

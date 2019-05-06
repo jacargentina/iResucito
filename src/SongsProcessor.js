@@ -91,8 +91,8 @@ export class SongsProcessor {
   getSingleSongMeta(
     key: string,
     rawLoc: string,
-    patch?: SongIndexPatch,
-    ratings?: SongRatingFile
+    patch: ?SongIndexPatch,
+    ratings: ?SongRatingFile
   ): Song {
     if (!SongsIndex.hasOwnProperty(key))
       throw new Error(`There is no key = ${key} on the Index!`);
@@ -154,8 +154,8 @@ export class SongsProcessor {
 
   getSongsMeta(
     rawLoc: string,
-    patch?: SongIndexPatch,
-    ratings?: SongRatingFile
+    patch: ?SongIndexPatch,
+    ratings: ?SongRatingFile
   ): Array<Song> {
     var songs = Object.keys(SongsIndex).map(key => {
       return this.getSingleSongMeta(key, rawLoc, patch, ratings);
@@ -175,6 +175,7 @@ export class SongsProcessor {
           .map(i => i.replace('.txt', '').normalize())
           .map(i => getSongFileFromString(i));
         items.sort(ordenAlfabetico);
+        console.log('songsLister', items);
         return items;
       })
       .catch(() => {
@@ -182,7 +183,7 @@ export class SongsProcessor {
       });
   }
 
-  loadSingleSong(song: Song, patch?: SongIndexPatch): Promise<any> {
+  loadSingleSong(song: Song, patch: ?SongIndexPatch): Promise<any> {
     return Promise.resolve()
       .then(() => {
         if (
@@ -209,14 +210,14 @@ export class SongsProcessor {
         }
       })
       .catch(err => {
-        console.log('loadSingleSong ERROR', err.message);
+        console.log('loadSingleSong ERROR', song.key, err.message);
         song.error = err.message;
         song.lines = [];
         song.fullText = '';
       });
   }
 
-  loadSongs(songs: Array<Song>, patch?: SongIndexPatch): Array<Promise<any>> {
+  loadSongs(songs: Array<Song>, patch: ?SongIndexPatch): Array<Promise<any>> {
     return songs.map(song => {
       return this.loadSingleSong(song, patch);
     });
