@@ -138,7 +138,8 @@
   "files": {
    "es": "Oh Señor, mi corazón ya no es ambicioso - Sal 131 (130)",
    "it": "Signore, il mio cuore non ha più pretese - Sal 131 (130)",
-   "pt": "Ó Senhor meu coração não é pretensioso - Sal 131 (130)"
+   "pt": "Ó Senhor meu coração não é pretensioso - Sal 131 (130)",
+   "de-AT": "O Herr mein Herz hat keine Ansprüche mehr - Ps 131"
   }
  },
  "15": {
@@ -296,7 +297,8 @@
   "peace and offerings": true,
   "files": {
    "es": "Aleluya, bendecid al Señor - Sal 134 (133)",
-   "it": "Benedite il Signore - Sal 134 (133)"
+   "it": "Benedite il Signore - Sal 134 (133)",
+   "de-AT": "Preiset den Herrn - Ps 134"
   }
  },
  "31": {
@@ -314,7 +316,8 @@
   "entrance": true,
   "files": {
    "es": "Alzaos puertas - Sal 24 (23)",
-   "it": "Alzate o porte - Sal 24 (23)"
+   "it": "Alzate o porte - Sal 24 (23)",
+   "de-AT": "Erhebet euch ihr uralten Pforten - Ps 24"
   }
  },
  "33": {
@@ -648,7 +651,8 @@
   "files": {
    "es": "Eres digno de tomar el libro - Ap 5, 9ss",
    "it": "Canto dell'agnello - Ap 5, 9ss",
-   "pt": "Tu és digno de receber o livro - Ap 5,9ss"
+   "pt": "Tu és digno de receber o livro - Ap 5,9ss",
+   "de-AT": "Lied des Lammes - Apk 5, 9 ff"
   }
  },
  "66": {
@@ -711,7 +715,8 @@
   "files": {
    "es": "Felicidad para el hombre - Sal 128 (127)",
    "it": "Felicità per l'uomo - Sal 128 (127)",
-   "pt": "Felicidade para o homem - Sal 128 (127)"
+   "pt": "Felicidade para o homem - Sal 128 (127)",
+   "de-AT": "Glücklich der Mensch - Ps 128"
   }
  },
  "73": {
@@ -808,7 +813,8 @@
   "files": {
    "es": "Himno a la kenosis - Flp 2, 1-11",
    "it": "Cristo gesù è il Signore - Flp 2, 1-11",
-   "pt": "Hino à kenosis - Fp 2, 1-11"
+   "pt": "Hino à kenosis - Fp 2, 1-11",
+   "de-AT": "CHymnus der Kenosis - Phil 2, 1-11"
   }
  },
  "83": {
@@ -828,7 +834,8 @@
   "files": {
    "es": "Himno de Pascua - Himno",
    "it": "Inno di Pasqua - Inno",
-   "pt": "Hino da Páscoa - Hino"
+   "pt": "Hino da Páscoa - Hino",
+   "de-AT": "Osterhymnus"
   }
  },
  "85": {
@@ -836,7 +843,8 @@
   "lutes and vespers": true,
   "files": {
    "es": "Himno de la Ascensión - Himno",
-   "pt": "Hino da Ascensão - Hino"
+   "pt": "Hino da Ascensão - Hino",
+   "de-AT": "Hymnus der Vesper von Christi Himmelfahrt"
   }
  },
  "86": {
@@ -847,7 +855,8 @@
   "files": {
    "es": "Huye amado mío - Ct 8, 10-14",
    "it": "Tu che abiti nei giardini - Ct 8, 10-14",
-   "pt": "Foge ó meu amado - Ct 8, 10-14"
+   "pt": "Foge ó meu amado - Ct 8, 10-14",
+   "de-AT": "Du die du lebst in den Gärten - Hl 8, 10-14"
   }
  },
  "87": {
@@ -865,7 +874,8 @@
   "lent": true,
   "files": {
    "es": "Improperios - Himno",
-   "pt": "Impropérios - Da Liturgia da Adoração da Cruz da Sexta-feira Santa"
+   "pt": "Impropérios - Da Liturgia da Adoração da Cruz da Sexta-feira Santa",
+   "de-AT": "Klagelieder des Herrn"
   }
  },
  "89": {
@@ -937,7 +947,8 @@
   "files": {
    "es": "Llévame al cielo - Flp 1, 23",
    "it": "Portami in cielo - Flp 1, 23",
-   "pt": "Leva-me ao Céu - Flp 1,23"
+   "pt": "Leva-me ao Céu - Flp 1,23",
+   "de-AT": "Bring mich in den Himmel - Phil 1, 23"
   }
  },
  "96": {
@@ -1200,7 +1211,8 @@
   "peace and offerings": true,
   "files": {
    "es": "Qué estupendo, qué alegría - Sal 133 (132)",
-   "pt": "Que estupendo que alegria - Sal 133 (132)"
+   "pt": "Que estupendo que alegria - Sal 133 (132)",
+   "de-AT": "Seht wie es schön ist seht welche freude - Ps 133"
   }
  },
  "122": {
@@ -1263,7 +1275,8 @@
   "files": {
    "es": "Salve, reina de los cielos - Himno",
    "it": "Salve, regina dei cieli - Inno",
-   "pt": "Salve rainha dos céus - Hino"
+   "pt": "Salve rainha dos céus - Hino",
+   "de-AT": "Ave, du himmelskönigin"
   }
  },
  "128": {
@@ -1313,7 +1326,8 @@
   "files": {
    "es": "Shlom-lej Maríam - Ave María en arameo antiguo",
    "it": "Shlom lech mariàm - Ave Maria nell'aramaico antico",
-   "pt": "Shlom-Lej Mariam - Ave Maria em Aramaico Antigo"
+   "pt": "Shlom-Lej Mariam - Ave Maria em Aramaico Antigo",
+   "de-AT": "Shlom Lech Mariam"
   }
  },
  "133": {
@@ -1445,7 +1459,8 @@
   "files": {
    "es": "Vamos ya, pastores - Villancico",
    "it": "Andiamo, già pastori - Canto natalizio",
-   "pt": "Vamos já pastores - Cântico de Natal"
+   "pt": "Vamos já pastores - Cântico de Natal",
+   "de-AT": "Ihr Hirten, lasst uns gehen"
   }
  },
  "146": {
@@ -1483,7 +1498,8 @@
   "pentecost": true,
   "files": {
    "es": "Veni creator - Himno",
-   "pt": "Veni creator - Hino"
+   "pt": "Veni creator - Hino",
+   "de-AT": "Hymnus der Vesper von Christi Himmelfahrt bis Pfingsten"
   }
  },
  "150": {
@@ -1529,7 +1545,8 @@
   "files": {
    "es": "Ya viene mi Dios - Villancico",
    "it": "Già viene il mio dio - Canto natalizio",
-   "pt": "Já vem o meu deus - Canto popular do Natal"
+   "pt": "Já vem o meu deus - Canto popular do Natal",
+   "de-AT": "Schon kommt mein Gott"
   }
  },
  "155": {
@@ -1700,7 +1717,8 @@
   "files": {
    "es": "Himno a la cruz gloriosa - Himno",
    "it": "Inno alla croce gloriosa - Inno",
-   "pt": "Hino à cruz gloriosa - Hino"
+   "pt": "Hino à cruz gloriosa - Hino",
+   "de-AT": "Hymnus zum herrlichen Kreuz"
   }
  },
  "172": {
@@ -1802,7 +1820,8 @@
  "182": {
   "stage": "liturgy",
   "files": {
-   "es": "Aleluya interleccional antes del Evangelio"
+   "es": "Aleluya interleccional antes del Evangelio",
+   "de-AT": "Halleluja-ruf Zum Evangelium"
   }
  },
  "183": {
@@ -1822,7 +1841,8 @@
  "185": {
   "stage": "liturgy",
   "files": {
-   "es": "Antífona interleccional para el tiempo de Cuaresma"
+   "es": "Antífona interleccional para el tiempo de Cuaresma",
+   "de-AT": "Ruf zum evangelium in der fastenzeit"
   }
  },
  "186": {
@@ -1839,7 +1859,8 @@
   "files": {
    "es": "Bendición penitencial - oracion conclusiva de accion de gracias",
    "it": "Benedizione penitenziale - preghiera conclusiva di ringraziamento",
-   "pt": "Benção penitencial - oração para concluir a ação de graças"
+   "pt": "Benção penitencial - oração para concluir a ação de graças",
+   "de-AT": "Dankgebet für die Liturgie der Versöhnung"
   }
  },
  "188": {
@@ -1855,14 +1876,16 @@
   "files": {
    "es": "Gloria a Dios en lo alto del cielo - Himno litúrgico",
    "it": "Gloria a dio mell'alto dai cieli - Inno liturgico",
-   "pt": "Glória a deus no alto do céu - Hino Litúrgico"
+   "pt": "Glória a deus no alto do céu - Hino Litúrgico",
+   "de-AT": "Ehre sei Gott in der Höhe"
   }
  },
  "190": {
   "stage": "liturgy",
   "files": {
    "es": "Letanías penitenciales II",
-   "pt": "Ladainha penitencial II"
+   "pt": "Ladainha penitencial II",
+   "de-AT": "Busslitanei"
   }
  },
  "191": {
@@ -1897,7 +1920,8 @@
  "195": {
   "stage": "liturgy",
   "files": {
-   "es": "Plegaria Eucaristica II - Anamnesis modelo I"
+   "es": "Plegaria Eucaristica II - Anamnesis modelo I",
+   "de-AT": "Eucharistisches Hochgebet II (2) - Darbringung, Intercessionen, Doxologie"
   }
  },
  "196": {
@@ -1922,7 +1946,8 @@
  "199": {
   "stage": "liturgy",
   "files": {
-   "es": "Plegaria Eucaristica II - Prefacio modelo II (1986)"
+   "es": "Plegaria Eucaristica II - Prefacio modelo II (1986)",
+   "de-AT": "Eucharistisches Hochgebet II (2) - Präfation"
   }
  },
  "200": {
@@ -1936,14 +1961,16 @@
   "stage": "liturgy",
   "files": {
    "es": "Prefacio Pascual I",
-   "pt": "Prefácio Pascual I"
+   "pt": "Prefácio Pascual I",
+   "de-AT": "Präfation der Eucharistie in der Osternacht"
   }
  },
  "202": {
   "stage": "liturgy",
   "files": {
    "es": "Pregón Pascual",
-   "pt": "Pregão Pascal"
+   "pt": "Pregão Pascal",
+   "de-AT": "Exsultet"
   }
  },
  "203": {
@@ -1951,21 +1978,24 @@
   "files": {
    "es": "Santo 1982 - Tiempo Ordinario",
    "it": "Santo 1982 - Tempo Ordinario",
-   "pt": "Santo 1982 - Tempo Comum"
+   "pt": "Santo 1982 - Tempo Comum",
+   "de-AT": "Heilig 1983"
   }
  },
  "204": {
   "stage": "liturgy",
   "files": {
    "es": "Santo 1988 - Tiempo Ordinario",
-   "pt": "Santo 1988 - Tempo Comum"
+   "pt": "Santo 1988 - Tempo Comum",
+   "de-AT": "Heilig, Heilig, Heilig 1988"
   }
  },
  "205": {
   "stage": "liturgy",
   "files": {
    "es": "Santo Hebreo - Cuaresma",
-   "pt": "Santo hebraico - Tempo da Quaresma"
+   "pt": "Santo hebraico - Tempo da Quaresma",
+   "de-AT": "Heilig, Heilig - Fastenzeit"
   }
  },
  "206": {
@@ -1973,14 +2003,16 @@
   "files": {
    "es": "Santo Palestina 74 - Pascua",
    "it": "Santo Palestina 74 - Pasquale",
-   "pt": "Santo Palestina 74 - Pascal"
+   "pt": "Santo Palestina 74 - Pascal",
+   "de-AT": "Heilig, Heilig, Heilig, Hosanna von Palmsonntag"
   }
  },
  "207": {
   "stage": "liturgy",
   "files": {
    "es": "Santo Palomeras 65 - Adviento y Navidad",
-   "pt": "Santo Palomeras 65 - Tempo do Advento - Natal"
+   "pt": "Santo Palomeras 65 - Tempo do Advento - Natal",
+   "de-AT": "Heilig ist der Herr - Heilig der Baracken - Adventzeit"
   }
  },
  "208": {
@@ -1988,7 +2020,8 @@
   "files": {
    "es": "Santo Roma 77 - Tiempo Ordinario",
    "it": "Santo Roma 77 - Tempo Ordinario",
-   "pt": "Santo Roma 77 - Tempo Comum"
+   "pt": "Santo Roma 77 - Tempo Comum",
+   "de-AT": "Heilig für die Zeit im Jahreskreis"
   }
  },
  "209": {
@@ -2121,7 +2154,8 @@
   "stage": "precatechumenate",
   "files": {
    "es": "Sube Dios entre aclamaciones - Sal 47 (46)",
-   "pt": "Sobe deus entre aclamações - Sal 47 (46)"
+   "pt": "Sobe deus entre aclamações - Sal 47 (46)",
+   "de-AT": "Gott erhob sich unter Jubel - Ps 47"
   }
  },
  "225": {
@@ -2134,7 +2168,8 @@
   "stage": "precatechumenate",
   "files": {
    "it": "Il Signore è mia luce e mia salvezza - Sal 26 (27)",
-   "pt": "O Senhor é minha luz e salvação - Sal 27 (26)"
+   "pt": "O Senhor é minha luz e salvação - Sal 27 (26)",
+   "de-AT": "Der herr ist mein licht und mein heil - Ps 27"
   }
  }
 }

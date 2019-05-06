@@ -22,10 +22,7 @@ if (process.argv.length == 3) {
             ? path.resolve(`../songs/${locale}/${rename}.txt`)
             : null;
           if (!fs.existsSync(oldName)) {
-            console.log(
-              `Key ${key}, rename no posible (oldName no existe)`,
-              oldName
-            );
+            console.log(`Key ${key}, no existe ${oldName}`);
           } else if (newName) {
             execSync(`git mv --force "${oldName}" "${newName}"`);
             Object.assign(songToPatch.files, { [locale]: rename });
