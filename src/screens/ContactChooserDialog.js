@@ -52,23 +52,25 @@ const ContactChooserDialog = (props: any) => {
           </Text>
         </View>
       )}
-      <SearchBarView value={textFilter} setValue={setTextFilter}>
-        <FlatList
-          style={{ flex: 1 }}
-          data={filtered}
-          keyExtractor={item => item.recordID}
-          renderItem={({ item }) => {
-            return (
-              <ContactListItem
-                item={item}
-                onPress={() => {
-                  contactSelected(item);
-                }}
-              />
-            );
-          }}
-        />
-      </SearchBarView>
+      {brothers.length > 0 && (
+        <SearchBarView value={textFilter} setValue={setTextFilter}>
+          <FlatList
+            style={{ flex: 1 }}
+            data={filtered}
+            keyExtractor={item => item.recordID}
+            renderItem={({ item }) => {
+              return (
+                <ContactListItem
+                  item={item}
+                  onPress={() => {
+                    contactSelected(item);
+                  }}
+                />
+              );
+            }}
+          />
+        </SearchBarView>
+      )}
     </ModalView>
   );
 };
