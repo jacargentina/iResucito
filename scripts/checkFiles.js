@@ -20,9 +20,15 @@ localeFolders.forEach(dirent => {
 Object.entries(SongsIndex).forEach(([key, value]) => {
   Object.entries(value.files).forEach(([locale, name]) => {
     var fileName = `${name}.txt`;
-    var found = localeSongs[locale].find(n => n === fileName);
-    if (!found) {
+    var found = localeSongs[locale].filter(n => n === fileName);
+    if (found.length === 0) {
       console.log(`Key ${key}, no se encontró ${fileName}`);
+    }
+    var dups = localeSongs[locale].filter(
+      n => n.toLowerCase() === fileName.toLowerCase()
+    );
+    if (dups.length > 1) {
+      console.log(`Key ${key}, duplicados!`, dups);
     }
   });
 });
