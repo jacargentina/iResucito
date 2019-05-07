@@ -325,7 +325,11 @@ const SongListItem = (props: any) => {
           <NoLocaleWarning />
         )}
         <StarRating
-          containerStyle={{ paddingTop: 10, width: '50%' }}
+          containerStyle={{
+            paddingTop: 15,
+            paddingBottom: !showBadge ? 15 : 0,
+            width: '50%'
+          }}
           disabled={ratingDisabled}
           maxStars={5}
           starSize={15}
