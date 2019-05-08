@@ -35,7 +35,8 @@
     "postversion": "react-native-version --never-amend",
     "lint": "eslint . --ext .js --ignore-pattern '/src/native-base-theme/*'",
     "react-devtools": "react-devtools",
-    "genpdf": "babel-node ./scripts/songToPdf.js"
+    "genpdf": "babel-node ./scripts/songToPdf.js",
+    "unassigned": "babel-node ./scripts/getUnassigned.js"
   },
   "jest": {
     "preset": "react-native"

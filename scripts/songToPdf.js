@@ -6,32 +6,7 @@ import osLocale from 'os-locale';
 import normalize from 'normalize-strings';
 import I18n from '../src/translations';
 import { pdfValues, PdfWriter, PDFGenerator } from '../src/common';
-import { SongsProcessor } from '../src/SongsProcessor';
-
-const NodeLister = fs.promises.readdir;
-
-const NodeReader = (path: string) => {
-  return fs.promises.readFile(path, { encoding: 'utf8' });
-};
-
-const NodeStyles: SongStyles = {
-  titulo: { color: '#ff0000' },
-  fuente: { color: '#777777' },
-  lineaNotas: { color: '#ff0000' },
-  lineaTituloNotaEspecial: { color: '#ff0000' },
-  lineaNotaEspecial: { color: '#444444' },
-  lineaNotasConMargen: { color: '#ff0000' },
-  lineaNormal: { color: '#000000' },
-  pageNumber: { color: '#000000' },
-  prefijo: { color: '#777777' }
-};
-
-const folderSongs = new SongsProcessor(
-  path.resolve(__dirname, '../songs'),
-  NodeLister,
-  NodeReader,
-  NodeStyles
-);
+import { FolderSongs, NodeStyles } from './FolderSongs';
 
 class NodeJsPdfWriter extends PdfWriter {
   doc: any;
@@ -166,13 +141,12 @@ if (!process.argv.slice(2).length) {
   var opts = { createIndex: true, pageNumbers: true, fileSuffix: `-${locale}` };
   if (locale !== '') {
     if (key) {
-      var song = folderSongs.getSingleSongMeta(key, locale);
+      var song = FolderSongs.getSingleSongMeta(key, locale);
       if (song.files[I18n.locale]) {
-        folderSongs
-          .loadSingleSong(song)
+        FolderSongs.loadSingleSong(song)
           .then(() => {
             console.log('Song: ', song.titulo);
-            var songlines = folderSongs.getSongLinesForRender(
+            var songlines = FolderSongs.getSongLinesForRender(
               song.lines,
               I18n.locale,
               0
@@ -193,13 +167,13 @@ if (!process.argv.slice(2).length) {
         console.log('Song not found for given locale');
       }
     } else {
-      var songs = folderSongs.getSongsMeta(locale);
+      var songs = FolderSongs.getSongsMeta(locale);
       console.log(`No key Song. Generating ${songs.length} songs`);
-      Promise.all(folderSongs.loadSongs(songs)).then(() => {
+      Promise.all(FolderSongs.loadSongs(songs)).then(() => {
         var items = [];
         songs.map(song => {
           if (song.files[I18n.locale]) {
-            var songlines = folderSongs.getSongLinesForRender(
+            var songlines = FolderSongs.getSongLinesForRender(
               song.lines,
               I18n.locale,
               0

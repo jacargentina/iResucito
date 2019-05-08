@@ -177,7 +177,8 @@ export class SongsProcessor {
         items.sort(ordenAlfabetico);
         return items;
       })
-      .catch(() => {
+      .catch(err => {
+        console.log('readLocaleSongs ERROR', err);
         return [];
       });
   }
@@ -207,7 +208,7 @@ export class SongsProcessor {
           var firstNotes = lines.find(l => isChordsLine(l, I18n.locale));
           if (firstNotes) {
             var idx = lines.indexOf(firstNotes);
-            lines.splice(0, idx - 1);
+            lines.splice(0, idx);
           }
           song.lines = lines;
           song.fullText = lines.join(' ');
