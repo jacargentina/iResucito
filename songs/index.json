@@ -441,7 +441,8 @@
   "files": {
    "es": "Cantad al Señor - Sal 117 (116)",
    "it": "Lodate il Signore - Sal 117 (116)",
-   "pt": "Canta a Iahweh Jerusalém  - Sal 117 (116)"
+   "pt": "Canta a Iahweh Jerusalém  - Sal 117 (116)",
+   "de-AT": "Lobet den Herrn alle Völker der Erde - Ps 117"
   }
  },
  "45": {
@@ -450,7 +451,8 @@
   "files": {
    "es": "Canto de Moisés - Ex 15, 1-18",
    "it": "Cantico di Mosè - Ex 15, 1-18",
-   "pt": "Canto de Moisés - Ex 15, 1-18"
+   "pt": "Canto de Moisés - Ex 15, 1-18",
+   "de-AT": "Lied des Moses - Ex 15, 1-18"
   }
  },
  "46": {
@@ -1589,7 +1591,8 @@
   "lutes and vespers": true,
   "files": {
    "es": "A la cena del cordero - Himno",
-   "pt": "À ceia do cordeiro - Hino"
+   "pt": "À ceia do cordeiro - Hino",
+   "de-AT": "Hymnus der Vesper von Ostern bis Christi Himmelfahrt"
   }
  },
  "159": {
@@ -2042,7 +2045,8 @@
   "files": {
    "es": "Te deum - Himno",
    "it": "Te deum - Inno",
-   "pt": "Te deum - Hino"
+   "pt": "Te deum - Hino",
+   "de-AT": "Te Deum"
   }
  },
  "211": {
