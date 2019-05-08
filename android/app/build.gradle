@@ -199,7 +199,9 @@ task copyDownloadableDepsToLibs(type: Copy) {
 }
 
 task deleteAssets(type: Delete) {
-    delete rootProject.file('app/src/main/assets/songs').listFiles()
+    if (rootProject.file('app/src/main/assets/songs').exists()) {
+        delete rootProject.file('app/src/main/assets/songs').listFiles()
+    }
 }
 
 task copyToAssets(type: Copy) {
