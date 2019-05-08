@@ -334,7 +334,7 @@ const SongListItem = (props: any) => {
           maxStars={5}
           starSize={15}
           rating={song.rating}
-          selectedStar={value => setSongRating(song.key, song.locale, value)}
+          selectedStar={value => setSongRating(song.key, I18n.locale, value)}
           fullStarColor={commonTheme.brandPrimary}
         />
       </Body>
