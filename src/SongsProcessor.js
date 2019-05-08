@@ -175,12 +175,16 @@ export class SongsProcessor {
           .map(i => i.replace('.txt', '').normalize())
           .map(i => getSongFileFromString(i));
         items.sort(ordenAlfabetico);
-        console.log('songsLister', items);
         return items;
       })
       .catch(() => {
         return [];
       });
+  }
+
+  loadLocaleSongFile(rawLoc: string, file: SongFile): Promise<string> {
+    const path = `${this.basePath}/${rawLoc}/${file.nombre}.txt`;
+    return this.songReader(path);
   }
 
   loadSingleSong(song: Song, patch: ?SongIndexPatch): Promise<any> {

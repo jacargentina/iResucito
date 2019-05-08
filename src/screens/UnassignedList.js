@@ -2,12 +2,13 @@
 import React, { useContext, useEffect, useState, useRef, useMemo } from 'react';
 import { Text, ListItem, Body, Right, Icon } from 'native-base';
 import { withNavigationFocus } from 'react-navigation';
-import { FlatList, Keyboard } from 'react-native';
+import { FlatList, Keyboard, TouchableOpacity, Alert } from 'react-native';
 import SearchBarView from './SearchBarView';
 import Highlighter from 'react-native-highlight-words';
 import commonTheme from '../native-base-theme/variables/platform';
 import textTheme from '../native-base-theme/components/Text';
 import { DataContext } from '../DataContext';
+import { NativeSongs } from '../util';
 import I18n from '../translations';
 
 var textStyles = textTheme(commonTheme);
@@ -76,37 +77,46 @@ const UnassignedList = (props: any) => {
         keyExtractor={item => item.nombre}
         renderItem={({ item }) => {
           return (
-            <ListItem
-              onPress={() =>
-                navigation.navigate('SongChooseLocale', {
-                  target: item,
-                  targetType: 'file'
-                })
-              }>
+            <ListItem>
               <Body>
-                <Highlighter
-                  style={textStyles}
-                  highlightStyle={{
-                    backgroundColor: 'yellow'
-                  }}
-                  searchWords={[textFilter]}
-                  textToHighlight={item.titulo}
-                />
-                <Highlighter
-                  style={noteStyles}
-                  highlightStyle={{
-                    backgroundColor: 'yellow'
-                  }}
-                  searchWords={[textFilter]}
-                  textToHighlight={item.fuente}
-                />
+                <TouchableOpacity
+                  onPress={() =>
+                    navigation.navigate('SongChooseLocale', {
+                      target: item,
+                      targetType: 'file'
+                    })
+                  }>
+                  <Highlighter
+                    style={textStyles}
+                    highlightStyle={{
+                      backgroundColor: 'yellow'
+                    }}
+                    searchWords={[textFilter]}
+                    textToHighlight={item.titulo}
+                  />
+                  <Highlighter
+                    style={noteStyles}
+                    highlightStyle={{
+                      backgroundColor: 'yellow'
+                    }}
+                    searchWords={[textFilter]}
+                    textToHighlight={item.fuente}
+                  />
+                </TouchableOpacity>
               </Body>
               <Right>
                 <Icon
-                  name="link"
+                  name="eye"
                   style={{
                     fontSize: 32,
                     color: commonTheme.brandPrimary
+                  }}
+                  onPress={() => {
+                    NativeSongs.loadLocaleSongFile(I18n.locale, item).then(
+                      text => {
+                        Alert.alert(I18n.t('screen_title.preview'), text);
+                      }
+                    );
                   }}
                 />
               </Right>
