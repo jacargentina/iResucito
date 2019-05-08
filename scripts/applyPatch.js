@@ -17,27 +17,50 @@ if (process.argv.length == 3) {
           if (rename) {
             rename = rename.trim();
           }
-          var oldName = path.resolve(`../songs/${locale}/${file}.txt`);
+          if (!file) {
+            // Buscar si está el nombre en el  indice
+            file = songToPatch.files[locale];
+            if (!file) {
+              if (rename) {
+                // Usar el nombre de renombrado para crear archivo
+                file = rename;
+                rename = undefined;
+              } else {
+                // El archivo aun no existe en el idioma
+                // crear archivo con el nombre del español
+                file = songToPatch.files['es'];
+              }
+            }
+          }
+          var songFileName = path.resolve(`../songs/${locale}/${file}.txt`);
           var newName = rename
             ? path.resolve(`../songs/${locale}/${rename}.txt`)
             : null;
-          if (!fs.existsSync(oldName)) {
-            console.log(`Key ${key}, no existe ${oldName}`);
-          } else if (newName) {
-            execSync(`git mv --force "${oldName}" "${newName}"`);
+          if (newName && !fs.existsSync(songFileName)) {
+            console.log(
+              `Key ${key}, no existe ${songFileName}, no se puede renombrar`
+            );
+          } else if (newName && newName !== songFileName) {
+            console.log(`Key ${key}, renombrando`);
+            execSync(`git mv --force "${songFileName}" "${newName}"`);
             Object.assign(songToPatch.files, { [locale]: rename });
           } else {
+            console.log(`Key ${key}, enlazando ${file}`);
             Object.assign(songToPatch.files, { [locale]: file });
           }
           if (lines) {
-            const theSong = songToPatch.files[locale];
-            const songPath = path.resolve(`../songs/${locale}/${theSong}.txt`);
-            const text = fs.readFileSync(songPath, 'utf8');
-            if (text === lines) {
-              console.log(`Key ${key}, texto no aplicable.`);
+            var text = null;
+            if (fs.existsSync(songFileName)) {
+              text = fs.readFileSync(songFileName, 'utf8');
+              console.log(`Key ${key}, cargado texto existente`);
             } else {
-              fs.writeFileSync(songPath, lines);
-              console.log(`Key ${key}, aplicado texto.`);
+              console.log(`Key ${key}, creando archivo nuevo`);
+            }
+            if (text === lines) {
+              console.log(`Key ${key}, texto no aplicable`);
+            } else {
+              fs.writeFileSync(songFileName, lines);
+              console.log(`Key ${key}, texto guardado`);
             }
           }
         });

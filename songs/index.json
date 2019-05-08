@@ -345,7 +345,8 @@
   "signing to the virgin": true,
   "files": {
    "es": "Ave María I - Lc 1, 28ss",
-   "it": "Ave Maria I - Lc 1, 28ss"
+   "it": "Ave Maria I - Lc 1, 28ss",
+   "de-AT": "Ave Maria"
   }
  },
  "36": {
@@ -354,7 +355,8 @@
   "exit": true,
   "files": {
    "es": "Ave María II (1984) - Lc 1, 28ss",
-   "it": "Ave Maria II (1984) - Lc 1, 28ss"
+   "it": "Ave Maria II (1984) - Lc 1, 28ss",
+   "de-AT": "Ave Maria II (1984)"
   }
  },
  "37": {
@@ -738,7 +740,8 @@
   "files": {
    "es": "Gritad jubilosos - Is 12",
    "it": "Gridate con gioia - Is 12, 1 ss",
-   "pt": "Gritai jubilosos - Is 12"
+   "pt": "Gritai jubilosos - Is 12",
+   "de-AT": "Frohlocket mit Freude - Jes 12, 1 ff"
   }
  },
  "75": {
@@ -1438,7 +1441,8 @@
   "files": {
    "es": "Una gran señal - Ap 12",
    "it": "Una donna vestita di sole - Ap 12",
-   "pt": "Um grande sinal - Ap 12"
+   "pt": "Um grande sinal - Ap 12",
+   "de-AT": "Ein grosses Zeichen erschien am Himmel - Offb 12, 1-18"
   }
  },
  "144": {
