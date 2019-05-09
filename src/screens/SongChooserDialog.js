@@ -45,13 +45,12 @@ const SongChooserDialog = (props: any) => {
             last={i === choosers.length - 1}
             onPress={() => setActiveSegment(v)}
             active={isActive}
-            ref={btn => {
-              if (isActive && btn && btn._root)
-                btn._root.measure(x => {
-                  if (x > 0) {
-                    setScrollToActiveX(x);
-                  }
-                });
+            onLayout={e => {
+              if (isActive) {
+                if (e.nativeEvent.layout.x > 0) {
+                  setScrollToActiveX(e.nativeEvent.layout.x);
+                }
+              }
             }}>
             <Text>{v.chooser.toUpperCase()}</Text>
           </Button>
