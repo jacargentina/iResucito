@@ -205,7 +205,8 @@
   "stage": "precatechumenate",
   "files": {
    "es": "A nadie demos ocasión de tropiezo - 2 Co 6, 3ss",
-   "pt": "A ninguém demos ocasião de tropeço - 2 Co 6, 3ss"
+   "pt": "A ninguém demos ocasião de tropeço - 2 Co 6, 3ss",
+   "de-AT": "Brüder - 2 Kor 6, 3-16"
   }
  },
  "21": {
@@ -798,7 +799,8 @@
   "files": {
    "es": "He aquí mi siervo - Is 42",
    "pt": "Eis o meu servo - Is 42",
-   "en": "This first song of the servant is 42"
+   "en": "This first song of the servant is 42",
+   "de-AT": "I. Lied des Knecht Jahwes - Jes 42"
   }
  },
  "78": {
@@ -838,7 +840,8 @@
   "easter": true,
   "files": {
    "es": "Himno a Cristo luz - Himno",
-   "pt": "Hino a cristo luz - Hino"
+   "pt": "Hino a cristo luz - Hino",
+   "de-AT": "Hymnus zu Christus dem Licht"
   }
  },
  "82": {
@@ -1113,7 +1116,8 @@
   "communion": true,
   "files": {
    "es": "No está aquí, resucitó - Mt 28, 1-8",
-   "pt": "Não está aqui ressuscitou - Mt 28, 1-8"
+   "pt": "Não está aqui ressuscitou - Mt 28, 1-8",
+   "de-AT": "Er ist nicht hier - Mt 28, 1-8"
   }
  },
  "108": {
@@ -1186,7 +1190,8 @@
   "entrance": true,
   "files": {
    "es": "Os tomaré de entre las naciones - Ez 36, 24-28",
-   "pt": "Vos tomarei dentre as nações - Ez 36, 24-28"
+   "pt": "Vos tomarei dentre as nações - Ez 36, 24-28",
+   "de-AT": "Ich Hole euch heraus - Ez 36, 24-28"
   }
  },
  "115": {
@@ -1432,7 +1437,8 @@
   "signing to the virgin": true,
   "files": {
    "es": "Sola a solo - Himno",
-   "pt": "Só a só - Hino"
+   "pt": "Só a só - Hino",
+   "de-AT": "Solo a Sola - Hymnus"
   }
  },
  "138": {
@@ -1699,7 +1705,8 @@
    "es": "Como lirio entre los cardos - Ct 1, 13ss",
    "it": "La mia diletta è per me - Ct 1, 13ss",
    "pt": "Como lírio entre os espinhos - Ct 1, 13ss",
-   "en": "My beloved is for me. (songs 1, 13ff)"
+   "en": "My beloved is for me. (songs 1, 13ff)",
+   "de-AT": "Mein Gelibter ist für mich - Hld 1, 13 ff"
   }
  },
  "164": {
@@ -1762,7 +1769,8 @@
   "communion": true,
   "files": {
    "es": "Hermosa eres, amiga mia - Ct 6; 7",
-   "pt": "Formosa és amiga minha - Ct 6; 7"
+   "pt": "Formosa és amiga minha - Ct 6; 7",
+   "de-AT": "Du bist schön, meine Freundin - Hld 6 – 7"
   }
  },
  "170": {
@@ -1875,7 +1883,8 @@
    "es": "Sermon de la montaña - Lc 6, 20-38",
    "it": "Il sermone della montagna",
    "pt": "Sermão da montanha - Lc 6, 20-38",
-   "en": "The sermon on the mountain"
+   "en": "The sermon on the mountain",
+   "de-AT": "Liebet eure Feinde - Lk 6, 20-38"
   }
  },
  "181": {
@@ -1940,7 +1949,8 @@
   "stage": "liturgy",
   "files": {
    "es": "Credo - Símbolo apostolico",
-   "pt": "Credo - Símbolo apostólico"
+   "pt": "Credo - Símbolo apostólico",
+   "de-AT": "Das Apostolische Glaubens Bekenntnis"
   }
  },
  "189": {
@@ -1966,7 +1976,8 @@
   "stage": "liturgy",
   "files": {
    "es": "Letanía del Cordero de Dios - Himno Agnus Dei",
-   "pt": "Cordeiro de Deus - Ladainha do Cordeiro de Deus"
+   "pt": "Cordeiro de Deus - Ladainha do Cordeiro de Deus",
+   "de-AT": "Agnus Dei"
   }
  },
  "192": {
@@ -1988,7 +1999,8 @@
   "stage": "liturgy",
   "files": {
    "es": "Padre Nuestro",
-   "pt": "Pai Nosso"
+   "pt": "Pai Nosso",
+   "de-AT": "Vater Unser"
   }
  },
  "195": {
@@ -2126,14 +2138,16 @@
   "lutes and vespers": true,
   "files": {
    "es": "Zaqueo - Lc 19, 1–10",
-   "pt": "Zaqueu - Lc 19,1-10"
+   "pt": "Zaqueu - Lc 19,1-10",
+   "de-AT": "Zachäus - Lk 19, 1-10"
   }
  },
  "212": {
   "stage": "precatechumenate",
   "files": {
    "es": "El Mesías, León para vencer - Vittorino de Pettau",
-   "pt": "O messias leão para vencer - Vitorino de Pettau"
+   "pt": "O messias leão para vencer - Vitorino de Pettau",
+   "de-AT": "Der Messias Löwe um zu siegen - Vittorino von Pettau"
   }
  },
  "213": {
@@ -2142,7 +2156,8 @@
   "communion": true,
   "files": {
    "es": "En medio de aquel gentío - Lc 8,42b-48",
-   "pt": "Em meio a multidão - Lc 8, 42b-48"
+   "pt": "Em meio a multidão - Lc 8, 42b-48",
+   "de-AT": "Inmitten einer Grossen Menge - Lk 8, 42-48"
   }
  },
  "214": {
@@ -2151,14 +2166,16 @@
   "communion": true,
   "files": {
    "es": "Me robaste el corazón - Ct 4, 9-16.5,1",
-   "pt": "Roubaste meu coração - Ct 4, 9-16.5, 1"
+   "pt": "Roubaste meu coração - Ct 4, 9-16.5, 1",
+   "de-AT": "Du betörtest mein Herz - Hld 4, 9-16 — 5, 1"
   }
  },
  "215": {
   "stage": "precatechumenate",
   "files": {
    "es": "María paloma incorrupta - Himno",
-   "pt": "Maria pomba incorrupta - Hino"
+   "pt": "Maria pomba incorrupta - Hino",
+   "de-AT": "Ave, O Maria - Hymnus"
   }
  },
  "216": {
@@ -2167,14 +2184,16 @@
   "easter": true,
   "files": {
    "es": "Si habéis resucitado con Cristo - Col 3, 1-4",
-   "pt": "Se vós ressuscitastes com cristo - Cor 3, 1-4"
+   "pt": "Se vós ressuscitastes com cristo - Cor 3, 1-4",
+   "de-AT": "Wenn ihr auferweckt seid mit Christus - Kol 3, 1-4"
   }
  },
  "217": {
   "stage": "precatechumenate",
   "files": {
    "es": "Resurrexit - Jn 11, 25-27",
-   "pt": "Resurrexit - Jo 11, 25-27"
+   "pt": "Resurrexit - Jo 11, 25-27",
+   "de-AT": "Resurrexit - Joh 11, 25-27"
   }
  },
  "218": {
@@ -2184,7 +2203,8 @@
   "communion": true,
   "files": {
    "es": "Este es el mandamiento mio - Jn 15, 12ss",
-   "pt": "Este é o meu mandamento - Jo 15, 12ss"
+   "pt": "Este é o meu mandamento - Jo 15, 12ss",
+   "de-AT": "Das ist mein Gebot - Joh 15, 12 ff"
   }
  },
  "219": {
@@ -2202,7 +2222,8 @@
   "stage": "precatechumenate",
   "files": {
    "es": "Madre dolorosa - Himno de San Romano el Mélodo",
-   "pt": "Como ovelha que vê - Hino de São Romano o Melodista"
+   "pt": "Como ovelha que vê - Hino de São Romano o Melodista",
+   "de-AT": "Wie ein Schaf das sieht - Hymnus von Romanos dem Sänger"
   }
  },
  "221": {
