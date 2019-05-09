@@ -63,6 +63,7 @@
     "song change name help": "Correggere la stringa di testo per seguire lo standard seguente: [Titolo canzone] - [Fonte]. Nel caso di font vuoto, usa solo [Titolo della canzone]",
     "reload": "Ricaricare",
     "reload confirmation": "¿Ricarica in attesa di eventuali modifiche apportate?",
+    "discard confirmation": "Vuoi scartare tutte le modifiche?",
     "preview type": "Tipo di Visualizzazione",
     "screen": "Schermo",
     "pdf": "PDF",

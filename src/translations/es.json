@@ -63,6 +63,7 @@
     "song change name help": "Arregla la cadena de texto para seguir el siguiente standard: [Titulo del canto] - [Fuente]. En el caso de fuente vacía, sólo usar [Titulo del canto]",
     "reload": "Recargar",
     "reload confirmation": "¿Quieres recargar pendiendo cualquier cambio realizado?",
+    "discard confirmation": "¿Quieres descartar todos los cambios?",
     "preview type": "Tipo de Previsualización",
     "screen": "Pantalla",
     "pdf": "PDF",

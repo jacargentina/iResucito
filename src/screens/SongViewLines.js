@@ -1,8 +1,8 @@
 // @flow
 import React from 'react';
 import { Text } from 'native-base';
-import { getChordsDiff } from '../SongsProcessor';
-import { NativeSongs } from '../util';
+import { getChordsDiff } from '../common';
+import { NativeParser } from '../util';
 import I18n from '../translations';
 
 const SongViewLines = (props: any) => {
@@ -17,7 +17,7 @@ const SongViewLines = (props: any) => {
     diff = getChordsDiff(lines[0], transportToNote, I18n.locale);
   }
 
-  const itemsToRender = NativeSongs.getSongLinesForRender(
+  const itemsToRender = NativeParser.getSongLinesForRender(
     lines,
     I18n.locale,
     diff

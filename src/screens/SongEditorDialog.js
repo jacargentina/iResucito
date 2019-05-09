@@ -9,7 +9,7 @@ import { DataContext } from '../DataContext';
 import I18n from '../translations';
 import commonTheme from '../native-base-theme/variables/platform';
 import useUndo from 'use-undo';
-import { NativeSongs, generatePDF } from '../util';
+import { NativeParser, generatePDF } from '../util';
 
 const SongEditorDialog = (props: any) => {
   const data = useContext(DataContext);
@@ -131,7 +131,7 @@ const SongEditorDialog = (props: any) => {
             });
             break;
           case 1:
-            const itemsToRender = NativeSongs.getSongLinesForRender(
+            const itemsToRender = NativeParser.getSongLinesForRender(
               lines.split('\n'),
               I18n.locale
             );

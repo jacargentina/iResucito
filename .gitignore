@@ -49,3 +49,10 @@ buck-out/
 *.keystore
 pdf/
 bin/
+
+web/dist/*.woff2
+web/dist/*.woff
+web/dist/*.ttf
+web/dist/*.png
+web/dist/*.eot
+web/dist/*.svg

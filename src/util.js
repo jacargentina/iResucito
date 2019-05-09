@@ -1,6 +1,5 @@
 // @flow
 // Utilerias atadas a react-native
-import langs from 'langs';
 import { StyleSheet, Platform, PermissionsAndroid } from 'react-native';
 import * as RNLocalize from 'react-native-localize';
 import Contacts from 'react-native-contacts';
@@ -8,6 +7,7 @@ import RNFS from 'react-native-fs';
 import DeviceInfo from 'react-native-device-info';
 import I18n from './translations';
 import { SongsProcessor } from './SongsProcessor';
+import { SongsParser } from './SongsParser';
 import PDFLib, { PDFDocument, PDFPage } from 'react-native-pdf-lib';
 import normalize from 'normalize-strings';
 import { PdfWriter, pdfValues, PDFGenerator } from './common';
@@ -129,20 +129,6 @@ export const getDefaultLocale = () => {
   return RNLocalize.getLocales()[0].languageTag;
 };
 
-export const getLocalesForPicker = () => {
-  var locales = [
-    {
-      label: `${I18n.t('ui.default')} (${getDefaultLocale()})`,
-      value: 'default'
-    }
-  ];
-  for (var code in I18n.translations) {
-    var l = langs.where('1', code.split('-')[0]);
-    locales.push({ label: `${l.local} (${code})`, value: code });
-  }
-  return locales;
-};
-
 var isTablet = DeviceInfo.isTablet();
 var fontSizeTitulo = isTablet ? 25 : 22;
 var fontSizeTexto = isTablet ? 17 : 15;
@@ -216,9 +202,10 @@ const NativeSongReader =
 export const NativeSongs = new SongsProcessor(
   BaseSongsPath,
   NativeSongsLoader,
-  NativeSongReader,
-  NativeStyles
+  NativeSongReader
 );
+
+export const NativeParser = new SongsParser(NativeStyles);
 
 export const contactFilterByText = (c: any, text: string) => {
   return (
@@ -326,7 +313,7 @@ export const generateMultiPagePDF = (
   var items = songs.map<SongToPdf>(s => {
     return {
       canto: s,
-      lines: NativeSongs.getSongLinesForRender(s.lines, I18n.locale)
+      lines: NativeParser.getSongLinesForRender(s.lines, I18n.locale)
     };
   });
 

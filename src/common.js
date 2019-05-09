@@ -1,7 +1,74 @@
 // @flow
 // Utilerias comunes (no atadas a react-native ni a NodeJS)
 import normalize from 'normalize-strings';
+import langs from 'langs';
 import I18n from './translations';
+
+export const cleanChordsRegex = /\[|\]|\(|\)|#|\*|5|6|7|9|b|-|\+|\/|\u2013|\u2217|aum|dim|m|is|IS/g;
+
+export const getChordsScale = (locale: string): Array<string> => {
+  return I18n.t('chords.scale', { locale }).split(' ');
+};
+
+export const textToLines = (content: string): Array<string> => {
+  var lines = content.replace('\r\n', '\n').split('\n');
+  var firstNotes = lines.find(l => isChordsLine(l, I18n.locale));
+  if (firstNotes) {
+    var idx = lines.indexOf(firstNotes);
+    lines.splice(0, idx);
+  }
+  return lines;
+};
+
+export const isChordsLine = (text: string, locale: string): boolean => {
+  if (text === undefined || locale === undefined) {
+    throw 'isChordsLine: text or locale invalid';
+  }
+  const chords = getChordsScale(locale);
+  const line = text
+    .trim()
+    .replace(cleanChordsRegex, ' ')
+    .split(' ')
+    .filter(i => i.length > 0);
+  const onlyChords = line.filter(word => {
+    return chords.find(ch => ch.toLowerCase() === word.toLowerCase());
+  });
+  return onlyChords.length > 0 && onlyChords.length == line.length;
+};
+
+export const getInitialChord = (linea: string): string => {
+  var pedazos = linea.split(' ');
+  var primero = pedazos[0];
+  return primero.replace(cleanChordsRegex, '');
+};
+
+export const getChordsDiff = (
+  startingChordsLine: string,
+  targetChord: string,
+  locale: string
+): number => {
+  const chords = getChordsScale(locale);
+  const initialChord = getInitialChord(startingChordsLine);
+  const st = chords.find(ch => ch.toLowerCase() == initialChord.toLowerCase());
+  const start = chords.indexOf(st);
+  const tg = chords.find(ch => ch.toLowerCase() == targetChord.toLowerCase());
+  const target = chords.indexOf(tg);
+  return target - start;
+};
+
+export const getLocalesForPicker = (defaultLocale: string) => {
+  var locales = [
+    {
+      label: `${I18n.t('ui.default')} (${defaultLocale})`,
+      value: 'default'
+    }
+  ];
+  for (var code in I18n.translations) {
+    var l = langs.where('1', code.split('-')[0]);
+    locales.push({ label: `${l.local} (${code})`, value: code });
+  }
+  return locales;
+};
 
 var pdfVars = {
   fontName: 'Franklin Gothic Medium',

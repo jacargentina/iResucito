@@ -5,32 +5,32 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: Verifying fastlane version" time="0.023158">
+      <testcase classname="fastlane.lanes" name="0: Verifying fastlane version" time="0.008852">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: default_platform" time="0.002335">
+      <testcase classname="fastlane.lanes" name="1: default_platform" time="0.000973">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="2: increment_android_version_code" time="0.004151">
+      <testcase classname="fastlane.lanes" name="2: increment_android_version_code" time="0.002917">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="3: gradle" time="6.196175">
+      <testcase classname="fastlane.lanes" name="3: gradle" time="11.688791">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="4: gradle" time="103.498475">
+      <testcase classname="fastlane.lanes" name="4: gradle" time="102.654752">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="5: supply" time="106.953688">
+      <testcase classname="fastlane.lanes" name="5: upload_to_play_store" time="71.754839">
         
       </testcase>
     

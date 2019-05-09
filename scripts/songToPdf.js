@@ -6,7 +6,20 @@ import osLocale from 'os-locale';
 import normalize from 'normalize-strings';
 import I18n from '../src/translations';
 import { pdfValues, PdfWriter, PDFGenerator } from '../src/common';
-import { FolderSongs, NodeStyles } from './FolderSongs';
+import FolderSongs from '../src/FolderSongs';
+import { SongsParser } from '../src/SongsParser';
+
+const NodeStyles: SongStyles = {
+  titulo: { color: '#ff0000' },
+  fuente: { color: '#777777' },
+  lineaNotas: { color: '#ff0000' },
+  lineaTituloNotaEspecial: { color: '#ff0000' },
+  lineaNotaEspecial: { color: '#444444' },
+  lineaNotasConMargen: { color: '#ff0000' },
+  lineaNormal: { color: '#000000' },
+  pageNumber: { color: '#000000' },
+  prefijo: { color: '#777777' }
+};
 
 class NodeJsPdfWriter extends PdfWriter {
   doc: any;
@@ -140,13 +153,14 @@ if (!process.argv.slice(2).length) {
   var key = program.key;
   var opts = { createIndex: true, pageNumbers: true, fileSuffix: `-${locale}` };
   if (locale !== '') {
+    var parser = new SongsParser(NodeStyles);
     if (key) {
       var song = FolderSongs.getSingleSongMeta(key, locale);
       if (song.files[I18n.locale]) {
         FolderSongs.loadSingleSong(song)
           .then(() => {
             console.log('Song: ', song.titulo);
-            var songlines = FolderSongs.getSongLinesForRender(
+            var songlines = parser.getSongLinesForRender(
               song.lines,
               I18n.locale,
               0
@@ -173,7 +187,7 @@ if (!process.argv.slice(2).length) {
         var items = [];
         songs.map(song => {
           if (song.files[I18n.locale]) {
-            var songlines = FolderSongs.getSongLinesForRender(
+            var songlines = parser.getSongLinesForRender(
               song.lines,
               I18n.locale,
               0

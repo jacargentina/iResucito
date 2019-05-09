@@ -63,6 +63,7 @@
     "song change name help": "Korregiere den Satz um den folgenden Standard zu folgen: [Lieds Titel] - [Quelle]. Wenn die  Quelle leer ist, benutz nur [Lieds Titel]",
     "reload": "Wieder aufladen",
     "reload confirmation": "Willst du wieder aufladen und Änderungen verlieren?",
+    "discard confirmation": "Möchten Sie alle Änderungen verwerfen?",
     "preview type": "Vorschau-Typ",
     "screen": "Bildschirm",
     "pdf": "PDF",

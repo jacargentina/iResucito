@@ -63,6 +63,7 @@
     "song change name help": "Corrija a string para corresponder ao seguinte padrão: [O título da música] - [Source]. Caso a fonte esteja vazia, use apenas [O título da música]",
     "reload": "Recarregar",
     "reload confirmation": "¿Recarregar pendente quaisquer alterações feitas?",
+    "discard confirmation": "Você quer descartar todas as alterações?",
     "preview type": "Tipo de pré-visualização",
     "screen": "Tela",
     "pdf": "PDF",

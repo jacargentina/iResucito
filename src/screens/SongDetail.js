@@ -10,8 +10,8 @@ import {
   MenuOption,
   MenuTrigger
 } from 'react-native-popup-menu';
-import { getChordsScale, getChordsDiff } from '../SongsProcessor';
-import { NativeSongs, generatePDF } from '../util';
+import { getChordsScale, getChordsDiff } from '../common';
+import { NativeParser, generatePDF } from '../util';
 import { DataContext } from '../DataContext';
 import I18n from '../translations';
 import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
@@ -96,7 +96,8 @@ const TransportNotesMenu = withNavigation((props: any) => {
             fontStyle: 'italic',
             textAlign: 'center',
             color: StackNavigatorOptions.headerTitleStyle.color
-          }}>
+          }}
+        >
           {transportNote}
         </Text>
       </Badge>
@@ -107,7 +108,8 @@ const TransportNotesMenu = withNavigation((props: any) => {
       <MenuOptions
         customStyles={{
           optionWrapper: { paddingHorizontal: 10, paddingVertical: 10 }
-        }}>
+        }}
+      >
         {transportNote != null && <MenuOption value={null} text="Original" />}
         {menuOptionItems}
       </MenuOptions>
@@ -137,7 +139,7 @@ const ViewPdf = withNavigation(props => {
         if (transportToNote) {
           diff = getChordsDiff(lines[0], transportToNote, I18n.locale);
         }
-        const itemsToRender = NativeSongs.getSongLinesForRender(
+        const itemsToRender = NativeParser.getSongLinesForRender(
           lines,
           I18n.locale,
           diff

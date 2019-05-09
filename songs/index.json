@@ -4,7 +4,8 @@
   "lent": true,
   "files": {
    "es": "Así habla el amén - Ap 3, 14-22",
-   "it": "Cosﬁ parla l'amen - Ap 3, 14-22"
+   "it": "Cosﬁ parla l'amen - Ap 3, 14-22",
+   "de-AT": "Das sagt der Amen - Offb 3, 14-22"
   }
  },
  "2": {
@@ -61,7 +62,8 @@
   "files": {
    "es": "Dichoso el hombre - Sal 1",
    "it": "Felice l'uomo - Sal 1",
-   "pt": "Feliz o homem - Sal 1"
+   "pt": "Feliz o homem - Sal 1",
+   "de-AT": "Glücklich der Mensch - Ps 1"
   }
  },
  "7": {
@@ -216,7 +218,8 @@
    "es": "A ti levanto mis ojos - Sal 123 (122)",
    "it": "A te levo i miei occhi - Sal 123 (122)",
    "pt": "A ti levanto meus olhos - Sal 123 (122)",
-   "en": "To you i lift up my eyes - Ps 122"
+   "en": "To you i lift up my eyes - Ps 122",
+   "de-AT": "Zu dir erhebe ich meine Augen - Ps 123"
   }
  },
  "22": {
@@ -225,7 +228,8 @@
   "files": {
    "es": "A ti, Señor, en mi clamor imploro - Sal 142 (141)",
    "it": "A te, Signore, con la mia voce - Sal 142 (141)",
-   "pt": "A ti, Senhor, com minha voz gritando imploro - Sal 142 (141)"
+   "pt": "A ti, Senhor, com minha voz gritando imploro - Sal 142 (141)",
+   "de-AT": "Zu dir, o Herr, rufe ich - Ps 142"
   }
  },
  "23": {
@@ -404,7 +408,8 @@
    "es": "Bendeciré al Señor en todo tiempo - Sal 34 (33)",
    "it": "Benedirò il Signore in ogni tempo - Sal 34 (33)",
    "pt": "Bendirei o Senhor em todo tempo - Sal 34 (33)",
-   "en": "I will bless the lord - Ps 34"
+   "en": "I will bless the lord - Ps 34",
+   "de-AT": "Ich will den Herrn preisen allezeit - Ps 34"
   }
  },
  "40": {
@@ -594,7 +599,8 @@
   "files": {
    "es": "Dice el Señor a mi Señor - Sal 110 (109)",
    "it": "Dice il Signore al mio Signore - Sal 110 (109)",
-   "pt": "Diz o Senhor ao meu Senhor - Sal 110 (109)"
+   "pt": "Diz o Senhor ao meu Senhor - Sal 110 (109)",
+   "de-AT": "So spricht der Herr zu meinem Herrn - Ps 110"
   }
  },
  "58": {
@@ -689,7 +695,8 @@
   "files": {
    "es": "Eres hermoso - Sal 45 (44)",
    "it": "Tu sei il più bello - Sal 45 (44)",
-   "pt": "Tu és formoso - Sal 45 (44)"
+   "pt": "Tu és formoso - Sal 45 (44)",
+   "de-AT": "Du bist der schönste - Ps 45"
   }
  },
  "67": {
@@ -953,7 +960,8 @@
   "files": {
    "es": "La siega de las naciones - Jn 4, 31-38",
    "it": "La mietitura delle nazioni - Jn 4, 31-38",
-   "pt": "A ceifa das nações - Jn 4, 31-38"
+   "pt": "A ceifa das nações - Jn 4, 31-38",
+   "de-AT": "Die Ernte der Nationen - Joh 4, 31-38"
   }
  },
  "93": {
@@ -1011,7 +1019,8 @@
   "files": {
    "es": "María de Jasna Göra - Himno",
    "it": "Maria di jasna gòra - Inno",
-   "pt": "Maria de jasna göra - Hino à Virgem de Jasna Göra, Chestokowa, Polônia"
+   "pt": "Maria de jasna göra - Hino à Virgem de Jasna Göra, Chestokowa, Polônia",
+   "de-AT": "Maria von Jasna Góra"
   }
  },
  "98": {
@@ -1021,7 +1030,8 @@
   "files": {
    "es": "María, casa de bendición - Jn 2,1-11",
    "it": "Maria, casa di benedizione - Jn 2,1-11",
-   "pt": "Maria casa da benção - As Bodas de Caná - Jo 2, 1-11"
+   "pt": "Maria casa da benção - As Bodas de Caná - Jo 2, 1-11",
+   "de-AT": "Maria, Haus des Segens"
   }
  },
  "99": {
@@ -1246,7 +1256,8 @@
   "files": {
    "es": "Porque mi yugo es suave - Mt 11, 28-30",
    "it": "Venite a me voi tutti - Mt 11, 28-30",
-   "pt": "Porque o meu jugo é suave - Mt 11, 28-30"
+   "pt": "Porque o meu jugo é suave - Mt 11, 28-30",
+   "de-AT": "Kommt zu mir ihr alle - Mt 11, 28-30"
   }
  },
  "120": {
@@ -1343,7 +1354,8 @@
   "files": {
    "es": "Se encontraron dos ángeles - Canto de los niños",
    "it": "C'erano due angeli - canzone per bambini",
-   "pt": "Encontraram se dois anjos - Canto das Crianças"
+   "pt": "Encontraram se dois anjos - Canto das Crianças",
+   "de-AT": "Es waren einmal zwei Engel"
   }
  },
  "129": {
@@ -1375,7 +1387,8 @@
    "es": "Señor, no me corrijas en tu cólera - Sal 6",
    "it": "Signore, non punirmi nel tuo sdegno - Sal 6",
    "pt": "Senhor não me corrijas na sua cólera - Sal 6",
-   "en": "Lord do not reprove me - Ps 6) ()"
+   "en": "Lord do not reprove me - Ps 6) ()",
+   "de-AT": "Herr, straf mich nicht in deinem Zorn - Ps 6"
   }
  },
  "132": {
@@ -1398,7 +1411,8 @@
    "es": "Si el Señor no construye la casa - Sal 127 (126)",
    "it": "Se il Signore non costruisce la casa - Sal 127 (126)",
    "pt": "Se o Senhor nao constrói a casa - Sal 127 (126)",
-   "en": "When the lord brought home - Ps 125 (126)"
+   "en": "When the lord brought home - Ps 125 (126)",
+   "de-AT": "Wenn der Herr das Haus nicht baut - Ps 127"
   }
  },
  "134": {
@@ -1491,7 +1505,8 @@
    "es": "Un retoño brota del tronco de Jesé - Is 11, 1-11",
    "it": "Un germoglio spunta dal tronco di jesse - Is 11, 1-11",
    "en": "A shoot springs from the stock of Jesse - Is 11, 1-11",
-   "pt": "Um rebento brota do tronco de jessé - Is 11, 1-11"
+   "pt": "Um rebento brota do tronco de jessé - Is 11, 1-11",
+   "de-AT": "Ein Spross bricht hervor aus dem Baumstumpf von Jesse - Jes 11"
   }
  },
  "143": {
@@ -1503,7 +1518,7 @@
    "es": "Una gran señal - Ap 12",
    "it": "Una donna vestita di sole - Ap 12",
    "pt": "Um grande sinal - Ap 12",
-   "de-AT": "Ein grosses Zeichen erschien am Himmel - Offb 12, 1-18"
+   "de-AT": "Ein Großes Zeichen - Offb 12, 1-18"
   }
  },
  "144": {
@@ -1586,7 +1601,8 @@
   "files": {
    "es": "Virgen de la maravilla - Himno",
    "it": "Vergine della meraviglia - Inno",
-   "pt": "Virgem da maravilha - Hino"
+   "pt": "Virgem da maravilha - Hino",
+   "de-AT": "Jungfrau der Wundertat"
   }
  },
  "152": {
@@ -1645,7 +1661,8 @@
    "es": "Yo vengo a reunir - Is 66, 18-21",
    "it": "Gloria, gloria, gloria - Is 66, 18 ss",
    "pt": "Eu venho reunir - Is 66, 18-21",
-   "en": "Glory, glory, glory (is. 66, 18ff)"
+   "en": "Glory, glory, glory (is. 66, 18ff)",
+   "de-AT": "Gloria, gloria, gloria - Jes 66, 18 ff"
   }
  },
  "158": {
@@ -1909,7 +1926,8 @@
   "files": {
    "es": "Amén, amén, amén - Ap 7, 12-14",
    "it": "Amen, amen, amen - Ap 7, 12-14",
-   "en": "Amen amen amen (apoc. 7, 12-14)"
+   "en": "Amen amen amen (apoc. 7, 12-14)",
+   "de-AT": "Amen, amen,amen - Offb 7, 12-14"
   }
  },
  "184": {
@@ -2013,7 +2031,8 @@
  "196": {
   "stage": "liturgy",
   "files": {
-   "es": "Plegaria Eucaristica II - Consagracion modelo I"
+   "es": "Plegaria Eucaristica II - Consagracion modelo I",
+   "de-AT": "Eucharistisches Hochgebet II - Konsekration und Akklamation"
   }
  },
  "197": {
@@ -2026,7 +2045,8 @@
   "stage": "liturgy",
   "files": {
    "es": "Plegaria Eucaristica II - Prefacio modelo I",
-   "pt": "Oração Eucaristica II - Prefácio modelo I"
+   "pt": "Oração Eucaristica II - Prefácio modelo I",
+   "de-AT": "Eucharistisches Hochgebet II (1)"
   }
  },
  "199": {

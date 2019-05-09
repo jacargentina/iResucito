@@ -63,6 +63,7 @@
     "song change name help": "Fix the string to match the following standard: [The song title] - [Source]. In case the source is empty, just use [The song title]",
     "reload": "Reload",
     "reload confirmation": "Do you want to reload losing any changes made?",
+    "discard confirmation": "Do you want to discard all changes?",
     "preview type": "Preview type",
     "screen": "Screen",
     "pdf": "PDF",
