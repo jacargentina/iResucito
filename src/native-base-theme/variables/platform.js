@@ -222,7 +222,7 @@ export default {
   get segmentTextColor() {
     return this.brandPrimary;
   },
-  segmentActiveTextColor: platform === "ios" ? "#fff" : "#3F51B5",
+  segmentActiveTextColor: "#fff",
   get segmentBorderColor() {
     return this.brandPrimary;
   },
