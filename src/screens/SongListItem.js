@@ -81,18 +81,24 @@ const SongListItem = (props: any) => {
   }, [songs, songKey, songMeta]);
 
   useEffect(() => {
+    let isSubscribed = true;
     if (song) {
       getSongLocalePatch(song).then(patchObj => {
-        const result =
-          !song.files.hasOwnProperty(I18n.locale) &&
-          !(
-            patchObj &&
-            patchObj[I18n.locale] &&
-            patchObj[I18n.locale].hasOwnProperty('lines')
-          );
-        setNotInLocale(result);
+        if (isSubscribed) {
+          const result =
+            !song.files.hasOwnProperty(I18n.locale) &&
+            !(
+              patchObj &&
+              patchObj[I18n.locale] &&
+              patchObj[I18n.locale].hasOwnProperty('lines')
+            );
+          setNotInLocale(result);
+        }
       });
     }
+    return () => {
+      isSubscribed = false;
+    };
   }, [song]);
 
   const [developerMode, setDeveloperMode] = useState();
