@@ -205,7 +205,12 @@ const SongListItem = (props: any) => {
 
   const showEditor = () => {
     if (notInLocale) {
-      showAddSongOptions();
+      setTimeout(() => {
+        // Invocar un ActionSheet en el callback de otro
+        // funciona bien en iOS, pero no en Android
+        // El workaround es usar setTimeout
+        showAddSongOptions();
+      }, 100);
     } else {
       navigation.navigate('SongEditor', {
         song: song

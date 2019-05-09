@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { AndroidBackHandler } from 'react-navigation-backhandler';
 import { View, StyleSheet } from 'react-native';
 import { Input, Item, Icon } from 'native-base';
-import { NavigationActions } from 'react-navigation';
+import { withNavigation } from 'react-navigation';
 import commonTheme from '../native-base-theme/variables/platform';
 import I18n from '../translations';
 import { useDebounce } from 'use-debounce';
@@ -42,7 +42,7 @@ const SearchBarView = (props: any) => {
   return (
     <AndroidBackHandler
       onBackPress={() => {
-        NavigationActions.back();
+        props.navigation.goBack(null);
         return true;
       }}>
       <View style={{ flex: 1 }}>
@@ -75,4 +75,4 @@ const SearchBarView = (props: any) => {
   );
 };
 
-export default SearchBarView;
+export default withNavigation(SearchBarView);

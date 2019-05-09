@@ -5,6 +5,7 @@ import { DataContext } from '../DataContext';
 import ModalView from './ModalView';
 import { getFriendlyTextForListType } from '../util';
 import I18n from '../translations';
+import commonTheme from '../native-base-theme/variables/platform';
 
 const ListNameDialog = (props: any) => {
   const data = useContext(DataContext);
@@ -51,16 +52,29 @@ const ListNameDialog = (props: any) => {
     }
   }, [actionEnabled, name]);
 
-  const acceptButtons = (
-    <Button
-      style={{ marginRight: 10, marginBottom: 10 }}
-      primary
+  const createRenameButton = (
+    <Text
+      style={{
+        alignSelf: 'center',
+        color: commonTheme.brandPrimary,
+        marginRight: 10
+      }}
       onPress={() => runActionOnList()}
       disabled={!actionEnabled}>
-      <Text>
-        {action === 'create' ? I18n.t('ui.create') : I18n.t('ui.rename')}
-      </Text>
-    </Button>
+      {action === 'create' ? I18n.t('ui.create') : I18n.t('ui.rename')}
+    </Text>
+  );
+
+  const cancelButton = (
+    <Text
+      style={{
+        alignSelf: 'center',
+        color: commonTheme.brandPrimary,
+        marginLeft: 10
+      }}
+      onPress={() => navigation.goBack(null)}>
+      {I18n.t('ui.cancel')}
+    </Text>
   );
 
   const title =
@@ -69,7 +83,7 @@ const ListNameDialog = (props: any) => {
       : `${I18n.t('ui.lists.rename')} (${list.name})`;
 
   return (
-    <ModalView acceptButtons={acceptButtons} title={title}>
+    <ModalView title={title} right={createRenameButton} left={cancelButton}>
       <View style={{ padding: 10 }}>
         <Item
           style={{ marginBottom: 20 }}
