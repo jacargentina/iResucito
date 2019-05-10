@@ -53,7 +53,7 @@ rl.question('Cual locale? ', locale => {
     renameTo = renameTo.replaceAt(0, renameTo[0].toUpperCase());
 
     var newPath = path.resolve(`../songs/${locale}/${renameTo}.txt`);
-    execSync(`git mv "${oldPath}" "${newPath}"`);
+    execSync(`mv "${oldPath}" "${newPath}"`);
   });
 
   process.exit();
