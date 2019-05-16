@@ -1,3 +1,4 @@
+import { getPropertyLocale } from '../src/common';
 var path = require('path');
 const { execSync } = require('child_process');
 var indexPath = path.resolve('../songs/index.json');
@@ -12,14 +13,15 @@ if (process.argv.length == 3) {
     Object.entries(patch).forEach(([key, value]) => {
       try {
         var songToPatch = SongsIndex[key];
-        Object.entries(value).forEach(([locale, item]) => {
+        Object.entries(value).forEach(([rawLoc, item]) => {
+          const loc = getPropertyLocale(songToPatch.files, rawLoc);
           var { file, rename, lines } = item;
           if (rename) {
             rename = rename.trim();
           }
           if (!file) {
             // Buscar si está el nombre en el  indice
-            file = songToPatch.files[locale];
+            file = songToPatch.files[loc];
             if (!file) {
               if (rename) {
                 // Usar el nombre de renombrado para crear archivo
@@ -32,9 +34,9 @@ if (process.argv.length == 3) {
               }
             }
           }
-          var songFileName = path.resolve(`../songs/${locale}/${file}.txt`);
+          var songFileName = path.resolve(`../songs/${loc}/${file}.txt`);
           var newName = rename
-            ? path.resolve(`../songs/${locale}/${rename}.txt`)
+            ? path.resolve(`../songs/${loc}/${rename}.txt`)
             : null;
           if (newName && !fs.existsSync(songFileName)) {
             console.log(
@@ -43,10 +45,10 @@ if (process.argv.length == 3) {
           } else if (newName && newName !== songFileName) {
             console.log(`Key ${key}, renombrando`);
             execSync(`git mv --force "${songFileName}" "${newName}"`);
-            Object.assign(songToPatch.files, { [locale]: rename });
+            Object.assign(songToPatch.files, { [loc]: rename });
           } else {
             console.log(`Key ${key}, enlazando ${file}`);
-            Object.assign(songToPatch.files, { [locale]: file });
+            Object.assign(songToPatch.files, { [loc]: file });
           }
           if (lines) {
             var text = null;

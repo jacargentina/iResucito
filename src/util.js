@@ -8,6 +8,7 @@ import DeviceInfo from 'react-native-device-info';
 import I18n from './translations';
 import { SongsProcessor } from './SongsProcessor';
 import { SongsParser } from './SongsParser';
+import { SongsExtras } from './SongsExtras';
 import PDFLib, { PDFDocument, PDFPage } from 'react-native-pdf-lib';
 import normalize from 'normalize-strings';
 import { PdfWriter, pdfValues, PDFGenerator } from './common';
@@ -203,6 +204,14 @@ export const NativeSongs = new SongsProcessor(
   BaseSongsPath,
   NativeSongsLoader,
   NativeSongReader
+);
+
+export const NativeExtras = new SongsExtras(
+  RNFS.DocumentDirectoryPath,
+  RNFS.exists,
+  RNFS.writeFile,
+  RNFS.readFile,
+  RNFS.unlink
 );
 
 export const NativeParser = new SongsParser(NativeStyles);

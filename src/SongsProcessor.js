@@ -1,7 +1,6 @@
 //@flow
-import { textToLines } from './common';
+import { textToLines, getPropertyLocale } from './common';
 import SongsIndex from '../songs/index.json';
-import I18n from './translations';
 
 export const getSongFileFromString = (str: string): SongFile => {
   var titulo = str.includes(' - ')
@@ -53,18 +52,9 @@ export class SongsProcessor {
     if (!SongsIndex.hasOwnProperty(key))
       throw new Error(`There is no key = ${key} on the Index!`);
     const files = SongsIndex[key].files;
-    var loc = null;
-    // If specific locale file is found...
-    if (files.hasOwnProperty(rawLoc)) {
-      loc = rawLoc;
-    } else {
-      // Else remove country code...
-      const locale = rawLoc.split('-')[0];
-      if (files.hasOwnProperty(locale)) {
-        loc = locale;
-      } else {
-        loc = Object.getOwnPropertyNames(files)[0];
-      }
+    var loc = getPropertyLocale(files, rawLoc);
+    if (!loc) {
+      loc = Object.getOwnPropertyNames(files)[0];
     }
     var info: Song = Object.assign({}, SongsIndex[key]);
     info.key = key;
@@ -73,37 +63,35 @@ export class SongsProcessor {
     this.assignInfoFromFile(info, parsed);
     // Si se aplico un parche
     // Asignar los valores del mismo
-    if (
-      patch &&
-      patch.hasOwnProperty(key) &&
-      patch[key].hasOwnProperty(rawLoc)
-    ) {
-      info.patched = true;
-      info.patchedTitle = info.titulo;
-      const { file, rename } = patch[key][rawLoc];
-      if (file) {
-        info.path = `${this.basePath}/${rawLoc}/${file}.txt`;
-        info.files = Object.assign({}, info.files, {
-          [rawLoc]: file
-        });
-        const parsed = getSongFileFromString(file);
-        this.assignInfoFromFile(info, parsed);
-      }
-      if (rename) {
-        const renamed = getSongFileFromString(rename);
-        info.nombre = renamed.nombre;
-        info.titulo = renamed.titulo;
-        info.fuente = renamed.fuente;
+    if (patch && patch.hasOwnProperty(key)) {
+      var loc = getPropertyLocale(patch[key], rawLoc);
+      if (loc) {
+        info.patched = true;
+        info.patchedTitle = info.titulo;
+        const { file, rename } = patch[key][loc];
+        if (file) {
+          info.path = `${this.basePath}/${loc}/${file}.txt`;
+          info.files = Object.assign({}, info.files, {
+            [loc]: file
+          });
+          const parsed = getSongFileFromString(file);
+          this.assignInfoFromFile(info, parsed);
+        }
+        if (rename) {
+          const renamed = getSongFileFromString(rename);
+          info.nombre = renamed.nombre;
+          info.titulo = renamed.titulo;
+          info.fuente = renamed.fuente;
+        }
       }
     }
     // Si se aplico un rating
     // Aplicar los valores
-    if (
-      ratings &&
-      ratings.hasOwnProperty(key) &&
-      ratings[key].hasOwnProperty(rawLoc)
-    ) {
-      info.rating = ratings[key][rawLoc];
+    if (ratings && ratings.hasOwnProperty(key)) {
+      var loc = getPropertyLocale(ratings[key], rawLoc);
+      if (loc) {
+        info.rating = ratings[key][loc];
+      }
     }
     return info;
   }
@@ -144,16 +132,18 @@ export class SongsProcessor {
     return this.songReader(path);
   }
 
-  loadSingleSong(song: Song, patch: ?SongIndexPatch): Promise<any> {
+  loadSingleSong(
+    rawLoc: string,
+    song: Song,
+    patch: ?SongIndexPatch
+  ): Promise<any> {
     return Promise.resolve()
       .then(() => {
-        if (
-          patch &&
-          patch.hasOwnProperty(song.key) &&
-          patch[song.key].hasOwnProperty(I18n.locale) &&
-          patch[song.key][I18n.locale].hasOwnProperty('lines')
-        ) {
-          return patch[song.key][I18n.locale].lines;
+        if (patch && patch.hasOwnProperty(song.key)) {
+          var loc = getPropertyLocale(patch[song.key], rawLoc);
+          if (loc && patch[song.key][loc].hasOwnProperty('lines')) {
+            return patch[song.key][loc].lines;
+          }
         }
         return this.songReader(song.path);
       })
@@ -171,9 +161,13 @@ export class SongsProcessor {
       });
   }
 
-  loadSongs(songs: Array<Song>, patch: ?SongIndexPatch): Array<Promise<any>> {
+  loadSongs(
+    rawLoc: string,
+    songs: Array<Song>,
+    patch: ?SongIndexPatch
+  ): Array<Promise<any>> {
     return songs.map(song => {
-      return this.loadSingleSong(song, patch);
+      return this.loadSingleSong(rawLoc, song, patch);
     });
   }
 }

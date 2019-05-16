@@ -13,14 +13,11 @@ import {
   getFriendlyTextForListType,
   getContacts,
   ordenClasificacion,
-  NativeSongs
+  NativeSongs,
+  NativeExtras
 } from './util';
+
 const merge = require('deepmerge');
-
-const SongsIndexPatchPath =
-  RNFS.DocumentDirectoryPath + '/SongsIndexPatch.json';
-
-const SongsRatingsPath = RNFS.DocumentDirectoryPath + '/SongsRating.json';
 
 const useSettings = () => {
   const [initialized, setInitialized] = useState(false);
@@ -85,12 +82,12 @@ const useSongsMeta = (settingsInitialized: boolean) => {
     if (!indexPatchExists) {
       return Promise.resolve();
     }
-    return RNFS.readFile(SongsIndexPatchPath)
+    return NativeExtras.readPatch()
       .then(patchJSON => {
         return JSON.parse(patchJSON);
       })
       .catch(() => {
-        return RNFS.unlink(SongsIndexPatchPath).then(() => {
+        return NativeExtras.deletePatch().then(() => {
           setIndexPatchExists(false);
           Alert.alert(
             I18n.t('alert_title.corrupt patch'),
@@ -102,7 +99,7 @@ const useSongsMeta = (settingsInitialized: boolean) => {
 
   const saveLocalePatch = (patchObj: ?SongIndexPatch) => {
     var json = JSON.stringify(patchObj, null, ' ');
-    return RNFS.writeFile(SongsIndexPatchPath, json, 'utf8').then(() => {
+    return NativeExtras.savePatch(json).then(() => {
       setIndexPatchExists(true);
     });
   };
@@ -176,7 +173,7 @@ const useSongsMeta = (settingsInitialized: boolean) => {
           patchObj,
           ratingsObj
         );
-        return NativeSongs.loadSingleSong(updatedSong, patchObj)
+        return NativeSongs.loadSingleSong(locale, updatedSong, patchObj)
           .then(() => {
             initializeSingleSong(updatedSong);
             return saveLocalePatch(patchObj);
@@ -193,7 +190,7 @@ const useSongsMeta = (settingsInitialized: boolean) => {
 
   const clearIndexPatch = () => {
     if (indexPatchExists === true) {
-      return RNFS.unlink(SongsIndexPatchPath).then(() => {
+      return NativeExtras.deletePatch().then(() => {
         setIndexPatchExists(false);
       });
     }
@@ -203,14 +200,14 @@ const useSongsMeta = (settingsInitialized: boolean) => {
     if (!ratingsFileExists) {
       return Promise.resolve();
     }
-    return RNFS.readFile(SongsRatingsPath).then(ratingsJSON => {
+    return NativeExtras.readRatings().then(ratingsJSON => {
       return JSON.parse(ratingsJSON);
     });
   };
 
   const saveSongsRatingFile = (ratingsObj: SongRatingFile) => {
     var json = JSON.stringify(ratingsObj, null, ' ');
-    return RNFS.writeFile(SongsRatingsPath, json, 'utf8').then(() => {
+    return NativeExtras.saveRatings(json).then(() => {
       setRatingsFileExists(true);
     });
   };
@@ -235,9 +232,11 @@ const useSongsMeta = (settingsInitialized: boolean) => {
             patchObj,
             ratingsObj
           );
-          return NativeSongs.loadSingleSong(updatedSong, patchObj).then(() => {
-            initializeSingleSong(updatedSong);
-          });
+          return NativeSongs.loadSingleSong(locale, updatedSong, patchObj).then(
+            () => {
+              initializeSingleSong(updatedSong);
+            }
+          );
         });
       }
     );
@@ -245,17 +244,17 @@ const useSongsMeta = (settingsInitialized: boolean) => {
 
   const clearSongsRatings = () => {
     if (ratingsFileExists === true) {
-      return RNFS.unlink(SongsRatingsPath).then(() => {
+      return NativeExtras.deleteRatings().then(() => {
         setRatingsFileExists(false);
       });
     }
   };
 
   const loadFlags = () => {
-    RNFS.exists(SongsIndexPatchPath).then(exists => {
+    NativeExtras.patchExists().then(exists => {
       setIndexPatchExists(exists);
     });
-    RNFS.exists(SongsRatingsPath).then(exists => {
+    NativeExtras.ratingsExists().then(exists => {
       setRatingsFileExists(exists);
     });
   };
@@ -845,15 +844,13 @@ const DataContextWrapper = (props: any) => {
 
   const shareIndexPatch = () => {
     var promise =
-      Platform.OS == 'android'
-        ? RNFS.readFile(SongsIndexPatchPath)
-        : Promise.resolve();
+      Platform.OS == 'android' ? NativeExtras.readPatch() : Promise.resolve();
     promise.then(patchJSON => {
       Share.share(
         {
           title: 'iResucitó - Index patch',
           message: patchJSON,
-          url: SongsIndexPatchPath
+          url: NativeExtras.getPatchUri()
         },
         { dialogTitle: I18n.t('ui.share') }
       );

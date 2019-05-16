@@ -1,18 +1,11 @@
 // @flow
 import React, { Fragment, useEffect, useState, useContext } from 'react';
-import * as axios from 'axios';
-import { List, Input } from 'semantic-ui-react';
+import { List, Input, Label } from 'semantic-ui-react';
 import { DataContext } from './DataContext';
 import { useDebounce } from 'use-debounce';
 import I18n from '../../src/translations';
-
-declare var API_PORT: number;
-
-axios.defaults.baseURL = location.protocol + '//' + location.hostname;
-
-if (API_PORT) {
-  axios.defaults.baseURL += ':' + API_PORT;
-}
+import colors from '../../src/colors';
+import api from './api';
 
 const SongList = () => {
   const data = useContext(DataContext);
@@ -23,7 +16,7 @@ const SongList = () => {
   const [debouncedTerm] = useDebounce(searchTerm, 800);
 
   const loadSong = song => {
-    axios.get(`/api/song/${song.key}/${locale}`).then(result => {
+    api.get(`/api/song/${song.key}/${locale}`).then(result => {
       setEditSong(result.data);
     });
   };
@@ -37,36 +30,47 @@ const SongList = () => {
           s.fuente.toLowerCase().includes(debouncedTerm.toLowerCase())
       );
       setFiltered(result);
-      console.log('filter', debouncedTerm, result.length);
     }
   }, [debouncedTerm, songs]);
 
   useEffect(() => {
-    axios.get(`/api/list/${locale}`).then(result => {
+    api.get(`/api/list/${locale}`).then(result => {
       setSongs(result.data);
     });
   }, [locale]);
 
   return (
     <Fragment>
-      <Input
-        icon="search"
-        style={{ margin: '0 10px' }}
-        placeholder={I18n.t('ui.search placeholder')}
-        onChange={(e, data) => setSearchTerm(data.value)}
-        value={searchTerm}
-      />
+      <div style={{ padding: 10 }}>
+        <Input
+          fluid
+          icon="search"
+          placeholder={I18n.t('ui.search placeholder')}
+          onChange={(e, data) => setSearchTerm(data.value)}
+          value={searchTerm}
+        />
+      </div>
       <List
         divided
         relaxed
         size="big"
-        style={{ marginLeft: '10px', overflowY: 'scroll' }}>
+        style={{ margin:0, padding: 10, overflowY: 'scroll' }}>
         {filtered.map((song, key) => {
           return (
             <List.Item key={key} onClick={() => loadSong(song)}>
               <List.Content>
                 <List.Header>{song.nombre}</List.Header>
                 <List.Description>{song.fuente}</List.Description>
+                <div style={{ marginTop: 8 }}>
+                  <Label style={{ backgroundColor: colors[song.stage] }}>
+                    {song.stage[0].toUpperCase()}
+                  </Label>
+                  {song.patched && (
+                    <Label color="red" size="small">
+                      patched
+                    </Label>
+                  )}
+                </div>
               </List.Content>
             </List.Item>
           );

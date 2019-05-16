@@ -10,6 +10,17 @@ export const getChordsScale = (locale: string): Array<string> => {
   return I18n.t('chords.scale', { locale }).split(' ');
 };
 
+export const getPropertyLocale = (obj: any, rawLoc: string) => {
+  if (obj.hasOwnProperty(rawLoc)) {
+    return rawLoc;
+  } else {
+    const locale = rawLoc.split('-')[0];
+    if (obj.hasOwnProperty(locale)) {
+      return locale;
+    }
+  }
+};
+
 export const textToLines = (content: string): Array<string> => {
   var lines = content.replace('\r\n', '\n').split('\n');
   var firstNotes = lines.find(l => isChordsLine(l, I18n.locale));

@@ -1,30 +1,35 @@
 // @flow
 import React, { useContext } from 'react';
-import { Label } from 'semantic-ui-react';
+import { Dropdown } from 'semantic-ui-react';
 import { getLocalesForPicker } from '../../src/common';
+import I18n from '../../src/translations';
 import { DataContext } from './DataContext';
 
-const LocalePicker = (props: any) => {
-  const { enabled } = props;
+const LocalePicker = () => {
   const data = useContext(DataContext);
   const { locale, setLocale } = data;
   const locales = getLocalesForPicker(navigator.language);
 
   return (
-    <span style={{ paddingLeft: 10 }}>
-      {locales.map(item => {
-        return (
-          <Label
-            as={enabled ? 'a' : null}
-            onClick={() => (enabled ? setLocale(item.value) : null)}
-            key={item.value}
-            color={locale == item.value ? 'red' : null}
-            size="small">
-            {item.label}
-          </Label>
-        );
-      })}
-    </span>
+    <Dropdown
+      item
+      pointing
+      style={{ marginLeft: 10 }}
+      text={I18n.t('settings_title.locale', { locale })}>
+      <Dropdown.Menu>
+        {locales.map(item => {
+          return (
+            <Dropdown.Item
+              onClick={() => setLocale(item.value)}
+              key={item.value}
+              color={locale == item.value ? 'red' : null}
+              size="small">
+              {item.label}
+            </Dropdown.Item>
+          );
+        })}
+      </Dropdown.Menu>
+    </Dropdown>
   );
 };
 
