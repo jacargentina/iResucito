@@ -5,21 +5,13 @@ import { DataContext } from './DataContext';
 import { useDebounce } from 'use-debounce';
 import I18n from '../../src/translations';
 import colors from '../../src/colors';
-import api from './api';
 
 const SongList = () => {
   const data = useContext(DataContext);
-  const { locale, setEditSong } = data;
-  const [songs, setSongs] = useState();
+  const { loadSong, songs } = data;
   const [filtered, setFiltered] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [debouncedTerm] = useDebounce(searchTerm, 800);
-
-  const loadSong = song => {
-    api.get(`/api/song/${song.key}/${locale}`).then(result => {
-      setEditSong(result.data);
-    });
-  };
 
   useEffect(() => {
     // filtrar
@@ -32,12 +24,6 @@ const SongList = () => {
       setFiltered(result);
     }
   }, [debouncedTerm, songs]);
-
-  useEffect(() => {
-    api.get(`/api/list/${locale}`).then(result => {
-      setSongs(result.data);
-    });
-  }, [locale]);
 
   return (
     <Fragment>
