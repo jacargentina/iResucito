@@ -33,7 +33,7 @@ const LocalePicker = () => {
           })}
         </Dropdown.Menu>
       </Dropdown>
-      <Menu.Item>{current.label}</Menu.Item>
+      {current && <Menu.Item>{current.label}</Menu.Item>}
     </Fragment>
   );
 };
