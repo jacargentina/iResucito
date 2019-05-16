@@ -14,14 +14,14 @@ import { DataContext } from './DataContext';
 
 const Login = () => {
   const data = useContext(DataContext);
-  const { authenticate } = data;
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const { login, signUp } = data;
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   return (
-    <div style={{ padding: 10 }}>
-      <Header textAlign="center">Ingresar a mi Cuenta</Header>
-      <Container>
+    <div style={{ flex: 0 }}>
+      <Header textAlign="center">iResucito Login</Header>
+      <Container text>
         <Grid textAlign="center" verticalAlign="middle">
           <Grid.Column>
             <Form size="large">
@@ -50,10 +50,16 @@ const Login = () => {
                   }}
                 />
                 <Divider hidden />
-                <Button primary size="large" onClick={authenticate}>
+                <Button
+                  primary
+                  size="large"
+                  onClick={() => login(email, password)}>
                   Ingresar
                 </Button>
-                <Button basic size="large">
+                <Button
+                  basic
+                  size="large"
+                  onClick={() => signUp(email, password)}>
                   Registrarme
                 </Button>
               </Segment>

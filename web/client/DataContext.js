@@ -7,15 +7,32 @@ export const DataContext: any = React.createContext();
 
 const DataContextWrapper = (props: any) => {
   const [locale, setLocale] = useState(navigator.language);
-  const [jwt, setJwt] = useState();
+  const [user, setUser] = useState();
   const [songs, setSongs] = useState();
   const [editSong, setEditSong] = useState();
   const [text, setText] = useState();
   const [apiError, setApiError] = useState();
+  const [apiMessage, setApiMessage] = useState();
   const [hasChanges, setHasChanges] = useState(false);
   const [confirmData, setConfirmData] = useState();
 
-  const authenticate = (email, password) => {
+  const signUp = (email, password) => {
+    setApiMessage();
+    setApiError();
+    api
+      .post('/api/signup', {
+        email,
+        password
+      })
+      .then(response => {
+        setApiMessage(response.data);
+      })
+      .catch(err => {
+        setApiError(err.response.data);
+      });
+  };
+
+  const login = (email, password) => {
     setApiError();
     api
       .post('/api/login', {
@@ -23,12 +40,17 @@ const DataContextWrapper = (props: any) => {
         password
       })
       .then(response => {
-        setJwt(response.data.jwt);
-        configureApi(response.data.jwt);
+        setUser(email);
+        api.defaults.headers.Authorization = `Bearer ${response.data.jwt}`;
       })
       .catch(err => {
         setApiError(err.response.data);
       });
+  };
+
+  const logout = () => {
+    setUser();
+    delete api.defaults.headers.Authorization;
   };
 
   const closeEditor = () => {
@@ -108,9 +130,6 @@ const DataContextWrapper = (props: any) => {
 
   useEffect(() => {
     I18n.locale = locale;
-    if (jwt) {
-      listSongs();
-    }
     console.log('Current locale is', I18n.locale);
   }, [locale]);
 
@@ -133,7 +152,12 @@ const DataContextWrapper = (props: any) => {
         setConfirmData,
         apiError,
         songs,
-        listSongs
+        listSongs,
+        signUp,
+        apiMessage,
+        login,
+        user,
+        logout
       }}>
       {props.children}
     </DataContext.Provider>

@@ -18,61 +18,59 @@ const Homepage = () => {
     removePatch,
     confirmClose,
     apiError,
-    jwt
+    user,
+    logout
   } = data;
+
   return (
     <div className="container">
-      <Menu size="small" inverted attached>
-        <Menu.Item header>
-          <Image circular src="cristo.png" size="mini" />
-          <Header.Content style={{ verticalAlign: 'middle', paddingLeft: 10 }}>
-            iResucito Web
-          </Header.Content>
-        </Menu.Item>
-        {!editSong && <LocalePicker />}
-        {editSong && (
-          <Menu.Item header>{editSong.titulo.toUpperCase()}</Menu.Item>
-        )}
-        {editSong && (
-          <Menu.Menu position="right">
-            {editSong.patched && (
+      {!user && <Login />}
+      {user && (
+        <Fragment>
+          <Menu size="mini" inverted attached>
+            <Menu.Item header>
+              <Image circular src="cristo.png" size="mini" />
+              <Header.Content
+                style={{ verticalAlign: 'middle', paddingLeft: 10 }}>
+                iResucito Web
+              </Header.Content>
+            </Menu.Item>
+            {!editSong && <LocalePicker />}
+            {editSong && (
+              <Fragment>
+                <Menu.Item header>{editSong.titulo.toUpperCase()}</Menu.Item>
+                {editSong.patched && (
+                  <Menu.Item>
+                    <Button negative onClick={removePatch}>
+                      {I18n.t('ui.remove patch')}
+                    </Button>
+                  </Menu.Item>
+                )}
+                <Menu.Item>
+                  <Button primary disabled={!hasChanges} onClick={applyChanges}>
+                    {I18n.t('ui.apply')}
+                  </Button>
+                </Menu.Item>
+                <Menu.Item>
+                  <Button onClick={confirmClose}>{I18n.t('ui.cancel')}</Button>
+                </Menu.Item>
+              </Fragment>
+            )}
+            <Menu.Menu position="right">
+              <Menu.Item>{user}</Menu.Item>
               <Menu.Item>
-                <Button
-                  negative
-                  floated="right"
-                  size="mini"
-                  onClick={removePatch}>
-                  {I18n.t('ui.remove patch')}
+                <Button negative onClick={logout}>
+                  {I18n.t('ui.logout')}
                 </Button>
               </Menu.Item>
-            )}
-            <Menu.Item>
-              <Button
-                primary
-                floated="right"
-                size="mini"
-                disabled={!hasChanges}
-                onClick={applyChanges}>
-                {I18n.t('ui.apply')}
-              </Button>
-            </Menu.Item>
-            <Menu.Item>
-              <Button floated="right" size="mini" onClick={confirmClose}>
-                {I18n.t('ui.cancel')}
-              </Button>
-            </Menu.Item>
-          </Menu.Menu>
-        )}
-      </Menu>
-      {apiError && (
-        <Message negative>
-          <Message.Header>Ha ocurrido un error</Message.Header>
-          <p>{apiError.error}</p>
-        </Message>
-      )}
-      {!jwt && <Login />}
-      {jwt && (
-        <Fragment>
+            </Menu.Menu>
+          </Menu>
+          {apiError && (
+            <Message negative>
+              <Message.Header>Ha ocurrido un error</Message.Header>
+              <p>{apiError.error}</p>
+            </Message>
+          )}
           {!editSong && <SongList />}
           {editSong && <SongEditor />}
         </Fragment>

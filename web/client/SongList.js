@@ -8,7 +8,7 @@ import colors from '../../src/colors';
 
 const SongList = () => {
   const data = useContext(DataContext);
-  const { loadSong, songs } = data;
+  const { locale, loadSong, listSongs, songs } = data;
   const [filtered, setFiltered] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [debouncedTerm] = useDebounce(searchTerm, 800);
@@ -24,6 +24,10 @@ const SongList = () => {
       setFiltered(result);
     }
   }, [debouncedTerm, songs]);
+
+  useEffect(() => {
+    listSongs();
+  }, [locale]);
 
   return (
     <Fragment>

@@ -65,24 +65,24 @@ server.get('/', (req, res) => {
 const jwtSecretKey = 'mysuperSecretKEY';
 
 // Auth
-server.use((req, res, next) => {
-  try {
-    const token = req.headers.authorization.split(' ')[1];
-    jwt.verify(token, jwtSecretKey, (err, payload) => {
-      console.log(payload);
+server.use(async (req, res, next) => {
+  const { authorization } = req.headers;
+  if (authorization) {
+    try {
+      const token = authorization.split(' ')[1];
+      const payload = await jwt.verify(token, jwtSecretKey);
       if (payload) {
         const user = db
           .get('users')
           .find({ email: payload.email })
           .value();
         req.user = user;
-      } else {
-        next();
       }
-    });
-  } catch (e) {
-    next();
+    } catch (e) {
+      console.log(e);
+    }
   }
+  next();
 });
 
 server.post('/api/signup', (req, res) => {
@@ -97,13 +97,9 @@ server.post('/api/signup', (req, res) => {
       error: `Email ${email} ya registrado!`
     });
   }
-  bcrypt.hash(password, 10, (err, hash) => {
-    if (err) {
-      console.log({ err });
-      return res.status(500).json({
-        error: err
-      });
-    }
+  try {
+    console.log({ email, password });
+    const hash = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
     const result = db
       .get('users')
       .push({
@@ -115,7 +111,12 @@ server.post('/api/signup', (req, res) => {
     res.status(200).json({
       success: 'El usuario ha sido registrado!'
     });
-  });
+  } catch (err) {
+    console.log({ err });
+    return res.status(500).json({
+      error: err
+    });
+  }
 });
 
 server.post('/api/login', (req, res) => {
@@ -126,12 +127,8 @@ server.post('/api/login', (req, res) => {
     .value();
 
   if (user) {
-    bcrypt.compare(password, user.password, (err, result) => {
-      if (err) {
-        return res.status(401).json({
-          error: 'Acceso no autorizado'
-        });
-      }
+    try {
+      const result = bcrypt.compareSync(password, user.password);
       if (result) {
         const JWTToken = jwt.sign(
           {
@@ -143,14 +140,17 @@ server.post('/api/login', (req, res) => {
           }
         );
         return res.status(200).json({
-          success: 'Bienvenido!',
-          token: JWTToken
+          jwt: JWTToken
         });
       }
       return res.status(401).json({
         error: 'Acceso no autorizado'
       });
-    });
+    } catch (err) {
+      res.status(401).json({
+        error: 'Acceso no autorizado'
+      });
+    }
   } else {
     res.status(500).json({
       error: 'Usuario o contraseña incorrecta'
