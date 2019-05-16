@@ -12,16 +12,21 @@ const DataContextWrapper = (props: any) => {
   const [hasChanges, setHasChanges] = useState(false);
   const [confirmData, setConfirmData] = useState();
 
+  const closeEditor = () => {
+    setEditSong();
+    setText();
+  };
+
   const confirmClose = () => {
     if (hasChanges) {
       setConfirmData({
         message: I18n.t('ui.discard confirmation'),
         yes: () => {
-          setEditSong();
+          closeEditor();
         }
       });
     } else {
-      setEditSong();
+      closeEditor();
     }
   };
 
