@@ -10,7 +10,13 @@ import './Homepage.css';
 
 const Homepage = () => {
   const data = useContext(DataContext);
-  const { editSong, hasChanges, applyChanges, confirmClose } = data;
+  const {
+    editSong,
+    hasChanges,
+    applyChanges,
+    removePatch,
+    confirmClose
+  } = data;
   return (
     <div className="container">
       <Menu size="small" inverted attached>
@@ -26,6 +32,17 @@ const Homepage = () => {
         )}
         {editSong && (
           <Menu.Menu position="right">
+            {editSong.patched && (
+              <Menu.Item>
+                <Button
+                  negative
+                  floated="right"
+                  size="mini"
+                  onClick={removePatch}>
+                  {I18n.t('ui.remove patch')}
+                </Button>
+              </Menu.Item>
+            )}
             <Menu.Item>
               <Button
                 primary
@@ -37,11 +54,7 @@ const Homepage = () => {
               </Button>
             </Menu.Item>
             <Menu.Item>
-              <Button
-                negative
-                floated="right"
-                size="mini"
-                onClick={confirmClose}>
+              <Button floated="right" size="mini" onClick={confirmClose}>
                 {I18n.t('ui.cancel')}
               </Button>
             </Menu.Item>

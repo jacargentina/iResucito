@@ -54,7 +54,7 @@ const SongList = () => {
         divided
         relaxed
         size="big"
-        style={{ margin:0, padding: 10, overflowY: 'scroll' }}>
+        style={{ margin: 0, padding: 10, overflowY: 'scroll' }}>
         {filtered.map((song, key) => {
           return (
             <List.Item key={key} onClick={() => loadSong(song)}>
@@ -62,7 +62,9 @@ const SongList = () => {
                 <List.Header>{song.nombre}</List.Header>
                 <List.Description>{song.fuente}</List.Description>
                 <div style={{ marginTop: 8 }}>
-                  <Label style={{ backgroundColor: colors[song.stage] }}>
+                  <Label
+                    style={{ backgroundColor: colors[song.stage] }}
+                    size="small">
                     {song.stage[0].toUpperCase()}
                   </Label>
                   {song.patched && (

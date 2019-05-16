@@ -30,6 +30,21 @@ const DataContextWrapper = (props: any) => {
     }
   };
 
+  const removePatch = () => {
+    if (editSong) {
+      api
+        .delete(`/api/song/${editSong.key}/${locale}`)
+        .then(result => {
+          console.log({ result });
+          // TODO recargar
+          setHasChanges(false);
+        })
+        .catch(err => {
+          console.log({ err });
+        });
+    }
+  };
+
   const applyChanges = () => {
     if (editSong) {
       api
@@ -61,6 +76,7 @@ const DataContextWrapper = (props: any) => {
         hasChanges,
         setHasChanges,
         applyChanges,
+        removePatch,
         text,
         setText,
         setConfirmData
