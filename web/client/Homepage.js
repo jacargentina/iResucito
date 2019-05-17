@@ -19,6 +19,7 @@ const Homepage = () => {
     confirmRemovePatch,
     confirmClose,
     confirmLogout,
+    setActiveDialog,
     user
   } = data;
 
@@ -42,6 +43,11 @@ const Homepage = () => {
                 <Menu.Item>{editSong.fuente}</Menu.Item>
                 <Menu.Item>
                   {I18n.t(`search_title.${editSong.stage}`)}
+                </Menu.Item>
+                <Menu.Item>
+                  <Button primary onClick={() => setActiveDialog('changeName')}>
+                    {I18n.t('ui.rename')}
+                  </Button>
                 </Menu.Item>
                 {editSong.patched && (
                   <Menu.Item>

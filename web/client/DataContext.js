@@ -16,6 +16,7 @@ const DataContextWrapper = (props: any) => {
   const [apiResult, setApiResult] = useState();
   const [hasChanges, setHasChanges] = useState(false);
   const [confirmData, setConfirmData] = useState();
+  const [activeDialog, setActiveDialog] = useState();
 
   const signUp = (email, password) => {
     setApiResult();
@@ -160,6 +161,7 @@ const DataContextWrapper = (props: any) => {
         loadSong,
         setEditSong,
         confirmData,
+        setConfirmData,
         confirmClose,
         hasChanges,
         setHasChanges,
@@ -167,7 +169,8 @@ const DataContextWrapper = (props: any) => {
         confirmRemovePatch,
         text,
         setText,
-        setConfirmData,
+        activeDialog,
+        setActiveDialog,
         apiResult,
         songs,
         listSongs,

@@ -49,6 +49,7 @@ const NoLocaleWarning = () => {
     </TouchableOpacity>
   );
 };
+
 const SongListItem = (props: any) => {
   const data = useContext(DataContext);
   const {

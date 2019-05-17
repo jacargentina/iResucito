@@ -3,14 +3,7 @@ if (!process.env.NODE_ENV) {
   throw new Error('Establecer un valor para NODE_ENV');
 }
 
-declare var PORT: number;
-
-var port = PORT;
-if (!port) {
-  port = process.env.PORT;
-}
-
-if (!port) {
+if (!process.env.PORT) {
   throw new Error('Establecer un valor para PORT');
 }
 
@@ -37,10 +30,10 @@ const mailSender = send({
 
 const merge = require('deepmerge');
 
-const dataPath = path.resolve(process.cwd(), '../data');
-const syncScriptPath = path.resolve(process.cwd(), '../server');
+const dataPath = path.resolve('./web/data');
+const syncScriptPath = path.resolve('./web/server');
 
-FolderSongs.basePath = path.resolve(process.cwd(), '../../songs');
+FolderSongs.basePath = path.resolve('./songs');
 FolderExtras.basePath = dataPath;
 
 const adapter = new FileSync(path.join(dataPath, 'db.json'));
@@ -320,6 +313,6 @@ server.post('/api/song/:key/:locale', async (req, res) => {
 // Start server
 require('http')
   .createServer(server)
-  .listen(port, function() {
-    console.log('Http on port', port);
+  .listen(process.env.PORT, function() {
+    console.log('Http on port', process.env.PORT);
   });
