@@ -292,6 +292,9 @@ server.post('/api/song/:key/:locale', async (req, res) => {
   if (patch.rename) {
     patch.rename = patch.rename.trim();
   }
+
+  patch.author = req.user;
+
   const localePatch: SongPatch = {
     [locale]: patch
   };

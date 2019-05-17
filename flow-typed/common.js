@@ -1,6 +1,7 @@
 // @flow
 
 declare type SongPatchData = {
+  author: string,
   file?: string,
   rename?: string,
   lines?: string
