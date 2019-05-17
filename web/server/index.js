@@ -24,6 +24,14 @@ import FolderExtras from '../../src/FolderExtras';
 import low from 'lowdb';
 import FileSync from 'lowdb/adapters/FileSync';
 import jwt from 'jsonwebtoken';
+import send from 'gmail-send';
+import crypto from 'crypto-random-string';
+
+const mailSender = send({
+  user: 'javier.alejandro.castro@gmail.com',
+  pass: 'zficszdkkbjapypf',
+  subject: 'iResucito Web'
+});
 
 const merge = require('deepmerge');
 
@@ -35,7 +43,7 @@ FolderExtras.basePath = dataPath;
 const adapter = new FileSync(path.join(dataPath, 'db.json'));
 const db = low(adapter);
 
-db.defaults({ users: [] }).write();
+db.defaults({ users: [], tokens: [] }).write();
 
 async function readLocalePatch(): ?SongIndexPatch {
   const exists = await FolderExtras.patchExists();
@@ -63,6 +71,7 @@ server.get('/', (req, res) => {
 });
 
 const jwtSecretKey = 'mysuperSecretKEY';
+const domain = 'http://iresucito.herokuapp.com';
 
 // Auth
 server.use(async (req, res, next) => {
@@ -100,22 +109,72 @@ server.post('/api/signup', (req, res) => {
   try {
     console.log({ email, password });
     const hash = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
-    const result = db
-      .get('users')
+    // Crear usuario
+    db.get('users')
       .push({
         email: email,
-        password: hash
+        password: hash,
+        isVerified: false
       })
       .write();
-    console.log({ result });
-    res.status(200).json({
-      success: 'El usuario ha sido registrado!'
+    // Crear token para verificacion
+    const token = crypto({ length: 20, type: 'url-safe' });
+    db.get('tokens')
+      .push({
+        email: email,
+        token: token
+      })
+      .write();
+    mailSender(
+      {
+        to: email,
+        text: `Navigate this link ${domain}/api/verify/${token}/${email} to activate your account.`
+      },
+      (err, res) => {
+        console.log({ mailSend: { err, res } });
+      }
+    );
+    return res.status(200).json({
+      ok: `User registered. 
+Open your inbox and activate your account 
+with the email we've just sent to you!`
     });
   } catch (err) {
     console.log({ err });
     return res.status(500).json({
       error: err
     });
+  }
+});
+
+server.get('/api/verify/:token/:email', (req, res) => {
+  const { token, email } = req.params;
+  const user = db
+    .get('users')
+    .find({ email: email })
+    .value();
+
+  if (user) {
+    if (user.isVerified) {
+      return res.status(202).json({ ok: 'Email Already Verified' });
+    } else {
+      const foundToken = db
+        .get('tokens')
+        .find({ email: email, token: token })
+        .value();
+
+      if (foundToken) {
+        db.get('users')
+          .find({ email: email })
+          .assign({ isVerified: true })
+          .write();
+        return res.redirect(301, domain);
+      } else {
+        return res.status(404).json({ error: 'Token expired' });
+      }
+    }
+  } else {
+    return res.status(404).json({ error: 'Email not found' });
   }
 });
 
@@ -127,6 +186,11 @@ server.post('/api/login', (req, res) => {
     .value();
 
   if (user) {
+    if (!user.isVerified) {
+      return res.status(401).json({
+        error: 'Acceso no autorizado. Cuenta no verificada.'
+      });
+    }
     try {
       const result = bcrypt.compareSync(password, user.password);
       if (result) {

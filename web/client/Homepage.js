@@ -1,12 +1,13 @@
 // @flow
 import React, { Fragment, useContext } from 'react';
 import { DataContext } from './DataContext';
-import { Header, Image, Menu, Button, Message } from 'semantic-ui-react';
+import { Header, Image, Menu, Button } from 'semantic-ui-react';
 import I18n from '../../src/translations';
 import LocalePicker from './LocalePicker';
 import Login from './Login';
 import SongList from './SongList';
 import SongEditor from './SongEditor';
+import ApiMessage from './ApiMessage';
 import './Homepage.css';
 
 const Homepage = () => {
@@ -17,7 +18,6 @@ const Homepage = () => {
     applyChanges,
     removePatch,
     confirmClose,
-    apiError,
     user,
     logout
   } = data;
@@ -65,12 +65,7 @@ const Homepage = () => {
               </Menu.Item>
             </Menu.Menu>
           </Menu>
-          {apiError && (
-            <Message negative>
-              <Message.Header>Ha ocurrido un error</Message.Header>
-              <p>{apiError.error}</p>
-            </Message>
-          )}
+          <ApiMessage />
           {!editSong && <SongList />}
           {editSong && <SongEditor />}
         </Fragment>

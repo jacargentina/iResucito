@@ -11,6 +11,7 @@ import {
   Input
 } from 'semantic-ui-react';
 import { DataContext } from './DataContext';
+import ApiMessage from './ApiMessage';
 
 const Login = () => {
   const data = useContext(DataContext);
@@ -22,6 +23,7 @@ const Login = () => {
     <div style={{ flex: 0 }}>
       <Header textAlign="center">iResucito Login</Header>
       <Container text>
+        <ApiMessage />
         <Grid textAlign="center" verticalAlign="middle">
           <Grid.Column>
             <Form size="large">
