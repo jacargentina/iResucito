@@ -275,12 +275,12 @@ const useSongsMeta = (settingsInitialized: boolean) => {
           patchObj,
           ratingsObj
         );
-        return Promise.all(NativeSongs.loadSongs(metaData, patchObj)).then(
-          () => {
-            setSongs(metaData);
-            return readAllLocaleSongs(I18n.locale);
-          }
-        );
+        return Promise.all(
+          NativeSongs.loadSongs(I18n.locale, metaData, patchObj)
+        ).then(() => {
+          setSongs(metaData);
+          return readAllLocaleSongs(I18n.locale);
+        });
       });
     }
   }, [I18n.locale, settingsInitialized, indexPatchExists, ratingsFileExists]);

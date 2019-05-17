@@ -157,7 +157,7 @@ if (!process.argv.slice(2).length) {
     if (key) {
       var song = FolderSongs.getSingleSongMeta(key, locale);
       if (song.files[I18n.locale]) {
-        FolderSongs.loadSingleSong(song)
+        FolderSongs.loadSingleSong(locale, song)
           .then(() => {
             console.log('Song: ', song.titulo);
             var songlines = parser.getSongLinesForRender(
@@ -183,7 +183,7 @@ if (!process.argv.slice(2).length) {
     } else {
       var songs = FolderSongs.getSongsMeta(locale);
       console.log(`No key Song. Generating ${songs.length} songs`);
-      Promise.all(FolderSongs.loadSongs(songs)).then(() => {
+      Promise.all(FolderSongs.loadSongs(locale, songs)).then(() => {
         var items = [];
         songs.map(song => {
           if (song.files[I18n.locale]) {
