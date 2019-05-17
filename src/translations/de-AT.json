@@ -34,6 +34,7 @@
     "edit": "Bearbeiten",
     "delete confirmation": "Möchtest du wirklich löschen?",
     "apply": "Verwenden",
+    "close": "Schließen",
     "lists": {
       "already exists": "Es existiert bereits eine Tabelle mit demselben Namen",
       "non-empty name": "Geben Sie einen nicht leeren Namen ein",

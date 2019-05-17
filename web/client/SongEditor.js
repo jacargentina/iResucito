@@ -26,10 +26,12 @@ const SongEditor = () => {
       <TextArea
         style={{
           fontFamily: 'monospace',
+          backgroundColor: '#fcfcfc',
           width: '50%',
           outline: 'none',
           resize: 'none',
           border: 0,
+          padding: '10px 20px',
           overflowY: 'scroll'
         }}
         value={text}
@@ -43,9 +45,13 @@ const SongEditor = () => {
           width: '50%',
           overflowY: 'scroll',
           fontFamily: 'Franklin Gothic Medium',
-          paddingLeft: 10
+          padding: '10px 20px'
         }}>
-        <SongViewFrame text={text} />
+        <SongViewFrame
+          title={editSong.titulo}
+          source={editSong.fuente}
+          text={text}
+        />
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 // @flow
 import React, { Fragment, useContext } from 'react';
 import { DataContext } from './DataContext';
-import { Header, Image, Menu, Button } from 'semantic-ui-react';
+import { Header, Image, Menu, Button, Icon } from 'semantic-ui-react';
 import I18n from '../../src/translations';
 import LocalePicker from './LocalePicker';
 import Login from './Login';
@@ -16,10 +16,10 @@ const Homepage = () => {
     editSong,
     hasChanges,
     applyChanges,
-    removePatch,
+    confirmRemovePatch,
     confirmClose,
-    user,
-    logout
+    confirmLogout,
+    user
   } = data;
 
   return (
@@ -39,9 +39,14 @@ const Homepage = () => {
             {editSong && (
               <Fragment>
                 <Menu.Item header>{editSong.titulo.toUpperCase()}</Menu.Item>
+                <Menu.Item>{editSong.fuente}</Menu.Item>
+                <Menu.Item>
+                  {I18n.t(`search_title.${editSong.stage}`)}
+                </Menu.Item>
                 {editSong.patched && (
                   <Menu.Item>
-                    <Button negative onClick={removePatch}>
+                    <Button negative onClick={confirmRemovePatch}>
+                      <Icon name="trash" />
                       {I18n.t('ui.remove patch')}
                     </Button>
                   </Menu.Item>
@@ -52,14 +57,14 @@ const Homepage = () => {
                   </Button>
                 </Menu.Item>
                 <Menu.Item>
-                  <Button onClick={confirmClose}>{I18n.t('ui.cancel')}</Button>
+                  <Button onClick={confirmClose}>{I18n.t('ui.close')}</Button>
                 </Menu.Item>
               </Fragment>
             )}
             <Menu.Menu position="right">
               <Menu.Item>{user}</Menu.Item>
               <Menu.Item>
-                <Button negative onClick={logout}>
+                <Button negative onClick={confirmLogout}>
                   {I18n.t('ui.logout')}
                 </Button>
               </Menu.Item>

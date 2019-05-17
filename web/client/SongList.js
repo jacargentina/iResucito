@@ -13,6 +13,8 @@ const SongList = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [debouncedTerm] = useDebounce(searchTerm, 800);
 
+  const notUsingSpanish = I18n.locale.split('-')[0] !== 'es';
+
   useEffect(() => {
     // filtrar
     if (songs) {
@@ -46,6 +48,17 @@ const SongList = () => {
         size="big"
         style={{ margin: 0, padding: 10, overflowY: 'scroll' }}>
         {filtered.map((song, key) => {
+          if (
+            notUsingSpanish &&
+            !song.patched &&
+            !song.files.hasOwnProperty(I18n.locale)
+          ) {
+            var noLocale = (
+              <Label color="red" size="small">
+                {I18n.t('ui.locale warning title')}
+              </Label>
+            );
+          }
           return (
             <List.Item key={key} onClick={() => loadSong(song)}>
               <List.Content>
@@ -58,10 +71,11 @@ const SongList = () => {
                     {song.stage[0].toUpperCase()}
                   </Label>
                   {song.patched && (
-                    <Label color="red" size="small">
+                    <Label color="violet" size="small">
                       patched
                     </Label>
                   )}
+                  {noLocale}
                 </div>
               </List.Content>
             </List.Item>

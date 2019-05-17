@@ -9,7 +9,8 @@ import {
   Container,
   Divider,
   Input,
-  Message
+  Message,
+  Image
 } from 'semantic-ui-react';
 import { DataContext } from './DataContext';
 import I18n from '../../src/translations';
@@ -25,8 +26,9 @@ const Login = () => {
 
   return (
     <div style={{ flex: 0 }}>
-      <Header textAlign="center">iResucito Login</Header>
-      <Container text>
+      <Image centered circular src="cristo.png" />
+      <Header textAlign="center">iResucito</Header>
+      <Container style={{ width: '25%' }}>
         <ApiMessage />
         {parsed.v === 1 && (
           <Message positive>{I18n.t('ui.account verified')}</Message>
