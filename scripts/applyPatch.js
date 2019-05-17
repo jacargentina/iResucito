@@ -1,9 +1,12 @@
 import { getPropertyLocale } from '../src/common';
-var path = require('path');
+const path = require('path');
+const fs = require('fs');
 const { execSync } = require('child_process');
-var indexPath = path.resolve('../songs/index.json');
-var SongsIndex = require(indexPath);
-var fs = require('fs');
+
+const inScripts = path.basename(process.cwd()) == path.basename(__dirname);
+const songsDir = inScripts ? '../songs' : './songs';
+const indexPath = path.resolve(songsDir, 'index.json');
+const SongsIndex = require(indexPath);
 
 if (process.argv.length == 3) {
   var patchPath = process.argv[2];
@@ -34,9 +37,9 @@ if (process.argv.length == 3) {
               }
             }
           }
-          var songFileName = path.resolve(`../songs/${loc}/${file}.txt`);
+          var songFileName = path.join(songsDir, `/${loc}/${file}.txt`);
           var newName = rename
-            ? path.resolve(`../songs/${loc}/${rename}.txt`)
+            ? path.join(songsDir, `/${loc}/${rename}.txt`)
             : null;
           if (newName && !fs.existsSync(songFileName)) {
             console.log(
