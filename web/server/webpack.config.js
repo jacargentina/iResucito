@@ -21,6 +21,9 @@ module.exports = env => {
       path: path.resolve(__dirname + '/../dist'),
       filename: 'serverBundle.js'
     },
+    externals: {
+      Dropbox: 'Dropbox'
+    },
     plugins: [
       new webpack.DefinePlugin({
         PORT: JSON.stringify(env ? env.PORT : '')

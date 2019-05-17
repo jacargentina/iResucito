@@ -15,6 +15,7 @@ if (!port) {
 }
 
 import * as path from 'path';
+import * as cp from 'child_process';
 import express from 'express';
 import cors from 'cors';
 import bcrypt from 'bcryptjs';
@@ -26,6 +27,7 @@ import FileSync from 'lowdb/adapters/FileSync';
 import jwt from 'jsonwebtoken';
 import send from 'gmail-send';
 import crypto from 'crypto-random-string';
+import chokidar from 'chokidar';
 
 const mailSender = send({
   user: 'javier.alejandro.castro@gmail.com',
@@ -36,6 +38,7 @@ const mailSender = send({
 const merge = require('deepmerge');
 
 const dataPath = path.resolve(process.cwd(), '../data');
+const syncScriptPath = path.resolve(process.cwd(), '../server');
 
 FolderSongs.basePath = path.resolve(process.cwd(), '../../songs');
 FolderExtras.basePath = dataPath;
@@ -44,6 +47,23 @@ const adapter = new FileSync(path.join(dataPath, 'db.json'));
 const db = low(adapter);
 
 db.defaults({ users: [], tokens: [] }).write();
+
+const watcher = chokidar.watch(dataPath, {
+  persistent: true,
+  ignoreInitial: true
+});
+
+watcher
+  .on('add', path => {
+    cp.spawn('node', ['./syncData.js', 'up', path], {
+      cwd: syncScriptPath
+    });
+  })
+  .on('change', path => {
+    cp.spawn('node', ['./syncData.js', 'up', path], {
+      cwd: syncScriptPath
+    });
+  });
 
 async function readLocalePatch(): ?SongIndexPatch {
   const exists = await FolderExtras.patchExists();
@@ -101,13 +121,11 @@ server.post('/api/signup', (req, res) => {
     .find({ email: email })
     .value();
   if (exists) {
-    console.log({ exists });
     return res.status(500).json({
       error: `Email ${email} ya registrado!`
     });
   }
   try {
-    console.log({ email, password });
     const hash = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
     // Crear usuario
     db.get('users')
@@ -288,6 +306,7 @@ server.post('/api/song/:key/:locale', async (req, res) => {
   res.json({ ok: true });
 });
 
+// Start server
 require('http')
   .createServer(server)
   .listen(port, function() {

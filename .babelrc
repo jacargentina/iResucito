@@ -6,7 +6,7 @@
     "development": {
         "plugins": [
           "@babel/plugin-transform-react-jsx-source", 
-          ["@babel/plugin-proposal-decorators", { "legacy": true }]
+          ["@babel/plugin-proposal-decorators", { "legacy": true }],
         ]
     }
   },
