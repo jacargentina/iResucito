@@ -50,6 +50,7 @@
     "crypto-random-string": "^3.0.0",
     "css-loader": "^2.1.1",
     "deepmerge": "^3.2.0",
+    "dropbox": "^4.0.17",
     "eslint": "^5.16.0",
     "eslint-import-resolver-node": "^0.3.2",
     "eslint-import-resolver-webpack": "^0.11.1",
