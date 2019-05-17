@@ -191,6 +191,9 @@ server.get('/api/verify/:token/:email', (req, res) => {
           .find({ email: email })
           .assign({ isVerified: true })
           .write();
+        db.get('tokens')
+          .remove({ email: email, token: token })
+          .write();
         return res.redirect(301, `${domain}?u=${email}&verified=1`);
       } else {
         return res.status(404).json({ error: 'Token expired' });
