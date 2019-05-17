@@ -1,21 +1,16 @@
 // @flow
 import React from 'react';
-import { HashRouter, Route, Switch } from 'react-router-dom';
+import DataContextWrapper from './DataContext';
 import DocumentTitle from 'react-document-title';
 import Homepage from './Homepage';
-import DataContextWrapper from './DataContext';
 import ConfirmDialog from './ConfirmDialog';
 
 const App = () => {
   return (
     <DataContextWrapper>
-      <HashRouter>
-        <DocumentTitle title={'iResucito'} />
-        <ConfirmDialog />
-        <Switch>
-          <Route exact path="/" component={Homepage} />
-        </Switch>
-      </HashRouter>
+      <DocumentTitle title={'iResucito'} />
+      <ConfirmDialog />
+      <Homepage />
     </DataContextWrapper>
   );
 };

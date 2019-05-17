@@ -8,15 +8,19 @@ import {
   Form,
   Container,
   Divider,
-  Input
+  Input,
+  Message
 } from 'semantic-ui-react';
 import { DataContext } from './DataContext';
+import I18n from '../../src/translations';
 import ApiMessage from './ApiMessage';
+import queryString from 'query-string';
 
 const Login = () => {
+  const parsed = queryString.parse(location.search);
   const data = useContext(DataContext);
   const { login, signUp } = data;
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState(parsed.u || '');
   const [password, setPassword] = useState('');
 
   return (
@@ -24,6 +28,9 @@ const Login = () => {
       <Header textAlign="center">iResucito Login</Header>
       <Container text>
         <ApiMessage />
+        {parsed.v === 1 && (
+          <Message positive>{I18n.t('ui.account verified')}</Message>
+        )}
         <Grid textAlign="center" verticalAlign="middle">
           <Grid.Column>
             <Form size="large">
@@ -33,7 +40,7 @@ const Login = () => {
                     fluid
                     icon="user"
                     iconPosition="left"
-                    placeholder="Dirección de e-mail"
+                    placeholder={I18n.t('ui.email')}
                     value={email}
                     onChange={(e, { value }) => {
                       setEmail(value);
@@ -44,7 +51,7 @@ const Login = () => {
                   fluid
                   icon="lock"
                   iconPosition="left"
-                  placeholder="Contraseña"
+                  placeholder={I18n.t('ui.password')}
                   type="password"
                   value={password}
                   onChange={(e, { value }) => {
@@ -56,13 +63,13 @@ const Login = () => {
                   primary
                   size="large"
                   onClick={() => login(email, password)}>
-                  Ingresar
+                  {I18n.t('ui.login')}
                 </Button>
                 <Button
                   basic
                   size="large"
                   onClick={() => signUp(email, password)}>
-                  Registrarme
+                  {I18n.t('ui.signup')}
                 </Button>
               </Segment>
             </Form>
