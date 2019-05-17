@@ -31,7 +31,7 @@ import chokidar from 'chokidar';
 
 const mailSender = send({
   user: 'javier.alejandro.castro@gmail.com',
-  pass: 'zficszdkkbjapypf',
+  pass: process.env.GMAIL_PASSWORD,
   subject: 'iResucito Web'
 });
 

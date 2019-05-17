@@ -12,8 +12,7 @@ if (action == 'down') {
   // Populate /data folder from Dropbpx
   var dbx = new Dropbox({
     fetch,
-    accessToken:
-      'EZLYCiumJWoAAAAAAADes8JdHye-7MWhSnj5rMGG3CnuEJqi3eRMzLWWpIccIEYb'
+    accessToken: process.env.DROPBOX_PASSWORD
   });
   dbx
     .filesListFolder({ path: '' })
@@ -48,8 +47,7 @@ if (action == 'down') {
   // Populate /data folder from Dropbpx
   var dbx = new Dropbox({
     fetch,
-    accessToken:
-      'EZLYCiumJWoAAAAAAADes8JdHye-7MWhSnj5rMGG3CnuEJqi3eRMzLWWpIccIEYb'
+    accessToken: process.env.DROPBOX_PASSWORD
   });
   dbx
     .filesUpload({
