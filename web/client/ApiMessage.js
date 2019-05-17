@@ -2,6 +2,7 @@
 import React, { useContext } from 'react';
 import { DataContext } from './DataContext';
 import { Message } from 'semantic-ui-react';
+import I18n from '../../src/translations';
 
 const ApiMessage = () => {
   const data = useContext(DataContext);
@@ -14,8 +15,8 @@ const ApiMessage = () => {
   return (
     <Message negative={!!apiResult.error} positive={!!apiResult.ok}>
       <Message.Header>
-        {apiResult.error && 'Ha ocurrido un error'}
-        {apiResult.ok && 'Mensaje informativo'}
+        {apiResult.error && I18n.t('ui.error ocurred')}
+        {apiResult.ok && I18n.t('ui.info message')}
       </Message.Header>
       <p>
         {apiResult.error} {apiResult.ok}

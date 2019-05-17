@@ -116,13 +116,18 @@ server.use(async (req, res, next) => {
 
 server.post('/api/signup', (req, res) => {
   const { email, password } = req.body;
+  if (!email || !password) {
+    return res.status(500).json({
+      error: 'Provide an email and password to register'
+    });
+  }
   const exists = db
     .get('users')
     .find({ email: email })
     .value();
   if (exists) {
     return res.status(500).json({
-      error: `Email ${email} ya registrado!`
+      error: `Email ${email} already registered!`
     });
   }
   try {
@@ -206,7 +211,7 @@ server.post('/api/login', (req, res) => {
   if (user) {
     if (!user.isVerified) {
       return res.status(401).json({
-        error: 'Acceso no autorizado. Cuenta no verificada.'
+        error: 'Unauthorized access. Account was not verified.'
       });
     }
     try {
@@ -226,16 +231,16 @@ server.post('/api/login', (req, res) => {
         });
       }
       return res.status(401).json({
-        error: 'Acceso no autorizado'
+        error: 'Unauthorized access'
       });
     } catch (err) {
       res.status(401).json({
-        error: 'Acceso no autorizado'
+        error: 'Unauthorized access'
       });
     }
   } else {
     res.status(500).json({
-      error: 'Usuario o contraseña incorrecta'
+      error: 'User or password wrong'
     });
   }
 });
@@ -248,7 +253,7 @@ server.use((req, res, next) => {
     next();
   } else {
     // No hay user, no hay token!
-    res.status(500).json({ error: 'Acceso no autorizado' });
+    res.status(500).json({ error: 'Unauthorized access' });
   }
 });
 

@@ -11,6 +11,8 @@
     "scale": "Do Do# Re Mib Mi Fa Fa# Sol Sol# La Sib Si"
   },
   "ui": {
+    "error ocurred": "Ocorreu um erro",
+    "info message": "Mensagem informativa",
     "yes": "Sim",
     "no": "Não",
     "default": "Padrão",
