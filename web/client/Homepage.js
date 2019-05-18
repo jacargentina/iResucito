@@ -14,6 +14,7 @@ const Homepage = () => {
   const data = useContext(DataContext);
   const {
     editSong,
+    songFile,
     hasChanges,
     applyChanges,
     confirmRemovePatch,
@@ -39,35 +40,48 @@ const Homepage = () => {
             {!editSong && <LocalePicker />}
             {editSong && (
               <Fragment>
-                <Menu.Item header>{editSong.titulo.toUpperCase()}</Menu.Item>
-                <Menu.Item>{editSong.fuente}</Menu.Item>
+                <Menu.Item header>
+                  {songFile && songFile.titulo.toUpperCase()}
+                </Menu.Item>
+                {songFile && songFile.fuente && (
+                  <Menu.Item>{songFile.fuente}</Menu.Item>
+                )}
                 <Menu.Item>
                   {I18n.t(`search_title.${editSong.stage}`)}
                 </Menu.Item>
+              </Fragment>
+            )}
+            <Menu.Menu position="right">
+              {editSong && (
                 <Menu.Item>
                   <Button primary onClick={() => setActiveDialog('changeName')}>
                     {I18n.t('ui.rename')}
                   </Button>
                 </Menu.Item>
-                {editSong.patched && (
-                  <Menu.Item>
-                    <Button negative onClick={confirmRemovePatch}>
-                      <Icon name="trash" />
-                      {I18n.t('ui.remove patch')}
-                    </Button>
-                  </Menu.Item>
-                )}
+              )}
+              {editSong && editSong.patched && (
                 <Menu.Item>
-                  <Button primary disabled={!hasChanges} onClick={applyChanges}>
-                    {I18n.t('ui.apply')}
+                  <Button negative onClick={confirmRemovePatch}>
+                    <Icon name="trash" />
+                    {I18n.t('ui.remove patch')}
                   </Button>
                 </Menu.Item>
-                <Menu.Item>
-                  <Button onClick={confirmClose}>{I18n.t('ui.close')}</Button>
-                </Menu.Item>
-              </Fragment>
-            )}
-            <Menu.Menu position="right">
+              )}
+              {editSong && (
+                <Fragment>
+                  <Menu.Item>
+                    <Button
+                      primary
+                      disabled={!hasChanges}
+                      onClick={applyChanges}>
+                      {I18n.t('ui.apply')}
+                    </Button>
+                  </Menu.Item>
+                  <Menu.Item>
+                    <Button onClick={confirmClose}>{I18n.t('ui.close')}</Button>
+                  </Menu.Item>
+                </Fragment>
+              )}
               <Menu.Item>{user}</Menu.Item>
               <Menu.Item>
                 <Button negative onClick={confirmLogout}>

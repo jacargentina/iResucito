@@ -6,7 +6,7 @@ import SongViewFrame from './SongViewFrame';
 
 const SongEditor = () => {
   const data = useContext(DataContext);
-  const { editSong, text, setText, setHasChanges } = data;
+  const { editSong, text, setText, setHasChanges, songFile } = data;
 
   useEffect(() => {
     if (editSong) {
@@ -48,8 +48,8 @@ const SongEditor = () => {
           padding: '10px 20px'
         }}>
         <SongViewFrame
-          title={editSong.titulo}
-          source={editSong.fuente}
+          title={songFile && songFile.titulo}
+          source={songFile && songFile.fuente}
           text={text}
         />
       </div>

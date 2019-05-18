@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import I18n from '../../src/translations';
 import api from './api';
+import { getSongFileFromString } from '../../src/SongsProcessor';
 
 export const DataContext: any = React.createContext();
 
@@ -13,10 +14,20 @@ const DataContextWrapper = (props: any) => {
   const [songs, setSongs] = useState();
   const [editSong, setEditSong] = useState();
   const [text, setText] = useState();
+  const [rename, setRename] = useState();
   const [apiResult, setApiResult] = useState();
   const [hasChanges, setHasChanges] = useState(false);
   const [confirmData, setConfirmData] = useState();
   const [activeDialog, setActiveDialog] = useState();
+  const [songFile, setSongFile] = useState();
+
+  const handleApiError = err => {
+    if (err.response) {
+      setApiResult(err.response.data);
+    } else {
+      setApiResult({ error: err.message });
+    }
+  };
 
   const signUp = (email, password) => {
     setApiResult();
@@ -29,7 +40,7 @@ const DataContextWrapper = (props: any) => {
         setApiResult(response.data);
       })
       .catch(err => {
-        setApiResult(err.response.data);
+        handleApiError(err);
       });
   };
 
@@ -45,7 +56,7 @@ const DataContextWrapper = (props: any) => {
         api.defaults.headers.Authorization = `Bearer ${response.data.jwt}`;
       })
       .catch(err => {
-        setApiResult(err.response.data);
+        handleApiError(err);
       });
   };
 
@@ -58,6 +69,7 @@ const DataContextWrapper = (props: any) => {
   const closeEditor = () => {
     setEditSong();
     setText();
+    setRename();
   };
 
   const listSongs = () => {
@@ -68,7 +80,7 @@ const DataContextWrapper = (props: any) => {
         setSongs(result.data);
       })
       .catch(err => {
-        setApiResult(err.response.data);
+        handleApiError(err);
       });
   };
 
@@ -81,7 +93,7 @@ const DataContextWrapper = (props: any) => {
         setHasChanges(false);
       })
       .catch(err => {
-        setApiResult(err.response.data);
+        handleApiError(err);
       });
   };
 
@@ -123,8 +135,7 @@ const DataContextWrapper = (props: any) => {
               return loadSong(editSong);
             })
             .catch(err => {
-              setApiResult(err.response.data);
-              console.log({ err });
+              handleApiError(err);
             });
         }
       }
@@ -133,16 +144,16 @@ const DataContextWrapper = (props: any) => {
 
   const applyChanges = () => {
     if (editSong) {
+      var patch = { lines: text, rename: rename };
       setApiResult();
       return api
-        .post(`/api/song/${editSong.key}/${locale}`, { lines: text })
+        .post(`/api/song/${editSong.key}/${locale}`, patch)
         .then(() => {
           setHasChanges(false);
           return loadSong(editSong);
         })
         .catch(err => {
-          setApiResult(err.response.data);
-          console.log({ err });
+          handleApiError(err);
         });
     }
   };
@@ -152,12 +163,22 @@ const DataContextWrapper = (props: any) => {
     console.log('Current locale is', I18n.locale);
   }, [locale]);
 
+  useEffect(() => {
+    if (rename) {
+      const parsed = getSongFileFromString(rename);
+      setSongFile(parsed);
+    } else {
+      setSongFile(editSong);
+    }
+  }, [rename, editSong]);
+
   return (
     <DataContext.Provider
       value={{
         locale,
         setLocale,
         editSong,
+        songFile,
         loadSong,
         setEditSong,
         confirmData,
@@ -169,13 +190,14 @@ const DataContextWrapper = (props: any) => {
         confirmRemovePatch,
         text,
         setText,
+        rename,
+        setRename,
         activeDialog,
         setActiveDialog,
         apiResult,
         songs,
         listSongs,
         signUp,
-        apiResult,
         login,
         user,
         confirmLogout

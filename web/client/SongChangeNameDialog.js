@@ -8,22 +8,29 @@ import SongListItem from './SongListItem';
 
 const SongChangeNameDialog = () => {
   const data = useContext(DataContext);
-  const { editSong, activeDialog, setActiveDialog } = data;
-  const nameToEdit = editSong ? editSong.nombre : '';
+  const {
+    editSong,
+    activeDialog,
+    setActiveDialog,
+    rename,
+    setRename,
+    setHasChanges
+  } = data;
   const [actionEnabled, setActionEnabled] = useState(false);
-  const [name, setName] = useState(nameToEdit);
-  const [changeSong, setChangeSong] = useState(
-    getSongFileFromString(nameToEdit)
-  );
+  const [name, setName] = useState('');
+  const [original, setOriginal] = useState('');
+  const [changeSong, setChangeSong] = useState();
 
-  const runAction = () => {
-    // TODO action(name);
-    setActiveDialog();
-  };
+  useEffect(() => {
+    if (editSong) {
+      setName(rename ?? editSong.nombre);
+      setOriginal(rename ?? editSong.nombre);
+    }
+  }, [editSong]);
 
   useEffect(() => {
     if (name !== undefined) {
-      setActionEnabled(name.length > 0 && name !== nameToEdit);
+      setActionEnabled(name.length > 0 && name !== original);
       const parsed = getSongFileFromString(name);
       const changed = Object.assign({}, editSong, parsed);
       setChangeSong(changed);
@@ -39,29 +46,34 @@ const SongChangeNameDialog = () => {
       <Modal.Content>
         <h3>{I18n.t('ui.rename')}</h3>
         <Input
-          error={!actionEnabled}
+          fluid
           autoFocus
           value={name}
           onChange={(e, { value }) => {
             setName(value);
           }}
-          clearButtonMode="always"
-          autoCorrect={false}
         />
-        <div style={{ margin: 10 }}>{I18n.t('ui.song change name help')}</div>
+        <div style={{ marginTop: 10, marginBottom: 10, color: 'gray' }}>
+          {I18n.t('ui.song change name help')}
+        </div>
         <div style={{ marginTop: 10, marginBottom: 10 }}>
           <div style={{ fontWeight: 'bold', fontSize: 17 }}>
             {I18n.t('ui.original song')}
           </div>
           {editSong && (
-            <SongListItem nombre={editSong.nombre} fuente={editSong.fuente} />
+            <SongListItem nombre={editSong.titulo} fuente={editSong.fuente} />
           )}
         </div>
         <div style={{ marginTop: 10, marginBottom: 10 }}>
           <div style={{ fontWeight: 'bold', fontSize: 17 }}>
             {I18n.t('ui.patched song')}
           </div>
-          <SongListItem nombre={changeSong.nombre} fuente={changeSong.fuente} />
+          {changeSong && (
+            <SongListItem
+              nombre={changeSong.titulo}
+              fuente={changeSong.fuente}
+            />
+          )}
         </div>
       </Modal.Content>
       <Modal.Actions>
@@ -69,9 +81,9 @@ const SongChangeNameDialog = () => {
           primary
           disabled={!actionEnabled}
           onClick={() => {
-            if (actionEnabled) {
-              runAction();
-            }
+            setRename(name);
+            setHasChanges(true);
+            setActiveDialog();
           }}>
           {I18n.t('ui.apply')}
         </Button>

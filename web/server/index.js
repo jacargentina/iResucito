@@ -2,7 +2,6 @@
 if (!process.env.NODE_ENV) {
   throw new Error('Establecer un valor para NODE_ENV');
 }
-
 if (!process.env.PORT) {
   throw new Error('Establecer un valor para PORT');
 }
@@ -306,13 +305,13 @@ server.post('/api/song/:key/:locale', async (req, res) => {
   patchObj[key] = updatedPatch;
 
   await saveLocalePatch(patchObj);
-  console.log('Guardado patch', key, updatedPatch);
   res.json({ ok: true });
 });
 
 // Start server
+const port = process.env.PORT || 3000;
 require('http')
   .createServer(server)
-  .listen(process.env.PORT, function() {
-    console.log('Http on port', process.env.PORT);
+  .listen(port, function() {
+    console.log('Http on port', port);
   });
