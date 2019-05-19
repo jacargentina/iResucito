@@ -7,13 +7,7 @@ import { Header } from 'semantic-ui-react';
 
 const SongViewFrame = (props: any) => {
   const { title, source, text } = props;
-
-  if (!text) {
-    return null;
-  }
-
   const lines = textToLines(text);
-
   return (
     <Fragment>
       <Header style={WebStyles.titulo}>

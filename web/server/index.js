@@ -255,13 +255,23 @@ server.use((req, res, next) => {
 server.get('/api/list/:locale', async (req, res) => {
   const patch = await readLocalePatch();
   const { locale } = req.params;
+  if (!locale) {
+    return res.status(500).json({
+      error: 'Locale not provided'
+    });
+  }
   var songs = FolderSongs.getSongsMeta(locale, patch);
   res.json(songs);
 });
 
 server.get('/api/song/:key/:locale', async (req, res) => {
-  const patch = await readLocalePatch();
   const { key, locale } = req.params;
+  if (!locale || !key) {
+    return res.status(500).json({
+      error: 'Locale or key not provided'
+    });
+  }
+  const patch = await readLocalePatch();
   const songs = FolderSongs.getSongsMeta(locale, patch);
   const song = songs.find(s => s.key === key);
   if (song) {
@@ -270,9 +280,27 @@ server.get('/api/song/:key/:locale', async (req, res) => {
   }
 });
 
+server.get('/api/song/newKey', async (req, res) => {
+  const patch = await readLocalePatch();
+  const songs = FolderSongs.getSongsMeta('es', patch);
+  const songMaxKey = songs.reduce((prev, next) => {
+    if (Number(prev.key) > Number(next.key)) {
+      return prev;
+    }
+    return next;
+  }, songs[0]);
+  const newKey = Number(songMaxKey.key) + 1;
+  res.json({ key: newKey });
+});
+
 server.delete('/api/song/:key/:locale', async (req, res) => {
-  var patchObj = await readLocalePatch();
   const { key, locale } = req.params;
+  if (!locale || !key) {
+    return res.status(500).json({
+      error: 'Locale or key not provided'
+    });
+  }
+  var patchObj = await readLocalePatch();
 
   if (!patchObj) patchObj = {};
   delete patchObj[key][locale];
@@ -283,8 +311,13 @@ server.delete('/api/song/:key/:locale', async (req, res) => {
 });
 
 server.post('/api/song/:key/:locale', async (req, res) => {
-  var patchObj = await readLocalePatch();
   const { key, locale } = req.params;
+  if (!locale || !key) {
+    return res.status(500).json({
+      error: 'Locale or key not provided'
+    });
+  }
+  var patchObj = await readLocalePatch();
 
   const patch: SongPatchData = req.body;
   if (!patchObj) patchObj = {};

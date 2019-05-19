@@ -14,6 +14,7 @@ const Homepage = () => {
   const data = useContext(DataContext);
   const {
     editSong,
+    addSong,
     songFile,
     hasChanges,
     applyChanges,
@@ -46,9 +47,11 @@ const Homepage = () => {
                 {songFile && songFile.fuente && (
                   <Menu.Item>{songFile.fuente}</Menu.Item>
                 )}
-                <Menu.Item>
-                  {I18n.t(`search_title.${editSong.stage}`)}
-                </Menu.Item>
+                {editSong.stage && (
+                  <Menu.Item>
+                    {I18n.t(`search_title.${editSong.stage}`)}
+                  </Menu.Item>
+                )}
               </Fragment>
             )}
             <Menu.Menu position="right">
@@ -81,6 +84,14 @@ const Homepage = () => {
                     <Button onClick={confirmClose}>{I18n.t('ui.close')}</Button>
                   </Menu.Item>
                 </Fragment>
+              )}
+              {!editSong && (
+                <Menu.Item>
+                  <Button primary onClick={addSong}>
+                    <Icon name="add" />
+                    {I18n.t('ui.create')}
+                  </Button>
+                </Menu.Item>
               )}
               <Menu.Item>{user}</Menu.Item>
               <Menu.Item>

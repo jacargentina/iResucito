@@ -13,7 +13,7 @@ const DataContextWrapper = (props: any) => {
   const [user, setUser] = useState();
   const [songs, setSongs] = useState();
   const [editSong, setEditSong] = useState();
-  const [text, setText] = useState();
+  const [text, setText] = useState('');
   const [rename, setRename] = useState();
   const [apiResult, setApiResult] = useState();
   const [hasChanges, setHasChanges] = useState(false);
@@ -68,7 +68,7 @@ const DataContextWrapper = (props: any) => {
 
   const closeEditor = () => {
     setEditSong();
-    setText();
+    setText('');
     setRename();
   };
 
@@ -90,6 +90,24 @@ const DataContextWrapper = (props: any) => {
       .get(`/api/song/${song.key}/${locale}`)
       .then(result => {
         setEditSong(result.data);
+        setHasChanges(false);
+      })
+      .catch(err => {
+        handleApiError(err);
+      });
+  };
+
+  const addSong = () => {
+    return api
+      .get('/api/song/newKey')
+      .then(result => {
+        const newSong = {
+          key: result.data.key,
+          nombre: 'New song',
+          titulo: 'New song',
+          lines: ['Song text here.']
+        };
+        setEditSong(newSong);
         setHasChanges(false);
       })
       .catch(err => {
@@ -144,7 +162,7 @@ const DataContextWrapper = (props: any) => {
 
   const applyChanges = () => {
     if (editSong) {
-      var patch = { lines: text, rename: rename };
+      var patch = { lines: text, rename: rename || editSong.nombre };
       setApiResult();
       return api
         .post(`/api/song/${editSong.key}/${locale}`, patch)
@@ -197,6 +215,7 @@ const DataContextWrapper = (props: any) => {
         apiResult,
         songs,
         listSongs,
+        addSong,
         signUp,
         login,
         user,

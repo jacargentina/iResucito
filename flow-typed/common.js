@@ -88,7 +88,7 @@ declare type Song = {
   titulo: string,
   fuente: string,
   path: string,
-  files: any,
+  files: { [string]: string },
   fullText: string,
   lines: Array<string>,
   patched?: boolean,

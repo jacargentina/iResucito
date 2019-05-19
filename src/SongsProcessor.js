@@ -43,6 +43,14 @@ export class SongsProcessor {
     info.fuente = parsed.fuente;
   }
 
+  getBestFileForLocale(files: { [string]: string }, rawLoc: string) {
+    var loc = getPropertyLocale(files, rawLoc);
+    if (!loc) {
+      loc = Object.getOwnPropertyNames(files)[0];
+    }
+    return { locale: loc, name: files[loc] };
+  }
+
   getSingleSongMeta(
     key: string,
     rawLoc: string,
@@ -52,14 +60,11 @@ export class SongsProcessor {
     if (!SongsIndex.hasOwnProperty(key))
       throw new Error(`There is no key = ${key} on the Index!`);
     const files = SongsIndex[key].files;
-    var loc = getPropertyLocale(files, rawLoc);
-    if (!loc) {
-      loc = Object.getOwnPropertyNames(files)[0];
-    }
     var info: Song = Object.assign({}, SongsIndex[key]);
     info.key = key;
-    info.path = `${this.basePath}/${loc}/${info.files[loc]}.txt`;
-    const parsed = getSongFileFromString(info.files[loc]);
+    const bestFile = this.getBestFileForLocale(files, rawLoc);
+    info.path = `${this.basePath}/${bestFile.locale}/${bestFile.name}.txt`;
+    const parsed = getSongFileFromString(bestFile.name);
     this.assignInfoFromFile(info, parsed);
     // Si se aplico un parche
     // Asignar los valores del mismo
@@ -79,9 +84,7 @@ export class SongsProcessor {
         }
         if (rename) {
           const renamed = getSongFileFromString(rename);
-          info.nombre = renamed.nombre;
-          info.titulo = renamed.titulo;
-          info.fuente = renamed.fuente;
+          this.assignInfoFromFile(info, renamed);
         }
       }
     }
@@ -104,6 +107,27 @@ export class SongsProcessor {
     var songs = Object.keys(SongsIndex).map(key => {
       return this.getSingleSongMeta(key, rawLoc, patch, ratings);
     });
+    if (patch) {
+      Object.keys(patch).forEach(pKey => {
+        if (!songs.find(s => s.key === pKey) && patch) {
+          var sPatch = patch[pKey];
+          var files: { [string]: string } = {};
+          Object.keys(sPatch).map(locale => {
+            var patchData: SongPatchData = sPatch[locale];
+            if (patchData.rename) {
+              files[locale] = patchData.rename;
+            }
+          });
+          var info: Song = {};
+          info.key = pKey;
+          info.files = files;
+          const bestFile = this.getBestFileForLocale(files, rawLoc);
+          const parsed = getSongFileFromString(bestFile.name);
+          this.assignInfoFromFile(info, parsed);
+          songs.push(info);
+        }
+      });
+    }
     songs.sort(ordenAlfabetico);
     return songs;
   }

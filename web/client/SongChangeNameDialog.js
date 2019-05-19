@@ -23,8 +23,8 @@ const SongChangeNameDialog = () => {
 
   useEffect(() => {
     if (editSong) {
-      setName(rename ?? editSong.nombre);
-      setOriginal(rename ?? editSong.nombre);
+      setName(rename || editSong.nombre);
+      setOriginal(rename || editSong.nombre);
     }
   }, [editSong]);
 

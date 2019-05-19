@@ -65,11 +65,13 @@ const SongList = () => {
                 <List.Header>{song.nombre}</List.Header>
                 <List.Description>{song.fuente}</List.Description>
                 <div style={{ marginTop: 8 }}>
-                  <Label
-                    style={{ backgroundColor: colors[song.stage] }}
-                    size="small">
-                    {song.stage[0].toUpperCase()}
-                  </Label>
+                  {song.stage && (
+                    <Label
+                      style={{ backgroundColor: colors[song.stage] }}
+                      size="small">
+                      {song.stage[0].toUpperCase()}
+                    </Label>
+                  )}
                   {song.patched && (
                     <Label color="violet" size="small">
                       patched
