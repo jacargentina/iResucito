@@ -15,6 +15,7 @@ const DataContextWrapper = (props: any) => {
   const [editSong, setEditSong] = useState();
   const [text, setText] = useState('');
   const [rename, setRename] = useState();
+  const [apiLoading, setApiLoading] = useState(false);
   const [apiResult, setApiResult] = useState();
   const [hasChanges, setHasChanges] = useState(false);
   const [confirmData, setConfirmData] = useState();
@@ -22,6 +23,7 @@ const DataContextWrapper = (props: any) => {
   const [songFile, setSongFile] = useState();
 
   const handleApiError = err => {
+    setApiLoading(false);
     if (err.response) {
       setApiResult(err.response.data);
     } else {
@@ -31,6 +33,7 @@ const DataContextWrapper = (props: any) => {
 
   const signUp = (email, password) => {
     setApiResult();
+    setApiLoading(true);
     return api
       .post('/api/signup', {
         email,
@@ -38,6 +41,7 @@ const DataContextWrapper = (props: any) => {
       })
       .then(response => {
         setApiResult(response.data);
+        setApiLoading(false);
       })
       .catch(err => {
         handleApiError(err);
@@ -46,12 +50,14 @@ const DataContextWrapper = (props: any) => {
 
   const login = (email, password) => {
     setApiResult();
+    setApiLoading(true);
     return api
       .post('/api/login', {
         email,
         password
       })
       .then(response => {
+        setApiLoading(false);
         setUser(email);
         api.defaults.headers.Authorization = `Bearer ${response.data.jwt}`;
       })
@@ -74,9 +80,11 @@ const DataContextWrapper = (props: any) => {
 
   const listSongs = () => {
     setApiResult();
+    setApiLoading(true);
     return api
       .get(`/api/list/${locale}`)
       .then(result => {
+        setApiLoading(false);
         setSongs(result.data);
       })
       .catch(err => {
@@ -86,9 +94,11 @@ const DataContextWrapper = (props: any) => {
 
   const loadSong = song => {
     setApiResult();
+    setApiLoading(true);
     return api
       .get(`/api/song/${song.key}/${locale}`)
       .then(result => {
+        setApiLoading(false);
         setEditSong(result.data);
         setHasChanges(false);
       })
@@ -98,9 +108,12 @@ const DataContextWrapper = (props: any) => {
   };
 
   const addSong = () => {
+    setApiResult();
+    setApiLoading(true);
     return api
       .get('/api/song/newKey')
       .then(result => {
+        setApiLoading(false);
         const newSong = {
           key: result.data.key,
           nombre: 'New song',
@@ -147,9 +160,11 @@ const DataContextWrapper = (props: any) => {
       yes: () => {
         if (editSong) {
           setApiResult();
+          setApiLoading(true);
           return api
             .delete(`/api/song/${editSong.key}/${locale}`)
             .then(() => {
+              setApiLoading(false);
               return loadSong(editSong);
             })
             .catch(err => {
@@ -164,9 +179,11 @@ const DataContextWrapper = (props: any) => {
     if (editSong) {
       var patch = { lines: text, rename: rename || editSong.nombre };
       setApiResult();
+      setApiLoading(true);
       return api
         .post(`/api/song/${editSong.key}/${locale}`, patch)
         .then(() => {
+          setApiLoading(false);
           setHasChanges(false);
           return loadSong(editSong);
         })
@@ -212,6 +229,7 @@ const DataContextWrapper = (props: any) => {
         setRename,
         activeDialog,
         setActiveDialog,
+        apiLoading,
         apiResult,
         songs,
         listSongs,

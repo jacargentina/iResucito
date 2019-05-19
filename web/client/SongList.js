@@ -8,7 +8,7 @@ import colors from '../../src/colors';
 
 const SongList = () => {
   const data = useContext(DataContext);
-  const { locale, loadSong, listSongs, songs } = data;
+  const { locale, loadSong, listSongs, songs, apiLoading } = data;
   const [filtered, setFiltered] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [debouncedTerm] = useDebounce(searchTerm, 800);
@@ -40,6 +40,7 @@ const SongList = () => {
           placeholder={I18n.t('ui.search placeholder')}
           onChange={(e, data) => setSearchTerm(data.value)}
           value={searchTerm}
+          loading={apiLoading}
         />
       </div>
       <List
