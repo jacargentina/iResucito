@@ -5,6 +5,11 @@ var fs = require('fs'),
 
 const dataPath = path.resolve(process.cwd(), '../data');
 
+if (!process.env.DROPBOX_PASSWORD) {
+  console.log('No DROPBOX_PASSWORD provided. Exiting.');
+  process.exit();
+}
+
 const pars = process.argv.slice(2);
 const action = pars[0];
 if (action == 'down') {

@@ -76,7 +76,7 @@ server.use(bodyParser.json());
 server.use(cors());
 
 // Recursos estaticos, index.html
-const webClientFolder = path.resolve('../dist');
+const webClientFolder = path.resolve('./web/dist');
 server.use(express.static(webClientFolder));
 server.get('/', (req, res) => {
   res.sendFile(path.join(webClientFolder, 'index.html'));
