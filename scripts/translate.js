@@ -1,3 +1,7 @@
+if (!process.env.GOOGLE_TRANSLATE_KEY) {
+  throw 'Se requiere variable de entorno GOOGLE_TRANSLATE_KEY';
+}
+
 const fs = require('fs');
 const TJO = require('translate-json-object')();
 var program = require('commander');
@@ -22,7 +26,7 @@ if (!process.argv.slice(2).length) {
   }
 
   TJO.init({
-    googleApiKey: 'AIzaSyC28RQZZfce1pYlHdIc7TlUPfwCxKvZNbo'
+    googleApiKey: process.env.GOOGLE_TRANSLATE_KEY
   });
 
   TJO.translate(require('../src/translations/en.json'), locale)
