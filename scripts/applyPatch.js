@@ -13,18 +13,24 @@ if (process.argv.length == 3) {
   if (patchPath !== '') {
     var json = fs.readFileSync(patchPath, 'utf8').normalize();
     var patch = JSON.parse(json);
-    Object.entries(patch).forEach(([key, value]) => {
+    Object.entries(patch).forEach(([key, songPatch]) => {
       try {
         var songToPatch = SongsIndex[key];
-        Object.entries(value).forEach(([rawLoc, item]) => {
-          const loc = getPropertyLocale(songToPatch.files, rawLoc);
+        Object.entries(songPatch).forEach(([rawLoc, item]) => {
+          var loc;
           var { file, rename, lines } = item;
           if (rename) {
             rename = rename.trim();
           }
           if (!file) {
-            // Buscar si está el nombre en el  indice
-            file = songToPatch.files[loc];
+            loc = getPropertyLocale(songToPatch.files, rawLoc);
+            if (loc) {
+              // Buscar si está el nombre en el indice
+              file = songToPatch.files[loc];
+            } else {
+              // Tomar loc desde parche (archivo nuevo para un idioma)
+              loc = rawLoc;
+            }
             if (!file) {
               if (rename) {
                 // Usar el nombre de renombrado para crear archivo
@@ -37,10 +43,17 @@ if (process.argv.length == 3) {
               }
             }
           }
-          var songFileName = path.join(songsDir, `/${loc}/${file}.txt`);
+          var songDirectory = path.join(songsDir, loc);
+          var songFileName = path.join(songDirectory, `${file}.txt`);
           var newName = rename
-            ? path.join(songsDir, `/${loc}/${rename}.txt`)
+            ? path.join(songDirectory, `${rename}.txt`)
             : null;
+          if (!fs.existsSync(songDirectory)) {
+            console.log(
+              `Key ${key}, carpeta de locale ${loc} no existe. Creando!`
+            );
+            fs.mkdirSync(songDirectory);
+          }
           if (newName && !fs.existsSync(songFileName)) {
             console.log(
               `Key ${key}, no existe ${songFileName}, no se puede renombrar`
