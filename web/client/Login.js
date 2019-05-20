@@ -2,7 +2,6 @@
 import React, { useState, useContext } from 'react';
 import Header from 'semantic-ui-react/dist/commonjs/elements/Header';
 import Segment from 'semantic-ui-react/dist/commonjs/elements/Segment';
-import Container from 'semantic-ui-react/dist/commonjs/elements/Container';
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
 import Divider from 'semantic-ui-react/dist/commonjs/elements/Divider';
 import Input from 'semantic-ui-react/dist/commonjs/elements/Input';
@@ -24,61 +23,64 @@ const Login = () => {
   const [password, setPassword] = useState('');
 
   return (
-    <div style={{ flex: 0 }}>
-      <Image centered circular src="cristo.png" />
+    <div>
+      <Image
+        centered
+        circular
+        src="cristo.png"
+        style={{ marginTop: '100px' }}
+      />
       <Header textAlign="center">iResucito</Header>
-      <Container style={{ width: '25%' }}>
-        <Loading>
-          <ApiMessage />
-          {parsed.v === 1 && (
-            <Message positive>{I18n.t('ui.account verified')}</Message>
-          )}
-          <Grid textAlign="center" verticalAlign="middle">
-            <Grid.Column>
-              <Form size="large">
-                <Segment vertical>
-                  <Form.Field>
-                    <Input
-                      fluid
-                      icon="user"
-                      iconPosition="left"
-                      placeholder={I18n.t('ui.email')}
-                      value={email}
-                      onChange={(e, { value }) => {
-                        setEmail(value);
-                      }}
-                    />
-                  </Form.Field>
-                  <Form.Input
+      <ApiMessage />
+      {parsed.v === 1 && (
+        <Message positive>{I18n.t('ui.account verified')}</Message>
+      )}
+      <Loading height="auto">
+        <Grid textAlign="center" verticalAlign="middle">
+          <Grid.Column>
+            <Form size="large">
+              <Segment vertical>
+                <Form.Field>
+                  <Input
                     fluid
-                    icon="lock"
+                    icon="user"
                     iconPosition="left"
-                    placeholder={I18n.t('ui.password')}
-                    type="password"
-                    value={password}
+                    placeholder={I18n.t('ui.email')}
+                    value={email}
                     onChange={(e, { value }) => {
-                      setPassword(value);
+                      setEmail(value);
                     }}
                   />
-                  <Divider hidden />
-                  <Button
-                    primary
-                    size="large"
-                    onClick={() => login(email, password)}>
-                    {I18n.t('ui.login')}
-                  </Button>
-                  <Button
-                    basic
-                    size="large"
-                    onClick={() => signUp(email, password)}>
-                    {I18n.t('ui.signup')}
-                  </Button>
-                </Segment>
-              </Form>
-            </Grid.Column>
-          </Grid>
-        </Loading>
-      </Container>
+                </Form.Field>
+                <Form.Input
+                  fluid
+                  icon="lock"
+                  iconPosition="left"
+                  placeholder={I18n.t('ui.password')}
+                  type="password"
+                  value={password}
+                  onChange={(e, { value }) => {
+                    setPassword(value);
+                  }}
+                />
+                <Divider hidden />
+                <Button
+                  primary
+                  size="large"
+                  onClick={() => login(email, password)}>
+                  {I18n.t('ui.login')}
+                </Button>
+                <Button
+                  basic
+                  size="large"
+                  onClick={() => signUp(email, password)}>
+                  {I18n.t('ui.signup')}
+                </Button>
+              </Segment>
+            </Form>
+          </Grid.Column>
+        </Grid>
+      </Loading>
     </div>
   );
 };

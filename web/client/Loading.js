@@ -9,7 +9,7 @@ const Loading = (props: any) => {
   return (
     <div
       style={{
-        height: '100%',
+        height: props.height || '100%',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center'

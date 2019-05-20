@@ -5,8 +5,8 @@
   "scripts": {
     "start": "react-native start",
     "webclient": "webpack-dev-server --env.API_PORT=8345 --config ./web/client/webpack.config.js --mode development --open",
-    "webserverdev": "NODE_ENV=development PORT=8345 babel-node ./web/server/index.js",
-    "webserverprod": "NODE_ENV=production babel-node ./web/server/index.js",
+    "webserverdev": "cross-env NODE_ENV=development PORT=8345 babel-node ./web/server/index.js",
+    "webserverprod": "cross-env NODE_ENV=production babel-node ./web/server/index.js",
     "website": "concurrently --kill-others \"npm run webclient\" \"npm run webserverdev\"",
     "build": "webpack --config ./web/client/webpack.config.js --mode production",
     "webprepare": "cd ./web/server && node syncData.js down",
@@ -52,6 +52,7 @@
     "commander": "^2.20.0",
     "concurrently": "^4.1.0",
     "cors": "^2.8.5",
+    "cross-env": "^5.2.0",
     "crypto-random-string": "^3.0.0",
     "css-loader": "^2.1.1",
     "deepmerge": "^3.2.0",
@@ -129,8 +130,5 @@
     "assets": [
       "./assets/fonts"
     ]
-  },
-  "devDependencies": {
-    "webpack-bundle-analyzer": "^3.3.2"
   }
 }
