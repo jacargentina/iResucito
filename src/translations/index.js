@@ -9,7 +9,8 @@ I18n.translations = {
   es: require('./es'),
   it: require('./it'),
   pt: require('./pt'),
-  'de-AT': require('./de-AT')
+  'de-AT': require('./de-AT'),
+  fr: require('./fr')
 };
 
 export default I18n;
