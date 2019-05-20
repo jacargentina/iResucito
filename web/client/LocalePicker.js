@@ -1,6 +1,7 @@
 // @flow
 import React, { Fragment, useContext } from 'react';
-import { Dropdown, Menu } from 'semantic-ui-react';
+import Menu from 'semantic-ui-react/dist/commonjs/collections/Menu';
+import Dropdown from 'semantic-ui-react/dist/commonjs/modules/Dropdown';
 import { getLocalesForPicker } from '../../src/common';
 import I18n from '../../src/translations';
 import { DataContext } from './DataContext';

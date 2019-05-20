@@ -1,7 +1,7 @@
 // @flow
 import React, { useContext } from 'react';
 import { DataContext } from './DataContext';
-import { Loader } from 'semantic-ui-react';
+import Loader from 'semantic-ui-react/dist/commonjs/elements/Loader';
 
 const Loading = (props: any) => {
   const data = useContext(DataContext);

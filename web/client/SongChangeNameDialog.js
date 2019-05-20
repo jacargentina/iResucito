@@ -1,6 +1,8 @@
 // @flow
 import React, { useContext, useState, useEffect } from 'react';
-import { Modal, Button, Input } from 'semantic-ui-react';
+import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
+import Input from 'semantic-ui-react/dist/commonjs/elements/Input';
+import Modal from 'semantic-ui-react/dist/commonjs/modules/Modal';
 import { DataContext } from './DataContext';
 import { getSongFileFromString } from '../../src/SongsProcessor';
 import I18n from '../../src/translations';

@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import { List } from 'semantic-ui-react';
+import List from 'semantic-ui-react/dist/commonjs/elements/List';
 
 const SongListItem = (props: any) => {
   const { nombre, fuente } = props;

@@ -1,6 +1,6 @@
 // @flow
 import React, { useEffect, useContext } from 'react';
-import { TextArea } from 'semantic-ui-react';
+import TextArea from 'semantic-ui-react/dist/commonjs/addons/TextArea';
 import { DataContext } from './DataContext';
 import SongViewFrame from './SongViewFrame';
 

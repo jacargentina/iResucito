@@ -1,6 +1,8 @@
 // @flow
 import React, { Fragment, useEffect, useState, useContext } from 'react';
-import { List, Input, Label } from 'semantic-ui-react';
+import List from 'semantic-ui-react/dist/commonjs/elements/List';
+import Input from 'semantic-ui-react/dist/commonjs/elements/Input';
+import Label from 'semantic-ui-react/dist/commonjs/elements/Label';
 import { DataContext } from './DataContext';
 import { useDebounce } from 'use-debounce';
 import I18n from '../../src/translations';

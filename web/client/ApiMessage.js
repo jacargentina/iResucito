@@ -1,7 +1,7 @@
 // @flow
 import React, { useContext } from 'react';
 import { DataContext } from './DataContext';
-import { Message } from 'semantic-ui-react';
+import Message from 'semantic-ui-react/dist/commonjs/collections/Message';
 import I18n from '../../src/translations';
 
 const ApiMessage = () => {

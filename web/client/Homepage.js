@@ -1,7 +1,11 @@
 // @flow
 import React, { Fragment, useContext } from 'react';
 import { DataContext } from './DataContext';
-import { Header, Image, Menu, Button, Icon } from 'semantic-ui-react';
+import Header from 'semantic-ui-react/dist/commonjs/elements/Header';
+import Image from 'semantic-ui-react/dist/commonjs/elements/Image';
+import Menu from 'semantic-ui-react/dist/commonjs/collections/Menu';
+import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
+import Icon from 'semantic-ui-react/dist/commonjs/elements/Icon';
 import I18n from '../../src/translations';
 import LocalePicker from './LocalePicker';
 import Login from './Login';

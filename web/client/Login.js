@@ -1,17 +1,15 @@
 // @flow
 import React, { useState, useContext } from 'react';
-import {
-  Header,
-  Segment,
-  Button,
-  Grid,
-  Form,
-  Container,
-  Divider,
-  Input,
-  Message,
-  Image
-} from 'semantic-ui-react';
+import Header from 'semantic-ui-react/dist/commonjs/elements/Header';
+import Segment from 'semantic-ui-react/dist/commonjs/elements/Segment';
+import Container from 'semantic-ui-react/dist/commonjs/elements/Container';
+import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
+import Divider from 'semantic-ui-react/dist/commonjs/elements/Divider';
+import Input from 'semantic-ui-react/dist/commonjs/elements/Input';
+import Image from 'semantic-ui-react/dist/commonjs/elements/Image';
+import Form from 'semantic-ui-react/dist/commonjs/collections/Form';
+import Grid from 'semantic-ui-react/dist/commonjs/collections/Grid';
+import Message from 'semantic-ui-react/dist/commonjs/collections/Message';
 import { DataContext } from './DataContext';
 import I18n from '../../src/translations';
 import ApiMessage from './ApiMessage';
