@@ -8,9 +8,22 @@
         src: url('Franklin Gothic Medium.ttf') format('truetype');
       }
     </style>
+    <style type="text/css">
+      .container {
+        font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        overflow: hidden;
+      }
+      .container > div:last-child {
+        flex: 1;
+      }
+    </style>
   </head>
-  <body style="margin: 0; height: 100%">
-    <div id="root" style="margin: 0; height: 100%"></div>
+  <body style="margin: 0">
+    <div id="root" style="margin: 0; height: 100vh"></div>
     <script src="./clientBundle.js"></script>
   </body>
 </html>

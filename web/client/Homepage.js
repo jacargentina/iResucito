@@ -12,7 +12,6 @@ import Login from './Login';
 import SongList from './SongList';
 import SongEditor from './SongEditor';
 import ApiMessage from './ApiMessage';
-import './Homepage.css';
 
 const Homepage = () => {
   const data = useContext(DataContext);
