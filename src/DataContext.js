@@ -1,6 +1,7 @@
 // @flow
 import React, { useState, useEffect } from 'react';
-import { Alert, Platform, Share } from 'react-native';
+import { Alert, Platform } from 'react-native';
+import Share from 'react-native-share';
 import { Toast } from 'native-base';
 import RNFS from 'react-native-fs';
 import I18n from './translations';
@@ -471,14 +472,13 @@ const useLists = (songs: any) => {
       items.push(getItemForShare(list, 'nota'));
     }
     var message = items.filter(n => n).join('\n');
-    Share.share(
-      {
-        message: message,
-        title: `Lista iResucitó ${listName}`,
-        url: undefined
-      },
-      { dialogTitle: I18n.t('ui.share') }
-    );
+    Share.open({
+      title: I18n.t('ui.share'),
+      message: message,
+      subject: `iResucitó - ${listName}`,
+      url: undefined,
+      failOnCancel: false
+    });
   };
 
   useEffect(() => {
@@ -833,27 +833,25 @@ const DataContextWrapper = (props: any) => {
   const loading = useState({ isLoading: false, text: '' });
 
   const sharePDF = (shareTitleSuffix: string, pdfPath: string) => {
-    Share.share(
-      {
-        title: `iResucitó - ${shareTitleSuffix}`,
-        url: pdfPath
-      },
-      { dialogTitle: I18n.t('ui.share') }
-    );
+    Share.open({
+      title: I18n.t('ui.share'),
+      subject: `iResucitó - ${shareTitleSuffix}`,
+      url: pdfPath,
+      failOnCancel: false
+    });
   };
 
   const shareIndexPatch = () => {
     var promise =
       Platform.OS == 'android' ? NativeExtras.readPatch() : Promise.resolve();
     promise.then(patchJSON => {
-      Share.share(
-        {
-          title: 'iResucitó - Index patch',
-          message: patchJSON,
-          url: NativeExtras.getPatchUri()
-        },
-        { dialogTitle: I18n.t('ui.share') }
-      );
+      Share.open({
+        title: I18n.t('ui.share'),
+        subject: 'iResucitó - Index patch',
+        message: patchJSON,
+        url: NativeExtras.getPatchUri(),
+        failOnCancel: false
+      });
     });
   };
 
