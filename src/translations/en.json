@@ -11,6 +11,7 @@
     "scale": "C C# D EB E F F# G G# A Bb B"
   },
   "ui": {
+    "translated songs": "{{translated}} from {{total}} translated",
     "error ocurred": "An error has occurred",
     "info message": "Informative message",
     "yes": "Yes",

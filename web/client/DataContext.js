@@ -79,6 +79,7 @@ const DataContextWrapper = (props: any) => {
   };
 
   const listSongs = () => {
+    setSongs();
     setApiResult();
     setApiLoading(true);
     return api
@@ -93,6 +94,7 @@ const DataContextWrapper = (props: any) => {
   };
 
   const loadSong = song => {
+    setEditSong();
     setApiResult();
     setApiLoading(true);
     return api

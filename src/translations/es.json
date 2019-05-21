@@ -11,6 +11,7 @@
     "scale": "Do Do# Re Mib Mi Fa Fa# Sol Sol# La Sib Si"
   },
   "ui": {
+    "translated songs": "{{translated}} de {{total}} traducidas",
     "error ocurred": "Ha ocurrido un error",
     "info message": "Mensaje informativo",
     "yes": "Sí",

@@ -22,6 +22,7 @@ import 'semantic-ui-css/components/modal.min.css';
 import 'semantic-ui-css/components/menu.min.css';
 import 'semantic-ui-css/components/message.min.css';
 import 'semantic-ui-css/components/popup.min.css';
+import 'semantic-ui-css/components/progress.min.css';
 import 'semantic-ui-css/components/transition.min.css';
 import 'semantic-ui-css/components/segment.min.css';
 

@@ -1,10 +1,11 @@
 // @flow
-import React, { Fragment, useContext } from 'react';
+import React, { Fragment, useContext, useEffect, useState } from 'react';
 import { DataContext } from './DataContext';
 import Header from 'semantic-ui-react/dist/commonjs/elements/Header';
 import Image from 'semantic-ui-react/dist/commonjs/elements/Image';
 import Menu from 'semantic-ui-react/dist/commonjs/collections/Menu';
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
+import Progress from 'semantic-ui-react/dist/commonjs/modules/Progress';
 import Icon from 'semantic-ui-react/dist/commonjs/elements/Icon';
 import I18n from '../../src/translations';
 import LocalePicker from './LocalePicker';
@@ -12,10 +13,12 @@ import Login from './Login';
 import SongList from './SongList';
 import SongEditor from './SongEditor';
 import ApiMessage from './ApiMessage';
+import { getPropertyLocale } from '../../src/common';
 
 const Homepage = () => {
   const data = useContext(DataContext);
   const {
+    locale,
     editSong,
     addSong,
     songFile,
@@ -25,8 +28,26 @@ const Homepage = () => {
     confirmClose,
     confirmLogout,
     setActiveDialog,
-    user
+    user,
+    songs
   } = data;
+
+  const [resume, setResume] = useState();
+
+  useEffect(() => {
+    if (songs) {
+      const withLocale = songs.filter(song => {
+        return song.patched || !!getPropertyLocale(song.files, I18n.locale);
+      });
+      var result = { translated: withLocale.length, total: songs.length };
+      setResume({
+        text: I18n.t('ui.translated songs', result),
+        values: result
+      });
+    } else {
+      setResume();
+    }
+  }, [songs]);
 
   return (
     <div className="container">
@@ -42,6 +63,26 @@ const Homepage = () => {
               </Header.Content>
             </Menu.Item>
             {!editSong && <LocalePicker />}
+            {resume && (
+              <Menu.Item>
+                {resume.text}
+                <Progress
+                  total={resume.values.total}
+                  value={resume.values.translated}
+                  progress="percent"
+                  inverted
+                  precision={2}
+                  success
+                  style={{
+                    marginLeft: '40px',
+                    marginTop: 'auto',
+                    marginBottom: 'auto',
+                    width: '340px',
+                    backgroundColor: 'gray'
+                  }}
+                />
+              </Menu.Item>
+            )}
             {editSong && (
               <Fragment>
                 <Menu.Item header>
