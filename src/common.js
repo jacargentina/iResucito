@@ -86,7 +86,7 @@ var pdfVars = {
   marginLeft: 25,
   marginTop: 19,
   widthHeightPixels: 598, // 21,1 cm
-  songTitle: { FontSize: 19, Spacing: 3 },
+  songTitle: { FontSize: 19, Spacing: 13 },
   songSource: { FontSize: 10, Spacing: 20 },
   songText: { FontSize: 12, Spacing: 11 },
   songNote: { FontSize: 10 },
@@ -521,25 +521,26 @@ export const PDFGenerator = async (
       const { canto, lines } = data;
       writer.createPage();
       writer.positionSong();
+
+      // Titulo del canto
       await writer.writeTextCentered(
         canto.titulo.toUpperCase(),
         writer.titleColor,
         pdfValues.fontName,
         pdfValues.songTitle.FontSize
       );
-      writer.moveToNextLine(
-        pdfValues.songTitle.FontSize + pdfValues.songTitle.Spacing
-      );
+
+      // Fuente
+      writer.moveToNextLine(pdfValues.songTitle.Spacing);
       await writer.writeTextCentered(
         canto.fuente,
         writer.sourceColor,
         pdfValues.fontName,
         pdfValues.songSource.FontSize
       );
+
       writer.positionStartLine();
-      writer.moveToNextLine(
-        pdfValues.songSource.FontSize + pdfValues.songSource.Spacing
-      );
+      writer.moveToNextLine(pdfValues.songSource.Spacing);
       writer.setNewColumnY(pdfValues.songParagraphSpacing);
       await asyncForEach(lines, async (it: SongLine) => {
         if (it.inicioParrafo) {
