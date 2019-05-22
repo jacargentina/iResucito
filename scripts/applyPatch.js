@@ -85,6 +85,7 @@ if (process.argv.length == 3) {
             report.rename = { original: file, new: rename };
             execSync(`git mv --force "${songFileName}" "${newName}"`);
             Object.assign(songToPatch.files, { [loc]: rename });
+            songFileName = newName;
           } else if (songToPatch.files[loc] !== file) {
             if (songToPatch.files[loc]) {
               report.rename = { original: songToPatch.files[loc], new: file };

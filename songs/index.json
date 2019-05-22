@@ -209,7 +209,8 @@
   "files": {
    "es": "A nadie demos ocasión de tropiezo - 2 Co 6, 3ss",
    "pt": "A ninguém demos ocasião de tropeço - 2 Co 6, 3ss",
-   "de-AT": "Brüder - 2 Kor 6, 3-16"
+   "de-AT": "Brüder - 2 Kor 6, 3-16",
+   "it": "Fratelli, non diamo a nessuno motivo d' inciampo - 2 Cor 6, 3-16"
   }
  },
  "21": {
@@ -217,7 +218,7 @@
   "lent": true,
   "files": {
    "es": "A ti levanto mis ojos - Sal 123 (122)",
-   "it": "A te levo i miei occhi - Sal 123 (122)",
+   "it": "A te levo i miei occhi - Sal 122 (123)",
    "pt": "A ti levanto meus olhos - Sal 123 (122)",
    "en": "To you i lift up my eyes - Ps 122",
    "de-AT": "Zu dir erhebe ich meine Augen - Ps 123"
@@ -228,7 +229,7 @@
   "lent": true,
   "files": {
    "es": "A ti, Señor, en mi clamor imploro - Sal 142 (141)",
-   "it": "A te, Signore, con la mia voce - Sal 142 (141)",
+   "it": "A te, Signore, con la mia voce - Sal 141 (142)",
    "pt": "A ti, Senhor, com minha voz gritando imploro - Sal 142 (141)",
    "de-AT": "Zu dir, o Herr, rufe ich - Ps 142"
   }
@@ -238,7 +239,7 @@
   "lent": true,
   "files": {
    "es": "A ti, Señor, levanto mi alma - Sal 25 (24)",
-   "it": "A te, Signore, innalzo la mia anima - Sal 25 (24)",
+   "it": "A te, Signor, innalzo la mia anima - Sal 24 (25)",
    "de-AT": "Zu dir o herr erheb' ich meine Seele - Ps 25",
    "en": "To you, o lord, i lift up my soul - Ps 24"
   }
@@ -249,7 +250,7 @@
   "lutes and vespers": true,
   "files": {
    "es": "A ti, Señor, se debe la alabanza en Sión - Sal 65 (64)",
-   "it": "A te Signore si deve lode in Sion - Sal 65 (64)",
+   "it": "A te, Signore,  si deve lode in Sion - Sal 64 (65)",
    "de-AT": "Dir o herr gebührt Lobgesang in Zion - Ps 65",
    "en": "To you o lord - Ps 64 (65)"
   }
@@ -260,7 +261,7 @@
   "entrance": true,
   "files": {
    "es": "Abraham - Gn 18, 1-5",
-   "it": "Abramo - Gn 18, 1-5",
+   "it": "Abramo - Gen 18, 1-5",
    "de-AT": "Abraham - Gn 18, 1-5"
   }
  },
@@ -270,7 +271,7 @@
   "exit": true,
   "files": {
    "es": "Aclamad al Señor - Sal 100 (99)",
-   "it": "Acclamate al Signore - Sal 100 (99)",
+   "it": "Acclamate al Signore - Sal 99 (100)",
    "de-AT": "Jubelt dem Herrn - Ps 100"
   }
  },
@@ -333,7 +334,7 @@
   "entrance": true,
   "files": {
    "es": "Alzaos puertas - Sal 24 (23)",
-   "it": "Alzate o porte - Sal 24 (23)",
+   "it": "Alzate, o porte - Sal 23 (24)",
    "de-AT": "Erhebet euch ihr uralten Pforten - Ps 24",
    "en": "Gates lift up your heads - Ps 23 (24)"
   }
@@ -344,7 +345,7 @@
   "lutes and vespers": true,
   "files": {
    "es": "Amo al Señor - Sal 116 (114-115)",
-   "it": "Amo il Signore - Sal 116 (114-115)",
+   "it": "Amo il Signore - Sal 114-115 (116)",
    "de-AT": "Ich werde erheben den Kelch des Keils - Ps 116"
   }
  },
@@ -354,7 +355,7 @@
   "fraction of bread": true,
   "files": {
    "es": "Aquedah - Gn 22, 1-19",
-   "it": "Akedà - Gn 22, 1-19",
+   "it": "Akedà - Gen 22, 1-19",
    "de-AT": "Akedà - Gen 22, 1-19"
   }
  },
@@ -911,7 +912,7 @@
   "exit": true,
   "files": {
    "es": "Id y anunciad a mis hermanos - Mt 28, 7-10.16-20",
-   "it": "Andate ed annunziate ai miei fratelli - Mt 28, 7-10.16-20",
+   "it": "Andate ed annunziate ai miei fratelli - Mt 28, 16-20",
    "pt": "Ide e anunciai a meus irmãos - Mt 28,7-10.16-20",
    "de-AT": "Geht und verkündet meinen Brüdern - Mt 28, 16-20",
    "en": "Go and announce to my brothers (Mt 38,16-20)"
@@ -972,7 +973,7 @@
   "entrance": true,
   "files": {
    "es": "Levanto mis ojos a los montes - Sal 121 (120)",
-   "it": "Alzo gli occhi verso i monti - Sal 121 (120)",
+   "it": "Alzo gli occhi verso i monti - Sal 120 (121)",
    "pt": "Levanto meus olhos para os montes - Sal 121 (120)",
    "de-AT": "Ich hebe meine Augen zu den Bergen - Ps 121"
   }
@@ -1673,7 +1674,8 @@
   "files": {
    "es": "A la cena del cordero - Himno",
    "pt": "À ceia do cordeiro - Hino",
-   "de-AT": "Hymnus der Vesper von Ostern bis Christi Himmelfahrt"
+   "de-AT": "Hymnus der Vesper von Ostern bis Christi Himmelfahrt",
+   "it": "Inno dei vespri da pasqua all'ascensione - Inno"
   }
  },
  "159": {
@@ -1919,7 +1921,8 @@
   "stage": "liturgy",
   "files": {
    "es": "Aleluya interleccional antes del Evangelio",
-   "de-AT": "Halleluja-ruf Zum Evangelium"
+   "de-AT": "Halleluja-ruf Zum Evangelium",
+   "it": "Alleluja per acclamazioni al Vangelo"
   }
  },
  "183": {
@@ -1943,7 +1946,8 @@
   "stage": "liturgy",
   "files": {
    "es": "Antífona interleccional para el tiempo de Cuaresma",
-   "de-AT": "Ruf zum evangelium in der fastenzeit"
+   "de-AT": "Ruf zum evangelium in der fastenzeit",
+   "it": "Acclamazione al Vangelo nel tempo di quaresima"
   }
  },
  "186": {
