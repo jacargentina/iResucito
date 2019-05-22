@@ -344,10 +344,13 @@ const useLists = (songs: any) => {
           '2': null,
           'evangelio-monicion': null,
           evangelio: null,
+          'oracion-universal': null,
           paz: null,
           'comunion-pan': null,
           'comunion-caliz': null,
           salida: null,
+          'encargado-pan': null,
+          'encargado-flores': null,
           nota: null
         });
         break;

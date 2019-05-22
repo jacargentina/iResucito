@@ -45,7 +45,10 @@ const ListDetailItem = (props: any) => {
     );
   } else if (
     typeof listKey == 'string' &&
-    (listKey.includes('monicion') || listKey.includes('ambiental'))
+    (listKey.includes('monicion') ||
+      listKey.includes('ambiental') ||
+      listKey.includes('peticiones') ||
+      listKey.includes('encargado'))
   ) {
     item = (
       <ListItem icon last>

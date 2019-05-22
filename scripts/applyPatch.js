@@ -8,12 +8,24 @@ const songsDir = inScripts ? '../songs' : './songs';
 const indexPath = path.resolve(songsDir, 'index.json');
 const SongsIndex = require(indexPath);
 
+const languageFolders = fs
+  .readdirSync(songsDir, { withFileTypes: true })
+  .filter(d => d.isDirectory())
+  .map(d => d.name)
+  .reduce((obj, item) => {
+    obj[item] = item;
+    return obj;
+  }, {});
+
 if (process.argv.length == 3) {
   var patchPath = process.argv[2];
   if (patchPath !== '') {
     var json = fs.readFileSync(patchPath, 'utf8').normalize();
     var patch = JSON.parse(json);
+    var finalReport = [];
     Object.entries(patch).forEach(([key, songPatch]) => {
+      var report = {};
+      report.key = key;
       try {
         var songToPatch = SongsIndex[key];
         Object.entries(songPatch).forEach(([rawLoc, item]) => {
@@ -43,50 +55,61 @@ if (process.argv.length == 3) {
               }
             }
           }
-          var songDirectory = path.join(songsDir, loc);
+
+          var songDirectory = null;
+          // Decidir lenguaje segun carpetas de idioma disponible
+          var existsLoc = getPropertyLocale(languageFolders, loc);
+          if (!existsLoc) {
+            // No existe carpeta, crearla
+            report.createdFolder = loc;
+            songDirectory = path.join(songsDir, loc);
+            fs.mkdirSync(songDirectory);
+          } else {
+            loc = existsLoc;
+            songDirectory = path.join(songsDir, existsLoc);
+          }
+
           var songFileName = path.join(songDirectory, `${file}.txt`);
           var newName = rename
             ? path.join(songDirectory, `${rename}.txt`)
             : null;
-          if (!fs.existsSync(songDirectory)) {
-            console.log(
-              `Key ${key}, carpeta de locale ${loc} no existe. Creando!`
-            );
-            fs.mkdirSync(songDirectory);
-          }
           if (newName && !fs.existsSync(songFileName)) {
-            console.log(
-              `Key ${key}, no existe ${songFileName}, no se puede renombrar`
-            );
+            report.renameNotPossible = `no existe ${songFileName}`;
           } else if (newName && newName !== songFileName) {
-            console.log(`Key ${key}, renombrando`);
+            report.rename = { original: songFileName, new: newName };
             execSync(`git mv --force "${songFileName}" "${newName}"`);
             Object.assign(songToPatch.files, { [loc]: rename });
-          } else {
-            console.log(`Key ${key}, enlazando ${file}`);
+          } else if (songToPatch.files[loc] !== file) {
+            report.assign = {
+              orginal: songToPatch.files[loc]
+                ? songToPatch.files[loc]
+                : 'notFound',
+              new: file
+            };
             Object.assign(songToPatch.files, { [loc]: file });
           }
           if (lines) {
+            report.textUpdated = false;
             var text = null;
             if (fs.existsSync(songFileName)) {
               text = fs.readFileSync(songFileName, 'utf8');
-              console.log(`Key ${key}, cargado texto existente`);
+              report.newSong = false;
             } else {
-              console.log(`Key ${key}, creando archivo nuevo`);
+              report.newSong = true;
             }
-            if (text === lines) {
-              console.log(`Key ${key}, texto no aplicable`);
-            } else {
+            if (text !== lines) {
               fs.writeFileSync(songFileName, lines);
-              console.log(`Key ${key}, texto guardado`);
+              report.textUpdated = true;
             }
           }
         });
       } catch (err) {
-        console.log(`Key ${key}`, err);
+        report.error = err.message;
       }
+      finalReport.push(report);
     });
     fs.writeFileSync(indexPath, JSON.stringify(SongsIndex, null, ' '));
+    console.log(finalReport);
   }
 } else {
   console.log('node applyPatch Path/To/SongsIndexPatch.json');
