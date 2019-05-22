@@ -1,3 +1,4 @@
+// @flow
 import { getPropertyLocale } from '../src/common';
 const path = require('path');
 const fs = require('fs');
@@ -6,7 +7,9 @@ const { execSync } = require('child_process');
 const inScripts = path.basename(process.cwd()) == path.basename(__dirname);
 const songsDir = inScripts ? '../songs' : './songs';
 const indexPath = path.resolve(songsDir, 'index.json');
+const patchesPath = path.resolve(songsDir, 'patches.json');
 const SongsIndex = require(indexPath);
+const SongsPatches = require(patchesPath);
 
 const languageFolders = fs
   .readdirSync(songsDir, { withFileTypes: true })
@@ -20,17 +23,20 @@ const languageFolders = fs
 if (process.argv.length == 3) {
   var patchPath = process.argv[2];
   if (patchPath !== '') {
+    var patchStat = fs.statSync(patchPath);
     var json = fs.readFileSync(patchPath, 'utf8').normalize();
     var patch = JSON.parse(json);
     var finalReport = [];
-    Object.entries(patch).forEach(([key, songPatch]) => {
+    Object.keys(patch).forEach(key => {
+      var songPatch: SongPatch = patch[key];
       var report = {};
       report.key = key;
       try {
         var songToPatch = SongsIndex[key];
-        Object.entries(songPatch).forEach(([rawLoc, item]) => {
-          var loc;
-          var { file, rename, lines } = item;
+        Object.keys(songPatch).forEach(rawLoc => {
+          var item: SongPatchData = songPatch[rawLoc];
+          var loc = '';
+          var { author, file, rename, lines } = item;
           if (rename) {
             rename = rename.trim();
           }
@@ -89,26 +95,49 @@ if (process.argv.length == 3) {
             Object.assign(songToPatch.files, { [loc]: file });
           }
           if (lines) {
-            report.textUpdated = false;
+            report.updated = false;
             var text = null;
             if (fs.existsSync(songFileName)) {
               text = fs.readFileSync(songFileName, 'utf8');
-              report.newSong = false;
+              report.created = false;
             } else {
-              report.newSong = true;
+              report.created = true;
             }
             if (text !== lines) {
               fs.writeFileSync(songFileName, lines);
-              report.textUpdated = true;
+              if (!report.created) {
+                report.updated = true;
+              }
             }
+          }
+
+          // Guardar historia de cambios
+          var patchInfo = {};
+          patchInfo.date = patchStat.mtime;
+          patchInfo.author = author || 'anonymous';
+          patchInfo.rename = report.rename;
+          patchInfo.created = report.created;
+          patchInfo.updated = report.updated;
+
+          var songPatches = SongsPatches[key];
+          if (songPatches) {
+            var found = songPatches.find(x => x.date === patchStat.mtime);
+            if (found.length === 0) {
+              songPatches.push(patchInfo);
+            }
+          } else {
+            songPatches = [];
+            songPatches.push(patchInfo);
           }
         });
       } catch (err) {
         report.error = err.message;
       }
+
       finalReport.push(report);
     });
     fs.writeFileSync(indexPath, JSON.stringify(SongsIndex, null, ' '));
+    fs.writeFileSync(patchesPath, JSON.stringify(SongsPatches, null, ' '));
     console.log(finalReport);
   }
 } else {
