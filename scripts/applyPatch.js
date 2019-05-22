@@ -82,16 +82,15 @@ if (process.argv.length == 3) {
           if (newName && !fs.existsSync(songFileName)) {
             report.renameNotPossible = `no existe ${songFileName}`;
           } else if (newName && newName !== songFileName) {
-            report.rename = { original: songFileName, new: newName };
+            report.rename = { original: file, new: rename };
             execSync(`git mv --force "${songFileName}" "${newName}"`);
             Object.assign(songToPatch.files, { [loc]: rename });
           } else if (songToPatch.files[loc] !== file) {
-            report.assign = {
-              orginal: songToPatch.files[loc]
-                ? songToPatch.files[loc]
-                : 'notFound',
-              new: file
-            };
+            if (songToPatch.files[loc]) {
+              report.rename = { original: songToPatch.files[loc], new: file };
+            } else {
+              report.linked = { new: file };
+            }
             Object.assign(songToPatch.files, { [loc]: file });
           }
           if (lines) {
@@ -116,18 +115,20 @@ if (process.argv.length == 3) {
           patchInfo.date = patchStat.mtime;
           patchInfo.author = author || 'anonymous';
           patchInfo.rename = report.rename;
+          patchInfo.linked = report.linked;
           patchInfo.created = report.created;
           patchInfo.updated = report.updated;
 
           var songPatches = SongsPatches[key];
           if (songPatches) {
             var found = songPatches.find(x => x.date === patchStat.mtime);
-            if (found.length === 0) {
+            if (!found) {
               songPatches.push(patchInfo);
             }
           } else {
             songPatches = [];
             songPatches.push(patchInfo);
+            SongsPatches[key] = songPatches;
           }
         });
       } catch (err) {
