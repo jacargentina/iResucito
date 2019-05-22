@@ -2,6 +2,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
 import Input from 'semantic-ui-react/dist/commonjs/elements/Input';
+import Message from 'semantic-ui-react/dist/commonjs/collections/Message';
 import Modal from 'semantic-ui-react/dist/commonjs/modules/Modal';
 import { DataContext } from './DataContext';
 import { getSongFileFromString } from '../../src/SongsProcessor';
@@ -19,6 +20,7 @@ const SongChangeNameDialog = () => {
     setHasChanges
   } = data;
   const [actionEnabled, setActionEnabled] = useState(false);
+  const [tipMessages, setTipMessages] = useState([]);
   const [name, setName] = useState('');
   const [original, setOriginal] = useState('');
   const [changeSong, setChangeSong] = useState();
@@ -32,7 +34,25 @@ const SongChangeNameDialog = () => {
 
   useEffect(() => {
     if (name !== undefined) {
-      setActionEnabled(name.length > 0 && name !== original);
+      var tips = [];
+      var check1 = name.length > 0 && name !== original;
+      if (!check1) {
+        tips.push('Must have content and be different from original');
+      }
+      var check2 = name.length === 0 || name.toUpperCase() !== name;
+      if (!check2) {
+        tips.push('Must not be "ALL UPERCASE", read help above');
+      }
+      var check3 = name.length === 0 || name.toLowerCase() !== name;
+      if (!check3) {
+        tips.push('Must not be "all lowercase", read help above');
+      }
+      var check4 = !name.includes('  ');
+      if (!check4) {
+        tips.push('Must not have double spaces inside! Please remove those');
+      }
+      setActionEnabled(tips.length === 0);
+      setTipMessages(tips);
       const parsed = getSongFileFromString(name);
       const changed = Object.assign({}, editSong, parsed);
       setChangeSong(changed);
@@ -58,6 +78,10 @@ const SongChangeNameDialog = () => {
         <div style={{ marginTop: 10, marginBottom: 10, color: 'gray' }}>
           {I18n.t('ui.song change name help')}
         </div>
+        {tipMessages.length > 0 && <Message warning list={tipMessages} />}
+        {tipMessages.length == 0 && (
+          <Message success>Change acceptable</Message>
+        )}
         <div style={{ marginTop: 10, marginBottom: 10 }}>
           <div style={{ fontWeight: 'bold', fontSize: 17 }}>
             {I18n.t('ui.original song')}
