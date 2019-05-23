@@ -112,13 +112,15 @@ if (process.argv.length == 3) {
           }
 
           // Guardar historia de cambios
-          var patchInfo = {};
-          patchInfo.date = patchStat.mtime;
-          patchInfo.author = author || 'anonymous';
-          patchInfo.rename = report.rename;
-          patchInfo.linked = report.linked;
-          patchInfo.created = report.created;
-          patchInfo.updated = report.updated;
+          var patchInfo: SongPatchLogData = {
+            locale: loc,
+            date: patchStat.mtime,
+            author: author || 'anonymous',
+            rename: report.rename,
+            linked: report.linked,
+            created: report.created,
+            updated: report.updated
+          };
 
           var songPatches = SongsPatches[key];
           if (songPatches) {

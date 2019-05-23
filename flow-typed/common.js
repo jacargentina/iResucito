@@ -1,5 +1,24 @@
 // @flow
 
+declare type SongPatchLogData = {
+  date: Date,
+  author: string,
+  locale: string,
+  linked?: {
+    new: string
+  },
+  rename?: {
+    original?: string,
+    new?: string
+  },
+  created: boolean,
+  updated: boolean
+};
+
+declare type SongPatchLog = {
+  [key: string]: SongPatchLogData
+};
+
 declare type SongPatchData = {
   author: string,
   file?: string,
