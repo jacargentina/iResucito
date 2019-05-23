@@ -111,27 +111,34 @@ if (process.argv.length == 3) {
             }
           }
 
-          // Guardar historia de cambios
-          var patchInfo: SongPatchLogData = {
-            locale: loc,
-            date: patchStat.mtime,
-            author: author || 'anonymous',
-            rename: report.rename,
-            linked: report.linked,
-            created: report.created,
-            updated: report.updated
-          };
+          if (
+            report.rename ||
+            report.linked ||
+            report.created ||
+            report.updated
+          ) {
+            // Guardar historia de cambios
+            var patchInfo: SongPatchLogData = {
+              locale: loc,
+              date: patchStat.mtime,
+              author: author || 'anonymous',
+              rename: report.rename,
+              linked: report.linked,
+              created: report.created,
+              updated: report.updated
+            };
 
-          var songPatches = SongsPatches[key];
-          if (songPatches) {
-            var found = songPatches.find(x => x.date === patchStat.mtime);
-            if (!found) {
+            var songPatches = SongsPatches[key];
+            if (songPatches) {
+              var found = songPatches.find(x => x.date === patchStat.mtime);
+              if (!found) {
+                songPatches.push(patchInfo);
+              }
+            } else {
+              songPatches = [];
               songPatches.push(patchInfo);
+              SongsPatches[key] = songPatches;
             }
-          } else {
-            songPatches = [];
-            songPatches.push(patchInfo);
-            SongsPatches[key] = songPatches;
           }
         });
       } catch (err) {
