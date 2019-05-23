@@ -16,7 +16,7 @@ const PatchLogDialog = () => {
     <Modal
       open={activeDialog === 'patchLog'}
       size="large"
-      dimmer="inverted"
+      dimmer="blurring"
       centered={false}
       onClose={() => setActiveDialog()}>
       <Modal.Content>

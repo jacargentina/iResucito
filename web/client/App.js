@@ -4,7 +4,7 @@ import DataContextWrapper from './DataContext';
 import DocumentTitle from 'react-document-title';
 import Homepage from './Homepage';
 import ConfirmDialog from './ConfirmDialog';
-import SongChangeNameDialog from './SongChangeNameDialog';
+import SongChangeMetadataDialog from './SongChangeMetadataDialog';
 import PatchLogDialog from './PatchLogDialog';
 
 const App = () => {
@@ -12,7 +12,7 @@ const App = () => {
     <DataContextWrapper>
       <DocumentTitle title={'iResucito'} />
       <ConfirmDialog />
-      <SongChangeNameDialog />
+      <SongChangeMetadataDialog />
       <PatchLogDialog />
       <Homepage />
     </DataContextWrapper>
