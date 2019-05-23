@@ -72,6 +72,7 @@ const AboutDialog = (props: any) => {
         {'\n'} Javier Suarez Suarez (es)
         {'\n'} Matheus Fragoso (pt)
         {'\n'} Giuseppe Reino (it)
+        {'\n'} Édouard Clogenson (fr)
       </Text>
       <View
         style={{
