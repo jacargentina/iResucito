@@ -2,7 +2,7 @@
 import React, { useContext, useState, useEffect, useMemo } from 'react';
 import ModalView from './ModalView';
 import SearchBarView from './SearchBarView';
-import { Text, ListItem, Body, Right, CheckBox } from 'native-base';
+import { Text, ListItem, Body, Right, CheckBox, Button } from 'native-base';
 import {
   FlatList,
   View,
@@ -56,17 +56,29 @@ const ContactImportDialog = (props: any) => {
   return (
     <ModalView
       right={
-        <Text
+        <Button
+          rounded
+          small
           style={{
             alignSelf: 'flex-end',
             color: commonTheme.brandPrimary,
             marginRight: 10
           }}
           onPress={close}>
-          {I18n.t('ui.done')}
-        </Text>
+          <Text>{I18n.t('ui.done')}</Text>
+        </Button>
       }
-      title={I18n.t('screen_title.import contacts')}>
+      left={
+        <Text
+          style={{
+            alignSelf: 'flex-start',
+            marginLeft: 10,
+            fontSize: commonTheme.fontSizeBase + 3,
+            fontWeight: 'bold'
+          }}>
+          {I18n.t('screen_title.import contacts')}
+        </Text>
+      }>
       <SearchBarView value={filter} setValue={setFilter}>
         {brothers && brothers.length > 0 && (
           <View

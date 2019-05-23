@@ -591,35 +591,35 @@ const useSearch = (keys: any) => {
         title_key: 'search_title.advent',
         note: I18n.t('search_note.advent'),
         route: 'SongList',
-        params: { filter: { adviento: true } },
+        params: { filter: { advent: true } },
         badge: null
       },
       {
         title_key: 'search_title.christmas',
         note: I18n.t('search_note.christmas'),
         route: 'SongList',
-        params: { filter: { navidad: true } },
+        params: { filter: { christmas: true } },
         badge: null
       },
       {
         title_key: 'search_title.lent',
         note: I18n.t('search_note.lent'),
         route: 'SongList',
-        params: { filter: { cuaresma: true } },
+        params: { filter: { lent: true } },
         badge: null
       },
       {
         title_key: 'search_title.easter',
         note: I18n.t('search_note.easter'),
         route: 'SongList',
-        params: { filter: { pascua: true } },
+        params: { filter: { easter: true } },
         badge: null
       },
       {
         title_key: 'search_title.pentecost',
         note: I18n.t('search_note.pentecost'),
         route: 'SongList',
-        params: { filter: { pentecostes: true } },
+        params: { filter: { pentecost: true } },
         badge: null
       },
       {

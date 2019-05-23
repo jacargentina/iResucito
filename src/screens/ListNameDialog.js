@@ -1,6 +1,6 @@
 // @flow
 import React, { useContext, useState, useEffect } from 'react';
-import { Text, Input, Item, View } from 'native-base';
+import { Text, Input, Item, View, Button } from 'native-base';
 import { DataContext } from '../DataContext';
 import ModalView from './ModalView';
 import { getFriendlyTextForListType } from '../util';
@@ -61,32 +61,35 @@ const ListNameDialog = (props: any) => {
     <ModalView
       title={title}
       right={
-        <Text
+        <Button
+          rounded
+          small
           style={{
             alignSelf: 'flex-end',
             color: commonTheme.brandPrimary,
             marginRight: 10
           }}
-          onPress={() => {
-            if (actionEnabled) {
-              runActionOnList();
-            }
-          }}>
-          {action === 'create' ? I18n.t('ui.create') : I18n.t('ui.rename')}
-        </Text>
+          disabled={!actionEnabled}
+          onPress={runActionOnList}>
+          <Text>
+            {action === 'create' ? I18n.t('ui.create') : I18n.t('ui.rename')}
+          </Text>
+        </Button>
       }
       left={
-        <Text
+        <Button
+          rounded
+          small
           style={{
             alignSelf: 'flex-start',
             color: commonTheme.brandPrimary,
             marginLeft: 10
           }}
           onPress={() => navigation.goBack(null)}>
-          {I18n.t('ui.cancel')}
-        </Text>
+          <Text>{I18n.t('ui.cancel')}</Text>
+        </Button>
       }>
-      <View style={{ padding: 10 }}>
+      <View style={{ paddingLeft: 10, paddingRight: 10 }}>
         <Item
           style={{ marginBottom: 20 }}
           error={!actionEnabled}

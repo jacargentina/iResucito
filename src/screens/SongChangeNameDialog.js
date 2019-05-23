@@ -1,6 +1,6 @@
 // @flow
 import React, { useState, useEffect } from 'react';
-import { Text, Input, Item } from 'native-base';
+import { Text, Input, Item, Button } from 'native-base';
 import { View } from 'react-native';
 import ModalView from './ModalView';
 import SongListItem from './SongListItem';
@@ -33,31 +33,36 @@ const SongChangeNameDialog = (props: any) => {
   }, [name]);
 
   const saveButton = (
-    <Text
+    <Button
+      rounded
+      small
       style={{
-        alignSelf: 'center',
+        alignSelf: 'flex-end',
         color: commonTheme.brandPrimary,
         marginRight: 10
       }}
+      disabled={!actionEnabled}
       onPress={() => {
         if (actionEnabled) {
           runAction();
         }
       }}>
-      {I18n.t('ui.apply')}
-    </Text>
+      <Text>{I18n.t('ui.apply')}</Text>
+    </Button>
   );
 
   const cancelButton = (
-    <Text
+    <Button
+      rounded
+      small
       style={{
-        alignSelf: 'center',
+        alignSelf: 'flex-start',
         color: commonTheme.brandPrimary,
         marginLeft: 10
       }}
       onPress={() => navigation.goBack(null)}>
-      {I18n.t('ui.cancel')}
-    </Text>
+      <Text>{I18n.t('ui.cancel')}</Text>
+    </Button>
   );
 
   return (
@@ -65,7 +70,7 @@ const SongChangeNameDialog = (props: any) => {
       title={I18n.t('ui.rename')}
       right={saveButton}
       left={cancelButton}>
-      <View style={{ padding: 10 }}>
+      <View style={{ paddingLeft: 10, paddingRight: 10 }}>
         <Item error={!actionEnabled} success={actionEnabled}>
           <Input
             autoFocus
