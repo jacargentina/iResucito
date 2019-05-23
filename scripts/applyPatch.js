@@ -38,7 +38,7 @@ if (process.argv.length == 3) {
         Object.keys(songPatch).forEach(rawLoc => {
           var item: SongPatchData = songPatch[rawLoc];
           var loc = '';
-          var { author, file, rename, lines } = item;
+          var { author, file, rename, lines, stage } = item;
           if (rename) {
             rename = rename.trim();
           }
@@ -113,11 +113,25 @@ if (process.argv.length == 3) {
             }
           }
 
+          if (stage) {
+            if (!songToPatch.stages) {
+              songToPatch.stages = {};
+            }
+            const currStage = songToPatch.stages.hasOwnProperty(loc)
+              ? songToPatch.stages[loc]
+              : songToPatch.stage;
+            if (currStage !== stage) {
+              Object.assign(songToPatch.stages, { [loc]: stage });
+              report.staged = { original: currStage, new: stage };
+            }
+          }
+
           if (
             report.rename ||
             report.linked ||
             report.created ||
-            report.updated
+            report.updated ||
+            report.staged
           ) {
             // Guardar historia de cambios
             var patchInfo: SongPatchLogData = {
@@ -127,7 +141,8 @@ if (process.argv.length == 3) {
               rename: report.rename,
               linked: report.linked,
               created: report.created,
-              updated: report.updated
+              updated: report.updated,
+              staged: report.staged
             };
 
             var songPatches = SongsPatches[key];

@@ -23,6 +23,7 @@ declare type SongPatchData = {
   author: string,
   file?: string,
   rename?: string,
+  stage?: string,
   lines?: string
 };
 
@@ -108,6 +109,7 @@ declare type Song = {
   fuente: string,
   path: string,
   files: { [string]: string },
+  stages?: { [string]: string },
   fullText: string,
   lines: Array<string>,
   patched?: boolean,

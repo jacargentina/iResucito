@@ -66,6 +66,15 @@ export class SongsProcessor {
     info.path = `${this.basePath}/${bestFile.locale}/${bestFile.name}.txt`;
     const parsed = getSongFileFromString(bestFile.name);
     this.assignInfoFromFile(info, parsed);
+
+    if (info.stages) {
+      // Aplicar stage segun idioma, si esta disponible
+      const stageLoc = getPropertyLocale(info.stages, rawLoc);
+      if (info.stages && stageLoc) {
+        info.stage = info.stages[stageLoc];
+      }
+    }
+
     // Si se aplico un parche
     // Asignar los valores del mismo
     if (patch && patch.hasOwnProperty(key)) {
@@ -73,7 +82,7 @@ export class SongsProcessor {
       if (loc) {
         info.patched = true;
         info.patchedTitle = info.titulo;
-        const { file, rename } = patch[key][loc];
+        const { file, rename, stage } = patch[key][loc];
         if (file) {
           info.path = `${this.basePath}/${loc}/${file}.txt`;
           info.files = Object.assign({}, info.files, {
@@ -85,6 +94,11 @@ export class SongsProcessor {
         if (rename) {
           const renamed = getSongFileFromString(rename);
           this.assignInfoFromFile(info, renamed);
+        }
+        if (stage) {
+          info.stages = Object.assign({}, info.stages, {
+            [loc]: stage
+          });
         }
       }
     }
@@ -108,19 +122,27 @@ export class SongsProcessor {
       return this.getSingleSongMeta(key, rawLoc, patch, ratings);
     });
     if (patch) {
+      // Cantos agregados
+      // claves numericas presentes en el
+      // patch y ausentes en el indice
       Object.keys(patch).forEach(pKey => {
         if (!songs.find(s => s.key === pKey) && patch) {
           var sPatch = patch[pKey];
           var files: { [string]: string } = {};
+          var stages: { [string]: string } = {};
           Object.keys(sPatch).map(locale => {
             var patchData: SongPatchData = sPatch[locale];
             if (patchData.rename) {
               files[locale] = patchData.rename;
             }
+            if (patchData.stage) {
+              stages[locale] = patchData.stage;
+            }
           });
           var info: Song = {};
           info.key = pKey;
           info.files = files;
+          info.stages = stages;
           const bestFile = this.getBestFileForLocale(files, rawLoc);
           const parsed = getSongFileFromString(bestFile.name);
           this.assignInfoFromFile(info, parsed);

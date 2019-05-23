@@ -123,7 +123,8 @@ const DataContextWrapper = (props: any) => {
           key: result.data.key,
           nombre: 'New song',
           titulo: 'New song',
-          lines: ['Song text here.']
+          lines: ['Song text here.'],
+          stage: 'precatechumenate'
         };
         setEditSong(newSong);
         setHasChanges(false);
