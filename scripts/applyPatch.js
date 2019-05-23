@@ -8,17 +8,19 @@ const inScripts = path.basename(process.cwd()) == path.basename(__dirname);
 const songsDir = inScripts ? '../songs' : './songs';
 const indexPath = path.resolve(songsDir, 'index.json');
 const patchesPath = path.resolve(songsDir, 'patches.json');
+//$FlowFixMe
 const SongsIndex = require(indexPath);
+//$FlowFixMe
 const SongsPatches = require(patchesPath);
 
-const languageFolders = fs
-  .readdirSync(songsDir, { withFileTypes: true })
-  .filter(d => d.isDirectory())
-  .map(d => d.name)
-  .reduce((obj, item) => {
-    obj[item] = item;
-    return obj;
-  }, {});
+//$FlowFixMe
+const folders = fs.readdirSync(songsDir, { withFileTypes: true });
+//$FlowFixMe
+const onlyNames = folders.filter(d => d.isDirectory()).map(d => d.name);
+const languageFolders = onlyNames.reduce((obj, item) => {
+  obj[item] = item;
+  return obj;
+}, {});
 
 if (process.argv.length == 3) {
   var patchPath = process.argv[2];
