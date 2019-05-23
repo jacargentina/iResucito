@@ -17,6 +17,7 @@ const DataContextWrapper = (props: any) => {
   const [patchLogs, setPatchLogs] = useState();
   const [text, setText] = useState('');
   const [rename, setRename] = useState();
+  const [stage, setStage] = useState();
   const [apiLoading, setApiLoading] = useState(false);
   const [apiResult, setApiResult] = useState();
   const [hasChanges, setHasChanges] = useState(false);
@@ -181,7 +182,11 @@ const DataContextWrapper = (props: any) => {
 
   const applyChanges = () => {
     if (editSong) {
-      var patch = { lines: text, rename: rename || editSong.nombre };
+      var patch = {
+        lines: text,
+        rename: rename || editSong.nombre,
+        stage: stage || editSong.stage
+      };
       setApiResult();
       setApiLoading(true);
       return api
@@ -249,6 +254,8 @@ const DataContextWrapper = (props: any) => {
         setText,
         rename,
         setRename,
+        stage,
+        setStage,
         activeDialog,
         setActiveDialog,
         apiLoading,

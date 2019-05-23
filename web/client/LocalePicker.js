@@ -26,7 +26,7 @@ const LocalePicker = () => {
               <Dropdown.Item
                 onClick={() => setLocale(item.value)}
                 key={item.value}
-                color={locale == item.value ? 'red' : null}
+                active={locale == item.value}
                 size="small">
                 {item.label}
               </Dropdown.Item>

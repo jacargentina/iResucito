@@ -4,12 +4,14 @@ import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
 import Input from 'semantic-ui-react/dist/commonjs/elements/Input';
 import Message from 'semantic-ui-react/dist/commonjs/collections/Message';
 import Modal from 'semantic-ui-react/dist/commonjs/modules/Modal';
+import Dropdown from 'semantic-ui-react/dist/commonjs/modules/Dropdown';
 import { DataContext } from './DataContext';
 import { getSongFileFromString } from '../../src/SongsProcessor';
+import { wayStages } from '../../src/common';
 import I18n from '../../src/translations';
 import SongListItem from './SongListItem';
 
-const SongChangeNameDialog = () => {
+const SongChangeMetadataDialog = () => {
   const data = useContext(DataContext);
   const {
     editSong,
@@ -17,27 +19,28 @@ const SongChangeNameDialog = () => {
     setActiveDialog,
     rename,
     setRename,
+    stage,
+    setStage,
     setHasChanges
   } = data;
   const [actionEnabled, setActionEnabled] = useState(false);
   const [tipMessages, setTipMessages] = useState([]);
   const [name, setName] = useState('');
-  const [original, setOriginal] = useState('');
   const [changeSong, setChangeSong] = useState();
 
   useEffect(() => {
     if (editSong) {
       setName(rename || editSong.nombre);
-      setOriginal(rename || editSong.nombre);
+      setStage(stage || editSong.stage);
     }
   }, [editSong]);
 
   useEffect(() => {
     if (name !== undefined) {
       var tips = [];
-      var check1 = name.length > 0 && name !== original;
+      var check1 = name.length > 0;
       if (!check1) {
-        tips.push('Must have content and be different from original');
+        tips.push('Must have content');
       }
       var check2 = name.length === 0 || name.toUpperCase() !== name;
       if (!check2) {
@@ -61,12 +64,14 @@ const SongChangeNameDialog = () => {
 
   return (
     <Modal
-      open={activeDialog === 'changeName'}
+      open={activeDialog === 'changeMetadata'}
       size="small"
+      dimmer="blurring"
       centered={true}
       onClose={() => setActiveDialog()}>
+      <Modal.Header>{I18n.t('ui.edit')}</Modal.Header>
       <Modal.Content>
-        <h3>{I18n.t('ui.rename')}</h3>
+        <h5>{I18n.t('ui.rename')}</h5>
         <Input
           fluid
           autoFocus
@@ -79,27 +84,43 @@ const SongChangeNameDialog = () => {
           {I18n.t('ui.song change name help')}
         </div>
         {tipMessages.length > 0 && <Message warning list={tipMessages} />}
-        {tipMessages.length == 0 && (
-          <Message success>Change acceptable</Message>
-        )}
-        <div style={{ marginTop: 10, marginBottom: 10 }}>
-          <div style={{ fontWeight: 'bold', fontSize: 17 }}>
-            {I18n.t('ui.original song')}
+        <h5>{I18n.t('search_title.stage')}</h5>
+        <Dropdown
+          style={{ marginLeft: 10 }}
+          clearable={true}
+          onChange={(e, { value }) => setStage(value)}
+          selection
+          value={stage}
+          options={wayStages.map(name => {
+            return {
+              key: name,
+              text: I18n.t(`search_title.${name}`),
+              value: name
+            };
+          })}
+        />
+        <h5>{I18n.t('screen_title.preview')}</h5>
+        <div style={{ display: 'flex', flex: 1, flexDirection: 'row' }}>
+          <div style={{ flex: 1, padding: 10 }}>
+            <h5>{I18n.t('ui.original song')}</h5>
+            {editSong && (
+              <SongListItem
+                nombre={editSong.titulo}
+                fuente={editSong.fuente}
+                stage={editSong.stage}
+              />
+            )}
           </div>
-          {editSong && (
-            <SongListItem nombre={editSong.titulo} fuente={editSong.fuente} />
-          )}
-        </div>
-        <div style={{ marginTop: 10, marginBottom: 10 }}>
-          <div style={{ fontWeight: 'bold', fontSize: 17 }}>
-            {I18n.t('ui.patched song')}
+          <div style={{ flex: 1, padding: 10 }}>
+            <h5>{I18n.t('ui.patched song')}</h5>
+            {changeSong && (
+              <SongListItem
+                nombre={changeSong.titulo}
+                fuente={changeSong.fuente}
+                stage={stage}
+              />
+            )}
           </div>
-          {changeSong && (
-            <SongListItem
-              nombre={changeSong.titulo}
-              fuente={changeSong.fuente}
-            />
-          )}
         </div>
       </Modal.Content>
       <Modal.Actions>
@@ -121,4 +142,4 @@ const SongChangeNameDialog = () => {
   );
 };
 
-export default SongChangeNameDialog;
+export default SongChangeMetadataDialog;

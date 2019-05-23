@@ -96,43 +96,35 @@ const Homepage = () => {
                     {I18n.t(`search_title.${editSong.stage}`)}
                   </Menu.Item>
                 )}
-                <Menu.Item>
-                  <Button primary onClick={() => setActiveDialog('patchLog')}>
-                    {I18n.t('ui.patch log')}
-                  </Button>
-                </Menu.Item>
               </Fragment>
             )}
             <Menu.Menu position="right">
               {editSong && (
                 <Menu.Item>
-                  <Button primary onClick={() => setActiveDialog('changeName')}>
-                    {I18n.t('ui.rename')}
-                  </Button>
-                </Menu.Item>
-              )}
-              {editSong && editSong.patched && (
-                <Menu.Item>
-                  <Button negative onClick={confirmRemovePatch}>
-                    <Icon name="trash" />
-                    {I18n.t('ui.remove patch')}
-                  </Button>
-                </Menu.Item>
-              )}
-              {editSong && (
-                <Fragment>
-                  <Menu.Item>
+                  <Button.Group size="mini">
+                    <Button
+                      primary
+                      onClick={() => setActiveDialog('changeMetadata')}>
+                      {I18n.t('ui.edit')}
+                    </Button>
+                    {editSong.patched && (
+                      <Button negative onClick={confirmRemovePatch}>
+                        <Icon name="trash" />
+                        {I18n.t('ui.remove patch')}
+                      </Button>
+                    )}
+                    <Button primary onClick={() => setActiveDialog('patchLog')}>
+                      {I18n.t('ui.patch log')}
+                    </Button>
                     <Button
                       primary
                       disabled={!hasChanges}
                       onClick={applyChanges}>
                       {I18n.t('ui.apply')}
                     </Button>
-                  </Menu.Item>
-                  <Menu.Item>
                     <Button onClick={confirmClose}>{I18n.t('ui.close')}</Button>
-                  </Menu.Item>
-                </Fragment>
+                  </Button.Group>
+                </Menu.Item>
               )}
               {!editSong && (
                 <Menu.Item>
