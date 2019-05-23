@@ -52,38 +52,40 @@ const ListNameDialog = (props: any) => {
     }
   }, [actionEnabled, name]);
 
-  const createRenameButton = (
-    <Text
-      style={{
-        alignSelf: 'center',
-        color: commonTheme.brandPrimary,
-        marginRight: 10
-      }}
-      onPress={() => runActionOnList()}
-      disabled={!actionEnabled}>
-      {action === 'create' ? I18n.t('ui.create') : I18n.t('ui.rename')}
-    </Text>
-  );
-
-  const cancelButton = (
-    <Text
-      style={{
-        alignSelf: 'center',
-        color: commonTheme.brandPrimary,
-        marginLeft: 10
-      }}
-      onPress={() => navigation.goBack(null)}>
-      {I18n.t('ui.cancel')}
-    </Text>
-  );
-
   const title =
     action == 'create'
       ? `${I18n.t('ui.lists.create')} (${getFriendlyTextForListType(type)})`
       : `${I18n.t('ui.lists.rename')} (${list.name})`;
 
   return (
-    <ModalView title={title} right={createRenameButton} left={cancelButton}>
+    <ModalView
+      title={title}
+      right={
+        <Text
+          style={{
+            alignSelf: 'flex-end',
+            color: commonTheme.brandPrimary,
+            marginRight: 10
+          }}
+          onPress={() => {
+            if (actionEnabled) {
+              runActionOnList();
+            }
+          }}>
+          {action === 'create' ? I18n.t('ui.create') : I18n.t('ui.rename')}
+        </Text>
+      }
+      left={
+        <Text
+          style={{
+            alignSelf: 'flex-start',
+            color: commonTheme.brandPrimary,
+            marginLeft: 10
+          }}
+          onPress={() => navigation.goBack(null)}>
+          {I18n.t('ui.cancel')}
+        </Text>
+      }>
       <View style={{ padding: 10 }}>
         <Item
           style={{ marginBottom: 20 }}

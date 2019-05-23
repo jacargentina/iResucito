@@ -16,8 +16,8 @@ const ModalView = (props: any) => {
     <Icon
       name="close"
       style={{
+        alignSelf: 'flex-end',
         marginRight: 18,
-        textAlign: 'center',
         color: commonTheme.brandPrimary
       }}
       onPress={() => navigation.goBack(null)}
@@ -32,19 +32,26 @@ const ModalView = (props: any) => {
           style={{
             flex: 0,
             flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            margin: 5
+            justifyContent: 'space-between'
           }}>
-          {left}
-          {right || defaultClose}
+          <View
+            style={{
+              flex: 1
+            }}>
+            {left}
+          </View>
+          <View
+            style={{
+              flex: 1
+            }}>
+            {right || defaultClose}
+          </View>
         </View>
         <View
           style={{
             flex: 0,
-            justifyContent: 'space-between',
             alignItems: 'center',
-            marginTop: 10
+            marginTop: 5
           }}>
           <Text
             style={{

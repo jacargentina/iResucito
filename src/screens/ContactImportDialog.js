@@ -53,21 +53,19 @@ const ContactImportDialog = (props: any) => {
     setFilter('');
   };
 
-  var readyButton = (
-    <Text
-      style={{
-        alignSelf: 'center',
-        color: commonTheme.brandPrimary,
-        marginRight: 10
-      }}
-      onPress={close}>
-      {I18n.t('ui.done')}
-    </Text>
-  );
-
   return (
     <ModalView
-      right={readyButton}
+      right={
+        <Text
+          style={{
+            alignSelf: 'flex-end',
+            color: commonTheme.brandPrimary,
+            marginRight: 10
+          }}
+          onPress={close}>
+          {I18n.t('ui.done')}
+        </Text>
+      }
       title={I18n.t('screen_title.import contacts')}>
       <SearchBarView value={filter} setValue={setFilter}>
         {brothers && brothers.length > 0 && (
