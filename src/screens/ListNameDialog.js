@@ -1,6 +1,6 @@
 // @flow
 import React, { useContext, useState, useEffect } from 'react';
-import { Text, Input, Item, Button, View } from 'native-base';
+import { Text, Input, Item, View } from 'native-base';
 import { DataContext } from '../DataContext';
 import ModalView from './ModalView';
 import { getFriendlyTextForListType } from '../util';

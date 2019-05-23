@@ -37,15 +37,22 @@ const ModalView = (props: any) => {
             margin: 5
           }}>
           {left}
+          {right || defaultClose}
+        </View>
+        <View
+          style={{
+            flex: 0,
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginTop: 10
+          }}>
           <Text
             style={{
               fontSize: commonTheme.fontSizeBase + 3,
-              fontWeight: 'bold',
-              paddingLeft: !left ? 10 : 0
+              fontWeight: 'bold'
             }}>
             {props.title}
           </Text>
-          {right || defaultClose}
         </View>
         <View
           style={{

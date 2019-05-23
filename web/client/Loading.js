@@ -1,5 +1,5 @@
 // @flow
-import React, { Fragment, useContext } from 'react';
+import React, { useContext } from 'react';
 import { DataContext } from './DataContext';
 import Loader from 'semantic-ui-react/dist/commonjs/elements/Loader';
 
