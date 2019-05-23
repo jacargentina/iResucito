@@ -163,7 +163,7 @@ const SongEditorDialog = (props: any) => {
   const cancelButton = (
     <Text
       style={{
-        alignSelf: 'center',
+        alignSelf: 'flex-start',
         color: commonTheme.brandPrimary,
         marginLeft: 10
       }}
@@ -175,12 +175,11 @@ const SongEditorDialog = (props: any) => {
   const saveButton = (
     <Text
       style={{
-        alignSelf: 'center',
+        alignSelf: 'flex-end',
         color: commonTheme.brandPrimary,
         marginRight: 10
       }}
       onPress={() => {
-        // Solo guardar si hay alguna modificacion
         saveWithLines(lines);
         navigation.goBack(null);
       }}>
