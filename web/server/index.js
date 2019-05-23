@@ -6,6 +6,7 @@ if (!process.env.PORT) {
   throw new Error('Establecer un valor para PORT');
 }
 
+import * as fs from 'fs';
 import * as path from 'path';
 import * as cp from 'child_process';
 import express from 'express';
@@ -20,6 +21,9 @@ import jwt from 'jsonwebtoken';
 import send from 'gmail-send';
 import crypto from 'crypto-random-string';
 import chokidar from 'chokidar';
+
+const patches = fs.readFileSync('./songs/patches.json', 'utf8');
+const songPatches: SongPatchLog = JSON.parse(patches);
 
 const mailSender = send({
   user: 'javier.alejandro.castro@gmail.com',
@@ -277,6 +281,22 @@ server.get('/api/song/:key/:locale', async (req, res) => {
   if (song) {
     await FolderSongs.loadSingleSong(locale, song, patch);
     res.json(song);
+  }
+});
+
+server.get('/api/patches/:key/:locale', async (req, res) => {
+  const { key, locale } = req.params;
+  if (!locale || !key) {
+    return res.status(500).json({
+      error: 'Locale or key not provided'
+    });
+  }
+  const p = songPatches[key];
+  if (p) {
+    const changes = p.filter(p => p.locale === locale);
+    res.json(changes);
+  } else {
+    res.json([]);
   }
 });
 

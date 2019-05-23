@@ -13,6 +13,7 @@ const DataContextWrapper = (props: any) => {
   const [user, setUser] = useState();
   const [songs, setSongs] = useState();
   const [editSong, setEditSong] = useState();
+  const [patchLogs, setPatchLogs] = useState();
   const [text, setText] = useState('');
   const [rename, setRename] = useState();
   const [apiLoading, setApiLoading] = useState(false);
@@ -196,6 +197,23 @@ const DataContextWrapper = (props: any) => {
   };
 
   useEffect(() => {
+    if (editSong && activeDialog === 'patchLog') {
+      setPatchLogs();
+      setApiResult();
+      setApiLoading(true);
+      api
+        .get(`/api/patches/${editSong.key}/${locale}`)
+        .then(result => {
+          setApiLoading(false);
+          setPatchLogs(result.data);
+        })
+        .catch(err => {
+          handleApiError(err);
+        });
+    }
+  }, [editSong, activeDialog]);
+
+  useEffect(() => {
     I18n.locale = locale;
     console.log('Current locale is', I18n.locale);
   }, [locale]);
@@ -215,6 +233,7 @@ const DataContextWrapper = (props: any) => {
         locale,
         setLocale,
         editSong,
+        patchLogs,
         songFile,
         loadSong,
         setEditSong,

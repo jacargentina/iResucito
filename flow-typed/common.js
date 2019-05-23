@@ -16,7 +16,7 @@ declare type SongPatchLogData = {
 };
 
 declare type SongPatchLog = {
-  [key: string]: SongPatchLogData
+  [key: string]: Array<SongPatchLogData>
 };
 
 declare type SongPatchData = {

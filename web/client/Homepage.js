@@ -18,7 +18,6 @@ import { getPropertyLocale } from '../../src/common';
 const Homepage = () => {
   const data = useContext(DataContext);
   const {
-    locale,
     editSong,
     addSong,
     songFile,
@@ -63,7 +62,7 @@ const Homepage = () => {
               </Header.Content>
             </Menu.Item>
             {!editSong && <LocalePicker />}
-            {resume && (
+            {!editSong && resume && (
               <Menu.Item>
                 {resume.text}
                 <Progress
@@ -96,6 +95,11 @@ const Homepage = () => {
                     {I18n.t(`search_title.${editSong.stage}`)}
                   </Menu.Item>
                 )}
+                <Menu.Item>
+                  <Button primary onClick={() => setActiveDialog('patchLog')}>
+                    {I18n.t('ui.patch log')}
+                  </Button>
+                </Menu.Item>
               </Fragment>
             )}
             <Menu.Menu position="right">
