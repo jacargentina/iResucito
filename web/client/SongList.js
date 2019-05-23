@@ -5,6 +5,7 @@ import Input from 'semantic-ui-react/dist/commonjs/elements/Input';
 import Label from 'semantic-ui-react/dist/commonjs/elements/Label';
 import { DataContext } from './DataContext';
 import { useDebounce } from 'use-debounce';
+import { getPropertyLocale } from '../../src/common';
 import I18n from '../../src/translations';
 import colors from '../../src/colors';
 
@@ -20,11 +21,18 @@ const SongList = () => {
   useEffect(() => {
     // filtrar
     if (songs) {
-      const result = songs.filter(
-        s =>
-          s.titulo.toLowerCase().includes(debouncedTerm.toLowerCase()) ||
-          s.fuente.toLowerCase().includes(debouncedTerm.toLowerCase())
+      const filtering = songs.filter(
+        song =>
+          song.titulo.toLowerCase().includes(debouncedTerm.toLowerCase()) ||
+          song.fuente.toLowerCase().includes(debouncedTerm.toLowerCase())
       );
+      const result = filtering.map(song => {
+        song.notTranslated =
+          notUsingSpanish &&
+          !song.patched &&
+          !getPropertyLocale(song.files, I18n.locale);
+        return song;
+      });
       setFiltered(result);
     }
   }, [debouncedTerm, songs]);
@@ -51,17 +59,6 @@ const SongList = () => {
         size="big"
         style={{ margin: 0, padding: 10, overflowY: 'scroll' }}>
         {filtered.map((song, key) => {
-          if (
-            notUsingSpanish &&
-            !song.patched &&
-            !song.files.hasOwnProperty(I18n.locale)
-          ) {
-            var noLocale = (
-              <Label color="red" size="small">
-                {I18n.t('ui.locale warning title')}
-              </Label>
-            );
-          }
           return (
             <List.Item key={key} onClick={() => loadSong(song)}>
               <List.Content>
@@ -80,7 +77,11 @@ const SongList = () => {
                       patched
                     </Label>
                   )}
-                  {noLocale}
+                  {song.notTranslated && (
+                    <Label color="red" size="small">
+                      {I18n.t('ui.locale warning title')}
+                    </Label>
+                  )}
                 </div>
               </List.Content>
             </List.Item>
