@@ -11,6 +11,8 @@
     "scale": "Do Do# Re Mib Mi Fa Fa# Sol Sol# La Sib Si"
   },
   "ui": {
+    "no items to show": "Nessun oggetto da mostrare",
+    "patch log": "Log delle patch",
     "translated songs": "{{translated}} di {{total}} tradotto",
     "error ocurred": "C'è stato un errore",
     "info message": "Messaggio informativo",

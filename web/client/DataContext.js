@@ -6,10 +6,8 @@ import { getSongFileFromString } from '../../src/SongsProcessor';
 
 export const DataContext: any = React.createContext();
 
-I18n.locale = navigator.language;
-
 const DataContextWrapper = (props: any) => {
-  const [locale, setLocale] = useState(I18n.locale);
+  const [locale, setLocale] = useState('default');
   const [user, setUser] = useState();
   const [songs, setSongs] = useState();
   const [editSong, setEditSong] = useState();
@@ -214,7 +212,7 @@ const DataContextWrapper = (props: any) => {
   }, [editSong, activeDialog]);
 
   useEffect(() => {
-    I18n.locale = locale;
+    I18n.locale = locale == 'default' ? navigator.language : locale;
     console.log('Current locale is', I18n.locale);
   }, [locale]);
 

@@ -18,6 +18,7 @@ import { getPropertyLocale } from '../../src/common';
 const Homepage = () => {
   const data = useContext(DataContext);
   const {
+    locale,
     editSong,
     addSong,
     songFile,
@@ -36,7 +37,7 @@ const Homepage = () => {
   useEffect(() => {
     if (songs) {
       const withLocale = songs.filter(song => {
-        return song.patched || !!getPropertyLocale(song.files, I18n.locale);
+        return song.patched || !!getPropertyLocale(song.files, locale);
       });
       var result = { translated: withLocale.length, total: songs.length };
       setResume({
