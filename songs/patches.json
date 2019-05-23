@@ -98,6 +98,19 @@
       "updated": true
     }
   ],
+  "30": [
+    {
+      "locale": "it",
+      "date": "2019-05-23T23:43:25.152Z",
+      "author": "giuseppereino@gmail.com",
+      "rename": {
+        "original": "Benedite il Signore - Sal 134 (133)",
+        "new": "Benedite il Signore - Sal 133 (134)"
+      },
+      "created": false,
+      "updated": true
+    }
+  ],
   "32": [
     {
       "locale": "it",
@@ -137,6 +150,84 @@
       "updated": true
     }
   ],
+  "35": [
+    {
+      "locale": "it",
+      "date": "2019-05-23T23:43:25.152Z",
+      "author": "giuseppereino@gmail.com",
+      "rename": {
+        "original": "Ave Maria I - Lc 1, 28ss",
+        "new": "Ave Maria I - Lc 1, 28.42"
+      },
+      "created": false,
+      "updated": true
+    }
+  ],
+  "36": [
+    {
+      "locale": "it",
+      "date": "2019-05-23T23:43:25.152Z",
+      "author": "giuseppereino@gmail.com",
+      "rename": {
+        "original": "Ave Maria II (1984) - Lc 1, 28ss",
+        "new": "Ave Maria II (1984) - Lc 1, 28.42"
+      },
+      "created": false,
+      "updated": true
+    }
+  ],
+  "39": [
+    {
+      "locale": "it",
+      "date": "2019-05-23T23:43:25.152Z",
+      "author": "giuseppereino@gmail.com",
+      "rename": {
+        "original": "Benedirò il Signore in ogni tempo - Sal 34 (33)",
+        "new": "Benedirò il Signore in ogni tempo (1986) - Sal 33 (34)"
+      },
+      "created": false,
+      "updated": true
+    }
+  ],
+  "40": [
+    {
+      "locale": "it",
+      "date": "2019-05-23T23:43:25.152Z",
+      "author": "giuseppereino@gmail.com",
+      "rename": {
+        "original": "Benedici anima mia Jahvè - Sal 103 (102)",
+        "new": "Benedici anima mia, Jahvè - Sal 102 (103)"
+      },
+      "created": false,
+      "updated": true
+    }
+  ],
+  "41": [
+    {
+      "locale": "it",
+      "date": "2019-05-23T23:43:25.152Z",
+      "author": "giuseppereino@gmail.com",
+      "rename": {
+        "original": "Benedetta sei tu, Maria - Lc 1, 42-45",
+        "new": "Benedetta sei tu, Maria - Lc 1, 42-44"
+      },
+      "created": false,
+      "updated": true
+    }
+  ],
+  "42": [
+    {
+      "locale": "it",
+      "date": "2019-05-23T23:43:25.152Z",
+      "author": "giuseppereino@gmail.com",
+      "rename": {
+        "original": "Benedetto sei tu Signore - Dn 3, 52-57",
+        "new": "Canto dei tre giovani nella fornace ( I parte) - Dn 3, 52-57"
+      },
+      "created": false,
+      "updated": true
+    }
+  ],
   "87": [
     {
       "locale": "it",
@@ -145,6 +236,19 @@
       "rename": {
         "original": "Andate ed annunziate ai miei fratelli - Mt 28, 7-10.16-20",
         "new": "Andate ed annunziate ai miei fratelli - Mt 28, 16-20"
+      },
+      "created": false,
+      "updated": true
+    }
+  ],
+  "89": [
+    {
+      "locale": "it",
+      "date": "2019-05-23T23:43:25.152Z",
+      "author": "giuseppereino@gmail.com",
+      "rename": {
+        "original": "Benedici anima mia il Signore - Tb 13, 11-17",
+        "new": "Benedici anima mia il Signore (Cantico di Tobia) - Tb 13, 11-18"
       },
       "created": false,
       "updated": true
@@ -193,6 +297,19 @@
       "updated": false
     }
   ],
+  "160": [
+    {
+      "locale": "it",
+      "date": "2019-05-23T23:43:25.152Z",
+      "author": "giuseppereino@gmail.com",
+      "rename": {
+        "original": "Benedetto sia iddio - Ef 1, 3-13",
+        "new": "Benedetto sia Iddio - Ef 1, 3-13"
+      },
+      "created": false,
+      "updated": true
+    }
+  ],
   "181": [
     {
       "locale": "it",
@@ -233,6 +350,32 @@
       },
       "created": true,
       "updated": false
+    }
+  ],
+  "186": [
+    {
+      "locale": "it",
+      "date": "2019-05-23T23:43:25.152Z",
+      "author": "giuseppereino@gmail.com",
+      "rename": {
+        "original": "Benedizione dell'acqua",
+        "new": "Benedizione dell'acqua del fonte battesimale"
+      },
+      "created": false,
+      "updated": true
+    }
+  ],
+  "187": [
+    {
+      "locale": "it",
+      "date": "2019-05-23T23:43:25.152Z",
+      "author": "giuseppereino@gmail.com",
+      "rename": {
+        "original": "Benedizione penitenziale - preghiera conclusiva di ringraziamento",
+        "new": "Benedizione per la celebrazione penitenziale - Preghiera conclusiva di ringraziamento"
+      },
+      "created": false,
+      "updated": true
     }
   ]
 }
