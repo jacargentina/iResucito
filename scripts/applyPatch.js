@@ -2,8 +2,9 @@
 import { getPropertyLocale } from '../src/common';
 const path = require('path');
 const fs = require('fs');
+require('colors');
+const jsdiff = require('diff');
 const { execSync } = require('child_process');
-
 const inScripts = path.basename(process.cwd()) == path.basename(__dirname);
 const songsDir = inScripts ? '../songs' : './songs';
 const indexPath = path.resolve(songsDir, 'index.json');
@@ -106,6 +107,17 @@ if (process.argv.length == 3) {
               report.created = true;
             }
             if (text !== lines) {
+              var diff = jsdiff.diffChars(text, lines);
+              diff.forEach(part => {
+                // green for additions, red for deletions
+                // grey for common parts
+                var color = part.added
+                  ? 'green'
+                  : part.removed
+                  ? 'red'
+                  : 'grey';
+                process.stderr.write(part.value[color]);
+              });
               fs.writeFileSync(songFileName, lines);
               if (!report.created) {
                 report.updated = true;
