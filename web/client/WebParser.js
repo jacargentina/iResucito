@@ -2,10 +2,10 @@
 import { SongsParser } from '../../src/SongsParser';
 
 const FontSizes = {
-  Notas: 14,
-  Texto: 17,
-  Titulo: 22,
-  Fuente: 18
+  Notas: '10pt',
+  Texto: '12pt',
+  Titulo: '19pt',
+  Fuente: '10pt'
 };
 
 export const WebStyles: SongStyles = {
