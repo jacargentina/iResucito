@@ -111,12 +111,14 @@ server.use(async (req, res, next) => {
 });
 
 server.post('/api/signup', (req, res) => {
-  const { email, password } = req.body;
+  var { email, password } = req.body;
   if (!email || !password) {
     return res.status(500).json({
       error: 'Provide an email and password to register'
     });
   }
+  // Quitar espacios
+  email = email.trim();
   const exists = db
     .get('users')
     .find({ email: email })
@@ -133,7 +135,8 @@ server.post('/api/signup', (req, res) => {
       .push({
         email: email,
         password: hash,
-        isVerified: false
+        isVerified: false,
+        createdAt: Date.now()
       })
       .write();
     // Crear token para verificacion
@@ -225,6 +228,11 @@ server.post('/api/login', (req, res) => {
             expiresIn: '2h'
           }
         );
+        // Registrar hora de inicio de sesion
+        db.get('users')
+          .find({ email: email })
+          .assign({ loggedInAt: Date.now() })
+          .write();
         return res.status(200).json({
           jwt: JWTToken
         });

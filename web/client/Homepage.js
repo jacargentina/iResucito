@@ -78,7 +78,7 @@ const Homepage = () => {
                     marginLeft: '40px',
                     marginTop: 'auto',
                     marginBottom: 'auto',
-                    width: '340px',
+                    width: '250px',
                     backgroundColor: 'gray'
                   }}
                 />
