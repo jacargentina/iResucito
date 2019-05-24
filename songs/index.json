@@ -2297,5 +2297,35 @@
    "pt": "O Senhor é minha luz e salvação - Sal 27 (26)",
    "de-AT": "Der herr ist mein licht und mein heil - Ps 27"
   }
+ },
+ "227": {
+  "stage": "precatechumenate",
+  "files": {
+   "it": "Agnella di dio"
+  }
+ },
+ "228": {
+  "stage": "precatechumenate",
+  "files": {
+   "it": "Innalzeró la coppa di salvezza"
+  }
+ },
+ "229": {
+  "stage": "precatechumenate",
+  "files": {
+   "it": "Sale dio tra acclamazioni"
+  }
+ },
+ "230": {
+  "stage": "precatechumenate",
+  "files": {
+   "it": "Sorga dio"
+  }
+ },
+ "231": {
+  "stage": "precatechumenate",
+  "files": {
+   "it": "Venite applaudiamo al signore"
+  }
  }
 }
