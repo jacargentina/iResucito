@@ -112,13 +112,14 @@ const patchSongLogic = (songPatch, key) => {
       }
 
       if (stage) {
-        if (!songToPatch.stages) {
-          songToPatch.stages = {};
-        }
-        const currStage = songToPatch.stages.hasOwnProperty(loc)
-          ? songToPatch.stages[loc]
-          : songToPatch.stage;
+        const currStage =
+          songToPatch.stages && songToPatch.stages.hasOwnProperty(loc)
+            ? songToPatch.stages[loc]
+            : songToPatch.stage;
         if (currStage !== stage) {
+          if (!songToPatch.stages) {
+            songToPatch.stages = {};
+          }
           Object.assign(songToPatch.stages, { [loc]: stage });
           report.staged = { original: currStage, new: stage };
         }
