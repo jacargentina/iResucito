@@ -111,7 +111,6 @@ const DataContextWrapper = (props: any) => {
   };
 
   const loadSong = song => {
-    setEditSong();
     setApiResult();
     setApiLoading(true);
     return api
@@ -185,7 +184,10 @@ const DataContextWrapper = (props: any) => {
             .delete(`/api/song/${editSong.key}/${locale}`)
             .then(() => {
               setApiLoading(false);
-              return loadSong(editSong);
+              // Recargar sin los cambios previos
+              loadSong(editSong);
+              // Recargar la lista
+              listSongs();
             })
             .catch(err => {
               handleApiError(err);
@@ -209,7 +211,10 @@ const DataContextWrapper = (props: any) => {
         .then(() => {
           setApiLoading(false);
           setHasChanges(false);
-          return loadSong(editSong);
+          // Recargar el canto
+          loadSong(editSong);
+          // Recargar la lista
+          listSongs();
         })
         .catch(err => {
           handleApiError(err);
