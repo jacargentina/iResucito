@@ -44,7 +44,7 @@ const PatchLogDialog = () => {
                     <Grid.Row key={item.date}>
                       <Grid.Column width={4}>{item.author}</Grid.Column>
                       <Grid.Column width={3}>
-                        {new Date(Date.parse(item.date)).toLocaleString()}
+                        {new Date(item.date).toLocaleString()}
                       </Grid.Column>
                       <Grid.Column width={9}>
                         <Message list={detail} />
