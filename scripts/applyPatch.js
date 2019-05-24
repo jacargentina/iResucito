@@ -23,7 +23,7 @@ const languageFolders = onlyNames.reduce((obj, item) => {
   return obj;
 }, {});
 
-const patchSongLogic = songPatch => {
+const patchSongLogic = (songPatch, key) => {
   var report = {};
   report.key = key;
   try {
@@ -97,7 +97,6 @@ const patchSongLogic = songPatch => {
           report.created = true;
         }
         if (text !== lines) {
-          debugger;
           fs.writeFileSync(songFileName, lines);
           if (!report.created) {
             var diff = jsdiff.diffChars(text, lines);
@@ -188,11 +187,11 @@ if (!process.argv.slice(2).length) {
   var patch = JSON.parse(json);
   var finalReport = [];
   if (key) {
-    var res = patchSongLogic(patch[key]);
+    var res = patchSongLogic(patch[key], key);
     finalReport.push(res);
   } else {
     Object.keys(patch).forEach(k => {
-      var res = patchSongLogic(patch[k]);
+      var res = patchSongLogic(patch[k], k);
       finalReport.push(res);
     });
   }
