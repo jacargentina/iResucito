@@ -23,163 +23,181 @@ const languageFolders = onlyNames.reduce((obj, item) => {
   return obj;
 }, {});
 
-if (process.argv.length == 3) {
-  var patchPath = process.argv[2];
-  if (patchPath !== '') {
-    var patchStat = fs.statSync(patchPath);
-    var json = fs.readFileSync(patchPath, 'utf8').normalize();
-    var patch = JSON.parse(json);
-    var finalReport = [];
-    Object.keys(patch).forEach(key => {
-      var songPatch: SongPatch = patch[key];
-      var report = {};
-      report.key = key;
-      try {
-        var songToPatch = SongsIndex[key];
-        Object.keys(songPatch).forEach(rawLoc => {
-          var item: SongPatchData = songPatch[rawLoc];
-          var loc = '';
-          var { author, file, rename, lines, stage } = item;
+const patchSongLogic = songPatch => {
+  var report = {};
+  report.key = key;
+  try {
+    var songToPatch = SongsIndex[key];
+    Object.keys(songPatch).forEach(rawLoc => {
+      var item: SongPatchData = songPatch[rawLoc];
+      var loc = '';
+      var { author, file, rename, lines, stage } = item;
+      if (rename) {
+        rename = rename.trim();
+      }
+      if (!file) {
+        loc = getPropertyLocale(songToPatch.files, rawLoc);
+        if (loc) {
+          // Buscar si está el nombre en el indice
+          file = songToPatch.files[loc];
+        } else {
+          // Tomar loc desde parche (archivo nuevo para un idioma)
+          loc = rawLoc;
+        }
+        if (!file) {
           if (rename) {
-            rename = rename.trim();
-          }
-          if (!file) {
-            loc = getPropertyLocale(songToPatch.files, rawLoc);
-            if (loc) {
-              // Buscar si está el nombre en el indice
-              file = songToPatch.files[loc];
-            } else {
-              // Tomar loc desde parche (archivo nuevo para un idioma)
-              loc = rawLoc;
-            }
-            if (!file) {
-              if (rename) {
-                // Usar el nombre de renombrado para crear archivo
-                file = rename;
-                rename = undefined;
-              } else {
-                // El archivo aun no existe en el idioma
-                // crear archivo con el nombre del español
-                file = songToPatch.files['es'];
-              }
-            }
-          }
-
-          var songDirectory = null;
-          // Decidir lenguaje segun carpetas de idioma disponible
-          var existsLoc = getPropertyLocale(languageFolders, loc);
-          if (!existsLoc) {
-            // No existe carpeta, crearla
-            report.createdFolder = loc;
-            songDirectory = path.join(songsDir, loc);
-            fs.mkdirSync(songDirectory);
+            // Usar el nombre de renombrado para crear archivo
+            file = rename;
+            rename = undefined;
           } else {
-            loc = existsLoc;
-            songDirectory = path.join(songsDir, existsLoc);
+            // El archivo aun no existe en el idioma
+            // crear archivo con el nombre del español
+            file = songToPatch.files['es'];
           }
-
-          var songFileName = path.join(songDirectory, `${file}.txt`);
-          var newName = rename
-            ? path.join(songDirectory, `${rename}.txt`)
-            : null;
-          if (newName && !fs.existsSync(songFileName)) {
-            report.renameNotPossible = `no existe ${songFileName}`;
-          } else if (newName && newName !== songFileName) {
-            report.rename = { original: file, new: rename };
-            execSync(`git mv --force "${songFileName}" "${newName}"`);
-            Object.assign(songToPatch.files, { [loc]: rename });
-            songFileName = newName;
-          } else if (songToPatch.files[loc] !== file) {
-            if (songToPatch.files[loc]) {
-              report.rename = { original: songToPatch.files[loc], new: file };
-            } else {
-              report.linked = { new: file };
-            }
-            Object.assign(songToPatch.files, { [loc]: file });
-          }
-          if (lines) {
-            report.updated = false;
-            var text = null;
-            if (fs.existsSync(songFileName)) {
-              text = fs.readFileSync(songFileName, 'utf8');
-              report.created = false;
-            } else {
-              report.created = true;
-            }
-            if (text !== lines) {
-              fs.writeFileSync(songFileName, lines);
-              if (!report.created) {
-                var diff = jsdiff.diffChars(text, lines);
-                diff.forEach(part => {
-                  // green for additions, red for deletions
-                  // grey for common parts
-                  var color = part.added
-                    ? 'green'
-                    : part.removed
-                    ? 'red'
-                    : 'grey';
-                  process.stderr.write(part.value[color]);
-                });
-                report.updated = true;
-              }
-            }
-          }
-
-          if (stage) {
-            if (!songToPatch.stages) {
-              songToPatch.stages = {};
-            }
-            const currStage = songToPatch.stages.hasOwnProperty(loc)
-              ? songToPatch.stages[loc]
-              : songToPatch.stage;
-            if (currStage !== stage) {
-              Object.assign(songToPatch.stages, { [loc]: stage });
-              report.staged = { original: currStage, new: stage };
-            }
-          }
-
-          if (
-            report.rename ||
-            report.linked ||
-            report.created ||
-            report.updated ||
-            report.staged
-          ) {
-            // Guardar historia de cambios
-            var patchInfo: SongPatchLogData = {
-              locale: loc,
-              date: patchStat.mtime,
-              author: author || 'anonymous',
-              rename: report.rename,
-              linked: report.linked,
-              created: report.created,
-              updated: report.updated,
-              staged: report.staged
-            };
-
-            var songPatches = SongsPatches[key];
-            if (songPatches) {
-              var found = songPatches.find(x => x.date === patchStat.mtime);
-              if (!found) {
-                songPatches.push(patchInfo);
-              }
-            } else {
-              songPatches = [];
-              songPatches.push(patchInfo);
-              SongsPatches[key] = songPatches;
-            }
-          }
-        });
-      } catch (err) {
-        report.error = err.message;
+        }
       }
 
-      finalReport.push(report);
+      var songDirectory = null;
+      // Decidir lenguaje segun carpetas de idioma disponible
+      var existsLoc = getPropertyLocale(languageFolders, loc);
+      if (!existsLoc) {
+        // No existe carpeta, crearla
+        report.createdFolder = loc;
+        songDirectory = path.join(songsDir, loc);
+        fs.mkdirSync(songDirectory);
+      } else {
+        loc = existsLoc;
+        songDirectory = path.join(songsDir, existsLoc);
+      }
+
+      var songFileName = path.join(songDirectory, `${file}.txt`);
+      var newName = rename ? path.join(songDirectory, `${rename}.txt`) : null;
+      if (newName && !fs.existsSync(songFileName)) {
+        report.renameNotPossible = `no existe ${songFileName}`;
+      } else if (newName && newName !== songFileName) {
+        report.rename = { original: file, new: rename };
+        execSync(`git mv --force "${songFileName}" "${newName}"`);
+        Object.assign(songToPatch.files, { [loc]: rename });
+        songFileName = newName;
+      } else if (songToPatch.files[loc] !== file) {
+        if (songToPatch.files[loc]) {
+          report.rename = { original: songToPatch.files[loc], new: file };
+        } else {
+          report.linked = { new: file };
+        }
+        Object.assign(songToPatch.files, { [loc]: file });
+      }
+      if (lines) {
+        report.updated = false;
+        var text = null;
+        if (fs.existsSync(songFileName)) {
+          text = fs.readFileSync(songFileName, 'utf8');
+          report.created = false;
+        } else {
+          report.created = true;
+        }
+        if (text !== lines) {
+          fs.writeFileSync(songFileName, lines);
+          if (!report.created) {
+            debugger;
+            var diff = jsdiff.diffChars(text, lines);
+            diff.forEach(part => {
+              // green for additions, red for deletions
+              // grey for common parts
+              var color = part.added ? 'green' : part.removed ? 'red' : 'grey';
+              process.stderr.write(part.value[color]);
+            });
+            report.updated = true;
+          }
+        }
+      }
+
+      if (stage) {
+        if (!songToPatch.stages) {
+          songToPatch.stages = {};
+        }
+        const currStage = songToPatch.stages.hasOwnProperty(loc)
+          ? songToPatch.stages[loc]
+          : songToPatch.stage;
+        if (currStage !== stage) {
+          Object.assign(songToPatch.stages, { [loc]: stage });
+          report.staged = { original: currStage, new: stage };
+        }
+      }
+
+      if (
+        report.rename ||
+        report.linked ||
+        report.created ||
+        report.updated ||
+        report.staged
+      ) {
+        // Guardar historia de cambios
+        var patchInfo: SongPatchLogData = {
+          locale: loc,
+          date: patchStat.mtime,
+          author: author || 'anonymous',
+          rename: report.rename,
+          linked: report.linked,
+          created: report.created,
+          updated: report.updated,
+          staged: report.staged
+        };
+
+        var songPatches = SongsPatches[key];
+        if (songPatches) {
+          var found = songPatches.find(x => x.date === patchStat.mtime);
+          if (!found) {
+            songPatches.push(patchInfo);
+          }
+        } else {
+          songPatches = [];
+          songPatches.push(patchInfo);
+          SongsPatches[key] = songPatches;
+        }
+      }
     });
-    fs.writeFileSync(indexPath, JSON.stringify(SongsIndex, null, ' '));
-    fs.writeFileSync(patchesPath, JSON.stringify(SongsPatches, null, '  '));
-    console.log(finalReport);
+  } catch (err) {
+    report.error = err.message;
   }
+  return report;
+};
+
+var program = require('commander');
+
+program
+  .version('1.0')
+  .description('Generate PDF for a given song')
+  .option('-f, --file [path]', 'Patch to use')
+  .option(
+    '-k, --key [value]',
+    'Song key. Defaults to generate all songs',
+    parseInt
+  );
+
+if (!process.argv.slice(2).length) {
+  program.help();
 } else {
-  console.log('node applyPatch Path/To/SongsIndexPatch.json');
+  program.parse(process.argv);
+  var file = program.file;
+  if (!file) {
+    throw 'File not provided.';
+  }
+  var key = program.key;
+  var patchStat = fs.statSync(file);
+  var json = fs.readFileSync(file, 'utf8').normalize();
+  var patch = JSON.parse(json);
+  var finalReport = [];
+  if (key) {
+    var res = patchSongLogic(patch[key]);
+    finalReport.push(res);
+  } else {
+    Object.keys(patch).forEach(k => {
+      var res = patchSongLogic(patch[k]);
+      finalReport.push(res);
+    });
+  }
+  fs.writeFileSync(indexPath, JSON.stringify(SongsIndex, null, ' '));
+  fs.writeFileSync(patchesPath, JSON.stringify(SongsPatches, null, '  '));
+  console.log(finalReport);
 }
