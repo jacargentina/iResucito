@@ -19,8 +19,8 @@ const PatchLogDialog = () => {
       dimmer="blurring"
       centered={false}
       onClose={() => setActiveDialog()}>
+      <Modal.Header>{I18n.t('ui.patch log')}</Modal.Header>
       <Modal.Content>
-        <h3>{I18n.t('ui.patch log')}</h3>
         {editSong && <h5>{editSong.titulo.toUpperCase()}</h5>}
         <Loading height="auto">
           <div style={{ flex: 1 }}>
@@ -28,7 +28,12 @@ const PatchLogDialog = () => {
               <Message>{I18n.t('ui.no items to show')}</Message>
             )}
             {patchLogs && patchLogs.length > 0 && (
-              <Grid columns={3} divided>
+              <Grid columns={3} divided celled>
+                <Grid.Row color="black" style={{ fontWeight: 'bold' }}>
+                  <Grid.Column width={3}>User</Grid.Column>
+                  <Grid.Column width={3}>Date</Grid.Column>
+                  <Grid.Column width={10}>Changes</Grid.Column>
+                </Grid.Row>
                 {patchLogs.map(item => {
                   var detail = [];
                   if (item.created) detail.push('Created');
@@ -42,11 +47,11 @@ const PatchLogDialog = () => {
                   if (item.updated) detail.push('Updated text');
                   return (
                     <Grid.Row key={item.date}>
-                      <Grid.Column width={4}>{item.author}</Grid.Column>
+                      <Grid.Column width={3}>{item.author}</Grid.Column>
                       <Grid.Column width={3}>
                         {new Date(item.date).toLocaleString()}
                       </Grid.Column>
-                      <Grid.Column width={9}>
+                      <Grid.Column width={10}>
                         <Message list={detail} />
                       </Grid.Column>
                     </Grid.Row>

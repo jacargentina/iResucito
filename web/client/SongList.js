@@ -3,6 +3,7 @@ import React, { Fragment, useEffect, useState, useContext } from 'react';
 import List from 'semantic-ui-react/dist/commonjs/elements/List';
 import Input from 'semantic-ui-react/dist/commonjs/elements/Input';
 import Label from 'semantic-ui-react/dist/commonjs/elements/Label';
+import Message from 'semantic-ui-react/dist/commonjs/collections/Message';
 import { DataContext } from './DataContext';
 import { useDebounce } from 'use-debounce';
 import { getPropertyLocale } from '../../src/common';
@@ -11,8 +12,8 @@ import colors from '../../src/colors';
 
 const SongList = () => {
   const data = useContext(DataContext);
-  const { locale, loadSong, listSongs, songs, apiLoading } = data;
-  const [filtered, setFiltered] = useState([]);
+  const { locale, editSong, loadSong, listSongs, songs, apiLoading } = data;
+  const [filtered, setFiltered] = useState();
   const [searchTerm, setSearchTerm] = useState('');
   const [debouncedTerm] = useDebounce(searchTerm, 800);
 
@@ -43,7 +44,7 @@ const SongList = () => {
 
   return (
     <Fragment>
-      <div style={{ padding: 10 }}>
+      <div style={{ padding: 10, display: editSong ? 'none' : null }}>
         <Input
           fluid
           icon="search"
@@ -52,41 +53,62 @@ const SongList = () => {
           value={searchTerm}
           loading={apiLoading}
         />
+        {filtered && (
+          <Fragment>
+            {filtered.length === 0 && (
+              <Message>{I18n.t('ui.no songs found')}</Message>
+            )}
+            {filtered.length > 0 && (
+              <div style={{ margin: 5, fontWeight: 'bold' }}>
+                {I18n.t('ui.list total songs', { total: filtered.length })}
+              </div>
+            )}
+          </Fragment>
+        )}
       </div>
       <List
-        divided
-        relaxed
         size="big"
-        style={{ margin: 0, padding: 10, overflowY: 'scroll' }}>
-        {filtered.map((song, key) => {
-          return (
-            <List.Item key={key} onClick={() => loadSong(song)}>
-              <List.Content>
-                <List.Header>{song.nombre}</List.Header>
-                <List.Description>{song.fuente}</List.Description>
-                <div style={{ marginTop: 8 }}>
-                  {song.stage && (
-                    <Label
-                      style={{ backgroundColor: colors[song.stage] }}
-                      size="small">
-                      {song.stage[0].toUpperCase()}
-                    </Label>
-                  )}
-                  {song.patched && (
-                    <Label color="violet" size="small">
-                      patched
-                    </Label>
-                  )}
-                  {song.notTranslated && (
-                    <Label color="red" size="small">
-                      {I18n.t('ui.locale warning title')}
-                    </Label>
-                  )}
-                </div>
-              </List.Content>
-            </List.Item>
-          );
-        })}
+        divided
+        style={{
+          margin: 0,
+          paddingLeft: 10,
+          paddingRight: 10,
+          overflowY: 'scroll',
+          display: editSong ? 'none' : null
+        }}>
+        {filtered &&
+          filtered.map((song, key) => {
+            return (
+              <List.Item
+                key={key}
+                onClick={() => loadSong(song)}
+                className="hoverable">
+                <List.Content>
+                  <List.Header>{song.nombre}</List.Header>
+                  <List.Description>{song.fuente}</List.Description>
+                  <div style={{ marginTop: 8 }}>
+                    {song.stage && (
+                      <Label
+                        style={{ backgroundColor: colors[song.stage] }}
+                        size="small">
+                        {song.stage[0].toUpperCase()}
+                      </Label>
+                    )}
+                    {song.patched && (
+                      <Label color="violet" size="small">
+                        patched
+                      </Label>
+                    )}
+                    {song.notTranslated && (
+                      <Label color="red" size="small">
+                        {I18n.t('ui.locale warning title')}
+                      </Label>
+                    )}
+                  </div>
+                </List.Content>
+              </List.Item>
+            );
+          })}
       </List>
     </Fragment>
   );

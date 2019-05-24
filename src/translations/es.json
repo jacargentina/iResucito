@@ -40,6 +40,7 @@
     "delete confirmation": "¿Confirma el borrado?",
     "apply": "Aplicar",
     "close": "Cerrar",
+    "refresh": "Refrescar",
     "lists": {
       "already exists": "Ya existe una lista con el mismo nombre",
       "non-empty name": "Ingrese un nombre no vacío",

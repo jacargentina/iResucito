@@ -40,6 +40,7 @@
     "delete confirmation": "Do you confirm deletion?",
     "apply": "Apply",
     "close": "Close",
+    "refresh": "Refresh",
     "lists": {
       "already exists": "A list with the same name already exists",
       "non-empty name": "Enter a non-empty name",

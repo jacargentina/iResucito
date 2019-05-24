@@ -20,6 +20,18 @@
       .container > div:last-child {
         flex: 1;
       }
+      .hoverable .content {
+        padding: 10px;
+      }
+      .hoverable:hover {
+        background-color: #1678c2;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      .hoverable:hover .content .header,
+      .hoverable:hover .content .description {
+        color: white !important;
+      }
     </style>
   </head>
   <body style="margin: 0">

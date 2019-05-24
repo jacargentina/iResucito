@@ -21,6 +21,7 @@ const Homepage = () => {
     locale,
     editSong,
     addSong,
+    listSongs,
     songFile,
     hasChanges,
     applyChanges,
@@ -117,7 +118,7 @@ const Homepage = () => {
                       {I18n.t('ui.patch log')}
                     </Button>
                     <Button
-                      primary
+                      positive
                       disabled={!hasChanges}
                       onClick={applyChanges}>
                       {I18n.t('ui.apply')}
@@ -128,10 +129,16 @@ const Homepage = () => {
               )}
               {!editSong && (
                 <Menu.Item>
-                  <Button primary onClick={addSong}>
-                    <Icon name="add" />
-                    {I18n.t('ui.create')}
-                  </Button>
+                  <Button.Group size="mini">
+                    <Button onClick={listSongs}>
+                      <Icon name="refresh" />
+                      {I18n.t('ui.refresh')}
+                    </Button>
+                    <Button primary onClick={addSong}>
+                      <Icon name="add" />
+                      {I18n.t('ui.create')}
+                    </Button>
+                  </Button.Group>
                 </Menu.Item>
               )}
               <Menu.Item>{user}</Menu.Item>
@@ -143,7 +150,7 @@ const Homepage = () => {
             </Menu.Menu>
           </Menu>
           <ApiMessage />
-          {!editSong && <SongList />}
+          <SongList />
           {editSong && <SongEditor />}
         </Fragment>
       )}
