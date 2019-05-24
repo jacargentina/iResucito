@@ -226,6 +226,12 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "it",
+      "author": "giuseppereino@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "87": [
@@ -374,6 +380,28 @@
         "original": "Benedizione penitenziale - preghiera conclusiva di ringraziamento",
         "new": "Benedizione per la celebrazione penitenziale - Preghiera conclusiva di ringraziamento"
       },
+      "created": false,
+      "updated": true
+    },
+    {
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "190": [
+    {
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "193": [
+    {
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
       "created": false,
       "updated": true
     }
