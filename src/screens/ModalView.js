@@ -1,27 +1,30 @@
 // @flow
 import React from 'react';
 import { withNavigation } from 'react-navigation';
-import { Text, Icon } from 'native-base';
+import { Text, Button } from 'native-base';
 import {
   Platform,
   View,
   KeyboardAvoidingView,
   SafeAreaView
 } from 'react-native';
+import I18n from '../translations';
 import commonTheme from '../native-base-theme/variables/platform';
 
 const ModalView = (props: any) => {
   const { navigation, left, right } = props;
   const defaultClose = (
-    <Icon
-      name="close"
+    <Button
+      rounded
+      small
       style={{
         alignSelf: 'flex-end',
-        marginRight: 18,
-        color: commonTheme.brandPrimary
+        color: commonTheme.brandPrimary,
+        marginRight: 10
       }}
-      onPress={() => navigation.goBack(null)}
-    />
+      onPress={() => navigation.goBack(null)}>
+      <Text>{I18n.t('ui.close')}</Text>
+    </Button>
   );
   return (
     <SafeAreaView style={{ flexGrow: 1, backgroundColor: 'white' }}>
@@ -36,31 +39,36 @@ const ModalView = (props: any) => {
           }}>
           <View
             style={{
-              flex: 1
+              flex: 1,
+              justifyContent: 'center'
             }}>
             {left}
           </View>
           <View
             style={{
-              flex: 1
+              flex: 1,
+              justifyContent: 'center'
             }}>
             {right || defaultClose}
           </View>
         </View>
-        <View
-          style={{
-            flex: 0,
-            alignItems: 'center',
-            marginTop: 5
-          }}>
-          <Text
+        {props.title && (
+          <View
             style={{
-              fontSize: commonTheme.fontSizeBase + 3,
-              fontWeight: 'bold'
+              flex: 0,
+              alignItems: 'center',
+              paddingTop: 12,
+              paddingBottom: 12
             }}>
-            {props.title}
-          </Text>
-        </View>
+            <Text
+              style={{
+                fontSize: commonTheme.fontSizeBase + 3,
+                fontWeight: 'bold'
+              }}>
+              {props.title}
+            </Text>
+          </View>
+        )}
         <View
           style={{
             flexGrow: 1

@@ -165,7 +165,7 @@ if (process.argv.length == 3) {
       finalReport.push(report);
     });
     fs.writeFileSync(indexPath, JSON.stringify(SongsIndex, null, ' '));
-    fs.writeFileSync(patchesPath, JSON.stringify(SongsPatches, null, ' '));
+    fs.writeFileSync(patchesPath, JSON.stringify(SongsPatches, null, '  '));
     console.log(finalReport);
   }
 } else {

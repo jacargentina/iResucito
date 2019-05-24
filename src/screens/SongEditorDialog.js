@@ -160,39 +160,39 @@ const SongEditorDialog = (props: any) => {
     reload();
   }, []);
 
-  const cancelButton = (
-    <Text
-      style={{
-        alignSelf: 'center',
-        color: commonTheme.brandPrimary,
-        marginLeft: 10
-      }}
-      onPress={() => navigation.goBack(null)}>
-      {I18n.t('ui.cancel')}
-    </Text>
-  );
-
-  const saveButton = (
-    <Text
-      style={{
-        alignSelf: 'center',
-        color: commonTheme.brandPrimary,
-        marginRight: 10
-      }}
-      onPress={() => {
-        // Solo guardar si hay alguna modificacion
-        saveWithLines(lines);
-        navigation.goBack(null);
-      }}>
-      {I18n.t('ui.done')}
-    </Text>
-  );
-
   return (
     <ModalView
       title={I18n.t('screen_title.song edit')}
-      right={saveButton}
-      left={cancelButton}>
+      right={
+        <Button
+          rounded
+          small
+          style={{
+            alignSelf: 'flex-end',
+            color: commonTheme.brandPrimary,
+            marginRight: 10
+          }}
+          disabled={!canUndoLines}
+          onPress={() => {
+            saveWithLines(lines);
+            navigation.goBack(null);
+          }}>
+          <Text>{I18n.t('ui.apply')}</Text>
+        </Button>
+      }
+      left={
+        <Button
+          rounded
+          small
+          style={{
+            alignSelf: 'flex-start',
+            color: commonTheme.brandPrimary,
+            marginLeft: 10
+          }}
+          onPress={() => navigation.goBack(null)}>
+          <Text>{I18n.t('ui.cancel')}</Text>
+        </Button>
+      }>
       <View style={{ flexGrow: 1, backgroundColor: '#222' }}>
         <SongListItem
           songKey={song.key}

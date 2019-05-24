@@ -47,7 +47,7 @@ const ListDetailItem = (props: any) => {
     typeof listKey == 'string' &&
     (listKey.includes('monicion') ||
       listKey.includes('ambiental') ||
-      listKey.includes('peticiones') ||
+      listKey.includes('oracion') ||
       listKey.includes('encargado'))
   ) {
     item = (

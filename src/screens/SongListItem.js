@@ -20,6 +20,7 @@ import textTheme from '../native-base-theme/components/Text';
 import StarRating from 'react-native-star-rating';
 import I18n from '../translations';
 import { DataContext } from '../DataContext';
+import { getPropertyLocale } from '../common';
 
 const textStyles = textTheme(commonTheme);
 const noteStyles = textStyles['.note'];
@@ -86,14 +87,12 @@ const SongListItem = (props: any) => {
     if (song) {
       getSongLocalePatch(song).then(patchObj => {
         if (isSubscribed) {
-          const result =
-            !song.files.hasOwnProperty(I18n.locale) &&
-            !(
-              patchObj &&
-              patchObj[I18n.locale] &&
-              patchObj[I18n.locale].hasOwnProperty('lines')
-            );
-          setNotInLocale(result);
+          const loc = getPropertyLocale(song.files, I18n.locale);
+          var ploc;
+          if (patchObj) {
+            ploc = getPropertyLocale(patchObj, I18n.locale);
+          }
+          setNotInLocale(!loc && !ploc);
         }
       });
     }
