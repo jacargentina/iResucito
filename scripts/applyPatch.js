@@ -31,7 +31,7 @@ const patchSongLogic = songPatch => {
     Object.keys(songPatch).forEach(rawLoc => {
       var item: SongPatchData = songPatch[rawLoc];
       var loc = '';
-      var { author, file, rename, lines, stage } = item;
+      var { author, date, file, rename, lines, stage } = item;
       if (rename) {
         rename = rename.trim();
       }
@@ -97,9 +97,9 @@ const patchSongLogic = songPatch => {
           report.created = true;
         }
         if (text !== lines) {
+          debugger;
           fs.writeFileSync(songFileName, lines);
           if (!report.created) {
-            debugger;
             var diff = jsdiff.diffChars(text, lines);
             diff.forEach(part => {
               // green for additions, red for deletions
@@ -135,7 +135,7 @@ const patchSongLogic = songPatch => {
         // Guardar historia de cambios
         var patchInfo: SongPatchLogData = {
           locale: loc,
-          date: patchStat.mtime,
+          date: date,
           author: author || 'anonymous',
           rename: report.rename,
           linked: report.linked,
@@ -146,7 +146,7 @@ const patchSongLogic = songPatch => {
 
         var songPatches = SongsPatches[key];
         if (songPatches) {
-          var found = songPatches.find(x => x.date === patchStat.mtime);
+          var found = songPatches.find(x => x.date === date);
           if (!found) {
             songPatches.push(patchInfo);
           }
@@ -184,7 +184,6 @@ if (!process.argv.slice(2).length) {
     throw 'File not provided.';
   }
   var key = program.key;
-  var patchStat = fs.statSync(file);
   var json = fs.readFileSync(file, 'utf8').normalize();
   var patch = JSON.parse(json);
   var finalReport = [];

@@ -1,7 +1,7 @@
 // @flow
 
 declare type SongPatchLogData = {
-  date: Date,
+  date: number,
   author: string,
   locale: string,
   linked?: {
@@ -21,6 +21,7 @@ declare type SongPatchLog = {
 
 declare type SongPatchData = {
   author: string,
+  date: number,
   file?: string,
   rename?: string,
   stage?: string,

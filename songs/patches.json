@@ -2,7 +2,7 @@
   "19": [
     {
       "locale": "it",
-      "date": "2019-05-22T23:08:22.896Z",
+      "date": 1558566502896,
       "author": "giuseppereino@gmail.com",
       "created": false,
       "updated": true
@@ -11,7 +11,7 @@
   "20": [
     {
       "locale": "it",
-      "date": "2019-05-22T23:08:22.896Z",
+      "date": 1558566502896,
       "author": "giuseppereino@gmail.com",
       "linked": {
         "new": "Fratelli, non diamo a nessuno motivo d' inciampo - 2 Cor 6, 3-16"
@@ -23,7 +23,7 @@
   "21": [
     {
       "locale": "it",
-      "date": "2019-05-22T23:08:22.896Z",
+      "date": 1558566502896,
       "author": "giuseppereino@gmail.com",
       "rename": {
         "original": "A te levo i miei occhi - Sal 123 (122)",
@@ -36,7 +36,7 @@
   "22": [
     {
       "locale": "it",
-      "date": "2019-05-22T23:08:22.896Z",
+      "date": 1558566502896,
       "author": "giuseppereino@gmail.com",
       "rename": {
         "original": "A te, Signore, con la mia voce - Sal 142 (141)",
@@ -49,7 +49,7 @@
   "23": [
     {
       "locale": "it",
-      "date": "2019-05-22T23:08:22.896Z",
+      "date": 1558566502896,
       "author": "giuseppereino@gmail.com",
       "rename": {
         "original": "A te, Signore, innalzo la mia anima - Sal 25 (24)",
@@ -62,7 +62,7 @@
   "24": [
     {
       "locale": "it",
-      "date": "2019-05-22T23:08:22.896Z",
+      "date": 1558566502896,
       "author": "giuseppereino@gmail.com",
       "rename": {
         "original": "A te Signore si deve lode in Sion - Sal 65 (64)",
@@ -75,7 +75,7 @@
   "25": [
     {
       "locale": "it",
-      "date": "2019-05-22T23:08:22.896Z",
+      "date": 1558566502896,
       "author": "giuseppereino@gmail.com",
       "rename": {
         "original": "Abramo - Gn 18, 1-5",
@@ -88,7 +88,7 @@
   "26": [
     {
       "locale": "it",
-      "date": "2019-05-22T23:08:22.896Z",
+      "date": 1558566502896,
       "author": "giuseppereino@gmail.com",
       "rename": {
         "original": "Acclamate al Signore - Sal 100 (99)",
@@ -101,7 +101,7 @@
   "30": [
     {
       "locale": "it",
-      "date": "2019-05-23T23:43:25.152Z",
+      "date": 1558655005152,
       "author": "giuseppereino@gmail.com",
       "rename": {
         "original": "Benedite il Signore - Sal 134 (133)",
@@ -114,7 +114,7 @@
   "32": [
     {
       "locale": "it",
-      "date": "2019-05-22T23:08:22.896Z",
+      "date": 1558566502896,
       "author": "giuseppereino@gmail.com",
       "rename": {
         "original": "Alzate o porte - Sal 24 (23)",
@@ -127,7 +127,7 @@
   "33": [
     {
       "locale": "it",
-      "date": "2019-05-22T23:08:22.896Z",
+      "date": 1558566502896,
       "author": "giuseppereino@gmail.com",
       "rename": {
         "original": "Amo il Signore - Sal 116 (114-115)",
@@ -140,7 +140,7 @@
   "34": [
     {
       "locale": "it",
-      "date": "2019-05-22T23:08:22.896Z",
+      "date": 1558566502896,
       "author": "giuseppereino@gmail.com",
       "rename": {
         "original": "Akedà - Gn 22, 1-19",
@@ -153,7 +153,7 @@
   "35": [
     {
       "locale": "it",
-      "date": "2019-05-23T23:43:25.152Z",
+      "date": 1558655005152,
       "author": "giuseppereino@gmail.com",
       "rename": {
         "original": "Ave Maria I - Lc 1, 28ss",
@@ -166,7 +166,7 @@
   "36": [
     {
       "locale": "it",
-      "date": "2019-05-23T23:43:25.152Z",
+      "date": 1558655005152,
       "author": "giuseppereino@gmail.com",
       "rename": {
         "original": "Ave Maria II (1984) - Lc 1, 28ss",
@@ -179,7 +179,7 @@
   "39": [
     {
       "locale": "it",
-      "date": "2019-05-23T23:43:25.152Z",
+      "date": 1558655005152,
       "author": "giuseppereino@gmail.com",
       "rename": {
         "original": "Benedirò il Signore in ogni tempo - Sal 34 (33)",
@@ -192,7 +192,7 @@
   "40": [
     {
       "locale": "it",
-      "date": "2019-05-23T23:43:25.152Z",
+      "date": 1558655005152,
       "author": "giuseppereino@gmail.com",
       "rename": {
         "original": "Benedici anima mia Jahvè - Sal 103 (102)",
@@ -205,7 +205,7 @@
   "41": [
     {
       "locale": "it",
-      "date": "2019-05-23T23:43:25.152Z",
+      "date": 1558655005152,
       "author": "giuseppereino@gmail.com",
       "rename": {
         "original": "Benedetta sei tu, Maria - Lc 1, 42-45",
@@ -218,7 +218,7 @@
   "42": [
     {
       "locale": "it",
-      "date": "2019-05-23T23:43:25.152Z",
+      "date": 1558655005152,
       "author": "giuseppereino@gmail.com",
       "rename": {
         "original": "Benedetto sei tu Signore - Dn 3, 52-57",
@@ -231,7 +231,7 @@
   "87": [
     {
       "locale": "it",
-      "date": "2019-05-22T23:08:22.896Z",
+      "date": 1558566502896,
       "author": "giuseppereino@gmail.com",
       "rename": {
         "original": "Andate ed annunziate ai miei fratelli - Mt 28, 7-10.16-20",
@@ -244,7 +244,7 @@
   "89": [
     {
       "locale": "it",
-      "date": "2019-05-23T23:43:25.152Z",
+      "date": 1558655005152,
       "author": "giuseppereino@gmail.com",
       "rename": {
         "original": "Benedici anima mia il Signore - Tb 13, 11-17",
@@ -257,7 +257,7 @@
   "93": [
     {
       "locale": "it",
-      "date": "2019-05-22T23:08:22.896Z",
+      "date": 1558566502896,
       "author": "giuseppereino@gmail.com",
       "rename": {
         "original": "Alzo gli occhi verso i monti - Sal 121 (120)",
@@ -270,7 +270,7 @@
   "145": [
     {
       "locale": "it",
-      "date": "2019-05-22T23:08:22.896Z",
+      "date": 1558566502896,
       "author": "giuseppereino@gmail.com",
       "created": false,
       "updated": true
@@ -279,7 +279,7 @@
   "158": [
     {
       "locale": "it",
-      "date": "2019-05-22T23:08:22.896Z",
+      "date": 1558566502896,
       "author": "giuseppereino@gmail.com",
       "linked": {
         "new": "Inno dei vespri da pasqua all'ascensione - Inno"
@@ -291,7 +291,7 @@
   "159": [
     {
       "locale": "it",
-      "date": "2019-05-22T23:08:22.896Z",
+      "date": 1558566502896,
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": false
@@ -300,7 +300,7 @@
   "160": [
     {
       "locale": "it",
-      "date": "2019-05-23T23:43:25.152Z",
+      "date": 1558655005152,
       "author": "giuseppereino@gmail.com",
       "rename": {
         "original": "Benedetto sia iddio - Ef 1, 3-13",
@@ -313,7 +313,7 @@
   "181": [
     {
       "locale": "it",
-      "date": "2019-05-22T23:08:22.896Z",
+      "date": 1558566502896,
       "author": "giuseppereino@gmail.com",
       "created": false,
       "updated": true
@@ -322,7 +322,7 @@
   "182": [
     {
       "locale": "it",
-      "date": "2019-05-22T23:08:22.896Z",
+      "date": 1558566502896,
       "author": "giuseppereino@gmail.com",
       "linked": {
         "new": "Alleluja per acclamazioni al Vangelo"
@@ -334,7 +334,7 @@
   "183": [
     {
       "locale": "it",
-      "date": "2019-05-22T23:08:22.896Z",
+      "date": 1558566502896,
       "author": "giuseppereino@gmail.com",
       "created": false,
       "updated": true
@@ -343,7 +343,7 @@
   "185": [
     {
       "locale": "it",
-      "date": "2019-05-22T23:08:22.896Z",
+      "date": 1558566502896,
       "author": "giuseppereino@gmail.com",
       "linked": {
         "new": "Acclamazione al Vangelo nel tempo di quaresima"
@@ -355,7 +355,7 @@
   "186": [
     {
       "locale": "it",
-      "date": "2019-05-23T23:43:25.152Z",
+      "date": 1558655005152,
       "author": "giuseppereino@gmail.com",
       "rename": {
         "original": "Benedizione dell'acqua",
@@ -368,7 +368,7 @@
   "187": [
     {
       "locale": "it",
-      "date": "2019-05-23T23:43:25.152Z",
+      "date": 1558655005152,
       "author": "giuseppereino@gmail.com",
       "rename": {
         "original": "Benedizione penitenziale - preghiera conclusiva di ringraziamento",

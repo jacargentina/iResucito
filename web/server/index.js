@@ -347,6 +347,7 @@ server.post('/api/song/:key/:locale', async (req, res) => {
   }
 
   patch.author = req.user.email;
+  patch.date = Date.now();
 
   const localePatch: SongPatch = {
     [locale]: patch
