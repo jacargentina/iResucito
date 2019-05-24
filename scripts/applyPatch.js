@@ -107,19 +107,19 @@ if (process.argv.length == 3) {
               report.created = true;
             }
             if (text !== lines) {
-              var diff = jsdiff.diffChars(text, lines);
-              diff.forEach(part => {
-                // green for additions, red for deletions
-                // grey for common parts
-                var color = part.added
-                  ? 'green'
-                  : part.removed
-                  ? 'red'
-                  : 'grey';
-                process.stderr.write(part.value[color]);
-              });
               fs.writeFileSync(songFileName, lines);
               if (!report.created) {
+                var diff = jsdiff.diffChars(text, lines);
+                diff.forEach(part => {
+                  // green for additions, red for deletions
+                  // grey for common parts
+                  var color = part.added
+                    ? 'green'
+                    : part.removed
+                    ? 'red'
+                    : 'grey';
+                  process.stderr.write(part.value[color]);
+                });
                 report.updated = true;
               }
             }
