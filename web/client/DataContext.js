@@ -3,11 +3,25 @@ import React, { useState, useEffect } from 'react';
 import I18n from '../../src/translations';
 import api from './api';
 import { getSongFileFromString } from '../../src/SongsProcessor';
+import { getLocalesForPicker, getValidatedLocale } from '../../src/common';
 
 export const DataContext: any = React.createContext();
 
-I18n.locale = navigator.language;
-console.log('navigator.language', navigator.language);
+const availableLocales = getLocalesForPicker(navigator.language);
+
+const applyLocale = (candidate: string) => {
+  const str = candidate === 'default' ? navigator.language : candidate;
+  const validated = getValidatedLocale(availableLocales, str);
+  if (validated && I18n.locale !== validated.value) {
+    I18n.locale = validated.value;
+    console.log('Current locale:', I18n.locale);
+  }
+  if (!validated) {
+    console.log('Current locale: Cannot set with cantidate', candidate);
+  }
+};
+
+applyLocale(navigator.language);
 
 const DataContextWrapper = (props: any) => {
   const [locale, setLocale] = useState(I18n.locale);
@@ -221,8 +235,7 @@ const DataContextWrapper = (props: any) => {
   }, [editSong, activeDialog]);
 
   useEffect(() => {
-    I18n.locale = locale == 'default' ? navigator.language : locale;
-    console.log('Current locale is', I18n.locale);
+    applyLocale(locale);
   }, [locale]);
 
   useEffect(() => {
@@ -237,6 +250,7 @@ const DataContextWrapper = (props: any) => {
   return (
     <DataContext.Provider
       value={{
+        availableLocales,
         locale,
         setLocale,
         editSong,

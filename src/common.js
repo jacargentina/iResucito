@@ -67,7 +67,9 @@ export const getChordsDiff = (
   return target - start;
 };
 
-export const getLocalesForPicker = (defaultLocale: string) => {
+export const getLocalesForPicker = (
+  defaultLocale: string
+): Array<PickerLocale> => {
   var locales = [
     {
       label: `${I18n.t('ui.default')} (${defaultLocale})`,
@@ -79,6 +81,17 @@ export const getLocalesForPicker = (defaultLocale: string) => {
     locales.push({ label: `${l.local} (${code})`, value: code });
   }
   return locales;
+};
+
+export const getValidatedLocale = (
+  availableLocales: Array<PickerLocale>,
+  locale: string
+): ?PickerLocale => {
+  const loc = locale.split('-')[0];
+  const best = availableLocales.find(
+    l => l.value === locale || l.value === loc
+  );
+  return best;
 };
 
 var pdfVars = {

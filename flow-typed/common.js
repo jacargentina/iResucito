@@ -1,5 +1,10 @@
 // @flow
 
+declare type PickerLocale = {
+  label: string,
+  value: string
+};
+
 declare type SongPatchLogData = {
   date: number,
   author: string,

@@ -2,16 +2,14 @@
 import React, { Fragment, useContext } from 'react';
 import Menu from 'semantic-ui-react/dist/commonjs/collections/Menu';
 import Dropdown from 'semantic-ui-react/dist/commonjs/modules/Dropdown';
-import { getLocalesForPicker } from '../../src/common';
 import I18n from '../../src/translations';
 import { DataContext } from './DataContext';
+import { getValidatedLocale } from '../../src/common';
 
 const LocalePicker = () => {
   const data = useContext(DataContext);
-  const { locale, setLocale } = data;
-  const locales = getLocalesForPicker(navigator.language);
-  const loc = locale.split('-')[0];
-  const current = locales.find(l => l.value === locale || l.value === loc);
+  const { availableLocales, locale, setLocale } = data;
+  const current = getValidatedLocale(availableLocales, locale);
 
   return (
     <Fragment>
@@ -21,12 +19,12 @@ const LocalePicker = () => {
         style={{ marginLeft: 10 }}
         text={I18n.t('settings_title.locale', { locale })}>
         <Dropdown.Menu>
-          {locales.map(item => {
+          {availableLocales.map(item => {
             return (
               <Dropdown.Item
                 onClick={() => setLocale(item.value)}
                 key={item.value}
-                active={locale == item.value}
+                active={current && current.value == item.value}
                 size="small">
                 {item.label}
               </Dropdown.Item>
