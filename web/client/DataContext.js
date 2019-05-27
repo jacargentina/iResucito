@@ -26,6 +26,7 @@ applyLocale(navigator.language);
 const DataContextWrapper = (props: any) => {
   const [locale, setLocale] = useState(I18n.locale);
   const [user, setUser] = useState();
+  const [stats, setStats] = useState();
   const [songs, setSongs] = useState();
   const [editSong, setEditSong] = useState();
   const [patchLogs, setPatchLogs] = useState();
@@ -74,9 +75,10 @@ const DataContextWrapper = (props: any) => {
         password
       })
       .then(response => {
+        api.defaults.headers.Authorization = `Bearer ${response.data.jwt}`;
         setApiLoading(false);
         setUser(email);
-        api.defaults.headers.Authorization = `Bearer ${response.data.jwt}`;
+        setStats(response.data.stats);
       })
       .catch(err => {
         handleApiError(err);
@@ -255,6 +257,7 @@ const DataContextWrapper = (props: any) => {
   return (
     <DataContext.Provider
       value={{
+        stats,
         availableLocales,
         locale,
         setLocale,

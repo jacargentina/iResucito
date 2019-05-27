@@ -11,6 +11,7 @@
     "scale": "Do Do# Re Mib Mi Fa Fa# Sol Sol# La Sib Si"
   },
   "ui": {
+    "changes since last login": "Cambios desde tu último ingreso",
     "no items to show": "Sin items para mostrar",
     "patch log": "Registro de cambios",
     "translated songs": "{{translated}} de {{total}} traducidas",

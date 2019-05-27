@@ -11,6 +11,7 @@
     "scale": "C C# D EB E F F# G G# A B H"
   },
   "ui": {
+    "changes since last login": "Changes since your last login",
     "no items to show": "No items to show",
     "patch log": "Patch log",
     "translated songs": "{{translated}} from {{total}} translated",

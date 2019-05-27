@@ -31,13 +31,13 @@ const Login = () => {
         style={{ marginTop: '100px' }}
       />
       <Header textAlign="center">iResucito</Header>
-      <ApiMessage />
-      {parsed.v === 1 && (
-        <Message positive>{I18n.t('ui.account verified')}</Message>
-      )}
       <Loading height="auto">
         <Grid textAlign="center" verticalAlign="middle">
           <Grid.Column>
+            <ApiMessage />
+            {parsed.v === 1 && (
+              <Message positive>{I18n.t('ui.account verified')}</Message>
+            )}
             <Form size="large">
               <Segment vertical>
                 <Form.Field>

@@ -5,7 +5,11 @@ import Header from 'semantic-ui-react/dist/commonjs/elements/Header';
 import Image from 'semantic-ui-react/dist/commonjs/elements/Image';
 import Menu from 'semantic-ui-react/dist/commonjs/collections/Menu';
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
+import Segment from 'semantic-ui-react/dist/commonjs/elements/Segment';
+import Label from 'semantic-ui-react/dist/commonjs/elements/Label';
 import Progress from 'semantic-ui-react/dist/commonjs/modules/Progress';
+import Portal from 'semantic-ui-react/dist/commonjs/addons/Portal';
+import Message from 'semantic-ui-react/dist/commonjs/collections/Message';
 import Icon from 'semantic-ui-react/dist/commonjs/elements/Icon';
 import I18n from '../../src/translations';
 import LocalePicker from './LocalePicker';
@@ -19,6 +23,7 @@ const Homepage = () => {
   const data = useContext(DataContext);
   const {
     locale,
+    stats,
     editSong,
     addSong,
     listSongs,
@@ -49,6 +54,8 @@ const Homepage = () => {
       setResume();
     }
   }, [songs]);
+
+  const showStats = () => {};
 
   return (
     <div className="container">
@@ -141,7 +148,33 @@ const Homepage = () => {
                   </Button.Group>
                 </Menu.Item>
               )}
-              <Menu.Item>{user}</Menu.Item>
+              <Menu.Item>
+                {user}
+                {stats && (
+                  <Portal
+                    closeOnTriggerClick
+                    openOnTriggerClick
+                    trigger={
+                      <Label color="red" onClick={showStats}>
+                        {stats.length}
+                      </Label>
+                    }>
+                    <div
+                      style={{
+                        position: 'fixed',
+                        zIndex: 9999,
+                        top: 54,
+                        right: 0
+                      }}>
+                      <Message
+                        header={I18n.t('ui.changes since last login')}
+                        list={stats}
+                        color="blue"
+                      />
+                    </div>
+                  </Portal>
+                )}
+              </Menu.Item>
               <Menu.Item>
                 <Button negative onClick={confirmLogout}>
                   {I18n.t('ui.logout')}

@@ -11,6 +11,7 @@
     "scale": "C C# D EB E F F# G G# A B H"
   },
   "ui": {
+    "changes since last login": "Änderungen seit Ihrem letzten Eintrag",
     "no items to show": "Keine Artikel zum Anzeigen",
     "patch log": "Änderungsprotokoll",
     "translated songs": "{{translated}} von {{total}} übersetzt",

@@ -9,6 +9,7 @@ if (!process.env.PORT) {
 import * as fs from 'fs';
 import * as path from 'path';
 import * as cp from 'child_process';
+import * as _ from 'lodash';
 import express from 'express';
 import cors from 'cors';
 import bcrypt from 'bcryptjs';
@@ -88,6 +89,10 @@ server.get('/', (req, res) => {
 
 const jwtSecretKey = 'mysuperSecretKEY';
 const domain = 'http://iresucito.herokuapp.com';
+
+const asyncMiddleware = fn => (req, res, next) => {
+  Promise.resolve(fn(req, res, next)).catch(next);
+};
 
 // Auth
 server.use(async (req, res, next) => {
@@ -203,54 +208,78 @@ server.get('/api/verify/:token/:email', (req, res) => {
   }
 });
 
-server.post('/api/login', (req, res) => {
-  const { email, password } = req.body;
-  const user = db
-    .get('users')
-    .find({ email: email })
-    .value();
+server.post(
+  '/api/login',
+  asyncMiddleware(async (req, res) => {
+    const { email, password } = req.body;
+    const user = db
+      .get('users')
+      .find({ email: email })
+      .value();
 
-  if (user) {
-    if (!user.isVerified) {
-      return res.status(401).json({
-        error: 'Unauthorized access. Account was not verified.'
-      });
-    }
-    try {
-      const result = bcrypt.compareSync(password, user.password);
-      if (result) {
-        const JWTToken = jwt.sign(
-          {
-            email: user.email
-          },
-          jwtSecretKey,
-          {
-            expiresIn: '2h'
-          }
-        );
-        // Registrar hora de inicio de sesion
-        db.get('users')
-          .find({ email: email })
-          .assign({ loggedInAt: Date.now() })
-          .write();
-        return res.status(200).json({
-          jwt: JWTToken
+    if (user) {
+      if (!user.isVerified) {
+        res.status(401).json({
+          error: 'Unauthorized access. Account was not verified.'
         });
       }
-      return res.status(401).json({
-        error: 'Unauthorized access'
-      });
-    } catch (err) {
-      res.status(401).json({
-        error: 'Unauthorized access'
+      try {
+        const result = bcrypt.compareSync(password, user.password);
+        if (result) {
+          const JWTToken = jwt.sign(
+            {
+              email: user.email
+            },
+            jwtSecretKey,
+            {
+              expiresIn: '2h'
+            }
+          );
+          var stats = [];
+          const patch = await readLocalePatch();
+          if (patch) {
+            var newItemsSinceLastLogin = [];
+            Object.keys(patch).forEach(key => {
+              const songPatch = patch[key];
+              Object.keys(songPatch).forEach(rawLoc => {
+                const item = songPatch[rawLoc];
+                if (item.date > user.loggedInAt) {
+                  newItemsSinceLastLogin.push(item);
+                }
+              });
+            });
+            const byAuthor = _.groupBy(newItemsSinceLastLogin, i => i.author);
+            Object.keys(byAuthor).forEach(author => {
+              stats.push(
+                `${byAuthor[author].length} songs patched by ${author}`
+              );
+            });
+          }
+          // Registrar hora de inicio de sesion
+          db.get('users')
+            .find({ email: email })
+            .assign({ loggedInAt: Date.now() })
+            .write();
+          return res.status(200).json({
+            jwt: JWTToken,
+            stats: stats
+          });
+        }
+        return res.status(401).json({
+          error: 'Unauthorized access'
+        });
+      } catch (err) {
+        res.status(401).json({
+          error: 'Unauthorized access'
+        });
+      }
+    } else {
+      res.status(500).json({
+        error: 'User or password wrong'
       });
     }
-  } else {
-    res.status(500).json({
-      error: 'User or password wrong'
-    });
-  }
-});
+  })
+);
 
 // Todas las rutas a partir de este punto
 // estan protegidas!
