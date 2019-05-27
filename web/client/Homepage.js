@@ -168,7 +168,11 @@ const Homepage = () => {
                       }}>
                       <Message
                         header={I18n.t('ui.changes since last login')}
-                        list={stats}
+                        list={stats.map(stat => {
+                          return I18n.t('ui.changed songs by author', {
+                            ...stat
+                          });
+                        })}
                         color="blue"
                       />
                     </div>

@@ -70,13 +70,13 @@ const SongList = () => {
             toggle
             active={filters.patched}
             onClick={() => toggleFilter('patched')}>
-            Patched
+            {I18n.t('ui.filters.patched')}
           </Button>
           <Button
             toggle
             active={filters.notTranslated}
             onClick={() => toggleFilter('notTranslated')}>
-            Not translated
+            {I18n.t('ui.filters.untranslated')}
           </Button>
           {filtered && (
             <strong style={{ marginLeft: 10 }}>

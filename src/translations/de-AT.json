@@ -12,6 +12,7 @@
   },
   "ui": {
     "changes since last login": "Änderungen seit Ihrem letzten Eintrag",
+    "changed songs by author": "{{count}} lieder von {{author}}",
     "no items to show": "Keine Artikel zum Anzeigen",
     "patch log": "Änderungsprotokoll",
     "translated songs": "{{translated}} von {{total}} übersetzt",
@@ -48,6 +49,10 @@
       "create": "Tabelle erstellen",
       "rename": "Tabelle umbenennen",
       "type": "Art der Tabelle"
+    },
+    "filters": {
+      "patched": "Gepatcht",
+      "untranslated": "Nicht übersetzt"
     },
     "export": {
       "type": "Art der Übertragung",

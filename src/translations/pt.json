@@ -12,6 +12,7 @@
   },
   "ui": {
     "changes since last login": "Alterações desde o seu último acesso",
+    "changed songs by author": "{{count}} cantos de {{author}}",
     "no items to show": "Nenhum item para mostrar",
     "patch log": "Log de correção",
     "translated songs": "{{translated}} de {{total}} traduzidos",
@@ -48,6 +49,10 @@
       "create": "Criar lista",
       "rename": "Renomear lista",
       "type": "Tipo de lista"
+    },
+    "filters": {
+      "patched": "Remendado",
+      "untranslated": "Não traduzido"
     },
     "export": {
       "type": "Tipo de exportação",

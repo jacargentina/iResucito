@@ -250,9 +250,7 @@ server.post(
             });
             const byAuthor = _.groupBy(newItemsSinceLastLogin, i => i.author);
             Object.keys(byAuthor).forEach(author => {
-              stats.push(
-                `${byAuthor[author].length} songs patched by ${author}`
-              );
+              stats.push({ author: author, count: byAuthor[author].length });
             });
           }
           // Registrar hora de inicio de sesion

@@ -12,6 +12,7 @@
   },
   "ui": {
     "changes since last login": "Changes since your last login",
+    "changed songs by author": "{{count}} songs by {{author}}",
     "no items to show": "No items to show",
     "patch log": "Patch log",
     "translated songs": "{{translated}} from {{total}} translated",
@@ -48,6 +49,10 @@
       "create": "Create List",
       "rename": "Rename List",
       "type": "List type"
+    },
+    "filters": {
+      "patched": "Patched",
+      "untranslated": "Untranslated"
     },
     "export": {
       "type": "Export type",
