@@ -10,10 +10,10 @@ import Form from 'semantic-ui-react/dist/commonjs/collections/Form';
 import Grid from 'semantic-ui-react/dist/commonjs/collections/Grid';
 import Message from 'semantic-ui-react/dist/commonjs/collections/Message';
 import { DataContext } from './DataContext';
-import I18n from '../../src/translations';
 import ApiMessage from './ApiMessage';
 import Loading from './Loading';
 import queryString from 'query-string';
+import I18n from '../../translations';
 
 const Login = () => {
   const parsed = queryString.parse(location.search);

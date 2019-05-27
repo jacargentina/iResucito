@@ -2,7 +2,7 @@
 import React from 'react';
 import SongViewFrame from './SongViewFrame';
 import ModalView from './ModalView';
-import I18n from '../translations';
+import I18n from '../../translations';
 
 const SongPreviewScreenDialog = (props: any) => {
   const { navigation } = props;

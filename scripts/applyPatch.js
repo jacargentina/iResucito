@@ -1,5 +1,5 @@
 // @flow
-import { getPropertyLocale } from '../src/common';
+import { getPropertyLocale } from '../common';
 const path = require('path');
 const fs = require('fs');
 require('colors');

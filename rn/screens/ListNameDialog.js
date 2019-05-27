@@ -4,7 +4,7 @@ import { Text, Input, Item, View, Button } from 'native-base';
 import { DataContext } from '../DataContext';
 import ModalView from './ModalView';
 import { getFriendlyTextForListType } from '../util';
-import I18n from '../translations';
+import I18n from '../../translations';
 import commonTheme from '../native-base-theme/variables/platform';
 
 const ListNameDialog = (props: any) => {

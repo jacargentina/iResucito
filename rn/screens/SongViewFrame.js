@@ -2,7 +2,7 @@
 import React from 'react';
 import { Dimensions, ScrollView } from 'react-native';
 import { Container, Content, Text } from 'native-base';
-import colors from '../colors';
+import colors from '../../colors';
 import color from 'color';
 import { NativeStyles } from '../util';
 import SongViewLines from './SongViewLines';

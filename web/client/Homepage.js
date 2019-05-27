@@ -10,13 +10,13 @@ import Progress from 'semantic-ui-react/dist/commonjs/modules/Progress';
 import Portal from 'semantic-ui-react/dist/commonjs/addons/Portal';
 import Message from 'semantic-ui-react/dist/commonjs/collections/Message';
 import Icon from 'semantic-ui-react/dist/commonjs/elements/Icon';
-import I18n from '../../src/translations';
 import LocalePicker from './LocalePicker';
 import Login from './Login';
 import SongList from './SongList';
 import SongEditor from './SongEditor';
 import ApiMessage from './ApiMessage';
-import { getPropertyLocale } from '../../src/common';
+import I18n from '../../translations';
+import { getPropertyLocale } from '../../common';
 
 const Homepage = () => {
   const data = useContext(DataContext);

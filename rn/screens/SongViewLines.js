@@ -2,7 +2,7 @@
 import React from 'react';
 import { Text } from 'native-base';
 import { NativeParser } from '../util';
-import I18n from '../translations';
+import I18n from '../../translations';
 
 const SongViewLines = (props: any) => {
   const { lines, transportToNote } = props;

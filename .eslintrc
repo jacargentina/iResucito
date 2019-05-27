@@ -26,7 +26,7 @@
   "rules": {
     "no-unused-vars": "warn",
     indent: [2, 2, { SwitchCase: 1 }],
-    'linebreak-style': ['error', 'unix'],
+    'linebreak-style': "off",
     quotes: ['error', 'single'],
     semi: ['error', 'always'],
     "react/jsx-closing-bracket-location": "off",

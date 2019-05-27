@@ -10,10 +10,10 @@ import {
   MenuOption,
   MenuTrigger
 } from 'react-native-popup-menu';
-import { getChordsScale } from '../common';
+import { getChordsScale } from '../../common';
 import { NativeParser, generatePDF } from '../util';
 import { DataContext } from '../DataContext';
-import I18n from '../translations';
+import I18n from '../../translations';
 import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
 import commonTheme from '../native-base-theme/variables/platform';
 import SongViewFrame from './SongViewFrame';

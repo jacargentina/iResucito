@@ -6,10 +6,10 @@ import Message from 'semantic-ui-react/dist/commonjs/collections/Message';
 import Modal from 'semantic-ui-react/dist/commonjs/modules/Modal';
 import Dropdown from 'semantic-ui-react/dist/commonjs/modules/Dropdown';
 import { DataContext } from './DataContext';
-import { getSongFileFromString } from '../../src/SongsProcessor';
-import { wayStages } from '../../src/common';
-import I18n from '../../src/translations';
 import SongListItem from './SongListItem';
+import { getSongFileFromString } from '../../SongsProcessor';
+import { wayStages } from '../../common';
+import I18n from '../../translations';
 
 const SongChangeMetadataDialog = () => {
   const data = useContext(DataContext);

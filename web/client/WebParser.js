@@ -1,5 +1,5 @@
 // @flow
-import { SongsParser } from '../../src/SongsParser';
+import { SongsParser } from '../../SongsParser';
 
 const FontSizes = {
   Notas: '10pt',

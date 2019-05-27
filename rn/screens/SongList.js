@@ -5,7 +5,7 @@ import { FlatList, Keyboard, Alert, View } from 'react-native';
 import { Text, ListItem, Icon, ActionSheet, Spinner } from 'native-base';
 import SearchBarView from './SearchBarView';
 import SongListItem from './SongListItem';
-import I18n from '../translations';
+import I18n from '../../translations';
 import { DataContext } from '../DataContext';
 import { generateMultiPagePDF } from '../util';
 import StackNavigatorOptions from '../navigation/StackNavigatorOptions';

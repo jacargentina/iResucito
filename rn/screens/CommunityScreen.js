@@ -8,7 +8,7 @@ import SearchBarView from './SearchBarView';
 import { DataContext } from '../DataContext';
 import CallToAction from './CallToAction';
 import commonTheme from '../native-base-theme/variables/platform';
-import I18n from '../translations';
+import I18n from '../../translations';
 import ContactListItem from './ContactListItem';
 import { contactFilterByText, ordenAlfabetico } from '../util';
 

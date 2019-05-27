@@ -5,8 +5,8 @@ import Grid from 'semantic-ui-react/dist/commonjs/collections/Grid';
 import Modal from 'semantic-ui-react/dist/commonjs/modules/Modal';
 import Message from 'semantic-ui-react/dist/commonjs/collections/Message';
 import { DataContext } from './DataContext';
-import I18n from '../../src/translations';
 import Loading from './Loading';
+import I18n from '../../translations';
 
 const PatchLogDialog = () => {
   const data = useContext(DataContext);

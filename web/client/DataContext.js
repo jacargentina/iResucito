@@ -1,9 +1,9 @@
 // @flow
 import React, { useState, useEffect } from 'react';
-import I18n from '../../src/translations';
+import I18n from '../../translations';
 import api from './api';
-import { getSongFileFromString } from '../../src/SongsProcessor';
-import { getLocalesForPicker, getValidatedLocale } from '../../src/common';
+import { getSongFileFromString } from '../../SongsProcessor';
+import { getLocalesForPicker, getValidatedLocale } from '../../common';
 
 export const DataContext: any = React.createContext();
 

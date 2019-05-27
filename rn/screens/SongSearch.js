@@ -4,7 +4,7 @@ import { AndroidBackHandler } from 'react-navigation-backhandler';
 import { FlatList, ScrollView, View } from 'react-native';
 import { Spinner, ListItem, Left, Body, Text, Separator } from 'native-base';
 import { DataContext } from '../DataContext';
-import I18n from '../translations';
+import I18n from '../../translations';
 import commonTheme from '../native-base-theme/variables/platform';
 
 const titleLocaleKey = 'screen_title.search';

@@ -5,13 +5,13 @@ import * as RNLocalize from 'react-native-localize';
 import Contacts from 'react-native-contacts';
 import RNFS from 'react-native-fs';
 import DeviceInfo from 'react-native-device-info';
-import I18n from './translations';
-import { SongsProcessor } from './SongsProcessor';
-import { SongsParser } from './SongsParser';
-import { SongsExtras } from './SongsExtras';
 import PDFLib, { PDFDocument, PDFPage } from 'react-native-pdf-lib';
 import normalize from 'normalize-strings';
-import { PdfWriter, pdfValues, PDFGenerator } from './common';
+import { PdfWriter, pdfValues, PDFGenerator } from '../common';
+import I18n from '../translations';
+import { SongsProcessor } from '../SongsProcessor';
+import { SongsParser } from '../SongsParser';
+import { SongsExtras } from '../SongsExtras';
 
 function checkContactsPermission(): Promise<boolean> {
   if (Platform.OS == 'android') {

@@ -5,7 +5,7 @@ import { Text, Icon } from 'native-base';
 import { FlatList, View } from 'react-native';
 import { DataContext } from '../DataContext';
 import commonTheme from '../native-base-theme/variables/platform';
-import I18n from '../translations';
+import I18n from '../../translations';
 import ContactListItem from './ContactListItem';
 import { contactFilterByText, ordenAlfabetico } from '../util';
 import SearchBarView from './SearchBarView';

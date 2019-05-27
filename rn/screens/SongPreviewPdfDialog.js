@@ -2,7 +2,7 @@
 import React from 'react';
 import ModalView from './ModalView';
 import SongViewPdf from './SongViewPdf';
-import I18n from '../translations';
+import I18n from '../../translations';
 
 const SongPreviewPdfDialog = (props: any) => {
   const { navigation } = props;

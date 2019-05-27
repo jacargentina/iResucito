@@ -5,7 +5,7 @@ import { Button, Text, Segment } from 'native-base';
 import ModalView from './ModalView';
 import SongList from './SongList';
 import { DataContext } from '../DataContext';
-import I18n from '../translations';
+import I18n from '../../translations';
 
 const SongChooserDialog = (props: any) => {
   const data = useContext(DataContext);

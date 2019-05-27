@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import { DataContext } from '../DataContext';
 import commonTheme from '../native-base-theme/variables/platform';
-import I18n from '../translations';
+import I18n from '../../translations';
 import ContactPhoto from './ContactPhoto';
 import {
   getContactsForImport,

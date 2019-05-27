@@ -1,10 +1,9 @@
 // @flow
 import React, { useState, useEffect } from 'react';
 import { Alert, Platform } from 'react-native';
-import Share from 'react-native-share';
+import Share from 'react-native-share'; // eslint-disable-line import/default
 import { Toast } from 'native-base';
 import RNFS from 'react-native-fs';
-import I18n from './translations';
 import badges from './badges';
 import { localdata, clouddata } from './data';
 import {
@@ -17,6 +16,7 @@ import {
   NativeSongs,
   NativeExtras
 } from './util';
+import I18n from '../translations';
 
 const merge = require('deepmerge');
 

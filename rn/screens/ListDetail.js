@@ -8,7 +8,7 @@ import ListDetailItem from './ListDetailItem';
 import { DataContext } from '../DataContext';
 import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import I18n from '../translations';
+import I18n from '../../translations';
 import commonTheme from '../native-base-theme/variables/platform';
 
 const ListDetail = (props: any) => {

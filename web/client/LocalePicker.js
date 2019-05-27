@@ -2,9 +2,9 @@
 import React, { Fragment, useContext } from 'react';
 import Menu from 'semantic-ui-react/dist/commonjs/collections/Menu';
 import Dropdown from 'semantic-ui-react/dist/commonjs/modules/Dropdown';
-import I18n from '../../src/translations';
 import { DataContext } from './DataContext';
-import { getValidatedLocale } from '../../src/common';
+import I18n from '../../translations';
+import { getValidatedLocale } from '../../common';
 
 const LocalePicker = () => {
   const data = useContext(DataContext);

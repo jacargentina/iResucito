@@ -14,7 +14,7 @@ import Swipeout from 'react-native-swipeout';
 import SearchBarView from './SearchBarView';
 import { DataContext } from '../DataContext';
 import CallToAction from './CallToAction';
-import I18n from '../translations';
+import I18n from '../../translations';
 import commonTheme from '../native-base-theme/variables/platform';
 
 const titleLocaleKey = 'screen_title.lists';

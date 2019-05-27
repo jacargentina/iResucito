@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { Text, Icon, H1, Button } from 'native-base';
 import DeviceInfo from 'react-native-device-info';
-import I18n from '../translations';
+import I18n from '../../translations';
 
 const pack = require('../../app.json');
 const cristo = require('../../img/cristo.jpg');

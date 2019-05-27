@@ -8,7 +8,7 @@ import {
   KeyboardAvoidingView,
   SafeAreaView
 } from 'react-native';
-import I18n from '../translations';
+import I18n from '../../translations';
 import commonTheme from '../native-base-theme/variables/platform';
 
 const ModalView = (props: any) => {

@@ -14,13 +14,13 @@ import {
 } from 'native-base';
 import Highlighter from 'react-native-highlight-words';
 import Collapsible from 'react-native-collapsible';
-import badges from '../badges';
 import commonTheme from '../native-base-theme/variables/platform';
 import textTheme from '../native-base-theme/components/Text';
 import StarRating from 'react-native-star-rating';
-import I18n from '../translations';
 import { DataContext } from '../DataContext';
-import { getPropertyLocale } from '../common';
+import badges from '../badges';
+import I18n from '../../translations';
+import { getPropertyLocale } from '../../common';
 
 const textStyles = textTheme(commonTheme);
 const noteStyles = textStyles['.note'];

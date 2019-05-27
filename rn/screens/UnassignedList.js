@@ -9,7 +9,7 @@ import commonTheme from '../native-base-theme/variables/platform';
 import textTheme from '../native-base-theme/components/Text';
 import { DataContext } from '../DataContext';
 import { NativeSongs } from '../util';
-import I18n from '../translations';
+import I18n from '../../translations';
 
 var textStyles = textTheme(commonTheme);
 var noteStyles = textStyles['.note'];

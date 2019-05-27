@@ -4,10 +4,10 @@ import fs from 'fs';
 import path from 'path';
 import osLocale from 'os-locale';
 import normalize from 'normalize-strings';
-import I18n from '../src/translations';
-import { pdfValues, PdfWriter, PDFGenerator } from '../src/common';
-import FolderSongs from '../src/FolderSongs';
-import { SongsParser } from '../src/SongsParser';
+import I18n from '../translations';
+import { pdfValues, PdfWriter, PDFGenerator } from '../common';
+import FolderSongs from '../FolderSongs';
+import { SongsParser } from '../SongsParser';
 
 const NodeStyles: SongStyles = {
   titulo: { color: '#ff0000' },

@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import Modal from 'semantic-ui-react/dist/commonjs/modules/Modal';
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
 import { DataContext } from './DataContext';
-import I18n from '../../src/translations';
+import I18n from '../../translations';
 
 const ConfirmDialog = () => {
   const data = useContext(DataContext);

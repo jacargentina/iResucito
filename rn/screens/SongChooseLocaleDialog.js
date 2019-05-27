@@ -5,7 +5,7 @@ import SearchBarView from './SearchBarView';
 import { Text, ListItem, Body, Left, Icon } from 'native-base';
 import { FlatList, Alert } from 'react-native';
 import { DataContext } from '../DataContext';
-import I18n from '../translations';
+import I18n from '../../translations';
 import commonTheme from '../native-base-theme/variables/platform';
 
 const SongChooseLocaleDialog = (props: any) => {

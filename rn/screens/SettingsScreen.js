@@ -15,9 +15,9 @@ import {
 } from 'native-base';
 import Switch from '../widgets/switch';
 import { DataContext } from '../DataContext';
-import I18n from '../translations';
+import I18n from '../../translations';
 import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
-import { getLocalesForPicker } from '../common';
+import { getLocalesForPicker } from '../../common';
 import { getDefaultLocale } from '../util';
 import commonTheme from '../native-base-theme/variables/platform';
 

@@ -6,7 +6,7 @@ import { withNavigation } from 'react-navigation';
 import { TextInput, View, Alert, ScrollView, Dimensions } from 'react-native';
 import { Text, Button, Icon, ActionSheet } from 'native-base';
 import { DataContext } from '../DataContext';
-import I18n from '../translations';
+import I18n from '../../translations';
 import commonTheme from '../native-base-theme/variables/platform';
 import useUndo from 'use-undo';
 import { NativeParser, generatePDF } from '../util';

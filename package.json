@@ -18,7 +18,7 @@
     "ios-ipad": "react-native run-ios --simulator='iPad Pro (9.7-inch)'",
     "test": "node node_modules/jest/bin/jest.js --watch",
     "postversion": "react-native-version --never-amend",
-    "lint": "eslint . --ext .js --ignore-pattern '/src/native-base-theme/*'",
+    "lint": "eslint . --ext .js",
     "react-devtools": "react-devtools",
     "genpdf": "babel-node ./scripts/songToPdf.js",
     "patch": "babel-node ./scripts/applyPatch.js"
@@ -126,7 +126,7 @@
   "eslintIgnore": [
     "android/**",
     "ios/**",
-    "native-base-theme/**",
+    "rn/native-base-theme/**",
     "web/dist/**"
   ],
   "rnpm": {

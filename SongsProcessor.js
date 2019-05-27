@@ -1,6 +1,6 @@
 //@flow
 import { getPropertyLocale } from './common';
-import SongsIndex from '../songs/index.json';
+import SongsIndex from './songs/index.json';
 
 export const getSongFileFromString = (str: string): SongFile => {
   var titulo = str.includes(' - ')

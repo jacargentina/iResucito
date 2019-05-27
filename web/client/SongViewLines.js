@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import I18n from '../../src/translations';
+import I18n from '../../translations';
 import { WebParser } from './WebParser';
 
 const SongViewLines = (props: any) => {

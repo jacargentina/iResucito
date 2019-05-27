@@ -2,8 +2,8 @@
 import React from 'react';
 import List from 'semantic-ui-react/dist/commonjs/elements/List';
 import Label from 'semantic-ui-react/dist/commonjs/elements/Label';
-import I18n from '../../src/translations';
-import colors from '../../src/colors';
+import I18n from '../../translations';
+import colors from '../../colors';
 
 const SongListItem = (props: any) => {
   const { titulo, fuente, stage } = props;
