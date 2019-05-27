@@ -10,7 +10,7 @@ const SongEditor = () => {
 
   useEffect(() => {
     if (editSong) {
-      setText(editSong.lines.join('\n'));
+      setText(editSong.fullText);
     }
   }, [editSong]);
 

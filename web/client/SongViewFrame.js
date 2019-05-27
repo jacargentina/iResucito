@@ -6,14 +6,13 @@ import SongViewLines from './SongViewLines';
 
 const SongViewFrame = (props: any) => {
   const { title, source, text } = props;
-  const lines = text;
   return (
     <Fragment>
       <Header style={WebStyles.titulo}>
         {title}
         <Header.Subheader style={WebStyles.fuente}>{source}</Header.Subheader>
       </Header>
-      <SongViewLines lines={lines} />
+      <SongViewLines lines={text} />
     </Fragment>
   );
 };
