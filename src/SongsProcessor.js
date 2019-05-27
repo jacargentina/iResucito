@@ -1,5 +1,5 @@
 //@flow
-import { textToLines, getPropertyLocale } from './common';
+import { getPropertyLocale } from './common';
 import SongsIndex from '../songs/index.json';
 
 export const getSongFileFromString = (str: string): SongFile => {
@@ -195,14 +195,12 @@ export class SongsProcessor {
       })
       .then(content => {
         if (typeof content == 'string') {
-          song.lines = textToLines(content);
-          song.fullText = song.lines.join(' ');
+          song.fullText = content;
         }
       })
       .catch(err => {
         console.log('loadSingleSong ERROR', song.key, err.message);
         song.error = err.message;
-        song.lines = [];
         song.fullText = '';
       });
   }

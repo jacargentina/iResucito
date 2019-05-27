@@ -1,6 +1,5 @@
 // @flow
 import React from 'react';
-import { getChordsDiff } from '../../src/common';
 import I18n from '../../src/translations';
 import { WebParser } from './WebParser';
 
@@ -11,19 +10,14 @@ const SongViewLines = (props: any) => {
     return null;
   }
 
-  var diff = 0;
-  if (transportToNote) {
-    diff = getChordsDiff(lines[0], transportToNote, I18n.locale);
-  }
-
-  const itemsToRender = WebParser.getSongLinesForRender(
+  const itemsToRender = WebParser.getForRender(
     lines,
     I18n.locale,
-    diff
+    transportToNote
   );
 
   // Ajuste final para renderizado en screen
-  var renderItems = itemsToRender.map<any>((it: SongLine, i) => {
+  var renderItems = itemsToRender.lines.items.map<any>((it: SongLine, i) => {
     if (it.sufijo) {
       var sufijo = (
         <span key={i + 'sufijo'} style={it.sufijoStyle}>

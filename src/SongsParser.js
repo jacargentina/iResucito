@@ -1,12 +1,28 @@
 // @flow
 import I18n from './translations';
-import { cleanChordsRegex, getChordsScale, isChordsLine } from './common';
+import { cleanChordsRegex, getChordsScale } from './common';
 
 export class SongsParser {
   songStyles: SongStyles;
 
   constructor(songStyles: SongStyles) {
     this.songStyles = songStyles;
+  }
+
+  isChordsLine(text: string, locale: string): boolean {
+    if (text === undefined || locale === undefined) {
+      throw 'isChordsLine: text or locale invalid';
+    }
+    const chords = getChordsScale(locale);
+    const line = text
+      .trim()
+      .replace(cleanChordsRegex, ' ')
+      .split(' ')
+      .filter(i => i.length > 0);
+    const onlyChords = line.filter(word => {
+      return chords.find(ch => ch.toLowerCase() === word.toLowerCase());
+    });
+    return onlyChords.length > 0 && onlyChords.length == line.length;
   }
 
   getSongLineFromString(text: string, locale: string): SongLine {
@@ -86,7 +102,7 @@ export class SongsParser {
         textoEspecial: false
       };
       return it;
-    } else if (isChordsLine(text, locale)) {
+    } else if (this.isChordsLine(text, locale)) {
       var it: SongLine = {
         case: 3,
         texto: text.trimRight(),
@@ -220,12 +236,53 @@ export class SongsParser {
     return convertedChords.join(' ');
   }
 
-  getSongLinesForRender(
-    lines: Array<string>,
+  getInitialChord(linea: string): string {
+    var pedazos = linea.split(' ');
+    var primero = pedazos[0];
+    return primero.replace(cleanChordsRegex, '');
+  }
+
+  getChordsDiff(
+    startingChordsLine: string,
+    targetChord: string,
+    locale: string
+  ): number {
+    const chords = getChordsScale(locale);
+    const initialChord = this.getInitialChord(startingChordsLine);
+    const st = chords.find(
+      ch => ch.toLowerCase() == initialChord.toLowerCase()
+    );
+    const start = chords.indexOf(st);
+    const tg = chords.find(ch => ch.toLowerCase() == targetChord.toLowerCase());
+    const target = chords.indexOf(tg);
+    return target - start;
+  }
+
+  getLinesSection(
+    content: string,
+    locale: string
+  ): { start: number, items: Array<string> } {
+    var items = content.replace('\r\n', '\n').split('\n');
+    var firstNotes = items.find(l => this.isChordsLine(l, locale));
+    var idx = -1;
+    if (firstNotes) {
+      idx = items.indexOf(firstNotes);
+      items.splice(0, idx);
+    }
+    return { start: idx, items };
+  }
+
+  getForRender(
+    content: string,
     locale: string,
-    transportDiff?: number
-  ): Array<SongLine> {
-    const firstPass = lines.map(l => {
+    transportToNote?: string
+  ): SongRendering {
+    const lSection = this.getLinesSection(content, locale);
+    var tDiff = 0;
+    if (transportToNote) {
+      tDiff = this.getChordsDiff(lSection.items[0], transportToNote, locale);
+    }
+    const lFirstPass = lSection.items.map(l => {
       const it = this.getSongLineFromString(l, locale);
       // Detectar indicadores de Nota al pie (un asterisco)
       if (it.texto.endsWith('\u2217')) {
@@ -233,48 +290,50 @@ export class SongsParser {
         it.sufijo = '\u2217';
         it.sufijoStyle = this.songStyles.lineaNotas;
       }
-      if (it.notas && transportDiff && transportDiff !== 0) {
-        it.texto = this.getChordsTransported(it.texto, transportDiff, locale);
+      if (it.notas && tDiff && tDiff !== 0) {
+        it.texto = this.getChordsTransported(it.texto, tDiff, locale);
       }
       return it;
     });
-    return firstPass.map((it, i) => {
+    const lResult = lFirstPass.map((it, i) => {
       // Ajustar margen izquierdo por prefijos
       if (it.prefijo == '' && i > 0) {
-        const prevIt = firstPass[i - 1];
+        const prevIt = lFirstPass[i - 1];
         if (prevIt.prefijo !== '') {
           it.prefijo = ' '.repeat(prevIt.prefijo.length);
         }
-      } else if (it.prefijo == '' && i < firstPass.length - 1) {
-        const nextIt = firstPass[i + 1];
+      } else if (it.prefijo == '' && i < lFirstPass.length - 1) {
+        const nextIt = lFirstPass[i + 1];
         if (nextIt.prefijo !== '') {
           it.prefijo = ' '.repeat(nextIt.prefijo.length);
         }
       }
       // Ajustar estilo para las notas
-      if (it.texto.trim() == '' && i < firstPass.length - 1) {
-        const nextItm = firstPass[i + 1];
+      if (it.texto.trim() == '' && i < lFirstPass.length - 1) {
+        const nextItm = lFirstPass[i + 1];
         if (nextItm.canto) {
           it.style = this.songStyles.lineaNotas;
           it.notas = true;
         }
       }
       // Ajustar estilo para las notas si es la primer linea
-      if (it.notas && i < firstPass.length - 1) {
-        const nextItmn = firstPass[i + 1];
+      if (it.notas && i < lFirstPass.length - 1) {
+        const nextItmn = lFirstPass[i + 1];
         if (nextItmn.prefijo !== '') {
           it.style = this.songStyles.lineaNotasConMargen;
           it.inicioParrafo = true;
         }
       }
       // Ajustar inicios de parrafo (lineas vacias)
-      if (!it.notas && it.texto === '' && i < firstPass.length - 1) {
-        const nextItmnn = firstPass[i + 1];
+      if (!it.notas && it.texto === '' && i < lFirstPass.length - 1) {
+        const nextItmnn = lFirstPass[i + 1];
         if (nextItmnn.notas || nextItmnn.texto !== '') {
           it.inicioParrafo = true;
         }
       }
       return it;
     });
+
+    return { lines: { start: lSection.start, items: lResult } };
   }
 }

@@ -61,6 +61,13 @@ declare type SongStyles = {
   prefijo: any
 };
 
+declare type SongRendering = {
+  lines: {
+    start: number,
+    items: Array<SongLine>
+  }
+};
+
 declare type SongLine = {
   texto: string,
   style: any,

@@ -160,17 +160,13 @@ if (!process.argv.slice(2).length) {
         FolderSongs.loadSingleSong(locale, song)
           .then(() => {
             console.log('Song: ', song.titulo);
-            var songlines = parser.getSongLinesForRender(
-              song.lines,
-              I18n.locale,
-              0
-            );
+            var fRend = parser.getForRender(song.fullText, I18n.locale);
             if (program.debug) {
-              console.log(songlines);
+              console.log(fRend);
             }
             const item: SongToPdf = {
               canto: song,
-              lines: songlines
+              lines: fRend.lines.items
             };
             generatePDF([item], opts);
           })
@@ -187,17 +183,13 @@ if (!process.argv.slice(2).length) {
         var items = [];
         songs.map(song => {
           if (song.files[I18n.locale]) {
-            var songlines = parser.getSongLinesForRender(
-              song.lines,
-              I18n.locale,
-              0
-            );
+            var fRend = parser.getForRender(song.fullText, I18n.locale);
             if (program.debug) {
-              console.log(songlines);
+              console.log(fRend);
             }
             const item: SongToPdf = {
               canto: song,
-              lines: songlines
+              lines: fRend.lines.items
             };
             items.push(item);
           } else {

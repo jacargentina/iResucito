@@ -131,13 +131,10 @@ const SongEditorDialog = (props: any) => {
             });
             break;
           case 1:
-            const itemsToRender = NativeParser.getSongLinesForRender(
-              lines.split('\n'),
-              I18n.locale
-            );
+            const fRender = NativeParser.getForRender(lines, I18n.locale);
             const item: SongToPdf = {
               canto: song,
-              lines: itemsToRender
+              lines: fRender.lines.items
             };
             const opts: ExportToPdfOptions = {
               createIndex: false,

@@ -10,7 +10,7 @@ import {
   MenuOption,
   MenuTrigger
 } from 'react-native-popup-menu';
-import { getChordsScale, getChordsDiff } from '../common';
+import { getChordsScale } from '../common';
 import { NativeParser, generatePDF } from '../util';
 import { DataContext } from '../DataContext';
 import I18n from '../translations';
@@ -96,8 +96,7 @@ const TransportNotesMenu = withNavigation((props: any) => {
             fontStyle: 'italic',
             textAlign: 'center',
             color: StackNavigatorOptions.headerTitleStyle.color
-          }}
-        >
+          }}>
           {transportNote}
         </Text>
       </Badge>
@@ -108,8 +107,7 @@ const TransportNotesMenu = withNavigation((props: any) => {
       <MenuOptions
         customStyles={{
           optionWrapper: { paddingHorizontal: 10, paddingVertical: 10 }
-        }}
-      >
+        }}>
         {transportNote != null && <MenuOption value={null} text="Original" />}
         {menuOptionItems}
       </MenuOptions>
@@ -134,19 +132,15 @@ const ViewPdf = withNavigation(props => {
         color: StackNavigatorOptions.headerTitleStyle.color
       }}
       onPress={() => {
-        const { lines } = song;
-        var diff = 0;
-        if (transportToNote) {
-          diff = getChordsDiff(lines[0], transportToNote, I18n.locale);
-        }
-        const itemsToRender = NativeParser.getSongLinesForRender(
-          lines,
+        const { fullText } = song;
+        const fRender = NativeParser.getForRender(
+          fullText,
           I18n.locale,
-          diff
+          transportToNote
         );
         const item: SongToPdf = {
           canto: song,
-          lines: itemsToRender
+          lines: fRender.lines.items
         };
         const opts: ExportToPdfOptions = {
           createIndex: false,
