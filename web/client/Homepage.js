@@ -150,7 +150,7 @@ const Homepage = () => {
               )}
               <Menu.Item>
                 {user}
-                {stats && (
+                {stats && stats.length > 0 && (
                   <Portal
                     closeOnTriggerClick
                     openOnTriggerClick
