@@ -243,7 +243,7 @@ server.post(
               const songPatch = patch[key];
               Object.keys(songPatch).forEach(rawLoc => {
                 const item = songPatch[rawLoc];
-                if (item.date > user.loggedInAt) {
+                if (item.date > (user.loggedInAt || 0)) {
                   newItemsSinceLastLogin.push(item);
                 }
               });
