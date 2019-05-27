@@ -1,5 +1,6 @@
 // @flow
 import React, { Fragment, useEffect, useState, useContext } from 'react';
+import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
 import List from 'semantic-ui-react/dist/commonjs/elements/List';
 import Input from 'semantic-ui-react/dist/commonjs/elements/Input';
 import Label from 'semantic-ui-react/dist/commonjs/elements/Label';
@@ -13,6 +14,10 @@ import colors from '../../src/colors';
 const SongList = () => {
   const data = useContext(DataContext);
   const { locale, editSong, loadSong, listSongs, songs, apiLoading } = data;
+  const [filters, setFilters] = useState({
+    patched: false,
+    notTranslated: false
+  });
   const [filtered, setFiltered] = useState();
   const [searchTerm, setSearchTerm] = useState('');
   const [debouncedTerm] = useDebounce(searchTerm, 800);
@@ -22,29 +27,63 @@ const SongList = () => {
   useEffect(() => {
     // filtrar
     if (songs) {
-      const filtering = songs.filter(
+      const filterByText = songs.filter(
         song =>
           song.titulo.toLowerCase().includes(debouncedTerm.toLowerCase()) ||
           song.fuente.toLowerCase().includes(debouncedTerm.toLowerCase())
       );
-      const result = filtering.map(song => {
+
+      const addNotTranslated = filterByText.map(song => {
         song.notTranslated =
           notUsingSpanish &&
           !song.patched &&
           !getPropertyLocale(song.files, I18n.locale);
         return song;
       });
+
+      const result = addNotTranslated.filter(song => {
+        const flags = Object.keys(filters).map(name => {
+          return filters[name] === false || song[name] === filters[name];
+        });
+        return flags.every(f => f === true);
+      });
+
       setFiltered(result);
     }
-  }, [debouncedTerm, songs]);
+  }, [debouncedTerm, songs, filters]);
 
   useEffect(() => {
     listSongs();
   }, [locale]);
 
+  const toggleFilter = name => {
+    setFilters(currentFilters => {
+      return { ...currentFilters, [name]: !currentFilters[name] };
+    });
+  };
+
   return (
     <Fragment>
       <div style={{ padding: 10, display: editSong ? 'none' : null }}>
+        <div style={{ margin: 5 }}>
+          <Button
+            toggle
+            active={filters.patched}
+            onClick={() => toggleFilter('patched')}>
+            Patched
+          </Button>
+          <Button
+            toggle
+            active={filters.notTranslated}
+            onClick={() => toggleFilter('notTranslated')}>
+            Not translated
+          </Button>
+          {filtered && (
+            <strong style={{ marginLeft: 10 }}>
+              {I18n.t('ui.list total songs', { total: filtered.length })}
+            </strong>
+          )}
+        </div>
         <Input
           fluid
           icon="search"
@@ -53,17 +92,8 @@ const SongList = () => {
           value={searchTerm}
           loading={apiLoading}
         />
-        {filtered && (
-          <Fragment>
-            {filtered.length === 0 && (
-              <Message>{I18n.t('ui.no songs found')}</Message>
-            )}
-            {filtered.length > 0 && (
-              <div style={{ margin: 5, fontWeight: 'bold' }}>
-                {I18n.t('ui.list total songs', { total: filtered.length })}
-              </div>
-            )}
-          </Fragment>
+        {filtered && filtered.length === 0 && (
+          <Message>{I18n.t('ui.no songs found')}</Message>
         )}
       </div>
       <List
@@ -84,7 +114,7 @@ const SongList = () => {
                 onClick={() => loadSong(song)}
                 className="hoverable">
                 <List.Content>
-                  <List.Header>{song.nombre}</List.Header>
+                  <List.Header>{song.titulo}</List.Header>
                   <List.Description>{song.fuente}</List.Description>
                   <div style={{ marginTop: 8 }}>
                     {song.stage && (

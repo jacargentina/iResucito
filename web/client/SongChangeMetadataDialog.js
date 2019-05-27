@@ -87,7 +87,6 @@ const SongChangeMetadataDialog = () => {
         <h5>{I18n.t('search_title.stage')}</h5>
         <Dropdown
           style={{ marginLeft: 10 }}
-          clearable={true}
           onChange={(e, { value }) => setStage(value)}
           selection
           value={stage}
@@ -105,7 +104,7 @@ const SongChangeMetadataDialog = () => {
             <h5>{I18n.t('ui.original song')}</h5>
             {editSong && (
               <SongListItem
-                nombre={editSong.titulo}
+                titulo={editSong.titulo}
                 fuente={editSong.fuente}
                 stage={editSong.stage}
               />
@@ -115,7 +114,7 @@ const SongChangeMetadataDialog = () => {
             <h5>{I18n.t('ui.patched song')}</h5>
             {changeSong && (
               <SongListItem
-                nombre={changeSong.titulo}
+                titulo={changeSong.titulo}
                 fuente={changeSong.fuente}
                 stage={stage}
               />

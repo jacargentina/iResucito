@@ -6,12 +6,12 @@ import I18n from '../../src/translations';
 import colors from '../../src/colors';
 
 const SongListItem = (props: any) => {
-  const { nombre, fuente, stage } = props;
+  const { titulo, fuente, stage } = props;
   return (
     <List>
       <List.Item>
         <List.Content>
-          <List.Header>{nombre}</List.Header>
+          <List.Header>{titulo}</List.Header>
           <List.Description>{fuente}</List.Description>
           {stage && (
             <Label style={{ backgroundColor: colors[stage], marginTop: 10 }}>

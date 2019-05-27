@@ -64,7 +64,7 @@ const PatchLogDialog = () => {
       </Modal.Content>
       <Modal.Actions>
         <Button negative onClick={() => setActiveDialog()}>
-          {I18n.t('ui.cancel')}
+          {I18n.t('ui.close')}
         </Button>
       </Modal.Actions>
     </Modal>
