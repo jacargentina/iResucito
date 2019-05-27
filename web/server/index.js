@@ -210,7 +210,11 @@ server.get('/api/verify/:token/:email', (req, res) => {
 
 server.post(
   '/api/login',
-  asyncMiddleware(async (req, res) => {
+  asyncMiddleware(async (
+    req,
+    res,
+    /* eslint-disable no-unused-vars */ next
+  ) => {
     const { email, password } = req.body;
     const user = db
       .get('users')

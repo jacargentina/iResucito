@@ -5,7 +5,6 @@ import Header from 'semantic-ui-react/dist/commonjs/elements/Header';
 import Image from 'semantic-ui-react/dist/commonjs/elements/Image';
 import Menu from 'semantic-ui-react/dist/commonjs/collections/Menu';
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
-import Segment from 'semantic-ui-react/dist/commonjs/elements/Segment';
 import Label from 'semantic-ui-react/dist/commonjs/elements/Label';
 import Progress from 'semantic-ui-react/dist/commonjs/modules/Progress';
 import Portal from 'semantic-ui-react/dist/commonjs/addons/Portal';

@@ -1,5 +1,5 @@
 // Detectar 2 columnas y transformar en 1 sola
-import { isChordsLine } from '../src/SongsProcessor';
+import { isChordsLine } from '../src/common';
 var inquirer = require('inquirer');
 var path = require('path');
 var fs = require('fs');

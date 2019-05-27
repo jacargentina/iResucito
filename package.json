@@ -126,7 +126,8 @@
   "eslintIgnore": [
     "android/**",
     "ios/**",
-    "native-base-theme/**"
+    "native-base-theme/**",
+    "web/dist/**"
   ],
   "rnpm": {
     "assets": [
