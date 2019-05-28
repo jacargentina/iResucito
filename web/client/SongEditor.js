@@ -1,20 +1,18 @@
 // @flow
-import React, { useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import TextArea from 'semantic-ui-react/dist/commonjs/addons/TextArea';
-import { DataContext } from './DataContext';
+import { EditContext } from './EditContext';
 import SongViewFrame from './SongViewFrame';
 import { useDebounce } from 'use-debounce';
 
 const SongEditor = () => {
-  const data = useContext(DataContext);
-  const { editSong, text, setText, setHasChanges, songFile } = data;
+  const edit = useContext(EditContext);
+  const { editSong, text, setText, setHasChanges, songFile } = edit;
   const [debouncedText] = useDebounce(text, 800);
 
-  useEffect(() => {
-    if (editSong) {
-      setText(editSong.fullText);
-    }
-  }, [editSong]);
+  if (!editSong) {
+    return null;
+  }
 
   return (
     <div

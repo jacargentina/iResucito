@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import I18n from '../../translations';
 import api from './api';
-import { getSongFileFromString } from '../../SongsProcessor';
 import { getLocalesForPicker, getValidatedLocale } from '../../common';
 
 export const DataContext: any = React.createContext();
@@ -29,16 +28,10 @@ const DataContextWrapper = (props: any) => {
   const [stats, setStats] = useState();
   const [songs, setSongs] = useState();
   const [editSong, setEditSong] = useState();
-  const [patchLogs, setPatchLogs] = useState();
-  const [text, setText] = useState('');
-  const [rename, setRename] = useState();
-  const [stage, setStage] = useState();
   const [apiLoading, setApiLoading] = useState(false);
   const [apiResult, setApiResult] = useState();
-  const [hasChanges, setHasChanges] = useState(false);
   const [confirmData, setConfirmData] = useState();
   const [activeDialog, setActiveDialog] = useState();
-  const [songFile, setSongFile] = useState();
 
   const handleApiError = err => {
     setApiLoading(false);
@@ -87,14 +80,7 @@ const DataContextWrapper = (props: any) => {
 
   const logout = () => {
     setUser();
-    closeEditor();
     delete api.defaults.headers.Authorization;
-  };
-
-  const closeEditor = () => {
-    setEditSong();
-    setText('');
-    setRename();
   };
 
   const listSongs = () => {
@@ -106,21 +92,6 @@ const DataContextWrapper = (props: any) => {
       .then(result => {
         setApiLoading(false);
         setSongs(result.data);
-      })
-      .catch(err => {
-        handleApiError(err);
-      });
-  };
-
-  const loadSong = song => {
-    setApiResult();
-    setApiLoading(true);
-    return api
-      .get(`/api/song/${song.key}/${locale}`)
-      .then(result => {
-        setApiLoading(false);
-        setEditSong(result.data);
-        setHasChanges(false);
       })
       .catch(err => {
         handleApiError(err);
@@ -142,117 +113,15 @@ const DataContextWrapper = (props: any) => {
           stage: 'precatechumenate'
         };
         setEditSong(newSong);
-        setHasChanges(false);
       })
       .catch(err => {
         handleApiError(err);
       });
   };
 
-  const confirmClose = () => {
-    if (hasChanges) {
-      setConfirmData({
-        message: I18n.t('ui.discard confirmation'),
-        yes: () => {
-          closeEditor();
-        }
-      });
-    } else {
-      closeEditor();
-    }
-  };
-
-  const confirmLogout = () => {
-    if (hasChanges) {
-      setConfirmData({
-        message: I18n.t('ui.discard confirmation'),
-        yes: () => {
-          logout();
-        }
-      });
-    } else {
-      logout();
-    }
-  };
-
-  const confirmRemovePatch = () => {
-    setConfirmData({
-      message: I18n.t('ui.discard confirmation'),
-      yes: () => {
-        if (editSong) {
-          setApiResult();
-          setApiLoading(true);
-          return api
-            .delete(`/api/song/${editSong.key}/${locale}`)
-            .then(() => {
-              setApiLoading(false);
-              // Recargar sin los cambios previos
-              loadSong(editSong);
-              // Recargar la lista
-              listSongs();
-            })
-            .catch(err => {
-              handleApiError(err);
-            });
-        }
-      }
-    });
-  };
-
-  const applyChanges = () => {
-    if (editSong) {
-      var patch = {
-        lines: text,
-        rename: rename || editSong.nombre,
-        stage: stage || editSong.stage
-      };
-      setApiResult();
-      setApiLoading(true);
-      return api
-        .post(`/api/song/${editSong.key}/${locale}`, patch)
-        .then(() => {
-          setApiLoading(false);
-          setHasChanges(false);
-          // Recargar el canto
-          loadSong(editSong);
-          // Recargar la lista
-          listSongs();
-        })
-        .catch(err => {
-          handleApiError(err);
-        });
-    }
-  };
-
-  useEffect(() => {
-    if (editSong && activeDialog === 'patchLog') {
-      setPatchLogs();
-      setApiResult();
-      setApiLoading(true);
-      api
-        .get(`/api/patches/${editSong.key}/${locale}`)
-        .then(result => {
-          setApiLoading(false);
-          setPatchLogs(result.data);
-        })
-        .catch(err => {
-          handleApiError(err);
-        });
-    }
-  }, [editSong, activeDialog]);
-
   useEffect(() => {
     applyLocale(locale);
   }, [locale]);
-
-  useEffect(() => {
-    if (rename) {
-      const parsed = getSongFileFromString(rename);
-      setSongFile(parsed);
-    } else {
-      setSongFile(editSong);
-    }
-  }, [rename, editSong]);
 
   return (
     <DataContext.Provider
@@ -262,34 +131,23 @@ const DataContextWrapper = (props: any) => {
         locale,
         setLocale,
         editSong,
-        patchLogs,
-        songFile,
-        loadSong,
         setEditSong,
         confirmData,
         setConfirmData,
-        confirmClose,
-        hasChanges,
-        setHasChanges,
-        applyChanges,
-        confirmRemovePatch,
-        text,
-        setText,
-        rename,
-        setRename,
-        stage,
-        setStage,
         activeDialog,
         setActiveDialog,
         apiLoading,
+        setApiLoading,
         apiResult,
+        setApiResult,
+        handleApiError,
         songs,
         listSongs,
         addSong,
         signUp,
         login,
-        user,
-        confirmLogout
+        logout,
+        user
       }}>
       {props.children}
     </DataContext.Provider>

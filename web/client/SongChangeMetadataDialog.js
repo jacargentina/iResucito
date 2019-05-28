@@ -6,6 +6,7 @@ import Message from 'semantic-ui-react/dist/commonjs/collections/Message';
 import Modal from 'semantic-ui-react/dist/commonjs/modules/Modal';
 import Dropdown from 'semantic-ui-react/dist/commonjs/modules/Dropdown';
 import { DataContext } from './DataContext';
+import { EditContext } from './EditContext';
 import SongListItem from './SongListItem';
 import { getSongFileFromString } from '../../SongsProcessor';
 import { wayStages } from '../../common';
@@ -13,16 +14,11 @@ import I18n from '../../translations';
 
 const SongChangeMetadataDialog = () => {
   const data = useContext(DataContext);
-  const {
-    editSong,
-    activeDialog,
-    setActiveDialog,
-    rename,
-    setRename,
-    stage,
-    setStage,
-    setHasChanges
-  } = data;
+  const { activeDialog, setActiveDialog } = data;
+
+  const edit = useContext(EditContext);
+  const { editSong, rename, setRename, stage, setStage, setHasChanges } = edit;
+
   const [actionEnabled, setActionEnabled] = useState(false);
   const [tipMessages, setTipMessages] = useState([]);
   const [name, setName] = useState('');

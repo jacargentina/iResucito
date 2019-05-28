@@ -6,6 +6,7 @@ import Input from 'semantic-ui-react/dist/commonjs/elements/Input';
 import Label from 'semantic-ui-react/dist/commonjs/elements/Label';
 import Message from 'semantic-ui-react/dist/commonjs/collections/Message';
 import { DataContext } from './DataContext';
+import { EditContext } from './EditContext';
 import { useDebounce } from 'use-debounce';
 import { getPropertyLocale } from '../../common';
 import I18n from '../../translations';
@@ -13,7 +14,7 @@ import colors from '../../colors';
 
 const SongList = () => {
   const data = useContext(DataContext);
-  const { locale, editSong, loadSong, listSongs, songs, apiLoading } = data;
+  const { locale, listSongs, songs, apiLoading } = data;
   const [filters, setFilters] = useState({
     patched: false,
     notTranslated: false
@@ -23,6 +24,12 @@ const SongList = () => {
   const [debouncedTerm] = useDebounce(searchTerm, 800);
 
   const notUsingSpanish = I18n.locale.split('-')[0] !== 'es';
+
+  const toggleFilter = name => {
+    setFilters(currentFilters => {
+      return { ...currentFilters, [name]: !currentFilters[name] };
+    });
+  };
 
   useEffect(() => {
     // filtrar
@@ -50,18 +57,18 @@ const SongList = () => {
 
       setFiltered(result);
     }
-    console.log('list 1');
   }, [debouncedTerm, songs, filters]);
 
   useEffect(() => {
     listSongs();
   }, [locale]);
 
-  const toggleFilter = name => {
-    setFilters(currentFilters => {
-      return { ...currentFilters, [name]: !currentFilters[name] };
-    });
-  };
+  const edit = useContext(EditContext);
+  const { loadSong, editSong } = edit;
+
+  if (editSong) {
+    return null;
+  }
 
   return (
     <Fragment>

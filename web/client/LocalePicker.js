@@ -3,13 +3,21 @@ import React, { Fragment, useContext } from 'react';
 import Menu from 'semantic-ui-react/dist/commonjs/collections/Menu';
 import Dropdown from 'semantic-ui-react/dist/commonjs/modules/Dropdown';
 import { DataContext } from './DataContext';
+import { EditContext } from './EditContext';
 import I18n from '../../translations';
 import { getValidatedLocale } from '../../common';
 
 const LocalePicker = () => {
   const data = useContext(DataContext);
   const { availableLocales, locale, setLocale } = data;
+
+  const edit = useContext(EditContext);
+  const { editSong } = edit;
   const current = getValidatedLocale(availableLocales, locale);
+
+  if (editSong) {
+    return null;
+  }
 
   return (
     <Fragment>
