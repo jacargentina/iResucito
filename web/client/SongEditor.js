@@ -1,14 +1,26 @@
 // @flow
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import TextArea from 'semantic-ui-react/dist/commonjs/addons/TextArea';
+import Input from 'semantic-ui-react/dist/commonjs/elements/Input';
 import { EditContext } from './EditContext';
 import SongViewFrame from './SongViewFrame';
-import { useDebounce } from 'use-debounce';
+import { useDebouncedCallback } from 'use-debounce';
 
 const SongEditor = () => {
   const edit = useContext(EditContext);
   const { editSong, text, setText, setHasChanges, songFile } = edit;
-  const [debouncedText] = useDebounce(text, 800);
+  const [debouncedText, setDebouncedText] = useState(text);
+  const [callback, , callPending] = useDebouncedCallback(
+    text => setDebouncedText(text),
+    800
+  );
+
+  useEffect(() => {
+    if (editSong) {
+      callback(text);
+      callPending();
+    }
+  }, [editSong]);
 
   if (!editSong) {
     return null;
@@ -38,6 +50,7 @@ const SongEditor = () => {
         onChange={(e, data) => {
           setHasChanges(true);
           setText(data.value);
+          callback(data.value);
         }}
       />
       <div

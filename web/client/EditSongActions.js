@@ -30,13 +30,12 @@ const EditSongActions = () => {
         <Button primary onClick={() => setActiveDialog('changeMetadata')}>
           {I18n.t('ui.edit')}
         </Button>
-        {editSong.patched ||
-          (editSong.added && (
-            <Button negative onClick={confirmRemovePatch}>
-              <Icon name="trash" />
-              {I18n.t('ui.remove patch')}
-            </Button>
-          ))}
+        {(editSong.patched || editSong.added) && (
+          <Button negative onClick={confirmRemovePatch}>
+            <Icon name="trash" />
+            {I18n.t('ui.remove patch')}
+          </Button>
+        )}
         <Button primary onClick={() => setActiveDialog('patchLog')}>
           {I18n.t('ui.patch log')}
         </Button>

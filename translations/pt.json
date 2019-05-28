@@ -6,7 +6,7 @@
     "men": "H.",
     "women": "M.",
     "children": "C.",
-    "clamp": "Porca {{clamp}}° traste"
+    "clamp": "Capo {{clamp}}° traste"
   },
   "chords": {
     "scale": "Do Do# Re Mib Mi Fa Fa# Sol Sol# La Sib Si"

@@ -25,6 +25,7 @@ import 'semantic-ui-css/components/popup.min.css';
 import 'semantic-ui-css/components/progress.min.css';
 import 'semantic-ui-css/components/transition.min.css';
 import 'semantic-ui-css/components/segment.min.css';
+import './App.css';
 
 import App from './App';
 
