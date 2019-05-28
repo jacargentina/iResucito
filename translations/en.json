@@ -5,7 +5,8 @@
     "priest": "P.",
     "men": "M.",
     "women": "W.",
-    "children": "?"
+    "children": "Ch.",
+    "clamp": "Capo on the {{clamp}} fret"
   },
   "chords": {
     "scale": "C C# D EB E F F# G G# A B H"

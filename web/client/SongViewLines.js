@@ -1,23 +1,11 @@
 // @flow
 import React from 'react';
-import I18n from '../../translations';
-import { WebParser } from './WebParser';
 
 const SongViewLines = (props: any) => {
-  const { lines, transportToNote } = props;
-
-  if (!lines) {
-    return null;
-  }
-
-  const itemsToRender = WebParser.getForRender(
-    lines,
-    I18n.locale,
-    transportToNote
-  );
+  const { lines } = props;
 
   // Ajuste final para renderizado en screen
-  var renderItems = itemsToRender.lines.items.map<any>((it: SongLine, i) => {
+  var renderItems = lines.items.map<any>((it: SongLine, i) => {
     if (it.sufijo) {
       var sufijo = (
         <span key={i + 'sufijo'} style={it.sufijoStyle}>

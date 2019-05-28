@@ -5,7 +5,8 @@
     "priest": "P.",
     "men": "U.",
     "women": "D.",
-    "children": "N."
+    "children": "N.",
+    "clamp": "{{clamp}} tasto"
   },
   "chords": {
     "scale": "Do Do# Re Mib Mi Fa Fa# Sol Sol# La Sib Si"

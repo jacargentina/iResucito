@@ -5,7 +5,8 @@
     "priest": "P.",
     "men": "M.",
     "women": "F.",
-    "children": "E."
+    "children": "E.",
+    "clamp": "Ceta {{clamp}} frette"
   },
   "chords": {
     "scale": "Do Do# Re Mib Mi Fa Fa# Sol Sol# La Sib Si"

@@ -5,7 +5,8 @@
     "priest": "P.",
     "men": "H.",
     "women": "M.",
-    "children": "C."
+    "children": "C.",
+    "clamp": "Porca {{clamp}}° traste"
   },
   "chords": {
     "scale": "Do Do# Re Mib Mi Fa Fa# Sol Sol# La Sib Si"
