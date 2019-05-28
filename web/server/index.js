@@ -317,8 +317,17 @@ server.get('/api/song/:key/:locale', async (req, res) => {
   const patch = await readLocalePatch();
   const songs = FolderSongs.getSongsMeta(locale, patch);
   const song = songs.find(s => s.key === key);
-  if (song) {
-    await FolderSongs.loadSingleSong(locale, song, patch);
+  if (!song)
+    return res.status(500).json({
+      error: `Song ${key} not valid`
+    });
+
+  await FolderSongs.loadSingleSong(locale, song, patch);
+  if (song.error) {
+    return res.status(500).json({
+      error: song.error
+    });
+  } else {
     res.json(song);
   }
 });

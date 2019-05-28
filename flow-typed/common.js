@@ -134,6 +134,7 @@ declare type Song = {
   lines: Array<string>,
   patched?: boolean,
   patchedTitle?: string,
+  added?: boolean,
   error?: any,
   rating: number
 };

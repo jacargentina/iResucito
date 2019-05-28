@@ -52,6 +52,7 @@
       "type": "List type"
     },
     "filters": {
+      "patched": "Added",
       "patched": "Patched",
       "untranslated": "Untranslated"
     },

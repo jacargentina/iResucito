@@ -9,7 +9,7 @@ import { getPropertyLocale } from '../../common';
 
 const SongsResume = () => {
   const data = useContext(DataContext);
-  const { locale, songs } = data;
+  const { songs } = data;
 
   const edit = useContext(EditContext);
   const { editSong } = edit;
@@ -18,7 +18,7 @@ const SongsResume = () => {
   useEffect(() => {
     if (songs) {
       const withLocale = songs.filter(song => {
-        return song.patched || !!getPropertyLocale(song.files, locale);
+        return song.patched || !!getPropertyLocale(song.files, I18n.locale);
       });
       var result = { translated: withLocale.length, total: songs.length };
       setResume({

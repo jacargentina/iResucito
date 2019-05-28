@@ -52,6 +52,7 @@
       "type": "Art der Tabelle"
     },
     "filters": {
+      "added": "Hinzugefügt",
       "patched": "Gepatcht",
       "untranslated": "Nicht übersetzt"
     },

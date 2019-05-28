@@ -17,13 +17,14 @@ const SongList = () => {
   const { locale, listSongs, songs, apiLoading } = data;
   const [filters, setFilters] = useState({
     patched: false,
+    added: false,
     notTranslated: false
   });
   const [filtered, setFiltered] = useState();
   const [searchTerm, setSearchTerm] = useState('');
   const [debouncedTerm] = useDebounce(searchTerm, 800);
 
-  const notUsingSpanish = I18n.locale.split('-')[0] !== 'es';
+  const notUsingSpanish = locale.split('-')[0] !== 'es';
 
   const toggleFilter = name => {
     setFilters(currentFilters => {
@@ -44,7 +45,7 @@ const SongList = () => {
         song.notTranslated =
           notUsingSpanish &&
           !song.patched &&
-          !getPropertyLocale(song.files, I18n.locale);
+          !getPropertyLocale(song.files, locale);
         return song;
       });
 
@@ -79,6 +80,12 @@ const SongList = () => {
             active={filters.patched}
             onClick={() => toggleFilter('patched')}>
             {I18n.t('ui.filters.patched')}
+          </Button>
+          <Button
+            toggle
+            active={filters.added}
+            onClick={() => toggleFilter('added')}>
+            {I18n.t('ui.filters.added')}
           </Button>
           <Button
             toggle
@@ -135,6 +142,11 @@ const SongList = () => {
                     {song.patched && (
                       <Label color="violet" size="small">
                         patched
+                      </Label>
+                    )}
+                    {song.added && (
+                      <Label color="violet" size="small">
+                        added
                       </Label>
                     )}
                     {song.notTranslated && (

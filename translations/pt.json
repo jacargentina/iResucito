@@ -52,6 +52,7 @@
       "type": "Tipo de lista"
     },
     "filters": {
+      "added": "Adicionado",
       "patched": "Remendado",
       "untranslated": "Não traduzido"
     },

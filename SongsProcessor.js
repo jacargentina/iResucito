@@ -128,25 +128,26 @@ export class SongsProcessor {
       Object.keys(patch).forEach(pKey => {
         if (!songs.find(s => s.key === pKey) && patch) {
           var sPatch = patch[pKey];
-          var files: { [string]: string } = {};
-          var stages: { [string]: string } = {};
-          Object.keys(sPatch).map(locale => {
-            var patchData: SongPatchData = sPatch[locale];
+          if (sPatch[rawLoc]) {
+            var patchData: SongPatchData = sPatch[rawLoc];
+            var files: { [string]: string } = {};
+            var stages: { [string]: string } = {};
             if (patchData.rename) {
-              files[locale] = patchData.rename;
+              files[rawLoc] = patchData.rename;
             }
             if (patchData.stage) {
-              stages[locale] = patchData.stage;
+              stages[rawLoc] = patchData.stage;
             }
-          });
-          var info: Song = {};
-          info.key = pKey;
-          info.files = files;
-          info.stages = stages;
-          const bestFile = this.getBestFileForLocale(files, rawLoc);
-          const parsed = getSongFileFromString(bestFile.name);
-          this.assignInfoFromFile(info, parsed);
-          songs.push(info);
+            var info: Song = {};
+            info.key = pKey;
+            info.files = files;
+            info.stages = stages;
+            info.added = true;
+            const bestFile = this.getBestFileForLocale(files, rawLoc);
+            const parsed = getSongFileFromString(bestFile.name);
+            this.assignInfoFromFile(info, parsed);
+            songs.push(info);
+          }
         }
       });
     }
@@ -186,9 +187,10 @@ export class SongsProcessor {
     return Promise.resolve()
       .then(() => {
         if (patch && patch.hasOwnProperty(song.key)) {
-          var loc = getPropertyLocale(patch[song.key], rawLoc);
-          if (loc && patch[song.key][loc].hasOwnProperty('lines')) {
-            return patch[song.key][loc].lines;
+          const sPatch = patch[song.key];
+          var loc = getPropertyLocale(sPatch, rawLoc);
+          if (loc && sPatch[loc].hasOwnProperty('lines')) {
+            return sPatch[loc].lines;
           }
         }
         return this.songReader(song.path);
