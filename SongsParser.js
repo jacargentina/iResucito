@@ -258,18 +258,30 @@ export class SongsParser {
     return target - start;
   }
 
-  getLinesSection(
-    content: string,
-    locale: string
-  ): { start: number, items: Array<string> } {
+  getSections(content: string, locale: string): SongSections {
+    var head = [];
     var items = content.replace('\r\n', '\n').split('\n');
     var firstNotes = items.find(l => this.isChordsLine(l, locale));
     var idx = -1;
     if (firstNotes) {
       idx = items.indexOf(firstNotes);
-      items.splice(0, idx);
+      head = items.splice(0, idx);
     }
-    return { start: idx, items };
+    return { head: head, bodyStart: idx, body: items };
+  }
+
+  getHeadings(head: Array<string>): { [string]: string } {
+    var res = head
+      .filter(h => h.includes(':'))
+      .map(h => h.split(':'))
+      .reduce((obj, items) => {
+        if (items[1]) {
+          obj[items[0]] = items[1].trim();
+        }
+        return obj;
+      }, {});
+
+    return res;
   }
 
   getForRender(
@@ -277,12 +289,12 @@ export class SongsParser {
     locale: string,
     transportToNote?: string
   ): SongRendering {
-    const lSection = this.getLinesSection(content, locale);
+    const { head, bodyStart, body } = this.getSections(content, locale);
     var tDiff = 0;
     if (transportToNote) {
-      tDiff = this.getChordsDiff(lSection.items[0], transportToNote, locale);
+      tDiff = this.getChordsDiff(body[0], transportToNote, locale);
     }
-    const lFirstPass = lSection.items.map(l => {
+    const lFirstPass = body.map(l => {
       const it = this.getSongLineFromString(l, locale);
       // Detectar indicadores de Nota al pie (un asterisco)
       if (it.texto.endsWith('\u2217')) {
@@ -334,6 +346,12 @@ export class SongsParser {
       return it;
     });
 
-    return { lines: { start: lSection.start, items: lResult } };
+    const validHeadings = this.getHeadings(head);
+
+    const renderRes = {
+      clamp: validHeadings.clamp,
+      lines: { start: bodyStart, items: lResult }
+    };
+    return renderRes;
   }
 }

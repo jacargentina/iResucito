@@ -50,6 +50,7 @@ const SongList = () => {
 
       setFiltered(result);
     }
+    console.log('list 1');
   }, [debouncedTerm, songs, filters]);
 
   useEffect(() => {
@@ -64,7 +65,7 @@ const SongList = () => {
 
   return (
     <Fragment>
-      <div style={{ padding: 10, display: editSong ? 'none' : null }}>
+      <div style={{ padding: 10 }}>
         <div style={{ margin: 5 }}>
           <Button
             toggle

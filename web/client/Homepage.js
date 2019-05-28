@@ -186,7 +186,7 @@ const Homepage = () => {
             </Menu.Menu>
           </Menu>
           <ApiMessage />
-          <SongList />
+          {!editSong && <SongList />}
           {editSong && <SongEditor />}
         </Fragment>
       )}

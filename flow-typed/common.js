@@ -61,9 +61,16 @@ declare type SongStyles = {
   prefijo: any
 };
 
+declare type SongSections = {
+  head: Array<string>,
+  bodyStart: number,
+  body: Array<string>
+};
+
 declare type SongRendering = {
+  clamp?: number,
   lines: {
-    start: number,
+    bodyStart: number,
     items: Array<SongLine>
   }
 };

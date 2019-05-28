@@ -3,10 +3,12 @@ import React, { useEffect, useContext } from 'react';
 import TextArea from 'semantic-ui-react/dist/commonjs/addons/TextArea';
 import { DataContext } from './DataContext';
 import SongViewFrame from './SongViewFrame';
+import { useDebounce } from 'use-debounce';
 
 const SongEditor = () => {
   const data = useContext(DataContext);
   const { editSong, text, setText, setHasChanges, songFile } = data;
+  const [debouncedText] = useDebounce(text, 800);
 
   useEffect(() => {
     if (editSong) {
@@ -50,7 +52,7 @@ const SongEditor = () => {
         <SongViewFrame
           title={songFile && songFile.titulo}
           source={songFile && songFile.fuente}
-          text={text}
+          text={debouncedText}
         />
       </div>
     </div>
