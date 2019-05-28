@@ -382,28 +382,6 @@
       },
       "created": false,
       "updated": true
-    },
-    {
-      "locale": "de-AT",
-      "author": "fd_colautti@mac.com",
-      "created": false,
-      "updated": true
-    }
-  ],
-  "190": [
-    {
-      "locale": "de-AT",
-      "author": "fd_colautti@mac.com",
-      "created": false,
-      "updated": true
-    }
-  ],
-  "193": [
-    {
-      "locale": "de-AT",
-      "author": "fd_colautti@mac.com",
-      "created": false,
-      "updated": true
     }
   ]
 }

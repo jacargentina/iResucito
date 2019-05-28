@@ -17,9 +17,9 @@ const SongViewFrame = (props: any) => {
         <Header.Subheader style={WebStyles.fuente}>{source}</Header.Subheader>
       </Header>
       {fRender.clamp && (
-        <Header style={WebStyles.fuente}>
+        <p style={WebStyles.fuente}>
           {I18n.t('songs.clamp', { clamp: fRender.clamp })}
-        </Header>
+        </p>
       )}
       <SongViewLines lines={fRender.lines} />
     </Fragment>
