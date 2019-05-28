@@ -350,7 +350,7 @@ export class SongsParser {
 
     const renderRes = {
       clamp: validHeadings.clamp,
-      lines: { start: bodyStart, items: lResult }
+      lines: { bodyStart: bodyStart, items: lResult }
     };
     return renderRes;
   }

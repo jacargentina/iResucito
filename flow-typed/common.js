@@ -68,7 +68,7 @@ declare type SongSections = {
 };
 
 declare type SongRendering = {
-  clamp?: number,
+  clamp?: string,
   lines: {
     bodyStart: number,
     items: Array<SongLine>
