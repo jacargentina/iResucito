@@ -5,7 +5,7 @@ const SongViewLines = (props: any) => {
   const { lines } = props;
 
   // Ajuste final para renderizado en screen
-  var renderItems = lines.items.map<any>((it: SongLine, i) => {
+  var renderItems = lines.map<any>((it: SongLine, i) => {
     if (it.sufijo) {
       var sufijo = (
         <span key={i + 'sufijo'} style={it.sufijoStyle}>

@@ -8,7 +8,7 @@ import I18n from '../../translations';
 
 const SongViewFrame = (props: any) => {
   const { title, source, text } = props;
-  const [fRender, setFRender] = useState<any>();
+  const [fRender, setFRender] = useState<?SongRendering>();
   const [suggestions, setSuggestions] = useState([]);
 
   useEffect(() => {
@@ -32,12 +32,7 @@ const SongViewFrame = (props: any) => {
         {title}
         <Header.Subheader style={WebStyles.fuente}>{source}</Header.Subheader>
       </Header>
-      {fRender && fRender.clamp && (
-        <p style={WebStyles.fuente}>
-          {I18n.t('songs.clamp', { clamp: fRender.clamp })}
-        </p>
-      )}
-      {fRender && <SongViewLines lines={fRender.lines} />}
+      {fRender && <SongViewLines lines={fRender.items} />}
     </Fragment>
   );
 };
