@@ -8,12 +8,12 @@ import I18n from '../../translations';
 
 const SongViewFrame = (props: any) => {
   const { title, source, text } = props;
-  const [fRender, setFRender] = useState();
+  const [fRender, setFRender] = useState<any>();
   const [suggestions, setSuggestions] = useState([]);
 
   useEffect(() => {
     const result = WebParser.getForRender(text, I18n.locale);
-    const { bodyStart } = result.lines;
+    // const { bodyStart } = result.lines;
     // setSuggestions([
     //   bodyStart === -1
     //     ? 'Cant detect first line for notes?'

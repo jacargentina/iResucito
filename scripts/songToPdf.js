@@ -12,6 +12,7 @@ import { SongsParser } from '../SongsParser';
 const NodeStyles: SongStyles = {
   titulo: { color: '#ff0000' },
   fuente: { color: '#777777' },
+  lineaClamp: { color: '#ff0000' },
   lineaNotas: { color: '#ff0000' },
   lineaTituloNotaEspecial: { color: '#ff0000' },
   lineaNotaEspecial: { color: '#444444' },
@@ -166,7 +167,7 @@ if (!process.argv.slice(2).length) {
             }
             const item: SongToPdf = {
               canto: song,
-              lines: fRend.lines.items
+              lines: fRend.items
             };
             generatePDF([item], opts);
           })
@@ -189,7 +190,7 @@ if (!process.argv.slice(2).length) {
             }
             const item: SongToPdf = {
               canto: song,
-              lines: fRend.lines.items
+              lines: fRend.items
             };
             items.push(item);
           } else {

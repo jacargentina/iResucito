@@ -24,7 +24,7 @@ const SongDetail = (props: any) => {
   const { navigation } = props;
   const [transportNote, setTransportNote] = useState();
 
-  var song = navigation.getParam('song');
+  var song: Song = navigation.getParam('song');
 
   useEffect(() => {
     navigation.setParams({ transportNote, setTransportNote });
@@ -39,7 +39,7 @@ const SongDetail = (props: any) => {
     }
   }, []);
 
-  return <SongViewFrame {...song} transportNote={transportNote} />;
+  return <SongViewFrame {...song} transportToNote={transportNote} />;
 };
 
 const TransportNotesMenu = withNavigation((props: any) => {
@@ -140,7 +140,7 @@ const ViewPdf = withNavigation(props => {
         );
         const item: SongToPdf = {
           canto: song,
-          lines: fRender.lines.items
+          lines: fRender.items
         };
         const opts: ExportToPdfOptions = {
           createIndex: false,

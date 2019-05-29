@@ -1,24 +1,12 @@
 // @flow
 import React from 'react';
 import { Text } from 'native-base';
-import { NativeParser } from '../util';
-import I18n from '../../translations';
 
 const SongViewLines = (props: any) => {
-  const { lines, transportToNote } = props;
-
-  if (!lines) {
-    return null;
-  }
-
-  const itemsToRender = NativeParser.getForRender(
-    lines,
-    I18n.locale,
-    transportToNote
-  );
+  const { lines } = props;
 
   // Ajuste final para renderizado en screen
-  var renderItems = itemsToRender.lines.items.map<any>((it: SongLine, i) => {
+  var renderItems = lines.items.map<any>((it: SongLine, i) => {
     if (it.sufijo) {
       var sufijo = (
         <Text key={i + 'sufijo'} style={it.sufijoStyle}>

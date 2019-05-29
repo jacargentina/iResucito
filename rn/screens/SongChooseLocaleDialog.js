@@ -47,8 +47,8 @@ const SongChooseLocaleDialog = (props: any) => {
   }, [I18n.locale, songs, localeSongs, textFilter]);
 
   const localeFileSelected = item => {
-    var song = targetType == 'file' ? item : target;
-    var songFile = targetType == 'file' ? target : item;
+    var song: Song = targetType == 'file' ? item : target;
+    var songFile: SongFile = targetType == 'file' ? target : item;
 
     // Definir funcion para llamar
     // en ambos casos del dialogo

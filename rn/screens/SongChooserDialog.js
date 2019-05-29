@@ -73,7 +73,7 @@ const SongChooserDialog = (props: any) => {
     }
   }, [scrollToActive, scrollToActiveRef, scrollToActiveX]);
 
-  const songAssign = song => {
+  const songAssign = (song: Song) => {
     if (target.listName && target.listKey !== undefined) {
       setList(target.listName, target.listKey, song.nombre);
       navigation.goBack(null);

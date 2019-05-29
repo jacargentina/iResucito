@@ -52,6 +52,7 @@ declare type SongRatingFile = {
 declare type SongStyles = {
   titulo: any,
   fuente: any,
+  lineaClamp: any,
   lineaNotas: any,
   lineaTituloNotaEspecial: any,
   lineaNotaEspecial: any,
@@ -59,20 +60,6 @@ declare type SongStyles = {
   lineaNormal: any,
   pageNumber: any,
   prefijo: any
-};
-
-declare type SongSections = {
-  head: Array<string>,
-  bodyStart: number,
-  body: Array<string>
-};
-
-declare type SongRendering = {
-  clamp?: string,
-  lines: {
-    bodyStart: number,
-    items: Array<SongLine>
-  }
 };
 
 declare type SongLine = {
@@ -89,6 +76,11 @@ declare type SongLine = {
   notaEspecial: boolean,
   tituloEspecial: boolean,
   textoEspecial: boolean
+};
+
+declare type SongRendering = {
+  firstNotes?: number,
+  items: Array<SongLine>
 };
 
 // nombre: el nombre completo del archivo, sin la extension .txt
@@ -131,7 +123,6 @@ declare type Song = {
   files: { [string]: string },
   stages?: { [string]: string },
   fullText: string,
-  lines: Array<string>,
   patched?: boolean,
   patchedTitle?: string,
   added?: boolean,

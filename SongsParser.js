@@ -25,179 +25,192 @@ export class SongsParser {
     return onlyChords.length > 0 && onlyChords.length == line.length;
   }
 
-  getSongLineFromString(text: string, locale: string): SongLine {
-    const psalmistAndAssembly = `${I18n.t('songs.psalmist', {
-      locale
-    })} ${I18n.t('songs.assembly', {
-      locale
-    })}`;
-    if (text.startsWith(psalmistAndAssembly)) {
-      // Indicador de Salmista Y Asamblea
-      var secondPoint = 4;
+  getSongItem(text: string, locale: string): SongLine {
+    if (text.startsWith('clamp:')) {
+      const clampValue = text.substring(text.indexOf(':'));
       var it: SongLine = {
-        case: 1,
-        texto: text.substring(secondPoint + 1).trim(),
-        style: this.songStyles.lineaNormal,
-        prefijo: text.substring(0, secondPoint + 1) + ' ',
-        prefijoStyle: this.songStyles.prefijo,
-        sufijo: '',
-        sufijoStyle: null,
-        canto: false,
-        cantoConIndicador: true,
-        notas: false,
-        inicioParrafo: false,
-        notaEspecial: false,
-        tituloEspecial: false,
-        textoEspecial: false
-      };
-      return it;
-    } else if (
-      text.startsWith(
-        I18n.t('songs.psalmist', {
-          locale
-        })
-      ) ||
-      text.startsWith(
-        I18n.t('songs.assembly', {
-          locale
-        })
-      ) ||
-      text.startsWith(
-        I18n.t('songs.priest', {
-          locale
-        })
-      ) ||
-      text.startsWith(
-        I18n.t('songs.men', {
-          locale
-        })
-      ) ||
-      text.startsWith(
-        I18n.t('songs.women', {
-          locale
-        })
-      ) ||
-      text.startsWith(
-        I18n.t('songs.children', {
-          locale
-        })
-      )
-    ) {
-      // Indicador de Salmista, Asamblea, Presbitero, Hombres, Mujeres, etc
-      var pointIndex = text.indexOf('.');
-      var it: SongLine = {
-        case: 2,
-        texto: text.substring(pointIndex + 1).trim(),
-        style: this.songStyles.lineaNormal,
-        prefijo: text.substring(0, pointIndex + 1) + ' ',
-        prefijoStyle: this.songStyles.prefijo,
-        sufijo: '',
-        sufijoStyle: null,
-        canto: false,
-        cantoConIndicador: true,
-        notas: false,
-        inicioParrafo: false,
-        notaEspecial: false,
-        tituloEspecial: false,
-        textoEspecial: false
-      };
-      return it;
-    } else if (this.isChordsLine(text, locale)) {
-      var it: SongLine = {
-        case: 3,
-        texto: text.trimRight(),
-        style: this.songStyles.lineaNotas,
+        texto: I18n.t('songs.clamp', { clamp: clampValue }),
+        style: this.songStyles.lineaClamp,
         prefijo: '',
         prefijoStyle: null,
         sufijo: '',
         sufijoStyle: null,
         canto: false,
-        cantoConIndicador: true,
-        notas: true,
-        inicioParrafo: false,
-        notaEspecial: false,
-        tituloEspecial: false,
-        textoEspecial: false
-      };
-      return it;
-    } else if (text.startsWith('\u2217')) {
-      // Nota especial
-      var it: SongLine = {
-        case: 4,
-        texto: text.substring(1).trim(),
-        style: this.songStyles.lineaNotaEspecial,
-        prefijo: '\u2217  ',
-        prefijoStyle: this.songStyles.lineaNotas,
-        sufijo: '',
-        sufijoStyle: null,
-        canto: false,
-        cantoConIndicador: true,
-        notas: false,
-        inicioParrafo: false,
-        notaEspecial: true,
-        tituloEspecial: false,
-        textoEspecial: false
-      };
-      return it;
-    } else if (text.trim().startsWith('**') && text.trim().endsWith('**')) {
-      // Titulo especial
-      var it: SongLine = {
-        case: 5,
-        canto: false,
-        texto: text.replace(/\*/g, '').trim(),
-        style: this.songStyles.lineaTituloNotaEspecial,
-        prefijo: '',
-        prefijoStyle: null,
-        sufijo: '',
-        sufijoStyle: null,
-        canto: false,
-        cantoConIndicador: true,
-        notas: false,
-        inicioParrafo: true,
-        notaEspecial: false,
-        tituloEspecial: true,
-        textoEspecial: false
-      };
-      return it;
-    } else if (text.startsWith('-')) {
-      // Texto especial
-      var it: SongLine = {
-        case: 6,
-        canto: false,
-        texto: text.replace('-', '').trim(),
-        style: this.songStyles.lineaNotaEspecial,
-        prefijo: '',
-        prefijoStyle: null,
-        sufijo: '',
-        sufijoStyle: null,
-        canto: false,
-        cantoConIndicador: true,
+        cantoConIndicador: false,
         notas: false,
         inicioParrafo: false,
         notaEspecial: false,
         tituloEspecial: false,
-        textoEspecial: true
+        textoEspecial: false
       };
       return it;
     } else {
-      var texto = text.trimRight();
-      var it: SongLine = {
-        case: 7,
-        texto: texto,
-        style: this.songStyles.lineaNormal,
-        prefijo: '',
-        prefijoStyle: null,
-        sufijo: '',
-        sufijoStyle: null,
-        canto: texto !== '',
-        cantoConIndicador: texto !== '',
-        notas: false,
-        inicioParrafo: false,
-        notaEspecial: false,
-        tituloEspecial: false,
-        textoEspecial: false
-      };
-      return it;
+      const psalmistAndAssembly = `${I18n.t('songs.psalmist', {
+        locale
+      })} ${I18n.t('songs.assembly', {
+        locale
+      })}`;
+      if (text.startsWith(psalmistAndAssembly)) {
+        // Indicador de Salmista Y Asamblea
+        var secondPoint = 4;
+        var it: SongLine = {
+          texto: text.substring(secondPoint + 1).trim(),
+          style: this.songStyles.lineaNormal,
+          prefijo: text.substring(0, secondPoint + 1) + ' ',
+          prefijoStyle: this.songStyles.prefijo,
+          sufijo: '',
+          sufijoStyle: null,
+          canto: false,
+          cantoConIndicador: true,
+          notas: false,
+          inicioParrafo: false,
+          notaEspecial: false,
+          tituloEspecial: false,
+          textoEspecial: false
+        };
+        return it;
+      } else if (
+        text.startsWith(
+          I18n.t('songs.psalmist', {
+            locale
+          })
+        ) ||
+        text.startsWith(
+          I18n.t('songs.assembly', {
+            locale
+          })
+        ) ||
+        text.startsWith(
+          I18n.t('songs.priest', {
+            locale
+          })
+        ) ||
+        text.startsWith(
+          I18n.t('songs.men', {
+            locale
+          })
+        ) ||
+        text.startsWith(
+          I18n.t('songs.women', {
+            locale
+          })
+        ) ||
+        text.startsWith(
+          I18n.t('songs.children', {
+            locale
+          })
+        )
+      ) {
+        // Indicador de Salmista, Asamblea, Presbitero, Hombres, Mujeres, etc
+        var pointIndex = text.indexOf('.');
+        var it: SongLine = {
+          texto: text.substring(pointIndex + 1).trim(),
+          style: this.songStyles.lineaNormal,
+          prefijo: text.substring(0, pointIndex + 1) + ' ',
+          prefijoStyle: this.songStyles.prefijo,
+          sufijo: '',
+          sufijoStyle: null,
+          canto: false,
+          cantoConIndicador: true,
+          notas: false,
+          inicioParrafo: false,
+          notaEspecial: false,
+          tituloEspecial: false,
+          textoEspecial: false
+        };
+        return it;
+      } else if (this.isChordsLine(text, locale)) {
+        var it: SongLine = {
+          texto: text.trimRight(),
+          style: this.songStyles.lineaNotas,
+          prefijo: '',
+          prefijoStyle: null,
+          sufijo: '',
+          sufijoStyle: null,
+          canto: false,
+          cantoConIndicador: true,
+          notas: true,
+          inicioParrafo: false,
+          notaEspecial: false,
+          tituloEspecial: false,
+          textoEspecial: false
+        };
+        return it;
+      } else if (text.startsWith('\u2217')) {
+        // Nota especial
+        var it: SongLine = {
+          texto: text.substring(1).trim(),
+          style: this.songStyles.lineaNotaEspecial,
+          prefijo: '\u2217  ',
+          prefijoStyle: this.songStyles.lineaNotas,
+          sufijo: '',
+          sufijoStyle: null,
+          canto: false,
+          cantoConIndicador: true,
+          notas: false,
+          inicioParrafo: false,
+          notaEspecial: true,
+          tituloEspecial: false,
+          textoEspecial: false
+        };
+        return it;
+      } else if (text.trim().startsWith('**') && text.trim().endsWith('**')) {
+        // Titulo especial
+        var it: SongLine = {
+          canto: false,
+          texto: text.replace(/\*/g, '').trim(),
+          style: this.songStyles.lineaTituloNotaEspecial,
+          prefijo: '',
+          prefijoStyle: null,
+          sufijo: '',
+          sufijoStyle: null,
+          canto: false,
+          cantoConIndicador: true,
+          notas: false,
+          inicioParrafo: true,
+          notaEspecial: false,
+          tituloEspecial: true,
+          textoEspecial: false
+        };
+        return it;
+      } else if (text.startsWith('-')) {
+        // Texto especial
+        var it: SongLine = {
+          canto: false,
+          texto: text.replace('-', '').trim(),
+          style: this.songStyles.lineaNotaEspecial,
+          prefijo: '',
+          prefijoStyle: null,
+          sufijo: '',
+          sufijoStyle: null,
+          canto: false,
+          cantoConIndicador: true,
+          notas: false,
+          inicioParrafo: false,
+          notaEspecial: false,
+          tituloEspecial: false,
+          textoEspecial: true
+        };
+        return it;
+      } else {
+        var texto = text.trimRight();
+        var it: SongLine = {
+          texto: texto,
+          style: this.songStyles.lineaNormal,
+          prefijo: '',
+          prefijoStyle: null,
+          sufijo: '',
+          sufijoStyle: null,
+          canto: texto !== '',
+          cantoConIndicador: texto !== '',
+          notas: false,
+          inicioParrafo: false,
+          notaEspecial: false,
+          tituloEspecial: false,
+          textoEspecial: false
+        };
+        return it;
+      }
     }
   }
 
@@ -258,44 +271,20 @@ export class SongsParser {
     return target - start;
   }
 
-  getSections(content: string, locale: string): SongSections {
-    var head = [];
-    var items = content.replace('\r\n', '\n').split('\n');
-    var firstNotes = items.find(l => this.isChordsLine(l, locale));
-    var idx = -1;
-    if (firstNotes) {
-      idx = items.indexOf(firstNotes);
-      head = items.splice(0, idx);
-    }
-    return { head: head, bodyStart: idx, body: items };
-  }
-
-  getHeadings(head: Array<string>): { [string]: string } {
-    var res = head
-      .filter(h => h.includes(':'))
-      .map(h => h.split(':'))
-      .reduce((obj, items) => {
-        if (items[1]) {
-          obj[items[0]] = items[1].trim();
-        }
-        return obj;
-      }, {});
-
-    return res;
-  }
-
   getForRender(
     content: string,
     locale: string,
     transportToNote?: string
   ): SongRendering {
-    const { head, bodyStart, body } = this.getSections(content, locale);
+    var items = content.replace('\r\n', '\n').split('\n');
+    var fNotes = items.find(l => this.isChordsLine(l, locale));
+    var fNotesIdx = fNotes ? items.indexOf(fNotes) : undefined;
     var tDiff = 0;
-    if (transportToNote) {
-      tDiff = this.getChordsDiff(body[0], transportToNote, locale);
+    if (fNotesIdx && transportToNote) {
+      tDiff = this.getChordsDiff(items[fNotesIdx], transportToNote, locale);
     }
-    const lFirstPass = body.map(l => {
-      const it = this.getSongLineFromString(l, locale);
+    const lFirstPass = items.map(l => {
+      const it = this.getSongItem(l, locale);
       // Detectar indicadores de Nota al pie (un asterisco)
       if (it.texto.endsWith('\u2217')) {
         it.texto = it.texto.replace('\u2217', '');
@@ -311,12 +300,12 @@ export class SongsParser {
       // Ajustar margen izquierdo por prefijos
       if (it.prefijo == '' && i > 0) {
         const prevIt = lFirstPass[i - 1];
-        if (prevIt.prefijo !== '') {
+        if (!prevIt.indicator && prevIt.prefijo !== '') {
           it.prefijo = ' '.repeat(prevIt.prefijo.length);
         }
       } else if (it.prefijo == '' && i < lFirstPass.length - 1) {
         const nextIt = lFirstPass[i + 1];
-        if (nextIt.prefijo !== '') {
+        if (!nextIt.indicator && nextIt.prefijo !== '') {
           it.prefijo = ' '.repeat(nextIt.prefijo.length);
         }
       }
@@ -345,12 +334,9 @@ export class SongsParser {
       }
       return it;
     });
-
-    const validHeadings = this.getHeadings(head);
-
     const renderRes = {
-      clamp: validHeadings.clamp,
-      lines: { bodyStart: bodyStart, items: lResult }
+      firstNotes: fNotesIdx,
+      items: lResult
     };
     return renderRes;
   }

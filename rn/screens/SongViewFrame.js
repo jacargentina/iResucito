@@ -4,15 +4,19 @@ import { Dimensions, ScrollView } from 'react-native';
 import { Container, Content, Text } from 'native-base';
 import colors from '../../colors';
 import color from 'color';
-import { NativeStyles } from '../util';
+import { NativeParser, NativeStyles } from '../util';
+import I18n from '../../translations';
 import SongViewLines from './SongViewLines';
 
 const SongViewFrame = (props: any) => {
-  const { error, stage, titulo, fuente, lines, transportNote } = props;
+  const { title, stage, source, text, transportToNote, error } = props;
   const backColor = color(colors[stage]);
   const background = backColor.lighten(0.1).string();
   const margin = 10;
   const minWidth = Dimensions.get('window').width - margin * 2;
+
+  const fRender = NativeParser.getForRender(text, I18n.locale, transportToNote);
+
   return (
     <Container style={{ backgroundColor: background }}>
       <ScrollView
@@ -26,12 +30,10 @@ const SongViewFrame = (props: any) => {
             style={{
               minWidth: minWidth
             }}>
-            <Text style={NativeStyles.titulo}>{titulo}</Text>
-            <Text style={NativeStyles.fuente}>{fuente}</Text>
+            <Text style={NativeStyles.titulo}>{title}</Text>
+            <Text style={NativeStyles.fuente}>{source}</Text>
             {error && <Text>{error}</Text>}
-            {!error && (
-              <SongViewLines lines={lines} transportToNote={transportNote} />
-            )}
+            {!error && <SongViewLines lines={fRender.items} />}
           </Content>
         </ScrollView>
       </ScrollView>

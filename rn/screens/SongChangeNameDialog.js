@@ -10,7 +10,7 @@ import { getSongFileFromString } from '../../SongsProcessor';
 
 const SongChangeNameDialog = (props: any) => {
   const { navigation } = props;
-  const song = navigation.getParam('song');
+  const song: Song = navigation.getParam('song');
   const nameToEdit = navigation.getParam('nameToEdit');
   const action = navigation.getParam('action');
 

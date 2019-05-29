@@ -14,7 +14,7 @@ import { NativeParser, generatePDF } from '../util';
 const SongEditorDialog = (props: any) => {
   const data = useContext(DataContext);
   const { navigation } = props;
-  const song = navigation.getParam('song');
+  const song: Song = navigation.getParam('song');
 
   const { getSongLocalePatch, setSongPatch } = data.songsMeta;
   const [selection, setSelection] = useState({ start: 0, end: 0 });
@@ -74,7 +74,7 @@ const SongEditorDialog = (props: any) => {
 
   const reload = () => {
     getSongLocalePatch(song).then(patchObj => {
-      var lines = song.lines.join('\n');
+      var lines = song.fullText;
       if (
         patchObj &&
         patchObj[I18n.locale] &&
@@ -134,7 +134,7 @@ const SongEditorDialog = (props: any) => {
             const fRender = NativeParser.getForRender(lines, I18n.locale);
             const item: SongToPdf = {
               canto: song,
-              lines: fRender.lines.items
+              lines: fRender.items
             };
             const opts: ExportToPdfOptions = {
               createIndex: false,

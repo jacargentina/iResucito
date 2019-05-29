@@ -149,6 +149,11 @@ export const stylesObj: SongStyles = {
     fontSize: fontSizeTexto - 1,
     marginBottom: 8
   },
+  lineaClamp: {
+    fontFamily: 'Franklin Gothic Medium',
+    color: '#ff0000',
+    fontSize: fontSizeNotas
+  },
   lineaNotas: {
     fontFamily: 'Franklin Gothic Medium',
     color: '#ff0000',
@@ -322,7 +327,7 @@ export const generateMultiPagePDF = (
   var items = songs.map<SongToPdf>(s => {
     return {
       canto: s,
-      lines: NativeParser.getForRender(s.fullText, I18n.locale).lines.items
+      lines: NativeParser.getForRender(s.fullText, I18n.locale).items
     };
   });
 
