@@ -236,7 +236,7 @@ server.post(
             },
             jwtSecretKey,
             {
-              expiresIn: '2h'
+              expiresIn: '6h'
             }
           );
           var stats = [];
