@@ -339,13 +339,22 @@ server.get('/api/patches/:key/:locale', async (req, res) => {
       error: 'Locale or key not provided'
     });
   }
-  const p = songPatches[key];
-  if (p) {
-    const changes = p.filter(p => p.locale === locale);
-    res.json(changes);
-  } else {
-    res.json([]);
+
+  var changes = [];
+  var pending = null;
+
+  const history = songPatches[key];
+  if (history) {
+    changes = history.filter(p => p.locale === locale);
   }
+
+  const patch = await readLocalePatch();
+  if (patch && patch[key] && patch[key][locale]) {
+    const { author, date } = patch[key][locale];
+    pending = { author, date };
+  }
+
+  res.json({ changes, pending });
 });
 
 server.get('/api/song/newKey', async (req, res) => {

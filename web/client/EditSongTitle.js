@@ -6,7 +6,7 @@ import I18n from '../../translations';
 
 const EditSongTitle = () => {
   const edit = useContext(EditContext);
-  const { editSong, songFile } = edit;
+  const { editSong, songFile, stage } = edit;
 
   if (!editSong) {
     return null;
@@ -16,9 +16,7 @@ const EditSongTitle = () => {
     <Fragment>
       <Menu.Item header>{songFile && songFile.titulo.toUpperCase()}</Menu.Item>
       {songFile && songFile.fuente && <Menu.Item>{songFile.fuente}</Menu.Item>}
-      {editSong.stage && (
-        <Menu.Item>{I18n.t(`search_title.${editSong.stage}`)}</Menu.Item>
-      )}
+      <Menu.Item>{I18n.t(`search_title.${stage || editSong.stage}`)}</Menu.Item>
     </Fragment>
   );
 };

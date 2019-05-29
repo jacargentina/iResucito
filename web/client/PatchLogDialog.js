@@ -28,17 +28,30 @@ const PatchLogDialog = () => {
         {editSong && <h5>{editSong.titulo.toUpperCase()}</h5>}
         <Loading height="auto">
           <div style={{ flex: 1 }}>
-            {patchLogs && patchLogs.length === 0 && (
-              <Message>{I18n.t('ui.no items to show')}</Message>
+            {patchLogs &&
+              patchLogs.changes.length === 0 &&
+              !patchLogs.pending && (
+                <Message>{I18n.t('ui.no items to show')}</Message>
+              )}
+            {patchLogs && patchLogs.pending && (
+              <Message
+                warning
+                list={[
+                  I18n.t('ui.patch pending', {
+                    author: patchLogs.pending.author,
+                    date: new Date(patchLogs.pending.date).toLocaleString()
+                  })
+                ]}
+              />
             )}
-            {patchLogs && patchLogs.length > 0 && (
+            {patchLogs && patchLogs.changes.length > 0 && (
               <Grid columns={3} divided celled>
                 <Grid.Row color="black" style={{ fontWeight: 'bold' }}>
                   <Grid.Column width={3}>User</Grid.Column>
                   <Grid.Column width={3}>Date</Grid.Column>
                   <Grid.Column width={10}>Changes</Grid.Column>
                 </Grid.Row>
-                {patchLogs.map(item => {
+                {patchLogs.changes.map(item => {
                   var detail = [];
                   if (item.created) detail.push('Created');
                   if (item.rename)

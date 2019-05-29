@@ -14,6 +14,7 @@
   "ui": {
     "changes since last login": "Changements depuis votre dernière entrée",
     "changed songs by author": "{{count}} chansons par {{author}}",
+    "patch pending": "Correctif en attente de {{author}} avec la date {{date}}",
     "no items to show": "Aucun élément à afficher",
     "patch log": "Journal des correctifs",
     "translated songs": "{{translated}} sur {{total}} traduits",

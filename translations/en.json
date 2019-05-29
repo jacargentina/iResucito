@@ -14,6 +14,7 @@
   "ui": {
     "changes since last login": "Changes since your last login",
     "changed songs by author": "{{count}} songs by {{author}}",
+    "patch pending": "Patch pending from {{author}} with date {{date}}}",
     "no items to show": "No items to show",
     "patch log": "Patch log",
     "translated songs": "{{translated}} from {{total}} translated",
@@ -52,7 +53,7 @@
       "type": "List type"
     },
     "filters": {
-      "patched": "Added",
+      "added": "Added",
       "patched": "Patched",
       "untranslated": "Untranslated"
     },
