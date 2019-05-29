@@ -1,7 +1,6 @@
 // @flow
 import React, { useContext, useState, useEffect } from 'react';
 import TextArea from 'semantic-ui-react/dist/commonjs/addons/TextArea';
-import Input from 'semantic-ui-react/dist/commonjs/elements/Input';
 import { EditContext } from './EditContext';
 import SongViewFrame from './SongViewFrame';
 import { useDebouncedCallback } from 'use-debounce';

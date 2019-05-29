@@ -371,6 +371,11 @@ server.delete('/api/song/:key/:locale', async (req, res) => {
   var patchObj = await readLocalePatch();
 
   if (!patchObj) patchObj = {};
+  if (!patchObj[key].hasOwnProperty(locale)) {
+    return res.status(500).json({
+      error: `Cant delete. Patch for locale ${locale} not found`
+    });
+  }
   delete patchObj[key][locale];
 
   await saveLocalePatch(patchObj);

@@ -10,8 +10,8 @@ export const EditContext: any = React.createContext();
 const EditContextWrapper = (props: any) => {
   const data = useContext(DataContext);
   const {
-    locale,
     editSong,
+    listSongs,
     setEditSong,
     setApiLoading,
     setApiResult,
@@ -30,20 +30,43 @@ const EditContextWrapper = (props: any) => {
     setEditSong();
     setText('');
     setRename();
+    setStage();
     setHasChanges(false);
+    listSongs();
   };
 
   const loadSong = song => {
     setApiResult();
     setApiLoading(true);
     return api
-      .get(`/api/song/${song.key}/${locale}`)
+      .get(`/api/song/${song.key}/${I18n.locale}`)
       .then(result => {
         setApiLoading(false);
         const song = result.data;
         setText(song.fullText);
         setEditSong(song);
         setHasChanges(false);
+      })
+      .catch(err => {
+        handleApiError(err);
+      });
+  };
+
+  const addSong = () => {
+    setApiResult();
+    setApiLoading(true);
+    return api
+      .get('/api/song/newKey')
+      .then(result => {
+        setApiLoading(false);
+        const newSong = {
+          key: result.data.key,
+          nombre: 'New song',
+          titulo: 'New song',
+          stage: 'precatechumenate'
+        };
+        setText('Song text here.');
+        setEditSong(newSong);
       })
       .catch(err => {
         handleApiError(err);
@@ -71,7 +94,7 @@ const EditContextWrapper = (props: any) => {
           setApiResult();
           setApiLoading(true);
           return api
-            .delete(`/api/song/${editSong.key}/${locale}`)
+            .delete(`/api/song/${editSong.key}/${I18n.locale}`)
             .then(() => {
               setApiLoading(false);
               // Recargar sin los cambios previos
@@ -95,7 +118,7 @@ const EditContextWrapper = (props: any) => {
       setApiResult();
       setApiLoading(true);
       return api
-        .post(`/api/song/${editSong.key}/${locale}`, patch)
+        .post(`/api/song/${editSong.key}/${I18n.locale}`, patch)
         .then(() => {
           setApiLoading(false);
           setHasChanges(false);
@@ -127,7 +150,7 @@ const EditContextWrapper = (props: any) => {
       setApiResult();
       setApiLoading(true);
       api
-        .get(`/api/patches/${editSong.key}/${locale}`)
+        .get(`/api/patches/${editSong.key}/${I18n.locale}`)
         .then(result => {
           setApiLoading(false);
           setPatchLogs(result.data);
@@ -150,11 +173,11 @@ const EditContextWrapper = (props: any) => {
   return (
     <EditContext.Provider
       value={{
-        locale,
         editSong,
         songFile,
         patchLogs,
         loadSong,
+        addSong,
         setEditSong,
         setConfirmData,
         confirmClose,

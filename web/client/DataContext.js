@@ -84,7 +84,6 @@ const DataContextWrapper = (props: any) => {
   };
 
   const listSongs = () => {
-    setSongs();
     setApiResult();
     setApiLoading(true);
     return api
@@ -92,27 +91,6 @@ const DataContextWrapper = (props: any) => {
       .then(result => {
         setApiLoading(false);
         setSongs(result.data);
-      })
-      .catch(err => {
-        handleApiError(err);
-      });
-  };
-
-  const addSong = () => {
-    setApiResult();
-    setApiLoading(true);
-    return api
-      .get('/api/song/newKey')
-      .then(result => {
-        setApiLoading(false);
-        const newSong = {
-          key: result.data.key,
-          nombre: 'New song',
-          titulo: 'New song',
-          lines: ['Song text here.'],
-          stage: 'precatechumenate'
-        };
-        setEditSong(newSong);
       })
       .catch(err => {
         handleApiError(err);
@@ -143,7 +121,6 @@ const DataContextWrapper = (props: any) => {
         handleApiError,
         songs,
         listSongs,
-        addSong,
         signUp,
         login,
         logout,

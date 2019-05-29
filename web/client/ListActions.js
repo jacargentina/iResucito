@@ -9,10 +9,10 @@ import I18n from '../../translations';
 
 const ListActions = () => {
   const data = useContext(DataContext);
-  const { listSongs, addSong } = data;
+  const { listSongs } = data;
 
   const edit = useContext(EditContext);
-  const { editSong } = edit;
+  const { editSong, addSong } = edit;
 
   if (editSong) {
     return null;
