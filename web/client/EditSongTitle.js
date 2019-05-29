@@ -12,11 +12,13 @@ const EditSongTitle = () => {
     return null;
   }
 
+  const st = stage || editSong.stage || editSong.stages[I18n.locale];
+
   return (
     <Fragment>
       <Menu.Item header>{songFile && songFile.titulo.toUpperCase()}</Menu.Item>
       {songFile && songFile.fuente && <Menu.Item>{songFile.fuente}</Menu.Item>}
-      <Menu.Item>{I18n.t(`search_title.${stage || editSong.stage}`)}</Menu.Item>
+      {st && <Menu.Item>{I18n.t(`search_title.${st}`)}</Menu.Item>}
     </Fragment>
   );
 };
