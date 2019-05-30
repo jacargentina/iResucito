@@ -23,7 +23,7 @@ const languageFolders = onlyNames.reduce((obj, item) => {
   return obj;
 }, {});
 
-const patchSongLogic = (songPatch, key) => {
+const patchSongLogic = (songPatch, key, dirty) => {
   var report = {};
   report.key = key;
   try {
@@ -67,7 +67,11 @@ const patchSongLogic = (songPatch, key) => {
         // No existe carpeta, crearla
         report.createdFolder = loc;
         songDirectory = path.join(songsDir, loc);
-        fs.mkdirSync(songDirectory);
+        if (!dirty) {
+          fs.mkdirSync(songDirectory);
+        } else {
+          console.log('crea carpeta', songDirectory);
+        }
       } else {
         loc = existsLoc;
         songDirectory = path.join(songsDir, existsLoc);
@@ -79,7 +83,9 @@ const patchSongLogic = (songPatch, key) => {
         report.renameNotPossible = `no existe ${songFileName}`;
       } else if (newName && newName !== songFileName) {
         report.rename = { original: file, new: rename };
-        execSync(`git mv --force "${songFileName}" "${newName}"`);
+        if (!dirty) {
+          execSync(`git mv --force "${songFileName}" "${newName}"`);
+        }
         Object.assign(songToPatch.files, { [loc]: rename });
         songFileName = newName;
       } else if (songToPatch.files[loc] !== file) {
@@ -100,7 +106,11 @@ const patchSongLogic = (songPatch, key) => {
           report.created = true;
         }
         if (text !== lines) {
-          fs.writeFileSync(songFileName, lines);
+          if (!dirty) {
+            fs.writeFileSync(songFileName, lines);
+          } else {
+            console.log('modifica archivo', songFileName);
+          }
           if (!report.created) {
             // var diff = jsdiff.diffChars(text, lines);
             // diff.forEach(part => {
@@ -170,11 +180,12 @@ var program = require('commander');
 
 program
   .version('1.0')
-  .description('Generate PDF for a given song')
+  .description('Apply patches')
   .option('-f, --file [path]', 'Patch to use')
+  .option('--dirty', 'Dirty run')
   .option(
     '-k, --key [value]',
-    'Song key. Defaults to generate all songs',
+    'Song key. Defaults to patch all songs',
     parseInt
   );
 
@@ -187,19 +198,22 @@ if (!process.argv.slice(2).length) {
     throw 'File not provided.';
   }
   var key = program.key;
+  var dirty = program.dirty;
   var json = fs.readFileSync(file, 'utf8').normalize();
   var patch = JSON.parse(json);
   var finalReport = [];
   if (key) {
-    var res = patchSongLogic(patch[key], key);
+    var res = patchSongLogic(patch[key], key, dirty);
     finalReport.push(res);
   } else {
     Object.keys(patch).forEach(k => {
-      var res = patchSongLogic(patch[k], k);
+      var res = patchSongLogic(patch[k], k, dirty);
       finalReport.push(res);
     });
   }
-  fs.writeFileSync(indexPath, JSON.stringify(SongsIndex, null, ' '));
-  fs.writeFileSync(patchesPath, JSON.stringify(SongsPatches, null, '  '));
+  if (!dirty) {
+    fs.writeFileSync(indexPath, JSON.stringify(SongsIndex, null, ' '));
+    fs.writeFileSync(patchesPath, JSON.stringify(SongsPatches, null, '  '));
+  }
   console.log(finalReport);
 }
