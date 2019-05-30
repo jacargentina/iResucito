@@ -3,7 +3,8 @@ import { getPropertyLocale } from '../common';
 const path = require('path');
 const fs = require('fs');
 require('colors');
-const jsdiff = require('diff');
+//const jsdiff = require('diff');
+const _ = require('lodash');
 const { execSync } = require('child_process');
 const inScripts = path.basename(process.cwd()) == path.basename(__dirname);
 const songsDir = inScripts ? '../songs' : './songs';
@@ -76,6 +77,7 @@ const patchSongLogic = (songPatch, key, dirty) => {
         loc = existsLoc;
         songDirectory = path.join(songsDir, existsLoc);
       }
+      report.locale = loc;
 
       var songFileName = path.join(songDirectory, `${file}.txt`);
       var newName = rename ? path.join(songDirectory, `${rename}.txt`) : null;
@@ -108,10 +110,9 @@ const patchSongLogic = (songPatch, key, dirty) => {
         if (text !== lines) {
           if (!dirty) {
             fs.writeFileSync(songFileName, lines);
-          } else {
-            console.log('modifica archivo', songFileName);
           }
           if (!report.created) {
+            report.updated = true;
             // var diff = jsdiff.diffChars(text, lines);
             // diff.forEach(part => {
             //   // green for additions, red for deletions
@@ -119,7 +120,6 @@ const patchSongLogic = (songPatch, key, dirty) => {
             //   var color = part.added ? 'green' : part.removed ? 'red' : 'grey';
             //   process.stderr.write(part.value[color]);
             // });
-            report.updated = true;
           }
         }
       }
@@ -147,8 +147,8 @@ const patchSongLogic = (songPatch, key, dirty) => {
       ) {
         // Guardar historia de cambios
         var patchInfo: SongPatchLogData = {
-          locale: loc,
           date: date,
+          locale: report.locale,
           author: author || 'anonymous',
           rename: report.rename,
           linked: report.linked,
