@@ -1109,7 +1109,7 @@
    "it": "Misericordia dio, misericordia - Sal 51 (50)",
    "pt": "Misericórdia minha misericórdia - Sal 51 (50)",
    "de-AT": "Gott sei mir gnädig - Ps 51",
-   "en": "Have mercy on me, o god - Ps 50 (51)"
+   "en": "Have mercy on me - Ps 50 (51)"
   }
  },
  "106": {
@@ -1368,7 +1368,8 @@
    "es": "Señor, ayúdame a no dudar de ti - Himno",
    "it": "Signore aiutami, Signore - Inno",
    "pt": "Senhor ajuda-Me A Não Duvidar De Ti - São João da Cruz",
-   "de-AT": "O Herr, hilf mir, o Herr"
+   "de-AT": "O Herr, hilf mir, o Herr",
+   "en": "Lord help me"
   }
  },
  "130": {
@@ -2295,7 +2296,8 @@
   "files": {
    "it": "Il Signore è mia luce e mia salvezza - Sal 26 (27)",
    "pt": "O Senhor é minha luz e salvação - Sal 27 (26)",
-   "de-AT": "Der herr ist mein licht und mein heil - Ps 27"
+   "de-AT": "Der herr ist mein licht und mein heil - Ps 27",
+   "en" : "The lord is my light and my salvation - Ps 26 (27)"
   }
  },
  "227": {

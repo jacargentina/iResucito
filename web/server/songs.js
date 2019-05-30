@@ -18,6 +18,21 @@ export default function(server: any) {
       });
     }
     var songs = FolderSongs.getSongsMeta(locale, patch);
+    var localeSongs = await FolderSongs.readLocaleSongs(locale);
+    var missingOnIndex = localeSongs.filter(locSong => {
+      return !songs.find(s => s.files[locale] === locSong.nombre);
+    });
+
+    missingOnIndex.map(m => {
+      var item = {
+        stage: 'precatechumenate',
+        files: {
+          [locale]: m.nombre
+        }
+      };
+      console.log(item);
+    });
+
     res.json(songs);
   });
 
