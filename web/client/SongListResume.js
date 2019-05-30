@@ -7,13 +7,18 @@ import Progress from 'semantic-ui-react/dist/commonjs/modules/Progress';
 import I18n from '../../translations';
 import { getPropertyLocale } from '../../common';
 
-const SongsResume = () => {
+const emptyResume = {
+  text: '-',
+  values: { total: 0, translated: 0 }
+};
+
+const SongListResume = () => {
   const data = useContext(DataContext);
   const { songs } = data;
 
   const edit = useContext(EditContext);
   const { editSong } = edit;
-  const [resume, setResume] = useState();
+  const [resume, setResume] = useState(emptyResume);
 
   useEffect(() => {
     if (songs) {
@@ -26,16 +31,16 @@ const SongsResume = () => {
         values: result
       });
     } else {
-      setResume();
+      setResume(emptyResume);
     }
   }, [songs]);
 
-  if (editSong || !resume) {
+  if (editSong) {
     return null;
   }
 
   return (
-    <Menu.Item>
+    <Menu.Item position="right">
       {resume.text}
       <Progress
         total={resume.values.total}
@@ -56,4 +61,4 @@ const SongsResume = () => {
   );
 };
 
-export default SongsResume;
+export default SongListResume;

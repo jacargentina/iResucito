@@ -5,6 +5,8 @@ import List from 'semantic-ui-react/dist/commonjs/elements/List';
 import Input from 'semantic-ui-react/dist/commonjs/elements/Input';
 import Label from 'semantic-ui-react/dist/commonjs/elements/Label';
 import Message from 'semantic-ui-react/dist/commonjs/collections/Message';
+import Menu from 'semantic-ui-react/dist/commonjs/collections/Menu';
+import SongListResume from './SongListResume';
 import { DataContext } from './DataContext';
 import { EditContext } from './EditContext';
 import { useDebounce } from 'use-debounce';
@@ -73,32 +75,39 @@ const SongList = () => {
 
   return (
     <Fragment>
-      <div style={{ padding: 10 }}>
-        <div style={{ margin: 5 }}>
-          <Button
-            toggle
-            active={filters.patched}
-            onClick={() => toggleFilter('patched')}>
-            {I18n.t('ui.filters.patched')}
-          </Button>
-          <Button
-            toggle
-            active={filters.added}
-            onClick={() => toggleFilter('added')}>
-            {I18n.t('ui.filters.added')}
-          </Button>
-          <Button
-            toggle
-            active={filters.notTranslated}
-            onClick={() => toggleFilter('notTranslated')}>
-            {I18n.t('ui.filters.untranslated')}
-          </Button>
-          {filtered && (
+      <Menu size="mini" inverted attached color="blue">
+        <Menu.Item>
+          <Button.Group size="mini">
+            <Button
+              toggle
+              active={filters.patched}
+              onClick={() => toggleFilter('patched')}>
+              {I18n.t('ui.filters.patched')}
+            </Button>
+            <Button
+              toggle
+              active={filters.added}
+              onClick={() => toggleFilter('added')}>
+              {I18n.t('ui.filters.added')}
+            </Button>
+            <Button
+              toggle
+              active={filters.notTranslated}
+              onClick={() => toggleFilter('notTranslated')}>
+              {I18n.t('ui.filters.untranslated')}
+            </Button>
+          </Button.Group>
+        </Menu.Item>
+        {filtered && (
+          <Menu.Item>
             <strong style={{ marginLeft: 10 }}>
               {I18n.t('ui.list total songs', { total: filtered.length })}
             </strong>
-          )}
-        </div>
+          </Menu.Item>
+        )}
+        <SongListResume />
+      </Menu>
+      <div style={{ padding: 10 }}>
         <Input
           fluid
           icon="search"

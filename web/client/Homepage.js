@@ -12,7 +12,6 @@ import Login from './Login';
 import SongList from './SongList';
 import SongEditor from './SongEditor';
 import ApiMessage from './ApiMessage';
-import SongsResume from './SongsResume';
 import EditSongTitle from './EditSongTitle';
 import EditSongActions from './EditSongActions';
 import ListActions from './ListActions';
@@ -36,7 +35,6 @@ const Homepage = () => {
               </Header.Content>
             </Menu.Item>
             <LocalePicker />
-            <SongsResume />
             <EditSongTitle />
             <Menu.Menu position="right">
               <EditSongActions />
