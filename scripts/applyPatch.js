@@ -28,6 +28,9 @@ const patchSongLogic = (songPatch, key) => {
   report.key = key;
   try {
     var songToPatch = SongsIndex[key];
+    if (!songToPatch) {
+      songToPatch = { key, files: {}, stage: 'precatechumenate', stages: {} };
+    }
     Object.keys(songPatch).forEach(rawLoc => {
       var item: SongPatchData = songPatch[rawLoc];
       var loc = '';
@@ -99,13 +102,13 @@ const patchSongLogic = (songPatch, key) => {
         if (text !== lines) {
           fs.writeFileSync(songFileName, lines);
           if (!report.created) {
-            var diff = jsdiff.diffChars(text, lines);
-            diff.forEach(part => {
-              // green for additions, red for deletions
-              // grey for common parts
-              var color = part.added ? 'green' : part.removed ? 'red' : 'grey';
-              process.stderr.write(part.value[color]);
-            });
+            // var diff = jsdiff.diffChars(text, lines);
+            // diff.forEach(part => {
+            //   // green for additions, red for deletions
+            //   // grey for common parts
+            //   var color = part.added ? 'green' : part.removed ? 'red' : 'grey';
+            //   process.stderr.write(part.value[color]);
+            // });
             report.updated = true;
           }
         }
