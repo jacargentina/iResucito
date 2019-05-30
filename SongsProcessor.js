@@ -1,6 +1,7 @@
 //@flow
 import { getPropertyLocale } from './common';
 import SongsIndex from './songs/index.json';
+import SongsHistory from './songs/patches.json';
 
 export const getSongFileFromString = (str: string): SongFile => {
   var titulo = str.includes(' - ')
@@ -51,6 +52,14 @@ export class SongsProcessor {
     return { locale: loc, name: files[loc] };
   }
 
+  getSongHistory(key: string, rawLoc: string): Array<SongPatchData> {
+    const history = SongsHistory[key];
+    if (history) {
+      return history.filter(p => p.locale === rawLoc);
+    }
+    return [];
+  }
+
   getSingleSongMeta(
     key: string,
     rawLoc: string,
@@ -66,15 +75,15 @@ export class SongsProcessor {
     info.path = `${this.basePath}/${bestFile.locale}/${bestFile.name}.txt`;
     const parsed = getSongFileFromString(bestFile.name);
     this.assignInfoFromFile(info, parsed);
-
+    // Asignar numero de version segun historico
+    info.version = this.getSongHistory(key, rawLoc).length;
+    // Aplicar stage segun idioma, si esta disponible
     if (info.stages) {
-      // Aplicar stage segun idioma, si esta disponible
       const stageLoc = getPropertyLocale(info.stages, rawLoc);
       if (info.stages && stageLoc) {
         info.stage = info.stages[stageLoc];
       }
     }
-
     // Si se aplico un parche
     // Asignar los valores del mismo
     if (patch && patch.hasOwnProperty(key)) {

@@ -102,6 +102,7 @@ declare type SongFile = {
 // lines: array de las lineas del canto
 declare type Song = {
   key: string,
+  version: number,
   stage: string,
   advent: boolean,
   christmas: boolean,

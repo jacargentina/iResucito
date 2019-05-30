@@ -1,5 +1,4 @@
 // @flow
-import * as fs from 'fs';
 import * as path from 'path';
 import FolderSongs from '../../FolderSongs';
 import FolderExtras from '../../FolderExtras';
@@ -8,9 +7,6 @@ const merge = require('deepmerge');
 
 FolderSongs.basePath = path.resolve('./songs');
 FolderExtras.basePath = dataPath;
-
-const patches = fs.readFileSync('./songs/patches.json', 'utf8');
-const songPatches: SongPatchLog = JSON.parse(patches);
 
 export default function(server: any) {
   server.get('/api/list/:locale', async (req, res) => {
@@ -58,13 +54,8 @@ export default function(server: any) {
       });
     }
 
-    var changes = [];
+    var changes = FolderSongs.getSongHistory(key, locale);
     var pending = null;
-
-    const history = songPatches[key];
-    if (history) {
-      changes = history.filter(p => p.locale === locale);
-    }
 
     const patch = await readLocalePatch();
     if (patch && patch[key] && patch[key][locale]) {

@@ -6,6 +6,7 @@ import Input from 'semantic-ui-react/dist/commonjs/elements/Input';
 import Label from 'semantic-ui-react/dist/commonjs/elements/Label';
 import Message from 'semantic-ui-react/dist/commonjs/collections/Message';
 import Menu from 'semantic-ui-react/dist/commonjs/collections/Menu';
+import Popup from 'semantic-ui-react/dist/commonjs/modules/Popup';
 import SongListResume from './SongListResume';
 import { DataContext } from './DataContext';
 import { EditContext } from './EditContext';
@@ -142,11 +143,16 @@ const SongList = () => {
                   <List.Description>{song.fuente}</List.Description>
                   <div style={{ marginTop: 8 }}>
                     {song.stage && (
-                      <Label
-                        style={{ backgroundColor: colors[song.stage] }}
-                        size="small">
-                        {song.stage[0].toUpperCase()}
-                      </Label>
+                      <Popup
+                        content={I18n.t(`search_title.${song.stage}`)}
+                        trigger={
+                          <Label
+                            style={{ backgroundColor: colors[song.stage] }}
+                            size="small">
+                            {song.stage[0].toUpperCase()}
+                          </Label>
+                        }
+                      />
                     )}
                     {song.patched && (
                       <Label color="violet" size="small">
@@ -157,6 +163,18 @@ const SongList = () => {
                       <Label color="violet" size="small">
                         added
                       </Label>
+                    )}
+                    {song.version > 0 && (
+                      <Popup
+                        content={I18n.t('ui.song version number', {
+                          version: song.version
+                        })}
+                        trigger={
+                          <Label color="blue" size="small">
+                            {song.version}
+                          </Label>
+                        }
+                      />
                     )}
                     {song.notTranslated && (
                       <Label color="red" size="small">

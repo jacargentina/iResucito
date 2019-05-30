@@ -1,6 +1,9 @@
 // @flow
 import React, { useContext, useState, useEffect } from 'react';
 import TextArea from 'semantic-ui-react/dist/commonjs/addons/TextArea';
+import Icon from 'semantic-ui-react/dist/commonjs/elements/Icon';
+import Popup from 'semantic-ui-react/dist/commonjs/modules/Popup';
+import Message from 'semantic-ui-react/dist/commonjs/collections/Message';
 import { EditContext } from './EditContext';
 import SongViewFrame from './SongViewFrame';
 import { useDebouncedCallback } from 'use-debounce';
@@ -32,8 +35,30 @@ const SongEditor = () => {
         display: 'flex',
         flexDirection: 'row',
         overflow: 'auto',
-        padding: 10
+        padding: 10,
+        position: 'relative'
       }}>
+      <Popup
+        header="Tips"
+        content={
+          <Message
+            list={[
+              'If present, title/source must be deleted from the heading to not be painted twice',
+              'Put "clamp: x" at the start of any empty line to signal clamp position'
+            ]}
+          />
+        }
+        position="bottom left"
+        trigger={
+          <Icon
+            name="help"
+            color="blue"
+            circular
+            bordered
+            style={{ position: 'absolute', left: '47%' }}
+          />
+        }
+      />
       <TextArea
         style={{
           fontFamily: 'monospace',

@@ -15,6 +15,7 @@
     "changes since last login": "Änderungen seit Ihrem letzten Eintrag",
     "changed songs by author": "{{count}} lieder von {{author}}",
     "patch pending": "Patch von {{author}} mit Datum {{date}} ausstehend",
+    "song version number": "Has been modified {{version}} times",
     "no items to show": "Keine Artikel zum Anzeigen",
     "patch log": "Änderungsprotokoll",
     "translated songs": "{{translated}} von {{total}} übersetzt",
