@@ -16,7 +16,9 @@ async function run(locale: string, dirty) {
     const sameCaseFound = songs.find(s => s.files[locale] === locSong.nombre);
     if (!sameCaseFound) {
       const lowerCaseFound = songs.find(
-        s => s.files[locale].toLowerCase() === locSong.nombre.toLowerCase()
+        s =>
+          s.files[locale] &&
+          s.files[locale].toLowerCase() === locSong.nombre.toLowerCase()
       );
 
       if (!lowerCaseFound) {
