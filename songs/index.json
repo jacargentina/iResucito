@@ -2535,5 +2535,23 @@
   "files": {
    "de-AT": "Lied des josua - Jos 24, 2-13"
   }
+ },
+ "256": {
+  "stage": "precatechumenate",
+  "files": {
+   "en": "Christ is our light and our salvation"
+  }
+ },
+ "257": {
+  "stage": "precatechumenate",
+  "files": {
+   "en": "Invocation to the holy spirit"
+  }
+ },
+ "258": {
+  "stage": "precatechumenate",
+  "files": {
+   "en": "Praise the lord jerusalem - Ps 147"
+  }
  }
 }
