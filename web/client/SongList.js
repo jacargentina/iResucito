@@ -19,6 +19,10 @@ import colors from '../../colors';
 const SongList = () => {
   const data = useContext(DataContext);
   const { locale, listSongs, songs, apiLoading } = data;
+
+  const edit = useContext(EditContext);
+  const { loadSong, addSong, editSong } = edit;
+
   const [filters, setFilters] = useState({
     patched: false,
     added: false,
@@ -34,6 +38,14 @@ const SongList = () => {
     setFilters(currentFilters => {
       return { ...currentFilters, [name]: !currentFilters[name] };
     });
+  };
+
+  const loadOrAdd = song => {
+    if (song.notTranslated) {
+      addSong(song);
+    } else {
+      loadSong(song);
+    }
   };
 
   useEffect(() => {
@@ -67,9 +79,6 @@ const SongList = () => {
   useEffect(() => {
     listSongs();
   }, [locale]);
-
-  const edit = useContext(EditContext);
-  const { loadSong, addSong, editSong } = edit;
 
   if (editSong) {
     return null;
@@ -152,7 +161,7 @@ const SongList = () => {
             return (
               <List.Item
                 key={key}
-                onClick={() => loadSong(song)}
+                onClick={() => loadOrAdd(song)}
                 className="hoverable">
                 <List.Content>
                   <List.Header>{song.titulo}</List.Header>

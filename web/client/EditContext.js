@@ -52,25 +52,37 @@ const EditContextWrapper = (props: any) => {
       });
   };
 
-  const addSong = () => {
-    setApiResult();
-    setApiLoading(true);
-    return api
-      .get('/api/song/newKey')
-      .then(result => {
-        setApiLoading(false);
-        const newSong = {
-          key: result.data.key,
-          nombre: 'New song',
-          titulo: 'New song',
-          stage: 'precatechumenate'
-        };
-        setText('Song text here.');
-        setEditSong(newSong);
-      })
-      .catch(err => {
-        handleApiError(err);
-      });
+  const addSong = (untranslatedSong: Song) => {
+    // Crear version traducida
+    if (untranslatedSong) {
+      const newSong = {
+        key: untranslatedSong.key,
+        nombre: `Translate name [${untranslatedSong.nombre}]`,
+        titulo: `Translate title [${untranslatedSong.titulo}]`,
+        stage: 'precatechumenate'
+      };
+      setText('New translated song text here.');
+      setEditSong(newSong);
+    } else {
+      setApiResult();
+      setApiLoading(true);
+      return api
+        .get('/api/song/newKey')
+        .then(result => {
+          setApiLoading(false);
+          const newSong = {
+            key: result.data.key,
+            nombre: 'New song',
+            titulo: 'New song',
+            stage: 'precatechumenate'
+          };
+          setText('Song text here.');
+          setEditSong(newSong);
+        })
+        .catch(err => {
+          handleApiError(err);
+        });
+    }
   };
 
   const confirmClose = () => {
