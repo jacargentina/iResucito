@@ -3,7 +3,10 @@ import * as fs from 'fs';
 import * as path from 'path';
 import FolderSongs from '../FolderSongs';
 import { readLocalePatch } from '../web/server/common';
+const { execSync } = require('child_process');
 const merge = require('deepmerge');
+const inScripts = path.basename(process.cwd()) == path.basename(__dirname);
+const songsDir = inScripts ? '../songs' : './songs';
 
 FolderSongs.basePath = path.resolve('./songs');
 
@@ -24,11 +27,21 @@ async function run(locale: string, dirty) {
       if (!lowerCaseFound) {
         return locSong;
       }
-      console.log('Disk case must be fixed!');
-      console.log({
-        indexIs: lowerCaseFound.files[locale],
-        diskIs: locSong.nombre
-      });
+      if (!dirty) {
+        var source = path.join(songsDir, locale, `${locSong.nombre}.txt`);
+        var target = path.join(
+          songsDir,
+          locale,
+          `${lowerCaseFound.files[locale]}.txt`
+        );
+        execSync(`git mv --force "${source}" "${target}"`);
+      } else {
+        console.log('Disk case must be fixed!');
+        console.log({
+          indexIs: lowerCaseFound.files[locale],
+          diskIs: locSong.nombre
+        });
+      }
     }
   });
   if (missingOnIndex.length > 0) {

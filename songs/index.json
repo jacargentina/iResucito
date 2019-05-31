@@ -2487,5 +2487,53 @@
   "files": {
    "pt": "Salve Rainha - Hino"
   }
+ },
+ "248": {
+  "stage": "precatechumenate",
+  "files": {
+   "de-AT": "Alles hat eine bestimmte zeit - Koh 3, 1-15"
+  }
+ },
+ "249": {
+  "stage": "precatechumenate",
+  "files": {
+   "de-AT": "Ein grosses Zeichen erschien am Himmel - Offb 12, 1-18"
+  }
+ },
+ "250": {
+  "stage": "precatechumenate",
+  "files": {
+   "de-AT": "Gib mir ein neues herz - Ps 51"
+  }
+ },
+ "251": {
+  "stage": "precatechumenate",
+  "files": {
+   "de-AT": "Gott erhebe sich - Ps 68"
+  }
+ },
+ "252": {
+  "stage": "precatechumenate",
+  "files": {
+   "de-AT": "Kommt lasst uns jubeln vor dem herrn - Ps 95"
+  }
+ },
+ "253": {
+  "stage": "precatechumenate",
+  "files": {
+   "de-AT": "Kostet und Sehet - Ps 34"
+  }
+ },
+ "254": {
+  "stage": "precatechumenate",
+  "files": {
+   "de-AT": "Lied der befreiten - Jes 12, 4-6"
+  }
+ },
+ "255": {
+  "stage": "precatechumenate",
+  "files": {
+   "de-AT": "Lied des josua - Jos 24, 2-13"
+  }
  }
 }
