@@ -27,7 +27,7 @@ export class SongsParser {
 
   getSongItem(text: string, locale: string): SongLine {
     if (text.startsWith('clamp:')) {
-      const clampValue = text.substring(text.indexOf(':')).trim();
+      const clampValue = text.substring(text.indexOf(':') + 1).trim();
       var it: SongLine = {
         texto: I18n.t('songs.clamp', { clamp: clampValue }),
         style: this.songStyles.lineaClamp,
