@@ -2065,7 +2065,7 @@
   "stage": "liturgy",
   "files": {
    "es": "Plegaria Eucaristica II - Anamnesis modelo I",
-   "de-AT": "Eucharistisches Hochgebet II (2) - Darbringung, Intercessionen, Doxologie"
+   "de-AT": "Eucharistisches Hochgebet II (2) - Darbringung, Interzessionen, Doxologie"
   }
  },
  "196": {
@@ -2418,16 +2418,6 @@
   "key": "237",
   "files": {
    "de-AT": "Eucharistisches Hochgebet II (2) - Konsekration und Akklamation"
-  },
-  "stage": "precatechumenate",
-  "stages": {
-   "de-AT": "liturgy"
-  }
- },
- "238": {
-  "key": "238",
-  "files": {
-   "de-AT": "Eucharistisches Hochgebet II (2) - Darbringung, Interzessionen, Doxologie"
   },
   "stage": "precatechumenate",
   "stages": {

@@ -957,6 +957,22 @@
       "updated": true
     }
   ],
+  "195": [
+    {
+      "date": 1559078205203,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "linked": {
+        "new": "Eucharistisches Hochgebet II (2) - Darbringung, Interzessionen, Doxologie"
+      },
+      "created": true,
+      "updated": false,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "liturgy"
+      }
+    }
+  ],
   "196": [
     {
       "date": 1559027699229,
@@ -1205,22 +1221,6 @@
       "author": "fd_colautti@mac.com",
       "linked": {
         "new": "Eucharistisches Hochgebet II (2) - Konsekration und Akklamation"
-      },
-      "created": true,
-      "updated": false,
-      "staged": {
-        "original": "precatechumenate",
-        "new": "liturgy"
-      }
-    }
-  ],
-  "238": [
-    {
-      "date": 1559078205203,
-      "locale": "de-AT",
-      "author": "fd_colautti@mac.com",
-      "linked": {
-        "new": "Eucharistisches Hochgebet II (2) - Darbringung, Interzessionen, Doxologie"
       },
       "created": true,
       "updated": false,
