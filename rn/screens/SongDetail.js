@@ -39,7 +39,16 @@ const SongDetail = (props: any) => {
     }
   }, []);
 
-  return <SongViewFrame {...song} transportToNote={transportNote} />;
+  return (
+    <SongViewFrame
+      title={song.titulo}
+      source={song.fuente}
+      stage={song.stage}
+      text={song.fullText}
+      error={song.error}
+      transportToNote={transportNote}
+    />
+  );
 };
 
 const TransportNotesMenu = withNavigation((props: any) => {
