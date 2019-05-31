@@ -13,8 +13,6 @@ import SongList from './SongList';
 import SongEditor from './SongEditor';
 import ApiMessage from './ApiMessage';
 import EditSongTitle from './EditSongTitle';
-import EditSongActions from './EditSongActions';
-import ListActions from './ListActions';
 import AppActions from './AppActions';
 
 const Homepage = () => {
@@ -37,8 +35,6 @@ const Homepage = () => {
             <LocalePicker />
             <EditSongTitle />
             <Menu.Menu position="right">
-              <EditSongActions />
-              <ListActions />
               <AppActions />
             </Menu.Menu>
           </Menu>

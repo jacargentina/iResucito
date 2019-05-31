@@ -7,6 +7,7 @@ import Label from 'semantic-ui-react/dist/commonjs/elements/Label';
 import Message from 'semantic-ui-react/dist/commonjs/collections/Message';
 import Menu from 'semantic-ui-react/dist/commonjs/collections/Menu';
 import Popup from 'semantic-ui-react/dist/commonjs/modules/Popup';
+import Icon from 'semantic-ui-react/dist/commonjs/elements/Icon';
 import SongListResume from './SongListResume';
 import { DataContext } from './DataContext';
 import { EditContext } from './EditContext';
@@ -68,7 +69,7 @@ const SongList = () => {
   }, [locale]);
 
   const edit = useContext(EditContext);
-  const { loadSong, editSong } = edit;
+  const { loadSong, addSong, editSong } = edit;
 
   if (editSong) {
     return null;
@@ -78,6 +79,21 @@ const SongList = () => {
     <Fragment>
       <Menu size="mini" inverted attached color="blue">
         <Menu.Item>
+          <Button.Group size="mini">
+            <Button onClick={addSong}>
+              <Icon name="add" />
+              {I18n.t('ui.create')}
+            </Button>
+            <Button onClick={listSongs}>
+              <Icon name="refresh" />
+              {I18n.t('ui.refresh')}
+            </Button>
+          </Button.Group>
+        </Menu.Item>
+        <Menu.Item>
+          <Menu.Item>
+            <Icon name="filter" />
+          </Menu.Item>
           <Button.Group size="mini">
             <Button
               toggle
