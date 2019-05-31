@@ -1,16 +1,23 @@
-HEILIG (1983)
-Barré auf dem II. Bund
-a                               a
-V. Heilig  heilig  heilig                 2x             K. Hochgelobt sei der da kommt
-G      a                               d        E
-ist der Herr.                               im Namen des Herrn.
-G       a                            d        E
-Gott des Universums                               im Namen des Herrn.
-F            E                     a
-K. Der Himmel und die Erde                              V. Hosanna  ...
-d         E
-sind von dir erfüllt.
-a            d
-V. Hosanna  hosanna  hosanna  hosanna                          2x
-E
-hosanna in der Höhe.
+clamp: II.
+  a
+V. Heilig,  heilig,  heilig,    
+  G               a
+ ist der Herr.                              
+  G                          a
+ Gott des Universums                               
+  F                                          E
+K. Der Himmel und die Erde                             
+  d                             E
+ sind von dir erfüllt.
+  a                                          d
+V. Hosanna,  hosanna,  hosanna,  hosanna,
+                                      E
+ hosanna in der Höhe.
+   a
+K. Hochgelobt sei, der da kommt
+            d                       E   
+ im Namen des Herrn,
+           d                       E  
+ im Namen des Herrn.
+
+ V. Hosanna,  ...

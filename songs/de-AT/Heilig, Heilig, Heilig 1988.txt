@@ -1,21 +1,33 @@
-Heilig, Heilig, Heilig (1988)
-Barré auf dem II. Bund
-
-a    G    a                        a
-V. Heilig  heilig  heilig                              V. Hochgelobt ...
-a    G    a                        F           E7
-Heilig  heilig  heilig                              K. Hosanna in der Höhe.
-a            G           a           F           E7
-K. Der Himmel und die Erde sind von dir erfüllt                              V. Hosanna in der Höhe.
-a            G           a           a    G    a
-V. Der Himmel und die Erde sind von dir erfüllt                               Heilig  heilig  heilig
-F           E7                       a    G    a
-K. Hosanna in der Höhe.                               Heilig  heilig  heilig
-F           E7                       F       E7
-V. Hosanna in der Höhe.                              K. Heilig  heilig  heilig!
-a                               F       E7
-Heilig ...                              V. Heilig  heilig  heilig!
-a            G
-K. Hochgelobt sei der kommt
-a
-im Namen des Herrn.
+clamp: II.
+  a              G            a                      
+V. Heilig, heilig, heilig.                            
+  a              G            a                  
+ Heilig, heilig, heilig.                             
+   a                                         G                                       a           
+K. Der Himmel und die Erde sind von dir erfüllt.                             
+   a                                         G                                       a 
+V. Der Himmel und die Erde sind von dir erfüllt.                            
+   F                                  E7                       
+K. Hosanna in der Höhe.                               
+   F                                  E7                  
+V. Hosanna in der Höhe.                              
+  a
+ Heilig …                            
+   a                                         G
+K. Hochgelobt sei, der kommt
+                                     a
+ im Namen des Herrn.
+   a
+V. Hochgelobt …
+   F                                 E7
+K. Hosanna in der Höhe.
+   F                                 E7
+V. Hosanna in der Höhe.
+  a              G            a
+ Heilig, heilig, heilig.
+  a              G            a
+ Heilig, heilig, heilig.
+   F                            E7
+K. Heilig, heilig, heilig!
+  F                            E7
+V. Heilig, heilig, heilig!

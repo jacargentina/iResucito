@@ -1,4 +1,16 @@
 {
+  "1": [
+    {
+      "date": 1559254207788,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "linked": {
+        "new": "Assim fala o Amém - Ap 3, 14-22"
+      },
+      "created": true,
+      "updated": false
+    }
+  ],
   "19": [
     {
       "locale": "it",
@@ -57,6 +69,16 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1558995300892,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "linked": {
+        "new": "A ti, Senhor, levanto minha alma - Sal 25 (24)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "24": [
@@ -70,6 +92,16 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1558995868869,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "linked": {
+        "new": "A ti, Senhor, se deve o louvor em Sião - Sal 65 (64)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "25": [
@@ -83,6 +115,16 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1558997831074,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "linked": {
+        "new": "Abraão - Gn 18, 1-5"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "26": [
@@ -93,6 +135,63 @@
       "rename": {
         "original": "Acclamate al Signore - Sal 100 (99)",
         "new": "Acclamate al Signore - Sal 99 (100)"
+      },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559003974823,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "linked": {
+        "new": "Aclamai o Senhor - Sal 100 (99)"
+      },
+      "created": true,
+      "updated": false
+    }
+  ],
+  "27": [
+    {
+      "date": 1559005801082,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "linked": {
+        "new": "Ao despertar - Sal 17 (16)"
+      },
+      "created": true,
+      "updated": false
+    }
+  ],
+  "28": [
+    {
+      "date": 1559210583387,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "rename": {
+        "original": "Lobet den Herrn vom Himmel her - Ps 148",
+        "new": "Lobet den Herrn vom Himmel her (*) - Ps 148"
+      },
+      "created": false,
+      "updated": true
+    }
+  ],
+  "29": [
+    {
+      "date": 1559006444965,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "linked": {
+        "new": "Aleluia, aclamai o Senhor - Sal 150"
+      },
+      "created": true,
+      "updated": false
+    },
+    {
+      "date": 1559211407925,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "linked": {
+        "new": "Aleluia, aclamai o Senhor - Sal 150"
       },
       "created": false,
       "updated": true
@@ -109,6 +208,42 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1559006905876,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "linked": {
+        "new": "Aleluia, Bendizei o Senhor - Sal 134 (133)"
+      },
+      "created": true,
+      "updated": false
+    }
+  ],
+  "31": [
+    {
+      "date": 1559007236536,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "linked": {
+        "new": "Aleluia, já chegou o reino - Ap 19, 6-9"
+      },
+      "created": true,
+      "updated": false
+    },
+    {
+      "date": 1559212255485,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "rename": {
+        "original": "Schon kommt das Reich - Apk 19, 6-9",
+        "new": "Schon kommt das Reich (*) - Off 19, 6-9"
+      },
+      "linked": {
+        "new": "Aleluia, já chegou o reino - Ap 19, 6-9"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "32": [
@@ -122,6 +257,16 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1559007612935,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "linked": {
+        "new": "Alçai ó portas - Sal 24 (23)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "33": [
@@ -135,6 +280,16 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1559007984352,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "linked": {
+        "new": "Amo o Senhor - Sal 116 (114-115)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "34": [
@@ -148,6 +303,16 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1559090610208,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "linked": {
+        "new": "Akedá - Gn 22, 1-19"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "35": [
@@ -161,6 +326,16 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1559091036144,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "linked": {
+        "new": "Ave Maria I - Lc 1, 28ss"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "36": [
@@ -174,6 +349,16 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1559091349821,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "linked": {
+        "new": "Ave Maria II (1984) - Lc 1, 28ss"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "39": [
@@ -198,6 +383,13 @@
         "original": "Benedici anima mia Jahvè - Sal 103 (102)",
         "new": "Benedici anima mia, Jahvè - Sal 102 (103)"
       },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559166389607,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
       "created": false,
       "updated": true
     }
@@ -232,6 +424,132 @@
       "author": "giuseppereino@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1559209370225,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "47": [
+    {
+      "date": 1559209960370,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "49": [
+    {
+      "date": 1559145448086,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "rename": {
+        "original": "Seht wie es schön ist - Ps 133",
+        "new": "Seht, wie es schön ist - Ps 133"
+      },
+      "created": false,
+      "updated": true
+    }
+  ],
+  "54": [
+    {
+      "date": 1559166362477,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "61": [
+    {
+      "date": 1558994475267,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "65": [
+    {
+      "date": 1559217977101,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "rename": {
+        "original": "Lied des Lammes - Apk 5, 9 ff",
+        "new": "Lied des Lammes - Offb 5, 9 ff"
+      },
+      "created": false,
+      "updated": true
+    }
+  ],
+  "69": [
+    {
+      "date": 1559211671738,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "73": [
+    {
+      "date": 1559208760708,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "75": [
+    {
+      "date": 1559217177557,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "76": [
+    {
+      "date": 1559091666980,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "linked": {
+        "new": "Até quando? - Sal 13 (12)"
+      },
+      "created": true,
+      "updated": false
+    },
+    {
+      "date": 1559166411075,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "linked": {
+        "new": "Até quando? - Sal 13 (12)"
+      },
+      "created": false,
+      "updated": true
+    }
+  ],
+  "85": [
+    {
+      "date": 1559059359542,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "rename": {
+        "original": "Hymnus der Vesper von Christi Himmelfahrt",
+        "new": "Hymnus der Vesper von Christi Himmelfahrt und Hymnus der Laudes von Christi Himmelfahrt bis Pfingsten"
+      },
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "liturgy"
+      }
     }
   ],
   "87": [
@@ -260,6 +578,19 @@
       "updated": true
     }
   ],
+  "90": [
+    {
+      "date": 1559217022122,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "rename": {
+        "original": "Der weg ist hart",
+        "new": "Der Weg ist hart"
+      },
+      "created": false,
+      "updated": true
+    }
+  ],
   "93": [
     {
       "locale": "it",
@@ -273,11 +604,130 @@
       "updated": true
     }
   ],
+  "94": [
+    {
+      "date": 1559166463588,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "96": [
+    {
+      "date": 1559244230458,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "104": [
+    {
+      "date": 1559166485814,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "rename": {
+        "original": "Seht wie es schön ist kostet wie lieblich - Ps 133",
+        "new": "Seht, wie es schön ist, kostet, wie lieblich - Ps 133"
+      },
+      "created": false,
+      "updated": true
+    }
+  ],
+  "107": [
+    {
+      "date": 1559217857298,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "114": [
+    {
+      "date": 1559217628441,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "121": [
+    {
+      "date": 1559217273647,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "rename": {
+        "original": "Seht wie es schön ist seht welche freude - Ps 133",
+        "new": "Seht, wie es schön ist, seht, welche Freude - Ps 133"
+      },
+      "created": false,
+      "updated": true
+    }
+  ],
+  "125": [
+    {
+      "date": 1559241935265,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "126": [
+    {
+      "date": 1559217046144,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    }
+  ],
   "145": [
     {
       "locale": "it",
       "date": 1558566502896,
       "author": "giuseppereino@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "146": [
+    {
+      "date": 1559060929218,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "liturgy"
+      }
+    }
+  ],
+  "149": [
+    {
+      "date": 1559059757721,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "liturgy"
+      }
+    }
+  ],
+  "155": [
+    {
+      "date": 1559166427700,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "rename": {
+        "original": "Jahwe mein Gott bist du - Jes 25, 1-8",
+        "new": "Jahwe, mein Gott bist du - Jes 25, 1-8"
+      },
       "created": false,
       "updated": true
     }
@@ -301,6 +751,23 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": false
+    },
+    {
+      "date": 1559216763141,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559251782529,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "linked": {
+        "new": "Abba Pai - Rm 8, 15-17"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "160": [
@@ -316,6 +783,18 @@
       "updated": true
     }
   ],
+  "175": [
+    {
+      "date": 1559250984950,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "linked": {
+        "new": "A voz do meu amado - Ct 2, 8-17"
+      },
+      "created": true,
+      "updated": false
+    }
+  ],
   "181": [
     {
       "locale": "it",
@@ -323,6 +802,23 @@
       "author": "giuseppereino@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1559217782585,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559252762548,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "linked": {
+        "new": "Aleluia Pascal"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "182": [
@@ -335,6 +831,23 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1559217152515,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559255116742,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "linked": {
+        "new": "Aleluia interleccional antes do Evangelho - Apropriado para os tempos do Advento, Natal e Comum"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "183": [
@@ -344,6 +857,32 @@
       "author": "giuseppereino@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1559090179474,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "linked": {
+        "new": "Amém, amém, amém - Ap 7, 12-14"
+      },
+      "created": true,
+      "updated": false,
+      "staged": {
+        "original": "liturgy",
+        "new": "precatechumenate"
+      }
+    }
+  ],
+  "184": [
+    {
+      "date": 1559253867859,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "linked": {
+        "new": "Anáfora do Sal"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "185": [
@@ -356,6 +895,17 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1559217813447,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "rename": {
+        "original": "Ruf zum evangelium in der fastenzeit",
+        "new": "Ruf zum evangelium in der Fastenzeit"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "186": [
@@ -367,6 +917,13 @@
         "original": "Benedizione dell'acqua",
         "new": "Benedizione dell'acqua del fonte battesimale"
       },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559031440838,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
       "created": false,
       "updated": true
     }
@@ -382,6 +939,295 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1559165921754,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "189": [
+    {
+      "date": 1558941127097,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "196": [
+    {
+      "date": 1559027699229,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "rename": {
+        "original": "Eucharistisches Hochgebet II - Konsekration und Akklamation",
+        "new": "Eucharistisches Hochgebet II (1) - Konsekration und Akklamation"
+      },
+      "created": false,
+      "updated": true
+    }
+  ],
+  "197": [
+    {
+      "date": 1559077545112,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "linked": {
+        "new": "Plegaria Eucaristica II - Consagracion modelo II"
+      },
+      "created": true,
+      "updated": false
+    }
+  ],
+  "198": [
+    {
+      "date": 1559166012713,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "199": [
+    {
+      "date": 1559217077548,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "201": [
+    {
+      "date": 1559166082456,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "202": [
+    {
+      "date": 1559166062854,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "203": [
+    {
+      "date": 1559165973960,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "204": [
+    {
+      "date": 1559216890437,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "205": [
+    {
+      "date": 1558942962388,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "206": [
+    {
+      "date": 1558944796543,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "rename": {
+        "original": "Heilig, Heilig, Heilig, Hosanna von Palmsonntag",
+        "new": "Heilig, Heilig, Heilig, Hosanna von Palmsonntag (und Osterzeit)"
+      },
+      "created": false,
+      "updated": true
+    }
+  ],
+  "207": [
+    {
+      "date": 1558943554604,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "208": [
+    {
+      "date": 1559165950690,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "210": [
+    {
+      "date": 1559116957868,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "222": [
+    {
+      "date": 1559092326076,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "linked": {
+        "new": "Vamos já, pastores - Cântico de Natal"
+      },
+      "created": true,
+      "updated": false
+    }
+  ],
+  "226": [
+    {
+      "date": 1558853503960,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "rename": {
+        "original": "Der herr ist mein licht und mein heil - Ps 27",
+        "new": "Der Herr ist mein Licht und mein Heil - Ps 27"
+      },
+      "created": false,
+      "updated": true
+    }
+  ],
+  "229": [
+    {
+      "date": 1559254732448,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "linked": {
+        "new": "Sobe Deus entre aclamações - Sal 47 (46)"
+      },
+      "created": false,
+      "updated": true
+    }
+  ],
+  "232": [
+    {
+      "date": 1559141762383,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "linked": {
+        "new": "Singen wir - Ex 15, 1-2"
+      },
+      "created": false,
+      "updated": true
+    }
+  ],
+  "233": [
+    {
+      "date": 1559055947698,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "linked": {
+        "new": "Hymnus der Laudes im Advent bis zum 16. Dezember"
+      },
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "liturgy"
+      }
+    }
+  ],
+  "234": [
+    {
+      "date": 1559058220131,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "linked": {
+        "new": "Hymnus der Laudes im Advent nach dem 16. Dezember"
+      },
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "liturgy"
+      }
+    }
+  ],
+  "235": [
+    {
+      "date": 1559058854560,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "linked": {
+        "new": "Hymnus der Laudes von Ostern bis Christi Himmelfahrt"
+      },
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "liturgy"
+      }
+    }
+  ],
+  "236": [
+    {
+      "date": 1559060352600,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "linked": {
+        "new": "Hymnus der Laudes von Pfingsten"
+      },
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "liturgy"
+      }
+    }
+  ],
+  "237": [
+    {
+      "date": 1559062581335,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "linked": {
+        "new": "Eucharistisches Hochgebet II (2) - Konsekration und Akklamation"
+      },
+      "created": true,
+      "updated": false,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "liturgy"
+      }
+    }
+  ],
+  "238": [
+    {
+      "date": 1559078205203,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "linked": {
+        "new": "Eucharistisches Hochgebet II (2) - Darbringung, Interzessionen, Doxologie"
+      },
+      "created": true,
+      "updated": false,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "liturgy"
+      }
     }
   ]
 }

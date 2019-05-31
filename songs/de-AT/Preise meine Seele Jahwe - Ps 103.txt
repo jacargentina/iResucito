@@ -1,19 +1,33 @@
-PSALM 103 - PREISE MEINE SEELE JAHWE
-Barré auf dem II. Bund
-
-a             E               d
-V. Preise  meine Seele  Jahwe                            Er schafft dir Gerechtigkeit
-a                             a
-lobpreise seinen heiligen Namen.                            und verteidigt all die Unterdrückten.
-E                              E
-Preise  meine Seele  Jahwe                            Er lehrte dem Mose seine Wege
-a                              a
-vergiß nicht seine Liebe.                            und zeigte Israel seine Taten.
-d                            a             E
-K. Er vergibt all deine Schuld                            V. Preise  meine Seele  Jahwe
-a                             a
-all deine Sorgen wird er heilen.                            lobpreise seinen heiligen Namen.
-E                          E
-Er rettet dein Leben aus dem Tod                            Preise  meine Seele  Jahwe
-a                      a
-und krönt dich mit Gnade und Liebe.                            vergiß nicht seine Liebe.
+clamp: II.  
+a                                                    E
+V. Preise, meine Seele, Jahwe                            
+                                                           a
+ lobpreise seinen heiligen Namen.                            
+                                                         E
+ Preise, meine Seele, Jahwe                            
+                                              a
+ vergiss nicht seine Liebe.                            
+   d
+K. Er vergibt all deine Schuld,                            
+                                                         a
+ all deine Sorgen wird er heilen.                            
+                                                                  E
+ Er rettet dein Leben aus dem Tod                            
+                                                                      a
+ und krönt dich mit Gnade und Liebe.
+   d
+ Er schafft dir Gerechtigkeit
+                                                             a
+ und verteidigt all die Unterdrückten.
+                                                             E
+ Er lehrte dem Mose seine Wege
+                                                    a
+ und zeigte Israel seine Taten.
+  a                                                    E
+V. Preise, meine Seele, Jahwe                            
+                                                           a
+ lobpreise seinen heiligen Namen.                            
+                                                         E
+ Preise, meine Seele, Jahwe                            
+                                              a
+ vergiss nicht seine Liebe. 

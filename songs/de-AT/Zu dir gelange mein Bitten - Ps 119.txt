@@ -1,16 +1,27 @@
-PSALM 119 - ZU DIR GELANGE MEIN BITTEN
-Barré auf dem II. Bund
-a    F      E                G
-K. Jesus  Jesus mein Herr!                          singe meine Zunge  ihn zu preisen:
-a                              F        E
-Zu dir gelange mein Bitten                           Sieh mich an  ich bin verloren.
-F
-meine Lippen singen ein neues Lied.
-G                       a             G
-Meine Zunge lobpreise dein Wort                          V. Komm und suche deinen Knecht
-F       E                   F          E
-Jesus  meine Seele!                          komm  Jesus mein Herr!
-a                          a             G
-Strecke aus deine Hand  mir zu helfen                           Ich gehe verloren ohne dich
-F                      F           E
-ich erwarte von dir meine Rettung;                          komm  Jesus mein Herr!
+clamp: II. 
+ a              F                       E
+K. Jesus, Jesus mein Herr!                          
+      a
+ Zu dir gelange mein Bitten,                           
+                    F
+ meine Lippen singen ein neues Lied.
+                    G
+ Meine Zunge lobpreise dein Wort,                          
+        F                        E
+ Jesus, meine Seele!                          
+  a
+ Strecke aus deine Hand, mir zu helfen,                           
+                 F
+ ich erwarte von dir meine Rettung;  
+   G
+ singe meine Zunge, ihn zu preisen:
+                        F                            E
+ Sieh mich an, ich bin verloren.
+     a                                                      G
+V. Komm und suche deinen Knecht,
+      F                                      E
+ komm, Jesus mein Herr!
+  a                                                              G
+ Komm, ohne dich gehe ich verloren,
+  F
+ komm, Jesus mein Herr!

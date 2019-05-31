@@ -1,76 +1,150 @@
-EXSULTET
-Barré auf dem III. Bund
-a          G      a                G            a
-K. Frohlocket  ihr Chöre der Engel                          V. DAS IST WÜRDIG UND RECHT. (2x)
-C            a                             G
-frohlocke himmlische Versammlung                          K. In Wahrheit ist es würdig und recht
-G                            a         C              a
-ein Hymnus                           mit Gesang das Frohlocken des Geistes zu verkünden
-a                   G
-preise den Sieg des Auferstandenen.                          und den allmächtigen Vater zu preisen
-F       E       F         E                        a
-Lobsinge  o Erde  überstrahlt von neuem Licht.                           und seinen Sohn  den Herrn Jesus Christus.
-a                                  G
-K. DER GLANZ DES KÖNIGS                          Er hat für uns bezahlt beim ewigen Vater
-G                    a
-HAT DAS DUNKEL BESIEGT                           die Schuld des Adam.
-F           E                     C            a
-DAS DUNKEL DER WELT!                          Mit seinem Blut  das er aus Liebe vergossen
-a                         G                a
-V. Der Glanz des Königs ...                          löschte er aus das Urteil der alten Schuld.
-a            G                F       E
-K. Freue dich  Mutter Kirche                           Dies ist das Pascha
-a     C            a            F             E
-voll Glanz der Herrlichkeit deines Herrn!                          an dem das Lamm geschlachtet ist.
-G                    F         E
-In diesem Saal ertöne einmütig                          Dies ist die Nacht
-a             F
-der Jubel des feiernden Volkes.                          in der du unsere Väter aus der Sklaverei Ägyptens
-G         a                    E
-Der Herr sei mit euch.                          befreit hast.
-G              a              F       E
-V. UND MIT DEINEM GEISTE!                          Dies ist die Nacht
-F       E                        F              E
-K. Erhebet die Herzen.                          die uns rettet aus dem Dunkel des Bösen.
-F                E            F         E
-V. WIR HABEN SIE BEIM HERRN                          Dies ist die Nacht
-a          F                  E
-K. Lasset uns danken dem Herrn unserem Gott.                          in der er die Finsternis der Sünde besiegt hat.
-a                              a
-V. DIES IST DIE NACHT                              V. DIES IST DIE NACHT
-G                              G
-IN DER CHRISTUS DEN TOD ZERBRACH                              IN DER CHRISTUS DEN TOD ZERBRACH
-F                              F
-UND AUS DER UNTERWELT                              UND AUS DER UNTERWELT
-E                               E
-ALS SIEGER EMPORSTEIGT. (2x)                              ALS SIEGER EMPORSTEIGT. (2x)
-a              G          a        a                    G
-K. O wunderbares Entgegenkommen deiner Gnade                              K. In dieser Nacht  nimm an heiliger Vater
-C                a                       a
-o unfaßbare Zärtlichkeit deiner Liebe.                              das Opfer des Lobes
-G                    a            C                  a
-Um den Knecht zu erlösen  gabst du den Sohn dahin.                              das die Kirche dir darbringt durch deine Diener
-F             E                        G
-Ohne die Sünde des Adam                               in der feierlichen Liturgie der Kerze
-F             E                               a
-hätte Christus uns nicht erlöst.                              dem Zeichen des neuen Lichtes.
-a                              F          E
-V. GLÜCKLICHE SCHULD  WELCH GROSSEN                               Wir bitten dich  o Herr:
-G                a
-ERLÖSER HAST DU GEFUNDEN                               Laß diese Kerze dargebracht zum Ruhm
-a                         G           a
-GLÜCKLICHE SCHULD! (2x)                              deines Namens in Licht erstrahlen.
-a          G                                         G
-K. O wahrhaft selige Nacht                               Ihr Licht steige empor wie lieblicher Wohlgeruch
-a                             a
-du kanntest die Stunde  in der Christus erstand!                              vermähle ihr Licht mit den Sternen am Himmel!
-G                                  G
-O wahrhaft selige Nacht                               Der Morgenstern finde sie leuchtend
-a               F                 E
-die Ägypten plünderte  um Israel zu bereichern!                              jener Morgenstern  der keinen Untergang kennt:
-G             a     a                       G
-O Nacht  die das Böse besiegt  die reinigt von Schuld!                              Christus dein Sohn  der von den Toten erstand
-G                    F         E
-O wahrhaft ruhmreiche Nacht                               erstrahlt als helles Licht.
-F                 E              a     G     a
-die den Menschen wieder mit Gott verbindet.                             V. AMEN  AMEN  AMEN! (2x)
+clamp: III. 
+ a                                    G              a
+K. Frohlocket,  ihr Chöre der Engel,                          
+           C                                            a
+ frohlocke himmlische Versammlung,                         
+            G
+ ein Hymnus                           
+                                                            a
+ preise den Sieg des Auferstandenen.                          
+  F                         E                          F                                 E
+ Lobsinge,  o Erde,  überstrahlt von neuem Licht.                           
+                                          a
+K. DER GLANZ DES KÖNIGS                          
+                                                 G
+ HAT DAS DUNKEL BESIEGT,                           
+  F                                         E
+ DAS DUNKEL DER WELT!                          
+                                   a
+V. Der Glanz des Königs ...                          
+  a                                         G
+K. Freue dich,  Mutter Kirche,                          
+               a                  C                                     a
+ voll Glanz der Herrlichkeit deines Herrn!                          
+                            G
+ In diesem Saal ertöne einmütig                          
+                                                       a
+ der Jubel des feiernden Volkes.                          
+  G                                  a                    E
+ Der Herr sei mit euch.                          
+  G                                        a
+V. UND MIT DEINEM GEISTE!                          
+  F                           E
+K. Erhebet die Herzen.                         
+  F                                               E
+V. WIR HABEN SIE BEIM HERRN                         
+                                                                                         a
+K. Lasset uns danken dem Herrn unserem Gott.
+             G                                     a
+V. DAS IST WÜRDIG UND RECHT. (2x)
+                                                                  G
+K. In Wahrheit ist es würdig und recht
+                  a                          C                                                    a
+ mit Gesang das Frohlocken des Geistes zu verkünden
+                             G
+ und den allmächtigen Vater zu preisen
+                                                                                  a
+ und seinen Sohn,  den Herrn Jesus Christus.
+                                                                              G
+ Er hat für uns bezahlt beim ewigen Vater
+                                  a
+ die Schuld des Adam.
+                               C                                                  a
+ Mit seinem Blut,  das er aus Liebe vergossen,
+                         G                                                      a
+ löschte er aus das Urteil der alten Schuld.
+  F                           E
+ Dies ist das Pascha,
+           F                                           E
+ an dem das Lamm geschlachtet ist.
+  F                          E
+ Dies ist die Nacht,
+  F
+ in der du unsere Väter aus der Sklaverei Ägyptens
+           E
+ befreit hast.
+  F                          E 
+ Dies ist die Nacht,
+                     F                                                       E
+ die uns rettet aus dem Dunkel des Bösen.
+  F                         E
+ Dies ist die Nacht,
+                F                                                              E
+ in der er die Finsternis der Sünde besiegt hat.
+                          
+  a
+V. DIES IST DIE NACHT,                              
+                                                      G
+ IN DER CHRISTUS DEN TOD ZERBRACH                              
+                                 F
+ UND AUS DER UNTERWELT                              
+                                      E
+ ALS SIEGER EMPORSTEIGT.                              
+   a                                                    G                                    a
+K. O wunderbares Entgegenkommen deiner Gnade                              
+            C                                                           a
+ o unfassbare Zärtlichkeit deiner Liebe.                              
+                          G                                                                              a                                                                   
+ Um den Knecht zu erlösen, gabst du den Sohn dahin.                              
+  F                                         E
+ Ohne die Sünde des Adam                              
+  F                                                      E
+ hätte Christus uns nicht erlöst.                              
+  a
+V. GLÜCKLICHE SCHULD  WELCH GROSSEN                               
+                                                   G
+ ERLÖSER HAST DU GEFUNDEN                               
+                                        a
+ GLÜCKLICHE SCHULD!                              
+   a                                      G
+K. O wahrhaft selige Nacht                               
+                                                                                            a
+ du kanntest die Stunde  in der Christus erstand!                              
+                                          G
+ O wahrhaft selige Nacht                              
+                                                                                     a
+ die Ägypten plünderte  um Israel zu bereichern!                              
+                                                        G                                               a
+ O Nacht  die das Böse besiegt  die reinigt von Schuld!                              
+                                                       G
+ O wahrhaft ruhmreiche Nacht                               
+                        F                                                          E
+ die den Menschen wieder mit Gott verbindet.   
+  a
+V. DIES IST DIE NACHT,                              
+                                                      G
+ IN DER CHRISTUS DEN TOD ZERBRACH                              
+                                 F
+ UND AUS DER UNTERWELT                              
+                                      E
+ ALS SIEGER EMPORSTEIGT.     
+   a                                                                       G
+K. In dieser Nacht  nimm an heiliger Vater,
+                                  a
+ das Opfer des Lobes,
+                     C                                                                  a
+ das die Kirche dir darbringt durch deine Diener
+                   G
+ in der feierlichen Liturgie der Kerze,
+                                                        a
+ dem Zeichen des neuen Lichtes.
+  F                                      E
+ Wir bitten dich,  o Herr:
+  a
+ Lass diese Kerze dargebracht zum Ruhm
+                    G                                        a
+ deines Namens in Licht erstrahlen.
+                                                                                  G
+ Ihr Licht steige empor wie lieblicher Wohlgeruch,
+                                                                                      a
+ vermähle ihr Licht mit den Sternen am Himmel!
+                                                            G
+ Der Morgenstern finde sie leuchtend,
+                  F                                                                         E
+ jener Morgenstern,  der keinen Untergang kennt:
+  a                                                                                       G
+ Christus dein Sohn,  der von den Toten erstand,
+           F                               E
+ erstrahlt als helles Licht.
+         a              G               a
+V. AMEN,  AMEN,  AMEN! (2x)
