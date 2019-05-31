@@ -142,39 +142,25 @@ const patchSongLogic = (songPatch, key, dirty) => {
         }
       }
 
-      if (
-        report.rename ||
-        report.linked ||
-        report.created ||
-        report.updated ||
-        report.staged
-      ) {
-        // Guardar historia de cambios
-        var patchInfo: SongPatchLogData = {
-          date: date,
-          locale: report.locale,
-          author: author || 'anonymous',
-          rename: report.rename,
-          linked: report.linked,
-          created: report.created,
-          updated: report.updated,
-          staged: report.staged
-        };
+      // Guardar historia de cambios
+      var patchInfo: SongPatchLogData = {
+        date: date,
+        locale: report.locale,
+        author: author || 'anonymous',
+        rename: report.rename,
+        linked: report.linked,
+        created: report.created,
+        updated: report.updated,
+        staged: report.staged
+      };
 
-        if (!SongsPatches.hasOwnProperty(key)) {
-          SongsPatches[key] = {};
-        }
-        var songPatches = SongsPatches[key];
-        if (songPatches) {
-          var found = songPatches.find(x => x.date === date);
-          if (!found) {
-            songPatches.push(patchInfo);
-          }
-        } else {
-          songPatches = [];
-          songPatches.push(patchInfo);
-          SongsPatches[key] = songPatches;
-        }
+      if (!SongsPatches.hasOwnProperty(key)) {
+        SongsPatches[key] = [];
+      }
+      var songPatches = SongsPatches[key];
+      var found = songPatches.find(x => x.date === date);
+      if (!found) {
+        songPatches.push(patchInfo);
       }
     });
   } catch (err) {
