@@ -145,7 +145,7 @@ const SongList = () => {
             return (
               <List.Item
                 key={idx}
-                onClick={() => loadOrAdd(song, idx)}
+                onClick={() => loadOrAdd(song)}
                 className="hoverable">
                 <List.Content>
                   <List.Header>{song.titulo}</List.Header>

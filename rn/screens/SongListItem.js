@@ -74,7 +74,7 @@ const SongListItem = (props: any) => {
     songs
   } = data.songsMeta;
 
-  const song = useMemo(() => {
+  const song: Song = useMemo(() => {
     if (songKey) {
       const song = songs.find(i => i.key == songKey);
       return song;
@@ -190,7 +190,7 @@ const SongListItem = (props: any) => {
             break;
           case I18n.t('ui.copy from spanish'):
             newSong = await setSongPatch(song, I18n.locale, {
-              lines: song.lines.join('\n')
+              lines: song.fullText
             });
             break;
         }
@@ -250,7 +250,8 @@ const SongListItem = (props: any) => {
       !song.error &&
       song.fullText.toLowerCase().includes(highlight.toLowerCase())
     ) {
-      var linesToHighlight = song.lines.filter(l =>
+      const lines = song.fullText.split('\n');
+      const linesToHighlight = lines.filter(l =>
         l.toLowerCase().includes(highlight.toLowerCase())
       );
       var children = linesToHighlight.map((l, i) => {
