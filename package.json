@@ -87,7 +87,7 @@
     "react-native": "^0.59.8",
     "react-native-collapsible": "^1.4.0",
     "react-native-contacts": "^4.0.2",
-    "react-native-device-info": "^2.0.2",
+    "react-native-device-info": "^2.0.3",
     "react-native-exception-handler": "^2.10.8",
     "react-native-fs": "^2.13.3",
     "react-native-gesture-handler": "^1.2.2",
