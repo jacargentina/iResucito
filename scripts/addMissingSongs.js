@@ -13,7 +13,21 @@ async function run(locale: string, dirty) {
 
   var localeSongs = await FolderSongs.readLocaleSongs(locale);
   var missingOnIndex = localeSongs.filter(locSong => {
-    return !songs.find(s => s.files[locale] === locSong.nombre);
+    const sameCaseFound = songs.find(s => s.files[locale] === locSong.nombre);
+    if (!sameCaseFound) {
+      const lowerCaseFound = songs.find(
+        s => s.files[locale].toLowerCase() === locSong.nombre.toLowerCase()
+      );
+
+      if (!lowerCaseFound) {
+        return locSong;
+      }
+      console.log('Disk case must be fixed!');
+      console.log({
+        indexIs: lowerCaseFound.files[locale],
+        diskIs: locSong.nombre
+      });
+    }
   });
   if (missingOnIndex.length > 0) {
     const songMaxKey = songs.reduce((prev, next) => {
