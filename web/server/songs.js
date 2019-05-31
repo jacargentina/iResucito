@@ -42,7 +42,19 @@ export default function(server: any) {
         error: song.error
       });
     } else {
-      res.json(song);
+      // Buscar key previa y siguiente para navegacion
+      const index = songs.indexOf(song);
+      var prev = index - 1;
+      while (prev >= 0 && songs[prev].notTranslated) {
+        prev--;
+      }
+      var next = index + 1;
+      while (next <= songs.length && songs[next].notTranslated) {
+        next++;
+      }
+      const previousKey = songs[prev] ? songs[prev].key : null;
+      const nextKey = songs[next] ? songs[next].key : null;
+      res.json({ song, index, previousKey, nextKey });
     }
   });
 

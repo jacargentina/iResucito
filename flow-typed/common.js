@@ -103,6 +103,7 @@ declare type SongFile = {
 declare type Song = {
   key: string,
   version: number,
+  notTranslated: boolean,
   stage: string,
   advent: boolean,
   christmas: boolean,

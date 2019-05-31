@@ -119,6 +119,8 @@ export class SongsProcessor {
         info.rating = ratings[key][loc];
       }
     }
+    info.notTranslated =
+      !info.patched && !getPropertyLocale(info.files, rawLoc);
     return info;
   }
 

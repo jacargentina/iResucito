@@ -7,6 +7,12 @@ import { DataContext } from './DataContext';
 
 export const EditContext: any = React.createContext();
 
+const emptyNavigation = {
+  index: null,
+  previousKey: null,
+  nextKey: null
+};
+
 const EditContextWrapper = (props: any) => {
   const data = useContext(DataContext);
   const {
@@ -20,6 +26,7 @@ const EditContextWrapper = (props: any) => {
     activeDialog
   } = data;
   const [text, setText] = useState('');
+  const [navigation, setNavigation] = useState(emptyNavigation);
   const [rename, setRename] = useState();
   const [stage, setStage] = useState();
   const [hasChanges, setHasChanges] = useState(false);
@@ -28,6 +35,7 @@ const EditContextWrapper = (props: any) => {
 
   const closeEditor = () => {
     setEditSong();
+    setNavigation(emptyNavigation);
     setText('');
     setRename();
     setStage();
@@ -35,16 +43,17 @@ const EditContextWrapper = (props: any) => {
     listSongs();
   };
 
-  const loadSong = song => {
+  const loadSong = (songKey: string) => {
     setApiResult();
     setApiLoading(true);
     return api
-      .get(`/api/song/${song.key}/${I18n.locale}`)
+      .get(`/api/song/${songKey}/${I18n.locale}`)
       .then(result => {
         setApiLoading(false);
-        const song = result.data;
+        const { song, index, previousKey, nextKey } = result.data;
         setText(song.fullText);
         setEditSong(song);
+        setNavigation({ index, previousKey, nextKey });
         setHasChanges(false);
       })
       .catch(err => {
@@ -189,6 +198,7 @@ const EditContextWrapper = (props: any) => {
         songFile,
         patchLogs,
         loadSong,
+        navigation,
         addSong,
         setEditSong,
         setConfirmData,

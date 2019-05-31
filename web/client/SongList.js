@@ -12,7 +12,6 @@ import SongListResume from './SongListResume';
 import { DataContext } from './DataContext';
 import { EditContext } from './EditContext';
 import { useDebounce } from 'use-debounce';
-import { getPropertyLocale } from '../../common';
 import I18n from '../../translations';
 import colors from '../../colors';
 
@@ -32,8 +31,6 @@ const SongList = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [debouncedTerm] = useDebounce(searchTerm, 800);
 
-  const notUsingSpanish = locale.split('-')[0] !== 'es';
-
   const toggleFilter = name => {
     setFilters(currentFilters => {
       return { ...currentFilters, [name]: !currentFilters[name] };
@@ -44,7 +41,7 @@ const SongList = () => {
     if (song.notTranslated) {
       addSong(song);
     } else {
-      loadSong(song);
+      loadSong(song.key);
     }
   };
 
@@ -56,22 +53,12 @@ const SongList = () => {
           song.titulo.toLowerCase().includes(debouncedTerm.toLowerCase()) ||
           song.fuente.toLowerCase().includes(debouncedTerm.toLowerCase())
       );
-
-      const addNotTranslated = filterByText.map(song => {
-        song.notTranslated =
-          notUsingSpanish &&
-          !song.patched &&
-          !getPropertyLocale(song.files, locale);
-        return song;
-      });
-
-      const result = addNotTranslated.filter(song => {
+      const result = filterByText.filter(song => {
         const flags = Object.keys(filters).map(name => {
           return filters[name] === false || song[name] === filters[name];
         });
         return flags.every(f => f === true);
       });
-
       setFiltered(result);
     }
   }, [debouncedTerm, songs, filters]);
@@ -100,9 +87,6 @@ const SongList = () => {
           </Button.Group>
         </Menu.Item>
         <Menu.Item>
-          <Menu.Item>
-            <Icon name="filter" />
-          </Menu.Item>
           <Button.Group size="mini">
             <Button
               toggle
@@ -157,11 +141,11 @@ const SongList = () => {
           display: editSong ? 'none' : null
         }}>
         {filtered &&
-          filtered.map((song, key) => {
+          filtered.map((song, idx) => {
             return (
               <List.Item
-                key={key}
-                onClick={() => loadOrAdd(song)}
+                key={idx}
+                onClick={() => loadOrAdd(song, idx)}
                 className="hoverable">
                 <List.Content>
                   <List.Header>{song.titulo}</List.Header>
