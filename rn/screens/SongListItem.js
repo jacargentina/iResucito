@@ -65,7 +65,6 @@ const SongListItem = (props: any) => {
   } = props;
 
   const [isCollapsed, setIsCollapsed] = useState(true);
-  const [notInLocale, setNotInLocale] = useState(true);
   const { keys } = data.settings;
   const {
     getSongLocalePatch,
@@ -82,30 +81,10 @@ const SongListItem = (props: any) => {
     return songMeta;
   }, [songs, songKey, songMeta]);
 
-  useEffect(() => {
-    let isSubscribed = true;
-    if (song) {
-      getSongLocalePatch(song).then(patchObj => {
-        if (isSubscribed) {
-          const loc = getPropertyLocale(song.files, I18n.locale);
-          var ploc;
-          if (patchObj) {
-            ploc = getPropertyLocale(patchObj, I18n.locale);
-          }
-          setNotInLocale(!loc && !ploc);
-        }
-      });
-    }
-    return () => {
-      isSubscribed = false;
-    };
-  }, [song]);
-
   const [developerMode, setDeveloperMode] = useState();
   const [firstHighlighted, setFirstHighlighted] = useState();
   const [highlightedRest, setHighlightedRest] = useState();
   const [openHighlightedRest, setOpenHighlightedRest] = useState();
-  const notUsingSpanish = I18n.locale.split('-')[0] !== 'es';
 
   const showDeveloperMenu = () => {
     var options = [I18n.t('ui.rename'), I18n.t('ui.edit')];
@@ -204,7 +183,7 @@ const SongListItem = (props: any) => {
   };
 
   const showEditor = () => {
-    if (notInLocale) {
+    if (song.notTranslated) {
       setTimeout(() => {
         // Invocar un ActionSheet en el callback de otro
         // funciona bien en iOS, pero no en Android
@@ -333,9 +312,7 @@ const SongListItem = (props: any) => {
             {I18n.t('ui.original song')}: {song.patchedTitle}
           </Text>
         )}
-        {!patchSectionDisabled && notUsingSpanish && notInLocale && (
-          <NoLocaleWarning />
-        )}
+        {!patchSectionDisabled && song.notTranslated && <NoLocaleWarning />}
         <StarRating
           containerStyle={{
             paddingTop: 15,
