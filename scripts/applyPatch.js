@@ -4,16 +4,15 @@ const path = require('path');
 const fs = require('fs');
 require('colors');
 //const jsdiff = require('diff');
-const _ = require('lodash');
 const { execSync } = require('child_process');
 const inScripts = path.basename(process.cwd()) == path.basename(__dirname);
 const songsDir = inScripts ? '../songs' : './songs';
 const indexPath = path.resolve(songsDir, 'index.json');
 const patchesPath = path.resolve(songsDir, 'patches.json');
 //$FlowFixMe
-const SongsIndex = require(indexPath);
+var SongsIndex = require(indexPath);
 //$FlowFixMe
-const SongsPatches = require(patchesPath);
+var SongsPatches = require(patchesPath);
 
 //$FlowFixMe
 const folders = fs.readdirSync(songsDir, { withFileTypes: true });
@@ -28,10 +27,15 @@ const patchSongLogic = (songPatch, key, dirty) => {
   var report = {};
   report.key = key;
   try {
-    var songToPatch = SongsIndex[key];
-    if (!songToPatch) {
-      songToPatch = { key, files: {}, stage: 'precatechumenate', stages: {} };
+    if (!SongsIndex.hasOwnProperty(key)) {
+      SongsIndex[key] = {
+        key,
+        files: {},
+        stage: 'precatechumenate',
+        stages: {}
+      };
     }
+    var songToPatch = SongsIndex[key];
     Object.keys(songPatch).forEach(rawLoc => {
       var item: SongPatchData = songPatch[rawLoc];
       var loc = '';
@@ -157,6 +161,9 @@ const patchSongLogic = (songPatch, key, dirty) => {
           staged: report.staged
         };
 
+        if (!SongsPatches.hasOwnProperty(key)) {
+          SongsPatches[key] = {};
+        }
         var songPatches = SongsPatches[key];
         if (songPatches) {
           var found = songPatches.find(x => x.date === date);
