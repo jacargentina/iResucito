@@ -87,7 +87,7 @@ const DataContextWrapper = (props: any) => {
     setApiResult();
     setApiLoading(true);
     return api
-      .get(`/api/list/${locale}`)
+      .get(`/api/list/${I18n.locale}`)
       .then(result => {
         setApiLoading(false);
         setSongs(result.data);
@@ -97,9 +97,12 @@ const DataContextWrapper = (props: any) => {
       });
   };
 
-  useEffect(() => {
-    applyLocale(locale);
-  }, [locale]);
+  const changeLocale = (candidate: string) => {
+    // Establecer el valor....
+    applyLocale(candidate);
+    // Tomar el resultado
+    setLocale(I18n.locale);
+  };
 
   return (
     <DataContext.Provider
@@ -107,7 +110,7 @@ const DataContextWrapper = (props: any) => {
         stats,
         availableLocales,
         locale,
-        setLocale,
+        changeLocale,
         editSong,
         setEditSong,
         confirmData,

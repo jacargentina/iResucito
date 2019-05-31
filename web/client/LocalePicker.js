@@ -9,7 +9,7 @@ import { getValidatedLocale } from '../../common';
 
 const LocalePicker = () => {
   const data = useContext(DataContext);
-  const { availableLocales, locale, setLocale } = data;
+  const { availableLocales, locale, changeLocale } = data;
 
   const edit = useContext(EditContext);
   const { editSong } = edit;
@@ -30,7 +30,7 @@ const LocalePicker = () => {
           {availableLocales.map(item => {
             return (
               <Dropdown.Item
-                onClick={() => setLocale(item.value)}
+                onClick={() => changeLocale(item.value)}
                 key={item.value}
                 active={current && current.value == item.value}
                 size="small">
