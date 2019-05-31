@@ -2433,5 +2433,59 @@
   "stages": {
    "de-AT": "liturgy"
   }
+ },
+ "239": {
+  "stage": "precatechumenate",
+  "files": {
+   "pt": "Cantai a Deus - Sal 68 (67)"
+  }
+ },
+ "240": {
+  "stage": "precatechumenate",
+  "files": {
+   "pt": "Hino Das Laudes De Pentecostes - Hino"
+  }
+ },
+ "241": {
+  "stage": "precatechumenate",
+  "files": {
+   "pt": "Louvai O Senhor - Sal 117 (116)"
+  }
+ },
+ "242": {
+  "stage": "precatechumenate",
+  "files": {
+   "pt": "Orações Universais - Melodia para utilizar nas Orações universais"
+  }
+ },
+ "243": {
+  "stage": "precatechumenate",
+  "files": {
+   "pt": "Os Meninos De Belém - "
+  }
+ },
+ "244": {
+  "stage": "precatechumenate",
+  "files": {
+   "pt": "Prefácio Para Advento E Natal - Prefácio de Advento II – Melodia para o tempo de Advento e Natal"
+  }
+ },
+ "245": {
+  "stage": "precatechumenate",
+  "files": {
+   "pt": "Provai E Vede - Sal 34 (33)"
+  }
+ },
+ "246": {
+  "stage": "precatechumenate",
+  "files": {
+   "pt": "Salmodia Para O Salmo Responsorial"
+  }
+ },
+ "247": {
+  "stage": "precatechumenate",
+  "files": {
+   "pt": "Salve Rainha - Hino"
+  }
  }
 }
