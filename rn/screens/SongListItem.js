@@ -264,7 +264,7 @@ const SongListItem = (props: any) => {
         );
       }
     }
-  }, [highlight, developerMode]);
+  }, [highlight, developerMode, isCollapsed]);
 
   if (!song) {
     return (
