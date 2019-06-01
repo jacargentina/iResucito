@@ -18,7 +18,6 @@ const SongEditor = () => {
 
   const edit = useContext(EditContext);
   const {
-    loadSong,
     editSong,
     navigation,
     text,
@@ -28,6 +27,8 @@ const SongEditor = () => {
     confirmRemovePatch,
     hasChanges,
     applyChanges,
+    goPrevious,
+    goNext,
     confirmClose
   } = edit;
   const [debouncedText, setDebouncedText] = useState(text);
@@ -77,27 +78,31 @@ const SongEditor = () => {
         </Menu.Item>
         {navigation && (
           <Fragment>
-            <Menu.Item>
-              <strong style={{ marginLeft: 10, marginRight: 10 }}>
-                {navigation.index} / {songs.length}
-              </strong>
-            </Menu.Item>
-            <Menu.Item>
-              <Button.Group size="mini">
-                <Button
-                  icon
-                  disabled={navigation.previousKey === null || hasChanges}
-                  onClick={() => loadSong(navigation.previousKey)}>
-                  <Icon name="step backward" />
-                </Button>
-                <Button
-                  icon
-                  disabled={navigation.nextKey === null || hasChanges}
-                  onClick={() => loadSong(navigation.nextKey)}>
-                  <Icon name="step forward" />
-                </Button>
-              </Button.Group>
-            </Menu.Item>
+            {navigation.index && (
+              <Menu.Item>
+                <strong style={{ marginLeft: 10, marginRight: 10 }}>
+                  {navigation.index} / {songs.length}
+                </strong>
+              </Menu.Item>
+            )}
+            {(navigation.previousKey || navigation.nextKey) && (
+              <Menu.Item>
+                <Button.Group size="mini">
+                  <Button
+                    icon
+                    disabled={navigation.previousKey === null || hasChanges}
+                    onClick={goPrevious}>
+                    <Icon name="step backward" />
+                  </Button>
+                  <Button
+                    icon
+                    disabled={navigation.nextKey === null || hasChanges}
+                    onClick={goNext}>
+                    <Icon name="step forward" />
+                  </Button>
+                </Button.Group>
+              </Menu.Item>
+            )}
           </Fragment>
         )}
         <Menu.Item position="right">

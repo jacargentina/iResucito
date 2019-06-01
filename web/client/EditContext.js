@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import I18n from '../../translations';
 import api from './api';
+import useKeyboardJs from 'react-use/lib/useKeyboardJs';
 import { getSongFileFromString } from '../../SongsProcessor';
 import { DataContext } from './DataContext';
 
@@ -32,6 +33,22 @@ const EditContextWrapper = (props: any) => {
   const [hasChanges, setHasChanges] = useState(false);
   const [patchLogs, setPatchLogs] = useState();
   const [songFile, setSongFile] = useState();
+
+  const [savePress] = useKeyboardJs('ctrl+s');
+  const [prevPress] = useKeyboardJs('ctrl+n');
+  const [nextPress] = useKeyboardJs('ctrl+m');
+
+  const goPrevious = () => {
+    if (!hasChanges && navigation && navigation.previousKey) {
+      loadSong(navigation.previousKey);
+    }
+  };
+
+  const goNext = () => {
+    if (!hasChanges && navigation && navigation.nextKey) {
+      loadSong(navigation.nextKey);
+    }
+  };
 
   const closeEditor = () => {
     setEditSong();
@@ -119,7 +136,7 @@ const EditContextWrapper = (props: any) => {
             .then(() => {
               setApiLoading(false);
               // Recargar sin los cambios previos
-              loadSong(editSong);
+              loadSong(editSong.key);
             })
             .catch(err => {
               handleApiError(err);
@@ -144,7 +161,7 @@ const EditContextWrapper = (props: any) => {
           setApiLoading(false);
           setHasChanges(false);
           // Recargar el canto
-          loadSong(editSong);
+          loadSong(editSong.key);
         })
         .catch(err => {
           handleApiError(err);
@@ -164,6 +181,21 @@ const EditContextWrapper = (props: any) => {
       logoutFunc();
     }
   };
+
+  if (hasChanges && savePress) {
+    applyChanges();
+  }
+
+  // TODO 
+  // Ver porque al activar se navega mas de uno por vez
+  //
+  // if (prevPress) {
+  //   goPrevious();
+  // }
+
+  // if (nextPress) {
+  //   goNext();
+  // }
 
   useEffect(() => {
     if (editSong && activeDialog === 'patchLog') {
@@ -207,6 +239,8 @@ const EditContextWrapper = (props: any) => {
         hasChanges,
         setHasChanges,
         applyChanges,
+        goPrevious,
+        goNext,
         confirmRemovePatch,
         text,
         setText,
