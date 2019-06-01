@@ -14,6 +14,7 @@ import { EditContext } from './EditContext';
 import { useDebounce } from 'use-debounce';
 import I18n from '../../translations';
 import colors from '../../colors';
+import useHotkeys from 'use-hotkeys';
 
 const SongList = () => {
   const data = useContext(DataContext);
@@ -67,6 +68,24 @@ const SongList = () => {
     listSongs();
   }, [locale]);
 
+  useHotkeys(
+    key => {
+      switch (key) {
+        case 'ctrl+n':
+          if (!editSong) {
+            addSong();
+          }
+        case 'r':
+          if (!editSong) {
+            listSongs();
+          }
+          break;
+      }
+    },
+    ['ctrl+n', 'r'],
+    [editSong]
+  );
+
   if (editSong) {
     return null;
   }
@@ -76,14 +95,28 @@ const SongList = () => {
       <Menu size="mini" inverted attached color="blue">
         <Menu.Item>
           <Button.Group size="mini">
-            <Button onClick={addSong}>
-              <Icon name="add" />
-              {I18n.t('ui.create')}
-            </Button>
-            <Button onClick={listSongs}>
-              <Icon name="refresh" />
-              {I18n.t('ui.refresh')}
-            </Button>
+            <Popup
+              content={<strong>Shortcut: Ctrl + N</strong>}
+              size="mini"
+              position="bottom left"
+              trigger={
+                <Button onClick={addSong}>
+                  <Icon name="add" />
+                  {I18n.t('ui.create')}
+                </Button>
+              }
+            />
+            <Popup
+              content={<strong>Shortcut: r</strong>}
+              size="mini"
+              position="bottom left"
+              trigger={
+                <Button onClick={listSongs}>
+                  <Icon name="refresh" />
+                  {I18n.t('ui.refresh')}
+                </Button>
+              }
+            />
           </Button.Group>
         </Menu.Item>
         <Menu.Item>

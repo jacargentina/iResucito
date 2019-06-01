@@ -11,6 +11,7 @@ import { EditContext } from './EditContext';
 import SongViewFrame from './SongViewFrame';
 import { useDebouncedCallback } from 'use-debounce';
 import I18n from '../../translations';
+import useHotkeys from 'use-hotkeys';
 
 const SongEditor = () => {
   const data = useContext(DataContext);
@@ -44,6 +45,39 @@ const SongEditor = () => {
     }
   }, [editSong]);
 
+  const editMetadata = () => {
+    if (editSong) {
+      setActiveDialog('changeMetadata');
+    }
+  };
+
+  useHotkeys(
+    key => {
+      switch (key) {
+        case 'ctrl+s':
+          if (editSong && hasChanges) {
+            applyChanges();
+          }
+          break;
+        case 'ctrl+[':
+          if (navigation && navigation.previousKey) {
+            goPrevious();
+          }
+          break;
+        case 'ctrl+]':
+          if (navigation && navigation.nextKey) {
+            goNext();
+          }
+          break;
+        case 'ctrl+e':
+          editMetadata();
+          break;
+      }
+    },
+    ['ctrl+s', 'ctrl+[', 'ctrl+]', 'ctrl+e'],
+    [editSong]
+  );
+
   if (!editSong) {
     return null;
   }
@@ -53,10 +87,17 @@ const SongEditor = () => {
       <Menu size="mini" inverted attached color="blue">
         <Menu.Item>
           <Button.Group size="mini">
-            <Button onClick={() => setActiveDialog('changeMetadata')}>
-              <Icon name="edit" />
-              {I18n.t('ui.edit')}
-            </Button>
+            <Popup
+              content={<strong>Shortcut: Ctrl + E</strong>}
+              size="mini"
+              position="bottom left"
+              trigger={
+                <Button onClick={editMetadata}>
+                  <Icon name="edit" />
+                  {I18n.t('ui.edit')}
+                </Button>
+              }
+            />
             {(editSong.patched || editSong.added) && (
               <Button negative onClick={confirmRemovePatch}>
                 <Icon name="trash" />
@@ -67,13 +108,20 @@ const SongEditor = () => {
               <Icon name="history" />
               {I18n.t('ui.patch log')}
             </Button>
-            <Button
-              positive={hasChanges}
-              disabled={!hasChanges}
-              onClick={applyChanges}>
-              <Icon name="save" />
-              {I18n.t('ui.apply')}
-            </Button>
+            <Popup
+              content={<strong>Shortcut: Ctrl + S</strong>}
+              size="mini"
+              position="bottom left"
+              trigger={
+                <Button
+                  positive={hasChanges}
+                  disabled={!hasChanges}
+                  onClick={applyChanges}>
+                  <Icon name="save" />
+                  {I18n.t('ui.apply')}
+                </Button>
+              }
+            />
           </Button.Group>
         </Menu.Item>
         {navigation && (
@@ -88,18 +136,32 @@ const SongEditor = () => {
             {(navigation.previousKey || navigation.nextKey) && (
               <Menu.Item>
                 <Button.Group size="mini">
-                  <Button
-                    icon
-                    disabled={navigation.previousKey === null || hasChanges}
-                    onClick={goPrevious}>
-                    <Icon name="step backward" />
-                  </Button>
-                  <Button
-                    icon
-                    disabled={navigation.nextKey === null || hasChanges}
-                    onClick={goNext}>
-                    <Icon name="step forward" />
-                  </Button>
+                  <Popup
+                    content={<strong>Shortcut: Ctrl + [</strong>}
+                    size="mini"
+                    position="bottom left"
+                    trigger={
+                      <Button
+                        icon
+                        disabled={navigation.previousKey === null || hasChanges}
+                        onClick={goPrevious}>
+                        <Icon name="step backward" />
+                      </Button>
+                    }
+                  />
+                  <Popup
+                    content={<strong>Shortcut: Ctrl + ]</strong>}
+                    size="mini"
+                    position="bottom left"
+                    trigger={
+                      <Button
+                        icon
+                        disabled={navigation.nextKey === null || hasChanges}
+                        onClick={goNext}>
+                        <Icon name="step forward" />
+                      </Button>
+                    }
+                  />
                 </Button.Group>
               </Menu.Item>
             )}
@@ -138,7 +200,7 @@ const SongEditor = () => {
               color="blue"
               circular
               bordered
-              style={{ position: 'absolute', left: '47%' }}
+              style={{ position: 'absolute', left: '46%' }}
             />
           }
         />
@@ -152,6 +214,17 @@ const SongEditor = () => {
             border: 0,
             padding: '10px 20px',
             overflowY: 'scroll'
+          }}
+          onKeyDown={e => {
+            if (e.ctrlKey) {
+              if (e.key == '[') {
+                goPrevious();
+              } else if (e.key == ']') {
+                goNext();
+              } else if (e.key == 'e') {
+                editMetadata();
+              }
+            }
           }}
           value={text}
           onChange={(e, data) => {
