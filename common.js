@@ -329,6 +329,12 @@ export class PdfWriter {
     this.pos.x = saveX;
   }
 
+  async drawRepeatLine(
+    line: ExportToPdfRepeatLine // eslint-disable-line no-unused-vars
+  ) {
+    throw 'Not implemented';
+  }
+
   async generateListing(title: string, items: any) {
     const height =
       pdfValues.indexSubtitle.FontSize + pdfValues.indexSubtitle.Spacing;
@@ -480,8 +486,7 @@ export const PDFGenerator = async (
 
     // Cantos
     await asyncForEach(songsToPdf, async data => {
-      // Tomar canto y las lineas para renderizar
-      const { canto, lines } = data;
+      const { canto, lines, repeat } = data;
       writer.createPage();
       writer.positionSong();
 
@@ -505,7 +510,9 @@ export const PDFGenerator = async (
       writer.positionStartLine();
       writer.moveToNextLine(pdfValues.songSource.Spacing);
       writer.setNewColumnY(pdfValues.songParagraphSpacing);
-      await asyncForEach(lines, async (it: SongLine) => {
+      var repeatLines: Array<ExportToPdfRepeatLine> = [];
+      var repeatStart = 0;
+      await asyncForEach(lines, async (it: SongLine, i: number) => {
         if (it.inicioParrafo) {
           writer.moveToNextLine(pdfValues.songParagraphSpacing);
         }
@@ -522,6 +529,15 @@ export const PDFGenerator = async (
           pdfValues.primerColumnaX,
           pdfValues.segundaColumnaX
         );
+        if (repeat.find(r => r.start === i)) {
+          repeatStart = writer.pos.y;
+        } else if (repeat.find(r => r.end === i)) {
+          repeatLines.push({
+            startY: repeatStart,
+            endY: writer.pos.y,
+            refX: writer.pos.x
+          });
+        }
         if (it.notas === true) {
           writer.writeTextCore(
             it.texto,
@@ -574,6 +590,9 @@ export const PDFGenerator = async (
           }
           writer.moveToNextLine(pdfValues.songText.Spacing);
         }
+      });
+      await asyncForEach(repeatLines, async (line: ExportToPdfRepeatLine) => {
+        writer.drawRepeatLine(line);
       });
       if (opts.pageNumbers) {
         await writer.writePageNumber();

@@ -100,6 +100,13 @@ class NodeJsPdfWriter extends PdfWriter {
       });
   }
 
+  async drawRepeatLine(line: ExportToPdfRepeatLine) {
+    this.doc
+      .moveTo(line.refX, line.startY)
+      .lineTo(line.refX, line.endY)
+      .stroke({ color: NodeStyles.lineaRepeat.color });
+  }
+
   async save() {
     const docsDir = path.resolve(__dirname, '../pdf');
     if (!fs.existsSync(docsDir)) {

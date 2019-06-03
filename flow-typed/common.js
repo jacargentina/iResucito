@@ -152,6 +152,12 @@ declare type ExportToPdfCoord = {
   y: number
 };
 
+declare type ExportToPdfRepeatLine = {
+  startY: number,
+  endY: number,
+  refX: number
+};
+
 declare type SongToPdf = {
   song: Song,
   render: SongRendering
