@@ -201,7 +201,8 @@ const SongEditor = () => {
                 list={[
                   'Move the pointer to the buttons to learn the shortcuts; edit and navigate faster using only your keyboard!',
                   'If present, title/source must be deleted from the heading to not be painted twice',
-                  'Put "clamp: x" at the start of any empty line to signal clamp position'
+                  'Put "clamp: x" at the start of any empty line to signal clamp position',
+                  'Put "repeat" at the start of the last line in a paragraph to signal a repeated part'
                 ]}
               />
             }
