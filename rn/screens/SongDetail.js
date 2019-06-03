@@ -142,14 +142,14 @@ const ViewPdf = withNavigation(props => {
       }}
       onPress={() => {
         const { fullText } = song;
-        const fRender = NativeParser.getForRender(
+        const render = NativeParser.getForRender(
           fullText,
           I18n.locale,
           transportToNote
         );
         const item: SongToPdf = {
-          canto: song,
-          lines: fRender.items
+          song,
+          render
         };
         const opts: ExportToPdfOptions = {
           createIndex: false,

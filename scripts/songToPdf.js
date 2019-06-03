@@ -118,7 +118,7 @@ export const generatePDF = async (
   const docsDir = path.resolve(__dirname, '../pdf');
   const pdfPath = opts.createIndex
     ? `${docsDir}/iResucito${opts.fileSuffix}.pdf`
-    : `${docsDir}/${songsToPdf[0].canto.titulo}.pdf`;
+    : `${docsDir}/${songsToPdf[0].song.titulo}.pdf`;
 
   var writer = new NodeJsPdfWriter(pdfPath);
 
@@ -162,13 +162,13 @@ if (!process.argv.slice(2).length) {
         FolderSongs.loadSingleSong(locale, song)
           .then(() => {
             console.log('Song: ', song.titulo);
-            var fRend = parser.getForRender(song.fullText, I18n.locale);
+            var render = parser.getForRender(song.fullText, I18n.locale);
             if (program.debug) {
-              console.log(fRend);
+              console.log(render);
             }
             const item: SongToPdf = {
-              canto: song,
-              lines: fRend.items
+              song,
+              render
             };
             generatePDF([item], opts);
           })
@@ -185,13 +185,13 @@ if (!process.argv.slice(2).length) {
         var items = [];
         songs.map(song => {
           if (song.files[I18n.locale]) {
-            var fRend = parser.getForRender(song.fullText, I18n.locale);
+            var render = parser.getForRender(song.fullText, I18n.locale);
             if (program.debug) {
-              console.log(fRend);
+              console.log(render);
             }
             const item: SongToPdf = {
-              canto: song,
-              lines: fRend.items
+              song,
+              render
             };
             items.push(item);
           } else {

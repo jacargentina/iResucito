@@ -91,10 +91,8 @@ export const getAlphaWithSeparators = (
 ): Array<string> => {
   // Alfabetico
   var items = songsToPdf.map(data => {
-    const sameName = songsToPdf.filter(
-      d => d.canto.titulo === data.canto.titulo
-    );
-    return sameName.length > 1 ? data.canto.nombre : data.canto.titulo;
+    const sameName = songsToPdf.filter(d => d.song.titulo === data.song.titulo);
+    return sameName.length > 1 ? data.song.nombre : data.song.titulo;
   });
   var i = 0;
   var letter = normalize(items[i][0]);
@@ -119,12 +117,10 @@ export const wayStages = [
 export const getGroupedByStage = (songsToPdf: Array<SongToPdf>): any => {
   // Agrupados por stage
   return songsToPdf.reduce((groups, data) => {
-    const groupKey = data.canto.stage;
+    const groupKey = data.song.stage;
     groups[groupKey] = groups[groupKey] || [];
-    const sameName = songsToPdf.filter(
-      d => d.canto.titulo === data.canto.titulo
-    );
-    const title = sameName.length > 1 ? data.canto.nombre : data.canto.titulo;
+    const sameName = songsToPdf.filter(d => d.song.titulo === data.song.titulo);
+    const title = sameName.length > 1 ? data.song.nombre : data.song.titulo;
     groups[groupKey].push(title);
     return groups;
   }, {});
@@ -141,13 +137,13 @@ export const liturgicTimes = [
 export const getGroupedByLiturgicTime = (songsToPdf: Array<SongToPdf>): any => {
   // Agrupados por tiempo liturgico
   return songsToPdf.reduce((groups, data) => {
-    var times = liturgicTimes.filter(t => data.canto[t] === true);
+    var times = liturgicTimes.filter(t => data.song[t] === true);
     times.forEach(t => {
       groups[t] = groups[t] || [];
       const sameName = songsToPdf.filter(
-        d => d.canto.titulo === data.canto.titulo
+        d => d.song.titulo === data.song.titulo
       );
-      const title = sameName.length > 1 ? data.canto.nombre : data.canto.titulo;
+      const title = sameName.length > 1 ? data.song.nombre : data.song.titulo;
       groups[t].push(title);
     });
     return groups;
@@ -172,13 +168,13 @@ export const getGroupedByLiturgicOrder = (
 ): any => {
   // Agrupados por tiempo liturgico
   return songsToPdf.reduce((groups, data) => {
-    var times = liturgicOrder.filter(t => data.canto[t] === true);
+    var times = liturgicOrder.filter(t => data.song[t] === true);
     times.forEach(t => {
       groups[t] = groups[t] || [];
       const sameName = songsToPdf.filter(
-        d => d.canto.titulo === data.canto.titulo
+        d => d.song.titulo === data.song.titulo
       );
-      const title = sameName.length > 1 ? data.canto.nombre : data.canto.titulo;
+      const title = sameName.length > 1 ? data.song.nombre : data.song.titulo;
       groups[t].push(title);
     });
     return groups;

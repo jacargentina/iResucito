@@ -318,7 +318,7 @@ export const generatePDF = async (
       : RNFS.CachesDirectoryPath + '/';
   const pdfPath = opts.createIndex
     ? `${docsDir}/iResucito.pdf`
-    : `${docsDir}/${songsToPdf[0].canto.titulo}.pdf`;
+    : `${docsDir}/${songsToPdf[0].song.titulo}.pdf`;
 
   var writer = new NativePdfWriter(pdfPath);
 
@@ -329,10 +329,10 @@ export const generateMultiPagePDF = (
   songs: Array<Song>,
   opts: ExportToPdfOptions
 ) => {
-  var items = songs.map<SongToPdf>(s => {
+  var items = songs.map<SongToPdf>(song => {
     return {
-      canto: s,
-      lines: NativeParser.getForRender(s.fullText, I18n.locale).items
+      song,
+      render: NativeParser.getForRender(song.fullText, I18n.locale)
     };
   });
 

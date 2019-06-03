@@ -153,8 +153,8 @@ declare type ExportToPdfCoord = {
 };
 
 declare type SongToPdf = {
-  canto: Song,
-  lines: Array<SongLine>
+  song: Song,
+  render: SongRendering
 };
 
 declare type SongRef = Song | SongFile;
