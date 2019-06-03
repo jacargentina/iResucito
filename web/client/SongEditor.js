@@ -63,23 +63,35 @@ const SongEditor = () => {
     }
   };
 
+  const save = () => {
+    if (editSong && hasChanges) {
+      applyChanges();
+    }
+  };
+
+  const previous = () => {
+    if (navigation && navigation.previousKey) {
+      goPrevious();
+    }
+  };
+
+  const next = () => {
+    if (navigation && navigation.nextKey) {
+      goNext();
+    }
+  };
+
   useHotkeys(
     key => {
       switch (key) {
         case 'ctrl+s':
-          if (editSong && hasChanges) {
-            applyChanges();
-          }
+          save();
           break;
         case 'ctrl+[':
-          if (navigation && navigation.previousKey) {
-            goPrevious();
-          }
+          previous();
           break;
         case 'ctrl+]':
-          if (navigation && navigation.nextKey) {
-            goNext();
-          }
+          next();
           break;
         case 'ctrl+e':
           editMetadata();
@@ -156,7 +168,7 @@ const SongEditor = () => {
                       <Button
                         icon
                         disabled={navigation.previousKey === null || hasChanges}
-                        onClick={goPrevious}>
+                        onClick={previous}>
                         <Icon name="step backward" />
                       </Button>
                     }
@@ -169,7 +181,7 @@ const SongEditor = () => {
                       <Button
                         icon
                         disabled={navigation.nextKey === null || hasChanges}
-                        onClick={goNext}>
+                        onClick={next}>
                         <Icon name="step forward" />
                       </Button>
                     }
@@ -230,11 +242,17 @@ const SongEditor = () => {
           onKeyDown={e => {
             if (e.ctrlKey) {
               if (e.key == '[') {
-                goPrevious();
+                e.preventDefault();
+                previous();
               } else if (e.key == ']') {
-                goNext();
+                e.preventDefault();
+                next();
               } else if (e.key == 'e') {
+                e.preventDefault();
                 editMetadata();
+              } else if (e.key == 's') {
+                e.preventDefault();
+                save();
               }
             }
           }}
