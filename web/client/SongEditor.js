@@ -83,7 +83,6 @@ const SongEditor = () => {
 
   useHotkeys(
     key => {
-      console.log('useHotKeys', key);
       switch (key) {
         case 'ctrl+s':
           save();
