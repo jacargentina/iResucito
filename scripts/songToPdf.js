@@ -13,6 +13,7 @@ const NodeStyles: SongStyles = {
   titulo: { color: '#ff0000' },
   fuente: { color: '#777777' },
   lineaClamp: { color: '#ff0000' },
+  lineaRepeat: { color: '#ff0000' },
   lineaNotas: { color: '#ff0000' },
   lineaTituloNotaEspecial: { color: '#ff0000' },
   lineaNotaEspecial: { color: '#444444' },

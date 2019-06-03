@@ -154,6 +154,11 @@ export const stylesObj: SongStyles = {
     color: '#ff0000',
     fontSize: fontSizeNotas
   },
+  lineaRepeat: {
+    fontFamily: 'Franklin Gothic Medium',
+    color: '#ff0000',
+    fontSize: fontSizeTexto
+  },
   lineaNotas: {
     fontFamily: 'Franklin Gothic Medium',
     color: '#ff0000',
