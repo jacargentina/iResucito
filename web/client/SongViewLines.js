@@ -31,7 +31,7 @@ const SongViewLines = (props: any) => {
       var bis = (
         <span
           style={{
-            ...inRepeat.syle,
+            ...inRepeat.style,
             display: 'inline-block',
             borderLeft: '2px solid red',
             width: '50%',
