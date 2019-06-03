@@ -12,6 +12,7 @@ export const WebStyles: SongStyles = {
   titulo: { color: '#ff0000', fontSize: FontSizes.Titulo },
   fuente: { color: '#777777', fontSize: FontSizes.Fuente, marginBottom: 16 },
   lineaClamp: { color: '#ff0000', fontSize: FontSizes.Notas, marginBottom: 16 },
+  lineaRepeat: { color: '#ff0000', fontSize: FontSizes.Texto },
   lineaNotas: { color: '#ff0000', fontSize: FontSizes.Notas },
   lineaTituloNotaEspecial: { color: '#ff0000', fontSize: FontSizes.Texto },
   lineaNotaEspecial: { color: '#444444', fontSize: FontSizes.Texto },

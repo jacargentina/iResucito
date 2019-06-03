@@ -6,7 +6,8 @@
     "men": "M.",
     "women": "F.",
     "children": "E.",
-    "clamp": "Ceta {{clamp}} frette"
+    "clamp": "Ceta {{clamp}} frette",
+    "repeat": "2x"
   },
   "chords": {
     "scale": "Do Do# Re Mib Mi Fa Fa# Sol Sol# La Sib Si"

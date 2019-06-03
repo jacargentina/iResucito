@@ -6,7 +6,8 @@
     "men": "U.",
     "women": "D.",
     "children": "N.",
-    "clamp": "{{clamp}} tasto"
+    "clamp": "{{clamp}} tasto",
+    "repeat": "2x"
   },
   "chords": {
     "scale": "Do Do# Re Mib Mi Fa Fa# Sol Sol# La Sib Si"

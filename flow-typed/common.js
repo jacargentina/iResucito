@@ -53,6 +53,7 @@ declare type SongStyles = {
   titulo: any,
   fuente: any,
   lineaClamp: any,
+  lineaRepeat: any,
   lineaNotas: any,
   lineaTituloNotaEspecial: any,
   lineaNotaEspecial: any,
@@ -75,12 +76,20 @@ declare type SongLine = {
   inicioParrafo: boolean,
   notaEspecial: boolean,
   tituloEspecial: boolean,
-  textoEspecial: boolean
+  textoEspecial: boolean,
+  indicadorRepeat: boolean
+};
+
+declare type SongRepeat = {
+  start: number,
+  end: number,
+  style: any
 };
 
 declare type SongRendering = {
   firstNotes?: number,
-  items: Array<SongLine>
+  items: Array<SongLine>,
+  repeat: Array<SongRepeat>
 };
 
 // nombre: el nombre completo del archivo, sin la extension .txt

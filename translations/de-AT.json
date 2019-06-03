@@ -6,7 +6,8 @@
     "men": "M.",
     "women": "F.",
     "children": "Kd.",
-    "clamp": "Barré auf dem {{clamp}} Bund"
+    "clamp": "Barré auf dem {{clamp}} Bund",
+    "repeat": "2x"
   },
   "chords": {
     "scale": "C C# D EB E F F# G G# A B H"
