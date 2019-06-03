@@ -1,5 +1,5 @@
 // @flow
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import I18n from '../../translations';
 import api from './api';
 import { getLocalesForPicker, getValidatedLocale } from '../../common';
