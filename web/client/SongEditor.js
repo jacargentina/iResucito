@@ -1,5 +1,11 @@
 // @flow
-import React, { Fragment, useContext, useState, useEffect } from 'react';
+import React, {
+  Fragment,
+  useContext,
+  useState,
+  useEffect,
+  useRef
+} from 'react';
 import TextArea from 'semantic-ui-react/dist/commonjs/addons/TextArea';
 import Icon from 'semantic-ui-react/dist/commonjs/elements/Icon';
 import Popup from 'semantic-ui-react/dist/commonjs/modules/Popup';
@@ -14,6 +20,7 @@ import I18n from '../../translations';
 import useHotkeys from 'use-hotkeys';
 
 const SongEditor = () => {
+  const txtRef = useRef(null);
   const data = useContext(DataContext);
   const { setActiveDialog, songs } = data;
 
@@ -42,6 +49,11 @@ const SongEditor = () => {
     if (editSong) {
       callback(text);
       callPending();
+      if (txtRef && txtRef.current) {
+        txtRef.current.ref.current.selectionStart = 0;
+        txtRef.current.ref.current.selectionEnd = 0;
+        txtRef.current.focus();
+      }
     }
   }, [editSong]);
 
@@ -126,7 +138,7 @@ const SongEditor = () => {
         </Menu.Item>
         {navigation && (
           <Fragment>
-            {navigation.index && (
+            {navigation.index !== null && (
               <Menu.Item>
                 <strong style={{ marginLeft: 10, marginRight: 10 }}>
                   {navigation.index} / {songs.length}
@@ -167,6 +179,27 @@ const SongEditor = () => {
             )}
           </Fragment>
         )}
+        <Menu.Item>
+          <Popup
+            header="Tips"
+            size="small"
+            content={
+              <Message
+                list={[
+                  'Move the pointer to the buttons to learn the shortcuts; edit and navigate faster using only your keyboard!',
+                  'If present, title/source must be deleted from the heading to not be painted twice',
+                  'Put "clamp: x" at the start of any empty line to signal clamp position'
+                ]}
+              />
+            }
+            position="bottom left"
+            trigger={
+              <Button icon>
+                <Icon name="help" />
+              </Button>
+            }
+          />
+        </Menu.Item>
         <Menu.Item position="right">
           <Button onClick={confirmClose}>
             <Icon name="close" />
@@ -180,31 +213,10 @@ const SongEditor = () => {
           display: 'flex',
           flexDirection: 'row',
           overflow: 'auto',
-          padding: 10,
-          position: 'relative'
+          padding: 10
         }}>
-        <Popup
-          header="Tips"
-          content={
-            <Message
-              list={[
-                'If present, title/source must be deleted from the heading to not be painted twice',
-                'Put "clamp: x" at the start of any empty line to signal clamp position'
-              ]}
-            />
-          }
-          position="bottom left"
-          trigger={
-            <Icon
-              name="help"
-              color="blue"
-              circular
-              bordered
-              style={{ position: 'absolute', left: '46%' }}
-            />
-          }
-        />
         <TextArea
+          ref={txtRef}
           style={{
             fontFamily: 'monospace',
             backgroundColor: '#fcfcfc',
