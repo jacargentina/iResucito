@@ -1,7 +1,4 @@
-RESURREXIT
-Juan 11, 25-27
-
-* Cejilla 3º traste
+clamp: 3
 
   La-                    Mi7
 A. RESURREXIT, RESURREXIT,

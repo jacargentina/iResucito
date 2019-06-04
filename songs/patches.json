@@ -9,6 +9,173 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1559567821616,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "2": [
+    {
+      "date": 1559567866740,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "3": [
+    {
+      "date": 1559567875400,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "4": [
+    {
+      "date": 1559567882128,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559574852876,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "5": [
+    {
+      "date": 1559567894822,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "6": [
+    {
+      "date": 1559567909668,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "7": [
+    {
+      "date": 1559567953024,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "8": [
+    {
+      "date": 1559567912088,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "9": [
+    {
+      "date": 1559567920444,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "10": [
+    {
+      "date": 1559567939960,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "11": [
+    {
+      "date": 1559568011414,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "12": [
+    {
+      "date": 1559568092666,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "13": [
+    {
+      "date": 1559568207916,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "14": [
+    {
+      "date": 1559568243201,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "15": [
+    {
+      "date": 1559569184206,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "16": [
+    {
+      "date": 1559569192503,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "17": [
+    {
+      "date": 1559569214447,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "18": [
+    {
+      "date": 1559569262771,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "19": [
@@ -16,6 +183,20 @@
       "locale": "it",
       "date": 1558566502896,
       "author": "giuseppereino@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559566262352,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559598458060,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -30,6 +211,20 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1559566267118,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559597453982,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "21": [
@@ -40,6 +235,24 @@
       "rename": {
         "original": "A te levo i miei occhi - Sal 123 (122)",
         "new": "A te levo i miei occhi - Sal 122 (123)"
+      },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559567716462,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559597797590,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "A ti levanto meus olhos - Sal 123 (122)",
+        "new": "A Ti levanto meus olhos - Sal 123 (122)"
       },
       "created": false,
       "updated": true
@@ -54,6 +267,20 @@
         "original": "A te, Signore, con la mia voce - Sal 142 (141)",
         "new": "A te, Signore, con la mia voce - Sal 141 (142)"
       },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559567719690,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559597939419,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -79,6 +306,20 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1559567722344,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559598053093,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "24": [
@@ -102,6 +343,20 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1559567345163,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559595878051,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "25": [
@@ -125,6 +380,20 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1559567353324,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559598930282,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "26": [
@@ -148,6 +417,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1559567357190,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "27": [
@@ -160,6 +436,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1559567534628,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "28": [
@@ -171,6 +454,13 @@
         "original": "Lobet den Herrn vom Himmel her - Ps 148",
         "new": "Lobet den Herrn vom Himmel her (*) - Ps 148"
       },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559567544060,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
     }
@@ -193,6 +483,13 @@
       "linked": {
         "new": "Aleluia, aclamai o Senhor - Sal 150"
       },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559567739471,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
     }
@@ -218,6 +515,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1559567741599,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "31": [
@@ -244,6 +548,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1559567744151,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "32": [
@@ -267,6 +578,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1559567746694,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "33": [
@@ -290,6 +608,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1559567751694,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "34": [
@@ -313,6 +638,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1559567812846,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "35": [
@@ -336,6 +668,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1559567824463,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "36": [
@@ -359,6 +698,42 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1559567827423,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "37": [
+    {
+      "date": 1559567829804,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559580354879,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "liturgy"
+      }
+    }
+  ],
+  "38": [
+    {
+      "date": 1559567832122,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "39": [
@@ -370,6 +745,13 @@
         "original": "Benedirò il Signore in ogni tempo - Sal 34 (33)",
         "new": "Benedirò il Signore in ogni tempo (1986) - Sal 33 (34)"
       },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559567834263,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
     }
@@ -392,6 +774,13 @@
       "author": "fd_colautti@mac.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1559567836624,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "41": [
@@ -403,6 +792,13 @@
         "original": "Benedetta sei tu, Maria - Lc 1, 42-45",
         "new": "Benedetta sei tu, Maria - Lc 1, 42-44"
       },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559567843053,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
     }
@@ -431,6 +827,49 @@
       "author": "fd_colautti@mac.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1559567845608,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "43": [
+    {
+      "date": 1559567850837,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "44": [
+    {
+      "date": 1559567853030,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "45": [
+    {
+      "date": 1559567857282,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "46": [
+    {
+      "date": 1559567859870,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "47": [
@@ -438,6 +877,22 @@
       "date": 1559209960370,
       "locale": "de-AT",
       "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559567855150,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "48": [
+    {
+      "date": 1559567871357,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
     }
@@ -453,6 +908,63 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1559567869236,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "50": [
+    {
+      "date": 1559567880075,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "51": [
+    {
+      "date": 1559567888641,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559576161935,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "52": [
+    {
+      "date": 1559567884165,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559578220273,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "53": [
+    {
+      "date": 1559567890608,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "54": [
@@ -462,6 +974,67 @@
       "author": "fd_colautti@mac.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1559567892574,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "55": [
+    {
+      "date": 1559567897172,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "56": [
+    {
+      "date": 1559567899228,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "57": [
+    {
+      "date": 1559567904842,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "58": [
+    {
+      "date": 1559567902475,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "59": [
+    {
+      "date": 1559567942859,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "60": [
+    {
+      "date": 1559567950259,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "61": [
@@ -469,6 +1042,47 @@
       "date": 1558994475267,
       "locale": "pt",
       "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559567917902,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559596222302,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "62": [
+    {
+      "date": 1559567928899,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "63": [
+    {
+      "date": 1559567936920,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "64": [
+    {
+      "date": 1559567955730,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
     }
@@ -484,6 +1098,40 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1559567963162,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "66": [
+    {
+      "date": 1559567965813,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "67": [
+    {
+      "date": 1559567971276,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "68": [
+    {
+      "date": 1559567976003,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "69": [
@@ -491,6 +1139,40 @@
       "date": 1559211671738,
       "locale": "de-AT",
       "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559567985396,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "70": [
+    {
+      "date": 1559567991558,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "71": [
+    {
+      "date": 1559567978390,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "72": [
+    {
+      "date": 1559567993740,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
     }
@@ -502,6 +1184,22 @@
       "author": "fd_colautti@mac.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1559567998609,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "74": [
+    {
+      "date": 1559568000989,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "75": [
@@ -509,6 +1207,13 @@
       "date": 1559217177557,
       "locale": "de-AT",
       "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559568003485,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
     }
@@ -533,6 +1238,85 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1559568006130,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "77": [
+    {
+      "date": 1559568009009,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "78": [
+    {
+      "date": 1559568013831,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "79": [
+    {
+      "date": 1559568016544,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "80": [
+    {
+      "date": 1559568021450,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "81": [
+    {
+      "date": 1559568067652,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "82": [
+    {
+      "date": 1559568074879,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "83": [
+    {
+      "date": 1559568077258,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "84": [
+    {
+      "date": 1559568081677,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "85": [
@@ -550,6 +1334,22 @@
         "original": "precatechumenate",
         "new": "liturgy"
       }
+    },
+    {
+      "date": 1559568079330,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "86": [
+    {
+      "date": 1559568083795,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "87": [
@@ -561,6 +1361,22 @@
         "original": "Andate ed annunziate ai miei fratelli - Mt 28, 7-10.16-20",
         "new": "Andate ed annunziate ai miei fratelli - Mt 28, 16-20"
       },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559568086716,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "88": [
+    {
+      "date": 1559568089335,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
     }
@@ -576,6 +1392,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1559568095128,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "90": [
@@ -586,6 +1409,49 @@
       "rename": {
         "original": "Der weg ist hart",
         "new": "Der Weg ist hart"
+      },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559568101875,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559597247104,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "91": [
+    {
+      "date": 1559568106342,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "92": [
+    {
+      "date": 1559568108600,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559596867011,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "A ceifa das nações - Jn 4, 31-38",
+        "new": "A ceifa das nações - Jo 4, 31-38"
       },
       "created": false,
       "updated": true
@@ -602,6 +1468,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1559568129995,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "94": [
@@ -611,6 +1484,22 @@
       "author": "fd_colautti@mac.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1559568132521,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "95": [
+    {
+      "date": 1559568134585,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "96": [
@@ -618,6 +1507,76 @@
       "date": 1559244230458,
       "locale": "de-AT",
       "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559568139976,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "97": [
+    {
+      "date": 1559568142519,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "98": [
+    {
+      "date": 1559568172163,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "99": [
+    {
+      "date": 1559568174678,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "100": [
+    {
+      "date": 1559568178368,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "101": [
+    {
+      "date": 1559568180573,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "102": [
+    {
+      "date": 1559568183083,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "103": [
+    {
+      "date": 1559568185492,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
     }
@@ -633,6 +1592,31 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1559568191190,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "105": [
+    {
+      "date": 1559568193580,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "106": [
+    {
+      "date": 1559568205290,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "107": [
@@ -642,6 +1626,67 @@
       "author": "fd_colautti@mac.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1559568210532,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "108": [
+    {
+      "date": 1559568213301,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "109": [
+    {
+      "date": 1559568226272,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "110": [
+    {
+      "date": 1559568238262,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "111": [
+    {
+      "date": 1559568248441,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "112": [
+    {
+      "date": 1559568223512,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "113": [
+    {
+      "date": 1559568240751,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "114": [
@@ -649,6 +1694,67 @@
       "date": 1559217628441,
       "locale": "de-AT",
       "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559568250979,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "115": [
+    {
+      "date": 1559568255727,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "116": [
+    {
+      "date": 1559568272199,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "117": [
+    {
+      "date": 1559568274554,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "118": [
+    {
+      "date": 1559568278184,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "119": [
+    {
+      "date": 1559568280386,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "120": [
+    {
+      "date": 1559569044811,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
     }
@@ -664,6 +1770,40 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1559569047472,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "122": [
+    {
+      "date": 1559569058953,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "123": [
+    {
+      "date": 1559569062265,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "124": [
+    {
+      "date": 1559569049836,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "125": [
@@ -671,6 +1811,13 @@
       "date": 1559241935265,
       "locale": "de-AT",
       "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559569055008,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
     }
@@ -682,6 +1829,166 @@
       "author": "fd_colautti@mac.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1559569065835,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "127": [
+    {
+      "date": 1559569082511,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "129": [
+    {
+      "date": 1559569164048,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "130": [
+    {
+      "date": 1559569166580,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "131": [
+    {
+      "date": 1559569169123,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "132": [
+    {
+      "date": 1559569197674,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "133": [
+    {
+      "date": 1559569202152,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "134": [
+    {
+      "date": 1559569208665,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "135": [
+    {
+      "date": 1559569211222,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "136": [
+    {
+      "date": 1559569217164,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "137": [
+    {
+      "date": 1559569223673,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "138": [
+    {
+      "date": 1559569228681,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "139": [
+    {
+      "date": 1559569252478,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "140": [
+    {
+      "date": 1559569255533,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "141": [
+    {
+      "date": 1559569259015,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "142": [
+    {
+      "date": 1559569268449,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "143": [
+    {
+      "date": 1559569272071,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "144": [
+    {
+      "date": 1559569275938,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "145": [
@@ -689,6 +1996,13 @@
       "locale": "it",
       "date": 1558566502896,
       "author": "giuseppereino@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559569278695,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
     }
@@ -704,6 +2018,31 @@
         "original": "precatechumenate",
         "new": "liturgy"
       }
+    },
+    {
+      "date": 1559569285217,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "147": [
+    {
+      "date": 1559569282041,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "148": [
+    {
+      "date": 1559569288543,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "149": [
@@ -717,6 +2056,58 @@
         "original": "precatechumenate",
         "new": "liturgy"
       }
+    },
+    {
+      "date": 1559569294070,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "150": [
+    {
+      "date": 1559569298095,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "151": [
+    {
+      "date": 1559569301973,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "152": [
+    {
+      "date": 1559569305729,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "153": [
+    {
+      "date": 1559569308707,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "154": [
+    {
+      "date": 1559569311763,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "155": [
@@ -728,6 +2119,31 @@
         "original": "Jahwe mein Gott bist du - Jes 25, 1-8",
         "new": "Jahwe, mein Gott bist du - Jes 25, 1-8"
       },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559569316727,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "156": [
+    {
+      "date": 1559569320060,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "157": [
+    {
+      "date": 1559569323760,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
     }
@@ -742,6 +2158,24 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1559566223292,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559596544454,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "À ceia do cordeiro - Hino",
+        "new": "À ceia do cordeiro - Hino das vésperas do tempo Pascal até a Ascensão"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "159": [
@@ -768,6 +2202,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1559567349970,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "160": [
@@ -778,6 +2219,157 @@
       "rename": {
         "original": "Benedetto sia iddio - Ef 1, 3-13",
         "new": "Benedetto sia Iddio - Ef 1, 3-13"
+      },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559567848896,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "161": [
+    {
+      "date": 1559567862078,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "162": [
+    {
+      "date": 1559567864564,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "163": [
+    {
+      "date": 1559567873421,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "164": [
+    {
+      "date": 1559567914316,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "165": [
+    {
+      "date": 1559567926623,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "166": [
+    {
+      "date": 1559567960756,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "167": [
+    {
+      "date": 1559567973608,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "168": [
+    {
+      "date": 1559567988832,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "169": [
+    {
+      "date": 1559568019084,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "170": [
+    {
+      "date": 1559568070391,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "171": [
+    {
+      "date": 1559568072764,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "172": [
+    {
+      "date": 1559568097507,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "173": [
+    {
+      "date": 1559568099763,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559597174293,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "174": [
+    {
+      "date": 1559568104183,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559597657182,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "A pomba voou - Ode 24 de Salomão",
+        "new": "A pomba voou - Ode XXIV de Salomão"
       },
       "created": false,
       "updated": true
@@ -793,6 +2385,58 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1559568110697,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "176": [
+    {
+      "date": 1559568112966,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "177": [
+    {
+      "date": 1559568216057,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "178": [
+    {
+      "date": 1559568218798,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "179": [
+    {
+      "date": 1559568221049,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "180": [
+    {
+      "date": 1559569186964,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "181": [
@@ -819,6 +2463,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1559567737222,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "182": [
@@ -848,6 +2499,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1559567734378,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "183": [
@@ -871,6 +2529,20 @@
         "original": "liturgy",
         "new": "precatechumenate"
       }
+    },
+    {
+      "date": 1559567749239,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559579393350,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
     }
   ],
   "184": [
@@ -883,6 +2555,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1559567754456,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "185": [
@@ -906,6 +2585,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1559567809779,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "186": [
@@ -924,6 +2610,13 @@
       "date": 1559031440838,
       "locale": "de-AT",
       "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559567838854,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
     }
@@ -946,6 +2639,22 @@
       "author": "fd_colautti@mac.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1559567840952,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "188": [
+    {
+      "date": 1559567877607,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "189": [
@@ -953,6 +2662,58 @@
       "date": 1558941127097,
       "locale": "de-AT",
       "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559567996038,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "190": [
+    {
+      "date": 1559568124110,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "191": [
+    {
+      "date": 1559568114998,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "192": [
+    {
+      "date": 1559568117197,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "193": [
+    {
+      "date": 1559568121401,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "194": [
+    {
+      "date": 1559568253385,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
     }
@@ -971,6 +2732,13 @@
         "original": "precatechumenate",
         "new": "liturgy"
       }
+    },
+    {
+      "date": 1559568263220,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "196": [
@@ -982,6 +2750,13 @@
         "original": "Eucharistisches Hochgebet II - Konsekration und Akklamation",
         "new": "Eucharistisches Hochgebet II (1) - Konsekration und Akklamation"
       },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559568258095,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
     }
@@ -996,6 +2771,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1559568267649,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "198": [
@@ -1003,6 +2785,13 @@
       "date": 1559166012713,
       "locale": "de-AT",
       "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559568265450,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
     }
@@ -1014,6 +2803,22 @@
       "author": "fd_colautti@mac.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1559568261038,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "200": [
+    {
+      "date": 1559568269702,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "201": [
@@ -1021,6 +2826,13 @@
       "date": 1559166082456,
       "locale": "de-AT",
       "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559568282804,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
     }
@@ -1032,6 +2844,13 @@
       "author": "fd_colautti@mac.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1559568284871,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "203": [
@@ -1039,6 +2858,13 @@
       "date": 1559165973960,
       "locale": "de-AT",
       "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559569085692,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
     }
@@ -1050,6 +2876,13 @@
       "author": "fd_colautti@mac.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1559569088169,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "205": [
@@ -1057,6 +2890,13 @@
       "date": 1558942962388,
       "locale": "de-AT",
       "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559569090554,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
     }
@@ -1072,6 +2912,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1559569093668,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "207": [
@@ -1079,6 +2926,13 @@
       "date": 1558943554604,
       "locale": "de-AT",
       "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559569147099,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
     }
@@ -1090,6 +2944,22 @@
       "author": "fd_colautti@mac.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1559569152585,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "209": [
+    {
+      "date": 1559569160689,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "210": [
@@ -1097,6 +2967,112 @@
       "date": 1559116957868,
       "locale": "de-AT",
       "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559569248921,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "211": [
+    {
+      "date": 1559659311923,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "212": [
+    {
+      "date": 1559567922833,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "213": [
+    {
+      "date": 1559567958556,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "214": [
+    {
+      "date": 1559568188330,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "215": [
+    {
+      "date": 1559568169145,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "216": [
+    {
+      "date": 1559569204893,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "217": [
+    {
+      "date": 1559569075698,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "218": [
+    {
+      "date": 1559567980592,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "219": [
+    {
+      "date": 1559568235628,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "220": [
+    {
+      "date": 1559568137178,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "221": [
+    {
+      "date": 1559567363589,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
     }
@@ -1111,6 +3087,47 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1559567731867,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "223": [
+    {
+      "date": 1559567886504,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559577359592,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "224": [
+    {
+      "date": 1559569244874,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "225": [
+    {
+      "date": 1559569240190,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "226": [
@@ -1228,6 +3245,15 @@
         "original": "precatechumenate",
         "new": "liturgy"
       }
+    }
+  ],
+  "248": [
+    {
+      "date": 1559573278825,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
     }
   ]
 }

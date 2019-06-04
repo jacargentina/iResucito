@@ -1,7 +1,4 @@
-MARÍA, PALOMA INCORRUPTA
-Himno inspirado en los Kontákia de san Romano el Meloda
-
-* Cejilla 3º traste
+clamp: 3
 
   Mi–                 Fa#                                   
 S. Dios te salve, María,                                     

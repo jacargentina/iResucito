@@ -220,7 +220,7 @@
   "files": {
    "es": "A ti levanto mis ojos - Sal 123 (122)",
    "it": "A te levo i miei occhi - Sal 122 (123)",
-   "pt": "A ti levanto meus olhos - Sal 123 (122)",
+   "pt": "A Ti levanto meus olhos - Sal 123 (122)",
    "en": "To you i lift up my eyes - Ps 122",
    "de-AT": "Zu dir erhebe ich meine Augen - Ps 123"
   }
@@ -401,6 +401,9 @@
    "it": "Sui fiumi di babilonia - Sal 137 (136)",
    "pt": "Babilonia criminal - Sal 137 (136)",
    "de-AT": "An den Flüssen Babylons - Ps 137"
+  },
+  "stages": {
+   "de-AT": "liturgy"
   }
  },
  "38": {
@@ -980,7 +983,7 @@
   "files": {
    "es": "La siega de las naciones - Jn 4, 31-38",
    "it": "La mietitura delle nazioni - Jn 4, 31-38",
-   "pt": "A ceifa das nações - Jn 4, 31-38",
+   "pt": "A ceifa das nações - Jo 4, 31-38",
    "de-AT": "Die Ernte der Nationen - Joh 4, 31-38"
   }
  },
@@ -1698,7 +1701,7 @@
   "lutes and vespers": true,
   "files": {
    "es": "A la cena del cordero - Himno",
-   "pt": "À ceia do cordeiro - Hino",
+   "pt": "À ceia do cordeiro - Hino das vésperas do tempo Pascal até a Ascensão",
    "de-AT": "Hymnus der Vesper von Ostern bis Christi Himmelfahrt",
    "it": "Inno dei vespri da pasqua all'ascensione - Inno"
   }
@@ -1868,7 +1871,7 @@
   "files": {
    "es": "La paloma volo - Oda 24 de Salomón",
    "it": "La colomba volò - Ode 24 de Salomone",
-   "pt": "A pomba voou - Ode 24 de Salomão",
+   "pt": "A pomba voou - Ode XXIV de Salomão",
    "de-AT": "Die Taube flog - XXIV. Ode Salomos"
   }
  },
