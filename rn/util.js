@@ -248,7 +248,8 @@ class NativePdfWriter extends PdfWriter {
       NativeStyles.lineaNotas.color,
       NativeStyles.prefijo.color,
       NativeStyles.lineaTituloNotaEspecial.color,
-      NativeStyles.lineaNotaEspecial.color
+      NativeStyles.lineaNotaEspecial.color,
+      NativeStyles.lineaRepeat.color
     );
     this.doc = PDFDocument.create(normalize(pdfPath));
   }
@@ -277,22 +278,22 @@ class NativePdfWriter extends PdfWriter {
   }
 
   async getCenteringX(text: string, font: string, size: number) {
-    const sizeTitle = await PDFLib.measureText(text, font, size);
-    return parseInt((pdfValues.widthHeightPixels - sizeTitle.width) / 2);
+    const sizeRes = await PDFLib.measureText(text, font, size);
+    return parseInt((pdfValues.widthHeightPixels - sizeRes.width) / 2);
   }
 
   async getCenteringY(text: string, font: string, size: number) {
-    const sizeTitle = await PDFLib.measureText(text, font, size);
-    return parseInt((pdfValues.widthHeightPixels - sizeTitle.height) / 2);
+    const sizeRes = await PDFLib.measureText(text, font, size);
+    return parseInt((pdfValues.widthHeightPixels - sizeRes.height) / 2);
   }
 
-  writeTextCore(
+  async writeTextCore(
     text: string,
     color: any,
     font: string,
     size: number,
     xOffset?: number
-  ) {
+  ): Promise<number> {
     const x = xOffset ? this.pos.x + xOffset : this.pos.x;
     this.page.drawText(text, {
       x: x,
@@ -301,6 +302,8 @@ class NativePdfWriter extends PdfWriter {
       fontSize: size,
       fontName: font
     });
+    const sizeRes = await PDFLib.measureText(text, font, size);
+    return sizeRes.width;
   }
 
   async save() {
@@ -316,9 +319,10 @@ export const generatePDF = async (
     Platform.OS == 'ios'
       ? RNFS.TemporaryDirectoryPath
       : RNFS.CachesDirectoryPath + '/';
-  const pdfPath = opts.createIndex
-    ? `${docsDir}/iResucito.pdf`
-    : `${docsDir}/${songsToPdf[0].song.titulo}.pdf`;
+  const pdfPath =
+    opts.createIndex && songsToPdf.length > 1
+      ? `${docsDir}/iResucito.pdf`
+      : `${docsDir}/${songsToPdf[0].song.titulo}.pdf`;
 
   var writer = new NativePdfWriter(pdfPath);
 

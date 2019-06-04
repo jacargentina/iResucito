@@ -49,7 +49,7 @@ export default function(server: any) {
         prev--;
       }
       var next = index + 1;
-      while (next <= songs.length && songs[next].notTranslated) {
+      while (next < songs.length && songs[next].notTranslated) {
         next++;
       }
       const previousKey = songs[prev] ? songs[prev].key : null;

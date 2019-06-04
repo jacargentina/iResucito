@@ -53,7 +53,7 @@ var pdfVars = {
   marginLeft: 25,
   marginTop: 19,
   widthHeightPixels: 598, // 21,1 cm
-  songTitle: { FontSize: 19, Spacing: 13 },
+  songTitle: { FontSize: 19, Spacing: 19 },
   songSource: { FontSize: 10, Spacing: 20 },
   songText: { FontSize: 12, Spacing: 11 },
   songNote: { FontSize: 10 },
@@ -195,6 +195,7 @@ export class PdfWriter {
   prefixColor: any;
   specialTitleColor: any;
   specialNoteColor: any;
+  repeatColor: any;
 
   constructor(
     limiteHoja: number,
@@ -206,7 +207,8 @@ export class PdfWriter {
     noteColor: any,
     prefixColor: any,
     specialTitleColor: any,
-    specialNoteColor: any
+    specialNoteColor: any,
+    repeatColor: any
   ) {
     this.limiteHoja = limiteHoja;
     this.primerFilaY = primerFilaY;
@@ -218,6 +220,7 @@ export class PdfWriter {
     this.prefixColor = prefixColor;
     this.specialTitleColor = specialTitleColor;
     this.specialNoteColor = specialNoteColor;
+    this.repeatColor = repeatColor;
     this.pageNumber = 1;
     this.pos = {
       x: 0,
@@ -259,13 +262,13 @@ export class PdfWriter {
     throw 'Not implemented';
   }
 
-  writeTextCore(
+  async writeTextCore(
     text: string,
     color: any,
     font: string,
     size: number,
     xOffset?: number
-  ) {
+  ): Promise<number> {
     throw 'Not implemented';
   }
 
@@ -325,15 +328,21 @@ export class PdfWriter {
   ) {
     var saveX = this.pos.x;
     this.pos.x = await this.getCenteringX(text, font, size);
-    this.writeTextCore(text, color, font, size);
+    await this.writeTextCore(text, color, font, size);
     this.pos.x = saveX;
   }
 
+  /* eslint-disable no-unused-vars */
   async drawRepeatLine(
-    line: ExportToPdfRepeatLine // eslint-disable-line no-unused-vars
+    line: ExportToPdfRepeatLine,
+    color: any,
+    text: string,
+    font: string,
+    size: number
   ) {
     throw 'Not implemented';
   }
+  /* eslint-enable no-unused-vars */
 
   async generateListing(title: string, items: any) {
     const height =
@@ -343,7 +352,7 @@ export class PdfWriter {
       pdfValues.primerColumnaIndexX,
       pdfValues.segundaColumnaIndexX
     );
-    this.writeTextCore(
+    await this.writeTextCore(
       title.toUpperCase(),
       this.titleColor,
       pdfValues.fontName,
@@ -360,7 +369,7 @@ export class PdfWriter {
             pdfValues.primerColumnaIndexX,
             pdfValues.segundaColumnaIndexX
           );
-          this.writeTextCore(
+          await this.writeTextCore(
             str,
             this.normalColor,
             pdfValues.fontName,
@@ -485,14 +494,15 @@ export const PDFGenerator = async (
     }
 
     // Cantos
-    await asyncForEach(songsToPdf, async data => {
-      const { canto, lines, repeat } = data;
+    await asyncForEach(songsToPdf, async (data: SongToPdf) => {
+      const { song, render } = data;
+      const { items, repeat } = render;
       writer.createPage();
       writer.positionSong();
 
       // Titulo del canto
       await writer.writeTextCentered(
-        canto.titulo.toUpperCase(),
+        song.titulo.toUpperCase(),
         writer.titleColor,
         pdfValues.fontName,
         pdfValues.songTitle.FontSize
@@ -501,7 +511,7 @@ export const PDFGenerator = async (
       // Fuente
       writer.moveToNextLine(pdfValues.songTitle.Spacing);
       await writer.writeTextCentered(
-        canto.fuente,
+        song.fuente,
         writer.sourceColor,
         pdfValues.fontName,
         pdfValues.songSource.FontSize
@@ -512,12 +522,23 @@ export const PDFGenerator = async (
       writer.setNewColumnY(pdfValues.songParagraphSpacing);
       var repeatLines: Array<ExportToPdfRepeatLine> = [];
       var repeatStart = 0;
-      await asyncForEach(lines, async (it: SongLine, i: number) => {
+      var maxX = 0;
+      await asyncForEach(items, async (it: SongLine, i: number) => {
+        var lastWidth: number = 0;
         if (it.inicioParrafo) {
           writer.moveToNextLine(pdfValues.songParagraphSpacing);
         }
         if (it.tituloEspecial) {
           writer.moveToNextLine(pdfValues.songParagraphSpacing * 2);
+        }
+        if (repeat.find(r => r.start === i)) {
+          repeatStart = writer.pos.y;
+        } else if (repeat.find(r => r.end === i)) {
+          repeatLines.push({
+            startY: repeatStart,
+            endY: writer.pos.y,
+            refX: maxX
+          });
         }
         var alturaExtra = 0;
         if (it.notas) {
@@ -529,17 +550,8 @@ export const PDFGenerator = async (
           pdfValues.primerColumnaX,
           pdfValues.segundaColumnaX
         );
-        if (repeat.find(r => r.start === i)) {
-          repeatStart = writer.pos.y;
-        } else if (repeat.find(r => r.end === i)) {
-          repeatLines.push({
-            startY: repeatStart,
-            endY: writer.pos.y,
-            refX: writer.pos.x
-          });
-        }
         if (it.notas === true) {
-          writer.writeTextCore(
+          lastWidth = await writer.writeTextCore(
             it.texto,
             writer.noteColor,
             pdfValues.fontName,
@@ -548,7 +560,7 @@ export const PDFGenerator = async (
           );
           writer.moveToNextLine(pdfValues.songText.Spacing);
         } else if (it.canto === true) {
-          writer.writeTextCore(
+          lastWidth = await writer.writeTextCore(
             it.texto,
             writer.normalColor,
             pdfValues.fontName,
@@ -557,14 +569,14 @@ export const PDFGenerator = async (
           );
           writer.moveToNextLine(pdfValues.songText.Spacing);
         } else if (it.cantoConIndicador === true) {
-          writer.writeTextCore(
+          lastWidth = await writer.writeTextCore(
             it.prefijo,
             writer.prefixColor,
             pdfValues.fontName,
             pdfValues.songText.FontSize
           );
           if (it.tituloEspecial === true) {
-            writer.writeTextCore(
+            lastWidth = await writer.writeTextCore(
               it.texto,
               writer.specialTitleColor,
               pdfValues.fontName,
@@ -572,7 +584,7 @@ export const PDFGenerator = async (
               pdfValues.songIndicatorSpacing
             );
           } else if (it.textoEspecial === true) {
-            writer.writeTextCore(
+            lastWidth = await writer.writeTextCore(
               it.texto,
               writer.specialNoteColor,
               pdfValues.fontName,
@@ -580,7 +592,7 @@ export const PDFGenerator = async (
               pdfValues.songIndicatorSpacing
             );
           } else {
-            writer.writeTextCore(
+            lastWidth = await writer.writeTextCore(
               it.texto,
               writer.normalColor,
               pdfValues.fontName,
@@ -590,9 +602,16 @@ export const PDFGenerator = async (
           }
           writer.moveToNextLine(pdfValues.songText.Spacing);
         }
+        maxX = Math.trunc(Math.max(writer.pos.x + lastWidth, maxX));
       });
       await asyncForEach(repeatLines, async (line: ExportToPdfRepeatLine) => {
-        writer.drawRepeatLine(line);
+        await writer.drawRepeatLine(
+          line,
+          writer.repeatColor,
+          I18n.t('songs.repeat'),
+          pdfValues.fontName,
+          pdfValues.songText.FontSize
+        );
       });
       if (opts.pageNumbers) {
         await writer.writePageNumber();
@@ -600,6 +619,7 @@ export const PDFGenerator = async (
       writer.addPageToDocument();
     });
     const path = await writer.save();
+    console.log(path);
     return path;
   } catch (err) {
     console.log('generatePDF ERROR', err);

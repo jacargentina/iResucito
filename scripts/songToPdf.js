@@ -38,7 +38,8 @@ class NodeJsPdfWriter extends PdfWriter {
       NodeStyles.lineaNotas.color,
       NodeStyles.prefijo.color,
       NodeStyles.lineaTituloNotaEspecial.color,
-      NodeStyles.lineaNotaEspecial.color
+      NodeStyles.lineaNotaEspecial.color,
+      NodeStyles.lineaRepeat.color
     );
     this.path = normalize(pdfPath);
     this.doc = new PDFDocument({
@@ -83,13 +84,13 @@ class NodeJsPdfWriter extends PdfWriter {
     return parseInt((pdfValues.widthHeightPixels - height) / 2);
   }
 
-  writeTextCore(
+  async writeTextCore(
     text: string,
     color: any,
     font: string,
     size: number,
     xOffset?: number
-  ) {
+  ): Promise<number> {
     const x = xOffset ? this.pos.x + xOffset : this.pos.x;
     this.doc
       .fillColor(color)
@@ -98,13 +99,33 @@ class NodeJsPdfWriter extends PdfWriter {
       .text(text, x, this.pos.y, {
         lineBreak: false
       });
+    return (
+      this.doc
+        .fontSize(size)
+        .font('thefont')
+        .widthOfString(text) + x
+    );
   }
 
-  async drawRepeatLine(line: ExportToPdfRepeatLine) {
+  async drawRepeatLine(
+    line: ExportToPdfRepeatLine,
+    color: any,
+    text: string,
+    font: string,
+    size: number
+  ) {
     this.doc
       .moveTo(line.refX, line.startY)
       .lineTo(line.refX, line.endY)
-      .stroke({ color: NodeStyles.lineaRepeat.color });
+      .stroke(color);
+    const middle = (line.endY - line.startY) / 2;
+    this.doc
+      .fillColor(color)
+      .fontSize(size)
+      .font('thefont')
+      .text(text, line.refX + 10, line.startY + middle - size, {
+        lineBreak: false
+      });
   }
 
   async save() {
@@ -160,10 +181,14 @@ if (!process.argv.slice(2).length) {
   I18n.locale = locale;
   console.log('Configured locale', I18n.locale);
   var key = program.key;
-  var opts = { createIndex: true, pageNumbers: true, fileSuffix: `-${locale}` };
   if (locale !== '') {
     var parser = new SongsParser(NodeStyles);
     if (key) {
+      var opts = {
+        createIndex: false,
+        pageNumbers: true,
+        fileSuffix: ''
+      };
       var song = FolderSongs.getSingleSongMeta(key, locale);
       if (song.files[I18n.locale]) {
         FolderSongs.loadSingleSong(locale, song)
@@ -186,6 +211,11 @@ if (!process.argv.slice(2).length) {
         console.log('Song not found for given locale');
       }
     } else {
+      var opts = {
+        createIndex: true,
+        pageNumbers: true,
+        fileSuffix: `-${locale}`
+      };
       var songs = FolderSongs.getSongsMeta(locale);
       console.log(`No key Song. Generating ${songs.length} songs`);
       Promise.all(FolderSongs.loadSongs(locale, songs)).then(() => {

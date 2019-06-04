@@ -37,6 +37,8 @@ const DataContextWrapper = (props: any) => {
     setApiLoading(false);
     if (err.response) {
       setApiResult(err.response.data);
+    } else if (err.request) {
+      setApiResult({ error: err.request });
     } else {
       setApiResult({ error: err.message });
     }
