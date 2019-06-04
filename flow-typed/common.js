@@ -77,19 +77,19 @@ declare type SongLine = {
   notaEspecial: boolean,
   tituloEspecial: boolean,
   textoEspecial: boolean,
-  indicadorRepeat: boolean
+  indicador: string
 };
 
-declare type SongRepeat = {
+declare type SongIndicator = {
   start: number,
   end: number,
-  style: any
+  type: string
 };
 
 declare type SongRendering = {
   firstNotes?: number,
   items: Array<SongLine>,
-  repeat: Array<SongRepeat>
+  indicators: Array<SongIndicator>
 };
 
 // nombre: el nombre completo del archivo, sin la extension .txt
@@ -152,10 +152,12 @@ declare type ExportToPdfCoord = {
   y: number
 };
 
-declare type ExportToPdfRepeatLine = {
+declare type ExportToPdfLineText = {
+  x: number,
   startY: number,
   endY: number,
-  refX: number
+  text: string,
+  color: any
 };
 
 declare type SongToPdf = {

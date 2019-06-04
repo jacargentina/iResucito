@@ -107,23 +107,17 @@ class NodeJsPdfWriter extends PdfWriter {
     );
   }
 
-  async drawRepeatLine(
-    line: ExportToPdfRepeatLine,
-    color: any,
-    text: string,
-    font: string,
-    size: number
-  ) {
+  async drawLineText(line: ExportToPdfLineText, font: string, size: number) {
     this.doc
-      .moveTo(line.refX, line.startY)
-      .lineTo(line.refX, line.endY)
-      .stroke(color);
+      .moveTo(line.x, line.startY)
+      .lineTo(line.x, line.endY)
+      .stroke(line.color);
     const middle = (line.endY - line.startY) / 2;
     this.doc
-      .fillColor(color)
+      .fillColor(line.color)
       .fontSize(size)
       .font('thefont')
-      .text(text, line.refX + 10, line.startY + middle - size, {
+      .text(line.text, line.x + 10, line.startY + middle - size, {
         lineBreak: false
       });
   }

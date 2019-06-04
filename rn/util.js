@@ -306,6 +306,11 @@ class NativePdfWriter extends PdfWriter {
     return sizeRes.width;
   }
 
+  async drawLineText(line: ExportToPdfLineText, font: string, size: number) {
+    // TODO
+    // Buscar implementacion para lineas rectas?
+  }
+
   async save() {
     return await this.doc.write();
   }

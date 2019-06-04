@@ -333,13 +333,7 @@ export class PdfWriter {
   }
 
   /* eslint-disable no-unused-vars */
-  async drawRepeatLine(
-    line: ExportToPdfRepeatLine,
-    color: any,
-    text: string,
-    font: string,
-    size: number
-  ) {
+  async drawLineText(line: ExportToPdfLineText, font: string, size: number) {
     throw 'Not implemented';
   }
   /* eslint-enable no-unused-vars */
@@ -496,7 +490,7 @@ export const PDFGenerator = async (
     // Cantos
     await asyncForEach(songsToPdf, async (data: SongToPdf) => {
       const { song, render } = data;
-      const { items, repeat } = render;
+      const { items, indicators } = render;
       writer.createPage();
       writer.positionSong();
 
@@ -520,8 +514,9 @@ export const PDFGenerator = async (
       writer.positionStartLine();
       writer.moveToNextLine(pdfValues.songSource.Spacing);
       writer.setNewColumnY(pdfValues.songParagraphSpacing);
-      var repeatLines: Array<ExportToPdfRepeatLine> = [];
-      var repeatStart = 0;
+      var lines: Array<ExportToPdfLineText> = [];
+      var blockIndicator;
+      var blockY;
       var maxX = 0;
       await asyncForEach(items, async (it: SongLine, i: number) => {
         var lastWidth: number = 0;
@@ -531,14 +526,29 @@ export const PDFGenerator = async (
         if (it.tituloEspecial) {
           writer.moveToNextLine(pdfValues.songParagraphSpacing * 2);
         }
-        if (repeat.find(r => r.start === i)) {
-          repeatStart = writer.pos.y;
-        } else if (repeat.find(r => r.end === i)) {
-          repeatLines.push({
-            startY: repeatStart,
+        if (indicators.find(r => r.start === i)) {
+          blockIndicator = indicators.find(r => r.start === i);
+          blockY = writer.pos.y;
+        }
+        if (blockIndicator && blockIndicator.end === i) {
+          var text = '';
+          var color;
+          if (blockIndicator.type == 'repeat') {
+            text = I18n.t('songs.repeat');
+            color = writer.repeatColor;
+          } else if (blockIndicator.type == 'footnote') {
+            text = '*';
+            color = writer.repeatColor;
+          }
+          lines.push({
+            startY: blockY,
             endY: writer.pos.y,
-            refX: maxX
+            x: maxX,
+            text,
+            color
           });
+          blockIndicator = null;
+          blockY = 0;
         }
         var alturaExtra = 0;
         if (it.notas) {
@@ -604,11 +614,9 @@ export const PDFGenerator = async (
         }
         maxX = Math.trunc(Math.max(writer.pos.x + lastWidth, maxX));
       });
-      await asyncForEach(repeatLines, async (line: ExportToPdfRepeatLine) => {
-        await writer.drawRepeatLine(
+      await asyncForEach(lines, async (line: ExportToPdfLineText) => {
+        await writer.drawLineText(
           line,
-          writer.repeatColor,
-          I18n.t('songs.repeat'),
           pdfValues.fontName,
           pdfValues.songText.FontSize
         );

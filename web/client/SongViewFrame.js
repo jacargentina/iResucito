@@ -21,7 +21,7 @@ const SongViewFrame = (props: any) => {
         <Header.Subheader style={WebStyles.fuente}>{source}</Header.Subheader>
       </Header>
       {fRender && (
-        <SongViewLines lines={fRender.items} repeat={fRender.repeat} />
+        <SongViewLines lines={fRender.items} indicators={fRender.indicators} />
       )}
     </Fragment>
   );

@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 import I18n from '../../translations';
 
 const SongViewLines = (props: any) => {
-  const { lines, repeat } = props;
+  const { lines, indicators } = props;
 
   // Ajuste final para renderizado en screen
   var renderItems = lines.map<any>((it: SongLine, i) => {
@@ -16,10 +16,17 @@ const SongViewLines = (props: any) => {
     }
     it.prefijo = it.prefijo.replace(/ /g, '\u00a0');
     it.texto = it.texto.replace(/ /g, '\u00a0');
-    var inRepeat = repeat.find(r => r.start <= i && r.end > i);
-    if (inRepeat) {
-      var middle = (inRepeat.start + inRepeat.end) / 2;
-      var bisText = i === middle ? I18n.t('songs.repeat') : '\u00a0';
+    var indicator = indicators.find(r => r.start <= i && r.end > i);
+    if (indicator) {
+      var middle = (indicator.start + indicator.end) / 2;
+      var indicatorText = '\u00a0';
+      if (i === middle) {
+        if (indicator.type == 'repeat') {
+          indicatorText = I18n.t('songs.repeat');
+        } else if (indicator.type == 'footnote') {
+          indicatorText = '*';
+        }
+      }
       var texto = (
         <span style={{ display: 'inline-block', width: '50%' }}>
           <span key={i + 'prefijo'} style={it.prefijoStyle || it.style}>
@@ -31,13 +38,13 @@ const SongViewLines = (props: any) => {
       var bis = (
         <span
           style={{
-            ...inRepeat.style,
+            color: 'red',
             display: 'inline-block',
             borderLeft: '2px solid red',
             width: '50%',
             paddingLeft: 10
           }}>
-          {bisText}
+          {indicatorText}
         </span>
       );
     } else {
