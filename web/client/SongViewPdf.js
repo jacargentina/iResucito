@@ -7,7 +7,7 @@ import pdfjsLib from 'pdfjs-dist';
 const SongViewPdf = (props: any) => {
   const { url } = props;
 
-  const myRef = useRef();
+  const myRef = useRef<any>();
 
   const edit = useContext(EditContext);
   const { editSong } = edit;
@@ -18,25 +18,20 @@ const SongViewPdf = (props: any) => {
       .then(pdf => {
         // Fetch the first page
         var pageNumber = 1;
-        pdf.getPage(pageNumber).then(function(page) {
-          console.log('Page loaded');
-
-          var scale = 1.5;
-          var viewport = page.getViewport({ scale: scale });
-
+        pdf.getPage(pageNumber).then(page => {
+          var viewport = page.getViewport(1);
           // Prepare canvas using PDF page dimensions
           var canvas = myRef.current;
           var context = canvas.getContext('2d');
           canvas.height = viewport.height;
           canvas.width = viewport.width;
-
           // Render PDF page into canvas context
           var renderContext = {
             canvasContext: context,
             viewport: viewport
           };
           var renderTask = page.render(renderContext);
-          renderTask.promise.then(function() {
+          renderTask.promise.then(() => {
             console.log('Page rendered');
           });
         });
@@ -49,12 +44,16 @@ const SongViewPdf = (props: any) => {
   return (
     <Fragment>
       <Button
-        as="a"
+        primary
         onClick={() => {
-          // TODO
-          // descargar como  editSong.nombre
+          const link = document.createElement('a');
+          link.href = url;
+          link.setAttribute('download', editSong.nombre);
+          if (document.body) document.body.appendChild(link);
+          link.click();
+          link.remove();
         }}>
-        Descargar {editSong.nombre}
+        Descargar
       </Button>
       <canvas id="pdfViewer" ref={myRef} />
     </Fragment>

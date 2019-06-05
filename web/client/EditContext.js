@@ -26,6 +26,7 @@ const EditContextWrapper = (props: any) => {
     activeDialog
   } = data;
   const [text, setText] = useState('');
+  const [pdf, setPdf] = useState();
   const [navigation, setNavigation] = useState(emptyNavigation);
   const [rename, setRename] = useState();
   const [stage, setStage] = useState();
@@ -239,6 +240,7 @@ const EditContextWrapper = (props: any) => {
         goNext,
         confirmRemovePatch,
         text,
+        pdf,
         setText,
         rename,
         setRename,

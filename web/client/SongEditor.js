@@ -15,6 +15,7 @@ import Menu from 'semantic-ui-react/dist/commonjs/collections/Menu';
 import { DataContext } from './DataContext';
 import { EditContext } from './EditContext';
 import SongViewFrame from './SongViewFrame';
+import SongViewPdf from './SongViewPdf';
 import { useDebouncedCallback } from 'use-debounce';
 import I18n from '../../translations';
 import useHotkeys from 'use-hotkeys';
@@ -29,10 +30,11 @@ const SongEditor = () => {
     editSong,
     navigation,
     text,
+    pdf,
     setText,
     setHasChanges,
     songFile,
-    downloadPdf,
+    previewPdf,
     confirmRemovePatch,
     hasChanges,
     applyChanges,
@@ -133,7 +135,7 @@ const SongEditor = () => {
               <Icon name="history" />
               {I18n.t('ui.patch log')}
             </Button>
-            <Button onClick={downloadPdf}>
+            <Button onClick={previewPdf}>
               <Icon name="file pdf" />
               {I18n.t('share_action.view pdf')}
             </Button>
@@ -276,11 +278,14 @@ const SongEditor = () => {
             fontFamily: 'Franklin Gothic Medium',
             padding: '10px 20px'
           }}>
-          <SongViewFrame
-            title={songFile && songFile.titulo}
-            source={songFile && songFile.fuente}
-            text={debouncedText}
-          />
+          {!pdf && (
+            <SongViewFrame
+              title={songFile && songFile.titulo}
+              source={songFile && songFile.fuente}
+              text={debouncedText}
+            />
+          )}
+          {pdf && <SongViewPdf url={pdf} />}
         </div>
       </div>
     </Fragment>
