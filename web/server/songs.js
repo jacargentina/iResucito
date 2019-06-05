@@ -1,8 +1,17 @@
 // @flow
+import * as os from 'os';
+import * as fs from 'fs';
 import * as path from 'path';
 import FolderSongs from '../../FolderSongs';
 import FolderExtras from '../../FolderExtras';
-import { dataPath, readLocalePatch, saveLocalePatch } from './common';
+import { SongsParser } from '../../SongsParser';
+import { NodeStyles, generatePDF } from '../../scripts/pdf';
+import {
+  dataPath,
+  readLocalePatch,
+  saveLocalePatch,
+  asyncMiddleware
+} from './common';
 const merge = require('deepmerge');
 
 FolderSongs.basePath = path.resolve('./songs');
@@ -144,4 +153,53 @@ export default function(server: any) {
     await saveLocalePatch(patchObj);
     res.json({ ok: true });
   });
+
+  server.get(
+    '/api/pdf/:key/:locale',
+    asyncMiddleware(async (req, res, next) => {
+      const { key, locale } = req.params;
+      if (!locale || !key) {
+        return res.status(500).json({
+          error: 'Locale or key not provided'
+        });
+      }
+
+      try {
+        const parser = new SongsParser(NodeStyles);
+        const song = FolderSongs.getSingleSongMeta(key, locale);
+        await FolderSongs.loadSingleSong(locale, song);
+        const render = parser.getForRender(song.fullText, locale);
+        const item: SongToPdf = {
+          song,
+          render
+        };
+        const pdfPath = await generatePDF(
+          [item],
+          {
+            createIndex: false,
+            pageNumbers: false,
+            fileSuffix: ''
+          },
+          os.tmpdir()
+        );
+        if (pdfPath) {
+          res.sendFile(pdfPath, null, err => {
+            if (err) {
+              next(err);
+            } else {
+              console.log('Sent:', pdfPath);
+            }
+          });
+        } else {
+          return res.status(500).json({
+            error: 'No file'
+          });
+        }
+      } catch (err) {
+        return res.status(500).json({
+          error: err.message
+        });
+      }
+    })
+  );
 }

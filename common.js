@@ -627,7 +627,6 @@ export const PDFGenerator = async (
       writer.addPageToDocument();
     });
     const path = await writer.save();
-    console.log(path);
     return path;
   } catch (err) {
     console.log('generatePDF ERROR', err);

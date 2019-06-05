@@ -32,6 +32,7 @@ const SongEditor = () => {
     setText,
     setHasChanges,
     songFile,
+    downloadPdf,
     confirmRemovePatch,
     hasChanges,
     applyChanges,
@@ -131,6 +132,10 @@ const SongEditor = () => {
             <Button onClick={() => setActiveDialog('patchLog')}>
               <Icon name="history" />
               {I18n.t('ui.patch log')}
+            </Button>
+            <Button onClick={downloadPdf}>
+              <Icon name="file pdf" />
+              {I18n.t('share_action.view pdf')}
             </Button>
             <Popup
               content={<strong>Shortcut: Ctrl + S</strong>}

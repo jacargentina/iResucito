@@ -106,6 +106,26 @@ const EditContextWrapper = (props: any) => {
     }
   };
 
+  const downloadPdf = () => {
+    if (editSong) {
+      return api
+        .get(`/api/pdf/${editSong.key}/${I18n.locale}`, {
+          responseType: 'blob'
+        })
+        .then(response => {
+          const url = window.URL.createObjectURL(new Blob([response.data]));
+          const link = document.createElement('a');
+          link.href = url;
+          link.setAttribute('download', editSong.nombre);
+          if (document.body) document.body.appendChild(link);
+          link.click();
+        })
+        .catch(err => {
+          handleApiError(err);
+        });
+    }
+  };
+
   const confirmClose = () => {
     if (hasChanges) {
       setConfirmData({
@@ -228,7 +248,8 @@ const EditContextWrapper = (props: any) => {
         setRename,
         stage,
         setStage,
-        activeDialog
+        activeDialog,
+        downloadPdf
       }}>
       {props.children}
     </EditContext.Provider>
