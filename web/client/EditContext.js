@@ -106,7 +106,7 @@ const EditContextWrapper = (props: any) => {
     }
   };
 
-  const downloadPdf = () => {
+  const previewPdf = () => {
     if (editSong) {
       return api
         .get(`/api/pdf/${editSong.key}/${I18n.locale}`, {
@@ -114,11 +114,7 @@ const EditContextWrapper = (props: any) => {
         })
         .then(response => {
           const url = window.URL.createObjectURL(new Blob([response.data]));
-          const link = document.createElement('a');
-          link.href = url;
-          link.setAttribute('download', editSong.nombre);
-          if (document.body) document.body.appendChild(link);
-          link.click();
+          setPdf(url);
         })
         .catch(err => {
           handleApiError(err);
@@ -249,7 +245,7 @@ const EditContextWrapper = (props: any) => {
         stage,
         setStage,
         activeDialog,
-        downloadPdf
+        previewPdf
       }}>
       {props.children}
     </EditContext.Provider>

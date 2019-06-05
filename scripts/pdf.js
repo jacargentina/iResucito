@@ -1,7 +1,6 @@
 // @flow
 import PDFDocument from 'pdfkit';
 import fs from 'fs';
-import path from 'path';
 import normalize from 'normalize-strings';
 import { pdfValues, PdfWriter, PDFGenerator } from '../common';
 
