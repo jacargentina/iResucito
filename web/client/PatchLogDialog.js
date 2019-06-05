@@ -33,23 +33,18 @@ const PatchLogDialog = () => {
               !patchLogs.pending && (
                 <Message>{I18n.t('ui.no items to show')}</Message>
               )}
-            {patchLogs && patchLogs.pending && (
-              <Message
-                warning
-                list={[
-                  I18n.t('ui.patch pending', {
-                    author: patchLogs.pending.author,
-                    date: new Date(patchLogs.pending.date).toLocaleString()
-                  })
-                ]}
-              />
-            )}
             {patchLogs && patchLogs.changes.length > 0 && (
               <Grid columns={3} divided celled>
                 <Grid.Row color="black" style={{ fontWeight: 'bold' }}>
-                  <Grid.Column width={3}>User</Grid.Column>
-                  <Grid.Column width={3}>Date</Grid.Column>
-                  <Grid.Column width={10}>Changes</Grid.Column>
+                  <Grid.Column width={4} style={{ overflow: 'hidden' }}>
+                    User
+                  </Grid.Column>
+                  <Grid.Column width={3} style={{ overflow: 'hidden' }}>
+                    Date
+                  </Grid.Column>
+                  <Grid.Column width={9} style={{ overflow: 'hidden' }}>
+                    Changes
+                  </Grid.Column>
                 </Grid.Row>
                 {patchLogs.changes.map(item => {
                   var detail = [];
@@ -75,6 +70,17 @@ const PatchLogDialog = () => {
                   );
                 })}
               </Grid>
+            )}
+            {patchLogs && patchLogs.pending && (
+              <Message
+                warning
+                list={[
+                  I18n.t('ui.patch pending', {
+                    author: patchLogs.pending.author,
+                    date: new Date(patchLogs.pending.date).toLocaleString()
+                  })
+                ]}
+              />
             )}
           </div>
         </Loading>

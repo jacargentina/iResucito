@@ -108,6 +108,7 @@ export class SongsProcessor {
           info.stages = Object.assign({}, info.stages, {
             [loc]: stage
           });
+          info.stage = stage;
         }
       }
     }
