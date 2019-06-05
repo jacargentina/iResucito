@@ -18,7 +18,7 @@ const SongViewLines = (props: any) => {
     it.texto = it.texto.replace(/ /g, '\u00a0');
     var indicator = indicators.find(r => r.start <= i && r.end > i);
     if (indicator) {
-      var middle = (indicator.start + indicator.end) / 2;
+      var middle = Math.trunc((indicator.start + indicator.end) / 2);
       var indicatorText = '\u00a0';
       if (i === middle) {
         if (indicator.type == 'repeat') {
