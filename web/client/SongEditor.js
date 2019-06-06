@@ -9,9 +9,11 @@ import React, {
 import TextArea from 'semantic-ui-react/dist/commonjs/addons/TextArea';
 import Icon from 'semantic-ui-react/dist/commonjs/elements/Icon';
 import Popup from 'semantic-ui-react/dist/commonjs/modules/Popup';
+import Tab from 'semantic-ui-react/dist/commonjs/modules/Tab';
 import Message from 'semantic-ui-react/dist/commonjs/collections/Message';
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
 import Menu from 'semantic-ui-react/dist/commonjs/collections/Menu';
+import Segment from 'semantic-ui-react/dist/commonjs/elements/Segment';
 import { DataContext } from './DataContext';
 import { EditContext } from './EditContext';
 import SongViewFrame from './SongViewFrame';
@@ -31,6 +33,7 @@ const SongEditor = () => {
     navigation,
     text,
     pdf,
+    setPdf,
     setText,
     setHasChanges,
     songFile,
@@ -135,10 +138,6 @@ const SongEditor = () => {
               <Icon name="history" />
               {I18n.t('ui.patch log')}
             </Button>
-            <Button onClick={previewPdf}>
-              <Icon name="file pdf" />
-              {I18n.t('share_action.view pdf')}
-            </Button>
             <Popup
               content={<strong>Shortcut: Ctrl + S</strong>}
               size="mini"
@@ -232,8 +231,7 @@ const SongEditor = () => {
           flex: 1,
           display: 'flex',
           flexDirection: 'row',
-          overflow: 'auto',
-          padding: 10
+          overflow: 'auto'
         }}>
         <TextArea
           ref={txtRef}
@@ -274,18 +272,55 @@ const SongEditor = () => {
         <div
           style={{
             width: '50%',
-            overflowY: 'scroll',
-            fontFamily: 'Franklin Gothic Medium',
-            padding: '10px 20px'
+            overflowY: 'scroll'
           }}>
-          {!pdf && (
-            <SongViewFrame
-              title={songFile && songFile.titulo}
-              source={songFile && songFile.fuente}
-              text={debouncedText}
-            />
-          )}
-          {pdf && <SongViewPdf url={pdf} />}
+          <Tab
+            onTabChange={(e, data) => {
+              if (data.activeIndex == 1) {
+                previewPdf();
+              } else {
+                setPdf();
+              }
+            }}
+            menu={{ size: 'mini', pointing: true }}
+            panes={[
+              {
+                menuItem: 'HTML',
+                key: 'html',
+                render: () => {
+                  return (
+                    <Tab.Pane
+                      style={{
+                        fontFamily: 'Franklin Gothic Medium',
+                        border: '0px transparent'
+                      }}>
+                      <SongViewFrame
+                        title={songFile && songFile.titulo}
+                        source={songFile && songFile.fuente}
+                        text={debouncedText}
+                      />
+                    </Tab.Pane>
+                  );
+                }
+              },
+              {
+                menuItem: I18n.t('share_action.view pdf'),
+                key: 'pdf',
+                render: () => {
+                  return (
+                    <Tab.Pane
+                      loading={!pdf}
+                      style={{
+                        minHeight: '50vh',
+                        border: '0px transparent'
+                      }}>
+                      {pdf && <SongViewPdf url={pdf} />}
+                    </Tab.Pane>
+                  );
+                }
+              }
+            ]}
+          />
         </div>
       </div>
     </Fragment>
