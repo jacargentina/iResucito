@@ -182,17 +182,17 @@ export const getGroupedByLiturgicOrder = (
 };
 
 export const PdfStyles: SongStyles = {
-  titulo: { color: '#ff0000' },
-  fuente: { color: '#777777' },
-  lineaClamp: { color: '#ff0000' },
-  lineaRepeat: { color: '#ff0000' },
-  lineaNotas: { color: '#ff0000' },
-  lineaTituloNotaEspecial: { color: '#ff0000' },
-  lineaNotaEspecial: { color: '#444444' },
-  lineaNotasConMargen: { color: '#ff0000' },
-  lineaNormal: { color: '#000000' },
+  title: { color: '#ff0000' },
+  source: { color: '#777777' },
+  clampLine: { color: '#ff0000' },
+  indicator: { color: '#ff0000' },
+  notesLine: { color: '#ff0000' },
+  specialNoteTitle: { color: '#ff0000' },
+  specialNote: { color: '#444444' },
+  notesMarginLine: { color: '#ff0000' },
+  normalLine: { color: '#000000' },
   pageNumber: { color: '#000000' },
-  prefijo: { color: '#777777' }
+  prefix: { color: '#777777' }
 };
 
 export class PdfWriter {
@@ -201,30 +201,12 @@ export class PdfWriter {
   resetY: number;
   limiteHoja: number;
   primerFilaY: number;
-  pageNumberColor: any;
-  titleColor: any;
-  normalColor: any;
-  sourceColor: any;
-  noteColor: any;
-  prefixColor: any;
-  specialTitleColor: any;
-  specialNoteColor: any;
-  repeatColor: any;
   doc: any;
   base64Transform: any;
 
   constructor(fontBuf: any, base64Transform: any) {
     this.limiteHoja = pdfValues.widthHeightPixels - pdfValues.marginTop * 2;
     this.primerFilaY = pdfValues.marginTop;
-    this.pageNumberColor = PdfStyles.pageNumber.color;
-    this.titleColor = PdfStyles.titulo.color;
-    this.normalColor = PdfStyles.lineaNormal.color;
-    this.sourceColor = PdfStyles.fuente.color;
-    this.noteColor = PdfStyles.lineaNotas.color;
-    this.prefixColor = PdfStyles.prefijo.color;
-    this.specialTitleColor = PdfStyles.lineaTituloNotaEspecial.color;
-    this.specialNoteColor = PdfStyles.lineaNotaEspecial.color;
-    this.repeatColor = PdfStyles.lineaRepeat.color;
     this.pageNumber = 1;
     this.pos = {
       x: 0,
@@ -278,7 +260,7 @@ export class PdfWriter {
     this.pos.y = this.limiteHoja;
     this.writeTextCore(
       this.pageNumber.toString(),
-      this.pageNumberColor,
+      PdfStyles.pageNumber.color,
       pdfValues.songText.FontSize
     );
   }
@@ -380,7 +362,7 @@ export class PdfWriter {
     );
     await this.writeTextCore(
       title.toUpperCase(),
-      this.titleColor,
+      PdfStyles.title.color,
       pdfValues.indexSubtitle.FontSize
     );
     this.moveToNextLine(height);
@@ -396,7 +378,7 @@ export class PdfWriter {
           );
           await this.writeTextCore(
             str,
-            this.normalColor,
+            PdfStyles.normalLine.color,
             pdfValues.indexText.FontSize
           );
         }
@@ -442,7 +424,7 @@ export const PDFGenerator = async (
           pdfValues.bookTitle.Spacing +
           pdfValues.bookSubtitle.FontSize
       );
-      writer.writeTextCore(title, writer.titleColor, titleFontSize);
+      writer.writeTextCore(title, PdfStyles.title.color, titleFontSize);
 
       writer.moveToNextLine(titleFontSize + pdfValues.bookTitle.Spacing);
 
@@ -453,7 +435,7 @@ export const PDFGenerator = async (
       );
       writer.writeTextCore(
         subtitle,
-        writer.normalColor,
+        PdfStyles.normalLine.color,
         pdfValues.bookSubtitle.FontSize
       );
 
@@ -464,7 +446,7 @@ export const PDFGenerator = async (
         pdfValues.indexTitle.FontSize + pdfValues.indexTitle.Spacing;
       await writer.writeTextCentered(
         I18n.t('ui.export.songs index').toUpperCase(),
-        writer.titleColor,
+        PdfStyles.title.color,
         pdfValues.indexTitle.FontSize
       );
       writer.moveToNextLine(height);
@@ -512,7 +494,7 @@ export const PDFGenerator = async (
       // Titulo del canto
       await writer.writeTextCentered(
         song.titulo.toUpperCase(),
-        writer.titleColor,
+        PdfStyles.title.color,
         pdfValues.songTitle.FontSize
       );
 
@@ -520,7 +502,7 @@ export const PDFGenerator = async (
       writer.moveToNextLine(pdfValues.songTitle.Spacing);
       await writer.writeTextCentered(
         song.fuente,
-        writer.sourceColor,
+        PdfStyles.source.color,
         pdfValues.songSource.FontSize
       );
 
@@ -545,13 +527,11 @@ export const PDFGenerator = async (
         }
         if (blockIndicator && blockIndicator.end === i) {
           var text = '';
-          var color;
+          var color = PdfStyles.indicator.color;
           if (blockIndicator.type == 'repeat') {
             text = I18n.t('songs.repeat');
-            color = writer.repeatColor;
           } else if (blockIndicator.type == 'footnote') {
             text = '*';
-            color = writer.repeatColor;
           }
           lines.push({
             startY: blockY,
@@ -576,7 +556,7 @@ export const PDFGenerator = async (
         if (it.notas === true) {
           lastWidth = await writer.writeTextCore(
             it.texto,
-            writer.noteColor,
+            PdfStyles.notesLine.color,
             pdfValues.songNote.FontSize,
             pdfValues.songIndicatorSpacing
           );
@@ -584,7 +564,7 @@ export const PDFGenerator = async (
         } else if (it.canto === true) {
           lastWidth = await writer.writeTextCore(
             it.texto,
-            writer.normalColor,
+            PdfStyles.normalLine.color,
             pdfValues.songText.FontSize,
             pdfValues.songIndicatorSpacing
           );
@@ -592,27 +572,27 @@ export const PDFGenerator = async (
         } else if (it.cantoConIndicador === true) {
           lastWidth = await writer.writeTextCore(
             it.prefijo,
-            writer.prefixColor,
+            PdfStyles.prefix.color,
             pdfValues.songText.FontSize
           );
           if (it.tituloEspecial === true) {
             lastWidth = await writer.writeTextCore(
               it.texto,
-              writer.specialTitleColor,
+              PdfStyles.specialNoteTitle.color,
               pdfValues.songText.FontSize,
               pdfValues.songIndicatorSpacing
             );
           } else if (it.textoEspecial === true) {
             lastWidth = await writer.writeTextCore(
               it.texto,
-              writer.specialNoteColor,
+              PdfStyles.specialNote.color,
               pdfValues.songText.FontSize - 3,
               pdfValues.songIndicatorSpacing
             );
           } else {
             lastWidth = await writer.writeTextCore(
               it.texto,
-              writer.normalColor,
+              PdfStyles.normalLine.color,
               pdfValues.songText.FontSize,
               pdfValues.songIndicatorSpacing
             );

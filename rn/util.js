@@ -5,8 +5,6 @@ import * as RNLocalize from 'react-native-localize';
 import Contacts from 'react-native-contacts';
 import RNFS from 'react-native-fs';
 import DeviceInfo from 'react-native-device-info';
-import normalize from 'normalize-strings';
-import { PdfWriter, pdfValues, PDFGenerator } from '../common';
 import I18n from '../translations';
 import { SongsProcessor } from '../SongsProcessor';
 import { SongsParser } from '../SongsParser';
@@ -135,58 +133,58 @@ var fontSizeTexto = isTablet ? 17 : 15;
 var fontSizeNotas = isTablet ? 15.2 : 12.5;
 
 export const stylesObj: SongStyles = {
-  titulo: {
+  title: {
     fontFamily: 'Franklin Gothic Medium',
     color: '#ff0000',
     fontSize: fontSizeTitulo,
     marginTop: 8,
     marginBottom: 4
   },
-  fuente: {
+  source: {
     fontFamily: 'Franklin Gothic Medium',
     color: '#777777',
     fontSize: fontSizeTexto - 1,
     marginBottom: 8
   },
-  lineaClamp: {
+  clampLine: {
     fontFamily: 'Franklin Gothic Medium',
     color: '#ff0000',
     fontSize: fontSizeNotas
   },
-  lineaRepeat: {
+  indicator: {
     fontFamily: 'Franklin Gothic Medium',
     color: '#ff0000',
     fontSize: fontSizeTexto
   },
-  lineaNotas: {
+  notesLine: {
     fontFamily: 'Franklin Gothic Medium',
     color: '#ff0000',
     fontSize: fontSizeNotas,
     marginLeft: 4
   },
-  lineaTituloNotaEspecial: {
+  specialNoteTitle: {
     fontFamily: 'Franklin Gothic Medium',
     color: '#ff0000'
   },
-  lineaNotaEspecial: {
+  specialNote: {
     fontFamily: 'Franklin Gothic Medium',
     fontSize: fontSizeNotas,
     color: '#444444'
   },
-  lineaNotasConMargen: {
+  notesMarginLine: {
     fontFamily: 'Franklin Gothic Medium',
     color: '#ff0000',
     fontSize: fontSizeNotas,
     marginTop: 15,
     marginLeft: 4
   },
-  lineaNormal: {
+  normalLine: {
     fontFamily: 'Franklin Gothic Medium',
     color: '#000000',
     fontSize: fontSizeTexto,
     marginBottom: 8
   },
-  prefijo: {
+  prefix: {
     fontFamily: 'Franklin Gothic Medium',
     color: '#777777',
     fontSize: fontSizeTexto

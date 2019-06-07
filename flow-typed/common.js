@@ -50,17 +50,17 @@ declare type SongRatingFile = {
 };
 
 declare type SongStyles = {
-  titulo: any,
-  fuente: any,
-  lineaClamp: any,
-  lineaRepeat: any,
-  lineaNotas: any,
-  lineaTituloNotaEspecial: any,
-  lineaNotaEspecial: any,
-  lineaNotasConMargen: any,
-  lineaNormal: any,
+  title: any,
+  source: any,
+  clampLine: any,
+  indicator: any,
+  notesLine: any,
+  specialNoteTitle: any,
+  specialNote: any,
+  notesMarginLine: any,
+  normalLine: any,
   pageNumber: any,
-  prefijo: any
+  prefix: any
 };
 
 declare type SongLine = {

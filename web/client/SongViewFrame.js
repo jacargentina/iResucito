@@ -16,9 +16,9 @@ const SongViewFrame = (props: any) => {
 
   return (
     <Fragment>
-      <Header style={WebStyles.titulo}>
+      <Header style={WebStyles.title}>
         {title}
-        <Header.Subheader style={WebStyles.fuente}>{source}</Header.Subheader>
+        <Header.Subheader style={WebStyles.source}>{source}</Header.Subheader>
       </Header>
       {fRender && (
         <SongViewLines lines={fRender.items} indicators={fRender.indicators} />

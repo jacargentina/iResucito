@@ -30,7 +30,7 @@ export class SongsParser {
       const clampValue = text.substring(text.indexOf(':') + 1).trim();
       var it: SongLine = {
         texto: I18n.t('songs.clamp', { clamp: clampValue }),
-        style: this.songStyles.lineaClamp,
+        style: this.songStyles.clampLine,
         prefijo: '',
         prefijoStyle: null,
         sufijo: '',
@@ -74,9 +74,9 @@ export class SongsParser {
         var secondPoint = 4;
         var it: SongLine = {
           texto: text.substring(secondPoint + 1).trim(),
-          style: this.songStyles.lineaNormal,
+          style: this.songStyles.normalLine,
           prefijo: text.substring(0, secondPoint + 1) + ' ',
-          prefijoStyle: this.songStyles.prefijo,
+          prefijoStyle: this.songStyles.prefix,
           sufijo: '',
           sufijoStyle: null,
           canto: false,
@@ -125,9 +125,9 @@ export class SongsParser {
         var pointIndex = text.indexOf('.');
         var it: SongLine = {
           texto: text.substring(pointIndex + 1).trim(),
-          style: this.songStyles.lineaNormal,
+          style: this.songStyles.normalLine,
           prefijo: text.substring(0, pointIndex + 1) + ' ',
-          prefijoStyle: this.songStyles.prefijo,
+          prefijoStyle: this.songStyles.prefix,
           sufijo: '',
           sufijoStyle: null,
           canto: false,
@@ -143,7 +143,7 @@ export class SongsParser {
       } else if (this.isChordsLine(text, locale)) {
         var it: SongLine = {
           texto: text.trimRight(),
-          style: this.songStyles.lineaNotas,
+          style: this.songStyles.notesLine,
           prefijo: '',
           prefijoStyle: null,
           sufijo: '',
@@ -162,9 +162,9 @@ export class SongsParser {
         // Nota especial
         var it: SongLine = {
           texto: text.substring(1).trim(),
-          style: this.songStyles.lineaNotaEspecial,
+          style: this.songStyles.specialNote,
           prefijo: '\u2217  ',
-          prefijoStyle: this.songStyles.lineaNotas,
+          prefijoStyle: this.songStyles.notesLine,
           sufijo: '',
           sufijoStyle: null,
           canto: false,
@@ -182,7 +182,7 @@ export class SongsParser {
         var it: SongLine = {
           canto: false,
           texto: text.replace(/\*/g, '').trim(),
-          style: this.songStyles.lineaTituloNotaEspecial,
+          style: this.songStyles.specialNoteTitle,
           prefijo: '',
           prefijoStyle: null,
           sufijo: '',
@@ -202,7 +202,7 @@ export class SongsParser {
         var it: SongLine = {
           canto: false,
           texto: text.replace('-', '').trim(),
-          style: this.songStyles.lineaNotaEspecial,
+          style: this.songStyles.specialNote,
           prefijo: '',
           prefijoStyle: null,
           sufijo: '',
@@ -221,7 +221,7 @@ export class SongsParser {
         var texto = text.trimRight();
         var it: SongLine = {
           texto: texto,
-          style: this.songStyles.lineaNormal,
+          style: this.songStyles.normalLine,
           prefijo: '',
           prefijoStyle: null,
           sufijo: '',
@@ -315,7 +315,7 @@ export class SongsParser {
       if (it.texto.endsWith('\u2217')) {
         it.texto = it.texto.replace('\u2217', '');
         it.sufijo = '\u2217';
-        it.sufijoStyle = this.songStyles.lineaNotas;
+        it.sufijoStyle = this.songStyles.notesLine;
       }
       if (it.notas && tDiff && tDiff !== 0) {
         it.texto = this.getChordsTransported(it.texto, tDiff, locale);
@@ -339,7 +339,7 @@ export class SongsParser {
       if (it.texto.trim() == '' && i < lFirstPass.length - 1) {
         const nextItm = lFirstPass[i + 1];
         if (nextItm.canto) {
-          it.style = this.songStyles.lineaNotas;
+          it.style = this.songStyles.notesLine;
           it.notas = true;
         }
       }
@@ -347,7 +347,7 @@ export class SongsParser {
       if (it.notas && i < lFirstPass.length - 1) {
         const nextItmn = lFirstPass[i + 1];
         if (nextItmn.prefijo !== '') {
-          it.style = this.songStyles.lineaNotasConMargen;
+          it.style = this.songStyles.notesMarginLine;
           it.inicioParrafo = true;
         }
       }
