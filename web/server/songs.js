@@ -1,11 +1,10 @@
 // @flow
-import * as os from 'os';
-import * as fs from 'fs';
 import * as path from 'path';
 import FolderSongs from '../../FolderSongs';
 import FolderExtras from '../../FolderExtras';
 import { SongsParser } from '../../SongsParser';
-import { NodeStyles, generatePDF } from '../../scripts/pdf';
+import { generatePDF } from '../../scripts/pdf';
+import { PdfStyles } from '../../common';
 import {
   dataPath,
   readLocalePatch,
@@ -165,7 +164,7 @@ export default function(server: any) {
       }
 
       try {
-        const parser = new SongsParser(NodeStyles);
+        const parser = new SongsParser(PdfStyles);
         const song = FolderSongs.getSingleSongMeta(key, locale);
         await FolderSongs.loadSingleSong(locale, song);
         const render = parser.getForRender(song.fullText, locale);
@@ -173,15 +172,11 @@ export default function(server: any) {
           song,
           render
         };
-        const pdfPath = await generatePDF(
-          [item],
-          {
-            createIndex: false,
-            pageNumbers: false,
-            fileSuffix: ''
-          },
-          os.tmpdir()
-        );
+        const pdfPath = await generatePDF([item], {
+          createIndex: false,
+          pageNumbers: false,
+          fileSuffix: ''
+        });
         if (pdfPath) {
           res.sendFile(pdfPath, null, err => {
             if (err) {

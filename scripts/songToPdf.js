@@ -1,10 +1,10 @@
 // @flow
-import * as path from 'path';
 import osLocale from 'os-locale';
 import I18n from '../translations';
 import FolderSongs from '../FolderSongs';
 import { SongsParser } from '../SongsParser';
-import { NodeStyles, generatePDF } from './pdf';
+import { generatePDF } from './pdf';
+import { PdfStyles } from '../common';
 
 var program = require('commander');
 
@@ -34,9 +34,8 @@ if (!process.argv.slice(2).length) {
   I18n.locale = locale;
   console.log('Configured locale', I18n.locale);
   var key = program.key;
-  const folder = path.resolve(__dirname, '../pdf');
   if (locale !== '') {
-    var parser = new SongsParser(NodeStyles);
+    var parser = new SongsParser(PdfStyles);
     if (key) {
       var opts = {
         createIndex: false,
@@ -56,7 +55,9 @@ if (!process.argv.slice(2).length) {
               song,
               render
             };
-            generatePDF([item], opts, folder);
+            generatePDF([item], opts).then(p => {
+              console.log(p);
+            });
           })
           .catch(err => {
             console.log(err);
@@ -91,7 +92,9 @@ if (!process.argv.slice(2).length) {
             );
           }
         });
-        generatePDF(items, opts, folder);
+        generatePDF(items, opts).then(p => {
+          console.log(p);
+        });
       });
     }
   }

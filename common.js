@@ -1,5 +1,6 @@
 // @flow
 // Utilerias comunes (no atadas a react-native ni a NodeJS)
+const PDFDocument = require('./pdfkit.standalone.js');
 import normalize from 'normalize-strings';
 import langs from 'langs';
 import I18n from './translations';
@@ -181,6 +182,20 @@ export const getGroupedByLiturgicOrder = (
   }, {});
 };
 
+export const PdfStyles: SongStyles = {
+  titulo: { color: '#ff0000' },
+  fuente: { color: '#777777' },
+  lineaClamp: { color: '#ff0000' },
+  lineaRepeat: { color: '#ff0000' },
+  lineaNotas: { color: '#ff0000' },
+  lineaTituloNotaEspecial: { color: '#ff0000' },
+  lineaNotaEspecial: { color: '#444444' },
+  lineaNotasConMargen: { color: '#ff0000' },
+  lineaNormal: { color: '#000000' },
+  pageNumber: { color: '#000000' },
+  prefijo: { color: '#777777' }
+};
+
 export class PdfWriter {
   pos: ExportToPdfCoord;
   pageNumber: number;
@@ -196,36 +211,41 @@ export class PdfWriter {
   specialTitleColor: any;
   specialNoteColor: any;
   repeatColor: any;
+  doc: any;
+  base64Transform: any;
 
-  constructor(
-    limiteHoja: number,
-    primerFilaY: number,
-    pageNumberColor: any,
-    titleColor: any,
-    normalColor: any,
-    sourceColor: any,
-    noteColor: any,
-    prefixColor: any,
-    specialTitleColor: any,
-    specialNoteColor: any,
-    repeatColor: any
-  ) {
-    this.limiteHoja = limiteHoja;
-    this.primerFilaY = primerFilaY;
-    this.pageNumberColor = pageNumberColor;
-    this.titleColor = titleColor;
-    this.normalColor = normalColor;
-    this.sourceColor = sourceColor;
-    this.noteColor = noteColor;
-    this.prefixColor = prefixColor;
-    this.specialTitleColor = specialTitleColor;
-    this.specialNoteColor = specialNoteColor;
-    this.repeatColor = repeatColor;
+  constructor(fontBuf: any, base64Transform: any) {
+    this.limiteHoja = pdfValues.widthHeightPixels - pdfValues.marginTop * 2;
+    this.primerFilaY = pdfValues.marginTop;
+    this.pageNumberColor = PdfStyles.pageNumber.color;
+    this.titleColor = PdfStyles.titulo.color;
+    this.normalColor = PdfStyles.lineaNormal.color;
+    this.sourceColor = PdfStyles.fuente.color;
+    this.noteColor = PdfStyles.lineaNotas.color;
+    this.prefixColor = PdfStyles.prefijo.color;
+    this.specialTitleColor = PdfStyles.lineaTituloNotaEspecial.color;
+    this.specialNoteColor = PdfStyles.lineaNotaEspecial.color;
+    this.repeatColor = PdfStyles.lineaRepeat.color;
     this.pageNumber = 1;
     this.pos = {
       x: 0,
       y: 0
     };
+    this.doc = new PDFDocument({
+      bufferPages: true,
+      autoFirstPage: false,
+      size: [pdfValues.widthHeightPixels, pdfValues.widthHeightPixels]
+    });
+    this.doc.registerFont('thefont', fontBuf);
+    this.base64Transform = base64Transform;
+  }
+
+  checkLimitsCore(height: number) {
+    return this.pos.y + height >= this.limiteHoja;
+  }
+
+  createPage() {
+    this.doc.addPage();
   }
 
   positionIndex() {
@@ -249,46 +269,6 @@ export class PdfWriter {
     };
   }
 
-  /* eslint-disable no-unused-vars */
-  checkLimitsCore(height: number) {
-    throw 'Not implemented';
-  }
-
-  async getCenteringX(text: string, font: string, size: number) {
-    throw 'Not implemented';
-  }
-
-  async getCenteringY(text: string, font: string, size: number) {
-    throw 'Not implemented';
-  }
-
-  async writeTextCore(
-    text: string,
-    color: any,
-    font: string,
-    size: number,
-    xOffset?: number
-  ): Promise<number> {
-    throw 'Not implemented';
-  }
-
-  moveToNextLine(height: number) {
-    throw 'Not implemented';
-  }
-
-  setNewColumnY(height: number) {
-    throw 'Not implemented';
-  }
-  /* eslint-enable no-unused-vars */
-
-  createPage() {
-    throw 'Not implemented';
-  }
-
-  addPageToDocument() {
-    throw 'Not implemented';
-  }
-
   async writePageNumber() {
     this.pos.x = pdfValues.widthHeightPixels / 2;
     this.pos.y = this.limiteHoja;
@@ -304,7 +284,6 @@ export class PdfWriter {
     if (this.checkLimitsCore(height)) {
       if (this.pos.x == secondCol) {
         await this.writePageNumber();
-        this.addPageToDocument();
         this.pageNumber++;
         this.pos.x = firstCol;
         this.resetY = this.primerFilaY;
@@ -314,10 +293,6 @@ export class PdfWriter {
       }
       this.pos.y = this.resetY;
     }
-  }
-
-  async save() {
-    throw 'Not implemented';
   }
 
   async writeTextCentered(
@@ -332,11 +307,84 @@ export class PdfWriter {
     this.pos.x = saveX;
   }
 
-  /* eslint-disable no-unused-vars */
-  async drawLineText(line: ExportToPdfLineText, font: string, size: number) {
-    throw 'Not implemented';
+  moveToNextLine(height: number) {
+    this.pos.y += height;
   }
-  /* eslint-enable no-unused-vars */
+
+  setNewColumnY(height: number) {
+    this.resetY = this.pos.y + height;
+  }
+
+  async getCenteringX(text: string, font: string, size: number) {
+    const width = this.doc
+      .fontSize(size)
+      .font('thefont')
+      .widthOfString(text);
+    return parseInt((pdfValues.widthHeightPixels - width) / 2);
+  }
+
+  async getCenteringY(text: string, font: string, size: number) {
+    const height = this.doc
+      .fontSize(size)
+      .font('thefont')
+      .heightOfString(text);
+    return parseInt((pdfValues.widthHeightPixels - height) / 2);
+  }
+
+  async writeTextCore(
+    text: string,
+    color: any,
+    font: string,
+    size: number,
+    xOffset?: number
+  ): Promise<number> {
+    const x = xOffset ? this.pos.x + xOffset : this.pos.x;
+    this.doc
+      .fillColor(color)
+      .fontSize(size)
+      .font('thefont')
+      .text(text, x, this.pos.y, {
+        lineBreak: false
+      });
+    return (
+      this.doc
+        .fontSize(size)
+        .font('thefont')
+        .widthOfString(text) + x
+    );
+  }
+
+  async drawLineText(line: ExportToPdfLineText, font: string, size: number) {
+    this.doc
+      .moveTo(line.x, line.startY)
+      .lineTo(line.x, line.endY)
+      .stroke(line.color);
+    const middle = (line.endY - line.startY) / 2;
+    this.doc
+      .fillColor(line.color)
+      .fontSize(size)
+      .font('thefont')
+      .text(line.text, line.x + 10, line.startY + middle - size, {
+        lineBreak: false
+      });
+  }
+
+  async save() {
+    return new Promise((resolve, reject) => {
+      var stream = this.doc.pipe(this.base64Transform);
+      var str = '';
+      stream.on('error', err => {
+        reject(err);
+      });
+      stream.on('data', data => {
+        str += data;
+      });
+      stream.on('finish', () => {
+        resolve(str);
+      });
+      this.doc.end();
+    });
+  }
 
   async generateListing(title: string, items: any) {
     const height =
@@ -438,7 +486,6 @@ export const PDFGenerator = async (
         pdfValues.fontName,
         pdfValues.bookSubtitle.FontSize
       );
-      writer.addPageToDocument();
 
       //Indice
       writer.createPage();
@@ -484,7 +531,6 @@ export const PDFGenerator = async (
         await writer.generateListing(title, byOrder[order]);
       });
       await writer.writePageNumber();
-      writer.addPageToDocument();
     }
 
     // Cantos
@@ -624,10 +670,8 @@ export const PDFGenerator = async (
       if (opts.pageNumbers) {
         await writer.writePageNumber();
       }
-      writer.addPageToDocument();
     });
-    const path = await writer.save();
-    return path;
+    return await writer.save();
   } catch (err) {
     console.log('generatePDF ERROR', err);
   }

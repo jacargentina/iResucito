@@ -11,7 +11,8 @@ import {
   MenuTrigger
 } from 'react-native-popup-menu';
 import { getChordsScale } from '../../common';
-import { NativeParser, generatePDF } from '../util';
+import { NativeParser } from '../util';
+import { generatePDF } from '../pdf';
 import { DataContext } from '../DataContext';
 import I18n from '../../translations';
 import StackNavigatorOptions from '../navigation/StackNavigatorOptions';

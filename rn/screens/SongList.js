@@ -7,9 +7,9 @@ import SearchBarView from './SearchBarView';
 import SongListItem from './SongListItem';
 import I18n from '../../translations';
 import { DataContext } from '../DataContext';
-import { generateMultiPagePDF } from '../util';
 import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
 import commonTheme from '../native-base-theme/variables/platform';
+import { generatePDF } from '../pdf';
 
 const SongList = (props: any) => {
   const listRef = useRef<?FlatList>();
@@ -195,13 +195,16 @@ const ExportToPdf = withNavigation(props => {
               pageNumbers: true,
               fileSuffix: I18n.locale
             };
-            generateMultiPagePDF(songToExport, opts).then(path => {
-              navigation.navigate('PDFViewer', {
-                uri: path,
-                title: I18n.t('ui.export.pdf viewer title')
-              });
-              setLoading({ isLoading: false, text: '' });
+            generatePDF(songToExport, opts, '').then(res => {
+              console.log(res);
             });
+            // generateMultiPagePDF(songToExport, opts).then(path => {
+            //   navigation.navigate('PDFViewer', {
+            //     uri: path,
+            //     title: I18n.t('ui.export.pdf viewer title')
+            //   });
+            //   setLoading({ isLoading: false, text: '' });
+            // });
             break;
         }
       }
