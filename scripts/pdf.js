@@ -13,7 +13,8 @@ export const defaultExportToPdfOptions: ExportToPdfOptions = {
 
 export async function generatePDF(
   songsToPdf: Array<SongToPdf>,
-  opts: ExportToPdfOptions
+  opts: ExportToPdfOptions,
+  sizes?: ExportToPdfSizes
 ) {
   const folder = os.tmpdir();
 
@@ -29,7 +30,7 @@ export async function generatePDF(
     );
   }
 
-  var writer = new PdfWriter(font, new Base64Encode());
+  var writer = new PdfWriter(font, new Base64Encode(), sizes);
   const base64 = await PDFGenerator(songsToPdf, opts, writer);
   if (base64) {
     fs.writeFileSync(pdfPath, Buffer.from(base64, 'base64'));

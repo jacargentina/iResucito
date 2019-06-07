@@ -8,7 +8,9 @@ import React, {
 } from 'react';
 import Icon from 'semantic-ui-react/dist/commonjs/elements/Icon';
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
+import { DataContext } from './DataContext';
 import { EditContext } from './EditContext';
+import I18n from '../../translations';
 import pdfjsLib from 'pdfjs-dist';
 
 const SongViewPdf = (props: any) => {
@@ -18,6 +20,9 @@ const SongViewPdf = (props: any) => {
   const [pdf, setPdf] = useState();
   const [numPages, setNumPages] = useState(0);
   const [currPage, setCurrPage] = useState(0);
+
+  const data = useContext(DataContext);
+  const { setActiveDialog } = data;
 
   const edit = useContext(EditContext);
   const { editSong } = edit;
@@ -66,7 +71,17 @@ const SongViewPdf = (props: any) => {
           link.click();
           link.remove();
         }}>
-        Descargar
+        <Icon name="file pdf" />
+        {I18n.t('ui.download')}
+      </Button>
+      <Button
+        size="mini"
+        floated="right"
+        onClick={() => {
+          setActiveDialog('pdfSettings');
+        }}>
+        <Icon name="setting" />
+        {I18n.t('screen_title.settings')}
       </Button>
       {numPages && (
         <Fragment>

@@ -13,6 +13,7 @@
     "scale": "C C# D EB E F F# G G# A B H"
   },
   "ui": {
+    "download": "Herunterladen",
     "changes since last login": "Änderungen seit Ihrem letzten Eintrag",
     "changed songs by author": "{{count}} lieder von {{author}}",
     "patch pending": "Patch von {{author}} mit Datum {{date}} ausstehend",

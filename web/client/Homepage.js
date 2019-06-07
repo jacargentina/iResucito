@@ -7,6 +7,7 @@ import Image from 'semantic-ui-react/dist/commonjs/elements/Image';
 import Menu from 'semantic-ui-react/dist/commonjs/collections/Menu';
 import SongChangeMetadataDialog from './SongChangeMetadataDialog';
 import PatchLogDialog from './PatchLogDialog';
+import PdfSettingsDialog from './PdfSettingsDialog';
 import LocalePicker from './LocalePicker';
 import Login from './Login';
 import SongList from './SongList';
@@ -42,6 +43,7 @@ const Homepage = () => {
           <SongList />
           <SongChangeMetadataDialog />
           <PatchLogDialog />
+          <PdfSettingsDialog />
           <SongEditor />
         </EditContextWrapper>
       )}

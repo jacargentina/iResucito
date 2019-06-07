@@ -141,6 +141,24 @@ declare type Song = {
   rating: number
 };
 
+declare type ExportToPdfSizes = {
+  marginLeft: number,
+  marginTop: number,
+  widthHeightPixels: number,
+  songTitle: { FontSize: number, Spacing: number },
+  songSource: { FontSize: number, Spacing: number },
+  songText: { FontSize: number, Spacing: number },
+  songNote: { FontSize: number },
+  songIndicatorSpacing: number,
+  songParagraphSpacing: number,
+  indexTitle: { FontSize: number, Spacing: number },
+  bookTitle: { FontSize: number, Spacing: number },
+  bookSubtitle: { FontSize: number },
+  indexSubtitle: { FontSize: number, Spacing: number },
+  indexText: { FontSize: number, Spacing: number },
+  indexExtraMarginLeft: number
+};
+
 declare type ExportToPdfOptions = {
   createIndex: boolean,
   pageNumbers: boolean,

@@ -13,6 +13,7 @@
     "scale": "Do Do# Re Mib Mi Fa Fa# Sol Sol# La Sib Si"
   },
   "ui": {
+    "download": "Télécharger",
     "changes since last login": "Changements depuis votre dernière entrée",
     "changed songs by author": "{{count}} chansons par {{author}}",
     "patch pending": "Correctif en attente de {{author}} avec la date {{date}}",
