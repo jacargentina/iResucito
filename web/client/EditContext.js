@@ -241,6 +241,7 @@ const EditContextWrapper = (props: any) => {
         confirmRemovePatch,
         text,
         pdf,
+        setPdf,
         setText,
         rename,
         setRename,

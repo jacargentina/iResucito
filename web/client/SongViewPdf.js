@@ -19,7 +19,7 @@ const SongViewPdf = (props: any) => {
         // Fetch the first page
         var pageNumber = 1;
         pdf.getPage(pageNumber).then(page => {
-          var viewport = page.getViewport(1);
+          var viewport = page.getViewport(1.5);
           // Prepare canvas using PDF page dimensions
           var canvas = myRef.current;
           var context = canvas.getContext('2d');
@@ -44,7 +44,8 @@ const SongViewPdf = (props: any) => {
   return (
     <Fragment>
       <Button
-        primary
+        size="mini"
+        floated="right"
         onClick={() => {
           const link = document.createElement('a');
           link.href = url;
