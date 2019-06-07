@@ -3,7 +3,7 @@ import osLocale from 'os-locale';
 import I18n from '../translations';
 import FolderSongs from '../FolderSongs';
 import { SongsParser } from '../SongsParser';
-import { generatePDF } from './pdf';
+import { defaultExportToPdfOptions, generatePDF } from './pdf';
 import { PdfStyles } from '../common';
 
 var program = require('commander');
@@ -37,11 +37,6 @@ if (!process.argv.slice(2).length) {
   if (locale !== '') {
     var parser = new SongsParser(PdfStyles);
     if (key) {
-      var opts = {
-        createIndex: false,
-        pageNumbers: true,
-        fileSuffix: ''
-      };
       var song = FolderSongs.getSingleSongMeta(key, locale);
       if (song.files[I18n.locale]) {
         FolderSongs.loadSingleSong(locale, song)
@@ -55,7 +50,7 @@ if (!process.argv.slice(2).length) {
               song,
               render
             };
-            generatePDF([item], opts).then(p => {
+            generatePDF([item], defaultExportToPdfOptions).then(p => {
               console.log(p);
             });
           })
@@ -66,11 +61,11 @@ if (!process.argv.slice(2).length) {
         console.log('Song not found for given locale');
       }
     } else {
-      var opts = {
+      var opts = Object.assign({}, defaultExportToPdfOptions, {
         createIndex: true,
         pageNumbers: true,
         fileSuffix: `-${locale}`
-      };
+      });
       var songs = FolderSongs.getSongsMeta(locale);
       console.log(`No key Song. Generating ${songs.length} songs`);
       Promise.all(FolderSongs.loadSongs(locale, songs)).then(() => {

@@ -12,7 +12,7 @@ import {
 } from 'react-native-popup-menu';
 import { getChordsScale } from '../../common';
 import { NativeParser } from '../util';
-import { generatePDF } from '../pdf';
+import { defaultExportToPdfOptions, generatePDF } from '../pdf';
 import { DataContext } from '../DataContext';
 import I18n from '../../translations';
 import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
@@ -152,12 +152,7 @@ const ViewPdf = withNavigation(props => {
           song,
           render
         };
-        const opts: ExportToPdfOptions = {
-          createIndex: false,
-          pageNumbers: false,
-          fileSuffix: ''
-        };
-        generatePDF([item], opts).then(path => {
+        generatePDF([item], defaultExportToPdfOptions).then(path => {
           navigation.navigate('PDFViewer', {
             uri: path,
             title: song.titulo

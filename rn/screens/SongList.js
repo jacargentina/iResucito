@@ -10,7 +10,7 @@ import { DataContext } from '../DataContext';
 import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
 import commonTheme from '../native-base-theme/variables/platform';
 import { NativeParser } from '../util';
-import { generatePDF } from '../pdf';
+import { defaultExportToPdfOptions, generatePDF } from '../pdf';
 
 const SongList = (props: any) => {
   const listRef = useRef<?FlatList>();
@@ -197,11 +197,11 @@ const ExportToPdf = withNavigation(props => {
                 total: songToExport.length
               })
             });
-            const opts: ExportToPdfOptions = {
+            var opts = Object.assign({}, defaultExportToPdfOptions, {
               createIndex: true,
               pageNumbers: true,
               fileSuffix: I18n.locale
-            };
+            });
             generatePDF(items, opts).then(path => {
               navigation.navigate('PDFViewer', {
                 uri: path,

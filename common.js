@@ -50,7 +50,6 @@ export const getValidatedLocale = (
 };
 
 var pdfVars = {
-  fontName: 'Franklin Gothic Medium',
   marginLeft: 25,
   marginTop: 19,
   widthHeightPixels: 598, // 21,1 cm
@@ -236,7 +235,12 @@ export class PdfWriter {
       autoFirstPage: false,
       size: [pdfValues.widthHeightPixels, pdfValues.widthHeightPixels]
     });
-    this.doc.registerFont('thefont', fontBuf);
+    if (fontBuf) {
+      this.doc.registerFont('thefont', fontBuf);
+      this.doc.font('thefont');
+    } else {
+      this.doc.font('Times-Roman');
+    }
     this.base64Transform = base64Transform;
   }
 
@@ -275,7 +279,6 @@ export class PdfWriter {
     this.writeTextCore(
       this.pageNumber.toString(),
       this.pageNumberColor,
-      pdfValues.fontName,
       pdfValues.songText.FontSize
     );
   }
@@ -295,15 +298,10 @@ export class PdfWriter {
     }
   }
 
-  async writeTextCentered(
-    text: string,
-    color: any,
-    font: string,
-    size: number
-  ) {
+  async writeTextCentered(text: string, color: any, size: number) {
     var saveX = this.pos.x;
-    this.pos.x = await this.getCenteringX(text, font, size);
-    await this.writeTextCore(text, color, font, size);
+    this.pos.x = await this.getCenteringX(text, size);
+    await this.writeTextCore(text, color, size);
     this.pos.x = saveX;
   }
 
@@ -315,26 +313,19 @@ export class PdfWriter {
     this.resetY = this.pos.y + height;
   }
 
-  async getCenteringX(text: string, font: string, size: number) {
-    const width = this.doc
-      .fontSize(size)
-      .font('thefont')
-      .widthOfString(text);
+  async getCenteringX(text: string, size: number) {
+    const width = this.doc.fontSize(size).widthOfString(text);
     return parseInt((pdfValues.widthHeightPixels - width) / 2);
   }
 
-  async getCenteringY(text: string, font: string, size: number) {
-    const height = this.doc
-      .fontSize(size)
-      .font('thefont')
-      .heightOfString(text);
+  async getCenteringY(text: string, size: number) {
+    const height = this.doc.fontSize(size).heightOfString(text);
     return parseInt((pdfValues.widthHeightPixels - height) / 2);
   }
 
   async writeTextCore(
     text: string,
     color: any,
-    font: string,
     size: number,
     xOffset?: number
   ): Promise<number> {
@@ -342,19 +333,13 @@ export class PdfWriter {
     this.doc
       .fillColor(color)
       .fontSize(size)
-      .font('thefont')
       .text(text, x, this.pos.y, {
         lineBreak: false
       });
-    return (
-      this.doc
-        .fontSize(size)
-        .font('thefont')
-        .widthOfString(text) + x
-    );
+    return this.doc.fontSize(size).widthOfString(text) + x;
   }
 
-  async drawLineText(line: ExportToPdfLineText, font: string, size: number) {
+  async drawLineText(line: ExportToPdfLineText, size: number) {
     this.doc
       .moveTo(line.x, line.startY)
       .lineTo(line.x, line.endY)
@@ -363,7 +348,6 @@ export class PdfWriter {
     this.doc
       .fillColor(line.color)
       .fontSize(size)
-      .font('thefont')
       .text(line.text, line.x + 10, line.startY + middle - size, {
         lineBreak: false
       });
@@ -397,7 +381,6 @@ export class PdfWriter {
     await this.writeTextCore(
       title.toUpperCase(),
       this.titleColor,
-      pdfValues.fontName,
       pdfValues.indexSubtitle.FontSize
     );
     this.moveToNextLine(height);
@@ -414,7 +397,6 @@ export class PdfWriter {
           await this.writeTextCore(
             str,
             this.normalColor,
-            pdfValues.fontName,
             pdfValues.indexText.FontSize
           );
         }
@@ -453,37 +435,25 @@ export const PDFGenerator = async (
       const titleFontSize = Math.trunc(X);
 
       // Titulo
-      writer.pos.x = await writer.getCenteringX(
-        title,
-        pdfValues.fontName,
-        titleFontSize
-      );
+      writer.pos.x = await writer.getCenteringX(title, titleFontSize);
       writer.pos.y = await writer.getCenteringY(
         title,
-        pdfValues.fontName,
         titleFontSize +
           pdfValues.bookTitle.Spacing +
           pdfValues.bookSubtitle.FontSize
       );
-      writer.writeTextCore(
-        title,
-        writer.titleColor,
-        pdfValues.fontName,
-        titleFontSize
-      );
+      writer.writeTextCore(title, writer.titleColor, titleFontSize);
 
       writer.moveToNextLine(titleFontSize + pdfValues.bookTitle.Spacing);
 
       // Subtitulo
       writer.pos.x = await writer.getCenteringX(
         subtitle,
-        pdfValues.fontName,
         pdfValues.bookSubtitle.FontSize
       );
       writer.writeTextCore(
         subtitle,
         writer.normalColor,
-        pdfValues.fontName,
         pdfValues.bookSubtitle.FontSize
       );
 
@@ -495,7 +465,6 @@ export const PDFGenerator = async (
       await writer.writeTextCentered(
         I18n.t('ui.export.songs index').toUpperCase(),
         writer.titleColor,
-        pdfValues.fontName,
         pdfValues.indexTitle.FontSize
       );
       writer.moveToNextLine(height);
@@ -544,7 +513,6 @@ export const PDFGenerator = async (
       await writer.writeTextCentered(
         song.titulo.toUpperCase(),
         writer.titleColor,
-        pdfValues.fontName,
         pdfValues.songTitle.FontSize
       );
 
@@ -553,7 +521,6 @@ export const PDFGenerator = async (
       await writer.writeTextCentered(
         song.fuente,
         writer.sourceColor,
-        pdfValues.fontName,
         pdfValues.songSource.FontSize
       );
 
@@ -610,7 +577,6 @@ export const PDFGenerator = async (
           lastWidth = await writer.writeTextCore(
             it.texto,
             writer.noteColor,
-            pdfValues.fontName,
             pdfValues.songNote.FontSize,
             pdfValues.songIndicatorSpacing
           );
@@ -619,7 +585,6 @@ export const PDFGenerator = async (
           lastWidth = await writer.writeTextCore(
             it.texto,
             writer.normalColor,
-            pdfValues.fontName,
             pdfValues.songText.FontSize,
             pdfValues.songIndicatorSpacing
           );
@@ -628,14 +593,12 @@ export const PDFGenerator = async (
           lastWidth = await writer.writeTextCore(
             it.prefijo,
             writer.prefixColor,
-            pdfValues.fontName,
             pdfValues.songText.FontSize
           );
           if (it.tituloEspecial === true) {
             lastWidth = await writer.writeTextCore(
               it.texto,
               writer.specialTitleColor,
-              pdfValues.fontName,
               pdfValues.songText.FontSize,
               pdfValues.songIndicatorSpacing
             );
@@ -643,7 +606,6 @@ export const PDFGenerator = async (
             lastWidth = await writer.writeTextCore(
               it.texto,
               writer.specialNoteColor,
-              pdfValues.fontName,
               pdfValues.songText.FontSize - 3,
               pdfValues.songIndicatorSpacing
             );
@@ -651,7 +613,6 @@ export const PDFGenerator = async (
             lastWidth = await writer.writeTextCore(
               it.texto,
               writer.normalColor,
-              pdfValues.fontName,
               pdfValues.songText.FontSize,
               pdfValues.songIndicatorSpacing
             );
@@ -661,11 +622,7 @@ export const PDFGenerator = async (
         maxX = Math.trunc(Math.max(writer.pos.x + lastWidth, maxX));
       });
       await asyncForEach(lines, async (line: ExportToPdfLineText) => {
-        await writer.drawLineText(
-          line,
-          pdfValues.fontName,
-          pdfValues.songText.FontSize
-        );
+        await writer.drawLineText(line, pdfValues.songText.FontSize);
       });
       if (opts.pageNumbers) {
         await writer.writePageNumber();

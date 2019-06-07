@@ -144,7 +144,8 @@ declare type Song = {
 declare type ExportToPdfOptions = {
   createIndex: boolean,
   pageNumbers: boolean,
-  fileSuffix: string
+  fileSuffix: string,
+  useTimesRomanFont: boolean
 };
 
 declare type ExportToPdfCoord = {

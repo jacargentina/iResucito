@@ -157,6 +157,7 @@ export default function(server: any) {
     '/api/pdf/:key/:locale',
     asyncMiddleware(async (req, res, next) => {
       const { key, locale } = req.params;
+      const { options } = req.body;
       if (!locale || !key) {
         return res.status(500).json({
           error: 'Locale or key not provided'
@@ -175,7 +176,9 @@ export default function(server: any) {
         const pdfPath = await generatePDF([item], {
           createIndex: false,
           pageNumbers: false,
-          fileSuffix: ''
+          fileSuffix: '',
+          useTimesRomanFont: false,
+          ...options
         });
         if (pdfPath) {
           res.sendFile(pdfPath, null, err => {

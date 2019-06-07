@@ -5,6 +5,13 @@ import { PdfWriter, PDFGenerator } from '../common';
 import RNFS from 'react-native-fs';
 import Base64Encode from './base64encode';
 
+export const defaultExportToPdfOptions: ExportToPdfOptions = {
+  createIndex: false,
+  pageNumbers: false,
+  fileSuffix: '',
+  useTimesRomanFont: false
+};
+
 export async function generatePDF(
   songsToPdf: Array<SongToPdf>,
   opts: ExportToPdfOptions

@@ -10,7 +10,7 @@ import I18n from '../../translations';
 import commonTheme from '../native-base-theme/variables/platform';
 import useUndo from 'use-undo';
 import { NativeParser } from '../util';
-import { generatePDF } from '../pdf';
+import { defaultExportToPdfOptions, generatePDF } from '../pdf';
 
 const SongEditorDialog = (props: any) => {
   const data = useContext(DataContext);
@@ -137,12 +137,7 @@ const SongEditorDialog = (props: any) => {
               song,
               render
             };
-            const opts: ExportToPdfOptions = {
-              createIndex: false,
-              pageNumbers: false,
-              fileSuffix: ''
-            };
-            generatePDF([item], opts).then(path => {
+            generatePDF([item], defaultExportToPdfOptions).then(path => {
               navigation.navigate('SongPreviewPdf', {
                 uri: path,
                 song: song
