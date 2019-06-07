@@ -68,6 +68,13 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1559777432984,
+      "locale": "pt",
+      "author": "carolinerezler@hotmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "7": [
@@ -725,6 +732,17 @@
         "original": "precatechumenate",
         "new": "liturgy"
       }
+    },
+    {
+      "date": 1559764109411,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Babilonia criminal - Sal 137 (136)",
+        "new": "Babilônia criminal - Sal 137 (136)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "38": [
@@ -732,6 +750,13 @@
       "date": 1559567832122,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559764261755,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -752,6 +777,13 @@
       "date": 1559567834263,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559765357437,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -781,6 +813,17 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1559766000094,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Bendize minha alma a Iahweh - Sal 103 (102)",
+        "new": "Bendize, minha alma, a Iahweh - Sal 103 (102)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "41": [
@@ -799,6 +842,13 @@
       "date": 1559567843053,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559765476837,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -834,6 +884,13 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1559765874694,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "43": [
@@ -841,6 +898,13 @@
       "date": 1559567850837,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559766326100,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -861,6 +925,13 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1559767308881,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "46": [
@@ -868,6 +939,17 @@
       "date": 1559567859870,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559767604990,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Caritas Christi urget nos - 2 Co 5, 14-15. 17. 21",
+        "new": "Caritas Christi Urget Nos - 2 Cor 5, 14.15.17.21"
+      },
       "created": false,
       "updated": true
     }
@@ -886,6 +968,13 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1559767152718,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "48": [
@@ -893,6 +982,13 @@
       "date": 1559567871357,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559775612299,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -913,6 +1009,13 @@
       "date": 1559567869236,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559776522074,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -1058,6 +1161,17 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1559764129033,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "election"
+      }
     }
   ],
   "62": [
@@ -1173,6 +1287,13 @@
       "date": 1559567993740,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559776440338,
+      "locale": "pt",
+      "author": "carolinerezler@hotmail.com",
       "created": false,
       "updated": true
     }
@@ -1491,6 +1612,13 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1559775143710,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "95": [
@@ -1755,6 +1883,13 @@
       "date": 1559569044811,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559776919393,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -2176,6 +2311,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1559742963732,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "election",
+        "new": "precatechumenate"
+      }
     }
   ],
   "159": [
@@ -2229,6 +2375,17 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1559778135561,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "election",
+        "new": "catechumenate"
+      }
     }
   ],
   "161": [
@@ -2238,6 +2395,17 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1559778885128,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Como condenados a morte - 1 Co 4, 9.13",
+        "new": "Como condenados a morte - 1 Co 4, 9-13"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "162": [
@@ -2245,6 +2413,17 @@
       "date": 1559567864564,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559779231996,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Como escorre o mel - Ode 40 de Salomão",
+        "new": "Como escorre o mel - Ode XL de Salomão"
+      },
       "created": false,
       "updated": true
     }
@@ -2619,6 +2798,17 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1559765064576,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Benção da água",
+        "new": "Bênção da água - Da Liturgia Batismal da Vigília Pascal"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "187": [
@@ -2644,6 +2834,17 @@
       "date": 1559567840952,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559777534236,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Benção penitencial - oração para concluir a ação de graças",
+        "new": "Bênção Penitencial - Oração para concluir a ação de graças para a Celebração Penitencial"
+      },
       "created": false,
       "updated": true
     }
@@ -2687,6 +2888,13 @@
       "date": 1559568114998,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559777762562,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -3247,6 +3455,19 @@
       }
     }
   ],
+  "239": [
+    {
+      "date": 1559767018738,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Cantai a Deus - Sal 68 (67)",
+        "new": "Cantai a Deus - Sal 68 (67) 2, 4-7"
+      },
+      "created": false,
+      "updated": true
+    }
+  ],
   "248": [
     {
       "date": 1559573278825,
@@ -3254,6 +3475,18 @@
       "author": "fd_colautti@mac.com",
       "created": false,
       "updated": true
+    }
+  ],
+  "256": [
+    {
+      "date": 1559778627756,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "linked": {
+        "new": "O Senhor é minha Luz e Salvação - Sal 27(26)"
+      },
+      "created": true,
+      "updated": false
     }
   ]
 }

@@ -399,7 +399,7 @@
   "files": {
    "es": "Babilonia criminal - Sal 137 (136)",
    "it": "Sui fiumi di babilonia - Sal 137 (136)",
-   "pt": "Babilonia criminal - Sal 137 (136)",
+   "pt": "Babilônia criminal - Sal 137 (136)",
    "de-AT": "An den Flüssen Babylons - Ps 137"
   },
   "stages": {
@@ -438,7 +438,7 @@
   "files": {
    "es": "Bendice, alma mía, a Yahveh - Sal 103 (102)",
    "it": "Benedici anima mia, Jahvè - Sal 102 (103)",
-   "pt": "Bendize minha alma a Iahweh - Sal 103 (102)",
+   "pt": "Bendize, minha alma, a Iahweh - Sal 103 (102)",
    "de-AT": "Preise meine Seele Jahwe - Ps 103"
   }
  },
@@ -480,7 +480,6 @@
   "files": {
    "es": "Cantad al Señor - Sal 117 (116)",
    "it": "Lodate il Signore - Sal 117 (116)",
-   "pt": "Canta a Iahweh Jerusalém  - Sal 117 (116)",
    "de-AT": "Lobet den Herrn alle Völker der Erde - Ps 117"
   }
  },
@@ -500,7 +499,7 @@
   "files": {
    "es": "Caritas Christi urget nos - 2 Co 5, 14-15. 17. 21",
    "it": "Caritas Christi urget nos - 2 Co 5, 14-15. 17. 21",
-   "pt": "Caritas Christi urget nos - 2 Co 5, 14-15. 17. 21",
+   "pt": "Caritas Christi Urget Nos - 2 Cor 5, 14.15.17.21",
    "de-AT": "Caritas christi - 2 Kor 5, 14-17.21; 1 Kor 9 16b",
    "en": "Caritas christi"
   }
@@ -663,6 +662,9 @@
    "it": "Che mi baci - Ct 1, 2-8",
    "pt": "A cabana dos pastores - Ct 1, 2-8",
    "de-AT": "Mit Küssen seines Mundes - Hld 1, 2 ff"
+  },
+  "stages": {
+   "pt": "election"
   }
  },
  "62": {
@@ -1704,6 +1706,9 @@
    "pt": "À ceia do cordeiro - Hino das vésperas do tempo Pascal até a Ascensão",
    "de-AT": "Hymnus der Vesper von Ostern bis Christi Himmelfahrt",
    "it": "Inno dei vespri da pasqua all'ascensione - Inno"
+  },
+  "stages": {
+   "es": "precatechumenate"
   }
  },
  "159": {
@@ -1725,6 +1730,9 @@
    "it": "Benedetto sia Iddio - Ef 1, 3-13",
    "pt": "Bendito seja Deus - Ef 1, 3-13",
    "de-AT": "Gepriesen sei der Gott - Eph 1, 3-13"
+  },
+  "stages": {
+   "pt": "catechumenate"
   }
  },
  "161": {
@@ -1732,7 +1740,7 @@
   "files": {
    "es": "Como condenados a muerte - 1 Co 4, 9.13",
    "it": "Come condannati a morte - 1 Co 4, 9.13",
-   "pt": "Como condenados a morte - 1 Co 4, 9.13",
+   "pt": "Como condenados a morte - 1 Co 4, 9-13",
    "de-AT": "Wie zum Tod Verdammte - 1 Kor 4, 9-13"
   }
  },
@@ -1743,7 +1751,7 @@
   "files": {
    "es": "Como destila la miel - Oda 40 de Salomón",
    "it": "Come stilla il miele - Ode 40 di Salomone",
-   "pt": "Como escorre o mel - Ode 40 de Salomão",
+   "pt": "Como escorre o mel - Ode XL de Salomão",
    "de-AT": "Wie der Honig träufelt - XL. Ode Salomons"
   }
  },
@@ -1992,7 +2000,7 @@
   "files": {
    "es": "Bendición del agua",
    "it": "Benedizione dell'acqua del fonte battesimale",
-   "pt": "Benção da água",
+   "pt": "Bênção da água - Da Liturgia Batismal da Vigília Pascal",
    "de-AT": "Taufwasserweihe",
    "en": "Blessing of the baptismal water"
   }
@@ -2002,7 +2010,7 @@
   "files": {
    "es": "Bendición penitencial - oracion conclusiva de accion de gracias",
    "it": "Benedizione per la celebrazione penitenziale - Preghiera conclusiva di ringraziamento",
-   "pt": "Benção penitencial - oração para concluir a ação de graças",
+   "pt": "Bênção Penitencial - Oração para concluir a ação de graças para a Celebração Penitencial",
    "de-AT": "Dankgebet für die Liturgie der Versöhnung"
   }
  },
@@ -2430,7 +2438,7 @@
  "239": {
   "stage": "precatechumenate",
   "files": {
-   "pt": "Cantai a Deus - Sal 68 (67)"
+   "pt": "Cantai a Deus - Sal 68 (67) 2, 4-7"
   }
  },
  "240": {
@@ -2532,7 +2540,8 @@
  "256": {
   "stage": "precatechumenate",
   "files": {
-   "en": "Christ is our light and our salvation"
+   "en": "Christ is our light and our salvation",
+   "pt": "O Senhor é minha Luz e Salvação - Sal 27(26)"
   }
  },
  "257": {
@@ -2544,6 +2553,8 @@
  "258": {
   "stage": "precatechumenate",
   "files": {
+   "es": "Canta a Yahveh Jerusalén - Sal 147 (146-147)",
+   "pt": "Canta a Iahweh Jerusalém - Sal 147 (146-147)",
    "en": "Praise the lord jerusalem - Ps 147"
   }
  }
