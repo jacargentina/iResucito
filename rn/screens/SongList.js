@@ -9,6 +9,7 @@ import I18n from '../../translations';
 import { DataContext } from '../DataContext';
 import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
 import commonTheme from '../native-base-theme/variables/platform';
+import { NativeParser } from '../util';
 import { generatePDF } from '../pdf';
 
 const SongList = (props: any) => {
@@ -184,6 +185,12 @@ const ExportToPdf = withNavigation(props => {
                 s.files.hasOwnProperty(I18n.locale) ||
                 s.files.hasOwnProperty(localeNoCountry)
             );
+            var items: Array<SongToPdf> = songToExport.map(s => {
+              return {
+                song: s,
+                render: NativeParser.getForRender(s.fullText, I18n.locale)
+              };
+            });
             setLoading({
               isLoading: true,
               text: I18n.t('ui.export.processing songs', {
@@ -195,16 +202,13 @@ const ExportToPdf = withNavigation(props => {
               pageNumbers: true,
               fileSuffix: I18n.locale
             };
-            generatePDF(songToExport, opts, '').then(res => {
-              console.log(res);
+            generatePDF(items, opts).then(path => {
+              navigation.navigate('PDFViewer', {
+                uri: path,
+                title: I18n.t('ui.export.pdf viewer title')
+              });
+              setLoading({ isLoading: false, text: '' });
             });
-            // generateMultiPagePDF(songToExport, opts).then(path => {
-            //   navigation.navigate('PDFViewer', {
-            //     uri: path,
-            //     title: I18n.t('ui.export.pdf viewer title')
-            //   });
-            //   setLoading({ isLoading: false, text: '' });
-            // });
             break;
         }
       }

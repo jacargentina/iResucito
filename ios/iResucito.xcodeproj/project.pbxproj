@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -40,9 +39,7 @@
 		2D02E4C81E0B4AEC006451C7 /* libRCTWebSocket-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3E991DF850E9000B6D8A /* libRCTWebSocket-tvOS.a */; };
 		2D02E4C91E0B4AEC006451C7 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		2DCD954D1E0B4F2C00145EB5 /* iResucitoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* iResucitoTests.m */; };
-		2EBFF69C28EC4951ACD5692A /* libRNPDFLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF3D336483304BC0945B14FD /* libRNPDFLib.a */; };
 		2F6A32D6641F44E7BF7ECA08 /* Roboto_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C468B30AD9BF4EDBA53F72B5 /* Roboto_medium.ttf */; };
-		32932F7B49D840C99F56B068 /* Times New Roman.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3BFB2EE7ECA0476596B105C0 /* Times New Roman.ttf */; };
 		35A428D22254463497BE7E6C /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFC6F5509D0448BD8BAF3A23 /* FontAwesome.ttf */; };
 		3B0B678B832048DAA3D9B469 /* libRNDeviceInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FDA6CF5E51E54B448C1E5042 /* libRNDeviceInfo.a */; };
 		54FF9269A5C34DDCB4221856 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3294BF7376E4011B859EC53 /* SimpleLineIcons.ttf */; };
@@ -420,13 +417,6 @@
 			remoteGlobalIDString = EBF21BFA1FC4989A0052F4D5;
 			remoteInfo = "jsinspector-tvOS";
 		};
-		886965E5201CA9BE00F09496 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B1192EF266594C5E9DDE1390 /* RNPDFLib.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = RNPdfLib;
-		};
 		886C5B602101107600F1B950 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 886C5B5B2101107600F1B950 /* RNPrint.xcodeproj */;
@@ -531,7 +521,6 @@
 		2D02E47B1E0B4A5D006451C7 /* iResucito-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iResucito-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* iResucito-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iResucito-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		34924B916FCC4AD59C7FCFB2 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
-		3BFB2EE7ECA0476596B105C0 /* Times New Roman.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Times New Roman.ttf"; path = "../node_modules/react-native-pdf-lib/assets/Times New Roman.ttf"; sourceTree = "<group>"; };
 		3C9AD9102DCE4907994684A9 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
 		44554FD2DCFB443FB8E09AB7 /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
 		450E6C16971F4D74812E7584 /* libRNFS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNFS.a; sourceTree = "<group>"; };
@@ -571,14 +560,12 @@
 		9D04B6ED69204A3AB26B56BD /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
 		A08E0D7B0B39432F9B3A47A7 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		B03B04D5E04A498EBB07F49D /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
-		B1192EF266594C5E9DDE1390 /* RNPDFLib.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNPDFLib.xcodeproj; path = "../node_modules/react-native-pdf-lib/ios/RNPDFLib.xcodeproj"; sourceTree = "<group>"; };
 		B64A462C29BD4FC8AF23686D /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
 		BB2F60F4D1C94E149D3AA50C /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		BB844E28DA35403CBF8FC965 /* RNPrintTests.xctest */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = RNPrintTests.xctest; sourceTree = "<group>"; };
 		C0971599E8774AEDB6C436A9 /* libSplashScreen.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libSplashScreen.a; sourceTree = "<group>"; };
 		C468B30AD9BF4EDBA53F72B5 /* Roboto_medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto_medium.ttf; path = "../node_modules/native-base/Fonts/Roboto_medium.ttf"; sourceTree = "<group>"; };
 		CA5402EEE0964CE5ACCA9847 /* RCTPdf.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTPdf.xcodeproj; path = "../node_modules/react-native-pdf/ios/RCTPdf.xcodeproj"; sourceTree = "<group>"; };
-		CF3D336483304BC0945B14FD /* libRNPDFLib.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNPDFLib.a; sourceTree = "<group>"; };
 		CFC6F5509D0448BD8BAF3A23 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		D0D2779093904E29B00F63E4 /* KCKeepAwake.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = KCKeepAwake.xcodeproj; path = "../node_modules/react-native-keep-awake/ios/KCKeepAwake.xcodeproj"; sourceTree = "<group>"; };
 		D3294BF7376E4011B859EC53 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
@@ -627,7 +614,6 @@
 				BADC12E9073F4925B5B65D17 /* libKCKeepAwake.a in Frameworks */,
 				DD36E66E56594736930D56FC /* libicloudstorage.a in Frameworks */,
 				FFA39A98BA3147AA952DFF18 /* libRCTContacts.a in Frameworks */,
-				2EBFF69C28EC4951ACD5692A /* libRNPDFLib.a in Frameworks */,
 				90A36348099D4D2A9C7336B5 /* libRCTPdf.a in Frameworks */,
 				9DB9E44696BB45D29E2DDA0E /* libRNPrint.a in Frameworks */,
 				E58FEA57EB0741F8997EBA2A /* libRNFetchBlob.a in Frameworks */,
@@ -790,7 +776,6 @@
 		18894D70EBD44971AEF2BC65 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				3BFB2EE7ECA0476596B105C0 /* Times New Roman.ttf */,
 				9C96AD5BB4F44F09B78F2CC1 /* Franklin Gothic Medium.ttf */,
 				BB2F60F4D1C94E149D3AA50C /* Entypo.ttf */,
 				E7BBB8694F81440C90B2F142 /* EvilIcons.ttf */,
@@ -854,7 +839,6 @@
 				D0D2779093904E29B00F63E4 /* KCKeepAwake.xcodeproj */,
 				7DD1C81B56284101A22C3274 /* icloudstorage.xcodeproj */,
 				1B2CF75DD2D14CF6BC9CE592 /* RCTContacts.xcodeproj */,
-				B1192EF266594C5E9DDE1390 /* RNPDFLib.xcodeproj */,
 				CA5402EEE0964CE5ACCA9847 /* RCTPdf.xcodeproj */,
 				09D4B9D895754BF280E6657F /* RNFetchBlob.xcodeproj */,
 				E623D71286044737B7D70D48 /* ReactNativeExceptionHandler.xcodeproj */,
@@ -992,14 +976,6 @@
 				884E869A1FA3C68600389135 /* Info.plist */,
 			);
 			path = iResucitoUITests;
-			sourceTree = "<group>";
-		};
-		886965E2201CA9BE00F09496 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				886965E6201CA9BE00F09496 /* libRNPDFLib.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		886C5B5C2101107600F1B950 /* Products */ = {
@@ -1311,10 +1287,6 @@
 				{
 					ProductGroup = 882743882264D78D00959196 /* Products */;
 					ProjectRef = E3B54699BE9343C7A08EB017 /* RNLocalize.xcodeproj */;
-				},
-				{
-					ProductGroup = 886965E2201CA9BE00F09496 /* Products */;
-					ProjectRef = B1192EF266594C5E9DDE1390 /* RNPDFLib.xcodeproj */;
 				},
 				{
 					ProductGroup = 886C5B5C2101107600F1B950 /* Products */;
@@ -1660,13 +1632,6 @@
 			remoteRef = 886965D8201CA9BE00F09496 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		886965E6201CA9BE00F09496 /* libRNPDFLib.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNPDFLib.a;
-			remoteRef = 886965E5201CA9BE00F09496 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		886C5B612101107600F1B950 /* libRNPrint.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1756,7 +1721,6 @@
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				88BC43B41F8526BF006B7672 /* resucito.gif in Resources */,
 				88BC43B31F8526BF006B7672 /* cristo.jpg in Resources */,
-				32932F7B49D840C99F56B068 /* Times New Roman.ttf in Resources */,
 				BC789437DB03452F8F13005D /* Franklin Gothic Medium.ttf in Resources */,
 				EC8467616C2A4ABB879C3F22 /* Entypo.ttf in Resources */,
 				AACFEE94ABCC46A6A19AE98F /* EvilIcons.ttf in Resources */,
@@ -1943,7 +1907,6 @@
 					"$(SRCROOT)/../node_modules/react-native-icloudstore",
 					"$(SRCROOT)/../node_modules/react-native-simple-toast/ios/LRDRCTSimpleToast",
 					"$(SRCROOT)/../node_modules/react-native-contacts/ios/RCTContacts",
-					"$(SRCROOT)/../node_modules/react-native-pdf-lib/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-pdf/ios/RCTPdf/**",
 					"$(SRCROOT)/../node_modules/react-native-print/ios/RNPrint",
 					"$(SRCROOT)/../node_modules/rn-fetch-blob/ios/**",
@@ -1957,7 +1920,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1984,7 +1946,6 @@
 					"$(SRCROOT)/../node_modules/react-native-icloudstore",
 					"$(SRCROOT)/../node_modules/react-native-simple-toast/ios/LRDRCTSimpleToast",
 					"$(SRCROOT)/../node_modules/react-native-contacts/ios/RCTContacts",
-					"$(SRCROOT)/../node_modules/react-native-pdf-lib/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-pdf/ios/RCTPdf/**",
 					"$(SRCROOT)/../node_modules/react-native-print/ios/RNPrint",
 					"$(SRCROOT)/../node_modules/rn-fetch-blob/ios/**",
@@ -1998,7 +1959,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -2029,7 +1989,6 @@
 					"$(SRCROOT)/../node_modules/react-native-icloudstore",
 					"$(SRCROOT)/../node_modules/react-native-simple-toast/ios/LRDRCTSimpleToast",
 					"$(SRCROOT)/../node_modules/react-native-contacts/ios/RCTContacts",
-					"$(SRCROOT)/../node_modules/react-native-pdf-lib/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-pdf/ios/RCTPdf/**",
 					"$(SRCROOT)/../node_modules/react-native-print/ios/RNPrint",
 					"$(SRCROOT)/../node_modules/rn-fetch-blob/ios/**",
@@ -2072,7 +2031,6 @@
 					"$(SRCROOT)/../node_modules/react-native-icloudstore",
 					"$(SRCROOT)/../node_modules/react-native-simple-toast/ios/LRDRCTSimpleToast",
 					"$(SRCROOT)/../node_modules/react-native-contacts/ios/RCTContacts",
-					"$(SRCROOT)/../node_modules/react-native-pdf-lib/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-pdf/ios/RCTPdf/**",
 					"$(SRCROOT)/../node_modules/react-native-print/ios/RNPrint",
 					"$(SRCROOT)/../node_modules/rn-fetch-blob/ios/**",
@@ -2119,7 +2077,6 @@
 					"$(SRCROOT)/../node_modules/react-native-icloudstore",
 					"$(SRCROOT)/../node_modules/react-native-simple-toast/ios/LRDRCTSimpleToast",
 					"$(SRCROOT)/../node_modules/react-native-contacts/ios/RCTContacts",
-					"$(SRCROOT)/../node_modules/react-native-pdf-lib/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-pdf/ios/RCTPdf/**",
 					"$(SRCROOT)/../node_modules/react-native-print/ios/RNPrint",
 					"$(SRCROOT)/../node_modules/rn-fetch-blob/ios/**",
@@ -2132,7 +2089,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -2168,7 +2124,6 @@
 					"$(SRCROOT)/../node_modules/react-native-icloudstore",
 					"$(SRCROOT)/../node_modules/react-native-simple-toast/ios/LRDRCTSimpleToast",
 					"$(SRCROOT)/../node_modules/react-native-contacts/ios/RCTContacts",
-					"$(SRCROOT)/../node_modules/react-native-pdf-lib/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-pdf/ios/RCTPdf/**",
 					"$(SRCROOT)/../node_modules/react-native-print/ios/RNPrint",
 					"$(SRCROOT)/../node_modules/rn-fetch-blob/ios/**",
@@ -2181,7 +2136,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -2210,7 +2164,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.iResucito-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2235,7 +2188,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.iResucito-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2360,7 +2312,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.javiercastro.iResucitoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2391,7 +2342,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.javiercastro.iResucitoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

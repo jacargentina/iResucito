@@ -9,7 +9,8 @@ import { DataContext } from '../DataContext';
 import I18n from '../../translations';
 import commonTheme from '../native-base-theme/variables/platform';
 import useUndo from 'use-undo';
-import { NativeParser, generatePDF } from '../util';
+import { NativeParser } from '../util';
+import { generatePDF } from '../pdf';
 
 const SongEditorDialog = (props: any) => {
   const data = useContext(DataContext);

@@ -177,7 +177,6 @@ dependencies {
     implementation project(':rn-fetch-blob')
     implementation project(':react-native-print')
     implementation project(':react-native-pdf')
-    implementation project(':react-native-pdf-lib')
     implementation project(':react-native-contacts')
     implementation project(':react-native-keep-awake')
     implementation project(':react-native-device-info')
