@@ -30,8 +30,8 @@ const SongViewFrame = (props: any) => {
             style={{
               minWidth: minWidth
             }}>
-            <Text style={NativeStyles.titulo}>{title}</Text>
-            <Text style={NativeStyles.fuente}>{source}</Text>
+            <Text style={NativeStyles.title}>{title}</Text>
+            <Text style={NativeStyles.source}>{source}</Text>
             {error && <Text>{error}</Text>}
             {!error && <SongViewLines lines={fRender.items} />}
           </Content>
