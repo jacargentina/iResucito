@@ -13,7 +13,6 @@ import Tab from 'semantic-ui-react/dist/commonjs/modules/Tab';
 import Message from 'semantic-ui-react/dist/commonjs/collections/Message';
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
 import Menu from 'semantic-ui-react/dist/commonjs/collections/Menu';
-import Segment from 'semantic-ui-react/dist/commonjs/elements/Segment';
 import { DataContext } from './DataContext';
 import { EditContext } from './EditContext';
 import SongViewFrame from './SongViewFrame';
