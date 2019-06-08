@@ -153,7 +153,7 @@ export default function(server: any) {
     res.json({ ok: true });
   });
 
-  server.get(
+  server.post(
     '/api/pdf/:key/:locale',
     asyncMiddleware(async (req, res, next) => {
       const { key, locale } = req.params;

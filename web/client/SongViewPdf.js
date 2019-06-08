@@ -58,6 +58,8 @@ const SongViewPdf = (props: any) => {
     }
   }, [pdf, currPage]);
 
+  const savedSettings = localStorage.getItem('pdfExportOptions');
+
   return (
     <Fragment>
       <Button
@@ -75,6 +77,7 @@ const SongViewPdf = (props: any) => {
         {I18n.t('ui.download')}
       </Button>
       <Button
+        positive={!!savedSettings}
         size="mini"
         floated="right"
         onClick={() => {

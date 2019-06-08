@@ -109,8 +109,15 @@ const EditContextWrapper = (props: any) => {
 
   const previewPdf = () => {
     if (editSong) {
+      const savedSettings = localStorage.getItem('pdfExportOptions');
+      var data;
+      if (savedSettings) {
+        data = {
+          options: JSON.parse(savedSettings)
+        };
+      }
       return api
-        .get(`/api/pdf/${editSong.key}/${I18n.locale}`, {
+        .post(`/api/pdf/${editSong.key}/${I18n.locale}`, data, {
           responseType: 'blob'
         })
         .then(response => {

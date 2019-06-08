@@ -1,8 +1,9 @@
 // @flow
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
 import Modal from 'semantic-ui-react/dist/commonjs/modules/Modal';
 import { DataContext } from './DataContext';
+import { EditContext } from './EditContext';
 import I18n from '../../translations';
 import { defaultExportToPdfOptions } from '../../common';
 import JSONInput from 'react-json-editor-ajrm';
@@ -12,10 +13,32 @@ const PdfSettingsDialog = () => {
   const data = useContext(DataContext);
   const { activeDialog, setActiveDialog } = data;
 
-  const [opts, setopts] = useState(defaultExportToPdfOptions);
+  const edit = useContext(EditContext);
+  const { previewPdf } = edit;
+
+  const [initialOptions, setinitialOptions] = useState({});
+  const [editing, setEditing] = useState({});
+
+  useEffect(() => {
+    if (activeDialog === 'pdfSettings') {
+      const savedSettings = localStorage.getItem('pdfExportOptions');
+      if (savedSettings) {
+        setinitialOptions(JSON.parse(savedSettings));
+      } else {
+        setinitialOptions(defaultExportToPdfOptions);
+      }
+    }
+  }, [activeDialog]);
 
   const saveOptions = () => {
-    //TODO
+    localStorage.setItem('pdfExportOptions', JSON.stringify(editing));
+    previewPdf();
+  };
+
+  const deleteOptions = () => {
+    localStorage.removeItem('pdfExportOptions');
+    setinitialOptions(defaultExportToPdfOptions);
+    previewPdf();
   };
 
   return (
@@ -29,9 +52,11 @@ const PdfSettingsDialog = () => {
       <Modal.Content>
         {activeDialog === 'pdfSettings' && (
           <JSONInput
-            id="a_unique_id"
-            placeholder={opts}
-            onChange={e => setopts(e.json)}
+            id="settingsEditor"
+            placeholder={initialOptions}
+            onChange={e => {
+              if (!e.error) setEditing(e.jsObject);
+            }}
             locale={locale}
             theme="light_mitsuketa_tribute"
             width="100%"
@@ -43,9 +68,10 @@ const PdfSettingsDialog = () => {
         <Button primary onClick={saveOptions}>
           {I18n.t('ui.apply')}
         </Button>
-        <Button negative onClick={() => setActiveDialog()}>
-          {I18n.t('ui.close')}
+        <Button negative onClick={deleteOptions}>
+          {I18n.t('ui.delete')}
         </Button>
+        <Button onClick={() => setActiveDialog()}>{I18n.t('ui.close')}</Button>
       </Modal.Actions>
     </Modal>
   );
