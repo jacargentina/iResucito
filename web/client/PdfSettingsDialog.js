@@ -1,8 +1,10 @@
 // @flow
 import React, { useContext, useState } from 'react';
 import Form from 'semantic-ui-react/dist/commonjs/collections/Form';
+import Grid from 'semantic-ui-react/dist/commonjs/collections/Grid';
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
 import Input from 'semantic-ui-react/dist/commonjs/elements/Input';
+import Checkbox from 'semantic-ui-react/dist/commonjs/modules/Checkbox';
 import Modal from 'semantic-ui-react/dist/commonjs/modules/Modal';
 import { DataContext } from './DataContext';
 import I18n from '../../translations';
@@ -13,6 +15,7 @@ const PdfSettingsDialog = () => {
   const data = useContext(DataContext);
   const { activeDialog, setActiveDialog } = data;
 
+  const [useTimesNewRoman, setUseTimesNewRoman] = useState(false);
   const [sizes, setSizes] = useState(defaultExportToPdfSizes);
 
   const renderField = (instance: any, field: string, parentField: any) => {
@@ -36,7 +39,6 @@ const PdfSettingsDialog = () => {
         <label>{field}</label>
         <Input
           size="mini"
-          fluid
           value={instance[field]}
           onChange={(e, { value }) => {
             var data = parentField
@@ -56,6 +58,20 @@ const PdfSettingsDialog = () => {
     });
   };
 
+  var column1 = [
+    <Form.Field key={0}>
+      <label>Use Times New Roman font</label>
+      <Checkbox
+        toggle
+        checked={useTimesNewRoman}
+        onChange={() => setUseTimesNewRoman(s => !s)}
+      />
+    </Form.Field>,
+    ...renderObjectKeys(sizes)
+  ];
+
+  const column2 = column1.splice(column1.length / 2);
+
   return (
     <Modal
       open={activeDialog === 'pdfSettings'}
@@ -66,7 +82,16 @@ const PdfSettingsDialog = () => {
       <Modal.Header>{I18n.t('screen_title.settings')}</Modal.Header>
       <Modal.Content>
         {activeDialog === 'pdfSettings' && (
-          <Form>{renderObjectKeys(sizes)}</Form>
+          <Grid>
+            <Grid.Row>
+              <Grid.Column width={8}>
+                <Form>{column1}</Form>
+              </Grid.Column>
+              <Grid.Column width={8}>
+                <Form>{column2}</Form>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
         )}
       </Modal.Content>
       <Modal.Actions>

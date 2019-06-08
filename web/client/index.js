@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import 'semantic-ui-css/components/reset.min.css';
 import 'semantic-ui-css/components/site.min.css';
 import 'semantic-ui-css/components/button.min.css';
+import 'semantic-ui-css/components/checkbox.min.css';
 import 'semantic-ui-css/components/container.min.css';
 import 'semantic-ui-css/components/divider.min.css';
 import 'semantic-ui-css/components/dimmer.min.css';
