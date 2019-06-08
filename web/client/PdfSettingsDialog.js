@@ -12,7 +12,11 @@ const PdfSettingsDialog = () => {
   const data = useContext(DataContext);
   const { activeDialog, setActiveDialog } = data;
 
-  const [sizes, setSizes] = useState(defaultExportToPdfOptions);
+  const [opts, setopts] = useState(defaultExportToPdfOptions);
+
+  const saveOptions = () => {
+    //TODO
+  };
 
   return (
     <Modal
@@ -26,14 +30,19 @@ const PdfSettingsDialog = () => {
         {activeDialog === 'pdfSettings' && (
           <JSONInput
             id="a_unique_id"
-            placeholder={sizes}
+            placeholder={opts}
+            onChange={e => setopts(e.json)}
             locale={locale}
             theme="light_mitsuketa_tribute"
             width="100%"
+            style={{ body: { fontSize: '18px' } }}
           />
         )}
       </Modal.Content>
       <Modal.Actions>
+        <Button primary onClick={saveOptions}>
+          {I18n.t('ui.apply')}
+        </Button>
         <Button negative onClick={() => setActiveDialog()}>
           {I18n.t('ui.close')}
         </Button>
