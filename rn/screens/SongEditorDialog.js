@@ -10,7 +10,8 @@ import I18n from '../../translations';
 import commonTheme from '../native-base-theme/variables/platform';
 import useUndo from 'use-undo';
 import { NativeParser } from '../util';
-import { defaultExportToPdfOptions, generatePDF } from '../pdf';
+import { generatePDF } from '../pdf';
+import { defaultExportToPdfOptions } from '../../common';
 
 const SongEditorDialog = (props: any) => {
   const data = useContext(DataContext);

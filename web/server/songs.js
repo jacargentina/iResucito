@@ -4,7 +4,7 @@ import FolderSongs from '../../FolderSongs';
 import FolderExtras from '../../FolderExtras';
 import { SongsParser } from '../../SongsParser';
 import { generatePDF } from '../../scripts/pdf';
-import { PdfStyles } from '../../common';
+import { PdfStyles, defaultExportToPdfOptions } from '../../common';
 import {
   dataPath,
   readLocalePatch,
@@ -174,10 +174,7 @@ export default function(server: any) {
           render
         };
         const pdfPath = await generatePDF([item], {
-          createIndex: false,
-          pageNumbers: false,
-          fileSuffix: '',
-          useTimesRomanFont: false,
+          ...defaultExportToPdfOptions,
           ...options
         });
         if (pdfPath) {

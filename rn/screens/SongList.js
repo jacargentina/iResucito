@@ -10,7 +10,8 @@ import { DataContext } from '../DataContext';
 import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
 import commonTheme from '../native-base-theme/variables/platform';
 import { NativeParser } from '../util';
-import { defaultExportToPdfOptions, generatePDF } from '../pdf';
+import { generatePDF } from '../pdf';
+import { defaultExportToPdfOptions } from '../../common';
 
 const SongList = (props: any) => {
   const listRef = useRef<?FlatList>();

@@ -5,6 +5,28 @@ import normalize from 'normalize-strings';
 import langs from 'langs';
 import I18n from './translations';
 
+export const defaultExportToPdfOptions: ExportToPdfOptions = {
+  createIndex: false,
+  pageNumbers: false,
+  fileSuffix: '',
+  useTimesRomanFont: false,
+  marginLeft: 25,
+  marginTop: 19,
+  widthHeightPixels: 598, // 21,1 cm
+  songTitle: { FontSize: 19, Spacing: 19 },
+  songSource: { FontSize: 10, Spacing: 20 },
+  songText: { FontSize: 12, Spacing: 11 },
+  songNote: { FontSize: 10 },
+  songIndicatorSpacing: 18,
+  songParagraphSpacing: 9,
+  indexTitle: { FontSize: 16, Spacing: 14 },
+  bookTitle: { FontSize: 80, Spacing: 10 },
+  bookSubtitle: { FontSize: 14 },
+  indexSubtitle: { FontSize: 12, Spacing: 4 },
+  indexText: { FontSize: 11, Spacing: 3 },
+  indexExtraMarginLeft: 25
+};
+
 export const cleanChordsRegex = /\[|\]|\(|\)|#|\*|5|6|7|9|b|-|\+|\/|\u2013|\u2217|aum|dim|m|is|IS/g;
 
 export const getChordsScale = (locale: string): Array<string> => {
@@ -150,24 +172,6 @@ export const getGroupedByLiturgicOrder = (
   }, {});
 };
 
-export const defaultExportToPdfSizes: ExportToPdfSizes = {
-  marginLeft: 25,
-  marginTop: 19,
-  widthHeightPixels: 598, // 21,1 cm
-  songTitle: { FontSize: 19, Spacing: 19 },
-  songSource: { FontSize: 10, Spacing: 20 },
-  songText: { FontSize: 12, Spacing: 11 },
-  songNote: { FontSize: 10 },
-  songIndicatorSpacing: 18,
-  songParagraphSpacing: 9,
-  indexTitle: { FontSize: 16, Spacing: 14 },
-  bookTitle: { FontSize: 80, Spacing: 10 },
-  bookSubtitle: { FontSize: 14 },
-  indexSubtitle: { FontSize: 12, Spacing: 4 },
-  indexText: { FontSize: 11, Spacing: 3 },
-  indexExtraMarginLeft: 25
-};
-
 export const PdfStyles: SongStyles = {
   title: { color: '#ff0000' },
   source: { color: '#777777' },
@@ -183,7 +187,7 @@ export const PdfStyles: SongStyles = {
 };
 
 export class PdfWriter {
-  sizes: ExportToPdfSizes;
+  opts: ExportToPdfOptions;
   pos: ExportToPdfCoord;
   pageNumber: number;
   resetY: number;
@@ -199,14 +203,14 @@ export class PdfWriter {
   constructor(
     fontBuf: any,
     base64Transform: any,
-    sizes: ExportToPdfSizes = defaultExportToPdfSizes
+    opts: ExportToPdfOptions = defaultExportToPdfOptions
   ) {
     this.base64Transform = base64Transform;
-    this.sizes = sizes;
+    this.opts = opts;
     this.doc = new PDFDocument({
       bufferPages: true,
       autoFirstPage: false,
-      size: [sizes.widthHeightPixels, sizes.widthHeightPixels]
+      size: [opts.widthHeightPixels, opts.widthHeightPixels]
     });
     if (fontBuf) {
       this.doc.registerFont('thefont', fontBuf);
@@ -219,13 +223,13 @@ export class PdfWriter {
       x: 0,
       y: 0
     };
-    this.limiteHoja = sizes.widthHeightPixels - sizes.marginTop * 2;
-    this.primerFilaY = sizes.marginTop;
-    this.primerColumnaX = sizes.marginLeft;
-    this.segundaColumnaX = sizes.widthHeightPixels / 2 + this.primerColumnaX;
-    this.primerColumnaIndexX = sizes.marginLeft + sizes.indexExtraMarginLeft;
+    this.limiteHoja = opts.widthHeightPixels - opts.marginTop * 2;
+    this.primerFilaY = opts.marginTop;
+    this.primerColumnaX = opts.marginLeft;
+    this.segundaColumnaX = opts.widthHeightPixels / 2 + this.primerColumnaX;
+    this.primerColumnaIndexX = opts.marginLeft + opts.indexExtraMarginLeft;
     this.segundaColumnaIndexX =
-      sizes.widthHeightPixels / 2 + sizes.indexExtraMarginLeft;
+      opts.widthHeightPixels / 2 + opts.indexExtraMarginLeft;
   }
 
   checkLimitsCore(height: number) {
@@ -258,12 +262,12 @@ export class PdfWriter {
   }
 
   async writePageNumber() {
-    this.pos.x = this.sizes.widthHeightPixels / 2;
+    this.pos.x = this.opts.widthHeightPixels / 2;
     this.pos.y = this.limiteHoja;
     this.writeTextCore(
       this.pageNumber.toString(),
       PdfStyles.pageNumber.color,
-      this.sizes.songText.FontSize
+      this.opts.songText.FontSize
     );
   }
 
@@ -299,12 +303,12 @@ export class PdfWriter {
 
   async getCenteringX(text: string, size: number) {
     const width = this.doc.fontSize(size).widthOfString(text);
-    return parseInt((this.sizes.widthHeightPixels - width) / 2);
+    return parseInt((this.opts.widthHeightPixels - width) / 2);
   }
 
   async getCenteringY(text: string, size: number) {
     const height = this.doc.fontSize(size).heightOfString(text);
-    return parseInt((this.sizes.widthHeightPixels - height) / 2);
+    return parseInt((this.opts.widthHeightPixels - height) / 2);
   }
 
   async writeTextCore(
@@ -356,7 +360,7 @@ export class PdfWriter {
 
   async generateListing(title: string, items: any) {
     const height =
-      this.sizes.indexSubtitle.FontSize + this.sizes.indexSubtitle.Spacing;
+      this.opts.indexSubtitle.FontSize + this.opts.indexSubtitle.Spacing;
     await this.checkLimits(
       height,
       this.primerColumnaIndexX,
@@ -365,12 +369,12 @@ export class PdfWriter {
     await this.writeTextCore(
       title.toUpperCase(),
       PdfStyles.title.color,
-      this.sizes.indexSubtitle.FontSize
+      this.opts.indexSubtitle.FontSize
     );
     this.moveToNextLine(height);
     if (items) {
       const itemHeight =
-        this.sizes.indexText.FontSize + this.sizes.indexText.Spacing;
+        this.opts.indexText.FontSize + this.opts.indexText.Spacing;
       await asyncForEach(items, async str => {
         if (str !== '') {
           await this.checkLimits(
@@ -381,7 +385,7 @@ export class PdfWriter {
           await this.writeTextCore(
             str,
             PdfStyles.normalLine.color,
-            this.sizes.indexText.FontSize
+            this.opts.indexText.FontSize
           );
         }
         this.moveToNextLine(itemHeight);
@@ -412,7 +416,7 @@ export const PDFGenerator = async (
       const A = I18n.t('ui.export.songs book title', {
         locale: 'es'
       }).length;
-      const B = writer.sizes.bookTitle.FontSize;
+      const B = writer.opts.bookTitle.FontSize;
       const C = title.length;
       const X = (A * B) / C;
 
@@ -423,33 +427,33 @@ export const PDFGenerator = async (
       writer.pos.y = await writer.getCenteringY(
         title,
         titleFontSize +
-          writer.sizes.bookTitle.Spacing +
-          writer.sizes.bookSubtitle.FontSize
+          writer.opts.bookTitle.Spacing +
+          writer.opts.bookSubtitle.FontSize
       );
       writer.writeTextCore(title, PdfStyles.title.color, titleFontSize);
 
-      writer.moveToNextLine(titleFontSize + writer.sizes.bookTitle.Spacing);
+      writer.moveToNextLine(titleFontSize + writer.opts.bookTitle.Spacing);
 
       // Subtitulo
       writer.pos.x = await writer.getCenteringX(
         subtitle,
-        writer.sizes.bookSubtitle.FontSize
+        writer.opts.bookSubtitle.FontSize
       );
       writer.writeTextCore(
         subtitle,
         PdfStyles.normalLine.color,
-        writer.sizes.bookSubtitle.FontSize
+        writer.opts.bookSubtitle.FontSize
       );
 
       //Indice
       writer.createPage();
       writer.positionIndex();
       const height =
-        writer.sizes.indexTitle.FontSize + writer.sizes.indexTitle.Spacing;
+        writer.opts.indexTitle.FontSize + writer.opts.indexTitle.Spacing;
       await writer.writeTextCentered(
         I18n.t('ui.export.songs index').toUpperCase(),
         PdfStyles.title.color,
-        writer.sizes.indexTitle.FontSize
+        writer.opts.indexTitle.FontSize
       );
       writer.moveToNextLine(height);
       writer.setNewColumnY(0);
@@ -497,20 +501,20 @@ export const PDFGenerator = async (
       await writer.writeTextCentered(
         song.titulo.toUpperCase(),
         PdfStyles.title.color,
-        writer.sizes.songTitle.FontSize
+        writer.opts.songTitle.FontSize
       );
 
       // Fuente
-      writer.moveToNextLine(writer.sizes.songTitle.Spacing);
+      writer.moveToNextLine(writer.opts.songTitle.Spacing);
       await writer.writeTextCentered(
         song.fuente,
         PdfStyles.source.color,
-        writer.sizes.songSource.FontSize
+        writer.opts.songSource.FontSize
       );
 
       writer.positionStartLine();
-      writer.moveToNextLine(writer.sizes.songSource.Spacing);
-      writer.setNewColumnY(writer.sizes.songParagraphSpacing);
+      writer.moveToNextLine(writer.opts.songSource.Spacing);
+      writer.setNewColumnY(writer.opts.songParagraphSpacing);
       var lines: Array<ExportToPdfLineText> = [];
       var blockIndicator;
       var blockY;
@@ -518,10 +522,10 @@ export const PDFGenerator = async (
       await asyncForEach(items, async (it: SongLine, i: number) => {
         var lastWidth: number = 0;
         if (it.inicioParrafo) {
-          writer.moveToNextLine(writer.sizes.songParagraphSpacing);
+          writer.moveToNextLine(writer.opts.songParagraphSpacing);
         }
         if (it.tituloEspecial) {
-          writer.moveToNextLine(writer.sizes.songParagraphSpacing * 2);
+          writer.moveToNextLine(writer.opts.songParagraphSpacing * 2);
         }
         if (indicators.find(r => r.start === i)) {
           blockIndicator = indicators.find(r => r.start === i);
@@ -548,7 +552,7 @@ export const PDFGenerator = async (
         var alturaExtra = 0;
         if (it.notas) {
           alturaExtra =
-            writer.sizes.songNote.FontSize + writer.sizes.songText.Spacing;
+            writer.opts.songNote.FontSize + writer.opts.songText.Spacing;
         }
         await writer.checkLimits(
           alturaExtra,
@@ -559,52 +563,52 @@ export const PDFGenerator = async (
           lastWidth = await writer.writeTextCore(
             it.texto,
             PdfStyles.notesLine.color,
-            writer.sizes.songNote.FontSize,
-            writer.sizes.songIndicatorSpacing
+            writer.opts.songNote.FontSize,
+            writer.opts.songIndicatorSpacing
           );
-          writer.moveToNextLine(writer.sizes.songText.Spacing);
+          writer.moveToNextLine(writer.opts.songText.Spacing);
         } else if (it.canto === true) {
           lastWidth = await writer.writeTextCore(
             it.texto,
             PdfStyles.normalLine.color,
-            writer.sizes.songText.FontSize,
-            writer.sizes.songIndicatorSpacing
+            writer.opts.songText.FontSize,
+            writer.opts.songIndicatorSpacing
           );
-          writer.moveToNextLine(writer.sizes.songText.Spacing);
+          writer.moveToNextLine(writer.opts.songText.Spacing);
         } else if (it.cantoConIndicador === true) {
           lastWidth = await writer.writeTextCore(
             it.prefijo,
             PdfStyles.prefix.color,
-            writer.sizes.songText.FontSize
+            writer.opts.songText.FontSize
           );
           if (it.tituloEspecial === true) {
             lastWidth = await writer.writeTextCore(
               it.texto,
               PdfStyles.specialNoteTitle.color,
-              writer.sizes.songText.FontSize,
-              writer.sizes.songIndicatorSpacing
+              writer.opts.songText.FontSize,
+              writer.opts.songIndicatorSpacing
             );
           } else if (it.textoEspecial === true) {
             lastWidth = await writer.writeTextCore(
               it.texto,
               PdfStyles.specialNote.color,
-              writer.sizes.songText.FontSize - 3,
-              writer.sizes.songIndicatorSpacing
+              writer.opts.songText.FontSize - 3,
+              writer.opts.songIndicatorSpacing
             );
           } else {
             lastWidth = await writer.writeTextCore(
               it.texto,
               PdfStyles.normalLine.color,
-              writer.sizes.songText.FontSize,
-              writer.sizes.songIndicatorSpacing
+              writer.opts.songText.FontSize,
+              writer.opts.songIndicatorSpacing
             );
           }
-          writer.moveToNextLine(writer.sizes.songText.Spacing);
+          writer.moveToNextLine(writer.opts.songText.Spacing);
         }
         maxX = Math.trunc(Math.max(writer.pos.x + lastWidth, maxX));
       });
       await asyncForEach(lines, async (line: ExportToPdfLineText) => {
-        await writer.drawLineText(line, writer.sizes.songText.FontSize);
+        await writer.drawLineText(line, writer.opts.songText.FontSize);
       });
       if (opts.pageNumbers) {
         await writer.writePageNumber();

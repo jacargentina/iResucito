@@ -141,7 +141,11 @@ declare type Song = {
   rating: number
 };
 
-declare type ExportToPdfSizes = {
+declare type ExportToPdfOptions = {
+  createIndex: boolean,
+  pageNumbers: boolean,
+  fileSuffix: string,
+  useTimesRomanFont: boolean,
   marginLeft: number,
   marginTop: number,
   widthHeightPixels: number,
@@ -157,13 +161,6 @@ declare type ExportToPdfSizes = {
   indexSubtitle: { FontSize: number, Spacing: number },
   indexText: { FontSize: number, Spacing: number },
   indexExtraMarginLeft: number
-};
-
-declare type ExportToPdfOptions = {
-  createIndex: boolean,
-  pageNumbers: boolean,
-  fileSuffix: string,
-  useTimesRomanFont: boolean
 };
 
 declare type ExportToPdfCoord = {

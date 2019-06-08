@@ -3,8 +3,8 @@ import osLocale from 'os-locale';
 import I18n from '../translations';
 import FolderSongs from '../FolderSongs';
 import { SongsParser } from '../SongsParser';
-import { defaultExportToPdfOptions, generatePDF } from './pdf';
-import { PdfStyles } from '../common';
+import { generatePDF } from './pdf';
+import { defaultExportToPdfOptions, PdfStyles } from '../common';
 
 var program = require('commander');
 

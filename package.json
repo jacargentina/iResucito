@@ -86,6 +86,7 @@
     "react": "16.8.6",
     "react-document-title": "^2.0.3",
     "react-dom": "^16.8.6",
+    "react-json-editor-ajrm": "^2.5.9",
     "react-native": "^0.59.9",
     "react-native-collapsible": "^1.4.0",
     "react-native-contacts": "^4.0.2",
