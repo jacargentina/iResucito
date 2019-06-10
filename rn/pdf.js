@@ -7,16 +7,18 @@ import Base64Encode from './base64encode';
 
 export async function generatePDF(
   songsToPdf: Array<SongToPdf>,
-  opts: ExportToPdfOptions
+  opts: ExportToPdfOptions,
+  fileSuffix: string
 ) {
   const folder =
     Platform.OS == 'ios'
       ? RNFS.TemporaryDirectoryPath
       : RNFS.CachesDirectoryPath + '/';
 
-  const pdfPath = opts.createIndex
-    ? `${folder}/iResucito${opts.fileSuffix}.pdf`
-    : `${folder}/${songsToPdf[0].song.titulo}.pdf`;
+  const pdfPath =
+    songsToPdf.length > 1
+      ? `${folder}/iResucito${fileSuffix}.pdf`
+      : `${folder}/${songsToPdf[0].song.titulo}.pdf`;
 
   const ttf = await RNFS.readFile(
     RNFS.MainBundlePath + '/Franklin Gothic Medium.ttf',

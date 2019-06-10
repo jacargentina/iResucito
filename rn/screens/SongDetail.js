@@ -152,7 +152,7 @@ const ViewPdf = withNavigation(props => {
           song,
           render
         };
-        generatePDF([item], defaultExportToPdfOptions).then(path => {
+        generatePDF([item], defaultExportToPdfOptions, '').then(path => {
           navigation.navigate('PDFViewer', {
             uri: path,
             title: song.titulo

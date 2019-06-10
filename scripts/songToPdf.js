@@ -50,7 +50,7 @@ if (!process.argv.slice(2).length) {
               song,
               render
             };
-            generatePDF([item], defaultExportToPdfOptions).then(p => {
+            generatePDF([item], defaultExportToPdfOptions, '').then(p => {
               console.log(p);
             });
           })
@@ -61,11 +61,6 @@ if (!process.argv.slice(2).length) {
         console.log('Song not found for given locale');
       }
     } else {
-      var opts = Object.assign({}, defaultExportToPdfOptions, {
-        createIndex: true,
-        pageNumbers: true,
-        fileSuffix: `-${locale}`
-      });
       var songs = FolderSongs.getSongsMeta(locale);
       console.log(`No key Song. Generating ${songs.length} songs`);
       Promise.all(FolderSongs.loadSongs(locale, songs)).then(() => {
@@ -87,7 +82,7 @@ if (!process.argv.slice(2).length) {
             );
           }
         });
-        generatePDF(items, opts).then(p => {
+        generatePDF(items, defaultExportToPdfOptions, `-${locale}`).then(p => {
           console.log(p);
         });
       });

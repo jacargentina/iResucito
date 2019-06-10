@@ -142,9 +142,6 @@ declare type Song = {
 };
 
 declare type ExportToPdfOptions = {
-  createIndex: boolean,
-  pageNumbers: boolean,
-  fileSuffix: string,
   useTimesRomanFont: boolean,
   marginLeft: number,
   marginTop: number,

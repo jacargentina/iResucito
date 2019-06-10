@@ -138,7 +138,7 @@ const SongEditorDialog = (props: any) => {
               song,
               render
             };
-            generatePDF([item], defaultExportToPdfOptions).then(path => {
+            generatePDF([item], defaultExportToPdfOptions, '').then(path => {
               navigation.navigate('SongPreviewPdf', {
                 uri: path,
                 song: song

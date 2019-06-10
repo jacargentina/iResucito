@@ -173,10 +173,14 @@ export default function(server: any) {
           song,
           render
         };
-        const pdfPath = await generatePDF([item], {
-          ...defaultExportToPdfOptions,
-          ...options
-        });
+        const pdfPath = await generatePDF(
+          [item],
+          {
+            ...defaultExportToPdfOptions,
+            ...options
+          },
+          ''
+        );
         if (pdfPath) {
           res.sendFile(pdfPath, null, err => {
             if (err) {

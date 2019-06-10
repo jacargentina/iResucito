@@ -6,13 +6,15 @@ import { Base64Encode } from 'base64-stream';
 
 export async function generatePDF(
   songsToPdf: Array<SongToPdf>,
-  opts: ExportToPdfOptions
+  opts: ExportToPdfOptions,
+  fileSuffix: string
 ) {
   const folder = os.tmpdir();
 
-  const pdfPath = opts.createIndex
-    ? `${folder}/iResucito${opts.fileSuffix}.pdf`
-    : `${folder}/${songsToPdf[0].song.titulo}.pdf`;
+  const pdfPath =
+    songsToPdf.length > 1
+      ? `${folder}/iResucito${fileSuffix}.pdf`
+      : `${folder}/${songsToPdf[0].song.titulo}.pdf`;
 
   var font = null;
   if (opts.useTimesRomanFont === false) {

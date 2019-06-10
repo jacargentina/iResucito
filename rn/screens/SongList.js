@@ -198,12 +198,11 @@ const ExportToPdf = withNavigation(props => {
                 total: songToExport.length
               })
             });
-            var opts = Object.assign({}, defaultExportToPdfOptions, {
-              createIndex: true,
-              pageNumbers: true,
-              fileSuffix: I18n.locale
-            });
-            generatePDF(items, opts).then(path => {
+            generatePDF(
+              items,
+              defaultExportToPdfOptions,
+              `-${I18n.locale}`
+            ).then(path => {
               navigation.navigate('PDFViewer', {
                 uri: path,
                 title: I18n.t('ui.export.pdf viewer title')

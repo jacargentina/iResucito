@@ -6,9 +6,6 @@ import langs from 'langs';
 import I18n from './translations';
 
 export const defaultExportToPdfOptions: ExportToPdfOptions = {
-  createIndex: false,
-  pageNumbers: false,
-  fileSuffix: '',
   useTimesRomanFont: false,
   marginLeft: 25,
   marginTop: 19,
@@ -403,7 +400,7 @@ export const PDFGenerator = async (
   writer: PdfWriter
 ) => {
   try {
-    if (opts.createIndex) {
+    if (songsToPdf.length > 1) {
       // Portada
       writer.createPage();
       const title = I18n.t('ui.export.songs book title').toUpperCase();
@@ -610,7 +607,7 @@ export const PDFGenerator = async (
       await asyncForEach(lines, async (line: ExportToPdfLineText) => {
         await writer.drawLineText(line, writer.opts.songText.FontSize);
       });
-      if (opts.pageNumbers) {
+      if (songsToPdf.length > 1) {
         await writer.writePageNumber();
       }
     });
