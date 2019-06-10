@@ -99,6 +99,32 @@ const DataContextWrapper = (props: any) => {
       });
   };
 
+  const downloadFullPdf = () => {
+    const savedSettings = localStorage.getItem('pdfExportOptions');
+    var data;
+    if (savedSettings) {
+      data = {
+        options: JSON.parse(savedSettings)
+      };
+    }
+    return api
+      .post(`/api/pdf//${I18n.locale}`, data, {
+        responseType: 'blob'
+      })
+      .then(response => {
+        const url = window.URL.createObjectURL(new Blob([response.data]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', `iResucito-${I18n.locale}.pdf`);
+        if (document.body) document.body.appendChild(link);
+        link.click();
+        link.remove();
+      })
+      .catch(err => {
+        handleApiError(err);
+      });
+  };
+
   const changeLocale = (candidate: string) => {
     // Establecer el valor....
     applyLocale(candidate);
@@ -129,7 +155,8 @@ const DataContextWrapper = (props: any) => {
         signUp,
         login,
         logout,
-        user
+        user,
+        downloadFullPdf
       }}>
       {props.children}
     </DataContext.Provider>

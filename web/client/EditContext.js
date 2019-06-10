@@ -117,7 +117,7 @@ const EditContextWrapper = (props: any) => {
         };
       }
       return api
-        .post(`/api/pdf/${editSong.key}/${I18n.locale}`, data, {
+        .post(`/api/pdf/${I18n.locale}/${editSong.key}`, data, {
           responseType: 'blob'
         })
         .then(response => {

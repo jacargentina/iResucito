@@ -154,27 +154,44 @@ export default function(server: any) {
   });
 
   server.post(
-    '/api/pdf/:key/:locale',
+    '/api/pdf/:locale/:key?',
     asyncMiddleware(async (req, res, next) => {
       const { key, locale } = req.params;
       const { options } = req.body;
-      if (!locale || !key) {
+      if (!locale) {
         return res.status(500).json({
-          error: 'Locale or key not provided'
+          error: 'Locale not provided'
         });
       }
 
       try {
         const parser = new SongsParser(PdfStyles);
-        const song = FolderSongs.getSingleSongMeta(key, locale);
-        await FolderSongs.loadSingleSong(locale, song);
-        const render = parser.getForRender(song.fullText, locale);
-        const item: SongToPdf = {
-          song,
-          render
-        };
+        var items = [];
+        if (key) {
+          const song = FolderSongs.getSingleSongMeta(key, locale);
+          await FolderSongs.loadSingleSong(locale, song);
+          const render = parser.getForRender(song.fullText, locale);
+          const item: SongToPdf = {
+            song,
+            render
+          };
+          items.push(item);
+        } else {
+          var songs = FolderSongs.getSongsMeta(locale);
+          await FolderSongs.loadSongs(locale, songs);
+          songs.map(song => {
+            if (song.files[locale]) {
+              var render = parser.getForRender(song.fullText, locale);
+              const item: SongToPdf = {
+                song,
+                render
+              };
+              items.push(item);
+            }
+          });
+        }
         const pdfPath = await generatePDF(
-          [item],
+          items,
           {
             ...defaultExportToPdfOptions,
             ...options
