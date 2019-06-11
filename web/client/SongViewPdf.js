@@ -8,6 +8,7 @@ import React, {
 } from 'react';
 import Icon from 'semantic-ui-react/dist/commonjs/elements/Icon';
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
+import Menu from 'semantic-ui-react/dist/commonjs/collections/Menu';
 import { DataContext } from './DataContext';
 import { EditContext } from './EditContext';
 import I18n from '../../translations';
@@ -62,59 +63,63 @@ const SongViewPdf = (props: any) => {
 
   return (
     <Fragment>
-      <Button
+      <Menu
         size="mini"
-        floated="right"
-        onClick={() => {
-          const link = document.createElement('a');
-          link.href = url;
-          link.setAttribute(
-            'download',
-            editSong ? editSong.nombre : 'iResucito'
-          );
-          if (document.body) document.body.appendChild(link);
-          link.click();
-          link.remove();
-        }}>
-        <Icon name="file pdf" />
-        {I18n.t('ui.download')}
-      </Button>
-      <Button
-        positive={!!savedSettings}
-        size="mini"
-        floated="right"
-        onClick={() => {
-          setActiveDialog('pdfSettings');
-        }}>
-        <Icon name="setting" />
-        {I18n.t('screen_title.settings')}
-      </Button>
-      {numPages && (
-        <Fragment>
-          <Button
-            size="mini"
-            floated="right"
-            icon
-            disabled={currPage === numPages}
-            onClick={() => setCurrPage(p => p + 1)}>
-            <Icon name="step forward" />
-          </Button>
-          <Button floated="right" size="mini" disabled>
-            {currPage} / {numPages}
-          </Button>
-          <Button
-            size="mini"
-            floated="right"
-            icon
-            disabled={currPage === 1}
-            onClick={() => setCurrPage(p => p - 1)}>
-            <Icon name="step backward" />
-          </Button>
-        </Fragment>
-      )}
+        style={{ border: '0px solid transparent', boxShadow: 'none' }}>
+        <Menu.Item>
+          <Button.Group size="mini">
+            <Button
+              size="mini"
+              floated="right"
+              onClick={() => {
+                const link = document.createElement('a');
+                link.href = url;
+                const name = editSong ? editSong.nombre : 'iResucito';
+                link.setAttribute('download', `${name}.pdf`);
+                if (document.body) document.body.appendChild(link);
+                link.click();
+                link.remove();
+              }}>
+              <Icon name="file pdf" />
+              {I18n.t('ui.download')}
+            </Button>
+            <Button
+              positive={!!savedSettings}
+              size="mini"
+              floated="right"
+              onClick={() => {
+                setActiveDialog('pdfSettings');
+              }}>
+              <Icon name="setting" />
+              {I18n.t('screen_title.settings')}
+            </Button>
+          </Button.Group>
+        </Menu.Item>
+        {numPages && (
+          <Menu.Item>
+            <Button.Group size="mini">
+              <Button
+                icon
+                disabled={currPage === 1}
+                onClick={() => setCurrPage(p => p - 1)}>
+                <Icon name="step backward" />
+              </Button>
+              <Button disabled>
+                {currPage} / {numPages}
+              </Button>
+              <Button
+                icon
+                disabled={currPage === numPages}
+                onClick={() => setCurrPage(p => p + 1)}>
+                <Icon name="step forward" />
+              </Button>
+            </Button.Group>
+          </Menu.Item>
+        )}
+      </Menu>
       <canvas
         id="pdfViewer"
-        style={{ boxShadow: '5px 5px 50px gray' }}
+        style={{ boxShadow: '2px 2px 15px gray' }}
         ref={myRef}
       />
     </Fragment>

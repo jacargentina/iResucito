@@ -5,12 +5,14 @@ import FolderExtras from '../../FolderExtras';
 import { SongsParser } from '../../SongsParser';
 import { generatePDF } from '../../scripts/pdf';
 import { PdfStyles, defaultExportToPdfOptions } from '../../common';
+import I18n from '../../translations';
 import {
   dataPath,
   readLocalePatch,
   saveLocalePatch,
   asyncMiddleware
 } from './common';
+
 const merge = require('deepmerge');
 
 FolderSongs.basePath = path.resolve('./songs');
@@ -163,6 +165,7 @@ export default function(server: any) {
           error: 'Locale not provided'
         });
       }
+      I18n.locale = locale;
       try {
         const parser = new SongsParser(PdfStyles);
         var items = [];

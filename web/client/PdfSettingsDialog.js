@@ -11,10 +11,15 @@ import locale from 'react-json-editor-ajrm/locale/en';
 
 const PdfSettingsDialog = () => {
   const data = useContext(DataContext);
-  const { activeDialog, setActiveDialog } = data;
+  const {
+    activeDialog,
+    setActiveDialog,
+    editSong,
+    previewPdf: previewBookPdf
+  } = data;
 
   const edit = useContext(EditContext);
-  const { previewPdf } = edit;
+  const { previewPdf: previewSongPdf } = edit;
 
   const [initialOptions, setinitialOptions] = useState({});
   const [editing, setEditing] = useState({});
@@ -32,13 +37,21 @@ const PdfSettingsDialog = () => {
 
   const saveOptions = () => {
     localStorage.setItem('pdfExportOptions', JSON.stringify(editing));
-    previewPdf();
+    if (editSong) {
+      previewSongPdf();
+    } else {
+      previewBookPdf();
+    }
   };
 
   const deleteOptions = () => {
     localStorage.removeItem('pdfExportOptions');
     setinitialOptions(defaultExportToPdfOptions);
-    previewPdf();
+    if (editSong) {
+      previewSongPdf();
+    } else {
+      previewBookPdf();
+    }
   };
 
   return (

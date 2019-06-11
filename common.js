@@ -215,6 +215,12 @@ export class PdfWriter {
       autoFirstPage: false,
       size: [opts.widthHeightPixels, opts.widthHeightPixels]
     });
+    this.doc.info = {
+      Title: 'iResucitó',
+      Author: 'iResucitó app ',
+      Subject: 'iResucitó Song Book',
+      Keywords: 'Neocatechumenal songs'
+    };
     if (fontBuf) {
       this.doc.registerFont('thefont', fontBuf);
       this.doc.font('thefont');
