@@ -160,6 +160,23 @@ declare type ExportToPdfOptions = {
   indexExtraMarginLeft: number
 };
 
+declare type ListSongGroup = {
+  [string]: Array<ListSongItem>
+};
+
+declare type ListSongItem = {
+  songKey: string,
+  str: string
+};
+
+declare type ListSongPos = {
+  page: number,
+  songKey: string,
+  x: number,
+  y: number,
+  value: number
+};
+
 declare type ExportToPdfCoord = {
   x: number,
   y: number

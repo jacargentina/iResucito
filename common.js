@@ -76,19 +76,20 @@ export const asyncForEach = async (array: Array<any>, callback: Function) => {
 
 export const getAlphaWithSeparators = (
   songsToPdf: Array<SongToPdf>
-): Array<string> => {
+): Array<ListSongItem> => {
   // Alfabetico
-  var items = songsToPdf.map(data => {
+  var items: Array<ListSongItem> = songsToPdf.map(data => {
     const sameName = songsToPdf.filter(d => d.song.titulo === data.song.titulo);
-    return sameName.length > 1 ? data.song.nombre : data.song.titulo;
+    const str = sameName.length > 1 ? data.song.nombre : data.song.titulo;
+    return { songKey: data.song.key, str };
   });
   var i = 0;
-  var letter = normalize(items[i][0]);
+  var letter = normalize(items[i].str[0]);
   while (i < items.length) {
-    const curLetter = normalize(items[i][0]);
+    const curLetter = normalize(items[i].str[0]);
     if (curLetter !== letter) {
       letter = curLetter;
-      items.splice(i, 0, '');
+      items.splice(i, 0, { songKey: '', str: '' });
     }
     i++;
   }
@@ -102,14 +103,16 @@ export const wayStages = [
   'election'
 ];
 
-export const getGroupedByStage = (songsToPdf: Array<SongToPdf>): any => {
+export const getGroupedByStage = (
+  songsToPdf: Array<SongToPdf>
+): ListSongGroup => {
   // Agrupados por stage
   return songsToPdf.reduce((groups, data) => {
     const groupKey = data.song.stage;
     groups[groupKey] = groups[groupKey] || [];
     const sameName = songsToPdf.filter(d => d.song.titulo === data.song.titulo);
     const title = sameName.length > 1 ? data.song.nombre : data.song.titulo;
-    groups[groupKey].push(title);
+    groups[groupKey].push({ songKey: data.song.key, str: title });
     return groups;
   }, {});
 };
@@ -122,7 +125,9 @@ export const liturgicTimes = [
   'pentecost'
 ];
 
-export const getGroupedByLiturgicTime = (songsToPdf: Array<SongToPdf>): any => {
+export const getGroupedByLiturgicTime = (
+  songsToPdf: Array<SongToPdf>
+): ListSongGroup => {
   // Agrupados por tiempo liturgico
   return songsToPdf.reduce((groups, data) => {
     var times = liturgicTimes.filter(t => data.song[t] === true);
@@ -132,7 +137,7 @@ export const getGroupedByLiturgicTime = (songsToPdf: Array<SongToPdf>): any => {
         d => d.song.titulo === data.song.titulo
       );
       const title = sameName.length > 1 ? data.song.nombre : data.song.titulo;
-      groups[t].push(title);
+      groups[t].push({ songKey: data.song.key, str: title });
     });
     return groups;
   }, {});
@@ -153,7 +158,7 @@ export const liturgicOrder = [
 
 export const getGroupedByLiturgicOrder = (
   songsToPdf: Array<SongToPdf>
-): any => {
+): ListSongGroup => {
   // Agrupados por tiempo liturgico
   return songsToPdf.reduce((groups, data) => {
     var times = liturgicOrder.filter(t => data.song[t] === true);
@@ -163,7 +168,7 @@ export const getGroupedByLiturgicOrder = (
         d => d.song.titulo === data.song.titulo
       );
       const title = sameName.length > 1 ? data.song.nombre : data.song.titulo;
-      groups[t].push(title);
+      groups[t].push({ songKey: data.song.key, str: title });
     });
     return groups;
   }, {});
@@ -196,6 +201,7 @@ export class PdfWriter {
   segundaColumnaX: number;
   primerColumnaIndexX: number;
   segundaColumnaIndexX: number;
+  listing: Array<ListSongPos>;
 
   constructor(
     fontBuf: any,
@@ -227,6 +233,7 @@ export class PdfWriter {
     this.primerColumnaIndexX = opts.marginLeft + opts.indexExtraMarginLeft;
     this.segundaColumnaIndexX =
       opts.widthHeightPixels / 2 + opts.indexExtraMarginLeft;
+    this.listing = [];
   }
 
   checkLimitsCore(height: number) {
@@ -258,7 +265,7 @@ export class PdfWriter {
     };
   }
 
-  async writePageNumber() {
+  async writePageNumber(currentSongKey?: string) {
     this.pos.x = this.opts.widthHeightPixels / 2;
     this.pos.y = this.limiteHoja;
     this.writeTextCore(
@@ -266,13 +273,21 @@ export class PdfWriter {
       PdfStyles.pageNumber.color,
       this.opts.songText.FontSize
     );
+    if (currentSongKey) {
+      const assignItems = this.listing.filter(
+        l => l.songKey === currentSongKey
+      );
+      assignItems.forEach(i => {
+        i.value = this.pageNumber;
+      });
+    }
+    this.pageNumber++;
   }
 
   async checkLimits(height: number, firstCol: number, secondCol: number) {
     if (this.checkLimitsCore(height)) {
       if (this.pos.x == secondCol) {
         await this.writePageNumber();
-        this.pageNumber++;
         this.pos.x = firstCol;
         this.resetY = this.primerFilaY;
         this.createPage();
@@ -355,7 +370,7 @@ export class PdfWriter {
     });
   }
 
-  async generateListing(title: string, items: any) {
+  async generateListing(title: string, items: Array<ListSongItem>) {
     const height =
       this.opts.indexSubtitle.FontSize + this.opts.indexSubtitle.Spacing;
     await this.checkLimits(
@@ -372,23 +387,51 @@ export class PdfWriter {
     if (items) {
       const itemHeight =
         this.opts.indexText.FontSize + this.opts.indexText.Spacing;
-      await asyncForEach(items, async str => {
-        if (str !== '') {
+      await asyncForEach(items, async (item: ListSongItem) => {
+        if (item.str !== '') {
           await this.checkLimits(
             itemHeight,
             this.primerColumnaIndexX,
             this.segundaColumnaIndexX
           );
           await this.writeTextCore(
-            str,
+            item.str,
             PdfStyles.normalLine.color,
             this.opts.indexText.FontSize
           );
+          this.listing.push({
+            page: this.pageNumber,
+            songKey: item.songKey,
+            x:
+              this.pos.x < this.opts.widthHeightPixels / 2
+                ? this.segundaColumnaIndexX
+                : this.opts.widthHeightPixels - 15,
+            y: this.pos.y,
+            value: 0
+          });
         }
         this.moveToNextLine(itemHeight);
       });
       if (this.pos.y !== this.primerFilaY) {
         this.moveToNextLine(itemHeight);
+      }
+    }
+  }
+
+  async finalizeListing() {
+    if (this.listing.length > 0) {
+      for (var i = 0; i < this.pageNumber; i++) {
+        this.doc.switchToPage(i);
+        var items = this.listing.filter(l => l.page === i);
+        await asyncForEach(items, async (l: ListSongPos) => {
+          this.pos.x = l.x - 30;
+          this.pos.y = l.y;
+          await this.writeTextCore(
+            l.value.toString(),
+            PdfStyles.normalLine.color,
+            this.opts.indexText.FontSize
+          );
+        });
       }
     }
   }
@@ -608,11 +651,12 @@ export const PDFGenerator = async (
         await writer.drawLineText(line, writer.opts.songText.FontSize);
       });
       if (songsToPdf.length > 1) {
-        await writer.writePageNumber();
+        await writer.writePageNumber(song.key);
       }
     });
+    await writer.finalizeListing();
     return await writer.save();
   } catch (err) {
-    console.log('generatePDF ERROR', err);
+    console.log('PDFGenerator ERROR', err);
   }
 };
