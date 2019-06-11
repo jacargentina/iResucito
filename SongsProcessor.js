@@ -191,7 +191,7 @@ export class SongsProcessor {
     return this.songReader(path);
   }
 
-  loadSingleSong(
+  async loadSingleSong(
     rawLoc: string,
     song: Song,
     patch: ?SongIndexPatch
@@ -219,13 +219,15 @@ export class SongsProcessor {
       });
   }
 
-  loadSongs(
+  async loadSongs(
     rawLoc: string,
     songs: Array<Song>,
     patch: ?SongIndexPatch
-  ): Array<Promise<any>> {
-    return songs.map(song => {
-      return this.loadSingleSong(rawLoc, song, patch);
-    });
+  ): Promise<any> {
+    return Promise.all(
+      songs.map(song => {
+        return this.loadSingleSong(rawLoc, song, patch);
+      })
+    );
   }
 }

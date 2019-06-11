@@ -163,7 +163,6 @@ export default function(server: any) {
           error: 'Locale not provided'
         });
       }
-
       try {
         const parser = new SongsParser(PdfStyles);
         var items = [];

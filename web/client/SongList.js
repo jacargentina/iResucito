@@ -18,7 +18,7 @@ import useHotkeys from 'use-hotkeys';
 
 const SongList = () => {
   const data = useContext(DataContext);
-  const { locale, listSongs, songs, apiLoading } = data;
+  const { locale, listSongs, songs, apiLoading, previewPdf, pdf } = data;
 
   const edit = useContext(EditContext);
   const { loadSong, addSong, editSong } = edit;
@@ -86,7 +86,7 @@ const SongList = () => {
     [editSong]
   );
 
-  if (editSong) {
+  if (editSong || pdf) {
     return null;
   }
 
@@ -117,6 +117,10 @@ const SongList = () => {
                 </Button>
               }
             />
+            <Button onClick={previewPdf}>
+              <Icon name="file pdf" />
+              {I18n.t('share_action.view pdf')}
+            </Button>
           </Button.Group>
         </Menu.Item>
         <Menu.Item>

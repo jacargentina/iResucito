@@ -63,7 +63,7 @@ if (!process.argv.slice(2).length) {
     } else {
       var songs = FolderSongs.getSongsMeta(locale);
       console.log(`No key Song. Generating ${songs.length} songs`);
-      Promise.all(FolderSongs.loadSongs(locale, songs)).then(() => {
+      FolderSongs.loadSongs(locale, songs).then(() => {
         var items = [];
         songs.map(song => {
           if (song.files[I18n.locale]) {

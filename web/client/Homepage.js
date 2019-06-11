@@ -12,6 +12,7 @@ import LocalePicker from './LocalePicker';
 import Login from './Login';
 import SongList from './SongList';
 import SongEditor from './SongEditor';
+import SongBook from './SongBook';
 import ApiMessage from './ApiMessage';
 import EditSongTitle from './EditSongTitle';
 import AppActions from './AppActions';
@@ -45,6 +46,7 @@ const Homepage = () => {
           <PatchLogDialog />
           <PdfSettingsDialog />
           <SongEditor />
+          <SongBook />
         </EditContextWrapper>
       )}
     </div>

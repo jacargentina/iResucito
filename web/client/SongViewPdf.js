@@ -68,7 +68,10 @@ const SongViewPdf = (props: any) => {
         onClick={() => {
           const link = document.createElement('a');
           link.href = url;
-          link.setAttribute('download', editSong.nombre);
+          link.setAttribute(
+            'download',
+            editSong ? editSong.nombre : 'iResucito'
+          );
           if (document.body) document.body.appendChild(link);
           link.click();
           link.remove();
@@ -109,7 +112,11 @@ const SongViewPdf = (props: any) => {
           </Button>
         </Fragment>
       )}
-      <canvas id="pdfViewer" ref={myRef} />
+      <canvas
+        id="pdfViewer"
+        style={{ boxShadow: '5px 5px 50px gray' }}
+        ref={myRef}
+      />
     </Fragment>
   );
 };
