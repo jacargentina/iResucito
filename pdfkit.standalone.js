@@ -4895,10 +4895,14 @@ class PDFDocument extends stream.Readable {
 
     if (!this.options.bufferPages) {
       this.flushPages();
-    } // create a page object
+    }
 
+    var e = {
+      options
+    };
+    this.emit('pageAdding', e); // create a page object
 
-    this.page = new PDFPage(this, options);
+    this.page = new PDFPage(this, e.options);
 
     this._pageBuffer.push(this.page); // add the page to the object store
 

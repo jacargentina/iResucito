@@ -57,7 +57,6 @@ declare type SongStyles = {
   notesLine: any,
   specialNoteTitle: any,
   specialNote: any,
-  notesMarginLine: any,
   normalLine: any,
   pageNumber: any,
   prefix: any
@@ -157,7 +156,7 @@ declare type ExportToPdfOptions = {
   bookSubtitle: { FontSize: number },
   indexSubtitle: { FontSize: number, Spacing: number },
   indexText: { FontSize: number, Spacing: number },
-  indexExtraMarginLeft: number
+  indexMarginLeft: number
 };
 
 declare type ListSongGroup = {

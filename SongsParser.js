@@ -343,14 +343,6 @@ export class SongsParser {
           it.notas = true;
         }
       }
-      // Ajustar estilo para las notas si es la primer linea
-      if (it.notas && i < lFirstPass.length - 1) {
-        const nextItmn = lFirstPass[i + 1];
-        if (nextItmn.prefijo !== '') {
-          it.style = this.songStyles.notesMarginLine;
-          it.inicioParrafo = true;
-        }
-      }
       // Ajustar inicios de parrafo (lineas vacias)
       if (!it.notas && it.texto === '' && i < lFirstPass.length - 1) {
         const nextItmnn = lFirstPass[i + 1];
