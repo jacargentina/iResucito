@@ -187,6 +187,8 @@ export const PdfStyles: SongStyles = {
   prefix: { color: '#777777' }
 };
 
+var DEBUG_RECTS = true;
+
 export class PdfWriter {
   opts: ExportToPdfOptions;
   pos: ExportToPdfCoord;
@@ -199,6 +201,7 @@ export class PdfWriter {
   segundaColumnaIndexX: number;
   addExtraMargin: boolean;
   listing: Array<ListSongPos>;
+  limits: any;
 
   constructor(
     fontBuf: any,
@@ -207,6 +210,7 @@ export class PdfWriter {
   ) {
     this.base64Transform = base64Transform;
     this.opts = opts;
+    this.limits = { x: 0, y: 0, w: 0, h: 0 };
     this.doc = new PDFDocument({
       bufferPages: true,
       autoFirstPage: false
@@ -227,6 +231,25 @@ export class PdfWriter {
         this.opts.widthHeightPixels
       ];
       this.resetY = this.opts.marginTop;
+    });
+    this.doc.on('pageAdded', () => {
+      this.limits = {
+        x: this.doc.page.margins.left,
+        y: this.doc.page.margins.top,
+        w:
+          this.opts.widthHeightPixels -
+          this.doc.page.margins.right -
+          this.doc.page.margins.left,
+        h:
+          this.opts.widthHeightPixels -
+          this.doc.page.margins.bottom -
+          this.doc.page.margins.top
+      };
+      if (DEBUG_RECTS === true) {
+        this.doc
+          .rect(this.limits.x, this.limits.y, this.limits.w, this.limits.h)
+          .stroke('#888');
+      }
     });
     this.doc.info = {
       Title: 'iResucitó',
@@ -492,7 +515,7 @@ export const PDFGenerator = async (
       });
 
       writer.doc.moveDown();
-      
+
       // Agrupados por orden liturgico
       var byOrder = getGroupedByLiturgicOrder(songsToPdf);
       await asyncForEach(liturgicOrder, async order => {

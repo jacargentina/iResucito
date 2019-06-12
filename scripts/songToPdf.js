@@ -5,6 +5,7 @@ import FolderSongs from '../FolderSongs';
 import { SongsParser } from '../SongsParser';
 import { generatePDF } from './pdf';
 import { defaultExportToPdfOptions, PdfStyles } from '../common';
+import open from 'open';
 
 var program = require('commander');
 
@@ -52,6 +53,7 @@ if (!process.argv.slice(2).length) {
             };
             generatePDF([item], defaultExportToPdfOptions, '').then(p => {
               console.log(p);
+              open(p);
             });
           })
           .catch(err => {
@@ -84,6 +86,7 @@ if (!process.argv.slice(2).length) {
         });
         generatePDF(items, defaultExportToPdfOptions, `-${locale}`).then(p => {
           console.log(p);
+          open(p);
         });
       });
     }

@@ -80,6 +80,7 @@
     "native-base": "^2.12.1",
     "node-fetch": "^2.6.0",
     "normalize-strings": "^1.1.0",
+    "open": "^6.3.0",
     "os-locale": "^3.1.0",
     "pdfjs-dist": "^2.0.943",
     "query-string": "^6.7.0",
