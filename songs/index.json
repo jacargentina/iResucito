@@ -2326,7 +2326,8 @@
   "stage": "precatechumenate",
   "files": {
    "es": "Sube Dios entre aclamaciones - Sal 47 (46)",
-   "pt": "Sobe deus entre aclamações - Sal 47 (46)",
+   "it": "Sale dio tra acclamazioni",
+   "pt": "Sobe Deus entre aclamações - Sal 47 (46)",
    "de-AT": "Gott erhob sich unter Jubel - Ps 47",
    "en": "God rises to acclamation - Ps 46 (47)"
   }
@@ -2356,13 +2357,6 @@
   "stage": "precatechumenate",
   "files": {
    "it": "Innalzeró la coppa di salvezza"
-  }
- },
- "229": {
-  "stage": "precatechumenate",
-  "files": {
-   "it": "Sale dio tra acclamazioni",
-   "pt": "Sobe Deus entre aclamações - Sal 47 (46)"
   }
  },
  "230": {
