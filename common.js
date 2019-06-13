@@ -187,7 +187,7 @@ export const PdfStyles: SongStyles = {
   prefix: { color: '#777777' }
 };
 
-var DEBUG_RECTS = true;
+var DEBUG_RECTS = false;
 
 export class PdfWriter {
   opts: ExportToPdfOptions;
@@ -214,10 +214,8 @@ export class PdfWriter {
     this.opts = opts;
     this.doc = new PDFDocument({
       bufferPages: true,
-      autoFirstPage: false
-    });
-    this.doc.on('pageAdding', e => {
-      e.options.margins = {
+      autoFirstPage: false,
+      margins: {
         top: this.opts.marginTop,
         bottom: this.opts.marginTop,
         left:
@@ -226,14 +224,11 @@ export class PdfWriter {
         right:
           this.opts.marginLeft +
           (this.addExtraMargin ? this.opts.indexMarginLeft : 0)
-      };
-      e.options.size = [
-        this.opts.widthHeightPixels,
-        this.opts.widthHeightPixels
-      ];
-      this.resetY = this.opts.marginTop;
+      },
+      size: [this.opts.widthHeightPixels, this.opts.widthHeightPixels]
     });
     this.doc.on('pageAdded', () => {
+      this.resetY = this.opts.marginTop;
       this.limits = {
         x: this.doc.page.margins.left,
         y: this.doc.page.margins.top,
@@ -299,7 +294,6 @@ export class PdfWriter {
     this.pageNumber = 1;
     this.listing = [];
     this.addExtraMargin = false;
-    this.resetY = this.opts.marginTop;
   }
 
   async writePageNumber(currentSongKey?: string) {

@@ -3881,9 +3881,10 @@ var TextMixin = {
 
     if (result.lineBreak !== false) {
       if (result.width == null) {
-        // width should never be negative!
-        result.width = Math.max(0, this.page.width - this.x - this.page.margins.right);
+        result.width = this.page.width - this.x - this.page.margins.right;
       }
+
+      result.width = Math.max(result.width, 0);
     }
 
     if (!result.columns) {
@@ -4895,14 +4896,10 @@ class PDFDocument extends stream.Readable {
 
     if (!this.options.bufferPages) {
       this.flushPages();
-    }
+    } // create a page object
 
-    var e = {
-      options
-    };
-    this.emit('pageAdding', e); // create a page object
 
-    this.page = new PDFPage(this, e.options);
+    this.page = new PDFPage(this, options);
 
     this._pageBuffer.push(this.page); // add the page to the object store
 
