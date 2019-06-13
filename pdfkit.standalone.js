@@ -3883,6 +3883,8 @@ var TextMixin = {
       if (result.width == null) {
         result.width = this.page.width - this.x - this.page.margins.right;
       }
+
+      result.width = Math.max(result.width, 0);
     }
 
     if (!result.columns) {
