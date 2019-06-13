@@ -176,9 +176,11 @@ declare type ListSongPos = {
   value: number
 };
 
-declare type ExportToPdfCoord = {
+declare type ExportToPdfLimits = {
   x: number,
-  y: number
+  y: number,
+  w: number,
+  h: number
 };
 
 declare type ExportToPdfLineText = {

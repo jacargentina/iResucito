@@ -191,17 +191,19 @@ var DEBUG_RECTS = true;
 
 export class PdfWriter {
   opts: ExportToPdfOptions;
-  pos: ExportToPdfCoord;
   pageNumber: number;
   resetY: number;
   limiteHoja: number;
   doc: any;
   base64Transform: any;
-  segundaColumnaX: number;
-  segundaColumnaIndexX: number;
   addExtraMargin: boolean;
   listing: Array<ListSongPos>;
-  limits: any;
+  limits: ExportToPdfLimits;
+  pageNumberLimits: ExportToPdfLimits;
+  firstColLimits: ExportToPdfLimits;
+  secondColLimits: ExportToPdfLimits;
+  widthOfIndexPageNumbers: number;
+  widthOfIndexSpacing: number;
 
   constructor(
     fontBuf: any,
@@ -210,7 +212,6 @@ export class PdfWriter {
   ) {
     this.base64Transform = base64Transform;
     this.opts = opts;
-    this.limits = { x: 0, y: 0, w: 0, h: 0 };
     this.doc = new PDFDocument({
       bufferPages: true,
       autoFirstPage: false
@@ -245,10 +246,36 @@ export class PdfWriter {
           this.doc.page.margins.bottom -
           this.doc.page.margins.top
       };
+      this.pageNumberLimits = {
+        x: this.limits.x,
+        y:
+          this.opts.widthHeightPixels -
+          this.doc.page.margins.bottom -
+          this.opts.songText.FontSize * 2,
+        w: this.limits.w,
+        h: this.opts.songText.FontSize * 2
+      };
+      this.firstColLimits = {
+        x: this.limits.x,
+        y: this.limits.y,
+        w: this.limits.w / 2,
+        h: this.limits.h
+      };
+      this.secondColLimits = {
+        x: this.firstColLimits.x + this.firstColLimits.w,
+        y: this.limits.y,
+        w: this.firstColLimits.w,
+        h: this.limits.h
+      };
       if (DEBUG_RECTS === true) {
-        this.doc
-          .rect(this.limits.x, this.limits.y, this.limits.w, this.limits.h)
-          .stroke('#888');
+        const drawLimits = (limits, color) => {
+          const { x, y, w, h } = limits;
+          this.doc.rect(x, y, w, h).stroke(color);
+        };
+        drawLimits(this.limits, '#888');
+        drawLimits(this.pageNumberLimits, '#666');
+        drawLimits(this.firstColLimits, '#3333aa');
+        drawLimits(this.secondColLimits, '#aa3333');
       }
     });
     this.doc.info = {
@@ -263,10 +290,13 @@ export class PdfWriter {
     } else {
       this.doc.font('Times-Roman');
     }
+    this.widthOfIndexPageNumbers = this.doc
+      .fontSize(this.opts.indexText.FontSize)
+      .widthOfString('000');
+    this.widthOfIndexSpacing = this.doc
+      .fontSize(this.opts.indexText.FontSize)
+      .widthOfString('  ');
     this.pageNumber = 1;
-    this.segundaColumnaX = opts.widthHeightPixels / 2 + opts.marginLeft;
-    this.segundaColumnaIndexX =
-      opts.widthHeightPixels / 2 + opts.indexMarginLeft;
     this.listing = [];
     this.addExtraMargin = false;
     this.resetY = this.opts.marginTop;
@@ -274,10 +304,7 @@ export class PdfWriter {
 
   async writePageNumber(currentSongKey?: string) {
     this.doc.x = this.doc.page.margins.left;
-    this.doc.y =
-      this.opts.widthHeightPixels -
-      this.doc.page.margins.bottom -
-      this.opts.songText.FontSize * 2;
+    this.doc.y = this.pageNumberLimits.y + this.opts.songText.FontSize / 2;
     this.writeText(
       this.pageNumber.toString(),
       PdfStyles.pageNumber.color,
@@ -302,18 +329,16 @@ export class PdfWriter {
     this.pageNumber++;
   }
 
-  async checkLimits(secondCol: number) {
+  async checkLimits() {
     if (
-      this.doc.y +
-        this.doc.currentLineHeight(true) +
-        this.opts.songText.FontSize >
-      this.doc.page.maxY()
+      this.doc.y + this.doc.currentLineHeight(false) >
+      this.pageNumberLimits.y
     ) {
-      if (this.doc.x == secondCol) {
+      if (this.doc.x == this.secondColLimits.x) {
         await this.writePageNumber();
         this.doc.addPage();
       } else {
-        this.doc.x = secondCol;
+        this.doc.x = this.secondColLimits.x;
       }
       this.doc.y = this.resetY;
     }
@@ -372,7 +397,7 @@ export class PdfWriter {
   }
 
   async generateListing(title: string, items: Array<ListSongItem>) {
-    await this.checkLimits(this.segundaColumnaIndexX);
+    await this.checkLimits();
     await this.writeText(
       title.toUpperCase(),
       PdfStyles.title.color,
@@ -383,25 +408,28 @@ export class PdfWriter {
         if (item.str === '') {
           this.doc.moveDown();
         } else {
-          await this.checkLimits(this.segundaColumnaIndexX);
-          this.listing.push({
-            page: this.pageNumber,
-            songKey: item.songKey,
-            x:
-              this.doc.x < this.opts.widthHeightPixels / 2
-                ? this.segundaColumnaIndexX
-                : this.opts.widthHeightPixels - 15,
-            y: this.doc.y,
-            value: 0
-          });
+          await this.checkLimits();
           await this.writeText(
             item.str,
             PdfStyles.normalLine.color,
             this.opts.indexText.FontSize,
             {
-              width: this.opts.widthHeightPixels / 2 - this.opts.marginLeft * 2
+              width:
+                this.firstColLimits.w -
+                this.widthOfIndexPageNumbers -
+                this.widthOfIndexSpacing
             }
           );
+          this.listing.push({
+            page: this.pageNumber,
+            songKey: item.songKey,
+            x:
+              this.doc.x < this.secondColLimits.x
+                ? this.firstColLimits.x + this.firstColLimits.w
+                : this.secondColLimits.x + this.secondColLimits.w,
+            y: this.doc.y - this.doc.currentLineHeight(false),
+            value: 0
+          });
         }
       });
     }
@@ -413,12 +441,17 @@ export class PdfWriter {
         this.doc.switchToPage(i);
         var items = this.listing.filter(l => l.page === i);
         await asyncForEach(items, async (l: ListSongPos) => {
-          this.doc.x = l.x - 30;
+          this.doc.x =
+            l.x - this.widthOfIndexPageNumbers - this.widthOfIndexSpacing * 2;
           this.doc.y = l.y;
           await this.writeText(
             l.value.toString(),
             PdfStyles.normalLine.color,
-            this.opts.indexText.FontSize
+            this.opts.indexText.FontSize,
+            {
+              width: this.widthOfIndexPageNumbers + this.widthOfIndexSpacing,
+              align: 'right'
+            }
           );
         });
       }
@@ -500,9 +533,8 @@ export const PDFGenerator = async (
           I18n.t(`search_title.${stage}`),
           byStage[stage]
         );
+        writer.doc.moveDown();
       });
-
-      writer.doc.moveDown();
 
       // Agrupados por tiempo liturgico
       var byTime = getGroupedByLiturgicTime(songsToPdf);
@@ -512,16 +544,17 @@ export const PDFGenerator = async (
           title = I18n.t('search_title.liturgical time') + ` - ${title}`;
         }
         await writer.generateListing(title, byTime[time]);
+        writer.doc.moveDown();
       });
-
-      writer.doc.moveDown();
 
       // Agrupados por orden liturgico
       var byOrder = getGroupedByLiturgicOrder(songsToPdf);
       await asyncForEach(liturgicOrder, async order => {
         var title = I18n.t(`search_title.${order}`);
         await writer.generateListing(title, byOrder[order]);
+        writer.doc.moveDown();
       });
+
       await writer.writePageNumber();
     }
 
@@ -588,7 +621,7 @@ export const PDFGenerator = async (
           blockIndicator = null;
           blockY = 0;
         }
-        await writer.checkLimits(writer.segundaColumnaX);
+        await writer.checkLimits();
         if (it.notas === true) {
           lastWidth = await writer.writeText(
             it.texto,
