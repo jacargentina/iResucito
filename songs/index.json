@@ -576,7 +576,7 @@
   "files": {
    "es": "Dayenú",
    "it": "Dajenù",
-   "pt": "Dayenú",
+   "pt": "Dayenu - Da Hagadá da Páscoa Hebráica",
    "de-AT": "Dajenù"
   }
  },
@@ -597,7 +597,7 @@
   "files": {
    "es": "Decid a los de corazón cansado - Is 35 4ss",
    "it": "Dite agli smarriti di cuore - Is 35 4ss",
-   "pt": "Dizei aos de coracao cansado - Is 35, 4ss",
+   "pt": "Dizei aos de coração cansado - Is 35, 4ss",
    "de-AT": "Sagt es den im Herzen Verzagten - Jes 35, 4 ff"
   }
  },
@@ -693,7 +693,7 @@
   "files": {
    "es": "Elí, Elí, lamá sabactaní - Sal 22 (21)",
    "it": "Eli, Eli, lammà sabactani - Sal 22 (21)",
-   "pt": "Elí, Elí, lamá sabactani - Sal 22 (21)",
+   "pt": "Eli, Eli, Lamá Sabactani - Sal 22 (21)",
    "de-AT": "Eli, Eli, Lama Sabachtani - Ps 22",
    "en": "Eli, eli, lamma sabachtani - Ps 21 (22)"
   }
@@ -733,7 +733,7 @@
   "files": {
    "es": "Están rotas mis ataduras - Carmen 63",
    "it": "Sono rotti i miei legami - Carmen 63",
-   "pt": "Estão rotas minhas ataduras - Carmen 63",
+   "pt": "Estão rotas minhas ataduras - Carmen 63 - Poema de Rabindranath Tagore",
    "de-AT": "Carmen '63 - von Tagore",
    "en": "Carmen 63"
   }
@@ -744,7 +744,7 @@
   "files": {
    "es": "Evenu Shalom Alejem - Canto hebreo",
    "it": "Evenu Shalom Alejem - Canto ebraico",
-   "pt": "Evenu Shalom Alehem - Canto hebraico",
+   "pt": "Evenu Shalom Alehem - Canto Popular Hebraico",
    "de-AT": "Evenu shalom alechem - Hebräisches Lied"
   }
  },
@@ -753,7 +753,7 @@
   "files": {
    "es": "Exultad, justos, en el Señor - Sal 32",
    "it": "Esultate giusti nel Signore - Sal 32",
-   "pt": "Exultai justos no Senhor - Sal 32",
+   "pt": "Exultai, justos, no Senhor - Sal 33 (32)",
    "de-AT": "Ihr Gerechten, jubelt vor dem Herrn - Ps 33",
    "en": "Exult, you just in the lord - Ps 32"
   }
@@ -838,7 +838,7 @@
   "files": {
    "es": "He aquí que vengo presto - Ap 22, 12-16",
    "it": "Ecco qui io vengo presto - Ap 22, 12-16",
-   "pt": "Eis me aqui que venho em breve - Ap 22, 12-16",
+   "pt": "Eis-me aqui que venho em breve - Ap 22, 12-16",
    "de-AT": "Siehe da ich komme bald - Offb 22, 12-16"
   }
  },
@@ -849,7 +849,7 @@
   "files": {
    "es": "He esperado en el Señor - Sal 40 (39)",
    "it": "Ho sperato, ho sperato nel Signore - Sal 40 (39)",
-   "pt": "Esperei esperei no Senhor - Sal 40 (39)",
+   "pt": "Esperei, esperei no Senhor - Sal 40 (39)",
    "de-AT": "Ich hoffte auf den Herrn - Ps 40",
    "en": "I hoped, i hoped in the lord - Ps 39 (40)"
   }
@@ -869,7 +869,7 @@
   "easter": true,
   "files": {
    "es": "Himno a Cristo luz - Himno",
-   "pt": "Hino a cristo luz - Hino",
+   "pt": "Hino a Cristo Luz - Hino",
    "de-AT": "Hymnus zu Christus dem Licht"
   }
  },
@@ -910,7 +910,7 @@
   "lutes and vespers": true,
   "files": {
    "es": "Himno de la Ascensión - Himno",
-   "pt": "Hino da Ascensão - Hino",
+   "pt": "Hino da Ascensão - Hino das Laudes do tempo Pascal, da Ascensão até Pentecostes",
    "de-AT": "Hymnus der Vesper von Christi Himmelfahrt und Hymnus der Laudes von Christi Himmelfahrt bis Pfingsten"
   },
   "stages": {
@@ -936,7 +936,7 @@
   "files": {
    "es": "Id y anunciad a mis hermanos - Mt 28, 7-10.16-20",
    "it": "Andate ed annunziate ai miei fratelli - Mt 28, 16-20",
-   "pt": "Ide e anunciai a meus irmãos - Mt 28,7-10.16-20",
+   "pt": "Ide e anunciai a meus irmãos - Mt 28, 7-10.16-20",
    "de-AT": "Geht und verkündet meinen Brüdern - Mt 28, 16-20",
    "en": "Go and announce to my brothers (Mt 38,16-20)"
   }
@@ -1022,7 +1022,7 @@
   "files": {
    "es": "Llévame al cielo - Flp 1, 23",
    "it": "Portami in cielo - Flp 1, 23",
-   "pt": "Leva-me ao Céu - Flp 1,23",
+   "pt": "Leva-me ao Céu - Fp 1, 23",
    "de-AT": "Bring mich in den Himmel - Phil 1, 23"
   }
  },
@@ -1379,7 +1379,7 @@
   "files": {
    "es": "Se encontraron dos ángeles - Canto de los niños",
    "it": "C'erano due angeli - canzone per bambini",
-   "pt": "Encontraram se dois anjos - Canto das Crianças",
+   "pt": "Encontraram-se dois Anjos - Canto das Crianças",
    "de-AT": "Es waren einmal zwei Engel"
   }
  },
@@ -1660,7 +1660,7 @@
   "files": {
    "es": "Ya viene mi Dios - Villancico",
    "it": "Già viene il mio dio - Canto natalizio",
-   "pt": "Já vem o meu deus - Canto popular do Natal",
+   "pt": "Já vem o meu Deus - Canto popular do Natal",
    "de-AT": "Schon kommt mein Gott"
   }
  },
@@ -1671,7 +1671,7 @@
   "files": {
    "es": "Yahveh, tú eres mi Dios - Is 25",
    "it": "Jahvè tu sei il mio dio - Is 25",
-   "pt": "Iahweh tu és meu deus - Is 25",
+   "pt": "Iahweh, Tu és meu Deus - Is 25",
    "de-AT": "Jahwe, mein Gott bist du - Jes 25, 1-8",
    "en": "Yahweh you are my god (is 25, 1-8)"
   }
@@ -1681,7 +1681,7 @@
   "files": {
    "es": "Yo te amo, Señor - Sal 18",
    "it": "Ti amo Signore - Sal 18",
-   "pt": "Eu te amo Senhor - Sal 18 (17)",
+   "pt": "Eu te amo, Senhor - Sal 18 (17)",
    "de-AT": "Ich liebe dich Herr - Ps 18"
   }
  },

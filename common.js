@@ -186,7 +186,7 @@ export const PdfStyles: SongStyles = {
   prefix: { color: '#777777' }
 };
 
-var DEBUG_RECTS = true;
+var DEBUG_RECTS = false;
 
 export class PdfWriter {
   opts: ExportToPdfOptions;

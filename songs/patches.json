@@ -1068,6 +1068,17 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1560284601209,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Dayenú",
+        "new": "Dayenu - Da Hagadá da Páscoa Hebráica"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "54": [
@@ -1084,6 +1095,13 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1560285006619,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "55": [
@@ -1091,6 +1109,17 @@
       "date": 1559567897172,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1560286078694,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Dizei aos de coracao cansado - Is 35, 4ss",
+        "new": "Dizei aos de coração cansado - Is 35, 4ss"
+      },
       "created": false,
       "updated": true
     }
@@ -1102,6 +1131,13 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1560285567833,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "57": [
@@ -1111,6 +1147,13 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1560285826052,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "58": [
@@ -1118,6 +1161,13 @@
       "date": 1559567902475,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1560285288578,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -1199,6 +1249,17 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1560298682477,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Elí, Elí, lamá sabactani - Sal 22 (21)",
+        "new": "Eli, Eli, Lamá Sabactani - Sal 22 (21)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "65": [
@@ -1237,6 +1298,13 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1560299442134,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "68": [
@@ -1244,6 +1312,17 @@
       "date": 1559567976003,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1560299937429,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Estão rotas minhas ataduras - Carmen 63",
+        "new": "Estão rotas minhas ataduras - Carmen 63 - Poema de Rabindranath Tagore"
+      },
       "created": false,
       "updated": true
     }
@@ -1262,6 +1341,17 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1560371038100,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Evenu Shalom Alehem - Canto hebraico",
+        "new": "Evenu Shalom Alehem - Canto Popular Hebraico"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "70": [
@@ -1271,6 +1361,17 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1560371257696,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Exultai justos no Senhor - Sal 32",
+        "new": "Exultai, justos, no Senhor - Sal 33 (32)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "71": [
@@ -1278,6 +1379,13 @@
       "date": 1559567978390,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1560300391582,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -1312,6 +1420,13 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1560372228751,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "74": [
@@ -1319,6 +1434,13 @@
       "date": 1559568000989,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1560385727606,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -1384,6 +1506,17 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1560298142564,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Eis me aqui que venho em breve - Ap 22, 12-16",
+        "new": "Eis-me aqui que venho em breve - Ap 22, 12-16"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "79": [
@@ -1391,6 +1524,17 @@
       "date": 1559568016544,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1560299673398,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Esperei esperei no Senhor - Sal 40 (39)",
+        "new": "Esperei, esperei no Senhor - Sal 40 (39)"
+      },
       "created": false,
       "updated": true
     }
@@ -1402,6 +1546,13 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1560371758321,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "81": [
@@ -1409,6 +1560,17 @@
       "date": 1559568067652,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1560385955561,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Hino a cristo luz - Hino",
+        "new": "Hino a Cristo Luz - Hino"
+      },
       "created": false,
       "updated": true
     }
@@ -1420,6 +1582,13 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1560386303093,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "83": [
@@ -1429,6 +1598,13 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1560458039054,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "84": [
@@ -1436,6 +1612,13 @@
       "date": 1559568081677,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1560457821405,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -1460,6 +1643,17 @@
       "date": 1559568079330,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1560386521100,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Hino da Ascensão - Hino",
+        "new": "Hino da Ascensão - Hino das Laudes do tempo Pascal, da Ascensão até Pentecostes"
+      },
       "created": false,
       "updated": true
     }
@@ -1491,6 +1685,17 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1560458520818,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Ide e anunciai a meus irmãos - Mt 28,7-10.16-20",
+        "new": "Ide e anunciai a meus irmãos - Mt 28, 7-10.16-20"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "88": [
@@ -1498,6 +1703,13 @@
       "date": 1559568089335,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1560458680445,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -1518,6 +1730,13 @@
       "date": 1559568095128,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1560459560309,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -1626,6 +1845,17 @@
       "date": 1559568134585,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1560459723743,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Leva-me ao Céu - Flp 1,23",
+        "new": "Leva-me ao Céu - Fp 1, 23"
+      },
       "created": false,
       "updated": true
     }
@@ -1982,6 +2212,19 @@
       "updated": true
     }
   ],
+  "128": [
+    {
+      "date": 1560299169870,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Encontraram se dois anjos - Canto das Crianças",
+        "new": "Encontraram-se dois Anjos - Canto das Crianças"
+      },
+      "created": false,
+      "updated": true
+    }
+  ],
   "129": [
     {
       "date": 1559569164048,
@@ -2079,6 +2322,13 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1560370403856,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "140": [
@@ -2086,6 +2336,13 @@
       "date": 1559569255533,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1559937423538,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -2243,6 +2500,17 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1560458868278,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Já vem o meu deus - Canto popular do Natal",
+        "new": "Já vem o meu Deus - Canto popular do Natal"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "155": [
@@ -2263,6 +2531,17 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1560458217993,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Iahweh tu és meu deus - Is 25",
+        "new": "Iahweh, Tu és meu Deus - Is 25"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "156": [
@@ -2272,6 +2551,17 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1560370626610,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Eu te amo Senhor - Sal 18 (17)",
+        "new": "Eu te amo, Senhor - Sal 18 (17)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "157": [
@@ -2279,6 +2569,13 @@
       "date": 1559569323760,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1560370847862,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -3211,6 +3508,13 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1560299022583,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "214": [
@@ -3254,6 +3558,13 @@
       "date": 1559567980592,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1560370131411,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
