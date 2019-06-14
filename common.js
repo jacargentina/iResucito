@@ -10,17 +10,16 @@ export const defaultExportToPdfOptions: ExportToPdfOptions = {
   marginLeft: 25,
   marginTop: 19,
   widthHeightPixels: 598, // 21,1 cm
-  songTitle: { FontSize: 19, Spacing: 19 },
-  songSource: { FontSize: 10, Spacing: 20 },
-  songText: { FontSize: 12, Spacing: 11 },
+  songTitle: { FontSize: 19 },
+  songSource: { FontSize: 10 },
+  songText: { FontSize: 12 },
   songNote: { FontSize: 10 },
   songIndicatorSpacing: 18,
   songParagraphSpacing: 9,
-  indexTitle: { FontSize: 16, Spacing: 14 },
+  indexTitle: { FontSize: 16 },
   bookTitle: { FontSize: 80, Spacing: 10 },
   bookSubtitle: { FontSize: 14 },
-  indexSubtitle: { FontSize: 12, Spacing: 4 },
-  indexText: { FontSize: 11, Spacing: 3 },
+  indexText: { FontSize: 11 },
   indexMarginLeft: 25
 };
 
@@ -187,7 +186,7 @@ export const PdfStyles: SongStyles = {
   prefix: { color: '#777777' }
 };
 
-var DEBUG_RECTS = false;
+var DEBUG_RECTS = true;
 
 export class PdfWriter {
   opts: ExportToPdfOptions;
@@ -203,6 +202,7 @@ export class PdfWriter {
   firstColLimits: ExportToPdfLimits;
   secondColLimits: ExportToPdfLimits;
   widthOfIndexPageNumbers: number;
+  heightOfPageNumbers: number;
   widthOfIndexSpacing: number;
 
   constructor(
@@ -228,6 +228,15 @@ export class PdfWriter {
       size: [this.opts.widthHeightPixels, this.opts.widthHeightPixels]
     });
     this.doc.on('pageAdded', () => {
+      this.widthOfIndexPageNumbers = this.doc
+        .fontSize(this.opts.indexText.FontSize)
+        .widthOfString('000');
+      this.heightOfPageNumbers = this.doc
+        .fontSize(this.opts.songText.FontSize)
+        .heightOfString('000');
+      this.widthOfIndexSpacing = this.doc
+        .fontSize(this.opts.indexText.FontSize)
+        .widthOfString('  ');
       this.resetY = this.opts.marginTop;
       this.limits = {
         x: this.doc.page.margins.left,
@@ -246,9 +255,9 @@ export class PdfWriter {
         y:
           this.opts.widthHeightPixels -
           this.doc.page.margins.bottom -
-          this.opts.songText.FontSize * 2,
+          this.heightOfPageNumbers,
         w: this.limits.w,
-        h: this.opts.songText.FontSize * 2
+        h: this.heightOfPageNumbers
       };
       this.firstColLimits = {
         x: this.limits.x,
@@ -285,12 +294,6 @@ export class PdfWriter {
     } else {
       this.doc.font('Times-Roman');
     }
-    this.widthOfIndexPageNumbers = this.doc
-      .fontSize(this.opts.indexText.FontSize)
-      .widthOfString('000');
-    this.widthOfIndexSpacing = this.doc
-      .fontSize(this.opts.indexText.FontSize)
-      .widthOfString('  ');
     this.pageNumber = 1;
     this.listing = [];
     this.addExtraMargin = false;
@@ -298,7 +301,7 @@ export class PdfWriter {
 
   async writePageNumber(currentSongKey?: string) {
     this.doc.x = this.doc.page.margins.left;
-    this.doc.y = this.pageNumberLimits.y + this.opts.songText.FontSize / 2;
+    this.doc.y = this.pageNumberLimits.y;
     this.writeText(
       this.pageNumber.toString(),
       PdfStyles.pageNumber.color,
@@ -309,7 +312,8 @@ export class PdfWriter {
         width:
           this.opts.widthHeightPixels -
           this.doc.page.margins.left -
-          this.doc.page.margins.right
+          this.doc.page.margins.right,
+        height: this.heightOfPageNumbers
       }
     );
     if (currentSongKey) {
@@ -323,9 +327,9 @@ export class PdfWriter {
     this.pageNumber++;
   }
 
-  async checkLimits() {
+  async checkLimits(lineCount: number = 1) {
     if (
-      this.doc.y + this.doc.currentLineHeight(false) >
+      this.doc.y + this.doc.currentLineHeight(false) * lineCount >
       this.pageNumberLimits.y
     ) {
       if (this.doc.x == this.secondColLimits.x) {
@@ -391,11 +395,11 @@ export class PdfWriter {
   }
 
   async generateListing(title: string, items: Array<ListSongItem>) {
-    await this.checkLimits();
+    await this.checkLimits(2);
     await this.writeText(
       title.toUpperCase(),
       PdfStyles.title.color,
-      this.opts.indexSubtitle.FontSize
+      this.opts.indexText.FontSize
     );
     if (items) {
       await asyncForEach(items, async (item: ListSongItem) => {
@@ -615,7 +619,7 @@ export const PDFGenerator = async (
           blockIndicator = null;
           blockY = 0;
         }
-        await writer.checkLimits();
+        await writer.checkLimits(it.notas === true ? 2 : 1);
         if (it.notas === true) {
           lastWidth = await writer.writeText(
             it.texto,

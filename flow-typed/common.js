@@ -145,17 +145,16 @@ declare type ExportToPdfOptions = {
   marginLeft: number,
   marginTop: number,
   widthHeightPixels: number,
-  songTitle: { FontSize: number, Spacing: number },
-  songSource: { FontSize: number, Spacing: number },
-  songText: { FontSize: number, Spacing: number },
+  songTitle: { FontSize: number },
+  songSource: { FontSize: number },
+  songText: { FontSize: number },
   songNote: { FontSize: number },
   songIndicatorSpacing: number,
   songParagraphSpacing: number,
-  indexTitle: { FontSize: number, Spacing: number },
+  indexTitle: { FontSize: number },
   bookTitle: { FontSize: number, Spacing: number },
   bookSubtitle: { FontSize: number },
-  indexSubtitle: { FontSize: number, Spacing: number },
-  indexText: { FontSize: number, Spacing: number },
+  indexText: { FontSize: number },
   indexMarginLeft: number
 };
 
