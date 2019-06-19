@@ -125,7 +125,7 @@ const SongEditorDialog = (props: any) => {
               data: {
                 key: song.key,
                 rating: song.rating,
-                lines: lines.split('\n'),
+                text: lines,
                 titulo: song.titulo,
                 fuente: song.fuente,
                 stage: song.stage
