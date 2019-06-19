@@ -62,6 +62,19 @@ declare type SongStyles = {
   prefix: any
 };
 
+declare type SongLineType = 
+  | ''
+  | 'canto'
+  | 'cantoConIndicador'
+  | 'notas'
+  | 'inicioParrafo'
+  | 'notaEspecial'
+  | 'tituloEspecial'
+  | 'textoEspecial'
+  | 'bloqueRepetir' 
+  | 'bloqueNotaAlPie'
+  | 'comenzarColumna'
+
 declare type SongLine = {
   texto: string,
   style: any,
@@ -69,20 +82,13 @@ declare type SongLine = {
   prefijoStyle: any,
   sufijo: string,
   sufijoStyle: any,
-  canto: boolean,
-  cantoConIndicador: boolean,
-  notas: boolean,
-  inicioParrafo: boolean,
-  notaEspecial: boolean,
-  tituloEspecial: boolean,
-  textoEspecial: boolean,
-  indicador: string
+  type: SongLineType
 };
 
 declare type SongIndicator = {
   start: number,
   end: number,
-  type: string
+  type: SongLineType
 };
 
 declare type SongRendering = {

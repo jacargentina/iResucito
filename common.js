@@ -342,6 +342,13 @@ export class PdfWriter {
     }
   }
 
+  startColumn() {
+    if (this.doc.x !== this.secondColLimits.x) {
+      this.doc.x = this.secondColLimits.x;
+      this.doc.y = this.resetY;
+    }
+  }
+
   getCenteringY(text: string, size: number) {
     const height = this.doc.fontSize(size).heightOfString(text);
     return parseInt((this.opts.widthHeightPixels - height) / 2);
@@ -586,10 +593,10 @@ export const PDFGenerator = async (
       var maxX = 0;
       items.forEach((it: SongLine, i: number) => {
         var lastWidth: number = 0;
-        if (i > 0 && it.inicioParrafo) {
+        if (i > 0 && it.type == 'inicioParrafo') {
           writer.doc.moveDown();
         }
-        if (i > 0 && it.tituloEspecial) {
+        if (i > 0 && it.type == 'tituloEspecial') {
           writer.doc.moveDown();
           writer.doc.moveDown();
         }
@@ -600,9 +607,9 @@ export const PDFGenerator = async (
         if (blockIndicator && blockIndicator.end === i) {
           var text = '';
           var color = PdfStyles.indicator.color;
-          if (blockIndicator.type == 'repeat') {
+          if (blockIndicator.type == 'bloqueRepetir') {
             text = I18n.t('songs.repeat');
-          } else if (blockIndicator.type == 'footnote') {
+          } else if (blockIndicator.type == 'bloqueNotaAlPie') {
             text = '*';
           }
           lines.push({
@@ -615,36 +622,39 @@ export const PDFGenerator = async (
           blockIndicator = null;
           blockY = 0;
         }
-        writer.checkLimits(it.notas === true ? 2 : 1);
-        if (it.notas === true) {
+        if (it.type == 'comenzarColumna') {
+          writer.startColumn();
+        }
+        writer.checkLimits(it.type == 'notas' ? 2 : 1);
+        if (it.type == 'notas') {
           lastWidth = writer.writeText(
             it.texto,
             PdfStyles.notesLine.color,
             writer.opts.songNote.FontSize,
             { indent: writer.opts.songIndicatorSpacing }
           );
-        } else if (it.canto === true) {
+        } else if (it.type == 'canto') {
           lastWidth = writer.writeText(
             it.texto,
             PdfStyles.normalLine.color,
             writer.opts.songText.FontSize,
             { indent: writer.opts.songIndicatorSpacing }
           );
-        } else if (it.cantoConIndicador === true) {
+        } else if (it.type == 'cantoConIndicador') {
           lastWidth = writer.writeText(
             it.prefijo,
             PdfStyles.prefix.color,
             writer.opts.songText.FontSize
           );
           writer.doc.moveUp();
-          if (it.tituloEspecial === true) {
+          if (it.type == 'tituloEspecial') {
             lastWidth = writer.writeText(
               it.texto,
               PdfStyles.specialNoteTitle.color,
               writer.opts.songText.FontSize,
               { indent: writer.opts.songIndicatorSpacing }
             );
-          } else if (it.textoEspecial === true) {
+          } else if (it.type == 'textoEspecial') {
             lastWidth = writer.writeText(
               it.texto,
               PdfStyles.specialNote.color,

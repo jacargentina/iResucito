@@ -35,17 +35,10 @@ export class SongsParser {
         prefijoStyle: null,
         sufijo: '',
         sufijoStyle: null,
-        canto: false,
-        cantoConIndicador: false,
-        notas: false,
-        inicioParrafo: false,
-        notaEspecial: false,
-        tituloEspecial: false,
-        textoEspecial: false,
-        indicador: ''
+        type: ''
       };
       return it;
-    } else if (text.trim() == 'repeat' || text.trim() == 'footnote') {
+    } else if (text.trim() == 'repeat') {
       var it: SongLine = {
         texto: '',
         style: null,
@@ -53,14 +46,29 @@ export class SongsParser {
         prefijoStyle: null,
         sufijo: '',
         sufijoStyle: null,
-        canto: false,
-        cantoConIndicador: false,
-        notas: false,
-        inicioParrafo: false,
-        notaEspecial: false,
-        tituloEspecial: false,
-        textoEspecial: false,
-        indicador: text.trim()
+        type: 'bloqueRepetir'
+      };
+      return it;
+    } else if (text.trim() == 'footnote') {
+      var it: SongLine = {
+        texto: '',
+        style: null,
+        prefijo: '',
+        prefijoStyle: null,
+        sufijo: '',
+        sufijoStyle: null,
+        type: 'bloqueNotaAlPie'
+      };
+      return it;
+    } else if (text.trim() == 'column') {
+      var it: SongLine = {
+        texto: '',
+        style: null,
+        prefijo: '',
+        prefijoStyle: null,
+        sufijo: '',
+        sufijoStyle: null,
+        type: 'comenzarColumna'
       };
       return it;
     } else {
@@ -79,14 +87,7 @@ export class SongsParser {
           prefijoStyle: this.songStyles.prefix,
           sufijo: '',
           sufijoStyle: null,
-          canto: false,
-          cantoConIndicador: true,
-          notas: false,
-          inicioParrafo: false,
-          notaEspecial: false,
-          tituloEspecial: false,
-          textoEspecial: false,
-          indicador: ''
+          type: 'cantoConIndicador'
         };
         return it;
       } else if (
@@ -130,14 +131,7 @@ export class SongsParser {
           prefijoStyle: this.songStyles.prefix,
           sufijo: '',
           sufijoStyle: null,
-          canto: false,
-          cantoConIndicador: true,
-          notas: false,
-          inicioParrafo: false,
-          notaEspecial: false,
-          tituloEspecial: false,
-          textoEspecial: false,
-          indicador: ''
+          type: 'cantoConIndicador'
         };
         return it;
       } else if (this.isChordsLine(text, locale)) {
@@ -148,14 +142,7 @@ export class SongsParser {
           prefijoStyle: null,
           sufijo: '',
           sufijoStyle: null,
-          canto: false,
-          cantoConIndicador: true,
-          notas: true,
-          inicioParrafo: false,
-          notaEspecial: false,
-          tituloEspecial: false,
-          textoEspecial: false,
-          indicador: ''
+          type: 'notas'
         };
         return it;
       } else if (text.startsWith('\u2217')) {
@@ -167,54 +154,31 @@ export class SongsParser {
           prefijoStyle: this.songStyles.notesLine,
           sufijo: '',
           sufijoStyle: null,
-          canto: false,
-          cantoConIndicador: true,
-          notas: false,
-          inicioParrafo: false,
-          notaEspecial: true,
-          tituloEspecial: false,
-          textoEspecial: false,
-          indicador: ''
+          type: 'cantoConIndicador'
         };
         return it;
       } else if (text.trim().startsWith('**') && text.trim().endsWith('**')) {
         // Titulo especial
         var it: SongLine = {
-          canto: false,
           texto: text.replace(/\*/g, '').trim(),
           style: this.songStyles.specialNoteTitle,
           prefijo: '',
           prefijoStyle: null,
           sufijo: '',
           sufijoStyle: null,
-          canto: false,
-          cantoConIndicador: true,
-          notas: false,
-          inicioParrafo: true,
-          notaEspecial: false,
-          tituloEspecial: true,
-          textoEspecial: false,
-          indicador: ''
+          type: 'cantoConIndicador'
         };
         return it;
       } else if (text.startsWith('-')) {
         // Texto especial
         var it: SongLine = {
-          canto: false,
           texto: text.replace('-', '').trim(),
           style: this.songStyles.specialNote,
           prefijo: '',
           prefijoStyle: null,
           sufijo: '',
           sufijoStyle: null,
-          canto: false,
-          cantoConIndicador: true,
-          notas: false,
-          inicioParrafo: false,
-          notaEspecial: false,
-          tituloEspecial: false,
-          textoEspecial: true,
-          indicador: ''
+          type: 'textoEspecial'
         };
         return it;
       } else {
@@ -226,14 +190,7 @@ export class SongsParser {
           prefijoStyle: null,
           sufijo: '',
           sufijoStyle: null,
-          canto: texto !== '',
-          cantoConIndicador: texto !== '',
-          notas: false,
-          inicioParrafo: false,
-          notaEspecial: false,
-          tituloEspecial: false,
-          textoEspecial: false,
-          indicador: ''
+          type: 'canto'
         };
         return it;
       }
@@ -317,7 +274,7 @@ export class SongsParser {
         it.sufijo = '\u2217';
         it.sufijoStyle = this.songStyles.notesLine;
       }
-      if (it.notas && tDiff && tDiff !== 0) {
+      if (it.type == 'notas' && tDiff && tDiff !== 0) {
         it.texto = this.getChordsTransported(it.texto, tDiff, locale);
       }
       return it;
@@ -326,28 +283,41 @@ export class SongsParser {
       // Ajustar margen izquierdo por prefijos
       if (it.prefijo == '' && i > 0) {
         const prevIt = lFirstPass[i - 1];
-        if (!prevIt.indicator && prevIt.prefijo !== '') {
+        if (
+          prevIt.type !== 'bloqueRepetir' &&
+          prevIt.type !== 'bloqueNotaAlPie' &&
+          prevIt.prefijo !== ''
+        ) {
           it.prefijo = ' '.repeat(prevIt.prefijo.length);
         }
       } else if (it.prefijo == '' && i < lFirstPass.length - 1) {
         const nextIt = lFirstPass[i + 1];
-        if (!nextIt.indicator && nextIt.prefijo !== '') {
+        if (
+          nextIt.type !== 'bloqueRepetir' &&
+          nextIt.type !== 'bloqueNotaAlPie' &&
+          nextIt.prefijo !== ''
+        ) {
           it.prefijo = ' '.repeat(nextIt.prefijo.length);
         }
       }
       // Ajustar estilo para las notas
       if (it.texto.trim() == '' && i < lFirstPass.length - 1) {
         const nextItm = lFirstPass[i + 1];
-        if (nextItm.canto) {
+        if (nextItm.type == 'canto') {
           it.style = this.songStyles.notesLine;
-          it.notas = true;
+          it.type = 'notas';
         }
       }
       // Ajustar inicios de parrafo (lineas vacias)
-      if (!it.notas && it.texto === '' && i < lFirstPass.length - 1) {
+      if (
+        it.type !== 'notas' &&
+        it.type !== 'comenzarColumna' &&
+        it.texto === '' &&
+        i < lFirstPass.length - 1
+      ) {
         const nextItmnn = lFirstPass[i + 1];
-        if (nextItmnn.notas || nextItmnn.texto !== '') {
-          it.inicioParrafo = true;
+        if (nextItmnn.type == 'notas' || nextItmnn.texto !== '') {
+          it.type = 'inicioParrafo';
         }
       }
       return it;
@@ -355,7 +325,7 @@ export class SongsParser {
     // Extraer parrafos de BIS (repeat) y notas al pie (footnote)
     var lIndicators: Array<SongIndicator> = [];
     const lResult = lSecondPass.filter((it: SongLine, i: number) => {
-      if (it.indicador !== '') {
+      if (it.type == 'bloqueRepeat' || it.type == 'bloqueFootnote') {
         var j = i - 1;
         while (j > 0 && !lSecondPass[j].inicioParrafo) {
           j--;
@@ -363,7 +333,7 @@ export class SongsParser {
         lIndicators.push({
           start: j,
           end: i,
-          type: it.indicador
+          type: it.type
         });
         return false;
       }
