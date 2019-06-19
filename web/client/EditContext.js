@@ -26,7 +26,7 @@ const EditContextWrapper = (props: any) => {
     activeDialog
   } = data;
   const [text, setText] = useState('');
-  const [pdf, setPdf] = useState();
+  const [pdf, setPdf] = useState({ loading: false, url: null });
   const [navigation, setNavigation] = useState(emptyNavigation);
   const [rename, setRename] = useState();
   const [stage, setStage] = useState();
@@ -116,16 +116,20 @@ const EditContextWrapper = (props: any) => {
           options: JSON.parse(savedSettings)
         };
       }
+      setPdf({ loading: true, url: null });
       return api
         .post(`/api/pdf/${I18n.locale}/${editSong.key}`, data, {
           responseType: 'blob'
         })
         .then(response => {
-          const url = window.URL.createObjectURL(new Blob([response.data]));
-          setPdf(url);
+          setPdf({
+            loading: false,
+            url: window.URL.createObjectURL(new Blob([response.data]))
+          });
         })
         .catch(err => {
           handleApiError(err);
+          setPdf({ loading: false, url: null });
         });
     }
   };

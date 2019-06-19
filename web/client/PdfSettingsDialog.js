@@ -57,7 +57,6 @@ const PdfSettingsDialog = () => {
   return (
     <Modal
       open={activeDialog === 'pdfSettings'}
-      size="large"
       dimmer="blurring"
       centered={false}
       onClose={() => setActiveDialog()}>
@@ -73,7 +72,11 @@ const PdfSettingsDialog = () => {
             locale={locale}
             theme="light_mitsuketa_tribute"
             width="100%"
-            style={{ body: { fontSize: '18px' } }}
+            style={{
+              body: { fontSize: '18px' },
+              outerBox: { height: '500px' },
+              container: { height: '500px' }
+            }}
           />
         )}
       </Modal.Content>

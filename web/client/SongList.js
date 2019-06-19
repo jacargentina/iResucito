@@ -86,7 +86,7 @@ const SongList = () => {
     [editSong]
   );
 
-  if (editSong || pdf) {
+  if (editSong || pdf.loading === true || pdf.url !== null) {
     return null;
   }
 

@@ -28,7 +28,7 @@ const DataContextWrapper = (props: any) => {
   const [stats, setStats] = useState();
   const [songs, setSongs] = useState();
   const [editSong, setEditSong] = useState();
-  const [pdf, setPdf] = useState();
+  const [pdf, setPdf] = useState({ loading: false, url: null });
   const [apiLoading, setApiLoading] = useState(false);
   const [apiResult, setApiResult] = useState();
   const [confirmData, setConfirmData] = useState();
@@ -112,17 +112,21 @@ const DataContextWrapper = (props: any) => {
         options: JSON.parse(savedSettings)
       };
     }
+    setPdf({ loading: true, url: null });
     return api
       .post(`/api/pdf/${I18n.locale}`, data, {
         responseType: 'blob'
       })
       .then(response => {
-        const url = window.URL.createObjectURL(new Blob([response.data]));
-        setPdf(url);
+        setPdf({
+          loading: false,
+          url: window.URL.createObjectURL(new Blob([response.data]))
+        });
       })
       .catch(async err => {
         var text = await new Response(err.response.data).text();
         handleApiError(JSON.stringify(text));
+        setPdf({ loading: false, url: null });
       });
   };
 

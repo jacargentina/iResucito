@@ -57,13 +57,21 @@ const PatchLogDialog = () => {
                     );
                   if (item.linked) detail.push(`Linked ${item.linked.new}`);
                   if (item.updated) detail.push('Updated text');
+                  if (item.staged)
+                    detail.push(
+                      `Staged from ${item.staged.original} to ${
+                        item.staged.new
+                      }`
+                    );
                   return (
                     <Grid.Row key={item.date}>
-                      <Grid.Column width={3}>{item.author}</Grid.Column>
-                      <Grid.Column width={3}>
+                      <Grid.Column width={4} style={{ overflow: 'hidden' }}>
+                        {item.author}
+                      </Grid.Column>
+                      <Grid.Column width={3} style={{ overflow: 'hidden' }}>
                         {new Date(item.date).toLocaleString()}
                       </Grid.Column>
-                      <Grid.Column width={10}>
+                      <Grid.Column width={9} style={{ overflow: 'hidden' }}>
                         <Message list={detail} />
                       </Grid.Column>
                     </Grid.Row>

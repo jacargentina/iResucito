@@ -3,6 +3,7 @@ import React, { Fragment, useContext } from 'react';
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
 import Menu from 'semantic-ui-react/dist/commonjs/collections/Menu';
 import Icon from 'semantic-ui-react/dist/commonjs/elements/Icon';
+import Loader from 'semantic-ui-react/dist/commonjs/elements/Loader';
 import SongViewPdf from './SongViewPdf';
 import { DataContext } from './DataContext';
 import I18n from '../../translations';
@@ -12,10 +13,10 @@ const SongBook = () => {
   const { pdf, setPdf } = data;
 
   const close = () => {
-    setPdf();
+    setPdf({ loading: false, url: null });
   };
 
-  if (!pdf) {
+  if (pdf.loading === false && pdf.url === null) {
     return null;
   }
 
@@ -29,9 +30,22 @@ const SongBook = () => {
           </Button>
         </Menu.Item>
       </Menu>
-      <div style={{ margin: '0 auto' }}>
-        <SongViewPdf url={pdf} />
-      </div>
+      {pdf.loading && (
+        <div
+          style={{
+            height: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}>
+          <Loader active inline="centered" size="large" inverted={false} />
+        </div>
+      )}
+      {!pdf.loading && (
+        <div style={{ margin: '0 auto', padding: 20, overflow: 'scroll' }}>
+          <SongViewPdf url={pdf.url} />{' '}
+        </div>
+      )}
     </Fragment>
   );
 };

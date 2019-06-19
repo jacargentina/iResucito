@@ -309,12 +309,12 @@ const SongEditor = () => {
                 render: () => {
                   return (
                     <Tab.Pane
-                      loading={!pdf}
+                      loading={pdf.loading}
                       style={{
                         minHeight: '50vh',
                         border: '0px transparent'
                       }}>
-                      {pdf && <SongViewPdf url={pdf} />}
+                      <SongViewPdf url={pdf.url} />
                     </Tab.Pane>
                   );
                 }

@@ -29,16 +29,18 @@ const SongViewPdf = (props: any) => {
   const { editSong } = edit;
 
   useEffect(() => {
-    var loadingTask = pdfjsLib.getDocument(url);
-    loadingTask.promise
-      .then(pdf => {
-        setPdf(pdf);
-        setCurrPage(1);
-        setNumPages(pdf.numPages);
-      })
-      .catch(err => {
-        console.log('error pdf!', err);
-      });
+    if (url !== null) {
+      var loadingTask = pdfjsLib.getDocument(url);
+      loadingTask.promise
+        .then(pdf => {
+          setPdf(pdf);
+          setCurrPage(1);
+          setNumPages(pdf.numPages);
+        })
+        .catch(err => {
+          console.log('error pdf!', err);
+        });
+    }
   }, [url]);
 
   useEffect(() => {
