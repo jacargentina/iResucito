@@ -298,7 +298,7 @@
   "files": {
    "es": "Alabad al Señor en el cielo - Sal 148",
    "it": "Lodate il Signore dai cieli - Sal 148",
-   "pt": "Louvai o Senhor nos céus - Sal 148",
+   "pt": "Louvai o Senhor nos Céus - Sal 148",
    "de-AT": "Lobet den Herrn vom Himmel her - Ps 148",
    "en": "Praise him - Ps 148"
   }
@@ -827,7 +827,7 @@
   "fraction of bread": true,
   "files": {
    "es": "He aquí mi siervo - Is 42",
-   "pt": "Eis o meu servo - Is 42",
+   "pt": "Eis o meu servo - Primeiro canto do Servo de Iahweh - Is 42",
    "en": "This first song of the servant is 42",
    "de-AT": "I. Lied des Knecht Jahwes - Jes 42"
   }
@@ -997,7 +997,7 @@
   "files": {
    "es": "Levanto mis ojos a los montes - Sal 121 (120)",
    "it": "Alzo gli occhi verso i monti - Sal 120 (121)",
-   "pt": "Levanto meus olhos para os montes - Sal 121 (120)",
+   "pt": "Levanto os meus olhos para os montes - Sal 121 (120)",
    "de-AT": "Ich hebe meine Augen zu den Bergen - Ps 121"
   }
  },
@@ -1044,7 +1044,7 @@
   "files": {
    "es": "María de Jasna Göra - Himno",
    "it": "Maria di jasna gòra - Inno",
-   "pt": "Maria de jasna göra - Hino à Virgem de Jasna Göra, Chestokowa, Polônia",
+   "pt": "Maria de Jasna Göra - Hino à Virgem de Jasna Göra, Chestokowa, Polônia",
    "de-AT": "Maria von Jasna Góra"
   }
  },
@@ -1055,7 +1055,7 @@
   "files": {
    "es": "María, casa de bendición - Jn 2,1-11",
    "it": "Maria, casa di benedizione - Jn 2,1-11",
-   "pt": "Maria casa da benção - As Bodas de Caná - Jo 2, 1-11",
+   "pt": "Maria, Casa da Benção - As Bodas de Caná - Jo 2, 1-11",
    "de-AT": "Maria, Haus des Segens"
   }
  },
@@ -1065,7 +1065,7 @@
   "files": {
    "es": "María, madre de la Iglesia - Jn 19, 26-34",
    "it": "Maria madre della chiesa - Jn 19, 26-34",
-   "pt": "Maria mãe da igreja - Jo 19, 26-34",
+   "pt": "Maria, Mãe da Igreja - Jo 19, 26-34",
    "de-AT": "Maria Mutter der Kirche - Joh 19, 26-34"
   }
  },
@@ -1075,7 +1075,7 @@
   "files": {
    "es": "María, madre del camino ardiente - Himno",
    "it": "Maria, madre del cammino ardente - Inno",
-   "pt": "Maria mãe do caminho ardente - Hino à Virgem do Terceiro Milênio",
+   "pt": "Maria, Mãe do caminho ardente - Hino à Virgem do Terceiro Milênio",
    "de-AT": "Maria, Mutter des brennenden Weges",
    "en": "Mary, mother of the burning way"
   }
@@ -1205,7 +1205,7 @@
   "files": {
    "es": "Oh cielos, lloved de lo alto - Is 45, 8",
    "it": "O cieli piovete dall'alto - Is 45, 8",
-   "pt": "Ó ceus chovei do alto - Is 45, 8",
+   "pt": "Ó céus, chovei do alto - Is 45, 8",
    "de-AT": "O Himmel lasst regnen von oben - Jes 45, 8"
   }
  },

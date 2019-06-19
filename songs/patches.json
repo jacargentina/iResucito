@@ -470,6 +470,17 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1560545296274,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Louvai o Senhor nos céus - Sal 148",
+        "new": "Louvai o Senhor nos Céus - Sal 148"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "29": [
@@ -1497,6 +1508,17 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1560627548280,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Eis o meu servo - Is 42",
+        "new": "Eis o meu servo - Primeiro canto do Servo de Iahweh - Is 42"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "78": [
@@ -1815,6 +1837,17 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1560545144162,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Levanto meus olhos para os montes - Sal 121 (120)",
+        "new": "Levanto os meus olhos para os montes - Sal 121 (120)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "94": [
@@ -1874,6 +1907,13 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1560545776001,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "97": [
@@ -1881,6 +1921,17 @@
       "date": 1559568142519,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1560546035759,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Maria de jasna göra - Hino à Virgem de Jasna Göra, Chestokowa, Polônia",
+        "new": "Maria de Jasna Göra - Hino à Virgem de Jasna Göra, Chestokowa, Polônia"
+      },
       "created": false,
       "updated": true
     }
@@ -1892,6 +1943,17 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1560545961376,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Maria casa da benção - As Bodas de Caná - Jo 2, 1-11",
+        "new": "Maria, Casa da Benção - As Bodas de Caná - Jo 2, 1-11"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "99": [
@@ -1901,6 +1963,17 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1560546203378,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Maria mãe da igreja - Jo 19, 26-34",
+        "new": "Maria, Mãe da Igreja - Jo 19, 26-34"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "100": [
@@ -1908,6 +1981,17 @@
       "date": 1559568178368,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1560546443749,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Maria mãe do caminho ardente - Hino à Virgem do Terceiro Milênio",
+        "new": "Maria, Mãe do caminho ardente - Hino à Virgem do Terceiro Milênio"
+      },
       "created": false,
       "updated": true
     }
@@ -1926,6 +2010,13 @@
       "date": 1559568183083,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1560627813911,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -2000,6 +2091,13 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1560628344172,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "109": [
@@ -2034,6 +2132,17 @@
       "date": 1559568223512,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1560628755300,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Ó ceus chovei do alto - Is 45, 8",
+        "new": "Ó céus, chovei do alto - Is 45, 8"
+      },
       "created": false,
       "updated": true
     }
@@ -3763,6 +3872,15 @@
         "original": "Cantai a Deus - Sal 68 (67)",
         "new": "Cantai a Deus - Sal 68 (67) 2, 4-7"
       },
+      "created": false,
+      "updated": true
+    }
+  ],
+  "241": [
+    {
+      "date": 1560545233171,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
