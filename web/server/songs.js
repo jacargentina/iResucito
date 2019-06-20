@@ -159,7 +159,7 @@ export default function(server: any) {
     '/api/pdf/:locale/:key?',
     asyncMiddleware(async (req, res, next) => {
       const { key, locale } = req.params;
-      const { options } = req.body;
+      const { text, options } = req.body;
       if (!locale) {
         return res.status(500).json({
           error: 'Locale not provided'
@@ -170,17 +170,23 @@ export default function(server: any) {
         const parser = new SongsParser(PdfStyles);
         var items = [];
         if (key) {
+          if (text === undefined) {
+            return res.status(500).json({
+              error: 'Text not provided'
+            });
+          }
           const song = FolderSongs.getSingleSongMeta(key, locale);
           await FolderSongs.loadSingleSong(locale, song);
-          const render = parser.getForRender(song.fullText, locale);
+          const render = parser.getForRender(text, locale);
           const item: SongToPdf = {
             song,
             render
           };
           items.push(item);
         } else {
-          var songs = FolderSongs.getSongsMeta(locale);
-          await FolderSongs.loadSongs(locale, songs);
+          const patch = await readLocalePatch();
+          var songs = FolderSongs.getSongsMeta(locale, patch);
+          await FolderSongs.loadSongs(locale, songs, patch);
           songs.map(song => {
             if (song.files[locale]) {
               var render = parser.getForRender(song.fullText, locale);

@@ -43,7 +43,7 @@ const SongBook = () => {
       )}
       {!pdf.loading && (
         <div style={{ margin: '0 auto', padding: 20, overflow: 'scroll' }}>
-          <SongViewPdf url={pdf.url} />{' '}
+          <SongViewPdf url={pdf.url} />
         </div>
       )}
     </Fragment>

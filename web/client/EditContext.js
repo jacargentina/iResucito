@@ -113,6 +113,7 @@ const EditContextWrapper = (props: any) => {
       var data;
       if (savedSettings) {
         data = {
+          text: text,
           options: JSON.parse(savedSettings)
         };
       }

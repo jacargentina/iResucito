@@ -25,7 +25,9 @@ server.get('/', (req, res) => {
   res.sendFile(path.join(webClientFolder, 'index.html'));
 });
 
-require('./sync');
+if (process.env.NODE_ENV == 'production') {
+  require('./sync');
+}
 
 auth(server);
 songs(server);

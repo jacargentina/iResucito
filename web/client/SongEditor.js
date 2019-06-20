@@ -49,6 +49,7 @@ const SongEditor = () => {
     text => setDebouncedText(text),
     800
   );
+  const [activeTab, setActiveTab] = useState(0);
 
   useEffect(() => {
     if (editSong) {
@@ -77,12 +78,14 @@ const SongEditor = () => {
   const previous = () => {
     if (navigation && navigation.previousKey) {
       goPrevious();
+      setActiveTab(0);
     }
   };
 
   const next = () => {
     if (navigation && navigation.nextKey) {
       goNext();
+      setActiveTab(0);
     }
   };
 
@@ -127,12 +130,6 @@ const SongEditor = () => {
                 </Button>
               }
             />
-            {(editSong.patched || editSong.added) && (
-              <Button negative onClick={confirmRemovePatch}>
-                <Icon name="trash" />
-                {I18n.t('ui.remove patch')}
-              </Button>
-            )}
             <Button onClick={() => setActiveDialog('patchLog')}>
               <Icon name="history" />
               {I18n.t('ui.patch log')}
@@ -219,6 +216,14 @@ const SongEditor = () => {
             }
           />
         </Menu.Item>
+        {(editSong.patched || editSong.added) && (
+          <Menu.Item>
+            <Button negative onClick={confirmRemovePatch}>
+              <Icon name="trash" />
+              {I18n.t('ui.remove patch')}
+            </Button>
+          </Menu.Item>
+        )}
         <Menu.Item position="right">
           <Button onClick={confirmClose}>
             <Icon name="close" />
@@ -275,11 +280,13 @@ const SongEditor = () => {
             overflowY: 'scroll'
           }}>
           <Tab
+            activeIndex={activeTab}
             onTabChange={(e, data) => {
+              setActiveTab(data.activeIndex);
               if (data.activeIndex == 1) {
                 previewPdf();
               } else {
-                setPdf();
+                setPdf({ loading: false, url: null });
               }
             }}
             menu={{ size: 'mini', pointing: true }}
