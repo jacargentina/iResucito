@@ -109,13 +109,13 @@ const EditContextWrapper = (props: any) => {
 
   const previewPdf = () => {
     if (editSong) {
+      var data = {
+        text: text,
+        options: undefined
+      };
       const savedSettings = localStorage.getItem('pdfExportOptions');
-      var data;
       if (savedSettings) {
-        data = {
-          text: text,
-          options: JSON.parse(savedSettings)
-        };
+        data.options = JSON.parse(savedSettings);
       }
       setPdf({ loading: true, url: null });
       return api
