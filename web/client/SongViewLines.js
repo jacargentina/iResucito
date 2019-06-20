@@ -21,9 +21,9 @@ const SongViewLines = (props: any) => {
       var middle = Math.trunc((indicator.start + indicator.end) / 2);
       var indicatorText = '\u00a0';
       if (i === middle) {
-        if (indicator.type == 'repeat') {
+        if (indicator.type == 'bloqueRepetir') {
           indicatorText = I18n.t('songs.repeat');
-        } else if (indicator.type == 'footnote') {
+        } else if (indicator.type == 'bloqueNotaAlPie') {
           indicatorText = '*';
         }
       }
@@ -48,14 +48,18 @@ const SongViewLines = (props: any) => {
         </span>
       );
     } else {
-      var texto = (
-        <Fragment>
-          <span key={i + 'prefijo'} style={it.prefijoStyle || it.style}>
-            {it.prefijo}
-          </span>
-          {it.texto}
-        </Fragment>
-      );
+      if (it.type == 'inicioParrafo') {
+        var texto = <div style={{ paddingTop: 10 }} />;
+      } else {
+        var texto = (
+          <Fragment>
+            <span key={i + 'prefijo'} style={it.prefijoStyle || it.style}>
+              {it.prefijo}
+            </span>
+            {it.texto}
+          </Fragment>
+        );
+      }
     }
     return (
       <div key={i + 'texto'} style={{ ...it.style }}>

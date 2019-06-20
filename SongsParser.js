@@ -181,6 +181,17 @@ export class SongsParser {
           type: 'textoEspecial'
         };
         return it;
+      } else if (text.trim() === '') {
+        var it: SongLine = {
+          texto: '',
+          style: this.songStyles.normalLine,
+          prefijo: '',
+          prefijoStyle: null,
+          sufijo: '',
+          sufijoStyle: null,
+          type: 'inicioParrafo'
+        };
+        return it;
       } else {
         var texto = text.trimRight();
         var it: SongLine = {
@@ -300,34 +311,14 @@ export class SongsParser {
           it.prefijo = ' '.repeat(nextIt.prefijo.length);
         }
       }
-      // Ajustar estilo para las notas
-      if (it.texto.trim() == '' && i < lFirstPass.length - 1) {
-        const nextItm = lFirstPass[i + 1];
-        if (nextItm.type == 'canto') {
-          it.style = this.songStyles.notesLine;
-          it.type = 'notas';
-        }
-      }
-      // Ajustar inicios de parrafo (lineas vacias)
-      if (
-        it.type !== 'notas' &&
-        it.type !== 'comenzarColumna' &&
-        it.texto === '' &&
-        i < lFirstPass.length - 1
-      ) {
-        const nextItmnn = lFirstPass[i + 1];
-        if (nextItmnn.type == 'notas' || nextItmnn.texto !== '') {
-          it.type = 'inicioParrafo';
-        }
-      }
       return it;
     });
     // Extraer parrafos de BIS (repeat) y notas al pie (footnote)
     var lIndicators: Array<SongIndicator> = [];
     const lResult = lSecondPass.filter((it: SongLine, i: number) => {
-      if (it.type == 'bloqueRepeat' || it.type == 'bloqueFootnote') {
+      if (it.type == 'bloqueRepetir' || it.type == 'bloqueNotaAlPie') {
         var j = i - 1;
-        while (j > 0 && !lSecondPass[j].inicioParrafo) {
+        while (j > 0 && lSecondPass[j].type !== 'inicioParrafo') {
           j--;
         }
         lIndicators.push({
