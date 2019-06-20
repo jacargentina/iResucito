@@ -71,7 +71,7 @@
     "flow-bin": "^0.101.0",
     "gmail-send": "^1.2.14",
     "i18n-js": "^3.3.0",
-    "inquirer": "^6.3.1",
+    "inquirer": "^6.4.0",
     "jsonwebtoken": "^8.5.1",
     "langs": "^2.0.0",
     "lodash": "^4.17.11",
@@ -123,7 +123,7 @@
     "use-debounce": "^2.1.0",
     "use-hotkeys": "^1.1.0",
     "use-undo": "^1.0.0",
-    "webpack": "^4.34.0",
+    "webpack": "^4.35.0",
     "webpack-cli": "^3.3.4",
     "webpack-dev-server": "^3.7.2"
   },
