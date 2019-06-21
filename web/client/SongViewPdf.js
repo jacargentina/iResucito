@@ -9,6 +9,7 @@ import React, {
 import Icon from 'semantic-ui-react/dist/commonjs/elements/Icon';
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
 import Menu from 'semantic-ui-react/dist/commonjs/collections/Menu';
+import Loader from 'semantic-ui-react/dist/commonjs/elements/Loader';
 import { DataContext } from './DataContext';
 import { EditContext } from './EditContext';
 import I18n from '../../translations';
@@ -18,6 +19,7 @@ const SongViewPdf = (props: any) => {
   const { url } = props;
 
   const myRef = useRef<any>();
+  const [loading, setLoading] = useState(false);
   const [pdf, setPdf] = useState();
   const [numPages, setNumPages] = useState(0);
   const [currPage, setCurrPage] = useState(0);
@@ -30,15 +32,18 @@ const SongViewPdf = (props: any) => {
 
   useEffect(() => {
     if (url !== null) {
+      setLoading(true);
       var loadingTask = pdfjsLib.getDocument(url);
       loadingTask.promise
         .then(pdf => {
           setPdf(pdf);
           setCurrPage(1);
           setNumPages(pdf.numPages);
+          setLoading(false);
         })
         .catch(err => {
           console.log('error pdf!', err);
+          setLoading(false);
         });
     }
   }, [url]);
@@ -119,11 +124,16 @@ const SongViewPdf = (props: any) => {
           </Menu.Item>
         )}
       </Menu>
-      <canvas
-        id="pdfViewer"
-        style={{ boxShadow: '2px 2px 15px gray' }}
-        ref={myRef}
-      />
+      {loading && (
+        <Loader active inline="centered" size="large" inverted={false} />
+      )}
+      {!loading && currPage > 0 && (
+        <canvas
+          id="pdfViewer"
+          style={{ boxShadow: '2px 2px 15px gray' }}
+          ref={myRef}
+        />
+      )}
     </Fragment>
   );
 };

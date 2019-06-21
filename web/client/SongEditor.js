@@ -321,7 +321,7 @@ const SongEditor = () => {
                         minHeight: '50vh',
                         border: '0px transparent'
                       }}>
-                      <SongViewPdf url={pdf.url} />
+                      {!pdf.loading && <SongViewPdf url={pdf.url} />}
                     </Tab.Pane>
                   );
                 }
