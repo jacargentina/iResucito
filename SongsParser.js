@@ -154,7 +154,7 @@ export class SongsParser {
           prefijoStyle: this.songStyles.notesLine,
           sufijo: '',
           sufijoStyle: null,
-          type: 'cantoConIndicador'
+          type: 'notaEspecial'
         };
         return it;
       } else if (text.trim().startsWith('**') && text.trim().endsWith('**')) {
@@ -166,7 +166,7 @@ export class SongsParser {
           prefijoStyle: null,
           sufijo: '',
           sufijoStyle: null,
-          type: 'cantoConIndicador'
+          type: 'tituloEspecial'
         };
         return it;
       } else if (text.startsWith('-')) {

@@ -33,12 +33,31 @@ if (!process.argv.slice(2).length) {
       songs.map(song => {
         if (song.files[I18n.locale]) {
           var render = parser.getForRender(song.fullText, I18n.locale);
-          if (render.firstNotes && render.firstNotes > 0) {
-            debugger;
+          const fn = render.firstNotes;
+          if (fn && fn > 0) {
+            if (
+              render.items.find((x, idx) => {
+                return (
+                  idx < fn &&
+                  x.type !== 'posicionAbrazadera' &&
+                  x.type !== 'notaEspecial' &&
+                  x.type !== 'tituloEspecial' &&
+                  x.type !== 'textoEspecial' &&
+                  x.type !== 'inicioParrafo'
+                );
+              })
+            ) {
+              console.log(`${song.nombre}: notes on line ${fn} ?`);
+            }
+          }
+          const possibleBis = render.items.filter(
+            i => i.texto.includes('BIS') || i.texto.includes('2x')
+          );
+          if (possibleBis.length > 0) {
             console.log(
-              `${song.titulo}: notes on line ${
-                render.firstNotes
-              } (should be on 0)`
+              `${song.nombre}: possible repeat's missing (${
+                possibleBis.length
+              } times)`
             );
           }
         }
