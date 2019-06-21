@@ -35,7 +35,7 @@ export class SongsParser {
         prefijoStyle: null,
         sufijo: '',
         sufijoStyle: null,
-        type: ''
+        type: 'posicionAbrazadera'
       };
       return it;
     } else if (text.trim() == 'repeat') {

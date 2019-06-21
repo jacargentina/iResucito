@@ -647,28 +647,33 @@ export const PDFGenerator = async (
             writer.opts.songText.FontSize
           );
           writer.doc.moveUp();
-          if (it.type == 'tituloEspecial') {
-            lastWidth = writer.writeText(
-              it.texto,
-              PdfStyles.specialNoteTitle.color,
-              writer.opts.songText.FontSize,
-              { indent: writer.opts.songIndicatorSpacing }
-            );
-          } else if (it.type == 'textoEspecial') {
-            lastWidth = writer.writeText(
-              it.texto,
-              PdfStyles.specialNote.color,
-              writer.opts.songText.FontSize - 3,
-              { indent: writer.opts.songIndicatorSpacing }
-            );
-          } else {
-            lastWidth = writer.writeText(
-              it.texto,
-              PdfStyles.normalLine.color,
-              writer.opts.songText.FontSize,
-              { indent: writer.opts.songIndicatorSpacing }
-            );
-          }
+          lastWidth = writer.writeText(
+            it.texto,
+            PdfStyles.normalLine.color,
+            writer.opts.songText.FontSize,
+            { indent: writer.opts.songIndicatorSpacing }
+          );
+        } else if (it.type == 'tituloEspecial') {
+          lastWidth = writer.writeText(
+            it.texto,
+            PdfStyles.specialNoteTitle.color,
+            writer.opts.songText.FontSize,
+            { indent: writer.opts.songIndicatorSpacing }
+          );
+        } else if (it.type == 'textoEspecial') {
+          lastWidth = writer.writeText(
+            it.texto,
+            PdfStyles.specialNote.color,
+            writer.opts.songText.FontSize - 3,
+            { indent: writer.opts.songIndicatorSpacing }
+          );
+        } else if (it.type == 'posicionAbrazadera') {
+          lastWidth = writer.writeText(
+            it.texto,
+            PdfStyles.clampLine.color,
+            writer.opts.songNote.FontSize
+          );
+          writer.doc.moveDown();
         }
         maxX = Math.trunc(Math.max(writer.doc.x + lastWidth, maxX));
       });

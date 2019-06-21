@@ -62,8 +62,8 @@ declare type SongStyles = {
   prefix: any
 };
 
-declare type SongLineType = 
-  | ''
+declare type SongLineType =
+  | 'posicionAbrazadera'
   | 'canto'
   | 'cantoConIndicador'
   | 'notas'
@@ -71,9 +71,9 @@ declare type SongLineType =
   | 'notaEspecial'
   | 'tituloEspecial'
   | 'textoEspecial'
-  | 'bloqueRepetir' 
+  | 'bloqueRepetir'
   | 'bloqueNotaAlPie'
-  | 'comenzarColumna'
+  | 'comenzarColumna';
 
 declare type SongLine = {
   texto: string,
