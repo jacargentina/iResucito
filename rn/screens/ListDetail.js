@@ -177,11 +177,13 @@ const ListDetail = (props: any) => {
           listKey="evangelio"
           listText={uiList['evangelio']}
         />
-        <ListDetailItem
-          listName={listName}
-          listKey="oracion-universal"
-          listText={uiList['oracion-universal']}
-        />
+        {uiList.hasOwnProperty('oracion-universal') && (
+          <ListDetailItem
+            listName={listName}
+            listKey="oracion-universal"
+            listText={uiList['oracion-universal']}
+          />
+        )}
         {uiList.hasOwnProperty('paz') && (
           <ListDetailItem
             listName={listName}
@@ -208,16 +210,20 @@ const ListDetail = (props: any) => {
           listKey="salida"
           listText={uiList.salida}
         />
-        <ListDetailItem
-          listName={listName}
-          listKey="encargado-pan"
-          listText={uiList['encargado-pan']}
-        />
-        <ListDetailItem
-          listName={listName}
-          listKey="encargado-flores"
-          listText={uiList['encargado-flores']}
-        />
+        {uiList.hasOwnProperty('encargado-pan') && (
+          <ListDetailItem
+            listName={listName}
+            listKey="encargado-pan"
+            listText={uiList['encargado-pan']}
+          />
+        )}
+        {uiList.hasOwnProperty('encargado-flores') && (
+          <ListDetailItem
+            listName={listName}
+            listKey="encargado-flores"
+            listText={uiList['encargado-flores']}
+          />
+        )}
         <ListDetailItem
           listName={listName}
           listKey="nota"
