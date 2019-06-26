@@ -75,6 +75,17 @@
       "author": "carolinerezler@hotmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1561144498062,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "catechumenate",
+        "new": "precatechumenate"
+      }
     }
   ],
   "7": [
@@ -93,6 +104,17 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1561145226814,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "catechumenate",
+        "new": "precatechumenate"
+      }
     }
   ],
   "9": [
@@ -136,6 +158,13 @@
       "date": 1559568207916,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1561124931468,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -290,6 +319,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1561033295256,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "23": [
@@ -327,6 +363,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1560986140754,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "24": [
@@ -362,6 +405,13 @@
       "date": 1559595878051,
       "locale": "pt",
       "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1560986227279,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
     }
@@ -427,6 +477,13 @@
     },
     {
       "date": 1559567357190,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1561030399840,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
@@ -1054,6 +1111,17 @@
       "author": "fd_colautti@mac.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1561154552329,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Quando Israel saiu do egito - Sal 114 (113)",
+        "new": "Quando Israel saiu do Egito - Sal 114 (113)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "52": [
@@ -1068,6 +1136,13 @@
       "date": 1559578220273,
       "locale": "de-AT",
       "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1561154714576,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -1190,6 +1265,13 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1561146203266,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "60": [
@@ -1197,6 +1279,13 @@
       "date": 1559567950259,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1561146541257,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -1242,6 +1331,17 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1561145689119,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "O nescio pensa que deus não existe - Sal 14 (13)",
+        "new": "O Néscio pensa que Deus não existe - Sal 14 (13)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "63": [
@@ -1249,6 +1349,13 @@
       "date": 1559567936920,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1561145986699,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -1468,6 +1575,13 @@
       "date": 1559568003485,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1561146968085,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -2003,6 +2117,17 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1561123445077,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Maria pequena maria - Hino",
+        "new": "Maria, pequena Maria - Hino"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "102": [
@@ -2048,6 +2173,13 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1561147449580,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "105": [
@@ -2057,6 +2189,17 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1561124054246,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Misericórdia minha misericórdia - Sal 51 (50)",
+        "new": "Misericórdia minha, misericórdia - Sal 51(50) \"Miserere\""
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "106": [
@@ -2064,6 +2207,13 @@
       "date": 1559568205290,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1561144802073,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -2080,6 +2230,17 @@
       "date": 1559568210532,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1561124488309,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Não está aqui ressuscitou - Mt 28, 1-8",
+        "new": "Não está aqui, Ressuscitou - Mt 28, 1-8"
+      },
       "created": false,
       "updated": true
     }
@@ -2107,6 +2268,17 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1561126309855,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Ó deus pelo teu nome salva-Me - Sal 54 (53)",
+        "new": "Ó Deus pelo teu Nome salva-me - Sal 54 (53)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "110": [
@@ -2116,6 +2288,17 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1561126987006,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Ó jesus meu amor - Hino",
+        "new": "Ó Jesus, meu amor - Hino"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "111": [
@@ -2123,6 +2306,17 @@
       "date": 1559568248441,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1561146799715,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Ó Senhor nosso deus - Sal 8",
+        "new": "Ó Senhor, nosso Deus - Sal 8"
+      },
       "created": false,
       "updated": true
     }
@@ -2154,6 +2348,17 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1561127256707,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Ó morte onde está tua vitória - 1 Cor 15",
+        "new": "Ó morte, onde está tua vitória - 1 Cor 15"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "114": [
@@ -2179,6 +2384,13 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1561147211534,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "116": [
@@ -2186,6 +2398,13 @@
       "date": 1559568272199,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1561152885190,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -2197,6 +2416,13 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1561154049614,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "118": [
@@ -2206,6 +2432,17 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1561153601387,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Por que confabulam as nações - Sal 2",
+        "new": "Por que confabulam as nações? - Sal 2"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "119": [
@@ -2213,6 +2450,13 @@
       "date": 1559568280386,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1561154217302,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -2251,6 +2495,17 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1561155022407,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Que estupendo que alegria - Sal 133 (132)",
+        "new": "Que estupendo, que alegria - Sal 133 (132)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "122": [
@@ -2267,6 +2522,13 @@
       "date": 1559569062265,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1561155371386,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -2294,6 +2556,13 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1561155198344,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "126": [
@@ -2310,6 +2579,13 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1561155564035,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "127": [
@@ -2317,6 +2593,17 @@
       "date": 1559569082511,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1561156278704,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Salve rainha dos céus - Hino",
+        "new": "Salve Rainha dos Céus - Hino"
+      },
       "created": false,
       "updated": true
     }
@@ -2386,6 +2673,13 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1561156859941,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "135": [
@@ -2393,6 +2687,13 @@
       "date": 1559569211222,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1561157172106,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -2761,6 +3062,17 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1560986587645,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "election",
+        "new": "precatechumenate"
+      }
     }
   ],
   "160": [
@@ -2859,6 +3171,21 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1561127508648,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "O mesmo deus - 2 Cor 4, 6-12",
+        "new": "O mesmo Deus - 2 Cor 4, 6-12"
+      },
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "election",
+        "new": "catechumenate"
+      }
     }
   ],
   "166": [
@@ -2884,6 +3211,17 @@
       "date": 1559567988832,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1561125465107,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Estendo minhas mãos - Ode 27 de Salomão",
+        "new": "Estendo minhas mãos - Ode XXVII de Salomão"
+      },
       "created": false,
       "updated": true
     }
@@ -3278,6 +3616,17 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1561125196236,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Glória a deus no alto do céu - Hino Litúrgico",
+        "new": "Glória a Deus no alto do Céu - Hino Litúrgico"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "190": [
@@ -3608,6 +3957,17 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1561145396961,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "O messias leão para vencer - Vitorino de Pettau",
+        "new": "O Messias, leão para vencer - Inspirado num texto de S. Vitorino de Pettau +304"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "213": [
@@ -3642,6 +4002,17 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1561123699820,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Maria pomba incorrupta - Hino",
+        "new": "Maria, pomba incorrupta - Hino inspirado nos Kontákia de São Romano, o Melodista"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "216": [
@@ -3658,6 +4029,17 @@
       "date": 1559569075698,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1561155933258,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Resurrexit - Jo 11, 25-27",
+        "new": "Resurrexit - Diálogo de Nosso Senhor Jesus Cristo com Maria - João 11, 25-27"
+      },
       "created": false,
       "updated": true
     }
@@ -3683,6 +4065,17 @@
       "date": 1559568235628,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1561126596337,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Ó deus tu és meu deus - Sal 63 (62)",
+        "new": "Ó Deus, Tu és meu Deus - Sal 63 (62)"
+      },
       "created": false,
       "updated": true
     }
@@ -3876,9 +4269,49 @@
       "updated": true
     }
   ],
+  "240": [
+    {
+      "date": 1561126050848,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
   "241": [
     {
       "date": 1560545233171,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "243": [
+    {
+      "date": 1561148170796,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Os Meninos De Belém - ",
+        "new": "Os Meninos De Belém"
+      },
+      "created": false,
+      "updated": true
+    }
+  ],
+  "245": [
+    {
+      "date": 1561154389217,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
+    }
+  ],
+  "247": [
+    {
+      "date": 1561156109558,
       "locale": "pt",
       "author": "gordofragoso2@gmail.com",
       "created": false,

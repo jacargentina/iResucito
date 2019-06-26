@@ -65,6 +65,9 @@
    "it": "Felice l'uomo - Sal 1",
    "pt": "Feliz o homem - Sal 1",
    "de-AT": "Glücklich der Mensch - Ps 1"
+  },
+  "stages": {
+   "pt": "precatechumenate"
   }
  },
  "7": {
@@ -86,6 +89,9 @@
    "it": "Vedo i cieli aperti - Ap 19, 11-20",
    "pt": "O combate escatológico - Ap 19, 11-20",
    "de-AT": "Ich sah den Himmel geöffnet - Offb 19, 11-20"
+  },
+  "stages": {
+   "pt": "precatechumenate"
   }
  },
  "9": {
@@ -552,7 +558,7 @@
   "files": {
    "es": "Cuando Israel salió de Egipto - Sal 114 (113)",
    "it": "Quando Israele uscﬁ dall'egitto - Sal 114 (113)",
-   "pt": "Quando Israel saiu do egito - Sal 114 (113)",
+   "pt": "Quando Israel saiu do Egito - Sal 114 (113)",
    "de-AT": "Als Israel aus Ägypten auszog - Ps 114"
   }
  },
@@ -672,7 +678,7 @@
   "files": {
    "es": "El necio piensa que Dios no existe - Sal 13 (14)",
    "it": "Fino a quando - Sal 13 (12)",
-   "pt": "O nescio pensa que deus não existe - Sal 14 (13)",
+   "pt": "O Néscio pensa que Deus não existe - Sal 14 (13)",
    "de-AT": "Der Tor er denkt sich - da ist kein Gott - Ps 14",
    "en": "The fool thinks there is no God - Ps 13 (14)"
   }
@@ -1087,7 +1093,7 @@
   "files": {
    "es": "María, pequeña María - Himno",
    "it": "Maria, piccola Maria - Inno",
-   "pt": "Maria pequena maria - Hino",
+   "pt": "Maria, pequena Maria - Hino",
    "de-AT": "Maria, kleine Maria"
   }
  },
@@ -1130,7 +1136,7 @@
   "files": {
    "es": "Misericordia mía, misericordia - Sal 51 (50)",
    "it": "Misericordia dio, misericordia - Sal 51 (50)",
-   "pt": "Misericórdia minha misericórdia - Sal 51 (50)",
+   "pt": "Misericórdia minha, misericórdia - Sal 51 (50) \"Miserere\"",
    "de-AT": "Gott sei mir gnädig - Ps 51",
    "en": "Have mercy on me - Ps 50 (51)"
   }
@@ -1151,7 +1157,7 @@
   "communion": true,
   "files": {
    "es": "No está aquí, resucitó - Mt 28, 1-8",
-   "pt": "Não está aqui ressuscitou - Mt 28, 1-8",
+   "pt": "Não está aqui, Ressuscitou - Mt 28, 1-8",
    "de-AT": "Er ist nicht hier - Mt 28, 1-8"
   }
  },
@@ -1171,7 +1177,7 @@
   "files": {
    "es": "Oh Dios, por tu nombre sálvame - Sal 54 (53)",
    "it": "Oh dio per il tuo nome salvami - Sal 54 (53)",
-   "pt": "Ó deus pelo teu nome salva-Me - Sal 54 (53)",
+   "pt": "Ó Deus pelo teu Nome salva-me - Sal 54 (53)",
    "de-AT": "O Gott durch deinen Namen rette mich - Ps 54"
   }
  },
@@ -1183,7 +1189,7 @@
   "files": {
    "es": "Oh Jesús, amor mío - Himno",
    "it": "O gesù amore mio - Inno",
-   "pt": "Ó jesus meu amor - Hino",
+   "pt": "Ó Jesus, meu amor - Hino",
    "de-AT": "O Jesus, meine Liebe"
   }
  },
@@ -1194,7 +1200,7 @@
   "files": {
    "es": "Oh Señor, nuestro Dios - Sal 8",
    "it": "O Signore nostro dio - Sal 8",
-   "pt": "Ó Senhor nosso deus - Sal 8",
+   "pt": "Ó Senhor, nosso Deus - Sal 8",
    "de-AT": "O mein Herr, du unser Gott - Ps 8",
    "en": "O lord, our god - Ps 8"
   }
@@ -1216,7 +1222,7 @@
   "files": {
    "es": "Oh muerte, dónde está tu victoria - 1 Co 15",
    "it": "O morte dov'è la tua vittoria - 1 Co 15",
-   "pt": "Ó morte onde está tua vitória - 1 Cor 15",
+   "pt": "Ó morte, onde está tua vitória - 1 Cor 15",
    "de-AT": "O Tod wo ist dein Sieg - 1 Kor 15"
   }
  },
@@ -1269,7 +1275,7 @@
   "files": {
    "es": "Por qué las gentes conjuran - Sal 2",
    "it": "Perchè le genti congiurano - Sal 2",
-   "pt": "Por que confabulam as nações - Sal 2",
+   "pt": "Por que confabulam as nações? - Sal 2",
    "de-AT": "Warum toben die Völker - Ps 2",
    "en": "Why do the nations conspire - Ps 2"
   }
@@ -1301,7 +1307,7 @@
   "peace and offerings": true,
   "files": {
    "es": "Qué estupendo, qué alegría - Sal 133 (132)",
-   "pt": "Que estupendo que alegria - Sal 133 (132)",
+   "pt": "Que estupendo, que alegria - Sal 133 (132)",
    "de-AT": "Seht, wie es schön ist, seht, welche Freude - Ps 133"
   }
  },
@@ -1368,7 +1374,7 @@
   "files": {
    "es": "Salve, reina de los cielos - Himno",
    "it": "Salve, regina dei cieli - Inno",
-   "pt": "Salve rainha dos céus - Hino",
+   "pt": "Salve Rainha dos Céus - Hino",
    "de-AT": "Ave, du himmelskönigin"
   }
  },
@@ -1721,6 +1727,9 @@
    "de-AT": "Abba Vater - Röm 8, 15-17",
    "fr": "Abba Père - Rm 8, 15-17",
    "pt": "Abba Pai - Rm 8, 15-17"
+  },
+  "stages": {
+   "es": "precatechumenate"
   }
  },
  "160": {
@@ -1784,8 +1793,11 @@
   "files": {
    "es": "El mismo Dios - 2 Co 4, 6-12",
    "it": "Lo stesso iddio - 2 Co 4, 6-12",
-   "pt": "O mesmo deus - 2 Cor 4, 6-12",
+   "pt": "O mesmo Deus - 2 Cor 4, 6-12",
    "de-AT": "Derselbe Gott - 2 Kor 4, 6-12"
+  },
+  "stages": {
+   "pt": "catechumenate"
   }
  },
  "166": {
@@ -1817,7 +1829,7 @@
   "files": {
    "es": "Extiendo mis manos - Oda 27 de Salomón",
    "it": "Ho steso le mie mani - Ode 27 di Salomone",
-   "pt": "Estendo minhas mãos - Ode 27 de Salomão",
+   "pt": "Estendo minhas mãos - Ode XXVII de Salomão",
    "de-AT": "Ich habe meine Hände ausgebreitet - XXVII. Ode Salomos"
   }
  },
@@ -2028,7 +2040,7 @@
   "files": {
    "es": "Gloria a Dios en lo alto del cielo - Himno litúrgico",
    "it": "Gloria a dio mell'alto dai cieli - Inno liturgico",
-   "pt": "Glória a deus no alto do céu - Hino Litúrgico",
+   "pt": "Glória a Deus no alto do Céu - Hino Litúrgico",
    "de-AT": "Ehre sei Gott in der Höhe",
    "en": "Glory to god"
   }
@@ -2218,7 +2230,7 @@
   "stage": "precatechumenate",
   "files": {
    "es": "El Mesías, León para vencer - Vittorino de Pettau",
-   "pt": "O messias leão para vencer - Vitorino de Pettau",
+   "pt": "O Messias, leão para vencer - Inspirado num texto de S. Vitorino de Pettau +304",
    "de-AT": "Der Messias Löwe um zu siegen - Vittorino von Pettau"
   }
  },
@@ -2246,7 +2258,7 @@
   "stage": "precatechumenate",
   "files": {
    "es": "María paloma incorrupta - Himno",
-   "pt": "Maria pomba incorrupta - Hino",
+   "pt": "Maria, pomba incorrupta - Hino inspirado nos Kontákia de São Romano, o Melodista",
    "de-AT": "Ave, O Maria - Hymnus"
   }
  },
@@ -2264,7 +2276,7 @@
   "stage": "precatechumenate",
   "files": {
    "es": "Resurrexit - Jn 11, 25-27",
-   "pt": "Resurrexit - Jo 11, 25-27",
+   "pt": "Resurrexit - Diálogo de Nosso Senhor Jesus Cristo com Maria - João 11, 25-27",
    "de-AT": "Resurrexit - Joh 11, 25-27"
   }
  },
@@ -2286,7 +2298,7 @@
   "files": {
    "es": "Oh Dios, tú eres mi Dios - Sal 63 (62)",
    "it": "O dio tu sei il mio dio - Sal 63 (62)",
-   "pt": "Ó deus tu és meu deus - Sal 63 (62)",
+   "pt": "Ó Deus, Tu és meu Deus - Sal 63 (62)",
    "de-AT": "O Gott, du bist mein Gott - Ps 63"
   }
  },
@@ -2456,7 +2468,7 @@
  "243": {
   "stage": "precatechumenate",
   "files": {
-   "pt": "Os Meninos De Belém - "
+   "pt": "Os Meninos De Belém"
   }
  },
  "244": {
