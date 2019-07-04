@@ -170,19 +170,7 @@ android {
 }
 
 dependencies {
-    implementation project(':react-native-share')
-    implementation project(':react-native-localize')
-    implementation project(':react-native-gesture-handler')
-    implementation project(':react-native-exception-handler')
-    implementation project(':rn-fetch-blob')
-    implementation project(':react-native-print')
-    implementation project(':react-native-pdf')
-    implementation project(':react-native-contacts')
-    implementation project(':react-native-keep-awake')
-    implementation project(':react-native-device-info')
     implementation project(':react-native-vector-icons')
-    implementation project(':react-native-splash-screen')
-    implementation project(':react-native-fs')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'com.android.support:multidex:1.0.1'
     implementation "com.android.support:appcompat-v7:23.0.1"
