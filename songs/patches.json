@@ -4162,7 +4162,17 @@
       },
       "created": false,
       "updated": true
-    }
+    },
+    {
+      "date": 1559778627756,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "linked": {
+        "new": "O Senhor é minha Luz e Salvação - Sal 27 (26)"
+      },
+      "created": true,
+      "updated": false
+    }    
   ],
   "232": [
     {
@@ -4325,18 +4335,6 @@
       "author": "fd_colautti@mac.com",
       "created": false,
       "updated": true
-    }
-  ],
-  "256": [
-    {
-      "date": 1559778627756,
-      "locale": "pt",
-      "author": "gordofragoso2@gmail.com",
-      "linked": {
-        "new": "O Senhor é minha Luz e Salvação - Sal 27(26)"
-      },
-      "created": true,
-      "updated": false
     }
   ]
 }
