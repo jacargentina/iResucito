@@ -2807,7 +2807,17 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
-    }
+    },
+    {
+      "date": 1559092326076,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "linked": {
+        "new": "Vamos já, pastores - Cântico de Natal"
+      },
+      "created": true,
+      "updated": false
+    },
   ],
   "146": [
     {
@@ -4099,16 +4109,6 @@
     }
   ],
   "222": [
-    {
-      "date": 1559092326076,
-      "locale": "pt",
-      "author": "gordofragoso2@gmail.com",
-      "linked": {
-        "new": "Vamos já, pastores - Cântico de Natal"
-      },
-      "created": true,
-      "updated": false
-    },
     {
       "date": 1559567731867,
       "locale": "es",

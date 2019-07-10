@@ -1571,7 +1571,7 @@
   "files": {
    "es": "Vamos ya, pastores - Villancico",
    "it": "Andiamo, già pastori - Canto natalizio",
-   "pt": "Vamos já pastores - Cântico de Natal",
+   "pt": "Vamos já, pastores - Cântico de Natal",
    "de-AT": "Ihr Hirten, lasst uns gehen"
   }
  },
@@ -2321,8 +2321,7 @@
   "stage": "precatechumenate",
   "christmas": true,
   "files": {
-   "es": "Alegría, ha nacido el salvador - Villancico",
-   "pt": "Vamos já, pastores - Cântico de Natal"
+   "es": "Alegría, ha nacido el salvador - Villancico"
   }
  },
  "223": {
