@@ -1,8 +1,8 @@
 platform :ios, '9.0'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
-target 'ProjectName' do
-  # Pods for ProjectName
+target 'iResucito' do
+  # Pods for iResucito
   pod 'React', :path => '../node_modules/react-native/'
   pod 'React-Core', :path => '../node_modules/react-native/React'
   pod 'React-DevSupport', :path => '../node_modules/react-native/React'
@@ -28,7 +28,7 @@ target 'ProjectName' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  target 'ProjectNameTests' do
+  target 'iResucitoTests' do
     inherit! :search_paths
     # Pods for testing
   end
@@ -36,10 +36,10 @@ target 'ProjectName' do
   use_native_modules!
 end
 
-target 'ProjectName-tvOS' do
-  # Pods for ProjectName-tvOS
+target 'iResucito-tvOS' do
+  # Pods for iResucito-tvOS
 
-  target 'ProjectName-tvOSTests' do
+  target 'iResucito-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end

@@ -50,6 +50,10 @@ buck-out/
 pdf/
 bin/
 
+# CocoaPods
+/ios/Pods/
+
+# web app
 web/dist/clientBundle.js
 web/dist/*.woff2
 web/dist/*.woff
