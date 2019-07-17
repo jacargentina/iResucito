@@ -45,6 +45,7 @@
 	<string>Allow $(PRODUCT_NAME) to use your location</string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Franklin Gothic Medium.ttf</string>
 		<string>Entypo.ttf</string>
 		<string>EvilIcons.ttf</string>
 		<string>FontAwesome.ttf</string>
