@@ -2,9 +2,17 @@ package com.javiercastro.iresucito;
 
 import android.app.Application;
 import android.content.Context;
-import android.support.multidex.MultiDex;
+import androidx.multidex.MultiDex;
 
 import com.facebook.react.ReactApplication;
+import com.rt2zz.reactnativecontacts.ReactNativeContacts;
+import com.masteratul.exceptionhandler.ReactNativeExceptionHandlerPackage;
+import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
+import com.RNFetchBlob.RNFetchBlobPackage;
+import com.learnium.RNDeviceInfo.RNDeviceInfo;
+import com.reactcommunity.rnlocalize.RNLocalizePackage;
+import com.rnfs.RNFSPackage;
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import cl.json.RNSharePackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.facebook.react.ReactNativeHost;
@@ -27,6 +35,14 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new ReactNativeContacts(),
+            new ReactNativeExceptionHandlerPackage(),
+            new RNGestureHandlerPackage(),
+            new RNFetchBlobPackage(),
+            new RNDeviceInfo(),
+            new RNLocalizePackage(),
+            new RNFSPackage(),
+            new SplashScreenReactPackage(),
             new RNSharePackage(),
             new VectorIconsPackage()
       );
