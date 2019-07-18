@@ -33,6 +33,9 @@
    "pt": "Consolai o meu povo - Is 40, 1-11",
    "de-AT": "Tröstet mein Volk - Jes 40, 1-11",
    "en": "Console my people. (is 40, 1-11)"
+  },
+  "stages": {
+   "pt": "precatechumenate"
   }
  },
  "4": {
@@ -311,7 +314,7 @@
    "pt": "Ao despertar - Sal 17 (16)"
   },
   "stages": {
-   "pt": "liturgy"
+   "pt": "precatechumenate"
   }
  },
  "28": {
@@ -337,7 +340,7 @@
    "pt": "Aleluia, aclamai o Senhor - Sal 150"
   },
   "stages": {
-   "pt": "liturgy"
+   "pt": "precatechumenate"
   }
  },
  "30": {
@@ -352,7 +355,7 @@
    "pt": "Aleluia, Bendizei o Senhor - Sal 134 (133)"
   },
   "stages": {
-   "pt": "liturgy"
+   "pt": "precatechumenate"
   }
  },
  "31": {
@@ -366,7 +369,7 @@
    "pt": "Aleluia, já chegou o reino - Ap 19, 6-9"
   },
   "stages": {
-   "pt": "liturgy"
+   "pt": "precatechumenate"
   }
  },
  "32": {
@@ -391,7 +394,7 @@
    "pt": "Amo o Senhor - Sal 116 (114-115)"
   },
   "stages": {
-   "pt": "liturgy"
+   "pt": "precatechumenate"
   }
  },
  "34": {
@@ -402,10 +405,10 @@
    "es": "Aquedah - Gn 22, 1-19",
    "it": "Akedà - Gen 22, 1-19",
    "de-AT": "Akedà - Gen 22, 1-19",
-   "pt": "Akedá - Tirado do targum Neofiti sobre o sacrificio de Isaac (Gn 22,1-9)"
+   "pt": "Akedá - Tirado do Targum Neofiti sobre o sacrificio de Isaac (Gn 22,1-9)"
   },
   "stages": {
-   "pt": "election"
+   "pt": "precatechumenate"
   }
  },
  "35": {
@@ -418,7 +421,7 @@
    "pt": "Ave Maria I - Lc 1, 28ss"
   },
   "stages": {
-   "pt": "liturgy"
+   "pt": "precatechumenate"
   }
  },
  "36": {
@@ -432,7 +435,7 @@
    "pt": "Ave Maria II (1984) - Lc 1, 28ss"
   },
   "stages": {
-   "pt": "liturgy"
+   "pt": "precatechumenate"
   }
  },
  "37": {
@@ -497,7 +500,7 @@
    "de-AT": "Maria, selige Maria - Lk 1, 42-44"
   },
   "stages": {
-   "pt": "liturgy"
+   "pt": "precatechumenate"
   }
  },
  "42": {
@@ -871,7 +874,7 @@
    "pt": "Até quando - Sal 13 (12)"
   },
   "stages": {
-   "pt": "liturgy"
+   "pt": "precatechumenate"
   }
  },
  "77": {
@@ -1871,6 +1874,9 @@
    "pt": "Como lírio entre os espinhos - Ct 1, 13ss",
    "en": "My beloved is for me. (songs 1, 13ff)",
    "de-AT": "Mein Gelibter ist für mich - Hld 1, 13 ff"
+  },
+  "stages": {
+   "pt": "precatechumenate"
   }
  },
  "164": {
@@ -2091,7 +2097,7 @@
    "pt": "Amém, amém, amém - Ap 7, 12-14"
   },
   "stages": {
-   "pt": "liturgy"
+   "pt": "precatechumenate"
   }
  },
  "184": {
@@ -2100,6 +2106,9 @@
    "es": "Anáfora de la Sal",
    "en": "Anaphora for the penitential celebration",
    "pt": "Anáfora do Sal"
+  },
+  "stages": {
+   "pt": "precatechumenate"
   }
  },
  "185": {
@@ -2127,6 +2136,9 @@
    "it": "Benedizione per la celebrazione penitenziale - Preghiera conclusiva di ringraziamento",
    "pt": "Bênção Penitencial - Oração para concluir a ação de graças para a Celebração Penitencial",
    "de-AT": "Dankgebet für die Liturgie der Versöhnung"
+  },
+  "stages": {
+   "pt": "precatechumenate"
   }
  },
  "188": {
@@ -2682,7 +2694,7 @@
   "stage": "precatechumenate",
   "files": {
    "es": "Canta a Yahveh Jerusalén - Sal 147 (146-147)",
-   "pt": "Canta a Iahweh, Jerusalém - Sal 147 (146-147)",
+   "pt": "Canta a Iahweh Jerusalém - Sal 147 (146-147)",
    "en": "Praise the lord jerusalem - Ps 147"
   }
  }

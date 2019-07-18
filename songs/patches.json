@@ -51,6 +51,17 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1563485019525,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "catechumenate",
+        "new": "precatechumenate"
+      }
     }
   ],
   "4": [
@@ -386,6 +397,13 @@
         "original": "precatechumenate",
         "new": "election"
       }
+    },
+    {
+      "date": 1563481835096,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": false
     }
   ],
   "20": [
@@ -661,6 +679,13 @@
         "original": "precatechumenate",
         "new": "election"
       }
+    },
+    {
+      "date": 1563481929515,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": false
     }
   ],
   "27": [
@@ -690,6 +715,17 @@
       "staged": {
         "original": "precatechumenate",
         "new": "liturgy"
+      }
+    },
+    {
+      "date": 1563484393961,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "liturgy",
+        "new": "precatechumenate"
       }
     }
   ],
@@ -762,6 +798,17 @@
         "original": "precatechumenate",
         "new": "liturgy"
       }
+    },
+    {
+      "date": 1563482156184,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "liturgy",
+        "new": "precatechumenate"
+      }
     }
   ],
   "30": [
@@ -802,6 +849,17 @@
       "staged": {
         "original": "precatechumenate",
         "new": "liturgy"
+      }
+    },
+    {
+      "date": 1563482170369,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "liturgy",
+        "new": "precatechumenate"
       }
     }
   ],
@@ -847,6 +905,17 @@
         "original": "precatechumenate",
         "new": "liturgy"
       }
+    },
+    {
+      "date": 1563482182460,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "liturgy",
+        "new": "precatechumenate"
+      }
     }
   ],
   "32": [
@@ -884,6 +953,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1563482129011,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": false
     }
   ],
   "33": [
@@ -924,6 +1000,17 @@
       "staged": {
         "original": "precatechumenate",
         "new": "liturgy"
+      }
+    },
+    {
+      "date": 1563482206395,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "liturgy",
+        "new": "precatechumenate"
       }
     }
   ],
@@ -970,6 +1057,21 @@
         "original": "precatechumenate",
         "new": "election"
       }
+    },
+    {
+      "date": 1563482103132,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Akedá - Tirado do targum Neofiti sobre o sacrificio de Isaac (Gn 22,1-9)",
+        "new": "Akedá - Tirado do Targum Neofiti sobre o sacrificio de Isaac (Gn 22,1-9)"
+      },
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "election",
+        "new": "precatechumenate"
+      }
     }
   ],
   "35": [
@@ -1011,6 +1113,17 @@
         "original": "precatechumenate",
         "new": "liturgy"
       }
+    },
+    {
+      "date": 1563484418208,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "liturgy",
+        "new": "precatechumenate"
+      }
     }
   ],
   "36": [
@@ -1051,6 +1164,17 @@
       "staged": {
         "original": "precatechumenate",
         "new": "liturgy"
+      }
+    },
+    {
+      "date": 1563484426454,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "liturgy",
+        "new": "precatechumenate"
       }
     }
   ],
@@ -1201,6 +1325,17 @@
       "staged": {
         "original": "precatechumenate",
         "new": "liturgy"
+      }
+    },
+    {
+      "date": 1563484485439,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "liturgy",
+        "new": "precatechumenate"
       }
     }
   ],
@@ -1952,6 +2087,17 @@
       "staged": {
         "original": "precatechumenate",
         "new": "liturgy"
+      }
+    },
+    {
+      "date": 1563484409723,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "liturgy",
+        "new": "precatechumenate"
       }
     }
   ],
@@ -2980,6 +3126,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1563484825047,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": false
     }
   ],
   "121": [
@@ -3941,6 +4094,17 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1563484592098,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "election",
+        "new": "precatechumenate"
+      }
     }
   ],
   "164": [
@@ -4147,6 +4311,13 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1563481794898,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "174": [
@@ -4184,6 +4355,13 @@
       "date": 1559568110697,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1563481914903,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -4384,6 +4562,17 @@
         "original": "precatechumenate",
         "new": "liturgy"
       }
+    },
+    {
+      "date": 1563482195778,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "liturgy",
+        "new": "precatechumenate"
+      }
     }
   ],
   "184": [
@@ -4403,6 +4592,17 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1563482282120,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "liturgy",
+        "new": "precatechumenate"
+      }
     }
   ],
   "185": [
@@ -4509,6 +4709,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1563484469688,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "liturgy",
+        "new": "precatechumenate"
+      }
     }
   ],
   "188": [
@@ -5222,6 +5433,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1563484794140,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "221": [
@@ -5409,6 +5627,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1563484548476,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "240": [
@@ -5549,6 +5774,17 @@
       },
       "created": false,
       "updated": false
+    },
+    {
+      "date": 1563484510369,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Canta a Iahweh, Jerusalém - Sal 147 (146-147)",
+        "new": "Canta a Iahweh Jerusalém - Sal 147 (146-147)"
+      },
+      "created": false,
+      "updated": true
     }
   ]
 }

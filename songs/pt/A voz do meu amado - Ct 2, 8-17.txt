@@ -24,11 +24,12 @@ S.  A voz do meu amado!
  Começa a falar o meu amado e me diz:
 
   Do                                          Mi
-A.  LEVANTA-TE, AMADA MINHA, |
+A.  LEVANTA-TE, AMADA MINHA, 
          Fa                    
- LEVANTA-TE,                              | BIS
+ LEVANTA-TE,                              
                                              Mi      
- FORMOSA MINHA E VEM!        |
+ FORMOSA MINHA E VEM!      
+repeat  
 
   Re-                                  Mi  
 S.  Vê: o inverno já passou,
@@ -75,7 +76,8 @@ S.  Meu amado é para mim,
  e se alonguem as sombras da morte.
 
   La-                         Sol                 La-    
-A.  RETORNA, RETORNA, RETORNA.       | BIS
+A.  RETORNA, RETORNA, RETORNA.       
+repeat
 
   Do                                         Mi
  LEVANTA-TE, AMADA MINHA, ...
