@@ -738,6 +738,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.javiercastro.iresucito;
 				PRODUCT_NAME = iResucito;
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.javiercastro.iresucito";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -760,6 +761,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.javiercastro.iresucito;
 				PRODUCT_NAME = iResucito;
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.javiercastro.iresucito";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
