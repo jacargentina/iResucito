@@ -1,27 +1,24 @@
-VIVEI ALEGRES
-Filipenses 4, 4ss
-Braçadeira 3ª Traste
-
-La-                           Mi
+clamp:3
+     La-                                                                  Mi
 A. VIVEI ALEGRES, O SENHOR ESTÁ PERTO.
-                              La-
+                                                                       La-
 VIVEI ALEGRES, O SENHOR ESTÁ PERTO.
-              La7           Re-
+                                 La7                         Re-
 VIVEI ALEGRES, O SENHOR JÁ VEM
-           La-            Mi
+                             La-                              Mi
 E NOS SALVARÁ, E NOS SALVARÁ,
-           La-
+                             La-
 E NOS SALVARÁ.
 
-La-             La7
+La-                                   La7
 S. Coragem, não temais,
-                Re-
+                                   Re-
 que o Senhor já vem.
-           La-
+                        La-
 E nos salvará,
-           Mi
+                        Mi
 e nos salvará,
-           La- 
+                        La- 
 e nos salvará.
 
 La-

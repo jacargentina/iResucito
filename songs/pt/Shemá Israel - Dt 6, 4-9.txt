@@ -1,39 +1,37 @@
-SHEMÁ ISRAEL
-Deuteronômio 6, 4-9
-
-La-              Sol
+clamp:4
+ La-                                    Sol
 S. Shemá Israel, Shemá Israel,
-   Fa                   La-
+          Fa                                         La-
 Adonai Elohenu, Adonai Ehad.
 
-La-              Sol
+La-                                         Sol
 A. SHEMÁ ISRAEL, SHEMÁ ISRAEL
-    Fa                   La-
+           Fa                                                La-
 ADONAI ELOHENU, ADONAI EHAD.
 
-La-                Sol
+La-                                        Sol
 ESCUTA ISRAEL*, ESCUTA ISRAEL.
-      Fa
+                Fa
 O SENHOR É NOSSO DEUS,
-         La-
-SENHOR É UM.
+                           La-
+O SENHOR É UM.
 
 La-
 S. Amarás o Senhor teu Deus
-     Fa          La-
+           Fa                        La-
 com todo teu coração,
-     Fa        La-
+           Fa                  La-
 com toda a tua alma,
-     Fa            Mi
+           Fa                          Mi
 com todas as suas forças.
 
-La-                   Re-
+La-                                           Re-
 Grava estas minhas palavras
-        Sol         La-
+                  Sol                      La-
 como sinal em tuas mãos;
-                            Re-
+                                                              Re-
 como memorial entre os teus olhos;
-       Sol                     Mi
+                  Sol                                           Mi
 nos umbrais de tua casa e nas portas.
 
 A. SHEMÁ ISRAEL, ...
@@ -42,23 +40,23 @@ ESCUTA ISRAEL, ...
 
 La-
 S. Inculca-as a teus filhos, Israel,
-Fa            La-
+Fa                           La-
 delas fala em casa,
-   Fa           La-
+       Fa                          La-
 andando pelo caminho,
-         Fa                 Mi
+                   Fa                                 Mi
 ao te deitares e ao te levantares.
 
 La-
 Este é o primeiro
-      Re-
-mandamento da vida;
-  Sol                  La-
-segundo é semelhante a este:
-
                   Re-
+mandamento da vida;
+          Sol                                         La-
+o segundo é semelhante a este:
+
+                                           Re-
 Ama o teu próximo como a ti mesmo
-     Sol                Mi
+         Sol                               Mi
 e terás, terás a Vida Eterna.
 
 A. SHEMÁ ISRAEL,...
@@ -69,9 +67,9 @@ La-
 S. Shemá Israel, (melisma)
 Sol
 SHEMÁ ISRAEL,
-   Fa
+            Fa
 ADONAI ELOHENU,
-        Mi
+                       Mi
 ADONAI EHAD.
 
 * Se canta a duas vozes, intercalando a estrofe em hebráico: "Shemá Israel ..... em um tom mais alto.

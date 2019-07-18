@@ -1,5 +1,4 @@
-Braçadeira 2ª Traste
-
+clamp:2
 Mi-                                           La-
 S. Era a Virgem Maria prometida de José,
 Do
@@ -8,13 +7,13 @@ quando antes de viverem juntos,
 encontrou-se grávida
                                             Si7
 por obra do Espírito Santo.
-
 Mi-
 E José, como era justo
 La-
 e não queria repudiá-la,
            Do                                           Si7
 decidiu abandoná-la em segredo.
+
 Do                                                              Mi-
 A. QUE AMARGA É A ÁGUA, MARIA!
 Do
@@ -36,7 +35,7 @@ envolveu-o em faixas
 e o deitou na manjedoura,
 Do                                                                             Si7
 porque não havia lugar para eles no albergue.
- Do                                                            Mi-
+
 A. QUE AMARGA É A ÁGUA, MARIA! ...
 
 Mi-
@@ -48,7 +47,6 @@ e fugiu para o Egito,
                                                             Si7
 porque queriam matar o menino.
 
- Do                                                                 Mi-
 A. QUE AMARGA É A ÁGUA, MARIA! ...
 
 Mi-
@@ -62,7 +60,6 @@ e não quer ser consolada,
                                         Si7
 porque já não existem.
 
-   Do                                                          Mi-
 A. QUE AMARGA É A ÁGUA, MARIA! ...
 
 Mi-
@@ -76,5 +73,4 @@ e volta à terra de Israel;
                                                               Mi-
 porque do Egito chamei meu Filho".
 
-Do                                                          Mi-
 A. QUE AMARGA É A ÁGUA, MARIA! ...

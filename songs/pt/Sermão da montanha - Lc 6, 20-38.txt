@@ -1,84 +1,81 @@
-SERMÃO DA MONTANHA
-Lucas 6,20-38
-Braçadeira 3ª Traste
-
+clamp:3
   Re
-  S. Erguendo os olhos para
-                         La7   Re
+S. Erguendo os olhos para
+                                               La7       Re
   os seus discípulos, Jesus dizia:
 
-                  Sol Re
-S.A. FELIZES VÓS, OS POBRES,
-          La7                Re
-  PORQUE VOSSO É o REINO DE DEUS.
+                                            Sol      Re
+S. A. FELIZES VÓS, OS POBRES,
+                       La7                                       Re
+  PORQUE VOSSO É O REINO DE DEUS.
 
   
-S.A. FELIZES VÓS, QUE AGORA
-         SolRe
+S. A. FELIZES VÓS, QUE AGORA
+                     Sol   Re
   TENDES FOME,
-  La7              Re
+  La7                                      Re
   PORQUE SEREIS SACIADOS.
 
-                          Sol Re
-S.A. FELIZES VÓS, QUE AGORA CHORAIS,
-  La7               Re
+                                                              Sol    Re
+S. A. FELIZES VÓS, QUE AGORA CHORAIS,
+  La7                                      Re
   PORQUE HAVEIS DE RIR.
 
-             Si-            La
-  S. Felizes sereis quando vos odiarem,
-               Sol                       Fa#
+                    Si-                            La
+S. Felizes sereis quando vos odiarem,
+                             Sol                                                 Fa#
   e vos insultarem por causa do Filho do homem
-      Sol
+           Sol
   Alegrai-vos nesse dia,
   
   a vossa recompensa
-                 Fa#
+                                    Fa#
   será grande no céu.
 
-  Re            SolRe
-S.A. AI DE VÓS, OS RICOS!
-         La
+  Re                               Sol   Re
+S. A. AI DE VÓS, OS RICOS!
+                       La
   PORQUE JÁ RECEBESTES
-                  Re
+                                            Re
   A VOSSA CONSOLAÇÃO
 
-                        SolRe
-S.A. AI DE VÓS, QUE RIDES AGORA!
-  La7                        Re
+                                                       Sol   Re
+S. A. AI DE VÓS, QUE RIDES AGORA!
+  La7                                                             Re
   PORQUE TEREIS CHORO E AFLIÇÃO.
 
-  Mi                La Mi
-S.A. AMAI OS VOSSOS INIMIGOS,
-          Si7             Mi
+  Mi                                           La   Mi
+S. A. AMAI OS VOSSOS INIMIGOS,
+                      Si7                                      Mi
   FAZEI O BEM AOS QUE VOS ODEIAM.
 
-                       LaMi
-S.A. A QUEM TE FERIR NUMA FACE,
-     Si7           Mi
+                                                        La  Mi
+S. A. A QUEM TE FERIR NUMA FACE,
+             Si7                             Mi
   OFERECE TAMBÉM A OUTRA.
 
-  Fa#               Si Fa#
-S.A. A QUEM TE LEVAR O MANTO,
-        Do#7    Fa#
+  Fa#                                       Si      Fa#
+S. A. A QUEM TE LEVAR O MANTO,
+                  Do#7            Fa#
   NÃO RECUSES A TÚNICA.
 
-                      SiFa#
-S.A. A QUEM LEVAR O QUE É TEU,
-  Do#7      Fa#
+                                                     Si  Fa#
+S. A. A QUEM LEVAR O QUE É TEU,
+  Do#7                Fa#
   NÃO O RECLAMES.
 
-  Mi                La Mi
-S.A. AMAI OS VOSSOS INIMIGOS,
-          Si7               Mi
+  Mi                                           La   Mi
+S. A. AMAI OS VOSSOS INIMIGOS,
+                      Si7                                      Mi
   FAZEI O BEM AOS QUE VOS ODEIAM.
 
-  Fa#    Si Fa#
-S.A. NÃO JULGUEIS.
-          Si Fa#
-S.A. NÃO CONDENEIS.
-     Si Fa#
-S.A. PERDOAI,
-       Do#7    Fa#
-S.A. E SEREIS PERDOADOS.
+  Fa#                Si  Fa#
+S. A. NÃO JULGUEIS.
+                              Si  Fa#
+S. A. NÃO CONDENEIS.
+               Si  Fa#
+S. A. PERDOAI,
+               Do#7              Fa#
+S. A. E SEREIS PERDOADOS.
  
  

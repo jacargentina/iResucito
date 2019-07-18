@@ -1,5 +1,4 @@
-Braçadeira 5ª Traste
-
+clamp:5
 Mi-               Fa#
 S. Ave, Maria,
 Mi-                              Fa#
