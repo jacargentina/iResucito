@@ -145,12 +145,12 @@ export class SongsParser {
           type: 'notas'
         };
         return it;
-      } else if (text.startsWith('\u2217')) {
+      } else if (text.startsWith('* ')) {
         // Nota especial
         var it: SongLine = {
           texto: text.substring(1).trim(),
           style: this.songStyles.specialNote,
-          prefijo: '\u2217  ',
+          prefijo: '* ',
           prefijoStyle: this.songStyles.notesLine,
           sufijo: '',
           sufijoStyle: null,
@@ -280,9 +280,9 @@ export class SongsParser {
     const lFirstPass = items.map(l => {
       const it = this.getSongItem(l, locale);
       // Detectar indicadores de Nota al pie (un asterisco)
-      if (it.texto.endsWith('\u2217')) {
-        it.texto = it.texto.replace('\u2217', '');
-        it.sufijo = '\u2217';
+      if (it.texto.endsWith('*')) {
+        it.texto = it.texto.replace('*', '');
+        it.sufijo = '*';
         it.sufijoStyle = this.songStyles.notesLine;
       }
       if (it.type == 'notas' && tDiff && tDiff !== 0) {

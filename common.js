@@ -23,7 +23,7 @@ export const defaultExportToPdfOptions: ExportToPdfOptions = {
   indexMarginLeft: 25
 };
 
-export const cleanChordsRegex = /\[|\]|\(|\)|#|\*|5|6|7|9|b|-|\+|\/|\u2013|\u2217|aum|dim|m|is|IS/g;
+export const cleanChordsRegex = /\[|\]|\(|\)|#|\*|5|6|7|9|b|-|\+|\/|\u2013|aum|dim|m|is|IS/g;
 
 export const getChordsScale = (locale: string): Array<string> => {
   return I18n.t('chords.scale', { locale }).split(' ');
@@ -667,6 +667,19 @@ export const PDFGenerator = async (
             writer.opts.songText.FontSize - 3,
             { indent: writer.opts.songIndicatorSpacing }
           );
+        } else if (it.type == 'notaEspecial') {
+          lastWidth = writer.writeText(
+            it.prefijo,
+            PdfStyles.prefix.color,
+            writer.opts.songText.FontSize
+          );
+          writer.doc.moveUp();
+          lastWidth = writer.writeText(
+            it.texto,
+            PdfStyles.specialNote.color,
+            writer.opts.songText.FontSize - 3,
+            { indent: writer.opts.songIndicatorSpacing }
+          );
         } else if (it.type == 'posicionAbrazadera') {
           lastWidth = writer.writeText(
             it.texto,
@@ -674,6 +687,17 @@ export const PDFGenerator = async (
             writer.opts.songNote.FontSize
           );
           writer.doc.moveDown();
+        }
+        if (it.sufijo) {
+          writer.doc.moveUp();
+          const lastX = writer.doc.x;
+          writer.doc.x = writer.doc.x + lastWidth;
+          lastWidth = writer.writeText(
+            it.sufijo,
+            PdfStyles.indicator.color,
+            writer.opts.songText.FontSize
+          );
+          writer.doc.x = lastX;
         }
         maxX = Math.trunc(Math.max(writer.doc.x + lastWidth, maxX));
       });
