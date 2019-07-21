@@ -5,6 +5,7 @@ import android.content.Context;
 import androidx.multidex.MultiDex;
 
 import com.facebook.react.ReactApplication;
+import com.corbt.keepawake.KCKeepAwakePackage;
 import com.rt2zz.reactnativecontacts.ReactNativeContacts;
 import com.masteratul.exceptionhandler.ReactNativeExceptionHandlerPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
@@ -35,6 +36,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new KCKeepAwakePackage(),
             new ReactNativeContacts(),
             new ReactNativeExceptionHandlerPackage(),
             new RNGestureHandlerPackage(),

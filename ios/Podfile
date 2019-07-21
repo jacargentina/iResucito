@@ -46,6 +46,8 @@ target 'iResucito' do
 
   pod 'react-native-contacts', :path => '../node_modules/react-native-contacts'
 
+  pod 'react-native-keep-awake', :path => '../node_modules/react-native-keep-awake'
+
   target 'iResucitoTests' do
     inherit! :search_paths
     # Pods for testing
