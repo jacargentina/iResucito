@@ -318,12 +318,12 @@ export class SongsParser {
     const lResult = lSecondPass.filter((it: SongLine, i: number) => {
       if (it.type == 'bloqueRepetir' || it.type == 'bloqueNotaAlPie') {
         var j = i - 1;
-        while (j > 0 && lSecondPass[j].type !== 'inicioParrafo') {
+        while (j >= 0 && lSecondPass[j].type !== 'inicioParrafo') {
           j--;
         }
         lIndicators.push({
-          start: j,
-          end: i,
+          start: j - lIndicators.length + 1,
+          end: i - lIndicators.length,
           type: it.type
         });
         return false;
