@@ -10,6 +10,7 @@ import TextArea from 'semantic-ui-react/dist/commonjs/addons/TextArea';
 import Icon from 'semantic-ui-react/dist/commonjs/elements/Icon';
 import Popup from 'semantic-ui-react/dist/commonjs/modules/Popup';
 import Tab from 'semantic-ui-react/dist/commonjs/modules/Tab';
+import Segment from 'semantic-ui-react/dist/commonjs/elements/Segment';
 import Message from 'semantic-ui-react/dist/commonjs/collections/Message';
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
 import Menu from 'semantic-ui-react/dist/commonjs/collections/Menu';
@@ -50,6 +51,8 @@ const SongEditor = () => {
     800
   );
   const [activeTab, setActiveTab] = useState(0);
+  const [linepos, setLinepos] = useState();
+  const [colpos, setColpos] = useState();
 
   useEffect(() => {
     if (editSong) {
@@ -86,6 +89,19 @@ const SongEditor = () => {
     if (navigation && navigation.nextKey) {
       goNext();
       setActiveTab(0);
+    }
+  };
+
+  const txtPositionEvent = () => {
+    if (txtRef && txtRef.current) {
+      var textarea = txtRef.current.ref.current;
+      var line = textarea.value.substr(0, textarea.selectionStart).split('\n')
+        .length;
+      var col =
+        textarea.selectionStart -
+        textarea.value.lastIndexOf('\n', textarea.selectionStart - 1);
+      setLinepos(line);
+      setColpos(col);
     }
   };
 
@@ -238,42 +254,58 @@ const SongEditor = () => {
           flexDirection: 'row',
           overflow: 'auto'
         }}>
-        <TextArea
-          ref={txtRef}
-          style={{
-            fontFamily: 'monospace',
-            backgroundColor: '#fcfcfc',
-            width: '50%',
-            outline: 'none',
-            resize: 'none',
-            border: 0,
-            padding: '10px 20px',
-            overflowY: 'scroll'
-          }}
-          onKeyDown={e => {
-            if (e.ctrlKey) {
-              if (e.key == '[') {
-                e.preventDefault();
-                previous();
-              } else if (e.key == ']') {
-                e.preventDefault();
-                next();
-              } else if (e.key == 'e') {
-                e.preventDefault();
-                editMetadata();
-              } else if (e.key == 's') {
-                e.preventDefault();
-                save();
+        <div style={{ display: 'flex', flexDirection: 'column', width: '50%' }}>
+          <TextArea
+            ref={txtRef}
+            onMouseUp={txtPositionEvent}
+            style={{
+              flex: 1,
+              fontFamily: 'monospace',
+              backgroundColor: '#fcfcfc',
+              width: '100%',
+              outline: 'none',
+              resize: 'none',
+              border: 0,
+              padding: '10px 20px',
+              overflowY: 'scroll'
+            }}
+            onKeyUp={txtPositionEvent}
+            onKeyDown={e => {
+              if (e.ctrlKey) {
+                if (e.key == '[') {
+                  e.preventDefault();
+                  previous();
+                } else if (e.key == ']') {
+                  e.preventDefault();
+                  next();
+                } else if (e.key == 'e') {
+                  e.preventDefault();
+                  editMetadata();
+                } else if (e.key == 's') {
+                  e.preventDefault();
+                  save();
+                }
               }
-            }
-          }}
-          value={text}
-          onChange={(e, data) => {
-            setHasChanges(true);
-            setText(data.value);
-            callback(data.value);
-          }}
-        />
+            }}
+            value={text}
+            onChange={(e, data) => {
+              setHasChanges(true);
+              setText(data.value);
+              callback(data.value);
+            }}
+          />
+          <Segment
+            basic
+            inverted
+            color="blue"
+            style={{
+              flex: 0,
+              margin: 0,
+              padding: '3px 10px'
+            }}>
+            Line: {linepos}, Column: {colpos}
+          </Segment>
+        </div>
         <div
           style={{
             width: '50%',
