@@ -366,6 +366,7 @@ export class PdfWriter {
   }
 
   drawLineText(line: ExportToPdfLineText, size: number) {
+    this.doc.switchToPage(line.page);
     this.doc
       .moveTo(line.x, line.startY)
       .lineTo(line.x, line.endY)
@@ -613,8 +614,9 @@ export const PDFGenerator = async (
             text = '*';
           }
           lines.push({
+            page: writer.pageNumber - 1,
             startY: blockY,
-            endY: writer.doc.y,
+            endY: writer.doc.y - writer.doc.currentLineHeight(false),
             x: maxX + 10,
             text,
             color

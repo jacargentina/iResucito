@@ -189,6 +189,7 @@ declare type ExportToPdfLimits = {
 };
 
 declare type ExportToPdfLineText = {
+  page: number,
   x: number,
   startY: number,
   endY: number,
