@@ -16,6 +16,13 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1564005287598,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "2": [
@@ -62,6 +69,17 @@
         "original": "catechumenate",
         "new": "precatechumenate"
       }
+    },
+    {
+      "date": 1563839541268,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "catechumenate"
+      }
     }
   ],
   "4": [
@@ -89,6 +107,13 @@
         "original": "catechumenate",
         "new": "election"
       }
+    },
+    {
+      "date": 1563832897765,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "5": [
@@ -148,6 +173,17 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1563840461319,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "O Senhor me deu língua de discípulo - Is 50, 4-10",
+        "new": "O Senhor me deu - Terceiro canto do Servo de Iahweh - Is 50, 4-10"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "8": [
@@ -168,6 +204,13 @@
         "original": "catechumenate",
         "new": "precatechumenate"
       }
+    },
+    {
+      "date": 1563836057385,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "9": [
@@ -208,6 +251,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1564004227194,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "11": [
@@ -226,6 +276,13 @@
         "original": "Eis que o nosso espelho e o Senhor - Ode 13 de Salomão",
         "new": "Eis que o nosso espelho é o Senhor - Ode XIII de Salomão"
       },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1564005502550,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -267,6 +324,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1563839967829,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "14": [
@@ -285,6 +349,13 @@
         "original": "Ó Senhor meu coração não é pretensioso - Sal 131 (130)",
         "new": "Ó Senhor, meu coração não é pretensioso - Sal 131 (130)"
       },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1563840530308,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -343,6 +414,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1563840580897,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "18": [
@@ -363,6 +441,17 @@
       },
       "created": false,
       "updated": false
+    },
+    {
+      "date": 1563840963239,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Tu cobriste de vergonha a morte - Homilia de Melitão de Sardes sobre a Páscoa",
+        "new": "Tu cobriste de vergonha a morte - Homilía de Melitão de Sares sobre a Páscoa - Ofício das leituras da quarta feira Santa"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "19": [
@@ -404,6 +493,17 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": false
+    },
+    {
+      "date": 1563832063360,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "election",
+        "new": "precatechumenate"
+      }
     }
   ],
   "20": [
@@ -461,6 +561,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1563833224481,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "22": [
@@ -506,6 +613,17 @@
         "original": "precatechumenate",
         "new": "election"
       }
+    },
+    {
+      "date": 1563832042207,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "election",
+        "new": "precatechumenate"
+      }
     }
   ],
   "23": [
@@ -548,6 +666,13 @@
       "date": 1560986140754,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1563833270650,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -594,6 +719,13 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1564004811677,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "25": [
@@ -627,6 +759,13 @@
     },
     {
       "date": 1559598930282,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1563833345438,
       "locale": "pt",
       "author": "gordofragoso2@gmail.com",
       "created": false,
@@ -686,6 +825,17 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": false
+    },
+    {
+      "date": 1563833373029,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "election",
+        "new": "precatechumenate"
+      }
     }
   ],
   "27": [
@@ -809,6 +959,17 @@
         "original": "liturgy",
         "new": "precatechumenate"
       }
+    },
+    {
+      "date": 1564004844737,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Aleluia, aclamai o Senhor - Sal 150",
+        "new": "Aleluia! Louvai o Senhor - Sal 150"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "30": [
@@ -861,6 +1022,17 @@
         "original": "liturgy",
         "new": "precatechumenate"
       }
+    },
+    {
+      "date": 1563833443372,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Aleluia, Bendizei o Senhor - Sal 134 (133)",
+        "new": "Aleluia! Bendizei o Senhor - Sal 134 (133)"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "31": [
@@ -916,6 +1088,17 @@
         "original": "liturgy",
         "new": "precatechumenate"
       }
+    },
+    {
+      "date": 1564004832325,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Aleluia, já chegou o reino - Ap 19, 6-9",
+        "new": "Aleluia! Já chegou o Reino - Ap 19, 6-9"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "32": [
@@ -1012,6 +1195,13 @@
         "original": "liturgy",
         "new": "precatechumenate"
       }
+    },
+    {
+      "date": 1564005251081,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "34": [
@@ -1072,6 +1262,13 @@
         "original": "election",
         "new": "precatechumenate"
       }
+    },
+    {
+      "date": 1564004259993,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "35": [
@@ -1124,6 +1321,13 @@
         "original": "liturgy",
         "new": "precatechumenate"
       }
+    },
+    {
+      "date": 1564005083654,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "36": [
@@ -1176,6 +1380,13 @@
         "original": "liturgy",
         "new": "precatechumenate"
       }
+    },
+    {
+      "date": 1564005073722,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "37": [
@@ -1223,6 +1434,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1563833643156,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "39": [
@@ -1246,6 +1464,13 @@
     },
     {
       "date": 1559765357437,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1563833736849,
       "locale": "pt",
       "author": "gordofragoso2@gmail.com",
       "created": false,
@@ -1337,6 +1562,13 @@
         "original": "liturgy",
         "new": "precatechumenate"
       }
+    },
+    {
+      "date": 1563833794261,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "42": [
@@ -1375,6 +1607,17 @@
       "date": 1559765874694,
       "locale": "pt",
       "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1564005111894,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Bendito sejas Senhor - Dn 3, 52-57",
+        "new": "Bendito sejas, Senhor - Dn 3, 52-57"
+      },
       "created": false,
       "updated": true
     }
@@ -1477,6 +1720,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1563834040244,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "49": [
@@ -1500,6 +1750,13 @@
     },
     {
       "date": 1559776522074,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1563834278676,
       "locale": "pt",
       "author": "gordofragoso2@gmail.com",
       "created": false,
@@ -1563,6 +1820,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1563836735820,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "53": [
@@ -1609,6 +1873,13 @@
     },
     {
       "date": 1562796520199,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1564005648986,
       "locale": "pt",
       "author": "gordofragoso2@gmail.com",
       "created": false,
@@ -1677,6 +1948,13 @@
     },
     {
       "date": 1560285288578,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1563834506869,
       "locale": "pt",
       "author": "gordofragoso2@gmail.com",
       "created": false,
@@ -1761,6 +2039,13 @@
         "original": "precatechumenate",
         "new": "election"
       }
+    },
+    {
+      "date": 1564004276746,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "62": [
@@ -1779,6 +2064,13 @@
         "original": "O nescio pensa que deus não existe - Sal 14 (13)",
         "new": "O Néscio pensa que Deus não existe - Sal 14 (13)"
       },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1563836329354,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -1844,6 +2136,17 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1563841187033,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "catechumenate"
+      }
     }
   ],
   "66": [
@@ -1876,6 +2179,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1563834672643,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "68": [
@@ -1894,6 +2204,13 @@
         "original": "Estão rotas minhas ataduras - Carmen 63",
         "new": "Estão rotas minhas ataduras - Carmen 63 - Poema de Rabindranath Tagore"
       },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1563834741656,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -1959,6 +2276,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1563834850922,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "72": [
@@ -2009,6 +2333,17 @@
         "original": "precatechumenate",
         "new": "election"
       }
+    },
+    {
+      "date": 1563835107072,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "election",
+        "new": "precatechumenate"
+      }
     }
   ],
   "74": [
@@ -2021,6 +2356,13 @@
     },
     {
       "date": 1560385727606,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1563835128719,
       "locale": "pt",
       "author": "gordofragoso2@gmail.com",
       "created": false,
@@ -2044,6 +2386,13 @@
     },
     {
       "date": 1561146968085,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1563836558647,
       "locale": "pt",
       "author": "gordofragoso2@gmail.com",
       "created": false,
@@ -2154,6 +2503,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1563834576365,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "79": [
@@ -2181,6 +2537,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1563834710901,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "80": [
@@ -2193,6 +2556,13 @@
     },
     {
       "date": 1560371758321,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1563835082619,
       "locale": "pt",
       "author": "gordofragoso2@gmail.com",
       "created": false,
@@ -2260,6 +2630,17 @@
         "original": "precatechumenate",
         "new": "catechumenate"
       }
+    },
+    {
+      "date": 1563835308687,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "catechumenate",
+        "new": "precatechumenate"
+      }
     }
   ],
   "84": [
@@ -2286,6 +2667,17 @@
       "staged": {
         "original": "precatechumenate",
         "new": "catechumenate"
+      }
+    },
+    {
+      "date": 1563835236505,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "catechumenate",
+        "new": "precatechumenate"
       }
     }
   ],
@@ -2320,6 +2712,13 @@
         "original": "Hino da Ascensão - Hino",
         "new": "Hino da Ascensão - Hino das Laudes do tempo Pascal, da Ascensão até Pentecostes"
       },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1563835188435,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -2377,6 +2776,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1563835391594,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "88": [
@@ -2430,6 +2836,17 @@
       "staged": {
         "original": "precatechumenate",
         "new": "catechumenate"
+      }
+    },
+    {
+      "date": 1563835504711,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "catechumenate",
+        "new": "precatechumenate"
       }
     }
   ],
@@ -2541,6 +2958,17 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1563834012726,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Chegue a tua presença o meu clamor - Sal 119 (118)",
+        "new": "Chegue à tua presença meu clamor - Sal 119 (118)"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "95": [
@@ -2584,6 +3012,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1563835598704,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "97": [
@@ -2622,6 +3057,13 @@
         "original": "Maria casa da benção - As Bodas de Caná - Jo 2, 1-11",
         "new": "Maria, Casa da Benção - As Bodas de Caná - Jo 2, 1-11"
       },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1563835665118,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -2711,6 +3153,17 @@
         "original": "precatechumenate",
         "new": "catechumenate"
       }
+    },
+    {
+      "date": 1563835824205,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "catechumenate",
+        "new": "precatechumenate"
+      }
     }
   ],
   "103": [
@@ -2729,6 +3182,13 @@
         "original": "Seduziste me Senhor - Jr 20, 7-18",
         "new": "Seduziste-me, Senhor - Jr 20, 7-18"
       },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1563836983642,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -2769,6 +3229,17 @@
         "original": "precatechumenate",
         "new": "catechumenate"
       }
+    },
+    {
+      "date": 1563836446777,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "catechumenate",
+        "new": "precatechumenate"
+      }
     }
   ],
   "105": [
@@ -2789,6 +3260,17 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1564004069675,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Misericórdia minha, misericórdia - Sal 51 (50) Miserere",
+        "new": "Misericórdia minha, misericórdia - Sal 51 (50) 'Miserere'"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "106": [
@@ -2801,6 +3283,13 @@
     },
     {
       "date": 1561144802073,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1564005833086,
       "locale": "pt",
       "author": "gordofragoso2@gmail.com",
       "created": false,
@@ -2842,6 +3331,17 @@
       "staged": {
         "original": "precatechumenate",
         "new": "catechumenate"
+      }
+    },
+    {
+      "date": 1563835934885,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "catechumenate",
+        "new": "precatechumenate"
       }
     }
   ],
@@ -2901,6 +3401,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1563836093201,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Ó Deus, pelo teu nome salva-me - Sal 54 (53)",
+        "new": "Ó Deus, pelo teu nome, salva-me - Sal 54 (53)"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "110": [
@@ -2959,6 +3470,13 @@
         "original": "Ó ceus chovei do alto - Is 45, 8",
         "new": "Ó céus, chovei do alto - Is 45, 8"
       },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1563835972348,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -3051,6 +3569,17 @@
         "original": "precatechumenate",
         "new": "liturgy"
       }
+    },
+    {
+      "date": 1563836596333,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "liturgy",
+        "new": "precatechumenate"
+      }
     }
   ],
   "117": [
@@ -3084,6 +3613,17 @@
       "rename": {
         "original": "Por que confabulam as nações - Sal 2",
         "new": "Por que confabulam as nações? - Sal 2"
+      },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1564004012563,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Por que confabulam as nações? - Sal 2",
+        "new": "Por que confabulam as nações - Sal 2"
       },
       "created": false,
       "updated": true
@@ -3200,6 +3740,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1563836805424,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "124": [
@@ -3239,6 +3786,13 @@
     },
     {
       "date": 1561155198344,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1563836779179,
       "locale": "pt",
       "author": "gordofragoso2@gmail.com",
       "created": false,
@@ -3339,6 +3893,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1563837310696,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "131": [
@@ -3359,6 +3920,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1563837055431,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "132": [
@@ -3371,6 +3939,13 @@
     },
     {
       "date": 1563230390416,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1564005963549,
       "locale": "pt",
       "author": "gordofragoso2@gmail.com",
       "created": false,
@@ -3395,6 +3970,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1563836921726,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "134": [
@@ -3407,6 +3989,13 @@
     },
     {
       "date": 1561156859941,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1563836884786,
       "locale": "pt",
       "author": "gordofragoso2@gmail.com",
       "created": false,
@@ -3447,6 +4036,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1564006081661,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "137": [
@@ -3483,6 +4079,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1563837270186,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "139": [
@@ -3515,6 +4118,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1563834344171,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "141": [
@@ -3539,6 +4149,13 @@
         "original": "precatechumenate",
         "new": "election"
       }
+    },
+    {
+      "date": 1563833040323,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "142": [
@@ -3599,6 +4216,17 @@
         "original": "precatechumenate",
         "new": "catechumenate"
       }
+    },
+    {
+      "date": 1563837669043,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "catechumenate",
+        "new": "precatechumenate"
+      }
     }
   ],
   "145": [
@@ -3639,6 +4267,17 @@
       "staged": {
         "original": "precatechumenate",
         "new": "catechumenate"
+      }
+    },
+    {
+      "date": 1563837688106,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "catechumenate",
+        "new": "precatechumenate"
       }
     }
   ],
@@ -3758,6 +4397,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1563837774102,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "151": [
@@ -3778,6 +4424,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1564004094109,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Virgem da maravilha - Hino*",
+        "new": "Virgem da maravilha - Hino"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "152": [
@@ -3794,6 +4451,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1563837920275,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "153": [
@@ -3806,6 +4470,13 @@
     },
     {
       "date": 1563233235725,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1563837967375,
       "locale": "pt",
       "author": "gordofragoso2@gmail.com",
       "created": false,
@@ -3841,6 +4512,17 @@
         "original": "precatechumenate",
         "new": "catechumenate"
       }
+    },
+    {
+      "date": 1563835482528,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "catechumenate",
+        "new": "precatechumenate"
+      }
     }
   ],
   "155": [
@@ -3872,6 +4554,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1563835338688,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "156": [
@@ -3890,6 +4579,13 @@
         "original": "Eu te amo Senhor - Sal 18 (17)",
         "new": "Eu te amo, Senhor - Sal 18 (17)"
       },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1563834971738,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -4105,6 +4801,17 @@
         "original": "election",
         "new": "precatechumenate"
       }
+    },
+    {
+      "date": 1564006522902,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "election"
+      }
     }
   ],
   "164": [
@@ -4156,6 +4863,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1564006432853,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "166": [
@@ -4200,6 +4914,13 @@
         "original": "election",
         "new": "catechumenate"
       }
+    },
+    {
+      "date": 1563839664355,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "168": [
@@ -4227,6 +4948,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1563832336185,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "169": [
@@ -4247,6 +4975,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1563832407680,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "170": [
@@ -4263,6 +4998,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1563832460792,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "171": [
@@ -4272,6 +5014,21 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1564004039216,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Hino à cruz gloriosa - Hino",
+        "new": "Hino à Cruz gloriosa - Da homilia 'A Santa Páscoa' de um autor anônimo do século II"
+      },
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "election",
+        "new": "catechumenate"
+      }
     }
   ],
   "172": [
@@ -4284,6 +5041,13 @@
     },
     {
       "date": 1563403474149,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1563832517457,
       "locale": "pt",
       "author": "gordofragoso2@gmail.com",
       "created": false,
@@ -4373,6 +5137,20 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1564005276613,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "linked": {
+        "new": "As armas da Luz - Ef 6, 11ss"
+      },
+      "created": true,
+      "updated": false,
+      "staged": {
+        "original": "election",
+        "new": "catechumenate"
+      }
     }
   ],
   "177": [
@@ -4429,6 +5207,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1564006610360,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "180": [
@@ -4478,6 +5263,17 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1564003622345,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Aleluia Pascal",
+        "new": "Aleluia Pascal - Apropriado para o tempo Pascal"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "182": [
@@ -4514,6 +5310,17 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1563838050128,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Aleluia interleccional antes do Evangelho - Apropriado para os tempos do Advento, Natal e Comum",
+        "new": "Aleluia Interleccional - Apropriado para os tempos do Advento, Natal e Comum"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "183": [
@@ -4573,6 +5380,13 @@
         "original": "liturgy",
         "new": "precatechumenate"
       }
+    },
+    {
+      "date": 1564004876606,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "184": [
@@ -4602,6 +5416,17 @@
       "staged": {
         "original": "liturgy",
         "new": "precatechumenate"
+      }
+    },
+    {
+      "date": 1564005040683,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "liturgy"
       }
     }
   ],
@@ -4633,6 +5458,16 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1563838549433,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "linked": {
+        "new": "Antífona Versículo antes do evangelho - Apropriado para o tempo da Quaresma"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "186": [
@@ -4669,6 +5504,13 @@
         "original": "Benção da água",
         "new": "Bênção da água - Da Liturgia Batismal da Vigília Pascal"
       },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1564005320874,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -4719,6 +5561,17 @@
       "staged": {
         "original": "liturgy",
         "new": "precatechumenate"
+      }
+    },
+    {
+      "date": 1564005332754,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "liturgy"
       }
     }
   ],
@@ -4951,6 +5804,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1563838763578,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "199": [
@@ -4987,6 +5847,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1564006322779,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "201": [
@@ -5012,6 +5879,13 @@
         "original": "Prefácio Pascual I",
         "new": "Prefácio para o tempo Pascal - Prefácio da Páscoa I - Melodia para o tempo Pascal"
       },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1563839115792,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -5187,6 +6061,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1563839228895,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "209": [
@@ -5243,6 +6124,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1564006244950,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "212": [
@@ -5263,6 +6151,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1563836155956,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "213": [
@@ -5275,6 +6170,13 @@
     },
     {
       "date": 1560299022583,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1563834623793,
       "locale": "pt",
       "author": "gordofragoso2@gmail.com",
       "created": false,
@@ -5297,6 +6199,13 @@
         "original": "Roubaste meu coração - Ct 4, 9-16.5, 1",
         "new": "Roubaste o meu coração - Ct 4, 9-16.5, 1"
       },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1563832971625,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -5329,6 +6238,17 @@
       "staged": {
         "original": "precatechumenate",
         "new": "catechumenate"
+      }
+    },
+    {
+      "date": 1563835755401,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "catechumenate",
+        "new": "precatechumenate"
       }
     }
   ],
@@ -5393,6 +6313,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1563834906938,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": false
     }
   ],
   "219": [
@@ -5411,6 +6338,13 @@
         "original": "Ó deus tu és meu deus - Sal 63 (62)",
         "new": "Ó Deus, Tu és meu Deus - Sal 63 (62)"
       },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1563836123222,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -5634,6 +6568,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1564005226832,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "240": [
@@ -5680,6 +6621,17 @@
         "original": "precatechumenate",
         "new": "catechumenate"
       }
+    },
+    {
+      "date": 1563839040066,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "catechumenate",
+        "new": "liturgy"
+      }
     }
   ],
   "243": [
@@ -5691,6 +6643,13 @@
         "original": "Os Meninos De Belém - ",
         "new": "Os Meninos De Belém"
       },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1563836531693,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
     }
@@ -5725,6 +6684,17 @@
       "staged": {
         "original": "precatechumenate",
         "new": "liturgy"
+      }
+    },
+    {
+      "date": 1563836697046,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "liturgy",
+        "new": "precatechumenate"
       }
     }
   ],
@@ -5785,6 +6755,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1563833906103,
+      "locale": "pt",
+      "author": "gordofragoso2@gmail.com",
+      "rename": {
+        "original": "Canta a Iahweh Jerusalém - Sal 147 (146-147)",
+        "new": "Canta a Iahweh, Jerusalém - Sal 147 (146-147)"
+      },
+      "created": false,
+      "updated": false
     }
   ]
 }

@@ -1,9 +1,10 @@
 La-
-A. SANTO, SANTO, SANTO.         |
+A. SANTO, SANTO, SANTO.         
 Sol                              La-      
-SANTO, SANTO, SANTO.          | BIS
+SANTO, SANTO, SANTO.          
+repeat
 
-La-      Sol            La-
+   La-      Sol            La-
 S. Os  céus e a terra
          Sol
 proclamam,

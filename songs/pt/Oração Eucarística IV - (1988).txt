@@ -119,11 +119,12 @@ e, ressuscitando dos mortos,
 venceu a morte e renovou a vida.
 
 Do
-P.  RESSUSCITANDO DOS MORTOS,  |
-                           
-VENCEU A MORTE                           |  BIS A.
+P.  RESSUSCITANDO DOS MORTOS,  
+-                           
+VENCEU A MORTE                           
                                 La-           
-E RENOVOU A VIDA.                        |
+E RENOVOU A VIDA.                        
+repeat
 
 La-                                                                      Do
 E, a fim de não mais vivermos para nós,
@@ -200,9 +201,11 @@ Sol                                            La-
 Eis o mistério da nossa Fé!
 
 Do
-A. ANUNCIAMOS, A TUA MORTE, SENHOR,        |
+A. ANUNCIAMOS, A TUA MORTE, SENHOR,        
                                                                            La-
-PROCLAMAMOS A TUA RESSURREIÇÃO.        |        BIS A.
+PROCLAMAMOS A TUA RESSURREIÇÃO.        
+repeat
+
 Fa                               Mi
 S. Vem, Senhor Jesus!
 
@@ -313,5 +316,3 @@ agora e para sempre.
 
                                 Fa           Mi
 A. AMÉM, AMÉM, AMÉM, AMÉM.
- 
- 

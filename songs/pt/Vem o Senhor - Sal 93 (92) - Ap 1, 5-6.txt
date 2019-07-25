@@ -1,8 +1,10 @@
 clamp:2
+
      Mi-                                                                     La-    
-A. VEM O SENHOR VESTIDO DE MAJESTADE,  |
+A. VEM O SENHOR VESTIDO DE MAJESTADE,  
                                                          Mi-         
-VESTIDO E CINGIDO DE PODER.                     |               BIS
+VESTIDO E CINGIDO DE PODER.             
+repeat      
 
                                                                           La-
 S. Como está firme o mundo e não vacila,
@@ -26,9 +28,10 @@ Aquele, aquele que nos amou
 e fez de nós sacerdotes do seu reino.
 
                                                      La-     
-A. A ELE A GLÓRIA E O PODER         |
+A. A ELE A GLÓRIA E O PODER         
                                                Mi-        
-PELOS SÉCULOS DOS SÉCULOS.    |          BIS
+PELOS SÉCULOS DOS SÉCULOS.   
+repeat
 
 Mi-
 A. VEM O SENHOR ...

@@ -2,8 +2,9 @@ Mi-                                                                        Re
 A. ESCONDE-ME NO OCULTO DE TUA TENDA,
                             Do                             Si7     
 SOBRE TUA ROCHA LEVANTA-ME.
+repeat
 
-Mi-                                                       Do
+  Mi-                                                       Do
 S. Iahweh é minha luz e salvação,
                                   Si7
 de quem terei medo?

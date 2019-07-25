@@ -35,7 +35,7 @@
    "en": "Console my people. (is 40, 1-11)"
   },
   "stages": {
-   "pt": "precatechumenate"
+   "pt": "catechumenate"
   }
  },
  "4": {
@@ -83,7 +83,7 @@
   "files": {
    "es": "El Señor me ha dado lengua de discípulo - Is 50, 4-10",
    "it": "Il Signore mi ha dato lingua da discepolo - Is 50, 4-10",
-   "pt": "O Senhor me deu língua de discípulo - Is 50, 4-10",
+   "pt": "O Senhor me deu - Terceiro canto do Servo de Iahweh - Is 50, 4-10",
    "de-AT": "Der Herr hat mir gegeben - III. Gottesknechtlied - Jes 50, 4-10"
   }
  },
@@ -200,7 +200,7 @@
   "files": {
    "es": "Tú has cubierto de vergüenza la muerte - Melitón de Sardes",
    "it": "Omelia pasquale - Melitone di Sardi",
-   "pt": "Tu cobriste de vergonha a morte - Homilia de Melitão de Sardes sobre a Páscoa",
+   "pt": "Tu cobriste de vergonha a morte - Homilía de Melitão de Sares sobre a Páscoa - Ofício das leituras da quarta feira Santa",
    "de-AT": "Meliton von Sardes - Osterhomilie"
   }
  },
@@ -218,7 +218,7 @@
    "fr": "A la victime pascale - Séquence de Pâques"
   },
   "stages": {
-   "pt": "election"
+   "pt": "precatechumenate"
   }
  },
  "20": {
@@ -251,7 +251,7 @@
    "de-AT": "Zu dir, o Herr, rufe ich - Ps 142"
   },
   "stages": {
-   "pt": "election"
+   "pt": "precatechumenate"
   }
  },
  "23": {
@@ -299,7 +299,7 @@
    "pt": "Aclamai o Senhor - Sal 100 (99)"
   },
   "stages": {
-   "pt": "election"
+   "pt": "precatechumenate"
   }
  },
  "27": {
@@ -337,7 +337,7 @@
    "it": "Lodate iddio - Sal 150",
    "de-AT": "Lobet den Herrn - Ps 150",
    "en": "Alleluia praise god - Ps 150",
-   "pt": "Aleluia, aclamai o Senhor - Sal 150"
+   "pt": "Aleluia! Louvai o Senhor - Sal 150"
   },
   "stages": {
    "pt": "precatechumenate"
@@ -352,7 +352,7 @@
    "es": "Aleluya, bendecid al Señor - Sal 134 (133)",
    "it": "Benedite il Signore - Sal 133 (134)",
    "de-AT": "Preiset den Herrn - Ps 134",
-   "pt": "Aleluia, Bendizei o Senhor - Sal 134 (133)"
+   "pt": "Aleluia! Bendizei o Senhor - Sal 134 (133)"
   },
   "stages": {
    "pt": "precatechumenate"
@@ -366,7 +366,7 @@
    "es": "Aleluya, ya llegó el reino - Ap 19, 6-9",
    "it": "Già viene il regno - Ap 19, 6-9",
    "de-AT": "Schon kommt das Reich - Off 19, 6-9",
-   "pt": "Aleluia, já chegou o reino - Ap 19, 6-9"
+   "pt": "Aleluia! Já chegou o Reino - Ap 19, 6-9"
   },
   "stages": {
    "pt": "precatechumenate"
@@ -508,7 +508,7 @@
   "files": {
    "es": "Bendito eres, Señor - Dn 3, 52-57",
    "it": "Canto dei tre giovani nella fornace ( I parte) - Dn 3, 52-57",
-   "pt": "Bendito sejas Senhor - Dn 3, 52-57",
+   "pt": "Bendito sejas, Senhor - Dn 3, 52-57",
    "de-AT": "Lobgesang der drei Jünglinge im Feuerofen 1. Teil - Dan 3, 52-57"
   }
  },
@@ -756,6 +756,9 @@
    "it": "Canto dell'agnello - Ap 5, 9ss",
    "pt": "Tu és digno de receber o livro - Ap 5,9ss",
    "de-AT": "Lied des Lammes - Offb 5, 9 ff"
+  },
+  "stages": {
+   "pt": "catechumenate"
   }
  },
  "66": {
@@ -839,7 +842,7 @@
    "en": "Give thanks to the lord - Ps 135 (136)"
   },
   "stages": {
-   "pt": "election"
+   "pt": "precatechumenate"
   }
  },
  "74": {
@@ -952,7 +955,7 @@
    "de-AT": "Adventhymnus"
   },
   "stages": {
-   "pt": "catechumenate"
+   "pt": "precatechumenate"
   }
  },
  "84": {
@@ -966,7 +969,7 @@
    "de-AT": "Osterhymnus"
   },
   "stages": {
-   "pt": "catechumenate"
+   "pt": "precatechumenate"
   }
  },
  "85": {
@@ -1029,7 +1032,7 @@
    "en": "Song of tobit (tob 13, 10-18)"
   },
   "stages": {
-   "pt": "catechumenate"
+   "pt": "precatechumenate"
   }
  },
  "90": {
@@ -1079,7 +1082,7 @@
   "files": {
    "es": "Llegue hasta tu presencia mi clamor - Sal 119 (118)",
    "it": "Giunga la mia preghiera fino a te - Sal 119 (118)",
-   "pt": "Chegue a tua presença o meu clamor - Sal 119 (118)",
+   "pt": "Chegue à tua presença meu clamor - Sal 119 (118)",
    "de-AT": "Zu dir gelange mein Bitten - Ps 119",
    "en": "Lord, lord jesus - Ps 118 (119)"
   }
@@ -1173,7 +1176,7 @@
    "en": "You will show me the path of life  - Ps 16"
   },
   "stages": {
-   "pt": "catechumenate"
+   "pt": "precatechumenate"
   }
  },
  "103": {
@@ -1196,7 +1199,7 @@
    "en": "Look how it is good - Ps 132 (133)"
   },
   "stages": {
-   "pt": "catechumenate"
+   "pt": "precatechumenate"
   }
  },
  "105": {
@@ -1206,7 +1209,7 @@
   "files": {
    "es": "Misericordia mía, misericordia - Sal 51 (50)",
    "it": "Misericordia dio, misericordia - Sal 51 (50)",
-   "pt": "Misericórdia minha, misericórdia - Sal 51 (50) Miserere",
+   "pt": "Misericórdia minha, misericórdia - Sal 51 (50) 'Miserere'",
    "de-AT": "Gott sei mir gnädig - Ps 51",
    "en": "Have mercy on me - Ps 50 (51)"
   }
@@ -1231,7 +1234,7 @@
    "de-AT": "Er ist nicht hier - Mt 28, 1-8"
   },
   "stages": {
-   "pt": "catechumenate"
+   "pt": "precatechumenate"
   }
  },
  "108": {
@@ -1253,7 +1256,7 @@
   "files": {
    "es": "Oh Dios, por tu nombre sálvame - Sal 54 (53)",
    "it": "Oh dio per il tuo nome salvami - Sal 54 (53)",
-   "pt": "Ó Deus, pelo teu nome salva-me - Sal 54 (53)",
+   "pt": "Ó Deus, pelo teu nome, salva-me - Sal 54 (53)",
    "de-AT": "O Gott durch deinen Namen rette mich - Ps 54"
   }
  },
@@ -1332,7 +1335,7 @@
    "de-AT": "Aus Liebe zu meinen Brüdern - Ps 122"
   },
   "stages": {
-   "pt": "liturgy"
+   "pt": "precatechumenate"
   }
  },
  "117": {
@@ -1354,7 +1357,7 @@
   "files": {
    "es": "Por qué las gentes conjuran - Sal 2",
    "it": "Perchè le genti congiurano - Sal 2",
-   "pt": "Por que confabulam as nações? - Sal 2",
+   "pt": "Por que confabulam as nações - Sal 2",
    "de-AT": "Warum toben die Völker - Ps 2",
    "en": "Why do the nations conspire - Ps 2"
   }
@@ -1652,7 +1655,7 @@
    "de-AT": "Urì, urì, urà"
   },
   "stages": {
-   "pt": "catechumenate"
+   "pt": "precatechumenate"
   }
  },
  "145": {
@@ -1666,7 +1669,7 @@
    "de-AT": "Ihr Hirten, lasst uns gehen"
   },
   "stages": {
-   "pt": "catechumenate"
+   "pt": "precatechumenate"
   }
  },
  "146": {
@@ -1736,7 +1739,7 @@
   "files": {
    "es": "Virgen de la maravilla - Himno",
    "it": "Vergine della meraviglia - Inno",
-   "pt": "Virgem da maravilha - Hino*",
+   "pt": "Virgem da maravilha - Hino",
    "de-AT": "Jungfrau der Wundertat"
   }
  },
@@ -1767,7 +1770,7 @@
    "de-AT": "Schon kommt mein Gott"
   },
   "stages": {
-   "pt": "catechumenate"
+   "pt": "precatechumenate"
   }
  },
  "155": {
@@ -1876,7 +1879,7 @@
    "de-AT": "Mein Gelibter ist für mich - Hld 1, 13 ff"
   },
   "stages": {
-   "pt": "precatechumenate"
+   "pt": "election"
   }
  },
  "164": {
@@ -1967,8 +1970,11 @@
   "files": {
    "es": "Himno a la cruz gloriosa - Himno",
    "it": "Inno alla croce gloriosa - Inno",
-   "pt": "Hino à cruz gloriosa - Hino",
+   "pt": "Hino à Cruz gloriosa - Da homilia 'A Santa Páscoa' de um autor anônimo do século II",
    "de-AT": "Hymnus zum herrlichen Kreuz"
+  },
+  "stages": {
+   "pt": "catechumenate"
   }
  },
  "172": {
@@ -2019,7 +2025,11 @@
   "files": {
    "es": "Las armas de la luz - Ef 6, 11ss",
    "it": "Rivestitevi dell'armatura di dio - Ef 6, 11ss",
-   "de-AT": "Bekleidet euch mit der Waffenrüstung des Herrn - Eph 6, 11 ff"
+   "de-AT": "Bekleidet euch mit der Waffenrüstung des Herrn - Eph 6, 11 ff",
+   "pt": "As armas da Luz - Ef 6, 11ss"
+  },
+  "stages": {
+   "pt": "catechumenate"
   }
  },
  "177": {
@@ -2074,7 +2084,7 @@
    "it": "Alleluja Pasquale",
    "de-AT": "Osterhalleluja",
    "en": "Easter alleluia",
-   "pt": "Aleluia Pascal"
+   "pt": "Aleluia Pascal - Apropriado para o tempo Pascal"
   }
  },
  "182": {
@@ -2083,7 +2093,7 @@
    "es": "Aleluya interleccional antes del Evangelio",
    "de-AT": "Halleluja-ruf Zum Evangelium",
    "it": "Alleluja per acclamazioni al Vangelo",
-   "pt": "Aleluia interleccional antes do Evangelho - Apropriado para os tempos do Advento, Natal e Comum"
+   "pt": "Aleluia Interleccional - Apropriado para os tempos do Advento, Natal e Comum"
   }
  },
  "183": {
@@ -2108,7 +2118,7 @@
    "pt": "Anáfora do Sal"
   },
   "stages": {
-   "pt": "precatechumenate"
+   "pt": "liturgy"
   }
  },
  "185": {
@@ -2116,7 +2126,8 @@
   "files": {
    "es": "Antífona interleccional para el tiempo de Cuaresma",
    "de-AT": "Ruf zum evangelium in der Fastenzeit",
-   "it": "Acclamazione al Vangelo nel tempo di quaresima"
+   "it": "Acclamazione al Vangelo nel tempo di quaresima",
+   "pt": "Antífona Versículo antes do evangelho - Apropriado para o tempo da Quaresma"
   }
  },
  "186": {
@@ -2138,7 +2149,7 @@
    "de-AT": "Dankgebet für die Liturgie der Versöhnung"
   },
   "stages": {
-   "pt": "precatechumenate"
+   "pt": "liturgy"
   }
  },
  "188": {
@@ -2377,7 +2388,7 @@
    "de-AT": "Ave, O Maria - Hymnus"
   },
   "stages": {
-   "pt": "catechumenate"
+   "pt": "precatechumenate"
   }
  },
  "216": {
@@ -2588,7 +2599,7 @@
    "pt": "Orações Universais - Melodia para utilizar nas Orações universais"
   },
   "stages": {
-   "pt": "catechumenate"
+   "pt": "liturgy"
   }
  },
  "243": {
@@ -2612,7 +2623,7 @@
    "pt": "Provai E Vede - Sal 34 (33)"
   },
   "stages": {
-   "pt": "liturgy"
+   "pt": "precatechumenate"
   }
  },
  "246": {
@@ -2694,7 +2705,7 @@
   "stage": "precatechumenate",
   "files": {
    "es": "Canta a Yahveh Jerusalén - Sal 147 (146-147)",
-   "pt": "Canta a Iahweh Jerusalém - Sal 147 (146-147)",
+   "pt": "Canta a Iahweh, Jerusalém - Sal 147 (146-147)",
    "en": "Praise the lord jerusalem - Ps 147"
   }
  }

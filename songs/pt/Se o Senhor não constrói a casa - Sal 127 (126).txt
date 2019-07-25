@@ -1,9 +1,10 @@
 Re                                                     Si-        Sol
-S. SE O SENHOR NÃO CONSTRÓI A CASA,    |
+S. SE O SENHOR NÃO CONSTRÓI A CASA,    
           La                                                            Re       
-EM VÃO TRABALHAM OS CONSTRUTORES.  |     BIS A.
+EM VÃO TRABALHAM OS CONSTRUTORES.  
+repeat
 
-Si-                                                         Fa#
+  Si-                                                         Fa#
 S. Se o Senhor não guarda a cidade,
                                                   Si-
 em vão vigiam as sentinelas,

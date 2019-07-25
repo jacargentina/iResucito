@@ -1,4 +1,4 @@
- 
+clamp:3 
 Re–                                                                     La7 
 S. A ti, Senhor, se deve o louvor em Sião.
                                                                    Re– 
@@ -30,7 +30,6 @@ vem todo mortal, vem todo mortal.
 Sib7                                                  La7 
 A. A TI QUE ESCUTAS A ORAÇÃO ...
   
-    
 Re–                                                                   La7      
 S. Nos saciaremos dos bens de tua casa,  
                                            Re– 

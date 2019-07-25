@@ -1,11 +1,12 @@
 Re-5
-A. STABAT MATER DOLOROSA          |
+A. STABAT MATER DOLOROSA          
 Do7                                       Sib7     
-IUXTA CRUCEM LACRIMOSA           |  BIS A.
+IUXTA CRUCEM LACRIMOSA           
                                          La         
-DUM PENDEBAT FILIUS.                  |
+DUM PENDEBAT FILIUS.                  
+repeat
 
-Re-
+   Re-
 S. Era su'alma um gemido,
                     Do7                   Sib7
 era uma dor, era um grito,
@@ -54,4 +55,5 @@ faze-me conseguir
 a palma da vitória.
 
         Re-           Sib7         La7
-A. AMÉM, AMÉM, AMÉM.            |       BIS
+A. AMÉM, AMÉM, AMÉM.           
+repeat
