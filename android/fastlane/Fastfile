@@ -29,7 +29,7 @@ platform :android do
   lane :beta do
     increment_android_version_code(path: "app/build.gradle")
     gradle(task: "clean") 
-    gradle(task: "assembleRelease")
+    gradle(task: "bundleRelease")
     upload_to_play_store(track: 'beta')
 
     # sh "your_script.sh"
@@ -43,7 +43,7 @@ platform :android do
       increment_android_version_name(path: "app/build.gradle", type: 'patch')
     end
     gradle(task: "clean") 
-    gradle(task: "assembleRelease")
+    gradle(task: "bundleRelease")
     supply
   end
 

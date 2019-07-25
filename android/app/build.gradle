@@ -1,7 +1,7 @@
 def VERSION_MAJOR=3
 def VERSION_MINOR=0
 def VERSION_PATCH=2
-def VERSION_BUILD=52
+def VERSION_BUILD=53
 
 apply plugin: "com.android.application"
 
@@ -137,6 +137,17 @@ android {
         versionName VERSION_MAJOR + "." + VERSION_MINOR + "." + VERSION_PATCH
         multiDexEnabled true
         ndk.abiFilters "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
+    }
+    bundle {
+        density {
+            enableSplit true
+        }
+        abi {
+            enableSplit true
+        }
+        language {
+            enableSplit false
+        }
     }
     signingConfigs {
         release {
