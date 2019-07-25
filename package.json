@@ -76,7 +76,7 @@
     "lodash": "^4.17.15",
     "lowdb": "^1.0.0",
     "metro-react-native-babel-preset": "^0.55.0",
-    "native-base": "^2.13.0",
+    "native-base": "^2.12.2",
     "node-fetch": "^2.6.0",
     "normalize-strings": "^1.1.0",
     "open": "^6.4.0",
