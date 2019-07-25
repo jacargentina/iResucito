@@ -1,0 +1,17 @@
+The songs of the Neocatechumenal Way
+
+• Search and display of songs on screen
+• Categorization of the songs:
+   - According to alphabetical order
+   - According to stages of the Camino
+   - According to liturgical times of the year
+   - According to moments of the liturgy
+• Preparation of Lists:
+   - For the celebration of the Word
+   - For the celebration of the Eucharist
+   - For free format
+• Share lists
+• Integration of telephone contacts to link monitions with the brothers of the community
+• Visualization of songs in PDF
+• Share PDF
+• Export of the complete song book in PDF

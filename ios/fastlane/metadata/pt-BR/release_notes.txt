@@ -1,0 +1,3 @@
+• Correções de músicas em espanhol (es) e em português (pt)
+• Adicionado idioma alemão austríaco e músicas (de-AT)
+• Adicionado idioma francês (fr) (músicas com trabalho em andamento)

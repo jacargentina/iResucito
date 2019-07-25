@@ -1,0 +1,3 @@
+• Song corrections in Spanish (es) and Portuguese (pt)
+• Added Austrian German language and songs (de-AT)
+• Added French language (fr) (songs with work in progress)

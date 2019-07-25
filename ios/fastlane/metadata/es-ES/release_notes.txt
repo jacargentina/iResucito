@@ -1,1 +1,3 @@
-
+• Correcciones de cantos en Español (es) y Portugues (pt)
+• Agregado lenguaje y cantos Alemán Austriaco (de-AT)
+• Agregado lenguaje Frances (fr) (cantos con trabajo en progreso)
