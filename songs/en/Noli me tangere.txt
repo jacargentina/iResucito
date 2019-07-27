@@ -1,7 +1,4 @@
-NOLI ME TANGERE
-
-                               CAPO 3rd or 4th Fret
-
+clamp: 3
     A
 C. Woman, tell me why you're weeping.
                    D
