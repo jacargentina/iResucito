@@ -1,10 +1,6 @@
-RESURREXIT
-(Dialog unseres Herrn Jesus Christus mit Marta)
-
-Barré auf dem III. Bund
-
+clamp: III.
               a                                E7sus
-K.+V. Resurrexit, Resurrexit,
+K.V. Resurrexit, Resurrexit,
                             F                     E
            Resurrexit, Resurrexit
               a            E7sus                        E
@@ -26,7 +22,7 @@ K.       Ich bin die Auferstehung,
            Wird auf ewig nicht sterben.
 
               a                                E7sus
-K.+V. Resurrexit, Resurrexit,
+K.V. Resurrexit, Resurrexit,
                             F                     E
            Resurrexit, Resurrexit
               a            E7sus                        E
@@ -56,14 +52,14 @@ K.       Ich bin die Auferstehung,
             der in die Welt kommen soll.
 
               a                                E7sus
-K.+V. Resurrexit, Resurrexit,
+K.V. Resurrexit, Resurrexit,
                             F                     E
            Resurrexit, Resurrexit
               a            E7sus                        E
            Gloria, Gloria, Gloria, Gloria.
 
              a 
-K.+V. La, la, la, la, la, la
+K.V. La, la, la, la, la, la
               c b                                        E
             La, la, la, la, la, la, la, la
                a 

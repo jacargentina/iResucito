@@ -1,6 +1,4 @@
-WIE EIN SCHAF DAS SIEHT
-(Aus einem Hymnus von Romanus dem Sänger)
-Barré auf dem II. Bund
+clamp: II.
               e   
 K.       Wie ein Schaf das sieht sein Lämmchen
                                                          a
@@ -20,7 +18,7 @@ K.       Wie ein Schaf das sieht sein Lämmchen
               a                                                                H7
            Mein Sohn mein Sohn und mein Gott.
               a                                                               H7
-K.+V. Mein Sohn, mein Sohn und mein Gott.
+K.V. Mein Sohn, mein Sohn und mein Gott.
               e   
 K.       Nie hätte ich gedacht, dich in diesem Zustand
                      a
@@ -35,7 +33,7 @@ K.       Nie hätte ich gedacht, dich in diesem Zustand
               C                                                       a
            Ich möchte es verstehen! Wehe mir!
               a                                                        a
-K.+V. Ich möchte es verstehen! Wehe mir!
+K.V. Ich möchte es verstehen! Wehe mir!
                                                                                                H7
 K.       Wie kann es sein, dass das Licht gelöscht wird?
                 a
@@ -45,7 +43,7 @@ K.       Wie kann es sein, dass das Licht gelöscht wird?
               a                                                                H7
            Mein Sohn mein Sohn und mein Gott.
               a                                                               H7
-K.+V. Mein Sohn, mein Sohn und mein Gott.
+K.V. Mein Sohn, mein Sohn und mein Gott.
               e   
 K.       Warum weinst du,
                                                                     a

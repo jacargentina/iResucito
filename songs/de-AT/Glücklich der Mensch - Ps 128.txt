@@ -1,9 +1,7 @@
-PSALM 128 - GLÜCKLICH DER MENSCH (1990)
-
-Barré auf dem II. Bund
+clamp: II.
 a                       e         a
 V. Glücklich der Mensch  wohl dem Menschen  der den Herrn fürchtet
-d*             F           E
+d             F           E
 Glücklich der Mensch  der wandert auf seinem Weg.
 
 d                   E
@@ -27,5 +25,3 @@ F                    E
 mögest du schauen die Kinder deiner Kinder.
 a
 V. Glücklich der Mensch  ...
-
-d*
