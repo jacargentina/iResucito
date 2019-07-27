@@ -274,7 +274,7 @@ export class SongsParser {
     var fNotes = items.find(l => this.isChordsLine(l, locale));
     var fNotesIdx = fNotes ? items.indexOf(fNotes) : undefined;
     var tDiff = 0;
-    if (fNotesIdx && transportToNote) {
+    if (fNotesIdx !== -1 && transportToNote) {
       tDiff = this.getChordsDiff(items[fNotesIdx], transportToNote, locale);
     }
     const lFirstPass = items.map(l => {
