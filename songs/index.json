@@ -228,6 +228,9 @@
    "pt": "A ninguém demos ocasião de tropeço - 2 Co 6, 3ss",
    "de-AT": "Brüder - 2 Kor 6, 3-16",
    "it": "Fratelli, non diamo a nessuno motivo d' inciampo - 2 Cor 6, 3-16"
+  },
+  "stages": {
+   "de-AT": "election"
   }
  },
  "21": {
@@ -308,13 +311,14 @@
   "lutes and vespers": true,
   "files": {
    "es": "Al despertar - Sal 17 (16)",
-   "it": "Al risveglio mi sazierò del tuo volto, signor - Sal 17 (16)",
+   "it": "Al risveglio mi sazierò del tuo volto, Signor - Sal 17 (16)",
    "de-AT": "Beim Erwachen - Ps 17",
    "en": "When i awake - Ps 16 (17)",
    "pt": "Ao despertar - Sal 17 (16)"
   },
   "stages": {
-   "pt": "precatechumenate"
+   "pt": "precatechumenate",
+   "de-AT": "election"
   }
  },
  "28": {
@@ -421,7 +425,8 @@
    "pt": "Ave Maria I - Lc 1, 28ss"
   },
   "stages": {
-   "pt": "precatechumenate"
+   "pt": "precatechumenate",
+   "de-AT": "election"
   }
  },
  "36": {
@@ -435,7 +440,8 @@
    "pt": "Ave Maria II (1984) - Lc 1, 28ss"
   },
   "stages": {
-   "pt": "precatechumenate"
+   "pt": "precatechumenate",
+   "de-AT": "election"
   }
  },
  "37": {
@@ -519,6 +525,9 @@
    "it": "Cantico di Zaccaria - Lc 1, 67-80",
    "pt": "Benedictus - Lc 1, 67-80",
    "de-AT": "Benedictus - Lk 1, 67-80"
+  },
+  "stages": {
+   "de-AT": "election"
   }
  },
  "44": {
@@ -549,8 +558,11 @@
    "es": "Caritas Christi urget nos - 2 Co 5, 14-15. 17. 21",
    "it": "Caritas Christi urget nos - 2 Co 5, 14-15. 17. 21",
    "pt": "Caritas Christi Urget Nos - 2 Cor 5, 14.15.17.21",
-   "de-AT": "Caritas christi - 2 Kor 5, 14-17.21; 1 Kor 9 16b",
+   "de-AT": "Caritas Christi - 2 Kor 5, 14-17.21; 1 Kor 9 16b",
    "en": "Caritas christi"
+  },
+  "stages": {
+   "de-AT": "election"
   }
  },
  "47": {
@@ -1097,6 +1109,9 @@
    "it": "Portami in cielo - Flp 1, 23",
    "pt": "Leva-me ao Céu - Fp 1, 23",
    "de-AT": "Bring mich in den Himmel - Phil 1, 23"
+  },
+  "stages": {
+   "de-AT": "election"
   }
  },
  "96": {
@@ -1463,7 +1478,10 @@
    "es": "Salve, reina de los cielos - Himno",
    "it": "Salve, regina dei cieli - Inno",
    "pt": "Salve Rainha dos Céus - Hino",
-   "de-AT": "Ave, du himmelskönigin"
+   "de-AT": "Ave, du Himmelskönigin"
+  },
+  "stages": {
+   "de-AT": "election"
   }
  },
  "128": {
@@ -2388,7 +2406,8 @@
    "de-AT": "Ave, O Maria - Hymnus"
   },
   "stages": {
-   "pt": "precatechumenate"
+   "pt": "precatechumenate",
+   "de-AT": "election"
   }
  },
  "216": {

@@ -530,6 +530,17 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1564437946309,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "election"
+      }
     }
   ],
   "21": [
@@ -876,6 +887,32 @@
       "staged": {
         "original": "liturgy",
         "new": "precatechumenate"
+      }
+    },
+    {
+      "date": 1564418129641,
+      "locale": "it",
+      "author": "fd_colautti@mac.com",
+      "rename": {
+        "original": "Al risveglio mi sazierò del tuo volto, signor - Sal 17 (16)",
+        "new": "Al risveglio mi sazierò del tuo volto, Signor - Sal 17 (16)"
+      },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1564435217009,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "rename": {
+        "original": "Al risveglio mi sazierò del tuo volto, signor - Sal 17 (16)",
+        "new": "Al risveglio mi sazierò del tuo volto, Signor - Sal 17 (16)"
+      },
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "election"
       }
     }
   ],
@@ -1328,6 +1365,17 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1564327130032,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "election"
+      }
     }
   ],
   "36": [
@@ -1387,6 +1435,17 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1564327872666,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "election"
+      }
     }
   ],
   "37": [
@@ -1636,6 +1695,17 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1564437725395,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "election"
+      }
     }
   ],
   "44": [
@@ -1681,6 +1751,21 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1564437987744,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "rename": {
+        "original": "Caritas christi - 2 Kor 5, 14-17.21; 1 Kor 9 16b",
+        "new": "Caritas Christi - 2 Kor 5, 14-17.21; 1 Kor 9 16b"
+      },
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "election"
+      }
     }
   ],
   "47": [
@@ -2989,6 +3074,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1564437775708,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "election"
+      }
     }
   ],
   "96": [
@@ -3840,6 +3936,21 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1564331984829,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "rename": {
+        "original": "Ave, du himmelskönigin",
+        "new": "Ave, du Himmelskönigin"
+      },
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "election"
+      }
     }
   ],
   "128": [
@@ -5151,6 +5262,13 @@
         "original": "election",
         "new": "catechumenate"
       }
+    },
+    {
+      "date": 1564436234474,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
     }
   ],
   "177": [
@@ -6249,6 +6367,17 @@
       "staged": {
         "original": "catechumenate",
         "new": "precatechumenate"
+      }
+    },
+    {
+      "date": 1564417673635,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "election"
       }
     }
   ],
