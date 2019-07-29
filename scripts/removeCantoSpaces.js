@@ -10,7 +10,7 @@ var program = require('commander');
 
 program
   .version('1.0')
-  .description('Remove titles from song content')
+  .description('Remove extra spaces from song lyrics')
   .option(
     '-l, --locale [locale]',
     'Locale to use. Defaults to current OS locale'
@@ -33,19 +33,14 @@ if (!process.argv.slice(2).length) {
     FolderSongs.loadSongs(locale, songs).then(() => {
       songs.map(song => {
         if (song.files[I18n.locale]) {
-          var render = parser.getForRender(song.fullText, I18n.locale);
-          const fn = render.firstNotes;
-          if (fn && fn > 0) {
-            var firstCanto = render.items.find((x, idx) => {
-              return idx < fn && x.type === 'canto';
-            });
-            if (firstCanto) {
-              var arr = song.fullText.replace('\r\n', '\n').split('\n');
-              var res = arr.slice(fn);
-              var ft = res.join('\n');
-              fs.writeFileSync(song.path, ft);
+          var lines = parser.getSongLines(song.fullText, I18n.locale);
+          var str = lines.map(x => {
+            if (x.type === 'canto') {
+              return x.raw.trim();
             }
-          }
+            return x.raw;
+          });
+          fs.writeFileSync(song.path, str.join('\n'));
         }
       });
     });

@@ -76,6 +76,7 @@ declare type SongLineType =
   | 'comenzarColumna';
 
 declare type SongLine = {
+  raw: string,
   texto: string,
   style: any,
   prefijo: string,
