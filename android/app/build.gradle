@@ -151,11 +151,11 @@ android {
     }
     signingConfigs {
         release {
-            if (project.hasProperty('IRESUCITO_RELEASE_STORE_FILE')) {
-                storeFile file(IRESUCITO_RELEASE_STORE_FILE)
-                storePassword IRESUCITO_RELEASE_STORE_PASSWORD
-                keyAlias IRESUCITO_RELEASE_KEY_ALIAS
-                keyPassword IRESUCITO_RELEASE_KEY_PASSWORD
+            if (project.hasProperty('IRESUCITO_UPLOAD_STORE_FILE')) {
+                storeFile file(IRESUCITO_UPLOAD_STORE_FILE)
+                storePassword IRESUCITO_UPLOAD_STORE_PASSWORD
+                keyAlias IRESUCITO_UPLOAD_KEY_ALIAS
+                keyPassword IRESUCITO_UPLOAD_KEY_PASSWORD
             }
         }
     }
