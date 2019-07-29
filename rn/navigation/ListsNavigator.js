@@ -6,12 +6,14 @@ import { Icon } from 'native-base';
 import ListScreen from '../screens/ListScreen';
 import ListDetail from '../screens/ListDetail';
 import SongDetail from '../screens/SongDetail';
+import PDFViewer from '../screens/PDFViewer';
 
 const ListsNavigator = createStackNavigator(
   {
     Lists: ListScreen,
     ListDetail: ListDetail,
-    SongDetail: SongDetail
+    SongDetail: SongDetail,
+    PDFViewer: PDFViewer
   },
   {
     defaultNavigationOptions: StackNavigatorOptions
