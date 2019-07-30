@@ -25,3 +25,7 @@
 .hoverable:hover .content .description {
   color: white !important;
 }
+
+body {
+  overscroll-behavior: none;
+}
