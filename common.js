@@ -614,7 +614,7 @@ export const PDFGenerator = async (
             text = '*';
           }
           lines.push({
-            page: writer.pageNumber - 1,
+            page: writer.pageNumber,
             startY: blockY,
             endY: writer.doc.y - writer.doc.currentLineHeight(false),
             x: maxX + 10,
