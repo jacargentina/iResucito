@@ -38,6 +38,9 @@ if (!process.argv.slice(2).length) {
             if (x.type === 'canto') {
               return x.raw.trim();
             }
+            else if (x.type === 'notas') {
+              return x.raw.trimRight();
+            }
             return x.raw;
           });
           fs.writeFileSync(song.path, str.join('\n'));
