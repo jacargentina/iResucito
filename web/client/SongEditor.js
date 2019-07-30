@@ -58,6 +58,8 @@ const SongEditor = () => {
     if (editSong) {
       callback(text);
       callPending();
+      setLinepos(1);
+      setColpos(1);
       if (txtRef && txtRef.current) {
         txtRef.current.ref.current.selectionStart = 0;
         txtRef.current.ref.current.selectionEnd = 0;
