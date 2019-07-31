@@ -7,6 +7,9 @@
    "it": "Cosﬁ parla l'amen - Ap 3, 14-22",
    "de-AT": "Das sagt der Amen - Offb 3, 14-22",
    "pt": "Assim fala o Amém - Ap 3, 14-22"
+  },
+  "stages": {
+   "de-AT": "election"
   }
  },
  "2": {
@@ -63,6 +66,9 @@
    "it": "Debora - Jc 5",
    "pt": "Débora - Jz 5",
    "de-AT": "Deborah - Ri 5, 1 ff"
+  },
+  "stages": {
+   "de-AT": "election"
   }
  },
  "6": {
@@ -85,6 +91,9 @@
    "it": "Il Signore mi ha dato lingua da discepolo - Is 50, 4-10",
    "pt": "O Senhor me deu - Terceiro canto do Servo de Iahweh - Is 50, 4-10",
    "de-AT": "Der Herr hat mir gegeben - III. Gottesknechtlied - Jes 50, 4-10"
+  },
+  "stages": {
+   "de-AT": "election"
   }
  },
  "8": {
@@ -639,6 +648,9 @@
    "it": "Dajenù",
    "pt": "Dayenu - Da Hagadá da Páscoa Hebráica",
    "de-AT": "Dajenù"
+  },
+  "stages": {
+   "de-AT": "election"
   }
  },
  "54": {
@@ -746,6 +758,9 @@
    "it": "Il popolo che camminava nelle tenebre - Is 9, 1-5",
    "pt": "O povo que caminhava nas trevas - Is 9, 1-5",
    "de-AT": "Das Volk das im Finsternis wandelt - Jes 9, 1-5"
+  },
+  "stages": {
+   "de-AT": "election"
   }
  },
  "64": {
@@ -800,6 +815,9 @@
    "pt": "Estão rotas minhas ataduras - Carmen 63 - Poema de Rabindranath Tagore",
    "de-AT": "Carmen '63 - von Tagore",
    "en": "Carmen 63"
+  },
+  "stages": {
+   "de-AT": "election"
   }
  },
  "69": {
@@ -2176,6 +2194,9 @@
    "es": "Credo - Símbolo apostolico",
    "pt": "Credo - Símbolo apostólico",
    "de-AT": "Das Apostolische Glaubens Bekenntnis"
+  },
+  "stages": {
+   "de-AT": "election"
   }
  },
  "189": {

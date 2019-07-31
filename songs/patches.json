@@ -23,6 +23,17 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1564505013733,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "catechumenate",
+        "new": "election"
+      }
     }
   ],
   "2": [
@@ -130,6 +141,17 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1564506096116,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "catechumenate",
+        "new": "election"
+      }
     }
   ],
   "6": [
@@ -184,6 +206,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1564533436168,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "catechumenate",
+        "new": "election"
+      }
     }
   ],
   "8": [
@@ -1766,6 +1799,13 @@
         "original": "precatechumenate",
         "new": "election"
       }
+    },
+    {
+      "date": 1564503094829,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
     }
   ],
   "47": [
@@ -1932,6 +1972,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1564504330397,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "election"
+      }
     }
   ],
   "54": [
@@ -2181,6 +2232,17 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1564505405016,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "election"
+      }
     }
   ],
   "64": [
@@ -2298,6 +2360,17 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1564503348592,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "election"
+      }
     }
   ],
   "69": [
@@ -4943,6 +5016,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1564506342029,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
     }
   ],
   "165": [
@@ -5114,6 +5194,13 @@
       "date": 1563832460792,
       "locale": "pt",
       "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1564504839033,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
       "created": false,
       "updated": true
     }
@@ -5707,6 +5794,17 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1564504417623,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "liturgy",
+        "new": "election"
+      }
     }
   ],
   "189": [
