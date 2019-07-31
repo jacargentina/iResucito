@@ -1,5 +1,3 @@
-The songs of the Neocatechumenal Way
-
 • Search and display of songs on screen
 • Categorization of the songs:
    - According to alphabetical order

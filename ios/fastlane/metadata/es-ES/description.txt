@@ -1,5 +1,3 @@
-Los cantos del Camino Neocatecumenal
-
 • Búsqueda y visualización de los cantos en pantalla
 • Categorización de los cantos:
   - Según orden alfabético

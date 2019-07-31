@@ -1,5 +1,3 @@
-Le canzoni del Cammino Neocatecumenale
-
 • Ricerca e visualizzazione di brani sullo schermo
 • Classificazione delle canzoni:
    - Secondo l'ordine alfabetico
