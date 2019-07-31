@@ -1,27 +1,27 @@
-a    E        F                     
+a    E        F
 K. Meine Fesseln sind zerbrochen                                 
-d           E                      
-bezahlt sind meine Schulden                                 
-F                                  
-meine Tore aufgerissen                                 
+d           E
+bezahlt sind meine Schulden
+F
+meine Tore aufgerissen
 E
 und ich gehe überall hin.
-d              E                   
+d              E
 K. Jene  die da kauern in ihrer Ecke                                 
-d                    E              
-sie weben weiter das blasse Tuch ihrer Stunden                                  
-F                                    
-oder setzen sich wieder in den Staub                                 
-E                                 
-um ihre Münzen zu zählen                                  
+d                    E
+sie weben weiter das blasse Tuch ihrer Stunden
+F
+oder setzen sich wieder in den Staub
+E
+um ihre Münzen zu zählen
 F          E      F          E
 und sie rufen mich  und sie rufen mich  damit ich zurückkehre.
-a                   e              
-Doch schon ist mein Schwert geschmiedet                                
-a            e                     
-die Rüstung schon angelegt                                  
-G                 H                   
-mein Pferd drängt schon zum Aufbruch                                 
+a                   e
+Doch schon ist mein Schwert geschmiedet
+a            e
+die Rüstung schon angelegt
+G                 H
+mein Pferd drängt schon zum Aufbruch
 D     A          FIS
 und ich werde mein Reich gewinnen
 h      G       FIS
@@ -37,11 +37,11 @@ K. Meine Fesseln sind zerbrochen
 d           E
 bezahlt sind meine Schulden
  F
- meine Tore aufgerissen
+meine Tore aufgerissen
  E
 und ich gehe überall hin.
 D             A
- V. Ich werde mein Reich gewinnen
+V. Ich werde mein Reich gewinnen
 D             A
 ich werde mein Reich gewinnen.                      2 x
  E       A
