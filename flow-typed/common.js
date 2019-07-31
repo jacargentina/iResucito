@@ -93,7 +93,6 @@ declare type SongIndicator = {
 };
 
 declare type SongRendering = {
-  firstNotes?: number,
   items: Array<SongLine>,
   indicators: Array<SongIndicator>
 };

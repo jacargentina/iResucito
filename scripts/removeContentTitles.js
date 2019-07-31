@@ -34,16 +34,21 @@ if (!process.argv.slice(2).length) {
       songs.map(song => {
         if (song.files[I18n.locale]) {
           var render = parser.getForRender(song.fullText, I18n.locale);
-          const fn = render.firstNotes;
-          if (fn && fn > 0) {
-            var firstCanto = render.items.find((x, idx) => {
-              return idx < fn && x.type === 'canto';
-            });
-            if (firstCanto) {
-              var arr = song.fullText.replace('\r\n', '\n').split('\n');
-              var res = arr.slice(fn);
-              var ft = res.join('\n');
-              fs.writeFileSync(song.path, ft);
+          const firstNotes = render.items.find(it =>
+            parser.isChordsLine(it.texto, locale)
+          );
+          if (firstNotes) {
+            var fn = render.items.indexOf(firstNotes);
+            if (fn !== -1 && fn > 0) {
+              var firstCanto = render.items.find((x, idx) => {
+                return idx < fn && x.type === 'canto';
+              });
+              if (firstCanto) {
+                var arr = song.fullText.replace('\r\n', '\n').split('\n');
+                var res = arr.slice(fn);
+                var ft = res.join('\n');
+                fs.writeFileSync(song.path, ft);
+              }
             }
           }
         }

@@ -33,21 +33,26 @@ if (!process.argv.slice(2).length) {
       songs.map(song => {
         if (song.files[I18n.locale]) {
           var render = parser.getForRender(song.fullText, I18n.locale);
-          const fn = render.firstNotes;
-          if (fn && fn > 0) {
-            if (
-              render.items.find((x, idx) => {
-                return (
-                  idx < fn &&
-                  x.type !== 'posicionAbrazadera' &&
-                  x.type !== 'notaEspecial' &&
-                  x.type !== 'tituloEspecial' &&
-                  x.type !== 'textoEspecial' &&
-                  x.type !== 'inicioParrafo'
-                );
-              })
-            ) {
-              console.log(`${song.nombre}: notes on line ${fn} ?`);
+          const firstNotes = render.items.find(it =>
+            parser.isChordsLine(it.texto, locale)
+          );
+          if (firstNotes) {
+            var fn = render.items.indexOf(firstNotes);
+            if (fn !== -1 && fn > 0) {
+              if (
+                render.items.find((x, idx) => {
+                  return (
+                    idx < fn &&
+                    x.type !== 'posicionAbrazadera' &&
+                    x.type !== 'notaEspecial' &&
+                    x.type !== 'tituloEspecial' &&
+                    x.type !== 'textoEspecial' &&
+                    x.type !== 'inicioParrafo'
+                  );
+                })
+              ) {
+                console.log(`${song.nombre}: notes on line ${fn} ?`);
+              }
             }
           }
           const possibleBis = render.items.filter(
@@ -55,9 +60,7 @@ if (!process.argv.slice(2).length) {
           );
           if (possibleBis.length > 0) {
             console.log(
-              `${song.nombre}: possible repeat's missing (${
-                possibleBis.length
-              } times)`
+              `${song.nombre}: possible repeat's missing (${possibleBis.length} times)`
             );
           }
         }

@@ -290,18 +290,15 @@ export class SongsParser {
     transportToNote?: string
   ): SongRendering {
     const asSongItem = this.getSongLines(content, locale);
-    const fNotes = asSongItem.find(it => this.isChordsLine(it.texto, locale));
-    const fNotesIdx = fNotes ? asSongItem.indexOf(fNotes) : undefined;
     var tDiff = 0;
-    if (fNotesIdx !== -1 && transportToNote) {
-      tDiff = this.getChordsDiff(
-        asSongItem[fNotesIdx].texto,
-        transportToNote,
-        locale
-      );
+    if (transportToNote) {
+      const fNotes = asSongItem.find(it => this.isChordsLine(it.texto, locale));
+      if (fNotes !== undefined) {
+        tDiff = this.getChordsDiff(fNotes.texto, transportToNote, locale);
+      }
     }
     const conversions = asSongItem.map(it => {
-      if (it.type == 'notas' && tDiff && tDiff !== 0) {
+      if (it.type == 'notas' && tDiff !== 0) {
         it.texto = this.getChordsTransported(it.texto, tDiff, locale);
       }
       // Detectar indicadores de Nota al pie (un asterisco)
@@ -353,7 +350,6 @@ export class SongsParser {
       return true;
     });
     const renderRes = {
-      firstNotes: fNotesIdx,
       items: finalItems,
       indicators: lIndicators
     };
