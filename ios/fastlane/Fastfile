@@ -42,24 +42,14 @@ platform :ios do
     # You can also use other beta testing services here (run `fastlane actions`)
   end
 
-  desc "Enviar version nueva al AppStore (ej 3.0.1-0)"
+  desc "Enviar version nueva al AppStore (ej 3.0.1-x => 3.0.2-0)"
   lane :release do |options|
     match(type: "appstore")
     # snapshot
     increment_version_number
     increment_build_number(build_number: "0")
     gym(scheme: "iResucito") # Build your app - more options available
-    deliver(force: true, run_precheck_before_submit: false)
-    # frameit
-  end
-
-  desc "Enviar version existente (nuevo build) al AppStore (ej 3.0.1-0 => 3.0.1-1)"
-  lane :release_update do |options|
-    match(type: "appstore")
-    # snapshot
-    increment_build_number
-    gym(scheme: "iResucito") # Build your app - more options available
-    deliver(force: true, run_precheck_before_submit: false)
+    deliver(force: true, run_precheck_before_submit: false, submit_for_review: true)
     # frameit
   end
 
