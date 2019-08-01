@@ -264,6 +264,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1564676334491,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "catechumenate",
+        "new": "liturgy"
+      }
     }
   ],
   "10": [
@@ -291,6 +302,17 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1564676966109,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "catechumenate",
+        "new": "liturgy"
+      }
     }
   ],
   "11": [
@@ -2118,6 +2140,17 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1564676043716,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "liturgy"
+      }
     }
   ],
   "60": [
@@ -2141,6 +2174,17 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1564675772860,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "liturgy"
+      }
     }
   ],
   "61": [
@@ -2209,6 +2253,21 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1564676994818,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "rename": {
+        "original": "Der Tor er denkt sich - da ist kein Gott - Ps 14",
+        "new": "Der Tor, er denkt sich - da ist kein Gott - Ps 14"
+      },
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "liturgy"
+      }
     }
   ],
   "63": [
@@ -3033,6 +3092,21 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1564677058997,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "rename": {
+        "original": "Der Weg ist hart",
+        "new": "Der Weg is hart"
+      },
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "liturgy"
+      }
     }
   ],
   "91": [
@@ -5061,6 +5135,17 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1564677253711,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "election",
+        "new": "liturgy"
+      }
     }
   ],
   "166": [

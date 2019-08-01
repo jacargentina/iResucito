@@ -118,6 +118,9 @@
    "it": "Il pigiatore - Is 63, 1-6",
    "pt": "O Lagareiro - Is 63, 1-6",
    "de-AT": "Der Keltertreter - Jes 63, 1-6"
+  },
+  "stages": {
+   "de-AT": "liturgy"
   }
  },
  "10": {
@@ -128,6 +131,9 @@
    "it": "Il seminatore - Mc. 4, 3 ss",
    "pt": "O Semeador - Mc 4, 3ss",
    "de-AT": "Der Sämann - Mk 4, 3 ff"
+  },
+  "stages": {
+   "de-AT": "liturgy"
   }
  },
  "11": {
@@ -713,6 +719,9 @@
    "it": "Il Signore annuncia una notizia - Sal 68 (67)",
    "pt": "O Senhor anuncia uma notícia - Sal 68 (67)",
    "de-AT": "Der Herr verkündet eine Nachricht - Ps 68"
+  },
+  "stages": {
+   "de-AT": "liturgy"
   }
  },
  "60": {
@@ -724,6 +733,9 @@
    "pt": "O Senhor é meu pastor - Sal 23 (22)",
    "de-AT": "Der Herr ist mein Hirte - Ps 23",
    "en": "The lord is my shepherd - Ps 22 (23)"
+  },
+  "stages": {
+   "de-AT": "liturgy"
   }
  },
  "61": {
@@ -746,8 +758,11 @@
    "es": "El necio piensa que Dios no existe - Sal 13 (14)",
    "it": "Fino a quando - Sal 13 (12)",
    "pt": "O Néscio pensa que Deus não existe - Sal 14 (13)",
-   "de-AT": "Der Tor er denkt sich - da ist kein Gott - Ps 14",
+   "de-AT": "Der Tor, er denkt sich - da ist kein Gott - Ps 14",
    "en": "The fool thinks there is no God - Ps 13 (14)"
+  },
+  "stages": {
+   "de-AT": "liturgy"
   }
  },
  "63": {
@@ -1072,7 +1087,10 @@
    "es": "La marcha es dura - Himno",
    "it": "La marcia è dura - Inno",
    "pt": "A marcha é dura - Hino",
-   "de-AT": "Der Weg ist hart"
+   "de-AT": "Der Weg is hart"
+  },
+  "stages": {
+   "de-AT": "liturgy"
   }
  },
  "91": {
@@ -1939,7 +1957,8 @@
    "de-AT": "Derselbe Gott - 2 Kor 4, 6-12"
   },
   "stages": {
-   "pt": "catechumenate"
+   "pt": "catechumenate",
+   "de-AT": "liturgy"
   }
  },
  "166": {
