@@ -14,14 +14,22 @@ import {
   setJSExceptionHandler,
   setNativeExceptionHandler
 } from 'react-native-exception-handler';
-
-const mailTo = 'javier.alejandro.castro@gmail.com';
-const mailSubject = 'iResucito Crash';
+import DeviceInfo from 'react-native-device-info';
+import queryString from 'query-string';
 
 const sendErrorByMail = e => {
   const str = typeof e === 'string' ? e : JSON.stringify(e);
-  const body = encodeURIComponent(str);
-  Linking.openURL(`mailto:${mailTo}?subject=${mailSubject}&body=${body}`);
+  const systemName = DeviceInfo.getSystemName();
+  const version = DeviceInfo.getReadableVersion();
+  const query = queryString.stringify({
+    subject: 'iResucito Crash',
+    body: `System ${systemName}, Version ${version}\n\n${str}`
+  });
+  let url = 'mailto:javier.alejandro.castro@gmail.com';
+  if (query.length) {
+    url += `?${query}`;
+  }
+  Linking.openURL(url);
 };
 
 function errorHandler(e, isFatal) {
