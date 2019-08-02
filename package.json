@@ -88,7 +88,7 @@
     "react-dom": "^16.8.6",
     "react-json-editor-ajrm": "^2.5.9",
     "react-native": "^0.60.4",
-    "react-native-collapsible": "^1.5.0",
+    "react-native-collapsible": "^1.5.1",
     "react-native-contacts": "^5.0.2",
     "react-native-device-info": "^2.3.2",
     "react-native-exception-handler": "^2.10.8",
@@ -122,7 +122,7 @@
     "use-debounce": "^2.2.0",
     "use-hotkeys": "^1.1.0",
     "use-undo": "^1.0.1",
-    "webpack": "^4.39.0",
+    "webpack": "^4.39.1",
     "webpack-cli": "^3.3.6",
     "webpack-dev-server": "^3.7.2"
   },
