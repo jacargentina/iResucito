@@ -1,5 +1,21 @@
 var path = require('path');
 var webpack = require('webpack');
+var fs = require('fs');
+var plist = require('plist');
+
+var ios_Info = plist.parse(
+  fs.readFileSync(__dirname + '/../../ios/iResucito/Info.plist', 'utf8')
+);
+
+var androidGradle = fs.readFileSync(
+  __dirname + '/../../android/app/build.gradle',
+  'utf8'
+);
+
+var android_major = /def VERSION_MAJOR=(.*)/.exec(androidGradle)[1];
+var android_minor = /def VERSION_MINOR=(.*)/.exec(androidGradle)[1];
+var android_patch = /def VERSION_PATCH=(.*)/.exec(androidGradle)[1];
+var android_build = /def VERSION_BUILD=(.*)/.exec(androidGradle)[1];
 
 module.exports = (env, argv) => {
   return {
@@ -37,7 +53,13 @@ module.exports = (env, argv) => {
     },
     plugins: [
       new webpack.DefinePlugin({
-        API_PORT: JSON.stringify(env ? env.API_PORT : '')
+        API_PORT: JSON.stringify(env ? env.API_PORT : ''),
+        IOS_VERSION: JSON.stringify(
+          `${ios_Info.CFBundleShortVersionString}.${ios_Info.CFBundleVersion}`
+        ),
+        ANDROID_VERSION: JSON.stringify(
+          `${android_major}.${android_minor}.${android_patch}.${android_build}`
+        )
       })
     ]
   };
