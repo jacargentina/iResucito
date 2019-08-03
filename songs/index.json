@@ -290,9 +290,12 @@
   "files": {
    "es": "A ti, Señor, se debe la alabanza en Sión - Sal 65 (64)",
    "it": "A te, Signore,  si deve lode in Sion - Sal 64 (65)",
-   "de-AT": "Dir o herr gebührt Lobgesang in Zion - Ps 65",
+   "de-AT": "Dir o Herr gebührt Lobgesang in Zion - Ps 65",
    "en": "To you o lord - Ps 64 (65)",
    "pt": "A ti, Senhor, se deve o louvor em Sião - Sal 65 (64)"
+  },
+  "stages": {
+   "de-AT": "liturgy"
   }
  },
  "25": {
@@ -708,6 +711,9 @@
    "it": "Giorno di riposo - Jn 8, 52",
    "pt": "Dia de repouso - Jo 8, 52",
    "de-AT": "Dieser Tag der Ruhe - Joh 8, 52"
+  },
+  "stages": {
+   "de-AT": "liturgy"
   }
  },
  "59": {
@@ -1108,6 +1114,9 @@
    "it": "La mietitura delle nazioni - Jn 4, 31-38",
    "pt": "A ceifa das nações - Jo 4, 31-38",
    "de-AT": "Die Ernte der Nationen - Joh 4, 31-38"
+  },
+  "stages": {
+   "de-AT": "liturgy"
   }
  },
  "93": {
@@ -2060,6 +2069,9 @@
    "it": "La colomba volò - Ode 24 de Salomone",
    "pt": "A pomba voou - Ode XXIV de Salomão",
    "de-AT": "Die Taube flog - XXIV. Ode Salomos"
+  },
+  "stages": {
+   "de-AT": "liturgy"
   }
  },
  "175": {
@@ -2071,6 +2083,9 @@
    "de-AT": "Die Stimme meines Geliebten - Hld 2, 8-17",
    "en": "The voice of my beloved (songs 2, 8-17)",
    "pt": "A voz do meu amado - Ct 2, 8-17"
+  },
+  "stages": {
+   "de-AT": "liturgy"
   }
  },
  "176": {

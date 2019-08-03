@@ -1,17 +1,35 @@
 clamp: II.
-e       a    e                       a     e
-K. Wer mein Wort bewahrt                              K. Abraham sah diesen Tag.
+e       a    e                       
+K. Wer mein Wort bewahrt                           
 a    e
-wird den Tod nie wieder kosten.                              V. und hat sich an Isaak gefreut.
-a       e                a
-V. Du bist der Einzige  der Einzige mit Freude.                              K. Jakob und seine Söhne
+wird den Tod nie wieder kosten.                              
+a       e                
+V. Du bist der Einzige, der Einzige mit Freude.                              
 e
-Wer ist wie unser Herr?                               fanden an ihm Ruhe.
-a     e                             a
-K. Krone der Rettung.                              V. Jakob und seine Söhne
-a    e                             e
-V. und Gedächtnis unserer Freude                               fanden an ihm Ruhe.
+Wer ist wie unser Herr?                               
+a     e                             
+K. Krone der Rettung.                             
+a    e                            
+V. und Gedächtnis unserer Freude.                               
+
 a
-V. Diesen Tag der Ruhe und der Heiligkeit                              V. Diesen Tag der Ruhe ...
-e                     2x
+V. Diesen Tag der Ruhe und der Heiligkeit                     
+e                                                      
 hast du deinem Volk gegeben.
+repeat
+
+a     e
+K. Abraham sah diesen Tag.
+
+V. und hat sich an Isaak gefreut.
+
+a
+K. Jakob und seine Söhne
+
+fanden an ihm Ruhe.
+ a
+ V. Jakob und seine Söhne
+ e
+fanden an ihm Ruhe.
+ 
+V. Diesen Tag der Ruhe …

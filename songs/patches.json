@@ -792,6 +792,21 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1564764427170,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "rename": {
+        "original": "Dir o herr gebührt Lobgesang in Zion - Ps 65",
+        "new": "Dir o Herr gebührt Lobgesang in Zion - Ps 65"
+      },
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "liturgy"
+      }
     }
   ],
   "25": [
@@ -2117,6 +2132,17 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1564793511388,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "liturgy"
+      }
     }
   ],
   "59": [
@@ -3136,6 +3162,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1564793114595,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "liturgy"
+      }
     }
   ],
   "93": [
@@ -5385,6 +5422,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1564763606233,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "election",
+        "new": "liturgy"
+      }
     }
   ],
   "175": [
@@ -5411,6 +5459,17 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1564763209792,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "election",
+        "new": "liturgy"
+      }
     }
   ],
   "176": [
