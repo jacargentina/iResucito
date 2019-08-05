@@ -721,7 +721,6 @@ const useCommunity = () => {
   const [initialized, setInitialized] = useState(false);
   const [brothers, initBrothers] = useState([]);
   const [deviceContacts, initDeviceContacts] = useState();
-  const [updateThumbs, setUpdateThumbs] = useState();
 
   const add = item => {
     var changedContacts = [...brothers, item];
@@ -754,28 +753,6 @@ const useCommunity = () => {
   };
 
   useEffect(() => {
-    if (brothers && deviceContacts && updateThumbs === true) {
-      // guardar directorio nuevo
-      localdata
-        .save({
-          key: 'lastCachesDirectoryPath',
-          data: RNFS.CachesDirectoryPath
-        })
-        .then(() => {
-          // Evitar nuevas actualizaciones recursivas!
-          setUpdateThumbs(false);
-          brothers.forEach(c => {
-            // tomar el contacto actualizado
-            var devContact = deviceContacts.find(
-              x => x.recordID === c.recordID
-            );
-            update(c.recordID, devContact);
-          });
-        });
-    }
-  }, [brothers, deviceContacts, updateThumbs]);
-
-  useEffect(() => {
     if (brothers && initialized) {
       var item = { key: 'contacts', data: brothers };
       localdata.save(item);
@@ -787,24 +764,23 @@ const useCommunity = () => {
 
   useEffect(() => {
     getContacts()
-      .then(contacts => {
-        initDeviceContacts(contacts);
-        localdata
-          .getBatchData([
-            { key: 'contacts' },
-            { key: 'lastCachesDirectoryPath' }
-          ])
-          .then(result => {
-            const [contacts, lastCachesDirectoryPath] = result;
-            if (contacts) {
-              initBrothers(contacts);
-            }
-            // sólo actualizar si cambió el directorio de caches
-            var updThumbs =
-              RNFS.CachesDirectoryPath !== lastCachesDirectoryPath;
-            setUpdateThumbs(updThumbs);
-            setInitialized(true);
-          });
+      .then(deviceContacts => {
+        initDeviceContacts(deviceContacts);
+        localdata.load({ key: 'contacts' }).then(brothers => {
+          if (brothers) {
+            brothers.forEach((c, idx) => {
+              // tomar el contacto actualizado
+              var devContact = deviceContacts.find(
+                x => x.recordID === c.recordID
+              );
+              if (devContact) {
+                brothers[idx] = devContact;
+              }
+            });
+            initBrothers(brothers);
+          }
+          setInitialized(true);
+        });
       })
       .catch(err => {
         let message = I18n.t('alert_message.contacts permission');
