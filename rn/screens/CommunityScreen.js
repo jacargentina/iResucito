@@ -1,9 +1,9 @@
 // @flow
 import React, { useContext, useEffect, useRef, useState, useMemo } from 'react';
+import { Platform, Alert, FlatList } from 'react-native';
 import { Icon, Text, Fab } from 'native-base';
 import { withNavigationFocus } from 'react-navigation';
 import Swipeout from 'react-native-swipeout';
-import { Alert, FlatList } from 'react-native';
 import SearchBarView from './SearchBarView';
 import { DataContext } from '../DataContext';
 import CallToAction from './CallToAction';
@@ -17,7 +17,14 @@ const titleLocaleKey = 'screen_title.community';
 const CommunityScreen = (props: any) => {
   const data = useContext(DataContext);
   const { navigation, isFocused } = props;
-  const { brothers, update, remove, add } = data.community;
+  const {
+    deviceContacts,
+    populateDeviceContacts,
+    brothers,
+    update,
+    remove,
+    add
+  } = data.community;
   const listRef = useRef<?FlatList>();
   const [filter, setFilter] = useState('');
 
@@ -84,7 +91,21 @@ const CommunityScreen = (props: any) => {
   };
 
   const contactImport = () => {
-    navigation.navigate('ContactImport');
+    const promise = !deviceContacts
+      ? populateDeviceContacts()
+      : Promise.resolve();
+
+    promise
+      .then(() => {
+        navigation.navigate('ContactImport');
+      })
+      .catch(() => {
+        let message = I18n.t('alert_message.contacts permission');
+        if (Platform.OS == 'ios') {
+          message += '\n\n' + I18n.t('alert_message.contacts permission ios');
+        }
+        Alert.alert(I18n.t('alert_title.contacts permission'), message);
+      });
   };
 
   if (brothers.length == 0 && !filter)
@@ -93,7 +114,7 @@ const CommunityScreen = (props: any) => {
         icon="people"
         title={I18n.t('call_to_action_title.community list')}
         text={I18n.t('call_to_action_text.community list')}
-        buttonHandler={() => navigation.navigate('ContactImport')}
+        buttonHandler={contactImport}
         buttonText={I18n.t('call_to_action_button.community list')}
       />
     );

@@ -1,9 +1,9 @@
 // @flow
 import React, { useState, useEffect } from 'react';
-import { Alert, Platform } from 'react-native';
+import { Alert, Platform, PermissionsAndroid } from 'react-native';
 import Share from 'react-native-share'; // eslint-disable-line import/default
+import Contacts from 'react-native-contacts';
 import { Toast } from 'native-base';
-import RNFS from 'react-native-fs';
 import badges from './badges';
 import { localdata, clouddata } from './data';
 import {
@@ -11,7 +11,6 @@ import {
   getDefaultLocale,
   getFriendlyText,
   getFriendlyTextForListType,
-  getContacts,
   ordenClasificacion,
   NativeSongs,
   NativeExtras
@@ -752,6 +751,75 @@ const useCommunity = () => {
     }
   };
 
+  const checkContactsPermission = (reqPerm: boolean): Promise<boolean> => {
+    if (Platform.OS == 'android') {
+      if (reqPerm) {
+        return PermissionsAndroid.request(
+          PermissionsAndroid.PERMISSIONS.READ_CONTACTS
+        )
+          .then(granted => {
+            return granted === PermissionsAndroid.RESULTS.GRANTED;
+          })
+          .catch(() => {
+            return false;
+          });
+      } else {
+        return PermissionsAndroid.check(
+          PermissionsAndroid.PERMISSIONS.READ_CONTACTS
+        );
+      }
+    } else {
+      return new Promise((resolve, reject) => {
+        Contacts.checkPermission((err, permission) => {
+          if (err) {
+            reject(err);
+          } else {
+            if (permission === 'undefined') {
+              if (reqPerm) {
+                Contacts.requestPermission((err, permission) => {
+                  if (err) {
+                    reject(err);
+                  } else {
+                    if (permission === 'authorized') {
+                      resolve(true);
+                    }
+                    if (permission === 'denied') {
+                      reject(false);
+                    }
+                  }
+                });
+              } else {
+                reject(false);
+              }
+            }
+            if (permission === 'authorized') {
+              resolve(true);
+            }
+            if (permission === 'denied') {
+              reject(false);
+            }
+          }
+        });
+      });
+    }
+  };
+
+  const getContacts = (reqPerm: boolean): Promise<any> => {
+    return checkContactsPermission(reqPerm).then(hasPermission => {
+      if (hasPermission) {
+        return new Promise((resolve, reject) => {
+          Contacts.getAll((err, contacts) => {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(contacts);
+            }
+          });
+        });
+      }
+    });
+  };
+
   useEffect(() => {
     if (brothers && initialized) {
       var item = { key: 'contacts', data: brothers };
@@ -762,33 +830,31 @@ const useCommunity = () => {
     }
   }, [brothers, initialized]);
 
+  const populateDeviceContacts = () => {
+    return getContacts(true).then(deviceContacts => {
+      initDeviceContacts(deviceContacts);
+    });
+  };
+
   useEffect(() => {
-    getContacts()
-      .then(deviceContacts => {
-        initDeviceContacts(deviceContacts);
-        localdata.load({ key: 'contacts' }).then(brothers => {
-          if (brothers) {
-            brothers.forEach((c, idx) => {
-              // tomar el contacto actualizado
-              var devContact = deviceContacts.find(
-                x => x.recordID === c.recordID
-              );
-              if (devContact) {
-                brothers[idx] = devContact;
-              }
-            });
-            initBrothers(brothers);
-          }
-          setInitialized(true);
-        });
-      })
-      .catch(err => {
-        let message = I18n.t('alert_message.contacts permission');
-        if (Platform.OS == 'ios') {
-          message += '\n\n' + I18n.t('alert_message.contacts permission ios');
+    getContacts(false).then(deviceContacts => {
+      initDeviceContacts(deviceContacts);
+      localdata.load({ key: 'contacts' }).then(brothers => {
+        if (brothers) {
+          brothers.forEach((c, idx) => {
+            // tomar el contacto actualizado
+            var devContact = deviceContacts.find(
+              x => x.recordID === c.recordID
+            );
+            if (devContact) {
+              brothers[idx] = devContact;
+            }
+          });
+          initBrothers(brothers);
         }
-        Alert.alert(I18n.t('alert_title.contacts permission'), message);
+        setInitialized(true);
       });
+    });
   }, []);
 
   return {
@@ -797,7 +863,8 @@ const useCommunity = () => {
     add,
     update,
     remove,
-    addOrRemove
+    addOrRemove,
+    populateDeviceContacts
   };
 };
 

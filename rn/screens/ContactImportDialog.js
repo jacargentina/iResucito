@@ -29,13 +29,15 @@ const ContactImportDialog = (props: any) => {
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
-    var withName = deviceContacts.filter(
-      c => c.givenName.length > 0 || c.familyName.length > 0
-    );
-    var result = getContactsForImport(withName, brothers);
-    setContacts(result);
-    setLoading(false);
-  }, [brothers]);
+    if (deviceContacts) {
+      var withName = deviceContacts.filter(
+        c => c.givenName.length > 0 || c.familyName.length > 0
+      );
+      var result = getContactsForImport(withName, brothers);
+      setContacts(result);
+      setLoading(false);
+    }
+  }, [deviceContacts, brothers]);
 
   const filtered = useMemo(() => {
     var result = contacts.filter(c => contactFilterByText(c, filter));

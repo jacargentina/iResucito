@@ -1,47 +1,13 @@
 // @flow
 // Utilerias atadas a react-native
-import { StyleSheet, Platform, PermissionsAndroid } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 import * as RNLocalize from 'react-native-localize';
-import Contacts from 'react-native-contacts';
 import RNFS from 'react-native-fs';
 import DeviceInfo from 'react-native-device-info';
 import I18n from '../translations';
 import { SongsProcessor } from '../SongsProcessor';
 import { SongsParser } from '../SongsParser';
 import { SongsExtras } from '../SongsExtras';
-
-function checkContactsPermission(): Promise<boolean> {
-  if (Platform.OS == 'android') {
-    return PermissionsAndroid.request(
-      PermissionsAndroid.PERMISSIONS.READ_CONTACTS
-    )
-      .then(granted => {
-        return granted === PermissionsAndroid.RESULTS.GRANTED;
-      })
-      .catch(() => {
-        return false;
-      });
-  }
-  return Promise.resolve(true);
-}
-
-export function getContacts(): Promise<any> {
-  return new Promise((resolve, reject) => {
-    checkContactsPermission().then(hasPermission => {
-      if (hasPermission) {
-        Contacts.getAll((err, contacts) => {
-          if (err) {
-            reject(err);
-          } else {
-            resolve(contacts);
-          }
-        });
-      } else {
-        reject();
-      }
-    });
-  });
-}
 
 export function ordenAlfabetico(a: any, b: any) {
   if (a.givenName < b.givenName) {
