@@ -34,6 +34,7 @@ const ModalView = (props: any) => {
         <View
           style={{
             flex: 0,
+            marginTop: 10,
             flexDirection: 'row',
             justifyContent: 'space-between'
           }}>
