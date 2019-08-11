@@ -20,10 +20,9 @@ export async function generatePDF(
       ? `${folder}/iResucito${fileSuffix}.pdf`
       : `${folder}/${songsToPdf[0].song.titulo}.pdf`;
 
-  const ttf = await RNFS.readFile(
-    RNFS.MainBundlePath + '/Franklin Gothic Medium.ttf',
-    'base64'
-  );
+  const reader = Platform.OS == 'ios' ? RNFS.readFile : RNFS.readFileAssets;
+  const fontFolder = Platform.OS == 'ios' ? '' : 'fonts';
+  const ttf = await reader(`${fontFolder}/Franklin Gothic Medium.ttf`, 'base64');
 
   var writer = new PdfWriter(Buffer.from(ttf, 'base64'), new Base64Encode());
   const base64 = await PDFGenerator(songsToPdf, opts, writer);
