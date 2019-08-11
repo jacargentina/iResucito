@@ -5,6 +5,7 @@ import android.content.Context;
 import androidx.multidex.MultiDex;
 
 import com.facebook.react.ReactApplication;
+import com.christopherdro.RNPrint.RNPrintPackage;
 import org.wonday.pdf.RCTPdfView;
 import com.corbt.keepawake.KCKeepAwakePackage;
 import com.rt2zz.reactnativecontacts.ReactNativeContacts;
@@ -37,6 +38,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNPrintPackage(),
             new RCTPdfView(),
             new KCKeepAwakePackage(),
             new ReactNativeContacts(),

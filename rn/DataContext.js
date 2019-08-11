@@ -882,7 +882,7 @@ const DataContextWrapper = (props: any) => {
     Share.open({
       title: I18n.t('ui.share'),
       subject: `iResucitó - ${shareTitleSuffix}`,
-      url: pdfPath,
+      url: `file://${pdfPath}`,
       failOnCancel: false
     });
   };
@@ -895,7 +895,7 @@ const DataContextWrapper = (props: any) => {
         title: I18n.t('ui.share'),
         subject: 'iResucitó - Index patch',
         message: patchJSON,
-        url: NativeExtras.getPatchUri(),
+        url: `file://${NativeExtras.getPatchUri()}`,
         failOnCancel: false
       });
     });

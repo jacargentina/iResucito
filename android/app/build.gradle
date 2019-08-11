@@ -206,6 +206,7 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-print')
     implementation project(':react-native-pdf')
     implementation project(':react-native-keep-awake')
     implementation project(':react-native-contacts')
