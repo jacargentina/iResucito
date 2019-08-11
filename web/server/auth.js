@@ -129,6 +129,27 @@ with the email we've just sent to you!`
     }
   });
 
+  const getStats = async (user: any) => {
+    var stats = [];
+    const patch = await readLocalePatch();
+    if (patch) {
+      var newItemsSinceLastLogin = [];
+      Object.keys(patch).forEach(key => {
+        const songPatch = patch[key];
+        Object.keys(songPatch).forEach(rawLoc => {
+          const item = songPatch[rawLoc];
+          if (item.date > (user.loggedInAt || 0)) {
+            newItemsSinceLastLogin.push(item);
+          }
+        });
+      });
+      const byAuthor = _.groupBy(newItemsSinceLastLogin, i => i.author);
+      Object.keys(byAuthor).forEach(author => {
+        stats.push({ author: author, count: byAuthor[author].length });
+      });
+    }
+  };
+
   server.post(
     '/api/login',
     asyncMiddleware(async (
@@ -157,27 +178,12 @@ with the email we've just sent to you!`
               },
               jwtSecretKey,
               {
-                expiresIn: '6h'
+                expiresIn: '15d'
               }
             );
-            var stats = [];
-            const patch = await readLocalePatch();
-            if (patch) {
-              var newItemsSinceLastLogin = [];
-              Object.keys(patch).forEach(key => {
-                const songPatch = patch[key];
-                Object.keys(songPatch).forEach(rawLoc => {
-                  const item = songPatch[rawLoc];
-                  if (item.date > (user.loggedInAt || 0)) {
-                    newItemsSinceLastLogin.push(item);
-                  }
-                });
-              });
-              const byAuthor = _.groupBy(newItemsSinceLastLogin, i => i.author);
-              Object.keys(byAuthor).forEach(author => {
-                stats.push({ author: author, count: byAuthor[author].length });
-              });
-            }
+
+            var stats = await getStats(user);
+
             // Registrar hora de inicio de sesion
             db.get('users')
               .find({ email: email })
@@ -185,6 +191,7 @@ with the email we've just sent to you!`
               .write();
             return res.status(200).json({
               jwt: JWTToken,
+              user: user.email,
               stats: stats
             });
           }
@@ -200,6 +207,26 @@ with the email we've just sent to you!`
         res.status(500).json({
           error: 'User or password wrong'
         });
+      }
+    })
+  );
+
+  server.get(
+    '/api/checkjwt',
+    asyncMiddleware(async (
+      req,
+      res,
+      /* eslint-disable no-unused-vars */ next
+    ) => {
+      if (req.user) {
+        var stats = await getStats(req.user);
+        return res.status(200).json({
+          user: req.user.email,
+          stats: stats
+        });
+      } else {
+        // No hay user, no hay token!
+        res.status(500).json({ error: 'Unauthorized access' });
       }
     })
   );

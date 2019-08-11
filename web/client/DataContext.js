@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import I18n from '../../translations';
 import api from './api';
+import auth from './auth';
 import { getLocalesForPicker, getValidatedLocale } from '../../common';
 
 export const DataContext: any = React.createContext();
@@ -75,9 +76,11 @@ const DataContextWrapper = (props: any) => {
         password
       })
       .then(response => {
+        auth.setToken(response.data.jwt, true);
+        auth.setUserInfo(response.data.user, true);
         api.defaults.headers.Authorization = `Bearer ${response.data.jwt}`;
         setApiLoading(false);
-        setUser(email);
+        setUser(response.data.user);
         setStats(response.data.stats);
       })
       .catch(err => {
@@ -87,6 +90,8 @@ const DataContextWrapper = (props: any) => {
 
   const logout = () => {
     setUser();
+    auth.clearToken();
+    auth.clearUserInfo();
     delete api.defaults.headers.Authorization;
   };
 
@@ -137,6 +142,48 @@ const DataContextWrapper = (props: any) => {
     setLocale(I18n.locale);
   };
 
+  const configureApi = (token: ?string) => {
+    if (token) {
+      api.defaults.headers.common.Authorization = `Bearer ${token}`;
+    } else {
+      delete api.defaults.headers.common.Authorization;
+    }
+  };
+
+  const verifyAuthentication = () => {
+    return new Promise((resolve, reject) => {
+      // Usuario anonimo
+      var token = auth.getToken();
+      if (!token) {
+        resolve();
+        return;
+      }
+      // Si el token expiró, quitarlo
+      if (auth.isTokenExpired(token)) {
+        auth.clearToken();
+        auth.clearUserInfo();
+        resolve();
+        return;
+      }
+      // Probar token llamando a API
+      // (Usuario puede no existir, estar bloqueado, etc)
+      configureApi(token);
+      api
+        .get('/api/checkjwt')
+        .then(response => {
+          setUser(response.data.user);
+          setStats(response.data.stats);
+          resolve();
+        })
+        .catch(er => {
+          auth.clearToken();
+          auth.clearUserInfo();
+          // Desconfigurar API
+          configureApi();
+          resolve();
+        });
+    });
+  };
   return (
     <DataContext.Provider
       value={{
@@ -160,6 +207,7 @@ const DataContextWrapper = (props: any) => {
         signUp,
         login,
         logout,
+        verifyAuthentication,
         user,
         previewPdf,
         pdf,

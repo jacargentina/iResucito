@@ -1,5 +1,5 @@
 // @flow
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { DataContext } from './DataContext';
 import EditContextWrapper from './EditContext';
 import Header from 'semantic-ui-react/dist/commonjs/elements/Header';
@@ -17,13 +17,29 @@ import SongBook from './SongBook';
 import ApiMessage from './ApiMessage';
 import EditSongTitle from './EditSongTitle';
 import AppActions from './AppActions';
+import Loading from './Loading';
 
 declare var IOS_VERSION: string;
 declare var ANDROID_VERSION: string;
 
 const Homepage = () => {
+  const [jwtInvalid, setJwtInvalid] = useState(true);
+
   const data = useContext(DataContext);
-  const { user } = data;
+  const { verifyAuthentication, user } = data;
+
+  useEffect(() => {
+    if (jwtInvalid) {
+      verifyAuthentication().then(() => {
+        setJwtInvalid(false);
+      });
+    }
+  }, [jwtInvalid]);
+
+  if (jwtInvalid) {
+    return <Loading />;
+  }
+
   return (
     <div className="container">
       {!user && <Login />}
