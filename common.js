@@ -366,7 +366,7 @@ export class PdfWriter {
   }
 
   drawLineText(line: ExportToPdfLineText, size: number) {
-    this.doc.switchToPage(line.page);
+    this.doc.switchToPage(line.page - 1);
     this.doc
       .moveTo(line.x, line.startY)
       .lineTo(line.x, line.endY)
