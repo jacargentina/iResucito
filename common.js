@@ -294,7 +294,7 @@ export class PdfWriter {
     } else {
       this.doc.font('Times-Roman');
     }
-    this.pageNumber = 1;
+    this.pageNumber = 0;
     this.listing = [];
     this.addExtraMargin = false;
   }
@@ -324,6 +324,10 @@ export class PdfWriter {
         i.value = this.pageNumber;
       });
     }
+  }
+
+  newPage() {
+    this.doc.addPage();
     this.pageNumber++;
   }
 
@@ -334,7 +338,7 @@ export class PdfWriter {
     ) {
       if (this.doc.x == this.secondColLimits.x) {
         this.writePageNumber();
-        this.doc.addPage();
+        this.newPage();
       } else {
         this.doc.x = this.secondColLimits.x;
       }
@@ -473,7 +477,7 @@ export const PDFGenerator = async (
     if (songsToPdf.length > 1) {
       // Portada
       writer.addExtraMargin = true;
-      writer.doc.addPage();
+      writer.newPage();
       const title = I18n.t('ui.export.songs book title').toUpperCase();
       const subtitle = I18n.t('ui.export.songs book subtitle').toUpperCase();
 
@@ -512,7 +516,7 @@ export const PDFGenerator = async (
       );
 
       //Indice
-      writer.doc.addPage();
+      writer.newPage();
       writer.writeText(
         I18n.t('ui.export.songs index').toUpperCase(),
         PdfStyles.title.color,
@@ -565,7 +569,7 @@ export const PDFGenerator = async (
     songsToPdf.forEach((data: SongToPdf) => {
       const { song, render } = data;
       const { items, indicators } = render;
-      writer.doc.addPage();
+      writer.newPage();
 
       // Titulo del canto
       writer.writeText(
@@ -706,6 +710,8 @@ export const PDFGenerator = async (
       lines.forEach((line: ExportToPdfLineText) => {
         writer.drawLineText(line, writer.opts.songText.FontSize);
       });
+      // Volver a la posicion original
+      writer.doc.switchToPage(writer.pageNumber - 1);
       if (songsToPdf.length > 1) {
         writer.writePageNumber(song.key);
       }
