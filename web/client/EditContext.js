@@ -47,9 +47,9 @@ const EditContextWrapper = (props: any) => {
   };
 
   const closeEditor = () => {
+    setText('');
     setEditSong();
     setNavigation(emptyNavigation);
-    setText('');
     setRename();
     setStage();
     setHasChanges(false);
@@ -67,6 +67,8 @@ const EditContextWrapper = (props: any) => {
         setText(song.fullText);
         setEditSong(song);
         setNavigation({ index, previousKey, nextKey });
+        setRename();
+        setStage();
         setHasChanges(false);
       })
       .catch(err => {
