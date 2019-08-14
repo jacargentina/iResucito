@@ -190,7 +190,6 @@ var DEBUG_RECTS = false;
 
 export class PdfWriter {
   opts: ExportToPdfOptions;
-  pageNumber: number;
   resetY: number;
   limiteHoja: number;
   doc: any;
@@ -294,16 +293,15 @@ export class PdfWriter {
     } else {
       this.doc.font('Times-Roman');
     }
-    this.pageNumber = 0;
     this.listing = [];
     this.addExtraMargin = false;
   }
 
-  writePageNumber(currentSongKey?: string) {
+  writePageNumber() {
     this.doc.x = this.doc.page.margins.left;
     this.doc.y = this.pageNumberLimits.y;
     this.writeText(
-      this.pageNumber.toString(),
+      this.doc.page.pageNumber.toString(),
       PdfStyles.pageNumber.color,
       this.opts.songText.FontSize,
       {
@@ -316,19 +314,6 @@ export class PdfWriter {
         height: this.heightOfPageNumbers
       }
     );
-    if (currentSongKey) {
-      const assignItems = this.listing.filter(
-        l => l.songKey === currentSongKey
-      );
-      assignItems.forEach(i => {
-        i.value = this.pageNumber;
-      });
-    }
-  }
-
-  newPage() {
-    this.doc.addPage();
-    this.pageNumber++;
   }
 
   checkLimits(lineCount: number = 1, nextHeight: number = 0) {
@@ -337,8 +322,10 @@ export class PdfWriter {
       this.pageNumberLimits.y
     ) {
       if (this.doc.x == this.secondColLimits.x) {
+        const pn = this.doc.page.pageNumber;
         this.writePageNumber();
-        this.newPage();
+        this.doc.addPage();
+        this.doc.page.pageNumber = pn + 1;
       } else {
         this.doc.x = this.secondColLimits.x;
       }
@@ -370,7 +357,7 @@ export class PdfWriter {
   }
 
   drawLineText(line: ExportToPdfLineText, size: number) {
-    this.doc.switchToPage(line.page - 1);
+    this.doc.switchToPage(line.page);
     this.doc
       .moveTo(line.x, line.startY)
       .lineTo(line.x, line.endY)
@@ -430,7 +417,7 @@ export class PdfWriter {
             txtOpts
           );
           this.listing.push({
-            page: this.pageNumber,
+            page: this.doc.page.pageNumber,
             songKey: item.songKey,
             x:
               this.doc.x < this.secondColLimits.x
@@ -446,7 +433,7 @@ export class PdfWriter {
 
   finalizeListing() {
     if (this.listing.length > 0) {
-      for (var i = 0; i < this.pageNumber; i++) {
+      for (var i = 0; i < this.doc._pageBuffer.length; i++) {
         this.doc.switchToPage(i);
         var items = this.listing.filter(l => l.page === i);
         items.forEach((l: ListSongPos) => {
@@ -477,7 +464,7 @@ export const PDFGenerator = async (
     if (songsToPdf.length > 1) {
       // Portada
       writer.addExtraMargin = true;
-      writer.newPage();
+      writer.doc.addPage();
       const title = I18n.t('ui.export.songs book title').toUpperCase();
       const subtitle = I18n.t('ui.export.songs book subtitle').toUpperCase();
 
@@ -516,7 +503,8 @@ export const PDFGenerator = async (
       );
 
       //Indice
-      writer.newPage();
+      writer.doc.addPage();
+      writer.doc.page.pageNumber = 1;
       writer.writeText(
         I18n.t('ui.export.songs index').toUpperCase(),
         PdfStyles.title.color,
@@ -569,7 +557,10 @@ export const PDFGenerator = async (
     songsToPdf.forEach((data: SongToPdf) => {
       const { song, render } = data;
       const { items, indicators } = render;
-      writer.newPage();
+
+      const next = writer.doc.page ? writer.doc.page.pageNumber + 1 : 0;
+      writer.doc.addPage();
+      writer.doc.page.pageNumber = next;
 
       // Titulo del canto
       writer.writeText(
@@ -618,7 +609,7 @@ export const PDFGenerator = async (
             text = '*';
           }
           lines.push({
-            page: writer.pageNumber,
+            page: writer.doc._pageBuffer.length - 1,
             startY: blockY,
             endY: writer.doc.y - writer.doc.currentLineHeight(false),
             x: maxX + 10,
@@ -710,10 +701,14 @@ export const PDFGenerator = async (
       lines.forEach((line: ExportToPdfLineText) => {
         writer.drawLineText(line, writer.opts.songText.FontSize);
       });
-      // Volver a la posicion original
-      writer.doc.switchToPage(writer.pageNumber - 1);
+      // Ir al final
+      writer.doc.switchToPage(writer.doc._pageBuffer.length - 1);
       if (songsToPdf.length > 1) {
-        writer.writePageNumber(song.key);
+        writer.writePageNumber();
+        const assignItems = writer.listing.filter(l => l.songKey === song.key);
+        assignItems.forEach(i => {
+          i.value = writer.doc.page.pageNumber;
+        });
       }
     });
     writer.finalizeListing();
