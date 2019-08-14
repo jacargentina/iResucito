@@ -67,7 +67,7 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-react": "^7.14.3",
     "file-loader": "^4.2.0",
-    "flow-bin": "^0.105.1",
+    "flow-bin": "^0.105.2",
     "gmail-send": "^1.8.10",
     "i18n-js": "^3.3.0",
     "inquirer": "^6.5.1",
@@ -124,7 +124,7 @@
     "use-debounce": "^2.2.1",
     "use-hotkeys": "^1.1.0",
     "use-undo": "^1.0.1",
-    "webpack": "^4.39.1",
+    "webpack": "^4.39.2",
     "webpack-cli": "^3.3.6",
     "webpack-dev-server": "^3.8.0"
   },
