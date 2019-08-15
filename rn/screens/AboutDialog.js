@@ -6,7 +6,8 @@ import {
   Linking,
   Alert,
   View,
-  Platform
+  Platform,
+  SafeAreaView
 } from 'react-native';
 import { Text, Icon, H1, Button } from 'native-base';
 import DeviceInfo from 'react-native-device-info';
@@ -16,6 +17,11 @@ const pack = require('../../app.json');
 const cristo = require('../../img/cristo.jpg');
 const version = DeviceInfo.getReadableVersion();
 const appName = pack.displayName;
+
+/*
+  {'\n'} Giuseppe Reino (it)
+  {'\n'} Édouard Clogenson (fr)
+*/
 
 const AboutDialog = (props: any) => {
   const { navigation } = props;
@@ -45,60 +51,64 @@ const AboutDialog = (props: any) => {
   };
 
   return (
-    <TouchableOpacity
-      style={{
-        flex: 1,
-        backgroundColor: 'white',
-        alignItems: 'center',
-        justifyContent: 'space-around'
-      }}
-      onPress={hide}>
-      <Image
-        source={cristo}
-        style={{ width: 200, height: 300, marginTop: 20 }}
-        resizeMode="contain"
-      />
-      <H1 style={{ color: 'red', fontWeight: 'bold', fontStyle: 'italic' }}>
-        {appName}
-      </H1>
-      <Text style={{ textAlign: 'center', fontSize: 12 }}>
-        <Text style={{ fontWeight: 'bold' }}>
-          {I18n.t('ui.version')}: {version}
-        </Text>
-        {'\n'} Javier Castro, 2017-2019
-      </Text>
-      <Text style={{ textAlign: 'center', fontSize: 12 }}>
-        <Text style={{ fontWeight: 'bold' }}>{I18n.t('ui.collaborators')}</Text>
-        {'\n'} Javier Suarez Suarez (es)
-        {'\n'} Matheus Fragoso (pt)
-        {'\n'} Giuseppe Reino (it)
-        {'\n'} Édouard Clogenson (fr)
-      </Text>
-      <View
+    <SafeAreaView
+      forceInset={{ top: 'always', bottom: 'always' }}
+      style={{ flexGrow: 1 }}>
+      <TouchableOpacity
         style={{
-          flexDirection: 'row'
-        }}>
-        <Button style={{ margin: 5 }} primary rounded onPress={sendMail}>
-          <Icon name="mail" />
-        </Button>
-        <Button style={{ margin: 5 }} primary rounded onPress={sendTwitter}>
-          <Icon name="logo-twitter" />
-        </Button>
-      </View>
-      {Platform.OS !== 'android' && (
-        <Fragment>
-          <Text style={{ margin: 5, textAlign: 'center', fontSize: 11 }}>
-            {I18n.t('ui.donate message')}
+          flex: 1,
+          backgroundColor: 'white',
+          alignItems: 'center',
+          justifyContent: 'space-around'
+        }}
+        onPress={hide}>
+        <Image
+          source={cristo}
+          style={{ width: 200, height: 300, marginTop: 20 }}
+          resizeMode="contain"
+        />
+        <H1 style={{ color: 'red', fontWeight: 'bold', fontStyle: 'italic' }}>
+          {appName}
+        </H1>
+        <Text style={{ textAlign: 'center', fontSize: 12 }}>
+          <Text style={{ fontWeight: 'bold' }}>
+            {I18n.t('ui.version')}: {version}
           </Text>
-          <View>
-            <Button iconLeft onPress={makeDonation}>
-              <Icon name="logo-usd" />
-              <Text>{I18n.t('ui.donate button')}</Text>
-            </Button>
-          </View>
-        </Fragment>
-      )}
-    </TouchableOpacity>
+          {'\n'} Javier Castro, 2017-2019
+        </Text>
+        <Text style={{ textAlign: 'center', fontSize: 12 }}>
+          <Text style={{ fontWeight: 'bold' }}>
+            {I18n.t('ui.collaborators')}
+          </Text>
+          {'\n'} Javier Suarez Suarez (es)
+          {'\n'} Matheus Fragoso (pt)
+        </Text>
+        <View
+          style={{
+            flexDirection: 'row'
+          }}>
+          <Button style={{ margin: 5 }} primary rounded onPress={sendMail}>
+            <Icon name="mail" />
+          </Button>
+          <Button style={{ margin: 5 }} primary rounded onPress={sendTwitter}>
+            <Icon name="logo-twitter" />
+          </Button>
+        </View>
+        {Platform.OS !== 'android' && (
+          <Fragment>
+            <Text style={{ margin: 5, textAlign: 'center', fontSize: 11 }}>
+              {I18n.t('ui.donate message')}
+            </Text>
+            <View>
+              <Button iconLeft onPress={makeDonation}>
+                <Icon name="logo-usd" />
+                <Text>{I18n.t('ui.donate button')}</Text>
+              </Button>
+            </View>
+          </Fragment>
+        )}
+      </TouchableOpacity>
+    </SafeAreaView>
   );
 };
 
