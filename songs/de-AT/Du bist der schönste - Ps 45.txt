@@ -24,7 +24,7 @@ E
 V: Du bist der Schönste ...
 cis GIS A GIS
 K: In den Palästen aus Elfenbein erklingen die Zithern für dich,
-fis GIS 
+fis GIS
 Königstöchter sind deine Geliebten,
 H A GIS
 zu deiner Rechten steht die Königin in Gold aus Ofir,
@@ -34,7 +34,7 @@ E
 V: Du bist der Schönste ...
 cis GIS A GIS
 K: Höre, Tochter, siehe, neige dein Ohr,
-fis GIS 
+fis GIS
 vergiss dein Volk und das Haus deines Vaters.
 H A GIS
 Der König verlangt nach deiner Schönheit,
