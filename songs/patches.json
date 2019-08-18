@@ -476,6 +476,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1565793993198,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
     }
   ],
   "18": [
@@ -2348,6 +2355,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1565795760923,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
     }
   ],
   "65": [
@@ -2393,6 +2407,13 @@
       "date": 1562626110749,
       "locale": "pt",
       "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1565792197301,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
       "created": false,
       "updated": true
     }
@@ -2988,6 +3009,13 @@
         "original": "precatechumenate",
         "new": "election"
       }
+    },
+    {
+      "date": 1565642128271,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
     }
   ],
   "87": [
@@ -3444,6 +3472,13 @@
         "original": "catechumenate",
         "new": "precatechumenate"
       }
+    },
+    {
+      "date": 1565792716021,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
     }
   ],
   "103": [
@@ -3469,6 +3504,13 @@
       "date": 1563836983642,
       "locale": "pt",
       "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1565642609963,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
       "created": false,
       "updated": true
     }
@@ -4451,6 +4493,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1565641576396,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": true
     }
   ],
   "142": [
@@ -4469,6 +4518,13 @@
         "original": "Um rebento brota do tronco de jessé - Is 11, 1-11",
         "new": "Um rebento brota do tronco de Jessé - Is 11, 1-11"
       },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1565793478723,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
       "created": false,
       "updated": true
     }
@@ -4491,6 +4547,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1565792972588,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": false
     }
   ],
   "144": [
@@ -5295,6 +5358,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1565641674269,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
+      "created": false,
+      "updated": false
     }
   ],
   "170": [
@@ -5981,6 +6051,13 @@
       "date": 1563234452282,
       "locale": "pt",
       "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": false
+    },
+    {
+      "date": 1565792895989,
+      "locale": "de-AT",
+      "author": "fd_colautti@mac.com",
       "created": false,
       "updated": false
     }
