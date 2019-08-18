@@ -128,6 +128,9 @@ const TransportNotesMenu = withNavigation((props: any) => {
 const ViewPdf = withNavigation(props => {
   const { navigation } = props;
   const song = navigation.getParam('song');
+  if (!song) {
+    return null;
+  }
   const transportToNote = navigation.getParam('transportNote');
 
   return (
