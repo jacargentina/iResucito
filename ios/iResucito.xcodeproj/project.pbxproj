@@ -26,6 +26,7 @@
 		6BC8E1B6F2CE4BC99CD1D78C /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75643008B2154B4CB32096EC /* Entypo.ttf */; };
 		6C425AB8DAD891A8A8BA6834 /* libPods-iResucitoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D97CDC5121F6D257B89EF1C2 /* libPods-iResucitoTests.a */; };
 		7114DC0F98704AE7B38EE879 /* rubicon-icon-font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B30899122C848BCB89E5256 /* rubicon-icon-font.ttf */; };
+		884593DD230ED2CE00E72C72 /* Icon-App-60x60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 884593DC230ED2CE00E72C72 /* Icon-App-60x60@3x.png */; };
 		8872DD8C22DF4F2B00FDA403 /* Franklin Gothic Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8872DD8B22DF4F2B00FDA403 /* Franklin Gothic Medium.ttf */; };
 		88D516DF22DF4AAF00E03D4C /* songs in Resources */ = {isa = PBXBuildFile; fileRef = 88D516DE22DF4AAE00E03D4C /* songs */; };
 		9FFB9A1EEECF4F5CA3C05DB8 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 333A6B3E00714A7688EC89DF /* Feather.ttf */; };
@@ -89,6 +90,7 @@
 		75643008B2154B4CB32096EC /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/native-base/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		75874F81DF394759988B4A0F /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/native-base/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		7802EF2BFF314BBA9C392E4E /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/native-base/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
+		884593DC230ED2CE00E72C72 /* Icon-App-60x60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-App-60x60@3x.png"; path = "iResucito/Images.xcassets/AppIcon.appiconset/Icon-App-60x60@3x.png"; sourceTree = "<group>"; };
 		8872DD8B22DF4F2B00FDA403 /* Franklin Gothic Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Franklin Gothic Medium.ttf"; path = "../assets/fonts/Franklin Gothic Medium.ttf"; sourceTree = "<group>"; };
 		88D516DE22DF4AAE00E03D4C /* songs */ = {isa = PBXFileReference; lastKnownFileType = folder; name = songs; path = ../songs; sourceTree = "<group>"; };
 		8A9E7FDC1EF74199856AB878 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/native-base/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				884593DC230ED2CE00E72C72 /* Icon-App-60x60@3x.png */,
 				13B07FAE1A68108700A75B9A /* iResucito */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* iResucitoTests */,
@@ -433,6 +436,7 @@
 				7114DC0F98704AE7B38EE879 /* rubicon-icon-font.ttf in Resources */,
 				88D516DF22DF4AAF00E03D4C /* songs in Resources */,
 				EE180E724C0A414FB4471FCB /* SimpleLineIcons.ttf in Resources */,
+				884593DD230ED2CE00E72C72 /* Icon-App-60x60@3x.png in Resources */,
 				E6EEA94AA23F4DA4A19E3C95 /* Zocial.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
