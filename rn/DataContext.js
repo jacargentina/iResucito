@@ -1,9 +1,10 @@
 // @flow
 import React, { useState, useEffect } from 'react';
-import { Alert, Platform, PermissionsAndroid } from 'react-native';
+import { Alert, Platform, PermissionsAndroid, Linking } from 'react-native';
 import Share from 'react-native-share'; // eslint-disable-line import/default
 import Contacts from 'react-native-contacts';
 import { Toast } from 'native-base';
+import RNFS from 'react-native-fs';
 import badges from './badges';
 import { localdata, clouddata } from './data';
 import {
@@ -447,7 +448,7 @@ const useLists = (songs: any) => {
 
   const shareList = (listName: string) => {
     var list = getListForUI(listName);
-    var items = [];
+    /*var items = [];
     if (list.type === 'libre') {
       var cantos = list.items;
       cantos.forEach((canto, i) => {
@@ -474,11 +475,19 @@ const useLists = (songs: any) => {
       items.push(getItemForShare(list, 'nota'));
     }
     var message = items.filter(n => n).join('\n');
+    */
+    const folder =
+      Platform.OS == 'ios'
+        ? RNFS.TemporaryDirectoryPath
+        : RNFS.CachesDirectoryPath + '/';
+    const fileName = listName.replace(' ', '-');
+    const listPath = `${folder}${fileName}.ireslist`;
+    RNFS.writeFile(listPath, JSON.stringify(list), 'utf8');
     Share.open({
       title: I18n.t('ui.share'),
-      message: message,
+      message: null,
       subject: `iResucitó - ${listName}`,
-      url: undefined,
+      url: `file://${listPath}`,
       failOnCancel: false
     });
   };
@@ -494,6 +503,9 @@ const useLists = (songs: any) => {
   }, [lists, initialized]);
 
   useEffect(() => {
+    Linking.addEventListener('url', event => {
+      console.log('Linking url', event.url);
+    });
     localdata
       .load({
         key: 'lists'
