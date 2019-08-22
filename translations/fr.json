@@ -100,11 +100,19 @@
     "add empty": "Ajouter sans contenu",
     "copy from spanish": "Copier de la version espagnole"
   },
-  "export_type": {
+  "pdf_export_options": {
     "selected songs": "Chansons sélectionnées",
     "complete book": "Livre complet"
   },
-  "list_type": { "eucharist": "Eucharistie", "word": "Mot", "other": "Autre" },
+  "list_type": {
+    "eucharist": "Eucharistie",
+    "word": "Mot",
+    "other": "Autre"
+  },
+  "list_export_options": {
+    "native": "iResucito list file",
+    "plain text": "Plain text"
+  },
   "list_item": {
     "1": "1ère lecture",
     "2": "2e lecture",

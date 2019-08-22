@@ -446,50 +446,59 @@ const useLists = (songs: any) => {
     return null;
   };
 
-  const shareList = (listName: string) => {
+  const shareList = (listName: string, useNative: boolean) => {
     var list = getListForUI(listName);
-    /*var items = [];
-    if (list.type === 'libre') {
-      var cantos = list.items;
-      cantos.forEach((canto, i) => {
-        items.push(`${i + 1} - ${canto.titulo}`);
+    if (useNative) {
+      const folder =
+        Platform.OS == 'ios'
+          ? RNFS.TemporaryDirectoryPath
+          : RNFS.CachesDirectoryPath + '/';
+      const fileName = listName.replace(' ', '-');
+      const listPath = `${folder}${fileName}.ireslist`;
+      RNFS.writeFile(listPath, JSON.stringify(list), 'utf8');
+      Share.open({
+        title: I18n.t('ui.share'),
+        message: null,
+        subject: `iResucitó - ${listName}`,
+        url: `file://${listPath}`,
+        failOnCancel: false
       });
     } else {
-      items.push(getItemForShare(list, 'ambiental'));
-      items.push(getItemForShare(list, 'entrada'));
-      items.push(getItemForShare(list, '1-monicion'));
-      items.push(getItemForShare(list, '1'));
-      items.push(getItemForShare(list, '1-salmo'));
-      items.push(getItemForShare(list, '2-monicion'));
-      items.push(getItemForShare(list, '2'));
-      items.push(getItemForShare(list, '2-salmo'));
-      items.push(getItemForShare(list, '3-monicion'));
-      items.push(getItemForShare(list, '3'));
-      items.push(getItemForShare(list, '3-salmo'));
-      items.push(getItemForShare(list, 'evangelio-monicion'));
-      items.push(getItemForShare(list, 'evangelio'));
-      items.push(getItemForShare(list, 'paz'));
-      items.push(getItemForShare(list, 'comunion-pan'));
-      items.push(getItemForShare(list, 'comunion-caliz'));
-      items.push(getItemForShare(list, 'salida'));
-      items.push(getItemForShare(list, 'nota'));
+      var items = [];
+      if (list.type === 'libre') {
+        var cantos = list.items;
+        cantos.forEach((canto, i) => {
+          items.push(`${i + 1} - ${canto.titulo}`);
+        });
+      } else {
+        items.push(getItemForShare(list, 'ambiental'));
+        items.push(getItemForShare(list, 'entrada'));
+        items.push(getItemForShare(list, '1-monicion'));
+        items.push(getItemForShare(list, '1'));
+        items.push(getItemForShare(list, '1-salmo'));
+        items.push(getItemForShare(list, '2-monicion'));
+        items.push(getItemForShare(list, '2'));
+        items.push(getItemForShare(list, '2-salmo'));
+        items.push(getItemForShare(list, '3-monicion'));
+        items.push(getItemForShare(list, '3'));
+        items.push(getItemForShare(list, '3-salmo'));
+        items.push(getItemForShare(list, 'evangelio-monicion'));
+        items.push(getItemForShare(list, 'evangelio'));
+        items.push(getItemForShare(list, 'paz'));
+        items.push(getItemForShare(list, 'comunion-pan'));
+        items.push(getItemForShare(list, 'comunion-caliz'));
+        items.push(getItemForShare(list, 'salida'));
+        items.push(getItemForShare(list, 'nota'));
+      }
+      var message = items.filter(n => n).join('\n');
+      Share.open({
+        title: I18n.t('ui.share'),
+        message: message,
+        subject: `iResucitó - ${listName}`,
+        url: null,
+        failOnCancel: false
+      });
     }
-    var message = items.filter(n => n).join('\n');
-    */
-    const folder =
-      Platform.OS == 'ios'
-        ? RNFS.TemporaryDirectoryPath
-        : RNFS.CachesDirectoryPath + '/';
-    const fileName = listName.replace(' ', '-');
-    const listPath = `${folder}${fileName}.ireslist`;
-    RNFS.writeFile(listPath, JSON.stringify(list), 'utf8');
-    Share.open({
-      title: I18n.t('ui.share'),
-      message: null,
-      subject: `iResucitó - ${listName}`,
-      url: `file://${listPath}`,
-      failOnCancel: false
-    });
   };
 
   useEffect(() => {

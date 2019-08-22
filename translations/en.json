@@ -100,7 +100,7 @@
     "add empty": "Add without content",
     "copy from spanish": "Copy from Spanish version"
   },
-  "export_type": {
+  "pdf_export_options": {
     "selected songs": "Selected songs",
     "complete book": "Complete book"
   },
@@ -108,6 +108,10 @@
     "eucharist": "Eucharist",
     "word": "Word",
     "other": "Other"
+  },
+  "list_export_options": {
+    "native": "iResucito list file",
+    "plain text": "Plain text"
   },
   "list_item": {
     "ambiental": "General Admonition",

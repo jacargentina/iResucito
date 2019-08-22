@@ -100,7 +100,7 @@
     "add empty": "Hinzufügen ohne Inhalt",
     "copy from spanish": "Kopieren Sie aus der spanischen Version"
   },
-  "export_type": {
+  "pdf_export_options": {
     "selected songs": "Ausgewählte Lieder",
     "complete book": "Komplettes Buch"
   },
@@ -108,6 +108,10 @@
     "eucharist": "Eucharistie",
     "word": "Wort",
     "other": "Andere"
+  },
+  "list_export_options": {
+    "native": "iResucito list file",
+    "plain text": "Plain text"
   },
   "list_item": {
     "ambiental": "Allgemeine Einleitung",

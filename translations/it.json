@@ -100,7 +100,7 @@
     "add empty": "Aggiungi senza contenuto",
     "copy from spanish": "Copia dalla versione spagnola"
   },
-  "export_type": {
+  "pdf_export_options": {
     "selected songs": "Canzoni selezionate",
     "complete book": "Libro completo"
   },
@@ -108,6 +108,10 @@
     "eucharist": "Eucarestia",
     "word": "Parola",
     "other": "Altro"
+  },
+  "list_export_options": {
+    "native": "iResucito list file",
+    "plain text": "Plain text"
   },
   "list_item": {
     "ambiental": "Ammonizione Ambientale",

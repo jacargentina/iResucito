@@ -166,8 +166,8 @@ const ExportToPdf = withNavigation(props => {
     ActionSheet.show(
       {
         options: [
-          I18n.t('export_type.selected songs'),
-          I18n.t('export_type.complete book'),
+          I18n.t('pdf_export_options.selected songs'),
+          I18n.t('pdf_export_options.complete book'),
           I18n.t('ui.cancel')
         ],
         cancelButtonIndex: 2,

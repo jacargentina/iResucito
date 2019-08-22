@@ -2,7 +2,7 @@
 import React, { Fragment, useContext, useState } from 'react';
 import { withNavigation } from 'react-navigation';
 import { Alert, View, Platform } from 'react-native';
-import { Icon, List, Text, Fab } from 'native-base';
+import { Icon, List, Text, Fab, ActionSheet } from 'native-base';
 import Swipeout from 'react-native-swipeout';
 import ListDetailItem from './ListDetailItem';
 import { DataContext } from '../DataContext';
@@ -251,6 +251,31 @@ const ShareList = withNavigation(props => {
   const list = props.navigation.getParam('list');
   const data = useContext(DataContext);
   const { shareList } = data.lists;
+
+  const chooseShareFormat = () => {
+    ActionSheet.show(
+      {
+        options: [
+          I18n.t('list_export_options.native'),
+          I18n.t('list_export_options.plain text'),
+          I18n.t('ui.cancel')
+        ],
+        cancelButtonIndex: 2,
+        title: I18n.t('ui.export.type')
+      },
+      index => {
+        index = Number(index);
+        switch (index) {
+          case 0:
+            shareList(list.name, true);
+            break;
+          case 1:
+            shareList(list.name, false);
+            break;
+        }
+      }
+    );
+  };
   return (
     <Icon
       name="share"
@@ -259,7 +284,7 @@ const ShareList = withNavigation(props => {
         marginRight: 12,
         color: StackNavigatorOptions.headerTitleStyle.color
       }}
-      onPress={() => shareList(list.name)}
+      onPress={chooseShareFormat}
     />
   );
 });
