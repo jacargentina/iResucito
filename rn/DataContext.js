@@ -310,7 +310,7 @@ const useLists = (songs: any) => {
   const [lists, initLists] = useState({});
 
   const addList = (listName, type) => {
-    let schema = { type: type };
+    let schema = { type: type, version: 1 };
     switch (type) {
       case 'libre':
         schema = Object.assign({}, schema, { items: [] });
@@ -422,6 +422,34 @@ const useLists = (songs: any) => {
     return uiList;
   };
 
+  const migrateLists = (lists: any) => {
+    // Verificar cada lista para migrar en caso
+    // de ser necesario
+    Object.keys(lists).forEach(name => {
+      var listMap = lists[name];
+      // Listas sin número de versión
+      // Los cantos se almacenaban con nombre
+      // Y deben pasar a almacenarse las claves
+      if (!listMap.version) {
+        Object.entries(listMap).forEach(([clave, valor]) => {
+          // Si es de tipo 'libre', los salmos están dentro de 'items'
+          if (clave === 'items' && Array.isArray(valor)) {
+            valor = valor.map(nombre => {
+              var theSong = songs.find(s => s.nombre == nombre);
+              return theSong.key;
+            });
+          } else if (getEsSalmo(clave) && valor !== null) {
+            var theSong = songs.find(s => s.nombre == valor);
+            valor = theSong.key;
+          }
+          // Guardar solo la clave del canto
+          listMap[clave] = valor;
+        });
+        listMap.version = 1;
+      }
+    });
+  };
+
   const getListsForUI = () => {
     var listNames = Object.keys(lists);
     return listNames.map(name => {
@@ -521,6 +549,7 @@ const useLists = (songs: any) => {
       })
       .then(data => {
         if (data) {
+          migrateLists(data);
           initLists(data);
         }
         setInitialized(true);
