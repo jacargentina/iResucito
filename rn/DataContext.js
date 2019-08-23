@@ -436,11 +436,18 @@ const useLists = (songs: any) => {
           if (clave === 'items' && Array.isArray(valor)) {
             valor = valor.map(nombre => {
               var theSong = songs.find(s => s.nombre == nombre);
-              return theSong.key;
+              if (theSong) {
+                return theSong.key;
+              }
+              return null;
             });
           } else if (getEsSalmo(clave) && valor !== null) {
             var theSong = songs.find(s => s.nombre == valor);
-            valor = theSong.key;
+            if (theSong) {
+              valor = theSong.key;
+            } else {
+              valor = null;
+            }
           }
           // Guardar solo la clave del canto
           listMap[clave] = valor;
