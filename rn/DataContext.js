@@ -411,11 +411,11 @@ const useLists = (songs: any) => {
     Object.entries(uiList).forEach(([clave, valor]) => {
       // Si es de tipo 'libre', los salmos están dentro de 'items'
       if (clave === 'items' && Array.isArray(valor)) {
-        valor = valor.map(nombre => {
-          return songs.find(s => s.nombre == nombre);
+        valor = valor.map(key => {
+          return songs.find(s => s.key == key);
         });
       } else if (getEsSalmo(clave) && valor !== null) {
-        valor = songs.find(s => s.nombre == valor);
+        valor = songs.find(s => s.key == valor);
       }
       uiList[clave] = valor;
     });
@@ -475,7 +475,6 @@ const useLists = (songs: any) => {
   };
 
   const shareList = (listName: string, useNative: boolean) => {
-    var list = getListForUI(listName);
     if (useNative) {
       const folder =
         Platform.OS == 'ios'
@@ -483,7 +482,8 @@ const useLists = (songs: any) => {
           : RNFS.CachesDirectoryPath + '/';
       const fileName = listName.replace(' ', '-');
       const listPath = `${folder}${fileName}.ireslist`;
-      RNFS.writeFile(listPath, JSON.stringify(list), 'utf8');
+      const nativeList = lists[listName];
+      RNFS.writeFile(listPath, JSON.stringify(nativeList), 'utf8');
       Share.open({
         title: I18n.t('ui.share'),
         message: null,
@@ -492,6 +492,7 @@ const useLists = (songs: any) => {
         failOnCancel: false
       });
     } else {
+      var list = getListForUI(listName);
       var items = [];
       if (list.type === 'libre') {
         var cantos = list.items;
