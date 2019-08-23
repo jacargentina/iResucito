@@ -1,4 +1,4 @@
-// @flow
+
 import FolderSongs from '../FolderSongs';
 
 function getEsSalmo(listKey: string): boolean {

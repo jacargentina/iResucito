@@ -69,10 +69,13 @@ const useSettings = () => {
 const useSongsMeta = (settingsInitialized: boolean) => {
   const [indexPatchExists, setIndexPatchExists] = useState();
   const [ratingsFileExists, setRatingsFileExists] = useState();
-  const [songs, setSongs] = useState([]);
+  const [songs, setSongs] = useState();
   const [localeSongs, setLocaleSongs] = useState([]);
 
   const initializeSingleSong = song => {
+    if (!songs) {
+      return;
+    }
     var idx = songs.findIndex(i => i.key == song.key);
     var prev = songs.slice(0, idx);
     var next = songs.slice(idx + 1);
@@ -482,6 +485,7 @@ const useLists = (songs: any) => {
   };
 
   const shareList = (listName: string, useNative: boolean) => {
+    var sharePromise = null;
     if (useNative) {
       const folder =
         Platform.OS == 'ios'
@@ -490,8 +494,8 @@ const useLists = (songs: any) => {
       const fileName = listName.replace(' ', '-');
       const listPath = `${folder}${fileName}.ireslist`;
       const nativeList = lists[listName];
-      RNFS.writeFile(listPath, JSON.stringify(nativeList), 'utf8');
-      Share.open({
+      RNFS.writeFile(listPath, JSON.stringify(nativeList, null, ' '), 'utf8');
+      sharePromise = Share.open({
         title: I18n.t('ui.share'),
         message: null,
         subject: `iResucitó - ${listName}`,
@@ -527,13 +531,22 @@ const useLists = (songs: any) => {
         items.push(getItemForShare(list, 'nota'));
       }
       var message = items.filter(n => n).join('\n');
-      Share.open({
+      sharePromise = Share.open({
         title: I18n.t('ui.share'),
         message: message,
         subject: `iResucitó - ${listName}`,
         url: null,
         failOnCancel: false
       });
+    }
+    if (sharePromise) {
+      sharePromise
+        .then(res => {
+          console.log(res);
+        })
+        .catch(err => {
+          err && console.log(err);
+        });
     }
   };
 
@@ -552,6 +565,7 @@ const useLists = (songs: any) => {
     // esten cargados los cantos
     // La migracion de listas depende de ello
     if (songs) {
+      console.log('useEffect load lists');
       Linking.addEventListener('url', event => {
         console.log('Linking url', event.url);
       });
@@ -560,6 +574,7 @@ const useLists = (songs: any) => {
           key: 'lists'
         })
         .then(data => {
+          debugger;
           if (data) {
             migrateLists(data);
             initLists(data);
@@ -947,7 +962,13 @@ const DataContextWrapper = (props: any) => {
       subject: `iResucitó - ${shareTitleSuffix}`,
       url: `file://${pdfPath}`,
       failOnCancel: false
-    });
+    })
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        err && console.log(err);
+      });
   };
 
   const shareIndexPatch = () => {
@@ -960,7 +981,13 @@ const DataContextWrapper = (props: any) => {
         message: patchJSON,
         url: `file://${NativeExtras.getPatchUri()}`,
         failOnCancel: false
-      });
+      })
+        .then(res => {
+          console.log(res);
+        })
+        .catch(err => {
+          err && console.log(err);
+        });
     });
   };
 
