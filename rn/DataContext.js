@@ -548,28 +548,33 @@ const useLists = (songs: any) => {
   }, [lists, initialized]);
 
   useEffect(() => {
-    Linking.addEventListener('url', event => {
-      console.log('Linking url', event.url);
-    });
-    localdata
-      .load({
-        key: 'lists'
-      })
-      .then(data => {
-        if (data) {
-          migrateLists(data);
-          initLists(data);
-        }
-        setInitialized(true);
+    // Solo inicializar cuando
+    // esten cargados los cantos
+    // La migracion de listas depende de ello
+    if (songs) {
+      Linking.addEventListener('url', event => {
+        console.log('Linking url', event.url);
       });
-    // TODO
-    // IDEA: al abrir la pantalla de listas, cargar las
-    // listas desde iCloud, y si hay cambios, consultar
-    // al usuario si desea tomar los cambios y aplicarlos
-    // clouddata.load({ key: 'lists' }).then(res => {
-    //   console.log('loaded from iCloud', res);
-    // });
-  }, []);
+      localdata
+        .load({
+          key: 'lists'
+        })
+        .then(data => {
+          if (data) {
+            migrateLists(data);
+            initLists(data);
+          }
+          setInitialized(true);
+        });
+      // TODO
+      // IDEA: al abrir la pantalla de listas, cargar las
+      // listas desde iCloud, y si hay cambios, consultar
+      // al usuario si desea tomar los cambios y aplicarlos
+      // clouddata.load({ key: 'lists' }).then(res => {
+      //   console.log('loaded from iCloud', res);
+      // });
+    }
+  }, [songs]);
 
   return {
     lists,
