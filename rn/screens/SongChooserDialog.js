@@ -75,7 +75,7 @@ const SongChooserDialog = (props: any) => {
 
   const songAssign = (song: Song) => {
     if (target.listName && target.listKey !== undefined) {
-      setList(target.listName, target.listKey, song.nombre);
+      setList(target.listName, target.listKey, song.key);
       navigation.goBack(null);
     }
   };
