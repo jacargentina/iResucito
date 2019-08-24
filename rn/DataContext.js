@@ -484,6 +484,21 @@ const useLists = (songs: any) => {
     return null;
   };
 
+  const importList = (listPath: string) => {
+    const path = decodeURI(listPath).replace('file://', '');
+    RNFS.readFile(path)
+      .then(content => {
+        const list = JSON.parse(content);
+        // TODO
+      })
+      .catch(err => {
+        Alert.alert(
+          I18n.t('alert_title.corrupt file'),
+          I18n.t('alert_message.corrupt file')
+        );
+      });
+  };
+
   const shareList = (listName: string, useNative: boolean) => {
     var sharePromise = null;
     if (useNative) {
@@ -565,16 +580,14 @@ const useLists = (songs: any) => {
     // esten cargados los cantos
     // La migracion de listas depende de ello
     if (songs) {
-      console.log('useEffect load lists');
       Linking.addEventListener('url', event => {
-        console.log('Linking url', event.url);
+        importList(event.url);
       });
       localdata
         .load({
           key: 'lists'
         })
         .then(data => {
-          debugger;
           if (data) {
             migrateLists(data);
             initLists(data);
@@ -601,7 +614,8 @@ const useLists = (songs: any) => {
     setList,
     getListForUI,
     getListsForUI,
-    shareList
+    shareList,
+    importList
   };
 };
 
