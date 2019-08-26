@@ -17,6 +17,7 @@ import {
   NativeExtras
 } from './util';
 import I18n from '../translations';
+import pathParse from 'path-parse';
 
 const merge = require('deepmerge');
 
@@ -488,8 +489,20 @@ const useLists = (songs: any) => {
     const path = decodeURI(listPath).replace('file://', '');
     RNFS.readFile(path)
       .then(content => {
-        const list = JSON.parse(content);
-        // TODO
+        // Obtener nombre del archivo
+        // que será nombre de la lista
+        const parsed = pathParse(listPath);
+        var { name: listName } = parsed;
+        // Generar nombre único para la lista
+        var counter = 1;
+        while (lists.hasOwnProperty(listName)) {
+          listName = `${listName} (${counter++})`;
+        }
+        const changedLists = Object.assign({}, lists, {
+          [listName]: JSON.parse(content)
+        });
+        initLists(changedLists);
+        // TODO, navegar a la lista
       })
       .catch(err => {
         Alert.alert(
@@ -580,9 +593,6 @@ const useLists = (songs: any) => {
     // esten cargados los cantos
     // La migracion de listas depende de ello
     if (songs) {
-      Linking.addEventListener('url', event => {
-        importList(event.url);
-      });
       localdata
         .load({
           key: 'lists'
@@ -603,6 +613,16 @@ const useLists = (songs: any) => {
       // });
     }
   }, [songs]);
+
+  useEffect(() => {
+    const handler = event => {
+      importList(event.url);
+    };
+    Linking.addEventListener('url', handler);
+    return function cleanup() {
+      Linking.removeEventListener('url', handler);
+    };
+  }, [lists]);
 
   return {
     lists,

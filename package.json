@@ -85,6 +85,7 @@
     "normalize-strings": "^1.1.0",
     "open": "^6.4.0",
     "os-locale": "^4.0.0",
+    "path-parse": "^1.0.6",
     "pdfjs-dist": "^2.1.266",
     "plist": "^3.0.1",
     "query-string": "^6.8.2",
