@@ -44,11 +44,6 @@ function dispatch(action: any) {
   navigator.dispatch(action);
 }
 
-// NavigationActions.navigate({
-//   routeName: 'ListDetail',
-//   params: { list: { name } }
-// })
-
 export default {
   navigate,
   setTopLevelNavigator,

@@ -18,7 +18,7 @@ const ListDetail = (props: any) => {
   const { navigation } = props;
   const { setList, getListForUI } = data.lists;
 
-  const { name: listName } = navigation.getParam('list');
+  const listName = navigation.getParam('listName');
 
   const confirmListDeleteSong = (songTitle, list, key) => {
     Alert.alert(
@@ -248,7 +248,7 @@ const ListDetail = (props: any) => {
 };
 
 const ShareList = withNavigation(props => {
-  const list = props.navigation.getParam('list');
+  const listName = props.navigation.getParam('listName');
   const data = useContext(DataContext);
   const { shareList } = data.lists;
 
@@ -267,10 +267,10 @@ const ShareList = withNavigation(props => {
         index = Number(index);
         switch (index) {
           case 0:
-            shareList(list.name, true);
+            shareList(listName, true);
             break;
           case 1:
-            shareList(list.name, false);
+            shareList(listName, false);
             break;
         }
       }
@@ -290,9 +290,9 @@ const ShareList = withNavigation(props => {
 });
 
 ListDetail.navigationOptions = props => {
-  const list = props.navigation.getParam('list');
+  const listName = props.navigation.getParam('listName');
   return {
-    title: list ? list.name : 'Lista',
+    title: listName ? listName : 'Lista',
     headerRight: (
       <View style={{ flexDirection: 'row' }}>
         <ShareList />

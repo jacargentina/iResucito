@@ -15,16 +15,16 @@ const ListNameDialog = (props: any) => {
   const [actionEnabled, setActionEnabled] = useState(false);
   const [name, setName] = useState('');
 
-  const list = navigation.getParam('list');
+  const listName = navigation.getParam('listName');
   const action = navigation.getParam('action');
   const type = navigation.getParam('type');
 
   const runActionOnList = () => {
     if (action === 'create') {
       addList(name, type);
-      navigation.navigate('ListDetail', { list: { name } });
+      navigation.navigate('ListDetail', { listName: name });
     } else if (action === 'rename') {
-      renameList(list.name, name);
+      renameList(listName, name);
       navigation.goBack(null);
     }
   };
@@ -55,7 +55,7 @@ const ListNameDialog = (props: any) => {
   const title =
     action == 'create'
       ? `${I18n.t('ui.lists.create')} (${getFriendlyTextForListType(type)})`
-      : `${I18n.t('ui.lists.rename')} (${list.name})`;
+      : `${I18n.t('ui.lists.rename')} (${listName})`;
 
   return (
     <ModalView

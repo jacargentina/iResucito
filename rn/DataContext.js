@@ -1,6 +1,7 @@
 // @flow
 import React, { useState, useEffect } from 'react';
 import { Alert, Platform, PermissionsAndroid, Linking } from 'react-native';
+import NavigationService from './navigation/NavigationService';
 import Share from 'react-native-share'; // eslint-disable-line import/default
 import Contacts from 'react-native-contacts';
 import { Toast } from 'native-base';
@@ -311,6 +312,7 @@ const useSongsMeta = (settingsInitialized: boolean) => {
 
 const useLists = (songs: any) => {
   const [initialized, setInitialized] = useState(false);
+  const [imported, setImported] = useState();
   const [lists, initLists] = useState({});
 
   const addList = (listName, type) => {
@@ -502,7 +504,7 @@ const useLists = (songs: any) => {
           [listName]: JSON.parse(content)
         });
         initLists(changedLists);
-        // TODO, navegar a la lista
+        setImported(listName);
       })
       .catch(err => {
         Alert.alert(
@@ -623,6 +625,13 @@ const useLists = (songs: any) => {
       Linking.removeEventListener('url', handler);
     };
   }, [lists]);
+
+  useEffect(() => {
+    if (imported) {
+      NavigationService.navigate('Lists');
+      NavigationService.navigate('ListDetail', { listName: imported });
+    }
+  }, [imported]);
 
   return {
     lists,

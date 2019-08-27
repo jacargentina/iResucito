@@ -74,15 +74,15 @@ const ListScreen = (props: any) => {
     );
   };
 
-  const listDelete = list => {
+  const listDelete = listName => {
     Alert.alert(
-      `${I18n.t('ui.delete')} "${list.name}"`,
+      `${I18n.t('ui.delete')} "${listName}"`,
       I18n.t('ui.delete confirmation'),
       [
         {
           text: I18n.t('ui.delete'),
           onPress: () => {
-            removeList(list.name);
+            removeList(listName);
           },
           style: 'destructive'
         },
@@ -94,10 +94,10 @@ const ListScreen = (props: any) => {
     );
   };
 
-  const listRename = list => {
+  const listRename = listName => {
     navigation.navigate('ListName', {
       action: 'rename',
-      list: list
+      listName: listName
     });
   };
 
@@ -129,7 +129,7 @@ const ListScreen = (props: any) => {
               text: I18n.t('ui.rename'),
               type: 'primary',
               onPress: () => {
-                listRename(item);
+                listRename(item.name);
               }
             },
             {
@@ -137,7 +137,7 @@ const ListScreen = (props: any) => {
               type: Platform.OS == 'ios' ? 'delete' : 'default',
               backgroundColor: Platform.OS == 'android' ? '#e57373' : null,
               onPress: () => {
-                listDelete(item);
+                listDelete(item.name);
               }
             }
           ];
@@ -150,7 +150,7 @@ const ListScreen = (props: any) => {
                 avatar
                 onPress={() => {
                   navigation.navigate('ListDetail', {
-                    list: item
+                    listName: item.name
                   });
                 }}>
                 <Left>
