@@ -3,10 +3,15 @@ import React from 'react';
 import { Text } from 'native-base';
 
 const SongViewLines = (props: any) => {
-  const { lines } = props;
+  const { lines, onPress, zoom } = props;
 
   // Ajuste final para renderizado en screen
   var renderItems = lines.map<any>((it: SongLine, i) => {
+    var itemStyle = { ...it.style };
+    itemStyle.fontSize = it.style.fontSize * zoom;
+    var prefijoStyle = { ...(it.prefijoStyle || it.style) };
+    prefijoStyle.fontSize = prefijoStyle.fontSize * zoom;
+
     if (it.sufijo) {
       var sufijo = (
         <Text key={i + 'sufijo'} style={it.sufijoStyle}>
@@ -15,8 +20,12 @@ const SongViewLines = (props: any) => {
       );
     }
     return (
-      <Text numberOfLines={1} key={i + 'texto'} style={it.style}>
-        <Text key={i + 'prefijo'} style={it.prefijoStyle || it.style}>
+      <Text
+        key={i + 'texto'}
+        onPress={onPress}
+        numberOfLines={1}
+        style={itemStyle}>
+        <Text key={i + 'prefijo'} style={prefijoStyle}>
           {it.prefijo}
         </Text>
         {it.texto}
@@ -25,7 +34,11 @@ const SongViewLines = (props: any) => {
     );
   });
 
-  renderItems.push(<Text key="spacer">{'\n\n\n'}</Text>);
+  renderItems.push(
+    <Text onPress={onPress} key="spacer">
+      {'\n\n\n'}
+    </Text>
+  );
 
   return renderItems;
 };

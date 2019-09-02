@@ -22,6 +22,13 @@ import pathParse from 'path-parse';
 
 const merge = require('deepmerge');
 
+const DefaultSettings = {
+  developerMode: false,
+  keepAwake: true,
+  locale: 'default',
+  zoomLevel: 1
+};
+
 const useSettings = () => {
   const [initialized, setInitialized] = useState(false);
   const [keys, initKeys] = useState({});
@@ -53,11 +60,15 @@ const useSettings = () => {
       })
       .then(data => {
         if (!data) {
-          data = {
-            developerMode: false,
-            keepAwake: true,
-            locale: 'default'
-          };
+          data = DefaultSettings;
+        } else {
+          // Add missing keys (ie. added a new setting
+          // on the app and it was not present before)
+          for (var key in DefaultSettings) {
+            if (!data.hasOwnProperty(key)) {
+              data[key] = DefaultSettings[key];
+            }
+          }
         }
         I18n.locale = getLocaleReal(data.locale);
         initKeys(data);
