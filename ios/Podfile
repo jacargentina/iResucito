@@ -51,6 +51,8 @@ target 'iResucito' do
 
   pod 'react-native-print', :path => '../node_modules/react-native-print'
 
+  pod 'RNReanimated', :path => '../node_modules/react-native-reanimated'
+
   target 'iResucitoTests' do
     inherit! :search_paths
     # Pods for testing

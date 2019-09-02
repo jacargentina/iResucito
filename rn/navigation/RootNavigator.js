@@ -1,5 +1,5 @@
 // @flow
-import { createStackNavigator } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 import NavigationService from './NavigationService';
 import MenuNavigator from './MenuNavigator';
 import AboutDialog from '../screens/AboutDialog';

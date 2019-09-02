@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import { createStackNavigator } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 import StackNavigatorOptions from './StackNavigatorOptions';
 import { Icon } from 'native-base';
 import CommunityScreen from '../screens/CommunityScreen';
