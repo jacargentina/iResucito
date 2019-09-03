@@ -8,27 +8,22 @@
 	<string>iResucito</string>
 	<key>CFBundleDocumentTypes</key>
 	<array>
-		<dict>
-			<key>CFBundleDocumentTypes</key>
-			<array>
-				<dict>
-					<key>CFBundleTypeRole</key>
-					<string>Editor</string>
-					<key>LSHandlerRank</key>
-					<string>Owner</string>
-				</dict>
-			</array>
-			<key>CFBundleTypeIconFiles</key>
-			<array>
-				<string>Icon-App-60x60@3x.png</string>
-			</array>
-			<key>CFBundleTypeName</key>
-			<string>iResucito List File</string>
-			<key>LSItemContentTypes</key>
-			<array>
-				<string>com.javiercastro.iresucito.ireslist</string>
-			</array>
-		</dict>
+			<dict>
+				<key>CFBundleTypeRole</key>
+				<string>Editor</string>
+				<key>LSHandlerRank</key>
+				<string>Owner</string>
+				<key>CFBundleTypeIconFiles</key>
+				<array>
+					<string>Icon-App-60x60@3x.png</string>
+				</array>
+				<key>CFBundleTypeName</key>
+				<string>iResucito List File</string>
+				<key>LSItemContentTypes</key>
+				<array>
+					<string>com.javiercastro.iresucito.ireslist</string>
+				</array>
+			</dict>
 	</array>
 	<key>LSSupportsOpeningDocumentsInPlace</key>
 	<true/>
