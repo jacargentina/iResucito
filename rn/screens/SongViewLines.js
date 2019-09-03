@@ -8,9 +8,13 @@ const SongViewLines = (props: any) => {
   // Ajuste final para renderizado en screen
   var renderItems = lines.map<any>((it: SongLine, i) => {
     var itemStyle = { ...it.style };
-    itemStyle.fontSize = it.style.fontSize * zoom;
+    if (itemStyle.fontSize) {
+      itemStyle.fontSize = itemStyle.fontSize * zoom;
+    }
     var prefijoStyle = { ...(it.prefijoStyle || it.style) };
-    prefijoStyle.fontSize = prefijoStyle.fontSize * zoom;
+    if (prefijoStyle.fontSize) {
+      prefijoStyle.fontSize = prefijoStyle.fontSize * zoom;
+    }
 
     if (it.sufijo) {
       var sufijo = (
