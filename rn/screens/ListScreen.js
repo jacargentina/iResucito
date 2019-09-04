@@ -1,18 +1,11 @@
 // @flow
 import React, { useContext, useState, useMemo, useEffect } from 'react';
-import {
-  ListItem,
-  Left,
-  Body,
-  Icon,
-  Text,
-  ActionSheet,
-  Fab
-} from 'native-base';
-import { Alert, FlatList, Platform } from 'react-native';
+import { ListItem, Left, Body, Icon, Text } from 'native-base';
+import { View, Alert, FlatList, Platform } from 'react-native';
 import Swipeout from 'react-native-swipeout';
 import SearchBarView from './SearchBarView';
 import { DataContext } from '../DataContext';
+import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
 import CallToAction from './CallToAction';
 import I18n from '../../translations';
 import commonTheme from '../native-base-theme/variables/platform';
@@ -22,7 +15,7 @@ const titleLocaleKey = 'screen_title.lists';
 const ListScreen = (props: any) => {
   const data = useContext(DataContext);
   const { navigation } = props;
-  const { lists, getListsForUI, removeList } = data.lists;
+  const { lists, getListsForUI, removeList, chooseListTypeForAdd } = data.lists;
   const [filtered, setFiltered] = useState();
   const [filter, setFilter] = useState('');
   const allLists = useMemo(() => getListsForUI(), [lists]);
@@ -38,41 +31,6 @@ const ListScreen = (props: any) => {
     }
     setFiltered(result);
   }, [allLists, filter]);
-
-  const listAdd = () => {
-    ActionSheet.show(
-      {
-        options: [
-          I18n.t('list_type.eucharist'),
-          I18n.t('list_type.word'),
-          I18n.t('list_type.other'),
-          I18n.t('ui.cancel')
-        ],
-        cancelButtonIndex: 3,
-        title: I18n.t('ui.lists.type')
-      },
-      index => {
-        var type = null;
-        index = Number(index);
-        switch (index) {
-          case 0:
-            type = 'eucaristia';
-            break;
-          case 1:
-            type = 'palabra';
-            break;
-          case 2:
-            type = 'libre';
-            break;
-        }
-        if (type !== null)
-          navigation.navigate('ListName', {
-            action: 'create',
-            type: type
-          });
-      }
-    );
-  };
 
   const listDelete = listName => {
     Alert.alert(
@@ -107,7 +65,7 @@ const ListScreen = (props: any) => {
         icon="bookmark"
         title={I18n.t('call_to_action_title.add lists')}
         text={I18n.t('call_to_action_text.add lists')}
-        buttonHandler={listAdd}
+        buttonHandler={chooseListTypeForAdd}
         buttonText={I18n.t('call_to_action_button.add lists')}
       />
     );
@@ -168,19 +126,38 @@ const ListScreen = (props: any) => {
           );
         }}
       />
-      <Fab
-        containerStyle={{}}
-        style={{ backgroundColor: commonTheme.brandPrimary }}
-        position="bottomRight"
-        onPress={listAdd}>
-        <Icon name="add" />
-      </Fab>
     </SearchBarView>
   );
 };
 
+const AddList = () => {
+  const data = useContext(DataContext);
+  const { chooseListTypeForAdd } = data.lists;
+  return (
+    <Icon
+      name="add"
+      style={{
+        marginTop: 4,
+        marginRight: 8,
+        width: 32,
+        fontSize: 30,
+        textAlign: 'center',
+        color: StackNavigatorOptions.headerTitleStyle.color
+      }}
+      onPress={chooseListTypeForAdd}
+    />
+  );
+};
+
 ListScreen.navigationOptions = () => {
-  return { title: I18n.t(titleLocaleKey) };
+  return {
+    title: I18n.t(titleLocaleKey),
+    headerRight: (
+      <View style={{ flexDirection: 'row' }}>
+        <AddList />
+      </View>
+    )
+  };
 };
 
 export default ListScreen;

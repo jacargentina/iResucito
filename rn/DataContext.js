@@ -4,7 +4,7 @@ import { Alert, Platform, PermissionsAndroid, Linking } from 'react-native';
 import NavigationService from './navigation/NavigationService';
 import Share from 'react-native-share'; // eslint-disable-line import/default
 import Contacts from 'react-native-contacts';
-import { Toast } from 'native-base';
+import { ActionSheet, Toast } from 'native-base';
 import RNFS from 'react-native-fs';
 import badges from './badges';
 import { localdata, clouddata } from './data';
@@ -525,6 +525,40 @@ const useLists = (songs: any) => {
       });
   };
 
+  const chooseListTypeForAdd = () => {
+    ActionSheet.show(
+      {
+        options: [
+          I18n.t('list_type.eucharist'),
+          I18n.t('list_type.word'),
+          I18n.t('list_type.other'),
+          I18n.t('ui.cancel')
+        ],
+        cancelButtonIndex: 3,
+        title: I18n.t('ui.lists.type')
+      },
+      index => {
+        var type = null;
+        index = Number(index);
+        switch (index) {
+          case 0:
+            type = 'eucaristia';
+            break;
+          case 1:
+            type = 'palabra';
+            break;
+          case 2:
+            type = 'libre';
+            break;
+        }
+        if (type !== null)
+          NavigationService.navigate('ListName', {
+            action: 'create',
+            type: type
+          });
+      }
+    );
+  };
   const shareList = (listName: string, useNative: boolean) => {
     var sharePromise = null;
     if (useNative) {
@@ -655,7 +689,8 @@ const useLists = (songs: any) => {
     getListForUI,
     getListsForUI,
     shareList,
-    importList
+    importList,
+    chooseListTypeForAdd
   };
 };
 
