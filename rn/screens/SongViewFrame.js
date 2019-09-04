@@ -1,7 +1,7 @@
 // @flow
-import React, { Fragment, useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Dimensions, ScrollView, View } from 'react-native';
-import { Container, Content, Text, Fab, Icon, Button } from 'native-base';
+import { Container, Content, Text, Icon, Button } from 'native-base';
 import { DataContext } from '../DataContext';
 import colors from '../../colors';
 import color from 'color';
