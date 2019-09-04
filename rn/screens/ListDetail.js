@@ -2,14 +2,13 @@
 import React, { Fragment, useContext, useState } from 'react';
 import { withNavigation } from 'react-navigation';
 import { Alert, View, Platform } from 'react-native';
-import { Icon, List, Text, Fab, ActionSheet } from 'native-base';
+import { Icon, List, Text, ActionSheet } from 'native-base';
 import Swipeout from 'react-native-swipeout';
 import ListDetailItem from './ListDetailItem';
 import { DataContext } from '../DataContext';
 import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import I18n from '../../translations';
-import commonTheme from '../native-base-theme/variables/platform';
 
 const ListDetail = (props: any) => {
   const data = useContext(DataContext);
@@ -83,17 +82,6 @@ const ListDetail = (props: any) => {
             </List>
           )}
         </KeyboardAwareScrollView>
-        <Fab
-          containerStyle={{}}
-          style={{ backgroundColor: commonTheme.brandPrimary }}
-          position="bottomRight"
-          onPress={() =>
-            navigation.navigate('SongChooser', {
-              target: { listName: listName, listKey: uiList.items.length }
-            })
-          }>
-          <Icon name="add" />
-        </Fab>
       </Fragment>
     );
   }
@@ -289,6 +277,38 @@ const ShareList = withNavigation(props => {
   );
 });
 
+const AddSong = withNavigation((props: any) => {
+  const data = useContext(DataContext);
+  const { getListForUI } = data.lists;
+  const { navigation } = props;
+
+  const listName = navigation.getParam('listName');
+  const uiList = getListForUI(listName);
+
+  if (uiList.type !== 'libre') {
+    return null;
+  }
+
+  return (
+    <Icon
+      name="add"
+      style={{
+        marginTop: 4,
+        marginRight: 8,
+        width: 32,
+        fontSize: 30,
+        textAlign: 'center',
+        color: StackNavigatorOptions.headerTitleStyle.color
+      }}
+      onPress={() =>
+        navigation.navigate('SongChooser', {
+          target: { listName: listName, listKey: uiList.items.length }
+        })
+      }
+    />
+  );
+});
+
 ListDetail.navigationOptions = props => {
   const listName = props.navigation.getParam('listName');
   return {
@@ -296,6 +316,7 @@ ListDetail.navigationOptions = props => {
     headerRight: (
       <View style={{ flexDirection: 'row' }}>
         <ShareList />
+        <AddSong />
       </View>
     )
   };

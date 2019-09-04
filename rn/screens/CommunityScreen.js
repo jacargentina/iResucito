@@ -1,7 +1,7 @@
 // @flow
 import React, { useContext, useEffect, useRef, useState, useMemo } from 'react';
 import { View, Alert, FlatList } from 'react-native';
-import { Icon, Text, Fab } from 'native-base';
+import { Icon, Text } from 'native-base';
 import { withNavigationFocus } from 'react-navigation';
 import Swipeout from 'react-native-swipeout';
 import SearchBarView from './SearchBarView';
