@@ -1,13 +1,13 @@
 // @flow
 import React, { useContext, useEffect, useRef, useState, useMemo } from 'react';
-import { Platform, Alert, FlatList } from 'react-native';
+import { View, Alert, FlatList } from 'react-native';
 import { Icon, Text, Fab } from 'native-base';
 import { withNavigationFocus } from 'react-navigation';
 import Swipeout from 'react-native-swipeout';
 import SearchBarView from './SearchBarView';
 import { DataContext } from '../DataContext';
 import CallToAction from './CallToAction';
-import commonTheme from '../native-base-theme/variables/platform';
+import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
 import I18n from '../../translations';
 import ContactListItem from './ContactListItem';
 import { contactFilterByText, ordenAlfabetico } from '../util';
@@ -17,14 +17,7 @@ const titleLocaleKey = 'screen_title.community';
 const CommunityScreen = (props: any) => {
   const data = useContext(DataContext);
   const { navigation, isFocused } = props;
-  const {
-    deviceContacts,
-    populateDeviceContacts,
-    brothers,
-    update,
-    remove,
-    add
-  } = data.community;
+  const { contactImport, brothers, update, remove, add } = data.community;
   const listRef = useRef<?FlatList>();
   const [filter, setFilter] = useState('');
 
@@ -90,24 +83,6 @@ const CommunityScreen = (props: any) => {
     update(contact.recordID, updatedContact);
   };
 
-  const contactImport = () => {
-    const promise = !deviceContacts
-      ? populateDeviceContacts()
-      : Promise.resolve();
-
-    promise
-      .then(() => {
-        navigation.navigate('ContactImport');
-      })
-      .catch(() => {
-        let message = I18n.t('alert_message.contacts permission');
-        if (Platform.OS == 'ios') {
-          message += '\n\n' + I18n.t('alert_message.contacts permission ios');
-        }
-        Alert.alert(I18n.t('alert_title.contacts permission'), message);
-      });
-  };
-
   if (brothers.length == 0 && !filter)
     return (
       <CallToAction
@@ -158,19 +133,39 @@ const CommunityScreen = (props: any) => {
           );
         }}
       />
-      <Fab
-        containerStyle={{}}
-        style={{ backgroundColor: commonTheme.brandPrimary }}
-        position="bottomRight"
-        onPress={contactImport}>
-        <Icon name="add" />
-      </Fab>
     </SearchBarView>
   );
 };
 
+const ContactImport = () => {
+  const data = useContext(DataContext);
+  const { contactImport } = data.community;
+
+  return (
+    <Icon
+      name="add"
+      style={{
+        marginTop: 4,
+        marginRight: 8,
+        width: 32,
+        fontSize: 30,
+        textAlign: 'center',
+        color: StackNavigatorOptions.headerTitleStyle.color
+      }}
+      onPress={contactImport}
+    />
+  );
+};
+
 CommunityScreen.navigationOptions = () => {
-  return { title: I18n.t(titleLocaleKey) };
+  return {
+    title: I18n.t(titleLocaleKey),
+    headerRight: (
+      <View style={{ flexDirection: 'row' }}>
+        <ContactImport />
+      </View>
+    )
+  };
 };
 
 export default withNavigationFocus(CommunityScreen);

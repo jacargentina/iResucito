@@ -968,6 +968,24 @@ const useCommunity = () => {
     });
   };
 
+  const contactImport = () => {
+    const promise = !deviceContacts
+      ? populateDeviceContacts()
+      : Promise.resolve();
+
+    promise
+      .then(() => {
+        NavigationService.navigate('ContactImport');
+      })
+      .catch(() => {
+        let message = I18n.t('alert_message.contacts permission');
+        if (Platform.OS == 'ios') {
+          message += '\n\n' + I18n.t('alert_message.contacts permission ios');
+        }
+        Alert.alert(I18n.t('alert_title.contacts permission'), message);
+      });
+  };
+
   useEffect(() => {
     getContacts(false).then(deviceContacts => {
       initDeviceContacts(deviceContacts);
@@ -996,7 +1014,7 @@ const useCommunity = () => {
     update,
     remove,
     addOrRemove,
-    populateDeviceContacts
+    contactImport
   };
 };
 
