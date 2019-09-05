@@ -85,6 +85,8 @@
 		<string>Octicons.ttf</string>
 		<string>SimpleLineIcons.ttf</string>
 		<string>Zocial.ttf</string>
+		<string>Roboto.ttf</string>
+		<string>Roboto_medium.ttf</string>
 	</array>
 	<key>LSApplicationCategoryType</key>
 	<string/>

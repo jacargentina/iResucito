@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* iResucitoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* iResucitoTests.m */; };
 		0909CA9D82094C1BB6FCF358 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 266C5346B19342E2B7BD53DF /* FontAwesome.ttf */; };
@@ -39,6 +38,8 @@
 		CF400EBFA0F84F9284407E33 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 630B5CDA79D848928B0B2416 /* EvilIcons.ttf */; };
 		E3FFD05BD4A341ACAFA1E708 /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC2D1E5595C44814BCC4F1A2 /* FontAwesome5_Brands.ttf */; };
 		E60F2663FCA544199CDDF0FD /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F56CD970CDA4E4789292768 /* FontAwesome5_Regular.ttf */; };
+		2128A10092EE48ACA913F2E9 /* Roboto_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B9E93A927B584EBDB526EEEB /* Roboto_medium.ttf */; };
+		55ACBD2169F845BD9856C1BF /* Roboto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D4D594A06396464190C44014 /* Roboto.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,8 @@
 		F815F6EA4DBE44D8B2F88700 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/native-base/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		FB9C97B677F8BB170DA38C69 /* libPods-iResucito.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iResucito.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDD00E4434523DCCB36C0428 /* libPods-iResucito-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iResucito-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9E93A927B584EBDB526EEEB /* Roboto_medium.ttf */ = {isa = PBXFileReference; name = "Roboto_medium.ttf"; path = "../node_modules/native-base/Fonts/Roboto_medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D4D594A06396464190C44014 /* Roboto.ttf */ = {isa = PBXFileReference; name = "Roboto.ttf"; path = "../node_modules/native-base/Fonts/Roboto.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +211,8 @@
 				7AE051890C484082951CE79A /* Octicons.ttf */,
 				F815F6EA4DBE44D8B2F88700 /* SimpleLineIcons.ttf */,
 				56C4873638114CB28D734AF0 /* Zocial.ttf */,
+				B9E93A927B584EBDB526EEEB /* Roboto_medium.ttf */,
+				D4D594A06396464190C44014 /* Roboto.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -430,6 +435,8 @@
 				7BD2D888DF934C5E97D4ED1E /* Octicons.ttf in Resources */,
 				9C92211040F7416491BFFAA1 /* SimpleLineIcons.ttf in Resources */,
 				4F36549E89D242DBADA74C49 /* Zocial.ttf in Resources */,
+				2128A10092EE48ACA913F2E9 /* Roboto_medium.ttf in Resources */,
+				55ACBD2169F845BD9856C1BF /* Roboto.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
