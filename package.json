@@ -95,7 +95,7 @@
     "react-json-editor-ajrm": "^2.5.9",
     "react-native": "^0.60.5",
     "react-native-collapsible": "^1.5.1",
-    "react-native-contacts": "^5.0.2",
+    "react-native-contacts": "^5.0.3",
     "react-native-device-info": "^2.3.2",
     "react-native-exception-handler": "^2.10.8",
     "react-native-fs": "^2.14.1",
@@ -128,11 +128,11 @@
     "style-loader": "^1.0.0",
     "translate-json-object": "^2.3.3",
     "url-loader": "^2.1.0",
-    "use-debounce": "^3.0.0",
+    "use-debounce": "^3.0.1",
     "use-hotkeys": "^1.1.0",
     "use-undo": "^1.0.2",
     "webpack": "^4.39.3",
-    "webpack-cli": "^3.3.7",
+    "webpack-cli": "^3.3.8",
     "webpack-dev-server": "^3.8.0"
   },
   "eslintIgnore": [
