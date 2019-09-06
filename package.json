@@ -70,7 +70,7 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-react": "^7.14.3",
     "file-loader": "^4.2.0",
-    "flow-bin": "^0.106.3",
+    "flow-bin": "^0.107.0",
     "gmail-send": "^1.8.10",
     "i18n-js": "^3.3.0",
     "inquirer": "^7.0.0",
