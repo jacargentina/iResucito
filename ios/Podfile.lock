@@ -56,7 +56,7 @@ PODS:
     - React-cxxreact (= 0.60.5)
     - React-jsi (= 0.60.5)
   - React-jsinspector (0.60.5)
-  - react-native-contacts (5.0.2):
+  - react-native-contacts (5.0.3):
     - React
   - react-native-keep-awake (4.0.0):
     - React
@@ -234,7 +234,7 @@ SPEC CHECKSUMS:
   React-jsi: 4d8c9efb6312a9725b18d6fc818ffc103f60fec2
   React-jsiexecutor: 90ad2f9db09513fc763bc757fdc3c4ff8bde2a30
   React-jsinspector: e08662d1bf5b129a3d556eb9ea343a3f40353ae4
-  react-native-contacts: a311f1e1536a6b037c5bf688e7979c26a865aba8
+  react-native-contacts: b2cfcfbdd91809cb3a01a5bdc69bee2d90b19f6d
   react-native-keep-awake: eba3137546b10003361b37c761f6c429b59814ae
   react-native-pdf: a1fff8513efae5e3c9e2dfa57b7faff2b78e20eb
   react-native-print: d2d083f2305faacfba12d3896ec6ca72303da2b2
@@ -260,6 +260,6 @@ SPEC CHECKSUMS:
   RNShare: 8b171d4b43c1d886917fdd303bf7a4b87167b05c
   yoga: 312528f5bbbba37b4dcea5ef00e8b4033fdd9411
 
-PODFILE CHECKSUM: 37ba00eae254727ecf4ffb7c6eb51c1db7f73c43
+PODFILE CHECKSUM: d1ad4d1ba898d98d45841c30a558864337706627
 
 COCOAPODS: 1.7.4

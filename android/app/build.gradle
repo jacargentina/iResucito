@@ -206,24 +206,9 @@ android {
 }
 
 dependencies {
-    implementation project(':react-native-reanimated')
-    implementation project(':react-native-print')
-    implementation project(':react-native-pdf')
-    implementation project(':react-native-keep-awake')
-    implementation project(':react-native-contacts')
-    implementation project(':react-native-exception-handler')
-    implementation project(':react-native-gesture-handler')
-    implementation project(':rn-fetch-blob')
-    implementation project(':react-native-device-info')
-    implementation project(':react-native-localize')
-    implementation project(':react-native-fs')
-    implementation project(':react-native-splash-screen')
-    implementation project(':react-native-share')
-    implementation project(':react-native-vector-icons')
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation 'androidx.multidex:multidex:2.0.0'
-    implementation 'androidx.appcompat:appcompat:1.0.0'
     implementation "com.facebook.react:react-native:+"  // From node_modules
+
     if (enableHermes) {
       def hermesPath = "../../node_modules/hermesvm/android/";
       debugImplementation files(hermesPath + "hermes-debug.aar")
@@ -258,3 +243,5 @@ copyToAssets.dependsOn deleteAssets
 project.afterEvaluate {
     preBuild.dependsOn copyToAssets
 }
+
+apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)

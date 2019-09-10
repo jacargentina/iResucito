@@ -27,32 +27,6 @@ target 'iResucito' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  pod 'RNShare', :path => '../node_modules/react-native-share'
-
-  pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
-
-  pod 'RNFS', :path => '../node_modules/react-native-fs'
-
-  pod 'RNLocalize', :path => '../node_modules/react-native-localize'
-
-  pod 'RNDeviceInfo', :path => '../node_modules/react-native-device-info'
-
-  pod 'rn-fetch-blob', :path => '../node_modules/rn-fetch-blob'
-
-  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
-
-  pod 'ReactNativeExceptionHandler', :path => '../node_modules/react-native-exception-handler'
-
-  pod 'react-native-contacts', :path => '../node_modules/react-native-contacts'
-
-  pod 'react-native-keep-awake', :path => '../node_modules/react-native-keep-awake'
-
-  pod 'react-native-pdf', :path => '../node_modules/react-native-pdf'
-
-  pod 'react-native-print', :path => '../node_modules/react-native-print'
-
-  pod 'RNReanimated', :path => '../node_modules/react-native-reanimated'
-
   target 'iResucitoTests' do
     inherit! :search_paths
     # Pods for testing
