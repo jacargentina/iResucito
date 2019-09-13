@@ -1,5 +1,7 @@
 // @flow
 
+declare var __DEV__:string;
+
 declare type PickerLocale = {
   label: string,
   value: string

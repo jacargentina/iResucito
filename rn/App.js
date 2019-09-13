@@ -17,10 +17,10 @@ import {
 import DeviceInfo from 'react-native-device-info';
 import queryString from 'query-string';
 
-const sendErrorByMail = e => {
+const sendErrorByMail = async e => {
   const str = typeof e === 'string' ? e : JSON.stringify(e);
-  const systemName = DeviceInfo.getSystemName();
-  const version = DeviceInfo.getReadableVersion();
+  const systemName = await DeviceInfo.getSystemName();
+  const version = await DeviceInfo.getReadableVersion();
   const query = queryString.stringify({
     subject: 'iResucito Crash',
     body: `System ${systemName}, Version ${version}\n\n${str}`

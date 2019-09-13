@@ -1,5 +1,5 @@
 // @flow
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import {
   TouchableOpacity,
   Image,
@@ -15,7 +15,6 @@ import I18n from '../../translations';
 
 const pack = require('../../app.json');
 const cristo = require('../../img/cristo.jpg');
-const version = DeviceInfo.getReadableVersion();
 const appName = pack.displayName;
 
 /*
@@ -25,6 +24,15 @@ const appName = pack.displayName;
 
 const AboutDialog = (props: any) => {
   const { navigation } = props;
+  const [version, setVersion] = useState('');
+
+  useEffect(() => {
+    const readVersion = async () => {
+      const val = await DeviceInfo.getReadableVersion();
+      setVersion(val);
+    };
+    readVersion();
+  }, []);
 
   const hide = () => {
     navigation.goBack(null);

@@ -93,7 +93,7 @@ export const getDefaultLocale = () => {
   return RNLocalize.getLocales()[0].languageTag;
 };
 
-var isTablet = DeviceInfo.isTablet();
+var isTablet = __DEV__ ? false : DeviceInfo.isTabletSync();
 var fontSizeTitulo = isTablet ? 25 : 22;
 var fontSizeTexto = isTablet ? 17 : 15;
 var fontSizeNotas = isTablet ? 15.2 : 12.5;
