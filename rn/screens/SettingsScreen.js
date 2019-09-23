@@ -10,8 +10,7 @@ import {
   Text,
   Icon,
   Right,
-  Picker,
-  Item
+  Picker
 } from 'native-base';
 import Switch from '../widgets/switch';
 import { DataContext } from '../DataContext';
@@ -57,7 +56,7 @@ const SettingsScreen = (props: any) => {
 
   var devModePatch = keys.developerMode && indexPatchExists;
   var localesItems = getLocalesForPicker(getDefaultLocale()).map(l => {
-    return <Item key={l.value} label={l.label} value={l.value} />;
+    return <Picker.Item key={l.value} label={l.label} value={l.value} />;
   });
   return (
     <AndroidBackHandler onBackPress={() => true}>
