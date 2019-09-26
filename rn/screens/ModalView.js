@@ -72,7 +72,7 @@ const ModalView = (props: any) => {
         )}
         <View
           style={{
-            flexGrow: 1
+            flex: 1
           }}>
           {props.children}
         </View>

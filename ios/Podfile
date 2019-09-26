@@ -3,7 +3,7 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 
 target 'iResucito' do
   # Pods for iResucito
-pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
+  pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
   pod 'FBReactNativeSpec', :path => "../node_modules/react-native/Libraries/FBReactNativeSpec"
   pod 'RCTRequired', :path => "../node_modules/react-native/Libraries/RCTRequired"
   pod 'RCTTypeSafety', :path => "../node_modules/react-native/Libraries/TypeSafety"
