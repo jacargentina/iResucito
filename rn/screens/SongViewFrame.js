@@ -12,7 +12,7 @@ import commonTheme from '../native-base-theme/variables/platform';
 
 const SongViewFrame = (props: any) => {
   const data = useContext(DataContext);
-  const { keys, setKey: updateSetting } = data.settings;
+  const [zoomLevel, setZoomLevel] = data.zoomLevel;
   const { title, stage, source, text, transportToNote, error } = props;
   const backColor = color(colors[stage]);
   const background = backColor.lighten(0.1).string();
@@ -28,24 +28,24 @@ const SongViewFrame = (props: any) => {
   };
 
   const zoomOut = () => {
-    if (keys.zoomLevel > 1) {
-      var newzoom = (keys.zoomLevel - 0.1).toFixed(2);
-      updateSetting('zoomLevel', parseFloat(newzoom));
+    if (zoomLevel > 1) {
+      var newzoom = (zoomLevel - 0.1).toFixed(2);
+      setZoomLevel(parseFloat(newzoom));
     }
   };
 
   const zoomIn = () => {
-    if (keys.zoomLevel < 2.2) {
-      var newzoom = (keys.zoomLevel + 0.1).toFixed(2);
-      updateSetting('zoomLevel', parseFloat(newzoom));
+    if (zoomLevel < 2.2) {
+      var newzoom = (zoomLevel + 0.1).toFixed(2);
+      setZoomLevel(parseFloat(newzoom));
     }
   };
 
   var titleStyle = { ...NativeStyles.title };
-  titleStyle.fontSize = titleStyle.fontSize * keys.zoomLevel;
+  titleStyle.fontSize = titleStyle.fontSize * zoomLevel;
 
   var sourceStyle = { ...NativeStyles.source };
-  sourceStyle.fontSize = sourceStyle.fontSize * keys.zoomLevel;
+  sourceStyle.fontSize = sourceStyle.fontSize * zoomLevel;
 
   return (
     <Container style={{ backgroundColor: background }}>
@@ -71,7 +71,7 @@ const SongViewFrame = (props: any) => {
               <SongViewLines
                 onPress={toggleControls}
                 lines={fRender.items}
-                zoom={keys.zoomLevel}
+                zoom={zoomLevel}
               />
             )}
           </Content>
@@ -97,7 +97,7 @@ const SongViewFrame = (props: any) => {
               fontSize: 20,
               fontWeight: 'bold'
             }}>
-            {keys.zoomLevel}
+            {zoomLevel}
           </Text>
           <Button
             style={{ backgroundColor: commonTheme.brandPrimary }}

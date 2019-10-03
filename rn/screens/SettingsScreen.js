@@ -24,10 +24,12 @@ const titleLocaleKey = 'screen_title.settings';
 
 const SettingsScreen = (props: any) => {
   const data = useContext(DataContext);
+  const [devMode, setDevMode] = data.developerMode;
+  const [locale, setLocale] = data.locale;
+  const [keepAwake, setKeepAwake] = data.keepAwake;
   const { navigation } = props;
   const { shareIndexPatch } = data;
   const { indexPatchExists, clearIndexPatch } = data.songsMeta;
-  const { keys, setKey: updateSetting } = data.settings;
 
   useEffect(() => {
     navigation.setParams({ title: I18n.t(titleLocaleKey) });
@@ -54,7 +56,7 @@ const SettingsScreen = (props: any) => {
     );
   };
 
-  var devModePatch = keys.developerMode && indexPatchExists;
+  var devModePatch = devMode && indexPatchExists;
   var localesItems = getLocalesForPicker(getDefaultLocale()).map(l => {
     return <Picker.Item key={l.value} label={l.label} value={l.value} />;
   });
@@ -83,13 +85,13 @@ const SettingsScreen = (props: any) => {
                 headerTitleStyle={{
                   color: StackNavigatorOptions.headerTitleStyle.color
                 }}
-                selectedValue={keys.locale}
+                selectedValue={locale}
                 onValueChange={val => {
                   // IMPORTANTE!
                   // Workaround de problema en Android
                   // https://github.com/facebook/react-native/issues/15556
                   setTimeout(() => {
-                    updateSetting('locale', val);
+                    setLocale(val);
                     // Para forzar refresco del titulo segun idioma nuevo
                     props.navigation.setParams({ title: '' });
                   }, 10);
@@ -104,10 +106,7 @@ const SettingsScreen = (props: any) => {
               <Text note>{I18n.t('settings_note.keep awake')}</Text>
             </Body>
             <Right>
-              <Switch
-                value={keys.keepAwake}
-                onValueChange={checked => updateSetting('keepAwake', checked)}
-              />
+              <Switch value={keepAwake} onValueChange={setKeepAwake} />
             </Right>
           </ListItem>
           <ListItem>
@@ -116,12 +115,7 @@ const SettingsScreen = (props: any) => {
               <Text note>{I18n.t('settings_note.developer mode')}</Text>
             </Body>
             <Right>
-              <Switch
-                value={keys.developerMode}
-                onValueChange={checked => {
-                  updateSetting('developerMode', checked);
-                }}
-              />
+              <Switch value={devMode} onValueChange={setDevMode} />
             </Right>
           </ListItem>
           {devModePatch && (

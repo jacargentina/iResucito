@@ -7,7 +7,8 @@ import Contacts from 'react-native-contacts';
 import { ActionSheet, Toast } from 'native-base';
 import RNFS from 'react-native-fs';
 import badges from './badges';
-import { localdata, clouddata } from './data';
+import { clouddata } from './clouddata';
+import usePersist from './usePersist';
 import {
   getEsSalmo,
   getDefaultLocale,
@@ -22,64 +23,7 @@ import pathParse from 'path-parse';
 
 const merge = require('deepmerge');
 
-const DefaultSettings = {
-  developerMode: false,
-  keepAwake: true,
-  locale: 'default',
-  zoomLevel: 1
-};
-
-const useSettings = () => {
-  const [initialized, setInitialized] = useState(false);
-  const [keys, initKeys] = useState({});
-
-  const setKey = (key, value) => {
-    const updatedKeys = Object.assign({}, keys, { [key]: value });
-    I18n.locale = getLocaleReal(updatedKeys.locale);
-    initKeys(updatedKeys);
-  };
-
-  const getLocaleReal = (rawLoc: string) => {
-    var locale = rawLoc === 'default' ? getDefaultLocale() : rawLoc;
-    return locale;
-  };
-
-  useEffect(() => {
-    if (keys && initialized) {
-      localdata.save({
-        key: 'settings',
-        data: keys
-      });
-    }
-  }, [keys, initialized]);
-
-  useEffect(() => {
-    localdata
-      .load({
-        key: 'settings'
-      })
-      .then(data => {
-        if (!data) {
-          data = DefaultSettings;
-        } else {
-          // Add missing keys (ie. added a new setting
-          // on the app and it was not present before)
-          for (var key in DefaultSettings) {
-            if (!data.hasOwnProperty(key)) {
-              data[key] = DefaultSettings[key];
-            }
-          }
-        }
-        I18n.locale = getLocaleReal(data.locale);
-        initKeys(data);
-        setInitialized(true);
-      });
-  }, []);
-
-  return { keys, initialized, initKeys, setKey, getLocaleReal };
-};
-
-const useSongsMeta = (settingsInitialized: boolean) => {
+const useSongsMeta = (locale: string) => {
   const [indexPatchExists, setIndexPatchExists] = useState();
   const [ratingsFileExists, setRatingsFileExists] = useState();
   const [songs, setSongs] = useState();
@@ -276,10 +220,9 @@ const useSongsMeta = (settingsInitialized: boolean) => {
     });
   };
 
-  useEffect(() => {
+  const loadSongs = () => {
     if (
       I18n.locale &&
-      settingsInitialized === true &&
       indexPatchExists !== undefined &&
       ratingsFileExists !== undefined
     ) {
@@ -300,7 +243,11 @@ const useSongsMeta = (settingsInitialized: boolean) => {
         );
       });
     }
-  }, [I18n.locale, settingsInitialized, indexPatchExists, ratingsFileExists]);
+  };
+
+  useEffect(() => {
+    loadSongs();
+  }, [locale, indexPatchExists, ratingsFileExists]);
 
   useEffect(() => {
     loadFlags();
@@ -317,14 +264,15 @@ const useSongsMeta = (settingsInitialized: boolean) => {
     clearIndexPatch,
     ratingsFileExists,
     clearSongsRatings,
-    setSongRating
+    setSongRating,
+    loadSongs
   };
 };
 
 const useLists = (songs: any) => {
   const [initialized, setInitialized] = useState(false);
   const [imported, setImported] = useState();
-  const [lists, initLists] = useState({});
+  const [lists, initLists] = usePersist('lists', 'object', {});
 
   const addList = (listName, type) => {
     let schema = { type: type, version: 1 };
@@ -559,6 +507,7 @@ const useLists = (songs: any) => {
       }
     );
   };
+
   const shareList = (listName: string, useNative: boolean) => {
     var sharePromise = null;
     if (useNative) {
@@ -626,12 +575,8 @@ const useLists = (songs: any) => {
   };
 
   useEffect(() => {
-    if (lists && initialized) {
-      var item = { key: 'lists', data: lists };
-      localdata.save(item);
-      if (Platform.OS == 'ios') {
-        clouddata.save(item);
-      }
+    if (initialized === true && lists && Platform.OS == 'ios') {
+      clouddata.save('lists', lists);
     }
   }, [lists, initialized]);
 
@@ -639,18 +584,10 @@ const useLists = (songs: any) => {
     // Solo inicializar cuando
     // esten cargados los cantos
     // La migracion de listas depende de ello
-    if (songs) {
-      localdata
-        .load({
-          key: 'lists'
-        })
-        .then(data => {
-          if (data) {
-            migrateLists(data);
-            initLists(data);
-          }
-          setInitialized(true);
-        });
+    if (initialized === false && songs && lists) {
+      migrateLists(lists);
+      initLists(lists);
+      setInitialized(true);
       // TODO
       // IDEA: al abrir la pantalla de listas, cargar las
       // listas desde iCloud, y si hay cambios, consultar
@@ -659,7 +596,7 @@ const useLists = (songs: any) => {
       //   console.log('loaded from iCloud', res);
       // });
     }
-  }, [songs]);
+  }, [songs, lists]);
 
   useEffect(() => {
     const handler = event => {
@@ -694,7 +631,7 @@ const useLists = (songs: any) => {
   };
 };
 
-const useSearch = (keys: any) => {
+const useSearch = (locale: string, developerMode: boolean) => {
   const [initialized, setInitialized] = useState(false);
   const [searchItems, setSearchItems] = useState();
 
@@ -867,7 +804,7 @@ const useSearch = (keys: any) => {
       }
       return item;
     });
-    if (keys.developerMode) {
+    if (developerMode === true) {
       items.unshift({
         title_key: 'search_title.unassigned',
         note: I18n.t('search_note.unassigned'),
@@ -878,14 +815,14 @@ const useSearch = (keys: any) => {
     }
     setSearchItems(items);
     setInitialized(true);
-  }, [I18n.locale, keys.developerMode]);
+  }, [locale, developerMode]);
 
   return { initialized, searchItems };
 };
 
 const useCommunity = () => {
   const [initialized, setInitialized] = useState(false);
-  const [brothers, initBrothers] = useState([]);
+  const [brothers, initBrothers] = usePersist('contacts', 'object', []);
   const [deviceContacts, initDeviceContacts] = useState();
 
   const add = item => {
@@ -988,12 +925,8 @@ const useCommunity = () => {
   };
 
   useEffect(() => {
-    if (brothers && initialized) {
-      var item = { key: 'contacts', data: brothers };
-      localdata.save(item);
-      if (Platform.OS == 'ios') {
-        clouddata.save(item);
-      }
+    if (initialized === true && brothers && Platform.OS == 'ios') {
+      clouddata.save('brothers', brothers);
     }
   }, [brothers, initialized]);
 
@@ -1022,25 +955,21 @@ const useCommunity = () => {
   };
 
   useEffect(() => {
-    getContacts(false).then(deviceContacts => {
-      initDeviceContacts(deviceContacts);
-      localdata.load({ key: 'contacts' }).then(brothers => {
-        if (brothers) {
-          brothers.forEach((c, idx) => {
-            // tomar el contacto actualizado
-            var devContact = deviceContacts.find(
-              x => x.recordID === c.recordID
-            );
-            if (devContact) {
-              brothers[idx] = devContact;
-            }
-          });
-          initBrothers(brothers);
-        }
+    if (initialized === false && brothers) {
+      getContacts(false).then(deviceContacts => {
+        initDeviceContacts(deviceContacts);
+        brothers.forEach((c, idx) => {
+          // tomar el contacto actualizado
+          var devContact = deviceContacts.find(x => x.recordID === c.recordID);
+          if (devContact) {
+            brothers[idx] = devContact;
+          }
+        });
+        initBrothers(brothers);
         setInitialized(true);
       });
-    });
-  }, []);
+    }
+  }, [initialized, brothers]);
 
   return {
     brothers,
@@ -1056,10 +985,18 @@ const useCommunity = () => {
 export const DataContext: any = React.createContext();
 
 const DataContextWrapper = (props: any) => {
+  // settings
+  const locale = usePersist('locale', 'string', 'default');
+  const developerMode = usePersist('developerMode', 'boolean', false);
+  const keepAwake = usePersist('keepAwake', 'boolean', true);
+  const zoomLevel = usePersist('zoomLevel', 'number', 1);
+
+  const [localeValue] = locale;
+  const [developerModeValue] = developerMode;
+
   const community = useCommunity();
-  const settings = useSettings();
-  const songsMeta = useSongsMeta(settings.initialized);
-  const search = useSearch(settings.keys);
+  const songsMeta = useSongsMeta(localeValue);
+  const search = useSearch(localeValue, developerModeValue);
   const lists = useLists(songsMeta.songs);
   const loading = useState({ isLoading: false, text: '' });
 
@@ -1098,17 +1035,31 @@ const DataContextWrapper = (props: any) => {
     });
   };
 
+  const getLocaleReal = (rawLoc: string) => {
+    var locale = rawLoc === 'default' ? getDefaultLocale() : rawLoc;
+    return locale;
+  };
+
+  useEffect(() => {
+    if (localeValue) {
+      I18n.locale = getLocaleReal(localeValue);
+    }
+  }, [localeValue]);
+
   return (
     <DataContext.Provider
       value={{
-        settings,
         songsMeta,
         search,
         lists,
         community,
         sharePDF,
         shareIndexPatch,
-        loading
+        loading,
+        locale,
+        developerMode,
+        keepAwake,
+        zoomLevel
       }}>
       {props.children}
     </DataContext.Provider>

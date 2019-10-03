@@ -21,7 +21,7 @@ import SongViewFrame from './SongViewFrame';
 
 const SongDetail = (props: any) => {
   const data = useContext(DataContext);
-  const { keys } = data.settings;
+  const [keepAwake] = data.keepAwake;
   const { navigation } = props;
   const [transportNote, setTransportNote] = useState();
 
@@ -32,7 +32,7 @@ const SongDetail = (props: any) => {
   }, [transportNote, setTransportNote]);
 
   useEffect(() => {
-    if (keys.keepAwake) {
+    if (keepAwake) {
       KeepAwake.activate();
       return function() {
         KeepAwake.deactivate();

@@ -18,6 +18,7 @@ import commonTheme from '../native-base-theme/variables/platform';
 import textTheme from '../native-base-theme/components/Text';
 import StarRating from 'react-native-star-rating';
 import { DataContext } from '../DataContext';
+import usePersist from '../usePersist';
 import badges from '../badges';
 import I18n from '../../translations';
 import { getPropertyLocale } from '../../common';
@@ -65,7 +66,7 @@ const SongListItem = (props: any) => {
   } = props;
 
   const [isCollapsed, setIsCollapsed] = useState(true);
-  const { keys } = data.settings;
+  const [devModeSetting] = usePersist('developerMode');
   const {
     getSongLocalePatch,
     setSongPatch,
@@ -219,9 +220,9 @@ const SongListItem = (props: any) => {
   };
 
   useEffect(() => {
-    var isOn = devModeDisabled === true ? false : keys.developerMode;
+    var isOn = devModeDisabled === true ? false : devModeSetting;
     setDeveloperMode(isOn);
-  }, [keys.developerMode]);
+  }, [devModeSetting]);
 
   useEffect(() => {
     if (
