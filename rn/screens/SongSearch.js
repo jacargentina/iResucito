@@ -46,7 +46,7 @@ const SongSearch = (props: any) => {
             if (item.divider) {
               return (
                 <Separator bordered>
-                  <Text>{I18n.t(item.title_key)}</Text>
+                  <Text>{I18n.t(item.title_key).toUpperCase()}</Text>
                 </Separator>
               );
             }

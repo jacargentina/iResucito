@@ -148,7 +148,7 @@ const ListDetailItem = (props: any) => {
   }
   // Solo las claves de tipo string, llevan los titulos (eucaristia, palabra)
   if (typeof listKey === 'string') {
-    var friendlyText = getFriendlyText(listKey);
+    var friendlyText = getFriendlyText(listKey).toUpperCase();
     var separator = (
       <Separator bordered>
         <Text>{friendlyText}</Text>
