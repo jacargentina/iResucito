@@ -36,7 +36,8 @@ const usePersist = (
   const onTextChanged = async (text: string) => {
     runTypeCheck(text);
     setValue(text);
-    await AsyncStorage.setItem(key, JSON.stringify(text));
+    const data = JSON.stringify(text);
+    await AsyncStorage.setItem(key, data);
   };
 
   useEffect(() => {
