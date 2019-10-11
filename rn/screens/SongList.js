@@ -16,7 +16,7 @@ import { defaultExportToPdfOptions } from '../../common';
 const SongList = (props: any) => {
   const listRef = useRef<?FlatList>();
   const data = useContext(DataContext);
-  const { navigation, isFocused } = props;
+  const { navigation, isFocused, viewButton } = props;
   const [totalText, setTotalText] = useState(I18n.t('ui.loading'));
   const { songs } = data.songsMeta;
   const [loading] = data.loading;
@@ -104,6 +104,7 @@ const SongList = (props: any) => {
               showBadge={showSalmosBadge}
               songKey={item.key}
               onPress={onPress}
+              viewButton={viewButton}
               highlight={textFilter}
               devModeDisabled={props.devModeDisabled}
             />

@@ -108,6 +108,7 @@ const SongChooserDialog = (props: any) => {
             : null
         }
         devModeDisabled={true}
+        viewButton={true}
         onPress={song => songAssign(song)}
       />
     </ModalView>

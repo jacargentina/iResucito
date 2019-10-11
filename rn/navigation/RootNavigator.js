@@ -2,8 +2,8 @@
 import { createStackNavigator } from 'react-navigation-stack';
 import NavigationService from './NavigationService';
 import MenuNavigator from './MenuNavigator';
+import SongChooserNavigator from './SongChooserNavigator';
 import AboutDialog from '../screens/AboutDialog';
-import SongChooserDialog from '../screens/SongChooserDialog';
 import SongChooseLocaleDialog from '../screens/SongChooseLocaleDialog';
 import ContactChooserDialog from '../screens/ContactChooserDialog';
 import ContactImportDialog from '../screens/ContactImportDialog';
@@ -17,7 +17,7 @@ const RootNavigator = createStackNavigator(
   {
     Menu: MenuNavigator,
     About: AboutDialog,
-    SongChooser: SongChooserDialog,
+    SongChooser: SongChooserNavigator,
     SongChooseLocale: SongChooseLocaleDialog,
     ContactChooser: ContactChooserDialog,
     ContactImport: ContactImportDialog,

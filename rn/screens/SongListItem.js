@@ -21,7 +21,6 @@ import { DataContext } from '../DataContext';
 import usePersist from '../usePersist';
 import badges from '../badges';
 import I18n from '../../translations';
-import { getPropertyLocale } from '../../common';
 
 const textStyles = textTheme(commonTheme);
 const noteStyles = textStyles['.note'];
@@ -62,7 +61,8 @@ const SongListItem = (props: any) => {
     showBadge,
     devModeDisabled,
     ratingDisabled,
-    patchSectionDisabled
+    patchSectionDisabled,
+    viewButton
   } = props;
 
   const [isCollapsed, setIsCollapsed] = useState(true);
@@ -145,6 +145,17 @@ const SongListItem = (props: any) => {
         nameToEdit: rename,
         action: applyChanges
       });
+    });
+  };
+
+  const viewSong = () => {
+    navigation.navigate('ViewSong', {
+      data: {
+        title: song.titulo,
+        source: song.fuente,
+        text: song.fullText,
+        stage: song.stage
+      }
     });
   };
 
@@ -337,6 +348,18 @@ const SongListItem = (props: any) => {
               color: commonTheme.brandPrimary
             }}
             onPress={showDeveloperMenu}
+          />
+        </Right>
+      )}
+      {!developerMode && viewButton && (
+        <Right>
+          <Icon
+            name="eye"
+            style={{
+              fontSize: 32,
+              color: commonTheme.brandPrimary
+            }}
+            onPress={viewSong}
           />
         </Right>
       )}
