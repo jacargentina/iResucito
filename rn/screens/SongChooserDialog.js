@@ -5,6 +5,7 @@ import { Button, Text, Segment } from 'native-base';
 import ModalView from './ModalView';
 import SongList from './SongList';
 import { DataContext } from '../DataContext';
+import commonTheme from '../native-base-theme/variables/platform';
 import I18n from '../../translations';
 
 const SongChooserDialog = (props: any) => {
@@ -81,7 +82,18 @@ const SongChooserDialog = (props: any) => {
   };
 
   return (
-    <ModalView title={I18n.t('screen_title.find song')}>
+    <ModalView
+      left={
+        <Text
+          style={{
+            alignSelf: 'flex-start',
+            marginLeft: 10,
+            fontSize: commonTheme.fontSizeBase + 3,
+            fontWeight: 'bold'
+          }}>
+          {I18n.t('screen_title.find song')}
+        </Text>
+      }>
       <ScrollView
         ref={scrollToActiveRef}
         style={{ flexGrow: 0, marginLeft: 8, marginRight: 8 }}
