@@ -186,7 +186,7 @@ PODS:
     - React
   - react-native-keep-awake (4.0.0):
     - React
-  - react-native-pdf (5.1.5):
+  - react-native-pdf (5.1.6):
     - React
   - react-native-print (0.6.0):
     - React
@@ -233,7 +233,7 @@ PODS:
     - React-Core
   - RNCAsyncStorage (1.6.2):
     - React
-  - RNDeviceInfo (3.1.4):
+  - RNDeviceInfo (4.0.1):
     - React
   - RNFS (2.14.1):
     - React
@@ -241,7 +241,7 @@ PODS:
     - React
   - RNICloudStore (0.1.0):
     - React
-  - RNLocalize (1.2.1):
+  - RNLocalize (1.3.0):
     - React
   - RNReanimated (1.3.0):
     - React
@@ -398,7 +398,7 @@ SPEC CHECKSUMS:
   React-jsinspector: 111d7d342b07a904c400592e02a2b958f1098b60
   react-native-contacts: 7d0b7ccd5f00df82ceca035935fc9d6e63af5aec
   react-native-keep-awake: eba3137546b10003361b37c761f6c429b59814ae
-  react-native-pdf: 34ac241e3a373da9d69a414fedfca58ec54dd9bc
+  react-native-pdf: 819bed123a80c138b3e531730c2f3686b9c6b93c
   react-native-print: d2d083f2305faacfba12d3896ec6ca72303da2b2
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   React-RCTActionSheet: 89b037c0fb7d2671607cb645760164e7e0c013f6
@@ -414,11 +414,11 @@ SPEC CHECKSUMS:
   ReactNativeExceptionHandler: 8025d98049c25f186835a3af732dd7c9974d6dce
   rn-fetch-blob: f525a73a78df9ed5d35e67ea65e79d53c15255bc
   RNCAsyncStorage: 5ae4d57458804e99f73d427214442a6b10a53856
-  RNDeviceInfo: 9e88577c51bd42f65275e53bb0de0a0f728ed6b8
+  RNDeviceInfo: 12faae605ba42a1a5041c3c41a77834bc23f049d
   RNFS: a8fbe7060fa49157d819466404794ad9c58e58cf
   RNGestureHandler: 4cb47a93019c1a201df2644413a0a1569a51c8aa
   RNICloudStore: bc6e225811637c09bd1eb055d6cd7448e61cd451
-  RNLocalize: 7206d44eb341d6e2a61a8184b831c64a5539fcdf
+  RNLocalize: 6e4a6b8582dfbb50b452464d208c30a7a20516f4
   RNReanimated: 6abbbae2e5e72609d85aabd92a982a94566885f1
   RNShare: 8b171d4b43c1d886917fdd303bf7a4b87167b05c
   Yoga: 14927e37bd25376d216b150ab2a561773d57911f
