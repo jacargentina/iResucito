@@ -27,11 +27,7 @@ const AboutDialog = (props: any) => {
   const [version, setVersion] = useState('');
 
   useEffect(() => {
-    const readVersion = async () => {
-      const val = await DeviceInfo.getReadableVersion();
-      setVersion(val);
-    };
-    readVersion();
+    setVersion(DeviceInfo.getReadableVersion());
   }, []);
 
   const hide = () => {

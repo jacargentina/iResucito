@@ -19,8 +19,8 @@ import queryString from 'query-string';
 
 const sendErrorByMail = async e => {
   const str = typeof e === 'string' ? e : JSON.stringify(e);
-  const systemName = await DeviceInfo.getSystemName();
-  const version = await DeviceInfo.getReadableVersion();
+  const systemName = DeviceInfo.getSystemName();
+  const version = DeviceInfo.getReadableVersion();
   const query = queryString.stringify({
     subject: 'iResucito Crash',
     body: `System ${systemName}, Version ${version}\n\n${str}`
