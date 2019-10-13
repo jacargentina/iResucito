@@ -96,7 +96,7 @@
     "react-native": "^0.61.2",
     "react-native-collapsible": "^1.5.1",
     "react-native-contacts": "^5.0.4",
-    "react-native-device-info": "^3.1.4",
+    "react-native-device-info": "^4.0.1",
     "react-native-exception-handler": "^2.10.8",
     "react-native-fs": "^2.14.1",
     "react-native-gesture-handler": "^1.4.1",
@@ -131,7 +131,7 @@
     "use-debounce": "^3.1.0",
     "use-hotkeys": "^1.1.0",
     "use-undo": "^1.0.3",
-    "webpack": "^4.41.0",
+    "webpack": "^4.41.1",
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.8.2"
   },
