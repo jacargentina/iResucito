@@ -13,7 +13,7 @@ import commonTheme from '../native-base-theme/variables/platform';
 const SongViewFrame = (props: any) => {
   const data = useContext(DataContext);
   const [zoomLevel, setZoomLevel] = data.zoomLevel;
-  const { title, stage, source, text, transportToNote, error } = props;
+  const { title, stage, source, text, transportToNote, error, style } = props;
   const backColor = color(colors[stage]);
   const background = backColor.lighten(0.1).string();
   const margin = 10;
@@ -48,7 +48,7 @@ const SongViewFrame = (props: any) => {
   sourceStyle.fontSize = sourceStyle.fontSize * zoomLevel;
 
   return (
-    <Container style={{ backgroundColor: background }}>
+    <Container style={{ backgroundColor: background, ...style }}>
       <ScrollView
         horizontal
         style={{

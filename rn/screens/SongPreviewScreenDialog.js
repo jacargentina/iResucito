@@ -23,7 +23,13 @@ const SongPreviewScreenDialog = (props: any) => {
           {I18n.t('screen_title.preview')}
         </Text>
       }>
-      <SongViewFrame title={title} text={text} stage={stage} source={source} />
+      <SongViewFrame
+        style={{ marginTop: 10 }}
+        title={title}
+        text={text}
+        stage={stage}
+        source={source}
+      />
     </ModalView>
   );
 };
