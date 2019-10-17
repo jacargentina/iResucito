@@ -1,5 +1,5 @@
 // @flow
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { AndroidBackHandler } from 'react-navigation-backhandler';
 import { View, StyleSheet } from 'react-native';
 import { Input, Item, Icon } from 'native-base';
@@ -8,7 +8,7 @@ import commonTheme from '../native-base-theme/variables/platform';
 import I18n from '../../translations';
 import { useDebounce } from 'use-debounce';
 
-const DebouncedInput = (props: any) => {
+const DebouncedInput = React.forwardRef((props: any, ref: any) => {
   const { value } = props;
   const [searchTerm, setSearchTerm] = useState(value);
   const [debouncedTerm] = useDebounce(searchTerm, 800);
@@ -23,6 +23,7 @@ const DebouncedInput = (props: any) => {
 
   return (
     <Input
+      ref={ref}
       style={{
         lineHeight: 20,
         height: commonTheme.searchBarHeight
@@ -36,9 +37,17 @@ const DebouncedInput = (props: any) => {
       autoCorrect={false}
     />
   );
-};
+});
 
 const SearchBarView = (props: any) => {
+  const termInput = useRef();
+
+  const focusTerm = () => {
+    if (termInput) {
+      termInput.current._root.focus();
+    }
+  };
+
   return (
     <AndroidBackHandler
       onBackPress={() => {
@@ -58,8 +67,12 @@ const SearchBarView = (props: any) => {
               borderColor: 'transparent',
               paddingHorizontal: 15
             }}>
-            <Icon name="search" />
-            <DebouncedInput value={props.value} setValue={props.setValue} />
+            <Icon name="search" onPress={focusTerm} />
+            <DebouncedInput
+              ref={termInput}
+              value={props.value}
+              setValue={props.setValue}
+            />
           </Item>
         </View>
         <View
