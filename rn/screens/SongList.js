@@ -29,7 +29,7 @@ const SongList = (props: any) => {
     var result = songs;
     if (navFilter) {
       for (var name in navFilter) {
-        result = result.filter(s => s[name] == navFilter[name]);
+        result = result.filter(s => s[name] === navFilter[name]);
       }
     }
     if (textFilter) {

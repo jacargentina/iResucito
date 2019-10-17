@@ -20,7 +20,8 @@ export const defaultExportToPdfOptions: ExportToPdfOptions = {
   bookTitle: { FontSize: 80, Spacing: 10 },
   bookSubtitle: { FontSize: 14 },
   indexText: { FontSize: 11 },
-  indexMarginLeft: 25
+  indexMarginLeft: 25,
+  disablePageNumbers: false
 };
 
 export const cleanChordsRegex = /\[|\]|\(|\)|#|\*|5|6|7|9|b|-|\+|\/|\u2013|aum|dim|sus|m|is|IS/g;
@@ -144,9 +145,7 @@ export const getGroupedByLiturgicTime = (
 
 export const liturgicOrder = [
   'signing to the virgin',
-  /* eslint-disable quotes */
   "children's songs",
-  /* eslint-enable quotes */
   'lutes and vespers',
   'entrance',
   'peace and offerings',
@@ -195,6 +194,7 @@ export class PdfWriter {
   doc: any;
   base64Transform: any;
   addExtraMargin: boolean;
+  disablePageNumbers: boolean;
   listing: Array<ListSongPos>;
   limits: ExportToPdfLimits;
   pageNumberLimits: ExportToPdfLimits;
@@ -300,20 +300,22 @@ export class PdfWriter {
   writePageNumber() {
     this.doc.x = this.doc.page.margins.left;
     this.doc.y = this.pageNumberLimits.y;
-    this.writeText(
-      this.doc.page.pageNumber.toString(),
-      PdfStyles.pageNumber.color,
-      this.opts.songText.FontSize,
-      {
-        lineBreak: false,
-        align: 'center',
-        width:
-          this.opts.widthHeightPixels -
-          this.doc.page.margins.left -
-          this.doc.page.margins.right,
-        height: this.heightOfPageNumbers
-      }
-    );
+    if (!this.disablePageNumbers) {
+      this.writeText(
+        this.doc.page.pageNumber.toString(),
+        PdfStyles.pageNumber.color,
+        this.opts.songText.FontSize,
+        {
+          lineBreak: false,
+          align: 'center',
+          width:
+            this.opts.widthHeightPixels -
+            this.doc.page.margins.left -
+            this.doc.page.margins.right,
+          height: this.heightOfPageNumbers
+        }
+      );
+    }
   }
 
   checkLimits(lineCount: number = 1, nextHeight: number = 0) {
@@ -321,7 +323,7 @@ export class PdfWriter {
       this.doc.y + this.doc.currentLineHeight(false) * lineCount + nextHeight >
       this.pageNumberLimits.y
     ) {
-      if (this.doc.x == this.secondColLimits.x) {
+      if (this.doc.x === this.secondColLimits.x) {
         const pn = this.doc.page.pageNumber;
         this.writePageNumber();
         this.doc.addPage();
@@ -342,7 +344,7 @@ export class PdfWriter {
 
   getCenteringY(text: string, size: number) {
     const height = this.doc.fontSize(size).heightOfString(text);
-    return parseInt((this.opts.widthHeightPixels - height) / 2);
+    return parseInt((this.opts.widthHeightPixels - height) / 2, 10);
   }
 
   writeText(text: string, color: any, size: number, opts?: any): number {
@@ -461,6 +463,7 @@ export const PDFGenerator = async (
   writer: PdfWriter
 ) => {
   try {
+    writer.disablePageNumbers = opts.disablePageNumbers;
     if (songsToPdf.length > 1) {
       // Portada
       writer.addExtraMargin = true;
@@ -518,8 +521,8 @@ export const PDFGenerator = async (
       writer.resetY = writer.doc.y;
 
       // Alfabetico
-      var items = getAlphaWithSeparators(songsToPdf);
-      writer.generateListing(I18n.t('search_title.alpha'), items);
+      var alphaItems = getAlphaWithSeparators(songsToPdf);
+      writer.generateListing(I18n.t('search_title.alpha'), alphaItems);
 
       writer.doc.moveDown();
 
@@ -533,19 +536,20 @@ export const PDFGenerator = async (
       // Agrupados por tiempo liturgico
       var byTime = getGroupedByLiturgicTime(songsToPdf);
       liturgicTimes.forEach((time, i) => {
-        var title = I18n.t(`search_title.${time}`);
+        var titleTime = I18n.t(`search_title.${time}`);
         if (i === 0) {
-          title = I18n.t('search_title.liturgical time') + ` - ${title}`;
+          titleTime =
+            I18n.t('search_title.liturgical time') + ` - ${titleTime}`;
         }
-        writer.generateListing(title, byTime[time]);
+        writer.generateListing(titleTime, byTime[time]);
         writer.doc.moveDown();
       });
 
       // Agrupados por orden liturgico
       var byOrder = getGroupedByLiturgicOrder(songsToPdf);
       liturgicOrder.forEach(order => {
-        var title = I18n.t(`search_title.${order}`);
-        writer.generateListing(title, byOrder[order]);
+        var titleOrder = I18n.t(`search_title.${order}`);
+        writer.generateListing(titleOrder, byOrder[order]);
         writer.doc.moveDown();
       });
 
@@ -589,10 +593,10 @@ export const PDFGenerator = async (
       var maxX = 0;
       items.forEach((it: SongLine, i: number) => {
         var lastWidth: number = 0;
-        if (i > 0 && it.type == 'inicioParrafo') {
+        if (i > 0 && it.type === 'inicioParrafo') {
           writer.doc.moveDown();
         }
-        if (i > 0 && it.type == 'tituloEspecial') {
+        if (i > 0 && it.type === 'tituloEspecial') {
           writer.doc.moveDown();
           writer.doc.moveDown();
         }
@@ -603,9 +607,9 @@ export const PDFGenerator = async (
         if (blockIndicator && blockIndicator.end === i) {
           var text = '';
           var color = PdfStyles.indicator.color;
-          if (blockIndicator.type == 'bloqueRepetir') {
+          if (blockIndicator.type === 'bloqueRepetir') {
             text = I18n.t('songs.repeat');
-          } else if (blockIndicator.type == 'bloqueNotaAlPie') {
+          } else if (blockIndicator.type === 'bloqueNotaAlPie') {
             text = '*';
           }
           lines.push({
@@ -619,25 +623,25 @@ export const PDFGenerator = async (
           blockIndicator = null;
           blockY = 0;
         }
-        if (it.type == 'comenzarColumna') {
+        if (it.type === 'comenzarColumna') {
           writer.startColumn();
         }
-        writer.checkLimits(it.type == 'notas' ? 2 : 1);
-        if (it.type == 'notas') {
+        writer.checkLimits(it.type === 'notas' ? 2 : 1);
+        if (it.type === 'notas') {
           lastWidth = writer.writeText(
             it.texto,
             PdfStyles.notesLine.color,
             writer.opts.songNote.FontSize,
             { indent: writer.opts.songIndicatorSpacing }
           );
-        } else if (it.type == 'canto') {
+        } else if (it.type === 'canto') {
           lastWidth = writer.writeText(
             it.texto,
             PdfStyles.normalLine.color,
             writer.opts.songText.FontSize,
             { indent: writer.opts.songIndicatorSpacing }
           );
-        } else if (it.type == 'cantoConIndicador') {
+        } else if (it.type === 'cantoConIndicador') {
           lastWidth = writer.writeText(
             it.prefijo,
             PdfStyles.prefix.color,
@@ -650,21 +654,21 @@ export const PDFGenerator = async (
             writer.opts.songText.FontSize,
             { indent: writer.opts.songIndicatorSpacing }
           );
-        } else if (it.type == 'tituloEspecial') {
+        } else if (it.type === 'tituloEspecial') {
           lastWidth = writer.writeText(
             it.texto,
             PdfStyles.specialNoteTitle.color,
             writer.opts.songText.FontSize,
             { indent: writer.opts.songIndicatorSpacing }
           );
-        } else if (it.type == 'textoEspecial') {
+        } else if (it.type === 'textoEspecial') {
           lastWidth = writer.writeText(
             it.texto,
             PdfStyles.specialNote.color,
             writer.opts.songText.FontSize - 3,
             { indent: writer.opts.songIndicatorSpacing }
           );
-        } else if (it.type == 'notaEspecial') {
+        } else if (it.type === 'notaEspecial') {
           lastWidth = writer.writeText(
             it.prefijo,
             PdfStyles.prefix.color,
@@ -677,7 +681,7 @@ export const PDFGenerator = async (
             writer.opts.songText.FontSize - 3,
             { indent: writer.opts.songIndicatorSpacing }
           );
-        } else if (it.type == 'posicionAbrazadera') {
+        } else if (it.type === 'posicionAbrazadera') {
           lastWidth = writer.writeText(
             it.texto,
             PdfStyles.clampLine.color,

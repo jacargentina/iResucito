@@ -76,8 +76,7 @@ const SongListItem = (props: any) => {
 
   const song: Song = useMemo(() => {
     if (songKey) {
-      const song = songs.find(i => i.key == songKey);
-      return song;
+      return songs.find(i => i.key === songKey);
     }
     return songMeta;
   }, [songs, songKey, songMeta]);

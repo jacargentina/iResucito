@@ -43,7 +43,7 @@ const SearchBarView = (props: any) => {
   const termInput = useRef();
 
   const focusTerm = () => {
-    if (termInput) {
+    if (termInput && termInput.current) {
       termInput.current._root.focus();
     }
   };

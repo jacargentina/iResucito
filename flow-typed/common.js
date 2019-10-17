@@ -163,7 +163,8 @@ declare type ExportToPdfOptions = {
   bookTitle: { FontSize: number, Spacing: number },
   bookSubtitle: { FontSize: number },
   indexText: { FontSize: number },
-  indexMarginLeft: number
+  indexMarginLeft: number,
+  disablePageNumbers: boolean
 };
 
 declare type ListSongGroup = {

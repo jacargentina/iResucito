@@ -11,7 +11,7 @@ export async function generatePDF(
   fileSuffix: string
 ) {
   const folder =
-    Platform.OS == 'ios'
+    Platform.OS === 'ios'
       ? RNFS.TemporaryDirectoryPath
       : RNFS.CachesDirectoryPath + '/';
 
@@ -20,9 +20,12 @@ export async function generatePDF(
       ? `${folder}/iResucito${fileSuffix}.pdf`
       : `${folder}/${songsToPdf[0].song.titulo}.pdf`;
 
-  const reader = Platform.OS == 'ios' ? RNFS.readFile : RNFS.readFileAssets;
-  const fontFolder = Platform.OS == 'ios' ? RNFS.MainBundlePath : 'fonts';
-  const ttf = await reader(`${fontFolder}/Franklin Gothic Medium.ttf`, 'base64');
+  const reader = Platform.OS === 'ios' ? RNFS.readFile : RNFS.readFileAssets;
+  const fontFolder = Platform.OS === 'ios' ? RNFS.MainBundlePath : 'fonts';
+  const ttf = await reader(
+    `${fontFolder}/Franklin Gothic Medium.ttf`,
+    'base64'
+  );
 
   var writer = new PdfWriter(Buffer.from(ttf, 'base64'), new Base64Encode());
   const base64 = await PDFGenerator(songsToPdf, opts, writer);
