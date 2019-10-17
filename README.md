@@ -101,3 +101,13 @@ npm run genpdf -- -l pt
 npm run genpdf -- -l pt -k 12
 // se generan sólo el canto del indice 12, es decir, 'Jacó' de 'pt' en la carpeta 'pdf'
 ```
+
+
+## Configurar Gradle para permitir construir un release APK en Release (firmado)
+
+Agregar en archivo $HOME/.gradle/gradle.properties, reemplazando el campo [contraseña] segun corresponde:
+
+IRESUCITO_RELEASE_STORE_FILE=playStorePublishing.jks
+IRESUCITO_RELEASE_STORE_PASSWORD=[contraseña]
+IRESUCITO_RELEASE_KEY_ALIAS=key0
+IRESUCITO_RELEASE_KEY_PASSWORD=[contraseña]
