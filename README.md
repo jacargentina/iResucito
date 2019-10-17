@@ -107,7 +107,7 @@ npm run genpdf -- -l pt -k 12
 
 Agregar en archivo $HOME/.gradle/gradle.properties, reemplazando el campo [contraseña] segun corresponde:
 
-IRESUCITO_RELEASE_STORE_FILE=playStorePublishing.jks
+IRESUCITO_RELEASE_STORE_FILE=playStoreUpload.jks
 IRESUCITO_RELEASE_STORE_PASSWORD=[contraseña]
-IRESUCITO_RELEASE_KEY_ALIAS=key0
+IRESUCITO_RELEASE_KEY_ALIAS=upload
 IRESUCITO_RELEASE_KEY_PASSWORD=[contraseña]
