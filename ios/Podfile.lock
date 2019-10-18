@@ -186,7 +186,7 @@ PODS:
     - React
   - react-native-keep-awake (4.0.0):
     - React
-  - react-native-pdf (5.1.6):
+  - react-native-pdf (5.1.7):
     - React
   - react-native-print (0.6.0):
     - React
@@ -398,7 +398,7 @@ SPEC CHECKSUMS:
   React-jsinspector: 111d7d342b07a904c400592e02a2b958f1098b60
   react-native-contacts: 7d0b7ccd5f00df82ceca035935fc9d6e63af5aec
   react-native-keep-awake: eba3137546b10003361b37c761f6c429b59814ae
-  react-native-pdf: 819bed123a80c138b3e531730c2f3686b9c6b93c
+  react-native-pdf: 3c4f29b56f8916c4be96cad5cdb51ed2542c4b5c
   react-native-print: d2d083f2305faacfba12d3896ec6ca72303da2b2
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   React-RCTActionSheet: 89b037c0fb7d2671607cb645760164e7e0c013f6
