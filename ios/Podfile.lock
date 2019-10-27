@@ -233,15 +233,15 @@ PODS:
     - React-Core
   - RNCAsyncStorage (1.6.2):
     - React
-  - RNDeviceInfo (4.0.1):
+  - RNDeviceInfo (5.2.1):
     - React
-  - RNFS (2.14.1):
+  - RNFS (2.16.1):
     - React
   - RNGestureHandler (1.4.1):
     - React
   - RNICloudStore (0.1.0):
     - React
-  - RNLocalize (1.3.0):
+  - RNLocalize (1.3.1):
     - React
   - RNReanimated (1.3.0):
     - React
@@ -414,11 +414,11 @@ SPEC CHECKSUMS:
   ReactNativeExceptionHandler: 8025d98049c25f186835a3af732dd7c9974d6dce
   rn-fetch-blob: f525a73a78df9ed5d35e67ea65e79d53c15255bc
   RNCAsyncStorage: 5ae4d57458804e99f73d427214442a6b10a53856
-  RNDeviceInfo: 12faae605ba42a1a5041c3c41a77834bc23f049d
-  RNFS: a8fbe7060fa49157d819466404794ad9c58e58cf
+  RNDeviceInfo: 223aea06c561ce99ae2045b621882bd7b7db1e59
+  RNFS: 795866388a01de4e470f3b1041a99cf20a343844
   RNGestureHandler: 4cb47a93019c1a201df2644413a0a1569a51c8aa
   RNICloudStore: bc6e225811637c09bd1eb055d6cd7448e61cd451
-  RNLocalize: 6e4a6b8582dfbb50b452464d208c30a7a20516f4
+  RNLocalize: c117094a6c5a955c94e65520ad4c726e3a0f4ed6
   RNReanimated: 6abbbae2e5e72609d85aabd92a982a94566885f1
   RNShare: 8b171d4b43c1d886917fdd303bf7a4b87167b05c
   Yoga: 14927e37bd25376d216b150ab2a561773d57911f
