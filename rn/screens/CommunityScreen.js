@@ -26,9 +26,12 @@ const CommunityScreen = (props: any) => {
   }, [I18n.locale]);
 
   const filtered = useMemo(() => {
-    var result = brothers.filter(c => contactFilterByText(c, filter));
-    result.sort(ordenAlfabetico);
-    return result;
+    if (brothers) {
+      var result = brothers.filter(c => contactFilterByText(c, filter));
+      result.sort(ordenAlfabetico);
+      return result;
+    }
+    return [];
   }, [brothers, filter]);
 
   useEffect(() => {
@@ -47,7 +50,7 @@ const CommunityScreen = (props: any) => {
   }, [filtered.length]);
 
   const addOrRemove = contact => {
-    var i = brothers.findIndex(c => c.recordID == contact.recordID);
+    var i = brothers.findIndex(c => c.recordID === contact.recordID);
     // Ya esta importado
     if (i !== -1) {
       var item = brothers[i];
@@ -83,7 +86,7 @@ const CommunityScreen = (props: any) => {
     update(contact.recordID, updatedContact);
   };
 
-  if (brothers.length == 0 && !filter)
+  if (brothers.length === 0 && !filter) {
     return (
       <CallToAction
         icon="people"
@@ -93,10 +96,11 @@ const CommunityScreen = (props: any) => {
         buttonText={I18n.t('call_to_action_button.community list')}
       />
     );
+  }
 
   return (
     <SearchBarView value={filter} setValue={setFilter}>
-      {filtered && filtered.length == 0 && (
+      {filtered && filtered.length === 0 && (
         <Text note style={{ textAlign: 'center', paddingTop: 20 }}>
           {I18n.t('ui.no contacts found')}
         </Text>
