@@ -19,7 +19,7 @@ const SongChooseLocaleDialog = (props: any) => {
 
   const items = useMemo(() => {
     var result = [];
-    if (targetType == 'file') {
+    if (targetType === 'file') {
       // cuales songs no tienen el idioma actual establecido ?
       result = songs.filter(s => !s.files[I18n.locale]);
       if (textFilter) {
@@ -31,7 +31,7 @@ const SongChooseLocaleDialog = (props: any) => {
           );
         });
       }
-    } else if (targetType == 'song') {
+    } else if (targetType === 'song') {
       // cuales archivos no estan en ningun song del locale actual?
       result = localeSongs.filter(locSong => {
         return !songs.find(s => s.files[I18n.locale] === locSong.nombre);
@@ -47,8 +47,8 @@ const SongChooseLocaleDialog = (props: any) => {
   }, [I18n.locale, songs, localeSongs, textFilter]);
 
   const localeFileSelected = item => {
-    var song: Song = targetType == 'file' ? item : target;
-    var songFile: SongFile = targetType == 'file' ? target : item;
+    var song: Song = targetType === 'file' ? item : target;
+    var songFile: SongFile = targetType === 'file' ? target : item;
 
     // Definir funcion para llamar
     // en ambos casos del dialogo

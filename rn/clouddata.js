@@ -17,7 +17,6 @@ class CloudData {
     const changedKeys = userInfo.changedKeys;
     if (changedKeys != null && changedKeys.includes('lists')) {
       iCloudStorage.getItem('lists').then(result => {
-        /* eslint-disable no-console */
         console.log('lists on icloud are loaded!', result);
       });
     }

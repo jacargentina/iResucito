@@ -44,7 +44,7 @@ const ListDetailItem = (props: any) => {
       </ListItem>
     );
   } else if (
-    typeof listKey == 'string' &&
+    typeof listKey === 'string' &&
     (listKey.includes('monicion') ||
       listKey.includes('ambiental') ||
       listKey.includes('oracion') ||

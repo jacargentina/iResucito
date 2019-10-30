@@ -14,7 +14,7 @@ tabBarOptions.style = {
   backgroundColor: 'white'
 };
 
-if (Platform.OS == 'android') {
+if (Platform.OS === 'android') {
   tabBarOptions.inactiveTintColor = 'gray';
   tabBarOptions.style = {
     backgroundColor: 'white'

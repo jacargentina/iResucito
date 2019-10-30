@@ -30,7 +30,7 @@ const ModalView = (props: any) => {
     <SafeAreaView style={{ flexGrow: 1, backgroundColor: 'white' }}>
       <KeyboardAvoidingView
         style={{ flexGrow: 1 }}
-        behavior={Platform.OS == 'android' ? null : 'padding'}>
+        behavior={Platform.OS === 'android' ? null : 'padding'}>
         <View
           style={{
             flex: 0,

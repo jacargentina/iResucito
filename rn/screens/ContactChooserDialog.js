@@ -32,7 +32,7 @@ const ContactChooserDialog = (props: any) => {
 
   return (
     <ModalView title={I18n.t('screen_title.community')}>
-      {brothers.length == 0 && (
+      {brothers.length === 0 && (
         <View
           style={{
             flex: 3,

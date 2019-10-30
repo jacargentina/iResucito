@@ -22,7 +22,7 @@ const SongChooserDialog = (props: any) => {
   const target = navigation.getParam('target');
 
   useEffect(() => {
-    var choosers = search.searchItems.filter(x => x.chooser != undefined);
+    var choosers = search.searchItems.filter(x => x.chooser !== undefined);
     if (target.listName && target.listKey) {
       var defChooser = choosers.find(
         t => t.chooser_listKey && t.chooser_listKey.includes(target.listKey)
@@ -35,7 +35,7 @@ const SongChooserDialog = (props: any) => {
   }, []);
 
   useEffect(() => {
-    var choosers = search.searchItems.filter(x => x.chooser != undefined);
+    var choosers = search.searchItems.filter(x => x.chooser !== undefined);
     setSegments(
       choosers.map((v, i) => {
         const isActive = activeSegment && activeSegment.chooser === v.chooser;

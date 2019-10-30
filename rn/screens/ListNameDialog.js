@@ -53,7 +53,7 @@ const ListNameDialog = (props: any) => {
   }, [actionEnabled, name]);
 
   const title =
-    action == 'create'
+    action === 'create'
       ? `${I18n.t('ui.lists.create')} (${getFriendlyTextForListType(type)})`
       : `${I18n.t('ui.lists.rename')} (${listName})`;
 

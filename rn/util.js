@@ -61,14 +61,14 @@ export function getContactsForImport(
 
 export function getEsSalmo(listKey: string): boolean {
   return (
-    listKey == 'entrada' ||
-    listKey == '1-salmo' ||
-    listKey == '2-salmo' ||
-    listKey == '3-salmo' ||
-    listKey == 'paz' ||
-    listKey == 'comunion-pan' ||
-    listKey == 'comunion-caliz' ||
-    listKey == 'salida'
+    listKey === 'entrada' ||
+    listKey === '1-salmo' ||
+    listKey === '2-salmo' ||
+    listKey === '3-salmo' ||
+    listKey === 'paz' ||
+    listKey === 'comunion-pan' ||
+    listKey === 'comunion-caliz' ||
+    listKey === 'salida'
   );
 }
 
@@ -165,13 +165,13 @@ export const stylesObj: SongStyles = {
 export const NativeStyles = StyleSheet.create(stylesObj);
 
 const BaseSongsPath =
-  Platform.OS == 'ios' ? `${RNFS.MainBundlePath}/songs` : 'songs';
+  Platform.OS === 'ios' ? `${RNFS.MainBundlePath}/songs` : 'songs';
 
 const NativeSongsLoader =
-  Platform.OS == 'ios' ? RNFS.readDir : RNFS.readDirAssets;
+  Platform.OS === 'ios' ? RNFS.readDir : RNFS.readDirAssets;
 
 const NativeSongReader =
-  Platform.OS == 'ios' ? RNFS.readFile : RNFS.readFileAssets;
+  Platform.OS === 'ios' ? RNFS.readFile : RNFS.readFileAssets;
 
 export const NativeSongs = new SongsProcessor(
   BaseSongsPath,

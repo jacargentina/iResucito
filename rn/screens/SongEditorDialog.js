@@ -76,18 +76,18 @@ const SongEditorDialog = (props: any) => {
 
   const reload = () => {
     getSongLocalePatch(song).then(patchObj => {
-      var lines = song.fullText;
+      var ln = song.fullText;
       if (
         patchObj &&
         patchObj[I18n.locale] &&
         patchObj[I18n.locale].hasOwnProperty('lines')
       ) {
-        lines = patchObj[I18n.locale].lines;
+        ln = patchObj[I18n.locale].lines;
         setCanDeletePatch(true);
       } else {
         setCanDeletePatch(false);
       }
-      resetLines(lines);
+      resetLines(ln);
     });
   };
 
@@ -97,7 +97,7 @@ const SongEditorDialog = (props: any) => {
 
   const cutToNextNewline = () => {
     var finalCutPosition = lines.indexOf('\n', selection.start);
-    if (finalCutPosition == -1) {
+    if (finalCutPosition === -1) {
       finalCutPosition = lines.length;
     }
     const sectionMove = lines.substring(selection.start, finalCutPosition);

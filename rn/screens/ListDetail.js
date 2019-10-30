@@ -41,7 +41,7 @@ const ListDetail = (props: any) => {
 
   const uiList = getListForUI(listName);
 
-  if (uiList.type == 'libre') {
+  if (uiList.type === 'libre') {
     var songs = uiList.items;
     return (
       <Fragment>
@@ -57,9 +57,9 @@ const ListDetail = (props: any) => {
                 var swipeoutBtns = [
                   {
                     text: I18n.t('ui.delete'),
-                    type: Platform.OS == 'ios' ? 'delete' : 'default',
+                    type: Platform.OS === 'ios' ? 'delete' : 'default',
                     backgroundColor:
-                      Platform.OS == 'android' ? '#e57373' : null,
+                      Platform.OS === 'android' ? '#e57373' : null,
                     onPress: () => {
                       confirmListDeleteSong(song.titulo, listName, key);
                     }
@@ -85,6 +85,7 @@ const ListDetail = (props: any) => {
       </Fragment>
     );
   }
+  /* eslint-disable dot-notation */
   return (
     <KeyboardAwareScrollView
       contentContainerStyle={{ flexGrow: 1 }}

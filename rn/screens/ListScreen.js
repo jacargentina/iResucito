@@ -59,7 +59,7 @@ const ListScreen = (props: any) => {
     });
   };
 
-  if (allLists.length == 0)
+  if (allLists.length === 0) {
     return (
       <CallToAction
         icon="bookmark"
@@ -69,10 +69,11 @@ const ListScreen = (props: any) => {
         buttonText={I18n.t('call_to_action_button.add lists')}
       />
     );
+  }
 
   return (
     <SearchBarView value={filter} setValue={setFilter}>
-      {filtered && filtered.length == 0 && (
+      {filtered && filtered.length === 0 && (
         <Text note style={{ textAlign: 'center', paddingTop: 20 }}>
           {I18n.t('ui.no lists found')}
         </Text>
@@ -92,8 +93,8 @@ const ListScreen = (props: any) => {
             },
             {
               text: I18n.t('ui.delete'),
-              type: Platform.OS == 'ios' ? 'delete' : 'default',
-              backgroundColor: Platform.OS == 'android' ? '#e57373' : null,
+              type: Platform.OS === 'ios' ? 'delete' : 'default',
+              backgroundColor: Platform.OS === 'android' ? '#e57373' : null,
               onPress: () => {
                 listDelete(item.name);
               }

@@ -64,17 +64,19 @@ const TransportNotesMenu = withNavigation((props: any) => {
   const setTransportNote = navigation.getParam('setTransportNote');
 
   var menuOptionItems = chords.map((nota, i) => {
-    if (transportNote === nota)
-      var customStyles = {
-        optionWrapper: {
-          backgroundColor: commonTheme.brandPrimary,
-          paddingHorizontal: 10,
-          paddingVertical: 10
-        },
-        optionText: {
-          color: 'white'
-        }
-      };
+    var customStyles =
+      transportNote === nota
+        ? {
+            optionWrapper: {
+              backgroundColor: commonTheme.brandPrimary,
+              paddingHorizontal: 10,
+              paddingVertical: 10
+            },
+            optionText: {
+              color: 'white'
+            }
+          }
+        : null;
     return (
       <MenuOption
         key={i}
@@ -84,6 +86,7 @@ const TransportNotesMenu = withNavigation((props: any) => {
       />
     );
   });
+
   var trigger =
     transportNote === null || transportNote === undefined ? (
       <Icon

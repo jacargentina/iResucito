@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Alert, Platform, PermissionsAndroid, Linking } from 'react-native';
 import NavigationService from './navigation/NavigationService';
-import Share from 'react-native-share'; // eslint-disable-line import/default
+import Share from 'react-native-share';
 import Contacts from 'react-native-contacts';
 import { ActionSheet, Toast } from 'native-base';
 import RNFS from 'react-native-fs';
@@ -33,7 +33,7 @@ const useSongsMeta = (locale: string) => {
     if (!songs) {
       return;
     }
-    var idx = songs.findIndex(i => i.key == song.key);
+    var idx = songs.findIndex(i => i.key === song.key);
     var prev = songs.slice(0, idx);
     var next = songs.slice(idx + 1);
     setSongs([...prev, song, ...next]);
@@ -73,16 +73,16 @@ const useSongsMeta = (locale: string) => {
     });
   };
 
-  const readAllLocaleSongs = (locale: string) => {
-    return NativeSongs.readLocaleSongs(locale)
+  const readAllLocaleSongs = (loc: string) => {
+    return NativeSongs.readLocaleSongs(loc)
       .then(items => {
-        var loc = locale.split('-')[0];
-        if (loc === locale) {
+        var locNoCountry = loc.split('-')[0];
+        if (locNoCountry === loc) {
           return items;
         }
         // If locale contains country
         // try with country code removed
-        return NativeSongs.readLocaleSongs(loc).then(result => {
+        return NativeSongs.readLocaleSongs(locNoCountry).then(result => {
           return items.concat(result);
         });
       })
@@ -91,20 +91,23 @@ const useSongsMeta = (locale: string) => {
       });
   };
 
-  const setSongPatch = (song: Song, locale: string, patch?: SongPatchData) => {
-    if (patch && patch.file && patch.file.endsWith('.txt'))
+  const setSongPatch = (song: Song, loc: string, patch?: SongPatchData) => {
+    if (patch && patch.file && patch.file.endsWith('.txt')) {
       throw new Error('file con .txt! Pasar sin extension.');
+    }
 
     return Promise.all([readLocalePatch(), readSongsRatingFile()]).then(
       values => {
         var [patchObj: SongIndexPatch, ratingsObj: SongRatingFile] = values;
-        if (!patchObj) patchObj = {};
+        if (!patchObj) {
+          patchObj = {};
+        }
         if (patch) {
           if (patch.rename) {
             patch.rename = patch.rename.trim();
           }
           const localePatch: SongPatch = {
-            [locale]: patch
+            [loc]: patch
           };
           if (!patchObj[song.key]) {
             patchObj[song.key] = {};
@@ -120,7 +123,7 @@ const useSongsMeta = (locale: string) => {
             buttonText: 'Ok'
           });
         } else {
-          delete patchObj[song.key][locale];
+          delete patchObj[song.key][loc];
           Toast.show({
             text: I18n.t('ui.locale patch removed', { song: song.titulo }),
             duration: 5000,
@@ -130,17 +133,17 @@ const useSongsMeta = (locale: string) => {
         }
         var updatedSong = NativeSongs.getSingleSongMeta(
           song.key,
-          locale,
+          loc,
           patchObj,
           ratingsObj
         );
-        return NativeSongs.loadSingleSong(locale, updatedSong, patchObj)
+        return NativeSongs.loadSingleSong(loc, updatedSong, patchObj)
           .then(() => {
             initializeSingleSong(updatedSong);
             return saveLocalePatch(patchObj);
           })
           .then(() => {
-            return readAllLocaleSongs(locale);
+            return readAllLocaleSongs(loc);
           })
           .then(() => {
             return updatedSong;
@@ -173,7 +176,7 @@ const useSongsMeta = (locale: string) => {
     });
   };
 
-  const setSongRating = (songKey: string, locale: string, value: number) => {
+  const setSongRating = (songKey: string, loc: string, value: number) => {
     return Promise.all([readLocalePatch(), readSongsRatingFile()]).then(
       values => {
         var [patchObj: SongIndexPatch, ratingsObj: SongRatingFile] = values;
@@ -184,16 +187,16 @@ const useSongsMeta = (locale: string) => {
           ratingsObj[songKey] = {};
         }
         ratingsObj[songKey] = Object.assign({}, ratingsObj[songKey], {
-          [locale]: value
+          [loc]: value
         });
         return saveSongsRatingFile(ratingsObj).then(() => {
           var updatedSong = NativeSongs.getSingleSongMeta(
             songKey,
-            locale,
+            loc,
             patchObj,
             ratingsObj
           );
-          return NativeSongs.loadSingleSong(locale, updatedSong, patchObj).then(
+          return NativeSongs.loadSingleSong(loc, updatedSong, patchObj).then(
             () => {
               initializeSingleSong(updatedSong);
             }
@@ -346,10 +349,10 @@ const useLists = (songs: any) => {
     const targetList = lists[listName];
     var schema;
     if (listValue !== undefined) {
-      if (typeof listKey == 'string')
+      if (typeof listKey === 'string') {
         schema = Object.assign({}, targetList, { [listKey]: listValue });
-      else if (typeof listKey == 'number') {
-        var isPresent = targetList.items.find(s => s == listValue);
+      } else if (typeof listKey === 'number') {
+        var isPresent = targetList.items.find(s => s === listValue);
         if (isPresent) {
           return;
         }
@@ -358,10 +361,9 @@ const useLists = (songs: any) => {
         schema = Object.assign({}, targetList, { items: newItems });
       }
     } else {
-      if (typeof listKey == 'string') {
-        /* eslint-disable no-unused-vars */
+      if (typeof listKey === 'string') {
         var { [listKey]: omit, ...schema } = targetList;
-      } else if (typeof listKey == 'number') {
+      } else if (typeof listKey === 'number') {
         var newItems = Object.assign([], targetList.items);
         newItems.splice(listKey, 1);
         schema = Object.assign({}, targetList, { items: newItems });
@@ -377,21 +379,21 @@ const useLists = (songs: any) => {
       // Si es de tipo 'libre', los salmos están dentro de 'items'
       if (clave === 'items' && Array.isArray(valor)) {
         valor = valor.map(key => {
-          return songs.find(s => s.key == key);
+          return songs.find(s => s.key === key);
         });
       } else if (getEsSalmo(clave) && valor !== null) {
-        valor = songs.find(s => s.key == valor);
+        valor = songs.find(s => s.key === valor);
       }
       uiList[clave] = valor;
     });
     return uiList;
   };
 
-  const migrateLists = (lists: any) => {
+  const migrateLists = (items: any) => {
     // Verificar cada lista para migrar en caso
     // de ser necesario
-    Object.keys(lists).forEach(name => {
-      var listMap = lists[name];
+    Object.keys(items).forEach(name => {
+      var listMap = items[name];
       // Listas sin número de versión
       // Los cantos se almacenaban con nombre
       // Y deben pasar a almacenarse las claves
@@ -400,14 +402,14 @@ const useLists = (songs: any) => {
           // Si es de tipo 'libre', los salmos están dentro de 'items'
           if (clave === 'items' && Array.isArray(valor)) {
             valor = valor.map(nombre => {
-              var theSong = songs.find(s => s.nombre == nombre);
+              var theSong = songs.find(s => s.nombre === nombre);
               if (theSong) {
                 return theSong.key;
               }
               return null;
             });
           } else if (getEsSalmo(clave) && valor !== null) {
-            var theSong = songs.find(s => s.nombre == valor);
+            var theSong = songs.find(s => s.nombre === valor);
             if (theSong) {
               valor = theSong.key;
             } else {
@@ -465,7 +467,7 @@ const useLists = (songs: any) => {
         initLists(changedLists);
         setImported(listName);
       })
-      .catch(err => {
+      .catch(() => {
         Alert.alert(
           I18n.t('alert_title.corrupt file'),
           I18n.t('alert_message.corrupt file')
@@ -499,11 +501,12 @@ const useLists = (songs: any) => {
             type = 'libre';
             break;
         }
-        if (type !== null)
+        if (type !== null) {
           NavigationService.navigate('ListName', {
             action: 'create',
             type: type
           });
+        }
       }
     );
   };
@@ -512,7 +515,7 @@ const useLists = (songs: any) => {
     var sharePromise = null;
     if (useNative) {
       const folder =
-        Platform.OS == 'ios'
+        Platform.OS === 'ios'
           ? RNFS.TemporaryDirectoryPath
           : RNFS.CachesDirectoryPath + '/';
       const fileName = listName.replace(' ', '-');
@@ -575,7 +578,7 @@ const useLists = (songs: any) => {
   };
 
   useEffect(() => {
-    if (initialized === true && lists && Platform.OS == 'ios') {
+    if (initialized === true && lists && Platform.OS === 'ios') {
       clouddata.save('lists', lists);
     }
   }, [lists, initialized]);
@@ -845,7 +848,7 @@ const useCommunity = () => {
   };
 
   const addOrRemove = contact => {
-    var i = brothers.findIndex(c => c.recordID == contact.recordID);
+    var i = brothers.findIndex(c => c.recordID === contact.recordID);
     // Ya esta importado
     if (i !== -1) {
       var item = brothers[i];
@@ -856,7 +859,7 @@ const useCommunity = () => {
   };
 
   const checkContactsPermission = (reqPerm: boolean): Promise<boolean> => {
-    if (Platform.OS == 'android') {
+    if (Platform.OS === 'android') {
       if (reqPerm) {
         return PermissionsAndroid.request(
           PermissionsAndroid.PERMISSIONS.READ_CONTACTS
@@ -874,20 +877,20 @@ const useCommunity = () => {
       }
     } else {
       return new Promise((resolve, reject) => {
-        Contacts.checkPermission((err, permission) => {
-          if (err) {
-            reject(err);
+        Contacts.checkPermission((err1, perm1) => {
+          if (err1) {
+            reject(err1);
           } else {
-            if (permission === 'undefined') {
+            if (perm1 === 'undefined') {
               if (reqPerm) {
-                Contacts.requestPermission((err, permission) => {
-                  if (err) {
-                    reject(err);
+                Contacts.requestPermission((err2, perm2) => {
+                  if (err2) {
+                    reject(err2);
                   } else {
-                    if (permission === 'authorized') {
+                    if (perm2 === 'authorized') {
                       resolve(true);
                     }
-                    if (permission === 'denied') {
+                    if (perm2 === 'denied') {
                       reject(false);
                     }
                   }
@@ -896,10 +899,10 @@ const useCommunity = () => {
                 reject(false);
               }
             }
-            if (permission === 'authorized') {
+            if (perm1 === 'authorized') {
               resolve(true);
             }
-            if (permission === 'denied') {
+            if (perm1 === 'denied') {
               reject(false);
             }
           }
@@ -925,14 +928,14 @@ const useCommunity = () => {
   };
 
   useEffect(() => {
-    if (initialized === true && brothers && Platform.OS == 'ios') {
+    if (initialized === true && brothers && Platform.OS === 'ios') {
       clouddata.save('brothers', brothers);
     }
   }, [brothers, initialized]);
 
   const populateDeviceContacts = () => {
-    return getContacts(true).then(deviceContacts => {
-      initDeviceContacts(deviceContacts);
+    return getContacts(true).then(devCts => {
+      initDeviceContacts(devCts);
     });
   };
 
@@ -947,7 +950,7 @@ const useCommunity = () => {
       })
       .catch(() => {
         let message = I18n.t('alert_message.contacts permission');
-        if (Platform.OS == 'ios') {
+        if (Platform.OS === 'ios') {
           message += '\n\n' + I18n.t('alert_message.contacts permission ios');
         }
         Alert.alert(I18n.t('alert_title.contacts permission'), message);
@@ -956,11 +959,11 @@ const useCommunity = () => {
 
   useEffect(() => {
     if (initialized === false && brothers) {
-      getContacts(false).then(deviceContacts => {
-        initDeviceContacts(deviceContacts);
+      getContacts(false).then(devCts => {
+        initDeviceContacts(devCts);
         brothers.forEach((c, idx) => {
           // tomar el contacto actualizado
-          var devContact = deviceContacts.find(x => x.recordID === c.recordID);
+          var devContact = devCts.find(x => x.recordID === c.recordID);
           if (devContact) {
             brothers[idx] = devContact;
           }
@@ -1017,7 +1020,7 @@ const DataContextWrapper = (props: any) => {
 
   const shareIndexPatch = () => {
     var promise =
-      Platform.OS == 'android' ? NativeExtras.readPatch() : Promise.resolve();
+      Platform.OS === 'android' ? NativeExtras.readPatch() : Promise.resolve();
     promise.then(patchJSON => {
       Share.open({
         title: I18n.t('ui.share'),
@@ -1036,8 +1039,8 @@ const DataContextWrapper = (props: any) => {
   };
 
   const getLocaleReal = (rawLoc: string) => {
-    var locale = rawLoc === 'default' ? getDefaultLocale() : rawLoc;
-    return locale;
+    var validateLocale = rawLoc === 'default' ? getDefaultLocale() : rawLoc;
+    return validateLocale;
   };
 
   useEffect(() => {
