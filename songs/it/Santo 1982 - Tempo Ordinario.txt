@@ -1,12 +1,11 @@
-SANTO (1983).
-Barrè al II tasto
-
+clamp:II
 La-
-A. SANTO, SANTO, SANTO    |
-Sol      La-           |  (2 v.)
-È IL SIGNORE,          |
+A. SANTO, SANTO, SANTO
+Sol      La-
+È IL SIGNORE,
 Sol          La-
 DIO DELL'UNIVERSO!
+repeat
 
 Fa            Mi
 C. I cieli e la terra
@@ -14,9 +13,10 @@ Re-               Mi
 sono pieni della tua gloria!
 
 La-             Re-
-A. OSANNA! OSANNA! OSANNA, OSANNA!    |
-Mi                   |  (2 v.)
-NELL'ALTO DEI CIELI.               |
+A. OSANNA! OSANNA! OSANNA, OSANNA!
+Mi
+NELL'ALTO DEI CIELI.
+repeat
 
 La-
 C. Benedetto è colui che viene

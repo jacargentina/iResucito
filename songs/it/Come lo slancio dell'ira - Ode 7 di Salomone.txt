@@ -1,7 +1,4 @@
-COME LO SLANCIO DELL'IRA. (Ode VII di Salomone)
-
-Barrè al III tasto
-
+clamp:III
 Do                  La-       Re-
 C. Come lo slancio dell'ira sul nemico,
 Sol                     Do

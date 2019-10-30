@@ -1,7 +1,4 @@
-CANTO DI BALAAM. (Nm 23, 7-24)
-
-Barrè al III tasto
-
+clamp:III
 Mi-                 Re
 C. Da Aram mi ha fatto venire
 Mi-              Re
@@ -26,15 +23,17 @@ Mi-
 da tutte le nazioni!
 
 Re
-A. CHE BELLE SONO LE TUE TENDE   |
-Mi-           |
-CHE BELLE SONO ISRAELE.       |
-Re      |
-CHE BELLE SONO LE TUE TENDE   |  (2 v.)
-Mi-           |
-CHE BELLE SONO ISRAELE.       |
-|
-LA LA LA LA...                |
+A. CHE BELLE SONO LE TUE TENDE
+Mi-
+CHE BELLE SONO ISRAELE.
+Re
+CHE BELLE SONO LE TUE TENDE
+Mi-
+CHE BELLE SONO ISRAELE.
+repeat
+
+LA LA LA LA...
+repeat
 
 Sol   Re     Sol Si-   Mi-
 C. Chi conterà la tua moltitudine,

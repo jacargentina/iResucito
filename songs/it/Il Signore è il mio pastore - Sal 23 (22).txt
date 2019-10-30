@@ -1,7 +1,4 @@
-IL SIGNORE È IL MIO PASTORE. Sal 23 (22)
-
-Barrè al III tasto
-
+clamp:III
 La-                Fa
 C. Il Signore è il mio pastore
 Mi
