@@ -1,3 +1,2 @@
-• Correzioni di brani in spagnolo (es) e portoghese (pt)
-• Aggiunti lingua e canzoni austriache tedesche (de-AT)
-• Aggiunta lingua francese (fr) (brani con lavori in corso)
+• Correzioni su varie canzoni italiane (it)
+• Risolto errore nella migrazione dei dati dalla v3.0.15

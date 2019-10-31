@@ -1,3 +1,2 @@
-• Songkorrekturen in Spanisch (es) und Portugiesisch (pt)
-• Österreichische deutsche Sprache und Lieder hinzugefügt (de-AT)
-• Französische Sprache (fr) hinzugefügt (Songs in Arbeit)
+• Korrekturen an verschiedenen italienischen Liedern (it)
+• Fehler bei der Datenmigration von v3.0.15 behoben

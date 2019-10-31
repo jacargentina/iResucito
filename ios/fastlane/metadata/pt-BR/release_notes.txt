@@ -1,3 +1,2 @@
-• Correções de músicas em espanhol (es) e em português (pt)
-• Adicionado idioma alemão austríaco e músicas (de-AT)
-• Adicionado idioma francês (fr) (músicas com trabalho em andamento)
+• Correções em várias músicas italianas (it)
+• Corrigido erro na migração de dados da v3.0.15

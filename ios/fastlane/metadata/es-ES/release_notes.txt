@@ -1,3 +1,2 @@
-• Correcciones de cantos en Español (es) y Portugues (pt)
-• Agregado lenguaje y cantos Alemán Austriaco (de-AT)
-• Agregado lenguaje Frances (fr) (cantos con trabajo en progreso)
+• Correcciones varias de cantos en Italiano (it)
+• Corrección de error al migrar datos desde v3.0.15
