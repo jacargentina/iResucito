@@ -25,7 +25,7 @@ const usePersist = (
     // si el str tiene formato de react-native-storage
     // migrar a objeto sin propiedad 'rawData'
     if (object.hasOwnProperty('rawData')) {
-      var migrated = {};
+      var migrated = defValue;
       for (var prop in object.rawData) {
         migrated[prop] = object.rawData[prop];
       }
