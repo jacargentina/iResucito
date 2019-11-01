@@ -5,37 +5,39 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: Verifying fastlane version" time="0.011963">
+      <testcase classname="fastlane.lanes" name="0: Verifying fastlane version" time="0.010421">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: default_platform" time="0.00097">
+      <testcase classname="fastlane.lanes" name="1: default_platform" time="0.000792">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="2: match" time="13.529899">
+      <testcase classname="fastlane.lanes" name="2: match" time="14.503773">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="3: increment_version_number" time="2.866444">
+      <testcase classname="fastlane.lanes" name="3: increment_version_number" time="2.852116">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="4: increment_build_number" time="0.792314">
+      <testcase classname="fastlane.lanes" name="4: increment_build_number" time="0.766114">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="5: gym" time="181.822905">
+      <testcase classname="fastlane.lanes" name="5: gym" time="168.505518">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="6: deliver" time="1167.506152">
+      <testcase classname="fastlane.lanes" name="6: deliver" time="930.665673">
+        
+          <failure message="/Library/Ruby/Gems/2.6.0/gems/fastlane-2.134.0/fastlane/lib/fastlane/actions/actions_helper.rb:48:in `execute_action'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.134.0/fastlane/lib/fastlane/runner.rb:235:in `block in execute_action'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.134.0/fastlane/lib/fastlane/runner.rb:227:in `chdir'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.134.0/fastlane/lib/fastlane/runner.rb:227:in `execute_action'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.134.0/fastlane/lib/fastlane/runner.rb:157:in `trigger_action_by_name'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.134.0/fastlane/lib/fastlane/fast_file.rb:159:in `method_missing'&#10;Fastfile:52:in `block (2 levels) in parsing_binding'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.134.0/fastlane/lib/fastlane/lane.rb:33:in `call'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.134.0/fastlane/lib/fastlane/runner.rb:49:in `block in execute'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.134.0/fastlane/lib/fastlane/runner.rb:45:in `chdir'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.134.0/fastlane/lib/fastlane/runner.rb:45:in `execute'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.134.0/fastlane/lib/fastlane/lane_manager.rb:56:in `cruise_lane'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.134.0/fastlane/lib/fastlane/command_line_handler.rb:36:in `handle'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.134.0/fastlane/lib/fastlane/commands_generator.rb:108:in `block (2 levels) in run'&#10;/Library/Ruby/Gems/2.6.0/gems/commander-fastlane-4.4.6/lib/commander/command.rb:178:in `call'&#10;/Library/Ruby/Gems/2.6.0/gems/commander-fastlane-4.4.6/lib/commander/command.rb:153:in `run'&#10;/Library/Ruby/Gems/2.6.0/gems/commander-fastlane-4.4.6/lib/commander/runner.rb:476:in `run_active_command'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.134.0/fastlane_core/lib/fastlane_core/ui/fastlane_runner.rb:76:in `run!'&#10;/Library/Ruby/Gems/2.6.0/gems/commander-fastlane-4.4.6/lib/commander/delegates.rb:15:in `run!'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.134.0/fastlane/lib/fastlane/commands_generator.rb:349:in `run'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.134.0/fastlane/lib/fastlane/commands_generator.rb:41:in `start'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.134.0/fastlane/lib/fastlane/cli_tools_distributor.rb:119:in `take_off'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.134.0/bin/fastlane:23:in `&lt;top (required)&gt;'&#10;/usr/local/bin/fastlane:23:in `load'&#10;/usr/local/bin/fastlane:23:in `&lt;main&gt;'&#10;&#10;&lt;HTML&gt;&lt;HEAD&gt;&#10;&lt;TITLE&gt;Service Unavailable&lt;/TITLE&gt;&#10;&lt;/HEAD&gt;&lt;BODY&gt;&#10;&lt;H1&gt;Service Unavailable - Zero size object&lt;/H1&gt;&#10;The server is temporarily unable to service your request.  Please try again&#10;later.&lt;P&gt;&#10;Reference&amp;#32;&amp;#35;15&amp;#46;1728f748&amp;#46;1572618192&amp;#46;3079e987&#10;&lt;/BODY&gt;&lt;/HTML&gt;&#10;" />
         
       </testcase>
     
