@@ -34,6 +34,13 @@ const usePersist = (
       await AsyncStorage.setItem(key, newdata);
       object = migrated;
     }
+    // Corregir migracion incorrecta de 'contacts'
+    if (key === 'contacts' && !Array.isArray(object)) {
+      var migrated = Object.values(object);
+      const newdata = JSON.stringify(migrated);
+      await AsyncStorage.setItem(key, newdata);
+      object = migrated;
+    }
     return object;
   };
 
