@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@babel/cli": "^7.7.0",
-    "@babel/core": "7.7.0",
+    "@babel/core": "7.7.2",
     "@babel/helpers": "^7.7.0",
     "@babel/node": "7.7.0",
     "@babel/plugin-external-helpers": "^7.2.0",
@@ -42,7 +42,7 @@
     "@babel/preset-env": "^7.7.1",
     "@babel/preset-flow": "^7.0.0",
     "@babel/preset-react": "7.7.0",
-    "@babel/runtime": "^7.7.1",
+    "@babel/runtime": "^7.7.2",
     "@javier.alejandro.castro/react-native-stream": "^0.2.2",
     "@react-native-community/async-storage": "^1.6.2",
     "@react-native-community/eslint-config": "0.0.5",
