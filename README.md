@@ -118,3 +118,7 @@ IRESUCITO_RELEASE_KEY_PASSWORD=[contraseña]
 - `cd scripts`
 - `node ./getOriginalPos.js -c [columna] -l [linea]`
 
+### Para desarrollo de web app
+
+- npm run website
+- Abrir navegador en http://localhost:8345
