@@ -56,7 +56,7 @@ bin/
 /ios/Pods/
 
 # web app
-web/dist/clientBundle.js
+web/dist/*clientBundle.js*
 web/dist/*.woff2
 web/dist/*.woff
 web/dist/*.ttf
