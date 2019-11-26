@@ -6,7 +6,7 @@
    "es": "Así habla el amén - Ap 3, 14-22",
    "it": "Cosﬁ parla l'amen - Ap 3, 14-22",
    "de-AT": "Das sagt der Amen - Offb 3, 14-22",
-   "pt": "Assim fala o Amém - Ap 3, 14-22"
+   "pt-BR": "Assim fala o Amém - Ap 3, 14-22"
   },
   "stages": {
    "de-AT": "election"
@@ -21,7 +21,7 @@
    "es": "Como el impulso que siente la ira - Oda 7 de Salomón",
    "it": "Come lo slancio dell'ira - Ode 7 di Salomone",
    "de-AT": "Wie der Antrieb des Zornes - VII. Ode Salomos",
-   "pt": "Como o impulso que sente a ira - Ode VII de Salomão"
+   "pt-BR": "Como o impulso que sente a ira - Ode VII de Salomão"
   }
  },
  "3": {
@@ -33,9 +33,9 @@
   "files": {
    "es": "Consolad a mi pueblo - Is 40, 1-11",
    "it": "Consolate il mio popolo - Is 40, 1-11",
-   "pt": "Consolai o meu povo - Is 40, 1-11",
    "de-AT": "Tröstet mein Volk - Jes 40, 1-11",
-   "en": "Console my people. (is 40, 1-11)"
+   "en": "Console my people. (is 40, 1-11)",
+   "pt-BR": "Consolai o meu povo - Is 40, 1-11"
   },
   "stages": {
    "pt": "catechumenate"
@@ -49,9 +49,9 @@
   "files": {
    "es": "Cuando dormía - Ct 5, 2ss",
    "it": "Quando dormivo - Ct 5, 2ss",
-   "pt": "Quando dormia - Ct 5, 2ss",
    "de-AT": "Als ich noch schlief - Hld 5, 2 ff",
-   "en": "While i was asleep (songs 5, 2ss)"
+   "en": "While i was asleep (songs 5, 2ss)",
+   "pt-BR": "Quando dormia - Ct 5, 2ss"
   },
   "stages": {
    "pt": "election"
@@ -64,8 +64,8 @@
   "files": {
    "es": "Débora - Jc 5",
    "it": "Debora - Jc 5",
-   "pt": "Débora - Jz 5",
-   "de-AT": "Deborah - Ri 5, 1 ff"
+   "de-AT": "Deborah - Ri 5, 1 ff",
+   "pt-BR": "Débora - Jz 5"
   },
   "stages": {
    "de-AT": "election"
@@ -76,8 +76,8 @@
   "files": {
    "es": "Dichoso el hombre - Sal 1",
    "it": "Felice l'uomo - Sal 1",
-   "pt": "Feliz o homem - Sal 1",
-   "de-AT": "Glücklich der Mensch - Ps 1"
+   "de-AT": "Glücklich der Mensch - Ps 1",
+   "pt-BR": "Feliz o homem - Sal 1"
   },
   "stages": {
    "pt": "precatechumenate"
@@ -89,8 +89,8 @@
   "files": {
    "es": "El Señor me ha dado lengua de discípulo - Is 50, 4-10",
    "it": "Il Signore mi ha dato lingua da discepolo - Is 50, 4-10",
-   "pt": "O Senhor me deu - Terceiro canto do Servo de Iahweh - Is 50, 4-10",
-   "de-AT": "Der Herr hat mir gegeben - III. Gottesknechtlied - Jes 50, 4-10"
+   "de-AT": "Der Herr hat mir gegeben - III. Gottesknechtlied - Jes 50, 4-10",
+   "pt-BR": "O Senhor me deu - Terceiro canto do Servo de Iahweh - Is 50, 4-10"
   },
   "stages": {
    "de-AT": "election"
@@ -103,8 +103,8 @@
   "files": {
    "es": "El combate escatológico - Ap 19, 11-20",
    "it": "Vedo i cieli aperti - Ap 19, 11-20",
-   "pt": "O combate escatológico - Ap 19, 11-20",
-   "de-AT": "Ich sah den Himmel geöffnet - Offb 19, 11-20"
+   "de-AT": "Ich sah den Himmel geöffnet - Offb 19, 11-20",
+   "pt-BR": "O combate escatológico - Ap 19, 11-20"
   },
   "stages": {
    "pt": "precatechumenate"
@@ -116,8 +116,8 @@
   "files": {
    "es": "El lagarero - Is 63, 1-6",
    "it": "Il pigiatore - Is 63, 1-6",
-   "pt": "O Lagareiro - Is 63, 1-6",
-   "de-AT": "Der Keltertreter - Jes 63, 1-6"
+   "de-AT": "Der Keltertreter - Jes 63, 1-6",
+   "pt-BR": "O Lagareiro - Is 63, 1-6"
   },
   "stages": {
    "de-AT": "liturgy"
@@ -129,8 +129,8 @@
   "files": {
    "es": "El sembrador - Mc 4, 3ss",
    "it": "Il seminatore - Mc. 4, 3 ss",
-   "pt": "O Semeador - Mc 4, 3ss",
-   "de-AT": "Der Sämann - Mk 4, 3 ff"
+   "de-AT": "Der Sämann - Mk 4, 3 ff",
+   "pt-BR": "O Semeador - Mc 4, 3ss"
   },
   "stages": {
    "de-AT": "liturgy"
@@ -144,9 +144,9 @@
   "files": {
    "es": "He aquí que nuestro espejo es el Señor - Oda 13 de Salomón",
    "it": "Ecco lo specchio nostro - Ode 13 di Salomone",
-   "pt": "Eis que o nosso espelho é o Senhor - Ode XIII de Salomão",
    "de-AT": "Siehe unser Spiegel - XIII. Ode Salomos",
-   "en": "Behold our mirror (13th ode of solomon)"
+   "en": "Behold our mirror (13th ode of solomon)",
+   "pt-BR": "Eis que o nosso espelho é o Senhor - Ode XIII de Salomão"
   }
  },
  "12": {
@@ -154,9 +154,9 @@
   "files": {
    "es": "Jacob - Gn 32, 23-29",
    "it": "Giacobbe - Gn 32, 23-29",
-   "pt": "Jacó - Gn 32, 23-29",
    "de-AT": "Jakob - Gen 32, 23-29",
-   "en": "Jacob. (gn 32, 23-29)"
+   "en": "Jacob. (gn 32, 23-29)",
+   "pt-BR": "Jacó - Gn 32, 23-29"
   }
  },
  "13": {
@@ -164,8 +164,8 @@
   "files": {
    "es": "Ninguno puede servir a dos señores - Mt 6, 24-33",
    "it": "Nessuno può servire due padroni - Mt 6, 24-33",
-   "pt": "Ninguém pode servir a dois senhores - Mt 6, 24-33",
-   "de-AT": "Niemand kann zwei Herrn dienen - Mt 6, 24-33"
+   "de-AT": "Niemand kann zwei Herrn dienen - Mt 6, 24-33",
+   "pt-BR": "Ninguém pode servir a dois senhores - Mt 6, 24-33"
   }
  },
  "14": {
@@ -173,8 +173,8 @@
   "files": {
    "es": "Oh Señor, mi corazón ya no es ambicioso - Sal 131 (130)",
    "it": "Signore, il mio cuore non ha più pretese - Sal 131 (130)",
-   "pt": "Ó Senhor, meu coração não é pretensioso - Sal 131 (130)",
-   "de-AT": "O Herr mein Herz hat keine Ansprüche mehr - Ps 131"
+   "de-AT": "O Herr mein Herz hat keine Ansprüche mehr - Ps 131",
+   "pt-BR": "Ó Senhor, meu coração não é pretensioso - Sal 131 (130)"
   }
  },
  "15": {
@@ -182,8 +182,8 @@
   "files": {
    "es": "Señor, tú me escrutas - Sal 139 (138)",
    "it": "Signore tu mi scruti e mi conosci - Sal 139 (138)",
-   "pt": "Senhor, tu me escrutas e conheces - Sal 139 (138)",
-   "de-AT": "O Herr du erforschest mich - Ps 139"
+   "de-AT": "O Herr du erforschest mich - Ps 139",
+   "pt-BR": "Senhor, tu me escrutas e conheces - Sal 139 (138)"
   }
  },
  "16": {
@@ -192,8 +192,8 @@
   "files": {
    "es": "Shemá Israel - Dt 6, 4-9",
    "it": "Shemà Israel - Dt 6, 4-9",
-   "pt": "Shemá Israel - Dt 6, 4-9",
-   "de-AT": "Shema Israel - Dt 6, 4-9"
+   "de-AT": "Shema Israel - Dt 6, 4-9",
+   "pt-BR": "Shemá Israel - Dt 6, 4-9"
   }
  },
  "17": {
@@ -202,9 +202,9 @@
   "files": {
    "es": "Siéntate solitario y silencioso - Lm 3",
    "it": "Siedi solitario e silenzioso - Lm 3",
-   "pt": "Senta-te solitário e silencioso - Lm 3",
    "de-AT": "Einsam sitze und schweige - Klgl 3, 1-33",
-   "en": "Sit down alone and in silence. (lam 3, 1-33)"
+   "en": "Sit down alone and in silence. (lam 3, 1-33)",
+   "pt-BR": "Senta-te solitário e silencioso - Lm 3"
   }
  },
  "18": {
@@ -215,8 +215,8 @@
   "files": {
    "es": "Tú has cubierto de vergüenza la muerte - Melitón de Sardes",
    "it": "Omelia pasquale - Melitone di Sardi",
-   "pt": "Tu cobriste de vergonha a morte - Homilía de Melitão de Sares sobre a Páscoa - Ofício das leituras da quarta feira Santa",
-   "de-AT": "Meliton von Sardes - Osterhomilie"
+   "de-AT": "Meliton von Sardes - Osterhomilie",
+   "pt-BR": "Tu cobriste de vergonha a morte - Homilía de Melitão de Sares sobre a Páscoa - Ofício das leituras da quarta feira Santa"
   }
  },
  "19": {
@@ -228,9 +228,9 @@
   "files": {
    "es": "A la víctima pascual - Secuencia de Pascua",
    "it": "Alla vittima pasquale - Sequenza pasquale",
-   "pt": "À vítima pascal - Sequência de Páscoa",
    "de-AT": "Zum österlichen Lamm - Ostersequenz",
-   "fr": "A la victime pascale - Séquence de Pâques"
+   "fr": "A la victime pascale - Séquence de Pâques",
+   "pt-BR": "À vítima pascal - Sequência de Páscoa"
   },
   "stages": {
    "pt": "precatechumenate"
@@ -240,9 +240,9 @@
   "stage": "precatechumenate",
   "files": {
    "es": "A nadie demos ocasión de tropiezo - 2 Co 6, 3ss",
-   "pt": "A ninguém demos ocasião de tropeço - 2 Co 6, 3ss",
    "de-AT": "Brüder - 2 Kor 6, 3-16",
-   "it": "Fratelli, non diamo a nessuno motivo d' inciampo - 2 Cor 6, 3-16"
+   "it": "Fratelli, non diamo a nessuno motivo d' inciampo - 2 Cor 6, 3-16",
+   "pt-BR": "A ninguém demos ocasião de tropeço - 2 Co 6, 3ss"
   },
   "stages": {
    "de-AT": "election"
@@ -254,9 +254,9 @@
   "files": {
    "es": "A ti levanto mis ojos - Sal 123 (122)",
    "it": "A te levo i miei occhi - Sal 122 (123)",
-   "pt": "A Ti levanto meus olhos - Sal 123 (122)",
    "en": "To you i lift up my eyes - Ps 122",
-   "de-AT": "Zu dir erhebe ich meine Augen - Ps 123"
+   "de-AT": "Zu dir erhebe ich meine Augen - Ps 123",
+   "pt-BR": "A Ti levanto meus olhos - Sal 123 (122)"
   }
  },
  "22": {
@@ -265,8 +265,8 @@
   "files": {
    "es": "A ti, Señor, en mi clamor imploro - Sal 142 (141)",
    "it": "A te, Signore, con la mia voce - Sal 141 (142)",
-   "pt": "A ti, Senhor, com minha voz gritando imploro - Sal 142 (141)",
-   "de-AT": "Zu dir, o Herr, rufe ich - Ps 142"
+   "de-AT": "Zu dir, o Herr, rufe ich - Ps 142",
+   "pt-BR": "A ti, Senhor, com minha voz gritando imploro - Sal 142 (141)"
   },
   "stages": {
    "pt": "precatechumenate"
@@ -280,7 +280,7 @@
    "it": "A te, Signor, innalzo la mia anima - Sal 24 (25)",
    "de-AT": "Zu dir o herr erheb' ich meine Seele - Ps 25",
    "en": "To you, o lord, i lift up my soul - Ps 24",
-   "pt": "A ti, Senhor, levanto minha alma - Sal 25 (24)"
+   "pt-BR": "A ti, Senhor, levanto minha alma - Sal 25 (24)"
   }
  },
  "24": {
@@ -292,7 +292,7 @@
    "it": "A te, Signore,  si deve lode in Sion - Sal 64 (65)",
    "de-AT": "Dir o Herr gebührt Lobgesang in Zion - Ps 65",
    "en": "To you o lord - Ps 64 (65)",
-   "pt": "A ti, Senhor, se deve o louvor em Sião - Sal 65 (64)"
+   "pt-BR": "A ti, Senhor, se deve o louvor em Sião - Sal 65 (64)"
   },
   "stages": {
    "de-AT": "liturgy"
@@ -306,7 +306,7 @@
    "es": "Abraham - Gn 18, 1-5",
    "it": "Abramo - Gen 18, 1-5",
    "de-AT": "Abraham - Gn 18, 1-5",
-   "pt": "Abraão - Gn 18, 1-5"
+   "pt-BR": "Abraão - Gn 18, 1-5"
   }
  },
  "26": {
@@ -317,7 +317,7 @@
    "es": "Aclamad al Señor - Sal 100 (99)",
    "it": "Acclamate al Signore - Sal 99 (100)",
    "de-AT": "Jubelt dem Herrn - Ps 100",
-   "pt": "Aclamai o Senhor - Sal 100 (99)"
+   "pt-BR": "Aclamai o Senhor - Sal 100 (99)"
   },
   "stages": {
    "pt": "precatechumenate"
@@ -332,7 +332,7 @@
    "it": "Al risveglio mi sazierò del tuo volto, Signor - Sal 17 (16)",
    "de-AT": "Beim Erwachen - Ps 17",
    "en": "When i awake - Ps 16 (17)",
-   "pt": "Ao despertar - Sal 17 (16)"
+   "pt-BR": "Ao despertar - Sal 17 (16)"
   },
   "stages": {
    "pt": "precatechumenate",
@@ -345,9 +345,9 @@
   "files": {
    "es": "Alabad al Señor en el cielo - Sal 148",
    "it": "Lodate il Signore dai cieli - Sal 148",
-   "pt": "Louvai o Senhor nos Céus - Sal 148",
    "de-AT": "Lobet den Herrn vom Himmel her - Ps 148",
-   "en": "Praise him - Ps 148"
+   "en": "Praise him - Ps 148",
+   "pt-BR": "Louvai o Senhor nos Céus - Sal 148"
   }
  },
  "29": {
@@ -359,7 +359,7 @@
    "it": "Lodate iddio - Sal 150",
    "de-AT": "Lobet den Herrn - Ps 150",
    "en": "Alleluia praise god - Ps 150",
-   "pt": "Aleluia! Louvai o Senhor - Sal 150"
+   "pt-BR": "Aleluia! Louvai o Senhor - Sal 150"
   },
   "stages": {
    "pt": "precatechumenate"
@@ -374,7 +374,7 @@
    "es": "Aleluya, bendecid al Señor - Sal 134 (133)",
    "it": "Benedite il Signore - Sal 133 (134)",
    "de-AT": "Preiset den Herrn - Ps 134",
-   "pt": "Aleluia! Bendizei o Senhor - Sal 134 (133)"
+   "pt-BR": "Aleluia! Bendizei o Senhor - Sal 134 (133)"
   },
   "stages": {
    "pt": "precatechumenate"
@@ -388,7 +388,7 @@
    "es": "Aleluya, ya llegó el reino - Ap 19, 6-9",
    "it": "Già viene il regno - Ap 19, 6-9",
    "de-AT": "Schon kommt das Reich - Off 19, 6-9",
-   "pt": "Aleluia! Já chegou o Reino - Ap 19, 6-9"
+   "pt-BR": "Aleluia! Já chegou o Reino - Ap 19, 6-9"
   },
   "stages": {
    "pt": "precatechumenate"
@@ -402,7 +402,7 @@
    "it": "Alzate, o porte - Sal 23 (24)",
    "de-AT": "Erhebet euch ihr uralten Pforten - Ps 24",
    "en": "Gates lift up your heads - Ps 23 (24)",
-   "pt": "Alçai ó portas - Sal 24 (23)"
+   "pt-BR": "Alçai ó portas - Sal 24 (23)"
   }
  },
  "33": {
@@ -413,7 +413,7 @@
    "es": "Amo al Señor - Sal 116 (114-115)",
    "it": "Amo il Signore - Sal 114-115 (116)",
    "de-AT": "Ich werde erheben den Kelch des Keils - Ps 116",
-   "pt": "Amo o Senhor - Sal 116 (114-115)"
+   "pt-BR": "Amo o Senhor - Sal 116 (114-115)"
   },
   "stages": {
    "pt": "precatechumenate"
@@ -427,7 +427,7 @@
    "es": "Aquedah - Gn 22, 1-19",
    "it": "Akedà - Gen 22, 1-19",
    "de-AT": "Akedà - Gen 22, 1-19",
-   "pt": "Akedá - Tirado do Targum Neofiti sobre o sacrificio de Isaac (Gn 22,1-9)"
+   "pt-BR": "Akedá - Tirado do Targum Neofiti sobre o sacrificio de Isaac (Gn 22,1-9)"
   },
   "stages": {
    "pt": "precatechumenate"
@@ -440,7 +440,7 @@
    "es": "Ave María I - Lc 1, 28ss",
    "it": "Ave Maria I - Lc 1, 28.42",
    "de-AT": "Ave Maria",
-   "pt": "Ave Maria I - Lc 1, 28ss"
+   "pt-BR": "Ave Maria I - Lc 1, 28ss"
   },
   "stages": {
    "pt": "precatechumenate",
@@ -455,7 +455,7 @@
    "es": "Ave María II (1984) - Lc 1, 28ss",
    "it": "Ave Maria II (1984) - Lc 1, 28.42",
    "de-AT": "Ave Maria II (1984)",
-   "pt": "Ave Maria II (1984) - Lc 1, 28ss"
+   "pt-BR": "Ave Maria II (1984) - Lc 1, 28ss"
   },
   "stages": {
    "pt": "precatechumenate",
@@ -469,8 +469,8 @@
   "files": {
    "es": "Babilonia criminal - Sal 137 (136)",
    "it": "Sui fiumi di babilonia - Sal 137 (136)",
-   "pt": "Babilônia criminal - Sal 137 (136)",
-   "de-AT": "An den Flüssen Babylons - Ps 137"
+   "de-AT": "An den Flüssen Babylons - Ps 137",
+   "pt-BR": "Babilônia criminal - Sal 137 (136)"
   },
   "stages": {
    "de-AT": "liturgy"
@@ -484,9 +484,9 @@
   "files": {
    "es": "Balaam - Nm 23, 7-24",
    "it": "Canto di Balaam - Nm 23, 7-24",
-   "pt": "Balaão - Nm 23, 7-24",
    "de-AT": "Lied des Bileam - Num 23, 7-24",
-   "en": "Song of balaam (nm 23, 7-24)"
+   "en": "Song of balaam (nm 23, 7-24)",
+   "pt-BR": "Balaão - Nm 23, 7-24"
   }
  },
  "39": {
@@ -496,9 +496,9 @@
   "files": {
    "es": "Bendeciré al Señor en todo tiempo - Sal 34 (33)",
    "it": "Benedirò il Signore in ogni tempo (1986) - Sal 33 (34)",
-   "pt": "Bendirei o Senhor em todo tempo - Sal 34 (33)",
    "en": "I will bless the lord - Ps 34",
-   "de-AT": "Ich will den Herrn preisen allezeit - Ps 34"
+   "de-AT": "Ich will den Herrn preisen allezeit - Ps 34",
+   "pt-BR": "Bendirei o Senhor em todo tempo - Sal 34 (33)"
   }
  },
  "40": {
@@ -508,8 +508,8 @@
   "files": {
    "es": "Bendice, alma mía, a Yahveh - Sal 103 (102)",
    "it": "Benedici anima mia, Jahvè - Sal 102 (103)",
-   "pt": "Bendize, minha alma, a Iahweh - Sal 103 (102)",
-   "de-AT": "Preise meine Seele Jahwe - Ps 103"
+   "de-AT": "Preise meine Seele Jahwe - Ps 103",
+   "pt-BR": "Bendize, minha alma, a Iahweh - Sal 103 (102)"
   }
  },
  "41": {
@@ -520,8 +520,8 @@
   "files": {
    "es": "Bendita eres tú, María - Lc 1, 42-45",
    "it": "Benedetta sei tu, Maria - Lc 1, 42-44",
-   "pt": "Bendita és tu, Maria - Lc 1, 42-45",
-   "de-AT": "Maria, selige Maria - Lk 1, 42-44"
+   "de-AT": "Maria, selige Maria - Lk 1, 42-44",
+   "pt-BR": "Bendita és tu, Maria - Lc 1, 42-45"
   },
   "stages": {
    "pt": "precatechumenate"
@@ -532,8 +532,8 @@
   "files": {
    "es": "Bendito eres, Señor - Dn 3, 52-57",
    "it": "Canto dei tre giovani nella fornace ( I parte) - Dn 3, 52-57",
-   "pt": "Bendito sejas, Senhor - Dn 3, 52-57",
-   "de-AT": "Lobgesang der drei Jünglinge im Feuerofen 1. Teil - Dan 3, 52-57"
+   "de-AT": "Lobgesang der drei Jünglinge im Feuerofen 1. Teil - Dan 3, 52-57",
+   "pt-BR": "Bendito sejas, Senhor - Dn 3, 52-57"
   }
  },
  "43": {
@@ -541,8 +541,8 @@
   "files": {
    "es": "Benedictus - Lc 1, 67-80",
    "it": "Cantico di Zaccaria - Lc 1, 67-80",
-   "pt": "Benedictus - Lc 1, 67-80",
-   "de-AT": "Benedictus - Lk 1, 67-80"
+   "de-AT": "Benedictus - Lk 1, 67-80",
+   "pt-BR": "Benedictus - Lc 1, 67-80"
   },
   "stages": {
    "de-AT": "election"
@@ -565,9 +565,9 @@
   "files": {
    "es": "Canto de Moisés - Ex 15, 1-18",
    "it": "Cantico di Mosè - Ex 15, 1-18",
-   "pt": "Canto de Moisés - Ex 15, 1-18",
    "de-AT": "Lied des Moses - Ex 15, 1-18",
-   "en": "Song of moses (ex 15, 1-18)"
+   "en": "Song of moses (ex 15, 1-18)",
+   "pt-BR": "Canto de Moisés - Ex 15, 1-18"
   }
  },
  "46": {
@@ -575,9 +575,9 @@
   "files": {
    "es": "Caritas Christi urget nos - 2 Co 5, 14-15. 17. 21",
    "it": "Caritas Christi urget nos - 2 Co 5, 14-15. 17. 21",
-   "pt": "Caritas Christi Urget Nos - 2 Cor 5, 14.15.17.21",
    "de-AT": "Caritas Christi - 2 Kor 5, 14-17.21; 1 Kor 9 16b",
-   "en": "Caritas christi"
+   "en": "Caritas christi",
+   "pt-BR": "Caritas Christi Urget Nos - 2 Cor 5, 14.15.17.21"
   },
   "stages": {
    "de-AT": "election"
@@ -589,9 +589,9 @@
   "files": {
    "es": "Cántico de los tres jóvenes - Dn 3, 57-58",
    "it": "Canto dei tre giovani nella fornace - Dn 3, 57-58",
-   "pt": "Cântico dos três jovens - Dn 3, 57-58",
    "de-AT": "Lobgesang der drei Jünglinge 2. Teil - Dan 3, 57-88",
-   "en": "Song of daniel (dn 3, 57-88)"
+   "en": "Song of daniel (dn 3, 57-88)",
+   "pt-BR": "Cântico dos três jovens - Dn 3, 57-58"
   }
  },
  "48": {
@@ -601,9 +601,9 @@
   "files": {
    "es": "Como la cierva - Sal 42-43 (41-42)",
    "it": "Come una cerva anela - Sal 42-43 (41-42)",
-   "pt": "Como a corça - Sal 42-43 (41-42)",
    "de-AT": "Wie die Hinde lechzt - Ps 42",
-   "en": "As the deer yearns - Ps 41"
+   "en": "As the deer yearns - Ps 41",
+   "pt-BR": "Como a corça - Sal 42-43 (41-42)"
   }
  },
  "49": {
@@ -612,9 +612,9 @@
   "files": {
    "es": "Cómo es maravilloso - Sal 133 (132)",
    "it": "Come è bello, come dà gioia - Sal 133 (132)",
-   "pt": "Como é maravilhoso - Sal 133 (132)",
    "de-AT": "Seht, wie es schön ist - Ps 133",
-   "en": "How good it is - Ps 132 (133)"
+   "en": "How good it is - Ps 132 (133)",
+   "pt-BR": "Como é maravilhoso - Sal 133 (132)"
   }
  },
  "50": {
@@ -631,8 +631,8 @@
   "files": {
    "es": "Cuando Israel salió de Egipto - Sal 114 (113)",
    "it": "Quando Israele uscﬁ dall'egitto - Sal 114 (113)",
-   "pt": "Quando Israel saiu do Egito - Sal 114 (113)",
-   "de-AT": "Als Israel aus Ägypten auszog - Ps 114"
+   "de-AT": "Als Israel aus Ägypten auszog - Ps 114",
+   "pt-BR": "Quando Israel saiu do Egito - Sal 114 (113)"
   }
  },
  "52": {
@@ -643,8 +643,8 @@
   "files": {
    "es": "Cuando el Señor - Sal 126 (125)",
    "it": "Quando il Signore - Sal 126 (125)",
-   "pt": "Quando o Senhor - Sal 126 (125)",
-   "de-AT": "Als unser Herr - Ps 126"
+   "de-AT": "Als unser Herr - Ps 126",
+   "pt-BR": "Quando o Senhor - Sal 126 (125)"
   }
  },
  "53": {
@@ -655,8 +655,8 @@
   "files": {
    "es": "Dayenú",
    "it": "Dajenù",
-   "pt": "Dayenu - Da Hagadá da Páscoa Hebráica",
-   "de-AT": "Dajenù"
+   "de-AT": "Dajenù",
+   "pt-BR": "Dayenu - Da Hagadá da Páscoa Hebráica"
   },
   "stages": {
    "de-AT": "election"
@@ -668,8 +668,8 @@
   "files": {
    "es": "De profundis - Sal 130 (129)",
    "it": "Dal profondo a te grido - Sal 130 (129)",
-   "pt": "De profundis - Sal 130 (129)",
-   "de-AT": "Aus der Tiefe rufe ich zu dir - Ps 130"
+   "de-AT": "Aus der Tiefe rufe ich zu dir - Ps 130",
+   "pt-BR": "De profundis - Sal 130 (129)"
   }
  },
  "55": {
@@ -679,8 +679,8 @@
   "files": {
    "es": "Decid a los de corazón cansado - Is 35 4ss",
    "it": "Dite agli smarriti di cuore - Is 35 4ss",
-   "pt": "Dizei aos de coração cansado - Is 35, 4ss",
-   "de-AT": "Sagt es den im Herzen Verzagten - Jes 35, 4 ff"
+   "de-AT": "Sagt es den im Herzen Verzagten - Jes 35, 4 ff",
+   "pt-BR": "Dizei aos de coração cansado - Is 35, 4ss"
   }
  },
  "56": {
@@ -689,8 +689,8 @@
   "files": {
    "es": "Delante de los ángeles - Sal 138 (137)",
    "it": "Davanti agli angeli - Sal 138 (137)",
-   "pt": "Diante dos anjos - Sal 138 (137)",
-   "de-AT": "Im Angesicht der Engel - Ps 138"
+   "de-AT": "Im Angesicht der Engel - Ps 138",
+   "pt-BR": "Diante dos anjos - Sal 138 (137)"
   }
  },
  "57": {
@@ -699,8 +699,8 @@
   "files": {
    "es": "Dice el Señor a mi Señor - Sal 110 (109)",
    "it": "Dice il Signore al mio Signore - Sal 110 (109)",
-   "pt": "Diz o Senhor ao meu Senhor - Sal 110 (109)",
-   "de-AT": "So spricht der Herr zu meinem Herrn - Ps 110"
+   "de-AT": "So spricht der Herr zu meinem Herrn - Ps 110",
+   "pt-BR": "Diz o Senhor ao meu Senhor - Sal 110 (109)"
   }
  },
  "58": {
@@ -709,8 +709,8 @@
   "files": {
    "es": "Día de reposo - Jn 8, 52",
    "it": "Giorno di riposo - Jn 8, 52",
-   "pt": "Dia de repouso - Jo 8, 52",
-   "de-AT": "Dieser Tag der Ruhe - Joh 8, 52"
+   "de-AT": "Dieser Tag der Ruhe - Joh 8, 52",
+   "pt-BR": "Dia de repouso - Jo 8, 52"
   },
   "stages": {
    "de-AT": "liturgy"
@@ -723,8 +723,8 @@
   "files": {
    "es": "El Señor anuncia una noticia - Sal 68 (67)",
    "it": "Il Signore annuncia una notizia - Sal 68 (67)",
-   "pt": "O Senhor anuncia uma notícia - Sal 68 (67)",
-   "de-AT": "Der Herr verkündet eine Nachricht - Ps 68"
+   "de-AT": "Der Herr verkündet eine Nachricht - Ps 68",
+   "pt-BR": "O Senhor anuncia uma notícia - Sal 68 (67)"
   },
   "stages": {
    "de-AT": "liturgy"
@@ -736,9 +736,9 @@
   "files": {
    "es": "El Señor es mi pastor - Sal 23 (24)",
    "it": "Il Signore è il mio pastore - Sal 23 (22)",
-   "pt": "O Senhor é meu pastor - Sal 23 (22)",
    "de-AT": "Der Herr ist mein Hirte - Ps 23",
-   "en": "The lord is my shepherd - Ps 22 (23)"
+   "en": "The lord is my shepherd - Ps 22 (23)",
+   "pt-BR": "O Senhor é meu pastor - Sal 23 (22)"
   },
   "stages": {
    "de-AT": "liturgy"
@@ -751,8 +751,8 @@
   "files": {
    "es": "El jacal de los pastores - Ct 1, 2-8",
    "it": "Che mi baci - Ct 1, 2-8",
-   "pt": "A cabana dos pastores - Ct 1, 2-8",
-   "de-AT": "Mit Küssen seines Mundes - Hld 1, 2 ff"
+   "de-AT": "Mit Küssen seines Mundes - Hld 1, 2 ff",
+   "pt-BR": "A cabana dos pastores - Ct 1, 2-8"
   },
   "stages": {
    "pt": "election"
@@ -763,9 +763,9 @@
   "files": {
    "es": "El necio piensa que Dios no existe - Sal 13 (14)",
    "it": "Fino a quando - Sal 13 (12)",
-   "pt": "O Néscio pensa que Deus não existe - Sal 14 (13)",
    "de-AT": "Der Tor, er denkt sich - da ist kein Gott - Ps 14",
-   "en": "The fool thinks there is no God - Ps 13 (14)"
+   "en": "The fool thinks there is no God - Ps 13 (14)",
+   "pt-BR": "O Néscio pensa que Deus não existe - Sal 14 (13)"
   },
   "stages": {
    "de-AT": "liturgy"
@@ -777,8 +777,8 @@
   "files": {
    "es": "El pueblo que caminaba en las tinieblas - Is 9, 1-5",
    "it": "Il popolo che camminava nelle tenebre - Is 9, 1-5",
-   "pt": "O povo que caminhava nas trevas - Is 9, 1-5",
-   "de-AT": "Das Volk das im Finsternis wandelt - Jes 9, 1-5"
+   "de-AT": "Das Volk das im Finsternis wandelt - Jes 9, 1-5",
+   "pt-BR": "O povo que caminhava nas trevas - Is 9, 1-5"
   },
   "stages": {
    "de-AT": "election"
@@ -790,9 +790,9 @@
   "files": {
    "es": "Elí, Elí, lamá sabactaní - Sal 22 (21)",
    "it": "Eli, Eli, lammà sabactani - Sal 22 (21)",
-   "pt": "Eli, Eli, Lamá Sabactani - Sal 22 (21)",
    "de-AT": "Eli, Eli, Lama Sabachtani - Ps 22",
-   "en": "Eli, eli, lamma sabachtani - Ps 21 (22)"
+   "en": "Eli, eli, lamma sabachtani - Ps 21 (22)",
+   "pt-BR": "Eli, Eli, Lamá Sabactani - Sal 22 (21)"
   }
  },
  "65": {
@@ -802,8 +802,8 @@
   "files": {
    "es": "Eres digno de tomar el libro - Ap 5, 9ss",
    "it": "Canto dell'agnello - Ap 5, 9ss",
-   "pt": "Tu és digno de receber o livro - Ap 5,9ss",
-   "de-AT": "Lied des Lammes - Offb 5, 9 ff"
+   "de-AT": "Lied des Lammes - Offb 5, 9 ff",
+   "pt-BR": "Tu és digno de receber o livro - Ap 5,9ss"
   },
   "stages": {
    "pt": "catechumenate"
@@ -816,8 +816,8 @@
   "files": {
    "es": "Eres hermoso - Sal 45 (44)",
    "it": "Tu sei il più bello - Sal 45 (44)",
-   "pt": "Tu és formoso - Sal 45 (44)",
-   "de-AT": "Du bist der schönste - Ps 45"
+   "de-AT": "Du bist der schönste - Ps 45",
+   "pt-BR": "Tu és formoso - Sal 45 (44)"
   }
  },
  "67": {
@@ -825,7 +825,7 @@
   "lutes and vespers": true,
   "files": {
    "es": "Escóndeme en lo oculto de tu tienda - Sal 27 (26)",
-   "pt": "Esconde-me No Oculto De Tua Tenda - Sal 27 (26)"
+   "pt-BR": "Esconde-me No Oculto De Tua Tenda - Sal 27 (26)"
   }
  },
  "68": {
@@ -833,9 +833,9 @@
   "files": {
    "es": "Están rotas mis ataduras - Carmen 63",
    "it": "Sono rotti i miei legami - Carmen 63",
-   "pt": "Estão rotas minhas ataduras - Carmen 63 - Poema de Rabindranath Tagore",
    "de-AT": "Carmen '63 - von Tagore",
-   "en": "Carmen 63"
+   "en": "Carmen 63",
+   "pt-BR": "Estão rotas minhas ataduras - Carmen 63 - Poema de Rabindranath Tagore"
   },
   "stages": {
    "de-AT": "election"
@@ -847,8 +847,8 @@
   "files": {
    "es": "Evenu Shalom Alejem - Canto hebreo",
    "it": "Evenu Shalom Alejem - Canto ebraico",
-   "pt": "Evenu Shalom Alehem - Canto Popular Hebraico",
-   "de-AT": "Evenu shalom alechem - Hebräisches Lied"
+   "de-AT": "Evenu shalom alechem - Hebräisches Lied",
+   "pt-BR": "Evenu Shalom Alehem - Canto Popular Hebraico"
   }
  },
  "70": {
@@ -856,9 +856,9 @@
   "files": {
    "es": "Exultad, justos, en el Señor - Sal 32",
    "it": "Esultate giusti nel Signore - Sal 32",
-   "pt": "Exultai, justos, no Senhor - Sal 33 (32)",
    "de-AT": "Ihr Gerechten, jubelt vor dem Herrn - Ps 33",
-   "en": "Exult, you just in the lord - Ps 32"
+   "en": "Exult, you just in the lord - Ps 32",
+   "pt-BR": "Exultai, justos, no Senhor - Sal 33 (32)"
   }
  },
  "71": {
@@ -866,9 +866,9 @@
   "files": {
    "es": "Éste es el día en que actuó el Señor - Sal 118 (117)",
    "it": "Non morirò - Sal 118 (117)",
-   "pt": "Este é o dia que fez o Senhor - Sal 118 (117)",
    "de-AT": "Ich werde nicht sterben - Ps 118",
-   "en": "I shall not die - Ps 117 (118)"
+   "en": "I shall not die - Ps 117 (118)",
+   "pt-BR": "Este é o dia que fez o Senhor - Sal 118 (117)"
   }
  },
  "72": {
@@ -876,8 +876,8 @@
   "files": {
    "es": "Felicidad para el hombre - Sal 128 (127)",
    "it": "Felicità per l'uomo - Sal 128 (127)",
-   "pt": "Felicidade para o homem - Sal 128 (127)",
-   "de-AT": "Glücklich der Mensch - Ps 128"
+   "de-AT": "Glücklich der Mensch - Ps 128",
+   "pt-BR": "Felicidade para o homem - Sal 128 (127)"
   }
  },
  "73": {
@@ -888,9 +888,9 @@
   "files": {
    "es": "Gracias a Yahveh - Sal 136 (135)",
    "it": "Grazie a jahvè - Sal 136 (135)",
-   "pt": "Graças a Iahweh - Sal 136 (135)",
    "de-AT": "Danken wir dem Herrn - Ps 136",
-   "en": "Give thanks to the lord - Ps 135 (136)"
+   "en": "Give thanks to the lord - Ps 135 (136)",
+   "pt-BR": "Graças a Iahweh - Sal 136 (135)"
   },
   "stages": {
    "pt": "precatechumenate"
@@ -903,9 +903,9 @@
   "files": {
    "es": "Gritad jubilosos - Is 12",
    "it": "Gridate con gioia - Is 12, 1 ss",
-   "pt": "Gritai jubilosos - Is 12",
    "de-AT": "Frohlocket mit Freude - Jes 12, 1 ff",
-   "en": "Shout with joy. (is 12, 1ss)"
+   "en": "Shout with joy. (is 12, 1ss)",
+   "pt-BR": "Gritai jubilosos - Is 12"
   }
  },
  "75": {
@@ -914,8 +914,8 @@
   "files": {
    "es": "Hacia ti, morada santa - Himno",
    "it": "Verso te, o città santa - Inno",
-   "pt": "Para ti morada santa - Hino",
-   "de-AT": "Hin zu dir, Jerusalem"
+   "de-AT": "Hin zu dir, Jerusalem",
+   "pt-BR": "Para ti morada santa - Hino"
   }
  },
  "76": {
@@ -925,7 +925,7 @@
    "es": "Hasta cuándo - Sal 13 (12)",
    "de-AT": "Wie lange noch - Ps 13",
    "en": "How much longer - Ps 12 (13)",
-   "pt": "Até quando - Sal 13 (12)"
+   "pt-BR": "Até quando - Sal 13 (12)"
   },
   "stages": {
    "pt": "precatechumenate"
@@ -936,9 +936,9 @@
   "fraction of bread": true,
   "files": {
    "es": "He aquí mi siervo - Is 42",
-   "pt": "Eis o meu Servo - Primeiro canto do Servo de Iahweh - Is 42",
    "en": "This first song of the servant is 42",
-   "de-AT": "I. Lied des Knecht Jahwes - Jes 42"
+   "de-AT": "I. Lied des Knecht Jahwes - Jes 42",
+   "pt-BR": "Eis o meu Servo - Primeiro canto do Servo de Iahweh - Is 42"
   },
   "stages": {
    "pt": "catechumenate"
@@ -950,8 +950,8 @@
   "files": {
    "es": "He aquí que vengo presto - Ap 22, 12-16",
    "it": "Ecco qui io vengo presto - Ap 22, 12-16",
-   "pt": "Eis-me aqui que venho em breve - Ap 22, 12-16",
-   "de-AT": "Siehe da ich komme bald - Offb 22, 12-16"
+   "de-AT": "Siehe da ich komme bald - Offb 22, 12-16",
+   "pt-BR": "Eis-me aqui que venho em breve - Ap 22, 12-16"
   }
  },
  "79": {
@@ -961,9 +961,9 @@
   "files": {
    "es": "He esperado en el Señor - Sal 40 (39)",
    "it": "Ho sperato, ho sperato nel Signore - Sal 40 (39)",
-   "pt": "Esperei, esperei no Senhor - Sal 40 (39)",
    "de-AT": "Ich hoffte auf den Herrn - Ps 40",
-   "en": "I hoped, i hoped in the lord - Ps 39 (40)"
+   "en": "I hoped, i hoped in the lord - Ps 39 (40)",
+   "pt-BR": "Esperei, esperei no Senhor - Sal 40 (39)"
   }
  },
  "80": {
@@ -972,8 +972,8 @@
   "files": {
    "es": "Hijas de Jerusalén - Lc 23, 28-46",
    "it": "Figlie di gerusalemme - Lc 23, 28-46",
-   "pt": "Filhas de Jerusalém - Lc 23, 28-46",
-   "de-AT": "Töchter von Jerusalem - Lk 23, 28.31.34.43.46"
+   "de-AT": "Töchter von Jerusalem - Lk 23, 28.31.34.43.46",
+   "pt-BR": "Filhas de Jerusalém - Lc 23, 28-46"
   }
  },
  "81": {
@@ -981,8 +981,8 @@
   "easter": true,
   "files": {
    "es": "Himno a Cristo luz - Himno",
-   "pt": "Hino a Cristo Luz - Hino",
-   "de-AT": "Hymnus zu Christus dem Licht"
+   "de-AT": "Hymnus zu Christus dem Licht",
+   "pt-BR": "Hino a Cristo Luz - Hino"
   }
  },
  "82": {
@@ -992,8 +992,8 @@
   "files": {
    "es": "Himno a la kenosis - Flp 2, 1-11",
    "it": "Cristo gesù è il Signore - Flp 2, 1-11",
-   "pt": "Hino à kenosis - Fp 2, 1-11",
-   "de-AT": "Hymnus der Kenosis - Phil 2, 1-11"
+   "de-AT": "Hymnus der Kenosis - Phil 2, 1-11",
+   "pt-BR": "Hino à kenosis - Fp 2, 1-11"
   }
  },
  "83": {
@@ -1002,8 +1002,8 @@
   "files": {
    "es": "Himno de Adviento - Himno",
    "it": "Inno di Avvento - Inno",
-   "pt": "Hino do Advento - Hino",
-   "de-AT": "Adventhymnus"
+   "de-AT": "Adventhymnus",
+   "pt-BR": "Hino do Advento - Hino"
   },
   "stages": {
    "pt": "precatechumenate"
@@ -1016,8 +1016,8 @@
   "files": {
    "es": "Himno de Pascua - Himno",
    "it": "Inno di Pasqua - Inno",
-   "pt": "Hino da Páscoa - Hino",
-   "de-AT": "Osterhymnus"
+   "de-AT": "Osterhymnus",
+   "pt-BR": "Hino da Páscoa - Hino"
   },
   "stages": {
    "pt": "precatechumenate"
@@ -1028,8 +1028,8 @@
   "lutes and vespers": true,
   "files": {
    "es": "Himno de la Ascensión - Himno",
-   "pt": "Hino da Ascensão - Hino das Laudes do tempo Pascal, da Ascensão até Pentecostes",
-   "de-AT": "Hymnus der Vesper von Christi Himmelfahrt und Hymnus der Laudes von Christi Himmelfahrt bis Pfingsten"
+   "de-AT": "Hymnus der Vesper von Christi Himmelfahrt und Hymnus der Laudes von Christi Himmelfahrt bis Pfingsten",
+   "pt-BR": "Hino da Ascensão - Hino das Laudes do tempo Pascal, da Ascensão até Pentecostes"
   },
   "stages": {
    "de-AT": "liturgy"
@@ -1043,9 +1043,9 @@
   "files": {
    "es": "Huye amado mío - Ct 8, 10-14",
    "it": "Tu che abiti nei giardini - Ct 8, 10-14",
-   "pt": "Foge, ó meu amado - Ct 8, 10-14",
    "de-AT": "Du die du lebst in den Gärten - Hl 8, 10-14",
-   "en": "You who dwell in the gardens (flee my beloved) (songs 8, append)"
+   "en": "You who dwell in the gardens (flee my beloved) (songs 8, append)",
+   "pt-BR": "Foge, ó meu amado - Ct 8, 10-14"
   },
   "stages": {
    "pt": "election"
@@ -1057,9 +1057,9 @@
   "files": {
    "es": "Id y anunciad a mis hermanos - Mt 28, 7-10.16-20",
    "it": "Andate ed annunziate ai miei fratelli - Mt 28, 16-20",
-   "pt": "Ide e anunciai a meus irmãos - Mt 28, 7-10.16-20",
    "de-AT": "Geht und verkündet meinen Brüdern - Mt 28, 16-20",
-   "en": "Go and announce to my brothers (Mt 38,16-20)"
+   "en": "Go and announce to my brothers (Mt 38,16-20)",
+   "pt-BR": "Ide e anunciai a meus irmãos - Mt 28, 7-10.16-20"
   }
  },
  "88": {
@@ -1067,8 +1067,8 @@
   "lent": true,
   "files": {
    "es": "Improperios - Himno",
-   "pt": "Impropérios - Da Liturgia da Adoração da Cruz da Sexta-feira Santa",
-   "de-AT": "Klagelieder des Herrn"
+   "de-AT": "Klagelieder des Herrn",
+   "pt-BR": "Impropérios - Da Liturgia da Adoração da Cruz da Sexta-feira Santa"
   }
  },
  "89": {
@@ -1078,9 +1078,9 @@
   "files": {
    "es": "Jerusalén reconstruida - Tb 13, 11-17",
    "it": "Benedici anima mia il Signore (Cantico di Tobia) - Tb 13, 11-18",
-   "pt": "Jerusalém reconstruída - Tb 13, 11-17",
    "de-AT": "Preise meine Seele den Herrn - Tob 13, 10-18",
-   "en": "Song of tobit (tob 13, 10-18)"
+   "en": "Song of tobit (tob 13, 10-18)",
+   "pt-BR": "Jerusalém reconstruída - Tb 13, 11-17"
   },
   "stages": {
    "pt": "precatechumenate"
@@ -1092,8 +1092,8 @@
   "files": {
    "es": "La marcha es dura - Himno",
    "it": "La marcia è dura - Inno",
-   "pt": "A marcha é dura - Hino",
-   "de-AT": "Der Weg is hart"
+   "de-AT": "Der Weg is hart",
+   "pt-BR": "A marcha é dura - Hino"
   },
   "stages": {
    "de-AT": "liturgy"
@@ -1112,8 +1112,8 @@
   "files": {
    "es": "La siega de las naciones - Jn 4, 31-38",
    "it": "La mietitura delle nazioni - Jn 4, 31-38",
-   "pt": "A ceifa das nações - Jo 4, 31-38",
-   "de-AT": "Die Ernte der Nationen - Joh 4, 31-38"
+   "de-AT": "Die Ernte der Nationen - Joh 4, 31-38",
+   "pt-BR": "A ceifa das nações - Jo 4, 31-38"
   },
   "stages": {
    "de-AT": "liturgy"
@@ -1127,8 +1127,8 @@
   "files": {
    "es": "Levanto mis ojos a los montes - Sal 121 (120)",
    "it": "Alzo gli occhi verso i monti - Sal 120 (121)",
-   "pt": "Levanto os meus olhos para os montes - Sal 121 (120)",
-   "de-AT": "Ich hebe meine Augen zu den Bergen - Ps 121"
+   "de-AT": "Ich hebe meine Augen zu den Bergen - Ps 121",
+   "pt-BR": "Levanto os meus olhos para os montes - Sal 121 (120)"
   }
  },
  "94": {
@@ -1139,9 +1139,9 @@
   "files": {
    "es": "Llegue hasta tu presencia mi clamor - Sal 119 (118)",
    "it": "Giunga la mia preghiera fino a te - Sal 119 (118)",
-   "pt": "Chegue à tua presença meu clamor - Sal 119 (118)",
    "de-AT": "Zu dir gelange mein Bitten - Ps 119",
-   "en": "Lord, lord jesus - Ps 118 (119)"
+   "en": "Lord, lord jesus - Ps 118 (119)",
+   "pt-BR": "Chegue à tua presença meu clamor - Sal 119 (118)"
   }
  },
  "95": {
@@ -1152,8 +1152,8 @@
   "files": {
    "es": "Llévame al cielo - Flp 1, 23",
    "it": "Portami in cielo - Flp 1, 23",
-   "pt": "Leva-me ao Céu - Fp 1, 23",
-   "de-AT": "Bring mich in den Himmel - Phil 1, 23"
+   "de-AT": "Bring mich in den Himmel - Phil 1, 23",
+   "pt-BR": "Leva-me ao Céu - Fp 1, 23"
   },
   "stages": {
    "de-AT": "election"
@@ -1166,9 +1166,9 @@
   "files": {
    "es": "Magníficat - Lc 1, 46-55",
    "it": "Magnificat - Lc 1, 46-55",
-   "pt": "Magnificat - Lc 1, 46-55",
    "de-AT": "Magnificat - Lk 1, 46-55",
-   "en": "Magnificat (lk. 1, 46-55)"
+   "en": "Magnificat (lk. 1, 46-55)",
+   "pt-BR": "Magnificat - Lc 1, 46-55"
   }
  },
  "97": {
@@ -1177,8 +1177,8 @@
   "files": {
    "es": "María de Jasna Göra - Himno",
    "it": "Maria di jasna gòra - Inno",
-   "pt": "Maria de Jasna Göra - Hino à Virgem de Jasna Göra, Chestokowa, Polônia",
-   "de-AT": "Maria von Jasna Góra"
+   "de-AT": "Maria von Jasna Góra",
+   "pt-BR": "Maria de Jasna Göra - Hino à Virgem de Jasna Göra, Chestokowa, Polônia"
   }
  },
  "98": {
@@ -1188,8 +1188,8 @@
   "files": {
    "es": "María, casa de bendición - Jn 2,1-11",
    "it": "Maria, casa di benedizione - Jn 2,1-11",
-   "pt": "Maria, Casa da Benção - As Bodas de Caná - Jo 2, 1-11",
-   "de-AT": "Maria, Haus des Segens"
+   "de-AT": "Maria, Haus des Segens",
+   "pt-BR": "Maria, Casa da Benção - As Bodas de Caná - Jo 2, 1-11"
   }
  },
  "99": {
@@ -1198,8 +1198,8 @@
   "files": {
    "es": "María, madre de la Iglesia - Jn 19, 26-34",
    "it": "Maria madre della chiesa - Jn 19, 26-34",
-   "pt": "Maria, Mãe da Igreja - Jo 19, 26-34",
-   "de-AT": "Maria Mutter der Kirche - Joh 19, 26-34"
+   "de-AT": "Maria Mutter der Kirche - Joh 19, 26-34",
+   "pt-BR": "Maria, Mãe da Igreja - Jo 19, 26-34"
   }
  },
  "100": {
@@ -1208,9 +1208,9 @@
   "files": {
    "es": "María, madre del camino ardiente - Himno",
    "it": "Maria, madre del cammino ardente - Inno",
-   "pt": "Maria, Mãe do caminho ardente - Hino à Virgem do Terceiro Milênio",
    "de-AT": "Maria, Mutter des brennenden Weges",
-   "en": "Mary, mother of the burning way"
+   "en": "Mary, mother of the burning way",
+   "pt-BR": "Maria, Mãe do caminho ardente - Hino à Virgem do Terceiro Milênio"
   }
  },
  "101": {
@@ -1220,8 +1220,8 @@
   "files": {
    "es": "María, pequeña María - Himno",
    "it": "Maria, piccola Maria - Inno",
-   "pt": "Maria, pequena Maria - Hino",
-   "de-AT": "Maria, kleine Maria"
+   "de-AT": "Maria, kleine Maria",
+   "pt-BR": "Maria, pequena Maria - Hino"
   }
  },
  "102": {
@@ -1231,9 +1231,9 @@
   "files": {
    "es": "Me enseñarás el camino de la vida - Sal 15",
    "it": "Mi indicherai il sentiero della vita - Sal 15",
-   "pt": "Mostrar-me-ás o Caminho Da Vida - Sal 16 (15)",
    "de-AT": "Du wirst mich den Weg des Lebens weisen - Ps 16",
-   "en": "You will show me the path of life  - Ps 16"
+   "en": "You will show me the path of life  - Ps 16",
+   "pt-BR": "Mostrar-me-ás o Caminho Da Vida - Sal 16 (15)"
   },
   "stages": {
    "pt": "precatechumenate"
@@ -1244,8 +1244,8 @@
   "files": {
    "es": "Me has seducido Señor - Jr 20, 7-18",
    "it": "Mi hai sedotto, Signore - Jr 20, 7-18",
-   "pt": "Seduziste-me, Senhor - Jr 20, 7-18",
-   "de-AT": "Du hast mich verführt o Herr - Jer 20, 7-18"
+   "de-AT": "Du hast mich verführt o Herr - Jer 20, 7-18",
+   "pt-BR": "Seduziste-me, Senhor - Jr 20, 7-18"
   }
  },
  "104": {
@@ -1254,9 +1254,9 @@
   "files": {
    "es": "Mirad que estupendo - Sal 133 (132)",
    "it": "Guardate com'è bello, gustate quant'è soave - Sal 133 (132)",
-   "pt": "Olhai que estupendo - Sal 133 (132)",
    "de-AT": "Seht, wie es schön ist, kostet, wie lieblich - Ps 133",
-   "en": "Look how it is good - Ps 132 (133)"
+   "en": "Look how it is good - Ps 132 (133)",
+   "pt-BR": "Olhai que estupendo - Sal 133 (132)"
   },
   "stages": {
    "pt": "precatechumenate"
@@ -1269,9 +1269,9 @@
   "files": {
    "es": "Misericordia mía, misericordia - Sal 51 (50)",
    "it": "Misericordia dio, misericordia - Sal 51 (50)",
-   "pt": "Misericórdia minha, misericórdia - Sal 51 (50) 'Miserere'",
    "de-AT": "Gott sei mir gnädig - Ps 51",
-   "en": "Have mercy on me - Ps 50 (51)"
+   "en": "Have mercy on me - Ps 50 (51)",
+   "pt-BR": "Misericórdia minha, misericórdia - Sal 51 (50) 'Miserere'"
   }
  },
  "106": {
@@ -1279,9 +1279,9 @@
   "files": {
    "es": "Mucho me han perseguido - Sal 129",
    "it": "Molto mi hanno perseguitato - Sal 129",
-   "pt": "Muito me perseguiram - Sal 129 (128)",
    "de-AT": "Oft haben sie mich verfolgt - Ps 129",
-   "en": "Much have they persecuted me - Ps 128"
+   "en": "Much have they persecuted me - Ps 128",
+   "pt-BR": "Muito me perseguiram - Sal 129 (128)"
   }
  },
  "107": {
@@ -1290,8 +1290,8 @@
   "communion": true,
   "files": {
    "es": "No está aquí, resucitó - Mt 28, 1-8",
-   "pt": "Não está aqui, Ressuscitou - Mt 28, 1-8",
-   "de-AT": "Er ist nicht hier - Mt 28, 1-8"
+   "de-AT": "Er ist nicht hier - Mt 28, 1-8",
+   "pt-BR": "Não está aqui, Ressuscitou - Mt 28, 1-8"
   },
   "stages": {
    "pt": "precatechumenate"
@@ -1303,9 +1303,9 @@
   "files": {
    "es": "No hay en él parecer - Is 53, 2ss",
    "it": "Non c'è in lui bellezza - Is 53, 2ss",
-   "pt": "Não há nele aparência - Quarto canto do Servo de Iahweh - Is 53, 2ss",
    "de-AT": "An ihm ist keine Schönheit - IV. Gottesknechtkied - Jes 53, 2 ff",
-   "en": "In him there is no beauty (is 53, 2ss)"
+   "en": "In him there is no beauty (is 53, 2ss)",
+   "pt-BR": "Não há nele aparência - Quarto canto do Servo de Iahweh - Is 53, 2ss"
   },
   "stages": {
    "pt": "catechumenate"
@@ -1316,8 +1316,8 @@
   "files": {
    "es": "Oh Dios, por tu nombre sálvame - Sal 54 (53)",
    "it": "Oh dio per il tuo nome salvami - Sal 54 (53)",
-   "pt": "Ó Deus, pelo teu nome, salva-me - Sal 54 (53)",
-   "de-AT": "O Gott durch deinen Namen rette mich - Ps 54"
+   "de-AT": "O Gott durch deinen Namen rette mich - Ps 54",
+   "pt-BR": "Ó Deus, pelo teu nome, salva-me - Sal 54 (53)"
   }
  },
  "110": {
@@ -1328,8 +1328,8 @@
   "files": {
    "es": "Oh Jesús, amor mío - Himno",
    "it": "O gesù amore mio - Inno",
-   "pt": "Ó Jesus, meu amor - Hino",
-   "de-AT": "O Jesus, meine Liebe"
+   "de-AT": "O Jesus, meine Liebe",
+   "pt-BR": "Ó Jesus, meu amor - Hino"
   }
  },
  "111": {
@@ -1339,9 +1339,9 @@
   "files": {
    "es": "Oh Señor, nuestro Dios - Sal 8",
    "it": "O Signore nostro dio - Sal 8",
-   "pt": "Ó Senhor, nosso Deus - Sal 8",
    "de-AT": "O mein Herr, du unser Gott - Ps 8",
-   "en": "O lord, our god - Ps 8"
+   "en": "O lord, our god - Ps 8",
+   "pt-BR": "Ó Senhor, nosso Deus - Sal 8"
   }
  },
  "112": {
@@ -1350,8 +1350,8 @@
   "files": {
    "es": "Oh cielos, lloved de lo alto - Is 45, 8",
    "it": "O cieli piovete dall'alto - Is 45, 8",
-   "pt": "Ó céus, chovei do alto - Is 45, 8",
-   "de-AT": "O Himmel lasst regnen von oben - Jes 45, 8"
+   "de-AT": "O Himmel lasst regnen von oben - Jes 45, 8",
+   "pt-BR": "Ó céus, chovei do alto - Is 45, 8"
   }
  },
  "113": {
@@ -1361,8 +1361,8 @@
   "files": {
    "es": "Oh muerte, dónde está tu victoria - 1 Co 15",
    "it": "O morte dov'è la tua vittoria - 1 Co 15",
-   "pt": "Ó morte, onde está tua vitória - 1 Cor 15",
-   "de-AT": "O Tod wo ist dein Sieg - 1 Kor 15"
+   "de-AT": "O Tod wo ist dein Sieg - 1 Kor 15",
+   "pt-BR": "Ó morte, onde está tua vitória - 1 Cor 15"
   }
  },
  "114": {
@@ -1370,8 +1370,8 @@
   "entrance": true,
   "files": {
    "es": "Os tomaré de entre las naciones - Ez 36, 24-28",
-   "pt": "Vos tomarei dentre as nações - Cântico de Ezequiel - Ez 36, 24-28",
-   "de-AT": "Ich Hole euch heraus - Ez 36, 24-28"
+   "de-AT": "Ich Hole euch heraus - Ez 36, 24-28",
+   "pt-BR": "Vos tomarei dentre as nações - Cântico de Ezequiel - Ez 36, 24-28"
   }
  },
  "115": {
@@ -1381,8 +1381,8 @@
   "files": {
    "es": "Pentecostés - Himno",
    "it": "Pentecoste - Inno",
-   "pt": "Pentecostes - Hino",
-   "de-AT": "Pfingsten"
+   "de-AT": "Pfingsten",
+   "pt-BR": "Pentecostes - Hino"
   }
  },
  "116": {
@@ -1391,8 +1391,8 @@
   "files": {
    "es": "Por el amor de mis amigos - Sal 122 (121)",
    "it": "Per amore dei miei fratelli - Sal 122 (121)",
-   "pt": "Por amor de meus amigos - Sal 122 (121)",
-   "de-AT": "Aus Liebe zu meinen Brüdern - Ps 122"
+   "de-AT": "Aus Liebe zu meinen Brüdern - Ps 122",
+   "pt-BR": "Por amor de meus amigos - Sal 122 (121)"
   },
   "stages": {
    "pt": "precatechumenate"
@@ -1406,8 +1406,8 @@
   "files": {
    "es": "Por qué esta noche es diferente - Canto de los niños",
    "it": "Che cosa c'è di diverso questa notte - canzone per bambini",
-   "pt": "Por que esta noite é diferente - Canto das crianças para a Noite de Páscoa - da Hagadá da Páscoa Hebráica",
-   "de-AT": "Was ist denn anders - Kinderlied für die Osternacht"
+   "de-AT": "Was ist denn anders - Kinderlied für die Osternacht",
+   "pt-BR": "Por que esta noite é diferente - Canto das crianças para a Noite de Páscoa - da Hagadá da Páscoa Hebráica"
   }
  },
  "118": {
@@ -1417,9 +1417,9 @@
   "files": {
    "es": "Por qué las gentes conjuran - Sal 2",
    "it": "Perchè le genti congiurano - Sal 2",
-   "pt": "Por que confabulam as nações - Sal 2",
    "de-AT": "Warum toben die Völker - Ps 2",
-   "en": "Why do the nations conspire - Ps 2"
+   "en": "Why do the nations conspire - Ps 2",
+   "pt-BR": "Por que confabulam as nações - Sal 2"
   }
  },
  "119": {
@@ -1429,8 +1429,8 @@
   "files": {
    "es": "Porque mi yugo es suave - Mt 11, 28-30",
    "it": "Venite a me voi tutti - Mt 11, 28-30",
-   "pt": "Porque o meu jugo é suave - Mt 11, 28-30",
-   "de-AT": "Kommt zu mir ihr alle - Mt 11, 28-30"
+   "de-AT": "Kommt zu mir ihr alle - Mt 11, 28-30",
+   "pt-BR": "Porque o meu jugo é suave - Mt 11, 28-30"
   }
  },
  "120": {
@@ -1439,9 +1439,9 @@
   "files": {
    "es": "Qué amables son tus moradas, Señor - Sal 84 (83)",
    "it": "Quanto sono amabili le tue dimore - Sal 84 (83)",
-   "pt": "Como são amáveis tuas moradas - Sal 84 (83)",
    "de-AT": "Wie lieblich sind deine Wohnungen - Ps 84",
-   "en": "How lovely are your dwelling places - Ps 83 (84)"
+   "en": "How lovely are your dwelling places - Ps 83 (84)",
+   "pt-BR": "Como são amáveis tuas moradas - Sal 84 (83)"
   }
  },
  "121": {
@@ -1449,8 +1449,8 @@
   "peace and offerings": true,
   "files": {
    "es": "Qué estupendo, qué alegría - Sal 133 (132)",
-   "pt": "Que estupendo, que alegria - Sal 133 (132)",
-   "de-AT": "Seht, wie es schön ist, seht, welche Freude - Ps 133"
+   "de-AT": "Seht, wie es schön ist, seht, welche Freude - Ps 133",
+   "pt-BR": "Que estupendo, que alegria - Sal 133 (132)"
   }
  },
  "122": {
@@ -1459,8 +1459,8 @@
   "files": {
    "es": "Quiero andar madre a Jerusalén - Canto sefardí",
    "it": "Voglio andare a gerusalemme - Canto sefardita",
-   "pt": "Quero andar - Canto Sefardita",
-   "de-AT": "Ich will wandern nach Jerusalem - Sepharditisches Lied"
+   "de-AT": "Ich will wandern nach Jerusalem - Sepharditisches Lied",
+   "pt-BR": "Quero andar - Canto Sefardita"
   },
   "stages": {
    "pt": "election"
@@ -1472,9 +1472,9 @@
   "files": {
    "es": "Quiero cantar - Sal 57 (56)",
    "it": "Voglio cantare - Sal 57 (56)",
-   "pt": "Quero cantar - Sal 57 (56)",
    "de-AT": "Ich möchte singen - Ps 57",
-   "en": "I want to sing - Ps 56 (57)"
+   "en": "I want to sing - Ps 56 (57)",
+   "pt-BR": "Quero cantar - Sal 57 (56)"
   }
  },
  "124": {
@@ -1484,8 +1484,8 @@
   "files": {
    "es": "Quién es ésta que sube del desierto - Ct 8, 5-7",
    "it": "Chi è colei - Ct 8, 5-7",
-   "pt": "Quem é esta que sobe do deserto - Ct 8, 5-7",
-   "de-AT": "Wer ist diese - Hld 8, 5-7"
+   "de-AT": "Wer ist diese - Hld 8, 5-7",
+   "pt-BR": "Quem é esta que sobe do deserto - Ct 8, 5-7"
   },
   "stages": {
    "pt": "election"
@@ -1498,9 +1498,9 @@
   "files": {
    "es": "Quién nos separará - Rm 8, 33-39",
    "it": "Chi ci separerà - Rm 8, 33-39",
-   "pt": "Quem nos separará - Rm 8, 33-39",
    "de-AT": "Wer wird uns trennen - Röm 8, 33-39",
-   "en": "Who will separate us (rom 8, 33-39)"
+   "en": "Who will separate us (rom 8, 33-39)",
+   "pt-BR": "Quem nos separará - Rm 8, 33-39"
   }
  },
  "126": {
@@ -1510,9 +1510,9 @@
   "files": {
    "es": "Resucitó - Himno pascual",
    "it": "Risuscitò - Inno pasquale",
-   "pt": "Ressuscitou - 1 Cor 15",
    "de-AT": "Er ist auferstanden - 1 Kor 15",
-   "en": "He rose from death (1 cor., 15)"
+   "en": "He rose from death (1 cor., 15)",
+   "pt-BR": "Ressuscitou - 1 Cor 15"
   }
  },
  "127": {
@@ -1522,8 +1522,8 @@
   "files": {
    "es": "Salve, reina de los cielos - Himno",
    "it": "Salve, regina dei cieli - Inno",
-   "pt": "Salve Rainha dos Céus - Hino",
-   "de-AT": "Ave, du Himmelskönigin"
+   "de-AT": "Ave, du Himmelskönigin",
+   "pt-BR": "Salve Rainha dos Céus - Hino"
   },
   "stages": {
    "de-AT": "election"
@@ -1536,8 +1536,8 @@
   "files": {
    "es": "Se encontraron dos ángeles - Canto de los niños",
    "it": "C'erano due angeli - canzone per bambini",
-   "pt": "Encontraram-se dois Anjos - Canto das Crianças",
-   "de-AT": "Es waren einmal zwei Engel"
+   "de-AT": "Es waren einmal zwei Engel",
+   "pt-BR": "Encontraram-se dois Anjos - Canto das Crianças"
   }
  },
  "129": {
@@ -1547,9 +1547,9 @@
   "files": {
    "es": "Señor, ayúdame a no dudar de ti - Himno",
    "it": "Signore aiutami, Signore - Inno",
-   "pt": "Senhor, ajuda-me a não duvidar de Ti - São João da Cruz",
    "de-AT": "O Herr, hilf mir, o Herr",
-   "en": "Lord help me"
+   "en": "Lord help me",
+   "pt-BR": "Senhor, ajuda-me a não duvidar de Ti - São João da Cruz"
   }
  },
  "130": {
@@ -1559,9 +1559,9 @@
   "files": {
    "es": "Señor, escucha mi oración - Sal 143",
    "it": "Signore ascolta la mia preghiera - Sal 143",
-   "pt": "Tu que és Fiel - Sal 143 (142)",
    "de-AT": "Herr, höre mein Gebet - Ps 143",
-   "en": "Lord listen to my prayer - Ps 142 (143)"
+   "en": "Lord listen to my prayer - Ps 142 (143)",
+   "pt-BR": "Tu que és Fiel - Sal 143 (142)"
   }
  },
  "131": {
@@ -1569,9 +1569,9 @@
   "files": {
    "es": "Señor, no me corrijas en tu cólera - Sal 6",
    "it": "Signore, non punirmi nel tuo sdegno - Sal 6",
-   "pt": "Senhor, não me corrijas na tua cólera - Sal 6",
    "en": "Lord do not reprove me - Ps 6) ()",
-   "de-AT": "Herr, straf mich nicht in deinem Zorn - Ps 6"
+   "de-AT": "Herr, straf mich nicht in deinem Zorn - Ps 6",
+   "pt-BR": "Senhor, não me corrijas na tua cólera - Sal 6"
   }
  },
  "132": {
@@ -1581,9 +1581,9 @@
   "files": {
    "es": "Shlom-lej Maríam - Ave María en arameo antiguo",
    "it": "Shlom lech mariàm - Ave Maria nell'aramaico antico",
-   "pt": "Shlom-Lej Mariam - Ave Maria em Aramaico Antigo",
    "de-AT": "Shlom Lech Mariam",
-   "en": "Shlom lekh mariam"
+   "en": "Shlom lekh mariam",
+   "pt-BR": "Shlom-Lej Mariam - Ave Maria em Aramaico Antigo"
   }
  },
  "133": {
@@ -1593,9 +1593,9 @@
   "files": {
    "es": "Si el Señor no construye la casa - Sal 127 (126)",
    "it": "Se il Signore non costruisce la casa - Sal 127 (126)",
-   "pt": "Se o Senhor não constrói a casa - Sal 127 (126)",
    "en": "When the lord brought home - Ps 125 (126)",
-   "de-AT": "Wenn der Herr das Haus nicht baut - Ps 127"
+   "de-AT": "Wenn der Herr das Haus nicht baut - Ps 127",
+   "pt-BR": "Se o Senhor não constrói a casa - Sal 127 (126)"
   }
  },
  "134": {
@@ -1604,9 +1604,9 @@
   "files": {
    "es": "Si hoy escucháis su voz - Sal 95 (94)",
    "it": "Se oggi ascoltate la sua voce - Sal 95 (94)",
-   "pt": "Se hoje escutardes a sua voz - Sal 95 (94)",
    "de-AT": "Wenn ihr heute - Ps 95",
-   "en": "If today you listen to his voice  - Ps 94 (95)"
+   "en": "If today you listen to his voice  - Ps 94 (95)",
+   "pt-BR": "Se hoje escutardes a sua voz - Sal 95 (94)"
   }
  },
  "135": {
@@ -1615,8 +1615,8 @@
   "files": {
    "es": "Si me he refugiado en el Señor - Sal 11 (10)",
    "it": "Se nel Signore mi sono rifugiato - Sal 11 (10)",
-   "pt": "Se me refugiei no Senhor - Sal 11 (10)",
-   "de-AT": "Wenn ich beim Herrn habe  Zuflucht gefunden - Ps 11"
+   "de-AT": "Wenn ich beim Herrn habe  Zuflucht gefunden - Ps 11",
+   "pt-BR": "Se me refugiei no Senhor - Sal 11 (10)"
   }
  },
  "136": {
@@ -1625,8 +1625,8 @@
   "files": {
    "es": "Sión, madre de todos los pueblos - Sal 87 (86)",
    "it": "Le sue fondamenta - Sal 87 (86)",
-   "pt": "Sião, mãe de todos os povos - Sal 87 (86)",
-   "de-AT": "Ihre Grundmauern - Ps 87"
+   "de-AT": "Ihre Grundmauern - Ps 87",
+   "pt-BR": "Sião, mãe de todos os povos - Sal 87 (86)"
   }
  },
  "137": {
@@ -1634,8 +1634,8 @@
   "signing to the virgin": true,
   "files": {
    "es": "Sola a solo - Himno",
-   "pt": "Só a só - Hino",
-   "de-AT": "Solo a Sola - Hymnus"
+   "de-AT": "Solo a Sola - Hymnus",
+   "pt-BR": "Só a só - Hino"
   }
  },
  "138": {
@@ -1644,8 +1644,8 @@
   "signing to the virgin": true,
   "files": {
    "es": "Stabat mater dolorosa - Himno",
-   "pt": "Stabat Mater dolorosa - Sequência do século XIII",
-   "de-AT": "Stabat mater"
+   "de-AT": "Stabat mater",
+   "pt-BR": "Stabat Mater dolorosa - Sequência do século XIII"
   }
  },
  "139": {
@@ -1653,9 +1653,9 @@
   "files": {
    "es": "Te estoy llamando, Señor - Sal 141 (140)",
    "it": "Ti sto chiamando - Sal 141 (140)",
-   "pt": "Estou chamando-te - Sal 141 (140)",
    "de-AT": "Ich rufe zu dir - Ps 141",
-   "en": "I am calling you (against the seduction of sin) - Ps 141"
+   "en": "I am calling you (against the seduction of sin) - Ps 141",
+   "pt-BR": "Estou chamando-te - Sal 141 (140)"
   }
  },
  "140": {
@@ -1664,8 +1664,8 @@
   "files": {
    "es": "Te he manifestado mi pecado - Sal 32 (31)",
    "it": "Ti ho manifestato il mio peccato - Sal 32 (31)",
-   "pt": "Confessei a ti o meu pecado - Sal 32 (31)",
-   "de-AT": "Meine Sünde hab ich dir bekannt - Ps 32"
+   "de-AT": "Meine Sünde hab ich dir bekannt - Ps 32",
+   "pt-BR": "Confessei a ti o meu pecado - Sal 32 (31)"
   }
  },
  "141": {
@@ -1675,8 +1675,8 @@
   "files": {
    "es": "Tú eres mi esperanza, Señor - Oda 29 de Salomón",
    "it": "Tu sei la mia speranza Signore - Ode 29 di Salomone",
-   "pt": "Tu és a minha esperança, Senhor - Ode XXIX de Salomão",
-   "de-AT": "Du bist meine Hoffnung Herr - XXIX. Ode Salomos"
+   "de-AT": "Du bist meine Hoffnung Herr - XXIX. Ode Salomos",
+   "pt-BR": "Tu és a minha esperança, Senhor - Ode XXIX de Salomão"
   },
   "stages": {
    "pt": "election"
@@ -1691,8 +1691,8 @@
    "es": "Un retoño brota del tronco de Jesé - Is 11, 1-11",
    "it": "Un germoglio spunta dal tronco di jesse - Is 11, 1-11",
    "en": "A shoot springs from the stock of Jesse - Is 11, 1-11",
-   "pt": "Um rebento brota do tronco de Jessé - Is 11, 1-11",
-   "de-AT": "Ein Spross bricht hervor aus dem Baumstumpf von Jesse - Jes 11"
+   "de-AT": "Ein Spross bricht hervor aus dem Baumstumpf von Jesse - Jes 11",
+   "pt-BR": "Um rebento brota do tronco de Jessé - Is 11, 1-11"
   }
  },
  "143": {
@@ -1703,8 +1703,8 @@
   "files": {
    "es": "Una gran señal - Ap 12",
    "it": "Una donna vestita di sole - Ap 12",
-   "pt": "Um Grande Sinal - Ap 12",
-   "de-AT": "Ein Großes Zeichen - Offb 12, 1-18"
+   "de-AT": "Ein Großes Zeichen - Offb 12, 1-18",
+   "pt-BR": "Um Grande Sinal - Ap 12"
   }
  },
  "144": {
@@ -1714,8 +1714,8 @@
   "files": {
    "es": "Urí, urí, urá - Villancico",
    "it": "Urì, urì, urà - Canto natalizio",
-   "pt": "Urí urí urí urá - Cantico de Natal",
-   "de-AT": "Urì, urì, urà"
+   "de-AT": "Urì, urì, urà",
+   "pt-BR": "Urí urí urí urá - Cantico de Natal"
   },
   "stages": {
    "pt": "precatechumenate"
@@ -1728,8 +1728,8 @@
   "files": {
    "es": "Vamos ya, pastores - Villancico",
    "it": "Andiamo, già pastori - Canto natalizio",
-   "pt": "Vamos já, pastores - Cântico de Natal",
-   "de-AT": "Ihr Hirten, lasst uns gehen"
+   "de-AT": "Ihr Hirten, lasst uns gehen",
+   "pt-BR": "Vamos já, pastores - Cântico de Natal"
   },
   "stages": {
    "pt": "precatechumenate"
@@ -1740,8 +1740,8 @@
   "pentecost": true,
   "files": {
    "es": "Ven Espíritu Santo - Secuencia de Pentecostés",
-   "pt": "Vem, Espírito Santo - Sequência de Pentecostes",
-   "de-AT": "Pfingstsequenz - Komm heiliger Geist"
+   "de-AT": "Pfingstsequenz - Komm heiliger Geist",
+   "pt-BR": "Vem, Espírito Santo - Sequência de Pentecostes"
   },
   "stages": {
    "de-AT": "liturgy"
@@ -1753,9 +1753,9 @@
   "files": {
    "es": "Ven del Líbano - Ct 4, 8ss",
    "it": "Vieni dal Libano - Ct 4, 8ss",
-   "pt": "Vem do Líbano - Ct 4, 8ss",
    "de-AT": "Komm vom Libanon - Hld 4, 8 ff",
-   "en": "Come from lebanon. (song. 4, 8ss)"
+   "en": "Come from lebanon. (song. 4, 8ss)",
+   "pt-BR": "Vem do Líbano - Ct 4, 8ss"
   },
   "stages": {
    "pt": "election"
@@ -1768,8 +1768,8 @@
   "files": {
    "es": "Ven, hijo del hombre - Ap 21, 17ss",
    "it": "Vieni, figlio dell'uomo - Ap 21, 17ss",
-   "pt": "Vem, filho do homem - Ap 22, 17ss",
-   "de-AT": "Komm Sohn des Menschen - Offb 22, 17 ff"
+   "de-AT": "Komm Sohn des Menschen - Offb 22, 17 ff",
+   "pt-BR": "Vem, filho do homem - Ap 22, 17ss"
   }
  },
  "149": {
@@ -1777,9 +1777,9 @@
   "pentecost": true,
   "files": {
    "es": "Veni creator - Himno",
-   "pt": "Veni Creator - Hino de vésperas de Páscoa, da Ascenção a Pentecostes",
    "de-AT": "Hymnus der Vesper von Christi Himmelfahrt bis Pfingsten",
-   "en": "Come o creator spirit"
+   "en": "Come o creator spirit",
+   "pt-BR": "Veni Creator - Hino de vésperas de Páscoa, da Ascenção a Pentecostes"
   },
   "stages": {
    "de-AT": "liturgy"
@@ -1792,8 +1792,8 @@
   "files": {
    "es": "Viene el Señor - Sal 93 (92) - Ap 1, 5-6",
    "it": "Viene il Signore vestito di maestà - Sal 93 (92) - Ap 1, 5-6",
-   "pt": "Vem o Senhor - Sal 93 (92) - Ap 1, 5-6",
-   "de-AT": "Es kommt der Herr bekleidet mit Majestät - Ps 93 (92)"
+   "de-AT": "Es kommt der Herr bekleidet mit Majestät - Ps 93 (92)",
+   "pt-BR": "Vem o Senhor - Sal 93 (92) - Ap 1, 5-6"
   }
  },
  "151": {
@@ -1802,8 +1802,8 @@
   "files": {
    "es": "Virgen de la maravilla - Himno",
    "it": "Vergine della meraviglia - Inno",
-   "pt": "Virgem da maravilha - Hino",
-   "de-AT": "Jungfrau der Wundertat"
+   "de-AT": "Jungfrau der Wundertat",
+   "pt-BR": "Virgem da maravilha - Hino"
   }
  },
  "152": {
@@ -1811,15 +1811,15 @@
   "advent": true,
   "files": {
    "es": "Vivid alegres - Flp 4, 4ss",
-   "pt": "Vivei alegres - Flp 4, 4ss"
+   "pt-BR": "Vivei alegres - Flp 4, 4ss"
   }
  },
  "153": {
   "stage": "precatechumenate",
   "files": {
    "es": "Vosotros sois la luz del mundo - Mt 5, 14-16",
-   "pt": "Vós sois a luz do mundo - Mt 5, 14-16",
-   "de-AT": "Ihr seid das Licht der Welt - Mt 5, 14-16"
+   "de-AT": "Ihr seid das Licht der Welt - Mt 5, 14-16",
+   "pt-BR": "Vós sois a luz do mundo - Mt 5, 14-16"
   }
  },
  "154": {
@@ -1829,8 +1829,8 @@
   "files": {
    "es": "Ya viene mi Dios - Villancico",
    "it": "Già viene il mio dio - Canto natalizio",
-   "pt": "Já vem o meu Deus - Canto popular do Natal",
-   "de-AT": "Schon kommt mein Gott"
+   "de-AT": "Schon kommt mein Gott",
+   "pt-BR": "Já vem o meu Deus - Canto popular do Natal"
   },
   "stages": {
    "pt": "precatechumenate"
@@ -1843,9 +1843,9 @@
   "files": {
    "es": "Yahveh, tú eres mi Dios - Is 25",
    "it": "Jahvè tu sei il mio dio - Is 25",
-   "pt": "Iahweh, Tu és meu Deus - Is 25",
    "de-AT": "Jahwe, mein Gott bist du - Jes 25, 1-8",
-   "en": "Yahweh you are my god (is 25, 1-8)"
+   "en": "Yahweh you are my god (is 25, 1-8)",
+   "pt-BR": "Iahweh, Tu és meu Deus - Is 25"
   }
  },
  "156": {
@@ -1853,8 +1853,8 @@
   "files": {
    "es": "Yo te amo, Señor - Sal 18",
    "it": "Ti amo Signore - Sal 18",
-   "pt": "Eu te amo, Senhor - Sal 18 (17)",
-   "de-AT": "Ich liebe dich Herr - Ps 18"
+   "de-AT": "Ich liebe dich Herr - Ps 18",
+   "pt-BR": "Eu te amo, Senhor - Sal 18 (17)"
   }
  },
  "157": {
@@ -1864,9 +1864,9 @@
   "files": {
    "es": "Yo vengo a reunir - Is 66, 18-21",
    "it": "Gloria, gloria, gloria - Is 66, 18 ss",
-   "pt": "Eu venho reunir - Is 66, 18-21",
    "en": "Glory, glory, glory (is. 66, 18ff)",
-   "de-AT": "Gloria, gloria, gloria - Jes 66, 18 ff"
+   "de-AT": "Gloria, gloria, gloria - Jes 66, 18 ff",
+   "pt-BR": "Eu venho reunir - Is 66, 18-21"
   }
  },
  "158": {
@@ -1875,9 +1875,9 @@
   "lutes and vespers": true,
   "files": {
    "es": "A la cena del cordero - Himno",
-   "pt": "À ceia do cordeiro - Hino das vésperas do tempo Pascal até a Ascensão",
    "de-AT": "Hymnus der Vesper von Ostern bis Christi Himmelfahrt",
-   "it": "Inno dei vespri da pasqua all'ascensione - Inno"
+   "it": "Inno dei vespri da pasqua all'ascensione - Inno",
+   "pt-BR": "À ceia do cordeiro - Hino das vésperas do tempo Pascal até a Ascensão"
   },
   "stages": {
    "es": "precatechumenate"
@@ -1892,7 +1892,7 @@
    "it": "Abbà Padre - Rm 8, 15-17",
    "de-AT": "Abba Vater - Röm 8, 15-17",
    "fr": "Abba Père - Rm 8, 15-17",
-   "pt": "Abba Pai - Rm 8, 15-17"
+   "pt-BR": "Abba Pai - Rm 8, 15-17"
   },
   "stages": {
    "es": "precatechumenate"
@@ -1903,8 +1903,8 @@
   "files": {
    "es": "Bendito sea Dios - Ef 1, 3-13",
    "it": "Benedetto sia Iddio - Ef 1, 3-13",
-   "pt": "Bendito seja Deus - Ef 1, 3-13",
-   "de-AT": "Gepriesen sei der Gott - Eph 1, 3-13"
+   "de-AT": "Gepriesen sei der Gott - Eph 1, 3-13",
+   "pt-BR": "Bendito seja Deus - Ef 1, 3-13"
   },
   "stages": {
    "pt": "catechumenate"
@@ -1915,8 +1915,8 @@
   "files": {
    "es": "Como condenados a muerte - 1 Co 4, 9.13",
    "it": "Come condannati a morte - 1 Co 4, 9.13",
-   "pt": "Como condenados a morte - 1 Co 4, 9-13",
-   "de-AT": "Wie zum Tod Verdammte - 1 Kor 4, 9-13"
+   "de-AT": "Wie zum Tod Verdammte - 1 Kor 4, 9-13",
+   "pt-BR": "Como condenados a morte - 1 Co 4, 9-13"
   }
  },
  "162": {
@@ -1926,8 +1926,8 @@
   "files": {
    "es": "Como destila la miel - Oda 40 de Salomón",
    "it": "Come stilla il miele - Ode 40 di Salomone",
-   "pt": "Como escorre o mel - Ode XL de Salomão",
-   "de-AT": "Wie der Honig träufelt - XL. Ode Salomons"
+   "de-AT": "Wie der Honig träufelt - XL. Ode Salomons",
+   "pt-BR": "Como escorre o mel - Ode XL de Salomão"
   }
  },
  "163": {
@@ -1937,9 +1937,9 @@
   "files": {
    "es": "Como lirio entre los cardos - Ct 1, 13ss",
    "it": "La mia diletta è per me - Ct 1, 13ss",
-   "pt": "Como lírio entre os espinhos - Ct 1, 13ss",
    "en": "My beloved is for me. (songs 1, 13ff)",
-   "de-AT": "Mein Gelibter ist für mich - Hld 1, 13 ff"
+   "de-AT": "Mein Gelibter ist für mich - Hld 1, 13 ff",
+   "pt-BR": "Como lírio entre os espinhos - Ct 1, 13ss"
   },
   "stages": {
    "pt": "election"
@@ -1952,8 +1952,8 @@
   "files": {
    "es": "El Espiritu del Señor está sobre mi - Lc 4, 18 - Is 61, 1-3",
    "it": "Lo spirito del Signore è sopra di me - Lc 4, 18 - Is 61, 1-3",
-   "pt": "O Espírito do Senhor está sobre mim - Lc 4, 18 - Is 61, 1-3",
-   "de-AT": "Der Geist des Herrn ruht auf mir - Lk 4, 18 -19; Jes 61, 1-3"
+   "de-AT": "Der Geist des Herrn ruht auf mir - Lk 4, 18 -19; Jes 61, 1-3",
+   "pt-BR": "O Espírito do Senhor está sobre mim - Lc 4, 18 - Is 61, 1-3"
   }
  },
  "165": {
@@ -1962,8 +1962,8 @@
   "files": {
    "es": "El mismo Dios - 2 Co 4, 6-12",
    "it": "Lo stesso iddio - 2 Co 4, 6-12",
-   "pt": "O mesmo Deus - 2 Cor 4, 6-12",
-   "de-AT": "Derselbe Gott - 2 Kor 4, 6-12"
+   "de-AT": "Derselbe Gott - 2 Kor 4, 6-12",
+   "pt-BR": "O mesmo Deus - 2 Cor 4, 6-12"
   },
   "stages": {
    "pt": "catechumenate",
@@ -1976,8 +1976,8 @@
   "files": {
    "es": "En una noche oscura - San Juan de la Cruz",
    "it": "In una notte oscura - San Giovanni della Croce",
-   "pt": "Em uma noite escura - Subida ao Monte Carmelo - São João da Cruz",
-   "de-AT": "In einer dunklen Nacht - Johannes vom Kreuz"
+   "de-AT": "In einer dunklen Nacht - Johannes vom Kreuz",
+   "pt-BR": "Em uma noite escura - Subida ao Monte Carmelo - São João da Cruz"
   }
  },
  "167": {
@@ -1987,9 +1987,9 @@
   "files": {
    "es": "Escuchad islas lejanas - Is 49, 1-16",
    "it": "Ti vedranno i re - Is 49, 1-16",
-   "pt": "Escutai ilhas de longe - Segundo canto do Servo de Iahweh - Isaias 49, 1-16",
    "de-AT": "Es werden Könige dich sehen - II. Gottesknechtlied - Jes 49, 1-16",
-   "en": "Servant of yahweh (the kings shall see you) (song no 2). (is 49, 1-16)"
+   "en": "Servant of yahweh (the kings shall see you) (song no 2). (is 49, 1-16)",
+   "pt-BR": "Escutai ilhas de longe - Segundo canto do Servo de Iahweh - Isaias 49, 1-16"
   },
   "stages": {
    "pt": "catechumenate"
@@ -2002,8 +2002,8 @@
   "files": {
    "es": "Extiendo mis manos - Oda 27 de Salomón",
    "it": "Ho steso le mie mani - Ode 27 di Salomone",
-   "pt": "Estendo minhas mãos - Ode XXVII de Salomão",
-   "de-AT": "Ich habe meine Hände ausgebreitet - XXVII. Ode Salomos"
+   "de-AT": "Ich habe meine Hände ausgebreitet - XXVII. Ode Salomos",
+   "pt-BR": "Estendo minhas mãos - Ode XXVII de Salomão"
   }
  },
  "169": {
@@ -2012,8 +2012,8 @@
   "communion": true,
   "files": {
    "es": "Hermosa eres, amiga mia - Ct 6; 7",
-   "pt": "Formosa és, amiga minha - Cânticos dos Cânticos 6 e 7 - Quinto Poema",
-   "de-AT": "Du bist schön, meine Freundin - Hld 6 – 7"
+   "de-AT": "Du bist schön, meine Freundin - Hld 6 – 7",
+   "pt-BR": "Formosa és, amiga minha - Cânticos dos Cânticos 6 e 7 - Quinto Poema"
   }
  },
  "170": {
@@ -2023,8 +2023,8 @@
   "files": {
    "es": "Himno a la caridad - 1 Co 13, 1-13",
    "it": "Inno alla carità - 1 Co 13, 1-13",
-   "pt": "Hino à caridade - 1 Co 13, 1-13",
-   "de-AT": "Das Hohelied der Liebe - 1 Kor 13, 1-13"
+   "de-AT": "Das Hohelied der Liebe - 1 Kor 13, 1-13",
+   "pt-BR": "Hino à caridade - 1 Co 13, 1-13"
   }
  },
  "171": {
@@ -2034,8 +2034,8 @@
   "files": {
    "es": "Himno a la cruz gloriosa - Himno",
    "it": "Inno alla croce gloriosa - Inno",
-   "pt": "Hino à Cruz gloriosa - Da homilia 'A Santa Páscoa' de um autor anônimo do século II",
-   "de-AT": "Hymnus zum herrlichen Kreuz"
+   "de-AT": "Hymnus zum herrlichen Kreuz",
+   "pt-BR": "Hino à Cruz gloriosa - Da homilia 'A Santa Páscoa' de um autor anônimo do século II"
   },
   "stages": {
    "pt": "catechumenate"
@@ -2046,8 +2046,8 @@
   "files": {
    "es": "Jesús recorria las ciudades - Mt 9, 35ss",
    "it": "Gesù percorreva tutte le città - Mt 9, 35ss",
-   "pt": "Jesus percorria todas as cidades - Mt 9, 35ss",
-   "de-AT": "Jesus zog durch alle Städte - Mt 9, 35 ff; 10"
+   "de-AT": "Jesus zog durch alle Städte - Mt 9, 35 ff; 10",
+   "pt-BR": "Jesus percorria todas as cidades - Mt 9, 35ss"
   }
  },
  "173": {
@@ -2056,8 +2056,8 @@
   "signing to the virgin": true,
   "files": {
    "es": "La cordera de Dios - Mt 1, 18ss",
-   "pt": "A cordeira de Deus - Mt 1, 18ss",
-   "de-AT": "Maria Lamm Gottes - Mt 1, 18 ff"
+   "de-AT": "Maria Lamm Gottes - Mt 1, 18 ff",
+   "pt-BR": "A cordeira de Deus - Mt 1, 18ss"
   }
  },
  "174": {
@@ -2067,8 +2067,8 @@
   "files": {
    "es": "La paloma volo - Oda 24 de Salomón",
    "it": "La colomba volò - Ode 24 de Salomone",
-   "pt": "A pomba voou - Ode XXIV de Salomão",
-   "de-AT": "Die Taube flog - XXIV. Ode Salomos"
+   "de-AT": "Die Taube flog - XXIV. Ode Salomos",
+   "pt-BR": "A pomba voou - Ode XXIV de Salomão"
   },
   "stages": {
    "de-AT": "liturgy"
@@ -2082,7 +2082,7 @@
    "it": "La voce del mio amato - Ct 2, 8-17",
    "de-AT": "Die Stimme meines Geliebten - Hld 2, 8-17",
    "en": "The voice of my beloved (songs 2, 8-17)",
-   "pt": "A voz do meu amado - Ct 2, 8-17"
+   "pt-BR": "A voz do meu amado - Ct 2, 8-17"
   },
   "stages": {
    "de-AT": "liturgy"
@@ -2096,7 +2096,7 @@
    "es": "Las armas de la luz - Ef 6, 11ss",
    "it": "Rivestitevi dell'armatura di dio - Ef 6, 11ss",
    "de-AT": "Bekleidet euch mit der Waffenrüstung des Herrn - Eph 6, 11 ff",
-   "pt": "As armas da Luz - Ef 6, 11ss"
+   "pt-BR": "As armas da Luz - Ef 6, 11ss"
   },
   "stages": {
    "pt": "catechumenate"
@@ -2108,8 +2108,8 @@
   "files": {
    "es": "No resistáis al mal - Mt 5, 38ss",
    "it": "Non resistete al male - Mt 5, 38ss",
-   "pt": "Não resistais ao mal - Mt 5, 38ss",
-   "de-AT": "Widersteht nicht dem Bösen - Mt 5, 38 ff"
+   "de-AT": "Widersteht nicht dem Bösen - Mt 5, 38 ff",
+   "pt-BR": "Não resistais ao mal - Mt 5, 38ss"
   }
  },
  "178": {
@@ -2118,8 +2118,8 @@
   "files": {
    "es": "No sufras por los malvados - Sal 37 (36)",
    "it": "Non ti adirare - Sal 37 (36)",
-   "pt": "Não sofras pelos malvados - Sal 37 (36)",
-   "de-AT": "Erzürne nicht - Ps 37"
+   "de-AT": "Erzürne nicht - Ps 37",
+   "pt-BR": "Não sofras pelos malvados - Sal 37 (36)"
   },
   "stages": {
    "pt": "catechumenate"
@@ -2131,9 +2131,9 @@
   "files": {
    "es": "Noli me tangere - Jn 20, 15-17",
    "it": "Noli me tangere - Jn 20, 15-17",
-   "pt": "Noli me Tangere - Jo 20, 15-17",
    "de-AT": "Noli me tangere - Joh 20, 13-17",
-   "en": "Noli me tangere"
+   "en": "Noli me tangere",
+   "pt-BR": "Noli me Tangere - Jo 20, 15-17"
   }
  },
  "180": {
@@ -2142,9 +2142,9 @@
   "files": {
    "es": "Sermon de la montaña - Lc 6, 20-38",
    "it": "Il sermone della montagna",
-   "pt": "Sermão da montanha - Lc 6, 20-38",
    "en": "The sermon on the mountain",
-   "de-AT": "Liebet eure Feinde - Lk 6, 20-38"
+   "de-AT": "Liebet eure Feinde - Lk 6, 20-38",
+   "pt-BR": "Sermão da montanha - Lc 6, 20-38"
   }
  },
  "181": {
@@ -2154,7 +2154,7 @@
    "it": "Alleluja Pasquale",
    "de-AT": "Osterhalleluja",
    "en": "Easter alleluia",
-   "pt": "Aleluia Pascal - Apropriado para o tempo Pascal"
+   "pt-BR": "Aleluia Pascal - Apropriado para o tempo Pascal"
   }
  },
  "182": {
@@ -2163,7 +2163,7 @@
    "es": "Aleluya interleccional antes del Evangelio",
    "de-AT": "Halleluja-ruf Zum Evangelium",
    "it": "Alleluja per acclamazioni al Vangelo",
-   "pt": "Aleluia Interleccional - Apropriado para os tempos do Advento, Natal e Comum"
+   "pt-BR": "Aleluia Interleccional - Apropriado para os tempos do Advento, Natal e Comum"
   }
  },
  "183": {
@@ -2174,7 +2174,7 @@
    "it": "Amen, amen, amen - Ap 7, 12-14",
    "en": "Amen amen amen (apoc. 7, 12-14)",
    "de-AT": "Amen, amen,amen - Offb 7, 12-14",
-   "pt": "Amém, amém, amém - Ap 7, 12-14"
+   "pt-BR": "Amém, amém, amém - Ap 7, 12-14"
   },
   "stages": {
    "pt": "precatechumenate"
@@ -2185,7 +2185,7 @@
   "files": {
    "es": "Anáfora de la Sal",
    "en": "Anaphora for the penitential celebration",
-   "pt": "Anáfora do Sal"
+   "pt-BR": "Anáfora do Sal"
   },
   "stages": {
    "pt": "liturgy"
@@ -2197,7 +2197,7 @@
    "es": "Antífona interleccional para el tiempo de Cuaresma",
    "de-AT": "Ruf zum evangelium in der Fastenzeit",
    "it": "Acclamazione al Vangelo nel tempo di quaresima",
-   "pt": "Antífona Versículo antes do evangelho - Apropriado para o tempo da Quaresma"
+   "pt-BR": "Antífona Versículo antes do evangelho - Apropriado para o tempo da Quaresma"
   }
  },
  "186": {
@@ -2205,9 +2205,9 @@
   "files": {
    "es": "Bendición del agua",
    "it": "Benedizione dell'acqua del fonte battesimale",
-   "pt": "Bênção da água - Da Liturgia Batismal da Vigília Pascal",
    "de-AT": "Taufwasserweihe",
-   "en": "Blessing of the baptismal water"
+   "en": "Blessing of the baptismal water",
+   "pt-BR": "Bênção da água - Da Liturgia Batismal da Vigília Pascal"
   }
  },
  "187": {
@@ -2215,8 +2215,8 @@
   "files": {
    "es": "Bendición penitencial - oracion conclusiva de accion de gracias",
    "it": "Benedizione per la celebrazione penitenziale - Preghiera conclusiva di ringraziamento",
-   "pt": "Bênção Penitencial - Oração para concluir a ação de graças para a Celebração Penitencial",
-   "de-AT": "Dankgebet für die Liturgie der Versöhnung"
+   "de-AT": "Dankgebet für die Liturgie der Versöhnung",
+   "pt-BR": "Bênção Penitencial - Oração para concluir a ação de graças para a Celebração Penitencial"
   },
   "stages": {
    "pt": "liturgy"
@@ -2226,8 +2226,8 @@
   "stage": "liturgy",
   "files": {
    "es": "Credo - Símbolo apostolico",
-   "pt": "Credo - Símbolo apostólico",
-   "de-AT": "Das Apostolische Glaubens Bekenntnis"
+   "de-AT": "Das Apostolische Glaubens Bekenntnis",
+   "pt-BR": "Credo - Símbolo apostólico"
   },
   "stages": {
    "de-AT": "election"
@@ -2239,32 +2239,32 @@
   "files": {
    "es": "Gloria a Dios en lo alto del cielo - Himno litúrgico",
    "it": "Gloria a dio mell'alto dai cieli - Inno liturgico",
-   "pt": "Glória a Deus no alto do Céu - Hino Litúrgico",
    "de-AT": "Ehre sei Gott in der Höhe",
-   "en": "Glory to god"
+   "en": "Glory to god",
+   "pt-BR": "Glória a Deus no alto do Céu - Hino Litúrgico"
   }
  },
  "190": {
   "stage": "liturgy",
   "files": {
    "es": "Letanías penitenciales II",
-   "pt": "Ladainha penitencial II",
-   "de-AT": "Busslitanei"
+   "de-AT": "Busslitanei",
+   "pt-BR": "Ladainha penitencial II"
   }
  },
  "191": {
   "stage": "liturgy",
   "files": {
    "es": "Letanía del Cordero de Dios - Himno Agnus Dei",
-   "pt": "Cordeiro de Deus - Ladainha do Cordeiro de Deus",
-   "de-AT": "Agnus Dei"
+   "de-AT": "Agnus Dei",
+   "pt-BR": "Cordeiro de Deus - Ladainha do Cordeiro de Deus"
   }
  },
  "192": {
   "stage": "liturgy",
   "files": {
    "es": "Letanías bautismales de los santos",
-   "pt": "Ladainha de todos os Santos - Da Liturgia Batismal da Vigília Pascal"
+   "pt-BR": "Ladainha de todos os Santos - Da Liturgia Batismal da Vigília Pascal"
   }
  },
  "193": {
@@ -2272,15 +2272,15 @@
   "files": {
    "es": "Letanías penitenciales I",
    "de-AT": "Kurze Busslitanei",
-   "pt": "Ladainha Penitencial I - Ladainha para Celebração Penitencial - Modelo Abreviado"
+   "pt-BR": "Ladainha Penitencial I - Ladainha para Celebração Penitencial - Modelo Abreviado"
   }
  },
  "194": {
   "stage": "liturgy",
   "files": {
    "es": "Padre Nuestro",
-   "pt": "Pai Nosso - Tempo da Eleição",
-   "de-AT": "Vater Unser"
+   "de-AT": "Vater Unser",
+   "pt-BR": "Pai Nosso - Tempo da Eleição"
   }
  },
  "195": {
@@ -2308,8 +2308,8 @@
   "stage": "liturgy",
   "files": {
    "es": "Plegaria Eucaristica II - Prefacio modelo I",
-   "pt": "Oração Eucarística II - Modelo I",
-   "de-AT": "Eucharistisches Hochgebet II (1)"
+   "de-AT": "Eucharistisches Hochgebet II (1)",
+   "pt-BR": "Oração Eucarística II - Modelo I"
   }
  },
  "199": {
@@ -2323,24 +2323,24 @@
   "stage": "liturgy",
   "files": {
    "es": "Plegaria Eucaristica IV - Prefacio (1988)",
-   "pt": "Oração Eucarística IV - (1988)"
+   "pt-BR": "Oração Eucarística IV - (1988)"
   }
  },
  "201": {
   "stage": "liturgy",
   "files": {
    "es": "Prefacio Pascual I",
-   "pt": "Prefácio para o tempo Pascal - Prefácio da Páscoa I - Melodia para o tempo Pascal",
-   "de-AT": "Präfation der Eucharistie in der Osternacht"
+   "de-AT": "Präfation der Eucharistie in der Osternacht",
+   "pt-BR": "Prefácio para o tempo Pascal - Prefácio da Páscoa I - Melodia para o tempo Pascal"
   }
  },
  "202": {
   "stage": "liturgy",
   "files": {
    "es": "Pregón Pascual",
-   "pt": "Pregão Pascal - Pregão solene da Vigília Pascal",
    "de-AT": "Exsultet",
-   "en": "Exultet - Paschal preconium"
+   "en": "Exultet - Paschal preconium",
+   "pt-BR": "Pregão Pascal - Pregão solene da Vigília Pascal"
   }
  },
  "203": {
@@ -2348,24 +2348,24 @@
   "files": {
    "es": "Santo 1982 - Tiempo Ordinario",
    "it": "Santo 1982 - Tempo Ordinario",
-   "pt": "Santo 1982 - Tempo Comum",
-   "de-AT": "Heilig 1983"
+   "de-AT": "Heilig 1983",
+   "pt-BR": "Santo 1982 - Tempo Comum"
   }
  },
  "204": {
   "stage": "liturgy",
   "files": {
    "es": "Santo 1988 - Tiempo Ordinario",
-   "pt": "Santo 1988 - Tempo Comum",
-   "de-AT": "Heilig, Heilig, Heilig 1988"
+   "de-AT": "Heilig, Heilig, Heilig 1988",
+   "pt-BR": "Santo 1988 - Tempo Comum"
   }
  },
  "205": {
   "stage": "liturgy",
   "files": {
    "es": "Santo Hebreo - Cuaresma",
-   "pt": "Santo hebraico - Tempo da Quaresma",
-   "de-AT": "Heilig, Heilig - Fastenzeit"
+   "de-AT": "Heilig, Heilig - Fastenzeit",
+   "pt-BR": "Santo hebraico - Tempo da Quaresma"
   }
  },
  "206": {
@@ -2373,16 +2373,16 @@
   "files": {
    "es": "Santo Palestina 74 - Pascua",
    "it": "Santo Palestina 74 - Pasquale",
-   "pt": "Santo Palestina 74 - Tempo Pascal",
-   "de-AT": "Heilig, Heilig, Heilig, Hosanna von Palmsonntag (und Osterzeit)"
+   "de-AT": "Heilig, Heilig, Heilig, Hosanna von Palmsonntag (und Osterzeit)",
+   "pt-BR": "Santo Palestina 74 - Tempo Pascal"
   }
  },
  "207": {
   "stage": "liturgy",
   "files": {
    "es": "Santo Palomeras 65 - Adviento y Navidad",
-   "pt": "Santo Palomeras 65 - Tempo do Advento - Natal",
-   "de-AT": "Heilig ist der Herr - Heilig der Baracken - Adventzeit"
+   "de-AT": "Heilig ist der Herr - Heilig der Baracken - Adventzeit",
+   "pt-BR": "Santo Palomeras 65 - Tempo do Advento - Natal"
   }
  },
  "208": {
@@ -2390,8 +2390,8 @@
   "files": {
    "es": "Santo Roma 77 - Tiempo Ordinario",
    "it": "Santo Roma 77 - Tempo Ordinario",
-   "pt": "Santo Roma 77 - Tempo Comum",
-   "de-AT": "Heilig für die Zeit im Jahreskreis"
+   "de-AT": "Heilig für die Zeit im Jahreskreis",
+   "pt-BR": "Santo Roma 77 - Tempo Comum"
   }
  },
  "209": {
@@ -2408,9 +2408,9 @@
   "files": {
    "es": "Te deum - Himno",
    "it": "Te deum - Inno",
-   "pt": "Te Deum - Hino",
    "de-AT": "Te Deum",
-   "en": "Te deum"
+   "en": "Te deum",
+   "pt-BR": "Te Deum - Hino"
   }
  },
  "211": {
@@ -2421,16 +2421,16 @@
   "lutes and vespers": true,
   "files": {
    "es": "Zaqueo - Lc 19, 1–10",
-   "pt": "Zaqueu - Lc 19, 1-10",
-   "de-AT": "Zachäus - Lk 19, 1-10"
+   "de-AT": "Zachäus - Lk 19, 1-10",
+   "pt-BR": "Zaqueu - Lc 19, 1-10"
   }
  },
  "212": {
   "stage": "precatechumenate",
   "files": {
    "es": "El Mesías, León para vencer - Vittorino de Pettau",
-   "pt": "O Messias, leão para vencer - Inspirado num texto de S. Vitorino de Pettau +304",
-   "de-AT": "Der Messias Löwe um zu siegen - Vittorino von Pettau"
+   "de-AT": "Der Messias Löwe um zu siegen - Vittorino von Pettau",
+   "pt-BR": "O Messias, leão para vencer - Inspirado num texto de S. Vitorino de Pettau +304"
   }
  },
  "213": {
@@ -2439,8 +2439,8 @@
   "communion": true,
   "files": {
    "es": "En medio de aquel gentío - Lc 8,42b-48",
-   "pt": "Em meio a multidão - Lc 8, 42b-48",
-   "de-AT": "Inmitten einer Grossen Menge - Lk 8, 42-48"
+   "de-AT": "Inmitten einer Grossen Menge - Lk 8, 42-48",
+   "pt-BR": "Em meio a multidão - Lc 8, 42b-48"
   }
  },
  "214": {
@@ -2449,16 +2449,16 @@
   "communion": true,
   "files": {
    "es": "Me robaste el corazón - Ct 4, 9-16.5,1",
-   "pt": "Roubaste o meu coração - Ct 4, 9-16.5, 1",
-   "de-AT": "Du betörtest mein Herz - Hld 4, 9-16 — 5, 1"
+   "de-AT": "Du betörtest mein Herz - Hld 4, 9-16 — 5, 1",
+   "pt-BR": "Roubaste o meu coração - Ct 4, 9-16.5, 1"
   }
  },
  "215": {
   "stage": "precatechumenate",
   "files": {
    "es": "María paloma incorrupta - Himno",
-   "pt": "Maria, pomba incorrupta - Hino inspirado nos Kontákia de São Romano, o Melodista",
-   "de-AT": "Ave, O Maria - Hymnus"
+   "de-AT": "Ave, O Maria - Hymnus",
+   "pt-BR": "Maria, pomba incorrupta - Hino inspirado nos Kontákia de São Romano, o Melodista"
   },
   "stages": {
    "pt": "precatechumenate",
@@ -2471,16 +2471,16 @@
   "easter": true,
   "files": {
    "es": "Si habéis resucitado con Cristo - Col 3, 1-4",
-   "pt": "Se vós ressuscitastes com Cristo - Colossenses 3, 1-4",
-   "de-AT": "Wenn ihr auferweckt seid mit Christus - Kol 3, 1-4"
+   "de-AT": "Wenn ihr auferweckt seid mit Christus - Kol 3, 1-4",
+   "pt-BR": "Se vós ressuscitastes com Cristo - Colossenses 3, 1-4"
   }
  },
  "217": {
   "stage": "precatechumenate",
   "files": {
    "es": "Resurrexit - Jn 11, 25-27",
-   "pt": "Resurrexit - Diálogo de Nosso Senhor Jesus Cristo com Maria - João 11, 25-27",
-   "de-AT": "Resurrexit - Joh 11, 25-27"
+   "de-AT": "Resurrexit - Joh 11, 25-27",
+   "pt-BR": "Resurrexit - Diálogo de Nosso Senhor Jesus Cristo com Maria - João 11, 25-27"
   }
  },
  "218": {
@@ -2490,8 +2490,8 @@
   "communion": true,
   "files": {
    "es": "Este es el mandamiento mio - Jn 15, 12ss",
-   "pt": "Este é o meu mandamento - Jo 15, 12ss",
-   "de-AT": "Das ist mein Gebot - Joh 15, 12 ff"
+   "de-AT": "Das ist mein Gebot - Joh 15, 12 ff",
+   "pt-BR": "Este é o meu mandamento - Jo 15, 12ss"
   }
  },
  "219": {
@@ -2501,16 +2501,16 @@
   "files": {
    "es": "Oh Dios, tú eres mi Dios - Sal 63 (62)",
    "it": "O dio tu sei il mio dio - Sal 63 (62)",
-   "pt": "Ó Deus, Tu és meu Deus - Sal 63 (62)",
-   "de-AT": "O Gott, du bist mein Gott - Ps 63"
+   "de-AT": "O Gott, du bist mein Gott - Ps 63",
+   "pt-BR": "Ó Deus, Tu és meu Deus - Sal 63 (62)"
   }
  },
  "220": {
   "stage": "precatechumenate",
   "files": {
    "es": "Madre dolorosa - Himno de San Romano el Mélodo",
-   "pt": "Como ovelha que vê - Kontákion da Sexta-Feira Santa, de São Romano, o Melodista",
-   "de-AT": "Wie ein Schaf das sieht - Hymnus von Romanos dem Sänger"
+   "de-AT": "Wie ein Schaf das sieht - Hymnus von Romanos dem Sänger",
+   "pt-BR": "Como ovelha que vê - Kontákion da Sexta-Feira Santa, de São Romano, o Melodista"
   }
  },
  "221": {
@@ -2544,9 +2544,9 @@
   "files": {
    "es": "Sube Dios entre aclamaciones - Sal 47 (46)",
    "it": "Sale dio tra acclamazioni",
-   "pt": "Sobe Deus entre aclamações - Sal 47 (46)",
    "de-AT": "Gott erhob sich unter Jubel - Ps 47",
-   "en": "God rises to acclamation - Ps 46 (47)"
+   "en": "God rises to acclamation - Ps 46 (47)",
+   "pt-BR": "Sobe Deus entre aclamações - Sal 47 (46)"
   }
  },
  "225": {
@@ -2559,9 +2559,9 @@
   "stage": "precatechumenate",
   "files": {
    "it": "Il Signore è mia luce e mia salvezza - Sal 26 (27)",
-   "pt": "O Senhor é minha Luz e Salvação - Sal 27 (26)",
    "de-AT": "Der Herr ist mein Licht und mein Heil - Ps 27",
-   "en": "The lord is my light and my salvation - Ps 26 (27)"
+   "en": "The lord is my light and my salvation - Ps 26 (27)",
+   "pt-BR": "O Senhor é minha Luz e Salvação - Sal 27 (26)"
   }
  },
  "227": {
@@ -2649,13 +2649,13 @@
  "239": {
   "stage": "precatechumenate",
   "files": {
-   "pt": "Cantai a Deus - Sal 68 (67) 2, 4-7"
+   "pt-BR": "Cantai a Deus - Sal 68 (67) 2, 4-7"
   }
  },
  "240": {
   "stage": "precatechumenate",
   "files": {
-   "pt": "Hino Das Laudes De Pentecostes"
+   "pt-BR": "Hino Das Laudes De Pentecostes"
   },
   "stages": {
    "pt": "liturgy"
@@ -2664,13 +2664,13 @@
  "241": {
   "stage": "precatechumenate",
   "files": {
-   "pt": "Louvai O Senhor - Sal 117 (116)"
+   "pt-BR": "Louvai O Senhor - Sal 117 (116)"
   }
  },
  "242": {
   "stage": "precatechumenate",
   "files": {
-   "pt": "Orações Universais - Melodia para utilizar nas Orações universais"
+   "pt-BR": "Orações Universais - Melodia para utilizar nas Orações universais"
   },
   "stages": {
    "pt": "liturgy"
@@ -2679,13 +2679,13 @@
  "243": {
   "stage": "precatechumenate",
   "files": {
-   "pt": "Os Meninos De Belém"
+   "pt-BR": "Os Meninos De Belém"
   }
  },
  "244": {
   "stage": "precatechumenate",
   "files": {
-   "pt": "Prefácio Para Advento E Natal - Prefácio de Advento II – Melodia para o tempo de Advento e Natal"
+   "pt-BR": "Prefácio Para Advento E Natal - Prefácio de Advento II – Melodia para o tempo de Advento e Natal"
   },
   "stages": {
    "pt": "liturgy"
@@ -2694,7 +2694,7 @@
  "245": {
   "stage": "precatechumenate",
   "files": {
-   "pt": "Provai E Vede - Sal 34 (33)"
+   "pt-BR": "Provai E Vede - Sal 34 (33)"
   },
   "stages": {
    "pt": "precatechumenate"
@@ -2703,7 +2703,7 @@
  "246": {
   "stage": "precatechumenate",
   "files": {
-   "pt": "Salmodia Para O Salmo Responsorial - XXII Domingo do Tempo Comum - Ano A"
+   "pt-BR": "Salmodia Para O Salmo Responsorial - XXII Domingo do Tempo Comum - Ano A"
   },
   "stages": {
    "pt": "liturgy"
@@ -2712,7 +2712,7 @@
  "247": {
   "stage": "precatechumenate",
   "files": {
-   "pt": "Salve Rainha - Hino"
+   "pt-BR": "Salve Rainha - Hino"
   }
  },
  "248": {
@@ -2779,8 +2779,8 @@
   "stage": "precatechumenate",
   "files": {
    "es": "Canta a Yahveh Jerusalén - Sal 147 (146-147)",
-   "pt": "Canta a Iahweh, Jerusalém - Sal 147 (146-147)",
-   "en": "Praise the lord jerusalem - Ps 147"
+   "en": "Praise the lord jerusalem - Ps 147",
+   "pt-BR": "Canta a Iahweh, Jerusalém - Sal 147 (146-147)"
   }
  }
 }

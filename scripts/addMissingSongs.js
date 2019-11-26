@@ -5,7 +5,7 @@ import FolderSongs from '../FolderSongs';
 import { readLocalePatch } from '../web/server/common';
 const { execSync } = require('child_process');
 const merge = require('deepmerge');
-const inScripts = path.basename(process.cwd()) == path.basename(__dirname);
+const inScripts = path.basename(process.cwd()) === path.basename(__dirname);
 const songsDir = inScripts ? '../songs' : './songs';
 
 FolderSongs.basePath = path.resolve('./songs');
@@ -85,7 +85,7 @@ var program = require('commander');
 
 program
   .version('1.0')
-  .description('Add files detected on locale folder ot the index')
+  .description('Add files detected on locale folder to the index')
   .option('-l, --locale [locale]', 'Locale to use')
   .option('--dirty', 'Dirty run');
 
