@@ -8,7 +8,8 @@ I18n.translations = {
   en: require('./en'),
   es: require('./es'),
   it: require('./it'),
-  pt: require('./pt'),
+  'pt-BR': require('./pt-BR'),
+  'pt-PT': require('./pt-PT'),
   'de-AT': require('./de-AT'),
   fr: require('./fr')
 };

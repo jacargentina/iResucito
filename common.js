@@ -3,6 +3,7 @@
 const PDFDocument = require('./pdfkit.standalone.js');
 import normalize from 'normalize-strings';
 import langs from 'langs';
+import countries from 'country-list';
 import I18n from './translations';
 
 export const defaultExportToPdfOptions: ExportToPdfOptions = {
@@ -51,8 +52,14 @@ export const getLocalesForPicker = (
     }
   ];
   for (var code in I18n.translations) {
-    var l = langs.where('1', code.split('-')[0]);
-    locales.push({ label: `${l.local} (${code})`, value: code });
+    const parts = code.split('-');
+    const l = langs.where('1', parts[0]);
+    var label = l.local;
+    if (parts.length > 1) {
+      const countryName = countries.getName(parts[1]);
+      label += ` (${countryName})`;
+    }
+    locales.push({ label: label, value: code });
   }
   return locales;
 };
