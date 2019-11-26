@@ -42,26 +42,32 @@ export const getPropertyLocale = (obj: any, rawLoc: string) => {
   }
 };
 
+export const getLocaleLabel = (code: string) => {
+  const parts = code.split('-');
+  const l = langs.where('1', parts[0]);
+  var label = l.local;
+  if (parts.length > 1) {
+    const countryName = countries.getName(parts[1]);
+    label += ` (${countryName})`;
+  }
+  return label;
+};
+
 export const getLocalesForPicker = (
   defaultLocale: string
 ): Array<PickerLocale> => {
-  var locales = [
-    {
-      label: `${I18n.t('ui.default')} (${defaultLocale})`,
-      value: 'default'
-    }
-  ];
+  var locales = [];
   for (var code in I18n.translations) {
-    const parts = code.split('-');
-    const l = langs.where('1', parts[0]);
-    var label = l.local;
-    if (parts.length > 1) {
-      const countryName = countries.getName(parts[1]);
-      label += ` (${countryName})`;
-    }
-    locales.push({ label: label, value: code });
+    locales.push({ label: getLocaleLabel(code), value: code });
   }
-  return locales;
+  locales.sort((a, b) => a.label.localeCompare(b.label));
+  return [
+    {
+      label: `${I18n.t('ui.default')} - ${getLocaleLabel(defaultLocale)}`,
+      value: 'default'
+    },
+    ...locales
+  ];
 };
 
 export const getValidatedLocale = (
