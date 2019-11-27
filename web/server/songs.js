@@ -118,6 +118,10 @@ export default function(server: any) {
     }
     delete patchObj[key][locale];
 
+    if (Object.keys(patchObj[key]).length === 0) {
+      delete patchObj[key];
+    }
+
     await saveLocalePatch(patchObj);
     console.log('Borrado patch', key);
     res.json({ ok: true });
@@ -133,7 +137,9 @@ export default function(server: any) {
     var patchObj = await readLocalePatch();
 
     const patch: SongPatchData = req.body;
-    if (!patchObj) patchObj = {};
+    if (!patchObj) {
+      patchObj = {};
+    }
 
     if (patch.rename) {
       patch.rename = patch.rename.trim();
