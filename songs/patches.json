@@ -2116,6 +2116,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1575987865009,
+      "locale": "it",
+      "author": "michele.gentili93@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "58": [
@@ -2257,6 +2264,13 @@
       "date": 1564004276746,
       "locale": "pt-BR",
       "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1575144029245,
+      "locale": "pt-PT",
+      "author": "fabio.imr.reis@gmail.com",
       "created": false,
       "updated": true
     }
