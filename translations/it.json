@@ -16,7 +16,7 @@
     "download": "Scaricare",
     "changes since last login": "Cambiamenti dall'ultima voce",
     "changed songs by author": "{{count}} canzoni di {{author}}",
-    "patch pending": "Patch in sospeso da {{autor}} con data {{date}}}",
+    "patch pending": "Patch in sospeso da {{author}} con data {{date}}}",
     "song version number": "È stato modificato {{version}} volte",
     "no items to show": "Nessun oggetto da mostrare",
     "patch log": "Log delle patch",
