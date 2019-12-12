@@ -1,2 +1,5 @@
-• Fixes on various Italian songs (it)
-• Fixed error on data migration from v3.0.15
+• Added pt-PT language
+• Various song settings:
+     • The jacal of the shepherds - Ct 1, 2-8 (Fabio Reis)
+     • The Lord says to my Lord - Ps 110 (109) (Michele Gentili)
+     • Blessed are you, Lord - Dn 3, 52-57 (Giuseppe Reino)

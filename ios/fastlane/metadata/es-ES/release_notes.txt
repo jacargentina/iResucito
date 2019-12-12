@@ -1,2 +1,5 @@
-• Correcciones varias de cantos en Italiano (it)
-• Corrección de error al migrar datos desde v3.0.15
+• Agregado idioma pt-PT
+• Ajustes cantos varios:
+    • El jacal de los pastores - Ct 1, 2-8 (Fabio Reis)
+    • Dice el Señor a mi Señor - Sal 110 (109) (Michele Gentili)
+    • Bendito eres, Señor - Dn 3, 52-57 (Giuseppe Reino)

@@ -1,2 +1,5 @@
-• Korrekturen an verschiedenen italienischen Liedern (it)
-• Fehler bei der Datenmigration von v3.0.15 behoben
+• pt-PT-Sprache hinzugefügt
+• Verschiedene Song-Einstellungen:
+     • Der Jakal der Hirten - Ct 1, 2-8 (Fabio Reis)
+     • Der Herr sagt zu meinem Herrn - Ps 110 (109) (Michele Gentili)
+     • Gesegnet bist du, Herr - Dn 3, 52-57 (Giuseppe Reino)
