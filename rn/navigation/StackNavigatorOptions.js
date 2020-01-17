@@ -2,6 +2,9 @@
 import commonTheme from '../native-base-theme/variables/platform';
 
 const StackNavigatorOptions = {
+  cardStyle: {
+    backgroundColor: 'white'
+  },
   headerStyle: {
     backgroundColor: commonTheme.brandPrimary
   },
