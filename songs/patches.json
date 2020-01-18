@@ -566,6 +566,13 @@
         "original": "election",
         "new": "precatechumenate"
       }
+    },
+    {
+      "date": 1577796091339,
+      "locale": "pt-PT",
+      "author": "fabio.imr.reis@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "20": [
@@ -603,6 +610,17 @@
         "original": "precatechumenate",
         "new": "election"
       }
+    },
+    {
+      "date": 1577632218986,
+      "locale": "pt-PT",
+      "author": "fabio.imr.reis@gmail.com",
+      "rename": {
+        "original": "A ninguém demos ocasião de tropeço - 2 Co 6, 3ss",
+        "new": "A ninguém dêmos ocasião de tropeço - 2 Co 6, 3ss"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "21": [
@@ -639,6 +657,17 @@
       "date": 1563833224481,
       "locale": "pt-BR",
       "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1577635111332,
+      "locale": "pt-PT",
+      "author": "fabio.imr.reis@gmail.com",
+      "rename": {
+        "original": "A Ti levanto meus olhos - Sal 123 (122)",
+        "new": "A Ti levanto os meus olhos - Sal 123 (122)"
+      },
       "created": false,
       "updated": true
     }
@@ -697,6 +726,17 @@
         "original": "election",
         "new": "precatechumenate"
       }
+    },
+    {
+      "date": 1577654830374,
+      "locale": "pt-PT",
+      "author": "fabio.imr.reis@gmail.com",
+      "rename": {
+        "original": "A ti, Senhor, com minha voz gritando imploro - Sal 142 (141)",
+        "new": "A ti, Senhor, em meu clamor imploro - Sal 142 (141)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "23": [
@@ -746,6 +786,17 @@
       "date": 1563833270650,
       "locale": "pt-BR",
       "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1577655207025,
+      "locale": "pt-PT",
+      "author": "fabio.imr.reis@gmail.com",
+      "rename": {
+        "original": "A ti, Senhor, levanto minha alma - Sal 25 (24)",
+        "new": "A ti, Senhor, elevo a minha alma - Sal 25 (24)"
+      },
       "created": false,
       "updated": true
     }
@@ -814,6 +865,17 @@
         "original": "precatechumenate",
         "new": "liturgy"
       }
+    },
+    {
+      "date": 1577635655982,
+      "locale": "pt-PT",
+      "author": "fabio.imr.reis@gmail.com",
+      "rename": {
+        "original": "A ti, Senhor, se deve o louvor em Sião - Sal 65 (64)",
+        "new": "A ti, Senhor, é devido o louvor em Sião - Sal 65 (64)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "25": [
@@ -856,6 +918,13 @@
       "date": 1563833345438,
       "locale": "pt-BR",
       "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1577797118523,
+      "locale": "pt-PT",
+      "author": "fabio.imr.reis@gmail.com",
       "created": false,
       "updated": true
     }
@@ -924,6 +993,13 @@
         "original": "election",
         "new": "precatechumenate"
       }
+    },
+    {
+      "date": 1578168729005,
+      "locale": "pt-PT",
+      "author": "fabio.imr.reis@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "27": [
@@ -1381,6 +1457,17 @@
       "date": 1564004259993,
       "locale": "pt-BR",
       "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1578171854856,
+      "locale": "pt-PT",
+      "author": "fabio.imr.reis@gmail.com",
+      "rename": {
+        "original": "Akedá - Tirado do Targum Neofiti sobre o sacrificio de Isaac (Gn 22,1-9)",
+        "new": "Akedah - Midrash - Génesis 22, 1-19"
+      },
       "created": false,
       "updated": true
     }
@@ -2269,6 +2356,13 @@
     },
     {
       "date": 1575144029245,
+      "locale": "pt-PT",
+      "author": "fabio.imr.reis@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1577631272219,
       "locale": "pt-PT",
       "author": "fabio.imr.reis@gmail.com",
       "created": false,
@@ -3175,6 +3269,13 @@
         "original": "precatechumenate",
         "new": "liturgy"
       }
+    },
+    {
+      "date": 1577631612495,
+      "locale": "pt-PT",
+      "author": "fabio.imr.reis@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "91": [
@@ -3215,6 +3316,13 @@
         "original": "precatechumenate",
         "new": "liturgy"
       }
+    },
+    {
+      "date": 1577630884002,
+      "locale": "pt-PT",
+      "author": "fabio.imr.reis@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "93": [
