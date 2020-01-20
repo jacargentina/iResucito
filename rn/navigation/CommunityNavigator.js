@@ -10,7 +10,9 @@ const CommunityNavigator = createStackNavigator(
     Community: CommunityScreen
   },
   {
-    defaultNavigationOptions: StackNavigatorOptions
+    defaultNavigationOptions: ({ navigation }) => {
+      return StackNavigatorOptions();
+    }
   }
 );
 

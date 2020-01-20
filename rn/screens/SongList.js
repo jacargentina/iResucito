@@ -132,7 +132,7 @@ const ClearRatings = () => {
         width: 32,
         fontSize: 30,
         textAlign: 'center',
-        color: StackNavigatorOptions.headerTitleStyle.color
+        color: StackNavigatorOptions().headerTitleStyle.color
       }}
       onPress={() => {
         Alert.alert(
@@ -225,7 +225,7 @@ const ExportToPdf = withNavigation(props => {
         width: 32,
         fontSize: 30,
         textAlign: 'center',
-        color: StackNavigatorOptions.headerTitleStyle.color
+        color: StackNavigatorOptions().headerTitleStyle.color
       }}
       onPress={chooseExport}
     />
@@ -235,8 +235,6 @@ const ExportToPdf = withNavigation(props => {
 SongList.navigationOptions = (props: any) => {
   return {
     title: I18n.t(props.navigation.getParam('title_key')),
-    headerBackTitle: I18n.t('ui.back'),
-    headerTruncatedBackTitle: I18n.t('ui.back'),
     headerRight: (
       <View style={{ flexDirection: 'row' }}>
         <ExportToPdf />

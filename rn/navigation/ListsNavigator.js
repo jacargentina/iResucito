@@ -16,7 +16,9 @@ const ListsNavigator = createStackNavigator(
     PDFViewer: PDFViewer
   },
   {
-    defaultNavigationOptions: StackNavigatorOptions
+    defaultNavigationOptions: ({ navigation }) => {
+      return StackNavigatorOptions();
+    }
   }
 );
 

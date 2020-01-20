@@ -143,7 +143,7 @@ const AddList = () => {
         width: 32,
         fontSize: 30,
         textAlign: 'center',
-        color: StackNavigatorOptions.headerTitleStyle.color
+        color: StackNavigatorOptions().headerTitleStyle.color
       }}
       onPress={chooseListTypeForAdd}
     />

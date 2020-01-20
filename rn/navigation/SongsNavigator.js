@@ -18,7 +18,9 @@ const SongsNavigator = createStackNavigator(
     UnassignedList: UnassignedList
   },
   {
-    defaultNavigationOptions: StackNavigatorOptions
+    defaultNavigationOptions: ({ navigation }) => {
+      return StackNavigatorOptions();
+    }
   }
 );
 

@@ -77,13 +77,13 @@ const SettingsScreen = (props: any) => {
                 }}
                 headerStyle={{
                   backgroundColor:
-                    StackNavigatorOptions.headerStyle.backgroundColor
+                    StackNavigatorOptions().headerStyle.backgroundColor
                 }}
                 headerBackButtonTextStyle={{
-                  color: StackNavigatorOptions.headerTitleStyle.color
+                  color: StackNavigatorOptions().headerTitleStyle.color
                 }}
                 headerTitleStyle={{
-                  color: StackNavigatorOptions.headerTitleStyle.color
+                  color: StackNavigatorOptions().headerTitleStyle.color
                 }}
                 selectedValue={locale}
                 onValueChange={val => {

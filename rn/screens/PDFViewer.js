@@ -28,7 +28,7 @@ const Share = withNavigation(props => {
         width: 32,
         fontSize: 30,
         textAlign: 'center',
-        color: StackNavigatorOptions.headerTitleStyle.color
+        color: StackNavigatorOptions().headerTitleStyle.color
       }}
       onPress={() => sharePDF(title, uri)}
     />
@@ -47,7 +47,7 @@ const Print = withNavigation(props => {
         width: 32,
         fontSize: 30,
         textAlign: 'center',
-        color: StackNavigatorOptions.headerTitleStyle.color
+        color: StackNavigatorOptions().headerTitleStyle.color
       }}
       onPress={() => {
         RNPrint.print({ filePath: uri, isLandscape: true });

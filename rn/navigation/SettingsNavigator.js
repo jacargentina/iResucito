@@ -10,7 +10,9 @@ const SettingsNavigator = createStackNavigator(
     Settings: SettingsScreen
   },
   {
-    defaultNavigationOptions: StackNavigatorOptions
+    defaultNavigationOptions: ({ navigation }) => {
+      return StackNavigatorOptions();
+    }
   }
 );
 

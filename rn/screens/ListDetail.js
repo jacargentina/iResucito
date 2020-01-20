@@ -271,7 +271,7 @@ const ShareList = withNavigation(props => {
       style={{
         marginTop: 4,
         marginRight: 12,
-        color: StackNavigatorOptions.headerTitleStyle.color
+        color: StackNavigatorOptions().headerTitleStyle.color
       }}
       onPress={chooseShareFormat}
     />
@@ -299,7 +299,7 @@ const AddSong = withNavigation((props: any) => {
         width: 32,
         fontSize: 30,
         textAlign: 'center',
-        color: StackNavigatorOptions.headerTitleStyle.color
+        color: StackNavigatorOptions().headerTitleStyle.color
       }}
       onPress={() =>
         navigation.navigate('SongChooser', {

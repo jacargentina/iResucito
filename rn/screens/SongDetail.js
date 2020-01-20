@@ -97,7 +97,7 @@ const TransportNotesMenu = withNavigation((props: any) => {
           width: 32,
           fontSize: 30,
           textAlign: 'center',
-          color: StackNavigatorOptions.headerTitleStyle.color
+          color: StackNavigatorOptions().headerTitleStyle.color
         }}
       />
     ) : (
@@ -108,7 +108,7 @@ const TransportNotesMenu = withNavigation((props: any) => {
             fontWeight: 'bold',
             fontStyle: 'italic',
             textAlign: 'center',
-            color: StackNavigatorOptions.headerTitleStyle.color
+            color: StackNavigatorOptions().headerTitleStyle.color
           }}>
           {transportNote}
         </Text>
@@ -145,7 +145,7 @@ const ViewPdf = withNavigation(props => {
         width: 32,
         fontSize: 30,
         textAlign: 'center',
-        color: StackNavigatorOptions.headerTitleStyle.color
+        color: StackNavigatorOptions().headerTitleStyle.color
       }}
       onPress={() => {
         const { fullText } = song;
@@ -176,8 +176,6 @@ SongDetail.navigationOptions = (props: any) => {
   const song = props.navigation.getParam('song');
   return {
     title: song ? song.titulo : 'Salmo',
-    headerBackTitle: I18n.t('ui.back'),
-    headerTruncatedBackTitle: I18n.t('ui.back'),
     headerRight: (
       <View style={{ flexDirection: 'row' }}>
         <ViewPdf />

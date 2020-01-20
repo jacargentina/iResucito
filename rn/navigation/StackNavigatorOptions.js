@@ -1,7 +1,8 @@
 // @flow
 import commonTheme from '../native-base-theme/variables/platform';
+import I18n from '../../translations';
 
-const StackNavigatorOptions = {
+const StackNavigatorOptions = () => ({
   cardStyle: {
     backgroundColor: 'white'
   },
@@ -14,7 +15,9 @@ const StackNavigatorOptions = {
   headerBackTitleStyle: {
     color: 'white'
   },
-  headerTintColor: 'white'
-};
+  headerTintColor: 'white',
+  headerBackTitle: I18n.t('ui.back'),
+  headerTruncatedBackTitle: I18n.t('ui.back')
+});
 
 export default StackNavigatorOptions;

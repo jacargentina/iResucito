@@ -1,6 +1,7 @@
 // @flow
 import { createStackNavigator } from 'react-navigation-stack';
 import NavigationService from './NavigationService';
+import StackNavigatorOptions from './StackNavigatorOptions';
 import MenuNavigator from './MenuNavigator';
 import SongChooserNavigator from './SongChooserNavigator';
 import AboutDialog from '../screens/AboutDialog';
@@ -29,7 +30,10 @@ const RootNavigator = createStackNavigator(
   },
   {
     mode: 'modal',
-    headerMode: 'none'
+    headerMode: 'none',
+    defaultNavigationOptions: ({ navigation }) => {
+      return StackNavigatorOptions();
+    }
   }
 );
 

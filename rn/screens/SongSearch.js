@@ -72,7 +72,7 @@ const SongSearch = (props: any) => {
 };
 
 SongSearch.navigationOptions = () => {
-  return { title: I18n.t(titleLocaleKey), headerBackTitle: I18n.t('ui.back') };
+  return { title: I18n.t(titleLocaleKey) };
 };
 
 export default SongSearch;
