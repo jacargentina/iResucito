@@ -19,7 +19,7 @@ var android_build = /def VERSION_BUILD=(.*)/.exec(androidGradle)[1];
 
 module.exports = (env, argv) => {
   return {
-    devtool: argv.mode === 'development' ? 'source-map' : ' none',
+    devtool: argv.mode === 'development' ? 'source-map' : 'none',
     entry: __dirname + '/index.js',
     module: {
       rules: [
