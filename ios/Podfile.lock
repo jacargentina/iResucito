@@ -237,7 +237,7 @@ PODS:
     - React
   - RNCMaskedView (0.1.6):
     - React
-  - RNDeviceInfo (5.4.1):
+  - RNDeviceInfo (5.4.3):
     - React
   - RNFS (2.16.2):
     - React
@@ -426,7 +426,7 @@ SPEC CHECKSUMS:
   rn-fetch-blob: f065bb7ab7fb48dd002629f8bdcb0336602d3cba
   RNCAsyncStorage: 8539fc80a0075fcc9c8e2dff84cd22dc5bf1dacf
   RNCMaskedView: e5b99bc191945f157adeede68da9d424462de177
-  RNDeviceInfo: 54556486cd02538dbef727f39292d096abe0cf0e
+  RNDeviceInfo: d1d8b58e034178d86451fac067bf0b59bdf7699a
   RNFS: 0d4191b1052bef9ce70deff00a5b4169c62bbd9b
   RNGestureHandler: 02905abe54e1f6e59c081a10b4bd689721e17aa6
   RNICloudStore: bc6e225811637c09bd1eb055d6cd7448e61cd451
