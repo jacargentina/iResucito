@@ -85,7 +85,8 @@ const AboutDialog = (props: any) => {
             {I18n.t('ui.collaborators')}
           </Text>
           {'\n'} Javier Suarez Suarez (es)
-          {'\n'} Matheus Fragoso (pt)
+          {'\n'} Matheus Fragoso (pt-BR)
+          {'\n'} Fabio Reis (pt-PT)
         </Text>
         <View
           style={{
