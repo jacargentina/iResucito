@@ -249,6 +249,8 @@ PODS:
     - React
   - RNReanimated (1.7.0):
     - React
+  - RNScreens (2.0.0-alpha.32):
+    - React
   - RNShare (3.0.0):
     - React
   - Yoga (1.14.0)
@@ -297,6 +299,7 @@ DEPENDENCIES:
   - RNICloudStore (from `../node_modules/react-native-icloudstore`)
   - RNLocalize (from `../node_modules/react-native-localize`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
+  - RNScreens (from `../node_modules/react-native-screens`)
   - RNShare (from `../node_modules/react-native-share`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
@@ -385,6 +388,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-localize"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
+  RNScreens:
+    :path: "../node_modules/react-native-screens"
   RNShare:
     :path: "../node_modules/react-native-share"
   Yoga:
@@ -432,6 +437,7 @@ SPEC CHECKSUMS:
   RNICloudStore: bc6e225811637c09bd1eb055d6cd7448e61cd451
   RNLocalize: 7ea191e47e1755d2ad48614a2e9d07d290abc58e
   RNReanimated: 031fe8d9ea93c2bd689a40f05320ef9d96f74d7f
+  RNScreens: a55364dc1833101f836cee70975ce1fea615a12f
   RNShare: 0e19ddb0bf338b62702ce1d9e001ee14effa68a8
   Yoga: f2a7cd4280bfe2cca5a7aed98ba0eb3d1310f18b
 
