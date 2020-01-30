@@ -190,7 +190,7 @@ PODS:
     - React
   - react-native-print (0.6.0):
     - React
-  - react-native-safe-area-context (0.6.2):
+  - react-native-safe-area-context (0.6.4):
     - React
   - react-native-splash-screen (3.2.0):
     - React
@@ -415,7 +415,7 @@ SPEC CHECKSUMS:
   react-native-keep-awake: eba3137546b10003361b37c761f6c429b59814ae
   react-native-pdf: 29a09815e99c92743aa8459a90564aaddd4065e0
   react-native-print: d2d083f2305faacfba12d3896ec6ca72303da2b2
-  react-native-safe-area-context: a1d322930b8c5d04ebeb77cc47cc97575ad27203
+  react-native-safe-area-context: 042dfc9d4db17196841df962ba9497f6e7a5bd02
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   React-RCTActionSheet: 600b4d10e3aea0913b5a92256d2719c0cdd26d76
   React-RCTAnimation: 791a87558389c80908ed06cc5dfc5e7920dfa360
