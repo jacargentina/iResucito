@@ -78,7 +78,7 @@ const AboutDialog = (props: any) => {
           <Text style={{ fontWeight: 'bold' }}>
             {I18n.t('ui.version')}: {version}
           </Text>
-          {'\n'} Javier Castro, 2017-2019
+          {'\n'} Javier Castro, 2017-2020
         </Text>
         <Text style={{ textAlign: 'center', fontSize: 12 }}>
           <Text style={{ fontWeight: 'bold' }}>
