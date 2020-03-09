@@ -644,14 +644,14 @@ const useSearch = (locale: string, developerMode: boolean) => {
     var items: Array<SearchItem> = [
       {
         title_key: 'search_title.ratings',
-        note: I18n.t('search_note.ratings'),
+        note_key: 'search_note.ratings',
         route: 'SongList',
         params: { filter: null, sort: ordenClasificacion },
         badge: null
       },
       {
         title_key: 'search_title.alpha',
-        note: I18n.t('search_note.alpha'),
+        note_key: 'search_note.alpha',
         route: 'SongList',
         chooser: I18n.t('search_tabs.all'),
         params: { filter: null },
@@ -663,28 +663,28 @@ const useSearch = (locale: string, developerMode: boolean) => {
       },
       {
         title_key: 'search_title.precatechumenate',
-        note: I18n.t('search_note.precatechumenate'),
+        note_key: 'search_note.precatechumenate',
         route: 'SongList',
         params: { filter: { stage: 'precatechumenate' } },
         badge: badges.precatechumenate
       },
       {
         title_key: 'search_title.catechumenate',
-        note: I18n.t('search_note.catechumenate'),
+        note_key: 'search_note.catechumenate',
         route: 'SongList',
         params: { filter: { stage: 'catechumenate' } },
         badge: badges.catechumenate
       },
       {
         title_key: 'search_title.election',
-        note: I18n.t('search_note.election'),
+        note_key: 'search_note.election',
         route: 'SongList',
         params: { filter: { stage: 'election' } },
         badge: badges.election
       },
       {
         title_key: 'search_title.liturgy',
-        note: I18n.t('search_note.liturgy'),
+        note_key: 'search_note.liturgy',
         route: 'SongList',
         params: { filter: { stage: 'liturgy' } },
         badge: badges.liturgy
@@ -695,35 +695,35 @@ const useSearch = (locale: string, developerMode: boolean) => {
       },
       {
         title_key: 'search_title.advent',
-        note: I18n.t('search_note.advent'),
+        note_key: 'search_note.advent',
         route: 'SongList',
         params: { filter: { advent: true } },
         badge: null
       },
       {
         title_key: 'search_title.christmas',
-        note: I18n.t('search_note.christmas'),
+        note_key: 'search_note.christmas',
         route: 'SongList',
         params: { filter: { christmas: true } },
         badge: null
       },
       {
         title_key: 'search_title.lent',
-        note: I18n.t('search_note.lent'),
+        note_key: 'search_note.lent',
         route: 'SongList',
         params: { filter: { lent: true } },
         badge: null
       },
       {
         title_key: 'search_title.easter',
-        note: I18n.t('search_note.easter'),
+        note_key: 'search_note.easter',
         route: 'SongList',
         params: { filter: { easter: true } },
         badge: null
       },
       {
         title_key: 'search_title.pentecost',
-        note: I18n.t('search_note.pentecost'),
+        note_key: 'search_note.pentecost',
         route: 'SongList',
         params: { filter: { pentecost: true } },
         badge: null
@@ -734,7 +734,7 @@ const useSearch = (locale: string, developerMode: boolean) => {
       },
       {
         title_key: 'search_title.entrance',
-        note: I18n.t('search_note.entrance'),
+        note_key: 'search_note.entrance',
         route: 'SongList',
         params: { filter: { entrance: true } },
         badge: null,
@@ -743,7 +743,7 @@ const useSearch = (locale: string, developerMode: boolean) => {
       },
       {
         title_key: 'search_title.peace and offerings',
-        note: I18n.t('search_note.peace and offerings'),
+        note_key: 'search_note.peace and offerings',
         route: 'SongList',
         params: { filter: { 'peace and offerings': true } },
         badge: null,
@@ -752,7 +752,7 @@ const useSearch = (locale: string, developerMode: boolean) => {
       },
       {
         title_key: 'search_title.fraction of bread',
-        note: I18n.t('search_note.fraction of bread'),
+        note_key: 'search_note.fraction of bread',
         route: 'SongList',
         params: { filter: { 'fraction of bread': true } },
         badge: null,
@@ -761,7 +761,7 @@ const useSearch = (locale: string, developerMode: boolean) => {
       },
       {
         title_key: 'search_title.communion',
-        note: I18n.t('search_note.communion'),
+        note_key: 'search_note.communion',
         route: 'SongList',
         params: { filter: { communion: true } },
         badge: null,
@@ -770,7 +770,7 @@ const useSearch = (locale: string, developerMode: boolean) => {
       },
       {
         title_key: 'search_title.exit',
-        note: I18n.t('search_note.exit'),
+        note_key: 'search_note.exit',
         route: 'SongList',
         params: { filter: { exit: true } },
         badge: null,
@@ -779,7 +779,7 @@ const useSearch = (locale: string, developerMode: boolean) => {
       },
       {
         title_key: 'search_title.signing to the virgin',
-        note: I18n.t('search_note.signing to the virgin'),
+        note_key: 'search_note.signing to the virgin',
         route: 'SongList',
         params: { filter: { 'signing to the virgin': true } },
         badge: null,
@@ -788,14 +788,14 @@ const useSearch = (locale: string, developerMode: boolean) => {
       {
         /* eslint-disable quotes */
         title_key: `search_title.children's songs`,
-        note: I18n.t(`search_note.children's songs`),
+        note: `search_note.children's songs`,
         route: 'SongList',
         params: { filter: { "children's songs": true } },
         badge: null
       },
       {
         title_key: 'search_title.lutes and vespers',
-        note: I18n.t('search_note.lutes and vespers'),
+        note_key: 'search_note.lutes and vespers',
         route: 'SongList',
         params: { filter: { 'lutes and vespers': true } },
         badge: null
@@ -810,7 +810,7 @@ const useSearch = (locale: string, developerMode: boolean) => {
     if (developerMode === true) {
       items.unshift({
         title_key: 'search_title.unassigned',
-        note: I18n.t('search_note.unassigned'),
+        note_key: 'search_note.unassigned',
         route: 'UnassignedList',
         params: { filter: null },
         badge: null

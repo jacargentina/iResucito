@@ -60,7 +60,7 @@ const SongSearch = (props: any) => {
                 <Left>{item.badge}</Left>
                 <Body>
                   <Text>{I18n.t(item.title_key)}</Text>
-                  <Text note>{item.note}</Text>
+                  <Text note>{I18n.t(item.note_key)}</Text>
                 </Body>
               </ListItem>
             );
