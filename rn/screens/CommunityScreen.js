@@ -164,7 +164,7 @@ const ContactImport = () => {
 CommunityScreen.navigationOptions = () => {
   return {
     title: I18n.t(titleLocaleKey),
-    headerRight: (
+    headerRight: () => (
       <View style={{ flexDirection: 'row' }}>
         <ContactImport />
       </View>

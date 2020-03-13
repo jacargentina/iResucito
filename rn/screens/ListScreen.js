@@ -153,7 +153,7 @@ const AddList = () => {
 ListScreen.navigationOptions = () => {
   return {
     title: I18n.t(titleLocaleKey),
-    headerRight: (
+    headerRight: () => (
       <View style={{ flexDirection: 'row' }}>
         <AddList />
       </View>

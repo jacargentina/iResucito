@@ -235,7 +235,7 @@ const ExportToPdf = withNavigation(props => {
 SongList.navigationOptions = (props: any) => {
   return {
     title: I18n.t(props.navigation.getParam('title_key')),
-    headerRight: (
+    headerRight: () => (
       <View style={{ flexDirection: 'row' }}>
         <ExportToPdf />
         <ClearRatings />

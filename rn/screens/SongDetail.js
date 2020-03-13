@@ -176,7 +176,7 @@ SongDetail.navigationOptions = (props: any) => {
   const song = props.navigation.getParam('song');
   return {
     title: song ? song.titulo : 'Salmo',
-    headerRight: (
+    headerRight: () => (
       <View style={{ flexDirection: 'row' }}>
         <ViewPdf />
         <TransportNotesMenu />

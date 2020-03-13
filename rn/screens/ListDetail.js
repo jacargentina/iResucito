@@ -314,7 +314,7 @@ ListDetail.navigationOptions = props => {
   const listName = props.navigation.getParam('listName');
   return {
     title: listName ? listName : 'Lista',
-    headerRight: (
+    headerRight: () => (
       <View style={{ flexDirection: 'row' }}>
         <ShareList />
         <AddSong />

@@ -61,7 +61,7 @@ PDFViewer.navigationOptions = props => {
   const title = navigation.getParam('title');
   return {
     title: `PDF - ${title}`,
-    headerRight: (
+    headerRight: () => (
       <View style={{ flexDirection: 'row' }}>
         <Share />
         <Print />
