@@ -1,22 +1,22 @@
 // @flow
-import { createStackNavigator } from 'react-navigation-stack';
+import React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
 import StackNavigatorOptions from './StackNavigatorOptions';
 import SongChooserDialog from '../screens/SongChooserDialog';
 import SongPreviewScreenDialog from '../screens/SongPreviewScreenDialog';
 
-const SongChooserNavigator = createStackNavigator(
-  {
-    Dialog: SongChooserDialog,
-    ViewSong: SongPreviewScreenDialog
-  },
-  {
-    mode: 'modal',
-    headerMode: 'none',
-    defaultNavigationOptions: ({ navigation }) => {
-      var result = StackNavigatorOptions();
-      return result;
-    }
-  }
-);
+const Stack = createStackNavigator();
+
+const SongChooserNavigator = () => {
+  return (
+    <Stack.Navigator
+      mode="modal"
+      headerMode="none"
+      screenOptions={StackNavigatorOptions()}>
+      <Stack.Screen name="Dialog" component={SongChooserDialog} />
+      <Stack.Screen name="ViewSong" component={SongPreviewScreenDialog} />
+    </Stack.Navigator>
+  );
+};
 
 export default SongChooserNavigator;

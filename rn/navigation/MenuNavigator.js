@@ -1,6 +1,7 @@
 // @flow
+import React from 'react';
 import { Platform } from 'react-native';
-import { createBottomTabNavigator } from 'react-navigation-tabs';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import commonTheme from '../native-base-theme/variables/platform';
 import SongsNavigator from './SongsNavigator';
 import ListsNavigator from './ListsNavigator';
@@ -30,17 +31,17 @@ if (Platform.OS === 'android') {
   tabBarOptions.showIcon = true;
 }
 
-const MenuNavigator = createBottomTabNavigator(
-  {
-    Songs: SongsNavigator,
-    Lists: ListsNavigator,
-    Community: CommunityNavigator,
-    Settings: SettingsNavigator
-  },
-  {
-    swipeEnabled: false,
-    tabBarOptions: tabBarOptions
-  }
-);
+const Tab = createBottomTabNavigator();
+
+const MenuNavigator = () => {
+  return (
+    <Tab.Navigator swipeEnabled={false} tabBarOptions={tabBarOptions}>
+      <Tab.Screen name="Songs" component={SongsNavigator} />
+      <Tab.Screen name="Lists" component={ListsNavigator} />
+      <Tab.Screen name="Community" component={CommunityNavigator} />
+      <Tab.Screen name="Settings" component={SettingsNavigator} />
+    </Tab.Navigator>
+  );
+};
 
 export default MenuNavigator;

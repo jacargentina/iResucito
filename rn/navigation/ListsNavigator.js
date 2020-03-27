@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import { createStackNavigator } from 'react-navigation-stack';
+import { createStackNavigator } from '@react-navigation/stack';
 import StackNavigatorOptions from './StackNavigatorOptions';
 import { Icon } from 'native-base';
 import ListScreen from '../screens/ListScreen';
@@ -8,21 +8,9 @@ import ListDetail from '../screens/ListDetail';
 import SongDetail from '../screens/SongDetail';
 import PDFViewer from '../screens/PDFViewer';
 
-const ListsNavigator = createStackNavigator(
-  {
-    Lists: ListScreen,
-    ListDetail: ListDetail,
-    SongDetail: SongDetail,
-    PDFViewer: PDFViewer
-  },
-  {
-    defaultNavigationOptions: ({ navigation }) => {
-      return StackNavigatorOptions();
-    }
-  }
-);
+const Stack = createStackNavigator();
 
-ListsNavigator.navigationOptions = () => ({
+const commonOptions = {
   tabBarIcon: ({ focused, tintColor }) => {
     return (
       <Icon
@@ -32,6 +20,33 @@ ListsNavigator.navigationOptions = () => ({
       />
     );
   }
-});
+};
+
+const ListsNavigator = () => {
+  return (
+    <Stack.Navigator screenOptions={StackNavigatorOptions()}>
+      <Stack.Screen
+        name="Lists"
+        component={ListScreen}
+        options={commonOptions}
+      />
+      <Stack.Screen
+        name="ListDetail"
+        component={ListDetail}
+        options={commonOptions}
+      />
+      <Stack.Screen
+        name="SongDetail"
+        component={SongDetail}
+        options={commonOptions}
+      />
+      <Stack.Screen
+        name="PDFViewer"
+        component={PDFViewer}
+        options={commonOptions}
+      />
+    </Stack.Navigator>
+  );
+};
 
 export default ListsNavigator;

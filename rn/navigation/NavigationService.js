@@ -1,5 +1,5 @@
 // @flow
-import { StackActions, NavigationActions } from 'react-navigation';
+import { StackActions, NavigationActions } from '@react-navigation/native';
 
 let navigator;
 
