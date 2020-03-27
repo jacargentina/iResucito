@@ -13,6 +13,7 @@
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		1BA63E7877CBEB5304D997E8 /* libPods-iResucito-iResucitoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9183A5D08870C0D9996952C /* libPods-iResucito-iResucitoTests.a */; };
 		20A65B3F09C742E481A76D28 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 683C81D93509420C98AC30FF /* Feather.ttf */; };
 		2128A10092EE48ACA913F2E9 /* Roboto_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B9E93A927B584EBDB526EEEB /* Roboto_medium.ttf */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
@@ -26,7 +27,6 @@
 		4C705F9DC32E253E7A22CF0E /* libPods-iResucito-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FDD00E4434523DCCB36C0428 /* libPods-iResucito-tvOS.a */; };
 		4F36549E89D242DBADA74C49 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56C4873638114CB28D734AF0 /* Zocial.ttf */; };
 		55ACBD2169F845BD9856C1BF /* Roboto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D4D594A06396464190C44014 /* Roboto.ttf */; };
-		6C425AB8DAD891A8A8BA6834 /* libPods-iResucitoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D97CDC5121F6D257B89EF1C2 /* libPods-iResucitoTests.a */; };
 		6C574140D9144788A345FAE2 /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 338D7ADE676C48BD83B2C2FF /* AntDesign.ttf */; };
 		730A40D7B2714598961DA7CC /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E0030EB2A4DD4208B166E045 /* MaterialIcons.ttf */; };
 		7BD2D888DF934C5E97D4ED1E /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AE051890C484082951CE79A /* Octicons.ttf */; };
@@ -90,11 +90,14 @@
 		748BF07D3AA94E7E8E947089 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/native-base/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		7AE051890C484082951CE79A /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/native-base/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		8829DFCE23298AA3000197D4 /* resucito.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = resucito.gif; sourceTree = "<group>"; };
+		883AB920242E46F800EC77E0 /* iResucito-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iResucito-Bridging-Header.h"; sourceTree = "<group>"; };
 		884593DC230ED2CE00E72C72 /* Icon-App-60x60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-App-60x60@3x.png"; path = "iResucito/Images.xcassets/AppIcon.appiconset/Icon-App-60x60@3x.png"; sourceTree = "<group>"; };
 		8872DD8B22DF4F2B00FDA403 /* Franklin Gothic Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Franklin Gothic Medium.ttf"; path = "../assets/fonts/Franklin Gothic Medium.ttf"; sourceTree = "<group>"; };
 		8891E2BC232989F30072F2F9 /* cristo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cristo.jpg; sourceTree = "<group>"; };
 		88A4D49023A2A82E0090F9AD /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		88D516DE22DF4AAE00E03D4C /* songs */ = {isa = PBXFileReference; lastKnownFileType = folder; name = songs; path = ../songs; sourceTree = "<group>"; };
+		8C59219A9D3B2B176FFF02E6 /* Pods-iResucito-iResucitoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iResucito-iResucitoTests.release.xcconfig"; path = "Target Support Files/Pods-iResucito-iResucitoTests/Pods-iResucito-iResucitoTests.release.xcconfig"; sourceTree = "<group>"; };
+		8CFF9400198C8630E06CAB4A /* Pods-iResucito-iResucitoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iResucito-iResucitoTests.debug.xcconfig"; path = "Target Support Files/Pods-iResucito-iResucitoTests/Pods-iResucito-iResucitoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		94EEF1E1F8D643B1BCA8D0BD /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/native-base/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
 		9562017146C48F30930E0271 /* libPods-iResucito-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iResucito-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2565D4B4FB1BCF097E80804 /* Pods-iResucito.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iResucito.debug.xcconfig"; path = "Target Support Files/Pods-iResucito/Pods-iResucito.debug.xcconfig"; sourceTree = "<group>"; };
@@ -105,9 +108,9 @@
 		BD7608E249E4438A801F10FB /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/native-base/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		D4D594A06396464190C44014 /* Roboto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto.ttf; path = "../node_modules/native-base/Fonts/Roboto.ttf"; sourceTree = "<group>"; };
 		D7E474849C70161267741465 /* Pods-iResucito-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iResucito-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-iResucito-tvOS/Pods-iResucito-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
-		D97CDC5121F6D257B89EF1C2 /* libPods-iResucitoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iResucitoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0030EB2A4DD4208B166E045 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/native-base/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		E4E835E3619ECFCF0F699FF4 /* Pods-iResucito-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iResucito-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-iResucito-tvOSTests/Pods-iResucito-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		E9183A5D08870C0D9996952C /* libPods-iResucito-iResucitoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iResucito-iResucitoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA8BBD93F6DC41C6A6FA67B4 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/native-base/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -121,7 +124,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6C425AB8DAD891A8A8BA6834 /* libPods-iResucitoTests.a in Frameworks */,
+				1BA63E7877CBEB5304D997E8 /* libPods-iResucito-iResucitoTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,6 +182,7 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				883AB920242E46F800EC77E0 /* iResucito-Bridging-Header.h */,
 			);
 			name = iResucito;
 			sourceTree = "<group>";
@@ -191,7 +195,7 @@
 				FB9C97B677F8BB170DA38C69 /* libPods-iResucito.a */,
 				FDD00E4434523DCCB36C0428 /* libPods-iResucito-tvOS.a */,
 				9562017146C48F30930E0271 /* libPods-iResucito-tvOSTests.a */,
-				D97CDC5121F6D257B89EF1C2 /* libPods-iResucitoTests.a */,
+				E9183A5D08870C0D9996952C /* libPods-iResucito-iResucitoTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -271,6 +275,8 @@
 				E4E835E3619ECFCF0F699FF4 /* Pods-iResucito-tvOSTests.release.xcconfig */,
 				20CCE8CB4AB4FF6FAE13B6BE /* Pods-iResucitoTests.debug.xcconfig */,
 				A9436D5600D79002EA403B03 /* Pods-iResucitoTests.release.xcconfig */,
+				8CFF9400198C8630E06CAB4A /* Pods-iResucito-iResucitoTests.debug.xcconfig */,
+				8C59219A9D3B2B176FFF02E6 /* Pods-iResucito-iResucitoTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -362,8 +368,8 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 940;
-				ORGANIZATIONNAME = Facebook;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
@@ -372,6 +378,7 @@
 					};
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = GHJ7J9LTV8;
+						LastSwiftMigration = 1130;
 						ProvisioningStyle = Manual;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
@@ -387,10 +394,9 @@
 			};
 			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "iResucito" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 				es,
@@ -556,7 +562,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-iResucitoTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-iResucito-iResucitoTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -691,7 +697,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 20CCE8CB4AB4FF6FAE13B6BE /* Pods-iResucitoTests.debug.xcconfig */;
+			baseConfigurationReference = 8CFF9400198C8630E06CAB4A /* Pods-iResucito-iResucitoTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = GHJ7J9LTV8;
@@ -715,7 +721,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A9436D5600D79002EA403B03 /* Pods-iResucitoTests.release.xcconfig */;
+			baseConfigurationReference = 8C59219A9D3B2B176FFF02E6 /* Pods-iResucito-iResucitoTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -737,12 +743,19 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A2565D4B4FB1BCF097E80804 /* Pods-iResucito.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 0;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = GHJ7J9LTV8;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"FB_SONARKIT_ENABLED=1",
+				);
 				INFOPLIST_FILE = iResucito/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -753,6 +766,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.javiercastro.iresucito;
 				PRODUCT_NAME = iResucito;
 				PROVISIONING_PROFILE_SPECIFIER = "iResucito en iPhone XS";
+				SWIFT_OBJC_BRIDGING_HEADER = "iResucito-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -762,7 +778,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 440873CFBF0AD5544161BD78 /* Pods-iResucito.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_TEAM = GHJ7J9LTV8;
@@ -776,6 +794,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.javiercastro.iresucito;
 				PRODUCT_NAME = iResucito;
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.javiercastro.iresucito";
+				SWIFT_OBJC_BRIDGING_HEADER = "iResucito-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -896,6 +916,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -921,6 +942,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -939,9 +961,16 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)",
+					"$(inherited)",
+				);
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "iResucito-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -949,6 +978,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -974,6 +1004,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				DEAD_CODE_STRIPPING = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -985,8 +1016,15 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)",
+					"$(inherited)",
+				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "iResucito-Bridging-Header.h";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
