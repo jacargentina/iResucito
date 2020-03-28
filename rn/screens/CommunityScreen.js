@@ -2,7 +2,7 @@
 import React, { useContext, useEffect, useRef, useState, useMemo } from 'react';
 import { View, Alert, FlatList } from 'react-native';
 import { Icon, Text } from 'native-base';
-import { withNavigationFocus } from 'react-navigation';
+import { useIsFocused } from '@react-navigation/native';
 import Swipeout from 'react-native-swipeout';
 import SearchBarView from './SearchBarView';
 import { DataContext } from '../DataContext';
@@ -16,7 +16,8 @@ const titleLocaleKey = 'screen_title.community';
 
 const CommunityScreen = (props: any) => {
   const data = useContext(DataContext);
-  const { navigation, isFocused } = props;
+  const isFocused = useIsFocused();
+  const { navigation } = props;
   const { contactImport, brothers, update, remove, add } = data.community;
   const listRef = useRef<?FlatList>();
   const [filter, setFilter] = useState('');
@@ -172,4 +173,4 @@ CommunityScreen.navigationOptions = () => {
   };
 };
 
-export default withNavigationFocus(CommunityScreen);
+export default CommunityScreen;

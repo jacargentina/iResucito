@@ -2,6 +2,7 @@
 import React from 'react';
 import { Platform } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Icon } from 'native-base';
 import commonTheme from '../native-base-theme/variables/platform';
 import SongsNavigator from './SongsNavigator';
 import ListsNavigator from './ListsNavigator';
@@ -33,13 +34,43 @@ if (Platform.OS === 'android') {
 
 const Tab = createBottomTabNavigator();
 
+const getIcon = iconName => {
+  return {
+    tabBarIcon: ({ focused, color }) => {
+      return (
+        <Icon
+          name={iconName}
+          active={focused}
+          style={{ marginTop: 6, color: color }}
+        />
+      );
+    }
+  };
+};
+
 const MenuNavigator = () => {
   return (
     <Tab.Navigator swipeEnabled={false} tabBarOptions={tabBarOptions}>
-      <Tab.Screen name="Songs" component={SongsNavigator} />
-      <Tab.Screen name="Lists" component={ListsNavigator} />
-      <Tab.Screen name="Community" component={CommunityNavigator} />
-      <Tab.Screen name="Settings" component={SettingsNavigator} />
+      <Tab.Screen
+        name="Songs"
+        component={SongsNavigator}
+        options={getIcon('search')}
+      />
+      <Tab.Screen
+        name="Lists"
+        component={ListsNavigator}
+        options={getIcon('bookmark')}
+      />
+      <Tab.Screen
+        name="Community"
+        component={CommunityNavigator}
+        options={getIcon('contacts')}
+      />
+      <Tab.Screen
+        name="Settings"
+        component={SettingsNavigator}
+        options={getIcon('settings')}
+      />
     </Tab.Navigator>
   );
 };

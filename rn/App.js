@@ -1,6 +1,6 @@
 // @flow
 import React, { useEffect } from 'react';
-import { createAppContainer } from 'react-navigation';
+import { NavigationContainer } from '@react-navigation/native';
 import DataContextWrapper from './DataContext';
 import NavigationService from './navigation/NavigationService';
 import RootNavigator from './navigation/RootNavigator';
@@ -72,19 +72,18 @@ const InitializeApp = () => {
 };
 
 const App = () => {
-  const AppContainer = createAppContainer(RootNavigator);
-
   return (
     <DataContextWrapper>
       <StyleProvider style={getTheme(commonTheme)}>
         <Root>
           <MenuProvider backHandler={true}>
             <InitializeApp />
-            <AppContainer
+            <NavigationContainer
               ref={navigation => {
                 NavigationService.setTopLevelNavigator(navigation);
-              }}
-            />
+              }}>
+              <RootNavigator />
+            </NavigationContainer>
           </MenuProvider>
         </Root>
       </StyleProvider>

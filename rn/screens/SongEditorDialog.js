@@ -2,7 +2,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import ModalView from './ModalView';
 import SongListItem from './SongListItem';
-import { withNavigation } from 'react-navigation';
 import { TextInput, View, Alert, ScrollView, Dimensions } from 'react-native';
 import { Text, Button, Icon, ActionSheet } from 'native-base';
 import { DataContext } from '../DataContext';
@@ -270,4 +269,4 @@ const SongEditorDialog = (props: any) => {
   );
 };
 
-export default withNavigation(SongEditorDialog);
+export default SongEditorDialog;

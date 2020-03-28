@@ -1,6 +1,5 @@
 // @flow
 import React from 'react';
-import { withNavigation } from 'react-navigation';
 import { Text, Button } from 'native-base';
 import {
   Platform,
@@ -89,4 +88,4 @@ const ModalView = (props: any) => {
   );
 };
 
-export default withNavigation(ModalView);
+export default ModalView;

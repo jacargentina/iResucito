@@ -1,49 +1,38 @@
 // @flow
 import React from 'react';
+import { View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import StackNavigatorOptions from './StackNavigatorOptions';
-import { Icon } from 'native-base';
 import ListScreen from '../screens/ListScreen';
 import ListDetail from '../screens/ListDetail';
 import SongDetail from '../screens/SongDetail';
 import PDFViewer from '../screens/PDFViewer';
+import ShareButton from '../screens/ShareButton';
+import PrintButton from '../screens/PrintButton';
 
 const Stack = createStackNavigator();
-
-const commonOptions = {
-  tabBarIcon: ({ focused, tintColor }) => {
-    return (
-      <Icon
-        name="bookmark"
-        active={focused}
-        style={{ marginTop: 6, color: tintColor }}
-      />
-    );
-  }
-};
 
 const ListsNavigator = () => {
   return (
     <Stack.Navigator screenOptions={StackNavigatorOptions()}>
-      <Stack.Screen
-        name="Lists"
-        component={ListScreen}
-        options={commonOptions}
-      />
-      <Stack.Screen
-        name="ListDetail"
-        component={ListDetail}
-        options={commonOptions}
-      />
-      <Stack.Screen
-        name="SongDetail"
-        component={SongDetail}
-        options={commonOptions}
-      />
+      <Stack.Screen name="Lists" component={ListScreen} />
+      <Stack.Screen name="ListDetail" component={ListDetail} />
+      <Stack.Screen name="SongDetail" component={SongDetail} />
       <Stack.Screen
         name="PDFViewer"
         component={PDFViewer}
-        options={commonOptions}
+        options={({ navigation, route }) => {
+          const { title } = route.params;
+          return {
+            title: `PDF - ${title}`,
+            headerRight: () => (
+              <View style={{ flexDirection: 'row' }}>
+                <ShareButton navigation={navigation} route={route} />
+                <PrintButton navigation={navigation} route={route} />
+              </View>
+            )
+          };
+        }}
       />
     </Stack.Navigator>
   );

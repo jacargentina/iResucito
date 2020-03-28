@@ -1,6 +1,5 @@
 // @flow
 import React, { useContext } from 'react';
-import { withNavigation } from 'react-navigation';
 import {
   Text,
   Icon,
@@ -163,4 +162,4 @@ const ListDetailItem = (props: any) => {
   );
 };
 
-export default withNavigation(ListDetailItem);
+export default ListDetailItem;

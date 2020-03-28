@@ -1,7 +1,7 @@
 // @flow
 import React, { useContext, useEffect, useState, useRef, useMemo } from 'react';
 import { Text, ListItem, Body, Right, Icon } from 'native-base';
-import { withNavigationFocus } from 'react-navigation';
+import { useIsFocused } from '@react-navigation/native';
 import { FlatList, Keyboard, TouchableOpacity, Alert } from 'react-native';
 import SearchBarView from './SearchBarView';
 import Highlighter from 'react-native-highlight-words';
@@ -19,8 +19,9 @@ const titleLocaleKey = 'search_title.unassigned';
 
 const UnassignedList = (props: any) => {
   const data = useContext(DataContext);
+  const isFocused = useIsFocused();
   const listRef = useRef<?FlatList>();
-  const { navigation, isFocused } = props;
+  const { navigation } = props;
   const { songs, localeSongs } = data.songsMeta;
 
   const [totalText, setTotalText] = useState(I18n.t('ui.loading'));
@@ -128,8 +129,4 @@ const UnassignedList = (props: any) => {
   );
 };
 
-UnassignedList.navigationOptions = () => {
-  return { title: I18n.t(titleLocaleKey) };
-};
-
-export default withNavigationFocus(UnassignedList);
+export default UnassignedList;

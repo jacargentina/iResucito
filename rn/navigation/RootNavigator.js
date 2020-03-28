@@ -1,7 +1,6 @@
 // @flow
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import NavigationService from './NavigationService';
 import StackNavigatorOptions from './StackNavigatorOptions';
 import MenuNavigator from './MenuNavigator';
 import SongChooserNavigator from './SongChooserNavigator';
@@ -43,7 +42,5 @@ const RootNavigator = () => {
     </Stack.Navigator>
   );
 };
-
-NavigationService.applyCancelHandler(RootNavigator.router);
 
 export default RootNavigator;

@@ -1,6 +1,5 @@
 // @flow
 import React, { useContext, useState, useMemo, useEffect } from 'react';
-import { withNavigation } from 'react-navigation';
 import { TouchableOpacity, Alert } from 'react-native';
 import {
   ListItem,
@@ -380,4 +379,4 @@ const SongListItem = (props: any) => {
   );
 };
 
-export default withNavigation(SongListItem);
+export default SongListItem;

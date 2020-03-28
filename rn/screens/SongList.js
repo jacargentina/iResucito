@@ -1,6 +1,6 @@
 // @flow
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { withNavigation, withNavigationFocus } from 'react-navigation';
+import { useIsFocused } from '@react-navigation/native';
 import { FlatList, Keyboard, Alert, View } from 'react-native';
 import { Text, ListItem, Icon, ActionSheet, Spinner } from 'native-base';
 import SearchBarView from './SearchBarView';
@@ -16,7 +16,8 @@ import { defaultExportToPdfOptions } from '../../common';
 const SongList = (props: any) => {
   const listRef = useRef<?FlatList>();
   const data = useContext(DataContext);
-  const { navigation, isFocused, viewButton } = props;
+  const isFocused = useIsFocused();
+  const { navigation, route, viewButton } = props;
   const [totalText, setTotalText] = useState(I18n.t('ui.loading'));
   const { songs } = data.songsMeta;
   const [loading] = data.loading;
@@ -25,7 +26,7 @@ const SongList = (props: any) => {
   const [search, setSearch] = useState();
 
   useEffect(() => {
-    const navFilter = navigation.getParam('filter', props.filter);
+    const navFilter = route.params?.filter ?? props.filter;
     var result = songs;
     if (navFilter) {
       for (var name in navFilter) {
@@ -40,7 +41,7 @@ const SongList = (props: any) => {
         );
       });
     }
-    const navSort = navigation.getParam('sort', props.sort);
+    const navSort = route.params?.sort ?? props.sort;
     if (navSort) {
       result = result.sort(navSort);
     }
@@ -64,7 +65,7 @@ const SongList = (props: any) => {
   }, [textFilter, props.filter, I18n.locale]);
 
   useEffect(() => {
-    navigation.setParams({ title: I18n.t(navigation.getParam('title_key')) });
+    navigation.setParams({ title: I18n.t(route.params.title_key) });
   }, [I18n.locale]);
 
   const onPress = song => {
@@ -157,7 +158,7 @@ const ClearRatings = () => {
   );
 };
 
-const ExportToPdf = withNavigation(props => {
+const ExportToPdf = props => {
   const data = useContext(DataContext);
   const { songs } = data.songsMeta;
   const [, setLoading] = data.loading;
@@ -230,11 +231,11 @@ const ExportToPdf = withNavigation(props => {
       onPress={chooseExport}
     />
   );
-});
+};
 
 SongList.navigationOptions = (props: any) => {
   return {
-    title: I18n.t(props.navigation.getParam('title_key')),
+    title: I18n.t(props.route.params.title_key),
     headerRight: () => (
       <View style={{ flexDirection: 'row' }}>
         <ExportToPdf />
@@ -244,4 +245,4 @@ SongList.navigationOptions = (props: any) => {
   };
 };
 
-export default withNavigationFocus(withNavigation(SongList));
+export default SongList;

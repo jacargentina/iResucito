@@ -1,6 +1,5 @@
 // @flow
 import React, { Fragment, useContext, useState } from 'react';
-import { withNavigation } from 'react-navigation';
 import { Alert, View, Platform } from 'react-native';
 import { Icon, List, Text, ActionSheet } from 'native-base';
 import Swipeout from 'react-native-swipeout';
@@ -236,7 +235,7 @@ const ListDetail = (props: any) => {
   );
 };
 
-const ShareList = withNavigation(props => {
+const ShareList = (props) => {
   const listName = props.navigation.getParam('listName');
   const data = useContext(DataContext);
   const { shareList } = data.lists;
@@ -276,9 +275,9 @@ const ShareList = withNavigation(props => {
       onPress={chooseShareFormat}
     />
   );
-});
+};
 
-const AddSong = withNavigation((props: any) => {
+const AddSong = (props: any) => {
   const data = useContext(DataContext);
   const { getListForUI } = data.lists;
   const { navigation } = props;
@@ -308,7 +307,7 @@ const AddSong = withNavigation((props: any) => {
       }
     />
   );
-});
+};
 
 ListDetail.navigationOptions = props => {
   const listName = props.navigation.getParam('listName');
