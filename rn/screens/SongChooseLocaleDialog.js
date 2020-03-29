@@ -10,12 +10,10 @@ import commonTheme from '../native-base-theme/variables/platform';
 
 const SongChooseLocaleDialog = (props: any) => {
   const data = useContext(DataContext);
-  const { navigation } = props;
+  const { navigation, route } = props;
   const { songs, localeSongs, setSongPatch } = data.songsMeta;
   const [textFilter, setTextFilter] = useState('');
-
-  const target = navigation.getParam('target');
-  const targetType = navigation.getParam('targetType');
+  const { target, targetType } = route.params;
 
   const items = useMemo(() => {
     var result = [];

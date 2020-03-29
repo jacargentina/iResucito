@@ -1,17 +1,16 @@
 // @flow
 import React, { useContext } from 'react';
 import { Icon } from 'native-base';
-import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
 import { DataContext } from '../DataContext';
+import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
 
-const ShareButton = (props: any) => {
+const ContactImportButton = () => {
   const data = useContext(DataContext);
-  const { route } = props;
-  const { sharePDF } = data;
-  const { title, uri } = route.params;
+  const { contactImport } = data.community;
+
   return (
     <Icon
-      name="share"
+      name="add"
       style={{
         marginTop: 4,
         marginRight: 8,
@@ -20,9 +19,9 @@ const ShareButton = (props: any) => {
         textAlign: 'center',
         color: StackNavigatorOptions().headerTitleStyle.color
       }}
-      onPress={() => sharePDF(title, uri)}
+      onPress={contactImport}
     />
   );
 };
 
-export default ShareButton;
+export default ContactImportButton;

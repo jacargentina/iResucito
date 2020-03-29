@@ -5,8 +5,8 @@ import SongViewPdf from './SongViewPdf';
 import I18n from '../../translations';
 
 const SongPreviewPdfDialog = (props: any) => {
-  const { navigation } = props;
-  const uri = navigation.getParam('uri');
+  const { route } = props;
+  const { uri } = route.params;
   return (
     <ModalView title={I18n.t('screen_title.preview')}>
       <SongViewPdf uri={uri} />

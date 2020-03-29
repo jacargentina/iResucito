@@ -9,15 +9,12 @@ import commonTheme from '../native-base-theme/variables/platform';
 
 const ListNameDialog = (props: any) => {
   const data = useContext(DataContext);
-  const { navigation } = props;
+  const { navigation, route } = props;
   const { lists, addList, renameList } = data.lists;
   const [disabledReasonText, setDisabledReasonText] = useState(null);
   const [actionEnabled, setActionEnabled] = useState(false);
   const [name, setName] = useState('');
-
-  const listName = navigation.getParam('listName');
-  const action = navigation.getParam('action');
-  const type = navigation.getParam('type');
+  const { listName, action, type } = route.params;
 
   const runActionOnList = () => {
     if (action === 'create') {

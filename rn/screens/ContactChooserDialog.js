@@ -12,12 +12,11 @@ import SearchBarView from './SearchBarView';
 
 const ContactChooserDialog = (props: any) => {
   const data = useContext(DataContext);
-  const { navigation } = props;
+  const { navigation, route } = props;
   const { setList } = data.lists;
   const { brothers } = data.community;
   const [textFilter, setTextFilter] = useState('');
-
-  const target = navigation.getParam('target');
+  const { target } = route.params;
 
   const filtered = useMemo(() => {
     var result = brothers.filter(c => contactFilterByText(c, textFilter));

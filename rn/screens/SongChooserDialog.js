@@ -11,15 +11,14 @@ import I18n from '../../translations';
 const SongChooserDialog = (props: any) => {
   const data = useContext(DataContext);
   const scrollToActiveRef = useRef<?ScrollView>();
-  const { navigation } = props;
+  const { navigation, route } = props;
   const { search } = data;
   const { setList } = data.lists;
   const [segments, setSegments] = useState([]);
   const [activeSegment, setActiveSegment] = useState();
   const [scrollToActiveX, setScrollToActiveX] = useState();
   const [scrollToActive, setScrollToActive] = useState(false);
-
-  const target = navigation.getParam('target');
+  const { target } = route.params;
 
   useEffect(() => {
     var choosers = search.searchItems.filter(x => x.chooser !== undefined);

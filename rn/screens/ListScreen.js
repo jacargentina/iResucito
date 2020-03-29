@@ -1,16 +1,13 @@
 // @flow
 import React, { useContext, useState, useMemo, useEffect } from 'react';
 import { ListItem, Left, Body, Icon, Text } from 'native-base';
-import { View, Alert, FlatList, Platform } from 'react-native';
+import { Alert, FlatList, Platform } from 'react-native';
 import Swipeout from 'react-native-swipeout';
 import SearchBarView from './SearchBarView';
 import { DataContext } from '../DataContext';
-import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
 import CallToAction from './CallToAction';
 import I18n from '../../translations';
 import commonTheme from '../native-base-theme/variables/platform';
-
-const titleLocaleKey = 'screen_title.lists';
 
 const ListScreen = (props: any) => {
   const data = useContext(DataContext);
@@ -19,10 +16,6 @@ const ListScreen = (props: any) => {
   const [filtered, setFiltered] = useState();
   const [filter, setFilter] = useState('');
   const allLists = useMemo(() => getListsForUI(), [lists]);
-
-  useEffect(() => {
-    navigation.setParams({ title: I18n.t(titleLocaleKey) });
-  }, [I18n.locale]);
 
   useEffect(() => {
     var result = allLists;
@@ -65,7 +58,7 @@ const ListScreen = (props: any) => {
         icon="bookmark"
         title={I18n.t('call_to_action_title.add lists')}
         text={I18n.t('call_to_action_text.add lists')}
-        buttonHandler={chooseListTypeForAdd}
+        buttonHandler={() => chooseListTypeForAdd(navigation)}
         buttonText={I18n.t('call_to_action_button.add lists')}
       />
     );
@@ -129,36 +122,6 @@ const ListScreen = (props: any) => {
       />
     </SearchBarView>
   );
-};
-
-const AddList = () => {
-  const data = useContext(DataContext);
-  const { chooseListTypeForAdd } = data.lists;
-  return (
-    <Icon
-      name="add"
-      style={{
-        marginTop: 4,
-        marginRight: 8,
-        width: 32,
-        fontSize: 30,
-        textAlign: 'center',
-        color: StackNavigatorOptions().headerTitleStyle.color
-      }}
-      onPress={chooseListTypeForAdd}
-    />
-  );
-};
-
-ListScreen.navigationOptions = () => {
-  return {
-    title: I18n.t(titleLocaleKey),
-    headerRight: () => (
-      <View style={{ flexDirection: 'row' }}>
-        <AddList />
-      </View>
-    )
-  };
 };
 
 export default ListScreen;

@@ -1,13 +1,12 @@
 // @flow
 import React, { useContext, useEffect, useRef, useState, useMemo } from 'react';
-import { View, Alert, FlatList } from 'react-native';
-import { Icon, Text } from 'native-base';
+import { Alert, FlatList } from 'react-native';
+import { Text } from 'native-base';
 import { useIsFocused } from '@react-navigation/native';
 import Swipeout from 'react-native-swipeout';
 import SearchBarView from './SearchBarView';
 import { DataContext } from '../DataContext';
 import CallToAction from './CallToAction';
-import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
 import I18n from '../../translations';
 import ContactListItem from './ContactListItem';
 import { contactFilterByText, ordenAlfabetico } from '../util';
@@ -140,37 +139,6 @@ const CommunityScreen = (props: any) => {
       />
     </SearchBarView>
   );
-};
-
-const ContactImport = () => {
-  const data = useContext(DataContext);
-  const { contactImport } = data.community;
-
-  return (
-    <Icon
-      name="add"
-      style={{
-        marginTop: 4,
-        marginRight: 8,
-        width: 32,
-        fontSize: 30,
-        textAlign: 'center',
-        color: StackNavigatorOptions().headerTitleStyle.color
-      }}
-      onPress={contactImport}
-    />
-  );
-};
-
-CommunityScreen.navigationOptions = () => {
-  return {
-    title: I18n.t(titleLocaleKey),
-    headerRight: () => (
-      <View style={{ flexDirection: 'row' }}>
-        <ContactImport />
-      </View>
-    )
-  };
 };
 
 export default CommunityScreen;

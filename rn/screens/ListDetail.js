@@ -1,11 +1,10 @@
 // @flow
 import React, { Fragment, useContext, useState } from 'react';
-import { Alert, View, Platform } from 'react-native';
-import { Icon, List, Text, ActionSheet } from 'native-base';
+import { Alert, Platform } from 'react-native';
+import { List, Text } from 'native-base';
 import Swipeout from 'react-native-swipeout';
 import ListDetailItem from './ListDetailItem';
 import { DataContext } from '../DataContext';
-import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import I18n from '../../translations';
 
@@ -13,10 +12,9 @@ const ListDetail = (props: any) => {
   const data = useContext(DataContext);
   const [scroll, setScroll] = useState();
   const [noteFocused, setNoteFocused] = useState(false);
-  const { navigation } = props;
+  const { route } = props;
   const { setList, getListForUI } = data.lists;
-
-  const listName = navigation.getParam('listName');
+  const { listName } = route.params;
 
   const confirmListDeleteSong = (songTitle, list, key) => {
     Alert.alert(
@@ -233,93 +231,6 @@ const ListDetail = (props: any) => {
       </List>
     </KeyboardAwareScrollView>
   );
-};
-
-const ShareList = (props) => {
-  const listName = props.navigation.getParam('listName');
-  const data = useContext(DataContext);
-  const { shareList } = data.lists;
-
-  const chooseShareFormat = () => {
-    ActionSheet.show(
-      {
-        options: [
-          I18n.t('list_export_options.native'),
-          I18n.t('list_export_options.plain text'),
-          I18n.t('ui.cancel')
-        ],
-        cancelButtonIndex: 2,
-        title: I18n.t('ui.export.type')
-      },
-      index => {
-        index = Number(index);
-        switch (index) {
-          case 0:
-            shareList(listName, true);
-            break;
-          case 1:
-            shareList(listName, false);
-            break;
-        }
-      }
-    );
-  };
-  return (
-    <Icon
-      name="share"
-      style={{
-        marginTop: 4,
-        marginRight: 12,
-        color: StackNavigatorOptions().headerTitleStyle.color
-      }}
-      onPress={chooseShareFormat}
-    />
-  );
-};
-
-const AddSong = (props: any) => {
-  const data = useContext(DataContext);
-  const { getListForUI } = data.lists;
-  const { navigation } = props;
-
-  const listName = navigation.getParam('listName');
-  const uiList = getListForUI(listName);
-
-  if (uiList.type !== 'libre') {
-    return null;
-  }
-
-  return (
-    <Icon
-      name="add"
-      style={{
-        marginTop: 4,
-        marginRight: 8,
-        width: 32,
-        fontSize: 30,
-        textAlign: 'center',
-        color: StackNavigatorOptions().headerTitleStyle.color
-      }}
-      onPress={() =>
-        navigation.navigate('SongChooser', {
-          target: { listName: listName, listKey: uiList.items.length }
-        })
-      }
-    />
-  );
-};
-
-ListDetail.navigationOptions = props => {
-  const listName = props.navigation.getParam('listName');
-  return {
-    title: listName ? listName : 'Lista',
-    headerRight: () => (
-      <View style={{ flexDirection: 'row' }}>
-        <ShareList />
-        <AddSong />
-      </View>
-    )
-  };
 };
 
 export default ListDetail;

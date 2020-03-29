@@ -1,7 +1,6 @@
 // @flow
 import React, { useState, useEffect } from 'react';
-import { Alert, Platform, PermissionsAndroid, Linking } from 'react-native';
-import NavigationService from './navigation/NavigationService';
+import { Alert, Platform, PermissionsAndroid } from 'react-native';
 import Share from 'react-native-share';
 import Contacts from 'react-native-contacts';
 import { ActionSheet, Toast } from 'native-base';
@@ -274,7 +273,6 @@ const useSongsMeta = (locale: string) => {
 
 const useLists = (songs: any) => {
   const [initialized, setInitialized] = useState(false);
-  const [imported, setImported] = useState();
   const [lists, initLists] = usePersist('lists', 'object', {});
 
   const addList = (listName, type) => {
@@ -450,7 +448,7 @@ const useLists = (songs: any) => {
 
   const importList = (listPath: string) => {
     const path = decodeURI(listPath).replace('file://', '');
-    RNFS.readFile(path)
+    return RNFS.readFile(path)
       .then(content => {
         // Obtener nombre del archivo
         // que será nombre de la lista
@@ -465,7 +463,7 @@ const useLists = (songs: any) => {
           [listName]: JSON.parse(content)
         });
         initLists(changedLists);
-        setImported(listName);
+        return listName;
       })
       .catch(() => {
         Alert.alert(
@@ -475,7 +473,7 @@ const useLists = (songs: any) => {
       });
   };
 
-  const chooseListTypeForAdd = () => {
+  const chooseListTypeForAdd = navigation => {
     ActionSheet.show(
       {
         options: [
@@ -502,7 +500,7 @@ const useLists = (songs: any) => {
             break;
         }
         if (type !== null) {
-          NavigationService.navigate('ListName', {
+          navigation.navigate('ListName', {
             action: 'create',
             type: type
           });
@@ -512,7 +510,6 @@ const useLists = (songs: any) => {
   };
 
   const shareList = (listName: string, useNative: boolean) => {
-    var sharePromise = null;
     if (useNative) {
       const folder =
         Platform.OS === 'ios'
@@ -522,13 +519,19 @@ const useLists = (songs: any) => {
       const listPath = `${folder}${fileName}.ireslist`;
       const nativeList = lists[listName];
       RNFS.writeFile(listPath, JSON.stringify(nativeList, null, ' '), 'utf8');
-      sharePromise = Share.open({
+      Share.open({
         title: I18n.t('ui.share'),
         message: null,
         subject: `iResucitó - ${listName}`,
         url: `file://${listPath}`,
         failOnCancel: false
-      });
+      })
+        .then(res => {
+          console.log(res);
+        })
+        .catch(err => {
+          err && console.log(err);
+        });
     } else {
       var list = getListForUI(listName);
       var items = [];
@@ -558,16 +561,13 @@ const useLists = (songs: any) => {
         items.push(getItemForShare(list, 'nota'));
       }
       var message = items.filter(n => n).join('\n');
-      sharePromise = Share.open({
+      Share.open({
         title: I18n.t('ui.share'),
         message: message,
         subject: `iResucitó - ${listName}`,
         url: null,
         failOnCancel: false
-      });
-    }
-    if (sharePromise) {
-      sharePromise
+      })
         .then(res => {
           console.log(res);
         })
@@ -600,23 +600,6 @@ const useLists = (songs: any) => {
       // });
     }
   }, [songs, lists]);
-
-  useEffect(() => {
-    const handler = event => {
-      importList(event.url);
-    };
-    Linking.addEventListener('url', handler);
-    return function cleanup() {
-      Linking.removeEventListener('url', handler);
-    };
-  }, [lists]);
-
-  useEffect(() => {
-    if (imported) {
-      NavigationService.navigate('Lists');
-      NavigationService.navigate('ListDetail', { listName: imported });
-    }
-  }, [imported]);
 
   return {
     lists,

@@ -1,5 +1,5 @@
 // @flow
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { View, Alert } from 'react-native';
 import { AndroidBackHandler } from 'react-navigation-backhandler';
 import {
@@ -20,8 +20,6 @@ import { getLocalesForPicker } from '../../common';
 import { getDefaultLocale } from '../util';
 import commonTheme from '../native-base-theme/variables/platform';
 
-const titleLocaleKey = 'screen_title.settings';
-
 const SettingsScreen = (props: any) => {
   const data = useContext(DataContext);
   const [devMode, setDevMode] = data.developerMode;
@@ -30,10 +28,6 @@ const SettingsScreen = (props: any) => {
   const { navigation } = props;
   const { shareIndexPatch } = data;
   const { indexPatchExists, clearIndexPatch } = data.songsMeta;
-
-  useEffect(() => {
-    navigation.setParams({ title: I18n.t(titleLocaleKey) });
-  }, [I18n.locale]);
 
   const confirmClearIndexPatch = () => {
     Alert.alert(
@@ -76,8 +70,8 @@ const SettingsScreen = (props: any) => {
                   margin: 0
                 }}
                 headerStyle={{
-                  backgroundColor:
-                    StackNavigatorOptions().headerStyle.backgroundColor
+                  backgroundColor: StackNavigatorOptions().headerStyle
+                    .backgroundColor
                 }}
                 headerBackButtonTextStyle={{
                   color: StackNavigatorOptions().headerTitleStyle.color
@@ -150,10 +144,6 @@ const SettingsScreen = (props: any) => {
       </View>
     </AndroidBackHandler>
   );
-};
-
-SettingsScreen.navigationOptions = () => {
-  return { title: I18n.t(titleLocaleKey) };
 };
 
 export default SettingsScreen;

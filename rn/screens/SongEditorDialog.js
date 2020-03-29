@@ -14,9 +14,8 @@ import { defaultExportToPdfOptions } from '../../common';
 
 const SongEditorDialog = (props: any) => {
   const data = useContext(DataContext);
-  const { navigation } = props;
-  const song: Song = navigation.getParam('song');
-
+  const { navigation, route } = props;
+  const song: Song = route.params.song;
   const { getSongLocalePatch, setSongPatch } = data.songsMeta;
   const [selection, setSelection] = useState({ start: 0, end: 0 });
   const [canDeletePatch, setCanDeletePatch] = useState(false);

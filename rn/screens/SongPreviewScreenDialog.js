@@ -7,8 +7,8 @@ import I18n from '../../translations';
 import commonTheme from '../native-base-theme/variables/platform';
 
 const SongPreviewScreenDialog = (props: any) => {
-  const { navigation } = props;
-  const { text, title, source, stage } = navigation.getParam('data');
+  const { route } = props;
+  const { text, title, source, stage } = route.params.data;
 
   return (
     <ModalView

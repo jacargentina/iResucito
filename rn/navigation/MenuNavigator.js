@@ -1,6 +1,6 @@
 // @flow
-import React from 'react';
-import { Platform } from 'react-native';
+import React, { useContext, useEffect } from 'react';
+import { Platform, Linking } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Icon } from 'native-base';
 import commonTheme from '../native-base-theme/variables/platform';
@@ -8,6 +8,7 @@ import SongsNavigator from './SongsNavigator';
 import ListsNavigator from './ListsNavigator';
 import CommunityNavigator from './CommunityNavigator';
 import SettingsNavigator from './SettingsNavigator';
+import { DataContext } from '../DataContext';
 
 var tabBarOptions = {};
 tabBarOptions.showLabel = false;
@@ -48,7 +49,24 @@ const getIcon = iconName => {
   };
 };
 
-const MenuNavigator = () => {
+const MenuNavigator = (props: any) => {
+  const data = useContext(DataContext);
+  const { navigation } = props;
+  const { lists, importList } = data.lists;
+
+  useEffect(() => {
+    const handler = event => {
+      importList(event.url).then(name => {
+        navigation.navigate('Lists');
+        navigation.navigate('ListDetail', { listName: name });
+      });
+    };
+    Linking.addEventListener('url', handler);
+    return function cleanup() {
+      Linking.removeEventListener('url', handler);
+    };
+  }, [lists]);
+
   return (
     <Tab.Navigator swipeEnabled={false} tabBarOptions={tabBarOptions}>
       <Tab.Screen

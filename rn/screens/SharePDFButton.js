@@ -1,15 +1,17 @@
 // @flow
-import React from 'react';
+import React, { useContext } from 'react';
 import { Icon } from 'native-base';
 import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
-import RNPrint from 'react-native-print';
+import { DataContext } from '../DataContext';
 
-const PrintButton = (props: any) => {
+const SharePDFButton = (props: any) => {
+  const data = useContext(DataContext);
   const { route } = props;
-  const { uri } = route.params;
+  const { sharePDF } = data;
+  const { title, uri } = route.params;
   return (
     <Icon
-      name="print"
+      name="share"
       style={{
         marginTop: 4,
         marginRight: 8,
@@ -18,11 +20,9 @@ const PrintButton = (props: any) => {
         textAlign: 'center',
         color: StackNavigatorOptions().headerTitleStyle.color
       }}
-      onPress={() => {
-        RNPrint.print({ filePath: uri, isLandscape: true });
-      }}
+      onPress={() => sharePDF(title, uri)}
     />
   );
 };
 
-export default PrintButton;
+export default SharePDFButton;

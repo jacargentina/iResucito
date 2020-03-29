@@ -2,7 +2,6 @@
 import React, { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import DataContextWrapper from './DataContext';
-import NavigationService from './navigation/NavigationService';
 import RootNavigator from './navigation/RootNavigator';
 import { Alert, Linking } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
@@ -78,10 +77,7 @@ const App = () => {
         <Root>
           <MenuProvider backHandler={true}>
             <InitializeApp />
-            <NavigationContainer
-              ref={navigation => {
-                NavigationService.setTopLevelNavigator(navigation);
-              }}>
+            <NavigationContainer>
               <RootNavigator />
             </NavigationContainer>
           </MenuProvider>

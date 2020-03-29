@@ -1,13 +1,11 @@
 // @flow
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { AndroidBackHandler } from 'react-navigation-backhandler';
 import { FlatList, ScrollView, View } from 'react-native';
 import { Spinner, ListItem, Left, Body, Text, Separator } from 'native-base';
 import { DataContext } from '../DataContext';
 import I18n from '../../translations';
 import commonTheme from '../native-base-theme/variables/platform';
-
-const titleLocaleKey = 'screen_title.search';
 
 const Loading = () => {
   return (
@@ -22,12 +20,7 @@ const Loading = () => {
 
 const SongSearch = (props: any) => {
   const data = useContext(DataContext);
-  const { navigation } = props;
   const { initialized, searchItems } = data.search;
-
-  useEffect(() => {
-    navigation.setParams({ title: I18n.t(titleLocaleKey) });
-  }, [I18n.locale]);
 
   if (!initialized) {
     return <Loading />;
@@ -69,10 +62,6 @@ const SongSearch = (props: any) => {
       </ScrollView>
     </AndroidBackHandler>
   );
-};
-
-SongSearch.navigationOptions = () => {
-  return { title: I18n.t(titleLocaleKey) };
 };
 
 export default SongSearch;

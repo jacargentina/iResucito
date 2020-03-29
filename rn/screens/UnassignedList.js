@@ -15,8 +15,6 @@ var textStyles = textTheme(commonTheme);
 var noteStyles = textStyles['.note'];
 delete textStyles['.note'];
 
-const titleLocaleKey = 'search_title.unassigned';
-
 const UnassignedList = (props: any) => {
   const data = useContext(DataContext);
   const isFocused = useIsFocused();
@@ -26,10 +24,6 @@ const UnassignedList = (props: any) => {
 
   const [totalText, setTotalText] = useState(I18n.t('ui.loading'));
   const [textFilter, setTextFilter] = useState('');
-
-  useEffect(() => {
-    navigation.setParams({ title: I18n.t(titleLocaleKey) });
-  }, [I18n.locale]);
 
   const search = useMemo(() => {
     var result = localeSongs.filter(locSong => {

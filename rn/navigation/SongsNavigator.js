@@ -10,8 +10,10 @@ import UnassignedList from '../screens/UnassignedList';
 import PDFViewer from '../screens/PDFViewer';
 import ViewPdfButton from '../screens/ViewPdfButton';
 import TransportNotesButton from '../screens/TransportNotesButton';
-import ShareButton from '../screens/ShareButton';
-import PrintButton from '../screens/PrintButton';
+import SharePDFButton from '../screens/SharePDFButton';
+import PrintPDFButton from '../screens/PrintPDFButton';
+import ExportToPdfButton from '../screens/ExportToPdfButton';
+import ClearRatingsButton from '../screens/ClearRatingsButton';
 import I18n from '../../translations';
 
 const Stack = createStackNavigator();
@@ -19,8 +21,26 @@ const Stack = createStackNavigator();
 const SongsNavigator = () => {
   return (
     <Stack.Navigator screenOptions={StackNavigatorOptions()}>
-      <Stack.Screen name="SongSearch" component={SongSearch} />
-      <Stack.Screen name="SongList" component={SongList} />
+      <Stack.Screen
+        name="SongSearch"
+        component={SongSearch}
+        options={{ title: I18n.t('screen_title.search') }}
+      />
+      <Stack.Screen
+        name="SongList"
+        component={SongList}
+        options={({ navigation, route }) => {
+          return {
+            title: I18n.t(route.params.title_key),
+            headerRight: () => (
+              <View style={{ flexDirection: 'row' }}>
+                <ExportToPdfButton />
+                <ClearRatingsButton />
+              </View>
+            )
+          };
+        }}
+      />
       <Stack.Screen
         name="SongDetail"
         component={SongDetail}
@@ -46,8 +66,8 @@ const SongsNavigator = () => {
             title: `PDF - ${title}`,
             headerRight: () => (
               <View style={{ flexDirection: 'row' }}>
-                <ShareButton navigation={navigation} route={route} />
-                <PrintButton navigation={navigation} route={route} />
+                <SharePDFButton navigation={navigation} route={route} />
+                <PrintPDFButton navigation={navigation} route={route} />
               </View>
             )
           };

@@ -9,11 +9,9 @@ import I18n from '../../translations';
 import { getSongFileFromString } from '../../SongsProcessor';
 
 const SongChangeNameDialog = (props: any) => {
-  const { navigation } = props;
-  const song: Song = navigation.getParam('song');
-  const nameToEdit = navigation.getParam('nameToEdit');
-  const action = navigation.getParam('action');
-
+  const { navigation, route } = props;
+  const song: Song = route.params.song;
+  const { nameToEdit, action } = route.params;
   const [actionEnabled, setActionEnabled] = useState(false);
   const [name, setName] = useState(nameToEdit);
   const [changeSong, setChangeSong] = useState(song);
