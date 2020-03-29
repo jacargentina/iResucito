@@ -4,8 +4,9 @@ import { Icon } from 'native-base';
 import { DataContext } from '../DataContext';
 import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
 
-const ContactImportButton = () => {
+const ContactImportButton = (props: any) => {
   const data = useContext(DataContext);
+  const { navigation } = props;
   const { contactImport } = data.community;
 
   return (
@@ -19,7 +20,7 @@ const ContactImportButton = () => {
         textAlign: 'center',
         color: StackNavigatorOptions().headerTitleStyle.color
       }}
-      onPress={contactImport}
+      onPress={() => contactImport(navigation)}
     />
   );
 };

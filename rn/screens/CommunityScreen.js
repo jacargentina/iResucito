@@ -92,7 +92,7 @@ const CommunityScreen = (props: any) => {
         icon="people"
         title={I18n.t('call_to_action_title.community list')}
         text={I18n.t('call_to_action_text.community list')}
-        buttonHandler={contactImport}
+        buttonHandler={() => contactImport(navigation)}
         buttonText={I18n.t('call_to_action_button.community list')}
       />
     );

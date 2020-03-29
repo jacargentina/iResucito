@@ -1,5 +1,11 @@
 // @flow
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, {
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState
+} from 'react';
 import { useIsFocused } from '@react-navigation/native';
 import { FlatList, Keyboard, View } from 'react-native';
 import { Text, ListItem, Spinner } from 'native-base';
@@ -43,22 +49,25 @@ const SongList = (props: any) => {
     }
     setShowSalmosBadge(navFilter == null || !navFilter.hasOwnProperty('stage'));
     setSearch(result);
-    if (result.length > 0 && isFocused) {
-      setTimeout(() => {
-        if (listRef.current) {
-          listRef.current.scrollToIndex({
-            index: 0,
-            animated: true,
-            viewOffset: 0,
-            viewPosition: 1
-          });
-        }
-      }, 50);
+    if (result.length > 0) {
       setTotalText(I18n.t('ui.list total songs', { total: result.length }));
     } else {
       setTotalText(I18n.t('ui.no songs found'));
     }
   }, [textFilter, props.filter, I18n.locale]);
+
+  useLayoutEffect(() => {
+    if (search && search.length > 0 && isFocused) {
+      if (listRef.current) {
+        listRef.current.scrollToIndex({
+          index: 0,
+          animated: true,
+          viewOffset: 0,
+          viewPosition: 1
+        });
+      }
+    }
+  }, [search, isFocused]);
 
   const onPress = song => {
     if (props.onPress) {

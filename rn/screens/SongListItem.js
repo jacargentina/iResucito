@@ -273,6 +273,10 @@ const SongListItem = (props: any) => {
           </Right>
         );
       }
+    } else {
+      setFirstHighlighted();
+      setHighlightedRest();
+      setOpenHighlightedRest();
     }
   }, [highlight, developerMode, isCollapsed]);
 

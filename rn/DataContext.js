@@ -922,14 +922,14 @@ const useCommunity = () => {
     });
   };
 
-  const contactImport = () => {
+  const contactImport = (navigation: any) => {
     const promise = !deviceContacts
       ? populateDeviceContacts()
       : Promise.resolve();
 
     promise
       .then(() => {
-        NavigationService.navigate('ContactImport');
+        navigation.navigate('ContactImport');
       })
       .catch(() => {
         let message = I18n.t('alert_message.contacts permission');
