@@ -4,9 +4,13 @@ import React, {
   useEffect,
   useLayoutEffect,
   useRef,
-  useState
+  useState,
 } from 'react';
-import { useIsFocused } from '@react-navigation/native';
+import {
+  useNavigation,
+  useRoute,
+  useIsFocused,
+} from '@react-navigation/native';
 import { FlatList, Keyboard, View } from 'react-native';
 import { Text, ListItem, Spinner } from 'native-base';
 import SearchBarView from './SearchBarView';
@@ -18,8 +22,10 @@ import commonTheme from '../native-base-theme/variables/platform';
 const SongList = (props: any) => {
   const listRef = useRef<?FlatList>();
   const data = useContext(DataContext);
+  const navigation = useNavigation();
+  const route = useRoute();
   const isFocused = useIsFocused();
-  const { navigation, route, viewButton } = props;
+  const { viewButton } = props;
   const [totalText, setTotalText] = useState(I18n.t('ui.loading'));
   const { songs } = data.songsMeta;
   const [loading] = data.loading;
@@ -28,22 +34,22 @@ const SongList = (props: any) => {
   const [search, setSearch] = useState();
 
   useEffect(() => {
-    const navFilter = route.params?.filter ?? props.filter;
+    const navFilter = route?.params?.filter ?? props.filter;
     var result = songs;
     if (navFilter) {
       for (var name in navFilter) {
-        result = result.filter(s => s[name] === navFilter[name]);
+        result = result.filter((s) => s[name] === navFilter[name]);
       }
     }
     if (textFilter) {
-      result = result.filter(s => {
+      result = result.filter((s) => {
         return (
           s.nombre.toLowerCase().includes(textFilter.toLowerCase()) ||
           s.fullText.toLowerCase().includes(textFilter.toLowerCase())
         );
       });
     }
-    const navSort = route.params?.sort ?? props.sort;
+    const navSort = route?.params?.sort ?? props.sort;
     if (navSort) {
       result = result.sort(navSort);
     }
@@ -63,13 +69,13 @@ const SongList = (props: any) => {
           index: 0,
           animated: true,
           viewOffset: 0,
-          viewPosition: 1
+          viewPosition: 1,
         });
       }
     }
   }, [search, isFocused]);
 
-  const onPress = song => {
+  const onPress = (song) => {
     if (props.onPress) {
       props.onPress(song);
     } else {
@@ -98,7 +104,7 @@ const SongList = (props: any) => {
         onScrollBeginDrag={() => Keyboard.dismiss()}
         keyboardShouldPersistTaps="always"
         data={search || []}
-        keyExtractor={item => item.path}
+        keyExtractor={(item) => item.path}
         renderItem={({ item }) => {
           return (
             <SongListItem

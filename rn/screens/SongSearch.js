@@ -4,6 +4,7 @@ import { AndroidBackHandler } from 'react-navigation-backhandler';
 import { FlatList, ScrollView, View } from 'react-native';
 import { Spinner, ListItem, Left, Body, Text, Separator } from 'native-base';
 import { DataContext } from '../DataContext';
+import { useNavigation } from '@react-navigation/native';
 import I18n from '../../translations';
 import commonTheme from '../native-base-theme/variables/platform';
 
@@ -20,6 +21,7 @@ const Loading = () => {
 
 const SongSearch = (props: any) => {
   const data = useContext(DataContext);
+  const navigation = useNavigation();
   const { initialized, searchItems } = data.search;
 
   if (!initialized) {
@@ -48,7 +50,7 @@ const SongSearch = (props: any) => {
                 last={nextItem && nextItem.divider}
                 avatar
                 onPress={() => {
-                  props.navigation.navigate(item.route, item.params);
+                  navigation.navigate(item.route, item.params);
                 }}>
                 <Left>{item.badge}</Left>
                 <Body>

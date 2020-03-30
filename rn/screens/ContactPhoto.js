@@ -15,13 +15,13 @@ const ContactPhoto = (props: any) => {
         borderRadius: 50,
         justifyContent: 'center',
         alignItems: 'center',
-        alignSelf: 'center'
+        alignSelf: 'center',
       }}>
       <Text
         style={{
           fontSize: 18,
           lineHeight: 50,
-          fontWeight: 'bold'
+          fontWeight: 'bold',
         }}>
         {props.item.givenName[0]}{' '}
         {props.item.familyName && props.item.familyName.length > 0

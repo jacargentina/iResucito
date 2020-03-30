@@ -1,7 +1,7 @@
 // @flow
 import React, { useContext, useEffect, useState, useRef, useMemo } from 'react';
 import { Text, ListItem, Body, Right, Icon } from 'native-base';
-import { useIsFocused } from '@react-navigation/native';
+import { useNavigation, useIsFocused } from '@react-navigation/native';
 import { FlatList, Keyboard, TouchableOpacity, Alert } from 'react-native';
 import SearchBarView from './SearchBarView';
 import Highlighter from 'react-native-highlight-words';
@@ -19,22 +19,22 @@ const UnassignedList = (props: any) => {
   const data = useContext(DataContext);
   const isFocused = useIsFocused();
   const listRef = useRef<?FlatList>();
-  const { navigation } = props;
+  const navigation = useNavigation();
   const { songs, localeSongs } = data.songsMeta;
 
   const [totalText, setTotalText] = useState(I18n.t('ui.loading'));
   const [textFilter, setTextFilter] = useState('');
 
   const search = useMemo(() => {
-    var result = localeSongs.filter(locSong => {
+    var result = localeSongs.filter((locSong) => {
       const rawLoc = I18n.locale;
-      if (!songs.find(s => s.files[rawLoc] === locSong.nombre)) {
+      if (!songs.find((s) => s.files[rawLoc] === locSong.nombre)) {
         const locale = rawLoc.split('-')[0];
-        return !songs.find(s => s.files[locale] === locSong.nombre);
+        return !songs.find((s) => s.files[locale] === locSong.nombre);
       }
       return false;
     });
-    var result = result.filter(locSong => {
+    var result = result.filter((locSong) => {
       return (
         locSong.titulo.toLowerCase().includes(textFilter.toLowerCase()) ||
         locSong.fuente.toLowerCase().includes(textFilter.toLowerCase())
@@ -52,7 +52,7 @@ const UnassignedList = (props: any) => {
             index: 0,
             animated: true,
             viewOffset: 0,
-            viewPosition: 1
+            viewPosition: 1,
           });
         }
       }, 50);
@@ -69,7 +69,7 @@ const UnassignedList = (props: any) => {
         onScrollBeginDrag={() => Keyboard.dismiss()}
         keyboardShouldPersistTaps="always"
         data={search}
-        keyExtractor={item => item.nombre}
+        keyExtractor={(item) => item.nombre}
         renderItem={({ item }) => {
           return (
             <ListItem>
@@ -78,13 +78,13 @@ const UnassignedList = (props: any) => {
                   onPress={() =>
                     navigation.navigate('SongChooseLocale', {
                       target: item,
-                      targetType: 'file'
+                      targetType: 'file',
                     })
                   }>
                   <Highlighter
                     style={textStyles}
                     highlightStyle={{
-                      backgroundColor: 'yellow'
+                      backgroundColor: 'yellow',
                     }}
                     searchWords={[textFilter]}
                     textToHighlight={item.titulo}
@@ -92,7 +92,7 @@ const UnassignedList = (props: any) => {
                   <Highlighter
                     style={noteStyles}
                     highlightStyle={{
-                      backgroundColor: 'yellow'
+                      backgroundColor: 'yellow',
                     }}
                     searchWords={[textFilter]}
                     textToHighlight={item.fuente}
@@ -104,11 +104,11 @@ const UnassignedList = (props: any) => {
                   name="eye"
                   style={{
                     fontSize: 32,
-                    color: commonTheme.brandPrimary
+                    color: commonTheme.brandPrimary,
                   }}
                   onPress={() => {
                     NativeSongs.loadLocaleSongFile(I18n.locale, item).then(
-                      text => {
+                      (text) => {
                         Alert.alert(I18n.t('screen_title.preview'), text);
                       }
                     );

@@ -2,7 +2,7 @@
 import React, { useContext, useEffect, useRef, useState, useMemo } from 'react';
 import { Alert, FlatList } from 'react-native';
 import { Text } from 'native-base';
-import { useIsFocused } from '@react-navigation/native';
+import { useIsFocused, useNavigation } from '@react-navigation/native';
 import Swipeout from 'react-native-swipeout';
 import SearchBarView from './SearchBarView';
 import { DataContext } from '../DataContext';
@@ -11,23 +11,17 @@ import I18n from '../../translations';
 import ContactListItem from './ContactListItem';
 import { contactFilterByText, ordenAlfabetico } from '../util';
 
-const titleLocaleKey = 'screen_title.community';
-
 const CommunityScreen = (props: any) => {
   const data = useContext(DataContext);
   const isFocused = useIsFocused();
-  const { navigation } = props;
+  const navigation = useNavigation();
   const { contactImport, brothers, update, remove, add } = data.community;
   const listRef = useRef<?FlatList>();
   const [filter, setFilter] = useState('');
 
-  useEffect(() => {
-    navigation.setParams({ title: I18n.t(titleLocaleKey) });
-  }, [I18n.locale]);
-
   const filtered = useMemo(() => {
     if (brothers) {
-      var result = brothers.filter(c => contactFilterByText(c, filter));
+      var result = brothers.filter((c) => contactFilterByText(c, filter));
       result.sort(ordenAlfabetico);
       return result;
     }
@@ -42,15 +36,15 @@ const CommunityScreen = (props: any) => {
             index: 0,
             animated: true,
             viewOffset: 0,
-            viewPosition: 1
+            viewPosition: 1,
           });
         }
       }, 50);
     }
   }, [filtered.length]);
 
-  const addOrRemove = contact => {
-    var i = brothers.findIndex(c => c.recordID === contact.recordID);
+  const addOrRemove = (contact) => {
+    var i = brothers.findIndex((c) => c.recordID === contact.recordID);
     // Ya esta importado
     if (i !== -1) {
       var item = brothers[i];
@@ -60,7 +54,7 @@ const CommunityScreen = (props: any) => {
     }
   };
 
-  const contactDelete = contact => {
+  const contactDelete = (contact) => {
     Alert.alert(
       `${I18n.t('ui.delete')} "${contact.givenName}"`,
       I18n.t('ui.delete confirmation'),
@@ -70,12 +64,12 @@ const CommunityScreen = (props: any) => {
           onPress: () => {
             addOrRemove(contact);
           },
-          style: 'destructive'
+          style: 'destructive',
         },
         {
           text: I18n.t('ui.cancel'),
-          style: 'cancel'
-        }
+          style: 'cancel',
+        },
       ]
     );
   };
@@ -109,7 +103,7 @@ const CommunityScreen = (props: any) => {
         ref={listRef}
         data={filtered}
         extraData={{ locale: I18n.locale, brothers }}
-        keyExtractor={item => item.recordID}
+        keyExtractor={(item) => item.recordID}
         renderItem={({ item }) => {
           var swipeoutBtns = [
             {
@@ -117,15 +111,15 @@ const CommunityScreen = (props: any) => {
               type: 'primary',
               onPress: () => {
                 contactToggleAttibute(item, 's');
-              }
+              },
             },
             {
               text: I18n.t('ui.delete'),
               type: 'delete',
               onPress: () => {
                 contactDelete(item);
-              }
-            }
+              },
+            },
           ];
           return (
             <Swipeout

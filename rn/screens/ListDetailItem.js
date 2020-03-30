@@ -8,9 +8,10 @@ import {
   Body,
   Input,
   Right,
-  Separator
+  Separator,
 } from 'native-base';
 import { View, TextInput } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { DataContext } from '../DataContext';
 import { getFriendlyText } from '../util';
 import commonTheme from '../native-base-theme/variables/platform';
@@ -18,7 +19,7 @@ import I18n from '../../translations';
 
 const ListDetailItem = (props: any) => {
   const data = useContext(DataContext);
-  const { navigation } = props;
+  const { navigation } = useNavigation();
   const { setList } = data.lists;
   const { listName, listKey, listText, inputProps } = props;
 
@@ -31,7 +32,7 @@ const ListDetailItem = (props: any) => {
         </Left>
         <Body>
           <Input
-            onChangeText={text => {
+            onChangeText={(text) => {
               setList(listName, listKey, text);
             }}
             value={listText}
@@ -56,7 +57,7 @@ const ListDetailItem = (props: any) => {
         </Left>
         <Body>
           <Input
-            onChangeText={text => {
+            onChangeText={(text) => {
               setList(listName, listKey, text);
             }}
             value={listText}
@@ -72,11 +73,11 @@ const ListDetailItem = (props: any) => {
               color: commonTheme.brandPrimary,
               width: 40,
               height: 40,
-              fontSize: 30
+              fontSize: 30,
             }}
             onPress={() =>
               navigation.navigate('ContactChooser', {
-                target: { listName: listName, listKey: listKey }
+                target: { listName: listName, listKey: listKey },
               })
             }
           />
@@ -90,7 +91,7 @@ const ListDetailItem = (props: any) => {
           <TextInput
             style={{ fontSize: 18 }}
             multiline
-            onChangeText={text => {
+            onChangeText={(text) => {
               setList(listName, listKey, text);
             }}
             value={listText}
@@ -115,11 +116,11 @@ const ListDetailItem = (props: any) => {
               color: commonTheme.brandPrimary,
               width: 40,
               height: 40,
-              fontSize: 30
+              fontSize: 30,
             }}
             onPress={() =>
               navigation.navigate('SongDetail', {
-                song: listText
+                song: listText,
               })
             }
           />
@@ -132,7 +133,10 @@ const ListDetailItem = (props: any) => {
         button
         onPress={() =>
           navigation.navigate('SongChooser', {
-            target: { listName: listName, listKey: listKey }
+            screen: 'Dialog',
+            params: {
+              target: { listName: listName, listKey: listKey },
+            },
           })
         }>
         <Left>

@@ -4,6 +4,7 @@ import ModalView from './ModalView';
 import { Text, Icon } from 'native-base';
 import { FlatList, View } from 'react-native';
 import { DataContext } from '../DataContext';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import commonTheme from '../native-base-theme/variables/platform';
 import I18n from '../../translations';
 import ContactListItem from './ContactListItem';
@@ -12,19 +13,20 @@ import SearchBarView from './SearchBarView';
 
 const ContactChooserDialog = (props: any) => {
   const data = useContext(DataContext);
-  const { navigation, route } = props;
+  const navigation = useNavigation();
+  const route = useRoute();
   const { setList } = data.lists;
   const { brothers } = data.community;
   const [textFilter, setTextFilter] = useState('');
   const { target } = route.params;
 
   const filtered = useMemo(() => {
-    var result = brothers.filter(c => contactFilterByText(c, textFilter));
+    var result = brothers.filter((c) => contactFilterByText(c, textFilter));
     result.sort(ordenAlfabetico);
     return result;
   }, [brothers, textFilter]);
 
-  const contactSelected = contact => {
+  const contactSelected = (contact) => {
     setList(target.listName, target.listKey, contact.givenName);
     navigation.goBack(null);
   };
@@ -36,14 +38,14 @@ const ContactChooserDialog = (props: any) => {
           style={{
             flex: 3,
             justifyContent: 'space-around',
-            padding: 10
+            padding: 10,
           }}>
           <Icon
             name="contacts"
             style={{
               fontSize: 120,
               color: commonTheme.brandPrimary,
-              alignSelf: 'center'
+              alignSelf: 'center',
             }}
           />
           <Text note style={{ textAlign: 'center' }}>
@@ -56,7 +58,7 @@ const ContactChooserDialog = (props: any) => {
           <FlatList
             style={{ flex: 1 }}
             data={filtered}
-            keyExtractor={item => item.recordID}
+            keyExtractor={(item) => item.recordID}
             renderItem={({ item }) => {
               return (
                 <ContactListItem

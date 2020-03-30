@@ -4,20 +4,20 @@ import I18n from '../../translations';
 
 const StackNavigatorOptions = () => ({
   cardStyle: {
-    backgroundColor: 'white'
+    backgroundColor: 'white',
   },
   headerStyle: {
-    backgroundColor: commonTheme.brandPrimary
+    backgroundColor: commonTheme.brandPrimary,
   },
   headerTitleStyle: {
-    color: 'white'
+    color: 'white',
   },
   headerBackTitleStyle: {
-    color: 'white'
+    color: 'white',
   },
   headerTintColor: 'white',
   headerBackTitle: I18n.t('ui.back'),
-  headerTruncatedBackTitle: I18n.t('ui.back')
+  headerTruncatedBackTitle: I18n.t('ui.back'),
 });
 
 export default StackNavigatorOptions;

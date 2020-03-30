@@ -4,6 +4,7 @@ import { ListItem, Left, Body, Icon, Text } from 'native-base';
 import { Alert, FlatList, Platform } from 'react-native';
 import Swipeout from 'react-native-swipeout';
 import SearchBarView from './SearchBarView';
+import { useNavigation } from '@react-navigation/native';
 import { DataContext } from '../DataContext';
 import CallToAction from './CallToAction';
 import I18n from '../../translations';
@@ -11,7 +12,7 @@ import commonTheme from '../native-base-theme/variables/platform';
 
 const ListScreen = (props: any) => {
   const data = useContext(DataContext);
-  const { navigation } = props;
+  const navigation = useNavigation();
   const { lists, getListsForUI, removeList, chooseListTypeForAdd } = data.lists;
   const [filtered, setFiltered] = useState();
   const [filter, setFilter] = useState('');
@@ -20,12 +21,12 @@ const ListScreen = (props: any) => {
   useEffect(() => {
     var result = allLists;
     if (filter !== '') {
-      result = result.filter(c => c.name.includes(filter));
+      result = result.filter((c) => c.name.includes(filter));
     }
     setFiltered(result);
   }, [allLists, filter]);
 
-  const listDelete = listName => {
+  const listDelete = (listName) => {
     Alert.alert(
       `${I18n.t('ui.delete')} "${listName}"`,
       I18n.t('ui.delete confirmation'),
@@ -35,20 +36,20 @@ const ListScreen = (props: any) => {
           onPress: () => {
             removeList(listName);
           },
-          style: 'destructive'
+          style: 'destructive',
         },
         {
           text: I18n.t('ui.cancel'),
-          style: 'cancel'
-        }
+          style: 'cancel',
+        },
       ]
     );
   };
 
-  const listRename = listName => {
+  const listRename = (listName) => {
     navigation.navigate('ListName', {
       action: 'rename',
-      listName: listName
+      listName: listName,
     });
   };
 
@@ -74,7 +75,7 @@ const ListScreen = (props: any) => {
       <FlatList
         data={filtered}
         extraData={I18n.locale}
-        keyExtractor={item => item.name}
+        keyExtractor={(item) => item.name}
         renderItem={({ item }) => {
           var swipeoutBtns = [
             {
@@ -82,7 +83,7 @@ const ListScreen = (props: any) => {
               type: 'primary',
               onPress: () => {
                 listRename(item.name);
-              }
+              },
             },
             {
               text: I18n.t('ui.delete'),
@@ -90,8 +91,8 @@ const ListScreen = (props: any) => {
               backgroundColor: Platform.OS === 'android' ? '#e57373' : null,
               onPress: () => {
                 listDelete(item.name);
-              }
-            }
+              },
+            },
           ];
           return (
             <Swipeout
@@ -102,7 +103,7 @@ const ListScreen = (props: any) => {
                 avatar
                 onPress={() => {
                   navigation.navigate('ListDetail', {
-                    listName: item.name
+                    listName: item.name,
                   });
                 }}>
                 <Left>

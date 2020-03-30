@@ -27,9 +27,9 @@ const ListsNavigator = () => {
             title: I18n.t('screen_title.lists'),
             headerRight: () => (
               <View style={{ flexDirection: 'row' }}>
-                <AddListButton navigation={navigation} route={route} />
+                <AddListButton Read-WithDefault />
               </View>
-            )
+            ),
           };
         }}
       />
@@ -42,10 +42,10 @@ const ListsNavigator = () => {
             title: listName ? listName : 'Lista',
             headerRight: () => (
               <View style={{ flexDirection: 'row' }}>
-                <ShareListButton navigation={navigation} route={route} />
-                <AddSongButton navigation={navigation} route={route} />
+                <ShareListButton Read-WithDefault />
+                <AddSongButton Read-WithDefault />
               </View>
-            )
+            ),
           };
         }}
       />
@@ -59,10 +59,10 @@ const ListsNavigator = () => {
             title: `PDF - ${title}`,
             headerRight: () => (
               <View style={{ flexDirection: 'row' }}>
-                <SharePDFButton navigation={navigation} route={route} />
-                <PrintPDFButton navigation={navigation} route={route} />
+                <SharePDFButton Read-WithDefault />
+                <PrintPDFButton Read-WithDefault />
               </View>
-            )
+            ),
           };
         }}
       />

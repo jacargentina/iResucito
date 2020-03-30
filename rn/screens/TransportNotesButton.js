@@ -5,15 +5,16 @@ import {
   Menu,
   MenuOptions,
   MenuOption,
-  MenuTrigger
+  MenuTrigger,
 } from 'react-native-popup-menu';
 import { getChordsScale } from '../../common';
+import { useRoute } from '@react-navigation/native';
 import I18n from '../../translations';
 import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
 import commonTheme from '../native-base-theme/variables/platform';
 
 const TransportNotesButton = (props: any) => {
-  const { route } = props;
+  const route = useRoute();
   const song = route.params.song;
   if (!song) {
     return null;
@@ -29,11 +30,11 @@ const TransportNotesButton = (props: any) => {
             optionWrapper: {
               backgroundColor: commonTheme.brandPrimary,
               paddingHorizontal: 10,
-              paddingVertical: 10
+              paddingVertical: 10,
             },
             optionText: {
-              color: 'white'
-            }
+              color: 'white',
+            },
           }
         : null;
     return (
@@ -56,7 +57,7 @@ const TransportNotesButton = (props: any) => {
           width: 32,
           fontSize: 30,
           textAlign: 'center',
-          color: StackNavigatorOptions().headerTitleStyle.color
+          color: StackNavigatorOptions().headerTitleStyle.color,
         }}
       />
     ) : (
@@ -67,18 +68,18 @@ const TransportNotesButton = (props: any) => {
             fontWeight: 'bold',
             fontStyle: 'italic',
             textAlign: 'center',
-            color: StackNavigatorOptions().headerTitleStyle.color
+            color: StackNavigatorOptions().headerTitleStyle.color,
           }}>
           {transportNote}
         </Text>
       </Badge>
     );
   return (
-    <Menu onSelect={value => setTransportNote(value)}>
+    <Menu onSelect={(value) => setTransportNote(value)}>
       <MenuTrigger>{trigger}</MenuTrigger>
       <MenuOptions
         customStyles={{
-          optionWrapper: { paddingHorizontal: 10, paddingVertical: 10 }
+          optionWrapper: { paddingHorizontal: 10, paddingVertical: 10 },
         }}>
         {transportNote != null && <MenuOption value={null} text="Original" />}
         {menuOptionItems}

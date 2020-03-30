@@ -11,21 +11,21 @@ const CallToAction = (props: any) => {
       <View
         style={{
           flex: 1,
-          padding: 20
+          padding: 20,
         }}>
         <View
           style={{
             flex: 3,
             justifyContent: 'space-around',
             borderBottomWidth: 1,
-            borderBottomColor: '#ccc'
+            borderBottomColor: '#ccc',
           }}>
           <Icon
             name={props.icon}
             style={{
               fontSize: 120,
               color: commonTheme.brandPrimary,
-              alignSelf: 'center'
+              alignSelf: 'center',
             }}
           />
         </View>
@@ -36,7 +36,7 @@ const CallToAction = (props: any) => {
         <View
           style={{
             flex: 2,
-            justifyContent: 'space-around'
+            justifyContent: 'space-around',
           }}>
           <Button rounded block onPress={props.buttonHandler}>
             <Text>{props.buttonText}</Text>

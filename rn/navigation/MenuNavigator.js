@@ -14,28 +14,28 @@ var tabBarOptions = {};
 tabBarOptions.showLabel = false;
 tabBarOptions.activeTintColor = commonTheme.brandPrimary;
 tabBarOptions.style = {
-  backgroundColor: 'white'
+  backgroundColor: 'white',
 };
 
 if (Platform.OS === 'android') {
   tabBarOptions.inactiveTintColor = 'gray';
   tabBarOptions.style = {
-    backgroundColor: 'white'
+    backgroundColor: 'white',
   };
   tabBarOptions.pressColor = commonTheme.brandPrimary;
   tabBarOptions.iconStyle = {
-    height: 30
+    height: 30,
   };
   tabBarOptions.indicatorStyle = {
     backgroundColor: tabBarOptions.activeTintColor,
-    height: 3
+    height: 3,
   };
   tabBarOptions.showIcon = true;
 }
 
 const Tab = createBottomTabNavigator();
 
-const getIcon = iconName => {
+const getIcon = (iconName) => {
   return {
     tabBarIcon: ({ focused, color }) => {
       return (
@@ -45,7 +45,7 @@ const getIcon = iconName => {
           style={{ marginTop: 6, color: color }}
         />
       );
-    }
+    },
   };
 };
 
@@ -55,8 +55,8 @@ const MenuNavigator = (props: any) => {
   const { lists, importList } = data.lists;
 
   useEffect(() => {
-    const handler = event => {
-      importList(event.url).then(name => {
+    const handler = (event) => {
+      importList(event.url).then((name) => {
         navigation.navigate('Lists');
         navigation.navigate('ListDetail', { listName: name });
       });

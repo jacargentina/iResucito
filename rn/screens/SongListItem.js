@@ -9,7 +9,7 @@ import {
   Text,
   Badge,
   Icon,
-  ActionSheet
+  ActionSheet,
 } from 'native-base';
 import Highlighter from 'react-native-highlight-words';
 import Collapsible from 'react-native-collapsible';
@@ -40,7 +40,7 @@ const NoLocaleWarning = () => {
         style={{
           margin: 5,
           fontSize: 18,
-          color: commonTheme.brandPrimary
+          color: commonTheme.brandPrimary,
         }}
       />
       <Text style={{ ...noteStyles, margin: 5 }}>
@@ -61,7 +61,7 @@ const SongListItem = (props: any) => {
     devModeDisabled,
     ratingDisabled,
     patchSectionDisabled,
-    viewButton
+    viewButton,
   } = props;
 
   const [isCollapsed, setIsCollapsed] = useState(true);
@@ -70,12 +70,12 @@ const SongListItem = (props: any) => {
     getSongLocalePatch,
     setSongPatch,
     setSongRating,
-    songs
+    songs,
   } = data.songsMeta;
 
   const song: Song = useMemo(() => {
     if (songKey) {
-      return songs.find(i => i.key === songKey);
+      return songs.find((i) => i.key === songKey);
     }
     return songMeta;
   }, [songs, songKey, songMeta]);
@@ -98,9 +98,9 @@ const SongListItem = (props: any) => {
       {
         options: options,
         cancelButtonIndex: options.indexOf(I18n.t('ui.cancel')),
-        title: I18n.t('settings_title.developer mode')
+        title: I18n.t('settings_title.developer mode'),
       },
-      index => {
+      (index) => {
         index = Number(index);
         const title = options[index];
         switch (title) {
@@ -124,24 +124,24 @@ const SongListItem = (props: any) => {
   const linkPatch = () => {
     navigation.navigate('SongChooseLocale', {
       target: song,
-      targetType: 'song'
+      targetType: 'song',
     });
   };
 
   const changeName = () => {
-    getSongLocalePatch(song).then(patchObj => {
+    getSongLocalePatch(song).then((patchObj) => {
       var rename = song.nombre;
       if (patchObj && patchObj[I18n.locale] && patchObj[I18n.locale].rename) {
         rename = patchObj[I18n.locale].rename;
       }
       // Definir cambio a realizar sobre el patch
-      const applyChanges = renameTo => {
+      const applyChanges = (renameTo) => {
         setSongPatch(song, I18n.locale, { rename: renameTo });
       };
       navigation.navigate('SongChangeName', {
         song: song,
         nameToEdit: rename,
-        action: applyChanges
+        action: applyChanges,
       });
     });
   };
@@ -152,8 +152,8 @@ const SongListItem = (props: any) => {
         title: song.titulo,
         source: song.fuente,
         text: song.fullText,
-        stage: song.stage
-      }
+        stage: song.stage,
+      },
     });
   };
 
@@ -161,15 +161,15 @@ const SongListItem = (props: any) => {
     var options = [
       I18n.t('ui.add empty'),
       I18n.t('ui.copy from spanish'),
-      I18n.t('ui.cancel')
+      I18n.t('ui.cancel'),
     ];
     ActionSheet.show(
       {
         options: options,
         cancelButtonIndex: options.indexOf(I18n.t('ui.cancel')),
-        title: I18n.t('ui.how to add')
+        title: I18n.t('ui.how to add'),
       },
-      async index => {
+      async (index) => {
         index = Number(index);
         const title = options[index];
         var newSong = null;
@@ -179,13 +179,13 @@ const SongListItem = (props: any) => {
             break;
           case I18n.t('ui.copy from spanish'):
             newSong = await setSongPatch(song, I18n.locale, {
-              lines: song.fullText
+              lines: song.fullText,
             });
             break;
         }
         if (newSong !== null) {
           navigation.navigate('SongEditor', {
-            song: newSong
+            song: newSong,
           });
         }
       }
@@ -202,7 +202,7 @@ const SongListItem = (props: any) => {
       }, 100);
     } else {
       navigation.navigate('SongEditor', {
-        song: song
+        song: song,
       });
     }
   };
@@ -217,12 +217,12 @@ const SongListItem = (props: any) => {
           style: 'destructive',
           onPress: () => {
             setSongPatch(song, I18n.locale, undefined);
-          }
+          },
         },
         {
           text: I18n.t('ui.cancel'),
-          style: 'cancel'
-        }
+          style: 'cancel',
+        },
       ],
       { cancelable: false }
     );
@@ -240,7 +240,7 @@ const SongListItem = (props: any) => {
       song.fullText.toLowerCase().includes(highlight.toLowerCase())
     ) {
       const lines = song.fullText.split('\n');
-      const linesToHighlight = lines.filter(l =>
+      const linesToHighlight = lines.filter((l) =>
         l.toLowerCase().includes(highlight.toLowerCase())
       );
       var children = linesToHighlight.map((l, i) => {
@@ -248,7 +248,7 @@ const SongListItem = (props: any) => {
           <Highlighter
             key={i}
             highlightStyle={{
-              backgroundColor: 'yellow'
+              backgroundColor: 'yellow',
             }}
             searchWords={[highlight]}
             textToHighlight={l}
@@ -304,7 +304,7 @@ const SongListItem = (props: any) => {
             numberOfLines={1}
             style={textStyles}
             highlightStyle={{
-              backgroundColor: 'yellow'
+              backgroundColor: 'yellow',
             }}
             searchWords={[highlight]}
             textToHighlight={song.titulo}
@@ -313,7 +313,7 @@ const SongListItem = (props: any) => {
             numberOfLines={1}
             style={noteStyles}
             highlightStyle={{
-              backgroundColor: 'yellow'
+              backgroundColor: 'yellow',
             }}
             searchWords={[highlight]}
             textToHighlight={song.fuente}
@@ -331,13 +331,13 @@ const SongListItem = (props: any) => {
           containerStyle={{
             paddingTop: 15,
             paddingBottom: !showBadge ? 15 : 0,
-            width: '50%'
+            width: '50%',
           }}
           disabled={ratingDisabled}
           maxStars={5}
           starSize={15}
           rating={song.rating}
-          selectedStar={value => setSongRating(song.key, I18n.locale, value)}
+          selectedStar={(value) => setSongRating(song.key, I18n.locale, value)}
           fullStarColor={commonTheme.brandPrimary}
         />
       </Body>
@@ -347,7 +347,7 @@ const SongListItem = (props: any) => {
           <Icon
             name="more"
             style={{
-              color: commonTheme.brandPrimary
+              color: commonTheme.brandPrimary,
             }}
             onPress={showDeveloperMenu}
           />
@@ -359,7 +359,7 @@ const SongListItem = (props: any) => {
             name="eye"
             style={{
               fontSize: 32,
-              color: commonTheme.brandPrimary
+              color: commonTheme.brandPrimary,
             }}
             onPress={viewSong}
           />
@@ -371,7 +371,7 @@ const SongListItem = (props: any) => {
             name="bug"
             style={{
               fontSize: 32,
-              color: commonTheme.brandPrimary
+              color: commonTheme.brandPrimary,
             }}
             onPress={() => {
               Alert.alert('Error', song.error);

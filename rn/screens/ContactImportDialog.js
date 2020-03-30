@@ -8,8 +8,9 @@ import {
   View,
   TouchableOpacity,
   Keyboard,
-  StyleSheet
+  StyleSheet,
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { DataContext } from '../DataContext';
 import commonTheme from '../native-base-theme/variables/platform';
 import I18n from '../../translations';
@@ -17,12 +18,12 @@ import ContactPhoto from './ContactPhoto';
 import {
   getContactsForImport,
   contactFilterByText,
-  ordenAlfabetico
+  ordenAlfabetico,
 } from '../util';
 
-const ContactImportDialog = (props: any) => {
+const ContactImportDialog = () => {
   const data = useContext(DataContext);
-  const { navigation } = props;
+  const navigation = useNavigation();
   const { brothers, deviceContacts, addOrRemove } = data.community;
   const [loading, setLoading] = useState(false);
   const [contacts, setContacts] = useState([]);
@@ -31,7 +32,7 @@ const ContactImportDialog = (props: any) => {
   useEffect(() => {
     if (deviceContacts) {
       var withName = deviceContacts.filter(
-        c => c.givenName.length > 0 || c.familyName.length > 0
+        (c) => c.givenName.length > 0 || c.familyName.length > 0
       );
       var result = getContactsForImport(withName, brothers);
       setContacts(result);
@@ -40,7 +41,7 @@ const ContactImportDialog = (props: any) => {
   }, [deviceContacts, brothers]);
 
   const filtered = useMemo(() => {
-    var result = contacts.filter(c => contactFilterByText(c, filter));
+    var result = contacts.filter((c) => contactFilterByText(c, filter));
     result.sort(ordenAlfabetico);
     return result;
   }, [contacts, filter]);
@@ -50,7 +51,7 @@ const ContactImportDialog = (props: any) => {
     navigation.goBack(null);
   };
 
-  const handleContact = contact => {
+  const handleContact = (contact) => {
     addOrRemove(contact);
     setFilter('');
   };
@@ -64,7 +65,7 @@ const ContactImportDialog = (props: any) => {
           style={{
             alignSelf: 'flex-end',
             color: commonTheme.brandPrimary,
-            marginRight: 10
+            marginRight: 10,
           }}
           onPress={close}>
           <Text>{I18n.t('ui.done')}</Text>
@@ -76,7 +77,7 @@ const ContactImportDialog = (props: any) => {
             alignSelf: 'flex-start',
             marginLeft: 10,
             fontSize: commonTheme.fontSizeBase + 3,
-            fontWeight: 'bold'
+            fontWeight: 'bold',
           }}>
           {I18n.t('screen_title.import contacts')}
         </Text>
@@ -87,14 +88,14 @@ const ContactImportDialog = (props: any) => {
             style={{
               padding: 10,
               borderBottomWidth: StyleSheet.hairlineWidth,
-              borderBottomColor: commonTheme.listBorderColor
+              borderBottomColor: commonTheme.listBorderColor,
             }}>
             <FlatList
               horizontal={true}
               keyboardShouldPersistTaps="always"
               refreshing={loading}
               data={brothers}
-              keyExtractor={item => item.recordID}
+              keyExtractor={(item) => item.recordID}
               renderItem={({ item }) => {
                 return (
                   <TouchableOpacity
@@ -106,7 +107,7 @@ const ContactImportDialog = (props: any) => {
                       style={{
                         fontSize: 12,
                         textAlign: 'center',
-                        marginTop: 5
+                        marginTop: 5,
                       }}>
                       {item.givenName}
                     </Text>
@@ -120,7 +121,7 @@ const ContactImportDialog = (props: any) => {
           onScrollBeginDrag={() => Keyboard.dismiss()}
           keyboardShouldPersistTaps="always"
           data={filtered}
-          keyExtractor={item => item.recordID}
+          keyExtractor={(item) => item.recordID}
           renderItem={({ item }) => {
             var contactFullName = item.givenName;
             if (item.familyName) {

@@ -3,11 +3,12 @@ import React from 'react';
 import { Text } from 'native-base';
 import SongViewFrame from './SongViewFrame';
 import ModalView from './ModalView';
+import { useRoute } from '@react-navigation/native';
 import I18n from '../../translations';
 import commonTheme from '../native-base-theme/variables/platform';
 
 const SongPreviewScreenDialog = (props: any) => {
-  const { route } = props;
+  const route = useRoute();
   const { text, title, source, stage } = route.params.data;
 
   return (
@@ -18,7 +19,7 @@ const SongPreviewScreenDialog = (props: any) => {
             alignSelf: 'flex-start',
             marginLeft: 10,
             fontSize: commonTheme.fontSizeBase + 3,
-            fontWeight: 'bold'
+            fontWeight: 'bold',
           }}>
           {I18n.t('screen_title.preview')}
         </Text>

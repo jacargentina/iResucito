@@ -1,13 +1,15 @@
 // @flow
 import React, { useContext, useEffect, useState } from 'react';
 import KeepAwake from 'react-native-keep-awake';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { DataContext } from '../DataContext';
 import SongViewFrame from './SongViewFrame';
 
 const SongDetail = (props: any) => {
   const data = useContext(DataContext);
+  const navigation = useNavigation();
+  const route = useRoute();
   const [keepAwake] = data.keepAwake;
-  const { navigation, route } = props;
   const [transportNote, setTransportNote] = useState();
 
   var song: Song = route.params.song;
@@ -19,7 +21,7 @@ const SongDetail = (props: any) => {
   useEffect(() => {
     if (keepAwake) {
       KeepAwake.activate();
-      return function() {
+      return function () {
         KeepAwake.deactivate();
       };
     }

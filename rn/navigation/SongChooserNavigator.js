@@ -7,7 +7,7 @@ import SongPreviewScreenDialog from '../screens/SongPreviewScreenDialog';
 
 const Stack = createStackNavigator();
 
-const SongChooserNavigator = () => {
+const SongChooserNavigator = (props: any) => {
   return (
     <Stack.Navigator
       mode="modal"

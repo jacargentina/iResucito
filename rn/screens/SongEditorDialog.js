@@ -4,6 +4,7 @@ import ModalView from './ModalView';
 import SongListItem from './SongListItem';
 import { TextInput, View, Alert, ScrollView, Dimensions } from 'react-native';
 import { Text, Button, Icon, ActionSheet } from 'native-base';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { DataContext } from '../DataContext';
 import I18n from '../../translations';
 import commonTheme from '../native-base-theme/variables/platform';
@@ -14,7 +15,8 @@ import { defaultExportToPdfOptions } from '../../common';
 
 const SongEditorDialog = (props: any) => {
   const data = useContext(DataContext);
-  const { navigation, route } = props;
+  const navigation = useNavigation();
+  const route = useRoute();
   const song: Song = route.params.song;
   const { getSongLocalePatch, setSongPatch } = data.songsMeta;
   const [selection, setSelection] = useState({ start: 0, end: 0 });
@@ -27,8 +29,8 @@ const SongEditorDialog = (props: any) => {
       undo: undoLines,
       redo: redoLines,
       canRedo: canRedoLines,
-      canUndo: canUndoLines
-    }
+      canUndo: canUndoLines,
+    },
   ] = useUndo('');
 
   const { present: lines } = linesState;
@@ -41,12 +43,12 @@ const SongEditorDialog = (props: any) => {
         {
           text: I18n.t('ui.yes'),
           onPress: reload,
-          style: 'destructive'
+          style: 'destructive',
         },
         {
           text: I18n.t('ui.cancel'),
-          style: 'cancel'
-        }
+          style: 'cancel',
+        },
       ]
     );
   };
@@ -62,18 +64,18 @@ const SongEditorDialog = (props: any) => {
             await saveWithLines();
             reload();
           },
-          style: 'destructive'
+          style: 'destructive',
         },
         {
           text: I18n.t('ui.cancel'),
-          style: 'cancel'
-        }
+          style: 'cancel',
+        },
       ]
     );
   };
 
   const reload = () => {
-    getSongLocalePatch(song).then(patchObj => {
+    getSongLocalePatch(song).then((patchObj) => {
       var ln = song.fullText;
       if (
         patchObj &&
@@ -113,9 +115,9 @@ const SongEditorDialog = (props: any) => {
       {
         options: [I18n.t('ui.screen'), I18n.t('ui.pdf'), I18n.t('ui.cancel')],
         cancelButtonIndex: 2,
-        title: I18n.t('ui.preview type')
+        title: I18n.t('ui.preview type'),
       },
-      index => {
+      (index) => {
         index = Number(index);
         switch (index) {
           case 0:
@@ -126,20 +128,20 @@ const SongEditorDialog = (props: any) => {
                 text: lines,
                 titulo: song.titulo,
                 fuente: song.fuente,
-                stage: song.stage
-              }
+                stage: song.stage,
+              },
             });
             break;
           case 1:
             const render = NativeParser.getForRender(lines, I18n.locale);
             const item: SongToPdf = {
               song,
-              render
+              render,
             };
-            generatePDF([item], defaultExportToPdfOptions, '').then(path => {
+            generatePDF([item], defaultExportToPdfOptions, '').then((path) => {
               navigation.navigate('SongPreviewPdf', {
                 uri: path,
-                song: song
+                song: song,
               });
             });
             break;
@@ -162,7 +164,7 @@ const SongEditorDialog = (props: any) => {
           style={{
             alignSelf: 'flex-end',
             color: commonTheme.brandPrimary,
-            marginRight: 10
+            marginRight: 10,
           }}
           disabled={!canUndoLines}
           onPress={() => {
@@ -179,7 +181,7 @@ const SongEditorDialog = (props: any) => {
           style={{
             alignSelf: 'flex-start',
             color: commonTheme.brandPrimary,
-            marginLeft: 10
+            marginLeft: 10,
           }}
           onPress={() => navigation.goBack(null)}>
           <Text>{I18n.t('ui.cancel')}</Text>
@@ -205,14 +207,14 @@ const SongEditorDialog = (props: any) => {
               paddingLeft: 5,
               paddingRight: 5,
               paddingBottom: 5,
-              minWidth: Dimensions.get('window').width
+              minWidth: Dimensions.get('window').width,
             }}
-            onChangeText={text => {
+            onChangeText={(text) => {
               setLines(text);
             }}
             value={lines}
             autoCorrect={false}
-            onSelectionChange={event => {
+            onSelectionChange={(event) => {
               setSelection(event.nativeEvent.selection);
             }}
           />
@@ -222,7 +224,7 @@ const SongEditorDialog = (props: any) => {
             flex: 0,
             margin: 4,
             flexDirection: 'row-reverse',
-            justifyContent: 'space-between'
+            justifyContent: 'space-between',
           }}>
           <Button
             rounded

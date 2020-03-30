@@ -5,11 +5,13 @@ import { View } from 'react-native';
 import ModalView from './ModalView';
 import SongListItem from './SongListItem';
 import commonTheme from '../native-base-theme/variables/platform';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import I18n from '../../translations';
 import { getSongFileFromString } from '../../SongsProcessor';
 
 const SongChangeNameDialog = (props: any) => {
-  const { navigation, route } = props;
+  const navigation = useNavigation();
+  const route = useRoute();
   const song: Song = route.params.song;
   const { nameToEdit, action } = route.params;
   const [actionEnabled, setActionEnabled] = useState(false);
@@ -37,7 +39,7 @@ const SongChangeNameDialog = (props: any) => {
       style={{
         alignSelf: 'flex-end',
         color: commonTheme.brandPrimary,
-        marginRight: 10
+        marginRight: 10,
       }}
       disabled={!actionEnabled}
       onPress={() => {
@@ -56,7 +58,7 @@ const SongChangeNameDialog = (props: any) => {
       style={{
         alignSelf: 'flex-start',
         color: commonTheme.brandPrimary,
-        marginLeft: 10
+        marginLeft: 10,
       }}
       onPress={() => navigation.goBack(null)}>
       <Text>{I18n.t('ui.cancel')}</Text>

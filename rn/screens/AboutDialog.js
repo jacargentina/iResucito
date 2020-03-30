@@ -7,7 +7,7 @@ import {
   Alert,
   View,
   Platform,
-  SafeAreaView
+  SafeAreaView,
 } from 'react-native';
 import { Text, Icon, H1, Button } from 'native-base';
 import DeviceInfo from 'react-native-device-info';
@@ -37,19 +37,19 @@ const AboutDialog = (props: any) => {
   const sendMail = () => {
     Linking.openURL(
       `mailto:javier.alejandro.castro@gmail.com&subject=iResucitó%20${version}`
-    ).catch(err => {
+    ).catch((err) => {
       Alert.alert('Error', err.message);
     });
   };
 
   const sendTwitter = () => {
-    Linking.openURL('https://www.twitter.com/javi_ale_castro').catch(err => {
+    Linking.openURL('https://www.twitter.com/javi_ale_castro').catch((err) => {
       Alert.alert('Error', err.message);
     });
   };
 
   const makeDonation = () => {
-    Linking.openURL('https://paypal.me/JaviAleCastro').catch(err => {
+    Linking.openURL('https://paypal.me/JaviAleCastro').catch((err) => {
       Alert.alert('Error', err.message);
     });
   };
@@ -63,7 +63,7 @@ const AboutDialog = (props: any) => {
           flex: 1,
           backgroundColor: 'white',
           alignItems: 'center',
-          justifyContent: 'space-around'
+          justifyContent: 'space-around',
         }}
         onPress={hide}>
         <Image
@@ -90,7 +90,7 @@ const AboutDialog = (props: any) => {
         </Text>
         <View
           style={{
-            flexDirection: 'row'
+            flexDirection: 'row',
           }}>
           <Button style={{ margin: 5 }} primary rounded onPress={sendMail}>
             <Icon name="mail" />

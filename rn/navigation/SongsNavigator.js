@@ -37,7 +37,7 @@ const SongsNavigator = () => {
                 <ExportToPdfButton />
                 <ClearRatingsButton />
               </View>
-            )
+            ),
           };
         }}
       />
@@ -50,10 +50,10 @@ const SongsNavigator = () => {
             title: song ? song.titulo : 'Salmo',
             headerRight: () => (
               <View style={{ flexDirection: 'row' }}>
-                <ViewPdfButton navigation={navigation} route={route} />
-                <TransportNotesButton navigation={navigation} route={route} />
+                <ViewPdfButton Read-WithDefault />
+                <TransportNotesButton Read-WithDefault />
               </View>
-            )
+            ),
           };
         }}
       />
@@ -66,10 +66,10 @@ const SongsNavigator = () => {
             title: `PDF - ${title}`,
             headerRight: () => (
               <View style={{ flexDirection: 'row' }}>
-                <SharePDFButton navigation={navigation} route={route} />
-                <PrintPDFButton navigation={navigation} route={route} />
+                <SharePDFButton Read-WithDefault />
+                <PrintPDFButton Read-WithDefault />
               </View>
-            )
+            ),
           };
         }}
       />

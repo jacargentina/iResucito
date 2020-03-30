@@ -24,7 +24,7 @@ const SongViewFrame = (props: any) => {
   const [ctrlVisible, setCtrlVisible] = useState(false);
 
   const toggleControls = () => {
-    setCtrlVisible(visible => !visible);
+    setCtrlVisible((visible) => !visible);
   };
 
   const zoomOut = () => {
@@ -53,12 +53,12 @@ const SongViewFrame = (props: any) => {
         horizontal
         style={{
           marginLeft: margin,
-          marginRight: margin
+          marginRight: margin,
         }}>
         <ScrollView>
           <Content
             style={{
-              minWidth: minWidth
+              minWidth: minWidth,
             }}>
             <Text onPress={toggleControls} style={titleStyle}>
               {title}
@@ -85,7 +85,7 @@ const SongViewFrame = (props: any) => {
             alignItems: 'center',
             flexDirection: 'row',
             justifyContent: 'space-between',
-            backgroundColor: '#efefef'
+            backgroundColor: '#efefef',
           }}>
           <Button
             style={{ backgroundColor: commonTheme.brandPrimary }}
@@ -95,7 +95,7 @@ const SongViewFrame = (props: any) => {
           <Text
             style={{
               fontSize: 20,
-              fontWeight: 'bold'
+              fontWeight: 'bold',
             }}>
             {zoomLevel}
           </Text>

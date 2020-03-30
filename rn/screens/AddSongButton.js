@@ -2,12 +2,14 @@
 import React, { useContext } from 'react';
 import { Icon } from 'native-base';
 import { DataContext } from '../DataContext';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
 
 const AddSongButton = (props: any) => {
   const data = useContext(DataContext);
   const { getListForUI } = data.lists;
-  const { navigation, route } = props;
+  const navigation = useNavigation();
+  const route = useRoute();
   const { listName } = route.params;
 
   const uiList = getListForUI(listName);
@@ -25,11 +27,11 @@ const AddSongButton = (props: any) => {
         width: 32,
         fontSize: 30,
         textAlign: 'center',
-        color: StackNavigatorOptions().headerTitleStyle.color
+        color: StackNavigatorOptions().headerTitleStyle.color,
       }}
       onPress={() =>
         navigation.navigate('SongChooser', {
-          target: { listName: listName, listKey: uiList.items.length }
+          target: { listName: listName, listKey: uiList.items.length },
         })
       }
     />

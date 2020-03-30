@@ -5,13 +5,15 @@ import {
   Platform,
   View,
   KeyboardAvoidingView,
-  SafeAreaView
+  SafeAreaView,
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import I18n from '../../translations';
 import commonTheme from '../native-base-theme/variables/platform';
 
 const ModalView = (props: any) => {
-  const { navigation, left, right } = props;
+  const navigation = useNavigation();
+  const { left, right } = props;
   const defaultClose = (
     <Button
       rounded
@@ -19,7 +21,7 @@ const ModalView = (props: any) => {
       style={{
         alignSelf: 'flex-end',
         color: commonTheme.brandPrimary,
-        marginRight: 10
+        marginRight: 10,
       }}
       onPress={() => navigation.goBack(null)}>
       <Text>{I18n.t('ui.close')}</Text>
@@ -35,19 +37,19 @@ const ModalView = (props: any) => {
             flex: 0,
             marginTop: 10,
             flexDirection: 'row',
-            justifyContent: 'space-between'
+            justifyContent: 'space-between',
           }}>
           <View
             style={{
               flex: 1,
-              justifyContent: 'center'
+              justifyContent: 'center',
             }}>
             {left}
           </View>
           <View
             style={{
               flex: 1,
-              justifyContent: 'center'
+              justifyContent: 'center',
             }}>
             {right || defaultClose}
           </View>
@@ -58,12 +60,12 @@ const ModalView = (props: any) => {
               flex: 0,
               alignItems: 'center',
               paddingTop: 12,
-              paddingBottom: 12
+              paddingBottom: 12,
             }}>
             <Text
               style={{
                 fontSize: commonTheme.fontSizeBase + 3,
-                fontWeight: 'bold'
+                fontWeight: 'bold',
               }}>
               {props.title}
             </Text>
@@ -71,7 +73,7 @@ const ModalView = (props: any) => {
         )}
         <View
           style={{
-            flex: 1
+            flex: 1,
           }}>
           {props.children}
         </View>
@@ -79,7 +81,7 @@ const ModalView = (props: any) => {
           style={{
             flex: 0,
             flexDirection: 'row',
-            justifyContent: 'flex-end'
+            justifyContent: 'flex-end',
           }}>
           {props.acceptButtons}
         </View>

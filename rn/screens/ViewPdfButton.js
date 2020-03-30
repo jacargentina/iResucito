@@ -4,11 +4,13 @@ import { Icon } from 'native-base';
 import { defaultExportToPdfOptions } from '../../common';
 import { NativeParser } from '../util';
 import { generatePDF } from '../pdf';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import I18n from '../../translations';
 import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
 
 const ViewPdfButton = (props: any) => {
-  const { navigation, route } = props;
+  const navigation = useNavigation();
+  const route = useRoute();
   const { song, transportToNote } = route.params;
   if (!song) {
     return null;
@@ -23,7 +25,7 @@ const ViewPdfButton = (props: any) => {
         width: 32,
         fontSize: 30,
         textAlign: 'center',
-        color: StackNavigatorOptions().headerTitleStyle.color
+        color: StackNavigatorOptions().headerTitleStyle.color,
       }}
       onPress={() => {
         const { fullText } = song;
@@ -34,15 +36,15 @@ const ViewPdfButton = (props: any) => {
         );
         const item: SongToPdf = {
           song,
-          render
+          render,
         };
         var options = Object.assign({}, defaultExportToPdfOptions, {
-          disablePageNumbers: true
+          disablePageNumbers: true,
         });
-        generatePDF([item], options, '').then(path => {
+        generatePDF([item], options, '').then((path) => {
           navigation.navigate('PDFViewer', {
             uri: path,
-            title: song.titulo
+            title: song.titulo,
           });
         });
       }}

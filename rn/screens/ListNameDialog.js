@@ -1,6 +1,7 @@
 // @flow
 import React, { useContext, useState, useEffect } from 'react';
 import { Text, Input, Item, View, Button } from 'native-base';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { DataContext } from '../DataContext';
 import ModalView from './ModalView';
 import { getFriendlyTextForListType } from '../util';
@@ -9,7 +10,8 @@ import commonTheme from '../native-base-theme/variables/platform';
 
 const ListNameDialog = (props: any) => {
   const data = useContext(DataContext);
-  const { navigation, route } = props;
+  const navigation = useNavigation();
+  const route = useRoute();
   const { lists, addList, renameList } = data.lists;
   const [disabledReasonText, setDisabledReasonText] = useState(null);
   const [actionEnabled, setActionEnabled] = useState(false);
@@ -64,7 +66,7 @@ const ListNameDialog = (props: any) => {
           style={{
             alignSelf: 'flex-end',
             color: commonTheme.brandPrimary,
-            marginRight: 10
+            marginRight: 10,
           }}
           disabled={!actionEnabled}
           onPress={runActionOnList}>
@@ -80,7 +82,7 @@ const ListNameDialog = (props: any) => {
           style={{
             alignSelf: 'flex-start',
             color: commonTheme.brandPrimary,
-            marginLeft: 10
+            marginLeft: 10,
           }}
           onPress={() => navigation.goBack(null)}>
           <Text>{I18n.t('ui.cancel')}</Text>

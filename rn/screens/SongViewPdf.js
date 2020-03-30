@@ -8,14 +8,14 @@ const SongViewPdf = (props: any) => {
   return (
     <View
       style={{
-        flex: 1
+        flex: 1,
       }}>
       <Pdf
         source={{ uri }}
         scale={1.4}
         style={{
           flex: 1,
-          width: Dimensions.get('window').width
+          width: Dimensions.get('window').width,
         }}
       />
     </View>

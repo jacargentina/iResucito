@@ -5,3 +5,6 @@
 [untyped]
 .*/node_modules/react-native
 .*/native-base-theme/
+
+[options]
+esproposal.optional_chaining=enable

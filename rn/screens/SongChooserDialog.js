@@ -21,10 +21,10 @@ const SongChooserDialog = (props: any) => {
   const { target } = route.params;
 
   useEffect(() => {
-    var choosers = search.searchItems.filter(x => x.chooser !== undefined);
+    var choosers = search.searchItems.filter((x) => x.chooser !== undefined);
     if (target.listName && target.listKey) {
       var defChooser = choosers.find(
-        t => t.chooser_listKey && t.chooser_listKey.includes(target.listKey)
+        (t) => t.chooser_listKey && t.chooser_listKey.includes(target.listKey)
       );
       if (defChooser) {
         setActiveSegment(defChooser);
@@ -34,7 +34,7 @@ const SongChooserDialog = (props: any) => {
   }, []);
 
   useEffect(() => {
-    var choosers = search.searchItems.filter(x => x.chooser !== undefined);
+    var choosers = search.searchItems.filter((x) => x.chooser !== undefined);
     setSegments(
       choosers.map((v, i) => {
         const isActive = activeSegment && activeSegment.chooser === v.chooser;
@@ -45,7 +45,7 @@ const SongChooserDialog = (props: any) => {
             last={i === choosers.length - 1}
             onPress={() => setActiveSegment(v)}
             active={isActive}
-            onLayout={e => {
+            onLayout={(e) => {
               if (isActive) {
                 if (e.nativeEvent.layout.x > 0) {
                   setScrollToActiveX(e.nativeEvent.layout.x);
@@ -68,7 +68,7 @@ const SongChooserDialog = (props: any) => {
     ) {
       scrollToActiveRef.current.scrollTo({
         x: scrollToActiveX,
-        animated: true
+        animated: true,
       });
     }
   }, [scrollToActive, scrollToActiveRef, scrollToActiveX]);
@@ -88,7 +88,7 @@ const SongChooserDialog = (props: any) => {
             alignSelf: 'flex-start',
             marginLeft: 10,
             fontSize: commonTheme.fontSizeBase + 3,
-            fontWeight: 'bold'
+            fontWeight: 'bold',
           }}>
           {I18n.t('screen_title.find song')}
         </Text>
@@ -108,7 +108,7 @@ const SongChooserDialog = (props: any) => {
         }
         devModeDisabled={true}
         viewButton={true}
-        onPress={song => songAssign(song)}
+        onPress={(song) => songAssign(song)}
       />
     </ModalView>
   );

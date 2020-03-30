@@ -1,12 +1,13 @@
 // @flow
 import React, { useContext } from 'react';
 import { Icon, ActionSheet } from 'native-base';
+import { useRoute } from '@react-navigation/native';
 import { DataContext } from '../DataContext';
 import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
 import I18n from '../../translations';
 
 const ShareListButton = (props: any) => {
-  const { route } = props;
+  const route = useRoute();
   const { listName } = route.params;
   const data = useContext(DataContext);
   const { shareList } = data.lists;
@@ -17,12 +18,12 @@ const ShareListButton = (props: any) => {
         options: [
           I18n.t('list_export_options.native'),
           I18n.t('list_export_options.plain text'),
-          I18n.t('ui.cancel')
+          I18n.t('ui.cancel'),
         ],
         cancelButtonIndex: 2,
-        title: I18n.t('ui.export.type')
+        title: I18n.t('ui.export.type'),
       },
-      index => {
+      (index) => {
         index = Number(index);
         switch (index) {
           case 0:
@@ -41,7 +42,7 @@ const ShareListButton = (props: any) => {
       style={{
         marginTop: 4,
         marginRight: 12,
-        color: StackNavigatorOptions().headerTitleStyle.color
+        color: StackNavigatorOptions().headerTitleStyle.color,
       }}
       onPress={chooseShareFormat}
     />

@@ -4,13 +4,15 @@ import ModalView from './ModalView';
 import SearchBarView from './SearchBarView';
 import { Text, ListItem, Body, Left, Icon } from 'native-base';
 import { FlatList, Alert } from 'react-native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { DataContext } from '../DataContext';
 import I18n from '../../translations';
 import commonTheme from '../native-base-theme/variables/platform';
 
 const SongChooseLocaleDialog = (props: any) => {
   const data = useContext(DataContext);
-  const { navigation, route } = props;
+  const navigation = useNavigation();
+  const route = useRoute();
   const { songs, localeSongs, setSongPatch } = data.songsMeta;
   const [textFilter, setTextFilter] = useState('');
   const { target, targetType } = route.params;
@@ -19,9 +21,9 @@ const SongChooseLocaleDialog = (props: any) => {
     var result = [];
     if (targetType === 'file') {
       // cuales songs no tienen el idioma actual establecido ?
-      result = songs.filter(s => !s.files[I18n.locale]);
+      result = songs.filter((s) => !s.files[I18n.locale]);
       if (textFilter) {
-        result = result.filter(s => {
+        result = result.filter((s) => {
           return (
             s.nombre.toLowerCase().includes(textFilter.toLowerCase()) ||
             s.titulo.toLowerCase().includes(textFilter.toLowerCase()) ||
@@ -31,10 +33,10 @@ const SongChooseLocaleDialog = (props: any) => {
       }
     } else if (targetType === 'song') {
       // cuales archivos no estan en ningun song del locale actual?
-      result = localeSongs.filter(locSong => {
-        return !songs.find(s => s.files[I18n.locale] === locSong.nombre);
+      result = localeSongs.filter((locSong) => {
+        return !songs.find((s) => s.files[I18n.locale] === locSong.nombre);
       });
-      result = result.filter(locSong => {
+      result = result.filter((locSong) => {
         return (
           locSong.titulo.toLowerCase().includes(textFilter.toLowerCase()) ||
           locSong.fuente.toLowerCase().includes(textFilter.toLowerCase())
@@ -44,16 +46,16 @@ const SongChooseLocaleDialog = (props: any) => {
     return result;
   }, [I18n.locale, songs, localeSongs, textFilter]);
 
-  const localeFileSelected = item => {
+  const localeFileSelected = (item) => {
     var song: Song = targetType === 'file' ? item : target;
     var songFile: SongFile = targetType === 'file' ? target : item;
 
     // Definir funcion para llamar
     // en ambos casos del dialogo
-    const applyChanges = renameTo => {
+    const applyChanges = (renameTo) => {
       setSongPatch(song, I18n.locale, {
         file: songFile.nombre,
-        rename: renameTo
+        rename: renameTo,
       });
       navigation.goBack(null);
     };
@@ -69,16 +71,16 @@ const SongChooseLocaleDialog = (props: any) => {
             navigation.navigate('SongChangeName', {
               song: song,
               nameToEdit: songFile.nombre,
-              action: applyChanges
+              action: applyChanges,
             });
-          }
+          },
         },
         {
           text: I18n.t('ui.no'),
           onPress: () => {
             applyChanges();
-          }
-        }
+          },
+        },
       ]
     );
   };

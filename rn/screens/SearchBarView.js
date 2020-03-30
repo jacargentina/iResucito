@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { AndroidBackHandler } from 'react-navigation-backhandler';
 import { View, StyleSheet } from 'react-native';
 import { Input, Item, Icon } from 'native-base';
+import { useNavigation } from '@react-navigation/native';
 import commonTheme from '../native-base-theme/variables/platform';
 import I18n from '../../translations';
 import { useDebounce } from 'use-debounce';
@@ -25,7 +26,7 @@ const DebouncedInput = React.forwardRef((props: any, ref: any) => {
       ref={ref}
       style={{
         lineHeight: 20,
-        height: commonTheme.searchBarHeight
+        height: commonTheme.searchBarHeight,
       }}
       placeholder={I18n.t('ui.search placeholder')}
       onChangeText={setSearchTerm}
@@ -39,6 +40,7 @@ const DebouncedInput = React.forwardRef((props: any, ref: any) => {
 });
 
 const SearchBarView = (props: any) => {
+  const navigation = useNavigation();
   const termInput = useRef();
 
   const focusTerm = () => {
@@ -50,7 +52,7 @@ const SearchBarView = (props: any) => {
   return (
     <AndroidBackHandler
       onBackPress={() => {
-        props.navigation.goBack(null);
+        navigation.goBack(null);
         return true;
       }}>
       <View style={{ flex: 1 }}>
@@ -58,13 +60,13 @@ const SearchBarView = (props: any) => {
           style={{
             backgroundColor: commonTheme.toolbarInputColor,
             borderRadius: 16,
-            margin: 10
+            margin: 10,
           }}>
           <Item
             style={{
               height: commonTheme.searchBarHeight,
               borderColor: 'transparent',
-              paddingHorizontal: 15
+              paddingHorizontal: 15,
             }}>
             <Icon name="search" onPress={focusTerm} />
             <DebouncedInput
@@ -78,7 +80,7 @@ const SearchBarView = (props: any) => {
           style={{
             flex: 1,
             borderTopWidth: StyleSheet.hairlineWidth,
-            borderTopColor: commonTheme.listBorderColor
+            borderTopColor: commonTheme.listBorderColor,
           }}>
           {props.children}
         </View>

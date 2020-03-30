@@ -2,11 +2,12 @@
 import React, { useContext } from 'react';
 import { Icon } from 'native-base';
 import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
+import { useRoute } from '@react-navigation/native';
 import { DataContext } from '../DataContext';
 
 const SharePDFButton = (props: any) => {
   const data = useContext(DataContext);
-  const { route } = props;
+  const route = useRoute();
   const { sharePDF } = data;
   const { title, uri } = route.params;
   return (
@@ -18,7 +19,7 @@ const SharePDFButton = (props: any) => {
         width: 32,
         fontSize: 30,
         textAlign: 'center',
-        color: StackNavigatorOptions().headerTitleStyle.color
+        color: StackNavigatorOptions().headerTitleStyle.color,
       }}
       onPress={() => sharePDF(title, uri)}
     />

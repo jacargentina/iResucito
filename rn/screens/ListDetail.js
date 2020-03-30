@@ -2,17 +2,19 @@
 import React, { Fragment, useContext, useState } from 'react';
 import { Alert, Platform } from 'react-native';
 import { List, Text } from 'native-base';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import Swipeout from 'react-native-swipeout';
 import ListDetailItem from './ListDetailItem';
 import { DataContext } from '../DataContext';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import I18n from '../../translations';
 
-const ListDetail = (props: any) => {
+const ListDetail = () => {
   const data = useContext(DataContext);
   const [scroll, setScroll] = useState();
   const [noteFocused, setNoteFocused] = useState(false);
-  const { route } = props;
+  const navigation = useNavigation();
+  const route = useRoute();
   const { setList, getListForUI } = data.lists;
   const { listName } = route.params;
 
@@ -26,12 +28,12 @@ const ListDetail = (props: any) => {
           onPress: () => {
             setList(list, key);
           },
-          style: 'destructive'
+          style: 'destructive',
         },
         {
           text: I18n.t('ui.cancel'),
-          style: 'cancel'
-        }
+          style: 'cancel',
+        },
       ]
     );
   };
@@ -59,8 +61,8 @@ const ListDetail = (props: any) => {
                       Platform.OS === 'android' ? '#e57373' : null,
                     onPress: () => {
                       confirmListDeleteSong(song.titulo, listName, key);
-                    }
-                  }
+                    },
+                  },
                 ];
                 return (
                   <Swipeout
@@ -86,7 +88,7 @@ const ListDetail = (props: any) => {
   return (
     <KeyboardAwareScrollView
       contentContainerStyle={{ flexGrow: 1 }}
-      innerRef={ref => setScroll(ref)}>
+      innerRef={(ref) => setScroll(ref)}>
       <List>
         <ListDetailItem
           listName={listName}
@@ -110,6 +112,8 @@ const ListDetail = (props: any) => {
         />
         {uiList.hasOwnProperty('1-salmo') && (
           <ListDetailItem
+            navigation={navigation}
+            route={route}
             listName={listName}
             listKey="1-salmo"
             listText={uiList['1-salmo']}
@@ -127,6 +131,8 @@ const ListDetail = (props: any) => {
         />
         {uiList.hasOwnProperty('2-salmo') && (
           <ListDetailItem
+            navigation={navigation}
+            route={route}
             listName={listName}
             listKey="2-salmo"
             listText={uiList['2-salmo']}
@@ -134,6 +140,8 @@ const ListDetail = (props: any) => {
         )}
         {uiList.hasOwnProperty('3-monicion') && (
           <ListDetailItem
+            navigation={navigation}
+            route={route}
             listName={listName}
             listKey="3-monicion"
             listText={uiList['3-monicion']}
@@ -141,6 +149,8 @@ const ListDetail = (props: any) => {
         )}
         {uiList.hasOwnProperty('3') && (
           <ListDetailItem
+            navigation={navigation}
+            route={route}
             listName={listName}
             listKey="3"
             listText={uiList['3']}
@@ -148,6 +158,8 @@ const ListDetail = (props: any) => {
         )}
         {uiList.hasOwnProperty('3-salmo') && (
           <ListDetailItem
+            navigation={navigation}
+            route={route}
             listName={listName}
             listKey="3-salmo"
             listText={uiList['3-salmo']}
@@ -165,6 +177,8 @@ const ListDetail = (props: any) => {
         />
         {uiList.hasOwnProperty('oracion-universal') && (
           <ListDetailItem
+            navigation={navigation}
+            route={route}
             listName={listName}
             listKey="oracion-universal"
             listText={uiList['oracion-universal']}
@@ -172,6 +186,8 @@ const ListDetail = (props: any) => {
         )}
         {uiList.hasOwnProperty('paz') && (
           <ListDetailItem
+            navigation={navigation}
+            route={route}
             listName={listName}
             listKey="paz"
             listText={uiList['paz']}
@@ -179,6 +195,8 @@ const ListDetail = (props: any) => {
         )}
         {uiList.hasOwnProperty('comunion-pan') && (
           <ListDetailItem
+            navigation={navigation}
+            route={route}
             listName={listName}
             listKey="comunion-pan"
             listText={uiList['comunion-pan']}
@@ -186,6 +204,8 @@ const ListDetail = (props: any) => {
         )}
         {uiList.hasOwnProperty('comunion-caliz') && (
           <ListDetailItem
+            navigation={navigation}
+            route={route}
             listName={listName}
             listKey="comunion-caliz"
             listText={uiList['comunion-caliz']}
@@ -198,6 +218,8 @@ const ListDetail = (props: any) => {
         />
         {uiList.hasOwnProperty('encargado-pan') && (
           <ListDetailItem
+            navigation={navigation}
+            route={route}
             listName={listName}
             listKey="encargado-pan"
             listText={uiList['encargado-pan']}
@@ -205,6 +227,8 @@ const ListDetail = (props: any) => {
         )}
         {uiList.hasOwnProperty('encargado-flores') && (
           <ListDetailItem
+            navigation={navigation}
+            route={route}
             listName={listName}
             listKey="encargado-flores"
             listText={uiList['encargado-flores']}
@@ -225,7 +249,7 @@ const ListDetail = (props: any) => {
               if (noteFocused && scroll) {
                 scroll.props.scrollToEnd();
               }
-            }
+            },
           }}
         />
       </List>

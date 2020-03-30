@@ -16,7 +16,7 @@ const ContactListItem = (props: any) => {
           style={{
             marginRight: 4,
             color: commonTheme.brandPrimary,
-            fontSize: 28
+            fontSize: 28,
           }}
         />
       )}

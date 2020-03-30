@@ -1,9 +1,10 @@
 // @flow
 import React from 'react';
 import SongViewPdf from './SongViewPdf';
+import { useRoute } from '@react-navigation/native';
 
-const PDFViewer = (props: any) => {
-  const { route } = props;
+const PDFViewer = () => {
+  const route = useRoute();
   return <SongViewPdf uri={route.params.uri} />;
 };
 

@@ -20,9 +20,9 @@ const CommunityNavigator = () => {
             title: I18n.t('screen_title.community'),
             headerRight: () => (
               <View style={{ flexDirection: 'row' }}>
-                <ContactImportButton navigation={navigation} route={route} />
+                <ContactImportButton Read-WithDefault />
               </View>
-            )
+            ),
           };
         }}
       />

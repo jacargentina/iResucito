@@ -23,7 +23,7 @@ const ClearRatingsButton = () => {
         width: 32,
         fontSize: 30,
         textAlign: 'center',
-        color: StackNavigatorOptions().headerTitleStyle.color
+        color: StackNavigatorOptions().headerTitleStyle.color,
       }}
       onPress={() => {
         Alert.alert(
@@ -35,12 +35,12 @@ const ClearRatingsButton = () => {
               onPress: () => {
                 clearSongsRatings();
               },
-              style: 'destructive'
+              style: 'destructive',
             },
             {
               text: I18n.t('ui.cancel'),
-              style: 'cancel'
-            }
+              style: 'cancel',
+            },
           ]
         );
       }}

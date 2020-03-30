@@ -1,12 +1,13 @@
 // @flow
 import React, { useContext } from 'react';
 import { Icon } from 'native-base';
+import { useNavigation } from '@react-navigation/native';
 import { DataContext } from '../DataContext';
 import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
 
-const ContactImportButton = (props: any) => {
+const ContactImportButton = () => {
   const data = useContext(DataContext);
-  const { navigation } = props;
+  const navigation = useNavigation();
   const { contactImport } = data.community;
 
   return (
@@ -18,7 +19,7 @@ const ContactImportButton = (props: any) => {
         width: 32,
         fontSize: 30,
         textAlign: 'center',
-        color: StackNavigatorOptions().headerTitleStyle.color
+        color: StackNavigatorOptions().headerTitleStyle.color,
       }}
       onPress={() => contactImport(navigation)}
     />
