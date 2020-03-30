@@ -521,7 +521,6 @@ const useLists = (songs: any) => {
       RNFS.writeFile(listPath, JSON.stringify(nativeList, null, ' '), 'utf8');
       Share.open({
         title: I18n.t('ui.share'),
-        message: null,
         subject: `iResucitó - ${listName}`,
         url: `file://${listPath}`,
         failOnCancel: false
