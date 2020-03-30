@@ -31,7 +31,10 @@ const AddSongButton = (props: any) => {
       }}
       onPress={() =>
         navigation.navigate('SongChooser', {
-          target: { listName: listName, listKey: uiList.items.length },
+          screen: 'Dialog',
+          params: {
+            target: { listName: listName, listKey: uiList.items.length },
+          },
         })
       }
     />

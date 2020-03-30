@@ -6,6 +6,7 @@ import StackNavigatorOptions from './StackNavigatorOptions';
 import ListScreen from '../screens/ListScreen';
 import ListDetail from '../screens/ListDetail';
 import SongDetail from '../screens/SongDetail';
+import SongDetailOptions from './SongDetailOptions';
 import PDFViewer from '../screens/PDFViewer';
 import SharePDFButton from '../screens/SharePDFButton';
 import PrintPDFButton from '../screens/PrintPDFButton';
@@ -49,7 +50,11 @@ const ListsNavigator = () => {
           };
         }}
       />
-      <Stack.Screen name="SongDetail" component={SongDetail} />
+      <Stack.Screen
+        name="SongDetail"
+        component={SongDetail}
+        options={SongDetailOptions}
+      />
       <Stack.Screen
         name="PDFViewer"
         component={PDFViewer}

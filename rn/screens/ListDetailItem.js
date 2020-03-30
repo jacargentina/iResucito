@@ -19,7 +19,7 @@ import I18n from '../../translations';
 
 const ListDetailItem = (props: any) => {
   const data = useContext(DataContext);
-  const { navigation } = useNavigation();
+  const navigation = useNavigation();
   const { setList } = data.lists;
   const { listName, listKey, listText, inputProps } = props;
 

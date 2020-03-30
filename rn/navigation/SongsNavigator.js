@@ -6,10 +6,9 @@ import StackNavigatorOptions from './StackNavigatorOptions';
 import SongSearch from '../screens/SongSearch';
 import SongList from '../screens/SongList';
 import SongDetail from '../screens/SongDetail';
+import SongDetailOptions from './SongDetailOptions';
 import UnassignedList from '../screens/UnassignedList';
 import PDFViewer from '../screens/PDFViewer';
-import ViewPdfButton from '../screens/ViewPdfButton';
-import TransportNotesButton from '../screens/TransportNotesButton';
 import SharePDFButton from '../screens/SharePDFButton';
 import PrintPDFButton from '../screens/PrintPDFButton';
 import ExportToPdfButton from '../screens/ExportToPdfButton';
@@ -44,18 +43,7 @@ const SongsNavigator = () => {
       <Stack.Screen
         name="SongDetail"
         component={SongDetail}
-        options={({ navigation, route }) => {
-          const song = route.params.song;
-          return {
-            title: song ? song.titulo : 'Salmo',
-            headerRight: () => (
-              <View style={{ flexDirection: 'row' }}>
-                <ViewPdfButton Read-WithDefault />
-                <TransportNotesButton Read-WithDefault />
-              </View>
-            ),
-          };
-        }}
+        options={SongDetailOptions}
       />
       <Stack.Screen
         name="PDFViewer"

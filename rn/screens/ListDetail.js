@@ -112,8 +112,6 @@ const ListDetail = () => {
         />
         {uiList.hasOwnProperty('1-salmo') && (
           <ListDetailItem
-            navigation={navigation}
-            route={route}
             listName={listName}
             listKey="1-salmo"
             listText={uiList['1-salmo']}
@@ -131,8 +129,6 @@ const ListDetail = () => {
         />
         {uiList.hasOwnProperty('2-salmo') && (
           <ListDetailItem
-            navigation={navigation}
-            route={route}
             listName={listName}
             listKey="2-salmo"
             listText={uiList['2-salmo']}
@@ -140,8 +136,6 @@ const ListDetail = () => {
         )}
         {uiList.hasOwnProperty('3-monicion') && (
           <ListDetailItem
-            navigation={navigation}
-            route={route}
             listName={listName}
             listKey="3-monicion"
             listText={uiList['3-monicion']}
@@ -149,8 +143,6 @@ const ListDetail = () => {
         )}
         {uiList.hasOwnProperty('3') && (
           <ListDetailItem
-            navigation={navigation}
-            route={route}
             listName={listName}
             listKey="3"
             listText={uiList['3']}
@@ -158,8 +150,6 @@ const ListDetail = () => {
         )}
         {uiList.hasOwnProperty('3-salmo') && (
           <ListDetailItem
-            navigation={navigation}
-            route={route}
             listName={listName}
             listKey="3-salmo"
             listText={uiList['3-salmo']}
@@ -177,8 +167,6 @@ const ListDetail = () => {
         />
         {uiList.hasOwnProperty('oracion-universal') && (
           <ListDetailItem
-            navigation={navigation}
-            route={route}
             listName={listName}
             listKey="oracion-universal"
             listText={uiList['oracion-universal']}
@@ -186,8 +174,6 @@ const ListDetail = () => {
         )}
         {uiList.hasOwnProperty('paz') && (
           <ListDetailItem
-            navigation={navigation}
-            route={route}
             listName={listName}
             listKey="paz"
             listText={uiList['paz']}
@@ -195,8 +181,6 @@ const ListDetail = () => {
         )}
         {uiList.hasOwnProperty('comunion-pan') && (
           <ListDetailItem
-            navigation={navigation}
-            route={route}
             listName={listName}
             listKey="comunion-pan"
             listText={uiList['comunion-pan']}
@@ -204,8 +188,6 @@ const ListDetail = () => {
         )}
         {uiList.hasOwnProperty('comunion-caliz') && (
           <ListDetailItem
-            navigation={navigation}
-            route={route}
             listName={listName}
             listKey="comunion-caliz"
             listText={uiList['comunion-caliz']}
@@ -218,8 +200,6 @@ const ListDetail = () => {
         />
         {uiList.hasOwnProperty('encargado-pan') && (
           <ListDetailItem
-            navigation={navigation}
-            route={route}
             listName={listName}
             listKey="encargado-pan"
             listText={uiList['encargado-pan']}
@@ -227,8 +207,6 @@ const ListDetail = () => {
         )}
         {uiList.hasOwnProperty('encargado-flores') && (
           <ListDetailItem
-            navigation={navigation}
-            route={route}
             listName={listName}
             listKey="encargado-flores"
             listText={uiList['encargado-flores']}
