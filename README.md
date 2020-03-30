@@ -120,5 +120,5 @@ IRESUCITO_RELEASE_KEY_PASSWORD=[contraseña]
 
 ### Para desarrollo de web app
 
-- npm run website
+- yarn run website
 - Abrir navegador en http://localhost:8345
