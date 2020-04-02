@@ -5,37 +5,61 @@
     
     
       
+<<<<<<< HEAD
       <testcase classname="fastlane.lanes" name="0: Verifying fastlane version" time="0.009828">
+=======
+      <testcase classname="fastlane.lanes" name="0: Verifying fastlane version" time="0.005298">
+>>>>>>> 873c67a9c6fe72697b26ea6c260b57f13612e733
         
       </testcase>
     
       
+<<<<<<< HEAD
       <testcase classname="fastlane.lanes" name="1: default_platform" time="0.001007">
+=======
+      <testcase classname="fastlane.lanes" name="1: default_platform" time="0.000813">
+>>>>>>> 873c67a9c6fe72697b26ea6c260b57f13612e733
         
       </testcase>
     
       
+<<<<<<< HEAD
       <testcase classname="fastlane.lanes" name="2: match" time="12.205903">
+=======
+      <testcase classname="fastlane.lanes" name="2: match" time="12.304162">
+>>>>>>> 873c67a9c6fe72697b26ea6c260b57f13612e733
         
       </testcase>
     
       
+<<<<<<< HEAD
       <testcase classname="fastlane.lanes" name="3: increment_version_number" time="0.7563">
+=======
+      <testcase classname="fastlane.lanes" name="3: increment_build_number" time="0.920336">
+>>>>>>> 873c67a9c6fe72697b26ea6c260b57f13612e733
         
       </testcase>
     
       
+<<<<<<< HEAD
       <testcase classname="fastlane.lanes" name="4: increment_build_number" time="0.584564">
+=======
+      <testcase classname="fastlane.lanes" name="4: gym" time="253.373552">
+>>>>>>> 873c67a9c6fe72697b26ea6c260b57f13612e733
         
       </testcase>
     
       
+<<<<<<< HEAD
       <testcase classname="fastlane.lanes" name="5: gym" time="254.437877">
         
       </testcase>
     
       
       <testcase classname="fastlane.lanes" name="6: pilot" time="1246.992207">
+=======
+      <testcase classname="fastlane.lanes" name="5: pilot" time="2753.66096">
+>>>>>>> 873c67a9c6fe72697b26ea6c260b57f13612e733
         
       </testcase>
     
