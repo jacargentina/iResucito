@@ -15,7 +15,7 @@ import {
   getFriendlyTextForListType,
   ordenClasificacion,
   NativeSongs,
-  NativeExtras
+  NativeExtras,
 } from './util';
 import I18n from '../translations';
 import pathParse from 'path-parse';
@@ -28,11 +28,11 @@ const useSongsMeta = (locale: string) => {
   const [songs, setSongs] = useState();
   const [localeSongs, setLocaleSongs] = useState([]);
 
-  const initializeSingleSong = song => {
+  const initializeSingleSong = (song) => {
     if (!songs) {
       return;
     }
-    var idx = songs.findIndex(i => i.key === song.key);
+    var idx = songs.findIndex((i) => i.key === song.key);
     var prev = songs.slice(0, idx);
     var next = songs.slice(idx + 1);
     setSongs([...prev, song, ...next]);
@@ -43,7 +43,7 @@ const useSongsMeta = (locale: string) => {
       return Promise.resolve();
     }
     return NativeExtras.readPatch()
-      .then(patchJSON => {
+      .then((patchJSON) => {
         return JSON.parse(patchJSON);
       })
       .catch(() => {
@@ -65,7 +65,7 @@ const useSongsMeta = (locale: string) => {
   };
 
   const getSongLocalePatch = (song: Song): SongPatch => {
-    return readLocalePatch().then(patchObj => {
+    return readLocalePatch().then((patchObj) => {
       if (patchObj && patchObj[song.key]) {
         return patchObj[song.key];
       }
@@ -74,18 +74,18 @@ const useSongsMeta = (locale: string) => {
 
   const readAllLocaleSongs = (loc: string) => {
     return NativeSongs.readLocaleSongs(loc)
-      .then(items => {
+      .then((items) => {
         var locNoCountry = loc.split('-')[0];
         if (locNoCountry === loc) {
           return items;
         }
         // If locale contains country
         // try with country code removed
-        return NativeSongs.readLocaleSongs(locNoCountry).then(result => {
+        return NativeSongs.readLocaleSongs(locNoCountry).then((result) => {
           return items.concat(result);
         });
       })
-      .then(allItems => {
+      .then((allItems) => {
         setLocaleSongs(allItems);
       });
   };
@@ -96,7 +96,7 @@ const useSongsMeta = (locale: string) => {
     }
 
     return Promise.all([readLocalePatch(), readSongsRatingFile()]).then(
-      values => {
+      (values) => {
         var [patchObj: SongIndexPatch, ratingsObj: SongRatingFile] = values;
         if (!patchObj) {
           patchObj = {};
@@ -106,7 +106,7 @@ const useSongsMeta = (locale: string) => {
             patch.rename = patch.rename.trim();
           }
           const localePatch: SongPatch = {
-            [loc]: patch
+            [loc]: patch,
           };
           if (!patchObj[song.key]) {
             patchObj[song.key] = {};
@@ -115,11 +115,11 @@ const useSongsMeta = (locale: string) => {
           patchObj[song.key] = updatedPatch;
           Toast.show({
             text: I18n.t('ui.locale patch added', {
-              song: song.titulo
+              song: song.titulo,
             }),
             duration: 5000,
             type: 'success',
-            buttonText: 'Ok'
+            buttonText: 'Ok',
           });
         } else {
           delete patchObj[song.key][loc];
@@ -127,7 +127,7 @@ const useSongsMeta = (locale: string) => {
             text: I18n.t('ui.locale patch removed', { song: song.titulo }),
             duration: 5000,
             type: 'success',
-            buttonText: 'Ok'
+            buttonText: 'Ok',
           });
         }
         var updatedSong = NativeSongs.getSingleSongMeta(
@@ -163,7 +163,7 @@ const useSongsMeta = (locale: string) => {
     if (!ratingsFileExists) {
       return Promise.resolve();
     }
-    return NativeExtras.readRatings().then(ratingsJSON => {
+    return NativeExtras.readRatings().then((ratingsJSON) => {
       return JSON.parse(ratingsJSON);
     });
   };
@@ -177,7 +177,7 @@ const useSongsMeta = (locale: string) => {
 
   const setSongRating = (songKey: string, loc: string, value: number) => {
     return Promise.all([readLocalePatch(), readSongsRatingFile()]).then(
-      values => {
+      (values) => {
         var [patchObj: SongIndexPatch, ratingsObj: SongRatingFile] = values;
         if (!ratingsObj) {
           ratingsObj = {};
@@ -186,7 +186,7 @@ const useSongsMeta = (locale: string) => {
           ratingsObj[songKey] = {};
         }
         ratingsObj[songKey] = Object.assign({}, ratingsObj[songKey], {
-          [loc]: value
+          [loc]: value,
         });
         return saveSongsRatingFile(ratingsObj).then(() => {
           var updatedSong = NativeSongs.getSingleSongMeta(
@@ -214,10 +214,10 @@ const useSongsMeta = (locale: string) => {
   };
 
   const loadFlags = () => {
-    NativeExtras.patchExists().then(exists => {
+    NativeExtras.patchExists().then((exists) => {
       setIndexPatchExists(exists);
     });
-    NativeExtras.ratingsExists().then(exists => {
+    NativeExtras.ratingsExists().then((exists) => {
       setRatingsFileExists(exists);
     });
   };
@@ -229,7 +229,7 @@ const useSongsMeta = (locale: string) => {
       ratingsFileExists !== undefined
     ) {
       // Cargar parche del indice si existe
-      Promise.all([readLocalePatch(), readSongsRatingFile()]).then(values => {
+      Promise.all([readLocalePatch(), readSongsRatingFile()]).then((values) => {
         const [patchObj: SongIndexPatch, ratingsObj: SongRatingFile] = values;
         // Construir metadatos de cantos
         var metaData = NativeSongs.getSongsMeta(
@@ -267,7 +267,7 @@ const useSongsMeta = (locale: string) => {
     ratingsFileExists,
     clearSongsRatings,
     setSongRating,
-    loadSongs
+    loadSongs,
   };
 };
 
@@ -297,7 +297,7 @@ const useLists = (songs: any) => {
           'evangelio-monicion': null,
           evangelio: null,
           salida: null,
-          nota: null
+          nota: null,
         });
         break;
       case 'eucaristia':
@@ -317,7 +317,7 @@ const useLists = (songs: any) => {
           salida: null,
           'encargado-pan': null,
           'encargado-flores': null,
-          nota: null
+          nota: null,
         });
         break;
     }
@@ -325,7 +325,7 @@ const useLists = (songs: any) => {
     initLists(changedLists);
   };
 
-  const removeList = listName => {
+  const removeList = (listName) => {
     const changedLists = Object.assign({}, lists);
     delete changedLists[listName];
     initLists(changedLists);
@@ -350,7 +350,7 @@ const useLists = (songs: any) => {
       if (typeof listKey === 'string') {
         schema = Object.assign({}, targetList, { [listKey]: listValue });
       } else if (typeof listKey === 'number') {
-        var isPresent = targetList.items.find(s => s === listValue);
+        var isPresent = targetList.items.find((s) => s === listValue);
         if (isPresent) {
           return;
         }
@@ -376,11 +376,11 @@ const useLists = (songs: any) => {
     Object.entries(uiList).forEach(([clave, valor]) => {
       // Si es de tipo 'libre', los salmos están dentro de 'items'
       if (clave === 'items' && Array.isArray(valor)) {
-        valor = valor.map(key => {
-          return songs.find(s => s.key === key);
+        valor = valor.map((key) => {
+          return songs.find((s) => s.key === key);
         });
       } else if (getEsSalmo(clave) && valor !== null) {
-        valor = songs.find(s => s.key === valor);
+        valor = songs.find((s) => s.key === valor);
       }
       uiList[clave] = valor;
     });
@@ -390,7 +390,7 @@ const useLists = (songs: any) => {
   const migrateLists = (items: any) => {
     // Verificar cada lista para migrar en caso
     // de ser necesario
-    Object.keys(items).forEach(name => {
+    Object.keys(items).forEach((name) => {
       var listMap = items[name];
       // Listas sin número de versión
       // Los cantos se almacenaban con nombre
@@ -399,15 +399,15 @@ const useLists = (songs: any) => {
         Object.entries(listMap).forEach(([clave, valor]) => {
           // Si es de tipo 'libre', los salmos están dentro de 'items'
           if (clave === 'items' && Array.isArray(valor)) {
-            valor = valor.map(nombre => {
-              var theSong = songs.find(s => s.nombre === nombre);
+            valor = valor.map((nombre) => {
+              var theSong = songs.find((s) => s.nombre === nombre);
               if (theSong) {
                 return theSong.key;
               }
               return null;
             });
           } else if (getEsSalmo(clave) && valor !== null) {
-            var theSong = songs.find(s => s.nombre === valor);
+            var theSong = songs.find((s) => s.nombre === valor);
             if (theSong) {
               valor = theSong.key;
             } else {
@@ -424,11 +424,11 @@ const useLists = (songs: any) => {
 
   const getListsForUI = () => {
     var listNames = Object.keys(lists);
-    return listNames.map(name => {
+    return listNames.map((name) => {
       var listMap = lists[name];
       return {
         name: name,
-        type: getFriendlyTextForListType(listMap.type)
+        type: getFriendlyTextForListType(listMap.type),
       };
     });
   };
@@ -449,7 +449,7 @@ const useLists = (songs: any) => {
   const importList = (listPath: string) => {
     const path = decodeURI(listPath).replace('file://', '');
     return RNFS.readFile(path)
-      .then(content => {
+      .then((content) => {
         // Obtener nombre del archivo
         // que será nombre de la lista
         const parsed = pathParse(listPath);
@@ -460,7 +460,7 @@ const useLists = (songs: any) => {
           listName = `${listName} (${counter++})`;
         }
         const changedLists = Object.assign({}, lists, {
-          [listName]: JSON.parse(content)
+          [listName]: JSON.parse(content),
         });
         initLists(changedLists);
         return listName;
@@ -473,19 +473,19 @@ const useLists = (songs: any) => {
       });
   };
 
-  const chooseListTypeForAdd = navigation => {
+  const chooseListTypeForAdd = (navigation) => {
     ActionSheet.show(
       {
         options: [
           I18n.t('list_type.eucharist'),
           I18n.t('list_type.word'),
           I18n.t('list_type.other'),
-          I18n.t('ui.cancel')
+          I18n.t('ui.cancel'),
         ],
         cancelButtonIndex: 3,
-        title: I18n.t('ui.lists.type')
+        title: I18n.t('ui.lists.type'),
       },
-      index => {
+      (index) => {
         var type = null;
         index = Number(index);
         switch (index) {
@@ -502,7 +502,7 @@ const useLists = (songs: any) => {
         if (type !== null) {
           navigation.navigate('ListName', {
             action: 'create',
-            type: type
+            type: type,
           });
         }
       }
@@ -523,12 +523,12 @@ const useLists = (songs: any) => {
         title: I18n.t('ui.share'),
         subject: `iResucitó - ${listName}`,
         url: `file://${listPath}`,
-        failOnCancel: false
+        failOnCancel: false,
       })
-        .then(res => {
+        .then((res) => {
           console.log(res);
         })
-        .catch(err => {
+        .catch((err) => {
           err && console.log(err);
         });
     } else {
@@ -559,18 +559,18 @@ const useLists = (songs: any) => {
         items.push(getItemForShare(list, 'salida'));
         items.push(getItemForShare(list, 'nota'));
       }
-      var message = items.filter(n => n).join('\n');
+      var message = items.filter((n) => n).join('\n');
       Share.open({
         title: I18n.t('ui.share'),
         message: message,
         subject: `iResucitó - ${listName}`,
         url: null,
-        failOnCancel: false
+        failOnCancel: false,
       })
-        .then(res => {
+        .then((res) => {
           console.log(res);
         })
-        .catch(err => {
+        .catch((err) => {
           err && console.log(err);
         });
     }
@@ -612,7 +612,7 @@ const useLists = (songs: any) => {
     getListsForUI,
     shareList,
     importList,
-    chooseListTypeForAdd
+    chooseListTypeForAdd,
   };
 };
 
@@ -629,7 +629,7 @@ const useSearch = (locale: string, developerMode: boolean) => {
         note_key: 'search_note.ratings',
         route: 'SongList',
         params: { filter: null, sort: ordenClasificacion },
-        badge: null
+        badge: null,
       },
       {
         title_key: 'search_title.alpha',
@@ -637,82 +637,82 @@ const useSearch = (locale: string, developerMode: boolean) => {
         route: 'SongList',
         chooser: I18n.t('search_tabs.all'),
         params: { filter: null },
-        badge: badges.alpha
+        badge: badges.alpha,
       },
       {
         title_key: 'search_title.stage',
-        divider: true
+        divider: true,
       },
       {
         title_key: 'search_title.precatechumenate',
         note_key: 'search_note.precatechumenate',
         route: 'SongList',
         params: { filter: { stage: 'precatechumenate' } },
-        badge: badges.precatechumenate
+        badge: badges.precatechumenate,
       },
       {
         title_key: 'search_title.catechumenate',
         note_key: 'search_note.catechumenate',
         route: 'SongList',
         params: { filter: { stage: 'catechumenate' } },
-        badge: badges.catechumenate
+        badge: badges.catechumenate,
       },
       {
         title_key: 'search_title.election',
         note_key: 'search_note.election',
         route: 'SongList',
         params: { filter: { stage: 'election' } },
-        badge: badges.election
+        badge: badges.election,
       },
       {
         title_key: 'search_title.liturgy',
         note_key: 'search_note.liturgy',
         route: 'SongList',
         params: { filter: { stage: 'liturgy' } },
-        badge: badges.liturgy
+        badge: badges.liturgy,
       },
       {
         title_key: 'search_title.liturgical time',
-        divider: true
+        divider: true,
       },
       {
         title_key: 'search_title.advent',
         note_key: 'search_note.advent',
         route: 'SongList',
         params: { filter: { advent: true } },
-        badge: null
+        badge: null,
       },
       {
         title_key: 'search_title.christmas',
         note_key: 'search_note.christmas',
         route: 'SongList',
         params: { filter: { christmas: true } },
-        badge: null
+        badge: null,
       },
       {
         title_key: 'search_title.lent',
         note_key: 'search_note.lent',
         route: 'SongList',
         params: { filter: { lent: true } },
-        badge: null
+        badge: null,
       },
       {
         title_key: 'search_title.easter',
         note_key: 'search_note.easter',
         route: 'SongList',
         params: { filter: { easter: true } },
-        badge: null
+        badge: null,
       },
       {
         title_key: 'search_title.pentecost',
         note_key: 'search_note.pentecost',
         route: 'SongList',
         params: { filter: { pentecost: true } },
-        badge: null
+        badge: null,
       },
       {
         title_key: 'search_title.liturgical order',
-        divider: true
+        divider: true,
       },
       {
         title_key: 'search_title.entrance',
@@ -721,7 +721,7 @@ const useSearch = (locale: string, developerMode: boolean) => {
         params: { filter: { entrance: true } },
         badge: null,
         chooser: I18n.t('search_tabs.entrance'),
-        chooser_listKey: ['entrada']
+        chooser_listKey: ['entrada'],
       },
       {
         title_key: 'search_title.peace and offerings',
@@ -730,7 +730,7 @@ const useSearch = (locale: string, developerMode: boolean) => {
         params: { filter: { 'peace and offerings': true } },
         badge: null,
         chooser: I18n.t('search_tabs.peace and offerings'),
-        chooser_listKey: ['paz']
+        chooser_listKey: ['paz'],
       },
       {
         title_key: 'search_title.fraction of bread',
@@ -739,7 +739,7 @@ const useSearch = (locale: string, developerMode: boolean) => {
         params: { filter: { 'fraction of bread': true } },
         badge: null,
         chooser: I18n.t('search_tabs.fraction of bread'),
-        chooser_listKey: ['comunion-pan']
+        chooser_listKey: ['comunion-pan'],
       },
       {
         title_key: 'search_title.communion',
@@ -748,7 +748,7 @@ const useSearch = (locale: string, developerMode: boolean) => {
         params: { filter: { communion: true } },
         badge: null,
         chooser: I18n.t('search_tabs.communion'),
-        chooser_listKey: ['comunion-pan', 'comunion-caliz']
+        chooser_listKey: ['comunion-pan', 'comunion-caliz'],
       },
       {
         title_key: 'search_title.exit',
@@ -757,7 +757,7 @@ const useSearch = (locale: string, developerMode: boolean) => {
         params: { filter: { exit: true } },
         badge: null,
         chooser: I18n.t('search_tabs.exit'),
-        chooser_listKey: ['salida']
+        chooser_listKey: ['salida'],
       },
       {
         title_key: 'search_title.signing to the virgin',
@@ -765,7 +765,7 @@ const useSearch = (locale: string, developerMode: boolean) => {
         route: 'SongList',
         params: { filter: { 'signing to the virgin': true } },
         badge: null,
-        chooser: I18n.t('search_tabs.signing to the virgin')
+        chooser: I18n.t('search_tabs.signing to the virgin'),
       },
       {
         /* eslint-disable quotes */
@@ -773,17 +773,17 @@ const useSearch = (locale: string, developerMode: boolean) => {
         note: `search_note.children's songs`,
         route: 'SongList',
         params: { filter: { "children's songs": true } },
-        badge: null
+        badge: null,
       },
       {
         title_key: 'search_title.lutes and vespers',
         note_key: 'search_note.lutes and vespers',
         route: 'SongList',
         params: { filter: { 'lutes and vespers': true } },
-        badge: null
-      }
+        badge: null,
+      },
     ];
-    items = items.map(item => {
+    items = items.map((item) => {
       if (item.params) {
         item.params.title_key = item.title_key;
       }
@@ -795,7 +795,7 @@ const useSearch = (locale: string, developerMode: boolean) => {
         note_key: 'search_note.unassigned',
         route: 'UnassignedList',
         params: { filter: null },
-        badge: null
+        badge: null,
       });
     }
     setSearchItems(items);
@@ -810,27 +810,27 @@ const useCommunity = () => {
   const [brothers, initBrothers] = usePersist('contacts', 'object', []);
   const [deviceContacts, initDeviceContacts] = useState();
 
-  const add = item => {
+  const add = (item) => {
     var changedContacts = [...brothers, item];
     initBrothers(changedContacts);
   };
 
   const update = (id, item) => {
-    var contact = brothers.find(c => c.recordID === id);
+    var contact = brothers.find((c) => c.recordID === id);
     var idx = brothers.indexOf(contact);
     var updatedContacts = [...brothers];
     updatedContacts[idx] = Object.assign(contact, item);
     initBrothers(updatedContacts);
   };
 
-  const remove = item => {
+  const remove = (item) => {
     var idx = brothers.indexOf(item);
     var changedContacts = brothers.filter((l, i) => i !== idx);
     initBrothers(changedContacts);
   };
 
-  const addOrRemove = contact => {
-    var i = brothers.findIndex(c => c.recordID === contact.recordID);
+  const addOrRemove = (contact) => {
+    var i = brothers.findIndex((c) => c.recordID === contact.recordID);
     // Ya esta importado
     if (i !== -1) {
       var item = brothers[i];
@@ -846,7 +846,7 @@ const useCommunity = () => {
         return PermissionsAndroid.request(
           PermissionsAndroid.PERMISSIONS.READ_CONTACTS
         )
-          .then(granted => {
+          .then((granted) => {
             return granted === PermissionsAndroid.RESULTS.GRANTED;
           })
           .catch(() => {
@@ -894,7 +894,7 @@ const useCommunity = () => {
   };
 
   const getContacts = (reqPerm: boolean): Promise<any> => {
-    return checkContactsPermission(reqPerm).then(hasPermission => {
+    return checkContactsPermission(reqPerm).then((hasPermission) => {
       if (hasPermission) {
         return new Promise((resolve, reject) => {
           Contacts.getAll((err, contacts) => {
@@ -916,7 +916,7 @@ const useCommunity = () => {
   }, [brothers, initialized]);
 
   const populateDeviceContacts = () => {
-    return getContacts(true).then(devCts => {
+    return getContacts(true).then((devCts) => {
       initDeviceContacts(devCts);
     });
   };
@@ -941,11 +941,11 @@ const useCommunity = () => {
 
   useEffect(() => {
     if (initialized === false && brothers) {
-      getContacts(false).then(devCts => {
+      getContacts(false).then((devCts) => {
         initDeviceContacts(devCts);
         brothers.forEach((c, idx) => {
           // tomar el contacto actualizado
-          var devContact = devCts.find(x => x.recordID === c.recordID);
+          var devContact = devCts.find((x) => x.recordID === c.recordID);
           if (devContact) {
             brothers[idx] = devContact;
           }
@@ -963,7 +963,7 @@ const useCommunity = () => {
     update,
     remove,
     addOrRemove,
-    contactImport
+    contactImport,
   };
 };
 
@@ -990,12 +990,12 @@ const DataContextWrapper = (props: any) => {
       title: I18n.t('ui.share'),
       subject: `iResucitó - ${shareTitleSuffix}`,
       url: `file://${pdfPath}`,
-      failOnCancel: false
+      failOnCancel: false,
     })
-      .then(res => {
+      .then((res) => {
         console.log(res);
       })
-      .catch(err => {
+      .catch((err) => {
         err && console.log(err);
       });
   };
@@ -1003,18 +1003,18 @@ const DataContextWrapper = (props: any) => {
   const shareIndexPatch = () => {
     var promise =
       Platform.OS === 'android' ? NativeExtras.readPatch() : Promise.resolve();
-    promise.then(patchJSON => {
+    promise.then((patchJSON) => {
       Share.open({
         title: I18n.t('ui.share'),
         subject: 'iResucitó - Index patch',
         message: patchJSON,
         url: `file://${NativeExtras.getPatchUri()}`,
-        failOnCancel: false
+        failOnCancel: false,
       })
-        .then(res => {
+        .then((res) => {
           console.log(res);
         })
-        .catch(err => {
+        .catch((err) => {
           err && console.log(err);
         });
     });
@@ -1044,7 +1044,7 @@ const DataContextWrapper = (props: any) => {
         locale,
         developerMode,
         keepAwake,
-        zoomLevel
+        zoomLevel,
       }}>
       {props.children}
     </DataContext.Provider>

@@ -1,7 +1,7 @@
 // @flow
 import React, { useContext } from 'react';
 import { AndroidBackHandler } from 'react-navigation-backhandler';
-import { FlatList, ScrollView, View } from 'react-native';
+import { FlatList, View } from 'react-native';
 import { Spinner, ListItem, Left, Body, Text, Separator } from 'native-base';
 import { DataContext } from '../DataContext';
 import { useNavigation } from '@react-navigation/native';
@@ -30,38 +30,34 @@ const SongSearch = (props: any) => {
 
   return (
     <AndroidBackHandler onBackPress={() => true}>
-      <ScrollView
-        keyboardShouldPersistTaps="always"
-        keyboardDismissMode="on-drag">
-        <FlatList
-          data={searchItems}
-          keyExtractor={(item, i) => String(i)}
-          renderItem={({ item, index }) => {
-            var nextItem = searchItems[index + 1];
-            if (item.divider) {
-              return (
-                <Separator bordered>
-                  <Text>{I18n.t(item.title_key).toUpperCase()}</Text>
-                </Separator>
-              );
-            }
+      <FlatList
+        data={searchItems}
+        keyExtractor={(item, i) => String(i)}
+        renderItem={({ item, index }) => {
+          var nextItem = searchItems[index + 1];
+          if (item.divider) {
             return (
-              <ListItem
-                last={nextItem && nextItem.divider}
-                avatar
-                onPress={() => {
-                  navigation.navigate(item.route, item.params);
-                }}>
-                <Left>{item.badge}</Left>
-                <Body>
-                  <Text>{I18n.t(item.title_key)}</Text>
-                  <Text note>{I18n.t(item.note_key)}</Text>
-                </Body>
-              </ListItem>
+              <Separator bordered>
+                <Text>{I18n.t(item.title_key).toUpperCase()}</Text>
+              </Separator>
             );
-          }}
-        />
-      </ScrollView>
+          }
+          return (
+            <ListItem
+              last={nextItem && nextItem.divider}
+              avatar
+              onPress={() => {
+                navigation.navigate(item.route, item.params);
+              }}>
+              <Left>{item.badge}</Left>
+              <Body>
+                <Text>{I18n.t(item.title_key)}</Text>
+                <Text note>{I18n.t(item.note_key)}</Text>
+              </Body>
+            </ListItem>
+          );
+        }}
+      />
     </AndroidBackHandler>
   );
 };

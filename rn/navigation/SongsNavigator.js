@@ -1,5 +1,5 @@
 // @flow
-import React from 'react';
+import React, { useContext } from 'react';
 import { View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import StackNavigatorOptions from './StackNavigatorOptions';
@@ -14,23 +14,28 @@ import PrintPDFButton from '../screens/PrintPDFButton';
 import ExportToPdfButton from '../screens/ExportToPdfButton';
 import ClearRatingsButton from '../screens/ClearRatingsButton';
 import I18n from '../../translations';
+import { DataContext } from '../DataContext';
 
 const Stack = createStackNavigator();
 
 const SongsNavigator = () => {
+  const data = useContext(DataContext);
+  const [localeValue] = data.locale;
   return (
     <Stack.Navigator screenOptions={StackNavigatorOptions()}>
       <Stack.Screen
         name="SongSearch"
         component={SongSearch}
-        options={{ title: I18n.t('screen_title.search') }}
+        options={{
+          title: I18n.t('screen_title.search', { locale: localeValue }),
+        }}
       />
       <Stack.Screen
         name="SongList"
         component={SongList}
         options={({ navigation, route }) => {
           return {
-            title: I18n.t(route.params.title_key),
+            title: I18n.t(route.params.title_key, { locale: localeValue }),
             headerRight: () => (
               <View style={{ flexDirection: 'row' }}>
                 <ExportToPdfButton />
@@ -64,7 +69,9 @@ const SongsNavigator = () => {
       <Stack.Screen
         name="UnassignedList"
         component={UnassignedList}
-        options={{ title: I18n.t('search_title.unassigned') }}
+        options={{
+          title: I18n.t('search_title.unassigned', { locale: localeValue }),
+        }}
       />
     </Stack.Navigator>
   );
