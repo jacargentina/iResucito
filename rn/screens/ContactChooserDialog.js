@@ -1,7 +1,7 @@
 // @flow
 import React, { useContext, useState, useMemo } from 'react';
 import ModalView from './ModalView';
-import { Text, Icon } from 'native-base';
+import { Text, Icon, Button } from 'native-base';
 import { FlatList, View } from 'react-native';
 import { DataContext } from '../DataContext';
 import { useNavigation, useRoute } from '@react-navigation/native';
@@ -17,22 +17,51 @@ const ContactChooserDialog = (props: any) => {
   const route = useRoute();
   const { setList } = data.lists;
   const { brothers } = data.community;
-  const [textFilter, setTextFilter] = useState('');
+  const [filter, setFilter] = useState('');
   const { target } = route.params;
 
   const filtered = useMemo(() => {
-    var result = brothers.filter((c) => contactFilterByText(c, textFilter));
+    var result = brothers.filter((c) => contactFilterByText(c, filter));
     result.sort(ordenAlfabetico);
     return result;
-  }, [brothers, textFilter]);
+  }, [brothers, filter]);
 
   const contactSelected = (contact) => {
     setList(target.listName, target.listKey, contact.givenName);
     navigation.goBack(null);
   };
 
+  const close = () => {
+    setFilter('');
+    navigation.goBack(null);
+  };
+
   return (
-    <ModalView title={I18n.t('screen_title.community')}>
+    <ModalView
+      right={
+        <Button
+          rounded
+          small
+          style={{
+            alignSelf: 'flex-end',
+            color: commonTheme.brandPrimary,
+            marginRight: 10,
+          }}
+          onPress={close}>
+          <Text>{I18n.t('ui.done')}</Text>
+        </Button>
+      }
+      left={
+        <Text
+          style={{
+            alignSelf: 'flex-start',
+            marginLeft: 10,
+            fontSize: commonTheme.fontSizeBase + 3,
+            fontWeight: 'bold',
+          }}>
+          {I18n.t('screen_title.community')}
+        </Text>
+      }>
       {brothers.length === 0 && (
         <View
           style={{
@@ -54,7 +83,7 @@ const ContactChooserDialog = (props: any) => {
         </View>
       )}
       {brothers.length > 0 && (
-        <SearchBarView value={textFilter} setValue={setTextFilter}>
+        <SearchBarView value={filter} setValue={setFilter}>
           <FlatList
             style={{ flex: 1 }}
             data={filtered}

@@ -237,7 +237,7 @@ PODS:
     - React
   - react-native-keep-awake (4.0.0):
     - React
-  - react-native-pdf (6.1.0):
+  - react-native-pdf (6.1.1):
     - React
   - react-native-print (0.6.0):
     - React
@@ -308,11 +308,11 @@ PODS:
     - React
   - rn-fetch-blob (0.12.0):
     - React-Core
-  - RNCAsyncStorage (1.8.1):
+  - RNCAsyncStorage (1.9.0):
     - React
   - RNCMaskedView (0.1.7):
     - React
-  - RNDeviceInfo (5.5.3):
+  - RNDeviceInfo (5.5.4):
     - React
   - RNFS (2.16.6):
     - React
@@ -516,7 +516,7 @@ SPEC CHECKSUMS:
   React-jsinspector: 8e5913c4c6c54f0d3f9c9fc630c465a89cded65d
   react-native-contacts: be6cde1ffc9c0196fbb57d987b9d40f12b85989c
   react-native-keep-awake: afad8a51dfef9fe9655a6344771be32c8596d774
-  react-native-pdf: d6dbbe74c063a5b16128e6b28d371f3c0b21d2b5
+  react-native-pdf: 530cb9e571ec889b531798aca79d03af3234a386
   react-native-print: d2d083f2305faacfba12d3896ec6ca72303da2b2
   react-native-safe-area-context: e200d4433aba6b7e60b52da5f37af11f7a0b0392
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
@@ -532,9 +532,9 @@ SPEC CHECKSUMS:
   ReactCommon: d22162ab8f1358c53dfcd0f9c4d82d38facdbc48
   ReactNativeExceptionHandler: 8025d98049c25f186835a3af732dd7c9974d6dce
   rn-fetch-blob: f065bb7ab7fb48dd002629f8bdcb0336602d3cba
-  RNCAsyncStorage: e0dd7c8a36543b4ef84969acd9f8aceba3a92dc2
+  RNCAsyncStorage: 453cd7c335ec9ba3b877e27d02238956b76f3268
   RNCMaskedView: 76c40a1d41c3e2535df09246a2b5487f04de0814
-  RNDeviceInfo: 310c1f43d418d950a193c7650de2f9559c906048
+  RNDeviceInfo: 6a3d16fce033f6979c4a6a41e62244d183e8c765
   RNFS: 2bd9eb49dc82fa9676382f0585b992c424cd59df
   RNGestureHandler: 8f09cd560f8d533eb36da5a6c5a843af9f056b38
   RNICloudStore: bc6e225811637c09bd1eb055d6cd7448e61cd451

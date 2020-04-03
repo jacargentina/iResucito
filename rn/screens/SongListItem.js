@@ -11,6 +11,7 @@ import {
   Icon,
   ActionSheet,
 } from 'native-base';
+import { useNavigation } from '@react-navigation/native';
 import Highlighter from 'react-native-highlight-words';
 import Collapsible from 'react-native-collapsible';
 import commonTheme from '../native-base-theme/variables/platform';
@@ -52,8 +53,8 @@ const NoLocaleWarning = () => {
 
 const SongListItem = (props: any) => {
   const data = useContext(DataContext);
+  const navigation = useNavigation();
   const {
-    navigation,
     highlight,
     songKey,
     songMeta,
