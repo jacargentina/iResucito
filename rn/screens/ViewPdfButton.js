@@ -11,7 +11,7 @@ import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
 const ViewPdfButton = (props: any) => {
   const navigation = useNavigation();
   const route = useRoute();
-  const { song, transportToNote } = route.params;
+  const { song, transportNote } = route.params;
   if (!song) {
     return null;
   }
@@ -32,7 +32,7 @@ const ViewPdfButton = (props: any) => {
         const render = NativeParser.getForRender(
           fullText,
           I18n.locale,
-          transportToNote
+          transportNote
         );
         const item: SongToPdf = {
           song,

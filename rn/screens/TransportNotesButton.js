@@ -8,20 +8,21 @@ import {
   MenuTrigger,
 } from 'react-native-popup-menu';
 import { getChordsScale } from '../../common';
-import { useRoute } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import I18n from '../../translations';
 import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
 import commonTheme from '../native-base-theme/variables/platform';
 
 const TransportNotesButton = (props: any) => {
+  const navigation = useNavigation();
   const route = useRoute();
-  const song = route.params.song;
+  const { song, transportNote } = route.params;
+
   if (!song) {
     return null;
   }
 
   const chords = getChordsScale(I18n.locale);
-  const { transportNote, setTransportNote } = route.params;
 
   var menuOptionItems = chords.map((nota, i) => {
     var customStyles =
@@ -46,6 +47,13 @@ const TransportNotesButton = (props: any) => {
       />
     );
   });
+
+  const changeTransport = (newTransport: any) => {
+    navigation.replace('SongDetail', {
+      song: song,
+      transportNote: newTransport,
+    });
+  };
 
   var trigger =
     transportNote === null || transportNote === undefined ? (
@@ -75,7 +83,7 @@ const TransportNotesButton = (props: any) => {
       </Badge>
     );
   return (
-    <Menu onSelect={(value) => setTransportNote(value)}>
+    <Menu onSelect={(value) => changeTransport(value)}>
       <MenuTrigger>{trigger}</MenuTrigger>
       <MenuOptions
         customStyles={{
