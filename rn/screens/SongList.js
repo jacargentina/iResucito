@@ -63,7 +63,7 @@ const SongList = (props: any) => {
   }, [textFilter, props.filter, I18n.locale]);
 
   useLayoutEffect(() => {
-    if (search && search.length > 0 && isFocused) {
+    if (textFilter && search && search.length > 0 && isFocused) {
       if (listRef.current) {
         listRef.current.scrollToIndex({
           index: 0,
@@ -73,7 +73,7 @@ const SongList = (props: any) => {
         });
       }
     }
-  }, [search, isFocused]);
+  }, [textFilter, search, isFocused, totalText]);
 
   const onPress = (song) => {
     if (props.onPress) {

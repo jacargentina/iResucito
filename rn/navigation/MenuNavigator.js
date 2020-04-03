@@ -9,19 +9,20 @@ import ListsNavigator from './ListsNavigator';
 import CommunityNavigator from './CommunityNavigator';
 import SettingsNavigator from './SettingsNavigator';
 import { DataContext } from '../DataContext';
+import color from 'color';
 
 var tabBarOptions = {};
 tabBarOptions.showLabel = false;
 tabBarOptions.activeTintColor = commonTheme.brandPrimary;
 tabBarOptions.style = {
   backgroundColor: 'white',
+  borderTopColor: color(commonTheme.brandPrimary).lighten(0.2).string(),
+  borderTopWidth: 1,
+  marginTop: 2,
 };
 
 if (Platform.OS === 'android') {
   tabBarOptions.inactiveTintColor = 'gray';
-  tabBarOptions.style = {
-    backgroundColor: 'white',
-  };
   tabBarOptions.pressColor = commonTheme.brandPrimary;
   tabBarOptions.iconStyle = {
     height: 30,
