@@ -32,6 +32,7 @@ if (Platform.OS === 'android') {
     height: 3,
   };
   tabBarOptions.showIcon = true;
+  tabBarOptions.keyboardHidesTabBar = true;
 }
 
 const Tab = createBottomTabNavigator();
