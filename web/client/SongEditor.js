@@ -269,7 +269,8 @@ const SongEditor = () => {
               resize: 'none',
               border: 0,
               padding: '10px 20px',
-              overflowY: 'scroll'
+              overflowY: 'scroll',
+              whiteSpace: 'nowrap'
             }}
             onKeyUp={txtPositionEvent}
             onKeyDown={e => {
