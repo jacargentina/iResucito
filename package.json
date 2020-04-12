@@ -95,7 +95,7 @@
     "path-parse": "^1.0.6",
     "pdfjs-dist": "^2.3.200",
     "plist": "^3.0.1",
-    "query-string": "^6.12.0",
+    "query-string": "^6.12.1",
     "react": "16.13.1",
     "react-document-title": "^2.0.3",
     "react-dom": "^16.13.1",
