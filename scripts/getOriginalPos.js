@@ -5,10 +5,10 @@ function run(file, column, line) {
   const iosSourceMap = fs.readFileSync(file, 'utf-8');
 
   const parsed = JSON.parse(iosSourceMap);
-  new SourceMap.SourceMapConsumer(parsed).then(mapConsumer => {
+  new SourceMap.SourceMapConsumer(parsed).then((mapConsumer) => {
     const result = mapConsumer.originalPositionFor({
       line: Number(line),
-      column: Number(column)
+      column: Number(column),
     });
     console.log({ file, line, column, result });
   });

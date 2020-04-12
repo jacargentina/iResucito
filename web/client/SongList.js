@@ -26,19 +26,19 @@ const SongList = () => {
   const [filters, setFilters] = useState({
     patched: false,
     added: false,
-    notTranslated: false
+    notTranslated: false,
   });
   const [filtered, setFiltered] = useState();
   const [searchTerm, setSearchTerm] = useState('');
   const [debouncedTerm] = useDebounce(searchTerm, 800);
 
-  const toggleFilter = name => {
-    setFilters(currentFilters => {
+  const toggleFilter = (name) => {
+    setFilters((currentFilters) => {
       return { ...currentFilters, [name]: !currentFilters[name] };
     });
   };
 
-  const loadOrAdd = song => {
+  const loadOrAdd = (song) => {
     if (song.notTranslated) {
       addSong(song);
     } else {
@@ -50,15 +50,15 @@ const SongList = () => {
     // filtrar
     if (songs) {
       const filterByText = songs.filter(
-        song =>
+        (song) =>
           song.titulo.toLowerCase().includes(debouncedTerm.toLowerCase()) ||
           song.fuente.toLowerCase().includes(debouncedTerm.toLowerCase())
       );
-      const result = filterByText.filter(song => {
-        const flags = Object.keys(filters).map(name => {
+      const result = filterByText.filter((song) => {
+        const flags = Object.keys(filters).map((name) => {
           return filters[name] === false || song[name] === filters[name];
         });
-        return flags.every(f => f === true);
+        return flags.every((f) => f === true);
       });
       setFiltered(result);
     }
@@ -69,7 +69,7 @@ const SongList = () => {
   }, [locale]);
 
   useHotkeys(
-    key => {
+    (key) => {
       switch (key) {
         case 'ctrl+n':
           if (!editSong) {
@@ -175,7 +175,7 @@ const SongList = () => {
           paddingLeft: 10,
           paddingRight: 10,
           overflowY: 'scroll',
-          display: editSong ? 'none' : null
+          display: editSong ? 'none' : null,
         }}>
         {filtered &&
           filtered.map((song, idx) => {
@@ -213,7 +213,7 @@ const SongList = () => {
                     {song.version > 0 && (
                       <Popup
                         content={I18n.t('ui.song version number', {
-                          version: song.version
+                          version: song.version,
                         })}
                         trigger={
                           <Label color="blue" size="small">

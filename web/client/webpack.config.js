@@ -26,30 +26,30 @@ module.exports = (env, argv) => {
         {
           test: /\.(js|jsx)$/,
           exclude: /node_modules/,
-          use: ['babel-loader']
+          use: ['babel-loader'],
         },
         {
           test: /\.css$/,
-          use: ['style-loader', 'css-loader']
+          use: ['style-loader', 'css-loader'],
         },
         {
           test: /\.(png|jpe?g|gif|svg|eot|ttf|woff|woff2)$/,
           loader: 'url-loader',
           options: {
-            limit: 10000
-          }
-        }
-      ]
+            limit: 10000,
+          },
+        },
+      ],
     },
     resolve: {
-      extensions: ['*', '.js', '.jsx', '.json', '*.css']
+      extensions: ['*', '.js', '.jsx', '.json', '*.css'],
     },
     output: {
       path: path.resolve(__dirname, '../dist'),
-      filename: 'clientBundle.js'
+      filename: 'clientBundle.js',
     },
     devServer: {
-      contentBase: path.resolve(__dirname, '../dist')
+      contentBase: path.resolve(__dirname, '../dist'),
     },
     plugins: [
       new webpack.DefinePlugin({
@@ -59,8 +59,8 @@ module.exports = (env, argv) => {
         ),
         ANDROID_VERSION: JSON.stringify(
           `${android_major}.${android_minor}.${android_patch}.${android_build}`
-        )
-      })
-    ]
+        ),
+      }),
+    ],
   };
 };

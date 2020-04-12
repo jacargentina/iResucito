@@ -10,7 +10,7 @@ const usePersist = (
   const [value, setValue] = useState(null);
 
   const runTypeCheck = useCallback(
-    theValue => {
+    (theValue) => {
       if (typeCheck !== '') {
         if (typeof theValue !== typeCheck) {
           throw `Tipo incorrecto: real = ${typeof theValue} vs requerido ${typeCheck}`;
@@ -20,7 +20,7 @@ const usePersist = (
     [typeCheck]
   );
 
-  const parseMigrateRawData = async str => {
+  const parseMigrateRawData = async (str) => {
     var object = JSON.parse(str);
     // si el str tiene formato de react-native-storage
     // migrar a objeto sin propiedad 'rawData'

@@ -17,13 +17,13 @@ const SongViewLines = (props: any) => {
     }
     it.prefijo = it.prefijo.replace(/ /g, '\u00a0');
     it.texto = it.texto.replace(/ /g, '\u00a0');
-    var indicator = indicators.find(r => r.start <= i && r.end > i);
+    var indicator = indicators.find((r) => r.start <= i && r.end > i);
     if (indicator) {
       var middle = Math.trunc((indicator.start + indicator.end) / 2);
       var indicatorText = (
         <div
           style={{
-            display: 'inline-block'
+            display: 'inline-block',
           }}>
           {'\u00a0'}
         </div>
@@ -35,7 +35,7 @@ const SongViewLines = (props: any) => {
               style={{
                 display: 'inline-block',
                 position: 'relative',
-                top: '-5px'
+                top: '-5px',
               }}>
               {I18n.t('songs.repeat')}
             </div>
@@ -46,7 +46,7 @@ const SongViewLines = (props: any) => {
               style={{
                 display: 'inline-block',
                 position: 'relative',
-                top: '-5px'
+                top: '-5px',
               }}>
               {'*'}
             </div>
@@ -68,7 +68,7 @@ const SongViewLines = (props: any) => {
             display: 'inline-block',
             borderLeft: '2px solid red',
             width: '45%',
-            paddingLeft: 10
+            paddingLeft: 10,
           }}>
           {indicatorText}
         </span>
@@ -97,7 +97,7 @@ const SongViewLines = (props: any) => {
           paddingRight: '3%',
           fontWeight: 'normal',
           fontSize: WebStyles.normalLine.fontSize,
-          width: '5%'
+          width: '5%',
         }}>
         {i + 1}
       </div>

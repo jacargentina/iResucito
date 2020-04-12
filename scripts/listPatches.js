@@ -35,8 +35,8 @@ I18n.locale = locale;
 console.log('Configured locale', I18n.locale);
 
 var withTitleFlat = Object.keys(SongsPatches)
-  .map(songKey => {
-    return SongsPatches[songKey].map(change => {
+  .map((songKey) => {
+    return SongsPatches[songKey].map((change) => {
       const { date, ...rest } = change;
       var title =
         SongsIndex[songKey].files[locale] || SongsIndex[songKey].files['es'];
@@ -50,7 +50,7 @@ withTitleFlat.sort((a, b) => a.date - b.date);
 if (days !== 0) {
   console.log(`Filter last ${days} days`);
   var fromValue = moment().subtract(days, 'days');
-  withTitleFlat = withTitleFlat.filter(i => i.date >= fromValue);
+  withTitleFlat = withTitleFlat.filter((i) => i.date >= fromValue);
 }
 
 console.log(withTitleFlat);

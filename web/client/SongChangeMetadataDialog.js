@@ -86,11 +86,11 @@ const SongChangeMetadataDialog = () => {
           onChange={(e, { value }) => setStage(value)}
           selection
           value={stage}
-          options={wayStages.map(name => {
+          options={wayStages.map((name) => {
             return {
               key: name,
               text: I18n.t(`search_title.${name}`),
-              value: name
+              value: name,
             };
           })}
         />

@@ -8,19 +8,15 @@ import commonTheme from '../native-base-theme/variables/platform';
 const Switch = (props: any) => {
   var themeProps = {
     trackColor: {
-      true: color(commonTheme.brandPrimary)
-        .lighten(0.3)
-        .string(),
-      false: commonTheme.brandLight
+      true: color(commonTheme.brandPrimary).lighten(0.3).string(),
+      false: commonTheme.brandLight,
     },
-    thumbColor: undefined
+    thumbColor: undefined,
   };
   if (Platform.OS === 'android') {
     themeProps.thumbColor = props.value
       ? commonTheme.brandPrimary
-      : color(commonTheme.brandLight)
-          .darken(0.1)
-          .string();
+      : color(commonTheme.brandLight).darken(0.1).string();
   }
   return <SwitchNB {...props} {...themeProps} />;
 };

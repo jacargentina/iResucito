@@ -8,10 +8,10 @@ const { execSync } = require('child_process');
 
 const rl = readline.createInterface({
   input: process.stdin,
-  output: process.stdout
+  output: process.stdout,
 });
 
-String.prototype.replaceAt = function(index, replacement) {
+String.prototype.replaceAt = function (index, replacement) {
   return (
     this.substr(0, index) +
     replacement +
@@ -19,11 +19,11 @@ String.prototype.replaceAt = function(index, replacement) {
   );
 };
 
-rl.question('Cual locale? ', locale => {
+rl.question('Cual locale? ', (locale) => {
   var sourcePath = `../songs/${locale}/originals`;
   var archivos = fs.readdirSync(sourcePath);
 
-  archivos.forEach(filename => {
+  archivos.forEach((filename) => {
     var oldPath = path.resolve(`${sourcePath}/${filename}`);
     var content = fs.readFileSync(oldPath, 'utf8');
     var titulo = content
@@ -37,7 +37,7 @@ rl.question('Cual locale? ', locale => {
       titulo.length > 3
         ? titulo
         : 'Buscar titulo ' + filename.replace('.txt', '');
-        
+
     renameTo = titulo.replace(/  /g, ' ');
     renameTo = renameTo.replace('(*)', '');
     var parts = renameTo.split('-');

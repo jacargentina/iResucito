@@ -49,14 +49,14 @@ if (!process.argv.slice(2).length) {
             }
             const item: SongToPdf = {
               song,
-              render
+              render,
             };
-            generatePDF([item], defaultExportToPdfOptions, '').then(p => {
+            generatePDF([item], defaultExportToPdfOptions, '').then((p) => {
               console.log(p);
               open(p);
             });
           })
-          .catch(err => {
+          .catch((err) => {
             console.log(err);
           });
       } else {
@@ -67,7 +67,7 @@ if (!process.argv.slice(2).length) {
       console.log(`No key Song. Generating ${songs.length} songs`);
       FolderSongs.loadSongs(locale, songs).then(() => {
         var items = [];
-        songs.map(song => {
+        songs.map((song) => {
           if (song.files[I18n.locale]) {
             var render = parser.getForRender(song.fullText, I18n.locale);
             if (program.debug) {
@@ -75,7 +75,7 @@ if (!process.argv.slice(2).length) {
             }
             const item: SongToPdf = {
               song,
-              render
+              render,
             };
             items.push(item);
           } else {
@@ -84,10 +84,12 @@ if (!process.argv.slice(2).length) {
             );
           }
         });
-        generatePDF(items, defaultExportToPdfOptions, `-${locale}`).then(p => {
-          console.log(p);
-          open(p);
-        });
+        generatePDF(items, defaultExportToPdfOptions, `-${locale}`).then(
+          (p) => {
+            console.log(p);
+            open(p);
+          }
+        );
       });
     }
   }

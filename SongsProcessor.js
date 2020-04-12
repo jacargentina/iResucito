@@ -13,7 +13,7 @@ export const getSongFileFromString = (str: string): SongFile => {
   return {
     nombre: nombre,
     titulo: titulo,
-    fuente: fuente
+    fuente: fuente,
   };
 };
 
@@ -55,7 +55,7 @@ export class SongsProcessor {
   getSongHistory(key: string, rawLoc: string): Array<SongPatchData> {
     const history = SongsHistory[key];
     if (history) {
-      return history.filter(p => p.locale === rawLoc);
+      return history.filter((p) => p.locale === rawLoc);
     }
     return [];
   }
@@ -95,7 +95,7 @@ export class SongsProcessor {
         if (file) {
           info.path = `${this.basePath}/${loc}/${file}.txt`;
           info.files = Object.assign({}, info.files, {
-            [loc]: file
+            [loc]: file,
           });
           const parsed = getSongFileFromString(file);
           this.assignInfoFromFile(info, parsed);
@@ -106,7 +106,7 @@ export class SongsProcessor {
         }
         if (stage) {
           info.stages = Object.assign({}, info.stages, {
-            [loc]: stage
+            [loc]: stage,
           });
           info.stage = stage;
         }
@@ -130,15 +130,15 @@ export class SongsProcessor {
     patch: ?SongIndexPatch,
     ratings: ?SongRatingFile
   ): Array<Song> {
-    var songs = Object.keys(SongsIndex).map(key => {
+    var songs = Object.keys(SongsIndex).map((key) => {
       return this.getSingleSongMeta(key, rawLoc, patch, ratings);
     });
     if (patch) {
       // Cantos agregados
       // claves numericas presentes en el
       // patch y ausentes en el indice
-      Object.keys(patch).forEach(pKey => {
-        if (!songs.find(s => s.key === pKey) && patch) {
+      Object.keys(patch).forEach((pKey) => {
+        if (!songs.find((s) => s.key === pKey) && patch) {
           var sPatch = patch[pKey];
           if (sPatch[rawLoc]) {
             var patchData: SongPatchData = sPatch[rawLoc];
@@ -169,18 +169,18 @@ export class SongsProcessor {
 
   readLocaleSongs(rawLoc: string): Promise<Array<SongFile>> {
     return this.songsLister(`${this.basePath}/${rawLoc}`)
-      .then(items => {
+      .then((items) => {
         // Very important to call "normalize"
         // See editing.txt for details
         items = items
-          .map(i => i.name)
-          .filter(i => i.endsWith('.txt'))
-          .map(i => i.replace('.txt', '').normalize())
-          .map(i => getSongFileFromString(i));
+          .map((i) => i.name)
+          .filter((i) => i.endsWith('.txt'))
+          .map((i) => i.replace('.txt', '').normalize())
+          .map((i) => getSongFileFromString(i));
         items.sort(ordenAlfabetico);
         return items;
       })
-      .catch(err => {
+      .catch((err) => {
         console.log('readLocaleSongs ERROR', err);
         return [];
       });
@@ -207,12 +207,12 @@ export class SongsProcessor {
         }
         return this.songReader(song.path);
       })
-      .then(content => {
+      .then((content) => {
         if (typeof content == 'string') {
           song.fullText = content;
         }
       })
-      .catch(err => {
+      .catch((err) => {
         console.log('loadSingleSong ERROR', song.key, err.message);
         song.error = err.message;
         song.fullText = '';
@@ -225,7 +225,7 @@ export class SongsProcessor {
     patch: ?SongIndexPatch
   ): Promise<any> {
     return Promise.all(
-      songs.map(song => {
+      songs.map((song) => {
         return this.loadSingleSong(rawLoc, song, patch);
       })
     );

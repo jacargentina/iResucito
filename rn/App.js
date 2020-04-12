@@ -11,18 +11,18 @@ import commonTheme from './native-base-theme/variables/platform';
 import { MenuProvider } from 'react-native-popup-menu';
 import {
   setJSExceptionHandler,
-  setNativeExceptionHandler
+  setNativeExceptionHandler,
 } from 'react-native-exception-handler';
 import DeviceInfo from 'react-native-device-info';
 import queryString from 'query-string';
 
-const sendErrorByMail = async e => {
+const sendErrorByMail = async (e) => {
   const str = typeof e === 'string' ? e : JSON.stringify(e);
   const systemName = DeviceInfo.getSystemName();
   const version = DeviceInfo.getReadableVersion();
   const query = queryString.stringify({
     subject: 'iResucito Crash',
-    body: `System ${systemName}, Version ${version}\n\n${str}`
+    body: `System ${systemName}, Version ${version}\n\n${str}`,
   });
   let url = 'mailto:javier.alejandro.castro@gmail.com';
   if (query.length) {
@@ -47,15 +47,15 @@ function errorHandler(e, isFatal) {
           text: 'OK',
           onPress: () => {
             sendErrorByMail(e);
-          }
-        }
+          },
+        },
       ]
     );
   }
 }
 
 setJSExceptionHandler(errorHandler);
-setNativeExceptionHandler(nativeError => {
+setNativeExceptionHandler((nativeError) => {
   sendErrorByMail(nativeError);
 });
 

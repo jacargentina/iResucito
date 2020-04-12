@@ -2,9 +2,9 @@
 import fs from 'fs';
 import { SongsProcessor } from './SongsProcessor';
 
-const NodeLister = path => {
-  return fs.promises.readdir(path).then(files => {
-    return files.map(file => {
+const NodeLister = (path) => {
+  return fs.promises.readdir(path).then((files) => {
+    return files.map((file) => {
       return { name: file };
     });
   });

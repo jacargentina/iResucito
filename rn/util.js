@@ -43,15 +43,15 @@ export function getContactsForImport(
   var unique = [];
   for (var fullname in grouped) {
     if (grouped[fullname].length > 1) {
-      var conMiniatura = grouped[fullname].find(c => c.hasThumbnail === true);
+      var conMiniatura = grouped[fullname].find((c) => c.hasThumbnail === true);
       unique.push(conMiniatura || grouped[fullname][0]);
     } else {
       unique.push(grouped[fullname][0]);
     }
   }
   // De los únicos, marcar cuales ya estan importados
-  var items = unique.map(c => {
-    var found = importedContacts.find(x => x.recordID === c.recordID);
+  var items = unique.map((c) => {
+    var found = importedContacts.find((x) => x.recordID === c.recordID);
     c.imported = found !== undefined;
     return c;
   });
@@ -104,62 +104,62 @@ export const stylesObj: SongStyles = {
     color: '#ff0000',
     fontSize: fontSizeTitulo,
     marginTop: 8,
-    marginBottom: 4
+    marginBottom: 4,
   },
   source: {
     fontFamily: 'Franklin Gothic Medium',
     color: '#777777',
     fontSize: fontSizeTexto - 1,
-    marginBottom: 8
+    marginBottom: 8,
   },
   clampLine: {
     fontFamily: 'Franklin Gothic Medium',
     color: '#ff0000',
-    fontSize: fontSizeNotas
+    fontSize: fontSizeNotas,
   },
   indicator: {
     fontFamily: 'Franklin Gothic Medium',
     color: '#ff0000',
-    fontSize: fontSizeTexto
+    fontSize: fontSizeTexto,
   },
   notesLine: {
     fontFamily: 'Franklin Gothic Medium',
     color: '#ff0000',
     fontSize: fontSizeNotas,
-    marginLeft: 4
+    marginLeft: 4,
   },
   specialNoteTitle: {
     fontFamily: 'Franklin Gothic Medium',
-    color: '#ff0000'
+    color: '#ff0000',
   },
   specialNote: {
     fontFamily: 'Franklin Gothic Medium',
     fontSize: fontSizeNotas,
-    color: '#444444'
+    color: '#444444',
   },
   notesMarginLine: {
     fontFamily: 'Franklin Gothic Medium',
     color: '#ff0000',
     fontSize: fontSizeNotas,
     marginTop: 15,
-    marginLeft: 4
+    marginLeft: 4,
   },
   normalLine: {
     fontFamily: 'Franklin Gothic Medium',
     color: '#000000',
     fontSize: fontSizeTexto,
-    marginBottom: 8
+    marginBottom: 8,
   },
   prefix: {
     fontFamily: 'Franklin Gothic Medium',
     color: '#777777',
-    fontSize: fontSizeTexto
+    fontSize: fontSizeTexto,
   },
   pageNumber: {
     fontFamily: 'Franklin Gothic Medium',
     color: '#000000',
-    fontSize: fontSizeTexto
-  }
+    fontSize: fontSizeTexto,
+  },
 };
 
 export const NativeStyles = StyleSheet.create(stylesObj);

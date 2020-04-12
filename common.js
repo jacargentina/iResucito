@@ -22,7 +22,7 @@ export const defaultExportToPdfOptions: ExportToPdfOptions = {
   bookSubtitle: { FontSize: 14 },
   indexText: { FontSize: 11 },
   indexMarginLeft: 25,
-  disablePageNumbers: false
+  disablePageNumbers: false,
 };
 
 export const cleanChordsRegex = /\[|\]|\(|\)|#|\*|5|6|7|9|b|-|\+|\/|\u2013|aum|dim|sus|m|is|IS/g;
@@ -64,9 +64,9 @@ export const getLocalesForPicker = (
   return [
     {
       label: `${I18n.t('ui.default')} - ${getLocaleLabel(defaultLocale)}`,
-      value: 'default'
+      value: 'default',
     },
-    ...locales
+    ...locales,
   ];
 };
 
@@ -76,7 +76,7 @@ export const getValidatedLocale = (
 ): ?PickerLocale => {
   const loc = locale.split('-')[0];
   const best = availableLocales.find(
-    l => l.value === locale || l.value === loc
+    (l) => l.value === locale || l.value === loc
   );
   return best;
 };
@@ -91,8 +91,10 @@ export const getAlphaWithSeparators = (
   songsToPdf: Array<SongToPdf>
 ): Array<ListSongItem> => {
   // Alfabetico
-  var items: Array<ListSongItem> = songsToPdf.map(data => {
-    const sameName = songsToPdf.filter(d => d.song.titulo === data.song.titulo);
+  var items: Array<ListSongItem> = songsToPdf.map((data) => {
+    const sameName = songsToPdf.filter(
+      (d) => d.song.titulo === data.song.titulo
+    );
     const str = sameName.length > 1 ? data.song.nombre : data.song.titulo;
     return { songKey: data.song.key, str };
   });
@@ -113,7 +115,7 @@ export const wayStages = [
   'precatechumenate',
   'liturgy',
   'catechumenate',
-  'election'
+  'election',
 ];
 
 export const getGroupedByStage = (
@@ -123,7 +125,9 @@ export const getGroupedByStage = (
   return songsToPdf.reduce((groups, data) => {
     const groupKey = data.song.stage;
     groups[groupKey] = groups[groupKey] || [];
-    const sameName = songsToPdf.filter(d => d.song.titulo === data.song.titulo);
+    const sameName = songsToPdf.filter(
+      (d) => d.song.titulo === data.song.titulo
+    );
     const title = sameName.length > 1 ? data.song.nombre : data.song.titulo;
     groups[groupKey].push({ songKey: data.song.key, str: title });
     return groups;
@@ -135,7 +139,7 @@ export const liturgicTimes = [
   'christmas',
   'lent',
   'easter',
-  'pentecost'
+  'pentecost',
 ];
 
 export const getGroupedByLiturgicTime = (
@@ -143,11 +147,11 @@ export const getGroupedByLiturgicTime = (
 ): ListSongGroup => {
   // Agrupados por tiempo liturgico
   return songsToPdf.reduce((groups, data) => {
-    var times = liturgicTimes.filter(t => data.song[t] === true);
-    times.forEach(t => {
+    var times = liturgicTimes.filter((t) => data.song[t] === true);
+    times.forEach((t) => {
       groups[t] = groups[t] || [];
       const sameName = songsToPdf.filter(
-        d => d.song.titulo === data.song.titulo
+        (d) => d.song.titulo === data.song.titulo
       );
       const title = sameName.length > 1 ? data.song.nombre : data.song.titulo;
       groups[t].push({ songKey: data.song.key, str: title });
@@ -164,7 +168,7 @@ export const liturgicOrder = [
   'peace and offerings',
   'fraction of bread',
   'communion',
-  'exit'
+  'exit',
 ];
 
 export const getGroupedByLiturgicOrder = (
@@ -172,11 +176,11 @@ export const getGroupedByLiturgicOrder = (
 ): ListSongGroup => {
   // Agrupados por tiempo liturgico
   return songsToPdf.reduce((groups, data) => {
-    var times = liturgicOrder.filter(t => data.song[t] === true);
-    times.forEach(t => {
+    var times = liturgicOrder.filter((t) => data.song[t] === true);
+    times.forEach((t) => {
       groups[t] = groups[t] || [];
       const sameName = songsToPdf.filter(
-        d => d.song.titulo === data.song.titulo
+        (d) => d.song.titulo === data.song.titulo
       );
       const title = sameName.length > 1 ? data.song.nombre : data.song.titulo;
       groups[t].push({ songKey: data.song.key, str: title });
@@ -195,7 +199,7 @@ export const PdfStyles: SongStyles = {
   specialNote: { color: '#444444' },
   normalLine: { color: '#000000' },
   pageNumber: { color: '#000000' },
-  prefix: { color: '#777777' }
+  prefix: { color: '#777777' },
 };
 
 var DEBUG_RECTS = false;
@@ -235,9 +239,9 @@ export class PdfWriter {
           (this.addExtraMargin ? this.opts.indexMarginLeft : 0),
         right:
           this.opts.marginLeft +
-          (this.addExtraMargin ? this.opts.indexMarginLeft : 0)
+          (this.addExtraMargin ? this.opts.indexMarginLeft : 0),
       },
-      size: [this.opts.widthHeightPixels, this.opts.widthHeightPixels]
+      size: [this.opts.widthHeightPixels, this.opts.widthHeightPixels],
     });
     this.doc.on('pageAdded', () => {
       this.widthOfIndexPageNumbers = this.doc
@@ -260,7 +264,7 @@ export class PdfWriter {
         h:
           this.opts.widthHeightPixels -
           this.doc.page.margins.bottom -
-          this.doc.page.margins.top
+          this.doc.page.margins.top,
       };
       this.pageNumberLimits = {
         x: this.limits.x,
@@ -269,19 +273,19 @@ export class PdfWriter {
           this.doc.page.margins.bottom -
           this.heightOfPageNumbers,
         w: this.limits.w,
-        h: this.heightOfPageNumbers
+        h: this.heightOfPageNumbers,
       };
       this.firstColLimits = {
         x: this.limits.x,
         y: this.limits.y,
         w: this.limits.w / 2,
-        h: this.limits.h
+        h: this.limits.h,
       };
       this.secondColLimits = {
         x: this.firstColLimits.x + this.firstColLimits.w,
         y: this.limits.y,
         w: this.firstColLimits.w,
-        h: this.limits.h
+        h: this.limits.h,
       };
       if (DEBUG_RECTS === true) {
         const drawLimits = (limits, color) => {
@@ -298,7 +302,7 @@ export class PdfWriter {
       Title: 'iResucitó',
       Author: 'iResucitó app ',
       Subject: 'iResucitó Song Book',
-      Keywords: 'Neocatechumenal songs'
+      Keywords: 'Neocatechumenal songs',
     };
     if (fontBuf) {
       this.doc.registerFont('thefont', fontBuf);
@@ -325,7 +329,7 @@ export class PdfWriter {
             this.opts.widthHeightPixels -
             this.doc.page.margins.left -
             this.doc.page.margins.right,
-          height: this.heightOfPageNumbers
+          height: this.heightOfPageNumbers,
         }
       );
     }
@@ -361,10 +365,7 @@ export class PdfWriter {
   }
 
   writeText(text: string, color: any, size: number, opts?: any): number {
-    this.doc
-      .fillColor(color)
-      .fontSize(size)
-      .text(text, opts);
+    this.doc.fillColor(color).fontSize(size).text(text, opts);
     return (
       this.doc.fontSize(size).widthOfString(text) +
       (opts && opts.indent ? opts.indent : 0)
@@ -382,7 +383,7 @@ export class PdfWriter {
       .fillColor(line.color)
       .fontSize(size)
       .text(line.text, line.x + 10, line.startY + middle - size, {
-        lineBreak: false
+        lineBreak: false,
       });
   }
 
@@ -390,10 +391,10 @@ export class PdfWriter {
     return new Promise((resolve, reject) => {
       var stream = this.doc.pipe(this.base64Transform);
       var str = '';
-      stream.on('error', err => {
+      stream.on('error', (err) => {
         reject(err);
       });
-      stream.on('data', data => {
+      stream.on('data', (data) => {
         str += data;
       });
       stream.on('finish', () => {
@@ -419,7 +420,7 @@ export class PdfWriter {
             width:
               this.firstColLimits.w -
               this.widthOfIndexPageNumbers -
-              this.widthOfIndexSpacing
+              this.widthOfIndexSpacing,
           };
           const txtHeight = this.doc
             .fontSize(this.opts.indexText.FontSize)
@@ -439,7 +440,7 @@ export class PdfWriter {
                 ? this.firstColLimits.x + this.firstColLimits.w
                 : this.secondColLimits.x + this.secondColLimits.w,
             y: this.doc.y - this.doc.currentLineHeight(false),
-            value: 0
+            value: 0,
           });
         }
       });
@@ -450,7 +451,7 @@ export class PdfWriter {
     if (this.listing.length > 0) {
       for (var i = 0; i < this.doc._pageBuffer.length; i++) {
         this.doc.switchToPage(i);
-        var items = this.listing.filter(l => l.page === i);
+        var items = this.listing.filter((l) => l.page === i);
         items.forEach((l: ListSongPos) => {
           this.doc.x =
             l.x - this.widthOfIndexPageNumbers - this.widthOfIndexSpacing * 2;
@@ -461,7 +462,7 @@ export class PdfWriter {
             this.opts.indexText.FontSize,
             {
               width: this.widthOfIndexPageNumbers + this.widthOfIndexSpacing,
-              align: 'right'
+              align: 'right',
             }
           );
         });
@@ -489,7 +490,7 @@ export const PDFGenerator = async (
       // Regla de 3 inversa X = A * B / C
 
       const A = I18n.t('ui.export.songs book title', {
-        locale: 'es'
+        locale: 'es',
       }).length;
       const B = writer.opts.bookTitle.FontSize;
       const C = title.length;
@@ -505,7 +506,7 @@ export const PDFGenerator = async (
           writer.opts.bookSubtitle.FontSize
       );
       writer.writeText(title, PdfStyles.title.color, titleFontSize, {
-        align: 'center'
+        align: 'center',
       });
 
       // Subtitulo
@@ -514,7 +515,7 @@ export const PDFGenerator = async (
         PdfStyles.normalLine.color,
         writer.opts.bookSubtitle.FontSize,
         {
-          align: 'center'
+          align: 'center',
         }
       );
 
@@ -541,7 +542,7 @@ export const PDFGenerator = async (
 
       // Agrupados por stage
       var byStage = getGroupedByStage(songsToPdf);
-      wayStages.forEach(stage => {
+      wayStages.forEach((stage) => {
         writer.generateListing(I18n.t(`search_title.${stage}`), byStage[stage]);
         writer.doc.moveDown();
       });
@@ -560,7 +561,7 @@ export const PDFGenerator = async (
 
       // Agrupados por orden liturgico
       var byOrder = getGroupedByLiturgicOrder(songsToPdf);
-      liturgicOrder.forEach(order => {
+      liturgicOrder.forEach((order) => {
         var titleOrder = I18n.t(`search_title.${order}`);
         writer.generateListing(titleOrder, byOrder[order]);
         writer.doc.moveDown();
@@ -613,8 +614,8 @@ export const PDFGenerator = async (
           writer.doc.moveDown();
           writer.doc.moveDown();
         }
-        if (indicators.find(r => r.start === i)) {
-          blockIndicator = indicators.find(r => r.start === i);
+        if (indicators.find((r) => r.start === i)) {
+          blockIndicator = indicators.find((r) => r.start === i);
           blockY = writer.doc.y;
         }
         if (blockIndicator && blockIndicator.end === i) {
@@ -631,7 +632,7 @@ export const PDFGenerator = async (
             endY: writer.doc.y - writer.doc.currentLineHeight(false),
             x: maxX + 10,
             text,
-            color
+            color,
           });
           blockIndicator = null;
           blockY = 0;
@@ -722,8 +723,10 @@ export const PDFGenerator = async (
       writer.doc.switchToPage(writer.doc._pageBuffer.length - 1);
       if (songsToPdf.length > 1) {
         writer.writePageNumber();
-        const assignItems = writer.listing.filter(l => l.songKey === song.key);
-        assignItems.forEach(i => {
+        const assignItems = writer.listing.filter(
+          (l) => l.songKey === song.key
+        );
+        assignItems.forEach((i) => {
           i.value = writer.doc.page.pageNumber;
         });
       }

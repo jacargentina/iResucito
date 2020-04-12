@@ -27,7 +27,7 @@ const LocalePicker = () => {
         style={{ marginLeft: 10 }}
         text={I18n.t('settings_title.locale', { locale })}>
         <Dropdown.Menu>
-          {availableLocales.map(item => {
+          {availableLocales.map((item) => {
             return (
               <Dropdown.Item
                 onClick={() => changeLocale(item.value)}

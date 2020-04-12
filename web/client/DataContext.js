@@ -35,7 +35,7 @@ const DataContextWrapper = (props: any) => {
   const [confirmData, setConfirmData] = useState();
   const [activeDialog, setActiveDialog] = useState();
 
-  const handleApiError = err => {
+  const handleApiError = (err) => {
     setApiLoading(false);
     if (err.response && err.response.data) {
       setApiResult(err.response.data);
@@ -56,13 +56,13 @@ const DataContextWrapper = (props: any) => {
     return api
       .post('/api/signup', {
         email,
-        password
+        password,
       })
-      .then(response => {
+      .then((response) => {
         setApiResult(response.data);
         setApiLoading(false);
       })
-      .catch(err => {
+      .catch((err) => {
         handleApiError(err);
       });
   };
@@ -73,9 +73,9 @@ const DataContextWrapper = (props: any) => {
     return api
       .post('/api/login', {
         email,
-        password
+        password,
       })
-      .then(response => {
+      .then((response) => {
         auth.setToken(response.data.jwt, true);
         auth.setUserInfo(response.data.user, true);
         api.defaults.headers.Authorization = `Bearer ${response.data.jwt}`;
@@ -83,7 +83,7 @@ const DataContextWrapper = (props: any) => {
         setUser(response.data.user);
         setStats(response.data.stats);
       })
-      .catch(err => {
+      .catch((err) => {
         handleApiError(err);
       });
   };
@@ -100,11 +100,11 @@ const DataContextWrapper = (props: any) => {
     setApiLoading(true);
     return api
       .get(`/api/list/${I18n.locale}`)
-      .then(result => {
+      .then((result) => {
         setApiLoading(false);
         setSongs(result.data);
       })
-      .catch(err => {
+      .catch((err) => {
         handleApiError(err);
       });
   };
@@ -114,21 +114,21 @@ const DataContextWrapper = (props: any) => {
     var data;
     if (savedSettings) {
       data = {
-        options: JSON.parse(savedSettings)
+        options: JSON.parse(savedSettings),
       };
     }
     setPdf({ loading: true, url: null });
     return api
       .post(`/api/pdf/${I18n.locale}`, data, {
-        responseType: 'blob'
+        responseType: 'blob',
       })
-      .then(response => {
+      .then((response) => {
         setPdf({
           loading: false,
-          url: window.URL.createObjectURL(new Blob([response.data]))
+          url: window.URL.createObjectURL(new Blob([response.data])),
         });
       })
-      .catch(async err => {
+      .catch(async (err) => {
         var text = await new Response(err.response.data).text();
         handleApiError(JSON.stringify(text));
         setPdf({ loading: false, url: null });
@@ -170,12 +170,12 @@ const DataContextWrapper = (props: any) => {
       configureApi(token);
       api
         .get('/api/checkjwt')
-        .then(response => {
+        .then((response) => {
           setUser(response.data.user);
           setStats(response.data.stats);
           resolve();
         })
-        .catch(er => {
+        .catch((er) => {
           auth.clearToken();
           auth.clearUserInfo();
           // Desconfigurar API
@@ -211,7 +211,7 @@ const DataContextWrapper = (props: any) => {
         user,
         previewPdf,
         pdf,
-        setPdf
+        setPdf,
       }}>
       {props.children}
     </DataContext.Provider>

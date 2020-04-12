@@ -46,22 +46,18 @@ const PatchLogDialog = () => {
                     Changes
                   </Grid.Column>
                 </Grid.Row>
-                {patchLogs.changes.map(item => {
+                {patchLogs.changes.map((item) => {
                   var detail = [];
                   if (item.created) detail.push('Created');
                   if (item.rename)
                     detail.push(
-                      `Renamed from ${item.rename.original} to ${
-                        item.rename.new
-                      }`
+                      `Renamed from ${item.rename.original} to ${item.rename.new}`
                     );
                   if (item.linked) detail.push(`Linked ${item.linked.new}`);
                   if (item.updated) detail.push('Updated text');
                   if (item.staged)
                     detail.push(
-                      `Staged from ${item.staged.original} to ${
-                        item.staged.new
-                      }`
+                      `Staged from ${item.staged.original} to ${item.staged.new}`
                     );
                   return (
                     <Grid.Row key={item.date}>
@@ -85,8 +81,8 @@ const PatchLogDialog = () => {
                 list={[
                   I18n.t('ui.patch pending', {
                     author: patchLogs.pending.author,
-                    date: new Date(patchLogs.pending.date).toLocaleString()
-                  })
+                    date: new Date(patchLogs.pending.date).toLocaleString(),
+                  }),
                 ]}
               />
             )}

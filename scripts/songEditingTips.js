@@ -30,10 +30,10 @@ if (!process.argv.slice(2).length) {
     var songs = FolderSongs.getSongsMeta(locale);
     console.log(`Processing ${songs.length} songs`);
     FolderSongs.loadSongs(locale, songs).then(() => {
-      songs.map(song => {
+      songs.map((song) => {
         if (song.files[I18n.locale]) {
           var render = parser.getForRender(song.fullText, I18n.locale);
-          const firstNotes = render.items.find(it =>
+          const firstNotes = render.items.find((it) =>
             parser.isChordsLine(it.texto, locale)
           );
           if (firstNotes) {
@@ -56,7 +56,7 @@ if (!process.argv.slice(2).length) {
             }
           }
           const possibleBis = render.items.filter(
-            i => i.texto.includes('BIS') || i.texto.includes('2x')
+            (i) => i.texto.includes('BIS') || i.texto.includes('2x')
           );
           if (possibleBis.length > 0) {
             console.log(

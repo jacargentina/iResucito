@@ -9,10 +9,10 @@ var fs = require('fs');
 
 const rl = readline.createInterface({
   input: process.stdin,
-  output: process.stdout
+  output: process.stdout,
 });
 
-rl.question('Cual locale? ', locale => {
+rl.question('Cual locale? ', (locale) => {
   var sourcePath = `../songs/${locale}/`;
   var cantos = fs.readdirSync(sourcePath);
   var i = 0;
@@ -20,9 +20,9 @@ rl.question('Cual locale? ', locale => {
   /* eslint-disable no-console */
   var keys = Object.keys(SongsIndex);
   var sin_locale = keys.filter(
-    k => !SongsIndex[k].files.hasOwnProperty(locale)
+    (k) => !SongsIndex[k].files.hasOwnProperty(locale)
   );
-  sin_locale.forEach(k => {
+  sin_locale.forEach((k) => {
     console.log(`${k}: ${SongsIndex[k].files.es}`);
   });
   console.log(`${sin_locale.length} sin ${locale}; ${cantos.length} archivos`);
@@ -35,14 +35,14 @@ rl.question('Cual locale? ', locale => {
     }
     var currentName = current.replace('.txt', '');
     var fileInIndex = keys.find(
-      k => SongsIndex[k].files[locale] === currentName
+      (k) => SongsIndex[k].files[locale] === currentName
     );
     if (fileInIndex) {
       i++;
       processNext();
     } else {
       console.log(current);
-      rl.question('Cual es la clave? ', answer => {
+      rl.question('Cual es la clave? ', (answer) => {
         if (answer !== '') {
           if (!SongsIndex[answer].files[locale]) {
             SongsIndex[answer].files[locale] = currentName;

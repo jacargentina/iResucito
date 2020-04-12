@@ -31,14 +31,13 @@ if (!process.argv.slice(2).length) {
     var songs = FolderSongs.getSongsMeta(locale);
     console.log(`Processing ${songs.length} songs`);
     FolderSongs.loadSongs(locale, songs).then(() => {
-      songs.map(song => {
+      songs.map((song) => {
         if (song.files[I18n.locale]) {
           var lines = parser.getSongLines(song.fullText, I18n.locale);
-          var str = lines.map(x => {
+          var str = lines.map((x) => {
             if (x.type === 'canto') {
               return x.raw.trim();
-            }
-            else if (x.type === 'notas') {
+            } else if (x.type === 'notas') {
               return x.raw.trimRight();
             }
             return x.raw;

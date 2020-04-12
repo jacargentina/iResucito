@@ -6,11 +6,11 @@ const fs = require('fs');
 const defaultOptions = {
   margins: { top: 10, left: 50, right: 100, bottom: 10 },
   size: 'A4',
-  layout: 'landscape'
+  layout: 'landscape',
 };
 
 const doc = new Document({ autoFirstPage: false });
-doc.on('pageAdding', e => {
+doc.on('pageAdding', (e) => {
   e.options = defaultOptions;
 });
 

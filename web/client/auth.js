@@ -105,7 +105,7 @@ const auth = {
     } catch (err) {
       return false;
     }
-  }
+  },
 };
 
 export default auth;

@@ -36,7 +36,7 @@ const SongBook = () => {
             height: '100%',
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
           }}>
           <Loader active inline="centered" size="large" inverted={false} />
         </div>

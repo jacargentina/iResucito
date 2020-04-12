@@ -17,7 +17,7 @@ var SongsPatches = require(patchesPath);
 //$FlowFixMe
 const folders = fs.readdirSync(songsDir, { withFileTypes: true });
 //$FlowFixMe
-const onlyNames = folders.filter(d => d.isDirectory()).map(d => d.name);
+const onlyNames = folders.filter((d) => d.isDirectory()).map((d) => d.name);
 const languageFolders = onlyNames.reduce((obj, item) => {
   obj[item] = item;
   return obj;
@@ -32,11 +32,11 @@ const patchSongLogic = (songPatch, key, dirty) => {
         key,
         files: {},
         stage: 'precatechumenate',
-        stages: {}
+        stages: {},
       };
     }
     var songToPatch = SongsIndex[key];
-    Object.keys(songPatch).forEach(rawLoc => {
+    Object.keys(songPatch).forEach((rawLoc) => {
       var item: SongPatchData = songPatch[rawLoc];
       var loc = '';
       var { author, date, file, rename, lines, stage } = item;
@@ -151,14 +151,14 @@ const patchSongLogic = (songPatch, key, dirty) => {
         linked: report.linked,
         created: report.created,
         updated: report.updated,
-        staged: report.staged
+        staged: report.staged,
       };
 
       if (!SongsPatches.hasOwnProperty(key)) {
         SongsPatches[key] = [];
       }
       var songPatches = SongsPatches[key];
-      var found = songPatches.find(x => x.date === date);
+      var found = songPatches.find((x) => x.date === date);
       if (!found) {
         songPatches.push(patchInfo);
       }
@@ -199,7 +199,7 @@ if (!process.argv.slice(2).length) {
     var res = patchSongLogic(patch[key], key, dirty);
     finalReport.push(res);
   } else {
-    Object.keys(patch).forEach(k => {
+    Object.keys(patch).forEach((k) => {
       var res = patchSongLogic(patch[k], k, dirty);
       finalReport.push(res);
     });

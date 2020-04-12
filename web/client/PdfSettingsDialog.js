@@ -15,7 +15,7 @@ const PdfSettingsDialog = () => {
     activeDialog,
     setActiveDialog,
     editSong,
-    previewPdf: previewBookPdf
+    previewPdf: previewBookPdf,
   } = data;
 
   const edit = useContext(EditContext);
@@ -66,7 +66,7 @@ const PdfSettingsDialog = () => {
           <JSONInput
             id="settingsEditor"
             placeholder={initialOptions}
-            onChange={e => {
+            onChange={(e) => {
               if (!e.error) setEditing(e.jsObject);
             }}
             locale={locale}
@@ -75,7 +75,7 @@ const PdfSettingsDialog = () => {
             style={{
               body: { fontSize: '18px' },
               outerBox: { height: '500px' },
-              container: { height: '500px' }
+              container: { height: '500px' },
             }}
           />
         )}

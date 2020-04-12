@@ -18,9 +18,9 @@ export class SongsParser {
       .trim()
       .replace(cleanChordsRegex, ' ')
       .split(' ')
-      .filter(i => i.length > 0);
-    const onlyChords = line.filter(word => {
-      return chords.find(ch => ch.toLowerCase() === word.toLowerCase());
+      .filter((i) => i.length > 0);
+    const onlyChords = line.filter((word) => {
+      return chords.find((ch) => ch.toLowerCase() === word.toLowerCase());
     });
     return onlyChords.length > 0 && onlyChords.length == line.length;
   }
@@ -36,7 +36,7 @@ export class SongsParser {
         prefijoStyle: null,
         sufijo: '',
         sufijoStyle: null,
-        type: 'posicionAbrazadera'
+        type: 'posicionAbrazadera',
       };
       return it;
     } else if (text.trim() == 'repeat') {
@@ -48,7 +48,7 @@ export class SongsParser {
         prefijoStyle: null,
         sufijo: '',
         sufijoStyle: null,
-        type: 'bloqueRepetir'
+        type: 'bloqueRepetir',
       };
       return it;
     } else if (text.trim() == 'footnote') {
@@ -60,7 +60,7 @@ export class SongsParser {
         prefijoStyle: null,
         sufijo: '',
         sufijoStyle: null,
-        type: 'bloqueNotaAlPie'
+        type: 'bloqueNotaAlPie',
       };
       return it;
     } else if (text.trim() == 'column') {
@@ -72,14 +72,14 @@ export class SongsParser {
         prefijoStyle: null,
         sufijo: '',
         sufijoStyle: null,
-        type: 'comenzarColumna'
+        type: 'comenzarColumna',
       };
       return it;
     } else {
       const psalmistAndAssembly = `${I18n.t('songs.psalmist', {
-        locale
+        locale,
       })} ${I18n.t('songs.assembly', {
-        locale
+        locale,
       })}`;
       if (text.startsWith(psalmistAndAssembly)) {
         // Indicador de Salmista Y Asamblea
@@ -92,38 +92,38 @@ export class SongsParser {
           prefijoStyle: this.songStyles.prefix,
           sufijo: '',
           sufijoStyle: null,
-          type: 'cantoConIndicador'
+          type: 'cantoConIndicador',
         };
         return it;
       } else if (
         text.startsWith(
           I18n.t('songs.psalmist', {
-            locale
+            locale,
           })
         ) ||
         text.startsWith(
           I18n.t('songs.assembly', {
-            locale
+            locale,
           })
         ) ||
         text.startsWith(
           I18n.t('songs.priest', {
-            locale
+            locale,
           })
         ) ||
         text.startsWith(
           I18n.t('songs.men', {
-            locale
+            locale,
           })
         ) ||
         text.startsWith(
           I18n.t('songs.women', {
-            locale
+            locale,
           })
         ) ||
         text.startsWith(
           I18n.t('songs.children', {
-            locale
+            locale,
           })
         )
       ) {
@@ -137,7 +137,7 @@ export class SongsParser {
           prefijoStyle: this.songStyles.prefix,
           sufijo: '',
           sufijoStyle: null,
-          type: 'cantoConIndicador'
+          type: 'cantoConIndicador',
         };
         return it;
       } else if (this.isChordsLine(text, locale)) {
@@ -149,7 +149,7 @@ export class SongsParser {
           prefijoStyle: null,
           sufijo: '',
           sufijoStyle: null,
-          type: 'notas'
+          type: 'notas',
         };
         return it;
       } else if (text.startsWith('* ')) {
@@ -162,7 +162,7 @@ export class SongsParser {
           prefijoStyle: this.songStyles.notesLine,
           sufijo: '',
           sufijoStyle: null,
-          type: 'notaEspecial'
+          type: 'notaEspecial',
         };
         return it;
       } else if (text.trim().startsWith('**') && text.trim().endsWith('**')) {
@@ -175,7 +175,7 @@ export class SongsParser {
           prefijoStyle: null,
           sufijo: '',
           sufijoStyle: null,
-          type: 'tituloEspecial'
+          type: 'tituloEspecial',
         };
         return it;
       } else if (text.startsWith('-')) {
@@ -188,7 +188,7 @@ export class SongsParser {
           prefijoStyle: null,
           sufijo: '',
           sufijoStyle: null,
-          type: 'textoEspecial'
+          type: 'textoEspecial',
         };
         return it;
       } else if (text.trim() === '') {
@@ -200,7 +200,7 @@ export class SongsParser {
           prefijoStyle: null,
           sufijo: '',
           sufijoStyle: null,
-          type: 'inicioParrafo'
+          type: 'inicioParrafo',
         };
         return it;
       } else {
@@ -213,7 +213,7 @@ export class SongsParser {
           prefijoStyle: null,
           sufijo: '',
           sufijoStyle: null,
-          type: 'canto'
+          type: 'canto',
         };
         return it;
       }
@@ -228,7 +228,7 @@ export class SongsParser {
     const chords = getChordsScale(locale);
     const chordsInverted = chords.slice().reverse();
     const allChords = chordsLine.split(' ');
-    const convertedChords = allChords.map(chord => {
+    const convertedChords = allChords.map((chord) => {
       // Ej. Do#- (latino)
       // Ej. cis  (anglosajon)
       const cleanChord = chord.replace(cleanChordsRegex, '');
@@ -237,7 +237,7 @@ export class SongsParser {
       // Ej. Do
       // Ej. c
       const initial = chords.find(
-        ch => ch.toLowerCase() == cleanChord.toLowerCase()
+        (ch) => ch.toLowerCase() == cleanChord.toLowerCase()
       );
       const i = chords.indexOf(initial);
       if (i !== -1) {
@@ -269,17 +269,19 @@ export class SongsParser {
     const chords = getChordsScale(locale);
     const initialChord = this.getInitialChord(startingChordsLine);
     const st = chords.find(
-      ch => ch.toLowerCase() == initialChord.toLowerCase()
+      (ch) => ch.toLowerCase() == initialChord.toLowerCase()
     );
     const start = chords.indexOf(st);
-    const tg = chords.find(ch => ch.toLowerCase() == targetChord.toLowerCase());
+    const tg = chords.find(
+      (ch) => ch.toLowerCase() == targetChord.toLowerCase()
+    );
     const target = chords.indexOf(tg);
     return target - start;
   }
 
   getSongLines(content: string, locale: string): Array<SongLine> {
     var items = content.replace('\r\n', '\n').split('\n');
-    return items.map(l => {
+    return items.map((l) => {
       return this.getSongItem(l, locale);
     });
   }
@@ -292,12 +294,14 @@ export class SongsParser {
     const asSongItem = this.getSongLines(content, locale);
     var tDiff = 0;
     if (transportToNote) {
-      const fNotes = asSongItem.find(it => this.isChordsLine(it.texto, locale));
+      const fNotes = asSongItem.find((it) =>
+        this.isChordsLine(it.texto, locale)
+      );
       if (fNotes !== undefined) {
         tDiff = this.getChordsDiff(fNotes.texto, transportToNote, locale);
       }
     }
-    const conversions = asSongItem.map(it => {
+    const conversions = asSongItem.map((it) => {
       if (it.type == 'notas' && tDiff !== 0) {
         it.texto = this.getChordsTransported(it.texto, tDiff, locale);
       }
@@ -343,7 +347,7 @@ export class SongsParser {
         lIndicators.push({
           start: j - lIndicators.length + 1,
           end: i - lIndicators.length,
-          type: it.type
+          type: it.type,
         });
         return false;
       }
@@ -351,7 +355,7 @@ export class SongsParser {
     });
     const renderRes = {
       items: finalItems,
-      indicators: lIndicators
+      indicators: lIndicators,
     };
     return renderRes;
   }

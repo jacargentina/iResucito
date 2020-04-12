@@ -4,7 +4,7 @@ import React, {
   useContext,
   useState,
   useEffect,
-  useRef
+  useRef,
 } from 'react';
 import TextArea from 'semantic-ui-react/dist/commonjs/addons/TextArea';
 import Icon from 'semantic-ui-react/dist/commonjs/elements/Icon';
@@ -43,11 +43,11 @@ const SongEditor = () => {
     applyChanges,
     goPrevious,
     goNext,
-    confirmClose
+    confirmClose,
   } = edit;
   const [debouncedText, setDebouncedText] = useState(text);
   const [callback, , callPending] = useDebouncedCallback(
-    text => setDebouncedText(text),
+    (text) => setDebouncedText(text),
     800
   );
   const [activeTab, setActiveTab] = useState(0);
@@ -108,7 +108,7 @@ const SongEditor = () => {
   };
 
   useHotkeys(
-    key => {
+    (key) => {
       switch (key) {
         case 'ctrl+s':
           save();
@@ -222,7 +222,7 @@ const SongEditor = () => {
                   'If present, title/source must be deleted from the heading to not be painted twice',
                   'Put "clamp: x" at the start of any empty line to signal clamp position',
                   'Put "repeat" at the start of the last line in a paragraph to signal a repeated part',
-                  'PDF: Put "column" at the start of a line to signal start of second column'
+                  'PDF: Put "column" at the start of a line to signal start of second column',
                 ]}
               />
             }
@@ -254,7 +254,7 @@ const SongEditor = () => {
           flex: 1,
           display: 'flex',
           flexDirection: 'row',
-          overflow: 'auto'
+          overflow: 'auto',
         }}>
         <div style={{ display: 'flex', flexDirection: 'column', width: '50%' }}>
           <TextArea
@@ -270,10 +270,10 @@ const SongEditor = () => {
               border: 0,
               padding: '10px 20px',
               overflowY: 'scroll',
-              whiteSpace: 'nowrap'
+              whiteSpace: 'nowrap',
             }}
             onKeyUp={txtPositionEvent}
-            onKeyDown={e => {
+            onKeyDown={(e) => {
               if (e.ctrlKey) {
                 if (e.key == '[') {
                   e.preventDefault();
@@ -304,7 +304,7 @@ const SongEditor = () => {
             style={{
               flex: 0,
               margin: 0,
-              padding: '3px 10px'
+              padding: '3px 10px',
             }}>
             Line: {linepos}, Column: {colpos}
           </Segment>
@@ -312,7 +312,7 @@ const SongEditor = () => {
         <div
           style={{
             width: '50%',
-            overflowY: 'scroll'
+            overflowY: 'scroll',
           }}>
           <Tab
             activeIndex={activeTab}
@@ -334,7 +334,7 @@ const SongEditor = () => {
                     <Tab.Pane
                       style={{
                         fontFamily: 'Franklin Gothic Medium',
-                        border: '0px transparent'
+                        border: '0px transparent',
                       }}>
                       <SongViewFrame
                         title={songFile && songFile.titulo}
@@ -343,7 +343,7 @@ const SongEditor = () => {
                       />
                     </Tab.Pane>
                   );
-                }
+                },
               },
               {
                 menuItem: I18n.t('share_action.view pdf'),
@@ -354,13 +354,13 @@ const SongEditor = () => {
                       loading={pdf.loading}
                       style={{
                         minHeight: '50vh',
-                        border: '0px transparent'
+                        border: '0px transparent',
                       }}>
                       {!pdf.loading && <SongViewPdf url={pdf.url} />}
                     </Tab.Pane>
                   );
-                }
-              }
+                },
+              },
             ]}
           />
         </div>

@@ -8,7 +8,7 @@ var indexPath = path.resolve('../songs/index.json');
 var SongsIndex = require(indexPath);
 var fs = require('fs');
 
-String.prototype.replaceAt = function(index, replacement) {
+String.prototype.replaceAt = function (index, replacement) {
   return (
     this.substr(0, index) +
     replacement +
@@ -18,10 +18,10 @@ String.prototype.replaceAt = function(index, replacement) {
 
 const rl = readline.createInterface({
   input: process.stdin,
-  output: process.stdout
+  output: process.stdout,
 });
 
-rl.question('Cual locale? ', locale => {
+rl.question('Cual locale? ', (locale) => {
   Object.entries(SongsIndex).forEach(([, value]) => {
     if (value.files[locale]) {
       var original = value.files[locale];

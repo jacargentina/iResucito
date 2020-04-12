@@ -1,4 +1,3 @@
-
 import FolderSongs from '../FolderSongs';
 
 function getEsSalmo(listKey: string): boolean {
@@ -19,7 +18,7 @@ var songs = FolderSongs.getSongsMeta('es');
 const migrateLists = (lists: any) => {
   // Verificar cada lista para migrar en caso
   // de ser necesario
-  Object.keys(lists).forEach(name => {
+  Object.keys(lists).forEach((name) => {
     var listMap = lists[name];
     // Listas sin número de versión
     // Los cantos se almacenaban con nombre
@@ -28,15 +27,15 @@ const migrateLists = (lists: any) => {
       Object.entries(listMap).forEach(([clave, valor]) => {
         // Si es de tipo 'libre', los salmos están dentro de 'items'
         if (clave === 'items' && Array.isArray(valor)) {
-          valor = valor.map(nombre => {
-            var theSong = songs.find(s => s.nombre == nombre);
+          valor = valor.map((nombre) => {
+            var theSong = songs.find((s) => s.nombre == nombre);
             if (theSong) {
               return theSong.key;
             }
             return null;
           });
         } else if (getEsSalmo(clave) && valor !== null) {
-          var theSong = songs.find(s => s.nombre == valor);
+          var theSong = songs.find((s) => s.nombre == valor);
           if (theSong) {
             valor = theSong.key;
           } else {
@@ -68,8 +67,8 @@ var lists = {
     'evangelio-monicion': null,
     evangelio: null,
     salida: null,
-    nota: null
-  }
+    nota: null,
+  },
 };
 
 const getListForUI = (listName: any) => {
@@ -77,11 +76,11 @@ const getListForUI = (listName: any) => {
   Object.entries(uiList).forEach(([clave, valor]) => {
     // Si es de tipo 'libre', los salmos están dentro de 'items'
     if (clave === 'items' && Array.isArray(valor)) {
-      valor = valor.map(key => {
-        return songs.find(s => s.key == key);
+      valor = valor.map((key) => {
+        return songs.find((s) => s.key == key);
       });
     } else if (getEsSalmo(clave) && valor !== null) {
-      valor = songs.find(s => s.key == valor);
+      valor = songs.find((s) => s.key == valor);
     }
     uiList[clave] = valor;
   });

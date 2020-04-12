@@ -4,7 +4,7 @@ import React, {
   useRef,
   useEffect,
   useContext,
-  useState
+  useState,
 } from 'react';
 import Icon from 'semantic-ui-react/dist/commonjs/elements/Icon';
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
@@ -35,13 +35,13 @@ const SongViewPdf = (props: any) => {
       setLoading(true);
       var loadingTask = pdfjsLib.getDocument(url);
       loadingTask.promise
-        .then(pdf => {
+        .then((pdf) => {
           setPdf(pdf);
           setCurrPage(1);
           setNumPages(pdf.numPages);
           setLoading(false);
         })
-        .catch(err => {
+        .catch((err) => {
           console.log('error pdf!', err);
           setLoading(false);
         });
@@ -50,7 +50,7 @@ const SongViewPdf = (props: any) => {
 
   useEffect(() => {
     if (pdf && currPage > 0) {
-      pdf.getPage(currPage).then(page => {
+      pdf.getPage(currPage).then((page) => {
         var viewport = page.getViewport(1.3);
         var canvas = myRef.current;
 
@@ -60,7 +60,7 @@ const SongViewPdf = (props: any) => {
 
         page.render({
           canvasContext: context,
-          viewport: viewport
+          viewport: viewport,
         });
       });
     }
@@ -108,7 +108,7 @@ const SongViewPdf = (props: any) => {
               <Button
                 icon
                 disabled={currPage === 1}
-                onClick={() => setCurrPage(p => p - 1)}>
+                onClick={() => setCurrPage((p) => p - 1)}>
                 <Icon name="step backward" />
               </Button>
               <Button disabled>
@@ -117,7 +117,7 @@ const SongViewPdf = (props: any) => {
               <Button
                 icon
                 disabled={currPage === numPages}
-                onClick={() => setCurrPage(p => p + 1)}>
+                onClick={() => setCurrPage((p) => p + 1)}>
                 <Icon name="step forward" />
               </Button>
             </Button.Group>

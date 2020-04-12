@@ -15,11 +15,11 @@ async function run(locale: string, dirty) {
   var songs = FolderSongs.getSongsMeta(locale, patch);
 
   var localeSongs = await FolderSongs.readLocaleSongs(locale);
-  var missingOnIndex = localeSongs.filter(locSong => {
-    const sameCaseFound = songs.find(s => s.files[locale] === locSong.nombre);
+  var missingOnIndex = localeSongs.filter((locSong) => {
+    const sameCaseFound = songs.find((s) => s.files[locale] === locSong.nombre);
     if (!sameCaseFound) {
       const lowerCaseFound = songs.find(
-        s =>
+        (s) =>
           s.files[locale] &&
           s.files[locale].toLowerCase() === locSong.nombre.toLowerCase()
       );
@@ -39,7 +39,7 @@ async function run(locale: string, dirty) {
         console.log('Disk case must be fixed!');
         console.log({
           indexIs: lowerCaseFound.files[locale],
-          diskIs: locSong.nombre
+          diskIs: locSong.nombre,
         });
       }
     }
@@ -57,8 +57,8 @@ async function run(locale: string, dirty) {
       addtoIndex[baseKey + i] = {
         stage: 'precatechumenate',
         files: {
-          [locale]: m.nombre
-        }
+          [locale]: m.nombre,
+        },
       };
     });
 

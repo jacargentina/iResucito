@@ -34,13 +34,13 @@ const AppActions = () => {
                 position: 'fixed',
                 zIndex: 9999,
                 top: 54,
-                right: 0
+                right: 0,
               }}>
               <Message
                 header={I18n.t('ui.changes since last login')}
-                list={stats.map(stat => {
+                list={stats.map((stat) => {
                   return I18n.t('ui.changed songs by author', {
-                    ...stat
+                    ...stat,
                   });
                 })}
                 color="blue"

@@ -11,7 +11,7 @@ const createBadge = (backgroundColor, color, text) => {
   return (
     <Badge
       style={{
-        backgroundColor: backgroundColor
+        backgroundColor: backgroundColor,
       }}>
       <Text style={{ color: color, fontSize: noteStyles.fontSize }}>
         {text}
@@ -25,7 +25,7 @@ const badges = {
   precatechumenate: createBadge(colors.precatechumenate, 'black', 'P'),
   catechumenate: createBadge(colors.catechumenate, 'black', 'C'),
   election: createBadge(colors.election, 'black', 'E'),
-  liturgy: createBadge(colors.liturgy, 'black', 'L')
+  liturgy: createBadge(colors.liturgy, 'black', 'L'),
 };
 
 export default badges;

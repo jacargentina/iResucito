@@ -26,15 +26,15 @@ if (!process.argv.slice(2).length) {
   }
 
   TJO.init({
-    googleApiKey: process.env.GOOGLE_TRANSLATE_KEY
+    googleApiKey: process.env.GOOGLE_TRANSLATE_KEY,
   });
 
   TJO.translate(require('../src/translations/en.json'), locale)
-    .then(function(data) {
+    .then(function (data) {
       fs.writeFileSync(target, JSON.stringify(data), 'utf8');
       console.log(`Locale saved ${target}`);
     })
-    .catch(function(err) {
+    .catch(function (err) {
       console.log('error ', err);
     });
 }

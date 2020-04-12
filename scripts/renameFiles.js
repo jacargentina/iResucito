@@ -10,19 +10,19 @@ const readline = require('readline');
 
 const rl = readline.createInterface({
   input: process.stdin,
-  output: process.stdout
+  output: process.stdout,
 });
 
 const keys = Object.keys(SongsIndex);
 
-rl.question('Cual locale? ', locale => {
+rl.question('Cual locale? ', (locale) => {
   var sourcePath = `../songs/${locale}/`;
   var cantos = fs.readdirSync(sourcePath);
 
-  cantos.forEach(current => {
+  cantos.forEach((current) => {
     var name = current.replace('.txt', '');
     var fileInIndex = keys.find(
-      k =>
+      (k) =>
         SongsIndex[k].files[locale] &&
         SongsIndex[k].files[locale].toLowerCase() ===
           current.toLowerCase().replace('.txt', '')
@@ -33,7 +33,7 @@ rl.question('Cual locale? ', locale => {
         console.log({
           key: fileInIndex,
           index: indexName,
-          disk: name
+          disk: name,
         });
         var oldPath = path.resolve(`../songs/${locale}/${name}.txt`);
         var newPath = path.resolve(`../songs/${locale}/${indexName}.txt`);

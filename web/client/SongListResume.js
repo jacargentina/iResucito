@@ -9,7 +9,7 @@ import { getPropertyLocale } from '../../common';
 
 const emptyResume = {
   text: '-',
-  values: { total: 0, translated: 0 }
+  values: { total: 0, translated: 0 },
 };
 
 const SongListResume = () => {
@@ -22,13 +22,13 @@ const SongListResume = () => {
 
   useEffect(() => {
     if (songs) {
-      const withLocale = songs.filter(song => {
+      const withLocale = songs.filter((song) => {
         return song.patched || !!getPropertyLocale(song.files, I18n.locale);
       });
       var result = { translated: withLocale.length, total: songs.length };
       setResume({
         text: I18n.t('ui.translated songs', result),
-        values: result
+        values: result,
       });
     } else {
       setResume(emptyResume);
@@ -54,7 +54,7 @@ const SongListResume = () => {
           marginTop: 'auto',
           marginBottom: 'auto',
           width: '250px',
-          backgroundColor: 'gray'
+          backgroundColor: 'gray',
         }}
       />
     </Menu.Item>

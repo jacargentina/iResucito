@@ -10,7 +10,7 @@ export const EditContext: any = React.createContext();
 const emptyNavigation = {
   index: null,
   previousKey: null,
-  nextKey: null
+  nextKey: null,
 };
 
 const EditContextWrapper = (props: any) => {
@@ -23,7 +23,7 @@ const EditContextWrapper = (props: any) => {
     setApiResult,
     handleApiError,
     setConfirmData,
-    activeDialog
+    activeDialog,
   } = data;
   const [text, setText] = useState('');
   const [pdf, setPdf] = useState({ loading: false, url: null });
@@ -61,7 +61,7 @@ const EditContextWrapper = (props: any) => {
     setApiLoading(true);
     return api
       .get(`/api/song/${songKey}/${I18n.locale}`)
-      .then(result => {
+      .then((result) => {
         setApiLoading(false);
         const { song, index, previousKey, nextKey } = result.data;
         setText(song.fullText);
@@ -71,7 +71,7 @@ const EditContextWrapper = (props: any) => {
         setStage();
         setHasChanges(false);
       })
-      .catch(err => {
+      .catch((err) => {
         handleApiError(err);
       });
   };
@@ -83,7 +83,7 @@ const EditContextWrapper = (props: any) => {
         key: untranslatedSong.key,
         nombre: `Translate name [${untranslatedSong.nombre}]`,
         titulo: `Translate title [${untranslatedSong.titulo}]`,
-        stage: 'precatechumenate'
+        stage: 'precatechumenate',
       };
       setText('New translated song text here.');
       setEditSong(newSong);
@@ -92,18 +92,18 @@ const EditContextWrapper = (props: any) => {
       setApiLoading(true);
       return api
         .get('/api/song/newKey')
-        .then(result => {
+        .then((result) => {
           setApiLoading(false);
           const newSong = {
             key: result.data.key,
             nombre: 'New song',
             titulo: 'New song',
-            stage: 'precatechumenate'
+            stage: 'precatechumenate',
           };
           setText('Song text here.');
           setEditSong(newSong);
         })
-        .catch(err => {
+        .catch((err) => {
           handleApiError(err);
         });
     }
@@ -113,7 +113,7 @@ const EditContextWrapper = (props: any) => {
     if (editSong) {
       var data = {
         text: text,
-        options: undefined
+        options: undefined,
       };
       const savedSettings = localStorage.getItem('pdfExportOptions');
       if (savedSettings) {
@@ -122,15 +122,15 @@ const EditContextWrapper = (props: any) => {
       setPdf({ loading: true, url: null });
       return api
         .post(`/api/pdf/${I18n.locale}/${editSong.key}`, data, {
-          responseType: 'blob'
+          responseType: 'blob',
         })
-        .then(response => {
+        .then((response) => {
           setPdf({
             loading: false,
-            url: window.URL.createObjectURL(new Blob([response.data]))
+            url: window.URL.createObjectURL(new Blob([response.data])),
           });
         })
-        .catch(err => {
+        .catch((err) => {
           handleApiError(err);
           setPdf({ loading: false, url: null });
         });
@@ -143,7 +143,7 @@ const EditContextWrapper = (props: any) => {
         message: I18n.t('ui.discard confirmation'),
         yes: () => {
           closeEditor();
-        }
+        },
       });
     } else {
       closeEditor();
@@ -164,11 +164,11 @@ const EditContextWrapper = (props: any) => {
               // Recargar sin los cambios previos
               loadSong(editSong.key);
             })
-            .catch(err => {
+            .catch((err) => {
               handleApiError(err);
             });
         }
-      }
+      },
     });
   };
 
@@ -177,7 +177,7 @@ const EditContextWrapper = (props: any) => {
       var patch = {
         lines: text,
         rename: rename || editSong.nombre,
-        stage: stage || editSong.stage
+        stage: stage || editSong.stage,
       };
       setApiResult();
       setApiLoading(true);
@@ -189,7 +189,7 @@ const EditContextWrapper = (props: any) => {
           // Recargar el canto
           loadSong(editSong.key);
         })
-        .catch(err => {
+        .catch((err) => {
           handleApiError(err);
         });
     }
@@ -201,7 +201,7 @@ const EditContextWrapper = (props: any) => {
         message: I18n.t('ui.discard confirmation'),
         yes: () => {
           logoutFunc();
-        }
+        },
       });
     } else {
       logoutFunc();
@@ -215,11 +215,11 @@ const EditContextWrapper = (props: any) => {
       setApiLoading(true);
       api
         .get(`/api/patches/${editSong.key}/${I18n.locale}`)
-        .then(result => {
+        .then((result) => {
           setApiLoading(false);
           setPatchLogs(result.data);
         })
-        .catch(err => {
+        .catch((err) => {
           handleApiError(err);
         });
     }
@@ -262,7 +262,7 @@ const EditContextWrapper = (props: any) => {
         stage,
         setStage,
         activeDialog,
-        previewPdf
+        previewPdf,
       }}>
       {props.children}
     </EditContext.Provider>
