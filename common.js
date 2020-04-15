@@ -25,7 +25,7 @@ export const defaultExportToPdfOptions: ExportToPdfOptions = {
   disablePageNumbers: false,
 };
 
-export const cleanChordsRegex = /\[|\]|\(|\)|#|\*|5|6|7|9|b|-|\+|\/|\u2013|aum|dim|sus|m|is|IS/g;
+export const cleanChordsRegex = /\[|\]|\(|\)|#|\*|5|6|7|9|b|-|\+|\/|\u2013|aum|dim|sus|m|is|IS|d/g;
 
 export const getChordsScale = (locale: string): Array<string> => {
   return I18n.t('chords.scale', { locale }).split(' ');
