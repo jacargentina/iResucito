@@ -16,13 +16,17 @@ import {
 import DeviceInfo from 'react-native-device-info';
 import queryString from 'query-string';
 
-const sendErrorByMail = async (e) => {
-  const str = typeof e === 'string' ? e : JSON.stringify(e);
-  const systemName = DeviceInfo.getSystemName();
-  const version = DeviceInfo.getReadableVersion();
+const sendErrorByMail = async (e: any, type: string, message?: string) => {
+  var body = `Sistema: ${DeviceInfo.getSystemName()}`;
+  body += `\r\nVersión App: ${DeviceInfo.getReadableVersion()}`;
+  body += `\r\nTipo: ${type}`;
+  if (message) {
+    body += `\r\nMensaje: ${message}`;
+  }
+  body += `\n\nDetalle: ${typeof e === 'string' ? e : JSON.stringify(e)}`;
   const query = queryString.stringify({
     subject: 'iResucito Crash',
-    body: `System ${systemName}, Version ${version}\n\n${str}`,
+    body: body,
   });
   let url = 'mailto:javier.alejandro.castro@gmail.com';
   if (query.length) {
@@ -34,7 +38,7 @@ const sendErrorByMail = async (e) => {
 function errorHandler(e, isFatal) {
   console.log('errorHandler', e);
   if (isFatal) {
-    const detail = e.name && e.message ? `${e.name} ${e.message}` : e;
+    const detail = e.name && e.message ? `${e.name} ${e.message}` : '';
     Alert.alert(
       'Unexpected error occurred',
       `
@@ -46,7 +50,7 @@ function errorHandler(e, isFatal) {
         {
           text: 'OK',
           onPress: () => {
-            sendErrorByMail(e);
+            sendErrorByMail(e, 'javascript', detail);
           },
         },
       ]
@@ -56,7 +60,7 @@ function errorHandler(e, isFatal) {
 
 setJSExceptionHandler(errorHandler);
 setNativeExceptionHandler((nativeError) => {
-  sendErrorByMail(nativeError);
+  sendErrorByMail(nativeError, 'native');
 });
 
 const InitializeApp = () => {
