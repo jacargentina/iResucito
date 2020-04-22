@@ -13,10 +13,15 @@ import commonTheme from '../native-base-theme/variables/platform';
 const ListScreen = (props: any) => {
   const data = useContext(DataContext);
   const navigation = useNavigation();
-  const { lists, getListsForUI, removeList, chooseListTypeForAdd } = data.lists;
+  const { getListsForUI, removeList, chooseListTypeForAdd } = data.lists;
+  const [localeValue] = data.locale;
   const [filtered, setFiltered] = useState();
   const [filter, setFilter] = useState('');
-  const allLists = useMemo(() => getListsForUI(), [lists]);
+
+  const allLists = useMemo(() => getListsForUI(localeValue), [
+    localeValue,
+    getListsForUI,
+  ]);
 
   useEffect(() => {
     var result = allLists;

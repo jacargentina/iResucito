@@ -13,6 +13,7 @@ const ListNameDialog = (props: any) => {
   const navigation = useNavigation();
   const route = useRoute();
   const { lists, addList, renameList } = data.lists;
+  const [localeValue] = data.locale;
   const [disabledReasonText, setDisabledReasonText] = useState(null);
   const [actionEnabled, setActionEnabled] = useState(false);
   const [name, setName] = useState('');
@@ -37,7 +38,7 @@ const ListNameDialog = (props: any) => {
     } else {
       setActionEnabled(false);
     }
-  }, [name]);
+  }, [name, lists]);
 
   useEffect(() => {
     if (!actionEnabled) {
@@ -53,7 +54,10 @@ const ListNameDialog = (props: any) => {
 
   const title =
     action === 'create'
-      ? `${I18n.t('ui.lists.create')} (${getFriendlyTextForListType(type)})`
+      ? `${I18n.t('ui.lists.create')} (${getFriendlyTextForListType(
+          type,
+          localeValue
+        )})`
       : `${I18n.t('ui.lists.rename')} (${listName})`;
 
   return (

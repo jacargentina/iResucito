@@ -422,13 +422,13 @@ const useLists = (songs: any) => {
     });
   };
 
-  const getListsForUI = () => {
+  const getListsForUI = (localeValue: string) => {
     var listNames = Object.keys(lists);
     return listNames.map((name) => {
       var listMap = lists[name];
       return {
         name: name,
-        type: getFriendlyTextForListType(listMap.type),
+        type: getFriendlyTextForListType(listMap.type, localeValue),
       };
     });
   };
@@ -770,7 +770,7 @@ const useSearch = (locale: string, developerMode: boolean) => {
       {
         /* eslint-disable quotes */
         title_key: `search_title.children's songs`,
-        note: `search_note.children's songs`,
+        note_key: `search_note.children's songs`,
         route: 'SongList',
         params: { filter: { "children's songs": true } },
         badge: null,
