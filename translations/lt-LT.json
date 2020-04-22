@@ -68,7 +68,7 @@
       "songs book title": "Prisikėlė",
       "songs book subtitle": "Giesmės Neokatechumenatinio kelio bendruomenėms"
     },
-    "community empty": "Be importuotų pavadinimų. Norėdami pasirinkti iš sąrašo, turite importuoti iš savo knotaktų pasirinkdami Bendruomenės parinktį.",
+    "community empty": "Nėra įkeltų vardų. Kad pasirinktumėte iš sąrašo pirmiausia turite įkelti kontaktus Bendruomenės parinktyse.",
     "search placeholder": "Ieškoti",
     "locale warning title": "Nepilnas vertimas",
     "locale warning message": "Giesmė neišversta į jūsų kalbą",
@@ -78,7 +78,7 @@
     "no songs found": "Giesmės nerastos",
     "no contacts found": "Kontakų nerasta",
     "empty songs list": "Giesmių sąrašas tuščias",
-    "confirmation": "Confirmation",
+    "confirmation": "Patvirtinimas",
     "list total songs": "Viso giesmių {{total}}",
     "locale patch added": "Atnaujinta {{song}}",
     "locale patch removed": "Panaikintas {{song}} atnaujinimas",
@@ -116,7 +116,7 @@
   "list_item": {
     "ambiental": "Bendras įvadas",
     "entrada": "Įėjimo giesmės",
-    "paz": "Peace and Offertory",
+    "paz": "Ramybė ir Auka",
     "comunion-pan": "Duona",
     "comunion-caliz": "Taurė",
     "salida": "Pabaigos giesmė",
@@ -131,7 +131,7 @@
     "3-salmo": "Trečioji giesmė",
     "evangelio-monicion": "Įvadas į evangeliją",
     "evangelio": "Evangelija",
-    "oracion-universal": "General Intercessions",
+    "oracion-universal": "Visuotinė Malda",
     "encargado-pan": "Duonos kepėjas",
     "encargado-flores": "Gėlės",
     "nota": "Užrašai"
@@ -151,20 +151,20 @@
     "pentecost": "Pentekostė",
     "liturgical order": "Liturginė eilė",
     "entrance": "Įėjimas",
-    "peace and offerings": "Peace and Offertory",
+    "peace and offerings": "Ramybės palinkėjimas ir aukos liturgija",
     "fraction of bread": "Duonos laužymas",
     "communion": "Komunija",
     "exit": "Pabaigos giesmė",
     "signing to the virgin": "Giesmės mergelei Marijai",
     "children's songs": "Giesmės vaikams",
-    "lutes and vespers": "Lauds and Vespers",
+    "lutes and vespers": "Rytmetinė ir Vakarinė malda",
     "unassigned": "Nepriskirta",
     "ratings": "Įvertinimas"
   },
   "search_tabs": {
     "all": "Visos",
     "entrance": "Įėjimas",
-    "peace and offerings": "Peace/Offertory",
+    "peace and offerings": "Ramybė/Auka",
     "fraction of bread": "Duona",
     "communion": "Komunija",
     "exit": "Pabaigos",
@@ -182,14 +182,14 @@
     "easter": "Velykų giesmės",
     "pentecost": "Pentekostės giesmės",
     "entrance": "Liturgijų pradžios giesmės",
-    "peace and offerings": "Songs for the Sign of peace and the Offertory",
+    "peace and offerings": "Ramybės palinkėjimo ir aukos liturgijos giesmės",
     "fraction of bread": "Duonos laužymo giesmės",
     "communion": "Komunijos giesmės",
     "exit": "Liturgijų pabaigos giesmės",
     "signing to the virgin": "Giesmės skirtos mergelei Marijai",
     "children's songs": "Giesmės vaikams",
-    "lutes and vespers": "Psalms of Lauds and Vespers",
-    "unassigned": "Locale songs not in the index",
+    "lutes and vespers": "Rytmetinės ir Vakarinės maldos psalmės",
+    "unassigned": "Giesmės nepriskirtos rodyklėje",
     "ratings": "Giesmės pagal įvertinimus"
   },
   "screen_title": {
@@ -234,7 +234,7 @@
   },
   "alert_title": {
     "corrupt patch": "Sugadintas atnaujinimas",
-    "contacts permission": "Contacts permission"
+    "contacts permission": "Kontaktų leidimas"
   },
   "alert_message": {
     "corrupt patch": "Atnaujinimas buvo sugadintas dėl to ištrintas",
