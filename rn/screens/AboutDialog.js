@@ -17,11 +17,6 @@ const pack = require('../../app.json');
 const cristo = require('../../img/cristo.jpg');
 const appName = pack.displayName;
 
-/*
-  {'\n'} Giuseppe Reino (it)
-  {'\n'} Édouard Clogenson (fr)
-*/
-
 const AboutDialog = (props: any) => {
   const { navigation } = props;
   const [version, setVersion] = useState('');
@@ -87,6 +82,7 @@ const AboutDialog = (props: any) => {
           {'\n'} Javier Suarez Suarez (es)
           {'\n'} Matheus Fragoso (pt-BR)
           {'\n'} Fabio Reis (pt-PT)
+          {'\n'} David Hernández Durán (lt-LT)
         </Text>
         <View
           style={{
