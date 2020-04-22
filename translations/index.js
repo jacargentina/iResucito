@@ -11,7 +11,8 @@ I18n.translations = {
   'pt-BR': require('./pt-BR'),
   'pt-PT': require('./pt-PT'),
   'de-AT': require('./de-AT'),
-  fr: require('./fr')
+  'lt-LT': require('./lt-LT'),
+  fr: require('./fr'),
 };
 
 export default I18n;
