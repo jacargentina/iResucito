@@ -95,6 +95,7 @@
 		8872DD8B22DF4F2B00FDA403 /* Franklin Gothic Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Franklin Gothic Medium.ttf"; path = "../assets/fonts/Franklin Gothic Medium.ttf"; sourceTree = "<group>"; };
 		8891E2BC232989F30072F2F9 /* cristo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cristo.jpg; sourceTree = "<group>"; };
 		88A4D49023A2A82E0090F9AD /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		88B3DCE32451073F00F2FFA5 /* lt-LT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "lt-LT"; path = "lt-LT.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		88D516DE22DF4AAE00E03D4C /* songs */ = {isa = PBXFileReference; lastKnownFileType = folder; name = songs; path = ../songs; sourceTree = "<group>"; };
 		8C59219A9D3B2B176FFF02E6 /* Pods-iResucito-iResucitoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iResucito-iResucitoTests.release.xcconfig"; path = "Target Support Files/Pods-iResucito-iResucitoTests/Pods-iResucito-iResucitoTests.release.xcconfig"; sourceTree = "<group>"; };
 		8CFF9400198C8630E06CAB4A /* Pods-iResucito-iResucitoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iResucito-iResucitoTests.debug.xcconfig"; path = "Target Support Files/Pods-iResucito-iResucitoTests/Pods-iResucito-iResucitoTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -403,6 +404,7 @@
 				it,
 				"pt-BR",
 				"pt-PT",
+				"lt-LT",
 			);
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
@@ -687,6 +689,7 @@
 			children = (
 				13B07FB21A68108700A75B9A /* Base */,
 				88A4D49023A2A82E0090F9AD /* pt-PT */,
+				88B3DCE32451073F00F2FFA5 /* lt-LT */,
 			);
 			name = LaunchScreen.xib;
 			path = iResucito;
