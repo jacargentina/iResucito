@@ -220,8 +220,8 @@
     "keep awake": "Nemiegoti",
     "about": "Apie",
     "developer mode": "Kūrėjo rėžimas",
-    "clear index patch": "Clear index patch",
-    "share index patch": "Share index patch"
+    "clear index patch": "Panaikinti rodyklės atnaujinimą",
+    "share index patch": "Dalintis rodyklės atnaujinimu"
   },
   "settings_note": {
     "locale": "Išversti programėlę į galimas kalbas",
