@@ -553,10 +553,13 @@ const useLists = (songs: any) => {
         items.push(getItemForShare(list, '3-salmo'));
         items.push(getItemForShare(list, 'evangelio-monicion'));
         items.push(getItemForShare(list, 'evangelio'));
+        items.push(getItemForShare(list, 'oracion-universal'));
         items.push(getItemForShare(list, 'paz'));
         items.push(getItemForShare(list, 'comunion-pan'));
         items.push(getItemForShare(list, 'comunion-caliz'));
         items.push(getItemForShare(list, 'salida'));
+        items.push(getItemForShare(list, 'encargado-pan'));
+        items.push(getItemForShare(list, 'encargado-flores'));
         items.push(getItemForShare(list, 'nota'));
       }
       var message = items.filter((n) => n).join('\n');
