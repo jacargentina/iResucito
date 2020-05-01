@@ -1,5 +1,5 @@
 // @flow
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Alert, Platform, PermissionsAndroid } from 'react-native';
 import Share from 'react-native-share';
 import Contacts from 'react-native-contacts';
@@ -38,7 +38,7 @@ const useSongsMeta = (locale: string) => {
     setSongs([...prev, song, ...next]);
   };
 
-  const readLocalePatch = (): Promise<?SongIndexPatch> => {
+  const readLocalePatch = useCallback((): Promise<?SongIndexPatch> => {
     if (!indexPatchExists) {
       return Promise.resolve();
     }
@@ -55,7 +55,7 @@ const useSongsMeta = (locale: string) => {
           );
         });
       });
-  };
+  }, [indexPatchExists]);
 
   const saveLocalePatch = (patchObj: ?SongIndexPatch) => {
     var json = JSON.stringify(patchObj, null, ' ');
@@ -159,14 +159,14 @@ const useSongsMeta = (locale: string) => {
     }
   };
 
-  const readSongsRatingFile = (): Promise<?SongRatingFile> => {
+  const readSongsRatingFile = useCallback((): Promise<?SongRatingFile> => {
     if (!ratingsFileExists) {
       return Promise.resolve();
     }
     return NativeExtras.readRatings().then((ratingsJSON) => {
       return JSON.parse(ratingsJSON);
     });
-  };
+  }, [ratingsFileExists]);
 
   const saveSongsRatingFile = (ratingsObj: SongRatingFile) => {
     var json = JSON.stringify(ratingsObj, null, ' ');
@@ -222,7 +222,7 @@ const useSongsMeta = (locale: string) => {
     });
   };
 
-  const loadSongs = () => {
+  const loadSongs = useCallback(() => {
     if (
       I18n.locale &&
       indexPatchExists !== undefined &&
@@ -245,11 +245,16 @@ const useSongsMeta = (locale: string) => {
         );
       });
     }
-  };
+  }, [
+    indexPatchExists,
+    ratingsFileExists,
+    readLocalePatch,
+    readSongsRatingFile,
+  ]);
 
   useEffect(() => {
     loadSongs();
-  }, [locale, indexPatchExists, ratingsFileExists]);
+  }, [locale, loadSongs, indexPatchExists, ratingsFileExists]);
 
   useEffect(() => {
     loadFlags();
@@ -387,40 +392,43 @@ const useLists = (songs: any) => {
     return uiList;
   };
 
-  const migrateLists = (items: any) => {
-    // Verificar cada lista para migrar en caso
-    // de ser necesario
-    Object.keys(items).forEach((name) => {
-      var listMap = items[name];
-      // Listas sin número de versión
-      // Los cantos se almacenaban con nombre
-      // Y deben pasar a almacenarse las claves
-      if (!listMap.version) {
-        Object.entries(listMap).forEach(([clave, valor]) => {
-          // Si es de tipo 'libre', los salmos están dentro de 'items'
-          if (clave === 'items' && Array.isArray(valor)) {
-            valor = valor.map((nombre) => {
-              var theSong = songs.find((s) => s.nombre === nombre);
+  const migrateLists = useCallback(
+    (items: any) => {
+      // Verificar cada lista para migrar en caso
+      // de ser necesario
+      Object.keys(items).forEach((name) => {
+        var listMap = items[name];
+        // Listas sin número de versión
+        // Los cantos se almacenaban con nombre
+        // Y deben pasar a almacenarse las claves
+        if (!listMap.version) {
+          Object.entries(listMap).forEach(([clave, valor]) => {
+            // Si es de tipo 'libre', los salmos están dentro de 'items'
+            if (clave === 'items' && Array.isArray(valor)) {
+              valor = valor.map((nombre) => {
+                var theSong = songs.find((s) => s.nombre === nombre);
+                if (theSong) {
+                  return theSong.key;
+                }
+                return null;
+              });
+            } else if (getEsSalmo(clave) && valor !== null) {
+              var theSong = songs.find((s) => s.nombre === valor);
               if (theSong) {
-                return theSong.key;
+                valor = theSong.key;
+              } else {
+                valor = null;
               }
-              return null;
-            });
-          } else if (getEsSalmo(clave) && valor !== null) {
-            var theSong = songs.find((s) => s.nombre === valor);
-            if (theSong) {
-              valor = theSong.key;
-            } else {
-              valor = null;
             }
-          }
-          // Guardar solo la clave del canto
-          listMap[clave] = valor;
-        });
-        listMap.version = 1;
-      }
-    });
-  };
+            // Guardar solo la clave del canto
+            listMap[clave] = valor;
+          });
+          listMap.version = 1;
+        }
+      });
+    },
+    [songs]
+  );
 
   const getListsForUI = (localeValue: string) => {
     var listNames = Object.keys(lists);
@@ -601,7 +609,7 @@ const useLists = (songs: any) => {
       //   console.log('loaded from iCloud', res);
       // });
     }
-  }, [songs, lists]);
+  }, [initialized, songs, lists, migrateLists, initLists]);
 
   return {
     lists,
@@ -896,7 +904,7 @@ const useCommunity = () => {
     }
   };
 
-  const getContacts = (reqPerm: boolean): Promise<any> => {
+  const getContacts = useCallback((reqPerm: boolean): Promise<any> => {
     return checkContactsPermission(reqPerm).then((hasPermission) => {
       if (hasPermission) {
         return new Promise((resolve, reject) => {
@@ -910,7 +918,7 @@ const useCommunity = () => {
         });
       }
     });
-  };
+  }, []);
 
   useEffect(() => {
     if (initialized === true && brothers && Platform.OS === 'ios') {
@@ -957,7 +965,7 @@ const useCommunity = () => {
         setInitialized(true);
       });
     }
-  }, [initialized, brothers]);
+  }, [initialized, getContacts, initBrothers, brothers]);
 
   return {
     brothers,
