@@ -300,7 +300,7 @@ export class PdfWriter {
     });
     this.doc.info = {
       Title: 'iResucitó',
-      Author: 'iResucitó app ',
+      Author: 'iResucitó app',
       Subject: 'iResucitó Song Book',
       Keywords: 'Neocatechumenal songs',
     };
