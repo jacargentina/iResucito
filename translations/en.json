@@ -111,7 +111,8 @@
   },
   "list_export_options": {
     "native": "iResucito list file",
-    "plain text": "Plain text"
+    "plain text": "Plain text",
+    "pdf file": "PDF file"
   },
   "list_item": {
     "ambiental": "General Admonition",

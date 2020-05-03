@@ -110,8 +110,9 @@
     "other": "Altro"
   },
   "list_export_options": {
-    "native": "file elenco iResucito",
-    "plain text": "Testo semplice"
+    "native": "File elenco iResucito",
+    "plain text": "Testo semplice",
+    "pdf file": "File PDF"
   },
   "list_item": {
     "ambiental": "Ammonizione Ambientale",

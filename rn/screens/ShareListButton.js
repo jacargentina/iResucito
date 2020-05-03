@@ -18,6 +18,7 @@ const ShareListButton = (props: any) => {
         options: [
           I18n.t('list_export_options.native'),
           I18n.t('list_export_options.plain text'),
+          I18n.t('list_export_options.pdf file'),
           I18n.t('ui.cancel'),
         ],
         cancelButtonIndex: 2,
@@ -27,10 +28,13 @@ const ShareListButton = (props: any) => {
         index = Number(index);
         switch (index) {
           case 0:
-            shareList(listName, true);
+            shareList(listName, 'native');
             break;
           case 1:
-            shareList(listName, false);
+            shareList(listName, 'text');
+            break;
+          case 2:
+            shareList(listName, 'pdf');
             break;
         }
       }

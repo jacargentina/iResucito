@@ -111,7 +111,8 @@
   },
   "list_export_options": {
     "native": "iResucito Listendatei",
-    "plain text": "Klartext"
+    "plain text": "Klartext",
+    "pdf file": "PDF-Datei"
   },
   "list_item": {
     "ambiental": "Allgemeine Einleitung",

@@ -111,7 +111,8 @@
   },
   "list_export_options": {
     "native": "iPrisikėlė dokumentų sąrašas",
-    "plain text": "Tik tekstas"
+    "plain text": "Tik tekstas",
+    "pdf file": "PDF failas"
   },
   "list_item": {
     "ambiental": "Bendras įvadas",

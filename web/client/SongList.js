@@ -32,7 +32,7 @@ const SongList = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [debouncedTerm] = useDebounce(searchTerm, 800);
 
-  const toggleFilter = (name) => {
+  const toggleFilter = (name: string) => {
     setFilters((currentFilters) => {
       return { ...currentFilters, [name]: !currentFilters[name] };
     });
@@ -66,7 +66,7 @@ const SongList = () => {
 
   useEffect(() => {
     listSongs();
-  }, [locale]);
+  }, [locale, listSongs]);
 
   useHotkeys(
     (key) => {
@@ -75,6 +75,7 @@ const SongList = () => {
           if (!editSong) {
             addSong();
           }
+          break;
         case 'r':
           if (!editSong) {
             listSongs();

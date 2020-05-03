@@ -110,8 +110,9 @@
     "other": "Autre"
   },
   "list_export_options": {
-    "native": "fichier de liste iResucito",
-    "plain text": "Texte brut"
+    "native": "Fichier de liste iResucito",
+    "plain text": "Texte brut",
+    "pdf file": "Fichier PDF"
   },
   "list_item": {
     "1": "1ère lecture",

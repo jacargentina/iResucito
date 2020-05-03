@@ -111,7 +111,8 @@
   },
   "list_export_options": {
     "native": "Archivo de lista iResucito",
-    "plain text": "Texto plano"
+    "plain text": "Texto plano",
+    "pdf file": "Archivo PDF"
   },
   "list_item": {
     "ambiental": "Monición Ambiental",
