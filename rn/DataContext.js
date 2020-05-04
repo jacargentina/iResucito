@@ -1,5 +1,5 @@
 // @flow
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { Alert, Platform, PermissionsAndroid } from 'react-native';
 import Share from 'react-native-share';
 import Contacts from 'react-native-contacts';
@@ -1020,6 +1020,10 @@ const DataContextWrapper = (props: any) => {
   const [localeValue] = locale;
   const [developerModeValue] = developerMode;
 
+  const localeReal = useMemo(() => {
+    return localeValue === 'default' ? getDefaultLocale() : localeValue;
+  }, [localeValue]);
+
   const community = useCommunity();
   const songsMeta = useSongsMeta(localeValue);
   const search = useSearch(localeValue, developerModeValue);
@@ -1061,16 +1065,11 @@ const DataContextWrapper = (props: any) => {
     });
   };
 
-  const getLocaleReal = (rawLoc: string) => {
-    var validateLocale = rawLoc === 'default' ? getDefaultLocale() : rawLoc;
-    return validateLocale;
-  };
-
   useEffect(() => {
-    if (localeValue) {
-      I18n.locale = getLocaleReal(localeValue);
+    if (localeReal) {
+      I18n.locale = localeReal;
     }
-  }, [localeValue]);
+  }, [localeReal]);
 
   return (
     <DataContext.Provider
@@ -1083,6 +1082,7 @@ const DataContextWrapper = (props: any) => {
         shareIndexPatch,
         loading,
         locale,
+        localeReal,
         developerMode,
         keepAwake,
         zoomLevel,

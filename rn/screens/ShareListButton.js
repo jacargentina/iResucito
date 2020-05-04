@@ -10,7 +10,6 @@ const ShareListButton = (props: any) => {
   const route = useRoute();
   const { listName } = route.params;
   const data = useContext(DataContext);
-  const [localeValue] = data.locale;
   const { shareList } = data.lists;
 
   const chooseShareFormat = () => {
@@ -29,13 +28,13 @@ const ShareListButton = (props: any) => {
         index = Number(index);
         switch (index) {
           case 0:
-            shareList(listName, localeValue, 'native');
+            shareList(listName, data.localeReal, 'native');
             break;
           case 1:
-            shareList(listName, localeValue, 'text');
+            shareList(listName, data.localeReal, 'text');
             break;
           case 2:
-            shareList(listName, localeValue, 'pdf');
+            shareList(listName, data.localeReal, 'pdf');
             break;
         }
       }

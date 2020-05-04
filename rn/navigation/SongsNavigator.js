@@ -20,14 +20,13 @@ const Stack = createStackNavigator();
 
 const SongsNavigator = () => {
   const data = useContext(DataContext);
-  const [localeValue] = data.locale;
   return (
     <Stack.Navigator screenOptions={StackNavigatorOptions()}>
       <Stack.Screen
         name="SongSearch"
         component={SongSearch}
         options={{
-          title: I18n.t('screen_title.search', { locale: localeValue }),
+          title: I18n.t('screen_title.search', { locale: data.localeReal }),
         }}
       />
       <Stack.Screen
@@ -35,7 +34,7 @@ const SongsNavigator = () => {
         component={SongList}
         options={({ navigation, route }) => {
           return {
-            title: I18n.t(route.params.title_key, { locale: localeValue }),
+            title: I18n.t(route.params.title_key, { locale: data.localeReal }),
             headerRight: () => (
               <View style={{ flexDirection: 'row' }}>
                 <ExportToPdfButton />
@@ -70,7 +69,7 @@ const SongsNavigator = () => {
         name="UnassignedList"
         component={UnassignedList}
         options={{
-          title: I18n.t('search_title.unassigned', { locale: localeValue }),
+          title: I18n.t('search_title.unassigned', { locale: data.localeReal }),
         }}
       />
     </Stack.Navigator>

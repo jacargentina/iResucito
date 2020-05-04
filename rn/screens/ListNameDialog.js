@@ -13,7 +13,6 @@ const ListNameDialog = (props: any) => {
   const navigation = useNavigation();
   const route = useRoute();
   const { lists, addList, renameList } = data.lists;
-  const [localeValue] = data.locale;
   const [disabledReasonText, setDisabledReasonText] = useState(null);
   const [actionEnabled, setActionEnabled] = useState(false);
   const [name, setName] = useState('');
@@ -56,7 +55,7 @@ const ListNameDialog = (props: any) => {
     action === 'create'
       ? `${I18n.t('ui.lists.create')} (${getLocalizedListType(
           type,
-          localeValue
+          data.localeReal
         )})`
       : `${I18n.t('ui.lists.rename')} (${listName})`;
 

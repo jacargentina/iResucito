@@ -14,12 +14,11 @@ const ListScreen = (props: any) => {
   const data = useContext(DataContext);
   const navigation = useNavigation();
   const { getListsForUI, removeList, chooseListTypeForAdd } = data.lists;
-  const [localeValue] = data.locale;
   const [filtered, setFiltered] = useState();
   const [filter, setFilter] = useState('');
 
-  const allLists = useMemo(() => getListsForUI(localeValue), [
-    localeValue,
+  const allLists = useMemo(() => getListsForUI(data.localeReal), [
+    data.localeReal,
     getListsForUI,
   ]);
 

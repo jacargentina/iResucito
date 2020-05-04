@@ -81,7 +81,9 @@ export const getLocaleLabel = (code: string) => {
   var label = l.local;
   if (parts.length > 1) {
     const countryName = countries.getName(parts[1]);
-    label += ` (${countryName})`;
+    if (countryName) {
+      label += ` (${countryName})`;
+    }
   }
   return label;
 };
