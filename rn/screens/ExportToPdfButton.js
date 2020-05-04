@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 import { DataContext } from '../DataContext';
 import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
 import { NativeParser } from '../util';
-import { generatePDF } from '../pdf';
+import { generateSongPDF } from '../pdf';
 import { defaultExportToPdfOptions } from '../../common';
 
 const ExportToPdfButton = () => {
@@ -52,7 +52,7 @@ const ExportToPdfButton = () => {
                 total: songToExport.length,
               }),
             });
-            generatePDF(
+            generateSongPDF(
               items,
               defaultExportToPdfOptions,
               `-${I18n.locale}`

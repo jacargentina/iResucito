@@ -2,7 +2,7 @@
 import React, { Fragment, useContext, useState } from 'react';
 import { Alert, Platform } from 'react-native';
 import { List, Text } from 'native-base';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useRoute } from '@react-navigation/native';
 import Swipeout from 'react-native-swipeout';
 import ListDetailItem from './ListDetailItem';
 import { DataContext } from '../DataContext';
@@ -13,7 +13,6 @@ const ListDetail = () => {
   const data = useContext(DataContext);
   const [scroll, setScroll] = useState();
   const [noteFocused, setNoteFocused] = useState(false);
-  const navigation = useNavigation();
   const route = useRoute();
   const { setList, getListForUI } = data.lists;
   const { listName } = route.params;

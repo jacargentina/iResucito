@@ -7,12 +7,16 @@ import { ActionSheet, Toast } from 'native-base';
 import RNFS from 'react-native-fs';
 import badges from './badges';
 import { clouddata } from './clouddata';
-import usePersist from './usePersist';
+import { generateListPDF } from './pdf';
 import {
   getEsSalmo,
+  getLocalizedListItem,
+  getLocalizedListType,
+  defaultExportToPdfOptions,
+} from '../common';
+import usePersist from './usePersist';
+import {
   getDefaultLocale,
-  getFriendlyText,
-  getFriendlyTextForListType,
   ordenClasificacion,
   NativeSongs,
   NativeExtras,
@@ -389,6 +393,7 @@ const useLists = (songs: any) => {
       }
       uiList[clave] = valor;
     });
+    uiList.name = listName;
     return uiList;
   };
 
@@ -436,7 +441,7 @@ const useLists = (songs: any) => {
       var listMap = lists[name];
       return {
         name: name,
-        type: getFriendlyTextForListType(listMap.type, localeValue),
+        type: getLocalizedListType(listMap.type, localeValue),
       };
     });
   };
@@ -448,7 +453,7 @@ const useLists = (songs: any) => {
         valor = valor.titulo;
       }
       if (valor) {
-        return getFriendlyText(key) + ': ' + valor;
+        return getLocalizedListItem(key) + ': ' + valor;
       }
     }
     return null;
@@ -517,7 +522,11 @@ const useLists = (songs: any) => {
     );
   };
 
-  const shareList = (listName: string, format: 'native' | 'text' | 'pdf') => {
+  const shareList = (
+    listName: string,
+    localeValue: string,
+    format: 'native' | 'text' | 'pdf'
+  ) => {
     switch (format) {
       case 'native':
         const folder =
@@ -588,8 +597,22 @@ const useLists = (songs: any) => {
           });
         break;
       case 'pdf':
-        // TODO
-        // Generar archivo PDF
+        var list = getListForUI(listName);
+        list.localeType = getLocalizedListType(list.type, localeValue);
+        generateListPDF(list, defaultExportToPdfOptions).then((path) => {
+          Share.open({
+            title: I18n.t('ui.share'),
+            subject: `iResucitó - ${listName}`,
+            url: `file://${path}`,
+            failOnCancel: false,
+          })
+            .then((res) => {
+              console.log(res);
+            })
+            .catch((err) => {
+              err && console.log(err);
+            });
+        });
         break;
     }
   };

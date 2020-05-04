@@ -1,10 +1,10 @@
 // @flow
 
-declare var __DEV__:string;
+declare var __DEV__: string;
 
 declare type PickerLocale = {
   label: string,
-  value: string
+  value: string,
 };
 
 declare type SongPatchLogData = {
@@ -12,18 +12,18 @@ declare type SongPatchLogData = {
   author: string,
   locale: string,
   linked?: {
-    new: string
+    new: string,
   },
   rename?: {
     original?: string,
-    new?: string
+    new?: string,
   },
   created: boolean,
-  updated: boolean
+  updated: boolean,
 };
 
 declare type SongPatchLog = {
-  [key: string]: Array<SongPatchLogData>
+  [key: string]: Array<SongPatchLogData>,
 };
 
 declare type SongPatchData = {
@@ -32,23 +32,23 @@ declare type SongPatchData = {
   file?: string,
   rename?: string,
   stage?: string,
-  lines?: string
+  lines?: string,
 };
 
 declare type SongPatch = {
-  [locale: string]: SongPatchData
+  [locale: string]: SongPatchData,
 };
 
 declare type SongIndexPatch = {
-  [key: string]: SongPatch
+  [key: string]: SongPatch,
 };
 
 declare type SongRating = {
-  [locale: string]: number
+  [locale: string]: number,
 };
 
 declare type SongRatingFile = {
-  [key: string]: SongRating
+  [key: string]: SongRating,
 };
 
 declare type SongStyles = {
@@ -61,7 +61,7 @@ declare type SongStyles = {
   specialNote: any,
   normalLine: any,
   pageNumber: any,
-  prefix: any
+  prefix: any,
 };
 
 declare type SongLineType =
@@ -85,18 +85,18 @@ declare type SongLine = {
   prefijoStyle: any,
   sufijo: string,
   sufijoStyle: any,
-  type: SongLineType
+  type: SongLineType,
 };
 
 declare type SongIndicator = {
   start: number,
   end: number,
-  type: SongLineType
+  type: SongLineType,
 };
 
 declare type SongRendering = {
   items: Array<SongLine>,
-  indicators: Array<SongIndicator>
+  indicators: Array<SongIndicator>,
 };
 
 // nombre: el nombre completo del archivo, sin la extension .txt
@@ -105,7 +105,7 @@ declare type SongRendering = {
 declare type SongFile = {
   nombre: string,
   titulo: string,
-  fuente: string
+  fuente: string,
 };
 
 // key: la clave única del canto dentro del indice global de cantos
@@ -145,7 +145,7 @@ declare type Song = {
   patchedTitle?: string,
   added?: boolean,
   error?: any,
-  rating: number
+  rating: number,
 };
 
 declare type ExportToPdfOptions = {
@@ -164,16 +164,16 @@ declare type ExportToPdfOptions = {
   bookSubtitle: { FontSize: number },
   indexText: { FontSize: number },
   indexMarginLeft: number,
-  disablePageNumbers: boolean
+  disablePageNumbers: boolean,
 };
 
 declare type ListSongGroup = {
-  [string]: Array<ListSongItem>
+  [string]: Array<ListSongItem>,
 };
 
 declare type ListSongItem = {
   songKey: string,
-  str: string
+  str: string,
 };
 
 declare type ListSongPos = {
@@ -181,14 +181,14 @@ declare type ListSongPos = {
   songKey: string,
   x: number,
   y: number,
-  value: number
+  value: number,
 };
 
 declare type ExportToPdfLimits = {
   x: number,
   y: number,
   w: number,
-  h: number
+  h: number,
 };
 
 declare type ExportToPdfLineText = {
@@ -197,19 +197,19 @@ declare type ExportToPdfLineText = {
   startY: number,
   endY: number,
   text: string,
-  color: any
+  color: any,
 };
 
 declare type SongToPdf = {
   song: Song,
-  render: SongRendering
+  render: SongRendering,
 };
 
 declare type SongRef = Song | SongFile;
 
 declare type SearchParams = {
   filter: any,
-  title_key?: string
+  title_key?: string,
 };
 
 declare type SearchItem = {
@@ -219,7 +219,14 @@ declare type SearchItem = {
   route?: string,
   params?: SearchParams,
   badge?: any,
-  chooser?: string
+  chooser?: string,
 };
 
 declare type ListType = 'eucaristia' | 'palabra' | 'libre';
+
+declare type ListToPdf = {
+  name: string,
+  type: ListType,
+  localeType: string,
+  items: Array<any>,
+};

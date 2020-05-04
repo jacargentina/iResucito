@@ -1,6 +1,7 @@
 [ignore]
 <PROJECT_ROOT>/node_modules/config-chain/test/broken.json
 <PROJECT_ROOT>/node_modules/bcryptjs/src/bower.json
+<PROJECT_ROOT>/scripts/listPatches.js
 
 [untyped]
 .*/node_modules/react-native

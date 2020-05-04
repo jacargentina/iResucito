@@ -59,8 +59,8 @@ const SongsNavigator = () => {
             title: `PDF - ${title}`,
             headerRight: () => (
               <View style={{ flexDirection: 'row' }}>
-                <SharePDFButton Read-WithDefault />
-                <PrintPDFButton Read-WithDefault />
+                <SharePDFButton />
+                <PrintPDFButton />
               </View>
             ),
           };

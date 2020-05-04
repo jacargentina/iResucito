@@ -25,7 +25,7 @@ server.get('/', (req, res) => {
   res.sendFile(path.join(webClientFolder, 'index.html'));
 });
 
-if (process.env.NODE_ENV == 'production') {
+if (process.env.NODE_ENV === 'production') {
   require('./sync');
 }
 
@@ -36,6 +36,6 @@ songs(server);
 const port = process.env.PORT || 3000;
 require('http')
   .createServer(server)
-  .listen(port, function() {
+  .listen(port, function () {
     console.log('Http on port', port);
   });

@@ -10,6 +10,7 @@ const ShareListButton = (props: any) => {
   const route = useRoute();
   const { listName } = route.params;
   const data = useContext(DataContext);
+  const [localeValue] = data.locale;
   const { shareList } = data.lists;
 
   const chooseShareFormat = () => {
@@ -21,20 +22,20 @@ const ShareListButton = (props: any) => {
           I18n.t('list_export_options.pdf file'),
           I18n.t('ui.cancel'),
         ],
-        cancelButtonIndex: 2,
+        cancelButtonIndex: 3,
         title: I18n.t('ui.export.type'),
       },
       (index) => {
         index = Number(index);
         switch (index) {
           case 0:
-            shareList(listName, 'native');
+            shareList(listName, localeValue, 'native');
             break;
           case 1:
-            shareList(listName, 'text');
+            shareList(listName, localeValue, 'text');
             break;
           case 2:
-            shareList(listName, 'pdf');
+            shareList(listName, localeValue, 'pdf');
             break;
         }
       }

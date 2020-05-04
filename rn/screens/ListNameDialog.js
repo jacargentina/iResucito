@@ -4,7 +4,7 @@ import { Text, Input, Item, View, Button } from 'native-base';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { DataContext } from '../DataContext';
 import ModalView from './ModalView';
-import { getFriendlyTextForListType } from '../util';
+import { getLocalizedListType } from '../../common';
 import I18n from '../../translations';
 import commonTheme from '../native-base-theme/variables/platform';
 
@@ -54,7 +54,7 @@ const ListNameDialog = (props: any) => {
 
   const title =
     action === 'create'
-      ? `${I18n.t('ui.lists.create')} (${getFriendlyTextForListType(
+      ? `${I18n.t('ui.lists.create')} (${getLocalizedListType(
           type,
           localeValue
         )})`

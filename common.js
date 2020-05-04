@@ -6,6 +6,39 @@ import langs from 'langs';
 import countries from 'country-list';
 import I18n from './translations';
 
+export const getLocalizedListItem = (listKey: string): string => {
+  return I18n.t(`list_item.${listKey}`);
+};
+
+export const getLocalizedListType = (
+  listType: string,
+  localeValue: string
+): string => {
+  switch (listType) {
+    case 'eucaristia':
+      return I18n.t('list_type.eucharist', { locale: localeValue });
+    case 'palabra':
+      return I18n.t('list_type.word', { locale: localeValue });
+    case 'libre':
+      return I18n.t('list_type.other', { locale: localeValue });
+    default:
+      return '';
+  }
+};
+
+export const getEsSalmo = (listKey: string): boolean => {
+  return (
+    listKey === 'entrada' ||
+    listKey === '1-salmo' ||
+    listKey === '2-salmo' ||
+    listKey === '3-salmo' ||
+    listKey === 'paz' ||
+    listKey === 'comunion-pan' ||
+    listKey === 'comunion-caliz' ||
+    listKey === 'salida'
+  );
+};
+
 export const defaultExportToPdfOptions: ExportToPdfOptions = {
   useTimesRomanFont: false,
   marginLeft: 25,
@@ -207,7 +240,6 @@ var DEBUG_RECTS = false;
 export class PdfWriter {
   opts: ExportToPdfOptions;
   resetY: number;
-  limiteHoja: number;
   doc: any;
   base64Transform: any;
   addExtraMargin: boolean;
@@ -471,7 +503,7 @@ export class PdfWriter {
   }
 }
 
-export const PDFGenerator = async (
+export const SongPDFGenerator = async (
   songsToPdf: Array<SongToPdf>,
   opts: ExportToPdfOptions,
   writer: PdfWriter
@@ -734,6 +766,147 @@ export const PDFGenerator = async (
     writer.finalizeListing();
     return await writer.save();
   } catch (err) {
-    console.log('PDFGenerator ERROR', err);
+    console.log('SongPDFGenerator ERROR', err);
+  }
+};
+
+export const ListPDFGenerator = async (
+  list: ListToPdf,
+  opts: ExportToPdfOptions,
+  writer: PdfWriter
+) => {
+  try {
+    writer.disablePageNumbers = true;
+    writer.addExtraMargin = true;
+    writer.doc.addPage();
+
+    const title = list.name.toUpperCase();
+    const subtitle = list.localeType.toUpperCase();
+
+    // Titulo
+    writer.writeText(title, PdfStyles.title.color, opts.songTitle.FontSize, {
+      align: 'left',
+    });
+
+    // Subtitulo
+    writer.writeText(
+      subtitle,
+      PdfStyles.source.color,
+      opts.songSource.FontSize,
+      {
+        align: 'left',
+      }
+    );
+
+    writer.doc.moveDown();
+
+    if (list.type === 'libre') {
+      var cantos = list.items;
+      cantos.forEach((canto, i) => {
+        const lastX = writer.doc.x;
+        writer.writeText(
+          `${i + 1}.`,
+          PdfStyles.normalLine.color,
+          opts.songText.FontSize,
+          {
+            lineBreak: false,
+            align: 'left',
+          }
+        );
+        writer.doc.x += 10;
+        writer.writeText(
+          canto.titulo,
+          PdfStyles.normalLine.color,
+          opts.songText.FontSize,
+          {
+            align: 'left',
+          }
+        );
+        writer.doc.x = lastX;
+      });
+    } else {
+      const getTitleValue = (
+        key: string,
+        removeIfEmpty: boolean = false
+      ): any => {
+        if (list.hasOwnProperty(key)) {
+          var valor = list[key];
+          if (valor && getEsSalmo(key)) {
+            valor = valor.titulo;
+          }
+          if (!valor && removeIfEmpty) {
+            return null;
+          }
+          return { title: getLocalizedListItem(key), value: valor ?? '-' };
+        }
+        return null;
+      };
+
+      var items = [];
+      const spacer = 'spacer';
+      items.push(getTitleValue('ambiental'));
+      items.push(getTitleValue('entrada'));
+      items.push(spacer);
+      items.push(getTitleValue('1-monicion'));
+      items.push(getTitleValue('1'));
+      items.push(getTitleValue('1-salmo'));
+      items.push(spacer);
+      items.push(getTitleValue('2-monicion'));
+      items.push(getTitleValue('2'));
+      items.push(getTitleValue('2-salmo'));
+      items.push(spacer);
+      items.push(getTitleValue('3-monicion'));
+      items.push(getTitleValue('3'));
+      items.push(getTitleValue('3-salmo'));
+      items.push(spacer);
+      items.push(getTitleValue('evangelio-monicion'));
+      items.push(getTitleValue('evangelio'));
+      items.push(spacer);
+      items.push(getTitleValue('oracion-universal'));
+      items.push(spacer);
+      items.push(getTitleValue('paz'));
+      items.push(getTitleValue('comunion-pan'));
+      items.push(getTitleValue('comunion-caliz'));
+      items.push(getTitleValue('salida'));
+      items.push(spacer);
+      items.push(getTitleValue('encargado-pan', true));
+      items.push(getTitleValue('encargado-flores', true));
+      items.push(getTitleValue('nota', true));
+
+      var movedDown = false;
+      items.forEach((item, i) => {
+        // cuando el anterior es un spacer, no moverse de nuevo!
+        if (typeof item === 'string' && item === 'spacer' && !movedDown) {
+          writer.doc.moveDown();
+          movedDown = true;
+        } else if (item && item.title) {
+          const lastX = writer.doc.x;
+          writer.writeText(
+            `${item.title}:`,
+            PdfStyles.normalLine.color,
+            opts.songText.FontSize,
+            {
+              lineBreak: false,
+              align: 'left',
+            }
+          );
+          writer.doc.x += 10;
+          writer.writeText(
+            item.value,
+            PdfStyles.normalLine.color,
+            opts.songText.FontSize,
+            {
+              align: 'left',
+            }
+          );
+          writer.doc.x = lastX;
+          movedDown = false;
+        }
+      });
+    }
+
+    return await writer.save();
+  } catch (err) {
+    console.log('ListPDFGenerator ERROR', err);
   }
 };

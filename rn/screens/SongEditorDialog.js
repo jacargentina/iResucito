@@ -1,5 +1,5 @@
 // @flow
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, useCallback } from 'react';
 import ModalView from './ModalView';
 import SongListItem from './SongListItem';
 import { TextInput, View, Alert, ScrollView, Dimensions } from 'react-native';
@@ -10,7 +10,7 @@ import I18n from '../../translations';
 import commonTheme from '../native-base-theme/variables/platform';
 import useUndo from 'use-undo';
 import { NativeParser } from '../util';
-import { generatePDF } from '../pdf';
+import { generateSongPDF } from '../pdf';
 import { defaultExportToPdfOptions } from '../../common';
 
 const SongEditorDialog = (props: any) => {
@@ -74,7 +74,7 @@ const SongEditorDialog = (props: any) => {
     );
   };
 
-  const reload = () => {
+  const reload = useCallback(() => {
     getSongLocalePatch(song).then((patchObj) => {
       var ln = song.fullText;
       if (
@@ -89,7 +89,7 @@ const SongEditorDialog = (props: any) => {
       }
       resetLines(ln);
     });
-  };
+  }, [song, getSongLocalePatch, resetLines]);
 
   const saveWithLines = (text?: string) => {
     return setSongPatch(song, I18n.locale, { lines: text });
@@ -138,12 +138,14 @@ const SongEditorDialog = (props: any) => {
               song,
               render,
             };
-            generatePDF([item], defaultExportToPdfOptions, '').then((path) => {
-              navigation.navigate('SongPreviewPdf', {
-                uri: path,
-                song: song,
-              });
-            });
+            generateSongPDF([item], defaultExportToPdfOptions, '').then(
+              (path) => {
+                navigation.navigate('SongPreviewPdf', {
+                  uri: path,
+                  song: song,
+                });
+              }
+            );
             break;
         }
       }
@@ -152,7 +154,7 @@ const SongEditorDialog = (props: any) => {
 
   useEffect(() => {
     reload();
-  }, []);
+  }, [reload]);
 
   return (
     <ModalView

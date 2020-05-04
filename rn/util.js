@@ -59,39 +59,6 @@ export function getContactsForImport(
   return items;
 }
 
-export function getEsSalmo(listKey: string): boolean {
-  return (
-    listKey === 'entrada' ||
-    listKey === '1-salmo' ||
-    listKey === '2-salmo' ||
-    listKey === '3-salmo' ||
-    listKey === 'paz' ||
-    listKey === 'comunion-pan' ||
-    listKey === 'comunion-caliz' ||
-    listKey === 'salida'
-  );
-}
-
-export function getFriendlyText(listKey: string): string {
-  return I18n.t(`list_item.${listKey}`);
-}
-
-export function getFriendlyTextForListType(
-  listType: string,
-  localeValue: string
-): string {
-  switch (listType) {
-    case 'eucaristia':
-      return I18n.t('list_type.eucharist', { locale: localeValue });
-    case 'palabra':
-      return I18n.t('list_type.word', { locale: localeValue });
-    case 'libre':
-      return I18n.t('list_type.other', { locale: localeValue });
-    default:
-      return '';
-  }
-}
-
 export const getDefaultLocale = () => {
   return RNLocalize.getLocales()[0].languageTag;
 };

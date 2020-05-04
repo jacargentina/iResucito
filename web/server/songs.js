@@ -10,7 +10,7 @@ import {
   dataPath,
   readLocalePatch,
   saveLocalePatch,
-  asyncMiddleware
+  asyncMiddleware,
 } from './common';
 
 const merge = require('deepmerge');
@@ -18,13 +18,13 @@ const merge = require('deepmerge');
 FolderSongs.basePath = path.resolve('./songs');
 FolderExtras.basePath = dataPath;
 
-export default function(server: any) {
+export default function (server: any) {
   server.get('/api/list/:locale', async (req, res) => {
     const patch = await readLocalePatch();
     const { locale } = req.params;
     if (!locale) {
       return res.status(500).json({
-        error: 'Locale not provided'
+        error: 'Locale not provided',
       });
     }
     var songs = FolderSongs.getSongsMeta(locale, patch);
@@ -35,21 +35,21 @@ export default function(server: any) {
     const { key, locale } = req.params;
     if (!locale || !key) {
       return res.status(500).json({
-        error: 'Locale or key not provided'
+        error: 'Locale or key not provided',
       });
     }
     const patch = await readLocalePatch();
     const songs = FolderSongs.getSongsMeta(locale, patch);
-    const song = songs.find(s => s.key === key);
+    const song = songs.find((s) => s.key === key);
     if (!song)
       return res.status(500).json({
-        error: `Song ${key} not valid`
+        error: `Song ${key} not valid`,
       });
 
     await FolderSongs.loadSingleSong(locale, song, patch);
     if (song.error) {
       return res.status(500).json({
-        error: song.error
+        error: song.error,
       });
     } else {
       // Buscar key previa y siguiente para navegacion
@@ -72,7 +72,7 @@ export default function(server: any) {
     const { key, locale } = req.params;
     if (!locale || !key) {
       return res.status(500).json({
-        error: 'Locale or key not provided'
+        error: 'Locale or key not provided',
       });
     }
 
@@ -105,7 +105,7 @@ export default function(server: any) {
     const { key, locale } = req.params;
     if (!locale || !key) {
       return res.status(500).json({
-        error: 'Locale or key not provided'
+        error: 'Locale or key not provided',
       });
     }
     var patchObj = await readLocalePatch();
@@ -113,7 +113,7 @@ export default function(server: any) {
     if (!patchObj) patchObj = {};
     if (!patchObj[key].hasOwnProperty(locale)) {
       return res.status(500).json({
-        error: `Cant delete. Patch for locale ${locale} not found`
+        error: `Cant delete. Patch for locale ${locale} not found`,
       });
     }
     delete patchObj[key][locale];
@@ -131,7 +131,7 @@ export default function(server: any) {
     const { key, locale } = req.params;
     if (!locale || !key) {
       return res.status(500).json({
-        error: 'Locale or key not provided'
+        error: 'Locale or key not provided',
       });
     }
     var patchObj = await readLocalePatch();
@@ -149,7 +149,7 @@ export default function(server: any) {
     patch.date = Date.now();
 
     const localePatch: SongPatch = {
-      [locale]: patch
+      [locale]: patch,
     };
     if (!patchObj[key]) {
       patchObj[key] = {};
@@ -168,7 +168,7 @@ export default function(server: any) {
       const { text, options } = req.body;
       if (!locale) {
         return res.status(500).json({
-          error: 'Locale not provided'
+          error: 'Locale not provided',
         });
       }
       I18n.locale = locale;
@@ -178,7 +178,7 @@ export default function(server: any) {
         if (key) {
           if (text === undefined) {
             return res.status(500).json({
-              error: 'Text not provided'
+              error: 'Text not provided',
             });
           }
           const song = FolderSongs.getSingleSongMeta(key, locale);
@@ -186,19 +186,19 @@ export default function(server: any) {
           const render = parser.getForRender(text, locale);
           const item: SongToPdf = {
             song,
-            render
+            render,
           };
           items.push(item);
         } else {
           const patch = await readLocalePatch();
           var songs = FolderSongs.getSongsMeta(locale, patch);
           await FolderSongs.loadSongs(locale, songs, patch);
-          songs.map(song => {
+          songs.map((song) => {
             if (song.files[locale]) {
               var render = parser.getForRender(song.fullText, locale);
               const item: SongToPdf = {
                 song,
-                render
+                render,
               };
               items.push(item);
             }
@@ -208,12 +208,12 @@ export default function(server: any) {
           items,
           {
             ...defaultExportToPdfOptions,
-            ...options
+            ...options,
           },
           ''
         );
         if (pdfPath) {
-          res.sendFile(pdfPath, null, err => {
+          res.sendFile(pdfPath, null, (err) => {
             if (err) {
               next(err);
             } else {
@@ -222,12 +222,12 @@ export default function(server: any) {
           });
         } else {
           return res.status(500).json({
-            error: 'No file'
+            error: 'No file',
           });
         }
       } catch (err) {
         return res.status(500).json({
-          error: err.message
+          error: err.message,
         });
       }
     })

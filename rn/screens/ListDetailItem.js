@@ -13,7 +13,7 @@ import {
 import { View, TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { DataContext } from '../DataContext';
-import { getFriendlyText } from '../util';
+import { getLocalizedListItem } from '../../common';
 import commonTheme from '../native-base-theme/variables/platform';
 import I18n from '../../translations';
 
@@ -151,7 +151,7 @@ const ListDetailItem = (props: any) => {
   }
   // Solo las claves de tipo string, llevan los titulos (eucaristia, palabra)
   if (typeof listKey === 'string') {
-    var friendlyText = getFriendlyText(listKey).toUpperCase();
+    var friendlyText = getLocalizedListItem(listKey).toUpperCase();
     var separator = (
       <Separator bordered>
         <Text>{friendlyText}</Text>

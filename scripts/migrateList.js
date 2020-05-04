@@ -1,17 +1,5 @@
 import FolderSongs from '../FolderSongs';
-
-function getEsSalmo(listKey: string): boolean {
-  return (
-    listKey == 'entrada' ||
-    listKey == '1-salmo' ||
-    listKey == '2-salmo' ||
-    listKey == '3-salmo' ||
-    listKey == 'paz' ||
-    listKey == 'comunion-pan' ||
-    listKey == 'comunion-caliz' ||
-    listKey == 'salida'
-  );
-}
+import { getEsSalmo } from '../common';
 
 var songs = FolderSongs.getSongsMeta('es');
 
