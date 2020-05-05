@@ -41,10 +41,11 @@ export default function (server: any) {
     const patch = await readLocalePatch();
     const songs = FolderSongs.getSongsMeta(locale, patch);
     const song = songs.find((s) => s.key === key);
-    if (!song)
+    if (!song) {
       return res.status(500).json({
         error: `Song ${key} not valid`,
       });
+    }
 
     await FolderSongs.loadSingleSong(locale, song, patch);
     if (song.error) {
@@ -110,7 +111,9 @@ export default function (server: any) {
     }
     var patchObj = await readLocalePatch();
 
-    if (!patchObj) patchObj = {};
+    if (!patchObj) {
+      patchObj = {};
+    }
     if (!patchObj[key].hasOwnProperty(locale)) {
       return res.status(500).json({
         error: `Cant delete. Patch for locale ${locale} not found`,
@@ -181,8 +184,9 @@ export default function (server: any) {
               error: 'Text not provided',
             });
           }
-          const song = FolderSongs.getSingleSongMeta(key, locale);
-          await FolderSongs.loadSingleSong(locale, song);
+          const patch = await readLocalePatch();
+          const song = FolderSongs.getSingleSongMeta(key, locale, patch);
+          await FolderSongs.loadSingleSong(locale, song, patch);
           const render = parser.getForRender(text, locale);
           const item: SongToPdf = {
             song,
