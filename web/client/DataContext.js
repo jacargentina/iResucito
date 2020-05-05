@@ -1,5 +1,5 @@
 // @flow
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import I18n from '../../translations';
 import api from './api';
 import auth from './auth';
@@ -95,7 +95,7 @@ const DataContextWrapper = (props: any) => {
     delete api.defaults.headers.Authorization;
   };
 
-  const listSongs = () => {
+  const listSongs = useCallback(() => {
     setApiResult();
     setApiLoading(true);
     return api
@@ -107,7 +107,7 @@ const DataContextWrapper = (props: any) => {
       .catch((err) => {
         handleApiError(err);
       });
-  };
+  }, [I18n.locale]);
 
   const previewPdf = () => {
     const savedSettings = localStorage.getItem('pdfExportOptions');

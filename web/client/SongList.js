@@ -18,7 +18,7 @@ import useHotkeys from 'use-hotkeys';
 
 const SongList = () => {
   const data = useContext(DataContext);
-  const { locale, listSongs, songs, apiLoading, previewPdf, pdf } = data;
+  const { listSongs, songs, apiLoading, previewPdf, pdf } = data;
 
   const edit = useContext(EditContext);
   const { loadSong, addSong, editSong } = edit;
@@ -66,7 +66,7 @@ const SongList = () => {
 
   useEffect(() => {
     listSongs();
-  }, [locale, listSongs]);
+  }, [listSongs]);
 
   useHotkeys(
     (key) => {
