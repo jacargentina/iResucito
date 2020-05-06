@@ -21,9 +21,7 @@
     "react-devtools": "react-devtools",
     "genpdf": "babel-node ./scripts/songToPdf.js",
     "patch": "babel-node ./scripts/applyPatch.js",
-    "scripts": {
-      "postinstall": "npx jetify"
-    }
+    "postinstall": "npx jetify"
   },
   "jest": {
     "preset": "react-native"
