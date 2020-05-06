@@ -657,7 +657,7 @@ const useLists = (songs: any) => {
   };
 };
 
-const useSearch = (locale: string, developerMode: boolean) => {
+const useSearch = (localeValue: string, developerMode: boolean) => {
   const [initialized, setInitialized] = useState(false);
   const [searchItems, setSearchItems] = useState();
 
@@ -676,7 +676,7 @@ const useSearch = (locale: string, developerMode: boolean) => {
         title_key: 'search_title.alpha',
         note_key: 'search_note.alpha',
         route: 'SongList',
-        chooser: I18n.t('search_tabs.all'),
+        chooser: I18n.t('search_tabs.all', { locale: localeValue }),
         params: { filter: null },
         badge: badges.alpha,
       },
@@ -761,7 +761,7 @@ const useSearch = (locale: string, developerMode: boolean) => {
         route: 'SongList',
         params: { filter: { entrance: true } },
         badge: null,
-        chooser: I18n.t('search_tabs.entrance'),
+        chooser: I18n.t('search_tabs.entrance', { locale: localeValue }),
         chooser_listKey: ['entrada'],
       },
       {
@@ -770,7 +770,9 @@ const useSearch = (locale: string, developerMode: boolean) => {
         route: 'SongList',
         params: { filter: { 'peace and offerings': true } },
         badge: null,
-        chooser: I18n.t('search_tabs.peace and offerings'),
+        chooser: I18n.t('search_tabs.peace and offerings', {
+          locale: localeValue,
+        }),
         chooser_listKey: ['paz'],
       },
       {
@@ -779,7 +781,9 @@ const useSearch = (locale: string, developerMode: boolean) => {
         route: 'SongList',
         params: { filter: { 'fraction of bread': true } },
         badge: null,
-        chooser: I18n.t('search_tabs.fraction of bread'),
+        chooser: I18n.t('search_tabs.fraction of bread', {
+          locale: localeValue,
+        }),
         chooser_listKey: ['comunion-pan'],
       },
       {
@@ -788,7 +792,7 @@ const useSearch = (locale: string, developerMode: boolean) => {
         route: 'SongList',
         params: { filter: { communion: true } },
         badge: null,
-        chooser: I18n.t('search_tabs.communion'),
+        chooser: I18n.t('search_tabs.communion', { locale: localeValue }),
         chooser_listKey: ['comunion-pan', 'comunion-caliz'],
       },
       {
@@ -797,7 +801,7 @@ const useSearch = (locale: string, developerMode: boolean) => {
         route: 'SongList',
         params: { filter: { exit: true } },
         badge: null,
-        chooser: I18n.t('search_tabs.exit'),
+        chooser: I18n.t('search_tabs.exit', { locale: localeValue }),
         chooser_listKey: ['salida'],
       },
       {
@@ -806,7 +810,9 @@ const useSearch = (locale: string, developerMode: boolean) => {
         route: 'SongList',
         params: { filter: { 'signing to the virgin': true } },
         badge: null,
-        chooser: I18n.t('search_tabs.signing to the virgin'),
+        chooser: I18n.t('search_tabs.signing to the virgin', {
+          locale: localeValue,
+        }),
       },
       {
         /* eslint-disable quotes */
@@ -841,7 +847,7 @@ const useSearch = (locale: string, developerMode: boolean) => {
     }
     setSearchItems(items);
     setInitialized(true);
-  }, [locale, developerMode]);
+  }, [localeValue, developerMode]);
 
   return { initialized, searchItems };
 };
@@ -1025,8 +1031,8 @@ const DataContextWrapper = (props: any) => {
   }, [localeValue]);
 
   const community = useCommunity();
-  const songsMeta = useSongsMeta(localeValue);
-  const search = useSearch(localeValue, developerModeValue);
+  const songsMeta = useSongsMeta(localeReal);
+  const search = useSearch(localeReal, developerModeValue);
   const lists = useLists(songsMeta.songs);
   const loading = useState({ isLoading: false, text: '' });
 

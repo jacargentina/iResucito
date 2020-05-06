@@ -12,29 +12,31 @@ const SongChooserDialog = (props: any) => {
   const data = useContext(DataContext);
   const scrollToActiveRef = useRef<?ScrollView>();
   const { navigation, route } = props;
-  const { search } = data;
+  const { searchItems } = data.search;
   const { setList } = data.lists;
   const [segments, setSegments] = useState([]);
   const [activeSegment, setActiveSegment] = useState();
   const [scrollToActiveX, setScrollToActiveX] = useState();
   const [scrollToActive, setScrollToActive] = useState(false);
   const { target } = route.params;
+  const { listName, listKey } = target;
 
   useEffect(() => {
-    var choosers = search.searchItems.filter((x) => x.chooser !== undefined);
-    if (target.listName && target.listKey) {
+    console.log('calculating active segment');
+    var choosers = searchItems.filter((x) => x.chooser !== undefined);
+    if (listName && listKey) {
       var defChooser = choosers.find(
-        (t) => t.chooser_listKey && t.chooser_listKey.includes(target.listKey)
+        (t) => t.chooser_listKey && t.chooser_listKey.includes(listKey)
       );
       if (defChooser) {
         setActiveSegment(defChooser);
         setScrollToActive(true);
       }
     }
-  }, []);
+  }, [searchItems, listName, listKey]);
 
   useEffect(() => {
-    var choosers = search.searchItems.filter((x) => x.chooser !== undefined);
+    var choosers = searchItems.filter((x) => x.chooser !== undefined);
     setSegments(
       choosers.map((v, i) => {
         const isActive = activeSegment && activeSegment.chooser === v.chooser;
@@ -57,7 +59,7 @@ const SongChooserDialog = (props: any) => {
         );
       })
     );
-  }, [activeSegment]);
+  }, [searchItems, activeSegment]);
 
   useEffect(() => {
     if (
@@ -74,8 +76,8 @@ const SongChooserDialog = (props: any) => {
   }, [scrollToActive, scrollToActiveRef, scrollToActiveX]);
 
   const songAssign = (song: Song) => {
-    if (target.listName && target.listKey !== undefined) {
-      setList(target.listName, target.listKey, song.key);
+    if (listName && listKey !== undefined) {
+      setList(listName, listKey, song.key);
       navigation.goBack(null);
     }
   };

@@ -1,5 +1,5 @@
 // @flow
-import React from 'react';
+import React, { useContext } from 'react';
 import { View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import StackNavigatorOptions from './StackNavigatorOptions';
@@ -14,10 +14,12 @@ import ShareListButton from '../screens/ShareListButton';
 import AddSongButton from '../screens/AddSongButton';
 import AddListButton from '../screens/AddListButton';
 import I18n from '../../translations';
+import { DataContext } from '../DataContext';
 
 const Stack = createStackNavigator();
 
 const ListsNavigator = () => {
+  const data = useContext(DataContext);
   return (
     <Stack.Navigator screenOptions={StackNavigatorOptions()}>
       <Stack.Screen
@@ -25,7 +27,9 @@ const ListsNavigator = () => {
         component={ListScreen}
         options={({ navigation, route }) => {
           return {
-            title: I18n.t('screen_title.lists'),
+            title: I18n.t('screen_title.lists', {
+              locale: data.localeReal,
+            }),
             headerRight: () => (
               <View style={{ flexDirection: 'row' }}>
                 <AddListButton Read-WithDefault />
