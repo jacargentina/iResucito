@@ -56,6 +56,8 @@ export const defaultExportToPdfOptions: ExportToPdfOptions = {
   indexText: { FontSize: 11 },
   indexMarginLeft: 25,
   disablePageNumbers: false,
+  pageNumber: { FontSize: 12 },
+  pageFooter: { FontSize: 10 },
 };
 
 export const cleanChordsRegex = /\[|\]|\(|\)|#|\*|5|6|7|9|b|-|\+|\/|\u2013|aum|dim|sus|m|is|IS|d/g;
@@ -234,6 +236,7 @@ export const PdfStyles: SongStyles = {
   specialNote: { color: '#444444' },
   normalLine: { color: '#000000' },
   pageNumber: { color: '#000000' },
+  pageFooter: { color: '#777777' },
   prefix: { color: '#777777' },
 };
 
@@ -355,7 +358,7 @@ export class PdfWriter {
       this.writeText(
         this.doc.page.pageNumber.toString(),
         PdfStyles.pageNumber.color,
-        this.opts.songText.FontSize,
+        this.opts.pageNumber.FontSize,
         {
           lineBreak: false,
           align: 'center',
@@ -367,6 +370,25 @@ export class PdfWriter {
         }
       );
     }
+  }
+
+  writePageFooterText(text: string) {
+    this.doc.x = this.doc.page.margins.left;
+    this.doc.y = this.pageNumberLimits.y;
+    this.writeText(
+      text,
+      PdfStyles.pageFooter.color,
+      this.opts.pageFooter.FontSize,
+      {
+        lineBreak: false,
+        align: 'center',
+        width:
+          this.opts.widthHeightPixels -
+          this.doc.page.margins.left -
+          this.doc.page.margins.right,
+        height: this.heightOfPageNumbers,
+      }
+    );
   }
 
   checkLimits(lineCount: number = 1, nextHeight: number = 0) {
@@ -787,7 +809,7 @@ export const ListPDFGenerator = async (
 
     // Titulo
     writer.writeText(title, PdfStyles.title.color, opts.songTitle.FontSize, {
-      align: 'left',
+      align: 'center',
     });
 
     // Subtitulo
@@ -796,11 +818,13 @@ export const ListPDFGenerator = async (
       PdfStyles.source.color,
       opts.songSource.FontSize,
       {
-        align: 'left',
+        align: 'center',
       }
     );
 
     writer.doc.moveDown();
+    // Posicion de reset para segunda columna
+    writer.resetY = writer.doc.y;
 
     if (list.type === 'libre') {
       var cantos = list.items;
@@ -845,58 +869,61 @@ export const ListPDFGenerator = async (
       };
 
       var items = [];
-      const spacer = 'spacer';
+      const NEWLINE = 'NEWLINE';
+      const NEWCOL = 'NEWCOL';
       items.push(getTitleValue('ambiental'));
       items.push(getTitleValue('entrada'));
-      items.push(spacer);
+      items.push(NEWLINE);
       items.push(getTitleValue('1-monicion'));
       items.push(getTitleValue('1'));
       items.push(getTitleValue('1-salmo'));
-      items.push(spacer);
+      items.push(NEWLINE);
       items.push(getTitleValue('2-monicion'));
       items.push(getTitleValue('2'));
       items.push(getTitleValue('2-salmo'));
-      items.push(spacer);
+      items.push(NEWLINE);
       items.push(getTitleValue('3-monicion'));
       items.push(getTitleValue('3'));
       items.push(getTitleValue('3-salmo'));
-      items.push(spacer);
+      items.push(NEWLINE);
       items.push(getTitleValue('evangelio-monicion'));
       items.push(getTitleValue('evangelio'));
-      items.push(spacer);
+      items.push(NEWLINE);
       items.push(getTitleValue('oracion-universal'));
-      items.push(spacer);
+      items.push(NEWLINE);
       items.push(getTitleValue('paz'));
       items.push(getTitleValue('comunion-pan'));
       items.push(getTitleValue('comunion-caliz'));
       items.push(getTitleValue('salida'));
-      items.push(spacer);
+      items.push(NEWCOL);
       items.push(getTitleValue('encargado-pan', true));
       items.push(getTitleValue('encargado-flores', true));
       items.push(getTitleValue('nota', true));
 
       var movedDown = false;
-      items.forEach((item, i) => {
-        // cuando el anterior es un spacer, no moverse de nuevo!
-        if (typeof item === 'string' && item === 'spacer' && !movedDown) {
+      items.forEach((item: any, i) => {
+        // cuando el anterior es un NEWLINE, no moverse de nuevo!
+        if (typeof item === 'string' && item === NEWLINE && !movedDown) {
           writer.doc.moveDown();
           movedDown = true;
+        } else if (typeof item === 'string' && item === NEWCOL) {
+          writer.startColumn();
+          movedDown = false;
         } else if (item && item.title) {
           const lastX = writer.doc.x;
           writer.writeText(
             `${item.title}:`,
-            PdfStyles.normalLine.color,
+            PdfStyles.source.color,
             opts.songText.FontSize,
             {
-              lineBreak: false,
               align: 'left',
             }
           );
-          writer.doc.x += 10;
+          writer.doc.x += 20;
           writer.writeText(
             item.value,
             PdfStyles.normalLine.color,
-            opts.songText.FontSize,
+            opts.songText.FontSize + 2,
             {
               align: 'left',
             }
@@ -905,6 +932,7 @@ export const ListPDFGenerator = async (
           movedDown = false;
         }
       });
+      writer.writePageFooterText('iResucitó');
     }
 
     return await writer.save();

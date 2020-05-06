@@ -62,6 +62,7 @@ declare type SongStyles = {
   normalLine: any,
   pageNumber: any,
   prefix: any,
+  pageFooter: any,
 };
 
 declare type SongLineType =
@@ -165,6 +166,8 @@ declare type ExportToPdfOptions = {
   indexText: { FontSize: number },
   indexMarginLeft: number,
   disablePageNumbers: boolean,
+  pageNumber: { FontSize: number },
+  pageFooter: { FontSize: number },
 };
 
 declare type ListSongGroup = {

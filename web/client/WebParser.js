@@ -20,6 +20,7 @@ export const WebStyles: SongStyles = {
   normalLine: { color: '#000000', fontSize: FontSizes.Texto },
   pageNumber: { color: '#000000' },
   prefix: { color: '#777777', fontSize: FontSizes.Texto },
+  pageFooter: null,
 };
 
 export const WebParser = new SongsParser(WebStyles);
