@@ -5976,6 +5976,16 @@
         "original": "precatechumenate",
         "new": "liturgy"
       }
+    },
+    {
+      "date": 1588576551276,
+      "locale": "lt-LT",
+      "author": "david.hernandez.duran@gmail.com",
+      "linked": {
+        "new": "Atgailos Liturgijos Šlovimas"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "185": [
@@ -6189,6 +6199,20 @@
       "author": "fd_colautti@mac.com",
       "created": false,
       "updated": false
+    },
+    {
+      "date": 1588685025840,
+      "locale": "lt-LT",
+      "author": "david.hernandez.duran@gmail.com",
+      "linked": {
+        "new": "Garbė Dievui Dangaus Aukštybėse"
+      },
+      "created": true,
+      "updated": false,
+      "staged": {
+        "original": "liturgy",
+        "new": "precatechumenate"
+      }
     }
   ],
   "190": [

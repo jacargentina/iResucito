@@ -2366,7 +2366,8 @@
    "es": "Anáfora de la Sal",
    "en": "Anaphora for the penitential celebration",
    "pt-BR": "Anáfora do Sal",
-   "pt-PT": "Anáfora do Sal"
+   "pt-PT": "Anáfora do Sal",
+   "lt-LT": "Atgailos Liturgijos Šlovimas"
   },
   "stages": {
    "pt-BR": "liturgy"
@@ -2427,7 +2428,11 @@
    "de-AT": "Ehre sei Gott in der Höhe",
    "en": "Glory to god",
    "pt-BR": "Glória a Deus no alto do Céu - Hino Litúrgico",
-   "pt-PT": "Glória a Deus no alto do Céu - Hino Litúrgico"
+   "pt-PT": "Glória a Deus no alto do Céu - Hino Litúrgico",
+   "lt-LT": "Garbė Dievui Dangaus Aukštybėse"
+  },
+  "stages": {
+   "lt-LT": "precatechumenate"
   }
  },
  "190": {
