@@ -12,6 +12,7 @@ import SongListResume from './SongListResume';
 import { DataContext } from './DataContext';
 import { EditContext } from './EditContext';
 import { useDebounce } from 'use-debounce';
+import { getPropertyLocale } from '../../common';
 import I18n from '../../translations';
 import colors from '../../colors';
 import useHotkeys from 'use-hotkeys';
@@ -28,6 +29,7 @@ const SongList = () => {
     added: false,
     notTranslated: false,
   });
+  const [onlyTranslated, setOnlyTranslated] = useState();
   const [filtered, setFiltered] = useState();
   const [searchTerm, setSearchTerm] = useState('');
   const [debouncedTerm] = useDebounce(searchTerm, 800);
@@ -58,11 +60,14 @@ const SongList = () => {
         const flags = Object.keys(filters).map((name) => {
           return filters[name] === false || song[name] === filters[name];
         });
+        if (onlyTranslated) {
+          flags.push(getPropertyLocale(song.files, I18n.locale) !== undefined);
+        }
         return flags.every((f) => f === true);
       });
       setFiltered(result);
     }
-  }, [debouncedTerm, songs, filters]);
+  }, [debouncedTerm, songs, filters, onlyTranslated]);
 
   useEffect(() => {
     listSongs();
@@ -143,6 +148,12 @@ const SongList = () => {
               active={filters.notTranslated}
               onClick={() => toggleFilter('notTranslated')}>
               {I18n.t('ui.filters.untranslated')}
+            </Button>
+            <Button
+              toggle
+              active={onlyTranslated}
+              onClick={() => setOnlyTranslated((state) => !state)}>
+              {I18n.t('ui.filters.translated')}
             </Button>
           </Button.Group>
         </Menu.Item>

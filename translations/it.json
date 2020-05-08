@@ -58,7 +58,8 @@
     "filters": {
       "added": "Aggiunto",
       "patched": "Patchato",
-      "untranslated": "Non tradotta"
+      "untranslated": "Non tradotta",
+      "translated": "Tradotta"
     },
     "export": {
       "type": "Tipo di esportazione",

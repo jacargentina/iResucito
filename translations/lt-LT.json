@@ -58,7 +58,8 @@
     "filters": {
       "added": "Pridėta",
       "patched": "Atnaujinta",
-      "untranslated": "Neišversta"
+      "untranslated": "Neišversta",
+      "translated": "Išverstas"
     },
     "export": {
       "type": "Exporto rūšis",
