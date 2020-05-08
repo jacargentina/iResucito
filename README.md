@@ -19,15 +19,7 @@ Me puedes contactar a través del correo javier.alejandro.castro@gmail.com, y ta
 ----
 
 ### Desarrollo
-En general, seguimos el flujo de trabajo "fork-y-pull" de Git
-
-- **Fork** del repositorio en GitHub
-- **Clone** del proyecto en tu propia máquina
-- **Commit** de cambios en su propia rama
-- **Push** del trabajo de vuelta al fork
-- **Enviar Pull Request** para que podamos revisar los cambios
-
-NOTA: ¡asegúrate de hacer merge de los últimos cambios de "upstream" antes de enviar un Pull Request!
+Se puede colaborar en la inclusión de nuevos cantos mediante la aplicación hosteada en https://iresucito.herokuapp.com
 
 ### Estructura para los cantos
 Los cantos se organizan dentro de la carpeta `/songs`, con una subcarpeta por cada lenguaje soportado:
@@ -35,7 +27,9 @@ Los cantos se organizan dentro de la carpeta `/songs`, con una subcarpeta por ca
   - `/songs/es` (Español - lenguaje principal)
   - `/songs/en` (Inglés)
   - `/songs/it` (Italiano)
-  - `/songs/pt` (Portugués)
+  - `/songs/pt-BR` (Portugués Brasil)
+  - `/songs/pt-PT` (Portugués Portugal)
+  - `/songs/fr` (Francés)
 
 Los cantos estan en archivos de texto plano, con extensión `.txt`. El nombre del archivo debe tener el formato:
 
@@ -44,7 +38,7 @@ Los cantos estan en archivos de texto plano, con extensión `.txt`. El nombre de
   - **nombre del canto** Debe contener solo el titulo del canto, en el idioma apropiado
   - **fuente** Es la cita del origen del canto, tal cual se encuentra en el Resucito oficial del camino
 
-Cada canto debe registrarse en el indice, ubicado en `/songs/index.json`. Alli se encuentra una clave numérica por cada canto, con el formato siguiente:
+Cada canto se registra en el indice, ubicado en `/songs/index.json`. Alli se encuentra una clave numérica por cada canto, con el formato siguiente:
 
 ```
  "1": {
@@ -95,10 +89,10 @@ Durante la edición de los cantos puede ser muy útil realizar una previsualizac
 Para ello se puede ejecutar el script npm `genpdf` de la siguiente forma:
 
 ```
-npm run genpdf -- -l pt
+yarn run genpdf -- -l pt
 // se generan TODOS los cantos de lenguaje 'pt' dentro de la carpeta 'pdf'
 
-npm run genpdf -- -l pt -k 12
+yarn run genpdf -- -l pt -k 12
 // se generan sólo el canto del indice 12, es decir, 'Jacó' de 'pt' en la carpeta 'pdf'
 ```
 
@@ -112,13 +106,13 @@ IRESUCITO_RELEASE_STORE_PASSWORD=[contraseña]
 IRESUCITO_RELEASE_KEY_ALIAS=upload  
 IRESUCITO_RELEASE_KEY_PASSWORD=[contraseña]  
 
-## Obtener posicion del codigo fuente original de un stack
+## Obtener posicion del codigo fuente original de un stack (iOS)
 
 - Extraer de `ios/iResucito.ipa` el archivo `Payload/iResucito.app/main.jsbundle.map` y copiar en raiz del codigo fuente
 - `cd scripts`
 - `node ./getOriginalPos.js -c [columna] -l [linea]`
 
-### Para desarrollo de web app
+### Para desarrollo mediante la web app (local)
 
 - yarn run website
-- Abrir navegador en http://localhost:8345
+- navegar http://localhost:8345
