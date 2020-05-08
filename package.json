@@ -117,7 +117,7 @@
     "react-native-run-android": "0.0.1",
     "react-native-safe-area-context": "^0.7.3",
     "react-native-screens": "^2.7.0",
-    "react-native-share": "^3.3.1",
+    "react-native-share": "^3.3.2",
     "react-native-splash-screen": "^3.2.0",
     "react-native-star-rating": "^1.1.0",
     "react-native-storage": "^1.0.1",
