@@ -34,7 +34,7 @@ const Homepage = () => {
         setJwtInvalid(false);
       });
     }
-  }, [jwtInvalid]);
+  }, [jwtInvalid, verifyAuthentication]);
 
   if (jwtInvalid) {
     return <Loading />;

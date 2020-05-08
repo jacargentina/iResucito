@@ -4,11 +4,14 @@ var fs = require('fs');
 var plist = require('plist');
 
 var ios_Info = plist.parse(
-  fs.readFileSync(__dirname + '/../../ios/iResucito/Info.plist', 'utf8')
+  fs.readFileSync(
+    path.join(__dirname, '/../../ios/iResucito/Info.plist'),
+    'utf8'
+  )
 );
 
 var androidGradle = fs.readFileSync(
-  __dirname + '/../../android/app/build.gradle',
+  path.join(__dirname, '/../../android/app/build.gradle'),
   'utf8'
 );
 
@@ -20,7 +23,7 @@ var android_build = /def VERSION_BUILD=(.*)/.exec(androidGradle)[1];
 module.exports = (env, argv) => {
   return {
     devtool: argv.mode === 'development' ? 'source-map' : 'none',
-    entry: __dirname + '/index.js',
+    entry: path.join(__dirname, '/index.js'),
     module: {
       rules: [
         {

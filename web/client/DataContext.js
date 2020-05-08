@@ -99,7 +99,7 @@ const DataContextWrapper = (props: any) => {
     setApiResult();
     setApiLoading(true);
     return api
-      .get(`/api/list/${I18n.locale}`)
+      .get(`/api/list/${locale}`)
       .then((result) => {
         setApiLoading(false);
         setSongs(result.data);
@@ -107,7 +107,7 @@ const DataContextWrapper = (props: any) => {
       .catch((err) => {
         handleApiError(err);
       });
-  }, [I18n.locale]);
+  }, [locale]);
 
   const previewPdf = () => {
     const savedSettings = localStorage.getItem('pdfExportOptions');
@@ -142,15 +142,14 @@ const DataContextWrapper = (props: any) => {
     setLocale(I18n.locale);
   };
 
-  const configureApi = (token: ?string) => {
-    if (token) {
-      api.defaults.headers.common.Authorization = `Bearer ${token}`;
-    } else {
-      delete api.defaults.headers.common.Authorization;
-    }
-  };
-
-  const verifyAuthentication = () => {
+  const verifyAuthentication = useCallback(() => {
+    const configureApi = (token: ?string) => {
+      if (token) {
+        api.defaults.headers.common.Authorization = `Bearer ${token}`;
+      } else {
+        delete api.defaults.headers.common.Authorization;
+      }
+    };
     return new Promise((resolve, reject) => {
       // Usuario anonimo
       var token = auth.getToken();
@@ -183,7 +182,8 @@ const DataContextWrapper = (props: any) => {
           resolve();
         });
     });
-  };
+  }, []);
+
   return (
     <DataContext.Provider
       value={{
