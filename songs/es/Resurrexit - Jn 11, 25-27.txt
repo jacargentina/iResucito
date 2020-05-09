@@ -50,7 +50,8 @@ LA, LA, LA, LA, LA, LA,
 Re-                   Mi7
 LA, LA, LA, LA, LA, LA,
 
-A. LA, LA, LA ... (BIS)
+A. LA, LA, LA ...
+repeat
 
   La-                    Mi7
 A. RESURREXIT, RESURREXIT, ...

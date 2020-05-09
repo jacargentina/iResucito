@@ -79,5 +79,4 @@ A. RETORNA, RETORNA, RETORNA.
  
 Do                                              Mi
 A. LEVÁNTATE, AMADA MÍA ... 
-BIS
-BIS
+repeat
