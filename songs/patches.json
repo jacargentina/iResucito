@@ -6285,6 +6285,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1589267482866,
+      "locale": "lt-LT",
+      "author": "david.hernandez.duran@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "194": [
@@ -6574,6 +6581,16 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1589269066033,
+      "locale": "lt-LT",
+      "author": "david.hernandez.duran@gmail.com",
+      "linked": {
+        "new": "Šventas, Jis Šventas (Gavėnios laikas)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "206": [
@@ -6605,6 +6622,16 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1589373170694,
+      "locale": "lt-LT",
+      "author": "david.hernandez.duran@gmail.com",
+      "linked": {
+        "new": "Šventas, Šventas, Šventas — Verbų Osana (Pascha)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "207": [
@@ -6628,6 +6655,16 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1589372409708,
+      "locale": "lt-LT",
+      "author": "david.hernandez.duran@gmail.com",
+      "linked": {
+        "new": "Šventas yra Viešpats —- Barakų Sventas (Adventas)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "208": [
@@ -6658,6 +6695,16 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1589269945508,
+      "locale": "lt-LT",
+      "author": "david.hernandez.duran@gmail.com",
+      "linked": {
+        "new": "Šventas Eiliniam laikui"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "209": [
