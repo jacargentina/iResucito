@@ -1,11 +1,10 @@
 clamp: 3
 
-a
+   a
 B. ŠVENTAS, ŠVENTAS, ŠVENTAS,
 G                                              a 
 ŠVENTAS, ŠVENTAS, ŠVENTAS.
 repeat
-
            G         a
 K. Dangus ir žemė
               G                           a
@@ -18,11 +17,13 @@ OSANA, OSANA, DANGAUS AUKŠTYBĖSE!
 OSANA, OSANA, OSANA, OSANA,
        F              G                                            a
 OSANA, OSANA, DANGAUS AUKŠTYBĖSE!
+
        G
 K. Palaimintas
                         a
 tas, kuris ateina
                         G                                      a
 tas, kuris ateina Viešpaties vardu.
+
        F              E
 B. OSANA, OSANA....

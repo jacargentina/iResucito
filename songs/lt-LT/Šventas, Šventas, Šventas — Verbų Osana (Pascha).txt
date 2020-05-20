@@ -1,4 +1,4 @@
-d
+   d
 B. ŠVENTAS, ŠVENTAS, ŠVENTAS,
 g
 ŠVENTAS, ŠVENTAS, ŠVENTAS,
@@ -10,14 +10,15 @@ g                        A
 JAHVE SABAOT
 g                        A
 JAHVE SABAOT.
-d           g         d
+
+   d           g         d
 K. Dangus ir žemė
                g
 yra pilni,
                         A
 yra pilni tavęs!
 
-d
+   d
 B. OSANA, OSANA,
 A7
 OSANA, OSANA, 
@@ -27,7 +28,8 @@ g                                                  A
 OSANA DANGAUS AUKŠTYBĖSE,
 g                            A
 OSANA, OSANA!
-d       g
+
+   d       g
 K. Palaimintas
                     d
 tas, kuris ateina,
@@ -35,5 +37,6 @@ tas, kuris ateina,
 tas, kuris ateina,
                                A
 Viešpaties vardu.
-d
+
+   d
 B. OSANA, OSANA, ...

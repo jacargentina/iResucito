@@ -1,4 +1,4 @@
-A                                             E
+   A                                             E
 B. ŠVENTAS, ŠVENTAS, ŠVENTAS,
                                   A
 ŠVENTAS YRA VIEŠPATS
@@ -6,6 +6,7 @@ B. ŠVENTAS, ŠVENTAS, ŠVENTAS,
 VISATOS DIEVAS
                                    A
 ŠVENTAS YRA VIEŠPATS!
+
 F
 K. Pilnas yra dangus
        E
@@ -14,9 +15,11 @@ ir žemė tavo garbės.
 Osana, osana, osana,
                          E
 osana aukštybėse.
-A                                             E
+
+   A                                             E
 B. ŠVENTAS, ŠVENTAS, ŠVENTAS,...
-a
+
+   a
 K. Palaimintas, kuris ateina
                                E7
 Viešpaties vardu.

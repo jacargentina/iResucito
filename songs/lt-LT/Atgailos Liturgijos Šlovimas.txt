@@ -1,16 +1,22 @@
 clamp: 2
     G                              a
 P. Viešpats su jumis.
+
   G                      a 
 B. IR SU TAVIMI.
+
   F                  E 
 P. Aukštyn širdis.
+
   F                       E
 B. KELIAME Į VIEŠPATI.
-  E7                                          a
+
+   E7                                          a
 P. Dėkokime Viešpačiui Dievui.
+
   G                    a 
 B. Verta ir teisinga. (x2)
+
                d                  a
 P. Tikrai verta ir teisinga,
          E                          a
@@ -33,9 +39,7 @@ Tu per savo Sūnaus kančia
 nugalėjai nuodėmę ir mirtį,
                               G
 o per jo prisikėlimą
-
 column
-
 
                                       a
 grąžinai mums gyvenimą.
@@ -53,12 +57,14 @@ kad išvaduoti iš nuodėmės nelaisvės,
 būtume perkeisti
                                              E
 pagal tavo sūnaus paveikslą.
+
  a                                                                    G
 B. KAD IŠVADUOTI Iš NUODĖMĖS NELAISVĖS,
                      F
 BŪTUME PERKEISTI
                                                      E
 PAGAL TAVO SŪNAUS PAVEIKSLĄ.
+
   a                                                G
 P. Tau, Viešpatie, teikiame šlovę
                                          a
@@ -67,7 +73,5 @@ drauge su visa Bažnyčia
 už tavo gailestingumo stebuklus —
   a                  F               E                               a
 giedame, giedame himną tavo šlovės.
-
-
 
 (toliau seka“ŠVENTAS" eiliniam laikui)
