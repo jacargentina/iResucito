@@ -1,6 +1,6 @@
 PALAIMINTA ESI TU, MARIJA (Lk 1, 42-44)
 
-K. ant 2 lados
+clamp:2
 
 a G a a E
 K. Palaiminta esi tu, Marija, K. Štai vos išgirdus tavo balsą,

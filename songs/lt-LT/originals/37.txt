@@ -48,7 +48,8 @@ TEBŪNA MUMS SVETIMA, ...
 
 PSALMĖ 102 (103) - MANO SIELA, ŠLOVINK JAHVĘ
 
-K. ant 2lados
+clamp:2
+
 a E
 B. MANO SIELA, ŠLOVINK JAHVĘ,
 

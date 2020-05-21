@@ -1,6 +1,6 @@
 MERGELE NUOSTABIAUSIA
 
-K. ant 4 lados
+clamp:4
 
 h Ė h
 MARIJA, SAVO SŪNAUS DUKRA,

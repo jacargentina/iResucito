@@ -1,6 +1,6 @@
 PASCHOS BUDĖJIMO EUCHARISTIJOS PREFACIJA
 
-K.ant 2 lados
+clamp:2
 
 1 S EU
 

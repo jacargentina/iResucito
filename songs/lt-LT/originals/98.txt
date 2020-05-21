@@ -40,7 +40,7 @@ B. ATEINA VIEŠPATS...
 
 POILSIO DIENA
 
-K. ant 2 lados
+clamp:2
 8 a e
 K. Jeigu kas išsaugo mano žodį,
 

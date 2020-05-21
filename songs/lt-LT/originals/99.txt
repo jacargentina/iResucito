@@ -1,6 +1,6 @@
 PAGUOSKIT MANO TAUTĄ (Iz 40, 1-11)
 
-K. ant 2 lados
+clamp:2
 
 ę
 K. Paguoskit mano tautą,

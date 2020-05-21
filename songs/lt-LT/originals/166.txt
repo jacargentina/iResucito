@@ -1,6 +1,6 @@
 PSALMĖ 86 (87) - JO PAMATAI
 
-K. ant 3 lados
+clamp:3
 a | B
 K. Jo pamatai ant šventų kalnų yra:
 Viešpats myli vartus Ziono,

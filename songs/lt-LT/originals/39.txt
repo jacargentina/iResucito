@@ -39,7 +39,7 @@ K. Naują giesmę ...
 
 PSALMĖ 118 (119) - TEPASIEKA TAVE MANO MALDA
 
-K. ant 2 lados
+clamp:2
 
 a F E
 K. Viešpatie, Viešpatie Jėzau!

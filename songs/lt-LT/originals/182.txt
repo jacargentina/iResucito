@@ -1,6 +1,6 @@
 KAS YRA TA (Gg 8, 5-7)
 
-K. ant 4 lados
+clamp:4
 a (d a)
 D ET
 A BLU

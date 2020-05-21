@@ -1,6 +1,6 @@
 ATEIKITE PAS MANE JŪS VISI (Mt 11, 28-30)
 
-K. ant 3 lados
+clamp:3
 
 C
 Ateikite pas mane jūs visi,

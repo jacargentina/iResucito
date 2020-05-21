@@ -1,6 +1,6 @@
 PSALMĖ 64 (65) - TAU, VIEŠPATIE, PRIDERA GARBINIMAS ZIONE
 
-K. ant 5 lados
+clamp:5
 
 d A7 g 2 d
 K. Tau, Viešpatie, pridera garbinimas Zione, B. PAS TAVE, KURIS ISKLAUSAI MALDAS,

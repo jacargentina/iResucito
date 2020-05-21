@@ -1,6 +1,6 @@
 PSALMĖ 22 (23) - VIEŠPATS YRA MANO GANYTOJAS
 
-K. ant 3 lados
+clamp:3
 
 a E
 Viešpats yra mano ganytojas,

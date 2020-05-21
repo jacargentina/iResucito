@@ -1,6 +1,6 @@
 KAIP PYKČIO PRASIVERŽIMAS (VII SALIAMONO ODĖ)
 
-K. ant 3 lados
+clamp:3
 
 C a d
 K. Kaip pykčio prasiveržimas priešui,

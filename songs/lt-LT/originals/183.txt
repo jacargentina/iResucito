@@ -1,4 +1,4 @@
-K. ant 4 lados
+clamp:4
 
 Cc a E
 K. Mere nga S E

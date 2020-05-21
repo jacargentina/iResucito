@@ -1,6 +1,6 @@
 PSALMĖ 12 (13) - KIEK ILGAI?
 
-K. ant 2 lados
+clamp:2
 
 K.
 
@@ -24,7 +24,7 @@ Apšviesk mano akis,
 a
 kad nemiegočiau mirtyje.
 
-K. ant 2 lados
+clamp:2
 a E
 K. JAHVE, TU MANO DIEVAS
 a (Bis B)

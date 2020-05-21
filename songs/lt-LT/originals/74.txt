@@ -1,4 +1,4 @@
-K. ant 5 lados
+clamp:5
 
 a A7 -
 „ Paschos Avinėliui
