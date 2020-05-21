@@ -26,7 +26,7 @@ dalis grūdų nukrito ant uolos.
 Bend.
 kartoja
 
- 
+
 
 Saulė patekėjo,
 išdžiovino juos:
@@ -39,7 +39,7 @@ kartoja
 Sėjėjas išėjo sėti,
 dalis grūdų nukrito tarp erškėčių.
 
- 
+
 
 Išaugo grūdai,
 
@@ -55,7 +55,7 @@ dalis grūdų nukrito į žemę.
 Bend.
 kartoja
 
- 
+
 
 K.
 

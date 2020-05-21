@@ -1,5 +1,3 @@
- 
-
 276
 
 K. ant 4 lados
@@ -17,4 +15,4 @@ d
 Klėja aka pas
 d
 
- 
+
