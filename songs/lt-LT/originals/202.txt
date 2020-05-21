@@ -8,20 +8,6 @@ Prz., giesmė tonacijoj C-dur galima paaukštinti iki E-dur keičiant
 kiekvieną C į E, kiekvieną D į Fis, kiekvieną E į Gis, kiekvieną F į
 A,irt. T., visada išaugojant priedus (6, 7, 7aum, irt.t.).
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 S
 Cc D Ė E G A H
 D E Fis G A H Cis
@@ -33,9 +19,3 @@ d š E G A B (L
 e Fis G Ą H C D
 a H C D Ė E G
 h Cis D E Fis G A
-
-
-
-
-
-
