@@ -24,7 +24,7 @@ const CommunityNavigator = () => {
             }),
             headerRight: () => (
               <View style={{ flexDirection: 'row' }}>
-                <ContactImportButton Read-WithDefault />
+                <ContactImportButton />
               </View>
             ),
           };

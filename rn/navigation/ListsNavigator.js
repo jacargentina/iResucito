@@ -32,7 +32,7 @@ const ListsNavigator = () => {
             }),
             headerRight: () => (
               <View style={{ flexDirection: 'row' }}>
-                <AddListButton Read-WithDefault />
+                <AddListButton />
               </View>
             ),
           };
@@ -47,8 +47,8 @@ const ListsNavigator = () => {
             title: listName ? listName : 'Lista',
             headerRight: () => (
               <View style={{ flexDirection: 'row' }}>
-                <ShareListButton Read-WithDefault />
-                <AddSongButton Read-WithDefault />
+                <ShareListButton />
+                <AddSongButton />
               </View>
             ),
           };
@@ -68,8 +68,8 @@ const ListsNavigator = () => {
             title: `PDF - ${title}`,
             headerRight: () => (
               <View style={{ flexDirection: 'row' }}>
-                <SharePDFButton Read-WithDefault />
-                <PrintPDFButton Read-WithDefault />
+                <SharePDFButton />
+                <PrintPDFButton />
               </View>
             ),
           };
