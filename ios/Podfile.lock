@@ -241,7 +241,7 @@ PODS:
     - React
   - react-native-print (0.6.0):
     - React
-  - react-native-safe-area-context (1.0.2):
+  - react-native-safe-area-context (3.0.2):
     - React
   - react-native-splash-screen (3.2.0):
     - React
@@ -308,11 +308,11 @@ PODS:
     - React
   - rn-fetch-blob (0.12.0):
     - React-Core
-  - RNCAsyncStorage (1.10.3):
+  - RNCAsyncStorage (1.11.0):
     - React
   - RNCMaskedView (0.1.10):
     - React
-  - RNDeviceInfo (5.5.8):
+  - RNDeviceInfo (5.6.1):
     - React
   - RNFS (2.16.6):
     - React
@@ -322,9 +322,9 @@ PODS:
     - React
   - RNLocalize (1.4.0):
     - React
-  - RNReanimated (1.8.0):
+  - RNReanimated (1.9.0):
     - React
-  - RNScreens (2.7.0):
+  - RNScreens (2.8.0):
     - React
   - RNShare (3.3.2):
     - React
@@ -518,7 +518,7 @@ SPEC CHECKSUMS:
   react-native-keep-awake: afad8a51dfef9fe9655a6344771be32c8596d774
   react-native-pdf: 7d76a6619f76a6ebfb2f82a4f2feeb17826ba8b4
   react-native-print: d2d083f2305faacfba12d3896ec6ca72303da2b2
-  react-native-safe-area-context: 9d9640a9085014864052e38496fc1dfde0b93974
+  react-native-safe-area-context: b11a34881faac509cad5578726c98161ad4d275c
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   React-RCTActionSheet: f41ea8a811aac770e0cc6e0ad6b270c644ea8b7c
   React-RCTAnimation: 49ab98b1c1ff4445148b72a3d61554138565bad0
@@ -532,15 +532,15 @@ SPEC CHECKSUMS:
   ReactCommon: ed4e11d27609d571e7eee8b65548efc191116eb3
   ReactNativeExceptionHandler: 8025d98049c25f186835a3af732dd7c9974d6dce
   rn-fetch-blob: f065bb7ab7fb48dd002629f8bdcb0336602d3cba
-  RNCAsyncStorage: cd7234ff15c010723ed7c499ae4eedc605eac1fd
+  RNCAsyncStorage: d059c3ee71738c39834a627476322a5a8cd5bf36
   RNCMaskedView: 5a8ec07677aa885546a0d98da336457e2bea557f
-  RNDeviceInfo: 655265668063a05fff096c6819da0b7289753ef7
+  RNDeviceInfo: b6e650fbd234732c759544218657d549b4339038
   RNFS: 2bd9eb49dc82fa9676382f0585b992c424cd59df
   RNGestureHandler: 8f09cd560f8d533eb36da5a6c5a843af9f056b38
   RNICloudStore: bc6e225811637c09bd1eb055d6cd7448e61cd451
   RNLocalize: b6df30cc25ae736d37874f9bce13351db2f56796
-  RNReanimated: 955cf4068714003d2f1a6e2bae3fb1118f359aff
-  RNScreens: cf198f915f8a2bf163de94ca9f5bfc8d326c3706
+  RNReanimated: b5ccb50650ba06f6e749c7c329a1bc3ae0c88b43
+  RNScreens: 62211832af51e0aebcf6e8c36bcf7dd65592f244
   RNShare: bd6518701db274b8ba282b33620885f2225a5bcf
   Yoga: 3ebccbdd559724312790e7742142d062476b698e
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
