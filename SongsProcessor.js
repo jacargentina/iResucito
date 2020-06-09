@@ -208,12 +208,14 @@ export class SongsProcessor {
         return this.songReader(song.path);
       })
       .then((content) => {
-        if (typeof content == 'string') {
+        if (typeof content === 'string') {
           song.fullText = content;
         }
       })
       .catch((err) => {
-        console.log('loadSingleSong ERROR', song.key, err.message);
+        console.log(
+          `loadSingleSong key=${song.key}, locale=${rawLoc}, error=${err.message}`
+        );
         song.error = err.message;
         song.fullText = '';
       });
