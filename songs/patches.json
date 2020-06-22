@@ -34,6 +34,13 @@
         "original": "catechumenate",
         "new": "election"
       }
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Tai sako amen (apr 3, 14-22)"
+      }
     }
   ],
   "2": [
@@ -53,6 +60,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Kaip pykčio prasiveržimas (vii saliamono odė)"
+      }
     }
   ],
   "3": [
@@ -91,6 +105,13 @@
         "original": "precatechumenate",
         "new": "catechumenate"
       }
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Paguoskit mano tautą (iz 40, 1-11)"
+      }
     }
   ],
   "4": [
@@ -125,6 +146,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Kai aš miegojau (gg. 5, 2 ir t.t.)"
+      }
     }
   ],
   "5": [
@@ -151,6 +179,13 @@
       "staged": {
         "original": "catechumenate",
         "new": "election"
+      }
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Debora (ts 5, 1 ir t.t.)"
       }
     }
   ],
@@ -186,6 +221,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Laimingas žmogus - Psalmė 1"
+      }
     }
   ],
   "7": [
@@ -217,6 +259,13 @@
         "original": "catechumenate",
         "new": "election"
       }
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Viešpats padovanojo man (iz 50, 4-10)"
+      }
     }
   ],
   "8": [
@@ -244,6 +293,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Matau atvirą dangų (apr 19,11-20)"
+      }
     }
   ],
   "9": [
@@ -274,6 +330,13 @@
       "staged": {
         "original": "catechumenate",
         "new": "liturgy"
+      }
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Traiškąs vynuoges spaudykloje (iz 63, 1-6)"
       }
     }
   ],
@@ -312,6 +375,13 @@
       "staged": {
         "original": "catechumenate",
         "new": "liturgy"
+      }
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Sėjėjas (mk 4, 3-9)"
       }
     }
   ],
@@ -356,6 +426,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Jokūbas (pr 32, 23-39)"
+      }
     }
   ],
   "13": [
@@ -386,6 +463,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Niekas negali tarnauti dviem ponams (mt 6, 24-33)o"
+      }
     }
   ],
   "14": [
@@ -413,6 +497,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Viešpatie, mano širdis jau nėra išdidi - Psalmė 130 (131)"
+      }
     }
   ],
   "15": [
@@ -433,6 +524,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Viešpatie, tu mane tiri ir pažįsti - Psalmė 138 (139)"
+      }
     }
   ],
   "16": [
@@ -449,6 +547,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Šema izrael"
+      }
     }
   ],
   "17": [
@@ -483,6 +588,13 @@
       "author": "fd_colautti@mac.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Sėdėk vienišas ir tylus (rd 3, 1-33)"
+      }
     }
   ],
   "18": [
@@ -514,6 +626,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Paschalinė melitono iš sardeso homilija"
+      }
     }
   ],
   "19": [
@@ -580,6 +699,13 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Paschos avinėliui"
+      }
     }
   ],
   "20": [
@@ -677,6 +803,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Į tave keliu savo akis - Psalmė 122 (123)"
+      }
     }
   ],
   "22": [
@@ -744,6 +877,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Balsiai šaukiuosi tavo pagalbos, o viešpatie, - Psalmė 141 (142)"
+      }
     }
   ],
   "23": [
@@ -806,6 +946,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Į tave, viešpatie, keliu savo sielą - Psalmė 24 (25)"
+      }
     }
   ],
   "24": [
@@ -883,6 +1030,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Tau, viešpatie, pridera garbinimas zione - Psalmė 64 (65)"
+      }
     }
   ],
   "25": [
@@ -934,6 +1088,13 @@
       "author": "fabio.imr.reis@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Abraomas (pr 18, 1-5)"
+      }
     }
   ],
   "26": [
@@ -1007,6 +1168,13 @@
       "author": "fabio.imr.reis@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Aukštinkit viešpatį - Psalmė 99 (100)"
+      }
     }
   ],
   "27": [
@@ -1074,6 +1242,13 @@
         "original": "precatechumenate",
         "new": "election"
       }
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Kai pabusiu, pasisotinsiu tavo atvaizdu, viešpatie “? - Psalmė 16 (17)"
+      }
     }
   ],
   "28": [
@@ -1105,6 +1280,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Šlovinkite viešpatį iš dangaus“! - Psalmė 148"
+      }
     }
   ],
   "29": [
@@ -1167,6 +1349,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Aleliuja, šlovinkite dievą - Psalmė 150"
+      }
     }
   ],
   "30": [
@@ -1230,6 +1419,13 @@
       },
       "created": false,
       "updated": false
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Visi garbinkite dievą - Psalmė 133 (134)"
+      }
     }
   ],
   "31": [
@@ -1296,6 +1492,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Jau ateina karalystė (apr 19, 6-9)“"
+      }
     }
   ],
   "32": [
@@ -1340,6 +1543,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": false
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Vartai, pakelkit - Psalmė 23 (24)"
+      }
     }
   ],
   "33": [
@@ -1399,6 +1609,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "115 (116) - Psalmė 114"
+      }
     }
   ],
   "34": [
@@ -1477,6 +1694,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Akeda"
+      }
     }
   ],
   "35": [
@@ -1546,6 +1770,13 @@
       "staged": {
         "original": "precatechumenate",
         "new": "election"
+      }
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Sveika marija"
       }
     }
   ],
@@ -1648,6 +1879,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Prie babilonijos upių - Psalmė 136 (137)"
+      }
     }
   ],
   "38": [
@@ -1671,6 +1909,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Balaamo giesmė (sk 23, 7-24)"
+      }
     }
   ],
   "39": [
@@ -1705,6 +1950,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Aš laiminsiu viešpatį kiekvienu metu - Psalmė 33 (34)"
+      }
     }
   ],
   "40": [
@@ -1799,6 +2051,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Palaiminta esi tu, marija (lk 1, 42-44)"
+      }
     }
   ],
   "42": [
@@ -1877,6 +2136,13 @@
         "original": "precatechumenate",
         "new": "election"
       }
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Zacharijo giesmė (lk 1, 67-80)"
+      }
     }
   ],
   "44": [
@@ -1886,6 +2152,13 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Garbinkite viešpatį visos žemės visi žmonės - Psalmė 116 (117)"
+      }
     }
   ],
   "45": [
@@ -1902,6 +2175,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Giedokim, giedokim (iš 15, 1-2)"
+      }
     }
   ],
   "46": [
@@ -1944,6 +2224,13 @@
       "author": "fd_colautti@mac.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Caritas christi (2 kor 5, 14-21)"
+      }
     }
   ],
   "47": [
@@ -1967,6 +2254,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Trijų jaunikaičių giesmė krosnyje (dn 3, 57-88)"
+      }
     }
   ],
   "48": [
@@ -1990,6 +2284,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "42 (42 - Psalmė 41"
+      }
     }
   ],
   "49": [
@@ -2024,6 +2325,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Žiūrėkit, kaip graži, ragaukit, kaip saldi - Psalmė 132 (133)"
+      }
     }
   ],
   "50": [
@@ -2060,6 +2368,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Kai izraelis išėjo iš egipto - Psalmė 113 a (114)"
+      }
     }
   ],
   "52": [
@@ -2090,6 +2405,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Kada viešpats - Psalmė 125 (126)"
+      }
     }
   ],
   "53": [
@@ -2120,6 +2442,13 @@
       "staged": {
         "original": "precatechumenate",
         "new": "election"
+      }
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Dajenu"
       }
     }
   ],
@@ -2158,6 +2487,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Iš gelmių šaukiuosi tavęs - Psalmė 129 (130)"
+      }
     }
   ],
   "55": [
@@ -2178,6 +2514,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Sakykite besibaiminantiems širdyje (iz 35, 4 ir t.t.)"
+      }
     }
   ],
   "56": [
@@ -2194,6 +2537,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Angelų akivaizdoje - Psalmė 137 (138)"
+      }
     }
   ],
   "57": [
@@ -2217,6 +2567,13 @@
       "author": "michele.gentili93@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Sako viešpats mano viešpačiui - Psalmė 109 (110)"
+      }
     }
   ],
   "58": [
@@ -2285,6 +2642,13 @@
         "original": "precatechumenate",
         "new": "liturgy"
       }
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Viešpats praneša naujieną (eil. 12 - Psalmė 67 (68)"
+      }
     }
   ],
   "60": [
@@ -2318,6 +2682,13 @@
       "staged": {
         "original": "precatechumenate",
         "new": "liturgy"
+      }
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Viešpats yra mano ganytojas - Psalmė 22 (23)"
       }
     }
   ],
@@ -2374,6 +2745,13 @@
       "author": "fabio.imr.reis@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Kad daugiau aš nesibastyčiau"
+      }
     }
   ],
   "62": [
@@ -2416,6 +2794,13 @@
         "original": "precatechumenate",
         "new": "liturgy"
       }
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Kvailys galvoja, kad dievo nėra - Psalmė 13 (14)"
+      }
     }
   ],
   "63": [
@@ -2450,6 +2835,13 @@
         "original": "precatechumenate",
         "new": "election"
       }
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Tauta einanti tamsybėse (iz 9, 1-5)"
+      }
     }
   ],
   "64": [
@@ -2477,6 +2869,13 @@
       "author": "fd_colautti@mac.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Eli, eli, lamma sabahtani? - Psalmė 21 (22)"
+      }
     }
   ],
   "65": [
@@ -2508,6 +2907,13 @@
         "original": "precatechumenate",
         "new": "catechumenate"
       }
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Avinėlio giesmė (apr 5, 9 ir t.t.)"
+      }
     }
   ],
   "66": [
@@ -2531,6 +2937,13 @@
       "author": "fd_colautti@mac.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Tu esi gražiausias - Psalmė 44 (45)"
+      }
     }
   ],
   "67": [
@@ -2554,6 +2967,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Viešpats - Psalmė 26 (27)"
+      }
     }
   ],
   "68": [
@@ -2591,6 +3011,13 @@
       "staged": {
         "original": "precatechumenate",
         "new": "election"
+      }
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Carmen 63"
       }
     }
   ],
@@ -2639,6 +3066,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Džiūgaukite, teisieji, viešpatyje - Psalmė 32 (33)"
+      }
     }
   ],
   "71": [
@@ -2662,6 +3096,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Nemirsiu, ne - Psalmė 117 (118)"
+      }
     }
   ],
   "72": [
@@ -2678,6 +3119,13 @@
       "author": "carolinerezler@hotmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Laimė žmogui - Psalmė 127 (128)"
+      }
     }
   ],
   "73": [
@@ -2722,6 +3170,13 @@
       "staged": {
         "original": "election",
         "new": "precatechumenate"
+      }
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Dėkui tau, jahve - Psalmė 135 (136)"
       }
     }
   ],
@@ -2776,6 +3231,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Į tave, šventasis mieste “?"
+      }
     }
   ],
   "76": [
@@ -2827,6 +3289,13 @@
         "original": "liturgy",
         "new": "precatechumenate"
       }
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Kiek ilgai? - Psalmė 12 (13)"
+      }
     }
   ],
   "77": [
@@ -2862,6 +3331,13 @@
         "original": "precatechumenate",
         "new": "catechumenate"
       }
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "I jahvės tarno giesmė (iz 42)"
+      }
     }
   ],
   "78": [
@@ -2889,6 +3365,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Štai aš ateisiu veikiai (apr 22, 12-16)"
+      }
     }
   ],
   "79": [
@@ -2923,6 +3406,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Pasiklioviau, pasiklioviau dievu viešpačiu - Psalmė 39 (40)"
+      }
     }
   ],
   "80": [
@@ -2946,6 +3436,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Dukterys jeruzalės (lk 23, 28.31.34.43.46)"
+      }
     }
   ],
   "81": [
@@ -2966,6 +3463,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Himnas kristaus švesai"
+      }
     }
   ],
   "82": [
@@ -2982,6 +3486,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Kristus jėzus yra viešpats! himnas apie kenozę (flp 2, 1-11)"
+      }
     }
   ],
   "83": [
@@ -3019,6 +3530,13 @@
       "staged": {
         "original": "catechumenate",
         "new": "precatechumenate"
+      }
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Advento himnas"
       }
     }
   ],
@@ -3131,6 +3649,13 @@
       "author": "fd_colautti@mac.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Bėki, mylimasis (gg 8, 10-14)"
+      }
     }
   ],
   "87": [
@@ -3169,6 +3694,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Eikit ir praneškit mano broliams (mt 28, 16-20)"
+      }
     }
   ],
   "88": [
@@ -3185,6 +3717,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Viešpaties priekaištai"
+      }
     }
   ],
   "89": [
@@ -3233,6 +3772,13 @@
       "staged": {
         "original": "catechumenate",
         "new": "precatechumenate"
+      }
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Laimink, mano siela, viešpatį (tobito giesmė) (tob 13)"
       }
     }
   ],
@@ -3330,6 +3876,13 @@
       "author": "fabio.imr.reis@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Tautų pjūtis (j 4, 31-38)"
+      }
     }
   ],
   "93": [
@@ -3361,6 +3914,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Keliu aš akis į kalnus - Psalmė 120 (121)"
+      }
     }
   ],
   "94": [
@@ -3456,6 +4016,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Magnificat (lk 1, 46-55)"
+      }
     }
   ],
   "97": [
@@ -3476,6 +4043,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Maria de jasna gora"
+      }
     }
   ],
   "98": [
@@ -3503,6 +4077,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Marija, palaiminimo tu namai"
+      }
     }
   ],
   "99": [
@@ -3523,6 +4104,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Marija, bažnyčios motina (j 19, 26-34) (1983)"
+      }
     }
   ],
   "100": [
@@ -3543,6 +4131,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Marija, liepsnojančio kelio motina"
+      }
     }
   ],
   "101": [
@@ -3563,6 +4158,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Marija, mažytė marija"
+      }
     }
   ],
   "102": [
@@ -3608,6 +4210,13 @@
       "author": "fd_colautti@mac.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Tu man nurodysi gyvenimo kelią - Psalmė 15 (16)"
+      }
     }
   ],
   "103": [
@@ -3642,6 +4251,13 @@
       "author": "fd_colautti@mac.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Suvedžiojai mane, viešpatie (jer 20, 7-18)"
+      }
     }
   ],
   "104": [
@@ -3691,6 +4307,13 @@
         "original": "catechumenate",
         "new": "precatechumenate"
       }
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Žiūrėkit, kaip puiku - Psalmė 132 (133)"
+      }
     }
   ],
   "105": [
@@ -3722,6 +4345,13 @@
       },
       "created": false,
       "updated": false
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Pasigailėk manęs, dieve - Psalmė 50 (51)"
+      }
     }
   ],
   "106": [
@@ -3745,6 +4375,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Labai mane persekiojo - Psalmė 128 (129)"
+      }
     }
   ],
   "107": [
@@ -3821,6 +4458,13 @@
         "original": "precatechumenate",
         "new": "catechumenate"
       }
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Užsidengiam prieš jį veidą: iv jahvės tarno giesmė (iz 53, 2-7)"
+      }
     }
   ],
   "109": [
@@ -3863,6 +4507,13 @@
       },
       "created": false,
       "updated": false
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "O dieve, savo vardu mane išgelbėk - Psalmė 53 (54)"
+      }
     }
   ],
   "110": [
@@ -3883,6 +4534,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "O jėzau, meile mano"
+      }
     }
   ],
   "111": [
@@ -3903,6 +4561,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "O viešpatie, mūsų dieve - Psalmė 8"
+      }
     }
   ],
   "112": [
@@ -3930,6 +4595,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "O dangūs, rasokit iš aukštybių (iz 45, 8)"
+      }
     }
   ],
   "113": [
@@ -3950,6 +4622,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Mirtie, kur pergalė tavoji? (1 kor 15)"
+      }
     }
   ],
   "114": [
@@ -3993,6 +4672,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Sekminės (pentekoste)"
+      }
     }
   ],
   "116": [
@@ -4031,6 +4717,13 @@
         "original": "liturgy",
         "new": "precatechumenate"
       }
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Iš meilės mano broliams - Psalmė 121 (122)"
+      }
     }
   ],
   "117": [
@@ -4047,6 +4740,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Vaikų giesmė paschos budėjimo metu"
+      }
     }
   ],
   "118": [
@@ -4078,6 +4778,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Kodėl maištauja tautos? - Psalmė 2"
+      }
     }
   ],
   "119": [
@@ -4094,6 +4801,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Ateikite pas mane jūs visi (mt 11, 28-30)"
+      }
     }
   ],
   "120": [
@@ -4124,6 +4838,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": false
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Kokios mielos tavo buveinės - Psalmė 83 (84)"
+      }
     }
   ],
   "121": [
@@ -4198,6 +4919,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Noriu giedoti - Psalmė 56 (57)"
+      }
     }
   ],
   "124": [
@@ -4217,6 +4945,13 @@
       "staged": {
         "original": "precatechumenate",
         "new": "election"
+      }
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Kas yra ta (gg 8, 5-7)"
       }
     }
   ],
@@ -4248,6 +4983,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Kas mus atskirs (rom 8, 33-39)"
+      }
     }
   ],
   "126": [
@@ -4271,6 +5013,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Prisikėlė"
+      }
     }
   ],
   "127": [
@@ -4306,6 +5055,13 @@
         "original": "precatechumenate",
         "new": "election"
       }
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Sveika, karaliene"
+      }
     }
   ],
   "128": [
@@ -4319,6 +5075,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Buvo du angelai"
+      }
     }
   ],
   "129": [
@@ -4339,6 +5102,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "O viešpatie, padėk man, viešpatie"
+      }
     }
   ],
   "130": [
@@ -4366,6 +5136,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "O viešpatie, išgirsk mano maldą - Psalmė 142 (143)"
+      }
     }
   ],
   "131": [
@@ -4393,6 +5170,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Viešpatie, nesmerk manęs įniršes - Psalmė 6"
+      }
     }
   ],
   "132": [
@@ -4416,6 +5200,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Šlom-lech mariam"
+      }
     }
   ],
   "133": [
@@ -4443,6 +5234,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Jeigu viešpats namo nestato - Psalmė 126 (127)"
+      }
     }
   ],
   "134": [
@@ -4466,6 +5264,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Džiugiai giedokim viešpačiui - Psalmė 94 (95)"
+      }
     }
   ],
   "135": [
@@ -4482,6 +5287,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Jeigu suradau prieglobstį viešpatyje - Psalmė 10 (11)"
+      }
     }
   ],
   "136": [
@@ -4509,6 +5321,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Jo pamatai - Psalmė 86 (87)"
+      }
     }
   ],
   "137": [
@@ -4552,6 +5371,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Stabat mater dolorosa"
+      }
     }
   ],
   "139": [
@@ -4568,6 +5394,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Tavęs šaukiuosi - Psalmė 140 (141)"
+      }
     }
   ],
   "140": [
@@ -4591,6 +5424,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Tau išpažinau savo nuodėme - Psalmė 31 (32)"
+      }
     }
   ],
   "141": [
@@ -4629,6 +5469,13 @@
       "author": "fd_colautti@mac.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Tu esi mano viltis, o viešpatie (xxix saliamono odė)"
+      }
     }
   ],
   "142": [
@@ -4656,6 +5503,13 @@
       "author": "fd_colautti@mac.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Dygsta šakelė iš jesės kelmo (iz 11)"
+      }
     }
   ],
   "143": [
@@ -4683,6 +5537,13 @@
       "author": "fd_colautti@mac.com",
       "created": false,
       "updated": false
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Moteris, apsisiautusi saule (apr 12)"
+      }
     }
   ],
   "144": [
@@ -4713,6 +5574,13 @@
       "staged": {
         "original": "catechumenate",
         "new": "precatechumenate"
+      }
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Uri, uri, ura"
       }
     }
   ],
@@ -4766,6 +5634,13 @@
         "original": "catechumenate",
         "new": "precatechumenate"
       }
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Piemenys, jau eikim!"
+      }
     }
   ],
   "146": [
@@ -4797,6 +5672,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Sekminių sekvencija (ateik, dvasia šventoji)"
+      }
     }
   ],
   "147": [
@@ -4816,6 +5698,13 @@
       "staged": {
         "original": "precatechumenate",
         "new": "election"
+      }
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Ateik nuo libano (gg 4, 8ir tt.)"
       }
     }
   ],
@@ -4868,6 +5757,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Himnas mišparams nuo šeštinių iki sekminių"
+      }
     }
   ],
   "150": [
@@ -4891,6 +5787,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Ateina viešpats, didybe apsivilkęs"
+      }
     }
   ],
   "151": [
@@ -4922,6 +5825,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Mergele nuostabiausia"
+      }
     }
   ],
   "152": [
@@ -5075,6 +5985,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Myliu tave, viešpatie - Psalmė 17 (18)"
+      }
     }
   ],
   "157": [
@@ -5091,6 +6008,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Garbė, garbė, garbė (iz 66,18 ir t.t.)"
+      }
     }
   ],
   "158": [
@@ -5214,6 +6138,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Palaimintas tebūnie dievas (ef 1, 3-13)"
+      }
     }
   ],
   "161": [
@@ -5241,6 +6172,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": false
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Tarsi myriop nuteistieji (1kor 4, 9-13)"
+      }
     }
   ],
   "162": [
@@ -5299,6 +6237,13 @@
         "original": "precatechumenate",
         "new": "election"
       }
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Mano mylimoji yra man (gg 1,13 irt.t:)"
+      }
     }
   ],
   "164": [
@@ -5326,6 +6271,13 @@
       "author": "fd_colautti@mac.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Viešpaties dvasia yra ant manęs (lk 4, 18) (iz 61, 1-3)"
+      }
     }
   ],
   "165": [
@@ -5375,6 +6327,13 @@
         "original": "election",
         "new": "liturgy"
       }
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Tas pats dievas (2kor 4, 6-12)"
+      }
     }
   ],
   "166": [
@@ -5395,6 +6354,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Tamsybės pilną naktį (šv. jonas nuo kryžiaus)"
+      }
     }
   ],
   "167": [
@@ -5426,6 +6392,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Atsistos karaliai, išvydę tave: ii jahvės tarno giesmė (iz 49, 1-16)"
+      }
     }
   ],
   "168": [
@@ -5460,6 +6433,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Aš ištiesiau rankas"
+      }
     }
   ],
   "169": [
@@ -5524,6 +6504,13 @@
       "author": "fd_colautti@mac.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Himnas meilei (1 kor 13, 1-13)"
+      }
     }
   ],
   "171": [
@@ -5548,6 +6535,13 @@
         "original": "election",
         "new": "catechumenate"
       }
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Himnas garbingam kryžiui"
+      }
     }
   ],
   "172": [
@@ -5571,6 +6565,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Jėzus ėjo per visus miestus (mt 9, 35 ir t.t.; 10)"
+      }
     }
   ],
   "173": [
@@ -5601,6 +6602,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Dievo avytė"
+      }
     }
   ],
   "174": [
@@ -5699,6 +6707,13 @@
       "author": "fd_colautti@mac.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Apsivilkite dievo šarvais (ff 6, 11 ir t.t.)"
+      }
     }
   ],
   "177": [
@@ -5715,6 +6730,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Nesipriešinkit blogiui (mt 5, 38 ir t.t.)"
+      }
     }
   ],
   "178": [
@@ -5734,6 +6756,13 @@
       "staged": {
         "original": "election",
         "new": "catechumenate"
+      }
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Neapmaudauk dėl nedorėlių - Psalmė 36 (37)"
       }
     }
   ],
@@ -5762,6 +6791,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Noli me tangere (j 20, 13-17)"
+      }
     }
   ],
   "180": [
@@ -5822,6 +6858,13 @@
       },
       "created": false,
       "updated": false
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Paschos aleliuja"
+      }
     }
   ],
   "182": [
@@ -5935,6 +6978,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Amen, amen, amen (apr 7, 12-14) ()"
+      }
     }
   ],
   "184": [
@@ -6071,6 +7121,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Krikštyklos vandens palaiminimas"
+      }
     }
   ],
   "187": [
@@ -6157,6 +7214,13 @@
       "staged": {
         "original": "liturgy",
         "new": "election"
+      }
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Credo (apaštalų tikėjimo išpažinimas)"
       }
     }
   ],
@@ -6495,6 +7559,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Paschos budėjimo eucharistijos prefacija"
+      }
     }
   ],
   "202": [
@@ -6522,6 +7593,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Paschos šlovinimas (exultet)"
+      }
     }
   ],
   "203": [
@@ -6778,6 +7856,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Te deum - tave, dieve"
+      }
     }
   ],
   "211": [
@@ -7032,6 +8117,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "O dieve, tu mano dievas - Psalmė 62 (63)"
+      }
     }
   ],
   "220": [
@@ -7093,6 +8185,13 @@
       "author": "fd_colautti@mac.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Kada izraelis buvo vaikas (oz 11, 1-11)"
+      }
     }
   ],
   "224": [
@@ -7260,6 +8359,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "locale": "lt-LT",
+      "author": "anonymous",
+      "linked": {
+        "new": "Tepakyla viešpats (eil. 2 - Psalmė 67 (68)"
+      }
     }
   ],
   "240": [
