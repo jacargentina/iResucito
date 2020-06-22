@@ -5,7 +5,7 @@ const fs = require('fs');
 require('colors');
 //const jsdiff = require('diff');
 const { execSync } = require('child_process');
-const inScripts = path.basename(process.cwd()) == path.basename(__dirname);
+const inScripts = path.basename(process.cwd()) === path.basename(__dirname);
 const songsDir = inScripts ? '../songs' : './songs';
 const indexPath = path.resolve(songsDir, 'index.json');
 const patchesPath = path.resolve(songsDir, 'patches.json');
@@ -38,7 +38,7 @@ const patchSongLogic = (songPatch, key, dirty) => {
     var songToPatch = SongsIndex[key];
     Object.keys(songPatch).forEach((rawLoc) => {
       var item: SongPatchData = songPatch[rawLoc];
-      var loc = '';
+      var loc = rawLoc;
       var { author, date, file, rename, lines, stage } = item;
       if (rename) {
         rename = rename.trim();
@@ -60,9 +60,13 @@ const patchSongLogic = (songPatch, key, dirty) => {
           } else {
             // El archivo aun no existe en el idioma
             // crear archivo con el nombre del español
-            file = songToPatch.files['es'];
+            file = songToPatch.files.es;
           }
         }
+      }
+
+      if (!loc) {
+        throw new Error('No se pudo determinar localizacion');
       }
 
       var songDirectory = null;
@@ -196,12 +200,10 @@ if (!process.argv.slice(2).length) {
   var patch = JSON.parse(json);
   var finalReport = [];
   if (key) {
-    var res = patchSongLogic(patch[key], key, dirty);
-    finalReport.push(res);
+    finalReport.push(patchSongLogic(patch[key], key, dirty));
   } else {
     Object.keys(patch).forEach((k) => {
-      var res = patchSongLogic(patch[k], k, dirty);
-      finalReport.push(res);
+      finalReport.push(patchSongLogic(patch[k], k, dirty));
     });
   }
   if (!dirty) {
