@@ -23,7 +23,10 @@ var android_build = /def VERSION_BUILD=(.*)/.exec(androidGradle)[1];
 module.exports = (env, argv) => {
   return {
     devtool: argv.mode === 'development' ? 'source-map' : 'none',
-    entry: path.join(__dirname, '/index.js'),
+    entry: {
+      main: path.join(__dirname, '/index.js'),
+      'pdf.worker': 'pdfjs-dist/build/pdf.worker.entry',
+    },
     module: {
       rules: [
         {
@@ -49,7 +52,7 @@ module.exports = (env, argv) => {
     },
     output: {
       path: path.resolve(__dirname, '../dist'),
-      filename: 'clientBundle.js',
+      filename: '[name].clientBundle.js',
     },
     devServer: {
       contentBase: path.resolve(__dirname, '../dist'),

@@ -15,6 +15,8 @@ import { EditContext } from './EditContext';
 import I18n from '../../translations';
 import pdfjsLib from 'pdfjs-dist';
 
+pdfjsLib.GlobalWorkerOptions.workerSrc = './pdf.worker.clientBundle.js';
+
 const SongViewPdf = (props: any) => {
   const { url } = props;
 
@@ -51,7 +53,7 @@ const SongViewPdf = (props: any) => {
   useEffect(() => {
     if (pdf && currPage > 0) {
       pdf.getPage(currPage).then((page) => {
-        var viewport = page.getViewport(1.3);
+        var viewport = page.getViewport({ scale: 1.3 });
         var canvas = myRef.current;
 
         var context = canvas.getContext('2d');
