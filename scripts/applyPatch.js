@@ -23,6 +23,8 @@ const languageFolders = onlyNames.reduce((obj, item) => {
   return obj;
 }, {});
 
+const currentDate = Date.now();
+
 const patchSongLogic = (songPatch, key, dirty) => {
   var report = {};
   report.key = key;
@@ -148,7 +150,7 @@ const patchSongLogic = (songPatch, key, dirty) => {
 
       // Guardar historia de cambios
       var patchInfo: SongPatchLogData = {
-        date: date,
+        date: date || currentDate,
         locale: report.locale,
         author: author || 'anonymous',
         rename: report.rename,
