@@ -129,7 +129,7 @@ export const stylesObj: SongStyles = {
     color: '#000000',
     fontSize: fontSizeTexto,
   },
-  pageFooter: null,
+  pageFooter: {},
 };
 
 export const NativeStyles = StyleSheet.create(stylesObj);
