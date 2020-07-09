@@ -13,7 +13,6 @@
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		1BA63E7877CBEB5304D997E8 /* libPods-iResucito-iResucitoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9183A5D08870C0D9996952C /* libPods-iResucito-iResucitoTests.a */; };
 		20A65B3F09C742E481A76D28 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 683C81D93509420C98AC30FF /* Feather.ttf */; };
 		2128A10092EE48ACA913F2E9 /* Roboto_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B9E93A927B584EBDB526EEEB /* Roboto_medium.ttf */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
@@ -22,6 +21,7 @@
 		2D69534066C83704005999B1 /* libPods-iResucito-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9562017146C48F30930E0271 /* libPods-iResucito-tvOSTests.a */; };
 		2DCD954D1E0B4F2C00145EB5 /* iResucitoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* iResucitoTests.m */; };
 		309C5CA520CC4D1CA4250D28 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3FAAF7AF8B8D4E2C8D629495 /* MaterialCommunityIcons.ttf */; };
+		3D261CCC5B4F274896A4AB7C /* libPods-iResucitoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7C9EB33D7C1C6DACDB563FF /* libPods-iResucitoTests.a */; };
 		458DA144D994482986913C99 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46C2BD3121214F2B8A02FEB6 /* Ionicons.ttf */; };
 		4929495E4C58481D8088A2C2 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD7608E249E4438A801F10FB /* Foundation.ttf */; };
 		4C705F9DC32E253E7A22CF0E /* libPods-iResucito-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FDD00E4434523DCCB36C0428 /* libPods-iResucito-tvOS.a */; };
@@ -97,8 +97,6 @@
 		88A4D49023A2A82E0090F9AD /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		88B3DCE32451073F00F2FFA5 /* lt-LT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "lt-LT"; path = "lt-LT.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		88D516DE22DF4AAE00E03D4C /* songs */ = {isa = PBXFileReference; lastKnownFileType = folder; name = songs; path = ../songs; sourceTree = "<group>"; };
-		8C59219A9D3B2B176FFF02E6 /* Pods-iResucito-iResucitoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iResucito-iResucitoTests.release.xcconfig"; path = "Target Support Files/Pods-iResucito-iResucitoTests/Pods-iResucito-iResucitoTests.release.xcconfig"; sourceTree = "<group>"; };
-		8CFF9400198C8630E06CAB4A /* Pods-iResucito-iResucitoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iResucito-iResucitoTests.debug.xcconfig"; path = "Target Support Files/Pods-iResucito-iResucitoTests/Pods-iResucito-iResucitoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		94EEF1E1F8D643B1BCA8D0BD /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/native-base/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
 		9562017146C48F30930E0271 /* libPods-iResucito-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iResucito-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2565D4B4FB1BCF097E80804 /* Pods-iResucito.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iResucito.debug.xcconfig"; path = "Target Support Files/Pods-iResucito/Pods-iResucito.debug.xcconfig"; sourceTree = "<group>"; };
@@ -107,11 +105,11 @@
 		B3CDF9451300577274E7EA3B /* Pods-iResucito-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iResucito-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-iResucito-tvOSTests/Pods-iResucito-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B9E93A927B584EBDB526EEEB /* Roboto_medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto_medium.ttf; path = "../node_modules/native-base/Fonts/Roboto_medium.ttf"; sourceTree = "<group>"; };
 		BD7608E249E4438A801F10FB /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/native-base/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
+		C7C9EB33D7C1C6DACDB563FF /* libPods-iResucitoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iResucitoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4D594A06396464190C44014 /* Roboto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto.ttf; path = "../node_modules/native-base/Fonts/Roboto.ttf"; sourceTree = "<group>"; };
 		D7E474849C70161267741465 /* Pods-iResucito-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iResucito-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-iResucito-tvOS/Pods-iResucito-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		E0030EB2A4DD4208B166E045 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/native-base/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		E4E835E3619ECFCF0F699FF4 /* Pods-iResucito-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iResucito-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-iResucito-tvOSTests/Pods-iResucito-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		E9183A5D08870C0D9996952C /* libPods-iResucito-iResucitoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iResucito-iResucitoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA8BBD93F6DC41C6A6FA67B4 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/native-base/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -125,7 +123,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1BA63E7877CBEB5304D997E8 /* libPods-iResucito-iResucitoTests.a in Frameworks */,
+				3D261CCC5B4F274896A4AB7C /* libPods-iResucitoTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,7 +194,7 @@
 				FB9C97B677F8BB170DA38C69 /* libPods-iResucito.a */,
 				FDD00E4434523DCCB36C0428 /* libPods-iResucito-tvOS.a */,
 				9562017146C48F30930E0271 /* libPods-iResucito-tvOSTests.a */,
-				E9183A5D08870C0D9996952C /* libPods-iResucito-iResucitoTests.a */,
+				C7C9EB33D7C1C6DACDB563FF /* libPods-iResucitoTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -276,8 +274,6 @@
 				E4E835E3619ECFCF0F699FF4 /* Pods-iResucito-tvOSTests.release.xcconfig */,
 				20CCE8CB4AB4FF6FAE13B6BE /* Pods-iResucitoTests.debug.xcconfig */,
 				A9436D5600D79002EA403B03 /* Pods-iResucitoTests.release.xcconfig */,
-				8CFF9400198C8630E06CAB4A /* Pods-iResucito-iResucitoTests.debug.xcconfig */,
-				8C59219A9D3B2B176FFF02E6 /* Pods-iResucito-iResucitoTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -289,7 +285,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "iResucitoTests" */;
 			buildPhases = (
-				5690EE9E70B51AA1E7C769C4 /* [CP] Check Pods Manifest.lock */,
+				31AA5E55F97D810169FD25DC /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
@@ -314,6 +310,7 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				AC549A955142DABA3A25C83C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -505,6 +502,28 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
+		31AA5E55F97D810169FD25DC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iResucitoTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		42570DACBAD5019C6D880F0E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -549,26 +568,22 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5690EE9E70B51AA1E7C769C4 /* [CP] Check Pods Manifest.lock */ = {
+		AC549A955142DABA3A25C83C /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
+				"${PODS_ROOT}/Target Support Files/Pods-iResucito/Pods-iResucito-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
 			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-iResucito-iResucitoTests-checkManifestLockResult.txt",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iResucito/Pods-iResucito-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DDDBDB0C49F7377C9183154D /* [CP] Check Pods Manifest.lock */ = {
@@ -700,7 +715,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8CFF9400198C8630E06CAB4A /* Pods-iResucito-iResucitoTests.debug.xcconfig */;
+			baseConfigurationReference = 20CCE8CB4AB4FF6FAE13B6BE /* Pods-iResucitoTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = GHJ7J9LTV8;
@@ -728,7 +743,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8C59219A9D3B2B176FFF02E6 /* Pods-iResucito-iResucitoTests.release.xcconfig */;
+			baseConfigurationReference = A9436D5600D79002EA403B03 /* Pods-iResucitoTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
