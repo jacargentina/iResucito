@@ -90,7 +90,6 @@
 		748BF07D3AA94E7E8E947089 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/native-base/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		7AE051890C484082951CE79A /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/native-base/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		8829DFCE23298AA3000197D4 /* resucito.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = resucito.gif; sourceTree = "<group>"; };
-		883AB920242E46F800EC77E0 /* iResucito-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iResucito-Bridging-Header.h"; sourceTree = "<group>"; };
 		884593DC230ED2CE00E72C72 /* Icon-App-60x60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-App-60x60@3x.png"; path = "iResucito/Images.xcassets/AppIcon.appiconset/Icon-App-60x60@3x.png"; sourceTree = "<group>"; };
 		8872DD8B22DF4F2B00FDA403 /* Franklin Gothic Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Franklin Gothic Medium.ttf"; path = "../assets/fonts/Franklin Gothic Medium.ttf"; sourceTree = "<group>"; };
 		8891E2BC232989F30072F2F9 /* cristo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cristo.jpg; sourceTree = "<group>"; };
@@ -181,7 +180,6 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
-				883AB920242E46F800EC77E0 /* iResucito-Bridging-Header.h */,
 			);
 			name = iResucito;
 			sourceTree = "<group>";
@@ -724,12 +722,8 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = iResucitoTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				OTHER_CFLAGS = (
-					"$(inherited)",
-					"-DFB_SONARKIT_ENABLED=1",
-				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -748,12 +742,8 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = iResucitoTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				OTHER_CFLAGS = (
-					"$(inherited)",
-					"-DFB_SONARKIT_ENABLED=1",
-				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -769,25 +759,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A2565D4B4FB1BCF097E80804 /* Pods-iResucito.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 6;
-				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = GHJ7J9LTV8;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"COCOAPODS=1",
-					"FB_SONARKIT_ENABLED=1",
-				);
 				INFOPLIST_FILE = iResucito/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_CFLAGS = (
-					"$(inherited)",
-					"-DFB_SONARKIT_ENABLED=1",
-				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -796,7 +775,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.javiercastro.iresucito;
 				PRODUCT_NAME = iResucito;
 				PROVISIONING_PROFILE_SPECIFIER = "iResucito en iPhone XS";
-				SWIFT_OBJC_BRIDGING_HEADER = "iResucito-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -808,7 +786,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 440873CFBF0AD5544161BD78 /* Pods-iResucito.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
@@ -816,10 +793,6 @@
 				DEVELOPMENT_TEAM = GHJ7J9LTV8;
 				INFOPLIST_FILE = iResucito/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_CFLAGS = (
-					"$(inherited)",
-					"-DFB_SONARKIT_ENABLED=1",
-				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -828,7 +801,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.javiercastro.iresucito;
 				PRODUCT_NAME = iResucito;
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.javiercastro.iresucito";
-				SWIFT_OBJC_BRIDGING_HEADER = "iResucito-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -851,10 +823,6 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "iResucito-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_CFLAGS = (
-					"$(inherited)",
-					"-DFB_SONARKIT_ENABLED=1",
-				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -883,10 +851,6 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "iResucito-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_CFLAGS = (
-					"$(inherited)",
-					"-DFB_SONARKIT_ENABLED=1",
-				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -914,10 +878,6 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "iResucito-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				OTHER_CFLAGS = (
-					"$(inherited)",
-					"-DFB_SONARKIT_ENABLED=1",
-				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -945,10 +905,6 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "iResucito-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				OTHER_CFLAGS = (
-					"$(inherited)",
-					"-DFB_SONARKIT_ENABLED=1",
-				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -992,7 +948,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEAD_CODE_STRIPPING = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1010,17 +965,16 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
 				LIBRARY_SEARCH_PATHS = (
-					"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)",
-					"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)",
-					"$(inherited)",
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
+					"\"$(inherited)\"",
 				);
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_OBJC_BRIDGING_HEADER = "iResucito-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -1054,7 +1008,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				DEAD_CODE_STRIPPING = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1065,16 +1018,15 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
 				LIBRARY_SEARCH_PATHS = (
-					"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)",
-					"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)",
-					"$(inherited)",
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
+					"\"$(inherited)\"",
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OBJC_BRIDGING_HEADER = "iResucito-Bridging-Header.h";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
