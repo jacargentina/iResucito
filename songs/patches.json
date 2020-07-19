@@ -1118,6 +1118,17 @@
       "linked": {
         "new": "Abraomas (pr 18, 1-5)"
       }
+    },
+    {
+      "date": 1593938767103,
+      "locale": "lt-LT",
+      "author": "david.hernandez.duran@gmail.com",
+      "rename": {
+        "original": "Abraomas (pr 18, 1-5)",
+        "new": "Abraomas - Pr 18, 1-5"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "26": [
@@ -1383,6 +1394,13 @@
       "linked": {
         "new": "Aleliuja, šlovinkite dievą - Psalmė 150"
       }
+    },
+    {
+      "date": 1593762931400,
+      "locale": "lt-LT",
+      "author": "david.hernandez.duran@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "30": [
@@ -1647,6 +1665,17 @@
       "linked": {
         "new": "115 (116) - Psalmė 114"
       }
+    },
+    {
+      "date": 1593531946957,
+      "locale": "lt-LT",
+      "author": "javier.alejandro.castro@gmail.com",
+      "rename": {
+        "original": "115 (116) - Psalmė 114",
+        "new": "Pakelsiu Išganymo Taurę - Psalmė 114-115 (116)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "34": [
@@ -1733,6 +1762,13 @@
       "linked": {
         "new": "Akeda"
       }
+    },
+    {
+      "date": 1593762187001,
+      "locale": "lt-LT",
+      "author": "david.hernandez.duran@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "35": [
@@ -2334,6 +2370,17 @@
       "linked": {
         "new": "42 (42 - Psalmė 41"
       }
+    },
+    {
+      "date": 1593532144245,
+      "locale": "lt-LT",
+      "author": "javier.alejandro.castro@gmail.com",
+      "rename": {
+        "original": "42 (42 - Psalmė 41",
+        "new": "Kaip Elnė Ilgis! - Psalmė 41-42 (42-43)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "49": [
@@ -2376,6 +2423,13 @@
       "linked": {
         "new": "Žiūrėkit, kaip graži, ragaukit, kaip saldi - Psalmė 132 (133)"
       }
+    },
+    {
+      "date": 1593532457451,
+      "locale": "lt-LT",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "50": [
@@ -2594,6 +2648,13 @@
       "linked": {
         "new": "Angelų akivaizdoje - Psalmė 137 (138)"
       }
+    },
+    {
+      "date": 1593532391464,
+      "locale": "lt-LT",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "57": [
@@ -3612,6 +3673,13 @@
       "linked": {
         "new": "Advento himnas"
       }
+    },
+    {
+      "date": 1593761417023,
+      "locale": "lt-LT",
+      "author": "david.hernandez.duran@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "84": [
@@ -4403,6 +4471,13 @@
       "linked": {
         "new": "Žiūrėkit, kaip puiku - Psalmė 132 (133)"
       }
+    },
+    {
+      "date": 1593532488661,
+      "locale": "lt-LT",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "105": [
@@ -6859,6 +6934,17 @@
       "linked": {
         "new": "Apsivilkite dievo šarvais (ff 6, 11 ir t.t.)"
       }
+    },
+    {
+      "date": 1593532431504,
+      "locale": "lt-LT",
+      "author": "javier.alejandro.castro@gmail.com",
+      "rename": {
+        "original": "Apsivilkite dievo šarvais (ff 6, 11 ir t.t.)",
+        "new": "Apsivilkite dievo šarvais - Ff 6, 11 ir t.t."
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "177": [
@@ -7135,6 +7221,17 @@
       "linked": {
         "new": "Amen, amen, amen (apr 7, 12-14) ()"
       }
+    },
+    {
+      "date": 1593532360607,
+      "locale": "lt-LT",
+      "author": "javier.alejandro.castro@gmail.com",
+      "rename": {
+        "original": "Amen, amen, amen (apr 7, 12-14) ()",
+        "new": "Amen, Amen, Amen - Apr 7, 12-14"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "184": [
