@@ -16,7 +16,8 @@ const ClearRatingsButton = () => {
 
   return (
     <Icon
-      name="star-outline"
+      name="star"
+      type="FontAwesome"
       style={{
         marginTop: 4,
         marginRight: 8,

@@ -12,7 +12,8 @@ const ContactListItem = (props: any) => {
     <View style={{ flexDirection: 'row' }}>
       {item.s === true && (
         <Icon
-          name="musical-notes"
+          name="music"
+          type="FontAwesome"
           style={{
             marginRight: 4,
             color: commonTheme.brandPrimary,

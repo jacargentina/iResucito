@@ -83,7 +83,7 @@ const CommunityScreen = (props: any) => {
   if (brothers.length === 0 && !filter) {
     return (
       <CallToAction
-        icon="people"
+        icon="address-book"
         title={I18n.t('call_to_action_title.community list')}
         text={I18n.t('call_to_action_text.community list')}
         buttonHandler={() => contactImport(navigation)}

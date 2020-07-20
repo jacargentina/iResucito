@@ -11,6 +11,7 @@ const PrintPDFButton = (props: any) => {
   return (
     <Icon
       name="print"
+      type="FontAwesome"
       style={{
         marginTop: 4,
         marginRight: 8,

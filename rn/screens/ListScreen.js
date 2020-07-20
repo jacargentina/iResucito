@@ -113,6 +113,7 @@ const ListScreen = (props: any) => {
                 <Left>
                   <Icon
                     name="bookmark"
+                    type="FontAwesome"
                     style={{ fontSize: 36, color: commonTheme.brandInfo }}
                   />
                 </Left>

@@ -12,7 +12,8 @@ const SharePDFButton = (props: any) => {
   const { title, uri } = route.params;
   return (
     <Icon
-      name="share"
+      name="share-alt"
+      type="FontAwesome"
       style={{
         marginTop: 4,
         marginRight: 8,

@@ -22,6 +22,7 @@ const CallToAction = (props: any) => {
           }}>
           <Icon
             name={props.icon}
+            type='FontAwesome'
             style={{
               fontSize: 120,
               color: commonTheme.brandPrimary,

@@ -58,7 +58,8 @@ const TransportNotesButton = (props: any) => {
   var trigger =
     transportNote === null || transportNote === undefined ? (
       <Icon
-        name="musical-note"
+        name="music"
+        type="FontAwesome"
         style={{
           marginTop: 4,
           marginRight: 8,

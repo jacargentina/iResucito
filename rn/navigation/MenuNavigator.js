@@ -45,6 +45,7 @@ const getIcon = (iconName) => {
           name={iconName}
           active={focused}
           style={{ marginTop: 6, color: color }}
+          type="FontAwesome"
         />
       );
     },
@@ -84,12 +85,12 @@ const MenuNavigator = (props: any) => {
       <Tab.Screen
         name="Community"
         component={CommunityNavigator}
-        options={getIcon('contacts')}
+        options={getIcon('address-book')}
       />
       <Tab.Screen
         name="Settings"
         component={SettingsNavigator}
-        options={getIcon('settings')}
+        options={getIcon('cog')}
       />
     </Tab.Navigator>
   );

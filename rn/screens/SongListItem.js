@@ -38,6 +38,7 @@ const NoLocaleWarning = () => {
       style={{ flex: 1, flexDirection: 'row' }}>
       <Icon
         name="bug"
+        type="FontAwesome"
         style={{
           margin: 5,
           fontSize: 18,
@@ -347,6 +348,7 @@ const SongListItem = (props: any) => {
         <Right>
           <Icon
             name="more"
+            type="FontAwesome"
             style={{
               color: commonTheme.brandPrimary,
             }}
@@ -358,6 +360,7 @@ const SongListItem = (props: any) => {
         <Right>
           <Icon
             name="eye"
+            type="FontAwesome"
             style={{
               fontSize: 32,
               color: commonTheme.brandPrimary,
@@ -370,6 +373,7 @@ const SongListItem = (props: any) => {
         <Right>
           <Icon
             name="bug"
+            type="FontAwesome"
             style={{
               fontSize: 32,
               color: commonTheme.brandPrimary,

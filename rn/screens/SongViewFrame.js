@@ -90,7 +90,7 @@ const SongViewFrame = (props: any) => {
           <Button
             style={{ backgroundColor: commonTheme.brandPrimary }}
             onPress={zoomOut}>
-            <Icon name="remove" />
+            <Icon name="minus" type="FontAwesome" />
           </Button>
           <Text
             style={{
@@ -102,7 +102,7 @@ const SongViewFrame = (props: any) => {
           <Button
             style={{ backgroundColor: commonTheme.brandPrimary }}
             onPress={zoomIn}>
-            <Icon name="add" />
+            <Icon name="plus" type="FontAwesome" />
           </Button>
         </View>
       )}

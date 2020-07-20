@@ -18,7 +18,8 @@ const ViewPdfButton = (props: any) => {
 
   return (
     <Icon
-      name="paper"
+      name="file"
+      type="FontAwesome"
       style={{
         marginTop: 4,
         marginRight: 8,

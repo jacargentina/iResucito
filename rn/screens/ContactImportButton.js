@@ -12,7 +12,8 @@ const ContactImportButton = () => {
 
   return (
     <Icon
-      name="add"
+      name="plus"
+      type="FontAwesome"
       style={{
         marginTop: 4,
         marginRight: 8,
