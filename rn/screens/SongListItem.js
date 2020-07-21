@@ -18,7 +18,6 @@ import commonTheme from '../native-base-theme/variables/platform';
 import textTheme from '../native-base-theme/components/Text';
 import { Rating } from 'react-native-rating-element';
 import { DataContext } from '../DataContext';
-import usePersist from '../usePersist';
 import badges from '../badges';
 import I18n from '../../translations';
 
@@ -59,14 +58,13 @@ const SongListItem = (props: any) => {
     songKey,
     songMeta,
     showBadge,
-    devModeDisabled,
+    developerMode,
     ratingDisabled,
     patchSectionDisabled,
     viewButton,
   } = props;
 
   const [isCollapsed, setIsCollapsed] = useState(true);
-  const [devModeSetting] = usePersist('developerMode');
   const {
     getSongLocalePatch,
     setSongPatch,
@@ -81,7 +79,6 @@ const SongListItem = (props: any) => {
     return songMeta;
   }, [songs, songKey, songMeta]);
 
-  const [developerMode, setDeveloperMode] = useState();
   const [firstHighlighted, setFirstHighlighted] = useState();
   const [highlightedRest, setHighlightedRest] = useState();
   const [openHighlightedRest, setOpenHighlightedRest] = useState();
@@ -228,12 +225,6 @@ const SongListItem = (props: any) => {
       { cancelable: false }
     );
   };
-
-  useEffect(() => {
-    var isOn = devModeDisabled === true ? false : devModeSetting;
-    setDeveloperMode(isOn);
-    console.log('developerMode is', isOn);
-  }, [devModeSetting, devModeDisabled]);
 
   useEffect(() => {
     if (

@@ -17,9 +17,11 @@ import SearchBarView from './SearchBarView';
 import SongListItem from './SongListItem';
 import I18n from '../../translations';
 import { DataContext } from '../DataContext';
+import usePersist from '../usePersist';
 import commonTheme from '../native-base-theme/variables/platform';
 
 const SongList = (props: any) => {
+  const { devModeDisabled } = props;
   const listRef = useRef<?FlatList>();
   const data = useContext(DataContext);
   const navigation = useNavigation();
@@ -32,6 +34,17 @@ const SongList = (props: any) => {
   const [showSalmosBadge, setShowSalmosBadge] = useState();
   const [textFilter, setTextFilter] = useState('');
   const [search, setSearch] = useState();
+  const [developerMode, setDeveloperMode] = useState(false);
+  const [devModeSetting] = usePersist('developerMode');
+
+  useEffect(() => {
+    var isOn = devModeDisabled === true ? false : devModeSetting;
+    setDeveloperMode(isOn);
+  }, [devModeSetting, devModeDisabled]);
+
+  // useEffect(() => {
+  //   console.log('devModeSetting', devModeSetting);
+  // }, [devModeSetting]);
 
   useEffect(() => {
     const navFilter = route?.params?.filter ?? props.filter;
@@ -104,7 +117,7 @@ const SongList = (props: any) => {
         onScrollBeginDrag={() => Keyboard.dismiss()}
         keyboardShouldPersistTaps="always"
         data={search || []}
-        keyExtractor={(item) => item.path}
+        extraData={developerMode}
         renderItem={({ item }) => {
           return (
             <SongListItem
@@ -114,7 +127,7 @@ const SongList = (props: any) => {
               onPress={onPress}
               viewButton={viewButton}
               highlight={textFilter}
-              devModeDisabled={props.devModeDisabled}
+              developerMode={developerMode}
             />
           );
         }}
