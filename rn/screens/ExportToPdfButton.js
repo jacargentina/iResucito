@@ -71,8 +71,7 @@ const ExportToPdfButton = () => {
 
   return (
     <Icon
-      name="file"
-      type="FontAwesome"
+      name="share-outline"
       style={{
         marginTop: 4,
         marginRight: 8,

@@ -18,8 +18,7 @@ const ViewPdfButton = (props: any) => {
 
   return (
     <Icon
-      name="file"
-      type="FontAwesome"
+      name="document-text-outline"
       style={{
         marginTop: 4,
         marginRight: 8,

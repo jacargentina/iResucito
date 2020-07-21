@@ -10,8 +10,7 @@ const PrintPDFButton = (props: any) => {
   const { uri } = route.params;
   return (
     <Icon
-      name="print"
-      type="FontAwesome"
+      name="print-outline"
       style={{
         marginTop: 4,
         marginRight: 8,

@@ -38,7 +38,6 @@ const NoLocaleWarning = () => {
       style={{ flex: 1, flexDirection: 'row' }}>
       <Icon
         name="bug"
-        type="FontAwesome"
         style={{
           margin: 5,
           fontSize: 18,
@@ -233,7 +232,8 @@ const SongListItem = (props: any) => {
   useEffect(() => {
     var isOn = devModeDisabled === true ? false : devModeSetting;
     setDeveloperMode(isOn);
-  }, [devModeSetting]);
+    console.log('developerMode is', isOn);
+  }, [devModeSetting, devModeDisabled]);
 
   useEffect(() => {
     if (
@@ -280,7 +280,7 @@ const SongListItem = (props: any) => {
       setHighlightedRest();
       setOpenHighlightedRest();
     }
-  }, [highlight, developerMode, isCollapsed]);
+  }, [highlight, developerMode, isCollapsed, song.error, song.fullText]);
 
   if (!song) {
     return (
@@ -293,7 +293,7 @@ const SongListItem = (props: any) => {
   }
 
   return (
-    <ListItem avatar={showBadge} noIndent style={{ paddingBottom: 0 }}>
+    <ListItem avatar={showBadge} noIndent>
       {showBadge && <Left>{badges[song.stage]}</Left>}
       <Body>
         <TouchableOpacity
@@ -345,10 +345,10 @@ const SongListItem = (props: any) => {
       {developerMode && !patchSectionDisabled && (
         <Right>
           <Icon
-            name="more"
-            type="FontAwesome"
+            name="ellipsis-horizontal-outline"
             style={{
               color: commonTheme.brandPrimary,
+              marginLeft: 8,
             }}
             onPress={showDeveloperMenu}
           />
@@ -357,8 +357,7 @@ const SongListItem = (props: any) => {
       {!developerMode && viewButton && (
         <Right>
           <Icon
-            name="eye"
-            type="FontAwesome"
+            name="eye-outline"
             style={{
               fontSize: 32,
               color: commonTheme.brandPrimary,
@@ -371,7 +370,6 @@ const SongListItem = (props: any) => {
         <Right>
           <Icon
             name="bug"
-            type="FontAwesome"
             style={{
               fontSize: 32,
               color: commonTheme.brandPrimary,

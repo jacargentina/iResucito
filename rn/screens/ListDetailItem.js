@@ -28,11 +28,7 @@ const ListDetailItem = (props: any) => {
     item = (
       <ListItem icon last>
         <Left>
-          <Icon
-            name="book"
-            type="FontAwesome"
-            style={{ color: commonTheme.brandInfo }}
-          />
+          <Icon name="book" style={{ color: commonTheme.brandInfo }} />
         </Left>
         <Body>
           <Input
@@ -57,11 +53,7 @@ const ListDetailItem = (props: any) => {
     item = (
       <ListItem icon last>
         <Left>
-          <Icon
-            name="user"
-            type="FontAwesome"
-            style={{ color: commonTheme.brandInfo }}
-          />
+          <Icon name="person" style={{ color: commonTheme.brandInfo }} />
         </Left>
         <Body>
           <Input
@@ -77,7 +69,6 @@ const ListDetailItem = (props: any) => {
         <Right>
           <Icon
             name="search"
-            type="FontAwesome"
             style={{
               color: commonTheme.brandPrimary,
               width: 40,
@@ -120,8 +111,7 @@ const ListDetailItem = (props: any) => {
       listText != null ? (
         <Right>
           <Icon
-            name="folder-open"
-            type="FontAwesome"
+            name="open"
             style={{
               color: commonTheme.brandPrimary,
               width: 40,
@@ -150,11 +140,7 @@ const ListDetailItem = (props: any) => {
           })
         }>
         <Left>
-          <Icon
-            name="music"
-            type="FontAwesome"
-            style={{ color: commonTheme.brandInfo }}
-          />
+          <Icon name="musical-notes" style={{ color: commonTheme.brandInfo }} />
         </Left>
         <Body>
           <Text numberOfLines={1}>{text}</Text>

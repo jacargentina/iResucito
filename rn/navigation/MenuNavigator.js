@@ -45,7 +45,6 @@ const getIcon = (iconName) => {
           name={iconName}
           active={focused}
           style={{ marginTop: 6, color: color }}
-          type="FontAwesome"
         />
       );
     },
@@ -80,17 +79,17 @@ const MenuNavigator = (props: any) => {
       <Tab.Screen
         name="Lists"
         component={ListsNavigator}
-        options={getIcon('bookmark')}
+        options={getIcon('bookmarks-outline')}
       />
       <Tab.Screen
         name="Community"
         component={CommunityNavigator}
-        options={getIcon('address-book')}
+        options={getIcon('people-outline')}
       />
       <Tab.Screen
         name="Settings"
         component={SettingsNavigator}
-        options={getIcon('cog')}
+        options={getIcon('settings-outline')}
       />
     </Tab.Navigator>
   );

@@ -101,7 +101,7 @@ const UnassignedList = (props: any) => {
               </Body>
               <Right>
                 <Icon
-                  name="eye"
+                  name="eye-outline"
                   style={{
                     fontSize: 32,
                     color: commonTheme.brandPrimary,

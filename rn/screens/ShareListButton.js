@@ -42,8 +42,7 @@ const ShareListButton = (props: any) => {
   };
   return (
     <Icon
-      name="share-alt"
-      type="FontAwesome"
+      name="share-outline"
       style={{
         marginTop: 4,
         marginRight: 12,

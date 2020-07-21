@@ -68,7 +68,7 @@ const SearchBarView = (props: any) => {
               borderColor: 'transparent',
               paddingHorizontal: 15,
             }}>
-            <Icon name="search" type="FontAwesome" onPress={focusTerm} />
+            <Icon name="search" onPress={focusTerm} />
             <DebouncedInput
               ref={termInput}
               value={props.value}

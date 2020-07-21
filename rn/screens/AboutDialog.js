@@ -89,10 +89,10 @@ const AboutDialog = (props: any) => {
             flexDirection: 'row',
           }}>
           <Button style={{ margin: 5 }} primary rounded onPress={sendMail}>
-            <Icon name="envelope" type="FontAwesome" />
+            <Icon name="mail" />
           </Button>
           <Button style={{ margin: 5 }} primary rounded onPress={sendTwitter}>
-            <Icon name="twitter" type="FontAwesome" />
+            <Icon name="logo-twitter" />
           </Button>
         </View>
         {Platform.OS !== 'android' && (
@@ -102,7 +102,7 @@ const AboutDialog = (props: any) => {
             </Text>
             <View>
               <Button iconLeft onPress={makeDonation}>
-                <Icon name="usd-circle" type="FontAwesome" />
+                <Icon name="logo-usd" />
                 <Text>{I18n.t('ui.donate button')}</Text>
               </Button>
             </View>

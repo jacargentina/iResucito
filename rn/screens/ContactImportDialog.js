@@ -15,6 +15,7 @@ import { DataContext } from '../DataContext';
 import commonTheme from '../native-base-theme/variables/platform';
 import I18n from '../../translations';
 import ContactPhoto from './ContactPhoto';
+import Switch from '../widgets/switch';
 import {
   getContactsForImport,
   contactFilterByText,
@@ -143,10 +144,10 @@ const ContactImportDialog = () => {
                   </Text>
                 </Body>
                 <Right>
-                  <CheckBox
+                  <Switch
                     style={{ marginRight: 15 }}
-                    checked={item.imported}
-                    onPress={() => handleContact(item)}
+                    value={item.imported}
+                    onValueChange={() => handleContact(item)}
                   />
                 </Right>
               </ListItem>

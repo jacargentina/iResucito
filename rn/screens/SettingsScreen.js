@@ -135,7 +135,7 @@ const SettingsScreen = () => {
           )}
           <ListItem icon button onPress={() => navigation.navigate('About')}>
             <Left>
-              <Icon name="info-circle" type="FontAwesome" />
+              <Icon name="checkmark" />
             </Left>
             <Body>
               <Text>{I18n.t('settings_title.about')}</Text>

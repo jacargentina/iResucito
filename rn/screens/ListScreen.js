@@ -60,7 +60,7 @@ const ListScreen = (props: any) => {
   if (allLists.length === 0) {
     return (
       <CallToAction
-        icon="bookmark"
+        icon="bookmarks-outline"
         title={I18n.t('call_to_action_title.add lists')}
         text={I18n.t('call_to_action_text.add lists')}
         buttonHandler={() => chooseListTypeForAdd(navigation)}
@@ -113,7 +113,6 @@ const ListScreen = (props: any) => {
                 <Left>
                   <Icon
                     name="bookmark"
-                    type="FontAwesome"
                     style={{ fontSize: 36, color: commonTheme.brandInfo }}
                   />
                 </Left>

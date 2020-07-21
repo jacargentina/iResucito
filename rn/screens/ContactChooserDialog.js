@@ -70,8 +70,7 @@ const ContactChooserDialog = (props: any) => {
             padding: 10,
           }}>
           <Icon
-            name="address-book"
-            type="FontAwesome"
+            name="people-outline"
             style={{
               fontSize: 120,
               color: commonTheme.brandPrimary,
