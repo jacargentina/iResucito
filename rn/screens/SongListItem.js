@@ -16,7 +16,7 @@ import Highlighter from 'react-native-highlight-words';
 import Collapsible from 'react-native-collapsible';
 import commonTheme from '../native-base-theme/variables/platform';
 import textTheme from '../native-base-theme/components/Text';
-import StarRating from 'react-native-star-rating';
+import { Rating } from 'react-native-rating-element';
 import { DataContext } from '../DataContext';
 import usePersist from '../usePersist';
 import badges from '../badges';
@@ -329,18 +329,16 @@ const SongListItem = (props: any) => {
           </Text>
         )}
         {!patchSectionDisabled && song.notTranslated && <NoLocaleWarning />}
-        <StarRating
-          containerStyle={{
-            paddingTop: 15,
-            paddingBottom: !showBadge ? 15 : 0,
-            width: '50%',
-          }}
-          disabled={ratingDisabled}
-          maxStars={5}
-          starSize={15}
-          rating={song.rating}
-          selectedStar={(value) => setSongRating(song.key, I18n.locale, value)}
-          fullStarColor={commonTheme.brandPrimary}
+        <Rating
+          readonly={ratingDisabled}
+          totalCount={5}
+          marginBetweenRatingIcon={3}
+          size={20}
+          rated={song.rating}
+          onIconTap={(position) =>
+            setSongRating(song.key, I18n.locale, position)
+          }
+          ratingColor={commonTheme.brandPrimary}
         />
       </Body>
       {openHighlightedRest}
