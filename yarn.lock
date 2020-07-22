@@ -6280,11 +6280,12 @@ metro-react-native-babel-preset@0.59.0:
     "@babel/template" "^7.0.0"
     react-refresh "^0.4.0"
 
-metro-react-native-babel-preset@^0.60.0:
-  version "0.60.0"
-  resolved "https://registry.yarnpkg.com/metro-react-native-babel-preset/-/metro-react-native-babel-preset-0.60.0.tgz#9aaaeca10a04c117ea84fb18e54c44ddcaad2ab8"
-  integrity sha512-eByxCh52XWyMwh4eduzLz0HkraOX7X/tJBsOXvxhUaj8UEolxMYQWD1DO7rJbFiKfZbxRPortltDYzjJI4MpdQ==
+metro-react-native-babel-preset@^0.61.0:
+  version "0.61.0"
+  resolved "https://registry.yarnpkg.com/metro-react-native-babel-preset/-/metro-react-native-babel-preset-0.61.0.tgz#4276f6a300daba5f43d6b35f30a8354f8aa093a1"
+  integrity sha512-k0j2K70YadKFFayFOtw9sbaB38LdkkJLluwqHvyl9CRAa3m7cWQ6pZbakCPrp3OWyo7dJWbP70ybOvjoDv2jwQ==
   dependencies:
+    "@babel/core" "^7.0.0"
     "@babel/plugin-proposal-class-properties" "^7.0.0"
     "@babel/plugin-proposal-export-default-from" "^7.0.0"
     "@babel/plugin-proposal-nullish-coalescing-operator" "^7.0.0"
@@ -7819,10 +7820,10 @@ react-native-contacts@^5.2.5:
   resolved "https://registry.yarnpkg.com/react-native-contacts/-/react-native-contacts-5.2.5.tgz#e4acd8deb5e0ba987df54504a6d1822697c5cb65"
   integrity sha512-KmPaYtCRxDvTIItktGc9PruZN/l1H+ATlR18ge7R/XUVXq4QNLHeFx7uTYqL9p0N48+Xaca7+Ga/FsItNa0hcg==
 
-react-native-device-info@^5.6.2:
-  version "5.6.2"
-  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-5.6.2.tgz#194c055355f1dd3121ab682b00598086cf4beb32"
-  integrity sha512-c+bVrvbQIlUlUHpIiggjhCUnqTga7sK0+G1RhRN25ct3kQvDkj3TKv0GGsqTJxIqNBfzg2Hh5ulMkrU0ddeu/Q==
+react-native-device-info@^5.6.3:
+  version "5.6.3"
+  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-5.6.3.tgz#8b964866fc538bcfb82e25ad88f872139d7a591d"
+  integrity sha512-fmaXRjG0NW9FAOdOD86cmjgoxA/2I0lBq1NZmxQ2sgElyRjLxZLtuJn/QpP8hmFeTlKFDSZpSDvEnB+UUihcmw==
 
 react-native-drawer@2.5.1:
   version "2.5.1"
@@ -7852,10 +7853,10 @@ react-native-fs@^2.16.6:
     base-64 "^0.1.0"
     utf8 "^3.0.0"
 
-react-native-gesture-handler@^1.6.1:
-  version "1.6.1"
-  resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.6.1.tgz#678e2dce250ed66e93af409759be22cd6375dd17"
-  integrity sha512-gQgIKhDiYf754yzhhliagLuLupvGb6ZyBdzYzr7aus3Fyi87TLOw63ers+r4kGw0h26oAWTAdHd34JnF4NeL6Q==
+react-native-gesture-handler@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.7.0.tgz#0ef74a5ba836832e497dc49eb1ce58baa6c617e5"
+  integrity sha512-1CrjJf8Z6Iz2XWzfZknYtsm2sud5Lu/pLhhokkgBIKttxqGDtetDEVFDJOTJWJyKCrUPk0X5tnWi/diSF4q++w==
   dependencies:
     "@egjs/hammerjs" "^2.0.17"
     hoist-non-react-statics "^2.3.1"
@@ -7919,10 +7920,10 @@ react-native-rating-element@^5.3.0:
     react-native-vector-icons "^7.0.0"
     styled-components "^5.1.1"
 
-react-native-reanimated@^1.9.0:
-  version "1.9.0"
-  resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.9.0.tgz#38676c99dd585504fdc7331efb45e5f48ec7339a"
-  integrity sha512-Aj+spgIHRiVv7ezGADxnSH1EoKrQRD2+XaSiGY0MiB/pvRNNrZPSJ+3NVpvLwWf9lZMOP7dwqqyJIzoZgBDt8w==
+react-native-reanimated@^1.10.0:
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.10.0.tgz#529f9a5716164c72362e2e60bc720cea65239e1d"
+  integrity sha512-0+rRXZr199NMsGbJJ00fxi0XA7JRJuL7UnzapwSzx4J6CmrDHvb8qU3A/dTFPM4sbvL7MLmlD0aItaDU+0ELqQ==
   dependencies:
     fbjs "^1.0.0"
 
@@ -8000,10 +8001,10 @@ react-native-version@^4.0.0:
     resolve-from "^5.0.0"
     semver "^7.0.0"
 
-react-native@^0.63.1:
-  version "0.63.1"
-  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.63.1.tgz#af814c47fc6b9e938b1c3b11e9d1555b7e8c669b"
-  integrity sha512-7SYBgLSu9p6uKPZIUEcAPGUe8a07UGi/2TdCWqkIazH6/2B93yuvDULAzyDT2hhSJPxUAvb6tGowoWVnZQQVtw==
+react-native@^0.63.2:
+  version "0.63.2"
+  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.63.2.tgz#eaebf3430577b37fbd66ef228a86b3408259ef8e"
+  integrity sha512-MkxHeJorUDzmQwKJrTfrFYMDRLyu9GSBpsFFMDX7X+HglVnaZi3CTzW2mRv1eIcazoseBOP2eJe+bnkyLl8Y2A==
   dependencies:
     "@babel/runtime" "^7.0.0"
     "@react-native-community/cli" "^4.7.0"
@@ -8567,10 +8568,10 @@ semantic-ui-css@^2.4.1:
   dependencies:
     jquery x.*
 
-semantic-ui-react@^0.88.2:
-  version "0.88.2"
-  resolved "https://registry.yarnpkg.com/semantic-ui-react/-/semantic-ui-react-0.88.2.tgz#3d4b54f8b799769b412435c8531475fd34aa4149"
-  integrity sha512-+02kN2z8PuA/cMdvDUsHhbJmBzxxgOXVHMFr9XK7zGb0wkW9A6OPQMFokWz7ozlVtKjN6r7zsb+Qvjk/qq1OWw==
+semantic-ui-react@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/semantic-ui-react/-/semantic-ui-react-1.0.0.tgz#5d9f6fc29a63a6f16413e9bea93fe4031332cc03"
+  integrity sha512-85mYHYuDBNa6la1BgKwuOSD1vcIPsFQEXRxGsZ9pUtE4iHlEcylF+x46NYHIGbBjlys63SpNH3PtK6VyZj9LBw==
   dependencies:
     "@babel/runtime" "^7.1.2"
     "@semantic-ui-react/event-stack" "^3.1.0"
