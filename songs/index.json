@@ -524,7 +524,8 @@
    "it": "Ave Maria II (1984) - Lc 1, 28.42",
    "de-AT": "Ave Maria II (1984)",
    "pt-BR": "Ave Maria II (1984) - Lc 1, 28ss",
-   "pt-PT": "Ave Maria II (1984) - Lc 1, 28ss"
+   "pt-PT": "Ave Maria II (1984) - Lc 1, 28ss",
+   "lt-LT": "Sveika Marija (1984)"
   },
   "stages": {
    "pt-BR": "precatechumenate",
@@ -559,7 +560,7 @@
    "en": "Song of balaam (nm 23, 7-24)",
    "pt-BR": "Balaão - Nm 23, 7-24",
    "pt-PT": "Balaão - Nm 23, 7-24",
-   "lt-LT": "Balaamo giesmė (sk 23, 7-24)"
+   "lt-LT": "Balaamo giesmė - (Sk 23, 7-24)"
   }
  },
  "39": {
@@ -818,7 +819,8 @@
    "it": "Giorno di riposo - Jn 8, 52",
    "de-AT": "Dieser Tag der Ruhe - Joh 8, 52",
    "pt-BR": "Dia de repouso - Jo 8, 52",
-   "pt-PT": "Dia de repouso - Jo 8, 52"
+   "pt-PT": "Dia de repouso - Jo 8, 52",
+   "lt-LT": "Poilsio diena - Jn 8, 52"
   },
   "stages": {
    "de-AT": "liturgy"
@@ -925,7 +927,7 @@
    "de-AT": "Lied des Lammes - Offb 5, 9 ff",
    "pt-BR": "Tu és digno de receber o livro - Ap 5,9ss",
    "pt-PT": "Tu és digno de receber o livro - Ap 5,9ss",
-   "lt-LT": "Avinėlio giesmė (apr 5, 9 ir t.t.)"
+   "lt-LT": "Avinėlio giesmė - (Apr 5, 9 ir t.t.)"
   },
   "stages": {
    "pt-BR": "catechumenate"
@@ -1043,7 +1045,8 @@
    "de-AT": "Frohlocket mit Freude - Jes 12, 1 ff",
    "en": "Shout with joy. (is 12, 1ss)",
    "pt-BR": "Gritai jubilosos - Is 12",
-   "pt-PT": "Gritai jubilosos - Is 12"
+   "pt-PT": "Gritai jubilosos - Is 12",
+   "lt-LT": "Šaukit Džiugiai - (Iz 12, 1 ir t.t.)"
   }
  },
  "75": {
@@ -1205,7 +1208,7 @@
    "en": "You who dwell in the gardens (flee my beloved) (songs 8, append)",
    "pt-BR": "Foge, ó meu amado - Ct 8, 10-14",
    "pt-PT": "Foge, ó meu amado - Ct 8, 10-14",
-   "lt-LT": "Bėki, mylimasis (gg 8, 10-14)"
+   "lt-LT": "Bėki, mylimasis - (Gg 8, 10-14)"
   },
   "stages": {
    "pt-BR": "election"
@@ -1649,7 +1652,7 @@
    "de-AT": "Kommt zu mir ihr alle - Mt 11, 28-30",
    "pt-BR": "Porque o meu jugo é suave - Mt 11, 28-30",
    "pt-PT": "Porque o meu jugo é suave - Mt 11, 28-30",
-   "lt-LT": "Ateikite pas mane jūs visi (mt 11, 28-30)"
+   "lt-LT": "Ateikite pas mane jūs visi - (Mt 11, 28-30)"
   }
  },
  "120": {
@@ -2027,7 +2030,7 @@
    "en": "Come from lebanon. (song. 4, 8ss)",
    "pt-BR": "Vem do Líbano - Ct 4, 8ss",
    "pt-PT": "Vem do Líbano - Ct 4, 8ss",
-   "lt-LT": "Ateik nuo libano (gg 4, 8ir tt.)"
+   "lt-LT": "Ateik nuo Libano - (Gg 4, 8 ir t.t.)"
   },
   "stages": {
    "pt-BR": "election"
@@ -2293,7 +2296,7 @@
    "en": "Servant of yahweh (the kings shall see you) (song no 2). (is 49, 1-16)",
    "pt-BR": "Escutai ilhas de longe - Segundo canto do Servo de Iahweh - Isaias 49, 1-16",
    "pt-PT": "Escutai ilhas de longe - Segundo canto do Servo de Iahweh - Isaias 49, 1-16",
-   "lt-LT": "Atsistos karaliai, išvydę tave: ii jahvės tarno giesmė (iz 49, 1-16)"
+   "lt-LT": "Atsistos karaliai, išvydę tave: II Jahvės tarno giesmė - (Iz 49, 1-16)"
   },
   "stages": {
    "pt-BR": "catechumenate"
@@ -2415,7 +2418,7 @@
    "de-AT": "Bekleidet euch mit der Waffenrüstung des Herrn - Eph 6, 11 ff",
    "pt-BR": "As armas da Luz - Ef 6, 11ss",
    "pt-PT": "As armas da Luz - Ef 6, 11ss",
-   "lt-LT": "Apsivilkite dievo šarvais - Ff 6, 11 ir t.t."
+   "lt-LT": "Apsivilkite dievo šarvais - Ef 6, 11 ir t.t."
   },
   "stages": {
    "pt-BR": "catechumenate"
@@ -2505,7 +2508,7 @@
    "de-AT": "Amen, amen,amen - Offb 7, 12-14",
    "pt-BR": "Amém, amém, amém - Ap 7, 12-14",
    "pt-PT": "Amém, amém, amém - Ap 7, 12-14",
-   "lt-LT": "Amen, Amen, Amen - Apr 7, 12-14"
+   "lt-LT": "Amen, Amen, Amen - Apr 7, 12-14 (*)"
   },
   "stages": {
    "pt-BR": "precatechumenate"

@@ -1,79 +1,27 @@
-SVEIKA MARIJA
-
-C Ea
+C                  E a
 K. Sveika Marija,
-C E a
-malonės pilnoji,
-£ E
+C                 E       a
+malonės pilnoji, 
+F                                  E
 Viešpats su tavimi!
-a
+                                  a
 Tu pagirta tarp moterų
-2
+            d
 ir pagirtas tavo iščių vaisius,
-E
-Jėzus.
-
-CEF E
-K. Sveika Marija,
-
-CEF E
-
-malonės pilnoji,
-
-F E
-
-Viešpats su tavimi!
-
-F E
-
-Tu pagirta tarp moterų
-F
-
-ir pagirtas tavo iščių vaisius,
-
-E
+  E
 Jėzus!
-
-
-C Ea
-ŠVENTOJI MARIJA,
-C E a
+column
+C                         E  a
+B. ŠVENTOJI MARIJA,
+C               E       a
 DIEVO MOTINA,
-
-E =
-
+F                        E
 MELSKI UŽ MUS,
-a
-
+                                  a
 NES ESAM NUSIDĖJĖLIAI;
-d
+                          d
 MELSKI DABAR
+                                        E 
 IR MŪSŲ MIRTIES VALANDĄ.
-
-a E E a
+a           F      E            a
 AMEN, AMEN, (AMEN).
-
-SVEIKA MARIJA (1984)
-
-CE F E
-
-ŠVENTOJI MARIJA,
-
-CEF E
-
-DIEVO MOTINA,
-
-F E
-
-MELSKI UŽ MUS,
-
-F
-
-NES ESAM NUSIDĖJĖLIAI;
-F
-
-MELSKI DABAR
-
-IR MŪSŲ MIRTIES VALANDĄ.
-E
-AMEN!

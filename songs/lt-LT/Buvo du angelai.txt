@@ -1,29 +1,27 @@
-BUVO DU ANGELAI
-
-a d a
+a            d             a
 K. Buvo du angelai,
-d a
+                  d            a
 vienas klausia kito:
-d A E a
+      d       a     E                             a
 “Kur, kur yra jo garbės vieta"?
-d a E S a
+        d         a        E                                   a
 B. “KUR, KUR YRA JO GARBES VIETA"?
-d
+                             d
 K. Toji vieta tai šlovinimas,
-a
+                             a
 toji vieta tai šlovinimas,
-
+                             d
 toji vieta tai šlovinimas,
-E a
+    E                                 a
 tenai jo garbės vieta.
-d
+                                   d
 B. TOJI VIETA TAI ŠLOVINIMAS,
-a
+                                   a
 TOJI VIETA TAI ŠLOVINIMAS,
-d
+                                   d 
 TOJI VIETA TAI ŠLOVINIMAS,
-
-E a
+       E                                     a
 TENAI JO GARBĖS VIETA.
 
+__________________________________
 Keletą kartų kartojamas vis tas pats tekstas, kiekvieną kartą puse tono aukščiau.

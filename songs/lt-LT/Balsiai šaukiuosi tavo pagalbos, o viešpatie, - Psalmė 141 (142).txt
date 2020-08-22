@@ -1,78 +1,61 @@
-PSALMĖ 141 (142) - BALSIAI ŠAUKIUOSI TAVO PAGALBOS, O VIEŠPATIE,
-
 clamp:2
 
 a
 B. BALSIAI ŠAUKIUOSI TAVO PAGALBOS,
-d
+         d
 O VIEŠPATIE:
 
 TAVĘS, O VIEŠPATIE,
-
+                                                a
 SAVO ŠAUKSMU MALDAUJU.
-
-Tab IŠLIEJU SAVO RAUDĄ,
-
-L SAVO KANČIĄ KET
-K. L kad a JE gęsta,
-
+E7
+TAU IŠLIEJU SAVO RAUDĄ,
+  F                                                E
+TAU SAVO KANČIĄ IŠSAKAU.
+d
+K. Jaučiu, kad dvasia manyje gęsta,
+                                     E7
 bet tu žinai mano taką.
-a d
+a                                                        d
 Pažvelk, Viešpatie, kad kelyje,
-
-a
+                                                                        a
 pažvelk, kad ten paspendė man spąstus;
-E E7
+ E                                                                   E7
 Pažvelk, kad mano dešinėj nieko nėra,
-
-F E
+         F                               E
 nieko, kas mane pažintų;
 d
 kad apleidžia mane visokia paguoda,
-
+                                                                                E7
 kad nieko nėra, kas rūpintųsi mano gyvenimu.
+column
 
-F €
 
+F                                              G
 B. TAVĘS ŠAUKIUOSI, O VIEŠPATIE,
-
-E7
+                                                                 E7
 TAU SAKAU: TIKTAI TU MANO PRIEGLOBSTIS,
-E
+  F
 TU MANO DALIS ŠIOJE ŽEMĖJE,
-E
+                                          E
 VIENINTELĖ MANO LAIMĖ.
-d E
-
-„Klausyk, Viešpatie: aš verkiu,
-d
-
-E
+             d                                          E
+K. Klausyk, Viešpatie: aš verkiu, 
+              d                           E
 nes esu didžioje depresijoje.
-F G
+F                                                   G
 Išlaisvink mane tu nuo priešų,
-
-E
-
-kurie yra stipresni už mane,
-
-F
-
+                                                     E
+kurie yra stipresni už mane;
+F                                                     G
 išrauk mano sielą iš to kalėjimo,
-E
-
+                                  E
 ir dėkosiu tavo vardui;
-
 F
-
 tada bursis aplink mane šventieji,
-E
-
+                                                               E
 sveikins mane už tavo meilė man.
 a
-
 B. BALSIAI ŠAUKIUOSI ...
-
 F
-
 B. TAVĘS ŠAUKIUOSI...

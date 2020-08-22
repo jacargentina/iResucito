@@ -1,85 +1,42 @@
-ATEINA VIEŠPATS, DIDYBE APSIVILKĘS
-
-d “ g
-B, ATEINA VIEŠPATS, DIDYBE APSMILKĘS,
-
+d                                                                 g
+B. ATEINA VIEŠPATS, DIDYBE APSIVILKĘS,
+                                                             d
 GALYBE APSISIAUTĘS, SUSIJUOSĘS.
-g
-K. Padarė žemę tvirtą, ir ji nesvyruos :
+repeat
+
+                                                                g
+K. Padarė žemę tvirtą, ir ji nesvyruos
+                                                                        d
 tvirtas tavo sostas, nuo amžių tu esi;
-
-g
+                                                    g
 tavo namams dera šventumas,
-
-d
+                                                           d
 B. TAVO NAMAMS DERA ŠVENTUMAS!
 
 ATEINA VIEŠPATS...
-
-g
+                                                                           g
 K. Tam, kuris mus myli, išlaisvina iš nuodėmių,
-d
-
+                                                               d
 ir padarė iš mūsų kunigų karalystę,
-
-g
-jam, šlovė ir ea8s
-
+column
+                                 g
+jam, šlovė ir galia
+                               d
 tebūna amžių amžiais.
-
+                                        g
 B. JAM ŠLOVĖ IR GALIA
-TEBŪNA AMŽIŲ AMŽIAIS,
-ATEINA VIEŠPATS...
+                                   d
+TEBŪNA AMŽIŲ AMŽIAIS.
 
-K. Štai ateina, debesimis aBina
-štai ateina, pamatys jį
+ATEINA VIEŠPATS...
+                                                    g
+K. Štai ateina, debesimis ateina,
+                                                         d
+štai ateina, pamatys jį kiekvienas
+                                                g
 ir tie, ir tie, kurie jį perdūrė,
+                                                         d
 visos tautos, visos žemės tautos!
 
 B. ATEINA VIEŠPATS...
 
-POILSIO DIENA
-
-clamp:2
-8 a e
-K. Jeigu kas išsaugo mano žodį,
-
-neparagaus niekad mirties.
-B. TU VIENINTELIS,
-a 8
-
-VIENINTELIS DŽIAUGSMINGAS.
-
-KAS YRA KAIP MŪSŲ VIEŠPATS?
-
-a e
-K. Išganymo karūna,
-a £
-
-B. DŽIAUGSMO, LINKSMYBĖS PRISIMINIMAS.
-
-MIA WA
-
-POILSIO IR ŠVENTUMO,
-a
-IR ŠVENTUMO DIENĄ (x2)
-
-e
-DAVEI TU SAVO TAUTAI.
-a e
-
-.„ Abraomas tą dieną pamatė
-
-a e
-
-„IR IZAOKE DŽIAUGĖSI JIS.
-
-a e
-
-. Jokūbas ir jo sūnūs jame pailsėjo.
-
-a e
-
-„ JOKŪBAS IR JO SŪNŪS JAME PAILSĖJO.
-
-POILSIO IR ŠVENTUMO....

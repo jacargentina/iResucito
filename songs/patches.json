@@ -904,6 +904,13 @@
       "linked": {
         "new": "Balsiai šaukiuosi tavo pagalbos, o viešpatie, - Psalmė 141 (142)"
       }
+    },
+    {
+      "date": 1597134396144,
+      "locale": "lt-LT",
+      "author": "david.hernandez.duran@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "23": [
@@ -1210,6 +1217,13 @@
       "linked": {
         "new": "Aukštinkit viešpatį - Psalmė 99 (100)"
       }
+    },
+    {
+      "date": 1597039654035,
+      "locale": "lt-LT",
+      "author": "david.hernandez.duran@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "27": [
@@ -1397,6 +1411,13 @@
     },
     {
       "date": 1593762931400,
+      "locale": "lt-LT",
+      "author": "david.hernandez.duran@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1595399794735,
       "locale": "lt-LT",
       "author": "david.hernandez.duran@gmail.com",
       "created": false,
@@ -1769,6 +1790,13 @@
       "author": "david.hernandez.duran@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1595399473779,
+      "locale": "lt-LT",
+      "author": "david.hernandez.duran@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "35": [
@@ -1847,6 +1875,13 @@
       "linked": {
         "new": "Sveika marija"
       }
+    },
+    {
+      "date": 1597047384932,
+      "locale": "lt-LT",
+      "author": "david.hernandez.duran@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "36": [
@@ -1917,6 +1952,16 @@
         "original": "precatechumenate",
         "new": "election"
       }
+    },
+    {
+      "date": 1597047138059,
+      "locale": "lt-LT",
+      "author": "david.hernandez.duran@gmail.com",
+      "linked": {
+        "new": "Sveika Marija (1984)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "37": [
@@ -1987,6 +2032,17 @@
       "linked": {
         "new": "Balaamo giesmė (sk 23, 7-24)"
       }
+    },
+    {
+      "date": 1597128811409,
+      "locale": "lt-LT",
+      "author": "david.hernandez.duran@gmail.com",
+      "rename": {
+        "original": "Balaamo giesmė (sk 23, 7-24)",
+        "new": "Balaamo giesmė - (Sk 23, 7-24)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "39": [
@@ -2029,6 +2085,13 @@
       "linked": {
         "new": "Aš laiminsiu viešpatį kiekvienu metu - Psalmė 33 (34)"
       }
+    },
+    {
+      "date": 1596090743719,
+      "locale": "lt-LT",
+      "author": "david.hernandez.duran@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "40": [
@@ -2655,6 +2718,13 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1595402316065,
+      "locale": "lt-LT",
+      "author": "david.hernandez.duran@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "57": [
@@ -2720,6 +2790,16 @@
         "original": "precatechumenate",
         "new": "liturgy"
       }
+    },
+    {
+      "date": 1596781021462,
+      "locale": "lt-LT",
+      "author": "david.hernandez.duran@gmail.com",
+      "linked": {
+        "new": "Poilsio diena - Jn 8, 52"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "59": [
@@ -3033,6 +3113,17 @@
       "linked": {
         "new": "Avinėlio giesmė (apr 5, 9 ir t.t.)"
       }
+    },
+    {
+      "date": 1597046239636,
+      "locale": "lt-LT",
+      "author": "david.hernandez.duran@gmail.com",
+      "rename": {
+        "original": "Avinėlio giesmė (apr 5, 9 ir t.t.)",
+        "new": "Avinėlio giesmė - (Apr 5, 9 ir t.t.)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "66": [
@@ -3327,6 +3418,16 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1597041821858,
+      "locale": "lt-LT",
+      "author": "david.hernandez.duran@gmail.com",
+      "linked": {
+        "new": "Šaukit Džiugiai - (Iz 12, 1 ir t.t.)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "75": [
@@ -3799,6 +3900,17 @@
       "linked": {
         "new": "Bėki, mylimasis (gg 8, 10-14)"
       }
+    },
+    {
+      "date": 1597136933311,
+      "locale": "lt-LT",
+      "author": "david.hernandez.duran@gmail.com",
+      "rename": {
+        "original": "Bėki, mylimasis (gg 8, 10-14)",
+        "new": "Bėki, mylimasis - (Gg 8, 10-14)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "87": [
@@ -4985,6 +5097,17 @@
       "linked": {
         "new": "Ateikite pas mane jūs visi (mt 11, 28-30)"
       }
+    },
+    {
+      "date": 1597039033922,
+      "locale": "lt-LT",
+      "author": "david.hernandez.duran@gmail.com",
+      "rename": {
+        "original": "Ateikite pas mane jūs visi (mt 11, 28-30)",
+        "new": "Ateikite pas mane jūs visi - (Mt 11, 28-30)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "120": [
@@ -5266,6 +5389,13 @@
       "linked": {
         "new": "Buvo du angelai"
       }
+    },
+    {
+      "date": 1597210915863,
+      "locale": "lt-LT",
+      "author": "david.hernandez.duran@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "129": [
@@ -5908,6 +6038,17 @@
       "linked": {
         "new": "Ateik nuo libano (gg 4, 8ir tt.)"
       }
+    },
+    {
+      "date": 1597039011132,
+      "locale": "lt-LT",
+      "author": "david.hernandez.duran@gmail.com",
+      "rename": {
+        "original": "Ateik nuo libano (gg 4, 8ir tt.)",
+        "new": "Ateik nuo Libano - (Gg 4, 8 ir t.t.)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "148": [
@@ -5998,6 +6139,13 @@
       "linked": {
         "new": "Ateina viešpats, didybe apsivilkęs"
       }
+    },
+    {
+      "date": 1596780310070,
+      "locale": "lt-LT",
+      "author": "david.hernandez.duran@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "151": [
@@ -6613,6 +6761,17 @@
       "linked": {
         "new": "Atsistos karaliai, išvydę tave: ii jahvės tarno giesmė (iz 49, 1-16)"
       }
+    },
+    {
+      "date": 1597038982961,
+      "locale": "lt-LT",
+      "author": "david.hernandez.duran@gmail.com",
+      "rename": {
+        "original": "Atsistos karaliai, išvydę tave: ii jahvės tarno giesmė (iz 49, 1-16)",
+        "new": "Atsistos karaliai, išvydę tave: II Jahvės tarno giesmė - (Iz 49, 1-16)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "168": [
@@ -6655,6 +6814,13 @@
       "linked": {
         "new": "Aš ištiesiau rankas"
       }
+    },
+    {
+      "date": 1596088389290,
+      "locale": "lt-LT",
+      "author": "david.hernandez.duran@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "169": [
@@ -6945,6 +7111,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1595403287567,
+      "locale": "lt-LT",
+      "author": "david.hernandez.duran@gmail.com",
+      "rename": {
+        "original": "Apsivilkite dievo šarvais - Ff 6, 11 ir t.t.",
+        "new": "Apsivilkite dievo šarvais - Ef 6, 11 ir t.t."
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "177": [
@@ -7229,6 +7406,17 @@
       "rename": {
         "original": "Amen, amen, amen (apr 7, 12-14) ()",
         "new": "Amen, Amen, Amen - Apr 7, 12-14"
+      },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1595400774318,
+      "locale": "lt-LT",
+      "author": "david.hernandez.duran@gmail.com",
+      "rename": {
+        "original": "Amen, Amen, Amen - Apr 7, 12-14",
+        "new": "Amen, Amen, Amen - Apr 7, 12-14 (*)"
       },
       "created": false,
       "updated": true
@@ -7540,6 +7728,13 @@
       "date": 1563235874712,
       "locale": "pt-BR",
       "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1597037983891,
+      "locale": "lt-LT",
+      "author": "david.hernandez.duran@gmail.com",
       "created": false,
       "updated": true
     }
