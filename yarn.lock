@@ -3104,10 +3104,10 @@ commander@^4.0.0, commander@^4.0.1:
   resolved "https://registry.yarnpkg.com/commander/-/commander-4.1.1.tgz#9fd602bd936294e9e9ef46a3f4d6964044b18068"
   integrity sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==
 
-commander@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/commander/-/commander-6.0.0.tgz#2b270da94f8fb9014455312f829a1129dbf8887e"
-  integrity sha512-s7EA+hDtTYNhuXkTlhqew4txMZVdszBmKWSPEMxGr8ru8JXR7bLUFIAtPhcSuFdJQ0ILMxnJi8GkQL0yvDy/YA==
+commander@^6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-6.1.0.tgz#f8d722b78103141006b66f4c7ba1e97315ba75bc"
+  integrity sha512-wl7PNrYWd2y5mp1OK/LhTlv8Ff4kQJQRXXAvF+uU/TPNiVJUxZLRYGj/B0y/lPGAVcSbJqH2Za/cvHmrPMC8mA==
 
 commander@~2.13.0:
   version "2.13.0"
@@ -7258,10 +7258,10 @@ open@^6.2.0:
   dependencies:
     is-wsl "^1.1.0"
 
-open@^7.2.0:
-  version "7.2.0"
-  resolved "https://registry.yarnpkg.com/open/-/open-7.2.0.tgz#212959bd7b0ce2e8e3676adc76e3cf2f0a2498b4"
-  integrity sha512-4HeyhxCvBTI5uBePsAdi55C5fmqnWZ2e2MlmvWi5KW5tdH5rxoiv/aMtbeVxKZc3eWkT1GymMnLG8XC4Rq4TDQ==
+open@^7.2.1:
+  version "7.2.1"
+  resolved "https://registry.yarnpkg.com/open/-/open-7.2.1.tgz#07b0ade11a43f2a8ce718480bdf3d7563a095195"
+  integrity sha512-xbYCJib4spUdmcs0g/2mK1nKo/jO2T7INClWd/beL7PFkXRWgr8B23ssDHX/USPn2M2IjDR5UdpYs6I67SnTSA==
   dependencies:
     is-docker "^2.0.0"
     is-wsl "^2.1.1"
