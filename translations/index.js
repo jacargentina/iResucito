@@ -12,6 +12,7 @@ I18n.translations = {
   'pt-PT': require('./pt-PT'),
   'de-AT': require('./de-AT'),
   'lt-LT': require('./lt-LT'),
+  'sw-TZ': require('./sw-TZ'),
   fr: require('./fr'),
 };
 
