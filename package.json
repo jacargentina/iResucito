@@ -89,7 +89,7 @@
     "lowdb": "^1.0.0",
     "metro-react-native-babel-preset": "^0.63.0",
     "native-base": "^2.13.14",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "normalize-strings": "^1.1.0",
     "open": "^7.2.1",
     "os-locale": "^5.0.0",
