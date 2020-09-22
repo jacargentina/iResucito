@@ -44,7 +44,7 @@ const SongChooseLocaleDialog = (props: any) => {
       });
     }
     return result;
-  }, [I18n.locale, songs, localeSongs, textFilter]);
+  }, [songs, localeSongs, textFilter, targetType]);
 
   const localeFileSelected = (item) => {
     var song: Song = targetType === 'file' ? item : target;

@@ -18,7 +18,7 @@ delete textStyles['.note'];
 const UnassignedList = (props: any) => {
   const data = useContext(DataContext);
   const isFocused = useIsFocused();
-  const listRef = useRef<?FlatList>();
+  const listRef = useRef<any>();
   const navigation = useNavigation();
   const { songs, localeSongs } = data.songsMeta;
 
@@ -42,7 +42,7 @@ const UnassignedList = (props: any) => {
     });
     setTotalText(I18n.t('ui.list total songs', { total: result.length }));
     return result;
-  }, [localeSongs, textFilter]);
+  }, [songs, localeSongs, textFilter]);
 
   useEffect(() => {
     if (search.length > 0 && isFocused) {
@@ -57,7 +57,7 @@ const UnassignedList = (props: any) => {
         }
       }, 50);
     }
-  }, [search.length]);
+  }, [search.length, isFocused]);
 
   return (
     <SearchBarView value={textFilter} setValue={setTextFilter}>

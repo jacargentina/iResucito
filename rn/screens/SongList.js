@@ -22,7 +22,7 @@ import commonTheme from '../native-base-theme/variables/platform';
 
 const SongList = (props: any) => {
   const { devModeDisabled } = props;
-  const listRef = useRef<?FlatList>();
+  const listRef = useRef<any>();
   const data = useContext(DataContext);
   const navigation = useNavigation();
   const route = useRoute();
@@ -73,7 +73,7 @@ const SongList = (props: any) => {
     } else {
       setTotalText(I18n.t('ui.no songs found'));
     }
-  }, [textFilter, props.filter, I18n.locale]);
+  }, [textFilter, props.filter]);
 
   useLayoutEffect(() => {
     if (textFilter && search && search.length > 0 && isFocused) {

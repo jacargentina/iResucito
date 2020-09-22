@@ -20,7 +20,7 @@ const SongDetail = (props: any) => {
         KeepAwake.deactivate();
       };
     }
-  }, []);
+  }, [keepAwake]);
 
   return (
     <SongViewFrame

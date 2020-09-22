@@ -30,7 +30,7 @@ const SongChangeNameDialog = (props: any) => {
       const changed = Object.assign({}, song, parsed);
       setChangeSong(changed);
     }
-  }, [name]);
+  }, [name, nameToEdit, song]);
 
   const saveButton = (
     <Button

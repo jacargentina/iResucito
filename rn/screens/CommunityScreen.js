@@ -16,7 +16,7 @@ const CommunityScreen = (props: any) => {
   const isFocused = useIsFocused();
   const navigation = useNavigation();
   const { contactImport, brothers, update, remove, add } = data.community;
-  const listRef = useRef<?FlatList>();
+  const listRef = useRef<any>();
   const [filter, setFilter] = useState('');
 
   const filtered = useMemo(() => {
@@ -41,7 +41,7 @@ const CommunityScreen = (props: any) => {
         }
       }, 50);
     }
-  }, [filtered.length]);
+  }, [isFocused, filtered.length]);
 
   const addOrRemove = (contact) => {
     var i = brothers.findIndex((c) => c.recordID === contact.recordID);

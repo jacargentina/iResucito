@@ -39,12 +39,12 @@ const Tab = createBottomTabNavigator();
 
 const getIcon = (iconName) => {
   return {
-    tabBarIcon: ({ focused, color }) => {
+    tabBarIcon: ({ focused, color: tabColor }) => {
       return (
         <Icon
           name={iconName}
           active={focused}
-          style={{ marginTop: 6, color: color }}
+          style={{ marginTop: 6, color: tabColor }}
         />
       );
     },
@@ -67,7 +67,7 @@ const MenuNavigator = (props: any) => {
     return function cleanup() {
       Linking.removeEventListener('url', handler);
     };
-  }, [lists]);
+  }, [lists, importList, navigation]);
 
   return (
     <Tab.Navigator swipeEnabled={false} tabBarOptions={tabBarOptions}>

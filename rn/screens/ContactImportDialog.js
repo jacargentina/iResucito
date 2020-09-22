@@ -2,7 +2,7 @@
 import React, { useContext, useState, useEffect, useMemo } from 'react';
 import ModalView from './ModalView';
 import SearchBarView from './SearchBarView';
-import { Text, ListItem, Body, Right, CheckBox, Button } from 'native-base';
+import { Text, ListItem, Body, Right, Button } from 'native-base';
 import {
   FlatList,
   View,
