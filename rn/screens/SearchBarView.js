@@ -9,13 +9,13 @@ import I18n from '../../translations';
 import { useDebounce } from 'use-debounce';
 
 const DebouncedInput = React.forwardRef((props: any, ref: any) => {
-  const { value } = props;
+  const { value, setValue } = props;
   const [searchTerm, setSearchTerm] = useState(value);
   const [debouncedTerm] = useDebounce(searchTerm, 800);
 
   useEffect(() => {
-    props.setValue(debouncedTerm);
-  }, [debouncedTerm]);
+    setValue(debouncedTerm);
+  }, [debouncedTerm, setValue]);
 
   useEffect(() => {
     setSearchTerm(value);
