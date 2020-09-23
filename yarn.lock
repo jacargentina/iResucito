@@ -1532,52 +1532,52 @@
     babel "^6.23.0"
     babel-runtime "^6.26.0"
 
-"@react-navigation/bottom-tabs@^5.8.0":
-  version "5.8.0"
-  resolved "https://registry.yarnpkg.com/@react-navigation/bottom-tabs/-/bottom-tabs-5.8.0.tgz#d7386809bceeead0adcaacf61b6563be9cefd5cb"
-  integrity sha512-geF/FSIg6cArY5jLwJJZrp7PDzLoSrONkCgq9n/4yKxtQapB/Pn5ljSHCNRGNkkb/+g8zqRQmEL5yX4DOja0OA==
+"@react-navigation/bottom-tabs@^5.9.0":
+  version "5.9.0"
+  resolved "https://registry.yarnpkg.com/@react-navigation/bottom-tabs/-/bottom-tabs-5.9.0.tgz#18ae3011256874863adc5f877dc3cbf6594b3a4e"
+  integrity sha512-4hP/YWgd+yKdZM+n4BPbWgdPapW9lrDz3fgQ0w3FTDlYaFPL8pv3Q9aDO03+Uj1VnuprdJN5LgZONGCcAFrItQ==
   dependencies:
     color "^3.1.2"
     react-native-iphone-x-helper "^1.2.1"
 
-"@react-navigation/core@^5.12.3":
-  version "5.12.3"
-  resolved "https://registry.yarnpkg.com/@react-navigation/core/-/core-5.12.3.tgz#0484fcca290569a0dc10b70b99f00edd3f1fd93c"
-  integrity sha512-aEOTAw4FRRNsNu6F9ibLk3SVSs4Res8BI832NEZN6qUto5ZgtuYnQHWeWV2cZ43Nc9KvUyQC/vXvO2RScwgFwA==
+"@react-navigation/core@^5.12.4":
+  version "5.12.4"
+  resolved "https://registry.yarnpkg.com/@react-navigation/core/-/core-5.12.4.tgz#1bd0c81d098895c8ffe49f8624fae60c9abc5684"
+  integrity sha512-vhaVIJGfSgln4dIoO4R2HeX9p3Vc7OJLa0/JpKHpXn/DZgNVn+RP7ktk1CRZ16ikUJ0k8CxzuvRxeRIg7EhA7w==
   dependencies:
-    "@react-navigation/routers" "^5.4.11"
+    "@react-navigation/routers" "^5.4.12"
     escape-string-regexp "^4.0.0"
     nanoid "^3.1.12"
     query-string "^6.13.1"
     react-is "^16.13.0"
     use-subscription "^1.4.0"
 
-"@react-navigation/material-top-tabs@^5.2.16":
-  version "5.2.16"
-  resolved "https://registry.yarnpkg.com/@react-navigation/material-top-tabs/-/material-top-tabs-5.2.16.tgz#96a366f9b2c257c9b46f889b95e4fcb2a9ff0a56"
-  integrity sha512-BRXr646cY0e8SLQpYKdy9+WZD0IvaXpO6Cv4cgos1PjCWltXuqzGkeyy7jkMWkEpgaxtVKijwN3bLNaXBb7Rig==
+"@react-navigation/material-top-tabs@^5.2.17":
+  version "5.2.17"
+  resolved "https://registry.yarnpkg.com/@react-navigation/material-top-tabs/-/material-top-tabs-5.2.17.tgz#400d4f3eccd7b914cc6190e5fa118d2f19b4450e"
+  integrity sha512-sPbPB0DysYoE73eVy3b6uQ0pr1cxi7VtYt3tDWhsNKKrdrRwsf0v6eP2U2V+6IXSUpSK28Q0B3I+zeSnvdYiEQ==
   dependencies:
     color "^3.1.2"
 
-"@react-navigation/native@^5.7.3":
-  version "5.7.3"
-  resolved "https://registry.yarnpkg.com/@react-navigation/native/-/native-5.7.3.tgz#3cda5ee7b0fe0d980db6d788419f0af50a64deac"
-  integrity sha512-bXb1g/cLpGF2DW1Vxk90Ch5vbaZTk5b/4Fn5xjQlueQODgc9ca+GPEssKZ84hCrNmS+Xg+iK1m/ArawLF5gMlw==
+"@react-navigation/native@^5.7.4":
+  version "5.7.4"
+  resolved "https://registry.yarnpkg.com/@react-navigation/native/-/native-5.7.4.tgz#f55d54ab26942cf40fb3f6e1d6b9c26056e1d4e3"
+  integrity sha512-ndLojJZyWqxGdWeXlSr7ylHaMbBIwvoXnmsKHOMvUN6FV0dxv8b8L9T1yRW82b9mak4y6y6Q+1gIAWjO7FhAsQ==
   dependencies:
-    "@react-navigation/core" "^5.12.3"
+    "@react-navigation/core" "^5.12.4"
     nanoid "^3.1.12"
 
-"@react-navigation/routers@^5.4.11":
-  version "5.4.11"
-  resolved "https://registry.yarnpkg.com/@react-navigation/routers/-/routers-5.4.11.tgz#75dbec1809e282c3749068845099c5bee2c792f0"
-  integrity sha512-J/CsHdIjYBRe81UUiLOoz9NSrQ91uP23Oe21QPCALInRHx+rfwo2oPl6Fn8xAa7n8Dtt2oQUGyF+g5d05cB74w==
+"@react-navigation/routers@^5.4.12":
+  version "5.4.12"
+  resolved "https://registry.yarnpkg.com/@react-navigation/routers/-/routers-5.4.12.tgz#5c3690650c94be3a54b617a1c07510d2f604c03f"
+  integrity sha512-IwMmxeb5e6LboljhakmhtrHBXLYFrFDr2c1GjAG538e4MjT4QGi/ZYckAxCh/NqKI0knnzqKppPl2NsOMv/NoQ==
   dependencies:
     nanoid "^3.1.12"
 
-"@react-navigation/stack@^5.9.0":
-  version "5.9.0"
-  resolved "https://registry.yarnpkg.com/@react-navigation/stack/-/stack-5.9.0.tgz#bf24607175bf502798cc4c832aa8a86e55f3b365"
-  integrity sha512-kt6M0ZLMyNKXfKi50n01bHg4/d8zp0Yh5QaQG4d1roWOqdV9ou1nFEK4l2yQ6XKH2lLSYswHElPDZUuWd+6XzA==
+"@react-navigation/stack@^5.9.1":
+  version "5.9.1"
+  resolved "https://registry.yarnpkg.com/@react-navigation/stack/-/stack-5.9.1.tgz#2ddc82b70eafd7d50c2f7cd6f11303b876603fa8"
+  integrity sha512-LPSB8/etYYBe0NLHPndrly2amM/feSXXZJ3KevvKH3zP+RbEonsLOpmjOh2jXpZy9+1oLlSuGs+xzgpamMuguw==
   dependencies:
     color "^3.1.2"
     react-native-iphone-x-helper "^1.2.1"
@@ -4080,10 +4080,10 @@ eslint-plugin-react@^7.20.0:
     resolve "^1.17.0"
     string.prototype.matchall "^4.0.2"
 
-eslint-plugin-react@^7.20.6:
-  version "7.20.6"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.20.6.tgz#4d7845311a93c463493ccfa0a19c9c5d0fd69f60"
-  integrity sha512-kidMTE5HAEBSLu23CUDvj8dc3LdBU0ri1scwHBZjI41oDv4tjsWZKU7MQccFzH1QYPYhsnTF2ovh7JlcIcmxgg==
+eslint-plugin-react@^7.21.0:
+  version "7.21.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.21.0.tgz#aa0699086f586d54a5005c99a703175bc5d21161"
+  integrity sha512-WaieZZ4cayAfPBmy5KkEqFfLQf/VkzoUsvM5DfD9G1lrz+3LtZ8X6nToEUQiFe1X5ApNIzkMd+7NUy+2OmSTQQ==
   dependencies:
     array-includes "^3.1.1"
     array.prototype.flatmap "^1.2.3"
@@ -8157,10 +8157,10 @@ react-native-localize@^1.4.1:
   resolved "https://registry.yarnpkg.com/react-native-localize/-/react-native-localize-1.4.1.tgz#031bd2089f09cc16ee7daee03019684dda60c275"
   integrity sha512-g1L1au6GtCd0Ci6lQ8JVPYgl7uvEtKY2jeVghJcV6qQEN9+qACyqjOIR8pskUyI+qcSj1z4/nZh3IFxDVu1drw==
 
-react-native-pdf@^6.2.0:
-  version "6.2.0"
-  resolved "https://registry.yarnpkg.com/react-native-pdf/-/react-native-pdf-6.2.0.tgz#e6da125b407338b7bca15d7f776b70773c37304f"
-  integrity sha512-OSgF3+PryUl0GIPvZhCXT7VDv9LbvjC7LJgH3aFObCq0WRiiSGf9W1yrhaYmNV3FvL7ZARKF08h+k4LuFcTPNg==
+react-native-pdf@^6.2.1:
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/react-native-pdf/-/react-native-pdf-6.2.1.tgz#138db1fee35742d7357d53e58d8c9277cde112a5"
+  integrity sha512-ax+ZK3lVZk4g5Ra/g0O1jzKI3ypD/UwEmcBKrtiNFPuM2WgTgWBB1/biDIFR95jms6xe1WoxhokfuxHH5pq/WA==
   dependencies:
     "@react-native-community/progress-bar-android" "^1.0.3"
     "@react-native-community/progress-view" "^1.0.3"
@@ -8843,10 +8843,10 @@ semantic-ui-css@^2.4.1:
   dependencies:
     jquery x.*
 
-semantic-ui-react@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/semantic-ui-react/-/semantic-ui-react-1.2.1.tgz#c58603db072d3628fc2d9b626f6c3b39535deca3"
-  integrity sha512-p0HKdHg8ZGhnanyNuGOyTp5M6mVGWzTULPY02uBYHxXMzsyRPoRDlUa/tbaU0UdFpg96CmToG4WrvkINqhcZ+Q==
+semantic-ui-react@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/semantic-ui-react/-/semantic-ui-react-1.3.0.tgz#a35d598566d8fbe9b885a459f3ceeaec0b6d2609"
+  integrity sha512-7lIFD63XHDRBWo6blwiTq+AXQChMdX3aqcT/WkTkHGxV5wqOtL0NYYpt+shzqYPU3TRQbVT/0uvkD4cUwxIaGQ==
   dependencies:
     "@babel/runtime" "^7.10.5"
     "@fluentui/react-component-event-listener" "~0.51.0"
