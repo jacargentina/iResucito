@@ -6,7 +6,7 @@
     "men": "Me.",
     "women": "Ke.",
     "children": "Wt.",
-    "clamp": "Cape",
+    "clamp": "Cape {{clamp}}",
     "repeat": "m.2"
   },
   "chords": {
