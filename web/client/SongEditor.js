@@ -46,18 +46,15 @@ const SongEditor = () => {
     confirmClose,
   } = edit;
   const [debouncedText, setDebouncedText] = useState(text);
-  const [callback, , callPending] = useDebouncedCallback(
-    (text) => setDebouncedText(text),
-    800
-  );
+  const debounced = useDebouncedCallback((t) => setDebouncedText(t), 800);
   const [activeTab, setActiveTab] = useState(0);
   const [linepos, setLinepos] = useState();
   const [colpos, setColpos] = useState();
 
   useEffect(() => {
     if (editSong) {
-      callback(text);
-      callPending();
+      debounced.callback(text);
+      debounced.pending();
       setLinepos(1);
       setColpos(1);
       if (txtRef && txtRef.current) {
@@ -275,16 +272,16 @@ const SongEditor = () => {
             onKeyUp={txtPositionEvent}
             onKeyDown={(e) => {
               if (e.ctrlKey) {
-                if (e.key == '[') {
+                if (e.key === '[') {
                   e.preventDefault();
                   previous();
-                } else if (e.key == ']') {
+                } else if (e.key === ']') {
                   e.preventDefault();
                   next();
-                } else if (e.key == 'e') {
+                } else if (e.key === 'e') {
                   e.preventDefault();
                   editMetadata();
-                } else if (e.key == 's') {
+                } else if (e.key === 's') {
                   e.preventDefault();
                   save();
                 }
@@ -294,7 +291,7 @@ const SongEditor = () => {
             onChange={(e, data) => {
               setHasChanges(true);
               setText(data.value);
-              callback(data.value);
+              debounced.callback(data.value);
             }}
           />
           <Segment
@@ -318,7 +315,7 @@ const SongEditor = () => {
             activeIndex={activeTab}
             onTabChange={(e, data) => {
               setActiveTab(data.activeIndex);
-              if (data.activeIndex == 1) {
+              if (data.activeIndex === 1) {
                 previewPdf();
               } else {
                 setPdf({ loading: false, url: null });

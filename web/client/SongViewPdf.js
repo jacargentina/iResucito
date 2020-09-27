@@ -13,7 +13,7 @@ import Loader from 'semantic-ui-react/dist/commonjs/elements/Loader';
 import { DataContext } from './DataContext';
 import { EditContext } from './EditContext';
 import I18n from '../../translations';
-import pdfjsLib from 'pdfjs-dist';
+import * as pdfjsLib from 'pdfjs-dist';
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = './pdf.worker.clientBundle.js';
 
