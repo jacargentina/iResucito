@@ -75,13 +75,15 @@ const patchSongLogic = (songPatch, key, dirty) => {
       // Decidir lenguaje segun carpetas de idioma disponible
       var existsLoc = getPropertyLocale(languageFolders, loc);
       if (!existsLoc) {
-        // No existe carpeta, crearla
-        report.createdFolder = loc;
+        // Si aun no existe carpeta, crearla
         songDirectory = path.join(songsDir, loc);
-        if (!dirty) {
-          fs.mkdirSync(songDirectory);
-        } else {
-          console.log('crea carpeta', songDirectory);
+        if (!fs.existsSync(songDirectory)) {
+          report.createdFolder = loc;
+          if (!dirty) {
+            fs.mkdirSync(songDirectory);
+          } else {
+            console.log('crea carpeta', songDirectory);
+          }
         }
       } else {
         loc = existsLoc;
