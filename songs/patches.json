@@ -1136,6 +1136,16 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1601298787588,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Abrahamu - (Mwa 18: 1-5)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "26": [
@@ -1338,6 +1348,16 @@
       "linked": {
         "new": "Šlovinkite viešpatį iš dangaus“! - Psalmė 148"
       }
+    },
+    {
+      "date": 1600167388139,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Msifuni Bwana kutoka mbinguni - Zab 148"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "29": [
@@ -1422,6 +1442,16 @@
       "author": "david.hernandez.duran@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1600167926728,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Aleluya, msifuni Mungu - Zab 150"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "30": [
@@ -1567,6 +1597,16 @@
       "linked": {
         "new": "Jau ateina karalystė (apr 19, 6-9)“"
       }
+    },
+    {
+      "date": 1600794426908,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Aleluya, umekuja ufalme - (Ufu 19: 6-9)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "32": [
@@ -1619,6 +1659,13 @@
       "linked": {
         "new": "Vartai, pakelkit - Psalmė 23 (24)"
       }
+    },
+    {
+      "date": 1599154988642,
+      "locale": "pt-PT",
+      "author": "inesricardo05@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "33": [
@@ -2001,6 +2048,13 @@
       "linked": {
         "new": "Prie babilonijos upių - Psalmė 136 (137)"
       }
+    },
+    {
+      "date": 1599156960949,
+      "locale": "pt-PT",
+      "author": "inesricardo05@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "38": [
@@ -2041,6 +2095,13 @@
         "original": "Balaamo giesmė (sk 23, 7-24)",
         "new": "Balaamo giesmė - (Sk 23, 7-24)"
       },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1599235881271,
+      "locale": "pt-PT",
+      "author": "inesricardo05@gmail.com",
       "created": false,
       "updated": true
     }
@@ -2092,6 +2153,13 @@
       "author": "david.hernandez.duran@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1599157925176,
+      "locale": "pt-PT",
+      "author": "inesricardo05@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "40": [
@@ -2130,6 +2198,23 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1599236391348,
+      "locale": "pt-PT",
+      "author": "inesricardo05@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1601288301548,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Nafsi yanguumbariki Yahweh - Zab 102 (103)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "41": [
@@ -2194,6 +2279,23 @@
       "linked": {
         "new": "Palaiminta esi tu, marija (lk 1, 42-44)"
       }
+    },
+    {
+      "date": 1599154777901,
+      "locale": "pt-PT",
+      "author": "inesricardo05@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1601461343209,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Mbarikiwa Maria - (Lk 1: 42-45)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "42": [
@@ -2245,6 +2347,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1599236735677,
+      "locale": "pt-PT",
+      "author": "inesricardo05@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "43": [
@@ -2280,6 +2389,23 @@
       "linked": {
         "new": "Zacharijo giesmė (lk 1, 67-80)"
       }
+    },
+    {
+      "date": 1599237140103,
+      "locale": "pt-PT",
+      "author": "inesricardo05@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1601294699985,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Wimbo wa Zakaria - (Lk 1: 67-80)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "44": [
@@ -2321,6 +2447,13 @@
       "linked": {
         "new": "Giedokim, giedokim (iš 15, 1-2)"
       }
+    },
+    {
+      "date": 1599237630605,
+      "locale": "pt-PT",
+      "author": "inesricardo05@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "46": [
@@ -2371,6 +2504,13 @@
       "linked": {
         "new": "Caritas christi (2 kor 5, 14-21)"
       }
+    },
+    {
+      "date": 1599238405431,
+      "locale": "pt-PT",
+      "author": "inesricardo05@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "47": [
@@ -2402,6 +2542,16 @@
       "linked": {
         "new": "Trijų jaunikaičių giesmė krosnyje (dn 3, 57-88)"
       }
+    },
+    {
+      "date": 1600167050351,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Wimbo wa vijana watatu katika tanuru - (Dan 3: 57-88) (Sehemu ya pili)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "48": [
@@ -2442,6 +2592,13 @@
         "original": "42 (42 - Psalmė 41",
         "new": "Kaip Elnė Ilgis! - Psalmė 41-42 (42-43)"
       },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1599239233782,
+      "locale": "pt-PT",
+      "author": "inesricardo05@gmail.com",
       "created": false,
       "updated": true
     }
@@ -2493,6 +2650,16 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1599833649065,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Tazama ilivyo vema - Zab 132 (133)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "50": [
@@ -2575,6 +2742,16 @@
       "linked": {
         "new": "Kada viešpats - Psalmė 125 (126)"
       }
+    },
+    {
+      "date": 1601290693007,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Wakati Bwana alirejeza - Zab 125 (126)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "53": [
@@ -2659,6 +2836,16 @@
       "linked": {
         "new": "Iš gelmių šaukiuosi tavęs - Psalmė 129 (130)"
       }
+    },
+    {
+      "date": 1601288351125,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Toka chini nakulilia, ee Bwana - Zab 129 (130)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "55": [
@@ -3259,6 +3446,16 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1600168450454,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Evenu Shalom Alehem - (wimbo wa kiebrania)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "70": [
@@ -3395,6 +3592,16 @@
       "linked": {
         "new": "Dėkui tau, jahve - Psalmė 135 (136)"
       }
+    },
+    {
+      "date": 1600166557646,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Asante Yahweh - Zab 136"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "74": [
@@ -3466,6 +3673,16 @@
       "linked": {
         "new": "Į tave, šventasis mieste “?"
       }
+    },
+    {
+      "date": 1599573761982,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Kwako we, mji ya Mungu"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "76": [
@@ -3525,6 +3742,16 @@
       "linked": {
         "new": "Kiek ilgai? - Psalmė 12 (13)"
       }
+    },
+    {
+      "date": 1601288233515,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Mpaka lini - Zab 12 (13)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "77": [
@@ -3603,6 +3830,16 @@
       "linked": {
         "new": "Štai aš ateisiu veikiai (apr 22, 12-16)"
       }
+    },
+    {
+      "date": 1601297387863,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Tazama, naja upesi - (Ufu 22: 12-16)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "79": [
@@ -4087,6 +4324,16 @@
       "author": "fabio.imr.reis@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1599830099009,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Safari i ngumu"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "91": [
@@ -4215,6 +4462,23 @@
       },
       "created": false,
       "updated": false
+    },
+    {
+      "date": 1599238609738,
+      "locale": "pt-PT",
+      "author": "inesricardo05@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1601288317216,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Njoo, umtafute mtumishi wako - Zab 118 (119)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "95": [
@@ -4284,6 +4548,16 @@
       "linked": {
         "new": "Magnificat (lk 1, 46-55)"
       }
+    },
+    {
+      "date": 1601051472888,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Wimbo wa Bikira Maria - (Lk 1: 46-55)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "97": [
@@ -4347,6 +4621,16 @@
       "linked": {
         "new": "Marija, palaiminimo tu namai"
       }
+    },
+    {
+      "date": 1601463379294,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Maria, nyumba ya baraka"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "99": [
@@ -4431,6 +4715,16 @@
       "linked": {
         "new": "Marija, mažytė marija"
       }
+    },
+    {
+      "date": 1601466808765,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Maria, mdogo Maria - Utenzi kwa Bikira Maria"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "102": [
@@ -4590,6 +4884,16 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1601288339265,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Tazameni ilivyo vema, onjeni ulivyo mtamu - Zab 132 (133)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "105": [
@@ -4885,6 +5189,16 @@
       "linked": {
         "new": "O dangūs, rasokit iš aukštybių (iz 45, 8)"
       }
+    },
+    {
+      "date": 1601295871520,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Enyi mbingu, dondokeni toka juu - (Isa 45: 8)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "113": [
@@ -4913,6 +5227,16 @@
       "linked": {
         "new": "Mirtie, kur pergalė tavoji? (1 kor 15)"
       }
+    },
+    {
+      "date": 1601295412689,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Ee mauti, u wapi ushindi wako? - (1 Kor 15)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "114": [
@@ -4964,6 +5288,16 @@
       "linked": {
         "new": "Sekminės (pentekoste)"
       }
+    },
+    {
+      "date": 1601296939411,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Pentekoste"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "116": [
@@ -5146,6 +5480,13 @@
       "linked": {
         "new": "Kokios mielos tavo buveinės - Psalmė 83 (84)"
       }
+    },
+    {
+      "date": 1599239545969,
+      "locale": "pt-PT",
+      "author": "inesricardo05@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "121": [
@@ -5177,6 +5518,16 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1599834453726,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Jinsi ilivyo vema na kupendeza - Zab 132 (133)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "122": [
@@ -5294,6 +5645,16 @@
       "linked": {
         "new": "Kas mus atskirs (rom 8, 33-39)"
       }
+    },
+    {
+      "date": 1600892639868,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Nani atatutenga - (Rum 8: 33-39)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "126": [
@@ -5325,6 +5686,16 @@
       "linked": {
         "new": "Prisikėlė"
       }
+    },
+    {
+      "date": 1599557169582,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Amefufuka - (rej. 1 Kor 15)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "127": [
@@ -5368,6 +5739,16 @@
       "linked": {
         "new": "Sveika, karaliene"
       }
+    },
+    {
+      "date": 1601461762835,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Salaam, Malkia wa mbingu"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "128": [
@@ -5591,6 +5972,16 @@
       "linked": {
         "new": "Džiugiai giedokim viešpačiui - Psalmė 94 (95)"
       }
+    },
+    {
+      "date": 1600165739659,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Ikiwa leo mwasikia sauti yake - Zab 94 (95)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "135": [
@@ -6049,6 +6440,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1600433296563,
+      "locale": "pt-PT",
+      "author": "inesricardo05@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "148": [
@@ -6069,6 +6467,16 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1601298070811,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Njoo, Mwana wa mtu - (Ufu 22: 17 nk)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "149": [
@@ -6146,6 +6554,13 @@
       "author": "david.hernandez.duran@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1600432992710,
+      "locale": "pt-PT",
+      "author": "inesricardo05@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "151": [
@@ -6185,6 +6600,16 @@
       "linked": {
         "new": "Mergele nuostabiausia"
       }
+    },
+    {
+      "date": 1601462742990,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Bikira wa maajabu"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "152": [
@@ -6208,6 +6633,16 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1599578809334,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Furahini ndugu - (Flp 4: 4 nk)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "153": [
@@ -6311,6 +6746,16 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1601288656680,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Yahweh u Mungu wangu - (Isa 25: 1-8)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "156": [
@@ -6451,6 +6896,20 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true,
+      "staged": {
+        "original": "election",
+        "new": "precatechumenate"
+      }
+    },
+    {
+      "date": 1600795358404,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Abba Baba - (Rum 8: 15-17)"
+      },
+      "created": true,
+      "updated": false,
       "staged": {
         "original": "election",
         "new": "precatechumenate"
@@ -7624,6 +8083,16 @@
         "original": "precatechumenate",
         "new": "liturgy"
       }
+    },
+    {
+      "date": 1601288172617,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Baraka kwa adhimisho la penitensia"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "188": [
@@ -7714,6 +8183,16 @@
         "original": "liturgy",
         "new": "precatechumenate"
       }
+    },
+    {
+      "date": 1599554338261,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Utukufu kwa Mungu juu mbinguni"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "190": [
@@ -7737,6 +8216,16 @@
       "author": "david.hernandez.duran@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1599554126092,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Litania ya penitensia"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "191": [
@@ -7800,6 +8289,16 @@
       "author": "david.hernandez.duran@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1599554093911,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Litania fupi ya penitensia"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "194": [
@@ -8086,6 +8585,16 @@
       "author": "david.hernandez.duran@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1601288265795,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Mtakatifu (1983) - Mwakani"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "204": [
@@ -8119,6 +8628,16 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1599556179033,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Mtakatifu, Mtakatifu (1988) - Mwakani"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "205": [
@@ -8149,6 +8668,16 @@
       "author": "david.hernandez.duran@gmail.com",
       "linked": {
         "new": "Šventas, Jis Šventas (Gavėnios laikas)"
+      },
+      "created": true,
+      "updated": false
+    },
+    {
+      "date": 1599554368559,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Yu mtakatifu - Wakati wa Kwaresima"
       },
       "created": true,
       "updated": false
@@ -8193,6 +8722,16 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1599554291523,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Mtakatifu, Mtakatifu, Hosanna ya matawi - na Wakati wa Pasaka"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "207": [
@@ -8223,6 +8762,16 @@
       "author": "david.hernandez.duran@gmail.com",
       "linked": {
         "new": "Šventas yra Viešpats —- Barakų Sventas (Adventas)"
+      },
+      "created": true,
+      "updated": false
+    },
+    {
+      "date": 1599554226664,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Mtakatifu ndiye Bwana-Mt. wa vibanda - Wakati wa Majilio"
       },
       "created": true,
       "updated": false
@@ -8263,6 +8812,16 @@
       "author": "david.hernandez.duran@gmail.com",
       "linked": {
         "new": "Šventas Eiliniam laikui"
+      },
+      "created": true,
+      "updated": false
+    },
+    {
+      "date": 1601288254360,
+      "locale": "sw-TZ",
+      "author": "andresrh1919@gmail.com",
+      "linked": {
+        "new": "Mtakatifu - Mwakani"
       },
       "created": true,
       "updated": false

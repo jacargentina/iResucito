@@ -354,7 +354,8 @@
    "de-AT": "Abraham - Gn 18, 1-5",
    "pt-BR": "Abraão - Gn 18, 1-5",
    "pt-PT": "Abraão - Gn 18, 1-5",
-   "lt-LT": "Abraomas - Pr 18, 1-5"
+   "lt-LT": "Abraomas - Pr 18, 1-5",
+   "sw-TZ": "Abrahamu - (Mwa 18: 1-5)"
   }
  },
  "26": {
@@ -401,7 +402,8 @@
    "en": "Praise him - Ps 148",
    "pt-BR": "Louvai o Senhor nos Céus - Sal 148",
    "pt-PT": "Louvai o Senhor nos Céus - Sal 148",
-   "lt-LT": "Šlovinkite viešpatį iš dangaus“! - Psalmė 148"
+   "lt-LT": "Šlovinkite viešpatį iš dangaus“! - Psalmė 148",
+   "sw-TZ": "Msifuni Bwana kutoka mbinguni - Zab 148"
   }
  },
  "29": {
@@ -415,7 +417,8 @@
    "en": "Alleluia praise god - Ps 150",
    "pt-BR": "Aleluia! Louvai o Senhor - Sal 150",
    "pt-PT": "Aleluia! Louvai o Senhor - Sal 150",
-   "lt-LT": "Aleliuja, šlovinkite dievą - Psalmė 150"
+   "lt-LT": "Aleliuja, šlovinkite dievą - Psalmė 150",
+   "sw-TZ": "Aleluya, msifuni Mungu - Zab 150"
   },
   "stages": {
    "pt-BR": "precatechumenate"
@@ -448,7 +451,8 @@
    "de-AT": "Schon kommt das Reich - Off 19, 6-9",
    "pt-BR": "Aleluia! Já chegou o Reino - Ap 19, 6-9",
    "pt-PT": "Aleluia! Já chegou o Reino - Ap 19, 6-9",
-   "lt-LT": "Jau ateina karalystė (apr 19, 6-9)“"
+   "lt-LT": "Jau ateina karalystė (apr 19, 6-9)“",
+   "sw-TZ": "Aleluya, umekuja ufalme - (Ufu 19: 6-9)"
   },
   "stages": {
    "pt-BR": "precatechumenate"
@@ -586,7 +590,8 @@
    "it": "Benedici anima mia, Jahvè - Sal 102 (103)",
    "de-AT": "Preise meine Seele Jahwe - Ps 103",
    "pt-BR": "Bendize, minha alma, a Iahweh - Sal 103 (102)",
-   "pt-PT": "Bendize, minha alma, a Iahweh - Sal 103 (102)"
+   "pt-PT": "Bendize, minha alma, a Iahweh - Sal 103 (102)",
+   "sw-TZ": "Nafsi yanguumbariki Yahweh - Zab 102 (103)"
   }
  },
  "41": {
@@ -600,7 +605,8 @@
    "de-AT": "Maria, selige Maria - Lk 1, 42-44",
    "pt-BR": "Bendita és tu, Maria - Lc 1, 42-45",
    "pt-PT": "Bendita és tu, Maria - Lc 1, 42-45",
-   "lt-LT": "Palaiminta esi tu, marija (lk 1, 42-44)"
+   "lt-LT": "Palaiminta esi tu, marija (lk 1, 42-44)",
+   "sw-TZ": "Mbarikiwa Maria - (Lk 1: 42-45)"
   },
   "stages": {
    "pt-BR": "precatechumenate"
@@ -625,7 +631,8 @@
    "de-AT": "Benedictus - Lk 1, 67-80",
    "pt-BR": "Benedictus - Lc 1, 67-80",
    "pt-PT": "Benedictus - Lc 1, 67-80",
-   "lt-LT": "Zacharijo giesmė (lk 1, 67-80)"
+   "lt-LT": "Zacharijo giesmė (lk 1, 67-80)",
+   "sw-TZ": "Wimbo wa Zakaria - (Lk 1: 67-80)"
   },
   "stages": {
    "de-AT": "election"
@@ -681,7 +688,8 @@
    "en": "Song of daniel (dn 3, 57-88)",
    "pt-BR": "Cântico dos três jovens - Dn 3, 57-58",
    "pt-PT": "Cântico dos três jovens - Dn 3, 57-58",
-   "lt-LT": "Trijų jaunikaičių giesmė krosnyje (dn 3, 57-88)"
+   "lt-LT": "Trijų jaunikaičių giesmė krosnyje (dn 3, 57-88)",
+   "sw-TZ": "Wimbo wa vijana watatu katika tanuru - (Dan 3: 57-88) (Sehemu ya pili)"
   }
  },
  "48": {
@@ -708,7 +716,8 @@
    "en": "How good it is - Ps 132 (133)",
    "pt-BR": "Como é maravilhoso - Sal 133 (132)",
    "pt-PT": "Como é maravilhoso - Sal 133 (132)",
-   "lt-LT": "Žiūrėkit, kaip graži, ragaukit, kaip saldi - Psalmė 132 (133)"
+   "lt-LT": "Žiūrėkit, kaip graži, ragaukit, kaip saldi - Psalmė 132 (133)",
+   "sw-TZ": "Tazama ilivyo vema - Zab 132 (133)"
   }
  },
  "50": {
@@ -742,7 +751,8 @@
    "de-AT": "Als unser Herr - Ps 126",
    "pt-BR": "Quando o Senhor - Sal 126 (125)",
    "pt-PT": "Quando o Senhor - Sal 126 (125)",
-   "lt-LT": "Kada viešpats - Psalmė 125 (126)"
+   "lt-LT": "Kada viešpats - Psalmė 125 (126)",
+   "sw-TZ": "Wakati Bwana alirejeza - Zab 125 (126)"
   }
  },
  "53": {
@@ -771,7 +781,8 @@
    "de-AT": "Aus der Tiefe rufe ich zu dir - Ps 130",
    "pt-BR": "De profundis - Sal 130 (129)",
    "pt-PT": "De profundis - Sal 130 (129)",
-   "lt-LT": "Iš gelmių šaukiuosi tavęs - Psalmė 129 (130)"
+   "lt-LT": "Iš gelmių šaukiuosi tavęs - Psalmė 129 (130)",
+   "sw-TZ": "Toka chini nakulilia, ee Bwana - Zab 129 (130)"
   }
  },
  "55": {
@@ -979,7 +990,8 @@
    "it": "Evenu Shalom Alejem - Canto ebraico",
    "de-AT": "Evenu shalom alechem - Hebräisches Lied",
    "pt-BR": "Evenu Shalom Alehem - Canto Popular Hebraico",
-   "pt-PT": "Evenu Shalom Alehem - Canto Popular Hebraico"
+   "pt-PT": "Evenu Shalom Alehem - Canto Popular Hebraico",
+   "sw-TZ": "Evenu Shalom Alehem - (wimbo wa kiebrania)"
   }
  },
  "70": {
@@ -1029,7 +1041,8 @@
    "en": "Give thanks to the lord - Ps 135 (136)",
    "pt-BR": "Graças a Iahweh - Sal 136 (135)",
    "pt-PT": "Graças a Iahweh - Sal 136 (135)",
-   "lt-LT": "Dėkui tau, jahve - Psalmė 135 (136)"
+   "lt-LT": "Dėkui tau, jahve - Psalmė 135 (136)",
+   "sw-TZ": "Asante Yahweh - Zab 136"
   },
   "stages": {
    "pt-BR": "precatechumenate"
@@ -1058,7 +1071,8 @@
    "de-AT": "Hin zu dir, Jerusalem",
    "pt-BR": "Para ti morada santa - Hino",
    "pt-PT": "Para ti morada santa - Hino",
-   "lt-LT": "Į tave, šventasis mieste “?"
+   "lt-LT": "Į tave, šventasis mieste “?",
+   "sw-TZ": "Kwako we, mji ya Mungu"
   }
  },
  "76": {
@@ -1070,7 +1084,8 @@
    "en": "How much longer - Ps 12 (13)",
    "pt-BR": "Até quando - Sal 13 (12)",
    "pt-PT": "Até quando - Sal 13 (12)",
-   "lt-LT": "Kiek ilgai? - Psalmė 12 (13)"
+   "lt-LT": "Kiek ilgai? - Psalmė 12 (13)",
+   "sw-TZ": "Mpaka lini - Zab 12 (13)"
   },
   "stages": {
    "pt-BR": "precatechumenate"
@@ -1100,7 +1115,8 @@
    "de-AT": "Siehe da ich komme bald - Offb 22, 12-16",
    "pt-BR": "Eis-me aqui que venho em breve - Ap 22, 12-16",
    "pt-PT": "Eis-me aqui que venho em breve - Ap 22, 12-16",
-   "lt-LT": "Štai aš ateisiu veikiai (apr 22, 12-16)"
+   "lt-LT": "Štai aš ateisiu veikiai (apr 22, 12-16)",
+   "sw-TZ": "Tazama, naja upesi - (Ufu 22: 12-16)"
   }
  },
  "79": {
@@ -1263,7 +1279,8 @@
    "it": "La marcia è dura - Inno",
    "de-AT": "Der Weg is hart",
    "pt-BR": "A marcha é dura - Hino",
-   "pt-PT": "A marcha é dura - Hino"
+   "pt-PT": "A marcha é dura - Hino",
+   "sw-TZ": "Safari i ngumu"
   },
   "stages": {
    "de-AT": "liturgy"
@@ -1316,7 +1333,8 @@
    "de-AT": "Zu dir gelange mein Bitten - Ps 119",
    "en": "Lord, lord jesus - Ps 118 (119)",
    "pt-BR": "Chegue à tua presença meu clamor - Sal 119 (118)",
-   "pt-PT": "Chegue à tua presença meu clamor - Sal 119 (118)"
+   "pt-PT": "Chegue à tua presença meu clamor - Sal 119 (118)",
+   "sw-TZ": "Njoo, umtafute mtumishi wako - Zab 118 (119)"
   }
  },
  "95": {
@@ -1346,7 +1364,8 @@
    "en": "Magnificat (lk. 1, 46-55)",
    "pt-BR": "Magnificat - Lc 1, 46-55",
    "pt-PT": "Magnificat - Lc 1, 46-55",
-   "lt-LT": "Magnificat (lk 1, 46-55)"
+   "lt-LT": "Magnificat (lk 1, 46-55)",
+   "sw-TZ": "Wimbo wa Bikira Maria - (Lk 1: 46-55)"
   }
  },
  "97": {
@@ -1371,7 +1390,8 @@
    "de-AT": "Maria, Haus des Segens",
    "pt-BR": "Maria, Casa da Benção - As Bodas de Caná - Jo 2, 1-11",
    "pt-PT": "Maria, Casa da Benção - As Bodas de Caná - Jo 2, 1-11",
-   "lt-LT": "Marija, palaiminimo tu namai"
+   "lt-LT": "Marija, palaiminimo tu namai",
+   "sw-TZ": "Maria, nyumba ya baraka"
   }
  },
  "99": {
@@ -1409,7 +1429,8 @@
    "de-AT": "Maria, kleine Maria",
    "pt-BR": "Maria, pequena Maria - Hino",
    "pt-PT": "Maria, pequena Maria - Hino",
-   "lt-LT": "Marija, mažytė marija"
+   "lt-LT": "Marija, mažytė marija",
+   "sw-TZ": "Maria, mdogo Maria - Utenzi kwa Bikira Maria"
   }
  },
  "102": {
@@ -1450,7 +1471,8 @@
    "en": "Look how it is good - Ps 132 (133)",
    "pt-BR": "Olhai que estupendo - Sal 133 (132)",
    "pt-PT": "Olhai que estupendo - Sal 133 (132)",
-   "lt-LT": "Žiūrėkit, kaip puiku - Psalmė 132 (133)"
+   "lt-LT": "Žiūrėkit, kaip puiku - Psalmė 132 (133)",
+   "sw-TZ": "Tazameni ilivyo vema, onjeni ulivyo mtamu - Zab 132 (133)"
   },
   "stages": {
    "pt-BR": "precatechumenate"
@@ -1560,7 +1582,8 @@
    "de-AT": "O Himmel lasst regnen von oben - Jes 45, 8",
    "pt-BR": "Ó céus, chovei do alto - Is 45, 8",
    "pt-PT": "Ó céus, chovei do alto - Is 45, 8",
-   "lt-LT": "O dangūs, rasokit iš aukštybių (iz 45, 8)"
+   "lt-LT": "O dangūs, rasokit iš aukštybių (iz 45, 8)",
+   "sw-TZ": "Enyi mbingu, dondokeni toka juu - (Isa 45: 8)"
   }
  },
  "113": {
@@ -1573,7 +1596,8 @@
    "de-AT": "O Tod wo ist dein Sieg - 1 Kor 15",
    "pt-BR": "Ó morte, onde está tua vitória - 1 Cor 15",
    "pt-PT": "Ó morte, onde está tua vitória - 1 Cor 15",
-   "lt-LT": "Mirtie, kur pergalė tavoji? (1 kor 15)"
+   "lt-LT": "Mirtie, kur pergalė tavoji? (1 kor 15)",
+   "sw-TZ": "Ee mauti, u wapi ushindi wako? - (1 Kor 15)"
   }
  },
  "114": {
@@ -1596,7 +1620,8 @@
    "de-AT": "Pfingsten",
    "pt-BR": "Pentecostes - Hino",
    "pt-PT": "Pentecostes - Hino",
-   "lt-LT": "Sekminės (pentekoste)"
+   "lt-LT": "Sekminės (pentekoste)",
+   "sw-TZ": "Pentekoste"
   }
  },
  "116": {
@@ -1675,7 +1700,8 @@
    "es": "Qué estupendo, qué alegría - Sal 133 (132)",
    "de-AT": "Seht, wie es schön ist, seht, welche Freude - Ps 133",
    "pt-BR": "Que estupendo, que alegria - Sal 133 (132)",
-   "pt-PT": "Que estupendo, que alegria - Sal 133 (132)"
+   "pt-PT": "Que estupendo, que alegria - Sal 133 (132)",
+   "sw-TZ": "Jinsi ilivyo vema na kupendeza - Zab 132 (133)"
   }
  },
  "122": {
@@ -1732,7 +1758,8 @@
    "en": "Who will separate us (rom 8, 33-39)",
    "pt-BR": "Quem nos separará - Rm 8, 33-39",
    "pt-PT": "Quem nos separará - Rm 8, 33-39",
-   "lt-LT": "Kas mus atskirs (rom 8, 33-39)"
+   "lt-LT": "Kas mus atskirs (rom 8, 33-39)",
+   "sw-TZ": "Nani atatutenga - (Rum 8: 33-39)"
   }
  },
  "126": {
@@ -1746,7 +1773,8 @@
    "en": "He rose from death (1 cor., 15)",
    "pt-BR": "Ressuscitou - 1 Cor 15",
    "pt-PT": "Ressuscitou - 1 Cor 15",
-   "lt-LT": "Prisikėlė"
+   "lt-LT": "Prisikėlė",
+   "sw-TZ": "Amefufuka - (rej. 1 Kor 15)"
   }
  },
  "127": {
@@ -1759,7 +1787,8 @@
    "de-AT": "Ave, du Himmelskönigin",
    "pt-BR": "Salve Rainha dos Céus - Hino",
    "pt-PT": "Salve Rainha dos Céus - Hino",
-   "lt-LT": "Sveika, karaliene"
+   "lt-LT": "Sveika, karaliene",
+   "sw-TZ": "Salaam, Malkia wa mbingu"
   },
   "stages": {
    "de-AT": "election"
@@ -1856,7 +1885,8 @@
    "en": "If today you listen to his voice  - Ps 94 (95)",
    "pt-BR": "Se hoje escutardes a sua voz - Sal 95 (94)",
    "pt-PT": "Se hoje escutardes a sua voz - Sal 95 (94)",
-   "lt-LT": "Džiugiai giedokim viešpačiui - Psalmė 94 (95)"
+   "lt-LT": "Džiugiai giedokim viešpačiui - Psalmė 94 (95)",
+   "sw-TZ": "Ikiwa leo mwasikia sauti yake - Zab 94 (95)"
   }
  },
  "135": {
@@ -2045,7 +2075,8 @@
    "it": "Vieni, figlio dell'uomo - Ap 21, 17ss",
    "de-AT": "Komm Sohn des Menschen - Offb 22, 17 ff",
    "pt-BR": "Vem, filho do homem - Ap 22, 17ss",
-   "pt-PT": "Vem, filho do homem - Ap 22, 17ss"
+   "pt-PT": "Vem, filho do homem - Ap 22, 17ss",
+   "sw-TZ": "Njoo, Mwana wa mtu - (Ufu 22: 17 nk)"
   }
  },
  "149": {
@@ -2085,7 +2116,8 @@
    "de-AT": "Jungfrau der Wundertat",
    "pt-BR": "Virgem da maravilha - Hino",
    "pt-PT": "Virgem da maravilha - Hino",
-   "lt-LT": "Mergele nuostabiausia"
+   "lt-LT": "Mergele nuostabiausia",
+   "sw-TZ": "Bikira wa maajabu"
   }
  },
  "152": {
@@ -2094,7 +2126,8 @@
   "files": {
    "es": "Vivid alegres - Flp 4, 4ss",
    "pt-BR": "Vivei alegres - Flp 4, 4ss",
-   "pt-PT": "Vivei alegres - Flp 4, 4ss"
+   "pt-PT": "Vivei alegres - Flp 4, 4ss",
+   "sw-TZ": "Furahini ndugu - (Flp 4: 4 nk)"
   }
  },
  "153": {
@@ -2131,7 +2164,8 @@
    "de-AT": "Jahwe, mein Gott bist du - Jes 25, 1-8",
    "en": "Yahweh you are my god (is 25, 1-8)",
    "pt-BR": "Iahweh, Tu és meu Deus - Is 25",
-   "pt-PT": "Iahweh, Tu és meu Deus - Is 25"
+   "pt-PT": "Iahweh, Tu és meu Deus - Is 25",
+   "sw-TZ": "Yahweh u Mungu wangu - (Isa 25: 1-8)"
   }
  },
  "156": {
@@ -2184,10 +2218,12 @@
    "de-AT": "Abba Vater - Röm 8, 15-17",
    "fr": "Abba Père - Rm 8, 15-17",
    "pt-BR": "Abba Pai - Rm 8, 15-17",
-   "pt-PT": "Abba Pai - Rm 8, 15-17"
+   "pt-PT": "Abba Pai - Rm 8, 15-17",
+   "sw-TZ": "Abba Baba - (Rum 8: 15-17)"
   },
   "stages": {
-   "es": "precatechumenate"
+   "es": "precatechumenate",
+   "sw-TZ": "precatechumenate"
   }
  },
  "160": {
@@ -2556,7 +2592,8 @@
    "it": "Benedizione per la celebrazione penitenziale - Preghiera conclusiva di ringraziamento",
    "de-AT": "Dankgebet für die Liturgie der Versöhnung",
    "pt-BR": "Bênção Penitencial - Oração para concluir a ação de graças para a Celebração Penitencial",
-   "pt-PT": "Bênção Penitencial - Oração para concluir a ação de graças para a Celebração Penitencial"
+   "pt-PT": "Bênção Penitencial - Oração para concluir a ação de graças para a Celebração Penitencial",
+   "sw-TZ": "Baraka kwa adhimisho la penitensia"
   },
   "stages": {
    "pt-BR": "liturgy"
@@ -2585,7 +2622,8 @@
    "en": "Glory to god",
    "pt-BR": "Glória a Deus no alto do Céu - Hino Litúrgico",
    "pt-PT": "Glória a Deus no alto do Céu - Hino Litúrgico",
-   "lt-LT": "Garbė Dievui Dangaus Aukštybėse"
+   "lt-LT": "Garbė Dievui Dangaus Aukštybėse",
+   "sw-TZ": "Utukufu kwa Mungu juu mbinguni"
   },
   "stages": {
    "lt-LT": "precatechumenate"
@@ -2598,7 +2636,8 @@
    "de-AT": "Busslitanei",
    "pt-BR": "Ladainha penitencial II",
    "pt-PT": "Ladainha penitencial II",
-   "lt-LT": "Atgailos litanija"
+   "lt-LT": "Atgailos litanija",
+   "sw-TZ": "Litania ya penitensia"
   }
  },
  "191": {
@@ -2625,7 +2664,8 @@
    "de-AT": "Kurze Busslitanei",
    "pt-BR": "Ladainha Penitencial I - Ladainha para Celebração Penitencial - Modelo Abreviado",
    "pt-PT": "Ladainha Penitencial I - Ladainha para Celebração Penitencial - Modelo Abreviado",
-   "lt-LT": "Trumpa atgailos litanija"
+   "lt-LT": "Trumpa atgailos litanija",
+   "sw-TZ": "Litania fupi ya penitensia"
   }
  },
  "194": {
@@ -2712,7 +2752,8 @@
    "de-AT": "Heilig 1983",
    "pt-BR": "Santo 1982 - Tempo Comum",
    "pt-PT": "Santo 1982 - Tempo Comum",
-   "lt-LT": "Šventas (1983)"
+   "lt-LT": "Šventas (1983)",
+   "sw-TZ": "Mtakatifu (1983) - Mwakani"
   }
  },
  "204": {
@@ -2722,7 +2763,8 @@
    "de-AT": "Heilig, Heilig, Heilig 1988",
    "pt-BR": "Santo 1988 - Tempo Comum",
    "pt-PT": "Santo 1988 - Tempo Comum",
-   "lt-LT": "Šventas, Šventas, Šventas (1988)"
+   "lt-LT": "Šventas, Šventas, Šventas (1988)",
+   "sw-TZ": "Mtakatifu, Mtakatifu (1988) - Mwakani"
   }
  },
  "205": {
@@ -2732,7 +2774,8 @@
    "de-AT": "Heilig, Heilig - Fastenzeit",
    "pt-BR": "Santo hebraico - Tempo da Quaresma",
    "pt-PT": "Santo hebraico - Tempo da Quaresma",
-   "lt-LT": "Šventas, Jis Šventas (Gavėnios laikas)"
+   "lt-LT": "Šventas, Jis Šventas (Gavėnios laikas)",
+   "sw-TZ": "Yu mtakatifu - Wakati wa Kwaresima"
   }
  },
  "206": {
@@ -2743,7 +2786,8 @@
    "de-AT": "Heilig, Heilig, Heilig, Hosanna von Palmsonntag (und Osterzeit)",
    "pt-BR": "Santo Palestina 74 - Tempo Pascal",
    "pt-PT": "Santo Palestina 74 - Tempo Pascal",
-   "lt-LT": "Šventas, Šventas, Šventas — Verbų Osana (Pascha)"
+   "lt-LT": "Šventas, Šventas, Šventas — Verbų Osana (Pascha)",
+   "sw-TZ": "Mtakatifu, Mtakatifu, Hosanna ya matawi - na Wakati wa Pasaka"
   }
  },
  "207": {
@@ -2753,7 +2797,8 @@
    "de-AT": "Heilig ist der Herr - Heilig der Baracken - Adventzeit",
    "pt-BR": "Santo Palomeras 65 - Tempo do Advento - Natal",
    "pt-PT": "Santo Palomeras 65 - Tempo do Advento - Natal",
-   "lt-LT": "Šventas yra Viešpats —- Barakų Sventas (Adventas)"
+   "lt-LT": "Šventas yra Viešpats —- Barakų Sventas (Adventas)",
+   "sw-TZ": "Mtakatifu ndiye Bwana-Mt. wa vibanda - Wakati wa Majilio"
   }
  },
  "208": {
@@ -2764,7 +2809,8 @@
    "de-AT": "Heilig für die Zeit im Jahreskreis",
    "pt-BR": "Santo Roma 77 - Tempo Comum",
    "pt-PT": "Santo Roma 77 - Tempo Comum",
-   "lt-LT": "Šventas Eiliniam laikui"
+   "lt-LT": "Šventas Eiliniam laikui",
+   "sw-TZ": "Mtakatifu - Mwakani"
   }
  },
  "209": {
