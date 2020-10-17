@@ -1,0 +1,73 @@
+{
+  "users": [
+    {
+      "email": "javier.alejandro.castro@gmail.com",
+      "password": "$2a$10$qIEiaNrhZjpfRBZU6goP3.NdIZsWHFA8RPgc50CoM3s0qF7i199Be",
+      "isVerified": true,
+      "loggedInAt": 1602772510279
+    },
+    {
+      "email": "fd_colautti@mac.com",
+      "password": "$2a$10$li.8YSMzYXJvs1G19EknYevuNI.N3hbcmqmAQBHx2uJhHsEVR5n9i",
+      "isVerified": true,
+      "loggedInAt": 1565791704628
+    },
+    {
+      "email": "gordofragoso2@gmail.com",
+      "password": "$2a$10$9bujVr6iZFAD79G1NPvKlulc5RHAlz5gnqTQjgYeHabPQdb4NbjV.",
+      "isVerified": true,
+      "createdAt": 1559089569893,
+      "loggedInAt": 1564003564361
+    },
+    {
+      "email": "andrea.bonelli@alice.it",
+      "password": "$2a$10$XBU0zpyPPHgVfUm7zgojl.jrhX/UfBUFjOkyO9CyOmdxDyCoxg/Bi",
+      "isVerified": true,
+      "createdAt": 1564589431722,
+      "loggedInAt": 1564589468369
+    },
+    {
+      "email": "fabio.imr.reis@gmail.com",
+      "password": "$2a$10$Zajuhj0lVJUcceRbbJkNDeLbdWPm06UafFG4VMZv2RkO45AXxBBs2",
+      "isVerified": true,
+      "createdAt": 1574969344604,
+      "loggedInAt": 1599151591324
+    },
+    {
+      "email": "michele.gentili93@gmail.com",
+      "password": "$2a$10$aJE3ay1YYTYjAM10qgGKjOZN26FqNP4QMej0iKB.Xb9d.9GQt0dgS",
+      "isVerified": true,
+      "createdAt": 1575986288640,
+      "loggedInAt": 1575986306596
+    },
+    {
+      "email": "david.hernandez.duran@gmail.com",
+      "password": "$2a$10$ku5.vIdQV5gpihwMhXkdM.U4evODjc/GNBzNBQfgDtSoeYi0SLo1i",
+      "isVerified": true,
+      "createdAt": 1587136734217,
+      "loggedInAt": 1597045331053
+    },
+    {
+      "email": "raulcatena@gmail.com",
+      "password": "$2a$10$eEp.ujM5a4aWMJxvhDO08.7.WFce5wEFo3WrnzTA529aof/oVnNCy",
+      "isVerified": true,
+      "createdAt": 1594915710495,
+      "loggedInAt": 1594931360278
+    },
+    {
+      "email": "andresrh1919@gmail.com",
+      "password": "$2a$10$WbBLKN.zmwk3f3oMZIs9venM3X4c1SqETihalpfO8DHbH3Fwe3bpW",
+      "isVerified": true,
+      "createdAt": 1598532560998,
+      "loggedInAt": 1600793738102
+    },
+    {
+      "email": "inesricardo05@gmail.com",
+      "password": "$2a$10$1iWrYNZpxRmFnQCRSblYhe9U1DCIgzJgfRTZ0sENC5.9NHTBasQnG",
+      "isVerified": true,
+      "createdAt": 1599152133893,
+      "loggedInAt": 1600430058180
+    }
+  ],
+  "tokens": []
+}

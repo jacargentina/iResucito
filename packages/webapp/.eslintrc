@@ -1,0 +1,26 @@
+{
+  "parser": "babel-eslint",
+  "extends": ["nextjs"],
+  "plugins": ["react-hooks", "import"],
+  "rules": {
+    "consistent-return": "off",
+    "prefer-destructuring": "off",
+    "react/display-name":"off",
+    "react/prop-types": "off",
+    "react/react-in-jsx-scope": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": 0,
+    "jsx-a11y/anchor-is-valid": 0,
+    "jsx-a11y/label-has-associated-control": 0
+  },
+  "globals": {
+    "React": "writable"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["."]
+      }
+    },
+  },
+}

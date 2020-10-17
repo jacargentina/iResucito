@@ -1,0 +1,34 @@
+@font-face {
+  font-family: 'Franklin Gothic Medium';
+  src: url('Franklin Gothic Medium.ttf') format('truetype');
+}
+#__next {
+  height: 100%;
+}
+.container {
+  font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  overflow: hidden;
+}
+.container > div:last-child {
+  flex: 1;
+}
+.hoverable .content {
+  padding: 10px;
+}
+.hoverable:hover {
+  background-color: #ff5252;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.hoverable:hover .content .header,
+.hoverable:hover .content .description {
+  color: white !important;
+}
+
+body {
+  overscroll-behavior: none;
+}

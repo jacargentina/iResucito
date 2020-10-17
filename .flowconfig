@@ -9,3 +9,8 @@
 
 [options]
 esproposal.optional_chaining=enable
+module.system.node.resolve_dirname=node_modules
+module.system.node.resolve_dirname=components
+module.name_mapper='^components\/\(.*\)$' -> '<PROJECT_ROOT>/packages/webapp/components/\1'
+well_formed_exports=false
+types_first=false

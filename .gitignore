@@ -65,3 +65,4 @@ web/dist/*.png
 web/dist/*.eot
 web/dist/*.svg
 web/data/*.json
+packages/webapp/.next/
