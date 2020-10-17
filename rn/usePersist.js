@@ -36,6 +36,7 @@ const usePersist = (
   defValue: any = ''
 ): any => {
   const globalState = useRef(null);
+  const [initialLoaded, setInitialLoaded] = useState(false);
   const [value, setValue] = useState(() => {
     if (persistGlobal[key]) {
       return persistGlobal[key].value;
@@ -57,18 +58,19 @@ const usePersist = (
 
   // Only persist to storage if state changes.
   useEffect(() => {
-    async function save() {
-      // persist to localStorage
-      const data = JSON.stringify(value);
-      await AsyncStorage.setItem(key, data);
-      // inform all of the other instances
-      if (globalState.current) {
-        globalState.current.emit(value);
+    if (initialLoaded) {
+      async function save() {
+        // persist to localStorage
+        const data = JSON.stringify(value);
+        await AsyncStorage.setItem(key, data);
+        // inform all of the other instances
+        if (globalState.current) {
+          globalState.current.emit(value);
+        }
       }
+      save();
     }
-
-    save();
-  }, [key, value]);
+  }, [key, value, initialLoaded]);
 
   const runTypeCheck = useCallback(
     (theValue) => {
@@ -122,6 +124,7 @@ const usePersist = (
         runTypeCheck(parsed);
         setValue(parsed);
       }
+      setInitialLoaded(true);
     };
 
     // cargar valor inicial desde storage
