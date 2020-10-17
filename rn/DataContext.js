@@ -897,7 +897,7 @@ const useCommunity = () => {
             return granted === PermissionsAndroid.RESULTS.GRANTED;
           })
           .catch(() => {
-            return false;
+            return new Error('Sin permisos para leer contactos');
           });
       } else {
         return PermissionsAndroid.check(
@@ -920,19 +920,19 @@ const useCommunity = () => {
                       resolve(true);
                     }
                     if (perm2 === 'denied') {
-                      reject(false);
+                      reject(new Error('denied'));
                     }
                   }
                 });
               } else {
-                reject(false);
+                reject(new Error('denied'));
               }
             }
             if (perm1 === 'authorized') {
               resolve(true);
             }
             if (perm1 === 'denied') {
-              reject(false);
+              reject(new Error('denied'));
             }
           }
         });
@@ -988,18 +988,22 @@ const useCommunity = () => {
 
   useEffect(() => {
     if (initialized === false && brothers) {
-      getContacts(false).then((devCts) => {
-        initDeviceContacts(devCts);
-        brothers.forEach((c, idx) => {
-          // tomar el contacto actualizado
-          var devContact = devCts.find((x) => x.recordID === c.recordID);
-          if (devContact) {
-            brothers[idx] = devContact;
-          }
+      getContacts(false)
+        .then((devCts) => {
+          initDeviceContacts(devCts);
+          brothers.forEach((c, idx) => {
+            // tomar el contacto actualizado
+            var devContact = devCts.find((x) => x.recordID === c.recordID);
+            if (devContact) {
+              brothers[idx] = devContact;
+            }
+          });
+          initBrothers(brothers);
+          setInitialized(true);
+        })
+        .catch(() => {
+          setInitialized(true);
         });
-        initBrothers(brothers);
-        setInitialized(true);
-      });
     }
   }, [initialized, getContacts, initBrothers, brothers]);
 
