@@ -8,3 +8,4 @@
 
 app_identifier "com.javiercastro.iresucito" # The bundle identifier of your app
 username "javier.alejandro.castro@gmail.com" # your Apple ID user
+automatic_release true
