@@ -27,6 +27,8 @@
 	</array>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleGetInfoString</key>
+	<string></string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -63,11 +65,11 @@
 		</dict>
 	</dict>
 	<key>NSContactsUsageDescription</key>
-	<string>Use your device contacts to easy import community brother names and thumbnails</string>
+	<string>Naudodami savo įrenginio kontaktus galite lengvai importuoti bendruomenės brolių vardus ir miniatiūras</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Allow $(PRODUCT_NAME) to use your location</string>
+	<string>Leiskite $(PRODUCT_NAME) naudoti jūsų vietą</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Allow $(PRODUCT_NAME) to use your location</string>
+	<string>Leiskite $(PRODUCT_NAME) naudoti jūsų vietą</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AntDesign.ttf</string>

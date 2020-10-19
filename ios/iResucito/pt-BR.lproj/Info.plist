@@ -38,7 +38,7 @@
 	<key>NSContactsUsageDescription</key>
 	<string>Use os contatos do seu dispositivo para facilitar a importação de nomes e miniaturas de irmãos da comunidade</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>Permitir que $(PRODUCT_NAME) use seu local</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Entypo.ttf</string>
