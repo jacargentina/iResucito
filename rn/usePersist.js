@@ -33,7 +33,8 @@ const createPersistGlobal = (key, thisCallback, initialValue) => {
 const usePersist = (
   key: string,
   typeCheck: string = '',
-  defValue: any = ''
+  defValue: any = '',
+  onLoaded: Function = null
 ): any => {
   const globalState = useRef(null);
   const [initialLoaded, setInitialLoaded] = useState(false);
@@ -116,16 +117,25 @@ const usePersist = (
       }
       return object;
     };
-    // funcion para cargar datos
+
+    // funcion onLoaded centralizada
+    const processAndSet = async (values) => {
+      if (onLoaded) {
+        values = await onLoaded(values);
+      }
+      setValue(values);
+    };
+
+    // funcion para cargar datos iniciales
     const readFromStorage = async () => {
       const theValue = await AsyncStorage.getItem(key);
       if (theValue === undefined || theValue === null) {
         await AsyncStorage.setItem(key, JSON.stringify(defValue));
-        setValue(defValue);
+        await processAndSet(defValue);
       } else {
         const parsed = await parseMigrateRawData(theValue);
         runTypeCheck(parsed);
-        setValue(parsed);
+        await processAndSet(parsed);
       }
       setInitialLoaded(true);
     };
