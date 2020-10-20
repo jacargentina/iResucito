@@ -83,10 +83,13 @@ const usePersist = (
     [typeCheck]
   );
 
-  const onTextChanged = (text: string) => {
-    runTypeCheck(text);
-    setValue(text);
-  };
+  const onTextChanged = useCallback(
+    (text: string) => {
+      runTypeCheck(text);
+      setValue(text);
+    },
+    [runTypeCheck, setValue]
+  );
 
   useEffect(() => {
     // funcion para migrar datos viejos
