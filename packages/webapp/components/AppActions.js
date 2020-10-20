@@ -8,13 +8,20 @@ import I18n from '../../../translations';
 
 const AppActions = () => {
   const data = useContext(DataContext);
-  const { user, stats } = data;
-
   const edit = useContext(EditContext);
-  const { confirmLogout } = edit;
+  const { user, stats, setConfirmData } = data;
 
-  const runLogout = () => {
-    confirmLogout(signOut);
+  const confirmLogout = () => {
+    if (edit && edit.hasChanges) {
+      setConfirmData({
+        message: I18n.t('ui.discard confirmation'),
+        yes: () => {
+          signOut({ callbackUrl: '/' });
+        },
+      });
+    } else {
+      signOut({ callbackUrl: '/' });
+    }
   };
 
   return (
@@ -47,7 +54,7 @@ const AppActions = () => {
         )}
       </Menu.Item>
       <Menu.Item>
-        <Button negative onClick={runLogout}>
+        <Button negative onClick={confirmLogout}>
           {I18n.t('ui.logout')}
         </Button>
       </Menu.Item>

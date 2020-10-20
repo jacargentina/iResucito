@@ -56,13 +56,5 @@ bin/
 /ios/Pods/
 
 # web app
-web/dist/*clientBundle.js*
-web/dist/*worker.js*
-web/dist/*.woff2
-web/dist/*.woff
-web/dist/*.ttf
-web/dist/*.png
-web/dist/*.eot
-web/dist/*.svg
-web/data/*.json
 packages/webapp/.next/
+packages/webapp/data/*.json

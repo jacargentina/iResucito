@@ -106,9 +106,7 @@ const useSongsMeta = (locale: string) => {
           patchObj = {};
         }
         if (patch) {
-          if (patch.rename) {
-            patch.rename = patch.rename.trim();
-          }
+          patch.name = patch.name.trim();
           const localePatch: SongPatch = {
             [loc]: patch,
           };

@@ -1,9 +1,8 @@
 // @flow
 import React, { useContext, useEffect, useState } from 'react';
+import { Menu, Progress } from 'semantic-ui-react';
 import { DataContext } from './DataContext';
 import { EditContext } from './EditContext';
-import Menu from 'semantic-ui-react/dist/commonjs/collections/Menu';
-import Progress from 'semantic-ui-react/dist/commonjs/modules/Progress';
 import I18n from '../../../translations';
 import { getPropertyLocale } from '../../../common';
 
@@ -17,7 +16,6 @@ const SongListResume = () => {
   const { songs } = data;
 
   const edit = useContext(EditContext);
-  const { editSong } = edit;
   const [resume, setResume] = useState(emptyResume);
 
   useEffect(() => {
@@ -25,7 +23,7 @@ const SongListResume = () => {
       const withLocale = songs.filter((song) => {
         return song.patched || !!getPropertyLocale(song.files, I18n.locale);
       });
-      var result = { translated: withLocale.length, total: songs.length };
+      const result = { translated: withLocale.length, total: songs.length };
       setResume({
         text: I18n.t('ui.translated songs', result),
         values: result,
@@ -35,7 +33,7 @@ const SongListResume = () => {
     }
   }, [songs]);
 
-  if (editSong) {
+  if (!edit) {
     return null;
   }
 

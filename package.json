@@ -12,7 +12,7 @@
   "private": true,
   "scripts": {
     "start": "react-native start",
-    "webpatch": "babel-node ./scripts/applyPatch.js -f ./web/data/SongsIndexPatch.json",
+    "webpatch": "babel-node ./scripts/applyPatch.js -f ./packages/webapp/data/SongsIndexPatch.json",
     "webclient": "webpack --env.API_PORT=8345 --config ./web/client/webpack.config.js --mode development",
     "webserverdev": "cross-env NODE_ENV=development PORT=8345 babel-node ./web/server/index.js",
     "webserverprod": "cross-env NODE_ENV=production babel-node ./web/server/index.js",

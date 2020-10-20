@@ -14,7 +14,7 @@ declare type SongPatchLogData = {
   linked?: {
     new: string,
   },
-  rename?: {
+  nombre?: {
     original?: string,
     new?: string,
   },
@@ -29,8 +29,8 @@ declare type SongPatchLog = {
 declare type SongPatchData = {
   author: string,
   date: number,
+  name: string,
   file?: string,
-  rename?: string,
   stage?: string,
   lines?: string,
 };

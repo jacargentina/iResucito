@@ -14,7 +14,7 @@ const ListScreen = (props: any) => {
   const data = useContext(DataContext);
   const navigation = useNavigation();
   const { getListsForUI, removeList, chooseListTypeForAdd } = data.lists;
-  const [filtered, setFiltered] = useState();
+  const [filtered, setFiltered] = useState([]);
   const [filter, setFilter] = useState('');
 
   const allLists = useMemo(() => getListsForUI(data.localeReal), [
@@ -71,7 +71,7 @@ const ListScreen = (props: any) => {
 
   return (
     <SearchBarView value={filter} setValue={setFilter}>
-      {filtered && filtered.length === 0 && (
+      {filtered.length === 0 && (
         <Text note style={{ textAlign: 'center', paddingTop: 20 }}>
           {I18n.t('ui.no lists found')}
         </Text>

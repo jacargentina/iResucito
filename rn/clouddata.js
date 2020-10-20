@@ -3,7 +3,7 @@ import { NativeEventEmitter } from 'react-native';
 import iCloudStorage from 'react-native-icloudstore';
 
 class CloudData {
-  eventEmitter: NativeEventEmitter;
+  eventEmitter: any;
 
   constructor() {
     this.eventEmitter = new NativeEventEmitter(iCloudStorage);

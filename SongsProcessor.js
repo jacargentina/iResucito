@@ -44,12 +44,23 @@ export class SongsProcessor {
     info.fuente = parsed.fuente;
   }
 
-  getBestFileForLocale(files: { [string]: string }, rawLoc: string) {
+  getBestFileForLocale(
+    files: { [string]: string },
+    rawLoc: string,
+    defaultFile: string
+  ) {
     var loc = getPropertyLocale(files, rawLoc);
     if (!loc) {
       loc = Object.getOwnPropertyNames(files)[0];
     }
-    return { locale: loc, name: files[loc] };
+    if (!loc) {
+      loc = rawLoc;
+    }
+    var file = files[loc];
+    if (!file) {
+      file = defaultFile;
+    }
+    return { locale: loc, name: file };
   }
 
   getSongHistory(key: string, rawLoc: string): Array<SongPatchData> {
@@ -66,12 +77,13 @@ export class SongsProcessor {
     patch: ?SongIndexPatch,
     ratings: ?SongRatingFile
   ): Song {
-    if (!SongsIndex.hasOwnProperty(key))
+    if (!SongsIndex.hasOwnProperty(key)) {
       throw new Error(`There is no key = ${key} on the Index!`);
+    }
     const files = SongsIndex[key].files;
     var info: Song = Object.assign({}, SongsIndex[key]);
     info.key = key;
-    const bestFile = this.getBestFileForLocale(files, rawLoc);
+    const bestFile = this.getBestFileForLocale(files, rawLoc, info.nombre);
     info.path = `${this.basePath}/${bestFile.locale}/${bestFile.name}.txt`;
     const parsed = getSongFileFromString(bestFile.name);
     this.assignInfoFromFile(info, parsed);
@@ -91,19 +103,17 @@ export class SongsProcessor {
       if (loc) {
         info.patched = true;
         info.patchedTitle = info.titulo;
-        const { file, rename, stage } = patch[key][loc];
+        const { file, name, stage } = patch[key][loc];
         if (file) {
           info.path = `${this.basePath}/${loc}/${file}.txt`;
           info.files = Object.assign({}, info.files, {
             [loc]: file,
           });
-          const parsed = getSongFileFromString(file);
-          this.assignInfoFromFile(info, parsed);
+          const parsedPatch = getSongFileFromString(file);
+          this.assignInfoFromFile(info, parsedPatch);
         }
-        if (rename) {
-          const renamed = getSongFileFromString(rename);
-          this.assignInfoFromFile(info, renamed);
-        }
+        const renamed = getSongFileFromString(name);
+        this.assignInfoFromFile(info, renamed);
         if (stage) {
           info.stages = Object.assign({}, info.stages, {
             [loc]: stage,
@@ -138,24 +148,28 @@ export class SongsProcessor {
       // claves numericas presentes en el
       // patch y ausentes en el indice
       Object.keys(patch).forEach((pKey) => {
-        if (!songs.find((s) => s.key === pKey) && patch) {
+        if (!songs.find((s) => s.key === pKey)) {
           var sPatch = patch[pKey];
           if (sPatch[rawLoc]) {
+            var info: Song = {};
+            info.key = pKey;
+            info.added = true;
             var patchData: SongPatchData = sPatch[rawLoc];
             var files: { [string]: string } = {};
             var stages: { [string]: string } = {};
-            if (patchData.rename) {
-              files[rawLoc] = patchData.rename;
-            }
+            files[rawLoc] = patchData.name;
             if (patchData.stage) {
-              stages[rawLoc] = patchData.stage;
+              const stage = patchData.stage;
+              stages[rawLoc] = stage;
+              info.stage = stage;
             }
-            var info: Song = {};
-            info.key = pKey;
             info.files = files;
             info.stages = stages;
-            info.added = true;
-            const bestFile = this.getBestFileForLocale(files, rawLoc);
+            const bestFile = this.getBestFileForLocale(
+              files,
+              rawLoc,
+              patchData.name
+            );
             const parsed = getSongFileFromString(bestFile.name);
             this.assignInfoFromFile(info, parsed);
             songs.push(info);

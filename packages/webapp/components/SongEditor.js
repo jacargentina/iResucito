@@ -1,36 +1,35 @@
 // @flow
-import React, {
-  Fragment,
-  useContext,
-  useState,
-  useEffect,
-  useRef,
-} from 'react';
-import TextArea from 'semantic-ui-react/dist/commonjs/addons/TextArea';
-import Icon from 'semantic-ui-react/dist/commonjs/elements/Icon';
-import Popup from 'semantic-ui-react/dist/commonjs/modules/Popup';
-import Tab from 'semantic-ui-react/dist/commonjs/modules/Tab';
-import Segment from 'semantic-ui-react/dist/commonjs/elements/Segment';
-import Message from 'semantic-ui-react/dist/commonjs/collections/Message';
-import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
-import Menu from 'semantic-ui-react/dist/commonjs/collections/Menu';
+import React, { useContext, useState, useEffect, useRef } from 'react';
+import {
+  TextArea,
+  Icon,
+  Popup,
+  Tab,
+  Segment,
+  Message,
+  Button,
+  Menu,
+} from 'semantic-ui-react';
+import { useDebouncedCallback } from 'use-debounce';
+import useHotkeys from 'use-hotkeys';
 import { DataContext } from './DataContext';
 import { EditContext } from './EditContext';
 import SongViewFrame from './SongViewFrame';
 import SongViewPdf from './SongViewPdf';
-import { useDebouncedCallback } from 'use-debounce';
 import I18n from '../../../translations';
-import useHotkeys from 'use-hotkeys';
 
 const SongEditor = () => {
   const txtRef = useRef(null);
   const data = useContext(DataContext);
-  const { setActiveDialog, songs } = data;
+  const { setActiveDialog } = data;
 
   const edit = useContext(EditContext);
   const {
     editSong,
-    navigation,
+    index,
+    previousKey,
+    nextKey,
+    totalSongs,
     text,
     pdf,
     setPdf,
@@ -45,6 +44,7 @@ const SongEditor = () => {
     goNext,
     confirmClose,
   } = edit;
+
   const [debouncedText, setDebouncedText] = useState(text);
   const debounced = useDebouncedCallback((t) => setDebouncedText(t), 800);
   const [activeTab, setActiveTab] = useState(0);
@@ -52,51 +52,43 @@ const SongEditor = () => {
   const [colpos, setColpos] = useState();
 
   useEffect(() => {
-    if (editSong) {
-      debounced.callback(text);
-      debounced.pending();
-      setLinepos(1);
-      setColpos(1);
-      if (txtRef && txtRef.current) {
-        txtRef.current.ref.current.selectionStart = 0;
-        txtRef.current.ref.current.selectionEnd = 0;
-        txtRef.current.focus();
-      }
+    setDebouncedText(editSong.fullText);
+    setText(editSong.fullText);
+    setLinepos(1);
+    setColpos(1);
+    if (txtRef && txtRef.current) {
+      txtRef.current.ref.current.selectionStart = 0;
+      txtRef.current.ref.current.selectionEnd = 0;
+      txtRef.current.focus();
     }
   }, [editSong]);
 
   const editMetadata = () => {
-    if (editSong) {
-      setActiveDialog('changeMetadata');
-    }
+    setActiveDialog('changeMetadata');
   };
 
   const save = () => {
-    if (editSong && hasChanges) {
+    if (hasChanges) {
       applyChanges();
     }
   };
 
   const previous = () => {
-    if (navigation && navigation.previousKey) {
-      goPrevious();
-      setActiveTab(0);
-    }
+    goPrevious();
+    setActiveTab(0);
   };
 
   const next = () => {
-    if (navigation && navigation.nextKey) {
-      goNext();
-      setActiveTab(0);
-    }
+    goNext();
+    setActiveTab(0);
   };
 
   const txtPositionEvent = () => {
     if (txtRef && txtRef.current) {
-      var textarea = txtRef.current.ref.current;
-      var line = textarea.value.substr(0, textarea.selectionStart).split('\n')
+      const textarea = txtRef.current.ref.current;
+      const line = textarea.value.substr(0, textarea.selectionStart).split('\n')
         .length;
-      var col =
+      const col =
         textarea.selectionStart -
         textarea.value.lastIndexOf('\n', textarea.selectionStart - 1);
       setLinepos(line);
@@ -119,18 +111,16 @@ const SongEditor = () => {
         case 'ctrl+e':
           editMetadata();
           break;
+        default:
+          break;
       }
     },
     ['ctrl+s', 'ctrl+[', 'ctrl+]', 'ctrl+e'],
-    [editSong]
+    []
   );
 
-  if (!editSong) {
-    return null;
-  }
-
   return (
-    <Fragment>
+    <>
       <Menu size="mini" inverted attached color="blue">
         <Menu.Item>
           <Button.Group size="mini">
@@ -165,49 +155,47 @@ const SongEditor = () => {
             />
           </Button.Group>
         </Menu.Item>
-        {navigation && (
-          <Fragment>
-            {navigation.index !== null && (
-              <Menu.Item>
-                <strong style={{ marginLeft: 10, marginRight: 10 }}>
-                  {navigation.index} / {songs.length}
-                </strong>
-              </Menu.Item>
-            )}
-            {(navigation.previousKey || navigation.nextKey) && (
-              <Menu.Item>
-                <Button.Group size="mini">
-                  <Popup
-                    content={<strong>Shortcut: Ctrl + [</strong>}
-                    size="mini"
-                    position="bottom left"
-                    trigger={
-                      <Button
-                        icon
-                        disabled={navigation.previousKey === null || hasChanges}
-                        onClick={previous}>
-                        <Icon name="step backward" />
-                      </Button>
-                    }
-                  />
-                  <Popup
-                    content={<strong>Shortcut: Ctrl + ]</strong>}
-                    size="mini"
-                    position="bottom left"
-                    trigger={
-                      <Button
-                        icon
-                        disabled={navigation.nextKey === null || hasChanges}
-                        onClick={next}>
-                        <Icon name="step forward" />
-                      </Button>
-                    }
-                  />
-                </Button.Group>
-              </Menu.Item>
-            )}
-          </Fragment>
-        )}
+        <>
+          {index !== null && (
+            <Menu.Item>
+              <strong style={{ marginLeft: 10, marginRight: 10 }}>
+                {index} / {totalSongs}
+              </strong>
+            </Menu.Item>
+          )}
+          {(previousKey || nextKey) && (
+            <Menu.Item>
+              <Button.Group size="mini">
+                <Popup
+                  content={<strong>Shortcut: Ctrl + [</strong>}
+                  size="mini"
+                  position="bottom left"
+                  trigger={
+                    <Button
+                      icon
+                      disabled={previousKey === null || hasChanges}
+                      onClick={previous}>
+                      <Icon name="step backward" />
+                    </Button>
+                  }
+                />
+                <Popup
+                  content={<strong>Shortcut: Ctrl + ]</strong>}
+                  size="mini"
+                  position="bottom left"
+                  trigger={
+                    <Button
+                      icon
+                      disabled={nextKey === null || hasChanges}
+                      onClick={next}>
+                      <Icon name="step forward" />
+                    </Button>
+                  }
+                />
+              </Button.Group>
+            </Menu.Item>
+          )}
+        </>
         <Menu.Item>
           <Popup
             header="Tips"
@@ -362,7 +350,7 @@ const SongEditor = () => {
           />
         </div>
       </div>
-    </Fragment>
+    </>
   );
 };
 

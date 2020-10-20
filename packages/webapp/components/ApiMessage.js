@@ -6,6 +6,10 @@ import I18n from '../../../translations';
 
 const ApiMessage = () => {
   const data = useContext(DataContext);
+  if (!data) {
+    return null;
+  }
+
   const { apiResult } = data;
 
   if (!apiResult) {

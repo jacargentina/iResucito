@@ -6,6 +6,7 @@
 [untyped]
 .*/node_modules/react-native
 .*/native-base-theme/
+.*/node_modules/@codler/react-native-keyboard-aware-scroll-view/
 
 [options]
 esproposal.optional_chaining=enable

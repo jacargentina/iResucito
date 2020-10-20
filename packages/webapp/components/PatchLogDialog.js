@@ -14,6 +14,11 @@ const PatchLogDialog = () => {
   const { activeDialog, setActiveDialog } = data;
 
   const edit = useContext(EditContext);
+
+  if (!edit) {
+    return null;
+  }
+  
   const { editSong, patchLogs } = edit;
 
   return (

@@ -41,10 +41,8 @@ const patchSongLogic = (songPatch, key, dirty) => {
     Object.keys(songPatch).forEach((rawLoc) => {
       var item: SongPatchData = songPatch[rawLoc];
       var loc = rawLoc;
-      var { author, date, file, rename, lines, stage } = item;
-      if (rename) {
-        rename = rename.trim();
-      }
+      var { author, date, file, name, lines, stage } = item;
+      name = name.trim();
       if (!file) {
         loc = getPropertyLocale(songToPatch.files, rawLoc);
         if (loc) {
@@ -55,15 +53,7 @@ const patchSongLogic = (songPatch, key, dirty) => {
           loc = rawLoc;
         }
         if (!file) {
-          if (rename) {
-            // Usar el nombre de renombrado para crear archivo
-            file = rename;
-            rename = undefined;
-          } else {
-            // El archivo aun no existe en el idioma
-            // crear archivo con el nombre del español
-            file = songToPatch.files.es;
-          }
+          file = name;
         }
       }
 
@@ -92,15 +82,13 @@ const patchSongLogic = (songPatch, key, dirty) => {
       report.locale = loc;
 
       var songFileName = path.join(songDirectory, `${file}.txt`);
-      var newName = rename ? path.join(songDirectory, `${rename}.txt`) : null;
-      if (newName && !fs.existsSync(songFileName)) {
-        report.renameNotPossible = `no existe ${songFileName}`;
-      } else if (newName && newName !== songFileName) {
-        report.rename = { original: file, new: rename };
+      var newName = path.join(songDirectory, `${name}.txt`);
+      if (newName !== songFileName) {
+        report.rename = { original: file, new: name };
         if (!dirty) {
           execSync(`git mv --force "${songFileName}" "${newName}"`);
         }
-        Object.assign(songToPatch.files, { [loc]: rename });
+        Object.assign(songToPatch.files, { [loc]: name });
         songFileName = newName;
       } else if (songToPatch.files[loc] !== file) {
         if (songToPatch.files[loc]) {

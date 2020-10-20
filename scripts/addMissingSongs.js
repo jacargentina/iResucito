@@ -2,7 +2,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import FolderSongs from '../FolderSongs';
-import { readLocalePatch } from '../web/server/common';
+import { readLocalePatch } from '../packages/webapp/common';
 const { execSync } = require('child_process');
 const merge = require('deepmerge');
 const inScripts = path.basename(process.cwd()) === path.basename(__dirname);

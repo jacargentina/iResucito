@@ -2,8 +2,9 @@
 import * as path from 'path';
 import low from 'lowdb';
 import FileSync from 'lowdb/adapters/FileSync';
-import FolderExtras from '../../../../../FolderExtras';
+import FolderExtras from '../../FolderExtras';
 
+export const domain = 'http://iresucito.herokuapp.com';
 export const dataPath = path.resolve('./data');
 export const db = low(new FileSync(path.join(dataPath, 'db.json')));
 db.defaults({ users: [], tokens: [] }).write();

@@ -1,13 +1,10 @@
 // @flow
 import React, { useState } from 'react';
-import I18n from '../../../translations';
-import api from './api';
+import * as axios from 'axios';
 
 export const DataContext: any = React.createContext();
 
 const DataContextWrapper = (props: any) => {
-  const [editSong, setEditSong] = useState();
-  const [pdf, setPdf] = useState({ loading: false, url: null });
   const [apiLoading, setApiLoading] = useState(false);
   const [apiResult, setApiResult] = useState();
   const [confirmData, setConfirmData] = useState();
@@ -31,7 +28,7 @@ const DataContextWrapper = (props: any) => {
   const signUp = (email, password) => {
     setApiResult();
     setApiLoading(true);
-    return api
+    return axios
       .post('/api/signup', {
         email,
         password,
@@ -45,37 +42,9 @@ const DataContextWrapper = (props: any) => {
       });
   };
 
-  const previewPdf = () => {
-    const savedSettings = localStorage.getItem('pdfExportOptions');
-    const data = {
-      options: null,
-    };
-    if (savedSettings) {
-      data.options = JSON.parse(savedSettings);
-    }
-    setPdf({ loading: true, url: null });
-    return api
-      .post(`/api/pdf/${I18n.locale}`, data, {
-        responseType: 'blob',
-      })
-      .then((response) => {
-        setPdf({
-          loading: false,
-          url: window.URL.createObjectURL(new Blob([response.data])),
-        });
-      })
-      .catch(async (err) => {
-        var text = await new Response(err.response.data).text();
-        handleApiError(JSON.stringify(text));
-        setPdf({ loading: false, url: null });
-      });
-  };
-
   return (
     <DataContext.Provider
       value={{
-        editSong,
-        setEditSong,
         confirmData,
         setConfirmData,
         activeDialog,
@@ -86,9 +55,6 @@ const DataContextWrapper = (props: any) => {
         setApiResult,
         handleApiError,
         signUp,
-        previewPdf,
-        pdf,
-        setPdf,
       }}>
       {props.children}
     </DataContext.Provider>

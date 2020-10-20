@@ -17,53 +17,52 @@ const SongChangeMetadataDialog = () => {
   const { activeDialog, setActiveDialog } = data;
 
   const edit = useContext(EditContext);
-  const { editSong, rename, setRename, stage, setStage, setHasChanges } = edit;
 
   const [actionEnabled, setActionEnabled] = useState(false);
   const [tipMessages, setTipMessages] = useState([]);
-  const [name, setName] = useState('');
   const [changeSong, setChangeSong] = useState();
 
   useEffect(() => {
-    if (editSong) {
-      setName(rename || editSong.nombre);
-      setStage(stage || editSong.stage);
-    }
-  }, [editSong]);
-
-  useEffect(() => {
-    if (name !== undefined) {
-      var tips = [];
-      var check1 = name.length > 0;
+    if (edit && edit.name !== undefined) {
+      const tips = [];
+      const check1 = edit.name.length > 0;
       if (!check1) {
         tips.push('Must have content');
       }
-      var check2 = name.length === 0 || name.toUpperCase() !== name;
+      const check2 =
+        edit.name.length === 0 || edit.name.toUpperCase() !== edit.name;
       if (!check2) {
         tips.push('Must not be "ALL UPERCASE", read help above');
       }
-      var check3 = name.length === 0 || name.toLowerCase() !== name;
+      const check3 =
+        edit.name.length === 0 || edit.name.toLowerCase() !== edit.name;
       if (!check3) {
         tips.push('Must not be "all lowercase", read help above');
       }
-      var check4 = !name.includes('  ');
+      const check4 = !edit.name.includes('  ');
       if (!check4) {
         tips.push('Must not have double spaces inside! Please remove those');
       }
       setActionEnabled(tips.length === 0);
       setTipMessages(tips);
-      const parsed = getSongFileFromString(name);
-      const changed = Object.assign({}, editSong, parsed);
+      const parsed = getSongFileFromString(edit.name);
+      const changed = { ...edit.editSong, ...parsed };
       setChangeSong(changed);
     }
-  }, [name]);
+  }, [edit.name, edit]);
+
+  if (!edit) {
+    return null;
+  }
+
+  const { editSong, setHasChanges } = edit;
 
   return (
     <Modal
       open={activeDialog === 'changeMetadata'}
       size="small"
       dimmer="blurring"
-      centered={true}
+      centered
       onClose={() => setActiveDialog()}>
       <Modal.Header>{I18n.t('ui.edit')}</Modal.Header>
       <Modal.Content>
@@ -71,9 +70,9 @@ const SongChangeMetadataDialog = () => {
         <Input
           fluid
           autoFocus
-          value={name}
+          value={edit.name}
           onChange={(e, { value }) => {
-            setName(value);
+            edit.setName(value);
           }}
         />
         <div style={{ marginTop: 10, marginBottom: 10, color: 'gray' }}>
@@ -83,14 +82,14 @@ const SongChangeMetadataDialog = () => {
         <h5>{I18n.t('search_title.stage')}</h5>
         <Dropdown
           style={{ marginLeft: 10 }}
-          onChange={(e, { value }) => setStage(value)}
+          onChange={(e, { value }) => edit.setStage(value)}
           selection
-          value={stage}
-          options={wayStages.map((name) => {
+          value={edit.stage}
+          options={wayStages.map((stage) => {
             return {
-              key: name,
-              text: I18n.t(`search_title.${name}`),
-              value: name,
+              key: stage,
+              text: I18n.t(`search_title.${stage}`),
+              value: stage,
             };
           })}
         />
@@ -112,7 +111,7 @@ const SongChangeMetadataDialog = () => {
               <SongListItem
                 titulo={changeSong.titulo}
                 fuente={changeSong.fuente}
-                stage={stage}
+                stage={edit.stage}
               />
             )}
           </div>
@@ -123,7 +122,6 @@ const SongChangeMetadataDialog = () => {
           primary
           disabled={!actionEnabled}
           onClick={() => {
-            setRename(name);
             setHasChanges(true);
             setActiveDialog();
           }}>

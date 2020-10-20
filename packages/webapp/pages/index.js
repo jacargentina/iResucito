@@ -8,12 +8,12 @@ import useLocale from 'components/useLocale';
 const Index = () => {
   const [session, isLoading] = useSession();
   const router = useRouter();
-  const locale = useLocale(false);
+  const locale = useLocale();
 
   useEffect(() => {
     if (!isLoading) {
       if (session) {
-        locale.setNavigationEnabled(true);
+        locale.initialize(true);
       } else {
         router.push('/login?callbackUrl=/');
       }

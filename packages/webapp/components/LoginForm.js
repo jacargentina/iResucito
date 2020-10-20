@@ -20,7 +20,6 @@ import I18n from '../../../translations';
 
 const LoginForm = () => {
   const data = useContext(DataContext);
-  const { signUp } = data;
   const router = useRouter();
   const {
     query: { callbackUrl, u, v },
@@ -36,6 +35,8 @@ const LoginForm = () => {
     router.query.error === 'CredentialsSignin'
       ? new Error('Usuario y/o contraseña inválidos')
       : undefined;
+
+  const { signUp } = data;
 
   return (
     <>

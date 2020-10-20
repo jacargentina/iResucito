@@ -10,7 +10,7 @@ import I18n from '../../translations';
 
 const SongChooserDialog = (props: any) => {
   const data = useContext(DataContext);
-  const scrollToActiveRef = useRef<?ScrollView>();
+  const scrollToActiveRef = useRef();
   const { navigation, route } = props;
   const { searchItems } = data.search;
   const { setList } = data.lists;

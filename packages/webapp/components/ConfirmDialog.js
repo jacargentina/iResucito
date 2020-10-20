@@ -1,7 +1,6 @@
 // @flow
 import React, { useContext } from 'react';
-import Modal from 'semantic-ui-react/dist/commonjs/modules/Modal';
-import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
+import { Modal, Button } from 'semantic-ui-react';
 import { DataContext } from './DataContext';
 import I18n from '../../../translations';
 

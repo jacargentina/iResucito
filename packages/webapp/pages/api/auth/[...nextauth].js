@@ -3,7 +3,7 @@ import Providers from 'next-auth/providers';
 import * as _ from 'lodash';
 import bcrypt from 'bcryptjs';
 import { AUTH_SECRET, JWT_SECRET } from './secret';
-import { db, readLocalePatch } from './common';
+import { db, readLocalePatch } from '../../../common';
 
 const getStats = async (user: any) => {
   const stats = [];
@@ -46,7 +46,7 @@ const options = {
       const isSignIn = !!iresucitoUser;
       if (isSignIn) {
         // eslint-disable-next-line no-param-reassign
-        token.userData = iresucitoUser;
+        token.userData = iresucitoUser.user;
       }
       return Promise.resolve(token);
     },
