@@ -1,5 +1,2 @@
-• Aggiunta lingua pt-PT
-• Varie impostazioni del brano:
-     • Il jacal dei pastori - Ct 1, 2-8 (Fabio Reis)
-     • Il Signore dice al mio Signore - Sal 110 (109) (Michele Gentili)
-     • Beato te, Signore - Dn 3, 52-57 (Giuseppe Reino)
+• Aggiunta lingua lt-lT (David Hernandez Durán)
+• Aggiunta lingua sw-TZ (Andrés Ramirez)
