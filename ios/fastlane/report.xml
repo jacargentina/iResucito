@@ -5,39 +5,39 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: Verifying fastlane version" time="0.000398">
+      <testcase classname="fastlane.lanes" name="0: Verifying fastlane version" time="0.000379">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: default_platform" time="0.000201">
+      <testcase classname="fastlane.lanes" name="1: default_platform" time="0.000179">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="2: match" time="17.224499">
+      <testcase classname="fastlane.lanes" name="2: match" time="9.466512">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="3: increment_version_number" time="1.669448">
+      <testcase classname="fastlane.lanes" name="3: increment_version_number" time="0.795171">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="4: increment_build_number" time="0.730754">
+      <testcase classname="fastlane.lanes" name="4: increment_build_number" time="0.743549">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="5: gym" time="242.383904">
+      <testcase classname="fastlane.lanes" name="5: gym" time="260.735131">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="6: deliver" time="10.670683">
+      <testcase classname="fastlane.lanes" name="6: deliver" time="3311.072927">
         
-          <failure message="/Library/Ruby/Gems/2.6.0/gems/fastlane-2.164.0/fastlane/lib/fastlane/actions/actions_helper.rb:67:in `execute_action'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.164.0/fastlane/lib/fastlane/runner.rb:255:in `block in execute_action'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.164.0/fastlane/lib/fastlane/runner.rb:229:in `chdir'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.164.0/fastlane/lib/fastlane/runner.rb:229:in `execute_action'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.164.0/fastlane/lib/fastlane/runner.rb:157:in `trigger_action_by_name'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.164.0/fastlane/lib/fastlane/fast_file.rb:159:in `method_missing'&#10;Fastfile:57:in `block (2 levels) in parsing_binding'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.164.0/fastlane/lib/fastlane/lane.rb:33:in `call'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.164.0/fastlane/lib/fastlane/runner.rb:49:in `block in execute'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.164.0/fastlane/lib/fastlane/runner.rb:45:in `chdir'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.164.0/fastlane/lib/fastlane/runner.rb:45:in `execute'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.164.0/fastlane/lib/fastlane/lane_manager.rb:47:in `cruise_lane'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.164.0/fastlane/lib/fastlane/command_line_handler.rb:36:in `handle'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.164.0/fastlane/lib/fastlane/commands_generator.rb:108:in `block (2 levels) in run'&#10;/Library/Ruby/Gems/2.6.0/gems/commander-fastlane-4.4.6/lib/commander/command.rb:178:in `call'&#10;/Library/Ruby/Gems/2.6.0/gems/commander-fastlane-4.4.6/lib/commander/command.rb:153:in `run'&#10;/Library/Ruby/Gems/2.6.0/gems/commander-fastlane-4.4.6/lib/commander/runner.rb:476:in `run_active_command'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.164.0/fastlane_core/lib/fastlane_core/ui/fastlane_runner.rb:76:in `run!'&#10;/Library/Ruby/Gems/2.6.0/gems/commander-fastlane-4.4.6/lib/commander/delegates.rb:15:in `run!'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.164.0/fastlane/lib/fastlane/commands_generator.rb:352:in `run'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.164.0/fastlane/lib/fastlane/commands_generator.rb:41:in `start'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.164.0/fastlane/lib/fastlane/cli_tools_distributor.rb:119:in `take_off'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.164.0/bin/fastlane:23:in `&lt;top (required)&gt;'&#10;/usr/local/bin/fastlane:23:in `load'&#10;/usr/local/bin/fastlane:23:in `&lt;main&gt;'&#10;&#10;Unsupported directory name(s) for screenshots/metadata in './fastlane/metadata': sw-TZ&#10;Valid directory names are: [&quot;ar-SA&quot;, &quot;ca&quot;, &quot;cs&quot;, &quot;da&quot;, &quot;de-DE&quot;, &quot;el&quot;, &quot;en-AU&quot;, &quot;en-CA&quot;, &quot;en-GB&quot;, &quot;en-US&quot;, &quot;es-ES&quot;, &quot;es-MX&quot;, &quot;fi&quot;, &quot;fr-CA&quot;, &quot;fr-FR&quot;, &quot;he&quot;, &quot;hi&quot;, &quot;hr&quot;, &quot;hu&quot;, &quot;id&quot;, &quot;it&quot;, &quot;ja&quot;, &quot;ko&quot;, &quot;ms&quot;, &quot;nl-NL&quot;, &quot;no&quot;, &quot;pl&quot;, &quot;pt-BR&quot;, &quot;pt-PT&quot;, &quot;ro&quot;, &quot;ru&quot;, &quot;sk&quot;, &quot;sv&quot;, &quot;th&quot;, &quot;tr&quot;, &quot;uk&quot;, &quot;vi&quot;, &quot;zh-Hans&quot;, &quot;zh-Hant&quot;, &quot;appleTV&quot;, &quot;iMessage&quot;, &quot;default&quot;]&#10;&#10;Enable 'ignore_language_directory_validation' to prevent this validation from happening" />
+          <failure message="/Library/Ruby/Gems/2.6.0/gems/fastlane-2.164.0/fastlane/lib/fastlane/actions/actions_helper.rb:67:in `execute_action'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.164.0/fastlane/lib/fastlane/runner.rb:255:in `block in execute_action'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.164.0/fastlane/lib/fastlane/runner.rb:229:in `chdir'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.164.0/fastlane/lib/fastlane/runner.rb:229:in `execute_action'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.164.0/fastlane/lib/fastlane/runner.rb:157:in `trigger_action_by_name'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.164.0/fastlane/lib/fastlane/fast_file.rb:159:in `method_missing'&#10;Fastfile:57:in `block (2 levels) in parsing_binding'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.164.0/fastlane/lib/fastlane/lane.rb:33:in `call'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.164.0/fastlane/lib/fastlane/runner.rb:49:in `block in execute'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.164.0/fastlane/lib/fastlane/runner.rb:45:in `chdir'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.164.0/fastlane/lib/fastlane/runner.rb:45:in `execute'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.164.0/fastlane/lib/fastlane/lane_manager.rb:47:in `cruise_lane'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.164.0/fastlane/lib/fastlane/command_line_handler.rb:36:in `handle'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.164.0/fastlane/lib/fastlane/commands_generator.rb:108:in `block (2 levels) in run'&#10;/Library/Ruby/Gems/2.6.0/gems/commander-fastlane-4.4.6/lib/commander/command.rb:178:in `call'&#10;/Library/Ruby/Gems/2.6.0/gems/commander-fastlane-4.4.6/lib/commander/command.rb:153:in `run'&#10;/Library/Ruby/Gems/2.6.0/gems/commander-fastlane-4.4.6/lib/commander/runner.rb:476:in `run_active_command'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.164.0/fastlane_core/lib/fastlane_core/ui/fastlane_runner.rb:76:in `run!'&#10;/Library/Ruby/Gems/2.6.0/gems/commander-fastlane-4.4.6/lib/commander/delegates.rb:15:in `run!'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.164.0/fastlane/lib/fastlane/commands_generator.rb:352:in `run'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.164.0/fastlane/lib/fastlane/commands_generator.rb:41:in `start'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.164.0/fastlane/lib/fastlane/cli_tools_distributor.rb:119:in `take_off'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.164.0/bin/fastlane:23:in `&lt;top (required)&gt;'&#10;/usr/local/bin/fastlane:23:in `load'&#10;/usr/local/bin/fastlane:23:in `&lt;main&gt;'&#10;&#10;Use of Advertising Identifier (IDFA) is required to submit&#10;Add information to the :submission_information option...&#10;  Docs: http://docs.fastlane.tools/actions/deliver/#compliance-and-idfa-settings&#10;  Example: submission_information: { add_id_info_uses_idfa: false }&#10;  Example: submission_information: {&#10;    add_id_info_uses_idfa: true,&#10;    add_id_info_serves_ads: false,&#10;    add_id_info_tracks_install: true,&#10;    add_id_info_tracks_action: true,&#10;    add_id_info_limits_tracking: true&#10;  }&#10;  Example CLI:&#10;    --submission_information &quot;{\&quot;add_id_info_uses_idfa\&quot;: false}&quot;" />
         
       </testcase>
     
