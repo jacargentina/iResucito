@@ -49,7 +49,6 @@ buck-out/
 \.buckd/
 *.keystore
 !debug.keystore
-pdf/
 bin/
 
 # CocoaPods
