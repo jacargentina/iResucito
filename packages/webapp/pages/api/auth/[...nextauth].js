@@ -24,6 +24,7 @@ const getStats = async (user: any) => {
       stats.push({ author, count: byAuthor[author].length });
     });
   }
+  return stats;
 };
 
 const options = {
@@ -39,6 +40,7 @@ const options = {
     session: async (session, jwtToken, sessionToken) => {
       // eslint-disable-next-line no-param-reassign
       session.user = jwtToken.userData;
+      session.stats = jwtToken.statsData;
       return Promise.resolve(session);
     },
     // eslint-disable-next-line no-unused-vars
@@ -47,6 +49,7 @@ const options = {
       if (isSignIn) {
         // eslint-disable-next-line no-param-reassign
         token.userData = iresucitoUser.user;
+        token.statsData = iresucitoUser.stats;
       }
       return Promise.resolve(token);
     },

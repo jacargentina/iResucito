@@ -14,6 +14,7 @@ import { useDebouncedCallback } from 'use-debounce';
 import useHotkeys from 'use-hotkeys';
 import { DataContext } from './DataContext';
 import { EditContext } from './EditContext';
+import ApiMessage from './ApiMessage';
 import SongViewFrame from './SongViewFrame';
 import SongViewPdf from './SongViewPdf';
 import I18n from '../../../translations';
@@ -242,6 +243,7 @@ const SongEditor = () => {
           overflow: 'auto',
         }}>
         <div style={{ display: 'flex', flexDirection: 'column', width: '50%' }}>
+          <ApiMessage />
           <TextArea
             ref={txtRef}
             onMouseUp={txtPositionEvent}

@@ -1,17 +1,19 @@
 // @flow
 import React, { Fragment, useContext } from 'react';
 import { useRouter } from 'next/router';
-import { signOut } from 'next-auth/client';
+import { useSession, signOut } from 'next-auth/client';
 import { Portal, Label, Message, Button, Menu } from 'semantic-ui-react';
 import { DataContext } from './DataContext';
 import { EditContext } from './EditContext';
 import I18n from '../../../translations';
 
 const AppActions = () => {
+  const [session, isLoading] = useSession();
   const data = useContext(DataContext);
   const edit = useContext(EditContext);
   const router = useRouter();
-  const { user, stats, setConfirmData } = data;
+
+  const { setConfirmData } = data;
 
   const confirmLogout = () => {
     if (edit && edit.hasChanges) {
@@ -28,13 +30,13 @@ const AppActions = () => {
 
   return (
     <>
-      {user && (
+      {!isLoading && session && session.stats && session.stats.length > 0 &&
         <Menu.Item>
-          {stats && stats.length > 0 && (
+          {session.stats.length > 0 && (
             <Portal
               closeOnTriggerClick
               openOnTriggerClick
-              trigger={<Label color="red">{stats.length}</Label>}>
+              trigger={<Label color="red">{session.stats.length}</Label>}>
               <div
                 style={{
                   position: 'fixed',
@@ -44,7 +46,7 @@ const AppActions = () => {
                 }}>
                 <Message
                   header={I18n.t('ui.changes since last login')}
-                  list={stats.map((stat) => {
+                  list={session.stats.map((stat) => {
                     return I18n.t('ui.changed songs by author', {
                       ...stat,
                     });
@@ -55,15 +57,15 @@ const AppActions = () => {
             </Portal>
           )}
         </Menu.Item>
-      )}
-      {user && (
+      }
+      {!isLoading && session && session.user ? (
         <Menu.Item>
           <Button negative onClick={confirmLogout}>
             {I18n.t('ui.logout')}
           </Button>
         </Menu.Item>
-      )}
-      {!user && (
+      ) : null}
+      {!isLoading && !session && (
         <Menu.Item>
           <Button primary onClick={() => router.replace('/login')}>
             {I18n.t('ui.login')}
