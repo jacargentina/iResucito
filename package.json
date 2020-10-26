@@ -6,7 +6,8 @@
       "packages/*"
     ],
     "nohoist": [
-      "**/react-document-title"
+      "**/react-document-title",
+      "**/pdfjs-dist"
     ]
   },
   "private": true,
@@ -101,7 +102,6 @@
     "open": "^7.3.0",
     "os-locale": "^5.0.0",
     "path-parse": "^1.0.6",
-    "pdfjs-dist": "^2.5.207",
     "plist": "^3.0.1",
     "query-string": "^6.13.5",
     "react": "16.13.1",

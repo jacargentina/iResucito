@@ -3,7 +3,6 @@ import React from 'react';
 import { Header, Image, Icon, Menu } from 'semantic-ui-react';
 import Head from 'next/head';
 import LocalePicker from './LocalePicker';
-import ApiMessage from './ApiMessage';
 import EditSongTitle from './EditSongTitle';
 import AppActions from './AppActions';
 
@@ -43,7 +42,6 @@ const Layout = (props: any) => {
             </Menu.Menu>
           </Menu>
         )}
-        <ApiMessage />
         {children}
       </div>
     </>

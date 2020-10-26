@@ -1,21 +1,12 @@
 // @flow
-import React, {
-  Fragment,
-  useRef,
-  useEffect,
-  useContext,
-  useState,
-} from 'react';
-import Icon from 'semantic-ui-react/dist/commonjs/elements/Icon';
-import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
-import Menu from 'semantic-ui-react/dist/commonjs/collections/Menu';
-import Loader from 'semantic-ui-react/dist/commonjs/elements/Loader';
+import React, { useRef, useEffect, useContext, useState } from 'react';
+import * as pdfjsLib from 'pdfjs-dist';
+import { Icon, Button, Menu, Loader } from 'semantic-ui-react';
 import { DataContext } from './DataContext';
 import { EditContext } from './EditContext';
 import I18n from '../../../translations';
-import * as pdfjsLib from 'pdfjs-dist';
 
-pdfjsLib.GlobalWorkerOptions.workerSrc = './pdf.worker.clientBundle.js';
+pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.js';
 
 const SongViewPdf = (props: any) => {
   const { url } = props;
@@ -30,17 +21,16 @@ const SongViewPdf = (props: any) => {
   const { setActiveDialog } = data;
 
   const edit = useContext(EditContext);
-  const { editSong } = edit;
 
   useEffect(() => {
     if (url !== null) {
       setLoading(true);
-      var loadingTask = pdfjsLib.getDocument(url);
+      const loadingTask = pdfjsLib.getDocument(url);
       loadingTask.promise
-        .then((pdf) => {
-          setPdf(pdf);
+        .then((doc) => {
+          setPdf(doc);
           setCurrPage(1);
-          setNumPages(pdf.numPages);
+          setNumPages(doc.numPages);
           setLoading(false);
         })
         .catch((err) => {
@@ -53,16 +43,16 @@ const SongViewPdf = (props: any) => {
   useEffect(() => {
     if (pdf && currPage > 0) {
       pdf.getPage(currPage).then((page) => {
-        var viewport = page.getViewport({ scale: 1.3 });
-        var canvas = myRef.current;
+        const viewport = page.getViewport({ scale: 1.3 });
+        const canvas = myRef.current;
 
-        var context = canvas.getContext('2d');
+        const context = canvas.getContext('2d');
         canvas.height = viewport.height;
         canvas.width = viewport.width;
 
         page.render({
           canvasContext: context,
-          viewport: viewport,
+          viewport,
         });
       });
     }
@@ -71,7 +61,7 @@ const SongViewPdf = (props: any) => {
   const savedSettings = localStorage.getItem('pdfExportOptions');
 
   return (
-    <Fragment>
+    <>
       <Menu
         size="mini"
         style={{ border: '0px solid transparent', boxShadow: 'none' }}>
@@ -83,7 +73,7 @@ const SongViewPdf = (props: any) => {
               onClick={() => {
                 const link = document.createElement('a');
                 link.href = url;
-                const name = editSong ? editSong.nombre : 'iResucito';
+                const name = edit ? edit.editSong.nombre : 'iResucito';
                 link.setAttribute('download', `${name}.pdf`);
                 if (document.body) document.body.appendChild(link);
                 link.click();
@@ -136,7 +126,7 @@ const SongViewPdf = (props: any) => {
           ref={myRef}
         />
       )}
-    </Fragment>
+    </>
   );
 };
 

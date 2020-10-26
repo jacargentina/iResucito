@@ -99,9 +99,12 @@ const addNewSong = async (locale, session) => {
 
 export default async function handler(req, res) {
   const session = await getSession({ req });
-  const { path } = req.query;
-  const [key, locale] = path;
   try {
+    if (!session) {
+      throw new Error('Cant continue. Login required for that action');
+    }
+    const { path } = req.query;
+    const [key, locale] = path;
     if (req.method === 'DELETE') {
       res.json(await del(key, locale));
     } else if (req.method === 'POST') {
