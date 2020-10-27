@@ -30,7 +30,7 @@ const AppActions = () => {
 
   return (
     <>
-      {!isLoading && session && session.stats && session.stats.length > 0 &&
+      {!isLoading && session && session.stats && session.stats.length > 0 && (
         <Menu.Item>
           {session.stats.length > 0 && (
             <Portal
@@ -57,7 +57,7 @@ const AppActions = () => {
             </Portal>
           )}
         </Menu.Item>
-      }
+      )}
       {!isLoading && session && session.user ? (
         <Menu.Item>
           <Button negative onClick={confirmLogout}>

@@ -13,6 +13,7 @@ import {
 } from 'semantic-ui-react';
 import * as axios from 'axios';
 import { useRouter } from 'next/router';
+import { useSession } from 'next-auth/client';
 import useHotkeys from 'use-hotkeys';
 import { DataContext } from 'components/DataContext';
 import SongViewPdf from 'components/SongViewPdf';
@@ -25,6 +26,7 @@ import colors from '../../../colors';
 
 const SongList = (props: any) => {
   const { songs } = props;
+  const [session, isLoading] = useSession();
   const data = useContext(DataContext);
   const { setApiResult, handleApiError } = data;
   const router = useRouter();
@@ -147,17 +149,19 @@ const SongList = (props: any) => {
           <>
             <Menu.Item>
               <Button.Group size="mini">
-                <Popup
-                  content={<strong>Shortcut: Ctrl + N</strong>}
-                  size="mini"
-                  position="bottom left"
-                  trigger={
-                    <Button onClick={addSong}>
-                      <Icon name="add" />
-                      {I18n.t('ui.create')}
-                    </Button>
-                  }
-                />
+                {!isLoading && session && (
+                  <Popup
+                    content={<strong>Shortcut: Ctrl + N</strong>}
+                    size="mini"
+                    position="bottom left"
+                    trigger={
+                      <Button onClick={addSong}>
+                        <Icon name="add" />
+                        {I18n.t('ui.create')}
+                      </Button>
+                    }
+                  />
+                )}
                 <Button onClick={previewPdf}>
                   <Icon name="file pdf" />
                   {I18n.t('share_action.view pdf')}

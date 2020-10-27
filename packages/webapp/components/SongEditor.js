@@ -10,6 +10,7 @@ import {
   Button,
   Menu,
 } from 'semantic-ui-react';
+import { useSession } from 'next-auth/client';
 import { useDebouncedCallback } from 'use-debounce';
 import useHotkeys from 'use-hotkeys';
 import { DataContext } from './DataContext';
@@ -21,6 +22,7 @@ import I18n from '../../../translations';
 
 const SongEditor = () => {
   const txtRef = useRef(null);
+  const [session, isLoading] = useSession();
   const data = useContext(DataContext);
   const { setActiveDialog } = data;
 
@@ -65,11 +67,13 @@ const SongEditor = () => {
   }, [editSong]);
 
   const editMetadata = () => {
-    setActiveDialog('changeMetadata');
+    if (!isLoading && session) {
+      setActiveDialog('changeMetadata');
+    }
   };
 
   const save = () => {
-    if (hasChanges) {
+    if (!isLoading && session && hasChanges) {
       applyChanges();
     }
   };
@@ -125,35 +129,39 @@ const SongEditor = () => {
       <Menu size="mini" inverted attached color="blue">
         <Menu.Item>
           <Button.Group size="mini">
-            <Popup
-              content={<strong>Shortcut: Ctrl + E</strong>}
-              size="mini"
-              position="bottom left"
-              trigger={
-                <Button onClick={editMetadata}>
-                  <Icon name="edit" />
-                  {I18n.t('ui.edit')}
-                </Button>
-              }
-            />
+            {!isLoading && session && (
+              <Popup
+                content={<strong>Shortcut: Ctrl + E</strong>}
+                size="mini"
+                position="bottom left"
+                trigger={
+                  <Button onClick={editMetadata}>
+                    <Icon name="edit" />
+                    {I18n.t('ui.edit')}
+                  </Button>
+                }
+              />
+            )}
             <Button onClick={() => setActiveDialog('patchLog')}>
               <Icon name="history" />
               {I18n.t('ui.patch log')}
             </Button>
-            <Popup
-              content={<strong>Shortcut: Ctrl + S</strong>}
-              size="mini"
-              position="bottom left"
-              trigger={
-                <Button
-                  positive={hasChanges}
-                  disabled={!hasChanges}
-                  onClick={applyChanges}>
-                  <Icon name="save" />
-                  {I18n.t('ui.apply')}
-                </Button>
-              }
-            />
+            {!isLoading && session && (
+              <Popup
+                content={<strong>Shortcut: Ctrl + S</strong>}
+                size="mini"
+                position="bottom left"
+                trigger={
+                  <Button
+                    positive={hasChanges}
+                    disabled={!hasChanges}
+                    onClick={applyChanges}>
+                    <Icon name="save" />
+                    {I18n.t('ui.apply')}
+                  </Button>
+                }
+              />
+            )}
           </Button.Group>
         </Menu.Item>
         <>
@@ -197,30 +205,32 @@ const SongEditor = () => {
             </Menu.Item>
           )}
         </>
-        <Menu.Item>
-          <Popup
-            header="Tips"
-            size="small"
-            content={
-              <Message
-                list={[
-                  'Move the pointer to the buttons to learn the shortcuts; edit and navigate faster using only your keyboard!',
-                  'If present, title/source must be deleted from the heading to not be painted twice',
-                  'Put "clamp: x" at the start of any empty line to signal clamp position',
-                  'Put "repeat" at the start of the last line in a paragraph to signal a repeated part',
-                  'PDF: Put "column" at the start of a line to signal start of second column',
-                ]}
-              />
-            }
-            position="bottom left"
-            trigger={
-              <Button icon>
-                <Icon name="help" />
-              </Button>
-            }
-          />
-        </Menu.Item>
-        {(editSong.patched || editSong.added) && (
+        {!isLoading && session && (
+          <Menu.Item>
+            <Popup
+              header="Tips"
+              size="small"
+              content={
+                <Message
+                  list={[
+                    'Move the pointer to the buttons to learn the shortcuts; edit and navigate faster using only your keyboard!',
+                    'If present, title/source must be deleted from the heading to not be painted twice',
+                    'Put "clamp: x" at the start of any empty line to signal clamp position',
+                    'Put "repeat" at the start of the last line in a paragraph to signal a repeated part',
+                    'PDF: Put "column" at the start of a line to signal start of second column',
+                  ]}
+                />
+              }
+              position="bottom left"
+              trigger={
+                <Button icon>
+                  <Icon name="help" />
+                </Button>
+              }
+            />
+          </Menu.Item>
+        )}
+        {!isLoading && session && (editSong.patched || editSong.added) && (
           <Menu.Item>
             <Button negative onClick={confirmRemovePatch}>
               <Icon name="trash" />
@@ -244,57 +254,78 @@ const SongEditor = () => {
         }}>
         <div style={{ display: 'flex', flexDirection: 'column', width: '50%' }}>
           <ApiMessage />
-          <TextArea
-            ref={txtRef}
-            onMouseUp={txtPositionEvent}
-            style={{
-              flex: 1,
-              fontFamily: 'monospace',
-              backgroundColor: '#fcfcfc',
-              width: '100%',
-              outline: 'none',
-              resize: 'none',
-              border: 0,
-              padding: '10px 20px',
-              overflowY: 'scroll',
-              whiteSpace: 'nowrap',
-            }}
-            onKeyUp={txtPositionEvent}
-            onKeyDown={(e) => {
-              if (e.ctrlKey) {
-                if (e.key === '[') {
-                  e.preventDefault();
-                  previous();
-                } else if (e.key === ']') {
-                  e.preventDefault();
-                  next();
-                } else if (e.key === 'e') {
-                  e.preventDefault();
-                  editMetadata();
-                } else if (e.key === 's') {
-                  e.preventDefault();
-                  save();
-                }
-              }
-            }}
-            value={text}
-            onChange={(e, data) => {
-              setHasChanges(true);
-              setText(data.value);
-              debounced.callback(data.value);
-            }}
-          />
-          <Segment
-            basic
-            inverted
-            color="blue"
-            style={{
-              flex: 0,
-              margin: 0,
-              padding: '3px 10px',
-            }}>
-            Line: {linepos}, Column: {colpos}
-          </Segment>
+          {!isLoading && session ? (
+            <>
+              <TextArea
+                ref={txtRef}
+                onMouseUp={txtPositionEvent}
+                style={{
+                  flex: 1,
+                  fontFamily: 'monospace',
+                  backgroundColor: '#fcfcfc',
+                  width: '100%',
+                  outline: 'none',
+                  resize: 'none',
+                  border: 0,
+                  padding: '10px 20px',
+                  overflowY: 'scroll',
+                  whiteSpace: 'nowrap',
+                }}
+                onKeyUp={txtPositionEvent}
+                onKeyDown={(e) => {
+                  if (e.ctrlKey) {
+                    if (e.key === '[') {
+                      e.preventDefault();
+                      previous();
+                    } else if (e.key === ']') {
+                      e.preventDefault();
+                      next();
+                    } else if (e.key === 'e') {
+                      e.preventDefault();
+                      editMetadata();
+                    } else if (e.key === 's') {
+                      e.preventDefault();
+                      save();
+                    }
+                  }
+                }}
+                value={text}
+                onChange={(e, data) => {
+                  setHasChanges(true);
+                  setText(data.value);
+                  debounced.callback(data.value);
+                }}
+              />
+              <Segment
+                basic
+                inverted
+                color="blue"
+                style={{
+                  flex: 0,
+                  margin: 0,
+                  padding: '3px 10px',
+                }}>
+                Line: {linepos}, Column: {colpos}
+              </Segment>
+            </>
+          ) : (
+            <TextArea
+              readOnly
+              style={{
+                flex: 1,
+                fontFamily: 'monospace',
+                backgroundColor: '#fcfcfc',
+                width: '100%',
+                outline: 'none',
+                resize: 'none',
+                border: 0,
+                padding: '10px 20px',
+                overflowY: 'scroll',
+                whiteSpace: 'nowrap',
+              }}
+              value={text}
+            />
+          )}
         </div>
         <div
           style={{
