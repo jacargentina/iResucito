@@ -39,13 +39,8 @@ const LoginForm = () => {
   const { signUp } = data;
 
   return (
-    <>
-      <Image
-        centered
-        circular
-        src="cristo.png"
-        style={{ marginTop: '100px' }}
-      />
+    <div style={{ alignSelf: 'center', alignItems: 'center', flex: 0 }}>
+      <Image centered circular src="cristo.png" />
       <Header textAlign="center">iResucito</Header>
       <Loading height="auto">
         <Grid textAlign="center" verticalAlign="middle">
@@ -94,7 +89,7 @@ const LoginForm = () => {
           </Grid.Column>
         </Grid>
       </Loading>
-    </>
+    </div>
   );
 };
 
