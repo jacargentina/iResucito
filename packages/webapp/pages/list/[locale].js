@@ -4,7 +4,7 @@ import Layout from 'components/Layout';
 import SongList from 'components/SongList';
 import PdfSettingsDialog from 'components/PdfSettingsDialog';
 import DataContextWrapper from 'components/DataContext';
-import { getLocalesForPicker } from '../../../../common';
+import I18n from '../../../../translations';
 import { readLocalePatch } from '../../common';
 import FolderSongs from '../../../../FolderSongs';
 
@@ -37,10 +37,10 @@ export async function getStaticProps({ params }: any) {
 }
 
 export async function getStaticPaths() {
-  const locales = getLocalesForPicker('en');
+  const locales = Object.keys(I18n.translations);
   return {
     // $FlowFixMe
-    paths: locales.map((item) => ({ params: { locale: item.value } })),
+    paths: locales.map((item) => ({ params: { locale: item } })),
     fallback: false,
   };
 }

@@ -8,7 +8,7 @@ import SongChangeMetadataDialog from 'components/SongChangeMetadataDialog';
 import ConfirmDialog from 'components/ConfirmDialog';
 import PatchLogDialog from 'components/PatchLogDialog';
 import PdfSettingsDialog from 'components/PdfSettingsDialog';
-import { getLocalesForPicker } from '../../../../common';
+import I18n from '../../../../translations';
 import { readLocalePatch } from '../../common';
 import FolderSongs from '../../../../FolderSongs';
 
@@ -86,15 +86,15 @@ export async function getStaticProps({ params }: any) {
 }
 
 export async function getStaticPaths() {
-  const locales = getLocalesForPicker('en');
+  const locales = Object.keys(I18n.translations);
   const patch = await readLocalePatch();
   // $FlowFixMe
   const localesPaths = locales.map((item) => {
-    const songs = FolderSongs.getSongsMeta(item.value, patch);
+    const songs = FolderSongs.getSongsMeta(item, patch);
     return songs.map((song) => {
       return {
         params: {
-          path: [item.value, song.key],
+          path: [item, song.key],
         },
       };
     });

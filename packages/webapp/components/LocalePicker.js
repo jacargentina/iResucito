@@ -8,7 +8,6 @@ import { getValidatedLocale } from '../../../common';
 const LocalePicker = () => {
   const locale = useLocale();
   const current = getValidatedLocale(locale.availableLocales, locale.current);
-
   return (
     <>
       <Dropdown
