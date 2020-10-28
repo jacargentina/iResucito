@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs';
 import crypto from 'crypto-random-string';
 import send from 'gmail-send';
-import { db, domain } from '../../common';
+import { db } from '../../common';
 
 const mailSender = send({
   user: 'javier.alejandro.castro@gmail.com',
@@ -47,7 +47,7 @@ export default async function handler(req, res) {
     mailSender(
       {
         to: email,
-        text: `Navigate this link ${domain}/api/verify/${token}/${email} to activate your account.`,
+        text: `Navigate this link ${process.env.NEXTAUTH_URL}/api/verify/${token}/${email} to activate your account.`,
       },
       (err, res) => {
         console.log({ mailSend: { err, res } });

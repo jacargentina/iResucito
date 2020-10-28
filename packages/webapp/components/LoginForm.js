@@ -43,7 +43,11 @@ const LoginForm = () => {
   const authenticate = () => {
     setError();
     setLoading(true);
-    signIn('iresucito', { email, password, callbackUrl });
+    signIn('iresucito', {
+      email,
+      password,
+      callbackUrl: callbackUrl || '/list',
+    });
   };
 
   const logout = () => {
@@ -62,9 +66,7 @@ const LoginForm = () => {
         <Grid.Column>
           {error && <ErrorDetail error={error} simple />}
           <ApiMessage />
-          {v === 1 && (
-            <Message positive>{I18n.t('ui.account verified')}</Message>
-          )}
+          {v && <Message positive>{I18n.t('ui.account verified')}</Message>}
           {!isLoading && !session && (
             <Form size="large">
               <Segment vertical>
