@@ -11,7 +11,7 @@ app.prepare().then(() => {
     .createServer((req, res) => {
       handle(req, res);
     })
-    .listen(80, (err) => {
+    .listen(process.env.PORT || 3000, (err) => {
       if (err) throw err;
       console.log('> Ready');
     });
