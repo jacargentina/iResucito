@@ -36,21 +36,26 @@ const options = {
     secret: JWT_SECRET,
   },
   callbacks: {
-    // eslint-disable-next-line no-unused-vars
+    /* eslint-disable no-unused-vars */
+    /* eslint-disable no-param-reassign */
     session: async (session, jwtToken, sessionToken) => {
-      // eslint-disable-next-line no-param-reassign
       session.user = jwtToken.userData;
       session.stats = jwtToken.statsData;
       return Promise.resolve(session);
     },
-    // eslint-disable-next-line no-unused-vars
     jwt: async (token, iresucitoUser, account, profile, isNewUser) => {
       const isSignIn = !!iresucitoUser;
       if (isSignIn) {
-        // eslint-disable-next-line no-param-reassign
         token.userData = iresucitoUser.user;
         token.statsData = iresucitoUser.stats;
       }
+      console.log('auth jwt', {
+        token,
+        iresucitoUser,
+        account,
+        profile,
+        isNewUser,
+      });
       return Promise.resolve(token);
     },
   },
@@ -80,9 +85,8 @@ const options = {
 
           if (user) {
             if (!user.isVerified) {
-              return Promise.reject(
-                new Error('Unauthorized access. Account was not verified.')
-              );
+              // eslint-disable-next-line prefer-promise-reject-errors
+              return Promise.reject('/login?error=AccountNotVerified');
             }
             try {
               const result = bcrypt.compareSync(

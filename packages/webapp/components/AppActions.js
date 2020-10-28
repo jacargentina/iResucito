@@ -67,7 +67,9 @@ const AppActions = () => {
       ) : null}
       {!isLoading && !session && (
         <Menu.Item>
-          <Button primary onClick={() => router.replace('/login')}>
+          <Button
+            primary
+            onClick={() => router.replace('/login?callbackUrl=/')}>
             {I18n.t('ui.login')}
           </Button>
         </Menu.Item>

@@ -28,7 +28,7 @@ const Index = () => {
         alignItems: 'center',
         justifyContent: 'center',
       }}>
-      <Loader active inline="centered" size="large" />
+      <Loader active inline="centered" size="large" content="Loading..." />
     </div>
   );
 };
