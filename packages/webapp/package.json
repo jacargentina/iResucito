@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "build": "next build",
-    "start": "NODE_OPTIONS='-r ./sync.js' next start -p 80"
+    "start": "node ./syncData.js down && node ./server.js"
   },
   "dependencies": {
     "axios": "^0.20.0",

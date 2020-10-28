@@ -3,7 +3,7 @@ const path = require('path');
 const Dropbox = require('dropbox').Dropbox;
 const fetch = require('node-fetch');
 
-const dataPath = path.resolve(process.cwd(), '../data');
+const dataPath = path.resolve(process.cwd(), './data');
 
 if (!process.env.DROPBOX_PASSWORD) {
   console.log('No DROPBOX_PASSWORD provided. Exiting.');
@@ -21,13 +21,15 @@ if (action === 'down') {
   });
   dbx
     .filesListFolder({ path: '' })
-    .then((files) => {
+    .then((response) => {
+      const files = response.result;
       if (files.entries.length) {
         console.log(`Downloading ${files.entries.length} files...`);
       }
       return Promise.all(
         files.entries.map((entry) =>
-          dbx.filesDownload({ path: entry.path_lower }).then((meta) => {
+          dbx.filesDownload({ path: entry.path_lower }).then((response) => {
+            const meta = response.result;
             console.log(`Saving ${meta.name}`);
             return fs.promises.writeFile(
               path.join(dataPath, meta.name),
@@ -60,7 +62,8 @@ if (action === 'down') {
       mode: { '.tag': 'overwrite' },
       contents: fs.readFileSync(fullpath),
     })
-    .then((meta) => {
+    .then((response) => {
+      const meta = response.result;
       console.log(`Uploaded ${meta.name}`);
     })
     .catch((err) => console.log('Uploading Error', err));

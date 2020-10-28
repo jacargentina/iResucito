@@ -1,24 +1,18 @@
-// @flow
-import * as path from 'path';
-import * as cp from 'child_process';
-import chokidar from 'chokidar';
-import { dataPath } from './common';
+const path = require('path');
+const cp = require('child_process');
+const chokidar = require('chokidar');
 
-const watcher = chokidar.watch(dataPath, {
+const watcher = chokidar.watch(path.resolve('./data'), {
   persistent: true,
   ignoreInitial: true,
 });
 
-const syncScriptPath = path.resolve('./packages/webapp');
-
 watcher
   .on('add', (p) => {
-    cp.spawn('node', ['./syncData.js', 'up', p], {
-      cwd: syncScriptPath,
-    });
+    cp.spawn('node', ['./syncData.js', 'up', p]);
   })
   .on('change', (p) => {
-    cp.spawn('node', ['./syncData.js', 'up', p], {
-      cwd: syncScriptPath,
-    });
+    cp.spawn('node', ['./syncData.js', 'up', p]);
   });
+
+console.log('Sync watching');
