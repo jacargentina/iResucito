@@ -39,7 +39,9 @@ platform :android do
   desc "Deploy a new version to the Google Play"
   lane :deploy do |options|
     increment_android_version_code(path: "app/build.gradle")
-    if options[:newVersion]
+    if options[:major]
+      increment_android_version_name(path: "app/build.gradle", type: 'major')
+    else
       increment_android_version_name(path: "app/build.gradle", type: 'patch')
     end
     gradle(task: "clean") 

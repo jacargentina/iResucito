@@ -1,5 +1,2 @@
-• Adicionado idioma pt-PT
-• Várias configurações de música:
-     • O jacal dos pastores - Ct 1, 2-8 (Fabio Reis)
-     • O Senhor diz ao meu Senhor - Sl 110 (109) (Michele Gentili)
-     • Bendito és, Senhor - DN 3, 52-57 (Giuseppe Reino)
+• Adicionado idioma lt-lT (David Hernandez Durán)
+• Adicionado idioma sw-TZ (Andrés Ramirez)

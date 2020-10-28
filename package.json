@@ -135,6 +135,7 @@
     "web/dist/**"
   ],
   "devDependencies": {
+    "@simbathesailor/use-what-changed": "^0.1.25",
     "colors": "^1.4.0",
     "diff": "^4.0.2",
     "jetifier": "^1.6.6",

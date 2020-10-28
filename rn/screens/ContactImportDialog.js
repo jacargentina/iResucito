@@ -33,7 +33,8 @@ const ContactImportDialog = () => {
   useEffect(() => {
     if (deviceContacts) {
       var withName = deviceContacts.filter(
-        (c) => c.givenName.length > 0 || c.familyName.length > 0
+        (c) =>
+          c.givenName.length > 0 || (c.familyName && c.familyName.length > 0)
       );
       var result = getContactsForImport(withName, brothers);
       setContacts(result);
@@ -138,7 +139,7 @@ const ContactImportDialog = () => {
                     {contactFullName}
                   </Text>
                   <Text note numberOfLines={1}>
-                    {item.emailAddresses.length > 0
+                    {item.emailAddresses && item.emailAddresses.length > 0
                       ? item.emailAddresses[0].email
                       : null}
                   </Text>

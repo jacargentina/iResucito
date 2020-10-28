@@ -33,9 +33,11 @@ const createPersistGlobal = (key, thisCallback, initialValue) => {
 const usePersist = (
   key: string,
   typeCheck: string = '',
-  defValue: any = ''
+  defValue: any = '',
+  onLoaded: Function = null
 ): any => {
   const globalState = useRef(null);
+  const [initialLoaded, setInitialLoaded] = useState(false);
   const [value, setValue] = useState(() => {
     if (persistGlobal[key]) {
       return persistGlobal[key].value;
@@ -57,18 +59,19 @@ const usePersist = (
 
   // Only persist to storage if state changes.
   useEffect(() => {
-    async function save() {
-      // persist to localStorage
-      const data = JSON.stringify(value);
-      await AsyncStorage.setItem(key, data);
-      // inform all of the other instances
-      if (globalState.current) {
-        globalState.current.emit(value);
+    if (initialLoaded) {
+      async function save() {
+        // persist to localStorage
+        const data = JSON.stringify(value);
+        await AsyncStorage.setItem(key, data);
+        // inform all of the other instances
+        if (globalState.current) {
+          globalState.current.emit(value);
+        }
       }
+      save();
     }
-
-    save();
-  }, [key, value]);
+  }, [key, value, initialLoaded]);
 
   const runTypeCheck = useCallback(
     (theValue) => {
@@ -81,10 +84,13 @@ const usePersist = (
     [typeCheck]
   );
 
-  const onTextChanged = (text: string) => {
-    runTypeCheck(text);
-    setValue(text);
-  };
+  const onTextChanged = useCallback(
+    (text: string) => {
+      runTypeCheck(text);
+      setValue(text);
+    },
+    [runTypeCheck, setValue]
+  );
 
   useEffect(() => {
     // funcion para migrar datos viejos
@@ -111,17 +117,27 @@ const usePersist = (
       }
       return object;
     };
-    // funcion para cargar datos
+
+    // funcion onLoaded centralizada
+    const processAndSet = async (values) => {
+      if (onLoaded) {
+        values = await onLoaded(values);
+      }
+      setValue(values);
+    };
+
+    // funcion para cargar datos iniciales
     const readFromStorage = async () => {
       const theValue = await AsyncStorage.getItem(key);
       if (theValue === undefined || theValue === null) {
         await AsyncStorage.setItem(key, JSON.stringify(defValue));
-        setValue(defValue);
+        await processAndSet(defValue);
       } else {
         const parsed = await parseMigrateRawData(theValue);
         runTypeCheck(parsed);
-        setValue(parsed);
+        await processAndSet(parsed);
       }
+      setInitialLoaded(true);
     };
 
     // cargar valor inicial desde storage

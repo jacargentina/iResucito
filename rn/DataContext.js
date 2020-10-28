@@ -1,5 +1,6 @@
 // @flow
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
+//import { useWhatChanged } from '@simbathesailor/use-what-changed';
 import { Alert, Platform, PermissionsAndroid } from 'react-native';
 import Share from 'react-native-share';
 import Contacts from 'react-native-contacts';
@@ -851,8 +852,28 @@ const useSearch = (localeValue: string, developerMode: boolean) => {
 };
 
 const useCommunity = () => {
-  const [initialized, setInitialized] = useState(false);
-  const [brothers, initBrothers] = usePersist('contacts', 'object', []);
+  const [brothers, initBrothers] = usePersist(
+    'contacts',
+    'object',
+    [],
+    (loaded) => {
+      return getContacts(false)
+        .then((devCts) => {
+          initDeviceContacts(devCts);
+          loaded.forEach((c, idx) => {
+            // tomar el contacto actualizado
+            var devContact = devCts.find((x) => x.recordID === c.recordID);
+            if (devContact) {
+              loaded[idx] = devContact;
+            }
+          });
+          return loaded;
+        })
+        .catch(() => {
+          return loaded;
+        });
+    }
+  );
   const [deviceContacts, initDeviceContacts] = useState();
 
   const add = (item) => {
@@ -895,7 +916,7 @@ const useCommunity = () => {
             return granted === PermissionsAndroid.RESULTS.GRANTED;
           })
           .catch(() => {
-            return false;
+            return new Error('Sin permisos para leer contactos');
           });
       } else {
         return PermissionsAndroid.check(
@@ -918,19 +939,19 @@ const useCommunity = () => {
                       resolve(true);
                     }
                     if (perm2 === 'denied') {
-                      reject(false);
+                      reject(new Error('denied'));
                     }
                   }
                 });
               } else {
-                reject(false);
+                reject(new Error('denied'));
               }
             }
             if (perm1 === 'authorized') {
               resolve(true);
             }
             if (perm1 === 'denied') {
-              reject(false);
+              reject(new Error('denied'));
             }
           }
         });
@@ -955,10 +976,10 @@ const useCommunity = () => {
   }, []);
 
   useEffect(() => {
-    if (initialized === true && brothers && Platform.OS === 'ios') {
+    if (brothers && Platform.OS === 'ios') {
       clouddata.save('brothers', brothers);
     }
-  }, [brothers, initialized]);
+  }, [brothers]);
 
   const populateDeviceContacts = () => {
     return getContacts(true).then((devCts) => {
@@ -983,23 +1004,6 @@ const useCommunity = () => {
         Alert.alert(I18n.t('alert_title.contacts permission'), message);
       });
   };
-
-  useEffect(() => {
-    if (initialized === false && brothers) {
-      getContacts(false).then((devCts) => {
-        initDeviceContacts(devCts);
-        brothers.forEach((c, idx) => {
-          // tomar el contacto actualizado
-          var devContact = devCts.find((x) => x.recordID === c.recordID);
-          if (devContact) {
-            brothers[idx] = devContact;
-          }
-        });
-        initBrothers(brothers);
-        setInitialized(true);
-      });
-    }
-  }, [initialized, getContacts, initBrothers, brothers]);
 
   return {
     brothers,
