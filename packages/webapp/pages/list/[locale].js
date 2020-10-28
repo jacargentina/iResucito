@@ -2,6 +2,7 @@
 import React from 'react';
 import Layout from 'components/Layout';
 import SongList from 'components/SongList';
+import PdfSettingsDialog from 'components/PdfSettingsDialog';
 import DataContextWrapper from 'components/DataContext';
 import { getLocalesForPicker } from '../../../../common';
 import { readLocalePatch } from '../../common';
@@ -14,6 +15,7 @@ const List = (props: any) => {
     <DataContextWrapper>
       <Layout title="Buscador">
         <SongList songs={songs} />
+        <PdfSettingsDialog />
       </Layout>
     </DataContextWrapper>
   );

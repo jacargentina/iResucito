@@ -30,7 +30,13 @@ const SongList = (props: any) => {
   const data = useContext(DataContext);
   const { setApiResult, handleApiError } = data;
   const router = useRouter();
-  const [pdf, setPdf] = useState({ loading: false, url: null });
+  const [pdfUrl, setPdfUrl] = useState();
+  const [loading, setLoading] = useState(false);
+
+  const closePdf = () => {
+    setLoading(false);
+    setPdfUrl();
+  };
 
   const previewPdf = () => {
     const savedSettings = localStorage.getItem('pdfExportOptions');
@@ -40,26 +46,21 @@ const SongList = (props: any) => {
     if (savedSettings) {
       pdfData.options = JSON.parse(savedSettings);
     }
-    setPdf({ loading: true, url: null });
+    setLoading(true);
+    setPdfUrl();
     return axios
       .post(`/api/pdf/${I18n.locale}`, pdfData, {
         responseType: 'blob',
       })
       .then((response) => {
-        setPdf({
-          loading: false,
-          url: window.URL.createObjectURL(new Blob([response.data])),
-        });
+        setLoading(false);
+        setPdfUrl(window.URL.createObjectURL(new Blob([response.data])));
       })
       .catch(async (err) => {
         const text = await new Response(err.response.data).text();
         handleApiError(text);
-        setPdf({ loading: false, url: null });
+        closePdf();
       });
-  };
-
-  const closePdf = () => {
-    setPdf({ loading: false, url: null });
   };
 
   const [filters, setFilters] = useState({
@@ -80,6 +81,7 @@ const SongList = (props: any) => {
   };
 
   const edit = (song) => {
+    setLoading(true);
     router.push(`/edit/${I18n.locale}/${song.key}`);
   };
 
@@ -137,7 +139,7 @@ const SongList = (props: any) => {
   return (
     <>
       <Menu size="mini" inverted attached color="blue">
-        {pdf.url && (
+        {pdfUrl && (
           <Menu.Item position="right">
             <Button onClick={closePdf}>
               <Icon name="close" />
@@ -145,7 +147,7 @@ const SongList = (props: any) => {
             </Button>
           </Menu.Item>
         )}
-        {!pdf.url && (
+        {!pdfUrl && (
           <>
             <Menu.Item>
               <Button.Group size="mini">
@@ -207,7 +209,7 @@ const SongList = (props: any) => {
           </>
         )}
       </Menu>
-      {!pdf.url && !pdf.loading && (
+      {!pdfUrl && !loading && (
         <>
           <div style={{ padding: 10 }}>
             <Input
@@ -292,7 +294,7 @@ const SongList = (props: any) => {
           </List>
         </>
       )}
-      {pdf.loading && (
+      {loading && (
         <div
           style={{
             height: '100%',
@@ -303,9 +305,9 @@ const SongList = (props: any) => {
           <Loader active inline="centered" size="large" inverted={false} />
         </div>
       )}
-      {pdf.url && (
-        <div style={{ margin: '0 auto', padding: 20, overflow: 'scroll' }}>
-          <SongViewPdf url={pdf.url} />
+      {pdfUrl && (
+        <div style={{ padding: 3, overflow: 'scroll' }}>
+          <SongViewPdf url={pdfUrl} settingsChanged={previewPdf} />
         </div>
       )}
     </>

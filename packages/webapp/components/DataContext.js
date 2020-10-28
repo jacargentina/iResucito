@@ -9,6 +9,7 @@ const DataContextWrapper = (props: any) => {
   const [apiResult, setApiResult] = useState();
   const [confirmData, setConfirmData] = useState();
   const [activeDialog, setActiveDialog] = useState();
+  const [dialogCallback, setDialogCallback] = useState();
 
   const handleApiError = (err) => {
     setApiLoading(false);
@@ -49,6 +50,8 @@ const DataContextWrapper = (props: any) => {
         setConfirmData,
         activeDialog,
         setActiveDialog,
+        dialogCallback,
+        setDialogCallback,
         apiLoading,
         setApiLoading,
         apiResult,

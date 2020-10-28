@@ -9,7 +9,7 @@ import I18n from '../../../translations';
 pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.js';
 
 const SongViewPdf = (props: any) => {
-  const { url } = props;
+  const { url, settingsChanged } = props;
 
   const myRef = useRef<any>();
   const [loading, setLoading] = useState(false);
@@ -18,7 +18,7 @@ const SongViewPdf = (props: any) => {
   const [currPage, setCurrPage] = useState(0);
 
   const data = useContext(DataContext);
-  const { setActiveDialog } = data;
+  const { setActiveDialog, setDialogCallback } = data;
 
   const edit = useContext(EditContext);
 
@@ -88,6 +88,7 @@ const SongViewPdf = (props: any) => {
               floated="right"
               onClick={() => {
                 setActiveDialog('pdfSettings');
+                setDialogCallback(() => settingsChanged);
               }}>
               <Icon name="setting" />
               {I18n.t('screen_title.settings')}
@@ -120,11 +121,13 @@ const SongViewPdf = (props: any) => {
         <Loader active inline="centered" size="large" inverted={false} />
       )}
       {!loading && currPage > 0 && (
-        <canvas
-          id="pdfViewer"
-          style={{ boxShadow: '2px 2px 15px gray' }}
-          ref={myRef}
-        />
+        <div style={{ textAlign: 'center' }}>
+          <canvas
+            id="pdfViewer"
+            style={{ boxShadow: '2px 2px 15px gray', display: 'inline' }}
+            ref={myRef}
+          />
+        </div>
       )}
     </>
   );

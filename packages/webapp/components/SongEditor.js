@@ -1,5 +1,6 @@
 // @flow
 import React, { useContext, useState, useEffect, useRef } from 'react';
+import * as axios from 'axios';
 import {
   TextArea,
   Icon,
@@ -22,9 +23,11 @@ import I18n from '../../../translations';
 
 const SongEditor = () => {
   const txtRef = useRef(null);
+  const [pdfUrl, setPdfUrl] = useState();
+  const [loading, setLoading] = useState(false);
   const [session, isLoading] = useSession();
   const data = useContext(DataContext);
-  const { setActiveDialog } = data;
+  const { setActiveDialog, handleApiError } = data;
 
   const edit = useContext(EditContext);
   const {
@@ -34,12 +37,9 @@ const SongEditor = () => {
     nextKey,
     totalSongs,
     text,
-    pdf,
-    setPdf,
     setText,
     setHasChanges,
     songFile,
-    previewPdf,
     confirmRemovePatch,
     hasChanges,
     applyChanges,
@@ -47,6 +47,33 @@ const SongEditor = () => {
     goNext,
     confirmClose,
   } = edit;
+
+  const previewPdf = () => {
+    const postData = {
+      text,
+      options: undefined,
+    };
+    const savedSettings = localStorage.getItem('pdfExportOptions');
+    if (savedSettings) {
+      postData.options = JSON.parse(savedSettings);
+    }
+    setLoading(false);
+    setPdfUrl();
+    return axios
+      .post(`/api/pdf/${I18n.locale}/${editSong.key}`, postData, {
+        responseType: 'blob',
+      })
+      .then((response) => {
+        setLoading(false);
+        setPdfUrl(window.URL.createObjectURL(new Blob([response.data])));
+      })
+      .catch(async (err) => {
+        const errText = await new Response(err.response.data).text();
+        handleApiError(errText);
+        setLoading(false);
+        setPdfUrl();
+      });
+  };
 
   const [debouncedText, setDebouncedText] = useState(text);
   const debounced = useDebouncedCallback((t) => setDebouncedText(t), 800);
@@ -339,7 +366,7 @@ const SongEditor = () => {
               if (data.activeIndex === 1) {
                 previewPdf();
               } else {
-                setPdf({ loading: false, url: null });
+                setPdfUrl();
               }
             }}
             menu={{ size: 'mini', pointing: true }}
@@ -369,12 +396,17 @@ const SongEditor = () => {
                 render: () => {
                   return (
                     <Tab.Pane
-                      loading={pdf.loading}
+                      loading={loading}
                       style={{
                         minHeight: '50vh',
                         border: '0px transparent',
                       }}>
-                      {!pdf.loading && <SongViewPdf url={pdf.url} />}
+                      {!loading && pdfUrl && (
+                        <SongViewPdf
+                          url={pdfUrl}
+                          settingsChanged={previewPdf}
+                        />
+                      )}
                     </Tab.Pane>
                   );
                 },

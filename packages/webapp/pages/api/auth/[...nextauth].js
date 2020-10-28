@@ -49,13 +49,6 @@ const options = {
         token.userData = iresucitoUser.user;
         token.statsData = iresucitoUser.stats;
       }
-      console.log('auth jwt', {
-        token,
-        iresucitoUser,
-        account,
-        profile,
-        isNewUser,
-      });
       return Promise.resolve(token);
     },
   },

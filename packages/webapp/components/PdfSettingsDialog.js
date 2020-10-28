@@ -1,19 +1,15 @@
 // @flow
 import React, { useContext, useState, useEffect } from 'react';
-import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
-import Modal from 'semantic-ui-react/dist/commonjs/modules/Modal';
-import { DataContext } from './DataContext';
-import { EditContext } from './EditContext';
-import I18n from '../../../translations';
-import { defaultExportToPdfOptions } from '../../../common';
 import JSONInput from 'react-json-editor-ajrm';
 import locale from 'react-json-editor-ajrm/locale/en';
+import { Button, Modal } from 'semantic-ui-react';
+import { DataContext } from './DataContext';
+import I18n from '../../../translations';
+import { defaultExportToPdfOptions } from '../../../common';
 
 const PdfSettingsDialog = () => {
   const data = useContext(DataContext);
-  const { activeDialog, setActiveDialog, previewPdf: previewBookPdf } = data;
-
-  const edit = useContext(EditContext);
+  const { activeDialog, setActiveDialog, dialogCallback } = data;
 
   const [initialOptions, setinitialOptions] = useState({});
   const [editing, setEditing] = useState({});
@@ -31,26 +27,18 @@ const PdfSettingsDialog = () => {
 
   const saveOptions = () => {
     localStorage.setItem('pdfExportOptions', JSON.stringify(editing));
-    if (edit && edit.editSong) {
-      edit.previewSongPdf();
-    } else {
-      previewBookPdf();
+    if (dialogCallback) {
+      dialogCallback();
     }
   };
 
   const deleteOptions = () => {
     localStorage.removeItem('pdfExportOptions');
     setinitialOptions(defaultExportToPdfOptions);
-    if (edit && edit.editSong) {
-      edit.previewSongPdf();
-    } else {
-      previewBookPdf();
+    if (dialogCallback) {
+      dialogCallback();
     }
   };
-
-  if (!edit) {
-    return null;
-  }
 
   return (
     <Modal

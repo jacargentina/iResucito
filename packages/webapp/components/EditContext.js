@@ -22,7 +22,6 @@ const EditContextWrapper = (props: any) => {
 
   const [editSong, setEditSong] = useState<Song>(song);
   const [text, setText] = useState('');
-  const [pdf, setPdf] = useState({ loading: false, url: null });
   const [name, setName] = useState();
   const [stage, setStage] = useState();
   const [hasChanges, setHasChanges] = useState(false);
@@ -43,32 +42,6 @@ const EditContextWrapper = (props: any) => {
 
   const closeEditor = () => {
     router.back();
-  };
-
-  const previewPdf = () => {
-    const postData = {
-      text: undefined,
-      options: undefined,
-    };
-    const savedSettings = localStorage.getItem('pdfExportOptions');
-    if (savedSettings) {
-      postData.options = JSON.parse(savedSettings);
-    }
-    setPdf({ loading: true, url: null });
-    return axios
-      .post(`/api/pdf/${I18n.locale}/${editSong.key}`, postData, {
-        responseType: 'blob',
-      })
-      .then((response) => {
-        setPdf({
-          loading: false,
-          url: window.URL.createObjectURL(new Blob([response.data])),
-        });
-      })
-      .catch((err) => {
-        handleApiError(err);
-        setPdf({ loading: false, url: null });
-      });
   };
 
   const confirmClose = () => {
@@ -179,15 +152,12 @@ const EditContextWrapper = (props: any) => {
         goNext,
         confirmRemovePatch,
         text,
-        pdf,
-        setPdf,
         setText,
         name,
         setName,
         stage,
         setStage,
         activeDialog,
-        previewPdf,
       }}>
       {props.children}
     </EditContext.Provider>
