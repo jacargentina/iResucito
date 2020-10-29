@@ -57,3 +57,7 @@ bin/
 # web app
 packages/webapp/.next/
 packages/webapp/data/*.json
+
+# sentry
+ios/sentry.properties
+android/sentry.properties
