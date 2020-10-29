@@ -78,7 +78,7 @@
     "eslint-plugin-flowtype": "^5.2.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-react": "^7.21.3",
-    "flow-bin": "^0.136.0",
+    "flow-bin": "^0.137.0",
     "i18n-js": "^3.7.1",
     "inquirer": "^7.3.3",
     "langs": "^2.0.0",
