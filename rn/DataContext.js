@@ -294,13 +294,13 @@ const useLists = (songs: any) => {
           ambiental: null,
           entrada: null,
           '1-monicion': null,
-          '1': null,
+          1: null,
           '1-salmo': null,
           '2-monicion': null,
-          '2': null,
+          2: null,
           '2-salmo': null,
           '3-monicion': null,
-          '3': null,
+          3: null,
           '3-salmo': null,
           'evangelio-monicion': null,
           evangelio: null,
@@ -313,9 +313,9 @@ const useLists = (songs: any) => {
           ambiental: null,
           entrada: null,
           '1-monicion': null,
-          '1': null,
+          1: null,
           '2-monicion': null,
-          '2': null,
+          2: null,
           'evangelio-monicion': null,
           evangelio: null,
           'oracion-universal': null,
@@ -924,37 +924,27 @@ const useCommunity = () => {
         );
       }
     } else {
-      return new Promise((resolve, reject) => {
-        Contacts.checkPermission((err1, perm1) => {
-          if (err1) {
-            reject(err1);
-          } else {
-            if (perm1 === 'undefined') {
-              if (reqPerm) {
-                Contacts.requestPermission((err2, perm2) => {
-                  if (err2) {
-                    reject(err2);
-                  } else {
-                    if (perm2 === 'authorized') {
-                      resolve(true);
-                    }
-                    if (perm2 === 'denied') {
-                      reject(new Error('denied'));
-                    }
-                  }
-                });
-              } else {
-                reject(new Error('denied'));
+      return Contacts.checkPermission().then((perm1) => {
+        if (perm1 === 'undefined') {
+          if (reqPerm) {
+            return Contacts.requestPermission().then((perm2) => {
+              if (perm2 === 'authorized') {
+                return true;
               }
-            }
-            if (perm1 === 'authorized') {
-              resolve(true);
-            }
-            if (perm1 === 'denied') {
-              reject(new Error('denied'));
-            }
+              if (perm2 === 'denied') {
+                throw new Error('denied');
+              }
+            });
+          } else {
+            throw new Error('denied');
           }
-        });
+        }
+        if (perm1 === 'authorized') {
+          return true;
+        }
+        if (perm1 === 'denied') {
+          throw new Error('denied');
+        }
       });
     }
   };
@@ -962,16 +952,9 @@ const useCommunity = () => {
   const getContacts = useCallback((reqPerm: boolean): Promise<any> => {
     return checkContactsPermission(reqPerm).then((hasPermission) => {
       if (hasPermission) {
-        return new Promise((resolve, reject) => {
-          Contacts.getAll((err, contacts) => {
-            if (err) {
-              reject(err);
-            } else {
-              resolve(contacts);
-            }
-          });
-        });
+        return Contacts.getAll();
       }
+      return [];
     });
   }, []);
 
