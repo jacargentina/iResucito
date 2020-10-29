@@ -334,8 +334,14 @@ PODS:
     - React
   - RNScreens (2.12.0):
     - React-Core
+  - RNSentry (1.9.0):
+    - React-Core
+    - Sentry (~> 5.2.0)
   - RNShare (4.0.4):
     - React-Core
+  - Sentry (5.2.2):
+    - Sentry/Core (= 5.2.2)
+  - Sentry/Core (5.2.2)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -406,6 +412,7 @@ DEPENDENCIES:
   - RNLocalize (from `../node_modules/react-native-localize`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
+  - "RNSentry (from `../node_modules/@sentry/react-native`)"
   - RNShare (from `../node_modules/react-native-share`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
@@ -422,6 +429,7 @@ SPEC REPOS:
     - Flipper-RSocket
     - FlipperKit
     - OpenSSL-Universal
+    - Sentry
     - YogaKit
 
 EXTERNAL SOURCES:
@@ -513,6 +521,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
     :path: "../node_modules/react-native-screens"
+  RNSentry:
+    :path: "../node_modules/@sentry/react-native"
   RNShare:
     :path: "../node_modules/react-native-share"
   Yoga:
@@ -574,7 +584,9 @@ SPEC CHECKSUMS:
   RNLocalize: 452d4118e338dee1e5ca3fac4d5a11a4ab26a46a
   RNReanimated: dd8c286ab5dd4ba36d3a7fef8bff7e08711b5476
   RNScreens: 4b488fdf9537bbce829e2910c8cce1d17f6d9be8
+  RNSentry: 1adaa43b01c6a3ab5091d4d1add66b7c58558898
   RNShare: af2aeae0587bf3e40e5268f1ef96aa162f1a6ac9
+  Sentry: 8fa58a051237554f22507fb483b9a1de0171a2dc
   Yoga: 7d13633d129fd179e01b8953d38d47be90db185a
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 

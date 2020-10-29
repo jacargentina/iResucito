@@ -15,6 +15,12 @@ import {
 } from 'react-native-exception-handler';
 import DeviceInfo from 'react-native-device-info';
 import queryString from 'query-string';
+import * as Sentry from '@sentry/react-native';
+
+Sentry.init({
+  dsn:
+    'https://645393af749a4f3da9d8074330a25da3@o469156.ingest.sentry.io/5498083',
+});
 
 const sendErrorByMail = async (e: any, type: string, message?: string) => {
   var body = `Sistema: ${DeviceInfo.getSystemName()}`;
