@@ -98,7 +98,6 @@
     "react-native-collapsible": "^1.5.3",
     "react-native-contacts": "^6.0.3",
     "react-native-device-info": "^7.0.2",
-    "react-native-exception-handler": "^2.10.9",
     "react-native-fs": "^2.16.6",
     "react-native-gesture-handler": "^1.8.0",
     "react-native-highlight-words": "^1.0.1",
