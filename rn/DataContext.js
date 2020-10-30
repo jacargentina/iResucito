@@ -954,7 +954,6 @@ const useCommunity = () => {
       if (hasPermission) {
         return Contacts.getAll();
       }
-      return [];
     });
   }, []);
 
