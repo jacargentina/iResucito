@@ -34,7 +34,8 @@ const ContactImportDialog = () => {
     if (deviceContacts) {
       var withName = deviceContacts.filter(
         (c) =>
-          c.givenName.length > 0 || (c.familyName && c.familyName.length > 0)
+          (c.givenName && c.givenName.length > 0) ||
+          (c.familyName && c.familyName.length > 0)
       );
       var result = getContactsForImport(withName, brothers);
       setContacts(result);
