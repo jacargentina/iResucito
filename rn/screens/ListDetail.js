@@ -224,7 +224,7 @@ const ListDetail = () => {
             },
             onContentSizeChange: () => {
               if (noteFocused && scroll) {
-                scroll.props.scrollToEnd();
+                scroll.scrollToEnd();
               }
             },
           }}
