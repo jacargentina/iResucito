@@ -16,21 +16,16 @@ or alternatively using `brew install fastlane`
 
 # Available Actions
 ## iOS
-### ios test
-```
-fastlane ios test
-```
-Runs all the tests
 ### ios beta
 ```
 fastlane ios beta
 ```
-Enviar version beta a TestFlight (ej 3.0.1-0) Apple TestFlight
+Enviar versión beta a TestFlight (ej 3.0.1-0)
 ### ios release
 ```
 fastlane ios release
 ```
-Enviar version nueva al AppStore (ej 3.0.1-x => 3.0.2-0)
+Enviar versión (producción) al AppStore (ej 3.0.1-x => 3.0.2-0)
 
 ----
 
