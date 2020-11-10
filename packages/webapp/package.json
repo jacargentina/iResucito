@@ -15,8 +15,8 @@
     "crypto-random-string": "^3.3.0",
     "deepmerge": "^4.2.2",
     "dropbox": "^7.3.1",
-    "eslint": "^7.9.0",
-    "eslint-config-airbnb": "^18.2.0",
+    "eslint": "^7.13.0",
+    "eslint-config-airbnb": "^18.2.1",
     "eslint-config-nextjs": "^1.0.6",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-babel": "^5.3.1",
@@ -38,7 +38,7 @@
     "react-json-editor-ajrm": "^2.5.13",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.0",
-    "use-debounce": "^5.0.1",
+    "use-debounce": "^5.0.3",
     "use-hotkeys": "^1.1.0"
   }
 }
