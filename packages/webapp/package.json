@@ -14,7 +14,7 @@
     "chokidar": "^3.4.3",
     "crypto-random-string": "^3.3.0",
     "deepmerge": "^4.2.2",
-    "dropbox": "^7.3.1",
+    "dropbox": "^8.1.0",
     "eslint": "^7.13.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-nextjs": "^1.0.6",
@@ -38,7 +38,7 @@
     "react-json-editor-ajrm": "^2.5.13",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.0",
-    "use-debounce": "^5.0.3",
+    "use-debounce": "^5.0.4",
     "use-hotkeys": "^1.1.0"
   }
 }
