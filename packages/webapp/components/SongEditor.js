@@ -182,7 +182,7 @@ const SongEditor = () => {
                   <Button
                     positive={hasChanges}
                     disabled={!hasChanges}
-                    onClick={applyChanges}>
+                    onClick={save}>
                     <Icon name="save" />
                     {I18n.t('ui.apply')}
                   </Button>

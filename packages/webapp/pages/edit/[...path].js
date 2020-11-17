@@ -8,7 +8,6 @@ import SongChangeMetadataDialog from 'components/SongChangeMetadataDialog';
 import ConfirmDialog from 'components/ConfirmDialog';
 import PatchLogDialog from 'components/PatchLogDialog';
 import PdfSettingsDialog from 'components/PdfSettingsDialog';
-import I18n from '../../../../translations';
 import { readLocalePatch } from '../../common';
 import FolderSongs from '../../../../FolderSongs';
 
@@ -50,7 +49,7 @@ const SongEdit = (props: any) => {
   );
 };
 
-export async function getStaticProps({ params }: any) {
+export async function getServerSideProps({ params }: any) {
   const patch = await readLocalePatch();
   const { path } = params;
   const [locale, key] = path;
@@ -81,27 +80,6 @@ export async function getStaticProps({ params }: any) {
       nextKey,
       totalSongs: songs.length,
     },
-    revalidate: 1,
-  };
-}
-
-export async function getStaticPaths() {
-  const locales = Object.keys(I18n.translations);
-  const patch = await readLocalePatch();
-  // $FlowFixMe
-  const localesPaths = locales.map((item) => {
-    const songs = FolderSongs.getSongsMeta(item, patch);
-    return songs.map((song) => {
-      return {
-        params: {
-          path: [item, song.key],
-        },
-      };
-    });
-  });
-  return {
-    paths: localesPaths.flat(),
-    fallback: true,
   };
 }
 

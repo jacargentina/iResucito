@@ -4,7 +4,6 @@ import Layout from 'components/Layout';
 import SongList from 'components/SongList';
 import PdfSettingsDialog from 'components/PdfSettingsDialog';
 import DataContextWrapper from 'components/DataContext';
-import I18n from '../../../../translations';
 import { readLocalePatch } from '../../common';
 import FolderSongs from '../../../../FolderSongs';
 
@@ -21,7 +20,7 @@ const List = (props: any) => {
   );
 };
 
-export async function getStaticProps({ params }: any) {
+export async function getServerSideProps({ params }: any) {
   const patch = await readLocalePatch();
   const { locale } = params;
   if (!locale) {
@@ -32,16 +31,6 @@ export async function getStaticProps({ params }: any) {
     props: {
       songs,
     },
-    revalidate: 1,
-  };
-}
-
-export async function getStaticPaths() {
-  const locales = Object.keys(I18n.translations);
-  return {
-    // $FlowFixMe
-    paths: locales.map((item) => ({ params: { locale: item } })),
-    fallback: false,
   };
 }
 
