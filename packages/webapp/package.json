@@ -28,7 +28,7 @@
     "gmail-send": "^1.8.10",
     "lodash": "^4.17.20",
     "lowdb": "^1.0.0",
-    "next": "^10.0.1",
+    "next": "^10.0.2",
     "next-auth": "^3.1.0",
     "node-fetch": "^2.6.1",
     "pdfjs-dist": "^2.5.207",
@@ -38,7 +38,7 @@
     "react-json-editor-ajrm": "^2.5.13",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.0",
-    "use-debounce": "^5.0.4",
+    "use-debounce": "^5.1.0",
     "use-hotkeys": "^1.1.0"
   }
 }
