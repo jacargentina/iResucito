@@ -724,6 +724,16 @@
       "linked": {
         "new": "Paschos avinėliui"
       }
+    },
+    {
+      "date": 1605786761915,
+      "locale": "en",
+      "author": "antoniopasquinucci1@gmail.com",
+      "linked": {
+        "new": "To The Paschal Victim"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "20": [
@@ -911,6 +921,16 @@
       "author": "david.hernandez.duran@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1605868530587,
+      "locale": "en",
+      "author": "antoniopasquinucci1@gmail.com",
+      "linked": {
+        "new": "To you, O Lord, with my voice I cry for help - Psalm 141 (142)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "23": [
@@ -1146,6 +1166,16 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1605868436771,
+      "locale": "en",
+      "author": "antoniopasquinucci1@gmail.com",
+      "linked": {
+        "new": "Abraham - Gen. 18, 1-5"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "26": [
@@ -1234,6 +1264,16 @@
       "author": "david.hernandez.duran@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1605869301618,
+      "locale": "en",
+      "author": "antoniopasquinucci1@gmail.com",
+      "linked": {
+        "new": "Acclaim the Lord - Psalm 99 (100)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "27": [
@@ -1452,6 +1492,17 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1605868320163,
+      "locale": "en",
+      "author": "antoniopasquinucci1@gmail.com",
+      "rename": {
+        "original": "Alleluia praise god - Ps 150",
+        "new": "Alleluia, Praise God - Psalm 150"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "30": [
@@ -1523,6 +1574,16 @@
       "linked": {
         "new": "Visi garbinkite dievą - Psalmė 133 (134)"
       }
+    },
+    {
+      "date": 1605873792362,
+      "locale": "en",
+      "author": "antoniopasquinucci1@gmail.com",
+      "linked": {
+        "new": "Bless the Lord - Psalm 133 (134)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "31": [
@@ -5696,6 +5757,17 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1605868464886,
+      "locale": "en",
+      "author": "antoniopasquinucci1@gmail.com",
+      "rename": {
+        "original": "He rose from death (1 cor., 15)",
+        "new": "He rose from death - 1 Cor. 15"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "127": [
@@ -6228,6 +6300,17 @@
       "linked": {
         "new": "Dygsta šakelė iš jesės kelmo (iz 11)"
       }
+    },
+    {
+      "date": 1605871679282,
+      "locale": "en",
+      "author": "antoniopasquinucci1@gmail.com",
+      "rename": {
+        "original": "A shoot springs from the stock of Jesse - Is 11, 1-11",
+        "new": "A shoot springs up from the stock of Jesse - Is. 11"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "143": [
@@ -6856,6 +6939,20 @@
         "original": "election",
         "new": "precatechumenate"
       }
+    },
+    {
+      "date": 1605868496360,
+      "locale": "en",
+      "author": "antoniopasquinucci1@gmail.com",
+      "linked": {
+        "new": "Hymn for vespers from Easter to the Ascencion"
+      },
+      "created": true,
+      "updated": false,
+      "staged": {
+        "original": "election",
+        "new": "liturgy"
+      }
     }
   ],
   "159": [
@@ -6907,6 +7004,20 @@
       "author": "andresrh1919@gmail.com",
       "linked": {
         "new": "Abba Baba - (Rum 8: 15-17)"
+      },
+      "created": true,
+      "updated": false,
+      "staged": {
+        "original": "election",
+        "new": "precatechumenate"
+      }
+    },
+    {
+      "date": 1605868402453,
+      "locale": "en",
+      "author": "antoniopasquinucci1@gmail.com",
+      "linked": {
+        "new": "Abba Father - Rom. 8, 15-17"
       },
       "created": true,
       "updated": false,
@@ -9216,6 +9327,17 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1605869634836,
+      "locale": "en",
+      "author": "antoniopasquinucci1@gmail.com",
+      "rename": {
+        "original": "God rises to acclamation - Ps 46 (47)",
+        "new": "God goes up with acclamations - Psalm 46 (47)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "225": [
@@ -9248,6 +9370,22 @@
       },
       "created": true,
       "updated": false
+    }
+  ],
+  "227": [
+    {
+      "date": 1605872789688,
+      "locale": "en",
+      "author": "antoniopasquinucci1@gmail.com",
+      "linked": {
+        "new": "She-Lamb of God - Mt 1,18ff"
+      },
+      "created": true,
+      "updated": false,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "catechumenate"
+      }
     }
   ],
   "232": [

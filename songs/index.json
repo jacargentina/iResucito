@@ -267,7 +267,8 @@
    "fr": "A la victime pascale - Séquence de Pâques",
    "pt-BR": "À vítima pascal - Sequência de Páscoa",
    "pt-PT": "À vítima pascal - Sequência de Páscoa",
-   "lt-LT": "Paschos avinėliui"
+   "lt-LT": "Paschos avinėliui",
+   "en": "To The Paschal Victim"
   },
   "stages": {
    "pt-BR": "precatechumenate"
@@ -308,7 +309,8 @@
    "de-AT": "Zu dir, o Herr, rufe ich - Ps 142",
    "pt-BR": "A ti, Senhor, com minha voz gritando imploro - Sal 142 (141)",
    "pt-PT": "A ti, Senhor, em meu clamor imploro - Sal 142 (141)",
-   "lt-LT": "Balsiai šaukiuosi tavo pagalbos, o viešpatie, - Psalmė 141 (142)"
+   "lt-LT": "Balsiai šaukiuosi tavo pagalbos, o viešpatie, - Psalmė 141 (142)",
+   "en": "To you, O Lord, with my voice I cry for help - Psalm 141 (142)"
   },
   "stages": {
    "pt-BR": "precatechumenate"
@@ -355,7 +357,8 @@
    "pt-BR": "Abraão - Gn 18, 1-5",
    "pt-PT": "Abraão - Gn 18, 1-5",
    "lt-LT": "Abraomas - Pr 18, 1-5",
-   "sw-TZ": "Abrahamu - (Mwa 18: 1-5)"
+   "sw-TZ": "Abrahamu - (Mwa 18: 1-5)",
+   "en": "Abraham - Gen. 18, 1-5"
   }
  },
  "26": {
@@ -368,7 +371,8 @@
    "de-AT": "Jubelt dem Herrn - Ps 100",
    "pt-BR": "Aclamai o Senhor - Sal 100 (99)",
    "pt-PT": "Aclamai o Senhor - Sal 100 (99)",
-   "lt-LT": "Aukštinkit viešpatį - Psalmė 99 (100)"
+   "lt-LT": "Aukštinkit viešpatį - Psalmė 99 (100)",
+   "en": "Acclaim the Lord - Psalm 99 (100)"
   },
   "stages": {
    "pt-BR": "precatechumenate"
@@ -414,7 +418,7 @@
    "es": "Aleluya, alabad al Señor - Sal 150",
    "it": "Lodate iddio - Sal 150",
    "de-AT": "Lobet den Herrn - Ps 150",
-   "en": "Alleluia praise god - Ps 150",
+   "en": "Alleluia, Praise God - Psalm 150",
    "pt-BR": "Aleluia! Louvai o Senhor - Sal 150",
    "pt-PT": "Aleluia! Louvai o Senhor - Sal 150",
    "lt-LT": "Aleliuja, šlovinkite dievą - Psalmė 150",
@@ -435,7 +439,8 @@
    "de-AT": "Preiset den Herrn - Ps 134",
    "pt-BR": "Aleluia! Bendizei o Senhor - Sal 134 (133)",
    "pt-PT": "Aleluia! Bendizei o Senhor - Sal 134 (133)",
-   "lt-LT": "Visi garbinkite dievą - Psalmė 133 (134)"
+   "lt-LT": "Visi garbinkite dievą - Psalmė 133 (134)",
+   "en": "Bless the Lord - Psalm 133 (134)"
   },
   "stages": {
    "pt-BR": "precatechumenate"
@@ -1770,7 +1775,7 @@
    "es": "Resucitó - Himno pascual",
    "it": "Risuscitò - Inno pasquale",
    "de-AT": "Er ist auferstanden - 1 Kor 15",
-   "en": "He rose from death (1 cor., 15)",
+   "en": "He rose from death - 1 Cor. 15",
    "pt-BR": "Ressuscitou - 1 Cor 15",
    "pt-PT": "Ressuscitou - 1 Cor 15",
    "lt-LT": "Prisikėlė",
@@ -1983,7 +1988,7 @@
   "files": {
    "es": "Un retoño brota del tronco de Jesé - Is 11, 1-11",
    "it": "Un germoglio spunta dal tronco di jesse - Is 11, 1-11",
-   "en": "A shoot springs from the stock of Jesse - Is 11, 1-11",
+   "en": "A shoot springs up from the stock of Jesse - Is. 11",
    "de-AT": "Ein Spross bricht hervor aus dem Baumstumpf von Jesse - Jes 11",
    "pt-BR": "Um rebento brota do tronco de Jessé - Is 11, 1-11",
    "pt-PT": "Um rebento brota do tronco de Jessé - Is 11, 1-11",
@@ -2202,10 +2207,12 @@
    "de-AT": "Hymnus der Vesper von Ostern bis Christi Himmelfahrt",
    "it": "Inno dei vespri da pasqua all'ascensione - Inno",
    "pt-BR": "À ceia do cordeiro - Hino das vésperas do tempo Pascal até a Ascensão",
-   "pt-PT": "À ceia do cordeiro - Hino das vésperas do tempo Pascal até a Ascensão"
+   "pt-PT": "À ceia do cordeiro - Hino das vésperas do tempo Pascal até a Ascensão",
+   "en": "Hymn for vespers from Easter to the Ascencion"
   },
   "stages": {
-   "es": "precatechumenate"
+   "es": "precatechumenate",
+   "en": "liturgy"
   }
  },
  "159": {
@@ -2219,11 +2226,13 @@
    "fr": "Abba Père - Rm 8, 15-17",
    "pt-BR": "Abba Pai - Rm 8, 15-17",
    "pt-PT": "Abba Pai - Rm 8, 15-17",
-   "sw-TZ": "Abba Baba - (Rum 8: 15-17)"
+   "sw-TZ": "Abba Baba - (Rum 8: 15-17)",
+   "en": "Abba Father - Rom. 8, 15-17"
   },
   "stages": {
    "es": "precatechumenate",
-   "sw-TZ": "precatechumenate"
+   "sw-TZ": "precatechumenate",
+   "en": "precatechumenate"
   }
  },
  "160": {
@@ -2978,7 +2987,7 @@
    "es": "Sube Dios entre aclamaciones - Sal 47 (46)",
    "it": "Sale dio tra acclamazioni",
    "de-AT": "Gott erhob sich unter Jubel - Ps 47",
-   "en": "God rises to acclamation - Ps 46 (47)",
+   "en": "God goes up with acclamations - Psalm 46 (47)",
    "pt-BR": "Sobe Deus entre aclamações - Sal 47 (46)",
    "pt-PT": "Sobe Deus entre aclamações - Sal 47 (46)"
   }
@@ -3002,7 +3011,11 @@
  "227": {
   "stage": "precatechumenate",
   "files": {
-   "it": "Agnella di dio"
+   "it": "Agnella di dio",
+   "en": "She-Lamb of God - Mt 1,18ff"
+  },
+  "stages": {
+   "en": "catechumenate"
   }
  },
  "228": {
