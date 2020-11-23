@@ -47,33 +47,44 @@ const SongList = (props: any) => {
   // }, [devModeSetting]);
 
   useEffect(() => {
-    const navFilter = route?.params?.filter ?? props.filter;
-    var result = songs;
-    if (navFilter) {
-      for (var name in navFilter) {
-        result = result.filter((s) => s[name] === navFilter[name]);
+    if (songs) {
+      const navFilter = route?.params?.filter ?? props.filter;
+      var result = songs;
+      if (navFilter) {
+        for (var name in navFilter) {
+          result = result.filter((s) => s[name] === navFilter[name]);
+        }
+      }
+      if (textFilter) {
+        result = result.filter((s) => {
+          return (
+            s.nombre.toLowerCase().includes(textFilter.toLowerCase()) ||
+            s.fullText.toLowerCase().includes(textFilter.toLowerCase())
+          );
+        });
+      }
+      const navSort = route?.params?.sort ?? props.sort;
+      if (navSort) {
+        result = result.sort(navSort);
+      }
+      setShowSalmosBadge(
+        navFilter == null || !navFilter.hasOwnProperty('stage')
+      );
+      setSearch(result);
+      if (result.length > 0) {
+        setTotalText(I18n.t('ui.list total songs', { total: result.length }));
+      } else {
+        setTotalText(I18n.t('ui.no songs found'));
       }
     }
-    if (textFilter) {
-      result = result.filter((s) => {
-        return (
-          s.nombre.toLowerCase().includes(textFilter.toLowerCase()) ||
-          s.fullText.toLowerCase().includes(textFilter.toLowerCase())
-        );
-      });
-    }
-    const navSort = route?.params?.sort ?? props.sort;
-    if (navSort) {
-      result = result.sort(navSort);
-    }
-    setShowSalmosBadge(navFilter == null || !navFilter.hasOwnProperty('stage'));
-    setSearch(result);
-    if (result.length > 0) {
-      setTotalText(I18n.t('ui.list total songs', { total: result.length }));
-    } else {
-      setTotalText(I18n.t('ui.no songs found'));
-    }
-  }, [textFilter, props.filter]);
+  }, [
+    route?.params?.filter,
+    props.filter,
+    route?.params?.sort,
+    props.sort,
+    textFilter,
+    songs,
+  ]);
 
   useLayoutEffect(() => {
     if (textFilter && search && search.length > 0 && isFocused) {
