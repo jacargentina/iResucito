@@ -77,16 +77,17 @@ export class SongsProcessor {
     patch: ?SongIndexPatch,
     ratings: ?SongRatingFile
   ): Song {
-    if (!SongsIndex.hasOwnProperty(key)) {
-      throw new Error(`There is no key = ${key} on the Index!`);
-    }
-    const files = SongsIndex[key].files;
-    var info: Song = Object.assign({}, SongsIndex[key]);
+    var info: Song = SongsIndex.hasOwnProperty(key)
+      ? Object.assign({}, SongsIndex[key])
+      : {};
     info.key = key;
-    const bestFile = this.getBestFileForLocale(files, rawLoc, info.nombre);
+    info.files = SongsIndex.hasOwnProperty(key) ? SongsIndex[key].files : {};
+    const bestFile = this.getBestFileForLocale(info.files, rawLoc, info.nombre);
     info.path = `${this.basePath}/${bestFile.locale}/${bestFile.name}.txt`;
-    const parsed = getSongFileFromString(bestFile.name);
-    this.assignInfoFromFile(info, parsed);
+    if (bestFile.name) {
+      const parsed = getSongFileFromString(bestFile.name);
+      this.assignInfoFromFile(info, parsed);
+    }
     // Asignar numero de version segun historico
     info.version = this.getSongHistory(key, rawLoc).length;
     // Aplicar stage segun idioma, si esta disponible
