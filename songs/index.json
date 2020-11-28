@@ -38,13 +38,14 @@
    "es": "Consolad a mi pueblo - Is 40, 1-11",
    "it": "Consolate il mio popolo - Is 40, 1-11",
    "de-AT": "Tröstet mein Volk - Jes 40, 1-11",
-   "en": "Console my people. (is 40, 1-11)",
+   "en": "Console my people - Is. 40, 1-11",
    "pt-BR": "Consolai o meu povo - Is 40, 1-11",
    "pt-PT": "Consolai o meu povo - Is 40, 1-11",
    "lt-LT": "Paguoskit mano tautą (iz 40, 1-11)"
   },
   "stages": {
-   "pt-BR": "catechumenate"
+   "pt-BR": "catechumenate",
+   "en": "precatechumenate"
   }
  },
  "4": {
@@ -457,7 +458,8 @@
    "pt-BR": "Aleluia! Já chegou o Reino - Ap 19, 6-9",
    "pt-PT": "Aleluia! Já chegou o Reino - Ap 19, 6-9",
    "lt-LT": "Jau ateina karalystė (apr 19, 6-9)“",
-   "sw-TZ": "Aleluya, umekuja ufalme - (Ufu 19: 6-9)"
+   "sw-TZ": "Aleluya, umekuja ufalme - (Ufu 19: 6-9)",
+   "en": "Alleluia, here comes the kingdom - Rev. 19,6-9"
   },
   "stages": {
    "pt-BR": "precatechumenate"
@@ -677,7 +679,7 @@
    "en": "Caritas christi",
    "pt-BR": "Caritas Christi Urget Nos - 2 Cor 5, 14.15.17.21",
    "pt-PT": "Caritas Christi Urget Nos - 2 Cor 5, 14.15.17.21",
-   "lt-LT": "Caritas christi (2 kor 5, 14-21)"
+   "lt-LT": "Caritas christi - 2 kor 5, 14-21"
   },
   "stages": {
    "de-AT": "election"
@@ -981,7 +983,7 @@
    "en": "Carmen 63",
    "pt-BR": "Estão rotas minhas ataduras - Carmen 63 - Poema de Rabindranath Tagore",
    "pt-PT": "Estão rotas minhas ataduras - Carmen 63 - Poema de Rabindranath Tagore",
-   "lt-LT": "Carmen 63"
+   "lt-LT": "CARMEN' 63 (Tagore)"
   },
   "stages": {
    "de-AT": "election"
@@ -1043,7 +1045,7 @@
    "es": "Gracias a Yahveh - Sal 136 (135)",
    "it": "Grazie a jahvè - Sal 136 (135)",
    "de-AT": "Danken wir dem Herrn - Ps 136",
-   "en": "Give thanks to the lord - Ps 135 (136)",
+   "en": "Give thanks to the lord - Psalm 135 (136)",
    "pt-BR": "Graças a Iahweh - Sal 136 (135)",
    "pt-PT": "Graças a Iahweh - Sal 136 (135)",
    "lt-LT": "Dėkui tau, jahve - Psalmė 135 (136)",
@@ -1121,7 +1123,8 @@
    "pt-BR": "Eis-me aqui que venho em breve - Ap 22, 12-16",
    "pt-PT": "Eis-me aqui que venho em breve - Ap 22, 12-16",
    "lt-LT": "Štai aš ateisiu veikiai (apr 22, 12-16)",
-   "sw-TZ": "Tazama, naja upesi - (Ufu 22: 12-16)"
+   "sw-TZ": "Tazama, naja upesi - (Ufu 22: 12-16)",
+   "en": "Behold I'm coming soon - Rev. 22, 12-16"
   }
  },
  "79": {
@@ -2081,7 +2084,8 @@
    "de-AT": "Komm Sohn des Menschen - Offb 22, 17 ff",
    "pt-BR": "Vem, filho do homem - Ap 22, 17ss",
    "pt-PT": "Vem, filho do homem - Ap 22, 17ss",
-   "sw-TZ": "Njoo, Mwana wa mtu - (Ufu 22: 17 nk)"
+   "sw-TZ": "Njoo, Mwana wa mtu - (Ufu 22: 17 nk)",
+   "en": "Come, Son of Man - Rev. 22, 17ff"
   }
  },
  "149": {
@@ -2579,7 +2583,8 @@
    "de-AT": "Ruf zum evangelium in der Fastenzeit",
    "it": "Acclamazione al Vangelo nel tempo di quaresima",
    "pt-BR": "Antífona Versículo antes do evangelho - Apropriado para o tempo da Quaresma",
-   "pt-PT": "Antífona Versículo antes do evangelho - Apropriado para o tempo da Quaresma"
+   "pt-PT": "Antífona Versículo antes do evangelho - Apropriado para o tempo da Quaresma",
+   "en": "Acclamation to the Gospel during Lent"
   }
  },
  "186": {
@@ -2602,7 +2607,8 @@
    "de-AT": "Dankgebet für die Liturgie der Versöhnung",
    "pt-BR": "Bênção Penitencial - Oração para concluir a ação de graças para a Celebração Penitencial",
    "pt-PT": "Bênção Penitencial - Oração para concluir a ação de graças para a Celebração Penitencial",
-   "sw-TZ": "Baraka kwa adhimisho la penitensia"
+   "sw-TZ": "Baraka kwa adhimisho la penitensia",
+   "en": "Blessing for the Penitential Celebration"
   },
   "stages": {
    "pt-BR": "liturgy"
@@ -2615,7 +2621,8 @@
    "de-AT": "Das Apostolische Glaubens Bekenntnis",
    "pt-BR": "Credo - Símbolo apostólico",
    "pt-PT": "Credo - Símbolo apostólico",
-   "lt-LT": "Credo (apaštalų tikėjimo išpažinimas)"
+   "lt-LT": "Credo (apaštalų tikėjimo išpažinimas)",
+   "en": "Creed - Apostolic Symbol"
   },
   "stages": {
    "de-AT": "election"
@@ -2628,7 +2635,7 @@
    "es": "Gloria a Dios en lo alto del cielo - Himno litúrgico",
    "it": "Gloria a dio mell'alto dai cieli - Inno liturgico",
    "de-AT": "Ehre sei Gott in der Höhe",
-   "en": "Glory to god",
+   "en": "Glory to God",
    "pt-BR": "Glória a Deus no alto do Céu - Hino Litúrgico",
    "pt-PT": "Glória a Deus no alto do Céu - Hino Litúrgico",
    "lt-LT": "Garbė Dievui Dangaus Aukštybėse",
@@ -2646,7 +2653,8 @@
    "pt-BR": "Ladainha penitencial II",
    "pt-PT": "Ladainha penitencial II",
    "lt-LT": "Atgailos litanija",
-   "sw-TZ": "Litania ya penitensia"
+   "sw-TZ": "Litania ya penitensia",
+   "en": "Penitential Litanies II"
   }
  },
  "191": {
@@ -2674,7 +2682,8 @@
    "pt-BR": "Ladainha Penitencial I - Ladainha para Celebração Penitencial - Modelo Abreviado",
    "pt-PT": "Ladainha Penitencial I - Ladainha para Celebração Penitencial - Modelo Abreviado",
    "lt-LT": "Trumpa atgailos litanija",
-   "sw-TZ": "Litania fupi ya penitensia"
+   "sw-TZ": "Litania fupi ya penitensia",
+   "en": "Penitential Litanies"
   }
  },
  "194": {
@@ -2683,7 +2692,8 @@
    "es": "Padre Nuestro",
    "de-AT": "Vater Unser",
    "pt-BR": "Pai Nosso - Tempo da Eleição",
-   "pt-PT": "Pai Nosso - Tempo da Eleição"
+   "pt-PT": "Pai Nosso - Tempo da Eleição",
+   "en": "Abba, Abba, Father - Our Father"
   }
  },
  "195": {
@@ -2762,7 +2772,8 @@
    "pt-BR": "Santo 1982 - Tempo Comum",
    "pt-PT": "Santo 1982 - Tempo Comum",
    "lt-LT": "Šventas (1983)",
-   "sw-TZ": "Mtakatifu (1983) - Mwakani"
+   "sw-TZ": "Mtakatifu (1983) - Mwakani",
+   "en": "Holy, Holy, Holy - 1983"
   }
  },
  "204": {
@@ -2773,7 +2784,8 @@
    "pt-BR": "Santo 1988 - Tempo Comum",
    "pt-PT": "Santo 1988 - Tempo Comum",
    "lt-LT": "Šventas, Šventas, Šventas (1988)",
-   "sw-TZ": "Mtakatifu, Mtakatifu (1988) - Mwakani"
+   "sw-TZ": "Mtakatifu, Mtakatifu (1988) - Mwakani",
+   "en": "Holy, Holy, Holy - Ordinary Time (1988)"
   }
  },
  "205": {
@@ -2784,7 +2796,8 @@
    "pt-BR": "Santo hebraico - Tempo da Quaresma",
    "pt-PT": "Santo hebraico - Tempo da Quaresma",
    "lt-LT": "Šventas, Jis Šventas (Gavėnios laikas)",
-   "sw-TZ": "Yu mtakatifu - Wakati wa Kwaresima"
+   "sw-TZ": "Yu mtakatifu - Wakati wa Kwaresima",
+   "en": "Holy, He's Holy - Lenten Season"
   }
  },
  "206": {
@@ -2796,7 +2809,11 @@
    "pt-BR": "Santo Palestina 74 - Tempo Pascal",
    "pt-PT": "Santo Palestina 74 - Tempo Pascal",
    "lt-LT": "Šventas, Šventas, Šventas — Verbų Osana (Pascha)",
-   "sw-TZ": "Mtakatifu, Mtakatifu, Hosanna ya matawi - na Wakati wa Pasaka"
+   "sw-TZ": "Mtakatifu, Mtakatifu, Hosanna ya matawi - na Wakati wa Pasaka",
+   "en": "Holy, Holy, Holy - Hosanna of the Palms and Easter Season"
+  },
+  "stages": {
+   "en": "precatechumenate"
   }
  },
  "207": {
@@ -2807,7 +2824,8 @@
    "pt-BR": "Santo Palomeras 65 - Tempo do Advento - Natal",
    "pt-PT": "Santo Palomeras 65 - Tempo do Advento - Natal",
    "lt-LT": "Šventas yra Viešpats —- Barakų Sventas (Adventas)",
-   "sw-TZ": "Mtakatifu ndiye Bwana-Mt. wa vibanda - Wakati wa Majilio"
+   "sw-TZ": "Mtakatifu ndiye Bwana-Mt. wa vibanda - Wakati wa Majilio",
+   "en": "Holy, Holy, Holy - Holy of the Shanty Town (Advent Season)"
   }
  },
  "208": {
@@ -2819,7 +2837,8 @@
    "pt-BR": "Santo Roma 77 - Tempo Comum",
    "pt-PT": "Santo Roma 77 - Tempo Comum",
    "lt-LT": "Šventas Eiliniam laikui",
-   "sw-TZ": "Mtakatifu - Mwakani"
+   "sw-TZ": "Mtakatifu - Mwakani",
+   "en": "Holy, Holy, Holy - Ordinary Time - Roma'77"
   }
  },
  "209": {
@@ -2837,7 +2856,7 @@
    "es": "Te deum - Himno",
    "it": "Te deum - Inno",
    "de-AT": "Te Deum",
-   "en": "Te deum",
+   "en": "Te Deum",
    "pt-BR": "Te Deum - Hino",
    "pt-PT": "Te Deum - Hino",
    "lt-LT": "Te deum - tave, dieve"
@@ -3047,41 +3066,49 @@
  "233": {
   "key": "233",
   "files": {
-   "de-AT": "Hymnus der Laudes im Advent bis zum 16. Dezember"
+   "de-AT": "Hymnus der Laudes im Advent bis zum 16. Dezember",
+   "en": "Hymn for Lauds of Advent until December 16"
   },
   "stage": "precatechumenate",
   "stages": {
-   "de-AT": "liturgy"
+   "de-AT": "liturgy",
+   "en": "liturgy"
   }
  },
  "234": {
   "key": "234",
   "files": {
-   "de-AT": "Hymnus der Laudes im Advent nach dem 16. Dezember"
+   "de-AT": "Hymnus der Laudes im Advent nach dem 16. Dezember",
+   "en": "Hymn for Lauds of Advent after December 16"
   },
   "stage": "precatechumenate",
   "stages": {
-   "de-AT": "liturgy"
+   "de-AT": "liturgy",
+   "en": "liturgy"
   }
  },
  "235": {
   "key": "235",
   "files": {
-   "de-AT": "Hymnus der Laudes von Ostern bis Christi Himmelfahrt"
+   "de-AT": "Hymnus der Laudes von Ostern bis Christi Himmelfahrt",
+   "en": "Hymn of Lauds from Easter to the Ascencion"
   },
   "stage": "precatechumenate",
   "stages": {
-   "de-AT": "liturgy"
+   "de-AT": "liturgy",
+   "en": "liturgy"
   }
  },
  "236": {
   "key": "236",
   "files": {
-   "de-AT": "Hymnus der Laudes von Pfingsten"
+   "de-AT": "Hymnus der Laudes von Pfingsten",
+   "en": "Hymn for Lauds of Pentecost"
   },
   "stage": "precatechumenate",
   "stages": {
-   "de-AT": "liturgy"
+   "de-AT": "liturgy",
+   "en": "liturgy"
   }
  },
  "237": {
@@ -3241,6 +3268,16 @@
    "en": "Praise the lord jerusalem - Ps 147",
    "pt-BR": "Canta a Iahweh, Jerusalém - Sal 147 (146-147)",
    "pt-PT": "Canta a Iahweh, Jerusalém - Sal 147 (146-147)"
+  }
+ },
+ "259": {
+  "key": "259",
+  "files": {
+   "en": "Grace before Meals"
+  },
+  "stage": "precatechumenate",
+  "stages": {
+   "en": "liturgy"
   }
  }
 }

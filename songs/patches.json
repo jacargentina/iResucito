@@ -115,6 +115,21 @@
       "linked": {
         "new": "Paguoskit mano tautą (iz 40, 1-11)"
       }
+    },
+    {
+      "date": 1606233981251,
+      "locale": "en",
+      "author": "antoniopasquinucci1@gmail.com",
+      "rename": {
+        "original": "Console my people. (is 40, 1-11)",
+        "new": "Console my people - Is. 40, 1-11"
+      },
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "catechumenate",
+        "new": "precatechumenate"
+      }
     }
   ],
   "4": [
@@ -1176,6 +1191,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1606228755173,
+      "locale": "en",
+      "author": "antoniopasquinucci1@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "26": [
@@ -1665,6 +1687,16 @@
       "author": "andresrh1919@gmail.com",
       "linked": {
         "new": "Aleluya, umekuja ufalme - (Ufu 19: 6-9)"
+      },
+      "created": true,
+      "updated": false
+    },
+    {
+      "date": 1606392427895,
+      "locale": "en",
+      "author": "antoniopasquinucci1@gmail.com",
+      "linked": {
+        "new": "Alleluia, here comes the kingdom - Rev. 19,6-9"
       },
       "created": true,
       "updated": false
@@ -2570,6 +2602,17 @@
       "date": 1599238405431,
       "locale": "pt-PT",
       "author": "inesricardo05@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1606200890449,
+      "locale": "lt-LT",
+      "author": "david.hernandez.duran@gmail.com",
+      "rename": {
+        "original": "Caritas christi (2 kor 5, 14-21)",
+        "new": "Caritas christi - 2 kor 5, 14-21"
+      },
       "created": false,
       "updated": true
     }
@@ -3480,6 +3523,17 @@
       "linked": {
         "new": "Carmen 63"
       }
+    },
+    {
+      "date": 1606202948918,
+      "locale": "lt-LT",
+      "author": "david.hernandez.duran@gmail.com",
+      "rename": {
+        "original": "Carmen 63",
+        "new": "CARMEN' 63 (Tagore)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "69": [
@@ -3663,6 +3717,17 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1606391072311,
+      "locale": "en",
+      "author": "antoniopasquinucci1@gmail.com",
+      "rename": {
+        "original": "Give thanks to the lord - Ps 135 (136)",
+        "new": "Give thanks to the lord - Psalm 135 (136)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "74": [
@@ -3898,6 +3963,16 @@
       "author": "andresrh1919@gmail.com",
       "linked": {
         "new": "Tazama, naja upesi - (Ufu 22: 12-16)"
+      },
+      "created": true,
+      "updated": false
+    },
+    {
+      "date": 1606233649029,
+      "locale": "en",
+      "author": "antoniopasquinucci1@gmail.com",
+      "linked": {
+        "new": "Behold I'm coming soon - Rev. 22, 12-16"
       },
       "created": true,
       "updated": false
@@ -6560,6 +6635,16 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1606391512183,
+      "locale": "en",
+      "author": "antoniopasquinucci1@gmail.com",
+      "linked": {
+        "new": "Come, Son of Man - Rev. 22, 17ff"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "149": [
@@ -7025,6 +7110,13 @@
         "original": "election",
         "new": "precatechumenate"
       }
+    },
+    {
+      "date": 1606233784622,
+      "locale": "en",
+      "author": "antoniopasquinucci1@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "160": [
@@ -8081,6 +8173,16 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1606403686800,
+      "locale": "en",
+      "author": "antoniopasquinucci1@gmail.com",
+      "linked": {
+        "new": "Acclamation to the Gospel during Lent"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "186": [
@@ -8204,6 +8306,16 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1606134769229,
+      "locale": "en",
+      "author": "antoniopasquinucci1@gmail.com",
+      "linked": {
+        "new": "Blessing for the Penitential Celebration"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "188": [
@@ -8239,6 +8351,16 @@
       "linked": {
         "new": "Credo (apaštalų tikėjimo išpažinimas)"
       }
+    },
+    {
+      "date": 1606410898695,
+      "locale": "en",
+      "author": "antoniopasquinucci1@gmail.com",
+      "linked": {
+        "new": "Creed - Apostolic Symbol"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "189": [
@@ -8304,6 +8426,17 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1606140108822,
+      "locale": "en",
+      "author": "antoniopasquinucci1@gmail.com",
+      "rename": {
+        "original": "Glory to god",
+        "new": "Glory to God"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "190": [
@@ -8334,6 +8467,16 @@
       "author": "andresrh1919@gmail.com",
       "linked": {
         "new": "Litania ya penitensia"
+      },
+      "created": true,
+      "updated": false
+    },
+    {
+      "date": 1606130402748,
+      "locale": "en",
+      "author": "antoniopasquinucci1@gmail.com",
+      "linked": {
+        "new": "Penitential Litanies II"
       },
       "created": true,
       "updated": false
@@ -8410,6 +8553,16 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1606128868387,
+      "locale": "en",
+      "author": "antoniopasquinucci1@gmail.com",
+      "linked": {
+        "new": "Penitential Litanies"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "194": [
@@ -8430,6 +8583,16 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1606411700867,
+      "locale": "en",
+      "author": "antoniopasquinucci1@gmail.com",
+      "linked": {
+        "new": "Abba, Abba, Father - Our Father"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "195": [
@@ -8706,6 +8869,16 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1606396222177,
+      "locale": "en",
+      "author": "antoniopasquinucci1@gmail.com",
+      "linked": {
+        "new": "Holy, Holy, Holy - 1983"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "204": [
@@ -8749,6 +8922,16 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1606394069929,
+      "locale": "en",
+      "author": "antoniopasquinucci1@gmail.com",
+      "linked": {
+        "new": "Holy, Holy, Holy - Ordinary Time (1988)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "205": [
@@ -8789,6 +8972,16 @@
       "author": "andresrh1919@gmail.com",
       "linked": {
         "new": "Yu mtakatifu - Wakati wa Kwaresima"
+      },
+      "created": true,
+      "updated": false
+    },
+    {
+      "date": 1606141042886,
+      "locale": "en",
+      "author": "antoniopasquinucci1@gmail.com",
+      "linked": {
+        "new": "Holy, He's Holy - Lenten Season"
       },
       "created": true,
       "updated": false
@@ -8843,6 +9036,20 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1606233685256,
+      "locale": "en",
+      "author": "antoniopasquinucci1@gmail.com",
+      "linked": {
+        "new": "Holy, Holy, Holy - Hosanna of the Palms and Easter Season"
+      },
+      "created": true,
+      "updated": false,
+      "staged": {
+        "original": "liturgy",
+        "new": "precatechumenate"
+      }
     }
   ],
   "207": [
@@ -8883,6 +9090,16 @@
       "author": "andresrh1919@gmail.com",
       "linked": {
         "new": "Mtakatifu ndiye Bwana-Mt. wa vibanda - Wakati wa Majilio"
+      },
+      "created": true,
+      "updated": false
+    },
+    {
+      "date": 1606232206416,
+      "locale": "en",
+      "author": "antoniopasquinucci1@gmail.com",
+      "linked": {
+        "new": "Holy, Holy, Holy - Holy of the Shanty Town (Advent Season)"
       },
       "created": true,
       "updated": false
@@ -8936,6 +9153,16 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1606227784685,
+      "locale": "en",
+      "author": "antoniopasquinucci1@gmail.com",
+      "linked": {
+        "new": "Holy, Holy, Holy - Ordinary Time - Roma'77"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "209": [
@@ -8980,6 +9207,17 @@
       "linked": {
         "new": "Te deum - tave, dieve"
       }
+    },
+    {
+      "date": 1606410110610,
+      "locale": "en",
+      "author": "antoniopasquinucci1@gmail.com",
+      "rename": {
+        "original": "Te deum",
+        "new": "Te Deum"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "211": [
@@ -9414,6 +9652,20 @@
         "original": "precatechumenate",
         "new": "liturgy"
       }
+    },
+    {
+      "date": 1606400173738,
+      "locale": "en",
+      "author": "antoniopasquinucci1@gmail.com",
+      "linked": {
+        "new": "Hymn for Lauds of Advent until December 16"
+      },
+      "created": true,
+      "updated": false,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "liturgy"
+      }
     }
   ],
   "234": [
@@ -9426,6 +9678,20 @@
       },
       "created": false,
       "updated": true,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "liturgy"
+      }
+    },
+    {
+      "date": 1606401441164,
+      "locale": "en",
+      "author": "antoniopasquinucci1@gmail.com",
+      "linked": {
+        "new": "Hymn for Lauds of Advent after December 16"
+      },
+      "created": true,
+      "updated": false,
       "staged": {
         "original": "precatechumenate",
         "new": "liturgy"
@@ -9446,6 +9712,20 @@
         "original": "precatechumenate",
         "new": "liturgy"
       }
+    },
+    {
+      "date": 1606402535007,
+      "locale": "en",
+      "author": "antoniopasquinucci1@gmail.com",
+      "linked": {
+        "new": "Hymn of Lauds from Easter to the Ascencion"
+      },
+      "created": true,
+      "updated": false,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "liturgy"
+      }
     }
   ],
   "236": [
@@ -9458,6 +9738,20 @@
       },
       "created": false,
       "updated": true,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "liturgy"
+      }
+    },
+    {
+      "date": 1606413031666,
+      "locale": "en",
+      "author": "antoniopasquinucci1@gmail.com",
+      "linked": {
+        "new": "Hymn for Lauds of Pentecost"
+      },
+      "created": true,
+      "updated": false,
       "staged": {
         "original": "precatechumenate",
         "new": "liturgy"
@@ -9704,6 +9998,22 @@
       },
       "created": false,
       "updated": false
+    }
+  ],
+  "259": [
+    {
+      "date": 1606404020909,
+      "locale": "en",
+      "author": "antoniopasquinucci1@gmail.com",
+      "linked": {
+        "new": "Grace before Meals"
+      },
+      "created": true,
+      "updated": false,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "liturgy"
+      }
     }
   ]
 }
