@@ -7656,6 +7656,13 @@
       "linked": {
         "new": "Dievo avytė"
       }
+    },
+    {
+      "date": 1607460402588,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "174": [
@@ -8496,6 +8503,16 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1606735986317,
+      "locale": "en",
+      "author": "antoniopasquinucci1@gmail.com",
+      "linked": {
+        "new": "Lamb of God"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "192": [
@@ -8616,6 +8633,16 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1606735175790,
+      "locale": "en",
+      "author": "antoniopasquinucci1@gmail.com",
+      "linked": {
+        "new": "Eucharistic Prayer II (2) - Offering, Intercession, Doxology"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "196": [
@@ -9963,6 +9990,23 @@
       "author": "fd_colautti@mac.com",
       "created": false,
       "updated": true
+    }
+  ],
+  "257": [
+    {
+      "date": 1606733249008,
+      "locale": "en",
+      "author": "antoniopasquinucci1@gmail.com",
+      "rename": {
+        "original": "Invocation to the holy spirit",
+        "new": "Invocation to the Holy Spirit"
+      },
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "liturgy"
+      }
     }
   ],
   "258": [

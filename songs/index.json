@@ -2663,7 +2663,8 @@
    "es": "Letanía del Cordero de Dios - Himno Agnus Dei",
    "de-AT": "Agnus Dei",
    "pt-BR": "Cordeiro de Deus - Ladainha do Cordeiro de Deus",
-   "pt-PT": "Cordeiro de Deus - Ladainha do Cordeiro de Deus"
+   "pt-PT": "Cordeiro de Deus - Ladainha do Cordeiro de Deus",
+   "en": "Lamb of God"
   }
  },
  "192": {
@@ -2700,7 +2701,8 @@
   "stage": "liturgy",
   "files": {
    "es": "Plegaria Eucaristica II - Anamnesis modelo I",
-   "de-AT": "Eucharistisches Hochgebet II (2) - Darbringung, Interzessionen, Doxologie"
+   "de-AT": "Eucharistisches Hochgebet II (2) - Darbringung, Interzessionen, Doxologie",
+   "en": "Eucharistic Prayer II (2) - Offering, Intercession, Doxology"
   }
  },
  "196": {
@@ -3258,7 +3260,10 @@
   "stage": "precatechumenate",
   "files": {
    "es": "Invocación al Espíritu Santo",
-   "en": "Invocation to the holy spirit"
+   "en": "Invocation to the Holy Spirit"
+  },
+  "stages": {
+   "en": "liturgy"
   }
  },
  "258": {
