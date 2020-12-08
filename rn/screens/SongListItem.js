@@ -240,6 +240,7 @@ const SongListItem = (props: any) => {
         return (
           <Highlighter
             key={i}
+            autoEscape
             highlightStyle={{
               backgroundColor: 'yellow',
             }}
