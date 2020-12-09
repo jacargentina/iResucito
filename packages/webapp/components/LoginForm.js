@@ -11,6 +11,7 @@ import {
   Grid,
   Message,
 } from 'semantic-ui-react';
+import * as axios from 'axios';
 import { useSession, signIn, signOut } from 'next-auth/client';
 import { useRouter } from 'next/router';
 import { DataContext } from 'components/DataContext';
@@ -21,6 +22,7 @@ import I18n from '../../../translations';
 const LoginForm = () => {
   const [session, isLoading] = useSession();
   const data = useContext(DataContext);
+  const { setApiResult, setApiLoading, handleApiError } = data;
   const router = useRouter();
   const {
     query: { callbackUrl, u, v },
@@ -56,7 +58,30 @@ const LoginForm = () => {
     signOut({ callbackUrl: '/' });
   };
 
-  const { signUp } = data;
+  const signUp = () => {
+    if (email.indexOf('@') === -1) {
+      handleApiError(
+        new Error(
+          'E-mail address has an invalid format. Please correct its value.'
+        )
+      );
+      return;
+    }
+    setApiResult();
+    setApiLoading(true);
+    return axios
+      .post('/api/signup', {
+        email,
+        password,
+      })
+      .then((response) => {
+        setApiResult(response.data);
+        setApiLoading(false);
+      })
+      .catch((err) => {
+        handleApiError(err);
+      });
+  };
 
   return (
     <div style={{ alignSelf: 'center', alignItems: 'center', flex: 0 }}>
@@ -108,7 +133,7 @@ const LoginForm = () => {
                   size="large"
                   onClick={() => {
                     setError();
-                    signUp(email, password);
+                    signUp();
                   }}
                   disabled={loading}>
                   {I18n.t('ui.signup')}

@@ -1,6 +1,5 @@
 // @flow
 import React, { useState } from 'react';
-import * as axios from 'axios';
 
 export const DataContext: any = React.createContext();
 
@@ -26,23 +25,6 @@ const DataContextWrapper = (props: any) => {
     }
   };
 
-  const signUp = (email, password) => {
-    setApiResult();
-    setApiLoading(true);
-    return axios
-      .post('/api/signup', {
-        email,
-        password,
-      })
-      .then((response) => {
-        setApiResult(response.data);
-        setApiLoading(false);
-      })
-      .catch((err) => {
-        handleApiError(err);
-      });
-  };
-
   return (
     <DataContext.Provider
       value={{
@@ -57,7 +39,6 @@ const DataContextWrapper = (props: any) => {
         apiResult,
         setApiResult,
         handleApiError,
-        signUp,
       }}>
       {props.children}
     </DataContext.Provider>
