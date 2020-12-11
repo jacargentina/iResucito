@@ -12,8 +12,10 @@ import {
 import { Text, Icon, H1, Button } from 'native-base';
 import DeviceInfo from 'react-native-device-info';
 import I18n from '../../translations';
+import commonTheme from '../native-base-theme/variables/platform';
 
 const pack = require('../../app.json');
+const collaborators = require('../../songs/collaborators.json');
 const cristo = require('../../img/cristo.jpg');
 const appName = pack.displayName;
 
@@ -63,10 +65,19 @@ const AboutDialog = (props: any) => {
         onPress={hide}>
         <Image
           source={cristo}
-          style={{ width: 200, height: 300, marginTop: 20 }}
+          style={{
+            width: 200,
+            height: 220,
+            marginTop: 20,
+          }}
           resizeMode="contain"
         />
-        <H1 style={{ color: 'red', fontWeight: 'bold', fontStyle: 'italic' }}>
+        <H1
+          style={{
+            color: commonTheme.brandPrimary,
+            fontWeight: 'bold',
+            fontStyle: 'italic',
+          }}>
           {appName}
         </H1>
         <Text style={{ textAlign: 'center', fontSize: 12 }}>
@@ -79,12 +90,9 @@ const AboutDialog = (props: any) => {
           <Text style={{ fontWeight: 'bold' }}>
             {I18n.t('ui.collaborators')}
           </Text>
-          {'\n'} Javier Suarez Suarez (es)
-          {'\n'} Matheus Fragoso (pt-BR)
-          {'\n'} Fabio Reis (pt-PT)
-          {'\n'} David Hernández Durán (lt-LT)
-          {'\n'} Andrés Ramirez (sw-TZ)
-          {'\n'} Antonio Pasquinucci (en)
+          {Object.keys(collaborators).map((lang) => {
+            return `\n ${collaborators[lang].join(', ')} (${lang})`;
+          })}
         </Text>
         <View
           style={{
