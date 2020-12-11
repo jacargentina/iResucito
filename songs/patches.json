@@ -749,6 +749,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1607610643031,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "20": [
@@ -795,6 +802,13 @@
         "original": "A ninguém demos ocasião de tropeço - 2 Co 6, 3ss",
         "new": "A ninguém dêmos ocasião de tropeço - 2 Co 6, 3ss"
       },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1607530216866,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
     }
@@ -946,6 +960,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1607610273245,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "23": [
@@ -1016,6 +1037,13 @@
       "linked": {
         "new": "Į tave, viešpatie, keliu savo sielą - Psalmė 24 (25)"
       }
+    },
+    {
+      "date": 1607610339897,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "24": [
@@ -1101,6 +1129,13 @@
       "linked": {
         "new": "Tau, viešpatie, pridera garbinimas zione - Psalmė 64 (65)"
       }
+    },
+    {
+      "date": 1607610428849,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "25": [
@@ -1196,6 +1231,17 @@
       "date": 1606228755173,
       "locale": "en",
       "author": "antoniopasquinucci1@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1607617288268,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Abraão - Gn 18, 1-5",
+        "new": "Abraão - Teofania de Mambré - Gn 18, 1-5"
+      },
       "created": false,
       "updated": true
     }
@@ -4525,6 +4571,13 @@
       "linked": {
         "new": "Tautų pjūtis (j 4, 31-38)"
       }
+    },
+    {
+      "date": 1607527870401,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "93": [
@@ -7038,6 +7091,13 @@
         "original": "election",
         "new": "liturgy"
       }
+    },
+    {
+      "date": 1607527430106,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "159": [
@@ -7115,6 +7175,13 @@
       "date": 1606233784622,
       "locale": "en",
       "author": "antoniopasquinucci1@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1607617000486,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
     }
@@ -7663,6 +7730,13 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1607591657405,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "174": [
@@ -7694,6 +7768,13 @@
         "original": "election",
         "new": "liturgy"
       }
+    },
+    {
+      "date": 1607530710107,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "175": [
@@ -7731,6 +7812,13 @@
         "original": "election",
         "new": "liturgy"
       }
+    },
+    {
+      "date": 1607616609100,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "176": [
@@ -7993,6 +8081,13 @@
       },
       "created": false,
       "updated": false
+    },
+    {
+      "date": 1607618548627,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "183": [
