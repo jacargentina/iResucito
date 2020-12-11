@@ -1,13 +1,10 @@
 // @flow
 import React from 'react';
-import { Header, Image, Icon, Menu } from 'semantic-ui-react';
+import { Header, Image, Menu } from 'semantic-ui-react';
 import Head from 'next/head';
 import LocalePicker from './LocalePicker';
 import EditSongTitle from './EditSongTitle';
 import AppActions from './AppActions';
-
-declare var IOS_VERSION: string;
-declare var ANDROID_VERSION: string;
 
 const Layout = (props: any) => {
   const { title, menu = true, children } = props;
@@ -26,14 +23,6 @@ const Layout = (props: any) => {
                 style={{ verticalAlign: 'middle', paddingLeft: 10 }}>
                 iResucito Web
               </Header.Content>
-            </Menu.Item>
-            <Menu.Item>
-              <Icon name="apple" size="large" />
-              {IOS_VERSION}
-            </Menu.Item>
-            <Menu.Item>
-              <Icon name="android" size="large" color="green" />
-              {ANDROID_VERSION}
             </Menu.Item>
             <LocalePicker />
             <EditSongTitle />

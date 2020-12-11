@@ -1,16 +1,32 @@
 // @flow
-import React, { Fragment, useContext } from 'react';
+import React, { Fragment, useContext, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useSession, signOut } from 'next-auth/client';
-import { Portal, Label, Message, Button, Menu } from 'semantic-ui-react';
+import {
+  Portal,
+  Label,
+  Message,
+  Button,
+  Menu,
+  Icon,
+  Modal,
+} from 'semantic-ui-react';
 import { DataContext } from './DataContext';
 import { EditContext } from './EditContext';
 import I18n from '../../../translations';
+
+declare var IOS_VERSION: string;
+declare var ANDROID_VERSION: string;
+
+const pack = require('../../../app.json');
+const collaborators = require('../../../songs/collaborators.json');
+const appName = pack.displayName;
 
 const AppActions = () => {
   const [session, isLoading] = useSession();
   const data = useContext(DataContext);
   const edit = useContext(EditContext);
+  const [aboutVisible, setAboutVisible] = useState(false);
   const router = useRouter();
 
   const { setConfirmData } = data;
@@ -30,6 +46,40 @@ const AppActions = () => {
 
   return (
     <>
+      {aboutVisible && (
+        <Modal
+          centered={false}
+          closeIcon
+          open={aboutVisible}
+          onClose={() => setAboutVisible(false)}
+          size="large">
+          <Modal.Header>iResucito Web</Modal.Header>
+          <Modal.Content>
+            <div style={{ display: 'flex' }}>
+              <img src="/cristo.jpg" width="200" height="300" alt="Cristo" />
+              <div style={{ flex: 1, marginLeft: 20 }}>
+                <div>
+                  <Icon name="apple" size="large" />
+                  {IOS_VERSION}
+                  <Icon name="android" size="large" color="green" />
+                  {ANDROID_VERSION}
+                </div>
+                &nbsp;
+                <div>
+                  <h3>{I18n.t('ui.collaborators')}</h3>
+                  <ul>
+                    {Object.keys(collaborators).map((lang) => {
+                      return (
+                        <li>{`${collaborators[lang].join(', ')} (${lang})`}</li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </Modal.Content>
+        </Modal>
+      )}
       {!isLoading && session && session.stats && session.stats.length > 0 && (
         <Menu.Item>
           {session.stats.length > 0 && (
@@ -74,6 +124,12 @@ const AppActions = () => {
           </Button>
         </Menu.Item>
       )}
+      <Menu.Item>
+        <Button onClick={() => setAboutVisible(true)}>
+          <Icon name="help" />
+          {I18n.t('settings_title.about')}
+        </Button>
+      </Menu.Item>
     </>
   );
 };
