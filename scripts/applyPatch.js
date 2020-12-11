@@ -3,10 +3,8 @@ import { getPropertyLocale } from '../common';
 const path = require('path');
 const fs = require('fs');
 require('colors');
-//const jsdiff = require('diff');
 const { execSync } = require('child_process');
-const inScripts = path.basename(process.cwd()) === path.basename(__dirname);
-const songsDir = inScripts ? '../songs' : './songs';
+const songsDir = path.resolve(__dirname, '../songs');
 const indexPath = path.resolve(songsDir, 'index.json');
 const patchesPath = path.resolve(songsDir, 'patches.json');
 //$FlowFixMe
@@ -25,7 +23,7 @@ const languageFolders = onlyNames.reduce((obj, item) => {
 
 const currentDate = Date.now();
 
-const patchSongLogic = (songPatch, key, dirty) => {
+const patchSongLogic = (songPatch, key) => {
   var report = {};
   report.key = key;
   try {
@@ -69,11 +67,7 @@ const patchSongLogic = (songPatch, key, dirty) => {
         songDirectory = path.join(songsDir, loc);
         if (!fs.existsSync(songDirectory)) {
           report.createdFolder = loc;
-          if (!dirty) {
-            fs.mkdirSync(songDirectory);
-          } else {
-            console.log('crea carpeta', songDirectory);
-          }
+          fs.mkdirSync(songDirectory);
         }
       } else {
         loc = existsLoc;
@@ -85,9 +79,7 @@ const patchSongLogic = (songPatch, key, dirty) => {
       var newName = path.join(songDirectory, `${name}.txt`);
       if (newName !== songFileName) {
         report.rename = { original: file, new: name };
-        if (!dirty) {
-          execSync(`git mv --force "${songFileName}" "${newName}"`);
-        }
+        execSync(`git mv --force "${songFileName}" "${newName}"`);
         Object.assign(songToPatch.files, { [loc]: name });
         songFileName = newName;
       } else if (songToPatch.files[loc] !== file) {
@@ -108,18 +100,9 @@ const patchSongLogic = (songPatch, key, dirty) => {
           report.created = true;
         }
         if (text !== lines) {
-          if (!dirty) {
-            fs.writeFileSync(songFileName, lines);
-          }
+          fs.writeFileSync(songFileName, lines);
           if (!report.created) {
             report.updated = true;
-            // var diff = jsdiff.diffChars(text, lines);
-            // diff.forEach(part => {
-            //   // green for additions, red for deletions
-            //   // grey for common parts
-            //   var color = part.added ? 'green' : part.removed ? 'red' : 'grey';
-            //   process.stderr.write(part.value[color]);
-            // });
           }
         }
       }
@@ -165,42 +148,25 @@ const patchSongLogic = (songPatch, key, dirty) => {
   return report;
 };
 
-var program = require('commander');
-
-program
-  .version('1.0')
-  .description('Apply patches')
-  .option('-f, --file [path]', 'Patch to use')
-  .option('--dirty', 'Dirty run')
-  .option(
-    '-k, --key [value]',
-    'Song key. Defaults to patch all songs',
-    parseInt
-  );
-
-if (!process.argv.slice(2).length) {
-  program.help();
-} else {
-  program.parse(process.argv);
-  var file = program.file;
-  if (!file) {
-    throw 'File not provided.';
-  }
-  var key = program.key;
-  var dirty = program.dirty;
-  var json = fs.readFileSync(file, 'utf8').normalize();
-  var patch = JSON.parse(json);
-  var finalReport = [];
-  if (key) {
-    finalReport.push(patchSongLogic(patch[key], key, dirty));
-  } else {
-    Object.keys(patch).forEach((k) => {
-      finalReport.push(patchSongLogic(patch[k], k, dirty));
-    });
-  }
-  if (!dirty) {
-    fs.writeFileSync(indexPath, JSON.stringify(SongsIndex, null, ' '));
-    fs.writeFileSync(patchesPath, JSON.stringify(SongsPatches, null, '  '));
-  }
-  console.log(finalReport);
-}
+const patchPath = path.resolve(
+  __dirname,
+  '../packages/webapp/data/SongsIndexPatch.json'
+);
+const json = fs.readFileSync(patchPath, 'utf8').normalize();
+const patch = JSON.parse(json);
+const finalReport = [];
+Object.keys(patch).forEach((k) => {
+  finalReport.push(patchSongLogic(patch[k], k));
+});
+fs.writeFileSync(indexPath, JSON.stringify(SongsIndex, null, ' '));
+fs.writeFileSync(patchesPath, JSON.stringify(SongsPatches, null, '  '));
+console.log(finalReport);
+const date = new Date();
+const formatDate =
+  ('0' + date.getDate()).slice(-2) +
+  ('0' + (date.getMonth() + 1)).slice(-2) +
+  date.getFullYear();
+const bakPath = `${process.env.HOME}/SongsIndexPatch-${formatDate}.json`;
+execSync(`mv "${patchPath}" "${bakPath}"`);
+fs.writeFileSync(patchPath, JSON.stringify({}));
+console.log(`Backup: ${bakPath}`);

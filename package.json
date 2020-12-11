@@ -24,7 +24,7 @@
     "lint": "eslint . --ext .js",
     "react-devtools": "react-devtools",
     "genpdf": "babel-node ./scripts/songToPdf.js",
-    "patch": "babel-node ./scripts/applyPatch.js",
+    "patch": "node ./packages/webapp/syncData.js down && babel-node ./scripts/applyPatch.js",
     "postinstall": "npx jetify"
   },
   "jest": {
@@ -140,6 +140,6 @@
     "source-map": "^0.7.3"
   },
   "engines": {
-    "node": "14.x"
+    "node": "15.x"
   }
 }

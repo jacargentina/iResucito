@@ -3,7 +3,7 @@ const path = require('path');
 const Dropbox = require('dropbox').Dropbox;
 const fetch = require('node-fetch');
 
-const dataPath = path.resolve(process.cwd(), './data');
+const dataPath = path.resolve(__dirname, './data');
 
 if (!process.env.DROPBOX_PASSWORD) {
   console.log('No DROPBOX_PASSWORD provided. Exiting.');
