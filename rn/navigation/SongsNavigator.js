@@ -7,7 +7,6 @@ import SongSearch from '../screens/SongSearch';
 import SongList from '../screens/SongList';
 import SongDetail from '../screens/SongDetail';
 import SongDetailOptions from './SongDetailOptions';
-import UnassignedList from '../screens/UnassignedList';
 import PDFViewer from '../screens/PDFViewer';
 import SharePDFButton from '../screens/SharePDFButton';
 import PrintPDFButton from '../screens/PrintPDFButton';
@@ -63,13 +62,6 @@ const SongsNavigator = () => {
               </View>
             ),
           };
-        }}
-      />
-      <Stack.Screen
-        name="UnassignedList"
-        component={UnassignedList}
-        options={{
-          title: I18n.t('search_title.unassigned', { locale: data.localeReal }),
         }}
       />
     </Stack.Navigator>

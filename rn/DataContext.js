@@ -4,7 +4,7 @@ import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { Alert, Platform, PermissionsAndroid } from 'react-native';
 import Share from 'react-native-share';
 import Contacts from 'react-native-contacts';
-import { ActionSheet, Toast } from 'native-base';
+import { ActionSheet } from 'native-base';
 import RNFS from 'react-native-fs';
 import badges from './badges';
 import { clouddata } from './clouddata';
@@ -25,10 +25,7 @@ import {
 import I18n from '../translations';
 import pathParse from 'path-parse';
 
-const merge = require('deepmerge');
-
 const useSongsMeta = (locale: string) => {
-  const [indexPatchExists, setIndexPatchExists] = useState();
   const [ratingsFileExists, setRatingsFileExists] = useState();
   const [songs, setSongs] = useState();
   const [localeSongs, setLocaleSongs] = useState([]);
@@ -41,40 +38,6 @@ const useSongsMeta = (locale: string) => {
     var prev = songs.slice(0, idx);
     var next = songs.slice(idx + 1);
     setSongs([...prev, song, ...next]);
-  };
-
-  const readLocalePatch = useCallback((): Promise<?SongIndexPatch> => {
-    if (!indexPatchExists) {
-      return Promise.resolve();
-    }
-    return NativeExtras.readPatch()
-      .then((patchJSON) => {
-        return JSON.parse(patchJSON);
-      })
-      .catch(() => {
-        return NativeExtras.deletePatch().then(() => {
-          setIndexPatchExists(false);
-          Alert.alert(
-            I18n.t('alert_title.corrupt patch'),
-            I18n.t('alert_message.corrupt patch')
-          );
-        });
-      });
-  }, [indexPatchExists]);
-
-  const saveLocalePatch = (patchObj: ?SongIndexPatch) => {
-    var json = JSON.stringify(patchObj, null, ' ');
-    return NativeExtras.savePatch(json).then(() => {
-      setIndexPatchExists(true);
-    });
-  };
-
-  const getSongLocalePatch = (song: Song): SongPatch => {
-    return readLocalePatch().then((patchObj) => {
-      if (patchObj && patchObj[song.key]) {
-        return patchObj[song.key];
-      }
-    });
   };
 
   const readAllLocaleSongs = (loc: string) => {
@@ -95,73 +58,6 @@ const useSongsMeta = (locale: string) => {
       });
   };
 
-  const setSongPatch = (song: Song, loc: string, patch?: SongPatchData) => {
-    if (patch && patch.file && patch.file.endsWith('.txt')) {
-      throw new Error('file con .txt! Pasar sin extension.');
-    }
-
-    return Promise.all([readLocalePatch(), readSongsRatingFile()]).then(
-      (values) => {
-        var [patchObj: SongIndexPatch, ratingsObj: SongRatingFile] = values;
-        if (!patchObj) {
-          patchObj = {};
-        }
-        if (patch) {
-          patch.name = patch.name.trim();
-          const localePatch: SongPatch = {
-            [loc]: patch,
-          };
-          if (!patchObj[song.key]) {
-            patchObj[song.key] = {};
-          }
-          var updatedPatch = merge(patchObj[song.key], localePatch);
-          patchObj[song.key] = updatedPatch;
-          Toast.show({
-            text: I18n.t('ui.locale patch added', {
-              song: song.titulo,
-            }),
-            duration: 5000,
-            type: 'success',
-            buttonText: 'Ok',
-          });
-        } else {
-          delete patchObj[song.key][loc];
-          Toast.show({
-            text: I18n.t('ui.locale patch removed', { song: song.titulo }),
-            duration: 5000,
-            type: 'success',
-            buttonText: 'Ok',
-          });
-        }
-        var updatedSong = NativeSongs.getSingleSongMeta(
-          song.key,
-          loc,
-          patchObj,
-          ratingsObj
-        );
-        return NativeSongs.loadSingleSong(loc, updatedSong, patchObj)
-          .then(() => {
-            initializeSingleSong(updatedSong);
-            return saveLocalePatch(patchObj);
-          })
-          .then(() => {
-            return readAllLocaleSongs(loc);
-          })
-          .then(() => {
-            return updatedSong;
-          });
-      }
-    );
-  };
-
-  const clearIndexPatch = () => {
-    if (indexPatchExists === true) {
-      return NativeExtras.deletePatch().then(() => {
-        setIndexPatchExists(false);
-      });
-    }
-  };
-
   const readSongsRatingFile = useCallback((): Promise<?SongRatingFile> => {
     if (!ratingsFileExists) {
       return Promise.resolve();
@@ -179,33 +75,28 @@ const useSongsMeta = (locale: string) => {
   };
 
   const setSongRating = (songKey: string, loc: string, value: number) => {
-    return Promise.all([readLocalePatch(), readSongsRatingFile()]).then(
-      (values) => {
-        var [patchObj: SongIndexPatch, ratingsObj: SongRatingFile] = values;
-        if (!ratingsObj) {
-          ratingsObj = {};
-        }
-        if (!ratingsObj[songKey]) {
-          ratingsObj[songKey] = {};
-        }
-        ratingsObj[songKey] = Object.assign({}, ratingsObj[songKey], {
-          [loc]: value,
-        });
-        return saveSongsRatingFile(ratingsObj).then(() => {
-          var updatedSong = NativeSongs.getSingleSongMeta(
-            songKey,
-            loc,
-            patchObj,
-            ratingsObj
-          );
-          return NativeSongs.loadSingleSong(loc, updatedSong, patchObj).then(
-            () => {
-              initializeSingleSong(updatedSong);
-            }
-          );
-        });
+    return readSongsRatingFile().then((ratingsObj) => {
+      if (!ratingsObj) {
+        ratingsObj = {};
       }
-    );
+      if (!ratingsObj[songKey]) {
+        ratingsObj[songKey] = {};
+      }
+      ratingsObj[songKey] = Object.assign({}, ratingsObj[songKey], {
+        [loc]: value,
+      });
+      return saveSongsRatingFile(ratingsObj).then(() => {
+        var updatedSong = NativeSongs.getSingleSongMeta(
+          songKey,
+          loc,
+          undefined,
+          ratingsObj
+        );
+        return NativeSongs.loadSingleSong(loc, updatedSong).then(() => {
+          initializeSingleSong(updatedSong);
+        });
+      });
+    });
   };
 
   const clearSongsRatings = () => {
@@ -216,51 +107,32 @@ const useSongsMeta = (locale: string) => {
     }
   };
 
-  const loadFlags = () => {
-    NativeExtras.patchExists().then((exists) => {
-      setIndexPatchExists(exists);
-    });
-    NativeExtras.ratingsExists().then((exists) => {
-      setRatingsFileExists(exists);
-    });
-  };
-
   const loadSongs = useCallback(() => {
-    if (
-      I18n.locale &&
-      indexPatchExists !== undefined &&
-      ratingsFileExists !== undefined
-    ) {
+    if (I18n.locale && ratingsFileExists !== undefined) {
       // Cargar parche del indice si existe
-      Promise.all([readLocalePatch(), readSongsRatingFile()]).then((values) => {
-        const [patchObj: SongIndexPatch, ratingsObj: SongRatingFile] = values;
+      readSongsRatingFile().then((ratingsObj) => {
         // Construir metadatos de cantos
         var metaData = NativeSongs.getSongsMeta(
           I18n.locale,
-          patchObj,
+          undefined,
           ratingsObj
         );
-        return NativeSongs.loadSongs(I18n.locale, metaData, patchObj).then(
-          () => {
-            setSongs(metaData);
-            return readAllLocaleSongs(I18n.locale);
-          }
-        );
+        return NativeSongs.loadSongs(I18n.locale, metaData).then(() => {
+          setSongs(metaData);
+          return readAllLocaleSongs(I18n.locale);
+        });
       });
     }
-  }, [
-    indexPatchExists,
-    ratingsFileExists,
-    readLocalePatch,
-    readSongsRatingFile,
-  ]);
+  }, [ratingsFileExists, readSongsRatingFile]);
 
   useEffect(() => {
     loadSongs();
-  }, [locale, loadSongs, indexPatchExists, ratingsFileExists]);
+  }, [locale, loadSongs, ratingsFileExists]);
 
   useEffect(() => {
-    loadFlags();
+    NativeExtras.ratingsExists().then((exists) => {
+      setRatingsFileExists(exists);
+    });
   }, []);
 
   return {
@@ -268,10 +140,6 @@ const useSongsMeta = (locale: string) => {
     setSongs,
     localeSongs,
     setLocaleSongs,
-    indexPatchExists,
-    getSongLocalePatch,
-    setSongPatch,
-    clearIndexPatch,
     ratingsFileExists,
     clearSongsRatings,
     setSongRating,
@@ -294,13 +162,13 @@ const useLists = (songs: any) => {
           ambiental: null,
           entrada: null,
           '1-monicion': null,
-          1: null,
+          '1': null,
           '1-salmo': null,
           '2-monicion': null,
-          2: null,
+          '2': null,
           '2-salmo': null,
           '3-monicion': null,
-          3: null,
+          '3': null,
           '3-salmo': null,
           'evangelio-monicion': null,
           evangelio: null,
@@ -313,9 +181,9 @@ const useLists = (songs: any) => {
           ambiental: null,
           entrada: null,
           '1-monicion': null,
-          1: null,
+          '1': null,
           '2-monicion': null,
-          2: null,
+          '2': null,
           'evangelio-monicion': null,
           evangelio: null,
           'oracion-universal': null,
@@ -656,7 +524,7 @@ const useLists = (songs: any) => {
   };
 };
 
-const useSearch = (localeValue: string, developerMode: boolean) => {
+const useSearch = (localeValue: string) => {
   const [initialized, setInitialized] = useState(false);
   const [searchItems, setSearchItems] = useState();
 
@@ -835,18 +703,9 @@ const useSearch = (localeValue: string, developerMode: boolean) => {
       }
       return item;
     });
-    if (developerMode === true) {
-      items.unshift({
-        title_key: 'search_title.unassigned',
-        note_key: 'search_note.unassigned',
-        route: 'UnassignedList',
-        params: { filter: null },
-        badge: null,
-      });
-    }
     setSearchItems(items);
     setInitialized(true);
-  }, [localeValue, developerMode]);
+  }, [localeValue]);
 
   return { initialized, searchItems };
 };
@@ -1003,12 +862,10 @@ export const DataContext: any = React.createContext();
 const DataContextWrapper = (props: any) => {
   // settings
   const locale = usePersist('locale', 'string', 'default');
-  const developerMode = usePersist('developerMode', 'boolean', false);
   const keepAwake = usePersist('keepAwake', 'boolean', true);
   const zoomLevel = usePersist('zoomLevel', 'number', 1);
 
   const [localeValue] = locale;
-  const [developerModeValue] = developerMode;
 
   const localeReal = useMemo(() => {
     return localeValue === 'default' ? getDefaultLocale() : localeValue;
@@ -1016,7 +873,7 @@ const DataContextWrapper = (props: any) => {
 
   const community = useCommunity();
   const songsMeta = useSongsMeta(localeReal);
-  const search = useSearch(localeReal, developerModeValue);
+  const search = useSearch(localeReal);
   const lists = useLists(songsMeta.songs);
   const loading = useState({ isLoading: false, text: '' });
 
@@ -1035,26 +892,6 @@ const DataContextWrapper = (props: any) => {
       });
   };
 
-  const shareIndexPatch = () => {
-    var promise =
-      Platform.OS === 'android' ? NativeExtras.readPatch() : Promise.resolve();
-    promise.then((patchJSON) => {
-      Share.open({
-        title: I18n.t('ui.share'),
-        subject: 'iResucitó - Index patch',
-        message: patchJSON,
-        url: `file://${NativeExtras.getPatchUri()}`,
-        failOnCancel: false,
-      })
-        .then((res) => {
-          console.log(res);
-        })
-        .catch((err) => {
-          err && console.log(err);
-        });
-    });
-  };
-
   useEffect(() => {
     if (localeReal) {
       I18n.locale = localeReal;
@@ -1069,11 +906,9 @@ const DataContextWrapper = (props: any) => {
         lists,
         community,
         sharePDF,
-        shareIndexPatch,
         loading,
         locale,
         localeReal,
-        developerMode,
         keepAwake,
         zoomLevel,
       }}>

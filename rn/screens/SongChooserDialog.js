@@ -108,7 +108,6 @@ const SongChooserDialog = (props: any) => {
             ? activeSegment.params.filter
             : null
         }
-        devModeDisabled={true}
         viewButton={true}
         onPress={(song) => songAssign(song)}
       />

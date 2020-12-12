@@ -17,8 +17,6 @@ const CallToAction = (props: any) => {
           style={{
             flex: 3,
             justifyContent: 'space-around',
-            borderBottomWidth: 1,
-            borderBottomColor: '#ccc',
           }}>
           <Icon
             name={props.icon}
@@ -29,8 +27,10 @@ const CallToAction = (props: any) => {
             }}
           />
         </View>
-        <H1 style={{ flex: 1, paddingTop: 20 }}>{props.title}</H1>
-        <Text note style={{ flex: 2 }}>
+        <H1 style={{ flex: 1, paddingTop: 25, textAlign: 'center' }}>
+          {props.title}
+        </H1>
+        <Text note style={{ flex: 2, fontSize: 15 }}>
           {props.text}
         </Text>
         <View

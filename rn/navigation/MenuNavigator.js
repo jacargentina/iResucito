@@ -15,10 +15,9 @@ var tabBarOptions = {};
 tabBarOptions.showLabel = false;
 tabBarOptions.activeTintColor = commonTheme.brandPrimary;
 tabBarOptions.style = {
-  backgroundColor: 'white',
+  backgroundColor: '#f9f9f9',
   borderTopColor: color(commonTheme.brandPrimary).lighten(0.2).string(),
   borderTopWidth: 1,
-  marginTop: 2,
 };
 
 if (Platform.OS === 'android') {
