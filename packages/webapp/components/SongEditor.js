@@ -295,8 +295,8 @@ const SongEditor = () => {
                   resize: 'none',
                   border: 0,
                   padding: '10px 20px',
-                  overflowY: 'scroll',
-                  whiteSpace: 'nowrap',
+                  overflow: 'scroll',
+                  whiteSpace: 'pre',
                 }}
                 onKeyUp={txtPositionEvent}
                 onKeyDown={(e) => {
@@ -319,8 +319,9 @@ const SongEditor = () => {
                 value={text}
                 onChange={(e, data) => {
                   setHasChanges(true);
-                  setText(data.value);
-                  debounced.callback(data.value);
+                  const newText = data.value.replace(/\u00A0/g, ' ');
+                  setText(newText);
+                  debounced.callback(newText);
                 }}
               />
               <Segment
@@ -347,8 +348,8 @@ const SongEditor = () => {
                 resize: 'none',
                 border: 0,
                 padding: '10px 20px',
-                overflowY: 'scroll',
-                whiteSpace: 'nowrap',
+                overflow: 'scroll',
+                whiteSpace: 'pre',
               }}
               value={text}
             />
