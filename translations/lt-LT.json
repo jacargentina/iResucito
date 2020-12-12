@@ -13,6 +13,7 @@
     "scale": "C Cis D EB E F Fis G Gis A B H"
   },
   "ui": {
+    "statistics": "Statistika",
     "download": "Atsisiųsti",
     "changes since last login": "Pakeitimai nuo paskutinio prisijungimo",
     "changed songs by author": "{{count}} giesmės sukurtos {{author}}",

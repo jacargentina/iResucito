@@ -13,6 +13,7 @@
     "scale": "C Cd D Dd E F Fd G Gd A Bb B"
   },
   "ui": {
+    "statistics": "Takwimu",
     "download": "Pakua",
     "changes since last login": "Mabadiliko tangu kuingia mara ya mwisho",
     "changed songs by author": "{{count}} wimbo kutoka kwa {{author}}",

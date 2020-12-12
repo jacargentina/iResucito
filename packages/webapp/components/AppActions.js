@@ -1,5 +1,5 @@
 // @flow
-import React, { Fragment, useContext, useState } from 'react';
+import React, { Fragment, useContext, useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useSession, signOut } from 'next-auth/client';
 import {
@@ -11,6 +11,7 @@ import {
   Icon,
   Modal,
 } from 'semantic-ui-react';
+import * as axios from 'axios';
 import { DataContext } from './DataContext';
 import { EditContext } from './EditContext';
 import I18n from '../../../translations';
@@ -18,15 +19,14 @@ import I18n from '../../../translations';
 declare var IOS_VERSION: string;
 declare var ANDROID_VERSION: string;
 
-const pack = require('../../../app.json');
 const collaborators = require('../../../songs/collaborators.json');
-const appName = pack.displayName;
 
 const AppActions = () => {
   const [session, isLoading] = useSession();
   const data = useContext(DataContext);
   const edit = useContext(EditContext);
   const [aboutVisible, setAboutVisible] = useState(false);
+  const [patchStats, setPatchStats] = useState();
   const router = useRouter();
 
   const { setConfirmData } = data;
@@ -43,6 +43,17 @@ const AppActions = () => {
       signOut({ callbackUrl: '/' });
     }
   };
+
+  useEffect(() => {
+    return axios
+      .get(`/api/patches/stats`)
+      .then((result) => {
+        setPatchStats(result.data);
+      })
+      .catch((err) => {
+        consolistics.log('stats err: ', err);
+      });
+  }, []);
 
   return (
     <>
@@ -75,6 +86,30 @@ const AppActions = () => {
                     })}
                   </ul>
                 </div>
+              </div>
+              <div style={{ flex: 1, marginLeft: 20 }}>
+                <h3>{I18n.t('ui.statistics')}</h3>
+                {patchStats &&
+                  patchStats.map((localeStats) => {
+                    return (
+                      <>
+                        <h4>
+                          {localeStats.locale} ({localeStats.count} changes)
+                        </h4>
+                        <ul>
+                          {localeStats.items.map((stat) => {
+                            return (
+                              <li>
+                                {I18n.t('ui.changed songs by author', {
+                                  ...stat,
+                                })}
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      </>
+                    );
+                  })}
               </div>
             </div>
           </Modal.Content>
