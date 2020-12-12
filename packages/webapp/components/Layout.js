@@ -7,7 +7,7 @@ import EditSongTitle from './EditSongTitle';
 import AppActions from './AppActions';
 
 const Layout = (props: any) => {
-  const { title, menu = true, children } = props;
+  const { title, menu = true, locale, children } = props;
 
   return (
     <>
@@ -24,7 +24,7 @@ const Layout = (props: any) => {
                 iResucito Web
               </Header.Content>
             </Menu.Item>
-            <LocalePicker />
+            <LocalePicker current={locale} />
             <EditSongTitle />
             <Menu.Menu position="right">
               <AppActions />

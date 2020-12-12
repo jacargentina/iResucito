@@ -12,7 +12,7 @@ import { readLocalePatch } from '../../common';
 import FolderSongs from '../../../../FolderSongs';
 
 const SongEdit = (props: any) => {
-  const { song, index, previousKey, nextKey, totalSongs } = props;
+  const { locale, song, index, previousKey, nextKey, totalSongs } = props;
 
   const editable =
     song && song.notTranslated
@@ -37,7 +37,7 @@ const SongEdit = (props: any) => {
         previousKey={previousKey}
         nextKey={nextKey}
         totalSongs={totalSongs}>
-        <Layout title="Editor">
+        <Layout title="Editor" locale={locale}>
           <SongEditor />
           <ConfirmDialog />
           <SongChangeMetadataDialog />
@@ -74,6 +74,7 @@ export async function getServerSideProps({ params }: any) {
   const nextKey = songs[next] ? songs[next].key : null;
   return {
     props: {
+      locale,
       song,
       index,
       previousKey,

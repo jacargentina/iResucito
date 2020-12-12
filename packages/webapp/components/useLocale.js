@@ -7,8 +7,8 @@ import { getLocalesForPicker, getValidatedLocale } from '../../../common';
 const browserLocale = typeof window !== 'undefined' ? navigator.language : 'en';
 const availableLocales = getLocalesForPicker(browserLocale);
 
-const useLocale = () => {
-  const [current, setCurrent] = useState(browserLocale);
+const useLocale = (initial: any) => {
+  const [current, setCurrent] = useState(initial || browserLocale);
   const router = useRouter();
 
   const changeLocale = (candidate: string, navigate: boolean = false) => {
@@ -36,7 +36,7 @@ const useLocale = () => {
     if (savedLocale) {
       changeLocale(savedLocale, navigate);
     } else {
-      changeLocale(browserLocale, navigate);
+      changeLocale(initial, navigate);
     }
   };
 

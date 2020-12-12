@@ -5,9 +5,10 @@ import useLocale from './useLocale';
 import I18n from '../../../translations';
 import { getValidatedLocale } from '../../../common';
 
-const LocalePicker = () => {
-  const locale = useLocale();
-  const current = getValidatedLocale(locale.availableLocales, locale.current);
+const LocalePicker = (props: any) => {
+  const { current } = props;
+  const locale = useLocale(current);
+  const validated = getValidatedLocale(locale.availableLocales, locale.current);
   return (
     <>
       <Dropdown
@@ -18,8 +19,8 @@ const LocalePicker = () => {
         <Dropdown.Menu>
           {locale.availableLocales.map((item) => {
             const active =
-              current &&
-              current.value === item.value &&
+              validated &&
+              validated.value === item.value &&
               typeof window !== 'undefined';
             return (
               <Dropdown.Item
@@ -33,7 +34,7 @@ const LocalePicker = () => {
           })}
         </Dropdown.Menu>
       </Dropdown>
-      {current && <Menu.Item>{current.label}</Menu.Item>}
+      {validated && <Menu.Item>{validated.label}</Menu.Item>}
     </>
   );
 };

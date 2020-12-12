@@ -8,11 +8,11 @@ import { readLocalePatch } from '../../common';
 import FolderSongs from '../../../../FolderSongs';
 
 const List = (props: any) => {
-  const { songs } = props;
+  const { locale, songs } = props;
 
   return (
     <DataContextWrapper>
-      <Layout title="Buscador">
+      <Layout title="Buscador" locale={locale}>
         <SongList songs={songs} />
         <PdfSettingsDialog />
       </Layout>
@@ -29,6 +29,7 @@ export async function getServerSideProps({ params }: any) {
   const songs = FolderSongs.getSongsMeta(locale, patch);
   return {
     props: {
+      locale,
       songs,
     },
   };
