@@ -161,6 +161,7 @@ const SettingsScreen = () => {
               style={{
                 flexDirection: 'row',
                 marginTop: 20,
+                marginBottom: 20,
               }}>
               <Button style={{ margin: 5 }} primary rounded onPress={sendMail}>
                 <Icon name="mail" />
@@ -177,7 +178,6 @@ const SettingsScreen = () => {
               <>
                 <Text
                   style={{
-                    marginTop: 20,
                     textAlign: 'center',
                     fontSize: 14,
                   }}>

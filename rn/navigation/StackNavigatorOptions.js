@@ -1,6 +1,7 @@
 // @flow
 import commonTheme from '../native-base-theme/variables/platform';
 import I18n from '../../translations';
+import { TransitionPresets } from '@react-navigation/stack';
 
 const StackNavigatorOptions = () => ({
   cardStyle: {
@@ -18,6 +19,7 @@ const StackNavigatorOptions = () => ({
   headerTintColor: 'white',
   headerBackTitle: I18n.t('ui.back'),
   headerTruncatedBackTitle: I18n.t('ui.back'),
+  ...TransitionPresets.SlideFromRightIOS,
 });
 
 export default StackNavigatorOptions;

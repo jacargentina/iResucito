@@ -8,7 +8,10 @@ import commonTheme from '../native-base-theme/variables/platform';
 const Switch = (props: any) => {
   var themeProps = {
     trackColor: {
-      true: color(commonTheme.brandPrimary).lighten(0.09).string(),
+      true:
+        Platform.OS === 'android'
+          ? color(commonTheme.brandPrimary).lighten(0.3).string()
+          : color(commonTheme.brandPrimary).lighten(0.09).string(),
       false: commonTheme.brandLight,
     },
     thumbColor: undefined,
