@@ -1,6 +1,6 @@
 clamp: III. 
  a                                    G              a
-K. Frohlocket,  ihr Chöre der Engel,                          
+S. Frohlocket,  ihr Chöre der Engel,                          
            C                                            a
 frohlocke himmlische Versammlung,
             G
@@ -10,7 +10,7 @@ preise den Sieg des Auferstandenen.
   F                         E                          F                                 E
 Lobsinge,  o Erde,  überstrahlt von neuem Licht.
                                           a
-K. DER GLANZ DES KÖNIGS                          
+S. DER GLANZ DES KÖNIGS                          
                                                  G
 HAT DAS DUNKEL BESIEGT,
   F                                         E
@@ -18,7 +18,7 @@ DAS DUNKEL DER WELT!
                                    a
 V. Der Glanz des Königs ...                          
   a                                         G
-K. Freue dich,  Mutter Kirche,                          
+S. Freue dich,  Mutter Kirche,                          
                a                  C                                     a
 voll Glanz der Herrlichkeit deines Herrn!
                             G
@@ -30,15 +30,15 @@ Der Herr sei mit euch.
   G                                        a
 V. UND MIT DEINEM GEISTE!                          
   F                           E
-K. Erhebet die Herzen.                         
+S. Erhebet die Herzen.                         
   F                                               E
 V. WIR HABEN SIE BEIM HERRN                         
                                                                                          a
-K. Lasset uns danken dem Herrn unserem Gott.
+S. Lasset uns danken dem Herrn unserem Gott.
              G                                     a
 V. DAS IST WÜRDIG UND RECHT. (2x)
                                                                   G
-K. In Wahrheit ist es würdig und recht
+S. In Wahrheit ist es würdig und recht
                   a                          C                                                    a
 mit Gesang das Frohlocken des Geistes zu verkünden
                              G
@@ -81,7 +81,7 @@ UND AUS DER UNTERWELT
                                       E
 ALS SIEGER EMPORSTEIGT.
    a                                                    G                                    a
-K. O wunderbares Entgegenkommen deiner Gnade                              
+S. O wunderbares Entgegenkommen deiner Gnade                              
             C                                                           a
 o unfassbare Zärtlichkeit deiner Liebe.
                           G                                                                              a
@@ -97,7 +97,7 @@ ERLÖSER HAST DU GEFUNDEN
                                         a
 GLÜCKLICHE SCHULD!
    a                                      G
-K. O wahrhaft selige Nacht                               
+S. O wahrhaft selige Nacht                               
                                                                                             a
 du kanntest die Stunde  in der Christus erstand!
                                           G
@@ -119,7 +119,7 @@ UND AUS DER UNTERWELT
                                       E
 ALS SIEGER EMPORSTEIGT.
    a                                                                       G
-K. In dieser Nacht  nimm an heiliger Vater,
+S. In dieser Nacht  nimm an heiliger Vater,
                                   a
 das Opfer des Lobes,
                      C                                                                  a

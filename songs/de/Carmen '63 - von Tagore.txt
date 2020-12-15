@@ -1,5 +1,5 @@
 a    E        F
-K. Meine Fesseln sind zerbrochen                                 
+S. Meine Fesseln sind zerbrochen                                 
 d           E
 bezahlt sind meine Schulden
 F
@@ -7,7 +7,7 @@ meine Tore aufgerissen
 E
 und ich gehe überall hin.
 d              E
-K. Jene  die da kauern in ihrer Ecke                                 
+S. Jene  die da kauern in ihrer Ecke                                 
 d                    E
 sie weben weiter das blasse Tuch ihrer Stunden
 F
@@ -33,7 +33,7 @@ ich werde mein Reich gewinnen.                      2 x
 E       A
 und ich gehe überall hin.
 a     E        F
-K. Meine Fesseln sind zerbrochen
+S. Meine Fesseln sind zerbrochen
 d           E
 bezahlt sind meine Schulden
  F

@@ -1,6 +1,6 @@
 clamp: II.
 e       a    e
-K. Wer mein Wort bewahrt                           
+S. Wer mein Wort bewahrt                           
 a    e
 wird den Tod nie wieder kosten.
 a       e
@@ -8,7 +8,7 @@ V. Du bist der Einzige, der Einzige mit Freude.
 e
 Wer ist wie unser Herr?
 a     e
-K. Krone der Rettung.                             
+S. Krone der Rettung.                             
 a    e
 V. und Gedächtnis unserer Freude.                               
 
@@ -19,12 +19,12 @@ hast du deinem Volk gegeben.
 repeat
 
 a     e
-K. Abraham sah diesen Tag.
+S. Abraham sah diesen Tag.
 
 V. und hat sich an Isaak gefreut.
 
 a
-K. Jakob und seine Söhne
+S. Jakob und seine Söhne
 
 fanden an ihm Ruhe.
  a

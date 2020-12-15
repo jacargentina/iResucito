@@ -1,5 +1,5 @@
 C                          C
-K. An ihm ist keine Schönheit
+S. An ihm ist keine Schönheit
 a                                  a
 an ihm ist kein Glanz
 G7                                 G7
@@ -21,7 +21,7 @@ Vor ihm verhüllt man das Gesicht.
 C            C
 Vor ihm verhüllt man das Gesicht.
 C                a          C
-K. Mißhandelt  betrachtet als ein Nichts.
+S. Mißhandelt  betrachtet als ein Nichts.
 C               a
 Verachtet  gemieden von den Menschen
 C
@@ -37,7 +37,7 @@ Vor ihm verhüllt man das Gesicht.
 
 Vor ihm verhüllt man das Gesicht.
 
-K. Aber wahrlich  er nahm auf sich all unsre Sünden.
+S. Aber wahrlich  er nahm auf sich all unsre Sünden.
    a
 Aber wahrlich  er nahm auf sich all unsre Schmerzen.
 
@@ -51,4 +51,4 @@ wie ein Lamm das man zur Schlachtbank führt.
 
 Vor ihm verhüllt ...
 
-K. Mißhandelt  mißhandelt  mißhandelt.
+S. Mißhandelt  mißhandelt  mißhandelt.

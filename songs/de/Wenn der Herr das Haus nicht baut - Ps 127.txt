@@ -3,7 +3,7 @@ V. Wenn der Herr das Haus nicht baut,
 A D
 mühn sich die Bauleute vergeblich,
 h FIS
-K. Wenn der Herr die Stadt nicht bewacht,
+S. Wenn der Herr die Stadt nicht bewacht,
 h G
 wachen vergeblich die Wächter.
 FIS
@@ -11,7 +11,7 @@ Wenn der Herr die Stadt nicht bewacht.
 D
 V. Wenn der Herr ...
 h FIS
-K. Es ist vergeblich, dass ihr früh aufsteht
+S. Es ist vergeblich, dass ihr früh aufsteht
 und erst spät zur Ruhe kommt,
 h G
 um euer Brot zu verdienen.
@@ -22,7 +22,7 @@ V. Gott schenkt es seinen Freunden im Schlaf.
 D
 Wenn der Herr...
 h FIS
-K. Gabe des Herrn sind die Kinder;
+S. Gabe des Herrn sind die Kinder;
 wie Pfeile in der Hand eines Kriegers
 h G
 sind die Kinder aus den Jahren der Jugend.

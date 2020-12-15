@@ -1,6 +1,6 @@
 clamp: II.
               e
-K.       Wie ein Schaf das sieht sein Lämmchen
+S.       Wie ein Schaf das sieht sein Lämmchen
                                                          a
 zur Schlachtbank geführt wir
                                                                                      e
@@ -18,9 +18,9 @@ Sprich zu mir, geh doch nicht wortlos vorüber.
               a                                                                H7
 Mein Sohn mein Sohn und mein Gott.
               a                                                               H7
-K.V. Mein Sohn, mein Sohn und mein Gott.
+S.V. Mein Sohn, mein Sohn und mein Gott.
               e
-K.       Nie hätte ich gedacht, dich in diesem Zustand
+S.       Nie hätte ich gedacht, dich in diesem Zustand
                      a
 zu sehen,
 nie hätte ich gedacht, dass sie einen solchem
@@ -33,9 +33,9 @@ Gerechtigkeit.
               C                                                       a
 Ich möchte es verstehen! Wehe mir!
               a                                                        a
-K.V. Ich möchte es verstehen! Wehe mir!
+S.V. Ich möchte es verstehen! Wehe mir!
                                                                                                H7
-K.       Wie kann es sein, dass das Licht gelöscht wird?
+S.       Wie kann es sein, dass das Licht gelöscht wird?
                 a
 wie kann es sein, dass das sie dich an ein Kreuz
                  H7
@@ -43,9 +43,9 @@ schlagen?
               a                                                                H7
 Mein Sohn mein Sohn und mein Gott.
               a                                                               H7
-K.V. Mein Sohn, mein Sohn und mein Gott.
+S.V. Mein Sohn, mein Sohn und mein Gott.
               e
-K.       Warum weinst du,
+S.       Warum weinst du,
                                                                     a
 warum weinst du meine Mutter?
                  
@@ -61,7 +61,7 @@ Warum weinst du,
                                                                     e
 warum weinst du meine Mutter?
                 a                                        H7
-K.       Sollte ich denn nicht leiden?
+S.       Sollte ich denn nicht leiden?
                 a                                        H7
 Sollte ich etwa nicht sterben?
               C                                                       H7
@@ -71,4 +71,4 @@ Wie könntest du Eva sehen, die ins leben
                     H7
 zurückkehrt.
               e
-K.       Wie ein Schaf das sieht …
+S.       Wie ein Schaf das sieht …

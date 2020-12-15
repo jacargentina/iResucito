@@ -1,6 +1,6 @@
 clamp: IV.
 C                a        F
-K. Die Stimme meines Geliebten! Sieh da, er kommt,                        
+S. Die Stimme meines Geliebten! Sieh da, er kommt,                        
 E       F        E
 er springt über die Berge; er hüpft über die Hügel.
 C                  a
@@ -24,7 +24,7 @@ V. Komm, steh auf, du meine Freundin,
 F                 E
 komm, steh auf, du Schöne und komm!
 d                E
-K. Denn siehe, der Winter ist vergangen                               
+S. Denn siehe, der Winter ist vergangen                               
 d              E
 versiegt ist der Regen, er ist vorbei,
 F                           d
@@ -47,7 +47,7 @@ Komm, steh auf, du meine Freundin
 F                 E
 komm, steh auf, du Schöne und komm!
 
-K. O du meine Taube,
+S. O du meine Taube,
   E
 die du sitzt in den Spalten des Felsens,
 d       E
@@ -67,7 +67,7 @@ weil ja doch unser Weinberg in Blüte steht!
  C
 V. Komm  steh auf …
  E      d        E
-K. Mein Geliebter lebt für mich und ich lebe für ihn;
+S. Mein Geliebter lebt für mich und ich lebe für ihn;
  E
 und bevor die Brise weht
 d              E
