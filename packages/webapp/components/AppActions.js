@@ -51,7 +51,7 @@ const AppActions = () => {
         setPatchStats(result.data);
       })
       .catch((err) => {
-        consolistics.log('stats err: ', err);
+        console.log('stats err: ', err);
       });
   }, []);
 
@@ -144,17 +144,24 @@ const AppActions = () => {
         </Menu.Item>
       )}
       {!isLoading && session && session.user ? (
-        <Menu.Item>
-          <Button negative onClick={confirmLogout}>
-            {I18n.t('ui.logout')}
-          </Button>
-        </Menu.Item>
+        <>
+          <Menu.Item>
+            <Button negative onClick={confirmLogout}>
+              {I18n.t('ui.logout')}
+            </Button>
+          </Menu.Item>
+          <Menu.Item>
+            <Button onClick={() => router.push('/account')}>
+              {I18n.t('ui.account')}
+            </Button>
+          </Menu.Item>
+        </>
       ) : null}
       {!isLoading && !session && (
         <Menu.Item>
           <Button
             primary
-            onClick={() => router.replace('/login?callbackUrl=/')}>
+            onClick={() => router.replace('/account?callbackUrl=/')}>
             {I18n.t('ui.login')}
           </Button>
         </Menu.Item>

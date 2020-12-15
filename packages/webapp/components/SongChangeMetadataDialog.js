@@ -1,10 +1,6 @@
 // @flow
 import React, { useContext, useState, useEffect } from 'react';
-import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
-import Input from 'semantic-ui-react/dist/commonjs/elements/Input';
-import Message from 'semantic-ui-react/dist/commonjs/collections/Message';
-import Modal from 'semantic-ui-react/dist/commonjs/modules/Modal';
-import Dropdown from 'semantic-ui-react/dist/commonjs/modules/Dropdown';
+import { Button, Input, Message, Modal, Dropdown } from 'semantic-ui-react';
 import { DataContext } from './DataContext';
 import { EditContext } from './EditContext';
 import SongListItem from './SongListItem';

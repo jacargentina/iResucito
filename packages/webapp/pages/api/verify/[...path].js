@@ -14,7 +14,7 @@ export default async function handler(req, res) {
       db.get('tokens').remove({ email, token }).write();
       return res.redirect(
         301,
-        `${process.env.NEXTAUTH_URL}/login?u=${email}&v=1`
+        `${process.env.NEXTAUTH_URL}/account?u=${email}&v=1`
       );
     }
     return res.status(404).json({ error: 'Token expired' });

@@ -13,6 +13,10 @@
     "scale": "Do Do# Re Mib Mi Fa Fa# Sol Sol# La Sib Si"
   },
   "ui": {
+    "account": "Mon compte",
+    "change password": "Changer le mot de passe",
+    "new password": "Nouveau mot de passe",
+    "confirm new password": "Confirmer le nouveau mot de passe",
     "statistics": "Statistiques",
     "download": "Télécharger",
     "changes since last login": "Changements depuis votre dernière entrée",

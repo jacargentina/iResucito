@@ -13,6 +13,10 @@
     "scale": "C C# D EB E F F# G G# A B H"
   },
   "ui": {
+    "account": "My account",
+    "change password": "Change password",
+    "new password": "New password",
+    "confirm new password": "Confirm new password",
     "statistics": "Statistics",
     "download": "Download",
     "changes since last login": "Changes since your last login",

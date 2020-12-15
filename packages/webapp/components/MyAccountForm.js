@@ -10,6 +10,7 @@ import {
   Form,
   Grid,
   Message,
+  Modal,
 } from 'semantic-ui-react';
 import * as axios from 'axios';
 import { useSession, signIn, signOut } from 'next-auth/client';
@@ -19,7 +20,7 @@ import ErrorDetail from 'components/ErrorDetail';
 import ApiMessage from 'components/ApiMessage';
 import I18n from '../../../translations';
 
-const LoginForm = () => {
+const MyAccountForm = () => {
   const [session, isLoading] = useSession();
   const data = useContext(DataContext);
   const { setApiResult, setApiLoading, handleApiError } = data;
@@ -29,8 +30,12 @@ const LoginForm = () => {
   } = router;
   const [email, setEmail] = useState(u || '');
   const [password, setPassword] = useState('');
+  const [changePassVisible, setChangePassVisible] = useState(false);
+  const [changePassEnabled, setChangePassEnabled] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmNewPassword, setConfirmNewPassword] = useState('');
 
   useEffect(() => {
     const err =
@@ -50,12 +55,6 @@ const LoginForm = () => {
       password,
       callbackUrl: callbackUrl || '/list',
     });
-  };
-
-  const logout = () => {
-    setError();
-    setLoading(true);
-    signOut({ callbackUrl: '/' });
   };
 
   const signUp = () => {
@@ -83,8 +82,35 @@ const LoginForm = () => {
       });
   };
 
+  const changePassword = () => {
+    setApiResult();
+    setApiLoading(true);
+    return axios
+      .post('/api/changepassword', {
+        newPassword,
+      })
+      .then((response) => {
+        setApiResult(response.data);
+        setApiLoading(false);
+        if (response.data && response.data.ok === 'PasswordChanged') {
+          signOut({ callbackUrl: '/account' });
+        }
+      })
+      .catch((err) => {
+        handleApiError(err);
+      });
+  };
+
+  useEffect(() => {
+    setChangePassEnabled(
+      newPassword !== '' &&
+        confirmNewPassword !== '' &&
+        newPassword === confirmNewPassword
+    );
+  }, [newPassword, confirmNewPassword]);
+
   return (
-    <div style={{ alignSelf: 'center', alignItems: 'center', flex: 0 }}>
+    <div style={{ padding: 30, width: 500, margin: 'auto' }}>
       <Image centered circular src="cristo.png" />
       <Header textAlign="center">iResucito</Header>
       <Grid textAlign="center" verticalAlign="middle">
@@ -106,6 +132,7 @@ const LoginForm = () => {
                     onChange={(e, { value }) => {
                       setEmail(value);
                     }}
+                    autoComplete="username"
                   />
                 </Form.Field>
                 <Form.Input
@@ -119,6 +146,7 @@ const LoginForm = () => {
                   onChange={(e, { value }) => {
                     setPassword(value);
                   }}
+                  autoComplete="current-password"
                 />
                 <Divider hidden />
                 <Button
@@ -143,13 +171,58 @@ const LoginForm = () => {
           )}
           {!isLoading && session && (
             <>
+              {changePassVisible && (
+                <Modal
+                  centered={false}
+                  open={changePassVisible}
+                  onClose={() => setChangePassVisible(false)}
+                  size="small">
+                  <Modal.Header>{I18n.t('ui.change password')}</Modal.Header>
+                  <Modal.Content>
+                    <h5>{I18n.t('ui.new password')}</h5>
+                    <Input
+                      fluid
+                      autoFocus
+                      value={newPassword}
+                      onChange={(e, { value }) => {
+                        setNewPassword(value);
+                      }}
+                      type="password"
+                    />
+                    <h5>{I18n.t('ui.confirm new password')}</h5>
+                    <Input
+                      fluid
+                      value={confirmNewPassword}
+                      onChange={(e, { value }) => {
+                        setConfirmNewPassword(value);
+                      }}
+                      type="password"
+                    />
+                  </Modal.Content>
+                  <Modal.Actions>
+                    <Button
+                      primary
+                      disabled={!changePassEnabled}
+                      onClick={() => {
+                        changePassword();
+                      }}>
+                      {I18n.t('ui.apply')}
+                    </Button>
+                    <Button
+                      negative
+                      onClick={() => setChangePassVisible(false)}>
+                      {I18n.t('ui.cancel')}
+                    </Button>
+                  </Modal.Actions>
+                </Modal>
+              )}
               <div style={{ fontSize: '1.2em' }}>
                 <strong>Usuario:&nbsp;</strong>
                 <span>{session.user}</span>
               </div>
               <Divider hidden />
-              <Button negative size="large" onClick={logout} loading={loading}>
-                {I18n.t('ui.logout')}
+              <Button size="large" onClick={() => setChangePassVisible(true)}>
+                {I18n.t('ui.change password')}
               </Button>
             </>
           )}
@@ -159,4 +232,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default MyAccountForm;

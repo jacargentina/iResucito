@@ -13,6 +13,10 @@
     "scale": "Do Do# Re Mib Mi Fa Fa# Sol Sol# La Sib Si"
   },
   "ui": {
+    "account": "Mi cuenta",
+    "change password": "Cambiar contraseña",
+    "new password": "Nueva contraseña",
+    "confirm new password": "Confirmar nueva contraseña",
     "statistics": "Estadísticas",
     "download": "Descargar",
     "changes since last login": "Cambios desde tu último ingreso",
@@ -60,7 +64,7 @@
       "added": "Agregado",
       "patched": "Parchado",
       "untranslated": "Sin traducir",
-      "translated": "Traducidos" 
+      "translated": "Traducidos"
     },
     "export": {
       "type": "Tipo de exportación",

@@ -2,7 +2,7 @@
 import React from 'react';
 import DataContextWrapper from 'components/DataContext';
 import Layout from 'components/Layout';
-import LoginForm from 'components/LoginForm';
+import MyAccountForm from 'components/MyAccountForm';
 import useLocale from 'components/useLocale';
 import I18n from '../../../translations';
 
@@ -11,8 +11,8 @@ const Login = () => {
   useLocale();
   return (
     <DataContextWrapper>
-      <Layout menu={false} title={I18n.t('ui.login')}>
-        <LoginForm />
+      <Layout title={I18n.t('ui.login')}>
+        <MyAccountForm />
       </Layout>
     </DataContextWrapper>
   );

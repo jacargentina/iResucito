@@ -13,6 +13,10 @@
     "scale": "C Cd D Dd E F Fd G Gd A Bb B"
   },
   "ui": {
+    "account": "Akaunti yangu",
+    "change password": "Badilisha neno la siri",
+    "new password": "Nywila mpya",
+    "confirm new password": "Thibitisha nywila mpya",
     "statistics": "Takwimu",
     "download": "Pakua",
     "changes since last login": "Mabadiliko tangu kuingia mara ya mwisho",

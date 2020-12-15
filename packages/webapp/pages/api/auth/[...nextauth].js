@@ -30,7 +30,7 @@ const getStats = async (user: any) => {
 const options = {
   secret: AUTH_SECRET,
   pages: {
-    signIn: '/login',
+    signIn: '/account',
   },
   jwt: {
     secret: JWT_SECRET,
@@ -79,7 +79,7 @@ const options = {
           if (user) {
             if (!user.isVerified) {
               // eslint-disable-next-line prefer-promise-reject-errors
-              return Promise.reject('/login?error=AccountNotVerified');
+              return Promise.reject('/account?error=AccountNotVerified');
             }
             try {
               const result = bcrypt.compareSync(

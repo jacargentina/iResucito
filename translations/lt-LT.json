@@ -13,6 +13,10 @@
     "scale": "C Cis D EB E F Fis G Gis A B H"
   },
   "ui": {
+    "account": "Mano sąskaita",
+    "change password": "pakeisti slaptažodį",
+    "new password": "Naujas Slaptažodis",
+    "confirm new password": "Patvirtinti naują slaptažodį",
     "statistics": "Statistika",
     "download": "Atsisiųsti",
     "changes since last login": "Pakeitimai nuo paskutinio prisijungimo",

@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import { Header, Image, Menu } from 'semantic-ui-react';
+import Link from 'next/link';
 import Head from 'next/head';
 import LocalePicker from './LocalePicker';
 import EditSongTitle from './EditSongTitle';
@@ -17,13 +18,15 @@ const Layout = (props: any) => {
       <div className="container">
         {menu && (
           <Menu size="mini" inverted attached>
-            <Menu.Item header>
-              <Image circular src="/cristo.png" size="mini" />
-              <Header.Content
-                style={{ verticalAlign: 'middle', paddingLeft: 10 }}>
-                iResucito Web
-              </Header.Content>
-            </Menu.Item>
+            <Link href="/">
+              <Menu.Item header>
+                <Image circular src="/cristo.png" size="mini" />
+                <Header.Content
+                  style={{ verticalAlign: 'middle', paddingLeft: 10 }}>
+                  iResucito Web
+                </Header.Content>
+              </Menu.Item>
+            </Link>
             <LocalePicker current={locale} />
             <EditSongTitle />
             <Menu.Menu position="right">
