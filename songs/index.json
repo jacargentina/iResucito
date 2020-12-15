@@ -8,7 +8,7 @@
    "de-AT": "Das sagt der Amen - Offb 3, 14-22",
    "de": "Das sagt der Amen - Offb 3, 14-22",
    "pt-BR": "Assim fala o Amém - Ap 3, 14-22",
-   "pt-PT": "Assim fala o Amém - Ap 3, 14-22",
+   "pt-PT": "Assim fala o Amen - Ap 3, 14-22",
    "lt-LT": "Tai sako amen (apr 3, 14-22)"
   },
   "stages": {
@@ -27,7 +27,7 @@
    "de-AT": "Wie der Antrieb des Zornes - VII. Ode Salomos",
    "de": "Wie der Antrieb des Zornes - VII. Ode Salomos",
    "pt-BR": "Como o impulso que sente a ira - Ode VII de Salomão",
-   "pt-PT": "Como o impulso que sente a ira - Ode VII de Salomão",
+   "pt-PT": "Como o impulso que sente a ira - Ode 7ª de Salomão",
    "lt-LT": "Kaip pykčio prasiveržimas (vii saliamono odė)"
   }
  },
@@ -386,7 +386,7 @@
    "es": "Abraham - Gn 18, 1-5",
    "it": "Abramo - Gen 18, 1-5",
    "de-AT": "Abraham - Gn 18, 1-5",
-   "de": "Abraham - Gn 18, 1-5",
+   "de": "Abraham - Gen 18, 1-5",
    "pt-BR": "Abraão - Gn 18, 1-5",
    "pt-PT": "Abraão - Teofania de Mambré - Gn 18, 1-5",
    "lt-LT": "Abraomas - Pr 18, 1-5",
@@ -495,7 +495,7 @@
    "de-AT": "Schon kommt das Reich - Off 19, 6-9",
    "de": "Schon kommt das Reich - Off 19, 6-9",
    "pt-BR": "Aleluia! Já chegou o Reino - Ap 19, 6-9",
-   "pt-PT": "Aleluia! Já chegou o Reino - Ap 19, 6-9",
+   "pt-PT": "Aleluia! Já veio o Reino - Ap 19, 6-9",
    "lt-LT": "Jau ateina karalystė (apr 19, 6-9)“",
    "sw-TZ": "Aleluya, umekuja ufalme - (Ufu 19: 6-9)",
    "en": "Alleluia, here comes the kingdom - Rev. 19,6-9"
@@ -599,7 +599,7 @@
    "de-AT": "An den Flüssen Babylons - Ps 137",
    "de": "An den Flüssen Babylons - Ps 137",
    "pt-BR": "Babilônia criminal - Sal 137 (136)",
-   "pt-PT": "Babilônia criminal - Sal 137 (136)",
+   "pt-PT": "Babilónia Criminosa - Sal 137 (136)",
    "lt-LT": "Prie babilonijos upių - Psalmė 136 (137)"
   },
   "stages": {
@@ -634,7 +634,7 @@
    "de-AT": "Ich will den Herrn preisen allezeit - Ps 34",
    "de": "Ich will den Herrn preisen allezeit - Ps 34",
    "pt-BR": "Bendirei o Senhor em todo tempo - Sal 34 (33)",
-   "pt-PT": "Bendirei o Senhor em todo tempo - Sal 34 (33)",
+   "pt-PT": "Bendirei o Senhor em todo o tempo - Sal 34 (33)",
    "lt-LT": "Aš laiminsiu viešpatį kiekvienu metu - Psalmė 33 (34)"
   }
  },
@@ -648,7 +648,7 @@
    "de-AT": "Preise meine Seele Jahwe - Ps 103",
    "de": "Preise meine Seele Jahwe - Ps 103",
    "pt-BR": "Bendize, minha alma, a Iahweh - Sal 103 (102)",
-   "pt-PT": "Bendize, minha alma, a Iahweh - Sal 103 (102)",
+   "pt-PT": "Bendize, minha alma, a Javé - Sal 103 (102)",
    "sw-TZ": "Nafsi yanguumbariki Yahweh - Zab 102 (103)"
   }
  },
@@ -723,7 +723,7 @@
    "de": "Lied des Moses - Ex 15, 1-18",
    "en": "Song of moses (ex 15, 1-18)",
    "pt-BR": "Canto de Moisés - Ex 15, 1-18",
-   "pt-PT": "Canto de Moisés - Ex 15, 1-18",
+   "pt-PT": "Cântico de Moisés - Ex 15, 1-18",
    "lt-LT": "Giedokim, giedokim (iš 15, 1-2)"
   }
  },
@@ -770,7 +770,7 @@
    "de": "Wie die Hinde lechzt - Ps 42",
    "en": "As the deer yearns - Ps 41",
    "pt-BR": "Como a corça - Sal 42-43 (41-42)",
-   "pt-PT": "Como a corça - Sal 42-43 (41-42)",
+   "pt-PT": "Como a Corça Anseia- Sal 42-43 (41-42)",
    "lt-LT": "Kaip Elnė Ilgis! - Psalmė 41-42 (42-43)"
   }
  },
@@ -1455,7 +1455,7 @@
    "de": "Zu dir gelange mein Bitten - Ps 119",
    "en": "Lord, lord jesus - Ps 118 (119)",
    "pt-BR": "Chegue à tua presença meu clamor - Sal 119 (118)",
-   "pt-PT": "Chegue à tua presença meu clamor - Sal 119 (118)",
+   "pt-PT": "Chegue à tua presença o meu clamor - Sal 119 (118)",
    "sw-TZ": "Njoo, umtafute mtumishi wako - Zab 118 (119)"
   }
  },
@@ -1661,7 +1661,7 @@
    "es": "No hay en él parecer - Is 53, 2ss",
    "it": "Non c'è in lui bellezza - Is 53, 2ss",
    "de-AT": "An ihm ist keine Schönheit - IV. Gottesknechtkied - Jes 53, 2 ff",
-   "de": "An ihm ist keine Schönheit - IV. Gottesknechtkied - Jes 53, 2 ff",
+   "de": "An ihm ist keine Schönheit - IV. Lied des Knechtes Jahwes - Jes 53, 2 ff",
    "en": "In him there is no beauty (is 53, 2ss)",
    "pt-BR": "Não há nele aparência - Quarto canto do Servo de Iahweh - Is 53, 2ss",
    "pt-PT": "Não há nele aparência - Quarto canto do Servo de Iahweh - Is 53, 2ss",
@@ -2408,7 +2408,7 @@
    "es": "Abbá Padre - Rm 8, 15-17",
    "it": "Abbà Padre - Rm 8, 15-17",
    "de-AT": "Abba Vater - Röm 8, 15-17",
-   "de": "Abba Vater - Röm 8, 15-17",
+   "de": "Abba, Vater - Röm 8, 15-17",
    "fr": "Abba Père - Rm 8, 15-17",
    "pt-BR": "Abba Pai - Rm 8, 15-17",
    "pt-PT": "Abba Pai - Rm 8, 15-17",
@@ -2418,7 +2418,8 @@
   "stages": {
    "es": "precatechumenate",
    "sw-TZ": "precatechumenate",
-   "en": "precatechumenate"
+   "en": "precatechumenate",
+   "de": "precatechumenate"
   }
  },
  "160": {
@@ -2444,7 +2445,7 @@
    "de-AT": "Wie zum Tod Verdammte - 1 Kor 4, 9-13",
    "de": "Wie zum Tod Verdammte - 1 Kor 4, 9-13",
    "pt-BR": "Como condenados a morte - 1 Co 4, 9-13",
-   "pt-PT": "Como condenados a morte - 1 Co 4, 9-13",
+   "pt-PT": "Como condenados à morte - 1 Co 4, 9-13",
    "lt-LT": "Tarsi myriop nuteistieji (1kor 4, 9-13)"
   }
  },
@@ -2458,7 +2459,7 @@
    "de-AT": "Wie der Honig träufelt - XL. Ode Salomons",
    "de": "Wie der Honig träufelt - XL. Ode Salomons",
    "pt-BR": "Como escorre o mel - Ode XL de Salomão",
-   "pt-PT": "Como escorre o mel - Ode XL de Salomão"
+   "pt-PT": "Como Destila o mel - Ode 24 de Salomão"
   }
  },
  "163": {
@@ -2472,7 +2473,7 @@
    "de-AT": "Mein Gelibter ist für mich - Hld 1, 13 ff",
    "de": "Mein Gelibter ist für mich - Hld 1, 13 ff",
    "pt-BR": "Como lírio entre os espinhos - Ct 1, 13ss",
-   "pt-PT": "Como lírio entre os espinhos - Ct 1, 13ss",
+   "pt-PT": "Como lírio entre os cardos - Ct 1, 13ss",
    "lt-LT": "Mano mylimoji yra man (gg 1,13 irt.t:)"
   },
   "stages": {
@@ -2740,7 +2741,7 @@
    "de": "Osterhalleluja",
    "en": "Easter alleluia",
    "pt-BR": "Aleluia Pascal - Apropriado para o tempo Pascal",
-   "pt-PT": "Aleluia Pascal - Apropriado para o tempo Pascal",
+   "pt-PT": "Aclamação ao Evangelho - Aleluia Pascal - Apropriado para o tempo Pascal",
    "lt-LT": "Paschos aleliuja"
   }
  },
@@ -2765,7 +2766,7 @@
    "de-AT": "Amen, amen,amen - Offb 7, 12-14",
    "de": "Amen, amen,amen - Offb 7, 12-14",
    "pt-BR": "Amém, amém, amém - Ap 7, 12-14",
-   "pt-PT": "Amém, amém, amém - Ap 7, 12-14",
+   "pt-PT": "Amen, Amen, Amen - Ap 7, 12-14",
    "lt-LT": "Amen, Amen, Amen - Apr 7, 12-14 (*)"
   },
   "stages": {
@@ -2778,7 +2779,7 @@
    "es": "Anáfora de la Sal",
    "en": "Anaphora for the penitential celebration",
    "pt-BR": "Anáfora do Sal",
-   "pt-PT": "Anáfora do Sal",
+   "pt-PT": "Anáfora do Sal - Rito do Segundo Escrutínio",
    "lt-LT": "Atgailos Liturgijos Šlovimas"
   },
   "stages": {
@@ -2793,7 +2794,7 @@
    "de": "Ruf zum evangelium in der Fastenzeit",
    "it": "Acclamazione al Vangelo nel tempo di quaresima",
    "pt-BR": "Antífona Versículo antes do evangelho - Apropriado para o tempo da Quaresma",
-   "pt-PT": "Antífona Versículo antes do evangelho - Apropriado para o tempo da Quaresma",
+   "pt-PT": "Aclamação Ao Evangelho - Apropriado para o tempo da Quaresma",
    "en": "Acclamation to the Gospel during Lent"
   }
  },
@@ -2806,7 +2807,7 @@
    "de": "Taufwasserweihe",
    "en": "Blessing of the baptismal water",
    "pt-BR": "Bênção da água - Da Liturgia Batismal da Vigília Pascal",
-   "pt-PT": "Bênção da água - Da Liturgia Batismal da Vigília Pascal",
+   "pt-PT": "Bênção da Água - Da Liturgia Batismal da Vigília Pascal",
    "lt-LT": "Krikštyklos vandens palaiminimas"
   }
  },
@@ -2818,7 +2819,7 @@
    "de-AT": "Dankgebet für die Liturgie der Versöhnung",
    "de": "Dankgebet für die Liturgie der Versöhnung",
    "pt-BR": "Bênção Penitencial - Oração para concluir a ação de graças para a Celebração Penitencial",
-   "pt-PT": "Bênção Penitencial - Oração para concluir a ação de graças para a Celebração Penitencial",
+   "pt-PT": "Anáfora Penitencial - Oração para concluir a ação de graças da Celebração Penitencial",
    "sw-TZ": "Baraka kwa adhimisho la penitensia",
    "en": "Blessing for the Penitential Celebration"
   },
@@ -3216,7 +3217,7 @@
    "de-AT": "Wie ein Schaf das sieht - Hymnus von Romanos dem Sänger",
    "de": "Wie ein Schaf das sieht - Hymnus von Romanos dem Sänger",
    "pt-BR": "Como ovelha que vê - Kontákion da Sexta-Feira Santa, de São Romano, o Melodista",
-   "pt-PT": "Como ovelha que vê - Kontákion da Sexta-Feira Santa, de São Romano, o Melodista"
+   "pt-PT": "Como ovelha que vê - Kontákion da Sexta-Feira Santa, de São Romano, o Melode"
   }
  },
  "221": {
@@ -3538,7 +3539,7 @@
    "es": "Canta a Yahveh Jerusalén - Sal 147 (146-147)",
    "en": "Praise the lord jerusalem - Ps 147",
    "pt-BR": "Canta a Iahweh, Jerusalém - Sal 147 (146-147)",
-   "pt-PT": "Canta a Iahweh, Jerusalém - Sal 147 (146-147)"
+   "pt-PT": "Canta ao Senhor, Jerusalém - Sal 147"
   }
  },
  "259": {

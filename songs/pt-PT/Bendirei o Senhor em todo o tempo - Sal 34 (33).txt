@@ -1,5 +1,6 @@
+clamp: 3
 La-
-A. BENDIREI O SENHOR EM TODO TEMPO,
+A. BENDIREI O SENHOR EM TODO O TEMPO,
 Sol                                                                          Mi
 NA MINHA BOCA SEMPRE O SEU LOUVOR;
 Fa                                             Mi7
@@ -22,7 +23,7 @@ Re-
 A. BENDIREI O SENHOR ...
 
 La-
-S. O anjo do Senhor acampa
+S. Porque o anjo do Senhor acampa
 Sol                                                               Mi
 ao redor dos que O temem e os salva.
 
@@ -34,7 +35,7 @@ livra-o de todas as angústias.
  La-
 S. Provai e vede         
 Sol                                        Mi
-QUE BOM É O SENHOR,
+que bom é o Senhor,
 Fa
 Feliz o homem 
                                        Mi
