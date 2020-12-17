@@ -1,36 +1,49 @@
-a               d*                         d*
+a                                                          d*
 S. Es war noch Nacht als Abraham
-a                         E
-sich vorbereitete  seinen Sohn zu opfern.
-d*           a
-Sie schauten einander in die Augen
-E             a
+                                                               a
+sich bereitete, seinen Sohn zu opfern;
+                                                               d
+sie schauten sich beide in die Augen,
+                                                        E
 da sagte ihm sein Sohn Isaak:
-a         d*         a                        d*
-V. Akeda  Akeda  Akeda  Akeda.
-a             d*
-Binde mich  binde mich fest
-a
-mein Vater  daß ich nicht widersteh'!
-a                  d*                  E
-S. Binde mich  binde mich fest  mein Vater
-a          a
-daß ich nicht aus Furcht widerstehe
 
+  a                       d                            a
+V. Akedà, akedà, akedà, akedà.
+a                                                 d
+Binde mich, binde mich fest,
+                                                                      a
+mein Vater , dass ich nicht widerstehe!
+
+  a                                                                       d
+S. Binde mich, binde mich fest mein Vater,
+                                                                  a
+dass ich nicht aus Furcht widerstehe,
+                                                   d
 und dein Opfer ungültig sei
-
+                                                     E
 und wir beide verworfen werden.
 
-V. Akeda  ...
+V. Akedà  ...
 
-S. Kommt und seht den Glauben auf der Erde
-
+  a
+S. Kommt und seht den Glauben auf der Erde,
+                                                      d
 seht den Glauben auf der Erde:
 
-Der Vater  der seinen einzigen Sohn opfert
+Ein Vater der seinen Einzigen opfert
 
-und der vielgeliebte Sohn,
-
-der ihm die Kehle bietet.
+und sein vielgeliebte Sohn,
+                                         E
+der ihm bietet die Kehle!
 
 V. Akeda  ...
+
+column
+____________________________________
+* Man verwende während des ganzen Liedes folgenden d-Moll Akkord
+e||-------|-------|--------|-------
+H||-------|-------|---o---|-------
+G||-------|--o---|--------|-------
+D||-------|-------|---o---|-------
+A||-------|-------|--------|-------
+E||-------|-------|--------|-------

@@ -53,6 +53,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608199926671,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Assim fala o Amen - Ap 3, 14-22",
+        "new": "Assim fala o amen - Ap 3, 14-22"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "2": [
@@ -91,6 +102,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608200714577,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": false
     }
   ],
   "3": [
@@ -152,6 +170,13 @@
         "original": "catechumenate",
         "new": "precatechumenate"
       }
+    },
+    {
+      "date": 1608200815359,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "4": [
@@ -229,6 +254,17 @@
       "linked": {
         "new": "Debora (ts 5, 1 ir t.t.)"
       }
+    },
+    {
+      "date": 1608200928576,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Débora - Jz 5",
+        "new": "Débora - Juízes 5"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "6": [
@@ -455,6 +491,13 @@
       "date": 1564005502550,
       "locale": "pt-BR",
       "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1608201329836,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
     }
@@ -778,6 +821,13 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608199283467,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": false
     }
   ],
   "20": [
@@ -833,6 +883,13 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608199006537,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": false
     }
   ],
   "21": [
@@ -890,6 +947,13 @@
       "linked": {
         "new": "Į tave keliu savo akis - Psalmė 122 (123)"
       }
+    },
+    {
+      "date": 1608199081020,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": false
     }
   ],
   "22": [
@@ -989,6 +1053,17 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608199254855,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "A ti, Senhor, em meu clamor imploro - Sal 142 (141)",
+        "new": "A Ti, Senhor, em meu clamor imploro - Sal 142 (141)"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "23": [
@@ -1066,6 +1141,17 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608199205931,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "A ti, Senhor, elevo a minha alma - Sal 25 (24)",
+        "new": "A Ti, Senhor, elevo a minha alma - Sal 25 (24)"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "24": [
@@ -1158,6 +1244,17 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608199182888,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "A ti, Senhor, é devido o louvor em Sião - Sal 65 (64)",
+        "new": "A Ti, Senhor é devido louvor em Sião - Sal 65 (64)"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "25": [
@@ -1277,6 +1374,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608199355106,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": false
     }
   ],
   "26": [
@@ -1382,6 +1486,13 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608199475525,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": false
     }
   ],
   "27": [
@@ -1464,6 +1575,13 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608199883613,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": false
     }
   ],
   "28": [
@@ -1625,6 +1743,17 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608199688793,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Aleluia! Louvai o Senhor - Sal 150",
+        "new": "Aleluia, louvai o Senhor - Sal 150"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "30": [
@@ -1713,6 +1842,17 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608199602783,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Aleluia! Bendizei o Senhor - Sal 134 (133)",
+        "new": "Aleluia, bendizei o Senhor - Sal 134 (133)"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "31": [
@@ -1818,6 +1958,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608199635243,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Aleluia! Já veio o Reino - Ap 19, 6-9",
+        "new": "Aleluia, já veio o reino - Ap 19, 6-9"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "32": [
@@ -1877,6 +2028,13 @@
       "author": "inesricardo05@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608199520313,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": false
     }
   ],
   "33": [
@@ -1962,6 +2120,13 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608199803573,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": false
     }
   ],
   "34": [
@@ -2062,6 +2227,20 @@
       "author": "david.hernandez.duran@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608154102917,
+      "locale": "de",
+      "author": "benedikt.jacobsen@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1608199496240,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": false
     }
   ],
   "35": [
@@ -2154,6 +2333,17 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608199988638,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Ave Maria I - Lc 1, 28ss",
+        "new": "Ave, Maria I - Lc 1, 28ss"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "36": [
@@ -2241,6 +2431,17 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608200010917,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Ave Maria II (1984) - Lc 1, 28ss",
+        "new": "Ave, Maria II (1984) - Lc 1, 28ss"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "37": [
@@ -2298,6 +2499,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608200086652,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Babilónia Criminosa - Sal 137 (136)",
+        "new": "Babilónia criminosa - Sal 137 (136)"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "38": [
@@ -2354,6 +2566,13 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608200101303,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": false
     }
   ],
   "39": [
@@ -2421,6 +2640,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608200159292,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": false
     }
   ],
   "40": [
@@ -2487,6 +2713,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608200296276,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Bendize, minha alma, a Javé - Sal 103 (102)",
+        "new": "Bendiz, ó minha alma a Javé - Sal 103 (102)"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "41": [
@@ -2575,6 +2812,17 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608200205893,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Bendita és tu, Maria - Lc 1, 42-45",
+        "new": "Bendita és Tu, Maria - Lc 1, 42-45"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "42": [
@@ -2633,6 +2881,17 @@
       "author": "inesricardo05@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608200262597,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Bendito sejas, Senhor - Dn 3, 52-57",
+        "new": "Bendito sejas Senhor - Dn 3, 52-57"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "43": [
@@ -2692,6 +2951,13 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608200317815,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": false
     }
   ],
   "44": [
@@ -2749,6 +3015,13 @@
         "original": "Canto de Moisés - Ex 15, 1-18",
         "new": "Cântico de Moisés - Ex 15, 1-18"
       },
+      "created": false,
+      "updated": false
+    },
+    {
+      "date": 1608200407982,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": false
     }
@@ -2826,6 +3099,17 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608200498781,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Caritas Christi Urget Nos - 2 Cor 5, 14.15.17.21",
+        "new": "Caritas Christi urget nos - 2 Cor 5, 14.15.17.21"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "47": [
@@ -2874,6 +3158,13 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608200462459,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": false
     }
   ],
   "48": [
@@ -2934,6 +3225,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608200560554,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Como a Corça Anseia- Sal 42-43 (41-42)",
+        "new": "Como a corça anseia - Sal 42-43 (41-42)"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "49": [
@@ -3000,6 +3302,13 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608200657284,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": false
     }
   ],
   "50": [
@@ -3131,6 +3440,17 @@
       "linked": {
         "new": "Dajenu"
       }
+    },
+    {
+      "date": 1608200879938,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Dayenu - Da Hagadá da Páscoa Hebráica",
+        "new": "Dayenú - Da Liturgia Hebraica Seder Pascal"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "54": [
@@ -3186,6 +3506,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1608200911229,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "55": [
@@ -3214,6 +3541,17 @@
       "linked": {
         "new": "Sakykite besibaiminantiems širdyje (iz 35, 4 ir t.t.)"
       }
+    },
+    {
+      "date": 1608201041774,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Dizei aos de coração cansado - Is 35, 4ss",
+        "new": "Dizei aos de coração canasdos - Is 35, 4ss"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "56": [
@@ -3252,6 +3590,13 @@
       "author": "david.hernandez.duran@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608200969933,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "57": [
@@ -3283,6 +3628,13 @@
       "linked": {
         "new": "Sako viešpats mano viešpačiui - Psalmė 109 (110)"
       }
+    },
+    {
+      "date": 1608201013215,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "58": [
@@ -3327,6 +3679,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1608200946122,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "59": [
@@ -3474,6 +3833,13 @@
       "linked": {
         "new": "Kad daugiau aš nesibastyčiau"
       }
+    },
+    {
+      "date": 1608199381865,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": false
     }
   ],
   "62": [
@@ -3601,6 +3967,17 @@
       "linked": {
         "new": "Eli, eli, lamma sabahtani? - Psalmė 21 (22)"
       }
+    },
+    {
+      "date": 1608206679541,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Eli, Eli, Lamá Sabactani - Sal 22 (21)",
+        "new": "Eli, Eli, Lama Sabactani - Sal 22 (21)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "65": [
@@ -4121,6 +4498,13 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608199953967,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": false
     }
   ],
   "77": [
@@ -4164,6 +4548,17 @@
       "linked": {
         "new": "I jahvės tarno giesmė (iz 42)"
       }
+    },
+    {
+      "date": 1608201089961,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Eis o meu Servo - Primeiro canto do Servo de Iahweh - Is 42",
+        "new": "Eis o meu servo - Primeiro canto do Servo de Javé - Is 42"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "78": [
@@ -4219,6 +4614,17 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1608201604089,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Eis-me aqui que venho em breve - Ap 22, 12-16",
+        "new": "Eis aqui que venho em breve - Ap 22, 12-16"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "79": [
@@ -4402,6 +4808,13 @@
       "date": 1608033424415,
       "locale": "de",
       "author": "Benedikt.jacobsen@hotmail.de",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1608101487663,
+      "locale": "de",
+      "author": "benedikt.jacobsen@gmail.com",
       "created": false,
       "updated": true
     }
@@ -4782,6 +5195,13 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608198912521,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": false
     }
   ],
   "93": [
@@ -4881,6 +5301,13 @@
         "original": "Chegue à tua presença meu clamor - Sal 119 (118)",
         "new": "Chegue à tua presença o meu clamor - Sal 119 (118)"
       },
+      "created": false,
+      "updated": false
+    },
+    {
+      "date": 1608200535954,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": false
     }
@@ -5902,6 +6329,17 @@
       "author": "inesricardo05@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608200783234,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Como são amáveis tuas moradas - Sal 84 (83)",
+        "new": "Como são amáveis as tuas moradas - Sal 84 (83)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "121": [
@@ -6573,6 +7011,17 @@
       "linked": {
         "new": "Tau išpažinau savo nuodėme - Psalmė 31 (32)"
       }
+    },
+    {
+      "date": 1608131978215,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Confessei a ti o meu pecado - Sal 32 (31)",
+        "new": "Manifestei-Te o meu pecado - Sal 32 (31)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "141": [
@@ -6739,6 +7188,13 @@
       "linked": {
         "new": "Uri, uri, ura"
       }
+    },
+    {
+      "date": 1608154955405,
+      "locale": "de",
+      "author": "benedikt.jacobsen@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "145": [
@@ -7155,6 +7611,17 @@
         "original": "catechumenate",
         "new": "precatechumenate"
       }
+    },
+    {
+      "date": 1608155901084,
+      "locale": "de",
+      "author": "benedikt.jacobsen@gmail.com",
+      "rename": {
+        "original": "Schon kommt mein Gott",
+        "new": "Schon kommt er, mein König"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "155": [
@@ -7331,6 +7798,13 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608198890380,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": false
     }
   ],
   "159": [
@@ -7432,6 +7906,20 @@
         "original": "election",
         "new": "precatechumenate"
       }
+    },
+    {
+      "date": 1608100368588,
+      "locale": "de",
+      "author": "Benedikt.jacobsen@hotmail.de",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1608199336728,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": false
     }
   ],
   "160": [
@@ -7485,6 +7973,13 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608200233904,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": false
     }
   ],
   "161": [
@@ -7531,6 +8026,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608200579664,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": false
     }
   ],
   "162": [
@@ -7562,6 +8064,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608200636264,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Como Destila o mel - Ode 24 de Salomão",
+        "new": "Como destila o mel - Ode 24 de Salomão"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "163": [
@@ -7619,6 +8132,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608200687944,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Como lírio entre os cardos - Ct 1, 13ss",
+        "new": "Como os lírios entre os cardos - Ct 1, 13ss"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "164": [
@@ -8025,6 +8549,13 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608198932026,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": false
     }
   ],
   "174": [
@@ -8063,6 +8594,13 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608199025717,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": false
     }
   ],
   "175": [
@@ -8107,6 +8645,13 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608199305931,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": false
     }
   ],
   "176": [
@@ -8174,6 +8719,17 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608199906217,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "As armas da Luz - Ef 6, 11ss",
+        "new": "As armas da luz - Ef 6, 11ss"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "177": [
@@ -8340,6 +8896,13 @@
       },
       "created": false,
       "updated": false
+    },
+    {
+      "date": 1608199410999,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": false
     }
   ],
   "182": [
@@ -8394,6 +8957,17 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608199568265,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Aleluia Interleccional - Apropriado para os tempos do Advento, Natal e Comum",
+        "new": "Aleluia interleccional - Apropriado para os tempos do Advento, Natal e Comum"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "183": [
@@ -8501,6 +9075,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608199742395,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Amen, Amen, Amen - Ap 7, 12-14",
+        "new": "Amen, amen, amen - Ap 7, 12-14"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "184": [
@@ -8563,6 +9148,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608199828773,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Anáfora do Sal - Rito do Segundo Escrutínio",
+        "new": "Anáfora do sal - Rito do Segundo Escrutínio"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "185": [
@@ -8624,6 +9220,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608199456432,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Aclamação Ao Evangelho - Apropriado para o tempo da Quaresma",
+        "new": "Aclamação ao Evangelho - Apropriado para o tempo da Quaresma"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "186": [
@@ -8688,6 +9295,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608200128770,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Bênção da Água - Da Liturgia Batismal da Vigília Pascal",
+        "new": "Bênção da água - Da Liturgia Batismal da Vigília Pascal"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "187": [
@@ -8779,6 +9397,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608199863000,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Anáfora Penitencial - Oração para concluir a ação de graças da Celebração Penitencial",
+        "new": "Anáfora penitencial - Oração para concluir a ação de graças da Celebração Penitencial"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "188": [
@@ -8824,6 +9453,17 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1608200862022,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Credo - Símbolo apostólico",
+        "new": "Credo- Símbolo Apostólico"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "189": [
@@ -8968,6 +9608,28 @@
         "new": "Lamb of God"
       },
       "created": true,
+      "updated": false
+    },
+    {
+      "date": 1608136385541,
+      "locale": "de",
+      "author": "benedikt.jacobsen@gmail.com",
+      "rename": {
+        "original": "Agnus Dei",
+        "new": "Lamm Gottes"
+      },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1608200839470,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Agnus Dei",
+        "new": "Lamm Gottes"
+      },
+      "created": false,
       "updated": false
     }
   ],
@@ -10001,6 +10663,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608200757602,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": false
     }
   ],
   "221": [
@@ -10308,6 +10977,13 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608200375585,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": false
     }
   ],
   "240": [
@@ -10527,6 +11203,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608200351671,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": false
     }
   ],
   "259": [

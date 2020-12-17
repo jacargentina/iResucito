@@ -8,7 +8,7 @@
    "de-AT": "Das sagt der Amen - Offb 3, 14-22",
    "de": "Das sagt der Amen - Offb 3, 14-22",
    "pt-BR": "Assim fala o Amém - Ap 3, 14-22",
-   "pt-PT": "Assim fala o Amen - Ap 3, 14-22",
+   "pt-PT": "Assim fala o amen - Ap 3, 14-22",
    "lt-LT": "Tai sako amen (apr 3, 14-22)"
   },
   "stages": {
@@ -81,7 +81,7 @@
    "de-AT": "Deborah - Ri 5, 1 ff",
    "de": "Deborah - Ri 5, 1 ff",
    "pt-BR": "Débora - Jz 5",
-   "pt-PT": "Débora - Jz 5",
+   "pt-PT": "Débora - Juízes 5",
    "lt-LT": "Debora (ts 5, 1 ir t.t.)"
   },
   "stages": {
@@ -337,7 +337,7 @@
    "de-AT": "Zu dir, o Herr, rufe ich - Ps 142",
    "de": "Zu dir, o Herr, rufe ich - Ps 142",
    "pt-BR": "A ti, Senhor, com minha voz gritando imploro - Sal 142 (141)",
-   "pt-PT": "A ti, Senhor, em meu clamor imploro - Sal 142 (141)",
+   "pt-PT": "A Ti, Senhor, em meu clamor imploro - Sal 142 (141)",
    "lt-LT": "Balsiai šaukiuosi tavo pagalbos, o viešpatie, - Psalmė 141 (142)",
    "en": "To you, O Lord, with my voice I cry for help - Psalm 141 (142)"
   },
@@ -355,7 +355,7 @@
    "de": "Zu dir o herr erheb' ich meine Seele - Ps 25",
    "en": "To you, o lord, i lift up my soul - Ps 24",
    "pt-BR": "A ti, Senhor, levanto minha alma - Sal 25 (24)",
-   "pt-PT": "A ti, Senhor, elevo a minha alma - Sal 25 (24)",
+   "pt-PT": "A Ti, Senhor, elevo a minha alma - Sal 25 (24)",
    "lt-LT": "Į tave, viešpatie, keliu savo sielą - Psalmė 24 (25)"
   }
  },
@@ -370,7 +370,7 @@
    "de": "Dir o Herr gebührt Lobgesang in Zion - Ps 65",
    "en": "To you o lord - Ps 64 (65)",
    "pt-BR": "A ti, Senhor, se deve o louvor em Sião - Sal 65 (64)",
-   "pt-PT": "A ti, Senhor, é devido o louvor em Sião - Sal 65 (64)",
+   "pt-PT": "A Ti, Senhor é devido louvor em Sião - Sal 65 (64)",
    "lt-LT": "Tau, viešpatie, pridera garbinimas zione - Psalmė 64 (65)"
   },
   "stages": {
@@ -458,7 +458,7 @@
    "de": "Lobet den Herrn - Ps 150",
    "en": "Alleluia, Praise God - Psalm 150",
    "pt-BR": "Aleluia! Louvai o Senhor - Sal 150",
-   "pt-PT": "Aleluia! Louvai o Senhor - Sal 150",
+   "pt-PT": "Aleluia, louvai o Senhor - Sal 150",
    "lt-LT": "Aleliuja, šlovinkite dievą - Psalmė 150",
    "sw-TZ": "Aleluya, msifuni Mungu - Zab 150"
   },
@@ -477,7 +477,7 @@
    "de-AT": "Preiset den Herrn - Ps 134",
    "de": "Preiset den Herrn - Ps 134",
    "pt-BR": "Aleluia! Bendizei o Senhor - Sal 134 (133)",
-   "pt-PT": "Aleluia! Bendizei o Senhor - Sal 134 (133)",
+   "pt-PT": "Aleluia, bendizei o Senhor - Sal 134 (133)",
    "lt-LT": "Visi garbinkite dievą - Psalmė 133 (134)",
    "en": "Bless the Lord - Psalm 133 (134)"
   },
@@ -495,7 +495,7 @@
    "de-AT": "Schon kommt das Reich - Off 19, 6-9",
    "de": "Schon kommt das Reich - Off 19, 6-9",
    "pt-BR": "Aleluia! Já chegou o Reino - Ap 19, 6-9",
-   "pt-PT": "Aleluia! Já veio o Reino - Ap 19, 6-9",
+   "pt-PT": "Aleluia, já veio o reino - Ap 19, 6-9",
    "lt-LT": "Jau ateina karalystė (apr 19, 6-9)“",
    "sw-TZ": "Aleluya, umekuja ufalme - (Ufu 19: 6-9)",
    "en": "Alleluia, here comes the kingdom - Rev. 19,6-9"
@@ -561,7 +561,7 @@
    "de-AT": "Ave Maria",
    "de": "Ave Maria",
    "pt-BR": "Ave Maria I - Lc 1, 28ss",
-   "pt-PT": "Ave Maria I - Lc 1, 28ss",
+   "pt-PT": "Ave, Maria I - Lc 1, 28ss",
    "lt-LT": "Sveika marija"
   },
   "stages": {
@@ -580,7 +580,7 @@
    "de-AT": "Ave Maria II (1984)",
    "de": "Ave Maria II (1984)",
    "pt-BR": "Ave Maria II (1984) - Lc 1, 28ss",
-   "pt-PT": "Ave Maria II (1984) - Lc 1, 28ss",
+   "pt-PT": "Ave, Maria II (1984) - Lc 1, 28ss",
    "lt-LT": "Sveika Marija (1984)"
   },
   "stages": {
@@ -599,7 +599,7 @@
    "de-AT": "An den Flüssen Babylons - Ps 137",
    "de": "An den Flüssen Babylons - Ps 137",
    "pt-BR": "Babilônia criminal - Sal 137 (136)",
-   "pt-PT": "Babilónia Criminosa - Sal 137 (136)",
+   "pt-PT": "Babilónia criminosa - Sal 137 (136)",
    "lt-LT": "Prie babilonijos upių - Psalmė 136 (137)"
   },
   "stages": {
@@ -648,7 +648,7 @@
    "de-AT": "Preise meine Seele Jahwe - Ps 103",
    "de": "Preise meine Seele Jahwe - Ps 103",
    "pt-BR": "Bendize, minha alma, a Iahweh - Sal 103 (102)",
-   "pt-PT": "Bendize, minha alma, a Javé - Sal 103 (102)",
+   "pt-PT": "Bendiz, ó minha alma a Javé - Sal 103 (102)",
    "sw-TZ": "Nafsi yanguumbariki Yahweh - Zab 102 (103)"
   }
  },
@@ -663,7 +663,7 @@
    "de-AT": "Maria, selige Maria - Lk 1, 42-44",
    "de": "Maria, selige Maria - Lk 1, 42-44",
    "pt-BR": "Bendita és tu, Maria - Lc 1, 42-45",
-   "pt-PT": "Bendita és tu, Maria - Lc 1, 42-45",
+   "pt-PT": "Bendita és Tu, Maria - Lc 1, 42-45",
    "lt-LT": "Palaiminta esi tu, marija (lk 1, 42-44)",
    "sw-TZ": "Mbarikiwa Maria - (Lk 1: 42-45)"
   },
@@ -679,7 +679,7 @@
    "de-AT": "Lobgesang der drei Jünglinge im Feuerofen 1. Teil - Dan 3, 52-57",
    "de": "Lobgesang der drei Jünglinge im Feuerofen 1. Teil - Dan 3, 52-57",
    "pt-BR": "Bendito sejas, Senhor - Dn 3, 52-57",
-   "pt-PT": "Bendito sejas, Senhor - Dn 3, 52-57",
+   "pt-PT": "Bendito sejas Senhor - Dn 3, 52-57",
    "lt-LT": "Trijų jaunikaičių giesmė krosnyje (dn 3, 52-57)"
   }
  },
@@ -736,7 +736,7 @@
    "de": "Caritas Christi - 2 Kor 5, 14-17.21; 1 Kor 9 16b",
    "en": "Caritas christi",
    "pt-BR": "Caritas Christi Urget Nos - 2 Cor 5, 14.15.17.21",
-   "pt-PT": "Caritas Christi Urget Nos - 2 Cor 5, 14.15.17.21",
+   "pt-PT": "Caritas Christi urget nos - 2 Cor 5, 14.15.17.21",
    "lt-LT": "Caritas christi - 2 kor 5, 14-21"
   },
   "stages": {
@@ -770,7 +770,7 @@
    "de": "Wie die Hinde lechzt - Ps 42",
    "en": "As the deer yearns - Ps 41",
    "pt-BR": "Como a corça - Sal 42-43 (41-42)",
-   "pt-PT": "Como a Corça Anseia- Sal 42-43 (41-42)",
+   "pt-PT": "Como a corça anseia - Sal 42-43 (41-42)",
    "lt-LT": "Kaip Elnė Ilgis! - Psalmė 41-42 (42-43)"
   }
  },
@@ -837,7 +837,7 @@
    "de-AT": "Dajenù",
    "de": "Dajenù",
    "pt-BR": "Dayenu - Da Hagadá da Páscoa Hebráica",
-   "pt-PT": "Dayenu - Da Hagadá da Páscoa Hebráica",
+   "pt-PT": "Dayenú - Da Liturgia Hebraica Seder Pascal",
    "lt-LT": "Dajenu"
   },
   "stages": {
@@ -869,7 +869,7 @@
    "de-AT": "Sagt es den im Herzen Verzagten - Jes 35, 4 ff",
    "de": "Sagt es den im Herzen Verzagten - Jes 35, 4 ff",
    "pt-BR": "Dizei aos de coração cansado - Is 35, 4ss",
-   "pt-PT": "Dizei aos de coração cansado - Is 35, 4ss",
+   "pt-PT": "Dizei aos de coração canasdos - Is 35, 4ss",
    "lt-LT": "Sakykite besibaiminantiems širdyje (iz 35, 4 ir t.t.)"
   }
  },
@@ -1013,7 +1013,7 @@
    "de": "Eli, Eli, Lama Sabachtani - Ps 22",
    "en": "Eli, eli, lamma sabachtani - Ps 21 (22)",
    "pt-BR": "Eli, Eli, Lamá Sabactani - Sal 22 (21)",
-   "pt-PT": "Eli, Eli, Lamá Sabactani - Sal 22 (21)",
+   "pt-PT": "Eli, Eli, Lama Sabactani - Sal 22 (21)",
    "lt-LT": "Eli, eli, lamma sabahtani? - Psalmė 21 (22)"
   }
  },
@@ -1201,7 +1201,7 @@
    "de-AT": "I. Lied des Knecht Jahwes - Jes 42",
    "de": "I. Lied des Knecht Jahwes - Jes 42",
    "pt-BR": "Eis o meu Servo - Primeiro canto do Servo de Iahweh - Is 42",
-   "pt-PT": "Eis o meu Servo - Primeiro canto do Servo de Iahweh - Is 42",
+   "pt-PT": "Eis o meu servo - Primeiro canto do Servo de Javé - Is 42",
    "lt-LT": "I jahvės tarno giesmė (iz 42)"
   },
   "stages": {
@@ -1217,7 +1217,7 @@
    "de-AT": "Siehe da ich komme bald - Offb 22, 12-16",
    "de": "Siehe da ich komme bald - Offb 22, 12-16",
    "pt-BR": "Eis-me aqui que venho em breve - Ap 22, 12-16",
-   "pt-PT": "Eis-me aqui que venho em breve - Ap 22, 12-16",
+   "pt-PT": "Eis aqui que venho em breve - Ap 22, 12-16",
    "lt-LT": "Štai aš ateisiu veikiai (apr 22, 12-16)",
    "sw-TZ": "Tazama, naja upesi - (Ufu 22: 12-16)",
    "en": "Behold I'm coming soon - Rev. 22, 12-16"
@@ -1838,7 +1838,7 @@
    "de": "Wie lieblich sind deine Wohnungen - Ps 84",
    "en": "How lovely are your dwelling places - Ps 83 (84)",
    "pt-BR": "Como são amáveis tuas moradas - Sal 84 (83)",
-   "pt-PT": "Como são amáveis tuas moradas - Sal 84 (83)",
+   "pt-PT": "Como são amáveis as tuas moradas - Sal 84 (83)",
    "lt-LT": "Kokios mielos tavo buveinės - Psalmė 83 (84)"
   }
  },
@@ -2125,7 +2125,7 @@
    "de-AT": "Meine Sünde hab ich dir bekannt - Ps 32",
    "de": "Meine Sünde hab ich dir bekannt - Ps 32",
    "pt-BR": "Confessei a ti o meu pecado - Sal 32 (31)",
-   "pt-PT": "Confessei a ti o meu pecado - Sal 32 (31)",
+   "pt-PT": "Manifestei-Te o meu pecado - Sal 32 (31)",
    "lt-LT": "Tau išpažinau savo nuodėme - Psalmė 31 (32)"
   }
  },
@@ -2332,7 +2332,7 @@
    "es": "Ya viene mi Dios - Villancico",
    "it": "Già viene il mio dio - Canto natalizio",
    "de-AT": "Schon kommt mein Gott",
-   "de": "Schon kommt mein Gott",
+   "de": "Schon kommt er, mein König",
    "pt-BR": "Já vem o meu Deus - Canto popular do Natal",
    "pt-PT": "Já vem o meu Deus - Canto popular do Natal"
   },
@@ -2459,7 +2459,7 @@
    "de-AT": "Wie der Honig träufelt - XL. Ode Salomons",
    "de": "Wie der Honig träufelt - XL. Ode Salomons",
    "pt-BR": "Como escorre o mel - Ode XL de Salomão",
-   "pt-PT": "Como Destila o mel - Ode 24 de Salomão"
+   "pt-PT": "Como destila o mel - Ode 24 de Salomão"
   }
  },
  "163": {
@@ -2473,7 +2473,7 @@
    "de-AT": "Mein Gelibter ist für mich - Hld 1, 13 ff",
    "de": "Mein Gelibter ist für mich - Hld 1, 13 ff",
    "pt-BR": "Como lírio entre os espinhos - Ct 1, 13ss",
-   "pt-PT": "Como lírio entre os cardos - Ct 1, 13ss",
+   "pt-PT": "Como os lírios entre os cardos - Ct 1, 13ss",
    "lt-LT": "Mano mylimoji yra man (gg 1,13 irt.t:)"
   },
   "stages": {
@@ -2669,7 +2669,7 @@
    "de-AT": "Bekleidet euch mit der Waffenrüstung des Herrn - Eph 6, 11 ff",
    "de": "Bekleidet euch mit der Waffenrüstung des Herrn - Eph 6, 11 ff",
    "pt-BR": "As armas da Luz - Ef 6, 11ss",
-   "pt-PT": "As armas da Luz - Ef 6, 11ss",
+   "pt-PT": "As armas da luz - Ef 6, 11ss",
    "lt-LT": "Apsivilkite dievo šarvais - Ef 6, 11 ir t.t."
   },
   "stages": {
@@ -2753,7 +2753,7 @@
    "de": "Halleluja-ruf Zum Evangelium",
    "it": "Alleluja per acclamazioni al Vangelo",
    "pt-BR": "Aleluia Interleccional - Apropriado para os tempos do Advento, Natal e Comum",
-   "pt-PT": "Aleluia Interleccional - Apropriado para os tempos do Advento, Natal e Comum"
+   "pt-PT": "Aleluia interleccional - Apropriado para os tempos do Advento, Natal e Comum"
   }
  },
  "183": {
@@ -2766,7 +2766,7 @@
    "de-AT": "Amen, amen,amen - Offb 7, 12-14",
    "de": "Amen, amen,amen - Offb 7, 12-14",
    "pt-BR": "Amém, amém, amém - Ap 7, 12-14",
-   "pt-PT": "Amen, Amen, Amen - Ap 7, 12-14",
+   "pt-PT": "Amen, amen, amen - Ap 7, 12-14",
    "lt-LT": "Amen, Amen, Amen - Apr 7, 12-14 (*)"
   },
   "stages": {
@@ -2779,7 +2779,7 @@
    "es": "Anáfora de la Sal",
    "en": "Anaphora for the penitential celebration",
    "pt-BR": "Anáfora do Sal",
-   "pt-PT": "Anáfora do Sal - Rito do Segundo Escrutínio",
+   "pt-PT": "Anáfora do sal - Rito do Segundo Escrutínio",
    "lt-LT": "Atgailos Liturgijos Šlovimas"
   },
   "stages": {
@@ -2794,7 +2794,7 @@
    "de": "Ruf zum evangelium in der Fastenzeit",
    "it": "Acclamazione al Vangelo nel tempo di quaresima",
    "pt-BR": "Antífona Versículo antes do evangelho - Apropriado para o tempo da Quaresma",
-   "pt-PT": "Aclamação Ao Evangelho - Apropriado para o tempo da Quaresma",
+   "pt-PT": "Aclamação ao Evangelho - Apropriado para o tempo da Quaresma",
    "en": "Acclamation to the Gospel during Lent"
   }
  },
@@ -2807,7 +2807,7 @@
    "de": "Taufwasserweihe",
    "en": "Blessing of the baptismal water",
    "pt-BR": "Bênção da água - Da Liturgia Batismal da Vigília Pascal",
-   "pt-PT": "Bênção da Água - Da Liturgia Batismal da Vigília Pascal",
+   "pt-PT": "Bênção da água - Da Liturgia Batismal da Vigília Pascal",
    "lt-LT": "Krikštyklos vandens palaiminimas"
   }
  },
@@ -2819,7 +2819,7 @@
    "de-AT": "Dankgebet für die Liturgie der Versöhnung",
    "de": "Dankgebet für die Liturgie der Versöhnung",
    "pt-BR": "Bênção Penitencial - Oração para concluir a ação de graças para a Celebração Penitencial",
-   "pt-PT": "Anáfora Penitencial - Oração para concluir a ação de graças da Celebração Penitencial",
+   "pt-PT": "Anáfora penitencial - Oração para concluir a ação de graças da Celebração Penitencial",
    "sw-TZ": "Baraka kwa adhimisho la penitensia",
    "en": "Blessing for the Penitential Celebration"
   },
@@ -2834,7 +2834,7 @@
    "de-AT": "Das Apostolische Glaubens Bekenntnis",
    "de": "Das Apostolische Glaubens Bekenntnis",
    "pt-BR": "Credo - Símbolo apostólico",
-   "pt-PT": "Credo - Símbolo apostólico",
+   "pt-PT": "Credo- Símbolo Apostólico",
    "lt-LT": "Credo (apaštalų tikėjimo išpažinimas)",
    "en": "Creed - Apostolic Symbol"
   },
@@ -2879,7 +2879,7 @@
   "files": {
    "es": "Letanía del Cordero de Dios - Himno Agnus Dei",
    "de-AT": "Agnus Dei",
-   "de": "Agnus Dei",
+   "de": "Lamm Gottes",
    "pt-BR": "Cordeiro de Deus - Ladainha do Cordeiro de Deus",
    "pt-PT": "Cordeiro de Deus - Ladainha do Cordeiro de Deus",
    "en": "Lamb of God"
