@@ -2,15 +2,7 @@
 import React, { Fragment, useContext, useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useSession, signOut } from 'next-auth/client';
-import {
-  Portal,
-  Label,
-  Message,
-  Button,
-  Menu,
-  Icon,
-  Modal,
-} from 'semantic-ui-react';
+import { Button, Menu, Icon, Modal } from 'semantic-ui-react';
 import * as axios from 'axios';
 import { DataContext } from './DataContext';
 import { EditContext } from './EditContext';
@@ -114,34 +106,6 @@ const AppActions = () => {
             </div>
           </Modal.Content>
         </Modal>
-      )}
-      {!isLoading && session && session.stats && session.stats.length > 0 && (
-        <Menu.Item>
-          {session.stats.length > 0 && (
-            <Portal
-              closeOnTriggerClick
-              openOnTriggerClick
-              trigger={<Label color="red">{session.stats.length}</Label>}>
-              <div
-                style={{
-                  position: 'fixed',
-                  zIndex: 9999,
-                  top: 54,
-                  right: 0,
-                }}>
-                <Message
-                  header={I18n.t('ui.changes since last login')}
-                  list={session.stats.map((stat) => {
-                    return I18n.t('ui.changed songs by author', {
-                      ...stat,
-                    });
-                  })}
-                  color="blue"
-                />
-              </div>
-            </Portal>
-          )}
-        </Menu.Item>
       )}
       {!isLoading && session && session.user ? (
         <>

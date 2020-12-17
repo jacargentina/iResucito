@@ -1,31 +1,8 @@
 import NextAuth from 'next-auth';
 import Providers from 'next-auth/providers';
-import * as _ from 'lodash';
 import bcrypt from 'bcryptjs';
 import { AUTH_SECRET, JWT_SECRET } from './secret';
-import { db, readLocalePatch } from '../../../common';
-
-const getStats = async (user: any) => {
-  const stats = [];
-  const patch = await readLocalePatch();
-  if (patch) {
-    const newItemsSinceLastLogin = [];
-    Object.keys(patch).forEach((key) => {
-      const songPatch = patch[key];
-      Object.keys(songPatch).forEach((rawLoc) => {
-        const item = songPatch[rawLoc];
-        if (item.date > (user.loggedInAt || 0)) {
-          newItemsSinceLastLogin.push(item);
-        }
-      });
-    });
-    const byAuthor = _.groupBy(newItemsSinceLastLogin, (i) => i.author);
-    Object.keys(byAuthor).forEach((author) => {
-      stats.push({ author, count: byAuthor[author].length });
-    });
-  }
-  return stats;
-};
+import { db } from '../../../common';
 
 const options = {
   secret: AUTH_SECRET,
@@ -40,14 +17,12 @@ const options = {
     /* eslint-disable no-param-reassign */
     session: async (session, jwtToken, sessionToken) => {
       session.user = jwtToken.userData;
-      session.stats = jwtToken.statsData;
       return Promise.resolve(session);
     },
     jwt: async (token, iresucitoUser, account, profile, isNewUser) => {
       const isSignIn = !!iresucitoUser;
       if (isSignIn) {
         token.userData = iresucitoUser.user;
-        token.statsData = iresucitoUser.stats;
       }
       return Promise.resolve(token);
     },
@@ -87,8 +62,6 @@ const options = {
                 user.password
               );
               if (result) {
-                const stats = await getStats(user);
-
                 // Registrar hora de inicio de sesion
                 db.get('users')
                   .find({ email: credentials.email })
@@ -97,7 +70,6 @@ const options = {
 
                 return Promise.resolve({
                   user: user.email,
-                  stats,
                 });
               }
               return Promise.resolve(null);
