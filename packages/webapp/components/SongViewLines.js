@@ -1,26 +1,32 @@
 // @flow
-import React, { Fragment } from 'react';
+import React from 'react';
 import I18n from '../../../translations';
 import { WebStyles } from './WebParser';
 
 const SongViewLines = (props: any) => {
   const { lines, indicators } = props;
 
+  let sufijo = null;
+  let texto = null;
+  let bis = null;
+
   // Ajuste final para renderizado en screen
-  var renderItems = lines.map<any>((it: SongLine, i) => {
+  const renderItems = lines.map<any>((it: SongLine, i) => {
     if (it.sufijo) {
-      var sufijo = (
-        <span key={i + 'sufijo'} style={it.sufijoStyle}>
+      sufijo = (
+        <span key={`${i}sufijo`} style={it.sufijoStyle}>
           {it.sufijo}
         </span>
       );
     }
+    // eslint-disable-next-line no-param-reassign
     it.prefijo = it.prefijo.replace(/ /g, '\u00a0');
+    // eslint-disable-next-line no-param-reassign
     it.texto = it.texto.replace(/ /g, '\u00a0');
-    var indicator = indicators.find((r) => r.start <= i && r.end > i);
+    const indicator = indicators.find((r) => r.start <= i && r.end > i);
     if (indicator) {
-      var middle = Math.trunc((indicator.start + indicator.end) / 2);
-      var indicatorText = (
+      const middle = Math.trunc((indicator.start + indicator.end) / 2);
+      let indicatorText = (
         <div
           style={{
             display: 'inline-block',
@@ -29,7 +35,7 @@ const SongViewLines = (props: any) => {
         </div>
       );
       if (i === middle) {
-        if (indicator.type == 'bloqueRepetir') {
+        if (indicator.type === 'bloqueRepetir') {
           indicatorText = (
             <div
               style={{
@@ -40,7 +46,7 @@ const SongViewLines = (props: any) => {
               {I18n.t('songs.repeat')}
             </div>
           );
-        } else if (indicator.type == 'bloqueNotaAlPie') {
+        } else if (indicator.type === 'bloqueNotaAlPie') {
           indicatorText = (
             <div
               style={{
@@ -48,47 +54,46 @@ const SongViewLines = (props: any) => {
                 position: 'relative',
                 top: '-5px',
               }}>
-              {'*'}
+              *
             </div>
           );
         }
       }
-      var texto = (
-        <span style={{ display: 'inline-block', width: '50%' }}>
-          <span key={i + 'prefijo'} style={it.prefijoStyle}>
+      texto = (
+        <span style={{ display: 'inline-block', width: '70%' }}>
+          <span key={`${i}prefijo`} style={it.prefijoStyle}>
             {it.prefijo}
           </span>
           <span style={it.style}>{it.texto}</span>
         </span>
       );
-      var bis = (
+      bis = (
         <span
           style={{
             color: 'red',
             display: 'inline-block',
             borderLeft: '2px solid red',
-            width: '45%',
+            width: '25%',
             paddingLeft: 10,
           }}>
           {indicatorText}
         </span>
       );
+    } else if (it.type === 'inicioParrafo') {
+      texto = <span style={{ display: 'inline-block', width: '95%' }} />;
+      bis = null;
     } else {
-      if (it.type == 'inicioParrafo') {
-        var texto = <span style={{ display: 'inline-block', width: '95%' }} />;
-      } else {
-        var texto = (
-          <Fragment>
-            <span key={i + 'prefijo'} style={it.prefijoStyle}>
-              {it.prefijo}
-            </span>
-            <span style={it.style}>{it.texto}</span>
-          </Fragment>
-        );
-      }
+      texto = (
+        <>
+          <span key={`${i}prefijo`} style={it.prefijoStyle}>
+            {it.prefijo}
+          </span>
+          <span style={it.style}>{it.texto}</span>
+        </>
+      );
     }
 
-    var lineNumber = (
+    const lineNumber = (
       <div
         style={{
           display: 'inline-block',
@@ -104,7 +109,7 @@ const SongViewLines = (props: any) => {
     );
 
     return (
-      <div key={i + 'texto'}>
+      <div key={`${i}texto`}>
         {lineNumber}
         {texto}
         {sufijo}
