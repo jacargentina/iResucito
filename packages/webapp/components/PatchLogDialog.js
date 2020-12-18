@@ -1,9 +1,6 @@
 // @flow
 import React, { useContext } from 'react';
-import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
-import Grid from 'semantic-ui-react/dist/commonjs/collections/Grid';
-import Modal from 'semantic-ui-react/dist/commonjs/modules/Modal';
-import Message from 'semantic-ui-react/dist/commonjs/collections/Message';
+import { Button, Grid, Modal, Message } from 'semantic-ui-react';
 import { DataContext } from './DataContext';
 import { EditContext } from './EditContext';
 import Loading from './Loading';
@@ -18,7 +15,7 @@ const PatchLogDialog = () => {
   if (!edit) {
     return null;
   }
-  
+
   const { editSong, patchLogs } = edit;
 
   return (

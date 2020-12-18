@@ -1,6 +1,6 @@
 // @flow
 import React, { Fragment, useState, useEffect } from 'react';
-import Header from 'semantic-ui-react/dist/commonjs/elements/Header';
+import { Header } from 'semantic-ui-react';
 import { WebParser, WebStyles } from './WebParser';
 import SongViewLines from './SongViewLines';
 import I18n from '../../../translations';
@@ -15,7 +15,7 @@ const SongViewFrame = (props: any) => {
   }, [text]);
 
   return (
-    <Fragment>
+    <>
       <Header style={WebStyles.title}>
         {title}
         <Header.Subheader style={WebStyles.source}>{source}</Header.Subheader>
@@ -23,7 +23,7 @@ const SongViewFrame = (props: any) => {
       {fRender && (
         <SongViewLines lines={fRender.items} indicators={fRender.indicators} />
       )}
-    </Fragment>
+    </>
   );
 };
 
