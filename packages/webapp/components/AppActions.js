@@ -71,9 +71,11 @@ const AppActions = () => {
                 <div>
                   <h3>{I18n.t('ui.collaborators')}</h3>
                   <ul>
-                    {Object.keys(collaborators).map((lang) => {
+                    {Object.keys(collaborators).map((lang, idx) => {
                       return (
-                        <li>{`${collaborators[lang].join(', ')} (${lang})`}</li>
+                        <li key={idx}>{`${collaborators[lang].join(
+                          ', '
+                        )} (${lang})`}</li>
                       );
                     })}
                   </ul>

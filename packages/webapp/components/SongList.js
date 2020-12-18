@@ -1,5 +1,5 @@
 // @flow
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useMemo, useEffect, useState, useContext } from 'react';
 import {
   Button,
   List,
@@ -63,20 +63,40 @@ const SongList = (props: any) => {
       });
   };
 
-  const [filters, setFilters] = useState({
-    patched: false,
-    added: false,
-    notTranslated: false,
+  const [filters, setFilters] = useState(() => {
+    if (typeof localStorage !== 'undefined') {
+      const savedFilters = localStorage.getItem('filters');
+      if (savedFilters) {
+        return JSON.parse(savedFilters);
+      }
+    }
+    return {
+      patched: false,
+      added: false,
+      notTranslated: false,
+    };
   });
+
   const [onlyTranslated, setOnlyTranslated] = useState();
   const [filtered, setFiltered] = useState();
   const [filtering, setFiltering] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('');
+  const searchTermDefaultValue = useMemo(() => {
+    if (typeof localStorage !== 'undefined') {
+      const savedSearchTerm = localStorage.getItem('searchTerm');
+      if (savedSearchTerm) {
+        return JSON.parse(savedSearchTerm);
+      }
+    }
+    return '';
+  }, []);
+  const [searchTerm, setSearchTerm] = useState(searchTermDefaultValue);
   const [debouncedTerm] = useDebounce(searchTerm, 800);
 
   const toggleFilter = (name: string) => {
     setFilters((currentFilters) => {
-      return { ...currentFilters, [name]: !currentFilters[name] };
+      const newFilters = { ...currentFilters, [name]: !currentFilters[name] };
+      localStorage.setItem('filters', JSON.stringify(newFilters));
+      return newFilters;
     });
   };
 
@@ -216,8 +236,11 @@ const SongList = (props: any) => {
               fluid
               icon="search"
               placeholder={I18n.t('ui.search placeholder')}
-              onChange={(e, data) => setSearchTerm(data.value)}
-              defaultValue=""
+              onChange={(e, data) => {
+                setSearchTerm(data.value);
+                localStorage.setItem('searchTerm', JSON.stringify(data.value));
+              }}
+              defaultValue={searchTermDefaultValue}
               loading={filtering}
             />
             {filtered && filtered.length === 0 && (
