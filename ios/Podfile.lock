@@ -337,7 +337,7 @@ PODS:
   - RNSentry (2.1.0):
     - React-Core
     - Sentry (= 6.0.9)
-  - RNShare (4.1.0):
+  - RNShare (5.1.0):
     - React-Core
   - Sentry (6.0.9):
     - Sentry/Core (= 6.0.9)
@@ -585,7 +585,7 @@ SPEC CHECKSUMS:
   RNReanimated: e03f7425cb7a38dcf1b644d680d1bfc91c3337ad
   RNScreens: 45c457af3d2ee9e08fc01e70da87e653d46b1198
   RNSentry: 51972e3fe50e2fb38ae459af8c87d61f63f364db
-  RNShare: 106a76243ac90f43ddb9028dcb78ade406b8adff
+  RNShare: fed99fd743f80ca255903c1da46fc9a6430efab6
   Sentry: 388c9dc093b2fd3a264466a5c5b21e25959610a9
   Yoga: 4bd86afe9883422a7c4028c00e34790f560923d6
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
