@@ -511,7 +511,7 @@
    "es": "Alzaos puertas - Sal 24 (23)",
    "it": "Alzate, o porte - Sal 23 (24)",
    "de-AT": "Erhebet euch ihr uralten Pforten - Ps 24",
-   "de": "Erhebet euch ihr uralten Pforten - Ps 24",
+   "de": "Ihr alten Pforten - Ps 24",
    "en": "Gates lift up your heads - Ps 23 (24)",
    "pt-BR": "Alçai ó portas - Sal 24 (23)",
    "pt-PT": "Alçai ó portas - Sal 24 (23)",
@@ -661,7 +661,7 @@
    "es": "Bendita eres tú, María - Lc 1, 42-45",
    "it": "Benedetta sei tu, Maria - Lc 1, 42-44",
    "de-AT": "Maria, selige Maria - Lk 1, 42-44",
-   "de": "Maria, selige Maria - Lk 1, 42-44",
+   "de": "Gesegnet bist du, Maria - Lk 1, 42-44",
    "pt-BR": "Bendita és tu, Maria - Lc 1, 42-45",
    "pt-PT": "Bendita és Tu, Maria - Lc 1, 42-45",
    "lt-LT": "Palaiminta esi tu, marija (lk 1, 42-44)",
@@ -793,7 +793,8 @@
   "stage": "precatechumenate",
   "entrance": true,
   "files": {
-   "es": "Cristo es la luz - Himno"
+   "es": "Cristo es la luz - Himno",
+   "pt-PT": "Cristo é a luz - Himno"
   }
  },
  "51": {
@@ -1067,7 +1068,7 @@
    "de": "Carmen '63 - von Tagore",
    "en": "Carmen 63",
    "pt-BR": "Estão rotas minhas ataduras - Carmen 63 - Poema de Rabindranath Tagore",
-   "pt-PT": "Estão rotas minhas ataduras - Carmen 63 - Poema de Rabindranath Tagore",
+   "pt-PT": "Estão cortadas minhas ataduras - Carmen 63 - Poema de Rabindranath Tagore",
    "lt-LT": "CARMEN' 63 (Tagore)"
   },
   "stages": {
@@ -1084,7 +1085,7 @@
    "de-AT": "Evenu shalom alechem - Hebräisches Lied",
    "de": "Evenu shalom alechem - Hebräisches Lied",
    "pt-BR": "Evenu Shalom Alehem - Canto Popular Hebraico",
-   "pt-PT": "Evenu Shalom Alehem - Canto Popular Hebraico",
+   "pt-PT": "Evenu Shalom Alejem - Canto Popular Hebraico",
    "sw-TZ": "Evenu Shalom Alehem - (wimbo wa kiebrania)"
   }
  },
@@ -1110,7 +1111,7 @@
    "de": "Ich werde nicht sterben - Ps 118",
    "en": "I shall not die - Ps 117 (118)",
    "pt-BR": "Este é o dia que fez o Senhor - Sal 118 (117)",
-   "pt-PT": "Este é o dia que fez o Senhor - Sal 118 (117)",
+   "pt-PT": "Este é o dia em que actuou o  Senhor - Sal 118 (117)",
    "lt-LT": "Nemirsiu, ne - Psalmė 117 (118)"
   }
  },
@@ -1215,7 +1216,7 @@
    "es": "He aquí que vengo presto - Ap 22, 12-16",
    "it": "Ecco qui io vengo presto - Ap 22, 12-16",
    "de-AT": "Siehe da ich komme bald - Offb 22, 12-16",
-   "de": "Siehe da ich komme bald - Offb 22, 12-16",
+   "de": "Siehe da, ich komme bald - Offb 22, 12-16",
    "pt-BR": "Eis-me aqui que venho em breve - Ap 22, 12-16",
    "pt-PT": "Eis aqui que venho em breve - Ap 22, 12-16",
    "lt-LT": "Štai aš ateisiu veikiai (apr 22, 12-16)",
@@ -1336,7 +1337,7 @@
    "de": "Du die du lebst in den Gärten - Hl 8, 10-14",
    "en": "You who dwell in the gardens (flee my beloved) (songs 8, append)",
    "pt-BR": "Foge, ó meu amado - Ct 8, 10-14",
-   "pt-PT": "Foge, ó meu amado - Ct 8, 10-14",
+   "pt-PT": "Foge, ó meu amado - Cântico dos Cânticos 8, 10-14",
    "lt-LT": "Bėki, mylimasis - (Gg 8, 10-14)"
   },
   "stages": {
@@ -1961,7 +1962,7 @@
    "de-AT": "Es waren einmal zwei Engel",
    "de": "Es waren einmal zwei Engel",
    "pt-BR": "Encontraram-se dois Anjos - Canto das Crianças",
-   "pt-PT": "Encontraram-se dois Anjos - Canto das Crianças",
+   "pt-PT": "Dois Anjos se encontraram - Cântico das Crianças",
    "lt-LT": "Buvo du angelai"
   }
  },
@@ -2112,7 +2113,7 @@
    "de": "Ich rufe zu dir - Ps 141",
    "en": "I am calling you (against the seduction of sin) - Ps 141",
    "pt-BR": "Estou chamando-te - Sal 141 (140)",
-   "pt-PT": "Estou chamando-te - Sal 141 (140)",
+   "pt-PT": "Por Ti eu chamo - Sal 141 (140)",
    "lt-LT": "Tavęs šaukiuosi - Psalmė 140 (141)"
   }
  },
@@ -2378,7 +2379,7 @@
    "de-AT": "Gloria, gloria, gloria - Jes 66, 18 ff",
    "de": "Gloria, gloria, gloria - Jes 66, 18 ff",
    "pt-BR": "Eu venho reunir - Is 66, 18-21",
-   "pt-PT": "Eu venho reunir - Is 66, 18-21",
+   "pt-PT": "Eu venho reunir todas as nações - Is 66, 18-21",
    "lt-LT": "Garbė, garbė, garbė (iz 66,18 ir t.t.)"
   }
  },
@@ -2509,7 +2510,7 @@
   "stages": {
    "pt-BR": "catechumenate",
    "de-AT": "liturgy",
-   "de": "liturgy"
+   "de": "election"
   }
  },
  "166": {
@@ -2521,7 +2522,7 @@
    "de-AT": "In einer dunklen Nacht - Johannes vom Kreuz",
    "de": "In einer dunklen Nacht - Johannes vom Kreuz",
    "pt-BR": "Em uma noite escura - Subida ao Monte Carmelo - São João da Cruz",
-   "pt-PT": "Em uma noite escura - Subida ao Monte Carmelo - São João da Cruz",
+   "pt-PT": "Noite escura - Subida ao Monte Carmelo - São João da Cruz",
    "lt-LT": "Tamsybės pilną naktį (šv. jonas nuo kryžiaus)"
   }
  },
@@ -2536,7 +2537,7 @@
    "de": "Es werden Könige dich sehen - II. Gottesknechtlied - Jes 49, 1-16",
    "en": "Servant of yahweh (the kings shall see you) (song no 2). (is 49, 1-16)",
    "pt-BR": "Escutai ilhas de longe - Segundo canto do Servo de Iahweh - Isaias 49, 1-16",
-   "pt-PT": "Escutai ilhas de longe - Segundo canto do Servo de Iahweh - Isaias 49, 1-16",
+   "pt-PT": "Ver-te-ão os reis - Segundo canto do Servo de Javé - Isaías 49, 1-16",
    "lt-LT": "Atsistos karaliai, išvydę tave: II Jahvės tarno giesmė - (Iz 49, 1-16)"
   },
   "stages": {
@@ -2553,7 +2554,7 @@
    "de-AT": "Ich habe meine Hände ausgebreitet - XXVII. Ode Salomos",
    "de": "Ich habe meine Hände ausgebreitet - XXVII. Ode Salomos",
    "pt-BR": "Estendo minhas mãos - Ode XXVII de Salomão",
-   "pt-PT": "Estendo minhas mãos - Ode XXVII de Salomão",
+   "pt-PT": "Estendo as minhas mãos - Ode XXVII de Salomão",
    "lt-LT": "Aš ištiesiau rankas"
   }
  },
@@ -3131,7 +3132,7 @@
    "de-AT": "Inmitten einer Grossen Menge - Lk 8, 42-48",
    "de": "Inmitten einer Grossen Menge - Lk 8, 42-48",
    "pt-BR": "Em meio a multidão - Lc 8, 42b-48",
-   "pt-PT": "Em meio a multidão - Lc 8, 42b-48"
+   "pt-PT": "No meio da multidão - Lc 8, 42b-48"
   }
  },
  "214": {
@@ -3245,7 +3246,8 @@
    "de-AT": "Als Israel noch ein Kind war - Hos 11, 1-11",
    "de": "Als Israel noch ein Kind war - Hos 11, 1-11",
    "en": "When israel was a child. (hos 11,1-11)",
-   "lt-LT": "Kada izraelis buvo vaikas (oz 11, 1-11)"
+   "lt-LT": "Kada izraelis buvo vaikas (oz 11, 1-11)",
+   "pt-PT": "Quando Israel era um menino - Oséias 11, 1-11]"
   }
  },
  "224": {

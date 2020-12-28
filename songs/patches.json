@@ -219,6 +219,13 @@
       "linked": {
         "new": "Kai aš miegojau (gg. 5, 2 ir t.t.)"
       }
+    },
+    {
+      "date": 1608220160203,
+      "locale": "de",
+      "author": "benedikt.jacobsen@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "5": [
@@ -307,6 +314,13 @@
       "linked": {
         "new": "Laimingas žmogus - Psalmė 1"
       }
+    },
+    {
+      "date": 1608601685626,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "7": [
@@ -2035,6 +2049,17 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": false
+    },
+    {
+      "date": 1608292831583,
+      "locale": "de",
+      "author": "Benedikt.jacobsen@hotmail.de",
+      "rename": {
+        "original": "Erhebet euch ihr uralten Pforten - Ps 24",
+        "new": "Ihr alten Pforten - Ps 24"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "33": [
@@ -2823,6 +2848,17 @@
       },
       "created": false,
       "updated": false
+    },
+    {
+      "date": 1608326762273,
+      "locale": "de",
+      "author": "benedikt.jacobsen@gmail.com",
+      "rename": {
+        "original": "Maria, selige Maria - Lk 1, 42-44",
+        "new": "Gesegnet bist du, Maria - Lk 1, 42-44"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "42": [
@@ -3318,6 +3354,16 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608592894797,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "linked": {
+        "new": "Cristo é a luz - Himno"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "51": [
@@ -3978,6 +4024,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608217216258,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "65": [
@@ -4090,6 +4143,13 @@
       "linked": {
         "new": "Viešpats - Psalmė 26 (27)"
       }
+    },
+    {
+      "date": 1608311407535,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "68": [
@@ -4147,6 +4207,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608313852237,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Estão rotas minhas ataduras - Carmen 63 - Poema de Rabindranath Tagore",
+        "new": "Estão cortadas minhas ataduras - Carmen 63 - Poema de Rabindranath Tagore"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "69": [
@@ -4184,6 +4255,17 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1608600269050,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Evenu Shalom Alehem - Canto Popular Hebraico",
+        "new": "Evenu Shalom Alejem - Canto Popular Hebraico"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "70": [
@@ -4212,6 +4294,13 @@
       "linked": {
         "new": "Džiūgaukite, teisieji, viešpatyje - Psalmė 32 (33)"
       }
+    },
+    {
+      "date": 1608600647501,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "71": [
@@ -4243,6 +4332,17 @@
       "linked": {
         "new": "Nemirsiu, ne - Psalmė 117 (118)"
       }
+    },
+    {
+      "date": 1608314560467,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Este é o dia que fez o Senhor - Sal 118 (117)",
+        "new": "Este é o dia em que actuou o  Senhor - Sal 118 (117)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "72": [
@@ -4267,6 +4367,13 @@
       "linked": {
         "new": "Laimė žmogui - Psalmė 127 (128)"
       }
+    },
+    {
+      "date": 1608600891386,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "73": [
@@ -4625,6 +4732,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608291511839,
+      "locale": "de",
+      "author": "Benedikt.jacobsen@hotmail.de",
+      "rename": {
+        "original": "Siehe da ich komme bald - Offb 22, 12-16",
+        "new": "Siehe da, ich komme bald - Offb 22, 12-16"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "79": [
@@ -4667,6 +4785,13 @@
       "linked": {
         "new": "Pasiklioviau, pasiklioviau dievu viešpačiu - Psalmė 39 (40)"
       }
+    },
+    {
+      "date": 1608312911913,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "80": [
@@ -4698,6 +4823,13 @@
       "linked": {
         "new": "Dukterys jeruzalės (lk 23, 28.31.34.43.46)"
       }
+    },
+    {
+      "date": 1608601940636,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "81": [
@@ -4944,6 +5076,17 @@
       "rename": {
         "original": "Bėki, mylimasis (gg 8, 10-14)",
         "new": "Bėki, mylimasis - (Gg 8, 10-14)"
+      },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1608602520798,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Foge, ó meu amado - Ct 8, 10-14",
+        "new": "Foge, ó meu amado - Cântico dos Cânticos 8, 10-14"
       },
       "created": false,
       "updated": true
@@ -6641,6 +6784,17 @@
       "author": "david.hernandez.duran@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608218507487,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Encontraram-se dois Anjos - Canto das Crianças",
+        "new": "Dois Anjos se encontraram - Cântico das Crianças"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "129": [
@@ -6980,6 +7134,17 @@
       "linked": {
         "new": "Tavęs šaukiuosi - Psalmė 140 (141)"
       }
+    },
+    {
+      "date": 1608596359962,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Estou chamando-te - Sal 141 (140)",
+        "new": "Por Ti eu chamo - Sal 141 (140)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "140": [
@@ -7705,6 +7870,13 @@
       "linked": {
         "new": "Myliu tave, viešpatie - Psalmė 17 (18)"
       }
+    },
+    {
+      "date": 1608598275916,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "157": [
@@ -7729,6 +7901,17 @@
       "linked": {
         "new": "Garbė, garbė, garbė (iz 66,18 ir t.t.)"
       }
+    },
+    {
+      "date": 1608598530639,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Eu venho reunir - Is 66, 18-21",
+        "new": "Eu venho reunir todas as nações - Is 66, 18-21"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "158": [
@@ -8235,6 +8418,17 @@
       "linked": {
         "new": "Tas pats dievas (2kor 4, 6-12)"
       }
+    },
+    {
+      "date": 1608325672794,
+      "locale": "de",
+      "author": "benedikt.jacobsen@gmail.com",
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "liturgy",
+        "new": "election"
+      }
     }
   ],
   "166": [
@@ -8263,6 +8457,17 @@
       "linked": {
         "new": "Tamsybės pilną naktį (šv. jonas nuo kryžiaus)"
       }
+    },
+    {
+      "date": 1608217958580,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Em uma noite escura - Subida ao Monte Carmelo - São João da Cruz",
+        "new": "Noite escura - Subida ao Monte Carmelo - São João da Cruz"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "167": [
@@ -8310,6 +8515,17 @@
       "rename": {
         "original": "Atsistos karaliai, išvydę tave: ii jahvės tarno giesmė (iz 49, 1-16)",
         "new": "Atsistos karaliai, išvydę tave: II Jahvės tarno giesmė - (Iz 49, 1-16)"
+      },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1608312239435,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Escutai ilhas de longe - Segundo canto do Servo de Iahweh - Isaias 49, 1-16",
+        "new": "Ver-te-ão os reis - Segundo canto do Servo de Javé - Isaías 49, 1-16"
       },
       "created": false,
       "updated": true
@@ -8362,6 +8578,17 @@
       "author": "david.hernandez.duran@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608314966558,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Estendo minhas mãos - Ode XXVII de Salomão",
+        "new": "Estendo as minhas mãos - Ode XXVII de Salomão"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "169": [
@@ -8396,6 +8623,13 @@
       "author": "fd_colautti@mac.com",
       "created": false,
       "updated": false
+    },
+    {
+      "date": 1608603398128,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "170": [
@@ -10440,6 +10674,17 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1608217598247,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Em meio a multidão - Lc 8, 42b-48",
+        "new": "No meio da multidão - Lc 8, 42b-48"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "214": [
@@ -10712,6 +10957,23 @@
       "linked": {
         "new": "Kada izraelis buvo vaikas (oz 11, 1-11)"
       }
+    },
+    {
+      "date": 1608324124689,
+      "locale": "de",
+      "author": "benedikt.jacobsen@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1608594618173,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "linked": {
+        "new": "Quando Israel era um menino - Oséias 11, 1-11]"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "224": [
