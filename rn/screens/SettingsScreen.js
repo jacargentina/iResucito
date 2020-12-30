@@ -41,10 +41,23 @@ const SettingsScreen = () => {
   const [locale, setLocale] = data.locale;
   const [keepAwake, setKeepAwake] = data.keepAwake;
   const [version, setVersion] = useState('');
+  const [songsResume, setSongsResume] = useState('-');
+  const { songs } = data.songsMeta;
 
   useEffect(() => {
     setVersion(DeviceInfo.getReadableVersion());
   }, []);
+
+  useEffect(() => {
+    if (songs) {
+      var withLocale = songs.filter((s) => s.notTranslated === false);
+      const message = I18n.t('ui.translated songs', {
+        translated: withLocale.length,
+        total: songs.length,
+      });
+      setSongsResume(message);
+    }
+  }, [songs]);
 
   const sendMail = () => {
     Linking.openURL(
@@ -108,6 +121,27 @@ const SettingsScreen = () => {
                 }}>
                 {localesItems}
               </Picker>
+              <View
+                style={{
+                  alignItems: 'center',
+                  paddingTop: 10,
+                  paddingBottom: 10,
+                  paddingLeft: 35,
+                  flexDirection: 'row',
+                }}>
+                <Icon
+                  name="podium-outline"
+                  style={{
+                    fontSize: 14,
+                  }}
+                />
+                <Text
+                  style={{
+                    fontSize: 14,
+                  }}>
+                  {songsResume}
+                </Text>
+              </View>
             </Body>
           </ListItem>
           <ListItem>
