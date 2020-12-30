@@ -225,7 +225,7 @@ const SongList = (props: any) => {
                 </strong>
               </Menu.Item>
             )}
-            <SongListResume />
+            <SongListResume songs={songs} />
           </>
         )}
       </Menu>

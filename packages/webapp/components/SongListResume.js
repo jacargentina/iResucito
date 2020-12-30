@@ -1,8 +1,6 @@
 // @flow
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Menu, Progress } from 'semantic-ui-react';
-import { DataContext } from './DataContext';
-import { EditContext } from './EditContext';
 import I18n from '../../../translations';
 import { getPropertyLocale } from '../../../common';
 
@@ -11,11 +9,8 @@ const emptyResume = {
   values: { total: 0, translated: 0 },
 };
 
-const SongListResume = () => {
-  const data = useContext(DataContext);
-  const { songs } = data;
-
-  const edit = useContext(EditContext);
+const SongListResume = (props: any) => {
+  const { songs } = props;
   const [resume, setResume] = useState(emptyResume);
 
   useEffect(() => {
@@ -32,10 +27,6 @@ const SongListResume = () => {
       setResume(emptyResume);
     }
   }, [songs]);
-
-  if (!edit) {
-    return null;
-  }
 
   return (
     <Menu.Item position="right">
