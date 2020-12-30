@@ -30,7 +30,6 @@ declare type SongPatchData = {
   author: string,
   date: number,
   name: string,
-  file?: string,
   stage?: string,
   lines?: string,
 };

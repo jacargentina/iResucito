@@ -38,21 +38,20 @@ const patchSongLogic = (songPatch, key) => {
     var songToPatch = SongsIndex[key];
     Object.keys(songPatch).forEach((rawLoc) => {
       var item: SongPatchData = songPatch[rawLoc];
+      var file;
       var loc = rawLoc;
-      var { author, date, file, name, lines, stage } = item;
+      var { author, date, name, lines, stage } = item;
       name = name.trim();
+      loc = getPropertyLocale(songToPatch.files, rawLoc);
+      if (loc) {
+        // Buscar si está el nombre en el indice
+        file = songToPatch.files[loc];
+      } else {
+        // Tomar loc desde parche (archivo nuevo para un idioma)
+        loc = rawLoc;
+      }
       if (!file) {
-        loc = getPropertyLocale(songToPatch.files, rawLoc);
-        if (loc) {
-          // Buscar si está el nombre en el indice
-          file = songToPatch.files[loc];
-        } else {
-          // Tomar loc desde parche (archivo nuevo para un idioma)
-          loc = rawLoc;
-        }
-        if (!file) {
-          file = name;
-        }
+        file = name;
       }
 
       if (!loc) {
@@ -83,11 +82,7 @@ const patchSongLogic = (songPatch, key) => {
         Object.assign(songToPatch.files, { [loc]: name });
         songFileName = newName;
       } else if (songToPatch.files[loc] !== file) {
-        if (songToPatch.files[loc]) {
-          report.rename = { original: songToPatch.files[loc], new: file };
-        } else {
-          report.linked = { new: file };
-        }
+        report.rename = { original: songToPatch.files[loc], new: file };
         Object.assign(songToPatch.files, { [loc]: file });
       }
       if (lines) {
@@ -121,25 +116,25 @@ const patchSongLogic = (songPatch, key) => {
         }
       }
 
-      // Guardar historia de cambios
-      var patchInfo: SongPatchLogData = {
-        date: date || currentDate,
-        locale: report.locale,
-        author: author || 'anonymous',
-        rename: report.rename,
-        linked: report.linked,
-        created: report.created,
-        updated: report.updated,
-        staged: report.staged,
-      };
-
-      if (!SongsPatches.hasOwnProperty(key)) {
-        SongsPatches[key] = [];
-      }
-      var songPatches = SongsPatches[key];
-      var found = songPatches.find((x) => x.date === date);
-      if (!found) {
-        songPatches.push(patchInfo);
+      // Guardar historia de cambios sólo si efectivamente se aplicaron cambios
+      if (report.rename || report.created || report.updated || report.staged) {
+        var patchInfo: SongPatchLogData = {
+          date: date || currentDate,
+          locale: report.locale,
+          author: author,
+          rename: report.rename,
+          created: report.created,
+          updated: report.updated,
+          staged: report.staged,
+        };
+        if (!SongsPatches.hasOwnProperty(key)) {
+          SongsPatches[key] = [];
+        }
+        var songPatches = SongsPatches[key];
+        var found = songPatches.find((x) => x.date === date);
+        if (!found) {
+          songPatches.push(patchInfo);
+        }
       }
     });
   } catch (err) {

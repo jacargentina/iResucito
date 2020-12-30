@@ -104,15 +104,7 @@ export class SongsProcessor {
       if (loc) {
         info.patched = true;
         info.patchedTitle = info.titulo;
-        const { file, name, stage } = patch[key][loc];
-        if (file) {
-          info.path = `${this.basePath}/${loc}/${file}.txt`;
-          info.files = Object.assign({}, info.files, {
-            [loc]: file,
-          });
-          const parsedPatch = getSongFileFromString(file);
-          this.assignInfoFromFile(info, parsedPatch);
-        }
+        const { name, stage } = patch[key][loc];
         const renamed = getSongFileFromString(name);
         this.assignInfoFromFile(info, renamed);
         if (stage) {
