@@ -48,7 +48,7 @@ const SettingsScreen = () => {
 
   const sendMail = () => {
     Linking.openURL(
-      `mailto:javier.alejandro.castro@gmail.com&subject=iResucitó%20${version}`
+      `mailto:javier.alejandro.castro@gmail.com?subject=iResucitó ${version}`
     ).catch((err) => {
       Alert.alert('Error', err.message);
     });
