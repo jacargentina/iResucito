@@ -102,7 +102,7 @@
       },
       "created": false,
       "updated": true
-    },
+    }
   ],
   "3": [
     {
@@ -531,6 +531,17 @@
       "linked": {
         "new": "Jokūbas (pr 32, 23-39)"
       }
+    },
+    {
+      "date": 1609208695760,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Jacó - Gn 32, 23-29",
+        "new": "Jacob - Gn 32, 23-29"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "13": [
@@ -828,7 +839,7 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
-    },
+    }
   ],
   "20": [
     {
@@ -883,7 +894,7 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
-    },
+    }
   ],
   "21": [
     {
@@ -940,7 +951,7 @@
       "linked": {
         "new": "Į tave keliu savo akis - Psalmė 122 (123)"
       }
-    },
+    }
   ],
   "22": [
     {
@@ -1138,6 +1149,13 @@
       },
       "created": false,
       "updated": false
+    },
+    {
+      "date": 1609287809093,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "24": [
@@ -1360,7 +1378,7 @@
       },
       "created": false,
       "updated": true
-    },
+    }
   ],
   "26": [
     {
@@ -1466,6 +1484,13 @@
       "created": false,
       "updated": true
     },
+    {
+      "date": 1609288153024,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
+    }
   ],
   "27": [
     {
@@ -1548,6 +1573,13 @@
       "created": false,
       "updated": true
     },
+    {
+      "date": 1609288709817,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
+    }
   ],
   "28": [
     {
@@ -1596,6 +1628,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1609373121519,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "29": [
@@ -1719,6 +1758,13 @@
       },
       "created": false,
       "updated": false
+    },
+    {
+      "date": 1609288485586,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "30": [
@@ -1818,6 +1864,13 @@
       },
       "created": false,
       "updated": false
+    },
+    {
+      "date": 1609288375454,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "31": [
@@ -2090,6 +2143,13 @@
       "created": false,
       "updated": true
     },
+    {
+      "date": 1609288559743,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
+    }
   ],
   "34": [
     {
@@ -2197,6 +2257,13 @@
       "created": false,
       "updated": true
     },
+    {
+      "date": 1609288259750,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
+    }
   ],
   "35": [
     {
@@ -2522,6 +2589,13 @@
       "created": false,
       "updated": true
     },
+    {
+      "date": 1609325318090,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
+    }
   ],
   "39": [
     {
@@ -2588,7 +2662,7 @@
       },
       "created": false,
       "updated": true
-    },
+    }
   ],
   "40": [
     {
@@ -2904,6 +2978,13 @@
       "created": false,
       "updated": true
     },
+    {
+      "date": 1609325938276,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
+    }
   ],
   "44": [
     {
@@ -2963,6 +3044,13 @@
       "created": false,
       "updated": false
     },
+    {
+      "date": 1609326163210,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
+    }
   ],
   "46": [
     {
@@ -3097,6 +3185,13 @@
       "created": false,
       "updated": true
     },
+    {
+      "date": 1609326390733,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
+    }
   ],
   "48": [
     {
@@ -3233,7 +3328,7 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
-    },
+    }
   ],
   "50": [
     {
@@ -3287,6 +3382,13 @@
       "linked": {
         "new": "Kai izraelis išėjo iš egipto - Psalmė 113 a (114)"
       }
+    },
+    {
+      "date": 1609574187699,
+      "locale": "de",
+      "author": "benedikt.jacobsen@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "52": [
@@ -3335,6 +3437,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1609574478821,
+      "locale": "de",
+      "author": "benedikt.jacobsen@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "53": [
@@ -3767,7 +3876,7 @@
       "linked": {
         "new": "Kad daugiau aš nesibastyčiau"
       }
-    },
+    }
   ],
   "62": [
     {
@@ -4329,6 +4438,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1609199930584,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Graças a Iahweh - Sal 136 (135)",
+        "new": "Graças a Javé - Sal 136 (135)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "74": [
@@ -4362,6 +4482,17 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1609200394325,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Gritai jubilosos - Is 12",
+        "new": "Gritai,  jubilosos - Isaías 12"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "75": [
@@ -4486,7 +4617,7 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
-    },
+    }
   ],
   "77": [
     {
@@ -4732,6 +4863,13 @@
       "linked": {
         "new": "Himnas kristaus švesai"
       }
+    },
+    {
+      "date": 1609201292679,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "82": [
@@ -4756,6 +4894,13 @@
       "linked": {
         "new": "Kristus jėzus yra viešpats! himnas apie kenozę (flp 2, 1-11)"
       }
+    },
+    {
+      "date": 1609203478091,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "83": [
@@ -4823,6 +4968,13 @@
       "author": "benedikt.jacobsen@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1609204830357,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "84": [
@@ -4861,6 +5013,13 @@
         "original": "catechumenate",
         "new": "precatechumenate"
       }
+    },
+    {
+      "date": 1609204211158,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "85": [
@@ -4901,6 +5060,13 @@
       "date": 1563835188435,
       "locale": "pt-BR",
       "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1609203891500,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
     }
@@ -5010,6 +5176,17 @@
       "linked": {
         "new": "Eikit ir praneškit mano broliams (mt 28, 16-20)"
       }
+    },
+    {
+      "date": 1609206433112,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Ide e anunciai a meus irmãos - Mt 28, 7-10.16-20",
+        "new": "Ide e anunciai aos meus irmãos - Mt 28, 7-10. 16-20"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "88": [
@@ -5034,6 +5211,13 @@
       "linked": {
         "new": "Viešpaties priekaištai"
       }
+    },
+    {
+      "date": 1609207335160,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "89": [
@@ -5091,6 +5275,13 @@
       "linked": {
         "new": "Laimink, mano siela, viešpatį (tobito giesmė) (tob 13)"
       }
+    },
+    {
+      "date": 1609209312758,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "90": [
@@ -5212,7 +5403,7 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
-    },
+    }
   ],
   "93": [
     {
@@ -5251,6 +5442,13 @@
       "linked": {
         "new": "Keliu aš akis į kalnus - Psalmė 120 (121)"
       }
+    },
+    {
+      "date": 1609334066717,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "94": [
@@ -5313,7 +5511,7 @@
       },
       "created": false,
       "updated": false
-    },
+    }
   ],
   "95": [
     {
@@ -5344,6 +5542,13 @@
         "original": "precatechumenate",
         "new": "election"
       }
+    },
+    {
+      "date": 1609333612536,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "96": [
@@ -5392,6 +5597,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1609373438922,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "97": [
@@ -5420,6 +5632,13 @@
       "linked": {
         "new": "Maria de jasna gora"
       }
+    },
+    {
+      "date": 1609373876023,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "98": [
@@ -5465,6 +5684,17 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1609547392624,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Maria, Casa da Benção - As Bodas de Caná - Jo 2, 1-11",
+        "new": "Maria, Casa de louvor- As Bodas de Caná - Jo 2, 1-11"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "99": [
@@ -5493,6 +5723,13 @@
       "linked": {
         "new": "Marija, bažnyčios motina (j 19, 26-34) (1983)"
       }
+    },
+    {
+      "date": 1609547991739,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "100": [
@@ -5521,6 +5758,13 @@
       "linked": {
         "new": "Marija, liepsnojančio kelio motina"
       }
+    },
+    {
+      "date": 1609548131929,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "101": [
@@ -5559,6 +5803,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1609548321263,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "102": [
@@ -5612,6 +5863,17 @@
       "linked": {
         "new": "Tu man nurodysi gyvenimo kelią - Psalmė 15 (16)"
       }
+    },
+    {
+      "date": 1609772335364,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Mostrar-me-ás o Caminho Da Vida - Sal 16 (15)",
+        "new": "Tu me ensinarás  o Caminho da Vida - Sal 16 (15)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "103": [
@@ -5767,6 +6029,17 @@
       "linked": {
         "new": "Pasigailėk manęs, dieve - Psalmė 50 (51)"
       }
+    },
+    {
+      "date": 1609551634492,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Misericórdia minha, misericórdia - Sal 51 (50) 'Miserere'",
+        "new": "Miserere - Sal 51 (50)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "106": [
@@ -5798,6 +6071,17 @@
       "linked": {
         "new": "Labai mane persekiojo - Psalmė 128 (129)"
       }
+    },
+    {
+      "date": 1609772969715,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Muito me perseguiram - Sal 129 (128)",
+        "new": "Muito me perseguiram desde a juventude- Sal 129 (128)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "107": [
@@ -5847,6 +6131,13 @@
         "original": "catechumenate",
         "new": "precatechumenate"
       }
+    },
+    {
+      "date": 1609781120613,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "108": [
@@ -5890,6 +6181,17 @@
       "rename": {
         "original": "An ihm ist keine Schönheit - IV. Gottesknechtkied - Jes 53, 2 ff",
         "new": "An ihm ist keine Schönheit - IV. Lied des Knechtes Jahwes - Jes 53, 2 ff"
+      },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1609862445604,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Não há nele aparência - Quarto canto do Servo de Iahweh - Is 53, 2ss",
+        "new": "Diante d'Ele se volta o rosto - Quarto canto do Servo de Javé - Is 53, 2ss"
       },
       "created": false,
       "updated": true
@@ -6860,6 +7162,17 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1609746867171,
+      "locale": "de",
+      "author": "benedikt.jacobsen@gmail.com",
+      "rename": {
+        "original": "Wenn ihr heute - Ps 95",
+        "new": "Heute, wenn ihr seine Stimme hört - Ps 95"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "135": [
@@ -7045,6 +7358,13 @@
         "original": "Confessei a ti o meu pecado - Sal 32 (31)",
         "new": "Manifestei-Te o meu pecado - Sal 32 (31)"
       },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1609373520172,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
     }
@@ -7647,6 +7967,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1609207777240,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "155": [
@@ -7695,6 +8022,17 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1609205508269,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Iahweh, Tu és meu Deus - Is 25",
+        "new": "Javé, Tu és meu Deus - Is 25"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "156": [
@@ -7841,7 +8179,7 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
-    },
+    }
   ],
   "159": [
     {
@@ -7949,7 +8287,7 @@
       "author": "Benedikt.jacobsen@hotmail.de",
       "created": false,
       "updated": true
-    },
+    }
   ],
   "160": [
     {
@@ -8002,7 +8340,7 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
-    },
+    }
   ],
   "161": [
     {
@@ -8048,7 +8386,7 @@
       },
       "created": false,
       "updated": true
-    },
+    }
   ],
   "162": [
     {
@@ -8462,6 +8800,13 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1609197936584,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "170": [
@@ -8500,6 +8845,13 @@
       "linked": {
         "new": "Himnas meilei (1 kor 13, 1-13)"
       }
+    },
+    {
+      "date": 1609200851781,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "171": [
@@ -8563,6 +8915,13 @@
       "linked": {
         "new": "Jėzus ėjo per visus miestus (mt 9, 35 ir t.t.; 10)"
       }
+    },
+    {
+      "date": 1609210384016,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "173": [
@@ -8616,6 +8975,17 @@
       "created": false,
       "updated": true
     },
+    {
+      "date": 1609572646334,
+      "locale": "de",
+      "author": "benedikt.jacobsen@gmail.com",
+      "rename": {
+        "original": "Maria Lamm Gottes - Mt 1, 18 ff",
+        "new": "Maria, Lamm Gottes - Mt 1, 18 ff"
+      },
+      "created": false,
+      "updated": true
+    }
   ],
   "174": [
     {
@@ -8653,7 +9023,7 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
-    },
+    }
   ],
   "175": [
     {
@@ -8697,7 +9067,7 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
-    },
+    }
   ],
   "176": [
     {
@@ -8799,6 +9169,13 @@
       "linked": {
         "new": "Nesipriešinkit blogiui (mt 5, 38 ir t.t.)"
       }
+    },
+    {
+      "date": 1609863151471,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "178": [
@@ -8827,6 +9204,13 @@
       "linked": {
         "new": "Neapmaudauk dėl nedorėlių - Psalmė 36 (37)"
       }
+    },
+    {
+      "date": 1609863792522,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "179": [
@@ -8941,7 +9325,7 @@
       },
       "created": false,
       "updated": false
-    },
+    }
   ],
   "182": [
     {
@@ -9578,6 +9962,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1609198314951,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "190": [
@@ -9621,6 +10012,17 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1609333381181,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Ladainha penitencial II",
+        "new": "Litanias penitenciais II - Litania para a Celebração Penitencial"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "191": [
@@ -9689,6 +10091,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1609331878456,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "193": [
@@ -9736,6 +10145,17 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1609332425282,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Ladainha Penitencial I - Ladainha para Celebração Penitencial - Modelo Abreviado",
+        "new": "Litanias Penitenciais I - Litania para Celebração Penitencial - Modelo Abreviado"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "194": [
@@ -10569,6 +10989,17 @@
         "original": "precatechumenate",
         "new": "election"
       }
+    },
+    {
+      "date": 1609771665753,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Maria, pomba incorrupta - Hino inspirado nos Kontákia de São Romano, o Melodista",
+        "new": "Maria, pomba incorrupta - Hino inspirado nos Kontákia de São Romano, o Melode"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "216": [
@@ -10674,6 +11105,13 @@
       "linked": {
         "new": "O dieve, tu mano dievas - Psalmė 62 (63)"
       }
+    },
+    {
+      "date": 1609744278927,
+      "locale": "de",
+      "author": "benedikt.jacobsen@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "220": [
@@ -10712,7 +11150,7 @@
       },
       "created": false,
       "updated": true
-    },
+    }
   ],
   "221": [
     {
@@ -10845,6 +11283,20 @@
       "staged": {
         "original": "precatechumenate",
         "new": "catechumenate"
+      }
+    },
+    {
+      "date": 1609572667626,
+      "locale": "de",
+      "author": "benedikt.jacobsen@gmail.com",
+      "rename": {
+        "new": "Maria, Lamm Gottes - Mt 1, 18 ff"
+      },
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "election"
       }
     }
   ],
@@ -11036,7 +11488,7 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
-    },
+    }
   ],
   "240": [
     {
@@ -11060,6 +11512,13 @@
         "original": "precatechumenate",
         "new": "liturgy"
       }
+    },
+    {
+      "date": 1609204363467,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "241": [
@@ -11067,6 +11526,17 @@
       "date": 1560545233171,
       "locale": "pt-BR",
       "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1609334272353,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Louvai O Senhor - Sal 117 (116)",
+        "new": "Louvai o Senhor - Sal 117 (116)"
+      },
       "created": false,
       "updated": true
     }
@@ -11194,6 +11664,22 @@
       "updated": true
     }
   ],
+  "256": [
+    {
+      "date": 1609327398753,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "new": "Cristo Jesus é a nossa luz e salvação - Antífona para a Celebração do Lucernário"
+      },
+      "created": true,
+      "updated": false,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "liturgy"
+      }
+    }
+  ],
   "257": [
     {
       "date": 1606733249008,
@@ -11255,7 +11741,7 @@
       },
       "created": false,
       "updated": true
-    },
+    }
   ],
   "259": [
     {

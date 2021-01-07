@@ -1,4 +1,4 @@
-clamp:5
+clamp:3
 Mi-               Fa#
 S. Ave, Maria,
 Mi-                              Fa#
@@ -9,14 +9,14 @@ Tu nos mostras o caminho;
 Sol
 esperança dos confins da terra;
                                                       Fa#
-tu és a única Pomba incorrupta.
+só tu és a Pomba incorrupta.
 
 Mi-                                                          Fa#
-Está em ti toda a beleza do Espírito;
+Em ti está toda a beleza do Espírito;
 Sol
 glória que no mundo
-                              Fa#
-faz bela a criação.
+                                         Fa#
+torna bela toda a criação
 
 Si-                 Mi-
 A. AVE, MARIA,
@@ -39,7 +39,7 @@ Tu intercedes por todos os homens;
 Mi-                                                 Fa#
 tu és o refúgio das almas débeis;
 Sol                                                 Fa#
-filactério da perfeita castidade;
+filactéria da perfeita castidade;
 Sol                                                                Fa#
 arca perfumadíssima do Espírito Santo.
 
@@ -54,7 +54,7 @@ radiante como o sol.
 Sol                                          Fa#
 A ti suplicam todos os homens;
 Sol
-a ti pedimos pela lgreja,
+a ti pedimos pela Igreja,
                                                                       Fa#
 dá-lhe novo vigor de graça e santidade.
 
