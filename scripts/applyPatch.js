@@ -1,6 +1,7 @@
 // @flow
-import { getPropertyLocale } from '../common';
+import { getPropertyLocale, getPatchStats } from '../common';
 const path = require('path');
+const util = require('util');
 const fs = require('fs');
 require('colors');
 const { execSync } = require('child_process');
@@ -149,6 +150,7 @@ const patchPath = path.resolve(
 );
 const json = fs.readFileSync(patchPath, 'utf8').normalize();
 const patch = JSON.parse(json);
+const stats = getPatchStats(patch);
 const finalReport = [];
 Object.keys(patch).forEach((k) => {
   finalReport.push(patchSongLogic(patch[k], k));
@@ -156,6 +158,7 @@ Object.keys(patch).forEach((k) => {
 fs.writeFileSync(indexPath, JSON.stringify(SongsIndex, null, ' '));
 fs.writeFileSync(patchesPath, JSON.stringify(SongsPatches, null, '  '));
 console.log(finalReport);
+console.log(util.inspect(stats, { depth: 10 }));
 const date = new Date();
 const formatDate =
   ('0' + date.getDate()).slice(-2) +

@@ -5,6 +5,7 @@ import normalize from 'normalize-strings';
 import langs from 'langs';
 import countries from 'country-list';
 import I18n from './translations';
+import * as _ from 'lodash';
 
 export const getLocalizedListItem = (listKey: string): string => {
   return I18n.t(`list_item.${listKey}`);
@@ -939,4 +940,24 @@ export const ListPDFGenerator = async (
   } catch (err) {
     console.log('ListPDFGenerator ERROR', err);
   }
+};
+
+export const getPatchStats = (patch: SongIndexPatch): any => {
+  const stats = [];
+  const allItems = [];
+  Object.keys(patch).forEach((key) => {
+    const songPatch = patch[key];
+    Object.keys(songPatch).forEach((rawLoc) => {
+      allItems.push({ locale: rawLoc, author: songPatch[rawLoc].author });
+    });
+  });
+  const byLocale = _.groupBy(allItems, (i) => i.locale);
+  Object.keys(byLocale).forEach((locale) => {
+    const byAuthor = _.groupBy(byLocale[locale], (p) => p.author);
+    const items = Object.keys(byAuthor).map((author) => {
+      return { author, count: byAuthor[author].length };
+    });
+    stats.push({ locale, count: byLocale[locale].length, items });
+  });
+  return stats;
 };
