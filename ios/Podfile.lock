@@ -314,13 +314,13 @@ PODS:
     - React-jsi (= 0.63.4)
   - rn-fetch-blob (0.12.0):
     - React-Core
-  - RNCAsyncStorage (1.13.2):
-    - React
+  - RNCAsyncStorage (1.13.3):
+    - React-Core
   - RNCMaskedView (0.1.10):
     - React
   - RNCPicker (1.8.1):
     - React-Core
-  - RNDeviceInfo (7.3.1):
+  - RNDeviceInfo (8.0.1):
     - React-Core
   - RNFS (2.16.6):
     - React
@@ -334,7 +334,7 @@ PODS:
     - React-Core
   - RNScreens (2.16.1):
     - React-Core
-  - RNSentry (2.1.0):
+  - RNSentry (2.1.1):
     - React-Core
     - Sentry (= 6.0.9)
   - RNShare (5.1.0):
@@ -574,17 +574,17 @@ SPEC CHECKSUMS:
   React-RCTVibration: ae4f914cfe8de7d4de95ae1ea6cc8f6315d73d9d
   ReactCommon: 73d79c7039f473b76db6ff7c6b159c478acbbb3b
   rn-fetch-blob: f065bb7ab7fb48dd002629f8bdcb0336602d3cba
-  RNCAsyncStorage: 05bae7ecfab1cbd5441993f1ca098f7c3b3f8d0e
+  RNCAsyncStorage: da95b83e241a7f5efe3da1a949b3ec3175380be0
   RNCMaskedView: 5a8ec07677aa885546a0d98da336457e2bea557f
   RNCPicker: 914b557e20b3b8317b084aca9ff4b4edb95f61e4
-  RNDeviceInfo: 6ecb1d1c87d20e4c62354be0348de23362824dcd
+  RNDeviceInfo: 921a809eaf9de79645a24de1c6ca90db6cb91786
   RNFS: 2bd9eb49dc82fa9676382f0585b992c424cd59df
   RNGestureHandler: 9b7e605a741412e20e13c512738a31bd1611759b
   RNICloudStore: bc6e225811637c09bd1eb055d6cd7448e61cd451
   RNLocalize: 41026b7c14878f1a1b381bc79f668f1fbf841adb
   RNReanimated: e03f7425cb7a38dcf1b644d680d1bfc91c3337ad
   RNScreens: 45c457af3d2ee9e08fc01e70da87e653d46b1198
-  RNSentry: 51972e3fe50e2fb38ae459af8c87d61f63f364db
+  RNSentry: 6b46b6fc1d715a378fbaa5d7d43bc9ce99b500e5
   RNShare: fed99fd743f80ca255903c1da46fc9a6430efab6
   Sentry: 388c9dc093b2fd3a264466a5c5b21e25959610a9
   Yoga: 4bd86afe9883422a7c4028c00e34790f560923d6
