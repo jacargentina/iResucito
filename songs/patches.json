@@ -6039,6 +6039,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1610549916501,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "105": [
@@ -10379,6 +10386,17 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1610551837157,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Oração Eucarística II - Modelo I",
+        "new": "Oração Eucarística II - Modelo I - Prefácio"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "199": [
