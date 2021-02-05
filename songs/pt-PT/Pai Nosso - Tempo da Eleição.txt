@@ -1,9 +1,10 @@
+clamp:2 
 Re-
 A. ABBA, ABBA PAI.
 
-                                                                         Fa
+Re-
 PAI NOSSO QUE ESTAIS NOS CÉUS,
-                               La-
+Fa                             La-
 SANTIFICADO SEJA O VOSSO NOME;
 Sol-                                             La
 VENHA A NÓS O VOSSO REINO,
@@ -13,10 +14,8 @@ SEJA FEITA A VOSSA VONTADE,
 ASSIM NA TERRA COMO NO CÉU.
 
 Re-
-O PÃO NOSSO DE CADA DIA
-                                Fa
-NOS DAI HOJE;
-                                                             La-
+O PÃO NOSSO DE CADA DIANOS DAI HOJE;
+Fa                                                             La-
 PERDOAI-NOS AS NOSSAS OFENSAS;
 Sol-
 ASSIM COMO NÓS PERDOAMOS

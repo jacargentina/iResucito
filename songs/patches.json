@@ -10270,6 +10270,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1611860268260,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "195": [
@@ -10397,6 +10404,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1611851860224,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "199": [
@@ -10438,6 +10452,17 @@
       "date": 1564006322779,
       "locale": "pt-BR",
       "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1611854554443,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Oração Eucarística IV - (1988)",
+        "new": "Oração Eucarística IV - Prefácio (1988)"
+      },
       "created": false,
       "updated": true
     }
