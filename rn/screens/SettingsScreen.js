@@ -1,13 +1,6 @@
 // @flow
 import React, { useContext, useEffect, useState } from 'react';
-import {
-  View,
-  ScrollView,
-  Image,
-  Linking,
-  Alert,
-  Platform,
-} from 'react-native';
+import { View, ScrollView, Image, Linking, Alert } from 'react-native';
 import { AndroidBackHandler } from 'react-navigation-backhandler';
 import {
   Button,
@@ -73,8 +66,8 @@ const SettingsScreen = () => {
     });
   };
 
-  const makeDonation = () => {
-    Linking.openURL('https://paypal.me/JaviAleCastro').catch((err) => {
+  const goEditor = () => {
+    Linking.openURL('https://iresucito.herokuapp.com').catch((err) => {
       Alert.alert('Error', err.message);
     });
   };
@@ -208,23 +201,19 @@ const SettingsScreen = () => {
                 <Icon name="logo-twitter" />
               </Button>
             </View>
-            {Platform.OS !== 'android' && (
-              <>
-                <Text
-                  style={{
-                    textAlign: 'center',
-                    fontSize: 14,
-                  }}>
-                  {I18n.t('ui.donate message')}
-                </Text>
-                <View style={{ marginTop: 20, marginBottom: 20 }}>
-                  <Button iconLeft onPress={makeDonation}>
-                    <Icon name="logo-usd" />
-                    <Text>{I18n.t('ui.donate button')}</Text>
-                  </Button>
-                </View>
-              </>
-            )}
+            <Text
+              style={{
+                textAlign: 'center',
+                fontSize: 14,
+              }}>
+              {I18n.t('ui.contribute message')}
+            </Text>
+            <View style={{ marginTop: 20, marginBottom: 20 }}>
+              <Button iconLeft onPress={goEditor}>
+                <Icon name="browsers-outline" />
+                <Text>{I18n.t('ui.contribute button')}</Text>
+              </Button>
+            </View>
           </View>
         </List>
       </ScrollView>
