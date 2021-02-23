@@ -147,6 +147,7 @@ const SongListItem = (props: any) => {
             }
           }}>
           <Highlighter
+            autoEscape
             numberOfLines={1}
             style={textStyles}
             highlightStyle={{
@@ -156,6 +157,7 @@ const SongListItem = (props: any) => {
             textToHighlight={song.titulo}
           />
           <Highlighter
+            autoEscape
             numberOfLines={1}
             style={noteStyles}
             highlightStyle={{
