@@ -121,6 +121,9 @@
     "pdf file": "Archivo PDF"
   },
   "list_item": {
+    "1": "1a Lectura",
+    "2": "2a Lectura",
+    "3": "3a Lectura",
     "ambiental": "Monición Ambiental",
     "entrada": "Canto de Entrada",
     "paz": "Paz y Ofrendas",
@@ -128,13 +131,10 @@
     "comunion-caliz": "Cáliz",
     "salida": "Canto final",
     "1-monicion": "Monición 1a Lectura",
-    "1": "1a Lectura",
     "1-salmo": "1er Canto",
     "2-monicion": "Monición 2a Lectura",
-    "2": "2a Lectura",
     "2-salmo": "2do Canto",
     "3-monicion": "Monición 3a Lectura",
-    "3": "3a Lectura",
     "3-salmo": "3er Canto",
     "evangelio-monicion": "Monición al Evangelio",
     "evangelio": "Evangelio",
@@ -241,11 +241,13 @@
   },
   "alert_title": {
     "corrupt patch": "Parche corrupto",
-    "contacts permission": "Permiso a Contactos"
+    "contacts permission": "Permiso a Contactos",
+    "corrupt file": "Archivo corrupto"
   },
   "alert_message": {
     "corrupt patch": "El archivo del parche estaba corrupto y ha sido borrado",
     "contacts permission": "No se pueden leer los contactos",
-    "contacts permission ios": "Otorga el permiso en la pantalla Configuración -> iResucito -> Contactos"
+    "contacts permission ios": "Otorga el permiso en la pantalla Configuración -> iResucito -> Contactos",
+    "corrupt file": "El archivo está corrupto y no puede procesarse"
   }
 }

@@ -121,6 +121,9 @@
     "pdf file": "File PDF"
   },
   "list_item": {
+    "1": "1a Lettura",
+    "2": "2a Lettura",
+    "3": "3a Lettura",
     "ambiental": "Ammonizione Ambientale",
     "entrada": "Canto d'ingresso",
     "paz": "Pace e Offertorio",
@@ -128,13 +131,10 @@
     "comunion-caliz": "Calice",
     "salida": "Canto finale",
     "1-monicion": "Ammonizione 1a Lettura",
-    "1": "1a Lettura",
     "1-salmo": "1mo Canto",
     "2-monicion": "Ammonizione 2a Lettura",
-    "2": "2a Lettura",
     "2-salmo": "2do Canto",
     "3-monicion": "Ammonizione 3a Lettura",
-    "3": "3a Lettura",
     "3-salmo": "3zo Canto",
     "evangelio-monicion": "Ammonizione Vangelo",
     "evangelio": "Vangelo",
@@ -241,11 +241,13 @@
   },
   "alert_title": {
     "corrupt patch": "Patch corrotta",
-    "contacts permission": "Autorizzazione ai contatti"
+    "contacts permission": "Autorizzazione ai contatti",
+    "corrupt file": "File corrotto"
   },
   "alert_message": {
     "corrupt patch": "Il file di la patch era corrotta ed è stata cancellata",
     "contacts permission": "I contatti non possono essere letti",
-    "contacts permission ios": "Concedere l'autorizzazione nella schermata Impostazioni -> iResucito -> Contatti"
+    "contacts permission ios": "Concedere l'autorizzazione nella schermata Impostazioni -> iResucito -> Contatti",
+    "corrupt file": ""
   }
 }

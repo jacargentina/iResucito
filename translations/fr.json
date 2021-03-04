@@ -241,11 +241,13 @@
   },
   "alert_title": {
     "corrupt patch": "Patch corrompu",
-    "contacts permission": "Autorisation des contacts"
+    "contacts permission": "Autorisation des contacts",
+    "corrupt file": "Fichier corrompu"
   },
   "alert_message": {
     "corrupt patch": "Le fichier de correctif était corrompu et a été supprimé",
     "contacts permission": "Les contacts ne peuvent pas être lus",
-    "contacts permission ios": "Accordez l'autorisation dans l'écran Paramètres -> iResucito -> Contacts"
+    "contacts permission ios": "Accordez l'autorisation dans l'écran Paramètres -> iResucito -> Contacts",
+    "corrupt file": ""
   }
 }

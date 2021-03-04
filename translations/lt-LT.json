@@ -121,6 +121,9 @@
     "pdf file": "PDF failas"
   },
   "list_item": {
+    "1": "Pirmasis skaitinys",
+    "2": "Antrasis skaitinys",
+    "3": "Trečiasis skaitinys",
     "ambiental": "Bendras įvadas",
     "entrada": "Įėjimo giesmės",
     "paz": "Ramybė ir Auka",
@@ -128,13 +131,10 @@
     "comunion-caliz": "Taurė",
     "salida": "Pabaigos giesmė",
     "1-monicion": "Pirmasis įvadas",
-    "1": "Pirmasis skaitinys",
     "1-salmo": "Pirmoji psalmė",
     "2-monicion": "Antrasis įvadas",
-    "2": "Antrasis skaitinys",
     "2-salmo": "Antroji giesmė",
     "3-monicion": "Trečiasis įvadas",
-    "3": "Trečiasis skaitinys",
     "3-salmo": "Trečioji giesmė",
     "evangelio-monicion": "Įvadas į evangeliją",
     "evangelio": "Evangelija",
@@ -241,11 +241,13 @@
   },
   "alert_title": {
     "corrupt patch": "Sugadintas atnaujinimas",
-    "contacts permission": "Kontaktų leidimas"
+    "contacts permission": "Kontaktų leidimas",
+    "corrupt file": "Sugadinta byla"
   },
   "alert_message": {
     "corrupt patch": "Atnaujinimas buvo sugadintas dėl to ištrintas",
     "contacts permission": "Kontaktai negali būti nuskaityti",
-    "contacts permission ios": "Suteikti prieigą nustatymuose -> iResucito -> Kontaktai"
+    "contacts permission ios": "Suteikti prieigą nustatymuose -> iResucito -> Kontaktai",
+    "corrupt file": ""
   }
 }

@@ -121,6 +121,9 @@
     "pdf file": "PDF-Datei"
   },
   "list_item": {
+    "1": "1. Lesung",
+    "2": "2. Lesung",
+    "3": "3. Lesung",
     "ambiental": "Allgemeine Einleitung",
     "entrada": "Einfangslied",
     "paz": "Frieden und Gabevorbereitung",
@@ -128,13 +131,10 @@
     "comunion-caliz": "Kelch",
     "salida": "Ausgangslied",
     "1-monicion": "1. Einleitung",
-    "1": "1. Lesung",
     "1-salmo": "1. Lied",
     "2-monicion": "2. Einleitung",
-    "2": "2. Lesung",
     "2-salmo": "2. Lied",
     "3-monicion": "3. Einleitung",
-    "3": "3. Lesung",
     "3-salmo": "3. Lied",
     "evangelio-monicion": "Einleitung zum Evangelium",
     "evangelio": "Evangelium",
@@ -241,11 +241,13 @@
   },
   "alert_title": {
     "corrupt patch": "Beschädigter Patch",
-    "contacts permission": "Erlaubnis der Kontakte"
+    "contacts permission": "Erlaubnis der Kontakte",
+    "corrupt file": "Beschädigte Datei"
   },
   "alert_message": {
     "corrupt patch": "The Patch Datei war beschädigt und wurde gelöscht",
     "contacts permission": "Man kann die Kontakte nicht lesen",
-    "contacts permission ios": "Gibt Erlaubnis in dem Einstellungenbildschirm -> iResucito -> Kontakte"
+    "contacts permission ios": "Gibt Erlaubnis in dem Einstellungenbildschirm -> iResucito -> Kontakte",
+    "corrupt file": ""
   }
 }

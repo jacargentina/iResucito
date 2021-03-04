@@ -121,6 +121,9 @@
     "pdf file": "Arquivo PDF"
   },
   "list_item": {
+    "1": "1ª Leitura",
+    "2": "2ª Leitura",
+    "3": "3ª Leitura",
     "ambiental": "Monição Ambiental",
     "entrada": "Canto de Entrada",
     "paz": "Paz e Ofertório",
@@ -128,13 +131,10 @@
     "comunion-caliz": "Vinho",
     "salida": "Canto Final",
     "1-monicion": "Monição 1ª Leitura",
-    "1": "1ª Leitura",
     "1-salmo": "1º Salmo",
     "2-monicion": "Monição 2ª Leitura",
-    "2": "2ª Leitura",
     "2-salmo": "2º Salmo",
     "3-monicion": "Monição 3ª Leitura",
-    "3": "3ª Leitura",
     "3-salmo": "3º Salmo",
     "evangelio-monicion": "Monição do Evangelho",
     "evangelio": "Evangelho",
@@ -241,11 +241,13 @@
   },
   "alert_title": {
     "corrupt patch": "Patch corruto",
-    "contacts permission": "Permissão de contatos"
+    "contacts permission": "Permissão de contatos",
+    "corrupt file": "Arquivo corrompido"
   },
   "alert_message": {
     "corrupt patch": "O arquivo de patch estava corrompido e foi excluído",
     "contacts permission": "Contatos não podem ser lidos",
-    "contacts permission ios": ""
+    "contacts permission ios": "",
+    "corrupt file": ""
   }
 }

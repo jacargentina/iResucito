@@ -121,6 +121,9 @@
     "pdf file": "PDF file"
   },
   "list_item": {
+    "1": "1st Reading",
+    "2": "2nd Reading",
+    "3": "3rd Reading",
     "ambiental": "General Admonition",
     "entrada": "Entrance Song",
     "paz": "Peace and Offertory",
@@ -128,13 +131,10 @@
     "comunion-caliz": "Chalice",
     "salida": "Final Song",
     "1-monicion": "1st Admonition",
-    "1": "1st Reading",
     "1-salmo": "1st Song",
     "2-monicion": "2nd Admonition",
-    "2": "2nd Reading",
     "2-salmo": "2nd Song",
     "3-monicion": "3rd Admonition",
-    "3": "3rd Reading",
     "3-salmo": "3rd Song",
     "evangelio-monicion": "Admonition to the Gospel",
     "evangelio": "Gospel",
@@ -241,11 +241,13 @@
   },
   "alert_title": {
     "corrupt patch": "Corrupt Patch",
-    "contacts permission": "Contacts permission"
+    "contacts permission": "Contacts permission",
+    "corrupt file": "Corrupt file"
   },
   "alert_message": {
     "corrupt patch": "The patch file was corrupt and was deleted",
     "contacts permission": "Contacts cannot be read",
-    "contacts permission ios": "Grant the permission in the Settings screen -> iResucito -> Contacts"
+    "contacts permission ios": "Grant the permission in the Settings screen -> iResucito -> Contacts",
+    "corrupt file": "File is corrupt and can't be processed"
   }
 }

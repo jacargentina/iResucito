@@ -64,7 +64,7 @@
       "added": "Ineongezwa",
       "patched": "Patched",
       "untranslated": "Isiyotafsiriwa",
-      "translated": "Iliyotafsorowa" 
+      "translated": "Iliyotafsorowa"
     },
     "export": {
       "type": "Aina ya kutuma ",
@@ -121,6 +121,9 @@
     "pdf file": "Faili la PDF"
   },
   "list_item": {
+    "1": "Somo la kwanza",
+    "2": "Somo la pili",
+    "3": "Somo la tatu",
     "ambiental": "Utangulizi wa jumla",
     "entrada": "Wimbo wa kuingia",
     "paz": "Amani na matoleo",
@@ -128,13 +131,10 @@
     "comunion-caliz": "Komunyo-kikombe",
     "salida": "Wimbo wa mwisho",
     "1-monicion": "Utangulizi wa somo la kwanza",
-    "1": "Somo la kwanza",
     "1-salmo": "Wimbo wa kwanza",
     "2-monicion": "Utangulizi wa somo la pili",
-    "2": "Somo la pili",
     "2-salmo": "Wimbo wa pili",
     "3-monicion": "Utangulizi wa somo la tatu",
-    "3": "Somo la tatu",
     "3-salmo": "Wimbo wa tatu",
     "evangelio-monicion": "Utangulizi wa injili",
     "evangelio": "Injili",
@@ -241,11 +241,13 @@
   },
   "alert_title": {
     "corrupt patch": "Corrupt patch",
-    "contacts permission": "Ruhusa ya orodha ya namba za simu"
+    "contacts permission": "Ruhusa ya orodha ya namba za simu",
+    "corrupt file": "Faili mbovu"
   },
   "alert_message": {
     "corrupt patch": "Corrupt patch, file was deleted",
     "contacts permission": "Ruhusa kwa orodha ya namba za simu",
-    "contacts permission ios": "Toa ruhusa kwa muonekano katika mpangilio wa skrini -> iResucito -> Namba za simu"
+    "contacts permission ios": "Toa ruhusa kwa muonekano katika mpangilio wa skrini -> iResucito -> Namba za simu",
+    "corrupt file": ""
   }
 }
