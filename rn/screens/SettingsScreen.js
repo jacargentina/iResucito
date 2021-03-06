@@ -174,7 +174,7 @@ const SettingsScreen = () => {
               <Text style={{ fontWeight: 'bold' }}>
                 {I18n.t('ui.version')}: {version}
               </Text>
-              {'\n'} Javier Castro, 2017-2020
+              {'\n'} Javier Castro, 2017-2021
             </Text>
             <Text style={{ textAlign: 'center', fontSize: 14, marginTop: 40 }}>
               <Text style={{ fontWeight: 'bold' }}>
