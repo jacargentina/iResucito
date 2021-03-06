@@ -327,7 +327,7 @@ const useLists = (songs: any) => {
   };
 
   const importList = (listPath: string) => {
-    const path = decodeURI(listPath).replace('file://', '');
+    const path = decodeURI(listPath);
     return RNFS.readFile(path)
       .then((content) => {
         // Obtener nombre del archivo
@@ -345,7 +345,8 @@ const useLists = (songs: any) => {
         initLists(changedLists);
         return listName;
       })
-      .catch(() => {
+      .catch((err) => {
+        console.log('importList: ' + err.message);
         Alert.alert(
           I18n.t('alert_title.corrupt file'),
           I18n.t('alert_message.corrupt file')
