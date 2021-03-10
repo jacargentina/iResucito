@@ -20,7 +20,13 @@ const Layout = (props: any) => {
           <Menu size="mini" inverted attached>
             <Link href="/">
               <Menu.Item header>
-                <Image circular src="/cristo.png" size="mini" />
+                <Image
+                  circular
+                  src="/cristo.png"
+                  size="mini"
+                  height="35"
+                  width="35"
+                />
                 <Header.Content
                   style={{ verticalAlign: 'middle', paddingLeft: 10 }}>
                   iResucito Web
