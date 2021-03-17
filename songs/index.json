@@ -2780,7 +2780,7 @@
    "es": "Anáfora de la Sal",
    "en": "Anaphora for the penitential celebration",
    "pt-BR": "Anáfora do Sal",
-   "pt-PT": "Anáfora do sal - Rito do Segundo Escrutínio",
+   "pt-PT": "Anáfora do Sal - Rito do Segundo Escrutínio",
    "lt-LT": "Atgailos Liturgijos Šlovimas"
   },
   "stages": {
@@ -3595,15 +3595,5 @@
   },
   "stage": "precatechumenate",
   "stages": {}
- },
- "264": {
-  "key": "264",
-  "files": {
-   "pt-PT": "Anáfora do Sal - Rito do Segundo Escrutínio"
-  },
-  "stage": "precatechumenate",
-  "stages": {
-   "pt-PT": "liturgy"
-  }
  }
 }

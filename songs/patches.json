@@ -12578,21 +12578,5 @@
       "created": true,
       "updated": false
     }
-  ],
-  "264": [
-    {
-      "date": 1615937911795,
-      "locale": "pt-PT",
-      "author": "silviorsepulveda@gmail.com",
-      "rename": {
-        "new": "Anáfora do Sal - Rito do Segundo Escrutínio"
-      },
-      "created": false,
-      "updated": true,
-      "staged": {
-        "original": "precatechumenate",
-        "new": "liturgy"
-      }
-    }
   ]
 }
