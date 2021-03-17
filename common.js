@@ -393,6 +393,7 @@ export class PdfWriter {
   }
 
   checkLimits(lineCount: number = 1, nextHeight: number = 0) {
+    var pageWasAdded = false;
     if (
       this.doc.y + this.doc.currentLineHeight(false) * lineCount + nextHeight >
       this.pageNumberLimits.y
@@ -402,11 +403,13 @@ export class PdfWriter {
         this.writePageNumber();
         this.doc.addPage();
         this.doc.page.pageNumber = pn + 1;
+        pageWasAdded = true;
       } else {
         this.doc.x = this.secondColLimits.x;
       }
       this.doc.y = this.resetY;
     }
+    return pageWasAdded;
   }
 
   startColumn() {
@@ -697,7 +700,12 @@ export const SongPDFGenerator = async (
         if (it.type === 'comenzarColumna') {
           writer.startColumn();
         }
-        writer.checkLimits(it.type === 'notas' ? 2 : 1);
+        // Sólo verificar limites para agregar nueva pagina
+        // cuando no es el último item. Por ej. un "inicioParrafo" al final
+        // generaría una pagina final en blanco indeseada
+        if (i !== items.length - 1) {
+          writer.checkLimits(it.type === 'notas' ? 2 : 1);
+        }
         if (it.type === 'notas') {
           lastWidth = writer.writeText(
             it.texto,
