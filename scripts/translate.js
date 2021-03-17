@@ -15,7 +15,8 @@ if (!process.argv.slice(2).length) {
   program.help();
 } else {
   program.parse(process.argv);
-  var locale = program.locale;
+  const options = program.opts();
+  var locale = options.locale;
   if (!locale) {
     throw 'Locale is required!';
   }

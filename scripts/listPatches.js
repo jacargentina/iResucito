@@ -25,8 +25,9 @@ program
   .option('-D, --days [value]', 'List only from last specified days', parseInt);
 
 program.parse(process.argv);
-var locale = program.locale;
-var days = program.days;
+const options = program.opts();
+var locale = options.locale;
+var days = options.days;
 if (!locale) {
   locale = osLocale.sync();
   console.log('Locale: detected', locale);

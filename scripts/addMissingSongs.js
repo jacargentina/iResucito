@@ -93,7 +93,6 @@ if (!process.argv.slice(2).length) {
   program.help();
 } else {
   program.parse(process.argv);
-  var locale = program.locale;
-  var dirty = program.dirty;
-  run(locale, dirty);
+  const options = program.opts();
+  run(options.locale, options.dirty);
 }

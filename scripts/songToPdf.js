@@ -27,14 +27,15 @@ if (!process.argv.slice(2).length) {
   program.help();
 } else {
   program.parse(process.argv);
-  var locale = program.locale;
+  const options = program.opts();
+  var locale = options.locale;
   if (!locale) {
     locale = osLocale.sync();
     console.log('Locale: detected', locale);
   }
   I18n.locale = locale;
   console.log('Configured locale', I18n.locale);
-  var key = program.key;
+  var key = options.key;
   if (locale !== '') {
     var parser = new SongsParser(PdfStyles);
     if (key) {
