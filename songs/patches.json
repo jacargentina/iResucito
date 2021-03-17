@@ -219,6 +219,13 @@
       "author": "benedikt.jacobsen@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1615163768004,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "5": [
@@ -671,6 +678,17 @@
       "linked": {
         "new": "Viešpatie, tu mane tiri ir pažįsti - Psalmė 138 (139)"
       }
+    },
+    {
+      "date": 1615328185296,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Senhor, tu me escrutas e conheces - Sal 139 (138)",
+        "new": "Senhor, tu me perscrutas - Sal 139 (138)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "16": [
@@ -695,6 +713,13 @@
       "linked": {
         "new": "Šema izrael"
       }
+    },
+    {
+      "date": 1615331423675,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "17": [
@@ -737,6 +762,13 @@
       "linked": {
         "new": "Sėdėk vienišas ir tylus (rd 3, 1-33)"
       }
+    },
+    {
+      "date": 1615328686938,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "18": [
@@ -776,6 +808,13 @@
       "linked": {
         "new": "Paschalinė melitono iš sardeso homilija"
       }
+    },
+    {
+      "date": 1615423785616,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "19": [
@@ -918,6 +957,13 @@
     },
     {
       "date": 1607530216866,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1615938336136,
       "locale": "pt-PT",
       "author": "silviorsepulveda@gmail.com",
       "created": false,
@@ -1661,6 +1707,13 @@
       "date": 1609373121519,
       "locale": "pt-PT",
       "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1615013814330,
+      "locale": "de",
+      "author": "Benedikt.jacobsen@hotmail.de",
       "created": false,
       "updated": true
     }
@@ -3012,6 +3065,13 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1615014731020,
+      "locale": "de",
+      "author": "Benedikt.jacobsen@hotmail.de",
+      "created": false,
+      "updated": true
     }
   ],
   "44": [
@@ -3219,6 +3279,17 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1615013464743,
+      "locale": "de",
+      "author": "Benedikt.jacobsen@hotmail.de",
+      "rename": {
+        "original": "Lobgesang der drei Jünglinge 2. Teil - Dan 3, 57-88",
+        "new": "Lobgesang der drei Jünglinge im Feuerofen (II. Teil) - Dan 3, 57-88"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "48": [
@@ -3417,6 +3488,17 @@
       "author": "benedikt.jacobsen@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1615164273929,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Quando Israel saiu do Egito - Sal 114 (113)",
+        "new": "Quando Israel saiu do Egipto - Sal 114 (113)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "52": [
@@ -3470,6 +3552,13 @@
       "date": 1609574478821,
       "locale": "de",
       "author": "benedikt.jacobsen@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1615163559290,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
     }
@@ -4120,6 +4209,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1615424348128,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Tu és digno de receber o livro - Ap 5,9ss",
+        "new": "Digno és de tomar o livro - Ap 5,9ss"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "66": [
@@ -4151,6 +4251,13 @@
       "linked": {
         "new": "Tu esi gražiausias - Psalmė 44 (45)"
       }
+    },
+    {
+      "date": 1615424828772,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "67": [
@@ -4382,6 +4489,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1615619762891,
+      "locale": "de",
+      "author": "Benedikt.jacobsen@hotmail.de",
+      "rename": {
+        "original": "Ich werde nicht sterben - Ps 118",
+        "new": "Ich sterbe nicht - Ps 118"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "72": [
@@ -4590,6 +4708,17 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1614274333360,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Para ti morada santa - Hino",
+        "new": "Para Ti, morada santa - Hino"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "76": [
@@ -5965,6 +6094,17 @@
       "linked": {
         "new": "Suvedžiojai mane, viešpatie (jer 20, 7-18)"
       }
+    },
+    {
+      "date": 1615326358891,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Seduziste-me, Senhor - Jr 20, 7-18",
+        "new": "Tu me Seduziste, Senhor - Jr 20, 7-18"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "104": [
@@ -6301,6 +6441,13 @@
       "linked": {
         "new": "O dieve, savo vardu mane išgelbėk - Psalmė 53 (54)"
       }
+    },
+    {
+      "date": 1615765615974,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "110": [
@@ -6474,6 +6621,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1615740983639,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Vos tomarei dentre as nações - Cântico de Ezequiel - Ez 36, 24-28",
+        "new": "Tomar-vos-ei de entre as nações - Cântico de Ezequiel - Ez 36, 24-28"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "115": [
@@ -6508,6 +6666,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1614275026107,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "116": [
@@ -6554,6 +6719,13 @@
       "linked": {
         "new": "Iš meilės mano broliams - Psalmė 121 (122)"
       }
+    },
+    {
+      "date": 1614275367147,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "117": [
@@ -6578,6 +6750,17 @@
       "linked": {
         "new": "Vaikų giesmė paschos budėjimo metu"
       }
+    },
+    {
+      "date": 1614292943027,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Por que esta noite é diferente - Canto das crianças para a Noite de Páscoa - da Hagadá da Páscoa Hebráica",
+        "new": "Porque é que esta noite é diferente - Canto das crianças para a Noite de Páscoa - da Hagadá da Páscoa Hebráica"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "118": [
@@ -6617,6 +6800,17 @@
       "linked": {
         "new": "Kodėl maištauja tautos? - Psalmė 2"
       }
+    },
+    {
+      "date": 1614276389006,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Por que confabulam as nações - Sal 2",
+        "new": "Por que conjuram as nações - Sal 2"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "119": [
@@ -6650,6 +6844,13 @@
         "original": "Ateikite pas mane jūs visi (mt 11, 28-30)",
         "new": "Ateikite pas mane jūs visi - (Mt 11, 28-30)"
       },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1614293231080,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
     }
@@ -6749,6 +6950,17 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1615164963592,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Que estupendo, que alegria - Sal 133 (132)",
+        "new": "Que estupendo, que alegria! - Sal 133 (132)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "122": [
@@ -6769,6 +6981,17 @@
         "original": "precatechumenate",
         "new": "election"
       }
+    },
+    {
+      "date": 1615167022315,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Quero andar - Canto Sefardita",
+        "new": "Quero andar, Mãe, a Jerusalém - Canto Sefardita"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "123": [
@@ -6800,6 +7023,13 @@
       "linked": {
         "new": "Noriu giedoti - Psalmė 56 (57)"
       }
+    },
+    {
+      "date": 1615230169313,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "124": [
@@ -6828,6 +7058,17 @@
       "linked": {
         "new": "Kas yra ta (gg 8, 5-7)"
       }
+    },
+    {
+      "date": 1615165357094,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Quem é esta que sobe do deserto - Ct 8, 5-7",
+        "new": "Quem é essa que sobe do deserto - Ct 8, 5-7"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "125": [
@@ -6876,6 +7117,17 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1615165712619,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Quem nos separará - Rm 8, 33-39",
+        "new": "Quem nos separará? - Rm 8, 33-39"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "126": [
@@ -6928,6 +7180,13 @@
       },
       "created": false,
       "updated": false
+    },
+    {
+      "date": 1615248633802,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "127": [
@@ -6981,6 +7240,17 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1615249861054,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Salve Rainha dos Céus - Hino",
+        "new": "Salve, Rainha dos Céus - Hino"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "128": [
@@ -7048,6 +7318,13 @@
       "linked": {
         "new": "O viešpatie, padėk man, viešpatie"
       }
+    },
+    {
+      "date": 1615326723071,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "130": [
@@ -7083,6 +7360,17 @@
       "linked": {
         "new": "O viešpatie, išgirsk mano maldą - Psalmė 142 (143)"
       }
+    },
+    {
+      "date": 1615425211110,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Tu que és Fiel - Sal 143 (142)",
+        "new": "Senhor, escuta a minha oração - Sal 143 (142)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "131": [
@@ -7118,6 +7406,13 @@
       "linked": {
         "new": "Viešpatie, nesmerk manęs įniršes - Psalmė 6"
       }
+    },
+    {
+      "date": 1615327230880,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "132": [
@@ -7149,6 +7444,13 @@
       "linked": {
         "new": "Šlom-lech mariam"
       }
+    },
+    {
+      "date": 1615331763659,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "133": [
@@ -7184,6 +7486,13 @@
       "linked": {
         "new": "Jeigu viešpats namo nestato - Psalmė 126 (127)"
       }
+    },
+    {
+      "date": 1615319251420,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "134": [
@@ -7236,6 +7545,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1615318674835,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "135": [
@@ -7260,6 +7576,13 @@
       "linked": {
         "new": "Jeigu suradau prieglobstį viešpatyje - Psalmė 10 (11)"
       }
+    },
+    {
+      "date": 1615319018584,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "136": [
@@ -7295,6 +7618,17 @@
       "linked": {
         "new": "Jo pamatai - Psalmė 86 (87)"
       }
+    },
+    {
+      "date": 1615373828882,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Sião, mãe de todos os povos - Sal 87 (86)",
+        "new": "Sião, mãe dos povos - Sal 87 (86)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "137": [
@@ -7309,6 +7643,17 @@
       "date": 1562625669690,
       "locale": "pt-BR",
       "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1615379724564,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Só a só - Hino",
+        "new": "Sola a Solo - Hino"
+      },
       "created": false,
       "updated": true
     }
@@ -7346,6 +7691,13 @@
       "linked": {
         "new": "Stabat mater dolorosa"
       }
+    },
+    {
+      "date": 1615380305111,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "139": [
@@ -7476,6 +7828,13 @@
       "linked": {
         "new": "Tu esi mano viltis, o viešpatie (xxix saliamono odė)"
       }
+    },
+    {
+      "date": 1615424050429,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "142": [
@@ -7522,6 +7881,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1615682791707,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "143": [
@@ -7557,6 +7923,13 @@
       "linked": {
         "new": "Moteris, apsisiautusi saule (apr 12)"
       }
+    },
+    {
+      "date": 1615681921878,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "144": [
@@ -7601,6 +7974,17 @@
       "date": 1608154955405,
       "locale": "de",
       "author": "benedikt.jacobsen@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1615683373512,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Urí urí urí urá - Cantico de Natal",
+        "new": "Urí, urí, urá - Cantico de Natal"
+      },
       "created": false,
       "updated": true
     }
@@ -7663,6 +8047,13 @@
       "linked": {
         "new": "Piemenys, jau eikim!"
       }
+    },
+    {
+      "date": 1615683816834,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "146": [
@@ -7702,6 +8093,13 @@
       "linked": {
         "new": "Sekminių sekvencija (ateik, dvasia šventoji)"
       }
+    },
+    {
+      "date": 1615738243315,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "147": [
@@ -7748,6 +8146,13 @@
       "author": "inesricardo05@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1615684092268,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "148": [
@@ -7788,6 +8193,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1615738940028,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "149": [
@@ -7827,6 +8239,13 @@
       "linked": {
         "new": "Himnas mišparams nuo šeštinių iki sekminių"
       }
+    },
+    {
+      "date": 1615739236238,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "150": [
@@ -7870,6 +8289,28 @@
       "date": 1600432992710,
       "locale": "pt-PT",
       "author": "inesricardo05@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1615015662992,
+      "locale": "de",
+      "author": "Benedikt.jacobsen@hotmail.de",
+      "rename": {
+        "original": "Es kommt der Herr bekleidet mit Majestät - Ps 93 (92)",
+        "new": "Es kommt der Herr, bekleidet mit Majestät - Ps 93"
+      },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1615684258933,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Es kommt der Herr bekleidet mit Majestät - Ps 93 (92)",
+        "new": "Es kommt der Herr, bekleidet mit Majestät - Ps 93"
+      },
       "created": false,
       "updated": true
     }
@@ -7921,6 +8362,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1615739572175,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "152": [
@@ -7954,6 +8402,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1615739748737,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "153": [
@@ -7975,6 +8430,13 @@
       "date": 1563837967375,
       "locale": "pt-BR",
       "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1615740235618,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
     }
@@ -9346,6 +9808,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1615330987089,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "181": [
@@ -9970,6 +10439,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1612694624999,
+      "locale": "lt-LT",
+      "author": "david.hernandez.duran@gmail.com",
+      "rename": {
+        "original": "Credo (apaštalų tikėjimo išpažinimas)",
+        "new": "Credo (Apaštalų Tikėjimo Išpažinimas)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "189": [
@@ -10277,6 +10757,13 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1614273979188,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "195": [
@@ -10507,6 +10994,13 @@
       "linked": {
         "new": "Paschos budėjimo eucharistijos prefacija"
       }
+    },
+    {
+      "date": 1614294442219,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "202": [
@@ -10542,6 +11036,17 @@
       "linked": {
         "new": "Paschos šlovinimas (exultet)"
       }
+    },
+    {
+      "date": 1615162626095,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Pregão Pascal - Pregão solene da Vigília Pascal",
+        "new": "Precónio Pascal - Pregão solene da Vigília Pascal"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "203": [
@@ -10602,6 +11107,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1615250073493,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "204": [
@@ -10655,6 +11167,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1615250234663,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "205": [
@@ -10708,6 +11227,17 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1615250482095,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Santo hebraico - Tempo da Quaresma",
+        "new": "Santo Hebreu - Tempo da Quaresma"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "206": [
@@ -10773,6 +11303,13 @@
         "original": "liturgy",
         "new": "precatechumenate"
       }
+    },
+    {
+      "date": 1615250743120,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "207": [
@@ -10826,6 +11363,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1615317603926,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "208": [
@@ -10886,6 +11430,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1615317842818,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "209": [
@@ -10941,6 +11492,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1615381549864,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "211": [
@@ -10966,6 +11524,13 @@
       "date": 1564006244950,
       "locale": "pt-BR",
       "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1615741560097,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
     }
@@ -11070,6 +11635,17 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1615249339922,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Roubaste o meu coração - Ct 4, 9-16.5, 1",
+        "new": "Roubaste-me o coração - Ct 4, 9-16.5, 1"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "215": [
@@ -11154,6 +11730,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1615319873711,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Se vós ressuscitastes com Cristo - Colossenses 3, 1-4",
+        "new": "Se estais ressuscitados com Cristo - Colossenses 3, 1-4"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "217": [
@@ -11179,6 +11766,13 @@
       "date": 1562798334974,
       "locale": "pt-BR",
       "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1615248842192,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
     }
@@ -11374,6 +11968,17 @@
       "rename": {
         "original": "God rises to acclamation - Ps 46 (47)",
         "new": "God goes up with acclamations - Psalm 46 (47)"
+      },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1615379929536,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Sobe Deus entre aclamações - Sal 47 (46)",
+        "new": "Deus sobe entre aclamações - Sal 47 (46)"
       },
       "created": false,
       "updated": true
@@ -11724,6 +12329,13 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1614273876631,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "244": [
@@ -11792,6 +12404,17 @@
       "date": 1561156109558,
       "locale": "pt-BR",
       "author": "gordofragoso2@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1615249659876,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Salve Rainha - Hino",
+        "new": "Salve, Rainha - Hino"
+      },
       "created": false,
       "updated": true
     }
@@ -11894,6 +12517,78 @@
       },
       "created": true,
       "updated": false,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "liturgy"
+      }
+    }
+  ],
+  "260": [
+    {
+      "date": 1615846700428,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "new": "Sequência do Corpus Christi - Solenidade do Corpo e sangue de Cristo"
+      },
+      "created": true,
+      "updated": false,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "liturgy"
+      }
+    }
+  ],
+  "261": [
+    {
+      "date": 1615762126175,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "new": "É paciente - Hino ao Espírito Santo - Kiko Arguello"
+      },
+      "created": true,
+      "updated": false
+    }
+  ],
+  "262": [
+    {
+      "date": 1615853096450,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "new": "Oração Eucarística II - Consagração - Melodia do Senhor anuncia uma noticia"
+      },
+      "created": true,
+      "updated": false,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "liturgy"
+      }
+    }
+  ],
+  "263": [
+    {
+      "date": 1615911504468,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "new": "A Espada - Ez. 21, 14-22"
+      },
+      "created": true,
+      "updated": false
+    }
+  ],
+  "264": [
+    {
+      "date": 1615937911795,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "new": "Anáfora do Sal - Rito do Segundo Escrutínio"
+      },
+      "created": false,
+      "updated": true,
       "staged": {
         "original": "precatechumenate",
         "new": "liturgy"

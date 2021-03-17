@@ -232,7 +232,7 @@
    "de-AT": "O Herr du erforschest mich - Ps 139",
    "de": "O Herr du erforschest mich - Ps 139",
    "pt-BR": "Senhor, tu me escrutas e conheces - Sal 139 (138)",
-   "pt-PT": "Senhor, tu me escrutas e conheces - Sal 139 (138)",
+   "pt-PT": "Senhor, tu me perscrutas - Sal 139 (138)",
    "lt-LT": "Viešpatie, tu mane tiri ir pažįsti - Psalmė 138 (139)"
   }
  },
@@ -751,7 +751,7 @@
    "es": "Cántico de los tres jóvenes - Dn 3, 57-58",
    "it": "Canto dei tre giovani nella fornace - Dn 3, 57-58",
    "de-AT": "Lobgesang der drei Jünglinge 2. Teil - Dan 3, 57-88",
-   "de": "Lobgesang der drei Jünglinge 2. Teil - Dan 3, 57-88",
+   "de": "Lobgesang der drei Jünglinge im Feuerofen (II. Teil) - Dan 3, 57-88",
    "en": "Song of daniel (dn 3, 57-88)",
    "pt-BR": "Cântico dos três jovens - Dn 3, 57-58",
    "pt-PT": "Cântico dos três jovens - Dn 3, 57-58",
@@ -807,7 +807,7 @@
    "de-AT": "Als Israel aus Ägypten auszog - Ps 114",
    "de": "Als Israel aus Ägypten auszog - Ps 114",
    "pt-BR": "Quando Israel saiu do Egito - Sal 114 (113)",
-   "pt-PT": "Quando Israel saiu do Egito - Sal 114 (113)",
+   "pt-PT": "Quando Israel saiu do Egipto - Sal 114 (113)",
    "lt-LT": "Kai izraelis išėjo iš egipto - Psalmė 113 a (114)"
   }
  },
@@ -1028,7 +1028,7 @@
    "de-AT": "Lied des Lammes - Offb 5, 9 ff",
    "de": "Lied des Lammes - Offb 5, 9 ff",
    "pt-BR": "Tu és digno de receber o livro - Ap 5,9ss",
-   "pt-PT": "Tu és digno de receber o livro - Ap 5,9ss",
+   "pt-PT": "Digno és de tomar o livro - Ap 5,9ss",
    "lt-LT": "Avinėlio giesmė - (Apr 5, 9 ir t.t.)"
   },
   "stages": {
@@ -1108,7 +1108,7 @@
    "es": "Éste es el día en que actuó el Señor - Sal 118 (117)",
    "it": "Non morirò - Sal 118 (117)",
    "de-AT": "Ich werde nicht sterben - Ps 118",
-   "de": "Ich werde nicht sterben - Ps 118",
+   "de": "Ich sterbe nicht - Ps 118",
    "en": "I shall not die - Ps 117 (118)",
    "pt-BR": "Este é o dia que fez o Senhor - Sal 118 (117)",
    "pt-PT": "Este é o dia em que actuou o  Senhor - Sal 118 (117)",
@@ -1171,7 +1171,7 @@
    "de-AT": "Hin zu dir, Jerusalem",
    "de": "Hin zu dir, Jerusalem",
    "pt-BR": "Para ti morada santa - Hino",
-   "pt-PT": "Para ti morada santa - Hino",
+   "pt-PT": "Para Ti, morada santa - Hino",
    "lt-LT": "Į tave, šventasis mieste “?",
    "sw-TZ": "Kwako we, mji ya Mungu"
   }
@@ -1590,7 +1590,7 @@
    "de-AT": "Du hast mich verführt o Herr - Jer 20, 7-18",
    "de": "Du hast mich verführt o Herr - Jer 20, 7-18",
    "pt-BR": "Seduziste-me, Senhor - Jr 20, 7-18",
-   "pt-PT": "Seduziste-me, Senhor - Jr 20, 7-18",
+   "pt-PT": "Tu me Seduziste, Senhor - Jr 20, 7-18",
    "lt-LT": "Suvedžiojai mane, viešpatie (jer 20, 7-18)"
   }
  },
@@ -1751,7 +1751,7 @@
    "de-AT": "Ich Hole euch heraus - Ez 36, 24-28",
    "de": "Ich Hole euch heraus - Ez 36, 24-28",
    "pt-BR": "Vos tomarei dentre as nações - Cântico de Ezequiel - Ez 36, 24-28",
-   "pt-PT": "Vos tomarei dentre as nações - Cântico de Ezequiel - Ez 36, 24-28"
+   "pt-PT": "Tomar-vos-ei de entre as nações - Cântico de Ezequiel - Ez 36, 24-28"
   }
  },
  "115": {
@@ -1796,7 +1796,7 @@
    "de-AT": "Was ist denn anders - Kinderlied für die Osternacht",
    "de": "Was ist denn anders - Kinderlied für die Osternacht",
    "pt-BR": "Por que esta noite é diferente - Canto das crianças para a Noite de Páscoa - da Hagadá da Páscoa Hebráica",
-   "pt-PT": "Por que esta noite é diferente - Canto das crianças para a Noite de Páscoa - da Hagadá da Páscoa Hebráica",
+   "pt-PT": "Porque é que esta noite é diferente - Canto das crianças para a Noite de Páscoa - da Hagadá da Páscoa Hebráica",
    "lt-LT": "Vaikų giesmė paschos budėjimo metu"
   }
  },
@@ -1811,7 +1811,7 @@
    "de": "Warum toben die Völker - Ps 2",
    "en": "Why do the nations conspire - Ps 2",
    "pt-BR": "Por que confabulam as nações - Sal 2",
-   "pt-PT": "Por que confabulam as nações - Sal 2",
+   "pt-PT": "Por que conjuram as nações - Sal 2",
    "lt-LT": "Kodėl maištauja tautos? - Psalmė 2"
   }
  },
@@ -1851,7 +1851,7 @@
    "de-AT": "Seht, wie es schön ist, seht, welche Freude - Ps 133",
    "de": "Seht, wie es schön ist, seht, welche Freude - Ps 133",
    "pt-BR": "Que estupendo, que alegria - Sal 133 (132)",
-   "pt-PT": "Que estupendo, que alegria - Sal 133 (132)",
+   "pt-PT": "Que estupendo, que alegria! - Sal 133 (132)",
    "sw-TZ": "Jinsi ilivyo vema na kupendeza - Zab 132 (133)"
   }
  },
@@ -1864,7 +1864,7 @@
    "de-AT": "Ich will wandern nach Jerusalem - Sepharditisches Lied",
    "de": "Ich will wandern nach Jerusalem - Sepharditisches Lied",
    "pt-BR": "Quero andar - Canto Sefardita",
-   "pt-PT": "Quero andar - Canto Sefardita"
+   "pt-PT": "Quero andar, Mãe, a Jerusalém - Canto Sefardita"
   },
   "stages": {
    "pt-BR": "election"
@@ -1894,7 +1894,7 @@
    "de-AT": "Wer ist diese - Hld 8, 5-7",
    "de": "Wer ist diese - Hld 8, 5-7",
    "pt-BR": "Quem é esta que sobe do deserto - Ct 8, 5-7",
-   "pt-PT": "Quem é esta que sobe do deserto - Ct 8, 5-7",
+   "pt-PT": "Quem é essa que sobe do deserto - Ct 8, 5-7",
    "lt-LT": "Kas yra ta (gg 8, 5-7)"
   },
   "stages": {
@@ -1912,7 +1912,7 @@
    "de": "Wer wird uns trennen - Röm 8, 33-39",
    "en": "Who will separate us (rom 8, 33-39)",
    "pt-BR": "Quem nos separará - Rm 8, 33-39",
-   "pt-PT": "Quem nos separará - Rm 8, 33-39",
+   "pt-PT": "Quem nos separará? - Rm 8, 33-39",
    "lt-LT": "Kas mus atskirs (rom 8, 33-39)",
    "sw-TZ": "Nani atatutenga - (Rum 8: 33-39)"
   }
@@ -1943,7 +1943,7 @@
    "de-AT": "Ave, du Himmelskönigin",
    "de": "Ave, du Himmelskönigin",
    "pt-BR": "Salve Rainha dos Céus - Hino",
-   "pt-PT": "Salve Rainha dos Céus - Hino",
+   "pt-PT": "Salve, Rainha dos Céus - Hino",
    "lt-LT": "Sveika, karaliene",
    "sw-TZ": "Salaam, Malkia wa mbingu"
   },
@@ -1992,7 +1992,7 @@
    "de": "Herr, höre mein Gebet - Ps 143",
    "en": "Lord listen to my prayer - Ps 142 (143)",
    "pt-BR": "Tu que és Fiel - Sal 143 (142)",
-   "pt-PT": "Tu que és Fiel - Sal 143 (142)",
+   "pt-PT": "Senhor, escuta a minha oração - Sal 143 (142)",
    "lt-LT": "O viešpatie, išgirsk mano maldą - Psalmė 142 (143)"
   }
  },
@@ -2076,7 +2076,7 @@
    "de-AT": "Ihre Grundmauern - Ps 87",
    "de": "Ihre Grundmauern - Ps 87",
    "pt-BR": "Sião, mãe de todos os povos - Sal 87 (86)",
-   "pt-PT": "Sião, mãe de todos os povos - Sal 87 (86)",
+   "pt-PT": "Sião, mãe dos povos - Sal 87 (86)",
    "lt-LT": "Jo pamatai - Psalmė 86 (87)"
   }
  },
@@ -2088,7 +2088,7 @@
    "de-AT": "Solo a Sola - Hymnus",
    "de": "Solo a Sola - Hymnus",
    "pt-BR": "Só a só - Hino",
-   "pt-PT": "Só a só - Hino"
+   "pt-PT": "Sola a Solo - Hino"
   }
  },
  "138": {
@@ -2188,7 +2188,7 @@
    "de-AT": "Urì, urì, urà",
    "de": "Urì, urì, urà",
    "pt-BR": "Urí urí urí urá - Cantico de Natal",
-   "pt-PT": "Urí urí urí urá - Cantico de Natal",
+   "pt-PT": "Urí, urí, urá - Cantico de Natal",
    "lt-LT": "Uri, uri, ura"
   },
   "stages": {
@@ -2285,7 +2285,7 @@
    "es": "Viene el Señor - Sal 93 (92) - Ap 1, 5-6",
    "it": "Viene il Signore vestito di maestà - Sal 93 (92) - Ap 1, 5-6",
    "de-AT": "Es kommt der Herr bekleidet mit Majestät - Ps 93 (92)",
-   "de": "Es kommt der Herr bekleidet mit Majestät - Ps 93 (92)",
+   "de": "Es kommt der Herr, bekleidet mit Majestät - Ps 93",
    "pt-BR": "Vem o Senhor - Sal 93 (92) - Ap 1, 5-6",
    "pt-PT": "Vem o Senhor - Sal 93 (92) - Ap 1, 5-6",
    "lt-LT": "Ateina viešpats, didybe apsivilkęs"
@@ -2836,7 +2836,7 @@
    "de": "Das Apostolische Glaubens Bekenntnis",
    "pt-BR": "Credo - Símbolo apostólico",
    "pt-PT": "Credo- Símbolo Apostólico",
-   "lt-LT": "Credo (apaštalų tikėjimo išpažinimas)",
+   "lt-LT": "Credo (Apaštalų Tikėjimo Išpažinimas)",
    "en": "Creed - Apostolic Symbol"
   },
   "stages": {
@@ -2989,7 +2989,7 @@
    "de": "Exsultet",
    "en": "Exultet - Paschal preconium",
    "pt-BR": "Pregão Pascal - Pregão solene da Vigília Pascal",
-   "pt-PT": "Pregão Pascal - Pregão solene da Vigília Pascal",
+   "pt-PT": "Precónio Pascal - Pregão solene da Vigília Pascal",
    "lt-LT": "Paschos šlovinimas (exultet)"
   }
  },
@@ -3027,7 +3027,7 @@
    "de-AT": "Heilig, Heilig - Fastenzeit",
    "de": "Heilig, Heilig - Fastenzeit",
    "pt-BR": "Santo hebraico - Tempo da Quaresma",
-   "pt-PT": "Santo hebraico - Tempo da Quaresma",
+   "pt-PT": "Santo Hebreu - Tempo da Quaresma",
    "lt-LT": "Šventas, Jis Šventas (Gavėnios laikas)",
    "sw-TZ": "Yu mtakatifu - Wakati wa Kwaresima",
    "en": "Holy, He's Holy - Lenten Season"
@@ -3144,7 +3144,7 @@
    "de-AT": "Du betörtest mein Herz - Hld 4, 9-16 — 5, 1",
    "de": "Du betörtest mein Herz - Hld 4, 9-16 — 5, 1",
    "pt-BR": "Roubaste o meu coração - Ct 4, 9-16.5, 1",
-   "pt-PT": "Roubaste o meu coração - Ct 4, 9-16.5, 1"
+   "pt-PT": "Roubaste-me o coração - Ct 4, 9-16.5, 1"
   }
  },
  "215": {
@@ -3171,7 +3171,7 @@
    "de-AT": "Wenn ihr auferweckt seid mit Christus - Kol 3, 1-4",
    "de": "Wenn ihr auferweckt seid mit Christus - Kol 3, 1-4",
    "pt-BR": "Se vós ressuscitastes com Cristo - Colossenses 3, 1-4",
-   "pt-PT": "Se vós ressuscitastes com Cristo - Colossenses 3, 1-4"
+   "pt-PT": "Se estais ressuscitados com Cristo - Colossenses 3, 1-4"
   }
  },
  "217": {
@@ -3259,7 +3259,7 @@
    "de": "Gott erhob sich unter Jubel - Ps 47",
    "en": "God goes up with acclamations - Psalm 46 (47)",
    "pt-BR": "Sobe Deus entre aclamações - Sal 47 (46)",
-   "pt-PT": "Sobe Deus entre aclamações - Sal 47 (46)"
+   "pt-PT": "Deus sobe entre aclamações - Sal 47 (46)"
   }
  },
  "225": {
@@ -3462,7 +3462,7 @@
   "stage": "precatechumenate",
   "files": {
    "pt-BR": "Salve Rainha - Hino",
-   "pt-PT": "Salve Rainha - Hino"
+   "pt-PT": "Salve, Rainha - Hino"
   }
  },
  "248": {
@@ -3558,6 +3558,52 @@
   "stage": "precatechumenate",
   "stages": {
    "en": "liturgy"
+  }
+ },
+ "260": {
+  "key": "260",
+  "files": {
+   "pt-PT": "Sequência do Corpus Christi - Solenidade do Corpo e sangue de Cristo"
+  },
+  "stage": "precatechumenate",
+  "stages": {
+   "pt-PT": "liturgy"
+  }
+ },
+ "261": {
+  "key": "261",
+  "files": {
+   "pt-PT": "É paciente - Hino ao Espírito Santo - Kiko Arguello"
+  },
+  "stage": "precatechumenate",
+  "stages": {}
+ },
+ "262": {
+  "key": "262",
+  "files": {
+   "pt-PT": "Oração Eucarística II - Consagração - Melodia do Senhor anuncia uma noticia"
+  },
+  "stage": "precatechumenate",
+  "stages": {
+   "pt-PT": "liturgy"
+  }
+ },
+ "263": {
+  "key": "263",
+  "files": {
+   "pt-PT": "A Espada - Ez. 21, 14-22"
+  },
+  "stage": "precatechumenate",
+  "stages": {}
+ },
+ "264": {
+  "key": "264",
+  "files": {
+   "pt-PT": "Anáfora do Sal - Rito do Segundo Escrutínio"
+  },
+  "stage": "precatechumenate",
+  "stages": {
+   "pt-PT": "liturgy"
   }
  }
 }
