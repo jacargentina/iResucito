@@ -721,6 +721,7 @@ export const SongPDFGenerator = async (
             { indent: writer.opts.songIndicatorSpacing }
           );
         } else if (it.type === 'cantoConIndicador') {
+          maxX = 0;
           lastWidth = writer.writeText(
             it.prefijo,
             PdfStyles.prefix.color,
