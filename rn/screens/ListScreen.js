@@ -1,6 +1,6 @@
 // @flow
 import React, { useContext, useState, useMemo, useEffect } from 'react';
-import { ListItem, Left, Body, Icon, Text } from 'native-base';
+import { ListItem, Left, Body, Icon, Text, StyleProvider } from 'native-base';
 import { Alert, FlatList, Platform } from 'react-native';
 import Swipeout from 'react-native-swipeout';
 import SearchBarView from './SearchBarView';
@@ -9,6 +9,7 @@ import { DataContext } from '../DataContext';
 import CallToAction from './CallToAction';
 import I18n from '../../translations';
 import commonTheme from '../native-base-theme/variables/platform';
+import getTheme from '../native-base-theme/components';
 
 const ListScreen = (props: any) => {
   const data = useContext(DataContext);
@@ -76,55 +77,57 @@ const ListScreen = (props: any) => {
           {I18n.t('ui.no lists found')}
         </Text>
       )}
-      <FlatList
-        data={filtered}
-        extraData={I18n.locale}
-        keyExtractor={(item) => item.name}
-        renderItem={({ item }) => {
-          var swipeoutBtns = [
-            {
-              text: I18n.t('ui.rename'),
-              type: 'primary',
-              onPress: () => {
-                listRename(item.name);
+      <StyleProvider style={getTheme(commonTheme)}>
+        <FlatList
+          data={filtered}
+          extraData={I18n.locale}
+          keyExtractor={(item) => item.name}
+          renderItem={({ item }) => {
+            var swipeoutBtns = [
+              {
+                text: I18n.t('ui.rename'),
+                type: 'primary',
+                onPress: () => {
+                  listRename(item.name);
+                },
               },
-            },
-            {
-              text: I18n.t('ui.delete'),
-              type: Platform.OS === 'ios' ? 'delete' : 'default',
-              backgroundColor: Platform.OS === 'android' ? '#e57373' : null,
-              onPress: () => {
-                listDelete(item.name);
+              {
+                text: I18n.t('ui.delete'),
+                type: Platform.OS === 'ios' ? 'delete' : 'default',
+                backgroundColor: Platform.OS === 'android' ? '#e57373' : null,
+                onPress: () => {
+                  listDelete(item.name);
+                },
               },
-            },
-          ];
-          return (
-            <Swipeout
-              right={swipeoutBtns}
-              backgroundColor="white"
-              autoClose={true}>
-              <ListItem
-                avatar
-                onPress={() => {
-                  navigation.navigate('ListDetail', {
-                    listName: item.name,
-                  });
-                }}>
-                <Left>
-                  <Icon
-                    name="bookmark"
-                    style={{ fontSize: 36, color: commonTheme.brandInfo }}
-                  />
-                </Left>
-                <Body>
-                  <Text style={{ fontSize: 26 }}>{item.name}</Text>
-                  <Text note>{item.type}</Text>
-                </Body>
-              </ListItem>
-            </Swipeout>
-          );
-        }}
-      />
+            ];
+            return (
+              <Swipeout
+                right={swipeoutBtns}
+                backgroundColor="white"
+                autoClose={true}>
+                <ListItem
+                  iconBig
+                  onPress={() => {
+                    navigation.navigate('ListDetail', {
+                      listName: item.name,
+                    });
+                  }}>
+                  <Left>
+                    <Icon
+                      name="bookmark"
+                      style={{ color: commonTheme.brandInfo }}
+                    />
+                  </Left>
+                  <Body big>
+                    <Text style={{ fontSize: 26 }}>{item.name}</Text>
+                    <Text note>{item.type}</Text>
+                  </Body>
+                </ListItem>
+              </Swipeout>
+            );
+          }}
+        />
+      </StyleProvider>
     </SearchBarView>
   );
 };

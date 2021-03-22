@@ -316,6 +316,57 @@ export default (variables /*: * */ = variable) => {
       paddingVertical: null,
       paddingRight: null,
     },
+    '.iconBig': {
+      '.last': {
+        'NativeBase.Body': {
+          borderBottomWidth: null,
+        },
+        'NativeBase.Right': {
+          borderBottomWidth: null,
+        },
+        borderBottomWidth: variables.borderWidth,
+        borderColor: variables.listBorderColor,
+      },
+      'NativeBase.Left': {
+        'NativeBase.Icon': {
+          width: 36,
+          fontSize: 36,
+        },
+        'NativeBase.IconNB': {
+          width: 36,
+          fontSize: 36,
+        },
+        paddingRight: variables.listItemPadding + 5,
+        flex: 0,
+        height: 64,
+        justifyContent: 'center',
+        alignItems: 'center',
+      },
+      'NativeBase.Body': {
+        'NativeBase.Text': {
+          marginLeft: null,
+          fontSize: 17,
+        },
+        flex: 1,
+        height: 64,
+        justifyContent: 'center',
+        borderBottomWidth: 1 / PixelRatio.getPixelSizeForLayoutSize(1),
+        borderColor: variables.listBorderColor,
+      },
+      '.noBorder': {
+        'NativeBase.Body': {
+          borderBottomWidth: null,
+        },
+        'NativeBase.Right': {
+          borderBottomWidth: null,
+        },
+      },
+      borderBottomWidth: null,
+      paddingVertical: null,
+      paddingRight: null,
+      height: 64,
+      justifyContent: 'center',
+    },
     '.icon': {
       '.last': {
         'NativeBase.Body': {
