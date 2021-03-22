@@ -710,7 +710,9 @@
    "it": "Lodate il Signore - Sal 117 (116)",
    "de-AT": "Lobet den Herrn alle Völker der Erde - Ps 117",
    "de": "Lobet den Herrn alle Völker der Erde - Ps 117",
-   "lt-LT": "Garbinkite viešpatį visos žemės visi žmonės - Psalmė 116 (117)"
+   "lt-LT": "Garbinkite viešpatį visos žemės visi žmonės - Psalmė 116 (117)",
+   "pt-BR": "Louvai O Senhor - Sal 117 (116)",
+   "pt-PT": "Louvai o Senhor - Sal 117 (116)"
   }
  },
  "45": {
@@ -3402,13 +3404,6 @@
   },
   "stages": {
    "pt-BR": "liturgy"
-  }
- },
- "241": {
-  "stage": "precatechumenate",
-  "files": {
-   "pt-BR": "Louvai O Senhor - Sal 117 (116)",
-   "pt-PT": "Louvai o Senhor - Sal 117 (116)"
   }
  },
  "242": {
