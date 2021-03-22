@@ -252,7 +252,7 @@ PODS:
     - React-jsi (= 0.64.0)
     - React-perflogger (= 0.64.0)
   - React-jsinspector (0.64.0)
-  - react-native-contacts (6.0.4):
+  - react-native-contacts (6.0.5):
     - React-Core
   - react-native-keep-awake (4.0.0):
     - React
@@ -340,7 +340,7 @@ PODS:
     - React
   - RNCPicker (1.8.1):
     - React-Core
-  - RNDeviceInfo (8.0.5):
+  - RNDeviceInfo (8.0.6):
     - React-Core
   - RNFS (2.16.6):
     - React
@@ -384,7 +384,7 @@ PODS:
   - RNSentry (2.3.0):
     - React-Core
     - Sentry (= 6.1.4)
-  - RNShare (5.1.4):
+  - RNShare (5.1.6):
     - React-Core
   - Sentry (6.1.4):
     - Sentry/Core (= 6.1.4)
@@ -608,7 +608,7 @@ SPEC CHECKSUMS:
   React-jsi: 74341196d9547cbcbcfa4b3bbbf03af56431d5a1
   React-jsiexecutor: 06a9c77b56902ae7ffcdd7a4905f664adc5d237b
   React-jsinspector: 0ae35a37b20d5e031eb020a69cc5afdbd6406301
-  react-native-contacts: f97ea51a576325eade1c1e6a9e3be224ccbd466d
+  react-native-contacts: 931baebf460125c5a7bbce1c4521a96c69795123
   react-native-keep-awake: afad8a51dfef9fe9655a6344771be32c8596d774
   react-native-pdf: ef641e79a6d550cfabe5d7ec1916799726514c43
   react-native-print: b31a7afe481fc7c27960fbd1a10055bce7146a86
@@ -632,7 +632,7 @@ SPEC CHECKSUMS:
   RNCAsyncStorage: fe58eec522885718d6b297b7b658bf87d7ca557b
   RNCMaskedView: 5a8ec07677aa885546a0d98da336457e2bea557f
   RNCPicker: 914b557e20b3b8317b084aca9ff4b4edb95f61e4
-  RNDeviceInfo: 7828eb110e3146324c0583c134e59db5d39f7e8b
+  RNDeviceInfo: a91ad51aaf8dc7079f56614045cf6f0a923237bb
   RNFS: 2bd9eb49dc82fa9676382f0585b992c424cd59df
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
   RNICloudStore: bc6e225811637c09bd1eb055d6cd7448e61cd451
@@ -640,7 +640,7 @@ SPEC CHECKSUMS:
   RNReanimated: 64f6c5789f82818c07ba3c71864b73619cb23c76
   RNScreens: f7ad633b2e0190b77b6a7aab7f914fad6f198d8d
   RNSentry: 4f6907f9a4a41058988ebaa17666e9a402b50ff2
-  RNShare: 8af5349f05fc042d230674dd650d19789187ff9c
+  RNShare: 2db8b0346a4859f83d15528602ed5b6120a0452a
   Sentry: 9d055e2de30a77685e86b219acf02e59b82091fc
   Yoga: 8c8436d4171c87504c648ae23b1d81242bdf3bbf
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
