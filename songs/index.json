@@ -68,7 +68,7 @@
    "lt-LT": "Kai aš miegojau (gg. 5, 2 ir t.t.)"
   },
   "stages": {
-   "pt-BR": "election"
+   "pt-BR": "catechumenate"
   }
  },
  "5": {
@@ -135,7 +135,7 @@
    "lt-LT": "Matau atvirą dangų (apr 19,11-20)"
   },
   "stages": {
-   "pt-BR": "precatechumenate"
+   "pt-BR": "catechumenate"
   }
  },
  "9": {
@@ -969,7 +969,7 @@
    "lt-LT": "Kad daugiau aš nesibastyčiau"
   },
   "stages": {
-   "pt-BR": "election"
+   "pt-BR": "precatechumenate"
   }
  },
  "62": {
@@ -1343,7 +1343,7 @@
    "lt-LT": "Bėki, mylimasis - (Gg 8, 10-14)"
   },
   "stages": {
-   "pt-BR": "election"
+   "pt-BR": "precatechumenate"
   }
  },
  "87": {
@@ -1671,7 +1671,7 @@
    "lt-LT": "Užsidengiam prieš jį veidą: iv jahvės tarno giesmė (iz 53, 2-7)"
   },
   "stages": {
-   "pt-BR": "catechumenate"
+   "pt-BR": "precatechumenate"
   }
  },
  "109": {
@@ -1869,7 +1869,7 @@
    "pt-PT": "Quero andar, Mãe, a Jerusalém - Canto Sefardita"
   },
   "stages": {
-   "pt-BR": "election"
+   "pt-BR": "precatechumenate"
   }
  },
  "123": {
@@ -1900,7 +1900,7 @@
    "lt-LT": "Kas yra ta (gg 8, 5-7)"
   },
   "stages": {
-   "pt-BR": "election"
+   "pt-BR": "precatechumenate"
   }
  },
  "125": {
@@ -2244,7 +2244,7 @@
    "lt-LT": "Ateik nuo Libano - (Gg 4, 8 ir t.t.)"
   },
   "stages": {
-   "pt-BR": "election"
+   "pt-BR": "precatechumenate"
   }
  },
  "148": {
@@ -2526,6 +2526,9 @@
    "pt-BR": "Em uma noite escura - Subida ao Monte Carmelo - São João da Cruz",
    "pt-PT": "Noite escura - Subida ao Monte Carmelo - São João da Cruz",
    "lt-LT": "Tamsybės pilną naktį (šv. jonas nuo kryžiaus)"
+  },
+  "stages": {
+   "pt-BR": "precatechumenate"
   }
  },
  "167": {
@@ -3123,6 +3126,9 @@
    "de": "Der Messias Löwe um zu siegen - Vittorino von Pettau",
    "pt-BR": "O Messias, leão para vencer - Inspirado num texto de S. Vitorino de Pettau +304",
    "pt-PT": "O Messias, leão para vencer - Inspirado num texto de S. Vitorino de Pettau +304"
+  },
+  "stages": {
+   "pt-BR": "election"
   }
  },
  "213": {
@@ -3221,6 +3227,9 @@
    "de": "Wie ein Schaf das sieht - Hymnus von Romanos dem Sänger",
    "pt-BR": "Como ovelha que vê - Kontákion da Sexta-Feira Santa, de São Romano, o Melodista",
    "pt-PT": "Como ovelha que vê - Kontákion da Sexta-Feira Santa, de São Romano, o Melode"
+  },
+  "stages": {
+   "pt-BR": "catechumenate"
   }
  },
  "221": {
@@ -3568,7 +3577,8 @@
  "261": {
   "key": "261",
   "files": {
-   "pt-PT": "É paciente - Hino ao Espírito Santo - Kiko Arguello"
+   "pt-PT": "É paciente - Hino ao Espírito Santo - Kiko Arguello",
+   "pt-BR": "É paciente - Hino ao Espírito Santo - Kiko Arguello"
   },
   "stage": "precatechumenate",
   "stages": {}
@@ -3586,7 +3596,8 @@
  "263": {
   "key": "263",
   "files": {
-   "pt-PT": "A Espada - Ez. 21, 14-22"
+   "pt-PT": "A Espada - Ez. 21, 14-22",
+   "pt-BR": "A Espada - Ez. 21, 14-22"
   },
   "stage": "precatechumenate",
   "stages": {}

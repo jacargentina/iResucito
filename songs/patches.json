@@ -226,6 +226,17 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1616682787011,
+      "locale": "pt-BR",
+      "author": "lvinidantas01@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "election",
+        "new": "catechumenate"
+      }
     }
   ],
   "5": [
@@ -402,6 +413,17 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1616682722203,
+      "locale": "pt-BR",
+      "author": "lvinidantas01@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "catechumenate"
+      }
     }
   ],
   "9": [
@@ -4007,6 +4029,17 @@
       "linked": {
         "new": "Kad daugiau aš nesibastyčiau"
       }
+    },
+    {
+      "date": 1616357244015,
+      "locale": "pt-BR",
+      "author": "lvinidantas01@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "election",
+        "new": "precatechumenate"
+      }
     }
   ],
   "62": [
@@ -5308,6 +5341,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1616682556716,
+      "locale": "pt-BR",
+      "author": "lvinidantas01@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "election",
+        "new": "precatechumenate"
+      }
     }
   ],
   "87": [
@@ -6391,6 +6435,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1616682637171,
+      "locale": "pt-BR",
+      "author": "lvinidantas01@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "catechumenate",
+        "new": "precatechumenate"
+      }
     }
   ],
   "109": [
@@ -6992,6 +7047,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1616682834592,
+      "locale": "pt-BR",
+      "author": "lvinidantas01@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "election",
+        "new": "precatechumenate"
+      }
     }
   ],
   "123": [
@@ -7069,6 +7135,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1616682814155,
+      "locale": "pt-BR",
+      "author": "lvinidantas01@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "election",
+        "new": "precatechumenate"
+      }
     }
   ],
   "125": [
@@ -8153,6 +8230,17 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1616682899013,
+      "locale": "pt-BR",
+      "author": "lvinidantas01@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "election",
+        "new": "precatechumenate"
+      }
     }
   ],
   "148": [
@@ -9177,6 +9265,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1616682516631,
+      "locale": "pt-BR",
+      "author": "lvinidantas01@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "election",
+        "new": "precatechumenate"
+      }
     }
   ],
   "167": [
@@ -11567,6 +11666,17 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1616682705269,
+      "locale": "pt-BR",
+      "author": "lvinidantas01@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "election"
+      }
     }
   ],
   "213": [
@@ -11885,6 +11995,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1616682449990,
+      "locale": "pt-BR",
+      "author": "lvinidantas01@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "catechumenate"
+      }
     }
   ],
   "221": [
@@ -12549,6 +12670,16 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1616361239602,
+      "locale": "pt-BR",
+      "author": "lvinidantas01@gmail.com",
+      "rename": {
+        "new": "É paciente - Hino ao Espírito Santo - Kiko Arguello"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "262": [
@@ -12572,6 +12703,16 @@
       "date": 1615911504468,
       "locale": "pt-PT",
       "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "new": "A Espada - Ez. 21, 14-22"
+      },
+      "created": true,
+      "updated": false
+    },
+    {
+      "date": 1616512130504,
+      "locale": "pt-BR",
+      "author": "javier.alejandro.castro@gmail.com",
       "rename": {
         "new": "A Espada - Ez. 21, 14-22"
       },
