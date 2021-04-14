@@ -1,96 +1,77 @@
-VAIKŲ GIESMĖ PASCHOS BUDĖJIMO METU
-
 clamp:4
-
-V.
-
 a
-Kodėl ši naktis
+V. Kodėl ši naktis
+
 yra kitokia
-d a
-
-nei visos kitos naktys?
-
-d a
-NEI VISOS KITOS NAKTYS?
-Visom kitom naktim
+         d                     a
+nei visos kitos naktys? 
+             d                         a
+B. NEI VISOS KITOS NAKTYS?
+V. Visom kitom naktim
 
 anksti miegoti einam,
-
-d a
+   d                                             a
 nepasiliekam su vyresniais.
-d a
-
-NEPASILIEKAM SU VYRESNIAIS.
-
-d a
-O šioj nakty, šioj nakty
-
-Ė a
+    d                                                       a
+B. NEPASILIEKAM SU VYRESNIAIS.
+        d                     a
+V. O šioj nakty, šioj nakty
+          E                             a
 pasiliekam kartu visi.
-
-d a
-O ŠIOJ NAKTY, ŠIOJ NAKTY
-
-E a
-
+          d                         a
+B. O ŠIOJ NAKTY, ŠIOJ NAKTY
+            E                                  a
 PASILIEKAM KARTU VISI.
-Kodėl ši naktis
-
+V. Kodėl ši naktis
 yra kitokia
 nei visos kitos naktys?
 
-NEI VISOS KITOS NAKTYS?
+B. NEI VISOS KITOS NAKTYS?
 
-Visom kitom naktim
+V. Visom kitom naktim
 anksti miegoti einam
 tuoj po vakarienės.
 
-TUOJ PO VAKARIENĖS.
-O šioj nakty, šioj nakty
+B. TUOJ PO VAKARIENĖS.
+
+V. O šioj nakty, šioj nakty
 pasninkavom kartu visi.
-
-O ŠIOJ NAKTY, ŠIOJ NAKTY
-
+column
+B. O ŠIOJ NAKTY, ŠIOJ NAKTY
 PASNINKAVOM KARTU VISI.
 
-Kodėl ši naktis
+V. Kodėl ši naktis
 yra kitokia
 nei visos kitos naktys?
 
-NEI VISOS KITOS NAKTYS?
+B. NEI VISOS KITOS NAKTYS?
 
-Visom kitom naktim
+V. Visom kitom naktim
 anksti miegoti einam
 ir nieko mes nelaukiam.
 
-IR NIEKO MES NELAUKIAM.
+B. IR NIEKO MES NELAUKIAM.
 
-O šioj nakty, šioj nakty
+V. O šioj nakty, šioj nakty
 pasiliekame laukime.
 
-O ŠIOJ NAKTY, ŠIOJ NAKTY
+B. O ŠIOJ NAKTY, ŠIOJ NAKTY
 PASILIEKAME LAUKIME.
 
-a
-Kodėl ši naktis
+V. Kodėl ši naktis
 yra kitokia
-d a
-nei visos kitos naktys?
-d a
-NEI VISOS KITOS NAKTYS?
-d
-Kad pasiliekam kartu,
-a
+nei visos kitos naktys? 
+
+B. NEI VISOS KITOS NAKTYS?
+                 d
+V. Kad pasiliekam kartu,
+                  a
 pasninkaujam kartų,
-E a
+          E                a
 pasiliekame laukime.
-d
-KAD PASILIEKAM KARTU,
-a
+                         d
+B. KAD PASILIEKAM KARTU,
+                     a
 PASNINKAUJAM KARTU,
-
-E a
+             E                a
 PASILIEKAME LAUKIME.
-
-83

@@ -990,6 +990,13 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1617906909196,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "21": [
@@ -1355,6 +1362,13 @@
       },
       "created": false,
       "updated": false
+    },
+    {
+      "date": 1617907166747,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "25": [
@@ -5563,6 +5577,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1617906652808,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "91": [
@@ -6814,6 +6835,13 @@
         "original": "Por que esta noite é diferente - Canto das crianças para a Noite de Páscoa - da Hagadá da Páscoa Hebráica",
         "new": "Porque é que esta noite é diferente - Canto das crianças para a Noite de Páscoa - da Hagadá da Páscoa Hebráica"
       },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1616945469406,
+      "locale": "lt-LT",
+      "author": "david.hernandez.duran@gmail.com",
       "created": false,
       "updated": true
     }
@@ -8792,6 +8820,13 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1617906020802,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "159": [
@@ -9621,6 +9656,13 @@
         "original": "Maria Lamm Gottes - Mt 1, 18 ff",
         "new": "Maria, Lamm Gottes - Mt 1, 18 ff"
       },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1617906516843,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
     }
@@ -11146,6 +11188,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1618064353349,
+      "locale": "pt-BR",
+      "author": "lvinidantas01@gmail.com",
+      "rename": {
+        "original": "Pregão Pascal - Pregão solene da Vigília Pascal",
+        "new": "Precônio Pascal - Pregão solene da Vigília Pascal"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "203": [
@@ -12355,6 +12408,16 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1618340936923,
+      "locale": "es",
+      "author": "isaacneri30@gmail.com",
+      "rename": {
+        "new": "Cantad a Dios - Sal 68 (67) 2, 4-7"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "240": [
@@ -12430,6 +12493,17 @@
         "original": "catechumenate",
         "new": "liturgy"
       }
+    },
+    {
+      "date": 1618064234353,
+      "locale": "pt-BR",
+      "author": "lvinidantas01@gmail.com",
+      "rename": {
+        "original": "Orações Universais - Melodia para utilizar nas Orações universais",
+        "new": "Salmodia para as Orações Universais - Melodia para utilizar nas Orações universais"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "243": [
@@ -12680,6 +12754,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1616797714713,
+      "locale": "pt-BR",
+      "author": "lvinidantas01@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "262": [
@@ -12715,6 +12796,45 @@
       "author": "javier.alejandro.castro@gmail.com",
       "rename": {
         "new": "A Espada - Ez. 21, 14-22"
+      },
+      "created": true,
+      "updated": false
+    },
+    {
+      "date": 1616796702026,
+      "locale": "pt-BR",
+      "author": "lvinidantas01@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1617833738628,
+      "locale": "es",
+      "author": "smalitu@yahoo.es",
+      "rename": {
+        "new": "La Espada - Ez. 21, 14-22"
+      },
+      "created": true,
+      "updated": false
+    },
+    {
+      "date": 1617906598331,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "new": "La Espada - Ez. 21, 14-22"
+      },
+      "created": false,
+      "updated": true
+    }
+  ],
+  "264": [
+    {
+      "date": 1618063782658,
+      "locale": "pt-BR",
+      "author": "lvinidantas01@gmail.com",
+      "rename": {
+        "new": "Cântico de Ana - 1° Sm 2,1-9"
       },
       "created": true,
       "updated": false

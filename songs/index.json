@@ -2993,7 +2993,7 @@
    "de-AT": "Exsultet",
    "de": "Exsultet",
    "en": "Exultet - Paschal preconium",
-   "pt-BR": "Pregão Pascal - Pregão solene da Vigília Pascal",
+   "pt-BR": "Precônio Pascal - Pregão solene da Vigília Pascal",
    "pt-PT": "Precónio Pascal - Pregão solene da Vigília Pascal",
    "lt-LT": "Paschos šlovinimas (exultet)"
   }
@@ -3402,7 +3402,8 @@
   "files": {
    "pt-BR": "Cantai a Deus - Sal 68 (67) 2, 4-7",
    "pt-PT": "Cantai a Deus - Sal 68 (67) 2, 4-7",
-   "lt-LT": "Tepakyla viešpats (eil. 2 - Psalmė 67 (68)"
+   "lt-LT": "Tepakyla viešpats (eil. 2 - Psalmė 67 (68)",
+   "es": "Cantas a Dios - Sal 68 (67) 2, 4-7"
   }
  },
  "240": {
@@ -3418,7 +3419,7 @@
  "242": {
   "stage": "precatechumenate",
   "files": {
-   "pt-BR": "Orações Universais - Melodia para utilizar nas Orações universais",
+   "pt-BR": "Salmodia para as Orações Universais - Melodia para utilizar nas Orações universais",
    "pt-PT": "Orações Universais - Melodia para utilizar nas Orações universais"
   },
   "stages": {
@@ -3597,7 +3598,16 @@
   "key": "263",
   "files": {
    "pt-PT": "A Espada - Ez. 21, 14-22",
-   "pt-BR": "A Espada - Ez. 21, 14-22"
+   "pt-BR": "A Espada - Ez. 21, 14-22",
+   "es": "La Espada - Ez. 21, 14-22"
+  },
+  "stage": "precatechumenate",
+  "stages": {}
+ },
+ "264": {
+  "key": "264",
+  "files": {
+   "pt-BR": "Cântico de Ana - 1° Sm 2,1-9"
   },
   "stage": "precatechumenate",
   "stages": {}
