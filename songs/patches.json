@@ -371,6 +371,17 @@
       "linked": {
         "new": "Viešpats padovanojo man (iz 50, 4-10)"
       }
+    },
+    {
+      "date": 1619216690445,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "O Senhor me deu - Terceiro canto do Servo de Iahweh - Is 50, 4-10",
+        "new": "O Senhor deu-me - Terceiro canto do Servo de Javé - Is 50, 4-10"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "8": [
