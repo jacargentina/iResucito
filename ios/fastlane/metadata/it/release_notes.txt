@@ -1,2 +1,1 @@
-• Aggiunta lingua lt-lT (David Hernandez Durán)
-• Aggiunta lingua sw-TZ (Andrés Ramirez)
+• Risolto: 2 brani, 1 brano (pt-PT)

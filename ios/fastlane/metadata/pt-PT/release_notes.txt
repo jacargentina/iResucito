@@ -1,2 +1,1 @@
-• Adicionado idioma lt-lT (David Hernandez Durán)
-• Adicionado idioma sw-TZ (Andrés Ramirez)
+• Fixo: 2 músicas (s), 1 música (pt-PT)

@@ -1,2 +1,1 @@
-• Added language lt-lT (David Hernandez Durán)
-• Added language sw-TZ (Andrés Ramirez)
+• Fixed 2 songs (es), 1 song (pt-PT) 
