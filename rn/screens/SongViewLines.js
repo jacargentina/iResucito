@@ -23,6 +23,11 @@ const SongViewLines = (props: any) => {
         </Text>
       );
     }
+
+    if (it.texto === '') {
+      return <Text key={i + 'texto'} onPress={onPress} numberOfLines={1} />;
+    }
+
     return (
       <Text
         key={i + 'texto'}

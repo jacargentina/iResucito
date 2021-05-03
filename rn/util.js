@@ -73,13 +73,13 @@ export const stylesObj: SongStyles = {
     color: '#ff0000',
     fontSize: fontSizeTitulo,
     marginTop: 8,
-    marginBottom: 4,
+    marginBottom: 2,
   },
   source: {
     fontFamily: 'Franklin Gothic Medium',
     color: '#777777',
     fontSize: fontSizeTexto - 1,
-    marginBottom: 8,
+    marginBottom: 13,
   },
   clampLine: {
     fontFamily: 'Franklin Gothic Medium',
