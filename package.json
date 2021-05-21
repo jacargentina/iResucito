@@ -24,8 +24,7 @@
     "lint": "eslint . --ext .js",
     "react-devtools": "react-devtools",
     "genpdf": "babel-node ./scripts/songToPdf.js",
-    "patch": "node ./packages/webapp/syncData.js down && babel-node ./scripts/applyPatch.js && node ./packages/webapp/syncData.js up SongsIndexPatch.json",
-    "postinstall": "npx jetify"
+    "patch": "node ./packages/webapp/syncData.js down && babel-node ./scripts/applyPatch.js && node ./packages/webapp/syncData.js up SongsIndexPatch.json"
   },
   "jest": {
     "preset": "react-native"
