@@ -24,8 +24,11 @@ function resolve() {
 }
 
 module.exports = {
+  future: {
+    webpack5: true,
+  },
   webpack: (config, { webpack }) => {
-    config.module.rules[0].include.push(resolve('../..'));
+    config.module.rules[1].include.push(resolve('../..'));
     config.plugins.push(
       new webpack.DefinePlugin({
         API_PORT: JSON.stringify(process.env ? process.env.API_PORT : ''),
