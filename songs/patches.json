@@ -4065,6 +4065,13 @@
         "original": "election",
         "new": "precatechumenate"
       }
+    },
+    {
+      "date": 1621541947773,
+      "locale": "pt-PT",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "62": [
@@ -12632,6 +12639,16 @@
       "author": "fd_colautti@mac.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1621541849668,
+      "locale": "it",
+      "author": "javier.alejandro.castro@gmail.com",
+      "rename": {
+        "new": "C'è un tempo per ogni cosa - Qo 3, 1-15"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "256": [
