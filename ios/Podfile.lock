@@ -299,7 +299,7 @@ PODS:
     - React-Core
   - RNICloudStore (0.1.0):
     - React
-  - RNLocalize (2.0.3):
+  - RNLocalize (2.1.0):
     - React-Core
   - RNReanimated (2.1.0):
     - DoubleConversion
@@ -330,12 +330,13 @@ PODS:
     - React-RCTVibration
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNScreens (3.2.0):
+  - RNScreens (3.3.0):
     - React-Core
+    - React-RCTImage
   - RNSentry (2.4.3):
     - React-Core
     - Sentry (= 6.1.4)
-  - RNShare (6.0.1):
+  - RNShare (6.1.0):
     - React-Core
   - Sentry (6.1.4):
     - Sentry/Core (= 6.1.4)
@@ -545,11 +546,11 @@ SPEC CHECKSUMS:
   RNFS: 3ab21fa6c56d65566d1fb26c2228e2b6132e5e32
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
   RNICloudStore: bc6e225811637c09bd1eb055d6cd7448e61cd451
-  RNLocalize: 99e59cad311ca1b6872b1764514009416ccba03d
+  RNLocalize: 7e199e96411dce0611e07e0496b049afa882c31d
   RNReanimated: b8c8004b43446e3c2709fe64b2b41072f87428ad
-  RNScreens: c277bfc4b5bb7c2fe977d19635df6f974f95dfd6
+  RNScreens: bf59f17fbf001f1025243eeed5f19419d3c11ef2
   RNSentry: 6f8f9ee7e4c939dcd35e5633b94d0e3782888e46
-  RNShare: 755de6bac084428f8fd8fb54c376f126f40e560c
+  RNShare: c93ee0df653c76d913554272d56f6ffd8bdcb3cc
   Sentry: 9d055e2de30a77685e86b219acf02e59b82091fc
   Yoga: a7de31c64fe738607e7a3803e3f591a4b1df7393
 

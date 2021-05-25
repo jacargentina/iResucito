@@ -92,8 +92,8 @@ const SettingsScreen = () => {
                   margin: 0,
                 }}
                 headerStyle={{
-                  backgroundColor: StackNavigatorOptions().headerStyle
-                    .backgroundColor,
+                  backgroundColor:
+                    StackNavigatorOptions().headerStyle.backgroundColor,
                 }}
                 headerBackButtonTextStyle={{
                   color: StackNavigatorOptions().headerTitleStyle.color,
