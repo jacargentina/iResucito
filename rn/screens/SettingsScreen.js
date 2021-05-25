@@ -1,6 +1,13 @@
 // @flow
 import React, { useContext, useEffect, useState } from 'react';
-import { View, ScrollView, Image, Linking, Alert } from 'react-native';
+import {
+  Platform,
+  View,
+  ScrollView,
+  Image,
+  Linking,
+  Alert,
+} from 'react-native';
 import { AndroidBackHandler } from 'react-navigation-backhandler';
 import {
   Button,
@@ -85,6 +92,11 @@ const SettingsScreen = () => {
               <Text>{I18n.t('settings_title.locale')}</Text>
               <Text note>{I18n.t('settings_note.locale')}</Text>
               <Picker
+                style={
+                  Platform.OS === 'android'
+                    ? { height: 60, marginLeft: 20 }
+                    : null
+                }
                 headerBackButtonText={I18n.t('ui.back')}
                 iosHeader={I18n.t('settings_title.locale')}
                 textStyle={{
@@ -128,12 +140,7 @@ const SettingsScreen = () => {
                     fontSize: 14,
                   }}
                 />
-                <Text
-                  style={{
-                    fontSize: 14,
-                  }}>
-                  {songsResume}
-                </Text>
+                <Text note>{songsResume}</Text>
               </View>
             </Body>
           </ListItem>
