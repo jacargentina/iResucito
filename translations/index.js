@@ -15,6 +15,7 @@ I18n.translations = {
   'sw-TZ': require('./sw-TZ'),
   fr: require('./fr'),
   de: require('./de'),
+  pl: require('./pl'),
 };
 
 export default I18n;
