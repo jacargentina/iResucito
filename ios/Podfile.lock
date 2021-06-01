@@ -285,7 +285,7 @@ PODS:
     - React-perflogger (= 0.64.1)
   - rn-fetch-blob (0.12.0):
     - React-Core
-  - RNCAsyncStorage (1.15.4):
+  - RNCAsyncStorage (1.15.5):
     - React-Core
   - RNCMaskedView (0.1.11):
     - React
@@ -301,7 +301,7 @@ PODS:
     - React
   - RNLocalize (2.1.0):
     - React-Core
-  - RNReanimated (2.1.0):
+  - RNReanimated (2.2.0):
     - DoubleConversion
     - FBLazyVector
     - FBReactNativeSpec
@@ -336,7 +336,7 @@ PODS:
   - RNSentry (2.4.3):
     - React-Core
     - Sentry (= 6.1.4)
-  - RNShare (6.1.0):
+  - RNShare (6.2.0):
     - React-Core
   - Sentry (6.1.4):
     - Sentry/Core (= 6.1.4)
@@ -539,7 +539,7 @@ SPEC CHECKSUMS:
   React-runtimeexecutor: ff951a0c241bfaefc4940a3f1f1a229e7cb32fa6
   ReactCommon: bedc99ed4dae329c4fcf128d0c31b9115e5365ca
   rn-fetch-blob: f065bb7ab7fb48dd002629f8bdcb0336602d3cba
-  RNCAsyncStorage: f47a7e8f927f7c9da947491fc55752eb9ce17f2d
+  RNCAsyncStorage: 56a3355a10b5d660c48c6e37325ac85ebfd09885
   RNCMaskedView: 0e1bc4bfa8365eba5fbbb71e07fbdc0555249489
   RNCPicker: 914b557e20b3b8317b084aca9ff4b4edb95f61e4
   RNDeviceInfo: 8d3a29207835f972bce883723882980143270d55
@@ -547,10 +547,10 @@ SPEC CHECKSUMS:
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
   RNICloudStore: bc6e225811637c09bd1eb055d6cd7448e61cd451
   RNLocalize: 7e199e96411dce0611e07e0496b049afa882c31d
-  RNReanimated: b8c8004b43446e3c2709fe64b2b41072f87428ad
+  RNReanimated: 9c13c86454bfd54dab7505c1a054470bfecd2563
   RNScreens: bf59f17fbf001f1025243eeed5f19419d3c11ef2
   RNSentry: 6f8f9ee7e4c939dcd35e5633b94d0e3782888e46
-  RNShare: c93ee0df653c76d913554272d56f6ffd8bdcb3cc
+  RNShare: 32ded9b8603fddf8f8eed42014e7ea7a4b0b8bf0
   Sentry: 9d055e2de30a77685e86b219acf02e59b82091fc
   Yoga: a7de31c64fe738607e7a3803e3f591a4b1df7393
 
