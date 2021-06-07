@@ -1,14 +1,14 @@
 package com.javiercastro.iresucito;
 
 import com.facebook.react.ReactActivity;
-import org.devio.rn.splashscreen.SplashScreen;
+import com.zoontek.rnbootsplash.RNBootSplash;
 
 public class MainActivity extends ReactActivity {
 
     @Override
     protected void onCreate(android.os.Bundle savedInstanceState) {
-        SplashScreen.show(this);
         super.onCreate(savedInstanceState);
+        RNBootSplash.init(R.drawable.bootsplash, MainActivity.this);
     }
     /**
      * Returns the name of the main component registered from JavaScript.
