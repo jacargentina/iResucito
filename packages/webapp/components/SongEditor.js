@@ -118,8 +118,9 @@ const SongEditor = () => {
   const txtPositionEvent = () => {
     if (txtRef && txtRef.current) {
       const textarea = txtRef.current.ref.current;
-      const line = textarea.value.substr(0, textarea.selectionStart).split('\n')
-        .length;
+      const line = textarea.value
+        .substr(0, textarea.selectionStart)
+        .split('\n').length;
       const col =
         textarea.selectionStart -
         textarea.value.lastIndexOf('\n', textarea.selectionStart - 1);
@@ -258,12 +259,20 @@ const SongEditor = () => {
           </Menu.Item>
         )}
         {!isLoading && session && (editSong.patched || editSong.added) && (
-          <Menu.Item>
-            <Button negative onClick={confirmRemovePatch}>
-              <Icon name="trash" />
-              {I18n.t('ui.remove patch')}
-            </Button>
-          </Menu.Item>
+          <>
+            <Menu.Item>
+              <Button negative onClick={confirmRemovePatch}>
+                <Icon name="trash" />
+                {I18n.t('ui.remove patch')}
+              </Button>
+            </Menu.Item>
+            <Menu.Item>
+              <Button negative onClick={() => setActiveDialog('diffView')}>
+                <Icon name="history" />
+                {I18n.t('ui.diff view')}
+              </Button>
+            </Menu.Item>
+          </>
         )}
         <Menu.Item position="right">
           <Button onClick={confirmClose}>

@@ -7,6 +7,7 @@ import EditContextWrapper from 'components/EditContext';
 import SongChangeMetadataDialog from 'components/SongChangeMetadataDialog';
 import ConfirmDialog from 'components/ConfirmDialog';
 import PatchLogDialog from 'components/PatchLogDialog';
+import DiffViewDialog from 'components/DiffViewDialog';
 import PdfSettingsDialog from 'components/PdfSettingsDialog';
 import { readLocalePatch } from '../../common';
 import FolderSongs from '../../../../FolderSongs';
@@ -43,6 +44,7 @@ const SongEdit = (props: any) => {
           <SongChangeMetadataDialog />
           <PatchLogDialog />
           <PdfSettingsDialog />
+          <DiffViewDialog />
         </Layout>
       </EditContextWrapper>
     </DataContextWrapper>

@@ -26,6 +26,7 @@ const EditContextWrapper = (props: any) => {
   const [stage, setStage] = useState();
   const [hasChanges, setHasChanges] = useState(false);
   const [patchLogs, setPatchLogs] = useState();
+  const [diffView, setDiffView] = useState();
   const [songFile, setSongFile] = useState();
 
   const goPrevious = () => {
@@ -114,6 +115,23 @@ const EditContextWrapper = (props: any) => {
   }, [activeDialog]);
 
   useEffect(() => {
+    if (activeDialog === 'diffView') {
+      setDiffView();
+      setApiResult();
+      setApiLoading(true);
+      axios
+        .get(`/api/diff/${editSong.key}/${I18n.locale}`)
+        .then((result) => {
+          setApiLoading(false);
+          setDiffView(result.data.diff);
+        })
+        .catch((err) => {
+          handleApiError(err);
+        });
+    }
+  }, [activeDialog]);
+
+  useEffect(() => {
     if (name) {
       const parsed = getSongFileFromString(name);
       setSongFile(parsed);
@@ -143,6 +161,7 @@ const EditContextWrapper = (props: any) => {
         totalSongs,
         songFile,
         patchLogs,
+        diffView,
         setConfirmData,
         confirmClose,
         hasChanges,

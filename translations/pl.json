@@ -104,7 +104,8 @@
     "clear ratings confirmation": "Czy chcesz wyczyścić oceny?",
     "how to add": "Jak dodać",
     "add empty": "Dodaj bez zawartości",
-    "copy from spanish": "Kopia wersji hiszpańskiej"
+    "copy from spanish": "Kopia wersji hiszpańskiej",
+    "diff view": "Widok różnic"
   },
   "pdf_export_options": {
     "selected songs": "Wybrane pieśni",

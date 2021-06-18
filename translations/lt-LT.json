@@ -104,7 +104,8 @@
     "clear ratings confirmation": "Ar norite panaikinti visus įvertinimus?",
     "how to add": "Kaip pridėti",
     "add empty": "Pridėti be turinio",
-    "copy from spanish": "Kopijuoti iš ispaniškos versijos"
+    "copy from spanish": "Kopijuoti iš ispaniškos versijos",
+    "diff view": "Diff vaizdas"
   },
   "pdf_export_options": {
     "selected songs": "Pasirinktos giesmės",

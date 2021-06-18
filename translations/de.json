@@ -104,7 +104,8 @@
     "clear ratings confirmation": "Möchten Sie alle Bewertungen löschen?",
     "how to add": "Wie man hinzufügen",
     "add empty": "Hinzufügen ohne Inhalt",
-    "copy from spanish": "Kopieren Sie aus der spanischen Version"
+    "copy from spanish": "Kopieren Sie aus der spanischen Version",
+    "diff view": "Unterschiedliche Ansicht"
   },
   "pdf_export_options": {
     "selected songs": "Ausgewählte Lieder",

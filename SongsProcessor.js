@@ -193,8 +193,8 @@ export class SongsProcessor {
       });
   }
 
-  loadLocaleSongFile(rawLoc: string, file: SongFile): Promise<string> {
-    const path = `${this.basePath}/${rawLoc}/${file.nombre}.txt`;
+  async loadLocaleSongFile(rawLoc: string, filename: string): Promise<string> {
+    const path = `${this.basePath}/${rawLoc}/${filename}.txt`;
     return this.songReader(path);
   }
 
