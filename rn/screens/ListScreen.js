@@ -18,10 +18,10 @@ const ListScreen = (props: any) => {
   const [filtered, setFiltered] = useState([]);
   const [filter, setFilter] = useState('');
 
-  const allLists = useMemo(() => getListsForUI(data.localeReal), [
-    data.localeReal,
-    getListsForUI,
-  ]);
+  const allLists = useMemo(
+    () => getListsForUI(data.localeReal),
+    [data.localeReal, getListsForUI]
+  );
 
   useEffect(() => {
     var result = allLists;

@@ -13,14 +13,14 @@ class CloudData {
     );
   }
 
-  loadData(userInfo: any) {
+  loadData = (userInfo: any) => {
     const changedKeys = userInfo.changedKeys;
     if (changedKeys != null && changedKeys.includes('lists')) {
       iCloudStorage.getItem('lists').then((result) => {
         console.log('lists on icloud are loaded!', result);
       });
     }
-  }
+  };
 
   load(key: string) {
     return iCloudStorage

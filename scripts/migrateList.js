@@ -40,9 +40,9 @@ const migrateLists = (lists: any) => {
 
 var lists = {
   Prueba: {
-    '1': 'Is 2,3-5',
-    '2': null,
-    '3': null,
+    1: 'Is 2,3-5',
+    2: null,
+    3: null,
     type: 'palabra',
     ambiental: 'Javier',
     entrada: 'Abraham - Gn 18, 1-5',
