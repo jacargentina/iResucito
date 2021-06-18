@@ -267,7 +267,7 @@ const SongEditor = () => {
               </Button>
             </Menu.Item>
             <Menu.Item>
-              <Button negative onClick={() => setActiveDialog('diffView')}>
+              <Button onClick={() => setActiveDialog('diffView')}>
                 <Icon name="history" />
                 {I18n.t('ui.diff view')}
               </Button>
