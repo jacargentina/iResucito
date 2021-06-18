@@ -30,43 +30,43 @@ export class SongsExtras {
     this.unlink = unlink;
   }
 
-  readPatch() {
+  readPatch(): Promise<string> {
     return this.reader(this.getPatchUri());
   }
 
-  savePatch(patch: any) {
+  savePatch(patch: any): Promise<void> {
     return this.writer(this.getPatchUri(), patch, 'utf8');
   }
 
-  deletePatch() {
+  deletePatch(): Promise<void> {
     return this.unlink(this.getPatchUri());
   }
 
-  patchExists() {
+  patchExists(): Promise<boolean> {
     return this.exists(this.getPatchUri());
   }
 
-  getPatchUri() {
+  getPatchUri(): string {
     return `${this.basePath}/SongsIndexPatch.json`;
   }
 
-  readRatings() {
+  readRatings(): Promise<string> {
     return this.reader(this.getRatingsUri());
   }
 
-  saveRatings(ratings: any) {
+  saveRatings(ratings: any): Promise<void> {
     return this.writer(this.getRatingsUri(), ratings, 'utf8');
   }
 
-  deleteRatings() {
+  deleteRatings(): Promise<void> {
     return this.unlink(this.getRatingsUri());
   }
 
-  ratingsExists() {
+  ratingsExists(): Promise<boolean> {
     return this.exists(this.getRatingsUri());
   }
 
-  getRatingsUri() {
+  getRatingsUri(): string {
     return `${this.basePath}/SongsRating.json`;
   }
 }

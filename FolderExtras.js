@@ -14,7 +14,7 @@ const NodeExists = (path: string) => {
   return Promise.resolve(fs.existsSync(path));
 };
 
-const FolderExtras = new SongsExtras(
+const FolderExtras: SongsExtras = new SongsExtras(
   './data',
   NodeExists,
   NodeWriter,
