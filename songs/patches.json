@@ -2398,6 +2398,16 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1622853899136,
+      "locale": "en",
+      "author": "monicaenrique.10@gmail.com",
+      "rename": {
+        "new": "Akeda - Gn 22, 1-19"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "35": [
@@ -2666,6 +2676,16 @@
         "new": "Babilónia criminosa - Sal 137 (136)"
       },
       "created": false,
+      "updated": false
+    },
+    {
+      "date": 1622855237529,
+      "locale": "en",
+      "author": "monicaenrique.10@gmail.com",
+      "rename": {
+        "new": "Beside the Rivers of Babylon - Psalm 136 (137)"
+      },
+      "created": true,
       "updated": false
     }
   ],
@@ -3415,6 +3435,17 @@
       },
       "created": false,
       "updated": false
+    },
+    {
+      "date": 1622856984105,
+      "locale": "en",
+      "author": "monicaenrique.10@gmail.com",
+      "rename": {
+        "original": "As the deer yearns - Ps 41",
+        "new": "Like a Doe Yearns - Psalm 41-42 (42-43)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "49": [
@@ -3949,6 +3980,16 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1622857884424,
+      "locale": "en",
+      "author": "monicaenrique.10@gmail.com",
+      "rename": {
+        "new": "The Lord Announces a Good News - Psalm 67 (68)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "60": [
@@ -8776,6 +8817,13 @@
       },
       "created": false,
       "updated": false
+    },
+    {
+      "date": 1622145210679,
+      "locale": "it",
+      "author": "lukasz.rynek@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "158": [
