@@ -283,7 +283,7 @@ PODS:
     - React-perflogger (= 0.64.2)
   - rn-fetch-blob (0.12.0):
     - React-Core
-  - RNBootSplash (3.2.3):
+  - RNBootSplash (3.2.4):
     - React-Core
   - RNCAsyncStorage (1.15.5):
     - React-Core
@@ -330,17 +330,17 @@ PODS:
     - React-RCTVibration
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNScreens (3.3.0):
+  - RNScreens (3.4.0):
     - React-Core
     - React-RCTImage
-  - RNSentry (2.4.3):
+  - RNSentry (2.5.1):
     - React-Core
-    - Sentry (= 6.1.4)
-  - RNShare (6.2.0):
+    - Sentry (= 7.0.0)
+  - RNShare (6.2.1):
     - React-Core
-  - Sentry (6.1.4):
-    - Sentry/Core (= 6.1.4)
-  - Sentry/Core (6.1.4)
+  - Sentry (7.0.0):
+    - Sentry/Core (= 7.0.0)
+  - Sentry/Core (7.0.0)
   - Yoga (1.14.0)
 
 DEPENDENCIES:
@@ -538,7 +538,7 @@ SPEC CHECKSUMS:
   React-runtimeexecutor: a9904c6d0218fb9f8b19d6dd88607225927668f9
   ReactCommon: 149906e01aa51142707a10665185db879898e966
   rn-fetch-blob: f065bb7ab7fb48dd002629f8bdcb0336602d3cba
-  RNBootSplash: 8ef5ffa03dadd35f66510b42960ce40f397c98bf
+  RNBootSplash: 4844706cbb56a3270556c9b94e59dedadccd47e4
   RNCAsyncStorage: 56a3355a10b5d660c48c6e37325ac85ebfd09885
   RNCMaskedView: 0e1bc4bfa8365eba5fbbb71e07fbdc0555249489
   RNCPicker: 914b557e20b3b8317b084aca9ff4b4edb95f61e4
@@ -548,10 +548,10 @@ SPEC CHECKSUMS:
   RNICloudStore: bc6e225811637c09bd1eb055d6cd7448e61cd451
   RNLocalize: 82a569022724d35461e2dc5b5d015a13c3ca995b
   RNReanimated: 9c13c86454bfd54dab7505c1a054470bfecd2563
-  RNScreens: bf59f17fbf001f1025243eeed5f19419d3c11ef2
-  RNSentry: 6f8f9ee7e4c939dcd35e5633b94d0e3782888e46
-  RNShare: 32ded9b8603fddf8f8eed42014e7ea7a4b0b8bf0
-  Sentry: 9d055e2de30a77685e86b219acf02e59b82091fc
+  RNScreens: 21b73c94c9117e1110a79ee0ee80c93ccefed8ce
+  RNSentry: f109c8729739aa29f182c7d995bbcbccad373f31
+  RNShare: 5ac8f6532ca4cd80fc71caef1cfbba1854a6a045
+  Sentry: 89d26e036063b9cb9caa59b6951dd2f8277aa13b
   Yoga: 575c581c63e0d35c9a83f4b46d01d63abc1100ac
 
 PODFILE CHECKSUM: 08509d87e51f6f90a2dd355a6306ba8b8af7356e
