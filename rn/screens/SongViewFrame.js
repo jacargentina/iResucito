@@ -1,23 +1,23 @@
 // @flow
-import React, { useContext, useState } from 'react';
+import * as React from 'react';
+import { useContext, useState } from 'react';
 import { Dimensions, ScrollView, View } from 'react-native';
-import { Container, Content, Text, Icon, Button } from 'native-base';
+import { Box, HStack, Text, Icon, Button } from 'native-base';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import color from 'color';
 import { DataContext } from '../DataContext';
 import colors from '../../colors';
-import color from 'color';
 import { NativeParser, NativeStyles } from '../util';
 import I18n from '../../translations';
 import SongViewLines from './SongViewLines';
-import commonTheme from '../native-base-theme/variables/platform';
 
-const SongViewFrame = (props: any) => {
+const SongViewFrame = (props: any): React.Node => {
   const data = useContext(DataContext);
   const [zoomLevel, setZoomLevel] = data.zoomLevel;
   const { title, stage, source, text, transportToNote, error, style } = props;
   const backColor = color(colors[stage]);
   const background = backColor.lighten(0.1).string();
-  const margin = 10;
-  const minWidth = Dimensions.get('window').width - margin * 2;
+  const minWidth = Dimensions.get('window').width;
 
   const fRender = NativeParser.getForRender(text, I18n.locale, transportToNote);
 
@@ -48,18 +48,17 @@ const SongViewFrame = (props: any) => {
   sourceStyle.fontSize = sourceStyle.fontSize * zoomLevel;
 
   return (
-    <Container style={{ backgroundColor: background, ...style }}>
+    <Box style={{ backgroundColor: background, ...style }}>
       <ScrollView
         horizontal
         style={{
-          marginLeft: margin,
-          marginRight: margin,
+          height: ctrlVisible ? '89%' : '100%',
         }}>
-        <ScrollView>
-          <Content
-            style={{
-              minWidth: minWidth,
-            }}>
+        <ScrollView
+          style={{
+            minWidth: minWidth,
+          }}>
+          <Box px="2">
             <Text onPress={toggleControls} style={titleStyle}>
               {title}
             </Text>
@@ -74,39 +73,28 @@ const SongViewFrame = (props: any) => {
                 zoom={zoomLevel}
               />
             )}
-          </Content>
+          </Box>
         </ScrollView>
       </ScrollView>
       {ctrlVisible && (
-        <View
-          style={{
-            flex: 0,
-            padding: 8,
-            alignItems: 'center',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            backgroundColor: '#efefef',
-          }}>
-          <Button
-            style={{ backgroundColor: commonTheme.brandPrimary }}
-            onPress={zoomOut}>
-            <Icon name="remove" />
+        <HStack
+          m="2"
+          h="10%"
+          alignItems="center"
+          justifyContent="space-between"
+          backgroundColor="#efefef">
+          <Button onPress={zoomOut} w="20%">
+            <Icon as={Ionicons} name="remove" color="white" />
           </Button>
-          <Text
-            style={{
-              fontSize: 20,
-              fontWeight: 'bold',
-            }}>
+          <Text bold fontSize="xl">
             {zoomLevel}
           </Text>
-          <Button
-            style={{ backgroundColor: commonTheme.brandPrimary }}
-            onPress={zoomIn}>
-            <Icon name="add" />
+          <Button onPress={zoomIn} w="20%">
+            <Icon as={Ionicons} name="add" color="white" />
           </Button>
-        </View>
+        </HStack>
       )}
-    </Container>
+    </Box>
   );
 };
 

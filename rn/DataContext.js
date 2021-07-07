@@ -4,17 +4,18 @@ import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { Alert, Platform, PermissionsAndroid } from 'react-native';
 import Share from 'react-native-share';
 import Contacts from 'react-native-contacts';
-import { ActionSheet } from 'native-base';
 import RNFS from 'react-native-fs';
-import badges from './badges';
-import { clouddata } from './clouddata';
-import { generateListPDF } from './pdf';
+import pathParse from 'path-parse';
 import {
   getEsSalmo,
   getLocalizedListItem,
   getLocalizedListType,
   defaultExportToPdfOptions,
 } from '../common';
+import I18n from '../translations';
+import badges from './badges';
+import { clouddata } from './clouddata';
+import { generateListPDF } from './pdf';
 import usePersist from './usePersist';
 import {
   getDefaultLocale,
@@ -22,8 +23,6 @@ import {
   NativeSongs,
   NativeExtras,
 } from './util';
-import I18n from '../translations';
-import pathParse from 'path-parse';
 
 const useSongsMeta = (locale: string) => {
   const [ratingsFileExists, setRatingsFileExists] = useState();
@@ -354,42 +353,6 @@ const useLists = (songs: any) => {
       });
   };
 
-  const chooseListTypeForAdd = (navigation) => {
-    ActionSheet.show(
-      {
-        options: [
-          I18n.t('list_type.eucharist'),
-          I18n.t('list_type.word'),
-          I18n.t('list_type.other'),
-          I18n.t('ui.cancel'),
-        ],
-        cancelButtonIndex: 3,
-        title: I18n.t('ui.lists.type'),
-      },
-      (index) => {
-        var type = null;
-        index = Number(index);
-        switch (index) {
-          case 0:
-            type = 'eucaristia';
-            break;
-          case 1:
-            type = 'palabra';
-            break;
-          case 2:
-            type = 'libre';
-            break;
-        }
-        if (type !== null) {
-          navigation.navigate('ListName', {
-            action: 'create',
-            type: type,
-          });
-        }
-      }
-    );
-  };
-
   const shareList = (
     listName: string,
     localeValue: string,
@@ -521,7 +484,6 @@ const useLists = (songs: any) => {
     getListsForUI,
     shareList,
     importList,
-    chooseListTypeForAdd,
   };
 };
 

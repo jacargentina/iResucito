@@ -207,6 +207,8 @@ PODS:
     - React-Core
   - react-native-keep-awake (4.0.0):
     - React
+  - react-native-pager-view (5.2.1):
+    - React-Core
   - react-native-pdf (6.3.0):
     - React-Core
   - react-native-print (0.8.0):
@@ -333,10 +335,14 @@ PODS:
   - RNScreens (3.4.0):
     - React-Core
     - React-RCTImage
-  - RNSentry (2.5.1):
+  - RNSentry (2.6.0):
     - React-Core
     - Sentry (= 7.0.0)
-  - RNShare (6.2.1):
+  - RNShare (6.2.2):
+    - React-Core
+  - RNSVG (12.1.1):
+    - React
+  - RNVectorIcons (8.1.0):
     - React-Core
   - Sentry (7.0.0):
     - Sentry/Core (= 7.0.0)
@@ -363,6 +369,7 @@ DEPENDENCIES:
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - react-native-contacts (from `../node_modules/react-native-contacts`)
   - react-native-keep-awake (from `../node_modules/react-native-keep-awake`)
+  - react-native-pager-view (from `../node_modules/react-native-pager-view`)
   - react-native-pdf (from `../node_modules/react-native-pdf`)
   - react-native-print (from `../node_modules/react-native-print`)
   - "react-native-progress-bar-android (from `../node_modules/@react-native-community/progress-bar-android`)"
@@ -394,6 +401,8 @@ DEPENDENCIES:
   - RNScreens (from `../node_modules/react-native-screens`)
   - "RNSentry (from `../node_modules/@sentry/react-native`)"
   - RNShare (from `../node_modules/react-native-share`)
+  - RNSVG (from `../node_modules/react-native-svg`)
+  - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -436,6 +445,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-contacts"
   react-native-keep-awake:
     :path: "../node_modules/react-native-keep-awake"
+  react-native-pager-view:
+    :path: "../node_modules/react-native-pager-view"
   react-native-pdf:
     :path: "../node_modules/react-native-pdf"
   react-native-print:
@@ -498,6 +509,10 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@sentry/react-native"
   RNShare:
     :path: "../node_modules/react-native-share"
+  RNSVG:
+    :path: "../node_modules/react-native-svg"
+  RNVectorIcons:
+    :path: "../node_modules/react-native-vector-icons"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -520,6 +535,7 @@ SPEC CHECKSUMS:
   React-jsinspector: cc614ec18a9ca96fd275100c16d74d62ee11f0ae
   react-native-contacts: 493b583e87eb9cb1ab09268e89e526baf1a7cb30
   react-native-keep-awake: afad8a51dfef9fe9655a6344771be32c8596d774
+  react-native-pager-view: 2864530d861ab2970beb2cd0b4cf2292cd30cd84
   react-native-pdf: ef641e79a6d550cfabe5d7ec1916799726514c43
   react-native-print: 8e584f844c5296a93a4399fa591e9070b77f33ee
   react-native-progress-bar-android: be43138ab7da30d51fc038bafa98e9ed594d0c40
@@ -549,8 +565,10 @@ SPEC CHECKSUMS:
   RNLocalize: 82a569022724d35461e2dc5b5d015a13c3ca995b
   RNReanimated: 9c13c86454bfd54dab7505c1a054470bfecd2563
   RNScreens: 21b73c94c9117e1110a79ee0ee80c93ccefed8ce
-  RNSentry: f109c8729739aa29f182c7d995bbcbccad373f31
-  RNShare: 5ac8f6532ca4cd80fc71caef1cfbba1854a6a045
+  RNSentry: a2b02b326ae4fce91ce7c57d3f7dcf8df4f72269
+  RNShare: 1a049e096cc7239fb790892cd0bee1d31498269d
+  RNSVG: 551acb6562324b1d52a4e0758f7ca0ec234e278f
+  RNVectorIcons: 31cebfcf94e8cf8686eb5303ae0357da64d7a5a4
   Sentry: 89d26e036063b9cb9caa59b6951dd2f8277aa13b
   Yoga: 575c581c63e0d35c9a83f4b46d01d63abc1100ac
 

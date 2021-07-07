@@ -1,15 +1,16 @@
 // @flow
-import React from 'react';
+import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import StackNavigatorOptions from './StackNavigatorOptions';
 import SettingsScreen from '../screens/SettingsScreen';
 import I18n from '../../translations';
+import useStackNavOptions from './useStackNavOptions';
 
 const Stack = createStackNavigator();
 
-const SettingsNavigator = () => {
+const SettingsNavigator = (): React.Node => {
+  const options = useStackNavOptions();
   return (
-    <Stack.Navigator screenOptions={StackNavigatorOptions()}>
+    <Stack.Navigator screenOptions={options}>
       <Stack.Screen
         name="Settings"
         component={SettingsScreen}

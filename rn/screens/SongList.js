@@ -1,5 +1,6 @@
 // @flow
-import React, {
+import * as React from 'react';
+import {
   useContext,
   useEffect,
   useLayoutEffect,
@@ -12,14 +13,13 @@ import {
   useIsFocused,
 } from '@react-navigation/native';
 import { FlatList, Keyboard, View } from 'react-native';
-import { Text, ListItem, Spinner } from 'native-base';
-import SearchBarView from './SearchBarView';
-import SongListItem from './SongListItem';
+import { Text, Spinner } from 'native-base';
+import SearchBarView from '../components/SearchBarView';
 import I18n from '../../translations';
 import { DataContext } from '../DataContext';
-import commonTheme from '../native-base-theme/variables/platform';
+import SongListItem from './SongListItem';
 
-const SongList = (props: any) => {
+const SongList = (props: any): React.Node => {
   const listRef = useRef<any>();
   const data = useContext(DataContext);
   const navigation = useNavigation();
@@ -97,8 +97,8 @@ const SongList = (props: any) => {
   if (loading.isLoading) {
     return (
       <View style={{ flex: 1 }}>
-        <Spinner color={commonTheme.brandPrimary} style={{ flex: 3 }} />
-        <Text note style={{ flex: 1, textAlign: 'center' }}>
+        <Spinner style={{ flex: 3 }} />
+        <Text color="muted.300" style={{ flex: 1, textAlign: 'center' }}>
           {loading.text}
         </Text>
       </View>
@@ -107,9 +107,9 @@ const SongList = (props: any) => {
 
   return (
     <SearchBarView value={textFilter} setValue={setTextFilter}>
-      <ListItem itemDivider>
-        <Text note>{totalText}</Text>
-      </ListItem>
+      <Text bold p="2" my="2" bg="gray.100" color="muted.500">
+        {totalText}
+      </Text>
       <FlatList
         ref={listRef}
         onScrollBeginDrag={() => Keyboard.dismiss()}

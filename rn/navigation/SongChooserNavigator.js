@@ -1,18 +1,16 @@
 // @flow
-import React from 'react';
+import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import StackNavigatorOptions from './StackNavigatorOptions';
 import SongChooserDialog from '../screens/SongChooserDialog';
 import SongPreviewScreenDialog from '../screens/SongPreviewScreenDialog';
+import useStackNavOptions from './useStackNavOptions';
 
 const Stack = createStackNavigator();
 
-const SongChooserNavigator = (props: any) => {
+const SongChooserNavigator = (): React.Node => {
+  const options = useStackNavOptions();
   return (
-    <Stack.Navigator
-      mode="modal"
-      headerMode="none"
-      screenOptions={StackNavigatorOptions()}>
+    <Stack.Navigator mode="modal" headerMode="none" screenOptions={options}>
       <Stack.Screen name="Dialog" component={SongChooserDialog} />
       <Stack.Screen name="ViewSong" component={SongPreviewScreenDialog} />
     </Stack.Navigator>

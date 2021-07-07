@@ -1,36 +1,32 @@
 // @flow
-import React from 'react';
-import { ListItem, Right, Body, Icon, Text } from 'native-base';
-import { View } from 'react-native';
-import commonTheme from '../native-base-theme/variables/platform';
-import ContactPhoto from './ContactPhoto';
+import * as React from 'react';
+import { VStack, HStack, Icon, Text, Pressable } from 'native-base';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import ContactPhoto from '../components/ContactPhoto';
 
-const ContactListItem = (props: any) => {
+const ContactListItem = (props: any): React.Node => {
   const { item, ...rest } = props;
   var contactFullName = `${item.givenName} ${item.familyName}`;
-  var flags = (
-    <View style={{ flexDirection: 'row' }}>
-      {item.s === true && (
-        <Icon
-          name="musical-notes"
-          style={{
-            marginRight: 4,
-            color: commonTheme.brandPrimary,
-            fontSize: 28,
-          }}
-        />
-      )}
-    </View>
-  );
   return (
-    <ListItem button {...rest}>
-      <ContactPhoto item={item} />
-      <Body>
-        <Text>{item.givenName}</Text>
-        <Text note>{contactFullName}</Text>
-      </Body>
-      <Right>{flags}</Right>
-    </ListItem>
+    <Pressable {...rest}>
+      <HStack
+        space={1}
+        p="2"
+        alignItems="center"
+        borderBottomWidth={1}
+        borderBottomColor="muted.200">
+        <ContactPhoto item={item} />
+        <VStack p="2" w="70%">
+          <Text bold fontSize="lg">
+            {item.givenName}
+          </Text>
+          <Text>{contactFullName}</Text>
+        </VStack>
+        {item.s === true && (
+          <Icon as={Ionicons} name="musical-notes" color="rose.400" size="lg" />
+        )}
+      </HStack>
+    </Pressable>
   );
 };
 

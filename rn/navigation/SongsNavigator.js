@@ -1,26 +1,28 @@
 // @flow
-import React, { useContext } from 'react';
+import * as React from 'react';
+import { useContext } from 'react';
 import { View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
-import StackNavigatorOptions from './StackNavigatorOptions';
 import SongSearch from '../screens/SongSearch';
 import SongList from '../screens/SongList';
 import SongDetail from '../screens/SongDetail';
-import SongDetailOptions from './SongDetailOptions';
 import PDFViewer from '../screens/PDFViewer';
-import SharePDFButton from '../screens/SharePDFButton';
-import PrintPDFButton from '../screens/PrintPDFButton';
-import ExportToPdfButton from '../screens/ExportToPdfButton';
-import ClearRatingsButton from '../screens/ClearRatingsButton';
+import SharePDFButton from '../components/SharePDFButton';
+import PrintPDFButton from '../components/PrintPDFButton';
+import ExportToPdfButton from '../components/ExportToPdfButton';
+import ClearRatingsButton from '../components/ClearRatingsButton';
 import I18n from '../../translations';
 import { DataContext } from '../DataContext';
+import useStackNavOptions from './useStackNavOptions';
+import SongDetailOptions from './SongDetailOptions';
 
 const Stack = createStackNavigator();
 
-const SongsNavigator = () => {
+const SongsNavigator = (): React.Node => {
   const data = useContext(DataContext);
+  const options = useStackNavOptions();
   return (
-    <Stack.Navigator screenOptions={StackNavigatorOptions()}>
+    <Stack.Navigator screenOptions={options}>
       <Stack.Screen
         name="SongSearch"
         component={SongSearch}

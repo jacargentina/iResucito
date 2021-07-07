@@ -1,26 +1,24 @@
 // @flow
-import React from 'react';
-import { Badge, Text } from 'native-base';
-import commonTheme from './native-base-theme/variables/platform';
-import textTheme from './native-base-theme/components/Text';
+import * as React from 'react';
+import { Badge } from 'native-base';
 import colors from '../colors';
 
-const noteStyles = textTheme(commonTheme)['.note'];
-
-const createBadge = (backgroundColor, color, text) => {
+const createBadge = (backgroundColor, color, text): React.Node => {
   return (
     <Badge
-      style={{
-        backgroundColor: backgroundColor,
-      }}>
-      <Text style={{ color: color, fontSize: noteStyles.fontSize }}>
-        {text}
-      </Text>
+      w="8"
+      h="8"
+      mr="2"
+      p="2"
+      borderRadius="20"
+      bg={backgroundColor}
+      _text={{ color: color, textAlign: 'center' }}>
+      {text}
     </Badge>
   );
 };
 
-const badges = {
+const badges: any = {
   alpha: createBadge('#e67e22', 'white', 'A'),
   precatechumenate: createBadge(colors.precatechumenate, 'black', 'P'),
   catechumenate: createBadge(colors.catechumenate, 'black', 'C'),

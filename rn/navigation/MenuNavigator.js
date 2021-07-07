@@ -1,38 +1,15 @@
 // @flow
-import React, { useContext, useEffect } from 'react';
+import * as React from 'react';
+import { useContext, useEffect, useMemo } from 'react';
 import { Platform, Linking } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Icon } from 'native-base';
-import commonTheme from '../native-base-theme/variables/platform';
+import { Icon, useTheme } from 'native-base';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import { DataContext } from '../DataContext';
 import SongsNavigator from './SongsNavigator';
 import ListsNavigator from './ListsNavigator';
 import CommunityNavigator from './CommunityNavigator';
 import SettingsNavigator from './SettingsNavigator';
-import { DataContext } from '../DataContext';
-import color from 'color';
-
-var tabBarOptions = {};
-tabBarOptions.showLabel = false;
-tabBarOptions.activeTintColor = commonTheme.brandPrimary;
-tabBarOptions.style = {
-  backgroundColor: '#f9f9f9',
-  borderTopColor: color(commonTheme.brandPrimary).lighten(0.2).string(),
-  borderTopWidth: 1,
-};
-
-if (Platform.OS === 'android') {
-  tabBarOptions.inactiveTintColor = 'gray';
-  tabBarOptions.pressColor = commonTheme.brandPrimary;
-  tabBarOptions.iconStyle = {
-    height: 30,
-  };
-  tabBarOptions.indicatorStyle = {
-    backgroundColor: tabBarOptions.activeTintColor,
-    height: 3,
-  };
-  tabBarOptions.showIcon = true;
-  tabBarOptions.keyboardHidesTabBar = true;
-}
 
 const Tab = createBottomTabNavigator();
 
@@ -41,6 +18,7 @@ const getIcon = (iconName) => {
     tabBarIcon: ({ focused, color: tabColor }) => {
       return (
         <Icon
+          as={Ionicons}
           name={iconName}
           active={focused}
           style={{ marginTop: 6, color: tabColor }}
@@ -50,10 +28,41 @@ const getIcon = (iconName) => {
   };
 };
 
-const MenuNavigator = (props: any) => {
+const MenuNavigator = (props: any): React.Node => {
+  const { colors } = useTheme();
   const data = useContext(DataContext);
   const { navigation } = props;
   const { lists, importList } = data.lists;
+
+  var tabBarOptions = useMemo(() => {
+    var options = {
+      showLabel: false,
+      activeTintColor: colors.rose['600'],
+      style: {
+        backgroundColor: colors.gray['50'],
+        borderTopColor: colors.rose['300'],
+        borderTopWidth: 1,
+      },
+    };
+
+    if (Platform.OS === 'android') {
+      options = {
+        inactiveTintColor: 'gray',
+        pressColor: colors.rose['300'],
+        iconStyle: {
+          height: 30,
+        },
+        indicatorStyle: {
+          backgroundColor: colors.rose['600'],
+          height: 3,
+        },
+        showIcon: true,
+        keyboardHidesTabBar: true,
+        ...options,
+      };
+    }
+    return options;
+  }, [colors]);
 
   useEffect(() => {
     const handler = (event) => {

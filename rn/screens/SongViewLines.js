@@ -1,8 +1,8 @@
 // @flow
-import React from 'react';
+import * as React from 'react';
 import { Text } from 'native-base';
 
-const SongViewLines = (props: any) => {
+const SongViewLines = (props: any): React.Node => {
   const { lines, onPress, zoom } = props;
 
   // Ajuste final para renderizado en screen
@@ -25,14 +25,14 @@ const SongViewLines = (props: any) => {
     }
 
     if (it.texto === '') {
-      return <Text key={i + 'texto'} onPress={onPress} numberOfLines={1} />;
+      return <Text key={i + 'texto'} onPress={onPress} noOfLines={1} />;
     }
 
     return (
       <Text
         key={i + 'texto'}
         onPress={onPress}
-        numberOfLines={1}
+        noOfLines={1}
         style={itemStyle}>
         <Text key={i + 'prefijo'} style={prefijoStyle}>
           {it.prefijo}

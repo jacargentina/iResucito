@@ -1,41 +1,34 @@
 // @flow
-import React, { useContext, useEffect, useState } from 'react';
-import {
-  Platform,
-  View,
-  ScrollView,
-  Image,
-  Linking,
-  Alert,
-} from 'react-native';
+import * as React from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { Image, Linking, Alert } from 'react-native';
 import { AndroidBackHandler } from 'react-navigation-backhandler';
 import {
   Button,
-  List,
-  ListItem,
-  Body,
+  HStack,
   Text,
   Icon,
-  Right,
-  Picker,
-  H1,
+  VStack,
+  Select,
+  Box,
+  ScrollView,
+  Heading,
+  Switch,
 } from 'native-base';
-import Switch from '../widgets/switch';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
+import DeviceInfo from 'react-native-device-info';
 import { DataContext } from '../DataContext';
 import I18n from '../../translations';
-import StackNavigatorOptions from '../navigation/StackNavigatorOptions';
 import { getLocalesForPicker } from '../../common';
 import { getDefaultLocale } from '../util';
-import DeviceInfo from 'react-native-device-info';
-import commonTheme from '../native-base-theme/variables/platform';
 
 const pack = require('../../app.json');
 const collaborators = require('../../songs/collaborators.json');
 const cristo = require('../../img/cristo.jpg');
 const appName = pack.displayName;
 
-const SettingsScreen = () => {
+const SettingsScreen = (): React.Node => {
   const data = useContext(DataContext);
   const navigation = useNavigation();
   const [locale, setLocale] = data.locale;
@@ -80,149 +73,110 @@ const SettingsScreen = () => {
   };
 
   var localesItems = getLocalesForPicker(getDefaultLocale()).map((l) => {
-    return <Picker.Item key={l.value} label={l.label} value={l.value} />;
+    return <Select.Item key={l.value} label={l.label} value={l.value} />;
   });
 
   return (
     <AndroidBackHandler onBackPress={() => true}>
       <ScrollView>
-        <List>
-          <ListItem>
-            <Body>
-              <Text>{I18n.t('settings_title.locale')}</Text>
-              <Text note>{I18n.t('settings_note.locale')}</Text>
-              <Picker
-                style={
-                  Platform.OS === 'android'
-                    ? { height: 60, marginLeft: 20 }
-                    : null
-                }
-                headerBackButtonText={I18n.t('ui.back')}
-                iosHeader={I18n.t('settings_title.locale')}
-                textStyle={{
-                  padding: 0,
-                  margin: 0,
-                }}
-                headerStyle={{
-                  backgroundColor:
-                    StackNavigatorOptions().headerStyle.backgroundColor,
-                }}
-                headerBackButtonTextStyle={{
-                  color: StackNavigatorOptions().headerTitleStyle.color,
-                }}
-                headerTitleStyle={{
-                  color: StackNavigatorOptions().headerTitleStyle.color,
-                }}
-                selectedValue={locale}
-                onValueChange={(val) => {
-                  // IMPORTANTE!
-                  // Workaround de problema en Android
-                  // https://github.com/facebook/react-native/issues/15556
-                  setTimeout(() => {
-                    setLocale(val);
-                    // Para forzar refresco del titulo segun idioma nuevo
-                    navigation.setParams({ title: '' });
-                  }, 10);
-                }}>
-                {localesItems}
-              </Picker>
-              <View
-                style={{
-                  alignItems: 'center',
-                  paddingTop: 10,
-                  paddingBottom: 10,
-                  paddingLeft: 35,
-                  flexDirection: 'row',
-                }}>
-                <Icon
-                  name="podium-outline"
-                  style={{
-                    fontSize: 14,
-                  }}
-                />
-                <Text note>{songsResume}</Text>
-              </View>
-            </Body>
-          </ListItem>
-          <ListItem>
-            <Body>
-              <Text>{I18n.t('settings_title.keep awake')}</Text>
-              <Text note>{I18n.t('settings_note.keep awake')}</Text>
-            </Body>
-            <Right>
-              <Switch value={keepAwake} onValueChange={setKeepAwake} />
-            </Right>
-          </ListItem>
-          <View
-            style={{
-              flex: 1,
-              backgroundColor: 'white',
-              alignItems: 'center',
-              justifyContent: 'space-around',
+        <VStack space={2} p="3">
+          <Text>{I18n.t('settings_title.locale')}</Text>
+          <Text fontSize="sm" color="muted.500">
+            {I18n.t('settings_note.locale')}
+          </Text>
+          <Select
+            size="sm"
+            selectedValue={locale}
+            onValueChange={(val) => {
+              // IMPORTANTE!
+              // Workaround de problema en Android
+              // https://github.com/facebook/react-native/issues/15556
+              setTimeout(() => {
+                setLocale(val);
+                // Para forzar refresco del titulo segun idioma nuevo
+                navigation.setParams({ title: '' });
+              }, 10);
             }}>
-            <Image
-              source={cristo}
-              style={{
-                height: 190,
-                marginTop: 40,
-              }}
-              resizeMode="contain"
-            />
-            <H1
-              style={{
-                color: commonTheme.brandPrimary,
-                fontWeight: 'bold',
-                fontStyle: 'italic',
-                marginTop: 40,
-              }}>
-              {appName}
-            </H1>
-            <Text style={{ textAlign: 'center', fontSize: 14, marginTop: 20 }}>
-              <Text style={{ fontWeight: 'bold' }}>
-                {I18n.t('ui.version')}: {version}
-              </Text>
-              {'\n'} Javier Castro, 2017-2021
+            {localesItems}
+          </Select>
+          <HStack space={2} p="3" justifyContent="center" alignItems="center">
+            <Icon as={Ionicons} name="podium-outline" size="md" />
+            <Text fontSize="sm" color="muted.500">
+              {songsResume}
             </Text>
-            <Text style={{ textAlign: 'center', fontSize: 14, marginTop: 40 }}>
-              <Text style={{ fontWeight: 'bold' }}>
-                {I18n.t('ui.collaborators')}
-              </Text>
-              {Object.keys(collaborators).map((lang) => {
-                return `\n ${collaborators[lang].join(', ')} (${lang})`;
-              })}
+          </HStack>
+        </VStack>
+        <HStack
+          space={2}
+          p="3"
+          justifyContent="space-between"
+          alignItems="center">
+          <VStack w="80%" space={2}>
+            <Text>{I18n.t('settings_title.keep awake')}</Text>
+            <Text fontSize="sm" color="muted.500">
+              {I18n.t('settings_note.keep awake')}
             </Text>
-            <View
-              style={{
-                flexDirection: 'row',
-                marginTop: 20,
-                marginBottom: 20,
-              }}>
-              <Button style={{ margin: 5 }} primary rounded onPress={sendMail}>
-                <Icon name="mail" />
-              </Button>
-              <Button
-                style={{ margin: 5 }}
-                primary
-                rounded
-                onPress={sendTwitter}>
-                <Icon name="logo-twitter" />
-              </Button>
-            </View>
-            <Text
-              style={{
-                textAlign: 'center',
-                fontSize: 14,
-              }}>
-              {I18n.t('ui.contribute message')}
+          </VStack>
+          <Switch with="20%" value={keepAwake} onValueChange={setKeepAwake} />
+        </HStack>
+        <Box
+          flex={1}
+          bg="white"
+          alignItems="center"
+          justifyContent="space-around">
+          <Image
+            source={cristo}
+            style={{
+              height: 190,
+              marginTop: 40,
+            }}
+            resizeMode="contain"
+          />
+          <Heading
+            color="rose.500"
+            mt="10"
+            style={{
+              fontWeight: 'bold',
+              fontStyle: 'italic',
+            }}>
+            {appName}
+          </Heading>
+          <Text textAlign="center" fontSize="md" mt="5">
+            <Text bold>
+              {I18n.t('ui.version')}: {version}
             </Text>
-            <View style={{ marginTop: 20, marginBottom: 20 }}>
-              <Button iconLeft onPress={goEditor}>
-                <Icon name="browsers-outline" />
-                <Text>{I18n.t('ui.contribute button')}</Text>
-              </Button>
-            </View>
-          </View>
-        </List>
+            {'\n'} Javier Castro, 2017-2021
+          </Text>
+          <Text textAlign="center" fontSize="md" mt="10">
+            <Text bold>{I18n.t('ui.collaborators')}</Text>
+            {Object.keys(collaborators).map((lang) => {
+              return `\n ${collaborators[lang].join(', ')} (${lang})`;
+            })}
+          </Text>
+          <HStack my="5">
+            <Button m="5" bg="rose.500" borderRadius="pill" onPress={sendMail}>
+              <Icon as={Ionicons} name="mail" color="white" />
+            </Button>
+            <Button
+              m="5"
+              bg="rose.500"
+              borderRadius="pill"
+              onPress={sendTwitter}>
+              <Icon as={Ionicons} name="logo-twitter" color="white" />
+            </Button>
+          </HStack>
+          <Text fontSize="md" textAlign="center">
+            {I18n.t('ui.contribute message')}
+          </Text>
+          <Button
+            my="8"
+            size="sm"
+            variant="ghost"
+            startIcon={<Icon as={Ionicons} name="browsers-outline" />}
+            onPress={goEditor}>
+            {I18n.t('ui.contribute button')}
+          </Button>
+        </Box>
       </ScrollView>
     </AndroidBackHandler>
   );

@@ -1,27 +1,29 @@
 // @flow
-import React, { useContext } from 'react';
+import * as React from 'react';
+import { useContext } from 'react';
 import { View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
-import StackNavigatorOptions from './StackNavigatorOptions';
 import ListScreen from '../screens/ListScreen';
 import ListDetail from '../screens/ListDetail';
 import SongDetail from '../screens/SongDetail';
-import SongDetailOptions from './SongDetailOptions';
 import PDFViewer from '../screens/PDFViewer';
-import SharePDFButton from '../screens/SharePDFButton';
-import PrintPDFButton from '../screens/PrintPDFButton';
-import ShareListButton from '../screens/ShareListButton';
-import AddSongButton from '../screens/AddSongButton';
-import AddListButton from '../screens/AddListButton';
+import SharePDFButton from '../components/SharePDFButton';
+import PrintPDFButton from '../components/PrintPDFButton';
+import ShareListButton from '../components/ShareListButton';
+import AddSongButton from '../components/AddSongButton';
+import AddListButton from '../components/AddListButton';
 import I18n from '../../translations';
 import { DataContext } from '../DataContext';
+import useStackNavOptions from './useStackNavOptions';
+import SongDetailOptions from './SongDetailOptions';
 
 const Stack = createStackNavigator();
 
-const ListsNavigator = () => {
+const ListsNavigator = (): React.Node => {
   const data = useContext(DataContext);
+  const options = useStackNavOptions();
   return (
-    <Stack.Navigator screenOptions={StackNavigatorOptions()}>
+    <Stack.Navigator screenOptions={options}>
       <Stack.Screen
         name="Lists"
         component={ListScreen}

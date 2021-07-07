@@ -1,11 +1,12 @@
 // @flow
-import React, { useContext, useEffect } from 'react';
+import * as React from 'react';
+import { useContext, useEffect } from 'react';
 import KeepAwake from 'react-native-keep-awake';
 import { useRoute } from '@react-navigation/native';
 import { DataContext } from '../DataContext';
 import SongViewFrame from './SongViewFrame';
 
-const SongDetail = (props: any) => {
+const SongDetail = (props: any): React.Node => {
   const data = useContext(DataContext);
   const route = useRoute();
   const { transportNote } = route.params;

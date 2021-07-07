@@ -1,47 +1,46 @@
 // @flow
-import React, { useContext, useState, useMemo, useEffect } from 'react';
-import { TouchableOpacity, Alert } from 'react-native';
-import { ListItem, Left, Right, Body, Text, Badge, Icon } from 'native-base';
+import * as React from 'react';
+import { useContext, useState, useMemo, useEffect } from 'react';
+import { Alert } from 'react-native';
+import {
+  Box,
+  Center,
+  HStack,
+  VStack,
+  Text,
+  Badge,
+  Icon,
+  Pressable,
+  useTheme,
+} from 'native-base';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import Highlighter from 'react-native-highlight-words';
 import Collapsible from 'react-native-collapsible';
-import commonTheme from '../native-base-theme/variables/platform';
-import textTheme from '../native-base-theme/components/Text';
 import { Rating } from 'react-native-rating-element';
 import { DataContext } from '../DataContext';
 import badges from '../badges';
 import I18n from '../../translations';
 
-const textStyles = textTheme(commonTheme);
-const noteStyles = textStyles['.note'];
-delete textStyles['.note'];
-
-const NoLocaleWarning = () => {
+const NoLocaleWarning = (): React.Node => {
   return (
-    <TouchableOpacity
+    <Pressable
       onPress={() => {
         Alert.alert(
           I18n.t('ui.locale warning title'),
           I18n.t('ui.locale warning message')
         );
-      }}
-      style={{ flex: 1, flexDirection: 'row' }}>
-      <Icon
-        name="bug"
-        style={{
-          margin: 5,
-          fontSize: 18,
-          color: commonTheme.brandPrimary,
-        }}
-      />
-      <Text style={{ ...noteStyles, margin: 5 }}>
-        {I18n.t('ui.locale warning title')}
-      </Text>
-    </TouchableOpacity>
+      }}>
+      <HStack my="2" alignItems="center">
+        <Icon color="rose.700" as={Ionicons} size="sm" name="bug" mr="2" />
+        <Text color="muted.500">{I18n.t('ui.locale warning title')}</Text>
+      </HStack>
+    </Pressable>
   );
 };
 
-const SongListItem = (props: any) => {
+const SongListItem = (props: any): React.Node => {
+  const { colors } = useTheme();
   const data = useContext(DataContext);
   const navigation = useNavigation();
   const {
@@ -107,16 +106,14 @@ const SongListItem = (props: any) => {
           <Collapsible collapsed={isCollapsed}>{children}</Collapsible>
         );
         setOpenHighlightedRest(
-          <Right>
-            <TouchableOpacity
-              onPress={() => {
-                setIsCollapsed(!isCollapsed);
-              }}>
-              <Badge warning>
-                <Text>{children.length}+</Text>
-              </Badge>
-            </TouchableOpacity>
-          </Right>
+          <Pressable
+            onPress={() => {
+              setIsCollapsed(!isCollapsed);
+            }}>
+            <Badge colorScheme="info">
+              <Text>{children.length}+</Text>
+            </Badge>
+          </Pressable>
         );
       }
     } else {
@@ -128,19 +125,22 @@ const SongListItem = (props: any) => {
 
   if (!song) {
     return (
-      <ListItem avatar={showBadge} noIndent>
-        <Body>
-          <Text>songKey/songMeta not provided</Text>
-        </Body>
-      </ListItem>
+      <Center p="5">
+        <Text>songKey/songMeta not provided</Text>
+      </Center>
     );
   }
 
   return (
-    <ListItem avatar={showBadge} noIndent>
-      {showBadge && <Left>{badges[song.stage]}</Left>}
-      <Body>
-        <TouchableOpacity
+    <HStack
+      p="2"
+      justifyContent="space-between"
+      alignItems="center"
+      borderBottomWidth={1}
+      borderBottomColor="muted.200">
+      {showBadge && <Box w="10%">{badges[song.stage]}</Box>}
+      <VStack p="2" w={showBadge ? (viewButton ? '80%' : '90%') : '100%'}>
+        <Pressable
           onPress={() => {
             if (props.onPress) {
               props.onPress(song);
@@ -149,7 +149,7 @@ const SongListItem = (props: any) => {
           <Highlighter
             autoEscape
             numberOfLines={1}
-            style={textStyles}
+            style={{ fontWeight: 'bold', fontSize: 16 }}
             highlightStyle={{
               backgroundColor: 'yellow',
             }}
@@ -159,7 +159,7 @@ const SongListItem = (props: any) => {
           <Highlighter
             autoEscape
             numberOfLines={1}
-            style={noteStyles}
+            style={{ color: colors.muted['500'] }}
             highlightStyle={{
               backgroundColor: 'yellow',
             }}
@@ -168,7 +168,7 @@ const SongListItem = (props: any) => {
           />
           {firstHighlighted}
           {highlightedRest}
-        </TouchableOpacity>
+        </Pressable>
         {song.notTranslated && <NoLocaleWarning />}
         <Rating
           readonly={ratingDisabled}
@@ -179,37 +179,26 @@ const SongListItem = (props: any) => {
           onIconTap={(position) =>
             setSongRating(song.key, I18n.locale, position)
           }
-          ratingColor={commonTheme.brandPrimary}
+          ratingColor={colors.rose['500']}
         />
-      </Body>
+      </VStack>
       {openHighlightedRest}
       {viewButton && (
-        <Right>
-          <Icon
-            name="eye-outline"
-            style={{
-              fontSize: 32,
-              color: commonTheme.brandPrimary,
-            }}
-            onPress={viewSong}
-          />
-        </Right>
+        <Pressable w="10%" onPress={viewSong}>
+          <Icon as={Ionicons} color="rose.500" name="eye-outline" size="md" />
+        </Pressable>
       )}
       {song.error && (
-        <Right>
-          <Icon
-            name="bug"
-            style={{
-              fontSize: 32,
-              color: commonTheme.brandPrimary,
-            }}
-            onPress={() => {
-              Alert.alert('Error', song.error);
-            }}
-          />
-        </Right>
+        <Icon
+          as={Ionicons}
+          name="bug"
+          size="md"
+          onPress={() => {
+            Alert.alert('Error', song.error);
+          }}
+        />
       )}
-    </ListItem>
+    </HStack>
   );
 };
 

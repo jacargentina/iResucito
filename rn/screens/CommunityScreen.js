@@ -1,17 +1,18 @@
 // @flow
-import React, { useContext, useEffect, useRef, useState, useMemo } from 'react';
+import * as React from 'react';
+import { useContext, useEffect, useRef, useState, useMemo } from 'react';
 import { Alert, FlatList } from 'react-native';
 import { Text } from 'native-base';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
 import Swipeout from 'react-native-swipeout';
-import SearchBarView from './SearchBarView';
+import SearchBarView from '../components/SearchBarView';
 import { DataContext } from '../DataContext';
-import CallToAction from './CallToAction';
+import CallToAction from '../components/CallToAction';
 import I18n from '../../translations';
-import ContactListItem from './ContactListItem';
 import { contactFilterByText, ordenAlfabetico } from '../util';
+import ContactListItem from './ContactListItem';
 
-const CommunityScreen = (props: any) => {
+const CommunityScreen = (props: any): React.Node => {
   const data = useContext(DataContext);
   const isFocused = useIsFocused();
   const navigation = useNavigation();

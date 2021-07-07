@@ -1,19 +1,21 @@
 // @flow
-import React, { useContext } from 'react';
+import * as React from 'react';
+import { useContext } from 'react';
 import { View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
-import StackNavigatorOptions from './StackNavigatorOptions';
 import CommunityScreen from '../screens/CommunityScreen';
-import ContactImportButton from '../screens/ContactImportButton';
+import ContactImportButton from '../components/ContactImportButton';
 import I18n from '../../translations';
 import { DataContext } from '../DataContext';
+import useStackNavOptions from './useStackNavOptions';
 
 const Stack = createStackNavigator();
 
-const CommunityNavigator = () => {
+const CommunityNavigator = (): React.Node => {
   const data = useContext(DataContext);
+  const options = useStackNavOptions();
   return (
-    <Stack.Navigator screenOptions={StackNavigatorOptions()}>
+    <Stack.Navigator screenOptions={options}>
       <Stack.Screen
         name="Community"
         component={CommunityScreen}

@@ -1,9 +1,9 @@
 // @flow
-import React from 'react';
+import * as React from 'react';
 import Pdf from 'react-native-pdf';
 import { View, Dimensions } from 'react-native';
 
-const SongViewPdf = (props: any) => {
+const SongViewPdf = (props: any): React.Node => {
   const { uri } = props;
   return (
     <View

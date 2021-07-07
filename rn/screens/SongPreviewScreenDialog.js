@@ -1,13 +1,12 @@
 // @flow
-import React from 'react';
+import * as React from 'react';
 import { Text } from 'native-base';
-import SongViewFrame from './SongViewFrame';
-import ModalView from './ModalView';
 import { useRoute } from '@react-navigation/native';
+import ModalView from '../components/ModalView';
 import I18n from '../../translations';
-import commonTheme from '../native-base-theme/variables/platform';
+import SongViewFrame from './SongViewFrame';
 
-const SongPreviewScreenDialog = (props: any) => {
+const SongPreviewScreenDialog = (props: any): React.Node => {
   const route = useRoute();
   const { text, title, source, stage } = route.params.data;
 
@@ -15,11 +14,12 @@ const SongPreviewScreenDialog = (props: any) => {
     <ModalView
       left={
         <Text
+          bold
+          fontSize="md"
+          mt="2"
+          ml="4"
           style={{
             alignSelf: 'flex-start',
-            marginLeft: 10,
-            fontSize: commonTheme.fontSizeBase + 3,
-            fontWeight: 'bold',
           }}>
           {I18n.t('screen_title.preview')}
         </Text>

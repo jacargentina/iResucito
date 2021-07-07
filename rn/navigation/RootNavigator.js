@@ -1,23 +1,21 @@
 // @flow
-import React from 'react';
+import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import StackNavigatorOptions from './StackNavigatorOptions';
-import MenuNavigator from './MenuNavigator';
-import SongChooserNavigator from './SongChooserNavigator';
 import ContactChooserDialog from '../screens/ContactChooserDialog';
 import ContactImportDialog from '../screens/ContactImportDialog';
 import ListNameDialog from '../screens/ListNameDialog';
 import SongPreviewScreenDialog from '../screens/SongPreviewScreenDialog';
 import SongPreviewPdfDialog from '../screens/SongPreviewPdfDialog';
+import useStackNavOptions from './useStackNavOptions';
+import MenuNavigator from './MenuNavigator';
+import SongChooserNavigator from './SongChooserNavigator';
 
 const Stack = createStackNavigator();
 
-const RootNavigator = () => {
+const RootNavigator = (): React.Node => {
+  const options = useStackNavOptions();
   return (
-    <Stack.Navigator
-      mode="modal"
-      headerMode="none"
-      screenOptions={StackNavigatorOptions()}>
+    <Stack.Navigator mode="modal" headerMode="none" screenOptions={options}>
       <Stack.Screen name="Menu" component={MenuNavigator} />
       <Stack.Screen name="SongChooser" component={SongChooserNavigator} />
       <Stack.Screen name="ContactChooser" component={ContactChooserDialog} />

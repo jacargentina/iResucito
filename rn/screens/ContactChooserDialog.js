@@ -1,17 +1,17 @@
 // @flow
-import React, { useContext, useState, useMemo } from 'react';
-import ModalView from './ModalView';
+import * as React from 'react';
+import { useContext, useState, useMemo } from 'react';
 import { Text, Icon, Button } from 'native-base';
 import { FlatList, View } from 'react-native';
-import { DataContext } from '../DataContext';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import commonTheme from '../native-base-theme/variables/platform';
+import ModalView from '../components/ModalView';
+import { DataContext } from '../DataContext';
 import I18n from '../../translations';
-import ContactListItem from './ContactListItem';
 import { contactFilterByText, ordenAlfabetico } from '../util';
-import SearchBarView from './SearchBarView';
+import SearchBarView from '../components/SearchBarView';
+import ContactListItem from './ContactListItem';
 
-const ContactChooserDialog = (props: any) => {
+const ContactChooserDialog = (props: any): React.Node => {
   const data = useContext(DataContext);
   const navigation = useNavigation();
   const route = useRoute();

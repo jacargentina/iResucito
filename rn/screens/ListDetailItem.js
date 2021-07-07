@@ -1,23 +1,24 @@
 // @flow
-import React, { useContext } from 'react';
+import * as React from 'react';
+import { useContext } from 'react';
 import {
   Text,
+  TextArea,
   Icon,
-  ListItem,
-  Left,
-  Body,
+  VStack,
+  HStack,
   Input,
-  Right,
-  Separator,
+  Pressable,
 } from 'native-base';
-import { View, TextInput } from 'react-native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import { View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { DataContext } from '../DataContext';
 import { getLocalizedListItem } from '../../common';
-import commonTheme from '../native-base-theme/variables/platform';
+
 import I18n from '../../translations';
 
-const ListDetailItem = (props: any) => {
+const ListDetailItem = (props: any): React.Node => {
   const data = useContext(DataContext);
   const navigation = useNavigation();
   const { setList } = data.lists;
@@ -26,12 +27,12 @@ const ListDetailItem = (props: any) => {
   var item = null;
   if (['1', '2', '3', 'evangelio'].includes(listKey)) {
     item = (
-      <ListItem icon last>
-        <Left>
-          <Icon name="book" style={{ color: commonTheme.brandInfo }} />
-        </Left>
-        <Body>
+      <VStack p="2">
+        <HStack space={1} alignItems="center">
+          <Icon w="10%" size="sm" as={Ionicons} name="book" color="info.500" />
           <Input
+            p="2"
+            w="90%"
             onChangeText={(text) => {
               setList(listName, listKey, text);
             }}
@@ -40,8 +41,8 @@ const ListDetailItem = (props: any) => {
             autoCorrect={false}
             {...inputProps}
           />
-        </Body>
-      </ListItem>
+        </HStack>
+      </VStack>
     );
   } else if (
     typeof listKey === 'string' &&
@@ -51,12 +52,18 @@ const ListDetailItem = (props: any) => {
       listKey.includes('encargado'))
   ) {
     item = (
-      <ListItem icon last>
-        <Left>
-          <Icon name="person" style={{ color: commonTheme.brandInfo }} />
-        </Left>
-        <Body>
+      <VStack p="2">
+        <HStack space={1} alignItems="center">
+          <Icon
+            w="10%"
+            as={Ionicons}
+            size="sm"
+            name="person"
+            color="info.500"
+          />
           <Input
+            p="2"
+            w="80%"
             onChangeText={(text) => {
               setList(listName, listKey, text);
             }}
@@ -65,41 +72,31 @@ const ListDetailItem = (props: any) => {
             autoCorrect={false}
             {...inputProps}
           />
-        </Body>
-        <Right>
           <Icon
-            name="search"
-            style={{
-              color: commonTheme.brandPrimary,
-              width: 40,
-              height: 40,
-              fontSize: 30,
-            }}
+            as={Ionicons}
+            color="rose.500"
+            name="search-outline"
             onPress={() =>
               navigation.navigate('ContactChooser', {
                 target: { listName: listName, listKey: listKey },
               })
             }
           />
-        </Right>
-      </ListItem>
+        </HStack>
+      </VStack>
     );
   } else if (listKey === 'nota') {
     item = (
-      <ListItem>
-        <Body>
-          <TextInput
-            style={{ fontSize: 18 }}
-            multiline
-            onChangeText={(text) => {
-              setList(listName, listKey, text);
-            }}
-            value={listText}
-            autoCorrect={false}
-            {...inputProps}
-          />
-        </Body>
-      </ListItem>
+      <VStack p="2">
+        <TextArea
+          onChangeText={(text) => {
+            setList(listName, listKey, text);
+          }}
+          value={listText}
+          autoCorrect={false}
+          {...inputProps}
+        />
+      </VStack>
     );
   } else {
     // Cualquier otro caso, es un canto
@@ -109,28 +106,20 @@ const ListDetailItem = (props: any) => {
         : listText.titulo;
     var navigateSalmo =
       listText != null ? (
-        <Right>
-          <Icon
-            name="open"
-            style={{
-              color: commonTheme.brandPrimary,
-              width: 40,
-              height: 40,
-              fontSize: 30,
-            }}
-            onPress={() =>
-              navigation.navigate('SongDetail', {
-                song: listText,
-              })
-            }
-          />
-        </Right>
+        <Icon
+          as={Ionicons}
+          color="rose.500"
+          name="open-outline"
+          onPress={() =>
+            navigation.navigate('SongDetail', {
+              song: listText,
+            })
+          }
+        />
       ) : null;
     item = (
-      <ListItem
-        icon
-        last
-        button
+      <Pressable
+        p="2"
         onPress={() =>
           navigation.navigate('SongChooser', {
             screen: 'Dialog',
@@ -139,23 +128,29 @@ const ListDetailItem = (props: any) => {
             },
           })
         }>
-        <Left>
-          <Icon name="musical-notes" style={{ color: commonTheme.brandInfo }} />
-        </Left>
-        <Body>
-          <Text numberOfLines={1}>{text}</Text>
-        </Body>
-        {navigateSalmo}
-      </ListItem>
+        <HStack space={1} alignItems="center">
+          <Icon
+            w="10%"
+            as={Ionicons}
+            size="sm"
+            name="musical-notes"
+            color="info.500"
+          />
+          <Text w="80%" noOfLines={1}>
+            {text}
+          </Text>
+          {navigateSalmo}
+        </HStack>
+      </Pressable>
     );
   }
   // Solo las claves de tipo string, llevan los titulos (eucaristia, palabra)
   if (typeof listKey === 'string') {
     var friendlyText = getLocalizedListItem(listKey).toUpperCase();
     var separator = (
-      <Separator bordered>
-        <Text>{friendlyText}</Text>
-      </Separator>
+      <Text bold p="2" fontSize="sm" bg="gray.100">
+        {friendlyText}
+      </Text>
     );
   }
   return (

@@ -1,10 +1,10 @@
 // @flow
-import React from 'react';
+import * as React from 'react';
 import { View } from 'react-native';
-import ViewPdfButton from '../screens/ViewPdfButton';
-import TransportNotesButton from '../screens/TransportNotesButton';
+import ViewPdfButton from '../components/ViewPdfButton';
+import TransportNotesButton from '../components/TransportNotesButton';
 
-const SongDetailOptions = ({ navigation, route }: any) => {
+const SongDetailOptions = ({ navigation, route }: any): any => {
   const song = route.params.song;
   return {
     title: song ? song.titulo : 'Salmo',

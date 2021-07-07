@@ -1,28 +1,29 @@
 // @flow
-import React, { useContext, useState, useEffect, useMemo } from 'react';
-import ModalView from './ModalView';
-import SearchBarView from './SearchBarView';
-import { Text, ListItem, Body, Right, Button } from 'native-base';
+import * as React from 'react';
+import { useContext, useState, useEffect, useMemo } from 'react';
 import {
+  Text,
+  Box,
+  Pressable,
+  HStack,
+  VStack,
+  Switch,
   FlatList,
-  View,
-  TouchableOpacity,
-  Keyboard,
-  StyleSheet,
-} from 'react-native';
+} from 'native-base';
+import { Keyboard, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import ModalView from '../components/ModalView';
+import SearchBarView from '../components/SearchBarView';
+import ContactPhoto from '../components/ContactPhoto';
 import { DataContext } from '../DataContext';
-import commonTheme from '../native-base-theme/variables/platform';
 import I18n from '../../translations';
-import ContactPhoto from './ContactPhoto';
-import Switch from '../widgets/switch';
 import {
   getContactsForImport,
   contactFilterByText,
   ordenAlfabetico,
 } from '../util';
 
-const ContactImportDialog = () => {
+const ContactImportDialog = (): React.Node => {
   const data = useContext(DataContext);
   const navigation = useNavigation();
   const { brothers, deviceContacts, addOrRemove } = data.community;
@@ -61,38 +62,26 @@ const ContactImportDialog = () => {
 
   return (
     <ModalView
-      right={
-        <Button
-          rounded
-          small
-          style={{
-            alignSelf: 'flex-end',
-            color: commonTheme.brandPrimary,
-            marginRight: 10,
-          }}
-          onPress={close}>
-          <Text>{I18n.t('ui.done')}</Text>
-        </Button>
-      }
       left={
         <Text
+          bold
+          fontSize="md"
+          mt="2"
+          ml="4"
           style={{
             alignSelf: 'flex-start',
-            marginLeft: 10,
-            fontSize: commonTheme.fontSizeBase + 3,
-            fontWeight: 'bold',
           }}>
           {I18n.t('screen_title.import contacts')}
         </Text>
-      }>
+      }
+      closeText={I18n.t('ui.done')}
+      closeHandler={close}>
       <SearchBarView value={filter} setValue={setFilter}>
         {brothers && brothers.length > 0 && (
-          <View
-            style={{
-              padding: 10,
-              borderBottomWidth: StyleSheet.hairlineWidth,
-              borderBottomColor: commonTheme.listBorderColor,
-            }}>
+          <Box
+            p="4"
+            borderBottomWidth={StyleSheet.hairlineWidth}
+            borderBottomColor="muted.300">
             <FlatList
               horizontal={true}
               keyboardShouldPersistTaps="always"
@@ -101,24 +90,18 @@ const ContactImportDialog = () => {
               keyExtractor={(item) => item.recordID}
               renderItem={({ item }) => {
                 return (
-                  <TouchableOpacity
+                  <Pressable
                     style={{ marginRight: 10, width: 56 }}
                     onPress={() => handleContact(item)}>
                     <ContactPhoto item={item} />
-                    <Text
-                      numberOfLines={1}
-                      style={{
-                        fontSize: 12,
-                        textAlign: 'center',
-                        marginTop: 5,
-                      }}>
+                    <Text noOfLines={1} textAlign="center" mt="2" fontSize="sm">
                       {item.givenName}
                     </Text>
-                  </TouchableOpacity>
+                  </Pressable>
                 );
               }}
             />
-          </View>
+          </Box>
         )}
         <FlatList
           onScrollBeginDrag={() => Keyboard.dismiss()}
@@ -131,28 +114,28 @@ const ContactImportDialog = () => {
               contactFullName += ` ${item.familyName}`;
             }
             return (
-              <ListItem button onPress={() => handleContact(item)}>
-                <ContactPhoto item={item} />
-                <Body>
-                  <Text
-                    style={{ fontSize: 17, fontWeight: 'bold' }}
-                    numberOfLines={1}>
-                    {contactFullName}
-                  </Text>
-                  <Text note numberOfLines={1}>
-                    {item.emailAddresses && item.emailAddresses.length > 0
-                      ? item.emailAddresses[0].email
-                      : null}
-                  </Text>
-                </Body>
-                <Right>
+              <Pressable onPress={() => handleContact(item)}>
+                <HStack
+                  p="2"
+                  justifyContent="space-between"
+                  alignItems="center">
+                  <ContactPhoto item={item} />
+                  <VStack w="60%">
+                    <Text bold fontSize="lg" noOfLines={1}>
+                      {contactFullName}
+                    </Text>
+                    <Text noOfLines={1}>
+                      {item.emailAddresses && item.emailAddresses.length > 0
+                        ? item.emailAddresses[0].email
+                        : null}
+                    </Text>
+                  </VStack>
                   <Switch
-                    style={{ marginRight: 15 }}
-                    value={item.imported}
-                    onValueChange={() => handleContact(item)}
+                    isChecked={item.imported}
+                    onToggle={() => handleContact(item)}
                   />
-                </Right>
-              </ListItem>
+                </HStack>
+              </Pressable>
             );
           }}
         />

@@ -1,15 +1,16 @@
 // @flow
-import React, { Fragment, useContext, useState } from 'react';
+import * as React from 'react';
+import { Fragment, useContext, useState } from 'react';
 import { Alert, Platform } from 'react-native';
-import { List, Text } from 'native-base';
+import { VStack, Text } from 'native-base';
 import { useRoute } from '@react-navigation/native';
-import Swipeout from 'react-native-swipeout';
-import ListDetailItem from './ListDetailItem';
-import { DataContext } from '../DataContext';
 import { KeyboardAwareScrollView } from '@codler/react-native-keyboard-aware-scroll-view';
+import Swipeout from 'react-native-swipeout';
+import { DataContext } from '../DataContext';
 import I18n from '../../translations';
+import ListDetailItem from './ListDetailItem';
 
-const ListDetail = () => {
+const ListDetail = (): React.Node => {
   const data = useContext(DataContext);
   const [scroll, setScroll] = useState();
   const [noteFocused, setNoteFocused] = useState(false);
@@ -42,15 +43,15 @@ const ListDetail = () => {
   if (uiList.type === 'libre') {
     var songs = uiList.items;
     return (
-      <Fragment>
+      <>
         <KeyboardAwareScrollView contentContainerStyle={{ flexGrow: 1 }}>
           {songs.length === 0 && (
-            <Text note style={{ textAlign: 'center', marginTop: 20 }}>
+            <Text textAlign="center" mt="5">
               {I18n.t('ui.empty songs list')}
             </Text>
           )}
           {songs.length > 0 && (
-            <List>
+            <VStack p="2">
               {songs.map((song, key) => {
                 var swipeoutBtns = [
                   {
@@ -77,10 +78,10 @@ const ListDetail = () => {
                   </Swipeout>
                 );
               })}
-            </List>
+            </VStack>
           )}
         </KeyboardAwareScrollView>
-      </Fragment>
+      </>
     );
   }
   /* eslint-disable dot-notation */
@@ -88,7 +89,7 @@ const ListDetail = () => {
     <KeyboardAwareScrollView
       contentContainerStyle={{ flexGrow: 1 }}
       innerRef={(ref) => setScroll(ref)}>
-      <List>
+      <VStack p="2">
         <ListDetailItem
           listName={listName}
           listKey="ambiental"
@@ -229,7 +230,7 @@ const ListDetail = () => {
             },
           }}
         />
-      </List>
+      </VStack>
     </KeyboardAwareScrollView>
   );
 };

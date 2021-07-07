@@ -1,115 +1,113 @@
 // @flow
-import React, { useContext, useEffect, useState, useRef } from 'react';
-import { ScrollView } from 'react-native';
-import { Button, Text, Segment } from 'native-base';
-import ModalView from './ModalView';
-import SongList from './SongList';
+import * as React from 'react';
+import { useContext, useMemo, useEffect, useCallback, useState } from 'react';
+import { useWindowDimensions } from 'react-native';
+import { Text, useTheme } from 'native-base';
+import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
+import ModalView from '../components/ModalView';
 import { DataContext } from '../DataContext';
-import commonTheme from '../native-base-theme/variables/platform';
 import I18n from '../../translations';
+import SongList from './SongList';
 
-const SongChooserDialog = (props: any) => {
+const SongChooserDialog = (props: any): React.Node => {
+  const layout = useWindowDimensions();
+  const { colors } = useTheme();
   const data = useContext(DataContext);
-  const scrollToActiveRef = useRef();
   const { navigation, route } = props;
   const { searchItems } = data.search;
   const { setList } = data.lists;
-  const [segments, setSegments] = useState([]);
-  const [activeSegment, setActiveSegment] = useState();
-  const [scrollToActiveX, setScrollToActiveX] = useState();
-  const [scrollToActive, setScrollToActive] = useState(false);
+  const [activeTab, setActiveTab] = useState(0);
   const { target } = route.params;
   const { listName, listKey } = target;
 
+  const choosers = useMemo(() => {
+    return searchItems.filter((x) => x.chooser !== undefined);
+  }, [searchItems]);
+
   useEffect(() => {
-    console.log('calculating active segment');
-    var choosers = searchItems.filter((x) => x.chooser !== undefined);
     if (listName && listKey) {
-      var defChooser = choosers.find(
+      var c = choosers.find(
         (t) => t.chooser_listKey && t.chooser_listKey.includes(listKey)
       );
-      if (defChooser) {
-        setActiveSegment(defChooser);
-        setScrollToActive(true);
+      if (c) {
+        setActiveTab(choosers.indexOf(c));
       }
     }
-  }, [searchItems, listName, listKey]);
+  }, [choosers, listName, listKey]);
 
-  useEffect(() => {
-    var choosers = searchItems.filter((x) => x.chooser !== undefined);
-    setSegments(
-      choosers.map((v, i) => {
-        const isActive = activeSegment && activeSegment.chooser === v.chooser;
-        return (
-          <Button
-            key={i}
-            first={i === 0}
-            last={i === choosers.length - 1}
-            onPress={() => setActiveSegment(v)}
-            active={isActive}
-            onLayout={(e) => {
-              if (isActive) {
-                if (e.nativeEvent.layout.x > 0) {
-                  setScrollToActiveX(e.nativeEvent.layout.x);
-                }
-              }
-            }}>
-            <Text>{v.chooser.toUpperCase()}</Text>
-          </Button>
-        );
-      })
-    );
-  }, [searchItems, activeSegment]);
+  const songAssign = useCallback(
+    (song: Song) => {
+      if (listName && listKey !== undefined) {
+        setList(listName, listKey, song.key);
+        navigation.goBack(null);
+      }
+    },
+    [navigation, listName, listKey, setList]
+  );
 
-  useEffect(() => {
-    if (
-      scrollToActive === true &&
-      scrollToActiveX &&
-      scrollToActiveRef &&
-      scrollToActiveRef.current
-    ) {
-      scrollToActiveRef.current.scrollTo({
-        x: scrollToActiveX,
-        animated: true,
-      });
-    }
-  }, [scrollToActive, scrollToActiveRef, scrollToActiveX]);
+  const routes = useMemo(() => {
+    return choosers.map((c, i) => {
+      return { key: c.chooser, title: c.chooser.toUpperCase() };
+    });
+  }, [choosers]);
 
-  const songAssign = (song: Song) => {
-    if (listName && listKey !== undefined) {
-      setList(listName, listKey, song.key);
-      navigation.goBack(null);
-    }
-  };
+  const renderScene = useMemo(() => {
+    var config = {};
+    choosers.forEach((c) => {
+      config[c.chooser] = () => (
+        <SongList
+          style={{ flexGrow: 1 }}
+          filter={c.params?.filter}
+          viewButton={true}
+          onPress={(song) => songAssign(song)}
+        />
+      );
+    });
+    return SceneMap(config);
+  }, [choosers, songAssign]);
 
   return (
     <ModalView
       left={
         <Text
+          bold
+          fontSize="md"
+          mt="2"
+          ml="4"
           style={{
             alignSelf: 'flex-start',
-            marginLeft: 10,
-            fontSize: commonTheme.fontSizeBase + 3,
-            fontWeight: 'bold',
           }}>
           {I18n.t('screen_title.find song')}
         </Text>
       }>
-      <ScrollView
-        ref={scrollToActiveRef}
-        style={{ flexGrow: 0, marginLeft: 8, marginRight: 8 }}
-        horizontal={true}>
-        <Segment>{segments}</Segment>
-      </ScrollView>
-      <SongList
-        style={{ flexGrow: 1 }}
-        filter={
-          activeSegment && activeSegment.params
-            ? activeSegment.params.filter
-            : null
-        }
-        viewButton={true}
-        onPress={(song) => songAssign(song)}
+      <TabView
+        renderTabBar={(p: any) => {
+          return (
+            <TabBar
+              {...p}
+              scrollEnabled
+              tabStyle={{ width: 'auto' }}
+              style={{ backgroundColor: 'white' }}
+              indicatorStyle={{
+                backgroundColor: colors.rose['500'],
+                marginHorizontal: 3,
+              }}
+              renderLabel={({ route: currentRoute, focused, color }) => (
+                <Text
+                  style={{
+                    color: focused ? colors.rose['500'] : colors.gray['600'],
+                    margin: 3,
+                  }}>
+                  {currentRoute.title}
+                </Text>
+              )}
+            />
+          );
+        }}
+        navigationState={{ index: activeTab, routes }}
+        renderScene={renderScene}
+        onIndexChange={setActiveTab}
+        initialLayout={{ width: layout.width }}
       />
     </ModalView>
   );

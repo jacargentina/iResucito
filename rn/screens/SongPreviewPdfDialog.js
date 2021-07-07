@@ -1,11 +1,11 @@
 // @flow
-import React from 'react';
-import ModalView from './ModalView';
-import SongViewPdf from './SongViewPdf';
-import I18n from '../../translations';
+import * as React from 'react';
 import { useRoute } from '@react-navigation/native';
+import ModalView from '../components/ModalView';
+import I18n from '../../translations';
+import SongViewPdf from './SongViewPdf';
 
-const SongPreviewPdfDialog = (props: any) => {
+const SongPreviewPdfDialog = (props: any): React.Node => {
   const route = useRoute();
   const { uri } = route.params;
   return (

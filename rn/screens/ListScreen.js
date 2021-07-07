@@ -1,22 +1,31 @@
 // @flow
-import React, { useContext, useState, useMemo, useEffect } from 'react';
-import { ListItem, Left, Body, Icon, Text, StyleProvider } from 'native-base';
+import * as React from 'react';
+import { useContext, useState, useMemo, useEffect } from 'react';
+import {
+  Pressable,
+  VStack,
+  HStack,
+  Icon,
+  Text,
+  useDisclose,
+} from 'native-base';
 import { Alert, FlatList, Platform } from 'react-native';
-import Swipeout from 'react-native-swipeout';
-import SearchBarView from './SearchBarView';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
+import Swipeout from 'react-native-swipeout';
+import SearchBarView from '../components/SearchBarView';
 import { DataContext } from '../DataContext';
-import CallToAction from './CallToAction';
+import CallToAction from '../components/CallToAction';
+import ChooseListTypeForAdd from '../components/ChooseListTypeForAdd';
 import I18n from '../../translations';
-import commonTheme from '../native-base-theme/variables/platform';
-import getTheme from '../native-base-theme/components';
 
-const ListScreen = (props: any) => {
+const ListScreen = (props: any): React.Node => {
   const data = useContext(DataContext);
   const navigation = useNavigation();
-  const { getListsForUI, removeList, chooseListTypeForAdd } = data.lists;
+  const { getListsForUI, removeList } = data.lists;
   const [filtered, setFiltered] = useState([]);
   const [filter, setFilter] = useState('');
+  const chooser = useDisclose();
 
   const allLists = useMemo(
     () => getListsForUI(data.localeReal),
@@ -64,70 +73,76 @@ const ListScreen = (props: any) => {
         icon="bookmarks-outline"
         title={I18n.t('call_to_action_title.add lists')}
         text={I18n.t('call_to_action_text.add lists')}
-        buttonHandler={() => chooseListTypeForAdd(navigation)}
-        buttonText={I18n.t('call_to_action_button.add lists')}
-      />
+        buttonHandler={chooser.onOpen}
+        buttonText={I18n.t('call_to_action_button.add lists')}>
+        <ChooseListTypeForAdd disclose={chooser} />
+      </CallToAction>
     );
   }
 
   return (
     <SearchBarView value={filter} setValue={setFilter}>
       {filtered.length === 0 && (
-        <Text note style={{ textAlign: 'center', paddingTop: 20 }}>
+        <Text textAlign="center" m="5">
           {I18n.t('ui.no lists found')}
         </Text>
       )}
-      <StyleProvider style={getTheme(commonTheme)}>
-        <FlatList
-          data={filtered}
-          extraData={I18n.locale}
-          keyExtractor={(item) => item.name}
-          renderItem={({ item }) => {
-            var swipeoutBtns = [
-              {
-                text: I18n.t('ui.rename'),
-                type: 'primary',
-                onPress: () => {
-                  listRename(item.name);
-                },
+      <FlatList
+        data={filtered}
+        extraData={I18n.locale}
+        keyExtractor={(item) => item.name}
+        renderItem={({ item }) => {
+          var swipeoutBtns = [
+            {
+              text: I18n.t('ui.rename'),
+              type: 'primary',
+              onPress: () => {
+                listRename(item.name);
               },
-              {
-                text: I18n.t('ui.delete'),
-                type: Platform.OS === 'ios' ? 'delete' : 'default',
-                backgroundColor: Platform.OS === 'android' ? '#e57373' : null,
-                onPress: () => {
-                  listDelete(item.name);
-                },
+            },
+            {
+              text: I18n.t('ui.delete'),
+              type: Platform.OS === 'ios' ? 'delete' : 'default',
+              backgroundColor: Platform.OS === 'android' ? '#e57373' : null,
+              onPress: () => {
+                listDelete(item.name);
               },
-            ];
-            return (
-              <Swipeout
-                right={swipeoutBtns}
-                backgroundColor="white"
-                autoClose={true}>
-                <ListItem
-                  iconBig
-                  onPress={() => {
-                    navigation.navigate('ListDetail', {
-                      listName: item.name,
-                    });
-                  }}>
-                  <Left>
-                    <Icon
-                      name="bookmark"
-                      style={{ color: commonTheme.brandInfo }}
-                    />
-                  </Left>
-                  <Body big>
-                    <Text style={{ fontSize: 26 }}>{item.name}</Text>
-                    <Text note>{item.type}</Text>
-                  </Body>
-                </ListItem>
-              </Swipeout>
-            );
-          }}
-        />
-      </StyleProvider>
+            },
+          ];
+          return (
+            <Swipeout
+              right={swipeoutBtns}
+              backgroundColor="white"
+              autoClose={true}>
+              <Pressable
+                onPress={() => {
+                  navigation.navigate('ListDetail', {
+                    listName: item.name,
+                  });
+                }}>
+                <HStack
+                  p="3"
+                  alignItems="center"
+                  borderBottomWidth={1}
+                  borderBottomColor="muted.200">
+                  <Icon
+                    w="12%"
+                    as={Ionicons}
+                    color="rose.500"
+                    name="bookmark-outline"
+                  />
+                  <VStack space={1}>
+                    <Text bold fontSize="xl">
+                      {item.name}
+                    </Text>
+                    <Text>{item.type}</Text>
+                  </VStack>
+                </HStack>
+              </Pressable>
+            </Swipeout>
+          );
+        }}
+      />
     </SearchBarView>
   );
 };

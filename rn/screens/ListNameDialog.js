@@ -1,14 +1,14 @@
 // @flow
-import React, { useContext, useState, useEffect } from 'react';
-import { Text, Input, Item, View, Button } from 'native-base';
+import * as React from 'react';
+import { useContext, useState, useEffect } from 'react';
+import { Input, Box, Button, FormControl } from 'native-base';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { DataContext } from '../DataContext';
-import ModalView from './ModalView';
+import ModalView from '../components/ModalView';
 import { getLocalizedListType } from '../../common';
 import I18n from '../../translations';
-import commonTheme from '../native-base-theme/variables/platform';
 
-const ListNameDialog = (props: any) => {
+const ListNameDialog = (props: any): React.Node => {
   const data = useContext(DataContext);
   const navigation = useNavigation();
   const route = useRoute();
@@ -64,38 +64,31 @@ const ListNameDialog = (props: any) => {
       title={title}
       right={
         <Button
-          rounded
-          small
+          borderRadius="pill"
+          size="sm"
+          mr="4"
           style={{
             alignSelf: 'flex-end',
-            color: commonTheme.brandPrimary,
-            marginRight: 10,
           }}
           disabled={!actionEnabled}
           onPress={runActionOnList}>
-          <Text>
-            {action === 'create' ? I18n.t('ui.create') : I18n.t('ui.rename')}
-          </Text>
+          {action === 'create' ? I18n.t('ui.create') : I18n.t('ui.rename')}
         </Button>
       }
       left={
         <Button
-          rounded
-          small
+          size="sm"
+          variant="ghost"
+          ml="2"
           style={{
             alignSelf: 'flex-start',
-            color: commonTheme.brandPrimary,
-            marginLeft: 10,
           }}
           onPress={() => navigation.goBack(null)}>
-          <Text>{I18n.t('ui.cancel')}</Text>
+          {I18n.t('ui.cancel')}
         </Button>
       }>
-      <View style={{ paddingLeft: 10, paddingRight: 10 }}>
-        <Item
-          style={{ marginBottom: 20 }}
-          error={!actionEnabled}
-          success={actionEnabled}>
+      <Box px="5">
+        <FormControl mb="5" isInvalid={!actionEnabled}>
           <Input
             autoFocus
             onChangeText={setName}
@@ -103,11 +96,11 @@ const ListNameDialog = (props: any) => {
             clearButtonMode="always"
             autoCorrect={false}
           />
-        </Item>
-        <Text danger note>
-          {disabledReasonText}
-        </Text>
-      </View>
+          <FormControl.ErrorMessage>
+            {disabledReasonText}
+          </FormControl.ErrorMessage>
+        </FormControl>
+      </Box>
     </ModalView>
   );
 };
