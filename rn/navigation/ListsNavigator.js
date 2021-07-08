@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import { useContext } from 'react';
-import { View } from 'react-native';
+import { HStack } from 'native-base';
 import { createStackNavigator } from '@react-navigation/stack';
 import ListScreen from '../screens/ListScreen';
 import ListDetail from '../screens/ListDetail';
@@ -11,7 +11,6 @@ import SharePDFButton from '../components/SharePDFButton';
 import PrintPDFButton from '../components/PrintPDFButton';
 import ShareListButton from '../components/ShareListButton';
 import AddSongButton from '../components/AddSongButton';
-import AddListButton from '../components/AddListButton';
 import I18n from '../../translations';
 import { DataContext } from '../DataContext';
 import useStackNavOptions from './useStackNavOptions';
@@ -32,11 +31,6 @@ const ListsNavigator = (): React.Node => {
             title: I18n.t('screen_title.lists', {
               locale: data.localeReal,
             }),
-            headerRight: () => (
-              <View style={{ flexDirection: 'row' }}>
-                <AddListButton />
-              </View>
-            ),
           };
         }}
       />
@@ -48,10 +42,10 @@ const ListsNavigator = (): React.Node => {
           return {
             title: listName ? listName : 'Lista',
             headerRight: () => (
-              <View style={{ flexDirection: 'row' }}>
+              <HStack m="1">
                 <ShareListButton />
                 <AddSongButton />
-              </View>
+              </HStack>
             ),
           };
         }}
@@ -69,10 +63,10 @@ const ListsNavigator = (): React.Node => {
           return {
             title: `PDF - ${title}`,
             headerRight: () => (
-              <View style={{ flexDirection: 'row' }}>
+              <HStack m="1">
                 <SharePDFButton />
                 <PrintPDFButton />
-              </View>
+              </HStack>
             ),
           };
         }}

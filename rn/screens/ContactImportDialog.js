@@ -11,7 +11,6 @@ import {
   FlatList,
 } from 'native-base';
 import { Keyboard, StyleSheet } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import ModalView from '../components/ModalView';
 import SearchBarView from '../components/SearchBarView';
 import ContactPhoto from '../components/ContactPhoto';
@@ -25,7 +24,6 @@ import {
 
 const ContactImportDialog = (): React.Node => {
   const data = useContext(DataContext);
-  const navigation = useNavigation();
   const { brothers, deviceContacts, addOrRemove } = data.community;
   const [loading, setLoading] = useState(false);
   const [contacts, setContacts] = useState([]);
@@ -50,11 +48,6 @@ const ContactImportDialog = (): React.Node => {
     return result;
   }, [contacts, filter]);
 
-  const close = () => {
-    setFilter('');
-    navigation.goBack(null);
-  };
-
   const handleContact = (contact) => {
     addOrRemove(contact);
     setFilter('');
@@ -74,8 +67,7 @@ const ContactImportDialog = (): React.Node => {
           {I18n.t('screen_title.import contacts')}
         </Text>
       }
-      closeText={I18n.t('ui.done')}
-      closeHandler={close}>
+      closeText={I18n.t('ui.done')}>
       <SearchBarView value={filter} setValue={setFilter}>
         {brothers && brothers.length > 0 && (
           <Box

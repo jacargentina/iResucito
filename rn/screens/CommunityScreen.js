@@ -1,22 +1,32 @@
 // @flow
 import * as React from 'react';
 import { useContext, useEffect, useRef, useState, useMemo } from 'react';
-import { Alert, FlatList } from 'react-native';
-import { Text } from 'native-base';
+import { Platform, Alert, FlatList } from 'react-native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import { Text, Icon } from 'native-base';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
 import Swipeout from 'react-native-swipeout';
 import SearchBarView from '../components/SearchBarView';
 import { DataContext } from '../DataContext';
 import CallToAction from '../components/CallToAction';
 import I18n from '../../translations';
+import useStackNavOptions from '../navigation/useStackNavOptions';
 import { contactFilterByText, ordenAlfabetico } from '../util';
 import ContactListItem from './ContactListItem';
 
 const CommunityScreen = (props: any): React.Node => {
   const data = useContext(DataContext);
+  const options = useStackNavOptions();
   const isFocused = useIsFocused();
   const navigation = useNavigation();
-  const { contactImport, brothers, update, remove, add } = data.community;
+  const {
+    brothers,
+    deviceContacts,
+    populateDeviceContacts,
+    update,
+    remove,
+    add,
+  } = data.community;
   const listRef = useRef<any>();
   const [filter, setFilter] = useState('');
 
@@ -81,13 +91,49 @@ const CommunityScreen = (props: any): React.Node => {
     update(contact.recordID, updatedContact);
   };
 
+  const contactImport = () => {
+    const promise = !deviceContacts
+      ? populateDeviceContacts()
+      : Promise.resolve();
+
+    promise
+      .then(() => {
+        navigation.navigate('ContactImport');
+      })
+      .catch(() => {
+        let message = I18n.t('alert_message.contacts permission');
+        if (Platform.OS === 'ios') {
+          message += '\n\n' + I18n.t('alert_message.contacts permission ios');
+        }
+        Alert.alert(I18n.t('alert_title.contacts permission'), message);
+      });
+  };
+
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <Icon
+          as={Ionicons}
+          name="add"
+          size="md"
+          style={{
+            marginTop: 4,
+            marginRight: 8,
+            color: options.headerTitleStyle.color,
+          }}
+          onPress={contactImport}
+        />
+      ),
+    });
+  });
+
   if (brothers.length === 0 && !filter) {
     return (
       <CallToAction
         icon="people-outline"
         title={I18n.t('call_to_action_title.community list')}
         text={I18n.t('call_to_action_text.community list')}
-        buttonHandler={() => contactImport(navigation)}
+        buttonHandler={contactImport}
         buttonText={I18n.t('call_to_action_button.community list')}
       />
     );

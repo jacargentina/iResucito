@@ -16,7 +16,7 @@ const CallToAction = (props: any): React.Node => {
           <Icon
             as={Ionicons}
             name={props.icon}
-            size="32"
+            size={32}
             color="rose.500"
             style={{
               alignSelf: 'center',

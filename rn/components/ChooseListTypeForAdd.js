@@ -1,15 +1,11 @@
 // @flow
 import * as React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Actionsheet } from 'native-base';
+import { Text, Actionsheet } from 'native-base';
 import I18n from '../../translations';
 
 const ChooseListTypeForAdd = (props: any): React.Node => {
-  if (!props.disclose) {
-    throw new Error('Se requiere props.disclose');
-  }
-
-  const { isOpen, onClose } = props.disclose;
+  const { isOpen, onClose } = props.chooser;
   const navigation = useNavigation();
 
   const nav = (type: string) => {
@@ -23,7 +19,7 @@ const ChooseListTypeForAdd = (props: any): React.Node => {
   return (
     <Actionsheet isOpen={isOpen} onClose={onClose}>
       <Actionsheet.Content>
-        {/*<Actionsheet.Header>{I18n.t('ui.lists.type')}</Actionsheet.Header> */}
+        <Text bold>{I18n.t('ui.lists.type')}</Text>
         <Actionsheet.Item onPress={() => nav('eucaristia')}>
           {I18n.t('list_type.eucharist')}
         </Actionsheet.Item>

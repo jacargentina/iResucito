@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import { useContext } from 'react';
-import { View } from 'react-native';
+import { HStack } from 'native-base';
 import { createStackNavigator } from '@react-navigation/stack';
 import SongSearch from '../screens/SongSearch';
 import SongList from '../screens/SongList';
@@ -37,10 +37,10 @@ const SongsNavigator = (): React.Node => {
           return {
             title: I18n.t(route.params.title_key, { locale: data.localeReal }),
             headerRight: () => (
-              <View style={{ flexDirection: 'row' }}>
+              <HStack m="1">
                 <ExportToPdfButton />
                 <ClearRatingsButton />
-              </View>
+              </HStack>
             ),
           };
         }}
@@ -58,10 +58,10 @@ const SongsNavigator = (): React.Node => {
           return {
             title: `PDF - ${title}`,
             headerRight: () => (
-              <View style={{ flexDirection: 'row' }}>
+              <HStack m="1">
                 <SharePDFButton />
                 <PrintPDFButton />
-              </View>
+              </HStack>
             ),
           };
         }}

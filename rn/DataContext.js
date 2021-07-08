@@ -785,29 +785,11 @@ const useCommunity = () => {
     }
   }, [brothers]);
 
-  const populateDeviceContacts = () => {
+  const populateDeviceContacts = useCallback(() => {
     return getContacts(true).then((devCts) => {
       initDeviceContacts(devCts);
     });
-  };
-
-  const contactImport = (navigation: any) => {
-    const promise = !deviceContacts
-      ? populateDeviceContacts()
-      : Promise.resolve();
-
-    promise
-      .then(() => {
-        navigation.navigate('ContactImport');
-      })
-      .catch(() => {
-        let message = I18n.t('alert_message.contacts permission');
-        if (Platform.OS === 'ios') {
-          message += '\n\n' + I18n.t('alert_message.contacts permission ios');
-        }
-        Alert.alert(I18n.t('alert_title.contacts permission'), message);
-      });
-  };
+  }, [getContacts]);
 
   return {
     brothers,
@@ -816,7 +798,7 @@ const useCommunity = () => {
     update,
     remove,
     addOrRemove,
-    contactImport,
+    populateDeviceContacts,
   };
 };
 

@@ -1,14 +1,11 @@
 // @flow
 import * as React from 'react';
-import { useContext } from 'react';
 import { Icon } from 'native-base';
-import { useNavigation } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { DataContext } from '../DataContext';
 import useStackNavOptions from '../navigation/useStackNavOptions';
 
-const AddListButton = (): React.Node => {
-  const navigation = useNavigation();
+const AddListButton = (props: any): React.Node => {
+  const { onPress } = props;
   const options = useStackNavOptions();
   return (
     <Icon
@@ -20,7 +17,7 @@ const AddListButton = (): React.Node => {
         marginRight: 8,
         color: options.headerTitleStyle.color,
       }}
-      onPress={() => null}
+      onPress={onPress}
     />
   );
 };

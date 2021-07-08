@@ -1,7 +1,8 @@
 // @flow
 import * as React from 'react';
 import { useContext, useState, useMemo } from 'react';
-import { Text, Icon, Button } from 'native-base';
+import { Text, Icon } from 'native-base';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import { FlatList, View } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import ModalView from '../components/ModalView';
@@ -31,37 +32,22 @@ const ContactChooserDialog = (props: any): React.Node => {
     navigation.goBack(null);
   };
 
-  const close = () => {
-    setFilter('');
-    navigation.goBack(null);
-  };
-
   return (
     <ModalView
-      right={
-        <Button
-          rounded
-          small
-          style={{
-            alignSelf: 'flex-end',
-            color: commonTheme.brandPrimary,
-            marginRight: 10,
-          }}
-          onPress={close}>
-          <Text>{I18n.t('ui.done')}</Text>
-        </Button>
-      }
       left={
         <Text
+          bold
+          fontSize="md"
+          mt="2"
+          ml="4"
           style={{
             alignSelf: 'flex-start',
-            marginLeft: 10,
-            fontSize: commonTheme.fontSizeBase + 3,
-            fontWeight: 'bold',
           }}>
           {I18n.t('screen_title.community')}
         </Text>
-      }>
+      }
+      closeText={I18n.t('ui.done')}
+      closeHandler={() => setFilter('')}>
       {brothers.length === 0 && (
         <View
           style={{
@@ -70,16 +56,12 @@ const ContactChooserDialog = (props: any): React.Node => {
             padding: 10,
           }}>
           <Icon
+            as={Ionicons}
             name="people-outline"
-            style={{
-              fontSize: 120,
-              color: commonTheme.brandPrimary,
-              alignSelf: 'center',
-            }}
+            size={32}
+            alignSelf="center"
           />
-          <Text note style={{ textAlign: 'center' }}>
-            {I18n.t('ui.community empty')}
-          </Text>
+          <Text textAlign="center">{I18n.t('ui.community empty')}</Text>
         </View>
       )}
       {brothers.length > 0 && (

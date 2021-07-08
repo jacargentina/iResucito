@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import { View } from 'react-native';
+import { HStack } from 'native-base';
 import ViewPdfButton from '../components/ViewPdfButton';
 import TransportNotesButton from '../components/TransportNotesButton';
 
@@ -9,10 +9,10 @@ const SongDetailOptions = ({ navigation, route }: any): any => {
   return {
     title: song ? song.titulo : 'Salmo',
     headerRight: () => (
-      <View style={{ flexDirection: 'row' }}>
+      <HStack m="1">
         <ViewPdfButton />
         <TransportNotesButton />
-      </View>
+      </HStack>
     ),
   };
 };

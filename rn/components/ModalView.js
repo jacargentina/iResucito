@@ -30,7 +30,7 @@ const ModalView = (props: any): React.Node => {
       <KeyboardAvoidingView
         style={{ flexGrow: 1 }}
         behavior={Platform.OS === 'android' ? null : 'padding'}>
-        <HStack justifyContent="space-between">
+        <HStack my={2} justifyContent="space-between">
           <Box flex={1}>{left}</Box>
           {right || defaultClose}
         </HStack>

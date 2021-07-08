@@ -16,6 +16,7 @@ import Swipeout from 'react-native-swipeout';
 import SearchBarView from '../components/SearchBarView';
 import { DataContext } from '../DataContext';
 import CallToAction from '../components/CallToAction';
+import AddListButton from '../components/AddListButton';
 import ChooseListTypeForAdd from '../components/ChooseListTypeForAdd';
 import I18n from '../../translations';
 
@@ -67,21 +68,30 @@ const ListScreen = (props: any): React.Node => {
     });
   };
 
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => <AddListButton onPress={chooser.onOpen} />,
+    });
+  });
+
   if (allLists.length === 0) {
     return (
-      <CallToAction
-        icon="bookmarks-outline"
-        title={I18n.t('call_to_action_title.add lists')}
-        text={I18n.t('call_to_action_text.add lists')}
-        buttonHandler={chooser.onOpen}
-        buttonText={I18n.t('call_to_action_button.add lists')}>
-        <ChooseListTypeForAdd disclose={chooser} />
-      </CallToAction>
+      <>
+        <ChooseListTypeForAdd chooser={chooser} />
+        <CallToAction
+          icon="bookmarks-outline"
+          title={I18n.t('call_to_action_title.add lists')}
+          text={I18n.t('call_to_action_text.add lists')}
+          buttonHandler={chooser.onOpen}
+          buttonText={I18n.t('call_to_action_button.add lists')}
+        />
+      </>
     );
   }
 
   return (
     <SearchBarView value={filter} setValue={setFilter}>
+      <ChooseListTypeForAdd chooser={chooser} />
       {filtered.length === 0 && (
         <Text textAlign="center" m="5">
           {I18n.t('ui.no lists found')}
