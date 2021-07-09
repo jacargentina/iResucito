@@ -1,6 +1,7 @@
 // @flow
 import * as React from 'react';
 import { useContext } from 'react';
+import { Keyboard } from 'react-native';
 import { Icon, Actionsheet, useDisclose } from 'native-base';
 import { useRoute } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -52,7 +53,10 @@ const ShareListButton = (props: any): React.Node => {
           marginRight: 12,
           color: options.headerTitleStyle.color,
         }}
-        onPress={onOpen}
+        onPress={() => {
+          Keyboard.dismiss();
+          onOpen();
+        }}
       />
     </>
   );

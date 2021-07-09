@@ -9,8 +9,6 @@ import SongDetail from '../screens/SongDetail';
 import PDFViewer from '../screens/PDFViewer';
 import SharePDFButton from '../components/SharePDFButton';
 import PrintPDFButton from '../components/PrintPDFButton';
-import ExportToPdfButton from '../components/ExportToPdfButton';
-import ClearRatingsButton from '../components/ClearRatingsButton';
 import I18n from '../../translations';
 import { DataContext } from '../DataContext';
 import useStackNavOptions from './useStackNavOptions';
@@ -36,12 +34,6 @@ const SongsNavigator = (): React.Node => {
         options={({ navigation, route }) => {
           return {
             title: I18n.t(route.params.title_key, { locale: data.localeReal }),
-            headerRight: () => (
-              <HStack m="1">
-                <ExportToPdfButton />
-                <ClearRatingsButton />
-              </HStack>
-            ),
           };
         }}
       />

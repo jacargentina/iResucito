@@ -12,9 +12,12 @@ import {
   useRoute,
   useIsFocused,
 } from '@react-navigation/native';
-import { FlatList, Keyboard, View } from 'react-native';
-import { Text, Spinner } from 'native-base';
+import { Keyboard, View } from 'react-native';
+import { HStack, FlatList, Text, Spinner, useDisclose } from 'native-base';
 import SearchBarView from '../components/SearchBarView';
+import ExportToPdfButton from '../components/ExportToPdfButton';
+import ClearRatingsButton from '../components/ClearRatingsButton';
+import ChoosePdfTypeForExport from '../components/ChoosePdfTypeForExport';
 import I18n from '../../translations';
 import { DataContext } from '../DataContext';
 import SongListItem from './SongListItem';
@@ -25,6 +28,7 @@ const SongList = (props: any): React.Node => {
   const navigation = useNavigation();
   const route = useRoute();
   const isFocused = useIsFocused();
+  const chooser = useDisclose();
   const { viewButton } = props;
   const [totalText, setTotalText] = useState(I18n.t('ui.loading'));
   const { songs } = data.songsMeta;
@@ -84,7 +88,15 @@ const SongList = (props: any): React.Node => {
         });
       }
     }
-  }, [textFilter, search, isFocused, totalText]);
+    navigation.setOptions({
+      headerRight: () => (
+        <HStack m="1">
+          <ExportToPdfButton onPress={chooser.onOpen} />
+          <ClearRatingsButton />
+        </HStack>
+      ),
+    });
+  }, [textFilter, search, isFocused, totalText, navigation, chooser]);
 
   const onPress = (song) => {
     if (props.onPress) {
@@ -107,7 +119,8 @@ const SongList = (props: any): React.Node => {
 
   return (
     <SearchBarView value={textFilter} setValue={setTextFilter}>
-      <Text bold p="2" my="2" bg="gray.100" color="muted.500">
+      <ChoosePdfTypeForExport chooser={chooser} />
+      <Text bold p="2" px="4" bg="gray.100" color="muted.500">
         {totalText}
       </Text>
       <FlatList

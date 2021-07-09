@@ -1,9 +1,9 @@
 // @flow
 import * as React from 'react';
 import { useContext, useState, useMemo } from 'react';
-import { Text, Icon } from 'native-base';
+import { FlatList, Text, Icon } from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { FlatList, View } from 'react-native';
+import { View } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import ModalView from '../components/ModalView';
 import { DataContext } from '../DataContext';

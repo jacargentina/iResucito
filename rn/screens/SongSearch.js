@@ -1,7 +1,6 @@
 // @flow
 import * as React from 'react';
 import { useContext } from 'react';
-import { FlatList } from 'react-native';
 import { AndroidBackHandler } from 'react-navigation-backhandler';
 import { useNavigation } from '@react-navigation/native';
 import {
@@ -12,6 +11,7 @@ import {
   VStack,
   Text,
   Divider,
+  FlatList,
 } from 'native-base';
 import { DataContext } from '../DataContext';
 import I18n from '../../translations';

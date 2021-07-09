@@ -1,9 +1,9 @@
 // @flow
 import * as React from 'react';
 import { useContext, useEffect, useRef, useState, useMemo } from 'react';
-import { Platform, Alert, FlatList } from 'react-native';
+import { Platform, Alert } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { Text, Icon } from 'native-base';
+import { FlatList, Text, Icon } from 'native-base';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
 import Swipeout from 'react-native-swipeout';
 import SearchBarView from '../components/SearchBarView';

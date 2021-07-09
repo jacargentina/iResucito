@@ -33,13 +33,7 @@ const DebouncedInput = (props: any): React.Node => {
       clearButtonMode="always"
       autoCorrect={false}
       InputLeftElement={
-        <Icon
-          as={Ionicons}
-          size="sm"
-          name="search"
-          color="rose.500"
-          ml="2"
-        />
+        <Icon as={Ionicons} size="sm" name="search" color="rose.500" ml="2" />
       }
       InputRightElement={
         Platform.OS === 'android' && (
@@ -68,7 +62,7 @@ const SearchBarView = (props: any): React.Node => {
       }}>
       <DebouncedInput value={props.value} setValue={props.setValue} />
       <Box
-        h="100%"
+        flex={1}
         borderTopWidth={StyleSheet.hairlineWidth}
         borderTopColor={colors.muted['300']}>
         {props.children}

@@ -7,9 +7,10 @@ import {
   HStack,
   Icon,
   Text,
+  FlatList,
   useDisclose,
 } from 'native-base';
-import { Alert, FlatList, Platform } from 'react-native';
+import { Alert, Platform } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import Swipeout from 'react-native-swipeout';

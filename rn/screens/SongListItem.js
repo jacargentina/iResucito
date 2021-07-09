@@ -31,9 +31,11 @@ const NoLocaleWarning = (): React.Node => {
           I18n.t('ui.locale warning message')
         );
       }}>
-      <HStack my="2" alignItems="center">
+      <HStack alignItems="center">
         <Icon color="rose.700" as={Ionicons} size="sm" name="bug" mr="2" />
-        <Text color="muted.500">{I18n.t('ui.locale warning title')}</Text>
+        <Text fontSize={14} color="muted.500">
+          {I18n.t('ui.locale warning title')}
+        </Text>
       </HStack>
     </Pressable>
   );
@@ -131,15 +133,25 @@ const SongListItem = (props: any): React.Node => {
     );
   }
 
+  var calcWidth = 100;
+  if (showBadge) {
+    calcWidth -= 10;
+  }
+  if (viewButton) {
+    calcWidth -= 10;
+  }
+  if (openHighlightedRest) {
+    calcWidth -= 10;
+  }
+
   return (
-    <HStack
-      p="2"
-      justifyContent="space-between"
-      alignItems="center"
-      borderBottomWidth={1}
-      borderBottomColor="muted.200">
-      {showBadge && <Box w="10%">{badges[song.stage]}</Box>}
-      <VStack p="2" w={showBadge ? (viewButton ? '80%' : '90%') : '100%'}>
+    <HStack p="2" borderBottomWidth={1} borderBottomColor="muted.200">
+      {showBadge && (
+        <Box w="10%" pt="2" alignSelf="flex-start">
+          {badges[song.stage]}
+        </Box>
+      )}
+      <VStack space={1} p="2" w={`${calcWidth}%`}>
         <Pressable
           onPress={() => {
             if (props.onPress) {
@@ -159,12 +171,12 @@ const SongListItem = (props: any): React.Node => {
           <Highlighter
             autoEscape
             numberOfLines={1}
-            style={{ color: colors.muted['500'] }}
+            style={{ color: colors.muted['500'], paddingVertical: 2 }}
             highlightStyle={{
               backgroundColor: 'yellow',
             }}
             searchWords={[highlight]}
-            textToHighlight={song.fuente}
+            textToHighlight={song.fuente || '--'}
           />
           {firstHighlighted}
           {highlightedRest}
@@ -182,7 +194,7 @@ const SongListItem = (props: any): React.Node => {
           ratingColor={colors.rose['500']}
         />
       </VStack>
-      {openHighlightedRest}
+      {openHighlightedRest && <Box pt="2">{openHighlightedRest}</Box>}
       {viewButton && (
         <Pressable w="10%" onPress={viewSong}>
           <Icon as={Ionicons} color="rose.500" name="eye-outline" size="md" />
