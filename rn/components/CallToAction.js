@@ -4,7 +4,15 @@ import { AndroidBackHandler } from 'react-navigation-backhandler';
 import { Box, Icon, Text, Heading, Button } from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const CallToAction = (props: any): React.Node => {
+const CallToAction = (props: {
+  icon: string,
+  title: string,
+  text: string,
+  buttonHandler: Function,
+  buttonDisabled?: boolean,
+  buttonText: string,
+  children?: any,
+}): React.Node => {
   return (
     <AndroidBackHandler onBackPress={() => true}>
       <Box flex={1} p="5">
@@ -35,7 +43,7 @@ const CallToAction = (props: any): React.Node => {
             _text={{ color: 'white' }}
             borderRadius="pill"
             onPress={props.buttonHandler}
-            disabled={props.buttonDisabled}>
+            isDisabled={props.buttonDisabled}>
             {props.buttonText}
           </Button>
         </Box>

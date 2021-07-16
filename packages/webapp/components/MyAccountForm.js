@@ -163,7 +163,7 @@ const MyAccountForm = () => {
                     setError();
                     signUp();
                   }}
-                  disabled={loading}>
+                  isDisabled={loading}>
                   {I18n.t('ui.signup')}
                 </Button>
               </Segment>

@@ -70,7 +70,7 @@ const ListNameDialog = (props: any): React.Node => {
           style={{
             alignSelf: 'flex-end',
           }}
-          disabled={!actionEnabled}
+          isDisabled={!actionEnabled}
           onPress={runActionOnList}>
           {action === 'create' ? I18n.t('ui.create') : I18n.t('ui.rename')}
         </Button>
