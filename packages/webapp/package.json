@@ -31,7 +31,7 @@
     "lodash": "^4.17.20",
     "lowdb": "^1.0.0",
     "metro-react-native-babel-preset": "^0.66.1",
-    "next": "^10.0.4",
+    "next": "^11.1.0",
     "next-auth": "^3.1.0",
     "node-fetch": "^2.6.1",
     "pdfjs-dist": "^2.5.207",
