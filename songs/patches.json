@@ -12928,6 +12928,16 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1628850549455,
+      "locale": "es",
+      "author": "jixifak197@asmm5.com",
+      "rename": {
+        "new": "Canto de Ana - 1° Sm 2,1-10"
+      },
+      "created": true,
+      "updated": false
     }
   ]
 }
