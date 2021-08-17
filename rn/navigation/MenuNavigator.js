@@ -73,9 +73,9 @@ const MenuNavigator = (props: any): React.Node => {
         navigation.navigate('ListDetail', { listName: name });
       });
     };
-    Linking.addEventListener('url', handler);
+    const subs = Linking.addEventListener('url', handler);
     return function cleanup() {
-      Linking.removeEventListener('url', handler);
+      subs.remove();
     };
   }, [lists, importList, navigation]);
 

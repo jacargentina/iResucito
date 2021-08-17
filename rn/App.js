@@ -25,7 +25,9 @@ const theme = extendTheme({ colors: appTheme });
 const App = (): React.Node => {
   return (
     <DataContextWrapper>
-      <NativeBaseProvider theme={theme}>
+      <NativeBaseProvider
+        theme={theme}
+        config={{ suppressColorAccessibilityWarning: true }}>
         <MenuProvider backHandler={true}>
           <NavigationContainer
             onReady={() => {

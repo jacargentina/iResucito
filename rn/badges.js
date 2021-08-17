@@ -10,7 +10,7 @@ const createBadge = (backgroundColor, color, text): React.Node => {
       h="8"
       mr="2"
       p="2"
-      borderRadius="20"
+      borderRadius="20px"
       bg={backgroundColor}
       _text={{ color: color, textAlign: 'center' }}>
       {text}
