@@ -144,6 +144,7 @@
     "colors": "^1.4.0",
     "diff": "^5.0.0",
     "jetifier": "^2.0.0",
+    "react-native-codegen": "^0.0.7",
     "source-map": "^0.7.3"
   },
   "engines": {
