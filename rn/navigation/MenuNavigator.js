@@ -34,11 +34,13 @@ const MenuNavigator = (props: any): React.Node => {
   const { navigation } = props;
   const { lists, importList } = data.lists;
 
-  var tabBarOptions = useMemo(() => {
+  var screenOptions = useMemo(() => {
     var options = {
-      showLabel: false,
-      activeTintColor: colors.rose['600'],
-      style: {
+      headerShown: false,
+      tabBarShowLabel: false,
+      tabBarActiveTintColor: colors.rose['600'],
+      tabBarStyle: {
+        display: 'flex',
         backgroundColor: colors.gray['50'],
         borderTopColor: colors.rose['300'],
         borderTopWidth: 1,
@@ -78,7 +80,7 @@ const MenuNavigator = (props: any): React.Node => {
   }, [lists, importList, navigation]);
 
   return (
-    <Tab.Navigator swipeEnabled={false} tabBarOptions={tabBarOptions}>
+    <Tab.Navigator swipeEnabled={false} screenOptions={screenOptions}>
       <Tab.Screen
         name="Songs"
         component={SongsNavigator}

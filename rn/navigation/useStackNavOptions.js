@@ -1,6 +1,5 @@
 // @flow
 import { useTheme } from 'native-base';
-import { TransitionPresets } from '@react-navigation/stack';
 import I18n from '../../translations';
 
 const useStackNavOptions = (): any => {
@@ -22,7 +21,6 @@ const useStackNavOptions = (): any => {
     headerTintColor: 'white',
     headerBackTitle: I18n.t('ui.back'),
     headerTruncatedBackTitle: I18n.t('ui.back'),
-    ...TransitionPresets.SlideFromRightIOS,
   };
 };
 

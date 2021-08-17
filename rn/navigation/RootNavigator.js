@@ -15,17 +15,24 @@ const Stack = createStackNavigator();
 const RootNavigator = (): React.Node => {
   const options = useStackNavOptions();
   return (
-    <Stack.Navigator mode="modal" headerMode="none" screenOptions={options}>
-      <Stack.Screen name="Menu" component={MenuNavigator} />
-      <Stack.Screen name="SongChooser" component={SongChooserNavigator} />
-      <Stack.Screen name="ContactChooser" component={ContactChooserDialog} />
-      <Stack.Screen name="ListName" component={ListNameDialog} />
-      <Stack.Screen name="ContactImport" component={ContactImportDialog} />
+    <Stack.Navigator screenOptions={options}>
       <Stack.Screen
-        name="SongPreviewScreen"
-        component={SongPreviewScreenDialog}
+        name="Menu"
+        component={MenuNavigator}
+        options={{ headerShown: false }}
       />
-      <Stack.Screen name="SongPreviewPdf" component={SongPreviewPdfDialog} />
+      <Stack.Group
+        screenOptions={{ headerShown: false, presentation: 'modal' }}>
+        <Stack.Screen name="SongChooser" component={SongChooserNavigator} />
+        <Stack.Screen name="ContactChooser" component={ContactChooserDialog} />
+        <Stack.Screen name="ListName" component={ListNameDialog} />
+        <Stack.Screen name="ContactImport" component={ContactImportDialog} />
+        <Stack.Screen
+          name="SongPreviewScreen"
+          component={SongPreviewScreenDialog}
+        />
+        <Stack.Screen name="SongPreviewPdf" component={SongPreviewPdfDialog} />
+      </Stack.Group>
     </Stack.Navigator>
   );
 };
