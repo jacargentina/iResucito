@@ -85,7 +85,7 @@
     "langs": "^2.0.0",
     "lodash": "^4.17.21",
     "metro-react-native-babel-preset": "^0.66.2",
-    "native-base": "^3.0.7",
+    "native-base": "^3.1.0",
     "next": "^11.1.0",
     "node-fetch": "^2.6.1",
     "normalize-strings": "^1.1.1",
