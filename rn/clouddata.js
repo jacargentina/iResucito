@@ -22,7 +22,7 @@ class CloudData {
     }
   };
 
-  load(key: string) {
+  load(key: string): any {
     return iCloudStorage
       .getItem(key)
       .then((res) => {
@@ -36,7 +36,7 @@ class CloudData {
       });
   }
 
-  save(key: string, data: any) {
+  save(key: string, data: any): void {
     return iCloudStorage
       .setItem(key, JSON.stringify(data))
       .then(() => {
@@ -48,4 +48,4 @@ class CloudData {
   }
 }
 
-export const clouddata = new CloudData();
+export const clouddata: CloudData = new CloudData();

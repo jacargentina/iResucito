@@ -1,15 +1,15 @@
 // @flow
-const Buffer = require('buffer').Buffer;
 import { Platform } from 'react-native';
-import { PdfWriter, SongPDFGenerator, ListPDFGenerator } from '../common';
 import RNFS from 'react-native-fs';
+import { PdfWriter, SongPDFGenerator, ListPDFGenerator } from '../common';
 import Base64Encode from './base64encode';
+const Buffer = require('buffer').Buffer;
 
 export async function generateSongPDF(
   songsToPdf: Array<SongToPdf>,
   opts: ExportToPdfOptions,
   fileSuffix: string
-) {
+): Promise<string> {
   const folder =
     Platform.OS === 'ios'
       ? RNFS.TemporaryDirectoryPath
@@ -36,7 +36,7 @@ export async function generateSongPDF(
 export async function generateListPDF(
   list: ListToPdf,
   opts: ExportToPdfOptions
-) {
+): Promise<string> {
   const folder =
     Platform.OS === 'ios'
       ? RNFS.TemporaryDirectoryPath

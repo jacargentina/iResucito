@@ -17,7 +17,7 @@ export const getSongFileFromString = (str: string): SongFile => {
   };
 };
 
-export function ordenAlfabetico(a: SongRef, b: SongRef) {
+export function ordenAlfabetico(a: SongRef, b: SongRef): number {
   return a.titulo.localeCompare(b.titulo);
 }
 
@@ -48,7 +48,7 @@ export class SongsProcessor {
     files: { [string]: string },
     rawLoc: string,
     defaultFile: string
-  ) {
+  ): { locale: string, name: string } {
     var loc = getPropertyLocale(files, rawLoc);
     if (!loc) {
       loc = Object.getOwnPropertyNames(files)[0];

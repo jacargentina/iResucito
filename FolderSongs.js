@@ -14,6 +14,10 @@ const NodeReader = (path: string) => {
   return fs.promises.readFile(path, { encoding: 'utf8' });
 };
 
-const FolderSongs = new SongsProcessor('./songs', NodeLister, NodeReader);
+const FolderSongs: SongsProcessor = new SongsProcessor(
+  './songs',
+  NodeLister,
+  NodeReader
+);
 
 export default FolderSongs;

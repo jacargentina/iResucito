@@ -8,7 +8,7 @@ import { SongsProcessor } from '../SongsProcessor';
 import { SongsParser } from '../SongsParser';
 import { SongsExtras } from '../SongsExtras';
 
-export function ordenAlfabetico(a: any, b: any) {
+export function ordenAlfabetico(a: any, b: any): number {
   if (a.givenName < b.givenName) {
     return -1;
   }
@@ -18,7 +18,7 @@ export function ordenAlfabetico(a: any, b: any) {
   return 0;
 }
 
-export function ordenClasificacion(a: Song, b: Song) {
+export function ordenClasificacion(a: Song, b: Song): number {
   if (a.rating < b.rating || (a.rating === undefined && b.rating)) {
     return 1;
   }
@@ -58,7 +58,7 @@ export function getContactsForImport(
   return items;
 }
 
-export const getDefaultLocale = () => {
+export const getDefaultLocale = (): string => {
   return RNLocalize.getLocales()[0].languageTag;
 };
 
@@ -132,7 +132,7 @@ export const stylesObj: SongStyles = {
   pageFooter: {},
 };
 
-export const NativeStyles = StyleSheet.create(stylesObj);
+export const NativeStyles: any = StyleSheet.create(stylesObj);
 
 const BaseSongsPath =
   Platform.OS === 'ios' ? `${RNFS.MainBundlePath}/songs` : 'songs';
@@ -143,13 +143,13 @@ const NativeSongsLoader =
 const NativeSongReader =
   Platform.OS === 'ios' ? RNFS.readFile : RNFS.readFileAssets;
 
-export const NativeSongs = new SongsProcessor(
+export const NativeSongs: SongsProcessor = new SongsProcessor(
   BaseSongsPath,
   NativeSongsLoader,
   NativeSongReader
 );
 
-export const NativeExtras = new SongsExtras(
+export const NativeExtras: SongsExtras = new SongsExtras(
   RNFS.DocumentDirectoryPath,
   RNFS.exists,
   RNFS.writeFile,
@@ -157,9 +157,9 @@ export const NativeExtras = new SongsExtras(
   RNFS.unlink
 );
 
-export const NativeParser = new SongsParser(NativeStyles);
+export const NativeParser: SongsParser = new SongsParser(NativeStyles);
 
-export const contactFilterByText = (c: any, text: string) => {
+export const contactFilterByText = (c: any, text: string): boolean => {
   return (
     c.givenName.toLowerCase().includes(text.toLowerCase()) ||
     (c.familyName && c.familyName.toLowerCase().includes(text.toLowerCase()))

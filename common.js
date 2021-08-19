@@ -1,11 +1,11 @@
 // @flow
 // Utilerias comunes (no atadas a react-native ni a NodeJS)
-const PDFDocument = require('./pdfkit.standalone.js');
 import normalize from 'normalize-strings';
 import langs from 'langs';
 import countries from 'country-list';
-import I18n from './translations';
 import * as _ from 'lodash';
+import I18n from './translations';
+const PDFDocument = require('./pdfkit.standalone.js');
 
 export const getLocalizedListItem = (listKey: string): string => {
   return I18n.t(`list_item.${listKey}`);
@@ -61,14 +61,14 @@ export const defaultExportToPdfOptions: ExportToPdfOptions = {
   pageFooter: { FontSize: 10 },
 };
 
-export const cleanChordsRegex =
+export const cleanChordsRegex: any =
   /\[|\]|\(|\)|#|\*|5|6|7|9|b|-|\+|\/|\u2013|aum|dim|sus|m|is|IS/g;
 
 export const getChordsScale = (locale: string): Array<string> => {
   return I18n.t('chords.scale', { locale }).split(' ');
 };
 
-export const getPropertyLocale = (obj: any, rawLoc: string) => {
+export const getPropertyLocale = (obj: any, rawLoc: string): string => {
   if (obj.hasOwnProperty(rawLoc)) {
     return rawLoc;
   } else {
@@ -76,10 +76,11 @@ export const getPropertyLocale = (obj: any, rawLoc: string) => {
     if (obj.hasOwnProperty(locale)) {
       return locale;
     }
+    return '';
   }
 };
 
-export const getLocaleLabel = (code: string) => {
+export const getLocaleLabel = (code: string): string => {
   const parts = code.split('-');
   const l = langs.where('1', parts[0]);
   var label = l.local;
@@ -393,7 +394,7 @@ export class PdfWriter {
     );
   }
 
-  checkLimits(lineCount: number = 1, nextHeight: number = 0) {
+  checkLimits(lineCount: number = 1, nextHeight: number = 0): boolean {
     var pageWasAdded = false;
     if (
       this.doc.y + this.doc.currentLineHeight(false) * lineCount + nextHeight >
@@ -420,7 +421,7 @@ export class PdfWriter {
     }
   }
 
-  getCenteringY(text: string, size: number) {
+  getCenteringY(text: string, size: number): number {
     const height = this.doc.fontSize(size).heightOfString(text);
     return parseInt((this.opts.widthHeightPixels - height) / 2, 10);
   }
@@ -448,7 +449,7 @@ export class PdfWriter {
       });
   }
 
-  async save() {
+  async save(): Promise<string> {
     return new Promise((resolve, reject) => {
       var stream = this.doc.pipe(this.base64Transform);
       var str = '';
@@ -536,7 +537,7 @@ export const SongPDFGenerator = async (
   songsToPdf: Array<SongToPdf>,
   opts: ExportToPdfOptions,
   writer: PdfWriter
-) => {
+): Promise<string> => {
   try {
     writer.disablePageNumbers = opts.disablePageNumbers;
     if (songsToPdf.length > 1) {
@@ -803,13 +804,14 @@ export const SongPDFGenerator = async (
   } catch (err) {
     console.log('SongPDFGenerator ERROR', err);
   }
+  return '';
 };
 
 export const ListPDFGenerator = async (
   list: ListToPdf,
   opts: ExportToPdfOptions,
   writer: PdfWriter
-) => {
+): Promise<string> => {
   try {
     writer.disablePageNumbers = true;
     writer.addExtraMargin = true;
@@ -950,6 +952,7 @@ export const ListPDFGenerator = async (
   } catch (err) {
     console.log('ListPDFGenerator ERROR', err);
   }
+  return '';
 };
 
 export const getPatchStats = (patch: SongIndexPatch): any => {

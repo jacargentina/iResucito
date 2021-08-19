@@ -4,11 +4,11 @@ import low from 'lowdb';
 import FileSync from 'lowdb/adapters/FileSync';
 import FolderExtras from '../../FolderExtras';
 
-export const dataPath = path.resolve('./data');
-export const db = low(new FileSync(path.join(dataPath, 'db.json')));
+export const dataPath: string = path.resolve('./data');
+export const db: any = low(new FileSync(path.join(dataPath, 'db.json')));
 db.defaults({ users: [], tokens: [] }).write();
 
-export async function readLocalePatch(): ?SongIndexPatch {
+export async function readLocalePatch(): any {
   const exists = await FolderExtras.patchExists();
   if (exists) {
     const patchJSON = await FolderExtras.readPatch();
