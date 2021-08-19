@@ -1,0 +1,28 @@
+From e66c4a62fde8295ab511d086d0d59ef3247a5225 Mon Sep 17 00:00:00 2001
+From: hussein abdulnabi <husseinabdulnabi@husseins-MacBook-Pro-2.local>
+Date: Sun, 27 Jun 2021 19:20:15 +0300
+Subject: [PATCH] fixes scroll responder on rn 0.65.0
+
+---
+ lib/KeyboardAwareHOC.js | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/node_modules/react-native-keyboard-aware-scroll-view/lib/KeyboardAwareHOC.js b/node_modules/react-native-keyboard-aware-scroll-view/lib/KeyboardAwareHOC.js
+index 3d94b82..bb273ee 100644
+--- a/node_modules/react-native-keyboard-aware-scroll-view/lib/KeyboardAwareHOC.js
++++ b/node_modules/react-native-keyboard-aware-scroll-view/lib/KeyboardAwareHOC.js
+@@ -273,12 +273,12 @@ function KeyboardAwareHOC(
+ 
+     scrollToPosition = (x: number, y: number, animated: boolean = true) => {
+       const responder = this.getScrollResponder()
+-      responder && responder.scrollResponderScrollTo({ x, y, animated })
++      responder && responder.scrollTo({ x, y, animated })
+     }
+ 
+     scrollToEnd = (animated?: boolean = true) => {
+       const responder = this.getScrollResponder()
+-      responder && responder.scrollResponderScrollToEnd({ animated })
++      responder && responder.scrollToEnd({ animated })
+     }
+ 
+     scrollForExtraHeightOnAndroid = (extraHeight: number) => {

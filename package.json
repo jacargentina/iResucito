@@ -12,6 +12,7 @@
   },
   "private": true,
   "scripts": {
+    "postinstall": "patch-package",
     "start": "react-native start",
     "webpatch": "babel-node ./scripts/applyPatch.js -f ./packages/webapp/data/SongsIndexPatch.json",
     "build": "cd ./packages/webapp && yarn build",
@@ -45,7 +46,6 @@
     "@babel/preset-flow": "^7.14.5",
     "@babel/preset-react": "7.14.5",
     "@babel/runtime": "^7.15.3",
-    "@codler/react-native-keyboard-aware-scroll-view": "^1.0.1",
     "@javier.alejandro.castro/react-native-stream": "^0.2.2",
     "@react-native-async-storage/async-storage": "^1.15.6",
     "@react-native-community/eslint-config": "3.0.0",
@@ -91,8 +91,10 @@
     "normalize-strings": "^1.1.1",
     "open": "^8.2.1",
     "os-locale": "^6.0.0",
+    "patch-package": "^6.4.7",
     "path-parse": "^1.0.7",
     "plist": "^3.0.3",
+    "postinstall-postinstall": "^2.1.0",
     "react": "17.0.2",
     "react-json-editor-ajrm": "^2.5.10",
     "react-native": "^0.65.0",
@@ -105,6 +107,7 @@
     "react-native-highlight-words": "^1.0.1",
     "react-native-icloudstore": "^0.9.0",
     "react-native-keep-awake": "^4.0.0",
+    "react-native-keyboard-aware-scroll-view": "^0.9.4",
     "react-native-localize": "^2.1.1",
     "react-native-pager-view": "^5.4.0",
     "react-native-pdf": "^6.3.0",
@@ -136,7 +139,6 @@
   "eslintIgnore": [
     "android/**",
     "ios/**",
-    "rn/native-base-theme/**",
     "web/dist/**"
   ],
   "devDependencies": {
