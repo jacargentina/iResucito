@@ -4,7 +4,7 @@ import { Fragment, useContext, useState } from 'react';
 import { Alert, Platform } from 'react-native';
 import { VStack, Text } from 'native-base';
 import { useRoute } from '@react-navigation/native';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { KeyboardAwareScrollView } from '@codler/react-native-keyboard-aware-scroll-view';
 import Swipeout from 'react-native-swipeout';
 import { DataContext } from '../DataContext';
 import I18n from '../../translations';

@@ -107,7 +107,7 @@
     "react-native-highlight-words": "^1.0.1",
     "react-native-icloudstore": "^0.9.0",
     "react-native-keep-awake": "^4.0.0",
-    "react-native-keyboard-aware-scroll-view": "^0.9.4",
+    "@codler/react-native-keyboard-aware-scroll-view": "^2.0.0",
     "react-native-localize": "^2.1.1",
     "react-native-pager-view": "^5.4.0",
     "react-native-pdf": "^6.3.0",

@@ -1118,6 +1118,13 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
+"@codler/react-native-keyboard-aware-scroll-view@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@codler/react-native-keyboard-aware-scroll-view/-/react-native-keyboard-aware-scroll-view-2.0.0.tgz#b421dfc70ed87732f7dfe0c156c5ea5eebd556ca"
+  integrity sha512-L2ipn4Gb1ZgytXk2uNbCnTXZfEl2duFewQGj75GKdNtwFrqEF6PkjZ6NPDOt3bnHd5Qvh+8Wi8P/BOKus+04gA==
+  dependencies:
+    react-native-iphone-x-helper "^1.0.3"
+
 "@egjs/hammerjs@^2.0.17":
   version "2.0.17"
   resolved "https://registry.yarnpkg.com/@egjs/hammerjs/-/hammerjs-2.0.17.tgz#5dc02af75a6a06e4c2db0202cae38c9263895124"
@@ -9489,14 +9496,6 @@ react-native-keep-awake@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/react-native-keep-awake/-/react-native-keep-awake-4.0.0.tgz#d89fdc3fb60b3cffa979ef37dc5816196df998a2"
   integrity sha512-0Fotox+eLXQooeibVs3P60yASYUWjtRw9MZNmbuHt5UZQrgUrAKsE4jm7gTr4tPU1m1RkwGzcgUFpcOkh/ec7g==
-
-react-native-keyboard-aware-scroll-view@^0.9.4:
-  version "0.9.4"
-  resolved "https://registry.yarnpkg.com/react-native-keyboard-aware-scroll-view/-/react-native-keyboard-aware-scroll-view-0.9.4.tgz#83b356062123070c4b75f57d34dd276b9dd5796a"
-  integrity sha512-9Q8lxGvUdEnyL2Q0/VZdcEjHUGjm1lOAMd/3bNnhknoA7RqjJDaRGOQDhOAjVW1iwrKUct+B1old87nIsiX6iw==
-  dependencies:
-    prop-types "^15.6.2"
-    react-native-iphone-x-helper "^1.0.3"
 
 react-native-localize@^2.1.1:
   version "2.1.1"
