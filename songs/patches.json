@@ -2006,6 +2006,13 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1629577162807,
+      "locale": "en",
+      "author": "monicaenrique.10@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "31": [
@@ -3004,6 +3011,16 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1629469718542,
+      "locale": "en",
+      "author": "monicaenrique.10@gmail.com",
+      "rename": {
+        "new": "Blessed Mary - Lk. 1, 42-45"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "42": [
@@ -3146,6 +3163,16 @@
       "author": "Benedikt.jacobsen@hotmail.de",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1629483510963,
+      "locale": "en",
+      "author": "monicaenrique.10@gmail.com",
+      "rename": {
+        "new": "Canticle of Zechariah - Lk 1, 67-80"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "44": [
@@ -3584,6 +3611,16 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1629480398590,
+      "locale": "en",
+      "author": "monicaenrique.10@gmail.com",
+      "rename": {
+        "new": "When Israel Came Out of Egypt - Psalm 113 (114)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "52": [
@@ -8824,6 +8861,17 @@
       "author": "lukasz.rynek@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1629485008994,
+      "locale": "en",
+      "author": "monicaenrique.10@gmail.com",
+      "rename": {
+        "original": "Glory, glory, glory (is. 66, 18ff)",
+        "new": "Glory, Glory, Glory - Is. 66, 18-22"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "158": [
@@ -11844,6 +11892,16 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1629486153558,
+      "locale": "en",
+      "author": "monicaenrique.10@gmail.com",
+      "rename": {
+        "new": "In the Midst of a Great Crowd - Lk 8, 43-48"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "214": [
