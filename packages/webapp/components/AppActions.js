@@ -2,7 +2,7 @@
 import React, { Fragment, useContext, useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useSession, signOut } from 'next-auth/client';
-import { Button, Menu, Icon, Modal } from 'semantic-ui-react';
+import { Button, Menu, Icon, Modal, Label } from 'semantic-ui-react';
 import * as axios from 'axios';
 import { DataContext } from './DataContext';
 import { EditContext } from './EditContext';
@@ -82,13 +82,20 @@ const AppActions = () => {
                 </div>
               </div>
               <div style={{ flex: 1, marginLeft: 20 }}>
-                <h3>{I18n.t('ui.statistics')}</h3>
+                {patchStats && patchStats.length > 0 && (
+                  <>
+                    <h3>{I18n.t('ui.statistics')}</h3>
+                    <p>{I18n.t('ui.changes pending of publish')}</p>
+                  </>
+                )}
                 {patchStats &&
                   patchStats.map((localeStats) => {
                     return (
                       <>
                         <h4>
-                          {localeStats.locale} ({localeStats.count} changes)
+                          <Label color="green">
+                            {localeStats.locale} ({localeStats.count} changes)
+                          </Label>
                         </h4>
                         <ul>
                           {localeStats.items.map((stat) => {

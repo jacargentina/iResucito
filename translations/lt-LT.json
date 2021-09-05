@@ -19,7 +19,7 @@
     "confirm new password": "Patvirtinti naują slaptažodį",
     "statistics": "Statistika",
     "download": "Atsisiųsti",
-    "changes since last login": "Pakeitimai nuo paskutinio prisijungimo",
+    "changes pending of publish": "Paskirstymo pokyčiai",
     "changed songs by author": "{{count}} giesmės sukurtos {{author}}",
     "patch pending": "Atnaujinimas laukiamas iš {{author}}, data {{date}}}",
     "song version number": "Buvo pakeista {{version}} kartus",
