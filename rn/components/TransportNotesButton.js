@@ -70,15 +70,19 @@ const TransportNotesButton = (props: any): React.Node => {
         }}
       />
     ) : (
-      <Badge style={{ marginTop: 6, marginRight: 6 }}>
+      <Badge
+        colorScheme="rose"
+        variant="solid"
+        style={{
+          marginTop: 6,
+          marginRight: 6,
+        }}>
         <Text
-          style={{
-            fontSize: 12,
-            fontWeight: 'bold',
-            fontStyle: 'italic',
-            textAlign: 'center',
-            color: options.headerTitleStyle.color,
-          }}>
+          bold
+          italic
+          textAlign="center"
+          fontSize="lg"
+          color={options.headerTitleStyle.color}>
           {transportNote}
         </Text>
       </Badge>
