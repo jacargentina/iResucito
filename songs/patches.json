@@ -382,6 +382,16 @@
       },
       "created": false,
       "updated": false
+    },
+    {
+      "date": 1631146481592,
+      "locale": "en",
+      "author": "lavitia9@gmail.com",
+      "rename": {
+        "new": "The Lord Has Given Me - Is 50, 4-10"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "8": [
@@ -9382,6 +9392,20 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1631141557397,
+      "locale": "en",
+      "author": "lavitia9@gmail.com",
+      "rename": {
+        "new": "The Same God - 2 Co 4, 6-12"
+      },
+      "created": true,
+      "updated": false,
+      "staged": {
+        "original": "election",
+        "new": "catechumenate"
+      }
     }
   ],
   "166": [

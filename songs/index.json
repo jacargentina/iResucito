@@ -114,7 +114,8 @@
    "de": "Der Herr hat mir gegeben - III. Gottesknechtlied - Jes 50, 4-10",
    "pt-BR": "O Senhor me deu - Terceiro canto do Servo de Iahweh - Is 50, 4-10",
    "pt-PT": "O Senhor deu-me - Terceiro canto do Servo de Javé - Is 50, 4-10",
-   "lt-LT": "Viešpats padovanojo man (iz 50, 4-10)"
+   "lt-LT": "Viešpats padovanojo man (iz 50, 4-10)",
+   "en": "The Lord Has Given Me - Is 50, 4-10"
   },
   "stages": {
    "de-AT": "election",
@@ -2513,12 +2514,14 @@
    "de": "Derselbe Gott - 2 Kor 4, 6-12",
    "pt-BR": "O mesmo Deus - 2 Cor 4, 6-12",
    "pt-PT": "O mesmo Deus - 2 Cor 4, 6-12",
-   "lt-LT": "Tas pats dievas (2kor 4, 6-12)"
+   "lt-LT": "Tas pats dievas (2kor 4, 6-12)",
+   "en": "The Same God - 2 Co 4, 6-12"
   },
   "stages": {
    "pt-BR": "catechumenate",
    "de-AT": "liturgy",
-   "de": "election"
+   "de": "election",
+   "en": "catechumenate"
   }
  },
  "166": {
