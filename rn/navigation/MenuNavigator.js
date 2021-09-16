@@ -3,6 +3,7 @@ import * as React from 'react';
 import { useContext, useEffect, useMemo } from 'react';
 import { Platform, Linking } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import { Icon, useTheme } from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { DataContext } from '../DataContext';
@@ -13,8 +14,13 @@ import SettingsNavigator from './SettingsNavigator';
 
 const Tab = createBottomTabNavigator();
 
-const getIcon = (iconName) => {
-  return {
+const getTabOptions = (
+  iconName: string,
+  route: any,
+  showTabOnlyOn?: string
+) => {
+  var tabOptions = {
+    tabBarStyle: undefined,
     tabBarIcon: ({ focused, color: tabColor }) => {
       return (
         <Icon
@@ -26,6 +32,13 @@ const getIcon = (iconName) => {
       );
     },
   };
+  if (showTabOnlyOn) {
+    const n = getFocusedRouteNameFromRoute(route) ?? showTabOnlyOn;
+    if (n !== showTabOnlyOn) {
+      tabOptions.tabBarStyle = { display: 'none' };
+    }
+  }
+  return tabOptions;
 };
 
 const MenuNavigator = (props: any): React.Node => {
@@ -84,22 +97,24 @@ const MenuNavigator = (props: any): React.Node => {
       <Tab.Screen
         name="Songs"
         component={SongsNavigator}
-        options={getIcon('search')}
+        options={({ route }) => getTabOptions('search', route, 'SongSearch')}
       />
       <Tab.Screen
         name="Lists"
         component={ListsNavigator}
-        options={getIcon('bookmarks-outline')}
+        options={({ route }) =>
+          getTabOptions('bookmarks-outline', route, 'Lists')
+        }
       />
       <Tab.Screen
         name="Community"
         component={CommunityNavigator}
-        options={getIcon('people-outline')}
+        options={getTabOptions('people-outline')}
       />
       <Tab.Screen
         name="Settings"
         component={SettingsNavigator}
-        options={getIcon('settings-outline')}
+        options={getTabOptions('settings-outline')}
       />
     </Tab.Navigator>
   );
