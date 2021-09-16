@@ -306,7 +306,7 @@ PODS:
     - React
   - RNLocalize (2.1.3):
     - React-Core
-  - RNReanimated (2.2.0):
+  - RNReanimated (2.2.2):
     - DoubleConversion
     - FBLazyVector
     - FBReactNativeSpec
@@ -568,7 +568,7 @@ SPEC CHECKSUMS:
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
   RNICloudStore: bc6e225811637c09bd1eb055d6cd7448e61cd451
   RNLocalize: 6351aa411de4283a753a2946e21a77d1b9e271e3
-  RNReanimated: 7245c2ff6dca3b42b6f77e800adf85ce68532759
+  RNReanimated: ad24db8af24e3fe1b5c462785bc3db8d5baae2ee
   RNScreens: eb0dfb2d6b21d2d7f980ad46b14eb306d2f1062e
   RNSentry: 701496f68e915395d2871a2b402a03df4d6ee51f
   RNShare: 3acd1ed34a4baba2fd8541ba409045c37e5f62ff
@@ -579,4 +579,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 08509d87e51f6f90a2dd355a6306ba8b8af7356e
 
-COCOAPODS: 1.11.0
+COCOAPODS: 1.11.2
