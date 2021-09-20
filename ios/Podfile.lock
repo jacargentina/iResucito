@@ -210,7 +210,7 @@ PODS:
     - React-Core
   - react-native-keep-awake (4.0.0):
     - React
-  - react-native-pager-view (5.4.1):
+  - react-native-pager-view (5.4.4):
     - React-Core
   - react-native-pdf (6.3.0):
     - React-Core
@@ -220,7 +220,7 @@ PODS:
     - React
   - react-native-progress-view (1.3.1):
     - React-Core
-  - react-native-safe-area-context (3.3.1):
+  - react-native-safe-area-context (3.3.2):
     - React-Core
   - React-perflogger (0.65.1)
   - React-RCTActionSheet (0.65.1):
@@ -288,15 +288,15 @@ PODS:
     - React-perflogger (= 0.65.1)
   - rn-fetch-blob (0.12.0):
     - React-Core
-  - RNBootSplash (3.2.4):
+  - RNBootSplash (3.2.5):
     - React-Core
-  - RNCAsyncStorage (1.15.7):
+  - RNCAsyncStorage (1.15.8):
     - React-Core
   - RNCMaskedView (0.1.11):
     - React
   - RNCPicker (1.8.1):
     - React-Core
-  - RNDeviceInfo (8.3.1):
+  - RNDeviceInfo (8.3.3):
     - React-Core
   - RNFS (2.18.0):
     - React
@@ -304,7 +304,7 @@ PODS:
     - React-Core
   - RNICloudStore (0.1.0):
     - React
-  - RNLocalize (2.1.3):
+  - RNLocalize (2.1.4):
     - React-Core
   - RNReanimated (2.2.2):
     - DoubleConversion
@@ -335,13 +335,13 @@ PODS:
     - React-RCTVibration
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNScreens (3.6.0):
+  - RNScreens (3.7.2):
     - React-Core
     - React-RCTImage
-  - RNSentry (3.0.1):
+  - RNSentry (3.1.0):
     - React-Core
     - Sentry (= 7.2.6)
-  - RNShare (7.0.2):
+  - RNShare (7.1.0):
     - React-Core
   - RNSVG (12.1.1):
     - React
@@ -540,12 +540,12 @@ SPEC CHECKSUMS:
   React-jsinspector: 41e58e5b8e3e0bf061fdf725b03f2144014a8fb0
   react-native-contacts: bc424db19c3384e44e6a9d9da9a78ee51b0aa7a1
   react-native-keep-awake: afad8a51dfef9fe9655a6344771be32c8596d774
-  react-native-pager-view: 43f51f45f37ec9715f6c188e4af46ccdf79872e8
+  react-native-pager-view: 5ab4d0b4b44d89f77310cb3eb8129745f274ce55
   react-native-pdf: ef641e79a6d550cfabe5d7ec1916799726514c43
   react-native-print: ae7982894bda8ef1492289e35b7a36b76a0d11ab
   react-native-progress-bar-android: be43138ab7da30d51fc038bafa98e9ed594d0c40
   react-native-progress-view: 9e6b6a5305a9115c2157ae3b8852081aba0aab7c
-  react-native-safe-area-context: ca9f3b49266e56b1d841ccdde7cfe2e076f529b6
+  react-native-safe-area-context: 584dc04881deb49474363f3be89e4ca0e854c057
   React-perflogger: fd28ee1f2b5b150b00043f0301d96bd417fdc339
   React-RCTActionSheet: 7f3fa0855c346aa5d7c60f9ced16e067db6d29fa
   React-RCTAnimation: 2119a18ee26159004b001bc56404ca5dbaae6077
@@ -559,19 +559,19 @@ SPEC CHECKSUMS:
   React-runtimeexecutor: 85187f19dd9c47a7c102f9994f9d14e4dc2110de
   ReactCommon: eafed38eec7b591c31751bfa7494801618460459
   rn-fetch-blob: f065bb7ab7fb48dd002629f8bdcb0336602d3cba
-  RNBootSplash: 4844706cbb56a3270556c9b94e59dedadccd47e4
-  RNCAsyncStorage: 7102fe8985f889579a3ae148d957bbb3f308122b
+  RNBootSplash: 75faf048f66eebe1650e91afdb8c2205fefc1870
+  RNCAsyncStorage: e8b8d6320a0dd90eb610fb0d0b1ef90596697c69
   RNCMaskedView: 0e1bc4bfa8365eba5fbbb71e07fbdc0555249489
   RNCPicker: 914b557e20b3b8317b084aca9ff4b4edb95f61e4
-  RNDeviceInfo: 7b82d1467b87f7e74d1c7ba9439a9a57d0c68ee9
+  RNDeviceInfo: cc7de0772378f85d8f36ae439df20f05c590a651
   RNFS: 3ab21fa6c56d65566d1fb26c2228e2b6132e5e32
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
   RNICloudStore: bc6e225811637c09bd1eb055d6cd7448e61cd451
-  RNLocalize: 6351aa411de4283a753a2946e21a77d1b9e271e3
+  RNLocalize: 7f1e5792b65a839af55a9552d05b3558b66d017e
   RNReanimated: ad24db8af24e3fe1b5c462785bc3db8d5baae2ee
-  RNScreens: eb0dfb2d6b21d2d7f980ad46b14eb306d2f1062e
-  RNSentry: 701496f68e915395d2871a2b402a03df4d6ee51f
-  RNShare: 3acd1ed34a4baba2fd8541ba409045c37e5f62ff
+  RNScreens: 0591543e343c7444ea1756b6265d81a4295922c9
+  RNSentry: a3c522c9f17f191e4972c3e4d6065aba253b593e
+  RNShare: 072f63d19c2b90da3742adac614396d805e7ae22
   RNSVG: 551acb6562324b1d52a4e0758f7ca0ec234e278f
   RNVectorIcons: 31cebfcf94e8cf8686eb5303ae0357da64d7a5a4
   Sentry: be2f8f7a63e5274cc83d0813e40c1680119c0153
