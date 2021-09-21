@@ -12,7 +12,7 @@ const SettingsNavigator = (): React.Node => {
   return (
     <Stack.Navigator screenOptions={options}>
       <Stack.Screen
-        name="Settings"
+        name="SettingsScreen"
         component={SettingsScreen}
         options={({ navigation, route }) => {
           return { title: I18n.t('screen_title.settings') };

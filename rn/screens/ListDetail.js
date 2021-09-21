@@ -1,42 +1,83 @@
 // @flow
 import * as React from 'react';
-import { Fragment, useContext, useState } from 'react';
-import { Alert, Platform } from 'react-native';
-import { VStack, Text } from 'native-base';
+import { Fragment, useContext, useState, useRef, useCallback } from 'react';
+import { Alert, View } from 'react-native';
+import { VStack, Text, useTheme } from 'native-base';
 import { useRoute } from '@react-navigation/native';
 import { KeyboardAwareScrollView } from '@codler/react-native-keyboard-aware-scroll-view';
-import Swipeout from 'react-native-swipeout';
+import Swipeable from 'react-native-gesture-handler/Swipeable';
+import SwipeableRightAction from '../components/SwipeableRightAction';
 import { DataContext } from '../DataContext';
 import I18n from '../../translations';
 import ListDetailItem from './ListDetailItem';
+
+const SwipeableRow = (props: {
+  listName: string,
+  listKey: string,
+  song: any,
+}): React.Node => {
+  const { listName, listKey, song } = props;
+  const swipeRef = useRef<typeof Swipeable>();
+  const data = useContext(DataContext);
+  const { colors } = useTheme();
+  const { setList } = data.lists;
+
+  const confirmListDeleteSong = useCallback(
+    (songTitle, list, key) => {
+      Alert.alert(
+        `${I18n.t('ui.delete')} "${songTitle}"`,
+        I18n.t('ui.delete confirmation'),
+        [
+          {
+            text: I18n.t('ui.delete'),
+            onPress: () => {
+              setList(list, key);
+            },
+            style: 'destructive',
+          },
+          {
+            text: I18n.t('ui.cancel'),
+            style: 'cancel',
+          },
+        ]
+      );
+    },
+    [setList]
+  );
+
+  return (
+    <Swipeable
+      ref={swipeRef}
+      friction={2}
+      rightThreshold={30}
+      renderRightActions={(progress, dragX) => {
+        return (
+          <View style={{ width: 100, flexDirection: 'row' }}>
+            <SwipeableRightAction
+              color={colors.rose['600']}
+              progress={progress}
+              text={I18n.t('ui.delete')}
+              x={100}
+              onPress={() => {
+                swipeRef.current.close();
+                confirmListDeleteSong(song.titulo, listName, listKey);
+              }}
+            />
+          </View>
+        );
+      }}>
+      <ListDetailItem listName={listName} listKey={listKey} listText={song} />
+    </Swipeable>
+  );
+};
 
 const ListDetail = (): React.Node => {
   const data = useContext(DataContext);
   const [scroll, setScroll] = useState();
   const [noteFocused, setNoteFocused] = useState(false);
   const route = useRoute();
-  const { setList, getListForUI } = data.lists;
+  const { getListForUI } = data.lists;
   const { listName } = route.params;
-
-  const confirmListDeleteSong = (songTitle, list, key) => {
-    Alert.alert(
-      `${I18n.t('ui.delete')} "${songTitle}"`,
-      I18n.t('ui.delete confirmation'),
-      [
-        {
-          text: I18n.t('ui.delete'),
-          onPress: () => {
-            setList(list, key);
-          },
-          style: 'destructive',
-        },
-        {
-          text: I18n.t('ui.cancel'),
-          style: 'cancel',
-        },
-      ]
-    );
-  };
 
   const uiList = getListForUI(listName);
 
@@ -53,29 +94,8 @@ const ListDetail = (): React.Node => {
           {songs.length > 0 && (
             <VStack p="2">
               {songs.map((song, key) => {
-                var swipeoutBtns = [
-                  {
-                    text: I18n.t('ui.delete'),
-                    type: Platform.OS === 'ios' ? 'delete' : 'default',
-                    backgroundColor:
-                      Platform.OS === 'android' ? '#e57373' : null,
-                    onPress: () => {
-                      confirmListDeleteSong(song.titulo, listName, key);
-                    },
-                  },
-                ];
                 return (
-                  <Swipeout
-                    key={key}
-                    right={swipeoutBtns}
-                    backgroundColor="white"
-                    autoClose={true}>
-                    <ListDetailItem
-                      listName={listName}
-                      listKey={key}
-                      listText={song}
-                    />
-                  </Swipeout>
+                  <SwipeableRow listName={listName} listKey={key} song={song} />
                 );
               })}
             </VStack>

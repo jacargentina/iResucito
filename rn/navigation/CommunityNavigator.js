@@ -15,7 +15,7 @@ const CommunityNavigator = (): React.Node => {
   return (
     <Stack.Navigator screenOptions={options}>
       <Stack.Screen
-        name="Community"
+        name="CommunitySearch"
         component={CommunityScreen}
         options={({ navigation, route }) => {
           return {

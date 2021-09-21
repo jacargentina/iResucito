@@ -18,7 +18,12 @@ import { getLocalizedListItem } from '../../common';
 
 import I18n from '../../translations';
 
-const ListDetailItem = (props: any): React.Node => {
+const ListDetailItem = (props: {
+  listName: any,
+  listKey: any,
+  listText: any,
+  inputProps?: any,
+}): React.Node => {
   const data = useContext(DataContext);
   const navigation = useNavigation();
   const { setList } = data.lists;

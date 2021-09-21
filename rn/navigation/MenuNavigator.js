@@ -103,7 +103,7 @@ const MenuNavigator = (props: any): React.Node => {
         name="Lists"
         component={ListsNavigator}
         options={({ route }) =>
-          getTabOptions('bookmarks-outline', route, 'Lists')
+          getTabOptions('bookmarks-outline', route, 'ListsSearch')
         }
       />
       <Tab.Screen

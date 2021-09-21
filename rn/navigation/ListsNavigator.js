@@ -24,7 +24,7 @@ const ListsNavigator = (): React.Node => {
   return (
     <Stack.Navigator screenOptions={options}>
       <Stack.Screen
-        name="Lists"
+        name="ListsSearch"
         component={ListScreen}
         options={({ navigation, route }) => {
           return {

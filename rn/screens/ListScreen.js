@@ -1,6 +1,13 @@
 // @flow
 import * as React from 'react';
-import { useContext, useState, useMemo, useEffect } from 'react';
+import {
+  useContext,
+  useState,
+  useMemo,
+  useEffect,
+  useCallback,
+  useRef,
+} from 'react';
 import {
   Pressable,
   VStack,
@@ -9,11 +16,13 @@ import {
   Text,
   FlatList,
   useDisclose,
+  useTheme,
 } from 'native-base';
-import { Alert, Platform } from 'react-native';
+import { Alert, View } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
-import Swipeout from 'react-native-swipeout';
+import Swipeable from 'react-native-gesture-handler/Swipeable';
+import SwipeableRightAction from '../components/SwipeableRightAction';
 import SearchBarView from '../components/SearchBarView';
 import { DataContext } from '../DataContext';
 import CallToAction from '../components/CallToAction';
@@ -21,10 +30,110 @@ import AddListButton from '../components/AddListButton';
 import ChooseListTypeForAdd from '../components/ChooseListTypeForAdd';
 import I18n from '../../translations';
 
+const SwipeableRow = (props: { item: any }): React.Node => {
+  const data = useContext(DataContext);
+  const navigation = useNavigation();
+  const { colors } = useTheme();
+  const { removeList } = data.lists;
+  const { item } = props;
+  const swipeRef = useRef<typeof Swipeable>();
+
+  const listDelete = useCallback(
+    (listName) => {
+      Alert.alert(
+        `${I18n.t('ui.delete')} "${listName}"`,
+        I18n.t('ui.delete confirmation'),
+        [
+          {
+            text: I18n.t('ui.delete'),
+            onPress: () => {
+              removeList(listName);
+            },
+            style: 'destructive',
+          },
+          {
+            text: I18n.t('ui.cancel'),
+            style: 'cancel',
+          },
+        ]
+      );
+    },
+    [removeList]
+  );
+
+  const listRename = useCallback(
+    (listName) => {
+      navigation.navigate('ListName', {
+        action: 'rename',
+        listName: listName,
+      });
+    },
+    [navigation]
+  );
+
+  return (
+    <Swipeable
+      ref={swipeRef}
+      friction={2}
+      rightThreshold={30}
+      renderRightActions={(progress, dragX) => {
+        return (
+          <View style={{ width: 250, flexDirection: 'row' }}>
+            <SwipeableRightAction
+              color={colors.blue['500']}
+              progress={progress}
+              text={I18n.t('ui.rename')}
+              x={250}
+              onPress={() => {
+                swipeRef.current.close();
+                listRename(item.name);
+              }}
+            />
+            <SwipeableRightAction
+              color={colors.rose['600']}
+              progress={progress}
+              text={I18n.t('ui.delete')}
+              x={125}
+              onPress={() => {
+                swipeRef.current.close();
+                listDelete(item.name);
+              }}
+            />
+          </View>
+        );
+      }}>
+      <Pressable
+        onPress={() => {
+          navigation.navigate('ListDetail', {
+            listName: item.name,
+          });
+        }}>
+        <HStack
+          p="3"
+          alignItems="center"
+          borderBottomWidth={1}
+          borderBottomColor="muted.200">
+          <Icon
+            w="12%"
+            as={Ionicons}
+            color="rose.500"
+            name="bookmark-outline"
+          />
+          <VStack space={1}>
+            <Text bold fontSize="xl">
+              {item.name}
+            </Text>
+            <Text>{item.type}</Text>
+          </VStack>
+        </HStack>
+      </Pressable>
+    </Swipeable>
+  );
+};
 const ListScreen = (props: any): React.Node => {
   const data = useContext(DataContext);
   const navigation = useNavigation();
-  const { getListsForUI, removeList } = data.lists;
+  const { getListsForUI } = data.lists;
   const [filtered, setFiltered] = useState([]);
   const [filter, setFilter] = useState('');
   const chooser = useDisclose();
@@ -41,33 +150,6 @@ const ListScreen = (props: any): React.Node => {
     }
     setFiltered(result);
   }, [allLists, filter]);
-
-  const listDelete = (listName) => {
-    Alert.alert(
-      `${I18n.t('ui.delete')} "${listName}"`,
-      I18n.t('ui.delete confirmation'),
-      [
-        {
-          text: I18n.t('ui.delete'),
-          onPress: () => {
-            removeList(listName);
-          },
-          style: 'destructive',
-        },
-        {
-          text: I18n.t('ui.cancel'),
-          style: 'cancel',
-        },
-      ]
-    );
-  };
-
-  const listRename = (listName) => {
-    navigation.navigate('ListName', {
-      action: 'rename',
-      listName: listName,
-    });
-  };
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
@@ -103,55 +185,7 @@ const ListScreen = (props: any): React.Node => {
         extraData={I18n.locale}
         keyExtractor={(item) => item.name}
         renderItem={({ item }) => {
-          var swipeoutBtns = [
-            {
-              text: I18n.t('ui.rename'),
-              type: 'primary',
-              onPress: () => {
-                listRename(item.name);
-              },
-            },
-            {
-              text: I18n.t('ui.delete'),
-              type: Platform.OS === 'ios' ? 'delete' : 'default',
-              backgroundColor: Platform.OS === 'android' ? '#e57373' : null,
-              onPress: () => {
-                listDelete(item.name);
-              },
-            },
-          ];
-          return (
-            <Swipeout
-              right={swipeoutBtns}
-              backgroundColor="white"
-              autoClose={true}>
-              <Pressable
-                onPress={() => {
-                  navigation.navigate('ListDetail', {
-                    listName: item.name,
-                  });
-                }}>
-                <HStack
-                  p="3"
-                  alignItems="center"
-                  borderBottomWidth={1}
-                  borderBottomColor="muted.200">
-                  <Icon
-                    w="12%"
-                    as={Ionicons}
-                    color="rose.500"
-                    name="bookmark-outline"
-                  />
-                  <VStack space={1}>
-                    <Text bold fontSize="xl">
-                      {item.name}
-                    </Text>
-                    <Text>{item.type}</Text>
-                  </VStack>
-                </HStack>
-              </Pressable>
-            </Swipeout>
-          );
+          return <SwipeableRow item={item} />;
         }}
       />
     </SearchBarView>
