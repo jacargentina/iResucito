@@ -1,7 +1,7 @@
 // @flow
 import React, { useRef, useEffect, useContext, useState } from 'react';
 import * as pdfjsLib from 'pdfjs-dist';
-import { Icon, Button, Menu, Loader } from 'semantic-ui-react';
+import { Icon, Button, Menu, Label, Input, Loader } from 'semantic-ui-react';
 import { DataContext } from './DataContext';
 import { EditContext } from './EditContext';
 import I18n from '../../../translations';
@@ -97,23 +97,29 @@ const SongViewPdf = (props: any) => {
         </Menu.Item>
         {numPages && (
           <Menu.Item>
-            <Button.Group size="mini">
-              <Button
-                icon
-                disabled={currPage === 1}
-                onClick={() => setCurrPage((p) => p - 1)}>
-                <Icon name="step backward" />
-              </Button>
-              <Button disabled>
-                {currPage} / {numPages}
-              </Button>
-              <Button
-                icon
-                disabled={currPage === numPages}
-                onClick={() => setCurrPage((p) => p + 1)}>
-                <Icon name="step forward" />
-              </Button>
-            </Button.Group>
+            <Button
+              icon
+              size="mini"
+              disabled={currPage === 1}
+              onClick={() => setCurrPage((p) => p - 1)}>
+              <Icon name="step backward" />
+            </Button>
+            <Input
+              className="pageNumberInput"
+              value={currPage}
+              onChange={(e, { value }) => setCurrPage(Number(value))}
+            />
+            <Button
+              size="mini"
+              icon
+              disabled={currPage === numPages}
+              onClick={() => setCurrPage((p) => p + 1)}>
+              <Icon name="step forward" />
+            </Button>
+            <Label>
+              Total:
+              <Label.Detail>{numPages}</Label.Detail>
+            </Label>
           </Menu.Item>
         )}
       </Menu>

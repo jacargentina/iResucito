@@ -49,7 +49,7 @@ export const defaultExportToPdfOptions: ExportToPdfOptions = {
   songSource: { FontSize: 10 },
   songText: { FontSize: 12 },
   songNote: { FontSize: 10 },
-  songIndicatorSpacing: 18,
+  songIndicatorSpacing: 21,
   songParagraphSpacing: 9,
   indexTitle: { FontSize: 16 },
   bookTitle: { FontSize: 80, Spacing: 10 },

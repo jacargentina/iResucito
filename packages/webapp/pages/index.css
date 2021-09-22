@@ -29,6 +29,14 @@
   color: white !important;
 }
 
+.pageNumberInput {
+  width: 50px !important;
+}
+
+.pageNumberInput input {
+  text-align: center !important;
+}
+
 body {
   overscroll-behavior: none;
 }
