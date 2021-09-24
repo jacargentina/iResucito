@@ -10,7 +10,8 @@ const Stack = createStackNavigator();
 const SongChooserNavigator = (): React.Node => {
   const options = useStackNavOptions();
   return (
-    <Stack.Navigator mode="modal" headerMode="none" screenOptions={options}>
+    <Stack.Navigator
+      screenOptions={{ ...options, headerShown: false, presentation: 'modal' }}>
       <Stack.Screen name="Dialog" component={SongChooserDialog} />
       <Stack.Screen name="ViewSong" component={SongPreviewScreenDialog} />
     </Stack.Navigator>

@@ -5,8 +5,21 @@ import { Box, Text, HStack, Button, Center } from 'native-base';
 import { Platform, KeyboardAvoidingView } from 'react-native';
 import I18n from '../../translations';
 
+const ConditionalWrapper = (props: any) => {
+  const { condition, wrapper, children } = props;
+  return condition ? wrapper(children) : children;
+};
+
 const ModalView = (props: any): React.Node => {
-  const { left, right, title, children, closeText, closeHandler } = props;
+  const {
+    left,
+    right,
+    title,
+    children,
+    closeText,
+    closeHandler,
+    keyboardAvoidingView = true,
+  } = props;
   const navigation = useNavigation();
   const defaultClose = (
     <Button
@@ -25,11 +38,18 @@ const ModalView = (props: any): React.Node => {
       {closeText || I18n.t('ui.close')}
     </Button>
   );
+
   return (
     <Box safeArea bg="white" h="100%">
-      <KeyboardAvoidingView
-        style={{ flexGrow: 1 }}
-        behavior={Platform.OS === 'android' ? null : 'padding'}>
+      <ConditionalWrapper
+        condition={keyboardAvoidingView}
+        wrapper={(childs) => (
+          <KeyboardAvoidingView
+            style={{ flexGrow: 1 }}
+            behavior={Platform.OS === 'android' ? null : 'padding'}>
+            {childs}
+          </KeyboardAvoidingView>
+        )}>
         <HStack my={2} justifyContent="space-between">
           <Box flex={1}>{left}</Box>
           {right || defaultClose}
@@ -40,7 +60,7 @@ const ModalView = (props: any): React.Node => {
           </Center>
         )}
         <Box flex={1}>{children}</Box>
-      </KeyboardAvoidingView>
+      </ConditionalWrapper>
     </Box>
   );
 };

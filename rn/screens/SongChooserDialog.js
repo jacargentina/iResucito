@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { useContext, useMemo, useEffect, useCallback, useState } from 'react';
 import { useWindowDimensions } from 'react-native';
-import { Text, useTheme } from 'native-base';
+import { Text, Center, Spinner, useTheme } from 'native-base';
 import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
 import ModalView from '../components/ModalView';
 import { DataContext } from '../DataContext';
@@ -16,7 +16,6 @@ const SongChooserDialog = (props: any): React.Node => {
   const { navigation, route } = props;
   const { searchItems } = data.search;
   const { setList } = data.lists;
-  const [activeTab, setActiveTab] = useState(0);
   const { target } = route.params;
   const { listName, listKey } = target;
 
@@ -24,16 +23,18 @@ const SongChooserDialog = (props: any): React.Node => {
     return searchItems.filter((x) => x.chooser !== undefined);
   }, [searchItems]);
 
-  useEffect(() => {
+  const [activeTab, setActiveTab] = useState(() => {
     if (listName && listKey) {
       var c = choosers.find(
         (t) => t.chooser_listKey && t.chooser_listKey.includes(listKey)
       );
       if (c) {
-        setActiveTab(choosers.indexOf(c));
+        const tab = choosers.indexOf(c);
+        return tab;
       }
     }
-  }, [choosers, listName, listKey]);
+    return 0;
+  });
 
   const songAssign = useCallback(
     (song: Song) => {
@@ -66,8 +67,14 @@ const SongChooserDialog = (props: any): React.Node => {
     return SceneMap(config);
   }, [choosers, songAssign]);
 
+  /* keyboardAvoidingView={false}; si es =true provoca el efecto siguiente:
+     el usuario hace tap sobre el input de búsqueda
+     el teclado se abre, y luego de unos pocos ms.
+     el teclado se cierra automaticamente
+  */
   return (
     <ModalView
+      keyboardAvoidingView={false}
       left={
         <Text
           bold
@@ -81,6 +88,15 @@ const SongChooserDialog = (props: any): React.Node => {
         </Text>
       }>
       <TabView
+        lazy
+        renderLazyPlaceholder={() => {
+          return (
+            <Center pt="5">
+              <Spinner color="rose.500" size="lg" />
+              <Text>{I18n.t('ui.loading')}</Text>
+            </Center>
+          );
+        }}
         renderTabBar={(p: any) => {
           return (
             <TabBar
