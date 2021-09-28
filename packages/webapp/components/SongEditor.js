@@ -330,7 +330,7 @@ const SongEditor = () => {
                   setHasChanges(true);
                   const newText = data.value.replace(/\u00A0/g, ' ');
                   setText(newText);
-                  debounced.callback(newText);
+                  debounced(newText);
                 }}
               />
               <Segment
