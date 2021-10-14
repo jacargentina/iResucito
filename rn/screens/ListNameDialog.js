@@ -64,7 +64,7 @@ const ListNameDialog = (props: any): React.Node => {
       title={title}
       right={
         <Button
-          borderRadius="pill"
+          borderRadius={16}
           size="sm"
           mr="4"
           style={{
@@ -90,6 +90,7 @@ const ListNameDialog = (props: any): React.Node => {
       <Box px="5">
         <FormControl mb="5" isInvalid={!actionEnabled}>
           <Input
+            size="lg"
             autoFocus
             onChangeText={setName}
             value={name}

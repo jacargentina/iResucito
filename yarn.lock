@@ -4217,6 +4217,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/lodash.has@npm:^4.5.6":
+  version: 4.5.6
+  resolution: "@types/lodash.has@npm:4.5.6"
+  dependencies:
+    "@types/lodash": "*"
+  checksum: ecda18d373fbfdeb36b06f949f8fa10f0f15ad88a356269d3d5e717a047825d9b953310b8faa408973a790fbad0e0e238e15329e6000f6c9ad62837bf4488d59
+  languageName: node
+  linkType: hard
+
+"@types/lodash@npm:*":
+  version: 4.14.175
+  resolution: "@types/lodash@npm:4.14.175"
+  checksum: 50721f33faa542f1b9f62f2ba769ed353c6036711e92bd89ce569f2ed247e38fb2a2899f6fd46466b1690fea7ae0239471e6a6093c54e8f2b0613e43e8eac19c
+  languageName: node
+  linkType: hard
+
 "@types/node@npm:*":
   version: 16.9.4
   resolution: "@types/node@npm:16.9.4"
@@ -9701,7 +9717,7 @@ fsevents@~2.1.2:
     langs: ^2.0.0
     lodash: ^4.17.21
     metro-react-native-babel-preset: ^0.66.2
-    native-base: 3.1.0
+    native-base: ^3.2.1
     next: 10.0.4
     node-fetch: ^3.0.0
     normalize-strings: ^1.1.1
@@ -11262,6 +11278,13 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"lodash.has@npm:^4.5.2":
+  version: 4.5.2
+  resolution: "lodash.has@npm:4.5.2"
+  checksum: b3ec829a86852331d48b3730ff06088a283d128a3965aa521ffd942bcf5c82e06bed3164ff7a7751d11e768d88f0d7bab316192091489caf20f452d42f7055d5
+  languageName: node
+  linkType: hard
+
 "lodash.includes@npm:^4.3.0":
   version: 4.3.0
   resolution: "lodash.includes@npm:4.3.0"
@@ -12383,9 +12406,9 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"native-base@npm:3.1.0":
-  version: 3.1.0
-  resolution: "native-base@npm:3.1.0"
+"native-base@npm:^3.2.1":
+  version: 3.2.1
+  resolution: "native-base@npm:3.2.1"
   dependencies:
     "@react-aria/focus": ^3.2.3
     "@react-aria/utils": ^3.6.0
@@ -12403,9 +12426,11 @@ fsevents@~2.1.2:
     "@react-native-aria/utils": ^0.2.7
     "@react-stately/combobox": ^3.0.0-alpha.1
     "@react-stately/radio": ^3.2.1
+    "@types/lodash.has": ^4.5.6
     "@types/styled-system": ^5.1.9
     lodash.clonedeep: ^4.5.0
     lodash.get: ^4.4.2
+    lodash.has: ^4.5.2
     lodash.isempty: ^4.4.0
     lodash.isequal: ^4.5.0
     lodash.isnil: ^4.0.0
@@ -12423,7 +12448,7 @@ fsevents@~2.1.2:
     react-native-svg: "*"
     styled-components: "*"
     styled-system: "*"
-  checksum: 38cc035216fa969e220d2053e9fdfa1e4a718b73fb17fb0db76688cbdc41943844af99b31d3ff256af5588d29a8ce57f2f922aabc5ec52dd42235f7f17b3d504
+  checksum: 31cf1c777289886413c09ea573cc9c559b22626e9c87f1ac907ce69f3332a9b954b4af394e13c1129c864ff83325d3995cca54393d8b0b6035cf9585b493004e
   languageName: node
   linkType: hard
 

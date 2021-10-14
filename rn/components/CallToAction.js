@@ -41,7 +41,7 @@ const CallToAction = (props: {
             testID="ca_button"
             colorScheme="rose"
             _text={{ color: 'white' }}
-            borderRadius="pill"
+            borderRadius={32}
             onPress={props.buttonHandler}
             isDisabled={props.buttonDisabled}>
             {props.buttonText}

@@ -73,7 +73,7 @@ const SettingsScreen = (): React.Node => {
   };
 
   var localesItems = getLocalesForPicker(getDefaultLocale()).map((l) => {
-    return <Select.Item key={l.value} label={l.label} value={l.value} />;
+    return <Select.Item p={2} key={l.value} label={l.label} value={l.value} />;
   });
 
   return (
@@ -85,7 +85,6 @@ const SettingsScreen = (): React.Node => {
             {I18n.t('settings_note.locale')}
           </Text>
           <Select
-            size="sm"
             selectedValue={locale}
             onValueChange={(val) => {
               // IMPORTANTE!
@@ -147,25 +146,21 @@ const SettingsScreen = (): React.Node => {
             </Text>
             {'\n'} Javier Castro, 2017-2021
           </Text>
-          <Text textAlign="center" fontSize="md" mt="10">
+          <Text textAlign="center" fontSize="sm" mt="10">
             <Text bold>{I18n.t('ui.collaborators')}</Text>
             {Object.keys(collaborators).map((lang) => {
               return `\n ${collaborators[lang].join(', ')} (${lang})`;
             })}
           </Text>
           <HStack my="5">
-            <Button m="5" bg="rose.500" borderRadius="pill" onPress={sendMail}>
+            <Button m="5" bg="rose.500" borderRadius={32} onPress={sendMail}>
               <Icon as={Ionicons} name="mail" color="white" />
             </Button>
-            <Button
-              m="5"
-              bg="rose.500"
-              borderRadius="pill"
-              onPress={sendTwitter}>
+            <Button m="5" bg="rose.500" borderRadius={32} onPress={sendTwitter}>
               <Icon as={Ionicons} name="logo-twitter" color="white" />
             </Button>
           </HStack>
-          <Text fontSize="md" textAlign="center">
+          <Text fontSize="sm" textAlign="center">
             {I18n.t('ui.contribute message')}
           </Text>
           <Button

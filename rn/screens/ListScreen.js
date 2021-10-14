@@ -109,6 +109,7 @@ const SwipeableRow = (props: { item: any }): React.Node => {
           });
         }}>
         <HStack
+          space={2}
           p="3"
           alignItems="center"
           borderBottomWidth={1}

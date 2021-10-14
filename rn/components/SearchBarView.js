@@ -24,6 +24,7 @@ const DebouncedInput = (props: any): React.Node => {
   return (
     <Input
       m="1"
+      size="md"
       isFullWidth
       placeholder="Buscar..."
       onChangeText={setSearchTerm}
