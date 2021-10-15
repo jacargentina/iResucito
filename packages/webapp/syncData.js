@@ -1,7 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 const Dropbox = require('dropbox').Dropbox;
-const fetch = require('node-fetch');
+const fetch = (...args) =>
+  import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
 const dataPath = path.resolve(__dirname, './data');
 
