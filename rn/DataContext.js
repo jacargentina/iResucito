@@ -24,7 +24,18 @@ import {
   NativeExtras,
 } from './util';
 
-const useSongsMeta = (locale: string) => {
+type UseSongsMeta = {
+  songs: any,
+  setSongs: any,
+  localeSongs: any,
+  setLocaleSongs: any,
+  settingsFileExists: any,
+  clearSongSettings: any,
+  setSongSetting: any,
+  loadSongs: any,
+};
+
+const useSongsMeta = (locale: string): UseSongsMeta => {
   const [settingsFileExists, setSettingsFileExists] = useState();
   const [songs, setSongs] = useState();
   const [localeSongs, setLocaleSongs] = useState([]);
@@ -151,7 +162,21 @@ const useSongsMeta = (locale: string) => {
   };
 };
 
-const useLists = (songs: any) => {
+type UseLists = {
+  lists: any,
+  initLists: any,
+  addList: any,
+  removeList: any,
+  renameList: any,
+  getList: any,
+  setList: any,
+  getListForUI: any,
+  getListsForUI: any,
+  shareList: any,
+  importList: any,
+};
+
+const useLists = (songs: any): UseLists => {
   const [initialized, setInitialized] = useState(false);
   const [lists, initLists] = usePersist('lists', 'object', {});
 
@@ -492,7 +517,12 @@ const useLists = (songs: any) => {
   };
 };
 
-const useSearch = (localeValue: string) => {
+type UseSearch = {
+  initialized: any,
+  searchItems: any,
+};
+
+const useSearch = (localeValue: string): UseSearch => {
   const [initialized, setInitialized] = useState(false);
   const [searchItems, setSearchItems] = useState();
 
@@ -678,7 +708,17 @@ const useSearch = (localeValue: string) => {
   return { initialized, searchItems };
 };
 
-const useCommunity = () => {
+type UseCommunity = {
+  brothers: any,
+  deviceContacts: any,
+  add: any,
+  update: any,
+  remove: any,
+  addOrRemove: any,
+  populateDeviceContacts: any,
+};
+
+const useCommunity = (): UseCommunity => {
   const [brothers, initBrothers] = usePersist(
     'contacts',
     'object',
