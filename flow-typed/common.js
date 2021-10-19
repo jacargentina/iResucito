@@ -42,12 +42,17 @@ declare type SongIndexPatch = {
   [key: string]: SongPatch,
 };
 
-declare type SongRating = {
-  [locale: string]: number,
+declare type SongSettings = {
+  rating: number,
+  transportTo: string,
 };
 
-declare type SongRatingFile = {
-  [key: string]: SongRating,
+declare type SongLocaleSettings = {
+  [locale: string]: SongSettings,
+};
+
+declare type SongSettingsFile = {
+  [key: string]: SongLocaleSettings,
 };
 
 declare type SongStyles = {
@@ -231,4 +236,8 @@ declare type ListToPdf = {
   type: ListType,
   localeType: string,
   items: Array<any>,
+};
+
+declare type SSProps = {
+  props: any,
 };

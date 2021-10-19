@@ -55,7 +55,7 @@ const SongListItem = (props: any): React.Node => {
   } = props;
 
   const [isCollapsed, setIsCollapsed] = useState(true);
-  const { setSongRating, songs } = data.songsMeta;
+  const { setSongSetting, songs } = data.songsMeta;
 
   const song: Song = useMemo(() => {
     if (songKey) {
@@ -189,7 +189,7 @@ const SongListItem = (props: any): React.Node => {
           size={20}
           rated={song.rating}
           onIconTap={(position) =>
-            setSongRating(song.key, I18n.locale, position)
+            setSongSetting(song.key, I18n.locale, 'rating', position)
           }
           ratingColor={colors.rose['500']}
         />

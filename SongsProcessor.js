@@ -75,7 +75,7 @@ export class SongsProcessor {
     key: string,
     rawLoc: string,
     patch: ?SongIndexPatch,
-    ratings: ?SongRatingFile
+    ratings: ?SongSettingsFile
   ): Song {
     var info: Song = SongsIndex.hasOwnProperty(key)
       ? Object.assign({}, SongsIndex[key])
@@ -120,7 +120,7 @@ export class SongsProcessor {
     if (ratings && ratings.hasOwnProperty(key)) {
       var loc = getPropertyLocale(ratings[key], rawLoc);
       if (loc) {
-        info.rating = ratings[key][loc];
+        info.rating = ratings[key][loc].rating;
       }
     }
     info.notTranslated =
@@ -131,7 +131,7 @@ export class SongsProcessor {
   getSongsMeta(
     rawLoc: string,
     patch: ?SongIndexPatch,
-    ratings: ?SongRatingFile
+    ratings: ?SongSettingsFile
   ): Array<Song> {
     var songs = Object.keys(SongsIndex).map((key) => {
       return this.getSingleSongMeta(key, rawLoc, patch, ratings);

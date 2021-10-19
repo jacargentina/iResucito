@@ -25,7 +25,7 @@ import {
 } from './util';
 
 const useSongsMeta = (locale: string) => {
-  const [ratingsFileExists, setRatingsFileExists] = useState();
+  const [settingsFileExists, setSettingsFileExists] = useState();
   const [songs, setSongs] = useState();
   const [localeSongs, setLocaleSongs] = useState([]);
 
@@ -57,39 +57,44 @@ const useSongsMeta = (locale: string) => {
       });
   };
 
-  const readSongsRatingFile = useCallback((): Promise<?SongRatingFile> => {
-    if (!ratingsFileExists) {
+  const readSongSettingsFile = useCallback((): Promise<?SongSettingsFile> => {
+    if (!settingsFileExists) {
       return Promise.resolve();
     }
-    return NativeExtras.readRatings().then((ratingsJSON) => {
+    return NativeExtras.readSettings().then((ratingsJSON) => {
       return JSON.parse(ratingsJSON);
     });
-  }, [ratingsFileExists]);
+  }, [settingsFileExists]);
 
-  const saveSongsRatingFile = (ratingsObj: SongRatingFile) => {
-    var json = JSON.stringify(ratingsObj, null, ' ');
-    return NativeExtras.saveRatings(json).then(() => {
-      setRatingsFileExists(true);
+  const saveSongSettingsFile = (settingsObj: SongSettingsFile) => {
+    var json = JSON.stringify(settingsObj, null, ' ');
+    return NativeExtras.saveSettings(json).then(() => {
+      setSettingsFileExists(true);
     });
   };
 
-  const setSongRating = (songKey: string, loc: string, value: number) => {
-    return readSongsRatingFile().then((ratingsObj) => {
-      if (!ratingsObj) {
-        ratingsObj = {};
+  const setSongSetting = (
+    key: string,
+    loc: string,
+    setting: string,
+    value: any
+  ) => {
+    return readSongSettingsFile().then((settingsObj) => {
+      if (!settingsObj) {
+        settingsObj = {};
       }
-      if (!ratingsObj[songKey]) {
-        ratingsObj[songKey] = {};
+      if (!settingsObj[key]) {
+        settingsObj[key] = {};
       }
-      ratingsObj[songKey] = Object.assign({}, ratingsObj[songKey], {
-        [loc]: value,
+      settingsObj[key] = Object.assign({}, settingsObj[key], {
+        [loc]: { [setting]: value },
       });
-      return saveSongsRatingFile(ratingsObj).then(() => {
+      return saveSongSettingsFile(settingsObj).then(() => {
         var updatedSong = NativeSongs.getSingleSongMeta(
-          songKey,
+          key,
           loc,
           undefined,
-          ratingsObj
+          settingsObj
         );
         return NativeSongs.loadSingleSong(loc, updatedSong).then(() => {
           initializeSingleSong(updatedSong);
@@ -98,23 +103,23 @@ const useSongsMeta = (locale: string) => {
     });
   };
 
-  const clearSongsRatings = () => {
-    if (ratingsFileExists === true) {
-      return NativeExtras.deleteRatings().then(() => {
-        setRatingsFileExists(false);
+  const clearSongSettings = () => {
+    if (settingsFileExists === true) {
+      return NativeExtras.deleteSettings().then(() => {
+        setSettingsFileExists(false);
       });
     }
   };
 
   const loadSongs = useCallback(() => {
-    if (I18n.locale && ratingsFileExists !== undefined) {
+    if (I18n.locale && settingsFileExists !== undefined) {
       // Cargar parche del indice si existe
-      readSongsRatingFile().then((ratingsObj) => {
+      readSongSettingsFile().then((settingsObj) => {
         // Construir metadatos de cantos
         var metaData = NativeSongs.getSongsMeta(
           I18n.locale,
           undefined,
-          ratingsObj
+          settingsObj
         );
         return NativeSongs.loadSongs(I18n.locale, metaData).then(() => {
           setSongs(metaData);
@@ -122,15 +127,15 @@ const useSongsMeta = (locale: string) => {
         });
       });
     }
-  }, [ratingsFileExists, readSongsRatingFile]);
+  }, [settingsFileExists, readSongSettingsFile]);
 
   useEffect(() => {
     loadSongs();
-  }, [locale, loadSongs, ratingsFileExists]);
+  }, [locale, loadSongs, settingsFileExists]);
 
   useEffect(() => {
-    NativeExtras.ratingsExists().then((exists) => {
-      setRatingsFileExists(exists);
+    NativeExtras.settingsExists().then((exists) => {
+      setSettingsFileExists(exists);
     });
   }, []);
 
@@ -139,9 +144,9 @@ const useSongsMeta = (locale: string) => {
     setSongs,
     localeSongs,
     setLocaleSongs,
-    ratingsFileExists,
-    clearSongsRatings,
-    setSongRating,
+    settingsFileExists,
+    clearSongSettings,
+    setSongSetting,
     loadSongs,
   };
 };
@@ -804,7 +809,7 @@ const useCommunity = () => {
 
 export const DataContext: any = React.createContext();
 
-const DataContextWrapper = (props: any) => {
+const DataContextWrapper = (props: any): any => {
   // settings
   const locale = usePersist('locale', 'string', 'default');
   const keepAwake = usePersist('keepAwake', 'boolean', true);

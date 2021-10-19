@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import { useContext, useState } from 'react';
-import { Dimensions, ScrollView, View } from 'react-native';
+import { Dimensions, ScrollView } from 'react-native';
 import { Box, HStack, Text, Icon, Button } from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import color from 'color';

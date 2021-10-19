@@ -13,10 +13,9 @@ import {
   useIsFocused,
 } from '@react-navigation/native';
 import { Keyboard, View } from 'react-native';
-import { HStack, FlatList, Text, Spinner, useDisclose } from 'native-base';
+import { FlatList, Text, Spinner, useDisclose } from 'native-base';
 import SearchBarView from '../components/SearchBarView';
 import ExportToPdfButton from '../components/ExportToPdfButton';
-import ClearRatingsButton from '../components/ClearRatingsButton';
 import ChoosePdfTypeForExport from '../components/ChoosePdfTypeForExport';
 import I18n from '../../translations';
 import { DataContext } from '../DataContext';
@@ -89,12 +88,7 @@ const SongList = (props: any): React.Node => {
       }
     }
     navigation.setOptions({
-      headerRight: () => (
-        <HStack m="1">
-          <ExportToPdfButton onPress={chooser.onOpen} />
-          <ClearRatingsButton />
-        </HStack>
-      ),
+      headerRight: () => <ExportToPdfButton onPress={chooser.onOpen} />,
     });
   }, [textFilter, search, isFocused, totalText, navigation, chooser]);
 

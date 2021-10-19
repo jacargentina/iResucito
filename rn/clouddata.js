@@ -13,7 +13,7 @@ class CloudData {
     );
   }
 
-  loadData = (userInfo: any) => {
+  loadData: any = (userInfo: any) => {
     const changedKeys = userInfo.changedKeys;
     if (changedKeys != null && changedKeys.includes('lists')) {
       iCloudStorage.getItem('lists').then((result) => {

@@ -50,23 +50,23 @@ export class SongsExtras {
     return `${this.basePath}/SongsIndexPatch.json`;
   }
 
-  readRatings(): Promise<string> {
-    return this.reader(this.getRatingsUri());
+  readSettings(): Promise<string> {
+    return this.reader(this.getSettingsUri());
   }
 
-  saveRatings(ratings: any): Promise<void> {
-    return this.writer(this.getRatingsUri(), ratings, 'utf8');
+  saveSettings(ratings: any): Promise<void> {
+    return this.writer(this.getSettingsUri(), ratings, 'utf8');
   }
 
-  deleteRatings(): Promise<void> {
-    return this.unlink(this.getRatingsUri());
+  deleteSettings(): Promise<void> {
+    return this.unlink(this.getSettingsUri());
   }
 
-  ratingsExists(): Promise<boolean> {
-    return this.exists(this.getRatingsUri());
+  settingsExists(): Promise<boolean> {
+    return this.exists(this.getSettingsUri());
   }
 
-  getRatingsUri(): string {
-    return `${this.basePath}/SongsRating.json`;
+  getSettingsUri(): string {
+    return `${this.basePath}/SongsSettings.json`;
   }
 }
