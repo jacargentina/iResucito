@@ -18,7 +18,9 @@ const folders = fs.readdirSync(songsDir, { withFileTypes: true });
 //$FlowFixMe
 const onlyNames = folders.filter((d) => d.isDirectory()).map((d) => d.name);
 const languageFolders = onlyNames.reduce((obj, item) => {
-  obj[item] = item;
+  if (typeof item === 'string') {
+    obj[item] = item;
+  }
   return obj;
 }, {});
 
@@ -164,7 +166,8 @@ const formatDate =
   ('0' + date.getDate()).slice(-2) +
   ('0' + (date.getMonth() + 1)).slice(-2) +
   date.getFullYear();
-const bakPath = `${process.env.HOME}/SongsIndexPatch-${formatDate}.json`;
+const home = process.env.HOME ?? '.';
+const bakPath = `${home}/SongsIndexPatch-${formatDate}.json`;
 execSync(`mv "${patchPath}" "${bakPath}"`);
 fs.writeFileSync(patchPath, JSON.stringify({}));
 console.log(`Backup: ${bakPath}`);

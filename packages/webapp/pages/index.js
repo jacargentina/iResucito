@@ -1,9 +1,10 @@
 // @flow
-import React, { useEffect } from 'react';
+import * as React from 'react';
+import { useEffect } from 'react';
 import { Loader } from 'semantic-ui-react';
 import useLocale from 'components/useLocale';
 
-const Index = () => {
+const Index = (): React.Node => {
   const locale = useLocale();
 
   useEffect(() => {

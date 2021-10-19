@@ -1,5 +1,5 @@
 // @flow
-import React from 'react';
+import * as React from 'react';
 import Layout from 'components/Layout';
 import SongList from 'components/SongList';
 import PdfSettingsDialog from 'components/PdfSettingsDialog';
@@ -7,7 +7,7 @@ import DataContextWrapper from 'components/DataContext';
 import { readLocalePatch } from '../../common';
 import FolderSongs from '../../../../FolderSongs';
 
-const List = (props: any) => {
+const List = (props: any): React.Node => {
   const { locale, songs } = props;
 
   return (
@@ -20,7 +20,7 @@ const List = (props: any) => {
   );
 };
 
-export async function getServerSideProps({ params }: any) {
+export async function getServerSideProps({ params }: any): Promise<SSProps> {
   const patch = await readLocalePatch();
   const { locale } = params;
   if (!locale) {

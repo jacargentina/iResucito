@@ -1,5 +1,5 @@
 // @flow
-import React from 'react';
+import * as React from 'react';
 import Layout from 'components/Layout';
 import SongEditor from 'components/SongEditor';
 import DataContextWrapper from 'components/DataContext';
@@ -12,7 +12,7 @@ import PdfSettingsDialog from 'components/PdfSettingsDialog';
 import { readLocalePatch } from '../../common';
 import FolderSongs from '../../../../FolderSongs';
 
-const SongEdit = (props: any) => {
+const SongEdit = (props: any): React.Node => {
   const { locale, song, index, previousKey, nextKey, totalSongs } = props;
 
   const editable =
@@ -51,7 +51,7 @@ const SongEdit = (props: any) => {
   );
 };
 
-export async function getServerSideProps({ params }: any) {
+export async function getServerSideProps({ params }: any): Promise<SSProps> {
   const patch = await readLocalePatch();
   const { path } = params;
   const [locale, key] = path;

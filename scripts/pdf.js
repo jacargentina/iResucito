@@ -2,14 +2,14 @@
 import * as fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
-import { PdfWriter, SongPDFGenerator } from '../common';
 import { Base64Encode } from 'base64-stream';
+import { PdfWriter, SongPDFGenerator } from '../common';
 
 export async function generatePDF(
   songsToPdf: Array<SongToPdf>,
   opts: ExportToPdfOptions,
   fileSuffix: string
-) {
+): Promise<?string> {
   const folder = os.tmpdir();
   const runningPath = path.basename(process.cwd());
   const fontPath =
