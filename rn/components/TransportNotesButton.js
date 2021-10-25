@@ -1,5 +1,6 @@
 // @flow
 import * as React from 'react';
+import { useContext } from 'react';
 import { Text, Icon, Badge, useTheme } from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {
@@ -9,16 +10,19 @@ import {
   MenuTrigger,
 } from 'react-native-popup-menu';
 import { useNavigation, useRoute } from '@react-navigation/native';
+import { DataContext } from '../DataContext';
 import I18n from '../../translations';
 import { getChordsScale } from '../../common';
 import useStackNavOptions from '../navigation/useStackNavOptions';
 
 const TransportNotesButton = (props: any): React.Node => {
+  const data = useContext(DataContext);
   const options = useStackNavOptions();
   const navigation = useNavigation();
   const { colors } = useTheme();
   const route = useRoute();
-  const { song, transportNote } = route.params;
+  const { setSongSetting } = data.songsMeta;
+  const { song } = route.params;
 
   if (!song) {
     return null;
@@ -28,7 +32,7 @@ const TransportNotesButton = (props: any): React.Node => {
 
   var menuOptionItems = chords.map((nota, i) => {
     var customStyles =
-      transportNote === nota
+      song.transportTo === nota
         ? {
             optionWrapper: {
               backgroundColor: colors.rose['300'],
@@ -51,14 +55,17 @@ const TransportNotesButton = (props: any): React.Node => {
   });
 
   const changeTransport = (newTransport: any) => {
-    navigation.replace('SongDetail', {
-      song: song,
-      transportNote: newTransport,
-    });
+    setSongSetting(song.key, I18n.locale, 'transportTo', newTransport).then(
+      (updatedSong) => {
+        navigation.replace('SongDetail', {
+          song: updatedSong,
+        });
+      }
+    );
   };
 
   var trigger =
-    transportNote === null || transportNote === undefined ? (
+    song.transportTo === null || song.transportTo === undefined ? (
       <Icon
         as={Ionicons}
         name="musical-notes-outline"
@@ -74,16 +81,16 @@ const TransportNotesButton = (props: any): React.Node => {
         colorScheme="rose"
         variant="solid"
         style={{
-          marginTop: 6,
-          marginRight: 6,
+          marginTop: 3,
+          marginRight: 3,
         }}>
         <Text
           bold
           italic
           textAlign="center"
-          fontSize="lg"
+          fontSize="md"
           color={options.headerTitleStyle.color}>
-          {transportNote}
+          {song.transportTo}
         </Text>
       </Badge>
     );
@@ -94,7 +101,9 @@ const TransportNotesButton = (props: any): React.Node => {
         customStyles={{
           optionWrapper: { paddingHorizontal: 10, paddingVertical: 10 },
         }}>
-        {transportNote != null && <MenuOption value={null} text="Original" />}
+        {song.transportTo != null && (
+          <MenuOption value={null} text="Original" />
+        )}
         {menuOptionItems}
       </MenuOptions>
     </Menu>

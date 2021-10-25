@@ -9,7 +9,6 @@ import SongViewFrame from './SongViewFrame';
 const SongDetail = (props: any): React.Node => {
   const data = useContext(DataContext);
   const route = useRoute();
-  const { transportNote } = route.params;
   const [keepAwake] = data.keepAwake;
 
   var song: Song = route.params.song;
@@ -30,7 +29,7 @@ const SongDetail = (props: any): React.Node => {
       stage={song.stage}
       text={song.fullText}
       error={song.error}
-      transportToNote={transportNote}
+      transportToNote={song.transportTo}
     />
   );
 };

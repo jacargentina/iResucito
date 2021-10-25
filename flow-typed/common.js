@@ -151,6 +151,7 @@ declare type Song = {
   added?: boolean,
   error?: any,
   rating: number,
+  transportTo: string,
 };
 
 declare type ExportToPdfOptions = {

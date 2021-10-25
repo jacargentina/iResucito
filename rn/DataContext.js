@@ -89,7 +89,7 @@ const useSongsMeta = (locale: string): UseSongsMeta => {
     loc: string,
     setting: string,
     value: any
-  ) => {
+  ): Promise<Song> => {
     return readSongSettingsFile().then((settingsObj) => {
       if (!settingsObj) {
         settingsObj = {};
@@ -109,6 +109,7 @@ const useSongsMeta = (locale: string): UseSongsMeta => {
         );
         return NativeSongs.loadSingleSong(loc, updatedSong).then(() => {
           initializeSingleSong(updatedSong);
+          return updatedSong;
         });
       });
     });
