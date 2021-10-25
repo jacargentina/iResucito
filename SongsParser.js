@@ -22,7 +22,7 @@ export class SongsParser {
     const onlyChords = line.filter((word) => {
       return chords.find((ch) => ch.toLowerCase() === word.toLowerCase());
     });
-    return onlyChords.length > 0 && onlyChords.length == line.length;
+    return onlyChords.length > 0 && onlyChords.length === line.length;
   }
 
   getSongItem(text: string, locale: string): SongLine {
@@ -39,7 +39,7 @@ export class SongsParser {
         type: 'posicionAbrazadera',
       };
       return it;
-    } else if (text.trim() == 'repeat') {
+    } else if (text.trim() === 'repeat') {
       var it: SongLine = {
         raw: text,
         texto: '',
@@ -51,7 +51,7 @@ export class SongsParser {
         type: 'bloqueRepetir',
       };
       return it;
-    } else if (text.trim() == 'footnote') {
+    } else if (text.trim() === 'footnote') {
       var it: SongLine = {
         raw: text,
         texto: '',
@@ -63,7 +63,7 @@ export class SongsParser {
         type: 'bloqueNotaAlPie',
       };
       return it;
-    } else if (text.trim() == 'column') {
+    } else if (text.trim() === 'column') {
       var it: SongLine = {
         raw: text,
         texto: '',
@@ -233,11 +233,11 @@ export class SongsParser {
       // Ej. cis  (anglosajon)
       const cleanChord = chord.replace(cleanChordsRegex, '');
       // En de-AT, las notas menores son en minuscula...
-      const isLower = cleanChord == cleanChord.toLowerCase();
+      const isLower = cleanChord === cleanChord.toLowerCase();
       // Ej. Do
       // Ej. c
       const initial = chords.find(
-        (ch) => ch.toLowerCase() == cleanChord.toLowerCase()
+        (ch) => ch.toLowerCase() === cleanChord.toLowerCase()
       );
       const i = chords.indexOf(initial);
       if (i !== -1) {
@@ -246,8 +246,9 @@ export class SongsParser {
         if (isLower) {
           newChord = newChord.toLowerCase();
         }
-        if (cleanChord.length !== chord.length)
+        if (cleanChord.length !== chord.length) {
           newChord += chord.substring(cleanChord.length);
+        }
         return newChord;
       }
       return chord;
@@ -269,11 +270,11 @@ export class SongsParser {
     const chords = getChordsScale(locale);
     const initialChord = this.getInitialChord(startingChordsLine);
     const st = chords.find(
-      (ch) => ch.toLowerCase() == initialChord.toLowerCase()
+      (ch) => ch.toLowerCase() === initialChord.toLowerCase()
     );
     const start = chords.indexOf(st);
     const tg = chords.find(
-      (ch) => ch.toLowerCase() == targetChord.toLowerCase()
+      (ch) => ch.toLowerCase() === targetChord.toLowerCase()
     );
     const target = chords.indexOf(tg);
     return target - start;
@@ -302,7 +303,7 @@ export class SongsParser {
       }
     }
     const conversions = asSongItem.map((it) => {
-      if (it.type == 'notas' && tDiff !== 0) {
+      if (it.type === 'notas' && tDiff !== 0) {
         it.texto = this.getChordsTransported(it.texto, tDiff, locale);
       }
       // Detectar indicadores de Nota al pie (un asterisco)
@@ -315,7 +316,7 @@ export class SongsParser {
     });
     const adjustMargin = conversions.map((it: SongLine, i: number) => {
       // Ajustar margen izquierdo por prefijos
-      if (it.prefijo == '' && i > 0) {
+      if (it.prefijo === '' && i > 0) {
         const prevIt = asSongItem[i - 1];
         if (
           prevIt.type !== 'bloqueRepetir' &&
@@ -324,7 +325,7 @@ export class SongsParser {
         ) {
           it.prefijo = ' '.repeat(prevIt.prefijo.length);
         }
-      } else if (it.prefijo == '' && i < asSongItem.length - 1) {
+      } else if (it.prefijo === '' && i < asSongItem.length - 1) {
         const nextIt = asSongItem[i + 1];
         if (
           nextIt.type !== 'bloqueRepetir' &&
@@ -339,7 +340,7 @@ export class SongsParser {
     // Extraer parrafos de BIS (repeat) y notas al pie (footnote)
     var lIndicators: Array<SongIndicator> = [];
     const finalItems = adjustMargin.filter((it: SongLine, i: number) => {
-      if (it.type == 'bloqueRepetir' || it.type == 'bloqueNotaAlPie') {
+      if (it.type === 'bloqueRepetir' || it.type === 'bloqueNotaAlPie') {
         var j = i - 1;
         while (j >= 0 && adjustMargin[j].type !== 'inicioParrafo') {
           j--;
