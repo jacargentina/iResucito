@@ -35,7 +35,7 @@ const SettingsScreen = (): React.Node => {
   const [keepAwake, setKeepAwake] = data.keepAwake;
   const [version, setVersion] = useState('');
   const [songsResume, setSongsResume] = useState('-');
-  const { songs, clearSongSettings } = data.songsMeta;
+  const { songs, settingsFileExists, clearSongSettings } = data.songsMeta;
 
   useEffect(() => {
     setVersion(DeviceInfo.getReadableVersion());
@@ -191,14 +191,16 @@ const SettingsScreen = (): React.Node => {
             onPress={goEditor}>
             {I18n.t('ui.contribute button')}
           </Button>
-          <Button
-            my="8"
-            colorScheme="rose"
-            _text={{ color: 'white' }}
-            borderRadius={32}
-            onPress={clearSettings}>
-            {I18n.t('ui.clear song settings')}
-          </Button>
+          {settingsFileExists && (
+            <Button
+              my="8"
+              colorScheme="rose"
+              _text={{ color: 'white' }}
+              borderRadius={32}
+              onPress={clearSettings}>
+              {I18n.t('ui.clear song settings')}
+            </Button>
+          )}
         </Box>
       </ScrollView>
     </AndroidBackHandler>
