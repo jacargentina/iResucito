@@ -35,7 +35,7 @@ const SettingsScreen = (): React.Node => {
   const [keepAwake, setKeepAwake] = data.keepAwake;
   const [version, setVersion] = useState('');
   const [songsResume, setSongsResume] = useState('-');
-  const { songs } = data.songsMeta;
+  const { songs, clearSongSettings } = data.songsMeta;
 
   useEffect(() => {
     setVersion(DeviceInfo.getReadableVersion());
@@ -70,6 +70,26 @@ const SettingsScreen = (): React.Node => {
     Linking.openURL('https://iresucito.herokuapp.com').catch((err) => {
       Alert.alert('Error', err.message);
     });
+  };
+
+  const clearSettings = () => {
+    Alert.alert(
+      I18n.t('ui.clear song settings'),
+      I18n.t('ui.clear song settings confirmation'),
+      [
+        {
+          text: I18n.t('ui.delete'),
+          onPress: () => {
+            clearSongSettings();
+          },
+          style: 'destructive',
+        },
+        {
+          text: I18n.t('ui.cancel'),
+          style: 'cancel',
+        },
+      ]
+    );
   };
 
   var localesItems = getLocalesForPicker(getDefaultLocale()).map((l) => {
@@ -170,6 +190,14 @@ const SettingsScreen = (): React.Node => {
             startIcon={<Icon as={Ionicons} name="browsers-outline" />}
             onPress={goEditor}>
             {I18n.t('ui.contribute button')}
+          </Button>
+          <Button
+            my="8"
+            colorScheme="rose"
+            _text={{ color: 'white' }}
+            borderRadius={32}
+            onPress={clearSettings}>
+            {I18n.t('ui.clear song settings')}
           </Button>
         </Box>
       </ScrollView>
