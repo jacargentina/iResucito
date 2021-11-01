@@ -43,9 +43,11 @@ const SongViewFrame = (props: any): React.Node => {
 
   var titleStyle = { ...NativeStyles.title };
   titleStyle.fontSize = titleStyle.fontSize * zoomLevel;
+  titleStyle.lineHeight = titleStyle.fontSize;
 
   var sourceStyle = { ...NativeStyles.source };
   sourceStyle.fontSize = sourceStyle.fontSize * zoomLevel;
+  sourceStyle.lineHeight = sourceStyle.fontSize;
 
   return (
     <Box style={{ backgroundColor: background, ...style }}>
