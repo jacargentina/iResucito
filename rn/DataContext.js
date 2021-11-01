@@ -68,14 +68,27 @@ const useSongsMeta = (locale: string): UseSongsMeta => {
       });
   };
 
+  const clearSongSettings = useCallback(() => {
+    if (settingsFileExists === true) {
+      return NativeExtras.deleteSettings().then(() => {
+        setSettingsFileExists(false);
+      });
+    }
+  }, [settingsFileExists]);
+
   const readSongSettingsFile = useCallback((): Promise<?SongSettingsFile> => {
-    if (!settingsFileExists) {
+    if (settingsFileExists === false) {
       return Promise.resolve();
     }
-    return NativeExtras.readSettings().then((ratingsJSON) => {
-      return JSON.parse(ratingsJSON);
+    return NativeExtras.readSettings().then((settingsJSON) => {
+      try {
+        return JSON.parse(settingsJSON);
+      } catch {
+        // si el archivo está corrupto, eliminarlo
+        clearSongSettings();
+      }
     });
-  }, [settingsFileExists]);
+  }, [settingsFileExists, clearSongSettings]);
 
   const saveSongSettingsFile = (settingsObj: SongSettingsFile) => {
     var json = JSON.stringify(settingsObj, null, ' ');
@@ -113,14 +126,6 @@ const useSongsMeta = (locale: string): UseSongsMeta => {
         });
       });
     });
-  };
-
-  const clearSongSettings = () => {
-    if (settingsFileExists === true) {
-      return NativeExtras.deleteSettings().then(() => {
-        setSettingsFileExists(false);
-      });
-    }
   };
 
   const loadSongs = useCallback(() => {
