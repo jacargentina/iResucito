@@ -1,6 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 const plist = require('plist');
+const withTM = require('next-transpile-modules')(['lowdb', 'steno']);
 
 const ios_Info = plist.parse(
   fs.readFileSync(
@@ -23,7 +24,7 @@ function resolve() {
   return path.resolve.apply(path, [__dirname, ...arguments]);
 }
 
-module.exports = {
+module.exports = withTM({
   future: {
     webpack5: true,
   },
@@ -42,4 +43,4 @@ module.exports = {
     );
     return config;
   },
-};
+});
