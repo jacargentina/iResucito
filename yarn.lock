@@ -4088,46 +4088,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-native-community/masked-view@npm:^0.1.11":
-  version: 0.1.11
-  resolution: "@react-native-community/masked-view@npm:0.1.11"
-  peerDependencies:
-    react: ">=16.0"
-    react-native: ">=0.57"
-  checksum: 246bcd94a6a2cafc415c7a192fb5a76ef7cd9b648b47ea4b2366f06128376ab377dcff3fab676261050fd3a97324bde5d64802aa3e8d1580fe6c0e3b0138cefc
-  languageName: node
-  linkType: hard
-
-"@react-native-community/picker@npm:^1.8.1":
-  version: 1.8.1
-  resolution: "@react-native-community/picker@npm:1.8.1"
-  peerDependencies:
-    react: ^16.0
-    react-native: ">=0.57"
-  checksum: a38132feb910ea2f79acbdeda523a17641b8eb27d83f62f4a8932f2699e16227f05ce1006f2ba833f10d6054250f88cb3be8b915c4c912c7fd38ff0a2aaf2a55
-  languageName: node
-  linkType: hard
-
-"@react-native-community/progress-bar-android@npm:^1.0.4":
-  version: 1.0.4
-  resolution: "@react-native-community/progress-bar-android@npm:1.0.4"
-  peerDependencies:
-    react: ">=16.8.6"
-    react-native: ">=0.60.0"
-  checksum: 076b06fdb1d50f24d47f448d5e741d993a662e96e032c88376bc6ba20d0b14c8cb5f2f39c43a7c63c7caaf772d3611accb4d69366e7fc41acd3bfc85c2ea5dbb
-  languageName: node
-  linkType: hard
-
-"@react-native-community/progress-view@npm:^1.3.1":
-  version: 1.3.1
-  resolution: "@react-native-community/progress-view@npm:1.3.1"
-  peerDependencies:
-    react: ">16.8.3"
-    react-native: ">=0.59.5"
-  checksum: f7db6bd875aec5cb7b6ee59f4e6c98aa9b7ea2656281a91696098bbe4d5be89550dcb192949ce5ced19b308c3a33fcf626bb242442107ed27f2a746fa93abd4b
-  languageName: node
-  linkType: hard
-
 "@react-native/assets@npm:1.0.0":
   version: 1.0.0
   resolution: "@react-native/assets@npm:1.0.0"
@@ -7611,6 +7571,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"core-js@npm:^1.0.0":
+  version: 1.2.7
+  resolution: "core-js@npm:1.2.7"
+  checksum: 0b76371bfa98708351cde580f9287e2360d2209920e738ae950ae74ad08639a2e063541020bf666c28778956fc356ed9fe56d962129c88a87a6a4a0612526c75
+  languageName: node
+  linkType: hard
+
 "core-js@npm:^2.4.0":
   version: 2.6.12
   resolution: "core-js@npm:2.6.12"
@@ -9534,6 +9501,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fbjs@npm:^0.8.18":
+  version: 0.8.18
+  resolution: "fbjs@npm:0.8.18"
+  dependencies:
+    core-js: ^1.0.0
+    isomorphic-fetch: ^2.1.1
+    loose-envify: ^1.0.0
+    object-assign: ^4.1.0
+    promise: ^7.1.1
+    setimmediate: ^1.0.5
+    ua-parser-js: ^0.7.30
+  checksum: 668731b946a765908c9cbe51d5160f973abb78004b3d122587c3e930e3e1ddcc0ce2b17f2a8637dc9d733e149aa580f8d3035a35cc2d3bc78b78f1b19aab90e2
+  languageName: node
+  linkType: hard
+
 "fbjs@npm:^3.0.0":
   version: 3.0.0
   resolution: "fbjs@npm:3.0.0"
@@ -10149,20 +10131,6 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"glob@npm:7.0.6":
-  version: 7.0.6
-  resolution: "glob@npm:7.0.6"
-  dependencies:
-    fs.realpath: ^1.0.0
-    inflight: ^1.0.4
-    inherits: 2
-    minimatch: ^3.0.2
-    once: ^1.3.0
-    path-is-absolute: ^1.0.0
-  checksum: 6ad065f51982f9a76f7052984121c95bca376ea02060b21200ad62b400422b05f0dc331f72da89a73c21a2451cbe9bec16bb17dcf37a516dc51bbbb6efe462a1
-  languageName: node
-  linkType: hard
-
 "glob@npm:^7.0.0, glob@npm:^7.1.3, glob@npm:^7.1.4, glob@npm:^7.1.6":
   version: 7.1.7
   resolution: "glob@npm:7.1.7"
@@ -10610,10 +10578,6 @@ fsevents@~2.1.2:
     "@javier.alejandro.castro/react-native-stream": ^0.2.2
     "@react-native-async-storage/async-storage": ^1.15.9
     "@react-native-community/eslint-config": ^3.0.1
-    "@react-native-community/masked-view": ^0.1.11
-    "@react-native-community/picker": ^1.8.1
-    "@react-native-community/progress-bar-android": ^1.0.4
-    "@react-native-community/progress-view": ^1.3.1
     "@react-navigation/bottom-tabs": ^6.0.9
     "@react-navigation/material-top-tabs": ^6.0.6
     "@react-navigation/native": ^6.0.6
@@ -10643,6 +10607,7 @@ fsevents@~2.1.2:
     eslint-plugin-flowtype: ^6.1.0
     eslint-plugin-import: ^2.25.2
     eslint-plugin-react: ^7.26.1
+    fbjs: ^0.8.18
     flow-bin: ^0.163.0
     i18n-js: ^3.8.0
     inquirer: ^8.2.0
@@ -10663,6 +10628,7 @@ fsevents@~2.1.2:
     react: ^17.0.2
     react-json-editor-ajrm: ^2.5.13
     react-native: ^0.66.1
+    react-native-blob-util: ^0.13.16
     react-native-bootsplash: ^3.2.6
     react-native-codegen: ^0.0.9
     react-native-collapsible: ^1.6.0
@@ -10690,7 +10656,6 @@ fsevents@~2.1.2:
     react-native-version: ^4.0.0
     react-navigation-backhandler: ^2.0.1
     react-test-renderer: ^17.0.2
-    rn-fetch-blob: ^0.12.0
     schedule: ^0.5.0
     source-map: ^0.7.3
     styled-components: ^5.3.3
@@ -11452,6 +11417,16 @@ fsevents@~2.1.2:
   version: 3.0.1
   resolution: "isobject@npm:3.0.1"
   checksum: db85c4c970ce30693676487cca0e61da2ca34e8d4967c2e1309143ff910c207133a969f9e4ddb2dc6aba670aabce4e0e307146c310350b298e74a31f7d464703
+  languageName: node
+  linkType: hard
+
+"isomorphic-fetch@npm:^2.1.1":
+  version: 2.2.1
+  resolution: "isomorphic-fetch@npm:2.2.1"
+  dependencies:
+    node-fetch: ^1.0.1
+    whatwg-fetch: ">=0.10.0"
+  checksum: bb5daa7c3785d6742f4379a81e55b549a469503f7c9bf9411b48592e86632cf5e8fe8ea878dba185c0f33eb7c510c23abdeb55aebfdf5d3c70f031ced68c5424
   languageName: node
   linkType: hard
 
@@ -13656,6 +13631,16 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"node-fetch@npm:^1.0.1":
+  version: 1.7.3
+  resolution: "node-fetch@npm:1.7.3"
+  dependencies:
+    encoding: ^0.1.11
+    is-stream: ^1.0.1
+  checksum: 3bb0528c05d541316ebe52770d71ee25a6dce334df4231fd55df41a644143e07f068637488c18a5b0c43f05041dbd3346752f9e19b50df50569a802484544d5b
+  languageName: node
+  linkType: hard
+
 "node-fetch@npm:^2.2.0, node-fetch@npm:^2.6.0, node-fetch@npm:^2.6.1":
   version: 2.6.2
   resolution: "node-fetch@npm:2.6.2"
@@ -15327,6 +15312,16 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"react-native-blob-util@npm:^0.13.16":
+  version: 0.13.16
+  resolution: "react-native-blob-util@npm:0.13.16"
+  dependencies:
+    base-64: 0.1.0
+    glob: ^7.1.6
+  checksum: 365f65bc0b0963f8c06d5d87bb3cfb587c6c552efbfa8074e95b70708ccb93d97154a3baf29a951b8af73dcaf41c38ab7c001a328182f1bc4b632cc52a9447e2
+  languageName: node
+  linkType: hard
+
 "react-native-bootsplash@npm:^3.2.6":
   version: 3.2.6
   resolution: "react-native-bootsplash@npm:3.2.6"
@@ -16268,16 +16263,6 @@ resolve@^2.0.0-next.3:
     hash-base: ^3.0.0
     inherits: ^2.0.1
   checksum: 006accc40578ee2beae382757c4ce2908a826b27e2b079efdcd2959ee544ddf210b7b5d7d5e80467807604244e7388427330f5c6d4cd61e6edaddc5773ccc393
-  languageName: node
-  linkType: hard
-
-"rn-fetch-blob@npm:^0.12.0":
-  version: 0.12.0
-  resolution: "rn-fetch-blob@npm:0.12.0"
-  dependencies:
-    base-64: 0.1.0
-    glob: 7.0.6
-  checksum: 56e5832be583e97d58f955c0c4f6dcb0eb62c97dde331182c6effb726253731cb555d4a5f6c81079ed2fcb957f81633cbe95b37d326d063405f912506de20ff4
   languageName: node
   linkType: hard
 
@@ -18093,6 +18078,13 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
+"ua-parser-js@npm:^0.7.30":
+  version: 0.7.31
+  resolution: "ua-parser-js@npm:0.7.31"
+  checksum: e2f8324a83d1715601576af85b2b6c03890699aaa7272950fc77ea925c70c5e4f75060ae147dc92124e49f7f0e3d6dd2b0a91e7f40d267e92df8894be967ba8b
+  languageName: node
+  linkType: hard
+
 "uglify-es@npm:^3.1.9":
   version: 3.3.9
   resolution: "uglify-es@npm:3.3.9"
@@ -18621,7 +18613,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"whatwg-fetch@npm:^3.0.0":
+"whatwg-fetch@npm:>=0.10.0, whatwg-fetch@npm:^3.0.0":
   version: 3.6.2
   resolution: "whatwg-fetch@npm:3.6.2"
   checksum: ee976b7249e7791edb0d0a62cd806b29006ad7ec3a3d89145921ad8c00a3a67e4be8f3fb3ec6bc7b58498724fd568d11aeeeea1f7827e7e1e5eae6c8a275afed
