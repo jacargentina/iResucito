@@ -1,6 +1,6 @@
 {
   "parser": "babel-eslint",
-  "extends": ["nextjs"],
+  "extends": ["next"],
   "plugins": ["react-hooks", "import"],
   "rules": {
     "consistent-return": "off",
