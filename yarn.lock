@@ -3221,12 +3221,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/eslint-plugin-next@npm:12.0.2":
-  version: 12.0.2
-  resolution: "@next/eslint-plugin-next@npm:12.0.2"
+"@next/eslint-plugin-next@npm:12.0.3":
+  version: 12.0.3
+  resolution: "@next/eslint-plugin-next@npm:12.0.3"
   dependencies:
     glob: 7.1.7
-  checksum: 1b776d475ac31b52ffb77ddbc9542f6811d856ec647c91af9ee4540d0a7716174bcd8de0e83e4ed9f6ae7f3ca78771f85b45c7eed30540a5c4f43cb1cadb82ca
+  checksum: fc1d3486f0addf892738677d93e0be82d98d4ea1caccfc8835830c963b4af12fa79f1cdd14ac9bfd4ee12fe60e5deb6c5d4f43441a444b2b158bb17187d8b636
   languageName: node
   linkType: hard
 
@@ -8036,10 +8036,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"data-uri-to-buffer@npm:3.0.1, data-uri-to-buffer@npm:^3.0.1":
+"data-uri-to-buffer@npm:3.0.1":
   version: 3.0.1
   resolution: "data-uri-to-buffer@npm:3.0.1"
   checksum: c59c3009686a78c071806b72f4810856ec28222f0f4e252aa495ec027ed9732298ceea99c50328cf59b151dd34cbc3ad6150bbb43e41fc56fa19f48c99e9fc30
+  languageName: node
+  linkType: hard
+
+"data-uri-to-buffer@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "data-uri-to-buffer@npm:4.0.0"
+  checksum: a010653869abe8bb51259432894ac62c52bf79ad761d418d94396f48c346f2ae739c46b254e8bb5987bded8a653d467db1968db3a69bab1d33aa5567baa5cfc7
   languageName: node
   linkType: hard
 
@@ -8446,14 +8453,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dropbox@npm:^10.15.0":
-  version: 10.15.0
-  resolution: "dropbox@npm:10.15.0"
+"dropbox@npm:^10.19.0":
+  version: 10.19.0
+  resolution: "dropbox@npm:10.19.0"
   dependencies:
     node-fetch: ^2.6.1
   peerDependencies:
     "@types/node-fetch": ^2.5.7
-  checksum: 05625f218492654c5becb9c66167b8874de6edaca9efcb77682e21e0a594a333d50945248a1926b3123f2d33b6fdfcdb01d7abc28faf0f077e208d3b81081c1f
+  checksum: 28f8277b85dc3ed45f073f25a329c5158ec4e0cf8978798487795c9cc98b932898d6cdc24766247971a87521895532e5648cd9a60e2f268016aae53df15472b9
   languageName: node
   linkType: hard
 
@@ -8871,11 +8878,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-next@npm:^12.0.2":
-  version: 12.0.2
-  resolution: "eslint-config-next@npm:12.0.2"
+"eslint-config-next@npm:^12.0.3":
+  version: 12.0.3
+  resolution: "eslint-config-next@npm:12.0.3"
   dependencies:
-    "@next/eslint-plugin-next": 12.0.2
+    "@next/eslint-plugin-next": 12.0.3
     "@rushstack/eslint-patch": ^1.0.6
     "@typescript-eslint/parser": ^4.20.0
     eslint-import-resolver-node: ^0.3.4
@@ -8891,7 +8898,7 @@ __metadata:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: fbf15687284ceb8e85c20adcce548ebd3625f4f9bc67f995067fed960758e90de2eead0412c44ad0cc791f2738ec8c57ed32e4837e675e344596756fdd47dace
+  checksum: b1dc96ff1d3039f595546e3c78a9e1bed594d89032d50c9d44c56396670ceac13495efd15668412c6f4b1b74d024caf42535cd10cda70ec3eb8880067c78ae2f
   languageName: node
   linkType: hard
 
@@ -9110,6 +9117,15 @@ __metadata:
   peerDependencies:
     eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0
   checksum: ead5c5be3ded82a0cf295b064376adb1998a43e2262b605eecc0efc88283dec4e159ca39307fafb3d8e661dd08e5a4c8cdfed97eea78f923954f72bad6e20397
+  languageName: node
+  linkType: hard
+
+"eslint-plugin-react-hooks@npm:^4.3.0":
+  version: 4.3.0
+  resolution: "eslint-plugin-react-hooks@npm:4.3.0"
+  peerDependencies:
+    eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0
+  checksum: 0ba1566ba0780bbc75a5921f49188edf232db2085ab32c8d3889592f0db9d6fadc97fcf639775e0101dec6b5409ca3c803ec44213b90c8bacaf0bdf921871c2e
   languageName: node
   linkType: hard
 
@@ -9903,6 +9919,15 @@ __metadata:
     combined-stream: ^1.0.6
     mime-types: ^2.1.12
   checksum: 10c1780fa13dbe1ff3100114c2ce1f9307f8be10b14bf16e103815356ff567b6be39d70fc4a40f8990b9660012dc24b0f5e1dde1b6426166eb23a445ba068ca3
+  languageName: node
+  linkType: hard
+
+"formdata-polyfill@npm:^4.0.10":
+  version: 4.0.10
+  resolution: "formdata-polyfill@npm:4.0.10"
+  dependencies:
+    fetch-blob: ^3.1.2
+  checksum: 82a34df292afadd82b43d4a740ce387bc08541e0a534358425193017bf9fb3567875dc5f69564984b1da979979b70703aa73dee715a17b6c229752ae736dd9db
   languageName: node
   linkType: hard
 
@@ -10730,7 +10755,7 @@ fsevents@~2.1.2:
     metro-react-native-babel-preset: ^0.66.2
     native-base: ^3.2.1
     next: 10.0.4
-    node-fetch: ^3.0.0
+    node-fetch: ^3.1.0
     normalize-strings: ^1.1.1
     open: ^8.4.0
     os-locale: ^6.0.1
@@ -10740,20 +10765,20 @@ fsevents@~2.1.2:
     postinstall-postinstall: ^2.1.0
     react: ^17.0.2
     react-json-editor-ajrm: ^2.5.13
-    react-native: ^0.66.1
+    react-native: ^0.66.2
     react-native-blob-util: ^0.13.16
     react-native-bootsplash: ^3.2.6
-    react-native-codegen: ^0.0.9
+    react-native-codegen: ^0.0.11
     react-native-collapsible: ^1.6.0
     react-native-contacts: ^7.0.2
-    react-native-device-info: ^8.4.4
+    react-native-device-info: ^8.4.5
     react-native-fs: ^2.18.0
     react-native-gesture-handler: ^1.10.3
     react-native-highlight-words: ^1.0.1
     react-native-icloudstore: ^0.9.0
     react-native-keep-awake: ^4.0.0
     react-native-localize: ^2.1.5
-    react-native-pager-view: ^5.4.8
+    react-native-pager-view: ^5.4.9
     react-native-pdf: ^6.4.0
     react-native-popup-menu: ^0.15.11
     react-native-print: ^0.9.0
@@ -10774,7 +10799,7 @@ fsevents@~2.1.2:
     styled-components: ^5.3.3
     styled-system: ^5.1.5
     translate-json-object: ^2.3.7
-    use-debounce: ^7.0.0
+    use-debounce: ^7.0.1
     use-undo: ^1.0.5
     yarn: ^1.22.17
   languageName: unknown
@@ -13761,13 +13786,14 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"node-fetch@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "node-fetch@npm:3.0.0"
+"node-fetch@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "node-fetch@npm:3.1.0"
   dependencies:
-    data-uri-to-buffer: ^3.0.1
+    data-uri-to-buffer: ^4.0.0
     fetch-blob: ^3.1.2
-  checksum: 50224bf682a0bc3d44faee0f38df6269d8ae646de343595ef37f9d94b4322d3763a49819fb7b2df9330fcae16e0a20e5fb129dfed8725cf0e8f720277db7611c
+    formdata-polyfill: ^4.0.10
+  checksum: 23b5977554d21b72d7d99145d00bcf06e463fa621bf0afc276ad121a79509a133f38c7e470b34aad45d4032d3315bf5584ff6a1cb83e8f01be7a44cc7ac72693
   languageName: node
   linkType: hard
 
@@ -15448,6 +15474,17 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"react-native-codegen@npm:^0.0.11":
+  version: 0.0.11
+  resolution: "react-native-codegen@npm:0.0.11"
+  dependencies:
+    flow-parser: ^0.121.0
+    jscodeshift: ^0.11.0
+    nullthrows: ^1.1.1
+  checksum: 097698b8ebaa0585919683f05adc1c2362adcd71e7094dfcb4220f3733ab8a5107830861e2a276e0064025992614191fe93697af9ba06f4d42a25a5915d596bd
+  languageName: node
+  linkType: hard
+
 "react-native-codegen@npm:^0.0.7":
   version: 0.0.7
   resolution: "react-native-codegen@npm:0.0.7"
@@ -15456,17 +15493,6 @@ fsevents@~2.1.2:
     jscodeshift: ^0.11.0
     nullthrows: ^1.1.1
   checksum: d550d6e985a0d564f0ac470b19c9a2e4e78ffc0f5769ba46992a4d10130928093e9c2ada7eda0ec8bd976db4ba4c21ef410280e979226f11844aa0215335cde5
-  languageName: node
-  linkType: hard
-
-"react-native-codegen@npm:^0.0.9":
-  version: 0.0.9
-  resolution: "react-native-codegen@npm:0.0.9"
-  dependencies:
-    flow-parser: ^0.121.0
-    jscodeshift: ^0.11.0
-    nullthrows: ^1.1.1
-  checksum: b101b4f53ca7aa30efbbcf456d27056aab193069285b060a448485ca59b0e6d272cb2c68f65ae051db527cef7ac4223b7aae7fd5b8010eb947b3e8e35bb7c662
   languageName: node
   linkType: hard
 
@@ -15489,12 +15515,12 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"react-native-device-info@npm:^8.4.4":
-  version: 8.4.4
-  resolution: "react-native-device-info@npm:8.4.4"
+"react-native-device-info@npm:^8.4.5":
+  version: 8.4.5
+  resolution: "react-native-device-info@npm:8.4.5"
   peerDependencies:
     react-native: "*"
-  checksum: db65d966253b4ec7421360354e84086016cd1dc291053c8a39960b09be27e11d3bdb9437f0b3f300350fc783c3ac15be3436844e0d20923b7aa237f48eb80b91
+  checksum: 6750be9413402fb7415e5625d3a73a6f2dae99b4ebc2bef3428ecc2495d716db77f06ff71e93ff88b2bea8334adb9a5c82142b119c4ba940b8beb1712b36f396
   languageName: node
   linkType: hard
 
@@ -15568,13 +15594,13 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"react-native-pager-view@npm:^5.4.8":
-  version: 5.4.8
-  resolution: "react-native-pager-view@npm:5.4.8"
+"react-native-pager-view@npm:^5.4.9":
+  version: 5.4.9
+  resolution: "react-native-pager-view@npm:5.4.9"
   peerDependencies:
     react: "*"
     react-native: "*"
-  checksum: c8f0b6b9e68d6ed6cc7dcbec717566888a04ae6f3dbf716c499311193076df4364e9bfedb951601da0d3631ce7eeb85a454d0e2e6d9d813a4987ca189a5ddbd2
+  checksum: 6a2a538a1ce7a3334ef5177fd32d2c45a7ce39358d01e4f3f7a10e4357cc9888feb9b1c29146da33430a0e4dd8d04bf3036370495d135d4d6321ee9f11b42b3c
   languageName: node
   linkType: hard
 
@@ -15756,9 +15782,9 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"react-native@npm:^0.66.1":
-  version: 0.66.1
-  resolution: "react-native@npm:0.66.1"
+"react-native@npm:^0.66.2":
+  version: 0.66.2
+  resolution: "react-native@npm:0.66.2"
   dependencies:
     "@jest/create-cache-key-function": ^27.0.1
     "@react-native-community/cli": ^6.0.0
@@ -15795,7 +15821,7 @@ fsevents@~2.1.2:
     react: 17.0.2
   bin:
     react-native: cli.js
-  checksum: fe1701bb398d8f533c51aaf05dabb1c5d11caf80cb39c79fd38f4dbf13a27e8497080216ffdb19aa72f222d5bc75b32b8673bef504fab711f65a8d84dbdb5ddf
+  checksum: 5a1810d69482397f2eaa22879aad328c4ba4232ceb2c505a3a03bf43db53a7d5e26cf5b7022e139996e09ae040959228df3a02d66f5af8535d6e010a611241c7
   languageName: node
   linkType: hard
 
@@ -18361,12 +18387,12 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"use-debounce@npm:^7.0.0":
-  version: 7.0.0
-  resolution: "use-debounce@npm:7.0.0"
+"use-debounce@npm:^7.0.1":
+  version: 7.0.1
+  resolution: "use-debounce@npm:7.0.1"
   peerDependencies:
     react: ">=16.8.0"
-  checksum: 966629520977488b5add406487c0945bc77e6b940969a1c71b32e083a711ae3a73c2627e439a29ff20583b994ff382f49d16231aab5920eb6282f048e5e5d86e
+  checksum: c5c1c34ccef6c11fe25fecef983a07f5a7260fce77b58f0f648f6ae08693a22a9077b5362b96154896e9ea756e6aaea303eb44550a293456cecb6f15cf87d73b
   languageName: node
   linkType: hard
 
@@ -18639,17 +18665,17 @@ resolve@^2.0.0-next.3:
     crypto-random-string: ^4.0.0
     deepmerge: ^4.2.2
     diff: ^5.0.0
-    dropbox: ^10.15.0
+    dropbox: ^10.19.0
     eslint: ^7.32.0
     eslint-config-airbnb: ^18.2.1
-    eslint-config-next: ^12.0.2
+    eslint-config-next: ^12.0.3
     eslint-config-prettier: ^8.3.0
     eslint-plugin-babel: ^5.3.1
     eslint-plugin-flowtype: ^6.1.0
     eslint-plugin-import: ^2.25.2
     eslint-plugin-jsx-a11y: ^6.4.1
     eslint-plugin-prettier: ^4.0.0
-    eslint-plugin-react-hooks: ^4.2.0
+    eslint-plugin-react-hooks: ^4.3.0
     gmail-send: ^1.8.14
     lodash: ^4.17.21
     lowdb: ^3.0.0
@@ -18657,7 +18683,7 @@ resolve@^2.0.0-next.3:
     next: ^10.0.4
     next-auth: ^3.29.0
     next-transpile-modules: ^9.0.0
-    node-fetch: ^3.0.0
+    node-fetch: ^3.1.0
     pdfjs-dist: ^2.10.377
     plist: ^3.0.4
     react: ^17.0.2
@@ -18666,7 +18692,7 @@ resolve@^2.0.0-next.3:
     react-native-print: ^0.9.0
     semantic-ui-css: ^2.4.1
     semantic-ui-react: ^2.0.4
-    use-debounce: ^7.0.0
+    use-debounce: ^7.0.1
     use-hotkeys: ^1.1.0
   languageName: unknown
   linkType: soft
