@@ -13,7 +13,7 @@ const ViewPdfButton = (props: any): React.Node => {
   const options = useStackNavOptions();
   const navigation = useNavigation();
   const route = useRoute();
-  const { song, transportNote } = route.params;
+  const { song } = route.params;
   if (!song) {
     return null;
   }
@@ -33,7 +33,7 @@ const ViewPdfButton = (props: any): React.Node => {
         const render = NativeParser.getForRender(
           fullText,
           I18n.locale,
-          transportNote
+          song.transportTo
         );
         const item: SongToPdf = {
           song,
