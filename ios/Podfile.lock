@@ -209,9 +209,9 @@ PODS:
   - React-jsinspector (0.67.0)
   - React-logger (0.67.0):
     - glog
-  - react-native-blob-util (0.13.16):
+  - react-native-blob-util (0.13.18):
     - React-Core
-  - react-native-contacts (7.0.2):
+  - react-native-contacts (7.0.3):
     - React-Core
   - react-native-keep-awake (4.0.0):
     - React
@@ -219,7 +219,7 @@ PODS:
     - React-Core
   - react-native-pdf (6.4.0):
     - React-Core
-  - react-native-print (0.9.0):
+  - react-native-print (0.10.0):
     - React-Core
   - react-native-safe-area-context (3.3.2):
     - React-Core
@@ -288,35 +288,35 @@ PODS:
     - React-jsi (= 0.67.0)
     - React-logger (= 0.67.0)
     - React-perflogger (= 0.67.0)
-  - RNBootSplash (3.2.6):
+  - RNBootSplash (4.1.0):
     - React-Core
-  - RNCAsyncStorage (1.15.9):
+  - RNCAsyncStorage (1.15.15):
     - React-Core
-  - RNDeviceInfo (8.4.6):
+  - RNDeviceInfo (8.4.8):
     - React-Core
   - RNFS (2.18.0):
     - React
-  - RNGestureHandler (1.10.3):
+  - RNGestureHandler (2.2.0):
     - React-Core
   - RNICloudStore (0.1.0):
     - React
-  - RNLocalize (2.1.5):
+  - RNLocalize (2.1.7):
     - React-Core
-  - RNScreens (3.9.0):
+  - RNScreens (3.10.2):
     - React-Core
     - React-RCTImage
-  - RNSentry (3.2.1):
+  - RNSentry (3.2.12):
     - React-Core
-    - Sentry (= 7.4.8)
-  - RNShare (7.2.1):
+    - Sentry (= 7.9.0)
+  - RNShare (7.3.3):
     - React-Core
   - RNSVG (12.2.0):
     - React-Core
   - RNVectorIcons (9.0.0):
     - React-Core
-  - Sentry (7.4.8):
-    - Sentry/Core (= 7.4.8)
-  - Sentry/Core (7.4.8)
+  - Sentry (7.9.0):
+    - Sentry/Core (= 7.9.0)
+  - Sentry/Core (7.9.0)
   - Yoga (1.14.0)
 
 DEPENDENCIES:
@@ -483,8 +483,8 @@ SPEC CHECKSUMS:
   FBLazyVector: dce905f90eacf2e62ffbc2a4bbda8ea630aabd8a
   FBReactNativeSpec: 7444057cd46e87525b82f3e41f05e1db0d0029f2
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
-  glog: 5337263514dd6f09803962437687240c5dc39aa4
-  RCT-Folly: a21c126816d8025b547704b777a2ba552f3d9fa9
+  glog: 85ecdd10ee8d8ec362ef519a6a45ff9aa27b2e85
+  RCT-Folly: 803a9cfd78114b2ec0f140cfa6fa2a6bafb2d685
   RCTRequired: 1af97c470c81e8cbb92c5ae42c4838ea95761743
   RCTTypeSafety: 809546c781453daf95eb1c40aa8b6970a4487028
   React: 8b9ebb24b000a0d76f3df4efae639744a9456f06
@@ -496,12 +496,12 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 3001f865cfd2c66c1298f427be47b8797ae5843b
   React-jsinspector: c9d1ddf4b1efbcf90323e3581ccff200cf4de346
   React-logger: 5d42caeaf0c31a9b29efb33e10e7f7031f958bfd
-  react-native-blob-util: 6e75bea8ffce35c4009c0e519cd0a96432a93e2b
-  react-native-contacts: bc424db19c3384e44e6a9d9da9a78ee51b0aa7a1
+  react-native-blob-util: 600972b1782380a5a7d5db61a3817ea32349dae9
+  react-native-contacts: 0568645a2cd0b625c4d1dc8623648a42b2a5d24f
   react-native-keep-awake: afad8a51dfef9fe9655a6344771be32c8596d774
   react-native-pager-view: 3ee7d4c7697fb3ef788346e834a60cca97ed8540
   react-native-pdf: a6a5a3f0bdf340eb2eed6c96034424d2cc3f84b0
-  react-native-print: ae7982894bda8ef1492289e35b7a36b76a0d11ab
+  react-native-print: 1ae7a4ce4bf673b975f2ec9c4e00ad0c9b60e8aa
   react-native-safe-area-context: 584dc04881deb49474363f3be89e4ca0e854c057
   React-perflogger: 9454d63e7027e0830fa3e527628558160684f5dd
   React-RCTActionSheet: 240d798e2f5bd1ba2e85503a00fd390f560e6827
@@ -515,19 +515,19 @@ SPEC CHECKSUMS:
   React-RCTVibration: 7d7eb0db1f7f914945a606e0e91bb535099a07db
   React-runtimeexecutor: 4512c9287cc72ba30bb1d5e01e6bde7a69f2d22b
   ReactCommon: af6dd2c8c0de935841fa809caf41b2093bb9075c
-  RNBootSplash: 51eef7e143faeab63f81ddbb7c1de38b8fba66ed
-  RNCAsyncStorage: 26f25150da507524a7815f2ada06ca0967f65633
-  RNDeviceInfo: d2df20ff25747778277a6aa8c749e8b53cf16a2a
+  RNBootSplash: 605c94f76180e3f8e5832bcafbe52ff5194a51d0
+  RNCAsyncStorage: 0bef6a21517c0254bd6bd59a3672963abfa0d18e
+  RNDeviceInfo: 0400a6d0c94186d1120c3cbd97b23abc022187a9
   RNFS: 3ab21fa6c56d65566d1fb26c2228e2b6132e5e32
-  RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
+  RNGestureHandler: bf572f552ea324acd5b5464b8d30755b2d8c1de6
   RNICloudStore: bc6e225811637c09bd1eb055d6cd7448e61cd451
-  RNLocalize: 74b82db20cc3895ccc25af992c644879bcec2815
-  RNScreens: 4d79118be80f79fa1f4aa131909a1d6e86280af3
-  RNSentry: 791f73292501ed1b2e95e62e9388b68fcc13261d
-  RNShare: edd621a71124961e29a7ba43a84bd1c6f9980d88
+  RNLocalize: f567ea0e35116a641cdffe6683b0d212d568f32a
+  RNScreens: d6da2b9e29cf523832c2542f47bf1287318b1868
+  RNSentry: 5786c71e7fd8d7fa26bc57d187cba9e01989379a
+  RNShare: 3185c074441b7e8897014d95ba982434a0a024a1
   RNSVG: 4ecc2e8f38b6ebe7889909570c26f3abe8059767
   RNVectorIcons: 4143ba35feebab8fdbe6bc43d1e776b393d47ac8
-  Sentry: df92b78ba4ab86cf2a47ff4cdc07758a5ce18f03
+  Sentry: 2f7e91f247cfb05b05bd01e0b5d0692557a7687b
   Yoga: 3f5bfc54ce164fcd5b5d7f9f4232182d6298dd56
 
 PODFILE CHECKSUM: 1b52410484462e63707d6cbeeb761b7804dcac58
