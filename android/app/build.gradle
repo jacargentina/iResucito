@@ -205,8 +205,6 @@ android {
         pickFirst '**/x86_64/libc++_shared.so'
         pickFirst '**/x86/libjsc.so'
         pickFirst '**/armeabi-v7a/libjsc.so'
-        exclude '**/libhermes-inspector.so'
-        exclude '**/libhermes-executor-debug.so'
         exclude '**/libjscexecutor.so'   
     }
 }
@@ -215,6 +213,8 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
+
+    implementation "androidx.core:core-splashscreen:1.0.0-beta01"
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
  
