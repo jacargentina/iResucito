@@ -5,37 +5,34 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: Verifying fastlane version" time="0.000531">
+      <testcase classname="fastlane.lanes" name="0: Verifying fastlane version" time="0.0004">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: default_platform" time="0.000248">
+      <testcase classname="fastlane.lanes" name="1: default_platform" time="0.000164">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="2: increment_android_version_code" time="0.002039">
+      <testcase classname="fastlane.lanes" name="2: increment_android_version_code" time="0.001211">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="3: increment_android_version_name" time="0.001048">
+      <testcase classname="fastlane.lanes" name="3: clean" time="11.561866">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="4: clean" time="10.854257">
+      <testcase classname="fastlane.lanes" name="4: assembleRelease" time="171.38382">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="5: assembleRelease" time="176.915655">
+      <testcase classname="fastlane.lanes" name="5: upload_to_play_store" time="2231.478914">
         
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="6: supply" time="260.148538">
+          <failure message="/Users/javiercastro/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/fastlane-2.200.0/fastlane/lib/fastlane/actions/actions_helper.rb:67:in `execute_action'&#10;/Users/javiercastro/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/fastlane-2.200.0/fastlane/lib/fastlane/runner.rb:255:in `block in execute_action'&#10;/Users/javiercastro/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/fastlane-2.200.0/fastlane/lib/fastlane/runner.rb:229:in `chdir'&#10;/Users/javiercastro/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/fastlane-2.200.0/fastlane/lib/fastlane/runner.rb:229:in `execute_action'&#10;/Users/javiercastro/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/fastlane-2.200.0/fastlane/lib/fastlane/runner.rb:157:in `trigger_action_by_name'&#10;/Users/javiercastro/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/fastlane-2.200.0/fastlane/lib/fastlane/fast_file.rb:159:in `method_missing'&#10;Fastfile:39:in `block (2 levels) in parsing_binding'&#10;/Users/javiercastro/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/fastlane-2.200.0/fastlane/lib/fastlane/lane.rb:33:in `call'&#10;/Users/javiercastro/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/fastlane-2.200.0/fastlane/lib/fastlane/runner.rb:49:in `block in execute'&#10;/Users/javiercastro/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/fastlane-2.200.0/fastlane/lib/fastlane/runner.rb:45:in `chdir'&#10;/Users/javiercastro/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/fastlane-2.200.0/fastlane/lib/fastlane/runner.rb:45:in `execute'&#10;/Users/javiercastro/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/fastlane-2.200.0/fastlane/lib/fastlane/lane_manager.rb:47:in `cruise_lane'&#10;/Users/javiercastro/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/fastlane-2.200.0/fastlane/lib/fastlane/command_line_handler.rb:36:in `handle'&#10;/Users/javiercastro/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/fastlane-2.200.0/fastlane/lib/fastlane/commands_generator.rb:109:in `block (2 levels) in run'&#10;/Users/javiercastro/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/commander-4.6.0/lib/commander/command.rb:187:in `call'&#10;/Users/javiercastro/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/commander-4.6.0/lib/commander/command.rb:157:in `run'&#10;/Users/javiercastro/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/commander-4.6.0/lib/commander/runner.rb:444:in `run_active_command'&#10;/Users/javiercastro/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/fastlane-2.200.0/fastlane_core/lib/fastlane_core/ui/fastlane_runner.rb:117:in `run!'&#10;/Users/javiercastro/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/commander-4.6.0/lib/commander/delegates.rb:18:in `run!'&#10;/Users/javiercastro/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/fastlane-2.200.0/fastlane/lib/fastlane/commands_generator.rb:353:in `run'&#10;/Users/javiercastro/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/fastlane-2.200.0/fastlane/lib/fastlane/commands_generator.rb:42:in `start'&#10;/Users/javiercastro/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/fastlane-2.200.0/fastlane/lib/fastlane/cli_tools_distributor.rb:122:in `take_off'&#10;/Users/javiercastro/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/fastlane-2.200.0/bin/fastlane:23:in `&lt;top (required)&gt;'&#10;/Users/javiercastro/.rbenv/versions/2.7.4/bin/fastlane:23:in `load'&#10;/Users/javiercastro/.rbenv/versions/2.7.4/bin/fastlane:23:in `&lt;main&gt;'&#10;&#10;Google Api Error: Invalid request - Client uploaded to the wrong offset (78905344 instead of 87293952)." />
         
       </testcase>
     
