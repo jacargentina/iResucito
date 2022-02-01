@@ -6,6 +6,7 @@ I18n.defaultLocale = 'en';
 // Lenguajes disponibles
 I18n.translations = {
   en: require('./en'),
+  'en-PH': require('./en-PH'),
   es: require('./es'),
   it: require('./it'),
   'pt-BR': require('./pt-BR'),
