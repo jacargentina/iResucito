@@ -1,18 +1,10 @@
-const http = require('http');
-const next = require('next');
+const { createRequestHandler } = require('@remix-run/express');
 
 require('./sync');
 
-const app = next({ dev: false });
-const handle = app.getRequestHandler();
-
-app.prepare().then(() => {
-  http
-    .createServer((req, res) => {
-      handle(req, res);
-    })
-    .listen(process.env.PORT || 3000, (err) => {
-      if (err) throw err;
-      console.log('> Ready');
-    });
+const app = express();
+app.all('*', createRequestHandler({ build: require('./build') }));
+app.listen(process.env.PORT || 3000, (err) => {
+  if (err) throw err;
+  console.log('> Ready');
 });
