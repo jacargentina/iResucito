@@ -2,17 +2,26 @@ import { createContext, useContext } from 'react';
 
 type AppContextData = {
   user?: any;
+  ios_version: string;
+  android_version: string;
 };
 
 const AppContext = createContext<AppContextData | undefined>(undefined);
 
-export const AppProvider = (props: { children: any; user?: any }) => {
-  const { children, user } = props;
+export const AppProvider = (props: {
+  children: any;
+  user?: any;
+  ios_version: string;
+  android_version: string;
+}) => {
+  const { children, user, ios_version, android_version } = props;
 
   return (
     <AppContext.Provider
       value={{
         user,
+        ios_version,
+        android_version,
       }}>
       {children}
     </AppContext.Provider>

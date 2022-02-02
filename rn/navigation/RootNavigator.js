@@ -1,4 +1,3 @@
-// @flow
 import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import ContactChooserDialog from '../screens/ContactChooserDialog';

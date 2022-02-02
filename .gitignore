@@ -4,7 +4,6 @@ npm-debug.*
 .yarn/*
 !.yarn/releases
 
-
 # OSX
 #
 .DS_Store
@@ -58,7 +57,7 @@ bin/
 /ios/Pods/
 
 # web app
-packages/webapp/.next/
+packages/webapp/.cache
 packages/webapp/data/*.json
 
 # sentry

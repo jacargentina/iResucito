@@ -96,10 +96,10 @@ Durante la edición de los cantos puede ser muy útil realizar una previsualizac
 Para ello se puede ejecutar el script npm `genpdf` de la siguiente forma:
 
 ```
-yarn run genpdf -- -l pt
+npm run genpdf -- -l pt
 // se generan TODOS los cantos de lenguaje 'pt' dentro de la carpeta 'pdf'
 
-yarn run genpdf -- -l pt -k 12
+npm run genpdf -- -l pt -k 12
 // se generan sólo el canto del indice 12, es decir, 'Jacó' de 'pt' en la carpeta 'pdf'
 ```
 

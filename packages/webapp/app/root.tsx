@@ -59,7 +59,10 @@ export let links = () => {
 export default function App() {
   const data = useLoaderData();
   return (
-    <AppProvider user={data.authData?.user}>
+    <AppProvider
+      user={data.authData?.user}
+      ios_version={data.IOS_VERSION}
+      android_version={data.ANDROID_VERSION}>
       <Document>
         <Outlet />
       </Document>

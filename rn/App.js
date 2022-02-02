@@ -1,4 +1,3 @@
-// @flow
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import RNBootSplash from 'react-native-bootsplash';
@@ -22,7 +21,7 @@ const appTheme = {
 
 const theme = extendTheme({ colors: appTheme });
 
-const App = (): React.Node => {
+const App = () => {
   return (
     <DataContextWrapper>
       <NativeBaseProvider
