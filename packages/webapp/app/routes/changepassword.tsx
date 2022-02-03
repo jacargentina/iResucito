@@ -1,5 +1,5 @@
 import bcrypt from 'bcryptjs';
-import { db } from '~/utils';
+import { getdb } from '~/utils';
 import { ActionFunction, json } from 'remix';
 import { authenticator } from '~/auth.server';
 
@@ -11,10 +11,11 @@ export let action: ActionFunction = async ({ request }) => {
   const body = await request.formData();
   const newPassword = body.get('newPassword') as string;
   const newHash = bcrypt.hashSync(newPassword, bcrypt.genSaltSync(10));
-  if (!db.get('users').find({ email: authData.user }).value()) {
+  if (!(await getdb().get('users').find({ email: authData.user }).value())) {
     throw new Error('Usuario inválido.');
   }
-  db.get('users')
+  await getdb()
+    .get('users')
     .find({ email: authData.user })
     .assign({ password: newHash })
     .write();

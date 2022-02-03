@@ -2,11 +2,11 @@
   "name": "webapp",
   "version": "1.0.0",
   "description": "iResucito webapp",
-  "main": "index.js",
   "license": "MIT",
   "scripts": {
     "build": "remix build",
-    "start": "node ./syncData.js down && node ./server.js"
+    "start": "node ./syncData.js down && node ./server.js",
+    "dev": "node --inspect ../../node_modules/.bin/remix dev"
   },
   "dependencies": {
     "@remix-run/dev": "^1.1.3",

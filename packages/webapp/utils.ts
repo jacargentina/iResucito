@@ -1,12 +1,18 @@
 import * as path from 'path';
-import { LowSync, JSONFileSync } from 'lowdb';
-import FolderExtras from '../../FolderExtras';
+import FolderExtras from '~/FolderExtras';
+
+let db: any = null;
 
 export const dataPath: string = path.resolve('./data');
-export const db: any = new LowSync(
-  new JSONFileSync(path.join(dataPath, 'db.json'))
-);
-db.data = db.data || { users: [], tokens: [] };
+export const getdb = async () => {
+  if (!db) {
+    const lowdb = await import('lowdb');
+    const { LowSync, JSONFileSync } = lowdb.default;
+    db = new LowSync(new JSONFileSync(path.join(dataPath, 'db.json')));
+    db.data = db.data || { users: [], tokens: [] };
+  }
+  return db;
+};
 
 export async function readLocalePatch(): Promise<any> {
   const exists = await FolderExtras.patchExists();

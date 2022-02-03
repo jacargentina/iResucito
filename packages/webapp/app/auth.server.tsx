@@ -2,7 +2,7 @@ import { Authenticator } from 'remix-auth';
 import { FormStrategy } from 'remix-auth-form';
 import { sessionStorage } from '~/session.server';
 import bcrypt from 'bcryptjs';
-import { db } from '~/utils';
+import { getdb } from '~/utils';
 
 export let authenticator = new Authenticator<AuthData>(sessionStorage);
 
@@ -11,7 +11,10 @@ authenticator.use(
     let identifier = form.get('identifier');
     let password = form.get('password');
     try {
-      const user = db.get('users').find({ email: identifier }).value();
+      const user = await getdb()
+        .get('users')
+        .find({ email: identifier })
+        .value();
 
       if (user) {
         if (!user.isVerified) {
@@ -20,7 +23,8 @@ authenticator.use(
         const result = bcrypt.compareSync(password, user.password);
         if (result) {
           // Registrar hora de inicio de sesion
-          db.get('users')
+          await getdb()
+            .get('users')
             .find({ email: identifier })
             .assign({ loggedInAt: Date.now() })
             .write();

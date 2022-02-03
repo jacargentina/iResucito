@@ -1,10 +1,11 @@
 import { readLocalePatch, saveLocalePatch } from '~/utils';
 import FolderSongs from '~/FolderSongs';
 import { authenticator } from '~/auth.server';
+import { ActionFunction, json } from 'remix';
 
 const merge = require('deepmerge');
 
-const del = async (key, locale) => {
+const del = async (key: string, locale: string) => {
   let patchObj = await readLocalePatch();
   if (!patchObj) {
     patchObj = {};
@@ -23,10 +24,23 @@ const del = async (key, locale) => {
   return { ok: true };
 };
 
-const post = async (key, locale, session, body) => {
+const post = async (
+  key: string,
+  locale: string,
+  session: AuthData,
+  request: Request
+) => {
   let patchObj = await readLocalePatch();
 
-  const patch: SongPatchData = body;
+  const body = await request.formData();
+
+  const patch: SongPatchData = {
+    author: session.user,
+    date: Date.now(),
+    name: body.get('name') as string,
+    stage: body.get('stage') as string,
+    lines: body.get('lines') as string,
+  };
   if (!patchObj) {
     patchObj = {};
   }
@@ -35,7 +49,6 @@ const post = async (key, locale, session, body) => {
     patch.rename = patch.rename.trim();
   }
 
-  patch.author = session.user;
   patch.date = Date.now();
 
   const localePatch: SongPatch = {
@@ -58,7 +71,7 @@ const post = async (key, locale, session, body) => {
   return { ok: true, song };
 };
 
-const addNewSong = async (locale, session) => {
+const addNewSong = async (locale: string, session: AuthData) => {
   let patchObj = await readLocalePatch();
   if (!patchObj) {
     patchObj = {};
@@ -68,7 +81,7 @@ const addNewSong = async (locale, session) => {
   const songs = FolderSongs.getSongsMeta(locale, patchObj);
 
   // Crear song
-  const patch = {
+  const patch: SongPatchData = {
     author: session.user,
     date: Date.now(),
     name: 'Title - Source',
@@ -97,27 +110,35 @@ const addNewSong = async (locale, session) => {
   return { ok: true, song: newSong };
 };
 
-export default async function handler(req, res) {
-  const session = await authenticator.isAuthenticated(req);
+export let action: ActionFunction = async ({ request, params }) => {
+  const session = await authenticator.isAuthenticated(request);
   try {
     if (!session) {
       throw new Error('Cant continue. Login required for that action');
     }
-    const { path } = req.query;
-    const [key, locale] = path;
-    if (req.method === 'DELETE') {
-      res.json(await del(key, locale));
-    } else if (req.method === 'POST') {
-      res.json(await post(key, locale, session, req.body));
-    } else if (req.method === 'GET' && key === 'newSong') {
-      res.json(await addNewSong(locale, session));
+    const { key, locale } = params;
+    if (!key) {
+      throw new Error('key not provided');
+    }
+    if (!locale) {
+      throw new Error('locale not provided');
+    }
+    if (request.method === 'DELETE') {
+      return json(await del(key, locale));
+    } else if (request.method === 'POST') {
+      return json(await post(key, locale, session, request));
+    } else if (request.method === 'GET' && key === 'newSong') {
+      return json(await addNewSong(locale, session));
     } else {
-      res.status(404).end();
+      return new Response(null, { status: 404 });
     }
   } catch (err) {
     console.log(err);
-    res.status(500).json({
-      error: err.message,
-    });
+    return json(
+      {
+        error: err.message,
+      },
+      { status: 500 }
+    );
   }
-}
+};

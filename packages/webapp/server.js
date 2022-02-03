@@ -1,3 +1,4 @@
+const express = require('express');
 const { createRequestHandler } = require('@remix-run/express');
 
 require('./sync');
