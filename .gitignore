@@ -57,8 +57,8 @@ bin/
 /ios/Pods/
 
 # web app
-packages/webapp/.cache
-packages/webapp/data/*.json
+webapp/.cache
+webapp/data/*.json
 
 # sentry
 ios/sentry.properties

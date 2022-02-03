@@ -1,5 +1,5 @@
 {
-  "include": ["types.d.ts", "packages/webapp/remix.env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["types.d.ts", "webapp/remix.env.d.ts", "**/*.ts", "**/*.tsx"],
   "compilerOptions": {
     "module": "esnext",
     "lib": ["DOM", "DOM.Iterable", "ES2019"],
@@ -9,7 +9,7 @@
     "resolveJsonModule": true,
     "strict": true,
     "paths": {
-      "~/*": ["./packages/webapp/app/*", "./packages/webapp/*", "./*"],
+      "~/*": ["./webapp/app/*", "./webapp/*", "./*"],
     },
 
     // Remix takes care of building everything in `remix build`.
