@@ -2,12 +2,14 @@ import {
   ActionFunction,
   LoaderFunction,
   redirect,
+  useLoaderData,
   useSearchParams,
   useSubmit,
+  useTransition,
 } from 'remix';
 import { authenticator } from '~/auth.server';
 import Layout from '~/components/Layout';
-import { useState, useContext, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Header,
   Segment,
@@ -59,6 +61,8 @@ const Account = () => {
   // para aplicar lenguaje
   useLocale(undefined);
 
+  const data = useLoaderData();
+  const transition = useTransition();
   const [searchParams] = useSearchParams();
   const app = useApp();
   const submit = useSubmit();
@@ -67,24 +71,10 @@ const Account = () => {
   const [password, setPassword] = useState('');
   const [changePassVisible, setChangePassVisible] = useState(false);
   const [changePassEnabled, setChangePassEnabled] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState();
   const [newPassword, setNewPassword] = useState('');
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
 
-  // useEffect(() => {
-  //   const err =
-  //     router.query.error === 'CredentialsSignin'
-  //       ? new Error('User or password are invalid.')
-  //       : router.query.error === 'AccountNotVerified'
-  //       ? new Error('Account was not verified.')
-  //       : null;
-  //   setError(err);
-  // }, [router.query.error]);
-
   const authenticate = () => {
-    setError(undefined);
-    setLoading(true);
     submit({ email, password }, { method: 'post' });
   };
 
@@ -100,7 +90,7 @@ const Account = () => {
     setApiResult();
     setApiLoading(true);
     return axios
-      .post('/api/signup', {
+      .post('/signup', {
         email,
         password,
       })
@@ -117,7 +107,7 @@ const Account = () => {
     setApiResult();
     setApiLoading(true);
     return axios
-      .post('/api/changepassword', {
+      .post('/changepassword', {
         newPassword,
       })
       .then((response) => {
@@ -143,6 +133,8 @@ const Account = () => {
     );
   }, [newPassword, confirmNewPassword]);
 
+  console.log(data);
+
   return (
     <Layout>
       <div style={{ padding: 30, width: 500, margin: 'auto' }}>
@@ -150,7 +142,7 @@ const Account = () => {
         <Header textAlign="center">iResucito</Header>
         <Grid textAlign="center" verticalAlign="middle">
           <Grid.Column>
-            {error && <ErrorDetail error={error} simple />}
+            {data.error && <ErrorDetail error={data.error} simple />}
             <ApiMessage />
             {searchParams.get('v') !== null && (
               <Message positive>{I18n.t('ui.account verified')}</Message>
@@ -163,7 +155,7 @@ const Account = () => {
                       fluid
                       icon="user"
                       iconPosition="left"
-                      readOnly={loading}
+                      readOnly={transition.state !== 'idle'}
                       placeholder={I18n.t('ui.email')}
                       value={email}
                       onChange={(e, { value }) => {
@@ -176,7 +168,7 @@ const Account = () => {
                     fluid
                     icon="lock"
                     iconPosition="left"
-                    readOnly={loading}
+                    readOnly={transition.state !== 'idle'}
                     placeholder={I18n.t('ui.password')}
                     type="password"
                     value={password}
@@ -190,17 +182,16 @@ const Account = () => {
                     primary
                     size="large"
                     onClick={authenticate}
-                    loading={loading}>
+                    loading={transition.state !== 'idle'}>
                     {I18n.t('ui.login')}
                   </Button>
                   <Button
                     basic
                     size="large"
                     onClick={() => {
-                      setError(undefined);
                       signUp();
                     }}
-                    isDisabled={loading}>
+                    isDisabled={transition.state !== 'idle'}>
                     {I18n.t('ui.signup')}
                   </Button>
                 </Segment>

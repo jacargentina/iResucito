@@ -63,9 +63,8 @@ export let action: ActionFunction = async ({ request, params }) => {
     );
     if (pdfPath) {
       const pdfBuffer = require('fs').readFileSync(pdfPath);
-      const buffer = require('buffer');
-      const blob = new buffer.Blob(pdfBuffer);
-      return new Response(blob, {
+      return new Response(pdfBuffer, {
+        status: 200,
         headers: {
           'Content-Type': 'application/pdf',
         },

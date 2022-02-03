@@ -64,7 +64,7 @@ const EditContextWrapper = (props: any) => {
         setApiResult();
         setApiLoading(true);
         return axios
-          .delete(`/api/song/${editSong.key}/${I18n.locale}`)
+          .delete(`/song/${editSong.key}/${I18n.locale}`)
           .then((result) => {
             setApiLoading(false);
             navigate(`/list/${I18n.locale}`);
@@ -85,7 +85,7 @@ const EditContextWrapper = (props: any) => {
     setApiResult();
     setApiLoading(true);
     return axios
-      .post(`/api/song/${editSong.key}/${I18n.locale}`, patch)
+      .post(`/song/${editSong.key}/${I18n.locale}`, patch)
       .then((result) => {
         setApiLoading(false);
         setHasChanges(false);
@@ -102,7 +102,7 @@ const EditContextWrapper = (props: any) => {
       setApiResult();
       setApiLoading(true);
       axios
-        .get(`/api/patches/${editSong.key}/${I18n.locale}`)
+        .get(`/patches/${editSong.key}/${I18n.locale}`)
         .then((result) => {
           setApiLoading(false);
           setPatchLogs(result.data);
@@ -119,7 +119,7 @@ const EditContextWrapper = (props: any) => {
       setApiResult();
       setApiLoading(true);
       axios
-        .get(`/api/diff/${editSong.key}/${I18n.locale}`)
+        .get(`/diff/${editSong.key}/${I18n.locale}`)
         .then((result) => {
           setApiLoading(false);
           setDiffView(result.data.diff);

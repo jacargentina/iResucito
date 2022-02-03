@@ -26,7 +26,7 @@ export async function generatePDF(
   }
   var writer = new PdfWriter(font, new Base64Encode(), opts);
   const base64 = await SongPDFGenerator(songsToPdf, opts, writer);
-  console.log({ runningPath, fontPath, opts, pdfPath, base64 });
+  //console.log({ runningPath, fontPath, opts, pdfPath, base64 });
   if (base64) {
     fs.writeFileSync(pdfPath, Buffer.from(base64, 'base64'));
     return pdfPath;

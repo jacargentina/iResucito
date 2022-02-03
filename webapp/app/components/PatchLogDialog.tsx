@@ -12,8 +12,10 @@ const PatchLogDialog = () => {
   if (!edit) {
     return null;
   }
-  
+
   const { editSong, patchLogs } = edit;
+
+  console.log(patchLogs);
 
   return (
     <Modal

@@ -11,10 +11,11 @@ export let action: ActionFunction = async ({ request }) => {
   const body = await request.formData();
   const newPassword = body.get('newPassword') as string;
   const newHash = bcrypt.hashSync(newPassword, bcrypt.genSaltSync(10));
-  if (!(await getdb().get('users').find({ email: authData.user }).value())) {
+  const db = await getdb();
+  if (!db.chain.get('users').find({ email: authData.user }).value()) {
     throw new Error('Usuario inválido.');
   }
-  await getdb()
+  db.chain
     .get('users')
     .find({ email: authData.user })
     .assign({ password: newHash })

@@ -1,3 +1,4 @@
+import lodash from 'lodash'
 import * as path from 'path';
 import * as fs from 'fs';
 import { SongsExtras } from '~/SongsExtras';
@@ -43,9 +44,10 @@ export const dataPath: string = path.resolve('./data');
 export const getdb = async () => {
   if (!db) {
     const lowdb = await import('lowdb');
-    const { LowSync, JSONFileSync } = lowdb.default;
+    const { LowSync, JSONFileSync } = lowdb;
     db = new LowSync(new JSONFileSync(path.join(dataPath, 'db.json')));
     db.data = db.data || { users: [], tokens: [] };
+    db.chain = lodash.chain(db.data)
   }
   return db;
 };

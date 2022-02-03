@@ -56,25 +56,21 @@ const SongEditor = () => {
     }
     setLoading(false);
     setPdfUrl(undefined);
-    fetcher.submit(formData, {
-      action: `/pdf/${editSong.key}/${I18n.locale}`,
-      method: 'post',
-    });
+    axios
+      .post(`/pdf/${editSong.key}/${I18n.locale}`, formData, {
+        responseType: 'blob',
+      })
+      .then((response) => {
+        setLoading(false);
+        setPdfUrl(window.URL.createObjectURL(new Blob([response.data])));
+      })
+      .catch(async (err) => {
+        const errText = await new Response(err.response.data).text();
+        handleApiError(errText);
+        setLoading(false);
+        setPdfUrl();
+      });
   };
-
-  console.log({ fetcher });
-
-  useEffect(() => {
-    if (fetcher.data) {
-      setLoading(false);
-      if (fetcher.data.error) {
-        handleApiError(fetcher.data.error);
-      } else {
-        // responseType: 'blob',
-        setPdfUrl(window.URL.createObjectURL(new Blob([fetcher.data])));
-      }
-    }
-  }, [fetcher.data]);
 
   const [debouncedText, setDebouncedText] = useState(text);
   const debounced = useDebouncedCallback((t) => setDebouncedText(t), 800);

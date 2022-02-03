@@ -1,18 +1,17 @@
 import * as Diff from 'diff';
-import { readLocalePatch } from '~/utils';
+import { folderSongs, readLocalePatch } from '~/utils.server';
 import { getPropertyLocale } from '~/common';
 import SongsIndex from '~/songs/index.json';
-import FolderSongs from '~/FolderSongs';
+import { json, LoaderFunction } from 'remix';
 
-export default async function handler(req, res) {
-  const { path } = req.query;
-  const [key, locale] = path;
-  if (!locale || !key) {
-    return res.status(500).json({
-      error: 'Locale or key not provided',
-    });
+export let loader: LoaderFunction = async ({ request, params }) => {
+  const { key, locale } = params;
+  if (!key) {
+    throw new Error('key not provided');
   }
-
+  if (!locale) {
+    throw new Error('locale not provided');
+  }
   const patch = await readLocalePatch();
   if (patch && patch[key] && patch[key][locale]) {
     if (SongsIndex.hasOwnProperty(key)) {
@@ -20,13 +19,12 @@ export default async function handler(req, res) {
       let fullText = '';
       if (loc) {
         const filename = SongsIndex[key].files[loc];
-        FolderSongs.basePath = require('path').resolve('../../songs');
-        fullText = await FolderSongs.loadLocaleSongFile(loc, filename);
+        fullText = await folderSongs.loadLocaleSongFile(loc, filename);
       }
       const diff = Diff.diffLines(fullText, patch[key][locale].lines);
-      res.json({ diff });
+      return json({ diff });
     }
   } else {
-    res.json({ diff: null });
+    return json({ diff: null });
   }
-}
+};

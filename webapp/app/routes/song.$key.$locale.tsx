@@ -32,14 +32,13 @@ const post = async (
 ) => {
   let patchObj = await readLocalePatch();
 
-  const body = await request.formData();
+  const body = await request.json();
+  console.log({ session });
 
   const patch: SongPatchData = {
     author: session.user,
     date: Date.now(),
-    name: body.get('name') as string,
-    stage: body.get('stage') as string,
-    lines: body.get('lines') as string,
+    ...body,
   };
   if (!patchObj) {
     patchObj = {};
