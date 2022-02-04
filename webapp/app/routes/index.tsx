@@ -1,14 +1,6 @@
-import { useEffect } from 'react';
 import { Loader } from 'semantic-ui-react';
-import useLocale from '~/components/useLocale';
 
 const Index = () => {
-  const locale = useLocale(undefined);
-
-  useEffect(() => {
-    locale.initialize(true);
-  }, []);
-
   return (
     <div
       style={{

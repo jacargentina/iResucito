@@ -9,6 +9,8 @@ import {
   useLoaderData,
   ErrorBoundaryComponent,
   LoaderFunction,
+  useFetcher,
+  useNavigate,
 } from 'remix';
 import { authenticator } from '~/auth.server';
 import { AppProvider } from '~/app.context';
@@ -16,6 +18,9 @@ import semanticUrl from 'semantic-ui-css/semantic.min.css';
 import globalStylesUrl from '~/styles/global.css';
 import { readLocalePatch } from '~/utils.server';
 import { getPatchStats } from '~/common';
+import { getSession } from './session.server';
+import { useEffect } from 'react';
+import I18n from '~/translations';
 
 export let loader: LoaderFunction = async ({ request }) => {
   const path = require('path');
@@ -42,11 +47,15 @@ export let loader: LoaderFunction = async ({ request }) => {
   const patch = await readLocalePatch();
   const stats = patch ? getPatchStats(patch) : [];
 
+  const authData = await authenticator.isAuthenticated(request);
+  const session = await getSession(request.headers.get('Cookie'));
+
   return {
     IOS_VERSION: `${ios_Info.CFBundleShortVersionString}.${ios_Info.CFBundleVersion}`,
     ANDROID_VERSION: `${android_major}.${android_minor}.${android_patch}.${android_build}`,
-    authData: await authenticator.isAuthenticated(request),
+    authData: authData,
     patchStats: stats,
+    locale: session.get('locale'),
   };
 };
 
@@ -59,6 +68,21 @@ export let links = () => {
 
 export default function App() {
   const data = useLoaderData();
+  const fetcher = useFetcher();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!data.locale) {
+      fetcher.submit(null, {
+        action: '/lang/' + navigator.language,
+        method: 'post',
+      });
+    } else {
+      I18n.locale = data.locale;
+      navigate(`/list`);
+    }
+  }, [data.locale]);
+
   return (
     <AppProvider
       user={data.authData?.user}
@@ -94,7 +118,6 @@ function Document({ children }: { children: any }) {
 
 export let ErrorBoundary: ErrorBoundaryComponent = ({ error }) => {
   console.error(error);
-  return <div />;
   return (
     <ErrorDocument title="Error!">
       <div>

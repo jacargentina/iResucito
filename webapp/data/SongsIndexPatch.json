@@ -1,43 +1,9 @@
 {
  "158": {
   "es": {
-   "author": {
-    "id": 71,
-    "username": "Javier Castro",
-    "email": "javiercastro@nexion.com.ar",
-    "provider": "local",
-    "confirmed": true,
-    "blocked": false,
-    "role": {
-     "id": 5,
-     "name": "Nexion",
-     "description": "Usuarios de Nexion Software",
-     "type": "nexion"
-    },
-    "created_at": null,
-    "updated_at": "2021-05-28T11:12:51.826Z",
-    "avatar": {
-     "id": 4,
-     "name": "png",
-     "alternativeText": null,
-     "caption": null,
-     "width": null,
-     "height": null,
-     "formats": null,
-     "hash": "427189b70ff447c1a406d07f3aba15b9",
-     "ext": null,
-     "mime": "application/octet-stream",
-     "size": 14.19,
-     "url": "/uploads/427189b70ff447c1a406d07f3aba15b9",
-     "previewUrl": null,
-     "provider": "local",
-     "provider_metadata": null,
-     "created_at": "2019-07-17T16:40:19.732Z",
-     "updated_at": "2019-07-17T16:40:19.894Z"
-    }
-   },
-   "date": 1643917867996,
-   "lines": "La–                                   Sol\nA. A LA CENA DEL CORDERO,  asdfasdfa s\n                                                La–             Fa\nVESTIDOS CON BLANCAS TÚNICAS,\n                                     \nATRAVESADO EL MAR ROJO,\n                                                      Mi\nCANTAMOS A CRISTO, EL SEÑOR.\n  \nLa–                                      Sol\nS. Su cuerpo lleno de amor,  \n                                                    La–\nsobre la mesa es el Pan vivo.\n                                            Sol\nSu sangre sobre el altar,\n         La–\nes el cáliz del nuevo pacto.\n \n                                       Sol\nManso cordero inmolado,\n                                        La–\nes Cristo, nuestra Pascua,\n                             Sol\nsu cuerpo adorable\n                                          La–\nes el verdadero pan ácimo.\n \nLa–                                    Sol\nA. A LA CENA DEL CORDERO ... \n  \nLa–                               Sol\nS. En esta hora admirable \n                                 La–\nretornan los antiguos prodigios,\n                                             Sol\nsu brazo potente nos salva\n                                      La–\ndel ángel de la muerte.\n\n                                    Sol\nIrradia sobre la Iglesia\n                                                 La–\nel gozo pascual, oh, Señor,\n                                      Sol\ny une a tu gran victoria\n                                                               La–\na los que han renovado el Bautismo.\n \nLa–                                    Sol\nA. A LA CENA DEL CORDERO ... \n  \nLa–                                              Sol\nS. Sea honor, alabanza y gloria  \n                                                      La–\na Cristo victorioso de la muerte,\n                                                  Sol\nal Padre y al Santo Espíritu\n                                                   La–\nahora y por los siglos eternos.\n  \nSol    La–\nA. AMEN. \n",
+   "author": "javiercastro@nexion.com.ar",
+   "date": 1643929075191,
+   "lines": "La–                                   Sol\nA. A LA CENA DEL CORDERO,  \n                                                La–             Fa\nVESTIDOS CON BLANCAS TÚNICAS,\n                                     \nATRAVESADO EL MAR ROJO,asdfasdf\n                                                      Mi\nCANTAMOS A CRISTO, EL SEÑOR.\n  \nLa–                                      Sol\nS. Su cuerpo lleno de amor,  \n                                                    La–\nsobre la mesa es el Pan vivo.\n                                            Sol\nSu sangre sobre el altar,\n         La–\nes el cáliz del nuevo pacto.\n \n                                       Sol\nManso cordero inmolado,\n                                        La–\nes Cristo, nuestra Pascua,\n                             Sol\nsu cuerpo adorable\n                                          La–\nes el verdadero pan ácimo.\n \nLa–                                    Sol\nA. A LA CENA DEL CORDERO ... \n  \nLa–                               Sol\nS. En esta hora admirable \n                                 La–\nretornan los antiguos prodigios,\n                                             Sol\nsu brazo potente nos salva\n                                      La–\ndel ángel de la muerte.\n\n                                    Sol\nIrradia sobre la Iglesia\n                                                 La–\nel gozo pascual, oh, Señor,\n                                      Sol\ny une a tu gran victoria\n                                                               La–\na los que han renovado el Bautismo.\n \nLa–                                    Sol\nA. A LA CENA DEL CORDERO ... \n  \nLa–                                              Sol\nS. Sea honor, alabanza y gloria  \n                                                      La–\na Cristo victorioso de la muerte,\n                                                  Sol\nal Padre y al Santo Espíritu\n                                                   La–\nahora y por los siglos eternos.\n  \nSol    La–\nA. AMEN. \n",
    "name": "A la cena del cordero - Himno",
    "stage": "precatechumenate"
   }

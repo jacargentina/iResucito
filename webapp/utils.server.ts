@@ -1,4 +1,3 @@
-import lodash from 'lodash'
 import * as path from 'path';
 import * as fs from 'fs';
 import { SongsExtras } from '~/SongsExtras';
@@ -47,7 +46,6 @@ export const getdb = async () => {
     const { LowSync, JSONFileSync } = lowdb;
     db = new LowSync(new JSONFileSync(path.join(dataPath, 'db.json')));
     db.data = db.data || { users: [], tokens: [] };
-    db.chain = lodash.chain(db.data)
   }
   return db;
 };

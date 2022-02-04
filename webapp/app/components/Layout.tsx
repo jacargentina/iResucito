@@ -5,7 +5,7 @@ import AppActions from './AppActions';
 import { Link } from 'remix';
 
 const Layout = (props: any) => {
-  const { menu = true, locale, children } = props;
+  const { menu = true, children } = props;
 
   return (
     <div className="container">
@@ -26,7 +26,7 @@ const Layout = (props: any) => {
               </Header.Content>
             </Menu.Item>
           </Link>
-          <LocalePicker current={locale} />
+          <LocalePicker />
           <EditSongTitle />
           <Menu.Menu position="right">
             <AppActions />

@@ -12,8 +12,10 @@ authenticator.use(
     let password = form.get('password');
 
     const db = await getdb();
-    const user = db.chain.get('users').find({ email: email }).value();
+    db.read();
 
+    const userIndex = db.data.users.findIndex((u) => u.email === email);
+    const user = db.data.users[userIndex];
     if (user) {
       if (!user.isVerified) {
         throw new Error('Account not verified');
@@ -21,12 +23,8 @@ authenticator.use(
       const result = bcrypt.compareSync(password, user.password);
       if (result) {
         // Registrar hora de inicio de sesion
-        db.chain
-          .get('users')
-          .find({ email: email })
-          .assign({ loggedInAt: Date.now() })
-          .write();
-
+        db.data.users[userIndex].loggedInAt = Date.now();
+        db.write();
         return {
           user: user.email,
         };

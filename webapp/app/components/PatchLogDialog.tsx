@@ -15,8 +15,6 @@ const PatchLogDialog = () => {
 
   const { editSong, patchLogs } = edit;
 
-  console.log(patchLogs);
-
   return (
     <Modal
       open={activeDialog === 'patchLog'}

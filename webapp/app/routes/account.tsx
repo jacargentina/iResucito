@@ -26,7 +26,6 @@ import * as axios from 'axios';
 import ErrorDetail from '~/components/ErrorDetail';
 import ApiMessage from '~/components/ApiMessage';
 import { useApp } from '~/app.context';
-import useLocale from '~/components/useLocale';
 import { getSession } from '~/session.server';
 import I18n from '~/translations';
 
@@ -58,9 +57,6 @@ export function meta() {
 }
 
 const Account = () => {
-  // para aplicar lenguaje
-  useLocale(undefined);
-
   const data = useLoaderData();
   const transition = useTransition();
   const [searchParams] = useSearchParams();
@@ -133,8 +129,6 @@ const Account = () => {
     );
   }, [newPassword, confirmNewPassword]);
 
-  console.log(data);
-
   return (
     <Layout>
       <div style={{ padding: 30, width: 500, margin: 'auto' }}>
@@ -191,7 +185,7 @@ const Account = () => {
                     onClick={() => {
                       signUp();
                     }}
-                    isDisabled={transition.state !== 'idle'}>
+                    disabled={transition.state !== 'idle'}>
                     {I18n.t('ui.signup')}
                   </Button>
                 </Segment>

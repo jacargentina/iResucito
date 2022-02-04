@@ -33,7 +33,6 @@ const post = async (
   let patchObj = await readLocalePatch();
 
   const body = await request.json();
-  console.log({ session });
 
   const patch: SongPatchData = {
     author: session.user,

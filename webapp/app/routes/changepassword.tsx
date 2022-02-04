@@ -12,14 +12,12 @@ export let action: ActionFunction = async ({ request }) => {
   const newPassword = body.get('newPassword') as string;
   const newHash = bcrypt.hashSync(newPassword, bcrypt.genSaltSync(10));
   const db = await getdb();
-  if (!db.chain.get('users').find({ email: authData.user }).value()) {
+  const userIndex = db.data.users.findIndex({ email: authData.user });
+  if (userIndex === -1) {
     throw new Error('Usuario inválido.');
   }
-  db.chain
-    .get('users')
-    .find({ email: authData.user })
-    .assign({ password: newHash })
-    .write();
+  db.data.users[userIndex].password = newHash;
+  db.write();
   return json({
     ok: `PasswordChanged`,
   });
