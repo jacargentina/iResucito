@@ -3,14 +3,17 @@ import { folderSongs, readLocalePatch } from '~/utils.server';
 import { getPropertyLocale } from '~/common';
 import SongsIndex from '~/songs/index.json';
 import { json, LoaderFunction } from 'remix';
+import { getSession } from '~/session.server';
 
 export let loader: LoaderFunction = async ({ request, params }) => {
-  const { key, locale } = params;
+  const session = await getSession(request.headers.get('Cookie'));
+  const locale = session.get('locale') as string;
+  if (!locale) {
+    throw new Error('Locale not provided');
+  }
+  const { key } = params;
   if (!key) {
     throw new Error('key not provided');
-  }
-  if (!locale) {
-    throw new Error('locale not provided');
   }
   const patch = await readLocalePatch();
   if (patch && patch[key] && patch[key][locale]) {

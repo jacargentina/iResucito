@@ -1,7 +1,6 @@
 import {
   ActionFunction,
   LoaderFunction,
-  redirect,
   useLoaderData,
   useSearchParams,
   useSubmit,
@@ -30,22 +29,13 @@ import { getSession } from '~/session.server';
 import I18n from '~/translations';
 
 export let action: ActionFunction = async ({ request }) => {
-  // clonar: evitar consumir el body
-  // para la llamada a authenticator
-  const r = request.clone();
-  const body = await r.formData();
-  const afterLoginGoTo = (body.get('callbackUrl') as string) ?? '/';
   return await authenticator.authenticate('lowdb', request, {
-    successRedirect: afterLoginGoTo,
+    successRedirect: '/list',
     failureRedirect: '/account',
   });
 };
 
 export let loader: LoaderFunction = async ({ request }) => {
-  let authData = await authenticator.isAuthenticated(request);
-  if (authData) {
-    return redirect('/');
-  }
   const session = await getSession(request.headers.get('Cookie'));
   return {
     error: session.get('auth:error'),

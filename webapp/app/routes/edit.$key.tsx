@@ -8,10 +8,16 @@ import DiffViewDialog from '~/components/DiffViewDialog';
 import PdfSettingsDialog from '~/components/PdfSettingsDialog';
 import { readLocalePatch, folderSongs } from '~/utils.server';
 import { json, LoaderFunction, useLoaderData } from 'remix';
+import { getSession } from '~/session.server';
 
-export let loader: LoaderFunction = async ({ params }) => {
+export let loader: LoaderFunction = async ({ request, params }) => {
+  const session = await getSession(request.headers.get('Cookie'));
+  const locale = session.get('locale') as string;
+  if (!locale) {
+    throw new Error('Locale not provided');
+  }
   const patch = await readLocalePatch();
-  const { locale, key } = params;
+  const { key } = params;
   const songs = folderSongs.getSongsMeta(locale, patch);
   const song = songs.find((s) => s.key === key);
   if (!song) {
@@ -31,7 +37,6 @@ export let loader: LoaderFunction = async ({ params }) => {
   const previousKey = songs[prev] ? songs[prev].key : null;
   const nextKey = songs[next] ? songs[next].key : null;
   return json({
-    locale,
     song,
     index,
     previousKey,
@@ -41,8 +46,7 @@ export let loader: LoaderFunction = async ({ params }) => {
 };
 
 const SongEdit = () => {
-  const { locale, song, index, previousKey, nextKey, totalSongs } =
-    useLoaderData();
+  const { song, index, previousKey, nextKey, totalSongs } = useLoaderData();
 
   const editable =
     song && song.notTranslated
@@ -66,7 +70,7 @@ const SongEdit = () => {
       previousKey={previousKey}
       nextKey={nextKey}
       totalSongs={totalSongs}>
-      <Layout title="Editor" locale={locale}>
+      <Layout title="Editor">
         <SongEditor />
         <ConfirmDialog />
         <SongChangeMetadataDialog />

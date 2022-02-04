@@ -10,7 +10,7 @@ const LocalePicker = () => {
   const [availableLocales, setAvailableLocales] = useState<PickerLocale[]>([]);
   const [current, setCurrent] = useState<PickerLocale>();
 
-  const locale = matches.find((m) => m.id === 'root')?.data.locale;
+  const locale = matches.find((m) => m.id === 'root')?.data.locale || 'default';
 
   useEffect(() => {
     const items = getLocalesForPicker(navigator.language);
@@ -31,8 +31,10 @@ const LocalePicker = () => {
             return (
               <Dropdown.Item
                 onClick={() => {
+                  const changeTo =
+                    item.value === 'default' ? navigator.language : item.value;
                   fetcher.submit(null, {
-                    action: '/lang/' + item.value,
+                    action: '/lang/' + changeTo,
                     method: 'post',
                   });
                 }}

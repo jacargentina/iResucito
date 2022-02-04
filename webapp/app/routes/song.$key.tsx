@@ -1,7 +1,8 @@
 import { readLocalePatch, saveLocalePatch } from '~/utils.server';
 import { folderSongs } from '~/utils.server';
 import { authenticator } from '~/auth.server';
-import { ActionFunction, json } from 'remix';
+import { ActionFunction, json, LoaderFunction } from 'remix';
+import { getSession } from '~/session.server';
 
 const merge = require('deepmerge');
 
@@ -106,25 +107,44 @@ const addNewSong = async (locale: string, session: AuthData) => {
   return { ok: true, song: newSong };
 };
 
+export let loader: LoaderFunction = async ({ request, params }) => {
+  const session = await getSession(request.headers.get('Cookie'));
+  const locale = session.get('locale') as string;
+  if (!locale) {
+    throw new Error('Locale not provided');
+  }
+  const { key } = params;
+  if (!key) {
+    throw new Error('key not provided');
+  }
+  const authData = await authenticator.isAuthenticated(request);
+  if (!authData) {
+    throw new Error("Can't continue. Login required for that action");
+  }
+  if (key === 'newSong') {
+    return json(await addNewSong(locale, authData));
+  }
+};
+
 export let action: ActionFunction = async ({ request, params }) => {
-  const session = await authenticator.isAuthenticated(request);
+  const session = await getSession(request.headers.get('Cookie'));
+  const locale = session.get('locale') as string;
+  if (!locale) {
+    throw new Error('Locale not provided');
+  }
   try {
-    if (!session) {
-      throw new Error('Cant continue. Login required for that action');
+    const authData = await authenticator.isAuthenticated(request);
+    if (!authData) {
+      throw new Error("Can't continue. Login required for that action");
     }
-    const { key, locale } = params;
+    const { key } = params;
     if (!key) {
       throw new Error('key not provided');
-    }
-    if (!locale) {
-      throw new Error('locale not provided');
     }
     if (request.method === 'DELETE') {
       return json(await del(key, locale));
     } else if (request.method === 'POST') {
-      return json(await post(key, locale, session, request));
-    } else if (request.method === 'GET' && key === 'newSong') {
-      return json(await addNewSong(locale, session));
+      return json(await post(key, locale, authData, request));
     } else {
       return new Response(null, { status: 404 });
     }

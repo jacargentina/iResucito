@@ -1,4 +1,4 @@
-import { List } from 'semantic-ui-react';
+import { List, Label } from 'semantic-ui-react';
 import I18n from '~/translations';
 import colors from '~/colors';
 

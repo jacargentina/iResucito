@@ -18,11 +18,9 @@ import SongViewFrame from './SongViewFrame';
 import SongViewPdf from './SongViewPdf';
 import I18n from '~/translations';
 import { useApp } from '~/app.context';
-import { useFetcher } from 'remix';
 
 const SongEditor = () => {
   const txtRef = useRef(null);
-  const fetcher = useFetcher();
   const [pdfUrl, setPdfUrl] = useState();
   const [loading, setLoading] = useState(false);
   const app = useApp();
@@ -57,7 +55,7 @@ const SongEditor = () => {
     setLoading(false);
     setPdfUrl(undefined);
     axios
-      .post(`/pdf/${editSong.key}/${I18n.locale}`, formData, {
+      .post(`/pdf/${editSong.key}`, formData, {
         responseType: 'blob',
       })
       .then((response) => {

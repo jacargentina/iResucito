@@ -4,14 +4,17 @@ import { PdfStyles, defaultExportToPdfOptions } from '~/common';
 import { folderSongs, readLocalePatch } from '~/utils.server';
 import I18n from '~/translations';
 import { ActionFunction, json } from 'remix';
+import { getSession } from '~/session.server';
 
 export let action: ActionFunction = async ({ request, params }) => {
-  const { key, locale } = params;
+  const session = await getSession(request.headers.get('Cookie'));
+  const locale = session.get('locale') as string;
+  if (!locale) {
+    throw new Error('Locale not provided');
+  }
+  const { key } = params;
   if (!key) {
     throw new Error('key not provided');
-  }
-  if (!locale) {
-    throw new Error('locale not provided');
   }
   const body = await request.formData();
   const text = body.get('text') as string | undefined;
@@ -20,7 +23,21 @@ export let action: ActionFunction = async ({ request, params }) => {
   try {
     const parser = new SongsParser(PdfStyles);
     const items = [];
-    if (key) {
+    if (key == 'full') {
+      const patch = await readLocalePatch();
+      const songs = folderSongs.getSongsMeta(locale, patch);
+      await folderSongs.loadSongs(locale, songs, patch);
+      songs.forEach((song) => {
+        if (song.files[locale]) {
+          const render = parser.getForRender(song.fullText, locale);
+          const item: SongToPdf = {
+            song,
+            render,
+          };
+          items.push(item);
+        }
+      });
+    } else {
       if (text === undefined) {
         return json(
           {
@@ -38,20 +55,6 @@ export let action: ActionFunction = async ({ request, params }) => {
         render,
       };
       items.push(item);
-    } else {
-      const patch = await readLocalePatch();
-      const songs = folderSongs.getSongsMeta(locale, patch);
-      await folderSongs.loadSongs(locale, songs, patch);
-      songs.forEach((song) => {
-        if (song.files[locale]) {
-          const render = parser.getForRender(song.fullText, locale);
-          const item: SongToPdf = {
-            song,
-            render,
-          };
-          items.push(item);
-        }
-      });
     }
     const pdfPath = await generatePDF(
       items,

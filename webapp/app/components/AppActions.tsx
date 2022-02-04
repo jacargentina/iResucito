@@ -20,23 +20,17 @@ const AppActions = () => {
       setConfirmData({
         message: I18n.t('ui.discard confirmation'),
         yes: () => {
-          fetcher.submit(
-            { callbackUrl: '/' },
-            {
-              action: `/logout`,
-              method: 'post',
-            }
-          );
+          fetcher.submit(null, {
+            action: `/logout`,
+            method: 'post',
+          });
         },
       });
     } else {
-      fetcher.submit(
-        { callbackUrl: '/' },
-        {
-          action: `/logout`,
-          method: 'post',
-        }
-      );
+      fetcher.submit(null, {
+        action: `/logout`,
+        method: 'post',
+      });
     }
   };
 
@@ -125,7 +119,7 @@ const AppActions = () => {
       ) : null}
       {!app.user && (
         <Menu.Item>
-          <Button primary onClick={() => navigate('/account?callbackUrl=/')}>
+          <Button primary onClick={() => navigate('/account')}>
             {I18n.t('ui.login')}
           </Button>
         </Menu.Item>

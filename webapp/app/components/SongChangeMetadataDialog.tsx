@@ -115,7 +115,7 @@ const SongChangeMetadataDialog = () => {
       <Modal.Actions>
         <Button
           primary
-          isDisabled={!actionEnabled}
+          disabled={!actionEnabled}
           onClick={() => {
             setHasChanges(true);
             setActiveDialog();

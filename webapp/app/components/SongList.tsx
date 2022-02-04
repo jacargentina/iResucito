@@ -46,7 +46,7 @@ const SongList = (props: any) => {
     setLoading(true);
     setPdfUrl();
     return axios
-      .post(`/api/pdf/${I18n.locale}`, pdfData, {
+      .post(`/pdf/full`, pdfData, {
         responseType: 'blob',
       })
       .then((response) => {
@@ -99,13 +99,13 @@ const SongList = (props: any) => {
 
   const edit = (song) => {
     setLoading(true);
-    navigate(`/edit/${I18n.locale}/${song.key}`);
+    navigate(`/edit/${song.key}`);
   };
 
   const addSong = () => {
     setApiResult();
     axios
-      .get(`/api/song/newSong/${I18n.locale}`)
+      .get(`/song/newSong`)
       .then((result) => {
         edit(result.data.song);
       })
