@@ -1,14 +1,11 @@
 {
   "name": "iResucito",
   "version": "1.0.0",
-  "workspaces": [
-    "packages/webapp"
-  ],
   "private": true,
   "scripts": {
-    "postinstall": "patch-package && cp ./node_modules/pdfjs-dist/build/pdf.worker.js ./packages/webapp/public",
+    "postinstall": "patch-package && cp ./node_modules/pdfjs-dist/build/pdf.worker.js ./webapp/public",
     "start": "react-native start",
-    "webpatch": "babel-node ./scripts/applyPatch.js -f ./packages/webapp/data/SongsIndexPatch.json",
+    "webpatch": "babel-node ./scripts/applyPatch.js -f ./webapp/data/SongsIndexPatch.json",
     "build": "cd ./webapp && npm run build",
     "web": "cd ./webapp && npm start",
     "android": "react-native run-android",
@@ -19,7 +16,7 @@
     "lint": "eslint . --ext .js",
     "react-devtools": "react-devtools",
     "genpdf": "babel-node ./scripts/songToPdf.js",
-    "patch": "node ./packages/webapp/syncData.js down && babel-node ./scripts/applyPatch.js && node ./packages/webapp/syncData.js up SongsIndexPatch.json"
+    "patch": "node ./webapp/syncData.js down && babel-node ./scripts/applyPatch.js && node ./webapp/syncData.js up SongsIndexPatch.json"
   },
   "jest": {
     "preset": "react-native"
