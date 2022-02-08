@@ -1,4 +1,4 @@
-import { useFetcher, useNavigate } from 'remix';
+import { useFetcher, useNavigate, useSubmit } from 'remix';
 import { useContext, useState } from 'react';
 import { Button, Menu, Icon, Modal, Label } from 'semantic-ui-react';
 import { useApp } from '~/app.context';
@@ -11,7 +11,7 @@ const AppActions = () => {
   const edit = useContext(EditContext);
   const [aboutVisible, setAboutVisible] = useState(false);
   const navigate = useNavigate();
-  const fetcher = useFetcher();
+  const submit = useSubmit();
 
   const { setConfirmData } = app;
 
@@ -20,14 +20,14 @@ const AppActions = () => {
       setConfirmData({
         message: I18n.t('ui.discard confirmation'),
         yes: () => {
-          fetcher.submit(null, {
+          submit(null, {
             action: `/logout`,
             method: 'post',
           });
         },
       });
     } else {
-      fetcher.submit(null, {
+      submit(null, {
         action: `/logout`,
         method: 'post',
       });

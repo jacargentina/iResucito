@@ -6,7 +6,6 @@ export let action: ActionFunction = async ({ request }) => {
   let session = await getSession(request.headers.get('Cookie'));
   session.set(authenticator.sessionKey, null);
   return redirect('/list', {
-    status: 205,
     headers: {
       'Set-Cookie': await commitSession(session),
     },

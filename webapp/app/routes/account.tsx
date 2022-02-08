@@ -1,5 +1,6 @@
 import {
   ActionFunction,
+  json,
   LoaderFunction,
   useLoaderData,
   useSearchParams,
@@ -25,7 +26,7 @@ import * as axios from 'axios';
 import ErrorDetail from '~/components/ErrorDetail';
 import ApiMessage from '~/components/ApiMessage';
 import { useApp } from '~/app.context';
-import { getSession } from '~/session.server';
+import { commitSession, getSession } from '~/session.server';
 import I18n from '~/translations';
 
 export let action: ActionFunction = async ({ request }) => {
@@ -37,9 +38,16 @@ export let action: ActionFunction = async ({ request }) => {
 
 export let loader: LoaderFunction = async ({ request }) => {
   const session = await getSession(request.headers.get('Cookie'));
-  return {
-    error: session.get('auth:error'),
-  };
+  return json(
+    {
+      error: session.get('auth:error'),
+    },
+    {
+      headers: {
+        'Set-Cookie': await commitSession(session),
+      },
+    }
+  );
 };
 
 export function meta() {

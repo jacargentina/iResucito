@@ -1,11 +1,11 @@
 {
   "users": [
     {
-      "email": "javiercastro@nexion.com.ar",
-      "password": "$2a$10$v2HPsaRmB6Sg2wnNC4mu.u9OioVeLxang0wQPWxIniQr6dURAQtaC",
+      "email": "javier.alejandro.castro@gmail.com",
+      "password": "$2a$10$jGxF7T/1FzZroJxRlsMp3.WDgm/j6kFu5n7gBXq.1mWrY/ZhOwxci",
       "isVerified": true,
-      "createdAt": 1643927075362,
-      "loggedInAt": 1643989024473
+      "createdAt": 1643994446270,
+      "loggedInAt": 1644327574859
     }
   ],
   "tokens": []

@@ -1,12 +1,13 @@
 import { Menu, Dropdown } from 'semantic-ui-react';
 import I18n from '~/translations';
 import { getLocalesForPicker, getValidatedLocale } from '~/common';
-import { useEffect, useState } from 'react';
-import { useFetcher, useMatches } from 'remix';
+import { useCallback, useEffect, useState } from 'react';
+import { useFetcher, useMatches, useNavigate } from 'remix';
 
 const LocalePicker = () => {
   const matches = useMatches();
   const fetcher = useFetcher();
+  const navigate = useNavigate();
   const [availableLocales, setAvailableLocales] = useState<PickerLocale[]>([]);
   const [current, setCurrent] = useState<PickerLocale>();
 
@@ -18,6 +19,22 @@ const LocalePicker = () => {
     setAvailableLocales(items);
     setCurrent(actual);
   }, [locale]);
+
+  const changeLanguage = useCallback((item: PickerLocale) => {
+    const changeTo = item.value === 'default' ? navigator.language : item.value;
+    fetcher.submit(null, {
+      action: '/lang/' + changeTo,
+      method: 'post',
+    });
+  }, []);
+
+  useEffect(() => {
+    if (fetcher.data?.newLocale) {
+      console.log('changing locale to: ', fetcher.data?.newLocale);
+      I18n.locale = fetcher.data?.newLocale;
+      navigate(`/list`);
+    }
+  }, [fetcher.data]);
 
   return (
     <>
@@ -31,12 +48,7 @@ const LocalePicker = () => {
             return (
               <Dropdown.Item
                 onClick={() => {
-                  const changeTo =
-                    item.value === 'default' ? navigator.language : item.value;
-                  fetcher.submit(null, {
-                    action: '/lang/' + changeTo,
-                    method: 'post',
-                  });
+                  changeLanguage(item);
                 }}
                 key={item.value}
                 active={locale === item.value}

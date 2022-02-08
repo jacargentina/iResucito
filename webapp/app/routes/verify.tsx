@@ -12,11 +12,6 @@ export let loader: LoaderFunction = async ({ request }) => {
     throw new Error('Missing parameters');
   }
 
-  const base =
-    process.env.NODE_ENV == 'production'
-      ? 'http://iresucito.herokuapp.com'
-      : 'http://localhost:3000';
-
   const db = await getdb();
   db.read();
 
@@ -33,7 +28,7 @@ export let loader: LoaderFunction = async ({ request }) => {
       db.data.users[userIndex].isVerified = true;
       db.data.tokens.splice(tokenIndex, 1);
       db.write();
-      return redirect(`${base}/account?u=${email}&v=1`);
+      return redirect(`/account?u=${email}&v=1`);
     }
     return json({ error: { message: 'Token expired' } });
   }

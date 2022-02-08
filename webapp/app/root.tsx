@@ -11,6 +11,7 @@ import {
   LoaderFunction,
   useFetcher,
   useNavigate,
+  useLocation,
 } from 'remix';
 import { authenticator } from '~/auth.server';
 import { AppProvider } from '~/app.context';
@@ -70,6 +71,7 @@ export default function App() {
   const data = useLoaderData();
   const fetcher = useFetcher();
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     if (!data.locale) {
@@ -77,11 +79,18 @@ export default function App() {
         action: '/lang/' + navigator.language,
         method: 'post',
       });
-    } else {
-      I18n.locale = data.locale;
+    } else if (location.pathname === '/') {
       navigate(`/list`);
     }
-  }, [data.locale]);
+  }, [data.locale, location]);
+
+  useEffect(() => {
+    if (fetcher.data?.newLocale) {
+      console.log('changing locale to: ', fetcher.data?.newLocale);
+      I18n.locale = fetcher.data?.newLocale;
+      navigate(`/list`);
+    }
+  }, [fetcher.data]);
 
   return (
     <AppProvider

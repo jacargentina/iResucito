@@ -1,14 +1,16 @@
-import { ActionFunction, redirect } from 'remix';
+import { ActionFunction, json } from 'remix';
 import { commitSession, getSession } from '~/session.server';
 
 export let action: ActionFunction = async ({ request, params }) => {
   const { locale } = params;
   const session = await getSession(request.headers.get('Cookie'));
   session.set('locale', locale);
-  return redirect(`/`, {
-    status: 205,
-    headers: {
-      'Set-Cookie': await commitSession(session),
-    },
-  });
+  return json(
+    { newLocale: locale },
+    {
+      headers: {
+        'Set-Cookie': await commitSession(session),
+      },
+    }
+  );
 };

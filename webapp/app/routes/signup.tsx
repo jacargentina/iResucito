@@ -24,7 +24,7 @@ export let action: ActionFunction = async ({ request }) => {
   email = email.trim();
   const db = await getdb();
   const exists = db.data.users.find((u) => u.email == email);
-  if (exists) {
+  if (exists && exists.isVerified) {
     return json(
       {
         error: `Email ${email} already registered!`,
@@ -34,20 +34,27 @@ export let action: ActionFunction = async ({ request }) => {
   }
   try {
     const hash = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
-    // Crear usuario
-    db.data.users.push({
-      email,
-      password: hash,
-      isVerified: false,
-      createdAt: Date.now(),
-    });
-    // Crear token para verificacion
+    if (!exists) {
+      // Crear usuario
+      db.data.users.push({
+        email,
+        password: hash,
+        isVerified: false,
+        createdAt: Date.now(),
+      });
+    }
+    // Crear (o actualizar) token para verificacion
     const crypto = await import('crypto-random-string');
     const token = crypto.default({ length: 20, type: 'url-safe' });
-    db.data.tokens.push({
-      email,
-      token,
-    });
+    let tokenIndex = db.data.tokens.findIndex((t) => t.email == email);
+    if (tokenIndex === -1) {
+      db.data.tokens.push({
+        email,
+        token,
+      });
+    } else {
+      db.data.tokens[tokenIndex].token = token;
+    }
     // Escribir
     db.write();
     const base =
