@@ -1,6 +1,7 @@
 import bcrypt from 'bcryptjs';
 import send from 'gmail-send';
 import { ActionFunction, json } from 'remix';
+import { commitSession, getSession } from '~/session.server';
 import { getdb } from '~/utils.server';
 
 const mailSender = send({
@@ -10,6 +11,7 @@ const mailSender = send({
 });
 
 export let action: ActionFunction = async ({ request }) => {
+  const session = await getSession(request.headers.get('Cookie'));
   const body = await request.json();
   let { email, password } = body;
   if (!email || !password) {
@@ -71,11 +73,18 @@ export let action: ActionFunction = async ({ request }) => {
         console.log({ mailSend: { err, res } });
       }
     );
-    return json({
-      ok: `User registered. 
+    return json(
+      {
+        ok: `User registered. 
 Open your inbox and activate your account 
 with the email we've just sent to you!`,
-    });
+      },
+      {
+        headers: {
+          'Set-Cookie': await commitSession(session),
+        },
+      }
+    );
   } catch (err) {
     console.log({ err });
     return json(
