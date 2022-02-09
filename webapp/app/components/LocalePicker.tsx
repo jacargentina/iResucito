@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo } from 'react';
-import { useFetcher, useNavigate } from 'remix';
+import { useFetcher } from 'remix';
 import { Menu, Dropdown } from 'semantic-ui-react';
 import I18n from '~/translations';
 import { useApp } from '~/app.context';
@@ -13,7 +13,6 @@ availableLocales = getLocalesForPicker(
 
 const LocalePicker = () => {
   const fetcher = useFetcher();
-  const navigate = useNavigate();
   const app = useApp();
 
   const current = useMemo<PickerLocale | undefined>(() => {
@@ -30,9 +29,7 @@ const LocalePicker = () => {
 
   useEffect(() => {
     if (fetcher.data?.newLocale) {
-      console.log('changing locale to: ', fetcher.data?.newLocale);
       I18n.locale = fetcher.data?.newLocale;
-      navigate(`/list`);
     }
   }, [fetcher.data]);
 

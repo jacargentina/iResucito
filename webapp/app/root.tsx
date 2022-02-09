@@ -80,13 +80,12 @@ export default function App() {
         method: 'post',
       });
     } else if (location.pathname === '/') {
-      navigate(`/list`);
+      navigate('/list');
     }
   }, [data, location]);
 
   useEffect(() => {
     if (fetcher.data?.newLocale) {
-      console.log('changing locale to: ', fetcher.data?.newLocale);
       I18n.locale = fetcher.data?.newLocale;
       navigate(`/list`);
     }
