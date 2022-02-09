@@ -17,23 +17,13 @@ export let loader: LoaderFunction = async ({ request, params }) => {
     throw new Error('Locale not provided');
   }
   const patch = await readLocalePatch();
-
-  const etag = await import('etag');
-  const headers = {
-    'Cache-Control': 'max-age=0, must-revalidate',
-    ETag: etag.default(JSON.stringify(patch)),
-  };
-
-  if (request.headers.get('If-None-Match') === headers.ETag) {
-    return new Response('', { status: 304, headers });
-  }
-
   const { key } = params;
   const songs = folderSongs.getSongsMeta(locale, patch);
   const song = songs.find((s) => s.key === key);
   if (!song) {
     throw new Error(`Song ${key} not valid`);
   }
+
   await folderSongs.loadSingleSong(locale, song, patch);
   // Buscar key previa y siguiente para navegacion
   const index = songs.indexOf(song);
@@ -47,6 +37,17 @@ export let loader: LoaderFunction = async ({ request, params }) => {
   }
   const previousKey = songs[prev] ? songs[prev].key : null;
   const nextKey = songs[next] ? songs[next].key : null;
+
+  const etag = await import('etag');
+  const headers = {
+    'Cache-Control': 'max-age=0, must-revalidate',
+    ETag: etag.default(JSON.stringify(song)),
+  };
+
+  if (request.headers.get('If-None-Match') === headers.ETag) {
+    return new Response('', { status: 304, headers });
+  }
+
   return json(
     {
       song,

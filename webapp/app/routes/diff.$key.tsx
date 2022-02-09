@@ -15,6 +15,9 @@ export let loader: LoaderFunction = async ({ request, params }) => {
   if (!key) {
     throw new Error('key not provided');
   }
+
+  let result = { diff: null };
+
   const patch = await readLocalePatch();
   if (patch && patch[key] && patch[key][locale]) {
     if (SongsIndex.hasOwnProperty(key)) {
@@ -24,10 +27,19 @@ export let loader: LoaderFunction = async ({ request, params }) => {
         const filename = SongsIndex[key].files[loc];
         fullText = await folderSongs.loadLocaleSongFile(loc, filename);
       }
-      const diff = Diff.diffLines(fullText, patch[key][locale].lines);
-      return json({ diff });
+      result.diff = Diff.diffLines(fullText, patch[key][locale].lines);
     }
-  } else {
-    return json({ diff: null });
   }
+
+  const etag = await import('etag');
+  const headers = {
+    'Cache-Control': 'max-age=0, must-revalidate',
+    ETag: etag.default(JSON.stringify(result)),
+  };
+
+  if (request.headers.get('If-None-Match') === headers.ETag) {
+    return new Response('', { status: 304, headers });
+  }
+
+  return json(result, { headers });
 };

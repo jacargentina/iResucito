@@ -21,5 +21,17 @@ export let loader: LoaderFunction = async ({ request, params }) => {
     pending = { author, date };
   }
 
-  return json({ changes, pending });
+  const result = { changes, pending };
+
+  const etag = await import('etag');
+  const headers = {
+    'Cache-Control': 'max-age=0, must-revalidate',
+    ETag: etag.default(JSON.stringify(result)),
+  };
+
+  if (request.headers.get('If-None-Match') === headers.ETag) {
+    return new Response('', { status: 304, headers });
+  }
+
+  return json(result, { headers });
 };
