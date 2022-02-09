@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 
 type AppContextData = {
   user?: any;
@@ -16,6 +16,7 @@ type AppContextData = {
   apiResult: any;
   setApiResult: any;
   handleApiError: any;
+  locale: string;
 };
 
 const AppContext = createContext<AppContextData | undefined>(undefined);
@@ -26,8 +27,10 @@ export const AppProvider = (props: {
   ios_version: string;
   android_version: string;
   patchStats: any;
+  locale: string;
 }) => {
-  const { children, user, ios_version, android_version, patchStats } = props;
+  const { children, user, ios_version, android_version, patchStats, locale } =
+    props;
   const [apiLoading, setApiLoading] = useState(false);
   const [apiResult, setApiResult] = useState();
   const [confirmData, setConfirmData] = useState();
@@ -48,6 +51,7 @@ export const AppProvider = (props: {
       setApiResult({ error: err });
     }
   };
+
   return (
     <AppContext.Provider
       value={{
@@ -66,6 +70,7 @@ export const AppProvider = (props: {
         apiResult,
         setApiResult,
         handleApiError,
+        locale,
       }}>
       {children}
     </AppContext.Provider>

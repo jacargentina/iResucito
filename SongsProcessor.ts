@@ -131,7 +131,7 @@ export class SongsProcessor {
   getSongsMeta(
     rawLoc: string,
     patch: SongIndexPatch | undefined,
-    settings: SongSettingsFile | undefined
+    settings?: SongSettingsFile
   ): Array<Song> {
     var songs = Object.keys(SongsIndex).map((key) => {
       return this.getSingleSongMeta(key, rawLoc, patch, settings);

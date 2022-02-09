@@ -40,20 +40,16 @@ const EditContextWrapper = (props: any) => {
     }
   };
 
-  const closeEditor = () => {
-    navigate(-1);
-  };
-
   const confirmClose = () => {
     if (hasChanges) {
       setConfirmData({
         message: I18n.t('ui.discard confirmation'),
         yes: () => {
-          closeEditor();
+          navigate('/list');
         },
       });
     } else {
-      closeEditor();
+      navigate('/list');
     }
   };
 

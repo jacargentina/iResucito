@@ -82,7 +82,7 @@ export default function App() {
     } else if (location.pathname === '/') {
       navigate(`/list`);
     }
-  }, [data.locale, location]);
+  }, [data, location]);
 
   useEffect(() => {
     if (fetcher.data?.newLocale) {
@@ -97,7 +97,8 @@ export default function App() {
       user={data.authData?.user}
       ios_version={data.IOS_VERSION}
       android_version={data.ANDROID_VERSION}
-      patchStats={data.patchStats}>
+      patchStats={data.patchStats}
+      locale={data.locale}>
       <Document>
         <Outlet />
       </Document>

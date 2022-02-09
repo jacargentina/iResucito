@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "build": "remix setup node && remix build && mkdir -p ./public/build/_assets/themes/default/assets/fonts && cp ./node_modules/semantic-ui-css/themes/default/assets/fonts/* ./public/build/_assets/themes/default/assets/fonts && cp ../assets/fonts/* ./public/build/_assets/",
-    "dev" : "remix dev",
+    "dev": "remix dev",
     "start": "node ./syncData.js down && node ./server.js",
     "postinstall": "cp ./node_modules/pdfjs-dist/build/pdf.worker.js ./public"
   },
@@ -13,6 +13,7 @@
     "@remix-run/dev": "^1.1.3",
     "@remix-run/react": "^1.1.3",
     "@remix-run/serve": "^1.1.3",
+    "@types/etag": "^1.8.1",
     "@types/react": "^17.0.38",
     "axios": "^0.24.0",
     "base64-stream": "^1.0.0",
@@ -23,6 +24,7 @@
     "deepmerge": "^4.2.2",
     "diff": "^5.0.0",
     "dropbox": "^10.20.0",
+    "etag": "^1.8.1",
     "gmail-send": "^1.8.14",
     "i18n-js": "^3.8.0",
     "langs": "^2.0.0",

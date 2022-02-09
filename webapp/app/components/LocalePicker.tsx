@@ -1,24 +1,24 @@
+import { useCallback, useEffect, useMemo } from 'react';
+import { useFetcher, useNavigate } from 'remix';
 import { Menu, Dropdown } from 'semantic-ui-react';
 import I18n from '~/translations';
+import { useApp } from '~/app.context';
 import { getLocalesForPicker, getValidatedLocale } from '~/common';
-import { useCallback, useEffect, useState } from 'react';
-import { useFetcher, useMatches, useNavigate } from 'remix';
+
+let availableLocales: PickerLocale[] = [];
+
+availableLocales = getLocalesForPicker(
+  typeof navigator !== 'undefined' ? navigator.language : undefined
+);
 
 const LocalePicker = () => {
-  const matches = useMatches();
   const fetcher = useFetcher();
   const navigate = useNavigate();
-  const [availableLocales, setAvailableLocales] = useState<PickerLocale[]>([]);
-  const [current, setCurrent] = useState<PickerLocale>();
+  const app = useApp();
 
-  const locale = matches.find((m) => m.id === 'root')?.data.locale || 'default';
-
-  useEffect(() => {
-    const items = getLocalesForPicker(navigator.language);
-    const actual = getValidatedLocale(items, locale);
-    setAvailableLocales(items);
-    setCurrent(actual);
-  }, [locale]);
+  const current = useMemo<PickerLocale | undefined>(() => {
+    return getValidatedLocale(availableLocales, app.locale);
+  }, [availableLocales, app.locale]);
 
   const changeLanguage = useCallback((item: PickerLocale) => {
     const changeTo = item.value === 'default' ? navigator.language : item.value;
@@ -42,7 +42,7 @@ const LocalePicker = () => {
         item
         pointing
         style={{ marginLeft: 10 }}
-        text={I18n.t('settings_title.locale', { locale })}>
+        text={I18n.t('settings_title.locale', { locale: app.locale })}>
         <Dropdown.Menu>
           {availableLocales.map((item) => {
             return (
@@ -51,7 +51,7 @@ const LocalePicker = () => {
                   changeLanguage(item);
                 }}
                 key={item.value}
-                active={locale === item.value}
+                active={app.locale === item.value}
                 size="small">
                 {item.label}
               </Dropdown.Item>

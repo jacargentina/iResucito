@@ -93,20 +93,20 @@ export const getLocaleLabel = (code: string): string => {
 };
 
 export const getLocalesForPicker = (
-  defaultLocale: string
+  defaultLocale?: string
 ): Array<PickerLocale> => {
   var locales = [];
+  if (defaultLocale) {
+    locales.push({
+      label: `${I18n.t('ui.default')} - ${getLocaleLabel(defaultLocale)}`,
+      value: 'default',
+    });
+  }
   for (var code in I18n.translations) {
     locales.push({ label: getLocaleLabel(code), value: code });
   }
   locales.sort((a, b) => a.label.localeCompare(b.label));
-  return [
-    {
-      label: `${I18n.t('ui.default')} - ${getLocaleLabel(defaultLocale)}`,
-      value: 'default',
-    },
-    ...locales,
-  ];
+  return locales;
 };
 
 export const getValidatedLocale = (
