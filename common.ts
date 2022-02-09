@@ -80,8 +80,14 @@ export const getPropertyLocale = (obj: any, rawLoc: string): string => {
 };
 
 export const getLocaleLabel = (code: string): string => {
+  if (!code) {
+    return 'code is empty';
+  }
   const parts = code.split('-');
   const l = langs.where('1', parts[0]);
+  if (!l) {
+    return `Unknown code = "${code}"`;
+  }
   var label = l.local;
   if (parts.length > 1) {
     const countryName = countries.getName(parts[1]);
@@ -113,6 +119,9 @@ export const getValidatedLocale = (
   availableLocales: Array<PickerLocale>,
   locale: string
 ): PickerLocale | undefined => {
+  if (!locale) {
+    return undefined;
+  }
   const loc = locale.split('-')[0];
   const best = availableLocales.find(
     (l) => l.value === locale || l.value === loc
