@@ -1,22 +1,22 @@
+import { useActionData } from 'remix';
 import { Message } from 'semantic-ui-react';
 import I18n from '~/translations';
-import { useApp } from '~/app.context';
 
 const ApiMessage = () => {
-  const app = useApp();
-  const { apiResult } = app;
-  if (!apiResult) {
+  const data = useActionData();
+
+  if (!data?.error && !data?.ok) {
     return null;
   }
 
   return (
-    <Message negative={!!apiResult.error} positive={!!apiResult.ok}>
+    <Message negative={data?.error} positive={data?.ok}>
       <Message.Header>
-        {apiResult.error && I18n.t('ui.error ocurred')}
-        {apiResult.ok && I18n.t('ui.info message')}
+        {data?.error && I18n.t('ui.error ocurred')}
+        {data?.ok && I18n.t('ui.info message')}
       </Message.Header>
       <p>
-        {apiResult.error} {apiResult.ok}
+        {data?.error} {data?.ok}
       </p>
     </Message>
   );

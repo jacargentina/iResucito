@@ -105,7 +105,9 @@
     "how to add": "Kaip pridėti",
     "add empty": "Pridėti be turinio",
     "copy from spanish": "Kopijuoti iš ispaniškos versijos",
-    "diff view": "Diff vaizdas"
+    "diff view": "Diff vaizdas",
+    "password changed": "Slaptažodis pakeistas. Prisijunkite naudodami naują slaptažodį.",
+    "reset password": "Iš naujo nustatyti pamirštą slaptažodį."
   },
   "pdf_export_options": {
     "selected songs": "Pasirinktos giesmės",

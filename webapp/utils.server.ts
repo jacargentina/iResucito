@@ -2,6 +2,7 @@ import * as path from 'path';
 import * as fs from 'fs';
 import { SongsExtras } from '~/SongsExtras';
 import { SongsProcessor } from '~/SongsProcessor';
+import send from 'gmail-send';
 
 const NodeReader = (path: string) => {
   return fs.promises.readFile(path, 'utf8');
@@ -62,3 +63,9 @@ export async function saveLocalePatch(patchObj: SongIndexPatch | undefined) {
   const json = JSON.stringify(patchObj, null, ' ');
   await folderExtras.savePatch(json);
 }
+
+export const mailSender = send({
+  user: 'javier.alejandro.castro@gmail.com',
+  pass: process.env.GMAIL_PASSWORD,
+  subject: 'iResucito Web',
+});

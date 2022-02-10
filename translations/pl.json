@@ -105,7 +105,9 @@
     "how to add": "Jak dodać",
     "add empty": "Dodaj bez zawartości",
     "copy from spanish": "Kopia wersji hiszpańskiej",
-    "diff view": "Widok różnic"
+    "diff view": "Widok różnic",
+    "password changed": "Hasło zostało zmienione. Zaloguj się przy użyciu nowego hasła.",
+    "reset password": "Zresetuj zapomniane hasło."
   },
   "pdf_export_options": {
     "selected songs": "Wybrane pieśni",

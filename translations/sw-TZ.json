@@ -105,7 +105,9 @@
     "how to add": "Jinsi ya kuongeza",
     "add empty": "Ongeza chaguo wazi",
     "copy from spanish": "Nakala kutoka kihispania",
-    "diff view": "Maoni tofauti"
+    "diff view": "Maoni tofauti",
+    "password changed": "Nenosiri limebadilishwa. Tafadhali ingia kwa nenosiri lako jipya.",
+    "reset password": "Weka upya nenosiri lililosahau."
   },
   "pdf_export_options": {
     "selected songs": "Nyimbo changulia",

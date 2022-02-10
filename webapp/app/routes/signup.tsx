@@ -1,23 +1,30 @@
+import { Header, Image, Grid } from 'semantic-ui-react';
+import Layout from '~/components/Layout';
+import ApiMessage from '~/components/ApiMessage';
 import bcrypt from 'bcryptjs';
-import send from 'gmail-send';
 import { ActionFunction, json } from 'remix';
 import { commitSession, getSession } from '~/session.server';
-import { getdb } from '~/utils.server';
-
-const mailSender = send({
-  user: 'javier.alejandro.castro@gmail.com',
-  pass: process.env.GMAIL_PASSWORD,
-  subject: 'iResucito Web',
-});
+import { getdb, mailSender } from '~/utils.server';
+import I18n from '~/translations';
 
 export let action: ActionFunction = async ({ request }) => {
   const session = await getSession(request.headers.get('Cookie'));
-  const body = await request.json();
-  let { email, password } = body;
+  const body = await request.formData();
+  let email = body.get('email') as string;
+  const password = body.get('password') as string;
   if (!email || !password) {
     return json(
       {
         error: 'Provide an email and password to register',
+      },
+      { status: 500 }
+    );
+  }
+  if (email.indexOf('@') === -1) {
+    return json(
+      {
+        error:
+          'E-mail address has an invalid format. Please correct its value.',
       },
       { status: 500 }
     );
@@ -64,27 +71,28 @@ export let action: ActionFunction = async ({ request }) => {
         ? 'http://iresucito.herokuapp.com'
         : 'http://localhost:3000';
 
-    mailSender(
-      {
+    try {
+      await mailSender({
         to: email,
         text: `Navigate this link ${base}/verify?token=${token}&email=${email} to activate your account.`,
-      },
-      (err, res) => {
-        console.log({ mailSend: { err, res } });
-      }
-    );
-    return json(
-      {
-        ok: `User registered. 
+      });
+      return json(
+        {
+          ok: `User registered. 
 Open your inbox and activate your account 
 with the email we've just sent to you!`,
-      },
-      {
-        headers: {
-          'Set-Cookie': await commitSession(session),
         },
-      }
-    );
+        {
+          headers: {
+            'Set-Cookie': await commitSession(session),
+          },
+        }
+      );
+    } catch (err) {
+      return json({
+        error: `There was an error sending an email: ${(err as Error).message}`,
+      });
+    }
   } catch (err) {
     console.log({ err });
     return json(
@@ -95,3 +103,24 @@ with the email we've just sent to you!`,
     );
   }
 };
+
+const Signup = () => {
+  return (
+    <Layout>
+      <div style={{ padding: 30, width: 500, margin: 'auto' }}>
+        <Image centered circular src="cristo.png" />
+        <Header textAlign="center">
+          iResucito
+          <Header.Subheader>{I18n.t('ui.signup')}</Header.Subheader>
+        </Header>
+        <Grid textAlign="center" verticalAlign="middle">
+          <Grid.Column>
+            <ApiMessage />
+          </Grid.Column>
+        </Grid>
+      </div>
+    </Layout>
+  );
+};
+
+export default Signup;
