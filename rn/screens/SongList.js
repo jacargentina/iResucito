@@ -66,6 +66,14 @@ const SongList = (props: any): React.Node => {
       } else {
         setTotalText(I18n.t('ui.no songs found'));
       }
+      if (isFocused && textFilter && listRef.current) {
+        listRef.current.scrollToIndex({
+          index: 0,
+          animated: true,
+          viewOffset: 0,
+          viewPosition: 1,
+        });
+      }
     }
   }, [
     route?.params?.filter,
@@ -77,20 +85,10 @@ const SongList = (props: any): React.Node => {
   ]);
 
   useLayoutEffect(() => {
-    if (textFilter && search && search.length > 0 && isFocused) {
-      if (listRef.current) {
-        listRef.current.scrollToIndex({
-          index: 0,
-          animated: true,
-          viewOffset: 0,
-          viewPosition: 1,
-        });
-      }
-    }
     navigation.setOptions({
       headerRight: () => <ExportToPdfButton onPress={chooser.onOpen} />,
     });
-  }, [textFilter, search, isFocused, totalText, navigation, chooser]);
+  }, [navigation, chooser]);
 
   const onPress = (song) => {
     if (props.onPress) {
