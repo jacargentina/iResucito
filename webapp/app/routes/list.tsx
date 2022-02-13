@@ -4,6 +4,9 @@ import PdfSettingsDialog from '~/components/PdfSettingsDialog';
 import { readLocalePatch, folderSongs } from '~/utils.server';
 import { json, LoaderFunction, useLoaderData } from 'remix';
 import { getSession } from '~/session.server';
+import { useApp } from '~/app.context';
+import { Loader } from 'semantic-ui-react';
+import I18n from '~/translations';
 
 export let loader: LoaderFunction = async ({ request }) => {
   const session = await getSession(request.headers.get('Cookie'));
@@ -30,11 +33,29 @@ export let loader: LoaderFunction = async ({ request }) => {
 };
 
 const List = () => {
+  const { isChangingLanguage } = useApp();
   const { songs } = useLoaderData();
 
   return (
     <Layout title="Buscador">
-      <SongList songs={songs} />
+      {isChangingLanguage ? (
+        <div
+          style={{
+            height: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <Loader
+            active
+            inline="centered"
+            size="large"
+            content={I18n.t('ui.loading')}
+          />
+        </div>
+      ) : (
+        <SongList songs={songs} />
+      )}
       <PdfSettingsDialog />
     </Layout>
   );

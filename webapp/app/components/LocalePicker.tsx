@@ -12,26 +12,11 @@ availableLocales = getLocalesForPicker(
 );
 
 const LocalePicker = () => {
-  const fetcher = useFetcher();
   const app = useApp();
 
   const current = useMemo<PickerLocale | undefined>(() => {
     return getValidatedLocale(availableLocales, app.locale);
   }, [availableLocales, app.locale]);
-
-  const changeLanguage = useCallback((item: PickerLocale) => {
-    const changeTo = item.value === 'default' ? navigator.language : item.value;
-    fetcher.submit(null, {
-      action: '/lang/' + changeTo,
-      method: 'post',
-    });
-  }, []);
-
-  useEffect(() => {
-    if (fetcher.data?.newLocale) {
-      I18n.locale = fetcher.data?.newLocale;
-    }
-  }, [fetcher.data]);
 
   return (
     <>
@@ -45,7 +30,7 @@ const LocalePicker = () => {
             return (
               <Dropdown.Item
                 onClick={() => {
-                  changeLanguage(item);
+                  app.changeLanguage(item);
                 }}
                 key={item.value}
                 active={app.locale === item.value}

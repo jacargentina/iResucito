@@ -25,30 +25,28 @@ const DiffViewDialog = () => {
       <Modal.Header>{I18n.t('ui.diff view')}</Modal.Header>
       <Modal.Content scrolling>
         {editSong && <h5>{editSong.titulo.toUpperCase()}</h5>}
-        <Loading height="auto">
-          <div style={{ flex: 1 }}>
-            {diffView &&
-              diffView.map((item, i) => {
-                const colorName = item.added
-                  ? 'green'
-                  : item.removed
-                  ? 'red'
-                  : 'grey';
-                const val = item.value.replace(/\n/g, '<br/>');
-                return (
-                  <span
-                    key={i}
-                    style={{
-                      fontFamily: 'monospace',
-                      whiteSpace: 'pre',
-                      color: colorName,
-                    }}
-                    dangerouslySetInnerHTML={{ __html: val }}
-                  />
-                );
-              })}
-          </div>
-        </Loading>
+        <div style={{ flex: 1 }}>
+          {diffView &&
+            diffView.map((item, i) => {
+              const colorName = item.added
+                ? 'green'
+                : item.removed
+                ? 'red'
+                : 'grey';
+              const val = item.value.replace(/\n/g, '<br/>');
+              return (
+                <span
+                  key={i}
+                  style={{
+                    fontFamily: 'monospace',
+                    whiteSpace: 'pre',
+                    color: colorName,
+                  }}
+                  dangerouslySetInnerHTML={{ __html: val }}
+                />
+              );
+            })}
+        </div>
       </Modal.Content>
       <Modal.Actions>
         <Button negative onClick={() => setActiveDialog()}>

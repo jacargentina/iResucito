@@ -322,7 +322,13 @@ const SongList = (props: any) => {
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-          <Loader active inline="centered" size="large" inverted={false} />
+          <Loader
+            active
+            inline="centered"
+            size="large"
+            content={I18n.t('ui.loading')}
+            inverted={false}
+          />
         </div>
       )}
       {pdfUrl && (

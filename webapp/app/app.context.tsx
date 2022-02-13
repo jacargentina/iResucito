@@ -1,4 +1,12 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
+import { useFetcher } from 'remix';
+import I18n from '~/translations';
 
 type AppContextData = {
   user?: any;
@@ -16,7 +24,9 @@ type AppContextData = {
   apiResult: any;
   setApiResult: any;
   handleApiError: any;
+  changeLanguage: Function;
   locale: string;
+  isChangingLanguage: boolean;
 };
 
 const AppContext = createContext<AppContextData | undefined>(undefined);
@@ -36,6 +46,21 @@ export const AppProvider = (props: {
   const [confirmData, setConfirmData] = useState();
   const [activeDialog, setActiveDialog] = useState();
   const [dialogCallback, setDialogCallback] = useState();
+  const fetcher = useFetcher();
+
+  const changeLanguage = useCallback((item: PickerLocale) => {
+    const changeTo = item.value === 'default' ? navigator.language : item.value;
+    fetcher.submit(null, {
+      action: '/lang/' + changeTo,
+      method: 'post',
+    });
+  }, []);
+
+  useEffect(() => {
+    if (fetcher.data?.newLocale) {
+      I18n.locale = fetcher.data?.newLocale;
+    }
+  }, [fetcher.data]);
 
   const handleApiError = (err) => {
     setApiLoading(false);
@@ -70,7 +95,9 @@ export const AppProvider = (props: {
         apiResult,
         setApiResult,
         handleApiError,
+        changeLanguage,
         locale,
+        isChangingLanguage: fetcher.state !== 'idle'
       }}>
       {children}
     </AppContext.Provider>

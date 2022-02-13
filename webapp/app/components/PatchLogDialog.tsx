@@ -25,68 +25,66 @@ const PatchLogDialog = () => {
       <Modal.Header>{I18n.t('ui.patch log')}</Modal.Header>
       <Modal.Content>
         {editSong && <h5>{editSong.titulo.toUpperCase()}</h5>}
-        <Loading height="auto">
-          <div style={{ flex: 1 }}>
-            {patchLogs &&
-              patchLogs.changes.length === 0 &&
-              !patchLogs.pending && (
-                <Message>{I18n.t('ui.no items to show')}</Message>
-              )}
-            {patchLogs && patchLogs.changes.length > 0 && (
-              <Grid columns={3} divided celled>
-                <Grid.Row color="black" style={{ fontWeight: 'bold' }}>
-                  <Grid.Column width={4} style={{ overflow: 'hidden' }}>
-                    User
-                  </Grid.Column>
-                  <Grid.Column width={3} style={{ overflow: 'hidden' }}>
-                    Date
-                  </Grid.Column>
-                  <Grid.Column width={9} style={{ overflow: 'hidden' }}>
-                    Changes
-                  </Grid.Column>
-                </Grid.Row>
-                {patchLogs.changes.map((item) => {
-                  var detail = [];
-                  if (item.created) detail.push('Created');
-                  if (item.rename)
-                    detail.push(
-                      `Renamed from ${item.rename.original} to ${item.rename.new}`
-                    );
-                  if (item.linked) detail.push(`Linked ${item.linked.new}`);
-                  if (item.updated) detail.push('Updated text');
-                  if (item.staged)
-                    detail.push(
-                      `Staged from ${item.staged.original} to ${item.staged.new}`
-                    );
-                  return (
-                    <Grid.Row key={item.date}>
-                      <Grid.Column width={4} style={{ overflow: 'hidden' }}>
-                        {item.author}
-                      </Grid.Column>
-                      <Grid.Column width={3} style={{ overflow: 'hidden' }}>
-                        {new Date(item.date).toLocaleString()}
-                      </Grid.Column>
-                      <Grid.Column width={9} style={{ overflow: 'hidden' }}>
-                        <Message list={detail} />
-                      </Grid.Column>
-                    </Grid.Row>
+        <div style={{ flex: 1 }}>
+          {patchLogs &&
+            patchLogs.changes.length === 0 &&
+            !patchLogs.pending && (
+              <Message>{I18n.t('ui.no items to show')}</Message>
+            )}
+          {patchLogs && patchLogs.changes.length > 0 && (
+            <Grid columns={3} divided celled>
+              <Grid.Row color="black" style={{ fontWeight: 'bold' }}>
+                <Grid.Column width={4} style={{ overflow: 'hidden' }}>
+                  User
+                </Grid.Column>
+                <Grid.Column width={3} style={{ overflow: 'hidden' }}>
+                  Date
+                </Grid.Column>
+                <Grid.Column width={9} style={{ overflow: 'hidden' }}>
+                  Changes
+                </Grid.Column>
+              </Grid.Row>
+              {patchLogs.changes.map((item) => {
+                var detail = [];
+                if (item.created) detail.push('Created');
+                if (item.rename)
+                  detail.push(
+                    `Renamed from ${item.rename.original} to ${item.rename.new}`
                   );
-                })}
-              </Grid>
-            )}
-            {patchLogs && patchLogs.pending && (
-              <Message
-                warning
-                list={[
-                  I18n.t('ui.patch pending', {
-                    author: patchLogs.pending.author,
-                    date: new Date(patchLogs.pending.date).toLocaleString(),
-                  }),
-                ]}
-              />
-            )}
-          </div>
-        </Loading>
+                if (item.linked) detail.push(`Linked ${item.linked.new}`);
+                if (item.updated) detail.push('Updated text');
+                if (item.staged)
+                  detail.push(
+                    `Staged from ${item.staged.original} to ${item.staged.new}`
+                  );
+                return (
+                  <Grid.Row key={item.date}>
+                    <Grid.Column width={4} style={{ overflow: 'hidden' }}>
+                      {item.author}
+                    </Grid.Column>
+                    <Grid.Column width={3} style={{ overflow: 'hidden' }}>
+                      {new Date(item.date).toLocaleString()}
+                    </Grid.Column>
+                    <Grid.Column width={9} style={{ overflow: 'hidden' }}>
+                      <Message list={detail} />
+                    </Grid.Column>
+                  </Grid.Row>
+                );
+              })}
+            </Grid>
+          )}
+          {patchLogs && patchLogs.pending && (
+            <Message
+              warning
+              list={[
+                I18n.t('ui.patch pending', {
+                  author: patchLogs.pending.author,
+                  date: new Date(patchLogs.pending.date).toLocaleString(),
+                }),
+              ]}
+            />
+          )}
+        </div>
       </Modal.Content>
       <Modal.Actions>
         <Button negative onClick={() => setActiveDialog()}>
