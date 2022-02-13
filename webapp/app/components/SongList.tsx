@@ -130,7 +130,7 @@ const SongList = (props: any) => {
           return filters[name] === false || song[name] === filters[name];
         });
         if (onlyTranslated) {
-          flags.push(getPropertyLocale(song.files, I18n.locale) !== undefined);
+          flags.push(getPropertyLocale(song.files, I18n.locale) !== '');
         }
         return flags.every((f) => f === true);
       });
