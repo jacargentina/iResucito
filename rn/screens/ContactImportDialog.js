@@ -22,6 +22,49 @@ import {
   ordenAlfabetico,
 } from '../util';
 
+const BrotherItem = React.memo((props) => {
+  const { item, handleContact } = props;
+  return (
+    <Pressable
+      style={{ marginRight: 10, width: 56 }}
+      onPress={() => handleContact(item)}>
+      <ContactPhoto item={item} />
+      <Text noOfLines={1} textAlign="center" mt="2" fontSize="sm">
+        {item.givenName}
+      </Text>
+    </Pressable>
+  );
+});
+
+const ContactItem = React.memo((props) => {
+  const { item, handleContact } = props;
+  var contactFullName = item.givenName;
+  if (item.familyName) {
+    contactFullName += ` ${item.familyName}`;
+  }
+  return (
+    <Pressable onPress={() => handleContact(item)}>
+      <HStack p="2" justifyContent="space-between" alignItems="center">
+        <ContactPhoto item={item} />
+        <VStack w="60%">
+          <Text bold fontSize="lg" noOfLines={1}>
+            {contactFullName}
+          </Text>
+          <Text noOfLines={1}>
+            {item.emailAddresses && item.emailAddresses.length > 0
+              ? item.emailAddresses[0].email
+              : null}
+          </Text>
+        </VStack>
+        <Switch
+          isChecked={item.imported}
+          onToggle={() => handleContact(item)}
+        />
+      </HStack>
+    </Pressable>
+  );
+});
+
 const ContactImportDialog = (): React.Node => {
   const data = useContext(DataContext);
   const { brothers, deviceContacts, addOrRemove } = data.community;
@@ -75,61 +118,27 @@ const ContactImportDialog = (): React.Node => {
             borderBottomWidth={StyleSheet.hairlineWidth}
             borderBottomColor="muted.300">
             <FlatList
+              removeClippedSubviews
               horizontal={true}
               keyboardShouldPersistTaps="always"
               refreshing={loading}
               data={brothers}
               keyExtractor={(item) => item.recordID}
-              renderItem={({ item }) => {
-                return (
-                  <Pressable
-                    style={{ marginRight: 10, width: 56 }}
-                    onPress={() => handleContact(item)}>
-                    <ContactPhoto item={item} />
-                    <Text noOfLines={1} textAlign="center" mt="2" fontSize="sm">
-                      {item.givenName}
-                    </Text>
-                  </Pressable>
-                );
-              }}
+              renderItem={({ item }) => (
+                <BrotherItem item={item} handleContact={handleContact} />
+              )}
             />
           </Box>
         )}
         <FlatList
+          removeClippedSubviews
           onScrollBeginDrag={() => Keyboard.dismiss()}
           keyboardShouldPersistTaps="always"
           data={filtered}
           keyExtractor={(item) => item.recordID}
-          renderItem={({ item }) => {
-            var contactFullName = item.givenName;
-            if (item.familyName) {
-              contactFullName += ` ${item.familyName}`;
-            }
-            return (
-              <Pressable onPress={() => handleContact(item)}>
-                <HStack
-                  p="2"
-                  justifyContent="space-between"
-                  alignItems="center">
-                  <ContactPhoto item={item} />
-                  <VStack w="60%">
-                    <Text bold fontSize="lg" noOfLines={1}>
-                      {contactFullName}
-                    </Text>
-                    <Text noOfLines={1}>
-                      {item.emailAddresses && item.emailAddresses.length > 0
-                        ? item.emailAddresses[0].email
-                        : null}
-                    </Text>
-                  </VStack>
-                  <Switch
-                    isChecked={item.imported}
-                    onToggle={() => handleContact(item)}
-                  />
-                </HStack>
-              </Pressable>
-            );
-          }}
+          renderItem={({ item }) => (
+            <ContactItem item={item} handleContact={handleContact} />
+          )}
         />
       </SearchBarView>
     </ModalView>
