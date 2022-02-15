@@ -1,5 +1,4 @@
 import { useContext, useState, useEffect, useRef } from 'react';
-import * as axios from 'axios';
 import {
   TextArea,
   Icon,
@@ -54,13 +53,13 @@ const SongEditor = () => {
     }
     setLoading(false);
     setPdfUrl(undefined);
-    axios
-      .post(`/pdf/${editSong.key}`, formData, {
-        responseType: 'blob',
-      })
+    fetch(`/pdf/${editSong.key}`, { method: 'POST', body: formData })
       .then((response) => {
+        return response.blob();
+      })
+      .then((data) => {
         setLoading(false);
-        setPdfUrl(window.URL.createObjectURL(new Blob([response.data])));
+        setPdfUrl(window.URL.createObjectURL(new Blob([data])));
       })
       .catch(async (err) => {
         const errText = await new Response(err.response.data).text();

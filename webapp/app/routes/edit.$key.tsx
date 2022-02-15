@@ -67,8 +67,8 @@ const SongEdit = () => {
     song && song.notTranslated
       ? {
           key: song.key,
-          nombre: `Translate name [${song.nombre}]`,
-          titulo: `Translate title [${song.titulo}]`,
+          nombre: song.nombre,
+          titulo: song.titulo,
           fullText: 'New translated song text here.',
           stage: 'precatechumenate',
         }

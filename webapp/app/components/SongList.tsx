@@ -10,7 +10,6 @@ import {
   Icon,
   Loader,
 } from 'semantic-ui-react';
-import * as axios from 'axios';
 import useHotkeys from 'use-hotkeys';
 import SongViewPdf from '~/components/SongViewPdf';
 import ApiMessage from '~/components/ApiMessage';
@@ -36,22 +35,20 @@ const SongList = (props: any) => {
   };
 
   const previewPdf = () => {
+    const formData = new FormData();
     const savedSettings = localStorage.getItem('pdfExportOptions');
-    const pdfData = {
-      options: null,
-    };
     if (savedSettings) {
-      pdfData.options = JSON.parse(savedSettings);
+      formData.append('options', savedSettings);
     }
     setLoading(true);
     setPdfUrl();
-    return axios
-      .post(`/pdf/full`, pdfData, {
-        responseType: 'blob',
-      })
+    return fetch(`/pdf/full`, { method: 'POST', body: formData })
       .then((response) => {
+        return response.blob();
+      })
+      .then((data) => {
         setLoading(false);
-        setPdfUrl(window.URL.createObjectURL(new Blob([response.data])));
+        setPdfUrl(window.URL.createObjectURL(new Blob([data])));
       })
       .catch(async (err) => {
         const text = await new Response(err.response.data).text();
@@ -104,10 +101,12 @@ const SongList = (props: any) => {
 
   const addSong = () => {
     setApiResult();
-    axios
-      .get(`/song/newSong`)
+    fetch(`/song/newSong`)
       .then((result) => {
-        edit(result.data.song);
+        return result.json();
+      })
+      .then((data) => {
+        edit(data.song);
       })
       .catch((err) => {
         handleApiError(err);

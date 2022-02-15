@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import * as axios from 'axios';
 import I18n from '~/translations';
 import { getSongFileFromString } from '~/SongsProcessor';
 import { useNavigate } from 'remix';
@@ -59,8 +58,7 @@ const EditContextWrapper = (props: any) => {
       yes: () => {
         setApiResult();
         setApiLoading(true);
-        return axios
-          .delete(`/song/${editSong.key}`)
+        return fetch(`/song/${editSong.key}`, { method: 'DELETE' })
           .then((result) => {
             setApiLoading(false);
             navigate('/list');
@@ -80,12 +78,17 @@ const EditContextWrapper = (props: any) => {
     };
     setApiResult();
     setApiLoading(true);
-    return axios
-      .post(`/song/${editSong.key}`, patch)
-      .then((result) => {
+    return fetch(`/song/${editSong.key}`, {
+      method: 'POST',
+      body: JSON.stringify(patch),
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
         setApiLoading(false);
         setHasChanges(false);
-        setEditSong(result.data.song);
+        setEditSong(data.song);
       })
       .catch((err) => {
         handleApiError(err);
@@ -97,11 +100,13 @@ const EditContextWrapper = (props: any) => {
       setPatchLogs();
       setApiResult();
       setApiLoading(true);
-      axios
-        .get(`/patches/${editSong.key}`)
-        .then((result) => {
+      fetch(`/patches/${editSong.key}`)
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
           setApiLoading(false);
-          setPatchLogs(result.data);
+          setPatchLogs(data);
         })
         .catch((err) => {
           handleApiError(err);
@@ -114,11 +119,13 @@ const EditContextWrapper = (props: any) => {
       setDiffView();
       setApiResult();
       setApiLoading(true);
-      axios
-        .get(`/diff/${editSong.key}`)
-        .then((result) => {
+      fetch(`/diff/${editSong.key}`)
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
           setApiLoading(false);
-          setDiffView(result.data.diff);
+          setDiffView(data.diff);
         })
         .catch((err) => {
           handleApiError(err);
