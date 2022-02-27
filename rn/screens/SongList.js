@@ -34,7 +34,7 @@ const SongList = (props: any): React.Node => {
   const [loading] = data.loading;
   const [showSalmosBadge, setShowSalmosBadge] = useState();
   const [textFilter, setTextFilter] = useState('');
-  const [search, setSearch] = useState();
+  const [search, setSearch] = useState([]);
 
   useEffect(() => {
     if (songs) {
@@ -66,14 +66,6 @@ const SongList = (props: any): React.Node => {
       } else {
         setTotalText(I18n.t('ui.no songs found'));
       }
-      if (isFocused && textFilter && listRef.current) {
-        listRef.current.scrollToIndex({
-          index: 0,
-          animated: true,
-          viewOffset: 0,
-          viewPosition: 1,
-        });
-      }
     }
   }, [
     route?.params?.filter,
@@ -89,6 +81,17 @@ const SongList = (props: any): React.Node => {
       headerRight: () => <ExportToPdfButton onPress={chooser.onOpen} />,
     });
   }, [navigation, chooser]);
+
+  useEffect(() => {
+    if (search.length > 0 && isFocused && textFilter && listRef.current) {
+      listRef.current.scrollToIndex({
+        index: 0,
+        animated: true,
+        viewOffset: 0,
+        viewPosition: 1,
+      });
+    }
+  }, [search, isFocused, textFilter]);
 
   const onPress = (song) => {
     if (props.onPress) {
@@ -119,7 +122,7 @@ const SongList = (props: any): React.Node => {
         ref={listRef}
         onScrollBeginDrag={() => Keyboard.dismiss()}
         keyboardShouldPersistTaps="always"
-        data={search || []}
+        data={search}
         renderItem={({ item }) => {
           return (
             <SongListItem
