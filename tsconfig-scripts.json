@@ -1,18 +1,15 @@
 {
-  "include": ["types.d.ts", "webapp/remix.env.d.ts", "**/*.ts", "**/*.tsx"],
+  "extends": "tsconfig.json",
+  "include": ["scripts/*.ts"],
   "compilerOptions": {
     "module": "esnext",
     "lib": ["DOM", "DOM.Iterable", "ES2019"],
     "esModuleInterop": true,
-    "jsx": "react-jsx",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "strict": true,
     "paths": {
       "~/*": ["./webapp/app/*", "./webapp/*", "./*"]
-    },
-
-    // Remix takes care of building everything in `remix build`.
-    "noEmit": true
+    }
   }
 }

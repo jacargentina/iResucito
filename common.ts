@@ -431,7 +431,7 @@ export class PdfWriter {
 
   getCenteringY(text: string, size: number): number {
     const height = this.doc.fontSize(size).heightOfString(text);
-    return parseInt((this.opts.widthHeightPixels - height) / 2, 10);
+    return (this.opts.widthHeightPixels - height) / 2;
   }
 
   writeText(text: string, color: any, size: number, opts?: any): number {

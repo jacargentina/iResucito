@@ -62,7 +62,6 @@ declare type SongStyles = {
   clampLine: any;
   indicator: any;
   notesLine: any;
-  notesMarginLine: any;
   specialNoteTitle: any;
   specialNote: any;
   normalLine: any;

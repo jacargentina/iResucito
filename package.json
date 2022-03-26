@@ -16,7 +16,8 @@
     "lint": "eslint . --ext .js",
     "react-devtools": "react-devtools",
     "genpdf": "babel-node ./scripts/songToPdf.js",
-    "patch": "node ./webapp/syncData.js down && babel-node ./scripts/applyPatch.js && node ./webapp/syncData.js up SongsIndexPatch.json"
+    "patch": "node ./webapp/syncData.js down && babel-node ./scripts/applyPatch.js && node ./webapp/syncData.js up SongsIndexPatch.json",
+    "ts-scripts": "tsc -p ./tsconfig-scripts.json --outDir ./scripts/dist"
   },
   "jest": {
     "preset": "react-native"

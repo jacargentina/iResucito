@@ -3,7 +3,7 @@ declare type FileReaderFunc = (path: string) => Promise<string>;
 declare type FileWriterFunc = (
   path: string,
   content: any,
-  encoding: string
+  encoding: BufferEncoding
 ) => Promise<any>;
 declare type FileUnlinkFunc = (path: string) => Promise<any>;
 

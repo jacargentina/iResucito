@@ -106,13 +106,6 @@ export const stylesObj: SongStyles = {
     fontSize: fontSizeNotas,
     color: '#444444',
   },
-  notesMarginLine: {
-    fontFamily: 'Franklin Gothic Medium',
-    color: '#ff0000',
-    fontSize: fontSizeNotas,
-    marginTop: 15,
-    marginLeft: 4,
-  },
   normalLine: {
     fontFamily: 'Franklin Gothic Medium',
     color: '#000000',

@@ -15,7 +15,6 @@ export const WebStyles: SongStyles = {
   notesLine: { color: '#ff0000', fontSize: FontSizes.Notas },
   specialNoteTitle: { color: '#ff0000', fontSize: FontSizes.Texto },
   specialNote: { color: '#444444', fontSize: FontSizes.Texto },
-  notesMarginLine: { color: '#ff0000', fontSize: FontSizes.Notas },
   normalLine: { color: '#000000', fontSize: FontSizes.Texto },
   pageNumber: { color: '#000000' },
   prefix: { color: '#777777', fontSize: FontSizes.Texto },

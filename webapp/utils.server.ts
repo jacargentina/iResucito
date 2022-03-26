@@ -8,7 +8,7 @@ const NodeReader = (path: string) => {
   return fs.promises.readFile(path, 'utf8');
 };
 
-const NodeWriter = (path: string, content: any, encoding: string) => {
+const NodeWriter = (path: string, content: any, encoding: BufferEncoding) => {
   return fs.promises.writeFile(path, content, encoding);
 };
 
