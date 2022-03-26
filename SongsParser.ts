@@ -239,17 +239,19 @@ export class SongsParser {
       const initial = chords.find(
         (ch) => ch.toLowerCase() === cleanChord.toLowerCase()
       );
-      const i = chords.indexOf(initial);
-      if (i !== -1) {
-        const j = (i + diff) % 12;
-        var newChord = j < 0 ? chordsInverted[j * -1] : chords[j];
-        if (isLower) {
-          newChord = newChord.toLowerCase();
+      if (initial) {
+        const i = chords.indexOf(initial);
+        if (i !== -1) {
+          const j = (i + diff) % 12;
+          var newChord = j < 0 ? chordsInverted[j * -1 - 1] : chords[j];
+          if (isLower) {
+            newChord = newChord.toLowerCase();
+          }
+          if (cleanChord.length !== chord.length) {
+            newChord += chord.substring(cleanChord.length);
+          }
+          return newChord;
         }
-        if (cleanChord.length !== chord.length) {
-          newChord += chord.substring(cleanChord.length);
-        }
-        return newChord;
       }
       return chord;
     });
@@ -272,12 +274,17 @@ export class SongsParser {
     const st = chords.find(
       (ch) => ch.toLowerCase() === initialChord.toLowerCase()
     );
-    const start = chords.indexOf(st);
-    const tg = chords.find(
-      (ch) => ch.toLowerCase() === targetChord.toLowerCase()
-    );
-    const target = chords.indexOf(tg);
-    return target - start;
+    if (st) {
+      const start = chords.indexOf(st);
+      const tg = chords.find(
+        (ch) => ch.toLowerCase() === targetChord.toLowerCase()
+      );
+      if (tg) {
+        const target = chords.indexOf(tg);
+        return target - start;
+      }
+    }
+    return 0;
   }
 
   getSongLines(content: string, locale: string): Array<SongLine> {
