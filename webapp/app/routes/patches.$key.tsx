@@ -21,7 +21,7 @@ export let loader: LoaderFunction = async ({ request, params }) => {
     pending = { author, date };
   }
 
-  const result = { changes, pending };
+  const result: SongChangesAndPatches = { changes, pending };
 
   const etag = await import('etag');
   const headers = {

@@ -4,7 +4,35 @@ import { getSongFileFromString } from '~/SongsProcessor';
 import { useNavigate } from 'remix';
 import { useApp } from '~/app.context';
 
-export const EditContext: any = React.createContext();
+export type EditContextType = {
+  editSong: any;
+  index: any;
+  previousKey: any;
+  nextKey: any;
+  totalSongs: any;
+  songFile: any;
+  patchLogs: SongChangesAndPatches;
+  diffView: any;
+  setConfirmData: any;
+  confirmClose: any;
+  hasChanges: any;
+  setHasChanges: any;
+  applyChanges: any;
+  goPrevious: any;
+  goNext: any;
+  confirmRemovePatch: any;
+  text: any;
+  setText: any;
+  name: any;
+  setName: any;
+  stage: any;
+  setStage: any;
+  activeDialog: any;
+};
+
+export const EditContext: any = React.createContext<
+  EditContextType | undefined
+>(undefined);
 
 const EditContextWrapper = (props: any) => {
   const navigate = useNavigate();
@@ -23,9 +51,9 @@ const EditContextWrapper = (props: any) => {
   const [name, setName] = useState();
   const [stage, setStage] = useState();
   const [hasChanges, setHasChanges] = useState(false);
-  const [patchLogs, setPatchLogs] = useState();
-  const [diffView, setDiffView] = useState();
-  const [songFile, setSongFile] = useState();
+  const [patchLogs, setPatchLogs] = useState<SongChangesAndPatches | undefined>();
+  const [diffView, setDiffView] = useState<any>();
+  const [songFile, setSongFile] = useState<SongFile>();
 
   const goPrevious = () => {
     if (!hasChanges && previousKey) {

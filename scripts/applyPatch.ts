@@ -4,17 +4,18 @@ import util from 'util';
 import fs from 'fs';
 import { execSync } from 'child_process';
 require('colors');
+import SongsIndexRaw from '../songs/index.json';
+import SongsHistoryRaw from '../songs/patches.json';
+
+const SongsIndex: SongsData = SongsIndexRaw;
+
+var SongsHistory: SongsChanges = SongsHistoryRaw;
+
 const songsDir = path.resolve(__dirname, '../songs');
-const indexPath = path.resolve(songsDir, 'index.json');
-const patchesPath = path.resolve(songsDir, 'patches.json');
-
-var SongsIndex = require(indexPath);
-var SongsPatches = require(patchesPath);
-
 const folders = fs.readdirSync(songsDir, { withFileTypes: true });
 
 const onlyNames = folders.filter((d) => d.isDirectory()).map((d) => d.name);
-const languageFolders = onlyNames.reduce((obj, item) => {
+const languageFolders = onlyNames.reduce((obj: any, item) => {
   if (typeof item === 'string') {
     obj[item] = item;
   }
@@ -24,12 +25,9 @@ const languageFolders = onlyNames.reduce((obj, item) => {
 const currentDate = Date.now();
 
 const patchSongLogic = (songPatch: SongPatch, key: string) => {
-  var report = {};
-  report.key = key;
   try {
     if (!SongsIndex.hasOwnProperty(key)) {
       SongsIndex[key] = {
-        key,
         files: {},
         stage: 'precatechumenate',
         stages: {},
@@ -65,39 +63,43 @@ const patchSongLogic = (songPatch: SongPatch, key: string) => {
         // Si aun no existe carpeta, crearla
         songDirectory = path.join(songsDir, loc);
         if (!fs.existsSync(songDirectory)) {
-          report.createdFolder = loc;
           fs.mkdirSync(songDirectory);
+          console.log('Created folder:', loc);
         }
       } else {
         loc = existsLoc;
         songDirectory = path.join(songsDir, existsLoc);
       }
-      report.locale = loc;
+
+      var rename: { original: string; new: string } | undefined = undefined;
+      var staged: { original: string; new: string } | undefined = undefined;
+      var updated: boolean = false;
+      var created: boolean = false;
 
       var songFileName = path.join(songDirectory, `${file}.txt`);
       var newName = path.join(songDirectory, `${name}.txt`);
       if (newName !== songFileName) {
-        report.rename = { original: file, new: name };
+        rename = { original: file, new: name };
         execSync(`git mv --force "${songFileName}" "${newName}"`);
         Object.assign(songToPatch.files, { [loc]: name });
         songFileName = newName;
       } else if (songToPatch.files[loc] !== file) {
-        report.rename = { original: songToPatch.files[loc], new: file };
+        rename = { original: songToPatch.files[loc], new: file };
         Object.assign(songToPatch.files, { [loc]: file });
       }
       if (lines) {
-        report.updated = false;
+        updated = false;
         var text = null;
         if (fs.existsSync(songFileName)) {
           text = fs.readFileSync(songFileName, 'utf8');
-          report.created = false;
+          created = false;
         } else {
-          report.created = true;
+          created = true;
         }
         if (text !== lines) {
           fs.writeFileSync(songFileName, lines);
-          if (!report.created) {
-            report.updated = true;
+          if (!created) {
+            updated = true;
           }
         }
       }
@@ -112,35 +114,34 @@ const patchSongLogic = (songPatch: SongPatch, key: string) => {
             songToPatch.stages = {};
           }
           Object.assign(songToPatch.stages, { [loc]: stage });
-          report.staged = { original: currStage, new: stage };
+          staged = { original: currStage, new: stage };
         }
       }
 
       // Guardar historia de cambios sólo si efectivamente se aplicaron cambios
-      if (report.rename || report.created || report.updated || report.staged) {
-        var patchInfo: SongPatchLogData = {
+      if (rename || created || updated || staged) {
+        var patchInfo: SongChange = {
           date: date || currentDate,
-          locale: report.locale,
+          locale: loc,
           author: author,
-          rename: report.rename,
-          created: report.created,
-          updated: report.updated,
-          staged: report.staged,
+          rename: rename,
+          created: created,
+          updated: updated,
+          staged: staged,
         };
-        if (!SongsPatches.hasOwnProperty(key)) {
-          SongsPatches[key] = [];
+        if (!SongsHistory.hasOwnProperty(key)) {
+          SongsHistory[key] = [];
         }
-        var songPatches = SongsPatches[key];
+        var songPatches = SongsHistory[key];
         var found = songPatches.find((x) => x.date === date);
         if (!found) {
           songPatches.push(patchInfo);
         }
       }
     });
-  } catch (err) {
-    report.error = err.message;
+  } catch (err: any) {
+    console.log(err.message);
   }
-  return report;
 };
 
 const patchPath = path.resolve(
@@ -150,13 +151,14 @@ const patchPath = path.resolve(
 const json = fs.readFileSync(patchPath, 'utf8').normalize();
 const patch = JSON.parse(json);
 const stats = getPatchStats(patch);
-const finalReport: any = [];
 Object.keys(patch).forEach((k) => {
-  finalReport.push(patchSongLogic(patch[k], k));
+  patchSongLogic(patch[k], k);
 });
-fs.writeFileSync(indexPath, JSON.stringify(SongsIndex, null, ' '));
-fs.writeFileSync(patchesPath, JSON.stringify(SongsPatches, null, '  '));
-console.log(finalReport);
+fs.writeFileSync('../songs/index.json', JSON.stringify(SongsIndex, null, ' '));
+fs.writeFileSync(
+  '../songs/patches.json',
+  JSON.stringify(SongsHistory, null, '  ')
+);
 console.log(util.inspect(stats, { depth: 10 }));
 const date = new Date();
 const formatDate =

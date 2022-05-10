@@ -8,23 +8,62 @@ declare type PickerLocale = {
   value: string;
 };
 
-declare type SongPatchLogData = {
-  date: number;
-  author: string;
+declare type SongItem = {
+  stage: string;
+  advent?: boolean;
+  christmas?: boolean;
+  lent?: boolean;
+  easter?: boolean;
+  pentecost?: boolean;
+  'signing to the virgin'?: boolean;
+  "children's songs"?: boolean;
+  'lutes and vespers'?: boolean;
+  entrance?: boolean;
+  'peace and offerings'?: boolean;
+  'fraction of bread'?: boolean;
+  communion?: boolean;
+  exit?: boolean;
+  files: {
+    [lang: string]: string;
+  };
+  stages?: {
+    [lang: string]: string;
+  };
+};
+
+declare type SongsData = {
+  [songKey: string]: SongItem;
+};
+
+declare type SongsChanges = {
+  [songKey: string]: Array<SongChange>;
+};
+
+declare type SongChange = {
   locale: string;
+  author: string;
+  date: number;
   linked?: {
     new: string;
   };
-  nombre?: {
-    original?: string;
-    new?: string;
+  rename?: {
+    original: string;
+    new: string;
   };
-  created: boolean;
-  updated: boolean;
+  staged?: {
+    original: string;
+    new: string;
+  };
+  created?: boolean;
+  updated?: boolean;
 };
 
-declare type SongPatchLog = {
-  [key: string]: Array<SongPatchLogData>;
+declare type SongChangesAndPatches = {
+  changes: Array<SongChange>;
+  pending: {
+    author: string;
+    date: string;
+  } | null;
 };
 
 declare type SongPatchData = {

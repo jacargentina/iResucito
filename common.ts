@@ -276,6 +276,7 @@ export class PdfWriter {
   ) {
     this.base64Transform = base64Transform;
     this.opts = opts;
+    // @ts-ignore
     this.doc = new PDFDocument({
       bufferPages: true,
       autoFirstPage: false,

@@ -1,14 +1,13 @@
 import { useContext } from 'react';
 import { Button, Grid, Modal, Message } from 'semantic-ui-react';
-import { EditContext } from './EditContext';
-import Loading from './Loading';
+import { EditContext, EditContextType } from './EditContext';
 import I18n from '~/translations';
 import { useApp } from '~/app.context';
 
 const PatchLogDialog = () => {
   const app = useApp();
   const { activeDialog, setActiveDialog } = app;
-  const edit = useContext(EditContext);
+  const edit = useContext<EditContextType>(EditContext);
   if (!edit) {
     return null;
   }

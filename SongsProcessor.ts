@@ -1,6 +1,10 @@
 import { getPropertyLocale } from './common';
-import SongsIndex from './songs/index.json';
-import SongsHistory from './songs/patches.json';
+import SongsIndexRaw from './songs/index.json';
+import SongsHistoryRaw from './songs/patches.json';
+
+export const SongsHistory: SongsChanges = SongsHistoryRaw;
+
+export const SongsIndex: SongsData = SongsIndexRaw;
 
 export const getSongFileFromString = (str: string): SongFile => {
   var titulo = str.includes(' - ')
@@ -62,7 +66,7 @@ export class SongsProcessor {
     return { locale: loc, name: file };
   }
 
-  getSongHistory(key: string, rawLoc: string): Array<SongPatchData> {
+  getSongHistory(key: string, rawLoc: string): Array<SongChange> {
     const history = SongsHistory[key];
     if (history) {
       return history.filter((p) => p.locale === rawLoc);

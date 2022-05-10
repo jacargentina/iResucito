@@ -394,9 +394,6 @@
       "date": 1631146481592,
       "locale": "en",
       "author": "lavitia9@gmail.com",
-      "rename": {
-        "new": "The Lord Has Given Me - Is 50, 4-10"
-      },
       "created": true,
       "updated": false
     }
@@ -590,9 +587,6 @@
       "date": 1651328754008,
       "locale": "lt-LT",
       "author": "albertiniqmc@gmail.com",
-      "rename": {
-        "new": "Štai mūsų veidrodžiu yra viešpats (XIII Solomono Odė)"
-      },
       "created": true,
       "updated": false,
       "staged": {
@@ -2441,9 +2435,6 @@
       "date": 1622853899136,
       "locale": "en",
       "author": "monicaenrique.10@gmail.com",
-      "rename": {
-        "new": "Akeda - Gn 22, 1-19"
-      },
       "created": true,
       "updated": false
     }
@@ -2720,9 +2711,6 @@
       "date": 1622855237529,
       "locale": "en",
       "author": "monicaenrique.10@gmail.com",
-      "rename": {
-        "new": "Beside the Rivers of Babylon - Psalm 136 (137)"
-      },
       "created": true,
       "updated": false
     }
@@ -2937,9 +2925,7 @@
       "date": 1651315170542,
       "locale": "lt-LT",
       "author": "albertiniqmc@gmail.com",
-      "rename": {
-        "new": "Mano siela, šlovink Jahvę - Psalmė 102 (103)"
-      },
+      
       "created": true,
       "updated": false
     }
@@ -3057,9 +3043,7 @@
       "date": 1629469718542,
       "locale": "en",
       "author": "monicaenrique.10@gmail.com",
-      "rename": {
-        "new": "Blessed Mary - Lk. 1, 42-45"
-      },
+      
       "created": true,
       "updated": false
     }
@@ -3073,12 +3057,6 @@
         "original": "Benedetto sei tu Signore - Dn 3, 52-57",
         "new": "Canto dei tre giovani nella fornace ( I parte) - Dn 3, 52-57"
       },
-      "created": false,
-      "updated": true
-    },
-    {
-      "locale": "it",
-      "author": "giuseppereino@gmail.com",
       "created": false,
       "updated": true
     },
@@ -3209,9 +3187,7 @@
       "date": 1629483510963,
       "locale": "en",
       "author": "monicaenrique.10@gmail.com",
-      "rename": {
-        "new": "Canticle of Zechariah - Lk 1, 67-80"
-      },
+      
       "created": true,
       "updated": false
     }
@@ -3671,9 +3647,7 @@
       "date": 1629480398590,
       "locale": "en",
       "author": "monicaenrique.10@gmail.com",
-      "rename": {
-        "new": "When Israel Came Out of Egypt - Psalm 113 (114)"
-      },
+      
       "created": true,
       "updated": false
     }
@@ -4084,9 +4058,7 @@
       "date": 1622857884424,
       "locale": "en",
       "author": "monicaenrique.10@gmail.com",
-      "rename": {
-        "new": "The Lord Announces a Good News - Psalm 67 (68)"
-      },
+      
       "created": true,
       "updated": false
     }
@@ -4640,9 +4612,7 @@
       "date": 1651327955347,
       "locale": "lt-LT",
       "author": "albertiniqmc@gmail.com",
-      "rename": {
-        "new": "Evenu Šalom Alehem - Hebrajų giesmė"
-      },
+      
       "created": true,
       "updated": false
     }
@@ -5483,9 +5453,7 @@
       "date": 1651331516789,
       "locale": "lt-LT",
       "author": "albertiniqmc@gmail.com",
-      "rename": {
-        "new": "Himno de Pascua - Himno"
-      },
+      
       "created": true,
       "updated": false
     }
@@ -5542,9 +5510,7 @@
       "date": 1651330578576,
       "locale": "lt-LT",
       "author": "albertiniqmc@gmail.com",
-      "rename": {
-        "new": "Himnas Šeštinių mišparams ir Rytmetinei nuo šeštinių iki sekminių"
-      },
+      
       "created": true,
       "updated": false,
       "staged": {
@@ -6027,9 +5993,7 @@
       "date": 1651929273323,
       "locale": "lt-LT",
       "author": "albertiniqmc@gmail.com",
-      "rename": {
-        "new": "Tepasieka tave mano malda - Psalmė 118 (119)"
-      },
+      
       "created": true,
       "updated": false
     }
@@ -9175,9 +9139,7 @@
       "date": 1651308816933,
       "locale": "lt-LT",
       "author": "albertiniqmc@gmail.com",
-      "rename": {
-        "new": "Himnas Mišparams nuo Paschos iki Šeštinių"
-      },
+      
       "created": true,
       "updated": false,
       "staged": {
@@ -9297,9 +9259,7 @@
       "date": 1651310351166,
       "locale": "lt-LT",
       "author": "albertiniqmc@gmail.com",
-      "rename": {
-        "new": "Abba, Tėve - Rm 8, 15-17"
-      },
+      
       "created": true,
       "updated": false
     }
@@ -9448,9 +9408,7 @@
       "date": 1651326803802,
       "locale": "lt-LT",
       "author": "albertiniqmc@gmail.com",
-      "rename": {
-        "new": "Kaip pykčio prasiveržimas (VII Saliamono Odė)"
-      },
+      
       "created": false,
       "updated": true
     }
@@ -9643,9 +9601,7 @@
       "date": 1631141557397,
       "locale": "en",
       "author": "lavitia9@gmail.com",
-      "rename": {
-        "new": "The Same God - 2 Co 4, 6-12"
-      },
+      
       "created": true,
       "updated": false,
       "staged": {
@@ -10501,9 +10457,7 @@
       "date": 1651312844098,
       "locale": "lt-LT",
       "author": "albertiniqmc@gmail.com",
-      "rename": {
-        "new": "Evangelijos aklamacijos Aleliuja"
-      },
+      
       "created": true,
       "updated": false
     }
@@ -10774,9 +10728,7 @@
       "date": 1651313895909,
       "locale": "lt-LT",
       "author": "albertiniqmc@gmail.com",
-      "rename": {
-        "new": "Evangelijos Aklamacija Gavėnios Metu"
-      },
+      
       "created": false,
       "updated": true
     }
@@ -12208,9 +12160,7 @@
       "date": 1629486153558,
       "locale": "en",
       "author": "monicaenrique.10@gmail.com",
-      "rename": {
-        "new": "In the Midst of a Great Crowd - Lk 8, 43-48"
-      },
+      
       "created": true,
       "updated": false
     }
@@ -12651,9 +12601,7 @@
       "date": 1609572667626,
       "locale": "de",
       "author": "benedikt.jacobsen@gmail.com",
-      "rename": {
-        "new": "Maria, Lamm Gottes - Mt 1, 18 ff"
-      },
+      
       "created": false,
       "updated": false,
       "staged": {
@@ -12665,9 +12613,7 @@
       "date": 1651311144907,
       "locale": "lt-LT",
       "author": "albertiniqmc@gmail.com",
-      "rename": {
-        "new": "Dievo Avinėli"
-      },
+      
       "created": true,
       "updated": false,
       "staged": {
@@ -12869,9 +12815,7 @@
       "date": 1618340936923,
       "locale": "es",
       "author": "isaacneri30@gmail.com",
-      "rename": {
-        "new": "Cantad a Dios - Sal 68 (67) 2, 4-7"
-      },
+      
       "created": true,
       "updated": false
     }
@@ -13073,9 +13017,7 @@
       "date": 1645696443293,
       "locale": "de",
       "author": "benedikt.jacobsen@gmail.com",
-      "rename": {
-        "new": "Salve Regina"
-      },
+      
       "created": true,
       "updated": false
     }
@@ -13092,9 +13034,7 @@
       "date": 1621541849668,
       "locale": "it",
       "author": "javier.alejandro.castro@gmail.com",
-      "rename": {
-        "new": "C'è un tempo per ogni cosa - Qo 3, 1-15"
-      },
+      
       "created": true,
       "updated": false
     },
@@ -13102,9 +13042,7 @@
       "date": 1651324563385,
       "locale": "lt-LT",
       "author": "albertiniqmc@gmail.com",
-      "rename": {
-        "new": "Yra metas kiekvienam dalykui - Koh 3, 1-15"
-      },
+      
       "created": true,
       "updated": false
     }
@@ -13114,9 +13052,7 @@
       "date": 1609327398753,
       "locale": "pt-PT",
       "author": "silviorsepulveda@gmail.com",
-      "rename": {
-        "new": "Cristo Jesus é a nossa luz e salvação - Antífona para a Celebração do Lucernário"
-      },
+      
       "created": true,
       "updated": false,
       "staged": {
@@ -13209,9 +13145,7 @@
       "date": 1615846700428,
       "locale": "pt-PT",
       "author": "silviorsepulveda@gmail.com",
-      "rename": {
-        "new": "Sequência do Corpus Christi - Solenidade do Corpo e sangue de Cristo"
-      },
+      
       "created": true,
       "updated": false,
       "staged": {
@@ -13225,9 +13159,7 @@
       "date": 1615762126175,
       "locale": "pt-PT",
       "author": "silviorsepulveda@gmail.com",
-      "rename": {
-        "new": "É paciente - Hino ao Espírito Santo - Kiko Arguello"
-      },
+      
       "created": true,
       "updated": false
     },
@@ -13235,9 +13167,7 @@
       "date": 1616361239602,
       "locale": "pt-BR",
       "author": "lvinidantas01@gmail.com",
-      "rename": {
-        "new": "É paciente - Hino ao Espírito Santo - Kiko Arguello"
-      },
+      
       "created": true,
       "updated": false
     },
@@ -13254,9 +13184,7 @@
       "date": 1615853096450,
       "locale": "pt-PT",
       "author": "silviorsepulveda@gmail.com",
-      "rename": {
-        "new": "Oração Eucarística II - Consagração - Melodia do Senhor anuncia uma noticia"
-      },
+      
       "created": true,
       "updated": false,
       "staged": {
@@ -13270,9 +13198,7 @@
       "date": 1615911504468,
       "locale": "pt-PT",
       "author": "silviorsepulveda@gmail.com",
-      "rename": {
-        "new": "A Espada - Ez. 21, 14-22"
-      },
+      
       "created": true,
       "updated": false
     },
@@ -13280,9 +13206,7 @@
       "date": 1616512130504,
       "locale": "pt-BR",
       "author": "javier.alejandro.castro@gmail.com",
-      "rename": {
-        "new": "A Espada - Ez. 21, 14-22"
-      },
+      
       "created": true,
       "updated": false
     },
@@ -13297,9 +13221,7 @@
       "date": 1617833738628,
       "locale": "es",
       "author": "smalitu@yahoo.es",
-      "rename": {
-        "new": "La Espada - Ez. 21, 14-22"
-      },
+      
       "created": true,
       "updated": false
     },
@@ -13307,9 +13229,7 @@
       "date": 1617906598331,
       "locale": "pt-PT",
       "author": "silviorsepulveda@gmail.com",
-      "rename": {
-        "new": "La Espada - Ez. 21, 14-22"
-      },
+      
       "created": false,
       "updated": true
     },
@@ -13326,9 +13246,7 @@
       "date": 1618063782658,
       "locale": "pt-BR",
       "author": "lvinidantas01@gmail.com",
-      "rename": {
-        "new": "Cântico de Ana - 1° Sm 2,1-9"
-      },
+      
       "created": true,
       "updated": false
     },
@@ -13336,9 +13254,7 @@
       "date": 1628850549455,
       "locale": "es",
       "author": "jixifak197@asmm5.com",
-      "rename": {
-        "new": "Canto de Ana - 1° Sm 2,1-10"
-      },
+      
       "created": true,
       "updated": false
     }
@@ -13348,9 +13264,7 @@
       "date": 1632833729680,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
-      "rename": {
-        "new": "Es Paciente - Himno al Espirito Santo"
-      },
+      
       "created": true,
       "updated": false
     }
@@ -13360,9 +13274,7 @@
       "date": 1651324735778,
       "locale": "lt-LT",
       "author": "albertiniqmc@gmail.com",
-      "rename": {
-        "new": "Title - Source"
-      },
+      
       "created": true,
       "updated": false
     }
