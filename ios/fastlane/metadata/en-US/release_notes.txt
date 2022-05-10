@@ -1,1 +1,2 @@
-• Fixed some songs
+• Lots of fixes on lt-LT (thanks albertiniqmc@gmail.com)
+• Some fixes on pt-PT (thanks silviorsepulveda@gmail.com)
