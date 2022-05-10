@@ -283,6 +283,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1651425470624,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "6": [
@@ -578,6 +585,20 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1651328754008,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "new": "Štai mūsų veidrodžiu yra viešpats (XIII Solomono Odė)"
+      },
+      "created": true,
+      "updated": false,
+      "staged": {
+        "original": "catechumenate",
+        "new": "election"
+      }
     }
   ],
   "12": [
@@ -2911,6 +2932,16 @@
       },
       "created": false,
       "updated": false
+    },
+    {
+      "date": 1651315170542,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "new": "Mano siela, šlovink Jahvę - Psalmė 102 (103)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "41": [
@@ -3200,6 +3231,13 @@
       "linked": {
         "new": "Garbinkite viešpatį visos žemės visi žmonės - Psalmė 116 (117)"
       }
+    },
+    {
+      "date": 1651928367323,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "45": [
@@ -3247,6 +3285,13 @@
       "date": 1609326163210,
       "locale": "pt-PT",
       "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1651928967392,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
       "created": false,
       "updated": true
     }
@@ -3741,6 +3786,13 @@
         "original": "Dayenu - Da Hagadá da Páscoa Hebráica",
         "new": "Dayenú - Da Liturgia Hebraica Seder Pascal"
       },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1651424856806,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
       "created": false,
       "updated": true
     }
@@ -4319,6 +4371,17 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1651926899520,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "Eli, eli, lamma sabahtani? - Psalmė 21 (22)",
+        "new": "Eli, Eli, lamma sabahtani? - Psalmė 21 (22)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "65": [
@@ -4572,6 +4635,16 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1651327955347,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "new": "Evenu Šalom Alehem - Hebrajų giesmė"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "70": [
@@ -4605,6 +4678,17 @@
       "date": 1608600647501,
       "locale": "pt-PT",
       "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1651918442319,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "Džiūgaukite, teisieji, viešpatyje - Psalmė 32 (33)",
+        "new": "Džiūgaukite, teisieji, Viešpatyje - Psalmė 32 (33)"
+      },
       "created": false,
       "updated": true
     }
@@ -4774,6 +4858,13 @@
         "original": "Graças a Iahweh - Sal 136 (135)",
         "new": "Graças a Javé - Sal 136 (135)"
       },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1651426223796,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
       "created": false,
       "updated": true
     }
@@ -5086,6 +5177,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1644945897048,
+      "locale": "pt-PT",
+      "author": "silviorsepulveda@gmail.com",
+      "rename": {
+        "original": "Eis aqui que venho em breve - Ap 22, 12-16",
+        "new": "Eis que venho em breve - Ap 22, 12-16"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "79": [
@@ -5173,6 +5275,17 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1651917084127,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "Dukterys jeruzalės (lk 23, 28.31.34.43.46)",
+        "new": "Dukterys Jeruzalės (Lk 23, 28.31.34.43.46)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "81": [
@@ -5206,6 +5319,13 @@
       "date": 1609201292679,
       "locale": "pt-PT",
       "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1651930810079,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
       "created": false,
       "updated": true
     }
@@ -5358,6 +5478,16 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1651331516789,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "new": "Himno de Pascua - Himno"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "85": [
@@ -5407,6 +5537,20 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1651330578576,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "new": "Himnas Šeštinių mišparams ir Rytmetinei nuo šeštinių iki sekminių"
+      },
+      "created": true,
+      "updated": false,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "liturgy"
+      }
     }
   ],
   "86": [
@@ -5533,6 +5677,17 @@
       "rename": {
         "original": "Ide e anunciai a meus irmãos - Mt 28, 7-10.16-20",
         "new": "Ide e anunciai aos meus irmãos - Mt 28, 7-10. 16-20"
+      },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1651920568685,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "Eikit ir praneškit mano broliams (mt 28, 16-20)",
+        "new": "Eikit ir praneškit mano broliams (Mt 28, 16-20)"
       },
       "created": false,
       "updated": true
@@ -5866,6 +6021,16 @@
         "new": "Chegue à tua presença o meu clamor - Sal 119 (118)"
       },
       "created": false,
+      "updated": false
+    },
+    {
+      "date": 1651929273323,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "new": "Tepasieka tave mano malda - Psalmė 118 (119)"
+      },
+      "created": true,
       "updated": false
     }
   ],
@@ -6783,6 +6948,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1651978291751,
+      "locale": "es",
+      "author": "dvd.guti@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "114": [
@@ -7770,6 +7942,17 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1651919232216,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "Džiugiai giedokim viešpačiui - Psalmė 94 (95)",
+        "new": "Džiugiai giedokim Viešpačiui - Psalmė 94 (95)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "135": [
@@ -8104,6 +8287,17 @@
       "date": 1615682791707,
       "locale": "pt-PT",
       "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1651918075875,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "Dygsta šakelė iš jesės kelmo (iz 11)",
+        "new": "Dygsta šakelė iš Jesės kelmo (iz 11)"
+      },
       "created": false,
       "updated": true
     }
@@ -8889,6 +9083,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1651927835246,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "Garbė, garbė, garbė (iz 66,18 ir t.t.)",
+        "new": "Garbė, garbė, garbė (Iz 66,18 ir t.t.)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "158": [
@@ -8965,6 +9170,20 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1651308816933,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "new": "Himnas Mišparams nuo Paschos iki Šeštinių"
+      },
+      "created": true,
+      "updated": false,
+      "staged": {
+        "original": "election",
+        "new": "liturgy"
+      }
     }
   ],
   "159": [
@@ -9073,6 +9292,16 @@
       "author": "Benedikt.jacobsen@hotmail.de",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1651310351166,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "new": "Abba, Tėve - Rm 8, 15-17"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "160": [
@@ -9214,6 +9443,16 @@
       },
       "created": false,
       "updated": false
+    },
+    {
+      "date": 1651326803802,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "new": "Kaip pykčio prasiveržimas (VII Saliamono Odė)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "163": [
@@ -9677,6 +9916,13 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1651935308366,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "171": [
@@ -9709,6 +9955,13 @@
       "linked": {
         "new": "Himnas garbingam kryžiui"
       }
+    },
+    {
+      "date": 1651930347826,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "172": [
@@ -9815,6 +10068,13 @@
       "date": 1617906516843,
       "locale": "pt-PT",
       "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1651916423058,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
       "created": false,
       "updated": true
     }
@@ -10236,6 +10496,16 @@
       },
       "created": false,
       "updated": false
+    },
+    {
+      "date": 1651312844098,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "new": "Evangelijos aklamacijos Aleliuja"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "183": [
@@ -10499,6 +10769,16 @@
       },
       "created": false,
       "updated": false
+    },
+    {
+      "date": 1651313895909,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "new": "Evangelijos Aklamacija Gavėnios Metu"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "186": [
@@ -12380,6 +12660,20 @@
         "original": "precatechumenate",
         "new": "election"
       }
+    },
+    {
+      "date": 1651311144907,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "new": "Dievo Avinėli"
+      },
+      "created": true,
+      "updated": false,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "liturgy"
+      }
     }
   ],
   "232": [
@@ -12774,6 +13068,16 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1645696443293,
+      "locale": "de",
+      "author": "benedikt.jacobsen@gmail.com",
+      "rename": {
+        "new": "Salve Regina"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "248": [
@@ -12790,6 +13094,16 @@
       "author": "javier.alejandro.castro@gmail.com",
       "rename": {
         "new": "C'è un tempo per ogni cosa - Qo 3, 1-15"
+      },
+      "created": true,
+      "updated": false
+    },
+    {
+      "date": 1651324563385,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "new": "Yra metas kiekvienam dalykui - Koh 3, 1-15"
       },
       "created": true,
       "updated": false
@@ -13036,6 +13350,18 @@
       "author": "javier.alejandro.castro@gmail.com",
       "rename": {
         "new": "Es Paciente - Himno al Espirito Santo"
+      },
+      "created": true,
+      "updated": false
+    }
+  ],
+  "266": [
+    {
+      "date": 1651324735778,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "new": "Title - Source"
       },
       "created": true,
       "updated": false

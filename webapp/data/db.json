@@ -1,11 +1,11 @@
 {
   "users": [
     {
-      "email": "javiercastro@nexion.com.ar",
-      "password": "$2a$10$ACYNp3SKU9sDfRW1HdHMnOnBNUNop2POeqqmtmc22WSMP9o6jXsGW",
+      "email": "dvd.guti@gmail.com",
+      "password": "$2a$10$AOK/c87h8sOuaM40tR/V8uEUp4TN1rTA7McN3TKTmAm5f59nbZe06",
       "isVerified": true,
-      "createdAt": 1644506387665,
-      "loggedInAt": 1644507295275
+      "createdAt": 1651973855162,
+      "loggedInAt": 1651973895019
     }
   ],
   "tokens": []

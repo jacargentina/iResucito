@@ -1,21 +1,18 @@
-// @flow
 import { getPropertyLocale, getPatchStats } from '../common';
-const path = require('path');
-const util = require('util');
-const fs = require('fs');
+import path from 'path';
+import util from 'util';
+import fs from 'fs';
+import { execSync } from 'child_process';
 require('colors');
-const { execSync } = require('child_process');
 const songsDir = path.resolve(__dirname, '../songs');
 const indexPath = path.resolve(songsDir, 'index.json');
 const patchesPath = path.resolve(songsDir, 'patches.json');
-//$FlowFixMe
+
 var SongsIndex = require(indexPath);
-//$FlowFixMe
 var SongsPatches = require(patchesPath);
 
-//$FlowFixMe
 const folders = fs.readdirSync(songsDir, { withFileTypes: true });
-//$FlowFixMe
+
 const onlyNames = folders.filter((d) => d.isDirectory()).map((d) => d.name);
 const languageFolders = onlyNames.reduce((obj, item) => {
   if (typeof item === 'string') {
@@ -26,7 +23,7 @@ const languageFolders = onlyNames.reduce((obj, item) => {
 
 const currentDate = Date.now();
 
-const patchSongLogic = (songPatch, key) => {
+const patchSongLogic = (songPatch: SongPatch, key: string) => {
   var report = {};
   report.key = key;
   try {
@@ -148,12 +145,12 @@ const patchSongLogic = (songPatch, key) => {
 
 const patchPath = path.resolve(
   __dirname,
-  '../packages/webapp/data/SongsIndexPatch.json'
+  '../webapp/data/SongsIndexPatch.json'
 );
 const json = fs.readFileSync(patchPath, 'utf8').normalize();
 const patch = JSON.parse(json);
 const stats = getPatchStats(patch);
-const finalReport = [];
+const finalReport: any = [];
 Object.keys(patch).forEach((k) => {
   finalReport.push(patchSongLogic(patch[k], k));
 });

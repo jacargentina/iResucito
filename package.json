@@ -5,7 +5,6 @@
   "scripts": {
     "postinstall": "patch-package",
     "start": "react-native start",
-    "webpatch": "babel-node ./scripts/applyPatch.js -f ./webapp/data/SongsIndexPatch.json",
     "build": "cd ./webapp && npm install && npm run build",
     "web": "cd ./webapp && npm start",
     "android": "react-native run-android",
@@ -15,9 +14,7 @@
     "postversion": "react-native-version --never-amend",
     "lint": "eslint . --ext .js",
     "react-devtools": "react-devtools",
-    "genpdf": "babel-node ./scripts/songToPdf.js",
-    "patch": "node ./webapp/syncData.js down && babel-node ./scripts/applyPatch.js && node ./webapp/syncData.js up SongsIndexPatch.json",
-    "ts-scripts": "tsc -p ./tsconfig-scripts.json --outDir ./scripts/dist"
+    "patch": "node ./webapp/syncData.js down && cd scripts && esno ./applyPatch.ts && cd .. && node ./webapp/syncData.js up SongsIndexPatch.json"
   },
   "dependencies": {
     "@babel/cli": "^7.17.6",

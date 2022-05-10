@@ -1,63 +1,97 @@
-DAJENU
+e                           a                                           e
+K. Kiek daug gėrybių Viešpats mums davė!
+                                       a                                               e 
+B. KIEK DAUG GERYBIŲ VIEŠPATS MUMS DAVĖ!
+                                D                C                              e
+KIEK DAUG GĖRYBIŲ VIEŠPATS MUMS DAVĖ!
+    a                                                        H7 
 
-e a 8
-K. Kiek daug gėrybių Viešpats mums davė! Jeigu įvestų mus į savo Bažnyčia,
-a Ž 8 bet nepastatytų mumyse savo Šventovės...
-B. KIEK DAUG GERYBIŲ VIEŠPATS MUMS DAVE! ; £
-D Ė e Jeigu pastatytų mumyse savo Sventovę,
-KIEK DAUG GĖRYBIŲ VIEŠPATS MUMS DAVĖ! Ši nepripildytų ją savo E Dvasia...
-a H7 £
-K. Jeigu Kristus mus išvestų iš Egipto, B. ŠITO JAU VISAI MUMS UŽTEKTŲ,...
-8 8 a e
-Er neįvykdytų teisingumo piles faraoną: *“ K. Kaipdar daugiau turime dėkoti Viešpačiui!
-L 2 8 a e
-B. SITO JAU VISAI MUMS UZTEKTŲ, B. KAIP DAR pas TEEĘ DĖKOTI VIEŠPAČIUI!
-e S e
-JAU VISAI MUMS UŽTEKTŲ! KAIP DAR DAUGIAU TURIME DĖKOTI VIEŠPAČIUI!
-e a 8
-PE, DAJENU, DAJENU. £ K. Nes mus išvedė iš Egipto nelaisvės. (Bis B)
-a 6
-K. Jeigu pyko e Blašumą prieš (ae K. Nes įvykdė teisingumą prieš faraoną. (Bis B)
-6 8
-Bat neišvaduotų mus nuo SS K. Nes mus išlaisvino nuo visų mūsų priešų. (Bis B)
-+ e a e
-B.  ŠITO JAU VISAI MUMS UŽTEKTŲ, ... Nes padovanojo mums visus jų turtus. ...**
+K. Jeigu Kristus mus išvestų iš Egipto,
+                                                                          e
+bet neįvykdytų teisingumo prieš faraoną:
+D                                                    C
+B. ŠITO JAU VISAI MUMS UŽTEKTŲ,
+                                           e
+JAU VISAI MUMS UŽTEKTŲ
+             D               C                e
+DAJENU, DAJENU, DAJENU.
 
-Nes prieš mus atvėrė jūrą...
+D                                                   C
+K. Jeigu įvykdytų teisingumą prieš faraoną,
+                       H7
+bet neišvaduotų mus nuo visų stabų.
+D                                                    C
+B. ŠITO JAU VISAI MUMS UŽTEKTŲ...
 
-Jeigu išvaduotų mus nuo visų stabų: Nes paskandino joje mūsų engėjus...
+K. Jeigu išvaduotų mus nuo visų stabų:(*) 
+bet nepadovanotų mums jų turtų...
 
-bet nepadovanotų mums jų turtų...*
+Jeigu duotų mums jų turtus,
+bet neatvertų prieš mus jūros... 
 
-Jeigu duotų mums jų turtus, Nes mums atvėrė kelią per dykumą...
-bet neatvertų prieš mus jūros... Nes mus pasotino gyvenimo duona...
-
-S o 2 Nes padovanojo mums Viešpaties dieną...
 Jeigu atvertų prieš mus jūrą,
-bet nepaskandintų mūsų engėjų... Nes sudarė su mumis Naują Sandorą...
-Nes mus įvedė į savo Bažnyčią...
+bet nepaskandintų mūsų engėjų... 
 
-Jeigu paskandinių mūsų engėjus, Nes pastatė mumyse savo Šventovę...
-D Cc
-
+Jeigu paskandintų mūsų engėjus, 
 bet neatvertų mums kelio per dykumą...
 
-Jeigu atvertų mums kelią per dykumą, ir pripildė ją savo Šventąja Dvasia,
-bet nepasotintų mus gyvenimo duona... H7 8
-atleisdamas mums nuodėmes.
+Jeigu atvertų mums kelią per dykumą, 
+bet nepasotintų mus gyvenimo duona...
 
 Jeigu pasotintų mus gyvenimo duona,
+bet nepadovanotų mums Viešpaties dienos...
 
-bet nepadovanotų mums Viešpaties dienos... = D
+Jeigu padovanotų mums Viešpaties dieną,
+bet nesudarytų su mumis Naujos Sandoros...
 
+Jeigu sudarytų su mumis Naują Sandorą,
+bet neįvestų mūsų į savo Bažnyčią...
+column
+Jeigu įvestų mus į savo Bažnyčia,
+bet nepastatytų mumyse savo Šventovės...
+
+Jeigu pastatytų mumyse savo Šventovę,
+bet nepripildytų ją savo Šventąja Dvasia...
+
+D                                                     C
+B. ŠITO JAU VISAI MUMS UŽTEKTŲ,...
+e                                 a                                   e
+K. Kaip dar daugiau turime dėkoti Viešpačiui!
+e                                     a                                           e
+B. KAIP DAR DAUGIAU TURIME DĖKOTI VIEŠPAČIUI!
+e                                D                   C                  e
+KAIP DAR DAUGIAU TURIME DĖKOTI VIEŠPAČIUI!
+
+                              a                              e
+K. Nes mus išvedė iš Egipto nelaisvės. (Bis B)
+               a                                                e
+Nes įvykdė teisingumą prieš faraoną. (Bis B)
+e                      D                        C                   e
+Nes mus išlaisvino nuo visų mūsų priešų. (Bis B)
+
+Nes padovanojo mums visus jų turtus...(**)
+Nes prieš mus atvėrė jūrą...
+Nes paskandino joje mūsų engėjus...
+
+Nes mums atvėrė kelią per dykumą...
+Nes mus pasotino gyvenimo duona...
+Nes padovanojo mums Viešpaties dieną...
+
+Nes sudarė su mumis Naują Sandorą...
+Nes mus įvedė į savo Bažnyčią...
+Nes pastatė mumyse savo Šventovę...
+                         D                             C
+ir pripildė ją savo Šventąja Dvasia,
+ H7                                              e
+atleisdamas mums nuodėmes.
+
+e                                      D
 B. KRISTUS, MŪSŲ PASCHA,
+               C                    e
+PRISIKĖLĖ DĖL MŪSŲ! (3x)
 
-Jeigu padovanotų mums Viešpaties dieną, O e (3x)
-bet nesudarytų su mumis Naujos Sandoros... PRISIKĖLĖ DĖL MŪSŲ!
-
-Jeigu sudarytų su mumis Naują Sandorą, e D C e
-
-bet neįvestų mūsų į savo Bažnyčią... ALELIUJA! ALELIUJA! ALELIUJAI! (3x)
+e                    D                  C              e
+ALELIUJA! ALELIUJA! ALELIUJA! (3x)
 
 *Po kiekvieno posmelio bendruomenė atliepia: "ŠITO JAU VISAI MUMS UŽTEKTU..."
 ** Susirinkimas pakartuoja.

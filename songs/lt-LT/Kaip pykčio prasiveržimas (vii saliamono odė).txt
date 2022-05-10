@@ -1,66 +1,60 @@
-KAIP PYKČIO PRASIVERŽIMAS (VII SALIAMONO ODĖ)
+clamp: 3
 
-clamp:3
-
-C a d
-K. Kaip pykčio prasiveržimas priešui,
-G Cc
+  C                                           a            d
+K. Kaip pykčio prasiveržimas priešui
+              G                                                  C
 kaip meilės prasiveržimas mylimajam,
-a A7 d
+a    A7
 toks yra mano veržimasis į tave.
-G C
+G                                                        C
 Tu nemirtingas, pasaulių pilnatvė.
-a E
+
+                a                                                        E
 B. TU ESI KELIAS, KAIPGI TAI NUOSTABU!
-a
+                                                 a
 TU ESI KELIAS, TU ESI MEILĖ.
-G a
+                 G                                  a
 TU ESI KELIAS, TU ESI GYVENIMAS.
-G a
+                 G                                  a
 TU ESI KELIAS, TU ESI TIESA.
-G E
-TU ESI KELIAS, TU ESI TIESA,
-Ė
+                 G                                  F
+TU ESI GELIAS, TU ESI TIESA,
+                       E
 TU ESI GYVENIMAS.
-C a d
+
+   C                            a     d
 K. Atsidavei man be išlygų,
-
-G C
-pilnas švelnumo, padarei maža savo didybę,
-a A7 d
+                       G                                                        C
+pilnas švelnumo, padarei maža savo didybę.
+a   A7                                                 d
 kad nesudrebėčiau tave pamatęs.
-
-G C
+G                                                        C
 Tu nemirtingas, pasaulių pilnatvė.
 
-a
-„ Tu tapai toks kaip aš, kad tave išmokčiau pažinti,
+column
+                a                                                        
+B. TU ESI KELIAS...
 
-a
-„TU ESI KELIAS...
-
-d
-
-G C
+  C                                   a                                                     d
+K. Tu tapai toks kaip aš, kad tave išmokčiau pažinti,
+                          G                                              C 
 išvaizda kaip aš, kad galėčiau tave priimti.
-
-a A7 d
+      a                                        A7                                     d
 Tapai nuodėme dėl manęs, pilnas gailestingumo,
-E C
+G                                                                                 C
 kad nuodėmės manęs neatskirtų nuo tavęs.
 
-a
-„TU ESI KELIAS...
+                a                                                        
+B. TU ESI KELIAS...
 
-C a
-. Dievas, kuris mane sukūrė prieš man atsirandant,
-G C
+  C                                                  a                                     d
+K. Dievas, kuris mane sukūrė prieš man atsirandant,
+                G                             C
 žinojo visa, ką būčiau atlikęs.
-a A7 d
+a    A7                                                                                  d
 Dėl to manęs pasigailėjo ir dėl savo gailestingumo
-G C
-
+G                                                                                   C
 suteikė man troškimą maldauti jo prigimties.
 
-a
-„TU ESI KELIAS...
+                a                                                        
+B. TU ESI KELIAS...

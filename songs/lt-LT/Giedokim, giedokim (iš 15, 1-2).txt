@@ -1,75 +1,36 @@
-GIEDOKIM, GIEDOKIM (Iš 15, 1-2)
-
-A E
+A                  E
 K. Naują giesmę
-D E .
+D                  E 
 giedosiu Viešpačiui,
-A
+A                              E    
 kuris galingu būdu
-D E
-
+D                          E
 savo šlovę parodė.
-D
+                      D
 Giedokim Viešpačiui;
-E7 D
+E7                         D
 Jis priešą nugalėjo.
-H7
+                          H7
 Giedokim Viešpačiui;
-Ef
+                                   E7
 Jis Karalius per amžius.
 
-A D
+A                                 D
 B. GIEDOKIM, GIEDOKIM
-A E
+A              E
 MŪSŲ VIEŠPAČIUI.
-A D
+A                                 D
 JIS NUGALĖJO PRIEŠĄ,
-A r
+A                                   G
 JIS KARALIUS PER AMŽIUS.
-A D
+A                                 D
 GIEDOKIM, GIEDOKIM,
-A E
+A                                    E
 JIS - MANO TĖVO DIEVAS.
-A D
+A                       D
 GIEDOKIM, GIEDOKIM,
-A G
+A                        G
 JAHVĖ YRA JO VARDAS.
-A E
+
+A                            E
 K. Naują giesmę ...
-
-PSALMĖ 118 (119) - TEPASIEKA TAVE MANO MALDA
-
-clamp:2
-
-a F E
-K. Viešpatie, Viešpatie Jėzau!
-a
-Tepasiekia tave mano malda,
-F
-
-teišplaukia nauja giesmė iš mano lūpų;
-
-liežuvis mano tegieda tavo žodį,
-£ E
-
-mano siela, Jėzau!
-
-a
-
-Tavo ranka tegul mane gelbsti.
-F
-
-Laukiu iš tavęs išganymo;
-
-G
-mano lūpos tegieda tavo garbę:
-F E
-pažvelk į mane, esu pražuvęs.
-a G
-B. ATEIK IR IEŠKOK SAVO TARNO,
-p E
-ATEIK, O VIEŠPATIE JĖZAU!
-a G
-ATEIK, NES ŽŪSTU BE TAVĘS,
-r E
-ATEIK, O VIEŠPATIE JĖZAU!

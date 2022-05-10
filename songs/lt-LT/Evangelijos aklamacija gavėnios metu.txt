@@ -1,23 +1,27 @@
-EVANGELIJOS AKLAMACIJA GAVĖNIOS METU
+Pagal liturginius metus (A-B-C) ir liturginę savaitę (1-5) giedama skaitinių knygoje numatyta Aklamacija viena iš žemiau nurodytų melodijų:
 
-Pagal liturginius metus (A-B-C) ir liturginę savaitę (1-5)
-giedama skaitinių knygoje numatyta Aklamacija viena iš žemiau nurodytų melodijų:
+(1)
 
-D G A
-
+ D                                    G                                      A
 B. GARBĖ TAU, O KRISTAU, GARBĖS KARALIAU,
-G D
+G                          D
 GARBĖS KARALIAU.
 
 K. Posmelis, numatytas iš skaitinių knygos, grojant akordais: h A.
-D G
-B. GARBĖ TAU, O KRISTAU, ...
 
-D G
+ D                                    G      
+B. GARBĖ TAU, O KRISTAU...
+
+-------
+
+(2)
+
+ D                                                                                          G
 B. GARBĖ IR ŠLOVĖ, GARBĖ IR ŠLOVĖ, GARBĖ TAU,
-A7 D
-VIEŠPATIE JĖZAU, VIEŠPATIE JĖZAU.
+                          A7                                D
+VIEŠPATIE JĖZAU, VIEŠPATIE JĖZAU
 
 K. Posmelis, numatytas iš skaitinių knygos, grojant akordais: h A.
-D
-B. GARBĖ IR ŠLOVĖ,....
+
+ D                                                                                      
+B. GARBĖ IR ŠLOVĖ...

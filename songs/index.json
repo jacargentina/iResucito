@@ -185,7 +185,11 @@
    "de": "Siehe unser Spiegel - XIII. Ode Salomos",
    "en": "Behold our mirror (13th ode of solomon)",
    "pt-BR": "Eis que o nosso espelho é o Senhor - Ode XIII de Salomão",
-   "pt-PT": "Eis que o nosso espelho é o Senhor - Ode XIII de Salomão"
+   "pt-PT": "Eis que o nosso espelho é o Senhor - Ode XIII de Salomão",
+   "lt-LT": "Štai mūsų veidrodžiu yra viešpats (XIII Solomono Odė)"
+  },
+  "stages": {
+   "lt-LT": "election"
   }
  },
  "12": {
@@ -652,7 +656,8 @@
    "de": "Preise meine Seele Jahwe - Ps 103",
    "pt-BR": "Bendize, minha alma, a Iahweh - Sal 103 (102)",
    "pt-PT": "Bendiz, ó minha alma a Javé - Sal 103 (102)",
-   "sw-TZ": "Nafsi yanguumbariki Yahweh - Zab 102 (103)"
+   "sw-TZ": "Nafsi yanguumbariki Yahweh - Zab 102 (103)",
+   "lt-LT": "Mano siela, šlovink Jahvę - Psalmė 102 (103)"
   }
  },
  "41": {
@@ -1024,7 +1029,7 @@
    "en": "Eli, eli, lamma sabachtani - Ps 21 (22)",
    "pt-BR": "Eli, Eli, Lamá Sabactani - Sal 22 (21)",
    "pt-PT": "Eli, Eli, Lama Sabactani - Sal 22 (21)",
-   "lt-LT": "Eli, eli, lamma sabahtani? - Psalmė 21 (22)"
+   "lt-LT": "Eli, Eli, lamma sabahtani? - Psalmė 21 (22)"
   }
  },
  "65": {
@@ -1095,7 +1100,8 @@
    "de": "Evenu shalom alechem - Hebräisches Lied",
    "pt-BR": "Evenu Shalom Alehem - Canto Popular Hebraico",
    "pt-PT": "Evenu Shalom Alejem - Canto Popular Hebraico",
-   "sw-TZ": "Evenu Shalom Alehem - (wimbo wa kiebrania)"
+   "sw-TZ": "Evenu Shalom Alehem - (wimbo wa kiebrania)",
+   "lt-LT": "Evenu Šalom Alehem - Hebrajų giesmė"
   }
  },
  "70": {
@@ -1108,7 +1114,7 @@
    "en": "Exult, you just in the lord - Ps 32",
    "pt-BR": "Exultai, justos, no Senhor - Sal 33 (32)",
    "pt-PT": "Exultai, justos, no Senhor - Sal 33 (32)",
-   "lt-LT": "Džiūgaukite, teisieji, viešpatyje - Psalmė 32 (33)"
+   "lt-LT": "Džiūgaukite, teisieji, Viešpatyje - Psalmė 32 (33)"
   }
  },
  "71": {
@@ -1227,7 +1233,7 @@
    "de-AT": "Siehe da ich komme bald - Offb 22, 12-16",
    "de": "Siehe da, ich komme bald - Offb 22, 12-16",
    "pt-BR": "Eis-me aqui que venho em breve - Ap 22, 12-16",
-   "pt-PT": "Eis aqui que venho em breve - Ap 22, 12-16",
+   "pt-PT": "Eis que venho em breve - Ap 22, 12-16",
    "lt-LT": "Štai aš ateisiu veikiai (apr 22, 12-16)",
    "sw-TZ": "Tazama, naja upesi - (Ufu 22: 12-16)",
    "en": "Behold I'm coming soon - Rev. 22, 12-16"
@@ -1258,7 +1264,7 @@
    "de": "Töchter von Jerusalem - Lk 23, 28.31.34.43.46",
    "pt-BR": "Filhas de Jerusalém - Lc 23, 28-46",
    "pt-PT": "Filhas de Jerusalém - Lc 23, 28-46",
-   "lt-LT": "Dukterys jeruzalės (lk 23, 28.31.34.43.46)"
+   "lt-LT": "Dukterys Jeruzalės (Lk 23, 28.31.34.43.46)"
   }
  },
  "81": {
@@ -1313,7 +1319,8 @@
    "de-AT": "Osterhymnus",
    "de": "Osterhymnus",
    "pt-BR": "Hino da Páscoa - Hino",
-   "pt-PT": "Hino da Páscoa - Hino"
+   "pt-PT": "Hino da Páscoa - Hino",
+   "lt-LT": "Himno de Pascua - Himno"
   },
   "stages": {
    "pt-BR": "precatechumenate"
@@ -1327,11 +1334,13 @@
    "de-AT": "Hymnus der Vesper von Christi Himmelfahrt und Hymnus der Laudes von Christi Himmelfahrt bis Pfingsten",
    "de": "Hymnus der Vesper von Christi Himmelfahrt und Hymnus der Laudes von Christi Himmelfahrt bis Pfingsten",
    "pt-BR": "Hino da Ascensão - Hino das Laudes do tempo Pascal, da Ascensão até Pentecostes",
-   "pt-PT": "Hino da Ascensão - Hino das Laudes do tempo Pascal, da Ascensão até Pentecostes"
+   "pt-PT": "Hino da Ascensão - Hino das Laudes do tempo Pascal, da Ascensão até Pentecostes",
+   "lt-LT": "Himnas Šeštinių mišparams ir Rytmetinei nuo šeštinių iki sekminių"
   },
   "stages": {
    "de-AT": "liturgy",
-   "de": "liturgy"
+   "de": "liturgy",
+   "lt-LT": "liturgy"
   }
  },
  "86": {
@@ -1364,7 +1373,7 @@
    "en": "Go and announce to my brothers (Mt 38,16-20)",
    "pt-BR": "Ide e anunciai a meus irmãos - Mt 28, 7-10.16-20",
    "pt-PT": "Ide e anunciai aos meus irmãos - Mt 28, 7-10. 16-20",
-   "lt-LT": "Eikit ir praneškit mano broliams (mt 28, 16-20)"
+   "lt-LT": "Eikit ir praneškit mano broliams (Mt 28, 16-20)"
   }
  },
  "88": {
@@ -1466,7 +1475,8 @@
    "en": "Lord, lord jesus - Ps 118 (119)",
    "pt-BR": "Chegue à tua presença meu clamor - Sal 119 (118)",
    "pt-PT": "Chegue à tua presença o meu clamor - Sal 119 (118)",
-   "sw-TZ": "Njoo, umtafute mtumishi wako - Zab 118 (119)"
+   "sw-TZ": "Njoo, umtafute mtumishi wako - Zab 118 (119)",
+   "lt-LT": "Tepasieka tave mano malda - Psalmė 118 (119)"
   }
  },
  "95": {
@@ -2059,7 +2069,7 @@
    "en": "If today you listen to his voice  - Ps 94 (95)",
    "pt-BR": "Se hoje escutardes a sua voz - Sal 95 (94)",
    "pt-PT": "Se hoje escutardes a sua voz - Sal 95 (94)",
-   "lt-LT": "Džiugiai giedokim viešpačiui - Psalmė 94 (95)",
+   "lt-LT": "Džiugiai giedokim Viešpačiui - Psalmė 94 (95)",
    "sw-TZ": "Ikiwa leo mwasikia sauti yake - Zab 94 (95)"
   }
  },
@@ -2169,7 +2179,7 @@
    "de": "Ein Spross bricht hervor aus dem Baumstumpf von Jesse - Jes 11",
    "pt-BR": "Um rebento brota do tronco de Jessé - Is 11, 1-11",
    "pt-PT": "Um rebento brota do tronco de Jessé - Is 11, 1-11",
-   "lt-LT": "Dygsta šakelė iš jesės kelmo (iz 11)"
+   "lt-LT": "Dygsta šakelė iš Jesės kelmo (iz 11)"
   }
  },
  "143": {
@@ -2389,7 +2399,7 @@
    "de": "Gloria, gloria, gloria - Jes 66, 18 ff",
    "pt-BR": "Eu venho reunir - Is 66, 18-21",
    "pt-PT": "Eu venho reunir todas as nações - Is 66, 18-21",
-   "lt-LT": "Garbė, garbė, garbė (iz 66,18 ir t.t.)"
+   "lt-LT": "Garbė, garbė, garbė (Iz 66,18 ir t.t.)"
   }
  },
  "158": {
@@ -2403,11 +2413,13 @@
    "it": "Inno dei vespri da pasqua all'ascensione - Inno",
    "pt-BR": "À ceia do cordeiro - Hino das vésperas do tempo Pascal até a Ascensão",
    "pt-PT": "À ceia do cordeiro - Hino das vésperas do tempo Pascal até a Ascensão",
-   "en": "Hymn for vespers from Easter to the Ascencion"
+   "en": "Hymn for vespers from Easter to the Ascencion",
+   "lt-LT": "Himnas Mišparams nuo Paschos iki Šeštinių"
   },
   "stages": {
    "es": "precatechumenate",
-   "en": "liturgy"
+   "en": "liturgy",
+   "lt-LT": "liturgy"
   }
  },
  "159": {
@@ -2423,7 +2435,8 @@
    "pt-BR": "Abba Pai - Rm 8, 15-17",
    "pt-PT": "Abba Pai - Rm 8, 15-17",
    "sw-TZ": "Abba Baba - (Rum 8: 15-17)",
-   "en": "Abba Father - Rom. 8, 15-17"
+   "en": "Abba Father - Rom. 8, 15-17",
+   "lt-LT": "Abba, Tėve - Rm 8, 15-17"
   },
   "stages": {
    "es": "precatechumenate",
@@ -2469,7 +2482,8 @@
    "de-AT": "Wie der Honig träufelt - XL. Ode Salomons",
    "de": "Wie der Honig träufelt - XL. Ode Salomons",
    "pt-BR": "Como escorre o mel - Ode XL de Salomão",
-   "pt-PT": "Como destila o mel - Ode 24 de Salomão"
+   "pt-PT": "Como destila o mel - Ode 24 de Salomão",
+   "lt-LT": "Kaip pykčio prasiveržimas (VII Saliamono Odė)"
   }
  },
  "163": {
@@ -2768,7 +2782,8 @@
    "de": "Halleluja-ruf Zum Evangelium",
    "it": "Alleluja per acclamazioni al Vangelo",
    "pt-BR": "Aleluia Interleccional - Apropriado para os tempos do Advento, Natal e Comum",
-   "pt-PT": "Aleluia interleccional - Apropriado para os tempos do Advento, Natal e Comum"
+   "pt-PT": "Aleluia interleccional - Apropriado para os tempos do Advento, Natal e Comum",
+   "lt-LT": "Evangelijos aklamacijos Aleliuja"
   }
  },
  "183": {
@@ -2810,7 +2825,8 @@
    "it": "Acclamazione al Vangelo nel tempo di quaresima",
    "pt-BR": "Antífona Versículo antes do evangelho - Apropriado para o tempo da Quaresma",
    "pt-PT": "Aclamação ao Evangelho - Apropriado para o tempo da Quaresma",
-   "en": "Acclamation to the Gospel during Lent"
+   "en": "Acclamation to the Gospel during Lent",
+   "lt-LT": "Evangelijos Aklamacija Gavėnios Metu"
   }
  },
  "186": {
@@ -3304,11 +3320,13 @@
   "files": {
    "it": "Agnella di dio",
    "en": "She-Lamb of God - Mt 1,18ff",
-   "de": "Maria, Lamm Gottes - Mt 1, 18 ff"
+   "de": "Maria, Lamm Gottes - Mt 1, 18 ff",
+   "lt-LT": "Dievo Avinėli"
   },
   "stages": {
    "en": "catechumenate",
-   "de": "election"
+   "de": "election",
+   "lt-LT": "liturgy"
   }
  },
  "228": {
@@ -3476,7 +3494,8 @@
   "stage": "precatechumenate",
   "files": {
    "pt-BR": "Salve Rainha - Hino",
-   "pt-PT": "Salve, Rainha - Hino"
+   "pt-PT": "Salve, Rainha - Hino",
+   "de": "Salve Regina"
   }
  },
  "248": {
@@ -3484,7 +3503,8 @@
   "files": {
    "de-AT": "Alles hat eine bestimmte zeit - Koh 3, 1-15",
    "de": "Alles hat eine bestimmte zeit - Koh 3, 1-15",
-   "it": "C'è un tempo per ogni cosa - Qo 3, 1-15"
+   "it": "C'è un tempo per ogni cosa - Qo 3, 1-15",
+   "lt-LT": "Yra metas kiekvienam dalykui - Koh 3, 1-15"
   }
  },
  "249": {
@@ -3627,6 +3647,14 @@
   "key": "265",
   "files": {
    "es": "Es Paciente - Himno al Espirito Santo"
+  },
+  "stage": "precatechumenate",
+  "stages": {}
+ },
+ "266": {
+  "key": "266",
+  "files": {
+   "lt-LT": "Title - Source"
   },
   "stage": "precatechumenate",
   "stages": {}
