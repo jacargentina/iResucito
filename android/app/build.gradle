@@ -245,23 +245,31 @@ task copyDownloadableDepsToLibs(type: Copy) {
     into 'libs'
 }
 
-task deleteAssets(type: Delete) {
+task deleteSongsAssets(type: Delete) {
     if (rootProject.file('app/src/main/assets/songs').exists()) {
         delete rootProject.file('app/src/main/assets/songs').listFiles()
     }
 }
 
-task copyToAssets(type: Copy) {
+task copySongsAssets(type: Copy) {
     def toDir = rootProject.file('app/src/main/assets/songs')
     from '../../songs/'
     into toDir
     include '**/*'
 }
 
-copyToAssets.dependsOn deleteAssets
+task copyFontsAssets(type: Copy) {
+    def toDir = rootProject.file('app/src/main/assets/fonts')
+    from '../../assets/fonts'
+    into toDir
+    include '**/*'
+}
+
+copySongsAssets.dependsOn deleteSongsAssets
 
 project.afterEvaluate {
-    preBuild.dependsOn copyToAssets
+    preBuild.dependsOn copySongsAssets
+    preBuild.dependsOn copyFontsAssets
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
