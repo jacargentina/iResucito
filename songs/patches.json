@@ -102,6 +102,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1653829524514,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "Kaip pykčio prasiveržimas (vii saliamono odė)",
+        "new": "Kaip pykčio prasiveržimas (VII Saliamono odė)"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "3": [
@@ -237,6 +248,21 @@
         "original": "election",
         "new": "catechumenate"
       }
+    },
+    {
+      "date": 1653748841153,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "Kai aš miegojau (gg. 5, 2 ir t.t.)",
+        "new": "Kai aš miegojau - Gg. 5, 2 ir t.t."
+      },
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "catechumenate",
+        "new": "election"
+      }
     }
   ],
   "5": [
@@ -290,6 +316,17 @@
       "author": "albertiniqmc@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1653737478794,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "Debora (ts 5, 1 ir t.t.)",
+        "new": "Debora - Ts 5, 1 ir t.t."
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "6": [
@@ -339,6 +376,17 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1655545694588,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "catechumenate",
+        "new": "precatechumenate"
+      }
     }
   ],
   "7": [
@@ -625,6 +673,17 @@
       "rename": {
         "original": "Jacó - Gn 32, 23-29",
         "new": "Jacob - Gn 32, 23-29"
+      },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1653739601566,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "Jokūbas (pr 32, 23-39)",
+        "new": "Jokūbas - Pr 32, 23-39"
       },
       "created": false,
       "updated": true
@@ -1097,6 +1156,13 @@
       "linked": {
         "new": "Į tave keliu savo akis - Psalmė 122 (123)"
       }
+    },
+    {
+      "date": 1652515904322,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "22": [
@@ -1300,6 +1366,17 @@
       "date": 1609287809093,
       "locale": "pt-PT",
       "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1652517231340,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "Į tave, viešpatie, keliu savo sielą - Psalmė 24 (25)",
+        "new": "Į tave, Viešpatie, keliu savo sielą - Psalmė 24 (25)"
+      },
       "created": false,
       "updated": true
     }
@@ -1732,6 +1809,17 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1653821365632,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "Kai pabusiu, pasisotinsiu tavo atvaizdu, viešpatie “? - Psalmė 16 (17)",
+        "new": "Kai pabusiu, pasisotinsiu tavo atvaizdu, Viešpatie* - Psalmė 16 (17)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "28": [
@@ -1925,6 +2013,17 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1653821983941,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "Aleliuja, šlovinkite dievą - Psalmė 150",
+        "new": "Aleliuja, šlovinkite Dievą - Psalmė 150"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "30": [
@@ -2154,6 +2253,17 @@
       },
       "created": false,
       "updated": false
+    },
+    {
+      "date": 1653826969470,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "Jau ateina karalystė (apr 19, 6-9)“",
+        "new": "Jau ateina karalystė - (Apr 19, 6-9) (*)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "32": [
@@ -2925,7 +3035,6 @@
       "date": 1651315170542,
       "locale": "lt-LT",
       "author": "albertiniqmc@gmail.com",
-      
       "created": true,
       "updated": false
     }
@@ -3043,7 +3152,6 @@
       "date": 1629469718542,
       "locale": "en",
       "author": "monicaenrique.10@gmail.com",
-      
       "created": true,
       "updated": false
     }
@@ -3187,7 +3295,6 @@
       "date": 1629483510963,
       "locale": "en",
       "author": "monicaenrique.10@gmail.com",
-      
       "created": true,
       "updated": false
     }
@@ -3270,6 +3377,17 @@
       "author": "albertiniqmc@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1653728392790,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "Giedokim, giedokim (iš 15, 1-2)",
+        "new": "Giedokim, giedokim - Iš 15, 1-2"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "46": [
@@ -3353,6 +3471,17 @@
       "rename": {
         "original": "Caritas Christi Urget Nos - 2 Cor 5, 14.15.17.21",
         "new": "Caritas Christi urget nos - 2 Cor 5, 14.15.17.21"
+      },
+      "created": false,
+      "updated": false
+    },
+    {
+      "date": 1653823642794,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "Caritas christi - 2 kor 5, 14-21",
+        "new": "Caritas Christi - 2 Kor 5, 14-21"
       },
       "created": false,
       "updated": false
@@ -3504,6 +3633,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1653828873501,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "Kaip Elnė Ilgis! - Psalmė 41-42 (42-43)",
+        "new": "Kaip Elnė Ilgisi - Psalmė 41-42 (42-43)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "49": [
@@ -3647,9 +3787,15 @@
       "date": 1629480398590,
       "locale": "en",
       "author": "monicaenrique.10@gmail.com",
-      
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1653817464940,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "52": [
@@ -3712,6 +3858,13 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1653742422665,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "53": [
@@ -3765,6 +3918,13 @@
     },
     {
       "date": 1651424856806,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1653824721090,
       "locale": "lt-LT",
       "author": "albertiniqmc@gmail.com",
       "created": false,
@@ -3829,6 +3989,13 @@
       "date": 1608200911229,
       "locale": "pt-PT",
       "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1652518592567,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
       "created": false,
       "updated": true
     }
@@ -4058,7 +4225,6 @@
       "date": 1622857884424,
       "locale": "en",
       "author": "monicaenrique.10@gmail.com",
-      
       "created": true,
       "updated": false
     }
@@ -4191,6 +4357,21 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1653740908252,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "Kad daugiau aš nesibastyčiau",
+        "new": "Tebučiuoja jis mane - Gg 1, 2 ir t.t."
+      },
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "election"
+      }
     }
   ],
   "62": [
@@ -4246,6 +4427,13 @@
       "date": 1610374320074,
       "locale": "pt-PT",
       "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1653840075004,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
       "created": false,
       "updated": true
     }
@@ -4415,6 +4603,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1653823121783,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "catechumenate"
+      }
     }
   ],
   "66": [
@@ -4559,6 +4758,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1653823751354,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "CARMEN' 63 (Tagore)",
+        "new": "Carmen' 63 (Tagore)"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "69": [
@@ -4612,7 +4822,6 @@
       "date": 1651327955347,
       "locale": "lt-LT",
       "author": "albertiniqmc@gmail.com",
-      
       "created": true,
       "updated": false
     }
@@ -4743,6 +4952,13 @@
       "date": 1608600891386,
       "locale": "pt-PT",
       "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1655544646791,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
       "created": false,
       "updated": true
     }
@@ -4940,6 +5156,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1653826609447,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "Į tave, šventasis mieste “?",
+        "new": "Į tave, šventasis mieste*"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "76": [
@@ -5016,6 +5243,13 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1653833467611,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "77": [
@@ -5070,6 +5304,21 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1653826490256,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "I jahvės tarno giesmė (iz 42)",
+        "new": "Jahvės tarno giesmė I (Štai mano tarnas) - (Iz 42)"
+      },
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "catechumenate"
+      }
     }
   ],
   "78": [
@@ -5256,6 +5505,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1653825086264,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "Dukterys Jeruzalės (Lk 23, 28.31.34.43.46)",
+        "new": "Dukterys Jeruzalės* - Lk 23, 28.31.34.43.46"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "81": [
@@ -5327,6 +5587,17 @@
       "date": 1609203478091,
       "locale": "pt-PT",
       "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1653839135116,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "Kristus jėzus yra viešpats! himnas apie kenozę (flp 2, 1-11)",
+        "new": "Kristus Jėzus yra Viešpats! (Himnas apie kenozę) - Flp 2, 1-11"
+      },
       "created": false,
       "updated": true
     }
@@ -5453,9 +5724,19 @@
       "date": 1651331516789,
       "locale": "lt-LT",
       "author": "albertiniqmc@gmail.com",
-      
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1653826291695,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "Himno de Pascua - Himno",
+        "new": "Himnas Paschai"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "85": [
@@ -5510,7 +5791,6 @@
       "date": 1651330578576,
       "locale": "lt-LT",
       "author": "albertiniqmc@gmail.com",
-      
       "created": true,
       "updated": false,
       "staged": {
@@ -5589,6 +5869,17 @@
         "original": "election",
         "new": "precatechumenate"
       }
+    },
+    {
+      "date": 1653823467437,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "election"
+      }
     }
   ],
   "87": [
@@ -5657,6 +5948,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1653737537868,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "Eikit ir praneškit mano broliams (Mt 28, 16-20)",
+        "new": "Eikit ir praneškit mano broliams - Mt 28, 16-20"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "88": [
@@ -5752,6 +6054,17 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1655546642459,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "Laimink, mano siela, viešpatį (tobito giesmė) (tob 13)",
+        "new": "Laimink, mano siela, viešpatį (Tobito giesmė) - Tob 13"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "90": [
@@ -5818,6 +6131,16 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1653840470019,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "new": "Sunkus žygis"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "91": [
@@ -5825,6 +6148,16 @@
       "date": 1559568106342,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1653842260610,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "new": "Sveika, Karaliene"
+      },
       "created": false,
       "updated": true
     }
@@ -5926,6 +6259,13 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1653832924426,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "94": [
@@ -5993,7 +6333,6 @@
       "date": 1651929273323,
       "locale": "lt-LT",
       "author": "albertiniqmc@gmail.com",
-      
       "created": true,
       "updated": false
     }
@@ -6034,6 +6373,16 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1655552829033,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "new": "Paimk į Dangų - Flp 1, 23"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "96": [
@@ -6087,6 +6436,17 @@
       "date": 1609373438922,
       "locale": "pt-PT",
       "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1655553954847,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "Magnificat (lk 1, 46-55)",
+        "new": "Magnificat - Lk 1, 46-55"
+      },
       "created": false,
       "updated": true
     }
@@ -6585,6 +6945,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1655544359579,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "107": [
@@ -7051,6 +7418,13 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1652519097170,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "117": [
@@ -7141,6 +7515,13 @@
         "original": "Por que confabulam as nações - Sal 2",
         "new": "Por que conjuram as nações - Sal 2"
       },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1653834164535,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
       "created": false,
       "updated": true
     }
@@ -7239,6 +7620,13 @@
         "original": "Como são amáveis tuas moradas - Sal 84 (83)",
         "new": "Como são amáveis as tuas moradas - Sal 84 (83)"
       },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1653836163239,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
       "created": false,
       "updated": true
     }
@@ -7423,6 +7811,21 @@
         "original": "election",
         "new": "precatechumenate"
       }
+    },
+    {
+      "date": 1653832357932,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "Kas yra ta (gg 8, 5-7)",
+        "new": "Kas yra ta - Gg 8, 5-7"
+      },
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "election"
+      }
     }
   ],
   "125": [
@@ -7479,6 +7882,17 @@
       "rename": {
         "original": "Quem nos separará - Rm 8, 33-39",
         "new": "Quem nos separará? - Rm 8, 33-39"
+      },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1653831349171,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "Kas mus atskirs (rom 8, 33-39)",
+        "new": "Kas mus atskirs - Rom 8, 33-39"
       },
       "created": false,
       "updated": true
@@ -7847,6 +8261,13 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1652525059061,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "134": [
@@ -7948,6 +8369,13 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1652520554389,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "136": [
@@ -7992,6 +8420,13 @@
         "original": "Sião, mãe de todos os povos - Sal 87 (86)",
         "new": "Sião, mãe dos povos - Sal 87 (86)"
       },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1653738466296,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
       "created": false,
       "updated": true
     }
@@ -8264,6 +8699,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1653737519956,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "Dygsta šakelė iš Jesės kelmo (iz 11)",
+        "new": "Dygsta šakelė iš Jesės kelmo - Iz 11"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "143": [
@@ -8547,6 +8993,17 @@
         "original": "election",
         "new": "precatechumenate"
       }
+    },
+    {
+      "date": 1653822538096,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "election"
+      }
     }
   ],
   "148": [
@@ -8638,6 +9095,13 @@
       "date": 1615739236238,
       "locale": "pt-PT",
       "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1652514601057,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
       "created": false,
       "updated": true
     }
@@ -8952,6 +9416,16 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1653998491636,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "new": "Jahveh, tu mano Dievas - Iz 25, 1-8"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "156": [
@@ -9058,6 +9532,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1653728362237,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "Garbė, garbė, garbė (Iz 66,18 ir t.t.)",
+        "new": "Garbė, garbė, garbė - Iz 66,18 ir t.t."
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "158": [
@@ -9139,7 +9624,6 @@
       "date": 1651308816933,
       "locale": "lt-LT",
       "author": "albertiniqmc@gmail.com",
-      
       "created": true,
       "updated": false,
       "staged": {
@@ -9259,7 +9743,6 @@
       "date": 1651310351166,
       "locale": "lt-LT",
       "author": "albertiniqmc@gmail.com",
-      
       "created": true,
       "updated": false
     }
@@ -9408,7 +9891,6 @@
       "date": 1651326803802,
       "locale": "lt-LT",
       "author": "albertiniqmc@gmail.com",
-      
       "created": false,
       "updated": true
     }
@@ -9479,6 +9961,17 @@
       },
       "created": false,
       "updated": false
+    },
+    {
+      "date": 1655556396449,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "Mano mylimoji yra man (gg 1,13 irt.t:)",
+        "new": "Mano mylimoji yra man - Gg 1,13 irt.t."
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "164": [
@@ -9601,7 +10094,6 @@
       "date": 1631141557397,
       "locale": "en",
       "author": "lavitia9@gmail.com",
-      
       "created": true,
       "updated": false,
       "staged": {
@@ -9719,6 +10211,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1653822972012,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "election",
+        "new": "catechumenate"
+      }
     }
   ],
   "168": [
@@ -9879,6 +10382,17 @@
       "author": "albertiniqmc@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1653826024352,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "Himnas meilei (1 kor 13, 1-13)",
+        "new": "Himnas meilei - 1 Kor 13, 1-13"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "171": [
@@ -9918,6 +10432,17 @@
       "author": "albertiniqmc@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1653825943107,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "election",
+        "new": "catechumenate"
+      }
     }
   ],
   "172": [
@@ -9956,6 +10481,21 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1653827159451,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "Jėzus ėjo per visus miestus (mt 9, 35 ir t.t.; 10)",
+        "new": "Jėzus ėjo per visus miestus - Mt 9, 35 ir t.t.; 10"
+      },
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "election",
+        "new": "catechumenate"
+      }
     }
   ],
   "173": [
@@ -10071,6 +10611,16 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1653841366144,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "new": "Balandė plazdeno (XXIV Saliamono Odė)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "175": [
@@ -10115,6 +10665,16 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1654014185097,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "new": "Mano mylimo balsas - Gg 2, 8-17"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "176": [
@@ -10193,6 +10753,21 @@
       },
       "created": false,
       "updated": false
+    },
+    {
+      "date": 1653822362793,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "Apsivilkite dievo šarvais - Ef 6, 11 ir t.t.",
+        "new": "Apsivilkite Dievo Šarvais - Ef 6, 11 ir t.t."
+      },
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "election",
+        "new": "catechumenate"
+      }
     }
   ],
   "177": [
@@ -10457,7 +11032,6 @@
       "date": 1651312844098,
       "locale": "lt-LT",
       "author": "albertiniqmc@gmail.com",
-      
       "created": true,
       "updated": false
     }
@@ -10728,7 +11302,13 @@
       "date": 1651313895909,
       "locale": "lt-LT",
       "author": "albertiniqmc@gmail.com",
-      
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1653728281853,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
       "created": false,
       "updated": true
     }
@@ -10806,6 +11386,13 @@
       },
       "created": false,
       "updated": false
+    },
+    {
+      "date": 1653837264973,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "187": [
@@ -11058,6 +11645,17 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1653825764834,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "liturgy"
+      }
     }
   ],
   "190": [
@@ -11157,6 +11755,16 @@
       "rename": {
         "original": "Agnus Dei",
         "new": "Lamm Gottes"
+      },
+      "created": false,
+      "updated": false
+    },
+    {
+      "date": 1655546725349,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "new": "Dievo avinėli"
       },
       "created": false,
       "updated": false
@@ -11421,6 +12029,17 @@
       "date": 1611851860224,
       "locale": "pt-PT",
       "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1653826802304,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "II Euchatistinė Malda (1)",
+        "new": "Euchatistinė Malda II (1)"
+      },
       "created": false,
       "updated": true
     }
@@ -12160,7 +12779,6 @@
       "date": 1629486153558,
       "locale": "en",
       "author": "monicaenrique.10@gmail.com",
-      
       "created": true,
       "updated": false
     }
@@ -12510,6 +13128,17 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1653741695639,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "Kada izraelis buvo vaikas (oz 11, 1-11)",
+        "new": "Kada Izraelis buvo vaikas - Oz 11, 1-11"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "224": [
@@ -12601,7 +13230,6 @@
       "date": 1609572667626,
       "locale": "de",
       "author": "benedikt.jacobsen@gmail.com",
-      
       "created": false,
       "updated": false,
       "staged": {
@@ -12613,7 +13241,6 @@
       "date": 1651311144907,
       "locale": "lt-LT",
       "author": "albertiniqmc@gmail.com",
-      
       "created": true,
       "updated": false,
       "staged": {
@@ -12815,7 +13442,6 @@
       "date": 1618340936923,
       "locale": "es",
       "author": "isaacneri30@gmail.com",
-      
       "created": true,
       "updated": false
     }
@@ -13017,7 +13643,6 @@
       "date": 1645696443293,
       "locale": "de",
       "author": "benedikt.jacobsen@gmail.com",
-      
       "created": true,
       "updated": false
     }
@@ -13034,7 +13659,6 @@
       "date": 1621541849668,
       "locale": "it",
       "author": "javier.alejandro.castro@gmail.com",
-      
       "created": true,
       "updated": false
     },
@@ -13042,7 +13666,6 @@
       "date": 1651324563385,
       "locale": "lt-LT",
       "author": "albertiniqmc@gmail.com",
-      
       "created": true,
       "updated": false
     }
@@ -13052,7 +13675,6 @@
       "date": 1609327398753,
       "locale": "pt-PT",
       "author": "silviorsepulveda@gmail.com",
-      
       "created": true,
       "updated": false,
       "staged": {
@@ -13145,7 +13767,6 @@
       "date": 1615846700428,
       "locale": "pt-PT",
       "author": "silviorsepulveda@gmail.com",
-      
       "created": true,
       "updated": false,
       "staged": {
@@ -13159,7 +13780,6 @@
       "date": 1615762126175,
       "locale": "pt-PT",
       "author": "silviorsepulveda@gmail.com",
-      
       "created": true,
       "updated": false
     },
@@ -13167,7 +13787,6 @@
       "date": 1616361239602,
       "locale": "pt-BR",
       "author": "lvinidantas01@gmail.com",
-      
       "created": true,
       "updated": false
     },
@@ -13184,7 +13803,6 @@
       "date": 1615853096450,
       "locale": "pt-PT",
       "author": "silviorsepulveda@gmail.com",
-      
       "created": true,
       "updated": false,
       "staged": {
@@ -13198,7 +13816,6 @@
       "date": 1615911504468,
       "locale": "pt-PT",
       "author": "silviorsepulveda@gmail.com",
-      
       "created": true,
       "updated": false
     },
@@ -13206,7 +13823,6 @@
       "date": 1616512130504,
       "locale": "pt-BR",
       "author": "javier.alejandro.castro@gmail.com",
-      
       "created": true,
       "updated": false
     },
@@ -13221,7 +13837,6 @@
       "date": 1617833738628,
       "locale": "es",
       "author": "smalitu@yahoo.es",
-      
       "created": true,
       "updated": false
     },
@@ -13229,7 +13844,6 @@
       "date": 1617906598331,
       "locale": "pt-PT",
       "author": "silviorsepulveda@gmail.com",
-      
       "created": false,
       "updated": true
     },
@@ -13246,7 +13860,6 @@
       "date": 1618063782658,
       "locale": "pt-BR",
       "author": "lvinidantas01@gmail.com",
-      
       "created": true,
       "updated": false
     },
@@ -13254,7 +13867,6 @@
       "date": 1628850549455,
       "locale": "es",
       "author": "jixifak197@asmm5.com",
-      
       "created": true,
       "updated": false
     }
@@ -13264,7 +13876,6 @@
       "date": 1632833729680,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
-      
       "created": true,
       "updated": false
     }
@@ -13274,7 +13885,6 @@
       "date": 1651324735778,
       "locale": "lt-LT",
       "author": "albertiniqmc@gmail.com",
-      
       "created": true,
       "updated": false
     }

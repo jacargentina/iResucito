@@ -1,97 +1,73 @@
-PSALMĖ 129 (130) - Iš GELMIŲ ŠAUKIUOSI TAVĘS
-
 clamp:3
-
-K.
-
-a Fi Er a
-Iš gelmių šaukiuosi tavęs, Viešpatie.
-
-F El
+a                                            F7     E7            a
+K. Iš gelmių šaukiuosi tavęs, Viešpatie.
+    F                                            E7
 Viešpatie, išgirsk mano balsą!
-
-a E E a
+  a                         F                      E       a
 Te tavo ausys būna dėmesingos
-
-> E7
+                          F           E7
 mano maldavimo balsui!
-Ei £/ a
-
-a
-IŠ GELMIŲ ŠAUKIUOSI TAVĘS, VIEŠPATIE.
-
-r Ef
-
+a                                                   F7       E7           a
+B. IŠ GELMIŲ ŠAUKIUOSI TAVĘS, VIEŠPATIE.
+    F                                                     E7
 VIEŠPATIE, IŠGIRSK MANO BALSĄ!
-Ąą F E a
+a                                  F                      E      a
 TE TAVO AUSYS BŪNA DĖMESINGOS
-P E7 (a)
-
+                               F                  E7       (a)
 MANO MALDAVIMO BALSUI!
-G F a
-Jei Tu paisysi nuodėmių, Viešpatie,
 
-Ež E7
+G                                                     F            a
+K. Jei Tu paisysi nuodėmių, Viešpatie,
+                                                                F7      E7
 kas bus išgelbėtas, kas bus išgelbėtas?
-E7
-
+       F                             E7
 Bet arti tavęs atleidimas,
-
-E a
+                 E               a
 prie tavęs tvyro meilė.
-F E7
-BET ARTI TAVĘS ATLEIDIMAS,
-
-F |
-
+F                                             E7
+B. BET ARTI TAVĘS ATLEIDIMAS,
+                     F                    a
 PRIE TAVĘS TVYRO MEILĖ
-G
-Pasitikiu Viešpačiu,
 
-E a
+G
+K. Pasitikiu Viešpačiu,
+                F                                     a
 mano siela pasitiki jo žodžiu.
-
-G
+                G
 Mano siela laukia Viešpaties,
-a
+         F                            a
 labiau nei sargybiniai laukia aušros.
 
 Izraelis laukia Viešpaties,
-F7 E7
+                                   F7                            E7
 labiau nei sargybiniai laukia aušros.
-F E7
+                       F                           E7
 Nes tiktai Viešpatyje yra meilė,
-- a
+                  F                        a
 tiktai jame yra atleidimas
-
-r Ef
-NES TIKTAI VIEŠPATYJE YRA MEILĖ,
-
-F a
+                            F                              E7
+B. NES TIKTAI VIEŠPATYJE YRA MEILĖ,
+                  F                         a
 TIKTAI JAME YRA ATLEIDIMAS.
 
-Viešpats atpirks Izraelį.
 
+K. Viešpats atpirks Izraelį.
 E7
-VIEŠPATS ATPIRKS IZRAELĮ
-
-a
+B. VIEŠPATS ATPIRKS IZRAELĮ
+                                        a
 IŠ VISŲ JO NUODĖMIŲ.
 
-Viešpats atpirks Izraelį.
-
+K. Viešpats atpirks Izraelį.
 E7
-VIEŠPATS ATPIRKS IZRAELĮ
-
-a
+B VIEŠPATS ATPIRKS IZRAELĮ
+                                        a
 Iš VISŲ JO NUODĖMIŲ.
-a
-Ai, ai, ai, ai
 
-d
+a
+K. Ai, ai, ai, ai
+                   d
 ai, ai, ai, ai,
-
-a
+                   a
 ai, ai, ai, ai,
 
 ai, ai, ai, ai!

@@ -1,53 +1,48 @@
-PSALMĖ 121 (122) - Iš MEILĖS MANO BROLIAMS
-
 clamp:2
-
-š a
-B. IŠ MEILĖS MANO BROLIAMS, K. Ten įžengia drauge
-
-e
+e                                      a
+B. IŠ MEILĖS MANO BROLIAMS, 
+                                           e
 IŠ MEILĖS MANO BIČIULIAMS,
-
-a
+                                            a
 AŠ LINKĖSIU, AŠ LINKĖSIU:
-H7 e
+H7                                  e
 RAMYBĖ TEBŪNA TAU.
 
-Koks džiaugsmas, kai man pasakyta:
-
-a e
+K. Koks džiaugsmas, kai man pasakyta:
+a                                      e
 eikim į Viešpaties būstą!
 
-JAU STOVI MŪSŲ KOJOS,
-H7 8
+B. JAU STOVI MŪSŲ KOJOS,
+H7                                     e
 ŠVENTOJO MIESTO VARTUOS.
 
-JERUZALE, JERUZALE,
-a 6
+B. JERUZALE, JERUZALE,
+  a                                 e
 NAUJAI TU ATSTATYTA!
-(x2)
 JERUZALE, JERUZALE,
-H7 6
-NAUJAI TU ATSTATYTAI
+H7                                  e
+NAUJAI TU ATSTATYTAI!
+repeat
 
 e
-IŠ MEILĖS...
+B. IŠ MEILĖS...
 
+column
+K. Ten įžengia drauge
 Viešpaties palikuonys.
 
-PAGAL IZRAELIO PAPROČIUS,
+B. PAGAL IZRAELIO PAPROČIUS,
 VIEŠPAČIUI GIEDOTI.
-JERUZALE, JERUZALE,
 
+B. JERUZALE, JERUZALE,
 NAUJAI TU ATSTATYTAI ...
-
 IŠ MEILĖS...
 
-Melskit ramybės, melskit ramybės
+K. Melskit ramybės, melskit ramybės
 miestui Jeruzalės.
 
-TEBŪNA RAMYBĖ,TEBŪNA RAMYBĖ
+B. TEBŪNA RAMYBĖ,TEBŪNA RAMYBĖ
 TIEMS, KURIE TAVE MYLI.
-JERUZALE, JERUZALE,
 
+B. JERUZALE, JERUZALE,
 NAUJAI TU ATSTATYTAI...

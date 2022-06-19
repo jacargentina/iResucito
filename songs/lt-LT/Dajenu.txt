@@ -4,8 +4,8 @@ K. Kiek daug gėrybių Viešpats mums davė!
 B. KIEK DAUG GERYBIŲ VIEŠPATS MUMS DAVĖ!
                                 D                C                              e
 KIEK DAUG GĖRYBIŲ VIEŠPATS MUMS DAVĖ!
-    a                                                        H7 
 
+    a                                                        H7 
 K. Jeigu Kristus mus išvestų iš Egipto,
                                                                           e
 bet neįvykdytų teisingumo prieš faraoną:
@@ -23,7 +23,7 @@ bet neišvaduotų mus nuo visų stabų.
 D                                                    C
 B. ŠITO JAU VISAI MUMS UŽTEKTŲ...
 
-K. Jeigu išvaduotų mus nuo visų stabų:(*) 
+K. Jeigu išvaduotų mus nuo visų stabų:* 
 bet nepadovanotų mums jų turtų...
 
 Jeigu duotų mums jų turtus,
@@ -46,7 +46,7 @@ bet nesudarytų su mumis Naujos Sandoros...
 
 Jeigu sudarytų su mumis Naują Sandorą,
 bet neįvestų mūsų į savo Bažnyčią...
-column
+
 Jeigu įvestų mus į savo Bažnyčia,
 bet nepastatytų mumyse savo Šventovės...
 
@@ -69,7 +69,7 @@ Nes įvykdė teisingumą prieš faraoną. (Bis B)
 e                      D                        C                   e
 Nes mus išlaisvino nuo visų mūsų priešų. (Bis B)
 
-Nes padovanojo mums visus jų turtus...(**)
+Nes padovanojo mums visus jų turtus...*
 Nes prieš mus atvėrė jūrą...
 Nes paskandino joje mūsų engėjus...
 
@@ -93,5 +93,7 @@ PRISIKĖLĖ DĖL MŪSŲ! (3x)
 e                    D                  C              e
 ALELIUJA! ALELIUJA! ALELIUJA! (3x)
 
-*Po kiekvieno posmelio bendruomenė atliepia: "ŠITO JAU VISAI MUMS UŽTEKTU..."
-** Susirinkimas pakartuoja.
+* Po kiekvieno posmelio bendruomenė atliepia: "ŠITO JAU VISAI MUMS UŽTEKTU..."
+* Susirinkimas pakartuoja.
+
+

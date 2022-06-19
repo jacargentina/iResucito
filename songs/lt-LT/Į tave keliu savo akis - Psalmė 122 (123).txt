@@ -1,40 +1,37 @@
-PSALMĖ 122 (123) - Į TAVE KELIU SAVO AKIS
 clamp:2
-
-d A7
+  d                                   A7
 K. Į tave keliu savo akis,
-g A7
+     g                                            A7
 į tave, kuris gyveni danguje.
-d A7
+      d                                    A7
 B. Į TAVE KELIU SAVO AKIS,
-g
+       g                                                   A7
 Į TAVE, KURIS GYVENI DANGUJE.
 d
 K. Kaip tarnų akys
-A7
+                                                      A7
 žvelgia į jų šeimininkų rankas,
 g
 kaip tarnaitės akys -
+                                              A7
 į jos šeimininkės rankas,
-A
+B                                           A
 taip mūsų akys yra Viešpatyje,
-B A
+           B                                 A
 pasitikint, kad pasigailės. (2x)
-d A
+d                                                A
 M. PASIGAILĖK MŪSŲ, O VIEŠPATIE.
-B A
+B                                                A
 V. PASIGAILĖK MŪSŲ, O VIEŠPATIE.
-d A
+d                                                                 A
 M. MŪSŲ SIELA PERSISOTINUSI PAŽEMINIMU.
-B A
+B                                                  A
 V. NES MES PERPILDYTI PATYČIOMIS.
-d A
+d                             A
 M. IŠPUIKĖLIŲ PAŽEMINIMO.
-B A
+B                                A
 V. ĮŽŪLIŲJŲ PATYČIŲ.
-d
+d                                               A
 B. PASIGAILĖK MŪSŲ, O VIEŠPATIE.
-A
-
-B
+B                                                A
 PASIGAILĖK MŪSŲ, O VIEŠPATIE.

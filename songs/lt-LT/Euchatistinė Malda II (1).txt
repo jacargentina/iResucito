@@ -68,7 +68,7 @@ pašventink šias atnašas,
 kad jos mums taptų
 mūsų Viešpaties Jėzaus Kristaus
 Kūnu ir Krauju.
-
+column
                        d
 P. (giedant): Kai savo noru
 
@@ -86,7 +86,8 @@ NES TAI YRA MANO KŪNAS,
        A7                             d
 KURIS UZ JUS ATIDUODAMAS.
 d
-Lygiai taip po vakarienės jis, paėmęs ir taurę vyno,
+Lygiai taip po vakarienės jis, 
+paėmęs ir taurę vyno,
                                                                F
 pakėlė akis į tave, Tėve, Tėve, vėl dėkodamas,
         g                                     d
