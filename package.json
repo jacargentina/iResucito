@@ -14,7 +14,7 @@
     "postversion": "react-native-version --never-amend",
     "lint": "eslint . --ext .js",
     "react-devtools": "react-devtools",
-    "patch": "node ./webapp/syncData.js down && cd scripts && esno ./applyPatch.ts && cd .. && node ./webapp/syncData.js up SongsIndexPatch.json"
+    "patch": "node ./webapp/syncData.js down && cd scripts && ./node_modules/.bin/esno ./applyPatch.ts && cd .. && node ./webapp/syncData.js up SongsIndexPatch.json"
   },
   "dependencies": {
     "@babel/cli": "^7.17.6",

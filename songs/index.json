@@ -398,7 +398,8 @@
    "pt-PT": "Abraão - Teofania de Mambré - Gn 18, 1-5",
    "lt-LT": "Abraomas - Pr 18, 1-5",
    "sw-TZ": "Abrahamu - (Mwa 18: 1-5)",
-   "en": "Abraham - Gen. 18, 1-5"
+   "en": "Abraham - Gen. 18, 1-5",
+   "pl": "Abraham - Rdz 18, 1-5"
   }
  },
  "26": {
@@ -1532,7 +1533,8 @@
    "de": "Maria von Jasna Góra",
    "pt-BR": "Maria de Jasna Göra - Hino à Virgem de Jasna Göra, Chestokowa, Polônia",
    "pt-PT": "Maria de Jasna Göra - Hino à Virgem de Jasna Göra, Chestokowa, Polônia",
-   "lt-LT": "Maria de jasna gora"
+   "lt-LT": "Maria de jasna gora",
+   "pl": "Maria de Jasna Góra - Hymn do Madonny Częstochowskiej"
   }
  },
  "98": {
@@ -2448,13 +2450,15 @@
    "pt-PT": "Abba Pai - Rm 8, 15-17",
    "sw-TZ": "Abba Baba - (Rum 8: 15-17)",
    "en": "Abba Father - Rom. 8, 15-17",
-   "lt-LT": "Abba, Tėve - Rm 8, 15-17"
+   "lt-LT": "Abba, Tėve - Rm 8, 15-17",
+   "pl": "Abba Ojcze - Rz 8, 15-17"
   },
   "stages": {
    "es": "precatechumenate",
    "sw-TZ": "precatechumenate",
    "en": "precatechumenate",
-   "de": "precatechumenate"
+   "de": "precatechumenate",
+   "pl": "precatechumenate"
   }
  },
  "160": {
@@ -2791,7 +2795,8 @@
    "en": "Easter alleluia",
    "pt-BR": "Aleluia Pascal - Apropriado para o tempo Pascal",
    "pt-PT": "Aclamação ao Evangelho - Aleluia Pascal - Apropriado para o tempo Pascal",
-   "lt-LT": "Paschos aleliuja"
+   "lt-LT": "Paschos aleliuja",
+   "pl": "Alleluja Paschalne"
   }
  },
  "182": {

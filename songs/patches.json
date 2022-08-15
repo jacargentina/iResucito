@@ -1608,6 +1608,16 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1657746047240,
+      "locale": "pl",
+      "author": "andropiotrek@gmail.com",
+      "rename": {
+        "new": "Abraham - Rdz 18, 1-5"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "26": [
@@ -4478,6 +4488,13 @@
       "linked": {
         "new": "Tauta einanti tamsybėse (iz 9, 1-5)"
       }
+    },
+    {
+      "date": 1660478207519,
+      "locale": "pt-PT",
+      "author": "fabio.imr.reis@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "64": [
@@ -6484,6 +6501,16 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1657830840819,
+      "locale": "pl",
+      "author": "andropiotrek@gmail.com",
+      "rename": {
+        "new": "Maria de Jasna Góra - Hymn do Madonny Częstochowskiej"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "98": [
@@ -9745,6 +9772,20 @@
       "author": "albertiniqmc@gmail.com",
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1657747315830,
+      "locale": "pl",
+      "author": "andropiotrek@gmail.com",
+      "rename": {
+        "new": "Abba Ojcze - Rz 8, 15-17"
+      },
+      "created": true,
+      "updated": false,
+      "staged": {
+        "original": "election",
+        "new": "precatechumenate"
+      }
     }
   ],
   "160": [
@@ -10961,6 +11002,16 @@
         "new": "Aclamação ao Evangelho - Aleluia Pascal - Apropriado para o tempo Pascal"
       },
       "created": false,
+      "updated": false
+    },
+    {
+      "date": 1657829738310,
+      "locale": "pl",
+      "author": "andropiotrek@gmail.com",
+      "rename": {
+        "new": "Alleluja Paschalne"
+      },
+      "created": true,
       "updated": false
     }
   ],
