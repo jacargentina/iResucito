@@ -121,5 +121,9 @@ IRESUCITO_RELEASE_KEY_PASSWORD=[contraseña]
 
 ### Para desarrollo mediante la web app (local)
 
-- cd /packages/webapp
-- next dev
+- npm run web
+
+### error: An organization slug is required (provide with --org)
+
+Agregar archivo `sentry.properties` en ./ios y ./android con configuracion de proyecto y credenciales
+
