@@ -1,0 +1,12 @@
+{
+  "include": ["types.d.ts"],
+  "compilerOptions": {
+    "module": "esnext",
+    "lib": ["DOM", "DOM.Iterable", "ES2019"],
+    "esModuleInterop": true,
+    "jsx": "react-jsx",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "strict": true
+  }
+}

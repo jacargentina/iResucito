@@ -1,0 +1,8 @@
+[33mweb:build[0m: cache hit, replaying output [2mfce0a0e124f1b91d[0m
+[33mweb:build: [0m
+[33mweb:build: [0m> web@1.0.0 build /Users/javiercastro/git/iResucito/apps/web
+[33mweb:build: [0m> remix setup node && remix build && mkdir -p ./public/build/_assets/themes/default/assets/fonts && cp ./node_modules/semantic-ui-css/themes/default/assets/fonts/* ./public/build/_assets/themes/default/assets/fonts && cp ../assets/fonts/* ./public/build/_assets/
+[33mweb:build: [0m
+[33mweb:build: [0msh: remix: command not found
+[33mweb:build: [0m ELIFECYCLE  Command failed.
+[33mweb:build: [0m WARN   Local package.json exists, but node_modules missing, did you mean to install?

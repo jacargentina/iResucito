@@ -1,0 +1,77 @@
+clamp:4
+a
+V. Kodėl ši naktis
+
+yra kitokia
+         d                     a
+nei visos kitos naktys? 
+             d                         a
+B. NEI VISOS KITOS NAKTYS?
+V. Visom kitom naktim
+
+anksti miegoti einam,
+   d                                             a
+nepasiliekam su vyresniais.
+    d                                                       a
+B. NEPASILIEKAM SU VYRESNIAIS.
+        d                     a
+V. O šioj nakty, šioj nakty
+          E                             a
+pasiliekam kartu visi.
+          d                         a
+B. O ŠIOJ NAKTY, ŠIOJ NAKTY
+            E                                  a
+PASILIEKAM KARTU VISI.
+V. Kodėl ši naktis
+yra kitokia
+nei visos kitos naktys?
+
+B. NEI VISOS KITOS NAKTYS?
+
+V. Visom kitom naktim
+anksti miegoti einam
+tuoj po vakarienės.
+
+B. TUOJ PO VAKARIENĖS.
+
+V. O šioj nakty, šioj nakty
+pasninkavom kartu visi.
+column
+B. O ŠIOJ NAKTY, ŠIOJ NAKTY
+PASNINKAVOM KARTU VISI.
+
+V. Kodėl ši naktis
+yra kitokia
+nei visos kitos naktys?
+
+B. NEI VISOS KITOS NAKTYS?
+
+V. Visom kitom naktim
+anksti miegoti einam
+ir nieko mes nelaukiam.
+
+B. IR NIEKO MES NELAUKIAM.
+
+V. O šioj nakty, šioj nakty
+pasiliekame laukime.
+
+B. O ŠIOJ NAKTY, ŠIOJ NAKTY
+PASILIEKAME LAUKIME.
+
+V. Kodėl ši naktis
+yra kitokia
+nei visos kitos naktys? 
+
+B. NEI VISOS KITOS NAKTYS?
+                 d
+V. Kad pasiliekam kartu,
+                  a
+pasninkaujam kartų,
+          E                a
+pasiliekame laukime.
+                         d
+B. KAD PASILIEKAM KARTU,
+                     a
+PASNINKAUJAM KARTU,
+             E                a
+PASILIEKAME LAUKIME.

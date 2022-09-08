@@ -1,0 +1,20 @@
+{
+  "name": "React-rncore",
+  "version": "0.69.1",
+  "summary": "Fabric for React Native.",
+  "homepage": "https://reactnative.dev/",
+  "license": "MIT",
+  "authors": "Facebook, Inc. and its affiliates",
+  "platforms": {
+    "ios": "12.4"
+  },
+  "source": {
+    "git": "https://github.com/facebook/react-native.git",
+    "tag": "v0.69.1"
+  },
+  "source_files": "dummyFile.cpp",
+  "pod_target_xcconfig": {
+    "USE_HEADERMAP": "YES",
+    "CLANG_CXX_LANGUAGE_STANDARD": "c++17"
+  }
+}
