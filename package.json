@@ -13,8 +13,8 @@
       "**/react-dom",   
       "**/react-native",
       "**/react-native/**",
-      "**/react-native-codegen",
-      "**/react-native-codegen/**"
+      "**/react-native-**",
+      "**/react-native-**/**"
     ]
   },
   "scripts": {

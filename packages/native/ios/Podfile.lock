@@ -343,12 +343,12 @@ DEPENDENCIES:
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
-  - react-native-blob-util (from `../../../node_modules/react-native-blob-util`)
-  - react-native-contacts (from `../../../node_modules/react-native-contacts`)
-  - react-native-keep-awake (from `../../../node_modules/react-native-keep-awake`)
+  - react-native-blob-util (from `../node_modules/react-native-blob-util`)
+  - react-native-contacts (from `../node_modules/react-native-contacts`)
+  - react-native-keep-awake (from `../node_modules/react-native-keep-awake`)
   - react-native-pager-view (from `../node_modules/react-native-pager-view`)
-  - react-native-pdf (from `../../../node_modules/react-native-pdf`)
-  - react-native-print (from `../../../node_modules/react-native-print`)
+  - react-native-pdf (from `../node_modules/react-native-pdf`)
+  - react-native-print (from `../node_modules/react-native-print`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
@@ -362,18 +362,18 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
-  - RNBootSplash (from `../../../node_modules/react-native-bootsplash`)
+  - RNBootSplash (from `../node_modules/react-native-bootsplash`)
   - "RNCAsyncStorage (from `../../../node_modules/@react-native-async-storage/async-storage`)"
-  - RNDeviceInfo (from `../../../node_modules/react-native-device-info`)
-  - RNFS (from `../../../node_modules/react-native-fs`)
+  - RNDeviceInfo (from `../node_modules/react-native-device-info`)
+  - RNFS (from `../node_modules/react-native-fs`)
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
-  - RNICloudStore (from `../../../node_modules/react-native-icloudstore`)
+  - RNICloudStore (from `../node_modules/react-native-icloudstore`)
   - RNLocalize (from `../node_modules/react-native-localize`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - "RNSentry (from `../node_modules/@sentry/react-native`)"
-  - RNShare (from `../../../node_modules/react-native-share`)
+  - RNShare (from `../node_modules/react-native-share`)
   - RNSVG (from `../node_modules/react-native-svg`)
-  - RNVectorIcons (from `../../../node_modules/react-native-vector-icons`)
+  - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -417,17 +417,17 @@ EXTERNAL SOURCES:
   React-logger:
     :path: "../node_modules/react-native/ReactCommon/logger"
   react-native-blob-util:
-    :path: "../../../node_modules/react-native-blob-util"
+    :path: "../node_modules/react-native-blob-util"
   react-native-contacts:
-    :path: "../../../node_modules/react-native-contacts"
+    :path: "../node_modules/react-native-contacts"
   react-native-keep-awake:
-    :path: "../../../node_modules/react-native-keep-awake"
+    :path: "../node_modules/react-native-keep-awake"
   react-native-pager-view:
     :path: "../node_modules/react-native-pager-view"
   react-native-pdf:
-    :path: "../../../node_modules/react-native-pdf"
+    :path: "../node_modules/react-native-pdf"
   react-native-print:
-    :path: "../../../node_modules/react-native-print"
+    :path: "../node_modules/react-native-print"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
   React-perflogger:
@@ -455,17 +455,17 @@ EXTERNAL SOURCES:
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
   RNBootSplash:
-    :path: "../../../node_modules/react-native-bootsplash"
+    :path: "../node_modules/react-native-bootsplash"
   RNCAsyncStorage:
     :path: "../../../node_modules/@react-native-async-storage/async-storage"
   RNDeviceInfo:
-    :path: "../../../node_modules/react-native-device-info"
+    :path: "../node_modules/react-native-device-info"
   RNFS:
-    :path: "../../../node_modules/react-native-fs"
+    :path: "../node_modules/react-native-fs"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
   RNICloudStore:
-    :path: "../../../node_modules/react-native-icloudstore"
+    :path: "../node_modules/react-native-icloudstore"
   RNLocalize:
     :path: "../node_modules/react-native-localize"
   RNScreens:
@@ -473,11 +473,11 @@ EXTERNAL SOURCES:
   RNSentry:
     :path: "../node_modules/@sentry/react-native"
   RNShare:
-    :path: "../../../node_modules/react-native-share"
+    :path: "../node_modules/react-native-share"
   RNSVG:
     :path: "../node_modules/react-native-svg"
   RNVectorIcons:
-    :path: "../../../node_modules/react-native-vector-icons"
+    :path: "../node_modules/react-native-vector-icons"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
