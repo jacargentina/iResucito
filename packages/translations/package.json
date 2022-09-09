@@ -1,0 +1,8 @@
+{
+  "name": "@iresucito/translations",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "i18n-js": "*"
+  }
+}

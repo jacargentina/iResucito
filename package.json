@@ -1,9 +1,24 @@
 {
+  "private": true,
   "scripts": {
     "build": "turbo run build",
     "test": "turbo run test",
     "lint": "turbo run lint",
     "dev": "turbo run dev"
+  },
+  "workspaces": {
+    "packages": ["packages/*"],
+    "nohoist": [
+      "**/react", 
+      "**/react-dom",   
+      "**/react-native",
+      "**/react-native/**",
+      "**/react-native-codegen",
+      "**/react-native-codegen/**"
+    ]
+  },
+  "scripts": {
+    "reset": "find . -type dir -name node_modules | xargs rm -rf && rm -rf yarn.lock"
   },
   "devDependencies": {
     "turbo": "^1.4.6"

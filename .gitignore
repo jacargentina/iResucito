@@ -54,12 +54,12 @@ buck-out/
 bin/
 
 # CocoaPods
-/ios/Pods/
+**/ios/Pods/
 
 # web app
-webapp/.cache
-webapp/data/*.json
+packages/web/.cache
+packages/web/data/*.json
 
 # sentry
-ios/sentry.properties
-android/sentry.properties
+**/ios/sentry.properties
+**/android/sentry.properties
