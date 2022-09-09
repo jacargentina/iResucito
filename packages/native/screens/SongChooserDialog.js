@@ -6,7 +6,7 @@ import { Text, Center, Spinner, useTheme } from 'native-base';
 import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
 import ModalView from '../components/ModalView';
 import { DataContext } from '../DataContext';
-import I18n from '../../translations';
+import I18n from '@iresucito/translations';
 import SongList from './SongList';
 
 const SongChooserDialog = (props: any): React.Node => {

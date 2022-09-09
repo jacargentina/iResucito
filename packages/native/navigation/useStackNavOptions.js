@@ -1,6 +1,6 @@
 // @flow
 import { useTheme } from 'native-base';
-import I18n from '../../translations';
+import I18n from '@iresucito/translations';
 
 const useStackNavOptions = (): any => {
   const { colors } = useTheme();

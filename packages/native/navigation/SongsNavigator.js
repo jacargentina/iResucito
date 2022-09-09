@@ -9,7 +9,7 @@ import SongDetail from '../screens/SongDetail';
 import PDFViewer from '../screens/PDFViewer';
 import SharePDFButton from '../components/SharePDFButton';
 import PrintPDFButton from '../components/PrintPDFButton';
-import I18n from '../../translations';
+import I18n from '@iresucito/translations';
 import { DataContext } from '../DataContext';
 import useStackNavOptions from './useStackNavOptions';
 import SongDetailOptions from './SongDetailOptions';

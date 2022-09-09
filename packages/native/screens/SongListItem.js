@@ -20,7 +20,7 @@ import Collapsible from 'react-native-collapsible';
 import { Rating } from 'react-native-rating-element';
 import { DataContext } from '../DataContext';
 import badges from '../badges';
-import I18n from '../../translations';
+import I18n from '@iresucito/translations';
 
 const NoLocaleWarning = (): React.Node => {
   return (

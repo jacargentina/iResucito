@@ -13,10 +13,9 @@ import {
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { getLocalizedListItem } from '@iresucito/core/common';
+import I18n from '@iresucito/translations';
 import { DataContext } from '../DataContext';
-import { getLocalizedListItem } from '../../common';
-
-import I18n from '../../translations';
 
 const ListDetailItem = (props: {
   listName: any,

@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { useRoute } from '@react-navigation/native';
 import ModalView from '../components/ModalView';
-import I18n from '../../translations';
+import I18n from '@iresucito/translations';
 import SongViewPdf from './SongViewPdf';
 
 const SongPreviewPdfDialog = (props: any): React.Node => {

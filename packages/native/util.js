@@ -4,9 +4,9 @@ import { StyleSheet, Platform } from 'react-native';
 import * as RNLocalize from 'react-native-localize';
 import RNFS from 'react-native-fs';
 import DeviceInfo from 'react-native-device-info';
-import { SongsProcessor } from '../SongsProcessor';
-import { SongsParser } from '../SongsParser';
-import { SongsExtras } from '../SongsExtras';
+import { SongsProcessor } from '@iresucito/core/SongsProcessor';
+import { SongsParser } from '@iresucito/core/SongsParser';
+import { SongsExtras } from '@iresucito/core/SongsExtras';
 
 export function ordenAlfabetico(a: any, b: any): number {
   if (a.givenName < b.givenName) {

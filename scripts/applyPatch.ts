@@ -1,4 +1,4 @@
-import { getPropertyLocale, getPatchStats } from '../common';
+import { getPropertyLocale, getPatchStats } from '@iresucito/core/common';
 import path from 'path';
 import util from 'util';
 import fs from 'fs';

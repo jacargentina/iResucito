@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import { Badge } from 'native-base';
-import colors from '../colors';
+import colors from '@iresucito/core/colors';
 
 const createBadge = (backgroundColor, color, text): React.Node => {
   return (

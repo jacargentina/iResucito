@@ -4,11 +4,11 @@ import { useContext } from 'react';
 import { Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Text, Actionsheet } from 'native-base';
+import I18n from '@iresucito/translations';
+import { defaultExportToPdfOptions } from '@iresucito/core/common';
 import { DataContext } from '../DataContext';
-import I18n from '../../translations';
 import { NativeParser } from '../util';
 import { generateSongPDF } from '../pdf';
-import { defaultExportToPdfOptions } from '../../common';
 
 const ChoosePdfTypeForExport = (props: any): React.Node => {
   const { isOpen, onClose } = props.chooser;

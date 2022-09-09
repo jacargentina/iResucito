@@ -10,9 +10,9 @@ import {
   MenuTrigger,
 } from 'react-native-popup-menu';
 import { useNavigation, useRoute } from '@react-navigation/native';
+import I18n from '@iresucito/translations';
+import { getChordsScale } from '@iresucito/core/common';
 import { DataContext } from '../DataContext';
-import I18n from '../../translations';
-import { getChordsScale } from '../../common';
 import useStackNavOptions from '../navigation/useStackNavOptions';
 
 const TransportNotesButton = (props: any): React.Node => {

@@ -11,8 +11,8 @@ import {
   getLocalizedListItem,
   getLocalizedListType,
   defaultExportToPdfOptions,
-} from '../common';
-import I18n from '../translations';
+} from '@iresucito/core/common';
+import I18n from '@iresucito/translations';
 import badges from './badges';
 import { clouddata } from './clouddata';
 import { generateListPDF } from './pdf';

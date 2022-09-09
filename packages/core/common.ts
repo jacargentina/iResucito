@@ -3,7 +3,7 @@ import normalize from 'normalize-strings';
 import langs from 'langs';
 import countries from 'country-list';
 import * as _ from 'lodash';
-import I18n from './translations';
+import I18n from '@iresucito/translations';
 const PDFDocument = require('./pdfkit.standalone.js');
 
 export const getLocalizedListItem = (listKey: string): string => {

@@ -14,7 +14,7 @@ import {
   FlatList,
 } from 'native-base';
 import { DataContext } from '../DataContext';
-import I18n from '../../translations';
+import I18n from '@iresucito/translations';
 
 const Loading = (): React.Node => {
   return (

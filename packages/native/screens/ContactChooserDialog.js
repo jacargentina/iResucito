@@ -7,7 +7,7 @@ import { View } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import ModalView from '../components/ModalView';
 import { DataContext } from '../DataContext';
-import I18n from '../../translations';
+import I18n from '@iresucito/translations';
 import { contactFilterByText, ordenAlfabetico } from '../util';
 import SearchBarView from '../components/SearchBarView';
 import ContactListItem from './ContactListItem';

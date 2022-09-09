@@ -17,7 +17,7 @@ import SwipeableRightAction from '../components/SwipeableRightAction';
 import SearchBarView from '../components/SearchBarView';
 import { DataContext } from '../DataContext';
 import CallToAction from '../components/CallToAction';
-import I18n from '../../translations';
+import I18n from '@iresucito/translations';
 import useStackNavOptions from '../navigation/useStackNavOptions';
 import { contactFilterByText, ordenAlfabetico } from '../util';
 import ContactListItem from './ContactListItem';

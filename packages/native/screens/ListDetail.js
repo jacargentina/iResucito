@@ -8,7 +8,7 @@ import { KeyboardAwareScrollView } from '@codler/react-native-keyboard-aware-scr
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import SwipeableRightAction from '../components/SwipeableRightAction';
 import { DataContext } from '../DataContext';
-import I18n from '../../translations';
+import I18n from '@iresucito/translations';
 import ListDetailItem from './ListDetailItem';
 
 const SwipeableRow = (props: {

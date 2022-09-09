@@ -1,6 +1,6 @@
 // @flow
 import osLocale from 'os-locale';
-import I18n from '../translations';
+import I18n from '@iresucito/translations';
 import moment from 'moment';
 
 const path = require('path');

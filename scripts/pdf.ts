@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
 import { Base64Encode } from 'base64-stream';
-import { PdfWriter, SongPDFGenerator } from '../common';
+import { PdfWriter, SongPDFGenerator } from '@iresucito/core/common';
 
 export async function generatePDF(
   songsToPdf: Array<SongToPdf>,

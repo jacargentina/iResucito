@@ -1,5 +1,5 @@
 // @flow
-import I18n from './translations';
+import I18n from '@iresucito/translations';
 import { cleanChordsRegex, getChordsScale } from './common';
 
 export class SongsParser {

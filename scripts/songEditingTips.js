@@ -1,8 +1,8 @@
 // @flow
-import I18n from '../translations';
+import I18n from '@iresucito/translations';
 import FolderSongs from '../FolderSongs';
 import { SongsParser } from '../SongsParser';
-import { PdfStyles } from '../common';
+import { PdfStyles } from '@iresucito/core/common';
 
 import('os-locale').then((oslocale) => {
   var program = require('commander');

@@ -1,10 +1,10 @@
 // @flow
 import fs from 'fs';
 import osLocale from 'os-locale';
-import I18n from '../translations';
+import I18n from '@iresucito/translations';
 import FolderSongs from '../FolderSongs';
 import { SongsParser } from '../SongsParser';
-import { PdfStyles } from '../common';
+import { PdfStyles } from '@iresucito/core/common';
 
 var program = require('commander');
 

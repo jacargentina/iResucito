@@ -5,10 +5,10 @@ import { Dimensions, ScrollView } from 'react-native';
 import { Box, HStack, Text, Icon, Button } from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import color from 'color';
+import colors from '@iresucito/core/colors';
+import I18n from '@iresucito/translations';
 import { DataContext } from '../DataContext';
-import colors from '../../colors';
 import { NativeParser, NativeStyles } from '../util';
-import I18n from '../../translations';
 import SongViewLines from './SongViewLines';
 
 const SongViewFrame = (props: any): React.Node => {

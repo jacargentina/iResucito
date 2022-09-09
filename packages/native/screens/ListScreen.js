@@ -28,7 +28,7 @@ import { DataContext } from '../DataContext';
 import CallToAction from '../components/CallToAction';
 import AddListButton from '../components/AddListButton';
 import ChooseListTypeForAdd from '../components/ChooseListTypeForAdd';
-import I18n from '../../translations';
+import I18n from '@iresucito/translations';
 
 const SwipeableRow = (props: { item: any }): React.Node => {
   const data = useContext(DataContext);

@@ -3,10 +3,10 @@ import * as React from 'react';
 import { Icon } from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { defaultExportToPdfOptions } from '../../common';
+import I18n from '@iresucito/translations';
+import { defaultExportToPdfOptions } from '@iresucito/core/common';
 import { NativeParser } from '../util';
 import { generateSongPDF } from '../pdf';
-import I18n from '../../translations';
 import useStackNavOptions from '../navigation/useStackNavOptions';
 
 const ViewPdfButton = (props: any): React.Node => {

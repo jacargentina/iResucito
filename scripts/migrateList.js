@@ -1,5 +1,5 @@
 import FolderSongs from '../FolderSongs';
-import { getEsSalmo } from '../common';
+import { getEsSalmo } from '@iresucito/core/common';
 
 var songs = FolderSongs.getSongsMeta('es');
 

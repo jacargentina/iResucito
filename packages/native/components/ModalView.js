@@ -3,7 +3,7 @@ import * as React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Box, Text, HStack, Button, Center } from 'native-base';
 import { Platform, KeyboardAvoidingView } from 'react-native';
-import I18n from '../../translations';
+import I18n from '@iresucito/translations';
 
 const ConditionalWrapper = (props: any) => {
   const { condition, wrapper, children } = props;

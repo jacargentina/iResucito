@@ -17,7 +17,7 @@ import { FlatList, Text, Spinner, useDisclose } from 'native-base';
 import SearchBarView from '../components/SearchBarView';
 import ExportToPdfButton from '../components/ExportToPdfButton';
 import ChoosePdfTypeForExport from '../components/ChoosePdfTypeForExport';
-import I18n from '../../translations';
+import I18n from '@iresucito/translations';
 import { DataContext } from '../DataContext';
 import SongListItem from './SongListItem';
 

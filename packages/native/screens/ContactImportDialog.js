@@ -15,7 +15,7 @@ import ModalView from '../components/ModalView';
 import SearchBarView from '../components/SearchBarView';
 import ContactPhoto from '../components/ContactPhoto';
 import { DataContext } from '../DataContext';
-import I18n from '../../translations';
+import I18n from '@iresucito/translations';
 import {
   getContactsForImport,
   contactFilterByText,

@@ -7,7 +7,7 @@ import { useRoute } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { DataContext } from '../DataContext';
 import useStackNavOptions from '../navigation/useStackNavOptions';
-import I18n from '../../translations';
+import I18n from '@iresucito/translations';
 
 const ShareListButton = (props: any): React.Node => {
   const options = useStackNavOptions();

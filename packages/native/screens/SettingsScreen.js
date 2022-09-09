@@ -18,14 +18,14 @@ import {
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import DeviceInfo from 'react-native-device-info';
+import I18n from '@iresucito/translations';
+import { getLocalesForPicker } from '@iresucito/core/common';
 import { DataContext } from '../DataContext';
-import I18n from '../../translations';
-import { getLocalesForPicker } from '../../common';
 import { getDefaultLocale } from '../util';
 
-const pack = require('../../app.json');
-const collaborators = require('../../songs/collaborators.json');
-const cristo = require('../../img/cristo.jpg');
+const pack = require('../app.json');
+const collaborators = require('@iresucito/core/songs/collaborators.json');
+const cristo = require('../img/cristo.jpg');
 const appName = pack.displayName;
 
 const SettingsScreen = (): React.Node => {
