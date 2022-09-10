@@ -36,9 +36,9 @@ build/
 .gradle
 local.properties
 *.iml
-android/app/src/main/assets/songs/
-android/app/**/*.apk
-android/app/release/
+packages/native/android/app/src/main/assets/songs/
+packages/native/android/app/**/*.apk
+packages/native/android/app/release/
 
 # node.js
 #
