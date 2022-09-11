@@ -1,4 +1,3 @@
-// @flow
 import * as React from 'react';
 import { useContext } from 'react';
 import { HStack } from 'native-base';

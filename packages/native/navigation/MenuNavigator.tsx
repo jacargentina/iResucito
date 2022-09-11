@@ -1,4 +1,3 @@
-// @flow
 import * as React from 'react';
 import { useContext, useEffect, useMemo } from 'react';
 import { Platform, Linking } from 'react-native';
