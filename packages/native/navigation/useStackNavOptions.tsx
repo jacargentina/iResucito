@@ -1,4 +1,3 @@
-// @flow
 import { useTheme } from 'native-base';
 import I18n from '@iresucito/translations';
 

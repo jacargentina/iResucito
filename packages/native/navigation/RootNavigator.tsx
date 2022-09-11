@@ -11,7 +11,7 @@ import SongChooserNavigator from './SongChooserNavigator';
 
 const Stack = createStackNavigator();
 
-const RootNavigator = (): React.Node => {
+const RootNavigator = () => {
   const options = useStackNavOptions();
   return (
     <Stack.Navigator screenOptions={options}>

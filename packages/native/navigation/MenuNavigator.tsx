@@ -16,7 +16,7 @@ const Tab = createBottomTabNavigator();
 
 const getTabOptions = (
   iconName: string,
-  route: any,
+  route?: any,
   showTabOnlyOn?: string
 ) => {
   var tabOptions = {
@@ -28,6 +28,7 @@ const getTabOptions = (
           name={iconName}
           active={focused}
           style={{ marginTop: 6, color: tabColor }}
+          size={7}
         />
       );
     },
@@ -41,7 +42,7 @@ const getTabOptions = (
   return tabOptions;
 };
 
-const MenuNavigator = (props: any): React.Node => {
+const MenuNavigator = (props: any) => {
   const { colors } = useTheme();
   const data = useContext(DataContext);
   const { navigation } = props;

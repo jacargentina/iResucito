@@ -1,4 +1,3 @@
-// @flow
 import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import SongChooserDialog from '../screens/SongChooserDialog';
@@ -7,7 +6,7 @@ import useStackNavOptions from './useStackNavOptions';
 
 const Stack = createStackNavigator();
 
-const SongChooserNavigator = (): React.Node => {
+const SongChooserNavigator = () => {
   const options = useStackNavOptions();
   return (
     <Stack.Navigator
