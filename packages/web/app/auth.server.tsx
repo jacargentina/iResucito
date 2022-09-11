@@ -1,8 +1,8 @@
 import { Authenticator } from 'remix-auth';
 import { FormStrategy } from 'remix-auth-form';
-import { sessionStorage } from '~/session.server';
+import { sessionStorage } from './session.server';
 import bcrypt from 'bcryptjs';
-import { getdb } from '~/utils.server';
+import { getdb } from '../utils.server';
 
 export let authenticator = new Authenticator<AuthData>(sessionStorage);
 

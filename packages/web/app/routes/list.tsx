@@ -6,7 +6,7 @@ import { json, LoaderFunction, useLoaderData } from 'remix';
 import { getSession } from '~/session.server';
 import { useApp } from '~/app.context';
 import { Loader } from 'semantic-ui-react';
-import I18n from '~/translations';
+import I18n from '@iresucito/translations';
 
 export let loader: LoaderFunction = async ({ request }) => {
   const session = await getSession(request.headers.get('Cookie'));

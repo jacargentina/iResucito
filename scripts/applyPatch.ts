@@ -1,11 +1,19 @@
-import { getPropertyLocale, getPatchStats } from '@iresucito/core/common';
+import {
+  getPropertyLocale,
+  getPatchStats,
+  SongsData,
+  SongsChanges,
+  SongPatch,
+  SongPatchData,
+  SongChange,
+} from '@iresucito/core/common';
 import path from 'path';
 import util from 'util';
 import fs from 'fs';
 import { execSync } from 'child_process';
 require('colors');
-import SongsIndexRaw from '../songs/index.json';
-import SongsHistoryRaw from '../songs/patches.json';
+import SongsIndexRaw from '@iresucito/core/songs/index.json';
+import SongsHistoryRaw from '@iresucito/core/songs/patches.json';
 
 const SongsIndex: SongsData = SongsIndexRaw;
 

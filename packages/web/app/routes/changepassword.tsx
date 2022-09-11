@@ -1,11 +1,10 @@
+import { useLoaderData, useSubmit } from '@remix-run/react';
 import {
+  redirect,
   ActionFunction,
   json,
   LoaderFunction,
-  redirect,
-  useLoaderData,
-  useSubmit,
-} from 'remix';
+} from '@remix-run/node';
 import {
   Header,
   Segment,
@@ -17,13 +16,12 @@ import {
   Grid,
 } from 'semantic-ui-react';
 import { useEffect, useState } from 'react';
-import bcrypt from 'bcryptjs';
+import * as bcrypt from 'bcryptjs';
 import Layout from '~/components/Layout';
 import ApiMessage from '~/components/ApiMessage';
 import { getdb } from '~/utils.server';
 import { authenticator } from '~/auth.server';
-import I18n from '~/translations';
-import { action as logout } from './logout';
+import I18n from '@iresucito/translations';
 import ErrorDetail from '~/components/ErrorDetail';
 import { commitSession, getSession } from '~/session.server';
 
@@ -56,7 +54,7 @@ export let action: ActionFunction = async ({ request, context, params }) => {
   }
 
   db.data.users[userIndex].password = bcrypt.hashSync(
-    body.get('newPassword'),
+    body.get('newPassword') as string,
     bcrypt.genSaltSync(10)
   );
   db.write();

@@ -1,11 +1,5 @@
 {
   "private": true,
-  "scripts": {
-    "build": "turbo run build",
-    "test": "turbo run test",
-    "lint": "turbo run lint",
-    "dev": "turbo run dev"
-  },
   "workspaces": {
     "packages": ["packages/*"],
     "nohoist": [
@@ -24,6 +18,10 @@
     ]
   },
   "scripts": {
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "dev": "turbo run dev",
     "reset": "find . -type dir -name node_modules | xargs rm -rf && rm -rf yarn.lock"
   },
   "devDependencies": {

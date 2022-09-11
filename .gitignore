@@ -60,6 +60,9 @@ bin/
 packages/web/.cache
 packages/web/data/*.json
 
+# dist tsc
+packages/**/dist
+
 # sentry
 **/ios/sentry.properties
 **/android/sentry.properties

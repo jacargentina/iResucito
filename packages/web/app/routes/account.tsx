@@ -1,15 +1,13 @@
 import {
-  ActionFunction,
-  json,
   Link,
-  LoaderFunction,
   useLoaderData,
   useSearchParams,
   useSubmit,
   useTransition,
-} from 'remix';
+} from '@remix-run/react';
+import { ActionFunction, json, LoaderFunction } from '@remix-run/node';
 import { authenticator } from '~/auth.server';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import {
   Header,
   Segment,
@@ -20,14 +18,13 @@ import {
   Form,
   Grid,
   Message,
-  Modal,
 } from 'semantic-ui-react';
 import Layout from '~/components/Layout';
 import ErrorDetail from '~/components/ErrorDetail';
 import ApiMessage from '~/components/ApiMessage';
 import { useApp } from '~/app.context';
 import { commitSession, getSession } from '~/session.server';
-import I18n from '~/translations';
+import I18n from '@iresucito/translations';
 
 export let action: ActionFunction = async ({ request }) => {
   return await authenticator.authenticate('lowdb', request, {

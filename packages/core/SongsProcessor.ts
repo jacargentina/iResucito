@@ -4,6 +4,7 @@ import {
   SongChange,
   SongFile,
   SongIndexPatch,
+  SongPatchData,
   SongRef,
   SongsChanges,
   SongsData,
@@ -51,12 +52,6 @@ export class SongsProcessor {
     this.songReader = songReader;
   }
 
-  assignInfoFromFile(info: Song, parsed: SongFile) {
-    info.nombre = parsed.nombre;
-    info.titulo = parsed.titulo;
-    info.fuente = parsed.fuente;
-  }
-
   getBestFileForLocale(
     files: { [key: string]: string },
     rawLoc: string,
@@ -90,23 +85,50 @@ export class SongsProcessor {
     patch: SongIndexPatch | undefined,
     settings: SongSettingsFile | undefined
   ): Song {
-    var info: Song = SongsIndex.hasOwnProperty(key)
-      ? Object.assign({}, SongsIndex[key])
-      : {};
-    info.key = key;
-    info.files = SongsIndex.hasOwnProperty(key) ? SongsIndex[key].files : {};
-    const bestFile = this.getBestFileForLocale(info.files, rawLoc, info.nombre);
-    info.path = `${this.basePath}/${bestFile.locale}/${bestFile.name}.txt`;
-    if (bestFile.name) {
-      const parsed = getSongFileFromString(bestFile.name);
-      this.assignInfoFromFile(info, parsed);
+    if (!SongsIndex.hasOwnProperty(key)) {
+      throw Error(`No existe ${key} en el índice`);
     }
-    // Asignar numero de version segun historico
-    info.version = this.getSongHistory(key, rawLoc).length;
+    const song = SongsIndex[key];
+
+    const bestFile = this.getBestFileForLocale(song.files, rawLoc, key);
+
+    const parsed = getSongFileFromString(bestFile.name);
+
+    var info = {
+      key,
+      patched: false,
+      rating: 0,
+      transportTo: '',
+      notTranslated: false,
+      advent: !!song.advent,
+      christmas: !!song.christmas,
+      lent: !!song.lent,
+      easter: !!song.easter,
+      pentecost: !!song.pentecost,
+      'signing to the virgin': !!song['signing to the virgin'],
+      "children's songs": !!song["children's songs"],
+      'lutes and vespers': !!song['lutes and vespers'],
+      entrance: !!song.entrance,
+      'peace and offerings': !!song['peace and offerings'],
+      'fraction of bread': !!song['fraction of bread'],
+      communion: !!song.communion,
+      exit: !!song.exit,
+      files: song.files,
+      stages: song.stages,
+      stage: song.stage,
+      nombre: parsed.nombre,
+      fuente: parsed.fuente,
+      titulo: parsed.titulo,
+      path: `${this.basePath}/${bestFile.locale}/${bestFile.name}.txt`,
+      // Asignar numero de version segun historico
+      version: this.getSongHistory(key, rawLoc).length,
+      fullText: '',
+    };
+
     // Aplicar stage segun idioma, si esta disponible
     if (info.stages) {
       const stageLoc = getPropertyLocale(info.stages, rawLoc);
-      if (info.stages && stageLoc) {
+      if (stageLoc) {
         info.stage = info.stages[stageLoc];
       }
     }
@@ -116,14 +138,13 @@ export class SongsProcessor {
       var loc = getPropertyLocale(patch[key], rawLoc);
       if (loc) {
         info.patched = true;
-        info.patchedTitle = info.titulo;
         const { name, stage } = patch[key][loc];
         const renamed = getSongFileFromString(name);
-        this.assignInfoFromFile(info, renamed);
+        info.nombre = renamed.nombre;
+        info.fuente = renamed.fuente;
+        info.titulo = renamed.titulo;
         if (stage) {
-          info.stages = Object.assign({}, info.stages, {
-            [loc]: stage,
-          });
+          info.stages = { ...info.stages, [loc]: stage };
           info.stage = stage;
         }
       }
@@ -154,33 +175,46 @@ export class SongsProcessor {
       // Cantos agregados
       // claves numericas presentes en el
       // patch y ausentes en el indice
-      Object.keys(patch).forEach((pKey) => {
-        if (!songs.find((s) => s.key === pKey)) {
-          var sPatch = patch[pKey];
-          if (sPatch[rawLoc]) {
-            var info: Song = {};
-            info.key = pKey;
-            info.added = true;
-            var patchData: SongPatchData = sPatch[rawLoc];
-            var files: { [string]: string } = {};
-            var stages: { [string]: string } = {};
-            files[rawLoc] = patchData.name;
-            if (patchData.stage) {
-              const stage = patchData.stage;
-              stages[rawLoc] = stage;
-              info.stage = stage;
-            }
-            info.files = files;
-            info.stages = stages;
-            const bestFile = this.getBestFileForLocale(
-              files,
-              rawLoc,
-              patchData.name
-            );
-            const parsed = getSongFileFromString(bestFile.name);
-            this.assignInfoFromFile(info, parsed);
-            songs.push(info);
-          }
+      const agregados = Object.keys(patch).filter(
+        (pKey) => songs.find((s) => s.key === pKey) === undefined
+      );
+      agregados.forEach((pKey) => {
+        var sPatch = patch[pKey];
+        if (sPatch[rawLoc]) {
+          var patchData: SongPatchData = sPatch[rawLoc];
+          const parsed = getSongFileFromString(patchData.name);
+          var info = {
+            key: pKey,
+            patched: false,
+            rating: 0,
+            transportTo: '',
+            notTranslated: false,
+            added: true,
+            advent: false,
+            christmas: false,
+            lent: false,
+            easter: false,
+            pentecost: false,
+            'signing to the virgin': false,
+            "children's songs": false,
+            'lutes and vespers': false,
+            entrance: false,
+            'peace and offerings': false,
+            'fraction of bread': false,
+            communion: false,
+            exit: false,
+            version: 0,
+            nombre: parsed.nombre,
+            titulo: parsed.titulo,
+            fuente: parsed.fuente,
+            files: {
+              [rawLoc]: patchData.name,
+            },
+            stage: patchData.stage,
+            path: `${this.basePath}/${rawLoc}/${patchData.name}.txt`,
+            fullText: '',
+          };
+          songs.push(info);
         }
       });
     }
@@ -193,13 +227,13 @@ export class SongsProcessor {
       let items = await this.songsLister(`${this.basePath}/${rawLoc}`);
       // Very important to call "normalize"
       // See editing.txt for details
-      items = items
+      let files = items
         .map((i) => i.name)
-        .filter((i_1) => i_1.endsWith('.txt'))
-        .map((i_2) => i_2.replace('.txt', '').normalize())
-        .map((i_3) => getSongFileFromString(i_3));
-      items.sort(ordenAlfabetico);
-      return items;
+        .filter((i) => i.endsWith('.txt'))
+        .map((i) => i.replace('.txt', '').normalize())
+        .map((i) => getSongFileFromString(i));
+      files.sort(ordenAlfabetico);
+      return files;
     } catch (err) {
       console.log('readLocaleSongs ERROR', err);
       return [];
@@ -216,29 +250,26 @@ export class SongsProcessor {
     song: Song,
     patch: SongIndexPatch | undefined
   ): Promise<any> {
-    return Promise.resolve()
-      .then(() => {
-        if (patch && patch.hasOwnProperty(song.key)) {
-          const sPatch = patch[song.key];
-          var loc = getPropertyLocale(sPatch, rawLoc);
-          if (loc && sPatch[loc].hasOwnProperty('lines')) {
-            return sPatch[loc].lines;
-          }
+    try {
+      if (patch && patch.hasOwnProperty(song.key)) {
+        const sPatch = patch[song.key];
+        var loc = getPropertyLocale(sPatch, rawLoc);
+        if (loc && sPatch[loc].lines) {
+          song.fullText = sPatch[loc].lines as string;
+          return;
         }
-        return this.songReader(song.path);
-      })
-      .then((content) => {
-        if (typeof content === 'string') {
-          song.fullText = content;
-        }
-      })
-      .catch((err) => {
-        console.log(
-          `loadSingleSong key=${song.key}, locale=${rawLoc}, error=${err.message}`
-        );
-        song.error = err.message;
-        song.fullText = '';
-      });
+      }
+      var content = await this.songReader(song.path);
+      if (typeof content === 'string') {
+        song.fullText = content;
+      }
+    } catch (err: any) {
+      console.log(
+        `loadSingleSong key=${song.key}, locale=${rawLoc}, error=${err.message}`
+      );
+      song.error = err.message;
+      song.fullText = '';
+    }
   }
 
   async loadSongs(

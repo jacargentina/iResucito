@@ -1613,9 +1613,6 @@
       "date": 1657746047240,
       "locale": "pl",
       "author": "andropiotrek@gmail.com",
-      "rename": {
-        "new": "Abraham - Rdz 18, 1-5"
-      },
       "created": true,
       "updated": false
     }
@@ -6153,9 +6150,6 @@
       "date": 1653840470019,
       "locale": "lt-LT",
       "author": "albertiniqmc@gmail.com",
-      "rename": {
-        "new": "Sunkus žygis"
-      },
       "created": true,
       "updated": false
     }
@@ -6172,9 +6166,6 @@
       "date": 1653842260610,
       "locale": "lt-LT",
       "author": "albertiniqmc@gmail.com",
-      "rename": {
-        "new": "Sveika, Karaliene"
-      },
       "created": false,
       "updated": true
     }
@@ -6395,9 +6386,6 @@
       "date": 1655552829033,
       "locale": "lt-LT",
       "author": "albertiniqmc@gmail.com",
-      "rename": {
-        "new": "Paimk į Dangų - Flp 1, 23"
-      },
       "created": true,
       "updated": false
     }
@@ -6506,9 +6494,6 @@
       "date": 1657830840819,
       "locale": "pl",
       "author": "andropiotrek@gmail.com",
-      "rename": {
-        "new": "Maria de Jasna Góra - Hymn do Madonny Częstochowskiej"
-      },
       "created": true,
       "updated": false
     }
@@ -9448,9 +9433,6 @@
       "date": 1653998491636,
       "locale": "lt-LT",
       "author": "albertiniqmc@gmail.com",
-      "rename": {
-        "new": "Jahveh, tu mano Dievas - Iz 25, 1-8"
-      },
       "created": true,
       "updated": false
     }
@@ -9777,9 +9759,6 @@
       "date": 1657747315830,
       "locale": "pl",
       "author": "andropiotrek@gmail.com",
-      "rename": {
-        "new": "Abba Ojcze - Rz 8, 15-17"
-      },
       "created": true,
       "updated": false,
       "staged": {
@@ -10657,9 +10636,6 @@
       "date": 1653841366144,
       "locale": "lt-LT",
       "author": "albertiniqmc@gmail.com",
-      "rename": {
-        "new": "Balandė plazdeno (XXIV Saliamono Odė)"
-      },
       "created": true,
       "updated": false
     }
@@ -10711,9 +10687,6 @@
       "date": 1654014185097,
       "locale": "lt-LT",
       "author": "albertiniqmc@gmail.com",
-      "rename": {
-        "new": "Mano mylimo balsas - Gg 2, 8-17"
-      },
       "created": true,
       "updated": false
     }
@@ -11008,9 +10981,6 @@
       "date": 1657829738310,
       "locale": "pl",
       "author": "andropiotrek@gmail.com",
-      "rename": {
-        "new": "Alleluja Paschalne"
-      },
       "created": true,
       "updated": false
     }
@@ -11814,9 +11784,6 @@
       "date": 1655546725349,
       "locale": "lt-LT",
       "author": "albertiniqmc@gmail.com",
-      "rename": {
-        "new": "Dievo avinėli"
-      },
       "created": false,
       "updated": false
     }

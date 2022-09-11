@@ -5,8 +5,9 @@ import {
   useEffect,
   useState,
 } from 'react';
-import { useFetcher } from 'remix';
-import I18n from '~/translations';
+import { useFetcher } from '@remix-run/react';
+import I18n from '@iresucito/translations';
+import { PickerLocale } from '@iresucito/core/common';
 
 type AppContextData = {
   user?: any;
@@ -97,7 +98,7 @@ export const AppProvider = (props: {
         handleApiError,
         changeLanguage,
         locale,
-        isChangingLanguage: fetcher.state !== 'idle'
+        isChangingLanguage: fetcher.state !== 'idle',
       }}>
       {children}
     </AppContext.Provider>

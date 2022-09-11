@@ -2,7 +2,7 @@ import { SongsParser } from '~/SongsParser';
 import { generatePDF } from '~/scripts/pdf';
 import { PdfStyles, defaultExportToPdfOptions } from '~/common';
 import { folderSongs, readLocalePatch } from '~/utils.server';
-import I18n from '~/translations';
+import I18n from '@iresucito/translations';
 import { ActionFunction, json } from 'remix';
 import { getSession } from '~/session.server';
 

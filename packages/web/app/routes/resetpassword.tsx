@@ -11,7 +11,7 @@ import {
 import { json, ActionFunction, useSubmit, useTransition } from 'remix';
 import Layout from '~/components/Layout';
 import { getdb, mailSender } from '~/utils.server';
-import I18n from '~/translations';
+import I18n from '@iresucito/translations';
 import ApiMessage from '~/components/ApiMessage';
 import { useState } from 'react';
 

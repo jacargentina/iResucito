@@ -7,7 +7,8 @@ import PatchLogDialog from '~/components/PatchLogDialog';
 import DiffViewDialog from '~/components/DiffViewDialog';
 import PdfSettingsDialog from '~/components/PdfSettingsDialog';
 import { readLocalePatch, folderSongs } from '~/utils.server';
-import { json, LoaderFunction, useLoaderData } from 'remix';
+import { json, LoaderFunction } from '@remix-run/node';
+import { useLoaderData } from '@remix-run/react';
 import { getSession } from '~/session.server';
 
 export let loader: LoaderFunction = async ({ request, params }) => {

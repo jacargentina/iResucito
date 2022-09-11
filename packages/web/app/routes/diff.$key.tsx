@@ -1,8 +1,8 @@
 import * as Diff from 'diff';
 import { folderSongs, readLocalePatch } from '~/utils.server';
-import { getPropertyLocale } from '~/common';
-import SongsIndex from '~/songs/index.json';
-import { json, LoaderFunction } from 'remix';
+import { getPropertyLocale } from '@iresucito/core/common';
+import SongsIndex from '@iresucito/core/songs/index.json';
+import { json, LoaderFunction } from '@remix-run/node';
 import { getSession } from '~/session.server';
 
 export let loader: LoaderFunction = async ({ request, params }) => {

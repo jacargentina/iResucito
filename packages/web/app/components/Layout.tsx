@@ -2,7 +2,7 @@ import { Header, Image, Menu } from 'semantic-ui-react';
 import LocalePicker from './LocalePicker';
 import EditSongTitle from './EditSongTitle';
 import AppActions from './AppActions';
-import { Link } from 'remix';
+import { Link } from '@remix-run/react';
 
 const Layout = (props: any) => {
   const { children } = props;

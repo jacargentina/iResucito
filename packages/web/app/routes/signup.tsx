@@ -5,7 +5,7 @@ import bcrypt from 'bcryptjs';
 import { ActionFunction, json } from 'remix';
 import { commitSession, getSession } from '~/session.server';
 import { getdb, mailSender } from '~/utils.server';
-import I18n from '~/translations';
+import I18n from '@iresucito/translations';
 
 export let action: ActionFunction = async ({ request }) => {
   const session = await getSession(request.headers.get('Cookie'));

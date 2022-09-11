@@ -1,4 +1,4 @@
-import { createCookieSessionStorage } from 'remix';
+import { createCookieSessionStorage } from '@remix-run/node';
 
 let exp = new Date();
 exp.setDate(exp.getDate() + 30); // 30 dias

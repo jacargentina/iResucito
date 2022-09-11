@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import {
   Links,
   LiveReload,
@@ -7,21 +8,19 @@ import {
   ScrollRestoration,
   useCatch,
   useLoaderData,
-  ErrorBoundaryComponent,
-  LoaderFunction,
   useFetcher,
   useNavigate,
   useLocation,
-} from 'remix';
-import { authenticator } from '~/auth.server';
-import { AppProvider } from '~/app.context';
-import semanticUrl from 'semantic-ui-css/semantic.min.css';
-import globalStylesUrl from '~/styles/global.css';
-import { readLocalePatch } from '~/utils.server';
-import { getPatchStats } from '~/common';
+} from '@remix-run/react';
+import { ErrorBoundaryComponent, LoaderFunction } from '@remix-run/node';
+import { authenticator } from './auth.server';
+import { AppProvider } from './app.context';
 import { getSession } from './session.server';
-import { useEffect } from 'react';
-import I18n from '~/translations';
+import { readLocalePatch } from '../utils.server';
+import { getPatchStats } from '@iresucito/core/common';
+import I18n from '@iresucito/translations';
+import semanticUrl from 'semantic-ui-css/semantic.min.css';
+import globalStylesUrl from './styles/global.css';
 
 export let loader: LoaderFunction = async ({ request }) => {
   const path = require('path');
