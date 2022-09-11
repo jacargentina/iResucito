@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "jsx": "react-jsx",
+    "resolveJsonModule": true,
+    "esModuleInterop": true
+  },
+  "include": ["*.ts", "**/**.json"]
+}

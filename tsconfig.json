@@ -1,5 +1,4 @@
 {
-  "include": ["types.d.ts"],
   "compilerOptions": {
     "module": "esnext",
     "lib": ["DOM", "DOM.Iterable", "ES2019"],
@@ -8,5 +7,19 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "strict": true
-  }
+  },
+  "references": [
+    {
+      "path": "./packages/native"
+    },
+    {
+      "path": "./packages/core"
+    },
+    {
+      "path": "./packages/translations"
+    },
+    {
+      "path": "./packages/web"
+    }
+  ]
 }

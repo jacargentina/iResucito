@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "@types/i18n-js": "^3.8.2",
     "i18n-js": "^3.8.0"
   }
 }

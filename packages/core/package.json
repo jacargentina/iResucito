@@ -1,8 +1,5 @@
 {
   "name": "@iresucito/core",
   "private": true,
-  "version": "1.0.0",
-  "dependencies": {
-    "tsconfig": "*"
-  }
+  "version": "1.0.0"
 }

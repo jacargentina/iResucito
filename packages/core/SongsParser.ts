@@ -1,6 +1,12 @@
-// @flow
 import I18n from '@iresucito/translations';
-import { cleanChordsRegex, getChordsScale } from './common';
+import {
+  cleanChordsRegex,
+  getChordsScale,
+  SongIndicator,
+  SongLine,
+  SongRendering,
+  SongStyles,
+} from './common';
 
 export class SongsParser {
   songStyles: SongStyles;

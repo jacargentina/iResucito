@@ -24,14 +24,14 @@ import {
 } from './util';
 
 type UseSongsMeta = {
-  songs: any,
-  setSongs: any,
-  localeSongs: any,
-  setLocaleSongs: any,
-  settingsFileExists: any,
-  clearSongSettings: any,
-  setSongSetting: any,
-  loadSongs: any,
+  songs: any;
+  setSongs: any;
+  localeSongs: any;
+  setLocaleSongs: any;
+  settingsFileExists: any;
+  clearSongSettings: any;
+  setSongSetting: any;
+  loadSongs: any;
 };
 
 const useSongsMeta = (locale: string): UseSongsMeta => {
@@ -75,18 +75,19 @@ const useSongsMeta = (locale: string): UseSongsMeta => {
     }
   }, [settingsFileExists]);
 
-  const readSongSettingsFile = useCallback((): Promise<?SongSettingsFile> => {
+  const readSongSettingsFile = useCallback(async (): Promise<
+    SongSettingsFile | undefined
+  > => {
     if (settingsFileExists === false) {
       return Promise.resolve();
     }
-    return NativeExtras.readSettings().then((settingsJSON) => {
-      try {
-        return JSON.parse(settingsJSON);
-      } catch {
-        // si el archivo está corrupto, eliminarlo
-        clearSongSettings();
-      }
-    });
+    const settingsJSON = await NativeExtras.readSettings();
+    try {
+      return JSON.parse(settingsJSON);
+    } catch {
+      // si el archivo está corrupto, eliminarlo
+      clearSongSettings();
+    }
   }, [settingsFileExists, clearSongSettings]);
 
   const saveSongSettingsFile = (settingsObj: SongSettingsFile) => {
@@ -168,17 +169,17 @@ const useSongsMeta = (locale: string): UseSongsMeta => {
 };
 
 type UseLists = {
-  lists: any,
-  initLists: any,
-  addList: any,
-  removeList: any,
-  renameList: any,
-  getList: any,
-  setList: any,
-  getListForUI: any,
-  getListsForUI: any,
-  shareList: any,
-  importList: any,
+  lists: any;
+  initLists: any;
+  addList: any;
+  removeList: any;
+  renameList: any;
+  getList: any;
+  setList: any;
+  getListForUI: any;
+  getListsForUI: any;
+  shareList: any;
+  importList: any;
 };
 
 const useLists = (songs: any): UseLists => {
@@ -523,8 +524,8 @@ const useLists = (songs: any): UseLists => {
 };
 
 type UseSearch = {
-  initialized: any,
-  searchItems: any,
+  initialized: any;
+  searchItems: any;
 };
 
 const useSearch = (localeValue: string): UseSearch => {
@@ -714,13 +715,13 @@ const useSearch = (localeValue: string): UseSearch => {
 };
 
 type UseCommunity = {
-  brothers: any,
-  deviceContacts: any,
-  add: any,
-  update: any,
-  remove: any,
-  addOrRemove: any,
-  populateDeviceContacts: any,
+  brothers: any;
+  deviceContacts: any;
+  add: any;
+  update: any;
+  remove: any;
+  addOrRemove: any;
+  populateDeviceContacts: any;
 };
 
 const useCommunity = (): UseCommunity => {

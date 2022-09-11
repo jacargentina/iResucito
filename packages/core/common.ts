@@ -6,6 +6,282 @@ import * as _ from 'lodash';
 import I18n from '@iresucito/translations';
 const PDFDocument = require('./pdfkit.standalone.js');
 
+export type PickerLocale = {
+  label: string;
+  value: string;
+};
+
+export type SongItem = {
+  stage: string;
+  advent?: boolean;
+  christmas?: boolean;
+  lent?: boolean;
+  easter?: boolean;
+  pentecost?: boolean;
+  'signing to the virgin'?: boolean;
+  "children's songs"?: boolean;
+  'lutes and vespers'?: boolean;
+  entrance?: boolean;
+  'peace and offerings'?: boolean;
+  'fraction of bread'?: boolean;
+  communion?: boolean;
+  exit?: boolean;
+  files: {
+    [lang: string]: string;
+  };
+  stages?: {
+    [lang: string]: string;
+  };
+};
+
+export type SongsData = {
+  [songKey: string]: SongItem;
+};
+
+export type SongsChanges = {
+  [songKey: string]: Array<SongChange>;
+};
+
+export type SongChange = {
+  locale: string;
+  author: string;
+  date: number;
+  linked?: {
+    new: string;
+  };
+  rename?: {
+    original: string;
+    new: string;
+  };
+  staged?: {
+    original: string;
+    new: string;
+  };
+  created?: boolean;
+  updated?: boolean;
+};
+
+export type SongChangesAndPatches = {
+  changes: Array<SongChange>;
+  pending: {
+    author: string;
+    date: string;
+  } | null;
+};
+
+export type SongPatchData = {
+  author: string;
+  date: number;
+  name: string;
+  stage?: string;
+  lines?: string;
+};
+
+export type SongPatch = {
+  [locale: string]: SongPatchData;
+};
+
+export type SongIndexPatch = {
+  [key: string]: SongPatch;
+};
+
+export type SongSettings = {
+  rating: number;
+  transportTo: string;
+};
+
+export type SongLocaleSettings = {
+  [locale: string]: SongSettings;
+};
+
+export type SongSettingsFile = {
+  [key: string]: SongLocaleSettings;
+};
+
+export type SongStyles = {
+  title: any;
+  source: any;
+  clampLine: any;
+  indicator: any;
+  notesLine: any;
+  specialNoteTitle: any;
+  specialNote: any;
+  normalLine: any;
+  pageNumber: any;
+  prefix: any;
+  pageFooter: any;
+};
+
+export type SongLineType =
+  | 'posicionAbrazadera'
+  | 'canto'
+  | 'cantoConIndicador'
+  | 'notas'
+  | 'inicioParrafo'
+  | 'notaEspecial'
+  | 'tituloEspecial'
+  | 'textoEspecial'
+  | 'bloqueRepetir'
+  | 'bloqueNotaAlPie'
+  | 'comenzarColumna';
+
+export type SongLine = {
+  raw: string;
+  texto: string;
+  style: any;
+  prefijo: string;
+  prefijoStyle: any;
+  sufijo: string;
+  sufijoStyle: any;
+  type: SongLineType;
+};
+
+export type SongIndicator = {
+  start: number;
+  end: number;
+  type: SongLineType;
+};
+
+export type SongRendering = {
+  items: Array<SongLine>;
+  indicators: Array<SongIndicator>;
+};
+
+// nombre: el nombre completo del archivo, sin la extension .txt
+// titulo: el titulo del anto
+// fuente: el origen del canto (salmo, palabra, etc)
+export type SongFile = {
+  nombre: string;
+  titulo: string;
+  fuente: string;
+};
+
+// key: la clave única del canto dentro del indice global de cantos
+// nombre: el nombre completo del archivo, sin la extension .txt
+// titulo: el titulo del anto
+// fuente: el origen del canto (salmo, palabra, etc)
+// path: el path completo al canto, incluyendo el locale, el nombre del archivo con la extension
+// files: diccionario con todos los idiomas del canto
+// fullText: el texto completo del canto
+// lines: array de las lineas del canto
+export type Song = {
+  key: string;
+  version: number;
+  notTranslated: boolean;
+  stage: string;
+  advent: boolean;
+  christmas: boolean;
+  lent: boolean;
+  easter: boolean;
+  pentecost: boolean;
+  'signing to the virgin': boolean;
+  "children's songs": boolean;
+  'lutes and vespers': boolean;
+  entrance: boolean;
+  'peace and offerings': boolean;
+  'fraction of bread': boolean;
+  communion: boolean;
+  exit: boolean;
+  nombre: string;
+  titulo: string;
+  fuente: string;
+  path: string;
+  files: { [key: string]: string };
+  stages?: { [key: string]: string };
+  fullText: string;
+  patched?: boolean;
+  patchedTitle?: string;
+  added?: boolean;
+  error?: any;
+  rating: number;
+  transportTo: string;
+};
+
+export type ListSongGroup = {
+  [key: string]: Array<ListSongItem>;
+};
+
+export type ListSongItem = {
+  songKey: string;
+  str: string;
+};
+
+export type ListSongPos = {
+  page: number;
+  songKey: string;
+  x: number;
+  y: number;
+  value: number;
+};
+
+export type ExportToPdfOptions = {
+  useTimesRomanFont: boolean;
+  marginLeft: number;
+  marginTop: number;
+  widthHeightPixels: number;
+  songTitle: { FontSize: number };
+  songSource: { FontSize: number };
+  songText: { FontSize: number };
+  songNote: { FontSize: number };
+  songIndicatorSpacing: number;
+  songParagraphSpacing: number;
+  indexTitle: { FontSize: number };
+  bookTitle: { FontSize: number; Spacing: number };
+  bookSubtitle: { FontSize: number };
+  indexText: { FontSize: number };
+  indexMarginLeft: number;
+  disablePageNumbers: boolean;
+  pageNumber: { FontSize: number };
+  pageFooter: { FontSize: number };
+};
+
+export type ExportToPdfLimits = {
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+};
+
+export type ExportToPdfLineText = {
+  page: number;
+  x: number;
+  startY: number;
+  endY: number;
+  text: string;
+  color: any;
+};
+
+export type SongToPdf = {
+  song: Song;
+  render: SongRendering;
+};
+
+export type SongRef = Song | SongFile;
+
+export type SearchParams = {
+  filter: any;
+  title_key?: string;
+};
+
+export type SearchItem = {
+  title_key: string;
+  divider?: boolean;
+  note?: string;
+  route?: string;
+  params?: SearchParams;
+  badge?: any;
+  chooser?: string;
+};
+
+export type ListType = 'eucaristia' | 'palabra' | 'libre';
+
+export type ListToPdf = {
+  name: string;
+  type: ListType;
+  localeType: string;
+  items: Array<any>;
+};
+
 export const getLocalizedListItem = (listKey: string): string => {
   return I18n.t(`list_item.${listKey}`);
 };

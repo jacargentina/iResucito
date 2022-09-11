@@ -1,4 +1,14 @@
-import { getPropertyLocale } from './common';
+import {
+  getPropertyLocale,
+  Song,
+  SongChange,
+  SongFile,
+  SongIndexPatch,
+  SongRef,
+  SongsChanges,
+  SongsData,
+  SongSettingsFile,
+} from './common';
 import SongsIndexRaw from './songs/index.json';
 import SongsHistoryRaw from './songs/patches.json';
 
@@ -48,7 +58,7 @@ export class SongsProcessor {
   }
 
   getBestFileForLocale(
-    files: { [string]: string },
+    files: { [key: string]: string },
     rawLoc: string,
     defaultFile: string
   ): { locale: string; name: string } {

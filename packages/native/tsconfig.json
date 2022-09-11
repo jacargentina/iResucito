@@ -1,6 +1,11 @@
 {
   "compilerOptions": {
+    "composite": true,
     "jsx": "react-jsx"
   },
-  "extends": "tsconfig/base.json",
+  "references": [
+    {
+      "path": "../core"
+    }
+  ]
 }
