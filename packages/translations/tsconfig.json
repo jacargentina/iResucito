@@ -2,6 +2,8 @@
   "compilerOptions": {
     "outDir": "dist",
     "composite": true,
-    "esModuleInterop": true
-  }
+    "esModuleInterop": true,
+    "resolveJsonModule": true
+  },
+  "include": ["**/**.json"]
 }

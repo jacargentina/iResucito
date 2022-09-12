@@ -1,22 +1,34 @@
 import I18n from 'i18n-js';
+import en from './langs/en.json';
+import enPH from './langs/en-PH.json';
+import es from './langs/es.json';
+import it from './langs/it.json';
+import ptBR from './langs/pt-BR.json';
+import ptPT from './langs/pt-PT.json';
+import deAT from './langs/de-AT.json';
+import ltLT from './langs/lt-LT.json';
+import swTZ from './langs/sw-TZ.json';
+import fr from './langs/fr.json';
+import de from './langs/de.json';
+import pl from './langs/pl.json';
 
 I18n.fallbacks = true;
 I18n.defaultLocale = 'en';
 
 // Lenguajes disponibles
 I18n.translations = {
-  en: require('./en'),
-  'en-PH': require('./en-PH'),
-  es: require('./es'),
-  it: require('./it'),
-  'pt-BR': require('./pt-BR'),
-  'pt-PT': require('./pt-PT'),
-  'de-AT': require('./de-AT'),
-  'lt-LT': require('./lt-LT'),
-  'sw-TZ': require('./sw-TZ'),
-  fr: require('./fr'),
-  de: require('./de'),
-  pl: require('./pl'),
+  en: en,
+  'en-PH': enPH,
+  es: es,
+  it: it,
+  'pt-BR': ptBR,
+  'pt-PT': ptPT,
+  'de-AT': deAT,
+  'lt-LT': ltLT,
+  'sw-TZ': swTZ,
+  fr: fr,
+  de: de,
+  pl: pl,
 };
 
 export default I18n;

@@ -7,6 +7,10 @@
   },
   "dependencies": {
     "@iresucito/core": "*",
+    "commander": "^9.4.0",
+    "os-locale": "^6.0.2",
+    "open": "^8.4.0",
+    "translate-json-object": "^2.3.7",
     "@types/base64-stream": "^1.0.2"
   }
 }
