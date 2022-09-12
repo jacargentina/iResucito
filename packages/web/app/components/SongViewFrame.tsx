@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Header } from 'semantic-ui-react';
+import I18n from '@iresucito/translations';
+import { SongRendering } from '@iresucito/core/common';
 import { WebParser, WebStyles } from './WebParser';
 import SongViewLines from './SongViewLines';
-import I18n from '~/translations';
 
 const SongViewFrame = (props: any) => {
   const { title, source, text } = props;

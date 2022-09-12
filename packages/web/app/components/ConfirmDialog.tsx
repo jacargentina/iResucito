@@ -1,6 +1,6 @@
 import { Modal, Button } from 'semantic-ui-react';
 import { useApp } from '~/app.context';
-import I18n from '~/translations';
+import I18n from '@iresucito/translations';
 
 const ConfirmDialog = () => {
   const app = useApp();

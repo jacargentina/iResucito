@@ -15,7 +15,7 @@ import { EditContext } from './EditContext';
 import ApiMessage from './ApiMessage';
 import SongViewFrame from './SongViewFrame';
 import SongViewPdf from './SongViewPdf';
-import I18n from '~/translations';
+import I18n from '@iresucito/translations';
 import { useApp } from '~/app.context';
 
 const SongEditor = () => {

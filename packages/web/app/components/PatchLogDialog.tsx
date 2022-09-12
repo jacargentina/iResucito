@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Button, Grid, Modal, Message } from 'semantic-ui-react';
 import { EditContext, EditContextType } from './EditContext';
-import I18n from '~/translations';
+import I18n from '@iresucito/translations';
 import { useApp } from '~/app.context';
 
 const PatchLogDialog = () => {

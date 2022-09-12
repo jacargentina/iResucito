@@ -1,6 +1,6 @@
 import { List, Label } from 'semantic-ui-react';
-import I18n from '~/translations';
-import colors from '~/colors';
+import I18n from '@iresucito/translations';
+import colors from '@iresucito/core/colors';
 
 const SongListItem = (props: any) => {
   const { titulo, fuente, stage } = props;

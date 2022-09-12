@@ -2,7 +2,7 @@ import { useRef, useEffect, useContext, useState } from 'react';
 import * as pdfjsLib from 'pdfjs-dist';
 import { Icon, Button, Menu, Label, Input, Loader } from 'semantic-ui-react';
 import { EditContext } from './EditContext';
-import I18n from '~/translations';
+import I18n from '@iresucito/translations';
 import { useApp } from '~/app.context';
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.js';

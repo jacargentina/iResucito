@@ -1,9 +1,8 @@
+import { useContext } from 'react';
 import { Button, Modal } from 'semantic-ui-react';
 import { EditContext } from './EditContext';
-import Loading from './Loading';
-import I18n from '~/translations';
+import I18n from '@iresucito/translations';
 import { useApp } from '~/app.context';
-import { useContext } from 'react';
 
 const DiffViewDialog = () => {
   const app = useApp();

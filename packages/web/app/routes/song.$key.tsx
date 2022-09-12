@@ -1,7 +1,7 @@
 import { readLocalePatch, saveLocalePatch } from '~/utils.server';
 import { folderSongs } from '~/utils.server';
 import { authenticator } from '~/auth.server';
-import { ActionFunction, json, LoaderFunction } from 'remix';
+import { ActionFunction, json, LoaderFunction } from '@remix-run/node';
 import { getSession } from '~/session.server';
 
 const merge = require('deepmerge');

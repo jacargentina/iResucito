@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Menu, Progress } from 'semantic-ui-react';
-import I18n from '~/translations';
-import { getPropertyLocale } from '~/common';
+import I18n from '@iresucito/translations';
+import { getPropertyLocale } from '@iresucito/core/common';
 
 const emptyResume = {
   text: '-',

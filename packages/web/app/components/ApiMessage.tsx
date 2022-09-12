@@ -1,6 +1,6 @@
-import { useActionData } from 'remix';
+import { useActionData } from '@remix-run/react';
 import { Message } from 'semantic-ui-react';
-import I18n from '~/translations';
+import I18n from '@iresucito/translations';
 
 const ApiMessage = () => {
   const data = useActionData();

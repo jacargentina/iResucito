@@ -2,7 +2,7 @@ import { Header, Image, Grid } from 'semantic-ui-react';
 import Layout from '~/components/Layout';
 import ApiMessage from '~/components/ApiMessage';
 import bcrypt from 'bcryptjs';
-import { ActionFunction, json } from 'remix';
+import { ActionFunction, json } from '@remix-run/node';
 import { commitSession, getSession } from '~/session.server';
 import { getdb, mailSender } from '~/utils.server';
 import I18n from '@iresucito/translations';

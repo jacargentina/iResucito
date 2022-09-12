@@ -1,5 +1,6 @@
-import I18n from '~/translations';
+import I18n from '@iresucito/translations';
 import { WebStyles } from './WebParser';
+import { SongLine } from '@iresucito/core/common';
 
 const SongViewLines = (props: any) => {
   const { lines, indicators } = props;
@@ -9,7 +10,7 @@ const SongViewLines = (props: any) => {
   let bis: any = null;
 
   // Ajuste final para renderizado en screen
-  const renderItems = lines.map<any>((it: SongLine, i: number) => {
+  const renderItems = lines.map((it: SongLine, i: number) => {
     if (it.sufijo) {
       sufijo = (
         <span key={`${i}sufijo`} style={it.sufijoStyle}>

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import I18n from '~/translations';
-import { getSongFileFromString } from '~/SongsProcessor';
-import { useNavigate } from 'remix';
+import I18n from '@iresucito/translations';
+import { getSongFileFromString } from '@iresucito/core/SongsProcessor';
+import { useNavigate } from '@remix-run/react';
+import { Song, SongChangesAndPatches, SongFile } from '@iresucito/core/common';
 import { useApp } from '~/app.context';
 
 export type EditContextType = {
@@ -51,7 +52,9 @@ const EditContextWrapper = (props: any) => {
   const [name, setName] = useState();
   const [stage, setStage] = useState();
   const [hasChanges, setHasChanges] = useState(false);
-  const [patchLogs, setPatchLogs] = useState<SongChangesAndPatches | undefined>();
+  const [patchLogs, setPatchLogs] = useState<
+    SongChangesAndPatches | undefined
+  >();
   const [diffView, setDiffView] = useState<any>();
   const [songFile, setSongFile] = useState<SongFile>();
 

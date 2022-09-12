@@ -14,7 +14,9 @@
       "**/@react-native-async-storage",
       "**/@react-native-async-storage/**",
       "**/@react-navigation",
-      "**/@react-navigation/**"
+      "**/@react-navigation/**",
+      "**/@remix-run",
+      "**/@remix-run/**"
     ]
   },
   "scripts": {

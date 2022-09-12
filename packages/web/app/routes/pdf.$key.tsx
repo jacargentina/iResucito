@@ -1,9 +1,9 @@
-import { SongsParser } from '~/SongsParser';
-import { generatePDF } from '~/scripts/pdf';
-import { PdfStyles, defaultExportToPdfOptions } from '~/common';
+import { SongsParser } from '@iresucito/core/SongsParser';
+import { generatePDF } from '@iresucito/scripts/pdf';
+import { PdfStyles, defaultExportToPdfOptions } from '@iresucito/core/common';
 import { folderSongs, readLocalePatch } from '~/utils.server';
 import I18n from '@iresucito/translations';
-import { ActionFunction, json } from 'remix';
+import { ActionFunction, json } from '@remix-run/node';
 import { getSession } from '~/session.server';
 
 export let action: ActionFunction = async ({ request, params }) => {

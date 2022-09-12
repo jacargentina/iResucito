@@ -8,7 +8,8 @@ import {
   Form,
   Grid,
 } from 'semantic-ui-react';
-import { json, ActionFunction, useSubmit, useTransition } from 'remix';
+import { useSubmit, useTransition } from '@remix-run/react';
+import { json, ActionFunction } from '@remix-run/node';
 import Layout from '~/components/Layout';
 import { getdb, mailSender } from '~/utils.server';
 import I18n from '@iresucito/translations';

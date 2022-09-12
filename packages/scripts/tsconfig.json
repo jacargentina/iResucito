@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "composite": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true
+  }
+}

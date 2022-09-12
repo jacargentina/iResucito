@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Menu } from 'semantic-ui-react';
 import { EditContext } from './EditContext';
-import I18n from '~/translations';
+import I18n from '@iresucito/translations';
 
 const EditSongTitle = () => {
   const edit = useContext(EditContext);

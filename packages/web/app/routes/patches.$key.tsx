@@ -1,5 +1,5 @@
 import { folderSongs, readLocalePatch } from '~/utils.server';
-import { json, LoaderFunction } from 'remix';
+import { json, LoaderFunction } from '@remix-run/node';
 import { getSession } from '~/session.server';
 
 export let loader: LoaderFunction = async ({ request, params }) => {

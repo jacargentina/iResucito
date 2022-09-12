@@ -2,7 +2,12 @@ import * as fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
 import { Base64Encode } from 'base64-stream';
-import { PdfWriter, SongPDFGenerator } from '@iresucito/core/common';
+import {
+  ExportToPdfOptions,
+  PdfWriter,
+  SongPDFGenerator,
+  SongToPdf,
+} from '@iresucito/core/common';
 
 export async function generatePDF(
   songsToPdf: Array<SongToPdf>,
@@ -12,7 +17,7 @@ export async function generatePDF(
   const folder = os.tmpdir();
   const runningPath = path.basename(process.cwd());
   const fontPath =
-    runningPath === 'webapp'
+    runningPath === 'web'
       ? path.resolve('../assets/fonts/Franklin Gothic Medium.ttf')
       : './assets/fonts/Franklin Gothic Medium.ttf';
   const pdfPath =

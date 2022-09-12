@@ -1,0 +1,12 @@
+{
+  "name": "@iresucito/scripts",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "tsc -b"
+  },
+  "dependencies": {
+    "@iresucito/core": "*",
+    "@types/base64-stream": "^1.0.2"
+  }
+}

@@ -1,4 +1,4 @@
-import { useMemo, useEffect, useState, useContext } from 'react';
+import { useMemo, useEffect, useState } from 'react';
 import {
   Button,
   List,
@@ -15,11 +15,11 @@ import SongViewPdf from '~/components/SongViewPdf';
 import ApiMessage from '~/components/ApiMessage';
 import SongListResume from '~/components/SongListResume';
 import { useDebounce } from 'use-debounce';
-import { getPropertyLocale } from '~/common';
-import I18n from '~/translations';
-import colors from '~/colors';
+import { getPropertyLocale } from '@iresucito/core/common';
+import I18n from '@iresucito/translations';
+import colors from '@iresucito/core/colors';
 import { useApp } from '~/app.context';
-import { useNavigate } from 'remix';
+import { useNavigate } from '@remix-run/react';
 
 const SongList = (props: any) => {
   const { songs } = props;

@@ -1,9 +1,12 @@
-import { useCallback, useEffect, useMemo } from 'react';
-import { useFetcher } from 'remix';
+import { useMemo } from 'react';
 import { Menu, Dropdown } from 'semantic-ui-react';
-import I18n from '~/translations';
+import I18n from '@iresucito/translations';
 import { useApp } from '~/app.context';
-import { getLocalesForPicker, getValidatedLocale } from '~/common';
+import {
+  getLocalesForPicker,
+  getValidatedLocale,
+  PickerLocale,
+} from '@iresucito/core/common';
 
 let availableLocales: PickerLocale[] = [];
 

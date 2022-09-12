@@ -1,10 +1,10 @@
-import { useFetcher, useNavigate, useSubmit } from 'remix';
+import { useNavigate, useSubmit } from '@remix-run/react';
 import { useContext, useState } from 'react';
 import { Button, Menu, Icon, Modal, Label } from 'semantic-ui-react';
 import { useApp } from '~/app.context';
 import { EditContext } from './EditContext';
-import I18n from '~/translations';
-import collaborators from '~/songs/collaborators.json';
+import I18n from '@iresucito/translations';
+import collaborators from '@iresucito/core/songs/collaborators.json';
 
 const AppActions = () => {
   const app = useApp();
