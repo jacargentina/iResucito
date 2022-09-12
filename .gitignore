@@ -59,6 +59,8 @@ bin/
 # web app
 packages/web/.cache
 packages/web/data/*.json
+packages/**/.turbo
+packages/**/.turbo/**
 
 # dist tsc
 packages/**/dist

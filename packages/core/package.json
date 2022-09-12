@@ -1,5 +1,16 @@
 {
   "name": "@iresucito/core",
   "private": true,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "scripts": {
+    "build": "tsc -b"
+  },
+  "dependencies": {
+    "@types/country-list": "^2.1.1",
+    "@types/langs": "^2.0.1",
+    "country-list": "^2.2.0",
+    "langs": "^2.0.0",
+    "normalize-strings": "^1.1.1",
+    "typescript": "^4.8.3"
+  }
 }
