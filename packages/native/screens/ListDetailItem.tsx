@@ -12,7 +12,7 @@ import {
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { getLocalizedListItem } from '@iresucito/core/common';
+import { getLocalizedListItem } from  '@iresucito/core';
 import I18n from '@iresucito/translations';
 import { DataContext } from '../DataContext';
 

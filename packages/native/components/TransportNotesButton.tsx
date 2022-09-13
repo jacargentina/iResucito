@@ -10,7 +10,7 @@ import {
 } from 'react-native-popup-menu';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import I18n from '@iresucito/translations';
-import { getChordsScale } from '@iresucito/core/common';
+import { getChordsScale } from  '@iresucito/core';
 import { DataContext } from '../DataContext';
 import useStackNavOptions from '../navigation/useStackNavOptions';
 

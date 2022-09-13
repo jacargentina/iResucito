@@ -4,13 +4,13 @@ import { Dimensions, ScrollView } from 'react-native';
 import { Box, HStack, Text, Icon, Button } from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import color from 'color';
-import colors from '@iresucito/core/colors';
+import { colors } from '@iresucito/core';
 import I18n from '@iresucito/translations';
 import { DataContext } from '../DataContext';
 import { NativeParser, NativeStyles } from '../util';
 import SongViewLines from './SongViewLines';
 
-const SongViewFrame = (props: any) =>{
+const SongViewFrame = (props: any) => {
   const data = useContext(DataContext);
   const [zoomLevel, setZoomLevel] = data.zoomLevel;
   const { title, stage, source, text, transportToNote, error, style } = props;
@@ -54,11 +54,13 @@ const SongViewFrame = (props: any) =>{
         horizontal
         style={{
           height: ctrlVisible ? '89%' : '100%',
-        }}>
+        }}
+      >
         <ScrollView
           style={{
             minWidth: minWidth,
-          }}>
+          }}
+        >
           <Box px="2">
             <Text onPress={toggleControls} style={titleStyle}>
               {title}
@@ -83,7 +85,8 @@ const SongViewFrame = (props: any) =>{
           h="10%"
           alignItems="center"
           justifyContent="space-between"
-          backgroundColor="#efefef">
+          backgroundColor="#efefef"
+        >
           <Button onPress={zoomOut} w="20%">
             <Icon as={Ionicons} name="remove" color="white" />
           </Button>

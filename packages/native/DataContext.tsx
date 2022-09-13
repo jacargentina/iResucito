@@ -10,7 +10,7 @@ import {
   getLocalizedListItem,
   getLocalizedListType,
   defaultExportToPdfOptions,
-} from '@iresucito/core/common';
+} from '@iresucito/core';
 import I18n from '@iresucito/translations';
 import badges from './badges';
 import { clouddata } from './clouddata';
@@ -907,7 +907,8 @@ const DataContextWrapper = (props: any): any => {
         localeReal,
         keepAwake,
         zoomLevel,
-      }}>
+      }}
+    >
       {props.children}
     </DataContext.Provider>
   );

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useContext, useState, useEffect } from 'react';
 import { Input, Box, Button, FormControl } from 'native-base';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { getLocalizedListType } from '@iresucito/core/common';
+import { getLocalizedListType } from  '@iresucito/core';
 import { DataContext } from '../DataContext';
 import ModalView from '../components/ModalView';
 import I18n from '@iresucito/translations';

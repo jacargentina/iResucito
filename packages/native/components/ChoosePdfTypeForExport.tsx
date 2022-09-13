@@ -4,7 +4,7 @@ import { Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Text, Actionsheet } from 'native-base';
 import I18n from '@iresucito/translations';
-import { defaultExportToPdfOptions } from '@iresucito/core/common';
+import { defaultExportToPdfOptions } from  '@iresucito/core';
 import { DataContext } from '../DataContext';
 import { NativeParser } from '../util';
 import { generateSongPDF } from '../pdf';

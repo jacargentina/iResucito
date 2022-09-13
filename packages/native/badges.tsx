@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Badge } from 'native-base';
-import colors from '@iresucito/core/colors';
+import { colors } from '@iresucito/core';
 
-const createBadge = (backgroundColor, color, text): React.Node => {
+const createBadge = (backgroundColor, color, text) => {
   return (
     <Badge
       w="8"
@@ -11,7 +11,8 @@ const createBadge = (backgroundColor, color, text): React.Node => {
       p="2"
       borderRadius={16}
       bg={backgroundColor}
-      _text={{ color: color, textAlign: 'center' }}>
+      _text={{ color: color, textAlign: 'center' }}
+    >
       {text}
     </Badge>
   );
