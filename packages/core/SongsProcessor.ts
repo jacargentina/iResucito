@@ -11,9 +11,9 @@ import {
   SongSettingsFile,
   CollaboratorsData,
 } from './common';
-import SongsIndexRaw from './songs.json';
-import SongsHistoryRaw from './patches.json';
-import CollaboratorsRaw from './collaborators.json';
+import SongsIndexRaw from './assets/songs.json';
+import SongsHistoryRaw from './assets/patches.json';
+import CollaboratorsRaw from './assets/collaborators.json';
 
 export const SongsHistory: SongsChanges = SongsHistoryRaw;
 
