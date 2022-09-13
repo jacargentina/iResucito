@@ -29,13 +29,13 @@ export let loader: LoaderFunction = async ({ request }) => {
 
   const ios_Info = plist.parse(
     fs.readFileSync(
-      path.join(__dirname, '/../../ios/iResucito/Info.plist'),
+      path.join(__dirname, '/../../native/ios/iResucito/Info.plist'),
       'utf8'
     )
   );
 
   const androidGradle = fs.readFileSync(
-    path.join(__dirname, '/../../android/app/build.gradle'),
+    path.join(__dirname, '/../../native//android/app/build.gradle'),
     'utf8'
   );
 

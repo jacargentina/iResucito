@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "build": "tsc -b"
+    "build": "tsc -b && cp ./pdfkit.standalone.js dist/"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
