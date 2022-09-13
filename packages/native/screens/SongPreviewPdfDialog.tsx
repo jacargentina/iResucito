@@ -4,7 +4,7 @@ import ModalView from '../components/ModalView';
 import I18n from '@iresucito/translations';
 import SongViewPdf from './SongViewPdf';
 
-const SongPreviewPdfDialog = (props: any): React.Node => {
+const SongPreviewPdfDialog = (props: any) =>{
   const route = useRoute();
   const { uri } = route.params;
   return (

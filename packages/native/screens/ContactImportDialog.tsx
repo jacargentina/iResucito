@@ -64,7 +64,7 @@ const ContactItem = React.memo((props) => {
   );
 });
 
-const ContactImportDialog = (): React.Node => {
+const ContactImportDialog = () =>{
   const data = useContext(DataContext);
   const { brothers, deviceContacts, addOrRemove } = data.community;
   const [loading, setLoading] = useState(false);

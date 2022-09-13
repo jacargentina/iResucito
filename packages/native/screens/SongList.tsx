@@ -20,7 +20,7 @@ import I18n from '@iresucito/translations';
 import { DataContext } from '../DataContext';
 import SongListItem from './SongListItem';
 
-const SongList = (props: any): React.Node => {
+const SongList = (props: any) =>{
   const listRef = useRef<any>();
   const data = useContext(DataContext);
   const navigation = useNavigation();

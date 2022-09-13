@@ -14,7 +14,7 @@ const SwipeableRow = (props: {
   listName: string,
   listKey: string,
   song: any,
-}): React.Node => {
+}) =>{
   const { listName, listKey, song } = props;
   const swipeRef = useRef<typeof Swipeable>();
   const data = useContext(DataContext);
@@ -70,7 +70,7 @@ const SwipeableRow = (props: {
   );
 };
 
-const ListDetail = (): React.Node => {
+const ListDetail = () =>{
   const data = useContext(DataContext);
   const [scroll, setScroll] = useState();
   const [noteFocused, setNoteFocused] = useState(false);

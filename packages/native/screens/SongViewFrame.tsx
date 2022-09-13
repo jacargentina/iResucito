@@ -10,7 +10,7 @@ import { DataContext } from '../DataContext';
 import { NativeParser, NativeStyles } from '../util';
 import SongViewLines from './SongViewLines';
 
-const SongViewFrame = (props: any): React.Node => {
+const SongViewFrame = (props: any) =>{
   const data = useContext(DataContext);
   const [zoomLevel, setZoomLevel] = data.zoomLevel;
   const { title, stage, source, text, transportToNote, error, style } = props;

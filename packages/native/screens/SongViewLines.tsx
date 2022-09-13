@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Text } from 'native-base';
 
-const SongViewLines = (props: any): React.Node => {
+const SongViewLines = (props: any) =>{
   const { lines, onPress, zoom } = props;
 
   // Ajuste final para renderizado en screen

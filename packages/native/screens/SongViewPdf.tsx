@@ -2,7 +2,7 @@ import * as React from 'react';
 import Pdf from 'react-native-pdf';
 import { View, Dimensions } from 'react-native';
 
-const SongViewPdf = (props: any): React.Node => {
+const SongViewPdf = (props: any) =>{
   const { uri } = props;
   return (
     <View

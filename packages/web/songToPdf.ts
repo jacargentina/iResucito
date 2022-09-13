@@ -1,11 +1,11 @@
 import I18n from '@iresucito/translations';
-import { folderSongs } from '../webapp/utils.server';
 import {
   defaultExportToPdfOptions,
   PdfStyles,
   SongsParser,
   SongToPdf,
 } from '@iresucito/core';
+import { folderSongs } from './utils.server';
 import { generatePDF } from './pdf';
 import open from 'open';
 

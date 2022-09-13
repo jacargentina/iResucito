@@ -1,9 +1,15 @@
 // Utilerias atadas a react-native
 import { StyleSheet, Platform } from 'react-native';
 import * as RNLocalize from 'react-native-localize';
-import RNFS from 'react-native-fs';
+import * as RNFS from 'react-native-fs';
 import DeviceInfo from 'react-native-device-info';
-import { SongsParser, SongsExtras,SongsProcessor } from '@iresucito/core';
+import {
+  SongsParser,
+  SongsExtras,
+  SongsProcessor,
+  SongStyles,
+  Song,
+} from '@iresucito/core';
 
 export function ordenAlfabetico(a: any, b: any): number {
   if (a.givenName < b.givenName) {

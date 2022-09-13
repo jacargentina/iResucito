@@ -17,11 +17,11 @@ import I18n from '@iresucito/translations';
 import { DataContext } from '../DataContext';
 
 const ListDetailItem = (props: {
-  listName: any,
-  listKey: any,
-  listText: any,
-  inputProps?: any,
-}): React.Node => {
+  listName: any;
+  listKey: any;
+  listText: any;
+  inputProps?: any;
+}) => {
   const data = useContext(DataContext);
   const navigation = useNavigation();
   const { setList } = data.lists;
@@ -130,7 +130,8 @@ const ListDetailItem = (props: {
               target: { listName: listName, listKey: listKey },
             },
           })
-        }>
+        }
+      >
         <HStack space={1} alignItems="center">
           <Icon
             w="10%"

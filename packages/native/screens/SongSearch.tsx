@@ -15,7 +15,7 @@ import {
 import { DataContext } from '../DataContext';
 import I18n from '@iresucito/translations';
 
-const Loading = (): React.Node => {
+const Loading = () =>{
   return (
     <Center>
       <Spinner color="rose.500" size="lg" />
@@ -24,7 +24,7 @@ const Loading = (): React.Node => {
   );
 };
 
-const SongSearch = (props: any): React.Node => {
+const SongSearch = (props: any) =>{
   const data = useContext(DataContext);
   const navigation = useNavigation();
   const { initialized, searchItems } = data.search;

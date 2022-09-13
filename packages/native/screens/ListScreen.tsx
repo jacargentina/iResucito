@@ -29,7 +29,7 @@ import AddListButton from '../components/AddListButton';
 import ChooseListTypeForAdd from '../components/ChooseListTypeForAdd';
 import I18n from '@iresucito/translations';
 
-const SwipeableRow = (props: { item: any }): React.Node => {
+const SwipeableRow = (props: { item: any }) => {
   const data = useContext(DataContext);
   const navigation = useNavigation();
   const { colors } = useTheme();
@@ -100,19 +100,22 @@ const SwipeableRow = (props: { item: any }): React.Node => {
             />
           </View>
         );
-      }}>
+      }}
+    >
       <Pressable
         onPress={() => {
           navigation.navigate('ListDetail', {
             listName: item.name,
           });
-        }}>
+        }}
+      >
         <HStack
           space={2}
           p="3"
           alignItems="center"
           borderBottomWidth={1}
-          borderBottomColor="muted.200">
+          borderBottomColor="muted.200"
+        >
           <Icon
             w="12%"
             as={Ionicons}
@@ -130,7 +133,7 @@ const SwipeableRow = (props: { item: any }): React.Node => {
     </Swipeable>
   );
 };
-const ListScreen = (props: any): React.Node => {
+const ListScreen = (props: any) => {
   const data = useContext(DataContext);
   const navigation = useNavigation();
   const { getListsForUI } = data.lists;
@@ -138,10 +141,10 @@ const ListScreen = (props: any): React.Node => {
   const [filter, setFilter] = useState('');
   const chooser = useDisclose();
 
-  const allLists = useMemo(
-    () => getListsForUI(data.localeReal),
-    [data.localeReal, getListsForUI]
-  );
+  const allLists = useMemo(() => getListsForUI(data.localeReal), [
+    data.localeReal,
+    getListsForUI,
+  ]);
 
   useEffect(() => {
     var result = allLists;

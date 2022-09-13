@@ -21,7 +21,7 @@ import { DataContext } from '../DataContext';
 import badges from '../badges';
 import I18n from '@iresucito/translations';
 
-const NoLocaleWarning = (): React.Node => {
+const NoLocaleWarning = () =>{
   return (
     <Pressable
       onPress={() => {
@@ -40,7 +40,7 @@ const NoLocaleWarning = (): React.Node => {
   );
 };
 
-const SongListItem = (props: any): React.Node => {
+const SongListItem = (props: any) =>{
   const { colors } = useTheme();
   const data = useContext(DataContext);
   const navigation = useNavigation();

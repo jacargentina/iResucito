@@ -11,7 +11,7 @@ import { contactFilterByText, ordenAlfabetico } from '../util';
 import SearchBarView from '../components/SearchBarView';
 import ContactListItem from './ContactListItem';
 
-const ContactChooserDialog = (props: any): React.Node => {
+const ContactChooserDialog = (props: any) =>{
   const data = useContext(DataContext);
   const navigation = useNavigation();
   const route = useRoute();

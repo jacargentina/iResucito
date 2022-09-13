@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useContext, useMemo, useEffect, useCallback, useState } from 'react';
+import { useContext, useMemo, useCallback, useState } from 'react';
 import { useWindowDimensions } from 'react-native';
 import { Text, Center, Spinner, useTheme } from 'native-base';
 import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
@@ -7,8 +7,9 @@ import ModalView from '../components/ModalView';
 import { DataContext } from '../DataContext';
 import I18n from '@iresucito/translations';
 import SongList from './SongList';
+import { Song } from '@iresucito/core';
 
-const SongChooserDialog = (props: any): React.Node => {
+const SongChooserDialog = (props: any) => {
   const layout = useWindowDimensions();
   const { colors } = useTheme();
   const data = useContext(DataContext);
@@ -82,10 +83,12 @@ const SongChooserDialog = (props: any): React.Node => {
           ml="4"
           style={{
             alignSelf: 'flex-start',
-          }}>
+          }}
+        >
           {I18n.t('screen_title.find song')}
         </Text>
-      }>
+      }
+    >
       <TabView
         lazy
         renderLazyPlaceholder={() => {
@@ -112,7 +115,8 @@ const SongChooserDialog = (props: any): React.Node => {
                   style={{
                     color: focused ? colors.rose['500'] : colors.gray['600'],
                     margin: 3,
-                  }}>
+                  }}
+                >
                   {currentRoute.title}
                 </Text>
               )}

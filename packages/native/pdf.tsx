@@ -1,6 +1,13 @@
 import { Platform } from 'react-native';
 import RNFS from 'react-native-fs';
-import { PdfWriter, SongPDFGenerator, ListPDFGenerator } from '@iresucito/core/common';
+import {
+  PdfWriter,
+  SongPDFGenerator,
+  ListPDFGenerator,
+  ListToPdf,
+  SongToPdf,
+  ExportToPdfOptions,
+} from '@iresucito/core';
 import Base64Encode from './base64encode';
 const Buffer = require('buffer').Buffer;
 

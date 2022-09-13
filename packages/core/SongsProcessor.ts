@@ -248,7 +248,7 @@ export class SongsProcessor {
   async loadSingleSong(
     rawLoc: string,
     song: Song,
-    patch: SongIndexPatch | undefined
+    patch?: SongIndexPatch
   ): Promise<any> {
     try {
       if (patch && patch.hasOwnProperty(song.key)) {
@@ -263,7 +263,7 @@ export class SongsProcessor {
       if (typeof content === 'string') {
         song.fullText = content;
       }
-    } catch (err: any) {
+    } catch (err) {
       console.log(
         `loadSingleSong key=${song.key}, locale=${rawLoc}, error=${err.message}`
       );
@@ -275,7 +275,7 @@ export class SongsProcessor {
   async loadSongs(
     rawLoc: string,
     songs: Array<Song>,
-    patch: SongIndexPatch | undefined
+    patch?: SongIndexPatch
   ): Promise<any> {
     return Promise.all(
       songs.map((song) => {

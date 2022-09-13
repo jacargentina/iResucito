@@ -21,7 +21,7 @@ import useStackNavOptions from '../navigation/useStackNavOptions';
 import { contactFilterByText, ordenAlfabetico } from '../util';
 import ContactListItem from './ContactListItem';
 
-const SwipeableRow = (props: { item: any }): React.Node => {
+const SwipeableRow = (props: { item: any }) =>{
   const data = useContext(DataContext);
   const { colors } = useTheme();
   const { brothers, update, remove, add } = data.community;
@@ -111,7 +111,7 @@ const SwipeableRow = (props: { item: any }): React.Node => {
   );
 };
 
-const CommunityScreen = (props: any): React.Node => {
+const CommunityScreen = (props: any) =>{
   const data = useContext(DataContext);
   const options = useStackNavOptions();
   const isFocused = useIsFocused();

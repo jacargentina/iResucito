@@ -27,7 +27,7 @@ const collaborators = require('@iresucito/core/songs/collaborators.json');
 const cristo = require('../img/cristo.jpg');
 const appName = pack.displayName;
 
-const SettingsScreen = (): React.Node => {
+const SettingsScreen = () =>{
   const data = useContext(DataContext);
   const navigation = useNavigation();
   const [locale, setLocale] = data.locale;

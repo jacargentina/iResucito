@@ -7,7 +7,7 @@ import { DataContext } from '../DataContext';
 import ModalView from '../components/ModalView';
 import I18n from '@iresucito/translations';
 
-const ListNameDialog = (props: any): React.Node => {
+const ListNameDialog = (props: any) =>{
   const data = useContext(DataContext);
   const navigation = useNavigation();
   const route = useRoute();

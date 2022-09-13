@@ -5,7 +5,7 @@ import ModalView from '../components/ModalView';
 import I18n from '@iresucito/translations';
 import SongViewFrame from './SongViewFrame';
 
-const SongPreviewScreenDialog = (props: any): React.Node => {
+const SongPreviewScreenDialog = (props: any) =>{
   const route = useRoute();
   const { text, title, source, stage } = route.params.data;
 

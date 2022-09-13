@@ -5,7 +5,7 @@ import { useRoute } from '@react-navigation/native';
 import { DataContext } from '../DataContext';
 import SongViewFrame from './SongViewFrame';
 
-const SongDetail = (props: any): React.Node => {
+const SongDetail = (props: any) =>{
   const data = useContext(DataContext);
   const route = useRoute();
   const [keepAwake] = data.keepAwake;
