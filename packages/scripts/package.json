@@ -5,6 +5,8 @@
   "scripts": {
     "build": "tsc -b"
   },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.js",
   "dependencies": {
     "@iresucito/core": "*",
     "commander": "^9.4.0",

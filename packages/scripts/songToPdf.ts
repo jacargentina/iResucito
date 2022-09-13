@@ -1,8 +1,12 @@
 import I18n from '@iresucito/translations';
 import { folderSongs } from '../webapp/utils.server';
-import { SongsParser } from '../SongsParser';
+import {
+  defaultExportToPdfOptions,
+  PdfStyles,
+  SongsParser,
+  SongToPdf,
+} from '@iresucito/core';
 import { generatePDF } from './pdf';
-import { defaultExportToPdfOptions, PdfStyles } from '@iresucito/core/common';
 import open from 'open';
 
 var program = require('commander');

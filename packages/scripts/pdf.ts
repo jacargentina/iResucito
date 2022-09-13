@@ -7,7 +7,7 @@ import {
   PdfWriter,
   SongPDFGenerator,
   SongToPdf,
-} from '@iresucito/core/common';
+} from '@iresucito/core';
 
 export async function generatePDF(
   songsToPdf: Array<SongToPdf>,

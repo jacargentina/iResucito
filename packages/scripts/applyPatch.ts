@@ -6,7 +6,7 @@ import {
   SongPatch,
   SongPatchData,
   SongChange,
-} from '@iresucito/core/common';
+} from '@iresucito/core';
 import path from 'path';
 import util from 'util';
 import fs from 'fs';
@@ -147,7 +147,7 @@ const patchSongLogic = (songPatch: SongPatch, key: string) => {
         }
       }
     });
-  } catch (err: any) {
+  } catch (err) {
     console.log(err.message);
   }
 };

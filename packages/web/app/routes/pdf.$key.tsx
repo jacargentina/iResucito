@@ -1,6 +1,9 @@
-import { SongsParser } from '@iresucito/core/SongsParser';
-import { generatePDF } from '@iresucito/scripts/pdf';
-import { PdfStyles, defaultExportToPdfOptions } from '@iresucito/core/common';
+import {
+  PdfStyles,
+  defaultExportToPdfOptions,
+  SongsParser,
+} from '@iresucito/core';
+import { generatePDF } from '@iresucito/scripts';
 import { folderSongs, readLocalePatch } from '~/utils.server';
 import I18n from '@iresucito/translations';
 import { ActionFunction, json } from '@remix-run/node';

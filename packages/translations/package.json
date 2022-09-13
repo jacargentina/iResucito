@@ -4,6 +4,8 @@
   "scripts": {
     "build": "tsc -b"
   },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "private": true,
   "dependencies": {
     "@types/i18n-js": "^3.8.2",

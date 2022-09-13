@@ -5,6 +5,8 @@
   "scripts": {
     "build": "tsc -b"
   },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "dependencies": {
     "@types/country-list": "^2.1.1",
     "@types/langs": "^2.0.1",
