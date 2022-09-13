@@ -1,7 +1,6 @@
 import * as path from 'path';
 import * as fs from 'fs';
-import { SongsExtras } from '@iresucito/core/SongsExtras';
-import { SongsProcessor } from '@iresucito/core/SongsProcessor';
+import { SongIndexPatch, SongsExtras, SongsProcessor } from '@iresucito/core';
 import send from 'gmail-send';
 
 const NodeReader = (path: string) => {

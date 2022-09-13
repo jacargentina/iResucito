@@ -17,7 +17,7 @@ import { authenticator } from './auth.server';
 import { AppProvider } from './app.context';
 import { getSession } from './session.server';
 import { readLocalePatch } from '../utils.server';
-import { getPatchStats } from '@iresucito/core/common';
+import { getPatchStats } from '@iresucito/core';
 import I18n from '@iresucito/translations';
 import semanticUrl from 'semantic-ui-css/semantic.min.css';
 import globalStylesUrl from './styles/global.css';

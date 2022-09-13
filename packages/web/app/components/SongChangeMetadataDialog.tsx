@@ -2,8 +2,7 @@ import { useContext, useState, useEffect } from 'react';
 import { Button, Input, Message, Modal, Dropdown } from 'semantic-ui-react';
 import { EditContext } from './EditContext';
 import SongListItem from './SongListItem';
-import { getSongFileFromString } from '@iresucito/core/SongsProcessor';
-import { wayStages } from '@iresucito/core/common';
+import { wayStages, getSongFileFromString } from '@iresucito/core';
 import I18n from '@iresucito/translations';
 import { useApp } from '~/app.context';
 

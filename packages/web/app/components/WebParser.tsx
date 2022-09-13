@@ -1,5 +1,4 @@
-import { SongsParser } from '@iresucito/core/SongsParser';
-import { SongStyles } from '@iresucito/core/common';
+import { SongStyles, SongsParser } from '@iresucito/core';
 
 const FontSizes = {
   Notas: '10pt',

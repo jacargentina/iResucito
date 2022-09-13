@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import I18n from '@iresucito/translations';
-import { getSongFileFromString } from '@iresucito/core/SongsProcessor';
 import { useNavigate } from '@remix-run/react';
-import { Song, SongChangesAndPatches, SongFile } from '@iresucito/core/common';
+import { getSongFileFromString, Song, SongChangesAndPatches, SongFile } from '@iresucito/core';
 import { useApp } from '~/app.context';
 
 export type EditContextType = {

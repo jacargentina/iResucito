@@ -6,7 +6,7 @@ import {
   getLocalesForPicker,
   getValidatedLocale,
   PickerLocale,
-} from '@iresucito/core/common';
+} from '@iresucito/core';
 
 let availableLocales: PickerLocale[] = [];
 

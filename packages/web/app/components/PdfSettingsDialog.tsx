@@ -3,7 +3,7 @@ import JSONInput from 'react-json-editor-ajrm';
 import locale from 'react-json-editor-ajrm/locale/en';
 import { Button, Modal } from 'semantic-ui-react';
 import I18n from '@iresucito/translations';
-import { defaultExportToPdfOptions } from '@iresucito/core/common';
+import { defaultExportToPdfOptions } from '@iresucito/core';
 import { useApp } from '~/app.context';
 
 const PdfSettingsDialog = () => {

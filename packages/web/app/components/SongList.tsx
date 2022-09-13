@@ -15,9 +15,8 @@ import SongViewPdf from '~/components/SongViewPdf';
 import ApiMessage from '~/components/ApiMessage';
 import SongListResume from '~/components/SongListResume';
 import { useDebounce } from 'use-debounce';
-import { getPropertyLocale } from '@iresucito/core/common';
+import { colors, getPropertyLocale } from '@iresucito/core';
 import I18n from '@iresucito/translations';
-import colors from '@iresucito/core/colors';
 import { useApp } from '~/app.context';
 import { useNavigate } from '@remix-run/react';
 
