@@ -1,8 +1,6 @@
 import {
   getPropertyLocale,
   getPatchStats,
-  SongsData,
-  SongsChanges,
   SongPatch,
   SongPatchData,
   SongChange,
@@ -12,12 +10,7 @@ import util from 'util';
 import fs from 'fs';
 import { execSync } from 'child_process';
 require('colors');
-import SongsIndexRaw from '@iresucito/core/songs/index.json';
-import SongsHistoryRaw from '@iresucito/core/songs/patches.json';
-
-const SongsIndex: SongsData = SongsIndexRaw;
-
-var SongsHistory: SongsChanges = SongsHistoryRaw;
+import { SongsHistory, SongsIndex } from '@iresucito/core';
 
 const songsDir = path.resolve(__dirname, '../songs');
 const folders = fs.readdirSync(songsDir, { withFileTypes: true });
