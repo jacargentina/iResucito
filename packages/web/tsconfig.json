@@ -6,7 +6,7 @@
     "esModuleInterop": true,
     "jsx": "react-jsx",
     "paths": {
-      "~/*": ["./*", "./app/*"]
+      "~/*": ["./app/*"]
     },
     "baseUrl": ".",
     "allowJs": true,

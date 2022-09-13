@@ -1,7 +1,7 @@
 import { osLocale } from 'os-locale';
 import I18n from '@iresucito/translations';
 import { SongsParser, PdfStyles } from '@iresucito/core';
-import { folderSongs } from './utils.server';
+import { folderSongs } from '~/utils.server';
 
 var program = require('commander');
 

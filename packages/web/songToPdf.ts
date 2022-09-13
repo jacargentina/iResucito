@@ -5,7 +5,7 @@ import {
   SongsParser,
   SongToPdf,
 } from '@iresucito/core';
-import { folderSongs } from './utils.server';
+import { folderSongs } from '~/utils.server';
 import { generatePDF } from './pdf';
 import open from 'open';
 
