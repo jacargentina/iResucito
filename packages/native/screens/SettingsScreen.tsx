@@ -18,16 +18,15 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import DeviceInfo from 'react-native-device-info';
 import I18n from '@iresucito/translations';
-import { getLocalesForPicker } from '@iresucito/core/common';
+import { getLocalesForPicker, CollaboratorsIndex } from '@iresucito/core';
 import { DataContext } from '../DataContext';
 import { getDefaultLocale } from '../util';
 
 const pack = require('../app.json');
-const collaborators = require('@iresucito/core/songs/collaborators.json');
 const cristo = require('../img/cristo.jpg');
 const appName = pack.displayName;
 
-const SettingsScreen = () =>{
+const SettingsScreen = () => {
   const data = useContext(DataContext);
   const navigation = useNavigation();
   const [locale, setLocale] = data.locale;
@@ -114,7 +113,8 @@ const SettingsScreen = () =>{
                 // Para forzar refresco del titulo segun idioma nuevo
                 navigation.setParams({ title: '' });
               }, 10);
-            }}>
+            }}
+          >
             {localesItems}
           </Select>
           <HStack space={2} p="3" justifyContent="center" alignItems="center">
@@ -128,7 +128,8 @@ const SettingsScreen = () =>{
           space={2}
           p="3"
           justifyContent="space-between"
-          alignItems="center">
+          alignItems="center"
+        >
           <VStack w="80%" space={2}>
             <Text>{I18n.t('settings_title.keep awake')}</Text>
             <Text fontSize="sm" color="muted.500">
@@ -141,7 +142,8 @@ const SettingsScreen = () =>{
           flex={1}
           bg="white"
           alignItems="center"
-          justifyContent="space-around">
+          justifyContent="space-around"
+        >
           <Image
             source={cristo}
             style={{
@@ -156,7 +158,8 @@ const SettingsScreen = () =>{
             style={{
               fontWeight: 'bold',
               fontStyle: 'italic',
-            }}>
+            }}
+          >
             {appName}
           </Heading>
           <Text textAlign="center" fontSize="md" mt="5">
@@ -167,8 +170,8 @@ const SettingsScreen = () =>{
           </Text>
           <Text textAlign="center" fontSize="sm" mt="10">
             <Text bold>{I18n.t('ui.collaborators')}</Text>
-            {Object.keys(collaborators).map((lang) => {
-              return `\n ${collaborators[lang].join(', ')} (${lang})`;
+            {Object.keys(CollaboratorsIndex).map((lang) => {
+              return `\n ${CollaboratorsIndex[lang].join(', ')} (${lang})`;
             })}
           </Text>
           <HStack my="5">
@@ -187,7 +190,8 @@ const SettingsScreen = () =>{
             size="sm"
             variant="ghost"
             startIcon={<Icon as={Ionicons} name="browsers-outline" />}
-            onPress={goEditor}>
+            onPress={goEditor}
+          >
             {I18n.t('ui.contribute button')}
           </Button>
           {settingsFileExists && (
@@ -196,7 +200,8 @@ const SettingsScreen = () =>{
               colorScheme="rose"
               _text={{ color: 'white' }}
               borderRadius={32}
-              onPress={clearSettings}>
+              onPress={clearSettings}
+            >
               {I18n.t('ui.clear song settings')}
             </Button>
           )}

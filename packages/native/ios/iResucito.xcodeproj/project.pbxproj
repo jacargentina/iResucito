@@ -74,7 +74,7 @@
 		88659C5A253E20C40061564F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/Info.plist; sourceTree = "<group>"; };
 		8872DD8B22DF4F2B00FDA403 /* Franklin Gothic Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Franklin Gothic Medium.ttf"; path = "../../core/assets/fonts/Franklin Gothic Medium.ttf"; sourceTree = "<group>"; };
 		8891E2BC232989F30072F2F9 /* cristo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cristo.jpg; sourceTree = "<group>"; };
-		88D516DE22DF4AAE00E03D4C /* songs */ = {isa = PBXFileReference; lastKnownFileType = folder; name = songs; path = ../../core/songs; sourceTree = "<group>"; };
+		88D516DE22DF4AAE00E03D4C /* songs */ = {isa = PBXFileReference; lastKnownFileType = folder; name = songs; path = ../../core/assets/songs; sourceTree = "<group>"; };
 		88E7F94D253F308200655712 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/Info.plist; sourceTree = "<group>"; };
 		8A8D0D17770C717814CB3174 /* Pods-iResucito.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iResucito.release.xcconfig"; path = "Target Support Files/Pods-iResucito/Pods-iResucito.release.xcconfig"; sourceTree = "<group>"; };
 		C39F62BEFA4FB062A1DDE7AC /* libPods-iResucito.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iResucito.a"; sourceTree = BUILT_PRODUCTS_DIR; };
