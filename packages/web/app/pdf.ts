@@ -15,11 +15,6 @@ export async function generatePDF(
   fileSuffix: string
 ): Promise<string | undefined> {
   const folder = os.tmpdir();
-  const runningPath = path.basename(process.cwd());
-  const fontPath =
-    runningPath === 'web'
-      ? path.resolve('../assets/fonts/Franklin Gothic Medium.ttf')
-      : './assets/fonts/Franklin Gothic Medium.ttf';
   const pdfPath =
     songsToPdf.length > 1
       ? `${folder}/iResucito${fileSuffix}.pdf`
@@ -27,7 +22,13 @@ export async function generatePDF(
 
   var font = null;
   if (opts.useTimesRomanFont === false) {
-    font = Buffer.from(fs.readFileSync(fontPath, 'base64'), 'base64');
+    font = Buffer.from(
+      fs.readFileSync(
+        path.resolve('./public/build/_assets/fonts/Franklin Gothic Medium.ttf'),
+        'base64'
+      ),
+      'base64'
+    );
   }
   var writer = new PdfWriter(font, new Base64Encode(), opts);
   const base64 = await SongPDFGenerator(songsToPdf, opts, writer);

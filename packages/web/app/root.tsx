@@ -74,13 +74,16 @@ export default function App() {
   const location = useLocation();
 
   useEffect(() => {
-    if (!data.locale) {
+    if (data.locale) {
+      I18n.locale = data.locale;
+      if (location.pathname === '/') {
+        navigate('/list');
+      }
+    } else {
       fetcher.submit(null, {
         action: '/lang/' + navigator.language,
         method: 'post',
       });
-    } else if (location.pathname === '/') {
-      navigate('/list');
     }
   }, [data, location]);
 

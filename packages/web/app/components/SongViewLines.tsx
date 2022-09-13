@@ -1,6 +1,6 @@
-import I18n from '@iresucito/translations';
 import { WebStyles } from './WebParser';
-import { SongLine } from '@iresucito/core/common';
+import I18n from '@iresucito/translations';
+import { SongLine } from '@iresucito/core';
 
 const SongViewLines = (props: any) => {
   const { lines, indicators } = props;
@@ -18,9 +18,7 @@ const SongViewLines = (props: any) => {
         </span>
       );
     }
-    // eslint-disable-next-line no-param-reassign
     it.prefijo = it.prefijo.replace(/ /g, '\u00a0');
-    // eslint-disable-next-line no-param-reassign
     it.texto = it.texto.replace(/ /g, '\u00a0');
     const indicator = indicators.find((r) => r.start <= i && r.end > i);
     if (indicator) {
