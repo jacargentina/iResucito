@@ -3,8 +3,8 @@ import { useContext, useState } from 'react';
 import { Button, Menu, Icon, Modal, Label } from 'semantic-ui-react';
 import { useApp } from '~/app.context';
 import { EditContext } from './EditContext';
+import { CollaboratorsIndex } from '@iresucito/core';
 import I18n from '@iresucito/translations';
-import collaborators from '@iresucito/core/songs/collaborators.json';
 
 const AppActions = () => {
   const app = useApp();
@@ -58,9 +58,9 @@ const AppActions = () => {
                 <div>
                   <h3>{I18n.t('ui.collaborators')}</h3>
                   <ul>
-                    {Object.keys(collaborators).map((lang, idx) => {
+                    {Object.keys(CollaboratorsIndex).map((lang, idx) => {
                       return (
-                        <li key={idx}>{`${collaborators[lang].join(
+                        <li key={idx}>{`${CollaboratorsIndex[lang].join(
                           ', '
                         )} (${lang})`}</li>
                       );

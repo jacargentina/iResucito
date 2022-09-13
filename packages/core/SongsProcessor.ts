@@ -9,13 +9,17 @@ import {
   SongsChanges,
   SongsData,
   SongSettingsFile,
+  CollaboratorsData,
 } from './common';
-import SongsIndexRaw from './songs/index.json';
-import SongsHistoryRaw from './songs/patches.json';
+import SongsIndexRaw from './songs.json';
+import SongsHistoryRaw from './patches.json';
+import CollaboratorsRaw from './collaborators.json';
 
 export const SongsHistory: SongsChanges = SongsHistoryRaw;
 
 export const SongsIndex: SongsData = SongsIndexRaw;
+
+export const CollaboratorsIndex: CollaboratorsData = CollaboratorsRaw;
 
 export const getSongFileFromString = (str: string): SongFile => {
   var titulo = str.includes(' - ')

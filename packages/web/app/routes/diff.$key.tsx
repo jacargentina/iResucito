@@ -1,7 +1,7 @@
 import * as Diff from 'diff';
 import { folderSongs, readLocalePatch } from '~/utils.server';
 import { getPropertyLocale } from '@iresucito/core';
-import SongsIndex from '@iresucito/core/songs/index.json';
+import { SongsIndex } from '@iresucito/core';
 import { json, LoaderFunction } from '@remix-run/node';
 import { getSession } from '~/session.server';
 

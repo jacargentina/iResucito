@@ -5,7 +5,7 @@
   "description": "iResucito webapp",
   "license": "MIT",
   "scripts": {
-    "build": "remix setup node && remix build && mkdir -p ./public/build/_assets/themes/default/assets/fonts && cp ./node_modules/semantic-ui-css/themes/default/assets/fonts/* ./public/build/_assets/themes/default/assets/fonts && cp ./node_modules/@iresucito/core/assets/fonts/* ./public/build/_assets/",
+    "build": "remix setup node && remix build && mkdir -p ./public/build/_assets/themes/default/assets/fonts && cp ./node_modules/semantic-ui-css/themes/default/assets/fonts/* ./public/build/_assets/themes/default/assets/fonts && cp -r ./node_modules/@iresucito/core/assets/* ./public/build/_assets/",
     "dev": "node --inspect ./node_modules/.bin/remix dev",
     "start": "node ./syncData.js down && node ./server.js",
     "postinstall": "cp ../../node_modules/pdfjs-dist/build/pdf.worker.js ./public"

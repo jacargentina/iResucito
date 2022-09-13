@@ -42,6 +42,10 @@ export type SongsChanges = {
   [songKey: string]: Array<SongChange>;
 };
 
+export type CollaboratorsData = {
+  [localeKey: string]: Array<string>;
+};
+
 export type SongChange = {
   locale: string;
   author: string;
