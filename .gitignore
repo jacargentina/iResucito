@@ -68,3 +68,4 @@ packages/**/dist
 # sentry
 **/ios/sentry.properties
 **/android/sentry.properties
+.vercel/
