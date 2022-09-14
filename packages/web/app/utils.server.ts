@@ -31,7 +31,7 @@ let folderExtras: SongsExtras = new SongsExtras(
 );
 
 export const folderSongs = new SongsProcessor(
-  './public/build/_assets/songs',
+  './build/_assets/songs',
   NodeLister,
   NodeReader
 );
