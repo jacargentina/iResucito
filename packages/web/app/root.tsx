@@ -35,7 +35,7 @@ export let loader: LoaderFunction = async ({ request }) => {
   );
 
   const androidGradle = fs.readFileSync(
-    path.join(__dirname, '/../../native//android/app/build.gradle'),
+    path.join(__dirname, '/../../native/android/app/build.gradle'),
     'utf8'
   );
 
