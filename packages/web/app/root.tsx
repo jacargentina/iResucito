@@ -52,8 +52,22 @@ export let loader: LoaderFunction = async ({ request }) => {
   const session = await getSession(request.headers.get('Cookie'));
 
   console.log('App Path: ', process.cwd());
-  const entries = fs.readdirSync(process.cwd());
-  entries.forEach((e: string) => console.log(`- ${e}`));
+
+  const getAllFiles = (dirPath: string) => {
+    var files = fs.readdirSync(dirPath);
+
+    files.forEach((file: string) => {
+      if (fs.statSync(dirPath + '/' + file).isDirectory()) {
+        getAllFiles(dirPath + '/' + file);
+      } else {
+        const str = path.join(dirPath, '/', file);
+        console.log(` - ${str}`);
+      }
+    });
+  };
+
+  console.log('App Path: ', process.cwd());
+  getAllFiles(process.cwd());
 
   return {
     IOS_VERSION: `${ios_Info.CFBundleShortVersionString}.${ios_Info.CFBundleVersion}`,

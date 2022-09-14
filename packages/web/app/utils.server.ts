@@ -23,7 +23,7 @@ const NodeLister = async (path: string) => {
 };
 
 let folderExtras: SongsExtras = new SongsExtras(
-  './data',
+  './packages/web/data',
   NodeExists,
   NodeWriter,
   NodeReader,
@@ -31,14 +31,14 @@ let folderExtras: SongsExtras = new SongsExtras(
 );
 
 export const folderSongs = new SongsProcessor(
-  './build/_assets/songs',
+  './packages/web/build/_assets/songs',
   NodeLister,
   NodeReader
 );
 
 let db: any = null;
 
-export const dataPath: string = path.resolve('./data');
+export const dataPath: string = path.resolve('./packages/web/data');
 
 export const getdb = async () => {
   if (!db) {
