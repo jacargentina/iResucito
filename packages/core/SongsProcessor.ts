@@ -269,7 +269,7 @@ export class SongsProcessor {
       }
     } catch (err) {
       console.log(
-        `loadSingleSong key=${song.key}, locale=${rawLoc}, error=${err.message}`
+        `loadSingleSong cwd=${process.cwd()} key=${song.key}, locale=${rawLoc}, error=${err.message}`
       );
       song.error = err.message;
       song.fullText = '';
