@@ -39,6 +39,7 @@
     "bcryptjs": "^2.4.3",
     "chokidar": "^3.5.3",
     "crypto-random-string": "^5.0.0",
+    "deepmerge": "^4.2.2",
     "diff": "^5.1.0",
     "dropbox": "^10.32.0",
     "etag": "^1.8.1",
