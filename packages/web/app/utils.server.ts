@@ -1,6 +1,7 @@
 import * as path from 'path';
 import * as fs from 'fs';
 import { SongIndexPatch, SongsExtras, SongsProcessor } from '@iresucito/core';
+// @ts-ignore
 import send from 'gmail-send';
 
 const NodeReader = (path: string) => {
@@ -22,8 +23,10 @@ const NodeLister = async (path: string) => {
   });
 };
 
+console.log('utils.server.ts __dirname', __dirname);
+
 let folderExtras: SongsExtras = new SongsExtras(
-  './packages/web/data',
+  path.resolve(__dirname + '/../data'),
   NodeExists,
   NodeWriter,
   NodeReader,
@@ -31,20 +34,22 @@ let folderExtras: SongsExtras = new SongsExtras(
 );
 
 export const folderSongs = new SongsProcessor(
-  './packages/web/build/_assets/songs',
+  path.resolve(__dirname + '/../public/songs'),
   NodeLister,
   NodeReader
 );
 
 let db: any = null;
 
-export const dataPath: string = path.resolve('./packages/web/data');
-
 export const getdb = async () => {
   if (!db) {
+    // @ts-ignore
     const lowdb = await import('lowdb');
     const { LowSync, JSONFileSync } = lowdb;
-    db = new LowSync(new JSONFileSync(path.join(dataPath, 'db.json')));
+    const dataPath = path.resolve(__dirname + '/../data');
+    const dbPath = path.join(dataPath, 'db.json');
+    console.log('getdb', dbPath);
+    db = new LowSync(new JSONFileSync(dbPath));
     db.data = db.data || { users: [], tokens: [] };
   }
   return db;

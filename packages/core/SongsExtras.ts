@@ -26,6 +26,7 @@ export class SongsExtras {
     this.writer = writer;
     this.reader = reader;
     this.unlink = unlink;
+    console.log('SongsExtras basePath ', this.basePath);
   }
 
   readPatch(): Promise<string> {

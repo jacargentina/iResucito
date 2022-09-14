@@ -54,6 +54,7 @@ export class SongsProcessor {
     this.basePath = basePath;
     this.songsLister = songsLister;
     this.songReader = songReader;
+    console.log('SongsProcessor basePath ', this.basePath);
   }
 
   getBestFileForLocale(
@@ -269,7 +270,7 @@ export class SongsProcessor {
       }
     } catch (err) {
       console.log(
-        `loadSingleSong cwd=${process.cwd()} key=${song.key}, locale=${rawLoc}, error=${err.message}`
+        `loadSingleSong basePath=${this.basePath} key=${song.key}, locale=${rawLoc}, error=${err.message}`
       );
       song.error = err.message;
       song.fullText = '';

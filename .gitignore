@@ -59,6 +59,7 @@ bin/
 # web app
 packages/web/.cache
 packages/web/data/*.json
+packages/web/public/songs
 packages/**/.turbo
 packages/**/.turbo/**
 
