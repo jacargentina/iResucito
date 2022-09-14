@@ -18,9 +18,9 @@ export let loader: LoaderFunction = async () => {
     });
   };
 
-  getAllFiles(process.cwd());
+  getAllFiles(__dirname);
 
-  return { cwd: process.cwd(), items: items.sort() };
+  return { cwd: process.cwd(), dirname: __dirname, items: items.sort() };
 };
 
 const Vercel = () => {
@@ -30,6 +30,7 @@ const Vercel = () => {
     <Layout>
       <div style={{ height: '90%' }}>
         <strong>CWD: {data.cwd}</strong>
+        <strong>__dirname: {data.dirname}</strong>
         <ul style={{ height: '100%', overflowY: 'scroll' }}>
           {data.items.map((i: string) => {
             return <li>{i}</li>;
