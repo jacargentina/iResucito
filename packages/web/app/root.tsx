@@ -51,6 +51,10 @@ export let loader: LoaderFunction = async ({ request }) => {
   const authData = await authenticator.isAuthenticated(request);
   const session = await getSession(request.headers.get('Cookie'));
 
+  console.log('App Path: ', process.cwd());
+  const entries = fs.readdirSync(process.cwd());
+  entries.forEach((e: string) => console.log(`- ${e}`));
+
   return {
     IOS_VERSION: `${ios_Info.CFBundleShortVersionString}.${ios_Info.CFBundleVersion}`,
     ANDROID_VERSION: `${android_major}.${android_minor}.${android_patch}.${android_build}`,
