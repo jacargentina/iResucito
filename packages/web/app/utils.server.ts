@@ -38,12 +38,17 @@ export const dataPath = path.resolve(__dirname + '/../public/data');
 
 if (globalThis.db === undefined) {
   const dbPath = path.join(dataPath, 'db.json');
-  var db = new LowSync(new JSONFileSync(dbPath));
-  db.read();
-  // @ts-ignore
-  db.data ||= { users: [], tokens: [] };
-  db.write();
-  globalThis.db = db;
+  try {
+    var db = new LowSync(new JSONFileSync(dbPath));
+    db.read();
+    // @ts-ignore
+    db.data ||= { users: [], tokens: [] };
+    db.write();
+    globalThis.db = db;
+  } catch (err: any) {
+    console.log('Error', err.message);
+    console.log(dbPath);
+  }
 }
 
 if (globalThis.folderSongs === undefined) {
