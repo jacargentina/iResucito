@@ -31,10 +31,10 @@ declare global {
   var folderSongs: SongsProcessor;
   var folderExtras: SongsExtras;
   var mailSender: (...args: any[]) => Promise<void>;
-  var watcher: chokidar.FSWatcher;
+  var initialized: boolean;
 }
 
-const dataPath = path.resolve(__dirname + '/../data');
+export const dataPath = path.resolve(__dirname + '/../data');
 
 if (globalThis.db === undefined) {
   const dbPath = path.join(dataPath, 'db.json');
@@ -153,10 +153,10 @@ export const upload = async (file: string): Promise<boolean> => {
 };
 
 const setup = async () => {
-  if (globalThis.watcher === undefined) {
+  if (!globalThis.initialized) {
     const ok = await download();
     if (ok === true) {
-      globalThis.watcher = chokidar
+      chokidar
         .watch(dataPath, {
           persistent: true,
           ignoreInitial: true,
@@ -166,6 +166,7 @@ const setup = async () => {
 
       console.log('Observando para sincronizar', dataPath);
     }
+    globalThis.initialized = true;
   }
 };
 
