@@ -1,5 +1,7 @@
 import * as path from 'path';
 import * as fs from 'fs';
+import { Dropbox } from 'dropbox';
+import chokidar from 'chokidar';
 import { SongIndexPatch, SongsExtras, SongsProcessor } from '@iresucito/core';
 import { LowSync, JSONFileSync } from 'lowdb';
 // @ts-ignore
@@ -29,10 +31,12 @@ declare global {
   var folderSongs: SongsProcessor;
   var folderExtras: SongsExtras;
   var mailSender: (...args: any[]) => Promise<void>;
+  var watcher: chokidar.FSWatcher;
 }
 
+const dataPath = path.resolve(__dirname, '/../data');
+
 if (globalThis.db === undefined) {
-  const dataPath = path.resolve(__dirname + '/../data');
   const dbPath = path.join(dataPath, 'db.json');
   var db = new LowSync(new JSONFileSync(dbPath));
   db.read();
@@ -52,7 +56,7 @@ if (globalThis.folderSongs === undefined) {
 
 if (globalThis.folderExtras === undefined) {
   globalThis.folderExtras = new SongsExtras(
-    path.resolve(__dirname + '/../data'),
+    dataPath,
     NodeExists,
     NodeWriter,
     NodeReader,
@@ -80,3 +84,85 @@ export async function saveLocalePatch(patchObj: SongIndexPatch | undefined) {
   const json = JSON.stringify(patchObj, null, ' ');
   await globalThis.folderExtras.savePatch(json);
 }
+
+const getDbx = () => {
+  if (!process.env.DROPBOX_PASSWORD) {
+    console.log(
+      'DROPBOX_PASSWORD no definida. No se puede conectar con Dropbox'
+    );
+  } else {
+    return new Dropbox({
+      accessToken: process.env.DROPBOX_PASSWORD,
+    });
+  }
+};
+
+export const download = async () => {
+  const dbx = getDbx();
+  if (!dbx) {
+    return;
+  }
+  console.log('Descargando', dataPath);
+  const response = await dbx.filesListFolder({ path: '' });
+  const files = response.result;
+  if (files.entries.length) {
+    console.log(`Descargando ${files.entries.length} archivos...`);
+  }
+  try {
+    await Promise.all(
+      files.entries.map((entry) => {
+        if (entry.path_lower) {
+          dbx.filesDownload({ path: entry.path_lower }).then((response_1) => {
+            const meta = response_1.result;
+            console.log(`Guardando ${meta.name}`);
+            return fs.promises.writeFile(
+              path.join(dataPath, meta.name),
+              (meta as any).fileBinary
+            );
+          });
+        }
+      })
+    );
+    console.log('Listo.');
+  } catch (err: any) {
+    console.log('Error', err);
+  }
+};
+
+export const upload = async (file: string) => {
+  const dbx = getDbx();
+  if (!dbx) {
+    return;
+  }
+  const fullpath = path.isAbsolute(file) ? file : path.join(dataPath, file);
+  const baseName = path.basename(fullpath);
+  console.log('Subiendo', fullpath);
+  try {
+    const response = await dbx.filesUpload({
+      path: `/${baseName}`,
+      mode: { '.tag': 'overwrite' },
+      contents: fs.readFileSync(fullpath),
+    });
+    const meta = response.result;
+    console.log(`Subido ${meta.name}`);
+  } catch (err: any) {
+    console.log('Error', err);
+  }
+};
+
+const setup = async () => {
+  if (globalThis.watcher === undefined) {
+    await download();
+    globalThis.watcher = chokidar
+      .watch(dataPath, {
+        persistent: true,
+        ignoreInitial: true,
+      })
+      .on('add', (p) => upload(p))
+      .on('change', (p) => upload(p));
+
+    console.log('Observando para sincronizar', dataPath);
+  }
+};
+
+setup();
