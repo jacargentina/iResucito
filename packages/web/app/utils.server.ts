@@ -39,19 +39,18 @@ export const folderSongs = new SongsProcessor(
   NodeReader
 );
 
-let db: any = null;
-
 export const getdb = async () => {
-  if (!db) {
-    // @ts-ignore
-    const lowdb = await import('lowdb');
-    const { LowSync, JSONFileSync } = lowdb;
-    const dataPath = path.resolve(__dirname + '/../data');
-    const dbPath = path.join(dataPath, 'db.json');
-    console.log('getdb', dbPath);
-    db = new LowSync(new JSONFileSync(dbPath));
-    db.data = db.data || { users: [], tokens: [] };
-  }
+  // @ts-ignore
+  const lowdb = await import('lowdb');
+  const { LowSync, JSONFileSync } = lowdb;
+  const dataPath = path.resolve(__dirname + '/../data');
+  const dbPath = path.join(dataPath, 'db.json');
+  console.log('getdb', dbPath);
+  var db = new LowSync(new JSONFileSync(dbPath));
+  db.read();
+  // @ts-ignore
+  db.data ||= { users: [], tokens: [] };
+  db.write();
   return db;
 };
 
