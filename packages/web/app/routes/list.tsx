@@ -1,7 +1,8 @@
+import etag from 'etag';
 import Layout from '~/components/Layout';
 import SongList from '~/components/SongList';
 import PdfSettingsDialog from '~/components/PdfSettingsDialog';
-import { readLocalePatch, folderSongs } from '~/utils.server';
+import { readLocalePatch } from '~/utils.server';
 import { json, LoaderFunction } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 import { getSession } from '~/session.server';
@@ -17,11 +18,10 @@ export let loader: LoaderFunction = async ({ request }) => {
     if (!locale) {
       throw new Error('Locale not provided');
     }
-    const songs = folderSongs.getSongsMeta(locale, patch);
-    const etag = await import('etag');
+    const songs = globalThis.folderSongs.getSongsMeta(locale, patch);
     const headers = {
       'Cache-Control': 'max-age=0, must-revalidate',
-      ETag: etag.default(JSON.stringify(songs)),
+      ETag: etag(JSON.stringify(songs)),
     };
     if (request.headers.get('If-None-Match') === headers.ETag) {
       return new Response('', { status: 304, headers });

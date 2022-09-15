@@ -1,3 +1,4 @@
+import etag from 'etag';
 import Layout from '~/components/Layout';
 import SongEditor from '~/components/SongEditor';
 import EditContextWrapper from '~/components/EditContext';
@@ -6,7 +7,7 @@ import ConfirmDialog from '~/components/ConfirmDialog';
 import PatchLogDialog from '~/components/PatchLogDialog';
 import DiffViewDialog from '~/components/DiffViewDialog';
 import PdfSettingsDialog from '~/components/PdfSettingsDialog';
-import { readLocalePatch, folderSongs } from '~/utils.server';
+import { readLocalePatch } from '~/utils.server';
 import { json, LoaderFunction } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 import { getSession } from '~/session.server';
@@ -19,13 +20,13 @@ export let loader: LoaderFunction = async ({ request, params }) => {
   }
   const patch = await readLocalePatch();
   const { key } = params;
-  const songs = folderSongs.getSongsMeta(locale, patch);
+  const songs = globalThis.folderSongs.getSongsMeta(locale, patch);
   const song = songs.find((s) => s.key === key);
   if (!song) {
     throw new Error(`Song ${key} not valid`);
   }
 
-  await folderSongs.loadSingleSong(locale, song, patch);
+  await globalThis.folderSongs.loadSingleSong(locale, song, patch);
   // Buscar key previa y siguiente para navegacion
   const index = songs.indexOf(song);
   let prev = index - 1;
@@ -39,10 +40,9 @@ export let loader: LoaderFunction = async ({ request, params }) => {
   const previousKey = songs[prev] ? songs[prev].key : null;
   const nextKey = songs[next] ? songs[next].key : null;
 
-  const etag = await import('etag');
   const headers = {
     'Cache-Control': 'max-age=0, must-revalidate',
-    ETag: etag.default(JSON.stringify(song)),
+    ETag: etag(JSON.stringify(song)),
   };
 
   if (request.headers.get('If-None-Match') === headers.ETag) {

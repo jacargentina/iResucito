@@ -1,10 +1,11 @@
+import crypto from 'crypto-random-string';
 import { Header, Image, Grid } from 'semantic-ui-react';
 import Layout from '~/components/Layout';
 import ApiMessage from '~/components/ApiMessage';
 import bcrypt from 'bcryptjs';
 import { ActionFunction, json } from '@remix-run/node';
 import { commitSession, getSession } from '~/session.server';
-import { getdb, mailSender } from '~/utils.server';
+import '~/utils.server';
 import I18n from '@iresucito/translations';
 
 export let action: ActionFunction = async ({ request }) => {
@@ -31,8 +32,7 @@ export let action: ActionFunction = async ({ request }) => {
   }
   // Quitar espacios
   email = email.trim();
-  const db = await getdb();
-  const exists = db.data.users.find((u) => u.email == email);
+  const exists = globalThis.db.data.users.find((u) => u.email == email);
   if (exists && exists.isVerified) {
     return json(
       {
@@ -45,7 +45,7 @@ export let action: ActionFunction = async ({ request }) => {
     const hash = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
     if (!exists) {
       // Crear usuario
-      db.data.users.push({
+      globalThis.db.data.users.push({
         email,
         password: hash,
         isVerified: false,
@@ -53,26 +53,27 @@ export let action: ActionFunction = async ({ request }) => {
       });
     }
     // Crear (o actualizar) token para verificacion
-    const crypto = await import('crypto-random-string');
-    const token = crypto.default({ length: 20, type: 'url-safe' });
-    let tokenIndex = db.data.tokens.findIndex((t) => t.email == email);
+    const token = crypto({ length: 20, type: 'url-safe' });
+    let tokenIndex = globalThis.db.data.tokens.findIndex(
+      (t) => t.email == email
+    );
     if (tokenIndex === -1) {
-      db.data.tokens.push({
+      globalThis.db.data.tokens.push({
         email,
         token,
       });
     } else {
-      db.data.tokens[tokenIndex].token = token;
+      globalThis.db.data.tokens[tokenIndex].token = token;
     }
     // Escribir
-    db.write();
+    globalThis.db.write();
     const base =
       process.env.NODE_ENV == 'production'
         ? 'http://iresucito.herokuapp.com'
         : 'http://localhost:3000';
 
     try {
-      await mailSender({
+      await globalThis.mailSender({
         to: email,
         text: `Navigate this link ${base}/verify?token=${token}&email=${email} to activate your account.`,
       });

@@ -3,7 +3,7 @@ import { useLoaderData } from '@remix-run/react';
 import { Header, Image, Grid } from 'semantic-ui-react';
 import ErrorDetail from '~/components/ErrorDetail';
 import Layout from '~/components/Layout';
-import { getdb } from '~/utils.server';
+import '~/utils.server';
 
 export let loader: LoaderFunction = async ({ request }) => {
   const url = new URL(request.url);
@@ -13,22 +13,21 @@ export let loader: LoaderFunction = async ({ request }) => {
     throw new Error('Missing parameters');
   }
 
-  const db = await getdb();
-  db.read();
-
-  const userIndex = db.data.users.findIndex((x) => x.email === email);
+  const userIndex = globalThis.db.data.users.findIndex(
+    (x) => x.email === email
+  );
   if (userIndex !== -1) {
-    const user = db.data.users[userIndex];
+    const user = globalThis.db.data.users[userIndex];
     if (user.isVerified) {
       return json({ ok: 'Email Already Verified' });
     }
-    const tokenIndex = db.data.tokens.findIndex(
+    const tokenIndex = globalThis.db.data.tokens.findIndex(
       (t) => t.email === email && t.token === token
     );
     if (tokenIndex !== -1) {
-      db.data.users[userIndex].isVerified = true;
-      db.data.tokens.splice(tokenIndex, 1);
-      db.write();
+      globalThis.db.data.users[userIndex].isVerified = true;
+      globalThis.db.data.tokens.splice(tokenIndex, 1);
+      globalThis.db.write();
       return redirect(`/account?u=${email}&v=1`);
     }
     return json({ error: { message: 'Token expired' } });

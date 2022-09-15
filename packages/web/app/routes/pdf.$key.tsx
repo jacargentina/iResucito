@@ -2,10 +2,11 @@ import {
   PdfStyles,
   defaultExportToPdfOptions,
   SongsParser,
+  SongToPdf,
 } from '@iresucito/core';
 import I18n from '@iresucito/translations';
 import { generatePDF } from '~/pdf';
-import { folderSongs, readLocalePatch } from '~/utils.server';
+import { readLocalePatch } from '~/utils.server';
 import { ActionFunction, json } from '@remix-run/node';
 import { getSession } from '~/session.server';
 
@@ -28,8 +29,8 @@ export let action: ActionFunction = async ({ request, params }) => {
     const items = [];
     if (key == 'full') {
       const patch = await readLocalePatch();
-      const songs = folderSongs.getSongsMeta(locale, patch);
-      await folderSongs.loadSongs(locale, songs, patch);
+      const songs = globalThis.folderSongs.getSongsMeta(locale, patch);
+      await globalThis.folderSongs.loadSongs(locale, songs, patch);
       songs.forEach((song) => {
         if (song.files[locale]) {
           const render = parser.getForRender(song.fullText, locale);
@@ -50,8 +51,8 @@ export let action: ActionFunction = async ({ request, params }) => {
         );
       }
       const patch = await readLocalePatch();
-      const song = folderSongs.getSingleSongMeta(key, locale, patch);
-      await folderSongs.loadSingleSong(locale, song, patch);
+      const song = globalThis.folderSongs.getSingleSongMeta(key, locale, patch);
+      await globalThis.folderSongs.loadSingleSong(locale, song, patch);
       const render = parser.getForRender(text, locale);
       const item: SongToPdf = {
         song,
@@ -83,7 +84,7 @@ export let action: ActionFunction = async ({ request, params }) => {
         { status: 500 }
       );
     }
-  } catch (err) {
+  } catch (err: any) {
     console.log('pdf ERROR:', err.message);
     return json(
       {

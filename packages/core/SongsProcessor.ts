@@ -87,8 +87,8 @@ export class SongsProcessor {
   getSingleSongMeta(
     key: string,
     rawLoc: string,
-    patch: SongIndexPatch | undefined,
-    settings: SongSettingsFile | undefined
+    patch?: SongIndexPatch | undefined,
+    settings?: SongSettingsFile | undefined
   ): Song {
     if (!SongsIndex.hasOwnProperty(key)) {
       throw Error(`No existe ${key} en el índice`);

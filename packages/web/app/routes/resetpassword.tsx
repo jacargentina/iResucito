@@ -1,3 +1,4 @@
+import crypto from 'crypto-random-string';
 import {
   Header,
   Segment,
@@ -11,7 +12,7 @@ import {
 import { useSubmit, useTransition } from '@remix-run/react';
 import { json, ActionFunction } from '@remix-run/node';
 import Layout from '~/components/Layout';
-import { getdb, mailSender } from '~/utils.server';
+import '~/utils.server';
 import I18n from '@iresucito/translations';
 import ApiMessage from '~/components/ApiMessage';
 import { useState } from 'react';
@@ -19,9 +20,7 @@ import { useState } from 'react';
 export let action: ActionFunction = async ({ request }) => {
   const body = await request.formData();
   const email = body.get('email') as string;
-  const db = await getdb();
-  db.read();
-  const userIndex = db.data.users.findIndex((u) => u.email == email);
+  const userIndex = globalThis.db.data.users.findIndex((u) => u.email == email);
   if (userIndex === -1) {
     return json(
       {
@@ -31,19 +30,18 @@ export let action: ActionFunction = async ({ request }) => {
     );
   }
   // Crear (o actualizar) token para verificacion
-  const crypto = await import('crypto-random-string');
-  const token = crypto.default({ length: 20, type: 'url-safe' });
-  let tokenIndex = db.data.tokens.findIndex((t) => t.email == email);
+  const token = crypto({ length: 20, type: 'url-safe' });
+  let tokenIndex = globalThis.db.data.tokens.findIndex((t) => t.email == email);
   if (tokenIndex === -1) {
-    db.data.tokens.push({
+    globalThis.db.data.tokens.push({
       email,
       token,
     });
   } else {
-    db.data.tokens[tokenIndex].token = token;
+    globalThis.db.data.tokens[tokenIndex].token = token;
   }
   // Escribir
-  db.write();
+  globalThis.db.write();
   const base =
     process.env.NODE_ENV == 'production'
       ? 'http://iresucito.herokuapp.com'

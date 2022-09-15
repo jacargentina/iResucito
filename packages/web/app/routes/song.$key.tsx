@@ -1,8 +1,9 @@
 import { readLocalePatch, saveLocalePatch } from '~/utils.server';
-import { folderSongs } from '~/utils.server';
+import '~/utils.server';
 import { authenticator } from '~/auth.server';
 import { ActionFunction, json, LoaderFunction } from '@remix-run/node';
 import { getSession } from '~/session.server';
+import { Song, SongPatch, SongPatchData } from '@iresucito/core';
 
 const merge = require('deepmerge');
 
@@ -44,8 +45,8 @@ const post = async (
     patchObj = {};
   }
 
-  if (patch.rename) {
-    patch.rename = patch.rename.trim();
+  if (patch.name) {
+    patch.name = patch.name.trim();
   }
 
   patch.date = Date.now();
@@ -62,9 +63,9 @@ const post = async (
   await saveLocalePatch(patchObj);
 
   // Recargar song y devolver
-  const songs = folderSongs.getSongsMeta(locale, patchObj);
-  const song = songs.find((s) => s.key === key);
-  await folderSongs.loadSingleSong(locale, song, patchObj);
+  const songs = globalThis.folderSongs.getSongsMeta(locale, patchObj);
+  const song = songs.find((s) => s.key === key) as Song;
+  await globalThis.folderSongs.loadSingleSong(locale, song, patchObj);
 
   return { ok: true, song };
 };
@@ -75,7 +76,7 @@ const addNewSong = async (locale: string, session: AuthData) => {
     patchObj = {};
   }
 
-  const songs = folderSongs.getSongsMeta(locale, patchObj);
+  const songs = globalThis.folderSongs.getSongsMeta(locale, patchObj);
 
   // Crear song
   const patch: SongPatchData = {
@@ -100,9 +101,9 @@ const addNewSong = async (locale: string, session: AuthData) => {
   await saveLocalePatch(patchObj);
 
   // Cargar y devolver
-  const newSongs = folderSongs.getSongsMeta(locale, patchObj);
-  const newSong = newSongs.find((s) => s.key === newKey);
-  await folderSongs.loadSingleSong(locale, newSong, patchObj);
+  const newSongs = globalThis.folderSongs.getSongsMeta(locale, patchObj);
+  const newSong = newSongs.find((s) => s.key === newKey) as Song;
+  await globalThis.folderSongs.loadSingleSong(locale, newSong, patchObj);
 
   return { ok: true, song: newSong };
 };
@@ -148,7 +149,7 @@ export let action: ActionFunction = async ({ request, params }) => {
     } else {
       return new Response(null, { status: 404 });
     }
-  } catch (err) {
+  } catch (err: any) {
     console.log(err);
     return json(
       {

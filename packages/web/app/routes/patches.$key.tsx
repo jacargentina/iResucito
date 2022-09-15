@@ -1,6 +1,8 @@
-import { folderSongs, readLocalePatch } from '~/utils.server';
+import etag from 'etag';
+import { readLocalePatch } from '~/utils.server';
 import { json, LoaderFunction } from '@remix-run/node';
 import { getSession } from '~/session.server';
+import { SongChangesAndPatches } from '@iresucito/core';
 
 export let loader: LoaderFunction = async ({ request, params }) => {
   const session = await getSession(request.headers.get('Cookie'));
@@ -12,7 +14,7 @@ export let loader: LoaderFunction = async ({ request, params }) => {
   if (!key) {
     throw new Error('key not provided');
   }
-  const changes = folderSongs.getSongHistory(key, locale);
+  const changes = globalThis.folderSongs.getSongHistory(key, locale);
   let pending = null;
 
   const patch = await readLocalePatch();
@@ -23,10 +25,9 @@ export let loader: LoaderFunction = async ({ request, params }) => {
 
   const result: SongChangesAndPatches = { changes, pending };
 
-  const etag = await import('etag');
   const headers = {
     'Cache-Control': 'max-age=0, must-revalidate',
-    ETag: etag.default(JSON.stringify(result)),
+    ETag: etag(JSON.stringify(result)),
   };
 
   if (request.headers.get('If-None-Match') === headers.ETag) {

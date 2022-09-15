@@ -19,7 +19,7 @@ import { useEffect, useState } from 'react';
 import * as bcrypt from 'bcryptjs';
 import Layout from '~/components/Layout';
 import ApiMessage from '~/components/ApiMessage';
-import { getdb } from '~/utils.server';
+import '~/utils.server';
 import { authenticator } from '~/auth.server';
 import I18n from '@iresucito/translations';
 import ErrorDetail from '~/components/ErrorDetail';
@@ -27,37 +27,39 @@ import { commitSession, getSession } from '~/session.server';
 
 export let action: ActionFunction = async ({ request, context, params }) => {
   const body = await request.formData();
-  const db = await getdb();
-  db.read();
 
   let userIndex = -1;
   if (body.get('email') && body.get('token')) {
-    const tokenIndex = db.data.tokens.findIndex(
+    const tokenIndex = globalThis.db.data.tokens.findIndex(
       (t) => t.email === body.get('email') && t.token === body.get('token')
     );
     if (tokenIndex == -1) {
       throw new Error('Token and email invalid.');
     }
-    db.data.tokens.splice(tokenIndex, 1);
-    db.write();
-    userIndex = db.data.users.findIndex((u) => u.email == body.get('email'));
+    globalThis.db.data.tokens.splice(tokenIndex, 1);
+    globalThis.db.write();
+    userIndex = globalThis.db.data.users.findIndex(
+      (u) => u.email == body.get('email')
+    );
   } else {
     let authData = await authenticator.isAuthenticated(request);
     if (!authData) {
       throw new Error('No autenticado.');
     }
-    userIndex = db.data.users.findIndex((u) => u.email == authData?.user);
+    userIndex = globalThis.db.data.users.findIndex(
+      (u) => u.email == authData?.user
+    );
   }
 
   if (userIndex === -1) {
     throw new Error('Usuario inválido.');
   }
 
-  db.data.users[userIndex].password = bcrypt.hashSync(
+  globalThis.db.data.users[userIndex].password = bcrypt.hashSync(
     body.get('newPassword') as string,
     bcrypt.genSaltSync(10)
   );
-  db.write();
+  globalThis.db.write();
   if (body.get('token') && body.get('email')) {
     return redirect(`/account?u=${body.get('email')}&r=1`);
   }
@@ -75,9 +77,7 @@ export let loader: LoaderFunction = async ({ request }) => {
   const token = url.searchParams.get('token');
   const email = url.searchParams.get('email');
   if (token && email) {
-    const db = await getdb();
-    db.read();
-    let tokenIndex = db.data.tokens.findIndex(
+    let tokenIndex = globalThis.db.data.tokens.findIndex(
       (t) => t.email == email && t.token == token
     );
     if (tokenIndex !== -1) {
