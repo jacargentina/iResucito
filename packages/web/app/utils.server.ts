@@ -34,7 +34,7 @@ declare global {
   var watcher: chokidar.FSWatcher;
 }
 
-const dataPath = path.resolve(__dirname, '/../data');
+const dataPath = path.resolve(__dirname + '/../data');
 
 if (globalThis.db === undefined) {
   const dbPath = path.join(dataPath, 'db.json');
@@ -97,10 +97,10 @@ const getDbx = () => {
   }
 };
 
-export const download = async () => {
+export const download = async (): Promise<boolean> => {
   const dbx = getDbx();
   if (!dbx) {
-    return;
+    return false;
   }
   console.log('Descargando', dataPath);
   const response = await dbx.filesListFolder({ path: '' });
@@ -127,12 +127,13 @@ export const download = async () => {
   } catch (err: any) {
     console.log('Error', err);
   }
+  return true;
 };
 
-export const upload = async (file: string) => {
+export const upload = async (file: string): Promise<boolean> => {
   const dbx = getDbx();
   if (!dbx) {
-    return;
+    return false;
   }
   const fullpath = path.isAbsolute(file) ? file : path.join(dataPath, file);
   const baseName = path.basename(fullpath);
@@ -148,20 +149,23 @@ export const upload = async (file: string) => {
   } catch (err: any) {
     console.log('Error', err);
   }
+  return true;
 };
 
 const setup = async () => {
   if (globalThis.watcher === undefined) {
-    await download();
-    globalThis.watcher = chokidar
-      .watch(dataPath, {
-        persistent: true,
-        ignoreInitial: true,
-      })
-      .on('add', (p) => upload(p))
-      .on('change', (p) => upload(p));
+    const ok = await download();
+    if (ok === true) {
+      globalThis.watcher = chokidar
+        .watch(dataPath, {
+          persistent: true,
+          ignoreInitial: true,
+        })
+        .on('add', (p) => upload(p))
+        .on('change', (p) => upload(p));
 
-    console.log('Observando para sincronizar', dataPath);
+      console.log('Observando para sincronizar', dataPath);
+    }
   }
 };
 
