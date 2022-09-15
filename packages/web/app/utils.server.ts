@@ -34,7 +34,7 @@ declare global {
   var initialized: boolean;
 }
 
-export const dataPath = path.resolve(__dirname + '/../data');
+export const dataPath = path.resolve(__dirname + '/../public/data');
 
 if (globalThis.db === undefined) {
   const dbPath = path.join(dataPath, 'db.json');
@@ -110,16 +110,17 @@ export const download = async (): Promise<boolean> => {
   }
   try {
     await Promise.all(
-      files.entries.map((entry) => {
+      files.entries.map(async (entry) => {
         if (entry.path_lower) {
-          dbx.filesDownload({ path: entry.path_lower }).then((response_1) => {
-            const meta = response_1.result;
-            console.log(`Guardando ${meta.name}`);
-            return fs.promises.writeFile(
-              path.join(dataPath, meta.name),
-              (meta as any).fileBinary
-            );
+          const response_1 = await dbx.filesDownload({
+            path: entry.path_lower,
           });
+          const meta = response_1.result;
+          console.log(`Guardando ${meta.name}`);
+          return fs.promises.writeFile(
+            path.join(dataPath, meta.name),
+            (meta as any).fileBinary
+          );
         }
       })
     );
