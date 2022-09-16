@@ -4,8 +4,40 @@ import { Dropbox } from 'dropbox';
 import chokidar from 'chokidar';
 import { SongIndexPatch, SongsExtras, SongsProcessor } from '@iresucito/core';
 import { LowSync, JSONFileSync } from 'lowdb';
-// @ts-ignore
 import send from 'gmail-send';
+
+class WebSongsExtras implements SongsExtras {
+    readPatch(): Promise<string> {
+        throw new Error('Method not implemented.');
+    }
+    savePatch(patch: any): Promise<void> {
+        throw new Error('Method not implemented.');
+    }
+    deletePatch(): Promise<void> {
+        throw new Error('Method not implemented.');
+    }
+    patchExists(): Promise<boolean> {
+        throw new Error('Method not implemented.');
+    }
+    getPatchUri(): string {
+        throw new Error('Method not implemented.');
+    }
+    readSettings(): Promise<string> {
+        throw new Error('Method not implemented.');
+    }
+    saveSettings(ratings: any): Promise<void> {
+        throw new Error('Method not implemented.');
+    }
+    deleteSettings(): Promise<void> {
+        throw new Error('Method not implemented.');
+    }
+    settingsExists(): Promise<boolean> {
+        throw new Error('Method not implemented.');
+    }
+    getSettingsUri(): string {
+        throw new Error('Method not implemented.');
+    }
+}
 
 const NodeReader = (path: string) => {
   return fs.promises.readFile(path, 'utf8');
