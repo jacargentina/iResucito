@@ -1,54 +1,106 @@
 import * as path from 'path';
 import * as fs from 'fs';
 import { Dropbox } from 'dropbox';
-import chokidar from 'chokidar';
 import { SongIndexPatch, SongsExtras, SongsProcessor } from '@iresucito/core';
-import { LowSync, JSONFileSync } from 'lowdb';
+import { Low, Adapter } from 'lowdb';
 import send from 'gmail-send';
 
+declare global {
+  var db: any;
+  var folderSongs: SongsProcessor;
+  var folderExtras: SongsExtras;
+  var mailSender: (...args: any[]) => Promise<void>;
+}
+
+class DropboxJsonFile<T> implements Adapter<T> {
+  file: string;
+  dropbox: Dropbox;
+
+  constructor(file: string) {
+    if (!process.env.DROPBOX_PASSWORD)
+      throw new Error(
+        'DROPBOX_PASSWORD no definida. No se puede conectar con Dropbox'
+      );
+    this.dropbox = new Dropbox({
+      accessToken: process.env.DROPBOX_PASSWORD,
+    });
+    this.file = file;
+  }
+
+  async read(): Promise<T | null> {
+    try {
+      console.log('Descargando', this.file);
+      const download = await this.dropbox.filesDownload({
+        path: `/${this.file.toLowerCase()}`,
+      });
+      const meta = download.result;
+      const data = (meta as any).fileBinary.toString();
+      if (data == null) {
+        return null;
+      } else {
+        return JSON.parse(data) as T;
+      }
+    } catch (err: any) {
+      console.log('Error', err);
+    }
+    return null;
+  }
+
+  async write(data: T): Promise<void> {
+    console.log('Subiendo', this.file);
+    const response = await this.dropbox.filesUpload({
+      path: `/${this.file}`,
+      mode: { '.tag': 'overwrite' },
+      contents: JSON.stringify(data, null, 2),
+    });
+    const meta = response.result;
+    console.log(`Subidor contenido ${meta.name}`);
+  }
+}
+
 class WebSongsExtras implements SongsExtras {
-    readPatch(): Promise<string> {
-        throw new Error('Method not implemented.');
-    }
-    savePatch(patch: any): Promise<void> {
-        throw new Error('Method not implemented.');
-    }
-    deletePatch(): Promise<void> {
-        throw new Error('Method not implemented.');
-    }
-    patchExists(): Promise<boolean> {
-        throw new Error('Method not implemented.');
-    }
-    getPatchUri(): string {
-        throw new Error('Method not implemented.');
-    }
-    readSettings(): Promise<string> {
-        throw new Error('Method not implemented.');
-    }
-    saveSettings(ratings: any): Promise<void> {
-        throw new Error('Method not implemented.');
-    }
-    deleteSettings(): Promise<void> {
-        throw new Error('Method not implemented.');
-    }
-    settingsExists(): Promise<boolean> {
-        throw new Error('Method not implemented.');
-    }
-    getSettingsUri(): string {
-        throw new Error('Method not implemented.');
-    }
+  patch: Low<SongIndexPatch>;
+
+  constructor() {
+    this.patch = new Low<SongIndexPatch>(
+      new DropboxJsonFile('SongsIndexPatch.json')
+    );
+  }
+
+  async readPatch(): Promise<SongIndexPatch> {
+    await this.patch.read();
+    return this.patch.data as SongIndexPatch;
+  }
+
+  async savePatch(patch: SongIndexPatch): Promise<void> {
+    this.patch.data = patch;
+    await this.patch.write();
+  }
+
+  async deletePatch(): Promise<void> {
+    this.patch.data = null;
+    await this.patch.write();
+  }
+
+  readSettings(): Promise<string> {
+    return Promise.resolve('');
+  }
+
+  saveSettings(ratings: any): Promise<void> {
+    return Promise.resolve(ratings);
+  }
+
+  deleteSettings(): Promise<void> {
+    return Promise.resolve();
+  }
+
+  settingsExists(): Promise<boolean> {
+    return Promise.resolve(false);
+  }
 }
 
 const NodeReader = (path: string) => {
   return fs.promises.readFile(path, 'utf8');
-};
-
-const NodeWriter = (path: string, content: any, encoding: BufferEncoding) => {
-  return fs.promises.writeFile(path, content, encoding);
-};
-
-const NodeExists = (path: string) => {
-  return Promise.resolve(fs.existsSync(path));
 };
 
 const NodeLister = async (path: string) => {
@@ -58,30 +110,25 @@ const NodeLister = async (path: string) => {
   });
 };
 
-declare global {
-  var db: any;
-  var folderSongs: SongsProcessor;
-  var folderExtras: SongsExtras;
-  var mailSender: (...args: any[]) => Promise<void>;
-  var initialized: boolean;
-}
-
-export const dataPath = path.resolve(__dirname + '/../public/data');
-
-if (globalThis.db === undefined) {
-  const dbPath = path.join(dataPath, 'db.json');
-  try {
-    var db = new LowSync(new JSONFileSync(dbPath));
-    db.read();
-    // @ts-ignore
-    db.data ||= { users: [], tokens: [] };
-    db.write();
-    globalThis.db = db;
-  } catch (err: any) {
-    console.log('Error', err.message);
-    console.log(dbPath);
+const setupDb = async () => {
+  if (globalThis.db === undefined) {
+    try {
+      var db = new Low(new DropboxJsonFile('db.json'));
+      await db.read();
+      if (db.data == null) {
+        // @ts-ignore
+        db.data ||= { users: [], tokens: [] };
+        await db.write();
+      }
+      globalThis.db = db;
+      console.log('db data', db.data);
+    } catch (err: any) {
+      console.log('Error', err.message);
+    }
   }
-}
+};
+
+setupDb();
 
 if (globalThis.folderSongs === undefined) {
   globalThis.folderSongs = new SongsProcessor(
@@ -92,13 +139,7 @@ if (globalThis.folderSongs === undefined) {
 }
 
 if (globalThis.folderExtras === undefined) {
-  globalThis.folderExtras = new SongsExtras(
-    dataPath,
-    NodeExists,
-    NodeWriter,
-    NodeReader,
-    fs.promises.unlink
-  );
+  globalThis.folderExtras = new WebSongsExtras();
 }
 
 if (globalThis.mailSender === undefined) {
@@ -109,103 +150,10 @@ if (globalThis.mailSender === undefined) {
   });
 }
 
-export async function readLocalePatch(): Promise<any> {
-  const exists = await globalThis.folderExtras.patchExists();
-  if (exists) {
-    const patchJSON = await globalThis.folderExtras.readPatch();
-    return JSON.parse(patchJSON);
-  }
+export async function readLocalePatch(): Promise<SongIndexPatch> {
+  return globalThis.folderExtras.readPatch();
 }
 
-export async function saveLocalePatch(patchObj: SongIndexPatch | undefined) {
-  const json = JSON.stringify(patchObj, null, ' ');
-  await globalThis.folderExtras.savePatch(json);
+export async function saveLocalePatch(patchObj: SongIndexPatch) {
+  await globalThis.folderExtras.savePatch(patchObj);
 }
-
-const getDbx = () => {
-  if (!process.env.DROPBOX_PASSWORD) {
-    console.log(
-      'DROPBOX_PASSWORD no definida. No se puede conectar con Dropbox'
-    );
-  } else {
-    return new Dropbox({
-      accessToken: process.env.DROPBOX_PASSWORD,
-    });
-  }
-};
-
-export const download = async (): Promise<boolean> => {
-  const dbx = getDbx();
-  if (!dbx) {
-    return false;
-  }
-  console.log('Descargando', dataPath);
-  const response = await dbx.filesListFolder({ path: '' });
-  const files = response.result;
-  if (files.entries.length) {
-    console.log(`Descargando ${files.entries.length} archivos...`);
-  }
-  try {
-    await Promise.all(
-      files.entries.map(async (entry) => {
-        if (entry.path_lower) {
-          const response_1 = await dbx.filesDownload({
-            path: entry.path_lower,
-          });
-          const meta = response_1.result;
-          console.log(`Guardando ${meta.name}`);
-          return fs.promises.writeFile(
-            path.join(dataPath, meta.name),
-            (meta as any).fileBinary
-          );
-        }
-      })
-    );
-    console.log('Listo.');
-  } catch (err: any) {
-    console.log('Error', err);
-  }
-  return true;
-};
-
-export const upload = async (file: string): Promise<boolean> => {
-  const dbx = getDbx();
-  if (!dbx) {
-    return false;
-  }
-  const fullpath = path.isAbsolute(file) ? file : path.join(dataPath, file);
-  const baseName = path.basename(fullpath);
-  console.log('Subiendo', fullpath);
-  try {
-    const response = await dbx.filesUpload({
-      path: `/${baseName}`,
-      mode: { '.tag': 'overwrite' },
-      contents: fs.readFileSync(fullpath),
-    });
-    const meta = response.result;
-    console.log(`Subido ${meta.name}`);
-  } catch (err: any) {
-    console.log('Error', err);
-  }
-  return true;
-};
-
-const setup = async () => {
-  if (!globalThis.initialized) {
-    const ok = await download();
-    if (ok === true) {
-      chokidar
-        .watch(dataPath, {
-          persistent: true,
-          ignoreInitial: true,
-        })
-        .on('add', (p) => upload(p))
-        .on('change', (p) => upload(p));
-
-      console.log('Observando para sincronizar', dataPath);
-    }
-    globalThis.initialized = true;
-  }
-};
-
-setup();

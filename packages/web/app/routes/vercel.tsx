@@ -2,7 +2,6 @@ import path from 'path';
 import fs from 'fs';
 import { json, LoaderFunction, ActionFunction } from '@remix-run/node';
 import { useActionData, useLoaderData } from '@remix-run/react';
-import { dataPath } from '~/utils.server';
 import Layout from '~/components/Layout';
 
 export let action: ActionFunction = async ({ request }) => {
@@ -36,7 +35,6 @@ export let loader: LoaderFunction = async () => {
   return {
     cwd: process.cwd(),
     dirname: __dirname,
-    dataPath: dataPath,
   };
 };
 
