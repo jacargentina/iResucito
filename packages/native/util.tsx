@@ -145,13 +145,49 @@ export const NativeSongs: SongsProcessor = new SongsProcessor(
   NativeSongReader
 );
 
-export const NativeExtras: SongsExtras = new SongsExtras(
-  RNFS.DocumentDirectoryPath,
-  RNFS.exists,
-  RNFS.writeFile,
-  RNFS.readFile,
-  RNFS.unlink
-);
+class NativeSongsExtras implements SongsExtras {
+  readPatch(): Promise<string> {
+    return RNFS.readFile(this.getPatchUri());
+  }
+
+  savePatch(patch: any): Promise<void> {
+    return RNFS.writeFile(this.getPatchUri(), patch, 'utf8');
+  }
+
+  deletePatch(): Promise<void> {
+    return RNFS.unlink(this.getPatchUri());
+  }
+
+  patchExists(): Promise<boolean> {
+    return RNFS.exists(this.getPatchUri());
+  }
+
+  getPatchUri(): string {
+    return `${RNFS.DocumentDirectoryPath}/SongsIndexPatch.json`;
+  }
+
+  readSettings(): Promise<string> {
+    return RNFS.readFile(this.getSettingsUri());
+  }
+
+  saveSettings(ratings: any): Promise<void> {
+    return RNFS.writeFile(this.getSettingsUri(), ratings, 'utf8');
+  }
+
+  deleteSettings(): Promise<void> {
+    return RNFS.unlink(this.getSettingsUri());
+  }
+
+  settingsExists(): Promise<boolean> {
+    return RNFS.exists(this.getSettingsUri());
+  }
+
+  getSettingsUri(): string {
+    return `${RNFS.DocumentDirectoryPath}/SongsSettings.json`;
+  }
+}
+
+export const NativeExtras: SongsExtras = new NativeSongsExtras();
 
 export const NativeParser: SongsParser = new SongsParser(NativeStyles);
 
