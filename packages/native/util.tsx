@@ -158,10 +158,6 @@ class NativeSongsExtras implements SongsExtras {
     return RNFS.unlink(this.getPatchUri());
   }
 
-  patchExists(): Promise<boolean> {
-    return RNFS.exists(this.getPatchUri());
-  }
-
   getPatchUri(): string {
     return `${RNFS.DocumentDirectoryPath}/SongsIndexPatch.json`;
   }
