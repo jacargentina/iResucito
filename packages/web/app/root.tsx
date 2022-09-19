@@ -16,7 +16,6 @@ import { ErrorBoundaryComponent, LoaderFunction } from '@remix-run/node';
 import { authenticator } from './auth.server';
 import { AppProvider } from './app.context';
 import { getSession } from './session.server';
-import { readLocalePatch } from './utils.server';
 import { getPatchStats } from '@iresucito/core';
 import I18n from '@iresucito/translations';
 import semanticUrl from 'semantic-ui-css/semantic.min.css';
@@ -44,7 +43,7 @@ export let loader: LoaderFunction = async ({ request }) => {
   const android_patch = /def VERSION_PATCH=(.*)/.exec(androidGradle)[1];
   const android_build = /def VERSION_BUILD=(.*)/.exec(androidGradle)[1];
 
-  const patch = await readLocalePatch();
+  const patch = await globalThis.folderExtras.readPatch();
   const stats = patch ? getPatchStats(patch) : [];
 
   const authData = await authenticator.isAuthenticated(request);

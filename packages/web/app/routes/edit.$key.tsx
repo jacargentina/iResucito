@@ -7,7 +7,6 @@ import ConfirmDialog from '~/components/ConfirmDialog';
 import PatchLogDialog from '~/components/PatchLogDialog';
 import DiffViewDialog from '~/components/DiffViewDialog';
 import PdfSettingsDialog from '~/components/PdfSettingsDialog';
-import { readLocalePatch } from '~/utils.server';
 import { json, LoaderFunction } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 import { getSession } from '~/session.server';
@@ -18,7 +17,7 @@ export let loader: LoaderFunction = async ({ request, params }) => {
   if (!locale) {
     throw new Error('Locale not provided');
   }
-  const patch = await readLocalePatch();
+  const patch = await globalThis.folderExtras.readPatch();
   const { key } = params;
   const songs = globalThis.folderSongs.getSongsMeta(locale, patch);
   const song = songs.find((s) => s.key === key);

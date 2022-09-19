@@ -1,5 +1,4 @@
 import etag from 'etag';
-import { readLocalePatch } from '~/utils.server';
 import { json, LoaderFunction } from '@remix-run/node';
 import { getSession } from '~/session.server';
 import { SongChangesAndPatches } from '@iresucito/core';
@@ -17,7 +16,7 @@ export let loader: LoaderFunction = async ({ request, params }) => {
   const changes = globalThis.folderSongs.getSongHistory(key, locale);
   let pending = null;
 
-  const patch = await readLocalePatch();
+  const patch = await globalThis.folderExtras.readPatch();
   if (patch && patch[key] && patch[key][locale]) {
     const { author, date } = patch[key][locale];
     pending = { author, date };

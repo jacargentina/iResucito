@@ -5,8 +5,21 @@ import { SongIndexPatch, SongsExtras, SongsProcessor } from '@iresucito/core';
 import { Low, Adapter } from 'lowdb';
 import send from 'gmail-send';
 
+type DbType = {
+  users: [
+    {
+      email: string;
+      createdAt: number;
+      loggedInAt: number | undefined;
+      isVerified: boolean;
+      password: string;
+    }
+  ];
+  tokens: [{ email: string; token: string }];
+};
+
 declare global {
-  var db: any;
+  var db: Low<DbType>;
   var folderSongs: SongsProcessor;
   var folderExtras: SongsExtras;
   var mailSender: (...args: any[]) => Promise<void>;
@@ -110,26 +123,6 @@ const NodeLister = async (path: string) => {
   });
 };
 
-const setupDb = async () => {
-  if (globalThis.db === undefined) {
-    try {
-      var db = new Low(new DropboxJsonFile('db.json'));
-      await db.read();
-      if (db.data == null) {
-        // @ts-ignore
-        db.data ||= { users: [], tokens: [] };
-        await db.write();
-      }
-      globalThis.db = db;
-      console.log('db data', db.data);
-    } catch (err: any) {
-      console.log('Error', err.message);
-    }
-  }
-};
-
-setupDb();
-
 if (globalThis.folderSongs === undefined) {
   globalThis.folderSongs = new SongsProcessor(
     path.resolve(__dirname + '/../public/songs'),
@@ -150,10 +143,22 @@ if (globalThis.mailSender === undefined) {
   });
 }
 
-export async function readLocalePatch(): Promise<SongIndexPatch> {
-  return globalThis.folderExtras.readPatch();
-}
+const setupDb = async () => {
+  if (globalThis.db === undefined) {
+    try {
+      var db = new Low<DbType>(new DropboxJsonFile('db.json'));
+      await db.read();
+      if (db.data == null) {
+        // @ts-ignore
+        db.data ||= { users: [], tokens: [] };
+        await db.write();
+      }
+      globalThis.db = db;
+      console.log('db data', db.data);
+    } catch (err: any) {
+      console.log('Error', err.message);
+    }
+  }
+};
 
-export async function saveLocalePatch(patchObj: SongIndexPatch) {
-  await globalThis.folderExtras.savePatch(patchObj);
-}
+setupDb();

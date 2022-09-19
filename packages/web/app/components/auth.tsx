@@ -7,7 +7,7 @@ const auth = {
    * Remove an item from the used storage
    * @param  {String} key [description]
    */
-  clear(key) {
+  clear(key: string) {
     if (localStorage && localStorage.getItem(key)) {
       return localStorage.removeItem(key);
     }
@@ -45,13 +45,13 @@ const auth = {
    * @param  {String} key Item to get from the storage
    * @return {String|Object}     Data from the storage
    */
-  get(key) {
+  get(key: string) {
     if (localStorage && localStorage.getItem(key)) {
-      return JSON.parse(localStorage.getItem(key)) || null;
+      return JSON.parse(localStorage.getItem(key) as string) || null;
     }
 
     if (sessionStorage && sessionStorage.getItem(key)) {
-      return JSON.parse(sessionStorage.getItem(key)) || null;
+      return JSON.parse(sessionStorage.getItem(key) as string) || null;
     }
 
     return null;
@@ -71,7 +71,7 @@ const auth = {
    * @param {String}  key
    * @param {Boolean} isLocalStorage  Defines if we need to store in localStorage or sessionStorage
    */
-  set(value, key, isLocalStorage) {
+  set(value: string | object, key: string, isLocalStorage: boolean) {
     if (!value || value === null) {
       return null;
     }
@@ -95,7 +95,7 @@ const auth = {
     return auth.set(value, userInfo, isLocalStorage);
   },
 
-  isTokenExpired(token) {
+  isTokenExpired(token: string) {
     try {
       const decoded = decode(token);
       if (decoded.exp < Date.now() / 1000) {

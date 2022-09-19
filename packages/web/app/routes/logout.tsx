@@ -1,4 +1,4 @@
-import { ActionFunction, redirect } from 'remix';
+import { ActionFunction, redirect } from '@remix-run/node';
 import { authenticator } from '~/auth.server';
 import { commitSession, getSession } from '~/session.server';
 

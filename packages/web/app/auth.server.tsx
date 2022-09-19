@@ -11,9 +11,11 @@ authenticator.use(
     let email = form.get('email');
     let password = form.get('password') as string;
 
+    // @ts-ignore
     const userIndex = globalThis.db.data.users.findIndex(
       (u) => u.email === email
     );
+    // @ts-ignore
     const user = globalThis.db.data.users[userIndex];
     if (user) {
       if (!user.isVerified) {
@@ -22,6 +24,7 @@ authenticator.use(
       const result = bcrypt.compareSync(password, user.password);
       if (result) {
         // Registrar hora de inicio de sesion
+        // @ts-ignore
         globalThis.db.data.users[userIndex].loggedInAt = Date.now();
         globalThis.db.write();
         return {

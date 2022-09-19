@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import I18n from '@iresucito/translations';
 import { useNavigate } from '@remix-run/react';
-import { getSongFileFromString, Song, SongChangesAndPatches, SongFile } from '@iresucito/core';
+import {
+  getSongFileFromString,
+  Song,
+  SongChangesAndPatches,
+  SongFile,
+} from '@iresucito/core';
 import { useApp } from '~/app.context';
 
 export type EditContextType = {
@@ -11,7 +16,7 @@ export type EditContextType = {
   nextKey: any;
   totalSongs: any;
   songFile: any;
-  patchLogs: SongChangesAndPatches;
+  patchLogs: SongChangesAndPatches | undefined;
   diffView: any;
   setConfirmData: any;
   confirmClose: any;
@@ -30,9 +35,9 @@ export type EditContextType = {
   activeDialog: any;
 };
 
-export const EditContext: any = React.createContext<
-  EditContextType | undefined
->(undefined);
+export const EditContext = React.createContext<EditContextType | undefined>(
+  undefined
+);
 
 const EditContextWrapper = (props: any) => {
   const navigate = useNavigate();
@@ -47,10 +52,10 @@ const EditContextWrapper = (props: any) => {
   } = app;
 
   const [editSong, setEditSong] = useState<Song>(song);
-  const [text, setText] = useState('');
-  const [name, setName] = useState();
-  const [stage, setStage] = useState();
-  const [hasChanges, setHasChanges] = useState(false);
+  const [text, setText] = useState<string>('');
+  const [name, setName] = useState<string>();
+  const [stage, setStage] = useState<string>();
+  const [hasChanges, setHasChanges] = useState<boolean>(false);
   const [patchLogs, setPatchLogs] = useState<
     SongChangesAndPatches | undefined
   >();
@@ -127,7 +132,7 @@ const EditContextWrapper = (props: any) => {
 
   useEffect(() => {
     if (activeDialog === 'patchLog') {
-      setPatchLogs();
+      setPatchLogs(undefined);
       setApiResult();
       setApiLoading(true);
       fetch(`/patches/${editSong.key}`)
