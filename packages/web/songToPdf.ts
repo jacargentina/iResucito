@@ -5,13 +5,14 @@ import {
   SongsParser,
   SongToPdf,
 } from '@iresucito/core';
-import { folderSongs } from '~/utils.server';
-import { generatePDF } from './pdf';
+import '~/utils.server';
+import { generatePDF } from './app/pdf';
 import open from 'open';
+import { osLocale } from 'os-locale';
 
-var program = require('commander');
+const main = async () => {
+  var program = require('commander');
 
-import('os-locale').then((oslocale) => {
   program
     .version('1.0')
     .description('Generate PDF for a given song')
@@ -33,7 +34,7 @@ import('os-locale').then((oslocale) => {
     const options = program.opts();
     var locale = options.locale;
     if (!locale) {
-      locale = oslocale.osLocaleSync();
+      locale = await osLocale();
       console.log('Locale: detected', locale);
     }
     I18n.locale = locale;
@@ -42,14 +43,14 @@ import('os-locale').then((oslocale) => {
     if (locale !== '') {
       var parser = new SongsParser(PdfStyles);
       if (key) {
-        var song = folderSongs.getSingleSongMeta(
+        var song = globalThis.folderSongs.getSingleSongMeta(
           key,
           locale,
           undefined,
           undefined
         );
         if (song.files[I18n.locale]) {
-          folderSongs
+          globalThis.folderSongs
             .loadSingleSong(locale, song)
             .then(() => {
               console.log('Song: ', song.titulo);
@@ -77,9 +78,13 @@ import('os-locale').then((oslocale) => {
           console.log('Song not found for given locale');
         }
       } else {
-        var songs = folderSongs.getSongsMeta(locale, undefined, undefined);
+        var songs = globalThis.folderSongs.getSongsMeta(
+          locale,
+          undefined,
+          undefined
+        );
         console.log(`No key Song. Generating ${songs.length} songs`);
-        folderSongs.loadSongs(locale, songs).then(() => {
+        globalThis.folderSongs.loadSongs(locale, songs).then(() => {
           var items: Array<SongToPdf> = [];
           songs.map((song) => {
             if (song.files[I18n.locale]) {
@@ -110,4 +115,6 @@ import('os-locale').then((oslocale) => {
       }
     }
   }
-});
+};
+
+main();

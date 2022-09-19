@@ -2,7 +2,6 @@ import etag from 'etag';
 import Layout from '~/components/Layout';
 import SongList from '~/components/SongList';
 import PdfSettingsDialog from '~/components/PdfSettingsDialog';
-import { readLocalePatch } from '~/utils.server';
 import { json, LoaderFunction } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 import { getSession } from '~/session.server';
@@ -13,7 +12,7 @@ import I18n from '@iresucito/translations';
 export let loader: LoaderFunction = async ({ request }) => {
   const session = await getSession(request.headers.get('Cookie'));
   try {
-    const patch = await readLocalePatch();
+    const patch = await globalThis.folderExtras.readPatch();
     const locale = session.get('locale') as string;
     if (!locale) {
       throw new Error('Locale not provided');

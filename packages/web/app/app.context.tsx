@@ -63,18 +63,18 @@ export const AppProvider = (props: {
     }
   }, [fetcher.data]);
 
-  const handleApiError = (err) => {
+  const handleApiError = (err: any) => {
     setApiLoading(false);
     if (err.response && err.response.data) {
       setApiResult(err.response.data);
     } else if (err.request) {
-      setApiResult({ error: err.request });
+      setApiResult(err.request);
     } else if (err.message) {
-      setApiResult({ error: err.message });
+      setApiResult(err.message);
     } else if (err.error) {
-      setApiResult({ error: err.error });
+      setApiResult(err.error);
     } else {
-      setApiResult({ error: err });
+      setApiResult(err);
     }
   };
 

@@ -1,6 +1,5 @@
 import * as Diff from 'diff';
 import etag from 'etag';
-import { readLocalePatch } from '~/utils.server';
 import { getPropertyLocale } from '@iresucito/core';
 import { SongsIndex } from '@iresucito/core';
 import { json, LoaderFunction } from '@remix-run/node';
@@ -19,7 +18,7 @@ export let loader: LoaderFunction = async ({ request, params }) => {
 
   let result: { diff: Diff.Change[] | null } = { diff: null };
 
-  const patch = await readLocalePatch();
+  const patch = await globalThis.folderExtras.readPatch();
   if (patch && patch[key] && patch[key][locale]) {
     if (SongsIndex.hasOwnProperty(key)) {
       const loc = getPropertyLocale(SongsIndex[key].files, locale);
@@ -31,7 +30,7 @@ export let loader: LoaderFunction = async ({ request, params }) => {
           filename
         );
       }
-      result.diff = Diff.diffLines(fullText, patch[key][locale].lines);
+      result.diff = Diff.diffLines(fullText, patch[key][locale].lines as string);
     }
   }
 

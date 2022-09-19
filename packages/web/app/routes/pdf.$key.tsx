@@ -6,7 +6,6 @@ import {
 } from '@iresucito/core';
 import I18n from '@iresucito/translations';
 import { generatePDF } from '~/pdf';
-import { readLocalePatch } from '~/utils.server';
 import { ActionFunction, json } from '@remix-run/node';
 import { getSession } from '~/session.server';
 
@@ -28,7 +27,7 @@ export let action: ActionFunction = async ({ request, params }) => {
     const parser = new SongsParser(PdfStyles);
     const items = [];
     if (key == 'full') {
-      const patch = await readLocalePatch();
+      const patch = await globalThis.folderExtras.readPatch();
       const songs = globalThis.folderSongs.getSongsMeta(locale, patch);
       await globalThis.folderSongs.loadSongs(locale, songs, patch);
       songs.forEach((song) => {
@@ -50,7 +49,7 @@ export let action: ActionFunction = async ({ request, params }) => {
           { status: 500 }
         );
       }
-      const patch = await readLocalePatch();
+      const patch = await globalThis.folderExtras.readPatch();
       const song = globalThis.folderSongs.getSingleSongMeta(key, locale, patch);
       await globalThis.folderSongs.loadSingleSong(locale, song, patch);
       const render = parser.getForRender(text, locale);

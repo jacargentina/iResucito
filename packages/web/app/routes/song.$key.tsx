@@ -1,4 +1,3 @@
-import { readLocalePatch, saveLocalePatch } from '~/utils.server';
 import '~/utils.server';
 import { authenticator } from '~/auth.server';
 import { ActionFunction, json, LoaderFunction } from '@remix-run/node';
@@ -8,7 +7,7 @@ import { Song, SongPatch, SongPatchData } from '@iresucito/core';
 const merge = require('deepmerge');
 
 const del = async (key: string, locale: string) => {
-  let patchObj = await readLocalePatch();
+  let patchObj = await globalThis.folderExtras.readPatch();
   if (!patchObj) {
     patchObj = {};
   }
@@ -21,7 +20,7 @@ const del = async (key: string, locale: string) => {
     delete patchObj[key];
   }
 
-  await saveLocalePatch(patchObj);
+  await globalThis.folderExtras.savePatch(patchObj);
 
   return { ok: true };
 };
@@ -32,7 +31,7 @@ const post = async (
   session: AuthData,
   request: Request
 ) => {
-  let patchObj = await readLocalePatch();
+  let patchObj = await globalThis.folderExtras.readPatch();
 
   const body = await request.json();
 
@@ -60,7 +59,7 @@ const post = async (
   const updatedPatch = merge(patchObj[key], localePatch);
   patchObj[key] = updatedPatch;
 
-  await saveLocalePatch(patchObj);
+  await globalThis.folderExtras.savePatch(patchObj);
 
   // Recargar song y devolver
   const songs = globalThis.folderSongs.getSongsMeta(locale, patchObj);
@@ -71,7 +70,7 @@ const post = async (
 };
 
 const addNewSong = async (locale: string, session: AuthData) => {
-  let patchObj = await readLocalePatch();
+  let patchObj = await globalThis.folderExtras.readPatch();
   if (!patchObj) {
     patchObj = {};
   }
@@ -98,7 +97,7 @@ const addNewSong = async (locale: string, session: AuthData) => {
 
   const newKey = String(Number(songMaxKey.key) + 1);
   patchObj[newKey] = song;
-  await saveLocalePatch(patchObj);
+  await globalThis.folderExtras.savePatch(patchObj);
 
   // Cargar y devolver
   const newSongs = globalThis.folderSongs.getSongsMeta(locale, patchObj);
