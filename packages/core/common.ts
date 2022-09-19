@@ -69,7 +69,7 @@ export type SongChangesAndPatches = {
   changes: Array<SongChange>;
   pending: {
     author: string;
-    date: string;
+    date: number;
   } | null;
 };
 
@@ -1243,8 +1243,19 @@ export const ListPDFGenerator = async (
   return '';
 };
 
-export const getPatchStats = (patch: SongIndexPatch): any => {
-  const stats = [];
+export type AuthorStats = {
+  author: string;
+  count: number;
+};
+
+export type PatchStats = {
+  locale: string;
+  count: number;
+  items: Array<AuthorStats>;
+};
+
+export const getPatchStats = (patch: SongIndexPatch): Array<PatchStats> => {
+  const stats: Array<PatchStats> = [];
   const allItems = [];
   Object.keys(patch).forEach((key) => {
     const songPatch = patch[key];
