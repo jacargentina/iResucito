@@ -1,10 +1,12 @@
 {
   "private": true,
   "workspaces": {
-    "packages": ["packages/*"],
+    "packages": [
+      "packages/*"
+    ],
     "nohoist": [
-      "**/react", 
-      "**/react-dom",   
+      "**/react",
+      "**/react-dom",
       "**/react-native",
       "**/react-native/**",
       "**/react-native-**",
@@ -28,6 +30,6 @@
     "web": "yarn build && cd packages/web && yarn dev"
   },
   "devDependencies": {
-    "turbo": "^1.4.6"
+    "turbo": "^1.5.1"
   }
 }
