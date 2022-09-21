@@ -21,6 +21,8 @@
       "@iresucito/**/**",
       "@remix-run/**",
       "@remix-run/**/**",
+      "@vercel/remix",
+      "@vercel/remix/**",
       "remix",
       "remix/**",
       "remix-auth",
