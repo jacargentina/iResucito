@@ -154,7 +154,6 @@ const setupDb = async () => {
         await db.write();
       }
       globalThis.db = db;
-      console.log('db data', db.data);
     } catch (err: any) {
       console.log('Error', err.message);
     }
