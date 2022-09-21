@@ -51,7 +51,7 @@ const PdfSettingsDialog = () => {
           <JSONInput
             id="settingsEditor"
             placeholder={initialOptions}
-            onChange={(e) => {
+            onChange={(e: any) => {
               if (!e.error) setEditing(e.jsObject);
             }}
             locale={locale}

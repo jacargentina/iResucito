@@ -10,7 +10,7 @@ type DbType = {
     {
       email: string;
       createdAt: number;
-      loggedInAt: number | undefined;
+      loggedInAt?: number;
       isVerified: boolean;
       password: string;
     }

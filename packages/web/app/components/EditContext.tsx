@@ -7,31 +7,32 @@ import {
   SongChangesAndPatches,
   SongFile,
 } from '@iresucito/core';
+import * as Diff from 'diff';
 import { useApp } from '~/app.context';
 
 export type EditContextType = {
-  editSong: any;
-  index: any;
-  previousKey: any;
-  nextKey: any;
-  totalSongs: any;
+  editSong: Song;
+  index: number;
+  previousKey: string;
+  nextKey: string;
+  totalSongs: number;
   songFile: any;
   patchLogs: SongChangesAndPatches | undefined;
-  diffView: any;
+  diffView: Diff.Change[] | undefined;
   setConfirmData: any;
   confirmClose: any;
-  hasChanges: any;
-  setHasChanges: any;
+  hasChanges: boolean;
+  setHasChanges: React.Dispatch<React.SetStateAction<boolean>>;
   applyChanges: any;
   goPrevious: any;
   goNext: any;
   confirmRemovePatch: any;
-  text: any;
-  setText: any;
-  name: any;
-  setName: any;
-  stage: any;
-  setStage: any;
+  text: string;
+  setText: React.Dispatch<React.SetStateAction<string>>;
+  name: string | undefined;
+  setName: React.Dispatch<React.SetStateAction<string | undefined>>;
+  stage: string | undefined;
+  setStage: React.Dispatch<React.SetStateAction<string | undefined>>;
   activeDialog: any;
 };
 
@@ -59,7 +60,7 @@ const EditContextWrapper = (props: any) => {
   const [patchLogs, setPatchLogs] = useState<
     SongChangesAndPatches | undefined
   >();
-  const [diffView, setDiffView] = useState<any>();
+  const [diffView, setDiffView] = useState<Diff.Change[] | undefined>();
   const [songFile, setSongFile] = useState<SongFile>();
 
   const goPrevious = () => {
@@ -151,7 +152,7 @@ const EditContextWrapper = (props: any) => {
 
   useEffect(() => {
     if (activeDialog === 'diffView') {
-      setDiffView();
+      setDiffView(undefined);
       setApiResult();
       setApiLoading(true);
       fetch(`/diff/${editSong.key}`)
@@ -160,7 +161,7 @@ const EditContextWrapper = (props: any) => {
         })
         .then((data) => {
           setApiLoading(false);
-          setDiffView(data.diff);
+          setDiffView(data.diff as Diff.Change[]);
         })
         .catch((err) => {
           handleApiError(err);

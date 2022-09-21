@@ -15,22 +15,22 @@ import SongViewPdf from '~/components/SongViewPdf';
 import ApiMessage from '~/components/ApiMessage';
 import SongListResume from '~/components/SongListResume';
 import { useDebounce } from 'use-debounce';
-import { colors, getPropertyLocale } from '@iresucito/core';
+import { colors, getPropertyLocale, Song } from '@iresucito/core';
 import I18n from '@iresucito/translations';
 import { useApp } from '~/app.context';
 import { useNavigate } from '@remix-run/react';
 
-const SongList = (props: any) => {
+const SongList = (props: { songs: Array<Song> }) => {
   const { songs } = props;
   const app = useApp();
   const { setApiResult, handleApiError } = app;
   const navigate = useNavigate();
-  const [pdfUrl, setPdfUrl] = useState();
+  const [pdfUrl, setPdfUrl] = useState<string | undefined>();
   const [loading, setLoading] = useState(false);
 
   const closePdf = () => {
     setLoading(false);
-    setPdfUrl();
+    setPdfUrl(undefined);
   };
 
   const previewPdf = () => {
@@ -40,7 +40,7 @@ const SongList = (props: any) => {
       formData.append('options', savedSettings);
     }
     setLoading(true);
-    setPdfUrl();
+    setPdfUrl(undefined);
     return fetch(`/pdf/full`, { method: 'POST', body: formData })
       .then((response) => {
         return response.blob();
@@ -70,8 +70,8 @@ const SongList = (props: any) => {
     };
   });
 
-  const [onlyTranslated, setOnlyTranslated] = useState();
-  const [filtered, setFiltered] = useState();
+  const [onlyTranslated, setOnlyTranslated] = useState<boolean>(false);
+  const [filtered, setFiltered] = useState<Array<Song>>();
   const [filtering, setFiltering] = useState(false);
   const searchTermDefaultValue = useMemo(() => {
     if (typeof localStorage !== 'undefined') {
@@ -231,7 +231,7 @@ const SongList = (props: any) => {
               fluid
               icon="search"
               placeholder={I18n.t('ui.search placeholder')}
-              onChange={(e, data) => {
+              onChange={(_, data) => {
                 setSearchTerm(data.value);
                 localStorage.setItem('searchTerm', JSON.stringify(data.value));
               }}

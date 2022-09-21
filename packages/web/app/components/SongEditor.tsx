@@ -19,13 +19,18 @@ import I18n from '@iresucito/translations';
 import { useApp } from '~/app.context';
 
 const SongEditor = () => {
-  const txtRef = useRef(null);
-  const [pdfUrl, setPdfUrl] = useState();
+  const txtRef = useRef<any>(null);
+  const [pdfUrl, setPdfUrl] = useState<string | undefined>();
   const [loading, setLoading] = useState(false);
   const app = useApp();
   const { setActiveDialog, handleApiError } = app;
 
   const edit = useContext(EditContext);
+
+  if (!edit) {
+    return null;
+  }
+
   const {
     editSong,
     index,
@@ -65,15 +70,15 @@ const SongEditor = () => {
         const errText = await new Response(err.response.data).text();
         handleApiError(errText);
         setLoading(false);
-        setPdfUrl();
+        setPdfUrl(undefined);
       });
   };
 
   const [debouncedText, setDebouncedText] = useState(text);
   const debounced = useDebouncedCallback((t) => setDebouncedText(t), 800);
-  const [activeTab, setActiveTab] = useState(0);
-  const [linepos, setLinepos] = useState();
-  const [colpos, setColpos] = useState();
+  const [activeTab, setActiveTab] = useState<string | number | undefined>(0);
+  const [linepos, setLinepos] = useState<number>();
+  const [colpos, setColpos] = useState<number>();
 
   useEffect(() => {
     setDebouncedText(editSong.fullText);
@@ -302,7 +307,7 @@ const SongEditor = () => {
                   whiteSpace: 'pre',
                 }}
                 onKeyUp={txtPositionEvent}
-                onKeyDown={(e) => {
+                onKeyDown={(e: React.KeyboardEvent) => {
                   if (e.ctrlKey) {
                     if (e.key === '[') {
                       e.preventDefault();
@@ -322,7 +327,10 @@ const SongEditor = () => {
                 value={text}
                 onChange={(e, data) => {
                   setHasChanges(true);
-                  const newText = data.value.replace(/\u00A0/g, ' ');
+                  const newText = (data.value as string).replace(
+                    /\u00A0/g,
+                    ' '
+                  );
                   setText(newText);
                   debounced(newText);
                 }}
@@ -365,19 +373,18 @@ const SongEditor = () => {
           }}>
           <Tab
             activeIndex={activeTab}
-            onTabChange={(e, data) => {
+            onTabChange={(_, data) => {
               setActiveTab(data.activeIndex);
               if (data.activeIndex === 1) {
                 previewPdf();
               } else {
-                setPdfUrl();
+                setPdfUrl(undefined);
               }
             }}
             menu={{ size: 'mini', pointing: true }}
             panes={[
               {
                 menuItem: 'HTML',
-                key: 'html',
                 render: () => {
                   return (
                     <Tab.Pane
@@ -396,7 +403,6 @@ const SongEditor = () => {
               },
               {
                 menuItem: I18n.t('share_action.view pdf'),
-                key: 'pdf',
                 render: () => {
                   return (
                     <Tab.Pane

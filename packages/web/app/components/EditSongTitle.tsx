@@ -14,7 +14,10 @@ const EditSongTitle = () => {
     return null;
   }
 
-  const st = stage || editSong.stage || editSong.stages[I18n.locale];
+  const st =
+    stage ||
+    editSong.stage ||
+    (editSong.stages && editSong.stages[I18n.locale]);
   return (
     <>
       <Menu.Item header>{songFile && songFile.titulo.toUpperCase()}</Menu.Item>

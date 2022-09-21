@@ -16,7 +16,8 @@
     "target": "ES2019",
     "isolatedModules": true,
     "moduleResolution": "node",
-    "noEmit": true
+    "noEmit": true,
+    "skipLibCheck": true
   },
   "references": [
     {

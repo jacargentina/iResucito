@@ -2,7 +2,7 @@ import { useContext, useState, useEffect } from 'react';
 import { Button, Input, Message, Modal, Dropdown } from 'semantic-ui-react';
 import { EditContext } from './EditContext';
 import SongListItem from './SongListItem';
-import { wayStages, getSongFileFromString } from '@iresucito/core';
+import { wayStages, getSongFileFromString, Song } from '@iresucito/core';
 import I18n from '@iresucito/translations';
 import { useApp } from '~/app.context';
 
@@ -13,8 +13,8 @@ const SongChangeMetadataDialog = () => {
   const edit = useContext(EditContext);
 
   const [actionEnabled, setActionEnabled] = useState(false);
-  const [tipMessages, setTipMessages] = useState([]);
-  const [changeSong, setChangeSong] = useState();
+  const [tipMessages, setTipMessages] = useState<string[]>([]);
+  const [changeSong, setChangeSong] = useState<Song>();
 
   useEffect(() => {
     if (edit && edit.name !== undefined) {
@@ -43,7 +43,7 @@ const SongChangeMetadataDialog = () => {
       const changed = { ...edit.editSong, ...parsed };
       setChangeSong(changed);
     }
-  }, [edit.name, edit]);
+  }, [edit]);
 
   if (!edit) {
     return null;
@@ -65,7 +65,7 @@ const SongChangeMetadataDialog = () => {
           fluid
           autoFocus
           value={edit.name}
-          onChange={(e, { value }) => {
+          onChange={(_, { value }) => {
             edit.setName(value);
           }}
         />
@@ -76,7 +76,7 @@ const SongChangeMetadataDialog = () => {
         <h5>{I18n.t('search_title.stage')}</h5>
         <Dropdown
           style={{ marginLeft: 10 }}
-          onChange={(e, { value }) => edit.setStage(value)}
+          onChange={(_, { value }) => edit.setStage(value as string)}
           selection
           value={edit.stage}
           options={wayStages.map((stage) => {

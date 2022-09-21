@@ -169,6 +169,7 @@ export type SongFile = {
 // fullText: el texto completo del canto
 // lines: array de las lineas del canto
 export type Song = {
+  [property: string]: any;
   key: string;
   version: number;
   notTranslated: boolean;
