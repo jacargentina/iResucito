@@ -24,7 +24,9 @@ export async function generatePDF(
   if (opts.useTimesRomanFont === false) {
     font = Buffer.from(
       fs.readFileSync(
-        path.resolve('./public/build/_assets/Franklin Gothic Medium.ttf'),
+        path.resolve(
+          __dirname + '/../public/build/_assets/Franklin Gothic Medium.ttf'
+        ),
         'base64'
       ),
       'base64'
