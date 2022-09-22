@@ -10,6 +10,10 @@ import {
   getLocalizedListItem,
   getLocalizedListType,
   defaultExportToPdfOptions,
+  SongSettingsFile,
+  Song,
+  SongFile,
+  SearchItem,
 } from '@iresucito/core';
 import I18n from '@iresucito/translations';
 import badges from './badges';
@@ -35,11 +39,11 @@ type UseSongsMeta = {
 };
 
 const useSongsMeta = (locale: string): UseSongsMeta => {
-  const [settingsFileExists, setSettingsFileExists] = useState();
-  const [songs, setSongs] = useState();
-  const [localeSongs, setLocaleSongs] = useState([]);
+  const [settingsFileExists, setSettingsFileExists] = useState<boolean>(false);
+  const [songs, setSongs] = useState<Array<Song> | undefined>([]);
+  const [localeSongs, setLocaleSongs] = useState<Array<SongFile>>([]);
 
-  const initializeSingleSong = (song) => {
+  const initializeSingleSong = (song: Song) => {
     if (!songs) {
       return;
     }
@@ -79,7 +83,7 @@ const useSongsMeta = (locale: string): UseSongsMeta => {
     SongSettingsFile | undefined
   > => {
     if (settingsFileExists === false) {
-      return Promise.resolve();
+      return Promise.resolve(undefined);
     }
     const settingsJSON = await NativeExtras.readSettings();
     try {
@@ -186,7 +190,10 @@ const useLists = (songs: any): UseLists => {
   const [initialized, setInitialized] = useState(false);
   const [lists, initLists] = usePersist('lists', 'object', {});
 
-  const addList = (listName, type) => {
+  const addList = (
+    listName: string,
+    type: 'libre' | 'palabra' | 'eucaristia'
+  ) => {
     let schema = { type: type, version: 1 };
     switch (type) {
       case 'libre':
@@ -236,25 +243,25 @@ const useLists = (songs: any): UseLists => {
     initLists(changedLists);
   };
 
-  const removeList = (listName) => {
+  const removeList = (listName: string) => {
     const changedLists = Object.assign({}, lists);
     delete changedLists[listName];
     initLists(changedLists);
   };
 
-  const renameList = (listName, newName) => {
+  const renameList = (listName: string, newName: string) => {
     const list = lists[listName];
     delete lists[listName];
     const changedLists = Object.assign({}, lists, { [newName]: list });
     initLists(changedLists);
   };
 
-  const getList = (listName, listKey) => {
+  const getList = (listName: string, listKey: string) => {
     const targetList = lists[listName];
     return targetList[listKey];
   };
 
-  const setList = (listName, listKey, listValue) => {
+  const setList = (listName: string, listKey: string, listValue: any) => {
     const targetList = lists[listName];
     var schema;
     if (listValue !== undefined) {
@@ -530,7 +537,7 @@ type UseSearch = {
 
 const useSearch = (localeValue: string): UseSearch => {
   const [initialized, setInitialized] = useState(false);
-  const [searchItems, setSearchItems] = useState();
+  const [searchItems, setSearchItems] = useState<Array<SearchItem>>();
 
   useEffect(() => {
     // Construir menu de búsqueda
@@ -853,7 +860,22 @@ const useCommunity = (): UseCommunity => {
   };
 };
 
-export const DataContext: any = React.createContext();
+export type DataContextType = {
+  songsMeta: any;
+  search: any;
+  lists: any;
+  community: any;
+  sharePDF: any;
+  loading: any;
+  locale: any;
+  localeReal: any;
+  keepAwake: any;
+  zoomLevel: any;
+};
+
+export const DataContext = React.createContext<DataContextType | undefined>(
+  undefined
+);
 
 const DataContextWrapper = (props: any): any => {
   // settings

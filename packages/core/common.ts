@@ -266,16 +266,19 @@ export type SongRef = Song | SongFile;
 export type SearchParams = {
   filter: any;
   title_key?: string;
+  sort?: any;
 };
 
 export type SearchItem = {
   title_key: string;
+  note_key?: string;
   divider?: boolean;
   note?: string;
   route?: string;
   params?: SearchParams;
   badge?: any;
   chooser?: string;
+  chooser_listKey?: string[];
 };
 
 export type ListType = 'eucaristia' | 'palabra' | 'libre';

@@ -9,6 +9,7 @@ import {
   SongsProcessor,
   SongStyles,
   Song,
+  SongIndexPatch,
 } from '@iresucito/core';
 
 export function ordenAlfabetico(a: any, b: any): number {
@@ -146,12 +147,14 @@ export const NativeSongs: SongsProcessor = new SongsProcessor(
 );
 
 class NativeSongsExtras implements SongsExtras {
-  readPatch(): Promise<string> {
-    return RNFS.readFile(this.getPatchUri());
+  async readPatch(): Promise<SongIndexPatch> {
+    const json = await RNFS.readFile(this.getPatchUri());
+    return JSON.parse(json) as SongIndexPatch;
   }
 
-  savePatch(patch: any): Promise<void> {
-    return RNFS.writeFile(this.getPatchUri(), patch, 'utf8');
+  savePatch(patch: SongIndexPatch): Promise<void> {
+    const json = JSON.stringify(patch);
+    return RNFS.writeFile(this.getPatchUri(), json, 'utf8');
   }
 
   deletePatch(): Promise<void> {
