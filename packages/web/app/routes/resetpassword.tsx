@@ -44,7 +44,7 @@ export let action: ActionFunction = async ({ request }) => {
   globalThis.db.write();
   const base =
     process.env.NODE_ENV == 'production'
-      ? 'http://iresucito.herokuapp.com'
+      ? 'http://iresucito.vercel.app'
       : 'http://localhost:3000';
   try {
     console.log('Sending email...');

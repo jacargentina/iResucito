@@ -65,7 +65,7 @@ const SettingsScreen = () => {
   };
 
   const goEditor = () => {
-    Linking.openURL('https://iresucito.herokuapp.com').catch((err) => {
+    Linking.openURL('https://iresucito.vercel.app').catch((err) => {
       Alert.alert('Error', err.message);
     });
   };
