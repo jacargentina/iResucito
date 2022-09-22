@@ -3892,6 +3892,23 @@
     ts-node "8.9.1"
     typescript "4.3.4"
 
+"@vercel/node@^2.4.4":
+  version "2.5.17"
+  resolved "https://registry.yarnpkg.com/@vercel/node/-/node-2.5.17.tgz#54f15cd9424f2896c7898436c26a0d5cd2ecd440"
+  integrity sha512-EVg2PyBZrAbEL60GbRry8TnCvrCVC02fD1MLdU95kprbeOuI5OilWF6YIFhZyh262Y54semWyuInNe/sfRI73Q==
+  dependencies:
+    "@edge-runtime/vm" "1.1.0-beta.32"
+    "@types/node" "*"
+    "@vercel/build-utils" "5.4.4"
+    "@vercel/node-bridge" "3.0.0"
+    "@vercel/static-config" "2.0.3"
+    edge-runtime "1.1.0-beta.32"
+    esbuild "0.14.47"
+    exit-hook "2.2.1"
+    node-fetch "2.6.7"
+    ts-node "8.9.1"
+    typescript "4.3.4"
+
 "@vercel/python@3.1.16":
   version "3.1.16"
   resolved "https://registry.yarnpkg.com/@vercel/python/-/python-3.1.16.tgz#ea78e55cd56194a28f6b061093c5e3f982c35332"
@@ -3906,7 +3923,7 @@
     "@vercel/routing-utils" "2.0.2"
     semver "6.1.1"
 
-"@vercel/remix@1.0.26":
+"@vercel/remix@1.0.26", "@vercel/remix@^1.0.26":
   version "1.0.26"
   resolved "https://registry.yarnpkg.com/@vercel/remix/-/remix-1.0.26.tgz#d2f6ea608e64290fd2fcc8c05f5ecffee069b7a4"
   integrity sha512-xqrFLU0TF11vySio2rP6GyPoroDNOothTOZjf46UMKi0SlrnJ1kRQQODNn1Ae163hWzk5QHJxLGkT7Z2Yg3fjA==
