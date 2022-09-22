@@ -10,7 +10,7 @@ import {
 } from 'react-native-popup-menu';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import I18n from '@iresucito/translations';
-import { getChordsScale } from  '@iresucito/core';
+import { getChordsScale } from '@iresucito/core';
 import { DataContext } from '../DataContext';
 import useStackNavOptions from '../navigation/useStackNavOptions';
 
@@ -64,7 +64,9 @@ const TransportNotesButton = (props: any): React.Node => {
   };
 
   var trigger =
-    song.transportTo === null || song.transportTo === undefined ? (
+    song.transportTo === null ||
+    song.transportTo === undefined ||
+    song.transportTo === '' ? (
       <Icon
         as={Ionicons}
         name="musical-notes-outline"
@@ -80,15 +82,15 @@ const TransportNotesButton = (props: any): React.Node => {
         colorScheme="rose"
         variant="solid"
         style={{
-          marginTop: 3,
           marginRight: 3,
-        }}>
+        }}
+      >
         <Text
           bold
           italic
           textAlign="center"
-          fontSize="md"
-          color={options.headerTitleStyle.color}>
+          color={options.headerTitleStyle.color}
+        >
           {song.transportTo}
         </Text>
       </Badge>
@@ -99,7 +101,8 @@ const TransportNotesButton = (props: any): React.Node => {
       <MenuOptions
         customStyles={{
           optionWrapper: { paddingHorizontal: 10, paddingVertical: 10 },
-        }}>
+        }}
+      >
         {song.transportTo != null && (
           <MenuOption value={null} text="Original" />
         )}
