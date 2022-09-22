@@ -81,7 +81,7 @@ import com.android.build.OutputFile
 
 project.ext.react = [
     enableHermes: true,
-    nodeExecutableAndArgs: ["/Users/javiercastro/.nvm/versions/node/v16.14.2/bin/node"],
+    nodeExecutableAndArgs: ["/Users/javiercastro/.nvm/versions/node/v16.17.0/bin/node"],
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
@@ -230,9 +230,10 @@ dependencies {
         exclude group:'com.facebook.flipper'
     }
     if (enableHermes) {
-      def hermesPath = "../../node_modules/hermes-engine/android/";
-      debugImplementation files(hermesPath + "hermes-debug.aar")
-      releaseImplementation files(hermesPath + "hermes-release.aar")
+        //noinspection GradleDynamicVersion
+        implementation("com.facebook.react:hermes-engine:+") { // From node_modules
+            exclude group:'com.facebook.fbjni'
+        }
     } else {
       implementation jscFlavor
     }
@@ -253,14 +254,14 @@ task deleteSongsAssets(type: Delete) {
 
 task copySongsAssets(type: Copy) {
     def toDir = rootProject.file('app/src/main/assets/songs')
-    from '../../songs/'
+    from '../../../core/assets/songs/'
     into toDir
     include '**/*'
 }
 
 task copyFontsAssets(type: Copy) {
     def toDir = rootProject.file('app/src/main/assets/fonts')
-    from '../../assets/fonts'
+    from '../../../core/assets/fonts'
     into toDir
     include '**/*'
 }
