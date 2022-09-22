@@ -18,7 +18,9 @@
       "**/@react-navigation",
       "**/@react-navigation/**",
       "**/@remix-run",
-      "**/@remix-run/**"
+      "**/@remix-run/**",
+      "**/@vercel/remix",
+      "**/@vercel/remix/**"
     ]
   },
   "scripts": {
