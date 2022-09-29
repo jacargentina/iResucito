@@ -4,15 +4,18 @@ import {
   SongPatch,
   SongPatchData,
   SongChange,
-} from '@iresucito/core';
+  SongsHistory,
+  SongsIndex,
+} from './';
 import path from 'path';
 import util from 'util';
 import fs from 'fs';
+import { Dropbox } from 'dropbox';
 import { execSync } from 'child_process';
+import { SongIndexPatch } from './common';
 require('colors');
-import { SongsHistory, SongsIndex } from '@iresucito/core';
 
-const songsDir = path.resolve(__dirname, '../songs');
+const songsDir = path.resolve(__dirname, './assets/songs');
 const folders = fs.readdirSync(songsDir, { withFileTypes: true });
 
 const onlyNames = folders.filter((d) => d.isDirectory()).map((d) => d.name);
@@ -37,7 +40,7 @@ const patchSongLogic = (songPatch: SongPatch, key: string) => {
     var songToPatch = SongsIndex[key];
     Object.keys(songPatch).forEach((rawLoc) => {
       var item: SongPatchData = songPatch[rawLoc];
-      var file;
+      var file: string;
       var loc = rawLoc;
       var { author, date, name, lines, stage } = item;
       name = name.trim();
@@ -145,29 +148,47 @@ const patchSongLogic = (songPatch: SongPatch, key: string) => {
   }
 };
 
-const patchPath = path.resolve(
-  __dirname,
-  '../webapp/data/SongsIndexPatch.json'
-);
-const json = fs.readFileSync(patchPath, 'utf8').normalize();
-const patch = JSON.parse(json);
-const stats = getPatchStats(patch);
-Object.keys(patch).forEach((k) => {
-  patchSongLogic(patch[k], k);
-});
-fs.writeFileSync('../songs/index.json', JSON.stringify(SongsIndex, null, ' '));
-fs.writeFileSync(
-  '../songs/patches.json',
-  JSON.stringify(SongsHistory, null, '  ')
-);
-console.log(util.inspect(stats, { depth: 10 }));
-const date = new Date();
-const formatDate =
-  ('0' + date.getDate()).slice(-2) +
-  ('0' + (date.getMonth() + 1)).slice(-2) +
-  date.getFullYear();
-const home = process.env.HOME ?? '.';
-const bakPath = `${home}/SongsIndexPatch-${formatDate}.json`;
-execSync(`mv "${patchPath}" "${bakPath}"`);
-fs.writeFileSync(patchPath, JSON.stringify({}));
-console.log(`Backup: ${bakPath}`);
+const applyPatch = async () => {
+  if (!process.env.DROPBOX_PASSWORD)
+    throw new Error(
+      'DROPBOX_PASSWORD no definida. No se puede conectar con Dropbox'
+    );
+
+  const dropbox = new Dropbox({
+    accessToken: process.env.DROPBOX_PASSWORD,
+  });
+
+  const file = 'SongsIndexPatch.json';
+  const download = await dropbox.filesDownload({
+    path: `/${file.toLowerCase()}`,
+  });
+  const meta = download.result;
+  const data = (meta as any).fileBinary.toString();
+  const patch = JSON.parse(data) as SongIndexPatch;
+
+  const stats = getPatchStats(patch);
+  Object.keys(patch).forEach((k) => {
+    patchSongLogic(patch[k], k);
+  });
+
+  const indexPath = path.resolve(__dirname, './assets/songs.json');
+  const patchesPath = path.resolve(__dirname, './assets/patches.json');
+
+  fs.writeFileSync(indexPath, JSON.stringify(SongsIndex, null, ' '));
+  fs.writeFileSync(patchesPath, JSON.stringify(SongsHistory, null, '  '));
+  console.log(util.inspect(stats, { depth: 10 }));
+
+  // TODO
+  // const date = new Date();
+  // const formatDate =
+  //   ('0' + date.getDate()).slice(-2) +
+  //   ('0' + (date.getMonth() + 1)).slice(-2) +
+  //   date.getFullYear();
+  // const home = process.env.HOME ?? '.';
+  // const bakPath = `${home}/SongsIndexPatch-${formatDate}.json`;
+  // execSync(`mv "${patchPath}" "${bakPath}"`);
+  // fs.writeFileSync(patchPath, JSON.stringify({}));
+  // console.log(`Backup: ${bakPath}`);
+};
+
+applyPatch();
