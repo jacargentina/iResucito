@@ -6496,6 +6496,17 @@
       "author": "andropiotrek@gmail.com",
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1663411903720,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "Maria de jasna gora",
+        "new": "Maria de Jasna Góra (Himnas Čenstochovos Dievo Motinai)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "98": [
@@ -6587,6 +6598,17 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1663412452948,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "Marija, bažnyčios motina (j 19, 26-34) (1983)",
+        "new": "Marija, bažnyčios motina (1983) - J 19, 26-34"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "100": [
@@ -6620,6 +6642,13 @@
       "date": 1609548131929,
       "locale": "pt-PT",
       "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1663413012220,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
       "created": false,
       "updated": true
     }
@@ -9990,6 +10019,13 @@
         "original": "Mano mylimoji yra man (gg 1,13 irt.t:)",
         "new": "Mano mylimoji yra man - Gg 1,13 irt.t."
       },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1663410157266,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
       "created": false,
       "updated": true
     }
