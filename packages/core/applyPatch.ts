@@ -178,17 +178,22 @@ const applyPatch = async () => {
   fs.writeFileSync(patchesPath, JSON.stringify(SongsHistory, null, '  '));
   console.log(util.inspect(stats, { depth: 10 }));
 
-  // TODO
-  // const date = new Date();
-  // const formatDate =
-  //   ('0' + date.getDate()).slice(-2) +
-  //   ('0' + (date.getMonth() + 1)).slice(-2) +
-  //   date.getFullYear();
-  // const home = process.env.HOME ?? '.';
-  // const bakPath = `${home}/SongsIndexPatch-${formatDate}.json`;
-  // execSync(`mv "${patchPath}" "${bakPath}"`);
-  // fs.writeFileSync(patchPath, JSON.stringify({}));
-  // console.log(`Backup: ${bakPath}`);
+  const date = new Date();
+  const formatDate =
+    ('0' + date.getDate()).slice(-2) +
+    ('0' + (date.getMonth() + 1)).slice(-2) +
+    date.getFullYear();
+  const home = process.env.HOME ?? '.';
+  const bakPath = `${home}/SongsIndexPatch-${formatDate}.json`;
+  fs.writeFileSync(bakPath, JSON.stringify(patch));
+  const response = await dropbox.filesUpload({
+    path: `/${file.toLowerCase()}`,
+    mode: { '.tag': 'overwrite' },
+    contents: JSON.stringify({}, null, 2),
+  });
+  const metadata = response.result;
+  console.log(`Vaciado ${metadata.name} en Dropbox`);
+  console.log(`Backup: ${bakPath}`);
 };
 
 applyPatch();

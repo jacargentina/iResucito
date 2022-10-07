@@ -67,7 +67,7 @@ class DropboxJsonFile<T> implements Adapter<T> {
       contents: JSON.stringify(data, null, 2),
     });
     const meta = response.result;
-    console.log(`Subidor contenido ${meta.name}`);
+    console.log(`Subido contenido ${meta.name}`);
   }
 }
 

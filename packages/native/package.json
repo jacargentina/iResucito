@@ -106,7 +106,6 @@
     "@types/jest": "^29.0.1",
     "colors": "^1.4.0",
     "diff": "^5.1.0",
-    "esno": "^0.16.3",
     "jest": "^29.0.3",
     "jetifier": "^2.0.0",
     "react-native-codegen": "^0.69.2",

@@ -3,7 +3,8 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "build": "tsc -b && cp ./pdfkit.standalone.js dist/"
+    "build": "tsc -b && cp ./pdfkit.standalone.js dist/",
+    "patch": "esno applyPatch.ts"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -15,5 +16,8 @@
     "lodash": "^4.17.21",
     "normalize-strings": "^1.1.1",
     "typescript": "^4.8.3"
+  },
+  "devDependencies": {
+    "esno": "^0.16.3"
   }
 }
