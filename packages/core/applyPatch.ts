@@ -82,7 +82,7 @@ const patchSongLogic = (songPatch: SongPatch, key: string) => {
 
       var songFileName = path.join(songDirectory, `${file}.txt`);
       var newName = path.join(songDirectory, `${name}.txt`);
-      if (newName !== songFileName) {
+      if (newName !== songFileName && !fs.existsSync(newName)) {
         rename = { original: file, new: name };
         execSync(`git mv --force "${songFileName}" "${newName}"`);
         Object.assign(songToPatch.files, { [loc]: name });
@@ -166,6 +166,11 @@ const applyPatch = async () => {
   const data = (meta as any).fileBinary.toString();
   const patch = JSON.parse(data) as SongIndexPatch;
 
+  if (Object.keys(patch).length == 0) {
+    console.log('No hay cambios pendientes de patch');
+    return;
+  }
+
   const stats = getPatchStats(patch);
   Object.keys(patch).forEach((k) => {
     patchSongLogic(patch[k], k);
@@ -187,7 +192,7 @@ const applyPatch = async () => {
   const bakPath = `${home}/SongsIndexPatch-${formatDate}.json`;
   fs.writeFileSync(bakPath, JSON.stringify(patch));
   const response = await dropbox.filesUpload({
-    path: `/${file.toLowerCase()}`,
+    path: `/${file}`,
     mode: { '.tag': 'overwrite' },
     contents: JSON.stringify({}, null, 2),
   });
