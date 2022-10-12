@@ -32,6 +32,6 @@
     "web": "yarn build && cd packages/web && yarn dev"
   },
   "devDependencies": {
-    "turbo": "^1.5.1"
+    "turbo": "^1.5.6"
   }
 }
