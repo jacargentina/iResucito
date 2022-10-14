@@ -400,7 +400,7 @@ PODS:
     - React
   - RNLocalize (2.2.4):
     - React-Core
-  - RNScreens (3.18.1):
+  - RNScreens (3.18.2):
     - React-Core
     - React-RCTImage
   - RNSentry (4.6.1):
@@ -688,7 +688,7 @@ SPEC CHECKSUMS:
   RNGestureHandler: b7a872907ee289ada902127f2554fa1d2c076122
   RNICloudStore: bc6e225811637c09bd1eb055d6cd7448e61cd451
   RNLocalize: 0df7970cfc60389f00eb62fd7c097dc75af3fb4f
-  RNScreens: 1b7bb502dac62cc4cf01b94bea591c8da275132f
+  RNScreens: 34cc502acf1b916c582c60003dc3089fa01dc66d
   RNSentry: f8591057d48d4f6d64196a76cbca67895667b033
   RNShare: a5dc3b9c53ddc73e155b8cd9a94c70c91913c43c
   RNSVG: 07dbd870b0dcdecc99b3a202fa37c8ca163caec2
