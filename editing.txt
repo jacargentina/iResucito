@@ -25,20 +25,28 @@ find . -type f -exec sed -i '' -e '1 s/*//g' {} \;
 # Remove double empty lines, leave just one
 find . -type f -exec sed -i '' -e '/./b' -e :n -e 'N;s/\n$//;tn' {} \;
 
-# macOS filenames
+# macOS filenames and "File not found" error
+ 
+For example, running the android simulator, you get:
+
+  No such file or directory, open 'songs/es/Como oveja que ve como se llevan su corderito al matadero - Himno de San Romano el Mélodo.txt'
 
 In macOS the filenames (in songs/[locale]) are encoded in UTF "decomposed form"
 When reading the filenames with react-native-fs sometimes filenames "look the same", but when
-comparing equality fails. Its all about the UTF composed vs decomposed form.
+comparing equality fails. Its all about the UTF composed vs decomposed form. In this example, the accent e letter.
 
 Reference:
 - https://apple.stackexchange.com/questions/83935/unicode-normalization-for-filenames-and-copied-text-from-pdfs
 
 To convert any filename to be always "composed form":
 
-  iconv -f utf-8-mac -t utf-8
+  iconv -f utf-8-mac -t utf-8 [file path]
 
 songs/index.json should be always on "composed form"!!
+  
+  iconv -f utf-8-mac -t utf-8 packages/core/assets/songs.json > packages/core/assets/songs-converted.json
+  cp packages/core/assets/songs-converted.json packages/core/assets/songs.json
+  rm packages/core/assets/songs-converted.json
 
 When reading with react-native-fs the filenames should be "normalized".
 
