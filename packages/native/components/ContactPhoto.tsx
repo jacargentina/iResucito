@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Avatar } from 'native-base';
 
-const ContactPhoto = (props: any): React.Node => {
+const ContactPhoto = (props: any) => {
   const initials =
     props.item.givenName[0] +
     (props.item.familyName && props.item.familyName.length > 0

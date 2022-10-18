@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { useContext, useEffect } from 'react';
+import { useEffect } from 'react';
 import KeepAwake from 'react-native-keep-awake';
 import { useRoute } from '@react-navigation/native';
-import { DataContext } from '../DataContext';
+import { useData } from '../DataContext';
 import SongViewFrame from './SongViewFrame';
 
-const SongDetail = (props: any) =>{
-  const data = useContext(DataContext);
+const SongDetail = (props: any) => {
+  const data = useData();
   const route = useRoute();
   const [keepAwake] = data.keepAwake;
 

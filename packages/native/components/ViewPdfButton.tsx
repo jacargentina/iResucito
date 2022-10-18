@@ -8,7 +8,7 @@ import { NativeParser } from '../util';
 import { generateSongPDF } from '../pdf';
 import useStackNavOptions from '../navigation/useStackNavOptions';
 
-const ViewPdfButton = (props: any): React.Node => {
+const ViewPdfButton = (props: any) => {
   const options = useStackNavOptions();
   const navigation = useNavigation();
   const route = useRoute();

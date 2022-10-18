@@ -1,23 +1,23 @@
 import * as React from 'react';
-import { Fragment, useContext, useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback } from 'react';
 import { Alert, View } from 'react-native';
 import { VStack, Text, useTheme } from 'native-base';
 import { useRoute } from '@react-navigation/native';
 import { KeyboardAwareScrollView } from '@codler/react-native-keyboard-aware-scroll-view';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import SwipeableRightAction from '../components/SwipeableRightAction';
-import { DataContext } from '../DataContext';
+import { useData } from '../DataContext';
 import I18n from '@iresucito/translations';
 import ListDetailItem from './ListDetailItem';
 
 const SwipeableRow = (props: {
-  listName: string,
-  listKey: string,
-  song: any,
-}) =>{
+  listName: string;
+  listKey: string;
+  song: any;
+}) => {
   const { listName, listKey, song } = props;
   const swipeRef = useRef<typeof Swipeable>();
-  const data = useContext(DataContext);
+  const data = useData();
   const { colors } = useTheme();
   const { setList } = data.lists;
 
@@ -64,14 +64,15 @@ const SwipeableRow = (props: {
             />
           </View>
         );
-      }}>
+      }}
+    >
       <ListDetailItem listName={listName} listKey={listKey} listText={song} />
     </Swipeable>
   );
 };
 
-const ListDetail = () =>{
-  const data = useContext(DataContext);
+const ListDetail = () => {
+  const data = useData();
   const [scroll, setScroll] = useState();
   const [noteFocused, setNoteFocused] = useState(false);
   const route = useRoute();
@@ -107,7 +108,8 @@ const ListDetail = () =>{
   return (
     <KeyboardAwareScrollView
       contentContainerStyle={{ flexGrow: 1 }}
-      innerRef={(ref) => setScroll(ref)}>
+      innerRef={(ref) => setScroll(ref)}
+    >
       <VStack p="2">
         <ListDetailItem
           listName={listName}

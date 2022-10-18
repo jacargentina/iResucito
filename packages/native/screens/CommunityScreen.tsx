@@ -1,12 +1,5 @@
 import * as React from 'react';
-import {
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-  useMemo,
-  useCallback,
-} from 'react';
+import { useEffect, useRef, useState, useMemo, useCallback } from 'react';
 import { Platform, Alert, View } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { FlatList, Text, Icon, useTheme } from 'native-base';
@@ -14,15 +7,15 @@ import { useIsFocused, useNavigation } from '@react-navigation/native';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import SwipeableRightAction from '../components/SwipeableRightAction';
 import SearchBarView from '../components/SearchBarView';
-import { DataContext } from '../DataContext';
+import { useData } from '../DataContext';
 import CallToAction from '../components/CallToAction';
 import I18n from '@iresucito/translations';
 import useStackNavOptions from '../navigation/useStackNavOptions';
 import { contactFilterByText, ordenAlfabetico } from '../util';
 import ContactListItem from './ContactListItem';
 
-const SwipeableRow = (props: { item: any }) =>{
-  const data = useContext(DataContext);
+const SwipeableRow = (props: { item: any }) => {
+  const data = useData();
   const { colors } = useTheme();
   const { brothers, update, remove, add } = data.community;
   const { item } = props;
@@ -105,14 +98,15 @@ const SwipeableRow = (props: { item: any }) =>{
             />
           </View>
         );
-      }}>
+      }}
+    >
       <ContactListItem item={item} />
     </Swipeable>
   );
 };
 
-const CommunityScreen = (props: any) =>{
-  const data = useContext(DataContext);
+const CommunityScreen = (props: any) => {
+  const data = useData();
   const options = useStackNavOptions();
   const isFocused = useIsFocused();
   const navigation = useNavigation();

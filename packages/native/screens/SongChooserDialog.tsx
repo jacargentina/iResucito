@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { useContext, useMemo, useCallback, useState } from 'react';
+import { useMemo, useCallback, useState } from 'react';
 import { useWindowDimensions } from 'react-native';
 import { Text, Center, Spinner, useTheme } from 'native-base';
 import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
 import ModalView from '../components/ModalView';
-import { DataContext } from '../DataContext';
+import { useData } from '../DataContext';
 import I18n from '@iresucito/translations';
 import SongList from './SongList';
 import { Song } from '@iresucito/core';
@@ -12,7 +12,7 @@ import { Song } from '@iresucito/core';
 const SongChooserDialog = (props: any) => {
   const layout = useWindowDimensions();
   const { colors } = useTheme();
-  const data = useContext(DataContext);
+  const data = useData();
   const { navigation, route } = props;
   const { searchItems } = data.search;
   const { setList } = data.lists;

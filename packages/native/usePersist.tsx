@@ -143,7 +143,7 @@ const usePersist = (
     readFromStorage();
   }, []);
 
-  return [value, onTextChanged];
+  return [value, onTextChanged, initialLoaded];
 };
 
 export default usePersist;

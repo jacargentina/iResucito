@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { useContext, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Input, Box, Button, FormControl } from 'native-base';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { getLocalizedListType } from  '@iresucito/core';
-import { DataContext } from '../DataContext';
+import { getLocalizedListType } from '@iresucito/core';
+import { useData } from '../DataContext';
 import ModalView from '../components/ModalView';
 import I18n from '@iresucito/translations';
 
-const ListNameDialog = (props: any) =>{
-  const data = useContext(DataContext);
+const ListNameDialog = (props: any) => {
+  const data = useData();
   const navigation = useNavigation();
   const route = useRoute();
   const { lists, addList, renameList } = data.lists;
@@ -70,7 +70,8 @@ const ListNameDialog = (props: any) =>{
             alignSelf: 'flex-end',
           }}
           isDisabled={!actionEnabled}
-          onPress={runActionOnList}>
+          onPress={runActionOnList}
+        >
           {action === 'create' ? I18n.t('ui.create') : I18n.t('ui.rename')}
         </Button>
       }
@@ -82,10 +83,12 @@ const ListNameDialog = (props: any) =>{
           style={{
             alignSelf: 'flex-start',
           }}
-          onPress={() => navigation.goBack(null)}>
+          onPress={() => navigation.goBack(null)}
+        >
           {I18n.t('ui.cancel')}
         </Button>
-      }>
+      }
+    >
       <Box px="5">
         <FormControl mb="5" isInvalid={!actionEnabled}>
           <Input

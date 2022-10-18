@@ -1,15 +1,14 @@
 import * as React from 'react';
-import { useContext } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import CommunityScreen from '../screens/CommunityScreen';
 import I18n from '@iresucito/translations';
-import { DataContext } from '../DataContext';
+import { useData } from '../DataContext';
 import useStackNavOptions from './useStackNavOptions';
 
 const Stack = createStackNavigator();
 
 const CommunityNavigator = () => {
-  const data = useContext(DataContext);
+  const data = useData();
   const options = useStackNavOptions();
   return (
     <Stack.Navigator screenOptions={options}>

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useContext } from 'react';
 import { Text, Icon, Badge, useTheme } from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {
@@ -11,11 +10,11 @@ import {
 import { useNavigation, useRoute } from '@react-navigation/native';
 import I18n from '@iresucito/translations';
 import { getChordsScale } from '@iresucito/core';
-import { DataContext } from '../DataContext';
+import { useData } from '../DataContext';
 import useStackNavOptions from '../navigation/useStackNavOptions';
 
-const TransportNotesButton = (props: any): React.Node => {
-  const data = useContext(DataContext);
+const TransportNotesButton = (props: any) => {
+  const data = useData();
   const options = useStackNavOptions();
   const navigation = useNavigation();
   const { colors } = useTheme();

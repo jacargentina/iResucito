@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useContext } from 'react';
 import { AndroidBackHandler } from 'react-navigation-backhandler';
 import { useNavigation } from '@react-navigation/native';
 import {
@@ -12,20 +11,20 @@ import {
   Divider,
   FlatList,
 } from 'native-base';
-import { DataContext } from '../DataContext';
+import { useData } from '../DataContext';
 import I18n from '@iresucito/translations';
 
-const Loading = () =>{
+const Loading = () => {
   return (
-    <Center>
+    <Center marginTop={10}>
       <Spinner color="rose.500" size="lg" />
       <Text>{I18n.t('ui.loading')}</Text>
     </Center>
   );
 };
 
-const SongSearch = (props: any) =>{
-  const data = useContext(DataContext);
+const SongSearch = () => {
+  const data = useData();
   const navigation = useNavigation();
   const { initialized, searchItems } = data.search;
 
@@ -51,7 +50,8 @@ const SongSearch = (props: any) =>{
             <Pressable
               onPress={() => {
                 navigation.navigate(item.route, item.params);
-              }}>
+              }}
+            >
               <HStack w="100%" p="2" m="1">
                 {item.badge}
                 <VStack>

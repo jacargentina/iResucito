@@ -3,7 +3,7 @@ import { Icon } from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import useStackNavOptions from '../navigation/useStackNavOptions';
 
-const ExportToPdfButton = (props: any): React.Node => {
+const ExportToPdfButton = (props: any) => {
   const { onPress } = props;
   const options = useStackNavOptions();
 

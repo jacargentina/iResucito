@@ -1,14 +1,13 @@
 import * as React from 'react';
-import { useContext } from 'react';
 import { Icon } from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { DataContext } from '../DataContext';
+import { useData } from '../DataContext';
 import useStackNavOptions from '../navigation/useStackNavOptions';
 
-const AddSongButton = (props: any): React.Node => {
+const AddSongButton = (props: any) => {
   const options = useStackNavOptions();
-  const data = useContext(DataContext);
+  const data = useData();
   const { getListForUI } = data.lists;
   const navigation = useNavigation();
   const route = useRoute();

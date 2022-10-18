@@ -1,17 +1,17 @@
 import * as React from 'react';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { Dimensions, ScrollView } from 'react-native';
 import { Box, HStack, Text, Icon, Button } from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import color from 'color';
 import { colors } from '@iresucito/core';
 import I18n from '@iresucito/translations';
-import { DataContext } from '../DataContext';
+import { useData } from '../DataContext';
 import { NativeParser, NativeStyles } from '../util';
 import SongViewLines from './SongViewLines';
 
 const SongViewFrame = (props: any) => {
-  const data = useContext(DataContext);
+  const data = useData();
   const [zoomLevel, setZoomLevel] = data.zoomLevel;
   const { title, stage, source, text, transportToNote, error, style } = props;
   const backColor = color(colors[stage]);

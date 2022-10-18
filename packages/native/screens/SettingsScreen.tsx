@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Image, Linking, Alert } from 'react-native';
 import { AndroidBackHandler } from 'react-navigation-backhandler';
 import {
@@ -19,7 +19,7 @@ import { useNavigation } from '@react-navigation/native';
 import DeviceInfo from 'react-native-device-info';
 import I18n from '@iresucito/translations';
 import { getLocalesForPicker, CollaboratorsIndex } from '@iresucito/core';
-import { DataContext } from '../DataContext';
+import { useData } from '../DataContext';
 import { getDefaultLocale } from '../util';
 
 const pack = require('../app.json');
@@ -27,7 +27,7 @@ const cristo = require('../img/cristo.jpg');
 const appName = pack.displayName;
 
 const SettingsScreen = () => {
-  const data = useContext(DataContext);
+  const data = useData();
   const navigation = useNavigation();
   const [locale, setLocale] = data.locale;
   const [keepAwake, setKeepAwake] = data.keepAwake;

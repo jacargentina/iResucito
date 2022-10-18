@@ -1,12 +1,5 @@
 import * as React from 'react';
-import {
-  useContext,
-  useState,
-  useMemo,
-  useEffect,
-  useCallback,
-  useRef,
-} from 'react';
+import { useState, useMemo, useEffect, useCallback, useRef } from 'react';
 import {
   Pressable,
   VStack,
@@ -23,14 +16,14 @@ import { useNavigation } from '@react-navigation/native';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import SwipeableRightAction from '../components/SwipeableRightAction';
 import SearchBarView from '../components/SearchBarView';
-import { DataContext } from '../DataContext';
+import { useData } from '../DataContext';
 import CallToAction from '../components/CallToAction';
 import AddListButton from '../components/AddListButton';
 import ChooseListTypeForAdd from '../components/ChooseListTypeForAdd';
 import I18n from '@iresucito/translations';
 
 const SwipeableRow = (props: { item: any }) => {
-  const data = useContext(DataContext);
+  const data = useData();
   const navigation = useNavigation();
   const { colors } = useTheme();
   const { removeList } = data.lists;
@@ -134,7 +127,7 @@ const SwipeableRow = (props: { item: any }) => {
   );
 };
 const ListScreen = (props: any) => {
-  const data = useContext(DataContext);
+  const data = useData();
   const navigation = useNavigation();
   const { getListsForUI } = data.lists;
   const [filtered, setFiltered] = useState([]);

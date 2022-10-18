@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useContext, useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import {
   Text,
   Box,
@@ -13,7 +13,7 @@ import { Keyboard, StyleSheet } from 'react-native';
 import ModalView from '../components/ModalView';
 import SearchBarView from '../components/SearchBarView';
 import ContactPhoto from '../components/ContactPhoto';
-import { DataContext } from '../DataContext';
+import { useData } from '../DataContext';
 import I18n from '@iresucito/translations';
 import {
   getContactsForImport,
@@ -26,7 +26,8 @@ const BrotherItem = React.memo((props) => {
   return (
     <Pressable
       style={{ marginRight: 10, width: 56 }}
-      onPress={() => handleContact(item)}>
+      onPress={() => handleContact(item)}
+    >
       <ContactPhoto item={item} />
       <Text noOfLines={1} textAlign="center" mt="2" fontSize="sm">
         {item.givenName}
@@ -64,8 +65,8 @@ const ContactItem = React.memo((props) => {
   );
 });
 
-const ContactImportDialog = () =>{
-  const data = useContext(DataContext);
+const ContactImportDialog = () => {
+  const data = useData();
   const { brothers, deviceContacts, addOrRemove } = data.community;
   const [loading, setLoading] = useState(false);
   const [contacts, setContacts] = useState([]);
@@ -105,17 +106,20 @@ const ContactImportDialog = () =>{
           ml="4"
           style={{
             alignSelf: 'flex-start',
-          }}>
+          }}
+        >
           {I18n.t('screen_title.import contacts')}
         </Text>
       }
-      closeText={I18n.t('ui.done')}>
+      closeText={I18n.t('ui.done')}
+    >
       <SearchBarView value={filter} setValue={setFilter}>
         {brothers && brothers.length > 0 && (
           <Box
             p="4"
             borderBottomWidth={StyleSheet.hairlineWidth}
-            borderBottomColor="muted.300">
+            borderBottomColor="muted.300"
+          >
             <FlatList
               removeClippedSubviews
               horizontal={true}

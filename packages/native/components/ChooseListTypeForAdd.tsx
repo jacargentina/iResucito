@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Text, Actionsheet } from 'native-base';
 import I18n from '@iresucito/translations';
 
-const ChooseListTypeForAdd = (props: any): React.Node => {
+const ChooseListTypeForAdd = (props: any) => {
   const { isOpen, onClose } = props.chooser;
   const navigation = useNavigation();
 

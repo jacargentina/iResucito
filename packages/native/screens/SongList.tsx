@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  useContext,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import {
   useNavigation,
   useRoute,
@@ -17,12 +11,12 @@ import SearchBarView from '../components/SearchBarView';
 import ExportToPdfButton from '../components/ExportToPdfButton';
 import ChoosePdfTypeForExport from '../components/ChoosePdfTypeForExport';
 import I18n from '@iresucito/translations';
-import { DataContext } from '../DataContext';
+import { useData } from '../DataContext';
 import SongListItem from './SongListItem';
 
-const SongList = (props: any) =>{
+const SongList = (props: any) => {
   const listRef = useRef<any>();
-  const data = useContext(DataContext);
+  const data = useData();
   const navigation = useNavigation();
   const route = useRoute();
   const isFocused = useIsFocused();

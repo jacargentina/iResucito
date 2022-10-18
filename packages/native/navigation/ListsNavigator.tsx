@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useContext } from 'react';
 import { HStack } from 'native-base';
 import { createStackNavigator } from '@react-navigation/stack';
 import I18n from '@iresucito/translations';
@@ -11,21 +10,21 @@ import SharePDFButton from '../components/SharePDFButton';
 import PrintPDFButton from '../components/PrintPDFButton';
 import ShareListButton from '../components/ShareListButton';
 import AddSongButton from '../components/AddSongButton';
-import { DataContext } from '../DataContext';
+import { useData } from '../DataContext';
 import useStackNavOptions from './useStackNavOptions';
 import SongDetailOptions from './SongDetailOptions';
 
 const Stack = createStackNavigator();
 
 const ListsNavigator = () => {
-  const data = useContext(DataContext);
+  const data = useData();
   const options = useStackNavOptions();
   return (
     <Stack.Navigator screenOptions={options}>
       <Stack.Screen
         name="ListsSearch"
         component={ListScreen}
-        options={({ navigation, route }) => {
+        options={() => {
           return {
             title: I18n.t('screen_title.lists', {
               locale: data.localeReal,
@@ -36,7 +35,7 @@ const ListsNavigator = () => {
       <Stack.Screen
         name="ListDetail"
         component={ListDetail}
-        options={({ navigation, route }) => {
+        options={({ route }) => {
           const { listName } = route.params;
           return {
             title: listName ? listName : 'Lista',
@@ -57,7 +56,7 @@ const ListsNavigator = () => {
       <Stack.Screen
         name="PDFViewer"
         component={PDFViewer}
-        options={({ navigation, route }) => {
+        options={({ route }) => {
           const { title } = route.params;
           return {
             title: `PDF - ${title}`,

@@ -1,18 +1,18 @@
 import * as React from 'react';
-import { useContext, useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { FlatList, Text, Icon } from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { View } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import ModalView from '../components/ModalView';
-import { DataContext } from '../DataContext';
+import { useData } from '../DataContext';
 import I18n from '@iresucito/translations';
 import { contactFilterByText, ordenAlfabetico } from '../util';
 import SearchBarView from '../components/SearchBarView';
 import ContactListItem from './ContactListItem';
 
-const ContactChooserDialog = (props: any) =>{
-  const data = useContext(DataContext);
+const ContactChooserDialog = (props: any) => {
+  const data = useData();
   const navigation = useNavigation();
   const route = useRoute();
   const { setList } = data.lists;
@@ -41,19 +41,22 @@ const ContactChooserDialog = (props: any) =>{
           ml="4"
           style={{
             alignSelf: 'flex-start',
-          }}>
+          }}
+        >
           {I18n.t('screen_title.community')}
         </Text>
       }
       closeText={I18n.t('ui.done')}
-      closeHandler={() => setFilter('')}>
+      closeHandler={() => setFilter('')}
+    >
       {brothers.length === 0 && (
         <View
           style={{
             flex: 3,
             justifyContent: 'space-around',
             padding: 10,
-          }}>
+          }}
+        >
           <Icon
             as={Ionicons}
             name="people-outline"

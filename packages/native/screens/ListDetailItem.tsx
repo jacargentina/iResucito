@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useContext } from 'react';
 import {
   Text,
   TextArea,
@@ -12,9 +11,9 @@ import {
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { getLocalizedListItem } from  '@iresucito/core';
+import { getLocalizedListItem } from '@iresucito/core';
 import I18n from '@iresucito/translations';
-import { DataContext } from '../DataContext';
+import { useData } from '../DataContext';
 
 const ListDetailItem = (props: {
   listName: any;
@@ -22,7 +21,7 @@ const ListDetailItem = (props: {
   listText: any;
   inputProps?: any;
 }) => {
-  const data = useContext(DataContext);
+  const data = useData();
   const navigation = useNavigation();
   const { setList } = data.lists;
   const { listName, listKey, listText, inputProps } = props;

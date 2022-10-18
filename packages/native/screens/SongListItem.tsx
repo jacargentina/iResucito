@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useContext, useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { Alert } from 'react-native';
 import {
   Box,
@@ -17,11 +17,11 @@ import { useNavigation } from '@react-navigation/native';
 import Highlighter from 'react-native-highlight-words';
 import Collapsible from 'react-native-collapsible';
 import { Rating } from 'react-native-rating-element';
-import { DataContext } from '../DataContext';
+import { useData } from '../DataContext';
 import badges from '../badges';
 import I18n from '@iresucito/translations';
 
-const NoLocaleWarning = () =>{
+const NoLocaleWarning = () => {
   return (
     <Pressable
       onPress={() => {
@@ -29,7 +29,8 @@ const NoLocaleWarning = () =>{
           I18n.t('ui.locale warning title'),
           I18n.t('ui.locale warning message')
         );
-      }}>
+      }}
+    >
       <HStack alignItems="center">
         <Icon color="rose.700" as={Ionicons} size="sm" name="bug" mr="2" />
         <Text fontSize={14} color="muted.500">
@@ -40,9 +41,9 @@ const NoLocaleWarning = () =>{
   );
 };
 
-const SongListItem = (props: any) =>{
+const SongListItem = (props: any) => {
   const { colors } = useTheme();
-  const data = useContext(DataContext);
+  const data = useData();
   const navigation = useNavigation();
   const {
     highlight,
@@ -110,7 +111,8 @@ const SongListItem = (props: any) =>{
           <Pressable
             onPress={() => {
               setIsCollapsed(!isCollapsed);
-            }}>
+            }}
+          >
             <Badge colorScheme="info">
               <Text>{children.length}+</Text>
             </Badge>
@@ -156,7 +158,8 @@ const SongListItem = (props: any) =>{
             if (props.onPress) {
               props.onPress(song);
             }
-          }}>
+          }}
+        >
           <Highlighter
             autoEscape
             numberOfLines={1}

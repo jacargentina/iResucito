@@ -7,7 +7,7 @@ import { Box, Input, Icon, useTheme } from 'native-base';
 import { useDebounce } from 'use-debounce';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const DebouncedInput = (props: any): React.Node => {
+const DebouncedInput = (props: any) => {
   const { value, setValue } = props;
   const [searchTerm, setSearchTerm] = useState(value);
   const [debouncedTerm] = useDebounce(searchTerm, 500);
@@ -51,7 +51,7 @@ const DebouncedInput = (props: any): React.Node => {
   );
 };
 
-const SearchBarView = (props: any): React.Node => {
+const SearchBarView = (props: any) => {
   const navigation = useNavigation();
   const { colors } = useTheme();
   return (

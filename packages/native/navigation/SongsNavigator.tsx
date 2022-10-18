@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useContext } from 'react';
 import { HStack } from 'native-base';
 import { createStackNavigator } from '@react-navigation/stack';
 import SongSearch from '../screens/SongSearch';
@@ -9,14 +8,14 @@ import PDFViewer from '../screens/PDFViewer';
 import SharePDFButton from '../components/SharePDFButton';
 import PrintPDFButton from '../components/PrintPDFButton';
 import I18n from '@iresucito/translations';
-import { DataContext } from '../DataContext';
+import { useData } from '../DataContext';
 import useStackNavOptions from './useStackNavOptions';
 import SongDetailOptions from './SongDetailOptions';
 
 const Stack = createStackNavigator();
 
 const SongsNavigator = (): React.Node => {
-  const data = useContext(DataContext);
+  const data = useData();
   const options = useStackNavOptions();
   return (
     <Stack.Navigator screenOptions={options}>

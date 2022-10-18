@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import React, {
+  useState,
+  useEffect,
+  useCallback,
+  useMemo,
+  useContext,
+} from 'react';
 //import { useWhatChanged } from '@simbathesailor/use-what-changed';
 import { Alert, Platform, PermissionsAndroid } from 'react-native';
 import Share from 'react-native-share';
@@ -38,7 +44,7 @@ type UseSongsMeta = {
   loadSongs: any;
 };
 
-const useSongsMeta = (locale: string): UseSongsMeta => {
+const useSongsMeta = (locale: string | undefined): UseSongsMeta => {
   const [settingsFileExists, setSettingsFileExists] = useState<boolean>(false);
   const [songs, setSongs] = useState<Array<Song> | undefined>([]);
   const [localeSongs, setLocaleSongs] = useState<Array<SongFile>>([]);
@@ -142,6 +148,7 @@ const useSongsMeta = (locale: string): UseSongsMeta => {
           undefined,
           settingsObj
         );
+        console.log(`loading ${metaData.length} songs`);
         return NativeSongs.loadSongs(I18n.locale, metaData).then(() => {
           setSongs(metaData);
           return readAllLocaleSongs(I18n.locale);
@@ -151,7 +158,9 @@ const useSongsMeta = (locale: string): UseSongsMeta => {
   }, [settingsFileExists, readSongSettingsFile]);
 
   useEffect(() => {
-    loadSongs();
+    if (locale !== undefined) {
+      loadSongs();
+    }
   }, [locale, loadSongs, settingsFileExists]);
 
   useEffect(() => {
@@ -535,11 +544,14 @@ type UseSearch = {
   searchItems: any;
 };
 
-const useSearch = (localeValue: string): UseSearch => {
+const useSearch = (localeValue: string | undefined): UseSearch => {
   const [initialized, setInitialized] = useState(false);
   const [searchItems, setSearchItems] = useState<Array<SearchItem>>();
 
   useEffect(() => {
+    if (localeValue == undefined) {
+      return;
+    }
     // Construir menu de búsqueda
     setInitialized(false);
     var items: Array<SearchItem> = [
@@ -877,17 +889,27 @@ export const DataContext = React.createContext<DataContextType | undefined>(
   undefined
 );
 
+export const useData = () => {
+  const context = useContext(DataContext);
+  if (!context) {
+    throw new Error('useData no encuentra un DataContextProvider contenedor.');
+  }
+  return context;
+};
+
 const DataContextWrapper = (props: any): any => {
   // settings
   const locale = usePersist('locale', 'string', 'default');
   const keepAwake = usePersist('keepAwake', 'boolean', true);
   const zoomLevel = usePersist('zoomLevel', 'number', 1);
 
-  const [localeValue] = locale;
+  const [localeValue, _, localeInitialized] = locale;
 
-  const localeReal = useMemo(() => {
-    return localeValue === 'default' ? getDefaultLocale() : localeValue;
-  }, [localeValue]);
+  const localeReal = useMemo<string | undefined>(() => {
+    if (localeInitialized) {
+      return localeValue === 'default' ? getDefaultLocale() : localeValue;
+    }
+  }, [localeValue, localeInitialized]);
 
   const community = useCommunity();
   const songsMeta = useSongsMeta(localeReal);

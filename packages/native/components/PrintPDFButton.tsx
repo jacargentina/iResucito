@@ -5,7 +5,7 @@ import { useRoute } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import useStackNavOptions from '../navigation/useStackNavOptions';
 
-const PrintPDFButton = (props: any): React.Node => {
+const PrintPDFButton = (props: any) => {
   const options = useStackNavOptions();
   const route = useRoute();
   const { uri } = route.params;

@@ -9,7 +9,7 @@ const ConditionalWrapper = (props: any) => {
   return condition ? wrapper(children) : children;
 };
 
-const ModalView = (props: any): React.Node => {
+const ModalView = (props: any) => {
   const {
     left,
     right,
