@@ -1,9 +1,25 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const persistGlobal = {};
+type Registry = {
+  callbacks: Array<Function>;
+  value: any;
+};
 
-const createPersistGlobal = (key, thisCallback, initialValue) => {
+type Global = {
+  deregister: () => void;
+  emit: (value: any) => void;
+};
+
+const persistGlobal: {
+  [key: string]: Registry;
+} = {};
+
+const createPersistGlobal = (
+  key: string,
+  thisCallback: Function,
+  initialValue: any
+): Global => {
   if (!persistGlobal[key]) {
     persistGlobal[key] = { callbacks: [], value: initialValue };
   }
@@ -16,7 +32,7 @@ const createPersistGlobal = (key, thisCallback, initialValue) => {
         arr.splice(index, 1);
       }
     },
-    emit(value) {
+    emit(value: any) {
       if (persistGlobal[key].value !== value) {
         persistGlobal[key].value = value;
         persistGlobal[key].callbacks.forEach((callback) => {
@@ -33,9 +49,9 @@ const usePersist = (
   key: string,
   typeCheck: string = '',
   defValue: any = '',
-  onLoaded: Function = null
+  onLoaded?: Function
 ): any => {
-  const globalState = useRef(null);
+  const globalState = useRef<Global | null>(null);
   const [initialLoaded, setInitialLoaded] = useState(false);
   const [value, setValue] = useState(() => {
     if (persistGlobal[key]) {
@@ -73,7 +89,7 @@ const usePersist = (
   }, [key, value, initialLoaded]);
 
   const runTypeCheck = useCallback(
-    (theValue) => {
+    (theValue: any) => {
       if (typeCheck !== '') {
         if (typeof theValue !== typeCheck) {
           throw `Tipo incorrecto: real = ${typeof theValue} vs requerido ${typeCheck}`;
@@ -93,7 +109,7 @@ const usePersist = (
 
   useEffect(() => {
     // funcion para migrar datos viejos
-    const parseMigrateRawData = async (str) => {
+    const parseMigrateRawData = async (str: string) => {
       var object = JSON.parse(str);
       // si el str tiene formato de react-native-storage
       // migrar a objeto sin propiedad 'rawData'
@@ -109,7 +125,7 @@ const usePersist = (
       }
       // Corregir migracion incorrecta de 'contacts'
       if (key === 'contacts' && !Array.isArray(object)) {
-        var migrated = Object.values(object);
+        var migrated: any = Object.values(object);
         const newdata = JSON.stringify(migrated);
         await AsyncStorage.setItem(key, newdata);
         object = migrated;
@@ -118,7 +134,7 @@ const usePersist = (
     };
 
     // funcion onLoaded centralizada
-    const processAndSet = async (values) => {
+    const processAndSet = async (values: any) => {
       if (onLoaded) {
         values = await onLoaded(values);
       }

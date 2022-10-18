@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Text } from 'native-base';
+import { SongLine } from '@iresucito/core';
 
-const SongViewLines = (props: any) =>{
+const SongViewLines = (props: any) => {
   const { lines, onPress, zoom } = props;
 
   // Ajuste final para renderizado en screen
