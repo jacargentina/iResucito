@@ -28,6 +28,7 @@
     "test": "turbo run test",
     "lint": "turbo run lint",
     "dev": "turbo run dev",
+    "ts": "turbo run ts",
     "reset": "find . -type dir -name node_modules | xargs rm -rf && rm -rf yarn.lock",
     "web": "yarn build && cd packages/web && yarn dev"
   },

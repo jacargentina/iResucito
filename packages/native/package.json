@@ -10,7 +10,8 @@
     "test": "node node_modules/jest/bin/jest.js --watch",
     "postversion": "react-native-version --never-amend",
     "lint": "eslint . --ext .js",
-    "react-devtools": "react-devtools"
+    "react-devtools": "react-devtools",
+    "ts": "yarn tsc --noEmit"
   },
   "dependencies": {
     "@babel/cli": "^7.18.10",

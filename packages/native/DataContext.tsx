@@ -540,13 +540,13 @@ const useLists = (songs: any): UseLists => {
 };
 
 type UseSearch = {
-  initialized: any;
-  searchItems: any;
+  initialized: boolean;
+  searchItems: SearchItem[] | undefined;
 };
 
 const useSearch = (localeValue: string | undefined): UseSearch => {
   const [initialized, setInitialized] = useState(false);
-  const [searchItems, setSearchItems] = useState<Array<SearchItem>>();
+  const [searchItems, setSearchItems] = useState<SearchItem[]>();
 
   useEffect(() => {
     if (localeValue == undefined) {
@@ -734,60 +734,61 @@ const useSearch = (localeValue: string | undefined): UseSearch => {
 };
 
 type UseCommunity = {
-  brothers: any;
-  deviceContacts: any;
-  add: any;
-  update: any;
-  remove: any;
-  addOrRemove: any;
-  populateDeviceContacts: any;
+  brothers: Contacts.Contact[];
+  deviceContacts: Contacts.Contact[];
+  add: (item: Contacts.Contact) => void;
+  update: (id: string, item: Contacts.Contact) => void;
+  remove: (item: Contacts.Contact) => void;
+  addOrRemove: (contact: Contacts.Contact) => void;
+  populateDeviceContacts: () => void;
 };
 
 const useCommunity = (): UseCommunity => {
-  const [brothers, initBrothers] = usePersist(
+  const [brothers, initBrothers] = usePersist<Contacts.Contact[]>(
     'contacts',
     'object',
     [],
-    (loaded) => {
-      return getContacts(false)
-        .then((devCts) => {
-          initDeviceContacts(devCts);
-          loaded.forEach((c, idx) => {
-            // tomar el contacto actualizado
-            var devContact = devCts.find((x) => x.recordID === c.recordID);
-            if (devContact) {
-              loaded[idx] = devContact;
-            }
-          });
-          return loaded;
-        })
-        .catch(() => {
-          return loaded;
+    async (loaded) => {
+      try {
+        const devCts = await getContacts(false);
+        initDeviceContacts(devCts);
+        loaded.forEach((c, idx) => {
+          // tomar el contacto actualizado
+          var devContact = devCts.find((x) => x.recordID === c.recordID);
+          if (devContact) {
+            loaded[idx] = devContact;
+          }
         });
+        return loaded;
+      } catch {
+        return loaded;
+      }
     }
   );
-  const [deviceContacts, initDeviceContacts] = useState();
+  const [deviceContacts, initDeviceContacts] = useState<Contacts.Contact[]>([]);
 
-  const add = (item) => {
+  const add = (item: Contacts.Contact) => {
     var changedContacts = [...brothers, item];
     initBrothers(changedContacts);
   };
 
-  const update = (id, item) => {
+  const update = (id: string, item: Contacts.Contact) => {
     var contact = brothers.find((c) => c.recordID === id);
-    var idx = brothers.indexOf(contact);
-    var updatedContacts = [...brothers];
-    updatedContacts[idx] = Object.assign(contact, item);
-    initBrothers(updatedContacts);
+    if (contact) {
+      var idx = brothers.indexOf(contact);
+      var updatedContacts = [...brothers];
+      updatedContacts[idx] = Object.assign(contact, item);
+      initBrothers(updatedContacts);
+    }
   };
 
-  const remove = (item) => {
+  const remove = (item: Contacts.Contact) => {
     var idx = brothers.indexOf(item);
     var changedContacts = brothers.filter((l, i) => i !== idx);
     initBrothers(changedContacts);
   };
 
-  const addOrRemove = (contact) => {
+  const addOrRemove = (contact: Contacts.Contact) => {
     var i = brothers.findIndex((c) => c.recordID === contact.recordID);
     // Ya esta importado
     if (i !== -1) {
@@ -798,55 +799,57 @@ const useCommunity = (): UseCommunity => {
     }
   };
 
-  const checkContactsPermission = (reqPerm: boolean): Promise<boolean> => {
+  const checkContactsPermission = async (
+    reqPerm: boolean
+  ): Promise<boolean | undefined> => {
     if (Platform.OS === 'android') {
       if (reqPerm) {
-        return PermissionsAndroid.request(
-          PermissionsAndroid.PERMISSIONS.READ_CONTACTS
-        )
-          .then((granted) => {
-            return granted === PermissionsAndroid.RESULTS.GRANTED;
-          })
-          .catch(() => {
-            return new Error('Sin permisos para leer contactos');
-          });
+        try {
+          const granted = await PermissionsAndroid.request(
+            PermissionsAndroid.PERMISSIONS.READ_CONTACTS
+          );
+          return granted === PermissionsAndroid.RESULTS.GRANTED;
+        } catch {
+          throw new Error('Sin permisos para leer contactos');
+        }
       } else {
         return PermissionsAndroid.check(
           PermissionsAndroid.PERMISSIONS.READ_CONTACTS
         );
       }
     } else {
-      return Contacts.checkPermission().then((perm1) => {
-        if (perm1 === 'undefined') {
-          if (reqPerm) {
-            return Contacts.requestPermission().then((perm2) => {
-              if (perm2 === 'authorized') {
-                return true;
-              }
-              if (perm2 === 'denied') {
-                throw new Error('denied');
-              }
-            });
-          } else {
-            throw new Error('denied');
-          }
-        }
-        if (perm1 === 'authorized') {
-          return true;
-        }
-        if (perm1 === 'denied') {
+      const perm1 = await Contacts.checkPermission();
+      if (perm1 === 'undefined') {
+        if (reqPerm) {
+          return Contacts.requestPermission().then((perm2) => {
+            if (perm2 === 'authorized') {
+              return true;
+            }
+            if (perm2 === 'denied') {
+              throw new Error('denied');
+            }
+          });
+        } else {
           throw new Error('denied');
         }
-      });
+      }
+      if (perm1 === 'authorized') {
+        return true;
+      }
+      if (perm1 === 'denied') {
+        throw new Error('denied');
+      }
     }
   };
 
-  const getContacts = useCallback((reqPerm: boolean): Promise<any> => {
-    return checkContactsPermission(reqPerm).then((hasPermission) => {
-      if (hasPermission) {
-        return Contacts.getAll();
-      }
-    });
+  const getContacts = useCallback(async (reqPerm: boolean): Promise<
+    Contacts.Contact[]
+  > => {
+    const hasPermission = await checkContactsPermission(reqPerm);
+    if (hasPermission) {
+      return Contacts.getAll();
+    }
+    return [];
   }, []);
 
   useEffect(() => {
@@ -855,10 +858,9 @@ const useCommunity = (): UseCommunity => {
     }
   }, [brothers]);
 
-  const populateDeviceContacts = useCallback(() => {
-    return getContacts(true).then((devCts) => {
-      initDeviceContacts(devCts);
-    });
+  const populateDeviceContacts = useCallback(async () => {
+    const devCts = await getContacts(true);
+    initDeviceContacts(devCts);
   }, [getContacts]);
 
   return {
@@ -899,9 +901,9 @@ export const useData = () => {
 
 const DataContextWrapper = (props: any): any => {
   // settings
-  const locale = usePersist('locale', 'string', 'default');
-  const keepAwake = usePersist('keepAwake', 'boolean', true);
-  const zoomLevel = usePersist('zoomLevel', 'number', 1);
+  const locale = usePersist<string>('locale', 'string', 'default');
+  const keepAwake = usePersist<boolean>('keepAwake', 'boolean', true);
+  const zoomLevel = usePersist<number>('zoomLevel', 'number', 1);
 
   const [localeValue, _, localeInitialized] = locale;
 

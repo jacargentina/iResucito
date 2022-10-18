@@ -45,15 +45,15 @@ const createPersistGlobal = (
   };
 };
 
-const usePersist = (
+export function usePersist<T>(
   key: string,
   typeCheck: string = '',
   defValue: any = '',
-  onLoaded?: Function
-): any => {
+  onLoaded?: (values: T) => Promise<T>
+): [T, (value: any) => void, boolean] {
   const globalState = useRef<Global | null>(null);
   const [initialLoaded, setInitialLoaded] = useState(false);
-  const [value, setValue] = useState(() => {
+  const [value, setValue] = useState<T>(() => {
     if (persistGlobal[key]) {
       return persistGlobal[key].value;
     }
@@ -99,10 +99,10 @@ const usePersist = (
     [typeCheck]
   );
 
-  const onTextChanged = useCallback(
-    (text: string) => {
-      runTypeCheck(text);
-      setValue(text);
+  const setValueWithTypeCheck = useCallback(
+    (value: any) => {
+      runTypeCheck(value);
+      setValue(value);
     },
     [runTypeCheck, setValue]
   );
@@ -134,7 +134,7 @@ const usePersist = (
     };
 
     // funcion onLoaded centralizada
-    const processAndSet = async (values: any) => {
+    const processAndSet = async (values: T) => {
       if (onLoaded) {
         values = await onLoaded(values);
       }
@@ -159,7 +159,7 @@ const usePersist = (
     readFromStorage();
   }, []);
 
-  return [value, onTextChanged, initialLoaded];
-};
+  return [value, setValueWithTypeCheck, initialLoaded];
+}
 
 export default usePersist;

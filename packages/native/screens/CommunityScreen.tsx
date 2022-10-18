@@ -19,10 +19,10 @@ const SwipeableRow = (props: { item: any }) => {
   const { colors } = useTheme();
   const { brothers, update, remove, add } = data.community;
   const { item } = props;
-  const swipeRef = useRef<typeof Swipeable>();
+  const swipeRef = useRef<Swipeable | null>(null);
 
   const contactToggleAttibute = useCallback(
-    (contact, attribute) => {
+    (contact: any, attribute: string) => {
       const newValue = !(contact[attribute] === true);
       let updatedContact = Object.assign({}, contact, {
         [attribute]: newValue,
@@ -33,7 +33,7 @@ const SwipeableRow = (props: { item: any }) => {
   );
 
   const addOrRemove = useCallback(
-    (contact) => {
+    (contact: any) => {
       let i = brothers.findIndex((c) => c.recordID === contact.recordID);
       // Ya esta importado
       if (i !== -1) {
@@ -82,7 +82,7 @@ const SwipeableRow = (props: { item: any }) => {
               text={I18n.t('ui.psalmist')}
               x={200}
               onPress={() => {
-                swipeRef.current.close();
+                swipeRef.current?.close();
                 contactToggleAttibute(item, 's');
               }}
             />
@@ -92,7 +92,7 @@ const SwipeableRow = (props: { item: any }) => {
               text={I18n.t('ui.delete')}
               x={100}
               onPress={() => {
-                swipeRef.current.close();
+                swipeRef.current?.close();
                 contactDelete(item);
               }}
             />
@@ -105,7 +105,7 @@ const SwipeableRow = (props: { item: any }) => {
   );
 };
 
-const CommunityScreen = (props: any) => {
+const CommunityScreen = () => {
   const data = useData();
   const options = useStackNavOptions();
   const isFocused = useIsFocused();
@@ -126,14 +126,12 @@ const CommunityScreen = (props: any) => {
   useEffect(() => {
     if (filtered.length > 0 && isFocused) {
       setTimeout(() => {
-        if (listRef.current) {
-          listRef.current.scrollToIndex({
-            index: 0,
-            animated: true,
-            viewOffset: 0,
-            viewPosition: 1,
-          });
-        }
+        listRef.current?.scrollToIndex({
+          index: 0,
+          animated: true,
+          viewOffset: 0,
+          viewPosition: 1,
+        });
       }, 50);
     }
   }, [isFocused, filtered.length]);
@@ -189,7 +187,7 @@ const CommunityScreen = (props: any) => {
   return (
     <SearchBarView value={filter} setValue={setFilter}>
       {filtered && filtered.length === 0 && (
-        <Text note style={{ textAlign: 'center', paddingTop: 20 }}>
+        <Text fontSize="sm" style={{ textAlign: 'center', paddingTop: 20 }}>
           {I18n.t('ui.no contacts found')}
         </Text>
       )}
@@ -197,7 +195,7 @@ const CommunityScreen = (props: any) => {
         ref={listRef}
         data={filtered}
         extraData={{ locale: I18n.locale, brothers }}
-        keyExtractor={(item) => item.recordID}
+        keyExtractor={(item: any) => item.recordID}
         renderItem={({ item }) => <SwipeableRow item={item} />}
       />
     </SearchBarView>

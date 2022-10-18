@@ -6,7 +6,8 @@
     "jsx": "react-jsx",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "strict": true
+    "strict": true,
+    "skipLibCheck": true,
   },
   "references": [
     {
@@ -17,9 +18,6 @@
     },
     {
       "path": "./packages/translations"
-    },
-    {
-      "path": "./packages/web"
     }
   ]
 }

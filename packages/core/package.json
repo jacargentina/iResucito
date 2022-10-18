@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "scripts": {
     "build": "tsc -b && cp ./pdfkit.standalone.js dist/",
-    "patch": "esno applyPatch.ts"
+    "patch": "esno applyPatch.ts",
+    "ts": "yarn tsc --noEmit"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
