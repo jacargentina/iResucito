@@ -19,7 +19,7 @@ const getTabOptions = (
   showTabOnlyOn?: string
 ) => {
   var tabOptions = {
-    tabBarStyle: undefined,
+    tabBarStyle: {},
     tabBarIcon: ({
       focused,
       color: tabColor,
@@ -59,16 +59,15 @@ const MenuNavigator = (props: any) => {
       tabBarShowLabel: false,
       tabBarActiveTintColor: colors.rose['600'],
       tabBarStyle: {
-        display: 'flex',
-        backgroundColor: colors.gray['50'],
+        backgroundColor: 'black', //colors.gray['50'],
         borderTopColor: colors.rose['300'],
         borderTopWidth: 1,
       },
     };
 
     if (Platform.OS === 'android') {
-      options = {
-        inactiveTintColor: 'gray',
+      return {
+        tabBarInactiveTintColor: 'gray',
         pressColor: colors.rose['300'],
         iconStyle: {
           height: 30,
@@ -87,7 +86,7 @@ const MenuNavigator = (props: any) => {
 
   useEffect(() => {
     const handler = (event) => {
-      importList(event.url).then((name) => {
+      importList(event.url).then((name: string) => {
         navigation.navigate('Lists');
         navigation.navigate('ListDetail', { listName: name });
       });
@@ -99,7 +98,7 @@ const MenuNavigator = (props: any) => {
   }, [lists, importList, navigation]);
 
   return (
-    <Tab.Navigator swipeEnabled={false} screenOptions={screenOptions}>
+    <Tab.Navigator screenOptions={screenOptions}>
       <Tab.Screen
         name="Songs"
         component={SongsNavigator}

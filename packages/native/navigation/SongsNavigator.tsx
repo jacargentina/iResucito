@@ -11,10 +11,18 @@ import I18n from '@iresucito/translations';
 import { useData } from '../DataContext';
 import useStackNavOptions from './useStackNavOptions';
 import SongDetailOptions from './SongDetailOptions';
+import { Song } from '@iresucito/core';
 
-const Stack = createStackNavigator();
+type SongsStackParamList = {
+  SongSearch: undefined;
+  SongList: { title_key: string; filter?: any; sort?: Function };
+  SongDetail: { song: Song };
+  PDFViewer: { uri: string; title: string };
+};
 
-const SongsNavigator = (): React.Node => {
+const Stack = createStackNavigator<SongsStackParamList>();
+
+const SongsNavigator = () => {
   const data = useData();
   const options = useStackNavOptions();
   return (
@@ -29,7 +37,7 @@ const SongsNavigator = (): React.Node => {
       <Stack.Screen
         name="SongList"
         component={SongList}
-        options={({ navigation, route }) => {
+        options={({ route }) => {
           return {
             title: I18n.t(route.params.title_key, { locale: data.localeReal }),
           };
@@ -43,7 +51,7 @@ const SongsNavigator = (): React.Node => {
       <Stack.Screen
         name="PDFViewer"
         component={PDFViewer}
-        options={({ navigation, route }) => {
+        options={({ route }) => {
           const { title } = route.params;
           return {
             title: `PDF - ${title}`,

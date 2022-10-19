@@ -15,7 +15,7 @@ const CommunityNavigator = () => {
       <Stack.Screen
         name="CommunitySearch"
         component={CommunityScreen}
-        options={({ navigation, route }) => {
+        options={() => {
           return {
             title: I18n.t('screen_title.community', {
               locale: data.localeReal,

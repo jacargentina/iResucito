@@ -14,12 +14,13 @@ import {
 } from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
-import Highlighter from 'react-native-highlight-words';
+import Highlighter from '@javier.alejandro.castro/react-native-highlight-words';
 import Collapsible from 'react-native-collapsible';
 import { Rating } from 'react-native-rating-element';
 import { useData } from '../DataContext';
 import badges from '../badges';
 import I18n from '@iresucito/translations';
+import { Song } from '@iresucito/core';
 
 const NoLocaleWarning = () => {
   return (

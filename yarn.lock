@@ -1382,6 +1382,15 @@
   resolved "https://registry.yarnpkg.com/@istanbuljs/schema/-/schema-0.1.3.tgz#e45e384e4b8ec16bce2fd903af78450f6bf7ec98"
   integrity sha512-ZXRY4jNvVgSVQ8DL3LTcakaAtXwTVUxE81hslsyD2AtoXW/wVob10HkOJ1X/pAlcI7D+2YoZKg5do8G/w6RYgA==
 
+"@javier.alejandro.castro/react-native-highlight-words@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@javier.alejandro.castro/react-native-highlight-words/-/react-native-highlight-words-2.0.1.tgz#0cd0b9d51e8a86ab4c46710b21c4521330fe0442"
+  integrity sha512-2aNs1G7pfcHhyW967iZO7V170ejNyyCTGXQiG2kxLdoxJiyMW8l4TYKlR9rrUYJ7ZugnA+/ZVNxP2Ff/nPsGbg==
+  dependencies:
+    deprecated-react-native-prop-types "^2.3.0"
+    highlight-words-core "^1.2.2"
+    prop-types "^15.8.1"
+
 "@javier.alejandro.castro/react-native-stream@^0.2.2":
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/@javier.alejandro.castro/react-native-stream/-/react-native-stream-0.2.2.tgz#da3316121663d28662fa35cee17ca0912770458e"
@@ -11676,14 +11685,6 @@ react-native-gradle-plugin@^0.70.3:
   version "0.70.3"
   resolved "https://registry.yarnpkg.com/react-native-gradle-plugin/-/react-native-gradle-plugin-0.70.3.tgz#cbcf0619cbfbddaa9128701aa2d7b4145f9c4fc8"
   integrity sha512-oOanj84fJEXUg9FoEAQomA8ISG+DVIrTZ3qF7m69VQUJyOGYyDZmPqKcjvRku4KXlEH6hWO9i4ACLzNBh8gC0A==
-
-"react-native-highlight-words@https://github.com/jacargentina/react-native-highlight-words.git":
-  version "1.0.1"
-  resolved "https://github.com/jacargentina/react-native-highlight-words.git#5d46297549366793b13c9be99be13fd2a3bbbb1a"
-  dependencies:
-    deprecated-react-native-prop-types "^2.3.0"
-    highlight-words-core "^1.2.2"
-    prop-types "^15.8.1"
 
 react-native-icloudstore@^0.9.0:
   version "0.9.0"

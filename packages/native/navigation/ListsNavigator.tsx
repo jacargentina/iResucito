@@ -13,8 +13,16 @@ import AddSongButton from '../components/AddSongButton';
 import { useData } from '../DataContext';
 import useStackNavOptions from './useStackNavOptions';
 import SongDetailOptions from './SongDetailOptions';
+import { Song } from '@iresucito/core';
 
-const Stack = createStackNavigator();
+type ListsStackParamList = {
+  ListsSearch: undefined;
+  ListDetail: { listName: string };
+  SongDetail: { song: Song };
+  PDFViewer: { uri: string; title: string };
+};
+
+const Stack = createStackNavigator<ListsStackParamList>();
 
 const ListsNavigator = () => {
   const data = useData();
