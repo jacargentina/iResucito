@@ -5,9 +5,9 @@ import ListNameDialog from '../screens/ListNameDialog';
 import ContactImportDialog from '../screens/ContactImportDialog';
 import SongPreviewScreenDialog from '../screens/SongPreviewScreenDialog';
 import SongPreviewPdfDialog from '../screens/SongPreviewPdfDialog';
-import useStackNavOptions from './useStackNavOptions';
 import MenuNavigator from './MenuNavigator';
 import SongChooserNavigator from './SongChooserNavigator';
+import { useStackNavOptions } from './util';
 
 export type RootStackParamList = {
   Menu: undefined;

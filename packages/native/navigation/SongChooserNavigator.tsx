@@ -2,7 +2,7 @@ import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import SongChooserDialog from '../screens/SongChooserDialog';
 import SongPreviewScreenDialog from '../screens/SongPreviewScreenDialog';
-import useStackNavOptions from './useStackNavOptions';
+import { useStackNavOptions } from './util';
 
 export type ChooserParamList = {
   Dialog: { target: { listName: string; listKey: string } };

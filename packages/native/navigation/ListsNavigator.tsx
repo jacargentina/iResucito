@@ -6,13 +6,14 @@ import ListScreen from '../screens/ListScreen';
 import ListDetail from '../screens/ListDetail';
 import SongDetail from '../screens/SongDetail';
 import PDFViewer from '../screens/PDFViewer';
-import SharePDFButton from '../components/SharePDFButton';
-import PrintPDFButton from '../components/PrintPDFButton';
 import ShareListButton from '../components/ShareListButton';
 import AddSongButton from '../components/AddSongButton';
 import { useData } from '../DataContext';
-import useStackNavOptions from './useStackNavOptions';
-import SongDetailOptions from './SongDetailOptions';
+import {
+  useStackNavOptions,
+  getSongDetailOptions,
+  getPdfViewerOptions,
+} from './util';
 import { Song } from '@iresucito/core';
 
 type ListsStackParamList = {
@@ -59,23 +60,12 @@ const ListsNavigator = () => {
       <Stack.Screen
         name="SongDetail"
         component={SongDetail}
-        options={SongDetailOptions}
+        options={({ route }) => getSongDetailOptions(route.params.song)}
       />
       <Stack.Screen
         name="PDFViewer"
         component={PDFViewer}
-        options={({ route }) => {
-          const { title } = route.params;
-          return {
-            title: `PDF - ${title}`,
-            headerRight: () => (
-              <HStack m="1">
-                <SharePDFButton />
-                <PrintPDFButton />
-              </HStack>
-            ),
-          };
-        }}
+        options={({ route }) => getPdfViewerOptions(route.params.title)}
       />
     </Stack.Navigator>
   );

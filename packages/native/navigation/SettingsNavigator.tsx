@@ -2,7 +2,7 @@ import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import SettingsScreen from '../screens/SettingsScreen';
 import I18n from '@iresucito/translations';
-import useStackNavOptions from './useStackNavOptions';
+import { useStackNavOptions } from './util';
 
 const Stack = createStackNavigator();
 
