@@ -1,4 +1,6 @@
 import * as React from 'react';
+import type { RouteProp } from '@react-navigation/native';
+import Contacts from 'react-native-contacts';
 import { useState, useMemo } from 'react';
 import { FlatList, Text, Icon } from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -11,10 +13,14 @@ import { contactFilterByText, ordenAlfabetico } from '../util';
 import SearchBarView from '../components/SearchBarView';
 import ContactListItem from './ContactListItem';
 
-const ContactChooserDialog = (props: any) => {
+import type { RootStackParamList } from '../navigation/RootNavigator';
+
+type ContactChooserRouteProp = RouteProp<RootStackParamList, 'ContactChooser'>;
+
+const ContactChooserDialog = () => {
   const data = useData();
   const navigation = useNavigation();
-  const route = useRoute();
+  const route = useRoute<ContactChooserRouteProp>();
   const { setList } = data.lists;
   const { brothers } = data.community;
   const [filter, setFilter] = useState('');
@@ -26,9 +32,9 @@ const ContactChooserDialog = (props: any) => {
     return result;
   }, [brothers, filter]);
 
-  const contactSelected = (contact) => {
+  const contactSelected = (contact: Contacts.Contact) => {
     setList(target.listName, target.listKey, contact.givenName);
-    navigation.goBack(null);
+    navigation.goBack();
   };
 
   return (

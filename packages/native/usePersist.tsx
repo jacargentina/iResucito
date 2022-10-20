@@ -45,12 +45,14 @@ const createPersistGlobal = (
   };
 };
 
+export type UsePersist<T> = [T, (value: any) => void, boolean];
+
 export function usePersist<T>(
   key: string,
   typeCheck: string = '',
   defValue: any = '',
   onLoaded?: (values: T) => Promise<T>
-): [T, (value: any) => void, boolean] {
+): UsePersist<T> {
   const globalState = useRef<Global | null>(null);
   const [initialLoaded, setInitialLoaded] = useState(false);
   const [value, setValue] = useState<T>(() => {

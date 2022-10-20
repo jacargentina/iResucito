@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { StackScreenProps } from '@react-navigation/stack';
 import { useMemo, useCallback, useState } from 'react';
 import { useWindowDimensions } from 'react-native';
 import { Text, Center, Spinner, useTheme } from 'native-base';
@@ -8,8 +9,11 @@ import { useData } from '../DataContext';
 import I18n from '@iresucito/translations';
 import SongList from './SongList';
 import { Song } from '@iresucito/core';
+import type { ChooserParamList } from '../navigation/SongChooserNavigator';
 
-const SongChooserDialog = (props: any) => {
+type Props = StackScreenProps<ChooserParamList, 'Dialog'>;
+
+const SongChooserDialog = (props: Props) => {
   const layout = useWindowDimensions();
   const { colors } = useTheme();
   const data = useData();
@@ -20,7 +24,10 @@ const SongChooserDialog = (props: any) => {
   const { listName, listKey } = target;
 
   const choosers = useMemo(() => {
-    return searchItems.filter((x) => x.chooser !== undefined);
+    if (searchItems !== undefined) {
+      return searchItems.filter((x) => x.chooser !== undefined);
+    }
+    return [];
   }, [searchItems]);
 
   const [activeTab, setActiveTab] = useState(() => {
@@ -40,7 +47,7 @@ const SongChooserDialog = (props: any) => {
     (song: Song) => {
       if (listName && listKey !== undefined) {
         setList(listName, listKey, song.key);
-        navigation.goBack(null);
+        navigation.goBack();
       }
     },
     [navigation, listName, listKey, setList]
@@ -48,19 +55,22 @@ const SongChooserDialog = (props: any) => {
 
   const routes = useMemo(() => {
     return choosers.map((c, i) => {
-      return { key: c.chooser, title: c.chooser.toUpperCase() };
+      return {
+        key: c.chooser as string,
+        title: (c.chooser as string).toUpperCase(),
+      };
     });
   }, [choosers]);
 
   const renderScene = useMemo(() => {
-    var config = {};
+    var config: any = {};
     choosers.forEach((c) => {
-      config[c.chooser] = () => (
+      config[c.chooser as string] = () => (
         <SongList
           style={{ flexGrow: 1 }}
           filter={c.params?.filter}
           viewButton={true}
-          onPress={(song) => songAssign(song)}
+          onPress={(song: Song) => songAssign(song)}
         />
       );
     });

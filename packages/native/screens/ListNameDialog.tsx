@@ -23,7 +23,7 @@ const ListNameDialog = (props: any) => {
       navigation.navigate('ListDetail', { listName: name });
     } else if (action === 'rename') {
       renameList(listName, name);
-      navigation.goBack(null);
+      navigation.goBack();
     }
   };
 
@@ -83,7 +83,7 @@ const ListNameDialog = (props: any) => {
           style={{
             alignSelf: 'flex-start',
           }}
-          onPress={() => navigation.goBack(null)}
+          onPress={() => navigation.goBack()}
         >
           {I18n.t('ui.cancel')}
         </Button>

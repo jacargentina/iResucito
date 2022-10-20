@@ -29,7 +29,7 @@ const ModalView = (props: any) => {
         alignSelf: 'flex-end',
       }}
       onPress={() => {
-        navigation.goBack(null);
+        navigation.goBack();
         if (closeHandler) {
           closeHandler();
         }

@@ -13,7 +13,7 @@ const SettingsNavigator = () => {
       <Stack.Screen
         name="SettingsScreen"
         component={SettingsScreen}
-        options={({ navigation, route }) => {
+        options={() => {
           return { title: I18n.t('screen_title.settings') };
         }}
       />

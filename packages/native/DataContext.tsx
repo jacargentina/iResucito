@@ -25,7 +25,7 @@ import I18n from '@iresucito/translations';
 import badges from './badges';
 import { clouddata } from './clouddata';
 import { generateListPDF } from './pdf';
-import usePersist from './usePersist';
+import usePersist, { UsePersist } from './usePersist';
 import {
   getDefaultLocale,
   ordenClasificacion,
@@ -874,17 +874,19 @@ const useCommunity = (): UseCommunity => {
   };
 };
 
+export type IsLoading = { isLoading: boolean; text: string };
+
 export type DataContextType = {
-  songsMeta: any;
-  search: any;
-  lists: any;
-  community: any;
+  songsMeta: UseSongsMeta;
+  search: UseSearch;
+  lists: UseLists;
+  community: UseCommunity;
   sharePDF: any;
-  loading: any;
-  locale: any;
-  localeReal: any;
-  keepAwake: any;
-  zoomLevel: any;
+  loading: [IsLoading, React.Dispatch<React.SetStateAction<IsLoading>>];
+  localeReal: string | undefined;
+  locale: UsePersist<string>;
+  keepAwake: UsePersist<boolean>;
+  zoomLevel: UsePersist<number>;
 };
 
 export const DataContext = React.createContext<DataContextType | undefined>(
@@ -917,7 +919,7 @@ const DataContextWrapper = (props: any): any => {
   const songsMeta = useSongsMeta(localeReal);
   const search = useSearch(localeReal);
   const lists = useLists(songsMeta.songs);
-  const loading = useState({ isLoading: false, text: '' });
+  const loading = useState<IsLoading>({ isLoading: false, text: '' });
 
   const sharePDF = (shareTitleSuffix: string, pdfPath: string) => {
     Share.open({

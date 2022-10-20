@@ -9,7 +9,17 @@ import useStackNavOptions from './useStackNavOptions';
 import MenuNavigator from './MenuNavigator';
 import SongChooserNavigator from './SongChooserNavigator';
 
-const Stack = createStackNavigator();
+export type RootStackParamList = {
+  Menu: undefined;
+  SongChooser: undefined;
+  ContactChooser: { target: { listName: string; listKey: string } };
+  ListName: undefined;
+  ContactImport: undefined;
+  SongPreviewScreen: undefined;
+  SongPreviewPdf: undefined;
+};
+
+const Stack = createStackNavigator<RootStackParamList>();
 
 const RootNavigator = () => {
   const options = useStackNavOptions();
@@ -21,7 +31,8 @@ const RootNavigator = () => {
         options={{ headerShown: false }}
       />
       <Stack.Group
-        screenOptions={{ headerShown: false, presentation: 'modal' }}>
+        screenOptions={{ headerShown: false, presentation: 'modal' }}
+      >
         <Stack.Screen name="SongChooser" component={SongChooserNavigator} />
         <Stack.Screen name="ContactChooser" component={ContactChooserDialog} />
         <Stack.Screen name="ListName" component={ListNameDialog} />

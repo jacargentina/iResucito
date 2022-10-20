@@ -1,12 +1,17 @@
 import * as React from 'react';
+import type { RouteProp } from '@react-navigation/native';
 import { Text } from 'native-base';
 import { useRoute } from '@react-navigation/native';
 import ModalView from '../components/ModalView';
 import I18n from '@iresucito/translations';
 import SongViewFrame from './SongViewFrame';
 
-const SongPreviewScreenDialog = (props: any) =>{
-  const route = useRoute();
+import type { ChooserParamList } from '../navigation/SongChooserNavigator';
+
+type SongPreviewRouteProp = RouteProp<ChooserParamList, 'ViewSong'>;
+
+const SongPreviewScreenDialog = () => {
+  const route = useRoute<SongPreviewRouteProp>();
   const { text, title, source, stage } = route.params.data;
 
   return (
@@ -19,10 +24,12 @@ const SongPreviewScreenDialog = (props: any) =>{
           ml="4"
           style={{
             alignSelf: 'flex-start',
-          }}>
+          }}
+        >
           {I18n.t('screen_title.preview')}
         </Text>
-      }>
+      }
+    >
       <SongViewFrame
         style={{ marginTop: 10 }}
         title={title}

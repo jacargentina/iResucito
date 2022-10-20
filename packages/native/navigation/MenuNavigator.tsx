@@ -11,7 +11,14 @@ import ListsNavigator from './ListsNavigator';
 import CommunityNavigator from './CommunityNavigator';
 import SettingsNavigator from './SettingsNavigator';
 
-const Tab = createBottomTabNavigator();
+type MenuParamList = {
+  Songs: undefined;
+  Lists: undefined;
+  Community: undefined;
+  Settings: undefined;
+};
+
+const Tab = createBottomTabNavigator<MenuParamList>();
 
 const getTabOptions = (
   iconName: string,
@@ -20,19 +27,15 @@ const getTabOptions = (
 ) => {
   var tabOptions = {
     tabBarStyle: {},
-    tabBarIcon: ({
-      focused,
-      color: tabColor,
-    }: {
-      focused: boolean;
-      color: any;
-    }) => {
+    tabBarIcon: ({ color }: { color: any }) => {
       return (
         <Icon
           as={Ionicons}
           name={iconName}
-          active={focused}
-          style={{ marginTop: 6, color: tabColor }}
+          color={color}
+          style={{
+            marginTop: 6,
+          }}
           size={7}
         />
       );
@@ -59,7 +62,7 @@ const MenuNavigator = (props: any) => {
       tabBarShowLabel: false,
       tabBarActiveTintColor: colors.rose['600'],
       tabBarStyle: {
-        backgroundColor: 'black', //colors.gray['50'],
+        backgroundColor: colors.gray['50'],
         borderTopColor: colors.rose['300'],
         borderTopWidth: 1,
       },
@@ -85,7 +88,7 @@ const MenuNavigator = (props: any) => {
   }, [colors]);
 
   useEffect(() => {
-    const handler = (event) => {
+    const handler = (event: { url: string }) => {
       importList(event.url).then((name: string) => {
         navigation.navigate('Lists');
         navigation.navigate('ListDetail', { listName: name });
