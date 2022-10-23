@@ -3,12 +3,12 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "build": "tsc -b && cp ./pdfkit.standalone.js dist/",
+    "build": "tsc -b && cp ./pdfkit.standalone.js dist/src/",
     "patch": "esno applyPatch.ts",
     "ts": "yarn tsc --noEmit"
   },
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/src/index.js",
+  "types": "dist/src",
   "dependencies": {
     "@types/country-list": "^2.1.1",
     "@types/langs": "^2.0.1",
