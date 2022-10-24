@@ -16,6 +16,7 @@ availableLocales = getLocalesForPicker(
 
 const LocalePicker = () => {
   const app = useApp();
+  const { patchStats } = app;
 
   const current = useMemo<PickerLocale | undefined>(() => {
     return getValidatedLocale(availableLocales, app.locale);
@@ -27,9 +28,12 @@ const LocalePicker = () => {
         item
         pointing
         style={{ marginLeft: 10 }}
-        text={I18n.t('settings_title.locale', { locale: app.locale })}>
+        text={`${I18n.t('settings_title.locale', { locale: app.locale })} (${
+          app.locale
+        })`}>
         <Dropdown.Menu>
           {availableLocales.map((item) => {
+            const stat = patchStats.find((st) => st.locale == item.value);
             return (
               <Dropdown.Item
                 onClick={() => {
@@ -38,7 +42,7 @@ const LocalePicker = () => {
                 key={item.value}
                 active={app.locale === item.value}
                 size="small">
-                {item.label}
+                {item.label} - {item.value} {stat ? `(${stat?.count})` : null}
               </Dropdown.Item>
             );
           })}
