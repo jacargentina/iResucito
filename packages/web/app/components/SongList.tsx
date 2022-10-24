@@ -27,6 +27,15 @@ const SongList = (props: { songs: Array<Song> }) => {
   const navigate = useNavigate();
   const [pdfUrl, setPdfUrl] = useState<string | undefined>();
   const [loading, setLoading] = useState(false);
+  const patchedCount = useMemo(() => {
+    return songs.filter((s) => s.patched === true).length;
+  }, [songs]);
+  const addedCount = useMemo(() => {
+    return songs.filter((s) => s.added === true).length;
+  }, [songs]);
+  const notTranslatedCount = useMemo(() => {
+    return songs.filter((s) => s.notTranslated === true).length;
+  }, [songs]);
 
   const closePdf = () => {
     setLoading(false);
@@ -192,18 +201,21 @@ const SongList = (props: { songs: Array<Song> }) => {
                   active={filters.patched}
                   onClick={() => toggleFilter('patched')}>
                   {I18n.t('ui.filters.patched')}
+                  {patchedCount > 0 ? ` - ${patchedCount}` : null}
                 </Button>
                 <Button
                   toggle
                   active={filters.added}
                   onClick={() => toggleFilter('added')}>
                   {I18n.t('ui.filters.added')}
+                  {addedCount > 0 ? ` - ${addedCount}` : null}
                 </Button>
                 <Button
                   toggle
                   active={filters.notTranslated}
                   onClick={() => toggleFilter('notTranslated')}>
                   {I18n.t('ui.filters.untranslated')}
+                  {notTranslatedCount > 0 ? ` - ${notTranslatedCount}` : null}
                 </Button>
                 <Button
                   toggle
