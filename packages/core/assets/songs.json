@@ -3635,7 +3635,8 @@
   "key": "261",
   "files": {
    "pt-PT": "É paciente - Hino ao Espírito Santo - Kiko Arguello",
-   "pt-BR": "É paciente - Hino ao Espírito Santo - Kiko Arguello"
+   "pt-BR": "É paciente - Hino ao Espírito Santo - Kiko Arguello",
+   "es": "Es Paciente - Himno al Espirito Santo"
   },
   "stage": "precatechumenate",
   "stages": {}
@@ -3665,22 +3666,6 @@
   "files": {
    "pt-BR": "Cântico de Ana - 1° Sm 2,1-9",
    "es": "Canto de Ana - 1° Sm 2,1-10"
-  },
-  "stage": "precatechumenate",
-  "stages": {}
- },
- "265": {
-  "key": "265",
-  "files": {
-   "es": "Es Paciente - Himno al Espirito Santo"
-  },
-  "stage": "precatechumenate",
-  "stages": {}
- },
- "266": {
-  "key": "266",
-  "files": {
-   "lt-LT": "Title - Source"
   },
   "stage": "precatechumenate",
   "stages": {}
