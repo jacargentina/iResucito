@@ -15,7 +15,7 @@ import { execSync } from 'child_process';
 import { SongIndexPatch } from './common';
 require('colors');
 
-const songsDir = path.resolve(__dirname, './assets/songs');
+const songsDir = path.resolve(__dirname, '../assets/songs');
 const folders = fs.readdirSync(songsDir, { withFileTypes: true });
 
 const onlyNames = folders.filter((d) => d.isDirectory()).map((d) => d.name);
@@ -176,8 +176,8 @@ const applyPatch = async () => {
     patchSongLogic(patch[k], k);
   });
 
-  const indexPath = path.resolve(__dirname, './assets/songs.json');
-  const patchesPath = path.resolve(__dirname, './assets/patches.json');
+  const indexPath = path.resolve(__dirname, '../assets/songs.json');
+  const patchesPath = path.resolve(__dirname, '../assets/patches.json');
 
   fs.writeFileSync(indexPath, JSON.stringify(SongsIndex, null, ' '));
   fs.writeFileSync(patchesPath, JSON.stringify(SongsHistory, null, '  '));

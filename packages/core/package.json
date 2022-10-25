@@ -3,8 +3,8 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "build": "tsc -b && cp ./pdfkit.standalone.js dist/src/",
-    "patch": "esno applyPatch.ts",
+    "build": "tsc -b && cp ./src/pdfkit.standalone.js dist/src/",
+    "patch": "esno src/applyPatch.ts",
     "ts": "yarn tsc --noEmit"
   },
   "main": "dist/src/index.js",
