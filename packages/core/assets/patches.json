@@ -11619,6 +11619,20 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1667806439057,
+      "locale": "it",
+      "author": "sacco.lucabr@gmail.com",
+      "rename": {
+        "new": "Credo Apostolico"
+      },
+      "created": true,
+      "updated": false,
+      "staged": {
+        "original": "liturgy",
+        "new": "catechumenate"
+      }
     }
   ],
   "189": [
@@ -12742,6 +12756,16 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1667730157802,
+      "locale": "it",
+      "author": "sacco.lucabr@gmail.com",
+      "rename": {
+        "new": "Zaccheo - Lc 19, 1–10"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "212": [
@@ -12787,6 +12811,16 @@
         "original": "precatechumenate",
         "new": "election"
       }
+    },
+    {
+      "date": 1667807057342,
+      "locale": "it",
+      "author": "sacco.lucabr@gmail.com",
+      "rename": {
+        "new": "Il messia, leone per vincere - Vittorino de Pettau"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "213": [
@@ -12833,6 +12867,16 @@
       "date": 1629486153558,
       "locale": "en",
       "author": "monicaenrique.10@gmail.com",
+      "created": true,
+      "updated": false
+    },
+    {
+      "date": 1667808306279,
+      "locale": "it",
+      "author": "sacco.lucabr@gmail.com",
+      "rename": {
+        "new": "In mezzo a una grande folla - Lc 8,42-48"
+      },
       "created": true,
       "updated": false
     }
@@ -13123,6 +13167,16 @@
         "original": "precatechumenate",
         "new": "catechumenate"
       }
+    },
+    {
+      "date": 1667805679493,
+      "locale": "it",
+      "author": "sacco.lucabr@gmail.com",
+      "rename": {
+        "new": "Come pecora che vede - Inno di Romano il Melode"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "221": [
@@ -13141,6 +13195,16 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1667734910603,
+      "locale": "it",
+      "author": "sacco.lucabr@gmail.com",
+      "rename": {
+        "new": "Un angelo venne dal cielo Allegria Allegria"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "223": [
@@ -13498,6 +13562,16 @@
       "author": "isaacneri30@gmail.com",
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1667809504089,
+      "locale": "it",
+      "author": "sacco.lucabr@gmail.com",
+      "rename": {
+        "new": "Sorga Dio - Sal 68 (67) 2, 4-7"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "240": [
@@ -13850,6 +13924,16 @@
       "author": "lvinidantas01@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1667727851096,
+      "locale": "it",
+      "author": "sacco.lucabr@gmail.com",
+      "rename": {
+        "new": "È paziente (Inno allo Spirito Santo) - Risuscitò"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "262": [
@@ -13907,6 +13991,16 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1667733619948,
+      "locale": "it",
+      "author": "sacco.lucabr@gmail.com",
+      "rename": {
+        "new": "La Espada - Ez. 21, 14-22"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "264": [

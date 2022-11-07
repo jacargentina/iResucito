@@ -2894,11 +2894,13 @@
    "pt-BR": "Credo - Símbolo apostólico",
    "pt-PT": "Credo- Símbolo Apostólico",
    "lt-LT": "Credo (Apaštalų Tikėjimo Išpažinimas)",
-   "en": "Creed - Apostolic Symbol"
+   "en": "Creed - Apostolic Symbol",
+   "it": "Credo Apostolico"
   },
   "stages": {
    "de-AT": "election",
-   "de": "election"
+   "de": "election",
+   "it": "catechumenate"
   }
  },
  "189": {
@@ -3167,7 +3169,8 @@
    "de-AT": "Zachäus - Lk 19, 1-10",
    "de": "Zachäus - Lk 19, 1-10",
    "pt-BR": "Zaqueu - Lc 19, 1-10",
-   "pt-PT": "Zaqueu - Lc 19, 1-10"
+   "pt-PT": "Zaqueu - Lc 19, 1-10",
+   "it": "Zaccheo - Lc 19, 1-10"
   }
  },
  "212": {
@@ -3177,7 +3180,8 @@
    "de-AT": "Der Messias Löwe um zu siegen - Vittorino von Pettau",
    "de": "Der Messias Löwe um zu siegen - Vittorino von Pettau",
    "pt-BR": "O Messias, leão para vencer - Inspirado num texto de S. Vitorino de Pettau +304",
-   "pt-PT": "O Messias, leão para vencer - Inspirado num texto de S. Vitorino de Pettau +304"
+   "pt-PT": "O Messias, leão para vencer - Inspirado num texto de S. Vitorino de Pettau +304",
+   "it": "Il messia, leone per vincere - Vittorino de Pettau"
   },
   "stages": {
    "pt-BR": "election"
@@ -3193,7 +3197,8 @@
    "de": "Inmitten einer Grossen Menge - Lk 8, 42-48",
    "pt-BR": "Em meio a multidão - Lc 8, 42b-48",
    "pt-PT": "No meio da multidão - Lc 8, 42b-48",
-   "en": "In the Midst of a Great Crowd - Lk 8, 43-48"
+   "en": "In the Midst of a Great Crowd - Lk 8, 43-48",
+   "it": "In mezzo a una grande folla - Lc 8,42-48"
   }
  },
  "214": {
@@ -3279,7 +3284,8 @@
    "de-AT": "Wie ein Schaf das sieht - Hymnus von Romanos dem Sänger",
    "de": "Wie ein Schaf das sieht - Hymnus von Romanos dem Sänger",
    "pt-BR": "Como ovelha que vê - Kontákion da Sexta-Feira Santa, de São Romano, o Melodista",
-   "pt-PT": "Como ovelha que vê - Kontákion da Sexta-Feira Santa, de São Romano, o Melode"
+   "pt-PT": "Como ovelha que vê - Kontákion da Sexta-Feira Santa, de São Romano, o Melode",
+   "it": "Come pecora che vede - Inno di Romano il Melode"
   },
   "stages": {
    "pt-BR": "catechumenate"
@@ -3296,7 +3302,8 @@
   "stage": "precatechumenate",
   "christmas": true,
   "files": {
-   "es": "Alegría, ha nacido el salvador - Villancico"
+   "es": "Alegría, ha nacido el salvador - Villancico",
+   "it": "Un angelo venne dal cielo Allegria Allegria"
   },
   "stages": {
    "pt-BR": "catechumenate"
@@ -3444,7 +3451,8 @@
    "pt-BR": "Cantai a Deus - Sal 68 (67) 2, 4-7",
    "pt-PT": "Cantai a Deus - Sal 68 (67) 2, 4-7",
    "lt-LT": "Tepakyla viešpats (eil. 2 - Psalmė 67 (68)",
-   "es": "Cantad a Dios - Sal 68 (67) 2, 4-7"
+   "es": "Cantad a Dios - Sal 68 (67) 2, 4-7",
+   "it": "Sorga Dio - Sal 68 (67) 2, 4-7"
   }
  },
  "240": {
@@ -3624,7 +3632,8 @@
   "files": {
    "pt-PT": "É paciente - Hino ao Espírito Santo - Kiko Arguello",
    "pt-BR": "É paciente - Hino ao Espírito Santo - Kiko Arguello",
-   "es": "Es Paciente - Himno al Espirito Santo"
+   "es": "Es Paciente - Himno al Espirito Santo",
+   "it": "É paziente - Inno allo Spirito Santo"
   },
   "stage": "precatechumenate",
   "stages": {}
@@ -3644,7 +3653,8 @@
   "files": {
    "pt-PT": "A Espada - Ez. 21, 14-22",
    "pt-BR": "A Espada - Ez. 21, 14-22",
-   "es": "La Espada - Ez. 21, 14-22"
+   "es": "La Espada - Ez. 21, 14-22",
+   "it": "La Espada - Ez. 21, 14-22"
   },
   "stage": "precatechumenate",
   "stages": {}
