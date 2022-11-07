@@ -2667,6 +2667,8 @@
   "christmas": true,
   "signing to the virgin": true,
   "files": {
+   "it": "Agnella di dio",
+   "en": "She-Lamb of God - Mt 1,18ff",
    "es": "La cordera de Dios - Mt 1, 18ss",
    "de-AT": "Maria Lamm Gottes - Mt 1, 18 ff",
    "de": "Maria, Lamm Gottes - Mt 1, 18 ff",
@@ -2939,7 +2941,7 @@
    "pt-BR": "Cordeiro de Deus - Ladainha do Cordeiro de Deus",
    "pt-PT": "Cordeiro de Deus - Ladainha do Cordeiro de Deus",
    "en": "Lamb of God",
-   "lt-LT": "Dievo avinėli"
+   "lt-LT": "Dievo Avinėli"
   }
  },
  "192": {
@@ -3339,20 +3341,6 @@
    "en": "The lord is my light and my salvation - Ps 26 (27)",
    "pt-BR": "O Senhor é minha Luz e Salvação - Sal 27 (26)",
    "pt-PT": "O Senhor é minha Luz e Salvação - Sal 27 (26)"
-  }
- },
- "227": {
-  "stage": "precatechumenate",
-  "files": {
-   "it": "Agnella di dio",
-   "en": "She-Lamb of God - Mt 1,18ff",
-   "de": "Maria, Lamm Gottes - Mt 1, 18 ff",
-   "lt-LT": "Dievo Avinėli"
-  },
-  "stages": {
-   "en": "catechumenate",
-   "de": "election",
-   "lt-LT": "liturgy"
   }
  },
  "228": {
