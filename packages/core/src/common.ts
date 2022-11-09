@@ -54,11 +54,11 @@ export type SongChange = {
     new: string;
   };
   rename?: {
-    original: string;
+    original?: string;
     new: string;
   };
   staged?: {
-    original: string;
+    original?: string;
     new: string;
   };
   created?: boolean;
