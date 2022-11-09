@@ -1,9 +1,6 @@
 @font-face {
   font-family: 'Franklin Gothic Medium';
-  src: url('Franklin Gothic Medium.ttf') format('truetype');
-}
-#__next {
-  height: 100%;
+  src: url('/Franklin Gothic Medium.ttf') format('truetype');
 }
 .container {
   font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
