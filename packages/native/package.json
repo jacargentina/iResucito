@@ -113,8 +113,5 @@
     "react-native-monorepo-tools": "^1.2.0",
     "source-map": "^0.7.4",
     "ts-jest": "^29.0.0"
-  },
-  "engines": {
-    "node": ">=14.x <=17.x"
   }
 }
