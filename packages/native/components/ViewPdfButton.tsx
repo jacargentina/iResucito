@@ -6,7 +6,7 @@ import I18n from '@iresucito/translations';
 import { defaultExportToPdfOptions } from  '@iresucito/core';
 import { NativeParser } from '../util';
 import { generateSongPDF } from '../pdf';
-import useStackNavOptions from '../navigation/useStackNavOptions';
+import { useStackNavOptions } from '../navigation/util';
 
 const ViewPdfButton = (props: any) => {
   const options = useStackNavOptions();

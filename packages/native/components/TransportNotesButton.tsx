@@ -11,7 +11,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import I18n from '@iresucito/translations';
 import { getChordsScale } from '@iresucito/core';
 import { useData } from '../DataContext';
-import useStackNavOptions from '../navigation/useStackNavOptions';
+import { useStackNavOptions } from '../navigation/util';
 
 const TransportNotesButton = (props: any) => {
   const data = useData();

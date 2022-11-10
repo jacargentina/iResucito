@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Icon } from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import useStackNavOptions from '../navigation/useStackNavOptions';
+import { useStackNavOptions } from '../navigation/util';
 
 const AddListButton = (props: any) => {
   const { onPress } = props;

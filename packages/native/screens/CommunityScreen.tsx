@@ -10,7 +10,7 @@ import SearchBarView from '../components/SearchBarView';
 import { useData } from '../DataContext';
 import CallToAction from '../components/CallToAction';
 import I18n from '@iresucito/translations';
-import useStackNavOptions from '../navigation/useStackNavOptions';
+import { useStackNavOptions } from '../navigation/util';
 import { contactFilterByText, ordenAlfabetico } from '../util';
 import ContactListItem from './ContactListItem';
 
