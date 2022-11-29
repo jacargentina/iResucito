@@ -9,11 +9,8 @@ import PDFViewer from '../screens/PDFViewer';
 import ShareListButton from '../components/ShareListButton';
 import AddSongButton from '../components/AddSongButton';
 import { useData } from '../DataContext';
-import {
-  useStackNavOptions,
-  getSongDetailOptions,
-  getPdfViewerOptions,
-} from './util';
+import { getSongDetailOptions, getPdfViewerOptions } from './util';
+import useStackNavOptions from '../navigation/StackNavOptions';
 import { Song } from '@iresucito/core';
 
 type ListsStackParamList = {

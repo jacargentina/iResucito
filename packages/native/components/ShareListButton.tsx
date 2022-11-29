@@ -4,7 +4,7 @@ import { Icon, Actionsheet, useDisclose } from 'native-base';
 import { useRoute } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useData } from '../DataContext';
-import { useStackNavOptions } from '../navigation/util';
+import useStackNavOptions from '../navigation/StackNavOptions';
 import I18n from '@iresucito/translations';
 
 const ShareListButton = (props: any) => {

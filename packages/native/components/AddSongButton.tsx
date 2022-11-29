@@ -3,7 +3,7 @@ import { Icon } from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { useData } from '../DataContext';
-import { useStackNavOptions } from '../navigation/util';
+import useStackNavOptions from '../navigation/StackNavOptions';
 
 const AddSongButton = (props: any) => {
   const options = useStackNavOptions();

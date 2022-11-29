@@ -11,7 +11,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import I18n from '@iresucito/translations';
 import { getChordsScale } from '@iresucito/core';
 import { useData } from '../DataContext';
-import { useStackNavOptions } from '../navigation/util';
+import useStackNavOptions from '../navigation/StackNavOptions';
 
 const TransportNotesButton = (props: any) => {
   const data = useData();
@@ -82,14 +82,12 @@ const TransportNotesButton = (props: any) => {
         variant="solid"
         style={{
           marginRight: 3,
-        }}
-      >
+        }}>
         <Text
           bold
           italic
           textAlign="center"
-          color={options.headerTitleStyle.color}
-        >
+          color={options.headerTitleStyle.color}>
           {song.transportTo}
         </Text>
       </Badge>
@@ -100,8 +98,7 @@ const TransportNotesButton = (props: any) => {
       <MenuOptions
         customStyles={{
           optionWrapper: { paddingHorizontal: 10, paddingVertical: 10 },
-        }}
-      >
+        }}>
         {song.transportTo != null && (
           <MenuOption value={null} text="Original" />
         )}

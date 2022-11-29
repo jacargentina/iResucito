@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Icon } from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useRoute } from '@react-navigation/native';
-import {useStackNavOptions} from '../navigation/util';
+import useStackNavOptions from '../navigation/StackNavOptions';
 import { useData } from '../DataContext';
 
 const SharePDFButton = (props: any) => {

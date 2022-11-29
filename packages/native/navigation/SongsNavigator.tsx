@@ -6,11 +6,8 @@ import SongDetail from '../screens/SongDetail';
 import PDFViewer from '../screens/PDFViewer';
 import I18n from '@iresucito/translations';
 import { useData } from '../DataContext';
-import {
-  useStackNavOptions,
-  getSongDetailOptions,
-  getPdfViewerOptions,
-} from './util';
+import { getSongDetailOptions, getPdfViewerOptions } from './util';
+import useStackNavOptions from './StackNavOptions';
 import { Song } from '@iresucito/core';
 
 type SongsStackParamList = {

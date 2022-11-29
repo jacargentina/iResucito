@@ -7,7 +7,7 @@ import SongPreviewScreenDialog from '../screens/SongPreviewScreenDialog';
 import SongPreviewPdfDialog from '../screens/SongPreviewPdfDialog';
 import MenuNavigator from './MenuNavigator';
 import SongChooserNavigator from './SongChooserNavigator';
-import { useStackNavOptions } from './util';
+import useStackNavOptions from './StackNavOptions';
 
 export type RootStackParamList = {
   Menu: undefined;

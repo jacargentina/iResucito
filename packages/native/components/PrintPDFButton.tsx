@@ -3,7 +3,7 @@ import RNPrint from 'react-native-print';
 import { Icon } from 'native-base';
 import { useRoute } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { useStackNavOptions } from '../navigation/util';
+import useStackNavOptions from '../navigation/StackNavOptions';
 
 const PrintPDFButton = (props: any) => {
   const options = useStackNavOptions();

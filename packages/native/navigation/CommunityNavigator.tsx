@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import CommunityScreen from '../screens/CommunityScreen';
 import I18n from '@iresucito/translations';
 import { useData } from '../DataContext';
-import { useStackNavOptions } from './util';
+import useStackNavOptions from './StackNavOptions';
 
 const Stack = createStackNavigator();
 
