@@ -21,10 +21,13 @@ export async function generateSongPDF(
       ? RNFS.TemporaryDirectoryPath
       : RNFS.CachesDirectoryPath + '/';
 
-  const pdfPath =
+  const filename =
     songsToPdf.length > 1
-      ? `${folder}/iResucito${fileSuffix}.pdf`
-      : `${folder}/${songsToPdf[0].song.titulo}.pdf`;
+      ? `${fileSuffix}`
+      : `${songsToPdf[0].song.titulo}`;
+
+  const safeFileName = filename.replace('/','-');
+  const pdfPath = `${folder}/iResucito${safeFileName}.pdf`;
 
   const reader = Platform.OS === 'ios' ? RNFS.readFile : RNFS.readFileAssets;
   const fontFolder = Platform.OS === 'ios' ? RNFS.MainBundlePath : 'fonts';
@@ -48,7 +51,8 @@ export async function generateListPDF(
       ? RNFS.TemporaryDirectoryPath
       : RNFS.CachesDirectoryPath + '/';
 
-  const pdfPath = `${folder}/iResucito-${list.name}.pdf`;
+  const safeFileName = list.name.replace('/','-');
+  const pdfPath = `${folder}/iResucito-${safeFileName}.pdf`;
 
   const reader = Platform.OS === 'ios' ? RNFS.readFile : RNFS.readFileAssets;
   const fontFolder = Platform.OS === 'ios' ? RNFS.MainBundlePath : 'fonts';
