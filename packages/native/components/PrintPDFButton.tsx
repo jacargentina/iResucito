@@ -1,13 +1,16 @@
 import * as React from 'react';
 import RNPrint from 'react-native-print';
 import { Icon } from 'native-base';
-import { useRoute } from '@react-navigation/native';
+import { RouteProp, useRoute } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import useStackNavOptions from '../navigation/StackNavOptions';
+import { SongsStackParamList } from '../navigation/SongsNavigator';
 
-const PrintPDFButton = (props: any) => {
+type PDFViewerRouteProp = RouteProp<SongsStackParamList, 'PDFViewer'>;
+
+const PrintPDFButton = () => {
   const options = useStackNavOptions();
-  const route = useRoute();
+  const route = useRoute<PDFViewerRouteProp>();
   const { uri } = route.params;
   return (
     <Icon

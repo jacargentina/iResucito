@@ -1,14 +1,17 @@
 import * as React from 'react';
 import { Icon } from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { useRoute } from '@react-navigation/native';
+import { RouteProp, useRoute } from '@react-navigation/native';
 import useStackNavOptions from '../navigation/StackNavOptions';
 import { useData } from '../DataContext';
+import { SongsStackParamList } from '../navigation/SongsNavigator';
 
-const SharePDFButton = (props: any) => {
+type PDFViewerRouteProp = RouteProp<SongsStackParamList, 'PDFViewer'>;
+
+const SharePDFButton = () => {
   const options = useStackNavOptions();
   const data = useData();
-  const route = useRoute();
+  const route = useRoute<PDFViewerRouteProp>();
   const { sharePDF } = data;
   const { title, uri } = route.params;
   return (

@@ -42,10 +42,10 @@ const ModalView = (props: any) => {
     <Box safeArea bg="white" h="100%">
       <ConditionalWrapper
         condition={keyboardAvoidingView}
-        wrapper={(childs) => (
+        wrapper={(childs: any) => (
           <KeyboardAvoidingView
             style={{ flexGrow: 1 }}
-            behavior={Platform.OS === 'android' ? null : 'padding'}>
+            behavior={Platform.OS === 'android' ? undefined : 'padding'}>
             {childs}
           </KeyboardAvoidingView>
         )}>

@@ -7,7 +7,7 @@ import { useData } from '../DataContext';
 import ModalView from '../components/ModalView';
 import I18n from '@iresucito/translations';
 
-const ListNameDialog = (props: any) => {
+const ListNameDialog = () => {
   const data = useData();
   const navigation = useNavigation();
   const route = useRoute();
@@ -70,8 +70,7 @@ const ListNameDialog = (props: any) => {
             alignSelf: 'flex-end',
           }}
           isDisabled={!actionEnabled}
-          onPress={runActionOnList}
-        >
+          onPress={runActionOnList}>
           {action === 'create' ? I18n.t('ui.create') : I18n.t('ui.rename')}
         </Button>
       }
@@ -83,12 +82,10 @@ const ListNameDialog = (props: any) => {
           style={{
             alignSelf: 'flex-start',
           }}
-          onPress={() => navigation.goBack()}
-        >
+          onPress={() => navigation.goBack()}>
           {I18n.t('ui.cancel')}
         </Button>
-      }
-    >
+      }>
       <Box px="5">
         <FormControl mb="5" isInvalid={!actionEnabled}>
           <Input

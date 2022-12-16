@@ -10,13 +10,19 @@ import useStackNavOptions from '../navigation/StackNavOptions';
 
 import type { SongsStackParamList } from '../navigation/SongsNavigator';
 import type { ListsStackParamList } from '../navigation/ListsNavigator';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 type SongDetailRouteProp1 = RouteProp<SongsStackParamList, 'SongDetail'>;
 type SongDetailRouteProp2 = RouteProp<ListsStackParamList, 'SongDetail'>;
 
-const ViewPdfButton = (props: any) => {
+type PDFViewerScreenNavigationProp = StackNavigationProp<
+  SongsStackParamList,
+  'PDFViewer'
+>;
+
+const ViewPdfButton = () => {
   const options = useStackNavOptions();
-  const navigation = useNavigation();
+  const navigation = useNavigation<PDFViewerScreenNavigationProp>();
   const route = useRoute<SongDetailRouteProp1 | SongDetailRouteProp2>();
   const { song } = route.params;
   if (!song) {

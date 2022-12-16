@@ -4,6 +4,7 @@ import React, {
   useCallback,
   useMemo,
   useContext,
+  SetStateAction,
 } from 'react';
 //import { useWhatChanged } from '@simbathesailor/use-what-changed';
 import { Alert, Platform, PermissionsAndroid } from 'react-native';
@@ -34,20 +35,25 @@ import {
 } from './util';
 
 type UseSongsMeta = {
-  songs: any;
-  setSongs: any;
-  localeSongs: any;
-  setLocaleSongs: any;
+  songs: Song[];
+  setSongs: React.Dispatch<SetStateAction<Song[]>>;
+  localeSongs: SongFile[];
+  setLocaleSongs: React.Dispatch<SetStateAction<SongFile[]>>;
   settingsFileExists: any;
   clearSongSettings: any;
-  setSongSetting: any;
+  setSongSetting: (
+    key: string,
+    loc: string,
+    setting: SongSetting,
+    value: any
+  ) => Promise<Song>;
   loadSongs: any;
 };
 
 const useSongsMeta = (locale: string | undefined): UseSongsMeta => {
   const [settingsFileExists, setSettingsFileExists] = useState<boolean>(false);
-  const [songs, setSongs] = useState<Array<Song> | undefined>([]);
-  const [localeSongs, setLocaleSongs] = useState<Array<SongFile>>([]);
+  const [songs, setSongs] = useState<Song[]>([]);
+  const [localeSongs, setLocaleSongs] = useState<SongFile[]>([]);
 
   const initializeSingleSong = (song: Song) => {
     if (!songs) {
@@ -191,18 +197,15 @@ type UseLists = {
   setList: any;
   getListForUI: any;
   getListsForUI: any;
-  shareList: any;
+  shareList: (listName: string, loc: string, type: ShareListType) => void;
   importList: any;
 };
 
-const useLists = (songs: any): UseLists => {
+const useLists = (songs: Song[]): UseLists => {
   const [initialized, setInitialized] = useState(false);
   const [lists, initLists] = usePersist('lists', 'object', {});
 
-  const addList = (
-    listName: string,
-    type: 'libre' | 'palabra' | 'eucaristia'
-  ) => {
+  const addList = (listName: string, type: ListType) => {
     let schema = { type: type, version: 1 };
     switch (type) {
       case 'libre':
@@ -408,7 +411,7 @@ const useLists = (songs: any): UseLists => {
   const shareList = (
     listName: string,
     localeValue: string,
-    format: 'native' | 'text' | 'pdf'
+    format: ShareListType
   ) => {
     switch (format) {
       case 'native':
@@ -469,7 +472,7 @@ const useLists = (songs: any): UseLists => {
           title: I18n.t('ui.share'),
           message: message,
           subject: `iResucitó - ${listName}`,
-          url: null,
+          url: undefined,
           failOnCancel: false,
         })
           .then((res) => {
@@ -842,15 +845,16 @@ const useCommunity = (): UseCommunity => {
     }
   };
 
-  const getContacts = useCallback(async (reqPerm: boolean): Promise<
-    Contacts.Contact[]
-  > => {
-    const hasPermission = await checkContactsPermission(reqPerm);
-    if (hasPermission) {
-      return Contacts.getAll();
-    }
-    return [];
-  }, []);
+  const getContacts = useCallback(
+    async (reqPerm: boolean): Promise<Contacts.Contact[]> => {
+      const hasPermission = await checkContactsPermission(reqPerm);
+      if (hasPermission) {
+        return Contacts.getAll();
+      }
+      return [];
+    },
+    []
+  );
 
   useEffect(() => {
     if (brothers && Platform.OS === 'ios') {
@@ -955,8 +959,7 @@ const DataContextWrapper = (props: any): any => {
         localeReal,
         keepAwake,
         zoomLevel,
-      }}
-    >
+      }}>
       {props.children}
     </DataContext.Provider>
   );

@@ -1,26 +1,19 @@
 import * as React from 'react';
 import { Icon } from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {
-  CompositeNavigationProp,
-  RouteProp,
-  useNavigation,
-  useRoute,
-} from '@react-navigation/native';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
-import { StackNavigationProp } from '@react-navigation/stack';
 import { useData } from '../DataContext';
 import useStackNavOptions from '../navigation/StackNavOptions';
 
 import type { ListsStackParamList } from '../navigation/ListsNavigator';
 import type { RootStackParamList } from '../navigation/RootNavigator';
-import type { ChooserParamList } from '../navigation/SongChooserNavigator';
 
 type ListDetailRouteProp = RouteProp<ListsStackParamList, 'ListDetail'>;
 
-type SongChooserScreenNavigationProp = CompositeNavigationProp<
-  BottomTabNavigationProp<RootStackParamList, 'SongChooser'>,
-  StackNavigationProp<ChooserParamList>
+type SongChooserScreenNavigationProp = BottomTabNavigationProp<
+  RootStackParamList,
+  'SongChooser'
 >;
 
 const AddSongButton = () => {

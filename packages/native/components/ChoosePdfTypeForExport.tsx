@@ -1,16 +1,24 @@
 import * as React from 'react';
 import { Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 import { Text, Actionsheet } from 'native-base';
 import I18n from '@iresucito/translations';
-import { defaultExportToPdfOptions } from '@iresucito/core';
+import { defaultExportToPdfOptions, SongToPdf } from '@iresucito/core';
 import { useData } from '../DataContext';
 import { NativeParser } from '../util';
 import { generateSongPDF } from '../pdf';
 
+import type { SongsStackParamList } from '../navigation/SongsNavigator';
+
+type PDFViewerScreenNavigationProp = StackNavigationProp<
+  SongsStackParamList,
+  'PDFViewer'
+>;
+
 const ChoosePdfTypeForExport = (props: any) => {
   const { isOpen, onClose } = props.chooser;
-  const navigation = useNavigation();
+  const navigation = useNavigation<PDFViewerScreenNavigationProp>();
   const data = useData();
   const { songs } = data.songsMeta;
   const [, setLoading] = data.loading;
@@ -23,8 +31,7 @@ const ChoosePdfTypeForExport = (props: any) => {
           onPress={() => {
             onClose();
             Alert.alert('TODO', 'TBD');
-          }}
-        >
+          }}>
           {I18n.t('pdf_export_options.selected songs')}
         </Actionsheet.Item>
         <Actionsheet.Item
@@ -59,8 +66,7 @@ const ChoosePdfTypeForExport = (props: any) => {
               });
               setLoading({ isLoading: false, text: '' });
             });
-          }}
-        >
+          }}>
           {I18n.t('pdf_export_options.complete book')}
         </Actionsheet.Item>
       </Actionsheet.Content>

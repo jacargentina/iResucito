@@ -10,7 +10,7 @@ const ContactPhoto = (props: any) => {
   return (
     <Avatar
       source={
-        props.item.hasThumbnail ? { uri: props.item.thumbnailPath } : null
+        props.item.hasThumbnail ? { uri: props.item.thumbnailPath } : undefined
       }>
       {initials}
     </Avatar>

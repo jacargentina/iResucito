@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { AndroidBackHandler } from 'react-navigation-backhandler';
+import { useAndroidBackHandler } from 'react-navigation-backhandler';
 import { Platform, StyleSheet } from 'react-native';
 import { Box, Input, Icon, useTheme } from 'native-base';
 import { useDebounce } from 'use-debounce';
@@ -36,7 +36,7 @@ const DebouncedInput = (props: any) => {
         <Icon as={Ionicons} size="sm" name="search" color="rose.500" ml="2" />
       }
       InputRightElement={
-        Platform.OS === 'android' && (
+        Platform.OS === 'android' ? (
           <Icon
             as={Ionicons}
             size="sm"
@@ -45,7 +45,7 @@ const DebouncedInput = (props: any) => {
             mr="2"
             onPress={() => setSearchTerm('')}
           />
-        )
+        ) : undefined
       }
     />
   );
@@ -54,12 +54,14 @@ const DebouncedInput = (props: any) => {
 const SearchBarView = (props: any) => {
   const navigation = useNavigation();
   const { colors } = useTheme();
+
+  useAndroidBackHandler(() => {
+    navigation.goBack();
+    return true;
+  });
+
   return (
-    <AndroidBackHandler
-      onBackPress={() => {
-        navigation.goBack();
-        return true;
-      }}>
+    <>
       <DebouncedInput value={props.value} setValue={props.setValue} />
       <Box
         flex={1}
@@ -67,7 +69,7 @@ const SearchBarView = (props: any) => {
         borderTopColor={colors.muted['300']}>
         {props.children}
       </Box>
-    </AndroidBackHandler>
+    </>
   );
 };
 

@@ -7,18 +7,27 @@ import {
   MenuOption,
   MenuTrigger,
 } from 'react-native-popup-menu';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import I18n from '@iresucito/translations';
-import { getChordsScale } from '@iresucito/core';
+import { getChordsScale, Song } from '@iresucito/core';
 import { useData } from '../DataContext';
 import useStackNavOptions from '../navigation/StackNavOptions';
+import { SongsStackParamList } from '../navigation/SongsNavigator';
+import { StackNavigationProp } from '@react-navigation/stack';
 
-const TransportNotesButton = (props: any) => {
+type SongDetailRouteProp = RouteProp<SongsStackParamList, 'SongDetail'>;
+
+type SongDetailScreenNavigationProp = StackNavigationProp<
+  SongsStackParamList,
+  'SongDetail'
+>;
+
+const TransportNotesButton = () => {
   const data = useData();
   const options = useStackNavOptions();
-  const navigation = useNavigation();
+  const navigation = useNavigation<SongDetailScreenNavigationProp>();
   const { colors } = useTheme();
-  const route = useRoute();
+  const route = useRoute<SongDetailRouteProp>();
   const { setSongSetting } = data.songsMeta;
   const { song } = route.params;
 
@@ -41,7 +50,7 @@ const TransportNotesButton = (props: any) => {
               color: 'white',
             },
           }
-        : null;
+        : undefined;
     return (
       <MenuOption
         key={i}
@@ -54,7 +63,7 @@ const TransportNotesButton = (props: any) => {
 
   const changeTransport = (newTransport: any) => {
     setSongSetting(song.key, I18n.locale, 'transportTo', newTransport).then(
-      (updatedSong) => {
+      (updatedSong: Song) => {
         navigation.replace('SongDetail', {
           song: updatedSong,
         });

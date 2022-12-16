@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
+import { NavigatorScreenParams } from '@react-navigation/native';
 import ContactChooserDialog from '../screens/ContactChooserDialog';
 import ListNameDialog from '../screens/ListNameDialog';
 import ContactImportDialog from '../screens/ContactImportDialog';
@@ -8,13 +9,16 @@ import SongPreviewPdfDialog from '../screens/SongPreviewPdfDialog';
 import MenuNavigator from './MenuNavigator';
 import SongChooserNavigator, { ChooserParamList } from './SongChooserNavigator';
 import useStackNavOptions from './StackNavOptions';
-import { NavigatorScreenParams } from '@react-navigation/native';
 
 export type RootStackParamList = {
   Menu: undefined;
   SongChooser: NavigatorScreenParams<ChooserParamList>;
   ContactChooser: { target: { listName: string; listKey: string } };
-  ListName: undefined;
+  ListName: {
+    listName: string;
+    action: ListAction;
+    type: ListType;
+  };
   ContactImport: undefined;
   SongPreviewScreen: undefined;
   SongPreviewPdf: undefined;
