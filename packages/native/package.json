@@ -105,6 +105,7 @@
   "devDependencies": {
     "@simbathesailor/use-what-changed": "^2.0.0",
     "@types/jest": "^29.2.4",
+    "@types/path-parse": "^1.0.19",
     "colors": "^1.4.0",
     "diff": "^5.1.0",
     "jest": "^29.3.1",

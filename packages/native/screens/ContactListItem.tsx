@@ -2,8 +2,9 @@ import * as React from 'react';
 import { VStack, HStack, Icon, Text, Pressable } from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import ContactPhoto from '../components/ContactPhoto';
+import { Contact } from 'react-native-contacts';
 
-const ContactListItem = (props: any) =>{
+const ContactListItem = (props: { item: Contact }) => {
   const { item, ...rest } = props;
   var contactFullName = `${item.givenName} ${item.familyName}`;
   return (

@@ -23,24 +23,21 @@ const ShareListButton = (props: any) => {
             onPress={() => {
               onClose();
               shareList(listName, data.localeReal, 'native');
-            }}
-          >
+            }}>
             {I18n.t('list_export_options.native')}
           </Actionsheet.Item>
           <Actionsheet.Item
             onPress={() => {
               onClose();
               shareList(listName, data.localeReal, 'text');
-            }}
-          >
+            }}>
             {I18n.t('list_export_options.plain text')}
           </Actionsheet.Item>
           <Actionsheet.Item
             onPress={() => {
               onClose();
               shareList(listName, data.localeReal, 'pdf');
-            }}
-          >
+            }}>
             {I18n.t('list_export_options.pdf file')}
           </Actionsheet.Item>
         </Actionsheet.Content>
@@ -52,8 +49,8 @@ const ShareListButton = (props: any) => {
         style={{
           marginTop: 4,
           marginRight: 12,
-          color: options.headerTitleStyle.color,
         }}
+        color={options.headerTitleStyle.color}
         onPress={() => {
           Keyboard.dismiss();
           onOpen();

@@ -13,7 +13,7 @@ import { getSongDetailOptions, getPdfViewerOptions } from './util';
 import useStackNavOptions from '../navigation/StackNavOptions';
 import { Song } from '@iresucito/core';
 
-type ListsStackParamList = {
+export type ListsStackParamList = {
   ListsSearch: undefined;
   ListDetail: { listName: string };
   SongDetail: { song: Song };

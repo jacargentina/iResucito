@@ -1,16 +1,34 @@
 import * as React from 'react';
 import { Icon } from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import {
+  CompositeNavigationProp,
+  RouteProp,
+  useNavigation,
+  useRoute,
+} from '@react-navigation/native';
+import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
+import { StackNavigationProp } from '@react-navigation/stack';
 import { useData } from '../DataContext';
 import useStackNavOptions from '../navigation/StackNavOptions';
 
-const AddSongButton = (props: any) => {
+import type { ListsStackParamList } from '../navigation/ListsNavigator';
+import type { RootStackParamList } from '../navigation/RootNavigator';
+import type { ChooserParamList } from '../navigation/SongChooserNavigator';
+
+type ListDetailRouteProp = RouteProp<ListsStackParamList, 'ListDetail'>;
+
+type SongChooserScreenNavigationProp = CompositeNavigationProp<
+  BottomTabNavigationProp<RootStackParamList, 'SongChooser'>,
+  StackNavigationProp<ChooserParamList>
+>;
+
+const AddSongButton = () => {
   const options = useStackNavOptions();
   const data = useData();
   const { getListForUI } = data.lists;
-  const navigation = useNavigation();
-  const route = useRoute();
+  const navigation = useNavigation<SongChooserScreenNavigationProp>();
+  const route = useRoute<ListDetailRouteProp>();
   const { listName } = route.params;
 
   const uiList = getListForUI(listName);
@@ -27,8 +45,8 @@ const AddSongButton = (props: any) => {
       style={{
         marginTop: 4,
         marginRight: 8,
-        color: options.headerTitleStyle.color,
       }}
+      color={options.headerTitleStyle.color}
       onPress={() =>
         navigation.navigate('SongChooser', {
           screen: 'Dialog',

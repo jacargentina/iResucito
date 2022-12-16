@@ -10,7 +10,7 @@ import { getSongDetailOptions, getPdfViewerOptions } from './util';
 import useStackNavOptions from './StackNavOptions';
 import { Song } from '@iresucito/core';
 
-type SongsStackParamList = {
+export type SongsStackParamList = {
   SongSearch: undefined;
   SongList: { title_key: string; filter?: any; sort?: Function };
   SongDetail: { song: Song };

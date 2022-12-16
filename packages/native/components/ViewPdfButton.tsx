@@ -1,17 +1,23 @@
 import * as React from 'react';
 import { Icon } from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import I18n from '@iresucito/translations';
-import { defaultExportToPdfOptions } from '@iresucito/core';
+import { defaultExportToPdfOptions, SongToPdf } from '@iresucito/core';
 import { NativeParser } from '../util';
 import { generateSongPDF } from '../pdf';
 import useStackNavOptions from '../navigation/StackNavOptions';
 
+import type { SongsStackParamList } from '../navigation/SongsNavigator';
+import type { ListsStackParamList } from '../navigation/ListsNavigator';
+
+type SongDetailRouteProp1 = RouteProp<SongsStackParamList, 'SongDetail'>;
+type SongDetailRouteProp2 = RouteProp<ListsStackParamList, 'SongDetail'>;
+
 const ViewPdfButton = (props: any) => {
   const options = useStackNavOptions();
   const navigation = useNavigation();
-  const route = useRoute();
+  const route = useRoute<SongDetailRouteProp1 | SongDetailRouteProp2>();
   const { song } = route.params;
   if (!song) {
     return null;
@@ -25,8 +31,8 @@ const ViewPdfButton = (props: any) => {
       style={{
         marginTop: 4,
         marginRight: 8,
-        color: options.headerTitleStyle.color,
       }}
+      color={options.headerTitleStyle.color}
       onPress={() => {
         const { fullText } = song;
         const render = NativeParser.getForRender(

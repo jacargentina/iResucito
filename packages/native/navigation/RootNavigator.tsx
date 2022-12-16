@@ -6,12 +6,13 @@ import ContactImportDialog from '../screens/ContactImportDialog';
 import SongPreviewScreenDialog from '../screens/SongPreviewScreenDialog';
 import SongPreviewPdfDialog from '../screens/SongPreviewPdfDialog';
 import MenuNavigator from './MenuNavigator';
-import SongChooserNavigator from './SongChooserNavigator';
+import SongChooserNavigator, { ChooserParamList } from './SongChooserNavigator';
 import useStackNavOptions from './StackNavOptions';
+import { NavigatorScreenParams } from '@react-navigation/native';
 
 export type RootStackParamList = {
   Menu: undefined;
-  SongChooser: undefined;
+  SongChooser: NavigatorScreenParams<ChooserParamList>;
   ContactChooser: { target: { listName: string; listKey: string } };
   ListName: undefined;
   ContactImport: undefined;
@@ -31,8 +32,7 @@ const RootNavigator = () => {
         options={{ headerShown: false }}
       />
       <Stack.Group
-        screenOptions={{ headerShown: false, presentation: 'modal' }}
-      >
+        screenOptions={{ headerShown: false, presentation: 'modal' }}>
         <Stack.Screen name="SongChooser" component={SongChooserNavigator} />
         <Stack.Screen name="ContactChooser" component={ContactChooserDialog} />
         <Stack.Screen name="ListName" component={ListNameDialog} />

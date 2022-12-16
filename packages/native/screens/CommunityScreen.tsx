@@ -10,7 +10,7 @@ import SearchBarView from '../components/SearchBarView';
 import { useData } from '../DataContext';
 import CallToAction from '../components/CallToAction';
 import I18n from '@iresucito/translations';
-import { useStackNavOptions } from '../navigation/util';
+import useStackNavOptions from '../navigation/StackNavOptions';
 import { contactFilterByText, ordenAlfabetico } from '../util';
 import ContactListItem from './ContactListItem';
 
@@ -98,8 +98,7 @@ const SwipeableRow = (props: { item: any }) => {
             />
           </View>
         );
-      }}
-    >
+      }}>
       <ContactListItem item={item} />
     </Swipeable>
   );
@@ -164,8 +163,8 @@ const CommunityScreen = () => {
           style={{
             marginTop: 4,
             marginRight: 8,
-            color: options.headerTitleStyle.color,
           }}
+          color={options.headerTitleStyle.color}
           onPress={contactImport}
         />
       ),

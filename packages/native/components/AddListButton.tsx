@@ -14,8 +14,8 @@ const AddListButton = (props: any) => {
       style={{
         marginTop: 4,
         marginRight: 8,
-        color: options.headerTitleStyle.color,
       }}
+      color={options.headerTitleStyle.color}
       onPress={onPress}
     />
   );

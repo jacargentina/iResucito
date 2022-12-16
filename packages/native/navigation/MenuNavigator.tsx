@@ -11,7 +11,7 @@ import ListsNavigator from './ListsNavigator';
 import CommunityNavigator from './CommunityNavigator';
 import SettingsNavigator from './SettingsNavigator';
 
-type MenuParamList = {
+export type MenuParamList = {
   Songs: undefined;
   Lists: undefined;
   Community: undefined;

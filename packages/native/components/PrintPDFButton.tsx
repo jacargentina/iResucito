@@ -17,8 +17,8 @@ const PrintPDFButton = (props: any) => {
       style={{
         marginTop: 4,
         marginRight: 8,
-        color: options.headerTitleStyle.color,
       }}
+      color={options.headerTitleStyle.color}
       onPress={() => {
         RNPrint.print({ filePath: uri, isLandscape: true });
       }}
