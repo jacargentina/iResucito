@@ -187,23 +187,32 @@ const useSongsMeta = (locale: string | undefined): UseSongsMeta => {
   };
 };
 
+type Lists = {
+  [listName: string]: any;
+};
+
+type ListForUI = {
+  name: string;
+  type: string;
+};
+
 type UseLists = {
-  lists: any;
-  initLists: any;
-  addList: any;
-  removeList: any;
-  renameList: any;
-  getList: any;
-  setList: any;
-  getListForUI: any;
-  getListsForUI: any;
+  lists: Lists;
+  initLists: (value: any) => void;
+  addList: (listName: string, type: ListType) => void;
+  removeList: (listName: string) => void;
+  renameList: (listName: string, newName: string) => void;
+  getList: (listName: string, listKey: string) => any;
+  setList: (listName: string, listKey: string, listValue: any) => void;
+  getListForUI: (listName: any) => any;
+  getListsForUI: (locale: string) => ListForUI[];
   shareList: (listName: string, loc: string, type: ShareListType) => void;
-  importList: any;
+  importList: (listPath: string) => Promise<string | void>;
 };
 
 const useLists = (songs: Song[]): UseLists => {
   const [initialized, setInitialized] = useState(false);
-  const [lists, initLists] = usePersist('lists', 'object', {});
+  const [lists, initLists] = usePersist<Lists>('lists', 'object', {});
 
   const addList = (listName: string, type: ListType) => {
     let schema = { type: type, version: 1 };
@@ -356,7 +365,7 @@ const useLists = (songs: Song[]): UseLists => {
     [songs]
   );
 
-  const getListsForUI = (localeValue: string) => {
+  const getListsForUI = (localeValue: string): ListForUI[] => {
     var listNames = Object.keys(lists);
     return listNames.map((name) => {
       var listMap = lists[name];
