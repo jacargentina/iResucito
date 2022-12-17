@@ -5,7 +5,11 @@ import I18n from '@iresucito/translations';
 import { useData } from '../DataContext';
 import useStackNavOptions from './StackNavOptions';
 
-const Stack = createStackNavigator();
+export type CommunityStackParamList = {
+  CommunitySearch: undefined;
+};
+
+const Stack = createStackNavigator<CommunityStackParamList>();
 
 const CommunityNavigator = () => {
   const data = useData();

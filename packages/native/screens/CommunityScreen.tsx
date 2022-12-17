@@ -13,6 +13,9 @@ import I18n from '@iresucito/translations';
 import useStackNavOptions from '../navigation/StackNavOptions';
 import { contactFilterByText, ordenAlfabetico } from '../util';
 import ContactListItem from './ContactListItem';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '../navigation/RootNavigator';
+import { Contact } from 'react-native-contacts';
 
 const SwipeableRow = (props: { item: any }) => {
   const data = useData();
@@ -33,7 +36,7 @@ const SwipeableRow = (props: { item: any }) => {
   );
 
   const addOrRemove = useCallback(
-    (contact: any) => {
+    (contact: Contact) => {
       let i = brothers.findIndex((c) => c.recordID === contact.recordID);
       // Ya esta importado
       if (i !== -1) {
@@ -46,7 +49,7 @@ const SwipeableRow = (props: { item: any }) => {
   );
 
   const contactDelete = useCallback(
-    (contact) => {
+    (contact: Contact) => {
       Alert.alert(
         `${I18n.t('ui.delete')} "${contact.givenName}"`,
         I18n.t('ui.delete confirmation'),
@@ -104,11 +107,16 @@ const SwipeableRow = (props: { item: any }) => {
   );
 };
 
+type ContactImportNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  'ContactImport'
+>;
+
 const CommunityScreen = () => {
   const data = useData();
   const options = useStackNavOptions();
   const isFocused = useIsFocused();
-  const navigation = useNavigation();
+  const navigation = useNavigation<ContactImportNavigationProp>();
   const { brothers, deviceContacts, populateDeviceContacts } = data.community;
   const listRef = useRef<any>();
   const [filter, setFilter] = useState('');

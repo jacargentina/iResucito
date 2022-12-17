@@ -16,7 +16,7 @@ import { useNavigation } from '@react-navigation/native';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import SwipeableRightAction from '../components/SwipeableRightAction';
 import SearchBarView from '../components/SearchBarView';
-import { useData } from '../DataContext';
+import { ListForUI, useData } from '../DataContext';
 import CallToAction from '../components/CallToAction';
 import AddListButton from '../components/AddListButton';
 import ChooseListTypeForAdd from '../components/ChooseListTypeForAdd';
@@ -28,10 +28,10 @@ const SwipeableRow = (props: { item: any }) => {
   const { colors } = useTheme();
   const { removeList } = data.lists;
   const { item } = props;
-  const swipeRef = useRef<typeof Swipeable>();
+  const swipeRef = useRef<Swipeable>(null);
 
   const listDelete = useCallback(
-    (listName) => {
+    (listName: string) => {
       Alert.alert(
         `${I18n.t('ui.delete')} "${listName}"`,
         I18n.t('ui.delete confirmation'),
@@ -54,7 +54,7 @@ const SwipeableRow = (props: { item: any }) => {
   );
 
   const listRename = useCallback(
-    (listName) => {
+    (listName: string) => {
       navigation.navigate('ListName', {
         action: 'rename',
         listName: listName,
@@ -77,7 +77,7 @@ const SwipeableRow = (props: { item: any }) => {
               text={I18n.t('ui.rename')}
               x={250}
               onPress={() => {
-                swipeRef.current.close();
+                swipeRef.current?.close();
                 listRename(item.name);
               }}
             />
@@ -87,28 +87,25 @@ const SwipeableRow = (props: { item: any }) => {
               text={I18n.t('ui.delete')}
               x={125}
               onPress={() => {
-                swipeRef.current.close();
+                swipeRef.current?.close();
                 listDelete(item.name);
               }}
             />
           </View>
         );
-      }}
-    >
+      }}>
       <Pressable
         onPress={() => {
           navigation.navigate('ListDetail', {
             listName: item.name,
           });
-        }}
-      >
+        }}>
         <HStack
           space={2}
           p="3"
           alignItems="center"
           borderBottomWidth={1}
-          borderBottomColor="muted.200"
-        >
+          borderBottomColor="muted.200">
           <Icon
             w="12%"
             as={Ionicons}
@@ -126,18 +123,19 @@ const SwipeableRow = (props: { item: any }) => {
     </Swipeable>
   );
 };
-const ListScreen = (props: any) => {
+
+const ListScreen = () => {
   const data = useData();
   const navigation = useNavigation();
   const { getListsForUI } = data.lists;
-  const [filtered, setFiltered] = useState([]);
+  const [filtered, setFiltered] = useState<ListForUI[]>([]);
   const [filter, setFilter] = useState('');
   const chooser = useDisclose();
 
-  const allLists = useMemo(() => getListsForUI(data.localeReal), [
-    data.localeReal,
-    getListsForUI,
-  ]);
+  const allLists = useMemo(
+    () => getListsForUI(I18n.locale),
+    [I18n.locale, getListsForUI]
+  );
 
   useEffect(() => {
     var result = allLists;

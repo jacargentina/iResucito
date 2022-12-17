@@ -3,6 +3,7 @@ import { StyleSheet, Platform } from 'react-native';
 import * as RNLocalize from 'react-native-localize';
 import * as RNFS from 'react-native-fs';
 import DeviceInfo from 'react-native-device-info';
+import { Contact } from 'react-native-contacts';
 import {
   SongsParser,
   SongsExtras,
@@ -11,6 +12,7 @@ import {
   Song,
   SongIndexPatch,
 } from '@iresucito/core';
+import { BrotherContact } from './DataContext';
 
 export function ordenAlfabetico(a: any, b: any): number {
   if (a.givenName < b.givenName) {
@@ -32,17 +34,22 @@ export function ordenClasificacion(a: Song, b: Song): number {
   return 0;
 }
 
+export type ContactForImport = Contact & { imported: boolean };
+
 export function getContactsForImport(
-  allContacts: Array<any>,
-  importedContacts: Array<any>
-): Array<any> {
+  allContacts: Contact[],
+  importedContacts: BrotherContact[]
+): ContactForImport[] {
   // Fitrar y generar contactos únicos
-  var grouped = allContacts.reduce((groups, item) => {
-    var fullname = `${item.givenName} ${item.familyName}`;
-    groups[fullname] = groups[fullname] || [];
-    groups[fullname].push(item);
-    return groups;
-  }, {});
+  var grouped = allContacts.reduce(
+    (groups: { [fullname: string]: Contact[] }, item) => {
+      var fullname = `${item.givenName} ${item.familyName}`;
+      groups[fullname] = groups[fullname] || [];
+      groups[fullname].push(item);
+      return groups;
+    },
+    {}
+  );
   var unique = [];
   for (var fullname in grouped) {
     if (grouped[fullname].length > 1) {
@@ -55,8 +62,8 @@ export function getContactsForImport(
   // De los únicos, marcar cuales ya estan importados
   var items = unique.map((c) => {
     var found = importedContacts.find((x) => x.recordID === c.recordID);
-    c.imported = found !== undefined;
-    return c;
+    var r: ContactForImport = { ...c, imported: found !== undefined };
+    return r;
   });
   items.sort(ordenAlfabetico);
   return items;
@@ -190,9 +197,10 @@ export const NativeExtras: SongsExtras = new NativeSongsExtras();
 
 export const NativeParser: SongsParser = new SongsParser(NativeStyles);
 
-export const contactFilterByText = (c: any, text: string): boolean => {
+export const contactFilterByText = (c: Contact, text: string): boolean => {
   return (
     c.givenName.toLowerCase().includes(text.toLowerCase()) ||
-    (c.familyName && c.familyName.toLowerCase().includes(text.toLowerCase()))
+    (typeof c.familyName == 'string' &&
+      c.familyName.toLowerCase().includes(text.toLowerCase()))
   );
 };

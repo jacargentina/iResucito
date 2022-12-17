@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { Image, Linking, Alert } from 'react-native';
-import { AndroidBackHandler } from 'react-navigation-backhandler';
+import { useAndroidBackHandler } from 'react-navigation-backhandler';
 import {
   Button,
   HStack,
@@ -34,6 +34,10 @@ const SettingsScreen = () => {
   const [version, setVersion] = useState('');
   const [songsResume, setSongsResume] = useState('-');
   const { songs, settingsFileExists, clearSongSettings } = data.songsMeta;
+
+  useAndroidBackHandler(() => {
+    return true;
+  });
 
   useEffect(() => {
     setVersion(DeviceInfo.getReadableVersion());
@@ -95,119 +99,111 @@ const SettingsScreen = () => {
   });
 
   return (
-    <AndroidBackHandler onBackPress={() => true}>
-      <ScrollView>
-        <VStack space={2} p="3">
-          <Text>{I18n.t('settings_title.locale')}</Text>
+    <ScrollView>
+      <VStack space={2} p="3">
+        <Text>{I18n.t('settings_title.locale')}</Text>
+        <Text fontSize="sm" color="muted.500">
+          {I18n.t('settings_note.locale')}
+        </Text>
+        <Select
+          selectedValue={locale}
+          onValueChange={(val) => {
+            // IMPORTANTE!
+            // Workaround de problema en Android
+            // https://github.com/facebook/react-native/issues/15556
+            setTimeout(() => {
+              setLocale(val);
+              // Para forzar refresco del titulo segun idioma nuevo
+              navigation.setParams({ title: '' });
+            }, 10);
+          }}>
+          {localesItems}
+        </Select>
+        <HStack space={2} p="3" justifyContent="center" alignItems="center">
+          <Icon as={Ionicons} name="podium-outline" size="md" />
           <Text fontSize="sm" color="muted.500">
-            {I18n.t('settings_note.locale')}
+            {songsResume}
           </Text>
-          <Select
-            selectedValue={locale}
-            onValueChange={(val) => {
-              // IMPORTANTE!
-              // Workaround de problema en Android
-              // https://github.com/facebook/react-native/issues/15556
-              setTimeout(() => {
-                setLocale(val);
-                // Para forzar refresco del titulo segun idioma nuevo
-                navigation.setParams({ title: '' });
-              }, 10);
-            }}
-          >
-            {localesItems}
-          </Select>
-          <HStack space={2} p="3" justifyContent="center" alignItems="center">
-            <Icon as={Ionicons} name="podium-outline" size="md" />
-            <Text fontSize="sm" color="muted.500">
-              {songsResume}
-            </Text>
-          </HStack>
-        </VStack>
-        <HStack
-          space={2}
-          p="3"
-          justifyContent="space-between"
-          alignItems="center"
-        >
-          <VStack w="80%" space={2}>
-            <Text>{I18n.t('settings_title.keep awake')}</Text>
-            <Text fontSize="sm" color="muted.500">
-              {I18n.t('settings_note.keep awake')}
-            </Text>
-          </VStack>
-          <Switch with="20%" value={keepAwake} onValueChange={setKeepAwake} />
         </HStack>
-        <Box
-          flex={1}
-          bg="white"
-          alignItems="center"
-          justifyContent="space-around"
-        >
-          <Image
-            source={cristo}
-            style={{
-              height: 190,
-              marginTop: 40,
-            }}
-            resizeMode="contain"
-          />
-          <Heading
-            color="rose.500"
-            mt="10"
-            style={{
-              fontWeight: 'bold',
-              fontStyle: 'italic',
-            }}
-          >
-            {appName}
-          </Heading>
-          <Text textAlign="center" fontSize="md" mt="5">
-            <Text bold>
-              {I18n.t('ui.version')}: {version}
-            </Text>
-            {'\n'} Javier Castro, 2017-2021
+      </VStack>
+      <HStack
+        space={2}
+        p="3"
+        justifyContent="space-between"
+        alignItems="center">
+        <VStack w="80%" space={2}>
+          <Text>{I18n.t('settings_title.keep awake')}</Text>
+          <Text fontSize="sm" color="muted.500">
+            {I18n.t('settings_note.keep awake')}
           </Text>
-          <Text textAlign="center" fontSize="sm" mt="10">
-            <Text bold>{I18n.t('ui.collaborators')}</Text>
-            {Object.keys(CollaboratorsIndex).map((lang) => {
-              return `\n ${CollaboratorsIndex[lang].join(', ')} (${lang})`;
-            })}
+        </VStack>
+        <Switch width="20%" value={keepAwake} onValueChange={setKeepAwake} />
+      </HStack>
+      <Box
+        flex={1}
+        bg="white"
+        alignItems="center"
+        justifyContent="space-around">
+        <Image
+          source={cristo}
+          style={{
+            height: 190,
+            marginTop: 40,
+          }}
+          resizeMode="contain"
+        />
+        <Heading
+          color="rose.500"
+          mt="10"
+          style={{
+            fontWeight: 'bold',
+            fontStyle: 'italic',
+          }}>
+          {appName}
+        </Heading>
+        <Text textAlign="center" fontSize="md" mt="5">
+          <Text bold>
+            {I18n.t('ui.version')}: {version}
           </Text>
-          <HStack my="5">
-            <Button m="5" bg="rose.500" borderRadius={32} onPress={sendMail}>
-              <Icon as={Ionicons} name="mail" color="white" />
-            </Button>
-            <Button m="5" bg="rose.500" borderRadius={32} onPress={sendTwitter}>
-              <Icon as={Ionicons} name="logo-twitter" color="white" />
-            </Button>
-          </HStack>
-          <Text fontSize="sm" textAlign="center">
-            {I18n.t('ui.contribute message')}
-          </Text>
+          {'\n'} Javier Castro, 2017-2021
+        </Text>
+        <Text textAlign="center" fontSize="sm" mt="10">
+          <Text bold>{I18n.t('ui.collaborators')}</Text>
+          {Object.keys(CollaboratorsIndex).map((lang) => {
+            return `\n ${CollaboratorsIndex[lang].join(', ')} (${lang})`;
+          })}
+        </Text>
+        <HStack my="5">
+          <Button m="5" bg="rose.500" borderRadius={32} onPress={sendMail}>
+            <Icon as={Ionicons} name="mail" color="white" />
+          </Button>
+          <Button m="5" bg="rose.500" borderRadius={32} onPress={sendTwitter}>
+            <Icon as={Ionicons} name="logo-twitter" color="white" />
+          </Button>
+        </HStack>
+        <Text fontSize="sm" textAlign="center">
+          {I18n.t('ui.contribute message')}
+        </Text>
+        <Button
+          my="8"
+          size="sm"
+          variant="ghost"
+          startIcon={<Icon as={Ionicons} name="browsers-outline" />}
+          onPress={goEditor}>
+          {I18n.t('ui.contribute button')}
+        </Button>
+        {settingsFileExists && (
           <Button
             my="8"
-            size="sm"
-            variant="ghost"
-            startIcon={<Icon as={Ionicons} name="browsers-outline" />}
-            onPress={goEditor}
-          >
-            {I18n.t('ui.contribute button')}
+            colorScheme="rose"
+            _text={{ color: 'white' }}
+            borderRadius={32}
+            onPress={clearSettings}>
+            {I18n.t('ui.clear song settings')}
           </Button>
-          {settingsFileExists && (
-            <Button
-              my="8"
-              colorScheme="rose"
-              _text={{ color: 'white' }}
-              borderRadius={32}
-              onPress={clearSettings}
-            >
-              {I18n.t('ui.clear song settings')}
-            </Button>
-          )}
-        </Box>
-      </ScrollView>
-    </AndroidBackHandler>
+        )}
+      </Box>
+    </ScrollView>
   );
 };
 

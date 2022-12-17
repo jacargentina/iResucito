@@ -13,63 +13,74 @@ import { Keyboard, StyleSheet } from 'react-native';
 import ModalView from '../components/ModalView';
 import SearchBarView from '../components/SearchBarView';
 import ContactPhoto from '../components/ContactPhoto';
-import { useData } from '../DataContext';
+import { BrotherContact, useData } from '../DataContext';
 import I18n from '@iresucito/translations';
 import {
   getContactsForImport,
   contactFilterByText,
   ordenAlfabetico,
+  ContactForImport,
 } from '../util';
 import { Contact } from 'react-native-contacts';
 
-const BrotherItem = React.memo((props: any) => {
-  const { item, handleContact } = props;
-  return (
-    <Pressable
-      style={{ marginRight: 10, width: 56 }}
-      onPress={() => handleContact(item)}>
-      <ContactPhoto item={item} />
-      <Text noOfLines={1} textAlign="center" mt="2" fontSize="sm">
-        {item.givenName}
-      </Text>
-    </Pressable>
-  );
-});
-
-const ContactItem = React.memo((props: any) => {
-  const { item, handleContact } = props;
-  var contactFullName = item.givenName;
-  if (item.familyName) {
-    contactFullName += ` ${item.familyName}`;
-  }
-  return (
-    <Pressable onPress={() => handleContact(item)}>
-      <HStack p="2" justifyContent="space-between" alignItems="center">
+const BrotherItem = React.memo(
+  (props: {
+    item: BrotherContact;
+    handleContact: (c: BrotherContact) => void;
+  }) => {
+    const { item, handleContact } = props;
+    return (
+      <Pressable
+        style={{ marginRight: 10, width: 56 }}
+        onPress={() => handleContact(item)}>
         <ContactPhoto item={item} />
-        <VStack w="60%">
-          <Text bold fontSize="lg" noOfLines={1}>
-            {contactFullName}
-          </Text>
-          <Text noOfLines={1}>
-            {item.emailAddresses && item.emailAddresses.length > 0
-              ? item.emailAddresses[0].email
-              : null}
-          </Text>
-        </VStack>
-        <Switch
-          isChecked={item.imported}
-          onToggle={() => handleContact(item)}
-        />
-      </HStack>
-    </Pressable>
-  );
-});
+        <Text noOfLines={1} textAlign="center" mt="2" fontSize="sm">
+          {item.givenName}
+        </Text>
+      </Pressable>
+    );
+  }
+);
+
+const ContactItem = React.memo(
+  (props: {
+    item: ContactForImport;
+    handleContact: (c: ContactForImport) => void;
+  }) => {
+    const { item, handleContact } = props;
+    var contactFullName = item.givenName;
+    if (item.familyName) {
+      contactFullName += ` ${item.familyName}`;
+    }
+    return (
+      <Pressable onPress={() => handleContact(item)}>
+        <HStack p="2" justifyContent="space-between" alignItems="center">
+          <ContactPhoto item={item} />
+          <VStack w="60%">
+            <Text bold fontSize="lg" noOfLines={1}>
+              {contactFullName}
+            </Text>
+            <Text noOfLines={1}>
+              {item.emailAddresses && item.emailAddresses.length > 0
+                ? item.emailAddresses[0].email
+                : null}
+            </Text>
+          </VStack>
+          <Switch
+            isChecked={item.imported}
+            onToggle={() => handleContact(item)}
+          />
+        </HStack>
+      </Pressable>
+    );
+  }
+);
 
 const ContactImportDialog = () => {
   const data = useData();
   const { brothers, deviceContacts, addOrRemove } = data.community;
   const [loading, setLoading] = useState(false);
-  const [contacts, setContacts] = useState<Contact[]>([]);
+  const [contacts, setContacts] = useState<ContactForImport[]>([]);
   const [filter, setFilter] = useState('');
 
   useEffect(() => {

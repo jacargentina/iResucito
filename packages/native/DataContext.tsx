@@ -191,7 +191,7 @@ type Lists = {
   [listName: string]: any;
 };
 
-type ListForUI = {
+export type ListForUI = {
   name: string;
   type: string;
 };
@@ -726,18 +726,22 @@ const useSearch = (localeValue: string | undefined): UseSearch => {
   return { initialized, searchItems };
 };
 
+export type BrotherContact = Contacts.Contact & {
+  s: boolean;
+};
+
 type UseCommunity = {
-  brothers: Contacts.Contact[];
+  brothers: BrotherContact[];
   deviceContacts: Contacts.Contact[];
   add: (item: Contacts.Contact) => void;
   update: (id: string, item: Contacts.Contact) => void;
-  remove: (item: Contacts.Contact) => void;
+  remove: (item: BrotherContact) => void;
   addOrRemove: (contact: Contacts.Contact) => void;
-  populateDeviceContacts: () => void;
+  populateDeviceContacts: () => Promise<void>;
 };
 
 const useCommunity = (): UseCommunity => {
-  const [brothers, initBrothers] = usePersist<Contacts.Contact[]>(
+  const [brothers, initBrothers] = usePersist<BrotherContact[]>(
     'contacts',
     'object',
     [],
@@ -749,7 +753,7 @@ const useCommunity = (): UseCommunity => {
           // tomar el contacto actualizado
           var devContact = devCts.find((x) => x.recordID === c.recordID);
           if (devContact) {
-            loaded[idx] = devContact;
+            loaded[idx] = devContact as BrotherContact;
           }
         });
         return loaded;
@@ -761,24 +765,25 @@ const useCommunity = (): UseCommunity => {
   const [deviceContacts, initDeviceContacts] = useState<Contacts.Contact[]>([]);
 
   const add = (item: Contacts.Contact) => {
-    var changedContacts = [...brothers, item];
-    initBrothers(changedContacts);
+    var newBrother: BrotherContact = { s: false, ...item };
+    var changedBrothers: BrotherContact[] = [...brothers, newBrother];
+    initBrothers(changedBrothers);
   };
 
   const update = (id: string, item: Contacts.Contact) => {
-    var contact = brothers.find((c) => c.recordID === id);
-    if (contact) {
-      var idx = brothers.indexOf(contact);
+    var brother = brothers.find((c) => c.recordID === id);
+    if (brother) {
+      var idx = brothers.indexOf(brother);
       var updatedContacts = [...brothers];
-      updatedContacts[idx] = Object.assign(contact, item);
+      updatedContacts[idx] = Object.assign(brother, item);
       initBrothers(updatedContacts);
     }
   };
 
-  const remove = (item: Contacts.Contact) => {
+  const remove = (item: BrotherContact) => {
     var idx = brothers.indexOf(item);
-    var changedContacts = brothers.filter((l, i) => i !== idx);
-    initBrothers(changedContacts);
+    var changedBrothers = brothers.filter((l, i) => i !== idx);
+    initBrothers(changedBrothers);
   };
 
   const addOrRemove = (contact: Contacts.Contact) => {
