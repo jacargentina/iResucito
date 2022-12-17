@@ -4,6 +4,7 @@ import {
   useNavigation,
   useRoute,
   useIsFocused,
+  RouteProp,
 } from '@react-navigation/native';
 import { Keyboard, View } from 'react-native';
 import { FlatList, Text, Spinner, useDisclose } from 'native-base';
@@ -13,21 +14,31 @@ import ChoosePdfTypeForExport from '../components/ChoosePdfTypeForExport';
 import I18n from '@iresucito/translations';
 import { useData } from '../DataContext';
 import SongListItem from './SongListItem';
+import { SongsStackParamList } from '../navigation/SongsNavigator';
+import { Song } from '@iresucito/core';
+import { StackNavigationProp } from '@react-navigation/stack';
+
+type SongListRouteProp = RouteProp<SongsStackParamList, 'SongList'>;
+
+type SongDetailNavigationProp = StackNavigationProp<
+  SongsStackParamList,
+  'SongDetail'
+>;
 
 const SongList = (props: any) => {
   const listRef = useRef<any>();
   const data = useData();
-  const navigation = useNavigation();
-  const route = useRoute();
+  const navigation = useNavigation<SongDetailNavigationProp>();
+  const route = useRoute<SongListRouteProp>();
   const isFocused = useIsFocused();
   const chooser = useDisclose();
   const { viewButton } = props;
   const [totalText, setTotalText] = useState(I18n.t('ui.loading'));
   const { songs } = data.songsMeta;
   const [loading] = data.loading;
-  const [showSalmosBadge, setShowSalmosBadge] = useState();
+  const [showSalmosBadge, setShowSalmosBadge] = useState<boolean>();
   const [textFilter, setTextFilter] = useState('');
-  const [search, setSearch] = useState([]);
+  const [search, setSearch] = useState<Song[]>([]);
 
   useEffect(() => {
     if (songs) {
@@ -86,7 +97,7 @@ const SongList = (props: any) => {
     }
   }, [search, isFocused, textFilter]);
 
-  const onPress = (song) => {
+  const onPress = (song: Song) => {
     if (props.onPress) {
       props.onPress(song);
     } else {

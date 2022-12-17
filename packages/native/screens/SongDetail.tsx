@@ -1,16 +1,18 @@
 import * as React from 'react';
 import { useEffect } from 'react';
 import KeepAwake from 'react-native-keep-awake';
-import { useRoute } from '@react-navigation/native';
+import { RouteProp, useRoute } from '@react-navigation/native';
 import { useData } from '../DataContext';
 import SongViewFrame from './SongViewFrame';
+import { SongsStackParamList } from '../navigation/SongsNavigator';
 
-const SongDetail = (props: any) => {
+type SongDetailRouteProp = RouteProp<SongsStackParamList, 'SongDetail'>;
+
+const SongDetail = () => {
   const data = useData();
-  const route = useRoute();
+  const route = useRoute<SongDetailRouteProp>();
   const [keepAwake] = data.keepAwake;
-
-  var song: Song = route.params.song;
+  const { song } = route.params;
 
   useEffect(() => {
     if (keepAwake) {

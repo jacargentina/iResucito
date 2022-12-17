@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { StackNavigationProp } from '@react-navigation/stack';
 import { useState, useMemo, useEffect } from 'react';
 import { Alert } from 'react-native';
 import {
@@ -21,6 +22,7 @@ import { useData } from '../DataContext';
 import badges from '../badges';
 import I18n from '@iresucito/translations';
 import { Song } from '@iresucito/core';
+import { ChooserParamList } from '../navigation/SongChooserNavigator';
 
 const NoLocaleWarning = () => {
   return (
@@ -30,8 +32,7 @@ const NoLocaleWarning = () => {
           I18n.t('ui.locale warning title'),
           I18n.t('ui.locale warning message')
         );
-      }}
-    >
+      }}>
       <HStack alignItems="center">
         <Icon color="rose.700" as={Ionicons} size="sm" name="bug" mr="2" />
         <Text fontSize={14} color="muted.500">
@@ -42,10 +43,15 @@ const NoLocaleWarning = () => {
   );
 };
 
+type ViewSongScreenNavigationProp = StackNavigationProp<
+  ChooserParamList,
+  'ViewSong'
+>;
+
 const SongListItem = (props: any) => {
   const { colors } = useTheme();
   const data = useData();
-  const navigation = useNavigation();
+  const navigation = useNavigation<ViewSongScreenNavigationProp>();
   const {
     highlight,
     songKey,
@@ -65,9 +71,11 @@ const SongListItem = (props: any) => {
     return songMeta;
   }, [songs, songKey, songMeta]);
 
-  const [firstHighlighted, setFirstHighlighted] = useState();
-  const [highlightedRest, setHighlightedRest] = useState();
-  const [openHighlightedRest, setOpenHighlightedRest] = useState();
+  const [firstHighlighted, setFirstHighlighted] =
+    useState<JSX.Element | void>();
+  const [highlightedRest, setHighlightedRest] = useState<JSX.Element | void>();
+  const [openHighlightedRest, setOpenHighlightedRest] =
+    useState<JSX.Element | void>();
 
   const viewSong = () => {
     navigation.navigate('ViewSong', {
@@ -112,8 +120,7 @@ const SongListItem = (props: any) => {
           <Pressable
             onPress={() => {
               setIsCollapsed(!isCollapsed);
-            }}
-          >
+            }}>
             <Badge colorScheme="info">
               <Text>{children.length}+</Text>
             </Badge>
@@ -159,30 +166,31 @@ const SongListItem = (props: any) => {
             if (props.onPress) {
               props.onPress(song);
             }
-          }}
-        >
-          <Highlighter
-            autoEscape
-            numberOfLines={1}
-            style={{ fontWeight: 'bold', fontSize: 16 }}
-            highlightStyle={{
-              backgroundColor: 'yellow',
-            }}
-            searchWords={[highlight]}
-            textToHighlight={song.titulo}
-          />
-          <Highlighter
-            autoEscape
-            numberOfLines={1}
-            style={{ color: colors.muted['500'], paddingVertical: 2 }}
-            highlightStyle={{
-              backgroundColor: 'yellow',
-            }}
-            searchWords={[highlight]}
-            textToHighlight={song.fuente || '--'}
-          />
-          {firstHighlighted}
-          {highlightedRest}
+          }}>
+          <>
+            <Highlighter
+              autoEscape
+              numberOfLines={1}
+              style={{ fontWeight: 'bold', fontSize: 16 }}
+              highlightStyle={{
+                backgroundColor: 'yellow',
+              }}
+              searchWords={[highlight]}
+              textToHighlight={song.titulo}
+            />
+            <Highlighter
+              autoEscape
+              numberOfLines={1}
+              style={{ color: colors.muted['500'], paddingVertical: 2 }}
+              highlightStyle={{
+                backgroundColor: 'yellow',
+              }}
+              searchWords={[highlight]}
+              textToHighlight={song.fuente || '--'}
+            />
+            {firstHighlighted}
+            {highlightedRest}
+          </>
         </Pressable>
         {song.notTranslated && <NoLocaleWarning />}
         <Rating
@@ -191,7 +199,7 @@ const SongListItem = (props: any) => {
           marginBetweenRatingIcon={3}
           size={20}
           rated={song.rating}
-          onIconTap={(position) =>
+          onIconTap={(position: number) =>
             setSongSetting(song.key, I18n.locale, 'rating', position)
           }
           ratingColor={colors.rose['500']}

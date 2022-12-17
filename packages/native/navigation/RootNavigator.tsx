@@ -21,7 +21,7 @@ export type RootStackParamList = {
   };
   ContactImport: undefined;
   SongPreviewScreen: undefined;
-  SongPreviewPdf: undefined;
+  SongPreviewPdf: { uri: string };
 };
 
 const Stack = createStackNavigator<RootStackParamList>();

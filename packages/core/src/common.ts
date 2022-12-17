@@ -274,7 +274,6 @@ export type SearchItem = {
   note_key?: string;
   divider?: boolean;
   note?: string;
-  route?: string;
   params?: SearchParams;
   badge?: any;
   chooser?: string;
