@@ -15,7 +15,7 @@ class CloudData {
   loadData: any = (userInfo: any) => {
     const changedKeys = userInfo.changedKeys;
     if (changedKeys != null && changedKeys.includes('lists')) {
-      iCloudStorage.getItem('lists').then((result) => {
+      iCloudStorage.getItem('lists').then((result: any) => {
         console.log('lists on icloud are loaded!', result);
       });
     }
@@ -24,13 +24,13 @@ class CloudData {
   load(key: string): any {
     return iCloudStorage
       .getItem(key)
-      .then((res) => {
+      .then((res: any) => {
         if (res) {
           return JSON.parse(res);
         }
         return null;
       })
-      .catch((err) => {
+      .catch((err: Error) => {
         console.log('error loading from icloud', err);
       });
   }
@@ -41,7 +41,7 @@ class CloudData {
       .then(() => {
         console.log('saved to icloud');
       })
-      .catch((err) => {
+      .catch((err: Error) => {
         console.log('erroir saving to icloud', err);
       });
   }

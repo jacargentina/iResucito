@@ -89,7 +89,7 @@ const MenuNavigator = (props: any) => {
 
   useEffect(() => {
     const handler = (event: { url: string }) => {
-      importList(event.url).then((name: string) => {
+      importList(event.url).then((name: string | void) => {
         navigation.navigate('Lists');
         navigation.navigate('ListDetail', { listName: name });
       });

@@ -1,3 +1,4 @@
+// @ts-nocheck
 const Buffer = require('buffer').Buffer;
 import { Transform } from '@javier.alejandro.castro/react-native-stream';
 

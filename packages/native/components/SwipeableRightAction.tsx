@@ -17,11 +17,11 @@ const styles = StyleSheet.create({
 });
 
 const SwipeableRightAction = (props: {
-  text: string,
-  color: string,
-  x: number,
-  progress: any,
-  onPress: Function,
+  text: string;
+  color: string;
+  x: number;
+  progress: any;
+  onPress: any;
 }) => {
   const { text, color, x, progress, onPress } = props;
   const trans = progress.interpolate({

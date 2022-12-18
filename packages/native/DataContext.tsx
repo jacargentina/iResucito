@@ -289,7 +289,7 @@ const useLists = (songs: Song[]): UseLists => {
       if (typeof listKey === 'string') {
         schema = Object.assign({}, targetList, { [listKey]: listValue });
       } else if (typeof listKey === 'number') {
-        var isPresent = targetList.items.find((s) => s === listValue);
+        var isPresent = targetList.items.find((s: any) => s === listValue);
         if (isPresent) {
           return;
         }
@@ -450,7 +450,7 @@ const useLists = (songs: Song[]): UseLists => {
         var items = [];
         if (list.type === 'libre') {
           var cantos = list.items;
-          cantos.forEach((canto, i) => {
+          cantos.forEach((canto: Song, i: number) => {
             items.push(`${i + 1} - ${canto.titulo}`);
           });
         } else {

@@ -22,11 +22,9 @@ export async function generateSongPDF(
       : RNFS.CachesDirectoryPath + '/';
 
   const filename =
-    songsToPdf.length > 1
-      ? `${fileSuffix}`
-      : `${songsToPdf[0].song.titulo}`;
+    songsToPdf.length > 1 ? `${fileSuffix}` : `${songsToPdf[0].song.titulo}`;
 
-  const safeFileName = filename.replace('/','-');
+  const safeFileName = filename.replace('/', '-');
   const pdfPath = `${folder}/iResucito${safeFileName}.pdf`;
 
   const reader = Platform.OS === 'ios' ? RNFS.readFile : RNFS.readFileAssets;
@@ -36,7 +34,7 @@ export async function generateSongPDF(
     'base64'
   );
 
-  var writer = new PdfWriter(Buffer.from(ttf, 'base64'), new Base64Encode());
+  var writer = new PdfWriter(Buffer.from(ttf, 'base64'), new Base64Encode({}));
   const base64 = await SongPDFGenerator(songsToPdf, opts, writer);
   RNFS.writeFile(pdfPath, base64, 'base64');
   return pdfPath;
@@ -51,7 +49,7 @@ export async function generateListPDF(
       ? RNFS.TemporaryDirectoryPath
       : RNFS.CachesDirectoryPath + '/';
 
-  const safeFileName = list.name.replace('/','-');
+  const safeFileName = list.name.replace('/', '-');
   const pdfPath = `${folder}/iResucito-${safeFileName}.pdf`;
 
   const reader = Platform.OS === 'ios' ? RNFS.readFile : RNFS.readFileAssets;
@@ -61,7 +59,7 @@ export async function generateListPDF(
     'base64'
   );
 
-  var writer = new PdfWriter(Buffer.from(ttf, 'base64'), new Base64Encode());
+  var writer = new PdfWriter(Buffer.from(ttf, 'base64'), new Base64Encode({}));
   const base64 = await ListPDFGenerator(list, opts, writer);
   RNFS.writeFile(pdfPath, base64, 'base64');
   return pdfPath;

@@ -1,9 +1,12 @@
 import * as React from 'react';
-import { useRoute } from '@react-navigation/native';
+import { RouteProp, useRoute } from '@react-navigation/native';
 import SongViewPdf from './SongViewPdf';
+import { RootStackParamList } from '../navigation/RootNavigator';
 
-const PDFViewer = () =>{
-  const route = useRoute();
+type SongPreviewPdfRouteProp = RouteProp<RootStackParamList, 'SongPreviewPdf'>;
+
+const PDFViewer = () => {
+  const route = useRoute<SongPreviewPdfRouteProp>();
   return <SongViewPdf uri={route.params.uri} />;
 };
 
