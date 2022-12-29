@@ -403,16 +403,16 @@ PODS:
   - RNScreens (3.18.2):
     - React-Core
     - React-RCTImage
-  - RNSentry (4.11.0):
+  - RNSentry (4.12.0):
     - React-Core
-    - Sentry/HybridSDK (= 7.31.2)
-  - RNShare (8.0.0):
+    - Sentry/HybridSDK (= 7.31.3)
+  - RNShare (8.0.1):
     - React-Core
   - RNSVG (13.6.0):
     - React-Core
   - RNVectorIcons (9.2.0):
     - React-Core
-  - Sentry/HybridSDK (7.31.2)
+  - Sentry/HybridSDK (7.31.3)
   - SocketRocket (0.6.0)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
@@ -687,11 +687,11 @@ SPEC CHECKSUMS:
   RNICloudStore: bc6e225811637c09bd1eb055d6cd7448e61cd451
   RNLocalize: 0df7970cfc60389f00eb62fd7c097dc75af3fb4f
   RNScreens: 34cc502acf1b916c582c60003dc3089fa01dc66d
-  RNSentry: f052387ebe939949c74c2cae0c850e76f6d14ddb
-  RNShare: 36aa3e6958373a0ad1c95a1c960adef589da3794
+  RNSentry: 4c09f4dd9740cb9b33e94303de5b6d0dbeb0737d
+  RNShare: d93e00e906e6174657f6370b480437e4702bc86e
   RNSVG: 3a79c0c4992213e4f06c08e62730c5e7b9e4dc17
   RNVectorIcons: fcc2f6cb32f5735b586e66d14103a74ce6ad61f8
-  Sentry: b15765d11769852fe78c9add942f7df60ed5dbf5
+  Sentry: 08884c523575ec0f6690d94ed3ccb0246a1600bf
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
   Yoga: 99caf8d5ab45e9d637ee6e0174ec16fbbb01bcfc
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
