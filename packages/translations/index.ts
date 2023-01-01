@@ -1,4 +1,4 @@
-import I18n from 'i18n-js';
+import { I18n } from 'i18n-js';
 import en from './langs/en.json';
 import enPH from './langs/en-PH.json';
 import es from './langs/es.json';
@@ -12,11 +12,8 @@ import fr from './langs/fr.json';
 import de from './langs/de.json';
 import pl from './langs/pl.json';
 
-I18n.fallbacks = true;
-I18n.defaultLocale = 'en';
-
 // Lenguajes disponibles
-I18n.translations = {
+const i18n = new I18n({
   en: en,
   'en-PH': enPH,
   es: es,
@@ -29,6 +26,9 @@ I18n.translations = {
   fr: fr,
   de: de,
   pl: pl,
-};
+});
 
-export default I18n;
+i18n.enableFallback = true;
+i18n.defaultLocale = 'en';
+
+export default i18n;
