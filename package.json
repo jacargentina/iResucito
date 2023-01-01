@@ -27,6 +27,7 @@
     "build": "turbo run build",
     "test": "turbo run test",
     "lint": "turbo run lint",
+    "upd": "turbo run upd",
     "dev": "turbo run dev",
     "ts": "turbo run ts",
     "reset": "find . -type dir -name node_modules | xargs rm -rf && rm -rf yarn.lock",

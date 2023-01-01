@@ -2,7 +2,8 @@
   "name": "@iresucito/translations",
   "version": "1.0.0",
   "scripts": {
-    "build": "tsc -b"
+    "build": "tsc -b",
+    "upd": "npx npm-check-updates -u"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
