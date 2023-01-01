@@ -13,7 +13,7 @@ import { useSubmit, useTransition } from '@remix-run/react';
 import { json, ActionFunction } from '@remix-run/node';
 import Layout from '~/components/Layout';
 import '~/utils.server';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 import ApiMessage from '~/components/ApiMessage';
 import { useState } from 'react';
 
@@ -84,7 +84,7 @@ const ResetPassword = () => {
                     fluid
                     icon="user"
                     iconPosition="left"
-                    placeholder={I18n.t('ui.email')}
+                    placeholder={i18n.t('ui.email')}
                     value={email}
                     onChange={(e, { value }) => {
                       setEmail(value);
@@ -98,7 +98,7 @@ const ResetPassword = () => {
                   size="large"
                   loading={transition.state !== 'idle'}
                   onClick={() => submit({ email }, { method: 'post' })}>
-                  {I18n.t('ui.reset password')}
+                  {i18n.t('ui.reset password')}
                 </Button>
               </Segment>
             </Form>

@@ -4,7 +4,7 @@ import { Button, Menu, Icon, Modal, Label } from 'semantic-ui-react';
 import { useApp } from '~/app.context';
 import { EditContext } from './EditContext';
 import { CollaboratorsIndex } from '@iresucito/core';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 
 const AppActions = () => {
   const app = useApp();
@@ -18,7 +18,7 @@ const AppActions = () => {
   const confirmLogout = () => {
     if (edit && edit.hasChanges) {
       setConfirmData({
-        message: I18n.t('ui.discard confirmation'),
+        message: i18n.t('ui.discard confirmation'),
         yes: () => {
           submit(null, {
             action: `/logout`,
@@ -56,7 +56,7 @@ const AppActions = () => {
                 </div>
                 &nbsp;
                 <div>
-                  <h3>{I18n.t('ui.collaborators')}</h3>
+                  <h3>{i18n.t('ui.collaborators')}</h3>
                   <ul>
                     {Object.keys(CollaboratorsIndex).map((lang, idx) => {
                       return (
@@ -71,8 +71,8 @@ const AppActions = () => {
               <div style={{ flex: 1, marginLeft: 20 }}>
                 {app.patchStats && app.patchStats.length > 0 && (
                   <>
-                    <h3>{I18n.t('ui.statistics')}</h3>
-                    <p>{I18n.t('ui.changes pending of publish')}</p>
+                    <h3>{i18n.t('ui.statistics')}</h3>
+                    <p>{i18n.t('ui.changes pending of publish')}</p>
                   </>
                 )}
                 {app.patchStats &&
@@ -88,7 +88,7 @@ const AppActions = () => {
                           {localeStats.items.map((stat) => {
                             return (
                               <li>
-                                {I18n.t('ui.changed songs by author', {
+                                {i18n.t('ui.changed songs by author', {
                                   ...stat,
                                 })}
                               </li>
@@ -107,12 +107,12 @@ const AppActions = () => {
         <>
           <Menu.Item>
             <Button negative onClick={confirmLogout}>
-              {I18n.t('ui.logout')}
+              {i18n.t('ui.logout')}
             </Button>
           </Menu.Item>
           <Menu.Item>
             <Button onClick={() => navigate('/account')}>
-              {I18n.t('ui.account')}
+              {i18n.t('ui.account')}
             </Button>
           </Menu.Item>
         </>
@@ -120,14 +120,14 @@ const AppActions = () => {
       {!app.user && (
         <Menu.Item>
           <Button primary onClick={() => navigate('/account')}>
-            {I18n.t('ui.login')}
+            {i18n.t('ui.login')}
           </Button>
         </Menu.Item>
       )}
       <Menu.Item>
         <Button onClick={() => setAboutVisible(true)}>
           <Icon name="help" />
-          {I18n.t('settings_title.about')}
+          {i18n.t('settings_title.about')}
         </Button>
       </Menu.Item>
     </>

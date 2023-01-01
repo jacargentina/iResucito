@@ -1,7 +1,7 @@
 // @flow
 import fs from 'fs';
 import osLocale from 'os-locale';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 import FolderSongs from '../FolderSongs';
 import { SongsParser } from '../SongsParser';
 import { PdfStyles } from '@iresucito/core/common';
@@ -25,16 +25,16 @@ if (!process.argv.slice(2).length) {
     locale = osLocale.sync();
     console.log('Locale: detected', locale);
   }
-  I18n.locale = locale;
-  console.log('Configured locale', I18n.locale);
+  i18n.locale = locale;
+  console.log('Configured locale', i18n.locale);
   if (locale !== '') {
     var parser = new SongsParser(PdfStyles);
     var songs = FolderSongs.getSongsMeta(locale);
     console.log(`Processing ${songs.length} songs`);
     FolderSongs.loadSongs(locale, songs).then(() => {
       songs.map((song) => {
-        if (song.files[I18n.locale]) {
-          var render = parser.getForRender(song.fullText, I18n.locale);
+        if (song.files[i18n.locale]) {
+          var render = parser.getForRender(song.fullText, i18n.locale);
           const firstNotes = render.items.find((it) =>
             parser.isChordsLine(it.texto, locale)
           );

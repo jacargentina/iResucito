@@ -8,7 +8,7 @@ import {
   MenuTrigger,
 } from 'react-native-popup-menu';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 import { getChordsScale, Song } from '@iresucito/core';
 import { useData } from '../DataContext';
 import useStackNavOptions from '../navigation/StackNavOptions';
@@ -35,7 +35,7 @@ const TransportNotesButton = () => {
     return null;
   }
 
-  const chords = getChordsScale(I18n.locale);
+  const chords = getChordsScale(i18n.locale);
 
   var menuOptionItems = chords.map((nota, i) => {
     var customStyles =
@@ -62,7 +62,7 @@ const TransportNotesButton = () => {
   });
 
   const changeTransport = (newTransport: any) => {
-    setSongSetting(song.key, I18n.locale, 'transportTo', newTransport).then(
+    setSongSetting(song.key, i18n.locale, 'transportTo', newTransport).then(
       (updatedSong: Song) => {
         navigation.replace('SongDetail', {
           song: updatedSong,

@@ -1,5 +1,5 @@
 import { WebStyles } from './WebParser';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 import { SongLine } from '@iresucito/core';
 
 const SongViewLines = (props: any) => {
@@ -40,7 +40,7 @@ const SongViewLines = (props: any) => {
                 position: 'relative',
                 top: '-5px',
               }}>
-              {I18n.t('songs.repeat')}
+              {i18n.t('songs.repeat')}
             </div>
           );
         } else if (indicator.type === 'bloqueNotaAlPie') {

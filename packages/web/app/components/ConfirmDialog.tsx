@@ -1,6 +1,6 @@
 import { Modal, Button } from 'semantic-ui-react';
 import { useApp } from '~/app.context';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 
 const ConfirmDialog = () => {
   const app = useApp();
@@ -24,10 +24,10 @@ const ConfirmDialog = () => {
       </Modal.Content>
       <Modal.Actions>
         <Button primary onClick={() => handleClose(true)}>
-          {I18n.t('ui.yes')}
+          {i18n.t('ui.yes')}
         </Button>
         <Button negative onClick={() => handleClose(false)}>
-          {I18n.t('ui.no')}
+          {i18n.t('ui.no')}
         </Button>
       </Modal.Actions>
     </Modal>

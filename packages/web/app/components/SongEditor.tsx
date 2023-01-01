@@ -15,7 +15,7 @@ import { EditContext } from './EditContext';
 import ApiMessage from './ApiMessage';
 import SongViewFrame from './SongViewFrame';
 import SongViewPdf from './SongViewPdf';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 import { useApp } from '~/app.context';
 
 const SongEditor = () => {
@@ -164,14 +164,14 @@ const SongEditor = () => {
                 trigger={
                   <Button onClick={editMetadata}>
                     <Icon name="edit" />
-                    {I18n.t('ui.edit')}
+                    {i18n.t('ui.edit')}
                   </Button>
                 }
               />
             )}
             <Button onClick={() => setActiveDialog('patchLog')}>
               <Icon name="history" />
-              {I18n.t('ui.patch log')}
+              {i18n.t('ui.patch log')}
             </Button>
             {app.user && (
               <Popup
@@ -184,7 +184,7 @@ const SongEditor = () => {
                     disabled={!hasChanges}
                     onClick={save}>
                     <Icon name="save" />
-                    {I18n.t('ui.apply')}
+                    {i18n.t('ui.apply')}
                   </Button>
                 }
               />
@@ -262,13 +262,13 @@ const SongEditor = () => {
             <Menu.Item>
               <Button negative onClick={confirmRemovePatch}>
                 <Icon name="trash" />
-                {I18n.t('ui.remove patch')}
+                {i18n.t('ui.remove patch')}
               </Button>
             </Menu.Item>
             <Menu.Item>
               <Button onClick={() => setActiveDialog('diffView')}>
                 <Icon name="history" />
-                {I18n.t('ui.diff view')}
+                {i18n.t('ui.diff view')}
               </Button>
             </Menu.Item>
           </>
@@ -276,7 +276,7 @@ const SongEditor = () => {
         <Menu.Item position="right">
           <Button onClick={confirmClose}>
             <Icon name="close" />
-            {I18n.t('ui.close')}
+            {i18n.t('ui.close')}
           </Button>
         </Menu.Item>
       </Menu>
@@ -402,7 +402,7 @@ const SongEditor = () => {
                 },
               },
               {
-                menuItem: I18n.t('share_action.view pdf'),
+                menuItem: i18n.t('share_action.view pdf'),
                 render: () => {
                   return (
                     <Tab.Pane

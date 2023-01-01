@@ -6,7 +6,7 @@ import { Text, Center, Spinner, useTheme } from 'native-base';
 import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
 import ModalView from '../components/ModalView';
 import { useData } from '../DataContext';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 import SongList from './SongList';
 import { Song } from '@iresucito/core';
 import type { ChooserParamList } from '../navigation/SongChooserNavigator';
@@ -95,7 +95,7 @@ const SongChooserDialog = (props: Props) => {
             alignSelf: 'flex-start',
           }}
         >
-          {I18n.t('screen_title.find song')}
+          {i18n.t('screen_title.find song')}
         </Text>
       }
     >
@@ -105,7 +105,7 @@ const SongChooserDialog = (props: Props) => {
           return (
             <Center pt="5">
               <Spinner color="rose.500" size="lg" />
-              <Text>{I18n.t('ui.loading')}</Text>
+              <Text>{i18n.t('ui.loading')}</Text>
             </Center>
           );
         }}

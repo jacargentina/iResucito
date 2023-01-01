@@ -8,7 +8,7 @@ import { View } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import ModalView from '../components/ModalView';
 import { useData } from '../DataContext';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 import { contactFilterByText, ordenAlfabetico } from '../util';
 import SearchBarView from '../components/SearchBarView';
 import ContactListItem from './ContactListItem';
@@ -49,10 +49,10 @@ const ContactChooserDialog = () => {
             alignSelf: 'flex-start',
           }}
         >
-          {I18n.t('screen_title.community')}
+          {i18n.t('screen_title.community')}
         </Text>
       }
-      closeText={I18n.t('ui.done')}
+      closeText={i18n.t('ui.done')}
       closeHandler={() => setFilter('')}
     >
       {brothers.length === 0 && (
@@ -69,7 +69,7 @@ const ContactChooserDialog = () => {
             size={32}
             alignSelf="center"
           />
-          <Text textAlign="center">{I18n.t('ui.community empty')}</Text>
+          <Text textAlign="center">{i18n.t('ui.community empty')}</Text>
         </View>
       )}
       {brothers.length > 0 && (

@@ -2,7 +2,7 @@ import { useRef, useEffect, useContext, useState } from 'react';
 import * as pdfjsLib from 'pdfjs-dist';
 import { Icon, Button, Menu, Label, Input, Loader } from 'semantic-ui-react';
 import { EditContext } from './EditContext';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 import { useApp } from '~/app.context';
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.js';
@@ -79,7 +79,7 @@ const SongViewPdf = (props: any) => {
                 link.remove();
               }}>
               <Icon name="file pdf" />
-              {I18n.t('ui.download')}
+              {i18n.t('ui.download')}
             </Button>
             <Button
               positive={!!savedSettings}
@@ -90,7 +90,7 @@ const SongViewPdf = (props: any) => {
                 setDialogCallback(() => settingsChanged);
               }}>
               <Icon name="setting" />
-              {I18n.t('screen_title.settings')}
+              {i18n.t('screen_title.settings')}
             </Button>
           </Button.Group>
         </Menu.Item>

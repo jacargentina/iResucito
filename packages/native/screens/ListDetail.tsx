@@ -7,7 +7,7 @@ import { KeyboardAwareScrollView } from '@codler/react-native-keyboard-aware-scr
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import SwipeableRightAction from '../components/SwipeableRightAction';
 import { useData } from '../DataContext';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 import ListDetailItem from './ListDetailItem';
 
 const SwipeableRow = (props: {
@@ -24,18 +24,18 @@ const SwipeableRow = (props: {
   const confirmListDeleteSong = useCallback(
     (songTitle, list, key) => {
       Alert.alert(
-        `${I18n.t('ui.delete')} "${songTitle}"`,
-        I18n.t('ui.delete confirmation'),
+        `${i18n.t('ui.delete')} "${songTitle}"`,
+        i18n.t('ui.delete confirmation'),
         [
           {
-            text: I18n.t('ui.delete'),
+            text: i18n.t('ui.delete'),
             onPress: () => {
               setList(list, key);
             },
             style: 'destructive',
           },
           {
-            text: I18n.t('ui.cancel'),
+            text: i18n.t('ui.cancel'),
             style: 'cancel',
           },
         ]
@@ -55,7 +55,7 @@ const SwipeableRow = (props: {
             <SwipeableRightAction
               color={colors.rose['600']}
               progress={progress}
-              text={I18n.t('ui.delete')}
+              text={i18n.t('ui.delete')}
               x={100}
               onPress={() => {
                 swipeRef.current.close();
@@ -64,8 +64,7 @@ const SwipeableRow = (props: {
             />
           </View>
         );
-      }}
-    >
+      }}>
       <ListDetailItem listName={listName} listKey={listKey} listText={song} />
     </Swipeable>
   );
@@ -88,7 +87,7 @@ const ListDetail = () => {
         <KeyboardAwareScrollView contentContainerStyle={{ flexGrow: 1 }}>
           {songs.length === 0 && (
             <Text textAlign="center" mt="5">
-              {I18n.t('ui.empty songs list')}
+              {i18n.t('ui.empty songs list')}
             </Text>
           )}
           {songs.length > 0 && (
@@ -108,8 +107,7 @@ const ListDetail = () => {
   return (
     <KeyboardAwareScrollView
       contentContainerStyle={{ flexGrow: 1 }}
-      innerRef={(ref) => setScroll(ref)}
-    >
+      innerRef={(ref) => setScroll(ref)}>
       <VStack p="2">
         <ListDetailItem
           listName={listName}

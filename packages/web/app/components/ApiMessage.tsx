@@ -1,6 +1,6 @@
 import { useActionData } from '@remix-run/react';
 import { Message } from 'semantic-ui-react';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 
 const ApiMessage = () => {
   const data = useActionData();
@@ -12,8 +12,8 @@ const ApiMessage = () => {
   return (
     <Message negative={data?.error} positive={data?.ok}>
       <Message.Header>
-        {data?.error && I18n.t('ui.error ocurred')}
-        {data?.ok && I18n.t('ui.info message')}
+        {data?.error && i18n.t('ui.error ocurred')}
+        {data?.ok && i18n.t('ui.info message')}
       </Message.Header>
       <p>
         {data?.error} {data?.ok}

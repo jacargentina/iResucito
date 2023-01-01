@@ -14,7 +14,7 @@ import ModalView from '../components/ModalView';
 import SearchBarView from '../components/SearchBarView';
 import ContactPhoto from '../components/ContactPhoto';
 import { BrotherContact, useData } from '../DataContext';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 import {
   getContactsForImport,
   contactFilterByText,
@@ -118,10 +118,10 @@ const ContactImportDialog = () => {
           style={{
             alignSelf: 'flex-start',
           }}>
-          {I18n.t('screen_title.import contacts')}
+          {i18n.t('screen_title.import contacts')}
         </Text>
       }
-      closeText={I18n.t('ui.done')}>
+      closeText={i18n.t('ui.done')}>
       <SearchBarView value={filter} setValue={setFilter}>
         {brothers && brothers.length > 0 && (
           <Box

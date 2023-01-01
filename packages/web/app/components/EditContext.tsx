@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 import { useNavigate } from '@remix-run/react';
 import {
   getSongFileFromString,
@@ -78,7 +78,7 @@ const EditContextWrapper = (props: any) => {
   const confirmClose = () => {
     if (hasChanges) {
       setConfirmData({
-        message: I18n.t('ui.discard confirmation'),
+        message: i18n.t('ui.discard confirmation'),
         yes: () => {
           navigate('/list');
         },
@@ -90,7 +90,7 @@ const EditContextWrapper = (props: any) => {
 
   const confirmRemovePatch = () => {
     setConfirmData({
-      message: I18n.t('ui.discard confirmation'),
+      message: i18n.t('ui.discard confirmation'),
       yes: () => {
         setApiResult();
         setApiLoading(true);

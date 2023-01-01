@@ -5,7 +5,7 @@ import { Box, HStack, Text, Icon, Button } from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import color from 'color';
 import { colors } from '@iresucito/core';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 import { useData } from '../DataContext';
 import { NativeParser, NativeStyles } from '../util';
 import SongViewLines from './SongViewLines';
@@ -18,7 +18,7 @@ const SongViewFrame = (props: any) => {
   const background = backColor.lighten(0.1).string();
   const minWidth = Dimensions.get('window').width;
 
-  const fRender = NativeParser.getForRender(text, I18n.locale, transportToNote);
+  const fRender = NativeParser.getForRender(text, i18n.locale, transportToNote);
 
   const [ctrlVisible, setCtrlVisible] = useState(false);
 

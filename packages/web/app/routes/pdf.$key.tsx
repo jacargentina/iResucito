@@ -4,7 +4,7 @@ import {
   SongsParser,
   SongToPdf,
 } from '@iresucito/core';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 import { generatePDF } from '~/pdf';
 import { ActionFunction, json } from '@remix-run/node';
 import { getSession } from '~/session.server';
@@ -22,7 +22,7 @@ export let action: ActionFunction = async ({ request, params }) => {
   const body = await request.formData();
   const text = body.get('text') as string | undefined;
   const options = body.get('options') as string;
-  I18n.locale = locale;
+  i18n.locale = locale;
   try {
     const parser = new SongsParser(PdfStyles);
     const items = [];

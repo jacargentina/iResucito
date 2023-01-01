@@ -2,8 +2,9 @@ import * as React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import type { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import { Text, Actionsheet } from 'native-base';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 import type { RootStackParamList } from '../navigation/RootNavigator';
+import { ListType } from '../types';
 
 type ListNameScreenNavigationProp = BottomTabNavigationProp<
   RootStackParamList,
@@ -26,15 +27,15 @@ const ChooseListTypeForAdd = (props: any) => {
   return (
     <Actionsheet isOpen={isOpen} onClose={onClose}>
       <Actionsheet.Content>
-        <Text bold>{I18n.t('ui.lists.type')}</Text>
+        <Text bold>{i18n.t('ui.lists.type')}</Text>
         <Actionsheet.Item onPress={() => nav('eucaristia')}>
-          {I18n.t('list_type.eucharist')}
+          {i18n.t('list_type.eucharist')}
         </Actionsheet.Item>
         <Actionsheet.Item onPress={() => nav('palabra')}>
-          {I18n.t('list_type.word')}
+          {i18n.t('list_type.word')}
         </Actionsheet.Item>
         <Actionsheet.Item onPress={() => nav('libre')}>
-          {I18n.t('list_type.other')}
+          {i18n.t('list_type.other')}
         </Actionsheet.Item>
       </Actionsheet.Content>
     </Actionsheet>

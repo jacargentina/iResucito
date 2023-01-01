@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import CommunityScreen from '../screens/CommunityScreen';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 import { useData } from '../DataContext';
 import useStackNavOptions from './StackNavOptions';
 
@@ -21,7 +21,7 @@ const CommunityNavigator = () => {
         component={CommunityScreen}
         options={() => {
           return {
-            title: I18n.t('screen_title.community', {
+            title: i18n.t('screen_title.community', {
               locale: data.localeReal,
             }),
           };

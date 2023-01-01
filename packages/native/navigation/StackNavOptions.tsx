@@ -1,5 +1,5 @@
 import { useTheme } from 'native-base';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 
 const useStackNavOptions = (): any => {
   const { colors } = useTheme();
@@ -18,8 +18,8 @@ const useStackNavOptions = (): any => {
       color: 'white',
     },
     headerTintColor: 'white',
-    headerBackTitle: I18n.t('ui.back'),
-    headerTruncatedBackTitle: I18n.t('ui.back'),
+    headerBackTitle: i18n.t('ui.back'),
+    headerTruncatedBackTitle: i18n.t('ui.back'),
   };
 };
 

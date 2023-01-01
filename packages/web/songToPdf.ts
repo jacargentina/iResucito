@@ -1,4 +1,4 @@
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 import {
   defaultExportToPdfOptions,
   PdfStyles,
@@ -37,8 +37,8 @@ const main = async () => {
       locale = await osLocale();
       console.log('Locale: detected', locale);
     }
-    I18n.locale = locale;
-    console.log('Configured locale', I18n.locale);
+    i18n.locale = locale;
+    console.log('Configured locale', i18n.locale);
     var key = options.key;
     if (locale !== '') {
       var parser = new SongsParser(PdfStyles);
@@ -49,12 +49,12 @@ const main = async () => {
           undefined,
           undefined
         );
-        if (song.files[I18n.locale]) {
+        if (song.files[i18n.locale]) {
           globalThis.folderSongs
             .loadSingleSong(locale, song)
             .then(() => {
               console.log('Song: ', song.titulo);
-              var render = parser.getForRender(song.fullText, I18n.locale);
+              var render = parser.getForRender(song.fullText, i18n.locale);
               if (program.debug) {
                 console.log(render);
               }
@@ -87,8 +87,8 @@ const main = async () => {
         globalThis.folderSongs.loadSongs(locale, songs).then(() => {
           var items: Array<SongToPdf> = [];
           songs.map((song) => {
-            if (song.files[I18n.locale]) {
-              var render = parser.getForRender(song.fullText, I18n.locale);
+            if (song.files[i18n.locale]) {
+              var render = parser.getForRender(song.fullText, i18n.locale);
               if (program.debug) {
                 console.log(render);
               }

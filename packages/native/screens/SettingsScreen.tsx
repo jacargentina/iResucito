@@ -17,7 +17,7 @@ import {
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import DeviceInfo from 'react-native-device-info';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 import { getLocalesForPicker, CollaboratorsIndex } from '@iresucito/core';
 import { useData } from '../DataContext';
 import { getDefaultLocale } from '../util';
@@ -46,7 +46,7 @@ const SettingsScreen = () => {
   useEffect(() => {
     if (songs) {
       var withLocale = songs.filter((s) => s.notTranslated === false);
-      const message = I18n.t('ui.translated songs', {
+      const message = i18n.t('ui.translated songs', {
         translated: withLocale.length,
         total: songs.length,
       });
@@ -76,18 +76,18 @@ const SettingsScreen = () => {
 
   const clearSettings = () => {
     Alert.alert(
-      I18n.t('ui.clear song settings'),
-      I18n.t('ui.clear song settings confirmation'),
+      i18n.t('ui.clear song settings'),
+      i18n.t('ui.clear song settings confirmation'),
       [
         {
-          text: I18n.t('ui.delete'),
+          text: i18n.t('ui.delete'),
           onPress: () => {
             clearSongSettings();
           },
           style: 'destructive',
         },
         {
-          text: I18n.t('ui.cancel'),
+          text: i18n.t('ui.cancel'),
           style: 'cancel',
         },
       ]
@@ -101,9 +101,9 @@ const SettingsScreen = () => {
   return (
     <ScrollView>
       <VStack space={2} p="3">
-        <Text>{I18n.t('settings_title.locale')}</Text>
+        <Text>{i18n.t('settings_title.locale')}</Text>
         <Text fontSize="sm" color="muted.500">
-          {I18n.t('settings_note.locale')}
+          {i18n.t('settings_note.locale')}
         </Text>
         <Select
           selectedValue={locale}
@@ -132,9 +132,9 @@ const SettingsScreen = () => {
         justifyContent="space-between"
         alignItems="center">
         <VStack w="80%" space={2}>
-          <Text>{I18n.t('settings_title.keep awake')}</Text>
+          <Text>{i18n.t('settings_title.keep awake')}</Text>
           <Text fontSize="sm" color="muted.500">
-            {I18n.t('settings_note.keep awake')}
+            {i18n.t('settings_note.keep awake')}
           </Text>
         </VStack>
         <Switch width="20%" value={keepAwake} onValueChange={setKeepAwake} />
@@ -163,12 +163,12 @@ const SettingsScreen = () => {
         </Heading>
         <Text textAlign="center" fontSize="md" mt="5">
           <Text bold>
-            {I18n.t('ui.version')}: {version}
+            {i18n.t('ui.version')}: {version}
           </Text>
           {'\n'} Javier Castro, 2017-2021
         </Text>
         <Text textAlign="center" fontSize="sm" mt="10">
-          <Text bold>{I18n.t('ui.collaborators')}</Text>
+          <Text bold>{i18n.t('ui.collaborators')}</Text>
           {Object.keys(CollaboratorsIndex).map((lang) => {
             return `\n ${CollaboratorsIndex[lang].join(', ')} (${lang})`;
           })}
@@ -182,7 +182,7 @@ const SettingsScreen = () => {
           </Button>
         </HStack>
         <Text fontSize="sm" textAlign="center">
-          {I18n.t('ui.contribute message')}
+          {i18n.t('ui.contribute message')}
         </Text>
         <Button
           my="8"
@@ -190,7 +190,7 @@ const SettingsScreen = () => {
           variant="ghost"
           startIcon={<Icon as={Ionicons} name="browsers-outline" />}
           onPress={goEditor}>
-          {I18n.t('ui.contribute button')}
+          {i18n.t('ui.contribute button')}
         </Button>
         {settingsFileExists && (
           <Button
@@ -199,7 +199,7 @@ const SettingsScreen = () => {
             _text={{ color: 'white' }}
             borderRadius={32}
             onPress={clearSettings}>
-            {I18n.t('ui.clear song settings')}
+            {i18n.t('ui.clear song settings')}
           </Button>
         )}
       </Box>

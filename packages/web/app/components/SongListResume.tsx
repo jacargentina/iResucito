@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Menu, Progress } from 'semantic-ui-react';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 import { getPropertyLocale } from '@iresucito/core';
 
 const emptyResume = {
@@ -15,11 +15,11 @@ const SongListResume = (props: any) => {
   useEffect(() => {
     if (songs) {
       const withLocale = songs.filter((song) => {
-        return song.patched || !!getPropertyLocale(song.files, I18n.locale);
+        return song.patched || !!getPropertyLocale(song.files, i18n.locale);
       });
       const result = { translated: withLocale.length, total: songs.length };
       setResume({
-        text: I18n.t('ui.translated songs', result),
+        text: i18n.t('ui.translated songs', result),
         values: result,
       });
     } else {

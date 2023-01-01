@@ -9,7 +9,7 @@ import SwipeableRightAction from '../components/SwipeableRightAction';
 import SearchBarView from '../components/SearchBarView';
 import { useData } from '../DataContext';
 import CallToAction from '../components/CallToAction';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 import useStackNavOptions from '../navigation/StackNavOptions';
 import { contactFilterByText, ordenAlfabetico } from '../util';
 import ContactListItem from './ContactListItem';
@@ -51,18 +51,18 @@ const SwipeableRow = (props: { item: any }) => {
   const contactDelete = useCallback(
     (contact: Contact) => {
       Alert.alert(
-        `${I18n.t('ui.delete')} "${contact.givenName}"`,
-        I18n.t('ui.delete confirmation'),
+        `${i18n.t('ui.delete')} "${contact.givenName}"`,
+        i18n.t('ui.delete confirmation'),
         [
           {
-            text: I18n.t('ui.delete'),
+            text: i18n.t('ui.delete'),
             onPress: () => {
               addOrRemove(contact);
             },
             style: 'destructive',
           },
           {
-            text: I18n.t('ui.cancel'),
+            text: i18n.t('ui.cancel'),
             style: 'cancel',
           },
         ]
@@ -82,7 +82,7 @@ const SwipeableRow = (props: { item: any }) => {
             <SwipeableRightAction
               color={colors.blue['500']}
               progress={progress}
-              text={I18n.t('ui.psalmist')}
+              text={i18n.t('ui.psalmist')}
               x={200}
               onPress={() => {
                 swipeRef.current?.close();
@@ -92,7 +92,7 @@ const SwipeableRow = (props: { item: any }) => {
             <SwipeableRightAction
               color={colors.rose['600']}
               progress={progress}
-              text={I18n.t('ui.delete')}
+              text={i18n.t('ui.delete')}
               x={100}
               onPress={() => {
                 swipeRef.current?.close();
@@ -153,11 +153,11 @@ const CommunityScreen = () => {
         navigation.navigate('ContactImport');
       })
       .catch(() => {
-        let message = I18n.t('alert_message.contacts permission');
+        let message = i18n.t('alert_message.contacts permission');
         if (Platform.OS === 'ios') {
-          message += '\n\n' + I18n.t('alert_message.contacts permission ios');
+          message += '\n\n' + i18n.t('alert_message.contacts permission ios');
         }
-        Alert.alert(I18n.t('alert_title.contacts permission'), message);
+        Alert.alert(i18n.t('alert_title.contacts permission'), message);
       });
   }, [navigation, deviceContacts, populateDeviceContacts]);
 
@@ -183,10 +183,10 @@ const CommunityScreen = () => {
     return (
       <CallToAction
         icon="people-outline"
-        title={I18n.t('call_to_action_title.community list')}
-        text={I18n.t('call_to_action_text.community list')}
+        title={i18n.t('call_to_action_title.community list')}
+        text={i18n.t('call_to_action_text.community list')}
         buttonHandler={contactImport}
-        buttonText={I18n.t('call_to_action_button.community list')}
+        buttonText={i18n.t('call_to_action_button.community list')}
       />
     );
   }
@@ -195,13 +195,13 @@ const CommunityScreen = () => {
     <SearchBarView value={filter} setValue={setFilter}>
       {filtered && filtered.length === 0 && (
         <Text fontSize="sm" style={{ textAlign: 'center', paddingTop: 20 }}>
-          {I18n.t('ui.no contacts found')}
+          {i18n.t('ui.no contacts found')}
         </Text>
       )}
       <FlatList
         ref={listRef}
         data={filtered}
-        extraData={{ locale: I18n.locale, brothers }}
+        extraData={{ locale: i18n.locale, brothers }}
         keyExtractor={(item: any) => item.recordID}
         renderItem={({ item }) => <SwipeableRow item={item} />}
       />

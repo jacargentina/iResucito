@@ -6,7 +6,7 @@ import {
   useState,
 } from 'react';
 import { useFetcher } from '@remix-run/react';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 import { PatchStats, PickerLocale } from '@iresucito/core';
 
 type AppContextData = {
@@ -59,7 +59,7 @@ export const AppProvider = (props: {
 
   useEffect(() => {
     if (fetcher.data?.newLocale) {
-      I18n.locale = fetcher.data?.newLocale;
+      i18n.locale = fetcher.data?.newLocale;
     }
   }, [fetcher.data]);
 

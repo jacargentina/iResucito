@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import SettingsScreen from '../screens/SettingsScreen';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 import useStackNavOptions from './StackNavOptions';
 
 const Stack = createStackNavigator();
@@ -14,7 +14,7 @@ const SettingsNavigator = () => {
         name="SettingsScreen"
         component={SettingsScreen}
         options={() => {
-          return { title: I18n.t('screen_title.settings') };
+          return { title: i18n.t('screen_title.settings') };
         }}
       />
     </Stack.Navigator>

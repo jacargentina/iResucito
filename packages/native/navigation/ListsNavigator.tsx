@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { HStack } from 'native-base';
 import { createStackNavigator } from '@react-navigation/stack';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 import ListScreen from '../screens/ListScreen';
 import ListDetail from '../screens/ListDetail';
 import SongDetail from '../screens/SongDetail';
@@ -32,7 +32,7 @@ const ListsNavigator = () => {
         component={ListScreen}
         options={() => {
           return {
-            title: I18n.t('screen_title.lists', {
+            title: i18n.t('screen_title.lists', {
               locale: data.localeReal,
             }),
           };

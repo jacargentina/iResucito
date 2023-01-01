@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Button, Modal } from 'semantic-ui-react';
 import { EditContext } from './EditContext';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 import { useApp } from '~/app.context';
 
 const DiffViewDialog = () => {
@@ -21,7 +21,7 @@ const DiffViewDialog = () => {
       dimmer="blurring"
       centered={false}
       onClose={() => setActiveDialog()}>
-      <Modal.Header>{I18n.t('ui.diff view')}</Modal.Header>
+      <Modal.Header>{i18n.t('ui.diff view')}</Modal.Header>
       <Modal.Content scrolling>
         {editSong && <h5>{editSong.titulo.toUpperCase()}</h5>}
         <div style={{ flex: 1 }}>
@@ -49,7 +49,7 @@ const DiffViewDialog = () => {
       </Modal.Content>
       <Modal.Actions>
         <Button negative onClick={() => setActiveDialog()}>
-          {I18n.t('ui.close')}
+          {i18n.t('ui.close')}
         </Button>
       </Modal.Actions>
     </Modal>

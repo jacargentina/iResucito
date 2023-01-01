@@ -3,7 +3,7 @@ import type { RouteProp } from '@react-navigation/native';
 import { Text } from 'native-base';
 import { useRoute } from '@react-navigation/native';
 import ModalView from '../components/ModalView';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 import SongViewFrame from './SongViewFrame';
 
 import type { ChooserParamList } from '../navigation/SongChooserNavigator';
@@ -26,7 +26,7 @@ const SongPreviewScreenDialog = () => {
             alignSelf: 'flex-start',
           }}
         >
-          {I18n.t('screen_title.preview')}
+          {i18n.t('screen_title.preview')}
         </Text>
       }
     >

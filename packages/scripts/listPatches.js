@@ -1,6 +1,6 @@
 // @flow
 import osLocale from 'os-locale';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 import moment from 'moment';
 
 const path = require('path');
@@ -32,8 +32,8 @@ if (!locale) {
   locale = osLocale.sync();
   console.log('Locale: detected', locale);
 }
-I18n.locale = locale;
-console.log('Configured locale', I18n.locale);
+i18n.locale = locale;
+console.log('Configured locale', i18n.locale);
 
 var withTitleFlat = Object.keys(SongsPatches)
   .map((songKey) => {

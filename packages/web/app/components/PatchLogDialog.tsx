@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Button, Grid, Modal, Message } from 'semantic-ui-react';
 import { EditContext } from './EditContext';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 import { useApp } from '~/app.context';
 
 const PatchLogDialog = () => {
@@ -21,14 +21,14 @@ const PatchLogDialog = () => {
       dimmer="blurring"
       centered={false}
       onClose={() => setActiveDialog()}>
-      <Modal.Header>{I18n.t('ui.patch log')}</Modal.Header>
+      <Modal.Header>{i18n.t('ui.patch log')}</Modal.Header>
       <Modal.Content>
         {editSong && <h5>{editSong.titulo.toUpperCase()}</h5>}
         <div style={{ flex: 1 }}>
           {patchLogs &&
             patchLogs.changes.length === 0 &&
             !patchLogs.pending && (
-              <Message>{I18n.t('ui.no items to show')}</Message>
+              <Message>{i18n.t('ui.no items to show')}</Message>
             )}
           {patchLogs && patchLogs.changes.length > 0 && (
             <Grid columns={3} divided celled>
@@ -76,7 +76,7 @@ const PatchLogDialog = () => {
             <Message
               warning
               list={[
-                I18n.t('ui.patch pending', {
+                i18n.t('ui.patch pending', {
                   author: patchLogs.pending.author,
                   date: new Date(patchLogs.pending.date).toLocaleString(),
                 }),
@@ -87,7 +87,7 @@ const PatchLogDialog = () => {
       </Modal.Content>
       <Modal.Actions>
         <Button negative onClick={() => setActiveDialog()}>
-          {I18n.t('ui.close')}
+          {i18n.t('ui.close')}
         </Button>
       </Modal.Actions>
     </Modal>

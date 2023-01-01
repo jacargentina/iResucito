@@ -1,5 +1,5 @@
 import { osLocale } from 'os-locale';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 import { SongsParser, PdfStyles } from '@iresucito/core';
 import '~/utils.server';
 
@@ -30,8 +30,8 @@ const main = async () => {
       locale = await osLocale();
       console.log('Locale: detected', locale);
     }
-    I18n.locale = locale;
-    console.log('Configured locale', I18n.locale);
+    i18n.locale = locale;
+    console.log('Configured locale', i18n.locale);
     var key = options.key;
     if (locale !== '') {
       var parser = new SongsParser(PdfStyles);
@@ -44,7 +44,7 @@ const main = async () => {
         );
         const result = parser.getForRender(
           song.fullText,
-          I18n.locale,
+          i18n.locale,
           options.note
         );
         console.log(result);

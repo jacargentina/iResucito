@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { Menu, Dropdown } from 'semantic-ui-react';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 import { useApp } from '~/app.context';
 import {
   getLocalesForPicker,
@@ -28,7 +28,7 @@ const LocalePicker = () => {
         item
         pointing
         style={{ marginLeft: 10 }}
-        text={`${I18n.t('settings_title.locale', { locale: app.locale })} (${
+        text={`${i18n.t('settings_title.locale', { locale: app.locale })} (${
           app.locale
         })`}>
         <Dropdown.Menu>

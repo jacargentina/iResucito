@@ -11,7 +11,7 @@ import { FlatList, Text, Spinner, useDisclose } from 'native-base';
 import SearchBarView from '../components/SearchBarView';
 import ExportToPdfButton from '../components/ExportToPdfButton';
 import ChoosePdfTypeForExport from '../components/ChoosePdfTypeForExport';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 import { useData } from '../DataContext';
 import SongListItem from './SongListItem';
 import { SongsStackParamList } from '../navigation/SongsNavigator';
@@ -33,7 +33,7 @@ const SongList = (props: any) => {
   const isFocused = useIsFocused();
   const chooser = useDisclose();
   const { viewButton } = props;
-  const [totalText, setTotalText] = useState(I18n.t('ui.loading'));
+  const [totalText, setTotalText] = useState(i18n.t('ui.loading'));
   const { songs } = data.songsMeta;
   const [loading] = data.loading;
   const [showSalmosBadge, setShowSalmosBadge] = useState<boolean>();
@@ -66,9 +66,9 @@ const SongList = (props: any) => {
       );
       setSearch(result);
       if (result.length > 0) {
-        setTotalText(I18n.t('ui.list total songs', { total: result.length }));
+        setTotalText(i18n.t('ui.list total songs', { total: result.length }));
       } else {
-        setTotalText(I18n.t('ui.no songs found'));
+        setTotalText(i18n.t('ui.no songs found'));
       }
     }
   }, [

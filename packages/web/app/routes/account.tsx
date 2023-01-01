@@ -24,7 +24,7 @@ import ErrorDetail from '~/components/ErrorDetail';
 import ApiMessage from '~/components/ApiMessage';
 import { useApp } from '~/app.context';
 import { commitSession, getSession } from '~/session.server';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 
 export let action: ActionFunction = async ({ request }) => {
   return await authenticator.authenticate('lowdb', request, {
@@ -48,7 +48,7 @@ export let loader: LoaderFunction = async ({ request }) => {
 };
 
 export function meta() {
-  return { title: I18n.t('ui.login') };
+  return { title: i18n.t('ui.login') };
 }
 
 const Account = () => {
@@ -78,10 +78,10 @@ const Account = () => {
             {data.error && <ErrorDetail error={data.error} simple />}
             <ApiMessage />
             {searchParams.get('v') !== null && (
-              <Message positive>{I18n.t('ui.account verified')}</Message>
+              <Message positive>{i18n.t('ui.account verified')}</Message>
             )}
             {searchParams.get('r') !== null && (
-              <Message positive>{I18n.t('ui.password changed')}</Message>
+              <Message positive>{i18n.t('ui.password changed')}</Message>
             )}
             {!app.user && (
               <Form size="large">
@@ -92,7 +92,7 @@ const Account = () => {
                       icon="user"
                       iconPosition="left"
                       readOnly={transition.state !== 'idle'}
-                      placeholder={I18n.t('ui.email')}
+                      placeholder={i18n.t('ui.email')}
                       value={email}
                       onChange={(e, { value }) => {
                         setEmail(value);
@@ -105,7 +105,7 @@ const Account = () => {
                     icon="lock"
                     iconPosition="left"
                     readOnly={transition.state !== 'idle'}
-                    placeholder={I18n.t('ui.password')}
+                    placeholder={i18n.t('ui.password')}
                     type="password"
                     value={password}
                     onChange={(e, { value }) => {
@@ -119,7 +119,7 @@ const Account = () => {
                     size="large"
                     onClick={authenticate}
                     loading={transition.state !== 'idle'}>
-                    {I18n.t('ui.login')}
+                    {i18n.t('ui.login')}
                   </Button>
                   <Button
                     basic
@@ -128,10 +128,10 @@ const Account = () => {
                       signUp();
                     }}
                     disabled={transition.state !== 'idle'}>
-                    {I18n.t('ui.signup')}
+                    {i18n.t('ui.signup')}
                   </Button>
                   <Divider hidden />
-                  <Link to="/resetpassword">{I18n.t('ui.reset password')}</Link>
+                  <Link to="/resetpassword">{i18n.t('ui.reset password')}</Link>
                 </Segment>
               </Form>
             )}
@@ -142,7 +142,7 @@ const Account = () => {
                   <span>{app.user}</span>
                 </div>
                 <Divider hidden />
-                <Link to="/changepassword">{I18n.t('ui.change password')}</Link>
+                <Link to="/changepassword">{i18n.t('ui.change password')}</Link>
               </>
             )}
           </Grid.Column>

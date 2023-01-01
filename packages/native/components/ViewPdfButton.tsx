@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Icon } from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 import { defaultExportToPdfOptions, SongToPdf } from '@iresucito/core';
 import { NativeParser } from '../util';
 import { generateSongPDF } from '../pdf';
@@ -43,7 +43,7 @@ const ViewPdfButton = () => {
         const { fullText } = song;
         const render = NativeParser.getForRender(
           fullText,
-          I18n.locale,
+          i18n.locale,
           song.transportTo
         );
         const item: SongToPdf = {

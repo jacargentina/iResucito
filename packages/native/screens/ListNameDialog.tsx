@@ -5,7 +5,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import { getLocalizedListType } from '@iresucito/core';
 import { useData } from '../DataContext';
 import ModalView from '../components/ModalView';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 
 const ListNameDialog = () => {
   const data = useData();
@@ -42,8 +42,8 @@ const ListNameDialog = () => {
     if (!actionEnabled) {
       var text =
         name && name.trim() !== ''
-          ? I18n.t('ui.lists.already exists')
-          : I18n.t('ui.lists.non-empty name');
+          ? i18n.t('ui.lists.already exists')
+          : i18n.t('ui.lists.non-empty name');
       setDisabledReasonText(text);
     } else {
       setDisabledReasonText(null);
@@ -52,11 +52,11 @@ const ListNameDialog = () => {
 
   const title =
     action === 'create'
-      ? `${I18n.t('ui.lists.create')} (${getLocalizedListType(
+      ? `${i18n.t('ui.lists.create')} (${getLocalizedListType(
           type,
           data.localeReal
         )})`
-      : `${I18n.t('ui.lists.rename')} (${listName})`;
+      : `${i18n.t('ui.lists.rename')} (${listName})`;
 
   return (
     <ModalView
@@ -71,7 +71,7 @@ const ListNameDialog = () => {
           }}
           isDisabled={!actionEnabled}
           onPress={runActionOnList}>
-          {action === 'create' ? I18n.t('ui.create') : I18n.t('ui.rename')}
+          {action === 'create' ? i18n.t('ui.create') : i18n.t('ui.rename')}
         </Button>
       }
       left={
@@ -83,7 +83,7 @@ const ListNameDialog = () => {
             alignSelf: 'flex-start',
           }}
           onPress={() => navigation.goBack()}>
-          {I18n.t('ui.cancel')}
+          {i18n.t('ui.cancel')}
         </Button>
       }>
       <Box px="5">

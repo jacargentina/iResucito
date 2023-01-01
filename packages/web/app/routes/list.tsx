@@ -7,7 +7,7 @@ import { useLoaderData } from '@remix-run/react';
 import { getSession } from '~/session.server';
 import { useApp } from '~/app.context';
 import { Loader } from 'semantic-ui-react';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 
 export let loader: LoaderFunction = async ({ request }) => {
   const session = await getSession(request.headers.get('Cookie'));
@@ -50,7 +50,7 @@ const List = () => {
             active
             inline="centered"
             size="large"
-            content={I18n.t('ui.loading')}
+            content={i18n.t('ui.loading')}
           />
         </div>
       ) : (

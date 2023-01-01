@@ -21,7 +21,7 @@ import Layout from '~/components/Layout';
 import ApiMessage from '~/components/ApiMessage';
 import '~/utils.server';
 import { authenticator } from '~/auth.server';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 import ErrorDetail from '~/components/ErrorDetail';
 import { commitSession, getSession } from '~/session.server';
 
@@ -89,7 +89,7 @@ export let loader: LoaderFunction = async ({ request }) => {
 };
 
 export function meta() {
-  return { title: I18n.t('ui.change password') };
+  return { title: i18n.t('ui.change password') };
 }
 
 const ChangePassword = () => {
@@ -113,7 +113,7 @@ const ChangePassword = () => {
         <Image centered circular src="cristo.png" />
         <Header textAlign="center">
           iResucito
-          <Header.Subheader>{I18n.t('ui.change password')}</Header.Subheader>
+          <Header.Subheader>{i18n.t('ui.change password')}</Header.Subheader>
         </Header>
         <Grid textAlign="center" verticalAlign="middle">
           <Grid.Column>
@@ -121,7 +121,7 @@ const ChangePassword = () => {
             <ApiMessage />
             <Form size="large">
               <Segment vertical>
-                <h5>{I18n.t('ui.new password')}</h5>
+                <h5>{i18n.t('ui.new password')}</h5>
                 <Input
                   fluid
                   autoFocus
@@ -131,7 +131,7 @@ const ChangePassword = () => {
                   }}
                   type="password"
                 />
-                <h5>{I18n.t('ui.confirm new password')}</h5>
+                <h5>{i18n.t('ui.confirm new password')}</h5>
                 <Input
                   fluid
                   value={confirmNewPassword}
@@ -147,7 +147,7 @@ const ChangePassword = () => {
                   onClick={() => {
                     submit({ newPassword, ...data }, { method: 'post' });
                   }}>
-                  {I18n.t('ui.apply')}
+                  {i18n.t('ui.apply')}
                 </Button>
               </Segment>
             </Form>

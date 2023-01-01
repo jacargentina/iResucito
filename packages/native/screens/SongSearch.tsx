@@ -12,7 +12,7 @@ import {
   FlatList,
 } from 'native-base';
 import { useData } from '../DataContext';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { SongsStackParamList } from '../navigation/SongsNavigator';
 
@@ -20,7 +20,7 @@ const Loading = () => {
   return (
     <Center marginTop={10}>
       <Spinner color="rose.500" size="lg" />
-      <Text>{I18n.t('ui.loading')}</Text>
+      <Text>{i18n.t('ui.loading')}</Text>
     </Center>
   );
 };
@@ -52,7 +52,7 @@ const SongSearch = () => {
         if (item.divider) {
           return (
             <Text bold p="2" fontSize="sm" bg="gray.100">
-              {I18n.t(item.title_key).toUpperCase()}
+              {i18n.t(item.title_key).toUpperCase()}
             </Text>
           );
         }
@@ -64,9 +64,9 @@ const SongSearch = () => {
             <HStack w="100%" p="2" m="1">
               {item.badge}
               <VStack>
-                <Text>{I18n.t(item.title_key)}</Text>
+                <Text>{i18n.t(item.title_key)}</Text>
                 <Text color="muted.500" fontSize="sm">
-                  {I18n.t(item.note_key as string)}
+                  {i18n.t(item.note_key as string)}
                 </Text>
               </VStack>
             </HStack>

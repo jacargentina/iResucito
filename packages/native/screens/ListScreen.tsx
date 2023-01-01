@@ -20,7 +20,7 @@ import { ListForUI, useData } from '../DataContext';
 import CallToAction from '../components/CallToAction';
 import AddListButton from '../components/AddListButton';
 import ChooseListTypeForAdd from '../components/ChooseListTypeForAdd';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 
 const SwipeableRow = (props: { item: any }) => {
   const data = useData();
@@ -33,18 +33,18 @@ const SwipeableRow = (props: { item: any }) => {
   const listDelete = useCallback(
     (listName: string) => {
       Alert.alert(
-        `${I18n.t('ui.delete')} "${listName}"`,
-        I18n.t('ui.delete confirmation'),
+        `${i18n.t('ui.delete')} "${listName}"`,
+        i18n.t('ui.delete confirmation'),
         [
           {
-            text: I18n.t('ui.delete'),
+            text: i18n.t('ui.delete'),
             onPress: () => {
               removeList(listName);
             },
             style: 'destructive',
           },
           {
-            text: I18n.t('ui.cancel'),
+            text: i18n.t('ui.cancel'),
             style: 'cancel',
           },
         ]
@@ -74,7 +74,7 @@ const SwipeableRow = (props: { item: any }) => {
             <SwipeableRightAction
               color={colors.blue['500']}
               progress={progress}
-              text={I18n.t('ui.rename')}
+              text={i18n.t('ui.rename')}
               x={250}
               onPress={() => {
                 swipeRef.current?.close();
@@ -84,7 +84,7 @@ const SwipeableRow = (props: { item: any }) => {
             <SwipeableRightAction
               color={colors.rose['600']}
               progress={progress}
-              text={I18n.t('ui.delete')}
+              text={i18n.t('ui.delete')}
               x={125}
               onPress={() => {
                 swipeRef.current?.close();
@@ -133,8 +133,8 @@ const ListScreen = () => {
   const chooser = useDisclose();
 
   const allLists = useMemo(
-    () => getListsForUI(I18n.locale),
-    [I18n.locale, getListsForUI]
+    () => getListsForUI(i18n.locale),
+    [i18n.locale, getListsForUI]
   );
 
   useEffect(() => {
@@ -157,10 +157,10 @@ const ListScreen = () => {
         <ChooseListTypeForAdd chooser={chooser} />
         <CallToAction
           icon="bookmarks-outline"
-          title={I18n.t('call_to_action_title.add lists')}
-          text={I18n.t('call_to_action_text.add lists')}
+          title={i18n.t('call_to_action_title.add lists')}
+          text={i18n.t('call_to_action_text.add lists')}
           buttonHandler={chooser.onOpen}
-          buttonText={I18n.t('call_to_action_button.add lists')}
+          buttonText={i18n.t('call_to_action_button.add lists')}
         />
       </>
     );
@@ -171,12 +171,12 @@ const ListScreen = () => {
       <ChooseListTypeForAdd chooser={chooser} />
       {filtered.length === 0 && (
         <Text textAlign="center" m="5">
-          {I18n.t('ui.no lists found')}
+          {i18n.t('ui.no lists found')}
         </Text>
       )}
       <FlatList
         data={filtered}
-        extraData={I18n.locale}
+        extraData={i18n.locale}
         keyExtractor={(item) => item.name}
         renderItem={({ item }) => {
           return <SwipeableRow item={item} />;

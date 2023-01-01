@@ -1,4 +1,4 @@
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 import {
   cleanChordsRegex,
   getChordsScale,
@@ -36,7 +36,7 @@ export class SongsParser {
       const clampValue = text.substring(text.indexOf(':') + 1).trim();
       var it: SongLine = {
         raw: text,
-        texto: I18n.t('songs.clamp', { clamp: clampValue }),
+        texto: i18n.t('songs.clamp', { clamp: clampValue }),
         style: this.songStyles.clampLine,
         prefijo: '',
         prefijoStyle: null,
@@ -82,9 +82,9 @@ export class SongsParser {
       };
       return it;
     } else {
-      const psalmistAndAssembly = `${I18n.t('songs.psalmist', {
+      const psalmistAndAssembly = `${i18n.t('songs.psalmist', {
         locale,
-      })} ${I18n.t('songs.assembly', {
+      })} ${i18n.t('songs.assembly', {
         locale,
       })}`;
       if (text.startsWith(psalmistAndAssembly)) {
@@ -103,32 +103,32 @@ export class SongsParser {
         return it;
       } else if (
         text.startsWith(
-          I18n.t('songs.psalmist', {
+          i18n.t('songs.psalmist', {
             locale,
           })
         ) ||
         text.startsWith(
-          I18n.t('songs.assembly', {
+          i18n.t('songs.assembly', {
             locale,
           })
         ) ||
         text.startsWith(
-          I18n.t('songs.priest', {
+          i18n.t('songs.priest', {
             locale,
           })
         ) ||
         text.startsWith(
-          I18n.t('songs.men', {
+          i18n.t('songs.men', {
             locale,
           })
         ) ||
         text.startsWith(
-          I18n.t('songs.women', {
+          i18n.t('songs.women', {
             locale,
           })
         ) ||
         text.startsWith(
-          I18n.t('songs.children', {
+          i18n.t('songs.children', {
             locale,
           })
         )

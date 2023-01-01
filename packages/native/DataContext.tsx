@@ -22,7 +22,7 @@ import {
   SongFile,
   SearchItem,
 } from '@iresucito/core';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 import badges from './badges';
 import { clouddata } from './clouddata';
 import { generateListPDF } from './pdf';
@@ -33,6 +33,7 @@ import {
   NativeSongs,
   NativeExtras,
 } from './util';
+import { ListType, ShareListType, SongSetting } from './types';
 
 type UseSongsMeta = {
   songs: Song[];
@@ -145,19 +146,19 @@ const useSongsMeta = (locale: string | undefined): UseSongsMeta => {
   };
 
   const loadSongs = useCallback(() => {
-    if (I18n.locale && settingsFileExists !== undefined) {
+    if (i18n.locale && settingsFileExists !== undefined) {
       // Cargar parche del indice si existe
       readSongSettingsFile().then((settingsObj) => {
         // Construir metadatos de cantos
         var metaData = NativeSongs.getSongsMeta(
-          I18n.locale,
+          i18n.locale,
           undefined,
           settingsObj
         );
         console.log(`loading ${metaData.length} songs`);
-        return NativeSongs.loadSongs(I18n.locale, metaData).then(() => {
+        return NativeSongs.loadSongs(i18n.locale, metaData).then(() => {
           setSongs(metaData);
-          return readAllLocaleSongs(I18n.locale);
+          return readAllLocaleSongs(i18n.locale);
         });
       });
     }
@@ -411,8 +412,8 @@ const useLists = (songs: Song[]): UseLists => {
       .catch((err) => {
         console.log('importList: ' + err.message);
         Alert.alert(
-          I18n.t('alert_title.corrupt file'),
-          I18n.t('alert_message.corrupt file')
+          i18n.t('alert_title.corrupt file'),
+          i18n.t('alert_message.corrupt file')
         );
       });
   };
@@ -433,7 +434,7 @@ const useLists = (songs: Song[]): UseLists => {
         const nativeList = lists[listName];
         RNFS.writeFile(listPath, JSON.stringify(nativeList, null, ' '), 'utf8');
         Share.open({
-          title: I18n.t('ui.share'),
+          title: i18n.t('ui.share'),
           subject: `iResucitó - ${listName}`,
           url: `file://${listPath}`,
           failOnCancel: false,
@@ -478,7 +479,7 @@ const useLists = (songs: Song[]): UseLists => {
         }
         var message = items.filter((n) => n).join('\n');
         Share.open({
-          title: I18n.t('ui.share'),
+          title: i18n.t('ui.share'),
           message: message,
           subject: `iResucitó - ${listName}`,
           url: undefined,
@@ -496,7 +497,7 @@ const useLists = (songs: Song[]): UseLists => {
         list.localeType = getLocalizedListType(list.type, localeValue);
         generateListPDF(list, defaultExportToPdfOptions).then((path) => {
           Share.open({
-            title: I18n.t('ui.share'),
+            title: i18n.t('ui.share'),
             subject: `iResucitó - ${listName}`,
             url: `file://${path}`,
             failOnCancel: false,
@@ -576,7 +577,7 @@ const useSearch = (localeValue: string | undefined): UseSearch => {
       {
         title_key: 'search_title.alpha',
         note_key: 'search_note.alpha',
-        chooser: I18n.t('search_tabs.all', { locale: localeValue }),
+        chooser: i18n.t('search_tabs.all', { locale: localeValue }),
         params: { filter: null },
         badge: badges.alpha,
       },
@@ -651,7 +652,7 @@ const useSearch = (localeValue: string | undefined): UseSearch => {
         note_key: 'search_note.entrance',
         params: { filter: { entrance: true } },
         badge: null,
-        chooser: I18n.t('search_tabs.entrance', { locale: localeValue }),
+        chooser: i18n.t('search_tabs.entrance', { locale: localeValue }),
         chooser_listKey: ['entrada'],
       },
       {
@@ -659,7 +660,7 @@ const useSearch = (localeValue: string | undefined): UseSearch => {
         note_key: 'search_note.peace and offerings',
         params: { filter: { 'peace and offerings': true } },
         badge: null,
-        chooser: I18n.t('search_tabs.peace and offerings', {
+        chooser: i18n.t('search_tabs.peace and offerings', {
           locale: localeValue,
         }),
         chooser_listKey: ['paz'],
@@ -669,7 +670,7 @@ const useSearch = (localeValue: string | undefined): UseSearch => {
         note_key: 'search_note.fraction of bread',
         params: { filter: { 'fraction of bread': true } },
         badge: null,
-        chooser: I18n.t('search_tabs.fraction of bread', {
+        chooser: i18n.t('search_tabs.fraction of bread', {
           locale: localeValue,
         }),
         chooser_listKey: ['comunion-pan'],
@@ -679,7 +680,7 @@ const useSearch = (localeValue: string | undefined): UseSearch => {
         note_key: 'search_note.communion',
         params: { filter: { communion: true } },
         badge: null,
-        chooser: I18n.t('search_tabs.communion', { locale: localeValue }),
+        chooser: i18n.t('search_tabs.communion', { locale: localeValue }),
         chooser_listKey: ['comunion-pan', 'comunion-caliz'],
       },
       {
@@ -687,7 +688,7 @@ const useSearch = (localeValue: string | undefined): UseSearch => {
         note_key: 'search_note.exit',
         params: { filter: { exit: true } },
         badge: null,
-        chooser: I18n.t('search_tabs.exit', { locale: localeValue }),
+        chooser: i18n.t('search_tabs.exit', { locale: localeValue }),
         chooser_listKey: ['salida'],
       },
       {
@@ -695,7 +696,7 @@ const useSearch = (localeValue: string | undefined): UseSearch => {
         note_key: 'search_note.signing to the virgin',
         params: { filter: { 'signing to the virgin': true } },
         badge: null,
-        chooser: I18n.t('search_tabs.signing to the virgin', {
+        chooser: i18n.t('search_tabs.signing to the virgin', {
           locale: localeValue,
         }),
       },
@@ -922,7 +923,7 @@ const DataContextWrapper = (props: any): any => {
 
   const sharePDF = (shareTitleSuffix: string, pdfPath: string) => {
     Share.open({
-      title: I18n.t('ui.share'),
+      title: i18n.t('ui.share'),
       subject: `iResucitó - ${shareTitleSuffix}`,
       url: `file://${pdfPath}`,
       failOnCancel: false,
@@ -937,7 +938,7 @@ const DataContextWrapper = (props: any): any => {
 
   useEffect(() => {
     if (localeReal) {
-      I18n.locale = localeReal;
+      i18n.locale = localeReal;
     }
   }, [localeReal]);
 

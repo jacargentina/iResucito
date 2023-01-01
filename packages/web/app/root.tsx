@@ -17,7 +17,7 @@ import { authenticator } from './auth.server';
 import { AppProvider } from './app.context';
 import { getSession } from './session.server';
 import { getPatchStats } from '@iresucito/core';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 import semanticUrl from 'semantic-ui-css/semantic.min.css';
 import globalStylesUrl from './styles/global.css';
 
@@ -73,7 +73,7 @@ export default function App() {
 
   useEffect(() => {
     if (data.locale) {
-      I18n.locale = data.locale;
+      i18n.locale = data.locale;
       if (location.pathname === '/') {
         navigate('/list');
       }
@@ -87,7 +87,7 @@ export default function App() {
 
   useEffect(() => {
     if (fetcher.data?.newLocale) {
-      I18n.locale = fetcher.data?.newLocale;
+      i18n.locale = fetcher.data?.newLocale;
       navigate(`/list`);
     }
   }, [fetcher.data]);

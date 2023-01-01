@@ -4,7 +4,7 @@ import SongSearch from '../screens/SongSearch';
 import SongList from '../screens/SongList';
 import SongDetail from '../screens/SongDetail';
 import PDFViewer from '../screens/PDFViewer';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 import { useData } from '../DataContext';
 import { getSongDetailOptions, getPdfViewerOptions } from './util';
 import useStackNavOptions from './StackNavOptions';
@@ -28,7 +28,7 @@ const SongsNavigator = () => {
         name="SongSearch"
         component={SongSearch}
         options={{
-          title: I18n.t('screen_title.search', { locale: data.localeReal }),
+          title: i18n.t('screen_title.search', { locale: data.localeReal }),
         }}
       />
       <Stack.Screen
@@ -36,7 +36,7 @@ const SongsNavigator = () => {
         component={SongList}
         options={({ route }) => {
           return {
-            title: I18n.t(route.params.title_key, { locale: data.localeReal }),
+            title: i18n.t(route.params.title_key, { locale: data.localeReal }),
           };
         }}
       />

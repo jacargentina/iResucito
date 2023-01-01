@@ -16,7 +16,7 @@ import ApiMessage from '~/components/ApiMessage';
 import SongListResume from '~/components/SongListResume';
 import { useDebounce } from 'use-debounce';
 import { colors, getPropertyLocale, Song } from '@iresucito/core';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 import { useApp } from '~/app.context';
 import { useNavigate } from '@remix-run/react';
 
@@ -137,7 +137,7 @@ const SongList = (props: { songs: Array<Song> }) => {
           return filters[name] === false || song[name] === filters[name];
         });
         if (onlyTranslated) {
-          flags.push(getPropertyLocale(song.files, I18n.locale) !== '');
+          flags.push(getPropertyLocale(song.files, i18n.locale) !== '');
         }
         return flags.every((f) => f === true);
       });
@@ -167,7 +167,7 @@ const SongList = (props: { songs: Array<Song> }) => {
           <Menu.Item position="right">
             <Button onClick={closePdf}>
               <Icon name="close" />
-              {I18n.t('ui.close')}
+              {i18n.t('ui.close')}
             </Button>
           </Menu.Item>
         )}
@@ -183,14 +183,14 @@ const SongList = (props: { songs: Array<Song> }) => {
                     trigger={
                       <Button onClick={addSong}>
                         <Icon name="add" />
-                        {I18n.t('ui.create')}
+                        {i18n.t('ui.create')}
                       </Button>
                     }
                   />
                 )}
                 <Button onClick={previewPdf}>
                   <Icon name="file pdf" />
-                  {I18n.t('share_action.view pdf')}
+                  {i18n.t('share_action.view pdf')}
                 </Button>
               </Button.Group>
             </Menu.Item>
@@ -200,35 +200,35 @@ const SongList = (props: { songs: Array<Song> }) => {
                   toggle
                   active={filters.patched}
                   onClick={() => toggleFilter('patched')}>
-                  {I18n.t('ui.filters.patched')}
+                  {i18n.t('ui.filters.patched')}
                   {patchedCount > 0 ? ` - ${patchedCount}` : null}
                 </Button>
                 <Button
                   toggle
                   active={filters.added}
                   onClick={() => toggleFilter('added')}>
-                  {I18n.t('ui.filters.added')}
+                  {i18n.t('ui.filters.added')}
                   {addedCount > 0 ? ` - ${addedCount}` : null}
                 </Button>
                 <Button
                   toggle
                   active={filters.notTranslated}
                   onClick={() => toggleFilter('notTranslated')}>
-                  {I18n.t('ui.filters.untranslated')}
+                  {i18n.t('ui.filters.untranslated')}
                   {notTranslatedCount > 0 ? ` - ${notTranslatedCount}` : null}
                 </Button>
                 <Button
                   toggle
                   active={onlyTranslated}
                   onClick={() => setOnlyTranslated((state) => !state)}>
-                  {I18n.t('ui.filters.translated')}
+                  {i18n.t('ui.filters.translated')}
                 </Button>
               </Button.Group>
             </Menu.Item>
             {filtered && (
               <Menu.Item>
                 <strong style={{ marginLeft: 10 }}>
-                  {I18n.t('ui.list total songs', { total: filtered.length })}
+                  {i18n.t('ui.list total songs', { total: filtered.length })}
                 </strong>
               </Menu.Item>
             )}
@@ -242,7 +242,7 @@ const SongList = (props: { songs: Array<Song> }) => {
             <Input
               fluid
               icon="search"
-              placeholder={I18n.t('ui.search placeholder')}
+              placeholder={i18n.t('ui.search placeholder')}
               onChange={(_, data) => {
                 setSearchTerm(data.value);
                 localStorage.setItem('searchTerm', JSON.stringify(data.value));
@@ -251,7 +251,7 @@ const SongList = (props: { songs: Array<Song> }) => {
               loading={filtering}
             />
             {filtered && filtered.length === 0 && (
-              <Message>{I18n.t('ui.no songs found')}</Message>
+              <Message>{i18n.t('ui.no songs found')}</Message>
             )}
           </div>
           <ApiMessage />
@@ -277,7 +277,7 @@ const SongList = (props: { songs: Array<Song> }) => {
                       <div style={{ marginTop: 8 }}>
                         {song.stage && (
                           <Popup
-                            content={I18n.t(`search_title.${song.stage}`)}
+                            content={i18n.t(`search_title.${song.stage}`)}
                             trigger={
                               <Label
                                 style={{
@@ -301,7 +301,7 @@ const SongList = (props: { songs: Array<Song> }) => {
                         )}
                         {song.version > 0 && (
                           <Popup
-                            content={I18n.t('ui.song version number', {
+                            content={i18n.t('ui.song version number', {
                               version: song.version,
                             })}
                             trigger={
@@ -313,7 +313,7 @@ const SongList = (props: { songs: Array<Song> }) => {
                         )}
                         {song.notTranslated && (
                           <Label color="red" size="small">
-                            {I18n.t('ui.locale warning title')}
+                            {i18n.t('ui.locale warning title')}
                           </Label>
                         )}
                       </div>
@@ -336,7 +336,7 @@ const SongList = (props: { songs: Array<Song> }) => {
             active
             inline="centered"
             size="large"
-            content={I18n.t('ui.loading')}
+            content={i18n.t('ui.loading')}
             inverted={false}
           />
         </div>

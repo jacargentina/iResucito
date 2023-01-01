@@ -20,7 +20,7 @@ import Collapsible from 'react-native-collapsible';
 import { Rating } from 'react-native-rating-element';
 import { useData } from '../DataContext';
 import badges from '../badges';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 import { Song } from '@iresucito/core';
 import { ChooserParamList } from '../navigation/SongChooserNavigator';
 
@@ -29,14 +29,14 @@ const NoLocaleWarning = () => {
     <Pressable
       onPress={() => {
         Alert.alert(
-          I18n.t('ui.locale warning title'),
-          I18n.t('ui.locale warning message')
+          i18n.t('ui.locale warning title'),
+          i18n.t('ui.locale warning message')
         );
       }}>
       <HStack alignItems="center">
         <Icon color="rose.700" as={Ionicons} size="sm" name="bug" mr="2" />
         <Text fontSize={14} color="muted.500">
-          {I18n.t('ui.locale warning title')}
+          {i18n.t('ui.locale warning title')}
         </Text>
       </HStack>
     </Pressable>
@@ -200,7 +200,7 @@ const SongListItem = (props: any) => {
           size={20}
           rated={song.rating}
           onIconTap={(position: number) =>
-            setSongSetting(song.key, I18n.locale, 'rating', position)
+            setSongSetting(song.key, i18n.locale, 'rating', position)
           }
           ratingColor={colors.rose['500']}
         />

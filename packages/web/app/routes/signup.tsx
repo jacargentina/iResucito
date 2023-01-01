@@ -6,7 +6,7 @@ import bcrypt from 'bcryptjs';
 import { ActionFunction, json } from '@remix-run/node';
 import { commitSession, getSession } from '~/session.server';
 import '~/utils.server';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 
 export let action: ActionFunction = async ({ request }) => {
   const session = await getSession(request.headers.get('Cookie'));
@@ -112,7 +112,7 @@ const Signup = () => {
         <Image centered circular src="cristo.png" />
         <Header textAlign="center">
           iResucito
-          <Header.Subheader>{I18n.t('ui.signup')}</Header.Subheader>
+          <Header.Subheader>{i18n.t('ui.signup')}</Header.Subheader>
         </Header>
         <Grid textAlign="center" verticalAlign="middle">
           <Grid.Column>

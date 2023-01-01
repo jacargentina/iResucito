@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import JSONInput from 'react-json-editor-ajrm';
 import locale from 'react-json-editor-ajrm/locale/en';
 import { Button, Modal } from 'semantic-ui-react';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 import { defaultExportToPdfOptions } from '@iresucito/core';
 import { useApp } from '~/app.context';
 
@@ -45,7 +45,7 @@ const PdfSettingsDialog = () => {
       dimmer="blurring"
       centered={false}
       onClose={() => setActiveDialog()}>
-      <Modal.Header>{I18n.t('screen_title.settings')}</Modal.Header>
+      <Modal.Header>{i18n.t('screen_title.settings')}</Modal.Header>
       <Modal.Content>
         {activeDialog === 'pdfSettings' && (
           <JSONInput
@@ -67,12 +67,12 @@ const PdfSettingsDialog = () => {
       </Modal.Content>
       <Modal.Actions>
         <Button primary onClick={saveOptions}>
-          {I18n.t('ui.apply')}
+          {i18n.t('ui.apply')}
         </Button>
         <Button negative onClick={deleteOptions}>
-          {I18n.t('ui.delete')}
+          {i18n.t('ui.delete')}
         </Button>
-        <Button onClick={() => setActiveDialog()}>{I18n.t('ui.close')}</Button>
+        <Button onClick={() => setActiveDialog()}>{i18n.t('ui.close')}</Button>
       </Modal.Actions>
     </Modal>
   );

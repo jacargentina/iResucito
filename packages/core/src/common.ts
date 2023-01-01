@@ -3,7 +3,7 @@ import normalize from 'normalize-strings';
 import langs from 'langs';
 import countries from 'country-list';
 import * as _ from 'lodash';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 const PDFDocument = require('./pdfkit.standalone.js');
 
 export type PickerLocale = {
@@ -290,7 +290,7 @@ export type ListToPdf = {
 };
 
 export const getLocalizedListItem = (listKey: string): string => {
-  return I18n.t(`list_item.${listKey}`);
+  return i18n.t(`list_item.${listKey}`);
 };
 
 export const getLocalizedListType = (
@@ -299,11 +299,11 @@ export const getLocalizedListType = (
 ): string => {
   switch (listType) {
     case 'eucaristia':
-      return I18n.t('list_type.eucharist', { locale: localeValue });
+      return i18n.t('list_type.eucharist', { locale: localeValue });
     case 'palabra':
-      return I18n.t('list_type.word', { locale: localeValue });
+      return i18n.t('list_type.word', { locale: localeValue });
     case 'libre':
-      return I18n.t('list_type.other', { locale: localeValue });
+      return i18n.t('list_type.other', { locale: localeValue });
     default:
       return '';
   }
@@ -347,7 +347,7 @@ export const cleanChordsRegex: any =
   /\[|\]|\(|\)|#|\*|5|6|7|9|b|-|\+|\/|\u2013|aum|dim|sus|m|is|IS/g;
 
 export const getChordsScale = (locale: string): Array<string> => {
-  return I18n.t('chords.scale', { locale }).split(' ');
+  return i18n.t('chords.scale', { locale }).split(' ');
 };
 
 export const getPropertyLocale = (obj: any, rawLoc: string): string => {
@@ -387,11 +387,11 @@ export const getLocalesForPicker = (
   var locales = [];
   if (defaultLocale) {
     locales.push({
-      label: `${I18n.t('ui.default')} - ${getLocaleLabel(defaultLocale)}`,
+      label: `${i18n.t('ui.default')} - ${getLocaleLabel(defaultLocale)}`,
       value: 'default',
     });
   }
-  for (var code in I18n.translations) {
+  for (var code in i18n.translations) {
     locales.push({ label: getLocaleLabel(code), value: code });
   }
   locales.sort((a, b) => a.label.localeCompare(b.label));
@@ -836,14 +836,14 @@ export const SongPDFGenerator = async (
       // Portada
       writer.addExtraMargin = true;
       writer.doc.addPage();
-      const title = I18n.t('ui.export.songs book title').toUpperCase();
-      const subtitle = I18n.t('ui.export.songs book subtitle').toUpperCase();
+      const title = i18n.t('ui.export.songs book title').toUpperCase();
+      const subtitle = i18n.t('ui.export.songs book subtitle').toUpperCase();
 
       // Escalar titulo - en español "Resucitó" (9 letras) (A) => pdfValues.bookTitle.FontSize (B)
       // Para otra longitud, cual seria el font size? "Er ist auferstanden" (19 letras) (C) => (X)
       // Regla de 3 inversa X = A * B / C
 
-      const A = I18n.t('ui.export.songs book title', {
+      const A = i18n.t('ui.export.songs book title', {
         locale: 'es',
       }).length;
       const B = writer.opts.bookTitle.FontSize;
@@ -877,7 +877,7 @@ export const SongPDFGenerator = async (
       writer.doc.addPage();
       writer.doc.page.pageNumber = 1;
       writer.writeText(
-        I18n.t('ui.export.songs index').toUpperCase(),
+        i18n.t('ui.export.songs index').toUpperCase(),
         PdfStyles.title.color,
         writer.opts.indexTitle.FontSize,
         { align: 'center' }
@@ -890,24 +890,24 @@ export const SongPDFGenerator = async (
 
       // Alfabetico
       var alphaItems = getAlphaWithSeparators(songsToPdf);
-      writer.generateListing(I18n.t('search_title.alpha'), alphaItems);
+      writer.generateListing(i18n.t('search_title.alpha'), alphaItems);
 
       writer.doc.moveDown();
 
       // Agrupados por stage
       var byStage = getGroupedByStage(songsToPdf);
       wayStages.forEach((stage) => {
-        writer.generateListing(I18n.t(`search_title.${stage}`), byStage[stage]);
+        writer.generateListing(i18n.t(`search_title.${stage}`), byStage[stage]);
         writer.doc.moveDown();
       });
 
       // Agrupados por tiempo liturgico
       var byTime = getGroupedByLiturgicTime(songsToPdf);
       liturgicTimes.forEach((time, i) => {
-        var titleTime = I18n.t(`search_title.${time}`);
+        var titleTime = i18n.t(`search_title.${time}`);
         if (i === 0) {
           titleTime =
-            I18n.t('search_title.liturgical time') + ` - ${titleTime}`;
+            i18n.t('search_title.liturgical time') + ` - ${titleTime}`;
         }
         writer.generateListing(titleTime, byTime[time]);
         writer.doc.moveDown();
@@ -916,7 +916,7 @@ export const SongPDFGenerator = async (
       // Agrupados por orden liturgico
       var byOrder = getGroupedByLiturgicOrder(songsToPdf);
       liturgicOrder.forEach((order) => {
-        var titleOrder = I18n.t(`search_title.${order}`);
+        var titleOrder = i18n.t(`search_title.${order}`);
         writer.generateListing(titleOrder, byOrder[order]);
         writer.doc.moveDown();
       });
@@ -976,7 +976,7 @@ export const SongPDFGenerator = async (
           var text = '';
           var color = PdfStyles.indicator.color;
           if (blockIndicator.type === 'bloqueRepetir') {
-            text = I18n.t('songs.repeat');
+            text = i18n.t('songs.repeat');
           } else if (blockIndicator.type === 'bloqueNotaAlPie') {
             text = '*';
           }

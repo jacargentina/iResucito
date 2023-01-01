@@ -12,7 +12,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { getLocalizedListItem } from '@iresucito/core';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 import { useData } from '../DataContext';
 
 const ListDetailItem = (props: {
@@ -104,7 +104,7 @@ const ListDetailItem = (props: {
     // Cualquier otro caso, es un canto
     var text =
       listText == null
-        ? I18n.t('ui.search placeholder') + '...'
+        ? i18n.t('ui.search placeholder') + '...'
         : listText.titulo;
     var navigateSalmo =
       listText != null ? (

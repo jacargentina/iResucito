@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Menu } from 'semantic-ui-react';
 import { EditContext } from './EditContext';
-import I18n from '@iresucito/translations';
+import i18n from '@iresucito/translations';
 
 const EditSongTitle = () => {
   const edit = useContext(EditContext);
@@ -17,12 +17,12 @@ const EditSongTitle = () => {
   const st =
     stage ||
     editSong.stage ||
-    (editSong.stages && editSong.stages[I18n.locale]);
+    (editSong.stages && editSong.stages[i18n.locale]);
   return (
     <>
       <Menu.Item header>{songFile && songFile.titulo.toUpperCase()}</Menu.Item>
       {songFile && songFile.fuente && <Menu.Item>{songFile.fuente}</Menu.Item>}
-      {st && <Menu.Item>{I18n.t(`search_title.${st}`)}</Menu.Item>}
+      {st && <Menu.Item>{i18n.t(`search_title.${st}`)}</Menu.Item>}
     </>
   );
 };
