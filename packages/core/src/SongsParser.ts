@@ -295,9 +295,27 @@ export class SongsParser {
 
   getSongLines(content: string, locale: string): Array<SongLine> {
     var items = content.replace('\r\n', '\n').split('\n');
-    return items.map((l) => {
+    // Realizar la primer pasada
+    var primerPasada = items.map((l) => {
       return this.getSongItem(l, locale);
     });
+    // En primer pasada hay "inicioParrafo"
+    // que por el contexto solo pueden detectarse
+    // como "notas" en una segunda pasada
+    var segundaPasada = primerPasada.map((l, i) => {
+      if (l.type == 'inicioParrafo' && i > 0 && i < primerPasada.length - 1) {
+        const anterior = primerPasada[i - 1];
+        const siguiente = primerPasada[i + 1];
+        if (
+          siguiente.type == 'canto' &&
+          (anterior.type == 'canto' || anterior.type == 'cantoConIndicador')
+        ) {
+          l.type = 'notas';
+        }
+      }
+      return l;
+    });
+    return segundaPasada;
   }
 
   getForRender(

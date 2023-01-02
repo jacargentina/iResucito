@@ -1001,12 +1001,16 @@ export const SongPDFGenerator = async (
           writer.checkLimits(it.type === 'notas' ? 2 : 1);
         }
         if (it.type === 'notas') {
-          lastWidth = writer.writeText(
-            it.texto,
-            PdfStyles.notesLine.color,
-            writer.opts.songNote.FontSize,
-            { indent: writer.opts.songIndicatorSpacing }
-          );
+          if (it.texto.trim() == '') {
+            writer.doc.moveDown();
+          } else {
+            lastWidth = writer.writeText(
+              it.texto,
+              PdfStyles.notesLine.color,
+              writer.opts.songNote.FontSize,
+              { indent: writer.opts.songIndicatorSpacing }
+            );
+          }
         } else if (it.type === 'canto') {
           lastWidth = writer.writeText(
             it.texto,
