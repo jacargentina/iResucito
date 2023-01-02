@@ -95,14 +95,14 @@ const SongList = (props: { songs: Array<Song> }) => {
   const [debouncedTerm] = useDebounce(searchTerm, 800);
 
   const toggleFilter = (name: string) => {
-    setFilters((currentFilters) => {
+    setFilters((currentFilters: any) => {
       const newFilters = { ...currentFilters, [name]: !currentFilters[name] };
       localStorage.setItem('filters', JSON.stringify(newFilters));
       return newFilters;
     });
   };
 
-  const edit = (song) => {
+  const edit = (song: Song) => {
     setLoading(true);
     navigate(`/edit/${song.key}`);
   };

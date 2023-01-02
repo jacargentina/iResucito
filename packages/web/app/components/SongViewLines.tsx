@@ -1,8 +1,11 @@
 import { WebStyles } from './WebParser';
 import i18n from '@iresucito/translations';
-import { SongLine } from '@iresucito/core';
+import { SongIndicator, SongLine } from '@iresucito/core';
 
-const SongViewLines = (props: any) => {
+const SongViewLines = (props: {
+  lines: SongLine[];
+  indicators: SongIndicator[];
+}) => {
   const { lines, indicators } = props;
 
   let sufijo: any = null;
@@ -115,7 +118,7 @@ const SongViewLines = (props: any) => {
     );
   });
 
-  return renderItems;
+  return <>{renderItems}</>;
 };
 
 export default SongViewLines;
