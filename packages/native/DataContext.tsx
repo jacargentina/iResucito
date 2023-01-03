@@ -33,7 +33,6 @@ import {
   NativeSongs,
   NativeExtras,
 } from './util';
-import { ListType, ShareListType, SongSetting } from './types';
 
 type UseSongsMeta = {
   songs: Song[];
@@ -448,7 +447,7 @@ const useLists = (songs: Song[]): UseLists => {
         break;
       case 'text':
         var list = getListForUI(listName);
-        var items = [];
+        var items: Array<string | null> = [];
         if (list.type === 'libre') {
           var cantos = list.items;
           cantos.forEach((canto: Song, i: number) => {

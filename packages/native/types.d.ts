@@ -1,6 +1,3 @@
-declare module 'react-native-rating-element';
-declare module 'react-native-icloudstore';
-declare module '@javier.alejandro.castro/react-native-stream';
 import { CollapsibleProps as OriginalCollapsibleProps } from 'react-native-collapsible';
 
 declare type ListType = 'eucaristia' | 'palabra' | 'libre';

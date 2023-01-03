@@ -1,18 +1,24 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { Input, Box, Button, FormControl } from 'native-base';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { getLocalizedListType } from '@iresucito/core';
 import { useData } from '../DataContext';
 import ModalView from '../components/ModalView';
 import i18n from '@iresucito/translations';
 
+import type { RootStackParamList } from '../navigation/RootNavigator';
+
+type ListNameDialogRouteProp = RouteProp<RootStackParamList, 'ListName'>;
+
 const ListNameDialog = () => {
   const data = useData();
   const navigation = useNavigation();
-  const route = useRoute();
+  const route = useRoute<ListNameDialogRouteProp>();
   const { lists, addList, renameList } = data.lists;
-  const [disabledReasonText, setDisabledReasonText] = useState(null);
+  const [disabledReasonText, setDisabledReasonText] = useState<string | null>(
+    null
+  );
   const [actionEnabled, setActionEnabled] = useState(false);
   const [name, setName] = useState('');
   const { listName, action, type } = route.params;

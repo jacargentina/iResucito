@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useState, useRef, useCallback } from 'react';
-import { Alert, View } from 'react-native';
+import { Alert, ScrollView, View } from 'react-native';
 import { VStack, Text, useTheme } from 'native-base';
-import { useRoute } from '@react-navigation/native';
+import { RouteProp, useRoute } from '@react-navigation/native';
 import { KeyboardAwareScrollView } from '@codler/react-native-keyboard-aware-scroll-view';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import SwipeableRightAction from '../components/SwipeableRightAction';
@@ -16,7 +16,7 @@ const SwipeableRow = (props: {
   song: any;
 }) => {
   const { listName, listKey, song } = props;
-  const swipeRef = useRef<typeof Swipeable>();
+  const swipeRef = useRef<Swipeable>(null);
   const data = useData();
   const { colors } = useTheme();
   const { setList } = data.lists;
@@ -30,7 +30,7 @@ const SwipeableRow = (props: {
           {
             text: i18n.t('ui.delete'),
             onPress: () => {
-              setList(list, key);
+              setList(list, key, undefined);
             },
             style: 'destructive',
           },
@@ -58,7 +58,7 @@ const SwipeableRow = (props: {
               text={i18n.t('ui.delete')}
               x={100}
               onPress={() => {
-                swipeRef.current.close();
+                swipeRef.current?.close();
                 confirmListDeleteSong(song.titulo, listName, listKey);
               }}
             />
@@ -70,11 +70,15 @@ const SwipeableRow = (props: {
   );
 };
 
+import type { ListsStackParamList } from '../navigation/ListsNavigator';
+
+type ListDetailRouteProp = RouteProp<ListsStackParamList, 'ListDetail'>;
+
 const ListDetail = () => {
   const data = useData();
-  const [scroll, setScroll] = useState();
+  const [scroll, setScroll] = useState<ScrollView>();
   const [noteFocused, setNoteFocused] = useState(false);
-  const route = useRoute();
+  const route = useRoute<ListDetailRouteProp>();
   const { getListForUI } = data.lists;
   const { listName } = route.params;
 
@@ -107,7 +111,7 @@ const ListDetail = () => {
   return (
     <KeyboardAwareScrollView
       contentContainerStyle={{ flexGrow: 1 }}
-      innerRef={(ref) => setScroll(ref)}>
+      innerRef={(ref) => setScroll(ref as unknown as ScrollView)}>
       <VStack p="2">
         <ListDetailItem
           listName={listName}

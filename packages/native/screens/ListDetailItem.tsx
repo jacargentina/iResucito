@@ -22,11 +22,11 @@ const ListDetailItem = (props: {
   inputProps?: any;
 }) => {
   const data = useData();
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
   const { setList } = data.lists;
   const { listName, listKey, listText, inputProps } = props;
 
-  var item = null;
+  var item: any = null;
   if (['1', '2', '3', 'evangelio'].includes(listKey)) {
     item = (
       <VStack p="2">
@@ -129,8 +129,7 @@ const ListDetailItem = (props: {
               target: { listName: listName, listKey: listKey },
             },
           })
-        }
-      >
+        }>
         <HStack space={1} alignItems="center">
           <Icon
             w="10%"
@@ -147,10 +146,13 @@ const ListDetailItem = (props: {
       </Pressable>
     );
   }
+
+  var separator: any = undefined;
+
   // Solo las claves de tipo string, llevan los titulos (eucaristia, palabra)
   if (typeof listKey === 'string') {
     var friendlyText = getLocalizedListItem(listKey).toUpperCase();
-    var separator = (
+    separator = (
       <Text bold p="2" fontSize="sm" bg="gray.100">
         {friendlyText}
       </Text>
