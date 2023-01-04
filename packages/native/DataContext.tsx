@@ -21,6 +21,7 @@ import {
   Song,
   SongFile,
   SearchItem,
+  ListType,
 } from '@iresucito/core';
 import i18n from '@iresucito/translations';
 import badges from './badges';
@@ -33,6 +34,7 @@ import {
   NativeSongs,
   NativeExtras,
 } from './util';
+import { ShareListType, SongSetting } from './types';
 
 type UseSongsMeta = {
   songs: Song[];

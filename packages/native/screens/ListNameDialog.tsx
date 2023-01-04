@@ -31,7 +31,7 @@ const ListNameDialog = () => {
   const { listName, action, type } = route.params;
 
   const runActionOnList = () => {
-    if (action === 'create') {
+    if (action === 'create' && type) {
       addList(name, type);
       navigation.navigate('ListDetail', { listName: name });
     } else if (action === 'rename') {
