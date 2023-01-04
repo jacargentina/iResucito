@@ -1,12 +1,17 @@
 import * as React from 'react';
 import { Text } from 'native-base';
 import { SongLine } from '@iresucito/core';
+import { GestureResponderEvent } from 'react-native';
 
-const SongViewLines = (props: any) => {
+const SongViewLines = (props: {
+  lines: SongLine[];
+  onPress: (e: GestureResponderEvent) => void;
+  zoom: number;
+}) => {
   const { lines, onPress, zoom } = props;
 
   // Ajuste final para renderizado en screen
-  var renderItems = lines.map<any>((it: SongLine, i) => {
+  var renderItems = lines.map((it, i) => {
     var itemStyle = { ...it.style };
     if (itemStyle.fontSize) {
       itemStyle.fontSize = itemStyle.fontSize * zoom;
@@ -18,8 +23,10 @@ const SongViewLines = (props: any) => {
       prefijoStyle.lineHeight = prefijoStyle.fontSize;
     }
 
+    var sufijo: any = null;
+
     if (it.sufijo) {
-      var sufijo = (
+      sufijo = (
         <Text key={i + 'sufijo'} style={it.sufijoStyle}>
           {it.sufijo}
         </Text>
@@ -47,7 +54,7 @@ const SongViewLines = (props: any) => {
     </Text>
   );
 
-  return renderItems;
+  return <>{renderItems}</>;
 };
 
 export default SongViewLines;

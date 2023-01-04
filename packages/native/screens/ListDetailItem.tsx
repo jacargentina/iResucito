@@ -10,10 +10,22 @@ import {
 } from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { View } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import {
+  CompositeNavigationProp,
+  useNavigation,
+} from '@react-navigation/native';
 import { getLocalizedListItem } from '@iresucito/core';
 import i18n from '@iresucito/translations';
 import { useData } from '../DataContext';
+import { RootStackParamList } from '../navigation/RootNavigator';
+import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { ListsStackParamList } from '../navigation/ListsNavigator';
+
+type ListDetailItemNavigationProp = CompositeNavigationProp<
+  BottomTabNavigationProp<RootStackParamList, 'SongChooser'>,
+  StackNavigationProp<ListsStackParamList>
+>;
 
 const ListDetailItem = (props: {
   listName: any;
@@ -22,7 +34,7 @@ const ListDetailItem = (props: {
   inputProps?: any;
 }) => {
   const data = useData();
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<ListDetailItemNavigationProp>();
   const { setList } = data.lists;
   const { listName, listKey, listText, inputProps } = props;
 

@@ -50,7 +50,7 @@ export function getContactsForImport(
     },
     {}
   );
-  var unique = [];
+  var unique: Contact[] = [];
   for (var fullname in grouped) {
     if (grouped[fullname].length > 1) {
       var conMiniatura = grouped[fullname].find((c) => c.hasThumbnail === true);

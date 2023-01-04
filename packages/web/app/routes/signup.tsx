@@ -32,6 +32,7 @@ export let action: ActionFunction = async ({ request }) => {
   }
   // Quitar espacios
   email = email.trim();
+  // @ts-ignore
   const exists = globalThis.db.data.users.find((u) => u.email == email);
   if (exists && exists.isVerified) {
     return json(
@@ -45,6 +46,7 @@ export let action: ActionFunction = async ({ request }) => {
     const hash = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
     if (!exists) {
       // Crear usuario
+      // @ts-ignore
       globalThis.db.data.users.push({
         email,
         password: hash,
@@ -54,15 +56,18 @@ export let action: ActionFunction = async ({ request }) => {
     }
     // Crear (o actualizar) token para verificacion
     const token = crypto({ length: 20, type: 'url-safe' });
+    // @ts-ignore
     let tokenIndex = globalThis.db.data.tokens.findIndex(
       (t) => t.email == email
     );
     if (tokenIndex === -1) {
+      // @ts-ignore
       globalThis.db.data.tokens.push({
         email,
         token,
       });
     } else {
+      // @ts-ignore
       globalThis.db.data.tokens[tokenIndex].token = token;
     }
     // Escribir

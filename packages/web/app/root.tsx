@@ -38,9 +38,13 @@ export let loader: LoaderFunction = async ({ request }) => {
     'utf8'
   );
 
+  // @ts-ignore
   const android_major = /def VERSION_MAJOR=(.*)/.exec(androidGradle)[1];
+  // @ts-ignore
   const android_minor = /def VERSION_MINOR=(.*)/.exec(androidGradle)[1];
+  // @ts-ignore
   const android_patch = /def VERSION_PATCH=(.*)/.exec(androidGradle)[1];
+  // @ts-ignore
   const android_build = /def VERSION_BUILD=(.*)/.exec(androidGradle)[1];
 
   const patch = await globalThis.folderExtras.readPatch();

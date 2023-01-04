@@ -4,7 +4,11 @@ import SettingsScreen from '../screens/SettingsScreen';
 import i18n from '@iresucito/translations';
 import useStackNavOptions from './StackNavOptions';
 
-const Stack = createStackNavigator();
+export type SettingsStackParamList = {
+  SettingsScreen: { title: string };
+};
+
+const Stack = createStackNavigator<SettingsStackParamList>();
 
 const SettingsNavigator = () => {
   const options = useStackNavOptions();

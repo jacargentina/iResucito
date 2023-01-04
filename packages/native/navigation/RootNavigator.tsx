@@ -18,7 +18,7 @@ export type RootStackParamList = {
   ListName: {
     listName: string;
     action: ListAction;
-    type: ListType;
+    type?: ListType;
   };
   ContactImport: undefined;
   SongPreviewScreen: undefined;

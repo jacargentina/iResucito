@@ -20,6 +20,7 @@ import { useState } from 'react';
 export let action: ActionFunction = async ({ request }) => {
   const body = await request.formData();
   const email = body.get('email') as string;
+  // @ts-ignore
   const userIndex = globalThis.db.data.users.findIndex((u) => u.email == email);
   if (userIndex === -1) {
     return json(
@@ -31,13 +32,16 @@ export let action: ActionFunction = async ({ request }) => {
   }
   // Crear (o actualizar) token para verificacion
   const token = crypto({ length: 20, type: 'url-safe' });
+  // @ts-ignore
   let tokenIndex = globalThis.db.data.tokens.findIndex((t) => t.email == email);
   if (tokenIndex === -1) {
+    // @ts-ignore
     globalThis.db.data.tokens.push({
       email,
       token,
     });
   } else {
+    // @ts-ignore
     globalThis.db.data.tokens[tokenIndex].token = token;
   }
   // Escribir

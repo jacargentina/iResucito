@@ -30,14 +30,16 @@ export let action: ActionFunction = async ({ request, context, params }) => {
 
   let userIndex = -1;
   if (body.get('email') && body.get('token')) {
+    // @ts-ignore
     const tokenIndex = globalThis.db.data.tokens.findIndex(
       (t) => t.email === body.get('email') && t.token === body.get('token')
     );
     if (tokenIndex == -1) {
       throw new Error('Token and email invalid.');
     }
-    globalThis.db.data.tokens.splice(tokenIndex, 1);
+    globalThis.db.data?.tokens.splice(tokenIndex, 1);
     globalThis.db.write();
+    // @ts-ignore
     userIndex = globalThis.db.data.users.findIndex(
       (u) => u.email == body.get('email')
     );
@@ -46,6 +48,7 @@ export let action: ActionFunction = async ({ request, context, params }) => {
     if (!authData) {
       throw new Error('No autenticado.');
     }
+    // @ts-ignore
     userIndex = globalThis.db.data.users.findIndex(
       (u) => u.email == authData?.user
     );
@@ -54,7 +57,7 @@ export let action: ActionFunction = async ({ request, context, params }) => {
   if (userIndex === -1) {
     throw new Error('Usuario inválido.');
   }
-
+  // @ts-ignore
   globalThis.db.data.users[userIndex].password = bcrypt.hashSync(
     body.get('newPassword') as string,
     bcrypt.genSaltSync(10)
@@ -77,6 +80,7 @@ export let loader: LoaderFunction = async ({ request }) => {
   const token = url.searchParams.get('token');
   const email = url.searchParams.get('email');
   if (token && email) {
+    // @ts-ignore
     let tokenIndex = globalThis.db.data.tokens.findIndex(
       (t) => t.email == email && t.token == token
     );

@@ -7,13 +7,20 @@ import { useData } from '../DataContext';
 import ModalView from '../components/ModalView';
 import i18n from '@iresucito/translations';
 
+import { StackNavigationProp } from '@react-navigation/stack';
 import type { RootStackParamList } from '../navigation/RootNavigator';
+import { ListsStackParamList } from '../navigation/ListsNavigator';
 
 type ListNameDialogRouteProp = RouteProp<RootStackParamList, 'ListName'>;
 
+type ListDetailNavivationProp = StackNavigationProp<
+  ListsStackParamList,
+  'ListDetail'
+>;
+
 const ListNameDialog = () => {
   const data = useData();
-  const navigation = useNavigation();
+  const navigation = useNavigation<ListDetailNavivationProp>();
   const route = useRoute<ListNameDialogRouteProp>();
   const { lists, addList, renameList } = data.lists;
   const [disabledReasonText, setDisabledReasonText] = useState<string | null>(
@@ -57,10 +64,10 @@ const ListNameDialog = () => {
   }, [actionEnabled, name]);
 
   const title =
-    action === 'create'
+    action === 'create' && type
       ? `${i18n.t('ui.lists.create')} (${getLocalizedListType(
           type,
-          data.localeReal
+          i18n.locale
         )})`
       : `${i18n.t('ui.lists.rename')} (${listName})`;
 

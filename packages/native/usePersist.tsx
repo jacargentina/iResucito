@@ -77,7 +77,7 @@ export function usePersist<T>(
   // Only persist to storage if state changes.
   useEffect(() => {
     if (initialLoaded) {
-      async function save() {
+      const save = async () => {
         // persist to localStorage
         const data = JSON.stringify(value);
         await AsyncStorage.setItem(key, data);
@@ -85,7 +85,7 @@ export function usePersist<T>(
         if (globalState.current) {
           globalState.current.emit(value);
         }
-      }
+      };
       save();
     }
   }, [key, value, initialLoaded]);

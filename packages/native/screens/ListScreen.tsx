@@ -12,7 +12,10 @@ import {
 } from 'native-base';
 import { Alert, View } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { useNavigation } from '@react-navigation/native';
+import {
+  CompositeNavigationProp,
+  useNavigation,
+} from '@react-navigation/native';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import SwipeableRightAction from '../components/SwipeableRightAction';
 import SearchBarView from '../components/SearchBarView';
@@ -21,10 +24,19 @@ import CallToAction from '../components/CallToAction';
 import AddListButton from '../components/AddListButton';
 import ChooseListTypeForAdd from '../components/ChooseListTypeForAdd';
 import i18n from '@iresucito/translations';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { ListsStackParamList } from '../navigation/ListsNavigator';
+import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
+import { RootStackParamList } from '../navigation/RootNavigator';
+
+type ListScreenNavigationProp = CompositeNavigationProp<
+  BottomTabNavigationProp<RootStackParamList, 'ListName'>,
+  StackNavigationProp<ListsStackParamList>
+>;
 
 const SwipeableRow = (props: { item: any }) => {
   const data = useData();
-  const navigation = useNavigation();
+  const navigation = useNavigation<ListScreenNavigationProp>();
   const { colors } = useTheme();
   const { removeList } = data.lists;
   const { item } = props;

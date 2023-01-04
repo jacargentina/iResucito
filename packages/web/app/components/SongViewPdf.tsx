@@ -12,8 +12,8 @@ const SongViewPdf = (props: any) => {
 
   const myRef = useRef<any>();
   const [loading, setLoading] = useState(false);
-  const [pdf, setPdf] = useState();
-  const [numPages, setNumPages] = useState();
+  const [pdf, setPdf] = useState<pdfjsLib.PDFDocumentProxy>();
+  const [numPages, setNumPages] = useState<number>();
   const [currPage, setCurrPage] = useState(0);
 
   const app = useApp();

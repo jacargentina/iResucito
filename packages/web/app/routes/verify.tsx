@@ -12,20 +12,24 @@ export let loader: LoaderFunction = async ({ request }) => {
   if (!token || !email) {
     throw new Error('Missing parameters');
   }
-
+  // @ts-ignore
   const userIndex = globalThis.db.data.users.findIndex(
     (x) => x.email === email
   );
   if (userIndex !== -1) {
+    // @ts-ignore
     const user = globalThis.db.data.users[userIndex];
     if (user.isVerified) {
       return json({ ok: 'Email Already Verified' });
     }
+    // @ts-ignore
     const tokenIndex = globalThis.db.data.tokens.findIndex(
       (t) => t.email === email && t.token === token
     );
     if (tokenIndex !== -1) {
+      // @ts-ignore
       globalThis.db.data.users[userIndex].isVerified = true;
+      // @ts-ignore
       globalThis.db.data.tokens.splice(tokenIndex, 1);
       globalThis.db.write();
       return redirect(`/account?u=${email}&v=1`);

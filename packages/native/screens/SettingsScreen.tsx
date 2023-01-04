@@ -21,14 +21,21 @@ import i18n from '@iresucito/translations';
 import { getLocalesForPicker, CollaboratorsIndex } from '@iresucito/core';
 import { useData } from '../DataContext';
 import { getDefaultLocale } from '../util';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { SettingsStackParamList } from '../navigation/SettingsNavigator';
 
 const pack = require('../app.json');
 const cristo = require('../img/cristo.jpg');
 const appName = pack.displayName;
 
+type SettingsNavigationProp = StackNavigationProp<
+  SettingsStackParamList,
+  'SettingsScreen'
+>;
+
 const SettingsScreen = () => {
   const data = useData();
-  const navigation = useNavigation();
+  const navigation = useNavigation<SettingsNavigationProp>();
   const [locale, setLocale] = data.locale;
   const [keepAwake, setKeepAwake] = data.keepAwake;
   const [version, setVersion] = useState('');
