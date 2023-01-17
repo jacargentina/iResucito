@@ -35,5 +35,8 @@
   },
   "devDependencies": {
     "turbo": "^1.6.3"
+  },
+  "dependencies": {
+    "react-native-cli": "^2.0.1"
   }
 }
