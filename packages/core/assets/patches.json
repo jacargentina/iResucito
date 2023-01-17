@@ -181,6 +181,20 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1672310344368,
+      "locale": "fr",
+      "author": "jdarjona@hotmail.com",
+      "rename": {
+        "new": "Consolez mon peuple - Is 40, 1-11"
+      },
+      "created": true,
+      "updated": false,
+      "staged": {
+        "original": "catechumenate",
+        "new": "precatechumenate"
+      }
     }
   ],
   "4": [
@@ -1273,6 +1287,16 @@
       },
       "created": false,
       "updated": false
+    },
+    {
+      "date": 1672312082837,
+      "locale": "fr",
+      "author": "jdarjona@hotmail.com",
+      "rename": {
+        "new": "Toi seigneur, dans ma clameur je t'implore - Ps 142 (141)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "23": [
@@ -1615,6 +1639,16 @@
       "author": "andropiotrek@gmail.com",
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1672786833411,
+      "locale": "fr",
+      "author": "javier.alejandro.castro@gmail.com",
+      "rename": {
+        "new": "Abraham - Gn 18, 1-5"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "26": [
@@ -1727,6 +1761,16 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1671566915377,
+      "locale": "fr",
+      "author": "jdarjona@hotmail.com",
+      "rename": {
+        "new": "Acclamez le Seigneur - Ps 99 (100)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "27": [
@@ -2031,6 +2075,16 @@
       },
       "created": false,
       "updated": false
+    },
+    {
+      "date": 1672786820989,
+      "locale": "fr",
+      "author": "javier.alejandro.castro@gmail.com",
+      "rename": {
+        "new": "Alléluia louez Dieu - Ps 150"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "30": [
@@ -2144,6 +2198,16 @@
       "author": "monicaenrique.10@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1672325926067,
+      "locale": "fr",
+      "author": "jdarjona@hotmail.com",
+      "rename": {
+        "new": "Cantique des créatures (Dn 3, 57-88)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "31": [
@@ -2433,6 +2497,16 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1671642735815,
+      "locale": "fr",
+      "author": "jdarjona@hotmail.com",
+      "rename": {
+        "new": "J'aime le seigneur car il écoute - Ps 114-115 (116)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "34": [
@@ -3161,6 +3235,16 @@
       "author": "monicaenrique.10@gmail.com",
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1672679993057,
+      "locale": "fr",
+      "author": "jdarjona@hotmail.com",
+      "rename": {
+        "new": "Tu es bénie, Marie - (Lc 1, 42-44)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "42": [
@@ -3304,6 +3388,16 @@
       "author": "monicaenrique.10@gmail.com",
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1672311941365,
+      "locale": "fr",
+      "author": "jdarjona@hotmail.com",
+      "rename": {
+        "new": "Benedictus - Lc 1, 67-80"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "44": [
@@ -3394,6 +3488,16 @@
         "new": "Giedokim, giedokim - Iš 15, 1-2"
       },
       "created": false,
+      "updated": false
+    },
+    {
+      "date": 1671996358856,
+      "locale": "fr",
+      "author": "jdarjona@hotmail.com",
+      "rename": {
+        "new": "Cantique de Moïse - Ex 15"
+      },
+      "created": true,
       "updated": false
     }
   ],
@@ -3872,6 +3976,16 @@
       "author": "albertiniqmc@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1672317858098,
+      "locale": "fr",
+      "author": "jdarjona@hotmail.com",
+      "rename": {
+        "new": "Quand le seigneur fit revenir - Sal 126 (125)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "53": [
@@ -4044,6 +4158,16 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1672310417955,
+      "locale": "fr",
+      "author": "jdarjona@hotmail.com",
+      "rename": {
+        "new": "Dites aux coeurs égarés - Is 35, 4ss"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "56": [
@@ -4178,6 +4302,16 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1671641784608,
+      "locale": "fr",
+      "author": "jdarjona@hotmail.com",
+      "rename": {
+        "new": "Jour de repos"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "59": [
@@ -4838,6 +4972,16 @@
       "author": "albertiniqmc@gmail.com",
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1672320672490,
+      "locale": "fr",
+      "author": "jdarjona@hotmail.com",
+      "rename": {
+        "new": "Evenu Shalom Alejem (Mélodie hébraîque)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "70": [
@@ -4937,6 +5081,16 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1672920718108,
+      "locale": "fr",
+      "author": "jdarjona@hotmail.com",
+      "rename": {
+        "new": "Je ne mourrai pas - Ps 117 (118)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "72": [
@@ -5111,6 +5265,16 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1672786883291,
+      "locale": "fr",
+      "author": "javier.alejandro.castro@gmail.com",
+      "rename": {
+        "new": "Criez de joie - Is 12"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "75": [
@@ -6079,6 +6243,16 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1672323977411,
+      "locale": "fr",
+      "author": "jdarjona@hotmail.com",
+      "rename": {
+        "new": "Mon âme, bénis le seigneur - Tb 13, 11-17"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "90": [
@@ -6274,6 +6448,16 @@
       "author": "albertiniqmc@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1671995346296,
+      "locale": "fr",
+      "author": "jdarjona@hotmail.com",
+      "rename": {
+        "new": "Je lève les yeux vers les monts - Ps 120 (121)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "94": [
@@ -6507,6 +6691,16 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1672148506994,
+      "locale": "fr",
+      "author": "jdarjona@hotmail.com",
+      "rename": {
+        "new": "Maria de jasna gora"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "98": [
@@ -7466,6 +7660,16 @@
       "author": "albertiniqmc@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1672682898246,
+      "locale": "fr",
+      "author": "jdarjona@hotmail.com",
+      "rename": {
+        "new": "Ps 121 (122)-Pour l'amour de mes frères"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "117": [
@@ -7670,6 +7874,16 @@
       "author": "albertiniqmc@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1672681100324,
+      "locale": "fr",
+      "author": "jdarjona@hotmail.com",
+      "rename": {
+        "new": "Que ta maison est désirable - Ps 84 (83)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "121": [
@@ -8099,6 +8313,16 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1672060095911,
+      "locale": "fr",
+      "author": "jdarjona@hotmail.com",
+      "rename": {
+        "new": "Il y avait deux anges"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "129": [
@@ -8539,6 +8763,16 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1672919863385,
+      "locale": "fr",
+      "author": "jdarjona@hotmail.com",
+      "rename": {
+        "new": "Stabat mater"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "139": [
@@ -8924,6 +9158,16 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1672067966867,
+      "locale": "fr",
+      "author": "jdarjona@hotmail.com",
+      "rename": {
+        "new": "Allons vite bergers !"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "146": [
@@ -9212,6 +9456,16 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1671641834269,
+      "locale": "fr",
+      "author": "jdarjona@hotmail.com",
+      "rename": {
+        "new": "Le seigneur vient, vêtu de majesté - Sal 93 et Ap 1, 5-6"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "151": [
@@ -11727,6 +11981,20 @@
         "original": "precatechumenate",
         "new": "liturgy"
       }
+    },
+    {
+      "date": 1672147653584,
+      "locale": "fr",
+      "author": "jdarjona@hotmail.com",
+      "rename": {
+        "new": "Gloire à dieu"
+      },
+      "created": true,
+      "updated": false,
+      "staged": {
+        "original": "liturgy",
+        "new": "precatechumenate"
+      }
     }
   ],
   "190": [
@@ -13771,6 +14039,16 @@
       "date": 1645696443293,
       "locale": "de",
       "author": "benedikt.jacobsen@gmail.com",
+      "created": true,
+      "updated": false
+    },
+    {
+      "date": 1672061727933,
+      "locale": "fr",
+      "author": "jdarjona@hotmail.com",
+      "rename": {
+        "new": "Salut, reine des cieux"
+      },
       "created": true,
       "updated": false
     }
