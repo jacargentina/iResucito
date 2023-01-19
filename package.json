@@ -1,5 +1,6 @@
 {
   "private": true,
+  "packageManager": "yarn",
   "workspaces": {
     "packages": [
       "packages/*"
@@ -33,10 +34,8 @@
     "reset": "find . -type dir -name node_modules | xargs rm -rf && rm -rf yarn.lock",
     "web": "yarn build && cd packages/web && yarn dev"
   },
-  "devDependencies": {
-    "turbo": "^1.6.3"
-  },
   "dependencies": {
+    "turbo": "^1.6.3",
     "react-native-cli": "^2.0.1"
   }
 }
