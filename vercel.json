@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/function.js": {
+      "includeFiles": "(packages/native/ios/iResucito/Info.plist|packages/native/android/app/build.gradle)"
+    }
+  }
+}
