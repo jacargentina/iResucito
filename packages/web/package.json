@@ -13,7 +13,7 @@
     "ts": "yarn tsc --noEmit",
     "dev": "yarn run assets && remix dev",
     "debug": "yarn run assets && node --inspect ./node_modules/.bin/remix dev",
-    "postinstall": "cp ../../node_modules/pdfjs-dist/build/pdf.worker.js ./public",
+    "postinstall": "cp ../../node_modules/pdfjs-dist/build/pdf.worker.js ./public && cp ../native/ios/iResucito/Info.plist ./public && cp ../native/android/app/build.gradle ./public",
     "upd": "npx npm-check-updates -u"
   },
   "workspaces": {
