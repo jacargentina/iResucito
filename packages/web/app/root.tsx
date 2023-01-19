@@ -31,10 +31,7 @@ export let loader: LoaderFunction = async ({ request }) => {
 
   try {
     const ios_Info = plist.parse(
-      fs.readFileSync(
-        path.join(__dirname, '/../../native/ios/iResucito/Info.plist'),
-        'utf8'
-      )
+      fs.readFileSync(path.join(__dirname, '/../public/Info.plist'), 'utf8')
     );
     ios_version = `${ios_Info.CFBundleShortVersionString}.${ios_Info.CFBundleVersion}`;
   } catch {
@@ -43,7 +40,7 @@ export let loader: LoaderFunction = async ({ request }) => {
 
   try {
     const androidGradle = fs.readFileSync(
-      path.join(__dirname, '/../../native/android/app/build.gradle'),
+      path.join(__dirname, '/../public/build.gradle'),
       'utf8'
     );
     // @ts-ignore
