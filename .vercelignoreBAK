@@ -1,9 +1,0 @@
-designs/*
-packages/**/dist
-packages/native/
-!packages/native/ios/iResucito/Info.plist
-!packages/native/android/app/build.gradle
-packages/scripts/
-packages/web/build
-packages/web/public/build
-.turbo/
