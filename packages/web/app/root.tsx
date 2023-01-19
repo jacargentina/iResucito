@@ -26,26 +26,39 @@ export let loader: LoaderFunction = async ({ request }) => {
   const fs = require('fs');
   const plist = require('plist');
 
-  const ios_Info = plist.parse(
-    fs.readFileSync(
-      path.join(__dirname, '/../../native/ios/iResucito/Info.plist'),
+  var ios_version;
+  var android_version;
+
+  try {
+    const ios_Info = plist.parse(
+      fs.readFileSync(
+        path.join(__dirname, '/../../native/ios/iResucito/Info.plist'),
+        'utf8'
+      )
+    );
+    ios_version = `${ios_Info.CFBundleShortVersionString}.${ios_Info.CFBundleVersion}`;
+  } catch {
+    ios_version = 'err';
+  }
+
+  try {
+    const androidGradle = fs.readFileSync(
+      path.join(__dirname, '/../../native/android/app/build.gradle'),
       'utf8'
-    )
-  );
+    );
+    // @ts-ignore
+    const android_major = /def VERSION_MAJOR=(.*)/.exec(androidGradle)[1];
+    // @ts-ignore
+    const android_minor = /def VERSION_MINOR=(.*)/.exec(androidGradle)[1];
+    // @ts-ignore
+    const android_patch = /def VERSION_PATCH=(.*)/.exec(androidGradle)[1];
+    // @ts-ignore
+    const android_build = /def VERSION_BUILD=(.*)/.exec(androidGradle)[1];
 
-  const androidGradle = fs.readFileSync(
-    path.join(__dirname, '/../../native/android/app/build.gradle'),
-    'utf8'
-  );
-
-  // @ts-ignore
-  const android_major = /def VERSION_MAJOR=(.*)/.exec(androidGradle)[1];
-  // @ts-ignore
-  const android_minor = /def VERSION_MINOR=(.*)/.exec(androidGradle)[1];
-  // @ts-ignore
-  const android_patch = /def VERSION_PATCH=(.*)/.exec(androidGradle)[1];
-  // @ts-ignore
-  const android_build = /def VERSION_BUILD=(.*)/.exec(androidGradle)[1];
+    android_version = `${android_major}.${android_minor}.${android_patch}.${android_build}`;
+  } catch {
+    android_version = 'err';
+  }
 
   const patch = await globalThis.folderExtras.readPatch();
   const stats = patch ? getPatchStats(patch) : [];
@@ -54,8 +67,8 @@ export let loader: LoaderFunction = async ({ request }) => {
   const session = await getSession(request.headers.get('Cookie'));
 
   return {
-    IOS_VERSION: `${ios_Info.CFBundleShortVersionString}.${ios_Info.CFBundleVersion}`,
-    ANDROID_VERSION: `${android_major}.${android_minor}.${android_patch}.${android_build}`,
+    IOS_VERSION: ios_version,
+    ANDROID_VERSION: android_version,
     authData: authData,
     patchStats: stats,
     locale: session.get('locale'),
