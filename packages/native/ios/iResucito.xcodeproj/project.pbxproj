@@ -17,7 +17,7 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* iResucitoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* iResucitoTests.m */; };
-		77E895CF01B69A4E0ABDFFA7 /* libPods-iResucitoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A800FC302C1DC6F0F848727 /* libPods-iResucitoTests.a */; };
+		522334B6CA9A121BA7F582C9 /* libPods-iResucito-iResucitoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 356220738DAE9BCB05733CB4 /* libPods-iResucito-iResucitoTests.a */; };
 		8829DFCF23298AA3000197D4 /* resucito.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8829DFCE23298AA3000197D4 /* resucito.gif */; };
 		884593DD230ED2CE00E72C72 /* Icon-App-60x60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 884593DC230ED2CE00E72C72 /* Icon-App-60x60@3x.png */; };
 		884D5E1E266E5F8F004E2EB4 /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 884D5E1D266E5F8F004E2EB4 /* BootSplash.storyboard */; };
@@ -58,7 +58,7 @@
 		217C59834D878035C473E9F6 /* Pods-iResucitoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iResucitoTests.release.xcconfig"; path = "Target Support Files/Pods-iResucitoTests/Pods-iResucitoTests.release.xcconfig"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* iResucito-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iResucito-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* iResucito-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iResucito-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4A800FC302C1DC6F0F848727 /* libPods-iResucitoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iResucitoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		356220738DAE9BCB05733CB4 /* libPods-iResucito-iResucitoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iResucito-iResucitoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CCA56BF94859486855E6AF9 /* Pods-iResucito-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iResucito-tvOS.release.xcconfig"; path = "Target Support Files/Pods-iResucito-tvOS/Pods-iResucito-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		6147E790967B9968657C7174 /* libPods-iResucito-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iResucito-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		68A6CC9AE256D3B156A04F4D /* Pods-iResucito-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iResucito-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-iResucito-tvOSTests/Pods-iResucito-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -76,7 +76,9 @@
 		8891E2BC232989F30072F2F9 /* cristo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cristo.jpg; sourceTree = "<group>"; };
 		88D516DE22DF4AAE00E03D4C /* songs */ = {isa = PBXFileReference; lastKnownFileType = folder; name = songs; path = ../../core/assets/songs; sourceTree = "<group>"; };
 		88E7F94D253F308200655712 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/Info.plist; sourceTree = "<group>"; };
+		89C8334AB99B6C47DE54CF5C /* Pods-iResucito-iResucitoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iResucito-iResucitoTests.debug.xcconfig"; path = "Target Support Files/Pods-iResucito-iResucitoTests/Pods-iResucito-iResucitoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8A8D0D17770C717814CB3174 /* Pods-iResucito.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iResucito.release.xcconfig"; path = "Target Support Files/Pods-iResucito/Pods-iResucito.release.xcconfig"; sourceTree = "<group>"; };
+		AE9F3DC2D488C0ECD009324A /* Pods-iResucito-iResucitoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iResucito-iResucitoTests.release.xcconfig"; path = "Target Support Files/Pods-iResucito-iResucitoTests/Pods-iResucito-iResucitoTests.release.xcconfig"; sourceTree = "<group>"; };
 		C39F62BEFA4FB062A1DDE7AC /* libPods-iResucito.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iResucito.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D63ED0983AC8CF2526BF66C2 /* Pods-iResucito.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iResucito.debug.xcconfig"; path = "Target Support Files/Pods-iResucito/Pods-iResucito.debug.xcconfig"; sourceTree = "<group>"; };
 		DD799CF80BD809391637C880 /* Pods-iResucito-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iResucito-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-iResucito-tvOS/Pods-iResucito-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -92,7 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				77E895CF01B69A4E0ABDFFA7 /* libPods-iResucitoTests.a in Frameworks */,
+				522334B6CA9A121BA7F582C9 /* libPods-iResucito-iResucitoTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,7 +164,7 @@
 				C39F62BEFA4FB062A1DDE7AC /* libPods-iResucito.a */,
 				FF37D16CC08DC24694AEF510 /* libPods-iResucito-tvOS.a */,
 				6147E790967B9968657C7174 /* libPods-iResucito-tvOSTests.a */,
-				4A800FC302C1DC6F0F848727 /* libPods-iResucitoTests.a */,
+				356220738DAE9BCB05733CB4 /* libPods-iResucito-iResucitoTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -224,6 +226,8 @@
 				68A6CC9AE256D3B156A04F4D /* Pods-iResucito-tvOSTests.release.xcconfig */,
 				FCA5B1BD89A23CD452043910 /* Pods-iResucitoTests.debug.xcconfig */,
 				217C59834D878035C473E9F6 /* Pods-iResucitoTests.release.xcconfig */,
+				89C8334AB99B6C47DE54CF5C /* Pods-iResucito-iResucitoTests.debug.xcconfig */,
+				AE9F3DC2D488C0ECD009324A /* Pods-iResucito-iResucitoTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -239,6 +243,8 @@
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
+				3CD8770C150CB324ADB00AE1 /* [CP] Embed Pods Frameworks */,
+				873FA6E02B7D4FEC1CA23E4A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -460,6 +466,30 @@
 			shellPath = /bin/sh;
 			shellScript = "export SENTRY_PROPERTIES=sentry.properties\nexport EXTRA_PACKAGER_ARGS=\"--sourcemap-output $DERIVED_FILE_DIR/main.jsbundle.map\"\nexport NODE_BINARY=node\n../node_modules/@sentry/cli/bin/sentry-cli react-native xcode ../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
+		3CD8770C150CB324ADB00AE1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iResucito-iResucitoTests/Pods-iResucito-iResucitoTests-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/Flipper-DoubleConversion/double-conversion.framework/double-conversion",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/Flipper-Glog/glog.framework/glog",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL-Universal/OpenSSL.framework/OpenSSL",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermes.framework/hermes",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/double-conversion.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/glog.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iResucito-iResucitoTests/Pods-iResucito-iResucitoTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		499E4C453CA1E139489B9F62 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -470,7 +500,7 @@
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/Flipper-DoubleConversion/double-conversion.framework/double-conversion",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/Flipper-Glog/glog.framework/glog",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL-Universal/OpenSSL.framework/OpenSSL",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/hermes.framework/hermes",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermes.framework/hermes",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -499,11 +529,61 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-iResucitoTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-iResucito-iResucitoTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		873FA6E02B7D4FEC1CA23E4A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iResucito-iResucitoTests/Pods-iResucito-iResucitoTests-resources.sh",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Feather.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Foundation.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Octicons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Entypo.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EvilIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Feather.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Brands.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Regular.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Solid.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Fontisto.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Foundation.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Ionicons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialCommunityIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Octicons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iResucito-iResucitoTests/Pods-iResucito-iResucitoTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A09F50346E5CB568C2C2C092 /* [CP] Check Pods Manifest.lock */ = {
@@ -726,7 +806,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FCA5B1BD89A23CD452043910 /* Pods-iResucitoTests.debug.xcconfig */;
+			baseConfigurationReference = 89C8334AB99B6C47DE54CF5C /* Pods-iResucito-iResucitoTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = GHJ7J9LTV8;
@@ -750,7 +830,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 217C59834D878035C473E9F6 /* Pods-iResucitoTests.release.xcconfig */;
+			baseConfigurationReference = AE9F3DC2D488C0ECD009324A /* Pods-iResucito-iResucitoTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
