@@ -25,7 +25,7 @@ import {
 } from '@iresucito/core';
 import i18n from '@iresucito/translations';
 import badges from './badges';
-import { clouddata } from './clouddata';
+// import { clouddata } from './clouddata';
 import { generateListPDF } from './pdf';
 import usePersist, { UsePersist } from './usePersist';
 import {
@@ -514,11 +514,11 @@ const useLists = (songs: Song[]): UseLists => {
     }
   };
 
-  useEffect(() => {
-    if (initialized === true && lists && Platform.OS === 'ios') {
-      clouddata.save('lists', lists);
-    }
-  }, [lists, initialized]);
+  // useEffect(() => {
+  //   if (initialized === true && lists && Platform.OS === 'ios') {
+  //     clouddata.save('lists', lists);
+  //   }
+  // }, [lists, initialized]);
 
   useEffect(() => {
     // Solo inicializar cuando
@@ -853,11 +853,11 @@ const useCommunity = (): UseCommunity => {
     []
   );
 
-  useEffect(() => {
-    if (brothers && Platform.OS === 'ios') {
-      clouddata.save('brothers', brothers);
-    }
-  }, [brothers]);
+  // useEffect(() => {
+  //   if (brothers && Platform.OS === 'ios') {
+  //     clouddata.save('brothers', brothers);
+  //   }
+  // }, [brothers]);
 
   const populateDeviceContacts = useCallback(async () => {
     const devCts = await getContacts(true);
