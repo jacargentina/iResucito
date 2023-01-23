@@ -2,7 +2,8 @@ import * as React from 'react';
 import { useEffect, useRef, useState, useMemo, useCallback } from 'react';
 import { Platform, Alert, View } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { FlatList, Text, Icon, useTheme } from 'native-base';
+import { Text, Icon, useTheme } from 'native-base';
+import { FlashList } from '@shopify/flash-list';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import SwipeableRightAction from '../components/SwipeableRightAction';
@@ -117,7 +118,7 @@ const CommunityScreen = () => {
   const options = useStackNavOptions();
   const isFocused = useIsFocused();
   const navigation = useNavigation<ContactImportNavigationProp>();
-  const { brothers, deviceContacts, populateDeviceContacts } = data.community;
+  const { brothers, loaded, populateDeviceContacts } = data.community;
   const listRef = useRef<any>();
   const [filter, setFilter] = useState('');
 
@@ -144,9 +145,7 @@ const CommunityScreen = () => {
   }, [isFocused, filtered.length]);
 
   const contactImport = useCallback(() => {
-    const promise = !deviceContacts
-      ? populateDeviceContacts()
-      : Promise.resolve();
+    const promise = !loaded ? populateDeviceContacts() : Promise.resolve();
 
     promise
       .then(() => {
@@ -159,7 +158,7 @@ const CommunityScreen = () => {
         }
         Alert.alert(i18n.t('alert_title.contacts permission'), message);
       });
-  }, [navigation, deviceContacts, populateDeviceContacts]);
+  }, [navigation, loaded, populateDeviceContacts]);
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
@@ -167,7 +166,7 @@ const CommunityScreen = () => {
         <Icon
           as={Ionicons}
           name="add"
-          size="md"
+          size="xl"
           style={{
             marginTop: 4,
             marginRight: 8,
@@ -198,12 +197,13 @@ const CommunityScreen = () => {
           {i18n.t('ui.no contacts found')}
         </Text>
       )}
-      <FlatList
+      <FlashList
         ref={listRef}
         data={filtered}
         extraData={{ locale: i18n.locale, brothers }}
         keyExtractor={(item: any) => item.recordID}
         renderItem={({ item }) => <SwipeableRow item={item} />}
+        estimatedItemSize={90}
       />
     </SearchBarView>
   );

@@ -25,7 +25,7 @@ export async function generateSongPDF(
     songsToPdf.length > 1 ? `${fileSuffix}` : `${songsToPdf[0].song.titulo}`;
 
   const safeFileName = filename.replace('/', '-');
-  const pdfPath = `${folder}/iResucito${safeFileName}.pdf`;
+  const pdfPath = `${folder}/iResucitó - ${safeFileName}.pdf`;
 
   const reader = Platform.OS === 'ios' ? RNFS.readFile : RNFS.readFileAssets;
   const fontFolder = Platform.OS === 'ios' ? RNFS.MainBundlePath : 'fonts';

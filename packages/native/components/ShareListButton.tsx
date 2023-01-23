@@ -48,7 +48,7 @@ const ShareListButton = () => {
       <Icon
         as={Ionicons}
         name="share-outline"
-        size="md"
+        size="xl"
         style={{
           marginTop: 4,
           marginRight: 12,

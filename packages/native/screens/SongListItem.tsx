@@ -208,14 +208,14 @@ const SongListItem = (props: any) => {
       {openHighlightedRest && <Box pt="2">{openHighlightedRest}</Box>}
       {viewButton && (
         <Pressable w="10%" onPress={viewSong}>
-          <Icon as={Ionicons} color="rose.500" name="eye-outline" size="md" />
+          <Icon as={Ionicons} color="rose.500" name="eye-outline" size="xl" />
         </Pressable>
       )}
       {song.error && (
         <Icon
           as={Ionicons}
           name="bug"
-          size="md"
+          size="xl"
           onPress={() => {
             Alert.alert('Error', song.error);
           }}

@@ -6,11 +6,11 @@ import {
   HStack,
   Icon,
   Text,
-  FlatList,
   useDisclose,
   useTheme,
 } from 'native-base';
 import { Alert, View } from 'react-native';
+import { FlashList } from '@shopify/flash-list';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {
   CompositeNavigationProp,
@@ -119,8 +119,8 @@ const SwipeableRow = (props: { item: any }) => {
           borderBottomWidth={1}
           borderBottomColor="muted.200">
           <Icon
-            w="12%"
             as={Ionicons}
+            size="3xl"
             color="rose.500"
             name="bookmark-outline"
           />
@@ -186,13 +186,14 @@ const ListScreen = () => {
           {i18n.t('ui.no lists found')}
         </Text>
       )}
-      <FlatList
+      <FlashList
         data={filtered}
         extraData={i18n.locale}
         keyExtractor={(item) => item.name}
         renderItem={({ item }) => {
           return <SwipeableRow item={item} />;
         }}
+        estimatedItemSize={90}
       />
     </SearchBarView>
   );

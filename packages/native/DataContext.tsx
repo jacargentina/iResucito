@@ -439,13 +439,9 @@ const useLists = (songs: Song[]): UseLists => {
           subject: `iResucitó - ${listName}`,
           url: `file://${listPath}`,
           failOnCancel: false,
-        })
-          .then((res) => {
-            console.log(res);
-          })
-          .catch((err) => {
-            err && console.log(err);
-          });
+        }).catch((err) => {
+          err && console.log(err);
+        });
         break;
       case 'text':
         var list = getListForUI(listName);
@@ -485,13 +481,9 @@ const useLists = (songs: Song[]): UseLists => {
           subject: `iResucitó - ${listName}`,
           url: undefined,
           failOnCancel: false,
-        })
-          .then((res) => {
-            console.log(res);
-          })
-          .catch((err) => {
-            err && console.log(err);
-          });
+        }).catch((err) => {
+          err && console.log(err);
+        });
         break;
       case 'pdf':
         var list = getListForUI(listName);
@@ -502,13 +494,9 @@ const useLists = (songs: Song[]): UseLists => {
             subject: `iResucitó - ${listName}`,
             url: `file://${path}`,
             failOnCancel: false,
-          })
-            .then((res) => {
-              console.log(res);
-            })
-            .catch((err) => {
-              err && console.log(err);
-            });
+          }).catch((err) => {
+            err && console.log(err);
+          });
         });
         break;
     }
@@ -735,6 +723,7 @@ export type BrotherContact = Contacts.Contact & {
 type UseCommunity = {
   brothers: BrotherContact[];
   deviceContacts: Contacts.Contact[];
+  loaded: boolean;
   add: (item: Contacts.Contact) => void;
   update: (id: string, item: Contacts.Contact) => void;
   remove: (item: BrotherContact) => void;
@@ -764,6 +753,7 @@ const useCommunity = (): UseCommunity => {
       }
     }
   );
+  const [loaded, setLoaded] = useState<boolean>(false);
   const [deviceContacts, initDeviceContacts] = useState<Contacts.Contact[]>([]);
 
   const add = (item: Contacts.Contact) => {
@@ -862,6 +852,7 @@ const useCommunity = (): UseCommunity => {
   const populateDeviceContacts = useCallback(async () => {
     const devCts = await getContacts(true);
     initDeviceContacts(devCts);
+    setLoaded(true);
   }, [getContacts]);
 
   return {
@@ -872,6 +863,7 @@ const useCommunity = (): UseCommunity => {
     remove,
     addOrRemove,
     populateDeviceContacts,
+    loaded,
   };
 };
 
@@ -928,13 +920,9 @@ const DataContextWrapper = (props: any): any => {
       subject: `iResucitó - ${shareTitleSuffix}`,
       url: `file://${pdfPath}`,
       failOnCancel: false,
-    })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        err && console.log(err);
-      });
+    }).catch((err) => {
+      err && console.log(err);
+    });
   };
 
   useEffect(() => {

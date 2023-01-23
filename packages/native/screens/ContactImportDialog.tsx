@@ -1,15 +1,8 @@
 import * as React from 'react';
 import { useState, useEffect, useMemo } from 'react';
-import {
-  Text,
-  Box,
-  Pressable,
-  HStack,
-  VStack,
-  Switch,
-  FlatList,
-} from 'native-base';
+import { Text, Box, Pressable, HStack, VStack, Switch } from 'native-base';
 import { Keyboard, StyleSheet } from 'react-native';
+import { FlashList } from '@shopify/flash-list';
 import ModalView from '../components/ModalView';
 import SearchBarView from '../components/SearchBarView';
 import ContactPhoto from '../components/ContactPhoto';
@@ -128,7 +121,7 @@ const ContactImportDialog = () => {
             p="4"
             borderBottomWidth={StyleSheet.hairlineWidth}
             borderBottomColor="muted.300">
-            <FlatList
+            <FlashList
               removeClippedSubviews
               horizontal={true}
               keyboardShouldPersistTaps="always"
@@ -138,10 +131,11 @@ const ContactImportDialog = () => {
               renderItem={({ item }) => (
                 <BrotherItem item={item} handleContact={handleContact} />
               )}
+              estimatedItemSize={74}
             />
           </Box>
         )}
-        <FlatList
+        <FlashList
           removeClippedSubviews
           onScrollBeginDrag={() => Keyboard.dismiss()}
           keyboardShouldPersistTaps="always"
@@ -150,6 +144,7 @@ const ContactImportDialog = () => {
           renderItem={({ item }) => (
             <ContactItem item={item} handleContact={handleContact} />
           )}
+          estimatedItemSize={64}
         />
       </SearchBarView>
     </ModalView>

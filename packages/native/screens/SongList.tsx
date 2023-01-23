@@ -7,7 +7,8 @@ import {
   RouteProp,
 } from '@react-navigation/native';
 import { Keyboard, View } from 'react-native';
-import { FlatList, Text, Spinner, useDisclose } from 'native-base';
+import { Text, Spinner, useDisclose } from 'native-base';
+import { FlashList } from '@shopify/flash-list';
 import SearchBarView from '../components/SearchBarView';
 import ExportToPdfButton from '../components/ExportToPdfButton';
 import ChoosePdfTypeForExport from '../components/ChoosePdfTypeForExport';
@@ -122,15 +123,15 @@ const SongList = (props: any) => {
       <Text bold p="2" px="4" bg="gray.100" color="muted.500">
         {totalText}
       </Text>
-      <FlatList
+      <FlashList
         ref={listRef}
         onScrollBeginDrag={() => Keyboard.dismiss()}
         keyboardShouldPersistTaps="always"
         data={search}
+        estimatedItemSize={98}
         renderItem={({ item }) => {
           return (
             <SongListItem
-              key={item.nombre}
               showBadge={showSalmosBadge}
               songKey={item.key}
               onPress={onPress}

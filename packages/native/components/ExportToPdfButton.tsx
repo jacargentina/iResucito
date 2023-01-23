@@ -11,7 +11,7 @@ const ExportToPdfButton = (props: any) => {
     <Icon
       as={Ionicons}
       name="document-text-outline"
-      size="md"
+      size="xl"
       style={{
         marginTop: 4,
         marginRight: 8,

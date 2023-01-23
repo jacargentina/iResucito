@@ -2,7 +2,8 @@ import * as React from 'react';
 import type { RouteProp } from '@react-navigation/native';
 import Contacts from 'react-native-contacts';
 import { useState, useMemo } from 'react';
-import { FlatList, Text, Icon } from 'native-base';
+import { Text, Icon } from 'native-base';
+import { FlashList } from '@shopify/flash-list';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { View } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
@@ -47,22 +48,19 @@ const ContactChooserDialog = () => {
           ml="4"
           style={{
             alignSelf: 'flex-start',
-          }}
-        >
+          }}>
           {i18n.t('screen_title.community')}
         </Text>
       }
       closeText={i18n.t('ui.done')}
-      closeHandler={() => setFilter('')}
-    >
+      closeHandler={() => setFilter('')}>
       {brothers.length === 0 && (
         <View
           style={{
             flex: 3,
             justifyContent: 'space-around',
             padding: 10,
-          }}
-        >
+          }}>
           <Icon
             as={Ionicons}
             name="people-outline"
@@ -74,8 +72,7 @@ const ContactChooserDialog = () => {
       )}
       {brothers.length > 0 && (
         <SearchBarView value={filter} setValue={setFilter}>
-          <FlatList
-            style={{ flex: 1 }}
+          <FlashList
             data={filtered}
             keyExtractor={(item) => item.recordID}
             renderItem={({ item }) => {
@@ -88,6 +85,7 @@ const ContactChooserDialog = () => {
                 />
               );
             }}
+            estimatedItemSize={84}
           />
         </SearchBarView>
       )}

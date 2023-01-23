@@ -98,7 +98,12 @@ const ListDetail = () => {
             <VStack p="2">
               {songs.map((song, key) => {
                 return (
-                  <SwipeableRow listName={listName} listKey={key} song={song} />
+                  <SwipeableRow
+                    key={key}
+                    listName={listName}
+                    listKey={key}
+                    song={song}
+                  />
                 );
               })}
             </VStack>

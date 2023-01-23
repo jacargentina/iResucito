@@ -78,7 +78,7 @@ const TransportNotesButton = () => {
       <Icon
         as={Ionicons}
         name="musical-notes-outline"
-        size="md"
+        size="xl"
         style={{
           marginTop: 4,
           marginRight: 8,

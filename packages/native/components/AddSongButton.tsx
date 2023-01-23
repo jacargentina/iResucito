@@ -34,7 +34,7 @@ const AddSongButton = () => {
     <Icon
       as={Ionicons}
       name="add"
-      size="md"
+      size="xl"
       style={{
         marginTop: 4,
         marginRight: 8,

@@ -15,7 +15,7 @@ const PrintPDFButton = () => {
   return (
     <Icon
       as={Ionicons}
-      size="md"
+      size="xl"
       name="print-outline"
       style={{
         marginTop: 4,

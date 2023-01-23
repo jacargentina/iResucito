@@ -9,8 +9,8 @@ import {
   VStack,
   Text,
   Divider,
-  FlatList,
 } from 'native-base';
+import { FlashList } from '@shopify/flash-list';
 import { useData } from '../DataContext';
 import i18n from '@iresucito/translations';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -44,7 +44,7 @@ const SongSearch = () => {
   }
 
   return (
-    <FlatList
+    <FlashList
       data={searchItems}
       keyExtractor={(item, i) => String(i)}
       renderItem={({ item, index }) => {
@@ -74,6 +74,7 @@ const SongSearch = () => {
           </Pressable>
         );
       }}
+      estimatedItemSize={64}
     />
   );
 };

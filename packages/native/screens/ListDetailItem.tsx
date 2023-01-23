@@ -71,13 +71,13 @@ const ListDetailItem = (props: {
           <Icon
             w="10%"
             as={Ionicons}
-            size="sm"
+            size="md"
             name="person"
             color="info.500"
           />
           <Input
             p="2"
-            w="80%"
+            w="85%"
             onChangeText={(text) => {
               setList(listName, listKey, text);
             }}
@@ -88,6 +88,7 @@ const ListDetailItem = (props: {
           />
           <Icon
             as={Ionicons}
+            size="md"
             color="rose.500"
             name="search-outline"
             onPress={() =>
@@ -122,6 +123,7 @@ const ListDetailItem = (props: {
       listText != null ? (
         <Icon
           as={Ionicons}
+          size="md"
           color="rose.500"
           name="open-outline"
           onPress={() =>
@@ -146,11 +148,11 @@ const ListDetailItem = (props: {
           <Icon
             w="10%"
             as={Ionicons}
-            size="sm"
+            size="md"
             name="musical-notes"
             color="info.500"
           />
-          <Text w="80%" noOfLines={1}>
+          <Text w="85%" noOfLines={1}>
             {text}
           </Text>
           {navigateSalmo}
