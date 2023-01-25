@@ -3127,10 +3127,10 @@
   dependencies:
     "@react-types/shared" "^3.16.0"
 
-"@remix-run/dev@^1.9.0":
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/@remix-run/dev/-/dev-1.11.0.tgz#ba6be7ea98c19ea174cb629fbcecca9e9bb4fad8"
-  integrity sha512-3Rj7dNC/Efb6OuDpIqXHDEG/kw5afFz59P+x0Bd6wS6XEiHUwNFocKyzqVWT8Z2CLGKfng1tonA8El9QPtYB+g==
+"@remix-run/dev@^1.11.1":
+  version "1.11.1"
+  resolved "https://registry.yarnpkg.com/@remix-run/dev/-/dev-1.11.1.tgz#02111353abcffd71956faf5f7e30b2b1f189b138"
+  integrity sha512-8N7TRbJtNXKhU4pQwDGdEMDlOIJ1SqQdG1zZoIzU7Q7YfkdAI8/AOtXT7i2X6y5urjijtFUZEY6x8IVNhGAjbg==
   dependencies:
     "@babel/core" "^7.18.6"
     "@babel/generator" "^7.18.6"
@@ -3143,7 +3143,7 @@
     "@babel/types" "^7.20.2"
     "@esbuild-plugins/node-modules-polyfill" "^0.1.4"
     "@npmcli/package-json" "^2.0.0"
-    "@remix-run/server-runtime" "1.11.0"
+    "@remix-run/server-runtime" "1.11.1"
     "@vanilla-extract/integration" "^6.0.1"
     arg "^5.0.1"
     cacache "^15.0.5"
@@ -3184,19 +3184,19 @@
     ws "^7.4.5"
     xdm "^2.0.0"
 
-"@remix-run/express@1.11.0":
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/@remix-run/express/-/express-1.11.0.tgz#8e7aca0fa691d8cae9496b565254b48ecc2e3883"
-  integrity sha512-cOXu8Vx2vAUW7aEgOLQay5P/rDc0OqMzvuzJU6YEicS+qEzweqBdUBDjyhAEAqj06fNQHC8YWlvcsKDoO/cQ3w==
+"@remix-run/express@1.11.1":
+  version "1.11.1"
+  resolved "https://registry.yarnpkg.com/@remix-run/express/-/express-1.11.1.tgz#48d9c60356a2ff0de41c72ded6cbb38552b8c7c7"
+  integrity sha512-riT5ooTXWeX52bSTaL5ovCApKRU/W6NjdowfESH4Ur3MSM3FP1/z9K0HBV+mVsAW7zYSOk/vaPX+kJnVZsuhCw==
   dependencies:
-    "@remix-run/node" "1.11.0"
+    "@remix-run/node" "1.11.1"
 
-"@remix-run/node@1.11.0":
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/@remix-run/node/-/node-1.11.0.tgz#c28ad550ed811e5806c443baf1b54650eb72c7d8"
-  integrity sha512-9tryyo7kBPvKpdThq/uYNERm9meFkP2eDkMW4QOR5sRSlUaMeL6CJwrur7+2ECKC812OhFWV3FJZbnyencOGVg==
+"@remix-run/node@1.11.1":
+  version "1.11.1"
+  resolved "https://registry.yarnpkg.com/@remix-run/node/-/node-1.11.1.tgz#f0ea577650cf67aa9a1725a1f1d6d280e6ba1b11"
+  integrity sha512-Lc2mI7Qm26kIB0cyjPC56XTZskfufX1uTTpHsAAYvBooyahhKoBHDLa0skl56cT20mz7dSy+ocYoPel6Eavr2A==
   dependencies:
-    "@remix-run/server-runtime" "1.11.0"
+    "@remix-run/server-runtime" "1.11.1"
     "@remix-run/web-fetch" "^4.3.2"
     "@remix-run/web-file" "^3.0.2"
     "@remix-run/web-stream" "^1.0.3"
@@ -3206,10 +3206,10 @@
     source-map-support "^0.5.21"
     stream-slice "^0.1.2"
 
-"@remix-run/react@^1.9.0":
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/@remix-run/react/-/react-1.11.0.tgz#1d8d2633b67b173f1bde5bd71f2ab725e65340a9"
-  integrity sha512-0aneldZAXwpJ6h5Mil6BxwCm8mRIA4adf+eO+bFPz9njS5JQJ/o7+jx+TgwyAVzmiFdGf0b1km6PrVLq02jQKg==
+"@remix-run/react@^1.11.1":
+  version "1.11.1"
+  resolved "https://registry.yarnpkg.com/@remix-run/react/-/react-1.11.1.tgz#78e9fe5042cf82380b2dd3bc4637c8dd436490c4"
+  integrity sha512-8D+55ygREmGLWuCfqU7DntMgD8EN/5Lk8feO0oF09eFR9tZ5frjjiB3xTiH+4wkyY3vz+cdFxVI/8p9Iyrwd6Q==
   dependencies:
     "@remix-run/router" "1.3.0"
     react-router-dom "6.7.0"
@@ -3220,20 +3220,20 @@
   resolved "https://registry.yarnpkg.com/@remix-run/router/-/router-1.3.0.tgz#b6ee542c7f087b73b3d8215b9bf799f648be71cb"
   integrity sha512-nwQoYb3m4DDpHTeOwpJEuDt8lWVcujhYYSFGLluC+9es2PyLjm+jjq3IeRBQbwBtPLJE/lkuHuGHr8uQLgmJRA==
 
-"@remix-run/serve@^1.9.0":
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/@remix-run/serve/-/serve-1.11.0.tgz#1e6cb049dfce97931f56b1f729bef7efba2975eb"
-  integrity sha512-fabCgs9UYOx4A3i3erY/ZZy42Zm5F70hc9bgRM6queo7/D+0b9pemQ1GIEDarasLMm564uGbdUNskyByfU7ZyA==
+"@remix-run/serve@^1.11.1":
+  version "1.11.1"
+  resolved "https://registry.yarnpkg.com/@remix-run/serve/-/serve-1.11.1.tgz#8934c2838ddf765b3aeec82998dd5eb601066485"
+  integrity sha512-a39vG0DhKIQfjlK9yHX17VOjBw+MyPYtHG7/tJtsE204s93pahZZMM7nBjsUrdx6zjwht8v6uoF4lZTEzzrSwg==
   dependencies:
-    "@remix-run/express" "1.11.0"
+    "@remix-run/express" "1.11.1"
     compression "^1.7.4"
     express "^4.17.1"
     morgan "^1.10.0"
 
-"@remix-run/server-runtime@1.11.0":
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/@remix-run/server-runtime/-/server-runtime-1.11.0.tgz#95949378ed057f9e101cf7b673eb40e6906ceff3"
-  integrity sha512-6yP6d5KXRSwMgydKkwXi+B2sqDkCVn0/DgflHz8F0jRxnBn2ZWW1T9QTQdaXO3yL+wI6h4MN++TUbK/yiz40IA==
+"@remix-run/server-runtime@1.11.1":
+  version "1.11.1"
+  resolved "https://registry.yarnpkg.com/@remix-run/server-runtime/-/server-runtime-1.11.1.tgz#58f9509ddccdafb21ad6480ee7e9cf2248d5f06a"
+  integrity sha512-D0jTiaUSMK0q29CTVL7Bn4SlE6fd4bnp18vxObjSXlA6VYrzDAK3pQ/1baDawPdxBDIQPqImXOQ6g4aAYImfCA==
   dependencies:
     "@remix-run/router" "1.3.0"
     "@types/cookie" "^0.4.0"
@@ -3242,12 +3242,12 @@
     set-cookie-parser "^2.4.8"
     source-map "^0.7.3"
 
-"@remix-run/vercel@^1.9.0":
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/@remix-run/vercel/-/vercel-1.11.0.tgz#85b21a5230cc2e317f69ef403653c716d9712c32"
-  integrity sha512-ZMd1obAffyQJEb2OuwWyP90hbsxtrwY1in3opeC1DkRJ7e4XvFeXWh0aDTPtv12Hdw4zhn/igiuVnmtH2eosIw==
+"@remix-run/vercel@^1.11.1":
+  version "1.11.1"
+  resolved "https://registry.yarnpkg.com/@remix-run/vercel/-/vercel-1.11.1.tgz#1098fb16ea5cfb43a28ebf2a2b7697b3036cbab1"
+  integrity sha512-eh7LDHcPGEDZ6lv1ES+dMz7Xdz0RnG3sYBxhhF+fSL/u6A5wUpHJeTmAGMTzKyrVliX31qV62ehb2KR0Zpn+mg==
   dependencies:
-    "@remix-run/node" "1.11.0"
+    "@remix-run/node" "1.11.1"
 
 "@remix-run/web-blob@^3.0.3", "@remix-run/web-blob@^3.0.4":
   version "3.0.4"
@@ -3866,7 +3866,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@^18.0.26", "@types/react@^18.0.27":
+"@types/react@*", "@types/react@^18.0.27":
   version "18.0.27"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.27.tgz#d9425abe187a00f8a5ec182b010d4fd9da703b71"
   integrity sha512-3vtRKHgVxu3Jp9t718R9BuzoD4NcQ8YJ5XRzsSKxNDiDonD2MXIT1TmSkenxuCycZJoQT5d2vE8LwWJxBC1gmA==
@@ -3983,10 +3983,10 @@
   resolved "https://registry.yarnpkg.com/@vercel/hydrogen/-/hydrogen-0.0.44.tgz#f264798a81fe012dd5785022abf825663e8a7ec5"
   integrity sha512-7RnSk10nE0tNLHcTCUTWCpO5rfcMQ7N6ECTaeozWcYWs2/Fol7tLjc9Uowo1ZqnV7wTm5mE/ooCD2FNlaKmiaA==
 
-"@vercel/next@3.3.17":
-  version "3.3.17"
-  resolved "https://registry.yarnpkg.com/@vercel/next/-/next-3.3.17.tgz#6f325f8b4f82b0e95f5dd296de3208a04b721f33"
-  integrity sha512-NivHPJw5YpdcweAtuqx74N/oiSiVAoirKPrejBqyyaabsdC0x99CdH5DHCaAyjGBNilOqIbI66GRRLLTBhAjhQ==
+"@vercel/next@3.3.18":
+  version "3.3.18"
+  resolved "https://registry.yarnpkg.com/@vercel/next/-/next-3.3.18.tgz#e49bcac6b07d434cd3a9b652046e05e7b85f91e0"
+  integrity sha512-RmYSlWgkCHytIdrqO5FtJ46H43WUhi+ISIiiNNp7jR5uzAviuOo9jdvCKuR7vRoEBoLc359GCXbUOlG6/VHYkw==
 
 "@vercel/nft@0.22.5":
   version "0.22.5"
@@ -4010,10 +4010,10 @@
   resolved "https://registry.yarnpkg.com/@vercel/node-bridge/-/node-bridge-3.1.10.tgz#9b8e6e9e81534cd93e05e246d6c7b3b57fba75a5"
   integrity sha512-0DQzF5pdyP+xd5f1Ss2fAO+9xIvzUhngRAPazwg4XHZE9iLkv2L+A1u3L8NYi4hoUlAAZQ5GF3txlm/oBn4tNw==
 
-"@vercel/node@2.8.14", "@vercel/node@^2.8.2":
-  version "2.8.14"
-  resolved "https://registry.yarnpkg.com/@vercel/node/-/node-2.8.14.tgz#573c1403e69ea2c7b370cdf9c47bd562e71efd52"
-  integrity sha512-ty4/FUgEpfQlqNm3j5HEaMhAHPJipRBzm6WVOs7Lvf5INx6OqLxbLBw3p/xcA18EWL0D8e5V41B7F8iQ3tBkqA==
+"@vercel/node@2.8.15", "@vercel/node@^2.8.15":
+  version "2.8.15"
+  resolved "https://registry.yarnpkg.com/@vercel/node/-/node-2.8.15.tgz#27880d9c20243e42b35d2dd13b225579fbc4f735"
+  integrity sha512-pS445kGQGi4xN2vd/95mp5E86WrVEV7VH/u7f2G0Q5jCbcw590czJv1U+FLlW5OrznuuGT0LbNRKA0TBAUrbfA==
   dependencies:
     "@edge-runtime/vm" "2.0.0"
     "@types/node" "14.18.33"
@@ -4041,7 +4041,7 @@
     "@vercel/routing-utils" "2.1.8"
     semver "6.1.1"
 
-"@vercel/remix@1.2.7", "@vercel/remix@^1.1.3":
+"@vercel/remix@1.2.7", "@vercel/remix@^1.2.7":
   version "1.2.7"
   resolved "https://registry.yarnpkg.com/@vercel/remix/-/remix-1.2.7.tgz#6f5dabfa55968b9e624d9c04c0b9bcc3cba5fa84"
   integrity sha512-7og2psE5EGBkBSPwv09an/TM4ucLyMwxvq4yjxT/6UajQf1Evd8hi/kkBWNQYTAH+tq5kBXCXgbaJ3ggbwcD4g==
@@ -4062,10 +4062,10 @@
   resolved "https://registry.yarnpkg.com/@vercel/ruby/-/ruby-1.3.56.tgz#c8acbe4e821b11caf3fd2f84c30eba749fecb346"
   integrity sha512-fYjyU8ZhsouRC5WWZBuN8FQG+eHGTFzl8sCwCGdeaykJOpVa0FW9Xl/fDjBpAQoicbrdZhDH2HaEfnjBkLVIeA==
 
-"@vercel/static-build@1.1.7":
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/@vercel/static-build/-/static-build-1.1.7.tgz#1e477c82b5568d53274f1c44e95e867a0a4fa1fb"
-  integrity sha512-l0QBOuRD6NjewHyPTSMxk96MVJbeem46cjqKb9AB9Ochf2nb20JGZaON0VSqeJRtrQR19gWiqgTT+glz1G098A==
+"@vercel/static-build@1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@vercel/static-build/-/static-build-1.2.0.tgz#5a2095f4605cf776f00139f411c8e396a3f69c0f"
+  integrity sha512-jQKalffqT1bgZ4oSaxbeCLZD8EzZ0BxD8A+Ggifc64Lx2vRpLR/ZBbY6m/oSImU9RtnPDxS31hv1nltdDJ2V8Q==
 
 "@vercel/static-config@2.0.11":
   version "2.0.11"
@@ -12059,10 +12059,10 @@ remix-auth@^3.4.0:
   dependencies:
     uuid "^8.3.2"
 
-remix@^1.9.0:
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/remix/-/remix-1.11.0.tgz#8f24549bec740b41fc41af95e4d5d3148ff1ace8"
-  integrity sha512-X8X5RjhSXemf7WDCZseqdJqxHuw+0C7wridDBj1faxyKJWoRC0DBP3IdWGw2vaQ1TKXo+MHASY2akt329iM2SA==
+remix@^1.11.1:
+  version "1.11.1"
+  resolved "https://registry.yarnpkg.com/remix/-/remix-1.11.1.tgz#d146913664ce9ee8e2d3a56946c3784b0a4ca667"
+  integrity sha512-tUoNrDtWeGKrNZ/DsnBJlJj+zpOCFPGcOaCSS9fgqR4E1YMHKAQTCvV+GerE5mghIhspfUjtgQQTDV/CXaaCaQ==
 
 repeat-element@^1.1.2:
   version "1.1.4"
@@ -13638,7 +13638,7 @@ urix@^0.1.0:
   resolved "https://registry.yarnpkg.com/urix/-/urix-0.1.0.tgz#da937f7a62e21fec1fd18d49b35c2935067a6c72"
   integrity sha512-Am1ousAhSLBeB9cG/7k7r2R0zj50uDRlZHPGbazid5s9rlF1F/QKYObEKSIunSjIOkJZqwRRLpvewjEkM7pSqg==
 
-use-debounce@^9.0.2, use-debounce@^9.0.3:
+use-debounce@^9.0.3:
   version "9.0.3"
   resolved "https://registry.yarnpkg.com/use-debounce/-/use-debounce-9.0.3.tgz#bac660c19ab7b38662e08608fee23c7ad303f532"
   integrity sha512-FhtlbDtDXILJV7Lix5OZj5yX/fW1tzq+VrvK1fnT2bUrPOGruU9Rw8NCEn+UI9wopfERBEZAOQ8lfeCJPllgnw==
@@ -13773,21 +13773,21 @@ vary@~1.1.2:
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==
 
-vercel@^28.10.1:
-  version "28.12.8"
-  resolved "https://registry.yarnpkg.com/vercel/-/vercel-28.12.8.tgz#5339c66d8b0567aa2c00f8384181f3030febef54"
-  integrity sha512-hWY2EtT3jASdWurZhpAXB6/JanVLmkj92hqH2v6V8UFXx4XaZt9nOWCbnVPpgef7KOOmLr2USU1WelyB7Yv/XQ==
+vercel@^28.13.1:
+  version "28.13.1"
+  resolved "https://registry.yarnpkg.com/vercel/-/vercel-28.13.1.tgz#567d9c58cbbb2cac8207a2f53e799bb52473d4e8"
+  integrity sha512-rcbdM5PYcB9tPHFnvXMr2Q8FUp1t8P1coQnJ6LY1Ifz0ezv2f18unHQ0QneQiDDcl+3CjeHEdBXIl3FuRYtq9w==
   dependencies:
     "@vercel/build-utils" "5.9.0"
     "@vercel/go" "2.2.30"
     "@vercel/hydrogen" "0.0.44"
-    "@vercel/next" "3.3.17"
-    "@vercel/node" "2.8.14"
+    "@vercel/next" "3.3.18"
+    "@vercel/node" "2.8.15"
     "@vercel/python" "3.1.40"
     "@vercel/redwood" "1.0.51"
     "@vercel/remix" "1.2.7"
     "@vercel/ruby" "1.3.56"
-    "@vercel/static-build" "1.1.7"
+    "@vercel/static-build" "1.2.0"
 
 verror@1.10.0:
   version "1.10.0"
