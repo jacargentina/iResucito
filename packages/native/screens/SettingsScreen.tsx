@@ -172,7 +172,7 @@ const SettingsScreen = () => {
           <Text bold>
             {i18n.t('ui.version')}: {version}
           </Text>
-          {'\n'} Javier Castro, 2017-2021
+          {'\n'} Javier Castro, 2017-2023
         </Text>
         <Text textAlign="center" fontSize="sm" mt="10">
           <Text bold>{i18n.t('ui.collaborators')}</Text>
