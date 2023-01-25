@@ -19,19 +19,15 @@ export let loader: LoaderFunction = async ({ request, params }) => {
   let result: { diff: Diff.Change[] | null } = { diff: null };
 
   const patch = await globalThis.folderExtras.readPatch();
-  if (patch && patch[key] && patch[key][locale]) {
-    if (SongsIndex.hasOwnProperty(key)) {
-      const loc = getPropertyLocale(SongsIndex[key].files, locale);
-      let fullText = '';
-      if (loc) {
-        const filename = SongsIndex[key].files[loc];
-        fullText = await globalThis.folderSongs.loadLocaleSongFile(
-          loc,
-          filename
-        );
-      }
-      result.diff = Diff.diffLines(fullText, patch[key][locale].lines as string);
+  if (patch && patch.hasOwnProperty(key) && SongsIndex.hasOwnProperty(key)) {
+    const loc = getPropertyLocale(SongsIndex[key].files, locale);
+    let fullText = '';
+    if (loc) {
+      const filename = SongsIndex[key].files[loc];
+      fullText = await globalThis.folderSongs.loadLocaleSongFile(loc, filename);
     }
+    const ploc = getPropertyLocale(patch[key], locale);
+    result.diff = Diff.diffLines(fullText, patch[key][ploc].lines as string);
   }
 
   const headers = {
