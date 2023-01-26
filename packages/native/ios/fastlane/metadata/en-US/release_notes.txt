@@ -1,1 +1,1 @@
-• Added 27 french songs (Thanks jdarjona@hotmail.com)
+• Fixes notes transport not working on some songs

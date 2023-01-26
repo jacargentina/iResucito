@@ -1,1 +1,1 @@
-• Aggiunte 27 canzoni francesi (grazie jdarjona@hotmail.com)
+• Risolto il problema con il trasporto delle note che non funzionava su alcuni brani

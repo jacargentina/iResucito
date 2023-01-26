@@ -1,1 +1,1 @@
-• Adicionado 27 músicas francesas (Obrigado jdarjona@hotmail.com)
+• Corrigido o transporte de notas que não funcionava em algumas músicas
