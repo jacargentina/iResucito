@@ -3,8 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "build": "tsc -b",
-    "upd": "npx npm-check-updates -u"
+    "build": "tsc -b"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.js",

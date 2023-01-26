@@ -13,8 +13,7 @@
     "ts": "yarn tsc --noEmit",
     "dev": "yarn run assets && remix dev",
     "debug": "yarn run assets && node --inspect ./node_modules/.bin/remix dev",
-    "postinstall": "cp ../../node_modules/pdfjs-dist/build/pdf.worker.js ./public && cp ../native/ios/iResucito/Info.plist ./public && cp ../native/android/app/build.gradle ./public",
-    "upd": "npx npm-check-updates -u"
+    "postinstall": "cp ../../node_modules/pdfjs-dist/build/pdf.worker.js ./public && cp ../native/ios/iResucito/Info.plist ./public && cp ../native/android/app/build.gradle ./public"
   },
   "workspaces": {
     "nohoist": [
@@ -44,8 +43,8 @@
     "@types/etag": "^1.8.1",
     "@types/react": "^18.0.27",
     "@types/react-json-editor-ajrm": "^2.5.3",
-    "@vercel/node": "^2.8.15",
-    "@vercel/remix": "^1.2.7",
+    "@vercel/node": "^2.8.16",
+    "@vercel/remix": "^1.2.8",
     "base64-stream": "^1.0.0",
     "bcryptjs": "^2.4.3",
     "crypto-random-string": "^5.0.0",
@@ -69,7 +68,7 @@
     "typescript": "^4.9.4",
     "use-debounce": "^9.0.3",
     "use-hotkeys": "^1.1.0",
-    "vercel": "^28.13.1"
+    "vercel": "^28.13.2"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
