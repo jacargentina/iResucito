@@ -265,7 +265,7 @@ export class SongsParser {
   }
 
   getInitialChord(linea: string): string {
-    var pedazos = linea.split(' ');
+    var pedazos = linea.trim().split(' ');
     var primero = pedazos[0];
     return primero.replace(cleanChordsRegex, '');
   }
