@@ -1,17 +1,17 @@
 import * as React from 'react';
 import { Avatar } from 'native-base';
+import { BrotherContact } from '../DataContext';
+import { ContactForImport } from '../util';
 
-const ContactPhoto = (props: any) => {
+const ContactPhoto = (props: { item: BrotherContact | ContactForImport }) => {
+  const { item } = props;
   const initials =
-    props.item.givenName[0] +
-    (props.item.familyName && props.item.familyName.length > 0
-      ? props.item.familyName[0]
-      : '');
+    (item.givenName && item.givenName.length > 0 ? item.givenName[0] : '') +
+    (item.familyName && item.familyName.length > 0 ? item.familyName[0] : '');
   return (
     <Avatar
-      source={
-        props.item.hasThumbnail ? { uri: props.item.thumbnailPath } : undefined
-      }>
+      bgColor="rose.500"
+      source={item.hasThumbnail ? { uri: item.thumbnailPath } : undefined}>
       {initials}
     </Avatar>
   );

@@ -64,7 +64,7 @@ const SongSearch = () => {
             <HStack w="100%" p="2" m="1">
               {item.badge}
               <VStack>
-                <Text>{i18n.t(item.title_key)}</Text>
+                <Text bold>{i18n.t(item.title_key)}</Text>
                 <Text color="muted.500" fontSize="sm">
                   {i18n.t(item.note_key as string)}
                 </Text>

@@ -28,7 +28,9 @@ const BrotherItem = React.memo(
         onPress={() => handleContact(item)}>
         <ContactPhoto item={item} />
         <Text noOfLines={1} textAlign="center" mt="2" fontSize="sm">
-          {item.givenName}
+          {item.givenName && item.givenName.length > 0
+            ? item.givenName.trim()
+            : item.familyName.trim()}
         </Text>
       </Pressable>
     );
@@ -43,13 +45,16 @@ const ContactItem = React.memo(
     const { item, handleContact } = props;
     var contactFullName = item.givenName;
     if (item.familyName) {
-      contactFullName += ` ${item.familyName}`;
+      if (contactFullName.length > 0) {
+        contactFullName += ' ';
+      }
+      contactFullName += item.familyName;
     }
     return (
       <Pressable onPress={() => handleContact(item)}>
         <HStack p="2" justifyContent="space-between" alignItems="center">
           <ContactPhoto item={item} />
-          <VStack w="60%">
+          <VStack w="68%">
             <Text bold fontSize="lg" noOfLines={1}>
               {contactFullName}
             </Text>
