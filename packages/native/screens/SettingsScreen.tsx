@@ -138,13 +138,13 @@ const SettingsScreen = () => {
         p="3"
         justifyContent="space-between"
         alignItems="center">
-        <VStack w="80%" space={2}>
+        <VStack space={2}>
           <Text>{i18n.t('settings_title.keep awake')}</Text>
           <Text fontSize="sm" color="muted.500">
             {i18n.t('settings_note.keep awake')}
           </Text>
         </VStack>
-        <Switch width="20%" value={keepAwake} onValueChange={setKeepAwake} />
+        <Switch value={keepAwake} onValueChange={setKeepAwake} />
       </HStack>
       <Box
         flex={1}

@@ -156,7 +156,7 @@ const SongListItem = (props: any) => {
   return (
     <HStack p="2" borderBottomWidth={1} borderBottomColor="muted.200">
       {showBadge && (
-        <Box w="10%" pt="2" alignSelf="flex-start">
+        <Box pt="2" alignSelf="flex-start">
           {badges[song.stage]}
         </Box>
       )}
