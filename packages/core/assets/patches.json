@@ -195,6 +195,13 @@
         "original": "catechumenate",
         "new": "precatechumenate"
       }
+    },
+    {
+      "date": 1674629911455,
+      "locale": "en",
+      "author": "chrisjamesmoore@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "4": [
@@ -13871,6 +13878,16 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1674567540304,
+      "locale": "es",
+      "author": "nico5129@duck.com",
+      "rename": {
+        "new": "Himno de laudes de Pentecostés"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "241": [
@@ -13962,6 +13979,20 @@
       "author": "gordofragoso2@gmail.com",
       "created": false,
       "updated": true,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "liturgy"
+      }
+    },
+    {
+      "date": 1674565818327,
+      "locale": "es",
+      "author": "nico5129@duck.com",
+      "rename": {
+        "new": "Prefacio de Adviento II – Melodía para el tiempo de Adviento y Navidad"
+      },
+      "created": true,
+      "updated": false,
       "staged": {
         "original": "precatechumenate",
         "new": "liturgy"

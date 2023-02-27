@@ -3487,7 +3487,8 @@
     "stage": "precatechumenate",
     "files": {
       "pt-BR": "Hino Das Laudes De Pentecostes",
-      "pt-PT": "Hino Das Laudes De Pentecostes"
+      "pt-PT": "Hino Das Laudes De Pentecostes",
+      "es": "Himno de laudes de Pentecostés"
     },
     "stages": {
       "pt-BR": "liturgy"
@@ -3514,10 +3515,12 @@
     "stage": "precatechumenate",
     "files": {
       "pt-BR": "Prefácio Para Advento E Natal - Prefácio de Advento II – Melodia para o tempo de Advento e Natal",
-      "pt-PT": "Prefácio Para Advento E Natal - Prefácio de Advento II – Melodia para o tempo de Advento e Natal"
+      "pt-PT": "Prefácio Para Advento E Natal - Prefácio de Advento II – Melodia para o tempo de Advento e Natal",
+      "es": "Prefacio de Adviento II – Melodía para el tiempo de Adviento y Navidad"
     },
     "stages": {
-      "pt-BR": "liturgy"
+      "pt-BR": "liturgy",
+      "es": "liturgy"
     }
   },
   "245": {
