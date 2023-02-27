@@ -148,23 +148,31 @@ const patchSongLogic = (songPatch: SongPatch, key: string) => {
   }
 };
 
-const applyPatch = async () => {
-  if (!process.env.DROPBOX_PASSWORD)
-    throw new Error(
-      'DROPBOX_PASSWORD no definida. No se puede conectar con Dropbox'
-    );
-
-  const dropbox = new Dropbox({
-    accessToken: process.env.DROPBOX_PASSWORD,
-  });
-
+const applyPatch = async (local_file_path: string = null) => {
+  var patch: SongIndexPatch = undefined;
+  var dropbox: Dropbox = undefined;
   const file = 'SongsIndexPatch.json';
-  const download = await dropbox.filesDownload({
-    path: `/${file.toLowerCase()}`,
-  });
-  const meta = download.result;
-  const data = (meta as any).fileBinary.toString();
-  const patch = JSON.parse(data) as SongIndexPatch;
+
+  if (local_file_path === null) {
+    if (!process.env.DROPBOX_PASSWORD)
+      throw new Error(
+        'DROPBOX_PASSWORD no definida. No se puede conectar con Dropbox'
+      );
+
+    dropbox = new Dropbox({
+      accessToken: process.env.DROPBOX_PASSWORD,
+    });
+
+    const download = await dropbox.filesDownload({
+      path: `/${file.toLowerCase()}`,
+    });
+    const meta = download.result;
+    const data = (meta as any).fileBinary.toString();
+    patch = JSON.parse(data) as SongIndexPatch;
+  } else {
+    const data = fs.readFileSync(local_file_path, { encoding: 'utf8' });
+    patch = JSON.parse(data) as SongIndexPatch;
+  }
 
   if (Object.keys(patch).length == 0) {
     console.log('No hay cambios pendientes de patch');
@@ -179,26 +187,31 @@ const applyPatch = async () => {
   const indexPath = path.resolve(__dirname, '../assets/songs.json');
   const patchesPath = path.resolve(__dirname, '../assets/patches.json');
 
-  fs.writeFileSync(indexPath, JSON.stringify(SongsIndex, null, ' '));
-  fs.writeFileSync(patchesPath, JSON.stringify(SongsHistory, null, '  '));
+  fs.writeFileSync(indexPath, JSON.stringify(SongsIndex, null, '  ') + '\n');
+  fs.writeFileSync(
+    patchesPath,
+    JSON.stringify(SongsHistory, null, '  ') + '\n'
+  );
   console.log(util.inspect(stats, { depth: 10 }));
 
-  const date = new Date();
-  const formatDate =
-    ('0' + date.getDate()).slice(-2) +
-    ('0' + (date.getMonth() + 1)).slice(-2) +
-    date.getFullYear();
-  const home = process.env.HOME ?? '.';
-  const bakPath = `${home}/SongsIndexPatch-${formatDate}.json`;
-  fs.writeFileSync(bakPath, JSON.stringify(patch));
-  const response = await dropbox.filesUpload({
-    path: `/${file}`,
-    mode: { '.tag': 'overwrite' },
-    contents: JSON.stringify({}, null, 2),
-  });
-  const metadata = response.result;
-  console.log(`Vaciado ${metadata.name} en Dropbox`);
-  console.log(`Backup: ${bakPath}`);
+  if (dropbox !== undefined) {
+    const date = new Date();
+    const formatDate =
+      ('0' + date.getDate()).slice(-2) +
+      ('0' + (date.getMonth() + 1)).slice(-2) +
+      date.getFullYear();
+    const home = process.env.HOME ?? '.';
+    const bakPath = `${home}/SongsIndexPatch-${formatDate}.json`;
+    fs.writeFileSync(bakPath, JSON.stringify(patch));
+    const response = await dropbox.filesUpload({
+      path: `/${file}`,
+      mode: { '.tag': 'overwrite' },
+      contents: JSON.stringify({}, null, 2),
+    });
+    const metadata = response.result;
+    console.log(`Vaciado ${metadata.name} en Dropbox`);
+    console.log(`Backup: ${bakPath}`);
+  }
 };
 
-applyPatch();
+applyPatch(process.argv[process.argv.length - 1]);
