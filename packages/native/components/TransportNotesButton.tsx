@@ -89,6 +89,8 @@ const TransportNotesButton = () => {
       <Badge
         colorScheme="rose"
         variant="solid"
+        borderRadius={10}
+        height="100%"
         style={{
           marginRight: 3,
         }}>

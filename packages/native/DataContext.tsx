@@ -27,7 +27,7 @@ import i18n from '@iresucito/translations';
 import badges from './badges';
 // import { clouddata } from './clouddata';
 import { generateListPDF } from './pdf';
-import usePersist, { UsePersist } from './usePersist';
+import { GlobalStore } from './GlobalStoreAsync';
 import {
   getDefaultLocale,
   ordenClasificacion,
@@ -35,6 +35,7 @@ import {
   NativeExtras,
 } from './util';
 import { ShareListType, SongSetting } from './types';
+import { StateSetter } from 'react-native-global-state-hooks/lib';
 
 type UseSongsMeta = {
   songs: Song[];
@@ -212,9 +213,15 @@ type UseLists = {
   importList: (listPath: string) => Promise<string | void>;
 };
 
+const listsStore = new GlobalStore<Lists, any>(
+  {},
+  { asyncStorageKey: 'lists' }
+);
+const useListsStore = listsStore.getHook();
+
 const useLists = (songs: Song[]): UseLists => {
   const [initialized, setInitialized] = useState(false);
-  const [lists, initLists] = usePersist<Lists>('lists', 'object', {});
+  const [lists, initLists] = useListsStore();
 
   const addList = (listName: string, type: ListType) => {
     let schema = { type: type, version: 1 };
@@ -731,28 +738,13 @@ type UseCommunity = {
   populateDeviceContacts: () => Promise<void>;
 };
 
+const brothersStore = new GlobalStore<BrotherContact[], any>([], {
+  asyncStorageKey: 'contacts',
+});
+const useBrothersStore = brothersStore.getHook();
+
 const useCommunity = (): UseCommunity => {
-  const [brothers, initBrothers] = usePersist<BrotherContact[]>(
-    'contacts',
-    'object',
-    [],
-    async (loaded) => {
-      try {
-        const devCts = await getContacts(false);
-        initDeviceContacts(devCts);
-        loaded.forEach((c, idx) => {
-          // tomar el contacto actualizado
-          var devContact = devCts.find((x) => x.recordID === c.recordID);
-          if (devContact) {
-            loaded[idx] = devContact as BrotherContact;
-          }
-        });
-        return loaded;
-      } catch {
-        return loaded;
-      }
-    }
-  );
+  const [brothers, initBrothers, { isAsyncStorageReady }] = useBrothersStore();
   const [loaded, setLoaded] = useState<boolean>(false);
   const [deviceContacts, initDeviceContacts] = useState<Contacts.Contact[]>([]);
 
@@ -843,11 +835,29 @@ const useCommunity = (): UseCommunity => {
     []
   );
 
-  // useEffect(() => {
-  //   if (brothers && Platform.OS === 'ios') {
-  //     clouddata.save('brothers', brothers);
-  //   }
-  // }, [brothers]);
+  useEffect(() => {
+    if (!isAsyncStorageReady) {
+      return;
+    }
+    const refreshContacts = async () => {
+      var loaded = [...brothers];
+      try {
+        const devCts = await getContacts(false);
+        initDeviceContacts(devCts);
+        brothers.forEach((c, idx) => {
+          // tomar el contacto actualizado
+          var devContact = devCts.find((x) => x.recordID === c.recordID);
+          if (devContact) {
+            loaded[idx] = devContact as BrotherContact;
+          }
+        });
+        initBrothers(loaded);
+      } catch {
+        initBrothers(loaded);
+      }
+    };
+    refreshContacts();
+  }, [isAsyncStorageReady]);
 
   const populateDeviceContacts = useCallback(async () => {
     const devCts = await getContacts(true);
@@ -877,9 +887,9 @@ export type DataContextType = {
   sharePDF: any;
   loading: [IsLoading, React.Dispatch<React.SetStateAction<IsLoading>>];
   localeReal: string | undefined;
-  locale: UsePersist<string>;
-  keepAwake: UsePersist<boolean>;
-  zoomLevel: UsePersist<number>;
+  locale: [string, StateSetter<string>, any];
+  keepAwake: [boolean, StateSetter<boolean>, any];
+  zoomLevel: [number, StateSetter<number>, any];
 };
 
 export const DataContext = React.createContext<DataContextType | undefined>(
@@ -894,13 +904,26 @@ export const useData = () => {
   return context;
 };
 
+const localeStore = new GlobalStore<string, any>('default', {
+  asyncStorageKey: 'locale',
+});
+const keepAwakeStore = new GlobalStore<boolean, any>(true, {
+  asyncStorageKey: 'keepAwake',
+});
+const zoomLevelStore = new GlobalStore<number, any>(1, {
+  asyncStorageKey: 'zoomLevel',
+});
+const useLocaleStore = localeStore.getHook();
+const useKeepAwakeStore = keepAwakeStore.getHook();
+const useZoomLevelStoreStore = zoomLevelStore.getHook();
+
 const DataContextWrapper = (props: any): any => {
   // settings
-  const locale = usePersist<string>('locale', 'string', 'default');
-  const keepAwake = usePersist<boolean>('keepAwake', 'boolean', true);
-  const zoomLevel = usePersist<number>('zoomLevel', 'number', 1);
+  const locale = useLocaleStore();
+  const keepAwake = useKeepAwakeStore();
+  const zoomLevel = useZoomLevelStoreStore();
 
-  const [localeValue, _, localeInitialized] = locale;
+  const [localeValue, _, { isAsyncStorageReady: localeInitialized }] = locale;
 
   const localeReal = useMemo<string | undefined>(() => {
     if (localeInitialized) {

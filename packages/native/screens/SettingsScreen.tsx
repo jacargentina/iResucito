@@ -138,7 +138,7 @@ const SettingsScreen = () => {
         p="3"
         justifyContent="space-between"
         alignItems="center">
-        <VStack space={2}>
+        <VStack w="80%" space={2}>
           <Text>{i18n.t('settings_title.keep awake')}</Text>
           <Text fontSize="sm" color="muted.500">
             {i18n.t('settings_note.keep awake')}
