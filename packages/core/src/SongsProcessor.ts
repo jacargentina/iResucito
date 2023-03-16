@@ -54,7 +54,7 @@ export class SongsProcessor {
     this.basePath = basePath;
     this.songsLister = songsLister;
     this.songReader = songReader;
-    console.log('SongsProcessor basePath ', this.basePath);
+    console.log('SongsProcessor basePath: ', this.basePath);
   }
 
   getBestFileForLocale(
