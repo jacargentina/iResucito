@@ -923,13 +923,14 @@ const DataContextWrapper = (props: any): any => {
   const keepAwake = useKeepAwakeStore();
   const zoomLevel = useZoomLevelStoreStore();
 
-  const [localeValue, _, { isAsyncStorageReady: localeInitialized }] = locale;
+  const [localeValue, _, localeValueMetadata] = locale;
+  const [localeReal, setLocaleReal] = useState<string | undefined>();
 
-  const localeReal = useMemo<string | undefined>(() => {
-    if (localeInitialized) {
-      return localeValue === 'default' ? getDefaultLocale() : localeValue;
+  useEffect(() => {
+    if (localeValueMetadata.isAsyncStorageReady) {
+      setLocaleReal(localeValue === 'default' ? getDefaultLocale() : localeValue);
     }
-  }, [localeValue, localeInitialized]);
+  }, [localeValue, localeValueMetadata]);
 
   const community = useCommunity();
   const songsMeta = useSongsMeta(localeReal);
