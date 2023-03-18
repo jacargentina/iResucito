@@ -157,7 +157,7 @@ const useSongsMeta = (locale: string | undefined): UseSongsMeta => {
           undefined,
           settingsObj
         );
-        console.log(`loading ${metaData.length} songs`);
+        console.log(`loading ${metaData.length} songs for "${i18n.locale}"`);
         return NativeSongs.loadSongs(i18n.locale, metaData).then(() => {
           setSongs(metaData);
           return readAllLocaleSongs(i18n.locale);
@@ -561,6 +561,7 @@ const useSearch = (localeValue: string | undefined): UseSearch => {
     if (localeValue == undefined) {
       return;
     }
+    console.log(`loading menu for "${localeValue}"`);
     // Construir menu de búsqueda
     setInitialized(false);
     var items: Array<SearchItem> = [
@@ -922,15 +923,10 @@ const DataContextWrapper = (props: any): any => {
   const locale = useLocaleStore();
   const keepAwake = useKeepAwakeStore();
   const zoomLevel = useZoomLevelStoreStore();
-
-  const [localeValue, _, localeValueMetadata] = locale;
-  const [localeReal, setLocaleReal] = useState<string | undefined>();
-
-  useEffect(() => {
-    if (localeValueMetadata.isAsyncStorageReady) {
-      setLocaleReal(localeValue === 'default' ? getDefaultLocale() : localeValue);
-    }
-  }, [localeValue, localeValueMetadata]);
+  const [localeValue] = locale;
+  const localeReal = useMemo(() => {
+    return localeValue === 'default' ? getDefaultLocale() : localeValue
+  }, [localeValue]);
 
   const community = useCommunity();
   const songsMeta = useSongsMeta(localeReal);
