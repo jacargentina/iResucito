@@ -556,6 +556,8 @@ const useSearch = (localeValue: string | undefined): UseSearch => {
   const [initialized, setInitialized] = useState(false);
   const [searchItems, setSearchItems] = useState<SearchItem[]>();
 
+  console.log(`useSearch "${localeValue}"`);
+
   useEffect(() => {
     if (localeValue == undefined) {
       return;
@@ -922,10 +924,12 @@ const DataContextWrapper = (props: any): any => {
   const locale = useLocaleStore();
   const keepAwake = useKeepAwakeStore();
   const zoomLevel = useZoomLevelStoreStore();
-  const [localeValue] = locale;
+  const [localeValue, _, { isAsyncStorageReady }] = locale;
   const localeReal = useMemo(() => {
-    return localeValue === 'default' ? getDefaultLocale() : localeValue
-  }, [localeValue]);
+    if (isAsyncStorageReady) {
+      return localeValue === 'default' ? getDefaultLocale() : localeValue
+    }
+  }, [isAsyncStorageReady, localeValue]);
 
   const community = useCommunity();
   const songsMeta = useSongsMeta(localeReal);
