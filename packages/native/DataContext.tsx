@@ -25,7 +25,6 @@ import {
 } from '@iresucito/core';
 import i18n from '@iresucito/translations';
 import badges from './badges';
-// import { clouddata } from './clouddata';
 import { generateListPDF } from './pdf';
 import { GlobalStore } from './GlobalStoreAsync';
 import {
