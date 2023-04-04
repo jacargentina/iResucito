@@ -35,7 +35,7 @@
     "web": "yarn build && cd packages/web && yarn dev"
   },
   "dependencies": {
-    "turbo": "^1.8.3",
+    "turbo": "^1.8.8",
     "react-native-cli": "^2.0.1"
   }
 }
