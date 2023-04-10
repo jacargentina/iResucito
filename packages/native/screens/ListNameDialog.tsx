@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { Input, Box, Button, FormControl } from 'native-base';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { getLocalizedListType } from '@iresucito/core';
-import { useData } from '../DataContext';
+import { useLists } from '../hooks';
 import ModalView from '../components/ModalView';
 import i18n from '@iresucito/translations';
 
@@ -19,10 +19,9 @@ type ListDetailNavivationProp = StackNavigationProp<
 >;
 
 const ListNameDialog = () => {
-  const data = useData();
+  const { lists, addList, renameList } =  useLists();
   const navigation = useNavigation<ListDetailNavivationProp>();
   const route = useRoute<ListNameDialogRouteProp>();
-  const { lists, addList, renameList } = data.lists;
   const [disabledReasonText, setDisabledReasonText] = useState<string | null>(
     null
   );

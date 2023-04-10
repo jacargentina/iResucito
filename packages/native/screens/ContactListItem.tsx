@@ -2,7 +2,7 @@ import * as React from 'react';
 import { VStack, HStack, Icon, Text, Pressable } from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import ContactPhoto from '../components/ContactPhoto';
-import { BrotherContact } from '../DataContext';
+import { BrotherContact } from '../hooks';
 
 const ContactListItem = (props: { item: BrotherContact; [x: string]: any }) => {
   const { item, ...rest } = props;

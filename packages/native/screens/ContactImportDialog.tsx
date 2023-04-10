@@ -6,7 +6,7 @@ import { FlashList } from '@shopify/flash-list';
 import ModalView from '../components/ModalView';
 import SearchBarView from '../components/SearchBarView';
 import ContactPhoto from '../components/ContactPhoto';
-import { BrotherContact, useData } from '../DataContext';
+import { BrotherContact, useCommunity } from '../hooks';
 import i18n from '@iresucito/translations';
 import {
   getContactsForImport,
@@ -75,8 +75,7 @@ const ContactItem = React.memo(
 );
 
 const ContactImportDialog = () => {
-  const data = useData();
-  const { brothers, deviceContacts, addOrRemove } = data.community;
+  const { brothers, deviceContacts, addOrRemove } =  useCommunity();
   const [loading, setLoading] = useState(false);
   const [contacts, setContacts] = useState<ContactForImport[]>([]);
   const [filter, setFilter] = useState('');

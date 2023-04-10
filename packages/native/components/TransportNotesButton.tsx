@@ -10,7 +10,7 @@ import {
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import i18n from '@iresucito/translations';
 import { getChordsScale, Song } from '@iresucito/core';
-import { useData } from '../DataContext';
+import { useSongsMeta } from '../hooks';
 import useStackNavOptions from '../navigation/StackNavOptions';
 import { SongsStackParamList } from '../navigation/SongsNavigator';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -23,12 +23,11 @@ type SongDetailScreenNavigationProp = StackNavigationProp<
 >;
 
 const TransportNotesButton = () => {
-  const data = useData();
+  const { setSongSetting } = useSongsMeta();
   const options = useStackNavOptions();
   const navigation = useNavigation<SongDetailScreenNavigationProp>();
   const { colors } = useTheme();
   const route = useRoute<SongDetailRouteProp>();
-  const { setSongSetting } = data.songsMeta;
   const { song } = route.params;
 
   if (!song) {
@@ -41,15 +40,15 @@ const TransportNotesButton = () => {
     var customStyles =
       song.transportTo === nota
         ? {
-            optionWrapper: {
-              backgroundColor: colors.rose['300'],
-              paddingHorizontal: 10,
-              paddingVertical: 10,
-            },
-            optionText: {
-              color: 'white',
-            },
-          }
+          optionWrapper: {
+            backgroundColor: colors.rose['300'],
+            paddingHorizontal: 10,
+            paddingVertical: 10,
+          },
+          optionText: {
+            color: 'white',
+          },
+        }
         : undefined;
     return (
       <MenuOption
@@ -73,8 +72,8 @@ const TransportNotesButton = () => {
 
   var trigger =
     song.transportTo === null ||
-    song.transportTo === undefined ||
-    song.transportTo === '' ? (
+      song.transportTo === undefined ||
+      song.transportTo === '' ? (
       <Icon
         as={Ionicons}
         name="musical-notes-outline"

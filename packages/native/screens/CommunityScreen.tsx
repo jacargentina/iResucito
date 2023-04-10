@@ -8,7 +8,7 @@ import { useIsFocused, useNavigation } from '@react-navigation/native';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import SwipeableRightAction from '../components/SwipeableRightAction';
 import SearchBarView from '../components/SearchBarView';
-import { useData } from '../DataContext';
+import { useCommunity } from '../hooks';
 import CallToAction from '../components/CallToAction';
 import i18n from '@iresucito/translations';
 import useStackNavOptions from '../navigation/StackNavOptions';
@@ -19,9 +19,8 @@ import { RootStackParamList } from '../navigation/RootNavigator';
 import { Contact } from 'react-native-contacts';
 
 const SwipeableRow = (props: { item: any }) => {
-  const data = useData();
+  const { brothers, update, remove, add } = useCommunity();
   const { colors } = useTheme();
-  const { brothers, update, remove, add } = data.community;
   const { item } = props;
   const swipeRef = useRef<Swipeable | null>(null);
 
@@ -114,11 +113,10 @@ type ContactImportNavigationProp = StackNavigationProp<
 >;
 
 const CommunityScreen = () => {
-  const data = useData();
+  const { brothers, loaded, populateDeviceContacts } = useCommunity();
   const options = useStackNavOptions();
   const isFocused = useIsFocused();
   const navigation = useNavigation<ContactImportNavigationProp>();
-  const { brothers, loaded, populateDeviceContacts } = data.community;
   const listRef = useRef<any>();
   const [filter, setFilter] = useState('');
 

@@ -13,7 +13,7 @@ import SearchBarView from '../components/SearchBarView';
 import ExportToPdfButton from '../components/ExportToPdfButton';
 import ChoosePdfTypeForExport from '../components/ChoosePdfTypeForExport';
 import i18n from '@iresucito/translations';
-import { useData } from '../DataContext';
+import { useSongsMeta } from '../hooks';
 import SongListItem from './SongListItem';
 import { SongsStackParamList } from '../navigation/SongsNavigator';
 import { Song } from '@iresucito/core';
@@ -26,17 +26,18 @@ type SongDetailNavigationProp = StackNavigationProp<
   'SongDetail'
 >;
 
+type IsLoading = { isLoading: boolean; text: string };
+
 const SongList = (props: any) => {
   const listRef = useRef<any>();
-  const data = useData();
+  const { songs } = useSongsMeta();
   const navigation = useNavigation<SongDetailNavigationProp>();
   const route = useRoute<SongListRouteProp>();
   const isFocused = useIsFocused();
   const chooser = useDisclose();
   const { viewButton } = props;
   const [totalText, setTotalText] = useState(i18n.t('ui.loading'));
-  const { songs } = data.songsMeta;
-  const [loading] = data.loading;
+  const [ loading, setLoading ] = useState<IsLoading>({ isLoading: false, text: '' });
   const [showSalmosBadge, setShowSalmosBadge] = useState<boolean>();
   const [textFilter, setTextFilter] = useState('');
   const [search, setSearch] = useState<Song[]>([]);
@@ -119,7 +120,7 @@ const SongList = (props: any) => {
 
   return (
     <SearchBarView value={textFilter} setValue={setTextFilter}>
-      <ChoosePdfTypeForExport chooser={chooser} />
+      <ChoosePdfTypeForExport chooser={chooser} setLoading={setLoading} />
       <Text bold p="2" px="4" bg="gray.100" color="muted.500">
         {totalText}
       </Text>

@@ -18,7 +18,7 @@ import { useNavigation } from '@react-navigation/native';
 import Highlighter from '@javier.alejandro.castro/react-native-highlight-words';
 import Collapsible from 'react-native-collapsible';
 import { Rating } from 'react-native-rating-element';
-import { useData } from '../DataContext';
+import { useSongsMeta } from '../hooks';
 import badges from '../badges';
 import i18n from '@iresucito/translations';
 import { Song } from '@iresucito/core';
@@ -50,7 +50,7 @@ type ViewSongScreenNavigationProp = StackNavigationProp<
 
 const SongListItem = (props: any) => {
   const { colors } = useTheme();
-  const data = useData();
+  const { setSongSetting, songs } = useSongsMeta();
   const navigation = useNavigation<ViewSongScreenNavigationProp>();
   const {
     highlight,
@@ -62,7 +62,6 @@ const SongListItem = (props: any) => {
   } = props;
 
   const [isCollapsed, setIsCollapsed] = useState(true);
-  const { setSongSetting, songs } = data.songsMeta;
 
   const song: Song = useMemo(() => {
     if (songKey) {

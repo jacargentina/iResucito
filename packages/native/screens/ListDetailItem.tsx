@@ -16,7 +16,7 @@ import {
 } from '@react-navigation/native';
 import { getLocalizedListItem } from '@iresucito/core';
 import i18n from '@iresucito/translations';
-import { useData } from '../DataContext';
+import { useLists } from '../hooks';
 import { RootStackParamList } from '../navigation/RootNavigator';
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -33,9 +33,8 @@ const ListDetailItem = (props: {
   listText: any;
   inputProps?: any;
 }) => {
-  const data = useData();
+  const { setList } =  useLists();
   const navigation = useNavigation<ListDetailItemNavigationProp>();
-  const { setList } = data.lists;
   const { listName, listKey, listText, inputProps } = props;
 
   var item: any = null;

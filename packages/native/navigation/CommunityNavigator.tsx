@@ -2,7 +2,7 @@ import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import CommunityScreen from '../screens/CommunityScreen';
 import i18n from '@iresucito/translations';
-import { useData } from '../DataContext';
+import { useLocale } from '../hooks';
 import useStackNavOptions from './StackNavOptions';
 
 export type CommunityStackParamList = {
@@ -12,7 +12,7 @@ export type CommunityStackParamList = {
 const Stack = createStackNavigator<CommunityStackParamList>();
 
 const CommunityNavigator = () => {
-  const data = useData();
+  const locale = useLocale();
   const options = useStackNavOptions();
   return (
     <Stack.Navigator screenOptions={options}>
@@ -22,7 +22,7 @@ const CommunityNavigator = () => {
         options={() => {
           return {
             title: i18n.t('screen_title.community', {
-              locale: data.localeReal,
+              locale,
             }),
           };
         }}

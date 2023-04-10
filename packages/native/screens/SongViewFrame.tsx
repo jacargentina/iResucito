@@ -6,13 +6,12 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import color from 'color';
 import { colors } from '@iresucito/core';
 import i18n from '@iresucito/translations';
-import { useData } from '../DataContext';
+import { useSettingsStore } from '../hooks';
 import { NativeParser, NativeStyles } from '../util';
 import SongViewLines from './SongViewLines';
 
 const SongViewFrame = (props: any) => {
-  const data = useData();
-  const [zoomLevel, setZoomLevel] = data.zoomLevel;
+  const [{ zoomLevel, ...rest }, setSettings] = useSettingsStore();
   const { title, stage, source, text, transportToNote, error, style } = props;
   const backColor = color(colors[stage]);
   const background = backColor.lighten(0.1).string();
@@ -29,14 +28,14 @@ const SongViewFrame = (props: any) => {
   const zoomOut = () => {
     if (zoomLevel > 1) {
       var newzoom = (zoomLevel - 0.1).toFixed(2);
-      setZoomLevel(parseFloat(newzoom));
+      setSettings({ ...rest, zoomLevel: parseFloat(newzoom) });
     }
   };
 
   const zoomIn = () => {
     if (zoomLevel < 2.2) {
       var newzoom = (zoomLevel + 0.1).toFixed(2);
-      setZoomLevel(parseFloat(newzoom));
+      setSettings({ ...rest, zoomLevel: parseFloat(newzoom) });
     }
   };
 
@@ -54,13 +53,11 @@ const SongViewFrame = (props: any) => {
         horizontal
         style={{
           height: ctrlVisible ? '89%' : '100%',
-        }}
-      >
+        }}>
         <ScrollView
           style={{
             minWidth: minWidth,
-          }}
-        >
+          }}>
           <Box px="2">
             <Text onPress={toggleControls} style={titleStyle}>
               {title}
@@ -85,8 +82,7 @@ const SongViewFrame = (props: any) => {
           h="10%"
           alignItems="center"
           justifyContent="space-between"
-          backgroundColor="#efefef"
-        >
+          backgroundColor="#efefef">
           <Button onPress={zoomOut} w="20%">
             <Icon as={Ionicons} name="remove" color="white" />
           </Button>

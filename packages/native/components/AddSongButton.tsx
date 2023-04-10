@@ -3,7 +3,7 @@ import { Icon } from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
-import { useData } from '../DataContext';
+import { useLists } from '../hooks';
 import useStackNavOptions from '../navigation/StackNavOptions';
 
 import type { ListsStackParamList } from '../navigation/ListsNavigator';
@@ -18,8 +18,7 @@ type SongChooserScreenNavigationProp = BottomTabNavigationProp<
 
 const AddSongButton = () => {
   const options = useStackNavOptions();
-  const data = useData();
-  const { getListForUI } = data.lists;
+  const { getListForUI } = useLists();
   const navigation = useNavigation<SongChooserScreenNavigationProp>();
   const route = useRoute<ListDetailRouteProp>();
   const { listName } = route.params;

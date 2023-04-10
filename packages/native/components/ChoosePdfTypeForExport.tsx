@@ -5,7 +5,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { Text, Actionsheet } from 'native-base';
 import i18n from '@iresucito/translations';
 import { defaultExportToPdfOptions, SongToPdf } from '@iresucito/core';
-import { useData } from '../DataContext';
+import { useSongsMeta } from '../hooks';
 import { NativeParser } from '../util';
 import { generateSongPDF } from '../pdf';
 
@@ -16,12 +16,11 @@ type PDFViewerScreenNavigationProp = StackNavigationProp<
   'PDFViewer'
 >;
 
-const ChoosePdfTypeForExport = (props: any) => {
+const ChoosePdfTypeForExport = (props: { chooser: any; setLoading: Function }) => {
   const { isOpen, onClose } = props.chooser;
+  const { setLoading } = props;
   const navigation = useNavigation<PDFViewerScreenNavigationProp>();
-  const data = useData();
-  const { songs } = data.songsMeta;
-  const [, setLoading] = data.loading;
+  const { songs } = useSongsMeta();
 
   return (
     <Actionsheet isOpen={isOpen} onClose={onClose}>

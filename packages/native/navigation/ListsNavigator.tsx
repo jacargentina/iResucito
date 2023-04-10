@@ -8,7 +8,7 @@ import SongDetail from '../screens/SongDetail';
 import PDFViewer from '../screens/PDFViewer';
 import ShareListButton from '../components/ShareListButton';
 import AddSongButton from '../components/AddSongButton';
-import { useData } from '../DataContext';
+import { useLocale } from '../hooks';
 import { getSongDetailOptions, getPdfViewerOptions } from './util';
 import useStackNavOptions from '../navigation/StackNavOptions';
 import { Song } from '@iresucito/core';
@@ -23,7 +23,7 @@ export type ListsStackParamList = {
 const Stack = createStackNavigator<ListsStackParamList>();
 
 const ListsNavigator = () => {
-  const data = useData();
+  const locale = useLocale();
   const options = useStackNavOptions();
   return (
     <Stack.Navigator screenOptions={options}>
@@ -33,7 +33,7 @@ const ListsNavigator = () => {
         options={() => {
           return {
             title: i18n.t('screen_title.lists', {
-              locale: data.localeReal,
+              locale,
             }),
           };
         }}

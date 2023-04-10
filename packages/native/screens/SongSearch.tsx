@@ -11,7 +11,7 @@ import {
   Divider,
 } from 'native-base';
 import { FlashList } from '@shopify/flash-list';
-import { useData } from '../DataContext';
+import { useSearch } from '../hooks';
 import i18n from '@iresucito/translations';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { SongsStackParamList } from '../navigation/SongsNavigator';
@@ -31,9 +31,8 @@ type SongListNavigationProp = StackNavigationProp<
 >;
 
 const SongSearch = () => {
-  const data = useData();
+  const { initialized, searchItems } = useSearch();
   const navigation = useNavigation<SongListNavigationProp>();
-  const { initialized, searchItems } = data.search;
 
   useAndroidBackHandler(() => {
     return true;

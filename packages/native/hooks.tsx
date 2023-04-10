@@ -34,7 +34,6 @@ import {
   NativeExtras,
 } from './util';
 import { ShareListType, SongSetting } from './types';
-import { StateSetter } from 'react-native-global-state-hooks/lib';
 
 type UseSongsMeta = {
   songs: Song[];
@@ -52,7 +51,8 @@ type UseSongsMeta = {
   loadSongs: any;
 };
 
-const useSongsMeta = (locale: string | undefined): UseSongsMeta => {
+export const useSongsMeta = (): UseSongsMeta => {
+  const locale = useLocale();
   const [settingsFileExists, setSettingsFileExists] = useState<boolean>(false);
   const [songs, setSongs] = useState<Song[]>([]);
   const [localeSongs, setLocaleSongs] = useState<SongFile[]>([]);
@@ -216,9 +216,11 @@ const listsStore = new GlobalStore<Lists, any>(
   {},
   { asyncStorageKey: 'lists' }
 );
+
 const useListsStore = listsStore.getHook();
 
-const useLists = (songs: Song[]): UseLists => {
+export const useLists = (): UseLists => {
+  const songsMeta = useSongsMeta();
   const [initialized, setInitialized] = useState(false);
   const [lists, initLists] = useListsStore();
 
@@ -324,10 +326,10 @@ const useLists = (songs: Song[]): UseLists => {
       // Si es de tipo 'libre', los salmos están dentro de 'items'
       if (clave === 'items' && Array.isArray(valor)) {
         valor = valor.map((key) => {
-          return songs.find((s) => s.key === key);
+          return songsMeta.songs.find((s) => s.key === key);
         });
       } else if (getEsSalmo(clave) && valor !== null) {
-        valor = songs.find((s) => s.key === valor);
+        valor = songsMeta.songs.find((s) => s.key === valor);
       }
       uiList[clave] = valor;
     });
@@ -349,14 +351,14 @@ const useLists = (songs: Song[]): UseLists => {
             // Si es de tipo 'libre', los salmos están dentro de 'items'
             if (clave === 'items' && Array.isArray(valor)) {
               valor = valor.map((nombre) => {
-                var theSong = songs.find((s) => s.nombre === nombre);
+                var theSong = songsMeta.songs.find((s) => s.nombre === nombre);
                 if (theSong) {
                   return theSong.key;
                 }
                 return null;
               });
             } else if (getEsSalmo(clave) && valor !== null) {
-              var theSong = songs.find((s) => s.nombre === valor);
+              var theSong = songsMeta.songs.find((s) => s.nombre === valor);
               if (theSong) {
                 valor = theSong.key;
               } else {
@@ -370,7 +372,7 @@ const useLists = (songs: Song[]): UseLists => {
         }
       });
     },
-    [songs]
+    [songsMeta.songs]
   );
 
   const getListsForUI = (localeValue: string): ListForUI[] => {
@@ -495,14 +497,7 @@ const useLists = (songs: Song[]): UseLists => {
         var list = getListForUI(listName);
         list.localeType = getLocalizedListType(list.type, localeValue);
         generateListPDF(list, defaultExportToPdfOptions).then((path) => {
-          Share.open({
-            title: i18n.t('ui.share'),
-            subject: `iResucitó - ${listName}`,
-            url: `file://${path}`,
-            failOnCancel: false,
-          }).catch((err) => {
-            err && console.log(err);
-          });
+          sharePDF(listName, path);
         });
         break;
     }
@@ -518,7 +513,7 @@ const useLists = (songs: Song[]): UseLists => {
     // Solo inicializar cuando
     // esten cargados los cantos
     // La migracion de listas depende de ello
-    if (initialized === false && songs && lists) {
+    if (initialized === false && songsMeta.songs && lists) {
       migrateLists(lists);
       initLists(lists);
       setInitialized(true);
@@ -530,7 +525,7 @@ const useLists = (songs: Song[]): UseLists => {
       //   console.log('loaded from iCloud', res);
       // });
     }
-  }, [initialized, songs, lists, migrateLists, initLists]);
+  }, [initialized, songsMeta.songs, lists, migrateLists, initLists]);
 
   return {
     lists,
@@ -552,17 +547,16 @@ type UseSearch = {
   searchItems: SearchItem[] | undefined;
 };
 
-const useSearch = (localeValue: string | undefined): UseSearch => {
+export const useSearch = (): UseSearch => {
+  const locale = useLocale();
   const [initialized, setInitialized] = useState(false);
   const [searchItems, setSearchItems] = useState<SearchItem[]>();
 
-  console.log(`useSearch "${localeValue}"`);
-
   useEffect(() => {
-    if (localeValue == undefined) {
+    if (locale == undefined) {
       return;
     }
-    console.log(`loading menu for "${localeValue}"`);
+    console.log(`loading menu for "${locale}"`);
     // Construir menu de búsqueda
     setInitialized(false);
     var items: Array<SearchItem> = [
@@ -575,7 +569,7 @@ const useSearch = (localeValue: string | undefined): UseSearch => {
       {
         title_key: 'search_title.alpha',
         note_key: 'search_note.alpha',
-        chooser: i18n.t('search_tabs.all', { locale: localeValue }),
+        chooser: i18n.t('search_tabs.all', { locale }),
         params: { filter: null },
         badge: badges.alpha,
       },
@@ -650,7 +644,7 @@ const useSearch = (localeValue: string | undefined): UseSearch => {
         note_key: 'search_note.entrance',
         params: { filter: { entrance: true } },
         badge: null,
-        chooser: i18n.t('search_tabs.entrance', { locale: localeValue }),
+        chooser: i18n.t('search_tabs.entrance', { locale }),
         chooser_listKey: ['entrada'],
       },
       {
@@ -659,7 +653,7 @@ const useSearch = (localeValue: string | undefined): UseSearch => {
         params: { filter: { 'peace and offerings': true } },
         badge: null,
         chooser: i18n.t('search_tabs.peace and offerings', {
-          locale: localeValue,
+          locale,
         }),
         chooser_listKey: ['paz'],
       },
@@ -669,7 +663,7 @@ const useSearch = (localeValue: string | undefined): UseSearch => {
         params: { filter: { 'fraction of bread': true } },
         badge: null,
         chooser: i18n.t('search_tabs.fraction of bread', {
-          locale: localeValue,
+          locale,
         }),
         chooser_listKey: ['comunion-pan'],
       },
@@ -678,7 +672,7 @@ const useSearch = (localeValue: string | undefined): UseSearch => {
         note_key: 'search_note.communion',
         params: { filter: { communion: true } },
         badge: null,
-        chooser: i18n.t('search_tabs.communion', { locale: localeValue }),
+        chooser: i18n.t('search_tabs.communion', { locale }),
         chooser_listKey: ['comunion-pan', 'comunion-caliz'],
       },
       {
@@ -686,7 +680,7 @@ const useSearch = (localeValue: string | undefined): UseSearch => {
         note_key: 'search_note.exit',
         params: { filter: { exit: true } },
         badge: null,
-        chooser: i18n.t('search_tabs.exit', { locale: localeValue }),
+        chooser: i18n.t('search_tabs.exit', { locale }),
         chooser_listKey: ['salida'],
       },
       {
@@ -695,7 +689,7 @@ const useSearch = (localeValue: string | undefined): UseSearch => {
         params: { filter: { 'signing to the virgin': true } },
         badge: null,
         chooser: i18n.t('search_tabs.signing to the virgin', {
-          locale: localeValue,
+          locale,
         }),
       },
       {
@@ -720,7 +714,7 @@ const useSearch = (localeValue: string | undefined): UseSearch => {
     });
     setSearchItems(items);
     setInitialized(true);
-  }, [localeValue]);
+  }, [locale]);
 
   return { initialized, searchItems };
 };
@@ -740,12 +734,19 @@ type UseCommunity = {
   populateDeviceContacts: () => Promise<void>;
 };
 
+// Parece que GlobalStore no soporta un array com su valor?
+//
+// TypeError: Invalid attempt to spread non-iterable instance.
+// In order to be iterable, non-array objects must have a [Symbol.iterator]() method.
+//
+// Se va cuando se quita el BrotherContact[]
+
 const brothersStore = new GlobalStore<BrotherContact[], any>([], {
   asyncStorageKey: 'contacts',
 });
 const useBrothersStore = brothersStore.getHook();
 
-const useCommunity = (): UseCommunity => {
+export const useCommunity = (): UseCommunity => {
   const [brothers, initBrothers, { isAsyncStorageReady }] = useBrothersStore();
   const [loaded, setLoaded] = useState<boolean>(false);
   const [deviceContacts, initDeviceContacts] = useState<Contacts.Contact[]>([]);
@@ -879,74 +880,29 @@ const useCommunity = (): UseCommunity => {
   };
 };
 
-export type IsLoading = { isLoading: boolean; text: string };
-
-export type DataContextType = {
-  songsMeta: UseSongsMeta;
-  search: UseSearch;
-  lists: UseLists;
-  community: UseCommunity;
-  sharePDF: any;
-  loading: [IsLoading, React.Dispatch<React.SetStateAction<IsLoading>>];
-  localeReal: string | undefined;
-  locale: [string, StateSetter<string>, any];
-  keepAwake: [boolean, StateSetter<boolean>, any];
-  zoomLevel: [number, StateSetter<number>, any];
+export type SettingsType = {
+  locale: string;
+  keepAwake: boolean;
+  zoomLevel: number;
 };
 
-export const DataContext = React.createContext<DataContextType | undefined>(
-  undefined
+const store = new GlobalStore<SettingsType, any>(
+  { locale: 'default', keepAwake: true, zoomLevel: 1 },
+  {
+    asyncStorageKey: 'settings',
+  }
 );
 
-export const useData = () => {
-  const context = useContext(DataContext);
-  if (!context) {
-    throw new Error('useData no encuentra un DataContextProvider contenedor.');
-  }
-  return context;
-};
+export const useSettingsStore = store.getHook();
 
-const localeStore = new GlobalStore<string, any>('default', {
-  asyncStorageKey: 'locale',
-});
-const keepAwakeStore = new GlobalStore<boolean, any>(true, {
-  asyncStorageKey: 'keepAwake',
-});
-const zoomLevelStore = new GlobalStore<number, any>(1, {
-  asyncStorageKey: 'zoomLevel',
-});
-const useLocaleStore = localeStore.getHook();
-const useKeepAwakeStore = keepAwakeStore.getHook();
-const useZoomLevelStoreStore = zoomLevelStore.getHook();
-
-const DataContextWrapper = (props: any): any => {
-  // settings
-  const locale = useLocaleStore();
-  const keepAwake = useKeepAwakeStore();
-  const zoomLevel = useZoomLevelStoreStore();
-  const [localeValue, _, { isAsyncStorageReady }] = locale;
+export const useLocale = () => {
+  const settings = useSettingsStore();
+  const [{ locale }, _, { isAsyncStorageReady }] = settings;
   const localeReal = useMemo(() => {
     if (isAsyncStorageReady) {
-      return localeValue === 'default' ? getDefaultLocale() : localeValue
+      return locale === 'default' ? getDefaultLocale() : locale;
     }
-  }, [isAsyncStorageReady, localeValue]);
-
-  const community = useCommunity();
-  const songsMeta = useSongsMeta(localeReal);
-  const search = useSearch(localeReal);
-  const lists = useLists(songsMeta.songs);
-  const loading = useState<IsLoading>({ isLoading: false, text: '' });
-
-  const sharePDF = (shareTitleSuffix: string, pdfPath: string) => {
-    Share.open({
-      title: i18n.t('ui.share'),
-      subject: `iResucitó - ${shareTitleSuffix}`,
-      url: `file://${pdfPath}`,
-      failOnCancel: false,
-    }).catch((err) => {
-      err && console.log(err);
-    });
-  };
+  }, [isAsyncStorageReady, locale]);
 
   useEffect(() => {
     if (localeReal) {
@@ -954,23 +910,16 @@ const DataContextWrapper = (props: any): any => {
     }
   }, [localeReal]);
 
-  return (
-    <DataContext.Provider
-      value={{
-        songsMeta,
-        search,
-        lists,
-        community,
-        sharePDF,
-        loading,
-        locale,
-        localeReal,
-        keepAwake,
-        zoomLevel,
-      }}>
-      {props.children}
-    </DataContext.Provider>
-  );
+  return localeReal;
 };
 
-export default DataContextWrapper;
+export const sharePDF = (shareTitleSuffix: string, pdfPath: string) => {
+  Share.open({
+    title: i18n.t('ui.share'),
+    subject: `iResucitó - ${shareTitleSuffix}`,
+    url: `file://${pdfPath}`,
+    failOnCancel: false,
+  }).catch((err) => {
+    err && console.log(err);
+  });
+};

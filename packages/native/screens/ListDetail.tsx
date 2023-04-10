@@ -6,7 +6,7 @@ import { RouteProp, useRoute } from '@react-navigation/native';
 import { KeyboardAwareScrollView } from '@codler/react-native-keyboard-aware-scroll-view';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import SwipeableRightAction from '../components/SwipeableRightAction';
-import { useData } from '../DataContext';
+import { useLists } from '../hooks';
 import i18n from '@iresucito/translations';
 import ListDetailItem from './ListDetailItem';
 
@@ -17,9 +17,8 @@ const SwipeableRow = (props: {
 }) => {
   const { listName, listKey, song } = props;
   const swipeRef = useRef<Swipeable>(null);
-  const data = useData();
   const { colors } = useTheme();
-  const { setList } = data.lists;
+  const { setList } = useLists();
 
   const confirmListDeleteSong = useCallback(
     (songTitle, list, key) => {
@@ -75,11 +74,10 @@ import type { ListsStackParamList } from '../navigation/ListsNavigator';
 type ListDetailRouteProp = RouteProp<ListsStackParamList, 'ListDetail'>;
 
 const ListDetail = () => {
-  const data = useData();
+  const { getListForUI } = useLists();
   const [scroll, setScroll] = useState<ScrollView>();
   const [noteFocused, setNoteFocused] = useState(false);
   const route = useRoute<ListDetailRouteProp>();
-  const { getListForUI } = data.lists;
   const { listName } = route.params;
 
   const uiList = getListForUI(listName);

@@ -21,7 +21,9 @@
       "**/@remix-run",
       "**/@remix-run/**",
       "**/@vercel/remix",
-      "**/@vercel/remix/**"
+      "**/@vercel/remix/**",
+      "**/typescript",
+      "**/typescript/*"
     ]
   },
   "scripts": {

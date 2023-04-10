@@ -8,7 +8,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { View } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import ModalView from '../components/ModalView';
-import { useData } from '../DataContext';
+import { useLists, useCommunity } from '../hooks';
 import i18n from '@iresucito/translations';
 import { contactFilterByText, ordenAlfabetico } from '../util';
 import SearchBarView from '../components/SearchBarView';
@@ -19,11 +19,10 @@ import type { RootStackParamList } from '../navigation/RootNavigator';
 type ContactChooserRouteProp = RouteProp<RootStackParamList, 'ContactChooser'>;
 
 const ContactChooserDialog = () => {
-  const data = useData();
   const navigation = useNavigation();
   const route = useRoute<ContactChooserRouteProp>();
-  const { setList } = data.lists;
-  const { brothers } = data.community;
+  const { setList } = useLists();
+  const { brothers } = useCommunity();
   const [filter, setFilter] = useState('');
   const { target } = route.params;
 

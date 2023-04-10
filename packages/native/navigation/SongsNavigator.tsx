@@ -5,7 +5,7 @@ import SongList from '../screens/SongList';
 import SongDetail from '../screens/SongDetail';
 import PDFViewer from '../screens/PDFViewer';
 import i18n from '@iresucito/translations';
-import { useData } from '../DataContext';
+import { useLocale } from '../hooks';
 import { getSongDetailOptions, getPdfViewerOptions } from './util';
 import useStackNavOptions from './StackNavOptions';
 import { Song } from '@iresucito/core';
@@ -20,7 +20,7 @@ export type SongsStackParamList = {
 const Stack = createStackNavigator<SongsStackParamList>();
 
 const SongsNavigator = () => {
-  const data = useData();
+  const locale = useLocale();
   const options = useStackNavOptions();
   return (
     <Stack.Navigator screenOptions={options}>
@@ -28,7 +28,7 @@ const SongsNavigator = () => {
         name="SongSearch"
         component={SongSearch}
         options={{
-          title: i18n.t('screen_title.search', { locale: data.localeReal }),
+          title: i18n.t('screen_title.search', { locale }),
         }}
       />
       <Stack.Screen
@@ -36,7 +36,7 @@ const SongsNavigator = () => {
         component={SongList}
         options={({ route }) => {
           return {
-            title: i18n.t(route.params.title_key, { locale: data.localeReal }),
+            title: i18n.t(route.params.title_key, { locale }),
           };
         }}
       />

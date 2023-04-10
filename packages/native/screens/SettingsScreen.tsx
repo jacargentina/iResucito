@@ -19,7 +19,7 @@ import { useNavigation } from '@react-navigation/native';
 import DeviceInfo from 'react-native-device-info';
 import i18n from '@iresucito/translations';
 import { getLocalesForPicker, CollaboratorsIndex } from '@iresucito/core';
-import { useData } from '../DataContext';
+import { useSettingsStore, useSongsMeta } from '../hooks';
 import { getDefaultLocale } from '../util';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { SettingsStackParamList } from '../navigation/SettingsNavigator';
@@ -34,13 +34,12 @@ type SettingsNavigationProp = StackNavigationProp<
 >;
 
 const SettingsScreen = () => {
-  const data = useData();
+  const settings = useSettingsStore();
   const navigation = useNavigation<SettingsNavigationProp>();
-  const [locale, setLocale] = data.locale;
-  const [keepAwake, setKeepAwake] = data.keepAwake;
+  const [{ locale, zoomLevel, keepAwake }, setSettings] = settings;
   const [version, setVersion] = useState('');
   const [songsResume, setSongsResume] = useState('-');
-  const { songs, settingsFileExists, clearSongSettings } = data.songsMeta;
+  const { songs, settingsFileExists, clearSongSettings } = useSongsMeta();
 
   useAndroidBackHandler(() => {
     return true;
@@ -119,7 +118,7 @@ const SettingsScreen = () => {
             // Workaround de problema en Android
             // https://github.com/facebook/react-native/issues/15556
             setTimeout(() => {
-              setLocale(val);
+              setSettings({ keepAwake, zoomLevel, locale: val });
               // Para forzar refresco del titulo segun idioma nuevo
               navigation.setParams({ title: '' });
             }, 10);
@@ -144,7 +143,12 @@ const SettingsScreen = () => {
             {i18n.t('settings_note.keep awake')}
           </Text>
         </VStack>
-        <Switch value={keepAwake} onValueChange={setKeepAwake} />
+        <Switch
+          value={keepAwake}
+          onValueChange={(val: boolean) =>
+            setSettings({ keepAwake: val, zoomLevel, locale })
+          }
+        />
       </HStack>
       <Box
         flex={1}

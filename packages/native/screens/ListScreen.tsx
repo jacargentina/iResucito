@@ -19,7 +19,7 @@ import {
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import SwipeableRightAction from '../components/SwipeableRightAction';
 import SearchBarView from '../components/SearchBarView';
-import { ListForUI, useData } from '../DataContext';
+import { ListForUI, useLists } from '../hooks';
 import CallToAction from '../components/CallToAction';
 import AddListButton from '../components/AddListButton';
 import ChooseListTypeForAdd from '../components/ChooseListTypeForAdd';
@@ -35,10 +35,9 @@ type ListScreenNavigationProp = CompositeNavigationProp<
 >;
 
 const SwipeableRow = (props: { item: any }) => {
-  const data = useData();
+  const { removeList }  = useLists();
   const navigation = useNavigation<ListScreenNavigationProp>();
   const { colors } = useTheme();
-  const { removeList } = data.lists;
   const { item } = props;
   const swipeRef = useRef<Swipeable>(null);
 
@@ -137,9 +136,8 @@ const SwipeableRow = (props: { item: any }) => {
 };
 
 const ListScreen = () => {
-  const data = useData();
+  const { getListsForUI } =  useLists();
   const navigation = useNavigation();
-  const { getListsForUI } = data.lists;
   const [filtered, setFiltered] = useState<ListForUI[]>([]);
   const [filter, setFilter] = useState('');
   const chooser = useDisclose();

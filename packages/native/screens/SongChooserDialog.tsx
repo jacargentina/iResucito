@@ -5,7 +5,7 @@ import { useWindowDimensions } from 'react-native';
 import { Text, Center, Spinner, useTheme } from 'native-base';
 import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
 import ModalView from '../components/ModalView';
-import { useData } from '../DataContext';
+import { useSearch, useLists } from '../hooks';
 import i18n from '@iresucito/translations';
 import SongList from './SongList';
 import { Song } from '@iresucito/core';
@@ -16,10 +16,9 @@ type Props = StackScreenProps<ChooserParamList, 'Dialog'>;
 const SongChooserDialog = (props: Props) => {
   const layout = useWindowDimensions();
   const { colors } = useTheme();
-  const data = useData();
   const { navigation, route } = props;
-  const { searchItems } = data.search;
-  const { setList } = data.lists;
+  const { searchItems } = useSearch();
+  const { setList } = useLists();
   const { target } = route.params;
   const { listName, listKey } = target;
 

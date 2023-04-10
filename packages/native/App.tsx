@@ -8,7 +8,6 @@ import {
 } from 'native-base';
 import * as Sentry from '@sentry/react-native';
 import { MenuProvider } from 'react-native-popup-menu';
-import DataContextWrapper from './DataContext';
 import RootNavigator from './navigation/RootNavigator';
 
 Sentry.init({
@@ -23,25 +22,24 @@ const theme = extendTheme({ colors: appTheme });
 
 const App = () => {
   return (
-    <DataContextWrapper>
-      <NativeBaseProvider
-        theme={theme}
-        config={{ suppressColorAccessibilityWarning: true }}>
-        <MenuProvider backHandler={true}>
-          <NavigationContainer
-            onReady={() => {
-              /* Para evitar efecto de 'salto' en layout de android
-               * y efecto 'aplicar idioma' en ambas plataformas
-               * esperar un segundo y medio antes de ocultar */
-              setTimeout(() => {
-                RNBootSplash.hide({ fade: true });
-              }, 1500);
-            }}>
-            <RootNavigator />
-          </NavigationContainer>
-        </MenuProvider>
-      </NativeBaseProvider>
-    </DataContextWrapper>
+    <NativeBaseProvider
+      theme={theme}
+      config={{ suppressColorAccessibilityWarning: true }}>
+      <MenuProvider backHandler={true}>
+        <NavigationContainer
+          onReady={() => {
+            /* Para evitar efecto de 'salto' en layout de android
+             * y efecto 'aplicar idioma' en ambas plataformas
+             * esperar un segundo y medio antes de ocultar */
+            setTimeout(() => {
+              RNBootSplash.hide({ fade: true });
+            }, 1500);
+          }}>
+          <RootNavigator />
+        </NavigationContainer>
+      </MenuProvider>
+    </NativeBaseProvider>
+
   );
 };
 

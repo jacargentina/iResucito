@@ -3,7 +3,7 @@ import { Keyboard } from 'react-native';
 import { Icon, Actionsheet, useDisclose } from 'native-base';
 import { RouteProp, useRoute } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { useData } from '../DataContext';
+import { useLists } from '../hooks';
 import useStackNavOptions from '../navigation/StackNavOptions';
 import i18n from '@iresucito/translations';
 import { ListsStackParamList } from '../navigation/ListsNavigator';
@@ -15,8 +15,7 @@ const ShareListButton = () => {
   const { isOpen, onClose, onOpen } = useDisclose();
   const route = useRoute<ListDetailRouteProp>();
   const { listName } = route.params;
-  const data = useData();
-  const { shareList } = data.lists;
+  const { shareList } = useLists();
 
   return (
     <>

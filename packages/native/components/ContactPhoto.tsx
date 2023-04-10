@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Avatar } from 'native-base';
-import { BrotherContact } from '../DataContext';
+import { BrotherContact } from '../hooks';
 import { ContactForImport } from '../util';
 
 const ContactPhoto = (props: { item: BrotherContact | ContactForImport }) => {

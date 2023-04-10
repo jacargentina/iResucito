@@ -12,7 +12,7 @@ import {
   Song,
   SongIndexPatch,
 } from '@iresucito/core';
-import { BrotherContact } from './DataContext';
+import { BrotherContact } from './hooks';
 
 export function ordenAlfabetico(a: any, b: any): number {
   if (a.givenName < b.givenName) {
