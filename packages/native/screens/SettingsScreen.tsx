@@ -20,7 +20,7 @@ import DeviceInfo from 'react-native-device-info';
 import i18n from '@iresucito/translations';
 import { getLocalesForPicker, CollaboratorsIndex } from '@iresucito/core';
 import { useSettingsStore, useSongsMeta } from '../hooks';
-import { getDefaultLocale } from '../util';
+import { NativeExtras, getDefaultLocale } from '../util';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { SettingsStackParamList } from '../navigation/SettingsNavigator';
 
@@ -39,14 +39,19 @@ const SettingsScreen = () => {
   const [{ locale, zoomLevel, keepAwake }, setSettings] = settings;
   const [version, setVersion] = useState('');
   const [songsResume, setSongsResume] = useState('-');
-  const { songs, settingsFileExists, clearSongSettings } = useSongsMeta();
+  const { songs } = useSongsMeta();
+  const [settingsExists, setSettingsExists] = useState(false);
 
   useAndroidBackHandler(() => {
     return true;
   });
 
   useEffect(() => {
-    setVersion(DeviceInfo.getReadableVersion());
+    const load = async () => {
+      setVersion(DeviceInfo.getReadableVersion());
+      setSettingsExists(await NativeExtras.settingsExists());
+    };
+    load();
   }, []);
 
   useEffect(() => {
@@ -88,7 +93,7 @@ const SettingsScreen = () => {
         {
           text: i18n.t('ui.delete'),
           onPress: () => {
-            clearSongSettings();
+            NativeExtras.deleteSettings();
           },
           style: 'destructive',
         },
@@ -203,7 +208,7 @@ const SettingsScreen = () => {
           onPress={goEditor}>
           {i18n.t('ui.contribute button')}
         </Button>
-        {settingsFileExists && (
+        {settingsExists && (
           <Button
             my="8"
             colorScheme="rose"

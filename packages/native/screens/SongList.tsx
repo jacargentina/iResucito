@@ -28,16 +28,16 @@ type SongDetailNavigationProp = StackNavigationProp<
 
 type IsLoading = { isLoading: boolean; text: string };
 
-const SongList = (props: any) => {
+const SongList = (props: { viewButton?: boolean; filter?: any; sort?: any; onPress?: any }) => {
   const listRef = useRef<any>();
-  const { songs } = useSongsMeta();
+  const { songs, setSongSetting } = useSongsMeta();
   const navigation = useNavigation<SongDetailNavigationProp>();
   const route = useRoute<SongListRouteProp>();
   const isFocused = useIsFocused();
   const chooser = useDisclose();
   const { viewButton } = props;
   const [totalText, setTotalText] = useState(i18n.t('ui.loading'));
-  const [ loading, setLoading ] = useState<IsLoading>({ isLoading: false, text: '' });
+  const [loading, setLoading] = useState<IsLoading>({ isLoading: false, text: '' });
   const [showSalmosBadge, setShowSalmosBadge] = useState<boolean>();
   const [textFilter, setTextFilter] = useState('');
   const [search, setSearch] = useState<Song[]>([]);
@@ -133,11 +133,12 @@ const SongList = (props: any) => {
         renderItem={({ item }) => {
           return (
             <SongListItem
+              song={item}
               showBadge={showSalmosBadge}
-              songKey={item.key}
               onPress={onPress}
-              viewButton={viewButton}
+              viewButton={viewButton || false}
               highlight={textFilter}
+              setSongSetting={setSongSetting}
             />
           );
         }}

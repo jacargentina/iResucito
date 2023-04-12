@@ -3,8 +3,6 @@ import React, {
   useEffect,
   useCallback,
   useMemo,
-  useContext,
-  SetStateAction,
 } from 'react';
 //import { useWhatChanged } from '@simbathesailor/use-what-changed';
 import { Alert, Platform, PermissionsAndroid } from 'react-native';
@@ -19,7 +17,6 @@ import {
   defaultExportToPdfOptions,
   SongSettingsFile,
   Song,
-  SongFile,
   SearchItem,
   ListType,
 } from '@iresucito/core';
@@ -36,156 +33,107 @@ import {
 import { ShareListType, SongSetting } from './types';
 
 type UseSongsMeta = {
-  songs: Song[];
-  setSongs: React.Dispatch<SetStateAction<Song[]>>;
-  localeSongs: SongFile[];
-  setLocaleSongs: React.Dispatch<SetStateAction<SongFile[]>>;
-  settingsFileExists: any;
-  clearSongSettings: any;
+  songs: Song[] | undefined;
   setSongSetting: (
     key: string,
     loc: string,
     setting: SongSetting,
     value: any
   ) => Promise<Song>;
-  loadSongs: any;
 };
+
+export const createCache = <I, O>(processor: (arg: I) => Promise<O>) => {
+  var cache: Map<I, O> = new Map<I, O>();
+
+  const useCache = (i: I) => {
+    const [data, setData] = useState<O | undefined>(cache.get(i));
+
+    const load = useCallback(async () => {
+      let o = await processor(i);
+      cache.set(i, o);
+      setData(o);
+      return o;
+    }, []);
+
+    useEffect(() => {
+      if (cache.has(i)) {
+        setData(cache.get(i));
+      } else {
+        load();
+      }
+    }, [i]);
+
+    const reset = useCallback(async () => {
+      cache.delete(i);
+      return await load();
+    }, []);
+
+    return { data, reset };
+  }
+
+  return useCache;
+};
+
+const readSongSettingsFile = async (): Promise<
+  SongSettingsFile | undefined
+> => {
+  if (await NativeExtras.settingsExists() === false) {
+    return Promise.resolve(undefined);
+  }
+  const json = await NativeExtras.readSettings();
+  try {
+    return JSON.parse(json);
+  } catch {
+    // si el archivo está corrupto, eliminarlo
+    await NativeExtras.deleteSettings();
+  }
+};
+
+const useCachedSongs = createCache(async (loc: string | undefined) => {
+  if (loc) {
+    var settingsObj = await readSongSettingsFile();
+    // Construir metadatos de cantos
+    var metaData = NativeSongs.getSongsMeta(
+      loc,
+      undefined,
+      settingsObj
+    );
+    console.log(`loading ${metaData.length} songs for "${i18n.locale}"`);
+    await NativeSongs.loadSongs(i18n.locale, metaData);
+    return metaData;
+  }
+  return [];
+});
 
 export const useSongsMeta = (): UseSongsMeta => {
   const locale = useLocale();
-  const [settingsFileExists, setSettingsFileExists] = useState<boolean>(false);
-  const [songs, setSongs] = useState<Song[]>([]);
-  const [localeSongs, setLocaleSongs] = useState<SongFile[]>([]);
+  const { data: songs, reset: songsReset } = useCachedSongs(locale);
 
-  const initializeSingleSong = (song: Song) => {
-    if (!songs) {
-      return;
-    }
-    var idx = songs.findIndex((i) => i.key === song.key);
-    var prev = songs.slice(0, idx);
-    var next = songs.slice(idx + 1);
-    setSongs([...prev, song, ...next]);
-  };
-
-  const readAllLocaleSongs = (loc: string) => {
-    return NativeSongs.readLocaleSongs(loc)
-      .then((items) => {
-        var locNoCountry = loc.split('-')[0];
-        if (locNoCountry === loc) {
-          return items;
-        }
-        // If locale contains country
-        // try with country code removed
-        return NativeSongs.readLocaleSongs(locNoCountry).then((result) => {
-          return items.concat(result);
-        });
-      })
-      .then((allItems) => {
-        setLocaleSongs(allItems);
-      });
-  };
-
-  const clearSongSettings = useCallback(() => {
-    if (settingsFileExists === true) {
-      return NativeExtras.deleteSettings().then(() => {
-        setSettingsFileExists(false);
-      });
-    }
-  }, [settingsFileExists]);
-
-  const readSongSettingsFile = useCallback(async (): Promise<
-    SongSettingsFile | undefined
-  > => {
-    if (settingsFileExists === false) {
-      return Promise.resolve(undefined);
-    }
-    const settingsJSON = await NativeExtras.readSettings();
-    try {
-      return JSON.parse(settingsJSON);
-    } catch {
-      // si el archivo está corrupto, eliminarlo
-      clearSongSettings();
-    }
-  }, [settingsFileExists, clearSongSettings]);
-
-  const saveSongSettingsFile = (settingsObj: SongSettingsFile) => {
-    var json = JSON.stringify(settingsObj, null, ' ');
-    return NativeExtras.saveSettings(json).then(() => {
-      setSettingsFileExists(true);
-    });
-  };
-
-  const setSongSetting = (
+  const setSongSetting = async (
     key: string,
     loc: string,
     setting: string,
     value: any
   ): Promise<Song> => {
-    return readSongSettingsFile().then((settingsObj) => {
-      if (!settingsObj) {
-        settingsObj = {};
-      }
-      if (!settingsObj[key]) {
-        settingsObj[key] = {};
-      }
-      settingsObj[key] = Object.assign({}, settingsObj[key], {
-        [loc]: { [setting]: value },
-      });
-      return saveSongSettingsFile(settingsObj).then(() => {
-        var updatedSong = NativeSongs.getSingleSongMeta(
-          key,
-          loc,
-          undefined,
-          settingsObj
-        );
-        return NativeSongs.loadSingleSong(loc, updatedSong).then(() => {
-          initializeSingleSong(updatedSong);
-          return updatedSong;
-        });
-      });
-    });
-  };
-
-  const loadSongs = useCallback(() => {
-    if (i18n.locale && settingsFileExists !== undefined) {
-      // Cargar parche del indice si existe
-      readSongSettingsFile().then((settingsObj) => {
-        // Construir metadatos de cantos
-        var metaData = NativeSongs.getSongsMeta(
-          i18n.locale,
-          undefined,
-          settingsObj
-        );
-        console.log(`loading ${metaData.length} songs for "${i18n.locale}"`);
-        return NativeSongs.loadSongs(i18n.locale, metaData).then(() => {
-          setSongs(metaData);
-          return readAllLocaleSongs(i18n.locale);
-        });
-      });
+    var settingsObj = await readSongSettingsFile();
+    if (!settingsObj) {
+      settingsObj = {};
     }
-  }, [settingsFileExists, readSongSettingsFile]);
-
-  useEffect(() => {
-    if (locale !== undefined) {
-      loadSongs();
+    if (!settingsObj[key]) {
+      settingsObj[key] = {};
     }
-  }, [locale, loadSongs, settingsFileExists]);
-
-  useEffect(() => {
-    NativeExtras.settingsExists().then((exists) => {
-      setSettingsFileExists(exists);
+    settingsObj[key] = Object.assign({}, settingsObj[key], {
+      [loc]: { [setting]: value },
     });
-  }, []);
+    var json = JSON.stringify(settingsObj, null, ' ');
+    await NativeExtras.saveSettings(json);
+    var updated = await songsReset();
+    return updated.find(song => song.key == key) as Song;
+  }
 
   return {
     songs,
-    setSongs,
-    localeSongs,
-    setLocaleSongs,
-    settingsFileExists,
-    clearSongSettings,
     setSongSetting,
-    loadSongs,
   };
 };
 
@@ -326,10 +274,10 @@ export const useLists = (): UseLists => {
       // Si es de tipo 'libre', los salmos están dentro de 'items'
       if (clave === 'items' && Array.isArray(valor)) {
         valor = valor.map((key) => {
-          return songsMeta.songs.find((s) => s.key === key);
+          return songsMeta.songs?.find((s) => s.key === key);
         });
       } else if (getEsSalmo(clave) && valor !== null) {
-        valor = songsMeta.songs.find((s) => s.key === valor);
+        valor = songsMeta.songs?.find((s) => s.key === valor);
       }
       uiList[clave] = valor;
     });
@@ -351,14 +299,14 @@ export const useLists = (): UseLists => {
             // Si es de tipo 'libre', los salmos están dentro de 'items'
             if (clave === 'items' && Array.isArray(valor)) {
               valor = valor.map((nombre) => {
-                var theSong = songsMeta.songs.find((s) => s.nombre === nombre);
+                var theSong = songsMeta.songs?.find((s) => s.nombre === nombre);
                 if (theSong) {
                   return theSong.key;
                 }
                 return null;
               });
             } else if (getEsSalmo(clave) && valor !== null) {
-              var theSong = songsMeta.songs.find((s) => s.nombre === valor);
+              var theSong = songsMeta.songs?.find((s) => s.nombre === valor);
               if (theSong) {
                 valor = theSong.key;
               } else {

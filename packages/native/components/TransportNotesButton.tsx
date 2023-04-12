@@ -60,14 +60,11 @@ const TransportNotesButton = () => {
     );
   });
 
-  const changeTransport = (newTransport: any) => {
-    setSongSetting(song.key, i18n.locale, 'transportTo', newTransport).then(
-      (updatedSong: Song) => {
-        navigation.replace('SongDetail', {
-          song: updatedSong,
-        });
-      }
-    );
+  const changeTransport = async (newTransport: any) => {
+    var updatedSong = await setSongSetting(song.key, i18n.locale, 'transportTo', newTransport);
+    navigation.replace('SongDetail', {
+      song: updatedSong
+    });
   };
 
   var trigger =

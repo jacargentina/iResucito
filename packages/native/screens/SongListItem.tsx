@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Alert } from 'react-native';
 import {
   Box,
-  Center,
   HStack,
   VStack,
   Text,
@@ -18,7 +17,6 @@ import { useNavigation } from '@react-navigation/native';
 import Highlighter from '@javier.alejandro.castro/react-native-highlight-words';
 import Collapsible from 'react-native-collapsible';
 import { Rating } from 'react-native-rating-element';
-import { useSongsMeta } from '../hooks';
 import badges from '../badges';
 import i18n from '@iresucito/translations';
 import { Song } from '@iresucito/core';
@@ -48,28 +46,18 @@ type ViewSongScreenNavigationProp = StackNavigationProp<
   'ViewSong'
 >;
 
-const SongListItem = (props: any) => {
+const SongListItem = (props: { song: Song; showBadge?: boolean; highlight: string; viewButton: boolean; onPress: any; setSongSetting: any }) => {
   const { colors } = useTheme();
-  const { setSongSetting, songs } = useSongsMeta();
   const navigation = useNavigation<ViewSongScreenNavigationProp>();
   const {
+    song,
     highlight,
-    songKey,
-    songMeta,
     showBadge,
-    ratingDisabled,
     viewButton,
+    setSongSetting
   } = props;
 
   const [isCollapsed, setIsCollapsed] = useState(true);
-
-  const song: Song = useMemo(() => {
-    if (songKey) {
-      return songs.find((i) => i.key === songKey);
-    }
-    return songMeta;
-  }, [songs, songKey, songMeta]);
-
   const [firstHighlighted, setFirstHighlighted] =
     useState<JSX.Element | void>();
   const [highlightedRest, setHighlightedRest] = useState<JSX.Element | void>();
@@ -131,15 +119,7 @@ const SongListItem = (props: any) => {
       setHighlightedRest();
       setOpenHighlightedRest();
     }
-  }, [highlight, isCollapsed, song.error, song.fullText]);
-
-  if (!song) {
-    return (
-      <Center p="5">
-        <Text>songKey/songMeta not provided</Text>
-      </Center>
-    );
-  }
+  }, [highlight, isCollapsed, song]);
 
   var calcWidth = 100;
   if (showBadge) {
@@ -193,7 +173,6 @@ const SongListItem = (props: any) => {
         </Pressable>
         {song.notTranslated && <NoLocaleWarning />}
         <Rating
-          readonly={ratingDisabled}
           totalCount={5}
           marginBetweenRatingIcon={3}
           size={20}

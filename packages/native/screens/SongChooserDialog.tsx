@@ -66,7 +66,6 @@ const SongChooserDialog = (props: Props) => {
     choosers.forEach((c) => {
       config[c.chooser as string] = () => (
         <SongList
-          style={{ flexGrow: 1 }}
           filter={c.params?.filter}
           viewButton={true}
           onPress={(song: Song) => songAssign(song)}
