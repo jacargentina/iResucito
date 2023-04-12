@@ -682,16 +682,10 @@ type UseCommunity = {
   populateDeviceContacts: () => Promise<void>;
 };
 
-// Parece que GlobalStore no soporta un array com su valor?
-//
-// TypeError: Invalid attempt to spread non-iterable instance.
-// In order to be iterable, non-array objects must have a [Symbol.iterator]() method.
-//
-// Se va cuando se quita el BrotherContact[]
-
 const brothersStore = new GlobalStore<BrotherContact[], any>([], {
   asyncStorageKey: 'contacts',
 });
+
 const useBrothersStore = brothersStore.getHook();
 
 export const useCommunity = (): UseCommunity => {
