@@ -160,9 +160,9 @@ type StorageConfig<
   TState,
   TMetadata extends { readonly isAsyncStorageReady?: never },
   TStateSetter extends
-    | ActionCollectionConfig<TState, StorageMetadata<TMetadata>>
-    | StateSetter<TState>
-    | null = StateSetter<TState>
+  | ActionCollectionConfig<TState, StorageMetadata<TMetadata>>
+  | StateSetter<TState>
+  | null = StateSetter<TState>
 > = {
   asyncStorageKey?: string;
 

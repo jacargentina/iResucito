@@ -24,7 +24,7 @@ import i18n from '@iresucito/translations';
 import badges from './badges';
 import { generateListPDF } from './pdf';
 import { GlobalStoreAsyncStorage } from './GlobalStoreAsyncStorage';
-import { GlobalStore, StoreTools } from 'react-native-global-state-hooks';
+import { GlobalStore } from 'react-native-global-state-hooks';
 import {
   getDefaultLocale,
   ordenClasificacion,
@@ -137,7 +137,6 @@ type UseLists = {
   addList: (listName: string, type: ListType) => void;
   removeList: (listName: string) => void;
   renameList: (listName: string, newName: string) => void;
-  getList: (listName: string, listKey: string) => any;
   setList: (listName: string, listKey: string, listValue: any) => void;
   getListForUI: (listName: any) => any;
   getListsForUI: (locale: string) => ListForUI[];
@@ -157,7 +156,7 @@ export const useLists = (): UseLists => {
   const [initialized, setInitialized] = useState(false);
   const [lists, initLists] = useListsStore();
 
-  const addList = (listName: string, type: ListType) => {
+  const addList = useCallback((listName: string, type: ListType) => {
     let schema = { type: type, version: 1 };
     switch (type) {
       case 'libre':
@@ -205,27 +204,22 @@ export const useLists = (): UseLists => {
     }
     const changedLists = Object.assign({}, lists, { [listName]: schema });
     initLists(changedLists);
-  };
+  }, []);
 
-  const removeList = (listName: string) => {
+  const removeList = useCallback((listName: string) => {
     const changedLists = Object.assign({}, lists);
     delete changedLists[listName];
     initLists(changedLists);
-  };
+  }, []);
 
-  const renameList = (listName: string, newName: string) => {
+  const renameList = useCallback((listName: string, newName: string) => {
     const list = lists[listName];
     delete lists[listName];
     const changedLists = Object.assign({}, lists, { [newName]: list });
     initLists(changedLists);
-  };
+  }, []);
 
-  const getList = (listName: string, listKey: string) => {
-    const targetList = lists[listName];
-    return targetList[listKey];
-  };
-
-  const setList = (listName: string, listKey: string, listValue: any) => {
+  const setList = useCallback((listName: string, listKey: string, listValue: any) => {
     const targetList = lists[listName];
     var schema;
     if (listValue !== undefined) {
@@ -251,9 +245,9 @@ export const useLists = (): UseLists => {
     }
     const changedLists = Object.assign({}, lists, { [listName]: schema });
     initLists(changedLists);
-  };
+  }, []);
 
-  const getListForUI = (listName: any) => {
+  const getListForUI = useCallback((listName: any) => {
     var uiList = Object.assign({}, lists[listName]);
     Object.entries(uiList).forEach(([clave, valor]) => {
       // Si es de tipo 'libre', los salmos están dentro de 'items'
@@ -268,7 +262,7 @@ export const useLists = (): UseLists => {
     });
     uiList.name = listName;
     return uiList;
-  };
+  }, [lists]);
 
   const migrateLists = useCallback(
     (items: any) => {
@@ -466,7 +460,6 @@ export const useLists = (): UseLists => {
     addList,
     removeList,
     renameList,
-    getList,
     setList,
     getListForUI,
     getListsForUI,

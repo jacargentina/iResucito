@@ -80,6 +80,11 @@ const SongChooserDialog = (props: Props) => {
      el teclado se abre, y luego de unos pocos ms.
      el teclado se cierra automaticamente
   */
+
+  if (routes.length == 0) {
+    return null;
+  }
+
   return (
     <ModalView
       keyboardAvoidingView={false}
@@ -98,6 +103,7 @@ const SongChooserDialog = (props: Props) => {
       }
     >
       <TabView
+        animationEnabled={false}
         lazy
         renderLazyPlaceholder={() => {
           return (
