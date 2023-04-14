@@ -15,7 +15,7 @@ import {
  * @template {TMetadata} TMetadata - The metadata of the store, it must contain a readonly property called isAsyncStorageReady which cannot be set from outside the store
  * @template {TStateSetter} TStateSetter - The storeActionsConfig of the store
  */
-export class GlobalStore<
+export class GlobalStoreAsyncStorage<
   TState,
   // this restriction is needed to avoid the consumers to set the isAsyncStorageReady property from outside the store,
   // ... even when the value will be ignored is better to avoid it to avoid confusion

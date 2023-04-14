@@ -19,7 +19,7 @@ import {
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import SwipeableRightAction from '../components/SwipeableRightAction';
 import SearchBarView from '../components/SearchBarView';
-import { ListForUI, useLists } from '../hooks';
+import { ListForUI, useLists, useSongsMeta } from '../hooks';
 import CallToAction from '../components/CallToAction';
 import AddListButton from '../components/AddListButton';
 import ChooseListTypeForAdd from '../components/ChooseListTypeForAdd';
@@ -35,7 +35,7 @@ type ListScreenNavigationProp = CompositeNavigationProp<
 >;
 
 const SwipeableRow = (props: { item: any }) => {
-  const { removeList }  = useLists();
+  const { removeList } = useLists();
   const navigation = useNavigation<ListScreenNavigationProp>();
   const { colors } = useTheme();
   const { item } = props;
@@ -136,7 +136,7 @@ const SwipeableRow = (props: { item: any }) => {
 };
 
 const ListScreen = () => {
-  const { getListsForUI } =  useLists();
+  const { getListsForUI } = useLists();
   const navigation = useNavigation();
   const [filtered, setFiltered] = useState<ListForUI[]>([]);
   const [filter, setFilter] = useState('');

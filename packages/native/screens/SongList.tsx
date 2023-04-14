@@ -109,9 +109,9 @@ const SongList = (props: { viewButton?: boolean; filter?: any; sort?: any; onPre
 
   if (loading.isLoading) {
     return (
-      <View style={{ flex: 1 }}>
-        <Spinner style={{ flex: 3 }} />
-        <Text color="muted.300" style={{ flex: 1, textAlign: 'center' }}>
+      <View style={{ flex: 1, justifyContent: 'space-evenly' }}>
+        <Spinner size='lg' />
+        <Text color="muted.500" style={{ textAlign: 'center' }}>
           {loading.text}
         </Text>
       </View>

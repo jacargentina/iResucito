@@ -4,7 +4,7 @@ import React, {
   useCallback,
   useMemo,
 } from 'react';
-//import { useWhatChanged } from '@simbathesailor/use-what-changed';
+import { useWhatChanged } from '@simbathesailor/use-what-changed';
 import { Alert, Platform, PermissionsAndroid } from 'react-native';
 import Share from 'react-native-share';
 import Contacts from 'react-native-contacts';
@@ -23,7 +23,8 @@ import {
 import i18n from '@iresucito/translations';
 import badges from './badges';
 import { generateListPDF } from './pdf';
-import { GlobalStore } from './GlobalStoreAsync';
+import { GlobalStoreAsyncStorage } from './GlobalStoreAsyncStorage';
+import { GlobalStore, StoreTools } from 'react-native-global-state-hooks';
 import {
   getDefaultLocale,
   ordenClasificacion,
@@ -42,38 +43,6 @@ type UseSongsMeta = {
   ) => Promise<Song>;
 };
 
-export const createCache = <I, O>(processor: (arg: I) => Promise<O>) => {
-  var cache: Map<I, O> = new Map<I, O>();
-
-  const useCache = (i: I) => {
-    const [data, setData] = useState<O | undefined>(cache.get(i));
-
-    const load = useCallback(async () => {
-      let o = await processor(i);
-      cache.set(i, o);
-      setData(o);
-      return o;
-    }, []);
-
-    useEffect(() => {
-      if (cache.has(i)) {
-        setData(cache.get(i));
-      } else {
-        load();
-      }
-    }, [i]);
-
-    const reset = useCallback(async () => {
-      cache.delete(i);
-      return await load();
-    }, []);
-
-    return { data, reset };
-  }
-
-  return useCache;
-};
-
 const readSongSettingsFile = async (): Promise<
   SongSettingsFile | undefined
 > => {
@@ -89,25 +58,40 @@ const readSongSettingsFile = async (): Promise<
   }
 };
 
-const useCachedSongs = createCache(async (loc: string | undefined) => {
-  if (loc) {
-    var settingsObj = await readSongSettingsFile();
-    // Construir metadatos de cantos
-    var metaData = NativeSongs.getSongsMeta(
-      loc,
-      undefined,
-      settingsObj
-    );
-    console.log(`loading ${metaData.length} songs for "${i18n.locale}"`);
-    await NativeSongs.loadSongs(i18n.locale, metaData);
-    return metaData;
-  }
-  return [];
-});
+const emptySongs: Song[] = [];
+
+const songsStore = new GlobalStore(emptySongs, { metadata: { lang: undefined } },
+  {
+    load(loc: string) {
+      return async ({ setState, getState, setMetadata }) => {
+        setMetadata({ lang: loc });
+        var settingsObj = await readSongSettingsFile();
+        // Construir metadatos de cantos
+        var metaData = NativeSongs.getSongsMeta(
+          loc,
+          undefined,
+          settingsObj
+        );
+        console.log(`songsStore loading ${metaData.length} songs for "${loc}"`);
+        await NativeSongs.loadSongs(loc, metaData);
+        setState(metaData);
+        return getState();
+      };
+    }
+  } as any);
+
+export const useSongsStore = songsStore.getHook();
 
 export const useSongsMeta = (): UseSongsMeta => {
   const locale = useLocale();
-  const { data: songs, reset: songsReset } = useCachedSongs(locale);
+  const [songs, songsActions, songsMeta] = useSongsStore();
+
+  useEffect(() => {
+    if (songsMeta.lang !== locale) {
+      // @ts-ignore
+      songsActions.load(locale);
+    }
+  }, [locale]);
 
   const setSongSetting = async (
     key: string,
@@ -127,7 +111,8 @@ export const useSongsMeta = (): UseSongsMeta => {
     });
     var json = JSON.stringify(settingsObj, null, ' ');
     await NativeExtras.saveSettings(json);
-    var updated = await songsReset();
+    // @ts-ignore
+    var updated = await songsActions.load(locale);
     return updated.find(song => song.key == key) as Song;
   }
 
@@ -160,7 +145,7 @@ type UseLists = {
   importList: (listPath: string) => Promise<string | void>;
 };
 
-const listsStore = new GlobalStore<Lists, any>(
+const listsStore = new GlobalStoreAsyncStorage<Lists, any>(
   {},
   { asyncStorageKey: 'lists' }
 );
@@ -168,7 +153,7 @@ const listsStore = new GlobalStore<Lists, any>(
 const useListsStore = listsStore.getHook();
 
 export const useLists = (): UseLists => {
-  const songsMeta = useSongsMeta();
+  const [songs] = useSongsStore();
   const [initialized, setInitialized] = useState(false);
   const [lists, initLists] = useListsStore();
 
@@ -274,10 +259,10 @@ export const useLists = (): UseLists => {
       // Si es de tipo 'libre', los salmos están dentro de 'items'
       if (clave === 'items' && Array.isArray(valor)) {
         valor = valor.map((key) => {
-          return songsMeta.songs?.find((s) => s.key === key);
+          return songs?.find((s) => s.key === key);
         });
       } else if (getEsSalmo(clave) && valor !== null) {
-        valor = songsMeta.songs?.find((s) => s.key === valor);
+        valor = songs?.find((s) => s.key === valor);
       }
       uiList[clave] = valor;
     });
@@ -299,14 +284,14 @@ export const useLists = (): UseLists => {
             // Si es de tipo 'libre', los salmos están dentro de 'items'
             if (clave === 'items' && Array.isArray(valor)) {
               valor = valor.map((nombre) => {
-                var theSong = songsMeta.songs?.find((s) => s.nombre === nombre);
+                var theSong = songs?.find((s) => s.nombre === nombre);
                 if (theSong) {
                   return theSong.key;
                 }
                 return null;
               });
             } else if (getEsSalmo(clave) && valor !== null) {
-              var theSong = songsMeta.songs?.find((s) => s.nombre === valor);
+              var theSong = songs?.find((s) => s.nombre === valor);
               if (theSong) {
                 valor = theSong.key;
               } else {
@@ -320,10 +305,10 @@ export const useLists = (): UseLists => {
         }
       });
     },
-    [songsMeta.songs]
+    [songs]
   );
 
-  const getListsForUI = (localeValue: string): ListForUI[] => {
+  const getListsForUI = useCallback((localeValue: string): ListForUI[] => {
     var listNames = Object.keys(lists);
     return listNames.map((name) => {
       var listMap = lists[name];
@@ -332,7 +317,7 @@ export const useLists = (): UseLists => {
         type: getLocalizedListType(listMap.type, localeValue),
       };
     });
-  };
+  }, []);
 
   const getItemForShare = (list: any, key: string) => {
     if (list.hasOwnProperty(key)) {
@@ -461,7 +446,7 @@ export const useLists = (): UseLists => {
     // Solo inicializar cuando
     // esten cargados los cantos
     // La migracion de listas depende de ello
-    if (initialized === false && songsMeta.songs && lists) {
+    if (initialized === false && songs && lists) {
       migrateLists(lists);
       initLists(lists);
       setInitialized(true);
@@ -473,7 +458,7 @@ export const useLists = (): UseLists => {
       //   console.log('loaded from iCloud', res);
       // });
     }
-  }, [initialized, songsMeta.songs, lists, migrateLists, initLists]);
+  }, [initialized, songs, lists, migrateLists, initLists]);
 
   return {
     lists,
@@ -682,7 +667,7 @@ type UseCommunity = {
   populateDeviceContacts: () => Promise<void>;
 };
 
-const brothersStore = new GlobalStore<BrotherContact[], any>([], {
+const brothersStore = new GlobalStoreAsyncStorage<BrotherContact[], any>([], {
   asyncStorageKey: 'contacts',
 });
 
@@ -828,14 +813,14 @@ export type SettingsType = {
   zoomLevel: number;
 };
 
-const store = new GlobalStore<SettingsType, any>(
+const settingsStore = new GlobalStoreAsyncStorage<SettingsType, any>(
   { locale: 'default', keepAwake: true, zoomLevel: 1 },
   {
     asyncStorageKey: 'settings',
   }
 );
 
-export const useSettingsStore = store.getHook();
+export const useSettingsStore = settingsStore.getHook();
 
 export const useLocale = () => {
   const settings = useSettingsStore();

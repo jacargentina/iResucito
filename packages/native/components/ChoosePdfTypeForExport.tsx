@@ -9,7 +9,7 @@ import { NativeParser } from '../util';
 import { generateSongPDF } from '../pdf';
 
 import type { SongsStackParamList } from '../navigation/SongsNavigator';
-import { useSongsMeta } from '../hooks';
+import { useSongsStore } from '../hooks';
 
 type PDFViewerScreenNavigationProp = StackNavigationProp<
   SongsStackParamList,
@@ -19,7 +19,7 @@ type PDFViewerScreenNavigationProp = StackNavigationProp<
 const ChoosePdfTypeForExport = (props: { chooser: any; setLoading: Function }) => {
   const { isOpen, onClose } = props.chooser;
   const { setLoading } = props;
-  const { songs } = useSongsMeta();
+  const [songs] = useSongsStore();
   const navigation = useNavigation<PDFViewerScreenNavigationProp>();
 
   return (

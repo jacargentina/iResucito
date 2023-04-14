@@ -6,7 +6,7 @@ import { RouteProp, useRoute } from '@react-navigation/native';
 import { KeyboardAwareScrollView } from '@codler/react-native-keyboard-aware-scroll-view';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import SwipeableRightAction from '../components/SwipeableRightAction';
-import { useLists } from '../hooks';
+import { useLists, useSongsMeta } from '../hooks';
 import i18n from '@iresucito/translations';
 import ListDetailItem from './ListDetailItem';
 
@@ -83,18 +83,18 @@ const ListDetail = () => {
   const uiList = getListForUI(listName);
 
   if (uiList.type === 'libre') {
-    var songs = uiList.items;
+    var items = uiList.items;
     return (
       <>
         <KeyboardAwareScrollView contentContainerStyle={{ flexGrow: 1 }}>
-          {songs.length === 0 && (
+          {items.length === 0 && (
             <Text textAlign="center" mt="5">
               {i18n.t('ui.empty songs list')}
             </Text>
           )}
-          {songs.length > 0 && (
+          {items.length > 0 && (
             <VStack p="2">
-              {songs.map((song, key) => {
+              {items.map((song, key) => {
                 return (
                   <SwipeableRow
                     key={key}

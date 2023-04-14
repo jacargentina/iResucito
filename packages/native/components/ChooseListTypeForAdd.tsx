@@ -24,6 +24,8 @@ const ChooseListTypeForAdd = (props: any) => {
     onClose();
   };
 
+  return null;
+  
   return (
     <Actionsheet isOpen={isOpen} onClose={onClose}>
       <Actionsheet.Content>
