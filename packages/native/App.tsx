@@ -9,6 +9,8 @@ import {
 import * as Sentry from '@sentry/react-native';
 import { MenuProvider } from 'react-native-popup-menu';
 import RootNavigator from './navigation/RootNavigator';
+import { useLocale, useSongsStore } from './hooks';
+import { useEffect } from 'react';
 
 Sentry.init({
   dsn: 'https://645393af749a4f3da9d8074330a25da3@o469156.ingest.sentry.io/5498083',
@@ -21,6 +23,16 @@ const appTheme = {
 const theme = extendTheme({ colors: appTheme });
 
 const App = () => {
+  const locale = useLocale();
+  const [, songsActions, songsMeta] = useSongsStore();
+
+  useEffect(() => {
+    if (songsMeta.lang !== locale) {
+      // @ts-ignore
+      songsActions.load(locale);
+    }
+  }, [locale]);
+
   return (
     <NativeBaseProvider
       theme={theme}

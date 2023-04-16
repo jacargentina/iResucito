@@ -10,7 +10,7 @@ import {
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import i18n from '@iresucito/translations';
 import { getChordsScale, Song } from '@iresucito/core';
-import { useSongsMeta } from '../hooks';
+import { setSongSetting } from '../hooks';
 import useStackNavOptions from '../navigation/StackNavOptions';
 import { SongsStackParamList } from '../navigation/SongsNavigator';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -23,7 +23,6 @@ type SongDetailScreenNavigationProp = StackNavigationProp<
 >;
 
 const TransportNotesButton = () => {
-  const { setSongSetting } = useSongsMeta();
   const options = useStackNavOptions();
   const navigation = useNavigation<SongDetailScreenNavigationProp>();
   const { colors } = useTheme();

@@ -14,7 +14,8 @@ const Buffer = require('buffer').Buffer;
 export async function generateSongPDF(
   songsToPdf: Array<SongToPdf>,
   opts: ExportToPdfOptions,
-  fileSuffix: string
+  fileSuffix: string,
+  addIndex: boolean
 ): Promise<string> {
   const folder =
     Platform.OS === 'ios'
@@ -35,7 +36,7 @@ export async function generateSongPDF(
   );
 
   var writer = new PdfWriter(Buffer.from(ttf, 'base64'), new Base64Encode({}));
-  const base64 = await SongPDFGenerator(songsToPdf, opts, writer);
+  const base64 = await SongPDFGenerator(songsToPdf, opts, writer, addIndex);
   RNFS.writeFile(pdfPath, base64, 'base64');
   return pdfPath;
 }

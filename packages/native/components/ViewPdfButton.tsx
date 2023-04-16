@@ -53,7 +53,7 @@ const ViewPdfButton = () => {
         var exportOptions = Object.assign({}, defaultExportToPdfOptions, {
           disablePageNumbers: true,
         });
-        generateSongPDF([item], exportOptions, '').then((path) => {
+        generateSongPDF([item], exportOptions, '', false).then((path) => {
           navigation.navigate('PDFViewer', {
             uri: path,
             title: song.titulo,

@@ -12,7 +12,8 @@ import {
 export async function generatePDF(
   songsToPdf: Array<SongToPdf>,
   opts: ExportToPdfOptions,
-  fileSuffix: string
+  fileSuffix: string,
+  addIndex: boolean
 ): Promise<string | undefined> {
   const folder = os.tmpdir();
   const pdfPath =
@@ -33,7 +34,7 @@ export async function generatePDF(
     );
   }
   var writer = new PdfWriter(font, new Base64Encode(), opts);
-  const base64 = await SongPDFGenerator(songsToPdf, opts, writer);
+  const base64 = await SongPDFGenerator(songsToPdf, opts, writer, addIndex);
   //console.log({ runningPath, fontPath, opts, pdfPath, base64 });
   if (base64) {
     fs.writeFileSync(pdfPath, Buffer.from(base64, 'base64'));

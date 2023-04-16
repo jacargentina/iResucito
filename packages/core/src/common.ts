@@ -828,11 +828,12 @@ export class PdfWriter {
 export const SongPDFGenerator = async (
   songsToPdf: Array<SongToPdf>,
   opts: ExportToPdfOptions,
-  writer: PdfWriter
+  writer: PdfWriter,
+  addIndex: boolean
 ): Promise<string> => {
   try {
     writer.disablePageNumbers = opts.disablePageNumbers;
-    if (songsToPdf.length > 1) {
+    if (addIndex) {
       // Portada
       writer.addExtraMargin = true;
       writer.doc.addPage();
@@ -1085,7 +1086,7 @@ export const SongPDFGenerator = async (
       });
       // Ir al final
       writer.doc.switchToPage(writer.doc._pageBuffer.length - 1);
-      if (songsToPdf.length > 1) {
+      if (addIndex) {
         writer.writePageNumber();
         const assignItems = writer.listing.filter(
           (l) => l.songKey === song.key

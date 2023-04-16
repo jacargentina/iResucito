@@ -69,7 +69,6 @@
     "export": {
       "type": "Type d'exportation",
       "processing songs": "Traitement de {{total}} morceaux ...",
-      "pdf viewer title": "Livre complet",
       "songs index": "Index des chansons",
       "songs book title": "Il est passé de la mort",
       "songs book subtitle": "Chansons pour les communautés néocatéchuménales"

@@ -33,16 +33,6 @@ import {
 } from './util';
 import { ShareListType, SongSetting } from './types';
 
-type UseSongsMeta = {
-  songs: Song[] | undefined;
-  setSongSetting: (
-    key: string,
-    loc: string,
-    setting: SongSetting,
-    value: any
-  ) => Promise<Song>;
-};
-
 const readSongSettingsFile = async (): Promise<
   SongSettingsFile | undefined
 > => {
@@ -80,47 +70,71 @@ const songsStore = new GlobalStore(emptySongs, { metadata: { lang: undefined } }
     }
   } as any);
 
+const [, songsActions] = songsStore.getHookDecoupled();
+
 export const useSongsStore = songsStore.getHook();
 
-export const useSongsMeta = (): UseSongsMeta => {
-  const locale = useLocale();
-  const [songs, songsActions, songsMeta] = useSongsStore();
-
-  useEffect(() => {
-    if (songsMeta.lang !== locale) {
-      // @ts-ignore
-      songsActions.load(locale);
-    }
-  }, [locale]);
-
-  const setSongSetting = async (
-    key: string,
-    loc: string,
-    setting: string,
-    value: any
-  ): Promise<Song> => {
-    var settingsObj = await readSongSettingsFile();
-    if (!settingsObj) {
-      settingsObj = {};
-    }
-    if (!settingsObj[key]) {
-      settingsObj[key] = {};
-    }
-    settingsObj[key] = Object.assign({}, settingsObj[key], {
-      [loc]: { [setting]: value },
-    });
-    var json = JSON.stringify(settingsObj, null, ' ');
-    await NativeExtras.saveSettings(json);
-    // @ts-ignore
-    var updated = await songsActions.load(locale);
-    return updated.find(song => song.key == key) as Song;
+export const setSongSetting = async (
+  key: string,
+  loc: string,
+  setting: string,
+  value: any
+): Promise<Song> => {
+  var settingsObj = await readSongSettingsFile();
+  if (!settingsObj) {
+    settingsObj = {};
   }
+  if (!settingsObj[key]) {
+    settingsObj[key] = {};
+  }
+  settingsObj[key] = Object.assign({}, settingsObj[key], {
+    [loc]: { [setting]: value },
+  });
+  var json = JSON.stringify(settingsObj, null, ' ');
+  await NativeExtras.saveSettings(json);
+  // @ts-ignore
+  var updated = await songsActions.load(loc);
+  return updated.find(song => song.key == key) as Song;
+}
 
-  return {
-    songs,
-    setSongSetting,
-  };
-};
+type SelectionMode = {
+  selection: string[];
+  enabled: boolean;
+}
+
+const emptySelection: SelectionMode = {
+  selection: [],
+  enabled: false
+}
+
+const songsSelectionStore = new GlobalStore(emptySelection, null, {
+  enable() {
+    return ({ setState, getState }) => {
+      setState({ selection: [], enabled: true });
+      return getState();
+    }
+  },
+  disable() {
+    return ({ setState, getState }) => {
+      setState({ selection: [], enabled: false });
+      return getState();
+    }
+  },
+  toggle(key: string) {
+    return async ({ setState, getState }) => {
+      var { selection, enabled } = getState() as SelectionMode;
+      if (selection.indexOf(key) > -1) {
+        selection.splice(selection.indexOf(key), 1);
+      } else {
+        selection.push(key);
+      }
+      setState({ selection, enabled });
+      return getState();
+    }
+  }
+} as any);
+
+export const useSongsSelection = songsSelectionStore.getHook();
 
 type Lists = {
   [listName: string]: any;

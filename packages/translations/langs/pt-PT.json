@@ -69,7 +69,6 @@
     "export": {
       "type": "Tipo de exportação",
       "processing songs": "Processando {{total}} cantos...",
-      "pdf viewer title": "Livro completo",
       "songs index": "Índice de cantos",
       "songs book title": "Ressuscitou",
       "songs book subtitle": "Cantos pra Comunidades Neocatecumenais"

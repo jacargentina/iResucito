@@ -69,7 +69,6 @@
     "export": {
       "type": "Exporto rūšis",
       "processing songs": "Ruošiamos {{total}} giesmės...",
-      "pdf viewer title": "Pilna knyga",
       "songs index": "Giesmių rodyklė",
       "songs book title": "Prisikėlė",
       "songs book subtitle": "Giesmės Neokatechumenatinio kelio bendruomenėms"

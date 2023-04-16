@@ -69,7 +69,6 @@
     "export": {
       "type": "Export type",
       "processing songs": "Processing {{total}} songs...",
-      "pdf viewer title": "Complete book",
       "songs index": "Songs Index",
       "songs book title": "He Rose from Death",
       "songs book subtitle": "Songs for Neocatechumenal Communities"

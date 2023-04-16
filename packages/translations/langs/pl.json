@@ -69,7 +69,6 @@
     "export": {
       "type": "Typ eksportu",
       "processing songs": "Przetwarzanie {{total}} pieśni...",
-      "pdf viewer title": "Kompletny śpiewnik",
       "songs index": "Indeks pieśni",
       "songs book title": "Zmartwychwstał Pan",
       "songs book subtitle": "Śpiewnik dla Wspólnot Neokatechumenalnych"

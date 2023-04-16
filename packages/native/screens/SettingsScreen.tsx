@@ -19,7 +19,7 @@ import { useNavigation } from '@react-navigation/native';
 import DeviceInfo from 'react-native-device-info';
 import i18n from '@iresucito/translations';
 import { getLocalesForPicker, CollaboratorsIndex } from '@iresucito/core';
-import { useSettingsStore, useSongsMeta } from '../hooks';
+import { useSettingsStore, useSongsStore } from '../hooks';
 import { NativeExtras, getDefaultLocale } from '../util';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { SettingsStackParamList } from '../navigation/SettingsNavigator';
@@ -39,7 +39,7 @@ const SettingsScreen = () => {
   const [{ locale, zoomLevel, keepAwake }, setSettings] = settings;
   const [version, setVersion] = useState('');
   const [songsResume, setSongsResume] = useState('-');
-  const { songs } = useSongsMeta();
+  const [songs] = useSongsStore();
   const [settingsExists, setSettingsExists] = useState(false);
 
   useAndroidBackHandler(() => {

@@ -7,9 +7,8 @@ import i18n from '@iresucito/translations';
 import { defaultExportToPdfOptions, Song, SongToPdf } from '@iresucito/core';
 import { NativeParser } from '../util';
 import { generateSongPDF } from '../pdf';
-
 import type { SongsStackParamList } from '../navigation/SongsNavigator';
-import { useSongsStore } from '../hooks';
+import { useSongsStore, useSongsSelection } from '../hooks';
 
 type PDFViewerScreenNavigationProp = StackNavigationProp<
   SongsStackParamList,
@@ -20,6 +19,7 @@ const ChoosePdfTypeForExport = (props: { chooser: any; setLoading: Function }) =
   const { isOpen, onClose } = props.chooser;
   const { setLoading } = props;
   const [songs] = useSongsStore();
+  const [, selectionActions] = useSongsSelection();
   const navigation = useNavigation<PDFViewerScreenNavigationProp>();
 
   return (
@@ -29,7 +29,8 @@ const ChoosePdfTypeForExport = (props: { chooser: any; setLoading: Function }) =
         <Actionsheet.Item
           onPress={() => {
             onClose();
-            Alert.alert('TODO', 'TBD');
+            // @ts-ignore
+            selectionActions.enable();
           }}>
           {i18n.t('pdf_export_options.selected songs')}
         </Actionsheet.Item>
@@ -58,11 +59,12 @@ const ChoosePdfTypeForExport = (props: { chooser: any; setLoading: Function }) =
               generateSongPDF(
                 items,
                 defaultExportToPdfOptions,
-                `-${i18n.locale}`
+                `-${i18n.locale}`,
+                true
               ).then((path) => {
                 navigation.navigate('PDFViewer', {
                   uri: path,
-                  title: i18n.t('ui.export.pdf viewer title'),
+                  title: i18n.t('pdf_export_options.complete book'),
                 });
                 setLoading({ isLoading: false, text: '' });
               });

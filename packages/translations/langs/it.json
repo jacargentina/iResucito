@@ -69,7 +69,6 @@
     "export": {
       "type": "Tipo di esportazione",
       "processing songs": "Elaborazione di {{total}} canzoni...",
-      "pdf viewer title": "Libro completo",
       "songs index": "Índice della canzone",
       "songs book title": "Risuscitò",
       "songs book subtitle": "Canti del Cammino Neocatecumenale"

@@ -11,6 +11,7 @@ import {
   Icon,
   Pressable,
   useTheme,
+  Checkbox,
 } from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
@@ -21,6 +22,7 @@ import badges from '../badges';
 import i18n from '@iresucito/translations';
 import { Song } from '@iresucito/core';
 import { ChooserParamList } from '../navigation/SongChooserNavigator';
+import { useSongsSelection } from '../hooks';
 
 const NoLocaleWarning = () => {
   return (
@@ -49,6 +51,7 @@ type ViewSongScreenNavigationProp = StackNavigationProp<
 const SongListItem = (props: { song: Song; showBadge?: boolean; highlight: string; viewButton: boolean; onPress: any; setSongSetting: any }) => {
   const { colors } = useTheme();
   const navigation = useNavigation<ViewSongScreenNavigationProp>();
+  const [{ selection, enabled }, selectionActions] = useSongsSelection();
   const {
     song,
     highlight,
@@ -132,8 +135,10 @@ const SongListItem = (props: { song: Song; showBadge?: boolean; highlight: strin
     calcWidth -= 10;
   }
 
+  const isSelected = selection.includes(song.key);
+
   return (
-    <HStack p="2" borderBottomWidth={1} borderBottomColor="muted.200">
+    <HStack p="2" borderBottomWidth={1} borderBottomColor="muted.200" backgroundColor={isSelected ? 'rose.100' : null}>
       {showBadge && (
         <Box pt="2" alignSelf="flex-start">
           {badges[song.stage]}
@@ -142,21 +147,28 @@ const SongListItem = (props: { song: Song; showBadge?: boolean; highlight: strin
       <VStack space={1} p="2" w={`${calcWidth}%`}>
         <Pressable
           onPress={() => {
-            if (props.onPress) {
-              props.onPress(song);
-            }
+            if (enabled) {
+              // @ts-ignore
+              selectionActions.toggle(song.key);
+            } else
+              if (props.onPress) {
+                props.onPress(song);
+              }
           }}>
           <>
-            <Highlighter
-              autoEscape
-              numberOfLines={1}
-              style={{ fontWeight: 'bold', fontSize: 16 }}
-              highlightStyle={{
-                backgroundColor: 'yellow',
-              }}
-              searchWords={[highlight]}
-              textToHighlight={song.titulo}
-            />
+            <HStack justifyContent={'space-between'}>
+              <Highlighter
+                autoEscape
+                numberOfLines={1}
+                style={{ fontWeight: 'bold', fontSize: 16 }}
+                highlightStyle={{
+                  backgroundColor: 'yellow',
+                }}
+                searchWords={[highlight]}
+                textToHighlight={song.titulo}
+              />
+              {enabled ? <Checkbox isDisabled value="" isChecked={isSelected} aria-label='Seleccionar' /> : null}
+            </HStack>
             <Highlighter
               autoEscape
               numberOfLines={1}
@@ -172,7 +184,7 @@ const SongListItem = (props: { song: Song; showBadge?: boolean; highlight: strin
           </>
         </Pressable>
         {song.notTranslated && <NoLocaleWarning />}
-        <Rating
+        {!enabled && <Rating
           totalCount={5}
           marginBetweenRatingIcon={3}
           size={20}
@@ -181,7 +193,7 @@ const SongListItem = (props: { song: Song; showBadge?: boolean; highlight: strin
             setSongSetting(song.key, i18n.locale, 'rating', position)
           }
           ratingColor={colors.rose['500']}
-        />
+        />}
       </VStack>
       {openHighlightedRest && <Box pt="2">{openHighlightedRest}</Box>}
       {viewButton && (
