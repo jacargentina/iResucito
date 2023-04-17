@@ -3374,7 +3374,7 @@
     localforage "^1.8.1"
     tslib "^1.9.3"
 
-"@sentry/react-native@^5.3.0":
+"@sentry/react-native@^5.3.1":
   version "5.3.1"
   resolved "https://registry.yarnpkg.com/@sentry/react-native/-/react-native-5.3.1.tgz#ad5f40aca5071058d316523cd770193767eb3511"
   integrity sha512-UCAr3zrjoezr+b14nAcHkcmn39G9GG4z97Jm+RhAMxdLiqt952hw/jd0FcywscR3V4ZwYsIE+iK2579rSUcsSA==
@@ -3841,7 +3841,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@^18.0.15", "@types/react@^18.0.34":
+"@types/react@*", "@types/react@^18.0.15", "@types/react@^18.0.35":
   version "18.0.35"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.35.tgz#192061cb1044fe01f2d3a94272cd35dd50502741"
   integrity sha512-6Laome31HpetaIUGFWl1VQ3mdSImwxtFZ39rh059a1MNnKGqBpC88J6NJ8n/Is3Qx7CefDGLgf/KhN/sYCf7ag==
@@ -5350,7 +5350,7 @@ command-exists@^1.2.8:
   resolved "https://registry.yarnpkg.com/command-exists/-/command-exists-1.2.9.tgz#c50725af3808c8ab0260fd60b01fbfa25b954f69"
   integrity sha512-LTQ/SGc+s0Xc0Fu5WaKnR0YiygZkm9eKFvyS+fRsU7/ZWFF8ykFM6Pc9aCVf1+xasOOZpO3BAVgVrKvsqKHV7w==
 
-commander@^10.0.0:
+commander@^10.0.1:
   version "10.0.1"
   resolved "https://registry.yarnpkg.com/commander/-/commander-10.0.1.tgz#881ee46b4f77d1c1dccc5823433aa39b022cbe06"
   integrity sha512-y4Mg2tXshplEbSGzx7amzPwKKOCGuoSRP/CjEdwwk0FOGlUbq6lKuoyDZTNZkmxHdJtp54hdfY/JUrdL7Xfdug==
@@ -9711,7 +9711,7 @@ metro-react-native-babel-preset@0.73.9:
     "@babel/template" "^7.0.0"
     react-refresh "^0.4.0"
 
-metro-react-native-babel-preset@^0.76.1:
+metro-react-native-babel-preset@^0.76.2:
   version "0.76.2"
   resolved "https://registry.yarnpkg.com/metro-react-native-babel-preset/-/metro-react-native-babel-preset-0.76.2.tgz#dab4ca4b594bb47780adf5987c6b3b9cb41e767b"
   integrity sha512-Kzi4JhEzwrPOuv3OHjDZvvlPTjInNoIV8QKBRyLTzx7TJuA5a2xReo0lz4sG4x9Bcv1XjKkKRmYUgS9V1I820w==
@@ -11728,7 +11728,7 @@ react-native-gesture-handler@^2.9.0:
     lodash "^4.17.21"
     prop-types "^15.7.2"
 
-react-native-global-state-hooks@^3.0.4:
+react-native-global-state-hooks@^3.0.5:
   version "3.0.5"
   resolved "https://registry.yarnpkg.com/react-native-global-state-hooks/-/react-native-global-state-hooks-3.0.5.tgz#a0e57cf6ade568de3f7690a5a7cc4a0832c05c92"
   integrity sha512-zkbm9t5r5trkSAJE2yUfVmj3M1l0CRFmQzxCakQ/QxMQdWKG8Q+KUZ49Kh5IDgSFMF5i3McBvUMWmdKLcUD1dg==
@@ -11817,7 +11817,7 @@ react-native-screens@^3.20.0:
     react-freeze "^1.0.0"
     warn-once "^0.1.0"
 
-react-native-share@^8.2.1:
+react-native-share@^8.2.2:
   version "8.2.2"
   resolved "https://registry.yarnpkg.com/react-native-share/-/react-native-share-8.2.2.tgz#987d6f164afe57b089950dca42e0555f19045d27"
   integrity sha512-kVCI/cT0GnuYUTXe6mAimrjrnt4VWoRfrWqJZjFeoYFqAyOEfos84RC4eZlZnOT5eVtmTXRIkor5vgSkKOlZhw==
@@ -13575,7 +13575,7 @@ turbo-windows-arm64@1.9.1:
   resolved "https://registry.yarnpkg.com/turbo-windows-arm64/-/turbo-windows-arm64-1.9.1.tgz#f0c780cc906dedff85eef20f063f59a9b2a865fc"
   integrity sha512-QSLNz8dRBLDqXOUv/KnoesBomSbIz2Huef/a3l2+Pat5wkQVgMfzFxDOnkK5VWujPYXz+/prYz+/7cdaC78/kw==
 
-turbo@^1.8.8:
+turbo@^1.9.1:
   version "1.9.1"
   resolved "https://registry.yarnpkg.com/turbo/-/turbo-1.9.1.tgz#7ff6252cb7271142f82cff36cada918eaae67025"
   integrity sha512-Rqe8SP96e53y4Pk29kk2aZbA8EF11UtHJ3vzXJseadrc1T3V6UhzvAWwiKJL//x/jojyOoX1axnoxmX3UHbZ0g==
@@ -13976,7 +13976,7 @@ vary@~1.1.2:
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==
 
-vercel@^28.18.4:
+vercel@^28.18.5:
   version "28.18.5"
   resolved "https://registry.yarnpkg.com/vercel/-/vercel-28.18.5.tgz#0afcc9f9b39cc518cf10c6aebc220870de86bf6b"
   integrity sha512-WdW5s7w2eGmvKwrIyG32BR/N0hKz9iiZe/INyqopW2Ql+E768ROSP+r+SFpWLMpkGGw14QnmZsFutZ5r7IbpJg==

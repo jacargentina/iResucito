@@ -41,7 +41,7 @@
     "@remix-run/vercel": "^1.15.0",
     "@types/diff": "^5.0.3",
     "@types/etag": "^1.8.1",
-    "@types/react": "^18.0.34",
+    "@types/react": "^18.0.35",
     "@types/react-json-editor-ajrm": "^2.5.3",
     "@vercel/node": "^2.10.3",
     "@vercel/remix": "^1.15.0",
@@ -68,7 +68,7 @@
     "typescript": "^5.0.4",
     "use-debounce": "^9.0.4",
     "use-hotkeys": "^1.1.0",
-    "vercel": "^28.18.4"
+    "vercel": "^28.18.5"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",

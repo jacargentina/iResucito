@@ -38,6 +38,6 @@
   },
   "dependencies": {
     "react-native-cli": "^2.0.1",
-    "turbo": "^1.8.8"
+    "turbo": "^1.9.1"
   }
 }
