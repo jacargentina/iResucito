@@ -6,7 +6,7 @@ import { RouteProp, useRoute } from '@react-navigation/native';
 import { KeyboardAwareScrollView } from '@codler/react-native-keyboard-aware-scroll-view';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import SwipeableRightAction from '../components/SwipeableRightAction';
-import { useLists } from '../hooks';
+import { useLists, useListsStore } from '../hooks';
 import i18n from '@iresucito/translations';
 import ListDetailItem from './ListDetailItem';
 
@@ -18,30 +18,7 @@ const SwipeableRow = (props: {
   const { listName, listKey, song } = props;
   const swipeRef = useRef<Swipeable>(null);
   const { colors } = useTheme();
-  const { setList } = useLists();
-
-  const confirmListDeleteSong = useCallback(
-    (songTitle, list, key) => {
-      Alert.alert(
-        `${i18n.t('ui.delete')} "${songTitle}"`,
-        i18n.t('ui.delete confirmation'),
-        [
-          {
-            text: i18n.t('ui.delete'),
-            onPress: () => {
-              setList(list, key, undefined);
-            },
-            style: 'destructive',
-          },
-          {
-            text: i18n.t('ui.cancel'),
-            style: 'cancel',
-          },
-        ]
-      );
-    },
-    [setList]
-  );
+  const [, listsActions] = useListsStore();
 
   return (
     <Swipeable
@@ -58,7 +35,24 @@ const SwipeableRow = (props: {
               x={100}
               onPress={() => {
                 swipeRef.current?.close();
-                confirmListDeleteSong(song.titulo, listName, listKey);
+                Alert.alert(
+                  `${i18n.t('ui.delete')} "${song.titulo}"`,
+                  i18n.t('ui.delete confirmation'),
+                  [
+                    {
+                      text: i18n.t('ui.delete'),
+                      onPress: () => {
+                        // @ts-ignore
+                        listsActions.setList(listName, listKey, undefined);
+                      },
+                      style: 'destructive',
+                    },
+                    {
+                      text: i18n.t('ui.cancel'),
+                      style: 'cancel',
+                    },
+                  ]
+                );
               }}
             />
           </View>

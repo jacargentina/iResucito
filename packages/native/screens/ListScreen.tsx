@@ -19,7 +19,7 @@ import {
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import SwipeableRightAction from '../components/SwipeableRightAction';
 import SearchBarView from '../components/SearchBarView';
-import { ListForUI, useLists } from '../hooks';
+import { ListForUI, useListsStore } from '../hooks';
 import CallToAction from '../components/CallToAction';
 import AddListButton from '../components/AddListButton';
 import ChooseListTypeForAdd from '../components/ChooseListTypeForAdd';
@@ -28,6 +28,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { ListsStackParamList } from '../navigation/ListsNavigator';
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import { RootStackParamList } from '../navigation/RootNavigator';
+import { getLocalizedListType } from '@iresucito/core';
 
 type ListScreenNavigationProp = CompositeNavigationProp<
   BottomTabNavigationProp<RootStackParamList, 'ListName'>,
@@ -35,44 +36,11 @@ type ListScreenNavigationProp = CompositeNavigationProp<
 >;
 
 const SwipeableRow = (props: { item: any }) => {
-  const { removeList } = useLists();
+  const [, listsActions] = useListsStore();
   const navigation = useNavigation<ListScreenNavigationProp>();
   const { colors } = useTheme();
   const { item } = props;
   const swipeRef = useRef<Swipeable>(null);
-
-  const listDelete = useCallback(
-    (listName: string) => {
-      Alert.alert(
-        `${i18n.t('ui.delete')} "${listName}"`,
-        i18n.t('ui.delete confirmation'),
-        [
-          {
-            text: i18n.t('ui.delete'),
-            onPress: () => {
-              removeList(listName);
-            },
-            style: 'destructive',
-          },
-          {
-            text: i18n.t('ui.cancel'),
-            style: 'cancel',
-          },
-        ]
-      );
-    },
-    [removeList]
-  );
-
-  const listRename = useCallback(
-    (listName: string) => {
-      navigation.navigate('ListName', {
-        action: 'rename',
-        listName: listName,
-      });
-    },
-    [navigation]
-  );
 
   return (
     <Swipeable
@@ -89,7 +57,10 @@ const SwipeableRow = (props: { item: any }) => {
               x={250}
               onPress={() => {
                 swipeRef.current?.close();
-                listRename(item.name);
+                navigation.navigate('ListName', {
+                  action: 'rename',
+                  listName: item.name,
+                });
               }}
             />
             <SwipeableRightAction
@@ -99,7 +70,25 @@ const SwipeableRow = (props: { item: any }) => {
               x={125}
               onPress={() => {
                 swipeRef.current?.close();
-                listDelete(item.name);
+                Alert.alert(
+                  `${i18n.t('ui.delete')} "${item.name}"`,
+                  i18n.t('ui.delete confirmation'),
+                  [
+                    {
+                      text: i18n.t('ui.delete'),
+                      onPress: () => {
+                        // @ts-ignore
+                        listsActions.remove(item.name);
+                      },
+                      style: 'destructive',
+                    },
+                    {
+                      text: i18n.t('ui.cancel'),
+                      style: 'cancel',
+                    },
+                  ]
+                );
+
               }}
             />
           </View>
@@ -135,16 +124,27 @@ const SwipeableRow = (props: { item: any }) => {
   );
 };
 
+const getListsForUI = (lists: any, localeValue: string): ListForUI[] => {
+  var listNames = Object.keys(lists);
+  return listNames.map((name) => {
+    var listMap = lists[name];
+    return {
+      name: name,
+      type: getLocalizedListType(listMap.type, localeValue),
+    };
+  });
+};
+
 const ListScreen = () => {
-  const { getListsForUI } = useLists();
+  const [lists] = useListsStore();
   const navigation = useNavigation();
   const [filtered, setFiltered] = useState<ListForUI[]>([]);
   const [filter, setFilter] = useState('');
   const chooser = useDisclose();
 
   const allLists = useMemo(
-    () => getListsForUI(i18n.locale),
-    [i18n.locale, getListsForUI]
+    () => getListsForUI(lists, i18n.locale),
+    [lists, i18n.locale]
   );
 
   useEffect(() => {

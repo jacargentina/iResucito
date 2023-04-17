@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { Input, Box, Button, FormControl } from 'native-base';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { getLocalizedListType } from '@iresucito/core';
-import { useLists } from '../hooks';
+import { useLists, useListsStore } from '../hooks';
 import ModalView from '../components/ModalView';
 import i18n from '@iresucito/translations';
 
@@ -19,9 +19,9 @@ type ListDetailNavivationProp = StackNavigationProp<
 >;
 
 const ListNameDialog = () => {
-  const { lists, addList, renameList } =  useLists();
   const navigation = useNavigation<ListDetailNavivationProp>();
   const route = useRoute<ListNameDialogRouteProp>();
+  const [lists, listsActions] = useListsStore();
   const [disabledReasonText, setDisabledReasonText] = useState<string | null>(
     null
   );
@@ -31,10 +31,12 @@ const ListNameDialog = () => {
 
   const runActionOnList = () => {
     if (action === 'create' && type) {
-      addList(name, type);
+      // @ts-ignore
+      listsActions.add(name, type);
       navigation.navigate('ListDetail', { listName: name });
     } else if (action === 'rename') {
-      renameList(listName, name);
+      // @ts-ignore
+      listsActions.rename(listName, name);
       navigation.goBack();
     }
   };
@@ -65,9 +67,9 @@ const ListNameDialog = () => {
   const title =
     action === 'create' && type
       ? `${i18n.t('ui.lists.create')} (${getLocalizedListType(
-          type,
-          i18n.locale
-        )})`
+        type,
+        i18n.locale
+      )})`
       : `${i18n.t('ui.lists.rename')} (${listName})`;
 
   return (

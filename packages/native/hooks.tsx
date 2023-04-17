@@ -31,7 +31,7 @@ import {
   NativeSongs,
   NativeExtras,
 } from './util';
-import { ShareListType, SongSetting } from './types';
+import { ShareListType } from './types';
 
 const readSongSettingsFile = async (): Promise<
   SongSettingsFile | undefined
@@ -147,119 +147,125 @@ export type ListForUI = {
 
 type UseLists = {
   lists: Lists;
-  initLists: (value: any) => void;
-  addList: (listName: string, type: ListType) => void;
-  removeList: (listName: string) => void;
-  renameList: (listName: string, newName: string) => void;
-  setList: (listName: string, listKey: string, listValue: any) => void;
   getListForUI: (listName: any) => any;
-  getListsForUI: (locale: string) => ListForUI[];
   shareList: (listName: string, loc: string, type: ShareListType) => void;
   importList: (listPath: string) => Promise<string | void>;
 };
 
 const listsStore = new GlobalStoreAsyncStorage<Lists, any>(
   {},
-  { asyncStorageKey: 'lists' }
+  { asyncStorageKey: 'lists' },
+  {
+    add(listName: string, type: ListType) {
+      return ({ setState, getState }) => {
+        let schema = { type: type, version: 1 };
+        switch (type) {
+          case 'libre':
+            schema = Object.assign({}, schema, { items: [] });
+            break;
+          case 'palabra':
+            schema = Object.assign({}, schema, {
+              ambiental: null,
+              entrada: null,
+              '1-monicion': null,
+              '1': null,
+              '1-salmo': null,
+              '2-monicion': null,
+              '2': null,
+              '2-salmo': null,
+              '3-monicion': null,
+              '3': null,
+              '3-salmo': null,
+              'evangelio-monicion': null,
+              evangelio: null,
+              salida: null,
+              nota: null,
+            });
+            break;
+          case 'eucaristia':
+            schema = Object.assign({}, schema, {
+              ambiental: null,
+              entrada: null,
+              '1-monicion': null,
+              '1': null,
+              '2-monicion': null,
+              '2': null,
+              'evangelio-monicion': null,
+              evangelio: null,
+              'oracion-universal': null,
+              paz: null,
+              'comunion-pan': null,
+              'comunion-caliz': null,
+              salida: null,
+              'encargado-pan': null,
+              'encargado-flores': null,
+              nota: null,
+            });
+            break;
+        }
+        var lists = getState();
+        lists[listName] = schema;
+        setState(lists);
+        return getState();
+      };
+    },
+    rename(listName: string, newName: string) {
+      return ({ setState, getState }) => {
+        var lists = getState();
+        const list = lists[listName];
+        delete lists[listName];
+        lists[newName] = list;
+        setState(lists);
+        return getState();
+      };
+    },
+    remove(listName: string) {
+      return ({ setState, getState }) => {
+        var lists = getState();
+        delete lists[listName];
+        setState(lists);
+        return getState();
+      };
+    },
+    setList(listName: string, listKey: string, listValue: any) {
+      return ({ setState, getState }) => {
+        var lists = getState();
+        const targetList = lists[listName];
+        var schema;
+        if (listValue !== undefined) {
+          if (typeof listKey === 'string') {
+            schema = Object.assign({}, targetList, { [listKey]: listValue });
+          } else if (typeof listKey === 'number') {
+            var isPresent = targetList.items.find((s: any) => s === listValue);
+            if (isPresent) {
+              return;
+            }
+            var newItems = Object.assign([], targetList.items);
+            newItems[listKey] = listValue;
+            schema = Object.assign({}, targetList, { items: newItems });
+          }
+        } else {
+          if (typeof listKey === 'string') {
+            var { [listKey]: omit, ...schema } = targetList;
+          } else if (typeof listKey === 'number') {
+            var newItems = Object.assign([], targetList.items);
+            newItems.splice(listKey, 1);
+            schema = Object.assign({}, targetList, { items: newItems });
+          }
+        }
+        lists[listName] = schema;
+        setState(lists);
+        return getState();
+      }
+    },
+  } as any
 );
 
-const useListsStore = listsStore.getHook();
+export const useListsStore = listsStore.getHook();
 
 export const useLists = (): UseLists => {
   const [songs] = useSongsStore();
-  const [initialized, setInitialized] = useState(false);
   const [lists, initLists] = useListsStore();
-
-  const addList = useCallback((listName: string, type: ListType) => {
-    let schema = { type: type, version: 1 };
-    switch (type) {
-      case 'libre':
-        schema = Object.assign({}, schema, { items: [] });
-        break;
-      case 'palabra':
-        schema = Object.assign({}, schema, {
-          ambiental: null,
-          entrada: null,
-          '1-monicion': null,
-          '1': null,
-          '1-salmo': null,
-          '2-monicion': null,
-          '2': null,
-          '2-salmo': null,
-          '3-monicion': null,
-          '3': null,
-          '3-salmo': null,
-          'evangelio-monicion': null,
-          evangelio: null,
-          salida: null,
-          nota: null,
-        });
-        break;
-      case 'eucaristia':
-        schema = Object.assign({}, schema, {
-          ambiental: null,
-          entrada: null,
-          '1-monicion': null,
-          '1': null,
-          '2-monicion': null,
-          '2': null,
-          'evangelio-monicion': null,
-          evangelio: null,
-          'oracion-universal': null,
-          paz: null,
-          'comunion-pan': null,
-          'comunion-caliz': null,
-          salida: null,
-          'encargado-pan': null,
-          'encargado-flores': null,
-          nota: null,
-        });
-        break;
-    }
-    const changedLists = Object.assign({}, lists, { [listName]: schema });
-    initLists(changedLists);
-  }, []);
-
-  const removeList = useCallback((listName: string) => {
-    const changedLists = Object.assign({}, lists);
-    delete changedLists[listName];
-    initLists(changedLists);
-  }, []);
-
-  const renameList = useCallback((listName: string, newName: string) => {
-    const list = lists[listName];
-    delete lists[listName];
-    const changedLists = Object.assign({}, lists, { [newName]: list });
-    initLists(changedLists);
-  }, []);
-
-  const setList = useCallback((listName: string, listKey: string, listValue: any) => {
-    const targetList = lists[listName];
-    var schema;
-    if (listValue !== undefined) {
-      if (typeof listKey === 'string') {
-        schema = Object.assign({}, targetList, { [listKey]: listValue });
-      } else if (typeof listKey === 'number') {
-        var isPresent = targetList.items.find((s: any) => s === listValue);
-        if (isPresent) {
-          return;
-        }
-        var newItems = Object.assign([], targetList.items);
-        newItems[listKey] = listValue;
-        schema = Object.assign({}, targetList, { items: newItems });
-      }
-    } else {
-      if (typeof listKey === 'string') {
-        var { [listKey]: omit, ...schema } = targetList;
-      } else if (typeof listKey === 'number') {
-        var newItems = Object.assign([], targetList.items);
-        newItems.splice(listKey, 1);
-        schema = Object.assign({}, targetList, { items: newItems });
-      }
-    }
-    const changedLists = Object.assign({}, lists, { [listName]: schema });
-    initLists(changedLists);
-  }, []);
 
   const getListForUI = useCallback((listName: any) => {
     var uiList = Object.assign({}, lists[listName]);
@@ -277,55 +283,6 @@ export const useLists = (): UseLists => {
     uiList.name = listName;
     return uiList;
   }, [lists]);
-
-  const migrateLists = useCallback(
-    (items: any) => {
-      // Verificar cada lista para migrar en caso
-      // de ser necesario
-      Object.keys(items).forEach((name) => {
-        var listMap = items[name];
-        // Listas sin número de versión
-        // Los cantos se almacenaban con nombre
-        // Y deben pasar a almacenarse las claves
-        if (!listMap.version) {
-          Object.entries(listMap).forEach(([clave, valor]) => {
-            // Si es de tipo 'libre', los salmos están dentro de 'items'
-            if (clave === 'items' && Array.isArray(valor)) {
-              valor = valor.map((nombre) => {
-                var theSong = songs?.find((s) => s.nombre === nombre);
-                if (theSong) {
-                  return theSong.key;
-                }
-                return null;
-              });
-            } else if (getEsSalmo(clave) && valor !== null) {
-              var theSong = songs?.find((s) => s.nombre === valor);
-              if (theSong) {
-                valor = theSong.key;
-              } else {
-                valor = null;
-              }
-            }
-            // Guardar solo la clave del canto
-            listMap[clave] = valor;
-          });
-          listMap.version = 1;
-        }
-      });
-    },
-    [songs]
-  );
-
-  const getListsForUI = useCallback((localeValue: string): ListForUI[] => {
-    var listNames = Object.keys(lists);
-    return listNames.map((name) => {
-      var listMap = lists[name];
-      return {
-        name: name,
-        type: getLocalizedListType(listMap.type, localeValue),
-      };
-    });
-  }, []);
 
   const getItemForShare = (list: any, key: string) => {
     if (list.hasOwnProperty(key)) {
@@ -444,39 +401,9 @@ export const useLists = (): UseLists => {
     }
   };
 
-  // useEffect(() => {
-  //   if (initialized === true && lists && Platform.OS === 'ios') {
-  //     clouddata.save('lists', lists);
-  //   }
-  // }, [lists, initialized]);
-
-  useEffect(() => {
-    // Solo inicializar cuando
-    // esten cargados los cantos
-    // La migracion de listas depende de ello
-    if (initialized === false && songs && lists) {
-      migrateLists(lists);
-      initLists(lists);
-      setInitialized(true);
-      // TODO
-      // IDEA: al abrir la pantalla de listas, cargar las
-      // listas desde iCloud, y si hay cambios, consultar
-      // al usuario si desea tomar los cambios y aplicarlos
-      // clouddata.load({ key: 'lists' }).then(res => {
-      //   console.log('loaded from iCloud', res);
-      // });
-    }
-  }, [initialized, songs, lists, migrateLists, initLists]);
-
   return {
     lists,
-    initLists,
-    addList,
-    removeList,
-    renameList,
-    setList,
     getListForUI,
-    getListsForUI,
     shareList,
     importList,
   };

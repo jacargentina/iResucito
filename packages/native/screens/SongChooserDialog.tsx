@@ -5,7 +5,7 @@ import { useWindowDimensions } from 'react-native';
 import { Text, Center, Spinner, useTheme } from 'native-base';
 import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
 import ModalView from '../components/ModalView';
-import { useSearch, useLists } from '../hooks';
+import { useSearch, useListsStore } from '../hooks';
 import i18n from '@iresucito/translations';
 import SongList from './SongList';
 import { Song } from '@iresucito/core';
@@ -18,7 +18,7 @@ const SongChooserDialog = (props: Props) => {
   const { colors } = useTheme();
   const { navigation, route } = props;
   const { searchItems } = useSearch();
-  const { setList } = useLists();
+  const [, listsActions] = useListsStore();
   const { target } = route.params;
   const { listName, listKey } = target;
 
@@ -45,11 +45,12 @@ const SongChooserDialog = (props: Props) => {
   const songAssign = useCallback(
     (song: Song) => {
       if (listName && listKey !== undefined) {
-        setList(listName, listKey, song.key);
+        // @ts-ignore
+        listsActions.setList(listName, listKey, song.key);
         navigation.goBack();
       }
     },
-    [navigation, listName, listKey, setList]
+    [navigation, listName, listKey]
   );
 
   const routes = useMemo(() => {
