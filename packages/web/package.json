@@ -41,9 +41,9 @@
     "@remix-run/vercel": "^1.15.0",
     "@types/diff": "^5.0.3",
     "@types/etag": "^1.8.1",
-    "@types/react": "^18.0.35",
+    "@types/react": "^18.0.37",
     "@types/react-json-editor-ajrm": "^2.5.3",
-    "@vercel/node": "^2.10.3",
+    "@vercel/node": "^2.11.0",
     "@vercel/remix": "^1.15.0",
     "base64-stream": "^1.0.0",
     "bcryptjs": "^2.4.3",
@@ -53,7 +53,7 @@
     "dropbox": "^10.34.0",
     "etag": "^1.8.1",
     "gmail-send": "^1.8.14",
-    "lowdb": "^5.1.0",
+    "lowdb": "^6.0.0",
     "node-fetch": "^3.3.1",
     "pdfjs-dist": "^3.5.141",
     "plist": "^3.0.6",
@@ -68,7 +68,7 @@
     "typescript": "^5.0.4",
     "use-debounce": "^9.0.4",
     "use-hotkeys": "^1.1.0",
-    "vercel": "^28.18.5"
+    "vercel": "^28.19.0"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
