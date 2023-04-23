@@ -593,12 +593,10 @@ export type BrotherContact = Contacts.Contact & {
 type UseCommunity = {
   brothers: BrotherContact[];
   deviceContacts: Contacts.Contact[];
-  loaded: boolean;
   add: (item: Contacts.Contact) => void;
   update: (id: string, item: Contacts.Contact) => void;
   remove: (item: BrotherContact) => void;
   addOrRemove: (contact: Contacts.Contact) => void;
-  populateDeviceContacts: () => Promise<void>;
 };
 
 const brothersStore = new GlobalStoreAsyncStorage<BrotherContact[], any>([], {
@@ -607,10 +605,79 @@ const brothersStore = new GlobalStoreAsyncStorage<BrotherContact[], any>([], {
 
 const useBrothersStore = brothersStore.getHook();
 
+const checkContactsPermission = async (
+  reqPerm: boolean
+) => {
+  if (Platform.OS === 'android') {
+    if (reqPerm) {
+      try {
+        const granted = await PermissionsAndroid.request(
+          PermissionsAndroid.PERMISSIONS.READ_CONTACTS
+        );
+        return granted === PermissionsAndroid.RESULTS.GRANTED;
+      } catch {
+        throw new Error('Sin permisos para leer contactos');
+      }
+    } else {
+      return PermissionsAndroid.check(
+        PermissionsAndroid.PERMISSIONS.READ_CONTACTS
+      );
+    }
+  } else {
+    const perm1 = await Contacts.checkPermission();
+    if (perm1 === 'undefined') {
+      if (reqPerm) {
+        return Contacts.requestPermission().then((perm2) => {
+          if (perm2 === 'authorized') {
+            return true;
+          }
+          if (perm2 === 'denied') {
+            throw new Error('denied');
+          }
+        });
+      } else {
+        throw new Error('denied');
+      }
+    }
+    if (perm1 === 'authorized') {
+      return true;
+    }
+    if (perm1 === 'denied') {
+      throw new Error('denied');
+    }
+  }
+};
+
+const getContacts = async (reqPerm: boolean) => {
+  const hasPermission = await checkContactsPermission(reqPerm);
+  if (hasPermission) {
+    return Contacts.getAll();
+  }
+  return [];
+};
+
+const contactsStore = new GlobalStore<Contacts.Contact[], any>([], {
+  metadata: {
+    loaded: false
+  }
+},
+  {
+    populateDeviceContacts(reqPerm: boolean) {
+      return async ({ getState, setState, setMetadata }) => {
+        const devCts = await getContacts(reqPerm);
+        setState(devCts);
+        setMetadata({ loaded: true });
+        return getState();
+      }
+    }
+  } as any
+);
+
+export const useContactsStore = contactsStore.getHook();
+
 export const useCommunity = (): UseCommunity => {
-  const [brothers, initBrothers, { isAsyncStorageReady }] = useBrothersStore();
-  const [loaded, setLoaded] = useState<boolean>(false);
-  const [deviceContacts, initDeviceContacts] = useState<Contacts.Contact[]>([]);
+  const [brothers, initBrothers, { isAsyncStorageReady: brothersLoaded }] = useBrothersStore();
+  const [deviceContacts, contactsActions] = useContactsStore();
 
   const add = (item: Contacts.Contact) => {
     var newBrother: BrotherContact = { s: false, ...item };
@@ -645,69 +712,15 @@ export const useCommunity = (): UseCommunity => {
     }
   };
 
-  const checkContactsPermission = async (
-    reqPerm: boolean
-  ): Promise<boolean | undefined> => {
-    if (Platform.OS === 'android') {
-      if (reqPerm) {
-        try {
-          const granted = await PermissionsAndroid.request(
-            PermissionsAndroid.PERMISSIONS.READ_CONTACTS
-          );
-          return granted === PermissionsAndroid.RESULTS.GRANTED;
-        } catch {
-          throw new Error('Sin permisos para leer contactos');
-        }
-      } else {
-        return PermissionsAndroid.check(
-          PermissionsAndroid.PERMISSIONS.READ_CONTACTS
-        );
-      }
-    } else {
-      const perm1 = await Contacts.checkPermission();
-      if (perm1 === 'undefined') {
-        if (reqPerm) {
-          return Contacts.requestPermission().then((perm2) => {
-            if (perm2 === 'authorized') {
-              return true;
-            }
-            if (perm2 === 'denied') {
-              throw new Error('denied');
-            }
-          });
-        } else {
-          throw new Error('denied');
-        }
-      }
-      if (perm1 === 'authorized') {
-        return true;
-      }
-      if (perm1 === 'denied') {
-        throw new Error('denied');
-      }
-    }
-  };
-
-  const getContacts = useCallback(
-    async (reqPerm: boolean): Promise<Contacts.Contact[]> => {
-      const hasPermission = await checkContactsPermission(reqPerm);
-      if (hasPermission) {
-        return Contacts.getAll();
-      }
-      return [];
-    },
-    []
-  );
-
   useEffect(() => {
-    if (!isAsyncStorageReady) {
+    if (!brothersLoaded) {
       return;
     }
     const refreshContacts = async () => {
       var loaded = [...brothers];
       try {
-        const devCts = await getContacts(false);
-        initDeviceContacts(devCts);
+        // @ts-ignore
+        const devCts = await contactsActions.populateDeviceContacts(false);
         brothers.forEach((c, idx) => {
           // tomar el contacto actualizado
           var devContact = devCts.find((x) => x.recordID === c.recordID);
@@ -721,13 +734,7 @@ export const useCommunity = (): UseCommunity => {
       }
     };
     refreshContacts();
-  }, [isAsyncStorageReady]);
-
-  const populateDeviceContacts = useCallback(async () => {
-    const devCts = await getContacts(true);
-    initDeviceContacts(devCts);
-    setLoaded(true);
-  }, [getContacts]);
+  }, [brothersLoaded]);
 
   return {
     brothers,
@@ -736,8 +743,6 @@ export const useCommunity = (): UseCommunity => {
     update,
     remove,
     addOrRemove,
-    populateDeviceContacts,
-    loaded,
   };
 };
 

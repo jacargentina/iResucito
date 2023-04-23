@@ -8,7 +8,7 @@ import { useIsFocused, useNavigation } from '@react-navigation/native';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import SwipeableRightAction from '../components/SwipeableRightAction';
 import SearchBarView from '../components/SearchBarView';
-import { useCommunity } from '../hooks';
+import { useCommunity, useContactsStore } from '../hooks';
 import CallToAction from '../components/CallToAction';
 import i18n from '@iresucito/translations';
 import useStackNavOptions from '../navigation/StackNavOptions';
@@ -113,7 +113,8 @@ type ContactImportNavigationProp = StackNavigationProp<
 >;
 
 const CommunityScreen = () => {
-  const { brothers, loaded, populateDeviceContacts } = useCommunity();
+  const { brothers } = useCommunity();
+  const [, contactsActions, { loaded }] = useContactsStore();
   const options = useStackNavOptions();
   const isFocused = useIsFocused();
   const navigation = useNavigation<ContactImportNavigationProp>();
@@ -143,20 +144,23 @@ const CommunityScreen = () => {
   }, [isFocused, filtered.length]);
 
   const contactImport = useCallback(() => {
-    const promise = !loaded ? populateDeviceContacts() : Promise.resolve();
-
-    promise
-      .then(() => {
+    const ensureLoaded = async () => {
+      try {
+        if (!loaded) {
+          // @ts-ignore
+          await contactsActions.populateDeviceContacts(true);
+        }
         navigation.navigate('ContactImport');
-      })
-      .catch(() => {
+      } catch {
         let message = i18n.t('alert_message.contacts permission');
         if (Platform.OS === 'ios') {
           message += '\n\n' + i18n.t('alert_message.contacts permission ios');
         }
         Alert.alert(i18n.t('alert_title.contacts permission'), message);
-      });
-  }, [navigation, loaded, populateDeviceContacts]);
+      }
+    }
+    ensureLoaded();
+  }, [navigation, loaded]);
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
