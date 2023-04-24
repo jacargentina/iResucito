@@ -12,14 +12,11 @@ import {
 export async function generatePDF(
   songsToPdf: Array<SongToPdf>,
   opts: ExportToPdfOptions,
-  fileSuffix: string,
+  filename: string,
   addIndex: boolean
 ): Promise<string | undefined> {
   const folder = os.tmpdir();
-  const pdfPath =
-    songsToPdf.length > 1
-      ? `${folder}/iResucito${fileSuffix}.pdf`
-      : `${folder}/${songsToPdf[0].song.titulo}.pdf`;
+  const pdfPath = `${folder}/${filename}.pdf`;
 
   var font = null;
   if (opts.useTimesRomanFont === false) {
@@ -35,7 +32,6 @@ export async function generatePDF(
   }
   var writer = new PdfWriter(font, new Base64Encode(), opts);
   const base64 = await SongPDFGenerator(songsToPdf, opts, writer, addIndex);
-  //console.log({ runningPath, fontPath, opts, pdfPath, base64 });
   if (base64) {
     fs.writeFileSync(pdfPath, Buffer.from(base64, 'base64'));
     return pdfPath;

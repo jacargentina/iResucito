@@ -3,6 +3,7 @@ import {
   defaultExportToPdfOptions,
   SongsParser,
   SongToPdf,
+  ExportToPdfOptions,
 } from '@iresucito/core';
 import i18n from '@iresucito/translations';
 import { generatePDF } from '~/pdf';
@@ -26,7 +27,11 @@ export let action: ActionFunction = async ({ request, params }) => {
   try {
     const parser = new SongsParser(PdfStyles);
     const items = [];
+    var addIndex = false;
+    var filename = '';
     if (key == 'full') {
+      addIndex = true;
+      filename = `iResucito-${locale}`;
       const patch = await globalThis.folderExtras.readPatch();
       const songs = globalThis.folderSongs.getSongsMeta(locale, patch);
       await globalThis.folderSongs.loadSongs(locale, songs, patch);
@@ -58,14 +63,17 @@ export let action: ActionFunction = async ({ request, params }) => {
         render,
       };
       items.push(item);
+      filename = song.titulo;
     }
+    const exportOpts: ExportToPdfOptions = {
+      ...defaultExportToPdfOptions,
+      ...JSON.parse(options),
+    };
     const pdfPath = await generatePDF(
       items,
-      {
-        ...defaultExportToPdfOptions,
-        ...JSON.parse(options),
-      },
-      ''
+      exportOpts,
+      filename,
+      addIndex
     );
     if (pdfPath) {
       const pdfBuffer = require('fs').readFileSync(pdfPath);

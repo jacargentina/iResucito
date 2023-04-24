@@ -6,16 +6,14 @@ import { Low, Adapter } from 'lowdb';
 import send from 'gmail-send';
 
 type DbType = {
-  users: [
-    {
-      email: string;
-      createdAt: number;
-      loggedInAt?: number;
-      isVerified: boolean;
-      password: string;
-    }
-  ];
-  tokens: [{ email: string; token: string }];
+  users: Array<{
+    email: string;
+    createdAt: number;
+    loggedInAt?: number;
+    isVerified: boolean;
+    password: string;
+  }>;
+  tokens: Array<{ email: string; token: string }>;
 };
 
 declare global {
@@ -76,7 +74,7 @@ class WebSongsExtras implements SongsExtras {
 
   constructor() {
     this.patch = new Low<SongIndexPatch>(
-      new DropboxJsonFile('SongsIndexPatch.json')
+      new DropboxJsonFile('SongsIndexPatch.json'), {}
     );
   }
 
@@ -91,7 +89,7 @@ class WebSongsExtras implements SongsExtras {
   }
 
   async deletePatch(): Promise<void> {
-    this.patch.data = null;
+    this.patch.data = {};
     await this.patch.write();
   }
 
@@ -146,7 +144,7 @@ if (globalThis.mailSender === undefined) {
 const setupDb = async () => {
   if (globalThis.db === undefined) {
     try {
-      var db = new Low<DbType>(new DropboxJsonFile('db.json'));
+      var db = new Low<DbType>(new DropboxJsonFile('db.json'), { users: [], tokens: [] });
       await db.read();
       if (db.data == null) {
         // @ts-ignore

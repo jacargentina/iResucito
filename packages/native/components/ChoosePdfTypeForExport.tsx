@@ -35,40 +35,38 @@ const ChoosePdfTypeForExport = (props: { chooser: any; setLoading: Function }) =
           {i18n.t('pdf_export_options.selected songs')}
         </Actionsheet.Item>
         <Actionsheet.Item
-          onPress={() => {
+          onPress={async () => {
             onClose();
             const localeNoCountry = i18n.locale.split('-')[0];
-            if (songs) {
-              const songToExport = songs.filter(
-                (s) =>
-                  s.files.hasOwnProperty(i18n.locale) ||
-                  s.files.hasOwnProperty(localeNoCountry)
-              );
-              var items: Array<SongToPdf> = songToExport.map((s) => {
-                return {
-                  song: s,
-                  render: NativeParser.getForRender(s.fullText, i18n.locale),
-                };
-              });
-              setLoading({
-                isLoading: true,
-                text: i18n.t('ui.export.processing songs', {
-                  total: songToExport.length,
-                }),
-              });
-              generateSongPDF(
-                items,
-                defaultExportToPdfOptions,
-                `-${i18n.locale}`,
-                true
-              ).then((path) => {
-                navigation.navigate('PDFViewer', {
-                  uri: path,
-                  title: i18n.t('pdf_export_options.complete book'),
-                });
-                setLoading({ isLoading: false, text: '' });
-              });
-            }
+
+            const songToExport = songs.filter(
+              (s) =>
+                s.files.hasOwnProperty(i18n.locale) ||
+                s.files.hasOwnProperty(localeNoCountry)
+            );
+            var items: Array<SongToPdf> = songToExport.map((s) => {
+              return {
+                song: s,
+                render: NativeParser.getForRender(s.fullText, i18n.locale),
+              };
+            });
+            setLoading({
+              isLoading: true,
+              text: i18n.t('ui.export.processing songs', {
+                total: songToExport.length,
+              }),
+            });
+            const path = await generateSongPDF(
+              items,
+              defaultExportToPdfOptions,
+              `iResucito-${i18n.locale}`,
+              true
+            );
+            navigation.navigate('PDFViewer', {
+              uri: path,
+              title: i18n.t('pdf_export_options.complete book'),
+            });
+            setLoading({ isLoading: false, text: '' });
           }}>
           {i18n.t('pdf_export_options.complete book')}
         </Actionsheet.Item>

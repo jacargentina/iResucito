@@ -3,7 +3,7 @@ import { Icon } from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import i18n from '@iresucito/translations';
-import { defaultExportToPdfOptions, SongToPdf } from '@iresucito/core';
+import { defaultExportToPdfOptions, ExportToPdfOptions, SongToPdf } from '@iresucito/core';
 import { NativeParser } from '../util';
 import { generateSongPDF } from '../pdf';
 import useStackNavOptions from '../navigation/StackNavOptions';
@@ -39,7 +39,7 @@ const ViewPdfButton = () => {
         marginRight: 8,
       }}
       color={options.headerTitleStyle.color}
-      onPress={() => {
+      onPress={async () => {
         const { fullText } = song;
         const render = NativeParser.getForRender(
           fullText,
@@ -50,14 +50,14 @@ const ViewPdfButton = () => {
           song,
           render,
         };
-        var exportOptions = Object.assign({}, defaultExportToPdfOptions, {
+        var exportOpts: ExportToPdfOptions = {
+          ...defaultExportToPdfOptions,
           disablePageNumbers: true,
-        });
-        generateSongPDF([item], exportOptions, '', false).then((path) => {
-          navigation.navigate('PDFViewer', {
-            uri: path,
-            title: song.titulo,
-          });
+        };
+        const path = await generateSongPDF([item], exportOpts, item.song.titulo, false);
+        navigation.navigate('PDFViewer', {
+          uri: path,
+          title: song.titulo,
         });
       }}
     />

@@ -146,7 +146,7 @@ const SongList = (props: { viewButton?: boolean; filter?: any; sort?: any; onPre
                 const path = await generateSongPDF(
                   items,
                   exportOpts,
-                  `-${i18n.locale}`,
+                  `iResucito-songsSelection-${i18n.locale}`,
                   false
                 );
                 navigation.navigate('PDFViewer', {

@@ -14,16 +14,13 @@ const Buffer = require('buffer').Buffer;
 export async function generateSongPDF(
   songsToPdf: Array<SongToPdf>,
   opts: ExportToPdfOptions,
-  fileSuffix: string,
+  filename: string,
   addIndex: boolean
 ): Promise<string> {
   const folder =
     Platform.OS === 'ios'
       ? RNFS.TemporaryDirectoryPath
       : RNFS.CachesDirectoryPath + '/';
-
-  const filename =
-    songsToPdf.length > 1 ? `${fileSuffix}` : `${songsToPdf[0].song.titulo}`;
 
   const safeFileName = filename.replace('/', '-');
   const pdfPath = `${folder}/iResucitó - ${safeFileName}.pdf`;
