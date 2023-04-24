@@ -857,8 +857,8 @@ export const SongPDFGenerator = async (
       writer.doc.y = writer.getCenteringY(
         title,
         titleFontSize +
-          writer.opts.bookTitle.Spacing +
-          writer.opts.bookSubtitle.FontSize
+        writer.opts.bookTitle.Spacing +
+        writer.opts.bookSubtitle.FontSize
       );
       writer.writeText(title, PdfStyles.title.color, titleFontSize, {
         align: 'center',
@@ -1086,15 +1086,13 @@ export const SongPDFGenerator = async (
       });
       // Ir al final
       writer.doc.switchToPage(writer.doc._pageBuffer.length - 1);
-      if (addIndex) {
-        writer.writePageNumber();
-        const assignItems = writer.listing.filter(
-          (l) => l.songKey === song.key
-        );
-        assignItems.forEach((i) => {
-          i.value = writer.doc.page.pageNumber;
-        });
-      }
+      writer.writePageNumber();
+      const assignItems = writer.listing.filter(
+        (l) => l.songKey === song.key
+      );
+      assignItems.forEach((i) => {
+        i.value = writer.doc.page.pageNumber;
+      });
     });
     writer.finalizeListing();
     return await writer.save();

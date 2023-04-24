@@ -17,7 +17,7 @@ import i18n from '@iresucito/translations';
 import { setSongSetting, useSongsSelection, useSongsStore } from '../hooks';
 import SongListItem from './SongListItem';
 import { SongsStackParamList } from '../navigation/SongsNavigator';
-import { Song, SongToPdf, defaultExportToPdfOptions } from '@iresucito/core';
+import { ExportToPdfOptions, Song, SongToPdf, defaultExportToPdfOptions } from '@iresucito/core';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { NativeParser } from '../util';
 import { generateSongPDF } from '../pdf';
@@ -139,9 +139,13 @@ const SongList = (props: { viewButton?: boolean; filter?: any; sort?: any; onPre
                     total: items.length,
                   }),
                 });
+                const exportOpts: ExportToPdfOptions = {
+                  ...defaultExportToPdfOptions,
+                  disablePageNumbers: true
+                }
                 const path = await generateSongPDF(
                   items,
-                  defaultExportToPdfOptions,
+                  exportOpts,
                   `-${i18n.locale}`,
                   false
                 );
