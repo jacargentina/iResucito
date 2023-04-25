@@ -1,1 +1,1 @@
-• Fixes notes transport not working on some songs
+• Fixes and performance improvements

@@ -1,1 +1,1 @@
-• Behoben, dass der Notentransport bei einigen Songs nicht funktionierte
+• Correcciones y mejoras en performance

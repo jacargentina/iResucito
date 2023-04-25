@@ -1,1 +1,1 @@
-• Corrigido o transporte de notas que não funcionava em algumas músicas
+• Correções e melhorias de desempenho
