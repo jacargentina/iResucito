@@ -6,13 +6,14 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useCatch,
   useLoaderData,
   useFetcher,
   useNavigate,
   useLocation,
+  useRouteError,
+  isRouteErrorResponse,
 } from '@remix-run/react';
-import { ErrorBoundaryComponent, LoaderFunction } from '@remix-run/node';
+import { LoaderFunction } from '@remix-run/node';
 import { authenticator } from './auth.server';
 import { AppProvider } from './app.context';
 import { getSession } from './session.server';
@@ -140,55 +141,28 @@ function Document({ children }: { children: any }) {
   );
 }
 
-export let ErrorBoundary: ErrorBoundaryComponent = ({ error }) => {
-  console.error(error);
-  return (
-    <ErrorDocument title="Error!">
+export function ErrorBoundary() {
+  const error: any = useRouteError();
+
+  // when true, this is what used to go to `CatchBoundary`
+  if (isRouteErrorResponse(error)) {
+    return (
       <div>
-        <h1>There was an error</h1>
-        <p>{error.message}</p>
-        <hr />
-        <p>
-          Hey, developer, you should replace this with what you want your users
-          to see.
-        </p>
+        <h1>Oops</h1>
+        <p>Status: {error.status}</p>
+        <p>{error.data.message}</p>
       </div>
-    </ErrorDocument>
-  );
-};
-
-export let CatchBoundary = () => {
-  let caught = useCatch();
-
-  let message;
-  switch (caught.status) {
-    case 401:
-      message = (
-        <p>
-          Oops! Looks like you tried to visit a page that you do not have access
-          to.
-        </p>
-      );
-      break;
-    case 404:
-      message = (
-        <p>Oops! Looks like you tried to visit a page that does not exist.</p>
-      );
-      break;
-
-    default:
-      throw new Error(caught.data || caught.statusText);
+    );
   }
 
+  let errorMessage = error.message;
+
   return (
-    <ErrorDocument title={`${caught.status} ${caught.statusText}`}>
-      <h1>
-        {caught.status}: {caught.statusText}
-      </h1>
-      {message}
+    <ErrorDocument title="Error!">
+      <h1>{errorMessage}</h1>
     </ErrorDocument>
   );
-};
+}
 
 function ErrorDocument({ children, title }: { children: any; title: string }) {
   return (

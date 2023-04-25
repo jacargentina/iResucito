@@ -9,7 +9,7 @@ import {
   Form,
   Grid,
 } from 'semantic-ui-react';
-import { useSubmit, useTransition } from '@remix-run/react';
+import { useSubmit, useNavigation } from '@remix-run/react';
 import { json, ActionFunction } from '@remix-run/node';
 import Layout from '~/components/Layout';
 import '~/utils.server';
@@ -72,7 +72,7 @@ on the email we've just sent to you!`,
 const ResetPassword = () => {
   const [email, setEmail] = useState('');
   const submit = useSubmit();
-  const transition = useTransition();
+  const navigation = useNavigation();
   return (
     <Layout>
       <div style={{ padding: 30, width: 500, margin: 'auto' }}>
@@ -100,7 +100,7 @@ const ResetPassword = () => {
                 <Button
                   primary
                   size="large"
-                  loading={transition.state !== 'idle'}
+                  loading={navigation.state !== 'idle'}
                   onClick={() => submit({ email }, { method: 'post' })}>
                   {i18n.t('ui.reset password')}
                 </Button>

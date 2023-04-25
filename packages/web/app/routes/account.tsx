@@ -3,7 +3,7 @@ import {
   useLoaderData,
   useSearchParams,
   useSubmit,
-  useTransition,
+  useNavigation,
 } from '@remix-run/react';
 import { ActionFunction, json, LoaderFunction } from '@remix-run/node';
 import { authenticator } from '~/auth.server';
@@ -48,12 +48,12 @@ export let loader: LoaderFunction = async ({ request }) => {
 };
 
 export function meta() {
-  return { title: i18n.t('ui.login') };
+  return [{ title: i18n.t('ui.login') }];
 }
 
 const Account = () => {
   const data = useLoaderData();
-  const transition = useTransition();
+  const navigation = useNavigation();
   const [searchParams] = useSearchParams();
   const app = useApp();
   const submit = useSubmit();
@@ -91,7 +91,7 @@ const Account = () => {
                       fluid
                       icon="user"
                       iconPosition="left"
-                      readOnly={transition.state !== 'idle'}
+                      readOnly={navigation.state !== 'idle'}
                       placeholder={i18n.t('ui.email')}
                       value={email}
                       onChange={(e, { value }) => {
@@ -104,7 +104,7 @@ const Account = () => {
                     fluid
                     icon="lock"
                     iconPosition="left"
-                    readOnly={transition.state !== 'idle'}
+                    readOnly={navigation.state !== 'idle'}
                     placeholder={i18n.t('ui.password')}
                     type="password"
                     value={password}
@@ -118,7 +118,7 @@ const Account = () => {
                     primary
                     size="large"
                     onClick={authenticate}
-                    loading={transition.state !== 'idle'}>
+                    loading={navigation.state !== 'idle'}>
                     {i18n.t('ui.login')}
                   </Button>
                   <Button
@@ -127,7 +127,7 @@ const Account = () => {
                     onClick={() => {
                       signUp();
                     }}
-                    disabled={transition.state !== 'idle'}>
+                    disabled={navigation.state !== 'idle'}>
                     {i18n.t('ui.signup')}
                   </Button>
                   <Divider hidden />

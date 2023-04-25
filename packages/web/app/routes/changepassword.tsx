@@ -93,7 +93,7 @@ export let loader: LoaderFunction = async ({ request }) => {
 };
 
 export function meta() {
-  return { title: i18n.t('ui.change password') };
+  return [{ title: i18n.t('ui.change password') }];
 }
 
 const ChangePassword = () => {
