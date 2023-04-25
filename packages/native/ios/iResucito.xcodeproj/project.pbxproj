@@ -853,7 +853,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 0;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = GHJ7J9LTV8;
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = GHJ7J9LTV8;
 				INFOPLIST_FILE = iResucito/Info.plist;
@@ -882,7 +882,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 0;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = GHJ7J9LTV8;
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = GHJ7J9LTV8;
 				INFOPLIST_FILE = iResucito/Info.plist;

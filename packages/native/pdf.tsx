@@ -23,7 +23,7 @@ export async function generateSongPDF(
       : RNFS.CachesDirectoryPath + '/';
 
   const safeFileName = filename.replace('/', '-');
-  const pdfPath = `${folder}/iResucitó - ${safeFileName}.pdf`;
+  const pdfPath = `${folder}/${safeFileName}.pdf`;
 
   const reader = Platform.OS === 'ios' ? RNFS.readFile : RNFS.readFileAssets;
   const fontFolder = Platform.OS === 'ios' ? RNFS.MainBundlePath : 'fonts';
@@ -48,7 +48,7 @@ export async function generateListPDF(
       : RNFS.CachesDirectoryPath + '/';
 
   const safeFileName = list.name.replace('/', '-');
-  const pdfPath = `${folder}/iResucito-${safeFileName}.pdf`;
+  const pdfPath = `${folder}/${safeFileName}.pdf`;
 
   const reader = Platform.OS === 'ios' ? RNFS.readFile : RNFS.readFileAssets;
   const fontFolder = Platform.OS === 'ios' ? RNFS.MainBundlePath : 'fonts';

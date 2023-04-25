@@ -59,7 +59,7 @@ const ChoosePdfTypeForExport = (props: { chooser: any; setLoading: Function }) =
             const path = await generateSongPDF(
               items,
               defaultExportToPdfOptions,
-              `iResucito-${i18n.locale}`,
+              `iResucitó-${i18n.locale}`,
               true
             );
             navigation.navigate('PDFViewer', {
