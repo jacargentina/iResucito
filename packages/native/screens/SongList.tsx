@@ -51,7 +51,6 @@ const SongList = (props: { viewButton?: boolean; filter?: any; sort?: any; onPre
   const options = useStackNavOptions();
 
   useAndroidBackHandler(() => {
-    // @ts-ignore
     if (enabled) selectionActions.disable();
     navigation.goBack();
     return true;
@@ -59,7 +58,6 @@ const SongList = (props: { viewButton?: boolean; filter?: any; sort?: any; onPre
 
   useFocusEffect(useCallback(() => {
     return () => {
-      // @ts-ignore
       if (enabled) selectionActions.disable();
     };
   }, [enabled]));
@@ -119,7 +117,6 @@ const SongList = (props: { viewButton?: boolean; filter?: any; sort?: any; onPre
             }}
             color={options.headerTitleStyle.color}
             onPress={() => {
-              // @ts-ignore
               selectionActions.disable()
             }}
           />}
@@ -155,7 +152,6 @@ const SongList = (props: { viewButton?: boolean; filter?: any; sort?: any; onPre
                 });
                 setLoading({ isLoading: false, text: '' });
               }
-              // @ts-ignore
               selectionActions.disable();
             } else {
               chooser.onOpen();

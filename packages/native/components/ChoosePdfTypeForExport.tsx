@@ -29,7 +29,6 @@ const ChoosePdfTypeForExport = (props: { chooser: any; setLoading: Function }) =
         <Actionsheet.Item
           onPress={() => {
             onClose();
-            // @ts-ignore
             selectionActions.enable();
           }}>
           {i18n.t('pdf_export_options.selected songs')}

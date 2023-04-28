@@ -147,7 +147,6 @@ const CommunityScreen = () => {
     const ensureLoaded = async () => {
       try {
         if (!loaded) {
-          // @ts-ignore
           await contactsActions.populateDeviceContacts(true);
         }
         navigation.navigate('ContactImport');

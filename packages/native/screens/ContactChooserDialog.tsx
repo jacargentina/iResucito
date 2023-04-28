@@ -33,7 +33,6 @@ const ContactChooserDialog = () => {
   }, [brothers, filter]);
 
   const contactSelected = (contact: Contacts.Contact) => {
-    // @ts-ignore
     listsActions.setList(target.listName, target.listKey, contact.givenName);
     navigation.goBack();
   };

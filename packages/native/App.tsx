@@ -28,7 +28,6 @@ const App = () => {
 
   useEffect(() => {
     if (songsMeta.lang !== locale) {
-      // @ts-ignore
       songsActions.load(locale);
     }
   }, [locale]);

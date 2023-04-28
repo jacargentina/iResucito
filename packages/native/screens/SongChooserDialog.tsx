@@ -45,7 +45,6 @@ const SongChooserDialog = (props: Props) => {
   const songAssign = useCallback(
     (song: Song) => {
       if (listName && listKey !== undefined) {
-        // @ts-ignore
         listsActions.setList(listName, listKey, song.key);
         navigation.goBack();
       }

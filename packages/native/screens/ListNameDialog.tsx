@@ -31,11 +31,9 @@ const ListNameDialog = () => {
 
   const runActionOnList = () => {
     if (action === 'create' && type) {
-      // @ts-ignore
       listsActions.add(name, type);
       navigation.navigate('ListDetail', { listName: name });
     } else if (action === 'rename') {
-      // @ts-ignore
       listsActions.rename(listName, name);
       navigation.goBack();
     }

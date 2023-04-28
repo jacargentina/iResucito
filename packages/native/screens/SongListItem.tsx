@@ -148,7 +148,6 @@ const SongListItem = (props: { song: Song; showBadge?: boolean; highlight: strin
         <Pressable
           onPress={() => {
             if (enabled) {
-              // @ts-ignore
               selectionActions.toggle(song.key);
             } else
               if (props.onPress) {

@@ -77,7 +77,6 @@ const SwipeableRow = (props: { item: any }) => {
                     {
                       text: i18n.t('ui.delete'),
                       onPress: () => {
-                        // @ts-ignore
                         listsActions.remove(item.name);
                       },
                       style: 'destructive',

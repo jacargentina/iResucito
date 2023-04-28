@@ -68,7 +68,8 @@ const songsStore = new GlobalStore(emptySongs, { metadata: { lang: undefined } }
         return getState();
       };
     }
-  } as any);
+  } as const
+);
 
 const [, songsActions] = songsStore.getHookDecoupled();
 
@@ -92,7 +93,6 @@ export const setSongSetting = async (
   });
   var json = JSON.stringify(settingsObj, null, ' ');
   await NativeExtras.saveSettings(json);
-  // @ts-ignore
   var updated = await songsActions.load(loc);
   return updated.find(song => song.key == key) as Song;
 }
@@ -107,32 +107,34 @@ const emptySelection: SelectionMode = {
   enabled: false
 }
 
-const songsSelectionStore = new GlobalStore(emptySelection, null, {
-  enable() {
-    return ({ setState, getState }) => {
-      setState({ selection: [], enabled: true });
-      return getState();
-    }
-  },
-  disable() {
-    return ({ setState, getState }) => {
-      setState({ selection: [], enabled: false });
-      return getState();
-    }
-  },
-  toggle(key: string) {
-    return async ({ setState, getState }) => {
-      var { selection, enabled } = getState() as SelectionMode;
-      if (selection.indexOf(key) > -1) {
-        selection.splice(selection.indexOf(key), 1);
-      } else {
-        selection.push(key);
+const songsSelectionStore = new GlobalStore(emptySelection, null,
+  {
+    enable() {
+      return ({ setState, getState }) => {
+        setState({ selection: [], enabled: true });
+        return getState();
       }
-      setState({ selection, enabled });
-      return getState();
+    },
+    disable() {
+      return ({ setState, getState }) => {
+        setState({ selection: [], enabled: false });
+        return getState();
+      }
+    },
+    toggle(key: string) {
+      return async ({ setState, getState }) => {
+        var { selection, enabled } = getState() as SelectionMode;
+        if (selection.indexOf(key) > -1) {
+          selection.splice(selection.indexOf(key), 1);
+        } else {
+          selection.push(key);
+        }
+        setState({ selection, enabled });
+        return getState();
+      }
     }
-  }
-} as any);
+  } as const
+);
 
 export const useSongsSelection = songsSelectionStore.getHook();
 
@@ -152,8 +154,8 @@ type UseLists = {
   importList: (listPath: string) => Promise<string | void>;
 };
 
-const listsStore = new GlobalStoreAsyncStorage<Lists, any>(
-  {},
+const listsStore = new GlobalStoreAsyncStorage(
+  {} as Lists,
   { asyncStorageKey: 'lists' },
   {
     add(listName: string, type: ListType) {
@@ -258,14 +260,20 @@ const listsStore = new GlobalStoreAsyncStorage<Lists, any>(
         return getState();
       }
     },
-  } as any
+    initialize(lists: Lists) {
+      return ({ setState, getState }) => {
+        setState(lists);
+        return getState();
+      }
+    }
+  } as const
 );
 
 export const useListsStore = listsStore.getHook();
 
 export const useLists = (): UseLists => {
   const [songs] = useSongsStore();
-  const [lists, initLists] = useListsStore();
+  const [lists, listActions] = useListsStore();
 
   const getListForUI = useCallback((listName: any) => {
     var uiList = Object.assign({}, lists[listName]);
@@ -313,7 +321,7 @@ export const useLists = (): UseLists => {
         const changedLists = Object.assign({}, lists, {
           [listName]: JSON.parse(content),
         });
-        initLists(changedLists);
+        listActions.initialize(changedLists);
         return listName;
       })
       .catch((err) => {
@@ -656,7 +664,9 @@ const getContacts = async (reqPerm: boolean) => {
   return [];
 };
 
-const contactsStore = new GlobalStore<Contacts.Contact[], any>([], {
+const emptyContacts: Array<Contacts.Contact> = [];
+
+const contactsStore = new GlobalStore(emptyContacts, {
   metadata: {
     loaded: false
   }
@@ -670,7 +680,7 @@ const contactsStore = new GlobalStore<Contacts.Contact[], any>([], {
         return getState();
       }
     }
-  } as any
+  } as const
 );
 
 export const useContactsStore = contactsStore.getHook();
@@ -719,7 +729,6 @@ export const useCommunity = (): UseCommunity => {
     const refreshContacts = async () => {
       var loaded = [...brothers];
       try {
-        // @ts-ignore
         const devCts = await contactsActions.populateDeviceContacts(false);
         brothers.forEach((c, idx) => {
           // tomar el contacto actualizado
@@ -752,8 +761,8 @@ export type SettingsType = {
   zoomLevel: number;
 };
 
-const settingsStore = new GlobalStoreAsyncStorage<SettingsType, any>(
-  { locale: 'default', keepAwake: true, zoomLevel: 1 },
+const settingsStore = new GlobalStoreAsyncStorage(
+  { locale: 'default', keepAwake: true, zoomLevel: 1 } as SettingsType,
   {
     asyncStorageKey: 'settings',
   }

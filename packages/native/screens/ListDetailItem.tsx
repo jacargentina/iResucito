@@ -47,7 +47,6 @@ const ListDetailItem = (props: {
             p="2"
             w="90%"
             onChangeText={(text) => {
-              // @ts-ignore
               listsActions.setList(listName, listKey, text);
             }}
             value={listText}
@@ -79,7 +78,6 @@ const ListDetailItem = (props: {
             p="2"
             w="85%"
             onChangeText={(text) => {
-              // @ts-ignore
               listsActions.setList(listName, listKey, text);
             }}
             value={listText}
@@ -106,7 +104,6 @@ const ListDetailItem = (props: {
       <VStack p="2">
         <TextArea
           onChangeText={(text) => {
-            // @ts-ignore
             listsActions.setList(listName, listKey, text);
           }}
           value={listText}
