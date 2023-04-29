@@ -282,12 +282,18 @@ export type SearchItem = {
 
 export type ListType = 'eucaristia' | 'palabra' | 'libre';
 
+export type ListAction = 'create' | 'rename';
+
 export type ListToPdf = {
   name: string;
   type: ListType;
   localeType: string;
   items: Array<any>;
 };
+
+export type ShareListType = 'native' | 'text' | 'pdf';
+
+export type SongSetting = 'transportTo' | 'rating';
 
 export const getLocalizedListItem = (listKey: string): string => {
   return i18n.t(`list_item.${listKey}`);

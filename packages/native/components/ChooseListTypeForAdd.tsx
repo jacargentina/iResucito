@@ -4,7 +4,7 @@ import type { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import { Text, Actionsheet } from 'native-base';
 import i18n from '@iresucito/translations';
 import type { RootStackParamList } from '../navigation/RootNavigator';
-import { ListType } from '../types';
+import { ListType } from '@iresucito/core';
 
 type ListNameScreenNavigationProp = BottomTabNavigationProp<
   RootStackParamList,

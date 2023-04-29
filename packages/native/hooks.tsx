@@ -19,6 +19,7 @@ import {
   Song,
   SearchItem,
   ListType,
+  ShareListType,
 } from '@iresucito/core';
 import i18n from '@iresucito/translations';
 import badges from './badges';
@@ -31,7 +32,6 @@ import {
   NativeSongs,
   NativeExtras,
 } from './util';
-import { ShareListType } from './types';
 
 const readSongSettingsFile = async (): Promise<
   SongSettingsFile | undefined

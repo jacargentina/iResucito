@@ -9,7 +9,7 @@ import SongPreviewPdfDialog from '../screens/SongPreviewPdfDialog';
 import MenuNavigator from './MenuNavigator';
 import SongChooserNavigator, { ChooserParamList } from './SongChooserNavigator';
 import useStackNavOptions from './StackNavOptions';
-import { ListAction, ListType } from '../types';
+import { ListAction, ListType } from '@iresucito/core';
 
 export type RootStackParamList = {
   Menu: undefined;
