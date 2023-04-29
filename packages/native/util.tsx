@@ -1,6 +1,6 @@
 // Utilerias atadas a react-native
 import { StyleSheet, Platform } from 'react-native';
-import * as RNLocalize from 'react-native-localize';
+import { getLocales } from 'react-native-localize';
 import * as RNFS from 'react-native-fs';
 import DeviceInfo from 'react-native-device-info';
 import { Contact } from 'react-native-contacts';
@@ -70,7 +70,7 @@ export function getContactsForImport(
 }
 
 export const getDefaultLocale = (): string => {
-  return RNLocalize.getLocales()[0].languageTag;
+  return getLocales()[0].languageTag;
 };
 
 var isTablet = __DEV__ ? false : DeviceInfo.isTablet();
