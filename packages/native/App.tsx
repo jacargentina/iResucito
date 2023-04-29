@@ -24,11 +24,11 @@ const theme = extendTheme({ colors: appTheme });
 
 const App = () => {
   const locale = useLocale();
-  const [, songsActions, songsMeta] = useSongsStore();
+  const songsState = useSongsStore();
 
   useEffect(() => {
-    if (songsMeta.lang !== locale) {
-      songsActions.load(locale);
+    if (songsState.lang !== locale) {
+      songsState.load(locale);
     }
   }, [locale]);
 

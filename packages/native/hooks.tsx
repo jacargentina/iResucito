@@ -24,8 +24,7 @@ import {
 import i18n from '@iresucito/translations';
 import badges from './badges';
 import { generateListPDF } from './pdf';
-import { GlobalStoreAsyncStorage } from './GlobalStoreAsyncStorage';
-import { GlobalStore } from 'react-native-global-state-hooks';
+import { create } from 'zustand';
 import {
   getDefaultLocale,
   ordenClasificacion,
@@ -48,32 +47,30 @@ const readSongSettingsFile = async (): Promise<
   }
 };
 
-const emptySongs: Song[] = [];
+type SongsStore = {
+  lang: string | undefined;
+  songs: Song[];
+  load: (loc: string) => Promise<Song[]>;
+}
 
-const songsStore = new GlobalStore(emptySongs, { metadata: { lang: undefined } },
-  {
-    load(loc: string) {
-      return async ({ setState, getState, setMetadata }) => {
-        setMetadata({ lang: loc });
-        var settingsObj = await readSongSettingsFile();
-        // Construir metadatos de cantos
-        var metaData = NativeSongs.getSongsMeta(
-          loc,
-          undefined,
-          settingsObj
-        );
-        console.log(`songsStore loading ${metaData.length} songs for "${loc}"`);
-        await NativeSongs.loadSongs(loc, metaData);
-        setState(metaData);
-        return getState();
-      };
-    }
-  } as const
-);
-
-const [, songsActions] = songsStore.getHookDecoupled();
-
-export const useSongsStore = songsStore.getHook();
+export const useSongsStore = create<SongsStore>((set) => ({
+  lang: undefined,
+  songs: [],
+  load: async (loc: string) => {
+    set({ lang: loc });
+    var settingsObj = await readSongSettingsFile();
+    // Construir metadatos de cantos
+    var metaData = NativeSongs.getSongsMeta(
+      loc,
+      undefined,
+      settingsObj
+    );
+    console.log(`songsStore loading ${metaData.length} songs for "${loc}"`);
+    await NativeSongs.loadSongs(loc, metaData);
+    set({ songs: metaData });
+    return metaData;
+  }
+}));
 
 export const setSongSetting = async (
   key: string,
@@ -93,50 +90,37 @@ export const setSongSetting = async (
   });
   var json = JSON.stringify(settingsObj, null, ' ');
   await NativeExtras.saveSettings(json);
-  var updated = await songsActions.load(loc);
+  var updated = await useSongsStore.getState().load(loc);
   return updated.find(song => song.key == key) as Song;
 }
 
-type SelectionMode = {
+type SelectionStore = {
   selection: string[];
   enabled: boolean;
 }
 
-const emptySelection: SelectionMode = {
+export const useSongsSelection = create<SelectionStore>((set, get) => ({
   selection: [],
-  enabled: false
-}
-
-const songsSelectionStore = new GlobalStore(emptySelection, null,
-  {
-    enable() {
-      return ({ setState, getState }) => {
-        setState({ selection: [], enabled: true });
-        return getState();
-      }
-    },
-    disable() {
-      return ({ setState, getState }) => {
-        setState({ selection: [], enabled: false });
-        return getState();
-      }
-    },
-    toggle(key: string) {
-      return async ({ setState, getState }) => {
-        var { selection, enabled } = getState() as SelectionMode;
-        if (selection.indexOf(key) > -1) {
-          selection.splice(selection.indexOf(key), 1);
-        } else {
-          selection.push(key);
-        }
-        setState({ selection, enabled });
-        return getState();
-      }
+  enabled: false,
+  enable: () => {
+    set({ selection: [], enabled: true });
+    return get();
+  },
+  disable: () => {
+    set({ selection: [], enabled: false });
+    return get();
+  },
+  toggle: (key: string) => {
+    var { selection, enabled } = get();
+    if (selection.indexOf(key) > -1) {
+      selection.splice(selection.indexOf(key), 1);
+    } else {
+      selection.push(key);
     }
-  } as const
-);
-
-export const useSongsSelection = songsSelectionStore.getHook();
+    set({ selection, enabled });
+    return get();
+  }
+}));
 
 type Lists = {
   [listName: string]: any;
@@ -154,126 +138,112 @@ type UseLists = {
   importList: (listPath: string) => Promise<string | void>;
 };
 
-const listsStore = new GlobalStoreAsyncStorage(
-  {} as Lists,
-  { asyncStorageKey: 'lists' },
-  {
-    add(listName: string, type: ListType) {
-      return ({ setState, getState }) => {
-        let schema = { type: type, version: 1 };
-        switch (type) {
-          case 'libre':
-            schema = Object.assign({}, schema, { items: [] });
-            break;
-          case 'palabra':
-            schema = Object.assign({}, schema, {
-              ambiental: null,
-              entrada: null,
-              '1-monicion': null,
-              '1': null,
-              '1-salmo': null,
-              '2-monicion': null,
-              '2': null,
-              '2-salmo': null,
-              '3-monicion': null,
-              '3': null,
-              '3-salmo': null,
-              'evangelio-monicion': null,
-              evangelio: null,
-              salida: null,
-              nota: null,
-            });
-            break;
-          case 'eucaristia':
-            schema = Object.assign({}, schema, {
-              ambiental: null,
-              entrada: null,
-              '1-monicion': null,
-              '1': null,
-              '2-monicion': null,
-              '2': null,
-              'evangelio-monicion': null,
-              evangelio: null,
-              'oracion-universal': null,
-              paz: null,
-              'comunion-pan': null,
-              'comunion-caliz': null,
-              salida: null,
-              'encargado-pan': null,
-              'encargado-flores': null,
-              nota: null,
-            });
-            break;
+type ListsStore = {
+  lists: Lists,
+  add: (listName: string, type: ListType) => Lists;
+};
+
+export const useListsStore = create<ListsStore>((set, get) => ({
+  lists: [],
+  add: (listName: string, type: ListType) => {
+    let schema = { type: type, version: 1 };
+    switch (type) {
+      case 'libre':
+        schema = Object.assign({}, schema, { items: [] });
+        break;
+      case 'palabra':
+        schema = Object.assign({}, schema, {
+          ambiental: null,
+          entrada: null,
+          '1-monicion': null,
+          '1': null,
+          '1-salmo': null,
+          '2-monicion': null,
+          '2': null,
+          '2-salmo': null,
+          '3-monicion': null,
+          '3': null,
+          '3-salmo': null,
+          'evangelio-monicion': null,
+          evangelio: null,
+          salida: null,
+          nota: null,
+        });
+        break;
+      case 'eucaristia':
+        schema = Object.assign({}, schema, {
+          ambiental: null,
+          entrada: null,
+          '1-monicion': null,
+          '1': null,
+          '2-monicion': null,
+          '2': null,
+          'evangelio-monicion': null,
+          evangelio: null,
+          'oracion-universal': null,
+          paz: null,
+          'comunion-pan': null,
+          'comunion-caliz': null,
+          salida: null,
+          'encargado-pan': null,
+          'encargado-flores': null,
+          nota: null,
+        });
+        break;
+    }
+    var { lists } = get();
+    lists[listName] = schema;
+    set({ lists });
+    return get().lists;
+  },
+  rename: (listName: string, newName: string) => {
+    var { lists } = get();
+    const list = lists[listName];
+    delete lists[listName];
+    lists[newName] = list;
+    set({ lists });
+    return get().lists;
+  },
+  remove: (listName: string) => {
+    var { lists } = get();
+    delete lists[listName];
+    set({ lists });
+    return get().lists;
+  },
+  setList: (listName: string, listKey: string, listValue: any) => {
+    var { lists } = get();
+    const targetList = lists[listName];
+    var schema;
+    if (listValue !== undefined) {
+      if (typeof listKey === 'string') {
+        schema = Object.assign({}, targetList, { [listKey]: listValue });
+      } else if (typeof listKey === 'number') {
+        var isPresent = targetList.items.find((s: any) => s === listValue);
+        if (isPresent) {
+          return;
         }
-        var lists = getState();
-        lists[listName] = schema;
-        setState(lists);
-        return getState();
-      };
-    },
-    rename(listName: string, newName: string) {
-      return ({ setState, getState }) => {
-        var lists = getState();
-        const list = lists[listName];
-        delete lists[listName];
-        lists[newName] = list;
-        setState(lists);
-        return getState();
-      };
-    },
-    remove(listName: string) {
-      return ({ setState, getState }) => {
-        var lists = getState();
-        delete lists[listName];
-        setState(lists);
-        return getState();
-      };
-    },
-    setList(listName: string, listKey: string, listValue: any) {
-      return ({ setState, getState }) => {
-        var lists = getState();
-        const targetList = lists[listName];
-        var schema;
-        if (listValue !== undefined) {
-          if (typeof listKey === 'string') {
-            schema = Object.assign({}, targetList, { [listKey]: listValue });
-          } else if (typeof listKey === 'number') {
-            var isPresent = targetList.items.find((s: any) => s === listValue);
-            if (isPresent) {
-              return;
-            }
-            var newItems = Object.assign([], targetList.items);
-            newItems[listKey] = listValue;
-            schema = Object.assign({}, targetList, { items: newItems });
-          }
-        } else {
-          if (typeof listKey === 'string') {
-            var { [listKey]: omit, ...schema } = targetList;
-          } else if (typeof listKey === 'number') {
-            var newItems = Object.assign([], targetList.items);
-            newItems.splice(listKey, 1);
-            schema = Object.assign({}, targetList, { items: newItems });
-          }
-        }
-        lists[listName] = schema;
-        setState(lists);
-        return getState();
+        var newItems = Object.assign([], targetList.items);
+        newItems[listKey] = listValue;
+        schema = Object.assign({}, targetList, { items: newItems });
       }
-    },
-    initialize(lists: Lists) {
-      return ({ setState, getState }) => {
-        setState(lists);
-        return getState();
+    } else {
+      if (typeof listKey === 'string') {
+        var { [listKey]: omit, ...schema } = targetList;
+      } else if (typeof listKey === 'number') {
+        var newItems = Object.assign([], targetList.items);
+        newItems.splice(listKey, 1);
+        schema = Object.assign({}, targetList, { items: newItems });
       }
     }
-  } as const
-);
-
-export const useListsStore = listsStore.getHook();
+    lists[listName] = schema;
+    set({ lists });
+    return get().lists;
+  }
+}));
 
 export const useLists = (): UseLists => {
-  const [songs] = useSongsStore();
-  const [lists, listActions] = useListsStore();
+  const songs = useSongsStore((state) => state.songs);
+  const { lists } = useListsStore();
 
   const getListForUI = useCallback((listName: any) => {
     var uiList = Object.assign({}, lists[listName]);
@@ -321,7 +291,7 @@ export const useLists = (): UseLists => {
         const changedLists = Object.assign({}, lists, {
           [listName]: JSON.parse(content),
         });
-        listActions.initialize(changedLists);
+        useListsStore.setState({ lists: changedLists });
         return listName;
       })
       .catch((err) => {
