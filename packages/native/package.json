@@ -51,6 +51,7 @@
     "babel-loader": "^9.1.2",
     "base64-stream": "^1.0.0",
     "color": "^4.2.3",
+    "immer": "^10.0.1",
     "json-storage-formatter": "^1.0.7",
     "metro-react-native-babel-preset": "^0.76.3",
     "native-base": "^3.4.28",

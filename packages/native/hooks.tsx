@@ -26,6 +26,7 @@ import badges from './badges';
 import { generateListPDF } from './pdf';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware'
+import { produce } from "immer"
 import {
   getDefaultLocale,
   ordenClasificacion,
@@ -145,114 +146,122 @@ type UseLists = {
 
 type ListsStore = {
   lists: Lists,
-  add: (listName: string, type: ListType) => Lists;
-  rename: (listName: string, newName: string) => Lists;
-  remove: (listName: string) => Lists;
+  add: (listName: string, type: ListType) => void;
+  rename: (listName: string, newName: string) => void;
+  remove: (listName: string) => void;
   setList: (listName: string, listKey: string, listValue: any) => void;
+  _hasHydrated: boolean;
+  setHasHydrated: (state: boolean) => void;
 };
 
 export const useListsStore = create<ListsStore>()(
   persist(
     (set, get) => ({
-      lists: [],
+      lists: {},
+      _hasHydrated: false,
+      setHasHydrated: (state: boolean) => {
+        set({
+          _hasHydrated: state
+        });
+      },
       add: (listName: string, type: ListType) => {
-        let schema = { type: type, version: 1 };
-        switch (type) {
-          case 'libre':
-            schema = Object.assign({}, schema, { items: [] });
-            break;
-          case 'palabra':
-            schema = Object.assign({}, schema, {
-              ambiental: null,
-              entrada: null,
-              '1-monicion': null,
-              '1': null,
-              '1-salmo': null,
-              '2-monicion': null,
-              '2': null,
-              '2-salmo': null,
-              '3-monicion': null,
-              '3': null,
-              '3-salmo': null,
-              'evangelio-monicion': null,
-              evangelio: null,
-              salida: null,
-              nota: null,
-            });
-            break;
-          case 'eucaristia':
-            schema = Object.assign({}, schema, {
-              ambiental: null,
-              entrada: null,
-              '1-monicion': null,
-              '1': null,
-              '2-monicion': null,
-              '2': null,
-              'evangelio-monicion': null,
-              evangelio: null,
-              'oracion-universal': null,
-              paz: null,
-              'comunion-pan': null,
-              'comunion-caliz': null,
-              salida: null,
-              'encargado-pan': null,
-              'encargado-flores': null,
-              nota: null,
-            });
-            break;
-        }
-        var { lists } = get();
-        lists[listName] = schema;
-        set({ lists });
-        return get().lists;
+        set(produce((state: ListsStore) => {
+          let schema = { type: type, version: 1 };
+          switch (type) {
+            case 'libre':
+              schema = Object.assign({}, schema, { items: [] });
+              break;
+            case 'palabra':
+              schema = Object.assign({}, schema, {
+                ambiental: null,
+                entrada: null,
+                '1-monicion': null,
+                '1': null,
+                '1-salmo': null,
+                '2-monicion': null,
+                '2': null,
+                '2-salmo': null,
+                '3-monicion': null,
+                '3': null,
+                '3-salmo': null,
+                'evangelio-monicion': null,
+                evangelio: null,
+                salida: null,
+                nota: null,
+              });
+              break;
+            case 'eucaristia':
+              schema = Object.assign({}, schema, {
+                ambiental: null,
+                entrada: null,
+                '1-monicion': null,
+                '1': null,
+                '2-monicion': null,
+                '2': null,
+                'evangelio-monicion': null,
+                evangelio: null,
+                'oracion-universal': null,
+                paz: null,
+                'comunion-pan': null,
+                'comunion-caliz': null,
+                salida: null,
+                'encargado-pan': null,
+                'encargado-flores': null,
+                nota: null,
+              });
+              break;
+          }
+          state.lists[listName] = schema;
+        }));
       },
       rename: (listName: string, newName: string) => {
-        var { lists } = get();
-        const list = lists[listName];
-        delete lists[listName];
-        lists[newName] = list;
-        set({ lists });
-        return get().lists;
+        set(produce((state: ListsStore) => {
+          const list = state.lists[listName];
+          delete state.lists[listName];
+          state.lists[newName] = list;
+        }));
       },
       remove: (listName: string) => {
-        var { lists } = get();
-        delete lists[listName];
-        set({ lists });
-        return get().lists;
+        set(produce((state: ListsStore) => {
+          delete state.lists[listName];
+        }));
       },
       setList: (listName: string, listKey: string, listValue: any) => {
-        var { lists } = get();
-        const targetList = lists[listName];
-        var schema;
-        if (listValue !== undefined) {
-          if (typeof listKey === 'string') {
-            schema = Object.assign({}, targetList, { [listKey]: listValue });
-          } else if (typeof listKey === 'number') {
-            var isPresent = targetList.items.find((s: any) => s === listValue);
-            if (isPresent) {
-              return;
+        set(produce((state: ListsStore) => {
+          const targetList = state.lists[listName];
+          var schema;
+          if (listValue !== undefined) {
+            if (typeof listKey === 'string') {
+              schema = Object.assign({}, targetList, { [listKey]: listValue });
+            } else if (typeof listKey === 'number') {
+              var isPresent = targetList.items.find((s: any) => s === listValue);
+              if (isPresent) {
+                return;
+              }
+              var newItems = Object.assign([], targetList.items);
+              newItems[listKey] = listValue;
+              schema = Object.assign({}, targetList, { items: newItems });
             }
-            var newItems = Object.assign([], targetList.items);
-            newItems[listKey] = listValue;
-            schema = Object.assign({}, targetList, { items: newItems });
+          } else {
+            if (typeof listKey === 'string') {
+              var { [listKey]: omit, ...schema } = targetList;
+            } else if (typeof listKey === 'number') {
+              var newItems = Object.assign([], targetList.items);
+              newItems.splice(listKey, 1);
+              schema = Object.assign({}, targetList, { items: newItems });
+            }
           }
-        } else {
-          if (typeof listKey === 'string') {
-            var { [listKey]: omit, ...schema } = targetList;
-          } else if (typeof listKey === 'number') {
-            var newItems = Object.assign([], targetList.items);
-            newItems.splice(listKey, 1);
-            schema = Object.assign({}, targetList, { items: newItems });
-          }
-        }
-        lists[listName] = schema;
-        set({ lists });
-        return get().lists;
+          state.lists[listName] = schema;
+        }))
       }
     }),
     {
       name: 'lists',
       storage: createJSONStorage(() => AsyncStorage),
+      partialize: (state) => ({ lists: state.lists }),
+      onRehydrateStorage: () => (state) => {
+        state?.setHasHydrated(true)
+      }
     }
   ));
 
@@ -612,6 +621,7 @@ export const useBrothersStore = create<BrothersStore>()(
     {
       name: 'contacts',
       storage: createJSONStorage(() => AsyncStorage),
+      partialize: (state) => ({ brothers: state.brothers }),
       onRehydrateStorage: () => (state) => {
         state?.setHasHydrated(true)
       }
@@ -779,6 +789,11 @@ export const useSettingsStore = create<SettingsStore>()(
     {
       name: 'settings',
       storage: createJSONStorage(() => AsyncStorage),
+      partialize: (state) => ({
+        locale: state.locale,
+        keepAwake: state.keepAwake,
+        zoomLevel: state.zoomLevel
+      }),
       onRehydrateStorage: () => (state) => {
         state?.setHasHydrated(true)
       }
