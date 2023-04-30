@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState, useMemo, useEffect, useCallback, useRef } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import {
   Pressable,
   VStack,
@@ -36,7 +36,6 @@ type ListScreenNavigationProp = CompositeNavigationProp<
 >;
 
 const SwipeableRow = (props: { item: any }) => {
-  const [, listsActions] = useListsStore();
   const navigation = useNavigation<ListScreenNavigationProp>();
   const { colors } = useTheme();
   const { item } = props;
@@ -77,7 +76,7 @@ const SwipeableRow = (props: { item: any }) => {
                     {
                       text: i18n.t('ui.delete'),
                       onPress: () => {
-                        listsActions.remove(item.name);
+                        useListsStore.getState().remove(item.name);
                       },
                       style: 'destructive',
                     },
@@ -135,7 +134,7 @@ const getListsForUI = (lists: any, localeValue: string): ListForUI[] => {
 };
 
 const ListScreen = () => {
-  const [lists] = useListsStore();
+  const { lists } = useListsStore();
   const navigation = useNavigation();
   const [filtered, setFiltered] = useState<ListForUI[]>([]);
   const [filter, setFilter] = useState('');

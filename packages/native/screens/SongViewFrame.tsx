@@ -11,7 +11,7 @@ import { NativeParser, NativeStyles } from '../util';
 import SongViewLines from './SongViewLines';
 
 const SongViewFrame = (props: any) => {
-  const [{ zoomLevel, ...rest }, setSettings] = useSettingsStore();
+  const { zoomLevel } = useSettingsStore();
   const { title, stage, source, text, transportToNote, error, style } = props;
   const backColor = color(colors[stage]);
   const background = backColor.lighten(0.1).string();
@@ -28,14 +28,14 @@ const SongViewFrame = (props: any) => {
   const zoomOut = () => {
     if (zoomLevel > 1) {
       var newzoom = (zoomLevel - 0.1).toFixed(2);
-      setSettings({ ...rest, zoomLevel: parseFloat(newzoom) });
+      useSettingsStore.setState({ zoomLevel: parseFloat(newzoom) });
     }
   };
 
   const zoomIn = () => {
     if (zoomLevel < 2.2) {
       var newzoom = (zoomLevel + 0.1).toFixed(2);
-      setSettings({ ...rest, zoomLevel: parseFloat(newzoom) });
+      useSettingsStore.setState({ zoomLevel: parseFloat(newzoom) });
     }
   };
 

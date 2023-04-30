@@ -10,7 +10,7 @@ type SongDetailRouteProp = RouteProp<SongsStackParamList, 'SongDetail'>;
 
 const SongDetail = () => {
   const route = useRoute<SongDetailRouteProp>();
-  const [{ keepAwake }] = useSettingsStore();
+  const { keepAwake } = useSettingsStore();
   const { song } = route.params;
 
   useEffect(() => {

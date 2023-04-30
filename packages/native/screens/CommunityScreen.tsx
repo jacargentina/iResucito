@@ -114,7 +114,7 @@ type ContactImportNavigationProp = StackNavigationProp<
 
 const CommunityScreen = () => {
   const { brothers } = useCommunity();
-  const [, contactsActions, { loaded }] = useContactsStore();
+  const { loaded } = useContactsStore();
   const options = useStackNavOptions();
   const isFocused = useIsFocused();
   const navigation = useNavigation<ContactImportNavigationProp>();
@@ -147,7 +147,7 @@ const CommunityScreen = () => {
     const ensureLoaded = async () => {
       try {
         if (!loaded) {
-          await contactsActions.populateDeviceContacts(true);
+          await useContactsStore.getState().populateDeviceContacts(true);
         }
         navigation.navigate('ContactImport');
       } catch {

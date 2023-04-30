@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef } from 'react';
 import { Alert, ScrollView, View } from 'react-native';
 import { VStack, Text, useTheme } from 'native-base';
 import { RouteProp, useRoute } from '@react-navigation/native';
@@ -18,7 +18,6 @@ const SwipeableRow = (props: {
   const { listName, listKey, song } = props;
   const swipeRef = useRef<Swipeable>(null);
   const { colors } = useTheme();
-  const [, listsActions] = useListsStore();
 
   return (
     <Swipeable
@@ -42,7 +41,7 @@ const SwipeableRow = (props: {
                     {
                       text: i18n.t('ui.delete'),
                       onPress: () => {
-                        listsActions.setList(listName, listKey, undefined);
+                        useListsStore.getState().setList(listName, listKey, undefined);
                       },
                       style: 'destructive',
                     },

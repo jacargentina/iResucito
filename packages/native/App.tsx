@@ -27,7 +27,7 @@ const App = () => {
   const songsState = useSongsStore();
 
   useEffect(() => {
-    if (songsState.lang !== locale) {
+    if (locale != undefined && songsState.lang !== locale) {
       songsState.load(locale);
     }
   }, [locale]);

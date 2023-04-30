@@ -16,7 +16,7 @@ import {
 } from '@react-navigation/native';
 import { getLocalizedListItem } from '@iresucito/core';
 import i18n from '@iresucito/translations';
-import { useLists, useListsStore } from '../hooks';
+import { useListsStore } from '../hooks';
 import { RootStackParamList } from '../navigation/RootNavigator';
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -33,7 +33,6 @@ const ListDetailItem = (props: {
   listText: any;
   inputProps?: any;
 }) => {
-  const [, listsActions] = useListsStore();
   const navigation = useNavigation<ListDetailItemNavigationProp>();
   const { listName, listKey, listText, inputProps } = props;
 
@@ -47,7 +46,7 @@ const ListDetailItem = (props: {
             p="2"
             w="90%"
             onChangeText={(text) => {
-              listsActions.setList(listName, listKey, text);
+              useListsStore.getState().setList(listName, listKey, text);
             }}
             value={listText}
             clearButtonMode="always"
@@ -78,7 +77,7 @@ const ListDetailItem = (props: {
             p="2"
             w="85%"
             onChangeText={(text) => {
-              listsActions.setList(listName, listKey, text);
+              useListsStore.getState().setList(listName, listKey, text);
             }}
             value={listText}
             clearButtonMode="always"
@@ -104,7 +103,7 @@ const ListDetailItem = (props: {
       <VStack p="2">
         <TextArea
           onChangeText={(text) => {
-            listsActions.setList(listName, listKey, text);
+            useListsStore.getState().setList(listName, listKey, text);
           }}
           value={listText}
           autoCorrect={false}

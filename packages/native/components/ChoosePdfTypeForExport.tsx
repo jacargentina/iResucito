@@ -18,8 +18,7 @@ type PDFViewerScreenNavigationProp = StackNavigationProp<
 const ChoosePdfTypeForExport = (props: { chooser: any; setLoading: Function }) => {
   const { isOpen, onClose } = props.chooser;
   const { setLoading } = props;
-  const [songs] = useSongsStore();
-  const [, selectionActions] = useSongsSelection();
+  const { songs } = useSongsStore();
   const navigation = useNavigation<PDFViewerScreenNavigationProp>();
 
   return (
@@ -29,7 +28,7 @@ const ChoosePdfTypeForExport = (props: { chooser: any; setLoading: Function }) =
         <Actionsheet.Item
           onPress={() => {
             onClose();
-            selectionActions.enable();
+            useSongsSelection.getState().enable();
           }}>
           {i18n.t('pdf_export_options.selected songs')}
         </Actionsheet.Item>

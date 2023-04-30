@@ -51,7 +51,7 @@ type ViewSongScreenNavigationProp = StackNavigationProp<
 const SongListItem = (props: { song: Song; showBadge?: boolean; highlight: string; viewButton: boolean; onPress: any; setSongSetting: any }) => {
   const { colors } = useTheme();
   const navigation = useNavigation<ViewSongScreenNavigationProp>();
-  const [{ selection, enabled }, selectionActions] = useSongsSelection();
+  const { selection, enabled, toggle } = useSongsSelection();
   const {
     song,
     highlight,
@@ -148,7 +148,7 @@ const SongListItem = (props: { song: Song; showBadge?: boolean; highlight: strin
         <Pressable
           onPress={() => {
             if (enabled) {
-              selectionActions.toggle(song.key);
+              toggle(song.key);
             } else
               if (props.onPress) {
                 props.onPress(song);

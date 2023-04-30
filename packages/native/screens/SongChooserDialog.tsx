@@ -18,7 +18,6 @@ const SongChooserDialog = (props: Props) => {
   const { colors } = useTheme();
   const { navigation, route } = props;
   const { searchItems } = useSearch();
-  const [, listsActions] = useListsStore();
   const { target } = route.params;
   const { listName, listKey } = target;
 
@@ -45,7 +44,7 @@ const SongChooserDialog = (props: Props) => {
   const songAssign = useCallback(
     (song: Song) => {
       if (listName && listKey !== undefined) {
-        listsActions.setList(listName, listKey, song.key);
+        useListsStore.getState().setList(listName, listKey, song.key);
         navigation.goBack();
       }
     },

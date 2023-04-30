@@ -34,12 +34,11 @@ type SettingsNavigationProp = StackNavigationProp<
 >;
 
 const SettingsScreen = () => {
-  const settings = useSettingsStore();
+  const { locale, zoomLevel, keepAwake } = useSettingsStore();
   const navigation = useNavigation<SettingsNavigationProp>();
-  const [{ locale, zoomLevel, keepAwake }, setSettings] = settings;
   const [version, setVersion] = useState('');
   const [songsResume, setSongsResume] = useState('-');
-  const [songs] = useSongsStore();
+  const { songs } = useSongsStore();
   const [settingsExists, setSettingsExists] = useState(false);
 
   useAndroidBackHandler(() => {
@@ -123,7 +122,7 @@ const SettingsScreen = () => {
             // Workaround de problema en Android
             // https://github.com/facebook/react-native/issues/15556
             setTimeout(() => {
-              setSettings({ keepAwake, zoomLevel, locale: val });
+              useSettingsStore.setState({ locale: val });
               // Para forzar refresco del titulo segun idioma nuevo
               navigation.setParams({ title: '' });
             }, 10);
@@ -151,7 +150,7 @@ const SettingsScreen = () => {
         <Switch
           value={keepAwake}
           onValueChange={(val: boolean) =>
-            setSettings({ keepAwake: val, zoomLevel, locale })
+            useSettingsStore.setState({ keepAwake: val })
           }
         />
       </HStack>

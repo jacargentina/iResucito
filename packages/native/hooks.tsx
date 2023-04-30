@@ -25,12 +25,14 @@ import i18n from '@iresucito/translations';
 import badges from './badges';
 import { generateListPDF } from './pdf';
 import { create } from 'zustand';
+import { createJSONStorage, persist } from 'zustand/middleware'
 import {
   getDefaultLocale,
   ordenClasificacion,
   NativeSongs,
   NativeExtras,
 } from './util';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const readSongSettingsFile = async (): Promise<
   SongSettingsFile | undefined
@@ -97,6 +99,9 @@ export const setSongSetting = async (
 type SelectionStore = {
   selection: string[];
   enabled: boolean;
+  enable: () => void;
+  disable: () => void;
+  toggle: (key: string) => void;
 }
 
 export const useSongsSelection = create<SelectionStore>((set, get) => ({
@@ -141,105 +146,115 @@ type UseLists = {
 type ListsStore = {
   lists: Lists,
   add: (listName: string, type: ListType) => Lists;
+  rename: (listName: string, newName: string) => Lists;
+  remove: (listName: string) => Lists;
+  setList: (listName: string, listKey: string, listValue: any) => void;
 };
 
-export const useListsStore = create<ListsStore>((set, get) => ({
-  lists: [],
-  add: (listName: string, type: ListType) => {
-    let schema = { type: type, version: 1 };
-    switch (type) {
-      case 'libre':
-        schema = Object.assign({}, schema, { items: [] });
-        break;
-      case 'palabra':
-        schema = Object.assign({}, schema, {
-          ambiental: null,
-          entrada: null,
-          '1-monicion': null,
-          '1': null,
-          '1-salmo': null,
-          '2-monicion': null,
-          '2': null,
-          '2-salmo': null,
-          '3-monicion': null,
-          '3': null,
-          '3-salmo': null,
-          'evangelio-monicion': null,
-          evangelio: null,
-          salida: null,
-          nota: null,
-        });
-        break;
-      case 'eucaristia':
-        schema = Object.assign({}, schema, {
-          ambiental: null,
-          entrada: null,
-          '1-monicion': null,
-          '1': null,
-          '2-monicion': null,
-          '2': null,
-          'evangelio-monicion': null,
-          evangelio: null,
-          'oracion-universal': null,
-          paz: null,
-          'comunion-pan': null,
-          'comunion-caliz': null,
-          salida: null,
-          'encargado-pan': null,
-          'encargado-flores': null,
-          nota: null,
-        });
-        break;
-    }
-    var { lists } = get();
-    lists[listName] = schema;
-    set({ lists });
-    return get().lists;
-  },
-  rename: (listName: string, newName: string) => {
-    var { lists } = get();
-    const list = lists[listName];
-    delete lists[listName];
-    lists[newName] = list;
-    set({ lists });
-    return get().lists;
-  },
-  remove: (listName: string) => {
-    var { lists } = get();
-    delete lists[listName];
-    set({ lists });
-    return get().lists;
-  },
-  setList: (listName: string, listKey: string, listValue: any) => {
-    var { lists } = get();
-    const targetList = lists[listName];
-    var schema;
-    if (listValue !== undefined) {
-      if (typeof listKey === 'string') {
-        schema = Object.assign({}, targetList, { [listKey]: listValue });
-      } else if (typeof listKey === 'number') {
-        var isPresent = targetList.items.find((s: any) => s === listValue);
-        if (isPresent) {
-          return;
+export const useListsStore = create<ListsStore>()(
+  persist(
+    (set, get) => ({
+      lists: [],
+      add: (listName: string, type: ListType) => {
+        let schema = { type: type, version: 1 };
+        switch (type) {
+          case 'libre':
+            schema = Object.assign({}, schema, { items: [] });
+            break;
+          case 'palabra':
+            schema = Object.assign({}, schema, {
+              ambiental: null,
+              entrada: null,
+              '1-monicion': null,
+              '1': null,
+              '1-salmo': null,
+              '2-monicion': null,
+              '2': null,
+              '2-salmo': null,
+              '3-monicion': null,
+              '3': null,
+              '3-salmo': null,
+              'evangelio-monicion': null,
+              evangelio: null,
+              salida: null,
+              nota: null,
+            });
+            break;
+          case 'eucaristia':
+            schema = Object.assign({}, schema, {
+              ambiental: null,
+              entrada: null,
+              '1-monicion': null,
+              '1': null,
+              '2-monicion': null,
+              '2': null,
+              'evangelio-monicion': null,
+              evangelio: null,
+              'oracion-universal': null,
+              paz: null,
+              'comunion-pan': null,
+              'comunion-caliz': null,
+              salida: null,
+              'encargado-pan': null,
+              'encargado-flores': null,
+              nota: null,
+            });
+            break;
         }
-        var newItems = Object.assign([], targetList.items);
-        newItems[listKey] = listValue;
-        schema = Object.assign({}, targetList, { items: newItems });
+        var { lists } = get();
+        lists[listName] = schema;
+        set({ lists });
+        return get().lists;
+      },
+      rename: (listName: string, newName: string) => {
+        var { lists } = get();
+        const list = lists[listName];
+        delete lists[listName];
+        lists[newName] = list;
+        set({ lists });
+        return get().lists;
+      },
+      remove: (listName: string) => {
+        var { lists } = get();
+        delete lists[listName];
+        set({ lists });
+        return get().lists;
+      },
+      setList: (listName: string, listKey: string, listValue: any) => {
+        var { lists } = get();
+        const targetList = lists[listName];
+        var schema;
+        if (listValue !== undefined) {
+          if (typeof listKey === 'string') {
+            schema = Object.assign({}, targetList, { [listKey]: listValue });
+          } else if (typeof listKey === 'number') {
+            var isPresent = targetList.items.find((s: any) => s === listValue);
+            if (isPresent) {
+              return;
+            }
+            var newItems = Object.assign([], targetList.items);
+            newItems[listKey] = listValue;
+            schema = Object.assign({}, targetList, { items: newItems });
+          }
+        } else {
+          if (typeof listKey === 'string') {
+            var { [listKey]: omit, ...schema } = targetList;
+          } else if (typeof listKey === 'number') {
+            var newItems = Object.assign([], targetList.items);
+            newItems.splice(listKey, 1);
+            schema = Object.assign({}, targetList, { items: newItems });
+          }
+        }
+        lists[listName] = schema;
+        set({ lists });
+        return get().lists;
       }
-    } else {
-      if (typeof listKey === 'string') {
-        var { [listKey]: omit, ...schema } = targetList;
-      } else if (typeof listKey === 'number') {
-        var newItems = Object.assign([], targetList.items);
-        newItems.splice(listKey, 1);
-        schema = Object.assign({}, targetList, { items: newItems });
-      }
+    }),
+    {
+      name: 'lists',
+      storage: createJSONStorage(() => AsyncStorage),
     }
-    lists[listName] = schema;
-    set({ lists });
-    return get().lists;
-  }
-}));
+  ));
 
 export const useLists = (): UseLists => {
   const songs = useSongsStore((state) => state.songs);
@@ -577,11 +592,31 @@ type UseCommunity = {
   addOrRemove: (contact: Contacts.Contact) => void;
 };
 
-const brothersStore = new GlobalStoreAsyncStorage<BrotherContact[], any>([], {
-  asyncStorageKey: 'contacts',
-});
+type BrothersStore = {
+  brothers: BrotherContact[];
+  _hasHydrated: boolean;
+  setHasHydrated: (state: boolean) => void;
+};
 
-const useBrothersStore = brothersStore.getHook();
+export const useBrothersStore = create<BrothersStore>()(
+  persist(
+    (set, get) => ({
+      brothers: [],
+      _hasHydrated: false,
+      setHasHydrated: (state: boolean) => {
+        set({
+          _hasHydrated: state
+        });
+      }
+    }),
+    {
+      name: 'contacts',
+      storage: createJSONStorage(() => AsyncStorage),
+      onRehydrateStorage: () => (state) => {
+        state?.setHasHydrated(true)
+      }
+    }
+  ));
 
 const checkContactsPermission = async (
   reqPerm: boolean
@@ -634,35 +669,30 @@ const getContacts = async (reqPerm: boolean) => {
   return [];
 };
 
-const emptyContacts: Array<Contacts.Contact> = [];
+type ContactsStore = {
+  contacts: Contacts.Contact[];
+  loaded: boolean;
+  populateDeviceContacts: (reqPerm: boolean) => Promise<Contacts.Contact[]>;
+};
 
-const contactsStore = new GlobalStore(emptyContacts, {
-  metadata: {
-    loaded: false
+export const useContactsStore = create<ContactsStore>((set, get) => ({
+  contacts: [],
+  loaded: false,
+  populateDeviceContacts: async (reqPerm: boolean) => {
+    const devCts = await getContacts(reqPerm);
+    set({ contacts: devCts, loaded: true });
+    return get().contacts;
   }
-},
-  {
-    populateDeviceContacts(reqPerm: boolean) {
-      return async ({ getState, setState, setMetadata }) => {
-        const devCts = await getContacts(reqPerm);
-        setState(devCts);
-        setMetadata({ loaded: true });
-        return getState();
-      }
-    }
-  } as const
-);
-
-export const useContactsStore = contactsStore.getHook();
+}));
 
 export const useCommunity = (): UseCommunity => {
-  const [brothers, initBrothers, { isAsyncStorageReady: brothersLoaded }] = useBrothersStore();
-  const [deviceContacts, contactsActions] = useContactsStore();
+  const { brothers, _hasHydrated } = useBrothersStore();
+  const { contacts: deviceContacts } = useContactsStore();
 
   const add = (item: Contacts.Contact) => {
     var newBrother: BrotherContact = { s: false, ...item };
     var changedBrothers: BrotherContact[] = [...brothers, newBrother];
-    initBrothers(changedBrothers);
+    useBrothersStore.setState({ brothers: changedBrothers });
   };
 
   const update = (id: string, item: Contacts.Contact) => {
@@ -671,14 +701,14 @@ export const useCommunity = (): UseCommunity => {
       var idx = brothers.indexOf(brother);
       var updatedContacts = [...brothers];
       updatedContacts[idx] = Object.assign(brother, item);
-      initBrothers(updatedContacts);
+      useBrothersStore.setState({ brothers: updatedContacts });
     }
   };
 
   const remove = (item: BrotherContact) => {
     var idx = brothers.indexOf(item);
     var changedBrothers = brothers.filter((l, i) => i !== idx);
-    initBrothers(changedBrothers);
+    useBrothersStore.setState({ brothers: changedBrothers });
   };
 
   const addOrRemove = (contact: Contacts.Contact) => {
@@ -693,13 +723,13 @@ export const useCommunity = (): UseCommunity => {
   };
 
   useEffect(() => {
-    if (!brothersLoaded) {
+    if (!_hasHydrated) {
       return;
     }
     const refreshContacts = async () => {
       var loaded = [...brothers];
       try {
-        const devCts = await contactsActions.populateDeviceContacts(false);
+        const devCts = await useContactsStore.getState().populateDeviceContacts(false);
         brothers.forEach((c, idx) => {
           // tomar el contacto actualizado
           var devContact = devCts.find((x) => x.recordID === c.recordID);
@@ -707,13 +737,13 @@ export const useCommunity = (): UseCommunity => {
             loaded[idx] = devContact as BrotherContact;
           }
         });
-        initBrothers(loaded);
+        useBrothersStore.setState({ brothers: loaded });
       } catch {
-        initBrothers(loaded);
+        useBrothersStore.setState({ brothers: loaded });
       }
     };
     refreshContacts();
-  }, [brothersLoaded]);
+  }, [_hasHydrated]);
 
   return {
     brothers,
@@ -725,29 +755,43 @@ export const useCommunity = (): UseCommunity => {
   };
 };
 
-export type SettingsType = {
+export type SettingsStore = {
   locale: string;
   keepAwake: boolean;
   zoomLevel: number;
+  _hasHydrated: boolean;
+  setHasHydrated: (state: boolean) => void;
 };
 
-const settingsStore = new GlobalStoreAsyncStorage(
-  { locale: 'default', keepAwake: true, zoomLevel: 1 } as SettingsType,
-  {
-    asyncStorageKey: 'settings',
-  }
-);
-
-export const useSettingsStore = settingsStore.getHook();
+export const useSettingsStore = create<SettingsStore>()(
+  persist(
+    (set, get) => ({
+      locale: 'default',
+      keepAwake: true,
+      zoomLevel: 1,
+      _hasHydrated: false,
+      setHasHydrated: (state: boolean) => {
+        set({
+          _hasHydrated: state
+        });
+      }
+    }),
+    {
+      name: 'settings',
+      storage: createJSONStorage(() => AsyncStorage),
+      onRehydrateStorage: () => (state) => {
+        state?.setHasHydrated(true)
+      }
+    }
+  ));
 
 export const useLocale = () => {
-  const settings = useSettingsStore();
-  const [{ locale }, _, { isAsyncStorageReady }] = settings;
+  const { locale, _hasHydrated } = useSettingsStore();
   const localeReal = useMemo(() => {
-    if (isAsyncStorageReady) {
+    if (_hasHydrated) {
       return locale === 'default' ? getDefaultLocale() : locale;
     }
-  }, [isAsyncStorageReady, locale]);
+  }, [_hasHydrated, locale]);
 
   useEffect(() => {
     if (localeReal) {

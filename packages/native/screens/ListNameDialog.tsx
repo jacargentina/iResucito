@@ -21,7 +21,7 @@ type ListDetailNavivationProp = StackNavigationProp<
 const ListNameDialog = () => {
   const navigation = useNavigation<ListDetailNavivationProp>();
   const route = useRoute<ListNameDialogRouteProp>();
-  const [lists, listsActions] = useListsStore();
+  const { lists, add, rename } = useListsStore();
   const [disabledReasonText, setDisabledReasonText] = useState<string | null>(
     null
   );
@@ -31,10 +31,10 @@ const ListNameDialog = () => {
 
   const runActionOnList = () => {
     if (action === 'create' && type) {
-      listsActions.add(name, type);
+      add(name, type);
       navigation.navigate('ListDetail', { listName: name });
     } else if (action === 'rename') {
-      listsActions.rename(listName, name);
+      rename(listName, name);
       navigation.goBack();
     }
   };

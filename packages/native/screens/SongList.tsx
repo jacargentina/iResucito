@@ -36,8 +36,8 @@ type IsLoading = { isLoading: boolean; text: string };
 
 const SongList = (props: { viewButton?: boolean; filter?: any; sort?: any; onPress?: any }) => {
   const listRef = useRef<any>();
-  const [songs] = useSongsStore();
-  const [{ selection, enabled }, selectionActions] = useSongsSelection();
+  const { songs } = useSongsStore();
+  const { selection, enabled, disable } = useSongsSelection();
   const navigation = useNavigation<SongDetailNavigationProp>();
   const route = useRoute<SongListRouteProp>();
   const isFocused = useIsFocused();
@@ -51,14 +51,14 @@ const SongList = (props: { viewButton?: boolean; filter?: any; sort?: any; onPre
   const options = useStackNavOptions();
 
   useAndroidBackHandler(() => {
-    if (enabled) selectionActions.disable();
+    if (enabled) disable();
     navigation.goBack();
     return true;
   });
 
   useFocusEffect(useCallback(() => {
     return () => {
-      if (enabled) selectionActions.disable();
+      if (enabled) disable();
     };
   }, [enabled]));
 
@@ -117,7 +117,7 @@ const SongList = (props: { viewButton?: boolean; filter?: any; sort?: any; onPre
             }}
             color={options.headerTitleStyle.color}
             onPress={() => {
-              selectionActions.disable()
+              disable()
             }}
           />}
           <ExportToPdfButton onPress={async () => {
@@ -152,7 +152,7 @@ const SongList = (props: { viewButton?: boolean; filter?: any; sort?: any; onPre
                 });
                 setLoading({ isLoading: false, text: '' });
               }
-              selectionActions.disable();
+              disable();
             } else {
               chooser.onOpen();
             }
