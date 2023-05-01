@@ -6,9 +6,10 @@ import { RouteProp, useRoute } from '@react-navigation/native';
 import { KeyboardAwareScrollView } from '@codler/react-native-keyboard-aware-scroll-view';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import SwipeableRightAction from '../components/SwipeableRightAction';
-import { useLists, useListsStore } from '../hooks';
+import { ListForUI, useListsStore } from '../hooks';
 import i18n from '@iresucito/translations';
 import ListDetailItem from './ListDetailItem';
+import type { ListsStackParamList } from '../navigation/ListsNavigator';
 
 const SwipeableRow = (props: {
   listName: string;
@@ -61,18 +62,16 @@ const SwipeableRow = (props: {
   );
 };
 
-import type { ListsStackParamList } from '../navigation/ListsNavigator';
-
 type ListDetailRouteProp = RouteProp<ListsStackParamList, 'ListDetail'>;
 
 const ListDetail = () => {
-  const { getListForUI } = useLists();
+  const lists_forui = useListsStore(state => state.lists_forui);
   const [scroll, setScroll] = useState<ScrollView>();
   const [noteFocused, setNoteFocused] = useState(false);
   const route = useRoute<ListDetailRouteProp>();
   const { listName } = route.params;
 
-  const uiList = getListForUI(listName);
+  const uiList = lists_forui.find(l => l.name == listName) as ListForUI;
 
   if (uiList.type === 'libre') {
     var items = uiList.items;
@@ -102,7 +101,6 @@ const ListDetail = () => {
       </>
     );
   }
-  /* eslint-disable dot-notation */
   return (
     <KeyboardAwareScrollView
       contentContainerStyle={{ flexGrow: 1 }}

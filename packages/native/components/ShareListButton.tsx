@@ -3,7 +3,7 @@ import { Keyboard } from 'react-native';
 import { Icon, Actionsheet, useDisclose } from 'native-base';
 import { RouteProp, useRoute } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { useLists } from '../hooks';
+import { useListsStore } from '../hooks';
 import useStackNavOptions from '../navigation/StackNavOptions';
 import i18n from '@iresucito/translations';
 import { ListsStackParamList } from '../navigation/ListsNavigator';
@@ -15,7 +15,7 @@ const ShareListButton = () => {
   const { isOpen, onClose, onOpen } = useDisclose();
   const route = useRoute<ListDetailRouteProp>();
   const { listName } = route.params;
-  const { shareList } = useLists();
+  const { shareList } = useListsStore();
 
   return (
     <>
@@ -24,21 +24,21 @@ const ShareListButton = () => {
           <Actionsheet.Item
             onPress={() => {
               onClose();
-              shareList(listName, i18n.locale, 'native');
+              shareList(listName, 'native');
             }}>
             {i18n.t('list_export_options.native')}
           </Actionsheet.Item>
           <Actionsheet.Item
             onPress={() => {
               onClose();
-              shareList(listName, i18n.locale, 'text');
+              shareList(listName, 'text');
             }}>
             {i18n.t('list_export_options.plain text')}
           </Actionsheet.Item>
           <Actionsheet.Item
             onPress={() => {
               onClose();
-              shareList(listName, i18n.locale, 'pdf');
+              shareList(listName, 'pdf');
             }}>
             {i18n.t('list_export_options.pdf file')}
           </Actionsheet.Item>

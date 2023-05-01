@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { Input, Box, Button, FormControl } from 'native-base';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { getLocalizedListType } from '@iresucito/core';
-import { useLists, useListsStore } from '../hooks';
+import { useListsStore } from '../hooks';
 import ModalView from '../components/ModalView';
 import i18n from '@iresucito/translations';
 

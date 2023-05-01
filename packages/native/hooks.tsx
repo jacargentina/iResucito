@@ -20,12 +20,14 @@ import {
   SearchItem,
   ListType,
   ShareListType,
+  ListToPdf,
 } from '@iresucito/core';
 import i18n from '@iresucito/translations';
 import badges from './badges';
 import { generateListPDF } from './pdf';
 import { create } from 'zustand';
-import { createJSONStorage, persist } from 'zustand/middleware'
+import { createJSONStorage, persist, subscribeWithSelector } from 'zustand/middleware'
+import { shallow } from 'zustand/shallow'
 import { produce } from "immer"
 import {
   getDefaultLocale,
@@ -60,7 +62,7 @@ export const useSongsStore = create<SongsStore>((set) => ({
   lang: undefined,
   songs: [],
   load: async (loc: string) => {
-    set({ lang: loc });
+    set((state) => ({ lang: loc }));
     var settingsObj = await readSongSettingsFile();
     // Construir metadatos de cantos
     var metaData = NativeSongs.getSongsMeta(
@@ -70,7 +72,7 @@ export const useSongsStore = create<SongsStore>((set) => ({
     );
     console.log(`songsStore loading ${metaData.length} songs for "${loc}"`);
     await NativeSongs.loadSongs(loc, metaData);
-    set({ songs: metaData });
+    set((state) => ({ songs: metaData }));
     return metaData;
   }
 }));
@@ -109,11 +111,11 @@ export const useSongsSelection = create<SelectionStore>((set, get) => ({
   selection: [],
   enabled: false,
   enable: () => {
-    set({ selection: [], enabled: true });
+    set((state) => ({ selection: [], enabled: true }));
     return get();
   },
   disable: () => {
-    set({ selection: [], enabled: false });
+    set((state) => ({ selection: [], enabled: false }));
     return get();
   },
   toggle: (key: string) => {
@@ -123,7 +125,7 @@ export const useSongsSelection = create<SelectionStore>((set, get) => ({
     } else {
       selection.push(key);
     }
-    set({ selection, enabled });
+    set((state) => ({ selection, enabled }));
     return get();
   }
 }));
@@ -134,30 +136,42 @@ type Lists = {
 
 export type ListForUI = {
   name: string;
-  type: string;
-};
-
-type UseLists = {
-  lists: Lists;
-  getListForUI: (listName: any) => any;
-  shareList: (listName: string, loc: string, type: ShareListType) => void;
-  importList: (listPath: string) => Promise<string | void>;
+  type: ListType;
+  localeType: string;
+  [x: string]: any;
 };
 
 type ListsStore = {
   lists: Lists,
+  lists_forui: ListForUI[],
   add: (listName: string, type: ListType) => void;
   rename: (listName: string, newName: string) => void;
   remove: (listName: string) => void;
   setList: (listName: string, listKey: string, listValue: any) => void;
+  importList: (listPath: string) => Promise<string | void>;
+  shareList: (listName: string, type: ShareListType) => void;
   _hasHydrated: boolean;
   setHasHydrated: (state: boolean) => void;
 };
 
+const getItemForShare = (list: any, key: string) => {
+  if (list.hasOwnProperty(key)) {
+    var valor = list[key];
+    if (valor && getEsSalmo(key)) {
+      valor = valor.titulo;
+    }
+    if (valor) {
+      return getLocalizedListItem(key) + ': ' + valor;
+    }
+  }
+  return null;
+};
+
 export const useListsStore = create<ListsStore>()(
-  persist(
+  subscribeWithSelector(persist(
     (set, get) => ({
       lists: {},
+      lists_forui: [],
       _hasHydrated: false,
       setHasHydrated: (state: boolean) => {
         set({
@@ -253,6 +267,110 @@ export const useListsStore = create<ListsStore>()(
           }
           state.lists[listName] = schema;
         }))
+      },
+      importList: (listPath: string) => {
+        const path = decodeURI(listPath);
+        return RNFS.readFile(path)
+          .then((content) => {
+            // Obtener nombre del archivo
+            // que será nombre de la lista
+            const parsed = pathParse(listPath);
+            var { name: listName } = parsed;
+            // Generar nombre único para la lista
+            var counter = 1;
+            const lists = get().lists;
+            while (lists.hasOwnProperty(listName)) {
+              listName = `${listName} (${counter++})`;
+            }
+            const changedLists = Object.assign({}, lists, {
+              [listName]: JSON.parse(content),
+            });
+            useListsStore.setState({ lists: changedLists });
+            return listName;
+          })
+          .catch((err) => {
+            console.log('importList: ' + err.message);
+            Alert.alert(
+              i18n.t('alert_title.corrupt file'),
+              i18n.t('alert_message.corrupt file')
+            );
+          });
+      },
+      shareList: async (listName: string, format: ShareListType) => {
+        switch (format) {
+          case 'native':
+            const folder =
+              Platform.OS === 'ios'
+                ? RNFS.TemporaryDirectoryPath
+                : RNFS.CachesDirectoryPath + '/';
+            const fileName = listName.replace(' ', '-');
+            const listPath = `${folder}${fileName}.ireslist`;
+            const nativeList = get().lists[listName];
+            RNFS.writeFile(listPath, JSON.stringify(nativeList, null, ' '), 'utf8');
+            Share.open({
+              title: i18n.t('ui.share'),
+              subject: `iResucitó - ${listName}`,
+              url: `file://${listPath}`,
+              failOnCancel: false,
+            }).catch((err) => {
+              err && console.log(err);
+            });
+            break;
+          case 'text':
+            var list = get().lists_forui.find(l => l.name == listName) as ListForUI;
+            var items: Array<string | null> = [];
+            if (list.type === 'libre') {
+              var cantos = list.items;
+              cantos.forEach((canto: Song, i: number) => {
+                items.push(`${i + 1} - ${canto.titulo}`);
+              });
+            } else {
+              items.push(getItemForShare(list, 'ambiental'));
+              items.push(getItemForShare(list, 'entrada'));
+              items.push(getItemForShare(list, '1-monicion'));
+              items.push(getItemForShare(list, '1'));
+              items.push(getItemForShare(list, '1-salmo'));
+              items.push(getItemForShare(list, '2-monicion'));
+              items.push(getItemForShare(list, '2'));
+              items.push(getItemForShare(list, '2-salmo'));
+              items.push(getItemForShare(list, '3-monicion'));
+              items.push(getItemForShare(list, '3'));
+              items.push(getItemForShare(list, '3-salmo'));
+              items.push(getItemForShare(list, 'evangelio-monicion'));
+              items.push(getItemForShare(list, 'evangelio'));
+              items.push(getItemForShare(list, 'oracion-universal'));
+              items.push(getItemForShare(list, 'paz'));
+              items.push(getItemForShare(list, 'comunion-pan'));
+              items.push(getItemForShare(list, 'comunion-caliz'));
+              items.push(getItemForShare(list, 'salida'));
+              items.push(getItemForShare(list, 'encargado-pan'));
+              items.push(getItemForShare(list, 'encargado-flores'));
+              items.push(getItemForShare(list, 'nota'));
+            }
+            var message = items.filter((n) => n).join('\n');
+            Share.open({
+              title: i18n.t('ui.share'),
+              message: message,
+              subject: `iResucitó - ${listName}`,
+              url: undefined,
+              failOnCancel: false,
+            }).catch((err) => {
+              err && console.log(err);
+            });
+            break;
+          case 'pdf':
+            var list = get().lists_forui.find(l => l.name == listName) as ListForUI;
+            var listToPdf: ListToPdf = {
+              ...list,
+              name: list.name,
+              type: list.type,
+              items: list.items,
+              localeType: getLocalizedListType(list.type, i18n.locale)
+            }
+            var path = await generateListPDF(listToPdf, defaultExportToPdfOptions);
+            sharePDF(listName, path);
+            break;
+        }
       }
     }),
     {
@@ -263,153 +381,37 @@ export const useListsStore = create<ListsStore>()(
         state?.setHasHydrated(true)
       }
     }
-  ));
+  )));
 
-export const useLists = (): UseLists => {
-  const songs = useSongsStore((state) => state.songs);
-  const { lists } = useListsStore();
-
-  const getListForUI = useCallback((listName: any) => {
-    var uiList = Object.assign({}, lists[listName]);
-    Object.entries(uiList).forEach(([clave, valor]) => {
-      // Si es de tipo 'libre', los salmos están dentro de 'items'
-      if (clave === 'items' && Array.isArray(valor)) {
-        valor = valor.map((key) => {
-          return songs?.find((s) => s.key === key);
-        });
-      } else if (getEsSalmo(clave) && valor !== null) {
-        valor = songs?.find((s) => s.key === valor);
-      }
-      uiList[clave] = valor;
-    });
-    uiList.name = listName;
-    return uiList;
-  }, [lists]);
-
-  const getItemForShare = (list: any, key: string) => {
-    if (list.hasOwnProperty(key)) {
-      var valor = list[key];
-      if (valor && getEsSalmo(key)) {
-        valor = valor.titulo;
-      }
-      if (valor) {
-        return getLocalizedListItem(key) + ': ' + valor;
-      }
-    }
-    return null;
-  };
-
-  const importList = (listPath: string) => {
-    const path = decodeURI(listPath);
-    return RNFS.readFile(path)
-      .then((content) => {
-        // Obtener nombre del archivo
-        // que será nombre de la lista
-        const parsed = pathParse(listPath);
-        var { name: listName } = parsed;
-        // Generar nombre único para la lista
-        var counter = 1;
-        while (lists.hasOwnProperty(listName)) {
-          listName = `${listName} (${counter++})`;
-        }
-        const changedLists = Object.assign({}, lists, {
-          [listName]: JSON.parse(content),
-        });
-        useListsStore.setState({ lists: changedLists });
-        return listName;
-      })
-      .catch((err) => {
-        console.log('importList: ' + err.message);
-        Alert.alert(
-          i18n.t('alert_title.corrupt file'),
-          i18n.t('alert_message.corrupt file')
-        );
-      });
-  };
-
-  const shareList = (
-    listName: string,
-    localeValue: string,
-    format: ShareListType
-  ) => {
-    switch (format) {
-      case 'native':
-        const folder =
-          Platform.OS === 'ios'
-            ? RNFS.TemporaryDirectoryPath
-            : RNFS.CachesDirectoryPath + '/';
-        const fileName = listName.replace(' ', '-');
-        const listPath = `${folder}${fileName}.ireslist`;
-        const nativeList = lists[listName];
-        RNFS.writeFile(listPath, JSON.stringify(nativeList, null, ' '), 'utf8');
-        Share.open({
-          title: i18n.t('ui.share'),
-          subject: `iResucitó - ${listName}`,
-          url: `file://${listPath}`,
-          failOnCancel: false,
-        }).catch((err) => {
-          err && console.log(err);
-        });
-        break;
-      case 'text':
-        var list = getListForUI(listName);
-        var items: Array<string | null> = [];
-        if (list.type === 'libre') {
-          var cantos = list.items;
-          cantos.forEach((canto: Song, i: number) => {
-            items.push(`${i + 1} - ${canto.titulo}`);
+useListsStore.subscribe(
+  (state) => [state.lists],
+  ([lists]) => {
+    var { songs } = useSongsStore.getState();
+    const getListForUI = (listName: any): ListForUI => {
+      var uiList = Object.assign({}, lists[listName]) as ListForUI;
+      Object.entries(uiList).forEach(([clave, valor]) => {
+        // Si es de tipo 'libre', los salmos están dentro de 'items'
+        if (clave === 'items' && Array.isArray(valor)) {
+          valor = valor.map((key) => {
+            return songs?.find((s) => s.key === key);
           });
-        } else {
-          items.push(getItemForShare(list, 'ambiental'));
-          items.push(getItemForShare(list, 'entrada'));
-          items.push(getItemForShare(list, '1-monicion'));
-          items.push(getItemForShare(list, '1'));
-          items.push(getItemForShare(list, '1-salmo'));
-          items.push(getItemForShare(list, '2-monicion'));
-          items.push(getItemForShare(list, '2'));
-          items.push(getItemForShare(list, '2-salmo'));
-          items.push(getItemForShare(list, '3-monicion'));
-          items.push(getItemForShare(list, '3'));
-          items.push(getItemForShare(list, '3-salmo'));
-          items.push(getItemForShare(list, 'evangelio-monicion'));
-          items.push(getItemForShare(list, 'evangelio'));
-          items.push(getItemForShare(list, 'oracion-universal'));
-          items.push(getItemForShare(list, 'paz'));
-          items.push(getItemForShare(list, 'comunion-pan'));
-          items.push(getItemForShare(list, 'comunion-caliz'));
-          items.push(getItemForShare(list, 'salida'));
-          items.push(getItemForShare(list, 'encargado-pan'));
-          items.push(getItemForShare(list, 'encargado-flores'));
-          items.push(getItemForShare(list, 'nota'));
+        } else if (getEsSalmo(clave) && valor !== null) {
+          valor = songs?.find((s) => s.key === valor);
         }
-        var message = items.filter((n) => n).join('\n');
-        Share.open({
-          title: i18n.t('ui.share'),
-          message: message,
-          subject: `iResucitó - ${listName}`,
-          url: undefined,
-          failOnCancel: false,
-        }).catch((err) => {
-          err && console.log(err);
-        });
-        break;
-      case 'pdf':
-        var list = getListForUI(listName);
-        list.localeType = getLocalizedListType(list.type, localeValue);
-        generateListPDF(list, defaultExportToPdfOptions).then((path) => {
-          sharePDF(listName, path);
-        });
-        break;
-    }
-  };
-
-  return {
-    lists,
-    getListForUI,
-    shareList,
-    importList,
-  };
-};
+        uiList[clave] = valor;
+      });
+      uiList.name = listName;
+      uiList.localeType = getLocalizedListType(uiList.type, i18n.locale);
+      return uiList;
+    };
+    var result = Object.keys(lists).map(key => {
+      return getListForUI(key);
+    })
+    useListsStore.setState({ lists_forui: result });
+  }, {
+  equalityFn: shallow,
+  fireImmediately: true,
+});
 
 type UseSearch = {
   initialized: boolean;
@@ -690,7 +692,7 @@ export const useContactsStore = create<ContactsStore>((set, get) => ({
   loaded: false,
   populateDeviceContacts: async (reqPerm: boolean) => {
     const devCts = await getContacts(reqPerm);
-    set({ contacts: devCts, loaded: true });
+    set((state) => ({ contacts: devCts, loaded: true }));
     return get().contacts;
   }
 }));

@@ -5,11 +5,11 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import { Icon, useTheme } from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { useLists } from '../hooks';
 import SongsNavigator from './SongsNavigator';
 import ListsNavigator from './ListsNavigator';
 import CommunityNavigator from './CommunityNavigator';
 import SettingsNavigator from './SettingsNavigator';
+import { useListsStore } from '../hooks';
 
 export type MenuParamList = {
   Songs: undefined;
@@ -52,7 +52,7 @@ const getTabOptions = (
 
 const MenuNavigator = (props: any) => {
   const { colors } = useTheme();
-  const { lists, importList } = useLists();
+  const { lists, importList } = useListsStore();
   const { navigation } = props;
 
   var screenOptions = useMemo(() => {

@@ -28,14 +28,13 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { ListsStackParamList } from '../navigation/ListsNavigator';
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import { RootStackParamList } from '../navigation/RootNavigator';
-import { getLocalizedListType } from '@iresucito/core';
 
 type ListScreenNavigationProp = CompositeNavigationProp<
   BottomTabNavigationProp<RootStackParamList, 'ListName'>,
   StackNavigationProp<ListsStackParamList>
 >;
 
-const SwipeableRow = (props: { item: any }) => {
+const SwipeableRow = (props: { item: ListForUI }) => {
   const navigation = useNavigation<ListScreenNavigationProp>();
   const { colors } = useTheme();
   const { item } = props;
@@ -114,7 +113,7 @@ const SwipeableRow = (props: { item: any }) => {
             <Text bold fontSize="xl">
               {item.name}
             </Text>
-            <Text>{item.type}</Text>
+            <Text>{item.localeType}</Text>
           </VStack>
         </HStack>
       </Pressable>
@@ -122,36 +121,20 @@ const SwipeableRow = (props: { item: any }) => {
   );
 };
 
-const getListsForUI = (lists: any, localeValue: string): ListForUI[] => {
-  var listNames = Object.keys(lists);
-  return listNames.map((name) => {
-    var listMap = lists[name];
-    return {
-      name: name,
-      type: getLocalizedListType(listMap.type, localeValue),
-    };
-  });
-};
-
 const ListScreen = () => {
-  const { lists } = useListsStore();
+  const { lists_forui } = useListsStore();
   const navigation = useNavigation();
   const [filtered, setFiltered] = useState<ListForUI[]>([]);
   const [filter, setFilter] = useState('');
   const chooser = useDisclose();
 
-  const allLists = useMemo(
-    () => getListsForUI(lists, i18n.locale),
-    [lists, i18n.locale]
-  );
-
   useEffect(() => {
-    var result = allLists;
+    var result = lists_forui;
     if (filter !== '') {
       result = result.filter((c) => c.name.includes(filter));
     }
     setFiltered(result);
-  }, [allLists, filter]);
+  }, [lists_forui, filter]);
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
@@ -159,7 +142,7 @@ const ListScreen = () => {
     });
   });
 
-  if (allLists.length === 0) {
+  if (lists_forui.length === 0) {
     return (
       <>
         <ChooseListTypeForAdd chooser={chooser} />
