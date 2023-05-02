@@ -288,7 +288,7 @@ export type ListToPdf = {
   name: string;
   type: ListType;
   localeType: string;
-  items: Array<any>;
+  [x: string]: any;
 };
 
 export type ShareListType = 'native' | 'text' | 'pdf';

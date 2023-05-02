@@ -130,16 +130,111 @@ export const useSongsSelection = create<SelectionStore>((set, get) => ({
   }
 }));
 
-type Lists = {
-  [listName: string]: any;
+type LibreList = {
+  type: 'libre';
+  version: number;
+  items: string[];
 };
 
-export type ListForUI = {
-  name: string;
-  type: ListType;
-  localeType: string;
-  [x: string]: any;
+type PalabraList = {
+  type: 'palabra';
+  version: number;
+  ambiental: string | null;
+  entrada: string | null;
+  '1-monicion': string | null;
+  '1': string | null;
+  '1-salmo': string | null;
+  '2-monicion': string | null;
+  '2': string | null;
+  '2-salmo': string | null;
+  '3-monicion': string | null;
+  '3': string | null;
+  '3-salmo': string | null;
+  'evangelio-monicion': string | null;
+  evangelio: string | null;
+  salida: string | null;
+  nota: string | null;
 };
+
+type EucaristiaList = {
+  type: 'eucaristia';
+  version: number;
+  ambiental: string | null;
+  entrada: string | null;
+  '1-monicion': string | null;
+  '1': string | null;
+  '2-monicion': string | null;
+  '2': string | null;
+  'evangelio-monicion': string | null;
+  evangelio: string | null;
+  'oracion-universal': string | null;
+  paz: string | null;
+  'comunion-pan': string | null;
+  'comunion-caliz': string | null;
+  salida: string | null;
+  'encargado-pan': string | null;
+  'encargado-flores': string | null;
+  nota: string | null;
+};
+
+type Lists = {
+  [listName: string]: LibreList | PalabraList | EucaristiaList;
+};
+
+type LibreListForUI = {
+  name: string;
+  type: 'libre';
+  localeType: string;
+  version: number;
+  items: Song[];
+};
+
+type PalabraListForUI = {
+  name: string;
+  type: 'palabra';
+  localeType: string;
+  version: number;
+  ambiental: string | null;
+  entrada: Song | null;
+  '1-monicion': string | null;
+  '1': string | null;
+  '1-salmo': Song | null;
+  '2-monicion': string | null;
+  '2': string | null;
+  '2-salmo': Song | null;
+  '3-monicion': string | null;
+  '3': string | null;
+  '3-salmo': Song | null;
+  'evangelio-monicion': string | null;
+  evangelio: string | null;
+  salida: Song | null;
+  nota: string | null;
+};
+
+type EucaristiaListForUI = {
+  name: string;
+  type: 'eucaristia';
+  localeType: string;
+  version: number;
+  ambiental: string | null;
+  entrada: Song | null;
+  '1-monicion': string | null;
+  '1': string | null;
+  '2-monicion': string | null;
+  '2': string | null;
+  'evangelio-monicion': string | null;
+  evangelio: string | null;
+  'oracion-universal': string | null;
+  paz: Song | null;
+  'comunion-pan': Song | null;
+  'comunion-caliz': Song | null;
+  salida: Song | null;
+  'encargado-pan': string | null;
+  'encargado-flores': string | null;
+  nota: string | null;
+};
+
+export type ListForUI = LibreListForUI | PalabraListForUI | EucaristiaListForUI;
 
 type ListsStore = {
   lists: Lists,
@@ -147,14 +242,14 @@ type ListsStore = {
   add: (listName: string, type: ListType) => void;
   rename: (listName: string, newName: string) => void;
   remove: (listName: string) => void;
-  setList: (listName: string, listKey: string, listValue: any) => void;
+  setList: (listName: string, listKey: string | number, listValue: any) => void;
   importList: (listPath: string) => Promise<string | void>;
   shareList: (listName: string, type: ShareListType) => void;
   _hasHydrated: boolean;
   setHasHydrated: (state: boolean) => void;
 };
 
-const getItemForShare = (list: any, key: string) => {
+const getItemForShare = (list: ListForUI, key: keyof LibreListForUI | keyof PalabraListForUI | keyof EucaristiaListForUI) => {
   if (list.hasOwnProperty(key)) {
     var valor = list[key];
     if (valor && getEsSalmo(key)) {
@@ -180,13 +275,14 @@ export const useListsStore = create<ListsStore>()(
       },
       add: (listName: string, type: ListType) => {
         set(produce((state: ListsStore) => {
-          let schema = { type: type, version: 1 };
           switch (type) {
             case 'libre':
-              schema = Object.assign({}, schema, { items: [] });
+              state.lists[listName] = { type, version: 1, items: [] };
               break;
             case 'palabra':
-              schema = Object.assign({}, schema, {
+              state.lists[listName] = {
+                type,
+                version: 1,
                 ambiental: null,
                 entrada: null,
                 '1-monicion': null,
@@ -202,10 +298,12 @@ export const useListsStore = create<ListsStore>()(
                 evangelio: null,
                 salida: null,
                 nota: null,
-              });
+              };
               break;
             case 'eucaristia':
-              schema = Object.assign({}, schema, {
+              state.lists[listName] = {
+                type,
+                version: 1,
                 ambiental: null,
                 entrada: null,
                 '1-monicion': null,
@@ -222,10 +320,9 @@ export const useListsStore = create<ListsStore>()(
                 'encargado-pan': null,
                 'encargado-flores': null,
                 nota: null,
-              });
+              };
               break;
           }
-          state.lists[listName] = schema;
         }));
       },
       rename: (listName: string, newName: string) => {
@@ -240,32 +337,26 @@ export const useListsStore = create<ListsStore>()(
           delete state.lists[listName];
         }));
       },
-      setList: (listName: string, listKey: string, listValue: any) => {
+      setList: (listName: string, listKey: string | number, listValue: any) => {
         set(produce((state: ListsStore) => {
           const targetList = state.lists[listName];
-          var schema;
           if (listValue !== undefined) {
             if (typeof listKey === 'string') {
-              schema = Object.assign({}, targetList, { [listKey]: listValue });
-            } else if (typeof listKey === 'number') {
+              targetList[listKey] = listValue;
+            } else if (typeof listKey === 'number' && "items" in targetList) {
               var isPresent = targetList.items.find((s: any) => s === listValue);
               if (isPresent) {
                 return;
               }
-              var newItems = Object.assign([], targetList.items);
-              newItems[listKey] = listValue;
-              schema = Object.assign({}, targetList, { items: newItems });
+              targetList.items[listKey] = listValue;
             }
           } else {
             if (typeof listKey === 'string') {
-              var { [listKey]: omit, ...schema } = targetList;
-            } else if (typeof listKey === 'number') {
-              var newItems = Object.assign([], targetList.items);
-              newItems.splice(listKey, 1);
-              schema = Object.assign({}, targetList, { items: newItems });
+              targetList[listKey] = undefined;
+            } else if (typeof listKey === 'number' && "items" in targetList) {
+              targetList.items.splice(listKey, 1);
             }
           }
-          state.lists[listName] = schema;
         }))
       },
       importList: (listPath: string) => {
@@ -364,7 +455,6 @@ export const useListsStore = create<ListsStore>()(
               ...list,
               name: list.name,
               type: list.type,
-              items: list.items,
               localeType: getLocalizedListType(list.type, i18n.locale)
             }
             var path = await generateListPDF(listToPdf, defaultExportToPdfOptions);
@@ -387,27 +477,73 @@ useListsStore.subscribe(
   (state) => [state.lists],
   ([lists]) => {
     var { songs } = useSongsStore.getState();
-    const getListForUI = (listName: any): ListForUI => {
-      var uiList = Object.assign({}, lists[listName]) as ListForUI;
-      Object.entries(uiList).forEach(([clave, valor]) => {
-        // Si es de tipo 'libre', los salmos están dentro de 'items'
-        if (clave === 'items' && Array.isArray(valor)) {
-          valor = valor.map((key) => {
-            return songs?.find((s) => s.key === key);
-          });
-        } else if (getEsSalmo(clave) && valor !== null) {
-          valor = songs?.find((s) => s.key === valor);
-        }
-        uiList[clave] = valor;
-      });
-      uiList.name = listName;
-      uiList.localeType = getLocalizedListType(uiList.type, i18n.locale);
-      return uiList;
-    };
-    var result = Object.keys(lists).map(key => {
-      return getListForUI(key);
+    var lists_forui = Object.keys(lists).map(listName => {
+      var datalist = lists[listName];
+      switch (datalist.type) {
+        case 'libre':
+          var l = datalist as LibreList;
+          var libre: LibreListForUI = {
+            name: listName,
+            version: datalist.version,
+            type: datalist.type,
+            localeType: getLocalizedListType(datalist.type, i18n.locale),
+            items: l.items.map((key) => {
+              return songs?.find((s) => s.key === key) as Song;
+            })
+          };
+          return libre;
+        case 'palabra':
+          var p = datalist as PalabraList;
+          var palabra: PalabraListForUI = {
+            name: listName,
+            version: datalist.version,
+            type: datalist.type,
+            localeType: getLocalizedListType(datalist.type, i18n.locale),
+            ambiental: datalist.ambiental,
+            entrada: datalist.entrada != null ? songs?.find((s) => s.key === p.entrada) as Song : null,
+            '1-monicion': datalist['1-monicion'],
+            '1': datalist['1'],
+            '1-salmo': datalist['1-salmo'] != null ? songs?.find((s) => s.key === p['1-salmo']) as Song : null,
+            '2-monicion': datalist['2-monicion'],
+            '2': datalist['2'],
+            '2-salmo': datalist['2-salmo'] != null ? songs?.find((s) => s.key === p['2-salmo']) as Song : null,
+            '3-monicion': datalist['3-monicion'],
+            '3': datalist['3'],
+            '3-salmo': datalist['3-salmo'] != null ? songs?.find((s) => s.key === p['3-salmo']) as Song : null,
+            'evangelio-monicion': datalist['evangelio-monicion'],
+            evangelio: datalist.evangelio,
+            salida: datalist.salida != null ? songs?.find((s) => s.key === p.salida) as Song : null,
+            nota: datalist.nota,
+          }
+          return palabra;
+        case 'eucaristia':
+          var e = datalist as EucaristiaList;
+          var eucaristia: EucaristiaListForUI = {
+            name: listName,
+            version: datalist.version,
+            type: datalist.type,
+            localeType: getLocalizedListType(datalist.type, i18n.locale),
+            ambiental: datalist.ambiental,
+            entrada: datalist.entrada != null ? songs?.find((s) => s.key === e.entrada) as Song : null,
+            '1-monicion': datalist['1-monicion'],
+            '1': datalist['1'],
+            '2-monicion': datalist['2-monicion'],
+            '2': datalist['2'],
+            'evangelio-monicion': datalist['evangelio-monicion'],
+            evangelio: datalist.evangelio,
+            'oracion-universal': datalist['oracion-universal'],
+            'comunion-pan': datalist['comunion-pan'] != null ? songs?.find((s) => s.key === e['comunion-pan']) as Song : null,
+            'comunion-caliz': datalist['comunion-caliz'] != null ? songs?.find((s) => s.key === e['comunion-caliz']) as Song : null,
+            paz: datalist.paz != null ? songs?.find((s) => s.key === e.paz) as Song : null,
+            salida: datalist.salida != null ? songs?.find((s) => s.key === e.salida) as Song : null,
+            'encargado-pan': datalist['encargado-pan'],
+            'encargado-flores': datalist['encargado-flores'],
+            nota: datalist.nota,
+          }
+          return eucaristia;
+      }
     })
-    useListsStore.setState({ lists_forui: result });
+    useListsStore.setState({ lists_forui });
   }, {
   equalityFn: shallow,
   fireImmediately: true,

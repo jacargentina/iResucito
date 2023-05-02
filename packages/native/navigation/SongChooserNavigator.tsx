@@ -5,7 +5,7 @@ import SongPreviewScreenDialog from '../screens/SongPreviewScreenDialog';
 import useStackNavOptions from './StackNavOptions';
 
 export type ChooserParamList = {
-  Dialog: { target: { listName: string; listKey: string } };
+  Dialog: { target: { listName: string; listKey: string | number } };
   ViewSong: {
     data: { text: string; title: string; source: string; stage: string };
   };
@@ -16,9 +16,7 @@ const Stack = createStackNavigator<ChooserParamList>();
 const SongChooserNavigator = () => {
   const options = useStackNavOptions();
   return (
-    <Stack.Navigator
-      screenOptions={{ ...options, headerShown: false, presentation: 'modal' }}
-    >
+    <Stack.Navigator screenOptions={{ ...options, headerShown: false, presentation: 'modal' }}>
       <Stack.Screen name="Dialog" component={SongChooserDialog} />
       <Stack.Screen name="ViewSong" component={SongPreviewScreenDialog} />
     </Stack.Navigator>

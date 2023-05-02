@@ -5,7 +5,6 @@ import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import { useListsStore } from '../hooks';
 import useStackNavOptions from '../navigation/StackNavOptions';
-
 import type { ListsStackParamList } from '../navigation/ListsNavigator';
 import type { RootStackParamList } from '../navigation/RootNavigator';
 

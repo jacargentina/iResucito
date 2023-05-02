@@ -13,7 +13,7 @@ import type { ListsStackParamList } from '../navigation/ListsNavigator';
 
 const SwipeableRow = (props: {
   listName: string;
-  listKey: string;
+  listKey: string | number;
   song: any;
 }) => {
   const { listName, listKey, song } = props;

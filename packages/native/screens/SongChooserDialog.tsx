@@ -31,7 +31,7 @@ const SongChooserDialog = (props: Props) => {
   const [activeTab, setActiveTab] = useState(() => {
     if (listName && listKey) {
       var c = choosers.find(
-        (t) => t.chooser_listKey && t.chooser_listKey.includes(listKey)
+        (t) => t.chooser_listKey && t.chooser_listKey.includes(listKey as string)
       );
       if (c) {
         const tab = choosers.indexOf(c);
