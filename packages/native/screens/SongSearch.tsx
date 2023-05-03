@@ -11,10 +11,10 @@ import {
   Divider,
 } from 'native-base';
 import { FlashList } from '@shopify/flash-list';
-import { useSearch } from '../hooks';
 import i18n from '@iresucito/translations';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { SongsStackParamList } from '../navigation/SongsNavigator';
+import { useSettingsStore } from '../hooks';
 
 const Loading = () => {
   return (
@@ -31,14 +31,14 @@ type SongListNavigationProp = StackNavigationProp<
 >;
 
 const SongSearch = () => {
-  const { initialized, searchItems } = useSearch();
+  const { _hasHydrated, searchItems } = useSettingsStore();
   const navigation = useNavigation<SongListNavigationProp>();
 
   useAndroidBackHandler(() => {
     return true;
   });
 
-  if (!initialized) {
+  if (!_hasHydrated) {
     return <Loading />;
   }
 

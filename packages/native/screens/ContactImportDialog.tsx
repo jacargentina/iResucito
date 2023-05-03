@@ -6,7 +6,7 @@ import { FlashList } from '@shopify/flash-list';
 import ModalView from '../components/ModalView';
 import SearchBarView from '../components/SearchBarView';
 import ContactPhoto from '../components/ContactPhoto';
-import { BrotherContact, useCommunity } from '../hooks';
+import { BrotherContact, useCommunity, useSettingsStore } from '../hooks';
 import i18n from '@iresucito/translations';
 import {
   getContactsForImport,
@@ -76,6 +76,7 @@ const ContactItem = React.memo(
 
 const ContactImportDialog = () => {
   const { brothers, deviceContacts, addOrRemove } =  useCommunity();
+  const { computedLocale } = useSettingsStore();
   const [loading, setLoading] = useState(false);
   const [contacts, setContacts] = useState<ContactForImport[]>([]);
   const [filter, setFilter] = useState('');
@@ -119,7 +120,7 @@ const ContactImportDialog = () => {
         </Text>
       }
       closeText={i18n.t('ui.done')}>
-      <SearchBarView value={filter} setValue={setFilter}>
+      <SearchBarView value={filter} setValue={setFilter} placeholder={i18n.t("ui.search placeholder", { locale: computedLocale }) + '...'}>
         {brothers && brothers.length > 0 && (
           <Box
             p="4"

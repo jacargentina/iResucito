@@ -118,14 +118,15 @@ const SettingsScreen = () => {
         <Select
           selectedValue={locale}
           onValueChange={(val) => {
-            // IMPORTANTE!
-            // Workaround de problema en Android
-            // https://github.com/facebook/react-native/issues/15556
-            setTimeout(() => {
-              useSettingsStore.setState({ locale: val });
-              // Para forzar refresco del titulo segun idioma nuevo
-              navigation.setParams({ title: '' });
-            }, 10);
+            useSettingsStore.setState({ locale: val });
+            // // IMPORTANTE!
+            // // Workaround de problema en Android
+            // // https://github.com/facebook/react-native/issues/15556
+            // setTimeout(() => {
+            //   useSettingsStore.setState({ locale: val });
+            //   // Para forzar refresco del titulo segun idioma nuevo
+            //   navigation.setParams({ title: '' });
+            // }, 10);
           }}>
           {localesItems}
         </Select>

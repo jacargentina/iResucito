@@ -19,7 +19,7 @@ import {
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import SwipeableRightAction from '../components/SwipeableRightAction';
 import SearchBarView from '../components/SearchBarView';
-import { ListForUI, useListsStore } from '../hooks';
+import { ListForUI, useListsStore, useSettingsStore } from '../hooks';
 import CallToAction from '../components/CallToAction';
 import AddListButton from '../components/AddListButton';
 import ChooseListTypeForAdd from '../components/ChooseListTypeForAdd';
@@ -123,6 +123,7 @@ const SwipeableRow = (props: { item: ListForUI }) => {
 
 const ListScreen = () => {
   const { lists_forui } = useListsStore();
+  const { computedLocale } = useSettingsStore();
   const navigation = useNavigation();
   const [filtered, setFiltered] = useState<ListForUI[]>([]);
   const [filter, setFilter] = useState('');
@@ -158,7 +159,7 @@ const ListScreen = () => {
   }
 
   return (
-    <SearchBarView value={filter} setValue={setFilter}>
+    <SearchBarView value={filter} setValue={setFilter} placeholder={i18n.t("ui.search placeholder", { locale: computedLocale }) + '...'}>
       <ChooseListTypeForAdd chooser={chooser} />
       {filtered.length === 0 && (
         <Text textAlign="center" m="5">

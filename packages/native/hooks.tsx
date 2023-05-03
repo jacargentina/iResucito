@@ -474,8 +474,8 @@ export const useListsStore = create<ListsStore>()(
   )));
 
 useListsStore.subscribe(
-  (state) => [state.lists],
-  ([lists]) => {
+  (state) => state.lists,
+  (lists) => {
     var { songs } = useSongsStore.getState();
     var lists_forui = Object.keys(lists).map(listName => {
       var datalist = lists[listName];
@@ -548,183 +548,6 @@ useListsStore.subscribe(
   equalityFn: shallow,
   fireImmediately: true,
 });
-
-type UseSearch = {
-  initialized: boolean;
-  searchItems: SearchItem[] | undefined;
-};
-
-export const useSearch = (): UseSearch => {
-  const locale = useLocale();
-  const [initialized, setInitialized] = useState(false);
-  const [searchItems, setSearchItems] = useState<SearchItem[]>();
-
-  useEffect(() => {
-    if (locale == undefined) {
-      return;
-    }
-    console.log(`loading menu for "${locale}"`);
-    // Construir menu de búsqueda
-    setInitialized(false);
-    var items: Array<SearchItem> = [
-      {
-        title_key: 'search_title.ratings',
-        note_key: 'search_note.ratings',
-        params: { filter: null, sort: ordenClasificacion },
-        badge: null,
-      },
-      {
-        title_key: 'search_title.alpha',
-        note_key: 'search_note.alpha',
-        chooser: i18n.t('search_tabs.all', { locale }),
-        params: { filter: null },
-        badge: badges.alpha,
-      },
-      {
-        title_key: 'search_title.stage',
-        divider: true,
-      },
-      {
-        title_key: 'search_title.precatechumenate',
-        note_key: 'search_note.precatechumenate',
-        params: { filter: { stage: 'precatechumenate' } },
-        badge: badges.precatechumenate,
-      },
-      {
-        title_key: 'search_title.catechumenate',
-        note_key: 'search_note.catechumenate',
-        params: { filter: { stage: 'catechumenate' } },
-        badge: badges.catechumenate,
-      },
-      {
-        title_key: 'search_title.election',
-        note_key: 'search_note.election',
-        params: { filter: { stage: 'election' } },
-        badge: badges.election,
-      },
-      {
-        title_key: 'search_title.liturgy',
-        note_key: 'search_note.liturgy',
-        params: { filter: { stage: 'liturgy' } },
-        badge: badges.liturgy,
-      },
-      {
-        title_key: 'search_title.liturgical time',
-        divider: true,
-      },
-      {
-        title_key: 'search_title.advent',
-        note_key: 'search_note.advent',
-        params: { filter: { advent: true } },
-        badge: null,
-      },
-      {
-        title_key: 'search_title.christmas',
-        note_key: 'search_note.christmas',
-        params: { filter: { christmas: true } },
-        badge: null,
-      },
-      {
-        title_key: 'search_title.lent',
-        note_key: 'search_note.lent',
-        params: { filter: { lent: true } },
-        badge: null,
-      },
-      {
-        title_key: 'search_title.easter',
-        note_key: 'search_note.easter',
-        params: { filter: { easter: true } },
-        badge: null,
-      },
-      {
-        title_key: 'search_title.pentecost',
-        note_key: 'search_note.pentecost',
-        params: { filter: { pentecost: true } },
-        badge: null,
-      },
-      {
-        title_key: 'search_title.liturgical order',
-        divider: true,
-      },
-      {
-        title_key: 'search_title.entrance',
-        note_key: 'search_note.entrance',
-        params: { filter: { entrance: true } },
-        badge: null,
-        chooser: i18n.t('search_tabs.entrance', { locale }),
-        chooser_listKey: ['entrada'],
-      },
-      {
-        title_key: 'search_title.peace and offerings',
-        note_key: 'search_note.peace and offerings',
-        params: { filter: { 'peace and offerings': true } },
-        badge: null,
-        chooser: i18n.t('search_tabs.peace and offerings', {
-          locale,
-        }),
-        chooser_listKey: ['paz'],
-      },
-      {
-        title_key: 'search_title.fraction of bread',
-        note_key: 'search_note.fraction of bread',
-        params: { filter: { 'fraction of bread': true } },
-        badge: null,
-        chooser: i18n.t('search_tabs.fraction of bread', {
-          locale,
-        }),
-        chooser_listKey: ['comunion-pan'],
-      },
-      {
-        title_key: 'search_title.communion',
-        note_key: 'search_note.communion',
-        params: { filter: { communion: true } },
-        badge: null,
-        chooser: i18n.t('search_tabs.communion', { locale }),
-        chooser_listKey: ['comunion-pan', 'comunion-caliz'],
-      },
-      {
-        title_key: 'search_title.exit',
-        note_key: 'search_note.exit',
-        params: { filter: { exit: true } },
-        badge: null,
-        chooser: i18n.t('search_tabs.exit', { locale }),
-        chooser_listKey: ['salida'],
-      },
-      {
-        title_key: 'search_title.signing to the virgin',
-        note_key: 'search_note.signing to the virgin',
-        params: { filter: { 'signing to the virgin': true } },
-        badge: null,
-        chooser: i18n.t('search_tabs.signing to the virgin', {
-          locale,
-        }),
-      },
-      {
-        /* eslint-disable quotes */
-        title_key: `search_title.children's songs`,
-        note_key: `search_note.children's songs`,
-        params: { filter: { "children's songs": true } },
-        badge: null,
-      },
-      {
-        title_key: 'search_title.lutes and vespers',
-        note_key: 'search_note.lutes and vespers',
-        params: { filter: { 'lutes and vespers': true } },
-        badge: null,
-      },
-    ];
-    items = items.map((item) => {
-      if (item.params) {
-        item.params.title_key = item.title_key;
-      }
-      return item;
-    });
-    setSearchItems(items);
-    setInitialized(true);
-  }, [locale]);
-
-  return { initialized, searchItems };
-};
 
 export type BrotherContact = Contacts.Contact & {
   s: boolean;
@@ -907,16 +730,20 @@ export type SettingsStore = {
   locale: string;
   keepAwake: boolean;
   zoomLevel: number;
+  computedLocale: string;
+  searchItems: SearchItem[],
   _hasHydrated: boolean;
   setHasHydrated: (state: boolean) => void;
 };
 
 export const useSettingsStore = create<SettingsStore>()(
-  persist(
+  subscribeWithSelector(persist(
     (set, get) => ({
       locale: 'default',
       keepAwake: true,
       zoomLevel: 1,
+      computedLocale: 'default',
+      searchItems: [],
       _hasHydrated: false,
       setHasHydrated: (state: boolean) => {
         set({
@@ -936,24 +763,174 @@ export const useSettingsStore = create<SettingsStore>()(
         state?.setHasHydrated(true)
       }
     }
-  ));
+  )));
 
-export const useLocale = () => {
-  const { locale, _hasHydrated } = useSettingsStore();
-  const localeReal = useMemo(() => {
+useSettingsStore.subscribe(
+  (state) => [state.locale, state._hasHydrated] as [string, boolean],
+  ([locale, _hasHydrated]) => {
     if (_hasHydrated) {
-      return locale === 'default' ? getDefaultLocale() : locale;
+      i18n.locale = locale === 'default' ? getDefaultLocale() : locale;
+      useSongsStore.getState().load(i18n.locale);
+      var items: Array<SearchItem> = [
+        {
+          title_key: 'search_title.ratings',
+          note_key: 'search_note.ratings',
+          params: { filter: null, sort: ordenClasificacion },
+          badge: null,
+        },
+        {
+          title_key: 'search_title.alpha',
+          note_key: 'search_note.alpha',
+          chooser: i18n.t('search_tabs.all', { locale }),
+          params: { filter: null },
+          badge: badges.alpha,
+        },
+        {
+          title_key: 'search_title.stage',
+          divider: true,
+        },
+        {
+          title_key: 'search_title.precatechumenate',
+          note_key: 'search_note.precatechumenate',
+          params: { filter: { stage: 'precatechumenate' } },
+          badge: badges.precatechumenate,
+        },
+        {
+          title_key: 'search_title.catechumenate',
+          note_key: 'search_note.catechumenate',
+          params: { filter: { stage: 'catechumenate' } },
+          badge: badges.catechumenate,
+        },
+        {
+          title_key: 'search_title.election',
+          note_key: 'search_note.election',
+          params: { filter: { stage: 'election' } },
+          badge: badges.election,
+        },
+        {
+          title_key: 'search_title.liturgy',
+          note_key: 'search_note.liturgy',
+          params: { filter: { stage: 'liturgy' } },
+          badge: badges.liturgy,
+        },
+        {
+          title_key: 'search_title.liturgical time',
+          divider: true,
+        },
+        {
+          title_key: 'search_title.advent',
+          note_key: 'search_note.advent',
+          params: { filter: { advent: true } },
+          badge: null,
+        },
+        {
+          title_key: 'search_title.christmas',
+          note_key: 'search_note.christmas',
+          params: { filter: { christmas: true } },
+          badge: null,
+        },
+        {
+          title_key: 'search_title.lent',
+          note_key: 'search_note.lent',
+          params: { filter: { lent: true } },
+          badge: null,
+        },
+        {
+          title_key: 'search_title.easter',
+          note_key: 'search_note.easter',
+          params: { filter: { easter: true } },
+          badge: null,
+        },
+        {
+          title_key: 'search_title.pentecost',
+          note_key: 'search_note.pentecost',
+          params: { filter: { pentecost: true } },
+          badge: null,
+        },
+        {
+          title_key: 'search_title.liturgical order',
+          divider: true,
+        },
+        {
+          title_key: 'search_title.entrance',
+          note_key: 'search_note.entrance',
+          params: { filter: { entrance: true } },
+          badge: null,
+          chooser: i18n.t('search_tabs.entrance', { locale }),
+          chooser_listKey: ['entrada'],
+        },
+        {
+          title_key: 'search_title.peace and offerings',
+          note_key: 'search_note.peace and offerings',
+          params: { filter: { 'peace and offerings': true } },
+          badge: null,
+          chooser: i18n.t('search_tabs.peace and offerings', {
+            locale,
+          }),
+          chooser_listKey: ['paz'],
+        },
+        {
+          title_key: 'search_title.fraction of bread',
+          note_key: 'search_note.fraction of bread',
+          params: { filter: { 'fraction of bread': true } },
+          badge: null,
+          chooser: i18n.t('search_tabs.fraction of bread', {
+            locale,
+          }),
+          chooser_listKey: ['comunion-pan'],
+        },
+        {
+          title_key: 'search_title.communion',
+          note_key: 'search_note.communion',
+          params: { filter: { communion: true } },
+          badge: null,
+          chooser: i18n.t('search_tabs.communion', { locale }),
+          chooser_listKey: ['comunion-pan', 'comunion-caliz'],
+        },
+        {
+          title_key: 'search_title.exit',
+          note_key: 'search_note.exit',
+          params: { filter: { exit: true } },
+          badge: null,
+          chooser: i18n.t('search_tabs.exit', { locale }),
+          chooser_listKey: ['salida'],
+        },
+        {
+          title_key: 'search_title.signing to the virgin',
+          note_key: 'search_note.signing to the virgin',
+          params: { filter: { 'signing to the virgin': true } },
+          badge: null,
+          chooser: i18n.t('search_tabs.signing to the virgin', {
+            locale,
+          }),
+        },
+        {
+          /* eslint-disable quotes */
+          title_key: `search_title.children's songs`,
+          note_key: `search_note.children's songs`,
+          params: { filter: { "children's songs": true } },
+          badge: null,
+        },
+        {
+          title_key: 'search_title.lutes and vespers',
+          note_key: 'search_note.lutes and vespers',
+          params: { filter: { 'lutes and vespers': true } },
+          badge: null,
+        },
+      ];
+      items = items.map((item) => {
+        if (item.params) {
+          item.params.title_key = item.title_key;
+        }
+        return item;
+      });
+      useSettingsStore.setState({ computedLocale: i18n.locale, searchItems: items });
     }
-  }, [_hasHydrated, locale]);
-
-  useEffect(() => {
-    if (localeReal) {
-      i18n.locale = localeReal;
-    }
-  }, [localeReal]);
-
-  return localeReal;
-};
+  },
+  {
+    equalityFn: shallow,
+    fireImmediately: true,
+  });
 
 export const sharePDF = (shareTitleSuffix: string, pdfPath: string) => {
   Share.open({

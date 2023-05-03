@@ -6,9 +6,10 @@ import { Platform, StyleSheet } from 'react-native';
 import { Box, Input, Icon, useTheme } from 'native-base';
 import { useDebounce } from 'use-debounce';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import i18n from '@iresucito/translations';
 
-const DebouncedInput = (props: any) => {
-  const { value, setValue } = props;
+const DebouncedInput = (props: { value: string; setValue: Function; placeholder: string }) => {
+  const { value, setValue, placeholder } = props;
   const [searchTerm, setSearchTerm] = useState(value);
   const [debouncedTerm] = useDebounce(searchTerm, 500);
 
@@ -25,7 +26,7 @@ const DebouncedInput = (props: any) => {
       m="1"
       size="md"
       isFullWidth
-      placeholder="Buscar..."
+      placeholder={placeholder}
       onChangeText={setSearchTerm}
       value={searchTerm}
       returnKeyType="search"
@@ -51,7 +52,12 @@ const DebouncedInput = (props: any) => {
   );
 };
 
-const SearchBarView = (props: any) => {
+const SearchBarView = (props: {
+  value: string;
+  setValue: Function;
+  placeholder: string,
+  children: any;
+}) => {
   const navigation = useNavigation();
   const { colors } = useTheme();
 
@@ -62,7 +68,10 @@ const SearchBarView = (props: any) => {
 
   return (
     <>
-      <DebouncedInput value={props.value} setValue={props.setValue} />
+      <DebouncedInput
+        value={props.value}
+        setValue={props.setValue}
+        placeholder={props.placeholder} />
       <Box
         flex={1}
         borderTopWidth={StyleSheet.hairlineWidth}

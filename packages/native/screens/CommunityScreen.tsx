@@ -8,7 +8,7 @@ import { useIsFocused, useNavigation } from '@react-navigation/native';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import SwipeableRightAction from '../components/SwipeableRightAction';
 import SearchBarView from '../components/SearchBarView';
-import { useCommunity, useContactsStore } from '../hooks';
+import { useCommunity, useContactsStore, useSettingsStore } from '../hooks';
 import CallToAction from '../components/CallToAction';
 import i18n from '@iresucito/translations';
 import useStackNavOptions from '../navigation/StackNavOptions';
@@ -115,6 +115,7 @@ type ContactImportNavigationProp = StackNavigationProp<
 const CommunityScreen = () => {
   const { brothers } = useCommunity();
   const { loaded } = useContactsStore();
+  const { computedLocale } = useSettingsStore();
   const options = useStackNavOptions();
   const isFocused = useIsFocused();
   const navigation = useNavigation<ContactImportNavigationProp>();
@@ -192,7 +193,7 @@ const CommunityScreen = () => {
   }
 
   return (
-    <SearchBarView value={filter} setValue={setFilter}>
+    <SearchBarView value={filter} setValue={setFilter} placeholder={i18n.t("ui.search placeholder", { locale: computedLocale }) + '...'}>
       {filtered && filtered.length === 0 && (
         <Text fontSize="sm" style={{ textAlign: 'center', paddingTop: 20 }}>
           {i18n.t('ui.no contacts found')}

@@ -8,7 +8,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { View } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import ModalView from '../components/ModalView';
-import { useCommunity, useListsStore } from '../hooks';
+import { useCommunity, useListsStore, useSettingsStore } from '../hooks';
 import i18n from '@iresucito/translations';
 import { contactFilterByText, ordenAlfabetico } from '../util';
 import SearchBarView from '../components/SearchBarView';
@@ -22,6 +22,7 @@ const ContactChooserDialog = () => {
   const navigation = useNavigation();
   const route = useRoute<ContactChooserRouteProp>();
   const { brothers } = useCommunity();
+  const { computedLocale } = useSettingsStore();
   const [filter, setFilter] = useState('');
   const { target } = route.params;
 
@@ -69,7 +70,7 @@ const ContactChooserDialog = () => {
         </View>
       )}
       {brothers.length > 0 && (
-        <SearchBarView value={filter} setValue={setFilter}>
+        <SearchBarView value={filter} setValue={setFilter} placeholder={i18n.t("ui.search placeholder", { locale: computedLocale }) + '...'}>
           <FlashList
             data={filtered}
             keyExtractor={(item) => item.recordID}

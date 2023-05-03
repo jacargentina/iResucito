@@ -14,7 +14,7 @@ import SearchBarView from '../components/SearchBarView';
 import ExportToPdfButton from '../components/ExportToPdfButton';
 import ChoosePdfTypeForExport from '../components/ChoosePdfTypeForExport';
 import i18n from '@iresucito/translations';
-import { setSongSetting, useSongsSelection, useSongsStore } from '../hooks';
+import { setSongSetting, useSettingsStore, useSongsSelection, useSongsStore } from '../hooks';
 import SongListItem from './SongListItem';
 import { SongsStackParamList } from '../navigation/SongsNavigator';
 import { ExportToPdfOptions, Song, SongToPdf, defaultExportToPdfOptions } from '@iresucito/core';
@@ -37,6 +37,7 @@ type IsLoading = { isLoading: boolean; text: string };
 const SongList = (props: { viewButton?: boolean; filter?: any; sort?: any; onPress?: any }) => {
   const listRef = useRef<any>();
   const { songs } = useSongsStore();
+  const { computedLocale } = useSettingsStore();
   const { selection, enabled, disable } = useSongsSelection();
   const navigation = useNavigation<SongDetailNavigationProp>();
   const route = useRoute<SongListRouteProp>();
@@ -192,7 +193,7 @@ const SongList = (props: { viewButton?: boolean; filter?: any; sort?: any; onPre
   }
 
   return (
-    <SearchBarView value={textFilter} setValue={setTextFilter}>
+    <SearchBarView value={textFilter} setValue={setTextFilter} placeholder={i18n.t("ui.search placeholder", { locale: computedLocale }) + '...'}>
       <ChoosePdfTypeForExport chooser={chooser} setLoading={setLoading} />
       <Text bold p="2" px="4" bg="gray.100" color="muted.500">
         {totalText}
