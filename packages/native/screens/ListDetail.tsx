@@ -65,13 +65,13 @@ const SwipeableRow = (props: {
 type ListDetailRouteProp = RouteProp<ListsStackParamList, 'ListDetail'>;
 
 const ListDetail = () => {
-  const lists_forui = useListsStore(state => state.lists_forui);
+  const lists_ui = useListsStore(state => state.lists_ui);
   const [scroll, setScroll] = useState<ScrollView>();
   const [noteFocused, setNoteFocused] = useState(false);
   const route = useRoute<ListDetailRouteProp>();
   const { listName } = route.params;
 
-  const uiList = lists_forui.find(l => l.name == listName) as ListForUI;
+  const uiList = lists_ui.find(l => l.name == listName) as ListForUI;
 
   if (uiList.type === 'libre') {
     var items = uiList.items;

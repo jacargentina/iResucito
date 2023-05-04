@@ -122,7 +122,7 @@ const SwipeableRow = (props: { item: ListForUI }) => {
 };
 
 const ListScreen = () => {
-  const { lists_forui } = useListsStore();
+  const { lists_ui } = useListsStore();
   const { computedLocale } = useSettingsStore();
   const navigation = useNavigation();
   const [filtered, setFiltered] = useState<ListForUI[]>([]);
@@ -130,12 +130,12 @@ const ListScreen = () => {
   const chooser = useDisclose();
 
   useEffect(() => {
-    var result = lists_forui;
+    var result = lists_ui;
     if (filter !== '') {
-      result = result.filter((c) => c.name.includes(filter));
+      result = result.filter((c) => c.name.toLowerCase().includes(filter.toLowerCase()));
     }
     setFiltered(result);
-  }, [lists_forui, filter]);
+  }, [lists_ui, filter]);
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
@@ -143,7 +143,7 @@ const ListScreen = () => {
     });
   });
 
-  if (lists_forui.length === 0) {
+  if (lists_ui.length === 0) {
     return (
       <>
         <ChooseListTypeForAdd chooser={chooser} />

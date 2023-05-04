@@ -17,12 +17,12 @@ type SongChooserScreenNavigationProp = BottomTabNavigationProp<
 
 const AddSongButton = () => {
   const options = useStackNavOptions();
-  const { lists_forui } = useListsStore();
+  const { lists_ui } = useListsStore();
   const navigation = useNavigation<SongChooserScreenNavigationProp>();
   const route = useRoute<ListDetailRouteProp>();
   const { listName } = route.params;
 
-  const uiList = lists_forui.find(l => l.name == listName);
+  const uiList = lists_ui.find(l => l.name == listName);
 
   if (uiList?.type !== 'libre') {
     return null;

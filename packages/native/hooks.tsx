@@ -1,10 +1,5 @@
-import React, {
-  useState,
-  useEffect,
-  useCallback,
-  useMemo,
-} from 'react';
-import { useWhatChanged } from '@simbathesailor/use-what-changed';
+import React, { useEffect } from 'react';
+//import { useWhatChanged } from '@simbathesailor/use-what-changed';
 import { Alert, Platform, PermissionsAndroid } from 'react-native';
 import Share from 'react-native-share';
 import Contacts from 'react-native-contacts';
@@ -26,9 +21,13 @@ import i18n from '@iresucito/translations';
 import badges from './badges';
 import { generateListPDF } from './pdf';
 import { create } from 'zustand';
-import { createJSONStorage, persist, subscribeWithSelector } from 'zustand/middleware'
-import { shallow } from 'zustand/shallow'
-import { produce } from "immer"
+import {
+  createJSONStorage,
+  persist,
+  subscribeWithSelector,
+} from 'zustand/middleware';
+import { shallow } from 'zustand/shallow';
+import { produce } from 'immer';
 import {
   getDefaultLocale,
   ordenClasificacion,
@@ -40,7 +39,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const readSongSettingsFile = async (): Promise<
   SongSettingsFile | undefined
 > => {
-  if (await NativeExtras.settingsExists() === false) {
+  if ((await NativeExtras.settingsExists()) === false) {
     return Promise.resolve(undefined);
   }
   const json = await NativeExtras.readSettings();
@@ -56,7 +55,7 @@ type SongsStore = {
   lang: string | undefined;
   songs: Song[];
   load: (loc: string) => Promise<Song[]>;
-}
+};
 
 export const useSongsStore = create<SongsStore>((set) => ({
   lang: undefined,
@@ -65,16 +64,12 @@ export const useSongsStore = create<SongsStore>((set) => ({
     set((state) => ({ lang: loc }));
     var settingsObj = await readSongSettingsFile();
     // Construir metadatos de cantos
-    var metaData = NativeSongs.getSongsMeta(
-      loc,
-      undefined,
-      settingsObj
-    );
+    var metaData = NativeSongs.getSongsMeta(loc, undefined, settingsObj);
     console.log(`songsStore loading ${metaData.length} songs for "${loc}"`);
     await NativeSongs.loadSongs(loc, metaData);
     set((state) => ({ songs: metaData }));
     return metaData;
-  }
+  },
 }));
 
 export const setSongSetting = async (
@@ -96,8 +91,8 @@ export const setSongSetting = async (
   var json = JSON.stringify(settingsObj, null, ' ');
   await NativeExtras.saveSettings(json);
   var updated = await useSongsStore.getState().load(loc);
-  return updated.find(song => song.key == key) as Song;
-}
+  return updated.find((song) => song.key == key) as Song;
+};
 
 type SelectionStore = {
   selection: string[];
@@ -105,7 +100,7 @@ type SelectionStore = {
   enable: () => void;
   disable: () => void;
   toggle: (key: string) => void;
-}
+};
 
 export const useSongsSelection = create<SelectionStore>((set, get) => ({
   selection: [],
@@ -127,7 +122,7 @@ export const useSongsSelection = create<SelectionStore>((set, get) => ({
     }
     set((state) => ({ selection, enabled }));
     return get();
-  }
+  },
 }));
 
 type LibreList = {
@@ -237,19 +232,23 @@ type EucaristiaListForUI = {
 export type ListForUI = LibreListForUI | PalabraListForUI | EucaristiaListForUI;
 
 type ListsStore = {
-  lists: Lists,
-  lists_forui: ListForUI[],
+  lists: Lists;
+  lists_ui: ListForUI[];
   add: (listName: string, type: ListType) => void;
   rename: (listName: string, newName: string) => void;
   remove: (listName: string) => void;
   setList: (listName: string, listKey: string | number, listValue: any) => void;
   importList: (listPath: string) => Promise<string | void>;
   shareList: (listName: string, type: ShareListType) => void;
+  load_ui: () => void;
   _hasHydrated: boolean;
   setHasHydrated: (state: boolean) => void;
 };
 
-const getItemForShare = (list: ListForUI, key: keyof LibreListForUI | keyof PalabraListForUI | keyof EucaristiaListForUI) => {
+const getItemForShare = (
+  list: ListForUI,
+  key: keyof LibreListForUI | keyof PalabraListForUI | keyof EucaristiaListForUI
+) => {
   if (list.hasOwnProperty(key)) {
     var valor = list[key];
     if (valor && getEsSalmo(key)) {
@@ -263,106 +262,127 @@ const getItemForShare = (list: ListForUI, key: keyof LibreListForUI | keyof Pala
 };
 
 export const useListsStore = create<ListsStore>()(
-  subscribeWithSelector(persist(
-    (set, get) => ({
-      lists: {},
-      lists_forui: [],
-      _hasHydrated: false,
-      setHasHydrated: (state: boolean) => {
-        set({
-          _hasHydrated: state
-        });
-      },
-      add: (listName: string, type: ListType) => {
-        set(produce((state: ListsStore) => {
-          switch (type) {
-            case 'libre':
-              state.lists[listName] = { type, version: 1, items: [] };
-              break;
-            case 'palabra':
-              state.lists[listName] = {
-                type,
-                version: 1,
-                ambiental: null,
-                entrada: null,
-                '1-monicion': null,
-                '1': null,
-                '1-salmo': null,
-                '2-monicion': null,
-                '2': null,
-                '2-salmo': null,
-                '3-monicion': null,
-                '3': null,
-                '3-salmo': null,
-                'evangelio-monicion': null,
-                evangelio: null,
-                salida: null,
-                nota: null,
-              };
-              break;
-            case 'eucaristia':
-              state.lists[listName] = {
-                type,
-                version: 1,
-                ambiental: null,
-                entrada: null,
-                '1-monicion': null,
-                '1': null,
-                '2-monicion': null,
-                '2': null,
-                'evangelio-monicion': null,
-                evangelio: null,
-                'oracion-universal': null,
-                paz: null,
-                'comunion-pan': null,
-                'comunion-caliz': null,
-                salida: null,
-                'encargado-pan': null,
-                'encargado-flores': null,
-                nota: null,
-              };
-              break;
-          }
-        }));
-      },
-      rename: (listName: string, newName: string) => {
-        set(produce((state: ListsStore) => {
-          const list = state.lists[listName];
-          delete state.lists[listName];
-          state.lists[newName] = list;
-        }));
-      },
-      remove: (listName: string) => {
-        set(produce((state: ListsStore) => {
-          delete state.lists[listName];
-        }));
-      },
-      setList: (listName: string, listKey: string | number, listValue: any) => {
-        set(produce((state: ListsStore) => {
-          const targetList = state.lists[listName];
-          if (listValue !== undefined) {
-            if (typeof listKey === 'string') {
-              targetList[listKey] = listValue;
-            } else if (typeof listKey === 'number' && "items" in targetList) {
-              var isPresent = targetList.items.find((s: any) => s === listValue);
-              if (isPresent) {
-                return;
+  subscribeWithSelector(
+    persist(
+      (set, get) => ({
+        lists: {},
+        lists_ui: [],
+        _hasHydrated: false,
+        setHasHydrated: (state: boolean) => {
+          set({
+            _hasHydrated: state,
+          });
+        },
+        add: (listName: string, type: ListType) => {
+          set(
+            produce((state: ListsStore) => {
+              switch (type) {
+                case 'libre':
+                  state.lists[listName] = { type, version: 1, items: [] };
+                  break;
+                case 'palabra':
+                  state.lists[listName] = {
+                    type,
+                    version: 1,
+                    ambiental: null,
+                    entrada: null,
+                    '1-monicion': null,
+                    '1': null,
+                    '1-salmo': null,
+                    '2-monicion': null,
+                    '2': null,
+                    '2-salmo': null,
+                    '3-monicion': null,
+                    '3': null,
+                    '3-salmo': null,
+                    'evangelio-monicion': null,
+                    evangelio: null,
+                    salida: null,
+                    nota: null,
+                  };
+                  break;
+                case 'eucaristia':
+                  state.lists[listName] = {
+                    type,
+                    version: 1,
+                    ambiental: null,
+                    entrada: null,
+                    '1-monicion': null,
+                    '1': null,
+                    '2-monicion': null,
+                    '2': null,
+                    'evangelio-monicion': null,
+                    evangelio: null,
+                    'oracion-universal': null,
+                    paz: null,
+                    'comunion-pan': null,
+                    'comunion-caliz': null,
+                    salida: null,
+                    'encargado-pan': null,
+                    'encargado-flores': null,
+                    nota: null,
+                  };
+                  break;
               }
-              targetList.items[listKey] = listValue;
-            }
-          } else {
-            if (typeof listKey === 'string') {
-              targetList[listKey] = undefined;
-            } else if (typeof listKey === 'number' && "items" in targetList) {
-              targetList.items.splice(listKey, 1);
-            }
-          }
-        }))
-      },
-      importList: (listPath: string) => {
-        const path = decodeURI(listPath);
-        return RNFS.readFile(path)
-          .then((content) => {
+            })
+          );
+        },
+        rename: (listName: string, newName: string) => {
+          set(
+            produce((state: ListsStore) => {
+              const list = state.lists[listName];
+              delete state.lists[listName];
+              state.lists[newName] = list;
+            })
+          );
+        },
+        remove: (listName: string) => {
+          set(
+            produce((state: ListsStore) => {
+              delete state.lists[listName];
+            })
+          );
+        },
+        setList: (
+          listName: string,
+          listKey: string | number,
+          listValue: any
+        ) => {
+          set(
+            produce((state: ListsStore) => {
+              const targetList = state.lists[listName];
+              if (listValue !== undefined) {
+                if (typeof listKey === 'string') {
+                  targetList[listKey] = listValue;
+                } else if (
+                  typeof listKey === 'number' &&
+                  'items' in targetList
+                ) {
+                  var isPresent = targetList.items.find(
+                    (s: any) => s === listValue
+                  );
+                  if (isPresent) {
+                    return;
+                  }
+                  targetList.items[listKey] = listValue;
+                }
+              } else {
+                if (typeof listKey === 'string') {
+                  targetList[listKey] = undefined;
+                } else if (
+                  typeof listKey === 'number' &&
+                  'items' in targetList
+                ) {
+                  targetList.items.splice(listKey, 1);
+                }
+              }
+            })
+          );
+        },
+        importList: async (listPath: string) => {
+          const path = decodeURI(listPath);
+          try {
+            const content = await RNFS.readFile(path);
             // Obtener nombre del archivo
             // que será nombre de la lista
             const parsed = pathParse(listPath);
@@ -378,176 +398,239 @@ export const useListsStore = create<ListsStore>()(
             });
             useListsStore.setState({ lists: changedLists });
             return listName;
-          })
-          .catch((err) => {
-            console.log('importList: ' + err.message);
+          } catch (err) {
+            console.log('importList: ' + (err as Error).message);
             Alert.alert(
               i18n.t('alert_title.corrupt file'),
               i18n.t('alert_message.corrupt file')
             );
-          });
-      },
-      shareList: async (listName: string, format: ShareListType) => {
-        switch (format) {
-          case 'native':
-            const folder =
-              Platform.OS === 'ios'
-                ? RNFS.TemporaryDirectoryPath
-                : RNFS.CachesDirectoryPath + '/';
-            const fileName = listName.replace(' ', '-');
-            const listPath = `${folder}${fileName}.ireslist`;
-            const nativeList = get().lists[listName];
-            RNFS.writeFile(listPath, JSON.stringify(nativeList, null, ' '), 'utf8');
-            Share.open({
-              title: i18n.t('ui.share'),
-              subject: `iResucitó - ${listName}`,
-              url: `file://${listPath}`,
-              failOnCancel: false,
-            }).catch((err) => {
-              err && console.log(err);
-            });
-            break;
-          case 'text':
-            var list = get().lists_forui.find(l => l.name == listName) as ListForUI;
-            var items: Array<string | null> = [];
-            if (list.type === 'libre') {
-              var cantos = list.items;
-              cantos.forEach((canto: Song, i: number) => {
-                items.push(`${i + 1} - ${canto.titulo}`);
+          }
+        },
+        shareList: async (listName: string, format: ShareListType) => {
+          switch (format) {
+            case 'native':
+              const folder =
+                Platform.OS === 'ios'
+                  ? RNFS.TemporaryDirectoryPath
+                  : RNFS.CachesDirectoryPath + '/';
+              const fileName = listName.replace(' ', '-');
+              const listPath = `${folder}${fileName}.ireslist`;
+              const nativeList = get().lists[listName];
+              RNFS.writeFile(
+                listPath,
+                JSON.stringify(nativeList, null, ' '),
+                'utf8'
+              );
+              Share.open({
+                title: i18n.t('ui.share'),
+                subject: `iResucitó - ${listName}`,
+                url: `file://${listPath}`,
+                failOnCancel: false,
+              }).catch((err) => {
+                err && console.log(err);
               });
-            } else {
-              items.push(getItemForShare(list, 'ambiental'));
-              items.push(getItemForShare(list, 'entrada'));
-              items.push(getItemForShare(list, '1-monicion'));
-              items.push(getItemForShare(list, '1'));
-              items.push(getItemForShare(list, '1-salmo'));
-              items.push(getItemForShare(list, '2-monicion'));
-              items.push(getItemForShare(list, '2'));
-              items.push(getItemForShare(list, '2-salmo'));
-              items.push(getItemForShare(list, '3-monicion'));
-              items.push(getItemForShare(list, '3'));
-              items.push(getItemForShare(list, '3-salmo'));
-              items.push(getItemForShare(list, 'evangelio-monicion'));
-              items.push(getItemForShare(list, 'evangelio'));
-              items.push(getItemForShare(list, 'oracion-universal'));
-              items.push(getItemForShare(list, 'paz'));
-              items.push(getItemForShare(list, 'comunion-pan'));
-              items.push(getItemForShare(list, 'comunion-caliz'));
-              items.push(getItemForShare(list, 'salida'));
-              items.push(getItemForShare(list, 'encargado-pan'));
-              items.push(getItemForShare(list, 'encargado-flores'));
-              items.push(getItemForShare(list, 'nota'));
-            }
-            var message = items.filter((n) => n).join('\n');
-            Share.open({
-              title: i18n.t('ui.share'),
-              message: message,
-              subject: `iResucitó - ${listName}`,
-              url: undefined,
-              failOnCancel: false,
-            }).catch((err) => {
-              err && console.log(err);
-            });
-            break;
-          case 'pdf':
-            var list = get().lists_forui.find(l => l.name == listName) as ListForUI;
-            var listToPdf: ListToPdf = {
-              ...list,
-              name: list.name,
-              type: list.type,
-              localeType: getLocalizedListType(list.type, i18n.locale)
-            }
-            var path = await generateListPDF(listToPdf, defaultExportToPdfOptions);
-            sharePDF(listName, path);
-            break;
-        }
+              break;
+            case 'text':
+              var list = get().lists_ui.find(
+                (l) => l.name == listName
+              ) as ListForUI;
+              var items: Array<string | null> = [];
+              if (list.type === 'libre') {
+                var cantos = list.items;
+                cantos.forEach((canto: Song, i: number) => {
+                  items.push(`${i + 1} - ${canto.titulo}`);
+                });
+              } else {
+                items.push(getItemForShare(list, 'ambiental'));
+                items.push(getItemForShare(list, 'entrada'));
+                items.push(getItemForShare(list, '1-monicion'));
+                items.push(getItemForShare(list, '1'));
+                items.push(getItemForShare(list, '1-salmo'));
+                items.push(getItemForShare(list, '2-monicion'));
+                items.push(getItemForShare(list, '2'));
+                items.push(getItemForShare(list, '2-salmo'));
+                items.push(getItemForShare(list, '3-monicion'));
+                items.push(getItemForShare(list, '3'));
+                items.push(getItemForShare(list, '3-salmo'));
+                items.push(getItemForShare(list, 'evangelio-monicion'));
+                items.push(getItemForShare(list, 'evangelio'));
+                items.push(getItemForShare(list, 'oracion-universal'));
+                items.push(getItemForShare(list, 'paz'));
+                items.push(getItemForShare(list, 'comunion-pan'));
+                items.push(getItemForShare(list, 'comunion-caliz'));
+                items.push(getItemForShare(list, 'salida'));
+                items.push(getItemForShare(list, 'encargado-pan'));
+                items.push(getItemForShare(list, 'encargado-flores'));
+                items.push(getItemForShare(list, 'nota'));
+              }
+              var message = items.filter((n) => n).join('\n');
+              Share.open({
+                title: i18n.t('ui.share'),
+                message: message,
+                subject: `iResucitó - ${listName}`,
+                url: undefined,
+                failOnCancel: false,
+              }).catch((err) => {
+                err && console.log(err);
+              });
+              break;
+            case 'pdf':
+              var list = get().lists_ui.find(
+                (l) => l.name == listName
+              ) as ListForUI;
+              var listToPdf: ListToPdf = {
+                ...list,
+                name: list.name,
+                type: list.type,
+                localeType: getLocalizedListType(list.type, i18n.locale),
+              };
+              var path = await generateListPDF(
+                listToPdf,
+                defaultExportToPdfOptions
+              );
+              sharePDF(listName, path);
+              break;
+          }
+        },
+        load_ui: () => {
+          set(
+            produce((state: ListsStore) => {
+              var { songs } = useSongsStore.getState();
+              state.lists_ui = Object.keys(state.lists).map((listName) => {
+                var datalist = state.lists[listName];
+                switch (datalist.type) {
+                  case 'libre':
+                    var l = datalist as LibreList;
+                    var libre: LibreListForUI = {
+                      name: listName,
+                      version: datalist.version,
+                      type: datalist.type,
+                      localeType: getLocalizedListType(
+                        datalist.type,
+                        i18n.locale
+                      ),
+                      items: l.items.map((key) => {
+                        return songs?.find((s) => s.key === key) as Song;
+                      }),
+                    };
+                    return libre;
+                  case 'palabra':
+                    var p = datalist as PalabraList;
+                    var palabra: PalabraListForUI = {
+                      name: listName,
+                      version: datalist.version,
+                      type: datalist.type,
+                      localeType: getLocalizedListType(
+                        datalist.type,
+                        i18n.locale
+                      ),
+                      ambiental: datalist.ambiental,
+                      entrada:
+                        datalist.entrada != null
+                          ? (songs?.find((s) => s.key === p.entrada) as Song)
+                          : null,
+                      '1-monicion': datalist['1-monicion'],
+                      '1': datalist['1'],
+                      '1-salmo':
+                        datalist['1-salmo'] != null
+                          ? (songs?.find((s) => s.key === p['1-salmo']) as Song)
+                          : null,
+                      '2-monicion': datalist['2-monicion'],
+                      '2': datalist['2'],
+                      '2-salmo':
+                        datalist['2-salmo'] != null
+                          ? (songs?.find((s) => s.key === p['2-salmo']) as Song)
+                          : null,
+                      '3-monicion': datalist['3-monicion'],
+                      '3': datalist['3'],
+                      '3-salmo':
+                        datalist['3-salmo'] != null
+                          ? (songs?.find((s) => s.key === p['3-salmo']) as Song)
+                          : null,
+                      'evangelio-monicion': datalist['evangelio-monicion'],
+                      evangelio: datalist.evangelio,
+                      salida:
+                        datalist.salida != null
+                          ? (songs?.find((s) => s.key === p.salida) as Song)
+                          : null,
+                      nota: datalist.nota,
+                    };
+                    return palabra;
+                  case 'eucaristia':
+                    var e = datalist as EucaristiaList;
+                    var eucaristia: EucaristiaListForUI = {
+                      name: listName,
+                      version: datalist.version,
+                      type: datalist.type,
+                      localeType: getLocalizedListType(
+                        datalist.type,
+                        i18n.locale
+                      ),
+                      ambiental: datalist.ambiental,
+                      entrada:
+                        datalist.entrada != null
+                          ? (songs?.find((s) => s.key === e.entrada) as Song)
+                          : null,
+                      '1-monicion': datalist['1-monicion'],
+                      '1': datalist['1'],
+                      '2-monicion': datalist['2-monicion'],
+                      '2': datalist['2'],
+                      'evangelio-monicion': datalist['evangelio-monicion'],
+                      evangelio: datalist.evangelio,
+                      'oracion-universal': datalist['oracion-universal'],
+                      'comunion-pan':
+                        datalist['comunion-pan'] != null
+                          ? (songs?.find(
+                            (s) => s.key === e['comunion-pan']
+                          ) as Song)
+                          : null,
+                      'comunion-caliz':
+                        datalist['comunion-caliz'] != null
+                          ? (songs?.find(
+                            (s) => s.key === e['comunion-caliz']
+                          ) as Song)
+                          : null,
+                      paz:
+                        datalist.paz != null
+                          ? (songs?.find((s) => s.key === e.paz) as Song)
+                          : null,
+                      salida:
+                        datalist.salida != null
+                          ? (songs?.find((s) => s.key === e.salida) as Song)
+                          : null,
+                      'encargado-pan': datalist['encargado-pan'],
+                      'encargado-flores': datalist['encargado-flores'],
+                      nota: datalist.nota,
+                    };
+                    return eucaristia;
+                }
+              });
+            })
+          );
+        },
+      }),
+      {
+        name: 'lists',
+        storage: createJSONStorage(() => AsyncStorage),
+        partialize: (state) => ({ lists: state.lists }),
+        onRehydrateStorage: () => (state) => {
+          state?.setHasHydrated(true);
+        },
       }
-    }),
-    {
-      name: 'lists',
-      storage: createJSONStorage(() => AsyncStorage),
-      partialize: (state) => ({ lists: state.lists }),
-      onRehydrateStorage: () => (state) => {
-        state?.setHasHydrated(true)
-      }
-    }
-  )));
+    )
+  )
+);
 
 useListsStore.subscribe(
   (state) => state.lists,
   (lists) => {
-    var { songs } = useSongsStore.getState();
-    var lists_forui = Object.keys(lists).map(listName => {
-      var datalist = lists[listName];
-      switch (datalist.type) {
-        case 'libre':
-          var l = datalist as LibreList;
-          var libre: LibreListForUI = {
-            name: listName,
-            version: datalist.version,
-            type: datalist.type,
-            localeType: getLocalizedListType(datalist.type, i18n.locale),
-            items: l.items.map((key) => {
-              return songs?.find((s) => s.key === key) as Song;
-            })
-          };
-          return libre;
-        case 'palabra':
-          var p = datalist as PalabraList;
-          var palabra: PalabraListForUI = {
-            name: listName,
-            version: datalist.version,
-            type: datalist.type,
-            localeType: getLocalizedListType(datalist.type, i18n.locale),
-            ambiental: datalist.ambiental,
-            entrada: datalist.entrada != null ? songs?.find((s) => s.key === p.entrada) as Song : null,
-            '1-monicion': datalist['1-monicion'],
-            '1': datalist['1'],
-            '1-salmo': datalist['1-salmo'] != null ? songs?.find((s) => s.key === p['1-salmo']) as Song : null,
-            '2-monicion': datalist['2-monicion'],
-            '2': datalist['2'],
-            '2-salmo': datalist['2-salmo'] != null ? songs?.find((s) => s.key === p['2-salmo']) as Song : null,
-            '3-monicion': datalist['3-monicion'],
-            '3': datalist['3'],
-            '3-salmo': datalist['3-salmo'] != null ? songs?.find((s) => s.key === p['3-salmo']) as Song : null,
-            'evangelio-monicion': datalist['evangelio-monicion'],
-            evangelio: datalist.evangelio,
-            salida: datalist.salida != null ? songs?.find((s) => s.key === p.salida) as Song : null,
-            nota: datalist.nota,
-          }
-          return palabra;
-        case 'eucaristia':
-          var e = datalist as EucaristiaList;
-          var eucaristia: EucaristiaListForUI = {
-            name: listName,
-            version: datalist.version,
-            type: datalist.type,
-            localeType: getLocalizedListType(datalist.type, i18n.locale),
-            ambiental: datalist.ambiental,
-            entrada: datalist.entrada != null ? songs?.find((s) => s.key === e.entrada) as Song : null,
-            '1-monicion': datalist['1-monicion'],
-            '1': datalist['1'],
-            '2-monicion': datalist['2-monicion'],
-            '2': datalist['2'],
-            'evangelio-monicion': datalist['evangelio-monicion'],
-            evangelio: datalist.evangelio,
-            'oracion-universal': datalist['oracion-universal'],
-            'comunion-pan': datalist['comunion-pan'] != null ? songs?.find((s) => s.key === e['comunion-pan']) as Song : null,
-            'comunion-caliz': datalist['comunion-caliz'] != null ? songs?.find((s) => s.key === e['comunion-caliz']) as Song : null,
-            paz: datalist.paz != null ? songs?.find((s) => s.key === e.paz) as Song : null,
-            salida: datalist.salida != null ? songs?.find((s) => s.key === e.salida) as Song : null,
-            'encargado-pan': datalist['encargado-pan'],
-            'encargado-flores': datalist['encargado-flores'],
-            nota: datalist.nota,
-          }
-          return eucaristia;
-      }
-    })
-    useListsStore.setState({ lists_forui });
-  }, {
-  equalityFn: shallow,
-  fireImmediately: true,
-});
+    useListsStore.getState().load_ui();
+  },
+  {
+    equalityFn: shallow,
+    fireImmediately: true,
+  }
+);
 
 export type BrotherContact = Contacts.Contact & {
   s: boolean;
@@ -575,23 +658,22 @@ export const useBrothersStore = create<BrothersStore>()(
       _hasHydrated: false,
       setHasHydrated: (state: boolean) => {
         set({
-          _hasHydrated: state
+          _hasHydrated: state,
         });
-      }
+      },
     }),
     {
       name: 'contacts',
       storage: createJSONStorage(() => AsyncStorage),
       partialize: (state) => ({ brothers: state.brothers }),
       onRehydrateStorage: () => (state) => {
-        state?.setHasHydrated(true)
-      }
+        state?.setHasHydrated(true);
+      },
     }
-  ));
+  )
+);
 
-const checkContactsPermission = async (
-  reqPerm: boolean
-) => {
+const checkContactsPermission = async (reqPerm: boolean) => {
   if (Platform.OS === 'android') {
     if (reqPerm) {
       try {
@@ -653,7 +735,7 @@ export const useContactsStore = create<ContactsStore>((set, get) => ({
     const devCts = await getContacts(reqPerm);
     set((state) => ({ contacts: devCts, loaded: true }));
     return get().contacts;
-  }
+  },
 }));
 
 export const useCommunity = (): UseCommunity => {
@@ -700,7 +782,9 @@ export const useCommunity = (): UseCommunity => {
     const refreshContacts = async () => {
       var loaded = [...brothers];
       try {
-        const devCts = await useContactsStore.getState().populateDeviceContacts(false);
+        const devCts = await useContactsStore
+          .getState()
+          .populateDeviceContacts(false);
         brothers.forEach((c, idx) => {
           // tomar el contacto actualizado
           var devContact = devCts.find((x) => x.recordID === c.recordID);
@@ -731,39 +815,42 @@ export type SettingsStore = {
   keepAwake: boolean;
   zoomLevel: number;
   computedLocale: string;
-  searchItems: SearchItem[],
+  searchItems: SearchItem[];
   _hasHydrated: boolean;
   setHasHydrated: (state: boolean) => void;
 };
 
 export const useSettingsStore = create<SettingsStore>()(
-  subscribeWithSelector(persist(
-    (set, get) => ({
-      locale: 'default',
-      keepAwake: true,
-      zoomLevel: 1,
-      computedLocale: 'default',
-      searchItems: [],
-      _hasHydrated: false,
-      setHasHydrated: (state: boolean) => {
-        set({
-          _hasHydrated: state
-        });
-      }
-    }),
-    {
-      name: 'settings',
-      storage: createJSONStorage(() => AsyncStorage),
-      partialize: (state) => ({
-        locale: state.locale,
-        keepAwake: state.keepAwake,
-        zoomLevel: state.zoomLevel
+  subscribeWithSelector(
+    persist(
+      (set, get) => ({
+        locale: 'default',
+        keepAwake: true,
+        zoomLevel: 1,
+        computedLocale: 'default',
+        searchItems: [],
+        _hasHydrated: false,
+        setHasHydrated: (state: boolean) => {
+          set({
+            _hasHydrated: state,
+          });
+        },
       }),
-      onRehydrateStorage: () => (state) => {
-        state?.setHasHydrated(true)
+      {
+        name: 'settings',
+        storage: createJSONStorage(() => AsyncStorage),
+        partialize: (state) => ({
+          locale: state.locale,
+          keepAwake: state.keepAwake,
+          zoomLevel: state.zoomLevel,
+        }),
+        onRehydrateStorage: () => (state) => {
+          state?.setHasHydrated(true);
+        },
       }
-    }
-  )));
+    )
+  )
+);
 
 useSettingsStore.subscribe(
   (state) => [state.locale, state._hasHydrated] as [string, boolean],
@@ -771,6 +858,7 @@ useSettingsStore.subscribe(
     if (_hasHydrated) {
       i18n.locale = locale === 'default' ? getDefaultLocale() : locale;
       useSongsStore.getState().load(i18n.locale);
+      useListsStore.getState().load_ui();
       var items: Array<SearchItem> = [
         {
           title_key: 'search_title.ratings',
@@ -905,7 +993,6 @@ useSettingsStore.subscribe(
           }),
         },
         {
-          /* eslint-disable quotes */
           title_key: `search_title.children's songs`,
           note_key: `search_note.children's songs`,
           params: { filter: { "children's songs": true } },
@@ -924,13 +1011,17 @@ useSettingsStore.subscribe(
         }
         return item;
       });
-      useSettingsStore.setState({ computedLocale: i18n.locale, searchItems: items });
+      useSettingsStore.setState({
+        computedLocale: i18n.locale,
+        searchItems: items,
+      });
     }
   },
   {
     equalityFn: shallow,
     fireImmediately: true,
-  });
+  }
+);
 
 export const sharePDF = (shareTitleSuffix: string, pdfPath: string) => {
   Share.open({
