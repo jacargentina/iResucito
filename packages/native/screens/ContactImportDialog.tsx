@@ -6,7 +6,7 @@ import { FlashList } from '@shopify/flash-list';
 import ModalView from '../components/ModalView';
 import SearchBarView from '../components/SearchBarView';
 import ContactPhoto from '../components/ContactPhoto';
-import { BrotherContact, useCommunity, useSettingsStore } from '../hooks';
+import { BrotherContact, useBrothersStore, useSettingsStore } from '../hooks';
 import i18n from '@iresucito/translations';
 import {
   getContactsForImport,
@@ -75,30 +75,30 @@ const ContactItem = React.memo(
 );
 
 const ContactImportDialog = () => {
-  const { brothers, deviceContacts, addOrRemove } =  useCommunity();
+  const { brothers, contacts, addOrRemove } = useBrothersStore();
   const { computedLocale } = useSettingsStore();
   const [loading, setLoading] = useState(false);
-  const [contacts, setContacts] = useState<ContactForImport[]>([]);
+  const [contactsForImport, setContactsForImport] = useState<ContactForImport[]>([]);
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
-    if (deviceContacts) {
-      var withName = deviceContacts.filter(
+    if (contacts) {
+      var withName = contacts.filter(
         (c) =>
           (c.givenName && c.givenName.length > 0) ||
           (c.familyName && c.familyName.length > 0)
       );
       var result = getContactsForImport(withName, brothers);
-      setContacts(result);
+      setContactsForImport(result);
       setLoading(false);
     }
-  }, [deviceContacts, brothers]);
+  }, [contacts, brothers]);
 
   const filtered = useMemo(() => {
-    var result = contacts.filter((c) => contactFilterByText(c, filter));
+    var result = contactsForImport.filter((c) => contactFilterByText(c, filter));
     result.sort(ordenAlfabetico);
     return result;
-  }, [contacts, filter]);
+  }, [contactsForImport, filter]);
 
   const handleContact = (contact: Contact) => {
     addOrRemove(contact);

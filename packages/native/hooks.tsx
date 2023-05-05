@@ -636,30 +636,76 @@ export type BrotherContact = Contacts.Contact & {
   s: boolean;
 };
 
-type UseCommunity = {
+type BrothersStore = {
+  contacts: Contacts.Contact[];
+  contacts_loaded: boolean;
   brothers: BrotherContact[];
-  deviceContacts: Contacts.Contact[];
+  populateDeviceContacts: (reqPerm: boolean) => Promise<Contacts.Contact[]>;
   add: (item: Contacts.Contact) => void;
   update: (id: string, item: Contacts.Contact) => void;
   remove: (item: BrotherContact) => void;
   addOrRemove: (contact: Contacts.Contact) => void;
-};
-
-type BrothersStore = {
-  brothers: BrotherContact[];
-  _hasHydrated: boolean;
-  setHasHydrated: (state: boolean) => void;
+  refreshContacts: () => void;
 };
 
 export const useBrothersStore = create<BrothersStore>()(
   persist(
     (set, get) => ({
+      contacts: [],
       brothers: [],
-      _hasHydrated: false,
-      setHasHydrated: (state: boolean) => {
-        set({
-          _hasHydrated: state,
-        });
+      contacts_loaded: false,
+      populateDeviceContacts: async (reqPerm: boolean) => {
+        const hasPermission = await checkContactsPermission(reqPerm);
+        const devCts = hasPermission ? await Contacts.getAll() : [];
+        set((state) => ({ contacts: devCts, contacts_loaded: true }));
+        return get().contacts;
+      },
+      add: (item: Contacts.Contact) => {
+        set(produce((state: BrothersStore) => {
+          var newBrother: BrotherContact = { s: false, ...item };
+          state.brothers.push(newBrother);
+        }))
+      },
+      update: (id: string, item: Contacts.Contact) => {
+        set(produce((state: BrothersStore) => {
+          var brother = state.brothers.find((c) => c.recordID === id);
+          if (brother) {
+            var idx = state.brothers.indexOf(brother);
+            state.brothers[idx] = Object.assign(brother, item);
+          }
+        }))
+      },
+      remove: (item: BrotherContact) => {
+        set(produce((state: BrothersStore) => {
+          var idx = state.brothers.indexOf(item);
+          state.brothers = state.brothers.filter((l, i) => i !== idx);
+        }))
+      },
+      addOrRemove: (contact: Contacts.Contact) => {
+        var { brothers, add, remove } = get();
+        var i = brothers.findIndex((c) => c.recordID === contact.recordID);
+        // Ya esta importado
+        if (i !== -1) {
+          var item = brothers[i];
+          remove(item);
+        } else {
+          add(contact);
+        }
+      },
+      refreshContacts: async () => {
+        set(produce(async (state: BrothersStore) => {
+          try {
+            const devCts = await get().populateDeviceContacts(false);
+            state.brothers.forEach((c, idx) => {
+              // tomar el contacto actualizado
+              var devContact = devCts.find((x) => x.recordID === c.recordID);
+              if (devContact) {
+                state.brothers[idx] = devContact as BrotherContact;
+              }
+            });
+          } catch {
+          }
+        }));
       },
     }),
     {
@@ -667,7 +713,7 @@ export const useBrothersStore = create<BrothersStore>()(
       storage: createJSONStorage(() => AsyncStorage),
       partialize: (state) => ({ brothers: state.brothers }),
       onRehydrateStorage: () => (state) => {
-        state?.setHasHydrated(true);
+        state?.refreshContacts();
       },
     }
   )
@@ -712,102 +758,6 @@ const checkContactsPermission = async (reqPerm: boolean) => {
       throw new Error('denied');
     }
   }
-};
-
-const getContacts = async (reqPerm: boolean) => {
-  const hasPermission = await checkContactsPermission(reqPerm);
-  if (hasPermission) {
-    return Contacts.getAll();
-  }
-  return [];
-};
-
-type ContactsStore = {
-  contacts: Contacts.Contact[];
-  loaded: boolean;
-  populateDeviceContacts: (reqPerm: boolean) => Promise<Contacts.Contact[]>;
-};
-
-export const useContactsStore = create<ContactsStore>((set, get) => ({
-  contacts: [],
-  loaded: false,
-  populateDeviceContacts: async (reqPerm: boolean) => {
-    const devCts = await getContacts(reqPerm);
-    set((state) => ({ contacts: devCts, loaded: true }));
-    return get().contacts;
-  },
-}));
-
-export const useCommunity = (): UseCommunity => {
-  const { brothers, _hasHydrated } = useBrothersStore();
-  const { contacts: deviceContacts } = useContactsStore();
-
-  const add = (item: Contacts.Contact) => {
-    var newBrother: BrotherContact = { s: false, ...item };
-    var changedBrothers: BrotherContact[] = [...brothers, newBrother];
-    useBrothersStore.setState({ brothers: changedBrothers });
-  };
-
-  const update = (id: string, item: Contacts.Contact) => {
-    var brother = brothers.find((c) => c.recordID === id);
-    if (brother) {
-      var idx = brothers.indexOf(brother);
-      var updatedContacts = [...brothers];
-      updatedContacts[idx] = Object.assign(brother, item);
-      useBrothersStore.setState({ brothers: updatedContacts });
-    }
-  };
-
-  const remove = (item: BrotherContact) => {
-    var idx = brothers.indexOf(item);
-    var changedBrothers = brothers.filter((l, i) => i !== idx);
-    useBrothersStore.setState({ brothers: changedBrothers });
-  };
-
-  const addOrRemove = (contact: Contacts.Contact) => {
-    var i = brothers.findIndex((c) => c.recordID === contact.recordID);
-    // Ya esta importado
-    if (i !== -1) {
-      var item = brothers[i];
-      remove(item);
-    } else {
-      add(contact);
-    }
-  };
-
-  useEffect(() => {
-    if (!_hasHydrated) {
-      return;
-    }
-    const refreshContacts = async () => {
-      var loaded = [...brothers];
-      try {
-        const devCts = await useContactsStore
-          .getState()
-          .populateDeviceContacts(false);
-        brothers.forEach((c, idx) => {
-          // tomar el contacto actualizado
-          var devContact = devCts.find((x) => x.recordID === c.recordID);
-          if (devContact) {
-            loaded[idx] = devContact as BrotherContact;
-          }
-        });
-        useBrothersStore.setState({ brothers: loaded });
-      } catch {
-        useBrothersStore.setState({ brothers: loaded });
-      }
-    };
-    refreshContacts();
-  }, [_hasHydrated]);
-
-  return {
-    brothers,
-    deviceContacts,
-    add,
-    update,
-    remove,
-    addOrRemove,
-  };
 };
 
 export type SettingsStore = {

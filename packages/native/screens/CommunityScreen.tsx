@@ -8,7 +8,7 @@ import { useIsFocused, useNavigation } from '@react-navigation/native';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import SwipeableRightAction from '../components/SwipeableRightAction';
 import SearchBarView from '../components/SearchBarView';
-import { useCommunity, useContactsStore, useSettingsStore } from '../hooks';
+import { useBrothersStore, useSettingsStore } from '../hooks';
 import CallToAction from '../components/CallToAction';
 import i18n from '@iresucito/translations';
 import useStackNavOptions from '../navigation/StackNavOptions';
@@ -19,7 +19,7 @@ import { RootStackParamList } from '../navigation/RootNavigator';
 import { Contact } from 'react-native-contacts';
 
 const SwipeableRow = (props: { item: any }) => {
-  const { brothers, update, remove, add } = useCommunity();
+  const { brothers, update, remove, add } = useBrothersStore();
   const { colors } = useTheme();
   const { item } = props;
   const swipeRef = useRef<Swipeable | null>(null);
@@ -113,8 +113,7 @@ type ContactImportNavigationProp = StackNavigationProp<
 >;
 
 const CommunityScreen = () => {
-  const { brothers } = useCommunity();
-  const { loaded } = useContactsStore();
+  const { brothers, contacts_loaded, populateDeviceContacts } = useBrothersStore();
   const { computedLocale } = useSettingsStore();
   const options = useStackNavOptions();
   const isFocused = useIsFocused();
@@ -147,8 +146,8 @@ const CommunityScreen = () => {
   const contactImport = useCallback(() => {
     const ensureLoaded = async () => {
       try {
-        if (!loaded) {
-          await useContactsStore.getState().populateDeviceContacts(true);
+        if (!contacts_loaded) {
+          await populateDeviceContacts(true);
         }
         navigation.navigate('ContactImport');
       } catch {
@@ -160,7 +159,7 @@ const CommunityScreen = () => {
       }
     }
     ensureLoaded();
-  }, [navigation, loaded]);
+  }, [navigation, contacts_loaded]);
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
