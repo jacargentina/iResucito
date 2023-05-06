@@ -52,21 +52,18 @@ const readSongSettingsFile = async (): Promise<
 };
 
 type SongsStore = {
-  lang: string | undefined;
   songs: Song[];
-  load: (loc: string) => Promise<Song[]>;
+  load: (locale: string) => Promise<Song[]>;
 };
 
 export const useSongsStore = create<SongsStore>((set) => ({
-  lang: undefined,
   songs: [],
-  load: async (loc: string) => {
-    set((state) => ({ lang: loc }));
+  load: async (locale: string) => {
     var settingsObj = await readSongSettingsFile();
     // Construir metadatos de cantos
-    var metaData = NativeSongs.getSongsMeta(loc, undefined, settingsObj);
-    console.log(`songsStore loading ${metaData.length} songs for "${loc}"`);
-    await NativeSongs.loadSongs(loc, metaData);
+    var metaData = NativeSongs.getSongsMeta(locale, undefined, settingsObj);
+    console.log(`songsStore loading ${metaData.length} songs for "${locale}"`);
+    await NativeSongs.loadSongs(locale, metaData);
     set((state) => ({ songs: metaData }));
     return metaData;
   },
@@ -107,11 +104,9 @@ export const useSongsSelection = create<SelectionStore>((set, get) => ({
   enabled: false,
   enable: () => {
     set((state) => ({ selection: [], enabled: true }));
-    return get();
   },
   disable: () => {
     set((state) => ({ selection: [], enabled: false }));
-    return get();
   },
   toggle: (key: string) => {
     var { selection, enabled } = get();
@@ -121,7 +116,6 @@ export const useSongsSelection = create<SelectionStore>((set, get) => ({
       selection.push(key);
     }
     set((state) => ({ selection, enabled }));
-    return get();
   },
 }));
 
