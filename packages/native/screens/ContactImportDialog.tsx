@@ -75,24 +75,24 @@ const ContactItem = React.memo(
 );
 
 const ContactImportDialog = () => {
-  const { brothers, contacts, addOrRemove } = useBrothersStore();
+  const { contacts, deviceContacts, addOrRemove } = useBrothersStore();
   const { computedLocale } = useSettingsStore();
   const [loading, setLoading] = useState(false);
   const [contactsForImport, setContactsForImport] = useState<ContactForImport[]>([]);
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
-    if (contacts) {
-      var withName = contacts.filter(
+    if (deviceContacts) {
+      var withName = deviceContacts.filter(
         (c) =>
           (c.givenName && c.givenName.length > 0) ||
           (c.familyName && c.familyName.length > 0)
       );
-      var result = getContactsForImport(withName, brothers);
+      var result = getContactsForImport(withName, contacts);
       setContactsForImport(result);
       setLoading(false);
     }
-  }, [contacts, brothers]);
+  }, [deviceContacts, contacts]);
 
   const filtered = useMemo(() => {
     var result = contactsForImport.filter((c) => contactFilterByText(c, filter));
@@ -121,7 +121,7 @@ const ContactImportDialog = () => {
       }
       closeText={i18n.t('ui.done')}>
       <SearchBarView value={filter} setValue={setFilter} placeholder={i18n.t("ui.search placeholder", { locale: computedLocale }) + '...'}>
-        {brothers && brothers.length > 0 && (
+        {contacts && contacts.length > 0 && (
           <Box
             p="4"
             borderBottomWidth={StyleSheet.hairlineWidth}
@@ -131,7 +131,7 @@ const ContactImportDialog = () => {
               horizontal={true}
               keyboardShouldPersistTaps="always"
               refreshing={loading}
-              data={brothers}
+              data={contacts}
               keyExtractor={(item) => item.recordID}
               renderItem={({ item }) => (
                 <BrotherItem item={item} handleContact={handleContact} />

@@ -31,14 +31,14 @@ type SongListNavigationProp = StackNavigationProp<
 >;
 
 const SongSearch = () => {
-  const { _hasHydrated, searchItems } = useSettingsStore();
+  const { hasHydrated, searchItems } = useSettingsStore();
   const navigation = useNavigation<SongListNavigationProp>();
 
   useAndroidBackHandler(() => {
     return true;
   });
 
-  if (!_hasHydrated) {
+  if (!hasHydrated) {
     return <Loading />;
   }
 

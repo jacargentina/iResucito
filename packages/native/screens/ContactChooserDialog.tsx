@@ -21,16 +21,16 @@ type ContactChooserRouteProp = RouteProp<RootStackParamList, 'ContactChooser'>;
 const ContactChooserDialog = () => {
   const navigation = useNavigation();
   const route = useRoute<ContactChooserRouteProp>();
-  const { brothers } = useBrothersStore();
+  const { contacts } = useBrothersStore();
   const { computedLocale } = useSettingsStore();
   const [filter, setFilter] = useState('');
   const { target } = route.params;
 
   const filtered = useMemo(() => {
-    var result = brothers.filter((c) => contactFilterByText(c, filter));
+    var result = contacts.filter((c) => contactFilterByText(c, filter));
     result.sort(ordenAlfabetico);
     return result;
-  }, [brothers, filter]);
+  }, [contacts, filter]);
 
   const contactSelected = (contact: Contacts.Contact) => {
     useListsStore.getState().setList(target.listName, target.listKey, contact.givenName);
@@ -53,7 +53,7 @@ const ContactChooserDialog = () => {
       }
       closeText={i18n.t('ui.done')}
       closeHandler={() => setFilter('')}>
-      {brothers.length === 0 && (
+      {contacts.length === 0 && (
         <View
           style={{
             flex: 3,
@@ -69,7 +69,7 @@ const ContactChooserDialog = () => {
           <Text textAlign="center">{i18n.t('ui.community empty')}</Text>
         </View>
       )}
-      {brothers.length > 0 && (
+      {contacts.length > 0 && (
         <SearchBarView value={filter} setValue={setFilter} placeholder={i18n.t("ui.search placeholder", { locale: computedLocale }) + '...'}>
           <FlashList
             data={filtered}

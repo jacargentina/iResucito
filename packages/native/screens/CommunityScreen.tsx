@@ -19,7 +19,7 @@ import { RootStackParamList } from '../navigation/RootNavigator';
 import { Contact } from 'react-native-contacts';
 
 const SwipeableRow = (props: { item: any }) => {
-  const { brothers, update, remove, add } = useBrothersStore();
+  const { contacts, update, addOrRemove } = useBrothersStore();
   const { colors } = useTheme();
   const { item } = props;
   const swipeRef = useRef<Swipeable | null>(null);
@@ -33,19 +33,6 @@ const SwipeableRow = (props: { item: any }) => {
       update(contact.recordID, updatedContact);
     },
     [update]
-  );
-
-  const addOrRemove = useCallback(
-    (contact: Contact) => {
-      let i = brothers.findIndex((c) => c.recordID === contact.recordID);
-      // Ya esta importado
-      if (i !== -1) {
-        remove(brothers[i]);
-      } else {
-        add(contact);
-      }
-    },
-    [add, remove, brothers]
   );
 
   const contactDelete = useCallback(
@@ -113,7 +100,7 @@ type ContactImportNavigationProp = StackNavigationProp<
 >;
 
 const CommunityScreen = () => {
-  const { brothers, contacts_loaded, populateDeviceContacts } = useBrothersStore();
+  const { contacts, deviceContacts_loaded, populateDeviceContacts } = useBrothersStore();
   const { computedLocale } = useSettingsStore();
   const options = useStackNavOptions();
   const isFocused = useIsFocused();
@@ -122,13 +109,13 @@ const CommunityScreen = () => {
   const [filter, setFilter] = useState('');
 
   const filtered = useMemo(() => {
-    if (brothers) {
-      var result = brothers.filter((c) => contactFilterByText(c, filter));
+    if (contacts) {
+      var result = contacts.filter((c) => contactFilterByText(c, filter));
       result.sort(ordenAlfabetico);
       return result;
     }
     return [];
-  }, [brothers, filter]);
+  }, [contacts, filter]);
 
   useEffect(() => {
     if (filtered.length > 0 && isFocused) {
@@ -146,7 +133,7 @@ const CommunityScreen = () => {
   const contactImport = useCallback(() => {
     const ensureLoaded = async () => {
       try {
-        if (!contacts_loaded) {
+        if (!deviceContacts_loaded) {
           await populateDeviceContacts(true);
         }
         navigation.navigate('ContactImport');
@@ -159,7 +146,7 @@ const CommunityScreen = () => {
       }
     }
     ensureLoaded();
-  }, [navigation, contacts_loaded]);
+  }, [navigation, deviceContacts_loaded]);
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
@@ -179,7 +166,7 @@ const CommunityScreen = () => {
     });
   });
 
-  if (brothers.length === 0 && !filter) {
+  if (contacts.length === 0 && !filter) {
     return (
       <CallToAction
         icon="people-outline"
@@ -201,7 +188,7 @@ const CommunityScreen = () => {
       <FlashList
         ref={listRef}
         data={filtered}
-        extraData={{ locale: i18n.locale, brothers }}
+        extraData={{ locale: i18n.locale, contacts }}
         keyExtractor={(item: any) => item.recordID}
         renderItem={({ item }) => <SwipeableRow item={item} />}
         estimatedItemSize={90}

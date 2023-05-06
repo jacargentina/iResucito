@@ -241,8 +241,6 @@ type ListsStore = {
   importList: (listPath: string) => Promise<string | void>;
   shareList: (listName: string, type: ShareListType) => void;
   load_ui: () => void;
-  _hasHydrated: boolean;
-  setHasHydrated: (state: boolean) => void;
 };
 
 const getItemForShare = (
@@ -267,12 +265,6 @@ export const useListsStore = create<ListsStore>()(
       (set, get) => ({
         lists: {},
         lists_ui: [],
-        _hasHydrated: false,
-        setHasHydrated: (state: boolean) => {
-          set({
-            _hasHydrated: state,
-          });
-        },
         add: (listName: string, type: ListType) => {
           set(
             produce((state: ListsStore) => {
@@ -613,9 +605,6 @@ export const useListsStore = create<ListsStore>()(
         name: 'lists',
         storage: createJSONStorage(() => AsyncStorage),
         partialize: (state) => ({ lists: state.lists }),
-        onRehydrateStorage: () => (state) => {
-          state?.setHasHydrated(true);
-        },
       }
     )
   )
@@ -637,13 +626,11 @@ export type BrotherContact = Contacts.Contact & {
 };
 
 type BrothersStore = {
-  contacts: Contacts.Contact[];
-  contacts_loaded: boolean;
-  brothers: BrotherContact[];
+  deviceContacts: Contacts.Contact[];
+  deviceContacts_loaded: boolean;
+  contacts: BrotherContact[];
   populateDeviceContacts: (reqPerm: boolean) => Promise<Contacts.Contact[]>;
-  add: (item: Contacts.Contact) => void;
   update: (id: string, item: Contacts.Contact) => void;
-  remove: (item: BrotherContact) => void;
   addOrRemove: (contact: Contacts.Contact) => void;
   refreshContacts: () => void;
 };
@@ -651,56 +638,45 @@ type BrothersStore = {
 export const useBrothersStore = create<BrothersStore>()(
   persist(
     (set, get) => ({
+      deviceContacts: [],
       contacts: [],
-      brothers: [],
-      contacts_loaded: false,
+      deviceContacts_loaded: false,
       populateDeviceContacts: async (reqPerm: boolean) => {
         const hasPermission = await checkContactsPermission(reqPerm);
         const devCts = hasPermission ? await Contacts.getAll() : [];
-        set((state) => ({ contacts: devCts, contacts_loaded: true }));
+        set((state) => ({ deviceContacts: devCts, deviceContacts_loaded: true }));
         return get().contacts;
-      },
-      add: (item: Contacts.Contact) => {
-        set(produce((state: BrothersStore) => {
-          var newBrother: BrotherContact = { s: false, ...item };
-          state.brothers.push(newBrother);
-        }))
       },
       update: (id: string, item: Contacts.Contact) => {
         set(produce((state: BrothersStore) => {
-          var brother = state.brothers.find((c) => c.recordID === id);
+          var brother = state.contacts.find((c) => c.recordID === id);
           if (brother) {
-            var idx = state.brothers.indexOf(brother);
-            state.brothers[idx] = Object.assign(brother, item);
+            var idx = state.contacts.indexOf(brother);
+            state.contacts[idx] = Object.assign(brother, item);
           }
         }))
       },
-      remove: (item: BrotherContact) => {
-        set(produce((state: BrothersStore) => {
-          var idx = state.brothers.indexOf(item);
-          state.brothers = state.brothers.filter((l, i) => i !== idx);
-        }))
-      },
       addOrRemove: (contact: Contacts.Contact) => {
-        var { brothers, add, remove } = get();
-        var i = brothers.findIndex((c) => c.recordID === contact.recordID);
-        // Ya esta importado
-        if (i !== -1) {
-          var item = brothers[i];
-          remove(item);
-        } else {
-          add(contact);
-        }
+        set(produce((state: BrothersStore) => {
+          var idx = state.contacts.findIndex((c) => c.recordID === contact.recordID);
+          // Ya esta importado
+          if (idx !== -1) {
+            state.contacts = state.contacts.filter((l, i) => i !== idx);
+          } else {
+            var newBrother: BrotherContact = { s: false, ...contact };
+            state.contacts.push(newBrother);
+          }
+        }))
       },
       refreshContacts: async () => {
         set(produce(async (state: BrothersStore) => {
           try {
             const devCts = await get().populateDeviceContacts(false);
-            state.brothers.forEach((c, idx) => {
+            state.contacts.forEach((c, idx) => {
               // tomar el contacto actualizado
               var devContact = devCts.find((x) => x.recordID === c.recordID);
               if (devContact) {
-                state.brothers[idx] = devContact as BrotherContact;
+                state.contacts[idx] = devContact as BrotherContact;
               }
             });
           } catch {
@@ -711,7 +687,7 @@ export const useBrothersStore = create<BrothersStore>()(
     {
       name: 'contacts',
       storage: createJSONStorage(() => AsyncStorage),
-      partialize: (state) => ({ brothers: state.brothers }),
+      partialize: (state) => ({ contacts: state.contacts }),
       onRehydrateStorage: () => (state) => {
         state?.refreshContacts();
       },
@@ -766,7 +742,7 @@ export type SettingsStore = {
   zoomLevel: number;
   computedLocale: string;
   searchItems: SearchItem[];
-  _hasHydrated: boolean;
+  hasHydrated: boolean;
   setHasHydrated: (state: boolean) => void;
 };
 
@@ -779,10 +755,10 @@ export const useSettingsStore = create<SettingsStore>()(
         zoomLevel: 1,
         computedLocale: 'default',
         searchItems: [],
-        _hasHydrated: false,
+        hasHydrated: false,
         setHasHydrated: (state: boolean) => {
           set({
-            _hasHydrated: state,
+            hasHydrated: state,
           });
         },
       }),
@@ -803,11 +779,11 @@ export const useSettingsStore = create<SettingsStore>()(
 );
 
 useSettingsStore.subscribe(
-  (state) => [state.locale, state._hasHydrated] as [string, boolean],
-  ([locale, _hasHydrated]) => {
-    if (_hasHydrated) {
+  (state) => [state.locale, state.hasHydrated] as [string, boolean],
+  async ([locale, hasHydrated]) => {
+    if (hasHydrated) {
       i18n.locale = locale === 'default' ? getDefaultLocale() : locale;
-      useSongsStore.getState().load(i18n.locale);
+      await useSongsStore.getState().load(i18n.locale);
       useListsStore.getState().load_ui();
       var items: Array<SearchItem> = [
         {
