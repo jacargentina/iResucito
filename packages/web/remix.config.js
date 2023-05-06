@@ -2,6 +2,7 @@
  * @type {import('@remix-run/dev/config').AppConfig}
  */
 module.exports = {
+  serverModuleFormat: 'cjs',
   future: {
     v2_routeConvention: true,
     v2_errorBoundary: true,
