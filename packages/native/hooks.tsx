@@ -638,7 +638,8 @@ export const useBrothersStore = create<BrothersStore>()(
       populateDeviceContacts: async (reqPerm: boolean) => {
         const hasPermission = await checkContactsPermission(reqPerm);
         const devCts = hasPermission ? await Contacts.getAll() : [];
-        set((state) => ({ deviceContacts: devCts, deviceContacts_loaded: true }));
+        console.log(`brothersStore loading device contacts (permission = ${hasPermission}, count = ${devCts.length})`);
+        set((state) => ({ deviceContacts: devCts, deviceContacts_loaded: hasPermission }));
         return get().contacts;
       },
       update: (id: string, item: Contacts.Contact) => {
