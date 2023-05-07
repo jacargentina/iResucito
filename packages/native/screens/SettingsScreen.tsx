@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Image, Linking, Alert } from 'react-native';
 import { useAndroidBackHandler } from 'react-navigation-backhandler';
 import {
@@ -15,7 +15,7 @@ import {
   Switch,
 } from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useScrollToTop } from '@react-navigation/native';
 import DeviceInfo from 'react-native-device-info';
 import i18n from '@iresucito/translations';
 import { getLocalesForPicker, CollaboratorsIndex } from '@iresucito/core';
@@ -108,8 +108,12 @@ const SettingsScreen = () => {
     return <Select.Item p={2} key={l.value} label={l.label} value={l.value} />;
   });
 
+  const ref = useRef(null);
+
+  useScrollToTop(ref);
+
   return (
-    <ScrollView>
+    <ScrollView ref={ref}>
       <VStack space={2} p="3">
         <Text>{i18n.t('settings_title.locale')}</Text>
         <Text fontSize="sm" color="muted.500">

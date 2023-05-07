@@ -4,7 +4,7 @@ import { Platform, Alert, View } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Text, Icon, useTheme } from 'native-base';
 import { FlashList } from '@shopify/flash-list';
-import { useIsFocused, useNavigation } from '@react-navigation/native';
+import { useIsFocused, useNavigation, useScrollToTop } from '@react-navigation/native';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import SwipeableRightAction from '../components/SwipeableRightAction';
 import SearchBarView from '../components/SearchBarView';
@@ -107,6 +107,8 @@ const CommunityScreen = () => {
   const navigation = useNavigation<ContactImportNavigationProp>();
   const listRef = useRef<any>();
   const [filter, setFilter] = useState('');
+
+  useScrollToTop(listRef);
 
   const filtered = useMemo(() => {
     if (contacts) {

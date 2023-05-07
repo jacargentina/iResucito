@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState, useMemo, useEffect, useRef } from 'react';
+import { useState, useMemo, useEffect, useRef, useCallback } from 'react';
 import {
   Pressable,
   VStack,
@@ -15,6 +15,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {
   CompositeNavigationProp,
   useNavigation,
+  useScrollToTop,
 } from '@react-navigation/native';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import SwipeableRightAction from '../components/SwipeableRightAction';
@@ -129,6 +130,10 @@ const ListScreen = () => {
   const [filter, setFilter] = useState('');
   const chooser = useDisclose();
 
+  const ref = useRef(null);
+
+  useScrollToTop(ref);
+
   useEffect(() => {
     var result = lists_ui;
     if (filter !== '') {
@@ -152,6 +157,11 @@ const ListScreen = () => {
           title={i18n.t('call_to_action_title.add lists')}
           text={i18n.t('call_to_action_text.add lists')}
           buttonHandler={chooser.onOpen}
+          // buttonHandler={() => {
+          //   for (let index = 0; index < 50; index++) {
+          //     useListsStore.getState().add('Test list ' + index.toString(), 'palabra');
+          //   }
+          // }}
           buttonText={i18n.t('call_to_action_button.add lists')}
         />
       </>
@@ -167,6 +177,7 @@ const ListScreen = () => {
         </Text>
       )}
       <FlashList
+        ref={ref}
         data={filtered}
         extraData={i18n.locale}
         keyExtractor={(item) => item.name}

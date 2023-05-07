@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useAndroidBackHandler } from 'react-navigation-backhandler';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useScrollToTop } from '@react-navigation/native';
 import {
   Spinner,
   Pressable,
@@ -15,6 +15,7 @@ import i18n from '@iresucito/translations';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { SongsStackParamList } from '../navigation/SongsNavigator';
 import { useSettingsStore } from '../hooks';
+import { useRef } from 'react';
 
 const Loading = () => {
   return (
@@ -34,6 +35,10 @@ const SongSearch = () => {
   const { hasHydrated, searchItems } = useSettingsStore();
   const navigation = useNavigation<SongListNavigationProp>();
 
+  const ref = useRef(null);
+
+  useScrollToTop(ref);
+
   useAndroidBackHandler(() => {
     return true;
   });
@@ -44,6 +49,7 @@ const SongSearch = () => {
 
   return (
     <FlashList
+      ref={ref}
       data={searchItems}
       keyExtractor={(item, i) => String(i)}
       renderItem={({ item, index }) => {

@@ -6,7 +6,6 @@ import { Platform, StyleSheet } from 'react-native';
 import { Box, Input, Icon, useTheme } from 'native-base';
 import { useDebounce } from 'use-debounce';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import i18n from '@iresucito/translations';
 
 const DebouncedInput = (props: { value: string; setValue: Function; placeholder: string }) => {
   const { value, setValue, placeholder } = props;
@@ -31,22 +30,20 @@ const DebouncedInput = (props: { value: string; setValue: Function; placeholder:
       value={searchTerm}
       returnKeyType="search"
       autoCapitalize="none"
-      clearButtonMode="always"
       autoCorrect={false}
       InputLeftElement={
         <Icon as={Ionicons} size="sm" name="search" color="rose.500" ml="2" />
       }
       InputRightElement={
-        Platform.OS === 'android' ? (
-          <Icon
-            as={Ionicons}
-            size="sm"
-            name="close"
-            color="rose.500"
-            mr="2"
-            onPress={() => setSearchTerm('')}
-          />
-        ) : undefined
+        searchTerm ?
+        <Icon
+          as={Ionicons}
+          size="sm"
+          name="close"
+          color="rose.500"
+          mr="2"
+          onPress={() => setSearchTerm('')}
+        /> : undefined
       }
     />
   );
