@@ -5,8 +5,9 @@
   "scripts": {
     "build": "tsc -b && cp ./src/pdfkit.standalone.js dist/src/",
     "patch": "esno src/applyPatch.ts",
+    "test": "esno src/test.ts",
     "ts": "yarn tsc --noEmit",
-    "test": "jest"
+    "test-no-funciona": "// ver comentarios en jest.config.js"
   },
   "main": "dist/src/index.js",
   "types": "dist/src",

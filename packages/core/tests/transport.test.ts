@@ -1,5 +1,4 @@
-import { SongsParser } from '../src/SongsParser';
-import { PdfStyles } from '@iresucito/core';
+import { SongsParser, PdfStyles } from '@iresucito/core';
 
 test('getChordsDiff', () => {
   var parser = new SongsParser(PdfStyles);
@@ -7,6 +6,8 @@ test('getChordsDiff', () => {
   expect(diff_1).toBe(-5);
   var diff_2 = parser.getChordsDiff('Do', 'Re', 'es');
   expect(diff_2).toBe(2);
+  var diff_3 = parser.getChordsDiff('Do', 'La', 'es');
+  expect(diff_3).toBe(9);
 });
 
 test('getChordsTransported', () => {
