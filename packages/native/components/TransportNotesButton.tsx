@@ -9,7 +9,7 @@ import {
 } from 'react-native-popup-menu';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import i18n from '@iresucito/translations';
-import { getChordsScale, Song } from '@iresucito/core';
+import { cleanMultichord, getChordsScale } from '@iresucito/core';
 import { setSongSetting } from '../hooks';
 import useStackNavOptions from '../navigation/StackNavOptions';
 import { SongsStackParamList } from '../navigation/SongsNavigator';
@@ -36,40 +36,46 @@ const TransportNotesButton = () => {
   const chords = getChordsScale(i18n.locale);
 
   var menuOptionItems = chords.map((nota, i) => {
+    var value = cleanMultichord(nota.source);
     var customStyles =
-      song.transportTo === nota
+      value == song.transportTo
         ? {
-          optionWrapper: {
-            backgroundColor: colors.rose['300'],
-            paddingHorizontal: 10,
-            paddingVertical: 10,
-          },
-          optionText: {
-            color: 'white',
-          },
-        }
+            optionWrapper: {
+              backgroundColor: colors.rose['300'],
+              paddingHorizontal: 10,
+              paddingVertical: 10,
+            },
+            optionText: {
+              color: 'white',
+            },
+          }
         : undefined;
     return (
       <MenuOption
         key={i}
-        value={nota}
-        text={nota}
+        value={value}
+        text={value}
         customStyles={customStyles}
       />
     );
   });
 
   const changeTransport = async (newTransport: any) => {
-    var updatedSong = await setSongSetting(song.key, i18n.locale, 'transportTo', newTransport);
+    var updatedSong = await setSongSetting(
+      song.key,
+      i18n.locale,
+      'transportTo',
+      newTransport
+    );
     navigation.replace('SongDetail', {
-      song: updatedSong
+      song: updatedSong,
     });
   };
 
   var trigger =
     song.transportTo === null ||
-      song.transportTo === undefined ||
-      song.transportTo === '' ? (
+    song.transportTo === undefined ||
+    song.transportTo === '' ? (
       <Icon
         as={Ionicons}
         name="musical-notes-outline"

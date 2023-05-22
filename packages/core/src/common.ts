@@ -350,10 +350,19 @@ export const defaultExportToPdfOptions: ExportToPdfOptions = {
 };
 
 export const cleanChordsRegex: any =
-  /\[|\]|\(|\)|#|\*|5|6|7|9|b|-|\+|\/|\u2013|aum|dim|sus|m|is|IS/g;
+  /\[|\]|\(|\)|\*|5|6|7|9|\+|\-|\/|aum|dim|sus|m/g;
 
-export const getChordsScale = (locale: string): Array<string> => {
-  return i18n.t('chords.scale', { locale }).split(' ');
+export const cleanMultichord = (value: string) => {
+  value = value.replace(/\^|\$/g, '');
+  if (value.includes('|')) {
+    value = value.substring(0, value.indexOf('|'));
+  }
+  return value;
+};
+
+export const getChordsScale = (locale: string): Array<RegExp> => {
+  var chords = i18n.t('chords.scale', { locale }).split(' ');
+  return chords.map((ch) => new RegExp(`^${ch}$`, 'i'));
 };
 
 export const getPropertyLocale = (obj: any, rawLoc: string): string => {
@@ -863,8 +872,8 @@ export const SongPDFGenerator = async (
       writer.doc.y = writer.getCenteringY(
         title,
         titleFontSize +
-        writer.opts.bookTitle.Spacing +
-        writer.opts.bookSubtitle.FontSize
+          writer.opts.bookTitle.Spacing +
+          writer.opts.bookSubtitle.FontSize
       );
       writer.writeText(title, PdfStyles.title.color, titleFontSize, {
         align: 'center',
@@ -1093,9 +1102,7 @@ export const SongPDFGenerator = async (
       // Ir al final
       writer.doc.switchToPage(writer.doc._pageBuffer.length - 1);
       writer.writePageNumber();
-      const assignItems = writer.listing.filter(
-        (l) => l.songKey === song.key
-      );
+      const assignItems = writer.listing.filter((l) => l.songKey === song.key);
       assignItems.forEach((i) => {
         i.value = writer.doc.page.pageNumber;
       });

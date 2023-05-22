@@ -1,6 +1,7 @@
 import i18n from '@iresucito/translations';
 import {
   cleanChordsRegex,
+  cleanMultichord,
   getChordsScale,
   SongIndicator,
   SongLine,
@@ -26,7 +27,7 @@ export class SongsParser {
       .split(' ')
       .filter((i) => i.length > 0);
     const onlyChords = line.filter((word) => {
-      return chords.find((ch) => ch.toLowerCase() === word.toLowerCase());
+      return chords.find((ch) => ch.test(word.toLowerCase()));
     });
     return onlyChords.length > 0 && onlyChords.length === line.length;
   }
@@ -242,14 +243,15 @@ export class SongsParser {
       const isLower = cleanChord === cleanChord.toLowerCase();
       // Ej. Do
       // Ej. c
-      const initial = chords.find(
-        (ch) => ch.toLowerCase() === cleanChord.toLowerCase()
-      );
+      // 'ch' es una expresion regular para matchear el texto
+      const initial = chords.find((ch) => ch.test(cleanChord.toLowerCase()));
       if (initial) {
         const i = chords.indexOf(initial);
         if (i !== -1) {
           const j = (i + diff) % 12;
-          var newChord = j < 0 ? chordsInverted[j * -1 - 1] : chords[j];
+          var newChord =
+            j < 0 ? chordsInverted[j * -1 - 1].source : chords[j].source;
+          newChord = cleanMultichord(newChord);
           if (isLower) {
             newChord = newChord.toLowerCase();
           }
@@ -277,14 +279,10 @@ export class SongsParser {
   ): number {
     const chords = getChordsScale(locale);
     const initialChord = this.getInitialChord(startingChordsLine);
-    const st = chords.find(
-      (ch) => ch.toLowerCase() === initialChord.toLowerCase()
-    );
+    const st = chords.find((ch) => ch.test(initialChord.toLowerCase()));
     if (st) {
       const start = chords.indexOf(st);
-      const tg = chords.find(
-        (ch) => ch.toLowerCase() === targetChord.toLowerCase()
-      );
+      const tg = chords.find((ch) => ch.test(targetChord.toLowerCase()));
       if (tg) {
         const target = chords.indexOf(tg);
         return target - start;
