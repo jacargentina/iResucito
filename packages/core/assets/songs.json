@@ -2635,8 +2635,8 @@
     "communion": true,
     "files": {
       "es": "Hermosa eres, amiga mia - Ct 6; 7",
-      "de-AT": "Du bist schön, meine Freundin - Hld 6 – 7",
-      "de": "Du bist schön, meine Freundin - Hld 6 – 7",
+      "de-AT": "Du bist schön, meine Freundin - Hld 6 - 7",
+      "de": "Du bist schön, meine Freundin - Hld 6 - 7",
       "pt-BR": "Formosa és, amiga minha - Cânticos dos Cânticos 6 e 7 - Quinto Poema",
       "pt-PT": "Formosa és, amiga minha - Cânticos dos Cânticos 6 e 7 - Quinto Poema"
     }
@@ -3193,7 +3193,7 @@
     "lent": true,
     "lutes and vespers": true,
     "files": {
-      "es": "Zaqueo - Lc 19, 1–10",
+      "es": "Zaqueo - Lc 19, 1-10",
       "de-AT": "Zachäus - Lk 19, 1-10",
       "de": "Zachäus - Lk 19, 1-10",
       "pt-BR": "Zaqueu - Lc 19, 1-10",
@@ -3514,9 +3514,9 @@
   "244": {
     "stage": "precatechumenate",
     "files": {
-      "pt-BR": "Prefácio Para Advento E Natal - Prefácio de Advento II – Melodia para o tempo de Advento e Natal",
-      "pt-PT": "Prefácio Para Advento E Natal - Prefácio de Advento II – Melodia para o tempo de Advento e Natal",
-      "es": "Prefacio de Adviento II – Melodía para el tiempo de Adviento y Navidad"
+      "pt-BR": "Prefácio Para Advento E Natal - Prefácio de Advento II - Melodia para o tempo de Advento e Natal",
+      "pt-PT": "Prefácio Para Advento E Natal - Prefácio de Advento II - Melodia para o tempo de Advento e Natal",
+      "es": "Prefacio de Adviento II - Melodía para el tiempo de Adviento y Navidad"
     },
     "stages": {
       "pt-BR": "liturgy",

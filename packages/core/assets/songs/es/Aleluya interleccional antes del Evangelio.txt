@@ -5,11 +5,11 @@ A. ALELUYA, ALELUYA, ALELUYA, ALELUYA
 Sol                                                    Do Re                  Sol
 ALELUYA, ALELUYA, ALELUYA, ALELUYA
  
-Mi–             Re                                          Mi–
+Mi-             Re                                          Mi-
 S. Yo soy la vid, vosotros los sarmientos.  
-                                                Re               Mi–
+                                                Re               Mi-
 El que permanece en mí y yo en él,
-Re                                  Mi–
+Re                                  Mi-
 ese da fruto abundante.
  
 Sol
@@ -18,16 +18,16 @@ A. ALELUYA ...
 **Modelo 2**
 - Con la música del “Aleluya, ya llegó el reino”
  
-Do                             Mi                        La–
+Do                             Mi                        La-
 A. ALELUYA, ALELUYA, ALELUYA. 
-Do                             Mi                        La–
+Do                             Mi                        La-
 ALELUYA, ALELUYA, ALELUYA
  
-Do               Mi                                         La–
+Do               Mi                                         La-
 S. Yo soy la vid, vosotros los sarmientos. 
 Do                                                                Mi
 El que permanece en mí y yo en él,
-                                       La–
+                                       La-
 ese da fruto abundante.
  
 Do
@@ -37,17 +37,17 @@ column
 
 **Modelo 3**
  
-Mi–                            Re                        Mi–
+Mi-                            Re                        Mi-
 A. ALELUYA, ALELUYA, ALELUYA 
-Mi–                            Re                        Mi–
+Mi-                            Re                        Mi-
 ALELUYA, ALELUYA, ALELUYA
  
-Mi–             La–                                       Mi–
+Mi-             La-                                       Mi-
 S. Yo soy la vid, vosotros los sarmientos. 
-                                La–
+                                La-
 El que permanece en mí y yo en él,
-  Mi–
+  Mi-
 ese da fruto abundante.
 
- Mi–
+ Mi-
 A. ALELUYA ... 
