@@ -1,1 +1,1 @@
-• Fixes and performance improvements
+• Fixed song notes transport
