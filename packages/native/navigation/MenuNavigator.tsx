@@ -10,6 +10,12 @@ import CommunityNavigator from './CommunityNavigator';
 import SettingsNavigator from './SettingsNavigator';
 import { useListsStore } from '../hooks';
 import { config } from '../gluestack-ui.config';
+import {
+  BookmarkIcon,
+  SearchIcon,
+  SettingsIcon,
+  UsersIcon,
+} from 'lucide-react-native';
 
 export type MenuParamList = {
   Songs: undefined;
@@ -27,15 +33,13 @@ const getTabOptions = (
 ) => {
   var tabOptions = {
     tabBarStyle: {},
-    tabBarIcon: ({ color }: { color: any }) => {
+    tabBarIcon: ({ focused, color, size }) => {
       return (
         <Icon
           as={IconComponent}
+          size={size}
           color={color}
-          style={{
-            marginTop: 6,
-          }}
-          size={7}
+          style={{ marginTop: 6 }}
         />
       );
     },
@@ -102,24 +106,24 @@ const MenuNavigator = (props: any) => {
       <Tab.Screen
         name="Songs"
         component={SongsNavigator}
-        options={({ route }) => getTabOptions('search', route, 'SongSearch')}
+        options={({ route }) => getTabOptions(SearchIcon, route, 'SongSearch')}
       />
       <Tab.Screen
         name="Lists"
         component={ListsNavigator}
         options={({ route }) =>
-          getTabOptions('bookmarks-outline', route, 'ListsSearch')
+          getTabOptions(BookmarkIcon, route, 'ListsSearch')
         }
       />
       <Tab.Screen
         name="Community"
         component={CommunityNavigator}
-        options={getTabOptions('people-outline')}
+        options={getTabOptions(UsersIcon)}
       />
       <Tab.Screen
         name="Settings"
         component={SettingsNavigator}
-        options={getTabOptions('settings-outline')}
+        options={getTabOptions(SettingsIcon)}
       />
     </Tab.Navigator>
   );

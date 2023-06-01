@@ -148,7 +148,7 @@ export const ListScreen = () => {
       <>
         <ChooseListTypeForAdd isOpen={showActionsheet} onClose={handleClose} />
         <CallToAction
-          icon="bookmark"
+          icon={BookmarkIcon}
           title={i18n.t('call_to_action_title.add lists')}
           text={i18n.t('call_to_action_text.add lists')}
           buttonHandler={() => setShowActionsheet(true)}

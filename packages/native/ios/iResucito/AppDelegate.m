@@ -9,7 +9,7 @@
 
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTLinkingManager.h>
-#import "RNBootSplash.h" //
+#import "RNBootSplash.h"
 
 @implementation AppDelegate
 

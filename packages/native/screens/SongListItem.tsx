@@ -15,7 +15,7 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import Highlighter from '@javier.alejandro.castro/react-native-highlight-words';
 import Collapsible from 'react-native-collapsible';
-import { Rating } from 'react-native-rating-element';
+import { Rating } from 'react-native-ratings';
 import badges from '../badges';
 import i18n from '@iresucito/translations';
 import { Song } from '@iresucito/core';
@@ -198,11 +198,9 @@ export const SongListItem = (props: {
         {song.notTranslated && <NoLocaleWarning />}
         {!enabled && (
           <Rating
-            totalCount={5}
-            marginBetweenRatingIcon={3}
-            size={20}
-            rated={song.rating}
-            onIconTap={(position: number) =>
+            ratingCount={5}
+            startingValue={song.rating}
+            onFinishRating={(position: number) =>
               setSongSetting(song.key, i18n.locale, 'rating', position)
             }
             ratingColor={config.theme.tokens.colors.rose500}

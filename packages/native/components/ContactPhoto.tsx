@@ -11,7 +11,7 @@ export const ContactPhoto = (props: {
     (item.givenName && item.givenName.length > 0 ? item.givenName[0] : '') +
     (item.familyName && item.familyName.length > 0 ? item.familyName[0] : '');
   return (
-    <Avatar bgColor="rose.500">
+    <Avatar bgColor="$rose500">
       <Avatar.FallbackText>{initials}</Avatar.FallbackText>
       {item.hasThumbnail ? (
         <Avatar.Image source={{ uri: item.thumbnailPath }} />
