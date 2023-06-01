@@ -1,22 +1,20 @@
 import * as React from 'react';
 import RNPrint from 'react-native-print';
-import { Icon } from 'native-base';
+import { Icon } from '../gluestack';
 import { RouteProp, useRoute } from '@react-navigation/native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import useStackNavOptions from '../navigation/StackNavOptions';
-import { SongsStackParamList } from '../navigation/SongsNavigator';
+import { SongsStackParamList, useStackNavOptions } from '../navigation';
+import { PrinterIcon } from 'lucide-react-native';
 
 type PDFViewerRouteProp = RouteProp<SongsStackParamList, 'PDFViewer'>;
 
-const PrintPDFButton = () => {
+export const PrintPDFButton = () => {
   const options = useStackNavOptions();
   const route = useRoute<PDFViewerRouteProp>();
   const { uri } = route.params;
   return (
     <Icon
-      as={Ionicons}
+      as={PrinterIcon}
       size="xl"
-      name="print-outline"
       style={{
         marginTop: 4,
         marginRight: 8,
@@ -28,5 +26,3 @@ const PrintPDFButton = () => {
     />
   );
 };
-
-export default PrintPDFButton;

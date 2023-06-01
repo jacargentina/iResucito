@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react';
 import {
   useNavigation,
   useRoute,
@@ -8,21 +14,31 @@ import {
   RouteProp,
 } from '@react-navigation/native';
 import { Keyboard, View } from 'react-native';
-import { Text, Spinner, useDisclose, Icon, HStack } from 'native-base';
+import { Text, Spinner, HStack } from '../gluestack';
 import { FlashList } from '@shopify/flash-list';
-import SearchBarView from '../components/SearchBarView';
-import ExportToPdfButton from '../components/ExportToPdfButton';
-import ChoosePdfTypeForExport from '../components/ChoosePdfTypeForExport';
+import {
+  HeaderButton,
+  SearchBarView,
+  ChoosePdfTypeForExport,
+} from '../components';
 import i18n from '@iresucito/translations';
-import { setSongSetting, useSettingsStore, useSongsSelection, useSongsStore } from '../hooks';
-import SongListItem from './SongListItem';
-import { SongsStackParamList } from '../navigation/SongsNavigator';
-import { ExportToPdfOptions, Song, SongToPdf, defaultExportToPdfOptions } from '@iresucito/core';
+import {
+  setSongSetting,
+  useSettingsStore,
+  useSongsSelection,
+  useSongsStore,
+} from '../hooks';
+import { SongListItem } from './SongListItem';
+import { SongsStackParamList } from '../navigation';
+import {
+  ExportToPdfOptions,
+  Song,
+  SongToPdf,
+  defaultExportToPdfOptions,
+} from '@iresucito/core';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { NativeParser } from '../util';
 import { generateSongPDF } from '../pdf';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import useStackNavOptions from '../navigation/StackNavOptions';
 import { useAndroidBackHandler } from 'react-navigation-backhandler';
 
 type SongListRouteProp = RouteProp<SongsStackParamList, 'SongList'>;
@@ -34,7 +50,12 @@ type SongDetailNavigationProp = StackNavigationProp<
 
 type IsLoading = { isLoading: boolean; text: string };
 
-const SongList = (props: { viewButton?: boolean; filter?: any; sort?: any; onPress?: any }) => {
+export const SongList = (props: {
+  viewButton?: boolean;
+  filter?: any;
+  sort?: any;
+  onPress?: any;
+}) => {
   const listRef = useRef<any>();
   const { songs } = useSongsStore();
   const { computedLocale } = useSettingsStore();
@@ -42,14 +63,17 @@ const SongList = (props: { viewButton?: boolean; filter?: any; sort?: any; onPre
   const navigation = useNavigation<SongDetailNavigationProp>();
   const route = useRoute<SongListRouteProp>();
   const isFocused = useIsFocused();
-  const chooser = useDisclose();
   const { viewButton } = props;
   const [totalText, setTotalText] = useState(i18n.t('ui.loading'));
-  const [loading, setLoading] = useState<IsLoading>({ isLoading: false, text: '' });
+  const [loading, setLoading] = useState<IsLoading>({
+    isLoading: false,
+    text: '',
+  });
   const [showSalmosBadge, setShowSalmosBadge] = useState<boolean>();
   const [textFilter, setTextFilter] = useState('');
   const [search, setSearch] = useState<Song[]>([]);
-  const options = useStackNavOptions();
+  const [showActionsheet, setShowActionsheet] = useState(false);
+  const handleClose = () => setShowActionsheet(!showActionsheet);
 
   useAndroidBackHandler(() => {
     if (enabled) disable();
@@ -57,12 +81,13 @@ const SongList = (props: { viewButton?: boolean; filter?: any; sort?: any; onPre
     return true;
   });
 
-  useFocusEffect(useCallback(() => {
-    return () => {
-      if (enabled) disable();
-    };
-  }, [enabled]));
-
+  useFocusEffect(
+    useCallback(() => {
+      return () => {
+        if (enabled) disable();
+      };
+    }, [enabled])
+  );
 
   useEffect(() => {
     if (songs) {
@@ -106,61 +131,56 @@ const SongList = (props: { viewButton?: boolean; filter?: any; sort?: any; onPre
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      headerRight: () =>
+      headerRight: () => (
         <HStack>
-          {enabled && <Icon
-            as={Ionicons}
-            name="close-circle-outline"
-            size="xl"
-            style={{
-              marginTop: 4,
-              marginRight: 8,
-            }}
-            color={options.headerTitleStyle.color}
-            onPress={() => {
-              disable()
-            }}
-          />}
-          <ExportToPdfButton onPress={async () => {
-            if (enabled) {
-              if (selection.length > 0) {
-                var items: Array<SongToPdf> = selection.map((key) => {
-                  var s = songs.find(s => s.key == key) as Song;
-                  return {
-                    song: s,
-                    render: NativeParser.getForRender(s.fullText, i18n.locale),
+          {enabled && <HeaderButton iconName="x-circle" onPress={disable} />}
+          <HeaderButton
+            iconName="file-text"
+            onPress={async () => {
+              if (enabled) {
+                if (selection.length > 0) {
+                  var items: Array<SongToPdf> = selection.map((key) => {
+                    var s = songs.find((s) => s.key == key) as Song;
+                    return {
+                      song: s,
+                      render: NativeParser.getForRender(
+                        s.fullText,
+                        i18n.locale
+                      ),
+                    };
+                  });
+                  setLoading({
+                    isLoading: true,
+                    text: i18n.t('ui.export.processing songs', {
+                      total: items.length,
+                    }),
+                  });
+                  const exportOpts: ExportToPdfOptions = {
+                    ...defaultExportToPdfOptions,
+                    disablePageNumbers: true,
                   };
-                });
-                setLoading({
-                  isLoading: true,
-                  text: i18n.t('ui.export.processing songs', {
-                    total: items.length,
-                  }),
-                });
-                const exportOpts: ExportToPdfOptions = {
-                  ...defaultExportToPdfOptions,
-                  disablePageNumbers: true
+                  const path = await generateSongPDF(
+                    items,
+                    exportOpts,
+                    `iResucitó-songsSelection-${i18n.locale}`,
+                    false
+                  );
+                  navigation.navigate('PDFViewer', {
+                    uri: path,
+                    title: i18n.t('pdf_export_options.selected songs'),
+                  });
+                  setLoading({ isLoading: false, text: '' });
                 }
-                const path = await generateSongPDF(
-                  items,
-                  exportOpts,
-                  `iResucitó-songsSelection-${i18n.locale}`,
-                  false
-                );
-                navigation.navigate('PDFViewer', {
-                  uri: path,
-                  title: i18n.t('pdf_export_options.selected songs'),
-                });
-                setLoading({ isLoading: false, text: '' });
+                disable();
+              } else {
+                setShowActionsheet(true);
               }
-              disable();
-            } else {
-              chooser.onOpen();
-            }
-          }} />
-        </HStack>,
+            }}
+          />
+        </HStack>
+      ),
     });
-  }, [navigation, chooser]);
+  }, [navigation, setShowActionsheet]);
 
   useEffect(() => {
     if (search.length > 0 && isFocused && textFilter && listRef.current) {
@@ -184,8 +204,11 @@ const SongList = (props: { viewButton?: boolean; filter?: any; sort?: any; onPre
   if (loading.isLoading) {
     return (
       <View style={{ flex: 1, justifyContent: 'space-evenly' }}>
-        <Spinner size='lg' />
-        <Text color="muted.500" style={{ textAlign: 'center' }}>
+        <Spinner
+          // @ts-ignore
+          size="large"
+        />
+        <Text color="$muted500" style={{ textAlign: 'center' }}>
           {loading.text}
         </Text>
       </View>
@@ -193,9 +216,18 @@ const SongList = (props: { viewButton?: boolean; filter?: any; sort?: any; onPre
   }
 
   return (
-    <SearchBarView value={textFilter} setValue={setTextFilter} placeholder={i18n.t("ui.search placeholder", { locale: computedLocale }) + '...'}>
-      <ChoosePdfTypeForExport chooser={chooser} setLoading={setLoading} />
-      <Text bold p="2" px="4" bg="gray.100" color="muted.500">
+    <SearchBarView
+      value={textFilter}
+      setValue={setTextFilter}
+      placeholder={
+        i18n.t('ui.search placeholder', { locale: computedLocale }) + '...'
+      }>
+      <ChoosePdfTypeForExport
+        isOpen={showActionsheet}
+        onClose={handleClose}
+        setLoading={setLoading}
+      />
+      <Text fontWeight="bold" p="$2" px="$4" bg="$gray100" color="$muted500">
         {totalText}
       </Text>
       <FlashList
@@ -220,5 +252,3 @@ const SongList = (props: { viewButton?: boolean; filter?: any; sort?: any; onPre
     </SearchBarView>
   );
 };
-
-export default SongList;

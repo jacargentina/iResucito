@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useEffect, useRef, useState } from 'react';
-import { Image, Linking, Alert } from 'react-native';
+import { Image, Linking, Alert, ScrollView } from 'react-native';
 import { useAndroidBackHandler } from 'react-navigation-backhandler';
 import {
   Button,
@@ -10,32 +10,36 @@ import {
   VStack,
   Select,
   Box,
-  ScrollView,
   Heading,
   Switch,
-} from 'native-base';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import { useNavigation, useScrollToTop } from '@react-navigation/native';
+} from '../gluestack';
+import { useScrollToTop } from '@react-navigation/native';
 import DeviceInfo from 'react-native-device-info';
 import i18n from '@iresucito/translations';
 import { getLocalesForPicker, CollaboratorsIndex } from '@iresucito/core';
 import { useSettingsStore, useSongsStore } from '../hooks';
 import { NativeExtras, getDefaultLocale } from '../util';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { SettingsStackParamList } from '../navigation/SettingsNavigator';
+import { SettingsStackParamList } from '../navigation';
+import {
+  ChevronDownIcon,
+  ChromeIcon,
+  LineChart,
+  MailIcon,
+  Twitter,
+} from 'lucide-react-native';
 
 const pack = require('../app.json');
 const cristo = require('../img/cristo.jpg');
 const appName = pack.displayName;
 
-type SettingsNavigationProp = StackNavigationProp<
+export type SettingsNavigationProp = StackNavigationProp<
   SettingsStackParamList,
   'SettingsScreen'
 >;
 
-const SettingsScreen = () => {
-  const { locale, zoomLevel, keepAwake } = useSettingsStore();
-  const navigation = useNavigation<SettingsNavigationProp>();
+export const SettingsScreen = () => {
+  const { locale, keepAwake } = useSettingsStore();
   const [version, setVersion] = useState('');
   const [songsResume, setSongsResume] = useState('-');
   const { songs } = useSongsStore();
@@ -105,7 +109,7 @@ const SettingsScreen = () => {
   };
 
   var localesItems = getLocalesForPicker(getDefaultLocale()).map((l) => {
-    return <Select.Item p={2} key={l.value} label={l.label} value={l.value} />;
+    return <Select.Item p="$2" key={l.value} label={l.label} value={l.value} />;
   });
 
   const ref = useRef(null);
@@ -114,41 +118,47 @@ const SettingsScreen = () => {
 
   return (
     <ScrollView ref={ref}>
-      <VStack space={2} p="3">
+      <VStack space="$2" p="$3">
         <Text>{i18n.t('settings_title.locale')}</Text>
-        <Text fontSize="sm" color="muted.500">
+        <Text fontSize="$sm" color="$muted500">
           {i18n.t('settings_note.locale')}
         </Text>
         <Select
           selectedValue={locale}
           onValueChange={(val) => {
             useSettingsStore.setState({ locale: val });
-            // // IMPORTANTE!
-            // // Workaround de problema en Android
-            // // https://github.com/facebook/react-native/issues/15556
-            // setTimeout(() => {
-            //   useSettingsStore.setState({ locale: val });
-            //   // Para forzar refresco del titulo segun idioma nuevo
-            //   navigation.setParams({ title: '' });
-            // }, 10);
           }}>
-          {localesItems}
+          <Select.Trigger>
+            <Select.Input placeholder="Select option" />
+            <Select.Icon mr="$3">
+              <Icon as={ChevronDownIcon} />
+            </Select.Icon>
+          </Select.Trigger>
+          <Select.Portal>
+            <Select.Backdrop />
+            <Select.Content>
+              <Select.DragIndicatorWrapper>
+                <Select.DragIndicator />
+              </Select.DragIndicatorWrapper>
+              {localesItems}
+            </Select.Content>
+          </Select.Portal>
         </Select>
-        <HStack space={2} p="3" justifyContent="center" alignItems="center">
-          <Icon as={Ionicons} name="podium-outline" size="md" />
-          <Text fontSize="sm" color="muted.500">
+        <HStack space="$2" p="$3" justifyContent="center" alignItems="center">
+          <Icon as={LineChart} size="md" />
+          <Text fontSize="$sm" color="$muted500">
             {songsResume}
           </Text>
         </HStack>
       </VStack>
       <HStack
-        space={2}
-        p="3"
+        space="$2"
+        p="$3"
         justifyContent="space-between"
         alignItems="center">
-        <VStack w="80%" space={2}>
+        <VStack w="80%" space="$2">
           <Text>{i18n.t('settings_title.keep awake')}</Text>
-          <Text fontSize="sm" color="muted.500">
+          <Text fontSize="$sm" color="$muted500">
             {i18n.t('settings_note.keep awake')}
           </Text>
         </VStack>
@@ -173,58 +183,53 @@ const SettingsScreen = () => {
           resizeMode="contain"
         />
         <Heading
-          color="rose.500"
-          mt="10"
+          color="$rose500"
+          mt="$10"
           style={{
             fontWeight: 'bold',
             fontStyle: 'italic',
           }}>
           {appName}
         </Heading>
-        <Text textAlign="center" fontSize="md" mt="5">
-          <Text bold>
+        <Text textAlign="center" fontSize="$md" mt="$5">
+          <Text fontWeight="bold">
             {i18n.t('ui.version')}: {version}
           </Text>
           {'\n'} Javier Castro, 2017-2023
         </Text>
-        <Text textAlign="center" fontSize="sm" mt="10">
-          <Text bold>{i18n.t('ui.collaborators')}</Text>
+        <Text textAlign="center" fontSize="$sm" mt="$10">
+          <Text fontWeight="bold">{i18n.t('ui.collaborators')}</Text>
           {Object.keys(CollaboratorsIndex).map((lang) => {
             return `\n ${CollaboratorsIndex[lang].join(', ')} (${lang})`;
           })}
         </Text>
-        <HStack my="5">
-          <Button m="5" bg="rose.500" borderRadius={32} onPress={sendMail}>
-            <Icon as={Ionicons} name="mail" color="white" />
+        <HStack my="$5">
+          <Button m="$5" bg="$rose500" borderRadius={32} onPress={sendMail}>
+            <Icon as={MailIcon} color="white" />
           </Button>
-          <Button m="5" bg="rose.500" borderRadius={32} onPress={sendTwitter}>
-            <Icon as={Ionicons} name="logo-twitter" color="white" />
+          <Button m="$5" bg="$rose500" borderRadius={32} onPress={sendTwitter}>
+            <Icon as={Twitter} color="white" />
           </Button>
         </HStack>
-        <Text fontSize="sm" textAlign="center">
+        <Text fontSize="$sm" textAlign="center">
           {i18n.t('ui.contribute message')}
         </Text>
-        <Button
-          my="8"
-          size="sm"
-          variant="ghost"
-          startIcon={<Icon as={Ionicons} name="browsers-outline" />}
-          onPress={goEditor}>
-          {i18n.t('ui.contribute button')}
+        <Button my="$8" size="sm" variant="outline" onPress={goEditor}>
+          <Icon as={ChromeIcon} />
+          <Button.Text>{i18n.t('ui.contribute button')}</Button.Text>
         </Button>
         {settingsExists && (
           <Button
-            my="8"
-            colorScheme="rose"
-            _text={{ color: 'white' }}
+            my="$8"
+            bg="$rose500"
             borderRadius={32}
             onPress={clearSettings}>
-            {i18n.t('ui.clear song settings')}
+            <Button.Text color="white">
+              {i18n.t('ui.clear song settings')}
+            </Button.Text>
           </Button>
         )}
       </Box>
     </ScrollView>
   );
 };
-
-export default SettingsScreen;

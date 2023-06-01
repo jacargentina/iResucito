@@ -1,15 +1,11 @@
 import * as React from 'react';
-import { HStack } from 'native-base';
+import { HStack } from '../gluestack';
 import { createStackNavigator } from '@react-navigation/stack';
 import i18n from '@iresucito/translations';
-import ListScreen from '../screens/ListScreen';
-import ListDetail from '../screens/ListDetail';
-import SongDetail from '../screens/SongDetail';
-import PDFViewer from '../screens/PDFViewer';
-import ShareListButton from '../components/ShareListButton';
-import AddSongButton from '../components/AddSongButton';
+import { PDFViewer, ListScreen, ListDetail, SongDetail } from '../screens';
+import { ShareListButton, AddSongButton } from '../components';
 import { getSongDetailOptions, getPdfViewerOptions } from './util';
-import useStackNavOptions from '../navigation/StackNavOptions';
+import { useStackNavOptions } from './useStackNavOptions';
 import { Song } from '@iresucito/core';
 import { useSettingsStore } from '../hooks';
 
@@ -46,7 +42,7 @@ const ListsNavigator = () => {
           return {
             title: listName ? listName : 'Lista',
             headerRight: () => (
-              <HStack m="1">
+              <HStack m="$1">
                 <ShareListButton />
                 <AddSongButton />
               </HStack>

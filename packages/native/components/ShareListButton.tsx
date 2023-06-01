@@ -1,43 +1,43 @@
 import * as React from 'react';
 import { Keyboard } from 'react-native';
-import { Icon, Actionsheet, useDisclose } from 'native-base';
+import { Icon, Actionsheet } from '../gluestack';
 import { RouteProp, useRoute } from '@react-navigation/native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useListsStore } from '../hooks';
-import useStackNavOptions from '../navigation/StackNavOptions';
+import { useStackNavOptions, ListsStackParamList } from '../navigation';
 import i18n from '@iresucito/translations';
-import { ListsStackParamList } from '../navigation/ListsNavigator';
+import { ShareIcon } from 'lucide-react-native';
 
 type ListDetailRouteProp = RouteProp<ListsStackParamList, 'ListDetail'>;
 
-const ShareListButton = () => {
+export const ShareListButton = () => {
   const options = useStackNavOptions();
-  const { isOpen, onClose, onOpen } = useDisclose();
+  const [showActionsheet, setShowActionsheet] = React.useState(false);
+  const handleClose = () => setShowActionsheet(!showActionsheet);
   const route = useRoute<ListDetailRouteProp>();
   const { listName } = route.params;
   const { shareList } = useListsStore();
 
   return (
     <>
-      <Actionsheet isOpen={isOpen} onClose={onClose}>
+      <Actionsheet isOpen={showActionsheet} onClose={handleClose}>
         <Actionsheet.Content>
           <Actionsheet.Item
             onPress={() => {
-              onClose();
+              handleClose();
               shareList(listName, 'native');
             }}>
             {i18n.t('list_export_options.native')}
           </Actionsheet.Item>
           <Actionsheet.Item
             onPress={() => {
-              onClose();
+              handleClose();
               shareList(listName, 'text');
             }}>
             {i18n.t('list_export_options.plain text')}
           </Actionsheet.Item>
           <Actionsheet.Item
             onPress={() => {
-              onClose();
+              handleClose();
               shareList(listName, 'pdf');
             }}>
             {i18n.t('list_export_options.pdf file')}
@@ -45,8 +45,7 @@ const ShareListButton = () => {
         </Actionsheet.Content>
       </Actionsheet>
       <Icon
-        as={Ionicons}
-        name="share-outline"
+        as={ShareIcon}
         size="xl"
         style={{
           marginTop: 4,
@@ -55,11 +54,9 @@ const ShareListButton = () => {
         color={options.headerTitleStyle.color}
         onPress={() => {
           Keyboard.dismiss();
-          onOpen();
+          setShowActionsheet(true);
         }}
       />
     </>
   );
 };
-
-export default ShareListButton;

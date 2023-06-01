@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Box, Text, HStack, Button, Center } from 'native-base';
+import { Box, Text, HStack, Button, Center } from '../gluestack';
 import { Platform, KeyboardAvoidingView } from 'react-native';
 import i18n from '@iresucito/translations';
 
@@ -9,7 +9,7 @@ const ConditionalWrapper = (props: any) => {
   return condition ? wrapper(children) : children;
 };
 
-const ModalView = (props: any) => {
+export const ModalView = (props: any) => {
   const {
     left,
     right,
@@ -23,8 +23,8 @@ const ModalView = (props: any) => {
   const defaultClose = (
     <Button
       size="sm"
-      variant="ghost"
-      mr="2"
+      variant="outline"
+      mr="$2"
       style={{
         alignSelf: 'flex-end',
       }}
@@ -34,12 +34,12 @@ const ModalView = (props: any) => {
           closeHandler();
         }
       }}>
-      {closeText || i18n.t('ui.close')}
+      <Button.Text>{closeText || i18n.t('ui.close')}</Button.Text>
     </Button>
   );
 
   return (
-    <Box safeArea bg="white" h="100%">
+    <Box h="100%">
       <ConditionalWrapper
         condition={keyboardAvoidingView}
         wrapper={(childs: any) => (
@@ -55,7 +55,7 @@ const ModalView = (props: any) => {
         </HStack>
         {title && (
           <Center py="2">
-            <Text bold>{title}</Text>
+            <Text fontWeight="bold">{title}</Text>
           </Center>
         )}
         <Box flex={1}>{children}</Box>
@@ -63,5 +63,3 @@ const ModalView = (props: any) => {
     </Box>
   );
 };
-
-export default ModalView;

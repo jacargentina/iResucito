@@ -10,10 +10,8 @@ import {
   Badge,
   Icon,
   Pressable,
-  useTheme,
   Checkbox,
-} from 'native-base';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+} from '../gluestack';
 import { useNavigation } from '@react-navigation/native';
 import Highlighter from '@javier.alejandro.castro/react-native-highlight-words';
 import Collapsible from 'react-native-collapsible';
@@ -21,8 +19,10 @@ import { Rating } from 'react-native-rating-element';
 import badges from '../badges';
 import i18n from '@iresucito/translations';
 import { Song } from '@iresucito/core';
-import { ChooserParamList } from '../navigation/SongChooserNavigator';
+import { ChooserParamList } from '../navigation';
 import { useSongsSelection } from '../hooks';
+import { config } from '../gluestack-ui.config';
+import { BugIcon, EyeIcon } from 'lucide-react-native';
 
 const NoLocaleWarning = () => {
   return (
@@ -34,8 +34,8 @@ const NoLocaleWarning = () => {
         );
       }}>
       <HStack alignItems="center">
-        <Icon color="rose.700" as={Ionicons} size="sm" name="bug" mr="2" />
-        <Text fontSize={14} color="muted.500">
+        <Icon color="$rose700" as={BugIcon} size="sm" mr="$2" />
+        <Text fontSize={14} color="$muted500">
           {i18n.t('ui.locale warning title')}
         </Text>
       </HStack>
@@ -48,17 +48,17 @@ type ViewSongScreenNavigationProp = StackNavigationProp<
   'ViewSong'
 >;
 
-const SongListItem = (props: { song: Song; showBadge?: boolean; highlight: string; viewButton: boolean; onPress: any; setSongSetting: any }) => {
-  const { colors } = useTheme();
+export const SongListItem = (props: {
+  song: Song;
+  showBadge?: boolean;
+  highlight: string;
+  viewButton: boolean;
+  onPress: any;
+  setSongSetting: any;
+}) => {
   const navigation = useNavigation<ViewSongScreenNavigationProp>();
   const { selection, enabled, toggle } = useSongsSelection();
-  const {
-    song,
-    highlight,
-    showBadge,
-    viewButton,
-    setSongSetting
-  } = props;
+  const { song, highlight, showBadge, viewButton, setSongSetting } = props;
 
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [firstHighlighted, setFirstHighlighted] =
@@ -111,8 +111,8 @@ const SongListItem = (props: { song: Song; showBadge?: boolean; highlight: strin
             onPress={() => {
               setIsCollapsed(!isCollapsed);
             }}>
-            <Badge colorScheme="info">
-              <Text>{children.length}+</Text>
+            <Badge>
+              <Badge.Text>{children.length}+</Badge.Text>
             </Badge>
           </Pressable>
         );
@@ -138,21 +138,24 @@ const SongListItem = (props: { song: Song; showBadge?: boolean; highlight: strin
   const isSelected = selection.includes(song.key);
 
   return (
-    <HStack p="2" borderBottomWidth={1} borderBottomColor="muted.200" backgroundColor={isSelected ? 'rose.100' : null}>
+    <HStack
+      p="$2"
+      borderBottomWidth={1}
+      borderBottomColor="$muted200"
+      backgroundColor={isSelected ? '$rose100' : undefined}>
       {showBadge && (
-        <Box pt="2" alignSelf="flex-start">
+        <Box pt="$2" alignSelf="flex-start">
           {badges[song.stage]}
         </Box>
       )}
-      <VStack space={1} p="2" w={`${calcWidth}%`}>
+      <VStack space="$1" p="$2" w={`${calcWidth}%`}>
         <Pressable
           onPress={() => {
             if (enabled) {
               toggle(song.key);
-            } else
-              if (props.onPress) {
-                props.onPress(song);
-              }
+            } else if (props.onPress) {
+              props.onPress(song);
+            }
           }}>
           <>
             <HStack justifyContent={'space-between'}>
@@ -166,12 +169,22 @@ const SongListItem = (props: { song: Song; showBadge?: boolean; highlight: strin
                 searchWords={[highlight]}
                 textToHighlight={song.titulo}
               />
-              {enabled ? <Checkbox isDisabled value="" isChecked={isSelected} aria-label='Seleccionar' /> : null}
+              {enabled ? (
+                <Checkbox
+                  isDisabled
+                  value=""
+                  isChecked={isSelected}
+                  aria-label="Seleccionar"
+                />
+              ) : null}
             </HStack>
             <Highlighter
               autoEscape
               numberOfLines={1}
-              style={{ color: colors.muted['500'], paddingVertical: 2 }}
+              style={{
+                color: config.theme.tokens.colors.muted500,
+                paddingVertical: 2,
+              }}
               highlightStyle={{
                 backgroundColor: 'yellow',
               }}
@@ -183,27 +196,28 @@ const SongListItem = (props: { song: Song; showBadge?: boolean; highlight: strin
           </>
         </Pressable>
         {song.notTranslated && <NoLocaleWarning />}
-        {!enabled && <Rating
-          totalCount={5}
-          marginBetweenRatingIcon={3}
-          size={20}
-          rated={song.rating}
-          onIconTap={(position: number) =>
-            setSongSetting(song.key, i18n.locale, 'rating', position)
-          }
-          ratingColor={colors.rose['500']}
-        />}
+        {!enabled && (
+          <Rating
+            totalCount={5}
+            marginBetweenRatingIcon={3}
+            size={20}
+            rated={song.rating}
+            onIconTap={(position: number) =>
+              setSongSetting(song.key, i18n.locale, 'rating', position)
+            }
+            ratingColor={config.theme.tokens.colors.rose500}
+          />
+        )}
       </VStack>
-      {openHighlightedRest && <Box pt="2">{openHighlightedRest}</Box>}
+      {openHighlightedRest && <Box pt="$2">{openHighlightedRest}</Box>}
       {viewButton && (
         <Pressable w="10%" onPress={viewSong}>
-          <Icon as={Ionicons} color="rose.500" name="eye-outline" size="xl" />
+          <Icon as={EyeIcon} color="$rose500" size="xl" />
         </Pressable>
       )}
       {song.error && (
         <Icon
-          as={Ionicons}
-          name="bug"
+          as={BugIcon}
           size="xl"
           onPress={() => {
             Alert.alert('Error', song.error);
@@ -213,5 +227,3 @@ const SongListItem = (props: { song: Song; showBadge?: boolean; highlight: strin
     </HStack>
   );
 };
-
-export default SongListItem;

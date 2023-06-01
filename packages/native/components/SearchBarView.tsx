@@ -2,13 +2,18 @@ import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useAndroidBackHandler } from 'react-navigation-backhandler';
-import { Platform, StyleSheet } from 'react-native';
-import { Box, Input, Icon, useTheme } from 'native-base';
+import { Platform } from 'react-native';
+import { Box, Input, Icon, CloseIcon } from '../gluestack';
 import { useDebounce } from 'use-debounce';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import { SearchIcon } from 'lucide-react-native';
 
-const DebouncedInput = (props: { value: string; setValue: Function; placeholder: string }) => {
-  const { value, setValue, placeholder } = props;
+export const DebouncedInput = (props: {
+  testID?: string;
+  placeholder: string;
+  value: string;
+  setValue: (term: string) => void;
+}) => {
+  const { testID, value, placeholder, setValue } = props;
   const [searchTerm, setSearchTerm] = useState(value);
   const [debouncedTerm] = useDebounce(searchTerm, 500);
 
@@ -21,42 +26,37 @@ const DebouncedInput = (props: { value: string; setValue: Function; placeholder:
   }, [value]);
 
   return (
-    <Input
-      m="1"
-      size="md"
-      isFullWidth
-      placeholder={placeholder}
-      onChangeText={setSearchTerm}
-      value={searchTerm}
-      returnKeyType="search"
-      autoCapitalize="none"
-      autoCorrect={false}
-      InputLeftElement={
-        <Icon as={Ionicons} size="sm" name="search" color="rose.500" ml="2" />
-      }
-      InputRightElement={
-        searchTerm ?
-        <Icon
-          as={Ionicons}
-          size="sm"
-          name="close"
-          color="rose.500"
-          mr="2"
-          onPress={() => setSearchTerm('')}
-        /> : undefined
-      }
-    />
+    <Input isFullWidth>
+      <Input.Icon pl="$2">
+        <Icon as={SearchIcon} color="$primary500" />
+      </Input.Icon>
+      <Input.Input
+        testID={testID}
+        placeholder={placeholder}
+        onChangeText={setSearchTerm}
+        value={searchTerm}
+        returnKeyType="search"
+        autoCapitalize="none"
+        clearButtonMode="always"
+        autoCorrect={false}
+      />
+      {Platform.OS === 'ios' ? (
+        <Input.Icon pr="$2">
+          <CloseIcon onPress={() => setSearchTerm('')} />
+        </Input.Icon>
+      ) : undefined}
+    </Input>
   );
 };
 
-const SearchBarView = (props: {
+export const SearchBarView = (props: {
+  testID?: string;
+  placeholder: string;
   value: string;
-  setValue: Function;
-  placeholder: string,
+  setValue: (term: string) => void;
   children: any;
 }) => {
   const navigation = useNavigation();
-  const { colors } = useTheme();
 
   useAndroidBackHandler(() => {
     navigation.goBack();
@@ -66,17 +66,12 @@ const SearchBarView = (props: {
   return (
     <>
       <DebouncedInput
+        testID={props.testID}
+        placeholder={props.placeholder}
         value={props.value}
         setValue={props.setValue}
-        placeholder={props.placeholder} />
-      <Box
-        flex={1}
-        borderTopWidth={StyleSheet.hairlineWidth}
-        borderTopColor={colors.muted['300']}>
-        {props.children}
-      </Box>
+      />
+      <Box flex={1}>{props.children}</Box>
     </>
   );
 };
-
-export default SearchBarView;

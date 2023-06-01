@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import type { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
-import { Text, Actionsheet } from 'native-base';
+import { Text, Actionsheet } from '../gluestack';
 import i18n from '@iresucito/translations';
-import type { RootStackParamList } from '../navigation/RootNavigator';
+import { RootStackParamList } from '../navigation';
 import { ListType } from '@iresucito/core';
 
 type ListNameScreenNavigationProp = BottomTabNavigationProp<
@@ -11,8 +11,11 @@ type ListNameScreenNavigationProp = BottomTabNavigationProp<
   'ListName'
 >;
 
-const ChooseListTypeForAdd = (props: any) => {
-  const { isOpen, onClose } = props.chooser;
+export const ChooseListTypeForAdd = (props: {
+  isOpen: boolean;
+  onClose: () => any;
+}) => {
+  const { isOpen, onClose } = props;
   const navigation = useNavigation<ListNameScreenNavigationProp>();
 
   const nav = (type: ListType) => {
@@ -23,11 +26,15 @@ const ChooseListTypeForAdd = (props: any) => {
     });
     onClose();
   };
-  
+
   return (
     <Actionsheet isOpen={isOpen} onClose={onClose}>
+      <Actionsheet.Backdrop />
       <Actionsheet.Content>
-        <Text bold>{i18n.t('ui.lists.type')}</Text>
+        <Actionsheet.DragIndicatorWrapper>
+          <Actionsheet.DragIndicator />
+        </Actionsheet.DragIndicatorWrapper>
+        <Text fontWeight="bold">{i18n.t('ui.lists.type')}</Text>
         <Actionsheet.Item onPress={() => nav('eucaristia')}>
           {i18n.t('list_type.eucharist')}
         </Actionsheet.Item>
@@ -41,5 +48,3 @@ const ChooseListTypeForAdd = (props: any) => {
     </Actionsheet>
   );
 };
-
-export default ChooseListTypeForAdd;

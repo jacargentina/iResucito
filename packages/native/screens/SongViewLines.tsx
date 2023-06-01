@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Text } from 'native-base';
+import { Text } from '../gluestack';
 import { SongLine } from '@iresucito/core';
 import { GestureResponderEvent } from 'react-native';
 
-const SongViewLines = (props: {
+export const SongViewLines = (props: {
   lines: SongLine[];
   onPress: (e: GestureResponderEvent) => void;
   zoom: number;
@@ -34,11 +34,15 @@ const SongViewLines = (props: {
     }
 
     if (it.texto === '') {
-      return <Text key={i + 'texto'} onPress={onPress} noOfLines={1} />;
+      return <Text key={i + 'texto'} onPress={onPress} numberOfLines={1} />;
     }
 
     return (
-      <Text key={i + 'texto'} onPress={onPress} noOfLines={1} style={itemStyle}>
+      <Text
+        key={i + 'texto'}
+        onPress={onPress}
+        numberOfLines={1}
+        style={itemStyle}>
         <Text key={i + 'prefijo'} style={prefijoStyle}>
           {it.prefijo}
         </Text>
@@ -56,5 +60,3 @@ const SongViewLines = (props: {
 
   return <>{renderItems}</>;
 };
-
-export default SongViewLines;

@@ -1,15 +1,16 @@
 import * as React from 'react';
 import { useState, useRef } from 'react';
 import { Alert, ScrollView, View } from 'react-native';
-import { VStack, Text, useTheme } from 'native-base';
+import { VStack, Text } from '../gluestack';
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { KeyboardAwareScrollView } from '@codler/react-native-keyboard-aware-scroll-view';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
-import SwipeableRightAction from '../components/SwipeableRightAction';
+import { SwipeableRightAction } from '../components';
 import { ListForUI, useListsStore } from '../hooks';
 import i18n from '@iresucito/translations';
 import ListDetailItem from './ListDetailItem';
-import type { ListsStackParamList } from '../navigation/ListsNavigator';
+import { ListsStackParamList } from '../navigation';
+import { config } from '../gluestack-ui.config';
 
 const SwipeableRow = (props: {
   listName: string;
@@ -18,7 +19,6 @@ const SwipeableRow = (props: {
 }) => {
   const { listName, listKey, song } = props;
   const swipeRef = useRef<Swipeable>(null);
-  const { colors } = useTheme();
 
   return (
     <Swipeable
@@ -29,7 +29,7 @@ const SwipeableRow = (props: {
         return (
           <View style={{ width: 100, flexDirection: 'row' }}>
             <SwipeableRightAction
-              color={colors.rose['600']}
+              color={config.theme.tokens.colors.rose600}
               progress={progress}
               text={i18n.t('ui.delete')}
               x={100}
@@ -42,7 +42,9 @@ const SwipeableRow = (props: {
                     {
                       text: i18n.t('ui.delete'),
                       onPress: () => {
-                        useListsStore.getState().setList(listName, listKey, undefined);
+                        useListsStore
+                          .getState()
+                          .setList(listName, listKey, undefined);
                       },
                       style: 'destructive',
                     },
@@ -64,14 +66,14 @@ const SwipeableRow = (props: {
 
 type ListDetailRouteProp = RouteProp<ListsStackParamList, 'ListDetail'>;
 
-const ListDetail = () => {
-  const lists_ui = useListsStore(state => state.lists_ui);
+export const ListDetail = () => {
+  const lists_ui = useListsStore((state) => state.lists_ui);
   const [scroll, setScroll] = useState<ScrollView>();
   const [noteFocused, setNoteFocused] = useState(false);
   const route = useRoute<ListDetailRouteProp>();
   const { listName } = route.params;
 
-  const uiList = lists_ui.find(l => l.name == listName) as ListForUI;
+  const uiList = lists_ui.find((l) => l.name == listName) as ListForUI;
 
   if (uiList.type === 'libre') {
     var items = uiList.items;
@@ -79,12 +81,12 @@ const ListDetail = () => {
       <>
         <KeyboardAwareScrollView contentContainerStyle={{ flexGrow: 1 }}>
           {items.length === 0 && (
-            <Text textAlign="center" mt="5">
+            <Text textAlign="center" mt="$5">
               {i18n.t('ui.empty songs list')}
             </Text>
           )}
           {items.length > 0 && (
-            <VStack p="2">
+            <VStack p="$2">
               {items.map((song, key) => {
                 return (
                   <SwipeableRow
@@ -105,7 +107,7 @@ const ListDetail = () => {
     <KeyboardAwareScrollView
       contentContainerStyle={{ flexGrow: 1 }}
       innerRef={(ref) => setScroll(ref as unknown as ScrollView)}>
-      <VStack p="2">
+      <VStack p="$2">
         <ListDetailItem
           listName={listName}
           listKey="ambiental"
@@ -250,5 +252,3 @@ const ListDetail = () => {
     </KeyboardAwareScrollView>
   );
 };
-
-export default ListDetail;

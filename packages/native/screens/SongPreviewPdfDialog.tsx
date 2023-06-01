@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { RouteProp, useRoute } from '@react-navigation/native';
-import ModalView from '../components/ModalView';
+import { ModalView } from '../components';
 import i18n from '@iresucito/translations';
-import SongViewPdf from './SongViewPdf';
-import { RootStackParamList } from '../navigation/RootNavigator';
+import { SongViewPdf } from './SongViewPdf';
+import { RootStackParamList } from '../navigation';
 
 type SongPreviewRouteProp = RouteProp<RootStackParamList, 'SongPreviewPdf'>;
 
-const SongPreviewPdfDialog = () => {
+export const SongPreviewPdfDialog = () => {
   const route = useRoute<SongPreviewRouteProp>();
   const { uri } = route.params;
   return (
@@ -16,5 +16,3 @@ const SongPreviewPdfDialog = () => {
     </ModalView>
   );
 };
-
-export default SongPreviewPdfDialog;

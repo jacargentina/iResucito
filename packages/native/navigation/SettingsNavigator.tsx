@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import SettingsScreen from '../screens/SettingsScreen';
+import { SettingsScreen } from '../screens/SettingsScreen';
 import i18n from '@iresucito/translations';
-import useStackNavOptions from './StackNavOptions';
+import { useStackNavOptions } from './useStackNavOptions';
 import { useSettingsStore } from '../hooks';
 
 export type SettingsStackParamList = {
@@ -20,7 +20,9 @@ const SettingsNavigator = () => {
         name="SettingsScreen"
         component={SettingsScreen}
         options={() => {
-          return { title: i18n.t('screen_title.settings', { locale: computedLocale }) };
+          return {
+            title: i18n.t('screen_title.settings', { locale: computedLocale }),
+          };
         }}
       />
     </Stack.Navigator>

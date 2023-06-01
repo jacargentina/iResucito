@@ -1,13 +1,12 @@
 import * as React from 'react';
-import { Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { Text, Actionsheet } from 'native-base';
+import { Text, Actionsheet } from '../gluestack';
 import i18n from '@iresucito/translations';
-import { defaultExportToPdfOptions, Song, SongToPdf } from '@iresucito/core';
+import { defaultExportToPdfOptions, SongToPdf } from '@iresucito/core';
 import { NativeParser } from '../util';
 import { generateSongPDF } from '../pdf';
-import type { SongsStackParamList } from '../navigation/SongsNavigator';
+import { SongsStackParamList } from '../navigation';
 import { useSongsStore, useSongsSelection } from '../hooks';
 
 type PDFViewerScreenNavigationProp = StackNavigationProp<
@@ -15,16 +14,19 @@ type PDFViewerScreenNavigationProp = StackNavigationProp<
   'PDFViewer'
 >;
 
-const ChoosePdfTypeForExport = (props: { chooser: any; setLoading: Function }) => {
-  const { isOpen, onClose } = props.chooser;
-  const { setLoading } = props;
+export const ChoosePdfTypeForExport = (props: {
+  isOpen: boolean;
+  onClose: () => any;
+  setLoading: (option: any) => any;
+}) => {
+  const { isOpen, onClose, setLoading } = props;
   const { songs } = useSongsStore();
   const navigation = useNavigation<PDFViewerScreenNavigationProp>();
 
   return (
     <Actionsheet isOpen={isOpen} onClose={onClose}>
       <Actionsheet.Content>
-        <Text bold>{i18n.t('ui.export.type')}</Text>
+        <Text fontWeight="bold">{i18n.t('ui.export.type')}</Text>
         <Actionsheet.Item
           onPress={() => {
             onClose();
@@ -72,5 +74,3 @@ const ChoosePdfTypeForExport = (props: { chooser: any; setLoading: Function }) =
     </Actionsheet>
   );
 };
-
-export default ChoosePdfTypeForExport;

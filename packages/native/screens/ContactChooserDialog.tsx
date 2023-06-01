@@ -2,23 +2,22 @@ import * as React from 'react';
 import type { RouteProp } from '@react-navigation/native';
 import Contacts from 'react-native-contacts';
 import { useState, useMemo } from 'react';
-import { Text, Icon } from 'native-base';
+import { Text, Icon } from '../gluestack';
 import { FlashList } from '@shopify/flash-list';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import { View } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import ModalView from '../components/ModalView';
+import { ModalView, SearchBarView } from '../components';
 import { useBrothersStore, useListsStore, useSettingsStore } from '../hooks';
 import i18n from '@iresucito/translations';
 import { contactFilterByText, ordenAlfabetico } from '../util';
-import SearchBarView from '../components/SearchBarView';
-import ContactListItem from './ContactListItem';
+import { ContactListItem } from './ContactListItem';
 
 import type { RootStackParamList } from '../navigation/RootNavigator';
+import { UsersIcon } from 'lucide-react-native';
 
 type ContactChooserRouteProp = RouteProp<RootStackParamList, 'ContactChooser'>;
 
-const ContactChooserDialog = () => {
+export const ContactChooserDialog = () => {
   const navigation = useNavigation();
   const route = useRoute<ContactChooserRouteProp>();
   const { contacts } = useBrothersStore();
@@ -33,7 +32,9 @@ const ContactChooserDialog = () => {
   }, [contacts, filter]);
 
   const contactSelected = (contact: Contacts.Contact) => {
-    useListsStore.getState().setList(target.listName, target.listKey, contact.givenName);
+    useListsStore
+      .getState()
+      .setList(target.listName, target.listKey, contact.givenName);
     navigation.goBack();
   };
 
@@ -41,10 +42,10 @@ const ContactChooserDialog = () => {
     <ModalView
       left={
         <Text
-          bold
-          fontSize="md"
-          mt="2"
-          ml="4"
+          fontWeight="bold"
+          fontSize="$md"
+          mt="$2"
+          ml="$4"
           style={{
             alignSelf: 'flex-start',
           }}>
@@ -60,17 +61,17 @@ const ContactChooserDialog = () => {
             justifyContent: 'space-around',
             padding: 10,
           }}>
-          <Icon
-            as={Ionicons}
-            name="people-outline"
-            size={32}
-            alignSelf="center"
-          />
+          <Icon as={UsersIcon} size={32} alignSelf="center" />
           <Text textAlign="center">{i18n.t('ui.community empty')}</Text>
         </View>
       )}
       {contacts.length > 0 && (
-        <SearchBarView value={filter} setValue={setFilter} placeholder={i18n.t("ui.search placeholder", { locale: computedLocale }) + '...'}>
+        <SearchBarView
+          value={filter}
+          setValue={setFilter}
+          placeholder={
+            i18n.t('ui.search placeholder', { locale: computedLocale }) + '...'
+          }>
           <FlashList
             data={filtered}
             keyExtractor={(item) => item.recordID}
@@ -91,5 +92,3 @@ const ContactChooserDialog = () => {
     </ModalView>
   );
 };
-
-export default ContactChooserDialog;

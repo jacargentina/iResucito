@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Text, Icon, Badge, useTheme } from 'native-base';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import { Icon, Badge } from '../gluestack';
 import {
   Menu,
   MenuOptions,
@@ -11,9 +10,10 @@ import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import i18n from '@iresucito/translations';
 import { cleanMultichord, getChordsScale } from '@iresucito/core';
 import { setSongSetting } from '../hooks';
-import useStackNavOptions from '../navigation/StackNavOptions';
-import { SongsStackParamList } from '../navigation/SongsNavigator';
+import { SongsStackParamList, useStackNavOptions } from '../navigation';
 import { StackNavigationProp } from '@react-navigation/stack';
+import { config } from '../gluestack-ui.config';
+import { MusicIcon } from 'lucide-react-native';
 
 type SongDetailRouteProp = RouteProp<SongsStackParamList, 'SongDetail'>;
 
@@ -22,10 +22,9 @@ type SongDetailScreenNavigationProp = StackNavigationProp<
   'SongDetail'
 >;
 
-const TransportNotesButton = () => {
+export const TransportNotesButton = () => {
   const options = useStackNavOptions();
   const navigation = useNavigation<SongDetailScreenNavigationProp>();
-  const { colors } = useTheme();
   const route = useRoute<SongDetailRouteProp>();
   const { song } = route.params;
 
@@ -41,7 +40,7 @@ const TransportNotesButton = () => {
       value == song.transportTo
         ? {
             optionWrapper: {
-              backgroundColor: colors.rose['300'],
+              backgroundColor: config.theme.tokens.colors.rose300,
               paddingHorizontal: 10,
               paddingVertical: 10,
             },
@@ -77,8 +76,7 @@ const TransportNotesButton = () => {
     song.transportTo === undefined ||
     song.transportTo === '' ? (
       <Icon
-        as={Ionicons}
-        name="musical-notes-outline"
+        as={MusicIcon}
         size="xl"
         style={{
           marginTop: 4,
@@ -88,20 +86,20 @@ const TransportNotesButton = () => {
       />
     ) : (
       <Badge
-        colorScheme="rose"
+        bg="$rose500"
         variant="solid"
         borderRadius={10}
         height="100%"
         style={{
           marginRight: 3,
         }}>
-        <Text
-          bold
-          italic
+        <Badge.Text
+          fontWeight="bold"
+          fontStyle="italic"
           textAlign="center"
           color={options.headerTitleStyle.color}>
           {song.transportTo}
-        </Text>
+        </Badge.Text>
       </Badge>
     );
   return (
@@ -119,5 +117,3 @@ const TransportNotesButton = () => {
     </Menu>
   );
 };
-
-export default TransportNotesButton;

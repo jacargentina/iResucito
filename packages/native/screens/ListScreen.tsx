@@ -1,34 +1,28 @@
 import * as React from 'react';
-import { useState, useMemo, useEffect, useRef, useCallback } from 'react';
-import {
-  Pressable,
-  VStack,
-  HStack,
-  Icon,
-  Text,
-  useDisclose,
-  useTheme,
-} from 'native-base';
+import { useState, useEffect, useRef } from 'react';
+import { Pressable, VStack, HStack, Icon, Text } from '../gluestack';
 import { Alert, View } from 'react-native';
 import { FlashList } from '@shopify/flash-list';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import {
   CompositeNavigationProp,
   useNavigation,
   useScrollToTop,
 } from '@react-navigation/native';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
-import SwipeableRightAction from '../components/SwipeableRightAction';
-import SearchBarView from '../components/SearchBarView';
+import {
+  CallToAction,
+  SwipeableRightAction,
+  SearchBarView,
+  HeaderButton,
+  ChooseListTypeForAdd,
+} from '../components';
 import { ListForUI, useListsStore, useSettingsStore } from '../hooks';
-import CallToAction from '../components/CallToAction';
-import AddListButton from '../components/AddListButton';
-import ChooseListTypeForAdd from '../components/ChooseListTypeForAdd';
 import i18n from '@iresucito/translations';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { ListsStackParamList } from '../navigation/ListsNavigator';
+import { RootStackParamList, ListsStackParamList } from '../navigation';
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
-import { RootStackParamList } from '../navigation/RootNavigator';
+import { config } from '../gluestack-ui.config';
+import { BookmarkIcon } from 'lucide-react-native';
 
 type ListScreenNavigationProp = CompositeNavigationProp<
   BottomTabNavigationProp<RootStackParamList, 'ListName'>,
@@ -37,7 +31,6 @@ type ListScreenNavigationProp = CompositeNavigationProp<
 
 const SwipeableRow = (props: { item: ListForUI }) => {
   const navigation = useNavigation<ListScreenNavigationProp>();
-  const { colors } = useTheme();
   const { item } = props;
   const swipeRef = useRef<Swipeable>(null);
 
@@ -50,7 +43,7 @@ const SwipeableRow = (props: { item: ListForUI }) => {
         return (
           <View style={{ width: 250, flexDirection: 'row' }}>
             <SwipeableRightAction
-              color={colors.blue['500']}
+              color={config.theme.tokens.colors.blue500}
               progress={progress}
               text={i18n.t('ui.rename')}
               x={250}
@@ -63,7 +56,7 @@ const SwipeableRow = (props: { item: ListForUI }) => {
               }}
             />
             <SwipeableRightAction
-              color={colors.rose['600']}
+              color={config.theme.tokens.colors.rose600}
               progress={progress}
               text={i18n.t('ui.delete')}
               x={125}
@@ -86,7 +79,6 @@ const SwipeableRow = (props: { item: ListForUI }) => {
                     },
                   ]
                 );
-
               }}
             />
           </View>
@@ -99,19 +91,14 @@ const SwipeableRow = (props: { item: ListForUI }) => {
           });
         }}>
         <HStack
-          space={2}
-          p="3"
+          space="$2"
+          p="$3"
           alignItems="center"
           borderBottomWidth={1}
-          borderBottomColor="muted.200">
-          <Icon
-            as={Ionicons}
-            size="3xl"
-            color="rose.500"
-            name="bookmark-outline"
-          />
-          <VStack space={1}>
-            <Text bold fontSize="xl">
+          borderBottomColor="$muted200">
+          <Icon as={BookmarkIcon} size="3xl" color="$rose500" />
+          <VStack space="$1">
+            <Text fontWeight="bold" fontSize="$xl">
               {item.name}
             </Text>
             <Text>{item.localeType}</Text>
@@ -122,13 +109,14 @@ const SwipeableRow = (props: { item: ListForUI }) => {
   );
 };
 
-const ListScreen = () => {
+export const ListScreen = () => {
   const { lists_ui } = useListsStore();
   const { computedLocale } = useSettingsStore();
   const navigation = useNavigation();
   const [filtered, setFiltered] = useState<ListForUI[]>([]);
   const [filter, setFilter] = useState('');
-  const chooser = useDisclose();
+  const [showActionsheet, setShowActionsheet] = useState(false);
+  const handleClose = () => setShowActionsheet(!showActionsheet);
 
   const ref = useRef(null);
 
@@ -137,31 +125,33 @@ const ListScreen = () => {
   useEffect(() => {
     var result = lists_ui;
     if (filter !== '') {
-      result = result.filter((c) => c.name.toLowerCase().includes(filter.toLowerCase()));
+      result = result.filter((c) =>
+        c.name.toLowerCase().includes(filter.toLowerCase())
+      );
     }
     setFiltered(result);
   }, [lists_ui, filter]);
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
-      headerRight: () => <AddListButton onPress={chooser.onOpen} />,
+      headerRight: () => (
+        <HeaderButton
+          iconName="plus"
+          onPress={() => setShowActionsheet(true)}
+        />
+      ),
     });
   });
 
   if (lists_ui.length === 0) {
     return (
       <>
-        <ChooseListTypeForAdd chooser={chooser} />
+        <ChooseListTypeForAdd isOpen={showActionsheet} onClose={handleClose} />
         <CallToAction
-          icon="bookmarks-outline"
+          icon="bookmark"
           title={i18n.t('call_to_action_title.add lists')}
           text={i18n.t('call_to_action_text.add lists')}
-          buttonHandler={chooser.onOpen}
-          // buttonHandler={() => {
-          //   for (let index = 0; index < 50; index++) {
-          //     useListsStore.getState().add('Test list ' + index.toString(), 'palabra');
-          //   }
-          // }}
+          buttonHandler={() => setShowActionsheet(true)}
           buttonText={i18n.t('call_to_action_button.add lists')}
         />
       </>
@@ -169,10 +159,15 @@ const ListScreen = () => {
   }
 
   return (
-    <SearchBarView value={filter} setValue={setFilter} placeholder={i18n.t("ui.search placeholder", { locale: computedLocale }) + '...'}>
-      <ChooseListTypeForAdd chooser={chooser} />
+    <SearchBarView
+      value={filter}
+      setValue={setFilter}
+      placeholder={
+        i18n.t('ui.search placeholder', { locale: computedLocale }) + '...'
+      }>
+      <ChooseListTypeForAdd isOpen={showActionsheet} onClose={handleClose} />
       {filtered.length === 0 && (
-        <Text textAlign="center" m="5">
+        <Text textAlign="center" m="$5">
           {i18n.t('ui.no lists found')}
         </Text>
       )}
@@ -189,5 +184,3 @@ const ListScreen = () => {
     </SearchBarView>
   );
 };
-
-export default ListScreen;

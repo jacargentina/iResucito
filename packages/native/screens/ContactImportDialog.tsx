@@ -1,11 +1,9 @@
 import * as React from 'react';
 import { useState, useEffect, useMemo } from 'react';
-import { Text, Box, Pressable, HStack, VStack, Switch } from 'native-base';
+import { Text, Box, Pressable, HStack, VStack, Switch } from '../gluestack';
 import { Keyboard, StyleSheet } from 'react-native';
 import { FlashList } from '@shopify/flash-list';
-import ModalView from '../components/ModalView';
-import SearchBarView from '../components/SearchBarView';
-import ContactPhoto from '../components/ContactPhoto';
+import { ContactPhoto, ModalView, SearchBarView } from '../components';
 import { BrotherContact, useBrothersStore, useSettingsStore } from '../hooks';
 import i18n from '@iresucito/translations';
 import {
@@ -27,7 +25,7 @@ const BrotherItem = React.memo(
         style={{ marginRight: 10, width: 56 }}
         onPress={() => handleContact(item)}>
         <ContactPhoto item={item} />
-        <Text noOfLines={1} textAlign="center" mt="2" fontSize="sm">
+        <Text numberOfLines={1} textAlign="center" mt="$2" fontSize="$sm">
           {item.givenName && item.givenName.length > 0
             ? item.givenName.trim()
             : item.familyName.trim()}
@@ -52,13 +50,13 @@ const ContactItem = React.memo(
     }
     return (
       <Pressable onPress={() => handleContact(item)}>
-        <HStack p="2" justifyContent="space-between" alignItems="center">
+        <HStack p="$2" justifyContent="space-between" alignItems="center">
           <ContactPhoto item={item} />
           <VStack w="68%">
-            <Text bold fontSize="lg" noOfLines={1}>
+            <Text fontWeight="bold" fontSize="$lg" numberOfLines={1}>
               {contactFullName}
             </Text>
-            <Text noOfLines={1}>
+            <Text numberOfLines={1}>
               {item.emailAddresses && item.emailAddresses.length > 0
                 ? item.emailAddresses[0].email
                 : null}
@@ -74,11 +72,13 @@ const ContactItem = React.memo(
   }
 );
 
-const ContactImportDialog = () => {
+export const ContactImportDialog = () => {
   const { contacts, deviceContacts, addOrRemove } = useBrothersStore();
   const { computedLocale } = useSettingsStore();
   const [loading, setLoading] = useState(false);
-  const [contactsForImport, setContactsForImport] = useState<ContactForImport[]>([]);
+  const [contactsForImport, setContactsForImport] = useState<
+    ContactForImport[]
+  >([]);
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
@@ -95,7 +95,9 @@ const ContactImportDialog = () => {
   }, [deviceContacts, contacts]);
 
   const filtered = useMemo(() => {
-    var result = contactsForImport.filter((c) => contactFilterByText(c, filter));
+    var result = contactsForImport.filter((c) =>
+      contactFilterByText(c, filter)
+    );
     result.sort(ordenAlfabetico);
     return result;
   }, [contactsForImport, filter]);
@@ -109,10 +111,10 @@ const ContactImportDialog = () => {
     <ModalView
       left={
         <Text
-          bold
-          fontSize="md"
-          mt="2"
-          ml="4"
+          fontWeight="bold"
+          fontSize="$md"
+          mt="$2"
+          ml="$4"
           style={{
             alignSelf: 'flex-start',
           }}>
@@ -120,12 +122,17 @@ const ContactImportDialog = () => {
         </Text>
       }
       closeText={i18n.t('ui.done')}>
-      <SearchBarView value={filter} setValue={setFilter} placeholder={i18n.t("ui.search placeholder", { locale: computedLocale }) + '...'}>
+      <SearchBarView
+        value={filter}
+        setValue={setFilter}
+        placeholder={
+          i18n.t('ui.search placeholder', { locale: computedLocale }) + '...'
+        }>
         {contacts && contacts.length > 0 && (
           <Box
-            p="4"
+            p="$4"
             borderBottomWidth={StyleSheet.hairlineWidth}
-            borderBottomColor="muted.300">
+            borderBottomColor="$muted300">
             <FlashList
               removeClippedSubviews
               horizontal={true}
@@ -155,5 +162,3 @@ const ContactImportDialog = () => {
     </ModalView>
   );
 };
-
-export default ContactImportDialog;

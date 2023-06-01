@@ -9,18 +9,22 @@ import {
   VStack,
   Text,
   Divider,
-} from 'native-base';
+} from '../gluestack';
 import { FlashList } from '@shopify/flash-list';
 import i18n from '@iresucito/translations';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { SongsStackParamList } from '../navigation/SongsNavigator';
+import { SongsStackParamList } from '../navigation';
 import { useSettingsStore } from '../hooks';
 import { useRef } from 'react';
 
 const Loading = () => {
   return (
     <Center marginTop={10}>
-      <Spinner color="rose.500" size="lg" />
+      <Spinner
+        color="$rose500"
+        // @ts-ignore
+        size="large"
+      />
       <Text>{i18n.t('ui.loading')}</Text>
     </Center>
   );
@@ -31,10 +35,9 @@ type SongListNavigationProp = StackNavigationProp<
   'SongList'
 >;
 
-const SongSearch = () => {
+export const SongSearch = () => {
   const { hasHydrated, searchItems } = useSettingsStore();
   const navigation = useNavigation<SongListNavigationProp>();
-
   const ref = useRef(null);
 
   useScrollToTop(ref);
@@ -56,7 +59,7 @@ const SongSearch = () => {
         const nextItem = searchItems![index + 1];
         if (item.divider) {
           return (
-            <Text bold p="2" fontSize="sm" bg="gray.100">
+            <Text fontWeight="bold" p="$2" fontSize="$sm" bg="$gray100">
               {i18n.t(item.title_key).toUpperCase()}
             </Text>
           );
@@ -66,11 +69,11 @@ const SongSearch = () => {
             onPress={() => {
               navigation.navigate('SongList', item.params as any);
             }}>
-            <HStack w="100%" p="2" m="1">
+            <HStack w="100%" p="$2" m="$1">
               {item.badge}
               <VStack>
-                <Text bold>{i18n.t(item.title_key)}</Text>
-                <Text color="muted.500" fontSize="sm">
+                <Text fontWeight="bold">{i18n.t(item.title_key)}</Text>
+                <Text color="$muted500" fontSize="$sm">
                   {i18n.t(item.note_key as string)}
                 </Text>
               </VStack>
@@ -83,5 +86,3 @@ const SongSearch = () => {
     />
   );
 };
-
-export default SongSearch;

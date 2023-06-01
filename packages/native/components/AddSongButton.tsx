@@ -1,12 +1,14 @@
 import * as React from 'react';
-import { Icon } from 'native-base';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import { Icon } from '../gluestack';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import { useListsStore } from '../hooks';
-import useStackNavOptions from '../navigation/StackNavOptions';
-import type { ListsStackParamList } from '../navigation/ListsNavigator';
-import type { RootStackParamList } from '../navigation/RootNavigator';
+import {
+  useStackNavOptions,
+  ListsStackParamList,
+  RootStackParamList,
+} from '../navigation';
+import { PlusIcon } from 'lucide-react-native';
 
 type ListDetailRouteProp = RouteProp<ListsStackParamList, 'ListDetail'>;
 
@@ -15,14 +17,14 @@ type SongChooserScreenNavigationProp = BottomTabNavigationProp<
   'SongChooser'
 >;
 
-const AddSongButton = () => {
+export const AddSongButton = () => {
   const options = useStackNavOptions();
   const { lists_ui } = useListsStore();
   const navigation = useNavigation<SongChooserScreenNavigationProp>();
   const route = useRoute<ListDetailRouteProp>();
   const { listName } = route.params;
 
-  const uiList = lists_ui.find(l => l.name == listName);
+  const uiList = lists_ui.find((l) => l.name == listName);
 
   if (uiList?.type !== 'libre') {
     return null;
@@ -30,8 +32,7 @@ const AddSongButton = () => {
 
   return (
     <Icon
-      as={Ionicons}
-      name="add"
+      as={PlusIcon}
       size="xl"
       style={{
         marginTop: 4,
@@ -49,5 +50,3 @@ const AddSongButton = () => {
     />
   );
 };
-
-export default AddSongButton;

@@ -1,21 +1,19 @@
 import * as React from 'react';
-import { Icon } from 'native-base';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import { Icon } from '../gluestack';
 import { RouteProp, useRoute } from '@react-navigation/native';
-import useStackNavOptions from '../navigation/StackNavOptions';
+import { SongsStackParamList, useStackNavOptions } from '../navigation';
 import { sharePDF } from '../hooks';
-import { SongsStackParamList } from '../navigation/SongsNavigator';
+import { ShareIcon } from 'lucide-react-native';
 
 type PDFViewerRouteProp = RouteProp<SongsStackParamList, 'PDFViewer'>;
 
-const SharePDFButton = () => {
+export const SharePDFButton = () => {
   const options = useStackNavOptions();
   const route = useRoute<PDFViewerRouteProp>();
   const { title, uri } = route.params;
   return (
     <Icon
-      as={Ionicons}
-      name="share-outline"
+      as={ShareIcon}
       size="xl"
       style={{
         marginTop: 4,
@@ -26,5 +24,3 @@ const SharePDFButton = () => {
     />
   );
 };
-
-export default SharePDFButton;

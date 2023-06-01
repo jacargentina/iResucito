@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import CommunityScreen from '../screens/CommunityScreen';
+import { CommunityScreen } from '../screens';
 import i18n from '@iresucito/translations';
-import useStackNavOptions from './StackNavOptions';
+import { useStackNavOptions } from './useStackNavOptions';
 import { useSettingsStore } from '../hooks';
 
 export type CommunityStackParamList = {

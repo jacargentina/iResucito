@@ -23,7 +23,11 @@
       "**/@vercel/remix",
       "**/@vercel/remix/**",
       "**/typescript",
-      "**/typescript/*"
+      "**/typescript/*",
+      "**/gluestack-ui",
+      "**/gluestack-ui/*",
+      "**/@dank-style",
+      "**/@dank-style/*"
     ]
   },
   "scripts": {

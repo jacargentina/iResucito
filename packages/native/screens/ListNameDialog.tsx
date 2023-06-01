@@ -1,15 +1,13 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { Input, Box, Button, FormControl } from 'native-base';
+import { Input, Box, Button, FormControl } from '../gluestack';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { getLocalizedListType } from '@iresucito/core';
 import { useListsStore } from '../hooks';
-import ModalView from '../components/ModalView';
+import { ModalView } from '../components';
 import i18n from '@iresucito/translations';
-
 import { StackNavigationProp } from '@react-navigation/stack';
-import type { RootStackParamList } from '../navigation/RootNavigator';
-import { ListsStackParamList } from '../navigation/ListsNavigator';
+import { ListsStackParamList, RootStackParamList } from '../navigation';
 
 type ListNameDialogRouteProp = RouteProp<RootStackParamList, 'ListName'>;
 
@@ -18,7 +16,7 @@ type ListDetailNavivationProp = StackNavigationProp<
   'ListDetail'
 >;
 
-const ListNameDialog = () => {
+export const ListNameDialog = () => {
   const navigation = useNavigation<ListDetailNavivationProp>();
   const route = useRoute<ListNameDialogRouteProp>();
   const { lists, add, rename } = useListsStore();
@@ -65,9 +63,9 @@ const ListNameDialog = () => {
   const title =
     action === 'create' && type
       ? `${i18n.t('ui.lists.create')} (${getLocalizedListType(
-        type,
-        i18n.locale
-      )})`
+          type,
+          i18n.locale
+        )})`
       : `${i18n.t('ui.lists.rename')} (${listName})`;
 
   return (
@@ -77,7 +75,7 @@ const ListNameDialog = () => {
         <Button
           borderRadius={16}
           size="sm"
-          mr="4"
+          mr="$4"
           style={{
             alignSelf: 'flex-end',
           }}
@@ -89,8 +87,8 @@ const ListNameDialog = () => {
       left={
         <Button
           size="sm"
-          variant="ghost"
-          ml="2"
+          variant="outline"
+          ml="$2"
           style={{
             alignSelf: 'flex-start',
           }}
@@ -98,23 +96,24 @@ const ListNameDialog = () => {
           {i18n.t('ui.cancel')}
         </Button>
       }>
-      <Box px="5">
-        <FormControl mb="5" isInvalid={!actionEnabled}>
-          <Input
-            size="lg"
-            autoFocus
-            onChangeText={setName}
-            value={name}
-            clearButtonMode="always"
-            autoCorrect={false}
-          />
-          <FormControl.ErrorMessage>
-            {disabledReasonText}
-          </FormControl.ErrorMessage>
+      <Box px="$5">
+        <FormControl mb="$5" isInvalid={!actionEnabled}>
+          <Input size="lg">
+            <Input.Input
+              autoFocus
+              value={name}
+              onChangeText={setName}
+              clearButtonMode="always"
+              autoCorrect={false}
+            />
+            <FormControl.Error>
+              <FormControl.Error.Text>
+                {disabledReasonText}
+              </FormControl.Error.Text>
+            </FormControl.Error>
+          </Input>
         </FormControl>
       </Box>
     </ModalView>
   );
 };
-
-export default ListNameDialog;

@@ -1,16 +1,21 @@
 import * as React from 'react';
-import { Icon } from 'native-base';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import { Icon } from '../gluestack';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import i18n from '@iresucito/translations';
-import { defaultExportToPdfOptions, ExportToPdfOptions, SongToPdf } from '@iresucito/core';
+import {
+  defaultExportToPdfOptions,
+  ExportToPdfOptions,
+  SongToPdf,
+} from '@iresucito/core';
 import { NativeParser } from '../util';
 import { generateSongPDF } from '../pdf';
-import useStackNavOptions from '../navigation/StackNavOptions';
-
-import type { SongsStackParamList } from '../navigation/SongsNavigator';
-import type { ListsStackParamList } from '../navigation/ListsNavigator';
+import {
+  useStackNavOptions,
+  SongsStackParamList,
+  ListsStackParamList,
+} from '../navigation';
 import { StackNavigationProp } from '@react-navigation/stack';
+import { FileTextIcon } from 'lucide-react-native';
 
 type SongDetailRouteProp1 = RouteProp<SongsStackParamList, 'SongDetail'>;
 type SongDetailRouteProp2 = RouteProp<ListsStackParamList, 'SongDetail'>;
@@ -31,8 +36,7 @@ const ViewPdfButton = () => {
 
   return (
     <Icon
-      as={Ionicons}
-      name="document-text-outline"
+      as={FileTextIcon}
       size="xl"
       style={{
         marginTop: 4,
@@ -54,7 +58,12 @@ const ViewPdfButton = () => {
           ...defaultExportToPdfOptions,
           disablePageNumbers: true,
         };
-        const path = await generateSongPDF([item], exportOpts, item.song.titulo, false);
+        const path = await generateSongPDF(
+          [item],
+          exportOpts,
+          item.song.titulo,
+          false
+        );
         navigation.navigate('PDFViewer', {
           uri: path,
           title: song.titulo,

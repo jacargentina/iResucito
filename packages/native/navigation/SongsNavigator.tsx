@@ -1,12 +1,9 @@
 import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import SongSearch from '../screens/SongSearch';
-import SongList from '../screens/SongList';
-import SongDetail from '../screens/SongDetail';
-import PDFViewer from '../screens/PDFViewer';
+import { PDFViewer, SongDetail, SongList, SongSearch } from '../screens';
 import i18n from '@iresucito/translations';
 import { getSongDetailOptions, getPdfViewerOptions } from './util';
-import useStackNavOptions from './StackNavOptions';
+import { useStackNavOptions } from './useStackNavOptions';
 import { Song } from '@iresucito/core';
 import { useSettingsStore } from '../hooks';
 

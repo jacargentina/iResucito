@@ -1,14 +1,16 @@
 import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigatorScreenParams } from '@react-navigation/native';
-import ContactChooserDialog from '../screens/ContactChooserDialog';
-import ListNameDialog from '../screens/ListNameDialog';
-import ContactImportDialog from '../screens/ContactImportDialog';
-import SongPreviewScreenDialog from '../screens/SongPreviewScreenDialog';
-import SongPreviewPdfDialog from '../screens/SongPreviewPdfDialog';
+import {
+  SongPreviewPdfDialog,
+  SongPreviewScreenDialog,
+  ContactImportDialog,
+  ContactChooserDialog,
+  ListNameDialog,
+} from '../screens';
 import MenuNavigator from './MenuNavigator';
 import SongChooserNavigator, { ChooserParamList } from './SongChooserNavigator';
-import useStackNavOptions from './StackNavOptions';
+import { useStackNavOptions } from './useStackNavOptions';
 import { ListAction, ListType } from '@iresucito/core';
 
 export type RootStackParamList = {

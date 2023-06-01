@@ -2,20 +2,20 @@ import * as React from 'react';
 import type { StackScreenProps } from '@react-navigation/stack';
 import { useMemo, useCallback, useState } from 'react';
 import { useWindowDimensions } from 'react-native';
-import { Text, Center, Spinner, useTheme } from 'native-base';
+import { Text, Center, Spinner } from '../gluestack';
 import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
-import ModalView from '../components/ModalView';
+import { ModalView } from '../components';
+import { ChooserParamList } from '../navigation';
 import { useSettingsStore, useListsStore } from '../hooks';
 import i18n from '@iresucito/translations';
-import SongList from './SongList';
+import { SongList } from './SongList';
 import { Song } from '@iresucito/core';
-import type { ChooserParamList } from '../navigation/SongChooserNavigator';
+import { config } from '../gluestack-ui.config';
 
 type Props = StackScreenProps<ChooserParamList, 'Dialog'>;
 
-const SongChooserDialog = (props: Props) => {
+export const SongChooserDialog = (props: Props) => {
   const layout = useWindowDimensions();
-  const { colors } = useTheme();
   const { navigation, route } = props;
   const { searchItems } = useSettingsStore();
   const { target } = route.params;
@@ -31,7 +31,8 @@ const SongChooserDialog = (props: Props) => {
   const [activeTab, setActiveTab] = useState(() => {
     if (listName && listKey) {
       var c = choosers.find(
-        (t) => t.chooser_listKey && t.chooser_listKey.includes(listKey as string)
+        (t) =>
+          t.chooser_listKey && t.chooser_listKey.includes(listKey as string)
       );
       if (c) {
         const tab = choosers.indexOf(c);
@@ -89,25 +90,27 @@ const SongChooserDialog = (props: Props) => {
       keyboardAvoidingView={false}
       left={
         <Text
-          bold
-          fontSize="md"
-          mt="2"
-          ml="4"
+          fontWeight="bold"
+          fontSize="$md"
+          mt="$2"
+          ml="$4"
           style={{
             alignSelf: 'flex-start',
-          }}
-        >
+          }}>
           {i18n.t('screen_title.find song')}
         </Text>
-      }
-    >
+      }>
       <TabView
         animationEnabled={false}
         lazy
         renderLazyPlaceholder={() => {
           return (
             <Center pt="5">
-              <Spinner color="rose.500" size="lg" />
+              <Spinner
+                color="$rose500"
+                // @ts-ignore
+                size="large"
+              />
               <Text>{i18n.t('ui.loading')}</Text>
             </Center>
           );
@@ -120,16 +123,17 @@ const SongChooserDialog = (props: Props) => {
               tabStyle={{ width: 'auto' }}
               style={{ backgroundColor: 'white' }}
               indicatorStyle={{
-                backgroundColor: colors.rose['500'],
+                backgroundColor: config.theme.tokens.colors.rose500,
                 marginHorizontal: 3,
               }}
               renderLabel={({ route: currentRoute, focused, color }) => (
                 <Text
                   style={{
-                    color: focused ? colors.rose['500'] : colors.gray['600'],
+                    color: focused
+                      ? config.theme.tokens.colors.rose500
+                      : config.theme.tokens.colors.gray600,
                     margin: 3,
-                  }}
-                >
+                  }}>
                   {currentRoute.title}
                 </Text>
               )}
@@ -144,5 +148,3 @@ const SongChooserDialog = (props: Props) => {
     </ModalView>
   );
 };
-
-export default SongChooserDialog;

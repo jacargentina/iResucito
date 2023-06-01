@@ -1,26 +1,31 @@
 import * as React from 'react';
 import { useEffect, useRef, useState, useMemo, useCallback } from 'react';
 import { Platform, Alert, View } from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import { Text, Icon, useTheme } from 'native-base';
+import { Text } from '../gluestack';
 import { FlashList } from '@shopify/flash-list';
-import { useIsFocused, useNavigation, useScrollToTop } from '@react-navigation/native';
+import {
+  useIsFocused,
+  useNavigation,
+  useScrollToTop,
+} from '@react-navigation/native';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
-import SwipeableRightAction from '../components/SwipeableRightAction';
-import SearchBarView from '../components/SearchBarView';
+import {
+  SwipeableRightAction,
+  CallToAction,
+  SearchBarView,
+  HeaderButton,
+} from '../components';
 import { useBrothersStore, useSettingsStore } from '../hooks';
-import CallToAction from '../components/CallToAction';
 import i18n from '@iresucito/translations';
-import useStackNavOptions from '../navigation/StackNavOptions';
+import { useStackNavOptions, RootStackParamList } from '../navigation';
 import { contactFilterByText, ordenAlfabetico } from '../util';
-import ContactListItem from './ContactListItem';
+import { ContactListItem } from './ContactListItem';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList } from '../navigation/RootNavigator';
 import { Contact } from 'react-native-contacts';
+import { config } from '../gluestack-ui.config';
 
 const SwipeableRow = (props: { item: any }) => {
-  const { contacts, update, addOrRemove } = useBrothersStore();
-  const { colors } = useTheme();
+  const { update, addOrRemove } = useBrothersStore();
   const { item } = props;
   const swipeRef = useRef<Swipeable | null>(null);
 
@@ -67,7 +72,7 @@ const SwipeableRow = (props: { item: any }) => {
         return (
           <View style={{ width: 200, flexDirection: 'row' }}>
             <SwipeableRightAction
-              color={colors.blue['500']}
+              color={config.theme.tokens.colors.blue500}
               progress={progress}
               text={i18n.t('ui.psalmist')}
               x={200}
@@ -77,7 +82,7 @@ const SwipeableRow = (props: { item: any }) => {
               }}
             />
             <SwipeableRightAction
-              color={colors.rose['600']}
+              color={config.theme.tokens.colors.rose600}
               progress={progress}
               text={i18n.t('ui.delete')}
               x={100}
@@ -99,8 +104,9 @@ type ContactImportNavigationProp = StackNavigationProp<
   'ContactImport'
 >;
 
-const CommunityScreen = () => {
-  const { contacts, deviceContacts_loaded, populateDeviceContacts } = useBrothersStore();
+export const CommunityScreen = () => {
+  const { contacts, deviceContacts_loaded, populateDeviceContacts } =
+    useBrothersStore();
   const { computedLocale } = useSettingsStore();
   const options = useStackNavOptions();
   const isFocused = useIsFocused();
@@ -146,24 +152,14 @@ const CommunityScreen = () => {
         }
         Alert.alert(i18n.t('alert_title.contacts permission'), message);
       }
-    }
+    };
     ensureLoaded();
   }, [navigation, deviceContacts_loaded]);
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <Icon
-          as={Ionicons}
-          name="add"
-          size="xl"
-          style={{
-            marginTop: 4,
-            marginRight: 8,
-          }}
-          color={options.headerTitleStyle.color}
-          onPress={contactImport}
-        />
+        <HeaderButton iconName="plus" onPress={contactImport} />
       ),
     });
   });
@@ -171,7 +167,7 @@ const CommunityScreen = () => {
   if (contacts.length === 0 && !filter) {
     return (
       <CallToAction
-        icon="people-outline"
+        icon="users"
         title={i18n.t('call_to_action_title.community list')}
         text={i18n.t('call_to_action_text.community list')}
         buttonHandler={contactImport}
@@ -181,9 +177,14 @@ const CommunityScreen = () => {
   }
 
   return (
-    <SearchBarView value={filter} setValue={setFilter} placeholder={i18n.t("ui.search placeholder", { locale: computedLocale }) + '...'}>
+    <SearchBarView
+      value={filter}
+      setValue={setFilter}
+      placeholder={
+        i18n.t('ui.search placeholder', { locale: computedLocale }) + '...'
+      }>
       {filtered && filtered.length === 0 && (
-        <Text fontSize="sm" style={{ textAlign: 'center', paddingTop: 20 }}>
+        <Text fontSize="$sm" style={{ textAlign: 'center', paddingTop: 20 }}>
           {i18n.t('ui.no contacts found')}
         </Text>
       )}
@@ -198,5 +199,3 @@ const CommunityScreen = () => {
     </SearchBarView>
   );
 };
-
-export default CommunityScreen;

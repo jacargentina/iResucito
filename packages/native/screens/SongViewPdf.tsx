@@ -2,7 +2,7 @@ import * as React from 'react';
 import Pdf from 'react-native-pdf';
 import { View, Dimensions } from 'react-native';
 
-const SongViewPdf = (props: any) =>{
+export const SongViewPdf = (props: any) =>{
   const { uri } = props;
   return (
     <View
@@ -20,5 +20,3 @@ const SongViewPdf = (props: any) =>{
     </View>
   );
 };
-
-export default SongViewPdf;

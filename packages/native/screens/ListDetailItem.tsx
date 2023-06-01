@@ -7,8 +7,7 @@ import {
   HStack,
   Input,
   Pressable,
-} from 'native-base';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+} from '../gluestack';
 import { View } from 'react-native';
 import {
   CompositeNavigationProp,
@@ -21,6 +20,13 @@ import { RootStackParamList } from '../navigation/RootNavigator';
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { ListsStackParamList } from '../navigation/ListsNavigator';
+import {
+  ArrowRight,
+  BookIcon,
+  MusicIcon,
+  SearchIcon,
+  UserIcon,
+} from 'lucide-react-native';
 
 type ListDetailItemNavigationProp = CompositeNavigationProp<
   BottomTabNavigationProp<RootStackParamList, 'SongChooser'>,
@@ -39,11 +45,11 @@ const ListDetailItem = (props: {
   var item: any = null;
   if (['1', '2', '3', 'evangelio'].includes(listKey)) {
     item = (
-      <VStack p="2">
-        <HStack space={1} alignItems="center">
-          <Icon w="10%" size="sm" as={Ionicons} name="book" color="info.500" />
+      <VStack p="$2">
+        <HStack space="$1" alignItems="center">
+          <Icon w="10%" size="sm" as={BookIcon} color="$info500" />
           <Input
-            p="2"
+            p="$2"
             w="90%"
             onChangeText={(text) => {
               useListsStore.getState().setList(listName, listKey, text);
@@ -64,17 +70,11 @@ const ListDetailItem = (props: {
       listKey.includes('encargado'))
   ) {
     item = (
-      <VStack p="2">
-        <HStack space={1} alignItems="center">
-          <Icon
-            w="10%"
-            as={Ionicons}
-            size="md"
-            name="person"
-            color="info.500"
-          />
+      <VStack p="$2">
+        <HStack space="$1" alignItems="center">
+          <Icon w="10%" as={UserIcon} size="md" color="info.500" />
           <Input
-            p="2"
+            p="$2"
             w="85%"
             onChangeText={(text) => {
               useListsStore.getState().setList(listName, listKey, text);
@@ -85,10 +85,9 @@ const ListDetailItem = (props: {
             {...inputProps}
           />
           <Icon
-            as={Ionicons}
+            as={SearchIcon}
             size="md"
-            color="rose.500"
-            name="search-outline"
+            color="$rose500"
             onPress={() =>
               navigation.navigate('ContactChooser', {
                 target: { listName: listName, listKey: listKey },
@@ -100,7 +99,7 @@ const ListDetailItem = (props: {
     );
   } else if (listKey === 'nota') {
     item = (
-      <VStack p="2">
+      <VStack p="$2">
         <TextArea
           onChangeText={(text) => {
             useListsStore.getState().setList(listName, listKey, text);
@@ -120,10 +119,9 @@ const ListDetailItem = (props: {
     var navigateSalmo =
       listText != null ? (
         <Icon
-          as={Ionicons}
+          as={ArrowRight}
           size="md"
-          color="rose.500"
-          name="open-outline"
+          color="$rose500"
           onPress={() =>
             navigation.navigate('SongDetail', {
               song: listText,
@@ -133,7 +131,7 @@ const ListDetailItem = (props: {
       ) : null;
     item = (
       <Pressable
-        p="2"
+        p="$2"
         onPress={() =>
           navigation.navigate('SongChooser', {
             screen: 'Dialog',
@@ -142,15 +140,9 @@ const ListDetailItem = (props: {
             },
           })
         }>
-        <HStack space={1} alignItems="center">
-          <Icon
-            w="10%"
-            as={Ionicons}
-            size="md"
-            name="musical-notes"
-            color="info.500"
-          />
-          <Text w="85%" noOfLines={1}>
+        <HStack space="$1" alignItems="center">
+          <Icon w="10%" as={MusicIcon} size="md" color="$info500" />
+          <Text w="85%" numberOfLines={1}>
             {text}
           </Text>
           {navigateSalmo}
@@ -165,7 +157,7 @@ const ListDetailItem = (props: {
   if (typeof listKey === 'string') {
     var friendlyText = getLocalizedListItem(listKey).toUpperCase();
     separator = (
-      <Text bold p="2" fontSize="sm" bg="gray.100">
+      <Text fontWeight="bold" p="$2" fontSize="$sm" bg="$gray100">
         {friendlyText}
       </Text>
     );

@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const SwipeableRightAction = (props: {
+export const SwipeableRightAction = (props: {
   text: string;
   color: string;
   x: number;
@@ -39,5 +39,3 @@ const SwipeableRightAction = (props: {
     </Animated.View>
   );
 };
-
-export default SwipeableRightAction;

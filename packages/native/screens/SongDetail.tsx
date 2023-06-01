@@ -3,12 +3,12 @@ import { useEffect } from 'react';
 import KeepAwake from 'react-native-keep-awake';
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { useSettingsStore } from '../hooks';
-import SongViewFrame from './SongViewFrame';
-import { SongsStackParamList } from '../navigation/SongsNavigator';
+import { SongViewFrame } from './SongViewFrame';
+import { SongsStackParamList } from '../navigation';
 
 type SongDetailRouteProp = RouteProp<SongsStackParamList, 'SongDetail'>;
 
-const SongDetail = () => {
+export const SongDetail = () => {
   const route = useRoute<SongDetailRouteProp>();
   const { keepAwake } = useSettingsStore();
   const { song } = route.params;
@@ -33,5 +33,3 @@ const SongDetail = () => {
     />
   );
 };
-
-export default SongDetail;

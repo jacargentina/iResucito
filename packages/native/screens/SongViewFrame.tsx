@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { Dimensions, ScrollView } from 'react-native';
-import { Box, HStack, Text, Icon, Button } from 'native-base';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import { Box, HStack, Text, Icon, Button } from '../gluestack';
 import color from 'color';
 import { colors } from '@iresucito/core';
 import i18n from '@iresucito/translations';
 import { useSettingsStore } from '../hooks';
 import { NativeParser, NativeStyles } from '../util';
-import SongViewLines from './SongViewLines';
+import { SongViewLines } from './SongViewLines';
+import { MinusIcon, PlusIcon } from 'lucide-react-native';
 
-const SongViewFrame = (props: any) => {
+export const SongViewFrame = (props: any) => {
   const { zoomLevel } = useSettingsStore();
   const { title, stage, source, text, transportToNote, error, style } = props;
   const backColor = color(colors[stage]);
@@ -78,24 +78,22 @@ const SongViewFrame = (props: any) => {
       </ScrollView>
       {ctrlVisible && (
         <HStack
-          m="2"
+          m="$2"
           h="10%"
           alignItems="center"
           justifyContent="space-between"
           backgroundColor="#efefef">
           <Button onPress={zoomOut} w="20%">
-            <Icon as={Ionicons} name="remove" color="white" />
+            <Icon as={MinusIcon} color="white" />
           </Button>
-          <Text bold fontSize="xl">
+          <Text fontWeight="bold" fontSize="$xl">
             {zoomLevel}
           </Text>
           <Button onPress={zoomIn} w="20%">
-            <Icon as={Ionicons} name="add" color="white" />
+            <Icon as={PlusIcon} color="white" />
           </Button>
         </HStack>
       )}
     </Box>
   );
 };
-
-export default SongViewFrame;

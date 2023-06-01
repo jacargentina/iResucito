@@ -3,13 +3,13 @@ import { useEffect, useMemo } from 'react';
 import { Platform, Linking } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
-import { Icon, useTheme } from 'native-base';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import { Icon } from '../gluestack';
 import SongsNavigator from './SongsNavigator';
 import ListsNavigator from './ListsNavigator';
 import CommunityNavigator from './CommunityNavigator';
 import SettingsNavigator from './SettingsNavigator';
 import { useListsStore } from '../hooks';
+import { config } from '../gluestack-ui.config';
 
 export type MenuParamList = {
   Songs: undefined;
@@ -21,7 +21,7 @@ export type MenuParamList = {
 const Tab = createBottomTabNavigator<MenuParamList>();
 
 const getTabOptions = (
-  iconName: string,
+  IconComponent: any,
   route?: any,
   showTabOnlyOn?: string
 ) => {
@@ -30,8 +30,7 @@ const getTabOptions = (
     tabBarIcon: ({ color }: { color: any }) => {
       return (
         <Icon
-          as={Ionicons}
-          name={iconName}
+          as={IconComponent}
           color={color}
           style={{
             marginTop: 6,
@@ -50,41 +49,40 @@ const getTabOptions = (
   return tabOptions;
 };
 
+var GetScreenOptions = () => {
+  var options = {
+    headerShown: false,
+    tabBarShowLabel: false,
+    tabBarActiveTintColor: config.theme.tokens.colors.rose600,
+    tabBarStyle: {
+      backgroundColor: config.theme.tokens.colors.gray50,
+      borderTopColor: config.theme.tokens.colors.rose300,
+      borderTopWidth: 1,
+    },
+  };
+
+  if (Platform.OS === 'android') {
+    return {
+      tabBarInactiveTintColor: 'gray',
+      pressColor: config.theme.tokens.colors.rose300,
+      iconStyle: {
+        height: 30,
+      },
+      indicatorStyle: {
+        backgroundColor: config.theme.tokens.colors.rose600,
+        height: 3,
+      },
+      showIcon: true,
+      keyboardHidesTabBar: true,
+      ...options,
+    };
+  }
+  return options;
+};
+
 const MenuNavigator = (props: any) => {
-  const { colors } = useTheme();
   const { lists, importList } = useListsStore();
   const { navigation } = props;
-
-  var screenOptions = useMemo(() => {
-    var options = {
-      headerShown: false,
-      tabBarShowLabel: false,
-      tabBarActiveTintColor: colors.rose['600'],
-      tabBarStyle: {
-        backgroundColor: colors.gray['50'],
-        borderTopColor: colors.rose['300'],
-        borderTopWidth: 1,
-      },
-    };
-
-    if (Platform.OS === 'android') {
-      return {
-        tabBarInactiveTintColor: 'gray',
-        pressColor: colors.rose['300'],
-        iconStyle: {
-          height: 30,
-        },
-        indicatorStyle: {
-          backgroundColor: colors.rose['600'],
-          height: 3,
-        },
-        showIcon: true,
-        keyboardHidesTabBar: true,
-        ...options,
-      };
-    }
-    return options;
-  }, [colors]);
 
   useEffect(() => {
     const handler = (event: { url: string }) => {
@@ -100,7 +98,7 @@ const MenuNavigator = (props: any) => {
   }, [lists, importList, navigation]);
 
   return (
-    <Tab.Navigator screenOptions={screenOptions}>
+    <Tab.Navigator screenOptions={GetScreenOptions()}>
       <Tab.Screen
         name="Songs"
         component={SongsNavigator}

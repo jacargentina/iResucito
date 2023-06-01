@@ -1,18 +1,13 @@
 import * as React from 'react';
-import { Badge } from 'native-base';
+import { Badge } from './gluestack';
 import { colors } from '@iresucito/core';
 
 const createBadge = (backgroundColor: string, color: string, text: string) => {
   return (
-    <Badge
-      w="8"
-      h="9"
-      mr="2"
-      p="2"
-      borderRadius={16}
-      bg={backgroundColor}
-      _text={{ color: color, textAlign: 'center' }}>
-      {text}
+    <Badge w="$8" h="$9" mr="$2" p="$2" borderRadius={16} bg={backgroundColor}>
+      <Badge.Text color={color} textAlign="center">
+        {text}
+      </Badge.Text>
     </Badge>
   );
 };
