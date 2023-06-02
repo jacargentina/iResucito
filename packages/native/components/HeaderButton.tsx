@@ -11,6 +11,9 @@ export const HeaderButton = (props: {
 }) => {
   const options = useStackNavOptions();
   const { testID, iconName, onPress } = props;
+  if (!icons[iconName]) {
+    throw Error('No hay icono con nombre ' + iconName);
+  }
   return (
     <Button onPress={onPress}>
       <Icon

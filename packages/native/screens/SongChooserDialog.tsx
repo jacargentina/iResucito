@@ -105,7 +105,7 @@ export const SongChooserDialog = (props: Props) => {
         lazy
         renderLazyPlaceholder={() => {
           return (
-            <Center pt="5">
+            <Center pt="$5">
               <Spinner
                 color="$rose500"
                 // @ts-ignore

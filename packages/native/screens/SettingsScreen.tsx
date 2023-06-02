@@ -118,9 +118,9 @@ export const SettingsScreen = () => {
 
   return (
     <ScrollView ref={ref}>
-      <VStack space="$2" p="$3">
+      <VStack space="sm" p="$3">
         <Text>{i18n.t('settings_title.locale')}</Text>
-        <Text fontSize="$sm" color="$muted500">
+        <Text fontSize="$sm" color="$muted500" mb="$2">
           {i18n.t('settings_note.locale')}
         </Text>
         <Select
@@ -128,9 +128,9 @@ export const SettingsScreen = () => {
           onValueChange={(val) => {
             useSettingsStore.setState({ locale: val });
           }}>
-          <Select.Trigger>
-            <Select.Input placeholder="Select option" />
-            <Select.Icon mr="$3">
+          <Select.Trigger w="100%">
+            <Select.Input />
+            <Select.Icon mr="$2">
               <Icon as={ChevronDownIcon} />
             </Select.Icon>
           </Select.Trigger>
@@ -144,7 +144,7 @@ export const SettingsScreen = () => {
             </Select.Content>
           </Select.Portal>
         </Select>
-        <HStack space="$2" p="$3" justifyContent="center" alignItems="center">
+        <HStack space="sm" p="$3" justifyContent="center" alignItems="center">
           <Icon as={LineChart} size="md" />
           <Text fontSize="$sm" color="$muted500">
             {songsResume}
@@ -152,7 +152,7 @@ export const SettingsScreen = () => {
         </HStack>
       </VStack>
       <HStack
-        space="$2"
+        space="sm"
         p="$3"
         justifyContent="space-between"
         alignItems="center">
@@ -214,8 +214,8 @@ export const SettingsScreen = () => {
         <Text fontSize="$sm" textAlign="center">
           {i18n.t('ui.contribute message')}
         </Text>
-        <Button my="$8" size="sm" variant="outline" onPress={goEditor}>
-          <Icon as={ChromeIcon} />
+        <Button my="$8" size="sm" onPress={goEditor}>
+          <Icon as={ChromeIcon} color="white" mr="$2" />
           <Button.Text>{i18n.t('ui.contribute button')}</Button.Text>
         </Button>
         {settingsExists && (

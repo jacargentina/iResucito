@@ -46,19 +46,19 @@ const ListDetailItem = (props: {
   if (['1', '2', '3', 'evangelio'].includes(listKey)) {
     item = (
       <VStack p="$2">
-        <HStack space="$1" alignItems="center">
-          <Icon w="10%" size="sm" as={BookIcon} color="$info500" />
-          <Input
-            p="$2"
-            w="90%"
-            onChangeText={(text) => {
-              useListsStore.getState().setList(listName, listKey, text);
-            }}
-            value={listText}
-            clearButtonMode="always"
-            autoCorrect={false}
-            {...inputProps}
-          />
+        <HStack space="sm" width="100%" alignItems="center">
+          <Icon w="10%" as={BookIcon} color="$info500" />
+          <Input w="90%">
+            <Input.Input
+              onChangeText={(text) => {
+                useListsStore.getState().setList(listName, listKey, text);
+              }}
+              value={listText}
+              clearButtonMode="always"
+              autoCorrect={false}
+              {...inputProps}
+            />
+          </Input>
         </HStack>
       </VStack>
     );
@@ -71,22 +71,22 @@ const ListDetailItem = (props: {
   ) {
     item = (
       <VStack p="$2">
-        <HStack space="$1" alignItems="center">
-          <Icon w="10%" as={UserIcon} size="md" color="info.500" />
-          <Input
-            p="$2"
-            w="85%"
-            onChangeText={(text) => {
-              useListsStore.getState().setList(listName, listKey, text);
-            }}
-            value={listText}
-            clearButtonMode="always"
-            autoCorrect={false}
-            {...inputProps}
-          />
+        <HStack space="sm" width="100%" alignItems="center">
+          <Icon w="10%" as={UserIcon} color="$info500" />
+          <Input w="84%">
+            <Input.Input
+              onChangeText={(text) => {
+                useListsStore.getState().setList(listName, listKey, text);
+              }}
+              value={listText}
+              clearButtonMode="always"
+              autoCorrect={false}
+              {...inputProps}
+            />
+          </Input>
           <Icon
             as={SearchIcon}
-            size="md"
+            w="10%"
             color="$rose500"
             onPress={() =>
               navigation.navigate('ContactChooser', {
@@ -120,7 +120,6 @@ const ListDetailItem = (props: {
       listText != null ? (
         <Icon
           as={ArrowRight}
-          size="md"
           color="$rose500"
           onPress={() =>
             navigation.navigate('SongDetail', {
@@ -140,8 +139,8 @@ const ListDetailItem = (props: {
             },
           })
         }>
-        <HStack space="$1" alignItems="center">
-          <Icon w="10%" as={MusicIcon} size="md" color="$info500" />
+        <HStack space="sm" width="100%" alignItems="center">
+          <Icon w="10%" as={MusicIcon} color="$info500" />
           <Text w="85%" numberOfLines={1}>
             {text}
           </Text>

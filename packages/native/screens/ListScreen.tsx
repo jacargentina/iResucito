@@ -91,13 +91,13 @@ const SwipeableRow = (props: { item: ListForUI }) => {
           });
         }}>
         <HStack
-          space="$2"
+          space="sm"
           p="$3"
           alignItems="center"
           borderBottomWidth={1}
           borderBottomColor="$muted200">
-          <Icon as={BookmarkIcon} size="3xl" color="$rose500" />
-          <VStack space="$1">
+          <Icon as={BookmarkIcon} size="50" color="$rose500" />
+          <VStack space="xsm">
             <Text fontWeight="bold" fontSize="$xl">
               {item.name}
             </Text>
@@ -136,7 +136,7 @@ export const ListScreen = () => {
     navigation.setOptions({
       headerRight: () => (
         <HeaderButton
-          iconName="plus"
+          iconName="PlusIcon"
           onPress={() => setShowActionsheet(true)}
         />
       ),

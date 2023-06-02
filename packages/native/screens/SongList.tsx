@@ -135,7 +135,7 @@ export const SongList = (props: {
         <HStack>
           {enabled && <HeaderButton iconName="x-circle" onPress={disable} />}
           <HeaderButton
-            iconName="file-text"
+            iconName="FileTextIcon"
             onPress={async () => {
               if (enabled) {
                 if (selection.length > 0) {

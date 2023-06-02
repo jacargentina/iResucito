@@ -15,7 +15,7 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import Highlighter from '@javier.alejandro.castro/react-native-highlight-words';
 import Collapsible from 'react-native-collapsible';
-import { Rating } from 'react-native-ratings';
+import { AirbnbRating } from 'react-native-ratings';
 import badges from '../badges';
 import i18n from '@iresucito/translations';
 import { Song } from '@iresucito/core';
@@ -197,13 +197,16 @@ export const SongListItem = (props: {
         </Pressable>
         {song.notTranslated && <NoLocaleWarning />}
         {!enabled && (
-          <Rating
-            ratingCount={5}
-            startingValue={song.rating}
+          <AirbnbRating
+            showRating={false}
+            defaultRating={song.rating}
+            selectedColor={config.theme.tokens.colors.rose400}
+            unSelectedColor={config.theme.tokens.colors.rose100}
+            ratingContainerStyle={{ paddingVertical: 5 }}
+            size={25}
             onFinishRating={(position: number) =>
               setSongSetting(song.key, i18n.locale, 'rating', position)
             }
-            ratingColor={config.theme.tokens.colors.rose500}
           />
         )}
       </VStack>

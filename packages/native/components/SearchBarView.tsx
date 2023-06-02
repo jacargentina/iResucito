@@ -26,7 +26,7 @@ export const DebouncedInput = (props: {
   }, [value]);
 
   return (
-    <Input isFullWidth>
+    <Input width="100%">
       <Input.Icon pl="$2">
         <Icon as={SearchIcon} color="$primary500" />
       </Input.Icon>

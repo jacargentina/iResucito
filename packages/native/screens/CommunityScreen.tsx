@@ -23,6 +23,7 @@ import { ContactListItem } from './ContactListItem';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { Contact } from 'react-native-contacts';
 import { config } from '../gluestack-ui.config';
+import { UsersIcon } from 'lucide-react-native';
 
 const SwipeableRow = (props: { item: any }) => {
   const { update, addOrRemove } = useBrothersStore();
@@ -159,7 +160,7 @@ export const CommunityScreen = () => {
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <HeaderButton iconName="plus" onPress={contactImport} />
+        <HeaderButton iconName="PlusIcon" onPress={contactImport} />
       ),
     });
   });
@@ -167,7 +168,7 @@ export const CommunityScreen = () => {
   if (contacts.length === 0 && !filter) {
     return (
       <CallToAction
-        icon="users"
+        icon={UsersIcon}
         title={i18n.t('call_to_action_title.community list')}
         text={i18n.t('call_to_action_text.community list')}
         buttonHandler={contactImport}

@@ -49,12 +49,12 @@ export const ModalView = (props: any) => {
             {childs}
           </KeyboardAvoidingView>
         )}>
-        <HStack my={2} justifyContent="space-between">
+        <HStack my="$1" justifyContent="space-between" >
           <Box flex={1}>{left}</Box>
           {right || defaultClose}
         </HStack>
         {title && (
-          <Center py="2">
+          <Center py="$2">
             <Text fontWeight="bold">{title}</Text>
           </Center>
         )}

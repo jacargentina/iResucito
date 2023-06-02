@@ -58,7 +58,7 @@ export const SongViewFrame = (props: any) => {
           style={{
             minWidth: minWidth,
           }}>
-          <Box px="2">
+          <Box px="$2">
             <Text onPress={toggleControls} style={titleStyle}>
               {title}
             </Text>

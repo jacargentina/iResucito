@@ -81,7 +81,9 @@ export const ListNameDialog = () => {
           }}
           isDisabled={!actionEnabled}
           onPress={runActionOnList}>
-          {action === 'create' ? i18n.t('ui.create') : i18n.t('ui.rename')}
+          <Button.Text>
+            {action === 'create' ? i18n.t('ui.create') : i18n.t('ui.rename')}
+          </Button.Text>
         </Button>
       }
       left={
@@ -93,12 +95,12 @@ export const ListNameDialog = () => {
             alignSelf: 'flex-start',
           }}
           onPress={() => navigation.goBack()}>
-          {i18n.t('ui.cancel')}
+          <Button.Text>{i18n.t('ui.cancel')}</Button.Text>
         </Button>
       }>
-      <Box px="$5">
+      <Box p="$4">
         <FormControl mb="$5" isInvalid={!actionEnabled}>
-          <Input size="lg">
+          <Input width="100%">
             <Input.Input
               autoFocus
               value={name}
@@ -106,12 +108,12 @@ export const ListNameDialog = () => {
               clearButtonMode="always"
               autoCorrect={false}
             />
-            <FormControl.Error>
-              <FormControl.Error.Text>
-                {disabledReasonText}
-              </FormControl.Error.Text>
-            </FormControl.Error>
           </Input>
+          <FormControl.Error>
+            <FormControl.Error.Text>
+              {disabledReasonText}
+            </FormControl.Error.Text>
+          </FormControl.Error>
         </FormControl>
       </Box>
     </ModalView>

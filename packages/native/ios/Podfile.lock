@@ -329,7 +329,7 @@ PODS:
   - React-jsinspector (0.71.8)
   - React-logger (0.71.8):
     - glog
-  - react-native-blob-util (0.17.3):
+  - react-native-blob-util (0.18.2):
     - React-Core
   - react-native-contacts (7.0.5):
     - React-Core
@@ -702,7 +702,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 747911ab5921641b4ed7e4900065896597142125
   React-jsinspector: c712f9e3bb9ba4122d6b82b4f906448b8a281580
   React-logger: 342f358b8decfbf8f272367f4eacf4b6154061be
-  react-native-blob-util: 99f4d79189252f597fe0d810c57a3733b1b1dea6
+  react-native-blob-util: b22012c8ccb0357dfdbcf0b2a33f68b6ab54ac42
   react-native-contacts: 0aa99963d8f29099d4725cd0d2f8b6ef5f0d9a2d
   react-native-keep-awake: afad8a51dfef9fe9655a6344771be32c8596d774
   react-native-pager-view: 0ccb8bf60e2ebd38b1f3669fa3650ecce81db2df

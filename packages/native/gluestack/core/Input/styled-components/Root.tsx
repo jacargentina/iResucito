@@ -6,7 +6,7 @@ export default styled(
   {
     'borderWidth': 1,
     'borderColor': '$backgroundLight300',
-    'borderRadius': '$sm',
+    'borderRadius': 0, // '$sm'
     'w': 200,
     'flexDirection': 'row',
     'overflow': 'hidden',
