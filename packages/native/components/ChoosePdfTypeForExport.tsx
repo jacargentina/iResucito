@@ -25,14 +25,20 @@ export const ChoosePdfTypeForExport = (props: {
 
   return (
     <Actionsheet isOpen={isOpen} onClose={onClose}>
-      <Actionsheet.Content>
+      <Actionsheet.Backdrop />
+      <Actionsheet.Content pb="$8">
+        <Actionsheet.DragIndicatorWrapper>
+          <Actionsheet.DragIndicator />
+        </Actionsheet.DragIndicatorWrapper>
         <Text fontWeight="bold">{i18n.t('ui.export.type')}</Text>
         <Actionsheet.Item
           onPress={() => {
             onClose();
             useSongsSelection.getState().enable();
           }}>
-          {i18n.t('pdf_export_options.selected songs')}
+          <Actionsheet.ItemText>
+            {i18n.t('pdf_export_options.selected songs')}
+          </Actionsheet.ItemText>
         </Actionsheet.Item>
         <Actionsheet.Item
           onPress={async () => {
@@ -68,7 +74,9 @@ export const ChoosePdfTypeForExport = (props: {
             });
             setLoading({ isLoading: false, text: '' });
           }}>
-          {i18n.t('pdf_export_options.complete book')}
+          <Actionsheet.ItemText>
+            {i18n.t('pdf_export_options.complete book')}
+          </Actionsheet.ItemText>
         </Actionsheet.Item>
       </Actionsheet.Content>
     </Actionsheet>

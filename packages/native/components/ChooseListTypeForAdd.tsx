@@ -36,13 +36,19 @@ export const ChooseListTypeForAdd = (props: {
         </Actionsheet.DragIndicatorWrapper>
         <Text fontWeight="bold">{i18n.t('ui.lists.type')}</Text>
         <Actionsheet.Item onPress={() => nav('eucaristia')}>
-          <Actionsheet.ItemText>{i18n.t('list_type.eucharist')}</Actionsheet.ItemText>
+          <Actionsheet.ItemText>
+            {i18n.t('list_type.eucharist')}
+          </Actionsheet.ItemText>
         </Actionsheet.Item>
         <Actionsheet.Item onPress={() => nav('palabra')}>
-          <Actionsheet.ItemText>{i18n.t('list_type.word')}</Actionsheet.ItemText>
+          <Actionsheet.ItemText>
+            {i18n.t('list_type.word')}
+          </Actionsheet.ItemText>
         </Actionsheet.Item>
         <Actionsheet.Item onPress={() => nav('libre')}>
-          <Actionsheet.ItemText>{i18n.t('list_type.other')}</Actionsheet.ItemText>
+          <Actionsheet.ItemText>
+            {i18n.t('list_type.other')}
+          </Actionsheet.ItemText>
         </Actionsheet.Item>
       </Actionsheet.Content>
     </Actionsheet>

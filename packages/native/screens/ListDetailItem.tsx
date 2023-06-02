@@ -99,15 +99,17 @@ const ListDetailItem = (props: {
     );
   } else if (listKey === 'nota') {
     item = (
-      <VStack p="$2">
-        <TextArea
-          onChangeText={(text) => {
-            useListsStore.getState().setList(listName, listKey, text);
-          }}
-          value={listText}
-          autoCorrect={false}
-          {...inputProps}
-        />
+      <VStack p="$2" pb="$8">
+        <TextArea>
+          <TextArea.Input
+            onChangeText={(text) => {
+              useListsStore.getState().setList(listName, listKey, text);
+            }}
+            value={listText}
+            autoCorrect={false}
+            {...inputProps}
+          />
+        </TextArea>
       </VStack>
     );
   } else {

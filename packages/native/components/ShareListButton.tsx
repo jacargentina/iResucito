@@ -20,27 +20,37 @@ export const ShareListButton = () => {
   return (
     <>
       <Actionsheet isOpen={showActionsheet} onClose={handleClose}>
-        <Actionsheet.Content>
+        <Actionsheet.Backdrop />
+        <Actionsheet.Content pb="$8">
+          <Actionsheet.DragIndicatorWrapper>
+            <Actionsheet.DragIndicator />
+          </Actionsheet.DragIndicatorWrapper>
           <Actionsheet.Item
             onPress={() => {
               handleClose();
               shareList(listName, 'native');
             }}>
-            {i18n.t('list_export_options.native')}
+            <Actionsheet.ItemText>
+              {i18n.t('list_export_options.native')}
+            </Actionsheet.ItemText>
           </Actionsheet.Item>
           <Actionsheet.Item
             onPress={() => {
               handleClose();
               shareList(listName, 'text');
             }}>
-            {i18n.t('list_export_options.plain text')}
+            <Actionsheet.ItemText>
+              {i18n.t('list_export_options.plain text')}
+            </Actionsheet.ItemText>
           </Actionsheet.Item>
           <Actionsheet.Item
             onPress={() => {
               handleClose();
               shareList(listName, 'pdf');
             }}>
-            {i18n.t('list_export_options.pdf file')}
+            <Actionsheet.ItemText>
+              {i18n.t('list_export_options.pdf file')}
+            </Actionsheet.ItemText>
           </Actionsheet.Item>
         </Actionsheet.Content>
       </Actionsheet>
