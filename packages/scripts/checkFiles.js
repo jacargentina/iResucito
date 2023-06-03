@@ -17,6 +17,7 @@ localeFolders.forEach((dirent) => {
   }
 });
 
+var total = 0;
 Object.entries(SongsIndex).forEach(([key, value]) => {
   Object.entries(value.files).forEach(([locale, name]) => {
     var fileName = `${name}.txt`;
@@ -30,7 +31,10 @@ Object.entries(SongsIndex).forEach(([key, value]) => {
     if (dups.length > 1) {
       console.log(`Key ${key}, duplicados!`, dups);
     }
+    total++;
   });
 });
+
+console.log(`Procesados ${total} archivos`);
 
 process.exit();
