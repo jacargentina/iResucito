@@ -10,6 +10,7 @@ import {
 import path from 'path';
 import util from 'util';
 import fs from 'fs';
+import os from 'os';
 import { Dropbox } from 'dropbox';
 import { execSync } from 'child_process';
 import { SongIndexPatch } from './common';
@@ -153,7 +154,12 @@ const applyPatch = async (local_file_path: string = null) => {
   var dropbox: Dropbox = undefined;
   const file = 'SongsIndexPatch.json';
 
-  if (local_file_path === null) {
+  if (local_file_path?.endsWith('.json')) {
+    console.log(`Con archivo local de parametro: ${local_file_path}`);
+    const data = fs.readFileSync(local_file_path, { encoding: 'utf8' });
+    patch = JSON.parse(data) as SongIndexPatch;
+  } else {
+    console.log('Sin archivo local en parametro. Descargando de Dropbox...');
     if (!process.env.DROPBOX_PASSWORD)
       throw new Error(
         'DROPBOX_PASSWORD no definida. No se puede conectar con Dropbox'
@@ -168,9 +174,9 @@ const applyPatch = async (local_file_path: string = null) => {
     });
     const meta = download.result;
     const data = (meta as any).fileBinary.toString();
-    patch = JSON.parse(data) as SongIndexPatch;
-  } else {
-    const data = fs.readFileSync(local_file_path, { encoding: 'utf8' });
+    const tempPath = path.join(os.tmpdir(), file);
+    fs.writeFileSync(tempPath, data);
+    console.log(`Descargado en ${tempPath}`);
     patch = JSON.parse(data) as SongIndexPatch;
   }
 
