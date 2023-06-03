@@ -70,7 +70,7 @@ export default styled(
       variant: {
         default: {
           '_input': {
-            outlineWidth: '0',
+            //outlineWidth: '0',
             outline: 'none',
           },
           ':invalid': {

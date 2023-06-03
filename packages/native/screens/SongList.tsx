@@ -133,7 +133,7 @@ export const SongList = (props: {
     navigation.setOptions({
       headerRight: () => (
         <HStack>
-          {enabled && <HeaderButton iconName="x-circle" onPress={disable} />}
+          {enabled && <HeaderButton iconName="XCircleIcon" onPress={disable} />}
           <HeaderButton
             iconName="FileTextIcon"
             onPress={async () => {
@@ -180,7 +180,7 @@ export const SongList = (props: {
         </HStack>
       ),
     });
-  }, [navigation, setShowActionsheet]);
+  }, [navigation, setShowActionsheet, enabled, selection]);
 
   useEffect(() => {
     if (search.length > 0 && isFocused && textFilter && listRef.current) {

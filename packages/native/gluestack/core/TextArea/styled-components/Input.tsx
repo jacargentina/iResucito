@@ -6,7 +6,7 @@ export default styled(
   {
     p: '$2',
     //@ts-ignore
-    multiline: true,
+    //multiline: true,
     color: '$textLight900',
     textAlignVertical: 'top',
     flex: 1,

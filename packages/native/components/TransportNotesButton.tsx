@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Icon, Badge } from '../gluestack';
+import { Icon, Badge, Button } from '../gluestack';
 import {
   Menu,
   MenuOptions,
@@ -75,15 +75,9 @@ export const TransportNotesButton = () => {
     song.transportTo === null ||
     song.transportTo === undefined ||
     song.transportTo === '' ? (
-      <Icon
-        as={MusicIcon}
-        size="xl"
-        style={{
-          marginTop: 4,
-          marginRight: 8,
-        }}
-        color={options.headerTitleStyle.color}
-      />
+      <Button>
+        <Icon as={MusicIcon} color={options.headerTitleStyle.color} />
+      </Button>
     ) : (
       <Badge
         bg="$rose500"

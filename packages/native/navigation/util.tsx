@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { HStack } from '../gluestack';
-import ViewPdfButton from '../components/ViewPdfButton';
 import {
+  ViewPdfButton,
   PrintPDFButton,
   SharePDFButton,
   TransportNotesButton,
@@ -12,7 +12,7 @@ export const getSongDetailOptions = (song: Song) => {
   return {
     title: song ? song.titulo : 'Salmo',
     headerRight: () => (
-      <HStack m="$1">
+      <HStack>
         <ViewPdfButton />
         <TransportNotesButton />
       </HStack>
@@ -24,7 +24,7 @@ export const getPdfViewerOptions = (title: string) => {
   return {
     title: `PDF - ${title}`,
     headerRight: () => (
-      <HStack m="$1">
+      <HStack>
         <SharePDFButton />
         <PrintPDFButton />
       </HStack>

@@ -21,13 +21,13 @@ import i18n from '@iresucito/translations';
 import badges from './badges';
 import { generateListPDF } from './pdf';
 import { create } from 'zustand';
+import { immer } from 'zustand/middleware/immer';
 import {
   createJSONStorage,
   persist,
   subscribeWithSelector,
 } from 'zustand/middleware';
 import { shallow } from 'zustand/shallow';
-import { produce } from 'immer';
 import {
   getDefaultLocale,
   ordenClasificacion,
@@ -99,25 +99,33 @@ type SelectionStore = {
   toggle: (key: string) => void;
 };
 
-export const useSongsSelection = create<SelectionStore>((set, get) => ({
-  selection: [],
-  enabled: false,
-  enable: () => {
-    set((state) => ({ selection: [], enabled: true }));
-  },
-  disable: () => {
-    set((state) => ({ selection: [], enabled: false }));
-  },
-  toggle: (key: string) => {
-    var { selection, enabled } = get();
-    if (selection.indexOf(key) > -1) {
-      selection.splice(selection.indexOf(key), 1);
-    } else {
-      selection.push(key);
-    }
-    set((state) => ({ selection, enabled }));
-  },
-}));
+export const useSongsSelection = create(
+  immer<SelectionStore>((set) => ({
+    selection: [],
+    enabled: false,
+    enable: () => {
+      set((state) => {
+        state.selection = [];
+        state.enabled = true;
+      });
+    },
+    disable: () => {
+      set((state) => {
+        state.selection = [];
+        state.enabled = false;
+      });
+    },
+    toggle: (key: string) => {
+      set((state) => {
+        if (state.selection.indexOf(key) > -1) {
+          state.selection.splice(state.selection.indexOf(key), 1);
+        } else {
+          state.selection.push(key);
+        }
+      });
+    },
+  }))
+);
 
 type LibreList = {
   type: 'libre';
@@ -256,114 +264,100 @@ const getItemForShare = (
 export const useListsStore = create<ListsStore>()(
   subscribeWithSelector(
     persist(
-      (set, get) => ({
+      immer((set, get) => ({
         lists: {},
         lists_ui: [],
         add: (listName: string, type: ListType) => {
-          set(
-            produce((state: ListsStore) => {
-              switch (type) {
-                case 'libre':
-                  state.lists[listName] = { type, version: 1, items: [] };
-                  break;
-                case 'palabra':
-                  state.lists[listName] = {
-                    type,
-                    version: 1,
-                    ambiental: null,
-                    entrada: null,
-                    '1-monicion': null,
-                    '1': null,
-                    '1-salmo': null,
-                    '2-monicion': null,
-                    '2': null,
-                    '2-salmo': null,
-                    '3-monicion': null,
-                    '3': null,
-                    '3-salmo': null,
-                    'evangelio-monicion': null,
-                    evangelio: null,
-                    salida: null,
-                    nota: null,
-                  };
-                  break;
-                case 'eucaristia':
-                  state.lists[listName] = {
-                    type,
-                    version: 1,
-                    ambiental: null,
-                    entrada: null,
-                    '1-monicion': null,
-                    '1': null,
-                    '2-monicion': null,
-                    '2': null,
-                    'evangelio-monicion': null,
-                    evangelio: null,
-                    'oracion-universal': null,
-                    paz: null,
-                    'comunion-pan': null,
-                    'comunion-caliz': null,
-                    salida: null,
-                    'encargado-pan': null,
-                    'encargado-flores': null,
-                    nota: null,
-                  };
-                  break;
-              }
-            })
-          );
+          set((state: ListsStore) => {
+            switch (type) {
+              case 'libre':
+                state.lists[listName] = { type, version: 1, items: [] };
+                break;
+              case 'palabra':
+                state.lists[listName] = {
+                  type,
+                  version: 1,
+                  ambiental: null,
+                  entrada: null,
+                  '1-monicion': null,
+                  '1': null,
+                  '1-salmo': null,
+                  '2-monicion': null,
+                  '2': null,
+                  '2-salmo': null,
+                  '3-monicion': null,
+                  '3': null,
+                  '3-salmo': null,
+                  'evangelio-monicion': null,
+                  evangelio: null,
+                  salida: null,
+                  nota: null,
+                };
+                break;
+              case 'eucaristia':
+                state.lists[listName] = {
+                  type,
+                  version: 1,
+                  ambiental: null,
+                  entrada: null,
+                  '1-monicion': null,
+                  '1': null,
+                  '2-monicion': null,
+                  '2': null,
+                  'evangelio-monicion': null,
+                  evangelio: null,
+                  'oracion-universal': null,
+                  paz: null,
+                  'comunion-pan': null,
+                  'comunion-caliz': null,
+                  salida: null,
+                  'encargado-pan': null,
+                  'encargado-flores': null,
+                  nota: null,
+                };
+                break;
+            }
+          });
         },
         rename: (listName: string, newName: string) => {
-          set(
-            produce((state: ListsStore) => {
-              const list = state.lists[listName];
-              delete state.lists[listName];
-              state.lists[newName] = list;
-            })
-          );
+          set((state: ListsStore) => {
+            const list = state.lists[listName];
+            delete state.lists[listName];
+            state.lists[newName] = list;
+          });
         },
         remove: (listName: string) => {
-          set(
-            produce((state: ListsStore) => {
-              delete state.lists[listName];
-            })
-          );
+          set((state: ListsStore) => {
+            delete state.lists[listName];
+          });
         },
         setList: (
           listName: string,
           listKey: string | number,
           listValue: any
         ) => {
-          set(
-            produce((state: ListsStore) => {
-              const targetList = state.lists[listName];
-              if (listValue !== undefined) {
-                if (typeof listKey === 'string') {
-                  targetList[listKey] = listValue;
-                } else if (
-                  typeof listKey === 'number' &&
-                  'items' in targetList
-                ) {
-                  var isPresent = targetList.items.find(
-                    (s: any) => s === listValue
-                  );
-                  if (isPresent) {
-                    return;
-                  }
-                  targetList.items[listKey] = listValue;
+          set((state: ListsStore) => {
+            const targetList = state.lists[listName];
+            if (listValue !== undefined) {
+              if (typeof listKey === 'string') {
+                targetList[listKey] = listValue;
+              } else if (typeof listKey === 'number' && 'items' in targetList) {
+                var isPresent = targetList.items.find(
+                  (s: any) => s === listValue
+                );
+                if (isPresent) {
+                  return;
                 }
-              } else {
-                if (typeof listKey === 'string') {
-                  targetList[listKey] = undefined;
-                } else if (
-                  typeof listKey === 'number' &&
-                  'items' in targetList
-                ) {
-                  targetList.items.splice(listKey, 1);
-                }
+                targetList.items[listKey] = listValue;
               }
-            })
-          );
+            } else {
+              if (typeof listKey === 'string') {
+                targetList[listKey] = undefined;
+              } else if (typeof listKey === 'number' && 'items' in targetList) {
+                targetList.items.splice(listKey, 1);
+              }
+            }
+          });
         },
         importList: async (listPath: string) => {
           const path = decodeURI(listPath);
@@ -479,122 +473,120 @@ export const useListsStore = create<ListsStore>()(
           }
         },
         load_ui: () => {
-          set(
-            produce((state: ListsStore) => {
-              var { songs } = useSongsStore.getState();
-              state.lists_ui = Object.keys(state.lists).map((listName) => {
-                var datalist = state.lists[listName];
-                switch (datalist.type) {
-                  case 'libre':
-                    var l = datalist as LibreList;
-                    var libre: LibreListForUI = {
-                      name: listName,
-                      version: datalist.version,
-                      type: datalist.type,
-                      localeType: getLocalizedListType(
-                        datalist.type,
-                        i18n.locale
-                      ),
-                      items: l.items.map((key) => {
-                        return songs?.find((s) => s.key === key) as Song;
-                      }),
-                    };
-                    return libre;
-                  case 'palabra':
-                    var p = datalist as PalabraList;
-                    var palabra: PalabraListForUI = {
-                      name: listName,
-                      version: datalist.version,
-                      type: datalist.type,
-                      localeType: getLocalizedListType(
-                        datalist.type,
-                        i18n.locale
-                      ),
-                      ambiental: datalist.ambiental,
-                      entrada:
-                        datalist.entrada != null
-                          ? (songs?.find((s) => s.key === p.entrada) as Song)
-                          : null,
-                      '1-monicion': datalist['1-monicion'],
-                      '1': datalist['1'],
-                      '1-salmo':
-                        datalist['1-salmo'] != null
-                          ? (songs?.find((s) => s.key === p['1-salmo']) as Song)
-                          : null,
-                      '2-monicion': datalist['2-monicion'],
-                      '2': datalist['2'],
-                      '2-salmo':
-                        datalist['2-salmo'] != null
-                          ? (songs?.find((s) => s.key === p['2-salmo']) as Song)
-                          : null,
-                      '3-monicion': datalist['3-monicion'],
-                      '3': datalist['3'],
-                      '3-salmo':
-                        datalist['3-salmo'] != null
-                          ? (songs?.find((s) => s.key === p['3-salmo']) as Song)
-                          : null,
-                      'evangelio-monicion': datalist['evangelio-monicion'],
-                      evangelio: datalist.evangelio,
-                      salida:
-                        datalist.salida != null
-                          ? (songs?.find((s) => s.key === p.salida) as Song)
-                          : null,
-                      nota: datalist.nota,
-                    };
-                    return palabra;
-                  case 'eucaristia':
-                    var e = datalist as EucaristiaList;
-                    var eucaristia: EucaristiaListForUI = {
-                      name: listName,
-                      version: datalist.version,
-                      type: datalist.type,
-                      localeType: getLocalizedListType(
-                        datalist.type,
-                        i18n.locale
-                      ),
-                      ambiental: datalist.ambiental,
-                      entrada:
-                        datalist.entrada != null
-                          ? (songs?.find((s) => s.key === e.entrada) as Song)
-                          : null,
-                      '1-monicion': datalist['1-monicion'],
-                      '1': datalist['1'],
-                      '2-monicion': datalist['2-monicion'],
-                      '2': datalist['2'],
-                      'evangelio-monicion': datalist['evangelio-monicion'],
-                      evangelio: datalist.evangelio,
-                      'oracion-universal': datalist['oracion-universal'],
-                      'comunion-pan':
-                        datalist['comunion-pan'] != null
-                          ? (songs?.find(
+          set((state: ListsStore) => {
+            var { songs } = useSongsStore.getState();
+            state.lists_ui = Object.keys(state.lists).map((listName) => {
+              var datalist = state.lists[listName];
+              switch (datalist.type) {
+                case 'libre':
+                  var l = datalist as LibreList;
+                  var libre: LibreListForUI = {
+                    name: listName,
+                    version: datalist.version,
+                    type: datalist.type,
+                    localeType: getLocalizedListType(
+                      datalist.type,
+                      i18n.locale
+                    ),
+                    items: l.items.map((key) => {
+                      return songs?.find((s) => s.key === key) as Song;
+                    }),
+                  };
+                  return libre;
+                case 'palabra':
+                  var p = datalist as PalabraList;
+                  var palabra: PalabraListForUI = {
+                    name: listName,
+                    version: datalist.version,
+                    type: datalist.type,
+                    localeType: getLocalizedListType(
+                      datalist.type,
+                      i18n.locale
+                    ),
+                    ambiental: datalist.ambiental,
+                    entrada:
+                      datalist.entrada != null
+                        ? (songs?.find((s) => s.key === p.entrada) as Song)
+                        : null,
+                    '1-monicion': datalist['1-monicion'],
+                    '1': datalist['1'],
+                    '1-salmo':
+                      datalist['1-salmo'] != null
+                        ? (songs?.find((s) => s.key === p['1-salmo']) as Song)
+                        : null,
+                    '2-monicion': datalist['2-monicion'],
+                    '2': datalist['2'],
+                    '2-salmo':
+                      datalist['2-salmo'] != null
+                        ? (songs?.find((s) => s.key === p['2-salmo']) as Song)
+                        : null,
+                    '3-monicion': datalist['3-monicion'],
+                    '3': datalist['3'],
+                    '3-salmo':
+                      datalist['3-salmo'] != null
+                        ? (songs?.find((s) => s.key === p['3-salmo']) as Song)
+                        : null,
+                    'evangelio-monicion': datalist['evangelio-monicion'],
+                    evangelio: datalist.evangelio,
+                    salida:
+                      datalist.salida != null
+                        ? (songs?.find((s) => s.key === p.salida) as Song)
+                        : null,
+                    nota: datalist.nota,
+                  };
+                  return palabra;
+                case 'eucaristia':
+                  var e = datalist as EucaristiaList;
+                  var eucaristia: EucaristiaListForUI = {
+                    name: listName,
+                    version: datalist.version,
+                    type: datalist.type,
+                    localeType: getLocalizedListType(
+                      datalist.type,
+                      i18n.locale
+                    ),
+                    ambiental: datalist.ambiental,
+                    entrada:
+                      datalist.entrada != null
+                        ? (songs?.find((s) => s.key === e.entrada) as Song)
+                        : null,
+                    '1-monicion': datalist['1-monicion'],
+                    '1': datalist['1'],
+                    '2-monicion': datalist['2-monicion'],
+                    '2': datalist['2'],
+                    'evangelio-monicion': datalist['evangelio-monicion'],
+                    evangelio: datalist.evangelio,
+                    'oracion-universal': datalist['oracion-universal'],
+                    'comunion-pan':
+                      datalist['comunion-pan'] != null
+                        ? (songs?.find(
                             (s) => s.key === e['comunion-pan']
                           ) as Song)
-                          : null,
-                      'comunion-caliz':
-                        datalist['comunion-caliz'] != null
-                          ? (songs?.find(
+                        : null,
+                    'comunion-caliz':
+                      datalist['comunion-caliz'] != null
+                        ? (songs?.find(
                             (s) => s.key === e['comunion-caliz']
                           ) as Song)
-                          : null,
-                      paz:
-                        datalist.paz != null
-                          ? (songs?.find((s) => s.key === e.paz) as Song)
-                          : null,
-                      salida:
-                        datalist.salida != null
-                          ? (songs?.find((s) => s.key === e.salida) as Song)
-                          : null,
-                      'encargado-pan': datalist['encargado-pan'],
-                      'encargado-flores': datalist['encargado-flores'],
-                      nota: datalist.nota,
-                    };
-                    return eucaristia;
-                }
-              });
-            })
-          );
+                        : null,
+                    paz:
+                      datalist.paz != null
+                        ? (songs?.find((s) => s.key === e.paz) as Song)
+                        : null,
+                    salida:
+                      datalist.salida != null
+                        ? (songs?.find((s) => s.key === e.salida) as Song)
+                        : null,
+                    'encargado-pan': datalist['encargado-pan'],
+                    'encargado-flores': datalist['encargado-flores'],
+                    nota: datalist.nota,
+                  };
+                  return eucaristia;
+              }
+            });
+          });
         },
-      }),
+      })),
       {
         name: 'lists',
         storage: createJSONStorage(() => AsyncStorage),
@@ -631,29 +623,36 @@ type BrothersStore = {
 
 export const useBrothersStore = create<BrothersStore>()(
   persist(
-    (set, get) => ({
+    immer((set, get) => ({
       deviceContacts: [],
       contacts: [],
       deviceContacts_loaded: false,
       populateDeviceContacts: async (reqPerm: boolean) => {
         const hasPermission = await checkContactsPermission(reqPerm);
         const devCts = hasPermission ? await Contacts.getAll() : [];
-        console.log(`brothersStore loading device contacts (permission = ${hasPermission}, count = ${devCts.length})`);
-        set((state) => ({ deviceContacts: devCts, deviceContacts_loaded: hasPermission }));
+        console.log(
+          `brothersStore loading device contacts (permission = ${hasPermission}, count = ${devCts.length})`
+        );
+        set((state) => ({
+          deviceContacts: devCts,
+          deviceContacts_loaded: hasPermission,
+        }));
         return get().contacts;
       },
       update: (id: string, item: Contacts.Contact) => {
-        set(produce((state: BrothersStore) => {
+        set((state: BrothersStore) => {
           var brother = state.contacts.find((c) => c.recordID === id);
           if (brother) {
             var idx = state.contacts.indexOf(brother);
             state.contacts[idx] = Object.assign(brother, item);
           }
-        }))
+        });
       },
       addOrRemove: (contact: Contacts.Contact) => {
-        set(produce((state: BrothersStore) => {
-          var idx = state.contacts.findIndex((c) => c.recordID === contact.recordID);
+        set((state: BrothersStore) => {
+          var idx = state.contacts.findIndex(
+            (c) => c.recordID === contact.recordID
+          );
           // Ya esta importado
           if (idx !== -1) {
             state.contacts = state.contacts.filter((l, i) => i !== idx);
@@ -661,10 +660,10 @@ export const useBrothersStore = create<BrothersStore>()(
             var newBrother: BrotherContact = { s: false, ...contact };
             state.contacts.push(newBrother);
           }
-        }))
+        });
       },
       refreshContacts: async () => {
-        set(produce(async (state: BrothersStore) => {
+        set(async (state: BrothersStore) => {
           try {
             const devCts = await get().populateDeviceContacts(false);
             state.contacts.forEach((c, idx) => {
@@ -674,11 +673,10 @@ export const useBrothersStore = create<BrothersStore>()(
                 state.contacts[idx] = devContact as BrotherContact;
               }
             });
-          } catch {
-          }
-        }));
+          } catch {}
+        });
       },
-    }),
+    })),
     {
       name: 'contacts',
       storage: createJSONStorage(() => AsyncStorage),

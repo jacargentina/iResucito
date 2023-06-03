@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Keyboard } from 'react-native';
-import { Icon, Actionsheet } from '../gluestack';
+import { Actionsheet } from '../gluestack';
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { useListsStore } from '../hooks';
 import { useStackNavOptions, ListsStackParamList } from '../navigation';
 import i18n from '@iresucito/translations';
-import { ShareIcon } from 'lucide-react-native';
+import { HeaderButton } from './HeaderButton';
 
 type ListDetailRouteProp = RouteProp<ListsStackParamList, 'ListDetail'>;
 
@@ -54,14 +54,8 @@ export const ShareListButton = () => {
           </Actionsheet.Item>
         </Actionsheet.Content>
       </Actionsheet>
-      <Icon
-        as={ShareIcon}
-        size="xl"
-        style={{
-          marginTop: 4,
-          marginRight: 12,
-        }}
-        color={options.headerTitleStyle.color}
+      <HeaderButton
+        iconName="ShareIcon"
         onPress={() => {
           Keyboard.dismiss();
           setShowActionsheet(true);

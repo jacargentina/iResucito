@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Icon } from '../gluestack';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import i18n from '@iresucito/translations';
 import {
@@ -9,13 +8,9 @@ import {
 } from '@iresucito/core';
 import { NativeParser } from '../util';
 import { generateSongPDF } from '../pdf';
-import {
-  useStackNavOptions,
-  SongsStackParamList,
-  ListsStackParamList,
-} from '../navigation';
+import { SongsStackParamList, ListsStackParamList } from '../navigation';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { FileTextIcon } from 'lucide-react-native';
+import { HeaderButton } from './HeaderButton';
 
 type SongDetailRouteProp1 = RouteProp<SongsStackParamList, 'SongDetail'>;
 type SongDetailRouteProp2 = RouteProp<ListsStackParamList, 'SongDetail'>;
@@ -25,8 +20,7 @@ type PDFViewerScreenNavigationProp = StackNavigationProp<
   'PDFViewer'
 >;
 
-const ViewPdfButton = () => {
-  const options = useStackNavOptions();
+export const ViewPdfButton = () => {
   const navigation = useNavigation<PDFViewerScreenNavigationProp>();
   const route = useRoute<SongDetailRouteProp1 | SongDetailRouteProp2>();
   const { song } = route.params;
@@ -35,14 +29,8 @@ const ViewPdfButton = () => {
   }
 
   return (
-    <Icon
-      as={FileTextIcon}
-      size="xl"
-      style={{
-        marginTop: 4,
-        marginRight: 8,
-      }}
-      color={options.headerTitleStyle.color}
+    <HeaderButton
+      iconName="FileTextIcon"
       onPress={async () => {
         const { fullText } = song;
         const render = NativeParser.getForRender(
@@ -72,5 +60,3 @@ const ViewPdfButton = () => {
     />
   );
 };
-
-export default ViewPdfButton;

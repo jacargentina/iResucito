@@ -16,7 +16,7 @@ export const ContactListItem = (props: { item: BrotherContact; [x: string]: any 
   return (
     <Pressable {...rest}>
       <HStack
-        space="$2"
+        space="sm"
         p="$2"
         alignItems="center"
         borderBottomWidth={1}

@@ -63,8 +63,8 @@ const ContactItem = React.memo(
             </Text>
           </VStack>
           <Switch
-            isChecked={item.imported}
-            onToggle={() => handleContact(item)}
+            value={item.imported}
+            onValueChange={() => handleContact(item)}
           />
         </HStack>
       </Pressable>

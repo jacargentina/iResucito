@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Alert } from 'react-native';
 import {
   Box,
@@ -138,31 +138,34 @@ export const SongListItem = (props: {
   const isSelected = selection.includes(song.key);
 
   return (
-    <HStack
+    <Pressable
       p="$2"
       borderBottomWidth={1}
-      borderBottomColor="$muted200"
-      backgroundColor={isSelected ? '$rose100' : undefined}>
-      {showBadge && (
-        <Box pt="$2" alignSelf="flex-start">
-          {badges[song.stage]}
-        </Box>
-      )}
-      <VStack space="$1" p="$2" w={`${calcWidth}%`}>
-        <Pressable
-          onPress={() => {
-            if (enabled) {
-              toggle(song.key);
-            } else if (props.onPress) {
-              props.onPress(song);
-            }
-          }}>
-          <>
+      borderBottomColor={isSelected ? '$rose200' : '$muted200'}
+      backgroundColor={isSelected ? '$rose100' : undefined}
+      onPress={() => {
+        if (enabled) {
+          toggle(song.key);
+        } else if (props.onPress) {
+          props.onPress(song);
+        }
+      }}>
+      <HStack>
+        {showBadge && (
+          <Box pt="$2" alignSelf="flex-start">
+            {badges[song.stage]}
+          </Box>
+        )}
+        <VStack space="sm" p="$2" w={`${calcWidth}%`}>
+          <VStack>
             <HStack justifyContent={'space-between'}>
               <Highlighter
                 autoEscape
                 numberOfLines={1}
-                style={{ fontWeight: 'bold', fontSize: 16 }}
+                style={{
+                  fontWeight: 'bold',
+                  fontSize: 16,
+                }}
                 highlightStyle={{
                   backgroundColor: 'yellow',
                 }}
@@ -193,38 +196,39 @@ export const SongListItem = (props: {
             />
             {firstHighlighted}
             {highlightedRest}
-          </>
-        </Pressable>
-        {song.notTranslated && <NoLocaleWarning />}
-        {!enabled && (
-          <AirbnbRating
-            showRating={false}
-            defaultRating={song.rating}
-            selectedColor={config.theme.tokens.colors.rose400}
-            unSelectedColor={config.theme.tokens.colors.rose100}
-            ratingContainerStyle={{ paddingVertical: 5 }}
-            size={25}
-            onFinishRating={(position: number) =>
-              setSongSetting(song.key, i18n.locale, 'rating', position)
-            }
+          </VStack>
+          {song.notTranslated && <NoLocaleWarning />}
+          {!enabled && (
+            <AirbnbRating
+              showRating={false}
+              defaultRating={song.rating}
+              selectedColor={config.theme.tokens.colors.rose400}
+              // @ts-ignore
+              unSelectedColor={config.theme.tokens.colors.rose100}
+              ratingContainerStyle={{ paddingVertical: 5 }}
+              size={25}
+              onFinishRating={(position: number) =>
+                setSongSetting(song.key, i18n.locale, 'rating', position)
+              }
+            />
+          )}
+        </VStack>
+        {openHighlightedRest && <Box pt="$2">{openHighlightedRest}</Box>}
+        {viewButton && (
+          <Pressable w="10%" onPress={viewSong}>
+            <Icon as={EyeIcon} color="$rose500" size="xl" />
+          </Pressable>
+        )}
+        {song.error && (
+          <Icon
+            as={BugIcon}
+            size="xl"
+            onPress={() => {
+              Alert.alert('Error', song.error);
+            }}
           />
         )}
-      </VStack>
-      {openHighlightedRest && <Box pt="$2">{openHighlightedRest}</Box>}
-      {viewButton && (
-        <Pressable w="10%" onPress={viewSong}>
-          <Icon as={EyeIcon} color="$rose500" size="xl" />
-        </Pressable>
-      )}
-      {song.error && (
-        <Icon
-          as={BugIcon}
-          size="xl"
-          onPress={() => {
-            Alert.alert('Error', song.error);
-          }}
-        />
-      )}
-    </HStack>
+      </HStack>
+    </Pressable>
   );
 };
