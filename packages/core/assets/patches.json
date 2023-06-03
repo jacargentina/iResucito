@@ -4845,6 +4845,16 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1684789843624,
+      "locale": "it",
+      "author": "librizziester@gmail.com",
+      "rename": {
+        "new": "Il Signore è mia luce e mia salvezza - Sal 27 (26)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "68": [
@@ -4986,6 +4996,16 @@
       "author": "jdarjona@hotmail.com",
       "rename": {
         "new": "Evenu Shalom Alejem (Mélodie hébraîque)"
+      },
+      "created": true,
+      "updated": false
+    },
+    {
+      "date": 1684841403330,
+      "locale": "en",
+      "author": "wellthatisabigrip@gmail.com",
+      "rename": {
+        "new": "Evenu Shalom Alehem - Hebrew Song"
       },
       "created": true,
       "updated": false
@@ -5435,6 +5455,16 @@
       "author": "albertiniqmc@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1684789916099,
+      "locale": "it",
+      "author": "librizziester@gmail.com",
+      "rename": {
+        "new": "Fino a quando- Sal 13 (12)"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "77": [
@@ -5504,6 +5534,16 @@
         "original": "precatechumenate",
         "new": "catechumenate"
       }
+    },
+    {
+      "date": 1684790060828,
+      "locale": "it",
+      "author": "librizziester@gmail.com",
+      "rename": {
+        "new": "Ecco il mio servo - Is 42, 1-4"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "78": [
@@ -7566,6 +7606,16 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1684950760375,
+      "locale": "it",
+      "author": "librizziester@gmail.com",
+      "rename": {
+        "new": "vi prenderò dalle genti - Ez 36, 24-28"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "115": [
@@ -7943,6 +7993,16 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1684172565070,
+      "locale": "it",
+      "author": "ilaria_nespoli@virgilio.it",
+      "rename": {
+        "new": "[Come è bello, come dà gioia] - [SALMO 132 (133)]"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "122": [
@@ -8217,6 +8277,16 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1682373850261,
+      "locale": "pl",
+      "author": "kiki221la@gmail.com",
+      "rename": {
+        "new": "Zmartwychwstał Pan - 1 Kor 15"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "127": [
@@ -8728,6 +8798,16 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1684952568977,
+      "locale": "it",
+      "author": "librizziester@gmail.com",
+      "rename": {
+        "new": "Sola a solo"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "138": [
@@ -9221,6 +9301,16 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1684952235511,
+      "locale": "it",
+      "author": "librizziester@gmail.com",
+      "rename": {
+        "new": "Sequenza di pentecoste- Vieni, Spirito Santo"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "147": [
@@ -9569,6 +9659,16 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1684952516027,
+      "locale": "it",
+      "author": "librizziester@gmail.com",
+      "rename": {
+        "new": "Vivete Allegri - Flp 4, 4ss"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "153": [
@@ -9599,6 +9699,16 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1684784188327,
+      "locale": "it",
+      "author": "librizziester@gmail.com",
+      "rename": {
+        "new": "Voi siete la luce del mondo - Mt 5, 14-16"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "154": [
@@ -10055,6 +10165,13 @@
         "original": "election",
         "new": "precatechumenate"
       }
+    },
+    {
+      "date": 1685395124050,
+      "locale": "de",
+      "author": "s.spandri@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "160": [
@@ -10647,6 +10764,16 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1684241003260,
+      "locale": "it",
+      "author": "ilaria_nespoli@virgilio.it",
+      "rename": {
+        "new": "Tu sei bella, amica mia - Ct, 6 - 7"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "170": [
@@ -11543,6 +11670,16 @@
       },
       "created": false,
       "updated": false
+    },
+    {
+      "date": 1684951634818,
+      "locale": "it",
+      "author": "librizziester@gmail.com",
+      "rename": {
+        "new": "Preghiera Eucaristica 1"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "185": [
@@ -12056,6 +12193,16 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1684951047631,
+      "locale": "it",
+      "author": "librizziester@gmail.com",
+      "rename": {
+        "new": "Litanie Penitenziali II Preghiera Litanica Penitenziale"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "191": [
@@ -12110,6 +12257,23 @@
       "locale": "lt-LT",
       "author": "albertiniqmc@gmail.com",
       "created": false,
+      "updated": false
+    },
+    {
+      "date": 1683822841524,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1684951795979,
+      "locale": "it",
+      "author": "librizziester@gmail.com",
+      "rename": {
+        "new": "Agnello di Dio"
+      },
+      "created": true,
       "updated": false
     }
   ],
@@ -12196,6 +12360,16 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1684950947886,
+      "locale": "it",
+      "author": "librizziester@gmail.com",
+      "rename": {
+        "new": "Litanie Penitenziali brevi I"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "194": [
@@ -12240,6 +12414,16 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1684952114923,
+      "locale": "it",
+      "author": "librizziester@gmail.com",
+      "rename": {
+        "new": "Padre Nostro"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "195": [
@@ -12293,6 +12477,16 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1684952020326,
+      "locale": "it",
+      "author": "librizziester@gmail.com",
+      "rename": {
+        "new": "Preghiera Eucaristica II - Modello I"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "197": [
@@ -12672,6 +12866,16 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1684790323422,
+      "locale": "it",
+      "author": "librizziester@gmail.com",
+      "rename": {
+        "new": "Santo 1988 - Tempo Ordinario"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "205": [
@@ -13192,6 +13396,16 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1684790462944,
+      "locale": "it",
+      "author": "librizziester@gmail.com",
+      "rename": {
+        "new": "Mi rubasti il cuore - Ct 4, 9-16.5,1"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "215": [
@@ -13287,6 +13501,16 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1684924208562,
+      "locale": "it",
+      "author": "librizziester@gmail.com",
+      "rename": {
+        "new": "Se siete risorti con Cristo - Col 3, 1-4"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "217": [
@@ -13343,6 +13567,16 @@
       "locale": "pt-BR",
       "author": "gordofragoso2@gmail.com",
       "created": false,
+      "updated": false
+    },
+    {
+      "date": 1684789266879,
+      "locale": "it",
+      "author": "librizziester@gmail.com",
+      "rename": {
+        "new": "Questo è il mio comandamento- Giovanni 15, 12ss"
+      },
+      "created": true,
       "updated": false
     }
   ],
@@ -13788,6 +14022,20 @@
         "original": "precatechumenate",
         "new": "liturgy"
       }
+    },
+    {
+      "date": 1684171486507,
+      "locale": "it",
+      "author": "ilaria_nespoli@virgilio.it",
+      "rename": {
+        "new": "Preghiera Eucaristica II (2) - Consacrazione e Acclamazione"
+      },
+      "created": true,
+      "updated": false,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "liturgy"
+      }
     }
   ],
   "239": [
@@ -14103,6 +14351,34 @@
       "date": 1651324563385,
       "locale": "lt-LT",
       "author": "albertiniqmc@gmail.com",
+      "created": true,
+      "updated": false
+    }
+  ],
+  "249": [
+    {
+      "date": 1684222572905,
+      "locale": "it",
+      "author": "ilaria_nespoli@virgilio.it",
+      "rename": {
+        "new": "Una Donna vestita di Sole"
+      },
+      "created": true,
+      "updated": false,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "catechumenate"
+      }
+    }
+  ],
+  "255": [
+    {
+      "date": 1684950537120,
+      "locale": "it",
+      "author": "librizziester@gmail.com",
+      "rename": {
+        "new": "Canto di Giosuè- Giosuè 24, 3-18"
+      },
       "created": true,
       "updated": false
     }

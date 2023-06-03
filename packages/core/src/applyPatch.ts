@@ -174,9 +174,6 @@ const applyPatch = async (local_file_path: string = null) => {
     });
     const meta = download.result;
     const data = (meta as any).fileBinary.toString();
-    const tempPath = path.join(os.tmpdir(), file);
-    fs.writeFileSync(tempPath, data);
-    console.log(`Descargado en ${tempPath}`);
     patch = JSON.parse(data) as SongIndexPatch;
   }
 
@@ -208,7 +205,7 @@ const applyPatch = async (local_file_path: string = null) => {
       date.getFullYear();
     const home = process.env.HOME ?? '.';
     const bakPath = `${home}/SongsIndexPatch-${formatDate}.json`;
-    fs.writeFileSync(bakPath, JSON.stringify(patch));
+    fs.writeFileSync(bakPath, JSON.stringify(patch, null, 2));
     const response = await dropbox.filesUpload({
       path: `/${file}`,
       mode: { '.tag': 'overwrite' },

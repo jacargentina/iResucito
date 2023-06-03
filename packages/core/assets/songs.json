@@ -1089,7 +1089,8 @@
       "es": "Escóndeme en lo oculto de tu tienda - Sal 27 (26)",
       "pt-BR": "Esconde-me No Oculto De Tua Tenda - Sal 27 (26)",
       "pt-PT": "Esconde-me No Oculto De Tua Tenda - Sal 27 (26)",
-      "lt-LT": "Viešpats - Psalmė 26 (27)"
+      "lt-LT": "Viešpats - Psalmė 26 (27)",
+      "it": "Il Signore è mia luce e mia salvezza - Sal 27 (26)"
     }
   },
   "68": {
@@ -1121,7 +1122,8 @@
       "pt-PT": "Evenu Shalom Alejem - Canto Popular Hebraico",
       "sw-TZ": "Evenu Shalom Alehem - (wimbo wa kiebrania)",
       "lt-LT": "Evenu Šalom Alehem - Hebrajų giesmė",
-      "fr": "Evenu Shalom Alejem (Mélodie hébraîque)"
+      "fr": "Evenu Shalom Alejem (Mélodie hébraîque)",
+      "en": "Evenu Shalom Alehem - Hebrew Song"
     }
   },
   "70": {
@@ -1224,7 +1226,8 @@
       "pt-BR": "Até quando - Sal 13 (12)",
       "pt-PT": "Até quando - Sal 13 (12)",
       "lt-LT": "Kiek ilgai? - Psalmė 12 (13)",
-      "sw-TZ": "Mpaka lini - Zab 12 (13)"
+      "sw-TZ": "Mpaka lini - Zab 12 (13)",
+      "it": "Fino a quando- Sal 13 (12)"
     },
     "stages": {
       "pt-BR": "precatechumenate"
@@ -1240,7 +1243,8 @@
       "de": "I. Lied des Knecht Jahwes - Jes 42",
       "pt-BR": "Eis o meu Servo - Primeiro canto do Servo de Iahweh - Is 42",
       "pt-PT": "Eis o meu servo - Primeiro canto do Servo de Javé - Is 42",
-      "lt-LT": "Jahvės tarno giesmė I (Štai mano tarnas) - (Iz 42)"
+      "lt-LT": "Jahvės tarno giesmė I (Štai mano tarnas) - (Iz 42)",
+      "it": "Ecco il mio servo - Is 42, 1-4"
     },
     "stages": {
       "pt-BR": "catechumenate",
@@ -1800,7 +1804,8 @@
       "de-AT": "Ich Hole euch heraus - Ez 36, 24-28",
       "de": "Ich Hole euch heraus - Ez 36, 24-28",
       "pt-BR": "Vos tomarei dentre as nações - Cântico de Ezequiel - Ez 36, 24-28",
-      "pt-PT": "Tomar-vos-ei de entre as nações - Cântico de Ezequiel - Ez 36, 24-28"
+      "pt-PT": "Tomar-vos-ei de entre as nações - Cântico de Ezequiel - Ez 36, 24-28",
+      "it": "vi prenderò dalle genti - Ez 36, 24-28"
     }
   },
   "115": {
@@ -1903,7 +1908,8 @@
       "de": "Seht, wie es schön ist, seht, welche Freude - Ps 133",
       "pt-BR": "Que estupendo, que alegria - Sal 133 (132)",
       "pt-PT": "Que estupendo, que alegria! - Sal 133 (132)",
-      "sw-TZ": "Jinsi ilivyo vema na kupendeza - Zab 132 (133)"
+      "sw-TZ": "Jinsi ilivyo vema na kupendeza - Zab 132 (133)",
+      "it": "[Come è bello, come dà gioia] - [SALMO 132 (133)]"
     }
   },
   "122": {
@@ -1982,7 +1988,8 @@
       "pt-BR": "Ressuscitou - 1 Cor 15",
       "pt-PT": "Ressuscitou - 1 Cor 15",
       "lt-LT": "Prisikėlė",
-      "sw-TZ": "Amefufuka - (rej. 1 Kor 15)"
+      "sw-TZ": "Amefufuka - (rej. 1 Kor 15)",
+      "pl": "Zmartwychwstał Pan - 1 Kor 15"
     }
   },
   "127": {
@@ -2141,7 +2148,8 @@
       "de-AT": "Solo a Sola - Hymnus",
       "de": "Solo a Sola - Hymnus",
       "pt-BR": "Só a só - Hino",
-      "pt-PT": "Sola a Solo - Hino"
+      "pt-PT": "Sola a Solo - Hino",
+      "it": "Sola a solo"
     }
   },
   "138": {
@@ -2276,7 +2284,8 @@
       "de": "Pfingstsequenz - Komm heiliger Geist",
       "pt-BR": "Vem, Espírito Santo - Sequência de Pentecostes",
       "pt-PT": "Vem, Espírito Santo - Sequência de Pentecostes",
-      "lt-LT": "Sekminių sekvencija (ateik, dvasia šventoji)"
+      "lt-LT": "Sekminių sekvencija (ateik, dvasia šventoji)",
+      "it": "Sequenza di pentecoste- Vieni, Spirito Santo"
     },
     "stages": {
       "de-AT": "liturgy",
@@ -2369,7 +2378,8 @@
       "es": "Vivid alegres - Flp 4, 4ss",
       "pt-BR": "Vivei alegres - Flp 4, 4ss",
       "pt-PT": "Vivei alegres - Flp 4, 4ss",
-      "sw-TZ": "Furahini ndugu - (Flp 4: 4 nk)"
+      "sw-TZ": "Furahini ndugu - (Flp 4: 4 nk)",
+      "it": "Vivete Allegri - Flp 4, 4ss"
     }
   },
   "153": {
@@ -2379,7 +2389,8 @@
       "de-AT": "Ihr seid das Licht der Welt - Mt 5, 14-16",
       "de": "Ihr seid das Licht der Welt - Mt 5, 14-16",
       "pt-BR": "Vós sois a luz do mundo - Mt 5, 14-16",
-      "pt-PT": "Vós sois a luz do mundo - Mt 5, 14-16"
+      "pt-PT": "Vós sois a luz do mundo - Mt 5, 14-16",
+      "it": "Voi siete la luce del mondo - Mt 5, 14-16"
     }
   },
   "154": {
@@ -2636,7 +2647,8 @@
       "de-AT": "Du bist schön, meine Freundin - Hld 6 - 7",
       "de": "Du bist schön, meine Freundin - Hld 6 - 7",
       "pt-BR": "Formosa és, amiga minha - Cânticos dos Cânticos 6 e 7 - Quinto Poema",
-      "pt-PT": "Formosa és, amiga minha - Cânticos dos Cânticos 6 e 7 - Quinto Poema"
+      "pt-PT": "Formosa és, amiga minha - Cânticos dos Cânticos 6 e 7 - Quinto Poema",
+      "it": "Tu sei bella, amica mia - Ct, 6 - 7"
     }
   },
   "170": {
@@ -2861,7 +2873,8 @@
       "en": "Anaphora for the penitential celebration",
       "pt-BR": "Anáfora do Sal",
       "pt-PT": "Anáfora do Sal - Rito do Segundo Escrutínio",
-      "lt-LT": "Atgailos Liturgijos Šlovimas"
+      "lt-LT": "Atgailos Liturgijos Šlovimas",
+      "it": "Preghiera Eucaristica 1"
     },
     "stages": {
       "pt-BR": "liturgy"
@@ -2957,7 +2970,8 @@
       "pt-PT": "Litanias penitenciais II - Litania para a Celebração Penitencial",
       "lt-LT": "Atgailos litanija",
       "sw-TZ": "Litania ya penitensia",
-      "en": "Penitential Litanies II"
+      "en": "Penitential Litanies II",
+      "it": "Litanie Penitenziali II Preghiera Litanica Penitenziale"
     }
   },
   "191": {
@@ -2969,7 +2983,8 @@
       "pt-BR": "Cordeiro de Deus - Ladainha do Cordeiro de Deus",
       "pt-PT": "Cordeiro de Deus - Ladainha do Cordeiro de Deus",
       "en": "Lamb of God",
-      "lt-LT": "Dievo Avinėli"
+      "lt-LT": "Dievo Avinėli",
+      "it": "Agnello di Dio"
     }
   },
   "192": {
@@ -2990,7 +3005,8 @@
       "pt-PT": "Litanias Penitenciais I - Litania para Celebração Penitencial - Modelo Abreviado",
       "lt-LT": "Trumpa atgailos litanija",
       "sw-TZ": "Litania fupi ya penitensia",
-      "en": "Penitential Litanies"
+      "en": "Penitential Litanies",
+      "it": "Litanie Penitenziali brevi I"
     }
   },
   "194": {
@@ -3001,7 +3017,8 @@
       "de": "Vater Unser",
       "pt-BR": "Pai Nosso - Tempo da Eleição",
       "pt-PT": "Pai Nosso - Tempo da Eleição",
-      "en": "Abba, Abba, Father - Our Father"
+      "en": "Abba, Abba, Father - Our Father",
+      "it": "Padre Nostro"
     }
   },
   "195": {
@@ -3018,7 +3035,8 @@
     "files": {
       "es": "Plegaria Eucaristica II - Consagracion modelo I",
       "de-AT": "Eucharistisches Hochgebet II (1) - Konsekration und Akklamation",
-      "de": "Eucharistisches Hochgebet II (1) - Konsekration und Akklamation"
+      "de": "Eucharistisches Hochgebet II (1) - Konsekration und Akklamation",
+      "it": "Preghiera Eucaristica II - Modello I"
     }
   },
   "197": {
@@ -3102,7 +3120,8 @@
       "pt-PT": "Santo 1988 - Tempo Comum",
       "lt-LT": "Šventas, Šventas, Šventas (1988)",
       "sw-TZ": "Mtakatifu, Mtakatifu (1988) - Mwakani",
-      "en": "Holy, Holy, Holy - Ordinary Time (1988)"
+      "en": "Holy, Holy, Holy - Ordinary Time (1988)",
+      "it": "Santo 1988 - Tempo Ordinario"
     }
   },
   "205": {
@@ -3236,7 +3255,8 @@
       "de-AT": "Du betörtest mein Herz - Hld 4, 9-16 — 5, 1",
       "de": "Du betörtest mein Herz - Hld 4, 9-16 — 5, 1",
       "pt-BR": "Roubaste o meu coração - Ct 4, 9-16.5, 1",
-      "pt-PT": "Roubaste-me o coração - Ct 4, 9-16.5, 1"
+      "pt-PT": "Roubaste-me o coração - Ct 4, 9-16.5, 1",
+      "it": "Mi rubasti il cuore - Ct 4, 9-16.5,1"
     }
   },
   "215": {
@@ -3263,7 +3283,8 @@
       "de-AT": "Wenn ihr auferweckt seid mit Christus - Kol 3, 1-4",
       "de": "Wenn ihr auferweckt seid mit Christus - Kol 3, 1-4",
       "pt-BR": "Se vós ressuscitastes com Cristo - Colossenses 3, 1-4",
-      "pt-PT": "Se estais ressuscitados com Cristo - Colossenses 3, 1-4"
+      "pt-PT": "Se estais ressuscitados com Cristo - Colossenses 3, 1-4",
+      "it": "Se siete risorti con Cristo - Col 3, 1-4"
     }
   },
   "217": {
@@ -3286,7 +3307,8 @@
       "de-AT": "Das ist mein Gebot - Joh 15, 12 ff",
       "de": "Das ist mein Gebot - Joh 15, 12 ff",
       "pt-BR": "Este é o meu mandamento - Jo 15, 12ss",
-      "pt-PT": "Este é o meu mandamento - Jo 15, 12ss"
+      "pt-PT": "Este é o meu mandamento - Jo 15, 12ss",
+      "it": "Questo è il mio comandamento- Giovanni 15, 12ss"
     }
   },
   "219": {
@@ -3463,12 +3485,14 @@
     "key": "237",
     "files": {
       "de-AT": "Eucharistisches Hochgebet II (2) - Konsekration und Akklamation",
-      "de": "Eucharistisches Hochgebet II (2) - Konsekration und Akklamation"
+      "de": "Eucharistisches Hochgebet II (2) - Konsekration und Akklamation",
+      "it": "Preghiera Eucaristica II (2) - Consacrazione e Acclamazione"
     },
     "stage": "precatechumenate",
     "stages": {
       "de-AT": "liturgy",
-      "de": "liturgy"
+      "de": "liturgy",
+      "it": "liturgy"
     }
   },
   "239": {
@@ -3563,7 +3587,11 @@
     "stage": "precatechumenate",
     "files": {
       "de-AT": "Ein grosses Zeichen erschien am Himmel - Offb 12, 1-18",
-      "de": "Ein grosses Zeichen erschien am Himmel - Offb 12, 1-18"
+      "de": "Ein grosses Zeichen erschien am Himmel - Offb 12, 1-18",
+      "it": "Una Donna vestita di Sole"
+    },
+    "stages": {
+      "it": "catechumenate"
     }
   },
   "250": {
@@ -3605,7 +3633,8 @@
     "stage": "precatechumenate",
     "files": {
       "de-AT": "Lied des josua - Jos 24, 2-13",
-      "de": "Lied des josua - Jos 24, 2-13"
+      "de": "Lied des josua - Jos 24, 2-13",
+      "it": "Canto di Giosuè- Giosuè 24, 3-18"
     }
   },
   "256": {
