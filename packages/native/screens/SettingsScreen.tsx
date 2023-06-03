@@ -113,7 +113,7 @@ export const SettingsScreen = () => {
   });
 
   const ref = useRef(null);
-
+  
   useScrollToTop(ref);
 
   return (
@@ -136,7 +136,7 @@ export const SettingsScreen = () => {
           </Select.Trigger>
           <Select.Portal>
             <Select.Backdrop />
-            <Select.Content>
+            <Select.Content pb="$8">
               <Select.DragIndicatorWrapper>
                 <Select.DragIndicator />
               </Select.DragIndicatorWrapper>

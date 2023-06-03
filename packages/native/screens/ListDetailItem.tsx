@@ -7,6 +7,7 @@ import {
   HStack,
   Input,
   Pressable,
+  Button,
 } from '../gluestack';
 import { View } from 'react-native';
 import {
@@ -70,32 +71,30 @@ const ListDetailItem = (props: {
       listKey.includes('encargado'))
   ) {
     item = (
-      <VStack p="$2">
-        <HStack space="sm" width="100%" alignItems="center">
-          <Icon w="10%" as={UserIcon} color="$info500" />
-          <Input w="84%">
-            <Input.Input
-              onChangeText={(text) => {
-                useListsStore.getState().setList(listName, listKey, text);
-              }}
-              value={listText}
-              clearButtonMode="always"
-              autoCorrect={false}
-              {...inputProps}
-            />
-          </Input>
-          <Icon
-            as={SearchIcon}
-            w="10%"
-            color="$rose500"
-            onPress={() =>
-              navigation.navigate('ContactChooser', {
-                target: { listName: listName, listKey: listKey },
-              })
-            }
+      <HStack p="$2" space="sm" width="100%" alignItems="center">
+        <Icon w="10%" as={UserIcon} color="$info500" />
+        <Input w="80%">
+          <Input.Input
+            onChangeText={(text) => {
+              useListsStore.getState().setList(listName, listKey, text);
+            }}
+            value={listText}
+            clearButtonMode="always"
+            autoCorrect={false}
+            {...inputProps}
           />
-        </HStack>
-      </VStack>
+        </Input>
+        <Button
+          w="10%"
+          variant="outline"
+          onPress={() =>
+            navigation.navigate('ContactChooser', {
+              target: { listName: listName, listKey: listKey },
+            })
+          }>
+          <Icon as={SearchIcon} color="$rose500" />
+        </Button>
+      </HStack>
     );
   } else if (listKey === 'nota') {
     item = (
@@ -120,35 +119,34 @@ const ListDetailItem = (props: {
         : listText.titulo;
     var navigateSalmo =
       listText != null ? (
-        <Icon
-          as={ArrowRight}
-          color="$rose500"
+        <Button
+          w="10%"
+          variant="outline"
           onPress={() =>
             navigation.navigate('SongDetail', {
               song: listText,
             })
-          }
-        />
+          }>
+          <Icon as={ArrowRight} color="$rose500" />
+        </Button>
       ) : null;
     item = (
-      <Pressable
-        p="$2"
-        onPress={() =>
-          navigation.navigate('SongChooser', {
-            screen: 'Dialog',
-            params: {
-              target: { listName: listName, listKey: listKey },
-            },
-          })
-        }>
-        <HStack space="sm" width="100%" alignItems="center">
-          <Icon w="10%" as={MusicIcon} color="$info500" />
-          <Text w="85%" numberOfLines={1}>
-            {text}
-          </Text>
-          {navigateSalmo}
-        </HStack>
-      </Pressable>
+      <HStack p="$2" space="sm" width="100%" alignItems="center">
+        <Icon w="10%" as={MusicIcon} color="$info500" />
+        <Pressable
+          w="80%"
+          onPress={() =>
+            navigation.navigate('SongChooser', {
+              screen: 'Dialog',
+              params: {
+                target: { listName: listName, listKey: listKey },
+              },
+            })
+          }>
+          <Text>{text}</Text>
+        </Pressable>
+        {navigateSalmo}
+      </HStack>
     );
   }
 
