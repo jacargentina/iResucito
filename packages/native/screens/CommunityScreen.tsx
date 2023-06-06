@@ -17,7 +17,7 @@ import {
 } from '../components';
 import { useBrothersStore, useSettingsStore } from '../hooks';
 import i18n from '@iresucito/translations';
-import { useStackNavOptions, RootStackParamList } from '../navigation';
+import { RootStackParamList } from '../navigation';
 import { contactFilterByText, ordenAlfabetico } from '../util';
 import { ContactListItem } from './ContactListItem';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -109,7 +109,6 @@ export const CommunityScreen = () => {
   const { contacts, deviceContacts_loaded, populateDeviceContacts } =
     useBrothersStore();
   const { computedLocale } = useSettingsStore();
-  const options = useStackNavOptions();
   const isFocused = useIsFocused();
   const navigation = useNavigation<ContactImportNavigationProp>();
   const listRef = useRef<any>();

@@ -1,19 +1,112 @@
 import * as React from 'react';
-import { HStack } from '../gluestack';
+import { Keyboard } from 'react-native';
+import { Actionsheet, HStack } from '../gluestack';
 import { createStackNavigator } from '@react-navigation/stack';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import i18n from '@iresucito/translations';
 import { PDFViewer, ListScreen, ListDetail, SongDetail } from '../screens';
-import { ShareListButton, AddSongButton } from '../components';
+import { HeaderButton } from '../components';
 import { getSongDetailOptions, getPdfViewerOptions } from './util';
 import { useStackNavOptions } from './useStackNavOptions';
 import { Song } from '@iresucito/core';
-import { useSettingsStore } from '../hooks';
+import { useListsStore, useSettingsStore } from '../hooks';
+import { RootStackParamList } from './RootNavigator';
 
 export type ListsStackParamList = {
   ListsSearch: undefined;
   ListDetail: { listName: string };
   SongDetail: { song: Song };
   PDFViewer: { uri: string; title: string };
+};
+
+type ListDetailRouteProp = RouteProp<ListsStackParamList, 'ListDetail'>;
+
+type SongChooserScreenNavigationProp = BottomTabNavigationProp<
+  RootStackParamList,
+  'SongChooser'
+>;
+
+const AddSongButton = () => {
+  const { lists_ui } = useListsStore();
+  const navigation = useNavigation<SongChooserScreenNavigationProp>();
+  const route = useRoute<ListDetailRouteProp>();
+  const { listName } = route.params;
+
+  const uiList = lists_ui.find((l) => l.name == listName);
+
+  if (uiList?.type !== 'libre') {
+    return null;
+  }
+
+  return (
+    <HeaderButton
+      iconName="PlusIcon"
+      onPress={() =>
+        navigation.navigate('SongChooser', {
+          screen: 'Dialog',
+          params: {
+            target: { listName: listName, listKey: uiList.items.length },
+          },
+        })
+      }
+    />
+  );
+};
+
+const ShareListButton = () => {
+  const [showActionsheet, setShowActionsheet] = React.useState(false);
+  const handleClose = () => setShowActionsheet(!showActionsheet);
+  const route = useRoute<ListDetailRouteProp>();
+  const { listName } = route.params;
+  const { shareList } = useListsStore();
+
+  return (
+    <>
+      <Actionsheet isOpen={showActionsheet} onClose={handleClose}>
+        <Actionsheet.Backdrop />
+        <Actionsheet.Content pb="$8">
+          <Actionsheet.DragIndicatorWrapper>
+            <Actionsheet.DragIndicator />
+          </Actionsheet.DragIndicatorWrapper>
+          <Actionsheet.Item
+            onPress={() => {
+              handleClose();
+              shareList(listName, 'native');
+            }}>
+            <Actionsheet.ItemText>
+              {i18n.t('list_export_options.native')}
+            </Actionsheet.ItemText>
+          </Actionsheet.Item>
+          <Actionsheet.Item
+            onPress={() => {
+              handleClose();
+              shareList(listName, 'text');
+            }}>
+            <Actionsheet.ItemText>
+              {i18n.t('list_export_options.plain text')}
+            </Actionsheet.ItemText>
+          </Actionsheet.Item>
+          <Actionsheet.Item
+            onPress={() => {
+              handleClose();
+              shareList(listName, 'pdf');
+            }}>
+            <Actionsheet.ItemText>
+              {i18n.t('list_export_options.pdf file')}
+            </Actionsheet.ItemText>
+          </Actionsheet.Item>
+        </Actionsheet.Content>
+      </Actionsheet>
+      <HeaderButton
+        iconName="ShareIcon"
+        onPress={() => {
+          Keyboard.dismiss();
+          setShowActionsheet(true);
+        }}
+      />
+    </>
+  );
 };
 
 const Stack = createStackNavigator<ListsStackParamList>();
