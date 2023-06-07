@@ -2,8 +2,11 @@ import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { PDFViewer, SongDetail, SongList, SongSearch } from '../screens';
 import i18n from '@iresucito/translations';
-import { getSongDetailOptions, getPdfViewerOptions } from './util';
-import { useStackNavOptions } from './useStackNavOptions';
+import {
+  useStackNavOptions,
+  getSongDetailOptions,
+  getPdfViewerOptions,
+} from './index';
 import { Song } from '@iresucito/core';
 import { useSettingsStore } from '../hooks';
 
@@ -16,7 +19,7 @@ export type SongsStackParamList = {
 
 const Stack = createStackNavigator<SongsStackParamList>();
 
-const SongsNavigator = () => {
+export const SongsNavigator = () => {
   const options = useStackNavOptions();
   const { computedLocale } = useSettingsStore();
   return (
@@ -50,5 +53,3 @@ const SongsNavigator = () => {
     </Stack.Navigator>
   );
 };
-
-export default SongsNavigator;

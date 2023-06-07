@@ -113,7 +113,7 @@ export const SettingsScreen = () => {
   });
 
   const ref = useRef(null);
-  
+
   useScrollToTop(ref);
 
   return (

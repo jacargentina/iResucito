@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { SongChooserDialog, SongPreviewScreenDialog } from '../screens';
-import { useStackNavOptions } from './useStackNavOptions';
+import { useStackNavOptions } from './index';
 
 export type ChooserParamList = {
   Dialog: { target: { listName: string; listKey: string | number } };
@@ -12,7 +12,7 @@ export type ChooserParamList = {
 
 const Stack = createStackNavigator<ChooserParamList>();
 
-const SongChooserNavigator = () => {
+export const SongChooserNavigator = () => {
   const options = useStackNavOptions();
   return (
     <Stack.Navigator
@@ -22,5 +22,3 @@ const SongChooserNavigator = () => {
     </Stack.Navigator>
   );
 };
-
-export default SongChooserNavigator;

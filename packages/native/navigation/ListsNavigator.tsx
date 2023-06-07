@@ -7,11 +7,14 @@ import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import i18n from '@iresucito/translations';
 import { PDFViewer, ListScreen, ListDetail, SongDetail } from '../screens';
 import { HeaderButton } from '../components';
-import { getSongDetailOptions, getPdfViewerOptions } from './util';
-import { useStackNavOptions } from './useStackNavOptions';
 import { Song } from '@iresucito/core';
 import { useListsStore, useSettingsStore } from '../hooks';
-import { RootStackParamList } from './RootNavigator';
+import {
+  getSongDetailOptions,
+  getPdfViewerOptions,
+  RootStackParamList,
+  useStackNavOptions,
+} from './index';
 
 export type ListsStackParamList = {
   ListsSearch: undefined;
@@ -111,7 +114,7 @@ const ShareListButton = () => {
 
 const Stack = createStackNavigator<ListsStackParamList>();
 
-const ListsNavigator = () => {
+export const ListsNavigator = () => {
   const options = useStackNavOptions();
   const { computedLocale } = useSettingsStore();
   return (
@@ -156,5 +159,3 @@ const ListsNavigator = () => {
     </Stack.Navigator>
   );
 };
-
-export default ListsNavigator;

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { CommunityScreen } from '../screens';
 import i18n from '@iresucito/translations';
-import { useStackNavOptions } from './useStackNavOptions';
+import { useStackNavOptions } from './index';
 import { useSettingsStore } from '../hooks';
 
 export type CommunityStackParamList = {
@@ -11,7 +11,7 @@ export type CommunityStackParamList = {
 
 const Stack = createStackNavigator<CommunityStackParamList>();
 
-const CommunityNavigator = () => {
+export const CommunityNavigator = () => {
   const options = useStackNavOptions();
   const { computedLocale } = useSettingsStore();
   return (
@@ -30,5 +30,3 @@ const CommunityNavigator = () => {
     </Stack.Navigator>
   );
 };
-
-export default CommunityNavigator;

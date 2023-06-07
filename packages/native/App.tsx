@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
+import * as Sentry from '@sentry/react-native';
 import RNBootSplash from 'react-native-bootsplash';
+import { MenuProvider } from 'react-native-popup-menu';
 import { GluestackUIProvider } from './gluestack';
 import { config } from './gluestack-ui.config';
-import * as Sentry from '@sentry/react-native';
-import { MenuProvider } from 'react-native-popup-menu';
-import RootNavigator from './navigation/RootNavigator';
+import { RootNavigator } from './navigation';
 
 Sentry.init({
   dsn: 'https://645393af749a4f3da9d8074330a25da3@o469156.ingest.sentry.io/5498083',

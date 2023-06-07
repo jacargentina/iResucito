@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Button, Icon } from '../gluestack';
-import { useStackNavOptions } from '../navigation/useStackNavOptions';
+import { useStackNavOptions } from '../navigation';
 import { GestureResponderEvent } from 'react-native';
 import * as icons from 'lucide-react-native';
 

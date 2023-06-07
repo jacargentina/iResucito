@@ -8,9 +8,12 @@ import {
   ContactChooserDialog,
   ListNameDialog,
 } from '../screens';
-import MenuNavigator from './MenuNavigator';
-import SongChooserNavigator, { ChooserParamList } from './SongChooserNavigator';
-import { useStackNavOptions } from './useStackNavOptions';
+import {
+  useStackNavOptions,
+  SongChooserNavigator,
+  MenuNavigator,
+  ChooserParamList,
+} from './index';
 import { ListAction, ListType } from '@iresucito/core';
 
 export type RootStackParamList = {
@@ -29,7 +32,7 @@ export type RootStackParamList = {
 
 const Stack = createStackNavigator<RootStackParamList>();
 
-const RootNavigator = () => {
+export const RootNavigator = () => {
   const options = useStackNavOptions();
   return (
     <Stack.Navigator screenOptions={options}>
@@ -53,5 +56,3 @@ const RootNavigator = () => {
     </Stack.Navigator>
   );
 };
-
-export default RootNavigator;

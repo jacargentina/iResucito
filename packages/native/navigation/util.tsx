@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { HStack } from '../gluestack';
-import { ViewPdfButton, PrintPDFButton, SharePDFButton } from '../components';
-import { Icon, Badge, Button } from '../gluestack';
+import { HStack, Icon, Badge, Button } from '../gluestack';
 import {
   Menu,
   MenuOptions,
@@ -13,7 +11,8 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import i18n from '@iresucito/translations';
 import { Song, cleanMultichord, getChordsScale } from '@iresucito/core';
 import { setSongSetting } from '../hooks';
-import { SongsStackParamList, useStackNavOptions } from '../navigation';
+import { ViewPdfButton, PrintPDFButton, SharePDFButton } from '../components';
+import { SongsStackParamList, useStackNavOptions } from './index';
 import { config } from '../gluestack-ui.config';
 import { MusicIcon } from 'lucide-react-native';
 

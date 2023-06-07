@@ -1,13 +1,15 @@
 import * as React from 'react';
-import { useEffect, useMemo } from 'react';
+import { useEffect } from 'react';
 import { Platform, Linking } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import { Icon } from '../gluestack';
-import SongsNavigator from './SongsNavigator';
-import ListsNavigator from './ListsNavigator';
-import CommunityNavigator from './CommunityNavigator';
-import SettingsNavigator from './SettingsNavigator';
+import {
+  SettingsNavigator,
+  CommunityNavigator,
+  ListsNavigator,
+  SongsNavigator,
+} from './index';
 import { useListsStore } from '../hooks';
 import { config } from '../gluestack-ui.config';
 import {
@@ -84,7 +86,7 @@ var GetScreenOptions = () => {
   return options;
 };
 
-const MenuNavigator = (props: any) => {
+export const MenuNavigator = (props: any) => {
   const { lists, importList } = useListsStore();
   const { navigation } = props;
 
@@ -128,5 +130,3 @@ const MenuNavigator = (props: any) => {
     </Tab.Navigator>
   );
 };
-
-export default MenuNavigator;
