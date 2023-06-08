@@ -166,8 +166,8 @@ type EucaristiaList = {
   evangelio: string | null;
   'oracion-universal': string | null;
   paz: string | null;
-  'comunion-pan': string | null;
-  'comunion-caliz': string | null;
+  'comunion-pan': string[] | null;
+  'comunion-caliz': string[] | null;
   salida: string | null;
   'encargado-pan': string | null;
   'encargado-flores': string | null;
@@ -223,8 +223,8 @@ type EucaristiaListForUI = {
   evangelio: string | null;
   'oracion-universal': string | null;
   paz: Song | null;
-  'comunion-pan': Song | null;
-  'comunion-caliz': Song | null;
+  'comunion-pan': Song[] | null;
+  'comunion-caliz': Song[] | null;
   salida: Song | null;
   'encargado-pan': string | null;
   'encargado-flores': string | null;
@@ -559,15 +559,15 @@ export const useListsStore = create<ListsStore>()(
                     'oracion-universal': datalist['oracion-universal'],
                     'comunion-pan':
                       datalist['comunion-pan'] != null
-                        ? (songs?.find(
-                            (s) => s.key === e['comunion-pan']
-                          ) as Song)
+                        ? songs?.filter((s) =>
+                            e['comunion-pan']?.includes(s.key)
+                          )
                         : null,
                     'comunion-caliz':
                       datalist['comunion-caliz'] != null
-                        ? (songs?.find(
-                            (s) => s.key === e['comunion-caliz']
-                          ) as Song)
+                        ? songs?.filter((s) =>
+                            e['comunion-caliz']?.includes(s.key)
+                          )
                         : null,
                     paz:
                       datalist.paz != null
@@ -589,8 +589,30 @@ export const useListsStore = create<ListsStore>()(
       })),
       {
         name: 'lists',
+        version: 1,
         storage: createJSONStorage(() => AsyncStorage),
         partialize: (state) => ({ lists: state.lists }),
+        migrate: (persistedState, version) => {
+          if (version === 0) {
+            var lists = (persistedState as any).lists as Lists;
+            var new_lists = Object.keys(lists).map((listName) => {
+              var list = lists[listName];
+              if (list.type == 'eucaristia') {
+                // pasan de ser un solo canto, a multiples cantos
+                if (list['comunion-pan'] != null) {
+                  var key = list['comunion-pan'] as unknown as string;
+                  list['comunion-pan'] = [key];
+                }
+                if (list['comunion-caliz'] != null) {
+                  var key = list['comunion-caliz'] as unknown as string;
+                  list['comunion-caliz'] = [key];
+                }
+              }
+              return list;
+            });
+          }
+          return persistedState as ListsStore;
+        },
       }
     )
   )
