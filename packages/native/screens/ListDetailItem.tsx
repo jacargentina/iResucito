@@ -14,7 +14,7 @@ import {
   CompositeNavigationProp,
   useNavigation,
 } from '@react-navigation/native';
-import { getLocalizedListItem } from '@iresucito/core';
+import { Song, getLocalizedListItem } from '@iresucito/core';
 import i18n from '@iresucito/translations';
 import { useListsStore } from '../hooks';
 import { RootStackParamList } from '../navigation/RootNavigator';
@@ -25,14 +25,91 @@ import {
   ArrowRight,
   BookIcon,
   MusicIcon,
+  PlusIcon,
   SearchIcon,
+  TrashIcon,
   UserIcon,
 } from 'lucide-react-native';
+import { Swipeable } from 'react-native-gesture-handler';
+import { useRef } from 'react';
+import { SwipeableRightAction } from '../components';
+import { config } from '../gluestack-ui.config';
 
 type ListDetailItemNavigationProp = CompositeNavigationProp<
   BottomTabNavigationProp<RootStackParamList, 'SongChooser'>,
   StackNavigationProp<ListsStackParamList>
 >;
+
+const SongInput = (props: {
+  song: Song | null;
+  listName: string;
+  listKey: string;
+  listKeyIndex?: number;
+}) => {
+  const { song, listName, listKey, listKeyIndex } = props;
+  const navigation = useNavigation<ListDetailItemNavigationProp>();
+  const swipeRef = useRef<Swipeable>(null);
+  return (
+    <Swipeable
+      ref={swipeRef}
+      friction={2}
+      rightThreshold={30}
+      renderRightActions={(progress, dragX) => {
+        return (
+          <View style={{ width: 100, flexDirection: 'row' }}>
+            <SwipeableRightAction
+              color={config.theme.tokens.colors.rose600}
+              progress={progress}
+              text={i18n.t('ui.delete')}
+              x={100}
+              onPress={() => {
+                swipeRef.current?.close();
+                useListsStore
+                  .getState()
+                  .setList(listName, listKey, undefined, listKeyIndex);
+              }}
+            />
+          </View>
+        );
+      }}>
+      <HStack p="$2" space="sm" width="100%" alignItems="center">
+        <Icon w="10%" as={MusicIcon} color="$info500" />
+        <Pressable
+          w="80%"
+          onPress={() =>
+            navigation.navigate('SongChooser', {
+              screen: 'Dialog',
+              params: {
+                target: {
+                  listName: listName,
+                  listKey: listKey,
+                  listKeyIndex: listKeyIndex,
+                },
+              },
+            })
+          }>
+          <Text>
+            {song == null
+              ? i18n.t('ui.search placeholder') + '...'
+              : song.titulo}
+          </Text>
+        </Pressable>
+        {song != null ? (
+          <Button
+            w="10%"
+            variant="outline"
+            onPress={() =>
+              navigation.navigate('SongDetail', {
+                song,
+              })
+            }>
+            <Icon as={ArrowRight} color="$rose500" />
+          </Button>
+        ) : null}
+      </HStack>
+    </Swipeable>
+  );
+};
 
 const ListDetailItem = (props: {
   listName: any;
@@ -111,43 +188,38 @@ const ListDetailItem = (props: {
         </TextArea>
       </VStack>
     );
+  } else if (listKey === 'comunion-pan' || listKey === 'comunion-caliz') {
+    // Lista de cantos
+    item = listText ? (
+      <>
+        {listText.map((song, index) => {
+          return (
+            <SongInput
+              song={song}
+              listName={listName}
+              listKey={listKey}
+              listKeyIndex={index}
+            />
+          );
+        })}
+        <SongInput
+          song={null}
+          listName={listName}
+          listKey={listKey}
+          listKeyIndex={listText.length + 1}
+        />
+      </>
+    ) : (
+      <SongInput
+        song={null}
+        listName={listName}
+        listKey={listKey}
+        listKeyIndex={0}
+      />
+    );
   } else {
     // Cualquier otro caso, es un canto
-    var text =
-      listText == null
-        ? i18n.t('ui.search placeholder') + '...'
-        : listText.titulo;
-    var navigateSalmo =
-      listText != null ? (
-        <Button
-          w="10%"
-          variant="outline"
-          onPress={() =>
-            navigation.navigate('SongDetail', {
-              song: listText,
-            })
-          }>
-          <Icon as={ArrowRight} color="$rose500" />
-        </Button>
-      ) : null;
-    item = (
-      <HStack p="$2" space="sm" width="100%" alignItems="center">
-        <Icon w="10%" as={MusicIcon} color="$info500" />
-        <Pressable
-          w="80%"
-          onPress={() =>
-            navigation.navigate('SongChooser', {
-              screen: 'Dialog',
-              params: {
-                target: { listName: listName, listKey: listKey },
-              },
-            })
-          }>
-          <Text>{text}</Text>
-        </Pressable>
-        {navigateSalmo}
-      </HStack>
-    );
+    item = <SongInput song={listText} listName={listName} listKey={listKey} />;
   }
 
   var separator: any = undefined;

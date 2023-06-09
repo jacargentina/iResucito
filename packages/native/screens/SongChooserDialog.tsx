@@ -19,7 +19,7 @@ export const SongChooserDialog = (props: Props) => {
   const { navigation, route } = props;
   const { searchItems } = useSettingsStore();
   const { target } = route.params;
-  const { listName, listKey } = target;
+  const { listName, listKey, listKeyIndex } = target;
 
   const choosers = useMemo(() => {
     if (searchItems !== undefined) {
@@ -45,11 +45,13 @@ export const SongChooserDialog = (props: Props) => {
   const songAssign = useCallback(
     (song: Song) => {
       if (listName && listKey !== undefined) {
-        useListsStore.getState().setList(listName, listKey, song.key);
+        useListsStore
+          .getState()
+          .setList(listName, listKey, song.key, listKeyIndex);
         navigation.goBack();
       }
     },
-    [navigation, listName, listKey]
+    [navigation, listName, listKey, listKeyIndex]
   );
 
   const routes = useMemo(() => {

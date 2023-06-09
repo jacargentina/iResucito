@@ -4,7 +4,13 @@ import { SongChooserDialog, SongPreviewScreenDialog } from '../screens';
 import { useStackNavOptions } from './index';
 
 export type ChooserParamList = {
-  Dialog: { target: { listName: string; listKey: string | number } };
+  Dialog: {
+    target: {
+      listName: string;
+      listKey: string | number;
+      listKeyIndex?: number;
+    };
+  };
   ViewSong: {
     data: { text: string; title: string; source: string; stage: string };
   };

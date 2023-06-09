@@ -239,7 +239,12 @@ type ListsStore = {
   add: (listName: string, type: ListType) => void;
   rename: (listName: string, newName: string) => void;
   remove: (listName: string) => void;
-  setList: (listName: string, listKey: string | number, listValue: any) => void;
+  setList: (
+    listName: string,
+    listKey: string | number,
+    listValue: any,
+    listKeyIndex?: number
+  ) => void;
   importList: (listPath: string) => Promise<string | void>;
   shareList: (listName: string, type: ShareListType) => void;
   load_ui: () => void;
@@ -334,13 +339,27 @@ export const useListsStore = create<ListsStore>()(
         setList: (
           listName: string,
           listKey: string | number,
-          listValue: any
+          listValue: any,
+          listKeyIndex?: number
         ) => {
           set((state: ListsStore) => {
             const targetList = state.lists[listName];
             if (listValue !== undefined) {
               if (typeof listKey === 'string') {
-                targetList[listKey] = listValue;
+                if (listKeyIndex !== undefined) {
+                  if (!targetList[listKey]) {
+                    targetList[listKey] = [];
+                  }
+                  var isPresent = targetList[listKey].find(
+                    (s: any) => s === listValue
+                  );
+                  if (isPresent) {
+                    return;
+                  }
+                  targetList[listKey][listKeyIndex] = listValue;
+                } else {
+                  targetList[listKey] = listValue;
+                }
               } else if (typeof listKey === 'number' && 'items' in targetList) {
                 var isPresent = targetList.items.find(
                   (s: any) => s === listValue
@@ -352,7 +371,14 @@ export const useListsStore = create<ListsStore>()(
               }
             } else {
               if (typeof listKey === 'string') {
-                targetList[listKey] = undefined;
+                if (listKeyIndex != undefined) {
+                  targetList[listKey].splice(listKeyIndex, 1);
+                  if (targetList[listKey].length == 0) {
+                    targetList[listKey] = null;
+                  }
+                } else {
+                  targetList[listKey] = undefined;
+                }
               } else if (typeof listKey === 'number' && 'items' in targetList) {
                 targetList.items.splice(listKey, 1);
               }
