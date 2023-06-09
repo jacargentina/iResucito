@@ -8,19 +8,19 @@ export default styled(
     'justifyContent': 'center',
     'variants': {
       size: {
-        'sm:': {
+        sm: {
           _thumb: {
             h: '$4',
             w: '$4',
           },
         },
-        'md': {
+        md: {
           _thumb: {
             h: '$5',
             w: '$5',
           },
         },
-        'lg': {
+        lg: {
           _thumb: {
             h: '$6',
             w: '$6',
@@ -29,10 +29,11 @@ export default styled(
       },
     },
     'defaultProps': {
-      size: 'sm:',
+      size: 'sm',
     },
     ':disabled': {
       opacity: 0.4,
+      bg: '$primary600_alpha60',
     },
 
     '_web': {

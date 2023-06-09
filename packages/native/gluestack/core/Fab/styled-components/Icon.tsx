@@ -1,7 +1,7 @@
-import { AsForwarder } from '@gluestack-style/react';
 import { styled } from '../../styled';
+import { AsForwarder } from '@gluestack-style/react';
 
-const Comp: any = styled(
+export default styled(
   AsForwarder,
   {},
   {
@@ -13,5 +13,3 @@ const Comp: any = styled(
     },
   }
 );
-
-export default Comp;

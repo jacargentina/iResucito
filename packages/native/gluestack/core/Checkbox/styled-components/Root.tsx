@@ -4,13 +4,11 @@ import { styled } from '../../styled';
 export default styled(
   Pressable,
   {
-    'flexDirection': 'row',
-    'justifyContent': 'flex-start',
-    'alignItems': 'center',
-    '_icon': {
-      color: '$primary600',
-    },
-    'variants': {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+
+    variants: {
       size: {
         lg: {
           _icon: {
@@ -20,6 +18,7 @@ export default styled(
 
           _text: {
             fontSize: '$lg',
+            lineHeight: '$xl',
           },
 
           _indicator: {
@@ -35,6 +34,7 @@ export default styled(
 
           _text: {
             fontSize: '$md',
+            lineHeight: '$md',
           },
 
           _indicator: {
@@ -49,20 +49,17 @@ export default styled(
           },
           _text: {
             fontSize: '$sm',
+            lineHeight: '$sm',
           },
           _indicator: {
-            borderRadius: 2,
             h: '$4',
             w: '$4',
           },
         },
       },
     },
-    'defaultProps': {
+    defaultProps: {
       size: 'md',
-    },
-    ':disabled': {
-      opacity: 0.6,
     },
   },
   {

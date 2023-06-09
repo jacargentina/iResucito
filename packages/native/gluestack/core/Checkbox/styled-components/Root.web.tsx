@@ -4,11 +4,11 @@ import { styled } from '../../styled';
 export default styled(
   View,
   {
-    'flexDirection': 'row',
-    'justifyContent': 'flex-start',
-    'alignItems': 'center',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
 
-    'variants': {
+    variants: {
       size: {
         lg: {
           _icon: {
@@ -17,7 +17,8 @@ export default styled(
           },
 
           _text: {
-            fontSize: '$xl',
+            fontSize: '$lg',
+            lineHeight: '$xl',
           },
 
           _indicator: {
@@ -33,7 +34,8 @@ export default styled(
           },
 
           _text: {
-            fontSize: '$lg',
+            fontSize: '$md',
+            lineHeight: '$md',
           },
 
           _indicator: {
@@ -49,7 +51,8 @@ export default styled(
           },
 
           _text: {
-            fontSize: '$md',
+            fontSize: '$sm',
+            lineHeight: '$sm',
           },
 
           _indicator: {
@@ -60,15 +63,11 @@ export default styled(
       },
     },
 
-    'defaultProps': {
+    defaultProps: {
       size: 'md',
     },
 
-    ':disabled': {
-      opacity: 0.6,
-    },
-
-    '_web': {
+    _web: {
       'cursor': 'pointer',
       ':disabled': {
         cursor: 'not-allowed',
