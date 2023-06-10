@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Icon } from '../gluestack';
+import { Button } from '../gluestack';
 import { useStackNavOptions } from '../navigation';
 import { GestureResponderEvent } from 'react-native';
 import * as icons from 'lucide-react-native';
@@ -7,7 +7,7 @@ import * as icons from 'lucide-react-native';
 export const HeaderButton = (props: {
   testID?: string;
   iconName: string;
-  onPress: (e: GestureResponderEvent) => void;
+  onPress?: (e: GestureResponderEvent) => void;
 }) => {
   const options = useStackNavOptions();
   const { testID, iconName, onPress } = props;
@@ -15,8 +15,8 @@ export const HeaderButton = (props: {
     throw Error('No hay icono con nombre ' + iconName);
   }
   return (
-    <Button onPress={onPress}>
-      <Icon
+    <Button onPress={onPress} borderWidth={0} px="$3">
+      <Button.Icon
         testID={testID}
         as={icons[iconName]}
         color={options.headerTitleStyle.color}

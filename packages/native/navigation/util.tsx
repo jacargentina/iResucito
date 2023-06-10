@@ -11,7 +11,12 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import i18n from '@iresucito/translations';
 import { Song, cleanMultichord, getChordsScale } from '@iresucito/core';
 import { setSongSetting } from '../hooks';
-import { ViewPdfButton, PrintPDFButton, SharePDFButton } from '../components';
+import {
+  ViewPdfButton,
+  PrintPDFButton,
+  SharePDFButton,
+  HeaderButton,
+} from '../components';
 import { SongsStackParamList, useStackNavOptions } from './index';
 import { config } from '../gluestack-ui.config';
 import { MusicIcon } from 'lucide-react-native';
@@ -76,9 +81,7 @@ const TransportNotesButton = () => {
     song.transportTo === null ||
     song.transportTo === undefined ||
     song.transportTo === '' ? (
-      <Button>
-        <Icon as={MusicIcon} color={options.headerTitleStyle.color} />
-      </Button>
+      <HeaderButton iconName="MusicIcon" />
     ) : (
       <Badge
         bg="$rose500"
