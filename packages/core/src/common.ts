@@ -284,11 +284,114 @@ export type ListType = 'eucaristia' | 'palabra' | 'libre';
 
 export type ListAction = 'create' | 'rename';
 
-export type ListToPdf = {
+export type LibreList = {
+  type: 'libre';
+  version: number;
+  items: string[];
+};
+
+export type PalabraList = {
+  type: 'palabra';
+  version: number;
+  ambiental: string | null;
+  entrada: string | null;
+  '1-monicion': string | null;
+  '1': string | null;
+  '1-salmo': string | null;
+  '2-monicion': string | null;
+  '2': string | null;
+  '2-salmo': string | null;
+  '3-monicion': string | null;
+  '3': string | null;
+  '3-salmo': string | null;
+  'evangelio-monicion': string | null;
+  evangelio: string | null;
+  salida: string | null;
+  nota: string | null;
+};
+
+export type EucaristiaList = {
+  type: 'eucaristia';
+  version: number;
+  ambiental: string | null;
+  entrada: string | null;
+  '1-monicion': string | null;
+  '1': string | null;
+  '2-monicion': string | null;
+  '2': string | null;
+  'evangelio-monicion': string | null;
+  evangelio: string | null;
+  'oracion-universal': string | null;
+  paz: string | null;
+  'comunion-pan': string[] | null;
+  'comunion-caliz': string[] | null;
+  salida: string | null;
+  'encargado-pan': string | null;
+  'encargado-flores': string | null;
+  nota: string | null;
+};
+
+export type Lists = {
+  [listName: string]: LibreList | PalabraList | EucaristiaList;
+};
+
+export type LibreListForUI = {
   name: string;
-  type: ListType;
+  type: 'libre';
   localeType: string;
-  [x: string]: any;
+  version: number;
+  items: Song[];
+};
+
+export type PalabraListForUI = {
+  name: string;
+  type: 'palabra';
+  localeType: string;
+  version: number;
+  ambiental: string | null;
+  entrada: Song | null;
+  '1-monicion': string | null;
+  '1': string | null;
+  '1-salmo': Song | null;
+  '2-monicion': string | null;
+  '2': string | null;
+  '2-salmo': Song | null;
+  '3-monicion': string | null;
+  '3': string | null;
+  '3-salmo': Song | null;
+  'evangelio-monicion': string | null;
+  evangelio: string | null;
+  salida: Song | null;
+  nota: string | null;
+};
+
+export type EucaristiaListForUI = {
+  name: string;
+  type: 'eucaristia';
+  localeType: string;
+  version: number;
+  ambiental: string | null;
+  entrada: Song | null;
+  '1-monicion': string | null;
+  '1': string | null;
+  '2-monicion': string | null;
+  '2': string | null;
+  'evangelio-monicion': string | null;
+  evangelio: string | null;
+  'oracion-universal': string | null;
+  paz: Song | null;
+  'comunion-pan': Song[] | null;
+  'comunion-caliz': Song[] | null;
+  salida: Song | null;
+  'encargado-pan': string | null;
+  'encargado-flores': string | null;
+  nota: string | null;
+};
+
+export type ListForUI = LibreListForUI | PalabraListForUI | EucaristiaListForUI;
+
+export type ListToPdf = ListForUI & {
+  localeType: string;
 };
 
 export type ShareListType = 'native' | 'text' | 'pdf';
@@ -300,7 +403,7 @@ export const getLocalizedListItem = (listKey: string): string => {
 };
 
 export const getLocalizedListType = (
-  listType: 'eucaristia' | 'palabra' | 'libre',
+  listType: ListType,
   localeValue: string
 ): string => {
   switch (listType) {
@@ -315,17 +418,55 @@ export const getLocalizedListType = (
   }
 };
 
-export const getEsSalmo = (listKey: string): boolean => {
+export const getEsSalmo = (
+  listKey:
+    | keyof LibreListForUI
+    | keyof PalabraListForUI
+    | keyof EucaristiaListForUI
+): boolean => {
   return (
     listKey === 'entrada' ||
     listKey === '1-salmo' ||
     listKey === '2-salmo' ||
     listKey === '3-salmo' ||
     listKey === 'paz' ||
-    listKey === 'comunion-pan' ||
-    listKey === 'comunion-caliz' ||
     listKey === 'salida'
   );
+};
+
+export const getEsSalmoList = (
+  listKey:
+    | keyof LibreListForUI
+    | keyof PalabraListForUI
+    | keyof EucaristiaListForUI
+): boolean => {
+  return listKey === 'comunion-pan' || listKey === 'comunion-caliz';
+};
+
+export const getListTitleValue = (
+  list: ListForUI,
+  key:
+    | keyof LibreListForUI
+    | keyof PalabraListForUI
+    | keyof EucaristiaListForUI,
+  removeIfEmpty: boolean = false
+): ListTitleValue => {
+  if (list.hasOwnProperty(key)) {
+    var valor = list[key];
+    if (valor && getEsSalmo(key)) {
+      valor = [valor.titulo];
+    } else if (valor && getEsSalmoList(key)) {
+      valor = valor.map((song) => song.titulo);
+    }
+    if (!valor && removeIfEmpty) {
+      return null;
+    }
+    return {
+      title: getLocalizedListItem(key),
+      value: valor ?? ['-'],
+    };
+  }
+  return null;
 };
 
 export const defaultExportToPdfOptions: ExportToPdfOptions = {
@@ -1115,6 +1256,17 @@ export const SongPDFGenerator = async (
   return '';
 };
 
+export type ListTitleValue = {
+  title: string;
+  value: string[];
+};
+
+export type PdfItem = 'NEWLINE' | 'NEWCOL' | ListTitleValue;
+
+const isListTitleValue = (item: PdfItem): item is ListTitleValue => {
+  return (item as ListTitleValue).title !== undefined;
+};
+
 export const ListPDFGenerator = async (
   list: ListToPdf,
   opts: ExportToPdfOptions,
@@ -1172,57 +1324,40 @@ export const ListPDFGenerator = async (
         writer.doc.x = lastX;
       });
     } else {
-      const getTitleValue = (
-        key: string,
-        removeIfEmpty: boolean = false
-      ): any => {
-        if (list.hasOwnProperty(key)) {
-          var valor = list[key];
-          if (valor && getEsSalmo(key)) {
-            valor = valor.titulo;
-          }
-          if (!valor && removeIfEmpty) {
-            return null;
-          }
-          return { title: getLocalizedListItem(key), value: valor ?? '-' };
-        }
-        return null;
-      };
-
-      var items = [];
+      var items: PdfItem[] = [];
       const NEWLINE = 'NEWLINE';
       const NEWCOL = 'NEWCOL';
-      items.push(getTitleValue('ambiental'));
-      items.push(getTitleValue('entrada'));
+      items.push(getListTitleValue(list, 'ambiental'));
+      items.push(getListTitleValue(list, 'entrada'));
       items.push(NEWLINE);
-      items.push(getTitleValue('1-monicion'));
-      items.push(getTitleValue('1'));
-      items.push(getTitleValue('1-salmo'));
+      items.push(getListTitleValue(list, '1-monicion'));
+      items.push(getListTitleValue(list, '1'));
+      items.push(getListTitleValue(list, '1-salmo'));
       items.push(NEWLINE);
-      items.push(getTitleValue('2-monicion'));
-      items.push(getTitleValue('2'));
-      items.push(getTitleValue('2-salmo'));
+      items.push(getListTitleValue(list, '2-monicion'));
+      items.push(getListTitleValue(list, '2'));
+      items.push(getListTitleValue(list, '2-salmo'));
       items.push(NEWLINE);
-      items.push(getTitleValue('3-monicion'));
-      items.push(getTitleValue('3'));
-      items.push(getTitleValue('3-salmo'));
+      items.push(getListTitleValue(list, '3-monicion'));
+      items.push(getListTitleValue(list, '3'));
+      items.push(getListTitleValue(list, '3-salmo'));
       items.push(NEWLINE);
-      items.push(getTitleValue('evangelio-monicion'));
-      items.push(getTitleValue('evangelio'));
+      items.push(getListTitleValue(list, 'evangelio-monicion'));
+      items.push(getListTitleValue(list, 'evangelio'));
       items.push(NEWLINE);
-      items.push(getTitleValue('oracion-universal'));
+      items.push(getListTitleValue(list, 'oracion-universal'));
       items.push(NEWLINE);
-      items.push(getTitleValue('paz'));
-      items.push(getTitleValue('comunion-pan'));
-      items.push(getTitleValue('comunion-caliz'));
-      items.push(getTitleValue('salida'));
+      items.push(getListTitleValue(list, 'paz'));
+      items.push(getListTitleValue(list, 'comunion-pan'));
+      items.push(getListTitleValue(list, 'comunion-caliz'));
+      items.push(getListTitleValue(list, 'salida'));
       items.push(NEWCOL);
-      items.push(getTitleValue('encargado-pan', true));
-      items.push(getTitleValue('encargado-flores', true));
-      items.push(getTitleValue('nota', true));
+      items.push(getListTitleValue(list, 'encargado-pan', true));
+      items.push(getListTitleValue(list, 'encargado-flores', true));
+      items.push(getListTitleValue(list, 'nota', true));
 
       var movedDown = false;
-      items.forEach((item: any, i) => {
+      items.forEach((item, i) => {
         // cuando el anterior es un NEWLINE, no moverse de nuevo!
         if (typeof item === 'string' && item === NEWLINE && !movedDown) {
           writer.doc.moveDown();
@@ -1230,7 +1365,7 @@ export const ListPDFGenerator = async (
         } else if (typeof item === 'string' && item === NEWCOL) {
           writer.startColumn();
           movedDown = false;
-        } else if (item && item.title) {
+        } else if (isListTitleValue(item)) {
           const lastX = writer.doc.x;
           writer.writeText(
             `${item.title}:`,
@@ -1241,14 +1376,17 @@ export const ListPDFGenerator = async (
             }
           );
           writer.doc.x += 20;
-          writer.writeText(
-            item.value,
-            PdfStyles.normalLine.color,
-            opts.songText.FontSize + 2,
-            {
-              align: 'left',
-            }
-          );
+          item.value.forEach((text) => {
+            writer.writeText(
+              text,
+              PdfStyles.normalLine.color,
+              opts.songText.FontSize + 2,
+              {
+                align: 'left',
+              }
+            );
+            writer.doc.moveDown();
+          });
           writer.doc.x = lastX;
           movedDown = false;
         }

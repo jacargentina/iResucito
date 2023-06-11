@@ -6,8 +6,6 @@ import Contacts from 'react-native-contacts';
 import RNFS from 'react-native-fs';
 import pathParse from 'path-parse';
 import {
-  getEsSalmo,
-  getLocalizedListItem,
   getLocalizedListType,
   defaultExportToPdfOptions,
   SongSettingsFile,
@@ -16,6 +14,16 @@ import {
   ListType,
   ShareListType,
   ListToPdf,
+  Lists,
+  ListForUI,
+  LibreListForUI,
+  PalabraListForUI,
+  EucaristiaListForUI,
+  LibreList,
+  EucaristiaList,
+  PalabraList,
+  getListTitleValue,
+  ListTitleValue,
 } from '@iresucito/core';
 import i18n from '@iresucito/translations';
 import badges from './badges';
@@ -127,112 +135,6 @@ export const useSongsSelection = create(
   }))
 );
 
-type LibreList = {
-  type: 'libre';
-  version: number;
-  items: string[];
-};
-
-type PalabraList = {
-  type: 'palabra';
-  version: number;
-  ambiental: string | null;
-  entrada: string | null;
-  '1-monicion': string | null;
-  '1': string | null;
-  '1-salmo': string | null;
-  '2-monicion': string | null;
-  '2': string | null;
-  '2-salmo': string | null;
-  '3-monicion': string | null;
-  '3': string | null;
-  '3-salmo': string | null;
-  'evangelio-monicion': string | null;
-  evangelio: string | null;
-  salida: string | null;
-  nota: string | null;
-};
-
-type EucaristiaList = {
-  type: 'eucaristia';
-  version: number;
-  ambiental: string | null;
-  entrada: string | null;
-  '1-monicion': string | null;
-  '1': string | null;
-  '2-monicion': string | null;
-  '2': string | null;
-  'evangelio-monicion': string | null;
-  evangelio: string | null;
-  'oracion-universal': string | null;
-  paz: string | null;
-  'comunion-pan': string[] | null;
-  'comunion-caliz': string[] | null;
-  salida: string | null;
-  'encargado-pan': string | null;
-  'encargado-flores': string | null;
-  nota: string | null;
-};
-
-type Lists = {
-  [listName: string]: LibreList | PalabraList | EucaristiaList;
-};
-
-type LibreListForUI = {
-  name: string;
-  type: 'libre';
-  localeType: string;
-  version: number;
-  items: Song[];
-};
-
-type PalabraListForUI = {
-  name: string;
-  type: 'palabra';
-  localeType: string;
-  version: number;
-  ambiental: string | null;
-  entrada: Song | null;
-  '1-monicion': string | null;
-  '1': string | null;
-  '1-salmo': Song | null;
-  '2-monicion': string | null;
-  '2': string | null;
-  '2-salmo': Song | null;
-  '3-monicion': string | null;
-  '3': string | null;
-  '3-salmo': Song | null;
-  'evangelio-monicion': string | null;
-  evangelio: string | null;
-  salida: Song | null;
-  nota: string | null;
-};
-
-type EucaristiaListForUI = {
-  name: string;
-  type: 'eucaristia';
-  localeType: string;
-  version: number;
-  ambiental: string | null;
-  entrada: Song | null;
-  '1-monicion': string | null;
-  '1': string | null;
-  '2-monicion': string | null;
-  '2': string | null;
-  'evangelio-monicion': string | null;
-  evangelio: string | null;
-  'oracion-universal': string | null;
-  paz: Song | null;
-  'comunion-pan': Song[] | null;
-  'comunion-caliz': Song[] | null;
-  salida: Song | null;
-  'encargado-pan': string | null;
-  'encargado-flores': string | null;
-  nota: string | null;
-};
-
-export type ListForUI = LibreListForUI | PalabraListForUI | EucaristiaListForUI;
-
 type ListsStore = {
   lists: Lists;
   lists_ui: ListForUI[];
@@ -248,22 +150,6 @@ type ListsStore = {
   importList: (listPath: string) => Promise<string | void>;
   shareList: (listName: string, type: ShareListType) => void;
   load_ui: () => void;
-};
-
-const getItemForShare = (
-  list: ListForUI,
-  key: keyof LibreListForUI | keyof PalabraListForUI | keyof EucaristiaListForUI
-) => {
-  if (list.hasOwnProperty(key)) {
-    var valor = list[key];
-    if (valor && getEsSalmo(key)) {
-      valor = valor.titulo;
-    }
-    if (valor) {
-      return getLocalizedListItem(key) + ': ' + valor;
-    }
-  }
-  return null;
 };
 
 export const useListsStore = create<ListsStore>()(
@@ -440,36 +326,42 @@ export const useListsStore = create<ListsStore>()(
               var list = get().lists_ui.find(
                 (l) => l.name == listName
               ) as ListForUI;
-              var items: Array<string | null> = [];
+              var items: ListTitleValue[] = [];
               if (list.type === 'libre') {
                 var cantos = list.items;
                 cantos.forEach((canto: Song, i: number) => {
-                  items.push(`${i + 1} - ${canto.titulo}`);
+                  items.push({ title: `${i + 1}`, value: [canto.titulo] });
                 });
               } else {
-                items.push(getItemForShare(list, 'ambiental'));
-                items.push(getItemForShare(list, 'entrada'));
-                items.push(getItemForShare(list, '1-monicion'));
-                items.push(getItemForShare(list, '1'));
-                items.push(getItemForShare(list, '1-salmo'));
-                items.push(getItemForShare(list, '2-monicion'));
-                items.push(getItemForShare(list, '2'));
-                items.push(getItemForShare(list, '2-salmo'));
-                items.push(getItemForShare(list, '3-monicion'));
-                items.push(getItemForShare(list, '3'));
-                items.push(getItemForShare(list, '3-salmo'));
-                items.push(getItemForShare(list, 'evangelio-monicion'));
-                items.push(getItemForShare(list, 'evangelio'));
-                items.push(getItemForShare(list, 'oracion-universal'));
-                items.push(getItemForShare(list, 'paz'));
-                items.push(getItemForShare(list, 'comunion-pan'));
-                items.push(getItemForShare(list, 'comunion-caliz'));
-                items.push(getItemForShare(list, 'salida'));
-                items.push(getItemForShare(list, 'encargado-pan'));
-                items.push(getItemForShare(list, 'encargado-flores'));
-                items.push(getItemForShare(list, 'nota'));
+                items.push(getListTitleValue(list, 'ambiental'));
+                items.push(getListTitleValue(list, 'entrada'));
+                items.push(getListTitleValue(list, '1-monicion'));
+                items.push(getListTitleValue(list, '1'));
+                items.push(getListTitleValue(list, '1-salmo'));
+                items.push(getListTitleValue(list, '2-monicion'));
+                items.push(getListTitleValue(list, '2'));
+                items.push(getListTitleValue(list, '2-salmo'));
+                items.push(getListTitleValue(list, '3-monicion'));
+                items.push(getListTitleValue(list, '3'));
+                items.push(getListTitleValue(list, '3-salmo'));
+                items.push(getListTitleValue(list, 'evangelio-monicion'));
+                items.push(getListTitleValue(list, 'evangelio'));
+                items.push(getListTitleValue(list, 'oracion-universal'));
+                items.push(getListTitleValue(list, 'paz'));
+                items.push(getListTitleValue(list, 'comunion-pan'));
+                items.push(getListTitleValue(list, 'comunion-caliz'));
+                items.push(getListTitleValue(list, 'salida'));
+                items.push(getListTitleValue(list, 'encargado-pan'));
+                items.push(getListTitleValue(list, 'encargado-flores'));
+                items.push(getListTitleValue(list, 'nota'));
               }
-              var message = items.filter((n) => n).join('\n');
+              var message = '';
+              items
+                .filter((n) => n)
+                .forEach((item) => {
+                  message += item.title + ': ' + item.value.join(', ');
+                });
+
               Share.open({
                 title: i18n.t('ui.share'),
                 message: message,
@@ -486,8 +378,6 @@ export const useListsStore = create<ListsStore>()(
               ) as ListForUI;
               var listToPdf: ListToPdf = {
                 ...list,
-                name: list.name,
-                type: list.type,
                 localeType: getLocalizedListType(list.type, i18n.locale),
               };
               var path = await generateListPDF(
