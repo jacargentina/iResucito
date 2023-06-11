@@ -9,7 +9,8 @@
     "ios-ipad": "react-native run-ios --simulator='iPad Pro (9.7-inch)'",
     "test": "node node_modules/jest/bin/jest.js --watch",
     "postversion": "react-native-version --never-amend",
-    "ts": "yarn tsc --noEmit"
+    "ts": "yarn tsc --noEmit",
+    "update-gluestack": "npx gluestack-ui@latest update --all"
   },
   "dependencies": {
     "@babel/cli": "^7.21.5",
@@ -112,7 +113,7 @@
     "react-native-screens": "^3.20.0",
     "react-native-share": "^8.2.2",
     "react-native-storage": "^1.0.1",
-    "react-native-svg": "13.4.0",
+    "react-native-svg": "latest",
     "react-native-tab-view": "^3.5.1",
     "react-native-version": "^4.0.0",
     "react-navigation-backhandler": "^2.0.1",
