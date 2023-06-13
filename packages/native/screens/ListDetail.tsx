@@ -6,11 +6,12 @@ import { RouteProp, useRoute } from '@react-navigation/native';
 import { KeyboardAwareScrollView } from '@codler/react-native-keyboard-aware-scroll-view';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import { SwipeableRightAction } from '../components';
-import { ListForUI, useListsStore } from '../hooks';
+import { useListsStore } from '../hooks';
 import i18n from '@iresucito/translations';
 import ListDetailItem from './ListDetailItem';
 import { ListsStackParamList } from '../navigation';
 import { config } from '../gluestack-ui.config';
+import { ListForUI } from '@iresucito/core';
 
 const SwipeableRow = (props: {
   listName: string;

@@ -359,7 +359,7 @@ export const useListsStore = create<ListsStore>()(
               items
                 .filter((n) => n)
                 .forEach((item) => {
-                  message += item.title + ': ' + item.value.join(', ');
+                  message += item.title + ': ' + item.value.join(', ') + '\n';
                 });
 
               Share.open({

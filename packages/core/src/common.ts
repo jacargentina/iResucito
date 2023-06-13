@@ -450,20 +450,24 @@ export const getListTitleValue = (
     | keyof PalabraListForUI
     | keyof EucaristiaListForUI,
   removeIfEmpty: boolean = false
-): ListTitleValue => {
+): ListTitleValue | null => {
   if (list.hasOwnProperty(key)) {
     var valor = list[key];
     if (valor && getEsSalmo(key)) {
       valor = [valor.titulo];
     } else if (valor && getEsSalmoList(key)) {
       valor = valor.map((song) => song.titulo);
+    } else if (valor) {
+      valor = [valor];
+    } else {
+      valor = ['-'];
     }
     if (!valor && removeIfEmpty) {
       return null;
     }
     return {
       title: getLocalizedListItem(key),
-      value: valor ?? ['-'],
+      value: valor,
     };
   }
   return null;
@@ -1261,11 +1265,10 @@ export type ListTitleValue = {
   value: string[];
 };
 
-export type PdfItem = 'NEWLINE' | 'NEWCOL' | ListTitleValue;
+const PdfNewLine = 'NEWLINE';
+const PdfNewCol = 'NEWCOL';
 
-const isListTitleValue = (item: PdfItem): item is ListTitleValue => {
-  return (item as ListTitleValue).title !== undefined;
-};
+export type PdfItem = 'NEWLINE' | 'NEWCOL' | ListTitleValue;
 
 export const ListPDFGenerator = async (
   list: ListToPdf,
@@ -1325,33 +1328,32 @@ export const ListPDFGenerator = async (
       });
     } else {
       var items: PdfItem[] = [];
-      const NEWLINE = 'NEWLINE';
-      const NEWCOL = 'NEWCOL';
       items.push(getListTitleValue(list, 'ambiental'));
       items.push(getListTitleValue(list, 'entrada'));
-      items.push(NEWLINE);
+      items.push(PdfNewLine);
       items.push(getListTitleValue(list, '1-monicion'));
       items.push(getListTitleValue(list, '1'));
       items.push(getListTitleValue(list, '1-salmo'));
-      items.push(NEWLINE);
+      items.push(PdfNewLine);
       items.push(getListTitleValue(list, '2-monicion'));
       items.push(getListTitleValue(list, '2'));
       items.push(getListTitleValue(list, '2-salmo'));
-      items.push(NEWLINE);
+      items.push(PdfNewLine);
       items.push(getListTitleValue(list, '3-monicion'));
       items.push(getListTitleValue(list, '3'));
       items.push(getListTitleValue(list, '3-salmo'));
-      items.push(NEWLINE);
+      items.push(PdfNewLine);
       items.push(getListTitleValue(list, 'evangelio-monicion'));
       items.push(getListTitleValue(list, 'evangelio'));
-      items.push(NEWLINE);
+      if (list.type === 'eucaristia') {
+        items.push(PdfNewCol);
+      }
       items.push(getListTitleValue(list, 'oracion-universal'));
-      items.push(NEWLINE);
       items.push(getListTitleValue(list, 'paz'));
       items.push(getListTitleValue(list, 'comunion-pan'));
       items.push(getListTitleValue(list, 'comunion-caliz'));
       items.push(getListTitleValue(list, 'salida'));
-      items.push(NEWCOL);
+      items.push(PdfNewLine);
       items.push(getListTitleValue(list, 'encargado-pan', true));
       items.push(getListTitleValue(list, 'encargado-flores', true));
       items.push(getListTitleValue(list, 'nota', true));
@@ -1359,13 +1361,15 @@ export const ListPDFGenerator = async (
       var movedDown = false;
       items.forEach((item, i) => {
         // cuando el anterior es un NEWLINE, no moverse de nuevo!
-        if (typeof item === 'string' && item === NEWLINE && !movedDown) {
-          writer.doc.moveDown();
-          movedDown = true;
-        } else if (typeof item === 'string' && item === NEWCOL) {
-          writer.startColumn();
-          movedDown = false;
-        } else if (isListTitleValue(item)) {
+        if (typeof item === 'string') {
+          if (item === PdfNewLine && !movedDown) {
+            writer.doc.moveDown();
+            movedDown = true;
+          } else if (item === PdfNewCol) {
+            writer.startColumn();
+            movedDown = false;
+          }
+        } else if (item !== null) {
           const lastX = writer.doc.x;
           writer.writeText(
             `${item.title}:`,
@@ -1385,8 +1389,8 @@ export const ListPDFGenerator = async (
                 align: 'left',
               }
             );
-            writer.doc.moveDown();
           });
+          writer.doc.moveDown();
           writer.doc.x = lastX;
           movedDown = false;
         }

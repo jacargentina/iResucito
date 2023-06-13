@@ -16,13 +16,14 @@ import {
   HeaderButton,
   ChooseListTypeForAdd,
 } from '../components';
-import { ListForUI, useListsStore, useSettingsStore } from '../hooks';
+import { useListsStore, useSettingsStore } from '../hooks';
 import i18n from '@iresucito/translations';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList, ListsStackParamList } from '../navigation';
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import { config } from '../gluestack-ui.config';
 import { BookmarkIcon } from 'lucide-react-native';
+import { ListForUI } from '@iresucito/core';
 
 type ListScreenNavigationProp = CompositeNavigationProp<
   BottomTabNavigationProp<RootStackParamList, 'ListName'>,

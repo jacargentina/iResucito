@@ -22,8 +22,9 @@ export const SwipeableRightAction = (props: {
   x: number;
   progress: any;
   onPress: any;
+  enabled?: boolean;
 }) => {
-  const { text, color, x, progress, onPress } = props;
+  const { text, color, x, progress, onPress, enabled } = props;
   const trans = progress.interpolate({
     inputRange: [0, 1],
     outputRange: [x, 0],
@@ -33,6 +34,7 @@ export const SwipeableRightAction = (props: {
     <Animated.View style={{ flex: 1, transform: [{ translateX: trans }] }}>
       <RectButton
         style={[styles.rightAction, { backgroundColor: color }]}
+        enabled={enabled}
         onPress={onPress}>
         <Text style={styles.actionText}>{text}</Text>
       </RectButton>

@@ -25,9 +25,7 @@ import {
   ArrowRight,
   BookIcon,
   MusicIcon,
-  PlusIcon,
   SearchIcon,
-  TrashIcon,
   UserIcon,
 } from 'lucide-react-native';
 import { Swipeable } from 'react-native-gesture-handler';
@@ -54,6 +52,7 @@ const SongInput = (props: {
       ref={swipeRef}
       friction={2}
       rightThreshold={30}
+      enabled={song != null}
       renderRightActions={(progress, dragX) => {
         return (
           <View style={{ width: 100, flexDirection: 'row' }}>
@@ -195,6 +194,7 @@ const ListDetailItem = (props: {
         {listText.map((song, index) => {
           return (
             <SongInput
+              key={index}
               song={song}
               listName={listName}
               listKey={listKey}
@@ -206,7 +206,7 @@ const ListDetailItem = (props: {
           song={null}
           listName={listName}
           listKey={listKey}
-          listKeyIndex={listText.length + 1}
+          listKeyIndex={listText.length}
         />
       </>
     ) : (
