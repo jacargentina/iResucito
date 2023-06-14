@@ -69,3 +69,6 @@ IRESUCITO_RELEASE_KEY_PASSWORD=[password]
 
 Add `sentry.properties` at `./packages/native/ios` and `./packages/native/android` with project config and credentials.
 
+### error: node_modules/i18n-js/dist/import/index.js no se puede importar
+
+- Posible solucion: ejecutar `watchman watch-del-all` (probar con `yarn run clean; yarn run bundle`)
