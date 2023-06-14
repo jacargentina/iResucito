@@ -326,7 +326,7 @@ export const useListsStore = create<ListsStore>()(
               var list = get().lists_ui.find(
                 (l) => l.name == listName
               ) as ListForUI;
-              var items: ListTitleValue[] = [];
+              var items: (ListTitleValue | null)[] = [];
               if (list.type === 'libre') {
                 var cantos = list.items;
                 cantos.forEach((canto: Song, i: number) => {
@@ -356,11 +356,11 @@ export const useListsStore = create<ListsStore>()(
                 items.push(getListTitleValue(list, 'nota'));
               }
               var message = '';
-              items
-                .filter((n) => n)
-                .forEach((item) => {
+              items.forEach((item) => {
+                if (item != null) {
                   message += item.title + ': ' + item.value.join(', ') + '\n';
-                });
+                }
+              });
 
               Share.open({
                 title: i18n.t('ui.share'),

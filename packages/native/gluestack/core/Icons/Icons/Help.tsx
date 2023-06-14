@@ -1,29 +1,30 @@
 import { createIcon } from '@gluestack-ui/icon';
-import React from 'react';
-import { Path } from 'react-native-svg';
 import { Root } from '../styled-components';
 
-const ThreeDotsIcon: any = createIcon({
+import { Path } from 'react-native-svg';
+import React from 'react';
+
+export const HelpCircleIcon = createIcon({
   Root,
   viewBox: '0 0 24 24',
   path: (
     <>
       <Path
-        d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z"
+        d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
         stroke="currentColor"
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <Path
-        d="M19 13C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11C18.4477 11 18 11.4477 18 12C18 12.5523 18.4477 13 19 13Z"
+        d="M9.09 9.00001C9.3251 8.33167 9.78915 7.76811 10.4 7.40914C11.0108 7.05016 11.7289 6.91894 12.4272 7.03872C13.1255 7.15849 13.7588 7.52153 14.2151 8.06353C14.6713 8.60554 14.9211 9.29153 14.92 10C14.92 12 11.92 13 11.92 13"
         stroke="currentColor"
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <Path
-        d="M5 13C5.55228 13 6 12.5523 6 12C6 11.4477 5.55228 11 5 11C4.44771 11 4 11.4477 4 12C4 12.5523 4.44771 13 5 13Z"
+        d="M12 17H12.01"
         stroke="currentColor"
         strokeWidth="2"
         strokeLinecap="round"
@@ -32,7 +33,3 @@ const ThreeDotsIcon: any = createIcon({
     </>
   ),
 });
-
-ThreeDotsIcon.displayName = 'ThreeDotsIcon';
-
-export { ThreeDotsIcon };

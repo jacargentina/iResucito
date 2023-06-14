@@ -33,6 +33,8 @@ export default styled(
     ':disabled': {
       opacity: 0.4,
       _web: {
+        // @ts-ignore
+        pointerEvents: 'all !important',
         cursor: 'not-allowed',
       },
     },
@@ -74,7 +76,7 @@ export default styled(
         bg: '$primary500',
       },
       ':active': {
-        bg: '$prinary600',
+        bg: '$primary600',
       },
       ':disabled': {
         opacity: 0.4,

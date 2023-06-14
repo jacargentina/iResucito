@@ -1,22 +1,22 @@
-import React from 'react';
 import { createIcon } from '@gluestack-ui/icon';
-import { Root } from '../styled-components';
+import React from 'react';
 import { Path } from 'react-native-svg';
+import { Root } from '../styled-components';
 
-export const SearchIcon = createIcon({
+const SlashIcon: any = createIcon({
   Root,
   viewBox: '0 0 24 24',
   path: (
     <>
       <Path
-        d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z"
+        d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
         stroke="currentColor"
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <Path
-        d="M21 21L16.65 16.65"
+        d="M4.92999 4.92999L19.07 19.07"
         stroke="currentColor"
         strokeWidth="2"
         strokeLinecap="round"
@@ -26,4 +26,6 @@ export const SearchIcon = createIcon({
   ),
 });
 
-SearchIcon.displayName = 'SearchIcon';
+SlashIcon.displayName = 'SlashIcon';
+
+export { SlashIcon };

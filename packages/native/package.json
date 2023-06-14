@@ -93,7 +93,7 @@
     "postinstall-postinstall": "^2.1.0",
     "react": "^18.2.0",
     "react-json-editor-ajrm": "^2.5.14",
-    "react-native": "^0.71.8",
+    "react-native": "0.71.10",
     "react-native-blob-util": "^0.18.2",
     "react-native-bootsplash": "^4.7.1",
     "react-native-collapsible": "^1.6.1",

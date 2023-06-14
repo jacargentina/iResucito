@@ -108,9 +108,13 @@ export const SettingsScreen = () => {
     );
   };
 
-  var localesItems = getLocalesForPicker(getDefaultLocale()).map((l) => {
+  var locales = getLocalesForPicker(getDefaultLocale());
+
+  var localesItems = locales.map((l) => {
     return <Select.Item p="$2" key={l.value} label={l.label} value={l.value} />;
   });
+
+  var currentLocale = locales.find(l => l.value == locale);
 
   const ref = useRef(null);
 
@@ -125,6 +129,7 @@ export const SettingsScreen = () => {
         </Text>
         <Select
           selectedValue={locale}
+          selectedLabel={currentLocale?.label}
           onValueChange={(val) => {
             useSettingsStore.setState({ locale: val });
           }}>

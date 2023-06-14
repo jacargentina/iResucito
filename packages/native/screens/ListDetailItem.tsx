@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   Text,
-  TextArea,
+  Textarea,
   Icon,
   VStack,
   HStack,
@@ -175,8 +175,8 @@ const ListDetailItem = (props: {
   } else if (listKey === 'nota') {
     item = (
       <VStack p="$2" pb="$8">
-        <TextArea>
-          <TextArea.Input
+        <Textarea>
+          <Textarea.Input
             onChangeText={(text) => {
               useListsStore.getState().setList(listName, listKey, text);
             }}
@@ -184,7 +184,7 @@ const ListDetailItem = (props: {
             autoCorrect={false}
             {...inputProps}
           />
-        </TextArea>
+        </Textarea>
       </VStack>
     );
   } else if (listKey === 'comunion-pan' || listKey === 'comunion-caliz') {
