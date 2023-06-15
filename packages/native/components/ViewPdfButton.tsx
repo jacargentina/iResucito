@@ -30,6 +30,7 @@ export const ViewPdfButton = () => {
 
   return (
     <HeaderButton
+      testID='view-pdf-button'
       iconName="FileTextIcon"
       onPress={async () => {
         const { fullText } = song;

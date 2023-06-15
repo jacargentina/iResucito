@@ -66,6 +66,7 @@ export const SongSearch = () => {
         }
         return (
           <Pressable
+            testID={item.title_key}
             onPress={() => {
               navigation.navigate('SongList', item.params as any);
             }}>

@@ -1,7 +1,10 @@
 import * as React from 'react';
 import { useEffect } from 'react';
 import { Platform, Linking } from 'react-native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {
+  BottomTabNavigationOptions,
+  createBottomTabNavigator,
+} from '@react-navigation/bottom-tabs';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import { Icon } from '../gluestack';
 import {
@@ -30,11 +33,13 @@ const Tab = createBottomTabNavigator<MenuParamList>();
 
 const getTabOptions = (
   IconComponent: any,
+  testID?: string,
   route?: any,
   showTabOnlyOn?: string
 ) => {
-  var tabOptions = {
+  var tabOptions: BottomTabNavigationOptions = {
     tabBarStyle: {},
+    tabBarTestID: testID,
     tabBarIcon: ({ focused, color, size }) => {
       return (
         <Icon
@@ -108,24 +113,26 @@ export const MenuNavigator = (props: any) => {
       <Tab.Screen
         name="Songs"
         component={SongsNavigator}
-        options={({ route }) => getTabOptions(SearchIcon, route, 'SongSearch')}
+        options={({ route }) =>
+          getTabOptions(SearchIcon, 'songs-tab', route, 'SongSearch')
+        }
       />
       <Tab.Screen
         name="Lists"
         component={ListsNavigator}
         options={({ route }) =>
-          getTabOptions(BookmarkIcon, route, 'ListsSearch')
+          getTabOptions(BookmarkIcon, 'lists-tab', route, 'ListsSearch')
         }
       />
       <Tab.Screen
         name="Community"
         component={CommunityNavigator}
-        options={getTabOptions(UsersIcon)}
+        options={getTabOptions(UsersIcon, 'community-tab')}
       />
       <Tab.Screen
         name="Settings"
         component={SettingsNavigator}
-        options={getTabOptions(SettingsIcon)}
+        options={getTabOptions(SettingsIcon, 'settings-tab')}
       />
     </Tab.Navigator>
   );

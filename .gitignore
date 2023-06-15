@@ -72,3 +72,4 @@ packages/**/dist
 **/ios/sentry.properties
 **/android/sentry.properties
 .vercel
+packages/native/ios/fastlane/screenshots/screenshots.html

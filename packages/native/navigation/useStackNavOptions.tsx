@@ -1,7 +1,8 @@
 import i18n from '@iresucito/translations';
 import { config } from '../gluestack-ui.config';
+import { StackNavigationOptions } from '@react-navigation/stack';
 
-export const useStackNavOptions = (): any => {
+export const useStackNavOptions = (): StackNavigationOptions => {
   return {
     cardStyle: {
       backgroundColor: 'white',
@@ -17,6 +18,7 @@ export const useStackNavOptions = (): any => {
     },
     headerTintColor: 'white',
     headerBackTitle: i18n.t('ui.back'),
+    headerBackTestID: 'back-button',
     headerTruncatedBackTitle: i18n.t('ui.back'),
   };
 };

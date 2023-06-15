@@ -17,10 +17,9 @@ export const HeaderButton = (props: {
     throw Error('No hay icono con nombre ' + iconName);
   }
   return (
-    <Button onPress={onPress} borderWidth={0} px="$3">
+    <Button testID={testID} onPress={onPress} borderWidth={0} px="$3">
       {iconName ? (
         <Button.Icon
-          testID={testID}
           as={icons[iconName]}
           color={options.headerTitleStyle.color}
         />
