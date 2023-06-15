@@ -1,1 +1,1 @@
-• Fixed song notes transport
+• Now in the Eucharist lists, it is possible to add various hymns for communion (bread and chalice)
