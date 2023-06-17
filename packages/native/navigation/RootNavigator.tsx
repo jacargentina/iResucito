@@ -14,12 +14,27 @@ import {
   MenuNavigator,
   ChooserParamList,
 } from './index';
-import { ListAction, ListType } from '@iresucito/core';
+import {
+  EucaristiaList,
+  LibreList,
+  ListAction,
+  ListType,
+  PalabraList,
+} from '@iresucito/core';
 
 export type RootStackParamList = {
   Menu: undefined;
   SongChooser: NavigatorScreenParams<ChooserParamList>;
-  ContactChooser: { target: { listName: string; listKey: string } };
+  ContactChooser: {
+    target: {
+      listName: string;
+      listKey:
+        | keyof LibreList
+        | keyof EucaristiaList
+        | keyof PalabraList
+        | number;
+    };
+  };
   ListName: {
     listName: string;
     action: ListAction;

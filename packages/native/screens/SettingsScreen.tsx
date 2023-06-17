@@ -114,7 +114,7 @@ export const SettingsScreen = () => {
     return <Select.Item p="$2" key={l.value} label={l.label} value={l.value} />;
   });
 
-  var currentLocale = locales.find(l => l.value == locale);
+  var currentLocale = locales.find((l) => l.value == locale);
 
   const ref = useRef(null);
 
@@ -128,6 +128,7 @@ export const SettingsScreen = () => {
           {i18n.t('settings_note.locale')}
         </Text>
         <Select
+          testID="locale-input"
           selectedValue={locale}
           selectedLabel={currentLocale?.label}
           onValueChange={(val) => {

@@ -11,7 +11,6 @@ import { useBrothersStore, useListsStore, useSettingsStore } from '../hooks';
 import i18n from '@iresucito/translations';
 import { contactFilterByText, ordenAlfabetico } from '../util';
 import { ContactListItem } from './ContactListItem';
-
 import type { RootStackParamList } from '../navigation/RootNavigator';
 import { UsersIcon } from 'lucide-react-native';
 

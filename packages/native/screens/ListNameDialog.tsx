@@ -73,6 +73,7 @@ export const ListNameDialog = () => {
       title={title}
       right={
         <Button
+          testID="list-name-button"
           borderRadius={16}
           size="sm"
           mr="$4"
@@ -102,6 +103,7 @@ export const ListNameDialog = () => {
         <FormControl mb="$5" isInvalid={!actionEnabled}>
           <Input width="100%">
             <Input.Input
+              testID="list-name-input"
               autoFocus
               value={name}
               onChangeText={setName}

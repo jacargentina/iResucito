@@ -137,6 +137,7 @@ export const ListScreen = () => {
     navigation.setOptions({
       headerRight: () => (
         <HeaderButton
+          testID="add-list"
           iconName="PlusIcon"
           onPress={() => setShowActionsheet(true)}
         />

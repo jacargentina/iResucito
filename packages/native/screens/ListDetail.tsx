@@ -11,11 +11,16 @@ import i18n from '@iresucito/translations';
 import ListDetailItem from './ListDetailItem';
 import { ListsStackParamList } from '../navigation';
 import { config } from '../gluestack-ui.config';
-import { ListForUI } from '@iresucito/core';
+import {
+  EucaristiaList,
+  LibreList,
+  ListForUI,
+  PalabraList,
+} from '@iresucito/core';
 
 const SwipeableRow = (props: {
   listName: string;
-  listKey: string | number;
+  listKey: keyof LibreList | keyof EucaristiaList | keyof PalabraList | number;
   song: any;
 }) => {
   const { listName, listKey, song } = props;

@@ -14,7 +14,13 @@ import {
   CompositeNavigationProp,
   useNavigation,
 } from '@react-navigation/native';
-import { Song, getLocalizedListItem } from '@iresucito/core';
+import {
+  EucaristiaList,
+  LibreList,
+  PalabraList,
+  Song,
+  getLocalizedListItem,
+} from '@iresucito/core';
 import i18n from '@iresucito/translations';
 import { useListsStore } from '../hooks';
 import { RootStackParamList } from '../navigation/RootNavigator';
@@ -41,7 +47,7 @@ type ListDetailItemNavigationProp = CompositeNavigationProp<
 const SongInput = (props: {
   song: Song | null;
   listName: string;
-  listKey: string;
+  listKey: keyof LibreList | keyof EucaristiaList | keyof PalabraList | number;
   listKeyIndex?: number;
 }) => {
   const { song, listName, listKey, listKeyIndex } = props;
@@ -112,7 +118,7 @@ const SongInput = (props: {
 
 const ListDetailItem = (props: {
   listName: any;
-  listKey: any;
+  listKey: keyof LibreList | keyof EucaristiaList | keyof PalabraList | number;
   listText: any;
   inputProps?: any;
 }) => {
@@ -120,7 +126,10 @@ const ListDetailItem = (props: {
   const { listName, listKey, listText, inputProps } = props;
 
   var item: any = null;
-  if (['1', '2', '3', 'evangelio'].includes(listKey)) {
+  if (
+    typeof listKey == 'string' &&
+    ['1', '2', '3', 'evangelio'].includes(listKey)
+  ) {
     item = (
       <VStack p="$2">
         <HStack space="sm" width="100%" alignItems="center">

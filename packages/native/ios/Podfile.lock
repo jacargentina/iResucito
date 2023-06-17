@@ -335,6 +335,8 @@ PODS:
     - React-Core
   - react-native-keep-awake (4.0.0):
     - React
+  - react-native-launch-arguments (4.0.0):
+    - React
   - react-native-pager-view (6.2.0):
     - React-Core
   - react-native-pdf (6.6.2):
@@ -512,6 +514,7 @@ DEPENDENCIES:
   - react-native-blob-util (from `../node_modules/react-native-blob-util`)
   - react-native-contacts (from `../node_modules/react-native-contacts`)
   - react-native-keep-awake (from `../node_modules/react-native-keep-awake`)
+  - react-native-launch-arguments (from `../node_modules/react-native-launch-arguments`)
   - react-native-pager-view (from `../node_modules/react-native-pager-view`)
   - react-native-pdf (from `../node_modules/react-native-pdf`)
   - react-native-print (from `../node_modules/react-native-print`)
@@ -609,6 +612,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-contacts"
   react-native-keep-awake:
     :path: "../node_modules/react-native-keep-awake"
+  react-native-launch-arguments:
+    :path: "../node_modules/react-native-launch-arguments"
   react-native-pager-view:
     :path: "../node_modules/react-native-pager-view"
   react-native-pdf:
@@ -705,6 +710,7 @@ SPEC CHECKSUMS:
   react-native-blob-util: 2d36383bb52c15c5451be81cb7ddf22bc34a12a6
   react-native-contacts: 0aa99963d8f29099d4725cd0d2f8b6ef5f0d9a2d
   react-native-keep-awake: afad8a51dfef9fe9655a6344771be32c8596d774
+  react-native-launch-arguments: 96c6be3679851f5812cf885e065b2bf67eff5645
   react-native-pager-view: 0ccb8bf60e2ebd38b1f3669fa3650ecce81db2df
   react-native-pdf: 33c622cbdf776a649929e8b9d1ce2d313347c4fa
   react-native-print: f704aef52d931bfce6d1d84351dbb5232d7ecb89

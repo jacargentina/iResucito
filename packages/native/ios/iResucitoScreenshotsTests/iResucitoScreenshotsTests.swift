@@ -49,6 +49,19 @@ final class iResucitoScreenshotsTests: XCTestCase {
       
       snapshot("Listas")
       
+      //      app.buttons["add-list"].tap()
+      //
+      //      app.otherElements["list_type.eucharist"].tap()
+      //
+      //      app.textFields["list-name-input"].typeText("El buen Pastor")
+      //
+      //      app.buttons["list-name-button"].tap()
+      //
+      //      snapshot("Lista-Eucaristia")
+      //
+      //      app.buttons["back-button"].tap()
+      
+      
       app.buttons["community-tab"].tap()
       
       snapshot("Comunidad")
@@ -56,7 +69,11 @@ final class iResucitoScreenshotsTests: XCTestCase {
       app.buttons["settings-tab"].tap()
       
       snapshot("Configuracion")
-            
+      
+      app.buttons["locale-input"].tap()
+      
+      snapshot("Configuracion-Idiomas")
+      
     }
   }
 }

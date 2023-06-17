@@ -21,6 +21,7 @@ export const HeaderButton = (props: {
       {iconName ? (
         <Button.Icon
           as={icons[iconName]}
+          // @ts-ignore
           color={options.headerTitleStyle.color}
         />
       ) : (

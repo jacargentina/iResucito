@@ -2,12 +2,17 @@ import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { SongChooserDialog, SongPreviewScreenDialog } from '../screens';
 import { useStackNavOptions } from './index';
+import { EucaristiaList, LibreList, PalabraList } from '@iresucito/core';
 
 export type ChooserParamList = {
   Dialog: {
     target: {
       listName: string;
-      listKey: string | number;
+      listKey:
+        | keyof LibreList
+        | keyof EucaristiaList
+        | keyof PalabraList
+        | number;
       listKeyIndex?: number;
     };
   };

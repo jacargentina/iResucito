@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 //import { useWhatChanged } from '@simbathesailor/use-what-changed';
 import { Alert, Platform, PermissionsAndroid } from 'react-native';
+import { LaunchArguments } from 'react-native-launch-arguments';
 import Share from 'react-native-share';
 import Contacts from 'react-native-contacts';
 import RNFS from 'react-native-fs';
@@ -143,7 +144,11 @@ type ListsStore = {
   remove: (listName: string) => void;
   setList: (
     listName: string,
-    listKey: string | number,
+    listKey:
+      | keyof LibreList
+      | keyof EucaristiaList
+      | keyof PalabraList
+      | number,
     listValue: any,
     listKeyIndex?: number
   ) => void;
@@ -152,11 +157,59 @@ type ListsStore = {
   load_ui: () => void;
 };
 
+let initialLists = {};
+
+const launchArgs = LaunchArguments.value();
+if (launchArgs.FASTLANE_SNAPSHOT) {
+  initialLists['El buen Pastor'] = {
+    type: 'eucaristia',
+    ambiental: 'Javier',
+    '1-monicion': 'Walter',
+    '1': 'Is 5, 4-10',
+    '1-salmo': '60', // El señor es mi pastor
+    version: 1,
+    entrada: null,
+    '2-monicion': null,
+    '2': null,
+    'evangelio-monicion': null,
+    evangelio: null,
+    'oracion-universal': null,
+    paz: null,
+    'comunion-pan': null,
+    'comunion-caliz': null,
+    salida: null,
+    'encargado-pan': null,
+    'encargado-flores': null,
+    nota: null,
+  };
+  initialLists['Agua'] = {
+    type: 'palabra',
+    '1-monicion': 'Juan José',
+    '1': 'Ex 17, 6',
+    '1-salmo': '63', // El pueblo que caminaba en las tinieblas
+    version: 1,
+    ambiental: null,
+    entrada: null,
+    '2-monicion': null,
+    '2': null,
+    '2-salmo': null,
+    '3-monicion': null,
+    '3': null,
+    '3-salmo': null,
+    'evangelio-monicion': null,
+    evangelio: null,
+    salida: null,
+    nota: null,
+  };
+} else {
+  console.log('sin datos de FASTLANE_SNAPSHOT');
+}
+
 export const useListsStore = create<ListsStore>()(
   subscribeWithSelector(
     persist(
       immer((set, get) => ({
-        lists: {},
+        lists: initialLists,
         lists_ui: [],
         add: (listName: string, type: ListType) => {
           set((state: ListsStore) => {
@@ -224,7 +277,11 @@ export const useListsStore = create<ListsStore>()(
         },
         setList: (
           listName: string,
-          listKey: string | number,
+          listKey:
+            | keyof LibreList
+            | keyof EucaristiaList
+            | keyof PalabraList
+            | number,
           listValue: any,
           listKeyIndex?: number
         ) => {
@@ -506,7 +563,9 @@ export const useListsStore = create<ListsStore>()(
       {
         name: 'lists',
         version: 1,
-        storage: createJSONStorage(() => AsyncStorage),
+        storage: launchArgs.FASTLANE_SNAPSHOT
+          ? undefined
+          : createJSONStorage(() => AsyncStorage),
         partialize: (state) => ({ lists: state.lists }),
         migrate: (persistedState, version) => {
           if (version === 0) {
