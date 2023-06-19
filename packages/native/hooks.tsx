@@ -153,7 +153,7 @@ type ListsStore = {
     listKeyIndex?: number
   ) => void;
   importList: (listPath: string) => Promise<string | void>;
-  shareList: (listName: string, type: ShareListType) => void;
+  shareList: (listName: string, type: ShareListType) => Promise<string>;
   load_ui: () => void;
 };
 
@@ -165,21 +165,21 @@ if (launchArgs.FASTLANE_SNAPSHOT) {
     type: 'eucaristia',
     ambiental: 'Javier',
     '1-monicion': 'Walter',
-    '1': 'Is 5, 4-10',
+    '1': 'Hch 2,14a. 36-41',
     '1-salmo': '60', // El señor es mi pastor
     version: 1,
-    entrada: null,
-    '2-monicion': null,
-    '2': null,
-    'evangelio-monicion': null,
-    evangelio: null,
-    'oracion-universal': null,
-    paz: null,
-    'comunion-pan': null,
-    'comunion-caliz': null,
-    salida: null,
-    'encargado-pan': null,
-    'encargado-flores': null,
+    entrada: '147', // Ven del libano
+    '2-monicion': 'Armando',
+    '2': 'Pe 2,20b-25',
+    'evangelio-monicion': 'Pancho',
+    evangelio: 'Jn 10,1-10',
+    'oracion-universal': 'Pili',
+    paz: '104',
+    'comunion-pan': ['137'],
+    'comunion-caliz': ['212'],
+    salida: '157',
+    'encargado-pan': 'Fernando',
+    'encargado-flores': 'Juanita',
     nota: null,
   };
   initialLists['Agua'] = {
@@ -370,15 +370,7 @@ export const useListsStore = create<ListsStore>()(
                 JSON.stringify(nativeList, null, ' '),
                 'utf8'
               );
-              Share.open({
-                title: i18n.t('ui.share'),
-                subject: `iResucitó - ${listName}`,
-                url: `file://${listPath}`,
-                failOnCancel: false,
-              }).catch((err) => {
-                err && console.log(err);
-              });
-              break;
+              return listPath;
             case 'text':
               var list = get().lists_ui.find(
                 (l) => l.name == listName
@@ -418,17 +410,7 @@ export const useListsStore = create<ListsStore>()(
                   message += item.title + ': ' + item.value.join(', ') + '\n';
                 }
               });
-
-              Share.open({
-                title: i18n.t('ui.share'),
-                message: message,
-                subject: `iResucitó - ${listName}`,
-                url: undefined,
-                failOnCancel: false,
-              }).catch((err) => {
-                err && console.log(err);
-              });
-              break;
+              return message;
             case 'pdf':
               var list = get().lists_ui.find(
                 (l) => l.name == listName
@@ -437,12 +419,10 @@ export const useListsStore = create<ListsStore>()(
                 ...list,
                 localeType: getLocalizedListType(list.type, i18n.locale),
               };
-              var path = await generateListPDF(
+              return await generateListPDF(
                 listToPdf,
                 defaultExportToPdfOptions
               );
-              sharePDF(listName, path);
-              break;
           }
         },
         load_ui: () => {

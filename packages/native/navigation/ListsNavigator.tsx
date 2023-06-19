@@ -1,7 +1,11 @@
 import * as React from 'react';
 import { Keyboard } from 'react-native';
+import Share from 'react-native-share';
 import { Actionsheet, HStack } from '../gluestack';
-import { createStackNavigator } from '@react-navigation/stack';
+import {
+  StackNavigationProp,
+  createStackNavigator,
+} from '@react-navigation/stack';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import i18n from '@iresucito/translations';
@@ -14,6 +18,7 @@ import {
   getPdfViewerOptions,
   RootStackParamList,
   useStackNavOptions,
+  SongsStackParamList,
 } from './index';
 
 export type ListsStackParamList = {
@@ -57,7 +62,13 @@ const AddSongButton = () => {
   );
 };
 
+type PDFViewerScreenNavigationProp = StackNavigationProp<
+  SongsStackParamList,
+  'PDFViewer'
+>;
+
 const ShareListButton = () => {
+  const navigation = useNavigation<PDFViewerScreenNavigationProp>();
   const [showActionsheet, setShowActionsheet] = React.useState(false);
   const handleClose = () => setShowActionsheet(!showActionsheet);
   const route = useRoute<ListDetailRouteProp>();
@@ -76,7 +87,15 @@ const ShareListButton = () => {
             testID="share-list-native"
             onPress={() => {
               handleClose();
-              shareList(listName, 'native');
+              const listPath = shareList(listName, 'native');
+              Share.open({
+                title: i18n.t('ui.share'),
+                subject: `iResucitó - ${listName}`,
+                url: `file://${listPath}`,
+                failOnCancel: false,
+              }).catch((err) => {
+                err && console.log(err);
+              });
             }}>
             <Actionsheet.ItemText>
               {i18n.t('list_export_options.native')}
@@ -84,9 +103,18 @@ const ShareListButton = () => {
           </Actionsheet.Item>
           <Actionsheet.Item
             testID="share-list-text"
-            onPress={() => {
+            onPress={async () => {
               handleClose();
-              shareList(listName, 'text');
+              const message = await shareList(listName, 'text');
+              Share.open({
+                title: i18n.t('ui.share'),
+                message: message,
+                subject: `iResucitó - ${listName}`,
+                url: undefined,
+                failOnCancel: false,
+              }).catch((err) => {
+                err && console.log(err);
+              });
             }}>
             <Actionsheet.ItemText>
               {i18n.t('list_export_options.plain text')}
@@ -94,9 +122,13 @@ const ShareListButton = () => {
           </Actionsheet.Item>
           <Actionsheet.Item
             testID="share-list-pdf"
-            onPress={() => {
+            onPress={async () => {
               handleClose();
-              shareList(listName, 'pdf');
+              const path = await shareList(listName, 'pdf');
+              navigation.navigate('PDFViewer', {
+                uri: path,
+                title: listName,
+              });
             }}>
             <Actionsheet.ItemText>
               {i18n.t('list_export_options.pdf file')}
