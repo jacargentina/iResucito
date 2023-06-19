@@ -1,14 +1,71 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { Dimensions, ScrollView } from 'react-native';
+import { Dimensions, ScrollView, GestureResponderEvent } from 'react-native';
 import { Box, HStack, Text, Icon, Button } from '../gluestack';
 import color from 'color';
-import { colors } from '@iresucito/core';
+import { colors, SongLine } from '@iresucito/core';
 import i18n from '@iresucito/translations';
 import { useSettingsStore } from '../hooks';
 import { NativeParser, NativeStyles } from '../util';
-import { SongViewLines } from './SongViewLines';
 import { MinusIcon, PlusIcon } from 'lucide-react-native';
+
+const SongViewLines = (props: {
+  lines: SongLine[];
+  onPress: (e: GestureResponderEvent) => void;
+  zoom: number;
+}) => {
+  const { lines, onPress, zoom } = props;
+
+  // Ajuste final para renderizado en screen
+  var renderItems = lines.map((it, i) => {
+    var itemStyle = { ...it.style };
+    if (itemStyle.fontSize) {
+      itemStyle.fontSize = itemStyle.fontSize * zoom;
+      itemStyle.lineHeight = itemStyle.fontSize;
+    }
+    var prefijoStyle = { ...(it.prefijoStyle || it.style) };
+    if (prefijoStyle.fontSize) {
+      prefijoStyle.fontSize = prefijoStyle.fontSize * zoom;
+      prefijoStyle.lineHeight = prefijoStyle.fontSize;
+    }
+
+    var sufijo: any = null;
+
+    if (it.sufijo) {
+      sufijo = (
+        <Text key={i + 'sufijo'} style={it.sufijoStyle}>
+          {it.sufijo}
+        </Text>
+      );
+    }
+
+    if (it.texto === '') {
+      return <Text key={i + 'texto'} onPress={onPress} numberOfLines={1} />;
+    }
+
+    return (
+      <Text
+        key={i + 'texto'}
+        onPress={onPress}
+        numberOfLines={1}
+        style={itemStyle}>
+        <Text key={i + 'prefijo'} style={prefijoStyle}>
+          {it.prefijo}
+        </Text>
+        {it.texto}
+        {sufijo}
+      </Text>
+    );
+  });
+
+  renderItems.push(
+    <Text onPress={onPress} key="spacer">
+      {'\n\n\n'}
+    </Text>
+  );
+
+  return <>{renderItems}</>;
+};
 
 export const SongViewFrame = (props: any) => {
   const { zoomLevel } = useSettingsStore();

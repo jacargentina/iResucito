@@ -161,7 +161,7 @@ let initialLists = {};
 
 const launchArgs = LaunchArguments.value();
 if (launchArgs.FASTLANE_SNAPSHOT) {
-  initialLists['El buen Pastor'] = {
+  initialLists['El Buen Pastor'] = {
     type: 'eucaristia',
     ambiental: 'Javier',
     '1-monicion': 'Walter',

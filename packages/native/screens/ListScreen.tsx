@@ -86,6 +86,7 @@ const SwipeableRow = (props: { item: ListForUI }) => {
         );
       }}>
       <Pressable
+        testID={`list-${item.name}`}
         onPress={() => {
           navigation.navigate('ListDetail', {
             listName: item.name,

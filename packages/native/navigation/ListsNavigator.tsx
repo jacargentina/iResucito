@@ -73,6 +73,7 @@ const ShareListButton = () => {
             <Actionsheet.DragIndicator />
           </Actionsheet.DragIndicatorWrapper>
           <Actionsheet.Item
+            testID="share-list-native"
             onPress={() => {
               handleClose();
               shareList(listName, 'native');
@@ -82,6 +83,7 @@ const ShareListButton = () => {
             </Actionsheet.ItemText>
           </Actionsheet.Item>
           <Actionsheet.Item
+            testID="share-list-text"
             onPress={() => {
               handleClose();
               shareList(listName, 'text');
@@ -91,6 +93,7 @@ const ShareListButton = () => {
             </Actionsheet.ItemText>
           </Actionsheet.Item>
           <Actionsheet.Item
+            testID="share-list-pdf"
             onPress={() => {
               handleClose();
               shareList(listName, 'pdf');
@@ -102,6 +105,7 @@ const ShareListButton = () => {
         </Actionsheet.Content>
       </Actionsheet>
       <HeaderButton
+        testID="share-list-button"
         iconName="ShareIcon"
         onPress={() => {
           Keyboard.dismiss();

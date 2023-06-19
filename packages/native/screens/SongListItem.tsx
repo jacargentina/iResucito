@@ -139,7 +139,7 @@ export const SongListItem = (props: {
 
   return (
     <Pressable
-      testID={`song-${song.key}`}
+      testID={`song-${song.titulo}`}
       p="$2"
       borderBottomWidth={1}
       borderBottomColor={isSelected ? '$rose200' : '$muted200'}

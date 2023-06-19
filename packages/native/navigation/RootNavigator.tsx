@@ -2,7 +2,6 @@ import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigatorScreenParams } from '@react-navigation/native';
 import {
-  SongPreviewPdfDialog,
   SongPreviewScreenDialog,
   ContactImportDialog,
   ContactChooserDialog,
@@ -66,7 +65,6 @@ export const RootNavigator = () => {
           name="SongPreviewScreen"
           component={SongPreviewScreenDialog}
         />
-        <Stack.Screen name="SongPreviewPdf" component={SongPreviewPdfDialog} />
       </Stack.Group>
     </Stack.Navigator>
   );

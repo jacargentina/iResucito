@@ -28,51 +28,49 @@ final class iResucitoScreenshotsTests: XCTestCase {
     // Esperar carga completa y visualizacion del menu
     if app.buttons["songs-tab"].firstMatch.waitForExistence(timeout: 5) {
       
-      snapshot("BuscarCantos")
-      
-      app.otherElements["search_title.alpha"].tap()
-      
-      // a la cena del cordero
-      app.otherElements["song-158"].tap()
-      
-      snapshot("Canto-Pantalla")
-      
-      app.buttons["view-pdf-button"].tap()
-      
-      snapshot("Canto-PDF")
-      
-      app.buttons["back-button"].tap()
-      app.buttons["back-button"].tap()
-      app.buttons["back-button"].tap()
+//      snapshot("BuscarCantos")
+//
+//      app.otherElements["search_title.alpha"].tap()
+//
+//      app.otherElements["song-A la cena del cordero"].tap()
+//
+//      snapshot("Canto-Pantalla")
+//
+//      app.buttons["view-pdf-button"].tap()
+//
+//      snapshot("Canto-PDF")
+//
+//      app.buttons["back-button"].tap()
+//      app.buttons["back-button"].tap()
+//      app.buttons["back-button"].tap()
       
       app.buttons["lists-tab"].tap()
       
       snapshot("Listas")
       
-      //      app.buttons["add-list"].tap()
-      //
-      //      app.otherElements["list_type.eucharist"].tap()
-      //
-      //      app.textFields["list-name-input"].typeText("El buen Pastor")
-      //
-      //      app.buttons["list-name-button"].tap()
-      //
-      //      snapshot("Lista-Eucaristia")
-      //
-      //      app.buttons["back-button"].tap()
+      app.otherElements["list-El Buen Pastor"].tap()
       
+      snapshot("Lista-Pantalla")
+
+      app.buttons["share-list-button"].tap()
       
-      app.buttons["community-tab"].tap()
+      app.otherElements["share-list-pdf"].tap()
+
+      snapshot("Lista-PDF")
       
-      snapshot("Comunidad")
-      
-      app.buttons["settings-tab"].tap()
-      
-      snapshot("Configuracion")
-      
-      app.buttons["locale-input"].tap()
-      
-      snapshot("Configuracion-Idiomas")
+//      app.buttons["back-button"].tap()
+//
+//      app.buttons["community-tab"].tap()
+//
+//      snapshot("Comunidad")
+//
+//      app.buttons["settings-tab"].tap()
+//
+//      snapshot("Configuracion")
+//
+//      app.buttons["locale-input"].tap()
+//
+//      snapshot("Configuracion-Idiomas")
       
     }
   }

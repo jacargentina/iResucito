@@ -34,6 +34,7 @@ export const CallToAction = (props: {
             }}
           />
         </Box>
+        {/*  @ts-ignore */}
         <Heading pt="$5">{props.title}</Heading>
         <Text testID="ca_text">{props.text}</Text>
         <Box flex={3} justifyContent="space-around">
