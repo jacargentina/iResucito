@@ -28,21 +28,21 @@ final class iResucitoScreenshotsTests: XCTestCase {
     // Esperar carga completa y visualizacion del menu
     if app.buttons["songs-tab"].firstMatch.waitForExistence(timeout: 5) {
       
-//      snapshot("BuscarCantos")
-//
-//      app.otherElements["search_title.alpha"].tap()
-//
-//      app.otherElements["song-A la cena del cordero"].tap()
-//
-//      snapshot("Canto-Pantalla")
-//
-//      app.buttons["view-pdf-button"].tap()
-//
-//      snapshot("Canto-PDF")
-//
-//      app.buttons["back-button"].tap()
-//      app.buttons["back-button"].tap()
-//      app.buttons["back-button"].tap()
+      snapshot("BuscarCantos")
+
+      app.otherElements["search_title.alpha"].tap()
+
+      app.otherElements["song-A la cena del cordero"].tap()
+
+      snapshot("Canto-Pantalla")
+
+      app.buttons["view-pdf-button"].tap()
+
+      snapshot("Canto-PDF")
+
+      app.buttons["back-button"].tap()
+      app.buttons["back-button"].tap()
+      app.buttons["back-button"].tap()
       
       app.buttons["lists-tab"].tap()
       
@@ -58,19 +58,21 @@ final class iResucitoScreenshotsTests: XCTestCase {
 
       snapshot("Lista-PDF")
       
-//      app.buttons["back-button"].tap()
-//
-//      app.buttons["community-tab"].tap()
-//
-//      snapshot("Comunidad")
-//
-//      app.buttons["settings-tab"].tap()
-//
-//      snapshot("Configuracion")
-//
-//      app.buttons["locale-input"].tap()
-//
-//      snapshot("Configuracion-Idiomas")
+      app.buttons["back-button"].tap()
+      
+      app.buttons["back-button"].tap()
+
+      app.buttons["community-tab"].tap()
+
+      snapshot("Comunidad")
+
+      app.buttons["settings-tab"].tap()
+
+      snapshot("Configuracion")
+
+      app.buttons["locale-input"].tap()
+
+      snapshot("Configuracion-Idiomas")
       
     }
   }
