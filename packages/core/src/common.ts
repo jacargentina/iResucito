@@ -1339,6 +1339,9 @@ export const ListPDFGenerator = async (
       items.push(getListTitleValue(list, '2'));
       items.push(getListTitleValue(list, '2-salmo'));
       items.push(PdfNewLine);
+      if (list.type === 'palabra') {
+        items.push(PdfNewCol);
+      }
       items.push(getListTitleValue(list, '3-monicion'));
       items.push(getListTitleValue(list, '3'));
       items.push(getListTitleValue(list, '3-salmo'));
