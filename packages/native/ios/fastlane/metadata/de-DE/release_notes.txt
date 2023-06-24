@@ -1,1 +1,1 @@
-• In den Eucharistielisten ist es nun möglich, verschiedene Hymnen für die Kommunion (Brot und Kelch) hinzuzufügen.
+- Word lists PDF: avoid generating more than 1 page

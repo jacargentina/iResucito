@@ -1,1 +1,1 @@
-• Agora nas listas da Eucaristia, é possível adicionar vários hinos para a comunhão (pão e cálice)
+- Word lists PDF: avoid generating more than 1 page

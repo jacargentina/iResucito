@@ -1,1 +1,1 @@
-• Now in the Eucharist lists, it is possible to add various hymns for communion (bread and chalice)
+- Word lists PDF: avoid generating more than 1 page

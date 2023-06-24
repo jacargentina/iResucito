@@ -1,1 +1,1 @@
-• Ahora en las listas de Eucaristía, se pueden agregar varios cantos para la comunión (pan y caliz)
+- Lista de Palabra PDF: evitar generacion de más de 1 página
