@@ -4,14 +4,15 @@ import { styled } from '../../styled';
 export default styled(
   Text,
   {
-    color: '$textLight900',
+    flex: 1,
+    color: '$textLight700',
     fontWeight: '$normal',
     fontFamily: '$body',
     fontStyle: 'normal',
     fontSize: '$md',
     lineHeight: '$md',
     _dark: {
-      color: '$textDark50',
+      color: '$textDark200',
     },
   },
   { ancestorStyle: ['_text'] }
