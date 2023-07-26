@@ -95,7 +95,7 @@
     "postinstall-postinstall": "^2.1.0",
     "react": "^18.2.0",
     "react-json-editor-ajrm": "^2.5.14",
-    "react-native": "0.71.10",
+    "react-native": "0.72.3",
     "react-native-blob-util": "^0.18.2",
     "react-native-bootsplash": "^4.7.1",
     "react-native-collapsible": "^1.6.1",
@@ -129,6 +129,7 @@
   },
   "devDependencies": {
     "@simbathesailor/use-what-changed": "^2.0.0",
+    "@react-native/metro-config": "^0.72.9",
     "@types/jest": "^29.5.2",
     "@types/path-parse": "^1.0.19",
     "colors": "^1.4.0",

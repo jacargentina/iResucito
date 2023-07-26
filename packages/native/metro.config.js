@@ -1,9 +1,16 @@
+const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
 const exclusionList = require('metro-config/src/defaults/exclusionList');
 const { getMetroTools } = require('react-native-monorepo-tools');
 
 const monorepoMetroTools = getMetroTools();
 
-module.exports = {
+/**
+ * Metro configuration
+ * https://facebook.github.io/metro/docs/configuration
+ *
+ * @type {import('metro-config').MetroConfig}
+ */
+const config = {
   transformer: {
     getTransformOptions: async () => ({
       transform: {
@@ -21,3 +28,5 @@ module.exports = {
     extraNodeModules: monorepoMetroTools.extraNodeModules,
   },
 };
+
+module.exports = mergeConfig(getDefaultConfig(__dirname), config);
