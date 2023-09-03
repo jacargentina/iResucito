@@ -11,6 +11,7 @@ import swTZ from './langs/sw-TZ.json';
 import fr from './langs/fr.json';
 import de from './langs/de.json';
 import pl from './langs/pl.json';
+import ru from './langs/ru.json';
 
 // Lenguajes disponibles
 const i18n = new I18n({
@@ -26,6 +27,7 @@ const i18n = new I18n({
   fr: fr,
   de: de,
   pl: pl,
+  ru: ru
 });
 
 i18n.enableFallback = true;
