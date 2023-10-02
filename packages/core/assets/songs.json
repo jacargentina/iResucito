@@ -302,7 +302,8 @@
       "pt-BR": "À vítima pascal - Sequência de Páscoa",
       "pt-PT": "À vítima pascal - Sequência de Páscoa",
       "lt-LT": "Paschos avinėliui",
-      "en": "To The Paschal Victim"
+      "en": "To The Paschal Victim",
+      "ru": "АГНЦУ ПАСХАЛЬНОМУ - ПАСХАЛЬНАЯ ПОСЛЕДОВАТЕЛЬНОСТЬ"
     },
     "stages": {
       "pt-BR": "precatechumenate"
@@ -316,7 +317,8 @@
       "de": "Brüder - 2 Kor 6, 3-16",
       "it": "Fratelli, non diamo a nessuno motivo d' inciampo - 2 Cor 6, 3-16",
       "pt-BR": "A ninguém demos ocasião de tropeço - 2 Co 6, 3ss",
-      "pt-PT": "A ninguém dêmos ocasião de tropeço - 2 Co 6, 3ss"
+      "pt-PT": "A ninguém dêmos ocasião de tropeço - 2 Co 6, 3ss",
+      "lt-LT": "Broliai - Plg. 2 Kor 6, 3-16"
     },
     "stages": {
       "de-AT": "election",
@@ -2834,7 +2836,8 @@
       "pt-BR": "Aleluia Pascal - Apropriado para o tempo Pascal",
       "pt-PT": "Aclamação ao Evangelho - Aleluia Pascal - Apropriado para o tempo Pascal",
       "lt-LT": "Paschos aleliuja",
-      "pl": "Alleluja Paschalne"
+      "pl": "Alleluja Paschalne",
+      "fr": "Alléluia Pascal"
     }
   },
   "182": {
@@ -3520,10 +3523,12 @@
     "stage": "precatechumenate",
     "files": {
       "pt-BR": "Salmodia para as Orações Universais - Melodia para utilizar nas Orações universais",
-      "pt-PT": "Orações Universais - Melodia para utilizar nas Orações universais"
+      "pt-PT": "Orações Universais - Melodia para utilizar nas Orações universais",
+      "es": "Salmodia para las Oraciones Universales - Melodía para utilizar las Oraciones universales"
     },
     "stages": {
-      "pt-BR": "liturgy"
+      "pt-BR": "liturgy",
+      "es": "liturgy"
     }
   },
   "243": {
@@ -3580,7 +3585,8 @@
       "de-AT": "Alles hat eine bestimmte zeit - Koh 3, 1-15",
       "de": "Alles hat eine bestimmte zeit - Koh 3, 1-15",
       "it": "C'è un tempo per ogni cosa - Qo 3, 1-15",
-      "lt-LT": "Yra metas kiekvienam dalykui - Koh 3, 1-15"
+      "lt-LT": "Yra metas kiekvienam dalykui - Koh 3, 1-15",
+      "es": "Hay un tiempo para todo - Qo 3, 1-15"
     }
   },
   "249": {
@@ -3669,7 +3675,8 @@
   "259": {
     "key": "259",
     "files": {
-      "en": "Grace before Meals"
+      "en": "Grace before Meals",
+      "es": "Bendición de los alimentos"
     },
     "stage": "precatechumenate",
     "stages": {
@@ -3713,7 +3720,8 @@
       "pt-PT": "A Espada - Ez. 21, 14-22",
       "pt-BR": "A Espada - Ez. 21, 14-22",
       "es": "La Espada - Ez. 21, 14-22",
-      "it": "La Espada - Ez. 21, 14-22"
+      "it": "La Espada - Ez. 21, 14-22",
+      "lt-LT": "Kalavijas - Ez. 21, 14-22"
     },
     "stage": "precatechumenate",
     "stages": {}

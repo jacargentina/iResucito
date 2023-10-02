@@ -1051,6 +1051,16 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1693870466597,
+      "locale": "ru",
+      "author": "gaboisaactg10@gmail.com",
+      "rename": {
+        "new": "АГНЦУ ПАСХАЛЬНОМУ - ПАСХАЛЬНАЯ ПОСЛЕДОВАТЕЛЬНОСТЬ"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "20": [
@@ -1120,6 +1130,16 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1687890777446,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "new": "Broliai - Plg. 2 Kor 6, 3-16"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "21": [
@@ -4256,6 +4276,13 @@
       "date": 1608201013215,
       "locale": "pt-PT",
       "author": "silviorsepulveda@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1695659933105,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
       "created": false,
       "updated": true
     }
@@ -11407,6 +11434,16 @@
       "author": "andropiotrek@gmail.com",
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1694365427261,
+      "locale": "fr",
+      "author": "elie.caratge@gmail.com",
+      "rename": {
+        "new": "Alléluia Pascal"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "182": [
@@ -14191,6 +14228,20 @@
       },
       "created": false,
       "updated": false
+    },
+    {
+      "date": 1693611755325,
+      "locale": "es",
+      "author": "dcheaslopez@gmail.com",
+      "rename": {
+        "new": "Salmodia para las Oraciones Universales - Melodía para utilizar las Oraciones universales"
+      },
+      "created": true,
+      "updated": false,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "liturgy"
+      }
     }
   ],
   "243": [
@@ -14353,6 +14404,16 @@
       "author": "albertiniqmc@gmail.com",
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1691684801396,
+      "locale": "es",
+      "author": "pedro422005@gmail.com",
+      "rename": {
+        "new": "Hay un tiempo para todo - Qo 3, 1-15"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "249": [
@@ -14473,6 +14534,16 @@
         "original": "precatechumenate",
         "new": "liturgy"
       }
+    },
+    {
+      "date": 1693609421124,
+      "locale": "es",
+      "author": "dcheaslopez@gmail.com",
+      "rename": {
+        "new": "Bendición de los alimentos"
+      },
+      "created": true,
+      "updated": false
     }
   ],
   "260": [
@@ -14583,6 +14654,16 @@
       "author": "sacco.lucabr@gmail.com",
       "rename": {
         "new": "La Espada - Ez. 21, 14-22"
+      },
+      "created": true,
+      "updated": false
+    },
+    {
+      "date": 1687889750075,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "new": "Kalavijas - Ez. 21, 14-22"
       },
       "created": true,
       "updated": false
