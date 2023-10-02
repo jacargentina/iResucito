@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { Input, Box, Button, FormControl } from '../gluestack';
+import { Input, Box, Button, FormControl } from '@gluestack-ui/themed';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { getLocalizedListType } from '@iresucito/core';
 import { useListsStore } from '../hooks';

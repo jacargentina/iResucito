@@ -9,7 +9,7 @@ import {
   VStack,
   Text,
   Divider,
-} from '../gluestack';
+} from '@gluestack-ui/themed';
 import { FlashList } from '@shopify/flash-list';
 import i18n from '@iresucito/translations';
 import { StackNavigationProp } from '@react-navigation/stack';

@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useAndroidBackHandler } from 'react-navigation-backhandler';
 import { Platform } from 'react-native';
-import { Box, Input, Icon, CloseIcon } from '../gluestack';
+import { Box, Input, Icon, CloseIcon } from '@gluestack-ui/themed';
 import { useDebounce } from 'use-debounce';
 import { SearchIcon } from 'lucide-react-native';
 

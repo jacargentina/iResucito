@@ -1,2 +1,0 @@
-• Free lists: now you can create lists of "free" songs, with any order and number of songs
-• Font size adjustments for the amount of songs displayed in searches

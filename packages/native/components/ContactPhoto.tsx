@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Avatar } from '../gluestack';
+import { Avatar } from '@gluestack-ui/themed';
 import { BrotherContact } from '../hooks';
 import { ContactForImport } from '../util';
 

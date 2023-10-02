@@ -1,2 +1,0 @@
-• Listas libres: ahora se pueden crear listas de cantos "libres", con cualquier orden y cantidad de cantos
-• Ajustes en tamaño de fuente para la cantidad de cantos mostrados en las búsquedas

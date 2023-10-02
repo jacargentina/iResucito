@@ -1,1 +1,0 @@
-- Word lists PDF: avoid generating more than 1 page

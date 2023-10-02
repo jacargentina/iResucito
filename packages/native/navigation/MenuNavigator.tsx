@@ -6,7 +6,7 @@ import {
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
-import { Icon } from '../gluestack';
+import { Icon } from '@gluestack-ui/themed';
 import {
   SettingsNavigator,
   CommunityNavigator,

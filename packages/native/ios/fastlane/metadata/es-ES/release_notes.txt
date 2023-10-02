@@ -1,1 +1,0 @@
-- Lista de Palabra PDF: evitar generacion de más de 1 página

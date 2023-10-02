@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect, useRef } from 'react';
-import { Pressable, VStack, HStack, Icon, Text } from '../gluestack';
+import { Pressable, VStack, HStack, Icon, Text } from '@gluestack-ui/themed';
 import { Alert, View } from 'react-native';
 import { FlashList } from '@shopify/flash-list';
 import {

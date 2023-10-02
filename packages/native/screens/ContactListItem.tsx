@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { VStack, HStack, Icon, Text, Pressable } from '../gluestack';
+import { VStack, HStack, Icon, Text, Pressable } from '@gluestack-ui/themed';
 import { ContactPhoto } from '../components';
 import { BrotherContact } from '../hooks';
 import { MusicIcon } from 'lucide-react-native';

@@ -14,7 +14,7 @@ import {
   RouteProp,
 } from '@react-navigation/native';
 import { Keyboard, View } from 'react-native';
-import { Text, Spinner, HStack } from '../gluestack';
+import { Text, Spinner, HStack } from '@gluestack-ui/themed';
 import { FlashList } from '@shopify/flash-list';
 import {
   HeaderButton,

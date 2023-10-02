@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { Dimensions, ScrollView, GestureResponderEvent } from 'react-native';
-import { Box, HStack, Text, Icon, Button } from '../gluestack';
+import { Box, HStack, Text, Icon, Button } from '@gluestack-ui/themed';
 import color from 'color';
 import { colors, SongLine } from '@iresucito/core';
 import i18n from '@iresucito/translations';

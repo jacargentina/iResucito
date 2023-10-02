@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect, useMemo } from 'react';
-import { Text, Box, Pressable, HStack, VStack, Switch } from '../gluestack';
+import { Text, Box, Pressable, HStack, VStack, Switch } from '@gluestack-ui/themed';
 import { Keyboard, StyleSheet } from 'react-native';
 import { FlashList } from '@shopify/flash-list';
 import { ContactPhoto, ModalView, SearchBarView } from '../components';

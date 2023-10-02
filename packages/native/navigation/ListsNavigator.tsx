@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Keyboard } from 'react-native';
 import Share from 'react-native-share';
-import { Actionsheet, HStack } from '../gluestack';
+import { Actionsheet, HStack } from '@gluestack-ui/themed';
 import {
   StackNavigationProp,
   createStackNavigator,

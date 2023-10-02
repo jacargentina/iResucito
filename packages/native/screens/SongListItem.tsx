@@ -11,7 +11,7 @@ import {
   Icon,
   Pressable,
   Checkbox,
-} from '../gluestack';
+} from '@gluestack-ui/themed';
 import { useNavigation } from '@react-navigation/native';
 import Highlighter from '@javier.alejandro.castro/react-native-highlight-words';
 import Collapsible from 'react-native-collapsible';

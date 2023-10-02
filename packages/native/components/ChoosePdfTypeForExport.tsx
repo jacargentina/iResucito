@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { Text, Actionsheet } from '../gluestack';
+import { Text, Actionsheet } from '@gluestack-ui/themed';
 import i18n from '@iresucito/translations';
 import { defaultExportToPdfOptions, SongToPdf } from '@iresucito/core';
 import { NativeParser } from '../util';

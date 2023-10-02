@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useEffect, useRef, useState, useMemo, useCallback } from 'react';
 import { Platform, Alert, View } from 'react-native';
-import { Text } from '../gluestack';
+import { Text } from '@gluestack-ui/themed';
 import { FlashList } from '@shopify/flash-list';
 import {
   useIsFocused,

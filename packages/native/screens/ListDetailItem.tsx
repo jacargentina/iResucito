@@ -8,7 +8,7 @@ import {
   Input,
   Pressable,
   Button,
-} from '../gluestack';
+} from '@gluestack-ui/themed';
 import { View } from 'react-native';
 import {
   CompositeNavigationProp,

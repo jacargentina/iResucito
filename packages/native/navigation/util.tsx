@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { HStack } from '../gluestack';
+import { HStack } from '@gluestack-ui/themed';
 import {
   Menu,
   MenuOptions,

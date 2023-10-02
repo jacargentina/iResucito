@@ -3,8 +3,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import * as Sentry from '@sentry/react-native';
 import RNBootSplash from 'react-native-bootsplash';
 import { MenuProvider } from 'react-native-popup-menu';
-import { GluestackUIProvider } from './gluestack';
-import { config } from './gluestack-ui.config';
+import { GluestackUIProvider } from '@gluestack-ui/themed';
+import { extendedConfig } from './Config';
 import { RootNavigator } from './navigation';
 
 Sentry.init({
@@ -13,7 +13,7 @@ Sentry.init({
 
 const App = () => {
   return (
-    <GluestackUIProvider config={config.theme}>
+    <GluestackUIProvider config={extendedConfig}>
       <MenuProvider backHandler={true}>
         <NavigationContainer
           onReady={() => {

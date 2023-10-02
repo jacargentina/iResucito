@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { RouteProp } from '@react-navigation/native';
 import Contacts from 'react-native-contacts';
 import { useState, useMemo } from 'react';
-import { Text, Icon } from '../gluestack';
+import { Text, Icon } from '@gluestack-ui/themed';
 import { FlashList } from '@shopify/flash-list';
 import { View } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';

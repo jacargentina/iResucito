@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { StackScreenProps } from '@react-navigation/stack';
 import { useMemo, useCallback, useState } from 'react';
 import { useWindowDimensions } from 'react-native';
-import { Text, Center, Spinner } from '../gluestack';
+import { Text, Center, Spinner } from '@gluestack-ui/themed';
 import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
 import { ModalView } from '../components';
 import { ChooserParamList } from '../navigation';

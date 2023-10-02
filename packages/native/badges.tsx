@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { Avatar } from './gluestack';
+import { Avatar, AvatarFallbackText } from '@gluestack-ui/themed';
 import { colors } from '@iresucito/core';
 
 const createBadge = (backgroundColor: string, color: string, text: string) => {
   return (
     <Avatar mr="$2" bgColor={backgroundColor}>
-      <Avatar.FallbackText color={color}>{text}</Avatar.FallbackText>
+      <AvatarFallbackText color={color}>{text}</AvatarFallbackText>
     </Avatar>
   );
 };

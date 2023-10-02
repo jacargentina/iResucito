@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import type { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
-import { Text, Actionsheet } from '../gluestack';
+import { Text, Actionsheet } from '@gluestack-ui/themed';
 import i18n from '@iresucito/translations';
 import { RootStackParamList } from '../navigation';
 import { ListType } from '@iresucito/core';

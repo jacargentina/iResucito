@@ -12,7 +12,7 @@ import {
   Box,
   Heading,
   Switch,
-} from '../gluestack';
+} from '@gluestack-ui/themed';
 import { useScrollToTop } from '@react-navigation/native';
 import DeviceInfo from 'react-native-device-info';
 import i18n from '@iresucito/translations';
