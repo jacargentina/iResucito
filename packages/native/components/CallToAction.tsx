@@ -1,4 +1,4 @@
-import * as React from 'react';
+
 import { useAndroidBackHandler } from 'react-navigation-backhandler';
 import { KeyboardAwareScrollView } from '@codler/react-native-keyboard-aware-scroll-view';
 import { Box, Icon, Text, Heading, Button } from '@gluestack-ui/themed';

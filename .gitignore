@@ -64,6 +64,8 @@ packages/web/public/Info.plist
 packages/web/public/build.gradle
 packages/**/.turbo
 packages/**/.turbo/**
+.turbo
+.turbo/**
 
 # dist tsc
 packages/**/dist
@@ -72,4 +74,5 @@ packages/**/dist
 **/ios/sentry.properties
 **/android/sentry.properties
 .vercel
-packages/native/ios/fastlane/screenshots/screenshots.html
+packages/native/android
+packages/native/ios

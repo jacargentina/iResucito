@@ -1,4 +1,4 @@
-import * as React from 'react';
+
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { Text, Actionsheet } from '@gluestack-ui/themed';

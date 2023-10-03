@@ -6,28 +6,8 @@
       "packages/*"
     ],
     "nohoist": [
-      "**/react",
-      "**/react-dom",
-      "**/react-native",
-      "**/react-native/**",
-      "**/react-native-**",
-      "**/react-native-**/**",
-      "**/@react-native-community",
-      "**/@react-native-community/**",
-      "**/@react-native-async-storage",
-      "**/@react-native-async-storage/**",
-      "**/@react-navigation",
-      "**/@react-navigation/**",
-      "**/@remix-run",
-      "**/@remix-run/**",
-      "**/@vercel/remix",
-      "**/@vercel/remix/**",
-      "**/typescript",
-      "**/typescript/*",
-      "**/@gluestack-ui",
-      "**/@gluestack-ui/*",
-      "**/@gluestack-style",
-      "**/@gluestack-style/*"
+      "**/@iresucito/core",
+      "**/@iresucito/core/**"
     ]
   },
   "scripts": {

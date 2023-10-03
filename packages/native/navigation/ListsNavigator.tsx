@@ -1,7 +1,16 @@
-import * as React from 'react';
+import { useState } from 'react';
 import { Keyboard } from 'react-native';
-import Share from 'react-native-share';
-import { Actionsheet, HStack } from '@gluestack-ui/themed';
+import * as Sharing from 'expo-sharing';
+import {
+  Actionsheet,
+  ActionsheetContent,
+  ActionsheetItem,
+  ActionsheetItemText,
+  ActionsheetBackdrop,
+  ActionsheetDragIndicatorWrapper,
+  ActionsheetDragIndicator,
+  HStack,
+} from '@gluestack-ui/themed';
 import {
   StackNavigationProp,
   createStackNavigator,
@@ -69,7 +78,7 @@ type PDFViewerScreenNavigationProp = StackNavigationProp<
 
 const ShareListButton = () => {
   const navigation = useNavigation<PDFViewerScreenNavigationProp>();
-  const [showActionsheet, setShowActionsheet] = React.useState(false);
+  const [showActionsheet, setShowActionsheet] = useState(false);
   const handleClose = () => setShowActionsheet(!showActionsheet);
   const route = useRoute<ListDetailRouteProp>();
   const { listName } = route.params;
@@ -78,49 +87,38 @@ const ShareListButton = () => {
   return (
     <>
       <Actionsheet isOpen={showActionsheet} onClose={handleClose}>
-        <Actionsheet.Backdrop />
-        <Actionsheet.Content pb="$8">
-          <Actionsheet.DragIndicatorWrapper>
-            <Actionsheet.DragIndicator />
-          </Actionsheet.DragIndicatorWrapper>
-          <Actionsheet.Item
+        <ActionsheetBackdrop />
+        <ActionsheetContent pb="$8">
+          <ActionsheetDragIndicatorWrapper>
+            <ActionsheetDragIndicator />
+          </ActionsheetDragIndicatorWrapper>
+          <ActionsheetItem
             testID="share-list-native"
             onPress={() => {
               handleClose();
               const listPath = shareList(listName, 'native');
-              Share.open({
-                title: i18n.t('ui.share'),
-                subject: `iResucitó - ${listName}`,
-                url: `file://${listPath}`,
-                failOnCancel: false,
-              }).catch((err) => {
-                err && console.log(err);
+              Sharing.shareAsync(`file://${listPath}`, {
+                dialogTitle: i18n.t('ui.share'),
               });
             }}>
-            <Actionsheet.ItemText>
+            <ActionsheetItemText>
               {i18n.t('list_export_options.native')}
-            </Actionsheet.ItemText>
-          </Actionsheet.Item>
-          <Actionsheet.Item
+            </ActionsheetItemText>
+          </ActionsheetItem>
+          <ActionsheetItem
             testID="share-list-text"
             onPress={async () => {
               handleClose();
-              const message = await shareList(listName, 'text');
-              Share.open({
-                title: i18n.t('ui.share'),
-                message: message,
-                subject: `iResucitó - ${listName}`,
-                url: undefined,
-                failOnCancel: false,
-              }).catch((err) => {
-                err && console.log(err);
+              const listPath = await shareList(listName, 'text');
+              Sharing.shareAsync(`file://${listPath}`, {
+                dialogTitle: i18n.t('ui.share'),
               });
             }}>
-            <Actionsheet.ItemText>
+            <ActionsheetItemText>
               {i18n.t('list_export_options.plain text')}
-            </Actionsheet.ItemText>
-          </Actionsheet.Item>
-          <Actionsheet.Item
+            </ActionsheetItemText>
+          </ActionsheetItem>
+          <ActionsheetItem
             testID="share-list-pdf"
             onPress={async () => {
               handleClose();
@@ -130,11 +128,11 @@ const ShareListButton = () => {
                 title: listName,
               });
             }}>
-            <Actionsheet.ItemText>
+            <ActionsheetItemText>
               {i18n.t('list_export_options.pdf file')}
-            </Actionsheet.ItemText>
-          </Actionsheet.Item>
-        </Actionsheet.Content>
+            </ActionsheetItemText>
+          </ActionsheetItem>
+        </ActionsheetContent>
       </Actionsheet>
       <HeaderButton
         testID="share-list-button"

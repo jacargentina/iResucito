@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 //import { useWhatChanged } from '@simbathesailor/use-what-changed';
-import { Alert, Platform, PermissionsAndroid } from 'react-native';
-import { LaunchArguments } from 'react-native-launch-arguments';
-import Share from 'react-native-share';
-import Contacts from 'react-native-contacts';
-import RNFS from 'react-native-fs';
+import { Alert } from 'react-native';
+import { launchArguments } from 'expo-launch-arguments';
+import * as Sharing from 'expo-sharing';
+import * as Contacts from 'expo-contacts';
+import * as FileSystem from 'expo-file-system';
 import pathParse from 'path-parse';
 import {
   getLocalizedListType,
@@ -159,8 +159,7 @@ type ListsStore = {
 
 let initialLists = {};
 
-const launchArgs = LaunchArguments.value();
-if (launchArgs.FASTLANE_SNAPSHOT) {
+if (launchArguments.FASTLANE_SNAPSHOT) {
   initialLists['El Buen Pastor'] = {
     type: 'eucaristia',
     ambiental: 'Javier',
@@ -331,7 +330,7 @@ export const useListsStore = create<ListsStore>()(
         importList: async (listPath: string) => {
           const path = decodeURI(listPath);
           try {
-            const content = await RNFS.readFile(path);
+            const content = await FileSystem.readAsStringAsync(path);
             // Obtener nombre del archivo
             // que será nombre de la lista
             const parsed = pathParse(listPath);
@@ -358,17 +357,12 @@ export const useListsStore = create<ListsStore>()(
         shareList: async (listName: string, format: ShareListType) => {
           switch (format) {
             case 'native':
-              const folder =
-                Platform.OS === 'ios'
-                  ? RNFS.TemporaryDirectoryPath
-                  : RNFS.CachesDirectoryPath + '/';
               const fileName = listName.replace(' ', '-');
-              const listPath = `${folder}${fileName}.ireslist`;
+              const listPath = `${FileSystem.documentDirectory}${fileName}.ireslist`;
               const nativeList = get().lists[listName];
-              RNFS.writeFile(
+              await FileSystem.writeAsStringAsync(
                 listPath,
-                JSON.stringify(nativeList, null, ' '),
-                'utf8'
+                JSON.stringify(nativeList, null, ' ')
               );
               return listPath;
             case 'text':
@@ -410,7 +404,10 @@ export const useListsStore = create<ListsStore>()(
                   message += item.title + ': ' + item.value.join(', ') + '\n';
                 }
               });
-              return message;
+              const fileNameTxt = listName.replace(' ', '-');
+              const listPathTxt = `${FileSystem.documentDirectory}${fileNameTxt}.ireslist`;
+              await FileSystem.writeAsStringAsync(listPathTxt, message);
+              return listPathTxt;
             case 'pdf':
               var list = get().lists_ui.find(
                 (l) => l.name == listName
@@ -543,7 +540,7 @@ export const useListsStore = create<ListsStore>()(
       {
         name: 'lists',
         version: 1,
-        storage: launchArgs.FASTLANE_SNAPSHOT
+        storage: launchArguments.FASTLANE_SNAPSHOT
           ? undefined
           : createJSONStorage(() => AsyncStorage),
         partialize: (state) => ({ lists: state.lists }),
@@ -606,19 +603,21 @@ export const useBrothersStore = create<BrothersStore>()(
       deviceContacts_loaded: false,
       populateDeviceContacts: async (reqPerm: boolean) => {
         const hasPermission = await checkContactsPermission(reqPerm);
-        const devCts = hasPermission ? await Contacts.getAll() : [];
+        const { data } = hasPermission
+          ? await Contacts.getContactsAsync()
+          : { data: [] };
         console.log(
-          `brothersStore loading device contacts (permission = ${hasPermission}, count = ${devCts.length})`
+          `brothersStore loading device contacts (permission = ${hasPermission}, count = ${data.length})`
         );
         set((state) => ({
-          deviceContacts: devCts,
+          deviceContacts: data,
           deviceContacts_loaded: hasPermission,
         }));
         return get().contacts;
       },
       update: (id: string, item: Contacts.Contact) => {
         set((state: BrothersStore) => {
-          var brother = state.contacts.find((c) => c.recordID === id);
+          var brother = state.contacts.find((c) => c.id === id);
           if (brother) {
             var idx = state.contacts.indexOf(brother);
             state.contacts[idx] = Object.assign(brother, item);
@@ -627,9 +626,7 @@ export const useBrothersStore = create<BrothersStore>()(
       },
       addOrRemove: (contact: Contacts.Contact) => {
         set((state: BrothersStore) => {
-          var idx = state.contacts.findIndex(
-            (c) => c.recordID === contact.recordID
-          );
+          var idx = state.contacts.findIndex((c) => c.id === contact.id);
           // Ya esta importado
           if (idx !== -1) {
             state.contacts = state.contacts.filter((l, i) => i !== idx);
@@ -645,7 +642,7 @@ export const useBrothersStore = create<BrothersStore>()(
             const devCts = await get().populateDeviceContacts(false);
             state.contacts.forEach((c, idx) => {
               // tomar el contacto actualizado
-              var devContact = devCts.find((x) => x.recordID === c.recordID);
+              var devContact = devCts.find((x) => x.id === c.id);
               if (devContact) {
                 state.contacts[idx] = devContact as BrotherContact;
               }
@@ -656,8 +653,18 @@ export const useBrothersStore = create<BrothersStore>()(
     })),
     {
       name: 'contacts',
+      version: 1,
       storage: createJSONStorage(() => AsyncStorage),
       partialize: (state) => ({ contacts: state.contacts }),
+      migrate: (persistedState, version) => {
+        if (version === 0) {
+          var contacts = (persistedState as any).contacts as BrotherContact[];
+          contacts.forEach((ct) => {
+            ct.id = ct['recordID'];
+          });
+        }
+        return persistedState as BrothersStore;
+      },
       onRehydrateStorage: () => (state) => {
         state?.refreshContacts();
       },
@@ -666,43 +673,25 @@ export const useBrothersStore = create<BrothersStore>()(
 );
 
 const checkContactsPermission = async (reqPerm: boolean) => {
-  if (Platform.OS === 'android') {
+  const perm1 = await Contacts.getPermissionsAsync();
+  if (perm1.status === 'undetermined') {
     if (reqPerm) {
-      try {
-        const granted = await PermissionsAndroid.request(
-          PermissionsAndroid.PERMISSIONS.READ_CONTACTS
-        );
-        return granted === PermissionsAndroid.RESULTS.GRANTED;
-      } catch {
-        throw new Error('Sin permisos para leer contactos');
+      const perm2 = await Contacts.requestPermissionsAsync();
+      if (perm2.status === Contacts.PermissionStatus.GRANTED) {
+        return true;
       }
-    } else {
-      return PermissionsAndroid.check(
-        PermissionsAndroid.PERMISSIONS.READ_CONTACTS
-      );
-    }
-  } else {
-    const perm1 = await Contacts.checkPermission();
-    if (perm1 === 'undefined') {
-      if (reqPerm) {
-        return Contacts.requestPermission().then((perm2) => {
-          if (perm2 === 'authorized') {
-            return true;
-          }
-          if (perm2 === 'denied') {
-            throw new Error('denied');
-          }
-        });
-      } else {
+      if (perm2.status === Contacts.PermissionStatus.DENIED) {
         throw new Error('denied');
       }
-    }
-    if (perm1 === 'authorized') {
-      return true;
-    }
-    if (perm1 === 'denied') {
+    } else {
       throw new Error('denied');
     }
+  }
+  if (perm1.status === Contacts.PermissionStatus.GRANTED) {
+    return true;
+  }
+  if (perm1.status === Contacts.PermissionStatus.DENIED) {
+    throw new Error('denied');
   }
 };
 
@@ -920,12 +909,7 @@ useSettingsStore.subscribe(
 );
 
 export const sharePDF = (shareTitleSuffix: string, pdfPath: string) => {
-  Share.open({
-    title: i18n.t('ui.share'),
-    subject: `iResucitó - ${shareTitleSuffix}`,
-    url: `file://${pdfPath}`,
-    failOnCancel: false,
-  }).catch((err) => {
-    err && console.log(err);
+  Sharing.shareAsync(`file://${pdfPath}`, {
+    dialogTitle: i18n.t('ui.share'),
   });
 };

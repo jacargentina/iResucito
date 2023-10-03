@@ -1,4 +1,4 @@
-import * as React from 'react';
+
 import { useNavigation } from '@react-navigation/native';
 import type { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import { Text, Actionsheet } from '@gluestack-ui/themed';

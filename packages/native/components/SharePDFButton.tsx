@@ -1,4 +1,4 @@
-import * as React from 'react';
+
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { SongsStackParamList } from '../navigation';
 import { sharePDF } from '../hooks';

@@ -1,4 +1,4 @@
-import * as React from 'react';
+
 import RNPrint from 'react-native-print';
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { SongsStackParamList } from '../navigation';

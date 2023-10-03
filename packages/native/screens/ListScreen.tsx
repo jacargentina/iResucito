@@ -1,4 +1,4 @@
-import * as React from 'react';
+
 import { useState, useEffect, useRef } from 'react';
 import { Pressable, VStack, HStack, Icon, Text } from '@gluestack-ui/themed';
 import { Alert, View } from 'react-native';
@@ -99,7 +99,7 @@ const SwipeableRow = (props: { item: ListForUI }) => {
           borderBottomWidth={1}
           borderBottomColor="$muted200">
           <Icon as={BookmarkIcon} size="50" color="$rose500" />
-          <VStack space="xsm">
+          <VStack space="xs">
             <Text fontWeight="bold" fontSize="$xl">
               {item.name}
             </Text>

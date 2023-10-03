@@ -1,4 +1,4 @@
-import * as React from 'react';
+
 import { useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useAndroidBackHandler } from 'react-navigation-backhandler';

@@ -1,4 +1,4 @@
-import * as React from 'react';
+
 import type { StackScreenProps } from '@react-navigation/stack';
 import { useMemo, useCallback, useState } from 'react';
 import { useWindowDimensions } from 'react-native';

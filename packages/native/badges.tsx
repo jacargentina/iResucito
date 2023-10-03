@@ -1,4 +1,4 @@
-import * as React from 'react';
+
 import { Avatar, AvatarFallbackText } from '@gluestack-ui/themed';
 import { colors } from '@iresucito/core';
 

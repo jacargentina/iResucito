@@ -1,4 +1,4 @@
-import * as React from 'react';
+
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import i18n from '@iresucito/translations';
 import {

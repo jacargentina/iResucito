@@ -1,6 +1,12 @@
-import * as React from 'react';
-import { useState, useEffect, useMemo } from 'react';
-import { Text, Box, Pressable, HStack, VStack, Switch } from '@gluestack-ui/themed';
+import { memo, useState, useEffect, useMemo } from 'react';
+import {
+  Text,
+  Box,
+  Pressable,
+  HStack,
+  VStack,
+  Switch,
+} from '@gluestack-ui/themed';
 import { Keyboard, StyleSheet } from 'react-native';
 import { FlashList } from '@shopify/flash-list';
 import { ContactPhoto, ModalView, SearchBarView } from '../components';
@@ -14,7 +20,7 @@ import {
 } from '../util';
 import { Contact } from 'react-native-contacts';
 
-const BrotherItem = React.memo(
+const BrotherItem = memo(
   (props: {
     item: BrotherContact;
     handleContact: (c: BrotherContact) => void;
@@ -35,7 +41,7 @@ const BrotherItem = React.memo(
   }
 );
 
-const ContactItem = React.memo(
+const ContactItem = memo(
   (props: {
     item: ContactForImport;
     handleContact: (c: ContactForImport) => void;

@@ -1,4 +1,4 @@
-import * as React from 'react';
+
 import type { RouteProp } from '@react-navigation/native';
 import { Text } from '@gluestack-ui/themed';
 import { useRoute } from '@react-navigation/native';

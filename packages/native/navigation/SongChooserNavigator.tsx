@@ -1,4 +1,4 @@
-import * as React from 'react';
+
 import { createStackNavigator } from '@react-navigation/stack';
 import { SongChooserDialog, SongPreviewScreenDialog } from '../screens';
 import { useStackNavOptions } from './index';

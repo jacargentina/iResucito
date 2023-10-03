@@ -12,5 +12,6 @@
     {
       "path": "../core"
     }
-  ]
+  ],
+  "extends": "expo/tsconfig.base"
 }

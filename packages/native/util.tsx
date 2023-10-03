@@ -1,9 +1,10 @@
 // Utilerias atadas a react-native
 import { StyleSheet, Platform } from 'react-native';
-import { getLocales } from 'react-native-localize';
-import * as RNFS from 'react-native-fs';
-import DeviceInfo from 'react-native-device-info';
-import { Contact } from 'react-native-contacts';
+import { getLocales } from 'expo-localization';
+import * as FileSystem from 'expo-file-system';
+import { Asset } from 'expo-asset';
+import * as Device from 'expo-device';
+import * as Contacts from 'expo-contacts';
 import {
   SongsParser,
   SongsExtras,
@@ -34,15 +35,15 @@ export function ordenClasificacion(a: Song, b: Song): number {
   return 0;
 }
 
-export type ContactForImport = Contact & { imported: boolean };
+export type ContactForImport = Contacts.Contact & { imported: boolean };
 
 export function getContactsForImport(
-  allContacts: Contact[],
+  allContacts: Contacts.Contact[],
   importedContacts: BrotherContact[]
 ): ContactForImport[] {
   // Fitrar y generar contactos únicos
   var grouped = allContacts.reduce(
-    (groups: { [fullname: string]: Contact[] }, item) => {
+    (groups: { [fullname: string]: Contacts.Contact[] }, item) => {
       var fullname = `${item.givenName} ${item.familyName}`;
       groups[fullname] = groups[fullname] || [];
       groups[fullname].push(item);
@@ -50,7 +51,7 @@ export function getContactsForImport(
     },
     {}
   );
-  var unique: Contact[] = [];
+  var unique: Contacts.Contact[] = [];
   for (var fullname in grouped) {
     if (grouped[fullname].length > 1) {
       var conMiniatura = grouped[fullname].find((c) => c.hasThumbnail === true);
@@ -73,7 +74,7 @@ export const getDefaultLocale = (): string => {
   return getLocales()[0].languageTag;
 };
 
-var isTablet = __DEV__ ? false : DeviceInfo.isTablet();
+var isTablet = __DEV__ ? false : Device.deviceType == Device.DeviceType.TABLET;
 var fontSizeTitulo = isTablet ? 25 : 22;
 var fontSizeTexto = isTablet ? 17 : 15;
 var fontSizeNotas = isTablet ? 15.2 : 12.5;
@@ -138,58 +139,56 @@ export const stylesObj: SongStyles = {
 
 export const NativeStyles: any = StyleSheet.create(stylesObj);
 
-const BaseSongsPath =
-  Platform.OS === 'ios' ? `${RNFS.MainBundlePath}/songs` : 'songs';
-
-const NativeSongsLoader =
-  Platform.OS === 'ios' ? RNFS.readDir : RNFS.readDirAssets;
-
-const NativeSongReader =
-  Platform.OS === 'ios' ? RNFS.readFile : RNFS.readFileAssets;
+const BaseSongsPath = 'file://assets/songs';
 
 export const NativeSongs: SongsProcessor = new SongsProcessor(
   BaseSongsPath,
-  NativeSongsLoader,
-  NativeSongReader
+  FileSystem.readDirectoryAsync,
+  FileSystem.readAsStringAsync
 );
 
 class NativeSongsExtras implements SongsExtras {
   async readPatch(): Promise<SongIndexPatch> {
-    const json = await RNFS.readFile(this.getPatchUri());
+    const json = await FileSystem.readAsStringAsync(this.getPatchUri());
     return JSON.parse(json) as SongIndexPatch;
   }
 
   savePatch(patch: SongIndexPatch): Promise<void> {
     const json = JSON.stringify(patch);
-    return RNFS.writeFile(this.getPatchUri(), json, 'utf8');
+    return FileSystem.writeAsStringAsync(this.getPatchUri(), json, {
+      encoding: 'utf8',
+    });
   }
 
   deletePatch(): Promise<void> {
-    return RNFS.unlink(this.getPatchUri());
+    return FileSystem.deleteAsync(this.getPatchUri());
   }
 
   getPatchUri(): string {
-    return `${RNFS.DocumentDirectoryPath}/SongsIndexPatch.json`;
+    return `${FileSystem.documentDirectory}/SongsIndexPatch.json`;
   }
 
   readSettings(): Promise<string> {
-    return RNFS.readFile(this.getSettingsUri());
+    return FileSystem.readAsStringAsync(this.getSettingsUri());
   }
 
   saveSettings(ratings: any): Promise<void> {
-    return RNFS.writeFile(this.getSettingsUri(), ratings, 'utf8');
+    return FileSystem.writeAsStringAsync(this.getSettingsUri(), ratings, {
+      encoding: 'utf8',
+    });
   }
 
   deleteSettings(): Promise<void> {
-    return RNFS.unlink(this.getSettingsUri());
+    return FileSystem.deleteAsync(this.getSettingsUri());
   }
 
-  settingsExists(): Promise<boolean> {
-    return RNFS.exists(this.getSettingsUri());
+  async settingsExists(): Promise<boolean> {
+    const info = await FileSystem.getInfoAsync(this.getSettingsUri());
+    return info.exists;
   }
 
   getSettingsUri(): string {
-    return `${RNFS.DocumentDirectoryPath}/SongsSettings.json`;
+    return `${FileSystem.documentDirectory}/SongsSettings.json`;
   }
 }
 
@@ -197,10 +196,12 @@ export const NativeExtras: SongsExtras = new NativeSongsExtras();
 
 export const NativeParser: SongsParser = new SongsParser(NativeStyles);
 
-export const contactFilterByText = (c: Contact, text: string): boolean => {
+export const contactFilterByText = (
+  c: Contacts.Contact,
+  text: string
+): boolean => {
   return (
-    c.givenName.toLowerCase().includes(text.toLowerCase()) ||
-    (typeof c.familyName == 'string' &&
-      c.familyName.toLowerCase().includes(text.toLowerCase()))
+    (c.firstName && c.firstName.toLowerCase().includes(text.toLowerCase())) ||
+    (c.lastName && c.lastName.toLowerCase().includes(text.toLowerCase()))
   );
 };

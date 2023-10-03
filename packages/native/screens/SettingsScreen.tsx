@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { Image, Linking, Alert, ScrollView } from 'react-native';
 import { useAndroidBackHandler } from 'react-navigation-backhandler';
@@ -14,7 +13,7 @@ import {
   Switch,
 } from '@gluestack-ui/themed';
 import { useScrollToTop } from '@react-navigation/native';
-import DeviceInfo from 'react-native-device-info';
+import * as Application from 'expo-application';
 import i18n from '@iresucito/translations';
 import { getLocalesForPicker, CollaboratorsIndex } from '@iresucito/core';
 import { useSettingsStore, useSongsStore } from '../hooks';
@@ -51,7 +50,7 @@ export const SettingsScreen = () => {
 
   useEffect(() => {
     const load = async () => {
-      setVersion(DeviceInfo.getReadableVersion());
+      setVersion(Application.nativeApplicationVersion);
       setSettingsExists(await NativeExtras.settingsExists());
     };
     load();
@@ -162,7 +161,7 @@ export const SettingsScreen = () => {
         p="$3"
         justifyContent="space-between"
         alignItems="center">
-        <VStack w="80%" space="$2">
+        <VStack w="80%" space="sm">
           <Text>{i18n.t('settings_title.keep awake')}</Text>
           <Text fontSize="$sm" color="$muted500">
             {i18n.t('settings_note.keep awake')}

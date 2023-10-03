@@ -1,4 +1,4 @@
-import * as React from 'react';
+
 import { useEffect } from 'react';
 import { Platform, Linking } from 'react-native';
 import {

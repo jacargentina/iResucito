@@ -1,4 +1,4 @@
-import * as React from 'react';
+
 import { useNavigation } from '@react-navigation/native';
 import { Box, Text, HStack, Button, Center } from '@gluestack-ui/themed';
 import { Platform, KeyboardAvoidingView } from 'react-native';

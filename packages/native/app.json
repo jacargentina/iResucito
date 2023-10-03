@@ -21,6 +21,15 @@
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.javiercastro.iresucito"
-    }
+    },
+    "plugins": [
+      "expo-localization",
+      [
+        "expo-contacts",
+        {
+          "contactsPermission": "Permitir $(PRODUCT_NAME) acceso a los contactos."
+        }
+      ]
+    ]
   }
 }

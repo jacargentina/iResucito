@@ -1,4 +1,4 @@
-import * as React from 'react';
+
 import { useState, useRef } from 'react';
 import { Alert, ScrollView, View } from 'react-native';
 import { VStack, Text } from '@gluestack-ui/themed';

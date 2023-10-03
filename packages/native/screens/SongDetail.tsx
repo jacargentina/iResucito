@@ -1,4 +1,4 @@
-import * as React from 'react';
+
 import { useEffect } from 'react';
 import KeepAwake from 'react-native-keep-awake';
 import { RouteProp, useRoute } from '@react-navigation/native';

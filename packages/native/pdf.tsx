@@ -1,5 +1,4 @@
-import { Platform } from 'react-native';
-import RNFS from 'react-native-fs';
+import * as FileSystem from 'expo-file-system';
 import {
   PdfWriter,
   SongPDFGenerator,
@@ -17,16 +16,13 @@ export async function generateSongPDF(
   filename: string,
   addIndex: boolean
 ): Promise<string> {
-  const folder =
-    Platform.OS === 'ios'
-      ? RNFS.TemporaryDirectoryPath
-      : RNFS.CachesDirectoryPath + '/';
+  const folder = FileSystem.cacheDirectory;
 
   const safeFileName = filename.replace('/', '-');
   const pdfPath = `${folder}/${safeFileName}.pdf`;
 
-  const reader = Platform.OS === 'ios' ? RNFS.readFile : RNFS.readFileAssets;
-  const fontFolder = Platform.OS === 'ios' ? RNFS.MainBundlePath : 'fonts';
+  const reader = FileSystem.readAsStringAsync;
+  const fontFolder = FileSystem.bundledAssets;
   const ttf = await reader(
     `${fontFolder}/Franklin Gothic Medium.ttf`,
     'base64'
@@ -34,7 +30,7 @@ export async function generateSongPDF(
 
   var writer = new PdfWriter(Buffer.from(ttf, 'base64'), new Base64Encode({}));
   const base64 = await SongPDFGenerator(songsToPdf, opts, writer, addIndex);
-  RNFS.writeFile(pdfPath, base64, 'base64');
+  FileSystem.writeAsStringAsync(pdfPath, base64, { encoding: 'base64' });
   return pdfPath;
 }
 
@@ -42,16 +38,13 @@ export async function generateListPDF(
   list: ListToPdf,
   opts: ExportToPdfOptions
 ): Promise<string> {
-  const folder =
-    Platform.OS === 'ios'
-      ? RNFS.TemporaryDirectoryPath
-      : RNFS.CachesDirectoryPath + '/';
+  const folder = FileSystem.cacheDirectory;
 
   const safeFileName = list.name.replace('/', '-');
   const pdfPath = `${folder}/${safeFileName}.pdf`;
 
-  const reader = Platform.OS === 'ios' ? RNFS.readFile : RNFS.readFileAssets;
-  const fontFolder = Platform.OS === 'ios' ? RNFS.MainBundlePath : 'fonts';
+  const reader = FileSystem.readAsStringAsync;
+  const fontFolder = FileSystem.bundledAssets;
   const ttf = await reader(
     `${fontFolder}/Franklin Gothic Medium.ttf`,
     'base64'
@@ -59,6 +52,6 @@ export async function generateListPDF(
 
   var writer = new PdfWriter(Buffer.from(ttf, 'base64'), new Base64Encode({}));
   const base64 = await ListPDFGenerator(list, opts, writer);
-  RNFS.writeFile(pdfPath, base64, 'base64');
+  FileSystem.writeAsStringAsync(pdfPath, base64, { encoding: 'base64' });
   return pdfPath;
 }

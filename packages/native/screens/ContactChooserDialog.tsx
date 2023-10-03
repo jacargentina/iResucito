@@ -1,4 +1,4 @@
-import * as React from 'react';
+
 import type { RouteProp } from '@react-navigation/native';
 import Contacts from 'react-native-contacts';
 import { useState, useMemo } from 'react';

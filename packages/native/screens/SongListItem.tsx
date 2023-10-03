@@ -1,6 +1,6 @@
-import * as React from 'react';
+
 import { StackNavigationProp } from '@react-navigation/stack';
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import { Alert } from 'react-native';
 import {
   Box,
