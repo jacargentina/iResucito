@@ -1,6 +1,5 @@
-
 import { useEffect } from 'react';
-import KeepAwake from 'react-native-keep-awake';
+import { activateKeepAwakeAsync, deactivateKeepAwake } from 'expo-keep-awake';
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { useSettingsStore } from '../hooks';
 import { SongViewFrame } from './SongViewFrame';
@@ -15,9 +14,9 @@ export const SongDetail = () => {
 
   useEffect(() => {
     if (keepAwake) {
-      KeepAwake.activate();
+      activateKeepAwakeAsync();
       return function () {
-        KeepAwake.deactivate();
+        deactivateKeepAwake();
       };
     }
   }, [keepAwake]);

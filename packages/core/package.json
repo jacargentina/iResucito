@@ -15,6 +15,8 @@
     "@types/country-list": "^2.1.2",
     "@types/langs": "^2.0.2",
     "country-list": "^2.3.0",
+    "expo-asset": "~8.10.1",
+    "expo-file-system": "~15.4.4",
     "langs": "^2.0.0",
     "lodash": "^4.17.21",
     "normalize-strings": "^1.1.1",

@@ -2,13 +2,11 @@
 import { StyleSheet, Platform } from 'react-native';
 import { getLocales } from 'expo-localization';
 import * as FileSystem from 'expo-file-system';
-import { Asset } from 'expo-asset';
 import * as Device from 'expo-device';
 import * as Contacts from 'expo-contacts';
 import {
   SongsParser,
   SongsExtras,
-  SongsProcessor,
   SongStyles,
   Song,
   SongIndexPatch,
@@ -138,14 +136,6 @@ export const stylesObj: SongStyles = {
 };
 
 export const NativeStyles: any = StyleSheet.create(stylesObj);
-
-const BaseSongsPath = 'file://assets/songs';
-
-export const NativeSongs: SongsProcessor = new SongsProcessor(
-  BaseSongsPath,
-  FileSystem.readDirectoryAsync,
-  FileSystem.readAsStringAsync
-);
 
 class NativeSongsExtras implements SongsExtras {
   async readPatch(): Promise<SongIndexPatch> {

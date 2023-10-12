@@ -1,5 +1,4 @@
-
-import { useState, useEffect, useRef } from 'react';
+import { useLayoutEffect, useState, useEffect, useRef } from 'react';
 import { Pressable, VStack, HStack, Icon, Text } from '@gluestack-ui/themed';
 import { Alert, View } from 'react-native';
 import { FlashList } from '@shopify/flash-list';
@@ -134,7 +133,7 @@ export const ListScreen = () => {
     setFiltered(result);
   }, [lists_ui, filter]);
 
-  React.useLayoutEffect(() => {
+  useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
         <HeaderButton

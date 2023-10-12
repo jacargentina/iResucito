@@ -35,7 +35,7 @@ const NoLocaleWarning = () => {
       }}>
       <HStack alignItems="center">
         <Icon color="$rose700" as={BugIcon} size="sm" mr="$2" />
-        <Text fontSize={14} color="$muted500">
+        <Text fontSize={14} color="$backgroundDark500">
           {i18n.t('ui.locale warning title')}
         </Text>
       </HStack>
@@ -142,7 +142,7 @@ export const SongListItem = (props: {
       testID={`song-${song.titulo}`}
       p="$2"
       borderBottomWidth={1}
-      borderBottomColor={isSelected ? '$rose200' : '$muted200'}
+      borderBottomColor={isSelected ? '$rose200' : '$light200'}
       backgroundColor={isSelected ? '$rose100' : undefined}
       onPress={() => {
         if (enabled) {
@@ -186,7 +186,7 @@ export const SongListItem = (props: {
               autoEscape
               numberOfLines={1}
               style={{
-                color: config.theme.tokens.colors.muted500,
+                color: config.theme.tokens.colors.backgroundDark500,
                 paddingVertical: 2,
               }}
               highlightStyle={{

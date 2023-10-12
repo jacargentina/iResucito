@@ -1,7 +1,12 @@
 import * as path from 'path';
 import * as fs from 'fs';
 import { Dropbox } from 'dropbox';
-import { SongIndexPatch, SongsExtras, SongsProcessor } from '@iresucito/core';
+import {
+  SongIndexPatch,
+  SongsExtras,
+  SongsProcessor,
+  SongsSourceData,
+} from '@iresucito/core';
 import { Low, Adapter } from 'lowdb';
 import send from 'gmail-send';
 
@@ -74,7 +79,8 @@ class WebSongsExtras implements SongsExtras {
 
   constructor() {
     this.patch = new Low<SongIndexPatch>(
-      new DropboxJsonFile('SongsIndexPatch.json'), {}
+      new DropboxJsonFile('SongsIndexPatch.json'),
+      {}
     );
   }
 
@@ -122,11 +128,12 @@ const NodeLister = async (path: string) => {
 };
 
 if (globalThis.folderSongs === undefined) {
-  globalThis.folderSongs = new SongsProcessor(
-    path.resolve(__dirname + '/../public/songs'),
-    NodeLister,
-    NodeReader
-  );
+  var allLocales: SongsSourceData = {};
+
+  allLocales['es'] = require('@iresucito/core/assets/songs/es.json');
+  allLocales['en'] = require('@iresucito/core/assets/songs/en.json');
+
+  globalThis.folderSongs = new SongsProcessor(allLocales);
 }
 
 if (globalThis.folderExtras === undefined) {
@@ -144,7 +151,10 @@ if (globalThis.mailSender === undefined) {
 const setupDb = async () => {
   if (globalThis.db === undefined) {
     try {
-      var db = new Low<DbType>(new DropboxJsonFile('db.json'), { users: [], tokens: [] });
+      var db = new Low<DbType>(new DropboxJsonFile('db.json'), {
+        users: [],
+        tokens: [],
+      });
       await db.read();
       if (db.data == null) {
         // @ts-ignore

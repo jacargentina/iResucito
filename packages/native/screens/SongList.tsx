@@ -208,7 +208,7 @@ export const SongList = (props: {
           // @ts-ignore
           size="large"
         />
-        <Text color="$muted500" style={{ textAlign: 'center' }}>
+        <Text color="$backgroundDark500" style={{ textAlign: 'center' }}>
           {loading.text}
         </Text>
       </View>
@@ -227,7 +227,7 @@ export const SongList = (props: {
         onClose={handleClose}
         setLoading={setLoading}
       />
-      <Text fontWeight="bold" p="$2" px="$4" bg="$gray100" color="$muted500">
+      <Text fontWeight="bold" p="$2" px="$4" bg="$backgroundDark100" color="$textDark500">
         {totalText}
       </Text>
       <FlashList

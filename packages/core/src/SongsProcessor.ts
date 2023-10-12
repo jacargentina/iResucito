@@ -2,7 +2,6 @@ import {
   getPropertyLocale,
   Song,
   SongChange,
-  SongFile,
   SongIndexPatch,
   SongPatchData,
   SongRef,
@@ -10,10 +9,12 @@ import {
   SongsData,
   SongSettingsFile,
   CollaboratorsData,
-} from './common';
-import SongsIndexRaw from '../assets/songs.json';
-import SongsHistoryRaw from '../assets/patches.json';
-import CollaboratorsRaw from '../assets/collaborators.json';
+  SongDetails,
+  SongsSourceData,
+} from '@iresucito/core';
+import SongsIndexRaw from '@iresucito/core/assets/songsv2.json';
+import SongsHistoryRaw from '@iresucito/core/assets/patches.json';
+import CollaboratorsRaw from '@iresucito/core/assets/collaborators.json';
 
 export const SongsHistory: SongsChanges = SongsHistoryRaw;
 
@@ -21,15 +22,29 @@ export const SongsIndex: SongsData = SongsIndexRaw;
 
 export const CollaboratorsIndex: CollaboratorsData = CollaboratorsRaw;
 
-export const getSongFileFromString = (str: string): SongFile => {
+export const getBestKeyForLocale = (
+  files: { [locale: string]: string },
+  rawLoc: string
+): { locale: string; key: string } => {
+  var loc = getPropertyLocale(files, rawLoc);
+  if (!loc) {
+    loc = Object.getOwnPropertyNames(files)[0];
+  }
+  if (!loc) {
+    loc = rawLoc;
+  }
+  var key = files[loc];
+  return { locale: loc, key };
+};
+
+export const getSongDetails = (str: string): SongDetails => {
   var titulo = str.includes(' - ')
     ? str.substring(0, str.indexOf(' - ')).trim()
     : str;
   var fuente =
     titulo !== str ? str.substring(str.indexOf(' - ') + 3).trim() : '';
-  var nombre = str.replace('.txt', '');
   return {
-    nombre: nombre,
+    nombre: str,
     titulo: titulo,
     fuente: fuente,
   };
@@ -39,41 +54,11 @@ export function ordenAlfabetico(a: SongRef, b: SongRef): number {
   return a.titulo.localeCompare(b.titulo);
 }
 
-declare type PathLoaderFunc = (path: string) => Promise<any>;
-
 export class SongsProcessor {
-  basePath: string;
-  songsLister: PathLoaderFunc;
-  songReader: PathLoaderFunc;
+  allLocales: SongsSourceData;
 
-  constructor(
-    basePath: string,
-    songsLister: PathLoaderFunc,
-    songReader: PathLoaderFunc
-  ) {
-    this.basePath = basePath;
-    this.songsLister = songsLister;
-    this.songReader = songReader;
-    console.log('SongsProcessor basePath: ', this.basePath);
-  }
-
-  getBestFileForLocale(
-    files: { [key: string]: string },
-    rawLoc: string,
-    defaultFile: string
-  ): { locale: string; name: string } {
-    var loc = getPropertyLocale(files, rawLoc);
-    if (!loc) {
-      loc = Object.getOwnPropertyNames(files)[0];
-    }
-    if (!loc) {
-      loc = rawLoc;
-    }
-    var file = files[loc];
-    if (!file) {
-      file = defaultFile;
-    }
-    return { locale: loc, name: file };
+  constructor(allLocales: SongsSourceData) {
+    this.allLocales = allLocales;
   }
 
   getSongHistory(key: string, rawLoc: string): Array<SongChange> {
@@ -95,11 +80,17 @@ export class SongsProcessor {
     }
     const song = SongsIndex[key];
 
-    const bestFile = this.getBestFileForLocale(song.files, rawLoc, key);
+    const best_key = getBestKeyForLocale(song.files, rawLoc);
 
-    const parsed = getSongFileFromString(bestFile.name);
+    if (!this.allLocales[best_key.locale]) {
+      throw new Error(
+        `song key = "${key}" no se encuentra el locale "${best_key.locale}"`
+      );
+    }
+    const song_name = this.allLocales[best_key.locale][best_key.key].name;
+    const parsed = getSongDetails(song_name);
 
-    var info = {
+    var info: Song = {
       key,
       patched: false,
       rating: 0,
@@ -124,7 +115,6 @@ export class SongsProcessor {
       nombre: parsed.nombre,
       fuente: parsed.fuente,
       titulo: parsed.titulo,
-      path: `${this.basePath}/${bestFile.locale}/${bestFile.name}.txt`,
       // Asignar numero de version segun historico
       version: this.getSongHistory(key, rawLoc).length,
       fullText: '',
@@ -144,7 +134,7 @@ export class SongsProcessor {
       if (loc) {
         info.patched = true;
         const { name, stage } = patch[key][loc];
-        const renamed = getSongFileFromString(name);
+        const renamed = getSongDetails(name);
         info.nombre = renamed.nombre;
         info.fuente = renamed.fuente;
         info.titulo = renamed.titulo;
@@ -187,8 +177,8 @@ export class SongsProcessor {
         var sPatch = patch[pKey];
         if (sPatch[rawLoc]) {
           var patchData: SongPatchData = sPatch[rawLoc];
-          const parsed = getSongFileFromString(patchData.name);
-          var info = {
+          const parsed = getSongDetails(patchData.name);
+          var info: Song = {
             key: pKey,
             patched: false,
             rating: 0,
@@ -216,7 +206,6 @@ export class SongsProcessor {
               [rawLoc]: patchData.name,
             },
             stage: patchData.stage,
-            path: `${this.basePath}/${rawLoc}/${patchData.name}.txt`,
             fullText: '',
           };
           songs.push(info);
@@ -227,34 +216,12 @@ export class SongsProcessor {
     return songs;
   }
 
-  async readLocaleSongs(rawLoc: string): Promise<Array<SongFile>> {
-    try {
-      let items = await this.songsLister(`${this.basePath}/${rawLoc}`);
-      // Very important to call "normalize"
-      // See editing.txt for details
-      let files = items
-        .map((i) => i.name)
-        .filter((i) => i.endsWith('.txt'))
-        .map((i) => i.replace('.txt', '').normalize())
-        .map((i) => getSongFileFromString(i));
-      files.sort(ordenAlfabetico);
-      return files;
-    } catch (err) {
-      console.log('readLocaleSongs ERROR', err);
-      return [];
-    }
-  }
+  // loadLocaleSongFile(rawLoc: string, filename: string): string {
+  //   const path = `${rawLoc}/${filename}.txt`;
+  //   return this.songReader(path);
+  // }
 
-  async loadLocaleSongFile(rawLoc: string, filename: string): Promise<string> {
-    const path = `${this.basePath}/${rawLoc}/${filename}.txt`;
-    return this.songReader(path);
-  }
-
-  async loadSingleSong(
-    rawLoc: string,
-    song: Song,
-    patch?: SongIndexPatch
-  ): Promise<any> {
+  loadSingleSong(rawLoc: string, song: Song, patch?: SongIndexPatch) {
     try {
       if (patch && patch.hasOwnProperty(song.key)) {
         const sPatch = patch[song.key];
@@ -264,28 +231,23 @@ export class SongsProcessor {
           return;
         }
       }
-      var content = await this.songReader(song.path);
+      const best_key = getBestKeyForLocale(song.files, rawLoc);
+      var content = this.allLocales[best_key.locale][best_key.key].source;
       if (typeof content === 'string') {
         song.fullText = content;
       }
     } catch (err) {
       console.log(
-        `loadSingleSong basePath=${this.basePath} key=${song.key}, locale=${rawLoc}, error=${err.message}`
+        `loadSingleSong key=${song.key}, locale=${rawLoc}, error=${err.message}`
       );
       song.error = err.message;
       song.fullText = '';
     }
   }
 
-  async loadSongs(
-    rawLoc: string,
-    songs: Array<Song>,
-    patch?: SongIndexPatch
-  ): Promise<any> {
-    return Promise.all(
-      songs.map((song) => {
-        return this.loadSingleSong(rawLoc, song, patch);
-      })
-    );
+  loadSongs(rawLoc: string, songs: Array<Song>, patch?: SongIndexPatch) {
+    songs.map((song) => {
+      return this.loadSingleSong(rawLoc, song, patch);
+    });
   }
 }

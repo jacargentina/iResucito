@@ -17,8 +17,10 @@ config.resolver.nodeModulesPaths = [
 ];
 // 3. Force Metro to resolve (sub)dependencies only from the `nodeModulesPaths`
 config.resolver.disableHierarchicalLookup = true;
+config.resolver.assetExts.push('json');
 config.resolver.sourceExts.push('mjs');
-config.resolver.sourceExts.push('txt');
+config.resolver.sourceExts = config.resolver.sourceExts.filter(e => e != 'json');
+
 config.resolver.blockList = [config.resolver.blockList, /(\/\.vercel\/.*)$/];
 
 module.exports = config;

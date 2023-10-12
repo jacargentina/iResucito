@@ -1,9 +1,15 @@
-
 import { useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useAndroidBackHandler } from 'react-navigation-backhandler';
 import { Platform } from 'react-native';
-import { Box, Input, Icon, CloseIcon } from '@gluestack-ui/themed';
+import {
+  Box,
+  Input,
+  CloseIcon,
+  InputIcon,
+  InputField,
+  InputSlot,
+} from '@gluestack-ui/themed';
 import { useDebounce } from 'use-debounce';
 import { SearchIcon } from 'lucide-react-native';
 
@@ -27,10 +33,10 @@ export const DebouncedInput = (props: {
 
   return (
     <Input width="100%">
-      <Input.Icon pl="$2">
-        <Icon as={SearchIcon} color="$primary500" />
-      </Input.Icon>
-      <Input.Input
+      <InputSlot>
+        <InputIcon ml="$2" as={SearchIcon} color="$primary500" size="lg" />
+      </InputSlot>
+      <InputField
         testID={testID}
         placeholder={placeholder}
         onChangeText={setSearchTerm}
@@ -41,9 +47,9 @@ export const DebouncedInput = (props: {
         autoCorrect={false}
       />
       {Platform.OS === 'ios' ? (
-        <Input.Icon pr="$2">
-          <CloseIcon onPress={() => setSearchTerm('')} />
-        </Input.Icon>
+        <InputSlot onPress={() => setSearchTerm('')}>
+          <InputIcon mr="$2" as={CloseIcon} />
+        </InputSlot>
       ) : undefined}
     </Input>
   );

@@ -237,7 +237,7 @@ const ListDetailItem = (props: {
   if (typeof listKey === 'string') {
     var friendlyText = getLocalizedListItem(listKey).toUpperCase();
     separator = (
-      <Text fontWeight="bold" p="$2" fontSize="$sm" bg="$gray100">
+      <Text fontWeight="bold" p="$2" fontSize="$sm" bg="$backgroundDark100">
         {friendlyText}
       </Text>
     );

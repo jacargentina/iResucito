@@ -123,7 +123,7 @@ export const SettingsScreen = () => {
     <ScrollView ref={ref}>
       <VStack space="sm" p="$3">
         <Text>{i18n.t('settings_title.locale')}</Text>
-        <Text fontSize="$sm" color="$muted500" mb="$2">
+        <Text fontSize="$sm" color="$backgroundDark500" mb="$2">
           {i18n.t('settings_note.locale')}
         </Text>
         <Select
@@ -151,7 +151,7 @@ export const SettingsScreen = () => {
         </Select>
         <HStack space="sm" p="$3" justifyContent="center" alignItems="center">
           <Icon as={LineChart} size="md" />
-          <Text fontSize="$sm" color="$muted500">
+          <Text fontSize="$sm" color="$backgroundDark500">
             {songsResume}
           </Text>
         </HStack>
@@ -163,7 +163,7 @@ export const SettingsScreen = () => {
         alignItems="center">
         <VStack w="80%" space="sm">
           <Text>{i18n.t('settings_title.keep awake')}</Text>
-          <Text fontSize="$sm" color="$muted500">
+          <Text fontSize="$sm" color="$backgroundDark500">
             {i18n.t('settings_note.keep awake')}
           </Text>
         </VStack>

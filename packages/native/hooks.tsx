@@ -25,6 +25,8 @@ import {
   PalabraList,
   getListTitleValue,
   ListTitleValue,
+  SongsProcessor,
+  SongsSourceData,
 } from '@iresucito/core';
 import i18n from '@iresucito/translations';
 import badges from './badges';
@@ -37,12 +39,7 @@ import {
   subscribeWithSelector,
 } from 'zustand/middleware';
 import { shallow } from 'zustand/shallow';
-import {
-  getDefaultLocale,
-  ordenClasificacion,
-  NativeSongs,
-  NativeExtras,
-} from './util';
+import { getDefaultLocale, ordenClasificacion, NativeExtras } from './util';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const readSongSettingsFile = async (): Promise<
@@ -65,16 +62,38 @@ type SongsStore = {
   load: (locale: string) => Promise<Song[]>;
 };
 
+const allLocales: SongsSourceData = {
+  es: require('@iresucito/core/assets/songs/es.json'),
+  en: require('@iresucito/core/assets/songs/en.json'),
+  it: require('@iresucito/core/assets/songs/it.json'),
+  'de-AT': require('@iresucito/core/assets/songs/de-AT.json'),
+  de: require('@iresucito/core/assets/songs/de.json'),
+  fr: require('@iresucito/core/assets/songs/fr.json'),
+  'lt-LT': require('@iresucito/core/assets/songs/lt-LT.json'),
+  pl: require('@iresucito/core/assets/songs/pl.json'),
+  'pt-BR': require('@iresucito/core/assets/songs/pt-BR.json'),
+  'pt-PT': require('@iresucito/core/assets/songs/pt-PT.json'),
+  ru: require('@iresucito/core/assets/songs/ru.json'),
+  'sw-TZ': require('@iresucito/core/assets/songs/sw-TZ.json'),
+};
+
 export const useSongsStore = create<SongsStore>((set) => ({
   songs: [],
   load: async (locale: string) => {
-    var settingsObj = await readSongSettingsFile();
-    // Construir metadatos de cantos
-    var metaData = NativeSongs.getSongsMeta(locale, undefined, settingsObj);
-    console.log(`songsStore loading ${metaData.length} songs for "${locale}"`);
-    await NativeSongs.loadSongs(locale, metaData);
-    set((state) => ({ songs: metaData }));
-    return metaData;
+    try {
+      var settingsObj = await readSongSettingsFile();
+      var nativeSongs: SongsProcessor = new SongsProcessor(allLocales);
+      // Construir metadatos de cantos
+      var metaData = nativeSongs.getSongsMeta(locale, undefined, settingsObj);
+      console.log(
+        `songsStore loading ${metaData.length} songs for "${locale}"`
+      );
+      nativeSongs.loadSongs(locale, metaData);
+      set((state) => ({ songs: metaData }));
+      return metaData;
+    } catch (err) {
+      console.log('ERR', err);
+    }
   },
 }));
 

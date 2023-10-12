@@ -59,7 +59,7 @@ export const SongSearch = () => {
         const nextItem = searchItems![index + 1];
         if (item.divider) {
           return (
-            <Text fontWeight="bold" p="$2" fontSize="$sm" bg="$gray100">
+            <Text fontWeight="bold" p="$2" fontSize="$sm" bg="$backgroundDark100">
               {i18n.t(item.title_key).toUpperCase()}
             </Text>
           );
@@ -74,7 +74,7 @@ export const SongSearch = () => {
               {item.badge}
               <VStack>
                 <Text fontWeight="bold">{i18n.t(item.title_key)}</Text>
-                <Text color="$muted500" fontSize="$sm">
+                <Text color="$backgroundDark500" fontSize="$sm">
                   {i18n.t(item.note_key as string)}
                 </Text>
               </VStack>

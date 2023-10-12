@@ -11,7 +11,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#FFFFFF"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": ["**/*", "@iresucito/core/assets/songs/*.json"],
     "ios": {
       "bundleIdentifier": "com.javiercastro.iresucito"
     },
@@ -29,7 +29,19 @@
         {
           "contactsPermission": "Permitir $(PRODUCT_NAME) acceso a los contactos."
         }
+      ],
+      "sentry-expo"
+    ],
+    "hooks": {
+      "postPublish": [
+        {
+          "file": "sentry-expo/upload-sourcemaps",
+          "config": {
+            "organization": "javier-castro",
+            "project": "iresucito"
+          }
+        }
       ]
-    ]
+    }
   }
 }

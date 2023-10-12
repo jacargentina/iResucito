@@ -38,6 +38,19 @@ export type SongsData = {
   [songKey: string]: SongItem;
 };
 
+export type SongLocaleItem = {
+  name: string;
+  source: string;
+};
+
+export type SongsLocaleData = {
+  [index: string]: SongLocaleItem;
+};
+
+export type SongsSourceData = {
+  [locale: string]: SongsLocaleData;
+}
+
 export type SongsChanges = {
   [songKey: string]: Array<SongChange>;
 };
@@ -151,10 +164,10 @@ export type SongRendering = {
   indicators: Array<SongIndicator>;
 };
 
-// nombre: el nombre completo del archivo, sin la extension .txt
-// titulo: el titulo del anto
+// nombre: el nombre completo del canto
+// titulo: el titulo del canto
 // fuente: el origen del canto (salmo, palabra, etc)
-export type SongFile = {
+export type SongDetails = {
   nombre: string;
   titulo: string;
   fuente: string;
@@ -164,12 +177,10 @@ export type SongFile = {
 // nombre: el nombre completo del archivo, sin la extension .txt
 // titulo: el titulo del anto
 // fuente: el origen del canto (salmo, palabra, etc)
-// path: el path completo al canto, incluyendo el locale, el nombre del archivo con la extension
 // files: diccionario con todos los idiomas del canto
 // fullText: el texto completo del canto
 // lines: array de las lineas del canto
 export type Song = {
-  [property: string]: any;
   key: string;
   version: number;
   notTranslated: boolean;
@@ -190,7 +201,6 @@ export type Song = {
   nombre: string;
   titulo: string;
   fuente: string;
-  path: string;
   files: { [key: string]: string };
   stages?: { [key: string]: string };
   fullText: string;
@@ -261,7 +271,7 @@ export type SongToPdf = {
   render: SongRendering;
 };
 
-export type SongRef = Song | SongFile;
+export type SongRef = Song | SongDetails;
 
 export type SearchParams = {
   filter: any;
