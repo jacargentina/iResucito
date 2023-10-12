@@ -93,6 +93,7 @@ export const useSongsStore = create<SongsStore>((set) => ({
       return metaData;
     } catch (err) {
       console.log('ERR', err);
+      return [];
     }
   },
 }));

@@ -41,6 +41,7 @@
     "expo-contacts": "~12.2.0",
     "expo-device": "~5.4.0",
     "expo-file-system": "~15.4.4",
+    "expo-font": "~11.4.0",
     "expo-keep-awake": "~12.3.0",
     "expo-launch-arguments": "^0.3.0",
     "expo-localization": "~14.3.0",

@@ -96,7 +96,7 @@ const SwipeableRow = (props: { item: ListForUI }) => {
           p="$3"
           alignItems="center"
           borderBottomWidth={1}
-          borderBottomColor="$muted200">
+          borderBottomColor="$light200">
           <Icon as={BookmarkIcon} size="50" color="$rose500" />
           <VStack space="xs">
             <Text fontWeight="bold" fontSize="$xl">

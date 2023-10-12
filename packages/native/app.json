@@ -11,7 +11,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#FFFFFF"
     },
-    "assetBundlePatterns": ["**/*", "@iresucito/core/assets/songs/*.json"],
+    "assetBundlePatterns": ["**/*", "../core/assets/**/*"],
     "ios": {
       "bundleIdentifier": "com.javiercastro.iresucito"
     },

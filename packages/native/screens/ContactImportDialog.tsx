@@ -138,7 +138,7 @@ export const ContactImportDialog = () => {
           <Box
             p="$4"
             borderBottomWidth={StyleSheet.hairlineWidth}
-            borderBottomColor="$muted300">
+            borderBottomColor="$light200">
             <FlashList
               removeClippedSubviews
               horizontal={true}

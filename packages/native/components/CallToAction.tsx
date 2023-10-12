@@ -24,7 +24,7 @@ export const CallToAction = (props: {
           flex={3}
           justifyContent="space-around"
           borderBottomWidth={1}
-          borderBottomColor="#ccc">
+          borderBottomColor="$light200">
           <Icon
             as={props.icon}
             size={60}

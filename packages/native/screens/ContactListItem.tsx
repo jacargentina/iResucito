@@ -20,7 +20,7 @@ export const ContactListItem = (props: { item: BrotherContact; [x: string]: any 
         p="$2"
         alignItems="center"
         borderBottomWidth={1}
-        borderBottomColor="$muted200">
+        borderBottomColor="$light200">
         <ContactPhoto item={item} />
         <VStack w="75%">
           <Text fontWeight="bold" fontSize="$lg" numberOfLines={1}>

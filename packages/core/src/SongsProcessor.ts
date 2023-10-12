@@ -11,10 +11,10 @@ import {
   CollaboratorsData,
   SongDetails,
   SongsSourceData,
-} from '@iresucito/core';
-import SongsIndexRaw from '@iresucito/core/assets/songsv2.json';
-import SongsHistoryRaw from '@iresucito/core/assets/patches.json';
-import CollaboratorsRaw from '@iresucito/core/assets/collaborators.json';
+} from './common';
+import SongsIndexRaw from '../assets/songsv2.json';
+import SongsHistoryRaw from '../assets/patches.json';
+import CollaboratorsRaw from '../assets/collaborators.json';
 
 export const SongsHistory: SongsChanges = SongsHistoryRaw;
 

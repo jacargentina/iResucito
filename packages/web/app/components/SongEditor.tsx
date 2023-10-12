@@ -307,7 +307,7 @@ const SongEditor = () => {
                   whiteSpace: 'pre',
                 }}
                 onKeyUp={txtPositionEvent}
-                onKeyDown={(e: React.KeyboardEvent) => {
+                onKeyDown={(e: KeyboardEvent) => {
                   if (e.ctrlKey) {
                     if (e.key === '[') {
                       e.preventDefault();

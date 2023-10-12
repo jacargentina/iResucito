@@ -1,5 +1,4 @@
-
-import { useEffect, useRef, useState, useMemo, useCallback } from 'react';
+import { useEffect, useRef, useState, useMemo, useCallback, useLayoutEffect } from 'react';
 import { Platform, Alert, View } from 'react-native';
 import { Text } from '@gluestack-ui/themed';
 import { FlashList } from '@shopify/flash-list';
@@ -156,7 +155,7 @@ export const CommunityScreen = () => {
     ensureLoaded();
   }, [navigation, deviceContacts_loaded]);
 
-  React.useLayoutEffect(() => {
+  useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
         <HeaderButton iconName="PlusIcon" onPress={contactImport} />
