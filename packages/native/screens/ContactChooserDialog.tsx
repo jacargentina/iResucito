@@ -1,6 +1,5 @@
-
 import type { RouteProp } from '@react-navigation/native';
-import Contacts from 'react-native-contacts';
+import Contacts from 'expo-contacts';
 import { useState, useMemo } from 'react';
 import { Text, Icon } from '@gluestack-ui/themed';
 import { FlashList } from '@shopify/flash-list';
@@ -33,7 +32,7 @@ export const ContactChooserDialog = () => {
   const contactSelected = (contact: Contacts.Contact) => {
     useListsStore
       .getState()
-      .setList(target.listName, target.listKey, contact.givenName);
+      .setList(target.listName, target.listKey, contact.name);
     navigation.goBack();
   };
 
@@ -60,7 +59,7 @@ export const ContactChooserDialog = () => {
             justifyContent: 'space-around',
             padding: 10,
           }}>
-          <Icon as={UsersIcon} size={32} alignSelf="center" />
+          <Icon as={UsersIcon} size="xl" alignSelf="center" />
           <Text textAlign="center">{i18n.t('ui.community empty')}</Text>
         </View>
       )}
@@ -73,7 +72,7 @@ export const ContactChooserDialog = () => {
           }>
           <FlashList
             data={filtered}
-            keyExtractor={(item) => item.recordID}
+            keyExtractor={(item) => item.id}
             renderItem={({ item }) => {
               return (
                 <ContactListItem

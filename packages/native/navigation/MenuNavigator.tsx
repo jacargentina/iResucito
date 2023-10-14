@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 import { Platform, Linking } from 'react-native';
 import {
@@ -14,7 +13,7 @@ import {
   SongsNavigator,
 } from './index';
 import { useListsStore } from '../hooks';
-import { config } from '../gluestack-ui.config';
+import { config } from '../config/gluestack-ui.config';
 import {
   BookmarkIcon,
   SearchIcon,
@@ -41,14 +40,7 @@ const getTabOptions = (
     tabBarStyle: {},
     tabBarTestID: testID,
     tabBarIcon: ({ focused, color, size }) => {
-      return (
-        <Icon
-          as={IconComponent}
-          size={size}
-          color={color}
-          style={{ marginTop: 6 }}
-        />
-      );
+      return <Icon as={IconComponent} color={color} style={{ marginTop: 6 }} />;
     },
   };
   if (showTabOnlyOn) {
@@ -64,10 +56,10 @@ var GetScreenOptions = () => {
   var options = {
     headerShown: false,
     tabBarShowLabel: false,
-    tabBarActiveTintColor: config.theme.tokens.colors.rose600,
+    tabBarActiveTintColor: config.tokens.colors.rose600,
     tabBarStyle: {
-      backgroundColor: config.theme.tokens.colors.gray50,
-      borderTopColor: config.theme.tokens.colors.rose300,
+      backgroundColor: config.tokens.colors.light50,
+      borderTopColor: config.tokens.colors.rose300,
       borderTopWidth: 1,
     },
   };
@@ -75,12 +67,12 @@ var GetScreenOptions = () => {
   if (Platform.OS === 'android') {
     return {
       tabBarInactiveTintColor: 'gray',
-      pressColor: config.theme.tokens.colors.rose300,
+      pressColor: config.tokens.colors.rose300,
       iconStyle: {
         height: 30,
       },
       indicatorStyle: {
-        backgroundColor: config.theme.tokens.colors.rose600,
+        backgroundColor: config.tokens.colors.rose600,
         height: 3,
       },
       showIcon: true,

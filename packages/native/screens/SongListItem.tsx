@@ -1,4 +1,3 @@
-
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useState, useEffect } from 'react';
 import { Alert } from 'react-native';
@@ -21,7 +20,7 @@ import i18n from '@iresucito/translations';
 import { Song } from '@iresucito/core';
 import { ChooserParamList } from '../navigation';
 import { useSongsSelection } from '../hooks';
-import { config } from '../gluestack-ui.config';
+import { config } from '../config/gluestack-ui.config';
 import { BugIcon, EyeIcon } from 'lucide-react-native';
 
 const NoLocaleWarning = () => {
@@ -186,7 +185,7 @@ export const SongListItem = (props: {
               autoEscape
               numberOfLines={1}
               style={{
-                color: config.theme.tokens.colors.backgroundDark500,
+                color: config.tokens.colors.backgroundDark500,
                 paddingVertical: 2,
               }}
               highlightStyle={{
@@ -203,9 +202,9 @@ export const SongListItem = (props: {
             <AirbnbRating
               showRating={false}
               defaultRating={song.rating}
-              selectedColor={config.theme.tokens.colors.rose400}
+              selectedColor={config.tokens.colors.rose400}
               // @ts-ignore
-              unSelectedColor={config.theme.tokens.colors.rose100}
+              unSelectedColor={config.tokens.colors.rose100}
               ratingContainerStyle={{ paddingVertical: 5 }}
               size={25}
               onFinishRating={(position: number) =>
@@ -221,13 +220,12 @@ export const SongListItem = (props: {
           </Pressable>
         )}
         {song.error && (
-          <Icon
-            as={BugIcon}
-            size="xl"
+          <Pressable
             onPress={() => {
               Alert.alert('Error', song.error);
-            }}
-          />
+            }}>
+            <Icon as={BugIcon} size="xl" />
+          </Pressable>
         )}
       </HStack>
     </Pressable>

@@ -1,4 +1,3 @@
-
 import type { StackScreenProps } from '@react-navigation/stack';
 import { useMemo, useCallback, useState } from 'react';
 import { useWindowDimensions } from 'react-native';
@@ -10,7 +9,7 @@ import { useSettingsStore, useListsStore } from '../hooks';
 import i18n from '@iresucito/translations';
 import { SongList } from './SongList';
 import { Song } from '@iresucito/core';
-import { config } from '../gluestack-ui.config';
+import { config } from '../config/gluestack-ui.config';
 
 type Props = StackScreenProps<ChooserParamList, 'Dialog'>;
 
@@ -125,15 +124,15 @@ export const SongChooserDialog = (props: Props) => {
               tabStyle={{ width: 'auto' }}
               style={{ backgroundColor: 'white' }}
               indicatorStyle={{
-                backgroundColor: config.theme.tokens.colors.rose500,
+                backgroundColor: config.tokens.colors.rose500,
                 marginHorizontal: 3,
               }}
               renderLabel={({ route: currentRoute, focused, color }) => (
                 <Text
                   style={{
                     color: focused
-                      ? config.theme.tokens.colors.rose500
-                      : config.theme.tokens.colors.gray600,
+                      ? config.tokens.colors.rose500
+                      : config.tokens.colors.light600,
                     margin: 3,
                   }}>
                   {currentRoute.title}

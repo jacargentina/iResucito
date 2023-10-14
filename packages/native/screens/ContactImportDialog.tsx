@@ -18,7 +18,7 @@ import {
   ordenAlfabetico,
   ContactForImport,
 } from '../util';
-import { Contact } from 'react-native-contacts';
+import { Contact } from 'expo-contacts';
 
 const BrotherItem = memo(
   (props: {
@@ -32,9 +32,7 @@ const BrotherItem = memo(
         onPress={() => handleContact(item)}>
         <ContactPhoto item={item} />
         <Text numberOfLines={1} textAlign="center" mt="$2" fontSize="$sm">
-          {item.givenName && item.givenName.length > 0
-            ? item.givenName.trim()
-            : item.familyName.trim()}
+          {item.name.trim()}
         </Text>
       </Pressable>
     );
@@ -47,24 +45,17 @@ const ContactItem = memo(
     handleContact: (c: ContactForImport) => void;
   }) => {
     const { item, handleContact } = props;
-    var contactFullName = item.givenName;
-    if (item.familyName) {
-      if (contactFullName.length > 0) {
-        contactFullName += ' ';
-      }
-      contactFullName += item.familyName;
-    }
     return (
       <Pressable onPress={() => handleContact(item)}>
         <HStack p="$2" justifyContent="space-between" alignItems="center">
           <ContactPhoto item={item} />
           <VStack w="68%">
             <Text fontWeight="bold" fontSize="$lg" numberOfLines={1}>
-              {contactFullName}
+              {item.name}
             </Text>
             <Text numberOfLines={1}>
-              {item.emailAddresses && item.emailAddresses.length > 0
-                ? item.emailAddresses[0].email
+              {item.emails && item.emails.length > 0
+                ? item.emails[0].email
                 : null}
             </Text>
           </VStack>
@@ -89,11 +80,7 @@ export const ContactImportDialog = () => {
 
   useEffect(() => {
     if (deviceContacts) {
-      var withName = deviceContacts.filter(
-        (c) =>
-          (c.givenName && c.givenName.length > 0) ||
-          (c.familyName && c.familyName.length > 0)
-      );
+      var withName = deviceContacts.filter((c) => c.name.length > 0);
       var result = getContactsForImport(withName, contacts);
       setContactsForImport(result);
       setLoading(false);
@@ -145,7 +132,7 @@ export const ContactImportDialog = () => {
               keyboardShouldPersistTaps="always"
               refreshing={loading}
               data={contacts}
-              keyExtractor={(item) => item.recordID}
+              keyExtractor={(item) => item.id}
               renderItem={({ item }) => (
                 <BrotherItem item={item} handleContact={handleContact} />
               )}
@@ -158,7 +145,7 @@ export const ContactImportDialog = () => {
           onScrollBeginDrag={() => Keyboard.dismiss()}
           keyboardShouldPersistTaps="always"
           data={filtered}
-          keyExtractor={(item) => item.recordID}
+          keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
             <ContactItem item={item} handleContact={handleContact} />
           )}

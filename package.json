@@ -4,6 +4,9 @@
   "workspaces": {
     "packages": [
       "packages/*"
+    ],
+    "nohoist": [
+      "**/@gluestack-ui/config"
     ]
   },
   "scripts": {

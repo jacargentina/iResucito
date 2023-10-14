@@ -1,4 +1,3 @@
-
 import {
   Text,
   Textarea,
@@ -37,7 +36,7 @@ import {
 import { Swipeable } from 'react-native-gesture-handler';
 import { useRef } from 'react';
 import { SwipeableRightAction } from '../components';
-import { config } from '../gluestack-ui.config';
+import { config } from '../config/gluestack-ui.config';
 
 type ListDetailItemNavigationProp = CompositeNavigationProp<
   BottomTabNavigationProp<RootStackParamList, 'SongChooser'>,
@@ -63,7 +62,7 @@ const SongInput = (props: {
         return (
           <View style={{ width: 100, flexDirection: 'row' }}>
             <SwipeableRightAction
-              color={config.theme.tokens.colors.rose600}
+              color={config.tokens.colors.rose600}
               progress={progress}
               text={i18n.t('ui.delete')}
               x={100}

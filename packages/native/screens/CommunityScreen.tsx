@@ -1,4 +1,11 @@
-import { useEffect, useRef, useState, useMemo, useCallback, useLayoutEffect } from 'react';
+import {
+  useEffect,
+  useRef,
+  useState,
+  useMemo,
+  useCallback,
+  useLayoutEffect,
+} from 'react';
 import { Platform, Alert, View } from 'react-native';
 import { Text } from '@gluestack-ui/themed';
 import { FlashList } from '@shopify/flash-list';
@@ -20,8 +27,8 @@ import { RootStackParamList } from '../navigation';
 import { contactFilterByText, ordenAlfabetico } from '../util';
 import { ContactListItem } from './ContactListItem';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { Contact } from 'react-native-contacts';
-import { config } from '../gluestack-ui.config';
+import { Contact } from 'expo-contacts';
+import { config } from '../config/gluestack-ui.config';
 import { UsersIcon } from 'lucide-react-native';
 
 const SwipeableRow = (props: { item: any }) => {
@@ -43,7 +50,7 @@ const SwipeableRow = (props: { item: any }) => {
   const contactDelete = useCallback(
     (contact: Contact) => {
       Alert.alert(
-        `${i18n.t('ui.delete')} "${contact.givenName}"`,
+        `${i18n.t('ui.delete')} "${contact.name}"`,
         i18n.t('ui.delete confirmation'),
         [
           {
@@ -72,7 +79,7 @@ const SwipeableRow = (props: { item: any }) => {
         return (
           <View style={{ width: 200, flexDirection: 'row' }}>
             <SwipeableRightAction
-              color={config.theme.tokens.colors.blue500}
+              color={config.tokens.colors.blue500}
               progress={progress}
               text={i18n.t('ui.psalmist')}
               x={200}
@@ -82,7 +89,7 @@ const SwipeableRow = (props: { item: any }) => {
               }}
             />
             <SwipeableRightAction
-              color={config.theme.tokens.colors.rose600}
+              color={config.tokens.colors.rose600}
               progress={progress}
               text={i18n.t('ui.delete')}
               x={100}

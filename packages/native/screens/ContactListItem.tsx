@@ -1,18 +1,13 @@
-
 import { VStack, HStack, Icon, Text, Pressable } from '@gluestack-ui/themed';
 import { ContactPhoto } from '../components';
 import { BrotherContact } from '../hooks';
 import { MusicIcon } from 'lucide-react-native';
 
-export const ContactListItem = (props: { item: BrotherContact; [x: string]: any }) => {
+export const ContactListItem = (props: {
+  item: BrotherContact;
+  [x: string]: any;
+}) => {
   const { item, ...rest } = props;
-  var contactFullName = item.givenName;
-  if (item.familyName) {
-    if (contactFullName.length > 0) {
-      contactFullName += ' ';
-    }
-    contactFullName += item.familyName;
-  }
   return (
     <Pressable {...rest}>
       <HStack
@@ -24,11 +19,11 @@ export const ContactListItem = (props: { item: BrotherContact; [x: string]: any 
         <ContactPhoto item={item} />
         <VStack w="75%">
           <Text fontWeight="bold" fontSize="$lg" numberOfLines={1}>
-            {contactFullName}
+            {item.name}
           </Text>
           <Text numberOfLines={1}>
-            {item.emailAddresses && item.emailAddresses.length > 0
-              ? item.emailAddresses[0].email
+            {item.emails && item.emails.length > 0
+              ? item.emails[0].email
               : null}
           </Text>
         </VStack>

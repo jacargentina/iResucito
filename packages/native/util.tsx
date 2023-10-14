@@ -1,5 +1,5 @@
 // Utilerias atadas a react-native
-import { StyleSheet, Platform } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { getLocales } from 'expo-localization';
 import * as FileSystem from 'expo-file-system';
 import * as Device from 'expo-device';
@@ -42,7 +42,7 @@ export function getContactsForImport(
   // Fitrar y generar contactos únicos
   var grouped = allContacts.reduce(
     (groups: { [fullname: string]: Contacts.Contact[] }, item) => {
-      var fullname = `${item.givenName} ${item.familyName}`;
+      var fullname = item.name;
       groups[fullname] = groups[fullname] || [];
       groups[fullname].push(item);
       return groups;
@@ -52,7 +52,7 @@ export function getContactsForImport(
   var unique: Contacts.Contact[] = [];
   for (var fullname in grouped) {
     if (grouped[fullname].length > 1) {
-      var conMiniatura = grouped[fullname].find((c) => c.hasThumbnail === true);
+      var conMiniatura = grouped[fullname].find((c) => c.image != undefined);
       unique.push(conMiniatura || grouped[fullname][0]);
     } else {
       unique.push(grouped[fullname][0]);
@@ -60,7 +60,7 @@ export function getContactsForImport(
   }
   // De los únicos, marcar cuales ya estan importados
   var items = unique.map((c) => {
-    var found = importedContacts.find((x) => x.recordID === c.recordID);
+    var found = importedContacts.find((x) => x.id === c.id);
     var r: ContactForImport = { ...c, imported: found !== undefined };
     return r;
   });
@@ -190,8 +190,9 @@ export const contactFilterByText = (
   c: Contacts.Contact,
   text: string
 ): boolean => {
-  return (
-    (c.firstName && c.firstName.toLowerCase().includes(text.toLowerCase())) ||
-    (c.lastName && c.lastName.toLowerCase().includes(text.toLowerCase()))
-  );
+  const cond1 =
+    c.firstName && c.firstName.toLowerCase().includes(text.toLowerCase());
+  const cond2 =
+    c.lastName && c.lastName.toLowerCase().includes(text.toLowerCase());
+  return cond1 === true || cond2 === true;
 };

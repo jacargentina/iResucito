@@ -4,10 +4,9 @@ import { StatusBar } from 'expo-status-bar';
 import * as SplashScreen from 'expo-splash-screen';
 import { MenuProvider } from 'react-native-popup-menu';
 import { GluestackUIProvider } from '@gluestack-ui/themed';
-import { extendedConfig } from './Config';
+import { config } from './config/gluestack-ui.config';
 import { RootNavigator } from './navigation';
 import { useFonts } from 'expo-font';
-import { useCallback } from 'react';
 
 Sentry.init({
   dsn: 'https://645393af749a4f3da9d8074330a25da3@o469156.ingest.sentry.io/5498083',
@@ -22,7 +21,7 @@ const App = () => {
   });
 
   return (
-    <GluestackUIProvider config={extendedConfig}>
+    <GluestackUIProvider config={config}>
       <MenuProvider backHandler={true}>
         <NavigationContainer
           onReady={() => {

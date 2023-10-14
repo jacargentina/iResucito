@@ -1,4 +1,3 @@
-
 import { HStack } from '@gluestack-ui/themed';
 import {
   Menu,
@@ -20,7 +19,7 @@ import {
   HeaderButton,
 } from '../components';
 import { SongsStackParamList, useStackNavOptions } from './index';
-import { config } from '../gluestack-ui.config';
+import { config } from '../config/gluestack-ui.config';
 
 type SongDetailRouteProp = RouteProp<SongsStackParamList, 'SongDetail'>;
 
@@ -49,7 +48,7 @@ export const TransportNotesButton = withMenuContext(
         value == song.transportTo
           ? {
               optionWrapper: {
-                backgroundColor: config.theme.tokens.colors.rose300,
+                backgroundColor: config.tokens.colors.rose300,
                 paddingHorizontal: 10,
                 paddingVertical: 10,
               },

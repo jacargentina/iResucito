@@ -50,7 +50,7 @@ export const SettingsScreen = () => {
 
   useEffect(() => {
     const load = async () => {
-      setVersion(Application.nativeApplicationVersion);
+      setVersion(Application.nativeApplicationVersion as string);
       setSettingsExists(await NativeExtras.settingsExists());
     };
     load();

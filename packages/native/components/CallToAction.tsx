@@ -1,4 +1,3 @@
-
 import { useAndroidBackHandler } from 'react-navigation-backhandler';
 import { KeyboardAwareScrollView } from '@codler/react-native-keyboard-aware-scroll-view';
 import { Box, Icon, Text, Heading, Button } from '@gluestack-ui/themed';
@@ -27,7 +26,7 @@ export const CallToAction = (props: {
           borderBottomColor="$light200">
           <Icon
             as={props.icon}
-            size={60}
+            size='xxl'
             color="$primary500"
             style={{
               alignSelf: 'center',

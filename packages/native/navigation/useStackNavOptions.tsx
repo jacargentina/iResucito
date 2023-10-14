@@ -1,5 +1,5 @@
 import i18n from '@iresucito/translations';
-import { config } from '../gluestack-ui.config';
+import { config } from '../config/gluestack-ui.config';
 import { StackNavigationOptions } from '@react-navigation/stack';
 
 export const useStackNavOptions = () => {
@@ -8,7 +8,7 @@ export const useStackNavOptions = () => {
       backgroundColor: 'white',
     },
     headerStyle: {
-      backgroundColor: config.theme.tokens.colors.rose500,
+      backgroundColor: config.tokens.colors.rose500,
     },
     headerTitleStyle: {
       color: 'white',

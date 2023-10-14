@@ -20,7 +20,7 @@ import i18n from '@iresucito/translations';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList, ListsStackParamList } from '../navigation';
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
-import { config } from '../gluestack-ui.config';
+import { config } from '../config/gluestack-ui.config';
 import { BookmarkIcon } from 'lucide-react-native';
 import { ListForUI } from '@iresucito/core';
 
@@ -43,7 +43,7 @@ const SwipeableRow = (props: { item: ListForUI }) => {
         return (
           <View style={{ width: 250, flexDirection: 'row' }}>
             <SwipeableRightAction
-              color={config.theme.tokens.colors.blue500}
+              color={config.tokens.colors.blue500}
               progress={progress}
               text={i18n.t('ui.rename')}
               x={250}
@@ -56,7 +56,7 @@ const SwipeableRow = (props: { item: ListForUI }) => {
               }}
             />
             <SwipeableRightAction
-              color={config.theme.tokens.colors.rose600}
+              color={config.tokens.colors.rose600}
               progress={progress}
               text={i18n.t('ui.delete')}
               x={125}
@@ -97,7 +97,7 @@ const SwipeableRow = (props: { item: ListForUI }) => {
           alignItems="center"
           borderBottomWidth={1}
           borderBottomColor="$light200">
-          <Icon as={BookmarkIcon} size="50" color="$rose500" />
+          <Icon as={BookmarkIcon} size="xl" color="$rose500" />
           <VStack space="xs">
             <Text fontWeight="bold" fontSize="$xl">
               {item.name}

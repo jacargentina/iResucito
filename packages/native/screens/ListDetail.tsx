@@ -1,4 +1,3 @@
-
 import { useState, useRef } from 'react';
 import { Alert, ScrollView, View } from 'react-native';
 import { VStack, Text } from '@gluestack-ui/themed';
@@ -10,7 +9,7 @@ import { useListsStore } from '../hooks';
 import i18n from '@iresucito/translations';
 import ListDetailItem from './ListDetailItem';
 import { ListsStackParamList } from '../navigation';
-import { config } from '../gluestack-ui.config';
+import { config } from '../config/gluestack-ui.config';
 import {
   EucaristiaList,
   LibreList,
@@ -35,7 +34,7 @@ const SwipeableRow = (props: {
         return (
           <View style={{ width: 100, flexDirection: 'row' }}>
             <SwipeableRightAction
-              color={config.theme.tokens.colors.rose600}
+              color={config.tokens.colors.rose600}
               progress={progress}
               text={i18n.t('ui.delete')}
               x={100}
