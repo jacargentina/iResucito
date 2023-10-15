@@ -1,6 +1,5 @@
-
 import { View, Dimensions } from 'react-native';
-// TODO import Pdf from 'react-native-pdf';
+import Pdf from 'react-native-pdf';
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { RootStackParamList } from '../navigation';
 
@@ -13,14 +12,14 @@ export const PDFViewer = () => {
       style={{
         flex: 1,
       }}>
-      {/* <Pdf
-        source={{ uri: route.params.uri }}
+      <Pdf
+        source={{ uri: route.params.data.uri }}
         scale={1.4}
         style={{
           flex: 1,
           width: Dimensions.get('window').width,
         }}
-      /> */}
+      />
     </View>
   );
 };

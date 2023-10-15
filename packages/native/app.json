@@ -11,16 +11,26 @@
       "resizeMode": "contain",
       "backgroundColor": "#FFFFFF"
     },
-    "assetBundlePatterns": ["**/*", "../core/assets/**/*"],
+    "assetBundlePatterns": [
+      "**/*",
+      "../core/assets/**/*"
+    ],
     "ios": {
-      "bundleIdentifier": "com.javiercastro.iresucito"
+      "bundleIdentifier": "com.javiercastro.iresucito",
+      "infoPlist": {
+        "NSContactsUsageDescription": "Permitir $(PRODUCT_NAME) acceso a los contactos."
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./img/cristo.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.javiercastro.iresucito"
+      "package": "com.javiercastro.iresucito",
+      "permissions": [
+        "android.permission.READ_CONTACTS",
+        "android.permission.WRITE_CONTACTS"
+      ]
     },
     "plugins": [
       "expo-localization",
@@ -42,6 +52,11 @@
           }
         }
       ]
+    },
+    "extra": {
+      "eas": {
+        "projectId": "052a0ed0-b388-416d-bd7b-911680ab75d4"
+      }
     }
   }
 }

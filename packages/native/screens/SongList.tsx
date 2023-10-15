@@ -1,4 +1,3 @@
-
 import {
   useCallback,
   useEffect,
@@ -159,14 +158,14 @@ export const SongList = (props: {
                     ...defaultExportToPdfOptions,
                     disablePageNumbers: true,
                   };
-                  const path = await generateSongPDF(
+                  const result = await generateSongPDF(
                     items,
                     exportOpts,
                     `iResucitó-songsSelection-${i18n.locale}`,
                     false
                   );
                   navigation.navigate('PDFViewer', {
-                    uri: path,
+                    data: result,
                     title: i18n.t('pdf_export_options.selected songs'),
                   });
                   setLoading({ isLoading: false, text: '' });
@@ -227,7 +226,12 @@ export const SongList = (props: {
         onClose={handleClose}
         setLoading={setLoading}
       />
-      <Text fontWeight="bold" p="$2" px="$4" bg="$backgroundDark100" color="$textDark500">
+      <Text
+        fontWeight="bold"
+        p="$2"
+        px="$4"
+        bg="$backgroundDark100"
+        color="$textDark500">
         {totalText}
       </Text>
       <FlashList

@@ -30,7 +30,7 @@ import {
 } from '@iresucito/core';
 import i18n from '@iresucito/translations';
 import badges from './badges';
-import { generateListPDF } from './pdf';
+import { GeneratePDFResult, generateListPDF } from './pdf';
 import { create } from 'zustand';
 import { immer } from 'zustand/middleware/immer';
 import {
@@ -173,7 +173,10 @@ type ListsStore = {
     listKeyIndex?: number
   ) => void;
   importList: (listPath: string) => Promise<string | void>;
-  shareList: (listName: string, type: ShareListType) => Promise<string>;
+  shareList: (
+    listName: string,
+    type: ShareListType
+  ) => Promise<string | GeneratePDFResult>;
   load_ui: () => void;
 };
 

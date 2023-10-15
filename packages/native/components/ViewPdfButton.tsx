@@ -1,4 +1,3 @@
-
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import i18n from '@iresucito/translations';
 import {
@@ -30,7 +29,7 @@ export const ViewPdfButton = () => {
 
   return (
     <HeaderButton
-      testID='view-pdf-button'
+      testID="view-pdf-button"
       iconName="FileTextIcon"
       onPress={async () => {
         const { fullText } = song;
@@ -47,14 +46,14 @@ export const ViewPdfButton = () => {
           ...defaultExportToPdfOptions,
           disablePageNumbers: true,
         };
-        const path = await generateSongPDF(
+        const result = await generateSongPDF(
           [item],
           exportOpts,
           item.song.titulo,
           false
         );
         navigation.navigate('PDFViewer', {
-          uri: path,
+          data: result,
           title: song.titulo,
         });
       }}

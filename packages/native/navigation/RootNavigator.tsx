@@ -1,4 +1,3 @@
-
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigatorScreenParams } from '@react-navigation/native';
 import {
@@ -20,6 +19,7 @@ import {
   ListType,
   PalabraList,
 } from '@iresucito/core';
+import { GeneratePDFResult } from '../pdf';
 
 export type RootStackParamList = {
   Menu: undefined;
@@ -41,7 +41,7 @@ export type RootStackParamList = {
   };
   ContactImport: undefined;
   SongPreviewScreen: undefined;
-  SongPreviewPdf: { uri: string };
+  SongPreviewPdf: { data: GeneratePDFResult };
 };
 
 const Stack = createStackNavigator<RootStackParamList>();

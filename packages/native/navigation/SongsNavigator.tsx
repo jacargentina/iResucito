@@ -1,4 +1,3 @@
-
 import { createStackNavigator } from '@react-navigation/stack';
 import { PDFViewer, SongDetail, SongList, SongSearch } from '../screens';
 import i18n from '@iresucito/translations';
@@ -9,12 +8,13 @@ import {
 } from './index';
 import { Song } from '@iresucito/core';
 import { useSettingsStore } from '../hooks';
+import { GeneratePDFResult } from '../pdf';
 
 export type SongsStackParamList = {
   SongSearch: undefined;
   SongList: { title_key: string; filter?: any; sort?: Function };
   SongDetail: { song: Song };
-  PDFViewer: { uri: string; title: string };
+  PDFViewer: { data: GeneratePDFResult; title: string };
 };
 
 const Stack = createStackNavigator<SongsStackParamList>();

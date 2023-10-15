@@ -29,12 +29,13 @@ import {
   useStackNavOptions,
   SongsStackParamList,
 } from './index';
+import { GeneratePDFResult } from '../pdf';
 
 export type ListsStackParamList = {
   ListsSearch: undefined;
   ListDetail: { listName: string };
   SongDetail: { song: Song };
-  PDFViewer: { uri: string; title: string };
+  PDFViewer: { data: GeneratePDFResult; title: string };
 };
 
 type ListDetailRouteProp = RouteProp<ListsStackParamList, 'ListDetail'>;
@@ -122,9 +123,9 @@ const ShareListButton = () => {
             testID="share-list-pdf"
             onPress={async () => {
               handleClose();
-              const path = await shareList(listName, 'pdf');
+              const result = await shareList(listName, 'pdf');
               navigation.navigate('PDFViewer', {
-                uri: path,
+                data: result as GeneratePDFResult,
                 title: listName,
               });
             }}>

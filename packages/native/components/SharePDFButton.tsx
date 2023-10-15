@@ -1,4 +1,3 @@
-
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { SongsStackParamList } from '../navigation';
 import { sharePDF } from '../hooks';
@@ -8,8 +7,11 @@ type PDFViewerRouteProp = RouteProp<SongsStackParamList, 'PDFViewer'>;
 
 export const SharePDFButton = () => {
   const route = useRoute<PDFViewerRouteProp>();
-  const { title, uri } = route.params;
+  const { title, data } = route.params;
   return (
-    <HeaderButton iconName="ShareIcon" onPress={() => sharePDF(title, uri)} />
+    <HeaderButton
+      iconName="ShareIcon"
+      onPress={() => sharePDF(title, data.uri)}
+    />
   );
 };

@@ -1,7 +1,6 @@
-
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { Text, Actionsheet } from '@gluestack-ui/themed';
+import { Text, Actionsheet, ActionsheetItemText, ActionsheetBackdrop, ActionsheetContent, ActionsheetDragIndicatorWrapper, ActionsheetDragIndicator, ActionsheetItem } from '@gluestack-ui/themed';
 import i18n from '@iresucito/translations';
 import { defaultExportToPdfOptions, SongToPdf } from '@iresucito/core';
 import { NativeParser } from '../util';
@@ -25,22 +24,22 @@ export const ChoosePdfTypeForExport = (props: {
 
   return (
     <Actionsheet isOpen={isOpen} onClose={onClose}>
-      <Actionsheet.Backdrop />
-      <Actionsheet.Content pb="$8">
-        <Actionsheet.DragIndicatorWrapper>
-          <Actionsheet.DragIndicator />
-        </Actionsheet.DragIndicatorWrapper>
+      <ActionsheetBackdrop />
+      <ActionsheetContent pb="$8">
+        <ActionsheetDragIndicatorWrapper>
+          <ActionsheetDragIndicator />
+        </ActionsheetDragIndicatorWrapper>
         <Text fontWeight="bold">{i18n.t('ui.export.type')}</Text>
-        <Actionsheet.Item
+        <ActionsheetItem
           onPress={() => {
             onClose();
             useSongsSelection.getState().enable();
           }}>
-          <Actionsheet.ItemText>
+          <ActionsheetItemText>
             {i18n.t('pdf_export_options.selected songs')}
-          </Actionsheet.ItemText>
-        </Actionsheet.Item>
-        <Actionsheet.Item
+          </ActionsheetItemText>
+        </ActionsheetItem>
+        <ActionsheetItem
           onPress={async () => {
             onClose();
             const localeNoCountry = i18n.locale.split('-')[0];
@@ -62,23 +61,23 @@ export const ChoosePdfTypeForExport = (props: {
                 total: songToExport.length,
               }),
             });
-            const path = await generateSongPDF(
+            const result = await generateSongPDF(
               items,
               defaultExportToPdfOptions,
               `iResucitó-${i18n.locale}`,
               true
             );
             navigation.navigate('PDFViewer', {
-              uri: path,
+              data: result,
               title: i18n.t('pdf_export_options.complete book'),
             });
             setLoading({ isLoading: false, text: '' });
           }}>
-          <Actionsheet.ItemText>
+          <ActionsheetItemText>
             {i18n.t('pdf_export_options.complete book')}
-          </Actionsheet.ItemText>
-        </Actionsheet.Item>
-      </Actionsheet.Content>
+          </ActionsheetItemText>
+        </ActionsheetItem>
+      </ActionsheetContent>
     </Actionsheet>
   );
 };
