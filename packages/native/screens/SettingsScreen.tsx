@@ -187,7 +187,6 @@ export const SettingsScreen = () => {
           }}
           resizeMode="contain"
         />
-        {/*  @ts-ignore */}
         <Heading
           color="$rose500"
           mt="$10"

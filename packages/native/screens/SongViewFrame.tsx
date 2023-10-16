@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Dimensions, ScrollView, GestureResponderEvent } from 'react-native';
 import { Box, HStack, Text, Icon, Button } from '@gluestack-ui/themed';

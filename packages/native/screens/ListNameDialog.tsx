@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Input, Box, Button, FormControl } from '@gluestack-ui/themed';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';

@@ -1,4 +1,3 @@
-
 import { useAndroidBackHandler } from 'react-navigation-backhandler';
 import { useNavigation, useScrollToTop } from '@react-navigation/native';
 import {

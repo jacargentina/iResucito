@@ -107,11 +107,7 @@ export const SongChooserDialog = (props: Props) => {
         renderLazyPlaceholder={() => {
           return (
             <Center pt="$5">
-              <Spinner
-                color="$rose500"
-                // @ts-ignore
-                size="large"
-              />
+              <Spinner color="$rose500" size="large" />
               <Text>{i18n.t('ui.loading')}</Text>
             </Center>
           );

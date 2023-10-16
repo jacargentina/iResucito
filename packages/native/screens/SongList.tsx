@@ -203,10 +203,7 @@ export const SongList = (props: {
   if (loading.isLoading) {
     return (
       <View style={{ flex: 1, justifyContent: 'space-evenly' }}>
-        <Spinner
-          // @ts-ignore
-          size="large"
-        />
+        <Spinner size="large" />
         <Text color="$backgroundDark500" style={{ textAlign: 'center' }}>
           {loading.text}
         </Text>
