@@ -3,12 +3,7 @@
  */
 module.exports = {
   serverModuleFormat: 'cjs',
-  future: {
-    v2_routeConvention: true,
-    v2_errorBoundary: true,
-    v2_normalizeFormMethod: true,
-    v2_meta: true,
-  },
+  browserNodeBuiltinsPolyfill: { modules: { fs: true, crypto: true } },
   serverDependenciesToBundle: [
     'crypto-random-string',
     'lowdb',
