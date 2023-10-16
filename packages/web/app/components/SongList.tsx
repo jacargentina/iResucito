@@ -134,6 +134,7 @@ const SongList = (props: { songs: Array<Song> }) => {
         : songs;
       const result = filterByText.filter((song) => {
         const flags = Object.keys(filters).map((name) => {
+          // @ts-ignore
           return filters[name] === false || song[name] === filters[name];
         });
         if (onlyTranslated) {

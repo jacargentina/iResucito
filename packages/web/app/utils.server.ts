@@ -132,6 +132,16 @@ if (globalThis.folderSongs === undefined) {
 
   allLocales['es'] = require('@iresucito/core/assets/songs/es.json');
   allLocales['en'] = require('@iresucito/core/assets/songs/en.json');
+  allLocales['it'] = require('@iresucito/core/assets/songs/it.json');
+  allLocales['de-AT'] = require('@iresucito/core/assets/songs/de-AT.json');
+  allLocales['de'] = require('@iresucito/core/assets/songs/de.json');
+  allLocales['fr'] = require('@iresucito/core/assets/songs/fr.json');
+  allLocales['lt-LT'] = require('@iresucito/core/assets/songs/lt-LT.json');
+  allLocales['pl'] = require('@iresucito/core/assets/songs/pl.json');
+  allLocales['pt-BR'] = require('@iresucito/core/assets/songs/pt-BR.json');
+  allLocales['pt-PT'] = require('@iresucito/core/assets/songs/pt-PT.json');
+  allLocales['ru'] = require('@iresucito/core/assets/songs/ru.json');
+  allLocales['sw-TZ'] = require('@iresucito/core/assets/songs/sw-TZ.json');
 
   globalThis.folderSongs = new SongsProcessor(allLocales);
 }

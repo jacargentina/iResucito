@@ -23,8 +23,14 @@ export let loader: LoaderFunction = async ({ request, params }) => {
     const loc = getPropertyLocale(SongsIndex[key].files, locale);
     let fullText = '';
     if (loc) {
-      const filename = SongsIndex[key].files[loc];
-      fullText = await globalThis.folderSongs.loadLocaleSongFile(loc, filename);
+      const songs = await globalThis.folderSongs.getSongsMeta(loc, patch);
+      const song = songs.find((s) => s.key === key);
+      if (!song) {
+        throw new Error(`Song ${key} not valid`);
+      }
+
+      await globalThis.folderSongs.loadSingleSong(locale, song, patch);
+      fullText = song.fullText;
     }
     const ploc = getPropertyLocale(patch[key], locale);
     result.diff = Diff.diffLines(fullText, patch[key][ploc].lines as string);

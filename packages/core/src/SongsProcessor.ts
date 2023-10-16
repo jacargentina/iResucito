@@ -216,11 +216,6 @@ export class SongsProcessor {
     return songs;
   }
 
-  // loadLocaleSongFile(rawLoc: string, filename: string): string {
-  //   const path = `${rawLoc}/${filename}.txt`;
-  //   return this.songReader(path);
-  // }
-
   loadSingleSong(rawLoc: string, song: Song, patch?: SongIndexPatch) {
     try {
       if (patch && patch.hasOwnProperty(song.key)) {

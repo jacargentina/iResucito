@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import i18n from '@iresucito/translations';
 import { useNavigate } from '@remix-run/react';
 import {
-  getSongFileFromString,
+  getSongDetails,
   Song,
   SongChangesAndPatches,
-  SongFile,
+  SongDetails,
 } from '@iresucito/core';
 import * as Diff from 'diff';
 import { useApp } from '~/app.context';
@@ -61,7 +61,7 @@ const EditContextWrapper = (props: any) => {
     SongChangesAndPatches | undefined
   >();
   const [diffView, setDiffView] = useState<Diff.Change[] | undefined>();
-  const [songFile, setSongFile] = useState<SongFile>();
+  const [songFile, setSongFile] = useState<SongDetails>();
 
   const goPrevious = () => {
     if (!hasChanges && previousKey) {
@@ -171,7 +171,7 @@ const EditContextWrapper = (props: any) => {
 
   useEffect(() => {
     if (name) {
-      const parsed = getSongFileFromString(name);
+      const parsed = getSongDetails(name);
       setSongFile(parsed);
     } else {
       setSongFile(editSong);
