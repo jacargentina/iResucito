@@ -12,7 +12,7 @@ import {
   SongDetails,
   SongsSourceData,
 } from './common';
-import SongsIndexRaw from '../assets/songsv2.json';
+import SongsIndexRaw from '../assets/songs.json';
 import SongsHistoryRaw from '../assets/patches.json';
 import CollaboratorsRaw from '../assets/collaborators.json';
 
