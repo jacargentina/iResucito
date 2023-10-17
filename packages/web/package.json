@@ -8,7 +8,7 @@
     "asset-theme-font": "mkdir -p ./public/build/_assets/themes/default/assets/fonts && cp ./node_modules/semantic-ui-css/themes/default/assets/fonts/* ./public/build/_assets/themes/default/assets/fonts",
     "asset-songs-font": "cp -r ./node_modules/@iresucito/core/assets/fonts/* ./public/build/_assets",
     "assets": "yarn run asset-theme-font && yarn run asset-songs-font",
-    "build": "remix setup node && remix build && yarn run assets",
+    "build": "remix build && yarn run assets",
     "ts": "yarn tsc --noEmit",
     "dev": "yarn run assets && remix dev",
     "debug": "yarn run assets && node --inspect ./node_modules/.bin/remix dev",
