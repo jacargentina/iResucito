@@ -39,8 +39,8 @@ export let loader: LoaderFunction = async () => {
 };
 
 const Vercel = () => {
-  const data = useLoaderData();
-  const actionData = useActionData();
+  const data = useLoaderData<typeof loader>();
+  const actionData = useActionData<typeof action>();
   return (
     <Layout>
       <div style={{ height: '90%', padding: '10px' }}>

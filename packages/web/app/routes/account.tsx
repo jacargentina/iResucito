@@ -52,7 +52,7 @@ export function meta() {
 }
 
 const Account = () => {
-  const data = useLoaderData();
+  const data = useLoaderData<typeof loader>();
   const navigation = useNavigation();
   const [searchParams] = useSearchParams();
   const app = useApp();

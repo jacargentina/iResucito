@@ -61,7 +61,8 @@ export let loader: LoaderFunction = async ({ request, params }) => {
 };
 
 const SongEdit = () => {
-  const { song, index, previousKey, nextKey, totalSongs } = useLoaderData();
+  const { song, index, previousKey, nextKey, totalSongs } =
+    useLoaderData<typeof loader>();
 
   const editable =
     song && song.notTranslated

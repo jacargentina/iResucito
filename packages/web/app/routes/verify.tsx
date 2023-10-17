@@ -40,7 +40,7 @@ export let loader: LoaderFunction = async ({ request }) => {
 };
 
 const Verify = () => {
-  const data = useLoaderData();
+  const data = useLoaderData<typeof loader>();
   return (
     <Layout>
       <div style={{ padding: 30, width: 500, margin: 'auto' }}>

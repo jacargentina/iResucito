@@ -34,7 +34,7 @@ export let loader: LoaderFunction = async ({ request }) => {
 
 const List = () => {
   const { isChangingLanguage } = useApp();
-  const { songs } = useLoaderData();
+  const { songs } = useLoaderData<typeof loader>();
 
   return (
     <Layout title="Buscador">

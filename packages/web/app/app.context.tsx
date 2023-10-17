@@ -47,7 +47,7 @@ export const AppProvider = (props: {
   const [confirmData, setConfirmData] = useState();
   const [activeDialog, setActiveDialog] = useState();
   const [dialogCallback, setDialogCallback] = useState();
-  const fetcher = useFetcher();
+  const fetcher = useFetcher<{ newLocale: string }>();
 
   const changeLanguage = useCallback((item: PickerLocale) => {
     const changeTo = item.value === 'default' ? navigator.language : item.value;

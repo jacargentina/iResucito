@@ -81,8 +81,8 @@ export let links = () => {
 };
 
 export default function App() {
-  const data = useLoaderData();
-  const fetcher = useFetcher();
+  const data = useLoaderData<typeof loader>();
+  const fetcher = useFetcher<{ newLocale: string }>();
   const navigate = useNavigate();
   const location = useLocation();
 

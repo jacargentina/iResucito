@@ -97,7 +97,7 @@ export function meta() {
 }
 
 const ChangePassword = () => {
-  const data = useLoaderData();
+  const data = useLoaderData<typeof loader>();
   const submit = useSubmit();
   const [changePassEnabled, setChangePassEnabled] = useState(false);
   const [newPassword, setNewPassword] = useState('');
