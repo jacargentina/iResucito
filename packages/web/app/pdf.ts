@@ -23,7 +23,7 @@ export async function generatePDF(
     font = Buffer.from(
       fs.readFileSync(
         path.resolve(
-          __dirname + '/../public/build/_assets/Franklin Gothic Medium.ttf'
+          __dirname + '/../public/build/_assets/FranklinGothicMedium.ttf'
         ),
         'base64'
       ),
