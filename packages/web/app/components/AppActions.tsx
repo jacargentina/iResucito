@@ -50,9 +50,8 @@ const AppActions = () => {
               <div style={{ flex: 1, marginLeft: 20 }}>
                 <div>
                   <Icon name="apple" size="large" />
-                  {app.ios_version}
                   <Icon name="android" size="large" color="green" />
-                  {app.android_version}
+                  {app.expo_version}
                 </div>
                 &nbsp;
                 <div>

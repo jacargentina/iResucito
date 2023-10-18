@@ -24,23 +24,35 @@ You can collaborate on the adding and translation of new songs with https://ires
 ----
 
 ### Songs structure
-Inside the `/packages/core/assets/songs` folder, with a subfolder for any supported language:
+Inside the `/packages/core/assets/songs` folder, with a JSON file for any supported language:
 
-  - `/songs/es` (Spanish - main language)
-  - `/songs/en` (English)
-  - `/songs/it` (Italian)
-  - `/songs/pt-BR` (Brasil Portugese)
-  - `/songs/pt-PT` (Portugal Portugese)
-  - `/songs/fr` (French)
+  - `/packages/core/assets/songs/es.json` (Spanish - main language)
+  - `/packages/core/assets/songs/en.json` (English)
+  - `/packages/core/assets/songs/it.json` (Italian)
+  - `/packages/core/assets/songs/pt-BR.json` (Brasil Portugese)
+  - `/packages/core/assets/songs/pt-PT.json` (Portugal Portugese)
+  - `/packages/core/assets/songs/fr.json` (French)
 
-Songs are simple plain text files, with `.txt` as extension. The filenames should follow this convention:
+Each JSON contains the **Locale Content Index** for every translated song, in the format:
 
-         `[song title] - [song source].txt`
+```
+{
+  "[index]": {
+    "name": "First title - song source",
+    "source": " ... content ..."
+  },
+  "[index + 1]": {
+    "name": "Other title - song source",
+    "source": " ... content ..."
+  },
+  ...
+}
+```
+  - **index** The song locale "index", which is referenced on the Global Songs Index
+  - **title** The song title, on the specified language
+  - **source** Bible's cite or the song "source", as it appears on the official "Way's Resucito book"
 
-  - **song title** The song title, on the specified language
-  - **song source** Bible's cite or the song "source", as it appears on the official "Way's Resucito book"
-
-Every song is registered on the index, located at `/packages/core/assets/songs.json`. There is a numeric key for every song, with the following format:
+Every song is registered/referenced on the Global Songs Index, located at `/packages/core/assets/songs.json`. There is a numeric key for every song, with the following format:
 
 ```
  "1": {
@@ -49,12 +61,12 @@ Every song is registered on the index, located at `/packages/core/assets/songs.j
   "entrance": true,
   "communion": true,
   "files": {
-   "es": "Así habla el amén - Ap 3, 14-22",
-   "it": "Cosﬁ parla l'amen - Ap 3, 14-22"
+   "es": "234",
+   "it": "112"
   }
 ```
 
-The `files` key contains a subkey for every i18n language supported, where its value is the `.txt` song filename, without its extension.
+The `files` key contains a subkey for every i18n language supported, where its value is the **locale index** for the song contents on the respective **Locale Content Index**
 
 ## Configure Gradle to build a release APK en Release (signed)
 

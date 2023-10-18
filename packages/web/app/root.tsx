@@ -21,43 +21,9 @@ import { getPatchStats } from '@iresucito/core';
 import i18n from '@iresucito/translations';
 import semanticUrl from 'semantic-ui-css/semantic.min.css';
 import globalStylesUrl from './styles/global.css';
+import AppRaw from '@iresucito/native/app.json';
 
 export let loader: LoaderFunction = async ({ request }) => {
-  const path = require('path');
-  const fs = require('fs');
-  const plist = require('plist');
-
-  var ios_version;
-  var android_version;
-
-  try {
-    const ios_Info = plist.parse(
-      fs.readFileSync(path.join(__dirname, '/../public/Info.plist'), 'utf8')
-    );
-    ios_version = `${ios_Info.CFBundleShortVersionString}.${ios_Info.CFBundleVersion}`;
-  } catch {
-    ios_version = 'err';
-  }
-
-  try {
-    const androidGradle = fs.readFileSync(
-      path.join(__dirname, '/../public/build.gradle'),
-      'utf8'
-    );
-    // @ts-ignore
-    const android_major = /def VERSION_MAJOR=(.*)/.exec(androidGradle)[1];
-    // @ts-ignore
-    const android_minor = /def VERSION_MINOR=(.*)/.exec(androidGradle)[1];
-    // @ts-ignore
-    const android_patch = /def VERSION_PATCH=(.*)/.exec(androidGradle)[1];
-    // @ts-ignore
-    const android_build = /def VERSION_BUILD=(.*)/.exec(androidGradle)[1];
-
-    android_version = `${android_major}.${android_minor}.${android_patch}.${android_build}`;
-  } catch {
-    android_version = 'err';
-  }
-
   const patch = await globalThis.folderExtras.readPatch();
   const stats = patch ? getPatchStats(patch) : [];
 
@@ -65,8 +31,7 @@ export let loader: LoaderFunction = async ({ request }) => {
   const session = await getSession(request.headers.get('Cookie'));
 
   return {
-    IOS_VERSION: ios_version,
-    ANDROID_VERSION: android_version,
+    EXPO_VERSION: AppRaw.expo.version,
     authData: authData,
     patchStats: stats,
     locale: session.get('locale'),
@@ -110,8 +75,7 @@ export default function App() {
   return (
     <AppProvider
       user={data.authData?.user}
-      ios_version={data.IOS_VERSION}
-      android_version={data.ANDROID_VERSION}
+      expo_version={data.EXPO_VERSION}
       patchStats={data.patchStats}
       locale={data.locale}>
       <Document>

@@ -11,8 +11,7 @@ import { PatchStats, PickerLocale } from '@iresucito/core';
 
 type AppContextData = {
   user?: any;
-  ios_version: string;
-  android_version: string;
+  expo_version: string;
   patchStats: Array<PatchStats>;
   confirmData: any;
   setConfirmData: any;
@@ -35,13 +34,11 @@ const AppContext = createContext<AppContextData | undefined>(undefined);
 export const AppProvider = (props: {
   children: any;
   user?: any;
-  ios_version: string;
-  android_version: string;
+  expo_version: string;
   patchStats: any;
   locale: string;
 }) => {
-  const { children, user, ios_version, android_version, patchStats, locale } =
-    props;
+  const { children, user, expo_version, patchStats, locale } = props;
   const [apiLoading, setApiLoading] = useState(false);
   const [apiResult, setApiResult] = useState();
   const [confirmData, setConfirmData] = useState();
@@ -82,8 +79,7 @@ export const AppProvider = (props: {
     <AppContext.Provider
       value={{
         user,
-        ios_version,
-        android_version,
+        expo_version,
         patchStats,
         confirmData,
         setConfirmData,
