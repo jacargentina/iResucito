@@ -6,26 +6,16 @@ import {
   SongChange,
   SongsHistory,
   SongsIndex,
+  loadAllLocales,
 } from './';
 import path from 'path';
 import util from 'util';
 import fs from 'fs';
-import os from 'os';
 import { Dropbox } from 'dropbox';
-import { execSync } from 'child_process';
-import { SongIndexPatch } from './common';
+import { SongIndexPatch, SongsLocaleData } from './common';
 require('colors');
 
-const songsDir = path.resolve(__dirname, '../assets/songs');
-const folders = fs.readdirSync(songsDir, { withFileTypes: true });
-
-const onlyNames = folders.filter((d) => d.isDirectory()).map((d) => d.name);
-const languageFolders = onlyNames.reduce((obj: any, item) => {
-  if (typeof item === 'string') {
-    obj[item] = item;
-  }
-  return obj;
-}, {});
+var allLocales = loadAllLocales();
 
 const currentDate = Date.now();
 
@@ -41,39 +31,24 @@ const patchSongLogic = (songPatch: SongPatch, key: string) => {
     var songToPatch = SongsIndex[key];
     Object.keys(songPatch).forEach((rawLoc) => {
       var item: SongPatchData = songPatch[rawLoc];
-      var file: string;
+      var localeKey: string;
       var loc = rawLoc;
       var { author, date, name, lines, stage } = item;
       name = name.trim();
       loc = getPropertyLocale(songToPatch.files, rawLoc);
       if (loc) {
-        // Buscar si está el nombre en el indice
-        file = songToPatch.files[loc];
+        // Buscar si está la clave en el indice
+        localeKey = songToPatch.files[loc];
       } else {
         // Tomar loc desde parche (archivo nuevo para un idioma)
         loc = rawLoc;
       }
-      if (!file) {
-        file = name;
-      }
 
-      if (!loc) {
-        throw new Error('No se pudo determinar localizacion');
-      }
-
-      var songDirectory = null;
-      // Decidir lenguaje segun carpetas de idioma disponible
-      var existsLoc = getPropertyLocale(languageFolders, loc);
-      if (!existsLoc) {
-        // Si aun no existe carpeta, crearla
-        songDirectory = path.join(songsDir, loc);
-        if (!fs.existsSync(songDirectory)) {
-          fs.mkdirSync(songDirectory);
-          console.log('Created folder:', loc);
-        }
-      } else {
-        loc = existsLoc;
-        songDirectory = path.join(songsDir, existsLoc);
+      var songsLocaleData: SongsLocaleData = allLocales[loc];
+      if (!songsLocaleData) {
+        throw new Error(
+          `No se pudo determinar songsLocaleData para '${loc}'. Falta crear archivo assets/songs/${loc}.json ?`
+        );
       }
 
       var rename: { original: string; new: string } | undefined = undefined;
@@ -81,32 +56,22 @@ const patchSongLogic = (songPatch: SongPatch, key: string) => {
       var updated: boolean = false;
       var created: boolean = false;
 
-      var songFileName = path.join(songDirectory, `${file}.txt`);
-      var newName = path.join(songDirectory, `${name}.txt`);
-      if (newName !== songFileName && !fs.existsSync(newName)) {
-        rename = { original: file, new: name };
-        execSync(`git mv --force "${songFileName}" "${newName}"`);
-        Object.assign(songToPatch.files, { [loc]: name });
-        songFileName = newName;
-      } else if (songToPatch.files[loc] !== file) {
-        rename = { original: songToPatch.files[loc], new: file };
-        Object.assign(songToPatch.files, { [loc]: file });
+      if (!localeKey) {
+        var keys = Object.keys(songsLocaleData);
+        var lastKey = Number(keys[keys.length - 1]);
+        localeKey = String(lastKey + 1);
+        songsLocaleData[localeKey] = { name, source: lines };
+        songToPatch.files[loc] = localeKey;
+        created = true;
       }
-      if (lines) {
-        updated = false;
-        var text = null;
-        if (fs.existsSync(songFileName)) {
-          text = fs.readFileSync(songFileName, 'utf8');
-          created = false;
-        } else {
-          created = true;
-        }
-        if (text !== lines) {
-          fs.writeFileSync(songFileName, lines);
-          if (!created) {
-            updated = true;
-          }
-        }
+
+      if (songsLocaleData[localeKey].name !== name) {
+        rename = { original: songsLocaleData[localeKey].name, new: name };
+        Object.assign(songToPatch.files, { [loc]: localeKey });
+      }
+      if (!created && lines && songsLocaleData[localeKey].source !== lines) {
+        songsLocaleData[localeKey].source = lines;
+        updated = true;
       }
 
       if (stage) {
@@ -185,6 +150,14 @@ const applyPatch = async (local_file_path: string = null) => {
   const stats = getPatchStats(patch);
   Object.keys(patch).forEach((k) => {
     patchSongLogic(patch[k], k);
+  });
+
+  Object.keys(allLocales).forEach((loc) => {
+    const localePath = path.resolve(__dirname, `../assets/songs/${loc}.json`);
+    fs.writeFileSync(
+      localePath,
+      JSON.stringify(allLocales[loc], null, '  ') + '\n'
+    );
   });
 
   const indexPath = path.resolve(__dirname, '../assets/songs.json');

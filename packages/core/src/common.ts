@@ -49,7 +49,7 @@ export type SongsLocaleData = {
 
 export type SongsSourceData = {
   [locale: string]: SongsLocaleData;
-}
+};
 
 export type SongsChanges = {
   [songKey: string]: Array<SongChange>;
@@ -1447,4 +1447,23 @@ export const getPatchStats = (patch: SongIndexPatch): Array<PatchStats> => {
     stats.push({ locale, count: byLocale[locale].length, items });
   });
   return stats;
+};
+
+export const loadAllLocales = (): SongsSourceData => {
+  var allLocales: SongsSourceData = {};
+
+  allLocales['es'] = require('../assets/songs/es.json');
+  allLocales['en'] = require('../assets/songs/en.json');
+  allLocales['it'] = require('../assets/songs/it.json');
+  allLocales['de-AT'] = require('../assets/songs/de-AT.json');
+  allLocales['de'] = require('../assets/songs/de.json');
+  allLocales['fr'] = require('../assets/songs/fr.json');
+  allLocales['lt-LT'] = require('../assets/songs/lt-LT.json');
+  allLocales['pl'] = require('../assets/songs/pl.json');
+  allLocales['pt-BR'] = require('../assets/songs/pt-BR.json');
+  allLocales['pt-PT'] = require('../assets/songs/pt-PT.json');
+  allLocales['ru'] = require('../assets/songs/ru.json');
+  allLocales['sw-TZ'] = require('../assets/songs/sw-TZ.json');
+
+  return allLocales;
 };
