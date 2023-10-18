@@ -9024,6 +9024,21 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1697395001862,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "Tu esi mano viltis, o viešpatie (xxix saliamono odė)",
+        "new": "Tu esi mano viltis, o viešpatie - XXIX Saliamono Odė"
+      },
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "election"
+      }
     }
   ],
   "142": [
@@ -14690,6 +14705,13 @@
       "date": 1632833729680,
       "locale": "es",
       "author": "javier.alejandro.castro@gmail.com",
+      "created": true,
+      "updated": false
+    },
+    {
+      "date": 1697647464446,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
       "created": true,
       "updated": false
     }
