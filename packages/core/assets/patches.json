@@ -3272,6 +3272,17 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1697890151837,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "Palaiminta esi tu, marija (lk 1, 42-44)",
+        "new": "Palaiminta esi tu, Marija - Lk 1, 42-44"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "42": [
@@ -6416,6 +6427,13 @@
       "author": "albertiniqmc@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1697891786914,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "created": true,
+      "updated": false
     }
   ],
   "92": [
@@ -7505,6 +7523,13 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1697884669717,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "112": [
@@ -8375,6 +8400,17 @@
       "rename": {
         "original": "Salve Rainha dos Céus - Hino",
         "new": "Salve, Rainha dos Céus - Hino"
+      },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1697891913272,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "Sveika, karaliene",
+        "new": "Sveika, Dangaus Karaliene"
       },
       "created": false,
       "updated": true
@@ -9709,6 +9745,13 @@
       "rename": {
         "new": "Vivete Allegri - Flp 4, 4ss"
       },
+      "created": true,
+      "updated": false
+    },
+    {
+      "date": 1697898664294,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
       "created": true,
       "updated": false
     }
@@ -12083,6 +12126,13 @@
         "original": "liturgy",
         "new": "catechumenate"
       }
+    },
+    {
+      "date": 1697893378189,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "189": [
@@ -12474,6 +12524,13 @@
       "rename": {
         "new": "Padre Nostro"
       },
+      "created": true,
+      "updated": false
+    },
+    {
+      "date": 1697894595561,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
       "created": true,
       "updated": false
     }
@@ -14714,6 +14771,20 @@
       "author": "albertiniqmc@gmail.com",
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1697666985652,
+      "locale": "ru",
+      "author": "gaboisaactg10@gmail.com",
+      "created": true,
+      "updated": false
+    },
+    {
+      "date": 1697884753618,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "266": [

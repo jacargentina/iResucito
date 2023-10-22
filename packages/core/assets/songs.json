@@ -1459,7 +1459,8 @@
     "stage": "precatechumenate",
     "signing to the virgin": true,
     "files": {
-      "es": "125"
+      "es": "125",
+      "lt-LT": "210"
     }
   },
   "92": {
@@ -2382,7 +2383,8 @@
       "pt-BR": "214",
       "pt-PT": "221",
       "sw-TZ": "11",
-      "it": "206"
+      "it": "206",
+      "lt-LT": "211"
     }
   },
   "153": {
@@ -3022,7 +3024,8 @@
       "pt-BR": "149",
       "pt-PT": "153",
       "en": "2",
-      "it": "143"
+      "it": "143",
+      "lt-LT": "212"
     }
   },
   "195": {
@@ -3726,7 +3729,8 @@
   },
   "265": {
     "files": {
-      "lt-LT": "209"
+      "lt-LT": "209",
+      "ru": "1"
     },
     "stage": "precatechumenate",
     "stages": {}
