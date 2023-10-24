@@ -2,7 +2,8 @@
   "name": "@iresucito/translations",
   "version": "1.0.0",
   "scripts": {
-    "build": "tsc -b"
+    "tsc": "tsc -b",
+    "postinstall": "yarn run tsc"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

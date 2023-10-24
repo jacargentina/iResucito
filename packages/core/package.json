@@ -3,10 +3,10 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "build": "tsc -b && cp ./src/pdfkit.standalone.js dist/src/",
+    "tsc": "tsc -b",
+    "postinstall": "yarn run tsc && cp ./src/pdfkit.standalone.js dist/src/",
     "patch": "esno src/applyPatch.ts",
     "test": "esno src/test.ts",
-    "ts": "yarn tsc --noEmit",
     "test-no-funciona": "// ver comentarios en jest.config.js"
   },
   "main": "dist/src/index.js",
