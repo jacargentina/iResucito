@@ -76,3 +76,7 @@ packages/**/dist
 .vercel
 packages/native/android
 packages/native/ios
+
+# EAS
+packages/native/credentials/*
+packages/native/credentials.json
