@@ -11,14 +11,20 @@
       "resizeMode": "contain",
       "backgroundColor": "#FFFFFF"
     },
-    "assetBundlePatterns": ["**/*", "../core/assets/**/*"],
+    "assetBundlePatterns": [
+      "**/*",
+      "../core/assets/**/*"
+    ],
     "ios": {
       "bundleIdentifier": "com.javiercastro.iresucito",
       "infoPlist": {
         "NSContactsUsageDescription": "Permitir $(PRODUCT_NAME) acceso a los contactos.",
-        "UIRequiredDeviceCapabilities": ["armv7", "gamekit"]
+        "UIRequiredDeviceCapabilities": [
+          "armv7",
+          "gamekit"
+        ]
       },
-      "buildNumber": "2"
+      "buildNumber": "3"
     },
     "android": {
       "adaptiveIcon": {
