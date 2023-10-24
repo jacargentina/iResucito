@@ -5,10 +5,7 @@
   "scripts": {
     "start": "expo start --ios",
     "test": "node node_modules/jest/bin/jest.js --watch",
-    "postversion": "react-native-version --never-amend",
-    "ts": "yarn tsc --noEmit",
     "build-android": "npx expo prebuild --clean --platform android; npx expo run:android --variant release",
-    "bundle": "npx react-native bundle --entry-file index.js --bundle-output /tmp/test.bundle",
     "clean": "watchman watch-del-all",
     "android": "expo run:android",
     "ios": "expo run:ios"
