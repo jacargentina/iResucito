@@ -3,7 +3,7 @@
     "name": "iResucitó",
     "slug": "iresucito",
     "version": "6.0.4",
-    "orientation": "portrait",
+    "orientation": "default",
     "icon": "./img/cristo.png",
     "userInterfaceStyle": "dark",
     "splash": {
@@ -11,20 +11,16 @@
       "resizeMode": "contain",
       "backgroundColor": "#FFFFFF"
     },
-    "assetBundlePatterns": [
-      "**/*",
-      "../core/assets/**/*"
-    ],
+    "assetBundlePatterns": ["**/*", "../core/assets/**/*"],
     "ios": {
       "bundleIdentifier": "com.javiercastro.iresucito",
       "infoPlist": {
         "NSContactsUsageDescription": "Permitir $(PRODUCT_NAME) acceso a los contactos.",
-        "UIRequiredDeviceCapabilities": [
-          "armv7",
-          "gamekit"
-        ]
+        "UIRequiredDeviceCapabilities": ["armv7", "gamekit"]
       },
-      "buildNumber": "3"
+      "buildNumber": "4",
+      "requireFullScreen": true,
+      "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
