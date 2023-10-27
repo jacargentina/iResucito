@@ -5,7 +5,8 @@
   "scripts": {
     "start": "expo start --ios",
     "test": "node node_modules/jest/bin/jest.js --watch",
-    "build-android": "npx expo prebuild --clean --platform android; npx expo run:android --variant release",
+    "publish-android": "eas build --platform android --profile production --auto-submit",
+    "publish-ios": "eas build --platform ios --profile production --auto-submit",
     "clean": "watchman watch-del-all",
     "android": "expo run:android",
     "ios": "expo run:ios"
