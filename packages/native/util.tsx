@@ -13,14 +13,11 @@ import {
 } from '@iresucito/core';
 import { BrotherContact } from './hooks';
 
-export function ordenAlfabetico(a: any, b: any): number {
-  if (a.givenName < b.givenName) {
-    return -1;
-  }
-  if (a.givenName > b.givenName) {
-    return 1;
-  }
-  return 0;
+export function ordenAlfabetico(
+  a: Contacts.Contact,
+  b: Contacts.Contact
+): number {
+  return a.name.localeCompare(b.name);
 }
 
 export function ordenClasificacion(a: Song, b: Song): number {
