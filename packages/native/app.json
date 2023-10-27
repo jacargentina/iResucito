@@ -24,7 +24,7 @@
           "gamekit"
         ]
       },
-      "buildNumber": "6",
+      "buildNumber": "5",
       "requireFullScreen": true,
       "supportsTablet": true
     },
@@ -49,6 +49,17 @@
       ],
       "sentry-expo"
     ],
+    "hooks": {
+      "postPublish": [
+        {
+          "file": "sentry-expo/upload-sourcemaps",
+          "config": {
+            "organization": "javier-castro",
+            "project": "iresucito"
+          }
+        }
+      ]
+    },
     "extra": {
       "eas": {
         "projectId": "052a0ed0-b388-416d-bd7b-911680ab75d4"
