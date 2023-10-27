@@ -21,7 +21,7 @@ import {
   SearchBarView,
   HeaderButton,
 } from '../components';
-import { useBrothersStore, useSettingsStore } from '../hooks';
+import { BrotherContact, useBrothersStore, useSettingsStore } from '../hooks';
 import i18n from '@iresucito/translations';
 import { RootStackParamList } from '../navigation';
 import { contactFilterByText, ordenAlfabetico } from '../util';
@@ -31,18 +31,18 @@ import { Contact } from 'expo-contacts';
 import { config } from '../config/gluestack-ui.config';
 import { UsersIcon } from 'lucide-react-native';
 
-const SwipeableRow = (props: { item: any }) => {
+const SwipeableRow = (props: { item: BrotherContact }) => {
   const { update, addOrRemove } = useBrothersStore();
   const { item } = props;
   const swipeRef = useRef<Swipeable | null>(null);
 
   const contactToggleAttibute = useCallback(
-    (contact: any, attribute: string) => {
+    (contact: BrotherContact, attribute: string) => {
       const newValue = !(contact[attribute] === true);
       let updatedContact = Object.assign({}, contact, {
         [attribute]: newValue,
       });
-      update(contact.recordID, updatedContact);
+      update(contact.id, updatedContact);
     },
     [update]
   );
@@ -198,7 +198,7 @@ export const CommunityScreen = () => {
         ref={listRef}
         data={filtered}
         extraData={{ locale: i18n.locale, contacts }}
-        keyExtractor={(item: any) => item.recordID}
+        keyExtractor={(item) => item.id}
         renderItem={({ item }) => <SwipeableRow item={item} />}
         estimatedItemSize={90}
       />

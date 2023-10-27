@@ -69,6 +69,8 @@ const ContactItem = memo(
   }
 );
 
+const KeyExtractor = (item) => item.id;
+
 export const ContactImportDialog = () => {
   const { contacts, deviceContacts, addOrRemove } = useBrothersStore();
   const { computedLocale } = useSettingsStore();
@@ -80,7 +82,7 @@ export const ContactImportDialog = () => {
 
   useEffect(() => {
     if (deviceContacts) {
-      var withName = deviceContacts.filter((c) => c.name.length > 0);
+      var withName = deviceContacts.filter((c) => c.name?.length > 0);
       var result = getContactsForImport(withName, contacts);
       setContactsForImport(result);
       setLoading(false);
@@ -132,7 +134,7 @@ export const ContactImportDialog = () => {
               keyboardShouldPersistTaps="always"
               refreshing={loading}
               data={contacts}
-              keyExtractor={(item) => item.id}
+              keyExtractor={KeyExtractor}
               renderItem={({ item }) => (
                 <BrotherItem item={item} handleContact={handleContact} />
               )}
@@ -145,7 +147,7 @@ export const ContactImportDialog = () => {
           onScrollBeginDrag={() => Keyboard.dismiss()}
           keyboardShouldPersistTaps="always"
           data={filtered}
-          keyExtractor={(item) => item.id}
+          keyExtractor={KeyExtractor}
           renderItem={({ item }) => (
             <ContactItem item={item} handleContact={handleContact} />
           )}
