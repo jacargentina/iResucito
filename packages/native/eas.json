@@ -31,6 +31,10 @@
   },
   "submit": {
     "production": {
+      "android": {
+        "serviceAccountKeyPath": "credentials/android/api-5891909675450492305-35585-facd75efc2be.json",
+        "track": "production"
+      },
       "ios": {
         "appleId": "javier.alejandro.castro@gmail.com",
         "ascAppId": "1292818153",
