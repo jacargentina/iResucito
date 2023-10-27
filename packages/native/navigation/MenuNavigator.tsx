@@ -39,8 +39,8 @@ const getTabOptions = (
   var tabOptions: BottomTabNavigationOptions = {
     tabBarStyle: {},
     tabBarTestID: testID,
-    tabBarIcon: ({ focused, color, size }) => {
-      return <Icon as={IconComponent} color={color} style={{ marginTop: 6 }} />;
+    tabBarIcon: ({ color }) => {
+      return <Icon as={IconComponent} color={color} size="xl" />;
     },
   };
   if (showTabOnlyOn) {
