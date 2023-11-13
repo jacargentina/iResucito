@@ -29,7 +29,7 @@ export let loader: LoaderFunction = async ({ request, params }) => {
         throw new Error(`Song ${key} not valid`);
       }
 
-      await globalThis.folderSongs.loadSingleSong(locale, song, patch);
+      await globalThis.folderSongs.loadSingleSong(locale, song, undefined);
       fullText = song.fullText;
     }
     const ploc = getPropertyLocale(patch[key], locale);
