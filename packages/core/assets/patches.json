@@ -465,6 +465,17 @@
       "author": "lavitia9@gmail.com",
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1699709067343,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "Viešpats padovanojo man (iz 50, 4-10)",
+        "new": "Viešpats padovanojo man (Iz 50, 4-10)"
+      },
+      "created": false,
+      "updated": true
     }
   ],
   "8": [
@@ -5340,6 +5351,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1699709829600,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "75": [
@@ -9641,6 +9659,17 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1698479851417,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "rename": {
+        "original": "Ateina viešpats, didybe apsivilkęs",
+        "new": "Ateina viešpats, didybe apsivilkęs - Psalme 93 (92) - Apr 1, 5-6"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "151": [
@@ -12686,6 +12715,13 @@
         "original": "II Euchatistinė Malda (1)",
         "new": "Euchatistinė Malda II (1)"
       },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1698482774433,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
       "created": false,
       "updated": true
     }
