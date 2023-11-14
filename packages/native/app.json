@@ -26,7 +26,10 @@
       },
       "buildNumber": "13",
       "requireFullScreen": true,
-      "supportsTablet": true
+      "supportsTablet": true,
+      "config": {
+        "usesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -38,7 +41,7 @@
         "android.permission.READ_CONTACTS",
         "android.permission.WRITE_CONTACTS"
       ],
-      "versionCode": 137
+      "versionCode": 138
     },
     "plugins": [
       "expo-localization",
