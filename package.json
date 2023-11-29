@@ -1,6 +1,6 @@
 {
   "private": true,
-  "packageManager": "yarn",
+  "packageManager": "yarn@1.22.21",
   "workspaces": {
     "packages": [
       "packages/*"
