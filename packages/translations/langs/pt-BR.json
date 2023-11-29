@@ -227,6 +227,7 @@
   "settings_title": {
     "locale": "Idioma",
     "keep awake": "Fique acordado",
+    "ratings enabled": "Classificações ativadas",
     "about": "Sobre",
     "developer mode": "Modo de desenvolvedor",
     "clear index patch": "Limpar o patch do índice",
@@ -235,6 +236,7 @@
   "settings_note": {
     "locale": "Traduzir o aplicativo para as línguas disponíveis",
     "keep awake": "Evitar que o dispositivo apague a tela ao visualizar um canto",
+    "ratings enabled": "Ative a classificação de músicas e a lista de Classificações",
     "developer mode": "Ativar somente se você for um colaborador na tradução dos cantos"
   },
   "share_action": {

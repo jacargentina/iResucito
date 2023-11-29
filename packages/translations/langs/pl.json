@@ -227,6 +227,7 @@
   "settings_title": {
     "locale": "Język",
     "keep awake": "Nie wygaszaj ekranu",
+    "ratings enabled": "Oceny włączone",
     "about": "O aplikacji",
     "developer mode": "Tryb dewelopera",
     "clear index patch": "Wyczyść historię zmian",
@@ -235,6 +236,7 @@
   "settings_note": {
     "locale": "Przetłumacz aplikację na dostępne języki",
     "keep awake": "Nie wygaszaj ekranu podczas przeglądania pieśni",
+    "ratings enabled": "Włącz ocenę piosenek i listę ocen",
     "developer mode": "Włącz jedynie w przypadku, gdy pomagasz w tłumaczeniu pieśni"
   },
   "share_action": {

@@ -227,6 +227,7 @@
   "settings_title": {
     "locale": "Sprache",
     "keep awake": "Wach halten",
+    "ratings enabled": "Bewertungen aktiviert",
     "about": "Über",
     "developer mode": "Entwicklermodus",
     "clear index patch": "Index-Patch löschen",
@@ -235,6 +236,7 @@
   "settings_note": {
     "locale": "Übersetze den App zu den vorgegebenen Sprachen",
     "keep awake": "Halte das Handy wach während der Nutzung des Apps",
+    "ratings enabled": "Aktivieren Sie die Bewertung von Songs und die Liste 'Bewertungen'",
     "developer mode": "Erlaubt nur wenn du bei der Liederübersetzung kollaborirst"
   },
   "share_action": {

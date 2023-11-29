@@ -227,6 +227,7 @@
   "settings_title": {
     "locale": "Lingua",
     "keep awake": "Mantere svegli",
+    "ratings enabled": "Valutazioni abilitate",
     "about": "Su",
     "developer mode": "Modalità sviluppatore",
     "clear index patch": "Cancella la patch dell’indice",
@@ -235,6 +236,7 @@
   "settings_note": {
     "locale": "Traduci l'app in una lingua disponibile",
     "keep awake": "Evitare che il dispositivo entri in riposo al momento di visualizzare un salmo",
+    "ratings enabled": "Abilita le canzoni di valutazione e l'elenco delle valutazioni",
     "developer mode": "Abilita solo se sei un collaboratore nella traduzione delle canzoni"
   },
   "share_action": {

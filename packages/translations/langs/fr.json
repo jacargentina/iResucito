@@ -227,6 +227,7 @@
   "settings_title": {
     "locale": "La langue",
     "keep awake": "Reste éveillé",
+    "ratings enabled": "Évaluations activées",
     "about": "Sur",
     "developer mode": "Mode développeur",
     "clear index patch": "Effacer le patch d'index",
@@ -235,6 +236,7 @@
   "settings_note": {
     "locale": "Traduire l'application dans les langues disponibles",
     "keep awake": "Empêcher l'appareil de s'éteindre lors de la visualisation d'une chanson",
+    "ratings enabled": "Activer la notation des chansons et la liste 'Évaluations'",
     "developer mode": "Activer seulement si vous êtes un collaborateur dans la traduction des chansons"
   },
   "share_action": {

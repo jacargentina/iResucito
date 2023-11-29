@@ -227,6 +227,7 @@
   "settings_title": {
     "locale": "Language",
     "keep awake": "Keep awake",
+    "ratings enabled": "Ratings enabled",
     "about": "About",
     "developer mode": "Developer mode",
     "clear index patch": "Clear index patch",
@@ -235,6 +236,7 @@
   "settings_note": {
     "locale": "Translate the app to available languages",
     "keep awake": "Prevent the device from shutting off when viewing a song",
+    "ratings enabled": "Enable rating songs and the 'Ratings' listing",
     "developer mode": "Enable only if you are a collaborator in the translation of the songs"
   },
   "share_action": {

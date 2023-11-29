@@ -19,7 +19,7 @@ import badges from '../badges';
 import i18n from '@iresucito/translations';
 import { Song } from '@iresucito/core';
 import { ChooserParamList } from '../navigation';
-import { useSongsSelection } from '../hooks';
+import { useSettingsStore, useSongsSelection } from '../hooks';
 import { config } from '../config/gluestack-ui.config';
 import { BugIcon, EyeIcon } from 'lucide-react-native';
 
@@ -56,6 +56,7 @@ export const SongListItem = (props: {
   setSongSetting: any;
 }) => {
   const navigation = useNavigation<ViewSongScreenNavigationProp>();
+  const { ratingsEnabled } = useSettingsStore();
   const { selection, enabled, toggle } = useSongsSelection();
   const { song, highlight, showBadge, viewButton, setSongSetting } = props;
 
@@ -198,7 +199,7 @@ export const SongListItem = (props: {
             {highlightedRest}
           </VStack>
           {song.notTranslated && <NoLocaleWarning />}
-          {!enabled && (
+          {!enabled && ratingsEnabled && (
             <AirbnbRating
               showRating={false}
               defaultRating={song.rating}

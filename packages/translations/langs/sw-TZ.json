@@ -227,6 +227,7 @@
   "settings_title": {
     "locale": "Lugha",
     "keep awake": "Onyesho la kuendelea kusubiri",
+    "ratings enabled": "Ukadiriaji umewezeshwa",
     "about": "Kuhusu",
     "developer mode": "Hali ya Mwezeshaji",
     "clear index patch": "Clear index patch",
@@ -235,6 +236,7 @@
   "settings_note": {
     "locale": "Tafsiri katika lugha inayopatikana",
     "keep awake": "Zuia kuzimika kwa simu wakati unaangalia wimbo",
+    "ratings enabled": "Wezesha nyimbo za ukadiriaji na uorodheshaji wa Ukadiriaji",
     "developer mode": "Wezesha tu kama ni mshiriki katika utafsiri wa nyimbo"
   },
   "share_action": {

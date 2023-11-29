@@ -227,6 +227,7 @@
   "settings_title": {
     "locale": "Kalba",
     "keep awake": "Nemiegoti",
+    "ratings enabled": "Įvertinimai įjungti",
     "about": "Apie",
     "developer mode": "Kūrėjo rėžimas",
     "clear index patch": "Panaikinti rodyklės atnaujinimą",
@@ -235,6 +236,7 @@
   "settings_note": {
     "locale": "Išversti programėlę į galimas kalbas",
     "keep awake": "Neleisti įrenginiui išsijungti žiūrint giesmes",
+    "ratings enabled": "Įgalinkite dainų įvertinimą ir įvertinimų sąrašą",
     "developer mode": "Įjungti tik jei esate pagalbininkas verčiant giesmes"
   },
   "share_action": {

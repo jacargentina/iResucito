@@ -725,6 +725,7 @@ export type SettingsStore = {
   computedLocale: string;
   searchItems: SearchItem[];
   hasHydrated: boolean;
+  ratingsEnabled: boolean;
   setHasHydrated: (state: boolean) => void;
 };
 
@@ -738,6 +739,7 @@ export const useSettingsStore = create<SettingsStore>()(
         computedLocale: 'default',
         searchItems: [],
         hasHydrated: false,
+        ratingsEnabled: false,
         setHasHydrated: (state: boolean) => {
           set({
             hasHydrated: state,
@@ -751,6 +753,7 @@ export const useSettingsStore = create<SettingsStore>()(
           locale: state.locale,
           keepAwake: state.keepAwake,
           zoomLevel: state.zoomLevel,
+          ratingsEnabled: state.ratingsEnabled,
         }),
         onRehydrateStorage: () => (state) => {
           state?.setHasHydrated(true);
@@ -761,19 +764,27 @@ export const useSettingsStore = create<SettingsStore>()(
 );
 
 useSettingsStore.subscribe(
-  (state) => [state.locale, state.hasHydrated] as [string, boolean],
-  async ([locale, hasHydrated]) => {
+  (state) =>
+    [state.locale, state.hasHydrated, state.ratingsEnabled] as [
+      string,
+      boolean,
+      boolean
+    ],
+  async ([locale, hasHydrated, ratingsEnabled]) => {
     if (hasHydrated) {
       i18n.locale = locale === 'default' ? getDefaultLocale() : locale;
       await useSongsStore.getState().load(i18n.locale);
       useListsStore.getState().load_ui();
-      var items: Array<SearchItem> = [
-        {
+      var items: Array<SearchItem> = [];
+      if (ratingsEnabled) {
+        items.push({
           title_key: 'search_title.ratings',
           note_key: 'search_note.ratings',
           params: { filter: null, sort: ordenClasificacion },
           badge: null,
-        },
+        });
+      }
+      items.push(
         {
           title_key: 'search_title.alpha',
           note_key: 'search_note.alpha',
@@ -911,8 +922,8 @@ useSettingsStore.subscribe(
           note_key: 'search_note.lutes and vespers',
           params: { filter: { 'lutes and vespers': true } },
           badge: null,
-        },
-      ];
+        }
+      );
       items = items.map((item) => {
         if (item.params) {
           item.params.title_key = item.title_key;

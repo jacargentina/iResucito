@@ -38,7 +38,7 @@ export type SettingsNavigationProp = StackNavigationProp<
 >;
 
 export const SettingsScreen = () => {
-  const { locale, keepAwake } = useSettingsStore();
+  const { locale, keepAwake, ratingsEnabled } = useSettingsStore();
   const [version, setVersion] = useState('');
   const [songsResume, setSongsResume] = useState('-');
   const { songs } = useSongsStore();
@@ -171,6 +171,24 @@ export const SettingsScreen = () => {
           value={keepAwake}
           onValueChange={(val: boolean) =>
             useSettingsStore.setState({ keepAwake: val })
+          }
+        />
+      </HStack>
+      <HStack
+        space="sm"
+        p="$3"
+        justifyContent="space-between"
+        alignItems="center">
+        <VStack w="80%" space="sm">
+          <Text>{i18n.t('settings_title.ratings enabled')}</Text>
+          <Text fontSize="$sm" color="$backgroundDark500">
+            {i18n.t('settings_note.ratings enabled')}
+          </Text>
+        </VStack>
+        <Switch
+          value={ratingsEnabled}
+          onValueChange={(val: boolean) =>
+            useSettingsStore.setState({ ratingsEnabled: val })
           }
         />
       </HStack>
