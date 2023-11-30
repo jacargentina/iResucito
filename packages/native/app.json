@@ -41,7 +41,7 @@
         "android.permission.READ_CONTACTS",
         "android.permission.WRITE_CONTACTS"
       ],
-      "versionCode": 138
+      "versionCode": 139
     },
     "plugins": [
       "expo-localization",
