@@ -60,7 +60,7 @@ const SongList = (props: { songs: Array<Song> }) => {
       })
       .catch(async (err) => {
         const text = await new Response(err.response.data).text();
-        handleApiError(text);
+        handleApiError(`/pdf/full`, text);
         closePdf();
       });
   };
@@ -117,7 +117,7 @@ const SongList = (props: { songs: Array<Song> }) => {
         edit(data.song);
       })
       .catch((err) => {
-        handleApiError(err);
+        handleApiError(`/song/newSong`, err);
       });
   };
 

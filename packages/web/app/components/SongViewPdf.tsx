@@ -7,8 +7,12 @@ import { useApp } from '~/app.context';
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.js';
 
-const SongViewPdf = (props: any) => {
-  const { url, settingsChanged } = props;
+const SongViewPdf = (props: {
+  url: string | null;
+  settingsChanged: Function;
+  showLoading?: boolean;
+}) => {
+  const { url, settingsChanged, showLoading } = props;
 
   const myRef = useRef<any>();
   const [loading, setLoading] = useState(false);
@@ -70,6 +74,7 @@ const SongViewPdf = (props: any) => {
               size="mini"
               floated="right"
               onClick={() => {
+                if (url == null) return;
                 const link = document.createElement('a');
                 link.href = url;
                 const name = edit ? edit.editSong.nombre : 'iResucito';
@@ -122,7 +127,7 @@ const SongViewPdf = (props: any) => {
           </Menu.Item>
         )}
       </Menu>
-      {loading && (
+      {showLoading && loading && (
         <Loader active inline="centered" size="large" inverted={false} />
       )}
       {!loading && currPage > 0 && (

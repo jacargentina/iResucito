@@ -100,7 +100,7 @@ const EditContextWrapper = (props: any) => {
             navigate('/list');
           })
           .catch((err) => {
-            handleApiError(err);
+            handleApiError(`/song/${editSong.key}`, err);
           });
       },
     });
@@ -127,7 +127,7 @@ const EditContextWrapper = (props: any) => {
         setEditSong(data.song);
       })
       .catch((err) => {
-        handleApiError(err);
+        handleApiError(`/song/${editSong.key}`, err);
       });
   };
 
@@ -145,7 +145,7 @@ const EditContextWrapper = (props: any) => {
           setPatchLogs(data);
         })
         .catch((err) => {
-          handleApiError(err);
+          handleApiError(`/patches/${editSong.key}`, err);
         });
     }
   }, [activeDialog]);
@@ -164,7 +164,7 @@ const EditContextWrapper = (props: any) => {
           setDiffView(data.diff as Diff.Change[]);
         })
         .catch((err) => {
-          handleApiError(err);
+          handleApiError(`/diff/${editSong.key}`, err);
         });
     }
   }, [activeDialog]);

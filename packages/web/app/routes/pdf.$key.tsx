@@ -69,12 +69,7 @@ export let action: ActionFunction = async ({ request, params }) => {
       ...defaultExportToPdfOptions,
       ...JSON.parse(options),
     };
-    const pdfPath = await generatePDF(
-      items,
-      exportOpts,
-      filename,
-      addIndex
-    );
+    const pdfPath = await generatePDF(items, exportOpts, filename, addIndex);
     if (pdfPath) {
       const pdfBuffer = require('fs').readFileSync(pdfPath);
       return new Response(pdfBuffer, {

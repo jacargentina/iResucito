@@ -23,13 +23,18 @@ type AppContextData = {
   setApiLoading: any;
   apiResult: any;
   setApiResult: any;
-  handleApiError: any;
+  handleApiError: (path: string, err: any) => void;
   changeLanguage: Function;
   locale: string;
   isChangingLanguage: boolean;
 };
 
 const AppContext = createContext<AppContextData | undefined>(undefined);
+
+type ApiResult = {
+  path: string;
+  error: any;
+};
 
 export const AppProvider = (props: {
   children: any;
@@ -40,7 +45,7 @@ export const AppProvider = (props: {
 }) => {
   const { children, user, expo_version, patchStats, locale } = props;
   const [apiLoading, setApiLoading] = useState(false);
-  const [apiResult, setApiResult] = useState();
+  const [apiResult, setApiResult] = useState<ApiResult | null>(null);
   const [confirmData, setConfirmData] = useState();
   const [activeDialog, setActiveDialog] = useState();
   const [dialogCallback, setDialogCallback] = useState();
@@ -60,18 +65,18 @@ export const AppProvider = (props: {
     }
   }, [fetcher.data]);
 
-  const handleApiError = (err: any) => {
+  const handleApiError = (path: string, err: any) => {
     setApiLoading(false);
     if (err.response && err.response.data) {
-      setApiResult(err.response.data);
+      setApiResult({ path, error: err.response.data });
     } else if (err.request) {
-      setApiResult(err.request);
+      setApiResult({ path, error: err.request });
     } else if (err.message) {
-      setApiResult(err.message);
+      setApiResult({ path, error: err.message });
     } else if (err.error) {
-      setApiResult(err.error);
+      setApiResult({ path, error: err.error });
     } else {
-      setApiResult(err);
+      setApiResult({ path, error: err });
     }
   };
 

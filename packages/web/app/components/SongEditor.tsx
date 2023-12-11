@@ -20,10 +20,9 @@ import { useApp } from '~/app.context';
 
 const SongEditor = () => {
   const txtRef = useRef<any>(null);
-  const [pdfUrl, setPdfUrl] = useState<string | undefined>();
-  const [loading, setLoading] = useState(false);
+  const [pdfUrl, setPdfUrl] = useState<string | null>(null);
   const app = useApp();
-  const { setActiveDialog, handleApiError } = app;
+  const { setActiveDialog, apiResult, handleApiError } = app;
 
   const edit = useContext(EditContext);
 
@@ -49,36 +48,36 @@ const SongEditor = () => {
     confirmClose,
   } = edit;
 
-  const previewPdf = () => {
+  const [debouncedText, setDebouncedText] = useState(text);
+  const debounced = useDebouncedCallback((t) => setDebouncedText(t), 800);
+  const [activeTab, setActiveTab] = useState<string | number | undefined>(0);
+  const [linepos, setLinepos] = useState<number>();
+  const [colpos, setColpos] = useState<number>();
+
+  const previewPdf = (text: string) => {
     const formData = new FormData();
     formData.append('text', text);
     const savedSettings = localStorage.getItem('pdfExportOptions');
     if (savedSettings) {
       formData.append('options', savedSettings);
     }
-    setLoading(false);
-    setPdfUrl(undefined);
     fetch(`/pdf/${editSong.key}`, { method: 'POST', body: formData })
       .then((response) => {
-        return response.blob();
+        if (response.ok == true) {
+          return response.blob();
+        } else {
+          return response.json();
+        }
       })
       .then((data) => {
-        setLoading(false);
-        setPdfUrl(window.URL.createObjectURL(new Blob([data])));
-      })
-      .catch(async (err) => {
-        const errText = await new Response(err.response.data).text();
-        handleApiError(errText);
-        setLoading(false);
-        setPdfUrl(undefined);
+        if (data instanceof Blob) {
+          setPdfUrl(window.URL.createObjectURL(new Blob([data])));
+        } else {
+          setPdfUrl(null);
+          handleApiError(`/pdf/${editSong.key}`, data.error);
+        }
       });
   };
-
-  const [debouncedText, setDebouncedText] = useState(text);
-  const debounced = useDebouncedCallback((t) => setDebouncedText(t), 800);
-  const [activeTab, setActiveTab] = useState<string | number | undefined>(0);
-  const [linepos, setLinepos] = useState<number>();
-  const [colpos, setColpos] = useState<number>();
 
   useEffect(() => {
     setDebouncedText(editSong.fullText);
@@ -127,6 +126,12 @@ const SongEditor = () => {
       setColpos(col);
     }
   };
+
+  useEffect(() => {
+    if (activeTab === 1) {
+      previewPdf(debouncedText);
+    }
+  }, [activeTab, debouncedText]);
 
   useHotkeys(
     (key) => {
@@ -375,11 +380,6 @@ const SongEditor = () => {
             activeIndex={activeTab}
             onTabChange={(_, data) => {
               setActiveTab(data.activeIndex);
-              if (data.activeIndex === 1) {
-                previewPdf();
-              } else {
-                setPdfUrl(undefined);
-              }
             }}
             menu={{ size: 'mini', pointing: true }}
             panes={[
@@ -402,21 +402,25 @@ const SongEditor = () => {
                 },
               },
               {
-                menuItem: i18n.t('share_action.view pdf'),
+                menuItem: 'PDF',
                 render: () => {
                   return (
                     <Tab.Pane
-                      loading={loading}
                       style={{
                         minHeight: '50vh',
                         border: '0px transparent',
                       }}>
-                      {!loading && pdfUrl && (
-                        <SongViewPdf
-                          url={pdfUrl}
-                          settingsChanged={previewPdf}
-                        />
-                      )}
+                      <SongViewPdf
+                        url={pdfUrl}
+                        settingsChanged={() => previewPdf(debouncedText)}
+                      />
+                      {apiResult &&
+                        apiResult.path == `/pdf/${editSong.key}` && (
+                          <Message negative>
+                            <Message.Header>Error</Message.Header>
+                            <p>{apiResult.error}</p>
+                          </Message>
+                        )}
                     </Tab.Pane>
                   );
                 },

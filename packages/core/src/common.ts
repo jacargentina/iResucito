@@ -600,7 +600,7 @@ export const getAlphaWithSeparators = (
     return { songKey: data.song.key, str };
   });
   var i = 0;
-  var letter = normalize(items[i].str[0]);
+  var letter = items.length > 0 ? normalize(items[i].str[0]) : '';
   while (i < items.length) {
     const curLetter = normalize(items[i].str[0]);
     if (curLetter !== letter) {
@@ -1002,6 +1002,10 @@ export const SongPDFGenerator = async (
   addIndex: boolean
 ): Promise<string> => {
   try {
+    if (songsToPdf.length === 0) {
+      console.log('SongPDFGenerator lista vacia');
+      return '';
+    }
     writer.disablePageNumbers = opts.disablePageNumbers;
     if (addIndex) {
       // Portada
