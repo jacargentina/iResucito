@@ -40,18 +40,14 @@ export async function generateListPDF(
   list: ListToPdf,
   opts: ExportToPdfOptions
 ): Promise<GeneratePDFResult> {
-  const folder = FileSystem.cacheDirectory;
-
   const safeFileName = list.name.replace('/', '-');
-  const pdfPath = `${folder}/${safeFileName}.pdf`;
-
-  const reader = FileSystem.readAsStringAsync;
-  const fontFolder = FileSystem.bundledAssets;
-  const ttf = await reader(
-    `${fontFolder}/Franklin Gothic Medium.ttf`,
-    'base64'
+  const pdfPath = `${FileSystem.cacheDirectory}/${safeFileName}.pdf`;
+  const [{ localUri }] = await Asset.loadAsync(
+    require('@iresucito/core/assets/fonts/FranklinGothicMedium.ttf')
   );
-
+  const ttf = await FileSystem.readAsStringAsync(localUri as string, {
+    encoding: 'base64',
+  });
   var writer = new PdfWriter(Buffer.from(ttf, 'base64'), new Base64Encode({}));
   const base64 = await ListPDFGenerator(list, opts, writer);
   FileSystem.writeAsStringAsync(pdfPath, base64, { encoding: 'base64' });
