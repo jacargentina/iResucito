@@ -95,10 +95,10 @@ const ShareListButton = () => {
           </ActionsheetDragIndicatorWrapper>
           <ActionsheetItem
             testID="share-list-native"
-            onPress={() => {
+            onPress={async () => {
               handleClose();
-              const listPath = shareList(listName, 'native');
-              Sharing.shareAsync(`file://${listPath}`, {
+              const listPath = (await shareList(listName, 'native')) as string;
+              Sharing.shareAsync(listPath, {
                 dialogTitle: i18n.t('ui.share'),
               });
             }}>
@@ -110,8 +110,8 @@ const ShareListButton = () => {
             testID="share-list-text"
             onPress={async () => {
               handleClose();
-              const listPath = await shareList(listName, 'text');
-              Sharing.shareAsync(`file://${listPath}`, {
+              const listPath = (await shareList(listName, 'text')) as string;
+              Sharing.shareAsync(listPath, {
                 dialogTitle: i18n.t('ui.share'),
               });
             }}>
@@ -123,9 +123,12 @@ const ShareListButton = () => {
             testID="share-list-pdf"
             onPress={async () => {
               handleClose();
-              const result = await shareList(listName, 'pdf');
+              const result = (await shareList(
+                listName,
+                'pdf'
+              )) as GeneratePDFResult;
               navigation.navigate('PDFViewer', {
-                data: result as GeneratePDFResult,
+                data: result,
                 title: listName,
               });
             }}>

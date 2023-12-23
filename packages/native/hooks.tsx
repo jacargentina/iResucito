@@ -428,7 +428,7 @@ export const useListsStore = create<ListsStore>()(
                 }
               });
               const fileNameTxt = listName.replace(' ', '-');
-              const listPathTxt = `${FileSystem.documentDirectory}${fileNameTxt}.ireslist`;
+              const listPathTxt = `${FileSystem.documentDirectory}${fileNameTxt}.txt`;
               await FileSystem.writeAsStringAsync(listPathTxt, message);
               return listPathTxt;
             case 'pdf':
