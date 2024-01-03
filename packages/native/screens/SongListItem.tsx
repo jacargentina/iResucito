@@ -10,12 +10,13 @@ import {
   Icon,
   Pressable,
   Checkbox,
+  useMedia,
 } from '@gluestack-ui/themed';
 import { useNavigation } from '@react-navigation/native';
 import Highlighter from '@javier.alejandro.castro/react-native-highlight-words';
 import Collapsible from 'react-native-collapsible';
 import { AirbnbRating } from 'react-native-ratings';
-import badges from '../badges';
+import { BadgeByStage } from '../badges';
 import i18n from '@iresucito/translations';
 import { Song } from '@iresucito/core';
 import { ChooserParamList } from '../navigation';
@@ -34,7 +35,7 @@ const NoLocaleWarning = () => {
       }}>
       <HStack alignItems="center">
         <Icon color="$rose700" as={BugIcon} size="sm" mr="$2" />
-        <Text fontSize={14} color="$backgroundDark500">
+        <Text fontSize="$sm" color="$backgroundDark500">
           {i18n.t('ui.locale warning title')}
         </Text>
       </HStack>
@@ -55,6 +56,7 @@ export const SongListItem = (props: {
   onPress: any;
   setSongSetting: any;
 }) => {
+  const media = useMedia();
   const navigation = useNavigation<ViewSongScreenNavigationProp>();
   const { ratingsEnabled } = useSettingsStore();
   const { selection, enabled, toggle } = useSongsSelection();
@@ -93,6 +95,9 @@ export const SongListItem = (props: {
           <Highlighter
             key={i}
             autoEscape
+            style={{
+              fontSize: media.md ? 17 : 12,
+            }}
             highlightStyle={{
               backgroundColor: 'yellow',
             }}
@@ -112,7 +117,9 @@ export const SongListItem = (props: {
               setIsCollapsed(!isCollapsed);
             }}>
             <Badge>
-              <Badge.Text>{children.length}+</Badge.Text>
+              <Badge.Text size={media.md ? '2xl' : 'sm'}>
+                {children.length}+
+              </Badge.Text>
             </Badge>
           </Pressable>
         );
@@ -124,15 +131,15 @@ export const SongListItem = (props: {
     }
   }, [highlight, isCollapsed, song]);
 
-  var calcWidth = 100;
+  var widthPercentText = 100;
   if (showBadge) {
-    calcWidth -= 10;
+    widthPercentText -= 10;
   }
   if (viewButton) {
-    calcWidth -= 10;
+    widthPercentText -= 10;
   }
   if (openHighlightedRest) {
-    calcWidth -= 10;
+    widthPercentText -= 10;
   }
 
   const isSelected = selection.includes(song.key);
@@ -140,10 +147,17 @@ export const SongListItem = (props: {
   return (
     <Pressable
       testID={`song-${song.titulo}`}
-      p="$2"
       borderBottomWidth={1}
       borderBottomColor={isSelected ? '$rose200' : '$light200'}
       backgroundColor={isSelected ? '$rose100' : undefined}
+      sx={{
+        '@base': {
+          p: '$2',
+        },
+        '@md': {
+          p: '$3',
+        },
+      }}
       onPress={() => {
         if (enabled) {
           toggle(song.key);
@@ -153,11 +167,11 @@ export const SongListItem = (props: {
       }}>
       <HStack>
         {showBadge && (
-          <Box pt="$2" alignSelf="flex-start">
-            {badges[song.stage]}
+          <Box pt="$2" w="10%">
+            <BadgeByStage stage={song.stage} />
           </Box>
         )}
-        <VStack space="sm" p="$2" w={`${calcWidth}%`}>
+        <VStack space="sm" p="$2" w={`${widthPercentText}%`}>
           <VStack>
             <HStack justifyContent={'space-between'}>
               <Highlighter
@@ -165,7 +179,7 @@ export const SongListItem = (props: {
                 numberOfLines={1}
                 style={{
                   fontWeight: 'bold',
-                  fontSize: 16,
+                  fontSize: media.md ? 26 : 16,
                 }}
                 highlightStyle={{
                   backgroundColor: 'yellow',
@@ -188,6 +202,7 @@ export const SongListItem = (props: {
               style={{
                 color: config.tokens.colors.backgroundDark500,
                 paddingVertical: 2,
+                fontSize: media.md ? 19 : 14,
               }}
               highlightStyle={{
                 backgroundColor: 'yellow',
@@ -214,10 +229,18 @@ export const SongListItem = (props: {
             />
           )}
         </VStack>
-        {openHighlightedRest && <Box pt="$2">{openHighlightedRest}</Box>}
+        {openHighlightedRest && (
+          <Box pt="$2" alignItems="center" w="10%">
+            {openHighlightedRest}
+          </Box>
+        )}
         {viewButton && (
-          <Pressable w="10%" onPress={viewSong}>
-            <Icon as={EyeIcon} color="$rose500" size="xl" />
+          <Pressable pt="$2" alignItems="center" w="10%" onPress={viewSong}>
+            <Icon
+              as={EyeIcon}
+              color="$rose500"
+              size={media.md ? 'xxl' : 'xl'}
+            />
           </Pressable>
         )}
         {song.error && (

@@ -58,7 +58,19 @@ export const SongSearch = () => {
         const nextItem = searchItems![index + 1];
         if (item.divider) {
           return (
-            <Text fontWeight="bold" p="$2" fontSize="$sm" bg="$backgroundDark100">
+            <Text
+              fontWeight="bold"
+              bg="$backgroundDark100"
+              sx={{
+                '@base': {
+                  p: '$2',
+                  fontSize: '$sm',
+                },
+                '@md': {
+                  p: '$3',
+                  fontSize: '$xl',
+                },
+              }}>
               {i18n.t(item.title_key).toUpperCase()}
             </Text>
           );
@@ -69,11 +81,39 @@ export const SongSearch = () => {
             onPress={() => {
               navigation.navigate('SongList', item.params as any);
             }}>
-            <HStack w="100%" p="$2" m="$1">
+            <HStack
+              w="100%"
+              sx={{
+                '@base': {
+                  p: '$2',
+                  m: '$1',
+                },
+                '@md': {
+                  p: '$3',
+                  m: '$2',
+                },
+              }}>
               {item.badge}
               <VStack>
-                <Text fontWeight="bold">{i18n.t(item.title_key)}</Text>
-                <Text color="$backgroundDark500" fontSize="$sm">
+                <Text
+                  fontWeight="bold"
+                  sx={{
+                    '@md': {
+                      fontSize: '$2xl',
+                    },
+                  }}>
+                  {i18n.t(item.title_key)}
+                </Text>
+                <Text
+                  color="$backgroundDark500"
+                  sx={{
+                    '@base': {
+                      fontSize: '$sm',
+                    },
+                    '@md': {
+                      fontSize: '$lg',
+                    },
+                  }}>
                   {i18n.t(item.note_key as string)}
                 </Text>
               </VStack>

@@ -29,7 +29,13 @@ import {
   SongsSourceData,
 } from '@iresucito/core';
 import i18n from '@iresucito/translations';
-import badges from './badges';
+import            {
+  AlphaBadge,
+  CatechumenateBadge,
+  ElectionBadge,
+  LiturgyBadge,
+  PrecatechumenateBadge,
+} from './badges';
 import { GeneratePDFResult, generateListPDF } from './pdf';
 import { create } from 'zustand';
 import { immer } from 'zustand/middleware/immer';
@@ -790,7 +796,7 @@ useSettingsStore.subscribe(
           note_key: 'search_note.alpha',
           chooser: i18n.t('search_tabs.all', { locale }),
           params: { filter: null },
-          badge: badges.alpha,
+          badge: <AlphaBadge />,
         },
         {
           title_key: 'search_title.stage',
@@ -800,25 +806,25 @@ useSettingsStore.subscribe(
           title_key: 'search_title.precatechumenate',
           note_key: 'search_note.precatechumenate',
           params: { filter: { stage: 'precatechumenate' } },
-          badge: badges.precatechumenate,
+          badge: <PrecatechumenateBadge />,
         },
         {
           title_key: 'search_title.catechumenate',
           note_key: 'search_note.catechumenate',
           params: { filter: { stage: 'catechumenate' } },
-          badge: badges.catechumenate,
+          badge: <CatechumenateBadge />,
         },
         {
           title_key: 'search_title.election',
           note_key: 'search_note.election',
           params: { filter: { stage: 'election' } },
-          badge: badges.election,
+          badge: <ElectionBadge />,
         },
         {
           title_key: 'search_title.liturgy',
           note_key: 'search_note.liturgy',
           params: { filter: { stage: 'liturgy' } },
-          badge: badges.liturgy,
+          badge: <LiturgyBadge />,
         },
         {
           title_key: 'search_title.liturgical time',

@@ -114,7 +114,15 @@ export const SongViewFrame = (props: any) => {
           style={{
             minWidth: minWidth,
           }}>
-          <Box px="$2">
+          <Box
+            sx={{
+              '@base': {
+                p: '$2',
+              },
+              '@md': {
+                p: '$4',
+              },
+            }}>
             <Text onPress={toggleControls} style={titleStyle}>
               {title}
             </Text>
@@ -139,14 +147,14 @@ export const SongViewFrame = (props: any) => {
           alignItems="center"
           justifyContent="space-between"
           backgroundColor="#efefef">
-          <Button onPress={zoomOut} w="20%">
-            <Icon as={MinusIcon} color="white" />
+          <Button onPress={zoomOut} h="80%" w="20%" rounded="$2xl">
+            <Icon as={MinusIcon} color="white" size="xl" />
           </Button>
-          <Text fontWeight="bold" fontSize="$xl">
+          <Text fontWeight="bold" fontSize="$3xl" lineHeight="$3xl">
             {zoomLevel}
           </Text>
-          <Button onPress={zoomIn} w="20%">
-            <Icon as={PlusIcon} color="white" />
+          <Button onPress={zoomIn} h="80%" w="20%" rounded="$2xl">
+            <Icon as={PlusIcon} color="white" size="xl" />
           </Button>
         </HStack>
       )}

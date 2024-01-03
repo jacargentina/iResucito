@@ -69,10 +69,10 @@ export const getDefaultLocale = (): string => {
   return getLocales()[0].languageTag;
 };
 
-var isTablet = __DEV__ ? false : Device.deviceType == Device.DeviceType.TABLET;
-var fontSizeTitulo = isTablet ? 25 : 22;
-var fontSizeTexto = isTablet ? 17 : 15;
-var fontSizeNotas = isTablet ? 15.2 : 12.5;
+var isTablet = Device.deviceType == Device.DeviceType.TABLET;
+var fontSizeTitulo = isTablet ? 44 : 22;
+var fontSizeTexto = isTablet ? 20 : 15;
+var fontSizeNotas = isTablet ? 17 : 12.5;
 
 export const stylesObj: SongStyles = {
   title: {

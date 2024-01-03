@@ -225,8 +225,18 @@ export const SongList = (props: {
       />
       <Text
         fontWeight="bold"
-        p="$2"
-        px="$4"
+        sx={{
+          '@base': {
+            p: '$2',
+            px: '$4',
+            fontSize: '$md',
+          },
+          '@md': {
+            p: '$3',
+            px: '$5',
+            fontSize: '$xl',
+          },
+        }}
         bg="$backgroundDark100"
         color="$textDark500">
         {totalText}
