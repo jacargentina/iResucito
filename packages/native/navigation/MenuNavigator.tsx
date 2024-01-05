@@ -5,7 +5,7 @@ import {
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
-import { Icon } from '@gluestack-ui/themed';
+import { Icon, useMedia } from '@gluestack-ui/themed';
 import {
   SettingsNavigator,
   CommunityNavigator,
@@ -31,16 +31,31 @@ export type MenuParamList = {
 const Tab = createBottomTabNavigator<MenuParamList>();
 
 const getTabOptions = (
+  media: Partial<{
+    readonly base: boolean;
+    readonly sm: boolean;
+    readonly md: boolean;
+    readonly lg: boolean;
+    readonly xl: boolean;
+  }>,
   IconComponent: any,
   testID?: string,
   route?: any,
   showTabOnlyOn?: string
 ) => {
   var tabOptions: BottomTabNavigationOptions = {
-    tabBarStyle: {},
+    tabBarStyle: {
+      height: media.md ? 88 : undefined,
+    },
     tabBarTestID: testID,
     tabBarIcon: ({ color }) => {
-      return <Icon as={IconComponent} color={color} size="xl" />;
+      return (
+        <Icon
+          as={IconComponent}
+          color={color}
+          size={media.md ? '45' : undefined}
+        />
+      );
     },
   };
   if (showTabOnlyOn) {
@@ -84,6 +99,7 @@ var GetScreenOptions = () => {
 };
 
 export const MenuNavigator = (props: any) => {
+  const media = useMedia();
   const { lists, importList } = useListsStore();
   const { navigation } = props;
 
@@ -106,25 +122,25 @@ export const MenuNavigator = (props: any) => {
         name="Songs"
         component={SongsNavigator}
         options={({ route }) =>
-          getTabOptions(SearchIcon, 'songs-tab', route, 'SongSearch')
+          getTabOptions(media, SearchIcon, 'songs-tab', route, 'SongSearch')
         }
       />
       <Tab.Screen
         name="Lists"
         component={ListsNavigator}
         options={({ route }) =>
-          getTabOptions(BookmarkIcon, 'lists-tab', route, 'ListsSearch')
+          getTabOptions(media, BookmarkIcon, 'lists-tab', route, 'ListsSearch')
         }
       />
       <Tab.Screen
         name="Community"
         component={CommunityNavigator}
-        options={getTabOptions(UsersIcon, 'community-tab')}
+        options={getTabOptions(media, UsersIcon, 'community-tab')}
       />
       <Tab.Screen
         name="Settings"
         component={SettingsNavigator}
-        options={getTabOptions(SettingsIcon, 'settings-tab')}
+        options={getTabOptions(media, SettingsIcon, 'settings-tab')}
       />
     </Tab.Navigator>
   );
