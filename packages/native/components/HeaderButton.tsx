@@ -1,5 +1,4 @@
-
-import { Button } from '@gluestack-ui/themed';
+import { Button, ButtonIcon, ButtonText, useMedia } from '@gluestack-ui/themed';
 import { useStackNavOptions } from '../navigation';
 import { GestureResponderEvent } from 'react-native';
 import * as icons from 'lucide-react-native';
@@ -11,6 +10,7 @@ export const HeaderButton = (props: {
   textStyle?: any;
   onPress?: (e: GestureResponderEvent) => void;
 }) => {
+  const media = useMedia();
   const options = useStackNavOptions();
   const { testID, iconName, text, textStyle, onPress } = props;
   if (iconName && !icons[iconName]) {
@@ -19,13 +19,15 @@ export const HeaderButton = (props: {
   return (
     <Button testID={testID} onPress={onPress} borderWidth={0} px="$3">
       {iconName ? (
-        <Button.Icon
+        <ButtonIcon
           as={icons[iconName]}
+          // @ts-ignore
+          size={media.md ? 30 : undefined}
           // @ts-ignore
           color={options.headerTitleStyle.color}
         />
       ) : (
-        <Button.Text {...textStyle}>{text}</Button.Text>
+        <ButtonText {...textStyle}>{text}</ButtonText>
       )}
     </Button>
   );

@@ -1,3 +1,4 @@
+import { useMedia } from '@gluestack-style/react';
 import { Animated, StyleSheet, Text } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
 
@@ -23,6 +24,7 @@ export const SwipeableRightAction = (props: {
   onPress: any;
   enabled?: boolean;
 }) => {
+  const media = useMedia();
   const { text, color, x, progress, onPress, enabled } = props;
   const trans = progress.interpolate({
     inputRange: [0, 1],
@@ -35,7 +37,10 @@ export const SwipeableRightAction = (props: {
         style={[styles.rightAction, { backgroundColor: color }]}
         enabled={enabled}
         onPress={onPress}>
-        <Text style={styles.actionText}>{text}</Text>
+        <Text
+          style={[styles.actionText, { fontSize: media.md ? 20 : undefined }]}>
+          {text}
+        </Text>
       </RectButton>
     </Animated.View>
   );

@@ -53,6 +53,7 @@ const getTabOptions = (
         <Icon
           as={IconComponent}
           color={color}
+          // @ts-ignore
           size={media.md ? '45' : undefined}
         />
       );

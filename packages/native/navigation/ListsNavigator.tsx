@@ -10,6 +10,7 @@ import {
   ActionsheetDragIndicatorWrapper,
   ActionsheetDragIndicator,
   HStack,
+  useMedia,
 } from '@gluestack-ui/themed';
 import {
   StackNavigationProp,
@@ -78,6 +79,7 @@ type PDFViewerScreenNavigationProp = StackNavigationProp<
 >;
 
 const ShareListButton = () => {
+  const media = useMedia();
   const navigation = useNavigation<PDFViewerScreenNavigationProp>();
   const [showActionsheet, setShowActionsheet] = useState(false);
   const handleClose = () => setShowActionsheet(!showActionsheet);
@@ -102,7 +104,9 @@ const ShareListButton = () => {
                 dialogTitle: i18n.t('ui.share'),
               });
             }}>
-            <ActionsheetItemText>
+            <ActionsheetItemText
+              fontSize={media.md ? '$2xl' : undefined}
+              lineHeight={media.md ? '$3xl' : undefined}>
               {i18n.t('list_export_options.native')}
             </ActionsheetItemText>
           </ActionsheetItem>
@@ -115,7 +119,9 @@ const ShareListButton = () => {
                 dialogTitle: i18n.t('ui.share'),
               });
             }}>
-            <ActionsheetItemText>
+            <ActionsheetItemText
+              fontSize={media.md ? '$2xl' : undefined}
+              lineHeight={media.md ? '$3xl' : undefined}>
               {i18n.t('list_export_options.plain text')}
             </ActionsheetItemText>
           </ActionsheetItem>
@@ -132,7 +138,9 @@ const ShareListButton = () => {
                 title: listName,
               });
             }}>
-            <ActionsheetItemText>
+            <ActionsheetItemText
+              fontSize={media.md ? '$2xl' : undefined}
+              lineHeight={media.md ? '$3xl' : undefined}>
               {i18n.t('list_export_options.pdf file')}
             </ActionsheetItemText>
           </ActionsheetItem>

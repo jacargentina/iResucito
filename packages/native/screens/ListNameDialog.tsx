@@ -1,5 +1,12 @@
 import { useState, useEffect } from 'react';
-import { Input, Box, Button, FormControl } from '@gluestack-ui/themed';
+import {
+  Input,
+  Box,
+  Button,
+  FormControl,
+  InputField,
+  useMedia,
+} from '@gluestack-ui/themed';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { getLocalizedListType } from '@iresucito/core';
 import { useListsStore } from '../hooks';
@@ -16,6 +23,7 @@ type ListDetailNavivationProp = StackNavigationProp<
 >;
 
 export const ListNameDialog = () => {
+  const media = useMedia();
   const navigation = useNavigation<ListDetailNavivationProp>();
   const route = useRoute<ListNameDialogRouteProp>();
   const { lists, add, rename } = useListsStore();
@@ -100,14 +108,24 @@ export const ListNameDialog = () => {
       }>
       <Box p="$4">
         <FormControl mb="$5" isInvalid={!actionEnabled}>
-          <Input width="100%">
-            <Input.Input
+          <Input width="100%" size={media.md ? 'xl' : undefined}>
+            <InputField
               testID="list-name-input"
               autoFocus
               value={name}
               onChangeText={setName}
               clearButtonMode="always"
               autoCorrect={false}
+              sx={{
+                '@base': {
+                  fontSize: undefined,
+                  lineHeight: undefined,
+                },
+                '@md': {
+                  fontSize: '$xl',
+                  lineHeight: '$md',
+                },
+              }}
             />
           </Input>
           <FormControl.Error>

@@ -59,7 +59,7 @@ export const ContactChooserDialog = () => {
             justifyContent: 'space-around',
             padding: 10,
           }}>
-          <Icon as={UsersIcon} size="xl" alignSelf="center" />
+          <Icon as={UsersIcon} size="xxl" alignSelf="center" />
           <Text textAlign="center">{i18n.t('ui.community empty')}</Text>
         </View>
       )}

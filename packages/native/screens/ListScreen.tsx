@@ -1,5 +1,12 @@
 import { useLayoutEffect, useState, useEffect, useRef } from 'react';
-import { Pressable, VStack, HStack, Icon, Text } from '@gluestack-ui/themed';
+import {
+  Pressable,
+  VStack,
+  HStack,
+  Icon,
+  Text,
+  useMedia,
+} from '@gluestack-ui/themed';
 import { Alert, View } from 'react-native';
 import { FlashList } from '@shopify/flash-list';
 import {
@@ -30,6 +37,7 @@ type ListScreenNavigationProp = CompositeNavigationProp<
 >;
 
 const SwipeableRow = (props: { item: ListForUI }) => {
+  const media = useMedia();
   const navigation = useNavigation<ListScreenNavigationProp>();
   const { item } = props;
   const swipeRef = useRef<Swipeable>(null);
@@ -97,12 +105,21 @@ const SwipeableRow = (props: { item: ListForUI }) => {
           alignItems="center"
           borderBottomWidth={1}
           borderBottomColor="$light200">
-          <Icon as={BookmarkIcon} size="xl" color="$rose500" />
+          <Icon
+            as={BookmarkIcon}
+            size={media.md ? 'xxl' : 'xl'}
+            color="$rose500"
+          />
           <VStack space="xs">
-            <Text fontWeight="bold" fontSize="$xl">
+            <Text
+              fontWeight="bold"
+              fontSize={media.md ? '$4xl' : '$xl'}
+              lineHeight={media.md ? '$3xl' : '$xl'}>
               {item.name}
             </Text>
-            <Text>{item.localeType}</Text>
+            <Text fontSize={media.md ? '$xl' : undefined}>
+              {item.localeType}
+            </Text>
           </VStack>
         </HStack>
       </Pressable>

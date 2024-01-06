@@ -1,6 +1,16 @@
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { Text, Actionsheet, ActionsheetItemText, ActionsheetBackdrop, ActionsheetContent, ActionsheetDragIndicatorWrapper, ActionsheetDragIndicator, ActionsheetItem } from '@gluestack-ui/themed';
+import {
+  Text,
+  Actionsheet,
+  ActionsheetItemText,
+  ActionsheetBackdrop,
+  ActionsheetContent,
+  ActionsheetDragIndicatorWrapper,
+  ActionsheetDragIndicator,
+  ActionsheetItem,
+  useMedia,
+} from '@gluestack-ui/themed';
 import i18n from '@iresucito/translations';
 import { defaultExportToPdfOptions, SongToPdf } from '@iresucito/core';
 import { NativeParser } from '../util';
@@ -19,6 +29,7 @@ export const ChoosePdfTypeForExport = (props: {
   setLoading: (option: any) => any;
 }) => {
   const { isOpen, onClose, setLoading } = props;
+  const media = useMedia();
   const { songs } = useSongsStore();
   const navigation = useNavigation<PDFViewerScreenNavigationProp>();
 
@@ -29,13 +40,20 @@ export const ChoosePdfTypeForExport = (props: {
         <ActionsheetDragIndicatorWrapper>
           <ActionsheetDragIndicator />
         </ActionsheetDragIndicatorWrapper>
-        <Text fontWeight="bold">{i18n.t('ui.export.type')}</Text>
+        <Text
+          fontWeight="bold"
+          lineHeight={media.md ? '$3xl' : undefined}
+          fontSize={media.md ? '$2xl' : undefined}>
+          {i18n.t('ui.export.type')}
+        </Text>
         <ActionsheetItem
           onPress={() => {
             onClose();
             useSongsSelection.getState().enable();
           }}>
-          <ActionsheetItemText>
+          <ActionsheetItemText
+            fontSize={media.md ? '$2xl' : undefined}
+            lineHeight={media.md ? '$3xl' : undefined}>
             {i18n.t('pdf_export_options.selected songs')}
           </ActionsheetItemText>
         </ActionsheetItem>
@@ -73,7 +91,9 @@ export const ChoosePdfTypeForExport = (props: {
             });
             setLoading({ isLoading: false, text: '' });
           }}>
-          <ActionsheetItemText>
+          <ActionsheetItemText
+            fontSize={media.md ? '$2xl' : undefined}
+            lineHeight={media.md ? '$3xl' : undefined}>
             {i18n.t('pdf_export_options.complete book')}
           </ActionsheetItemText>
         </ActionsheetItem>

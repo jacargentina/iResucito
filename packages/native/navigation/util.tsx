@@ -1,4 +1,4 @@
-import { HStack } from '@gluestack-ui/themed';
+import { HStack, useMedia } from '@gluestack-ui/themed';
 import {
   Menu,
   MenuOptions,
@@ -6,6 +6,7 @@ import {
   withMenuContext,
   MenuContextProps,
   MenuTrigger,
+  MenuOptionCustomStyle,
 } from 'react-native-popup-menu';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -18,7 +19,7 @@ import {
   SharePDFButton,
   HeaderButton,
 } from '../components';
-import { SongsStackParamList, useStackNavOptions } from './index';
+import { SongsStackParamList } from './index';
 import { config } from '../config/gluestack-ui.config';
 
 type SongDetailRouteProp = RouteProp<SongsStackParamList, 'SongDetail'>;
@@ -30,7 +31,7 @@ type SongDetailScreenNavigationProp = StackNavigationProp<
 
 export const TransportNotesButton = withMenuContext(
   (props: MenuContextProps) => {
-    const options = useStackNavOptions();
+    const media = useMedia();
     const navigation = useNavigation<SongDetailScreenNavigationProp>();
     const route = useRoute<SongDetailRouteProp>();
     const { ctx } = props;
@@ -44,19 +45,25 @@ export const TransportNotesButton = withMenuContext(
 
     var menuOptionItems = chords.map((nota, i) => {
       var value = cleanMultichord(nota.source);
-      var customStyles =
+      var customStyles: MenuOptionCustomStyle | undefined =
         value == song.transportTo
           ? {
               optionWrapper: {
-                backgroundColor: config.tokens.colors.rose300,
+                backgroundColor: config.tokens.colors.rose400,
                 paddingHorizontal: 10,
                 paddingVertical: 10,
               },
               optionText: {
                 color: 'white',
+                fontSize: media.md ? 22 : undefined,
+                fontWeight: 'bold',
               },
             }
-          : undefined;
+          : {
+              optionText: {
+                fontSize: media.md ? 22 : undefined,
+              },
+            };
       return (
         <MenuOption
           key={i}
@@ -91,7 +98,11 @@ export const TransportNotesButton = withMenuContext(
         <HeaderButton
           iconName={showIcon ? 'MusicIcon' : undefined}
           text={song.transportTo}
-          textStyle={{ fontWeight: 'bold', fontSize: '$lg' }}
+          textStyle={{
+            fontWeight: 'bold',
+            lineHeight: media.md ? '$2xl' : '$lg',
+            fontSize: media.md ? '$2xl' : '$lg',
+          }}
           onPress={() => ctx.menuActions.openMenu(menuName)}
         />
         <MenuTrigger />
@@ -100,7 +111,15 @@ export const TransportNotesButton = withMenuContext(
             optionWrapper: { paddingHorizontal: 10, paddingVertical: 10 },
           }}>
           {song.transportTo != null && (
-            <MenuOption value={null} text="Original" />
+            <MenuOption
+              value={null}
+              text="Original"
+              customStyles={{
+                optionText: {
+                  fontSize: media.md ? 22 : undefined,
+                },
+              }}
+            />
           )}
           {menuOptionItems}
         </MenuOptions>

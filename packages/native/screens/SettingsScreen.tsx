@@ -11,6 +11,8 @@ import {
   Box,
   Heading,
   Switch,
+  useMedia,
+  ButtonText,
 } from '@gluestack-ui/themed';
 import { useScrollToTop } from '@react-navigation/native';
 import * as Application from 'expo-application';
@@ -30,7 +32,7 @@ import {
 
 const pack = require('../app.json');
 const cristo = require('../img/cristo.jpg');
-const appName = pack.displayName;
+const appName = pack.expo.name;
 
 export type SettingsNavigationProp = StackNavigationProp<
   SettingsStackParamList,
@@ -38,6 +40,7 @@ export type SettingsNavigationProp = StackNavigationProp<
 >;
 
 export const SettingsScreen = () => {
+  const media = useMedia();
   const { locale, keepAwake, ratingsEnabled } = useSettingsStore();
   const [version, setVersion] = useState('');
   const [songsResume, setSongsResume] = useState('-');
@@ -110,7 +113,17 @@ export const SettingsScreen = () => {
   var locales = getLocalesForPicker(getDefaultLocale());
 
   var localesItems = locales.map((l) => {
-    return <Select.Item p="$2" key={l.value} label={l.label} value={l.value} />;
+    return (
+      <Select.Item
+        p="$2"
+        key={l.value}
+        label={l.label}
+        value={l.value}
+        sx={{
+          _text: media.md ? { fontSize: 20, lineHeight: 30 } : undefined,
+        }}
+      />
+    );
   });
 
   var currentLocale = locales.find((l) => l.value == locale);
@@ -121,9 +134,14 @@ export const SettingsScreen = () => {
 
   return (
     <ScrollView ref={ref}>
-      <VStack space="sm" p="$3">
-        <Text>{i18n.t('settings_title.locale')}</Text>
-        <Text fontSize="$sm" color="$backgroundDark500" mb="$2">
+      <VStack space="sm" p={media.md ? '$6' : '$3'}>
+        <Text fontSize={media.md ? '$2xl' : undefined}>
+          {i18n.t('settings_title.locale')}
+        </Text>
+        <Text
+          fontSize={media.md ? '$xl' : '$sm'}
+          color="$backgroundDark500"
+          mb="$2">
           {i18n.t('settings_note.locale')}
         </Text>
         <Select
@@ -133,7 +151,7 @@ export const SettingsScreen = () => {
           onValueChange={(val) => {
             useSettingsStore.setState({ locale: val });
           }}>
-          <Select.Trigger w="100%">
+          <Select.Trigger w="100%" size={media.md ? 'xl' : undefined}>
             <Select.Input />
             <Select.Icon mr="$2">
               <Icon as={ChevronDownIcon} />
@@ -150,24 +168,27 @@ export const SettingsScreen = () => {
           </Select.Portal>
         </Select>
         <HStack space="sm" p="$3" justifyContent="center" alignItems="center">
-          <Icon as={LineChart} size="md" />
-          <Text fontSize="$sm" color="$backgroundDark500">
+          <Icon as={LineChart} size={media.md ? 'xl' : 'md'} />
+          <Text fontSize={media.md ? '$xl' : '$sm'} color="$backgroundDark500">
             {songsResume}
           </Text>
         </HStack>
       </VStack>
       <HStack
         space="sm"
-        p="$3"
+        p={media.md ? '$6' : '$3'}
         justifyContent="space-between"
         alignItems="center">
         <VStack w="80%" space="sm">
-          <Text>{i18n.t('settings_title.keep awake')}</Text>
-          <Text fontSize="$sm" color="$backgroundDark500">
+          <Text fontSize={media.md ? '$2xl' : undefined}>
+            {i18n.t('settings_title.keep awake')}
+          </Text>
+          <Text fontSize={media.md ? '$xl' : '$sm'} color="$backgroundDark500">
             {i18n.t('settings_note.keep awake')}
           </Text>
         </VStack>
         <Switch
+          size={media.md ? 'lg' : undefined}
           value={keepAwake}
           onValueChange={(val: boolean) =>
             useSettingsStore.setState({ keepAwake: val })
@@ -176,16 +197,19 @@ export const SettingsScreen = () => {
       </HStack>
       <HStack
         space="sm"
-        p="$3"
+        p={media.md ? '$6' : '$3'}
         justifyContent="space-between"
         alignItems="center">
         <VStack w="80%" space="sm">
-          <Text>{i18n.t('settings_title.ratings enabled')}</Text>
-          <Text fontSize="$sm" color="$backgroundDark500">
+          <Text fontSize={media.md ? '$2xl' : undefined}>
+            {i18n.t('settings_title.ratings enabled')}
+          </Text>
+          <Text fontSize={media.md ? '$xl' : '$sm'} color="$backgroundDark500">
             {i18n.t('settings_note.ratings enabled')}
           </Text>
         </VStack>
         <Switch
+          size={media.md ? 'lg' : undefined}
           value={ratingsEnabled}
           onValueChange={(val: boolean) =>
             useSettingsStore.setState({ ratingsEnabled: val })
@@ -200,7 +224,7 @@ export const SettingsScreen = () => {
         <Image
           source={cristo}
           style={{
-            height: 190,
+            height: media.md ? 360 : 190,
             marginTop: 40,
           }}
           resizeMode="contain"
@@ -208,48 +232,58 @@ export const SettingsScreen = () => {
         <Heading
           color="$rose500"
           mt="$10"
-          style={{
-            fontWeight: 'bold',
-            fontStyle: 'italic',
-          }}>
+          fontSize={media.md ? 34 : undefined}
+          fontWeight="bold"
+          fontStyle="italic">
           {appName}
         </Heading>
-        <Text textAlign="center" fontSize="$md" mt="$5">
-          <Text fontWeight="bold">
+        <Text textAlign="center" fontSize={media.md ? '$xl' : '$md'} mt="$5">
+          <Text fontWeight="bold" fontSize={media.md ? '$xl' : '$md'}>
             {i18n.t('ui.version')}: {version}
           </Text>
           {'\n'} Javier Castro, 2017-2023
         </Text>
-        <Text textAlign="center" fontSize="$sm" mt="$10">
-          <Text fontWeight="bold">{i18n.t('ui.collaborators')}</Text>
+        <Text textAlign="center" fontSize={media.md ? '$md' : '$sm'} mt="$10">
+          <Text fontWeight="bold" fontSize={media.md ? '$md' : '$sm'}>
+            {i18n.t('ui.collaborators')}
+          </Text>
           {Object.keys(CollaboratorsIndex).map((lang) => {
             return `\n ${CollaboratorsIndex[lang].join(', ')} (${lang})`;
           })}
         </Text>
         <HStack my="$5">
           <Button m="$5" bg="$rose500" borderRadius={32} onPress={sendMail}>
-            <Icon as={MailIcon} color="white" />
+            <Icon
+              as={MailIcon}
+              color="white"
+              size={media.md ? 'xl' : undefined}
+            />
           </Button>
           <Button m="$5" bg="$rose500" borderRadius={32} onPress={sendTwitter}>
-            <Icon as={Twitter} color="white" />
+            <Icon
+              as={Twitter}
+              color="white"
+              size={media.md ? 'xl' : undefined}
+            />
           </Button>
         </HStack>
-        <Text fontSize="$sm" textAlign="center">
+        <Text fontSize={media.md ? '$xl' : '$sm'} textAlign="center">
           {i18n.t('ui.contribute message')}
         </Text>
-        <Button my="$8" size="sm" onPress={goEditor}>
+        <Button my="$8" size={media.md ? 'xl' : 'sm'} onPress={goEditor}>
           <Icon as={ChromeIcon} color="white" mr="$2" />
-          <Button.Text>{i18n.t('ui.contribute button')}</Button.Text>
+          <ButtonText>{i18n.t('ui.contribute button')}</ButtonText>
         </Button>
         {settingsExists && (
           <Button
             my="$8"
             bg="$rose500"
             borderRadius={32}
+            size={media.md ? 'xl' : 'sm'}
             onPress={clearSettings}>
-            <Button.Text color="white">
+            <ButtonText color="white">
               {i18n.t('ui.clear song settings')}
-            </Button.Text>
+            </ButtonText>
           </Button>
         )}
       </Box>

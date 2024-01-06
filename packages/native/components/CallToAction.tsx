@@ -1,6 +1,14 @@
 import { useAndroidBackHandler } from 'react-navigation-backhandler';
 import { KeyboardAwareScrollView } from '@codler/react-native-keyboard-aware-scroll-view';
-import { Box, Icon, Text, Heading, Button } from '@gluestack-ui/themed';
+import {
+  Box,
+  Icon,
+  Text,
+  Heading,
+  Button,
+  useMedia,
+  ButtonText,
+} from '@gluestack-ui/themed';
 import { GestureResponderEvent } from 'react-native';
 
 export const CallToAction = (props: {
@@ -12,13 +20,15 @@ export const CallToAction = (props: {
   buttonText: string;
   children?: any;
 }) => {
+  const media = useMedia();
+
   useAndroidBackHandler(() => {
     return true;
   });
 
   return (
     <KeyboardAwareScrollView contentContainerStyle={{ flexGrow: 1 }}>
-      <Box flex={1} p="$5">
+      <Box flex={1} p={media.md ? '$16' : '$5'}>
         <Box
           flex={3}
           justifyContent="space-around"
@@ -26,15 +36,26 @@ export const CallToAction = (props: {
           borderBottomColor="$light200">
           <Icon
             as={props.icon}
-            size='xxl'
+            // @ts-ignore
+            size={media.md ? 100 : 'xxl'}
             color="$primary500"
             style={{
               alignSelf: 'center',
             }}
           />
         </Box>
-        <Heading pt="$5">{props.title}</Heading>
-        <Text testID="ca_text">{props.text}</Text>
+        <Heading
+          pt="$5"
+          fontSize={media.md ? 32 : undefined}
+          lineHeight={media.md ? 38 : undefined}>
+          {props.title}
+        </Heading>
+        <Text
+          testID="ca_text"
+          fontSize={media.md ? 22 : undefined}
+          lineHeight={media.md ? 26 : undefined}>
+          {props.text}
+        </Text>
         <Box flex={3} justifyContent="space-around">
           {props.children}
         </Box>
@@ -43,8 +64,11 @@ export const CallToAction = (props: {
             testID="ca_button"
             borderRadius={32}
             onPress={props.buttonHandler}
-            isDisabled={props.buttonDisabled}>
-            <Button.Text>{props.buttonText}</Button.Text>
+            isDisabled={props.buttonDisabled}
+            alignSelf="center"
+            w={media.md ? '85%' : undefined}
+            size={media.md ? 'xl' : undefined}>
+            <ButtonText>{props.buttonText}</ButtonText>
           </Button>
         </Box>
       </Box>
