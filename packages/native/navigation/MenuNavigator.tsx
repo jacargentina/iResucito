@@ -44,9 +44,11 @@ const getTabOptions = (
   showTabOnlyOn?: string
 ) => {
   var tabOptions: BottomTabNavigationOptions = {
-    tabBarStyle: {
-      height: media.md ? 88 : undefined,
-    },
+    tabBarStyle: media.md
+      ? {
+          height: 88,
+        }
+      : undefined,
     tabBarTestID: testID,
     tabBarIcon: ({ color }) => {
       return (
