@@ -11,17 +11,16 @@ export const useStackNavOptions = () => {
     },
     headerStyle: {
       backgroundColor: config.tokens.colors.rose500,
-      height: media.md ? 75 : undefined,
     },
     headerTitleStyle: {
       color: 'white',
-      fontSize: media.md ? 26 : undefined,
-      lineHeight: media.md ? 28 : undefined,
+      fontSize: media.md ? 26 : 18,
+      lineHeight: media.md ? 28 : 22,
     },
     headerBackTitleStyle: {
       color: 'white',
-      fontSize: media.md ? 24 : undefined,
-      lineHeight: media.md ? 26 : undefined,
+      fontSize: media.md ? 24 : 16,
+      lineHeight: media.md ? 26 : 20,
     },
     headerTintColor: 'white',
     headerBackTitle: i18n.t('ui.back'),

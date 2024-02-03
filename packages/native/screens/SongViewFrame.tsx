@@ -1,6 +1,13 @@
 import { useState } from 'react';
 import { Dimensions, ScrollView, GestureResponderEvent } from 'react-native';
-import { Box, HStack, Text, Icon, Button } from '@gluestack-ui/themed';
+import {
+  Box,
+  HStack,
+  Text,
+  Icon,
+  Button,
+  useMedia,
+} from '@gluestack-ui/themed';
 import color from 'color';
 import { colors, SongLine } from '@iresucito/core';
 import i18n from '@iresucito/translations';
@@ -67,6 +74,7 @@ const SongViewLines = (props: {
 };
 
 export const SongViewFrame = (props: any) => {
+  const media = useMedia();
   const { zoomLevel } = useSettingsStore();
   const { title, stage, source, text, transportToNote, error, style } = props;
   const backColor = color(colors[stage]);
@@ -142,19 +150,23 @@ export const SongViewFrame = (props: any) => {
       </ScrollView>
       {ctrlVisible && (
         <HStack
-          m="$2"
+          py="$1"
+          px="$4"
           h="10%"
           alignItems="center"
           justifyContent="space-between"
           backgroundColor="#efefef">
-          <Button onPress={zoomOut} h="80%" w="20%" rounded="$2xl">
-            <Icon as={MinusIcon} color="white" size="xl" />
+          <Button onPress={zoomOut} h="85%" w="18%" rounded="$2xl">
+            <Icon as={MinusIcon} color="white" size={media.md ? 'xxl' : 'xl'} />
           </Button>
-          <Text fontWeight="bold" fontSize="$3xl" lineHeight="$3xl">
+          <Text
+            fontWeight="bold"
+            fontSize={media.md ? '$5xl' : '$3xl'}
+            lineHeight={media.md ? '$5xl' : '$3xl'}>
             {zoomLevel}
           </Text>
-          <Button onPress={zoomIn} h="80%" w="20%" rounded="$2xl">
-            <Icon as={PlusIcon} color="white" size="xl" />
+          <Button onPress={zoomIn} h="85%" w="18%" rounded="$2xl">
+            <Icon as={PlusIcon} color="white" size={media.md ? 'xxl' : 'xl'} />
           </Button>
         </HStack>
       )}
