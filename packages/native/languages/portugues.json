@@ -1,3 +1,3 @@
 {
-    "NSContactsUsageDescription": "Permitir acesso do $(PRODUCT_NAME) aos contatos: os dados são armazenados localmente e NÃO são enviados para nenhum servidor"
+    "NSContactsUsageDescription": "Permitir acesso aos contatos: os dados são armazenados localmente e NÃO são enviados para nenhum servidor"
 }
