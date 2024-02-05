@@ -18,6 +18,7 @@
     "ios": {
       "bundleIdentifier": "com.javiercastro.iresucito",
       "infoPlist": {
+        "CFBundleAllowMixedLocalizations": true,
         "NSContactsUsageDescription": "Permitir $(PRODUCT_NAME) acceso a los contactos.",
         "UIRequiredDeviceCapabilities": [
           "armv7",
@@ -30,6 +31,14 @@
       "config": {
         "usesNonExemptEncryption": false
       }
+    },
+    "locales": {
+      "en": "./languages/english.json",
+      "es": "./languages/spanish.json",
+      "pt": "./languages/portugues.json",
+      "it": "./languages/italian.json",
+      "de": "./languages/deutsch.json",
+      "fr": "./languages/french.json"
     },
     "android": {
       "adaptiveIcon": {

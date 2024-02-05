@@ -1,0 +1,3 @@
+{
+    "NSContactsUsageDescription": "Erlauben Sie $(PRODUCT_NAME) den Zugriff auf Kontakte – die Daten werden lokal gespeichert und NICHT auf einen Server hochgeladen"
+}
