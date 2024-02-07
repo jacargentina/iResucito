@@ -1,3 +1,3 @@
 {
-    "NSContactsUsageDescription": "O aplicativo permite selecionar quais de seus contatos são irmãos da comunidade, para utilizar seus nomes na criação das Listas"
+    "NSContactsUsageDescription": "O aplicativo permite selecionar quais de seus contatos são irmãos da comunidade, para utilizar seus nomes na criação das Listas. Os dados são armazenados apenas localmente, sem serem carregados em nenhum servidor."
 }

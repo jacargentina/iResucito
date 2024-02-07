@@ -1,3 +1,3 @@
 {
-    "NSContactsUsageDescription": "The application allows you to select which of your contacts are brothers of the community, to use their names in creating the Lists"
+    "NSContactsUsageDescription": "The application allows you to select which of your contacts are brothers of the community, to use their names in creating the Lists. Data is stored locally, not uploaded to any server."
 }

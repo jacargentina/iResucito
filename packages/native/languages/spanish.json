@@ -1,3 +1,3 @@
 {
-    "NSContactsUsageDescription": "La aplicación permite seleccionar cuales de tus contactos son hermanos de la comunidad, para usar sus nombres en la confección de las Listas"
+    "NSContactsUsageDescription": "La aplicación permite seleccionar cuales de tus contactos son hermanos de la comunidad, para usar sus nombres en la confección de las Listas. Los datos se almacenan sólo localmente, sin subirse a ningún servidor."
 }
