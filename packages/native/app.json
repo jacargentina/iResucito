@@ -25,7 +25,7 @@
           "gamekit"
         ]
       },
-      "buildNumber": "22",
+      "buildNumber": "23",
       "requireFullScreen": true,
       "supportsTablet": true,
       "config": {
@@ -50,7 +50,7 @@
         "android.permission.READ_CONTACTS",
         "android.permission.WRITE_CONTACTS"
       ],
-      "versionCode": 140
+      "versionCode": 141
     },
     "plugins": [
       "expo-localization",
