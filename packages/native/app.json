@@ -2,7 +2,7 @@
   "expo": {
     "name": "iResucitó",
     "slug": "iresucito",
-    "version": "7.0.0",
+    "version": "7.0.1",
     "orientation": "default",
     "icon": "./img/cristo.png",
     "userInterfaceStyle": "dark",
