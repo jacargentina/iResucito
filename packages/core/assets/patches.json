@@ -3711,6 +3711,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1699880423684,
+      "locale": "ru",
+      "author": "gaboisaactg10@gmail.com",
+      "created": true,
+      "updated": false
     }
   ],
   "48": [
@@ -8357,6 +8364,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1704024995947,
+      "locale": "lt-LT",
+      "author": "albertiniqmc@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "127": [
@@ -9025,6 +9039,13 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1703848047184,
+      "locale": "ru",
+      "author": "gaboisaactg10@gmail.com",
+      "created": true,
+      "updated": false
     }
   ],
   "141": [
@@ -9670,6 +9691,20 @@
       },
       "created": false,
       "updated": false
+    },
+    {
+      "date": 1701715032066,
+      "locale": "en",
+      "author": "javier_midence@hotmail.com",
+      "created": true,
+      "updated": false
+    },
+    {
+      "date": 1708134818402,
+      "locale": "en",
+      "author": "javier_midence@hotmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "151": [
@@ -13840,6 +13875,13 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1704529001374,
+      "locale": "es",
+      "author": "hagenmiguel@hotmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "222": [
@@ -14775,6 +14817,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1702378818359,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "264": [
@@ -14821,6 +14870,17 @@
       "author": "albertiniqmc@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1699880516522,
+      "locale": "ru",
+      "author": "gaboisaactg10@gmail.com",
+      "rename": {
+        "original": "Ты хлеб всех убогих",
+        "new": "Ты ХЛЕБ ВСЕХ УБОГИХ"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "266": [
@@ -14830,6 +14890,17 @@
       "author": "albertiniqmc@gmail.com",
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1704536076176,
+      "locale": "es",
+      "author": "nicolas59021@gmail.com",
+      "created": true,
+      "updated": false,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "liturgy"
+      }
     }
   ]
 }
