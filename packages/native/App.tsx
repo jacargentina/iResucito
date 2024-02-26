@@ -34,7 +34,7 @@ const App = () => {
           }}>
           <RootNavigator />
         </NavigationContainer>
-        <StatusBar style="light" />
+        <StatusBar hidden />
       </MenuProvider>
     </GluestackUIProvider>
   );
