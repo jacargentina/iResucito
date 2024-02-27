@@ -63,7 +63,9 @@
           "contactsPermission": "Permitir $(PRODUCT_NAME) acceso a los contactos."
         }
       ],
-      "sentry-expo"
+      "sentry-expo",
+      "expo-build-properties",
+      "expo-font"
     ],
     "hooks": {
       "postPublish": [
