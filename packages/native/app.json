@@ -19,7 +19,6 @@
       "bundleIdentifier": "com.javiercastro.iresucito",
       "infoPlist": {
         "CFBundleAllowMixedLocalizations": true,
-        "NSContactsUsageDescription": "Permitir $(PRODUCT_NAME) acceso a los contactos.",
         "UIRequiredDeviceCapabilities": [
           "armv7",
           "gamekit"
@@ -60,7 +59,7 @@
       [
         "expo-contacts",
         {
-          "contactsPermission": "Permitir $(PRODUCT_NAME) acceso a los contactos."
+          "contactsPermission": "The application allows you to select which of your contacts are brothers of the community, to use their names in creating the Lists. Data is stored locally, not uploaded to any server."
         }
       ],
       "sentry-expo",
