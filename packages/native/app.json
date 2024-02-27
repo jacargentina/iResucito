@@ -11,15 +11,21 @@
       "resizeMode": "contain",
       "backgroundColor": "#FFFFFF"
     },
-    "assetBundlePatterns": ["**/*", "../core/assets/**/*"],
+    "assetBundlePatterns": [
+      "**/*",
+      "../core/assets/**/*"
+    ],
     "ios": {
       "bundleIdentifier": "com.javiercastro.iresucito",
       "infoPlist": {
         "CFBundleAllowMixedLocalizations": true,
         "NSContactsUsageDescription": "Permitir $(PRODUCT_NAME) acceso a los contactos.",
-        "UIRequiredDeviceCapabilities": ["armv7", "gamekit"]
+        "UIRequiredDeviceCapabilities": [
+          "armv7",
+          "gamekit"
+        ]
       },
-      "buildNumber": "23",
+      "buildNumber": "25",
       "requireFullScreen": true,
       "supportsTablet": true,
       "config": {
@@ -44,7 +50,7 @@
         "android.permission.READ_CONTACTS",
         "android.permission.WRITE_CONTACTS"
       ],
-      "versionCode": 141
+      "versionCode": 142
     },
     "androidStatusBar": {
       "hidden": true
