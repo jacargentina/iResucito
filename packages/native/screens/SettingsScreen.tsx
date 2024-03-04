@@ -8,6 +8,14 @@ import {
   Icon,
   VStack,
   Select,
+  SelectItem,
+  SelectTrigger,
+  SelectIcon,
+  SelectInput,
+  SelectPortal,
+  SelectBackdrop,
+  SelectContent,
+  SelectDragIndicatorWrapper,
   Box,
   Heading,
   Switch,
@@ -114,7 +122,7 @@ export const SettingsScreen = () => {
 
   var localesItems = locales.map((l) => {
     return (
-      <Select.Item
+      <SelectItem
         p="$2"
         key={l.value}
         label={l.label}
@@ -151,21 +159,22 @@ export const SettingsScreen = () => {
           onValueChange={(val) => {
             useSettingsStore.setState({ locale: val });
           }}>
-          <Select.Trigger w="100%" size={media.md ? 'xl' : undefined}>
-            <Select.Input />
-            <Select.Icon mr="$2">
+          <SelectTrigger w="100%" size={media.md ? 'xl' : undefined}>
+            <SelectInput />
+            {/* @ts-ignore */}
+            <SelectIcon mr="$2">
               <Icon as={ChevronDownIcon} />
-            </Select.Icon>
-          </Select.Trigger>
-          <Select.Portal>
-            <Select.Backdrop />
-            <Select.Content pb="$8">
-              <Select.DragIndicatorWrapper>
+            </SelectIcon>
+          </SelectTrigger>
+          <SelectPortal>
+            <SelectBackdrop />
+            <SelectContent pb="$8">
+              <SelectDragIndicatorWrapper>
                 <Select.DragIndicator />
-              </Select.DragIndicatorWrapper>
+              </SelectDragIndicatorWrapper>
               {localesItems}
-            </Select.Content>
-          </Select.Portal>
+            </SelectContent>
+          </SelectPortal>
         </Select>
         <HStack space="sm" p="$3" justifyContent="center" alignItems="center">
           <Icon as={LineChart} size={media.md ? 'xl' : 'md'} />

@@ -42,7 +42,7 @@ const SwipeableRow = (props: { item: BrotherContact }) => {
       let updatedContact = Object.assign({}, contact, {
         [attribute]: newValue,
       });
-      update(contact.id, updatedContact);
+      update(contact.id!, updatedContact);
     },
     [update]
   );
@@ -198,7 +198,7 @@ export const CommunityScreen = () => {
         ref={listRef}
         data={filtered}
         extraData={{ locale: i18n.locale, contacts }}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.id!}
         renderItem={({ item }) => <SwipeableRow item={item} />}
         estimatedItemSize={90}
       />

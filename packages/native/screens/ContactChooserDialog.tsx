@@ -72,7 +72,7 @@ export const ContactChooserDialog = () => {
           }>
           <FlashList
             data={filtered}
-            keyExtractor={(item) => item.id}
+            keyExtractor={(item) => item.id!}
             renderItem={({ item }) => {
               return (
                 <ContactListItem

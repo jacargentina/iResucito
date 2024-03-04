@@ -63,9 +63,12 @@ export const SongListItem = (props: {
   const { song, highlight, showBadge, viewButton, setSongSetting } = props;
 
   const [isCollapsed, setIsCollapsed] = useState(true);
-  const [firstHighlighted, setFirstHighlighted] =
-    useState<JSX.Element | void>();
-  const [highlightedRest, setHighlightedRest] = useState<JSX.Element | void>();
+  const [firstHighlighted, setFirstHighlighted] = useState<
+    JSX.Element | undefined
+  >();
+  const [highlightedRest, setHighlightedRest] = useState<
+    JSX.Element | undefined
+  >();
   const [openHighlightedRest, setOpenHighlightedRest] =
     useState<JSX.Element | void>();
 
@@ -125,8 +128,8 @@ export const SongListItem = (props: {
         );
       }
     } else {
-      setFirstHighlighted();
-      setHighlightedRest();
+      setFirstHighlighted(undefined);
+      setHighlightedRest(undefined);
       setOpenHighlightedRest();
     }
   }, [highlight, isCollapsed, song]);
