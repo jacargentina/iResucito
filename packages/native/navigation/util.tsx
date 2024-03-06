@@ -29,7 +29,9 @@ type SongDetailScreenNavigationProp = StackNavigationProp<
   'SongDetail'
 >;
 
-export const TransportNotesButton = withMenuContext(
+type T = React.ComponentType<Omit<MenuContextProps, 'ctx'>>;
+
+export const TransportNotesButton: T = withMenuContext(
   (props: MenuContextProps) => {
     const media = useMedia();
     const navigation = useNavigation<SongDetailScreenNavigationProp>();
