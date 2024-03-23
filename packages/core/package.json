@@ -3,8 +3,8 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "tsc": "tsc -b",
-    "postinstall": "yarn run tsc && cp ./src/pdfkit.standalone.js dist/src/",
+    "build": "tsc -b",
+    "postinstall": "yarn run build && cp ./src/pdfkit.standalone.js dist/src/",
     "patch": "esno src/applyPatch.ts",
     "test": "esno src/test.ts",
     "test-no-funciona": "// ver comentarios en jest.config.js"
