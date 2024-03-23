@@ -421,7 +421,8 @@
       "pt-PT": "14",
       "lt-LT": "15",
       "en": "4",
-      "fr": "3"
+      "fr": "3",
+      "pl": "5"
     },
     "stages": {
       "pt-BR": "precatechumenate"
@@ -3746,5 +3747,12 @@
     "stages": {
       "es": "liturgy"
     }
+  },
+  "267": {
+    "files": {
+      "es": "237"
+    },
+    "stage": "precatechumenate",
+    "stages": {}
   }
 }

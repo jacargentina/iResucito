@@ -1809,6 +1809,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1708291535772,
+      "locale": "pl",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": true,
+      "updated": false
     }
   ],
   "27": [
@@ -14901,6 +14908,15 @@
         "original": "precatechumenate",
         "new": "liturgy"
       }
+    }
+  ],
+  "267": [
+    {
+      "date": 1711219660650,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": true,
+      "updated": false
     }
   ]
 }
