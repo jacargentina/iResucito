@@ -1,5 +1,5 @@
 // Utilerias atadas a react-native
-import { StyleSheet } from 'react-native';
+import { StyleSheet, TextStyle } from 'react-native';
 import { getLocales } from 'expo-localization';
 import * as FileSystem from 'expo-file-system';
 import * as Device from 'expo-device';
@@ -74,7 +74,7 @@ var fontSizeTitulo = isTablet ? 44 : 22;
 var fontSizeTexto = isTablet ? 20 : 15;
 var fontSizeNotas = isTablet ? 17 : 12.5;
 
-export const stylesObj: SongStyles = {
+export const stylesObj: SongStyles<TextStyle> = {
   title: {
     fontFamily: 'Franklin Gothic Medium',
     color: '#ff0000',
@@ -119,7 +119,7 @@ export const stylesObj: SongStyles = {
     fontSize: fontSizeTexto,
     marginBottom: 8,
   },
-  prefix: {
+  normalPrefix: {
     fontFamily: 'Franklin Gothic Medium',
     color: '#777777',
     fontSize: fontSizeTexto,
@@ -130,9 +130,23 @@ export const stylesObj: SongStyles = {
     fontSize: fontSizeTexto,
   },
   pageFooter: {},
+  assemblyLine: {},
+  assemblyPrefix: {},
+  useTimesRomanFont: false,
+  marginLeft: 0,
+  marginTop: 0,
+  widthHeightPixels: 0,
+  bookTitleSpacing: 0,
+  songIndicatorSpacing: 0,
+  indexMarginLeft: 0,
+  indexTitle: {},
+  bookSubtitle: {},
+  bookTitle: {},
+  indexText: {},
+  disablePageNumbers: false,
 };
 
-export const NativeStyles: any = StyleSheet.create(stylesObj);
+export const NativeStyles = StyleSheet.create(stylesObj);
 
 class NativeSongsExtras implements SongsExtras {
   async readPatch(): Promise<SongIndexPatch> {
@@ -181,7 +195,7 @@ class NativeSongsExtras implements SongsExtras {
 
 export const NativeExtras: SongsExtras = new NativeSongsExtras();
 
-export const NativeParser: SongsParser = new SongsParser(NativeStyles);
+export const NativeParser = new SongsParser(NativeStyles);
 
 export const contactFilterByText = (
   c: Contacts.Contact,

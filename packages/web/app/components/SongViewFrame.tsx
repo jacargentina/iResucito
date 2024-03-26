@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react';
 import { Header } from 'semantic-ui-react';
 import i18n from '@iresucito/translations';
 import { SongRendering } from '@iresucito/core';
-import { WebParser, WebStyles } from './WebParser';
+import { WebParser, WebStyle, WebStyles } from './WebParser';
 import SongViewLines from './SongViewLines';
 
 const SongViewFrame = (props: any) => {
   const { title, source, text } = props;
-  const [fRender, setFRender] = useState<SongRendering | undefined>();
+  const [fRender, setFRender] = useState<SongRendering<WebStyle> | undefined>();
 
   useEffect(() => {
     const result = WebParser.getForRender(text, i18n.locale);

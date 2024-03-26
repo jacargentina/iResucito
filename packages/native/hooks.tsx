@@ -8,7 +8,6 @@ import * as FileSystem from 'expo-file-system';
 import pathParse from 'path-parse';
 import {
   getLocalizedListType,
-  defaultExportToPdfOptions,
   SongSettingsFile,
   Song,
   SearchItem,
@@ -27,9 +26,10 @@ import {
   ListTitleValue,
   SongsProcessor,
   SongsSourceData,
+  PdfStyles,
 } from '@iresucito/core';
 import i18n from '@iresucito/translations';
-import            {
+import {
   AlphaBadge,
   CatechumenateBadge,
   ElectionBadge,
@@ -445,10 +445,7 @@ export const useListsStore = create<ListsStore>()(
                 ...list,
                 localeType: getLocalizedListType(list.type, i18n.locale),
               };
-              return await generateListPDF(
-                listToPdf,
-                defaultExportToPdfOptions
-              );
+              return await generateListPDF(listToPdf, PdfStyles);
           }
         },
         load_ui: () => {

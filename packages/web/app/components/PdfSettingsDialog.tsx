@@ -3,7 +3,7 @@ import JSONInput from 'react-json-editor-ajrm';
 import locale from 'react-json-editor-ajrm/locale/en';
 import { Button, Modal } from 'semantic-ui-react';
 import i18n from '@iresucito/translations';
-import { defaultExportToPdfOptions } from '@iresucito/core';
+import { PdfStyles } from '@iresucito/core';
 import { useApp } from '~/app.context';
 
 const PdfSettingsDialog = () => {
@@ -15,11 +15,11 @@ const PdfSettingsDialog = () => {
 
   useEffect(() => {
     if (activeDialog === 'pdfSettings') {
-      const savedSettings = localStorage.getItem('pdfExportOptions');
+      const savedSettings = localStorage.getItem('pdfStyles');
       if (savedSettings) {
         setinitialOptions(JSON.parse(savedSettings));
       } else {
-        setinitialOptions(defaultExportToPdfOptions);
+        setinitialOptions(PdfStyles);
       }
     }
   }, [activeDialog]);
@@ -32,8 +32,8 @@ const PdfSettingsDialog = () => {
   };
 
   const deleteOptions = () => {
-    localStorage.removeItem('pdfExportOptions');
-    setinitialOptions(defaultExportToPdfOptions);
+    localStorage.removeItem('pdfStyles');
+    setinitialOptions(PdfStyles);
     if (dialogCallback) {
       dialogCallback();
     }

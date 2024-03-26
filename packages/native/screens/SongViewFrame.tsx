@@ -1,5 +1,10 @@
 import { useState } from 'react';
-import { Dimensions, ScrollView, GestureResponderEvent } from 'react-native';
+import {
+  Dimensions,
+  ScrollView,
+  GestureResponderEvent,
+  TextStyle,
+} from 'react-native';
 import {
   Box,
   HStack,
@@ -16,7 +21,7 @@ import { NativeParser, NativeStyles } from '../util';
 import { MinusIcon, PlusIcon } from 'lucide-react-native';
 
 const SongViewLines = (props: {
-  lines: SongLine[];
+  lines: Array<SongLine<TextStyle>>;
   onPress: (e: GestureResponderEvent) => void;
   zoom: number;
 }) => {

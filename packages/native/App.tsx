@@ -18,6 +18,7 @@ SplashScreen.preventAutoHideAsync();
 const App = () => {
   const [fontsLoaded] = useFonts({
     'Franklin Gothic Medium': require('@iresucito/core/assets/fonts/FranklinGothicMedium.ttf'),
+    'Franklin Gothic Regular': require('@iresucito/core/assets/fonts/FranklinGothicRegular.ttf'),
   });
 
   return (

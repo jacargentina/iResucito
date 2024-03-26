@@ -1,10 +1,5 @@
 import i18n from '@iresucito/translations';
-import {
-  defaultExportToPdfOptions,
-  PdfStyles,
-  SongsParser,
-  SongToPdf,
-} from '@iresucito/core';
+import { PdfStyle, PdfStyles, SongsParser, SongToPdf } from '@iresucito/core';
 import '~/utils.server';
 import { generatePDF } from './app/pdf';
 import open from 'open';
@@ -57,19 +52,23 @@ const main = async () => {
             if (program.debug) {
               console.log(render);
             }
-            const item: SongToPdf = {
+            const item: SongToPdf<PdfStyle> = {
               song,
               render,
             };
-            const path = await generatePDF([item], defaultExportToPdfOptions, item.song.titulo, false);
+            const path = await generatePDF(
+              [item],
+              { ...PdfStyles, disablePageNumbers: true },
+              item.song.titulo,
+              false
+            );
             if (path) {
               console.log(path);
               open(path);
             }
-          }
-          catch (err) {
+          } catch (err) {
             console.log(err);
-          };
+          }
         } else {
           console.log('Song not found for given locale');
         }
@@ -81,14 +80,14 @@ const main = async () => {
         );
         console.log(`No key Song. Generating ${songs.length} songs`);
         await globalThis.folderSongs.loadSongs(locale, songs);
-        var items: Array<SongToPdf> = [];
+        var items: Array<SongToPdf<PdfStyle>> = [];
         songs.map((song) => {
           if (song.files[i18n.locale]) {
             var render = parser.getForRender(song.fullText, i18n.locale);
             if (program.debug) {
               console.log(render);
             }
-            const item: SongToPdf = {
+            const item: SongToPdf<PdfStyle> = {
               song,
               render,
             };
@@ -99,7 +98,12 @@ const main = async () => {
             );
           }
         });
-        const path = await generatePDF(items, defaultExportToPdfOptions, `iResucito-${locale}`, true);
+        const path = await generatePDF(
+          items,
+          PdfStyles,
+          `iResucito-${locale}`,
+          true
+        );
         if (path) {
           console.log(path);
           open(path);

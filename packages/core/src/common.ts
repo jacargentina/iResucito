@@ -6,6 +6,19 @@ import * as _ from 'lodash';
 import i18n from '@iresucito/translations';
 const PDFDocument = require('./pdfkit.standalone.js');
 
+declare global {
+  namespace PDFKit {
+    interface PDFDocument {
+      _pageBuffer: [];
+      _registeredFonts: { [name: string]: {} };
+    }
+
+    interface PDFPage {
+      pageNumber: number;
+    }
+  }
+}
+
 export type PickerLocale = {
   label: string;
   value: string;
@@ -115,18 +128,32 @@ export type SongSettingsFile = {
   [key: string]: SongLocaleSettings;
 };
 
-export type SongStyles = {
-  title: any;
-  source: any;
-  clampLine: any;
-  indicator: any;
-  notesLine: any;
-  specialNoteTitle: any;
-  specialNote: any;
-  normalLine: any;
-  pageNumber: any;
-  prefix: any;
-  pageFooter: any;
+export type SongStyles<StyleType> = {
+  title: StyleType;
+  source: StyleType;
+  clampLine: StyleType;
+  indicator: StyleType;
+  notesLine: StyleType;
+  specialNoteTitle: StyleType;
+  specialNote: StyleType;
+  normalLine: StyleType;
+  normalPrefix: StyleType;
+  assemblyLine: StyleType;
+  assemblyPrefix: StyleType;
+  pageNumber: StyleType;
+  pageFooter: StyleType;
+  useTimesRomanFont: boolean;
+  marginLeft: number;
+  marginTop: number;
+  widthHeightPixels: number;
+  bookTitleSpacing: number;
+  songIndicatorSpacing: number;
+  indexMarginLeft: number;
+  indexTitle: StyleType;
+  bookSubtitle: StyleType;
+  bookTitle: StyleType;
+  indexText: StyleType;
+  disablePageNumbers: boolean;
 };
 
 export type SongLineType =
@@ -142,14 +169,14 @@ export type SongLineType =
   | 'bloqueNotaAlPie'
   | 'comenzarColumna';
 
-export type SongLine = {
+export type SongLine<StyleType> = {
   raw: string;
   texto: string;
-  style: any;
+  style: StyleType;
   prefijo: string;
-  prefijoStyle: any;
+  prefijoStyle: StyleType;
   sufijo: string;
-  sufijoStyle: any;
+  sufijoStyle: StyleType;
   type: SongLineType;
 };
 
@@ -159,8 +186,8 @@ export type SongIndicator = {
   type: SongLineType;
 };
 
-export type SongRendering = {
-  items: Array<SongLine>;
+export type SongRendering<T> = {
+  items: Array<SongLine<T>>;
   indicators: Array<SongIndicator>;
 };
 
@@ -229,27 +256,6 @@ export type ListSongPos = {
   value: number;
 };
 
-export type ExportToPdfOptions = {
-  useTimesRomanFont: boolean;
-  marginLeft: number;
-  marginTop: number;
-  widthHeightPixels: number;
-  songTitle: { FontSize: number };
-  songSource: { FontSize: number };
-  songText: { FontSize: number };
-  songNote: { FontSize: number };
-  songIndicatorSpacing: number;
-  songParagraphSpacing: number;
-  indexTitle: { FontSize: number };
-  bookTitle: { FontSize: number; Spacing: number };
-  bookSubtitle: { FontSize: number };
-  indexText: { FontSize: number };
-  indexMarginLeft: number;
-  disablePageNumbers: boolean;
-  pageNumber: { FontSize: number };
-  pageFooter: { FontSize: number };
-};
-
 export type ExportToPdfLimits = {
   x: number;
   y: number;
@@ -266,9 +272,9 @@ export type ExportToPdfLineText = {
   color: any;
 };
 
-export type SongToPdf = {
+export type SongToPdf<T> = {
   song: Song;
-  render: SongRendering;
+  render: SongRendering<T>;
 };
 
 export type SongRef = Song | SongDetails;
@@ -483,27 +489,6 @@ export const getListTitleValue = (
   return null;
 };
 
-export const defaultExportToPdfOptions: ExportToPdfOptions = {
-  useTimesRomanFont: false,
-  marginLeft: 25,
-  marginTop: 19,
-  widthHeightPixels: 598, // 21,1 cm
-  songTitle: { FontSize: 19 },
-  songSource: { FontSize: 10 },
-  songText: { FontSize: 12 },
-  songNote: { FontSize: 10 },
-  songIndicatorSpacing: 21,
-  songParagraphSpacing: 9,
-  indexTitle: { FontSize: 16 },
-  bookTitle: { FontSize: 80, Spacing: 10 },
-  bookSubtitle: { FontSize: 14 },
-  indexText: { FontSize: 11 },
-  indexMarginLeft: 25,
-  disablePageNumbers: false,
-  pageNumber: { FontSize: 12 },
-  pageFooter: { FontSize: 10 },
-};
-
 export const cleanChordsRegex: any =
   /\[|\]|\(|\)|\*|5|6|7|9|\+|\-|\/|aum|dim|sus|m/g;
 
@@ -589,7 +574,7 @@ export const asyncForEach = async (array: Array<any>, callback: Function) => {
 };
 
 export const getAlphaWithSeparators = (
-  songsToPdf: Array<SongToPdf>
+  songsToPdf: Array<SongToPdf<any>>
 ): Array<ListSongItem> => {
   // Alfabetico
   var items: Array<ListSongItem> = songsToPdf.map((data) => {
@@ -620,7 +605,7 @@ export const wayStages = [
 ];
 
 export const getGroupedByStage = (
-  songsToPdf: Array<SongToPdf>
+  songsToPdf: Array<SongToPdf<any>>
 ): ListSongGroup => {
   // Agrupados por stage
   return songsToPdf.reduce((groups, data) => {
@@ -644,7 +629,7 @@ export const liturgicTimes = [
 ];
 
 export const getGroupedByLiturgicTime = (
-  songsToPdf: Array<SongToPdf>
+  songsToPdf: Array<SongToPdf<any>>
 ): ListSongGroup => {
   // Agrupados por tiempo liturgico
   return songsToPdf.reduce((groups, data) => {
@@ -673,7 +658,7 @@ export const liturgicOrder = [
 ];
 
 export const getGroupedByLiturgicOrder = (
-  songsToPdf: Array<SongToPdf>
+  songsToPdf: Array<SongToPdf<any>>
 ): ListSongGroup => {
   // Agrupados por tiempo liturgico
   return songsToPdf.reduce((groups, data) => {
@@ -690,26 +675,47 @@ export const getGroupedByLiturgicOrder = (
   }, {});
 };
 
-export const PdfStyles: SongStyles = {
-  title: { color: '#ff0000' },
-  source: { color: '#777777' },
-  clampLine: { color: '#ff0000' },
-  indicator: { color: '#ff0000' },
-  notesLine: { color: '#ff0000' },
-  specialNoteTitle: { color: '#ff0000' },
-  specialNote: { color: '#444444' },
-  normalLine: { color: '#000000' },
-  pageNumber: { color: '#000000' },
-  pageFooter: { color: '#777777' },
-  prefix: { color: '#777777' },
+export class PdfStyle {
+  color?: PDFKit.Mixins.ColorValue;
+  font?: PDFKit.Mixins.PDFFontSource;
+  fontSize?: number;
+  lineHeight?: number;
+}
+
+export const PdfStyles: SongStyles<PdfStyle> = {
+  title: { color: '#ff0000', font: 'medium', fontSize: 16 },
+  source: { color: '#777777', font: 'medium', fontSize: 9.8 },
+  clampLine: { color: '#ff0000', font: 'regular', fontSize: 8 },
+  indicator: { color: '#ff0000', font: 'medium', fontSize: 11 },
+  notesLine: { color: '#ff0000', font: 'regular', fontSize: 8 },
+  specialNoteTitle: { color: '#ff0000', font: 'medium', fontSize: 8 },
+  specialNote: { color: '#444444', font: 'regular', fontSize: 8 },
+  normalLine: { color: '#000000', font: 'regular', fontSize: 9 },
+  normalPrefix: { color: '#777777', font: 'regular', fontSize: 11 },
+  assemblyLine: { color: '#000000', font: 'medium', fontSize: 11 },
+  assemblyPrefix: { color: '#777777', font: 'medium', fontSize: 11 },
+  pageNumber: { color: '#000000', font: 'regular', fontSize: 12 },
+  pageFooter: { color: '#777777', font: 'regular', fontSize: 10 },
+  indexTitle: { color: '#000000', font: 'medium', fontSize: 16 },
+  bookTitle: { color: '#ff0000', font: 'medium', fontSize: 80 },
+  bookSubtitle: { color: '#000000', font: 'regular', fontSize: 14 },
+  indexText: { color: '#ff0000', font: 'medium', fontSize: 11 },
+  useTimesRomanFont: false,
+  marginLeft: 25,
+  marginTop: 19,
+  widthHeightPixels: 598, // 21,1 cm
+  bookTitleSpacing: 10,
+  indexMarginLeft: 25,
+  songIndicatorSpacing: 21,
+  disablePageNumbers: false,
 };
 
 var DEBUG_RECTS = false;
 
 export class PdfWriter {
-  opts: ExportToPdfOptions;
+  opts: SongStyles<PdfStyle>;
   resetY: number;
-  doc: any;
+  doc: PDFKit.PDFDocument;
   base64Transform: any;
   addExtraMargin: boolean;
   disablePageNumbers: boolean;
@@ -723,13 +729,13 @@ export class PdfWriter {
   widthOfIndexSpacing: number;
 
   constructor(
-    fontBuf: any,
+    regularFont: PDFKit.Mixins.PDFFontSource | null,
+    mediumFont: PDFKit.Mixins.PDFFontSource | null,
     base64Transform: any,
-    opts: ExportToPdfOptions = defaultExportToPdfOptions
+    opts: SongStyles<PdfStyle>
   ) {
     this.base64Transform = base64Transform;
     this.opts = opts;
-    // @ts-ignore
     this.doc = new PDFDocument({
       bufferPages: true,
       autoFirstPage: false,
@@ -747,13 +753,13 @@ export class PdfWriter {
     });
     this.doc.on('pageAdded', () => {
       this.widthOfIndexPageNumbers = this.doc
-        .fontSize(this.opts.indexText.FontSize)
+        .fontSize(this.opts.indexText.fontSize)
         .widthOfString('000');
       this.heightOfPageNumbers = this.doc
-        .fontSize(this.opts.songText.FontSize)
+        .fontSize(this.opts.pageNumber.fontSize)
         .heightOfString('000');
       this.widthOfIndexSpacing = this.doc
-        .fontSize(this.opts.indexText.FontSize)
+        .fontSize(this.opts.indexText.fontSize)
         .widthOfString('  ');
       this.resetY = this.opts.marginTop;
       this.limits = {
@@ -806,11 +812,17 @@ export class PdfWriter {
       Subject: 'iResucitó Song Book',
       Keywords: 'Neocatechumenal songs',
     };
-    if (fontBuf) {
-      this.doc.registerFont('thefont', fontBuf);
-      this.doc.font('thefont');
-    } else {
-      this.doc.font('Times-Roman');
+    if (regularFont) {
+      this.doc.registerFont('regular', regularFont);
+    }
+    if (mediumFont) {
+      this.doc.registerFont('medium', mediumFont);
+    }
+    if (!this.doc._registeredFonts['regular']) {
+      this.doc.font('regular', 'Times-Roman');
+    }
+    if (!this.doc._registeredFonts['medium']) {
+      this.doc.font('medium', 'Times-Roman');
     }
     this.listing = [];
     this.addExtraMargin = false;
@@ -822,8 +834,9 @@ export class PdfWriter {
     if (!this.disablePageNumbers) {
       this.writeText(
         this.doc.page.pageNumber.toString(),
-        PdfStyles.pageNumber.color,
-        this.opts.pageNumber.FontSize,
+        this.opts.pageNumber.color,
+        this.opts.pageNumber.font,
+        this.opts.pageNumber.fontSize,
         {
           lineBreak: false,
           align: 'center',
@@ -842,8 +855,9 @@ export class PdfWriter {
     this.doc.y = this.pageNumberLimits.y;
     this.writeText(
       text,
-      PdfStyles.pageFooter.color,
-      this.opts.pageFooter.FontSize,
+      this.opts.pageFooter.color,
+      this.opts.pageFooter.font,
+      this.opts.pageFooter.fontSize,
       {
         lineBreak: false,
         align: 'center',
@@ -888,10 +902,16 @@ export class PdfWriter {
     return (this.opts.widthHeightPixels - height) / 2;
   }
 
-  writeText(text: string, color: any, size: number, opts?: any): number {
-    this.doc.fillColor(color).fontSize(size).text(text, opts);
+  writeText(
+    text: string,
+    color: PDFKit.Mixins.ColorValue,
+    font: PDFKit.Mixins.PDFFontSource,
+    fontSize: number,
+    opts?: PDFKit.Mixins.TextOptions
+  ): number {
+    this.doc.fillColor(color).font(font, fontSize).text(text, opts);
     return (
-      this.doc.fontSize(size).widthOfString(text) +
+      this.doc.fontSize(fontSize).widthOfString(text) +
       (opts && opts.indent ? opts.indent : 0)
     );
   }
@@ -932,8 +952,9 @@ export class PdfWriter {
     this.checkLimits(2);
     this.writeText(
       title.toUpperCase(),
-      PdfStyles.title.color,
-      this.opts.indexText.FontSize
+      this.opts.indexText.color,
+      this.opts.indexText.font,
+      this.opts.indexText.fontSize
     );
     if (items) {
       items.forEach((item: ListSongItem) => {
@@ -947,13 +968,14 @@ export class PdfWriter {
               this.widthOfIndexSpacing,
           };
           const txtHeight = this.doc
-            .fontSize(this.opts.indexText.FontSize)
+            .fontSize(this.opts.indexText.fontSize)
             .heightOfString(item.str, txtOpts);
           this.checkLimits(0, txtHeight);
           this.writeText(
             item.str,
-            PdfStyles.normalLine.color,
-            this.opts.indexText.FontSize,
+            this.opts.indexText.color,
+            this.opts.indexText.font,
+            this.opts.indexText.fontSize,
             txtOpts
           );
           this.listing.push({
@@ -982,8 +1004,9 @@ export class PdfWriter {
           this.doc.y = l.y;
           this.writeText(
             l.value.toString(),
-            PdfStyles.normalLine.color,
-            this.opts.indexText.FontSize,
+            this.opts.indexText.color,
+            this.opts.indexText.font,
+            this.opts.indexText.fontSize,
             {
               width: this.widthOfIndexPageNumbers + this.widthOfIndexSpacing,
               align: 'right',
@@ -996,8 +1019,8 @@ export class PdfWriter {
 }
 
 export const SongPDFGenerator = async (
-  songsToPdf: Array<SongToPdf>,
-  opts: ExportToPdfOptions,
+  songsToPdf: Array<SongToPdf<PdfStyle>>,
+  opts: SongStyles<PdfStyle>,
   writer: PdfWriter,
   addIndex: boolean
 ): Promise<string> => {
@@ -1021,7 +1044,7 @@ export const SongPDFGenerator = async (
       const A = i18n.t('ui.export.songs book title', {
         locale: 'es',
       }).length;
-      const B = writer.opts.bookTitle.FontSize;
+      const B = writer.opts.bookTitle.fontSize;
       const C = title.length;
       const X = (A * B) / C;
 
@@ -1031,18 +1054,25 @@ export const SongPDFGenerator = async (
       writer.doc.y = writer.getCenteringY(
         title,
         titleFontSize +
-          writer.opts.bookTitle.Spacing +
-          writer.opts.bookSubtitle.FontSize
+          writer.opts.bookTitleSpacing +
+          writer.opts.bookSubtitle.fontSize
       );
-      writer.writeText(title, PdfStyles.title.color, titleFontSize, {
-        align: 'center',
-      });
+      writer.writeText(
+        title,
+        opts.title.color,
+        opts.title.font,
+        titleFontSize,
+        {
+          align: 'center',
+        }
+      );
 
       // Subtitulo
       writer.writeText(
         subtitle,
-        PdfStyles.normalLine.color,
-        writer.opts.bookSubtitle.FontSize,
+        writer.opts.bookSubtitle.color,
+        writer.opts.bookSubtitle.font,
+        writer.opts.bookSubtitle.fontSize,
         {
           align: 'center',
         }
@@ -1053,8 +1083,9 @@ export const SongPDFGenerator = async (
       writer.doc.page.pageNumber = 1;
       writer.writeText(
         i18n.t('ui.export.songs index').toUpperCase(),
-        PdfStyles.title.color,
-        writer.opts.indexTitle.FontSize,
+        writer.opts.indexTitle.color,
+        writer.opts.indexTitle.font,
+        writer.opts.indexTitle.fontSize,
         { align: 'center' }
       );
 
@@ -1101,7 +1132,7 @@ export const SongPDFGenerator = async (
 
     writer.addExtraMargin = false;
     // Cantos
-    songsToPdf.forEach((data: SongToPdf) => {
+    songsToPdf.forEach((data) => {
       const { song, render } = data;
       const { items, indicators } = render;
 
@@ -1112,16 +1143,18 @@ export const SongPDFGenerator = async (
       // Titulo del canto
       writer.writeText(
         song.titulo.toUpperCase(),
-        PdfStyles.title.color,
-        writer.opts.songTitle.FontSize,
+        writer.opts.title.color,
+        writer.opts.title.font,
+        writer.opts.title.fontSize,
         { align: 'center' }
       );
 
       // Fuente
       writer.writeText(
         song.fuente,
-        PdfStyles.source.color,
-        writer.opts.songSource.FontSize,
+        writer.opts.source.color,
+        writer.opts.source.font,
+        writer.opts.source.fontSize,
         { align: 'center' }
       );
 
@@ -1134,7 +1167,7 @@ export const SongPDFGenerator = async (
       var blockIndicator;
       var blockY;
       var maxX = 0;
-      items.forEach((it: SongLine, i: number) => {
+      items.forEach((it: SongLine<PdfStyle>, i: number) => {
         var lastWidth: number = 0;
         if (i > 0 && it.type === 'inicioParrafo') {
           writer.doc.moveDown();
@@ -1149,7 +1182,7 @@ export const SongPDFGenerator = async (
         }
         if (blockIndicator && blockIndicator.end === i) {
           var text = '';
-          var color = PdfStyles.indicator.color;
+          var color = opts.indicator.color;
           if (blockIndicator.type === 'bloqueRepetir') {
             text = i18n.t('songs.repeat');
           } else if (blockIndicator.type === 'bloqueNotaAlPie') {
@@ -1181,66 +1214,78 @@ export const SongPDFGenerator = async (
           } else {
             lastWidth = writer.writeText(
               it.texto,
-              PdfStyles.notesLine.color,
-              writer.opts.songNote.FontSize,
+              it.style.color,
+              it.style.font,
+              it.style.fontSize,
               { indent: writer.opts.songIndicatorSpacing }
             );
           }
         } else if (it.type === 'canto') {
           lastWidth = writer.writeText(
             it.texto,
-            PdfStyles.normalLine.color,
-            writer.opts.songText.FontSize,
+            it.style.color,
+            it.style.font,
+            it.style.fontSize,
             { indent: writer.opts.songIndicatorSpacing }
           );
         } else if (it.type === 'cantoConIndicador') {
           maxX = 0;
           lastWidth = writer.writeText(
             it.prefijo,
-            PdfStyles.prefix.color,
-            writer.opts.songText.FontSize
+            it.style.color,
+            it.style.font,
+            it.style.fontSize
           );
           writer.doc.moveUp();
           lastWidth = writer.writeText(
             it.texto,
-            PdfStyles.normalLine.color,
-            writer.opts.songText.FontSize,
+            it.style.color,
+            it.style.font,
+            it.style.fontSize,
             { indent: writer.opts.songIndicatorSpacing }
           );
         } else if (it.type === 'tituloEspecial') {
           lastWidth = writer.writeText(
             it.texto,
-            PdfStyles.specialNoteTitle.color,
-            writer.opts.songText.FontSize,
+            it.style.color,
+            it.style.font,
+            it.style.fontSize,
             { indent: writer.opts.songIndicatorSpacing }
           );
         } else if (it.type === 'textoEspecial') {
           lastWidth = writer.writeText(
             it.texto,
-            PdfStyles.specialNote.color,
-            writer.opts.songText.FontSize - 3,
+            it.style.color,
+            it.style.font,
+            it.style.fontSize,
             { indent: writer.opts.songIndicatorSpacing }
           );
         } else if (it.type === 'notaEspecial') {
           lastWidth = writer.writeText(
             it.prefijo,
-            PdfStyles.prefix.color,
-            writer.opts.songText.FontSize
+            it.style.color,
+            it.style.font,
+            it.style.fontSize
           );
           writer.doc.moveUp();
           lastWidth = writer.writeText(
             it.texto,
-            PdfStyles.specialNote.color,
-            writer.opts.songText.FontSize - 3,
+            it.style.color,
+            it.style.font,
+            it.style.fontSize,
             { indent: writer.opts.songIndicatorSpacing }
           );
         } else if (it.type === 'posicionAbrazadera') {
           lastWidth = writer.writeText(
             it.texto,
-            PdfStyles.clampLine.color,
-            writer.opts.songNote.FontSize
+            it.style.color,
+            it.style.font,
+            it.style.fontSize
           );
           writer.doc.moveDown();
+          // Posicion de reset para segunda columna
+          // el texto debe comenzar al mismo nivel
+          writer.resetY = writer.doc.y;
         }
         if (it.sufijo) {
           writer.doc.moveUp();
@@ -1248,15 +1293,16 @@ export const SongPDFGenerator = async (
           writer.doc.x = writer.doc.x + lastWidth;
           lastWidth = writer.writeText(
             it.sufijo,
-            PdfStyles.indicator.color,
-            writer.opts.songText.FontSize
+            it.style.color,
+            it.style.font,
+            it.style.fontSize
           );
           writer.doc.x = lastX;
         }
         maxX = Math.trunc(Math.max(writer.doc.x + lastWidth, maxX));
       });
       lines.forEach((line: ExportToPdfLineText) => {
-        writer.drawLineText(line, writer.opts.songText.FontSize);
+        writer.drawLineText(line, writer.opts.normalLine.fontSize);
       });
       // Ir al final
       writer.doc.switchToPage(writer.doc._pageBuffer.length - 1);
@@ -1286,7 +1332,7 @@ export type PdfItem = 'NEWLINE' | 'NEWCOL' | ListTitleValue;
 
 export const ListPDFGenerator = async (
   list: ListToPdf,
-  opts: ExportToPdfOptions,
+  opts: SongStyles<PdfStyle>,
   writer: PdfWriter
 ): Promise<string> => {
   try {
@@ -1298,15 +1344,22 @@ export const ListPDFGenerator = async (
     const subtitle = list.localeType.toUpperCase();
 
     // Titulo
-    writer.writeText(title, PdfStyles.title.color, opts.songTitle.FontSize, {
-      align: 'center',
-    });
+    writer.writeText(
+      title,
+      opts.title.color,
+      opts.title.font,
+      opts.title.fontSize,
+      {
+        align: 'center',
+      }
+    );
 
     // Subtitulo
     writer.writeText(
       subtitle,
-      PdfStyles.source.color,
-      opts.songSource.FontSize,
+      opts.source.color,
+      opts.source.font,
+      opts.source.fontSize,
       {
         align: 'center',
       }
@@ -1322,8 +1375,9 @@ export const ListPDFGenerator = async (
         const lastX = writer.doc.x;
         writer.writeText(
           `${i + 1}.`,
-          PdfStyles.normalLine.color,
-          opts.songText.FontSize,
+          opts.normalLine.color,
+          opts.normalLine.font,
+          opts.normalLine.fontSize,
           {
             lineBreak: false,
             align: 'left',
@@ -1332,8 +1386,9 @@ export const ListPDFGenerator = async (
         writer.doc.x += 10;
         writer.writeText(
           canto.titulo,
-          PdfStyles.normalLine.color,
-          opts.songText.FontSize,
+          opts.normalLine.color,
+          opts.normalLine.font,
+          opts.normalLine.fontSize,
           {
             align: 'left',
           }
@@ -1390,8 +1445,9 @@ export const ListPDFGenerator = async (
           const lastX = writer.doc.x;
           writer.writeText(
             `${item.title}:`,
-            PdfStyles.source.color,
-            opts.songText.FontSize,
+            opts.source.color,
+            opts.source.font,
+            opts.source.fontSize,
             {
               align: 'left',
             }
@@ -1400,8 +1456,9 @@ export const ListPDFGenerator = async (
           item.value.forEach((text) => {
             writer.writeText(
               text,
-              PdfStyles.normalLine.color,
-              opts.songText.FontSize + 2,
+              opts.normalLine.color,
+              opts.normalLine.font,
+              opts.normalLine.fontSize + 2,
               {
                 align: 'left',
               }

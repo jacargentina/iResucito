@@ -1,10 +1,4 @@
-import {
-  PdfStyles,
-  defaultExportToPdfOptions,
-  SongsParser,
-  SongToPdf,
-  ExportToPdfOptions,
-} from '@iresucito/core';
+import { PdfStyle, PdfStyles, SongsParser, SongToPdf } from '@iresucito/core';
 import i18n from '@iresucito/translations';
 import { generatePDF } from '~/pdf';
 import { ActionFunction, json } from '@remix-run/node';
@@ -38,7 +32,7 @@ export let action: ActionFunction = async ({ request, params }) => {
       songs.forEach((song) => {
         if (song.files[locale]) {
           const render = parser.getForRender(song.fullText, locale);
-          const item: SongToPdf = {
+          const item: SongToPdf<PdfStyle> = {
             song,
             render,
           };
@@ -58,18 +52,14 @@ export let action: ActionFunction = async ({ request, params }) => {
       const song = globalThis.folderSongs.getSingleSongMeta(key, locale, patch);
       await globalThis.folderSongs.loadSingleSong(locale, song, patch);
       const render = parser.getForRender(text, locale);
-      const item: SongToPdf = {
+      const item: SongToPdf<PdfStyle> = {
         song,
         render,
       };
       items.push(item);
       filename = song.titulo;
     }
-    const exportOpts: ExportToPdfOptions = {
-      ...defaultExportToPdfOptions,
-      ...JSON.parse(options),
-    };
-    const pdfPath = await generatePDF(items, exportOpts, filename, addIndex);
+    const pdfPath = await generatePDF(items, PdfStyles, filename, addIndex);
     if (pdfPath) {
       const pdfBuffer = require('fs').readFileSync(pdfPath);
       return new Response(pdfBuffer, {

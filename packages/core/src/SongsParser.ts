@@ -9,10 +9,10 @@ import {
   SongStyles,
 } from './common';
 
-export class SongsParser {
-  songStyles: SongStyles;
+export class SongsParser<T> {
+  songStyles: SongStyles<T>;
 
-  constructor(songStyles: SongStyles) {
+  constructor(songStyles: SongStyles<T>) {
     this.songStyles = songStyles;
   }
 
@@ -32,10 +32,10 @@ export class SongsParser {
     return onlyChords.length > 0 && onlyChords.length === line.length;
   }
 
-  getSongItem(text: string, locale: string): SongLine {
+  getSongItem(text: string, locale: string): SongLine<T> {
     if (text.startsWith('clamp:')) {
       const clampValue = text.substring(text.indexOf(':') + 1).trim();
-      var it: SongLine = {
+      var it: SongLine<T> = {
         raw: text,
         texto: i18n.t('songs.clamp', { clamp: clampValue }),
         style: this.songStyles.clampLine,
@@ -47,7 +47,7 @@ export class SongsParser {
       };
       return it;
     } else if (text.trim() === 'repeat') {
-      var it: SongLine = {
+      var it: SongLine<T> = {
         raw: text,
         texto: '',
         style: null,
@@ -59,7 +59,7 @@ export class SongsParser {
       };
       return it;
     } else if (text.trim() === 'footnote') {
-      var it: SongLine = {
+      var it: SongLine<T> = {
         raw: text,
         texto: '',
         style: null,
@@ -71,7 +71,7 @@ export class SongsParser {
       };
       return it;
     } else if (text.trim() === 'column') {
-      var it: SongLine = {
+      var it: SongLine<T> = {
         raw: text,
         texto: '',
         style: null,
@@ -91,12 +91,12 @@ export class SongsParser {
       if (text.startsWith(psalmistAndAssembly)) {
         // Indicador de Salmista Y Asamblea
         var secondPoint = 4;
-        var it: SongLine = {
+        var it: SongLine<T> = {
           raw: text,
           texto: text.substring(secondPoint + 1).trim(),
-          style: this.songStyles.normalLine,
+          style: this.songStyles.assemblyLine,
           prefijo: text.substring(0, secondPoint + 1) + ' ',
-          prefijoStyle: this.songStyles.prefix,
+          prefijoStyle: this.songStyles.assemblyPrefix,
           sufijo: '',
           sufijoStyle: null,
           type: 'cantoConIndicador',
@@ -134,23 +134,33 @@ export class SongsParser {
           })
         )
       ) {
+        // Asamblea: destacar con estilo diferente (mas negro)
+        const isAssemblyLine = text.startsWith(
+          i18n.t('songs.assembly', {
+            locale,
+          })
+        );
         // Indicador de Salmista, Asamblea, Presbitero, Hombres, Mujeres, etc
         var pointIndex = text.indexOf('.');
-        var it: SongLine = {
+        var it: SongLine<T> = {
           raw: text,
           texto: text.substring(pointIndex + 1).trim(),
-          style: this.songStyles.normalLine,
+          style: isAssemblyLine
+            ? this.songStyles.assemblyLine
+            : this.songStyles.normalLine,
           prefijo: text.substring(0, pointIndex + 1) + ' ',
-          prefijoStyle: this.songStyles.prefix,
+          prefijoStyle: isAssemblyLine
+            ? this.songStyles.assemblyPrefix
+            : this.songStyles.normalPrefix,
           sufijo: '',
           sufijoStyle: null,
           type: 'cantoConIndicador',
         };
         return it;
       } else if (this.isChordsLine(text, locale)) {
-        var it: SongLine = {
+        var it: SongLine<T> = {
           raw: text,
-          texto: text.trimRight(),
+          texto: text.trimEnd(),
           style: this.songStyles.notesLine,
           prefijo: '',
           prefijoStyle: null,
@@ -161,7 +171,7 @@ export class SongsParser {
         return it;
       } else if (text.startsWith('* ')) {
         // Nota especial
-        var it: SongLine = {
+        var it: SongLine<T> = {
           raw: text,
           texto: text.substring(1).trim(),
           style: this.songStyles.specialNote,
@@ -174,7 +184,7 @@ export class SongsParser {
         return it;
       } else if (text.trim().startsWith('**') && text.trim().endsWith('**')) {
         // Titulo especial
-        var it: SongLine = {
+        var it: SongLine<T> = {
           raw: text,
           texto: text.replace(/\*/g, '').trim(),
           style: this.songStyles.specialNoteTitle,
@@ -187,7 +197,7 @@ export class SongsParser {
         return it;
       } else if (text.startsWith('-')) {
         // Texto especial
-        var it: SongLine = {
+        var it: SongLine<T> = {
           raw: text,
           texto: text.replace('-', '').trim(),
           style: this.songStyles.specialNote,
@@ -199,7 +209,7 @@ export class SongsParser {
         };
         return it;
       } else if (text.trim() === '') {
-        var it: SongLine = {
+        var it: SongLine<T> = {
           raw: text,
           texto: '',
           style: this.songStyles.normalLine,
@@ -211,8 +221,8 @@ export class SongsParser {
         };
         return it;
       } else {
-        var texto = text.trimRight();
-        var it: SongLine = {
+        var texto = text.trimEnd();
+        var it: SongLine<T> = {
           raw: text,
           texto: texto,
           style: this.songStyles.normalLine,
@@ -291,7 +301,7 @@ export class SongsParser {
     return 0;
   }
 
-  getSongLines(content: string, locale: string): Array<SongLine> {
+  getSongLines(content: string, locale: string): Array<SongLine<T>> {
     var items = content.replace('\r\n', '\n').split('\n');
     // Realizar la primer pasada
     var primerPasada = items.map((l) => {
@@ -313,14 +323,25 @@ export class SongsParser {
       }
       return l;
     });
-    return segundaPasada;
+    // Finalmente, cada bloque de "asamblea" ó "salmista" (type == 'canto')
+    // debe mantener el estilo (regular, medium) que viene aplicado del item anterior
+    var estiloActual = null;
+    var terceraPasada = segundaPasada.map((l, i) => {
+      if (l.type == 'cantoConIndicador') {
+        estiloActual = l.style;
+      } else if (l.type == 'canto' && estiloActual) {
+        l.style = estiloActual;
+      }
+      return l;
+    });
+    return terceraPasada;
   }
 
   getForRender(
     content: string,
     locale: string,
     transportToNote?: string
-  ): SongRendering {
+  ): SongRendering<T> {
     const asSongItem = this.getSongLines(content, locale);
     var tDiff = 0;
     if (transportToNote) {
@@ -343,7 +364,7 @@ export class SongsParser {
       }
       return it;
     });
-    const adjustMargin = conversions.map((it: SongLine, i: number) => {
+    const adjustMargin = conversions.map((it: SongLine<T>, i: number) => {
       // Ajustar margen izquierdo por prefijos
       if (it.prefijo === '' && i > 0) {
         const prevIt = asSongItem[i - 1];
@@ -368,7 +389,7 @@ export class SongsParser {
     });
     // Extraer parrafos de BIS (repeat) y notas al pie (footnote)
     var lIndicators: Array<SongIndicator> = [];
-    const finalItems = adjustMargin.filter((it: SongLine, i: number) => {
+    const finalItems = adjustMargin.filter((it: SongLine<T>, i: number) => {
       if (it.type === 'bloqueRepetir' || it.type === 'bloqueNotaAlPie') {
         var j = i - 1;
         while (j >= 0 && adjustMargin[j].type !== 'inicioParrafo') {

@@ -6,7 +6,8 @@ import {
   ListPDFGenerator,
   ListToPdf,
   SongToPdf,
-  ExportToPdfOptions,
+  PdfStyle,
+  SongStyles,
 } from '@iresucito/core';
 import Base64Encode from './base64encode';
 const Buffer = require('buffer').Buffer;
@@ -17,20 +18,31 @@ export type GeneratePDFResult = {
 };
 
 export async function generateSongPDF(
-  songsToPdf: Array<SongToPdf>,
-  opts: ExportToPdfOptions,
+  songsToPdf: Array<SongToPdf<PdfStyle>>,
+  opts: SongStyles<PdfStyle>,
   filename: string,
   addIndex: boolean
 ): Promise<GeneratePDFResult> {
   const safeFileName = filename.replace('/', '-');
   const pdfPath = `${FileSystem.cacheDirectory}${safeFileName}.pdf`;
-  const [{ localUri }] = await Asset.loadAsync(
+  const [{ localUri: mediumUri }] = await Asset.loadAsync(
     require('@iresucito/core/assets/fonts/FranklinGothicMedium.ttf')
   );
-  const ttf = await FileSystem.readAsStringAsync(localUri as string, {
+  const medium = await FileSystem.readAsStringAsync(mediumUri as string, {
     encoding: 'base64',
   });
-  var writer = new PdfWriter(Buffer.from(ttf, 'base64'), new Base64Encode({}));
+  const [{ localUri: regularUri }] = await Asset.loadAsync(
+    require('@iresucito/core/assets/fonts/FranklinGothicRegular.ttf')
+  );
+  const regular = await FileSystem.readAsStringAsync(regularUri as string, {
+    encoding: 'base64',
+  });
+  var writer = new PdfWriter(
+    Buffer.from(regular, 'base64'),
+    Buffer.from(medium, 'base64'),
+    new Base64Encode({}),
+    opts
+  );
   const base64 = await SongPDFGenerator(songsToPdf, opts, writer, addIndex);
   FileSystem.writeAsStringAsync(pdfPath, base64, { encoding: 'base64' });
   return { uri: pdfPath, base64 };
@@ -38,17 +50,28 @@ export async function generateSongPDF(
 
 export async function generateListPDF(
   list: ListToPdf,
-  opts: ExportToPdfOptions
+  opts: SongStyles<PdfStyle>
 ): Promise<GeneratePDFResult> {
   const safeFileName = list.name.replace('/', '-');
   const pdfPath = `${FileSystem.cacheDirectory}/${safeFileName}.pdf`;
-  const [{ localUri }] = await Asset.loadAsync(
+  const [{ localUri: mediumUri }] = await Asset.loadAsync(
     require('@iresucito/core/assets/fonts/FranklinGothicMedium.ttf')
   );
-  const ttf = await FileSystem.readAsStringAsync(localUri as string, {
+  const medium = await FileSystem.readAsStringAsync(mediumUri as string, {
     encoding: 'base64',
   });
-  var writer = new PdfWriter(Buffer.from(ttf, 'base64'), new Base64Encode({}));
+  const [{ localUri: regularUri }] = await Asset.loadAsync(
+    require('@iresucito/core/assets/fonts/FranklinGothicRegular.ttf')
+  );
+  const regular = await FileSystem.readAsStringAsync(regularUri as string, {
+    encoding: 'base64',
+  });
+  var writer = new PdfWriter(
+    Buffer.from(regular, 'base64'),
+    Buffer.from(medium, 'base64'),
+    new Base64Encode({}),
+    opts
+  );
   const base64 = await ListPDFGenerator(list, opts, writer);
   FileSystem.writeAsStringAsync(pdfPath, base64, { encoding: 'base64' });
   return { uri: pdfPath, base64 };
