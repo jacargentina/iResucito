@@ -1,8 +1,8 @@
-import { PdfStyle, PdfStyles, SongsParser, SongToPdf } from '@iresucito/core';
+import { SongsParser } from '@iresucito/core';
 import i18n from '@iresucito/translations';
-import { generatePDF } from '~/pdf';
 import { ActionFunction, json } from '@remix-run/node';
 import { getSession } from '~/session.server';
+import { PdfStyle, PdfStyles, SongToPdf, generatePDF } from '~/utils.server';
 
 export let action: ActionFunction = async ({ request, params }) => {
   const session = await getSession(request.headers.get('Cookie'));

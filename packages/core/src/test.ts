@@ -1,5 +1,5 @@
 import { SongsParser } from './SongsParser';
-import { PdfStyles } from './common';
+import { PdfStyles } from './pdf';
 
 const parser = new SongsParser(PdfStyles);
 var diff = parser.getChordsDiff('Do', 'Do#', 'es');

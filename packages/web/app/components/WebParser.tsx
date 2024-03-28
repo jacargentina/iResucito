@@ -32,7 +32,6 @@ export const WebStyles: SongStyles<WebStyle> = {
   bookTitle: { color: '#777777', fontSize: FontSizes.Texto },
   indexText: { color: '#777777', fontSize: FontSizes.Texto },
   disablePageNumbers: false,
-  useTimesRomanFont: false,
   marginLeft: 0,
   marginTop: 0,
   widthHeightPixels: 0,

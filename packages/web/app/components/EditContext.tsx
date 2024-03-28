@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import i18n from '@iresucito/translations';
 import { useNavigate } from '@remix-run/react';
 import {
-  getSongDetails,
   Song,
   SongChangesAndPatches,
   SongDetails,
+  getSongDetails,
 } from '@iresucito/core';
 import * as Diff from 'diff';
 import { useApp } from '~/app.context';

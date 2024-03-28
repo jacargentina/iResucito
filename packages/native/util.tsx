@@ -132,7 +132,6 @@ export const stylesObj: SongStyles<TextStyle> = {
   pageFooter: {},
   assemblyLine: {},
   assemblyPrefix: {},
-  useTimesRomanFont: false,
   marginLeft: 0,
   marginTop: 0,
   widthHeightPixels: 0,

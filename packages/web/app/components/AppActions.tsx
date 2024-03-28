@@ -3,8 +3,8 @@ import { useContext, useState } from 'react';
 import { Button, Menu, Icon, Modal, Label } from 'semantic-ui-react';
 import { useApp } from '~/app.context';
 import { EditContext } from './EditContext';
-import { CollaboratorsIndex } from '@iresucito/core';
 import i18n from '@iresucito/translations';
+import { CollaboratorsIndex} from '@iresucito/core';
 
 const AppActions = () => {
   const app = useApp();

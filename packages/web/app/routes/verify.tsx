@@ -3,7 +3,7 @@ import { useLoaderData } from '@remix-run/react';
 import { Header, Image, Grid } from 'semantic-ui-react';
 import ErrorDetail from '~/components/ErrorDetail';
 import Layout from '~/components/Layout';
-import '~/utils.server';
+//import '~/utils.server';
 
 export let loader: LoaderFunction = async ({ request }) => {
   const url = new URL(request.url);

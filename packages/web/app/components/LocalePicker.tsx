@@ -8,19 +8,17 @@ import {
   PickerLocale,
 } from '@iresucito/core';
 
-let availableLocales: PickerLocale[] = [];
-
-availableLocales = getLocalesForPicker(
-  typeof navigator !== 'undefined' ? navigator.language : undefined
-);
-
 const LocalePicker = () => {
   const app = useApp();
   const { patchStats } = app;
 
+  const availableLocales = useMemo<PickerLocale[]>(() => {
+    return getLocalesForPicker(navigator.language);
+  }, []);
+
   const current = useMemo<PickerLocale | undefined>(() => {
     return getValidatedLocale(availableLocales, app.locale);
-  }, [availableLocales, app.locale]);
+  }, [app.locale]);
 
   return (
     <>

@@ -1,11 +1,11 @@
 import { useRef, useEffect, useContext, useState } from 'react';
-import * as pdfjsLib from 'pdfjs-dist';
+//import * as pdfjsLib from 'pdfjs-dist';
 import { Icon, Button, Menu, Label, Input, Loader } from 'semantic-ui-react';
 import { EditContext } from './EditContext';
 import i18n from '@iresucito/translations';
 import { useApp } from '~/app.context';
 
-pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.js';
+//pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.js';
 
 const SongViewPdf = (props: {
   url: string | null;
@@ -16,7 +16,7 @@ const SongViewPdf = (props: {
 
   const myRef = useRef<any>();
   const [loading, setLoading] = useState(false);
-  const [pdf, setPdf] = useState<pdfjsLib.PDFDocumentProxy>();
+  const [pdf, setPdf] = useState<any>();
   const [numPages, setNumPages] = useState<number>();
   const [currPage, setCurrPage] = useState(0);
 
@@ -28,18 +28,20 @@ const SongViewPdf = (props: {
   useEffect(() => {
     if (url !== null) {
       setLoading(true);
-      const loadingTask = pdfjsLib.getDocument(url);
-      loadingTask.promise
-        .then((doc) => {
-          setPdf(doc);
-          setCurrPage(1);
-          setNumPages(doc.numPages);
-          setLoading(false);
-        })
-        .catch((err) => {
-          console.log('error pdf!', err);
-          setLoading(false);
-        });
+      import('pdfjs-dist').then((pdfjsLib) => {
+        const loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise
+          .then((doc) => {
+            setPdf(doc);
+            setCurrPage(1);
+            setNumPages(doc.numPages);
+            setLoading(false);
+          })
+          .catch((err) => {
+            console.log('error pdf!', err);
+            setLoading(false);
+          });
+      });
     }
   }, [url]);
 

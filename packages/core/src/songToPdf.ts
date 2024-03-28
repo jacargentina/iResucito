@@ -1,9 +1,10 @@
 import i18n from '@iresucito/translations';
-import { PdfStyle, PdfStyles, SongsParser, SongToPdf } from '@iresucito/core';
-import '~/utils.server';
-import { generatePDF } from './app/pdf';
+import { loadAllLocales, SongsParser, SongsProcessor } from './';
+import { generatePDF, PdfStyle, PdfStyles, SongToPdf } from './pdf';
 import open from 'open';
 import { osLocale } from 'os-locale';
+
+const folderSongs = new SongsProcessor(loadAllLocales());
 
 const main = async () => {
   var program = require('commander');
@@ -38,7 +39,7 @@ const main = async () => {
     if (locale !== '') {
       var parser = new SongsParser(PdfStyles);
       if (key) {
-        var song = globalThis.folderSongs.getSingleSongMeta(
+        var song = folderSongs.getSingleSongMeta(
           key,
           locale,
           undefined,
@@ -46,7 +47,7 @@ const main = async () => {
         );
         if (song.files[i18n.locale]) {
           try {
-            await globalThis.folderSongs.loadSingleSong(locale, song);
+            await folderSongs.loadSingleSong(locale, song);
             console.log('Song: ', song.titulo);
             var render = parser.getForRender(song.fullText, i18n.locale);
             if (program.debug) {
@@ -73,13 +74,9 @@ const main = async () => {
           console.log('Song not found for given locale');
         }
       } else {
-        var songs = globalThis.folderSongs.getSongsMeta(
-          locale,
-          undefined,
-          undefined
-        );
+        var songs = folderSongs.getSongsMeta(locale, undefined, undefined);
         console.log(`No key Song. Generating ${songs.length} songs`);
-        await globalThis.folderSongs.loadSongs(locale, songs);
+        await folderSongs.loadSongs(locale, songs);
         var items: Array<SongToPdf<PdfStyle>> = [];
         songs.map((song) => {
           if (song.files[i18n.locale]) {

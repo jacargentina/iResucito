@@ -1,16 +1,25 @@
 {
   "name": "@iresucito/core",
+  "sideEffects": false,
+  "type": "module",
   "private": true,
   "version": "1.0.0",
   "scripts": {
     "build": "tsc -b",
-    "postinstall": "yarn run build && cp ./src/pdfkit.standalone.js dist/src/",
     "patch": "esno src/applyPatch.ts",
     "test": "esno src/test.ts",
     "test-no-funciona": "// ver comentarios en jest.config.js"
   },
-  "main": "dist/src/index.js",
-  "types": "dist/src",
+  "exports": {
+    ".": {
+      "import": "./dist/src/index.js",
+      "types": "./dist/src/index.d.ts"
+    },
+    "./pdf": {
+      "import": "./dist/src/pdf.js",
+      "types": "./dist/src/pdf.d.ts"
+    }
+  },
   "dependencies": {
     "@types/country-list": "^2.1.2",
     "@types/langs": "^2.0.2",
@@ -21,6 +30,7 @@
     "langs": "^2.0.0",
     "lodash": "^4.17.21",
     "normalize-strings": "^1.1.1",
+    "pdfkit": "^0.15.0",
     "typescript": "^5.2.2"
   },
   "devDependencies": {

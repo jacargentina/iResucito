@@ -7,6 +7,7 @@ import {
 } from '@iresucito/core';
 import { Low, Adapter } from 'lowdb';
 import send from 'gmail-send';
+export { type SongToPdf, PdfStyle, generatePDF } from '@iresucito/core/pdf';
 
 type DbType = {
   users: Array<{

@@ -205,7 +205,7 @@ export class SongsProcessor {
             files: {
               [rawLoc]: patchData.name,
             },
-            stage: patchData.stage,
+            stage: patchData.stage || 'precatechumenate',
             fullText: '',
           };
           songs.push(info);
@@ -232,10 +232,11 @@ export class SongsProcessor {
         song.fullText = content;
       }
     } catch (err) {
+      const message = (err as Error).message;
       console.log(
-        `loadSingleSong key=${song.key}, locale=${rawLoc}, error=${err.message}`
+        `loadSingleSong key=${song.key}, locale=${rawLoc}, error=${message}`
       );
-      song.error = err.message;
+      song.error = message;
       song.fullText = '';
     }
   }

@@ -325,7 +325,7 @@ export class SongsParser<T> {
     });
     // Finalmente, cada bloque de "asamblea" ó "salmista" (type == 'canto')
     // debe mantener el estilo (regular, medium) que viene aplicado del item anterior
-    var estiloActual = null;
+    var estiloActual: T | null = null;
     var terceraPasada = segundaPasada.map((l, i) => {
       if (l.type == 'cantoConIndicador') {
         estiloActual = l.style;

@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import {
   Links,
-  LiveReload,
   Meta,
   Outlet,
   Scripts,
@@ -19,8 +18,8 @@ import { AppProvider } from './app.context';
 import { getSession } from './session.server';
 import { getPatchStats } from '@iresucito/core';
 import i18n from '@iresucito/translations';
-import semanticUrl from 'semantic-ui-css/semantic.min.css';
-import globalStylesUrl from './styles/global.css';
+import semanticUrl from 'semantic-ui-css/semantic.min.css?url';
+import globalStylesUrl from './styles/global.css?url';
 import AppRaw from '@iresucito/native/app.json';
 
 export let loader: LoaderFunction = async ({ request }) => {
@@ -99,7 +98,6 @@ function Document({ children }: { children: any }) {
         {children}
         <ScrollRestoration />
         <Scripts />
-        {process.env.NODE_ENV === 'development' && <LiveReload />}
       </body>
     </html>
   );

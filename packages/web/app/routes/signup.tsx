@@ -5,7 +5,7 @@ import ApiMessage from '~/components/ApiMessage';
 import bcrypt from 'bcryptjs';
 import { ActionFunction, json } from '@remix-run/node';
 import { commitSession, getSession } from '~/session.server';
-import '~/utils.server';
+//import '~/utils.server';
 import i18n from '@iresucito/translations';
 
 export let action: ActionFunction = async ({ request }) => {

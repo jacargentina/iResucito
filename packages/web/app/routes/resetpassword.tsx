@@ -12,7 +12,7 @@ import {
 import { useSubmit, useNavigation } from '@remix-run/react';
 import { json, ActionFunction } from '@remix-run/node';
 import Layout from '~/components/Layout';
-import '~/utils.server';
+//import '~/utils.server';
 import i18n from '@iresucito/translations';
 import ApiMessage from '~/components/ApiMessage';
 import { useState } from 'react';
