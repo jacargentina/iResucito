@@ -4,6 +4,7 @@ import { getPropertyLocale } from '@iresucito/core';
 import { SongsIndex } from '@iresucito/core';
 import { json, LoaderFunction } from '@remix-run/node';
 import { getSession } from '~/session.server';
+import { folderExtras, folderSongs } from '~/utils.server';
 
 export let loader: LoaderFunction = async ({ request, params }) => {
   const session = await getSession(request.headers.get('Cookie'));
@@ -18,18 +19,18 @@ export let loader: LoaderFunction = async ({ request, params }) => {
 
   let result: { diff: Diff.Change[] | null } = { diff: null };
 
-  const patch = await globalThis.folderExtras.readPatch();
+  const patch = await folderExtras.readPatch();
   if (patch && patch.hasOwnProperty(key) && SongsIndex.hasOwnProperty(key)) {
     const loc = getPropertyLocale(SongsIndex[key].files, locale);
     let fullText = '';
     if (loc) {
-      const songs = await globalThis.folderSongs.getSongsMeta(loc, patch);
+      const songs = await folderSongs.getSongsMeta(loc, patch);
       const song = songs.find((s) => s.key === key);
       if (!song) {
         throw new Error(`Song ${key} not valid`);
       }
 
-      await globalThis.folderSongs.loadSingleSong(locale, song, undefined);
+      await folderSongs.loadSingleSong(locale, song, undefined);
       fullText = song.fullText;
     }
     const ploc = getPropertyLocale(patch[key], locale);

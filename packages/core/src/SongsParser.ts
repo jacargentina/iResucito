@@ -40,9 +40,9 @@ export class SongsParser<T> {
         texto: i18n.t('songs.clamp', { clamp: clampValue }),
         style: this.songStyles.clampLine,
         prefijo: '',
-        prefijoStyle: null,
+        prefijoStyle: this.songStyles.empty,
         sufijo: '',
-        sufijoStyle: null,
+        sufijoStyle: this.songStyles.empty,
         type: 'posicionAbrazadera',
       };
       return it;
@@ -50,11 +50,11 @@ export class SongsParser<T> {
       var it: SongLine<T> = {
         raw: text,
         texto: '',
-        style: null,
+        style: this.songStyles.empty,
         prefijo: '',
-        prefijoStyle: null,
+        prefijoStyle: this.songStyles.empty,
         sufijo: '',
-        sufijoStyle: null,
+        sufijoStyle: this.songStyles.empty,
         type: 'bloqueRepetir',
       };
       return it;
@@ -62,11 +62,11 @@ export class SongsParser<T> {
       var it: SongLine<T> = {
         raw: text,
         texto: '',
-        style: null,
+        style: this.songStyles.empty,
         prefijo: '',
-        prefijoStyle: null,
+        prefijoStyle: this.songStyles.empty,
         sufijo: '',
-        sufijoStyle: null,
+        sufijoStyle: this.songStyles.empty,
         type: 'bloqueNotaAlPie',
       };
       return it;
@@ -74,11 +74,11 @@ export class SongsParser<T> {
       var it: SongLine<T> = {
         raw: text,
         texto: '',
-        style: null,
+        style: this.songStyles.empty,
         prefijo: '',
-        prefijoStyle: null,
+        prefijoStyle: this.songStyles.empty,
         sufijo: '',
-        sufijoStyle: null,
+        sufijoStyle: this.songStyles.empty,
         type: 'comenzarColumna',
       };
       return it;
@@ -98,7 +98,7 @@ export class SongsParser<T> {
           prefijo: text.substring(0, secondPoint + 1) + ' ',
           prefijoStyle: this.songStyles.assemblyPrefix,
           sufijo: '',
-          sufijoStyle: null,
+          sufijoStyle: this.songStyles.empty,
           type: 'cantoConIndicador',
         };
         return it;
@@ -153,7 +153,7 @@ export class SongsParser<T> {
             ? this.songStyles.assemblyPrefix
             : this.songStyles.normalPrefix,
           sufijo: '',
-          sufijoStyle: null,
+          sufijoStyle: this.songStyles.empty,
           type: 'cantoConIndicador',
         };
         return it;
@@ -163,9 +163,9 @@ export class SongsParser<T> {
           texto: text.trimEnd(),
           style: this.songStyles.notesLine,
           prefijo: '',
-          prefijoStyle: null,
+          prefijoStyle: this.songStyles.empty,
           sufijo: '',
-          sufijoStyle: null,
+          sufijoStyle: this.songStyles.empty,
           type: 'notas',
         };
         return it;
@@ -178,7 +178,7 @@ export class SongsParser<T> {
           prefijo: '* ',
           prefijoStyle: this.songStyles.notesLine,
           sufijo: '',
-          sufijoStyle: null,
+          sufijoStyle: this.songStyles.empty,
           type: 'notaEspecial',
         };
         return it;
@@ -189,9 +189,9 @@ export class SongsParser<T> {
           texto: text.replace(/\*/g, '').trim(),
           style: this.songStyles.specialNoteTitle,
           prefijo: '',
-          prefijoStyle: null,
+          prefijoStyle: this.songStyles.empty,
           sufijo: '',
-          sufijoStyle: null,
+          sufijoStyle: this.songStyles.empty,
           type: 'tituloEspecial',
         };
         return it;
@@ -202,9 +202,9 @@ export class SongsParser<T> {
           texto: text.replace('-', '').trim(),
           style: this.songStyles.specialNote,
           prefijo: '',
-          prefijoStyle: null,
+          prefijoStyle: this.songStyles.empty,
           sufijo: '',
-          sufijoStyle: null,
+          sufijoStyle: this.songStyles.empty,
           type: 'textoEspecial',
         };
         return it;
@@ -214,9 +214,9 @@ export class SongsParser<T> {
           texto: '',
           style: this.songStyles.normalLine,
           prefijo: '',
-          prefijoStyle: null,
+          prefijoStyle: this.songStyles.empty,
           sufijo: '',
-          sufijoStyle: null,
+          sufijoStyle: this.songStyles.empty,
           type: 'inicioParrafo',
         };
         return it;
@@ -227,9 +227,9 @@ export class SongsParser<T> {
           texto: texto,
           style: this.songStyles.normalLine,
           prefijo: '',
-          prefijoStyle: null,
+          prefijoStyle: this.songStyles.empty,
           sufijo: '',
-          sufijoStyle: null,
+          sufijoStyle: this.songStyles.empty,
           type: 'canto',
         };
         return it;

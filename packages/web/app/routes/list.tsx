@@ -8,16 +8,17 @@ import { getSession } from '~/session.server';
 import { useApp } from '~/app.context';
 import { Loader } from 'semantic-ui-react';
 import i18n from '@iresucito/translations';
+import { folderExtras } from '~/utils.server';
 
 export let loader: LoaderFunction = async ({ request }) => {
   const session = await getSession(request.headers.get('Cookie'));
   try {
-    const patch = await globalThis.folderExtras.readPatch();
+    const patch = await folderExtras.readPatch();
     const locale = session.get('locale') as string;
     if (!locale) {
       throw new Error('Locale not provided');
     }
-    const songs = globalThis.folderSongs.getSongsMeta(locale, patch);
+    const songs = folderSongs.getSongsMeta(locale, patch);
     const headers = {
       'Cache-Control': 'max-age=0, must-revalidate',
       ETag: etag(JSON.stringify(songs)),

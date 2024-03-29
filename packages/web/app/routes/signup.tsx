@@ -5,7 +5,7 @@ import ApiMessage from '~/components/ApiMessage';
 import bcrypt from 'bcryptjs';
 import { ActionFunction, json } from '@remix-run/node';
 import { commitSession, getSession } from '~/session.server';
-//import '~/utils.server';
+import { db } from '~/utils.server';
 import i18n from '@iresucito/translations';
 
 export let action: ActionFunction = async ({ request }) => {
@@ -33,7 +33,7 @@ export let action: ActionFunction = async ({ request }) => {
   // Quitar espacios
   email = email.trim();
   // @ts-ignore
-  const exists = globalThis.db.data.users.find((u) => u.email == email);
+  const exists = db.data.users.find((u) => u.email == email);
   if (exists && exists.isVerified) {
     return json(
       {
@@ -47,7 +47,7 @@ export let action: ActionFunction = async ({ request }) => {
     if (!exists) {
       // Crear usuario
       // @ts-ignore
-      globalThis.db.data.users.push({
+      db.data.users.push({
         email,
         password: hash,
         isVerified: false,
@@ -57,28 +57,28 @@ export let action: ActionFunction = async ({ request }) => {
     // Crear (o actualizar) token para verificacion
     const token = crypto({ length: 20, type: 'url-safe' });
     // @ts-ignore
-    let tokenIndex = globalThis.db.data.tokens.findIndex(
+    let tokenIndex = db.data.tokens.findIndex(
       (t) => t.email == email
     );
     if (tokenIndex === -1) {
       // @ts-ignore
-      globalThis.db.data.tokens.push({
+      db.data.tokens.push({
         email,
         token,
       });
     } else {
       // @ts-ignore
-      globalThis.db.data.tokens[tokenIndex].token = token;
+      db.data.tokens[tokenIndex].token = token;
     }
     // Escribir
-    globalThis.db.write();
+    db.write();
     const base =
       process.env.NODE_ENV == 'production'
         ? 'http://iresucito.vercel.app'
         : 'http://localhost:3000';
 
     try {
-      await globalThis.mailSender({
+      await mailSender({
         to: email,
         text: `Navigate this link ${base}/verify?token=${token}&email=${email} to activate your account.`,
       });

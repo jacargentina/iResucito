@@ -19,7 +19,7 @@ import { useEffect, useState } from 'react';
 import * as bcrypt from 'bcryptjs';
 import Layout from '~/components/Layout';
 import ApiMessage from '~/components/ApiMessage';
-//import '~/utils.server';
+import { db } from '~/utils.server';
 import { authenticator } from '~/auth.server';
 import i18n from '@iresucito/translations';
 import ErrorDetail from '~/components/ErrorDetail';
@@ -31,16 +31,16 @@ export let action: ActionFunction = async ({ request, context, params }) => {
   let userIndex = -1;
   if (body.get('email') && body.get('token')) {
     // @ts-ignore
-    const tokenIndex = globalThis.db.data.tokens.findIndex(
+    const tokenIndex = db.data.tokens.findIndex(
       (t) => t.email === body.get('email') && t.token === body.get('token')
     );
     if (tokenIndex == -1) {
       throw new Error('Token and email invalid.');
     }
-    globalThis.db.data?.tokens.splice(tokenIndex, 1);
-    globalThis.db.write();
+    db.data?.tokens.splice(tokenIndex, 1);
+    db.write();
     // @ts-ignore
-    userIndex = globalThis.db.data.users.findIndex(
+    userIndex = db.data.users.findIndex(
       (u) => u.email == body.get('email')
     );
   } else {
@@ -49,7 +49,7 @@ export let action: ActionFunction = async ({ request, context, params }) => {
       throw new Error('No autenticado.');
     }
     // @ts-ignore
-    userIndex = globalThis.db.data.users.findIndex(
+    userIndex = db.data.users.findIndex(
       (u) => u.email == authData?.user
     );
   }
@@ -58,11 +58,11 @@ export let action: ActionFunction = async ({ request, context, params }) => {
     throw new Error('Usuario inválido.');
   }
   // @ts-ignore
-  globalThis.db.data.users[userIndex].password = bcrypt.hashSync(
+  db.data.users[userIndex].password = bcrypt.hashSync(
     body.get('newPassword') as string,
     bcrypt.genSaltSync(10)
   );
-  globalThis.db.write();
+  db.write();
   if (body.get('token') && body.get('email')) {
     return redirect(`/account?u=${body.get('email')}&r=1`);
   }
@@ -81,7 +81,7 @@ export let loader: LoaderFunction = async ({ request }) => {
   const email = url.searchParams.get('email');
   if (token && email) {
     // @ts-ignore
-    let tokenIndex = globalThis.db.data.tokens.findIndex(
+    let tokenIndex = db.data.tokens.findIndex(
       (t) => t.email == email && t.token == token
     );
     if (tokenIndex !== -1) {

@@ -39,6 +39,7 @@
     "etag": "^1.8.1",
     "gmail-send": "^1.8.14",
     "lowdb": "^7.0.1",
+    "memfs": "^4.8.0",
     "node-fetch": "^3.3.2",
     "pdfjs-dist": "^4.0.379",
     "react": "^18.2.0",
@@ -54,6 +55,7 @@
     "use-hotkeys": "^1.1.0",
     "vercel": "^33.6.1",
     "vite": "^5.1.0",
+    "vite-plugin-node-polyfills": "^0.21.0",
     "vite-tsconfig-paths": "^4.2.1"
   },
   "devDependencies": {

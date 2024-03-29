@@ -138,6 +138,7 @@ export type SongStyles<StyleType> = {
   bookTitle: StyleType;
   indexText: StyleType;
   disablePageNumbers: boolean;
+  empty: StyleType;
 };
 
 export type SongLineType =
@@ -539,4 +540,38 @@ export const loadAllLocales = (): SongsSourceData => {
   allLocales['sw-TZ'] = require('../assets/songs/sw-TZ.json');
 
   return allLocales;
+};
+
+export type PdfStyle = {
+  color: PDFKit.Mixins.ColorValue;
+  font: PDFKit.Mixins.PDFFontSource;
+  fontSize: number;
+};
+
+export const PdfStyles: SongStyles<PdfStyle> = {
+  empty: { color: 'transparent', font: 'none', fontSize: 0 },
+  title: { color: '#ff0000', font: 'medium', fontSize: 16 },
+  source: { color: '#777777', font: 'medium', fontSize: 9.8 },
+  clampLine: { color: '#ff0000', font: 'regular', fontSize: 7 },
+  indicator: { color: '#ff0000', font: 'medium', fontSize: 11 },
+  notesLine: { color: '#ff0000', font: 'regular', fontSize: 7 },
+  specialNoteTitle: { color: '#ff0000', font: 'medium', fontSize: 8 },
+  specialNote: { color: '#444444', font: 'regular', fontSize: 8 },
+  normalLine: { color: '#000000', font: 'regular', fontSize: 9 },
+  normalPrefix: { color: '#777777', font: 'regular', fontSize: 11 },
+  assemblyLine: { color: '#000000', font: 'medium', fontSize: 11 },
+  assemblyPrefix: { color: '#777777', font: 'medium', fontSize: 11 },
+  pageNumber: { color: '#000000', font: 'regular', fontSize: 11 },
+  pageFooter: { color: '#777777', font: 'regular', fontSize: 10 },
+  indexTitle: { color: '#000000', font: 'medium', fontSize: 16 },
+  bookTitle: { color: '#ff0000', font: 'medium', fontSize: 80 },
+  bookSubtitle: { color: '#000000', font: 'regular', fontSize: 14 },
+  indexText: { color: '#ff0000', font: 'medium', fontSize: 11 },
+  marginLeft: 25,
+  marginTop: 19,
+  widthHeightPixels: 598, // 21,1 cm
+  bookTitleSpacing: 10,
+  indexMarginLeft: 25,
+  songIndicatorSpacing: 21,
+  disablePageNumbers: false,
 };

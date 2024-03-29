@@ -5,7 +5,7 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "build": "tsc -b",
+    "build": "npx tsc -b",
     "patch": "esno src/applyPatch.ts",
     "test": "esno src/test.ts",
     "test-no-funciona": "// ver comentarios en jest.config.js"
@@ -23,6 +23,7 @@
   "dependencies": {
     "@types/country-list": "^2.1.2",
     "@types/langs": "^2.0.2",
+    "@types/lodash": "^4.17.0",
     "@types/pdfkit": "^0.13.4",
     "country-list": "^2.3.0",
     "expo-asset": "~8.10.1",
@@ -31,7 +32,7 @@
     "lodash": "^4.17.21",
     "normalize-strings": "^1.1.1",
     "pdfkit": "^0.15.0",
-    "typescript": "^5.2.2"
+    "typescript": "^5.4.3"
   },
   "devDependencies": {
     "@types/jest": "^29.5.5",

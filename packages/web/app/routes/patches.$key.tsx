@@ -2,6 +2,7 @@ import etag from 'etag';
 import { json, LoaderFunction } from '@remix-run/node';
 import { getSession } from '~/session.server';
 import { SongChangesAndPatches } from '@iresucito/core';
+import { folderExtras, folderSongs } from '~/utils.server';
 
 export let loader: LoaderFunction = async ({ request, params }) => {
   const session = await getSession(request.headers.get('Cookie'));
@@ -13,10 +14,10 @@ export let loader: LoaderFunction = async ({ request, params }) => {
   if (!key) {
     throw new Error('key not provided');
   }
-  const changes = globalThis.folderSongs.getSongHistory(key, locale);
+  const changes = folderSongs.getSongHistory(key, locale);
   let pending = null;
 
-  const patch = await globalThis.folderExtras.readPatch();
+  const patch = await folderExtras.readPatch();
   if (patch && patch[key] && patch[key][locale]) {
     const { author, date } = patch[key][locale];
     pending = { author, date };

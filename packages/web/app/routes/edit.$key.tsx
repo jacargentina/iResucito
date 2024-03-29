@@ -10,6 +10,7 @@ import PdfSettingsDialog from '~/components/PdfSettingsDialog';
 import { json, LoaderFunction } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 import { getSession } from '~/session.server';
+import { folderExtras, folderSongs } from '~/utils.server';
 
 export let loader: LoaderFunction = async ({ request, params }) => {
   const session = await getSession(request.headers.get('Cookie'));
@@ -17,15 +18,15 @@ export let loader: LoaderFunction = async ({ request, params }) => {
   if (!locale) {
     throw new Error('Locale not provided');
   }
-  const patch = await globalThis.folderExtras.readPatch();
+  const patch = await folderExtras.readPatch();
   const { key } = params;
-  const songs = globalThis.folderSongs.getSongsMeta(locale, patch);
+  const songs = folderSongs.getSongsMeta(locale, patch);
   const song = songs.find((s) => s.key === key);
   if (!song) {
     throw new Error(`Song ${key} not valid`);
   }
 
-  await globalThis.folderSongs.loadSingleSong(locale, song, patch);
+  await folderSongs.loadSingleSong(locale, song, patch);
   // Buscar key previa y siguiente para navegacion
   const index = songs.indexOf(song);
   let prev = index - 1;

@@ -7,7 +7,6 @@ import {
 } from '@iresucito/core';
 import { Low, Adapter } from 'lowdb';
 import send from 'gmail-send';
-export { type SongToPdf, PdfStyle, generatePDF } from '@iresucito/core/pdf';
 
 type DbType = {
   users: Array<{
@@ -115,40 +114,44 @@ class WebSongsExtras implements SongsExtras {
   }
 }
 
-if (globalThis.folderSongs === undefined) {
-  globalThis.folderSongs = new SongsProcessor(loadAllLocales());
-}
+export const singleton = <Value>(
+  name: string,
+  valueFactory: () => Value
+): Value => {
+  const g = global as any;
+  g.__singletons ??= {};
+  g.__singletons[name] ??= valueFactory();
+  return g.__singletons[name];
+};
 
-if (globalThis.folderExtras === undefined) {
-  globalThis.folderExtras = new WebSongsExtras();
-}
+export const folderSongs = singleton(
+  'songsprocessor',
+  () => new SongsProcessor(loadAllLocales())
+);
 
-if (globalThis.mailSender === undefined) {
-  globalThis.mailSender = send({
+export const folderExtras = singleton(
+  'websongsextras',
+  () => new WebSongsExtras()
+);
+
+export const mailSender = singleton('mailsender', () =>
+  send({
     user: 'javier.alejandro.castro@gmail.com',
     pass: process.env.GMAIL_PASSWORD,
     subject: 'iResucito Web',
+  })
+);
+
+export const db = singleton('db', () => {
+  var db = new Low<DbType>(new DropboxJsonFile('db.json'), {
+    users: [],
+    tokens: [],
   });
-}
-
-const setupDb = async () => {
-  if (globalThis.db === undefined) {
-    try {
-      var db = new Low<DbType>(new DropboxJsonFile('db.json'), {
-        users: [],
-        tokens: [],
-      });
-      await db.read();
-      if (db.data == null) {
-        // @ts-ignore
-        db.data ||= { users: [], tokens: [] };
-        await db.write();
-      }
-      globalThis.db = db;
-    } catch (err: any) {
-      console.log('Error', err.message);
-    }
+  db.read();
+  if (db.data == null) {
+    // @ts-ignore
+    db.data ||= { users: [], tokens: [] };
+    db.write();
   }
-};
-
-setupDb();
+  return db;
+});

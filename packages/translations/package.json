@@ -4,8 +4,8 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "build": "tsc -b",
-    "postinstall": "yarn run tsc"
+    "build": "npx tsc -b",
+    "postinstall": "yarn run build"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -13,6 +13,6 @@
   "dependencies": {
     "@types/i18n-js": "^3.8.5",
     "i18n-js": "^4.3.2",
-    "typescript": "^5.2.2"
+    "typescript": "^5.4.3"
   }
 }

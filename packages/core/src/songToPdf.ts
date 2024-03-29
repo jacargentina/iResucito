@@ -1,6 +1,12 @@
 import i18n from '@iresucito/translations';
-import { loadAllLocales, SongsParser, SongsProcessor } from './';
-import { generatePDF, PdfStyle, PdfStyles, SongToPdf } from './pdf';
+import {
+  loadAllLocales,
+  SongsParser,
+  PdfStyle,
+  PdfStyles,
+  SongsProcessor,
+} from './';
+import { generatePDF, SongToPdf } from './pdf';
 import open from 'open';
 import { osLocale } from 'os-locale';
 

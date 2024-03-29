@@ -21,9 +21,10 @@ import i18n from '@iresucito/translations';
 import semanticUrl from 'semantic-ui-css/semantic.min.css?url';
 import globalStylesUrl from './styles/global.css?url';
 import AppRaw from '@iresucito/native/app.json';
+import { folderExtras } from './utils.server';
 
 export let loader: LoaderFunction = async ({ request }) => {
-  const patch = await globalThis.folderExtras.readPatch();
+  const patch = await folderExtras.readPatch();
   const stats = patch ? getPatchStats(patch) : [];
 
   const authData = await authenticator.isAuthenticated(request);

@@ -31,7 +31,7 @@ const patchSongLogic = (songPatch: SongPatch, key: string) => {
     var songToPatch = SongsIndex[key];
     Object.keys(songPatch).forEach((rawLoc) => {
       var item: SongPatchData = songPatch[rawLoc];
-      var localeKey: string;
+      var localeKey: string | undefined = undefined;
       var loc = rawLoc;
       var { author, date, name, lines, stage } = item;
       name = name.trim();
@@ -60,7 +60,7 @@ const patchSongLogic = (songPatch: SongPatch, key: string) => {
         var keys = Object.keys(songsLocaleData);
         var lastKey = Number(keys[keys.length - 1]);
         localeKey = String(lastKey + 1);
-        songsLocaleData[localeKey] = { name, source: lines };
+        songsLocaleData[localeKey] = { name, source: lines as string };
         songToPatch.files[loc] = localeKey;
         created = true;
       }
@@ -110,13 +110,13 @@ const patchSongLogic = (songPatch: SongPatch, key: string) => {
       }
     });
   } catch (err) {
-    console.log(err.message);
+    console.log((err as Error).message);
   }
 };
 
-const applyPatch = async (local_file_path: string = null) => {
-  var patch: SongIndexPatch = undefined;
-  var dropbox: Dropbox = undefined;
+const applyPatch = async (local_file_path: string) => {
+  var patch: SongIndexPatch;
+  var dropbox: Dropbox | undefined;
   const file = 'SongsIndexPatch.json';
 
   if (local_file_path?.endsWith('.json')) {

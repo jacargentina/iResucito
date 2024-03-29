@@ -10,7 +10,9 @@ import {
   ListTitleValue,
   ListToPdf,
   PalabraListForUI,
+  PdfStyle,
   Song,
+  SongIndicator,
   SongLine,
   SongRendering,
   SongStyles,
@@ -34,13 +36,6 @@ declare global {
 }
 
 var DEBUG_RECTS = false;
-
-export class PdfStyle {
-  color?: PDFKit.Mixins.ColorValue;
-  font?: PDFKit.Mixins.PDFFontSource;
-  fontSize?: number;
-  lineHeight?: number;
-}
 
 export type ListSongGroup = {
   [key: string]: Array<ListSongItem>;
@@ -76,9 +71,10 @@ export const getAlphaWithSeparators = (
 };
 
 export const getGroupedByStage = (
-  songsToPdf: Array<SongToPdf<any>>
+  songsToPdf: Array<SongToPdf<PdfStyle>>
 ): ListSongGroup => {
   // Agrupados por stage
+  var initial: ListSongGroup = {};
   return songsToPdf.reduce((groups, data) => {
     const groupKey = data.song.stage;
     groups[groupKey] = groups[groupKey] || [];
@@ -88,15 +84,16 @@ export const getGroupedByStage = (
     const title = sameName.length > 1 ? data.song.nombre : data.song.titulo;
     groups[groupKey].push({ songKey: data.song.key, str: title });
     return groups;
-  }, {});
+  }, initial);
 };
 
 export const getGroupedByLiturgicTime = (
-  songsToPdf: Array<SongToPdf<any>>
+  songsToPdf: Array<SongToPdf<PdfStyle>>
 ): ListSongGroup => {
   // Agrupados por tiempo liturgico
+  var initial: ListSongGroup = {};
   return songsToPdf.reduce((groups, data) => {
-    var times = liturgicTimes.filter((t) => data.song[t] === true);
+    var times = liturgicTimes.filter((t) => (data.song as any)[t] === true);
     times.forEach((t) => {
       groups[t] = groups[t] || [];
       const sameName = songsToPdf.filter(
@@ -106,15 +103,16 @@ export const getGroupedByLiturgicTime = (
       groups[t].push({ songKey: data.song.key, str: title });
     });
     return groups;
-  }, {});
+  }, initial);
 };
 
 export const getGroupedByLiturgicOrder = (
-  songsToPdf: Array<SongToPdf<any>>
+  songsToPdf: Array<SongToPdf<PdfStyle>>
 ): ListSongGroup => {
   // Agrupados por tiempo liturgico
+  var initial: ListSongGroup = {};
   return songsToPdf.reduce((groups, data) => {
-    var times = liturgicOrder.filter((t) => data.song[t] === true);
+    var times = liturgicOrder.filter((t) => (data.song as any)[t] === true);
     times.forEach((t) => {
       groups[t] = groups[t] || [];
       const sameName = songsToPdf.filter(
@@ -124,7 +122,7 @@ export const getGroupedByLiturgicOrder = (
       groups[t].push({ songKey: data.song.key, str: title });
     });
     return groups;
-  }, {});
+  }, initial);
 };
 
 export const getLocalizedListItem = (listKey: string): string => {
@@ -165,11 +163,11 @@ export const getListTitleValue = (
   removeIfEmpty: boolean = false
 ): ListTitleValue | null => {
   if (list.hasOwnProperty(key)) {
-    var valor = list[key];
+    var valor = (list as any)[key];
     if (valor && getEsSalmo(key)) {
       valor = [valor.titulo];
     } else if (valor && getEsSalmoList(key)) {
-      valor = valor.map((song) => song.titulo);
+      valor = valor.map((song: Song) => song.titulo);
     } else if (valor) {
       valor = [valor];
     } else {
@@ -184,33 +182,6 @@ export const getListTitleValue = (
     };
   }
   return null;
-};
-
-export const PdfStyles: SongStyles<PdfStyle> = {
-  title: { color: '#ff0000', font: 'medium', fontSize: 16 },
-  source: { color: '#777777', font: 'medium', fontSize: 9.8 },
-  clampLine: { color: '#ff0000', font: 'regular', fontSize: 7 },
-  indicator: { color: '#ff0000', font: 'medium', fontSize: 11 },
-  notesLine: { color: '#ff0000', font: 'regular', fontSize: 7 },
-  specialNoteTitle: { color: '#ff0000', font: 'medium', fontSize: 8 },
-  specialNote: { color: '#444444', font: 'regular', fontSize: 8 },
-  normalLine: { color: '#000000', font: 'regular', fontSize: 9 },
-  normalPrefix: { color: '#777777', font: 'regular', fontSize: 11 },
-  assemblyLine: { color: '#000000', font: 'medium', fontSize: 11 },
-  assemblyPrefix: { color: '#777777', font: 'medium', fontSize: 11 },
-  pageNumber: { color: '#000000', font: 'regular', fontSize: 11 },
-  pageFooter: { color: '#777777', font: 'regular', fontSize: 10 },
-  indexTitle: { color: '#000000', font: 'medium', fontSize: 16 },
-  bookTitle: { color: '#ff0000', font: 'medium', fontSize: 80 },
-  bookSubtitle: { color: '#000000', font: 'regular', fontSize: 14 },
-  indexText: { color: '#ff0000', font: 'medium', fontSize: 11 },
-  marginLeft: 25,
-  marginTop: 19,
-  widthHeightPixels: 598, // 21,1 cm
-  bookTitleSpacing: 10,
-  indexMarginLeft: 25,
-  songIndicatorSpacing: 21,
-  disablePageNumbers: false,
 };
 
 export type ExportToPdfLimits = {
@@ -244,12 +215,12 @@ export type ListSongPos = {
 
 export class PdfWriter {
   opts: SongStyles<PdfStyle>;
-  resetY: number;
   doc: PDFKit.PDFDocument;
   base64Transform: any;
   addExtraMargin: boolean;
-  disablePageNumbers: boolean;
   listing: Array<ListSongPos>;
+  resetY: number;
+  disablePageNumbers: boolean;
   limits: ExportToPdfLimits;
   pageNumberLimits: ExportToPdfLimits;
   firstColLimits: ExportToPdfLimits;
@@ -266,6 +237,16 @@ export class PdfWriter {
   ) {
     this.base64Transform = base64Transform;
     this.opts = opts;
+    this.resetY = 0;
+    this.disablePageNumbers = false;
+    this.limits = { x: 0, y: 0, w: 0, h: 0 };
+    this.pageNumberLimits = { x: 0, y: 0, w: 0, h: 0 };
+    this.firstColLimits = { x: 0, y: 0, w: 0, h: 0 };
+    this.secondColLimits = { x: 0, y: 0, w: 0, h: 0 };
+    this.widthOfIndexPageNumbers = 0;
+    this.heightOfPageNumbers = 0;
+    this.widthOfIndexSpacing = 0;
+    this.addExtraMargin = false;
     this.doc = new PDFDocument({
       bufferPages: true,
       autoFirstPage: false,
@@ -289,13 +270,13 @@ export class PdfWriter {
     });
     this.doc.on('pageAdded', () => {
       this.widthOfIndexPageNumbers = this.doc
-        .fontSize(this.opts.indexText.fontSize)
+        .fontSize(this.opts.indexText.fontSize as number)
         .widthOfString('000');
       this.heightOfPageNumbers = this.doc
-        .fontSize(this.opts.pageNumber.fontSize)
+        .fontSize(this.opts.pageNumber.fontSize as number)
         .heightOfString('000');
       this.widthOfIndexSpacing = this.doc
-        .fontSize(this.opts.indexText.fontSize)
+        .fontSize(this.opts.indexText.fontSize as number)
         .widthOfString('  ');
       this.resetY = this.opts.marginTop;
       this.limits = {
@@ -332,7 +313,10 @@ export class PdfWriter {
         h: this.limits.h,
       };
       if (DEBUG_RECTS === true) {
-        const drawLimits = (limits, color) => {
+        const drawLimits = (
+          limits: ExportToPdfLimits,
+          color: PDFKit.Mixins.ColorValue
+        ) => {
           const { x, y, w, h } = limits;
           this.doc.rect(x, y, w, h).stroke(color);
         };
@@ -355,7 +339,6 @@ export class PdfWriter {
       this.doc.font('medium', 'Times-Roman');
     }
     this.listing = [];
-    this.addExtraMargin = false;
   }
 
   writePageNumber() {
@@ -465,10 +448,10 @@ export class PdfWriter {
     return new Promise((resolve, reject) => {
       var stream = this.doc.pipe(this.base64Transform);
       var str = '';
-      stream.on('error', (err) => {
+      stream.on('error', (err: any) => {
         reject(err);
       });
-      stream.on('data', (data) => {
+      stream.on('data', (data: any) => {
         str += data;
       });
       stream.on('finish', () => {
@@ -694,8 +677,8 @@ export const SongPDFGenerator = async (
       writer.resetY = writer.doc.y;
 
       var lines: Array<ExportToPdfLineText> = [];
-      var blockIndicator;
-      var blockY;
+      var blockIndicator: SongIndicator | undefined;
+      var blockY: number;
       var maxX = 0;
       items.forEach((it: SongLine<PdfStyle>, i: number) => {
         var lastWidth: number = 0;
@@ -726,7 +709,7 @@ export const SongPDFGenerator = async (
             text,
             color,
           });
-          blockIndicator = null;
+          blockIndicator = undefined;
           blockY = 0;
         }
         if (it.type === 'comenzarColumna') {
@@ -853,7 +836,7 @@ export const SongPDFGenerator = async (
 const PdfNewLine = 'NEWLINE';
 const PdfNewCol = 'NEWCOL';
 
-export type PdfItem = 'NEWLINE' | 'NEWCOL' | ListTitleValue;
+export type PdfItem = 'NEWLINE' | 'NEWCOL' | ListTitleValue | null;
 
 export const ListPDFGenerator = async (
   list: ListToPdf,

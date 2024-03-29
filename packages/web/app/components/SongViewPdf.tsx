@@ -1,11 +1,11 @@
 import { useRef, useEffect, useContext, useState } from 'react';
-//import * as pdfjsLib from 'pdfjs-dist';
+import * as pdfjsLib from 'pdfjs-dist';
 import { Icon, Button, Menu, Label, Input, Loader } from 'semantic-ui-react';
 import { EditContext } from './EditContext';
 import i18n from '@iresucito/translations';
 import { useApp } from '~/app.context';
 
-//pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.js';
+pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.js';
 
 const SongViewPdf = (props: {
   url: string | null;
@@ -28,7 +28,7 @@ const SongViewPdf = (props: {
   useEffect(() => {
     if (url !== null) {
       setLoading(true);
-      import('pdfjs-dist').then((pdfjsLib) => {
+      // import('pdfjs-dist').then((pdfjsLib) => {
         const loadingTask = pdfjsLib.getDocument(url);
         loadingTask.promise
           .then((doc) => {
@@ -41,7 +41,7 @@ const SongViewPdf = (props: {
             console.log('error pdf!', err);
             setLoading(false);
           });
-      });
+      // });
     }
   }, [url]);
 

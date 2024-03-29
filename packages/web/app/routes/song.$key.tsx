@@ -1,113 +1,49 @@
-//import '~/utils.server';
 import { authenticator } from '~/auth.server';
 import { ActionFunction, json, LoaderFunction } from '@remix-run/node';
 import { getSession } from '~/session.server';
 import { Song, SongPatch, SongPatchData } from '@iresucito/core';
-
-const merge = require('deepmerge');
-
-const del = async (key: string, locale: string) => {
-  let patchObj = await globalThis.folderExtras.readPatch();
-  if (!patchObj) {
-    patchObj = {};
-  }
-  if (!Object.prototype.hasOwnProperty.call(patchObj[key], locale)) {
-    throw new Error(`Cant delete. Patch for locale ${locale} not found`);
-  }
-  delete patchObj[key][locale];
-
-  if (Object.keys(patchObj[key]).length === 0) {
-    delete patchObj[key];
-  }
-
-  await globalThis.folderExtras.savePatch(patchObj);
-
-  return { ok: true };
-};
-
-const post = async (
-  key: string,
-  locale: string,
-  session: AuthData,
-  request: Request
-) => {
-  let patchObj = await globalThis.folderExtras.readPatch();
-
-  const body = await request.json();
-
-  const patch: SongPatchData = {
-    author: session.user,
-    date: Date.now(),
-    ...body,
-  };
-  if (!patchObj) {
-    patchObj = {};
-  }
-
-  if (patch.name) {
-    patch.name = patch.name.trim();
-  }
-
-  patch.date = Date.now();
-
-  const localePatch: SongPatch = {
-    [locale]: patch,
-  };
-  if (!patchObj[key]) {
-    patchObj[key] = {};
-  }
-  const updatedPatch = merge(patchObj[key], localePatch);
-  patchObj[key] = updatedPatch;
-
-  await globalThis.folderExtras.savePatch(patchObj);
-
-  // Recargar song y devolver
-  const songs = globalThis.folderSongs.getSongsMeta(locale, patchObj);
-  const song = songs.find((s) => s.key === key) as Song;
-  await globalThis.folderSongs.loadSingleSong(locale, song, patchObj);
-
-  return { ok: true, song };
-};
-
-const addNewSong = async (locale: string, session: AuthData) => {
-  let patchObj = await globalThis.folderExtras.readPatch();
-  if (!patchObj) {
-    patchObj = {};
-  }
-
-  const songs = globalThis.folderSongs.getSongsMeta(locale, patchObj);
-
-  // Crear song
-  const patch: SongPatchData = {
-    author: session.user,
-    date: Date.now(),
-    name: 'Title - Source',
-    lines: 'Song text here',
-    stage: 'precatechumenate',
-  };
-  const song: SongPatch = {
-    [locale]: patch,
-  };
-  const songMaxKey = songs.reduce((prev, next) => {
-    if (Number(prev.key) > Number(next.key)) {
-      return prev;
-    }
-    return next;
-  }, songs[0]);
-
-  const newKey = String(Number(songMaxKey.key) + 1);
-  patchObj[newKey] = song;
-  await globalThis.folderExtras.savePatch(patchObj);
-
-  // Cargar y devolver
-  const newSongs = globalThis.folderSongs.getSongsMeta(locale, patchObj);
-  const newSong = newSongs.find((s) => s.key === newKey) as Song;
-  await globalThis.folderSongs.loadSingleSong(locale, newSong, patchObj);
-
-  return { ok: true, song: newSong };
-};
+import merge from 'deepmerge';
+import { folderExtras, folderSongs } from '~/utils.server';
 
 export let loader: LoaderFunction = async ({ request, params }) => {
+  const addNewSong = async (locale: string, session: AuthData) => {
+    let patchObj = await folderExtras.readPatch();
+    if (!patchObj) {
+      patchObj = {};
+    }
+
+    const songs = folderSongs.getSongsMeta(locale, patchObj);
+
+    // Crear song
+    const patch: SongPatchData = {
+      author: session.user,
+      date: Date.now(),
+      name: 'Title - Source',
+      lines: 'Song text here',
+      stage: 'precatechumenate',
+    };
+    const song: SongPatch = {
+      [locale]: patch,
+    };
+    const songMaxKey = songs.reduce((prev, next) => {
+      if (Number(prev.key) > Number(next.key)) {
+        return prev;
+      }
+      return next;
+    }, songs[0]);
+
+    const newKey = String(Number(songMaxKey.key) + 1);
+    patchObj[newKey] = song;
+    await folderExtras.savePatch(patchObj);
+
+    // Cargar y devolver
+    const newSongs = folderSongs.getSongsMeta(locale, patchObj);
+    const newSong = newSongs.find((s) => s.key === newKey) as Song;
+    await folderSongs.loadSingleSong(locale, newSong, patchObj);
+
+    return { ok: true, song: newSong };
+  };
+
   const session = await getSession(request.headers.get('Cookie'));
   const locale = session.get('locale') as string;
   if (!locale) {
@@ -127,6 +63,71 @@ export let loader: LoaderFunction = async ({ request, params }) => {
 };
 
 export let action: ActionFunction = async ({ request, params }) => {
+  // funcion por cada tipo de accion
+  // DELETE
+  const del = async (key: string, locale: string) => {
+    let patchObj = await folderExtras.readPatch();
+    if (!patchObj) {
+      patchObj = {};
+    }
+    if (!Object.prototype.hasOwnProperty.call(patchObj[key], locale)) {
+      throw new Error(`Cant delete. Patch for locale ${locale} not found`);
+    }
+    delete patchObj[key][locale];
+
+    if (Object.keys(patchObj[key]).length === 0) {
+      delete patchObj[key];
+    }
+
+    await folderExtras.savePatch(patchObj);
+
+    return { ok: true };
+  };
+  // POST
+  const post = async (
+    key: string,
+    locale: string,
+    session: AuthData,
+    request: Request
+  ) => {
+    let patchObj = await folderExtras.readPatch();
+
+    const body = await request.json();
+
+    const patch: SongPatchData = {
+      author: session.user,
+      date: Date.now(),
+      ...body,
+    };
+    if (!patchObj) {
+      patchObj = {};
+    }
+
+    if (patch.name) {
+      patch.name = patch.name.trim();
+    }
+
+    patch.date = Date.now();
+
+    const localePatch: SongPatch = {
+      [locale]: patch,
+    };
+    if (!patchObj[key]) {
+      patchObj[key] = {};
+    }
+    const updatedPatch = merge(patchObj[key], localePatch);
+    patchObj[key] = updatedPatch;
+
+    await folderExtras.savePatch(patchObj);
+
+    // Recargar song y devolver
+    const songs = folderSongs.getSongsMeta(locale, patchObj);
+    const song = songs.find((s) => s.key === key) as Song;
+    await folderSongs.loadSingleSong(locale, song, patchObj);
+
+    return { ok: true, song };
+  };
+
   const session = await getSession(request.headers.get('Cookie'));
   const locale = session.get('locale') as string;
   if (!locale) {

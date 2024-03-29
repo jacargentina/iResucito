@@ -36,7 +36,7 @@ const main = async () => {
     if (locale !== '') {
       var parser = new SongsParser(PdfStyles);
       if (key) {
-        var song = globalThis.folderSongs.getSingleSongMeta(
+        var song = folderSongs.getSingleSongMeta(
           key,
           locale,
           undefined,

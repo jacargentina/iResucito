@@ -2,7 +2,9 @@ import { SongsParser } from '@iresucito/core';
 import i18n from '@iresucito/translations';
 import { ActionFunction, json } from '@remix-run/node';
 import { getSession } from '~/session.server';
-import { PdfStyle, PdfStyles, SongToPdf, generatePDF } from '~/utils.server';
+import { PdfStyle, PdfStyles } from '@iresucito/core';
+import { SongToPdf, generatePDF } from '@iresucito/core/pdf';
+import { folderExtras, folderSongs } from '~/utils.server';
 
 export let action: ActionFunction = async ({ request, params }) => {
   const session = await getSession(request.headers.get('Cookie'));
@@ -26,9 +28,9 @@ export let action: ActionFunction = async ({ request, params }) => {
     if (key == 'full') {
       addIndex = true;
       filename = `iResucito-${locale}`;
-      const patch = await globalThis.folderExtras.readPatch();
-      const songs = globalThis.folderSongs.getSongsMeta(locale, patch);
-      await globalThis.folderSongs.loadSongs(locale, songs, patch);
+      const patch = await folderExtras.readPatch();
+      const songs = folderSongs.getSongsMeta(locale, patch);
+      await folderSongs.loadSongs(locale, songs, patch);
       songs.forEach((song) => {
         if (song.files[locale]) {
           const render = parser.getForRender(song.fullText, locale);
@@ -48,9 +50,9 @@ export let action: ActionFunction = async ({ request, params }) => {
           { status: 500 }
         );
       }
-      const patch = await globalThis.folderExtras.readPatch();
-      const song = globalThis.folderSongs.getSingleSongMeta(key, locale, patch);
-      await globalThis.folderSongs.loadSingleSong(locale, song, patch);
+      const patch = await folderExtras.readPatch();
+      const song = folderSongs.getSingleSongMeta(key, locale, patch);
+      await folderSongs.loadSingleSong(locale, song, patch);
       const render = parser.getForRender(text, locale);
       const item: SongToPdf<PdfStyle> = {
         song,
