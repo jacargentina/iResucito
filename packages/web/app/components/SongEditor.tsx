@@ -18,6 +18,7 @@ import SongViewFrame from './SongViewFrame';
 import SongViewPdf from './SongViewPdf';
 import i18n from '@iresucito/translations';
 import { useApp } from '~/app.context';
+import Split from 'react-split';
 
 const SongEditor = () => {
   const txtRef = useRef<any>(null);
@@ -286,14 +287,15 @@ const SongEditor = () => {
           </Button>
         </Menu.Item>
       </Menu>
-      <div
-        style={{
-          flex: 1,
-          display: 'flex',
-          flexDirection: 'row',
-          overflow: 'auto',
-        }}>
-        <div style={{ display: 'flex', flexDirection: 'column', width: '50%' }}>
+      <Split
+        sizes={[25, 75]}
+        className="split"
+        cursor="col-resize"
+        dragInterval={1}
+        snapOffset={30}
+        expandToMin={false}
+        minSize={300}>
+        <div>
           <ApiMessage />
           {app.user ? (
             <>
@@ -301,10 +303,10 @@ const SongEditor = () => {
                 ref={txtRef}
                 onMouseUp={txtPositionEvent}
                 style={{
-                  flex: 1,
                   fontFamily: 'monospace',
                   backgroundColor: '#fcfcfc',
                   width: '100%',
+                  height: '100%',
                   outline: 'none',
                   resize: 'none',
                   border: 0,
@@ -357,10 +359,10 @@ const SongEditor = () => {
             <TextArea
               readOnly
               style={{
-                flex: 1,
                 fontFamily: 'monospace',
                 backgroundColor: '#fcfcfc',
                 width: '100%',
+                height: '100%',
                 outline: 'none',
                 resize: 'none',
                 border: 0,
@@ -372,11 +374,7 @@ const SongEditor = () => {
             />
           )}
         </div>
-        <div
-          style={{
-            width: '50%',
-            overflowY: 'scroll',
-          }}>
+        <div>
           <Tab
             activeIndex={activeTab}
             onTabChange={(_, data) => {
@@ -429,7 +427,7 @@ const SongEditor = () => {
             ]}
           />
         </div>
-      </div>
+      </Split>
     </>
   );
 };

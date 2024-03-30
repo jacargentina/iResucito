@@ -42,6 +42,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-json-editor-ajrm": "^2.5.14",
+    "react-split": "^2.0.14",
     "remix": "^2.8.1",
     "remix-auth": "^3.6.0",
     "remix-auth-form": "^1.4.0",
