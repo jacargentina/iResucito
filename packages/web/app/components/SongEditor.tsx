@@ -10,7 +10,8 @@ import {
   Menu,
 } from 'semantic-ui-react';
 import { useDebouncedCallback } from 'use-debounce';
-import useHotkeys from 'use-hotkeys';
+// TODO No funciona en VITE
+//import useHotkeys from 'use-hotkeys';
 import { EditContext } from './EditContext';
 import ApiMessage from './ApiMessage';
 import SongViewFrame from './SongViewFrame';
@@ -133,28 +134,28 @@ const SongEditor = () => {
     }
   }, [activeTab, debouncedText]);
 
-  useHotkeys(
-    (key) => {
-      switch (key) {
-        case 'ctrl+s':
-          save();
-          break;
-        case 'ctrl+[':
-          previous();
-          break;
-        case 'ctrl+]':
-          next();
-          break;
-        case 'ctrl+e':
-          editMetadata();
-          break;
-        default:
-          break;
-      }
-    },
-    ['ctrl+s', 'ctrl+[', 'ctrl+]', 'ctrl+e'],
-    []
-  );
+  // useHotkeys(
+  //   (key) => {
+  //     switch (key) {
+  //       case 'ctrl+s':
+  //         save();
+  //         break;
+  //       case 'ctrl+[':
+  //         previous();
+  //         break;
+  //       case 'ctrl+]':
+  //         next();
+  //         break;
+  //       case 'ctrl+e':
+  //         editMetadata();
+  //         break;
+  //       default:
+  //         break;
+  //     }
+  //   },
+  //   ['ctrl+s', 'ctrl+[', 'ctrl+]', 'ctrl+e'],
+  //   []
+  // );
 
   return (
     <>

@@ -10,7 +10,8 @@ import {
   Icon,
   Loader,
 } from 'semantic-ui-react';
-import useHotkeys from 'use-hotkeys';
+// TODO no funciona con VITE
+//import useHotkeys from 'use-hotkeys';
 import SongViewPdf from '~/components/SongViewPdf';
 import ApiMessage from '~/components/ApiMessage';
 import SongListResume from '~/components/SongListResume';
@@ -147,19 +148,19 @@ const SongList = (props: { songs: Array<Song> }) => {
     }
   }, [debouncedTerm, songs, filtering, filters, onlyTranslated]);
 
-  useHotkeys(
-    (key) => {
-      switch (key) {
-        case 'ctrl+n':
-          addSong();
-          break;
-        default:
-          break;
-      }
-    },
-    ['ctrl+n', 'r'],
-    []
-  );
+  // useHotkeys(
+  //   (key) => {
+  //     switch (key) {
+  //       case 'ctrl+n':
+  //         addSong();
+  //         break;
+  //       default:
+  //         break;
+  //     }
+  //   },
+  //   ['ctrl+n', 'r'],
+  //   []
+  // );
 
   return (
     <>

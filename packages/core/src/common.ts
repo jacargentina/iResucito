@@ -1,7 +1,7 @@
 // Utilerias comunes (no atadas a react-native ni a NodeJS)
 import langs from 'langs';
 import countries from 'country-list';
-import * as _ from 'lodash';
+import _ from 'lodash';
 import i18n from '@iresucito/translations';
 
 export type PickerLocale = {
@@ -522,22 +522,34 @@ export const getPatchStats = (patch: SongIndexPatch): Array<PatchStats> => {
   });
   return stats;
 };
+import esLocale from '../assets/songs/es.json';
+import enLocale from '../assets/songs/en.json';
+import itLocale from '../assets/songs/it.json';
+import deATLocale from '../assets/songs/de-AT.json';
+import deLocale from '../assets/songs/de.json';
+import frLocale from '../assets/songs/fr.json';
+import ltLTLocale from '../assets/songs/lt-LT.json';
+import plLocale from '../assets/songs/pl.json';
+import ptBRLocale from '../assets/songs/pt-BR.json';
+import ptPTLocale from '../assets/songs/pt-PT.json';
+import ruLocale from '../assets/songs/ru.json';
+import swTZLocale from '../assets/songs/sw-TZ.json';
 
 export const loadAllLocales = (): SongsSourceData => {
   var allLocales: SongsSourceData = {};
 
-  allLocales['es'] = require('../assets/songs/es.json');
-  allLocales['en'] = require('../assets/songs/en.json');
-  allLocales['it'] = require('../assets/songs/it.json');
-  allLocales['de-AT'] = require('../assets/songs/de-AT.json');
-  allLocales['de'] = require('../assets/songs/de.json');
-  allLocales['fr'] = require('../assets/songs/fr.json');
-  allLocales['lt-LT'] = require('../assets/songs/lt-LT.json');
-  allLocales['pl'] = require('../assets/songs/pl.json');
-  allLocales['pt-BR'] = require('../assets/songs/pt-BR.json');
-  allLocales['pt-PT'] = require('../assets/songs/pt-PT.json');
-  allLocales['ru'] = require('../assets/songs/ru.json');
-  allLocales['sw-TZ'] = require('../assets/songs/sw-TZ.json');
+  allLocales['es'] = esLocale;
+  allLocales['en'] = enLocale;
+  allLocales['it'] = itLocale;
+  allLocales['de-AT'] = deATLocale;
+  allLocales['de'] = deLocale;
+  allLocales['fr'] = frLocale;
+  allLocales['lt-LT'] = ltLTLocale;
+  allLocales['pl'] = plLocale;
+  allLocales['pt-BR'] = ptBRLocale;
+  allLocales['pt-PT'] = ptPTLocale;
+  allLocales['ru'] = ruLocale;
+  allLocales['sw-TZ'] = swTZLocale;
 
   return allLocales;
 };

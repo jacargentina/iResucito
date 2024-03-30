@@ -987,6 +987,12 @@ export const ListPDFGenerator = async (
   return '';
 };
 
+// TODO
+// con require() no es posible
+// ver porque no funciona con import
+import regular from '../assets/fonts/FranklinGothicRegular.ttf';
+import medium from '../assets/fonts/FranklinGothicMedium.ttf';
+
 export async function generatePDF(
   songsToPdf: Array<SongToPdf<PdfStyle>>,
   opts: SongStyles<PdfStyle>,
@@ -996,12 +1002,7 @@ export async function generatePDF(
   const folder = os.tmpdir();
   const pdfPath = `${folder}/${filename}.pdf`;
 
-  var writer = new PdfWriter(
-    __dirname + '/../assets/fonts/FranklinGothicRegular.ttf',
-    __dirname + '/../assets/fonts/FranklinGothicMedium.ttf',
-    new Base64Encode(),
-    opts
-  );
+  var writer = new PdfWriter(regular, medium, new Base64Encode(), opts);
   const base64 = await SongPDFGenerator(songsToPdf, opts, writer, addIndex);
   if (base64) {
     fs.writeFileSync(pdfPath, Buffer.from(base64, 'base64'));
