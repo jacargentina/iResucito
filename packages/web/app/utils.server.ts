@@ -7,6 +7,7 @@ import {
 } from '@iresucito/core';
 import { Low, Adapter } from 'lowdb';
 import send from 'gmail-send';
+export { readFileSync } from 'fs';
 
 type DbType = {
   users: Array<{

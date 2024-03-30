@@ -4,7 +4,7 @@ import { ActionFunction, json } from '@remix-run/node';
 import { getSession } from '~/session.server';
 import { PdfStyle, PdfStyles } from '@iresucito/core';
 import { SongToPdf, generatePDF } from '@iresucito/core/pdf';
-import { folderExtras, folderSongs } from '~/utils.server';
+import { readFileSync, folderExtras, folderSongs } from '~/utils.server';
 
 export let action: ActionFunction = async ({ request, params }) => {
   const session = await getSession(request.headers.get('Cookie'));
@@ -63,7 +63,7 @@ export let action: ActionFunction = async ({ request, params }) => {
     }
     const pdfPath = await generatePDF(items, PdfStyles, filename, addIndex);
     if (pdfPath) {
-      const pdfBuffer = require('fs').readFileSync(pdfPath);
+      const pdfBuffer = readFileSync(pdfPath);
       return new Response(pdfBuffer, {
         status: 200,
         headers: {

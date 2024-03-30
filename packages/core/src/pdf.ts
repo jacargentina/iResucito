@@ -1,4 +1,5 @@
 import * as fs from 'fs';
+import * as path from 'path';
 import * as os from 'os';
 import normalize from 'normalize-strings';
 import PDFDocument from 'pdfkit';
@@ -987,11 +988,15 @@ export const ListPDFGenerator = async (
   return '';
 };
 
-// TODO
-// con require() no es posible
-// ver porque no funciona con import
-import regular from '../assets/fonts/FranklinGothicRegular.ttf';
-import medium from '../assets/fonts/FranklinGothicMedium.ttf';
+const regular = new URL(
+  '../assets/fonts/FranklinGothicRegular.ttf',
+  import.meta.url
+);
+
+const medium = new URL(
+  '../assets/fonts/FranklinGothicMedium.ttf',
+  import.meta.url
+);
 
 export async function generatePDF(
   songsToPdf: Array<SongToPdf<PdfStyle>>,
@@ -1002,7 +1007,12 @@ export async function generatePDF(
   const folder = os.tmpdir();
   const pdfPath = `${folder}/${filename}.pdf`;
 
-  var writer = new PdfWriter(regular, medium, new Base64Encode(), opts);
+  var writer = new PdfWriter(
+    Buffer.from(fs.readFileSync(regular)),
+    Buffer.from(fs.readFileSync(medium)),
+    new Base64Encode(),
+    opts
+  );
   const base64 = await SongPDFGenerator(songsToPdf, opts, writer, addIndex);
   if (base64) {
     fs.writeFileSync(pdfPath, Buffer.from(base64, 'base64'));
