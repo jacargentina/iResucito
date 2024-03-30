@@ -14,6 +14,7 @@ export class WebStyle {
 }
 
 export const WebStyles: SongStyles<WebStyle> = {
+  empty: {},
   title: { color: '#ff0000', fontSize: FontSizes.Titulo },
   source: { color: '#777777', fontSize: FontSizes.Fuente, marginBottom: 16 },
   clampLine: { color: '#ff0000', fontSize: FontSizes.Notas, marginBottom: 16 },

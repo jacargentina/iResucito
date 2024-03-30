@@ -5,7 +5,7 @@ import { EditContext } from './EditContext';
 import i18n from '@iresucito/translations';
 import { useApp } from '~/app.context';
 
-pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.js';
+pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.mjs';
 
 const SongViewPdf = (props: {
   url: string | null;
@@ -16,7 +16,7 @@ const SongViewPdf = (props: {
 
   const myRef = useRef<any>();
   const [loading, setLoading] = useState(false);
-  const [pdf, setPdf] = useState<any>();
+  const [pdf, setPdf] = useState<pdfjsLib.PDFDocumentProxy>();
   const [numPages, setNumPages] = useState<number>();
   const [currPage, setCurrPage] = useState(0);
 
@@ -28,26 +28,25 @@ const SongViewPdf = (props: {
   useEffect(() => {
     if (url !== null) {
       setLoading(true);
-      // import('pdfjs-dist').then((pdfjsLib) => {
-        const loadingTask = pdfjsLib.getDocument(url);
-        loadingTask.promise
-          .then((doc) => {
-            setPdf(doc);
-            setCurrPage(1);
-            setNumPages(doc.numPages);
-            setLoading(false);
-          })
-          .catch((err) => {
-            console.log('error pdf!', err);
-            setLoading(false);
-          });
-      // });
+      const loadingTask = pdfjsLib.getDocument(url);
+      loadingTask.promise
+        .then((doc) => {
+          setPdf(doc);
+          setCurrPage(1);
+          setNumPages(doc.numPages);
+          setLoading(false);
+        })
+        .catch((err) => {
+          console.log('error pdf!', err);
+          setLoading(false);
+        });
     }
   }, [url]);
 
   useEffect(() => {
-    if (pdf && currPage > 0) {
-      pdf.getPage(currPage).then((page) => {
+    const buildPdf = async () => {
+      if (pdf && currPage > 0) {
+        const page = await pdf.getPage(currPage);
         const viewport = page.getViewport({ scale: 1.3 });
         const canvas = myRef.current;
 
@@ -59,8 +58,9 @@ const SongViewPdf = (props: {
           canvasContext: context,
           viewport,
         });
-      });
-    }
+      }
+    };
+    buildPdf().catch(console.log);
   }, [pdf, currPage]);
 
   const savedSettings = localStorage.getItem('pdfExportOptions');
