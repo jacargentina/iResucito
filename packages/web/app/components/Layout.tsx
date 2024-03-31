@@ -8,7 +8,7 @@ const Layout = (props: any) => {
   const { children } = props;
 
   return (
-    <div className="container">
+    <>
       <Menu size="mini" inverted attached>
         <Link to="/list">
           <Menu.Item header>
@@ -32,7 +32,7 @@ const Layout = (props: any) => {
         </Menu.Menu>
       </Menu>
       {children}
-    </div>
+    </>
   );
 };
 

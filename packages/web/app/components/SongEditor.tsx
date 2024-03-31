@@ -288,7 +288,7 @@ const SongEditor = () => {
         </Menu.Item>
       </Menu>
       <Split
-        sizes={[25, 75]}
+        sizes={[40, 60]}
         className="split"
         cursor="col-resize"
         dragInterval={1}
@@ -374,59 +374,57 @@ const SongEditor = () => {
             />
           )}
         </div>
-        <div>
-          <Tab
-            activeIndex={activeTab}
-            onTabChange={(_, data) => {
-              setActiveTab(data.activeIndex);
-            }}
-            menu={{ size: 'mini', pointing: true }}
-            panes={[
-              {
-                menuItem: 'HTML',
-                render: () => {
-                  return (
-                    <Tab.Pane
-                      style={{
-                        fontFamily: 'Franklin Gothic Medium',
-                        border: '0px transparent',
-                      }}>
-                      <SongViewFrame
-                        title={songFile && songFile.titulo}
-                        source={songFile && songFile.fuente}
-                        text={debouncedText}
-                      />
-                    </Tab.Pane>
-                  );
-                },
+        <Tab
+          activeIndex={activeTab}
+          onTabChange={(_, data) => {
+            setActiveTab(data.activeIndex);
+          }}
+          menu={{ size: 'mini', pointing: true }}
+          panes={[
+            {
+              menuItem: 'HTML',
+              render: () => {
+                return (
+                  <Tab.Pane
+                    style={{
+                      height: 'calc(100% - 45px)',
+                      overflow: 'scroll',
+                      border: '0px transparent',
+                    }}>
+                    <SongViewFrame
+                      title={songFile && songFile.titulo}
+                      source={songFile && songFile.fuente}
+                      text={debouncedText}
+                    />
+                  </Tab.Pane>
+                );
               },
-              {
-                menuItem: 'PDF',
-                render: () => {
-                  return (
-                    <Tab.Pane
-                      style={{
-                        minHeight: '50vh',
-                        border: '0px transparent',
-                      }}>
-                      <SongViewPdf
-                        url={pdfUrl}
-                        settingsChanged={() => previewPdf(debouncedText)}
-                      />
-                      {apiResult &&
-                        apiResult.path == `/pdf/${editSong.key}` && (
-                          <Message negative>
-                            <Message.Header>Error</Message.Header>
-                            <p>{apiResult.error}</p>
-                          </Message>
-                        )}
-                    </Tab.Pane>
-                  );
-                },
+            },
+            {
+              menuItem: 'PDF',
+              render: () => {
+                return (
+                  <Tab.Pane
+                    style={{
+                      minHeight: '50vh',
+                      border: '0px transparent',
+                    }}>
+                    <SongViewPdf
+                      url={pdfUrl}
+                      settingsChanged={() => previewPdf(debouncedText)}
+                    />
+                    {apiResult && apiResult.path == `/pdf/${editSong.key}` && (
+                      <Message negative>
+                        <Message.Header>Error</Message.Header>
+                        <p>{apiResult.error}</p>
+                      </Message>
+                    )}
+                  </Tab.Pane>
+                );
               },
-            ]}
-          />
-        </div>
+            },
+          ]}
+        />
       </Split>
     </>
   );
