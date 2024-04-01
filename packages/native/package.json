@@ -82,7 +82,7 @@
     "typescript": "^5.3.3",
     "use-debounce": "^10.0.0",
     "use-undo": "^1.1.1",
-    "zustand": "^4.5.2"
+    "zustand": "^5.0.0-alpha.6"
   },
   "devDependencies": {
     "@babel/core": "^7.24.0",

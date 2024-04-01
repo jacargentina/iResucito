@@ -27,12 +27,12 @@ const SongViewLines = (props: {
     var itemStyle = { ...it.style };
     if (itemStyle.fontSize) {
       itemStyle.fontSize = itemStyle.fontSize * zoom;
-      itemStyle.lineHeight = itemStyle.fontSize;
+      //itemStyle.lineHeight = itemStyle.fontSize;
     }
     var prefijoStyle = { ...(it.prefijoStyle || it.style) };
     if (prefijoStyle.fontSize) {
       prefijoStyle.fontSize = prefijoStyle.fontSize * zoom;
-      prefijoStyle.lineHeight = prefijoStyle.fontSize;
+      //prefijoStyle.lineHeight = prefijoStyle.fontSize;
     }
 
     var sufijo: any = null;

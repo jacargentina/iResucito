@@ -71,8 +71,9 @@ export const getDefaultLocale = (): string => {
 
 var isTablet = Device.deviceType == Device.DeviceType.TABLET;
 var fontSizeTitulo = isTablet ? 44 : 22;
-var fontSizeTexto = isTablet ? 20 : 15;
-var fontSizeNotas = isTablet ? 17 : 12.5;
+var fontSizeNormal = isTablet ? 20 : 14;
+var fontSizeNotas = isTablet ? 17 : 10.7;
+var fontSizeAsamblea = isTablet ? 22 : 17;
 
 export type NativeStyle = TextStyle & ViewStyle;
 
@@ -87,28 +88,30 @@ export const NativeStyles: SongStyles<NativeStyle> = {
   source: {
     fontFamily: 'Franklin Gothic Medium',
     color: '#777777',
-    fontSize: fontSizeTexto - 1,
-    marginBottom: 13,
+    fontSize: fontSizeNormal - 1,
+    marginBottom: 4,
   },
   clampLine: {
     fontFamily: 'Franklin Gothic Medium',
     color: '#ff0000',
-    fontSize: fontSizeNotas,
+    fontSize: fontSizeNotas + 1,
+    marginBottom: 4,
   },
   indicator: {
     fontFamily: 'Franklin Gothic Medium',
     color: '#ff0000',
-    fontSize: fontSizeTexto,
+    fontSize: fontSizeNormal,
   },
   notesLine: {
-    fontFamily: 'Franklin Gothic Medium',
+    fontFamily: 'Franklin Gothic Regular',
     color: '#ff0000',
     fontSize: fontSizeNotas,
-    marginLeft: 4,
+    marginLeft: 6,
   },
   specialNoteTitle: {
     fontFamily: 'Franklin Gothic Medium',
     color: '#ff0000',
+    fontSize: fontSizeNotas + 1,
   },
   specialNote: {
     fontFamily: 'Franklin Gothic Medium',
@@ -116,24 +119,35 @@ export const NativeStyles: SongStyles<NativeStyle> = {
     color: '#444444',
   },
   normalLine: {
-    fontFamily: 'Franklin Gothic Medium',
+    fontFamily: 'Franklin Gothic Regular',
     color: '#000000',
-    fontSize: fontSizeTexto,
-    marginBottom: 8,
+    fontSize: fontSizeNormal,
   },
   normalPrefix: {
-    fontFamily: 'Franklin Gothic Medium',
+    fontFamily: 'Franklin Gothic Regular',
     color: '#777777',
-    fontSize: fontSizeTexto,
+    fontSize: fontSizeNormal,
   },
   pageNumber: {
     fontFamily: 'Franklin Gothic Medium',
     color: '#000000',
-    fontSize: fontSizeTexto,
+    fontSize: fontSizeNormal,
   },
-  pageFooter: {},
-  assemblyLine: {},
-  assemblyPrefix: {},
+  pageFooter: {
+    fontFamily: 'Franklin Gothic Medium',
+    color: '#777777',
+    fontSize: fontSizeNormal - 1,
+  },
+  assemblyLine: {
+    fontFamily: 'Franklin Gothic Medium',
+    color: '#000000',
+    fontSize: fontSizeAsamblea,
+  },
+  assemblyPrefix: {
+    fontFamily: 'Franklin Gothic Medium',
+    color: '#000000',
+    fontSize: fontSizeAsamblea,
+  },
   marginLeft: 0,
   marginTop: 0,
   widthHeightPixels: 0,
