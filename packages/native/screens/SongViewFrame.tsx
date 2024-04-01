@@ -1,10 +1,5 @@
 import { useState } from 'react';
-import {
-  Dimensions,
-  ScrollView,
-  GestureResponderEvent,
-  TextStyle,
-} from 'react-native';
+import { Dimensions, ScrollView, GestureResponderEvent } from 'react-native';
 import {
   Box,
   HStack,
@@ -17,11 +12,11 @@ import color from 'color';
 import { colors, SongLine } from '@iresucito/core';
 import i18n from '@iresucito/translations';
 import { useSettingsStore } from '../hooks';
-import { NativeParser, NativeStyles } from '../util';
+import { NativeParser, NativeStyle, NativeStyles } from '../util';
 import { MinusIcon, PlusIcon } from 'lucide-react-native';
 
 const SongViewLines = (props: {
-  lines: Array<SongLine<TextStyle>>;
+  lines: Array<SongLine<NativeStyle>>;
   onPress: (e: GestureResponderEvent) => void;
   zoom: number;
 }) => {
@@ -109,11 +104,13 @@ export const SongViewFrame = (props: any) => {
   };
 
   var titleStyle = { ...NativeStyles.title };
-  titleStyle.fontSize = titleStyle.fontSize * zoomLevel;
+  if (titleStyle.fontSize)
+    titleStyle.fontSize = titleStyle.fontSize * zoomLevel;
   titleStyle.lineHeight = titleStyle.fontSize;
 
   var sourceStyle = { ...NativeStyles.source };
-  sourceStyle.fontSize = sourceStyle.fontSize * zoomLevel;
+  if (sourceStyle.fontSize)
+    sourceStyle.fontSize = sourceStyle.fontSize * zoomLevel;
   sourceStyle.lineHeight = sourceStyle.fontSize;
 
   return (

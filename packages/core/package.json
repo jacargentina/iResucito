@@ -35,7 +35,10 @@
         "types": "./dist/types/src/generatepdf.d.ts",
         "default": "./dist/cjs/src/generatepdf.js"
       }
-    }
+    },
+    "./assets/*.json": "./dist/cjs/assets/*.json",
+    "./assets/songs/*.json": "./dist/cjs/assets/songs/*.json",
+    "./assets/fonts/*.ttf": "./assets/fonts/*.ttf"
   },
   "dependencies": {
     "@types/country-list": "^2.1.2",
