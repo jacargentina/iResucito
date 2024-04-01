@@ -4,6 +4,11 @@ import countries from 'country-list';
 import _ from 'lodash';
 import i18n from '@iresucito/translations';
 
+export type SongToPdf<T> = {
+  song: Song;
+  render: SongRendering<T>;
+};
+
 export type PickerLocale = {
   label: string;
   value: string;
@@ -586,4 +591,63 @@ export const PdfStyles: SongStyles<PdfStyle> = {
   indexMarginLeft: 25,
   songIndicatorSpacing: 21,
   disablePageNumbers: false,
+};
+
+export const getLocalizedListItem = (listKey: string): string => {
+  return i18n.t(`list_item.${listKey}`);
+};
+
+export const getEsSalmoList = (
+  listKey:
+    | keyof LibreListForUI
+    | keyof PalabraListForUI
+    | keyof EucaristiaListForUI
+): boolean => {
+  return listKey === 'comunion-pan' || listKey === 'comunion-caliz';
+};
+
+export const getEsSalmo = (
+  listKey:
+    | keyof LibreListForUI
+    | keyof PalabraListForUI
+    | keyof EucaristiaListForUI
+): boolean => {
+  return (
+    listKey === 'entrada' ||
+    listKey === '1-salmo' ||
+    listKey === '2-salmo' ||
+    listKey === '3-salmo' ||
+    listKey === 'paz' ||
+    listKey === 'salida'
+  );
+};
+
+export const getListTitleValue = (
+  list: ListForUI,
+  key:
+    | keyof LibreListForUI
+    | keyof PalabraListForUI
+    | keyof EucaristiaListForUI,
+  removeIfEmpty: boolean = false
+): ListTitleValue | null => {
+  if (list.hasOwnProperty(key)) {
+    var valor = (list as any)[key];
+    if (valor && getEsSalmo(key)) {
+      valor = [valor.titulo];
+    } else if (valor && getEsSalmoList(key)) {
+      valor = valor.map((song: Song) => song.titulo);
+    } else if (valor) {
+      valor = [valor];
+    } else {
+      valor = ['-'];
+    }
+    if (!valor && removeIfEmpty) {
+      return null;
+    }
+    return {
+      title: getLocalizedListItem(key),
+      value: valor,
+    };
+  }
+  return null;
 };

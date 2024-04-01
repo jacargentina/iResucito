@@ -1,5 +1,5 @@
 // Utilerias atadas a react-native
-import { StyleSheet, TextStyle } from 'react-native';
+import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 import { getLocales } from 'expo-localization';
 import * as FileSystem from 'expo-file-system';
 import * as Device from 'expo-device';
@@ -74,7 +74,9 @@ var fontSizeTitulo = isTablet ? 44 : 22;
 var fontSizeTexto = isTablet ? 20 : 15;
 var fontSizeNotas = isTablet ? 17 : 12.5;
 
-export const stylesObj: SongStyles<TextStyle> = {
+export type NativeStyle = TextStyle | ViewStyle;
+
+export const NativeStyles: SongStyles<NativeStyle> = {
   title: {
     fontFamily: 'Franklin Gothic Medium',
     color: '#ff0000',
@@ -143,9 +145,8 @@ export const stylesObj: SongStyles<TextStyle> = {
   bookTitle: {},
   indexText: {},
   disablePageNumbers: false,
+  empty: {},
 };
-
-export const NativeStyles = StyleSheet.create(stylesObj);
 
 class NativeSongsExtras implements SongsExtras {
   async readPatch(): Promise<SongIndexPatch> {

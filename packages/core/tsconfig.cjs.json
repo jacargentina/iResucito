@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "outDir": "dist/cjs",
+    "composite": true,
+    "jsx": "react-jsx",
+    "resolveJsonModule": true,
+    "esModuleInterop": true
+  },
+  "exclude": ["src/generatepdf.ts", "src/songToPdf.ts"],
+  "include": ["src/*.ts", "assets/**/*.json"]
+}

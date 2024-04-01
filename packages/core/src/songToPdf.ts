@@ -4,9 +4,10 @@ import {
   SongsParser,
   PdfStyle,
   PdfStyles,
+  SongToPdf,
   SongsProcessor,
 } from './';
-import { generatePDF, SongToPdf } from './pdf';
+import { generatePDF } from './generatepdf';
 import open from 'open';
 import { osLocale } from 'os-locale';
 

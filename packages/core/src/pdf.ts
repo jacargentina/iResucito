@@ -1,22 +1,14 @@
-import * as fs from 'fs';
-import * as path from 'path';
-import * as os from 'os';
 import normalize from 'normalize-strings';
 import PDFDocument from 'pdfkit';
-import { Base64Encode } from 'base64-stream';
 import {
-  EucaristiaListForUI,
-  LibreListForUI,
-  ListForUI,
   ListTitleValue,
   ListToPdf,
-  PalabraListForUI,
   PdfStyle,
-  Song,
   SongIndicator,
   SongLine,
-  SongRendering,
   SongStyles,
+  SongToPdf,
+  getListTitleValue,
   liturgicOrder,
   liturgicTimes,
   wayStages,
@@ -126,65 +118,6 @@ export const getGroupedByLiturgicOrder = (
   }, initial);
 };
 
-export const getLocalizedListItem = (listKey: string): string => {
-  return i18n.t(`list_item.${listKey}`);
-};
-
-export const getEsSalmo = (
-  listKey:
-    | keyof LibreListForUI
-    | keyof PalabraListForUI
-    | keyof EucaristiaListForUI
-): boolean => {
-  return (
-    listKey === 'entrada' ||
-    listKey === '1-salmo' ||
-    listKey === '2-salmo' ||
-    listKey === '3-salmo' ||
-    listKey === 'paz' ||
-    listKey === 'salida'
-  );
-};
-
-export const getEsSalmoList = (
-  listKey:
-    | keyof LibreListForUI
-    | keyof PalabraListForUI
-    | keyof EucaristiaListForUI
-): boolean => {
-  return listKey === 'comunion-pan' || listKey === 'comunion-caliz';
-};
-
-export const getListTitleValue = (
-  list: ListForUI,
-  key:
-    | keyof LibreListForUI
-    | keyof PalabraListForUI
-    | keyof EucaristiaListForUI,
-  removeIfEmpty: boolean = false
-): ListTitleValue | null => {
-  if (list.hasOwnProperty(key)) {
-    var valor = (list as any)[key];
-    if (valor && getEsSalmo(key)) {
-      valor = [valor.titulo];
-    } else if (valor && getEsSalmoList(key)) {
-      valor = valor.map((song: Song) => song.titulo);
-    } else if (valor) {
-      valor = [valor];
-    } else {
-      valor = ['-'];
-    }
-    if (!valor && removeIfEmpty) {
-      return null;
-    }
-    return {
-      title: getLocalizedListItem(key),
-      value: valor,
-    };
-  }
-  return null;
-};
-
 export type ExportToPdfLimits = {
   x: number;
   y: number;
@@ -199,11 +132,6 @@ export type ExportToPdfLineText = {
   endY: number;
   text: string;
   color: any;
-};
-
-export type SongToPdf<T> = {
-  song: Song;
-  render: SongRendering<T>;
 };
 
 export type ListSongPos = {
@@ -987,35 +915,3 @@ export const ListPDFGenerator = async (
   }
   return '';
 };
-
-const regular = new URL(
-  '../assets/fonts/FranklinGothicRegular.ttf',
-  import.meta.url
-);
-
-const medium = new URL(
-  '../assets/fonts/FranklinGothicMedium.ttf',
-  import.meta.url
-);
-
-export async function generatePDF(
-  songsToPdf: Array<SongToPdf<PdfStyle>>,
-  opts: SongStyles<PdfStyle>,
-  filename: string,
-  addIndex: boolean
-): Promise<string | undefined> {
-  const folder = os.tmpdir();
-  const pdfPath = `${folder}/${filename}.pdf`;
-
-  var writer = new PdfWriter(
-    Buffer.from(fs.readFileSync(regular)),
-    Buffer.from(fs.readFileSync(medium)),
-    new Base64Encode(),
-    opts
-  );
-  const base64 = await SongPDFGenerator(songsToPdf, opts, writer, addIndex);
-  if (base64) {
-    fs.writeFileSync(pdfPath, Buffer.from(base64, 'base64'));
-    return pdfPath;
-  }
-}

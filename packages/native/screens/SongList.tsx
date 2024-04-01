@@ -30,13 +30,13 @@ import {
 import { SongListItem } from './SongListItem';
 import { SongsStackParamList } from '../navigation';
 import {
-  ExportToPdfOptions,
   Song,
   SongToPdf,
-  defaultExportToPdfOptions,
+  PdfStyles,
+  PdfStyle,
+  SongsParser,
 } from '@iresucito/core';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { NativeParser } from '../util';
 import { generateSongPDF } from '../pdf';
 import { useAndroidBackHandler } from 'react-navigation-backhandler';
 
@@ -138,29 +138,28 @@ export const SongList = (props: {
             onPress={async () => {
               if (enabled) {
                 if (selection.length > 0) {
-                  var items: Array<SongToPdf> = selection.map((key) => {
-                    var s = songs.find((s) => s.key == key) as Song;
-                    return {
-                      song: s,
-                      render: NativeParser.getForRender(
-                        s.fullText,
-                        i18n.locale
-                      ),
-                    };
-                  });
+                  var parser = new SongsParser(PdfStyles);
+                  var items: Array<SongToPdf<PdfStyle>> = selection.map(
+                    (key) => {
+                      var s = songs.find((s) => s.key == key) as Song;
+                      return {
+                        song: s,
+                        render: parser.getForRender(s.fullText, i18n.locale),
+                      };
+                    }
+                  );
                   setLoading({
                     isLoading: true,
                     text: i18n.t('ui.export.processing songs', {
                       total: items.length,
                     }),
                   });
-                  const exportOpts: ExportToPdfOptions = {
-                    ...defaultExportToPdfOptions,
-                    disablePageNumbers: true,
-                  };
                   const result = await generateSongPDF(
                     items,
-                    exportOpts,
+                    {
+                      ...PdfStyles,
+                      disablePageNumbers: true,
+                    },
                     `iResucitó-songsSelection-${i18n.locale}`,
                     false
                   );

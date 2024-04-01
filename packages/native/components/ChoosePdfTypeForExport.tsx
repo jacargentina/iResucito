@@ -12,8 +12,7 @@ import {
   useMedia,
 } from '@gluestack-ui/themed';
 import i18n from '@iresucito/translations';
-import { defaultExportToPdfOptions, SongToPdf } from '@iresucito/core';
-import { NativeParser } from '../util';
+import { PdfStyle, PdfStyles, SongToPdf, SongsParser } from '@iresucito/core';
 import { generateSongPDF } from '../pdf';
 import { SongsStackParamList } from '../navigation';
 import { useSongsStore, useSongsSelection } from '../hooks';
@@ -61,16 +60,16 @@ export const ChoosePdfTypeForExport = (props: {
           onPress={async () => {
             onClose();
             const localeNoCountry = i18n.locale.split('-')[0];
-
             const songToExport = songs.filter(
               (s) =>
                 s.files.hasOwnProperty(i18n.locale) ||
                 s.files.hasOwnProperty(localeNoCountry)
             );
-            var items: Array<SongToPdf> = songToExport.map((s) => {
+            var parser = new SongsParser(PdfStyles);
+            var items: Array<SongToPdf<PdfStyle>> = songToExport.map((s) => {
               return {
                 song: s,
-                render: NativeParser.getForRender(s.fullText, i18n.locale),
+                render: parser.getForRender(s.fullText, i18n.locale),
               };
             });
             setLoading({
@@ -81,7 +80,7 @@ export const ChoosePdfTypeForExport = (props: {
             });
             const result = await generateSongPDF(
               items,
-              defaultExportToPdfOptions,
+              PdfStyles,
               `iResucitó-${i18n.locale}`,
               true
             );

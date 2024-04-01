@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/types",
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+  },
+  "include": ["src/*.ts", "assets/**/*.json"]
+}

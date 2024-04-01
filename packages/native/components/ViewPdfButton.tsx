@@ -1,11 +1,6 @@
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import i18n from '@iresucito/translations';
-import {
-  defaultExportToPdfOptions,
-  ExportToPdfOptions,
-  SongToPdf,
-} from '@iresucito/core';
-import { NativeParser } from '../util';
+import { PdfStyles, SongsParser } from '@iresucito/core';
 import { generateSongPDF } from '../pdf';
 import { SongsStackParamList, ListsStackParamList } from '../navigation';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -33,23 +28,24 @@ export const ViewPdfButton = () => {
       iconName="FileTextIcon"
       onPress={async () => {
         const { fullText } = song;
-        const render = NativeParser.getForRender(
+        const parser = new SongsParser(PdfStyles);
+        const render = parser.getForRender(
           fullText,
           i18n.locale,
           song.transportTo
         );
-        const item: SongToPdf = {
-          song,
-          render,
-        };
-        var exportOpts: ExportToPdfOptions = {
-          ...defaultExportToPdfOptions,
-          disablePageNumbers: true,
-        };
         const result = await generateSongPDF(
-          [item],
-          exportOpts,
-          item.song.titulo,
+          [
+            {
+              song,
+              render,
+            },
+          ],
+          {
+            ...PdfStyles,
+            disablePageNumbers: true,
+          },
+          song.titulo,
           false
         );
         navigation.navigate('PDFViewer', {
