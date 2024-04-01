@@ -3,8 +3,14 @@
 import * as fs from 'fs';
 import * as os from 'os';
 import { Base64Encode } from 'base64-stream';
-import { PdfStyle, SongStyles, SongToPdf } from './common';
-import { PdfWriter, SongPDFGenerator } from './pdf';
+import {
+  PdfWriter,
+  SongPDFGenerator,
+  PdfStyle,
+  SongStyles,
+  SongToPdf,
+} from './common';
+
 import PDFDocument from 'pdfkit';
 
 const regular = new URL(
