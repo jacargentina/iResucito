@@ -5,6 +5,7 @@ import * as os from 'os';
 import { Base64Encode } from 'base64-stream';
 import { PdfStyle, SongStyles, SongToPdf } from './common';
 import { PdfWriter, SongPDFGenerator } from './pdf';
+import PDFDocument from 'pdfkit';
 
 const regular = new URL(
   '../assets/fonts/FranklinGothicRegular.ttf',
@@ -26,6 +27,7 @@ export async function generatePDF(
   const pdfPath = `${folder}/${filename}.pdf`;
 
   var writer = new PdfWriter(
+    PDFDocument,
     Buffer.from(fs.readFileSync(regular)),
     Buffer.from(fs.readFileSync(medium)),
     new Base64Encode(),

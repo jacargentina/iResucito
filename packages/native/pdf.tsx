@@ -10,6 +10,11 @@ import {
   ListPDFGenerator,
 } from '@iresucito/core';
 import Base64Encode from './base64encode';
+// Por errores de compilacion ya que 
+// pdfkit es modulo esm para NodeJS y NO para expo/react-native
+// se utiliza mediante require la libreria "standalone" que se puede
+// cargar sin problemas
+const PDFDocument = require('pdfkit/js/pdfkit.standalone');
 const Buffer = require('buffer').Buffer;
 
 export type GeneratePDFResult = {
@@ -38,6 +43,7 @@ export async function generateSongPDF(
     encoding: 'base64',
   });
   var writer = new PdfWriter(
+    PDFDocument,
     Buffer.from(regular, 'base64'),
     Buffer.from(medium, 'base64'),
     new Base64Encode({}),
@@ -67,6 +73,7 @@ export async function generateListPDF(
     encoding: 'base64',
   });
   var writer = new PdfWriter(
+    PDFDocument,
     Buffer.from(regular, 'base64'),
     Buffer.from(medium, 'base64'),
     new Base64Encode({}),

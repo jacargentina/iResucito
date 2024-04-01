@@ -1,5 +1,5 @@
 import normalize from 'normalize-strings';
-import PDFDocument from 'pdfkit';
+import type PDFDocument from 'pdfkit';
 import {
   ListTitleValue,
   ListToPdf,
@@ -158,7 +158,11 @@ export class PdfWriter {
   heightOfPageNumbers: number;
   widthOfIndexSpacing: number;
 
+  // classRef: se recibe el tipo especifico a ser instanciado
+  // desde Node/Remix: PDFDocument desde pdfkit
+  // desde Expo/React-Native: PDFDocument desde pdfkit-standalone
   constructor(
+    classRef: typeof PDFDocument,
     regularFont: PDFKit.Mixins.PDFFontSource | null,
     mediumFont: PDFKit.Mixins.PDFFontSource | null,
     base64Transform: any,
@@ -176,7 +180,7 @@ export class PdfWriter {
     this.heightOfPageNumbers = 0;
     this.widthOfIndexSpacing = 0;
     this.addExtraMargin = false;
-    this.doc = new PDFDocument({
+    this.doc = new classRef({
       bufferPages: true,
       autoFirstPage: false,
       margins: {
