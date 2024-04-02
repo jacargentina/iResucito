@@ -944,7 +944,7 @@ export class PdfWriter {
     this.checkLimits(2);
     this.writeText(
       title.toUpperCase(),
-      this.opts.indexText.color,
+      this.opts.indexTitle.color,
       this.opts.indexText.font,
       this.opts.indexText.fontSize
     );
@@ -1487,10 +1487,10 @@ export const PdfStyles: SongStyles<PdfStyle> = {
   assemblyPrefix: { color: '#777777', font: 'medium', fontSize: 11 },
   pageNumber: { color: '#000000', font: 'regular', fontSize: 11 },
   pageFooter: { color: '#777777', font: 'regular', fontSize: 10 },
-  indexTitle: { color: '#000000', font: 'medium', fontSize: 16 },
   bookTitle: { color: '#ff0000', font: 'medium', fontSize: 80 },
   bookSubtitle: { color: '#000000', font: 'regular', fontSize: 14 },
-  indexText: { color: '#ff0000', font: 'medium', fontSize: 11 },
+  indexTitle: { color: '#ff0000', font: 'medium', fontSize: 16 },
+  indexText: { color: '#000000', font: 'regular', fontSize: 9.4 },
   marginLeft: 25,
   marginTop: 19,
   widthHeightPixels: 598, // 21,1 cm

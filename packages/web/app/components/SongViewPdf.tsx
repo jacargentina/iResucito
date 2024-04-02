@@ -47,7 +47,7 @@ const SongViewPdf = (props: {
     const buildPdf = async () => {
       if (pdf && currPage > 0) {
         const page = await pdf.getPage(currPage);
-        const viewport = page.getViewport({ scale: 1.3 });
+        const viewport = page.getViewport({ scale: 1.2 });
         const canvas = myRef.current;
 
         const context = canvas.getContext('2d');
@@ -133,10 +133,19 @@ const SongViewPdf = (props: {
         <Loader active inline="centered" size="large" inverted={false} />
       )}
       {!loading && currPage > 0 && (
-        <div style={{ textAlign: 'center' }}>
+        <div
+          style={{
+            textAlign: 'center',
+            maxHeight: '690px',
+            overflow: 'scroll',
+          }}>
           <canvas
             id="pdfViewer"
-            style={{ boxShadow: '2px 2px 15px gray', display: 'inline' }}
+            style={{
+              boxShadow: '2px 2px 12px gray',
+              display: 'inline',
+              margin: '5px',
+            }}
             ref={myRef}
           />
         </div>
