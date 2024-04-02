@@ -261,6 +261,7 @@ const SongList = (props: { songs: Array<Song> }) => {
             size="big"
             divided
             style={{
+              height: '100%',
               margin: 0,
               paddingLeft: 10,
               paddingRight: 10,

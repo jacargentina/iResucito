@@ -5,8 +5,8 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "build-cjs": "npx tsc -b tsconfig.cjs.json; echo '{\"type\": \"commonjs\"}' > ./dist/cjs/src/package.json",
-    "build-esm": "npx tsc -b tsconfig.esm.json; echo '{\"type\": \"module\"}' > ./dist/esm/src/package.json",
+    "build-cjs": "npx tsc -b tsconfig.cjs.json; echo '{\"type\": \"commonjs\"}' > ./dist/cjs/src/package.json; copyfiles -u 2 ./assets/fonts/* ./dist/cjs/assets/fonts/",
+    "build-esm": "npx tsc -b tsconfig.esm.json; echo '{\"type\": \"module\"}' > ./dist/esm/src/package.json; copyfiles -u 2 ./assets/fonts/* ./dist/esm/assets/fonts/",
     "build-types": "npx tsc -b tsconfig.types.json",
     "build": "yarn run build-cjs; yarn run build-esm; yarn run build-types",
     "patch": "esno src/applyPatch.ts",
@@ -45,6 +45,7 @@
     "@types/langs": "^2.0.2",
     "@types/lodash": "^4.17.0",
     "@types/pdfkit": "^0.13.4",
+    "copyfiles": "^2.4.1",
     "country-list": "^2.3.0",
     "expo-asset": "~8.10.1",
     "expo-file-system": "~15.4.4",

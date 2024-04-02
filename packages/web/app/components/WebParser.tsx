@@ -1,7 +1,7 @@
 import { SongStyles, SongsParser } from '@iresucito/core';
 
 const FontSizes = {
-  Notas: '7.8pt',
+  Notas: '10pt',
   TextoNormal: '12pt',
   TextoAsamblea: '16pt',
   Titulo: '19pt',
@@ -14,6 +14,7 @@ export type WebStyle = {
   fontFamily?: string;
   letterSpacing?: string;
   marginBottom?: number;
+  marginLeft?: number;
 };
 
 export const WebStyles: SongStyles<WebStyle> = {
@@ -44,7 +45,7 @@ export const WebStyles: SongStyles<WebStyle> = {
     color: '#ff0000',
     fontFamily: 'Franklin Gothic Regular',
     fontSize: FontSizes.Notas,
-    letterSpacing: '-1px',
+    marginLeft: 16,
   },
   specialNoteTitle: {
     color: '#ff0000',
