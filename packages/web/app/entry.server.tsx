@@ -1,20 +1,17 @@
-import { renderToString } from 'react-dom/server';
 import { RemixServer } from '@remix-run/react';
-
-export default function handleRequest(
+import { handleRequest, type EntryContext } from '@vercel/remix';
+ 
+export default async function (
   request: Request,
   responseStatusCode: number,
   responseHeaders: Headers,
-  remixContext: any
+  remixContext: EntryContext,
 ) {
-  let markup = renderToString(
-    <RemixServer context={remixContext} url={request.url} />
+  let remixServer = <RemixServer context={remixContext} url={request.url} />;
+  return handleRequest(
+    request,
+    responseStatusCode,
+    responseHeaders,
+    remixServer,
   );
-
-  responseHeaders.set('Content-Type', 'text/html');
-
-  return new Response('<!DOCTYPE html>' + markup, {
-    status: responseStatusCode,
-    headers: responseHeaders,
-  });
 }
