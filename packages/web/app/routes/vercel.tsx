@@ -1,6 +1,7 @@
 import path from 'path';
 import fs from 'fs';
-import { json, LoaderFunction, ActionFunction } from '@remix-run/node';
+import { LoaderFunction, ActionFunction } from '@remix-run/node';
+import { json } from '@vercel/remix';
 import { useActionData, useLoaderData } from '@remix-run/react';
 import Layout from '~/components/Layout';
 

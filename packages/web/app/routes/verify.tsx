@@ -1,4 +1,5 @@
-import { LoaderFunction, redirect, json } from '@remix-run/node';
+import { LoaderFunction, redirect } from '@remix-run/node';
+import { json } from '@vercel/remix';
 import { useLoaderData } from '@remix-run/react';
 import { Header, Image, Grid } from 'semantic-ui-react';
 import ErrorDetail from '~/components/ErrorDetail';

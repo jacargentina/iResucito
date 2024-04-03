@@ -1,10 +1,6 @@
 import { useLoaderData, useSubmit } from '@remix-run/react';
-import {
-  redirect,
-  ActionFunction,
-  json,
-  LoaderFunction,
-} from '@remix-run/node';
+import { redirect, ActionFunction, LoaderFunction } from '@remix-run/node';
+import { json } from '@vercel/remix';
 import {
   Header,
   Segment,
@@ -40,18 +36,14 @@ export let action: ActionFunction = async ({ request, context, params }) => {
     db.data?.tokens.splice(tokenIndex, 1);
     db.write();
     // @ts-ignore
-    userIndex = db.data.users.findIndex(
-      (u) => u.email == body.get('email')
-    );
+    userIndex = db.data.users.findIndex((u) => u.email == body.get('email'));
   } else {
     let authData = await authenticator.isAuthenticated(request);
     if (!authData) {
       throw new Error('No autenticado.');
     }
     // @ts-ignore
-    userIndex = db.data.users.findIndex(
-      (u) => u.email == authData?.user
-    );
+    userIndex = db.data.users.findIndex((u) => u.email == authData?.user);
   }
 
   if (userIndex === -1) {

@@ -1,5 +1,6 @@
 import etag from 'etag';
-import { json, LoaderFunction } from '@remix-run/node';
+import { LoaderFunction } from '@remix-run/node';
+import { json } from '@vercel/remix';
 import { getSession } from '~/session.server';
 import { SongChangesAndPatches } from '@iresucito/core';
 import { folderExtras, folderSongs } from '~/utils.server';

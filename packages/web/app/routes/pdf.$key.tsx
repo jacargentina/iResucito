@@ -1,6 +1,7 @@
 import { SongsParser } from '@iresucito/core';
 import i18n from '@iresucito/translations';
-import { ActionFunction, json } from '@remix-run/node';
+import { ActionFunction } from '@remix-run/node';
+import { json } from '@vercel/remix';
 import { getSession } from '~/session.server';
 import { PdfStyle, SongToPdf, PdfStyles } from '@iresucito/core';
 import { generatePDF } from '@iresucito/core/generatepdf';

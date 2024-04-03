@@ -1,4 +1,5 @@
-import { ActionFunction, json } from '@remix-run/node';
+import { ActionFunction } from '@remix-run/node';
+import { json } from '@vercel/remix';
 import { commitSession, getSession } from '~/session.server';
 
 export let action: ActionFunction = async ({ request, params }) => {

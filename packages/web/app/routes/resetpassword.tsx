@@ -10,7 +10,8 @@ import {
   Grid,
 } from 'semantic-ui-react';
 import { useSubmit, useNavigation } from '@remix-run/react';
-import { json, ActionFunction } from '@remix-run/node';
+import { ActionFunction } from '@remix-run/node';
+import { json } from '@vercel/remix';
 import Layout from '~/components/Layout';
 import { db } from '~/utils.server';
 import i18n from '@iresucito/translations';

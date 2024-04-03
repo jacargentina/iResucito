@@ -5,7 +5,8 @@ import {
   useSubmit,
   useNavigation,
 } from '@remix-run/react';
-import { ActionFunction, json, LoaderFunction } from '@remix-run/node';
+import { ActionFunction, LoaderFunction } from '@remix-run/node';
+import { json } from '@vercel/remix';
 import { authenticator } from '~/auth.server';
 import { useState } from 'react';
 import {

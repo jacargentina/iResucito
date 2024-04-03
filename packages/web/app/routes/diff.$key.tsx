@@ -2,7 +2,8 @@ import * as Diff from 'diff';
 import etag from 'etag';
 import { getPropertyLocale } from '@iresucito/core';
 import { SongsIndex } from '@iresucito/core';
-import { json, LoaderFunction } from '@remix-run/node';
+import { LoaderFunction } from '@remix-run/node';
+import { json } from '@vercel/remix';
 import { getSession } from '~/session.server';
 import { folderExtras, folderSongs } from '~/utils.server';
 

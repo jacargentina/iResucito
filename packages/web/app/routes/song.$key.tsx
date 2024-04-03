@@ -1,5 +1,6 @@
 import { authenticator } from '~/auth.server';
-import { ActionFunction, json, LoaderFunction } from '@remix-run/node';
+import { ActionFunction, LoaderFunction } from '@remix-run/node';
+import { json } from '@vercel/remix';
 import { getSession } from '~/session.server';
 import { Song, SongPatch, SongPatchData } from '@iresucito/core';
 import merge from 'deepmerge';
