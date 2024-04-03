@@ -23,9 +23,9 @@
     "@remix-run/vercel": "^1.19.3",
     "@types/diff": "^5.0.9",
     "@types/etag": "^1.8.3",
-    "@types/react": "^18.2.73",
+    "@types/react": "^18.2.74",
     "@types/react-json-editor-ajrm": "^2.5.6",
-    "@vercel/node": "^3.0.24",
+    "@vercel/node": "^3.0.26",
     "@vercel/remix": "^2.8.1",
     "base64-stream": "^1.0.0",
     "bcryptjs": "^2.4.3",
@@ -36,7 +36,7 @@
     "etag": "^1.8.1",
     "gmail-send": "^1.8.14",
     "lowdb": "^7.0.1",
-    "memfs": "^4.8.0",
+    "memfs": "^4.8.1",
     "node-fetch": "^3.3.2",
     "pdfjs-dist": "^4.0.379",
     "react": "^18.2.0",
@@ -51,13 +51,13 @@
     "typescript": "^5.4.3",
     "use-debounce": "^10.0.0",
     "use-hotkeys": "^1.1.0",
-    "vercel": "^33.6.1",
-    "vite": "^5.1.0",
+    "vercel": "^33.6.3",
+    "vite": "^5.2.8",
     "vite-plugin-node-polyfills": "^0.21.0",
-    "vite-tsconfig-paths": "^4.2.1"
+    "vite-tsconfig-paths": "^4.3.2"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
-    "@types/react-dom": "^18.2.22"
+    "@types/react-dom": "^18.2.24"
   }
 }
