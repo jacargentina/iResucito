@@ -13,7 +13,7 @@ const LocalePicker = () => {
   const { patchStats } = app;
 
   const availableLocales = useMemo<PickerLocale[]>(() => {
-    return getLocalesForPicker(navigator.language);
+    return getLocalesForPicker(app.locale);
   }, []);
 
   const current = useMemo<PickerLocale | undefined>(() => {
