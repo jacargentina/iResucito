@@ -35,7 +35,12 @@ export let loader: LoaderFunction = async ({ request, params }) => {
       fullText = song.fullText;
     }
     const ploc = getPropertyLocale(patch[key], locale);
-    result.diff = Diff.diffLines(fullText, patch[key][ploc].lines as string);
+    var res = Diff.diffLines(fullText, patch[key][ploc].lines as string);
+    // Cuando el resultado solo tiene 1 item, no hay cambios!
+    // Dejar null para que UI pueda distinguir y mostrar "No tiene cambios"
+    if (res.length > 1) {
+      result.diff = res;
+    }
   }
 
   const headers = {

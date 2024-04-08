@@ -25,26 +25,26 @@ const DiffViewDialog = () => {
       <Modal.Content scrolling>
         {editSong && <h5>{editSong.titulo.toUpperCase()}</h5>}
         <div style={{ flex: 1 }}>
-          {diffView &&
-            diffView.map((item, i) => {
-              const colorName = item.added
-                ? 'green'
-                : item.removed
-                ? 'red'
-                : 'grey';
-              const val = item.value.replace(/\n/g, '<br/>');
-              return (
-                <span
-                  key={i}
-                  style={{
-                    fontFamily: 'monospace',
-                    whiteSpace: 'pre',
-                    color: colorName,
-                  }}
-                  dangerouslySetInnerHTML={{ __html: val }}
-                />
-              );
-            })}
+          {diffView?.map((item, i) => {
+            const colorName = item.added
+              ? 'green'
+              : item.removed
+              ? 'red'
+              : 'grey';
+            const val = item.value.replace(/\n/g, '<br/>');
+            return (
+              <span
+                key={i}
+                style={{
+                  fontFamily: 'monospace',
+                  whiteSpace: 'pre',
+                  color: colorName,
+                }}
+                dangerouslySetInnerHTML={{ __html: val }}
+              />
+            );
+          })}
+          {diffView == null && <div>No diff</div>}
         </div>
       </Modal.Content>
       <Modal.Actions>
