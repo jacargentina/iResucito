@@ -58,6 +58,7 @@ export default function App() {
         navigate('/list');
       }
     } else {
+      console.log('no locale yet. POST /lang/' + navigator.language);
       fetcher.submit(null, {
         action: '/lang/' + navigator.language,
         method: 'post',
