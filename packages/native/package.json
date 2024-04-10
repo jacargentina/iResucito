@@ -1,6 +1,6 @@
 {
   "name": "@iresucito/native",
-  "version": "1.0.0",
+  "version": "7.0.3",
   "private": true,
   "scripts": {
     "start": "expo start --ios",
@@ -103,6 +103,8 @@
     "react-native-codegen": "^0.71.5",
     "react-native-monorepo-tools": "^1.2.1",
     "source-map": "^0.7.4",
+    "standard-version": "^7.1.0",
+    "standard-version-expo": "^1.0.3",
     "ts-jest": "^29.1.2"
   }
 }
