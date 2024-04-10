@@ -1,6 +1,6 @@
 {
   "name": "@iresucito/native",
-  "version": "7.0.3",
+  "version": "8.0.0",
   "private": true,
   "scripts": {
     "start": "expo start --ios",

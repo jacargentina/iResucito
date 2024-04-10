@@ -250,7 +250,7 @@ export const SettingsScreen = () => {
           <Text fontWeight="bold" fontSize={media.md ? '$xl' : '$md'}>
             {i18n.t('ui.version')}: {version}
           </Text>
-          {'\n'} Javier Castro, 2017-2023
+          {'\n'} Javier Castro, 2017-2024
         </Text>
         <Text textAlign="center" fontSize={media.md ? '$md' : '$sm'} mt="$10">
           <Text fontWeight="bold" fontSize={media.md ? '$md' : '$sm'}>

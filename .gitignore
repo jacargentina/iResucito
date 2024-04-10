@@ -62,6 +62,7 @@ packages/web/public/data/*.json
 packages/web/public/songs
 packages/web/public/Info.plist
 packages/web/public/build.gradle
+packages/web/public/pdf.worker.*
 packages/**/.turbo
 packages/**/.turbo/**
 .turbo
