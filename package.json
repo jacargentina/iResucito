@@ -17,7 +17,7 @@
     "ts": "turbo run ts",
     "reset": "find . -type dir -name node_modules | xargs rm -rf && rm -rf yarn.lock && yarn",
     "web": "yarn build && cd packages/web && yarn dev",
-    "vercel": "npx vercel build --prod && npx vercel deploy --prod --prebuilt"
+    "vercel": "yarn vercel build --prod && yarn vercel deploy --prod --prebuilt"
   },
   "dependencies": {
     "react-native-cli": "^2.0.1",
