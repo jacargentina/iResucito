@@ -6,7 +6,8 @@
       "packages/*"
     ],
     "nohoist": [
-      "**/@gluestack-ui/config"
+      "**/@gluestack-ui/**",
+      "**/@vercel/**"
     ]
   },
   "scripts": {
