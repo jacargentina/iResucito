@@ -12,6 +12,7 @@ import { json } from '@vercel/remix';
 import { useLoaderData } from '@remix-run/react';
 import { getSession } from '~/session.server';
 import { folderExtras, folderSongs } from '~/utils.server';
+import PdfContextWrapper from '~/components/PdfContext';
 
 export let loader: LoaderFunction = async ({ request, params }) => {
   const session = await getSession(request.headers.get('Cookie'));
@@ -88,14 +89,16 @@ const SongEdit = () => {
       previousKey={previousKey}
       nextKey={nextKey}
       totalSongs={totalSongs}>
-      <Layout title="Editor">
-        <SongEditor />
-        <ConfirmDialog />
-        <SongChangeMetadataDialog />
-        <PatchLogDialog />
-        <PdfSettingsDialog />
-        <DiffViewDialog />
-      </Layout>
+      <PdfContextWrapper>
+        <Layout title="Editor">
+          <SongEditor />
+          <ConfirmDialog />
+          <SongChangeMetadataDialog />
+          <PatchLogDialog />
+          <PdfSettingsDialog />
+          <DiffViewDialog />
+        </Layout>
+      </PdfContextWrapper>
     </EditContextWrapper>
   );
 };

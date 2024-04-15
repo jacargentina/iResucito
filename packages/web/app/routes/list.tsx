@@ -10,6 +10,7 @@ import { useApp } from '~/app.context';
 import { Loader } from 'semantic-ui-react';
 import i18n from '@iresucito/translations';
 import { folderExtras, folderSongs } from '~/utils.server';
+import PdfContextWrapper from '~/components/PdfContext';
 
 export let loader: LoaderFunction = async ({ request }) => {
   const session = await getSession(request.headers.get('Cookie'));
@@ -38,27 +39,29 @@ const List = () => {
   const { isChangingLanguage } = useApp();
   const { songs } = useLoaderData<typeof loader>();
   return (
-    <Layout title="Buscador">
-      {isChangingLanguage ? (
-        <div
-          style={{
-            height: '100%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <Loader
-            active
-            inline="centered"
-            size="large"
-            content={i18n.t('ui.loading')}
-          />
-        </div>
-      ) : (
-        <SongList songs={songs} />
-      )}
-      <PdfSettingsDialog />
-    </Layout>
+    <PdfContextWrapper>
+      <Layout title="Buscador">
+        {isChangingLanguage ? (
+          <div
+            style={{
+              height: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <Loader
+              active
+              inline="centered"
+              size="large"
+              content={i18n.t('ui.loading')}
+            />
+          </div>
+        ) : (
+          <SongList songs={songs} />
+        )}
+        <PdfSettingsDialog />
+      </Layout>
+    </PdfContextWrapper>
   );
 };
 

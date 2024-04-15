@@ -10,8 +10,8 @@ import {
   Icon,
   Loader,
 } from 'semantic-ui-react';
-// TODO no funciona con VITE
-//import useHotkeys from 'use-hotkeys';
+// TODO No funciona bien en VITE (al refrescar)
+// import useHotkeys from 'use-hotkeys';
 import SongViewPdf from '~/components/SongViewPdf';
 import ApiMessage from '~/components/ApiMessage';
 import SongListResume from '~/components/SongListResume';
@@ -20,51 +20,46 @@ import { Song, colors, getPropertyLocale } from '@iresucito/core';
 import i18n from '@iresucito/translations';
 import { useApp } from '~/app.context';
 import { useNavigate } from '@remix-run/react';
+import { usePdf } from './PdfContext';
 
 const SongList = (props: { songs: Array<Song> }) => {
   const { songs } = props;
-  const app = useApp();
-  const { setApiResult, handleApiError } = app;
+
+  const {
+    user,
+    setApiResult,
+    handleApiError,
+    setActiveDialog,
+    setDialogCallback,
+  } = useApp();
+
   const navigate = useNavigate();
-  const [pdfUrl, setPdfUrl] = useState<string | undefined>();
+
   const [loading, setLoading] = useState(false);
+
   const patchedCount = useMemo(() => {
     return songs.filter((s) => s.patched === true).length;
   }, [songs]);
+
   const addedCount = useMemo(() => {
     return songs.filter((s) => s.added === true).length;
   }, [songs]);
+
   const notTranslatedCount = useMemo(() => {
     return songs.filter((s) => s.notTranslated === true).length;
   }, [songs]);
 
-  const closePdf = () => {
-    setLoading(false);
-    setPdfUrl(undefined);
-  };
+  const savedSettings = localStorage.getItem('pdfExportOptions');
 
-  const previewPdf = () => {
-    const formData = new FormData();
-    const savedSettings = localStorage.getItem('pdfExportOptions');
-    if (savedSettings) {
-      formData.append('options', savedSettings);
-    }
-    setLoading(true);
-    setPdfUrl(undefined);
-    return fetch(`/pdf/full`, { method: 'POST', body: formData })
-      .then((response) => {
-        return response.blob();
-      })
-      .then((data) => {
-        setLoading(false);
-        setPdfUrl(window.URL.createObjectURL(new Blob([data])));
-      })
-      .catch(async (err) => {
-        const text = await new Response(err.response.data).text();
-        handleApiError(`/pdf/full`, text);
-        closePdf();
-      });
-  };
+  const {
+    previewPdf,
+    pdf,
+    numPages,
+    currPage,
+    setCurrPage,
+    downloadPdf,
+    closePdf,
+  } = usePdf();
 
   const [filters, setFilters] = useState(() => {
     if (typeof localStorage !== 'undefined') {
@@ -165,19 +160,67 @@ const SongList = (props: { songs: Array<Song> }) => {
   return (
     <>
       <Menu size="mini" inverted attached color="blue">
-        {pdfUrl && (
-          <Menu.Item position="right">
-            <Button onClick={closePdf}>
-              <Icon name="close" />
-              {i18n.t('ui.close')}
+        {pdf && numPages && (
+          <Menu.Item>
+            <Button
+              icon
+              size="mini"
+              disabled={currPage === 1}
+              onClick={() => setCurrPage((p) => p - 1)}>
+              <Icon name="step backward" />
             </Button>
+            <Input
+              className="pageNumberInput"
+              value={currPage}
+              onChange={(e, { value }) => setCurrPage(Number(value))}
+            />
+            <Button
+              size="mini"
+              icon
+              disabled={currPage === numPages}
+              onClick={() => setCurrPage((p) => p + 1)}>
+              <Icon name="step forward" />
+            </Button>
+            <Label>
+              Total:
+              <Label.Detail>{numPages}</Label.Detail>
+            </Label>
           </Menu.Item>
         )}
-        {!pdfUrl && (
+        {pdf && (
+          <>
+            <Menu.Item>
+              <Button
+                positive={!!savedSettings}
+                size="mini"
+                floated="right"
+                onClick={() => {
+                  setActiveDialog('pdfSettings');
+                  setDialogCallback(() => previewPdf('full', ''));
+                }}>
+                <Icon name="setting" />
+                {i18n.t('screen_title.settings')}
+              </Button>
+            </Menu.Item>
+            <Menu.Item>
+              <Button onClick={downloadPdf}>
+                <Icon name="file pdf" />
+                {i18n.t('ui.download')}
+              </Button>
+            </Menu.Item>
+            <Menu.Item position="right">
+              <Button onClick={closePdf}>
+                <Icon name="close" />
+                {i18n.t('ui.close')}
+              </Button>
+            </Menu.Item>
+          </>
+        )}
+        {!pdf && (
           <>
             <Menu.Item>
               <Button.Group size="mini">
-                {app.user && (
+                {user && (
                   <Popup
                     content={<strong>Shortcut: Ctrl + N</strong>}
                     size="mini"
@@ -190,7 +233,7 @@ const SongList = (props: { songs: Array<Song> }) => {
                     }
                   />
                 )}
-                <Button onClick={previewPdf}>
+                <Button onClick={() => previewPdf('full', '')}>
                   <Icon name="file pdf" />
                   {i18n.t('share_action.view pdf')}
                 </Button>
@@ -238,7 +281,7 @@ const SongList = (props: { songs: Array<Song> }) => {
           </>
         )}
       </Menu>
-      {!pdfUrl && !loading && (
+      {!pdf && !loading && (
         <>
           <div style={{ padding: 10 }}>
             <Input
@@ -344,11 +387,7 @@ const SongList = (props: { songs: Array<Song> }) => {
           />
         </div>
       )}
-      {pdfUrl && (
-        <div style={{ padding: 3, overflow: 'scroll' }}>
-          <SongViewPdf url={pdfUrl} settingsChanged={previewPdf} />
-        </div>
-      )}
+      {pdf && <SongViewPdf />}
     </>
   );
 };

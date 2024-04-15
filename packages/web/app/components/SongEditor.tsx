@@ -3,16 +3,16 @@ import {
   TextArea,
   Icon,
   Popup,
-  Tab,
   Segment,
   Message,
   Button,
   Menu,
 } from 'semantic-ui-react';
 import { useDebouncedCallback } from 'use-debounce';
-// TODO No funciona en VITE
+// TODO No funciona bien en VITE (al refrescar)
 //import useHotkeys from 'use-hotkeys';
 import { EditContext } from './EditContext';
+import { usePdf } from './PdfContext';
 import ApiMessage from './ApiMessage';
 import SongViewFrame from './SongViewFrame';
 import SongViewPdf from './SongViewPdf';
@@ -22,7 +22,6 @@ import Split from 'react-split';
 
 const SongEditor = () => {
   const txtRef = useRef<any>(null);
-  const [pdfUrl, setPdfUrl] = useState<string | null>(null);
   const app = useApp();
   const { setActiveDialog, apiResult, handleApiError } = app;
 
@@ -50,36 +49,13 @@ const SongEditor = () => {
     confirmClose,
   } = edit;
 
+  const { previewPdf } = usePdf();
+
   const [debouncedText, setDebouncedText] = useState(text);
   const debounced = useDebouncedCallback((t) => setDebouncedText(t), 800);
-  const [activeTab, setActiveTab] = useState<string | number | undefined>(0);
   const [linepos, setLinepos] = useState<number>();
   const [colpos, setColpos] = useState<number>();
-
-  const previewPdf = (text: string) => {
-    const formData = new FormData();
-    formData.append('text', text);
-    const savedSettings = localStorage.getItem('pdfExportOptions');
-    if (savedSettings) {
-      formData.append('options', savedSettings);
-    }
-    fetch(`/pdf/${editSong.key}`, { method: 'POST', body: formData })
-      .then((response) => {
-        if (response.ok == true) {
-          return response.blob();
-        } else {
-          return response.json();
-        }
-      })
-      .then((data) => {
-        if (data instanceof Blob) {
-          setPdfUrl(window.URL.createObjectURL(new Blob([data])));
-        } else {
-          setPdfUrl(null);
-          handleApiError(`/pdf/${editSong.key}`, data.error);
-        }
-      });
-  };
+  const [viewType, setViewType] = useState<'html' | 'pdf'>('html');
 
   useEffect(() => {
     setDebouncedText(editSong.fullText);
@@ -107,12 +83,10 @@ const SongEditor = () => {
 
   const previous = () => {
     goPrevious();
-    setActiveTab(0);
   };
 
   const next = () => {
     goNext();
-    setActiveTab(0);
   };
 
   const txtPositionEvent = () => {
@@ -130,10 +104,10 @@ const SongEditor = () => {
   };
 
   useEffect(() => {
-    if (activeTab === 1) {
-      previewPdf(debouncedText);
+    if (viewType === 'pdf') {
+      previewPdf(editSong.key, debouncedText);
     }
-  }, [activeTab, debouncedText]);
+  }, [viewType, debouncedText]);
 
   // useHotkeys(
   //   (key) => {
@@ -281,6 +255,22 @@ const SongEditor = () => {
           </>
         )}
         <Menu.Item position="right">
+          <Button.Group size="mini">
+            <Button
+              toggle
+              active={viewType == 'html'}
+              onClick={() => setViewType('html')}>
+              HTML
+            </Button>
+            <Button
+              toggle
+              active={viewType == 'pdf'}
+              onClick={() => setViewType('pdf')}>
+              PDF
+            </Button>
+          </Button.Group>
+        </Menu.Item>
+        <Menu.Item position="right">
           <Button onClick={confirmClose}>
             <Icon name="close" />
             {i18n.t('ui.close')}
@@ -374,57 +364,22 @@ const SongEditor = () => {
             />
           )}
         </div>
-        <Tab
-          activeIndex={activeTab}
-          onTabChange={(_, data) => {
-            setActiveTab(data.activeIndex);
-          }}
-          menu={{ size: 'mini', pointing: true }}
-          panes={[
-            {
-              menuItem: 'HTML',
-              render: () => {
-                return (
-                  <Tab.Pane
-                    style={{
-                      height: 'calc(100% - 45px)',
-                      overflow: 'scroll',
-                      border: '0px transparent',
-                    }}>
-                    <SongViewFrame
-                      title={songFile && songFile.titulo}
-                      source={songFile && songFile.fuente}
-                      text={debouncedText}
-                    />
-                  </Tab.Pane>
-                );
-              },
-            },
-            {
-              menuItem: 'PDF',
-              render: () => {
-                return (
-                  <Tab.Pane
-                    style={{
-                      minHeight: '50vh',
-                      border: '0px transparent',
-                    }}>
-                    <SongViewPdf
-                      url={pdfUrl}
-                      settingsChanged={() => previewPdf(debouncedText)}
-                    />
-                    {apiResult && apiResult.path == `/pdf/${editSong.key}` && (
-                      <Message negative>
-                        <Message.Header>Error</Message.Header>
-                        <p>{apiResult.error}</p>
-                      </Message>
-                    )}
-                  </Tab.Pane>
-                );
-              },
-            },
-          ]}
-        />
+        <div style={{ overflow: 'scroll', width: '100%', padding: '8px' }}>
+          {apiResult && apiResult.path == `/pdf/${editSong.key}` && (
+            <Message negative>
+              <Message.Header>Error</Message.Header>
+              <p>{apiResult.error}</p>
+            </Message>
+          )}
+          {viewType == 'html' && (
+            <SongViewFrame
+              title={songFile && songFile.titulo}
+              source={songFile && songFile.fuente}
+              text={debouncedText}
+            />
+          )}
+          {viewType == 'pdf' && <SongViewPdf />}
+        </div>
       </Split>
     </>
   );
