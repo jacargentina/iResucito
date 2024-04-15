@@ -4,11 +4,6 @@
   "workspaces": {
     "packages": [
       "packages/*"
-    ],
-    "nohoist": [
-      "**/@gluestack-ui/**",
-      "**/@remix-run/**",
-      "**/@vercel/**"
     ]
   },
   "scripts": {

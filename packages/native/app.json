@@ -49,7 +49,7 @@
         "android.permission.READ_CONTACTS",
         "android.permission.WRITE_CONTACTS"
       ],
-      "versionCode": 144
+      "versionCode": 146
     },
     "androidStatusBar": {
       "hidden": true

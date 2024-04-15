@@ -12,6 +12,11 @@
     "android": "expo run:android",
     "ios": "expo run:ios"
   },
+  "workspaces": {
+    "nohoist": [
+      "@gluestack-ui/**"
+    ]
+  },
   "dependencies": {
     "@codler/react-native-keyboard-aware-scroll-view": "^2.0.1",
     "@config-plugins/react-native-blob-util": "^7.0.0",
@@ -92,7 +97,6 @@
     "@types/jest": "^29.5.12",
     "@types/path-parse": "^1.0.22",
     "@types/react": "~18.2.61",
-    "@types/react-dom": "~18.0.10",
     "@types/react-native-keep-awake": "^2.0.8",
     "@types/react-test-renderer": "^18.0.7",
     "colors": "^1.4.0",
