@@ -7,6 +7,7 @@
     ],
     "nohoist": [
       "**/@gluestack-ui/**",
+      "**/@remix-run/**",
       "**/@vercel/**"
     ]
   },
