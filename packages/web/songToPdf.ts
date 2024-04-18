@@ -6,8 +6,8 @@ import {
   PdfStyles,
   SongToPdf,
   SongsProcessor,
-} from './';
-import { generatePDF } from './generatepdf';
+} from '@iresucito/core';
+import { generatePDF } from '~/pdf.server';
 import open from 'open';
 import { osLocale } from 'os-locale';
 

@@ -10,7 +10,7 @@ import {
   ListPDFGenerator,
 } from '@iresucito/core';
 import Base64Encode from './base64encode';
-// Por errores de compilacion ya que 
+// Por errores de compilacion ya que
 // pdfkit es modulo esm para NodeJS y NO para expo/react-native
 // se utiliza mediante require la libreria "standalone" que se puede
 // cargar sin problemas
@@ -31,13 +31,13 @@ export async function generateSongPDF(
   const safeFileName = filename.replace('/', '-');
   const pdfPath = `${FileSystem.cacheDirectory}${safeFileName}.pdf`;
   const [{ localUri: mediumUri }] = await Asset.loadAsync(
-    require('@iresucito/core/assets/fonts/FranklinGothicMedium.ttf')
+    require('./fonts/FranklinGothicMedium.ttf')
   );
   const medium = await FileSystem.readAsStringAsync(mediumUri as string, {
     encoding: 'base64',
   });
   const [{ localUri: regularUri }] = await Asset.loadAsync(
-    require('@iresucito/core/assets/fonts/FranklinGothicRegular.ttf')
+    require('./fonts/FranklinGothicRegular.ttf')
   );
   const regular = await FileSystem.readAsStringAsync(regularUri as string, {
     encoding: 'base64',

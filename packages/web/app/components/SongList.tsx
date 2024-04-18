@@ -49,7 +49,10 @@ const SongList = (props: { songs: Array<Song> }) => {
     return songs.filter((s) => s.notTranslated === true).length;
   }, [songs]);
 
-  const savedSettings = localStorage.getItem('pdfExportOptions');
+  const savedSettings =
+    typeof localStorage !== 'undefined'
+      ? localStorage.getItem('pdfExportOptions')
+      : undefined;
 
   const {
     previewPdf,

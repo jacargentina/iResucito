@@ -9,19 +9,12 @@ import {
   PdfStyle,
   SongStyles,
   SongToPdf,
-} from './common';
+} from '@iresucito/core';
 
 import PDFDocument from 'pdfkit';
 
-const regular = new URL(
-  '../assets/fonts/FranklinGothicRegular.ttf',
-  import.meta.url
-);
-
-const medium = new URL(
-  '../assets/fonts/FranklinGothicMedium.ttf',
-  import.meta.url
-);
+const regular = new URL('./fonts/FranklinGothicRegular.ttf', import.meta.url);
+const medium = new URL('./fonts/FranklinGothicMedium.ttf', import.meta.url);
 
 export async function generatePDF(
   songsToPdf: Array<SongToPdf<PdfStyle>>,

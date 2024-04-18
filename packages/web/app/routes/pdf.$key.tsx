@@ -4,7 +4,7 @@ import { ActionFunction } from '@remix-run/node';
 import { json } from '@vercel/remix';
 import { getSession } from '~/session.server';
 import { PdfStyle, SongToPdf, PdfStyles } from '@iresucito/core';
-import { generatePDF } from '@iresucito/core/generatepdf';
+import { generatePDF } from '~/pdf.server';
 import { readFileSync, folderExtras, folderSongs } from '~/utils.server';
 
 export let action: ActionFunction = async ({ request, params }) => {

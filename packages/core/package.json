@@ -5,8 +5,8 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "build-cjs": "yarn tsc -b tsconfig.cjs.json; echo '{\"type\": \"commonjs\"}' > ./dist/cjs/src/package.json; copyfiles -u 2 ./assets/fonts/* ./dist/cjs/assets/fonts/",
-    "build-esm": "yarn tsc -b tsconfig.esm.json; echo '{\"type\": \"module\"}' > ./dist/esm/src/package.json; copyfiles -u 2 ./assets/fonts/* ./dist/esm/assets/fonts/",
+    "build-cjs": "yarn tsc -b tsconfig.cjs.json; echo '{\"type\": \"commonjs\"}' > ./dist/cjs/src/package.json",
+    "build-esm": "yarn tsc -b tsconfig.esm.json; echo '{\"type\": \"module\"}' > ./dist/esm/src/package.json",
     "build-types": "yarn tsc -b tsconfig.types.json",
     "build": "yarn run build-cjs; yarn run build-esm; yarn run build-types",
     "patch": "esno src/applyPatch.ts",
@@ -27,25 +27,13 @@
         "default": "./dist/cjs/src/index.js"
       }
     },
-    "./generatepdf": {
-      "import": {
-        "types": "./dist/types/src/generatepdf.d.ts",
-        "default": "./dist/esm/src/generatepdf.js"
-      },
-      "require": {
-        "types": "./dist/types/src/generatepdf.d.ts",
-        "default": "./dist/cjs/src/generatepdf.js"
-      }
-    },
     "./assets/*.json": "./dist/cjs/assets/*.json",
-    "./assets/songs/*.json": "./dist/cjs/assets/songs/*.json",
-    "./assets/fonts/*.ttf": "./assets/fonts/*.ttf"
+    "./assets/songs/*.json": "./dist/cjs/assets/songs/*.json"
   },
   "dependencies": {
     "@types/country-list": "^2.1.2",
     "@types/langs": "^2.0.2",
     "@types/lodash": "^4.17.0",
-    "@types/pdfkit": "^0.13.4",
     "copyfiles": "^2.4.1",
     "country-list": "^2.3.0",
     "dropbox": "^10.34.0",
@@ -54,6 +42,7 @@
     "langs": "^2.0.0",
     "lodash": "^4.17.21",
     "normalize-strings": "^1.1.1",
+    "@types/pdfkit": "^0.13.4",
     "pdfkit": "^0.15.0",
     "typescript": "^5.4.3"
   },

@@ -45,6 +45,8 @@
     "lowdb": "^7.0.1",
     "memfs": "^4.8.1",
     "node-fetch": "^3.3.2",
+    "@types/pdfkit": "^0.13.4",
+    "pdfkit": "^0.15.0",
     "pdfjs-dist": "^4.0.379",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
