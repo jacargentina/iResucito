@@ -34,6 +34,7 @@ const PdfContextWrapper = (props: any) => {
   const edit = useContext(EditContext);
 
   const previewPdf = useCallback((songKey: string, songText: string) => {
+    console.log('previewPdf', songKey);
     const formData = new FormData();
     formData.append('text', songText);
     const savedSettings = localStorage.getItem('pdfExportOptions');
@@ -88,7 +89,7 @@ const PdfContextWrapper = (props: any) => {
     if (document.body) document.body.appendChild(link);
     link.click();
     link.remove();
-  }, []);
+  }, [pdfUrl]);
 
   const closePdf = () => {
     setPdfUrl(undefined);

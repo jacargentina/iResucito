@@ -194,12 +194,13 @@ const SongList = (props: { songs: Array<Song> }) => {
           <>
             <Menu.Item>
               <Button
-                positive={!!savedSettings}
                 size="mini"
                 floated="right"
                 onClick={() => {
                   setActiveDialog('pdfSettings');
-                  setDialogCallback(() => previewPdf('full', ''));
+                  setDialogCallback(() => {
+                    return () => previewPdf('full', '');
+                  });
                 }}>
                 <Icon name="setting" />
                 {i18n.t('screen_title.settings')}

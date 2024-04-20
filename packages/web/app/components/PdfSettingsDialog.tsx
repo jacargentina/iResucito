@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import JSONInput from 'react-json-editor-ajrm';
 import locale from 'react-json-editor-ajrm/locale/en';
 import { Button, Modal } from 'semantic-ui-react';
@@ -24,20 +24,22 @@ const PdfSettingsDialog = () => {
     }
   }, [activeDialog]);
 
-  const saveOptions = () => {
+  const saveOptions = useCallback(() => {
     localStorage.setItem('pdfExportOptions', JSON.stringify(editing));
+    setActiveDialog();
     if (dialogCallback) {
       dialogCallback();
     }
-  };
+  }, [dialogCallback]);
 
-  const deleteOptions = () => {
+  const deleteOptions = useCallback(() => {
     localStorage.removeItem('pdfStyles');
     setinitialOptions(PdfStyles);
+    setActiveDialog();
     if (dialogCallback) {
       dialogCallback();
     }
-  };
+  }, [dialogCallback]);
 
   return (
     <Modal

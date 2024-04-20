@@ -10,23 +10,23 @@ const SongViewPdf = (props: any) => {
   const { loading, pdf, currPage } = usePdf();
 
   useEffect(() => {
-    const buildPdf = async () => {
-      if (pdf && currPage > 0) {
-        const page = await pdf.getPage(currPage);
-        const viewport = page.getViewport({ scale: 1.2 });
-        const canvas = myRef.current;
+    const buildPdf = async (pdf: pdfjsLib.PDFDocumentProxy) => {
+      const page = await pdf.getPage(currPage);
+      const viewport = page.getViewport({ scale: 1.2 });
+      const canvas = myRef.current;
 
-        const context = canvas.getContext('2d');
-        canvas.height = viewport.height;
-        canvas.width = viewport.width;
+      const context = canvas.getContext('2d');
+      canvas.height = viewport.height;
+      canvas.width = viewport.width;
 
-        page.render({
-          canvasContext: context,
-          viewport,
-        });
-      }
+      page.render({
+        canvasContext: context,
+        viewport,
+      });
     };
-    buildPdf().catch(console.log);
+    if (pdf && currPage > 0) {
+      buildPdf(pdf).catch(console.log);
+    }
   }, [pdf, currPage]);
 
   return (
@@ -37,15 +37,15 @@ const SongViewPdf = (props: any) => {
       {!loading && currPage > 0 && (
         <div
           style={{
-            textAlign: 'center',
-            overflow: 'scroll',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
           }}>
           <canvas
             id="pdfViewer"
             style={{
               boxShadow: '2px 2px 12px gray',
-              display: 'inline',
-              margin: '5px',
+              margin: 'auto',
             }}
             ref={myRef}
           />

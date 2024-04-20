@@ -23,7 +23,7 @@ import Split from 'react-split';
 const SongEditor = () => {
   const txtRef = useRef<any>(null);
   const app = useApp();
-  const { setActiveDialog, apiResult, handleApiError } = app;
+  const { setActiveDialog, apiResult, setDialogCallback } = app;
 
   const edit = useContext(EditContext);
 
@@ -49,7 +49,7 @@ const SongEditor = () => {
     confirmClose,
   } = edit;
 
-  const { previewPdf } = usePdf();
+  const { previewPdf, downloadPdf } = usePdf();
 
   const [debouncedText, setDebouncedText] = useState(text);
   const debounced = useDebouncedCallback((t) => setDebouncedText(t), 800);
@@ -131,6 +131,11 @@ const SongEditor = () => {
   //   ['ctrl+s', 'ctrl+[', 'ctrl+]', 'ctrl+e'],
   //   []
   // );
+
+  const savedSettings =
+    typeof localStorage !== 'undefined'
+      ? localStorage.getItem('pdfExportOptions')
+      : undefined;
 
   return (
     <>
@@ -270,6 +275,30 @@ const SongEditor = () => {
             </Button>
           </Button.Group>
         </Menu.Item>
+        {viewType == 'pdf' && (
+          <>
+            <Menu.Item>
+              <Button
+                size="mini"
+                floated="right"
+                onClick={() => {
+                  setActiveDialog('pdfSettings');
+                  setDialogCallback(() => {
+                    return () => previewPdf(editSong.key, debouncedText);
+                  });
+                }}>
+                <Icon name="setting" />
+                {i18n.t('screen_title.settings')}
+              </Button>
+            </Menu.Item>
+            <Menu.Item>
+              <Button onClick={downloadPdf}>
+                <Icon name="file pdf" />
+                {i18n.t('ui.download')}
+              </Button>
+            </Menu.Item>
+          </>
+        )}
         <Menu.Item position="right">
           <Button onClick={confirmClose}>
             <Icon name="close" />

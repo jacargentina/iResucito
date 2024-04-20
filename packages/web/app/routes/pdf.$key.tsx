@@ -19,7 +19,6 @@ export let action: ActionFunction = async ({ request, params }) => {
   }
   const body = await request.formData();
   const text = body.get('text') as string | undefined;
-  const options = body.get('options') as string;
   i18n.locale = locale;
   try {
     const parser = new SongsParser(PdfStyles);
