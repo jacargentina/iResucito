@@ -61,13 +61,13 @@ export async function generateListPDF(
   const safeFileName = list.name.replace('/', '-');
   const pdfPath = `${FileSystem.cacheDirectory}/${safeFileName}.pdf`;
   const [{ localUri: mediumUri }] = await Asset.loadAsync(
-    require('@iresucito/core/assets/fonts/FranklinGothicMedium.ttf')
+    require('./fonts/FranklinGothicMedium.ttf')
   );
   const medium = await FileSystem.readAsStringAsync(mediumUri as string, {
     encoding: 'base64',
   });
   const [{ localUri: regularUri }] = await Asset.loadAsync(
-    require('@iresucito/core/assets/fonts/FranklinGothicRegular.ttf')
+    require('./fonts/FranklinGothicRegular.ttf')
   );
   const regular = await FileSystem.readAsStringAsync(regularUri as string, {
     encoding: 'base64',

@@ -10,11 +10,7 @@ import {
   SongStyles,
   SongToPdf,
 } from '@iresucito/core';
-
 import PDFDocument from 'pdfkit';
-
-const regular = new URL('./fonts/FranklinGothicRegular.ttf', import.meta.url);
-const medium = new URL('./fonts/FranklinGothicMedium.ttf', import.meta.url);
 
 export async function generatePDF(
   songsToPdf: Array<SongToPdf<PdfStyle>>,
@@ -27,8 +23,8 @@ export async function generatePDF(
 
   var writer = new PdfWriter(
     PDFDocument,
-    Buffer.from(fs.readFileSync(regular)),
-    Buffer.from(fs.readFileSync(medium)),
+    Buffer.from(fs.readFileSync('public/FranklinGothicRegular.ttf')),
+    Buffer.from(fs.readFileSync('public/FranklinGothicMedium.ttf')),
     new Base64Encode(),
     opts
   );

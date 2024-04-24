@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'Franklin Gothic Medium';
-  src: url('../fonts/FranklinGothicMedium.ttf') format('truetype');
+  src: url('/FranklinGothicMedium.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Franklin Gothic Regular';
-  src: url('../fonts/FranklinGothicRegular.ttf') format('truetype');
+  src: url('/FranklinGothicRegular.ttf') format('truetype');
 }
 .hoverable .content {
   padding: 10px;
