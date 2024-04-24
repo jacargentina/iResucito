@@ -21,10 +21,17 @@ export async function generatePDF(
   const folder = os.tmpdir();
   const pdfPath = `${folder}/${filename}.pdf`;
 
+  const regularPath = process.env.VERCEL_ENV
+    ? './FranklinGothicRegular.ttf'
+    : 'public/FranklinGothicRegular.ttf';
+  const mediumPath = process.env.VERCEL_ENV
+    ? './FranklinGothicRegular.ttf'
+    : 'public/FranklinGothicRegular.ttf';
+
   var writer = new PdfWriter(
     PDFDocument,
-    Buffer.from(fs.readFileSync('public/FranklinGothicRegular.ttf')),
-    Buffer.from(fs.readFileSync('public/FranklinGothicMedium.ttf')),
+    Buffer.from(fs.readFileSync(regularPath)),
+    Buffer.from(fs.readFileSync(mediumPath)),
     new Base64Encode(),
     opts
   );
