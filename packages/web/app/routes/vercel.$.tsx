@@ -13,7 +13,7 @@ export let loader: LoaderFunction = async ({ params }) => {
     try {
       items = await fs.readdirSync(p);
     } catch (err) {
-      errors.push(err.message);
+      errors.push((err as Error).message);
     }
     items.forEach(async (element) => {
       const subpath = path.join(p, element);
@@ -24,7 +24,7 @@ export let loader: LoaderFunction = async ({ params }) => {
           await load(subpath);
         }
       } catch (err) {
-        errors.push(err.message);
+        errors.push((err as Error).message);
       } finally {
         result.push(subpath);
       }

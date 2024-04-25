@@ -1,7 +1,8 @@
 // Codigo para Node y Web
 // Invalido para React-Native / Expo
-import * as fs from 'fs';
-import * as os from 'os';
+import fs from 'fs';
+import path from 'path';
+import os from 'os';
 import { Base64Encode } from 'base64-stream';
 import {
   PdfWriter,
@@ -12,6 +13,16 @@ import {
 } from '@iresucito/core';
 import PDFDocument from 'pdfkit';
 
+function getPath(url: string) {
+  let result = new URL(url);
+  let pathname = result.pathname;
+  let pathArray = pathname.split('/');
+  let basename = pathArray.pop();
+  let dirname = pathArray.join('/');
+
+  return { pathname, dirname, basename };
+}
+
 export async function generatePDF(
   songsToPdf: Array<SongToPdf<PdfStyle>>,
   opts: SongStyles<PdfStyle>,
@@ -21,17 +32,21 @@ export async function generatePDF(
   const folder = os.tmpdir();
   const pdfPath = `${folder}/${filename}.pdf`;
 
-  const regularPath = process.env.VERCEL_ENV
-    ? './FranklinGothicRegular.ttf'
-    : 'public/FranklinGothicRegular.ttf';
-  const mediumPath = process.env.VERCEL_ENV
-    ? './FranklinGothicRegular.ttf'
-    : 'public/FranklinGothicRegular.ttf';
+  // packages/web/app
+  const { dirname } = getPath(import.meta.url);
+
+  // packages/web
+  const base = path.dirname(dirname);
+
+  const regular = path.resolve(`${base}/public/FranklinGothicRegular.ttf`);
+  const medium = path.resolve(`${base}/public/FranklinGothicMedium.ttf`);
+
+  console.log({ dirname, base, regular, medium });
 
   var writer = new PdfWriter(
     PDFDocument,
-    Buffer.from(fs.readFileSync(regularPath)),
-    Buffer.from(fs.readFileSync(mediumPath)),
+    Buffer.from(fs.readFileSync(regular)),
+    Buffer.from(fs.readFileSync(medium)),
     new Base64Encode(),
     opts
   );
