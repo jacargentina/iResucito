@@ -41,7 +41,15 @@ export async function generatePDF(
   const regular = path.resolve(`${base}/public/FranklinGothicRegular.ttf`);
   const medium = path.resolve(`${base}/public/FranklinGothicMedium.ttf`);
 
-  console.log({ dirname, base, regular, medium });
+  const test = new URL('../public/FranklinGothicRegular.ttf', import.meta.url);
+
+  var ok = false;
+  try {
+    fs.readFileSync(test);
+    ok = true;
+  } catch {}
+
+  console.log({ dirname, base, regular, medium, test, ok });
 
   var writer = new PdfWriter(
     PDFDocument,

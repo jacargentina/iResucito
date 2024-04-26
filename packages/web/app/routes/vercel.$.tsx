@@ -34,7 +34,12 @@ export let loader: LoaderFunction = async ({ params }) => {
   const p = params['*'];
   const thePath = p == '' ? '/var/task' : '/' + p;
   await load(thePath);
-  return json({ path: thePath, items: result, errors });
+
+  return json({
+    path: thePath,
+    items: result,
+    errors,
+  });
 };
 
 const Vercel = () => {

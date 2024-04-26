@@ -64,7 +64,8 @@
       ],
       "sentry-expo",
       "expo-build-properties",
-      "expo-font"
+      "expo-font",
+      "expo-asset"
     ],
     "hooks": {
       "postPublish": [
