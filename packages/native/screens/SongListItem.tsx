@@ -1,6 +1,6 @@
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useState, useEffect } from 'react';
-import { Alert } from 'react-native';
+import { Alert, useColorScheme } from 'react-native';
 import {
   Box,
   HStack,
@@ -57,6 +57,7 @@ export const SongListItem = (props: {
   setSongSetting: any;
 }) => {
   const media = useMedia();
+  const scheme = useColorScheme();
   const navigation = useNavigation<ViewSongScreenNavigationProp>();
   const { ratingsEnabled } = useSettingsStore();
   const { selection, enabled, toggle } = useSongsSelection();
@@ -96,13 +97,21 @@ export const SongListItem = (props: {
       var children = linesToHighlight.map((l, i) => {
         return (
           <Highlighter
+            id="primeras-lineas"
             key={i}
             autoEscape
             style={{
+              color:
+                scheme == 'dark'
+                  ? config.tokens.colors.textDark100
+                  : config.tokens.colors.textDark800,
               fontSize: media.md ? 17 : 12,
             }}
             highlightStyle={{
-              backgroundColor: 'yellow',
+              backgroundColor:
+                scheme == 'dark'
+                  ? config.tokens.colors.yellow600
+                  : config.tokens.colors.yellow300,
             }}
             searchWords={[highlight]}
             textToHighlight={l}
@@ -116,6 +125,7 @@ export const SongListItem = (props: {
         );
         setOpenHighlightedRest(
           <Pressable
+            id="resto-lineas"
             onPress={() => {
               setIsCollapsed(!isCollapsed);
             }}>
@@ -151,7 +161,8 @@ export const SongListItem = (props: {
     <Pressable
       testID={`song-${song.titulo}`}
       borderBottomWidth={1}
-      borderBottomColor={isSelected ? '$rose200' : '$light200'}
+      $light-borderBottomColor={isSelected ? '$rose200' : '$light200'}
+      $dark-borderBottomColor={isSelected ? '$rose200' : '$light600'}
       backgroundColor={isSelected ? '$rose100' : undefined}
       sx={{
         '@base': {
@@ -178,14 +189,22 @@ export const SongListItem = (props: {
           <VStack>
             <HStack justifyContent={'space-between'}>
               <Highlighter
+                id="titulo"
                 autoEscape
                 numberOfLines={1}
                 style={{
                   fontWeight: 'bold',
+                  color:
+                    scheme == 'dark'
+                      ? config.tokens.colors.textDark100
+                      : config.tokens.colors.textDark800,
                   fontSize: media.md ? 26 : 16,
                 }}
                 highlightStyle={{
-                  backgroundColor: 'yellow',
+                  backgroundColor:
+                    scheme == 'dark'
+                      ? config.tokens.colors.yellow600
+                      : config.tokens.colors.yellow300,
                 }}
                 searchWords={[highlight]}
                 textToHighlight={song.titulo}
@@ -200,15 +219,22 @@ export const SongListItem = (props: {
               ) : null}
             </HStack>
             <Highlighter
+              id="fuente"
               autoEscape
               numberOfLines={1}
               style={{
-                color: config.tokens.colors.backgroundDark500,
+                color:
+                  scheme == 'dark'
+                    ? config.tokens.colors.backgroundDark300
+                    : config.tokens.colors.backgroundDark500,
                 paddingVertical: 2,
                 fontSize: media.md ? 19 : 14,
               }}
               highlightStyle={{
-                backgroundColor: 'yellow',
+                backgroundColor:
+                  scheme == 'dark'
+                    ? config.tokens.colors.yellow600
+                    : config.tokens.colors.yellow300,
               }}
               searchWords={[highlight]}
               textToHighlight={song.fuente || '--'}

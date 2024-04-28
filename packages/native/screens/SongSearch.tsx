@@ -60,7 +60,7 @@ export const SongSearch = () => {
           return (
             <Text
               fontWeight="bold"
-              bg="$backgroundDark100"
+              $dark-bg="$backgroundDark800"
               sx={{
                 '@base': {
                   p: '$2',
@@ -105,7 +105,6 @@ export const SongSearch = () => {
                   {i18n.t(item.title_key)}
                 </Text>
                 <Text
-                  color="$backgroundDark500"
                   sx={{
                     '@base': {
                       fontSize: '$sm',

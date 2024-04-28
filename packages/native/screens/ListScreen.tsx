@@ -104,7 +104,8 @@ const SwipeableRow = (props: { item: ListForUI }) => {
           p="$3"
           alignItems="center"
           borderBottomWidth={1}
-          borderBottomColor="$light200">
+          $light-borderBottomColor="$light200"
+          $dark-borderBottomColor="$light600">
           <Icon
             as={BookmarkIcon}
             size={media.md ? 'xxl' : 'xl'}

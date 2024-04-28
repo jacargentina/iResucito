@@ -7,6 +7,7 @@ import { GluestackUIProvider } from '@gluestack-ui/themed';
 import { config } from './config/gluestack-ui.config';
 import { RootNavigator } from './navigation';
 import { useFonts } from 'expo-font';
+import { useColorScheme } from 'react-native';
 
 Sentry.init({
   dsn: 'https://645393af749a4f3da9d8074330a25da3@o469156.ingest.sentry.io/5498083',
@@ -21,8 +22,10 @@ const App = () => {
     'Franklin Gothic Regular': require('./fonts/FranklinGothicRegular.ttf'),
   });
 
+  const scheme = useColorScheme();
+  const colorMode = scheme == null ? undefined : scheme;
   return (
-    <GluestackUIProvider config={config}>
+    <GluestackUIProvider colorMode={colorMode} config={config}>
       <MenuProvider backHandler={true}>
         <NavigationContainer
           onReady={() => {

@@ -20,6 +20,7 @@ import {
   SettingsIcon,
   UsersIcon,
 } from 'lucide-react-native';
+import { useColorScheme } from 'react-native';
 
 export type MenuParamList = {
   Songs: undefined;
@@ -43,6 +44,7 @@ const getTabOptions = (
   route?: any,
   showTabOnlyOn?: string
 ) => {
+  var scheme = useColorScheme();
   var tabOptions: BottomTabNavigationOptions = {
     tabBarStyle: media.md
       ? {
@@ -67,16 +69,27 @@ const getTabOptions = (
       tabOptions.tabBarStyle = { display: 'none' };
     }
   }
+  tabOptions.tabBarStyle = {
+    backgroundColor:
+      scheme == 'dark'
+        ? config.tokens.colors.backgroundDark900
+        : config.tokens.colors.light50,
+  };
+
   return tabOptions;
 };
 
 var GetScreenOptions = () => {
+  var scheme = useColorScheme();
   var options = {
     headerShown: false,
     tabBarShowLabel: false,
     tabBarActiveTintColor: config.tokens.colors.rose600,
     tabBarStyle: {
-      backgroundColor: config.tokens.colors.light50,
+      backgroundColor:
+        scheme == 'dark'
+          ? config.tokens.colors.backgroundDark200
+          : config.tokens.colors.light50,
       borderTopColor: config.tokens.colors.rose300,
       borderTopWidth: 1,
     },

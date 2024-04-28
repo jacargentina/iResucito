@@ -236,8 +236,7 @@ export const SongList = (props: {
             fontSize: '$xl',
           },
         }}
-        bg="$backgroundDark100"
-        color="$textDark500">
+        $dark-bg="$backgroundDark800">
         {totalText}
       </Text>
       <FlashList

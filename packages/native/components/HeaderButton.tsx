@@ -17,7 +17,12 @@ export const HeaderButton = (props: {
     throw Error('No hay icono con nombre ' + iconName);
   }
   return (
-    <Button testID={testID} onPress={onPress} borderWidth={0} px="$3">
+    <Button
+      testID={testID}
+      onPress={onPress}
+      borderWidth={0}
+      px="$3"
+      bg="transparent">
       {iconName ? (
         <ButtonIcon
           as={icons[iconName]}

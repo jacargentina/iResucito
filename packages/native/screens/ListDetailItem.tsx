@@ -7,6 +7,7 @@ import {
   Input,
   Pressable,
   Button,
+  InputField,
 } from '@gluestack-ui/themed';
 import { View } from 'react-native';
 import {
@@ -134,7 +135,7 @@ const ListDetailItem = (props: {
         <HStack space="sm" width="100%" alignItems="center">
           <Icon w="10%" as={BookIcon} color="$info500" />
           <Input w="90%">
-            <Input.Input
+            <InputField
               onChangeText={(text) => {
                 useListsStore.getState().setList(listName, listKey, text);
               }}
@@ -158,7 +159,7 @@ const ListDetailItem = (props: {
       <HStack p="$2" space="sm" width="100%" alignItems="center">
         <Icon w="10%" as={UserIcon} color="$info500" />
         <Input w="80%">
-          <Input.Input
+          <InputField
             onChangeText={(text) => {
               useListsStore.getState().setList(listName, listKey, text);
             }}
@@ -236,7 +237,12 @@ const ListDetailItem = (props: {
   if (typeof listKey === 'string') {
     var friendlyText = getLocalizedListItem(listKey).toUpperCase();
     separator = (
-      <Text fontWeight="bold" p="$2" fontSize="$sm" bg="$backgroundDark100">
+      <Text
+        fontWeight="bold"
+        p="$2"
+        fontSize="$sm"
+        $dark-bg="$backgroundDark800"
+        $light-bg="$backgroundDark100">
         {friendlyText}
       </Text>
     );

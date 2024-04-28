@@ -15,7 +15,8 @@ export const ContactListItem = (props: {
         p="$2"
         alignItems="center"
         borderBottomWidth={1}
-        borderBottomColor="$light200">
+        $light-borderBottomColor="$light200"
+        $dark-borderBottomColor="$light600">
         <ContactPhoto item={item} />
         <VStack w="75%">
           <Text fontWeight="bold" fontSize="$lg" numberOfLines={1}>

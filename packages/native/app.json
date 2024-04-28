@@ -5,7 +5,6 @@
     "version": "8.0.0",
     "orientation": "default",
     "icon": "./img/cristo.png",
-    "userInterfaceStyle": "dark",
     "splash": {
       "image": "./img/bootsplash_logo.png",
       "resizeMode": "contain",

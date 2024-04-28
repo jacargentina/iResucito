@@ -2,15 +2,21 @@ import i18n from '@iresucito/translations';
 import { config } from '../config/gluestack-ui.config';
 import { StackNavigationOptions } from '@react-navigation/stack';
 import { useMedia } from '@gluestack-style/react';
+import { useColorScheme } from 'react-native';
 
 export const useStackNavOptions = () => {
   const media = useMedia();
+  const scheme = useColorScheme();
   let options: StackNavigationOptions = {
     cardStyle: {
-      backgroundColor: 'white',
+      backgroundColor:
+        scheme == 'dark' ? config.tokens.colors.backgroundDark900 : 'white',
     },
     headerStyle: {
-      backgroundColor: config.tokens.colors.rose500,
+      backgroundColor:
+        scheme == 'dark'
+          ? config.tokens.colors.rose900
+          : config.tokens.colors.rose500,
     },
     headerTitleStyle: {
       color: 'white',

@@ -227,7 +227,6 @@ export const SettingsScreen = () => {
       </HStack>
       <Box
         flex={1}
-        bg="white"
         alignItems="center"
         justifyContent="space-around">
         <Image
