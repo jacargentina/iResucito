@@ -6,6 +6,7 @@
     "start": "expo start --ios",
     "test": "node node_modules/jest/bin/jest.js --watch",
     "rebuild": "yarn expo prebuild --clean",
+    "publish": " npx standard-version --release-as minor; npx run publish-ios; npx run publish-android",
     "publish-android": "eas build --platform android --profile production --auto-submit",
     "publish-ios": "eas build --platform ios --profile production --auto-submit",
     "clean": "watchman watch-del-all",
@@ -14,7 +15,9 @@
   },
   "workspaces": {
     "nohoist": [
-      "@gluestack-ui/**"
+      "@gluestack-ui/**",
+      "standard-version",
+      "standard-version-expo"
     ]
   },
   "dependencies": {
