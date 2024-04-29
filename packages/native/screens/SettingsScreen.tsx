@@ -225,10 +225,7 @@ export const SettingsScreen = () => {
           }
         />
       </HStack>
-      <Box
-        flex={1}
-        alignItems="center"
-        justifyContent="space-around">
+      <Box flex={1} alignItems="center" justifyContent="space-around">
         <Image
           source={cristo}
           style={{
@@ -238,7 +235,7 @@ export const SettingsScreen = () => {
           resizeMode="contain"
         />
         <Heading
-          color="$rose500"
+          color="$primary500"
           mt="$10"
           fontSize={media.md ? 34 : undefined}
           fontWeight="bold"
@@ -260,14 +257,18 @@ export const SettingsScreen = () => {
           })}
         </Text>
         <HStack my="$5">
-          <Button m="$5" bg="$rose500" borderRadius={32} onPress={sendMail}>
+          <Button m="$5" bg="$primary500" borderRadius={32} onPress={sendMail}>
             <Icon
               as={MailIcon}
               color="white"
               size={media.md ? 'xl' : undefined}
             />
           </Button>
-          <Button m="$5" bg="$rose500" borderRadius={32} onPress={sendTwitter}>
+          <Button
+            m="$5"
+            bg="$primary500"
+            borderRadius={32}
+            onPress={sendTwitter}>
             <Icon
               as={Twitter}
               color="white"
@@ -278,14 +279,18 @@ export const SettingsScreen = () => {
         <Text fontSize={media.md ? '$xl' : '$sm'} textAlign="center">
           {i18n.t('ui.contribute message')}
         </Text>
-        <Button my="$8" size={media.md ? 'xl' : 'sm'} onPress={goEditor}>
+        <Button
+          my="$8"
+          bg="$primary500"
+          size={media.md ? 'xl' : 'sm'}
+          onPress={goEditor}>
           <Icon as={ChromeIcon} color="white" mr="$2" />
           <ButtonText>{i18n.t('ui.contribute button')}</ButtonText>
         </Button>
         {settingsExists && (
           <Button
             my="$8"
-            bg="$rose500"
+            bg="$primary500"
             borderRadius={32}
             size={media.md ? 'xl' : 'sm'}
             onPress={clearSettings}>

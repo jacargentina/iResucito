@@ -7,8 +7,8 @@
     "icon": "./img/cristo.png",
     "splash": {
       "image": "./img/bootsplash_logo.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#FFFFFF"
+      "resizeMode": "cover",
+      "backgroundColor": "#881337" // primary900
     },
     "assetBundlePatterns": [
       "**/*",

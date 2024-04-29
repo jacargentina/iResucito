@@ -21,8 +21,8 @@ export const HeaderButton = (props: {
       testID={testID}
       onPress={onPress}
       borderWidth={0}
-      px="$3"
-      bg="transparent">
+      px="$2"
+      bg="$primary900">
       {iconName ? (
         <ButtonIcon
           as={icons[iconName]}

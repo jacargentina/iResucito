@@ -158,16 +158,27 @@ export const SongViewFrame = (props: any) => {
           alignItems="center"
           justifyContent="space-between"
           backgroundColor="#efefef">
-          <Button onPress={zoomOut} h="85%" w="18%" rounded="$2xl">
+          <Button
+            onPress={zoomOut}
+            h="85%"
+            w="18%"
+            rounded="$2xl"
+            bg="$primary500">
             <Icon as={MinusIcon} color="white" size={media.md ? 'xxl' : 'xl'} />
           </Button>
           <Text
             fontWeight="bold"
+            color="black"
             fontSize={media.md ? '$5xl' : '$3xl'}
             lineHeight={media.md ? '$5xl' : '$3xl'}>
             {zoomLevel}
           </Text>
-          <Button onPress={zoomIn} h="85%" w="18%" rounded="$2xl">
+          <Button
+            onPress={zoomIn}
+            h="85%"
+            w="18%"
+            rounded="$2xl"
+            bg="$primary500">
             <Icon as={PlusIcon} color="white" size={media.md ? 'xxl' : 'xl'} />
           </Button>
         </HStack>

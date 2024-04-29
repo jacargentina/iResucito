@@ -15,8 +15,8 @@ export const useStackNavOptions = () => {
     headerStyle: {
       backgroundColor:
         scheme == 'dark'
-          ? config.tokens.colors.rose900
-          : config.tokens.colors.rose500,
+          ? config.tokens.colors.primary900
+          : config.tokens.colors.primary500,
     },
     headerTitleStyle: {
       color: 'white',
