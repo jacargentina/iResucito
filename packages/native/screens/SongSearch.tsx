@@ -61,6 +61,7 @@ export const SongSearch = () => {
             <Text
               fontWeight="bold"
               $dark-bg="$backgroundDark800"
+              $light-bg="$backgroundDark100"
               sx={{
                 '@base': {
                   p: '$2',
