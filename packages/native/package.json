@@ -1,23 +1,21 @@
 {
   "name": "@iresucito/native",
-  "version": "8.0.0",
+  "version": "8.1.0",
   "private": true,
   "scripts": {
     "start": "expo start --ios",
     "test": "node node_modules/jest/bin/jest.js --watch",
-    "rebuild": "yarn expo prebuild --clean",
-    "publish": " npx standard-version --release-as minor; npx run publish-ios; npx run publish-android",
-    "publish-android": "eas build --platform android --profile production --auto-submit",
-    "publish-ios": "eas build --platform ios --profile production --auto-submit",
+    "rebuild": "npx expo prebuild --clean",
+    "publish": "npx standard-version -r patch; yarn run publish-ios; yarn run publish-android",
+    "publish-android": "eas build --non-interactive --platform android --profile production --auto-submit",
+    "publish-ios": "eas build --non-interactive --platform ios --profile production --auto-submit",
     "clean": "watchman watch-del-all",
     "android": "expo run:android",
     "ios": "expo run:ios"
   },
   "workspaces": {
     "nohoist": [
-      "@gluestack-ui/**",
-      "standard-version",
-      "standard-version-expo"
+      "@gluestack-ui/**"
     ]
   },
   "dependencies": {

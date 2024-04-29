@@ -8,15 +8,15 @@ module.exports = {
     },
     {
       filename: 'app.json',
-      updater: require.resolve('standard-version-expo'),
+      updater: require.resolve('@mccraveiro/standard-version-expo'),
     },
     {
       filename: 'app.json',
-      updater: require.resolve('standard-version-expo/android/increment'),
+      updater: require.resolve('@mccraveiro/standard-version-expo/android/increment'),
     },
     {
       filename: 'app.json',
-      updater: require.resolve('standard-version-expo/ios/increment'),
+      updater: require.resolve('@mccraveiro/standard-version-expo/ios/increment'),
     },
   ],
 };

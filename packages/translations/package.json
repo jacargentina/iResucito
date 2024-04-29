@@ -11,8 +11,8 @@
   "types": "dist/index.d.ts",
   "private": true,
   "dependencies": {
-    "@types/i18n-js": "^3.8.5",
-    "i18n-js": "^4.3.2",
-    "typescript": "^5.4.3"
+    "@types/i18n-js": "^3.8.9",
+    "i18n-js": "^4.4.3",
+    "typescript": "^5.4.5"
   }
 }
