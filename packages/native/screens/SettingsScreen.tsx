@@ -148,14 +148,15 @@ export const SettingsScreen = () => {
         </Text>
         <Text
           fontSize={media.md ? '$xl' : '$sm'}
-          color="$backgroundDark500"
+          $dark-color="$backgroundDark300"
+          $light-color="$backgroundDark500"
           mb="$2">
           {i18n.t('settings_note.locale')}
         </Text>
         <Select
           testID="locale-input"
           selectedValue={locale}
-          selectedLabel={currentLocale?.label}
+          initialLabel={currentLocale?.label}
           onValueChange={(val) => {
             useSettingsStore.setState({ locale: val });
           }}>
@@ -178,7 +179,10 @@ export const SettingsScreen = () => {
         </Select>
         <HStack space="sm" p="$3" justifyContent="center" alignItems="center">
           <Icon as={LineChart} size={media.md ? 'xl' : 'md'} />
-          <Text fontSize={media.md ? '$xl' : '$sm'} color="$backgroundDark500">
+          <Text
+            fontSize={media.md ? '$xl' : '$sm'}
+            $dark-color="$backgroundDark300"
+            $light-color="$backgroundDark500">
             {songsResume}
           </Text>
         </HStack>
@@ -192,7 +196,10 @@ export const SettingsScreen = () => {
           <Text fontSize={media.md ? '$2xl' : undefined}>
             {i18n.t('settings_title.keep awake')}
           </Text>
-          <Text fontSize={media.md ? '$xl' : '$sm'} color="$backgroundDark500">
+          <Text
+            fontSize={media.md ? '$xl' : '$sm'}
+            $dark-color="$backgroundDark300"
+            $light-color="$backgroundDark500">
             {i18n.t('settings_note.keep awake')}
           </Text>
         </VStack>
@@ -213,7 +220,10 @@ export const SettingsScreen = () => {
           <Text fontSize={media.md ? '$2xl' : undefined}>
             {i18n.t('settings_title.ratings enabled')}
           </Text>
-          <Text fontSize={media.md ? '$xl' : '$sm'} color="$backgroundDark500">
+          <Text
+            fontSize={media.md ? '$xl' : '$sm'}
+            $dark-color="$backgroundDark300"
+            $light-color="$backgroundDark500">
             {i18n.t('settings_note.ratings enabled')}
           </Text>
         </VStack>

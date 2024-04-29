@@ -33,7 +33,8 @@ export const CallToAction = (props: {
           flex={3}
           justifyContent="space-around"
           borderBottomWidth={1}
-          borderBottomColor="$light200">
+          $dark-borderBottomColor="$light500"
+          $light-borderBottomColor="$light200">
           <Icon
             as={props.icon}
             // @ts-ignore
@@ -67,7 +68,8 @@ export const CallToAction = (props: {
             isDisabled={props.buttonDisabled}
             alignSelf="center"
             w={media.md ? '85%' : undefined}
-            size={media.md ? 'xl' : undefined}>
+            size={media.md ? 'xl' : undefined}
+            bg="$primary500">
             <ButtonText>{props.buttonText}</ButtonText>
           </Button>
         </Box>

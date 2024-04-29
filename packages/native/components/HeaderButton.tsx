@@ -22,7 +22,8 @@ export const HeaderButton = (props: {
       onPress={onPress}
       borderWidth={0}
       px="$2"
-      bg="$primary900">
+      // @ts-ignore
+      bgColor={options.headerStyle.backgroundColor}>
       {iconName ? (
         <ButtonIcon
           as={icons[iconName]}
