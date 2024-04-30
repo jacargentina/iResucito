@@ -7,18 +7,12 @@
     ]
   },
   "scripts": {
-    "build": "turbo run build",
-    "test": "turbo run test",
-    "lint": "turbo run lint",
-    "dev": "turbo run dev",
-    "ts": "turbo run ts",
+    "build": "yarn workspaces foreach --topological-dev -pi run build",
     "reset": "find . -type dir -name node_modules | xargs rm -rf && rm -rf yarn.lock && yarn",
-    "web": "yarn build && cd packages/web && yarn dev",
-    "vercel": "yarn vercel build --prod && yarn vercel deploy --prod --prebuilt"
+    "web": "yarn build && cd packages/web && yarn dev"
   },
   "dependencies": {
-    "react-native-cli": "^2.0.1",
-    "turbo": "^1.13.3"
+    "react-native-cli": "^2.0.1"
   },
   "resolutions": {
     "@expo/config-plugins": "~7.8.0"

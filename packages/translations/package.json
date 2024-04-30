@@ -4,8 +4,7 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "build": "yarn tsc -b",
-    "postinstall": "yarn run build"
+    "build": "yarn tsc -b"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
