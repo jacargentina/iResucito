@@ -10,13 +10,13 @@ export let action: ActionFunction = async ({ request, params }) => {
   const availableLocales = getLocalesForPicker();
   // Buscar coincidencia completa (es-419, es-PE)
   var search = availableLocales.find((v) => v.value == locale);
-  console.log(`lang ${locale} valid?: ${search != undefined ? 'YES' : 'NO'}`);
+  //console.log(`lang ${locale} valid?: ${search != undefined ? 'YES' : 'NO'}`);
   if (search == undefined && locale?.split('-').length == 2) {
     // Ej "es-419", buscar "es"
     search = availableLocales.find((v) => v.value == locale?.split('-')[0]);
-    console.log(
-      `lang ${locale?.split('-')[0]} ?: ${search != undefined ? 'YES' : 'NO'}`
-    );
+    // console.log(
+    //   `lang ${locale?.split('-')[0]} ?: ${search != undefined ? 'YES' : 'NO'}`
+    // );
   }
 
   if (!search) {
@@ -25,7 +25,6 @@ export let action: ActionFunction = async ({ request, params }) => {
   }
 
   session.set('locale', search.value);
-  console.log('lang set', search.value);
 
   return json(
     { newLocale: locale },
