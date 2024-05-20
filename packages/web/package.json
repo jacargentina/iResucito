@@ -11,7 +11,7 @@
     "dev": "remix vite:dev",
     "start": "remix-serve ./build/server/index.js",
     "debug": "node --inspect ./node_modules/.bin/remix vite:dev",
-    "postinstallX": "cp ./node_modules/pdfjs-dist/build/pdf.worker.mjs* ./public"
+    "postinstall": "cp ./node_modules/pdfjs-dist/build/pdf.worker.mjs* ./public"
   },
   "dependencies": {
     "@iresucito/core": "*",
