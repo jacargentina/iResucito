@@ -13,43 +13,32 @@ import {
 } from '@iresucito/core';
 import PDFDocument from 'pdfkit';
 
-function getPath(url: string) {
-  let result = new URL(url);
-  let pathname = result.pathname;
-  let pathArray = pathname.split('/');
-  let basename = pathArray.pop();
-  let dirname = pathArray.join('/');
-
-  return { pathname, dirname, basename };
-}
-
 export async function generatePDF(
   songsToPdf: Array<SongToPdf<PdfStyle>>,
   opts: SongStyles<PdfStyle>,
   filename: string,
   addIndex: boolean
 ): Promise<string | undefined> {
-  const folder = os.tmpdir();
-  const pdfPath = `${folder}/${filename}.pdf`;
+  var r, m: ArrayBuffer;
 
-  // packages/web/app
-  const { dirname } = getPath(import.meta.url);
-
-  // packages/web
-  const base = path.dirname(dirname);
-
-  const regular = path.resolve(`${base}/public/FranklinGothicRegular.ttf`);
-  const medium = path.resolve(`${base}/public/FranklinGothicMedium.ttf`);
-
-  var writer = new PdfWriter(
-    PDFDocument,
-    Buffer.from(fs.readFileSync(regular)),
-    Buffer.from(fs.readFileSync(medium)),
-    new Base64Encode(),
-    opts
-  );
+  if (process.env.VERCEL_URL) {
+    const regularFetch = await fetch(
+      `https://${process.env.VERCEL_URL}/FranklinGothicRegular.ttf`
+    );
+    r = await regularFetch.arrayBuffer();
+    const mediumFetch = await fetch(
+      `https://${process.env.VERCEL_URL}/FranklinGothicMedium.ttf`
+    );
+    m = await mediumFetch.arrayBuffer();
+  } else {
+    r = fs.readFileSync(path.resolve('./public/FranklinGothicRegular.ttf'));
+    m = fs.readFileSync(path.resolve('./public/FranklinGothicMedium.ttf'));
+  }
+  var writer = new PdfWriter(PDFDocument, r, m, new Base64Encode(), opts);
   const base64 = await SongPDFGenerator(songsToPdf, opts, writer, addIndex);
   if (base64) {
+    const folder = os.tmpdir();
+    const pdfPath = `${folder}/${filename}.pdf`;
     fs.writeFileSync(pdfPath, Buffer.from(base64, 'base64'));
     return pdfPath;
   }
