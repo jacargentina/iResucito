@@ -7,7 +7,7 @@
   },
   "scripts": {
     "build": "npm run build --workspaces",
-    "reset": "find . -type dir -name node_modules | xargs rm -rf && npm install",
+    "reset": "find . -type dir -name node_modules | xargs rm -rf && rm -f package-lock.json && npm install",
     "web": "npm run build && cd packages/web && npm run dev"
   },
   "dependencies": {
