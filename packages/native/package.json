@@ -85,7 +85,6 @@
     "react-navigation-backhandler": "^2.0.2",
     "react-test-renderer": "^18.2.0",
     "sentry-expo": "~7.0.0",
-    "turbo": "^1.12.4",
     "typescript": "~5.3.3",
     "use-debounce": "^10.0.0",
     "use-undo": "^1.1.1",
