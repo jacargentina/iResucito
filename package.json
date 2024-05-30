@@ -6,11 +6,12 @@
     ]
   },
   "scripts": {
-    "build": "npm run build --workspaces",
-    "reset": "find . -type dir -name node_modules | xargs rm -rf && rm -f package-lock.json && npm install",
-    "web": "npm run build && cd packages/web && npm run dev"
+    "build": "yarn workspaces foreach -A run build",
+    "reset": "find . -type dir -name node_modules | xargs rm -rf && rm -f yarn.lock && yarn install",
+    "web": "yarn run build && cd packages/web && yarn run dev"
   },
   "dependencies": {
     "react-native-cli": "^2.0.1"
-  }
+  },
+  "packageManager": "yarn@4.2.2"
 }

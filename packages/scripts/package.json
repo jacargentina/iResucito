@@ -6,10 +6,10 @@
   "types": "./dist/index.d.js",
   "dependencies": {
     "@iresucito/core": "*",
+    "@types/base64-stream": "^1.0.5",
     "commander": "^12.0.0",
-    "os-locale": "^6.0.2",
     "open": "^10.1.0",
-    "translate-json-object": "^2.3.7",
-    "@types/base64-stream": "^1.0.5"
+    "os-locale": "^6.0.2",
+    "translate-json-object": "^2.3.7"
   }
 }

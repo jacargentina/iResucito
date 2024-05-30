@@ -33,6 +33,7 @@
     "@types/country-list": "^2.1.4",
     "@types/langs": "^2.0.5",
     "@types/lodash": "^4.17.0",
+    "@types/pdfkit": "^0.13.4",
     "copyfiles": "^2.4.1",
     "country-list": "^2.3.0",
     "dropbox": "^10.34.0",
@@ -41,7 +42,6 @@
     "langs": "^2.0.0",
     "lodash": "^4.17.21",
     "normalize-strings": "^1.1.1",
-    "@types/pdfkit": "^0.13.4",
     "pdfkit": "^0.15.0",
     "typescript": "^5.4.5"
   },

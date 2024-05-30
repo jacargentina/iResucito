@@ -5,7 +5,7 @@
   "scripts": {
     "start": "expo start --ios",
     "test": "node node_modules/jest/bin/jest.js --watch",
-    "rebuild": "npx expo prebuild --clean",
+    "rebuild": "npx expo prebuild --clean; rm -f ios/.xcode.env.local",
     "publish": "npx standard-version -r patch; npm run publish-ios; npm run publish-android",
     "publish-android": "eas build --non-interactive --platform android --profile production --auto-submit",
     "publish-ios": "eas build --non-interactive --platform ios --profile production --auto-submit",
