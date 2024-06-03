@@ -8,7 +8,7 @@
     "build-cjs": "npx tsc -b tsconfig.cjs.json; echo '{\"type\": \"commonjs\"}' > ./dist/cjs/src/package.json",
     "build-esm": "npx tsc -b tsconfig.esm.json; echo '{\"type\": \"module\"}' > ./dist/esm/src/package.json",
     "build-types": "npx tsc -b tsconfig.types.json",
-    "build": "npm run build-cjs; npm run build-esm; npm run build-types",
+    "build": "yarn run build-cjs; yarn run build-esm; yarn run build-types",
     "patch": "esno src/applyPatch.ts",
     "test": "esno src/test.ts",
     "test-no-funciona": "// ver comentarios en jest.config.js"

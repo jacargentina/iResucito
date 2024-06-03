@@ -11,7 +11,8 @@
     "publish-ios": "eas build --non-interactive --platform ios --profile production --auto-submit",
     "clean": "watchman watch-del-all",
     "android": "expo run:android",
-    "ios": "expo run:ios"
+    "ios": "expo run:ios",
+    "postinstall": "cd ../.. && yarn build"
   },
   "dependencies": {
     "@codler/react-native-keyboard-aware-scroll-view": "^2.0.1",
