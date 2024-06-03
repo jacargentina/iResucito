@@ -3119,6 +3119,7 @@ __metadata:
     "@types/react": "npm:^18.2.74"
     "@types/react-dom": "npm:^18.2.24"
     "@types/react-json-editor-ajrm": "npm:^2.5.6"
+    "@ungap/with-resolvers": "npm:^0.1.0"
     "@vercel/node": "npm:^3.0.26"
     "@vercel/remix": "npm:^2.8.1"
     base64-stream: "npm:^1.0.0"
@@ -6966,6 +6967,13 @@ __metadata:
   dependencies:
     "@types/yargs-parser": "npm:*"
   checksum: 10c0/2095e8aad8a4e66b86147415364266b8d607a3b95b4239623423efd7e29df93ba81bb862784a6e08664f645cc1981b25fd598f532019174cd3e5e1e689e1cccf
+  languageName: node
+  linkType: hard
+
+"@ungap/with-resolvers@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "@ungap/with-resolvers@npm:0.1.0"
+  checksum: 10c0/1f1063e5e9a605cd1250c14567f9de3e04fc9fabe6f9b72850405f1e69ab672e748e1b1cec4da91be8e1e2cf222517f2d2e132073a6bb072aa2869543f482365
   languageName: node
   linkType: hard
 
