@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native';
-import * as Sentry from 'sentry-expo';
+import * as Sentry from '@sentry/react-native';
 import { StatusBar } from 'expo-status-bar';
 import * as SplashScreen from 'expo-splash-screen';
 import { MenuProvider } from 'react-native-popup-menu';
@@ -11,7 +11,7 @@ import { useColorScheme } from 'react-native';
 
 Sentry.init({
   dsn: 'https://645393af749a4f3da9d8074330a25da3@o469156.ingest.sentry.io/5498083',
-  enableInExpoDevelopment: true,
+  enabled: __DEV__,
 });
 
 SplashScreen.preventAutoHideAsync();
@@ -44,4 +44,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Sentry.wrap(App);

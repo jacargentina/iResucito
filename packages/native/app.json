@@ -11,20 +11,14 @@
       "resizeMode": "cover",
       "backgroundColor": "#881337"
     },
-    "assetBundlePatterns": [
-      "**/*",
-      "../core/assets/**/*"
-    ],
+    "assetBundlePatterns": ["**/*", "../core/assets/**/*"],
     "ios": {
       "bundleIdentifier": "com.javiercastro.iresucito",
       "infoPlist": {
         "CFBundleAllowMixedLocalizations": true,
-        "UIRequiredDeviceCapabilities": [
-          "armv7",
-          "gamekit"
-        ]
+        "UIRequiredDeviceCapabilities": ["armv7", "gamekit"]
       },
-      "buildNumber": "34",
+      "buildNumber": "36",
       "requireFullScreen": true,
       "supportsTablet": true,
       "config": {
@@ -49,7 +43,7 @@
         "android.permission.READ_CONTACTS",
         "android.permission.WRITE_CONTACTS"
       ],
-      "versionCode": 150
+      "versionCode": 151
     },
     "androidStatusBar": {
       "hidden": true
@@ -62,22 +56,17 @@
           "contactsPermission": "The application allows you to select which of your contacts are brothers of the community, to use their names in creating the Lists. Data is stored locally, not uploaded to any server."
         }
       ],
-      "sentry-expo",
+      [
+        "@sentry/react-native/expo",
+        {
+          "organization": "javier-castro",
+          "project": "iresucito"
+        }
+      ],
       "expo-build-properties",
       "expo-font",
       "expo-asset"
     ],
-    "hooks": {
-      "postPublish": [
-        {
-          "file": "sentry-expo/upload-sourcemaps",
-          "config": {
-            "organization": "javier-castro",
-            "project": "iresucito"
-          }
-        }
-      ]
-    },
     "extra": {
       "eas": {
         "projectId": "052a0ed0-b388-416d-bd7b-911680ab75d4"
