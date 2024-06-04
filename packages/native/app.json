@@ -11,14 +11,20 @@
       "resizeMode": "cover",
       "backgroundColor": "#881337"
     },
-    "assetBundlePatterns": ["**/*", "../core/assets/**/*"],
+    "assetBundlePatterns": [
+      "**/*",
+      "../core/assets/**/*"
+    ],
     "ios": {
       "bundleIdentifier": "com.javiercastro.iresucito",
       "infoPlist": {
         "CFBundleAllowMixedLocalizations": true,
-        "UIRequiredDeviceCapabilities": ["armv7", "gamekit"]
+        "UIRequiredDeviceCapabilities": [
+          "armv7",
+          "gamekit"
+        ]
       },
-      "buildNumber": "36",
+      "buildNumber": "37",
       "requireFullScreen": true,
       "supportsTablet": true,
       "config": {
