@@ -2,6 +2,9 @@
   "name": "@iresucito/native",
   "version": "8.1.1",
   "private": true,
+  "installConfig": {
+    "hoistingLimits": "workspaces"
+  },
   "scripts": {
     "start": "expo start --ios",
     "test": "node node_modules/jest/bin/jest.js --watch",

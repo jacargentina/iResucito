@@ -6,12 +6,15 @@
   "type": "module",
   "description": "iResucito webapp",
   "license": "MIT",
+  "installConfig": {
+    "hoistingLimits": "workspaces"
+  },
   "scripts": {
     "build": "remix vite:build",
     "dev": "remix vite:dev",
     "start": "remix-serve ./build/server/index.js",
     "debug": "node --inspect ./node_modules/.bin/remix vite:dev",
-    "postinstall": "cp ../../node_modules/pdfjs-dist/build/pdf.worker.mjs* ./public"
+    "postinstall": "cp ./node_modules/pdfjs-dist/build/pdf.worker.mjs* ./public"
   },
   "dependencies": {
     "@iresucito/core": "*",
