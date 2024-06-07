@@ -51,7 +51,6 @@ const PdfContextWrapper = (props: any) => {
         }
       })
       .then((data) => {
-        setLoading(false);
         if (data instanceof Blob) {
           setPdfUrl(window.URL.createObjectURL(new Blob([data])));
         } else {
@@ -64,7 +63,6 @@ const PdfContextWrapper = (props: any) => {
 
   useEffect(() => {
     if (pdfUrl) {
-      setLoading(true);
       const loadingTask = pdfjsLib.getDocument(pdfUrl);
       loadingTask.promise
         .then((doc) => {

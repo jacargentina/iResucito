@@ -49,20 +49,18 @@ const SongList = (props: { songs: Array<Song> }) => {
     return songs.filter((s) => s.notTranslated === true).length;
   }, [songs]);
 
-  const savedSettings =
-    typeof localStorage !== 'undefined'
-      ? localStorage.getItem('pdfExportOptions')
-      : undefined;
-
   const {
     previewPdf,
     pdf,
+    loading: pdfLoading,
     numPages,
     currPage,
     setCurrPage,
     downloadPdf,
     closePdf,
   } = usePdf();
+
+  const isProcessing = loading || pdfLoading;
 
   const [filters, setFilters] = useState(() => {
     if (typeof localStorage !== 'undefined') {
@@ -193,30 +191,36 @@ const SongList = (props: { songs: Array<Song> }) => {
         {pdf && (
           <>
             <Menu.Item>
-              <Button
-                size="mini"
-                floated="right"
-                onClick={() => {
-                  setActiveDialog('pdfSettings');
-                  setDialogCallback(() => {
-                    return () => previewPdf('full', '');
-                  });
-                }}>
-                <Icon name="setting" />
-                {i18n.t('screen_title.settings')}
-              </Button>
+              <Button.Group size="mini">
+                <Button
+                  size="mini"
+                  floated="right"
+                  onClick={() => {
+                    setActiveDialog('pdfSettings');
+                    setDialogCallback(() => {
+                      return () => previewPdf('full', '');
+                    });
+                  }}>
+                  <Icon name="setting" />
+                  {i18n.t('screen_title.settings')}
+                </Button>
+              </Button.Group>
             </Menu.Item>
             <Menu.Item>
-              <Button onClick={downloadPdf}>
-                <Icon name="file pdf" />
-                {i18n.t('ui.download')}
-              </Button>
+              <Button.Group size="mini">
+                <Button onClick={downloadPdf}>
+                  <Icon name="file pdf" />
+                  {i18n.t('ui.download')}
+                </Button>
+              </Button.Group>
             </Menu.Item>
             <Menu.Item position="right">
-              <Button onClick={closePdf}>
-                <Icon name="close" />
-                {i18n.t('ui.close')}
-              </Button>
+              <Button.Group size="mini">
+                <Button onClick={closePdf}>
+                  <Icon name="close" />
+                  {i18n.t('ui.close')}
+                </Button>
+              </Button.Group>
             </Menu.Item>
           </>
         )}
@@ -237,7 +241,9 @@ const SongList = (props: { songs: Array<Song> }) => {
                     }
                   />
                 )}
-                <Button onClick={() => previewPdf('full', '')}>
+                <Button
+                  onClick={() => previewPdf('full', '')}
+                  disabled={pdfLoading}>
                   <Icon name="file pdf" />
                   {i18n.t('share_action.view pdf')}
                 </Button>
@@ -285,7 +291,7 @@ const SongList = (props: { songs: Array<Song> }) => {
           </>
         )}
       </Menu>
-      {!pdf && !loading && (
+      {!pdf && !isProcessing && (
         <>
           <div style={{ padding: 10 }}>
             <Input
@@ -374,7 +380,7 @@ const SongList = (props: { songs: Array<Song> }) => {
           </List>
         </>
       )}
-      {loading && (
+      {isProcessing && (
         <div
           style={{
             height: '100%',
