@@ -12,6 +12,6 @@
   "dependencies": {
     "@types/i18n-js": "^3.8.9",
     "i18n-js": "^4.4.3",
-    "typescript": "^5.4.5"
+    "typescript": "^5.5.2"
   }
 }

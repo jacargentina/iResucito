@@ -32,7 +32,7 @@
   "dependencies": {
     "@types/country-list": "^2.1.4",
     "@types/langs": "^2.0.5",
-    "@types/lodash": "^4.17.0",
+    "@types/lodash": "^4.17.5",
     "@types/pdfkit": "^0.13.4",
     "copyfiles": "^2.4.1",
     "country-list": "^2.3.0",
@@ -43,13 +43,13 @@
     "lodash": "^4.17.21",
     "normalize-strings": "^1.1.1",
     "pdfkit": "^0.15.0",
-    "typescript": "^5.4.5"
+    "typescript": "^5.5.2"
   },
   "devDependencies": {
     "@types/jest": "^29.5.12",
     "esno": "^4.7.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
-    "ts-jest": "^29.1.2"
+    "ts-jest": "^29.1.5"
   }
 }
