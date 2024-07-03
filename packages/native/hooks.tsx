@@ -791,7 +791,7 @@ useSettingsStore.subscribe(
         {
           title_key: 'search_title.alpha',
           note_key: 'search_note.alpha',
-          chooser: i18n.t('search_tabs.all', { locale }),
+          chooser: i18n.t('search_tabs.all', { locale: i18n.locale }),
           params: { filter: null },
           badge: <AlphaBadge />,
         },
@@ -866,7 +866,7 @@ useSettingsStore.subscribe(
           note_key: 'search_note.entrance',
           params: { filter: { entrance: true } },
           badge: null,
-          chooser: i18n.t('search_tabs.entrance', { locale }),
+          chooser: i18n.t('search_tabs.entrance', { locale: i18n.locale }),
           chooser_listKey: ['entrada'],
         },
         {
@@ -875,7 +875,7 @@ useSettingsStore.subscribe(
           params: { filter: { 'peace and offerings': true } },
           badge: null,
           chooser: i18n.t('search_tabs.peace and offerings', {
-            locale,
+            locale: i18n.locale,
           }),
           chooser_listKey: ['paz'],
         },
@@ -885,7 +885,7 @@ useSettingsStore.subscribe(
           params: { filter: { 'fraction of bread': true } },
           badge: null,
           chooser: i18n.t('search_tabs.fraction of bread', {
-            locale,
+            locale: i18n.locale,
           }),
           chooser_listKey: ['comunion-pan'],
         },
@@ -894,7 +894,7 @@ useSettingsStore.subscribe(
           note_key: 'search_note.communion',
           params: { filter: { communion: true } },
           badge: null,
-          chooser: i18n.t('search_tabs.communion', { locale }),
+          chooser: i18n.t('search_tabs.communion', { locale: i18n.locale }),
           chooser_listKey: ['comunion-pan', 'comunion-caliz'],
         },
         {
@@ -902,7 +902,7 @@ useSettingsStore.subscribe(
           note_key: 'search_note.exit',
           params: { filter: { exit: true } },
           badge: null,
-          chooser: i18n.t('search_tabs.exit', { locale }),
+          chooser: i18n.t('search_tabs.exit', { locale: i18n.locale }),
           chooser_listKey: ['salida'],
         },
         {
@@ -911,7 +911,7 @@ useSettingsStore.subscribe(
           params: { filter: { 'signing to the virgin': true } },
           badge: null,
           chooser: i18n.t('search_tabs.signing to the virgin', {
-            locale,
+            locale: i18n.locale,
           }),
         },
         {

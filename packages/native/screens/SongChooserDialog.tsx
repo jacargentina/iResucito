@@ -1,6 +1,6 @@
 import type { StackScreenProps } from '@react-navigation/stack';
 import { useMemo, useCallback, useState } from 'react';
-import { useWindowDimensions } from 'react-native';
+import { useWindowDimensions, useColorScheme } from 'react-native';
 import { Text, Center, Spinner } from '@gluestack-ui/themed';
 import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
 import { ModalView } from '../components';
@@ -17,6 +17,7 @@ export const SongChooserDialog = (props: Props) => {
   const layout = useWindowDimensions();
   const { navigation, route } = props;
   const { searchItems } = useSettingsStore();
+  const scheme = useColorScheme();
   const { target } = route.params;
   const { listName, listKey, listKeyIndex } = target;
 
@@ -112,13 +113,22 @@ export const SongChooserDialog = (props: Props) => {
             </Center>
           );
         }}
-        renderTabBar={(p: any) => {
+        renderTabBar={(props: any) => {
           return (
             <TabBar
-              {...p}
+              key={props.key}
+              layout={props.layout}
+              position={props.position}
+              navigationState={props.navigationState}
+              jumpTo={props.jumpTo}
               scrollEnabled
               tabStyle={{ width: 'auto' }}
-              style={{ backgroundColor: 'white' }}
+              style={{
+                backgroundColor:
+                  scheme == 'dark'
+                    ? config.tokens.colors.backgroundDark950
+                    : config.tokens.colors.backgroundLight100,
+              }}
               indicatorStyle={{
                 backgroundColor: config.tokens.colors.rose500,
                 marginHorizontal: 3,
@@ -126,9 +136,14 @@ export const SongChooserDialog = (props: Props) => {
               renderLabel={({ route: currentRoute, focused, color }) => (
                 <Text
                   style={{
-                    color: focused
-                      ? config.tokens.colors.rose500
-                      : config.tokens.colors.light600,
+                    color:
+                      scheme == 'dark'
+                        ? focused
+                          ? config.tokens.colors.rose500
+                          : config.tokens.colors.textLight300
+                        : focused
+                        ? config.tokens.colors.rose500
+                        : config.tokens.colors.textDark600,
                     margin: 3,
                   }}>
                   {currentRoute.title}
