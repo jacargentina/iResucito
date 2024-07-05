@@ -1,5 +1,5 @@
 import { StackNavigationProp } from '@react-navigation/stack';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Alert, useColorScheme } from 'react-native';
 import {
   Box,
@@ -62,16 +62,7 @@ export const SongListItem = (props: {
   const { ratingsEnabled } = useSettingsStore();
   const { selection, enabled, toggle } = useSongsSelection();
   const { song, highlight, showBadge, viewButton, setSongSetting } = props;
-
   const [isCollapsed, setIsCollapsed] = useState(true);
-  const [firstHighlighted, setFirstHighlighted] = useState<
-    JSX.Element | undefined
-  >();
-  const [highlightedRest, setHighlightedRest] = useState<
-    JSX.Element | undefined
-  >();
-  const [openHighlightedRest, setOpenHighlightedRest] =
-    useState<JSX.Element | void>();
 
   const viewSong = () => {
     navigation.navigate('ViewSong', {
@@ -84,7 +75,7 @@ export const SongListItem = (props: {
     });
   };
 
-  useEffect(() => {
+  const highlightLines = useMemo(() => {
     if (
       highlight &&
       !song.error &&
@@ -94,7 +85,7 @@ export const SongListItem = (props: {
       const linesToHighlight = lines.filter((l) =>
         l.toLowerCase().includes(highlight.toLowerCase())
       );
-      var children = linesToHighlight.map((l, i) => {
+      return linesToHighlight.map((l, i) => {
         return (
           <Highlighter
             id="primeras-lineas"
@@ -118,42 +109,52 @@ export const SongListItem = (props: {
           />
         );
       });
-      setFirstHighlighted(children.shift());
-      if (children.length > 1) {
-        setHighlightedRest(
-          <Collapsible collapsed={isCollapsed}>{children}</Collapsible>
-        );
-        setOpenHighlightedRest(
-          <Pressable
-            id="resto-lineas"
-            onPress={() => {
-              setIsCollapsed(!isCollapsed);
-            }}>
-            <Badge>
-              <Badge.Text size={media.md ? '2xl' : 'sm'}>
-                {children.length}+
-              </Badge.Text>
-            </Badge>
-          </Pressable>
-        );
-      }
-    } else {
-      setFirstHighlighted(undefined);
-      setHighlightedRest(undefined);
-      setOpenHighlightedRest();
     }
-  }, [highlight, isCollapsed, song]);
+    return [];
+  }, [highlight, song.fullText]);
 
-  var widthPercentText = 100;
-  if (showBadge) {
-    widthPercentText -= 10;
-  }
-  if (viewButton) {
-    widthPercentText -= 10;
-  }
-  if (openHighlightedRest) {
-    widthPercentText -= 10;
-  }
+  const firstHighlighted = useMemo(() => {
+    if (highlightLines.length > 0) return highlightLines[0];
+  }, [highlightLines]);
+
+  const highlightedRest = useMemo(() => {
+    if (highlightLines.length > 1) {
+      return (
+        <Collapsible collapsed={isCollapsed}>
+          {highlightLines.slice(1)}
+        </Collapsible>
+      );
+    }
+  }, [highlightLines, isCollapsed]);
+
+  const openHighlightedRest = useMemo(() => {
+    if (highlightedRest)
+      return (
+        <Pressable
+          id="resto-lineas"
+          onPress={() => setIsCollapsed(!isCollapsed)}>
+          <Badge>
+            <Badge.Text size={media.md ? '2xl' : 'sm'}>
+              {highlightLines.length}+
+            </Badge.Text>
+          </Badge>
+        </Pressable>
+      );
+  }, [highlightedRest, highlightLines]);
+
+  const widthPercentText = useMemo(() => {
+    var value = 100;
+    if (showBadge) {
+      value -= 10;
+    }
+    if (viewButton) {
+      value -= 10;
+    }
+    if (openHighlightedRest) {
+      value -= 10;
+    }
+    return value;
+  }, [openHighlightedRest]);
 
   const isSelected = selection.includes(song.key);
 
@@ -187,7 +188,7 @@ export const SongListItem = (props: {
         )}
         <VStack space="sm" p="$2" w={`${widthPercentText}%`}>
           <VStack>
-            <HStack justifyContent={'space-between'}>
+            <HStack justifyContent="space-between">
               <Highlighter
                 id="titulo"
                 autoEscape
