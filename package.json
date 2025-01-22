@@ -13,7 +13,7 @@
   "dependencies": {
     "react-native-cli": "^2.0.1"
   },
-  "packageManager": "yarn@4.3.1",
+  "packageManager": "yarn@4.6.0",
   "resolutions": {
     "@expo/config-plugins": "9.0.0",
     "metro-resolver": "^0.81.0",
