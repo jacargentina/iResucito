@@ -1,4 +1,4 @@
-import { useAndroidBackHandler } from 'react-navigation-backhandler';
+import { useBackHandler } from '../useBackHandler';
 import { KeyboardAwareScrollView } from '@codler/react-native-keyboard-aware-scroll-view';
 import {
   Box,
@@ -22,7 +22,7 @@ export const CallToAction = (props: {
 }) => {
   const media = useMedia();
 
-  useAndroidBackHandler(() => {
+  useBackHandler(() => {
     return true;
   });
 

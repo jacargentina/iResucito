@@ -38,7 +38,7 @@ import {
 } from '@iresucito/core';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { generateSongPDF } from '../pdf';
-import { useAndroidBackHandler } from 'react-navigation-backhandler';
+import { useBackHandler } from '../useBackHandler';
 
 type SongListRouteProp = RouteProp<SongsStackParamList, 'SongList'>;
 
@@ -74,7 +74,7 @@ export const SongList = (props: {
   const [showActionsheet, setShowActionsheet] = useState(false);
   const handleClose = () => setShowActionsheet(!showActionsheet);
 
-  useAndroidBackHandler(() => {
+  useBackHandler(() => {
     if (enabled) disable();
     navigation.goBack();
     return true;

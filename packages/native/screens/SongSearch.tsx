@@ -1,4 +1,4 @@
-import { useAndroidBackHandler } from 'react-navigation-backhandler';
+import { useBackHandler } from '../useBackHandler';
 import { useNavigation, useScrollToTop } from '@react-navigation/native';
 import {
   Spinner,
@@ -41,7 +41,7 @@ export const SongSearch = () => {
 
   useScrollToTop(ref);
 
-  useAndroidBackHandler(() => {
+  useBackHandler(() => {
     return true;
   });
 

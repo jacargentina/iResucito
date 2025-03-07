@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { useAndroidBackHandler } from 'react-navigation-backhandler';
+import { useBackHandler } from '../useBackHandler';
 import { Platform } from 'react-native';
 import {
   Box,
@@ -98,7 +98,7 @@ export const SearchBarView = (props: {
 }) => {
   const navigation = useNavigation();
 
-  useAndroidBackHandler(() => {
+  useBackHandler(() => {
     navigation.goBack();
     return true;
   });

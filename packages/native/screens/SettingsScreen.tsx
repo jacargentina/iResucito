@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Image, Linking, Alert, ScrollView } from 'react-native';
-import { useAndroidBackHandler } from 'react-navigation-backhandler';
+import { useBackHandler } from '../useBackHandler';
 import {
   Button,
   HStack,
@@ -55,7 +55,7 @@ export const SettingsScreen = () => {
   const { songs } = useSongsStore();
   const [settingsExists, setSettingsExists] = useState(false);
 
-  useAndroidBackHandler(() => {
+  useBackHandler(() => {
     return true;
   });
 
