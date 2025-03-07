@@ -20,12 +20,12 @@ type DbType = {
   tokens: Array<{ email: string; token: string }>;
 };
 
-declare global {
-  var db: Low<DbType>;
-  var folderSongs: SongsProcessor;
-  var folderExtras: SongsExtras;
-  var mailSender: (...args: any[]) => Promise<void>;
-}
+// declare global {
+//   var db: Low<DbType>;
+//   var folderSongs: SongsProcessor;
+//   var folderExtras: SongsExtras;
+//   var mailSender: (...args: any[]) => Promise<void>;
+// }
 
 class DropboxJsonFile<T> implements Adapter<T> {
   file: string;

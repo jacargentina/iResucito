@@ -13,7 +13,7 @@ import { useSubmit, useNavigation } from '@remix-run/react';
 import { ActionFunction } from '@remix-run/node';
 import { json } from '@vercel/remix';
 import Layout from '~/components/Layout';
-import { db } from '~/utils.server';
+import { db, mailSender } from '~/utils.server';
 import i18n from '@iresucito/translations';
 import ApiMessage from '~/components/ApiMessage';
 import { useState } from 'react';

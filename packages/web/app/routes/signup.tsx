@@ -6,7 +6,7 @@ import bcrypt from 'bcryptjs';
 import { ActionFunction } from '@remix-run/node';
 import { json } from '@vercel/remix';
 import { commitSession, getSession } from '~/session.server';
-import { db } from '~/utils.server';
+import { db, mailSender } from '~/utils.server';
 import i18n from '@iresucito/translations';
 
 export let action: ActionFunction = async ({ request }) => {
