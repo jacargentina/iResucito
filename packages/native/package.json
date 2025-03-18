@@ -73,7 +73,7 @@
     "react-native-gesture-handler": "~2.24.0",
     "react-native-pager-view": "6.7.0",
     "react-native-pdf": "https://github.com/wonday/react-native-pdf.git#c9a231f2230197cfe593cc09781e4453b0383556",
-    "react-native-popup-menu": "https://github.com/jacargentina/react-native-popup-menu.git#b4f939db6af684ce46cd219a5dadfa8186f5eac1",
+    "react-native-popup-menu": "^0.17.0",
     "react-native-print": "^0.11.0",
     "react-native-ratings": "^8.1.0",
     "react-native-reanimated": "~3.17.1",

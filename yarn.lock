@@ -3487,7 +3487,7 @@ __metadata:
     react-native-monorepo-tools: "npm:^1.2.1"
     react-native-pager-view: "npm:6.7.0"
     react-native-pdf: "https://github.com/wonday/react-native-pdf.git#c9a231f2230197cfe593cc09781e4453b0383556"
-    react-native-popup-menu: "https://github.com/jacargentina/react-native-popup-menu.git#b4f939db6af684ce46cd219a5dadfa8186f5eac1"
+    react-native-popup-menu: "npm:^0.17.0"
     react-native-print: "npm:^0.11.0"
     react-native-ratings: "npm:^8.1.0"
     react-native-reanimated: "npm:~3.17.1"
@@ -19169,10 +19169,10 @@ expo-launch-arguments@jacargentina/expo-launch-arguments:
   languageName: node
   linkType: hard
 
-"react-native-popup-menu@https://github.com/jacargentina/react-native-popup-menu.git#b4f939db6af684ce46cd219a5dadfa8186f5eac1":
-  version: 0.16.1
-  resolution: "react-native-popup-menu@https://github.com/jacargentina/react-native-popup-menu.git#commit=b4f939db6af684ce46cd219a5dadfa8186f5eac1"
-  checksum: 10c0/78308bdcb640bff215aa16701e59c2737879a20477821782864e676d08bcc6c041ae4b5c595465c1ee4a5b811c72e45680ec0eb049aaf219991d191d50896621
+"react-native-popup-menu@npm:^0.17.0":
+  version: 0.17.0
+  resolution: "react-native-popup-menu@npm:0.17.0"
+  checksum: 10c0/0dfa47f4de36a8257e989234e14dda1daff1ebd43e3ee86861aa433a2dcfb9275d6e605d7f49916612351fc43f82091c2a2731e779415936ec69a849090b3b4b
   languageName: node
   linkType: hard
 
