@@ -1,6 +1,6 @@
 {
   "songs": {
-    "psalmist": "S.",
+    "psalmist": "K.",
     "assembly": "V.",
     "priest": "P.",
     "men": "M.",
@@ -20,25 +20,25 @@
     "statistics": "Statistiken",
     "download": "Herunterladen",
     "changes pending of publish": "Änderungen anhängig von der Veröffentlichung",
-    "changed songs by author": "{{count}} lieder von {{author}}",
+    "changed songs by author": "{{count}} Lieder von {{author}}",
     "patch pending": "Patch von {{author}} mit Datum {{date}} ausstehend",
-    "song version number": "Has been modified {{version}} times",
-    "no items to show": "Keine Artikel zum Anzeigen",
+    "song version number": "Wurde {{version}} mal geändert",
+    "no items to show": "Keine Titel zum Anzeigen",
     "patch log": "Änderungsprotokoll",
     "translated songs": "{{translated}} von {{total}} übersetzt",
     "error ocurred": "Ein Fehler ist aufgetreten",
     "info message": "Information",
     "yes": "Ja",
     "no": "Nein",
-    "default": "Vorgegeben",
+    "default": "Vorgabe",
     "email": "E-Mail-Adresse",
     "password": "Passwort",
     "login": "Einloggen",
     "signup": "Registrieren",
     "account verified": "Das Konto wurde verifiziert! Sie können sich jetzt anmelden",
     "logout": "Ausloggen",
-    "loading": "Aufladend...",
-    "collaborators": "Kollaborateure",
+    "loading": "Lade...",
+    "collaborators": "Mitarbeiter",
     "share": "Teilen",
     "back": "Zurück",
     "done": "Fertig",
@@ -49,10 +49,10 @@
     "cancel": "Abbrechen",
     "create": "Erstellen",
     "edit": "Bearbeiten",
-    "delete confirmation": "Möchtest du wirklich löschen?",
+    "delete confirmation": "Wirklich löschen?",
     "apply": "Verwenden",
     "close": "Schließen",
-    "refresh": "Aktualisierung",
+    "refresh": "Aktualisieren",
     "lists": {
       "already exists": "Es existiert bereits eine Tabelle mit demselben Namen",
       "non-empty name": "Geben Sie einen nicht leeren Namen ein",
@@ -69,14 +69,14 @@
     "export": {
       "type": "Art der Übertragung",
       "processing songs": "Bearbeitung {{total}} Liedern",
-      "songs index": "Liedindex",
-      "songs book title": "Er ist auferstanden",
-      "songs book subtitle": "Lieder des Neokatechumenalen Weges"
+      "songs index": "Lieder-Index",
+      "songs book title": "Christus erstand",
+      "songs book subtitle": "Lieder für die neokatechumenalen Gemeinschaften"
     },
-    "community empty": "Ohne importierte Namen. Um aus der Tabelle auszuwählen, sollst du in der Gemeinschaft-Option von deinen Kontakten importieren.",
+    "community empty": "Keine Namen vorhanden. Um aus der Tabelle auszuwählen, musst du in der Gemeinschaft-Option erst Kontakte importieren.",
     "search placeholder": "Suchen",
     "locale warning title": "Unvollständige Übersetzung",
-    "locale warning message": "Das Lied wurde noch nicht in deine Sprache hinzugefügt",
+    "locale warning message": "Das Lied wurde noch nicht in deiner Sprache hinzugefügt",
     "contribute message": "Hilfe durch den Online-Song-Editor. Frieden!",
     "contribute button": "Online-Editor",
     "no lists found": "Keine Tabelle gefunden",
@@ -90,36 +90,36 @@
     "locale patch rename message": "Möchten Sie den Titel des Songs festlegen?",
     "original song": "Ursprüngliches Lieder",
     "patched song": "Patch Lieder",
-    "song change name help": "Korregiere den Satz um den folgenden Standard zu folgen: [Lieds Titel] - [Quelle]. Wenn die  Quelle leer ist, benutz nur [Lieds Titel]",
-    "reload": "Wieder aufladen",
-    "reload confirmation": "Willst du wieder aufladen und Änderungen verlieren?",
-    "discard confirmation": "Möchten Sie alle Änderungen verwerfen?",
+    "song change name help": "Gib einen Titel nach dem folgenden Schema ein: [Titel des Liedes] - [Quelle]. Wenn es keine Quelle gibt, benutze nur [Titel des Liedes]",
+    "reload": "Neu laden",
+    "reload confirmation": "Willst du neu laden und Änderungen verlieren?",
+    "discard confirmation": "Möchtest du alle Änderungen verwerfen?",
     "preview type": "Vorschau-Typ",
     "screen": "Bildschirm",
     "pdf": "PDF",
     "link file": "Eine Datei verknüpfen",
     "remove patch": "Patch entfernen",
     "clear song settings": "Kanteneinstellungen löschen",
-    "clear song settings confirmation": "Möchten Sie alle Musikeinstellungen löschen?",
-    "how to add": "Wie man hinzufügen",
-    "add empty": "Hinzufügen ohne Inhalt",
-    "copy from spanish": "Kopieren Sie aus der spanischen Version",
-    "diff view": "Unterschiedliche Ansicht",
+    "clear song settings confirmation": "Möchtest du alle Liedereinstellungen löschen?",
+    "how to add": "Wie man Lieder hinzufügt",
+    "add empty": "Leeres Lied hinzufügen",
+    "copy from spanish": "Aus der spanischen Version kopieren",
+    "diff view": "Unterschiede anzeigen",
     "password changed": "Das Passwort wurde geändert. Bitte melden Sie sich mit Ihrem neuen Passwort an",
     "reset password": "Vergessenes Passwort zurücksetzen"
   },
   "pdf_export_options": {
     "selected songs": "Ausgewählte Lieder",
-    "complete book": "Komplettes Buch"
+    "complete book": "Komplette Mappe"
   },
   "list_type": {
     "eucharist": "Eucharistie",
-    "word": "Wort",
+    "word": "Wortliturgie",
     "other": "Andere"
   },
   "list_export_options": {
     "native": "iResucito Listendatei",
-    "plain text": "Klartext",
+    "plain text": "Textdatei",
     "pdf file": "PDF-Datei"
   },
   "list_item": {
@@ -127,8 +127,8 @@
     "2": "2. Lesung",
     "3": "3. Lesung",
     "ambiental": "Allgemeine Einleitung",
-    "entrada": "Einfangslied",
-    "paz": "Frieden und Gabevorbereitung",
+    "entrada": "Eingangslied",
+    "paz": "Friedensgruß / Gabenbereitung",
     "comunion-pan": "Brot",
     "comunion-caliz": "Kelch",
     "salida": "Ausgangslied",
@@ -141,7 +141,7 @@
     "evangelio-monicion": "Einleitung zum Evangelium",
     "evangelio": "Evangelium",
     "oracion-universal": "Allgemeine Fürbitten",
-    "encargado-pan": "Brot baken",
+    "encargado-pan": "Brot backen",
     "encargado-flores": "Blumen kaufen",
     "nota": "Notizen"
   },
@@ -152,7 +152,7 @@
     "catechumenate": "Katechumenat",
     "election": "Auserwählung",
     "liturgy": "Liturgie",
-    "liturgical time": "Liturgischezeite",
+    "liturgical time": "Liturgische Zeit",
     "advent": "Advent",
     "christmas": "Weihnachten",
     "lent": "Fastenzeit",
@@ -160,7 +160,7 @@
     "pentecost": "Pfingsten",
     "liturgical order": "Aufgaben in der Liturgie",
     "entrance": "Eingang",
-    "peace and offerings": "Friede und Gabevorbereitung",
+    "peace and offerings": "Friedensgruß / Gabenbereitung",
     "fraction of bread": "Brotbrechen",
     "communion": "Kommunion",
     "exit": "Ausgangslied",
@@ -172,11 +172,11 @@
   },
   "search_tabs": {
     "all": "Alle",
-    "entrance": "Eingang",
-    "peace and offerings": "Friede/Gabevorbereitung",
+    "entrance": "Einzug",
+    "peace and offerings": "Friede/Gabenbereitung",
     "fraction of bread": "Brot",
     "communion": "Kommunion",
-    "exit": "Ausgang",
+    "exit": "Auszug",
     "signing to the virgin": "Jungfrau Maria"
   },
   "search_note": {
@@ -191,7 +191,7 @@
     "easter": "Lieder der Osterzeit",
     "pentecost": "Lieder für Pfingsten",
     "entrance": "Lieder am Anfang der Liturgien",
-    "peace and offerings": "Lieder während des Zeichens des Friedens und der Gabevorbereitung",
+    "peace and offerings": "Lieder während dem Friedensgruß und der Gabenbereitung",
     "fraction of bread": "Lieder während des Brotbrechens",
     "communion": "Lieder während der Kommunion",
     "exit": "Lieder am Ende der Liturgien",
@@ -207,9 +207,9 @@
     "find song": "Lieder finden",
     "lists": "Tabelle",
     "community": "Gemeinschaft",
-    "import contacts": "Kontakte Importieren",
-    "choose song": "Liede aussuchen",
-    "song edit": "Liede bearbeiten",
+    "import contacts": "Kontakte importieren",
+    "choose song": "Lieder aussuchen",
+    "song edit": "Lieder bearbeiten",
     "preview": "Vorschau"
   },
   "call_to_action_title": {
@@ -217,8 +217,8 @@
     "community list": "Tabelle der Gemeinschaft"
   },
   "call_to_action_text": {
-    "add lists": "Die Tabelle hilf dir die Liturgie zu vorbereiten und die Aufgaben den Brüdern und Schwestern zu teilen, auch als Erinnerung.",
-    "community list": "Es ist mögliche die Kontakte der Brüder und Schwester zu importieren und sie für die Tabellen zu benutzen."
+    "add lists": "Die Tabelle hilft dir die Liturgie zu vorbereiten und die Aufgaben den Brüdern und Schwestern mitzuteilen, auch als Erinnerung.",
+    "community list": "Es ist möglich die Kontakte der Brüder und Schwestern zu importieren, um sie für die Tabellen zu benutzen."
   },
   "call_to_action_button": {
     "add lists": "Tabelle erstellen",
@@ -234,10 +234,10 @@
     "share index patch": "Index-Patch teilen"
   },
   "settings_note": {
-    "locale": "Übersetze den App zu den vorgegebenen Sprachen",
+    "locale": "Übersetze die App in die vorgegebenen Sprachen",
     "keep awake": "Halte das Handy wach während der Nutzung des Apps",
-    "ratings enabled": "Aktivieren Sie die Bewertung von Songs und die Liste 'Bewertungen'",
-    "developer mode": "Erlaubt nur wenn du bei der Liederübersetzung kollaborirst"
+    "ratings enabled": "Aktivieren der Bewertung von Songs und die Liste 'Bewertungen'",
+    "developer mode": "Nur erlaubt, wenn du an der Übersetzung der Lieder mitarbeitest"
   },
   "share_action": {
     "view pdf": "PDF Vorschau",
@@ -245,13 +245,13 @@
   },
   "alert_title": {
     "corrupt patch": "Beschädigter Patch",
-    "contacts permission": "Erlaubnis der Kontakte",
+    "contacts permission": "Erlaubnis auf Kontakte zuzugreifen",
     "corrupt file": "Beschädigte Datei"
   },
   "alert_message": {
     "corrupt patch": "The Patch Datei war beschädigt und wurde gelöscht",
     "contacts permission": "Man kann die Kontakte nicht lesen",
-    "contacts permission ios": "Gibt Erlaubnis in dem Einstellungenbildschirm -> iResucito -> Kontakte",
+    "contacts permission ios": "Gib Erlaubnis in dem Einstellungenbildschirm -> iResucito -> Kontakte",
     "corrupt file": ""
   }
 }
