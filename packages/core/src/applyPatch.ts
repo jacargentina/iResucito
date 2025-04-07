@@ -13,7 +13,6 @@ import util from 'util';
 import fs from 'fs';
 import { Dropbox } from 'dropbox';
 import { SongIndexPatch, SongsLocaleData } from './common';
-require('colors');
 
 var allLocales = loadAllLocales();
 
@@ -153,15 +152,15 @@ const applyPatch = async (local_file_path: string) => {
   });
 
   Object.keys(allLocales).forEach((loc) => {
-    const localePath = path.resolve(__dirname, `../assets/songs/${loc}.json`);
+    const localePath = path.resolve(import.meta.dirname, `../assets/songs/${loc}.json`);
     fs.writeFileSync(
       localePath,
       JSON.stringify(allLocales[loc], null, '  ') + '\n'
     );
   });
 
-  const indexPath = path.resolve(__dirname, '../assets/songs.json');
-  const patchesPath = path.resolve(__dirname, '../assets/patches.json');
+  const indexPath = path.resolve(import.meta.dirname, '../assets/songs.json');
+  const patchesPath = path.resolve(import.meta.dirname, '../assets/patches.json');
 
   fs.writeFileSync(indexPath, JSON.stringify(SongsIndex, null, '  ') + '\n');
   fs.writeFileSync(

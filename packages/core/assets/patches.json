@@ -3652,6 +3652,21 @@
       },
       "created": false,
       "updated": false
+    },
+    {
+      "date": 1743886944318,
+      "locale": "de",
+      "author": "iresucito@michael-weinrich.de",
+      "rename": {
+        "original": "Caritas Christi - 2 Kor 5, 14-17.21; 1 Kor 9 16b",
+        "new": "CARITAS CHRISTI URGET NOS - 2 Kor 5, 14-17.21; 1 Kor 9, 16b"
+      },
+      "created": false,
+      "updated": true,
+      "staged": {
+        "original": "election",
+        "new": "precatechumenate"
+      }
     }
   ],
   "47": [
@@ -4758,6 +4773,20 @@
         "original": "Eli, eli, lamma sabahtani? - Psalmė 21 (22)",
         "new": "Eli, Eli, lamma sabahtani? - Psalmė 21 (22)"
       },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1744025889829,
+      "locale": "it",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1744026358192,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
     }
@@ -11846,6 +11875,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1720094368404,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "185": [
@@ -12925,6 +12961,13 @@
         "new": "Precônio Pascal - Pregão solene da Vigília Pascal"
       },
       "created": false,
+      "updated": false
+    },
+    {
+      "date": 1744025688916,
+      "locale": "it",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": true,
       "updated": false
     }
   ],

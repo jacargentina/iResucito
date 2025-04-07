@@ -770,7 +770,7 @@
     },
     "stages": {
       "de-AT": "election",
-      "de": "election"
+      "de": "precatechumenate"
     }
   },
   "47": {
@@ -3104,7 +3104,8 @@
       "en": "32",
       "pt-BR": "156",
       "pt-PT": "161",
-      "lt-LT": "132"
+      "lt-LT": "132",
+      "it": "214"
     }
   },
   "203": {
