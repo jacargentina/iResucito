@@ -4,13 +4,20 @@ import {
   BottomTabNavigationOptions,
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs';
-import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
+import {
+  getFocusedRouteNameFromRoute,
+  NavigatorScreenParams,
+} from '@react-navigation/native';
 import { Icon, useMedia } from '@gluestack-ui/themed';
 import {
   SettingsNavigator,
   CommunityNavigator,
   ListsNavigator,
   SongsNavigator,
+  SongsStackParamList,
+  ListsStackParamList,
+  CommunityStackParamList,
+  SettingsStackParamList,
 } from './index';
 import { useListsStore } from '../hooks';
 import { config } from '../config/gluestack-ui.config';
@@ -23,10 +30,10 @@ import {
 import { useColorScheme } from 'react-native';
 
 export type MenuParamList = {
-  Songs: undefined;
-  Lists: undefined;
-  Community: undefined;
-  Settings: undefined;
+  Songs: NavigatorScreenParams<SongsStackParamList>;
+  Lists: NavigatorScreenParams<ListsStackParamList>;
+  Community: NavigatorScreenParams<CommunityStackParamList>;
+  Settings: NavigatorScreenParams<SettingsStackParamList>;
 };
 
 const Tab = createBottomTabNavigator<MenuParamList>();

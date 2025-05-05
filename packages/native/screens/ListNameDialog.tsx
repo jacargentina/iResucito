@@ -13,9 +13,9 @@ import { useListsStore } from '../hooks';
 import { ModalView } from '../components';
 import i18n from '@iresucito/translations';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { ListsStackParamList, RootStackParamList } from '../navigation';
+import { ListsStackParamList } from '../navigation';
 
-type ListNameDialogRouteProp = RouteProp<RootStackParamList, 'ListName'>;
+type ListNameDialogRouteProp = RouteProp<ListsStackParamList, 'ListName'>;
 
 type ListDetailNavivationProp = StackNavigationProp<
   ListsStackParamList,
@@ -37,7 +37,7 @@ export const ListNameDialog = () => {
   const runActionOnList = () => {
     if (action === 'create' && type) {
       add(name, type);
-      navigation.navigate('ListDetail', { listName: name });
+      navigation.replace('ListDetail', { listName: name });
     } else if (action === 'rename') {
       rename(listName, name);
       navigation.goBack();

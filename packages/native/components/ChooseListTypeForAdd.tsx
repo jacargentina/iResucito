@@ -12,11 +12,11 @@ import {
   useMedia,
 } from '@gluestack-ui/themed';
 import i18n from '@iresucito/translations';
-import { RootStackParamList } from '../navigation';
+import { ListsStackParamList } from '../navigation';
 import { ListType } from '@iresucito/core';
 
 type ListNameScreenNavigationProp = BottomTabNavigationProp<
-  RootStackParamList,
+  ListsStackParamList,
   'ListName'
 >;
 

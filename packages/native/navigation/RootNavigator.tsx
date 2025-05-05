@@ -11,6 +11,7 @@ import {
   SongChooserNavigator,
   MenuNavigator,
   ChooserParamList,
+  MenuParamList,
 } from './index';
 import {
   EucaristiaList,
@@ -22,7 +23,7 @@ import {
 import { GeneratePDFResult } from '../pdf';
 
 export type RootStackParamList = {
-  Menu: undefined;
+  Menu: NavigatorScreenParams<MenuParamList>;
   SongChooser: NavigatorScreenParams<ChooserParamList>;
   ContactChooser: {
     target: {
@@ -33,11 +34,6 @@ export type RootStackParamList = {
         | keyof PalabraList
         | number;
     };
-  };
-  ListName: {
-    listName: string;
-    action: ListAction;
-    type?: ListType;
   };
   ContactImport: undefined;
   SongPreviewScreen: undefined;
@@ -59,7 +55,6 @@ export const RootNavigator = () => {
         screenOptions={{ headerShown: false, presentation: 'modal' }}>
         <Stack.Screen name="SongChooser" component={SongChooserNavigator} />
         <Stack.Screen name="ContactChooser" component={ContactChooserDialog} />
-        <Stack.Screen name="ListName" component={ListNameDialog} />
         <Stack.Screen name="ContactImport" component={ContactImportDialog} />
         <Stack.Screen
           name="SongPreviewScreen"

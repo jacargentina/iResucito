@@ -19,9 +19,15 @@ import {
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import i18n from '@iresucito/translations';
-import { PDFViewer, ListScreen, ListDetail, SongDetail } from '../screens';
+import {
+  PDFViewer,
+  ListScreen,
+  ListDetail,
+  SongDetail,
+  ListNameDialog,
+} from '../screens';
 import { HeaderButton } from '../components';
-import { Song } from '@iresucito/core';
+import { ListAction, ListType, Song } from '@iresucito/core';
 import { useListsStore, useSettingsStore } from '../hooks';
 import {
   getSongDetailOptions,
@@ -37,6 +43,11 @@ export type ListsStackParamList = {
   ListDetail: { listName: string };
   SongDetail: { song: Song };
   PDFViewer: { data: GeneratePDFResult; title: string };
+  ListName: {
+    listName: string;
+    action: ListAction;
+    type?: ListType;
+  };
 };
 
 type ListDetailRouteProp = RouteProp<ListsStackParamList, 'ListDetail'>;
@@ -201,6 +212,11 @@ export const ListsNavigator = () => {
         name="PDFViewer"
         component={PDFViewer}
         options={({ route }) => getPdfViewerOptions(route.params.title)}
+      />
+      <Stack.Screen
+        name="ListName"
+        component={ListNameDialog}
+        options={{ headerShown: false, presentation: 'modal' }}
       />
     </Stack.Navigator>
   );

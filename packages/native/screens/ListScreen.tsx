@@ -31,9 +31,9 @@ import { config } from '../config/gluestack-ui.config';
 import { BookmarkIcon } from 'lucide-react-native';
 import { ListForUI } from '@iresucito/core';
 
-type ListScreenNavigationProp = CompositeNavigationProp<
-  BottomTabNavigationProp<RootStackParamList, 'ListName'>,
-  StackNavigationProp<ListsStackParamList>
+type ListScreenNavigationProp = StackNavigationProp<
+  ListsStackParamList,
+  'ListName'
 >;
 
 const SwipeableRow = (props: { item: ListForUI }) => {
