@@ -49,7 +49,7 @@
         "android.permission.READ_CONTACTS",
         "android.permission.WRITE_CONTACTS"
       ],
-      "versionCode": 162
+      "versionCode": 163
     },
     "androidStatusBar": {
       "hidden": true
@@ -71,7 +71,8 @@
       ],
       "expo-build-properties",
       "expo-font",
-      "expo-asset"
+      "expo-asset",
+      "expo-audio"
     ],
     "extra": {
       "eas": {

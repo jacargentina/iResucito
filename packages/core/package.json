@@ -27,7 +27,8 @@
       }
     },
     "./assets/*.json": "./dist/cjs/assets/*.json",
-    "./assets/songs/*.json": "./dist/cjs/assets/songs/*.json"
+    "./assets/songs/*.json": "./dist/cjs/assets/songs/*.json",
+    "./assets/audios/es/*": "./dist/cjs/assets/audios/es/*"
   },
   "dependencies": {
     "@types/country-list": "^2.1.4",

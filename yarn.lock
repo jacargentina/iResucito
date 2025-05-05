@@ -3516,6 +3516,7 @@ __metadata:
     expo: "npm:~52.0.42"
     expo-application: "npm:~6.0.2"
     expo-asset: "npm:~11.0.5"
+    expo-audio: "npm:~0.3.5"
     expo-build-properties: "npm:~0.13.2"
     expo-constants: "npm:~17.0.8"
     expo-contacts: "npm:~14.0.5"
@@ -11830,6 +11831,17 @@ __metadata:
     invariant: "npm:^2.2.4"
     md5-file: "npm:^3.2.3"
   checksum: 10c0/45fd52075e98a8813184727890ef9e992bd727684ca896ab097e4e380503fad62e8bb5a7f98b7fc78665764f54c84f6d889d2d1d913f769f1df7adf34f8965b2
+  languageName: node
+  linkType: hard
+
+"expo-audio@npm:~0.3.5":
+  version: 0.3.5
+  resolution: "expo-audio@npm:0.3.5"
+  peerDependencies:
+    expo: "*"
+    react: "*"
+    react-native: "*"
+  checksum: 10c0/dc8b92c2f41d08ddeee655224dccd2972742954bbf5141c577673bcf06baacf0802be6267600d252eec3cfbb2f0aa471648e5857b5c527914429a7418fe6dcaa
   languageName: node
   linkType: hard
 

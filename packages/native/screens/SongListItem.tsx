@@ -1,5 +1,5 @@
 import { StackNavigationProp } from '@react-navigation/stack';
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { Alert, useColorScheme } from 'react-native';
 import {
   Box,
@@ -22,7 +22,15 @@ import { Song } from '@iresucito/core';
 import { ChooserParamList } from '../navigation';
 import { useSettingsStore, useSongsSelection } from '../hooks';
 import { config } from '../config/gluestack-ui.config';
-import { BugIcon, EyeIcon } from 'lucide-react-native';
+import {
+  BugIcon,
+  EyeIcon,
+  PlayIcon,
+  PauseIcon,
+  StopCircleIcon,
+} from 'lucide-react-native';
+import { useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
+import { es_audios } from '@iresucito/core/assets/audios/es/index';
 
 const NoLocaleWarning = () => {
   return (
@@ -48,6 +56,15 @@ type ViewSongScreenNavigationProp = StackNavigationProp<
   'ViewSong'
 >;
 
+function formatTime(rawSeconds) {
+  const totalSeconds = Math.floor(rawSeconds); // quita milisegundos
+  const mins = Math.floor(totalSeconds / 60);
+  const secs = totalSeconds % 60;
+  // Asegura que los segundos siempre tengan dos dígitos
+  const paddedSecs = secs.toString().padStart(2, '0');
+  return `${mins}:${paddedSecs}`;
+}
+
 export const SongListItem = (props: {
   song: Song;
   showBadge?: boolean;
@@ -63,6 +80,8 @@ export const SongListItem = (props: {
   const { selection, enabled, toggle } = useSongsSelection();
   const { song, highlight, showBadge, viewButton, setSongSetting } = props;
   const [isCollapsed, setIsCollapsed] = useState(true);
+  const player = useAudioPlayer(es_audios[song.key] ?? null);
+  const playerStatus = useAudioPlayerStatus(player);
 
   const viewSong = () => {
     navigation.navigate('ViewSong', {
@@ -208,7 +227,7 @@ export const SongListItem = (props: {
                       : config.tokens.colors.yellow300,
                 }}
                 searchWords={[highlight]}
-                textToHighlight={song.titulo}
+                textToHighlight={song.titulo + ' - ' + song.key}
               />
               {enabled ? (
                 <Checkbox
@@ -244,6 +263,33 @@ export const SongListItem = (props: {
             {highlightedRest}
           </VStack>
           {song.notTranslated && <NoLocaleWarning />}
+          {player.isLoaded ? (
+            <HStack>
+              <Pressable
+                onPress={() =>
+                  player.playing ? player.pause() : player.play()
+                }>
+                <Icon
+                  color="$rose700"
+                  as={player.playing ? PauseIcon : PlayIcon}
+                  size="xl"
+                />
+              </Pressable>
+              {player.currentTime > 0 ? (
+                <Pressable
+                  onPress={() => {
+                    player.pause();
+                    player.seekTo(0);
+                  }}>
+                  <Icon color="$rose700" as={StopCircleIcon} size="xl" />
+                </Pressable>
+              ) : null}
+              <Text ml="$1">
+                {formatTime(playerStatus.currentTime)} /{' '}
+                {formatTime(playerStatus.duration)}
+              </Text>
+            </HStack>
+          ) : null}
           {!enabled && ratingsEnabled && (
             <AirbnbRating
               showRating={false}
