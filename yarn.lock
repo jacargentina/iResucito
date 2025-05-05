@@ -3556,7 +3556,7 @@ __metadata:
     react-native-safe-area-context: "npm:4.12.0"
     react-native-screens: "npm:~4.4.0"
     react-native-svg: "npm:15.8.0"
-    react-native-tab-view: "npm:^4.0.5"
+    react-native-tab-view: "npm:^4.0.12"
     react-native-version: "npm:^4.0.0"
     react-native-webview: "npm:13.12.5"
     react-test-renderer: "npm:^19.0.0"
@@ -19240,6 +19240,19 @@ expo-launch-arguments@jacargentina/expo-launch-arguments:
   languageName: node
   linkType: hard
 
+"react-native-tab-view@npm:^4.0.12":
+  version: 4.0.12
+  resolution: "react-native-tab-view@npm:4.0.12"
+  dependencies:
+    use-latest-callback: "npm:^0.2.3"
+  peerDependencies:
+    react: ">= 18.2.0"
+    react-native: "*"
+    react-native-pager-view: ">= 6.0.0"
+  checksum: 10c0/89672f28ec21bfee09d661cd328327678db63b4522ecfdf842341eb10e28b5d6f65a46b7b727cf5608ca0bb61f299bf825ddc5d15210928eedbca20d036686bb
+  languageName: node
+  linkType: hard
+
 "react-native-tab-view@npm:^4.0.5":
   version: 4.0.5
   resolution: "react-native-tab-view@npm:4.0.5"
@@ -22411,6 +22424,15 @@ expo-launch-arguments@jacargentina/expo-launch-arguments:
   peerDependencies:
     react: ">=16.8"
   checksum: 10c0/66debcd5ac30aa0198669314177c7b30902787131c98c8130695555655426b43c678f84acc98a49284d50257396ed1ac4e257f3a5fc1d2a0f09ec741c08bfda9
+  languageName: node
+  linkType: hard
+
+"use-latest-callback@npm:^0.2.3":
+  version: 0.2.3
+  resolution: "use-latest-callback@npm:0.2.3"
+  peerDependencies:
+    react: ">=16.8"
+  checksum: 10c0/dc87503f6279ce2980f78e1019231ba20d7509e9d17adac05285babe4d6ba6f68c52f4ef7b5ad777cbc2af9fbaaa09d7adb664ca556da0aebab9f020022880be
   languageName: node
   linkType: hard
 

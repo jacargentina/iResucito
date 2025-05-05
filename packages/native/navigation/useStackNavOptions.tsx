@@ -31,7 +31,7 @@ export const useStackNavOptions = () => {
     headerTintColor: 'white',
     headerBackTitle: i18n.t('ui.back'),
     headerBackTestID: 'back-button',
-    headerTruncatedBackTitle: i18n.t('ui.back'),
+    headerBackTruncatedTitle: i18n.t('ui.back'),
   };
   return options;
 };

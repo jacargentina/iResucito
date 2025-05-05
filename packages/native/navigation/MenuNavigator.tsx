@@ -51,7 +51,7 @@ const getTabOptions = (
           height: 88,
         }
       : undefined,
-    tabBarTestID: testID,
+    tabBarAccessibilityLabel: testID,
     tabBarIcon: ({ color }) => {
       return (
         <Icon
