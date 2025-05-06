@@ -30,7 +30,7 @@ import {
   StopCircleIcon,
 } from 'lucide-react-native';
 import { useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
-import { es_audios } from '@iresucito/core/assets/audios/es/index';
+import { es_audios } from '@iresucito/core/assets/audios/es';
 
 const NoLocaleWarning = () => {
   return (
