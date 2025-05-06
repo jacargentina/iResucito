@@ -47,6 +47,7 @@ import {
 import { shallow } from 'zustand/shallow';
 import { getDefaultLocale, ordenClasificacion, NativeExtras } from './util';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { AudioPlayer, createAudioPlayer } from 'expo-audio';
 
 const readSongSettingsFile = async (): Promise<
   SongSettingsFile | undefined
@@ -157,6 +158,84 @@ export const useSongsSelection = create(
         } else {
           state.selection.push(key);
         }
+      });
+    },
+  }))
+);
+
+type SongPlayerStore = {
+  player: AudioPlayer;
+  playingKey: string | null;
+  playingActive: boolean;
+  playingTimeText: string | null;
+  refreshIntervalId: any;
+  refreshPlayingTimeText: () => void;
+  play: (key: string) => void;
+  pause: () => void;
+  stop: () => void;
+};
+
+import { es_audios } from '@iresucito/core';
+
+function formatTime(rawSeconds) {
+  const totalSeconds = Math.floor(rawSeconds); // quita milisegundos
+  const mins = Math.floor(totalSeconds / 60);
+  const secs = totalSeconds % 60;
+  // Asegura que los segundos siempre tengan dos dígitos
+  const paddedSecs = secs.toString().padStart(2, '0');
+  return `${mins}:${paddedSecs}`;
+}
+
+export const useSongPlayer = create(
+  immer<SongPlayerStore>((set) => ({
+    player: createAudioPlayer(null),
+    playingKey: null,
+    playingActive: false,
+    playingTimeText: null,
+    refreshIntervalId: null,
+    refreshPlayingTimeText: () => {
+      set((state) => {
+        state.playingTimeText =
+          formatTime(state.player.currentTime) +
+          ' / ' +
+          formatTime(state.player.duration);
+      });
+    },
+    play: (key: string) => {
+      set((state) => {
+        if (state.playingKey !== key) {
+          state.playingTimeText = null;
+          state.player.pause();
+          state.player.replace(es_audios[key]);
+          state.playingKey = key;
+          clearTimeout(state.refreshIntervalId);
+        }
+        state.player.play();
+        state.refreshPlayingTimeText();
+        state.refreshIntervalId = setInterval(
+          state.refreshPlayingTimeText,
+          1000
+        );
+        state.playingActive = true;
+      });
+    },
+    pause: () => {
+      set((state) => {
+        if (state.player.playing) {
+          state.player.pause();
+          state.playingActive = false;
+          clearTimeout(state.refreshIntervalId);
+        }
+      });
+    },
+    stop: () => {
+      set((state) => {
+        state.player.pause();
+        state.player.seekTo(0);
+        state.playingKey = null;
+        state.playingActive = false;
+        state.playingTimeText = null;
+        clearTimeout(state.refreshIntervalId);
       });
     },
   }))

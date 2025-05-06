@@ -6,6 +6,6 @@
     "resolveJsonModule": true,
     "esModuleInterop": true
   },
-  "exclude": ["src/generatepdf.ts", "src/songToPdf.ts"],
+  "exclude": ["src/generatepdf.ts", "src/songToPdf.ts", "src/applyPatch.ts"],
   "include": ["src/*.ts", "assets/**/*.json"]
 }

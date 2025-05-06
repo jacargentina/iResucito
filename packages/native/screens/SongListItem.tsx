@@ -20,7 +20,7 @@ import { BadgeByStage } from '../badges';
 import i18n from '@iresucito/translations';
 import { Song } from '@iresucito/core';
 import { ChooserParamList } from '../navigation';
-import { useSettingsStore, useSongsSelection } from '../hooks';
+import { useSettingsStore, useSongPlayer, useSongsSelection } from '../hooks';
 import { config } from '../config/gluestack-ui.config';
 import {
   BugIcon,
@@ -29,8 +29,7 @@ import {
   PauseIcon,
   StopCircleIcon,
 } from 'lucide-react-native';
-import { useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
-import { es_audios } from '@iresucito/core/assets/audios/es';
+import { es_audios } from '@iresucito/core';
 
 const NoLocaleWarning = () => {
   return (
@@ -56,15 +55,6 @@ type ViewSongScreenNavigationProp = StackNavigationProp<
   'ViewSong'
 >;
 
-function formatTime(rawSeconds) {
-  const totalSeconds = Math.floor(rawSeconds); // quita milisegundos
-  const mins = Math.floor(totalSeconds / 60);
-  const secs = totalSeconds % 60;
-  // Asegura que los segundos siempre tengan dos dígitos
-  const paddedSecs = secs.toString().padStart(2, '0');
-  return `${mins}:${paddedSecs}`;
-}
-
 export const SongListItem = (props: {
   song: Song;
   showBadge?: boolean;
@@ -80,8 +70,7 @@ export const SongListItem = (props: {
   const { selection, enabled, toggle } = useSongsSelection();
   const { song, highlight, showBadge, viewButton, setSongSetting } = props;
   const [isCollapsed, setIsCollapsed] = useState(true);
-  const player = useAudioPlayer(es_audios[song.key] ?? null);
-  const playerStatus = useAudioPlayerStatus(player);
+  const songPlayer = useSongPlayer();
 
   const viewSong = () => {
     navigation.navigate('ViewSong', {
@@ -227,7 +216,7 @@ export const SongListItem = (props: {
                       : config.tokens.colors.yellow300,
                 }}
                 searchWords={[highlight]}
-                textToHighlight={song.titulo + ' - ' + song.key}
+                textToHighlight={song.titulo}
               />
               {enabled ? (
                 <Checkbox
@@ -263,31 +252,36 @@ export const SongListItem = (props: {
             {highlightedRest}
           </VStack>
           {song.notTranslated && <NoLocaleWarning />}
-          {player.isLoaded ? (
+          {es_audios[song.key] != null ? (
             <HStack>
               <Pressable
                 onPress={() =>
-                  player.playing ? player.pause() : player.play()
+                  songPlayer.playingActive && songPlayer.playingKey == song.key
+                    ? songPlayer.pause()
+                    : songPlayer.play(song.key)
                 }>
                 <Icon
                   color="$rose700"
-                  as={player.playing ? PauseIcon : PlayIcon}
+                  as={
+                    songPlayer.playingActive &&
+                    songPlayer.playingKey == song.key
+                      ? PauseIcon
+                      : PlayIcon
+                  }
                   size="xl"
                 />
               </Pressable>
-              {player.currentTime > 0 ? (
+              {songPlayer.playingKey == song.key ? (
                 <Pressable
                   onPress={() => {
-                    player.pause();
-                    player.seekTo(0);
+                    songPlayer.stop();
                   }}>
                   <Icon color="$rose700" as={StopCircleIcon} size="xl" />
                 </Pressable>
               ) : null}
-              <Text ml="$1">
-                {formatTime(playerStatus.currentTime)} /{' '}
-                {formatTime(playerStatus.duration)}
-              </Text>
+              {songPlayer.playingKey == song.key ? (
+                <Text ml="$1">{songPlayer.playingTimeText}</Text>
+              ) : null}
             </HStack>
           ) : null}
           {!enabled && ratingsEnabled && (

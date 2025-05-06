@@ -66,6 +66,7 @@ const getTabOptions = (
           color={color}
           // @ts-ignore
           size={media.md ? '45' : undefined}
+          style={{ marginTop: 16 }}
         />
       );
     },
