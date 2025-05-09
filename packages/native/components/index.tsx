@@ -9,3 +9,5 @@ export * from './SearchBarView';
 export * from './SharePDFButton';
 export * from './SwipeableRightAction';
 export * from './ViewPdfButton';
+export * from './SongPlayer';
+export * from './PlaySongButton';

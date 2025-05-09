@@ -18,6 +18,7 @@ import {
   PrintPDFButton,
   SharePDFButton,
   HeaderButton,
+  PlaySongButton,
 } from '../components';
 import { SongsStackParamList } from './index';
 import { config } from '../config/gluestack-ui.config';
@@ -135,6 +136,7 @@ export const getSongDetailOptions = (song: Song) => {
     title: song ? song.titulo : 'Salmo',
     headerRight: () => (
       <HStack>
+        <PlaySongButton />
         <ViewPdfButton />
         <TransportNotesButton />
       </HStack>

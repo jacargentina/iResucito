@@ -1,4 +1,4 @@
-import { useRef, useEffect, useContext, useState } from 'react';
+import { useRef, useEffect } from 'react';
 import * as pdfjsLib from 'pdfjs-dist';
 import { Loader } from 'semantic-ui-react';
 import { usePdf } from './PdfContext';

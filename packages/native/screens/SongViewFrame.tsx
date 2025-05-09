@@ -11,9 +11,10 @@ import {
 import color from 'color';
 import { colors, SongLine } from '@iresucito/core';
 import i18n from '@iresucito/translations';
-import { useSettingsStore } from '../hooks';
+import { useSettingsStore, useSongPlayer } from '../hooks';
 import { NativeParser, NativeStyle, NativeStyles } from '../util';
 import { MinusIcon, PlusIcon } from 'lucide-react-native';
+import { SongPlayer } from '../components';
 
 const SongViewLines = (props: {
   lines: Array<SongLine<NativeStyle>>;
@@ -93,6 +94,7 @@ export const SongViewFrame = (props: any) => {
   const fRender = NativeParser.getForRender(text, i18n.locale, transportToNote);
 
   const [ctrlVisible, setCtrlVisible] = useState(false);
+  const songPlayer = useSongPlayer();
 
   const toggleControls = () => {
     setCtrlVisible((visible) => !visible);
@@ -122,12 +124,20 @@ export const SongViewFrame = (props: any) => {
     sourceStyle.fontSize = sourceStyle.fontSize * zoomLevel;
   sourceStyle.lineHeight = sourceStyle.fontSize;
 
+  var height = 100;
+  if (ctrlVisible) {
+    height = height - 10;
+  }
+  if (songPlayer.playingActive) {
+    height = height - 14;
+  }
+
   return (
     <Box style={{ backgroundColor: background, ...style }}>
       <ScrollView
         horizontal
         style={{
-          height: ctrlVisible ? '89%' : '100%',
+          height: `${height}%`,
         }}>
         <ScrollView
           style={{
@@ -192,6 +202,7 @@ export const SongViewFrame = (props: any) => {
           </Button>
         </HStack>
       )}
+      <SongPlayer />
     </Box>
   );
 };

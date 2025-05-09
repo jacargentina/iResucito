@@ -22,13 +22,7 @@ import { Song } from '@iresucito/core';
 import { ChooserParamList } from '../navigation';
 import { useSettingsStore, useSongPlayer, useSongsSelection } from '../hooks';
 import { config } from '../config/gluestack-ui.config';
-import {
-  BugIcon,
-  EyeIcon,
-  PlayIcon,
-  PauseIcon,
-  StopCircleIcon,
-} from 'lucide-react-native';
+import { BugIcon, EyeIcon, PlayIcon } from 'lucide-react-native';
 import { es_audios } from '@iresucito/core';
 
 const NoLocaleWarning = () => {
@@ -253,36 +247,9 @@ export const SongListItem = (props: {
           </VStack>
           {song.notTranslated && <NoLocaleWarning />}
           {es_audios[song.key] != null ? (
-            <HStack>
-              <Pressable
-                onPress={() =>
-                  songPlayer.playingActive && songPlayer.playingKey == song.key
-                    ? songPlayer.pause()
-                    : songPlayer.play(song.key)
-                }>
-                <Icon
-                  color="$rose700"
-                  as={
-                    songPlayer.playingActive &&
-                    songPlayer.playingKey == song.key
-                      ? PauseIcon
-                      : PlayIcon
-                  }
-                  size="xl"
-                />
-              </Pressable>
-              {songPlayer.playingKey == song.key ? (
-                <Pressable
-                  onPress={() => {
-                    songPlayer.stop();
-                  }}>
-                  <Icon color="$rose700" as={StopCircleIcon} size="xl" />
-                </Pressable>
-              ) : null}
-              {songPlayer.playingKey == song.key ? (
-                <Text ml="$1">{songPlayer.playingTimeText}</Text>
-              ) : null}
-            </HStack>
+            <Pressable w="10%" onPress={() => songPlayer.play(song)}>
+              <Icon color="$rose700" as={PlayIcon} size="xl" />
+            </Pressable>
           ) : null}
           {!enabled && ratingsEnabled && (
             <AirbnbRating

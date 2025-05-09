@@ -15,6 +15,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { SongsStackParamList } from '../navigation';
 import { useSettingsStore } from '../hooks';
 import { useRef } from 'react';
+import { SongPlayer } from '../components';
 
 const Loading = () => {
   return (
@@ -50,79 +51,82 @@ export const SongSearch = () => {
   }
 
   return (
-    <FlashList
-      ref={ref}
-      data={searchItems}
-      keyExtractor={(item, i) => String(i)}
-      renderItem={({ item, index }) => {
-        const nextItem = searchItems![index + 1];
-        if (item.divider) {
+    <>
+      <FlashList
+        ref={ref}
+        data={searchItems}
+        keyExtractor={(item, i) => String(i)}
+        renderItem={({ item, index }) => {
+          const nextItem = searchItems![index + 1];
+          if (item.divider) {
+            return (
+              <Text
+                fontWeight="bold"
+                $dark-bg="$backgroundDark800"
+                $light-bg="$backgroundDark100"
+                sx={{
+                  '@base': {
+                    p: '$2',
+                    fontSize: '$sm',
+                  },
+                  '@md': {
+                    p: '$3',
+                    fontSize: '$xl',
+                  },
+                }}>
+                {i18n.t(item.title_key).toUpperCase()}
+              </Text>
+            );
+          }
           return (
-            <Text
-              fontWeight="bold"
-              $dark-bg="$backgroundDark800"
-              $light-bg="$backgroundDark100"
-              sx={{
-                '@base': {
-                  p: '$2',
-                  fontSize: '$sm',
-                },
-                '@md': {
-                  p: '$3',
-                  fontSize: '$xl',
-                },
+            <Pressable
+              testID={item.title_key}
+              onPress={() => {
+                navigation.navigate('SongList', item.params as any);
               }}>
-              {i18n.t(item.title_key).toUpperCase()}
-            </Text>
+              <HStack
+                w="100%"
+                sx={{
+                  '@base': {
+                    p: '$2',
+                    m: '$1',
+                  },
+                  '@md': {
+                    p: '$3',
+                    m: '$2',
+                  },
+                }}>
+                {item.badge}
+                <VStack>
+                  <Text
+                    fontWeight="bold"
+                    sx={{
+                      '@md': {
+                        fontSize: '$2xl',
+                      },
+                    }}>
+                    {i18n.t(item.title_key)}
+                  </Text>
+                  <Text
+                    sx={{
+                      '@base': {
+                        fontSize: '$sm',
+                      },
+                      '@md': {
+                        fontSize: '$lg',
+                      },
+                    }}>
+                    {i18n.t(item.note_key as string)}
+                  </Text>
+                </VStack>
+              </HStack>
+              {nextItem && !nextItem.divider && <Divider />}
+            </Pressable>
           );
-        }
-        return (
-          <Pressable
-            testID={item.title_key}
-            onPress={() => {
-              navigation.navigate('SongList', item.params as any);
-            }}>
-            <HStack
-              w="100%"
-              sx={{
-                '@base': {
-                  p: '$2',
-                  m: '$1',
-                },
-                '@md': {
-                  p: '$3',
-                  m: '$2',
-                },
-              }}>
-              {item.badge}
-              <VStack>
-                <Text
-                  fontWeight="bold"
-                  sx={{
-                    '@md': {
-                      fontSize: '$2xl',
-                    },
-                  }}>
-                  {i18n.t(item.title_key)}
-                </Text>
-                <Text
-                  sx={{
-                    '@base': {
-                      fontSize: '$sm',
-                    },
-                    '@md': {
-                      fontSize: '$lg',
-                    },
-                  }}>
-                  {i18n.t(item.note_key as string)}
-                </Text>
-              </VStack>
-            </HStack>
-            {nextItem && !nextItem.divider && <Divider />}
-          </Pressable>
-        );
-      }}
-      estimatedItemSize={64}
-    />
+        }}
+        estimatedItemSize={64}
+      />
+      <SongPlayer />
+    </>
   );
 };

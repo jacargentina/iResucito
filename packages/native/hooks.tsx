@@ -165,12 +165,14 @@ export const useSongsSelection = create(
 
 type SongPlayerStore = {
   player: AudioPlayer;
-  playingKey: string | null;
+  song: Song | null;
   playingActive: boolean;
   playingTimeText: string | null;
+  playingTimePercent: number | undefined;
   refreshIntervalId: any;
-  refreshPlayingTimeText: () => void;
-  play: (key: string) => void;
+  refreshSongPosition: () => void;
+  play: (song?: Song) => void;
+  seek: (percent: number) => void;
   pause: () => void;
   stop: () => void;
 };
@@ -187,37 +189,45 @@ function formatTime(rawSeconds) {
 }
 
 export const useSongPlayer = create(
-  immer<SongPlayerStore>((set) => ({
+  immer<SongPlayerStore>((set, get) => ({
     player: createAudioPlayer(null),
-    playingKey: null,
+    song: null,
     playingActive: false,
     playingTimeText: null,
+    playingTimePercent: undefined,
     refreshIntervalId: null,
-    refreshPlayingTimeText: () => {
+    refreshSongPosition: () => {
       set((state) => {
         state.playingTimeText =
           formatTime(state.player.currentTime) +
           ' / ' +
           formatTime(state.player.duration);
+        state.playingTimePercent = Math.round(
+          (state.player.currentTime * 100) / state.player.duration
+        );
       });
     },
-    play: (key: string) => {
+    play: (song?: Song) => {
       set((state) => {
-        if (state.playingKey !== key) {
-          state.playingTimeText = null;
+        if (song && state.song?.key !== song.key) {
+          state.playingTimeText = '-:-- / --:--';
+          state.playingTimePercent = 0;
           state.player.pause();
-          state.player.replace(es_audios[key]);
-          state.playingKey = key;
+          state.player.replace(es_audios[song.key]);
+          state.song = song;
           clearTimeout(state.refreshIntervalId);
         }
         state.player.play();
-        state.refreshPlayingTimeText();
-        state.refreshIntervalId = setInterval(
-          state.refreshPlayingTimeText,
-          1000
-        );
+        state.refreshSongPosition();
+        state.refreshIntervalId = setInterval(state.refreshSongPosition, 1000);
         state.playingActive = true;
       });
+    },
+    seek: (percent: number) => {
+      var player = get().player;
+      var newPosition = Math.round((player.duration * percent) / 100);
+      player.seekTo(newPosition);
+      get().refreshSongPosition();
     },
     pause: () => {
       set((state) => {
@@ -232,9 +242,10 @@ export const useSongPlayer = create(
       set((state) => {
         state.player.pause();
         state.player.seekTo(0);
-        state.playingKey = null;
+        state.song = null;
         state.playingActive = false;
         state.playingTimeText = null;
+        state.playingTimePercent = undefined;
         clearTimeout(state.refreshIntervalId);
       });
     },
