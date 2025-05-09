@@ -3161,7 +3161,7 @@ __metadata:
     path-parse: "npm:^1.0.7"
     plist: "npm:^3.1.0"
     react: "npm:19.0.0"
-    react-dom: "npm:^19.1.0"
+    react-dom: "npm:^19.0.0"
     react-json-editor-ajrm: "npm:^2.5.14"
     react-native: "npm:0.79.2"
     react-native-blob-util: "npm:^0.21.2"
@@ -18474,7 +18474,7 @@ expo-launch-arguments@jacargentina/expo-launch-arguments:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^19.1.0":
+"react-dom@npm:^19.0.0":
   version: 19.1.0
   resolution: "react-dom@npm:19.1.0"
   dependencies:
