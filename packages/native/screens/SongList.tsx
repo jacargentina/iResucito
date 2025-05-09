@@ -55,7 +55,7 @@ export const SongList = (props: {
   sort?: any;
   onPress?: any;
 }) => {
-  const listRef = useRef<any>();
+  const listRef = useRef<any>(null);
   const { songs } = useSongsStore();
   const { computedLocale } = useSettingsStore();
   const { selection, enabled, disable } = useSongsSelection();

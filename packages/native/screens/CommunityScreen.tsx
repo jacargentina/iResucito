@@ -117,7 +117,7 @@ export const CommunityScreen = () => {
   const { computedLocale } = useSettingsStore();
   const isFocused = useIsFocused();
   const navigation = useNavigation<ContactImportNavigationProp>();
-  const listRef = useRef<any>();
+  const listRef = useRef<any>(null);
   const [filter, setFilter] = useState('');
 
   useScrollToTop(listRef);
