@@ -12,6 +12,7 @@
     "publish": "npx standard-version -r patch; npm run publish-ios; npm run publish-android",
     "publish-android": "eas build --non-interactive --platform android --profile production --auto-submit",
     "publish-ios": "eas build --non-interactive --platform ios --profile production --auto-submit",
+    "build-ios-local": "mkdir ./temp-build; NODE_ENV=production TMPDIR=./temp-build/ SENTRY_DISABLE_AUTO_UPLOAD=1 EAS_LOCAL_BUILD_SKIP_CLEANUP=1 eas build --local --platform ios",
     "clean": "watchman watch-del-all",
     "android": "expo run:android",
     "ios": "expo run:ios",
