@@ -3,9 +3,12 @@ import { useMemo, useCallback, useState } from 'react';
 import { useWindowDimensions, useColorScheme } from 'react-native';
 import { Text, Center, Spinner } from '@gluestack-ui/themed';
 import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
-import type { SceneRendererProps, NavigationState } from 'react-native-tab-view';
+import type {
+  SceneRendererProps,
+  NavigationState,
+} from 'react-native-tab-view';
 import { ModalView } from '../components';
-import { ChooserParamList } from '../navigation';
+import { ChooserParamList } from '../navigation/SongChooserNavigator';
 import { useSettingsStore, useListsStore } from '../hooks';
 import i18n from '@iresucito/translations';
 import { SongList } from './SongList';
@@ -114,7 +117,11 @@ export const SongChooserDialog = (props: Props) => {
             </Center>
           );
         }}
-        renderTabBar={(props: SceneRendererProps & { navigationState: NavigationState<{ key: string; title: string }> }) => {
+        renderTabBar={(
+          props: SceneRendererProps & {
+            navigationState: NavigationState<{ key: string; title: string }>;
+          }
+        ) => {
           return (
             <TabBar
               {...(props as any)}

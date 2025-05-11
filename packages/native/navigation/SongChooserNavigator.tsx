@@ -1,6 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import { SongChooserDialog, SongPreviewScreenDialog } from '../screens';
-import { useStackNavOptions } from './index';
+import { useStackNavOptions } from './util';
 import { EucaristiaList, LibreList, PalabraList, Song } from '@iresucito/core';
 
 export type ChooserParamList = {

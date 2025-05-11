@@ -13,7 +13,7 @@ import { useListsStore } from '../hooks';
 import { ModalView } from '../components';
 import i18n from '@iresucito/translations';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { ListsStackParamList } from '../navigation';
+import { ListsStackParamList } from '../navigation/ListsNavigator';
 
 type ListNameDialogRouteProp = RouteProp<ListsStackParamList, 'ListName'>;
 

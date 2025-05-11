@@ -1,7 +1,6 @@
-
 import { createStackNavigator } from '@react-navigation/stack';
 import i18n from '@iresucito/translations';
-import { useStackNavOptions } from './index';
+import { useStackNavOptions } from './util';
 import { SettingsScreen } from '../screens';
 import { useSettingsStore } from '../hooks';
 

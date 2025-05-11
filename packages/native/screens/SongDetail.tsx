@@ -3,7 +3,7 @@ import { activateKeepAwakeAsync, deactivateKeepAwake } from 'expo-keep-awake';
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { useSettingsStore } from '../hooks';
 import { SongViewFrame } from './SongViewFrame';
-import { SongsStackParamList } from '../navigation';
+import { SongsStackParamList } from '../navigation/SongsNavigator';
 
 type SongDetailRouteProp = RouteProp<SongsStackParamList, 'SongDetail'>;
 

@@ -5,9 +5,11 @@ import * as SplashScreen from 'expo-splash-screen';
 import { MenuProvider } from 'react-native-popup-menu';
 import { GluestackUIProvider } from '@gluestack-ui/themed';
 import { config } from './config/gluestack-ui.config';
-import { RootNavigator } from './navigation';
+import { RootNavigator } from './navigation/RootNavigator';
 import { useFonts } from 'expo-font';
-import { useColorScheme } from 'react-native';
+import { AppState, useColorScheme } from 'react-native';
+import { useEffect, useRef } from 'react';
+import { useSongPlayer } from './hooks';
 
 Sentry.init({
   dsn: 'https://645393af749a4f3da9d8074330a25da3@o469156.ingest.sentry.io/5498083',
@@ -21,6 +23,28 @@ const App = () => {
     'Franklin Gothic Medium': require('./fonts/FranklinGothicMedium.ttf'),
     'Franklin Gothic Regular': require('./fonts/FranklinGothicRegular.ttf'),
   });
+
+  const appState = useRef(AppState.currentState);
+
+  useEffect(() => {
+    const subscription = AppState.addEventListener('change', (nextAppState) => {
+      if (
+        appState.current.match(/inactive|background/) &&
+        nextAppState === 'active'
+      ) {
+        // App es activa
+      } else {
+        // App es desactivada
+      }
+
+      appState.current = nextAppState;
+      console.log('AppState', appState.current);
+    });
+
+    return () => {
+      subscription.remove();
+    };
+  }, []);
 
   const scheme = useColorScheme();
   const colorMode = scheme == null ? undefined : scheme;

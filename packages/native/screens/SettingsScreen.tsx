@@ -29,7 +29,7 @@ import { getLocalesForPicker, CollaboratorsIndex } from '@iresucito/core';
 import { useSettingsStore, useSongsStore } from '../hooks';
 import { NativeExtras, getDefaultLocale } from '../util';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { SettingsStackParamList } from '../navigation';
+import { SettingsStackParamList } from '../navigation/SettingsNavigator';
 import {
   ChevronDownIcon,
   ChromeIcon,

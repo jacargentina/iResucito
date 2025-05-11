@@ -14,7 +14,7 @@ import {
 import i18n from '@iresucito/translations';
 import { PdfStyle, PdfStyles, SongToPdf, SongsParser } from '@iresucito/core';
 import { generateSongPDF } from '../pdf';
-import { SongsStackParamList } from '../navigation';
+import { SongsStackParamList } from '../navigation/SongsNavigator';
 import { useSongsStore, useSongsSelection } from '../hooks';
 
 type PDFViewerScreenNavigationProp = StackNavigationProp<

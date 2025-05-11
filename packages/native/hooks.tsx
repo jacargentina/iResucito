@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 //import { useWhatChanged } from '@simbathesailor/use-what-changed';
 import { Alert } from 'react-native';
 import { launchArguments } from 'expo-launch-arguments';
@@ -205,23 +204,17 @@ export const useSongPlayer = create(
     refreshIntervalId: null,
     refreshSongPosition: () => {
       const player = get().player;
-      if (player.isLoaded) {
-        const current = formatTime(player.currentTime);
-        const total = formatTime(player.duration);
-        if (
-          current == total &&
-          player.duration > 0 &&
-          player.playing == false
-        ) {
-          get().stop();
-        } else {
-          set((state) => {
-            state.playingTimeText = current + ' / ' + total;
-            state.playingTimePercent = Math.round(
-              (player.currentTime * 100) / player.duration
-            );
-          });
-        }
+      if (player.currentStatus.didJustFinish) {
+        get().stop();
+      } else if (player.isLoaded) {
+        set((state) => {
+          const current = formatTime(player.currentTime);
+          const total = formatTime(player.duration);
+          state.playingTimeText = current + ' / ' + total;
+          state.playingTimePercent = Math.round(
+            (player.currentTime * 100) / player.duration
+          );
+        });
       }
     },
     play: (song?: Song) => {
@@ -246,7 +239,7 @@ export const useSongPlayer = create(
     },
     seek: (percent: number) => {
       var player = get().player;
-      var newPosition = Math.round((player.duration * percent) / 100);
+      var newPosition = (player.duration * percent) / 100;
       player.seekTo(newPosition);
       get().refreshSongPosition();
     },

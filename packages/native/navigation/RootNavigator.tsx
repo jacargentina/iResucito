@@ -5,13 +5,9 @@ import {
   ContactImportDialog,
   ContactChooserDialog,
 } from '../screens';
-import {
-  useStackNavOptions,
-  SongChooserNavigator,
-  MenuNavigator,
-  ChooserParamList,
-  MenuParamList,
-} from './index';
+import { ChooserParamList, SongChooserNavigator } from './SongChooserNavigator';
+import { MenuNavigator, MenuParamList } from './MenuNavigator';
+import { useStackNavOptions } from './util';
 import { EucaristiaList, LibreList, PalabraList } from '@iresucito/core';
 import { GeneratePDFResult } from '../pdf';
 

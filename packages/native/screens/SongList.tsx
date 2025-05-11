@@ -12,22 +12,10 @@ import {
   useFocusEffect,
   RouteProp,
 } from '@react-navigation/native';
-import { Keyboard, Pressable, useColorScheme, View } from 'react-native';
-import {
-  Text,
-  Spinner,
-  HStack,
-  Icon,
-  Slider,
-  SliderTrack,
-  SliderFilledTrack,
-  SliderThumb,
-  VStack,
-  useMedia,
-} from '@gluestack-ui/themed';
+import { Keyboard, View } from 'react-native';
+import { Text, Spinner, HStack } from '@gluestack-ui/themed';
 import { FlashList } from '@shopify/flash-list';
 import {
-  HeaderButton,
   SearchBarView,
   ChoosePdfTypeForExport,
   SongPlayer,
@@ -36,12 +24,11 @@ import i18n from '@iresucito/translations';
 import {
   setSongSetting,
   useSettingsStore,
-  useSongPlayer,
   useSongsSelection,
   useSongsStore,
 } from '../hooks';
 import { SongListItem } from './SongListItem';
-import { SongsStackParamList } from '../navigation';
+import { SongsStackParamList } from '../navigation/SongsNavigator';
 import {
   Song,
   SongToPdf,
@@ -52,8 +39,7 @@ import {
 import { StackNavigationProp } from '@react-navigation/stack';
 import { generateSongPDF } from '../pdf';
 import { useBackHandler } from '../useBackHandler';
-import { PauseIcon, PlayIcon, XIcon } from 'lucide-react-native';
-import { config } from '../config/gluestack-ui.config';
+import { HeaderButton } from '../navigation/util';
 
 type SongListRouteProp = RouteProp<SongsStackParamList, 'SongList'>;
 

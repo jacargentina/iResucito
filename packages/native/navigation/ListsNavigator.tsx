@@ -26,17 +26,17 @@ import {
   SongDetail,
   ListNameDialog,
 } from '../screens';
-import { HeaderButton } from '../components';
 import { ListAction, ListType, Song } from '@iresucito/core';
 import { useListsStore, useSettingsStore } from '../hooks';
 import {
+  useStackNavOptions,
   getSongDetailOptions,
   getPdfViewerOptions,
-  RootStackParamList,
-  useStackNavOptions,
-  SongsStackParamList,
-} from './index';
+  HeaderButton,
+} from './util';
 import { GeneratePDFResult } from '../pdf';
+import { RootStackParamList } from './RootNavigator';
+import { SongsStackParamList } from './SongsNavigator';
 
 export type ListsStackParamList = {
   ListsSearch: undefined;

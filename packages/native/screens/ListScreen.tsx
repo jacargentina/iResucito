@@ -9,27 +9,22 @@ import {
 } from '@gluestack-ui/themed';
 import { Alert, View } from 'react-native';
 import { FlashList } from '@shopify/flash-list';
-import {
-  CompositeNavigationProp,
-  useNavigation,
-  useScrollToTop,
-} from '@react-navigation/native';
+import { useNavigation, useScrollToTop } from '@react-navigation/native';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import {
   CallToAction,
   SwipeableRightAction,
   SearchBarView,
-  HeaderButton,
   ChooseListTypeForAdd,
 } from '../components';
 import { useListsStore, useSettingsStore } from '../hooks';
 import i18n from '@iresucito/translations';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList, ListsStackParamList } from '../navigation';
-import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
+import { ListsStackParamList } from '../navigation/ListsNavigator';
 import { config } from '../config/gluestack-ui.config';
 import { BookmarkIcon } from 'lucide-react-native';
 import { ListForUI } from '@iresucito/core';
+import { HeaderButton } from '../navigation/util';
 
 type ListScreenNavigationProp = StackNavigationProp<
   ListsStackParamList,

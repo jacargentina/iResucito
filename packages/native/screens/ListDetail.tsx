@@ -8,7 +8,6 @@ import { SwipeableRightAction } from '../components';
 import { useListsStore } from '../hooks';
 import i18n from '@iresucito/translations';
 import ListDetailItem from './ListDetailItem';
-import { ListsStackParamList } from '../navigation';
 import { config } from '../config/gluestack-ui.config';
 import {
   EucaristiaList,
@@ -16,6 +15,7 @@ import {
   ListForUI,
   PalabraList,
 } from '@iresucito/core';
+import { ListsStackParamList } from '../navigation/ListsNavigator';
 
 const SwipeableRow = (props: {
   listName: string;

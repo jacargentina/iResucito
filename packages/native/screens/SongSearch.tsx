@@ -12,7 +12,7 @@ import {
 import { FlashList } from '@shopify/flash-list';
 import i18n from '@iresucito/translations';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { SongsStackParamList } from '../navigation';
+import { SongsStackParamList } from '../navigation/SongsNavigator';
 import { useSettingsStore } from '../hooks';
 import { useRef } from 'react';
 import { SongPlayer } from '../components';

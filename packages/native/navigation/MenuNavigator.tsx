@@ -9,16 +9,6 @@ import {
   NavigatorScreenParams,
 } from '@react-navigation/native';
 import { Icon, useMedia } from '@gluestack-ui/themed';
-import {
-  SettingsNavigator,
-  CommunityNavigator,
-  ListsNavigator,
-  SongsNavigator,
-  SongsStackParamList,
-  ListsStackParamList,
-  CommunityStackParamList,
-  SettingsStackParamList,
-} from './index';
 import { useListsStore } from '../hooks';
 import { config } from '../config/gluestack-ui.config';
 import {
@@ -28,6 +18,13 @@ import {
   UsersIcon,
 } from 'lucide-react-native';
 import { useColorScheme } from 'react-native';
+import { SongsNavigator, SongsStackParamList } from './SongsNavigator';
+import { ListsNavigator, ListsStackParamList } from './ListsNavigator';
+import {
+  CommunityNavigator,
+  CommunityStackParamList,
+} from './CommunityNavigator';
+import { SettingsNavigator, SettingsStackParamList } from './SettingsNavigator';
 
 export type MenuParamList = {
   Songs: NavigatorScreenParams<SongsStackParamList>;

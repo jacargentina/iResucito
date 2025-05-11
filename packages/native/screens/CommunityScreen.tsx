@@ -19,17 +19,17 @@ import {
   SwipeableRightAction,
   CallToAction,
   SearchBarView,
-  HeaderButton,
 } from '../components';
 import { BrotherContact, useBrothersStore, useSettingsStore } from '../hooks';
 import i18n from '@iresucito/translations';
-import { RootStackParamList } from '../navigation';
 import { contactFilterByText, ordenAlfabetico } from '../util';
 import { ContactListItem } from './ContactListItem';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { Contact } from 'expo-contacts';
 import { config } from '../config/gluestack-ui.config';
 import { UsersIcon } from 'lucide-react-native';
+import { RootStackParamList } from '../navigation/RootNavigator';
+import { HeaderButton } from '../navigation/util';
 
 const SwipeableRow = (props: { item: BrotherContact }) => {
   const { update, addOrRemove } = useBrothersStore();

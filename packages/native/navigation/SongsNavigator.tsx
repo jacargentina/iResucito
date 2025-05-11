@@ -5,7 +5,7 @@ import {
   useStackNavOptions,
   getSongDetailOptions,
   getPdfViewerOptions,
-} from './index';
+} from './util';
 import { Song } from '@iresucito/core';
 import { useSettingsStore } from '../hooks';
 import { GeneratePDFResult } from '../pdf';
