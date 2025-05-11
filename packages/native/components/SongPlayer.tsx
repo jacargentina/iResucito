@@ -13,14 +13,14 @@ import {
 import color from 'color';
 import { useSongPlayer } from '../hooks';
 import { PauseIcon, PlayIcon, XIcon } from 'lucide-react-native';
-import { config } from '../config/gluestack-ui.config';
 import { colors } from '@iresucito/core';
 import { NativeStyles } from '../util';
+import { useRef } from 'react';
 
 export const SongPlayer = () => {
   const songPlayer = useSongPlayer();
-  const scheme = useColorScheme();
   const media = useMedia();
+  const sliderRef = useRef<any>(null);
 
   if (songPlayer.song == null) {
     return null;
@@ -56,21 +56,28 @@ export const SongPlayer = () => {
       <HStack>
         <Pressable
           onPress={() =>
-            songPlayer.playingActive ? songPlayer.pause() : songPlayer.play()
+            songPlayer.player.playing ? songPlayer.pause() : songPlayer.play()
           }>
           <Icon
             color="$rose700"
             mr="$2"
-            as={songPlayer.playingActive ? PauseIcon : PlayIcon}
+            as={songPlayer.player.playing ? PauseIcon : PlayIcon}
             size="xl"
           />
         </Pressable>
         <Slider
+          ref={sliderRef}
           w="90%"
           bg="$backgroundDark200"
           borderRadius={10}
           value={songPlayer.playingTimePercent}
           onChange={(value) => songPlayer.seek(value)}
+          onTouchEnd={(evt) => {
+            sliderRef.current?.measure((x, y, width, height, pageX, pageY) => {
+              const percent = (evt.nativeEvent.locationX / width) * 100;
+              songPlayer.seek(percent);
+            });
+          }}
           minValue={0}
           maxValue={100}
           size="sm"

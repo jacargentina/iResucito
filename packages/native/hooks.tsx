@@ -204,29 +204,43 @@ export const useSongPlayer = create(
     playingTimePercent: undefined,
     refreshIntervalId: null,
     refreshSongPosition: () => {
-      set((state) => {
-        state.playingTimeText =
-          formatTime(state.player.currentTime) +
-          ' / ' +
-          formatTime(state.player.duration);
-        state.playingTimePercent = Math.round(
-          (state.player.currentTime * 100) / state.player.duration
-        );
-      });
+      const player = get().player;
+      if (player.isLoaded) {
+        const current = formatTime(player.currentTime);
+        const total = formatTime(player.duration);
+        if (
+          current == total &&
+          player.duration > 0 &&
+          player.playing == false
+        ) {
+          get().stop();
+        } else {
+          set((state) => {
+            state.playingTimeText = current + ' / ' + total;
+            state.playingTimePercent = Math.round(
+              (player.currentTime * 100) / player.duration
+            );
+          });
+        }
+      }
     },
     play: (song?: Song) => {
-      set((state) => {
-        if (song && state.song?.key !== song.key) {
+      const player = get().player;
+      if (song && get().song?.key !== song.key) {
+        player.pause();
+        player.replace(es_audios[song.key]);
+        clearInterval(get().refreshIntervalId);
+        set((state) => {
           state.playingTimeText = '-:-- / --:--';
           state.playingTimePercent = 0;
-          state.player.pause();
-          state.player.replace(es_audios[song.key]);
           state.song = song;
-          clearTimeout(state.refreshIntervalId);
-        }
-        state.player.play();
-        state.refreshSongPosition();
-        state.refreshIntervalId = setInterval(state.refreshSongPosition, 1000);
+          state.refreshIntervalId = undefined;
+        });
+      }
+      player.play();
+      get().refreshSongPosition();
+      set((state) => {
+        state.refreshIntervalId = setInterval(get().refreshSongPosition, 1000);
         state.playingActive = true;
       });
     },
@@ -237,23 +251,25 @@ export const useSongPlayer = create(
       get().refreshSongPosition();
     },
     pause: () => {
-      set((state) => {
-        if (state.player.playing) {
-          state.player.pause();
+      var player = get().player;
+      if (player.playing) {
+        player.pause();
+        clearInterval(get().refreshIntervalId);
+        set((state) => {
           state.playingActive = false;
-          clearTimeout(state.refreshIntervalId);
-        }
-      });
+        });
+      }
     },
     stop: () => {
+      var player = get().player;
+      player.pause();
+      player.seekTo(0);
+      clearInterval(get().refreshIntervalId);
       set((state) => {
-        state.player.pause();
-        state.player.seekTo(0);
         state.song = null;
         state.playingActive = false;
         state.playingTimeText = null;
         state.playingTimePercent = undefined;
-        clearTimeout(state.refreshIntervalId);
       });
     },
   }))
