@@ -6,21 +6,31 @@
     "orientation": "default",
     "icon": "./img/cristo.png",
     "userInterfaceStyle": "automatic",
-    "platforms": ["ios", "android"],
+    "platforms": [
+      "ios",
+      "android"
+    ],
     "splash": {
       "image": "./img/bootsplash_logo.png",
       "resizeMode": "cover",
       "backgroundColor": "#881337"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "bundleIdentifier": "com.javiercastro.iresucito",
       "infoPlist": {
         "CFBundleAllowMixedLocalizations": true,
-        "UIRequiredDeviceCapabilities": ["armv7", "gamekit"],
-        "UIBackgroundModes": ["audio"]
+        "UIRequiredDeviceCapabilities": [
+          "armv7",
+          "gamekit"
+        ],
+        "UIBackgroundModes": [
+          "audio"
+        ]
       },
-      "buildNumber": "52",
+      "buildNumber": "53",
       "requireFullScreen": true,
       "supportsTablet": true,
       "config": {
