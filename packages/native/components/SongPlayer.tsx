@@ -10,9 +10,12 @@ import {
   VStack,
   useMedia,
 } from '@gluestack-ui/themed';
+import color from 'color';
 import { useSongPlayer } from '../hooks';
 import { PauseIcon, PlayIcon, XIcon } from 'lucide-react-native';
 import { config } from '../config/gluestack-ui.config';
+import { colors } from '@iresucito/core';
+import { NativeStyles } from '../util';
 
 export const SongPlayer = () => {
   const songPlayer = useSongPlayer();
@@ -23,23 +26,22 @@ export const SongPlayer = () => {
     return null;
   }
 
+  const backColor = color(colors[songPlayer.song.stage]);
+  const background = backColor.lighten(0.1).string();
+
   return (
     <VStack
       p="$4"
       borderTopWidth={1}
-      $light-bgColor="$backgroundDark50"
-      $light-borderTopColor="$rose300"
-      $dark-borderTopColor="$rose300">
+      bgColor={background}
+      borderTopColor="$rose300">
       <HStack justifyContent="space-between">
         <Text
           numberOfLines={1}
           pb="$4"
           style={{
             fontWeight: 'bold',
-            color:
-              scheme == 'dark'
-                ? config.tokens.colors.textDark100
-                : config.tokens.colors.textDark800,
+            color: NativeStyles.title.color,
             fontSize: media.md ? 28 : 18,
           }}>
           {songPlayer.song.titulo}
@@ -65,8 +67,7 @@ export const SongPlayer = () => {
         </Pressable>
         <Slider
           w="90%"
-          $light-bg="$backgroundDark200"
-          $dark-bg="$backgroundDark200"
+          bg="$backgroundDark200"
           borderRadius={10}
           value={songPlayer.playingTimePercent}
           onChange={(value) => songPlayer.seek(value)}
@@ -80,7 +81,12 @@ export const SongPlayer = () => {
           <SliderThumb />
         </Slider>
       </HStack>
-      <Text textAlign="right" pt="$2" fontSize="$sm" numberOfLines={1}>
+      <Text
+        textAlign="right"
+        pt="$2"
+        fontSize="$sm"
+        numberOfLines={1}
+        style={{ color: NativeStyles.normalLine.color }}>
         {songPlayer.playingTimeText}
       </Text>
     </VStack>

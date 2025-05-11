@@ -4,7 +4,6 @@ import {
   SongPreviewScreenDialog,
   ContactImportDialog,
   ContactChooserDialog,
-  ListNameDialog,
 } from '../screens';
 import {
   useStackNavOptions,
@@ -13,13 +12,7 @@ import {
   ChooserParamList,
   MenuParamList,
 } from './index';
-import {
-  EucaristiaList,
-  LibreList,
-  ListAction,
-  ListType,
-  PalabraList,
-} from '@iresucito/core';
+import { EucaristiaList, LibreList, PalabraList } from '@iresucito/core';
 import { GeneratePDFResult } from '../pdf';
 
 export type RootStackParamList = {

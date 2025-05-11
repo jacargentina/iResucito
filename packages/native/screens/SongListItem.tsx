@@ -68,12 +68,7 @@ export const SongListItem = (props: {
 
   const viewSong = () => {
     navigation.navigate('ViewSong', {
-      data: {
-        title: song.titulo,
-        source: song.fuente,
-        text: song.fullText,
-        stage: song.stage,
-      },
+      song: song,
     });
   };
 

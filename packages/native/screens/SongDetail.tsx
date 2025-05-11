@@ -21,14 +21,5 @@ export const SongDetail = () => {
     }
   }, [keepAwake]);
 
-  return (
-    <SongViewFrame
-      title={song.titulo}
-      source={song.fuente}
-      stage={song.stage}
-      text={song.fullText}
-      error={song.error}
-      transportToNote={song.transportTo}
-    />
-  );
+  return <SongViewFrame song={song} />;
 };

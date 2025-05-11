@@ -9,7 +9,7 @@ import {
   useMedia,
 } from '@gluestack-ui/themed';
 import color from 'color';
-import { colors, SongLine } from '@iresucito/core';
+import { colors, Song, SongLine } from '@iresucito/core';
 import i18n from '@iresucito/translations';
 import { useSettingsStore, useSongPlayer } from '../hooks';
 import { NativeParser, NativeStyle, NativeStyles } from '../util';
@@ -83,15 +83,24 @@ const SongViewLines = (props: {
   return <>{renderItems}</>;
 };
 
-export const SongViewFrame = (props: any) => {
+type Props = {
+  song: Song;
+  style?: any;
+};
+
+export const SongViewFrame = (props: Props) => {
   const media = useMedia();
   const { zoomLevel } = useSettingsStore();
-  const { title, stage, source, text, transportToNote, error, style } = props;
-  const backColor = color(colors[stage]);
+  const { song, style } = props;
+  const backColor = color(colors[song.stage]);
   const background = backColor.lighten(0.1).string();
   const minWidth = Dimensions.get('window').width;
 
-  const fRender = NativeParser.getForRender(text, i18n.locale, transportToNote);
+  const fRender = NativeParser.getForRender(
+    song.fullText,
+    i18n.locale,
+    song.transportTo
+  );
 
   const [ctrlVisible, setCtrlVisible] = useState(false);
   const songPlayer = useSongPlayer();
@@ -128,8 +137,8 @@ export const SongViewFrame = (props: any) => {
   if (ctrlVisible) {
     height = height - 10;
   }
-  if (songPlayer.playingActive) {
-    height = height - 14;
+  if (songPlayer.song != null) {
+    height = height - 18;
   }
 
   return (
@@ -153,13 +162,13 @@ export const SongViewFrame = (props: any) => {
               },
             }}>
             <Text onPress={toggleControls} style={titleStyle}>
-              {title}
+              {song.titulo}
             </Text>
             <Text onPress={toggleControls} style={sourceStyle}>
-              {source}
+              {song.fuente}
             </Text>
-            {error && <Text>{error}</Text>}
-            {!error && (
+            {song.error && <Text>{song.error}</Text>}
+            {!song.error && (
               <SongViewLines
                 onPress={toggleControls}
                 lines={fRender.items}

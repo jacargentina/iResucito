@@ -11,7 +11,7 @@ type SongPreviewRouteProp = RouteProp<ChooserParamList, 'ViewSong'>;
 
 export const SongPreviewScreenDialog = () => {
   const route = useRoute<SongPreviewRouteProp>();
-  const { text, title, source, stage } = route.params.data;
+  const { song } = route.params;
 
   return (
     <ModalView
@@ -27,13 +27,7 @@ export const SongPreviewScreenDialog = () => {
           {i18n.t('screen_title.preview')}
         </Text>
       }>
-      <SongViewFrame
-        style={{ marginTop: 10 }}
-        title={title}
-        text={text}
-        stage={stage}
-        source={source}
-      />
+      <SongViewFrame style={{ marginTop: 10 }} song={song} />
     </ModalView>
   );
 };
