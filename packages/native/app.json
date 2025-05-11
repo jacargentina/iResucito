@@ -17,9 +17,10 @@
       "bundleIdentifier": "com.javiercastro.iresucito",
       "infoPlist": {
         "CFBundleAllowMixedLocalizations": true,
-        "UIRequiredDeviceCapabilities": ["armv7", "gamekit"]
+        "UIRequiredDeviceCapabilities": ["armv7", "gamekit"],
+        "UIBackgroundModes": ["audio"]
       },
-      "buildNumber": "51",
+      "buildNumber": "52",
       "requireFullScreen": true,
       "supportsTablet": true,
       "config": {

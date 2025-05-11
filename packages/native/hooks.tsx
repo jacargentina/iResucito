@@ -47,7 +47,14 @@ import {
 import { shallow } from 'zustand/shallow';
 import { getDefaultLocale, ordenClasificacion, NativeExtras } from './util';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { AudioPlayer, createAudioPlayer } from 'expo-audio';
+import { AudioPlayer, createAudioPlayer, setAudioModeAsync } from 'expo-audio';
+
+setAudioModeAsync({
+  interruptionMode: 'doNotMix',
+  interruptionModeAndroid: 'doNotMix',
+  playsInSilentMode: true,
+  shouldPlayInBackground: true,
+});
 
 const readSongSettingsFile = async (): Promise<
   SongSettingsFile | undefined
