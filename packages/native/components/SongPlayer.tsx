@@ -21,6 +21,7 @@ export const SongPlayer = () => {
   const songPlayer = useSongPlayer();
   const media = useMedia();
   const sliderRef = useRef<any>(null);
+  const wasChangedRef = useRef(false);
 
   if (songPlayer.song == null) {
     return null;
@@ -71,12 +72,22 @@ export const SongPlayer = () => {
           bg="$backgroundDark200"
           borderRadius={10}
           value={songPlayer.playingTimePercent}
-          onChange={(value) => songPlayer.seek(value)}
+          onChange={(value) => {
+            wasChangedRef.current = true;
+            songPlayer.seek(value);
+          }}
+          onTouchStart={() => {
+            wasChangedRef.current = false;
+          }}
           onTouchEnd={(evt) => {
-            sliderRef.current?.measure((x, y, width, height, pageX, pageY) => {
-              const percent = (evt.nativeEvent.locationX / width) * 100;
-              songPlayer.seek(percent);
-            });
+            if (wasChangedRef.current == false) {
+              sliderRef.current?.measure(
+                (x, y, width, height, pageX, pageY) => {
+                  const percent = (evt.nativeEvent.locationX / width) * 100;
+                  songPlayer.seek(percent);
+                }
+              );
+            }
           }}
           minValue={0}
           maxValue={100}
