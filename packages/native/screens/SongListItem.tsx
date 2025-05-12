@@ -18,12 +18,11 @@ import Collapsible from 'react-native-collapsible';
 import { AirbnbRating } from 'react-native-ratings';
 import { BadgeByStage } from '../badges';
 import i18n from '@iresucito/translations';
-import { Song } from '@iresucito/core';
+import { Song, es_audios } from '@iresucito/core';
 import { ChooserParamList } from '../navigation/SongChooserNavigator';
 import { useSettingsStore, useSongPlayer, useSongsSelection } from '../hooks';
 import { config } from '../config/gluestack-ui.config';
 import { BugIcon, EyeIcon, PlayIcon } from 'lucide-react-native';
-import { es_audios } from '@iresucito/core';
 
 const NoLocaleWarning = () => {
   return (

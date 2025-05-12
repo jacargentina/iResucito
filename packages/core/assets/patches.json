@@ -284,6 +284,17 @@
         "original": "catechumenate",
         "new": "election"
       }
+    },
+    {
+      "date": 1746716336644,
+      "locale": "es",
+      "author": "mandm32258@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "catechumenate",
+        "new": "election"
+      }
     }
   ],
   "5": [
@@ -404,6 +415,28 @@
       "author": "albertiniqmc@gmail.com",
       "created": false,
       "updated": true,
+      "staged": {
+        "original": "catechumenate",
+        "new": "precatechumenate"
+      }
+    },
+    {
+      "date": 1744356391373,
+      "locale": "pl",
+      "author": "m.szoltek2004@gmail.com",
+      "created": true,
+      "updated": false,
+      "staged": {
+        "original": "catechumenate",
+        "new": "precatechumenate"
+      }
+    },
+    {
+      "date": 1746716457002,
+      "locale": "es",
+      "author": "mandm32258@gmail.com",
+      "created": false,
+      "updated": false,
       "staged": {
         "original": "catechumenate",
         "new": "precatechumenate"
@@ -2448,6 +2481,13 @@
         "original": "Erhebet euch ihr uralten Pforten - Ps 24",
         "new": "Ihr alten Pforten - Ps 24"
       },
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1746967861988,
+      "locale": "es",
+      "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
     }
@@ -4598,6 +4638,17 @@
         "original": "precatechumenate",
         "new": "election"
       }
+    },
+    {
+      "date": 1746716790463,
+      "locale": "es",
+      "author": "mandm32258@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "election"
+      }
     }
   ],
   "62": [
@@ -4855,6 +4906,17 @@
       "date": 1653823121783,
       "locale": "lt-LT",
       "author": "albertiniqmc@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "catechumenate"
+      }
+    },
+    {
+      "date": 1746716525830,
+      "locale": "es",
+      "author": "mandm32258@gmail.com",
       "created": false,
       "updated": false,
       "staged": {
@@ -5643,6 +5705,17 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1746716563012,
+      "locale": "es",
+      "author": "mandm32258@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "catechumenate"
+      }
     }
   ],
   "78": [
@@ -6198,6 +6271,17 @@
       "date": 1653823467437,
       "locale": "lt-LT",
       "author": "albertiniqmc@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "election"
+      }
+    },
+    {
+      "date": 1746716807447,
+      "locale": "es",
+      "author": "mandm32258@gmail.com",
       "created": false,
       "updated": false,
       "staged": {
@@ -7464,6 +7548,17 @@
         "original": "catechumenate",
         "new": "precatechumenate"
       }
+    },
+    {
+      "date": 1746716483151,
+      "locale": "es",
+      "author": "mandm32258@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "catechumenate"
+      }
     }
   ],
   "109": [
@@ -8158,6 +8253,17 @@
         "original": "election",
         "new": "precatechumenate"
       }
+    },
+    {
+      "date": 1746716858168,
+      "locale": "es",
+      "author": "mandm32258@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "election"
+      }
     }
   ],
   "123": [
@@ -8257,6 +8363,17 @@
       },
       "created": false,
       "updated": true,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "election"
+      }
+    },
+    {
+      "date": 1746716840341,
+      "locale": "es",
+      "author": "mandm32258@gmail.com",
+      "created": false,
+      "updated": false,
       "staged": {
         "original": "precatechumenate",
         "new": "election"
@@ -9150,6 +9267,17 @@
         "original": "precatechumenate",
         "new": "election"
       }
+    },
+    {
+      "date": 1746716878616,
+      "locale": "es",
+      "author": "mandm32258@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "election"
+      }
     }
   ],
   "142": [
@@ -9533,6 +9661,17 @@
       "date": 1653822538096,
       "locale": "lt-LT",
       "author": "albertiniqmc@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "election"
+      }
+    },
+    {
+      "date": 1746716899203,
+      "locale": "es",
+      "author": "mandm32258@gmail.com",
       "created": false,
       "updated": false,
       "staged": {
@@ -10224,6 +10363,17 @@
         "original": "election",
         "new": "liturgy"
       }
+    },
+    {
+      "date": 1746716704752,
+      "locale": "es",
+      "author": "mandm32258@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "election"
+      }
     }
   ],
   "159": [
@@ -10357,6 +10507,17 @@
       "author": "s.spandri@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1746716771641,
+      "locale": "es",
+      "author": "mandm32258@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "election"
+      }
     }
   ],
   "160": [
@@ -10410,6 +10571,17 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1746716584348,
+      "locale": "es",
+      "author": "mandm32258@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "election",
+        "new": "catechumenate"
+      }
     }
   ],
   "161": [
@@ -10719,6 +10891,17 @@
         "original": "election",
         "new": "catechumenate"
       }
+    },
+    {
+      "date": 1746716602807,
+      "locale": "es",
+      "author": "mandm32258@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "election",
+        "new": "catechumenate"
+      }
     }
   ],
   "166": [
@@ -10837,6 +11020,17 @@
       "author": "albertiniqmc@gmail.com",
       "created": false,
       "updated": true,
+      "staged": {
+        "original": "election",
+        "new": "catechumenate"
+      }
+    },
+    {
+      "date": 1746716542645,
+      "locale": "es",
+      "author": "mandm32258@gmail.com",
+      "created": false,
+      "updated": false,
       "staged": {
         "original": "election",
         "new": "catechumenate"
@@ -11066,6 +11260,17 @@
       "date": 1653825943107,
       "locale": "lt-LT",
       "author": "albertiniqmc@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "election",
+        "new": "catechumenate"
+      }
+    },
+    {
+      "date": 1746716509065,
+      "locale": "es",
+      "author": "mandm32258@gmail.com",
       "created": false,
       "updated": false,
       "staged": {
@@ -11391,6 +11596,17 @@
         "original": "election",
         "new": "catechumenate"
       }
+    },
+    {
+      "date": 1746716666924,
+      "locale": "es",
+      "author": "mandm32258@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "election",
+        "new": "catechumenate"
+      }
     }
   ],
   "177": [
@@ -11457,6 +11673,17 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1746716683665,
+      "locale": "es",
+      "author": "mandm32258@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "election",
+        "new": "catechumenate"
+      }
     }
   ],
   "179": [
@@ -14003,6 +14230,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1744355087958,
+      "locale": "pl",
+      "author": "m.szoltek2004@gmail.com",
+      "created": true,
+      "updated": false
     }
   ],
   "224": [
@@ -14655,6 +14889,13 @@
         "original": "precatechumenate",
         "new": "liturgy"
       }
+    },
+    {
+      "date": 1744074393126,
+      "locale": "es",
+      "author": "pedro422005@gmail.com",
+      "created": true,
+      "updated": false
     }
   ],
   "257": [

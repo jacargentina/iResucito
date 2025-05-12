@@ -1,18 +1,18 @@
-import {
-  getPropertyLocale,
-  getPatchStats,
-  SongPatch,
-  SongPatchData,
-  SongChange,
-  SongsHistory,
-  SongsIndex,
-  loadAllLocales,
-} from './';
 import path from 'path';
 import util from 'util';
 import fs from 'fs';
 import { Dropbox } from 'dropbox';
-import { SongIndexPatch, SongsLocaleData } from './common';
+import {
+  getPatchStats,
+  getPropertyLocale,
+  loadAllLocales,
+  SongChange,
+  SongIndexPatch,
+  SongPatch,
+  SongPatchData,
+  SongsLocaleData,
+} from './common';
+import { SongsHistory, SongsIndex } from './SongsProcessor';
 
 var allLocales = loadAllLocales();
 
@@ -152,7 +152,10 @@ const applyPatch = async (local_file_path: string) => {
   });
 
   Object.keys(allLocales).forEach((loc) => {
-    const localePath = path.resolve(import.meta.dirname, `../assets/songs/${loc}.json`);
+    const localePath = path.resolve(
+      import.meta.dirname,
+      `../assets/songs/${loc}.json`
+    );
     fs.writeFileSync(
       localePath,
       JSON.stringify(allLocales[loc], null, '  ') + '\n'
@@ -160,7 +163,10 @@ const applyPatch = async (local_file_path: string) => {
   });
 
   const indexPath = path.resolve(import.meta.dirname, '../assets/songs.json');
-  const patchesPath = path.resolve(import.meta.dirname, '../assets/patches.json');
+  const patchesPath = path.resolve(
+    import.meta.dirname,
+    '../assets/patches.json'
+  );
 
   fs.writeFileSync(indexPath, JSON.stringify(SongsIndex, null, '  ') + '\n');
   fs.writeFileSync(

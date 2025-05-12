@@ -71,7 +71,8 @@
     },
     "stages": {
       "pt-BR": "catechumenate",
-      "lt-LT": "election"
+      "lt-LT": "election",
+      "es": "election"
     }
   },
   "5": {
@@ -101,11 +102,14 @@
       "de": "84",
       "pt-BR": "88",
       "pt-PT": "87",
-      "lt-LT": "92"
+      "lt-LT": "92",
+      "pl": "6"
     },
     "stages": {
       "pt-BR": "precatechumenate",
-      "lt-LT": "precatechumenate"
+      "lt-LT": "precatechumenate",
+      "pl": "precatechumenate",
+      "es": "precatechumenate"
     }
   },
   "7": {
@@ -1003,7 +1007,8 @@
     },
     "stages": {
       "pt-BR": "precatechumenate",
-      "lt-LT": "election"
+      "lt-LT": "election",
+      "es": "election"
     }
   },
   "62": {
@@ -1069,7 +1074,8 @@
     },
     "stages": {
       "pt-BR": "catechumenate",
-      "lt-LT": "catechumenate"
+      "lt-LT": "catechumenate",
+      "es": "catechumenate"
     }
   },
   "66": {
@@ -1252,7 +1258,8 @@
     },
     "stages": {
       "pt-BR": "catechumenate",
-      "lt-LT": "catechumenate"
+      "lt-LT": "catechumenate",
+      "es": "catechumenate"
     }
   },
   "78": {
@@ -1391,7 +1398,8 @@
     },
     "stages": {
       "pt-BR": "precatechumenate",
-      "lt-LT": "election"
+      "lt-LT": "election",
+      "es": "election"
     }
   },
   "87": {
@@ -1727,7 +1735,8 @@
       "lt-LT": "176"
     },
     "stages": {
-      "pt-BR": "precatechumenate"
+      "pt-BR": "precatechumenate",
+      "es": "catechumenate"
     }
   },
   "109": {
@@ -1929,7 +1938,8 @@
       "pt-PT": "172"
     },
     "stages": {
-      "pt-BR": "precatechumenate"
+      "pt-BR": "precatechumenate",
+      "es": "election"
     }
   },
   "123": {
@@ -1961,7 +1971,8 @@
     },
     "stages": {
       "pt-BR": "precatechumenate",
-      "lt-LT": "election"
+      "lt-LT": "election",
+      "es": "election"
     }
   },
   "125": {
@@ -2213,7 +2224,8 @@
     },
     "stages": {
       "pt-BR": "election",
-      "lt-LT": "election"
+      "lt-LT": "election",
+      "es": "election"
     }
   },
   "142": {
@@ -2314,7 +2326,8 @@
     },
     "stages": {
       "pt-BR": "precatechumenate",
-      "lt-LT": "election"
+      "lt-LT": "election",
+      "es": "election"
     }
   },
   "148": {
@@ -2476,7 +2489,7 @@
       "lt-LT": "48"
     },
     "stages": {
-      "es": "precatechumenate",
+      "es": "election",
       "en": "liturgy",
       "lt-LT": "liturgy"
     }
@@ -2499,7 +2512,7 @@
       "pl": "0"
     },
     "stages": {
-      "es": "precatechumenate",
+      "es": "election",
       "sw-TZ": "precatechumenate",
       "en": "precatechumenate",
       "de": "precatechumenate",
@@ -2518,7 +2531,8 @@
       "lt-LT": "127"
     },
     "stages": {
-      "pt-BR": "catechumenate"
+      "pt-BR": "catechumenate",
+      "es": "catechumenate"
     }
   },
   "161": {
@@ -2595,7 +2609,8 @@
       "pt-BR": "catechumenate",
       "de-AT": "liturgy",
       "de": "election",
-      "en": "catechumenate"
+      "en": "catechumenate",
+      "es": "catechumenate"
     }
   },
   "166": {
@@ -2630,7 +2645,8 @@
     },
     "stages": {
       "pt-BR": "catechumenate",
-      "lt-LT": "catechumenate"
+      "lt-LT": "catechumenate",
+      "es": "catechumenate"
     }
   },
   "168": {
@@ -2689,7 +2705,8 @@
     },
     "stages": {
       "pt-BR": "catechumenate",
-      "lt-LT": "catechumenate"
+      "lt-LT": "catechumenate",
+      "es": "catechumenate"
     }
   },
   "172": {
@@ -2773,7 +2790,8 @@
     },
     "stages": {
       "pt-BR": "catechumenate",
-      "lt-LT": "catechumenate"
+      "lt-LT": "catechumenate",
+      "es": "catechumenate"
     }
   },
   "177": {
@@ -2802,7 +2820,8 @@
       "lt-LT": "110"
     },
     "stages": {
-      "pt-BR": "catechumenate"
+      "pt-BR": "catechumenate",
+      "es": "catechumenate"
     }
   },
   "179": {
@@ -3378,7 +3397,8 @@
       "de": "6",
       "en": "109",
       "lt-LT": "74",
-      "pt-PT": "165"
+      "pt-PT": "165",
+      "pl": "7"
     }
   },
   "224": {
@@ -3650,7 +3670,8 @@
     "stage": "precatechumenate",
     "files": {
       "en": "21",
-      "pt-PT": "57"
+      "pt-PT": "57",
+      "es": "238"
     },
     "stages": {
       "pt-PT": "liturgy"

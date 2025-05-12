@@ -26,6 +26,7 @@ import {
   SongsProcessor,
   SongsSourceData,
   PdfStyles,
+  es_audios,
 } from '@iresucito/core';
 import i18n from '@iresucito/translations';
 import {
@@ -182,8 +183,6 @@ type SongPlayerStore = {
   pause: () => void;
   stop: () => void;
 };
-
-import { es_audios } from '@iresucito/core';
 
 function formatTime(rawSeconds) {
   const totalSeconds = Math.floor(rawSeconds); // quita milisegundos
