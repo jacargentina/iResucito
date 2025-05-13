@@ -108,61 +108,57 @@ export const SongChooserDialog = (props: Props) => {
       }>
       <TabView
         animationEnabled={false}
-        lazy
-        renderLazyPlaceholder={() => {
-          return (
-            <Center pt="$5">
-              <Spinner color="$rose500" size="large" />
-              <Text>{i18n.t('ui.loading')}</Text>
-            </Center>
-          );
-        }}
-        renderTabBar={(
-          props: SceneRendererProps & {
-            navigationState: NavigationState<{ key: string; title: string }>;
-          }
-        ) => {
-          return (
-            <TabBar
-              {...(props as any)}
-              layout={props.layout}
-              position={props.position}
-              navigationState={props.navigationState}
-              jumpTo={props.jumpTo}
-              scrollEnabled
-              tabStyle={{ width: 'auto' }}
+        commonOptions={{
+          label: ({ route: currentRoute, focused, color }) => (
+            <Text
               style={{
-                backgroundColor:
+                color:
                   scheme == 'dark'
-                    ? config.tokens.colors.backgroundDark950
-                    : config.tokens.colors.rose300,
-              }}
-              indicatorStyle={{
-                backgroundColor:
-                  scheme == 'dark'
-                    ? config.tokens.colors.rose600
-                    : config.tokens.colors.rose300,
-                marginHorizontal: 3,
-              }}
-              renderLabel={({ route: currentRoute, focused, color }) => (
-                <Text
-                  style={{
-                    color:
-                      scheme == 'dark'
-                        ? focused
-                          ? config.tokens.colors.rose500
-                          : config.tokens.colors.textLight300
-                        : focused
-                        ? config.tokens.colors.rose500
-                        : config.tokens.colors.textDark600,
-                    margin: 3,
-                  }}>
-                  {currentRoute.title}
-                </Text>
-              )}
-            />
-          );
+                    ? focused
+                      ? config.tokens.colors.rose300
+                      : config.tokens.colors.textLight300
+                    : focused
+                    ? config.tokens.colors.rose500
+                    : config.tokens.colors.textDark600,
+                margin: 3,
+              }}>
+              {currentRoute.title}
+            </Text>
+          ),
         }}
+        renderTabBar={(props) => (
+          <TabBar
+            layout={props.layout}
+            position={props.position}
+            navigationState={props.navigationState}
+            jumpTo={props.jumpTo}
+            scrollEnabled
+            tabStyle={{ width: 'auto' }}
+            style={{
+              backgroundColor:
+                scheme == 'dark'
+                  ? config.tokens.colors.backgroundDark950
+                  : config.tokens.colors.rose100,
+            }}
+            activeColor={
+              scheme == 'dark'
+                ? config.tokens.colors.textLight100
+                : config.tokens.colors.rose500
+            }
+            inactiveColor={
+              scheme == 'dark'
+                ? config.tokens.colors.textLight600
+                : config.tokens.colors.rose900
+            }
+            indicatorStyle={{
+              backgroundColor:
+                scheme == 'dark'
+                  ? config.tokens.colors.textLight100
+                  : config.tokens.colors.rose500,
+              marginHorizontal: 1,
+            }}
+          />
+        )}
         navigationState={{ index: activeTab, routes }}
         renderScene={renderScene}
         onIndexChange={setActiveTab}

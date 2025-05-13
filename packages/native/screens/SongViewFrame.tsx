@@ -1,5 +1,10 @@
 import { useState } from 'react';
-import { Dimensions, ScrollView, GestureResponderEvent } from 'react-native';
+import {
+  Dimensions,
+  ScrollView,
+  GestureResponderEvent,
+  useColorScheme,
+} from 'react-native';
 import {
   Box,
   HStack,
@@ -95,6 +100,7 @@ export const SongViewFrame = (props: Props) => {
   const backColor = color(colors[song.stage]);
   const background = backColor.lighten(0.1).string();
   const minWidth = Dimensions.get('window').width;
+  const scheme = useColorScheme();
 
   const fRender = NativeParser.getForRender(
     song.fullText,
@@ -141,6 +147,48 @@ export const SongViewFrame = (props: Props) => {
     height = height - 18;
   }
 
+  const ZoomControls = () => {
+    if (!ctrlVisible) {
+      return null;
+    }
+
+    return (
+      <HStack
+        py="$1"
+        px="$4"
+        h="10%"
+        alignItems="center"
+        justifyContent="space-between"
+        backgroundColor={
+          scheme == 'dark' ? '$backgroundDark900' : '$backgroundLight200'
+        }>
+        <Button
+          onPress={zoomOut}
+          h="85%"
+          w="18%"
+          rounded="$2xl"
+          bg="$primary500">
+          <Icon as={MinusIcon} color="white" size={media.md ? 'xxl' : 'xl'} />
+        </Button>
+        <Text
+          fontWeight="bold"
+          color={scheme == 'dark' ? '$textLight200' : '$textDark500'}
+          fontSize={media.md ? '$5xl' : '$3xl'}
+          lineHeight={media.md ? '$5xl' : '$3xl'}>
+          {zoomLevel}
+        </Text>
+        <Button
+          onPress={zoomIn}
+          h="85%"
+          w="18%"
+          rounded="$2xl"
+          bg="$primary500">
+          <Icon as={PlusIcon} color="white" size={media.md ? 'xxl' : 'xl'} />
+        </Button>
+      </HStack>
+    );
+  };
+
   return (
     <Box style={{ backgroundColor: background, ...style }}>
       <ScrollView
@@ -178,39 +226,7 @@ export const SongViewFrame = (props: Props) => {
           </Box>
         </ScrollView>
       </ScrollView>
-      {ctrlVisible && (
-        <HStack
-          py="$1"
-          px="$4"
-          h="10%"
-          alignItems="center"
-          justifyContent="space-between"
-          backgroundColor="#efefef">
-          <Button
-            onPress={zoomOut}
-            h="85%"
-            w="18%"
-            rounded="$2xl"
-            bg="$primary500">
-            <Icon as={MinusIcon} color="white" size={media.md ? 'xxl' : 'xl'} />
-          </Button>
-          <Text
-            fontWeight="bold"
-            color="black"
-            fontSize={media.md ? '$5xl' : '$3xl'}
-            lineHeight={media.md ? '$5xl' : '$3xl'}>
-            {zoomLevel}
-          </Text>
-          <Button
-            onPress={zoomIn}
-            h="85%"
-            w="18%"
-            rounded="$2xl"
-            bg="$primary500">
-            <Icon as={PlusIcon} color="white" size={media.md ? 'xxl' : 'xl'} />
-          </Button>
-        </HStack>
-      )}
+      <ZoomControls />
       <SongPlayer />
     </Box>
   );
