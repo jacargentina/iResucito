@@ -135,10 +135,13 @@ export const SongChooserDialog = (props: Props) => {
                 backgroundColor:
                   scheme == 'dark'
                     ? config.tokens.colors.backgroundDark950
-                    : config.tokens.colors.backgroundLight100,
+                    : config.tokens.colors.rose300,
               }}
               indicatorStyle={{
-                backgroundColor: config.tokens.colors.rose500,
+                backgroundColor:
+                  scheme == 'dark'
+                    ? config.tokens.colors.rose600
+                    : config.tokens.colors.rose300,
                 marginHorizontal: 3,
               }}
               renderLabel={({ route: currentRoute, focused, color }) => (
