@@ -5,8 +5,8 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "build-cjs": "npx tsc -b tsconfig.cjs.json; echo '{\"type\": \"commonjs\"}' > ./dist/cjs/src/package.json; cp -R ./assets/audios/ ./dist/cjs/assets/audios",
-    "build-esm": "npx tsc -b tsconfig.esm.json; echo '{\"type\": \"module\"}' > ./dist/esm/src/package.json; cp -R ./assets/audios/ ./dist/esm/assets/audios",
+    "build-cjs": "npx tsc -b tsconfig.cjs.json; echo '{\"type\": \"commonjs\"}' > ./dist/cjs/src/package.json",
+    "build-esm": "npx tsc -b tsconfig.esm.json; echo '{\"type\": \"module\"}' > ./dist/esm/src/package.json",
     "build-types": "npx tsc -b tsconfig.types.json",
     "build": "yarn run build-cjs; yarn run build-esm; yarn run build-types",
     "patch": "esno src/applyPatch.ts",
@@ -28,7 +28,7 @@
     },
     "./assets/*.json": "./dist/cjs/assets/*.json",
     "./assets/songs/*.json": "./dist/cjs/assets/songs/*.json",
-    "./assets/audios/es/*.mp3": "./dist/cjs/assets/audios/es/*.mp3"
+    "./assets/audios/*.json": "./dist/cjs/assets/audios/*.json"
   },
   "dependencies": {
     "@types/country-list": "^2.1.4",

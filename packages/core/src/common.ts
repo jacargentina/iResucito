@@ -17,6 +17,18 @@ import ptBRLocale from '../assets/songs/pt-BR.json';
 import ptPTLocale from '../assets/songs/pt-PT.json';
 import ruLocale from '../assets/songs/ru.json';
 import swTZLocale from '../assets/songs/sw-TZ.json';
+import esAudios from '../assets/audios/es.json';
+
+export type SongAudioItem = {
+  id: string;
+  name: string;
+};
+
+export type SongsAudioData = {
+  [songKey: string]: SongAudioItem | null;
+};
+
+export const esAudiosData: SongsAudioData = esAudios;
 
 export type SongToPdf<T> = {
   song: Song;
