@@ -19,6 +19,7 @@
     "confirm new password": "Утверждать новый пароль",
     "statistics": "Статистика ",
     "download": "Скачать",
+    "downloading": "Загрузка...",
     "changes pending of publish": "В ожидании публикации ",
     "changed songs by author": "{{count}} песни от {{author}}",
     "patch pending": "Патч от {{author}} ожидается на {{date}}}",

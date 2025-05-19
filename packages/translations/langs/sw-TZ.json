@@ -19,6 +19,7 @@
     "confirm new password": "Thibitisha nywila mpya",
     "statistics": "Takwimu",
     "download": "Pakua",
+    "downloading": "Inapakua...",
     "changes pending of publish": "Mabadiliko yanasubiri kuchapisha.",
     "changed songs by author": "{{count}} wimbo kutoka kwa {{author}}",
     "patch pending": "Patch pending by {{author}} on {{date}}}",

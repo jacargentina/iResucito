@@ -19,6 +19,7 @@
     "confirm new password": "Confirme a nova senha",
     "statistics": "Estatisticas",
     "download": "Baixar",
+    "downloading": "Baixando...",
     "changes pending of publish": "Alterações pendentes de publicar",
     "changed songs by author": "{{count}} cantos de {{author}}",
     "patch pending": "Patch pendente de {{author}} com data {{date}}}",

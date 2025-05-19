@@ -174,6 +174,7 @@ type SongPlayerStore = {
   player: AudioPlayer;
   song: Song | null;
   playingActive: boolean;
+  downloadActive: boolean;
   playingTimeText: string | null;
   playingTimePercent: number | undefined;
   refreshIntervalId: any;
@@ -198,6 +199,7 @@ export const useSongPlayer = create(
     player: createAudioPlayer(null),
     song: null,
     playingActive: false,
+    downloadActive: false,
     playingTimeText: null,
     playingTimePercent: undefined,
     refreshIntervalId: null,
@@ -225,6 +227,11 @@ export const useSongPlayer = create(
         const fileuri = `${FileSystem.documentDirectory}${audio!.name}`;
         const info = await FileSystem.getInfoAsync(fileuri);
         if (info.exists == false) {
+          set((state) => {
+            state.song = song;
+            state.playingActive = false;
+            state.downloadActive = true;
+          });
           await FileSystem.downloadAsync(
             `https://drive.google.com/uc?export=download&id=${audio!.id}`,
             fileuri
@@ -236,6 +243,7 @@ export const useSongPlayer = create(
           state.playingTimeText = '-:-- / --:--';
           state.playingTimePercent = 0;
           state.song = song;
+          state.downloadActive = false;
           state.refreshIntervalId = undefined;
         });
       }
