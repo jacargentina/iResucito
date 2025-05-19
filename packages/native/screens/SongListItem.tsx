@@ -18,7 +18,7 @@ import Collapsible from 'react-native-collapsible';
 import { AirbnbRating } from 'react-native-ratings';
 import { BadgeByStage } from '../badges';
 import i18n from '@iresucito/translations';
-import { Song, es_audios } from '@iresucito/core';
+import { Song, esAudiosData } from '@iresucito/core';
 import { ChooserParamList } from '../navigation/SongChooserNavigator';
 import { useSettingsStore, useSongPlayer, useSongsSelection } from '../hooks';
 import { config } from '../config/gluestack-ui.config';
@@ -240,7 +240,7 @@ export const SongListItem = (props: {
             {highlightedRest}
           </VStack>
           {song.notTranslated && <NoLocaleWarning />}
-          {es_audios[song.key] != null ? (
+          {esAudiosData[song.key] != null ? (
             <Pressable w="10%" onPress={() => songPlayer.play(song)}>
               <Icon color="$rose700" as={PlayIcon} size="xl" />
             </Pressable>

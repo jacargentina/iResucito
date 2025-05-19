@@ -26,7 +26,7 @@ import {
   SongsProcessor,
   SongsSourceData,
   PdfStyles,
-  es_audios,
+  esAudiosData,
 } from '@iresucito/core';
 import i18n from '@iresucito/translations';
 import {
@@ -178,7 +178,7 @@ type SongPlayerStore = {
   playingTimePercent: number | undefined;
   refreshIntervalId: any;
   refreshSongPosition: () => void;
-  play: (song?: Song) => void;
+  play: (song?: Song) => Promise<void>;
   seek: (percent: number) => void;
   pause: () => void;
   stop: () => void;
@@ -216,11 +216,21 @@ export const useSongPlayer = create(
         });
       }
     },
-    play: (song?: Song) => {
+    play: async (song?: Song) => {
       const player = get().player;
       if (song && get().song?.key !== song.key) {
         player.pause();
-        player.replace(es_audios[song.key]);
+        // Descargar
+        const audio = esAudiosData[song.key];
+        const fileuri = `${FileSystem.documentDirectory}${audio!.name}`;
+        const info = await FileSystem.getInfoAsync(fileuri);
+        if (info.exists == false) {
+          await FileSystem.downloadAsync(
+            `https://drive.google.com/uc?export=download&id=${audio!.id}`,
+            fileuri
+          );
+        }
+        player.replace({ uri: fileuri });
         clearInterval(get().refreshIntervalId);
         set((state) => {
           state.playingTimeText = '-:-- / --:--';
