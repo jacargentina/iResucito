@@ -107,7 +107,8 @@
     "copy from spanish": "Cópia da versão em espanhol",
     "diff view": "Visão diff",
     "password changed": "A senha foi alterada. Por favor, faça o login com sua nova senha.",
-    "reset password": "Redefinir senha esquecida."
+    "reset password": "Redefinir senha esquecida.",
+    "network_unavailable": "Rede indisponível"
   },
   "pdf_export_options": {
     "selected songs": "Cantos selecionados",

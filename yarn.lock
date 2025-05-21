@@ -3147,6 +3147,7 @@ __metadata:
     expo-keep-awake: "npm:~14.1.4"
     expo-launch-arguments: jacargentina/expo-launch-arguments
     expo-localization: "npm:~16.1.5"
+    expo-network: "npm:~7.1.5"
     expo-print: "npm:~14.1.4"
     expo-sharing: "npm:~13.1.5"
     expo-splash-screen: "npm:~0.30.8"
@@ -3199,8 +3200,9 @@ __metadata:
   dependencies:
     "@iresucito/core": "npm:*"
     "@types/base64-stream": "npm:^1.0.5"
-    commander: "npm:^12.1.0"
-    open: "npm:^10.1.0"
+    commander: "npm:^14.0.0"
+    esno: "npm:^4.8.0"
+    open: "npm:^10.1.2"
     os-locale: "npm:^6.0.2"
     translate-json-object: "npm:^2.3.7"
   languageName: unknown
@@ -9021,10 +9023,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"commander@npm:^12.0.0, commander@npm:^12.1.0":
+"commander@npm:^12.0.0":
   version: 12.1.0
   resolution: "commander@npm:12.1.0"
   checksum: 10c0/6e1996680c083b3b897bfc1cfe1c58dfbcd9842fd43e1aaf8a795fbc237f65efcc860a3ef457b318e73f29a4f4a28f6403c3d653d021d960e4632dd45bde54a9
+  languageName: node
+  linkType: hard
+
+"commander@npm:^14.0.0":
+  version: 14.0.0
+  resolution: "commander@npm:14.0.0"
+  checksum: 10c0/73c4babfa558077868d84522b11ef56834165d472b9e86a634cd4c3ae7fc72d59af6377d8878e06bd570fe8f3161eced3cbe383c38f7093272bb65bd242b595b
   languageName: node
   linkType: hard
 
@@ -11120,7 +11129,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"esno@npm:^4.7.0":
+"esno@npm:^4.7.0, esno@npm:^4.8.0":
   version: 4.8.0
   resolution: "esno@npm:4.8.0"
   dependencies:
@@ -11621,6 +11630,16 @@ expo-launch-arguments@jacargentina/expo-launch-arguments:
   dependencies:
     invariant: "npm:^2.2.4"
   checksum: 10c0/34cebb2af1d4b3ec58831274e6f8873ff699b36a7d749a1d8bc6b05ee321cc2a5d898f1224c3931fd825739dd554634445867eb5c148a95ec2f4412dc359ccbe
+  languageName: node
+  linkType: hard
+
+"expo-network@npm:~7.1.5":
+  version: 7.1.5
+  resolution: "expo-network@npm:7.1.5"
+  peerDependencies:
+    expo: "*"
+    react: "*"
+  checksum: 10c0/c2e02c337e0d0e3e7bf01334e4730bd2e5a5cb822c0b33146a64a1ac3b7e95384c6558359260a5b1aa6e504a874a9f7feefc99aee7a7a0590a5d8fad8b1b4106
   languageName: node
   linkType: hard
 
@@ -17078,7 +17097,7 @@ expo-launch-arguments@jacargentina/expo-launch-arguments:
   languageName: node
   linkType: hard
 
-"open@npm:^10.1.0":
+"open@npm:^10.1.2":
   version: 10.1.2
   resolution: "open@npm:10.1.2"
   dependencies:

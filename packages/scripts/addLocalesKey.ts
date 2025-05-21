@@ -1,6 +1,6 @@
-const fs = require('fs');
-const path = require('path');
-const program = require('commander');
+import fs from 'fs';
+import path from 'path';
+import { program } from 'commander';
 
 program
   .version('1.0')
@@ -19,10 +19,10 @@ if (!process.argv.slice(2).length) {
   if (!key) {
     throw 'Locale key path is required!';
   }
-  const dir = path.resolve('./translations');
+  const dir = path.resolve('../translations/langs');
   const langs = fs.readdirSync(dir);
   langs.forEach((locale) => {
-    const target = `./translations/${locale}`;
+    const target = path.resolve(`${dir}/${locale}`);
     if (target.endsWith('.json')) {
       const str = fs.readFileSync(target, 'utf8');
       var object = JSON.parse(str);

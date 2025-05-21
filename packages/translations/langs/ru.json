@@ -107,7 +107,8 @@
     "copy from spanish": "Копировать из испанской версии ",
     "diff view": "Вид разницы ",
     "password changed": "Пароль изменён. Пожалуйста, введите новый пароль.",
-    "reset password": "Изменить пароль "
+    "reset password": "Изменить пароль ",
+    "network_unavailable": "Сеть недоступна"
   },
   "pdf_export_options": {
     "selected songs": "Избранные песни ",

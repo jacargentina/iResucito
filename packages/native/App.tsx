@@ -25,6 +25,7 @@ const App = () => {
   });
 
   const appState = useRef(AppState.currentState);
+  const songPlayer = useSongPlayer();
 
   useEffect(() => {
     const subscription = AppState.addEventListener('change', (nextAppState) => {
@@ -32,13 +33,11 @@ const App = () => {
         appState.current.match(/inactive|background/) &&
         nextAppState === 'active'
       ) {
-        // App es activa
-      } else {
-        // App es desactivada
+        console.log('AppState volvió a active: Player currentStatus:');
+        console.log(songPlayer.player.currentStatus);
+        console.log('-----');
       }
-
       appState.current = nextAppState;
-      console.log('AppState', appState.current);
     });
 
     return () => {

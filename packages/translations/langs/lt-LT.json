@@ -107,7 +107,8 @@
     "copy from spanish": "Kopijuoti iš ispaniškos versijos",
     "diff view": "Diff vaizdas",
     "password changed": "Slaptažodis pakeistas. Prisijunkite naudodami naują slaptažodį.",
-    "reset password": "Iš naujo nustatyti pamirštą slaptažodį."
+    "reset password": "Iš naujo nustatyti pamirštą slaptažodį.",
+    "network_unavailable": "Tinklas nepasiekiamas"
   },
   "pdf_export_options": {
     "selected songs": "Pasirinktos giesmės",

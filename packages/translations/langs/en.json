@@ -107,7 +107,8 @@
     "copy from spanish": "Copy from Spanish version",
     "diff view": "Diff view",
     "password changed": "Password has been changed. Please login with your new password",
-    "reset password": "Reset forgot password"
+    "reset password": "Reset forgot password",
+    "network_unavailable": "Network is unavailable"
   },
   "pdf_export_options": {
     "selected songs": "Selected songs",

@@ -57,6 +57,7 @@
     "expo-keep-awake": "~14.1.4",
     "expo-launch-arguments": "jacargentina/expo-launch-arguments",
     "expo-localization": "~16.1.5",
+    "expo-network": "~7.1.5",
     "expo-print": "~14.1.4",
     "expo-sharing": "~13.1.5",
     "expo-splash-screen": "~0.30.8",

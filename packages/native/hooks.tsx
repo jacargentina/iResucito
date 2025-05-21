@@ -4,6 +4,7 @@ import { launchArguments } from 'expo-launch-arguments';
 import * as Sharing from 'expo-sharing';
 import * as Contacts from 'expo-contacts';
 import * as FileSystem from 'expo-file-system';
+import * as Network from 'expo-network';
 import pathParse from 'path-parse';
 import {
   getLocalizedListType,
@@ -222,20 +223,35 @@ export const useSongPlayer = create(
       const player = get().player;
       if (song && get().song?.key !== song.key) {
         player.pause();
-        // Descargar
         const audio = esAudiosData[song.key];
         const fileuri = `${FileSystem.documentDirectory}${audio!.name}`;
         const info = await FileSystem.getInfoAsync(fileuri);
         if (info.exists == false) {
+          // Descargar
+          const { isInternetReachable } = await Network.getNetworkStateAsync();
+          console.log({ isInternetReachable });
+          if (!isInternetReachable) {
+            Alert.alert('Error', i18n.t('ui.network_unavailable'));
+            return;
+          }
           set((state) => {
             state.song = song;
             state.playingActive = false;
             state.downloadActive = true;
           });
-          await FileSystem.downloadAsync(
-            `https://drive.google.com/uc?export=download&id=${audio!.id}`,
-            fileuri
-          );
+          try {
+            await FileSystem.downloadAsync(
+              `https://drive.google.com/uc?export=download&id=${audio!.id}`,
+              fileuri
+            );
+          } catch (error: any) {
+            set((state) => {
+              state.song = null;
+              state.downloadActive = false;
+            });
+            Alert.alert('Error', error.message);
+            return;
+          }
         }
         player.replace({ uri: fileuri });
         clearInterval(get().refreshIntervalId);

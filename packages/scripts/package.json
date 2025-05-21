@@ -4,11 +4,15 @@
   "version": "1.0.0",
   "main": "./dist/index.js",
   "types": "./dist/index.d.js",
+  "scripts": {
+    "add-key": "npx esno ./addLocaleKey.ts"
+  },
   "dependencies": {
     "@iresucito/core": "*",
     "@types/base64-stream": "^1.0.5",
-    "commander": "^12.1.0",
-    "open": "^10.1.0",
+    "commander": "^14.0.0",
+    "esno": "^4.8.0",
+    "open": "^10.1.2",
     "os-locale": "^6.0.2",
     "translate-json-object": "^2.3.7"
   }

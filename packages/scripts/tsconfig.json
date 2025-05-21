@@ -4,5 +4,7 @@
     "composite": true,
     "resolveJsonModule": true,
     "esModuleInterop": true
-  }
+  },
+  "include": ["*.ts"],
+  "exclude": ["dist"]
 }

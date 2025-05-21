@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
-    "lib": ["DOM", "DOM.Iterable", "ES2022"],
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ES2022"
+    ],
     "outDir": "dist",
     "composite": true,
     "esModuleInterop": true,
@@ -13,5 +17,11 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["*.ts", "langs/**.json"]
+  "include": [
+    "*.ts",
+    "langs/**.json"
+  ],
+  "ui": {
+    "network_unavailable": ""
+  }
 }

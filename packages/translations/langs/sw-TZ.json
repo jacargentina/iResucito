@@ -107,7 +107,8 @@
     "copy from spanish": "Nakala kutoka kihispania",
     "diff view": "Maoni tofauti",
     "password changed": "Nenosiri limebadilishwa. Tafadhali ingia kwa nenosiri lako jipya.",
-    "reset password": "Weka upya nenosiri lililosahau."
+    "reset password": "Weka upya nenosiri lililosahau.",
+    "network_unavailable": "Mtandao haupatikani"
   },
   "pdf_export_options": {
     "selected songs": "Nyimbo changulia",
