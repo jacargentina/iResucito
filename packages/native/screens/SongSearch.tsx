@@ -16,6 +16,7 @@ import { SongsStackParamList } from '../navigation/SongsNavigator';
 import { useSettingsStore } from '../hooks';
 import { useRef } from 'react';
 import { SongPlayer } from '../components';
+import { SongDownloader } from '../components/SongDownloader';
 
 const Loading = () => {
   return (
@@ -127,6 +128,7 @@ export const SongSearch = () => {
         estimatedItemSize={64}
       />
       <SongPlayer />
+      <SongDownloader />
     </>
   );
 };

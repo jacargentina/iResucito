@@ -175,7 +175,6 @@ type SongPlayerStore = {
   player: AudioPlayer;
   song: Song | null;
   playingActive: boolean;
-  downloadActive: boolean;
   playingTimeText: string | null;
   playingTimePercent: number | undefined;
   refreshIntervalId: any;
@@ -195,12 +194,75 @@ function formatTime(rawSeconds) {
   return `${mins}:${paddedSecs}`;
 }
 
+type SongDownloaderStore = {
+  songDownloading: Song | null;
+  downloadItem: FileSystem.DownloadResumable | null;
+  getFileUri: (song: Song) => Promise<string | undefined>;
+  stop: () => Promise<void>;
+};
+
+export const useSongDownloader = create(
+  immer<SongDownloaderStore>((set, get) => ({
+    songDownloading: null,
+    downloadItem: null,
+    getFileUri: async (song: Song) => {
+      const audio = esAudiosData[song.key];
+      const fileuri = `${FileSystem.documentDirectory}${audio!.name}`;
+      const info = await FileSystem.getInfoAsync(fileuri);
+      if (info.exists == false) {
+        // Descargar
+        const { isInternetReachable } = await Network.getNetworkStateAsync();
+        if (!isInternetReachable) {
+          Alert.alert('Error', i18n.t('ui.network_unavailable'));
+          return;
+        }
+        try {
+          var { stop } = get();
+          await stop();
+          var downItem = FileSystem.createDownloadResumable(
+            `https://drive.google.com/uc?export=download&id=${audio!.id}`,
+            fileuri
+          );
+          set((state) => {
+            state.downloadItem = downItem;
+            state.songDownloading = song;
+          });
+          console.log('iniciando descarga de: ', song.titulo);
+          const downResult = await downItem.downloadAsync();
+          console.log('resultado de descarga: ', downResult);
+          set((state) => {
+            state.songDownloading = null;
+            state.downloadItem = null;
+          });
+          if (downResult == null || downResult == undefined) {
+            return;
+          }
+        } catch (error: any) {
+          set((state) => {
+            state.songDownloading = null;
+            state.downloadItem = null;
+          });
+          Alert.alert('Error', error.message);
+          return;
+        }
+      }
+      return fileuri;
+    },
+    stop: async () => {
+      var { downloadItem, songDownloading } = get();
+      if (downloadItem) {
+        console.log('cancelando descarga de: ', songDownloading?.titulo);
+        await downloadItem.cancelAsync();
+      }
+    },
+  }))
+);
+
 export const useSongPlayer = create(
   immer<SongPlayerStore>((set, get) => ({
     player: createAudioPlayer(null),
     song: null,
     playingActive: false,
-    downloadActive: false,
     playingTimeText: null,
     playingTimePercent: undefined,
     refreshIntervalId: null,
@@ -223,35 +285,10 @@ export const useSongPlayer = create(
       const player = get().player;
       if (song && get().song?.key !== song.key) {
         player.pause();
-        const audio = esAudiosData[song.key];
-        const fileuri = `${FileSystem.documentDirectory}${audio!.name}`;
-        const info = await FileSystem.getInfoAsync(fileuri);
-        if (info.exists == false) {
-          // Descargar
-          const { isInternetReachable } = await Network.getNetworkStateAsync();
-          console.log({ isInternetReachable });
-          if (!isInternetReachable) {
-            Alert.alert('Error', i18n.t('ui.network_unavailable'));
-            return;
-          }
-          set((state) => {
-            state.song = song;
-            state.playingActive = false;
-            state.downloadActive = true;
-          });
-          try {
-            await FileSystem.downloadAsync(
-              `https://drive.google.com/uc?export=download&id=${audio!.id}`,
-              fileuri
-            );
-          } catch (error: any) {
-            set((state) => {
-              state.song = null;
-              state.downloadActive = false;
-            });
-            Alert.alert('Error', error.message);
-            return;
-          }
+        const downloaderState = useSongDownloader.getState();
+        const fileuri = await downloaderState.getFileUri(song);
+        if (fileuri == undefined) {
+          return;
         }
         player.replace({ uri: fileuri });
         clearInterval(get().refreshIntervalId);
@@ -259,7 +296,6 @@ export const useSongPlayer = create(
           state.playingTimeText = '-:-- / --:--';
           state.playingTimePercent = 0;
           state.song = song;
-          state.downloadActive = false;
           state.refreshIntervalId = undefined;
         });
       }

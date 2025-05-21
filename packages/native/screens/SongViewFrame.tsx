@@ -19,7 +19,7 @@ import i18n from '@iresucito/translations';
 import { useSettingsStore, useSongPlayer } from '../hooks';
 import { NativeParser, NativeStyle, NativeStyles } from '../util';
 import { MinusIcon, PlusIcon } from 'lucide-react-native';
-import { SongPlayer } from '../components';
+import { SongDownloader, SongPlayer } from '../components';
 
 const SongViewLines = (props: {
   lines: Array<SongLine<NativeStyle>>;
@@ -228,6 +228,7 @@ export const SongViewFrame = (props: Props) => {
       </ScrollView>
       <ZoomControls />
       <SongPlayer />
+      <SongDownloader />
     </Box>
   );
 };

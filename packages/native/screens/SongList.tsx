@@ -19,6 +19,7 @@ import {
   SearchBarView,
   ChoosePdfTypeForExport,
   SongPlayer,
+  SongDownloader,
 } from '../components';
 import i18n from '@iresucito/translations';
 import {
@@ -260,6 +261,7 @@ export const SongList = (props: {
         }}
       />
       <SongPlayer />
+      <SongDownloader />
     </SearchBarView>
   );
 };

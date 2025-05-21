@@ -6,3 +6,4 @@ export * from './ModalView';
 export * from './SearchBarView';
 export * from './SwipeableRightAction';
 export * from './SongPlayer';
+export * from './SongDownloader';
