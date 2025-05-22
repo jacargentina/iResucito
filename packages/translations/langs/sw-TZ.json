@@ -108,7 +108,10 @@
     "diff view": "Maoni tofauti",
     "password changed": "Nenosiri limebadilishwa. Tafadhali ingia kwa nenosiri lako jipya.",
     "reset password": "Weka upya nenosiri lililosahau.",
-    "network_unavailable": "Mtandao haupatikani"
+    "network_unavailable": "Mtandao haupatikani",
+    "clear audio files button": "Futa faili za sauti",
+    "clear audio files confirmation": "Una uhakika unataka kufuta faili zote za sauti? Hatua hii haiwezi kutenduliwa.",
+    "clear audio files total": "{{total}} faili za sauti zimefutwa"
   },
   "pdf_export_options": {
     "selected songs": "Nyimbo changulia",

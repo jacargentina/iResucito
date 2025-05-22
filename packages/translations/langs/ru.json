@@ -108,7 +108,10 @@
     "diff view": "Вид разницы ",
     "password changed": "Пароль изменён. Пожалуйста, введите новый пароль.",
     "reset password": "Изменить пароль ",
-    "network_unavailable": "Сеть недоступна"
+    "network_unavailable": "Сеть недоступна",
+    "clear audio files button": "Удалить аудиофайлы",
+    "clear audio files confirmation": "Вы уверены, что хотите удалить все аудиофайлы? Это действие нельзя отменить.",
+    "clear audio files total": "Удалено {{total}} аудиофайлов"
   },
   "pdf_export_options": {
     "selected songs": "Избранные песни ",

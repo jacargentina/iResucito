@@ -108,7 +108,10 @@
     "diff view": "Vue différentielle",
     "password changed": "Le mot de passe a été changé. Veuillez vous connecter avec votre nouveau mot de passe.",
     "reset password": "Réinitialiser le mot de passe oublié",
-    "network_unavailable": "Réseau non disponible"
+    "network_unavailable": "Réseau non disponible",
+    "clear audio files button": "Effacer les fichiers audio",
+    "clear audio files confirmation": "Êtes-vous sûr de vouloir effacer tous les fichiers audio ? Cette action est irréversible.",
+    "clear audio files total": "{{total}} fichiers audio ont été supprimés"
   },
   "pdf_export_options": {
     "selected songs": "Chansons sélectionnées",

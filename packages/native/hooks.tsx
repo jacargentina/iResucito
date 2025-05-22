@@ -197,6 +197,7 @@ function formatTime(rawSeconds) {
 type SongDownloaderStore = {
   songDownloading: Song | null;
   downloadItem: FileSystem.DownloadResumable | null;
+  removeFile: (song: Song) => Promise<boolean>;
   getFileUri: (song: Song) => Promise<string | undefined>;
   stop: () => Promise<void>;
 };
@@ -205,6 +206,17 @@ export const useSongDownloader = create(
   immer<SongDownloaderStore>((set, get) => ({
     songDownloading: null,
     downloadItem: null,
+    removeFile: async (song: Song) => {
+      const audio = esAudiosData[song.key];
+      const fileuri = `${FileSystem.documentDirectory}${audio!.name}`;
+      const info = await FileSystem.getInfoAsync(fileuri);
+      if (info.exists) {
+        console.log('eliminando: ' + fileuri);
+        await FileSystem.deleteAsync(fileuri);
+        return true;
+      }
+      return false;
+    },
     getFileUri: async (song: Song) => {
       const audio = esAudiosData[song.key];
       const fileuri = `${FileSystem.documentDirectory}${audio!.name}`;
@@ -217,8 +229,10 @@ export const useSongDownloader = create(
           return;
         }
         try {
-          var { stop } = get();
-          await stop();
+          var { downloadItem } = get();
+          if (downloadItem != null) {
+            throw new Error('Cancelar la descarga previa!');
+          }
           var downItem = FileSystem.createDownloadResumable(
             `https://drive.google.com/uc?export=download&id=${audio!.id}`,
             fileuri
@@ -227,9 +241,7 @@ export const useSongDownloader = create(
             state.downloadItem = downItem;
             state.songDownloading = song;
           });
-          console.log('iniciando descarga de: ', song.titulo);
           const downResult = await downItem.downloadAsync();
-          console.log('resultado de descarga: ', downResult);
           set((state) => {
             state.songDownloading = null;
             state.downloadItem = null;
@@ -249,10 +261,13 @@ export const useSongDownloader = create(
       return fileuri;
     },
     stop: async () => {
-      var { downloadItem, songDownloading } = get();
+      var { downloadItem } = get();
       if (downloadItem) {
-        console.log('cancelando descarga de: ', songDownloading?.titulo);
         await downloadItem.cancelAsync();
+        set((state) => {
+          state.downloadItem = null;
+          state.songDownloading = null;
+        });
       }
     },
   }))
@@ -282,9 +297,10 @@ export const useSongPlayer = create(
       }
     },
     play: async (song?: Song) => {
+      const stop = get().stop;
       const player = get().player;
       if (song && get().song?.key !== song.key) {
-        player.pause();
+        stop();
         const downloaderState = useSongDownloader.getState();
         const fileuri = await downloaderState.getFileUri(song);
         if (fileuri == undefined) {

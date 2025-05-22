@@ -108,7 +108,10 @@
     "diff view": "Vista de diferencias",
     "password changed": "La contraseña se ha actualizado. Por favor ingrese con su nueva contraseña",
     "reset password": "Recuperar password olvidado",
-    "network_unavailable": "La red no está disponible"
+    "network_unavailable": "La red no está disponible",
+    "clear audio files button": "Borrar archivos de audio",
+    "clear audio files confirmation": "¿Estás seguro de que deseas borrar todos los archivos de audio? Esta acción no se puede deshacer.",
+    "clear audio files total": "Se han eliminado {{total}} archivos de audio"
   },
   "pdf_export_options": {
     "selected songs": "Cantos seleccionados",

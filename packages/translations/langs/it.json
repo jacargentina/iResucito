@@ -108,7 +108,10 @@
     "diff view": "Vista diversa",
     "password changed": "La password è stata cambiata. Effettua il login con la tua nuova password.",
     "reset password": "Reimposta password dimenticata.",
-    "network_unavailable": "Rete non disponibile"
+    "network_unavailable": "Rete non disponibile",
+    "clear audio files button": "Cancella file audio",
+    "clear audio files confirmation": "Sei sicuro di voler cancellare tutti i file audio? Questa azione non può essere annullata.",
+    "clear audio files total": "Sono stati eliminati {{total}} file audio"
   },
   "pdf_export_options": {
     "selected songs": "Canzoni selezionate",

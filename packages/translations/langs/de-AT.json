@@ -108,7 +108,10 @@
     "diff view": "Unterschiedliche Ansicht",
     "password changed": "Das Passwort wurde geändert. Bitte melden Sie sich mit Ihrem neuen Passwort an",
     "reset password": "Vergessenes Passwort zurücksetzen",
-    "network_unavailable": "Netzwerk nicht verfügbar"
+    "network_unavailable": "Netzwerk nicht verfügbar",
+    "clear audio files button": "Audiodateien löschen",
+    "clear audio files confirmation": "Möchten Sie wirklich alle Audiodateien löschen? Diese Aktion kann nicht rückgängig gemacht werden.",
+    "clear audio files total": "{{total}} Audiodateien wurden gelöscht"
   },
   "pdf_export_options": {
     "selected songs": "Ausgewählte Lieder",

@@ -20,7 +20,12 @@ import { BadgeByStage } from '../badges';
 import i18n from '@iresucito/translations';
 import { Song, esAudiosData } from '@iresucito/core';
 import { ChooserParamList } from '../navigation/SongChooserNavigator';
-import { useSettingsStore, useSongPlayer, useSongsSelection } from '../hooks';
+import {
+  useSettingsStore,
+  useSongDownloader,
+  useSongPlayer,
+  useSongsSelection,
+} from '../hooks';
 import { config } from '../config/gluestack-ui.config';
 import { BugIcon, EyeIcon, PlayIcon } from 'lucide-react-native';
 
@@ -64,6 +69,7 @@ export const SongListItem = (props: {
   const { song, highlight, showBadge, viewButton, setSongSetting } = props;
   const [isCollapsed, setIsCollapsed] = useState(true);
   const songPlayer = useSongPlayer();
+  const songDownloader = useSongDownloader();
 
   const viewSong = () => {
     navigation.navigate('ViewSong', {
@@ -241,7 +247,14 @@ export const SongListItem = (props: {
           </VStack>
           {song.notTranslated && <NoLocaleWarning />}
           {esAudiosData[song.key] != null ? (
-            <Pressable w="10%" onPress={() => songPlayer.play(song)}>
+            <Pressable
+              w="10%"
+              onPress={async () => {
+                if (songDownloader.songDownloading != null) {
+                  await songDownloader.stop();
+                }
+                songPlayer.play(song);
+              }}>
               <Icon color="$rose700" as={PlayIcon} size="xl" />
             </Pressable>
           ) : null}

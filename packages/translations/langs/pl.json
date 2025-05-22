@@ -108,7 +108,10 @@
     "diff view": "Widok różnic",
     "password changed": "Hasło zostało zmienione. Zaloguj się przy użyciu nowego hasła.",
     "reset password": "Zresetuj zapomniane hasło.",
-    "network_unavailable": "Sieć niedostępna"
+    "network_unavailable": "Sieć niedostępna",
+    "clear audio files button": "Wyczyść pliki audio",
+    "clear audio files confirmation": "Czy na pewno chcesz usunąć wszystkie pliki audio? Tej operacji nie można cofnąć.",
+    "clear audio files total": "Usunięto {{total}} plików audio"
   },
   "pdf_export_options": {
     "selected songs": "Wybrane pieśni",

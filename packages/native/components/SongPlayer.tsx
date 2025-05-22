@@ -11,7 +11,7 @@ import {
   useMedia,
 } from '@gluestack-ui/themed';
 import color from 'color';
-import { useSongPlayer } from '../hooks';
+import { useSongDownloader, useSongPlayer } from '../hooks';
 import { PauseIcon, PlayIcon, XIcon } from 'lucide-react-native';
 import { colors } from '@iresucito/core';
 import { NativeStyles } from '../util';

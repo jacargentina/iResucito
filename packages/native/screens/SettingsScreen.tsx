@@ -25,8 +25,12 @@ import {
 import { useScrollToTop } from '@react-navigation/native';
 import * as Application from 'expo-application';
 import i18n from '@iresucito/translations';
-import { getLocalesForPicker, CollaboratorsIndex } from '@iresucito/core';
-import { useSettingsStore, useSongsStore } from '../hooks';
+import {
+  getLocalesForPicker,
+  CollaboratorsIndex,
+  esAudiosData,
+} from '@iresucito/core';
+import { useSettingsStore, useSongDownloader, useSongsStore } from '../hooks';
 import { NativeExtras, getDefaultLocale } from '../util';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { SettingsStackParamList } from '../navigation/SettingsNavigator';
@@ -50,6 +54,7 @@ export type SettingsNavigationProp = StackNavigationProp<
 export const SettingsScreen = () => {
   const media = useMedia();
   const { locale, keepAwake, ratingsEnabled } = useSettingsStore();
+  const downloader = useSongDownloader();
   const [version, setVersion] = useState('');
   const [songsResume, setSongsResume] = useState('-');
   const { songs } = useSongsStore();
@@ -107,6 +112,37 @@ export const SettingsScreen = () => {
           text: i18n.t('ui.delete'),
           onPress: () => {
             NativeExtras.deleteSettings();
+          },
+          style: 'destructive',
+        },
+        {
+          text: i18n.t('ui.cancel'),
+          style: 'cancel',
+        },
+      ]
+    );
+  };
+
+  const clearAudios = () => {
+    Alert.alert(
+      i18n.t('ui.clear audio files'),
+      i18n.t('ui.clear audio files confirmation'),
+      [
+        {
+          text: i18n.t('ui.delete'),
+          onPress: async () => {
+            var counter = 0;
+            for (const song of songs) {
+              if (esAudiosData[song.key] != null) {
+                if (await downloader.removeFile(song)) {
+                  counter++;
+                }
+              }
+            }
+            Alert.alert(
+              i18n.t('ui.clear audio files'),
+              i18n.t('ui.clear audio files total', { total: counter })
+            );
           },
           style: 'destructive',
         },
@@ -309,6 +345,16 @@ export const SettingsScreen = () => {
             </ButtonText>
           </Button>
         )}
+        <Button
+          my="$8"
+          bg="$primary500"
+          borderRadius={32}
+          size={media.md ? 'xl' : 'sm'}
+          onPress={clearAudios}>
+          <ButtonText color="white">
+            {i18n.t('ui.clear audio files button')}
+          </ButtonText>
+        </Button>
       </Box>
     </ScrollView>
   );

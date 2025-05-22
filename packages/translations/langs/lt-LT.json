@@ -108,7 +108,10 @@
     "diff view": "Diff vaizdas",
     "password changed": "Slaptažodis pakeistas. Prisijunkite naudodami naują slaptažodį.",
     "reset password": "Iš naujo nustatyti pamirštą slaptažodį.",
-    "network_unavailable": "Tinklas nepasiekiamas"
+    "network_unavailable": "Tinklas nepasiekiamas",
+    "clear audio files button": "Išvalyti garso failus",
+    "clear audio files confirmation": "Ar tikrai norite išvalyti visus garso failus? Šio veiksmo negalėsite atšaukti.",
+    "clear audio files total": "Ištrinta {{total}} garso failų"
   },
   "pdf_export_options": {
     "selected songs": "Pasirinktos giesmės",

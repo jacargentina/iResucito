@@ -108,7 +108,10 @@
     "diff view": "Diff view",
     "password changed": "Password has been changed. Please login with your new password",
     "reset password": "Reset forgot password",
-    "network_unavailable": "Network is unavailable"
+    "network_unavailable": "Network is unavailable",
+    "clear audio files button": "Clear audio files",
+    "clear audio files confirmation": "Are you sure you want to clear all audio files? This action cannot be undone.",
+    "clear audio files total": "{{total}} audio files have been deleted"
   },
   "pdf_export_options": {
     "selected songs": "Selected songs",
