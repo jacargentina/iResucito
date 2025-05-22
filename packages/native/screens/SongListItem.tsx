@@ -1,6 +1,6 @@
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useState, useMemo } from 'react';
-import { Alert, useColorScheme } from 'react-native';
+import { Alert, Keyboard, useColorScheme } from 'react-native';
 import {
   Box,
   HStack,
@@ -254,6 +254,7 @@ export const SongListItem = (props: {
                   await songDownloader.stop();
                 }
                 songPlayer.play(song);
+                Keyboard.dismiss();
               }}>
               <Icon color="$rose700" as={PlayIcon} size="xl" />
             </Pressable>

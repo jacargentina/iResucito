@@ -1,4 +1,4 @@
-import { Pressable } from 'react-native';
+import { Animated, Pressable } from 'react-native';
 import {
   Text,
   HStack,
@@ -15,15 +15,38 @@ import { useSongDownloader, useSongPlayer } from '../hooks';
 import { PauseIcon, PlayIcon, XIcon } from 'lucide-react-native';
 import { colors } from '@iresucito/core';
 import { NativeStyles } from '../util';
-import { useRef } from 'react';
+import { useCallback, useRef } from 'react';
 
 export const SongPlayer = () => {
   const songPlayer = useSongPlayer();
+  const songDownloader = useSongDownloader();
   const media = useMedia();
   const sliderRef = useRef<any>(null);
   const wasChangedRef = useRef(false);
 
-  if (songPlayer.song == null) {
+  const translateY = useRef(new Animated.Value(0));
+  const opacity = useRef(new Animated.Value(1));
+
+  const detenerConAnimacion = useCallback(() => {
+    Animated.parallel([
+      Animated.timing(translateY.current, {
+        toValue: 400, // cantidad de pixeles hacia abajo
+        duration: 600, // duración en ms
+        useNativeDriver: true,
+      }),
+      Animated.timing(opacity.current, {
+        toValue: 0,
+        duration: 600,
+        useNativeDriver: true,
+      }),
+    ]).start(() => {
+      songPlayer.stop();
+      translateY.current = new Animated.Value(0);
+      opacity.current = new Animated.Value(1);
+    });
+  }, [songPlayer]);
+
+  if (songPlayer.song == null || songDownloader.song != null) {
     return null;
   }
 
@@ -31,75 +54,80 @@ export const SongPlayer = () => {
   const background = backColor.lighten(0.1).string();
 
   return (
-    <VStack
-      p="$4"
-      borderTopWidth={1}
-      bgColor={background}
-      borderTopColor="$rose300">
-      <HStack justifyContent="space-between">
-        <Text
-          numberOfLines={1}
-          pb="$4"
-          style={{
-            fontWeight: 'bold',
-            color: NativeStyles.title.color,
-            fontSize: media.md ? 28 : 18,
-          }}>
-          {songPlayer.song.titulo}
-        </Text>
-        <Pressable
-          onPress={() => {
-            songPlayer.stop();
-          }}>
-          <Icon color="$rose500" as={XIcon} size="xl" />
-        </Pressable>
-      </HStack>
-      <HStack>
-        <Pressable
-          onPress={() =>
-            songPlayer.player.playing ? songPlayer.pause() : songPlayer.play()
-          }>
-          <Icon
-            color="$rose500"
-            mr="$2"
-            as={songPlayer.player.playing ? PauseIcon : PlayIcon}
-            size="xl"
-          />
-        </Pressable>
-        <Slider
-          ref={sliderRef}
-          w="90%"
-          bg="$rose200"
-          borderRadius={10}
-          value={songPlayer.playingTimePercent}
-          onChange={(value) => {
-            wasChangedRef.current = true;
-            songPlayer.seek(value);
-          }}
-          onTouchStart={() => {
-            wasChangedRef.current = false;
-          }}
-          onTouchEnd={(evt) => {
-            if (wasChangedRef.current == false) {
-              sliderRef.current?.measure(
-                (x, y, width, height, pageX, pageY) => {
-                  const percent = (evt.nativeEvent.locationX / width) * 100;
-                  songPlayer.seek(percent);
-                }
-              );
-            }
-          }}
-          minValue={0}
-          maxValue={100}
-          size="sm"
-          orientation="horizontal">
-          <SliderTrack>
-            <SliderFilledTrack />
-          </SliderTrack>
-          <SliderThumb />
-        </Slider>
-      </HStack>
-      {songPlayer.playingActive && (
+    <Animated.View
+      style={{
+        opacity: opacity.current,
+        transform: [{ translateY: translateY.current }],
+      }}>
+      <VStack
+        p="$4"
+        borderTopWidth={1}
+        bgColor={background}
+        borderTopColor="$rose300">
+        <HStack justifyContent="space-between">
+          <Text
+            numberOfLines={1}
+            pb="$4"
+            style={{
+              fontWeight: 'bold',
+              color: NativeStyles.title.color,
+              fontSize: media.md ? 28 : 18,
+            }}>
+            {songPlayer.song.titulo}
+          </Text>
+          <Pressable onPress={detenerConAnimacion}>
+            <Icon color="$rose500" as={XIcon} size="xl" />
+          </Pressable>
+        </HStack>
+        <HStack>
+          <Pressable
+            onPress={() =>
+              songPlayer.refreshIntervalId != undefined
+                ? songPlayer.pause()
+                : songPlayer.play()
+            }>
+            <Icon
+              color="$rose500"
+              mr="$2"
+              as={
+                songPlayer.refreshIntervalId != undefined ? PauseIcon : PlayIcon
+              }
+              size="xl"
+            />
+          </Pressable>
+          <Slider
+            ref={sliderRef}
+            w="90%"
+            bg="$rose200"
+            borderRadius={10}
+            value={songPlayer.playingTimePercent}
+            onChange={(value) => {
+              wasChangedRef.current = true;
+              songPlayer.seek(value);
+            }}
+            onTouchStart={() => {
+              wasChangedRef.current = false;
+            }}
+            onTouchEnd={(evt) => {
+              if (wasChangedRef.current == false) {
+                sliderRef.current?.measure(
+                  (x, y, width, height, pageX, pageY) => {
+                    const percent = (evt.nativeEvent.locationX / width) * 100;
+                    songPlayer.seek(percent);
+                  }
+                );
+              }
+            }}
+            minValue={0}
+            maxValue={100}
+            size="sm"
+            orientation="horizontal">
+            <SliderTrack>
+              <SliderFilledTrack />
+            </SliderTrack>
+            <SliderThumb />
+          </Slider>
+        </HStack>
         <Text
           textAlign="right"
           pt="$2"
@@ -108,7 +136,7 @@ export const SongPlayer = () => {
           style={{ color: NativeStyles.normalLine.color }}>
           {songPlayer.playingTimeText}
         </Text>
-      )}
-    </VStack>
+      </VStack>
+    </Animated.View>
   );
 };
