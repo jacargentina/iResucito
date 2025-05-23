@@ -21,8 +21,6 @@ export const PDFViewer = () => {
           width: width,
         }}
       />
-      <SongPlayer />
-      <SongDownloader />
     </View>
   );
 };

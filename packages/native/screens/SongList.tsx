@@ -18,8 +18,7 @@ import { FlashList } from '@shopify/flash-list';
 import {
   SearchBarView,
   ChoosePdfTypeForExport,
-  SongPlayer,
-  SongDownloader,
+  DismissableBottom,
 } from '../components';
 import i18n from '@iresucito/translations';
 import {
@@ -241,27 +240,27 @@ export const SongList = (props: {
         $dark-bg="$backgroundDark800">
         {totalText}
       </Text>
-      <FlashList
-        ref={listRef}
-        onScrollBeginDrag={() => Keyboard.dismiss()}
-        keyboardShouldPersistTaps="always"
-        data={search}
-        estimatedItemSize={98}
-        renderItem={({ item }) => {
-          return (
-            <SongListItem
-              song={item}
-              showBadge={showSalmosBadge}
-              onPress={onPress}
-              viewButton={viewButton || false}
-              highlight={textFilter}
-              setSongSetting={setSongSetting}
-            />
-          );
-        }}
-      />
-      <SongPlayer />
-      <SongDownloader />
+      <DismissableBottom>
+        <FlashList
+          ref={listRef}
+          onScrollBeginDrag={() => Keyboard.dismiss()}
+          keyboardShouldPersistTaps="always"
+          data={search}
+          estimatedItemSize={98}
+          renderItem={({ item }) => {
+            return (
+              <SongListItem
+                song={item}
+                showBadge={showSalmosBadge}
+                onPress={onPress}
+                viewButton={viewButton || false}
+                highlight={textFilter}
+                setSongSetting={setSongSetting}
+              />
+            );
+          }}
+        />
+      </DismissableBottom>
     </SearchBarView>
   );
 };

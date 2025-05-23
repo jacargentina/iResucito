@@ -227,8 +227,6 @@ export const SongViewFrame = (props: Props) => {
         </ScrollView>
       </ScrollView>
       <ZoomControls />
-      <SongPlayer />
-      <SongDownloader />
     </Box>
   );
 };

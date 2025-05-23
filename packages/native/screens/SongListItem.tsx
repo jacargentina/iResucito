@@ -250,7 +250,7 @@ export const SongListItem = (props: {
             <Pressable
               w="10%"
               onPress={async () => {
-                if (songDownloader.songDownloading != null) {
+                if (songDownloader.song != null) {
                   await songDownloader.stop();
                 }
                 songPlayer.play(song);

@@ -15,8 +15,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { SongsStackParamList } from '../navigation/SongsNavigator';
 import { useSettingsStore } from '../hooks';
 import { useRef } from 'react';
-import { SongPlayer } from '../components';
-import { SongDownloader } from '../components/SongDownloader';
+import { DismissableBottom } from '../components';
 
 const Loading = () => {
   return (
@@ -52,7 +51,7 @@ export const SongSearch = () => {
   }
 
   return (
-    <>
+    <DismissableBottom>
       <FlashList
         ref={ref}
         data={searchItems}
@@ -127,8 +126,6 @@ export const SongSearch = () => {
         }}
         estimatedItemSize={64}
       />
-      <SongPlayer />
-      <SongDownloader />
-    </>
+    </DismissableBottom>
   );
 };

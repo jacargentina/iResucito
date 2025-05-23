@@ -5,5 +5,6 @@ export * from './ContactPhoto';
 export * from './ModalView';
 export * from './SearchBarView';
 export * from './SwipeableRightAction';
+export * from './DismissableBottom';
 export * from './SongPlayer';
 export * from './SongDownloader';
