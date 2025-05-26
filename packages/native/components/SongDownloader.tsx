@@ -1,10 +1,7 @@
 import { Pressable } from 'react-native';
 import { Text, HStack, Icon, VStack, useMedia } from '@gluestack-ui/themed';
-import color from 'color';
 import { useSongDownloader } from '../hooks';
 import { XIcon, CloudDownloadIcon } from 'lucide-react-native';
-import { colors } from '@iresucito/core';
-import { NativeStyles } from '../util';
 import i18n from '@iresucito/translations';
 
 export const SongDownloader = (props: {
@@ -18,25 +15,23 @@ export const SongDownloader = (props: {
     return null;
   }
 
-  const backColor = color(colors[songDownloader.song.stage]);
-  const background = backColor.lighten(0.1).string();
-
   return (
     <VStack
       w="$full"
       p="$4"
+      $dark-bg="$backgroundDark800"
+      $light-bg="white"
       borderTopWidth={1}
-      bgColor={background}
-      borderTopColor="$rose300">
+      $light-borderTopColor="$light200"
+      $dark-borderTopColor="$light600">
       <HStack justifyContent="space-between">
         <Text
           numberOfLines={1}
           pb="$4"
-          style={{
-            fontWeight: 'bold',
-            color: NativeStyles.title.color,
-            fontSize: media.md ? 28 : 18,
-          }}>
+          $dark-color="white"
+          $light-color="black"
+          fontWeight="bold"
+          fontSize={media.md ? 28 : 18}>
           {songDownloader.song.titulo}
         </Text>
         <Pressable
@@ -50,7 +45,9 @@ export const SongDownloader = (props: {
       </HStack>
       <HStack>
         <Icon color="$rose500" mr="$2" as={CloudDownloadIcon} size="xl" />
-        <Text color="$rose500">{i18n.t('ui.downloading')}</Text>
+        <Text $dark-color="white" $light-color="black">
+          {i18n.t('ui.downloading')}
+        </Text>
       </HStack>
     </VStack>
   );

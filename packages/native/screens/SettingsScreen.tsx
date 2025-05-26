@@ -125,7 +125,7 @@ export const SettingsScreen = () => {
 
   const clearAudios = () => {
     Alert.alert(
-      i18n.t('ui.clear audio files'),
+      i18n.t('ui.clear audio files button'),
       i18n.t('ui.clear audio files confirmation'),
       [
         {
@@ -140,7 +140,7 @@ export const SettingsScreen = () => {
               }
             }
             Alert.alert(
-              i18n.t('ui.clear audio files'),
+              i18n.t('ui.clear audio files button'),
               i18n.t('ui.clear audio files total', { total: counter })
             );
           },

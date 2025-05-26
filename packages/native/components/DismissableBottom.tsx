@@ -12,7 +12,7 @@ export const DismissableBottom = (props: { children: any }) => {
   const songDownloader = useSongDownloader();
 
   const closeCallback = useCallback(
-    (actionOnFinish: () => void) => {
+    (actionOnFinish?: () => void) => {
       Animated.parallel([
         Animated.timing(translateY, {
           toValue: 400, // cantidad de pixeles hacia abajo
@@ -25,7 +25,7 @@ export const DismissableBottom = (props: { children: any }) => {
           useNativeDriver: true,
         }),
       ]).start(() => {
-        actionOnFinish();
+        actionOnFinish ? actionOnFinish() : null;
       });
     },
     [translateY, opacity]
@@ -51,6 +51,9 @@ export const DismissableBottom = (props: { children: any }) => {
   useEffect(() => {
     if (songPlayer.song != null || songDownloader.song != null) {
       openCallback();
+    }
+    if (songPlayer.song == null && songDownloader.song == null) {
+      closeCallback();
     }
   }, [songPlayer.song, songDownloader.song]);
 

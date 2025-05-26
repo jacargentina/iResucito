@@ -253,8 +253,17 @@ export const SongListItem = (props: {
                 if (songDownloader.song != null) {
                   await songDownloader.stop();
                 }
-                songPlayer.play(song);
-                Keyboard.dismiss();
+                if (songPlayer.song != null) {
+                  songPlayer.stop();
+                }
+                var fileuri = await songDownloader.getFileUri(song);
+                if (fileuri == undefined) {
+                  fileuri = await songDownloader.download(song);
+                }
+                if (fileuri) {
+                  songPlayer.play(fileuri, song);
+                  Keyboard.dismiss();
+                }
               }}>
               <Icon color="$rose700" as={PlayIcon} size="xl" />
             </Pressable>

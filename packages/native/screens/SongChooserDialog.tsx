@@ -1,12 +1,8 @@
 import type { StackScreenProps } from '@react-navigation/stack';
 import { useMemo, useCallback, useState } from 'react';
 import { useWindowDimensions, useColorScheme } from 'react-native';
-import { Text, Center, Spinner } from '@gluestack-ui/themed';
+import { Text } from '@gluestack-ui/themed';
 import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
-import type {
-  SceneRendererProps,
-  NavigationState,
-} from 'react-native-tab-view';
 import { ModalView } from '../components';
 import { ChooserParamList } from '../navigation/SongChooserNavigator';
 import { useSettingsStore, useListsStore } from '../hooks';
@@ -111,17 +107,17 @@ export const SongChooserDialog = (props: Props) => {
         commonOptions={{
           label: ({ route: currentRoute, focused, color }) => (
             <Text
-              style={{
-                color:
-                  scheme == 'dark'
-                    ? focused
-                      ? config.tokens.colors.rose300
-                      : config.tokens.colors.textLight300
-                    : focused
-                    ? config.tokens.colors.rose500
-                    : config.tokens.colors.textDark600,
-                margin: 3,
-              }}>
+              $dark-color={
+                focused
+                  ? config.tokens.colors.rose300
+                  : config.tokens.colors.textLight300
+              }
+              $light-color={
+                focused
+                  ? config.tokens.colors.rose500
+                  : config.tokens.colors.textDark600
+              }
+              margin={3}>
               {currentRoute.title}
             </Text>
           ),

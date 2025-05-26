@@ -178,7 +178,7 @@ type SongPlayerStore = {
   playingTimePercent: number | undefined;
   refreshIntervalId: number | undefined;
   refreshSongPosition: () => void;
-  play: (song?: Song) => Promise<void>;
+  play: (fileuri: string, song?: Song) => Promise<void>;
   seek: (percent: number) => void;
   pause: () => void;
   stop: () => void;
@@ -197,8 +197,8 @@ type SongDownloaderStore = {
   song: Song | null;
   downloadItem: FileSystem.DownloadResumable | null;
   removeFile: (song: Song) => Promise<boolean>;
-  hasFileUri: (song: Song) => Promise<boolean>;
   getFileUri: (song: Song) => Promise<string | undefined>;
+  download: (song: Song) => Promise<string | undefined>;
   stop: () => Promise<void>;
 };
 
@@ -206,11 +206,14 @@ export const useSongDownloader = create(
   immer<SongDownloaderStore>((set, get) => ({
     song: null,
     downloadItem: null,
-    hasFileUri: async (song: Song) => {
+    getFileUri: async (song: Song) => {
       const audio = esAudiosData[song.key];
       const fileuri = `${FileSystem.documentDirectory}${audio!.name}`;
       const info = await FileSystem.getInfoAsync(fileuri);
-      return info.exists;
+      if (info.exists) {
+        return fileuri;
+      }
+      return undefined;
     },
     removeFile: async (song: Song) => {
       const audio = esAudiosData[song.key];
@@ -223,46 +226,42 @@ export const useSongDownloader = create(
       }
       return false;
     },
-    getFileUri: async (song: Song) => {
+    download: async (song: Song) => {
       const audio = esAudiosData[song.key];
       const fileuri = `${FileSystem.documentDirectory}${audio!.name}`;
-      const info = await FileSystem.getInfoAsync(fileuri);
-      if (info.exists == false) {
-        // Descargar
-        const { isInternetReachable } = await Network.getNetworkStateAsync();
-        if (!isInternetReachable) {
-          Alert.alert('Error', i18n.t('ui.network_unavailable'));
+      const { isInternetReachable } = await Network.getNetworkStateAsync();
+      if (!isInternetReachable) {
+        Alert.alert('Error', i18n.t('ui.network_unavailable'));
+        return;
+      }
+      try {
+        var { downloadItem } = get();
+        if (downloadItem != null) {
+          throw new Error('Cancelar la descarga previa!');
+        }
+        var downItem = FileSystem.createDownloadResumable(
+          `https://drive.google.com/uc?export=download&id=${audio!.id}`,
+          fileuri
+        );
+        set((state) => {
+          state.downloadItem = downItem;
+          state.song = song;
+        });
+        const downResult = await downItem.downloadAsync();
+        set((state) => {
+          state.song = null;
+          state.downloadItem = null;
+        });
+        if (downResult == null || downResult == undefined) {
           return;
         }
-        try {
-          var { downloadItem } = get();
-          if (downloadItem != null) {
-            throw new Error('Cancelar la descarga previa!');
-          }
-          var downItem = FileSystem.createDownloadResumable(
-            `https://drive.google.com/uc?export=download&id=${audio!.id}`,
-            fileuri
-          );
-          set((state) => {
-            state.downloadItem = downItem;
-            state.song = song;
-          });
-          const downResult = await downItem.downloadAsync();
-          set((state) => {
-            state.song = null;
-            state.downloadItem = null;
-          });
-          if (downResult == null || downResult == undefined) {
-            return;
-          }
-        } catch (error: any) {
-          set((state) => {
-            state.song = null;
-            state.downloadItem = null;
-          });
-          Alert.alert('Error', error.message);
-          return;
-        }
+      } catch (error: any) {
+        set((state) => {
+          state.song = null;
+          state.downloadItem = null;
+        });
+        Alert.alert('Error', error.message);
+        return;
       }
       return fileuri;
     },
@@ -306,7 +305,7 @@ export const useSongPlayer = create(
         });
       }
     },
-    play: async (song?: Song) => {
+    play: async (fileuri: string, song?: Song) => {
       const {
         player,
         refreshSongPosition,
@@ -317,22 +316,10 @@ export const useSongPlayer = create(
         player.pause();
         player.seekTo(0);
         clearInterval(refreshIntervalId);
-        const downloaderState = useSongDownloader.getState();
-        const downloadRequired = !(await downloaderState.hasFileUri(song));
         set((state) => {
           state.refreshIntervalId = undefined;
           state.playingTimePercent = 0;
-          if (downloadRequired) {
-            state.song = null;
-          }
         });
-        const fileuri = await downloaderState.getFileUri(song);
-        if (fileuri == undefined) {
-          set((state) => {
-            state.song = null;
-          });
-          return;
-        }
         player.replace({ uri: fileuri });
       }
       player.play();
