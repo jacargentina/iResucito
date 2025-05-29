@@ -10,62 +10,66 @@ import {
   VStack,
   useMedia,
 } from '@gluestack-ui/themed';
-import color from 'color';
-import { useSongPlayer } from '../hooks';
-import { PauseIcon, PlayIcon, XIcon } from 'lucide-react-native';
-import { colors } from '@iresucito/core';
-import { NativeStyles } from '../util';
+import { useSongDownloader, useSongPlayer } from '../hooks';
+import {
+  PauseIcon,
+  PlayIcon,
+  XIcon,
+  CloudDownloadIcon,
+} from 'lucide-react-native';
 import { useRef } from 'react';
+import i18n from '@iresucito/translations';
 
 export const SongPlayer = (props: {
   closeCallback: (actionOnFinish: () => void) => void;
 }) => {
   const { closeCallback } = props;
   const songPlayer = useSongPlayer();
+  const songDownloader = useSongDownloader();
   const media = useMedia();
   const sliderRef = useRef<any>(null);
   const wasChangedRef = useRef(false);
-
-  if (songPlayer.song == null) {
-    return null;
-  }
-
-  const backColor = color(colors[songPlayer.song.stage]);
-  const background = backColor.lighten(0.1).string();
 
   return (
     <VStack
       p="$4"
       borderTopWidth={1}
-      bgColor={background}
-      borderTopColor="$rose300">
+      $dark-bg="$backgroundDark800"
+      $light-bg="white"
+      $light-borderTopColor="$light200"
+      $dark-borderTopColor="$light600">
       <HStack justifyContent="space-between">
         <Text
           numberOfLines={1}
           pb="$4"
           style={{
             fontWeight: 'bold',
-            color: NativeStyles.title.color,
             fontSize: media.md ? 28 : 18,
           }}>
-          {songPlayer.song.titulo}
+          {songPlayer.title}
         </Text>
         <Pressable
           onPress={() =>
             closeCallback(() => {
+              if (songDownloader.downloadItem != null) {
+                songDownloader.stop();
+              }
               songPlayer.stop();
             })
           }>
           <Icon color="$rose500" as={XIcon} size="xl" />
         </Pressable>
       </HStack>
+      {songDownloader.downloadItem != null && (
+        <HStack>
+          <Icon color="$rose500" mr="$2" as={CloudDownloadIcon} size="xl" />
+          <Text $dark-color="white" $light-color="black">
+            {i18n.t('ui.downloading')}
+          </Text>
+        </HStack>
+      )}
       <HStack>
-        <Pressable
-          onPress={() =>
-            songPlayer.refreshIntervalId != undefined
-              ? songPlayer.pause()
-              : songPlayer.play()
-          }>
+        <Pressable onPress={songPlayer.togglepause}>
           <Icon
             color="$rose500"
             mr="$2"
@@ -78,7 +82,7 @@ export const SongPlayer = (props: {
         <Slider
           ref={sliderRef}
           w="90%"
-          bg="$rose200"
+          bg="$rose100"
           borderRadius={10}
           value={songPlayer.playingTimePercent}
           onChange={(value) => {
@@ -113,7 +117,7 @@ export const SongPlayer = (props: {
         pt="$2"
         fontSize="$sm"
         numberOfLines={1}
-        style={{ color: NativeStyles.normalLine.color }}>
+        color="white">
         {songPlayer.playingTimeText}
       </Text>
     </VStack>

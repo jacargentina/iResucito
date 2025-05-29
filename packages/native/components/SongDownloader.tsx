@@ -11,10 +11,6 @@ export const SongDownloader = (props: {
   const songDownloader = useSongDownloader();
   const media = useMedia();
 
-  if (songDownloader.song == null) {
-    return null;
-  }
-
   return (
     <VStack
       w="$full"
@@ -32,7 +28,7 @@ export const SongDownloader = (props: {
           $light-color="black"
           fontWeight="bold"
           fontSize={media.md ? 28 : 18}>
-          {songDownloader.song.titulo}
+          {songDownloader.song ? songDownloader.song.titulo : null}
         </Text>
         <Pressable
           onPress={() =>

@@ -253,7 +253,7 @@ export const SongListItem = (props: {
                 if (songDownloader.song != null) {
                   await songDownloader.stop();
                 }
-                if (songPlayer.song != null) {
+                if (songPlayer.fileuri != null) {
                   songPlayer.stop();
                 }
                 var fileuri = await songDownloader.getFileUri(song);
@@ -261,7 +261,7 @@ export const SongListItem = (props: {
                   fileuri = await songDownloader.download(song);
                 }
                 if (fileuri) {
-                  songPlayer.play(fileuri, song);
+                  songPlayer.play(fileuri, song.titulo);
                   Keyboard.dismiss();
                 }
               }}>

@@ -1,13 +1,13 @@
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Animated, View } from 'react-native';
 import { SongPlayer } from './SongPlayer';
-import { SongDownloader } from './SongDownloader';
 import { useSongDownloader, useSongPlayer } from '../hooks';
 
 export const DismissableBottom = (props: { children: any }) => {
   const { children } = props;
-  const translateY = useRef(new Animated.Value(0)).current;
-  const opacity = useRef(new Animated.Value(1)).current;
+  const translateY = useRef(new Animated.Value(400)).current;
+  const opacity = useRef(new Animated.Value(0)).current;
+  const [isOpen, setIsOpen] = useState(false);
   const songPlayer = useSongPlayer();
   const songDownloader = useSongDownloader();
 
@@ -32,8 +32,6 @@ export const DismissableBottom = (props: { children: any }) => {
   );
 
   const openCallback = useCallback(() => {
-    translateY.setValue(400);
-    opacity.setValue(0);
     Animated.parallel([
       Animated.timing(translateY, {
         toValue: 0,
@@ -49,13 +47,32 @@ export const DismissableBottom = (props: { children: any }) => {
   }, [translateY, opacity]);
 
   useEffect(() => {
-    if (songPlayer.song != null || songDownloader.song != null) {
+    if (
+      !isOpen &&
+      (songPlayer.fileuri != null || songDownloader.downloadItem != null)
+    ) {
+      console.log(
+        'slideup',
+        songPlayer.fileuri != null,
+        songDownloader.downloadItem != null
+      );
+      setIsOpen(true);
       openCallback();
     }
-    if (songPlayer.song == null && songDownloader.song == null) {
+    if (
+      isOpen &&
+      songPlayer.fileuri == null &&
+      songDownloader.downloadItem == null
+    ) {
+      console.log(
+        'slidedown',
+        songPlayer.fileuri == null,
+        songDownloader.downloadItem == null
+      );
+      setIsOpen(false);
       closeCallback();
     }
-  }, [songPlayer.song, songDownloader.song]);
+  }, [songPlayer.fileuri, songDownloader.downloadItem, isOpen]);
 
   return (
     <View
@@ -72,7 +89,6 @@ export const DismissableBottom = (props: { children: any }) => {
           opacity: opacity,
           transform: [{ translateY: translateY }],
         }}>
-        <SongDownloader closeCallback={closeCallback} />
         <SongPlayer closeCallback={closeCallback} />
       </Animated.View>
     </View>

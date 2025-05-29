@@ -173,14 +173,15 @@ export const useSongsSelection = create(
 
 type SongPlayerStore = {
   player: AudioPlayer;
-  song: Song | null;
+  title: string | null;
+  fileuri: string | null;
   playingTimeText: string | null;
-  playingTimePercent: number | undefined;
+  playingTimePercent: number;
   refreshIntervalId: number | undefined;
   refreshSongPosition: () => void;
-  play: (fileuri: string, song?: Song) => Promise<void>;
+  play: (fileuri: string, title: string) => Promise<void>;
   seek: (percent: number) => void;
-  pause: () => void;
+  togglepause: () => void;
   stop: () => void;
 };
 
@@ -194,7 +195,6 @@ function formatTime(rawSeconds) {
 }
 
 type SongDownloaderStore = {
-  song: Song | null;
   downloadItem: FileSystem.DownloadResumable | null;
   removeFile: (song: Song) => Promise<boolean>;
   getFileUri: (song: Song) => Promise<string | undefined>;
@@ -204,7 +204,6 @@ type SongDownloaderStore = {
 
 export const useSongDownloader = create(
   immer<SongDownloaderStore>((set, get) => ({
-    song: null,
     downloadItem: null,
     getFileUri: async (song: Song) => {
       const audio = esAudiosData[song.key];
@@ -245,11 +244,9 @@ export const useSongDownloader = create(
         );
         set((state) => {
           state.downloadItem = downItem;
-          state.song = song;
         });
         const downResult = await downItem.downloadAsync();
         set((state) => {
-          state.song = null;
           state.downloadItem = null;
         });
         if (downResult == null || downResult == undefined) {
@@ -257,7 +254,6 @@ export const useSongDownloader = create(
         }
       } catch (error: any) {
         set((state) => {
-          state.song = null;
           state.downloadItem = null;
         });
         Alert.alert('Error', error.message);
@@ -271,7 +267,6 @@ export const useSongDownloader = create(
         await downloadItem.cancelAsync();
         set((state) => {
           state.downloadItem = null;
-          state.song = null;
         });
       }
     },
@@ -281,9 +276,10 @@ export const useSongDownloader = create(
 export const useSongPlayer = create(
   immer<SongPlayerStore>((set, get) => ({
     player: createAudioPlayer(null),
-    song: null,
+    title: null,
+    fileuri: null,
     playingTimeText: null,
-    playingTimePercent: undefined,
+    playingTimePercent: 0,
     refreshIntervalId: undefined,
     refreshSongPosition: () => {
       const player = get().player;
@@ -305,14 +301,14 @@ export const useSongPlayer = create(
         });
       }
     },
-    play: async (fileuri: string, song?: Song) => {
+    play: async (fileuri: string, title: string) => {
       const {
         player,
         refreshSongPosition,
         refreshIntervalId,
-        song: activeSong,
+        fileuri: activeFileUri,
       } = get();
-      if (song && activeSong?.key !== song.key) {
+      if (activeFileUri !== fileuri) {
         player.pause();
         player.seekTo(0);
         clearInterval(refreshIntervalId);
@@ -325,9 +321,8 @@ export const useSongPlayer = create(
       player.play();
       refreshSongPosition();
       set((state) => {
-        if (song) {
-          state.song = song;
-        }
+        state.title = title;
+        state.fileuri = fileuri;
         // @ts-ignore
         state.refreshIntervalId = setInterval(refreshSongPosition, 1000);
       });
@@ -338,13 +333,20 @@ export const useSongPlayer = create(
       player.seekTo(newPosition);
       refreshSongPosition();
     },
-    pause: () => {
-      const { player, refreshIntervalId } = get();
+    togglepause: () => {
+      const { player, refreshSongPosition, refreshIntervalId } = get();
       if (player.playing) {
         player.pause();
         clearInterval(refreshIntervalId);
         set((state) => {
           state.refreshIntervalId = undefined;
+        });
+      } else {
+        player.play();
+        refreshSongPosition();
+        set((state) => {
+          // @ts-ignore
+          state.refreshIntervalId = setInterval(refreshSongPosition, 1000);
         });
       }
     },
@@ -354,9 +356,10 @@ export const useSongPlayer = create(
       player.seekTo(0);
       clearInterval(refreshIntervalId);
       set((state) => {
-        state.song = null;
+        state.title = null;
+        state.fileuri = null;
         state.playingTimeText = null;
-        state.playingTimePercent = undefined;
+        state.playingTimePercent = 0;
         state.refreshIntervalId = undefined;
       });
     },
