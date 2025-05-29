@@ -20,9 +20,7 @@ import {
 import { useRef } from 'react';
 import i18n from '@iresucito/translations';
 
-export const SongPlayer = (props: {
-  closeCallback: (actionOnFinish: () => void) => void;
-}) => {
+export const SongPlayer = (props: { closeCallback: () => void }) => {
   const { closeCallback } = props;
   const songPlayer = useSongPlayer();
   const songDownloader = useSongDownloader();
@@ -51,14 +49,13 @@ export const SongPlayer = (props: {
             : songPlayer.title}
         </Text>
         <Pressable
-          onPress={() =>
-            closeCallback(() => {
-              if (songDownloader.downloadItem != null) {
-                songDownloader.stop();
-              }
-              songPlayer.stop();
-            })
-          }>
+          onPress={() => {
+            if (songDownloader.downloadItem != null) {
+              songDownloader.stop();
+            }
+            songPlayer.stop();
+            closeCallback();
+          }}>
           <Icon color="$rose500" as={XIcon} size="xl" />
         </Pressable>
       </HStack>
@@ -104,14 +101,18 @@ export const SongPlayer = (props: {
                 );
               }
             }}
-            minValue={0}
-            maxValue={100}
+            minValue={-4}
+            maxValue={104}
             size="sm"
             orientation="horizontal">
             <SliderTrack>
               <SliderFilledTrack />
             </SliderTrack>
-            <SliderThumb />
+            <SliderThumb
+              borderRadius={5}
+              shadowRadius={0}
+              shadowOffset={{ width: 0, height: 0 }}
+            />
           </Slider>
         </HStack>
       )}

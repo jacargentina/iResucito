@@ -289,9 +289,12 @@ export const useSongPlayer = create(
     playingTimePercent: 0,
     refreshIntervalId: undefined,
     refreshSongPosition: () => {
-      const player = get().player;
-      if (player.currentStatus.didJustFinish) {
-        get().stop();
+      const { player, stop } = get();
+      const ct = player.currentTime;
+      const dur = player.duration;
+      const dif = Math.abs(dur - ct);
+      if (ct > 0 && dif < 0.05) {
+        stop();
       } else if (player.isLoaded) {
         set((state) => {
           const current = formatTime(player.currentTime);

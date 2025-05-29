@@ -8,30 +8,27 @@ export const DismissableBottom = (props: { children: any }) => {
   const translateY = useRef(new Animated.Value(400)).current;
   const opacity = useRef(new Animated.Value(0)).current;
   const [isOpen, setIsOpen] = useState(false);
-  const songPlayer = useSongPlayer();
-  const songDownloader = useSongDownloader();
+  const { fileuri } = useSongPlayer();
+  const { downloadItem } = useSongDownloader();
 
-  const closeCallback = useCallback(
-    (actionOnFinish?: () => void) => {
-      Animated.parallel([
-        Animated.timing(translateY, {
-          toValue: 400, // cantidad de pixeles hacia abajo
-          duration: 600, // duración en ms
-          useNativeDriver: true,
-        }),
-        Animated.timing(opacity, {
-          toValue: 0,
-          duration: 600,
-          useNativeDriver: true,
-        }),
-      ]).start(() => {
-        actionOnFinish ? actionOnFinish() : null;
-      });
-    },
-    [translateY, opacity]
-  );
+  const closeCallback = useCallback(() => {
+    setIsOpen(false);
+    Animated.parallel([
+      Animated.timing(translateY, {
+        toValue: 400, // cantidad de pixeles hacia abajo
+        duration: 600, // duración en ms
+        useNativeDriver: true,
+      }),
+      Animated.timing(opacity, {
+        toValue: 0,
+        duration: 600,
+        useNativeDriver: true,
+      }),
+    ]).start();
+  }, [translateY, opacity]);
 
   const openCallback = useCallback(() => {
+    setIsOpen(true);
     Animated.parallel([
       Animated.timing(translateY, {
         toValue: 0,
@@ -47,22 +44,16 @@ export const DismissableBottom = (props: { children: any }) => {
   }, [translateY, opacity]);
 
   useEffect(() => {
-    if (
-      !isOpen &&
-      (songPlayer.fileuri != null || songDownloader.downloadItem != null)
-    ) {
-      setIsOpen(true);
+    if (!isOpen && (fileuri != null || downloadItem != null)) {
       openCallback();
     }
-    if (
-      isOpen &&
-      songPlayer.fileuri == null &&
-      songDownloader.downloadItem == null
-    ) {
-      setIsOpen(false);
+  }, [fileuri, downloadItem, isOpen]);
+
+  useEffect(() => {
+    if (isOpen && fileuri == null && downloadItem == null) {
       closeCallback();
     }
-  }, [songPlayer.fileuri, songDownloader.downloadItem, isOpen]);
+  }, [fileuri, isOpen]);
 
   return (
     <View
