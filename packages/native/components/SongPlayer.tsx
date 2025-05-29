@@ -46,7 +46,9 @@ export const SongPlayer = (props: {
             fontWeight: 'bold',
             fontSize: media.md ? 28 : 18,
           }}>
-          {songPlayer.title}
+          {songDownloader.downloadItem != null
+            ? songDownloader.title
+            : songPlayer.title}
         </Text>
         <Pressable
           onPress={() =>
@@ -60,66 +62,69 @@ export const SongPlayer = (props: {
           <Icon color="$rose500" as={XIcon} size="xl" />
         </Pressable>
       </HStack>
-      {songDownloader.downloadItem != null && (
+      {songDownloader.downloadItem != null ? (
         <HStack>
           <Icon color="$rose500" mr="$2" as={CloudDownloadIcon} size="xl" />
           <Text $dark-color="white" $light-color="black">
             {i18n.t('ui.downloading')}
           </Text>
         </HStack>
+      ) : (
+        <HStack>
+          <Pressable onPress={songPlayer.togglepause}>
+            <Icon
+              color="$rose500"
+              mr="$2"
+              as={
+                songPlayer.refreshIntervalId != undefined ? PauseIcon : PlayIcon
+              }
+              size="xl"
+            />
+          </Pressable>
+          <Slider
+            ref={sliderRef}
+            w="90%"
+            bg="$rose100"
+            borderRadius={10}
+            value={songPlayer.playingTimePercent}
+            onChange={(value) => {
+              wasChangedRef.current = true;
+              songPlayer.seek(value);
+            }}
+            onTouchStart={() => {
+              wasChangedRef.current = false;
+            }}
+            onTouchEnd={(evt) => {
+              if (wasChangedRef.current == false) {
+                sliderRef.current?.measure(
+                  (x, y, width, height, pageX, pageY) => {
+                    const percent = (evt.nativeEvent.locationX / width) * 100;
+                    songPlayer.seek(percent);
+                  }
+                );
+              }
+            }}
+            minValue={0}
+            maxValue={100}
+            size="sm"
+            orientation="horizontal">
+            <SliderTrack>
+              <SliderFilledTrack />
+            </SliderTrack>
+            <SliderThumb />
+          </Slider>
+        </HStack>
       )}
-      <HStack>
-        <Pressable onPress={songPlayer.togglepause}>
-          <Icon
-            color="$rose500"
-            mr="$2"
-            as={
-              songPlayer.refreshIntervalId != undefined ? PauseIcon : PlayIcon
-            }
-            size="xl"
-          />
-        </Pressable>
-        <Slider
-          ref={sliderRef}
-          w="90%"
-          bg="$rose100"
-          borderRadius={10}
-          value={songPlayer.playingTimePercent}
-          onChange={(value) => {
-            wasChangedRef.current = true;
-            songPlayer.seek(value);
-          }}
-          onTouchStart={() => {
-            wasChangedRef.current = false;
-          }}
-          onTouchEnd={(evt) => {
-            if (wasChangedRef.current == false) {
-              sliderRef.current?.measure(
-                (x, y, width, height, pageX, pageY) => {
-                  const percent = (evt.nativeEvent.locationX / width) * 100;
-                  songPlayer.seek(percent);
-                }
-              );
-            }
-          }}
-          minValue={0}
-          maxValue={100}
-          size="sm"
-          orientation="horizontal">
-          <SliderTrack>
-            <SliderFilledTrack />
-          </SliderTrack>
-          <SliderThumb />
-        </Slider>
-      </HStack>
-      <Text
-        textAlign="right"
-        pt="$2"
-        fontSize="$sm"
-        numberOfLines={1}
-        color="white">
-        {songPlayer.playingTimeText}
-      </Text>
+      {songDownloader.downloadItem == null ? (
+        <Text
+          textAlign="right"
+          pt="$2"
+          fontSize="$sm"
+          numberOfLines={1}
+          color="white">
+          {songPlayer.playingTimeText}
+        </Text>
+      ) : null}
     </VStack>
   );
 };

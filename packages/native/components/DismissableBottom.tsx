@@ -51,11 +51,6 @@ export const DismissableBottom = (props: { children: any }) => {
       !isOpen &&
       (songPlayer.fileuri != null || songDownloader.downloadItem != null)
     ) {
-      console.log(
-        'slideup',
-        songPlayer.fileuri != null,
-        songDownloader.downloadItem != null
-      );
       setIsOpen(true);
       openCallback();
     }
@@ -64,11 +59,6 @@ export const DismissableBottom = (props: { children: any }) => {
       songPlayer.fileuri == null &&
       songDownloader.downloadItem == null
     ) {
-      console.log(
-        'slidedown',
-        songPlayer.fileuri == null,
-        songDownloader.downloadItem == null
-      );
       setIsOpen(false);
       closeCallback();
     }

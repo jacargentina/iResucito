@@ -7,4 +7,3 @@ export * from './SearchBarView';
 export * from './SwipeableRightAction';
 export * from './DismissableBottom';
 export * from './SongPlayer';
-export * from './SongDownloader';

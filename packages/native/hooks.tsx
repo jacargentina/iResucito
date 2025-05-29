@@ -49,6 +49,7 @@ import { shallow } from 'zustand/shallow';
 import { getDefaultLocale, ordenClasificacion, NativeExtras } from './util';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AudioPlayer, createAudioPlayer, setAudioModeAsync } from 'expo-audio';
+import { useCallback } from 'react';
 
 setAudioModeAsync({
   interruptionMode: 'doNotMix',
@@ -195,6 +196,7 @@ function formatTime(rawSeconds) {
 }
 
 type SongDownloaderStore = {
+  title: string | null;
   downloadItem: FileSystem.DownloadResumable | null;
   removeFile: (song: Song) => Promise<boolean>;
   getFileUri: (song: Song) => Promise<string | undefined>;
@@ -205,6 +207,7 @@ type SongDownloaderStore = {
 export const useSongDownloader = create(
   immer<SongDownloaderStore>((set, get) => ({
     downloadItem: null,
+    title: null,
     getFileUri: async (song: Song) => {
       const audio = esAudiosData[song.key];
       const fileuri = `${FileSystem.documentDirectory}${audio!.name}`;
@@ -243,10 +246,12 @@ export const useSongDownloader = create(
           fileuri
         );
         set((state) => {
+          state.title = song.titulo;
           state.downloadItem = downItem;
         });
         const downResult = await downItem.downloadAsync();
         set((state) => {
+          state.title = null;
           state.downloadItem = null;
         });
         if (downResult == null || downResult == undefined) {
@@ -254,6 +259,7 @@ export const useSongDownloader = create(
         }
       } catch (error: any) {
         set((state) => {
+          state.title = null;
           state.downloadItem = null;
         });
         Alert.alert('Error', error.message);
@@ -266,6 +272,7 @@ export const useSongDownloader = create(
       if (downloadItem) {
         await downloadItem.cancelAsync();
         set((state) => {
+          state.title = null;
           state.downloadItem = null;
         });
       }
@@ -1153,4 +1160,30 @@ export const sharePDF = (shareTitleSuffix: string, pdfPath: string) => {
   Sharing.shareAsync(`file://${pdfPath}`, {
     dialogTitle: i18n.t('ui.share'),
   });
+};
+
+export const useSongAudio = () => {
+  const songPlayer = useSongPlayer();
+  const songDownloader = useSongDownloader();
+
+  const playAudio = useCallback(
+    async (song: Song) => {
+      if (songDownloader.downloadItem != null) {
+        await songDownloader.stop();
+      }
+      if (songPlayer.fileuri != null) {
+        songPlayer.stop();
+      }
+      var fileuri = await songDownloader.getFileUri(song);
+      if (fileuri == undefined) {
+        fileuri = await songDownloader.download(song);
+      }
+      if (fileuri) {
+        songPlayer.play(fileuri, song.titulo);
+      }
+    },
+    [songPlayer, songDownloader]
+  );
+
+  return { playAudio };
 };

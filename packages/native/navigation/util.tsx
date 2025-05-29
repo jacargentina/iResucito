@@ -15,7 +15,7 @@ import {
 } from '@react-navigation/stack';
 import i18n from '@iresucito/translations';
 import { Song, cleanMultichord, getChordsScale } from '@iresucito/core';
-import { setSongSetting, sharePDF, useSongPlayer } from '../hooks';
+import { setSongSetting, sharePDF, useSongAudio } from '../hooks';
 import { config } from '../config/gluestack-ui.config';
 import { useColorScheme, GestureResponderEvent } from 'react-native';
 import { SongsStackParamList } from './SongsNavigator';
@@ -309,7 +309,7 @@ export const SharePDFButton = () => {
 export const PlaySongButton = () => {
   const route = useRoute<SongDetailRouteProp1 | SongDetailRouteProp2>();
   const { song } = route.params;
-  const songPlayer = useSongPlayer();
+  const { playAudio } = useSongAudio();
   if (!song) {
     return null;
   }
@@ -319,7 +319,7 @@ export const PlaySongButton = () => {
       testID="play-song-button"
       iconName="PlayIcon"
       onPress={() => {
-        songPlayer.play(song);
+        playAudio(song);
       }}
     />
   );

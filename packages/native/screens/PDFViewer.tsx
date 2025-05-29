@@ -2,7 +2,6 @@ import { View, useWindowDimensions } from 'react-native';
 import Pdf from 'react-native-pdf';
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { RootStackParamList } from '../navigation/RootNavigator';
-import { SongDownloader, SongPlayer } from '../components';
 
 type SongPreviewPdfRouteProp = RouteProp<RootStackParamList, 'SongPreviewPdf'>;
 

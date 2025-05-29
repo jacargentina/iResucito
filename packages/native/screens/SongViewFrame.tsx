@@ -19,7 +19,6 @@ import i18n from '@iresucito/translations';
 import { useSettingsStore, useSongPlayer } from '../hooks';
 import { NativeParser, NativeStyle, NativeStyles } from '../util';
 import { MinusIcon, PlusIcon } from 'lucide-react-native';
-import { SongDownloader, SongPlayer } from '../components';
 
 const SongViewLines = (props: {
   lines: Array<SongLine<NativeStyle>>;
@@ -143,7 +142,7 @@ export const SongViewFrame = (props: Props) => {
   if (ctrlVisible) {
     height = height - 10;
   }
-  if (songPlayer.song != null) {
+  if (songPlayer.fileuri != null) {
     height = height - 18;
   }
 
