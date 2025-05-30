@@ -5,11 +5,11 @@ import { useSongDownloader, useSongPlayer } from '../hooks';
 
 export const DismissableBottom = (props: { children: any }) => {
   const { children } = props;
-  const translateY = useRef(new Animated.Value(400)).current;
-  const opacity = useRef(new Animated.Value(0)).current;
-  const [isOpen, setIsOpen] = useState(false);
   const { fileuri } = useSongPlayer();
   const { downloadItem } = useSongDownloader();
+  const [isOpen, setIsOpen] = useState(fileuri != null);
+  const translateY = useRef(new Animated.Value(isOpen ? 0 : 400)).current;
+  const opacity = useRef(new Animated.Value(isOpen ? 1 : 0)).current;
 
   const closeCallback = useCallback(() => {
     setIsOpen(false);

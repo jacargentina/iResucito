@@ -4,6 +4,7 @@ import { RouteProp, useRoute } from '@react-navigation/native';
 import { useSettingsStore } from '../hooks';
 import { SongViewFrame } from './SongViewFrame';
 import { SongsStackParamList } from '../navigation/SongsNavigator';
+import { DismissableBottom } from '../components';
 
 type SongDetailRouteProp = RouteProp<SongsStackParamList, 'SongDetail'>;
 
@@ -21,5 +22,9 @@ export const SongDetail = () => {
     }
   }, [keepAwake]);
 
-  return <SongViewFrame song={song} />;
+  return (
+    <DismissableBottom>
+      <SongViewFrame song={song} />
+    </DismissableBottom>
+  );
 };
