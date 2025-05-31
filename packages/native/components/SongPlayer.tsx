@@ -59,14 +59,15 @@ export const SongPlayer = (props: { closeCallback: () => void }) => {
           <Icon color="$rose500" as={XIcon} size="xl" />
         </Pressable>
       </HStack>
-      {songDownloader.downloadItem != null ? (
+      {songDownloader.downloadItem != null && (
         <HStack>
           <Icon color="$rose500" mr="$2" as={CloudDownloadIcon} size="xl" />
           <Text $dark-color="white" $light-color="black">
             {i18n.t('ui.downloading')}
           </Text>
         </HStack>
-      ) : (
+      )}
+      {songPlayer.fileuri != null && (
         <HStack>
           <Pressable onPress={songPlayer.togglepause}>
             <Icon
@@ -116,7 +117,7 @@ export const SongPlayer = (props: { closeCallback: () => void }) => {
           </Slider>
         </HStack>
       )}
-      {songDownloader.downloadItem == null ? (
+      {songDownloader.downloadItem == null && (
         <Text
           textAlign="right"
           pt="$2"
@@ -125,7 +126,7 @@ export const SongPlayer = (props: { closeCallback: () => void }) => {
           color="white">
           {songPlayer.playingTimeText}
         </Text>
-      ) : null}
+      )}
     </VStack>
   );
 };

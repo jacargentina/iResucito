@@ -16,7 +16,7 @@ import {
 import color from 'color';
 import { colors, Song, SongLine } from '@iresucito/core';
 import i18n from '@iresucito/translations';
-import { useSettingsStore, useSongPlayer } from '../hooks';
+import { useSettingsStore } from '../hooks';
 import { NativeParser, NativeStyle, NativeStyles } from '../util';
 import { MinusIcon, PlusIcon } from 'lucide-react-native';
 
@@ -108,7 +108,6 @@ export const SongViewFrame = (props: Props) => {
   );
 
   const [ctrlVisible, setCtrlVisible] = useState(false);
-  const songPlayer = useSongPlayer();
 
   const toggleControls = () => {
     setCtrlVisible((visible) => !visible);
@@ -141,9 +140,6 @@ export const SongViewFrame = (props: Props) => {
   var height = 100;
   if (ctrlVisible) {
     height = height - 10;
-  }
-  if (songPlayer.fileuri != null) {
-    height = height - 18;
   }
 
   const ZoomControls = () => {

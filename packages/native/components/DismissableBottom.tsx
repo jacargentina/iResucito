@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Animated, View } from 'react-native';
+import { Animated, LayoutChangeEvent, View } from 'react-native';
 import { SongPlayer } from './SongPlayer';
 import { useSongDownloader, useSongPlayer } from '../hooks';
 
@@ -8,6 +8,7 @@ export const DismissableBottom = (props: { children: any }) => {
   const { fileuri } = useSongPlayer();
   const { downloadItem } = useSongDownloader();
   const [isOpen, setIsOpen] = useState(fileuri != null);
+  const [playerHeight, setPlayerHeight] = useState(0);
   const translateY = useRef(new Animated.Value(isOpen ? 0 : 400)).current;
   const opacity = useRef(new Animated.Value(isOpen ? 1 : 0)).current;
 
@@ -55,14 +56,21 @@ export const DismissableBottom = (props: { children: any }) => {
     }
   }, [fileuri, isOpen]);
 
+  const onLayoutBottom = (event: LayoutChangeEvent) => {
+    const height = event.nativeEvent.layout.height;
+    setPlayerHeight(height);
+  };
+
   return (
     <View
       style={{
         position: 'relative',
         flex: 1,
+        paddingBottom: isOpen ? playerHeight : 0,
       }}>
       {children}
       <Animated.View
+        onLayout={onLayoutBottom}
         style={{
           position: 'absolute',
           width: '100%',
