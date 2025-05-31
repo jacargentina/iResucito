@@ -123,7 +123,8 @@ export const SongPlayer = (props: { closeCallback: () => void }) => {
           pt="$2"
           fontSize="$sm"
           numberOfLines={1}
-          color="white">
+          $dark-color="white"
+          $light-color="black">
           {songPlayer.playingTimeText}
         </Text>
       )}

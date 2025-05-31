@@ -237,7 +237,8 @@ export const SongList = (props: {
             fontSize: '$xl',
           },
         }}
-        $dark-bg="$backgroundDark800">
+        $dark-bg="$backgroundDark800"
+        $light-bg="$backgroundDark100">
         {totalText}
       </Text>
       <DismissableBottom>
