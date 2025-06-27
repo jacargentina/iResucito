@@ -14,7 +14,12 @@ import {
   StackNavigationProp,
 } from '@react-navigation/stack';
 import i18n from '@iresucito/translations';
-import { Song, cleanMultichord, getChordsScale } from '@iresucito/core';
+import {
+  Song,
+  cleanMultichord,
+  esAudiosData,
+  getChordsScale,
+} from '@iresucito/core';
 import { setSongSetting, sharePDF, useSongAudio } from '../hooks';
 import { config } from '../config/gluestack-ui.config';
 import { useColorScheme, GestureResponderEvent } from 'react-native';
@@ -310,7 +315,7 @@ export const PlaySongButton = () => {
   const route = useRoute<SongDetailRouteProp1 | SongDetailRouteProp2>();
   const { song } = route.params;
   const { playAudio } = useSongAudio();
-  if (!song) {
+  if (!song || esAudiosData[song.key] == null) {
     return null;
   }
 
