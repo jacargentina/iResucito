@@ -2,7 +2,7 @@
   "expo": {
     "name": "iResucitó",
     "slug": "iresucito",
-    "version": "10.0.2",
+    "version": "10.0.5",
     "orientation": "default",
     "icon": "./img/cristo.png",
     "userInterfaceStyle": "automatic",
@@ -30,7 +30,7 @@
           "audio"
         ]
       },
-      "buildNumber": "60",
+      "buildNumber": "62",
       "requireFullScreen": true,
       "supportsTablet": true,
       "config": {
