@@ -64,6 +64,17 @@
       },
       "created": false,
       "updated": false
+    },
+    {
+      "date": 1754241371669,
+      "locale": "es",
+      "author": "ariaspinedac@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "catechumenate",
+        "new": "precatechumenate"
+      }
     }
   ],
   "2": [
@@ -202,6 +213,28 @@
       "author": "chrisjamesmoore@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1749111263531,
+      "locale": "pl",
+      "author": "m.szoltek2004@gmail.com",
+      "created": true,
+      "updated": false,
+      "staged": {
+        "original": "catechumenate",
+        "new": "precatechumenate"
+      }
+    },
+    {
+      "date": 1754242121740,
+      "locale": "es",
+      "author": "ariaspinedac@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "catechumenate",
+        "new": "precatechumenate"
+      }
     }
   ],
   "4": [
@@ -294,6 +327,17 @@
       "staged": {
         "original": "catechumenate",
         "new": "election"
+      }
+    },
+    {
+      "date": 1754249979357,
+      "locale": "es",
+      "author": "ariaspinedac@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "election",
+        "new": "catechumenate"
       }
     }
   ],
@@ -509,6 +553,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1754242446375,
+      "locale": "es",
+      "author": "ariaspinedac@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "catechumenate",
+        "new": "precatechumenate"
+      }
     }
   ],
   "8": [
@@ -562,6 +617,17 @@
         "original": "precatechumenate",
         "new": "catechumenate"
       }
+    },
+    {
+      "date": 1754242161487,
+      "locale": "es",
+      "author": "ariaspinedac@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "catechumenate",
+        "new": "precatechumenate"
+      }
     }
   ],
   "9": [
@@ -608,6 +674,17 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1754242248764,
+      "locale": "es",
+      "author": "ariaspinedac@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "catechumenate",
+        "new": "precatechumenate"
+      }
     }
   ],
   "10": [
@@ -1004,6 +1081,17 @@
       "author": "lukasz.rynek@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1754249841516,
+      "locale": "es",
+      "author": "ariaspinedac@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "catechumenate",
+        "new": "precatechumenate"
+      }
     }
   ],
   "19": [
@@ -2286,6 +2374,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1749147874754,
+      "locale": "pl",
+      "author": "m.szoltek2004@gmail.com",
+      "created": true,
+      "updated": false
     }
   ],
   "31": [
@@ -2989,6 +3084,13 @@
       "author": "monicaenrique.10@gmail.com",
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1749037509211,
+      "locale": "pl",
+      "author": "m.szoltek2004@gmail.com",
+      "created": true,
+      "updated": false
     }
   ],
   "38": [
@@ -3052,6 +3154,13 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1749109375901,
+      "locale": "pl",
+      "author": "m.szoltek2004@gmail.com",
+      "created": true,
+      "updated": false
     }
   ],
   "39": [
@@ -4331,6 +4440,13 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1749109869937,
+      "locale": "pl",
+      "author": "m.szoltek2004@gmail.com",
+      "created": true,
+      "updated": false
     }
   ],
   "57": [
@@ -4435,6 +4551,13 @@
       "rename": {
         "new": "Jour de repos"
       },
+      "created": true,
+      "updated": false
+    },
+    {
+      "date": 1749110614201,
+      "locale": "pl",
+      "author": "m.szoltek2004@gmail.com",
       "created": true,
       "updated": false
     }
@@ -4649,6 +4772,17 @@
         "original": "precatechumenate",
         "new": "election"
       }
+    },
+    {
+      "date": 1754242221820,
+      "locale": "es",
+      "author": "ariaspinedac@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "election",
+        "new": "precatechumenate"
+      }
     }
   ],
   "62": [
@@ -4713,6 +4847,13 @@
       "author": "albertiniqmc@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1749046431278,
+      "locale": "pl",
+      "author": "m.szoltek2004@gmail.com",
+      "created": true,
+      "updated": false
     }
   ],
   "63": [
@@ -4922,6 +5063,17 @@
       "staged": {
         "original": "precatechumenate",
         "new": "catechumenate"
+      }
+    },
+    {
+      "date": 1754242571094,
+      "locale": "es",
+      "author": "ariaspinedac@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "catechumenate",
+        "new": "precatechumenate"
       }
     }
   ],
@@ -5716,6 +5868,17 @@
         "original": "precatechumenate",
         "new": "catechumenate"
       }
+    },
+    {
+      "date": 1754246361982,
+      "locale": "es",
+      "author": "ariaspinedac@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "catechumenate",
+        "new": "precatechumenate"
+      }
     }
   ],
   "78": [
@@ -5853,6 +6016,13 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1749041821727,
+      "locale": "pl",
+      "author": "m.szoltek2004@gmail.com",
+      "created": true,
+      "updated": false
     }
   ],
   "80": [
@@ -6288,6 +6458,17 @@
         "original": "precatechumenate",
         "new": "election"
       }
+    },
+    {
+      "date": 1754247634449,
+      "locale": "es",
+      "author": "ariaspinedac@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "election",
+        "new": "precatechumenate"
+      }
     }
   ],
   "87": [
@@ -6481,6 +6662,13 @@
       "rename": {
         "new": "Mon âme, bénis le seigneur - Tb 13, 11-17"
       },
+      "created": true,
+      "updated": false
+    },
+    {
+      "date": 1749150917278,
+      "locale": "pl",
+      "author": "m.szoltek2004@gmail.com",
       "created": true,
       "updated": false
     }
@@ -7559,6 +7747,17 @@
         "original": "precatechumenate",
         "new": "catechumenate"
       }
+    },
+    {
+      "date": 1754248426918,
+      "locale": "es",
+      "author": "ariaspinedac@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "catechumenate",
+        "new": "precatechumenate"
+      }
     }
   ],
   "109": [
@@ -7684,6 +7883,13 @@
       "date": 1697884669717,
       "locale": "lt-LT",
       "author": "albertiniqmc@gmail.com",
+      "created": false,
+      "updated": true
+    },
+    {
+      "date": 1749501744698,
+      "locale": "es",
+      "author": "ariaspinedac@gmail.com",
       "created": false,
       "updated": true
     }
@@ -7933,6 +8139,13 @@
       "rename": {
         "new": "Ps 121 (122)-Pour l'amour de mes frères"
       },
+      "created": true,
+      "updated": false
+    },
+    {
+      "date": 1749038168229,
+      "locale": "pl",
+      "author": "m.szoltek2004@gmail.com",
       "created": true,
       "updated": false
     }
@@ -8264,6 +8477,17 @@
         "original": "precatechumenate",
         "new": "election"
       }
+    },
+    {
+      "date": 1754249444023,
+      "locale": "es",
+      "author": "ariaspinedac@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "election",
+        "new": "precatechumenate"
+      }
     }
   ],
   "123": [
@@ -8302,6 +8526,13 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1749043888740,
+      "locale": "pl",
+      "author": "m.szoltek2004@gmail.com",
+      "created": true,
+      "updated": false
     }
   ],
   "124": [
@@ -8377,6 +8608,17 @@
       "staged": {
         "original": "precatechumenate",
         "new": "election"
+      }
+    },
+    {
+      "date": 1754248808811,
+      "locale": "es",
+      "author": "ariaspinedac@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "election",
+        "new": "precatechumenate"
       }
     }
   ],
@@ -8729,6 +8971,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1749047284772,
+      "locale": "pl",
+      "author": "m.szoltek2004@gmail.com",
+      "created": true,
+      "updated": false
     }
   ],
   "131": [
@@ -8858,6 +9107,13 @@
       "author": "albertiniqmc@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1749040464139,
+      "locale": "pl",
+      "author": "m.szoltek2004@gmail.com",
+      "created": true,
+      "updated": false
     }
   ],
   "134": [
@@ -9199,6 +9455,13 @@
       "author": "gaboisaactg10@gmail.com",
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1749147154056,
+      "locale": "pl",
+      "author": "m.szoltek2004@gmail.com",
+      "created": true,
+      "updated": false
     }
   ],
   "141": [
@@ -9277,6 +9540,17 @@
       "staged": {
         "original": "precatechumenate",
         "new": "election"
+      }
+    },
+    {
+      "date": 1754250290313,
+      "locale": "es",
+      "author": "ariaspinedac@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "election",
+        "new": "catechumenate"
       }
     }
   ],
@@ -9678,6 +9952,17 @@
         "original": "precatechumenate",
         "new": "election"
       }
+    },
+    {
+      "date": 1754249887240,
+      "locale": "es",
+      "author": "ariaspinedac@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "election",
+        "new": "precatechumenate"
+      }
     }
   ],
   "148": [
@@ -9880,6 +10165,13 @@
       "author": "javier_midence@hotmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1749111996041,
+      "locale": "pl",
+      "author": "m.szoltek2004@gmail.com",
+      "created": true,
+      "updated": false
     }
   ],
   "151": [
@@ -10157,6 +10449,13 @@
       "date": 1653998491636,
       "locale": "lt-LT",
       "author": "albertiniqmc@gmail.com",
+      "created": true,
+      "updated": false
+    },
+    {
+      "date": 1749045624655,
+      "locale": "pl",
+      "author": "m.szoltek2004@gmail.com",
       "created": true,
       "updated": false
     }
@@ -10518,6 +10817,17 @@
         "original": "precatechumenate",
         "new": "election"
       }
+    },
+    {
+      "date": 1754241238007,
+      "locale": "es",
+      "author": "ariaspinedac@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "election",
+        "new": "precatechumenate"
+      }
     }
   ],
   "160": [
@@ -10582,6 +10892,17 @@
         "original": "election",
         "new": "catechumenate"
       }
+    },
+    {
+      "date": 1754241913363,
+      "locale": "es",
+      "author": "ariaspinedac@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "catechumenate",
+        "new": "precatechumenate"
+      }
     }
   ],
   "161": [
@@ -10628,6 +10949,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1754242014747,
+      "locale": "es",
+      "author": "ariaspinedac@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "election",
+        "new": "precatechumenate"
+      }
     }
   ],
   "162": [
@@ -10805,6 +11137,17 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1754242201542,
+      "locale": "es",
+      "author": "ariaspinedac@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "election",
+        "new": "precatechumenate"
+      }
     }
   ],
   "165": [
@@ -10952,6 +11295,17 @@
         "original": "election",
         "new": "precatechumenate"
       }
+    },
+    {
+      "date": 1754242512528,
+      "locale": "es",
+      "author": "ariaspinedac@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "election",
+        "new": "precatechumenate"
+      }
     }
   ],
   "167": [
@@ -11035,6 +11389,17 @@
         "original": "election",
         "new": "catechumenate"
       }
+    },
+    {
+      "date": 1754242631421,
+      "locale": "es",
+      "author": "ariaspinedac@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "catechumenate",
+        "new": "precatechumenate"
+      }
     }
   ],
   "168": [
@@ -11095,6 +11460,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1754246151423,
+      "locale": "es",
+      "author": "ariaspinedac@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "election",
+        "new": "precatechumenate"
+      }
     }
   ],
   "169": [
@@ -11216,6 +11592,17 @@
       },
       "created": false,
       "updated": false
+    },
+    {
+      "date": 1754247283803,
+      "locale": "es",
+      "author": "ariaspinedac@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "election",
+        "new": "precatechumenate"
+      }
     }
   ],
   "171": [
@@ -11330,6 +11717,17 @@
         "original": "election",
         "new": "catechumenate"
       }
+    },
+    {
+      "date": 1754248207724,
+      "locale": "es",
+      "author": "ariaspinedac@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "election",
+        "new": "precatechumenate"
+      }
     }
   ],
   "173": [
@@ -11407,6 +11805,17 @@
       "author": "albertiniqmc@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1754248238899,
+      "locale": "es",
+      "author": "ariaspinedac@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "election",
+        "new": "precatechumenate"
+      }
     }
   ],
   "174": [
@@ -11503,6 +11912,17 @@
       "author": "albertiniqmc@gmail.com",
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1754248320425,
+      "locale": "es",
+      "author": "ariaspinedac@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "election",
+        "new": "precatechumenate"
+      }
     }
   ],
   "176": [
@@ -11607,6 +12027,17 @@
         "original": "election",
         "new": "catechumenate"
       }
+    },
+    {
+      "date": 1754248353020,
+      "locale": "es",
+      "author": "ariaspinedac@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "catechumenate",
+        "new": "precatechumenate"
+      }
     }
   ],
   "177": [
@@ -11638,6 +12069,17 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1754250150278,
+      "locale": "es",
+      "author": "ariaspinedac@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "election",
+        "new": "catechumenate"
+      }
     }
   ],
   "178": [
@@ -11726,6 +12168,17 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1754248455759,
+      "locale": "es",
+      "author": "ariaspinedac@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "election",
+        "new": "precatechumenate"
+      }
     }
   ],
   "180": [
@@ -11749,6 +12202,17 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1754249552235,
+      "locale": "es",
+      "author": "ariaspinedac@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "election",
+        "new": "precatechumenate"
+      }
     }
   ],
   "181": [
@@ -12019,6 +12483,17 @@
       },
       "created": false,
       "updated": false
+    },
+    {
+      "date": 1754241308173,
+      "locale": "es",
+      "author": "ariaspinedac@gmail.com",
+      "created": false,
+      "updated": false,
+      "staged": {
+        "original": "liturgy",
+        "new": "precatechumenate"
+      }
     }
   ],
   "184": [
@@ -12467,6 +12942,13 @@
       "author": "albertiniqmc@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1749205766177,
+      "locale": "pl",
+      "author": "m.szoltek2004@gmail.com",
+      "created": true,
+      "updated": false
     }
   ],
   "189": [
@@ -12711,6 +13193,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1749207171058,
+      "locale": "pl",
+      "author": "m.szoltek2004@gmail.com",
+      "created": true,
+      "updated": false
     }
   ],
   "192": [
@@ -12804,6 +13293,13 @@
       "rename": {
         "new": "Litanie Penitenziali brevi I"
       },
+      "created": true,
+      "updated": false
+    },
+    {
+      "date": 1749288127045,
+      "locale": "pl",
+      "author": "m.szoltek2004@gmail.com",
       "created": true,
       "updated": false
     }
@@ -13263,6 +13759,13 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1749208259949,
+      "locale": "pl",
+      "author": "m.szoltek2004@gmail.com",
+      "created": true,
+      "updated": false
     }
   ],
   "204": [
@@ -13333,6 +13836,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1749206708977,
+      "locale": "pl",
+      "author": "m.szoltek2004@gmail.com",
+      "created": true,
+      "updated": false
     }
   ],
   "205": [
@@ -13397,6 +13907,13 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1749285983190,
+      "locale": "pl",
+      "author": "m.szoltek2004@gmail.com",
+      "created": true,
+      "updated": false
     }
   ],
   "206": [
@@ -13469,6 +13986,13 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1749286845068,
+      "locale": "pl",
+      "author": "m.szoltek2004@gmail.com",
+      "created": true,
+      "updated": false
     }
   ],
   "207": [
@@ -13529,6 +14053,13 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1749286014468,
+      "locale": "pl",
+      "author": "m.szoltek2004@gmail.com",
+      "created": true,
+      "updated": false
     }
   ],
   "208": [
@@ -13596,6 +14127,13 @@
       "author": "silviorsepulveda@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1749287384770,
+      "locale": "pl",
+      "author": "m.szoltek2004@gmail.com",
+      "created": true,
+      "updated": false
     }
   ],
   "209": [
@@ -13927,6 +14465,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1754251544226,
+      "locale": "es",
+      "author": "ariaspinedac@gmail.com",
+      "rename": {
+        "original": "María paloma incorrupta - Himno",
+        "new": "Paloma incorrupta - Himno"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "216": [
@@ -15215,6 +15764,13 @@
       "author": "javier.alejandro.castro@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1747146678178,
+      "locale": "de",
+      "author": "verleihen_sprossen_4l@icloud.com",
+      "created": true,
+      "updated": false
     }
   ]
 }
