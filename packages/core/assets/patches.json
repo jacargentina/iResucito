@@ -948,6 +948,17 @@
       },
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1755806987270,
+      "locale": "es",
+      "author": "nicolas59021@gmail.com",
+      "rename": {
+        "original": "Señor, tú me escrutas - Sal 139 (138)",
+        "new": "Señor, tú me escrutas y conoces - Sal 139 (138)"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "16": [
@@ -1092,6 +1103,17 @@
         "original": "catechumenate",
         "new": "precatechumenate"
       }
+    },
+    {
+      "date": 1755807144337,
+      "locale": "es",
+      "author": "nicolas59021@gmail.com",
+      "rename": {
+        "original": "Tú has cubierto de vergüenza la muerte - Melitón de Sardes",
+        "new": "Tú has cubierto de vergüenza la muerte - Homilía de Melitón de Sardes sobre la Pascua - Oficio de Lecturas del Jueves Santo"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "19": [
@@ -1193,6 +1215,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1757352084015,
+      "locale": "es",
+      "author": "juan.hurtado.lopez@gmail.com",
+      "created": false,
+      "updated": true
     }
   ],
   "20": [
@@ -7758,6 +7787,17 @@
         "original": "catechumenate",
         "new": "precatechumenate"
       }
+    },
+    {
+      "date": 1755806342957,
+      "locale": "es",
+      "author": "nicolas59021@gmail.com",
+      "rename": {
+        "original": "No hay en él parecer - Is 53, 2ss",
+        "new": "No hay en Él parecer - Is 53, 2ss"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "109": [
@@ -11728,6 +11768,17 @@
         "original": "election",
         "new": "precatechumenate"
       }
+    },
+    {
+      "date": 1755806280909,
+      "locale": "es",
+      "author": "nicolas59021@gmail.com",
+      "rename": {
+        "original": "Jesús recorria las ciudades - Mt 9, 35ss",
+        "new": "Jesús recorría todas las ciudades - Mt 9, 35ss"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "173": [
@@ -11860,6 +11911,17 @@
       "locale": "lt-LT",
       "author": "albertiniqmc@gmail.com",
       "created": true,
+      "updated": false
+    },
+    {
+      "date": 1755806758894,
+      "locale": "es",
+      "author": "nicolas59021@gmail.com",
+      "rename": {
+        "original": "La paloma volo - Oda 24 de Salomón",
+        "new": "La paloma voló - Oda 24 de Salomón"
+      },
+      "created": false,
       "updated": false
     }
   ],
@@ -12213,6 +12275,17 @@
         "original": "election",
         "new": "precatechumenate"
       }
+    },
+    {
+      "date": 1755806951112,
+      "locale": "es",
+      "author": "nicolas59021@gmail.com",
+      "rename": {
+        "original": "Sermon de la montaña - Lc 6, 20-38",
+        "new": "Sermón de la montaña - Lc 6, 20-38"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "181": [
@@ -14295,6 +14368,17 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1755806628293,
+      "locale": "es",
+      "author": "nicolas59021@gmail.com",
+      "rename": {
+        "original": "El Mesías, León para vencer - Vittorino de Pettau",
+        "new": "El Mesías león - Comentario al Apocalipsis (Victorino de Pettau)"
+      },
+      "created": false,
+      "updated": false
     }
   ],
   "213": [
@@ -15769,6 +15853,42 @@
       "date": 1747146678178,
       "locale": "de",
       "author": "verleihen_sprossen_4l@icloud.com",
+      "created": true,
+      "updated": false
+    }
+  ],
+  "268": [
+    {
+      "date": 1756837232707,
+      "locale": "es",
+      "author": "juan.hurtado.lopez@gmail.com",
+      "created": true,
+      "updated": false
+    }
+  ],
+  "269": [
+    {
+      "date": 1756837234626,
+      "locale": "es",
+      "author": "juan.hurtado.lopez@gmail.com",
+      "created": true,
+      "updated": false
+    }
+  ],
+  "270": [
+    {
+      "date": 1756837276569,
+      "locale": "es",
+      "author": "juan.hurtado.lopez@gmail.com",
+      "created": true,
+      "updated": false
+    }
+  ],
+  "271": [
+    {
+      "date": 1757246249385,
+      "locale": "es",
+      "author": "juan.hurtado.lopez@gmail.com",
       "created": true,
       "updated": false
     }
