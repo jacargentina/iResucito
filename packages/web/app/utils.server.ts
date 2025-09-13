@@ -1,6 +1,7 @@
 import { Dropbox } from 'dropbox';
 import {
   SongIndexPatch,
+  SongSettingsFile,
   SongsExtras,
   SongsProcessor,
   loadAllLocales,
@@ -102,8 +103,8 @@ class WebSongsExtras implements SongsExtras {
     return Promise.resolve('');
   }
 
-  saveSettings(ratings: any): Promise<void> {
-    return Promise.resolve(ratings);
+  saveSettings(ratings: SongSettingsFile): Promise<void> {
+    return Promise.resolve();
   }
 
   deleteSettings(): Promise<void> {

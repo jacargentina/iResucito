@@ -1,12 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Animated, LayoutChangeEvent, View } from 'react-native';
 import { SongPlayer } from './SongPlayer';
-import { useSongDownloader, useSongPlayer } from '../hooks';
+import { useSongPlayer } from '../hooks';
 
 export const DismissableBottom = (props: { children: any }) => {
   const { children } = props;
   const { fileuri } = useSongPlayer();
-  const { downloadItem } = useSongDownloader();
   const [isOpen, setIsOpen] = useState(fileuri != null);
   const [playerHeight, setPlayerHeight] = useState(0);
   const translateY = useRef(new Animated.Value(isOpen ? 0 : 400)).current;
@@ -45,13 +44,13 @@ export const DismissableBottom = (props: { children: any }) => {
   }, [translateY, opacity]);
 
   useEffect(() => {
-    if (!isOpen && (fileuri != null || downloadItem != null)) {
+    if (!isOpen && fileuri != null) {
       openCallback();
     }
-  }, [fileuri, downloadItem, isOpen]);
+  }, [fileuri, isOpen]);
 
   useEffect(() => {
-    if (isOpen && fileuri == null && downloadItem == null) {
+    if (isOpen && fileuri == null) {
       closeCallback();
     }
   }, [fileuri, isOpen]);

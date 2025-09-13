@@ -3,7 +3,7 @@ import { Alert } from 'react-native';
 import { launchArguments } from 'expo-launch-arguments';
 import * as Sharing from 'expo-sharing';
 import * as Contacts from 'expo-contacts';
-import * as FileSystem from 'expo-file-system';
+import { File, Directory, Paths } from 'expo-file-system';
 import * as Network from 'expo-network';
 import pathParse from 'path-parse';
 import {
@@ -130,8 +130,7 @@ export const setSongSetting = async (
   settingsObj[key] = Object.assign({}, settingsObj[key], {
     [loc]: { [setting]: value },
   });
-  var json = JSON.stringify(settingsObj, null, ' ');
-  await NativeExtras.saveSettings(json);
+  await NativeExtras.saveSettings(settingsObj);
   var updated = await useSongsStore.getState().load(loc);
   return updated.find((song) => song.key == key) as Song;
 };
@@ -197,21 +196,18 @@ function formatTime(rawSeconds) {
 
 type SongDownloaderStore = {
   title: string | null;
-  downloadItem: FileSystem.DownloadResumable | null;
   removeFile: (song: Song) => Promise<boolean>;
   getFileUri: (song: Song) => Promise<string | undefined>;
   download: (song: Song) => Promise<string | undefined>;
-  stop: () => Promise<void>;
 };
 
 export const useSongDownloader = create(
   immer<SongDownloaderStore>((set, get) => ({
-    downloadItem: null,
     title: null,
     getFileUri: async (song: Song) => {
       const audio = esAudiosData[song.key];
-      const fileuri = `${FileSystem.documentDirectory}${audio!.name}`;
-      const info = await FileSystem.getInfoAsync(fileuri);
+      const fileuri = `${Paths.document}${audio!.name}`;
+      const info = new File(fileuri);
       if (info.exists) {
         return fileuri;
       }
@@ -219,63 +215,39 @@ export const useSongDownloader = create(
     },
     removeFile: async (song: Song) => {
       const audio = esAudiosData[song.key];
-      const fileuri = `${FileSystem.documentDirectory}${audio!.name}`;
-      const info = await FileSystem.getInfoAsync(fileuri);
+      const fileuri = `${Paths.document}${audio!.name}`;
+      const info = new File(fileuri);
       if (info.exists) {
         console.log('eliminando: ' + fileuri);
-        await FileSystem.deleteAsync(fileuri);
+        await info.delete();
         return true;
       }
       return false;
     },
     download: async (song: Song) => {
       const audio = esAudiosData[song.key];
-      const fileuri = `${FileSystem.documentDirectory}${audio!.name}`;
+      const fileuri = `${Paths.document}${audio!.name}`;
       const { isInternetReachable } = await Network.getNetworkStateAsync();
       if (!isInternetReachable) {
         Alert.alert('Error', i18n.t('ui.network_unavailable'));
         return;
       }
       try {
-        var { downloadItem } = get();
-        if (downloadItem != null) {
-          throw new Error('Cancelar la descarga previa!');
-        }
-        var downItem = FileSystem.createDownloadResumable(
+        var downItem = await File.downloadFileAsync(
           `https://drive.google.com/uc?export=download&id=${audio!.id}`,
-          fileuri
+          new File(fileuri)
         );
         set((state) => {
           state.title = song.titulo;
-          state.downloadItem = downItem;
         });
-        const downResult = await downItem.downloadAsync();
-        set((state) => {
-          state.title = null;
-          state.downloadItem = null;
-        });
-        if (downResult == null || downResult == undefined) {
-          return;
-        }
       } catch (error: any) {
         set((state) => {
           state.title = null;
-          state.downloadItem = null;
         });
         Alert.alert('Error', error.message);
         return;
       }
       return fileuri;
-    },
-    stop: async () => {
-      var { downloadItem } = get();
-      if (downloadItem) {
-        await downloadItem.cancelAsync();
-        set((state) => {
-          state.title = null;
-          state.downloadItem = null;
-        });
-      }
     },
   }))
 );
@@ -573,7 +545,7 @@ export const useListsStore = create<ListsStore>()(
         importList: async (listPath: string) => {
           const path = decodeURI(listPath);
           try {
-            const content = await FileSystem.readAsStringAsync(path);
+            const content = await new File(path).text();
             // Obtener nombre del archivo
             // que será nombre de la lista
             const parsed = pathParse(listPath);
@@ -601,10 +573,9 @@ export const useListsStore = create<ListsStore>()(
           switch (format) {
             case 'native':
               const fileName = listName.replace(' ', '-');
-              const listPath = `${FileSystem.documentDirectory}${fileName}.ireslist`;
+              const listPath = `${Paths.document}${fileName}.ireslist`;
               const nativeList = get().lists[listName];
-              await FileSystem.writeAsStringAsync(
-                listPath,
+              await new File(listPath).write(
                 JSON.stringify(nativeList, null, ' ')
               );
               return listPath;
@@ -648,8 +619,8 @@ export const useListsStore = create<ListsStore>()(
                 }
               });
               const fileNameTxt = listName.replace(' ', '-');
-              const listPathTxt = `${FileSystem.documentDirectory}${fileNameTxt}.txt`;
-              await FileSystem.writeAsStringAsync(listPathTxt, message);
+              const listPathTxt = `${Paths.document}${fileNameTxt}.txt`;
+              await new File(listPathTxt).write(message);
               return listPathTxt;
             case 'pdf':
               var list = get().lists_ui.find(
@@ -821,17 +792,19 @@ useListsStore.subscribe(
   }
 );
 
-export type BrotherContact = Contacts.Contact & {
+export type BrotherContact = Contacts.ExistingContact & {
   s: boolean;
 };
 
 type BrothersStore = {
-  deviceContacts: Contacts.Contact[];
+  deviceContacts: Contacts.ExistingContact[];
   deviceContacts_loaded: boolean;
   contacts: BrotherContact[];
-  populateDeviceContacts: (reqPerm: boolean) => Promise<Contacts.Contact[]>;
+  populateDeviceContacts: (
+    reqPerm: boolean
+  ) => Promise<Contacts.ExistingContact[]>;
   update: (id: string, item: Contacts.Contact) => void;
-  addOrRemove: (contact: Contacts.Contact) => void;
+  addOrRemove: (contact: Contacts.ExistingContact) => void;
   refreshContacts: () => void;
 };
 
@@ -864,7 +837,7 @@ export const useBrothersStore = create<BrothersStore>()(
           }
         });
       },
-      addOrRemove: (contact: Contacts.Contact) => {
+      addOrRemove: (contact: Contacts.ExistingContact) => {
         set((state: BrothersStore) => {
           var idx = state.contacts.findIndex((c) => c.id === contact.id);
           // Ya esta importado
@@ -1171,9 +1144,9 @@ export const useSongAudio = () => {
 
   const playAudio = useCallback(
     async (song: Song) => {
-      if (songDownloader.downloadItem != null) {
-        await songDownloader.stop();
-      }
+      // if (songDownloader.downloadItem != null) {
+      //   await songDownloader.stop();
+      // }
       if (songPlayer.fileuri != null) {
         songPlayer.stop();
       }

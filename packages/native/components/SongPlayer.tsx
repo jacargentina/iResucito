@@ -11,19 +11,14 @@ import {
   useMedia,
 } from '@gluestack-ui/themed';
 import { useSongDownloader, useSongPlayer } from '../hooks';
-import {
-  PauseIcon,
-  PlayIcon,
-  XIcon,
-  CloudDownloadIcon,
-} from 'lucide-react-native';
+import { PauseIcon, PlayIcon, XIcon } from 'lucide-react-native';
 import { useRef } from 'react';
-import i18n from '@iresucito/translations';
+//import i18n from '@iresucito/translations';
 
 export const SongPlayer = (props: { closeCallback: () => void }) => {
   const { closeCallback } = props;
   const songPlayer = useSongPlayer();
-  const songDownloader = useSongDownloader();
+  //const songDownloader = useSongDownloader();
   const media = useMedia();
   const sliderRef = useRef<any>(null);
   const wasChangedRef = useRef(false);
@@ -44,29 +39,27 @@ export const SongPlayer = (props: { closeCallback: () => void }) => {
             fontWeight: 'bold',
             fontSize: media.md ? 28 : 18,
           }}>
-          {songDownloader.downloadItem != null
-            ? songDownloader.title
-            : songPlayer.title}
+          {songPlayer.title}
         </Text>
         <Pressable
           onPress={() => {
-            if (songDownloader.downloadItem != null) {
+            /* if (songDownloader.downloadItem != null) {
               songDownloader.stop();
-            }
+            }*/
             songPlayer.stop();
             closeCallback();
           }}>
           <Icon color="$rose500" as={XIcon} size="xl" />
         </Pressable>
       </HStack>
-      {songDownloader.downloadItem != null && (
+      {/* {songDownloader.downloadItem != null && (
         <HStack>
           <Icon color="$rose500" mr="$2" as={CloudDownloadIcon} size="xl" />
           <Text $dark-color="white" $light-color="black">
             {i18n.t('ui.downloading')}
           </Text>
         </HStack>
-      )}
+      )} */}
       {songPlayer.fileuri != null && (
         <HStack>
           <Pressable onPress={songPlayer.togglepause}>
@@ -117,17 +110,15 @@ export const SongPlayer = (props: { closeCallback: () => void }) => {
           </Slider>
         </HStack>
       )}
-      {songDownloader.downloadItem == null && (
-        <Text
-          textAlign="right"
-          pt="$2"
-          fontSize="$sm"
-          numberOfLines={1}
-          $dark-color="white"
-          $light-color="black">
-          {songPlayer.playingTimeText}
-        </Text>
-      )}
+      <Text
+        textAlign="right"
+        pt="$2"
+        fontSize="$sm"
+        numberOfLines={1}
+        $dark-color="white"
+        $light-color="black">
+        {songPlayer.playingTimeText}
+      </Text>
     </VStack>
   );
 };

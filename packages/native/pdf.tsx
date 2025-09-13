@@ -1,4 +1,4 @@
-import * as FileSystem from 'expo-file-system';
+import { File, Paths } from 'expo-file-system';
 import { Asset } from 'expo-asset';
 import {
   ListToPdf,
@@ -29,19 +29,15 @@ export async function generateSongPDF(
   addIndex: boolean
 ): Promise<GeneratePDFResult> {
   const safeFileName = filename.replace('/', '-');
-  const pdfPath = `${FileSystem.cacheDirectory}${safeFileName}.pdf`;
+  const pdfPath = `${Paths.cache}${safeFileName}.pdf`;
   const [{ localUri: mediumUri }] = await Asset.loadAsync(
     require('./fonts/FranklinGothicMedium.ttf')
   );
-  const medium = await FileSystem.readAsStringAsync(mediumUri as string, {
-    encoding: 'base64',
-  });
+  const medium = await new File(mediumUri as string).base64();
   const [{ localUri: regularUri }] = await Asset.loadAsync(
     require('./fonts/FranklinGothicRegular.ttf')
   );
-  const regular = await FileSystem.readAsStringAsync(regularUri as string, {
-    encoding: 'base64',
-  });
+  const regular = await new File(regularUri as string).base64();
   var writer = new PdfWriter(
     PDFDocument,
     Buffer.from(regular, 'base64'),
@@ -50,7 +46,7 @@ export async function generateSongPDF(
     opts
   );
   const base64 = await SongPDFGenerator(songsToPdf, opts, writer, addIndex);
-  FileSystem.writeAsStringAsync(pdfPath, base64, { encoding: 'base64' });
+  new File(pdfPath).write(base64);
   return { uri: pdfPath, base64 };
 }
 
@@ -59,19 +55,15 @@ export async function generateListPDF(
   opts: SongStyles<PdfStyle>
 ): Promise<GeneratePDFResult> {
   const safeFileName = list.name.replace('/', '-');
-  const pdfPath = `${FileSystem.cacheDirectory}/${safeFileName}.pdf`;
+  const pdfPath = `${Paths.cache}/${safeFileName}.pdf`;
   const [{ localUri: mediumUri }] = await Asset.loadAsync(
     require('./fonts/FranklinGothicMedium.ttf')
   );
-  const medium = await FileSystem.readAsStringAsync(mediumUri as string, {
-    encoding: 'base64',
-  });
+  const medium = await new File(mediumUri as string).base64();
   const [{ localUri: regularUri }] = await Asset.loadAsync(
     require('./fonts/FranklinGothicRegular.ttf')
   );
-  const regular = await FileSystem.readAsStringAsync(regularUri as string, {
-    encoding: 'base64',
-  });
+  const regular = await new File(regularUri as string).base64();
   var writer = new PdfWriter(
     PDFDocument,
     Buffer.from(regular, 'base64'),
@@ -80,6 +72,6 @@ export async function generateListPDF(
     opts
   );
   const base64 = await ListPDFGenerator(list, opts, writer);
-  FileSystem.writeAsStringAsync(pdfPath, base64, { encoding: 'base64' });
+  new File(pdfPath).write(base64);
   return { uri: pdfPath, base64 };
 }

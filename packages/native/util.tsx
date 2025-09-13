@@ -1,7 +1,7 @@
 // Utilerias atadas a react-native
 import { TextStyle, ViewStyle } from 'react-native';
 import { getLocales } from 'expo-localization';
-import * as FileSystem from 'expo-file-system';
+import { File, Paths } from 'expo-file-system';
 import * as Device from 'expo-device';
 import * as Contacts from 'expo-contacts';
 import {
@@ -10,6 +10,7 @@ import {
   SongStyles,
   Song,
   SongIndexPatch,
+  SongSettingsFile,
 } from '@iresucito/core';
 import { BrotherContact } from './hooks';
 
@@ -33,12 +34,12 @@ export function ordenClasificacion(a: Song, b: Song): number {
 export type ContactForImport = Contacts.Contact & { imported: boolean };
 
 export function getContactsForImport(
-  allContacts: Contacts.Contact[],
+  allContacts: Contacts.ExistingContact[],
   importedContacts: BrotherContact[]
 ): ContactForImport[] {
   // Fitrar y generar contactos únicos
   var grouped = allContacts.reduce(
-    (groups: { [fullname: string]: Contacts.Contact[] }, item) => {
+    (groups: { [fullname: string]: Contacts.ExistingContact[] }, item) => {
       var fullname = item.name;
       groups[fullname] = groups[fullname] || [];
       groups[fullname].push(item);
@@ -46,7 +47,7 @@ export function getContactsForImport(
     },
     {}
   );
-  var unique: Contacts.Contact[] = [];
+  var unique: Contacts.ExistingContact[] = [];
   for (var fullname in grouped) {
     if (grouped[fullname].length > 1) {
       var conMiniatura = grouped[fullname].find((c) => c.image != undefined);
@@ -164,46 +165,46 @@ export const NativeStyles: SongStyles<NativeStyle> = {
 
 class NativeSongsExtras implements SongsExtras {
   async readPatch(): Promise<SongIndexPatch> {
-    const json = await FileSystem.readAsStringAsync(this.getPatchUri());
+    const json = await this.getPatchFile().text();
     return JSON.parse(json) as SongIndexPatch;
   }
 
   savePatch(patch: SongIndexPatch): Promise<void> {
     const json = JSON.stringify(patch);
-    return FileSystem.writeAsStringAsync(this.getPatchUri(), json, {
-      encoding: 'utf8',
-    });
+    this.getPatchFile().write(json);
+    return Promise.resolve();
   }
 
   deletePatch(): Promise<void> {
-    return FileSystem.deleteAsync(this.getPatchUri());
+    this.getPatchFile().delete();
+    return Promise.resolve();
   }
 
-  getPatchUri(): string {
-    return `${FileSystem.documentDirectory}/SongsIndexPatch.json`;
+  getPatchFile(): File {
+    return new File(`${Paths.document}/SongsIndexPatch.json`);
   }
 
   readSettings(): Promise<string> {
-    return FileSystem.readAsStringAsync(this.getSettingsUri());
+    return this.getSettingsFile().text();
   }
 
-  saveSettings(ratings: any): Promise<void> {
-    return FileSystem.writeAsStringAsync(this.getSettingsUri(), ratings, {
-      encoding: 'utf8',
-    });
+  saveSettings(ratings: SongSettingsFile): Promise<void> {
+    var json = JSON.stringify(ratings);
+    this.getSettingsFile().write(json);
+    return Promise.resolve();
   }
 
   deleteSettings(): Promise<void> {
-    return FileSystem.deleteAsync(this.getSettingsUri());
+    this.getSettingsFile().delete();
+    return Promise.resolve();
   }
 
   async settingsExists(): Promise<boolean> {
-    const info = await FileSystem.getInfoAsync(this.getSettingsUri());
-    return info.exists;
+    return this.getSettingsFile().exists;
   }
 
-  getSettingsUri(): string {
-    return `${FileSystem.documentDirectory}/SongsSettings.json`;
+  getSettingsFile(): File {
+    return new File(`${Paths.document}/SongsSettings.json`);
   }
 }
 
