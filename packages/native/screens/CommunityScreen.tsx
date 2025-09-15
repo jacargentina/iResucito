@@ -25,7 +25,7 @@ import i18n from '@iresucito/translations';
 import { contactFilterByText, ordenAlfabetico } from '../util';
 import { ContactListItem } from './ContactListItem';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { Contact } from 'expo-contacts';
+import { ExistingContact } from 'expo-contacts';
 import { config } from '../config/gluestack-ui.config';
 import { UsersIcon } from 'lucide-react-native';
 import { RootStackParamList } from '../navigation/RootNavigator';
@@ -48,7 +48,7 @@ const SwipeableRow = (props: { item: BrotherContact }) => {
   );
 
   const contactDelete = useCallback(
-    (contact: Contact) => {
+    (contact: ExistingContact) => {
       Alert.alert(
         `${i18n.t('ui.delete')} "${contact.name}"`,
         i18n.t('ui.delete confirmation'),
@@ -200,7 +200,6 @@ export const CommunityScreen = () => {
         extraData={{ locale: i18n.locale, contacts }}
         keyExtractor={(item) => item.id!}
         renderItem={({ item }) => <SwipeableRow item={item} />}
-        estimatedItemSize={90}
       />
     </SearchBarView>
   );

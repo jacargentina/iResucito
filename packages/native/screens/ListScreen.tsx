@@ -194,7 +194,6 @@ export const ListScreen = () => {
         renderItem={({ item }) => {
           return <SwipeableRow item={item} />;
         }}
-        estimatedItemSize={90}
       />
     </SearchBarView>
   );

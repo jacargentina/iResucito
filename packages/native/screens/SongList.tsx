@@ -247,7 +247,6 @@ export const SongList = (props: {
           onScrollBeginDrag={() => Keyboard.dismiss()}
           keyboardShouldPersistTaps="always"
           data={search}
-          estimatedItemSize={98}
           renderItem={({ item }) => {
             return (
               <SongListItem

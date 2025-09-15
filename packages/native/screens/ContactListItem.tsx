@@ -2,6 +2,7 @@ import { VStack, HStack, Icon, Text, Pressable } from '@gluestack-ui/themed';
 import { ContactPhoto } from '../components';
 import { BrotherContact } from '../hooks';
 import { MusicIcon } from 'lucide-react-native';
+import { getContactSanitizedName } from '../util';
 
 export const ContactListItem = (props: {
   item: BrotherContact;
@@ -20,7 +21,7 @@ export const ContactListItem = (props: {
         <ContactPhoto item={item} />
         <VStack w="75%">
           <Text fontWeight="bold" fontSize="$lg" numberOfLines={1}>
-            {item.name}
+            {getContactSanitizedName(item)}
           </Text>
           <Text numberOfLines={1}>
             {item.emails && item.emails.length > 0

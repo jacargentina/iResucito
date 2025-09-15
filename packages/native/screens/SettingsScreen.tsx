@@ -242,9 +242,9 @@ export const SettingsScreen = () => {
         <Switch
           size={media.md ? 'lg' : undefined}
           value={keepAwake}
-          onValueChange={(val: boolean) =>
-            useSettingsStore.setState({ keepAwake: val })
-          }
+          onValueChange={(val: boolean) => {
+            useSettingsStore.setState({ keepAwake: val });
+          }}
         />
       </HStack>
       <HStack
@@ -266,9 +266,9 @@ export const SettingsScreen = () => {
         <Switch
           size={media.md ? 'lg' : undefined}
           value={ratingsEnabled}
-          onValueChange={(val: boolean) =>
-            useSettingsStore.setState({ ratingsEnabled: val })
-          }
+          onValueChange={(val: boolean) => {
+            useSettingsStore.setState({ ratingsEnabled: val });
+          }}
         />
       </HStack>
       <Box flex={1} alignItems="center" justifyContent="space-around">

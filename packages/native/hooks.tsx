@@ -3,7 +3,7 @@ import { Alert } from 'react-native';
 import { launchArguments } from 'expo-launch-arguments';
 import * as Sharing from 'expo-sharing';
 import * as Contacts from 'expo-contacts';
-import { File, Directory, Paths } from 'expo-file-system';
+import { File, Paths } from 'expo-file-system';
 import * as Network from 'expo-network';
 import pathParse from 'path-parse';
 import {

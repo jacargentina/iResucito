@@ -83,7 +83,6 @@ export const ContactChooserDialog = () => {
                 />
               );
             }}
-            estimatedItemSize={84}
           />
         </SearchBarView>
       )}

@@ -18,7 +18,9 @@ export function ordenAlfabetico(
   a: Contacts.Contact,
   b: Contacts.Contact
 ): number {
-  return a.name.localeCompare(b.name);
+  const aStr = getContactSanitizedName(a);
+  const bStr = getContactSanitizedName(b);
+  return aStr.localeCompare(bStr);
 }
 
 export function ordenClasificacion(a: Song, b: Song): number {
@@ -31,7 +33,13 @@ export function ordenClasificacion(a: Song, b: Song): number {
   return 0;
 }
 
-export type ContactForImport = Contacts.Contact & { imported: boolean };
+export type ContactForImport = Contacts.ExistingContact & { imported: boolean };
+
+export const getContactSanitizedName = (item: Contacts.Contact): string => {
+  return item.name?.length > 0
+    ? item.name
+    : item.firstName + ' ' + item.lastName;
+};
 
 export function getContactsForImport(
   allContacts: Contacts.ExistingContact[],
@@ -40,7 +48,7 @@ export function getContactsForImport(
   // Fitrar y generar contactos únicos
   var grouped = allContacts.reduce(
     (groups: { [fullname: string]: Contacts.ExistingContact[] }, item) => {
-      var fullname = item.name;
+      var fullname = getContactSanitizedName(item);
       groups[fullname] = groups[fullname] || [];
       groups[fullname].push(item);
       return groups;

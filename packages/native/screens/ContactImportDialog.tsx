@@ -1,4 +1,4 @@
-import { memo, useState, useEffect, useMemo } from 'react';
+import { memo, useState, useEffect, useMemo, useCallback } from 'react';
 import {
   Text,
   Box,
@@ -17,8 +17,9 @@ import {
   contactFilterByText,
   ordenAlfabetico,
   ContactForImport,
+  getContactSanitizedName,
 } from '../util';
-import { Contact } from 'expo-contacts';
+import { ExistingContact } from 'expo-contacts';
 
 const BrotherItem = memo(
   (props: {
@@ -32,7 +33,7 @@ const BrotherItem = memo(
         onPress={() => handleContact(item)}>
         <ContactPhoto item={item} />
         <Text numberOfLines={1} textAlign="center" mt="$2" fontSize="$sm">
-          {item.name.trim()}
+          {getContactSanitizedName(item)}
         </Text>
       </Pressable>
     );
@@ -51,7 +52,7 @@ const ContactItem = memo(
           <ContactPhoto item={item} />
           <VStack w="68%">
             <Text fontWeight="bold" fontSize="$lg" numberOfLines={1}>
-              {item.name}
+              {getContactSanitizedName(item)}
             </Text>
             <Text numberOfLines={1}>
               {item.emails && item.emails.length > 0
@@ -82,7 +83,11 @@ export const ContactImportDialog = () => {
 
   useEffect(() => {
     if (deviceContacts) {
-      var withName = deviceContacts.filter((c) => c.name?.length > 0);
+      var withName = deviceContacts.filter(
+        (c) =>
+          c.name?.length > 0 ||
+          (c.firstName != undefined && c.lastName != undefined)
+      );
       var result = getContactsForImport(withName, contacts);
       setContactsForImport(result);
       setLoading(false);
@@ -97,10 +102,13 @@ export const ContactImportDialog = () => {
     return result;
   }, [contactsForImport, filter]);
 
-  const handleContact = (contact: Contact) => {
-    addOrRemove(contact);
-    setFilter('');
-  };
+  const handleContact = useCallback(
+    (contact: ExistingContact) => {
+      addOrRemove(contact);
+      setFilter('');
+    },
+    [filtered]
+  );
 
   return (
     <ModalView
@@ -127,7 +135,7 @@ export const ContactImportDialog = () => {
           <Box
             p="$4"
             borderBottomWidth={StyleSheet.hairlineWidth}
-            borderBottomColor="$light200">
+            borderBottomColor="$light500">
             <FlashList
               removeClippedSubviews
               horizontal={true}
@@ -138,7 +146,6 @@ export const ContactImportDialog = () => {
               renderItem={({ item }) => (
                 <BrotherItem item={item} handleContact={handleContact} />
               )}
-              estimatedItemSize={74}
             />
           </Box>
         )}
@@ -148,10 +155,9 @@ export const ContactImportDialog = () => {
           keyboardShouldPersistTaps="always"
           data={filtered}
           keyExtractor={KeyExtractor}
-          renderItem={({ item }) => (
-            <ContactItem item={item} handleContact={handleContact} />
-          )}
-          estimatedItemSize={64}
+          renderItem={({ item }) => {
+            return <ContactItem item={item} handleContact={handleContact} />;
+          }}
         />
       </SearchBarView>
     </ModalView>

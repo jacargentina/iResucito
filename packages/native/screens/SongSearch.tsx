@@ -124,7 +124,6 @@ export const SongSearch = () => {
             </Pressable>
           );
         }}
-        estimatedItemSize={64}
       />
     </DismissableBottom>
   );
