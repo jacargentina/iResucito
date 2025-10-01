@@ -10,7 +10,10 @@ import {
 import { Alert, View } from 'react-native';
 import { FlashList } from '@shopify/flash-list';
 import { useNavigation, useScrollToTop } from '@react-navigation/native';
-import Swipeable from 'react-native-gesture-handler/Swipeable';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import ReanimatedSwipeable, {
+  SwipeableMethods,
+} from 'react-native-gesture-handler/ReanimatedSwipeable';
 import {
   CallToAction,
   SwipeableRightAction,
@@ -35,91 +38,95 @@ const SwipeableRow = (props: { item: ListForUI }) => {
   const media = useMedia();
   const navigation = useNavigation<ListScreenNavigationProp>();
   const { item } = props;
-  const swipeRef = useRef<Swipeable>(null);
+  const swipeRef = useRef<SwipeableMethods | null>(null);
 
   return (
-    <Swipeable
-      ref={swipeRef}
-      friction={2}
-      rightThreshold={30}
-      renderRightActions={(progress, dragX) => {
-        return (
-          <View style={{ width: 250, flexDirection: 'row' }}>
-            <SwipeableRightAction
-              color={config.tokens.colors.blue500}
-              progress={progress}
-              text={i18n.t('ui.rename')}
-              x={250}
-              onPress={() => {
-                swipeRef.current?.close();
-                navigation.navigate('ListName', {
-                  action: 'rename',
-                  listName: item.name,
-                });
-              }}
-            />
-            <SwipeableRightAction
-              color={config.tokens.colors.rose600}
-              progress={progress}
-              text={i18n.t('ui.delete')}
-              x={125}
-              onPress={() => {
-                swipeRef.current?.close();
-                Alert.alert(
-                  `${i18n.t('ui.delete')} "${item.name}"`,
-                  i18n.t('ui.delete confirmation'),
-                  [
-                    {
-                      text: i18n.t('ui.delete'),
-                      onPress: () => {
-                        useListsStore.getState().remove(item.name);
+    <GestureHandlerRootView>
+      <ReanimatedSwipeable
+        ref={swipeRef}
+        friction={2}
+        rightThreshold={30}
+        renderRightActions={(progress, dragX) => {
+          return (
+            <View style={{ width: 250, flexDirection: 'row' }}>
+              <SwipeableRightAction
+                color={config.tokens.colors.blue500}
+                progress={progress}
+                text={i18n.t('ui.rename')}
+                x={250}
+                swipeableRef={swipeRef}
+                onPress={() => {
+                  swipeRef.current?.close();
+                  navigation.navigate('ListName', {
+                    action: 'rename',
+                    listName: item.name,
+                  });
+                }}
+              />
+              <SwipeableRightAction
+                color={config.tokens.colors.rose600}
+                progress={progress}
+                text={i18n.t('ui.delete')}
+                x={125}
+                swipeableRef={swipeRef}
+                onPress={() => {
+                  swipeRef.current?.close();
+                  Alert.alert(
+                    `${i18n.t('ui.delete')} "${item.name}"`,
+                    i18n.t('ui.delete confirmation'),
+                    [
+                      {
+                        text: i18n.t('ui.delete'),
+                        onPress: () => {
+                          useListsStore.getState().remove(item.name);
+                        },
+                        style: 'destructive',
                       },
-                      style: 'destructive',
-                    },
-                    {
-                      text: i18n.t('ui.cancel'),
-                      style: 'cancel',
-                    },
-                  ]
-                );
-              }}
-            />
-          </View>
-        );
-      }}>
-      <Pressable
-        testID={`list-${item.name}`}
-        onPress={() => {
-          navigation.navigate('ListDetail', {
-            listName: item.name,
-          });
+                      {
+                        text: i18n.t('ui.cancel'),
+                        style: 'cancel',
+                      },
+                    ]
+                  );
+                }}
+              />
+            </View>
+          );
         }}>
-        <HStack
-          space="sm"
-          p="$3"
-          alignItems="center"
-          borderBottomWidth={1}
-          $light-borderBottomColor="$light200"
-          $dark-borderBottomColor="$light600">
-          <Icon
-            as={BookmarkIcon}
-            size={media.md ? 'xxl' : 'xl'}
-            color="$rose500"
-          />
-          <VStack space="xs">
-            <Text
-              fontWeight="bold"
-              fontSize={media.md ? '$4xl' : '$xl'}
-              lineHeight={media.md ? '$3xl' : '$xl'}>
-              {item.name}
-            </Text>
-            <Text fontSize={media.md ? '$xl' : undefined}>
-              {item.localeType}
-            </Text>
-          </VStack>
-        </HStack>
-      </Pressable>
-    </Swipeable>
+        <Pressable
+          testID={`list-${item.name}`}
+          onPress={() => {
+            navigation.navigate('ListDetail', {
+              listName: item.name,
+            });
+          }}>
+          <HStack
+            space="sm"
+            p="$3"
+            alignItems="center"
+            borderBottomWidth={1}
+            $light-borderBottomColor="$light200"
+            $dark-borderBottomColor="$light600">
+            <Icon
+              as={BookmarkIcon}
+              size={media.md ? 'xxl' : 'xl'}
+              color="$rose500"
+            />
+            <VStack space="xs">
+              <Text
+                fontWeight="bold"
+                fontSize={media.md ? '$4xl' : '$xl'}
+                lineHeight={media.md ? '$3xl' : '$xl'}>
+                {item.name}
+              </Text>
+              <Text fontSize={media.md ? '$xl' : undefined}>
+                {item.localeType}
+              </Text>
+            </VStack>
+          </HStack>
+        </Pressable>
+      </ReanimatedSwipeable>
+    </GestureHandlerRootView>
   );
 };
 

@@ -8,7 +8,11 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import { ModalView, SearchBarView } from '../components';
 import { useBrothersStore, useListsStore, useSettingsStore } from '../hooks';
 import i18n from '@iresucito/translations';
-import { contactFilterByText, ordenAlfabetico } from '../util';
+import {
+  contactFilterByText,
+  getContactSanitizedName,
+  ordenAlfabetico,
+} from '../util';
 import { ContactListItem } from './ContactListItem';
 import type { RootStackParamList } from '../navigation/RootNavigator';
 import { UsersIcon } from 'lucide-react-native';
@@ -32,7 +36,11 @@ export const ContactChooserDialog = () => {
   const contactSelected = (contact: Contacts.Contact) => {
     useListsStore
       .getState()
-      .setList(target.listName, target.listKey, contact.name);
+      .setList(
+        target.listName,
+        target.listKey,
+        getContactSanitizedName(contact)
+      );
     navigation.goBack();
   };
 

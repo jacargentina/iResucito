@@ -3,8 +3,7 @@ import { Alert, ScrollView, View } from 'react-native';
 import { VStack, Text } from '@gluestack-ui/themed';
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { KeyboardAwareScrollView } from '@codler/react-native-keyboard-aware-scroll-view';
-import Swipeable from 'react-native-gesture-handler/Swipeable';
-import { SwipeableRightAction } from '../components';
+import { SwipeableRightAction, SwipeableStyles } from '../components';
 import { useListsStore } from '../hooks';
 import i18n from '@iresucito/translations';
 import ListDetailItem from './ListDetailItem';
@@ -16,6 +15,10 @@ import {
   PalabraList,
 } from '@iresucito/core';
 import { ListsStackParamList } from '../navigation/ListsNavigator';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import ReanimatedSwipeable, {
+  SwipeableMethods,
+} from 'react-native-gesture-handler/ReanimatedSwipeable';
 
 const SwipeableRow = (props: {
   listName: string;
@@ -23,49 +26,52 @@ const SwipeableRow = (props: {
   song: any;
 }) => {
   const { listName, listKey, song } = props;
-  const swipeRef = useRef<Swipeable>(null);
+  const swipeRef = useRef<SwipeableMethods | null>(null);
 
   return (
-    <Swipeable
-      ref={swipeRef}
-      friction={2}
-      rightThreshold={30}
-      renderRightActions={(progress, dragX) => {
-        return (
-          <View style={{ width: 100, flexDirection: 'row' }}>
-            <SwipeableRightAction
-              color={config.tokens.colors.rose600}
-              progress={progress}
-              text={i18n.t('ui.delete')}
-              x={100}
-              onPress={() => {
-                swipeRef.current?.close();
-                Alert.alert(
-                  `${i18n.t('ui.delete')} "${song.titulo}"`,
-                  i18n.t('ui.delete confirmation'),
-                  [
-                    {
-                      text: i18n.t('ui.delete'),
-                      onPress: () => {
-                        useListsStore
-                          .getState()
-                          .setList(listName, listKey, undefined);
+    <GestureHandlerRootView>
+      <ReanimatedSwipeable
+        ref={swipeRef}
+        friction={2}
+        rightThreshold={30}
+        renderRightActions={(progress, dragX) => {
+          return (
+            <View style={SwipeableStyles.rightActionsView}>
+              <SwipeableRightAction
+                color={config.tokens.colors.rose600}
+                progress={progress}
+                swipeableRef={swipeRef}
+                text={i18n.t('ui.delete')}
+                x={100}
+                onPress={() => {
+                  swipeRef.current?.close();
+                  Alert.alert(
+                    `${i18n.t('ui.delete')} "${song.titulo}"`,
+                    i18n.t('ui.delete confirmation'),
+                    [
+                      {
+                        text: i18n.t('ui.delete'),
+                        onPress: () => {
+                          useListsStore
+                            .getState()
+                            .setList(listName, listKey, undefined);
+                        },
+                        style: 'destructive',
                       },
-                      style: 'destructive',
-                    },
-                    {
-                      text: i18n.t('ui.cancel'),
-                      style: 'cancel',
-                    },
-                  ]
-                );
-              }}
-            />
-          </View>
-        );
-      }}>
-      <ListDetailItem listName={listName} listKey={listKey} listText={song} />
-    </Swipeable>
+                      {
+                        text: i18n.t('ui.cancel'),
+                        style: 'cancel',
+                      },
+                    ]
+                  );
+                }}
+              />
+            </View>
+          );
+        }}>
+        <ListDetailItem listName={listName} listKey={listKey} listText={song} />
+      </ReanimatedSwipeable>
+    </GestureHandlerRootView>
   );
 };
 

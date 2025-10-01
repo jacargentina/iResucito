@@ -34,9 +34,12 @@ import {
   SearchIcon,
   UserIcon,
 } from 'lucide-react-native';
-import { Swipeable } from 'react-native-gesture-handler';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import ReanimatedSwipeable, {
+  SwipeableMethods,
+} from 'react-native-gesture-handler/ReanimatedSwipeable';
 import { useRef } from 'react';
-import { SwipeableRightAction } from '../components';
+import { SwipeableRightAction, SwipeableStyles } from '../components';
 import { config } from '../config/gluestack-ui.config';
 
 type ListDetailItemNavigationProp = CompositeNavigationProp<
@@ -52,67 +55,70 @@ const SongInput = (props: {
 }) => {
   const { song, listName, listKey, listKeyIndex } = props;
   const navigation = useNavigation<ListDetailItemNavigationProp>();
-  const swipeRef = useRef<Swipeable>(null);
+  const swipeRef = useRef<SwipeableMethods | null>(null);
   return (
-    <Swipeable
-      ref={swipeRef}
-      friction={2}
-      rightThreshold={30}
-      enabled={song != null}
-      renderRightActions={(progress, dragX) => {
-        return (
-          <View style={{ width: 100, flexDirection: 'row' }}>
-            <SwipeableRightAction
-              color={config.tokens.colors.rose600}
-              progress={progress}
-              text={i18n.t('ui.delete')}
-              x={100}
-              onPress={() => {
-                swipeRef.current?.close();
-                useListsStore
-                  .getState()
-                  .setList(listName, listKey, undefined, listKeyIndex);
-              }}
-            />
-          </View>
-        );
-      }}>
-      <HStack p="$2" space="sm" width="100%" alignItems="center">
-        <Icon w="10%" as={MusicIcon} color="$info500" />
-        <Pressable
-          w="80%"
-          onPress={() =>
-            navigation.navigate('SongChooser', {
-              screen: 'Dialog',
-              params: {
-                target: {
-                  listName: listName,
-                  listKey: listKey,
-                  listKeyIndex: listKeyIndex,
-                },
-              },
-            })
-          }>
-          <Text>
-            {song == null
-              ? i18n.t('ui.search placeholder') + '...'
-              : song.titulo}
-          </Text>
-        </Pressable>
-        {song != null ? (
-          <Button
-            w="10%"
-            variant="outline"
+    <GestureHandlerRootView>
+      <ReanimatedSwipeable
+        ref={swipeRef}
+        friction={2}
+        rightThreshold={30}
+        enabled={song != null}
+        renderRightActions={(progress, dragX) => {
+          return (
+            <View style={SwipeableStyles.rightActionsView}>
+              <SwipeableRightAction
+                color={config.tokens.colors.rose600}
+                progress={progress}
+                text={i18n.t('ui.delete')}
+                x={100}
+                swipeableRef={swipeRef}
+                onPress={() => {
+                  swipeRef.current?.close();
+                  useListsStore
+                    .getState()
+                    .setList(listName, listKey, undefined, listKeyIndex);
+                }}
+              />
+            </View>
+          );
+        }}>
+        <HStack p="$2" space="sm" width="100%" alignItems="center">
+          <Icon w="10%" as={MusicIcon} color="$info500" />
+          <Pressable
+            w="80%"
             onPress={() =>
-              navigation.navigate('SongDetail', {
-                song,
+              navigation.navigate('SongChooser', {
+                screen: 'Dialog',
+                params: {
+                  target: {
+                    listName: listName,
+                    listKey: listKey,
+                    listKeyIndex: listKeyIndex,
+                  },
+                },
               })
             }>
-            <Icon as={ArrowRight} color="$rose500" />
-          </Button>
-        ) : null}
-      </HStack>
-    </Swipeable>
+            <Text>
+              {song == null
+                ? i18n.t('ui.search placeholder') + '...'
+                : song.titulo}
+            </Text>
+          </Pressable>
+          {song != null ? (
+            <Button
+              w="10%"
+              variant="outline"
+              onPress={() =>
+                navigation.navigate('SongDetail', {
+                  song,
+                })
+              }>
+              <Icon as={ArrowRight} color="$rose500" />
+            </Button>
+          ) : null}
+        </HStack>
+      </ReanimatedSwipeable>
+    </GestureHandlerRootView>
   );
 };
 

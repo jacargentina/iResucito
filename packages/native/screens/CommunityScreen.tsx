@@ -14,9 +14,12 @@ import {
   useNavigation,
   useScrollToTop,
 } from '@react-navigation/native';
-import Swipeable from 'react-native-gesture-handler/Swipeable';
+import ReanimatedSwipeable, {
+  SwipeableMethods,
+} from 'react-native-gesture-handler/ReanimatedSwipeable';
 import {
   SwipeableRightAction,
+  SwipeableStyles,
   CallToAction,
   SearchBarView,
 } from '../components';
@@ -30,11 +33,12 @@ import { config } from '../config/gluestack-ui.config';
 import { UsersIcon } from 'lucide-react-native';
 import { RootStackParamList } from '../navigation/RootNavigator';
 import { HeaderButton } from '../navigation/util';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 const SwipeableRow = (props: { item: BrotherContact }) => {
   const { update, addOrRemove } = useBrothersStore();
   const { item } = props;
-  const swipeRef = useRef<Swipeable | null>(null);
+  const swipeRef = useRef<SwipeableMethods | null>(null);
 
   const contactToggleAttibute = useCallback(
     (contact: BrotherContact, attribute: string) => {
@@ -71,38 +75,40 @@ const SwipeableRow = (props: { item: BrotherContact }) => {
   );
 
   return (
-    <Swipeable
-      ref={swipeRef}
-      friction={2}
-      rightThreshold={30}
-      renderRightActions={(progress, dragX) => {
-        return (
-          <View style={{ width: 200, flexDirection: 'row' }}>
-            <SwipeableRightAction
-              color={config.tokens.colors.blue500}
-              progress={progress}
-              text={i18n.t('ui.psalmist')}
-              x={200}
-              onPress={() => {
-                swipeRef.current?.close();
-                contactToggleAttibute(item, 's');
-              }}
-            />
-            <SwipeableRightAction
-              color={config.tokens.colors.rose600}
-              progress={progress}
-              text={i18n.t('ui.delete')}
-              x={100}
-              onPress={() => {
-                swipeRef.current?.close();
-                contactDelete(item);
-              }}
-            />
-          </View>
-        );
-      }}>
-      <ContactListItem item={item} />
-    </Swipeable>
+    <GestureHandlerRootView>
+      <ReanimatedSwipeable
+        ref={swipeRef}
+        friction={2}
+        rightThreshold={30}
+        renderRightActions={(progress, dragX) => {
+          return (
+            <View style={SwipeableStyles.rightActionsView}>
+              <SwipeableRightAction
+                color={config.tokens.colors.blue500}
+                progress={progress}
+                text={i18n.t('ui.psalmist')}
+                x={200}
+                swipeableRef={swipeRef}
+                onPress={() => {
+                  contactToggleAttibute(item, 's');
+                }}
+              />
+              <SwipeableRightAction
+                color={config.tokens.colors.rose600}
+                progress={progress}
+                text={i18n.t('ui.delete')}
+                x={100}
+                swipeableRef={swipeRef}
+                onPress={() => {
+                  contactDelete(item);
+                }}
+              />
+            </View>
+          );
+        }}>
+        <ContactListItem item={item} />
+      </ReanimatedSwipeable>
+    </GestureHandlerRootView>
   );
 };
 

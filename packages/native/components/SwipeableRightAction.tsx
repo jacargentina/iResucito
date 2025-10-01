@@ -1,8 +1,24 @@
 import { useMedia } from '@gluestack-style/react';
-import { Animated, StyleSheet, Text } from 'react-native';
+import { ColorValue, I18nManager, StyleSheet, Text } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
+import { SwipeableMethods } from 'react-native-gesture-handler/ReanimatedSwipeable';
+import Reanimated, {
+  interpolate,
+  SharedValue,
+  useAnimatedStyle,
+} from 'react-native-reanimated';
 
-const styles = StyleSheet.create({
+interface RightActionProps {
+  text: string;
+  color: ColorValue | undefined;
+  x: number;
+  progress: SharedValue<number>;
+  swipeableRef: React.RefObject<SwipeableMethods | null>;
+  onPress: any;
+  enabled?: boolean;
+}
+
+export const SwipeableStyles = StyleSheet.create({
   actionText: {
     color: 'white',
     fontSize: 16,
@@ -14,34 +30,45 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
   },
+  rightActionView: {
+    flex: 1,
+  },
+  rightActionsView: {
+    width: 192,
+    flexDirection: I18nManager.isRTL ? 'row-reverse' : 'row',
+  },
 });
 
-export const SwipeableRightAction = (props: {
-  text: string;
-  color: string;
-  x: number;
-  progress: any;
-  onPress: any;
-  enabled?: boolean;
-}) => {
+export const SwipeableRightAction = ({
+  text,
+  color,
+  x,
+  progress,
+  swipeableRef,
+  onPress,
+  enabled,
+}: RightActionProps) => {
   const media = useMedia();
-  const { text, color, x, progress, onPress, enabled } = props;
-  const trans = progress.interpolate({
-    inputRange: [0, 1],
-    outputRange: [x, 0],
+  const animatedStyle = useAnimatedStyle(() => {
+    return {
+      transform: [{ translateX: interpolate(progress.value, [0, 1], [x, 0]) }],
+    };
   });
-
+  const pressHandler = () => {
+    swipeableRef.current?.close();
+    onPress();
+  };
   return (
-    <Animated.View style={{ flex: 1, transform: [{ translateX: trans }] }}>
+    <Reanimated.View style={[SwipeableStyles.rightActionView, animatedStyle]}>
       <RectButton
-        style={[styles.rightAction, { backgroundColor: color }]}
+        style={[SwipeableStyles.rightAction, { backgroundColor: color }]}
         enabled={enabled}
-        onPress={onPress}>
+        onPress={pressHandler}>
         <Text
-          style={[styles.actionText, { fontSize: media.md ? 20 : undefined }]}>
+          style={[SwipeableStyles.actionText, { fontSize: media.md ? 20 : undefined }]}>
           {text}
         </Text>
       </RectButton>
-    </Animated.View>
+    </Reanimated.View>
   );
 };
