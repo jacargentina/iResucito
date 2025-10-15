@@ -46,7 +46,6 @@ const ContactItem = memo(
     handleContact: (c: ContactForImport) => void;
   }) => {
     const { item, handleContact } = props;
-    console.log(item.firstName, item.imported);
     return (
       <Pressable onPress={() => handleContact(item)}>
         <HStack p="$2" justifyContent="space-between" alignItems="center">
