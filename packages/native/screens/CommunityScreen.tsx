@@ -25,7 +25,7 @@ import {
 } from '../components';
 import { BrotherContact, useBrothersStore, useSettingsStore } from '../hooks';
 import i18n from '@iresucito/translations';
-import { contactFilterByText, ordenAlfabetico } from '../util';
+import { contactFilterByText, ordenAlfabetico, getContactSanitizedName } from '../util';
 import { ContactListItem } from './ContactListItem';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { ExistingContact } from 'expo-contacts';
@@ -54,7 +54,7 @@ const SwipeableRow = (props: { item: BrotherContact }) => {
   const contactDelete = useCallback(
     (contact: ExistingContact) => {
       Alert.alert(
-        `${i18n.t('ui.delete')} "${contact.name}"`,
+        `${i18n.t('ui.delete')} "${getContactSanitizedName(contact)}"`,
         i18n.t('ui.delete confirmation'),
         [
           {

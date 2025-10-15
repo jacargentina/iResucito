@@ -26,6 +26,8 @@ export const ContactListItem = (props: {
           <Text numberOfLines={1}>
             {item.emails && item.emails.length > 0
               ? item.emails[0].email
+              : item.phoneNumbers && item.phoneNumbers.length > 0
+              ? item.phoneNumbers[0].number
               : null}
           </Text>
         </VStack>
