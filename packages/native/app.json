@@ -30,7 +30,7 @@
           "audio"
         ]
       },
-      "buildNumber": "74",
+      "buildNumber": "75",
       "requireFullScreen": true,
       "supportsTablet": true,
       "config": {
@@ -56,7 +56,7 @@
         "android.permission.READ_CONTACTS",
         "android.permission.WRITE_CONTACTS"
       ],
-      "versionCode": 174
+      "versionCode": 175
     },
     "androidStatusBar": {
       "hidden": true
