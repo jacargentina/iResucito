@@ -189,7 +189,7 @@ class NativeSongsExtras implements SongsExtras {
   }
 
   getPatchFile(): File {
-    return new File(`${Paths.document}/SongsIndexPatch.json`);
+    return new File(Paths.document, 'SongsIndexPatch.json');
   }
 
   readSettings(): Promise<string> {
@@ -212,7 +212,7 @@ class NativeSongsExtras implements SongsExtras {
   }
 
   getSettingsFile(): File {
-    return new File(`${Paths.document}/SongsSettings.json`);
+    return new File(Paths.document, 'SongsSettings.json');
   }
 }
 

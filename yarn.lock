@@ -3301,7 +3301,7 @@ __metadata:
     react-native-gesture-handler: "npm:~2.28.0"
     react-native-monorepo-tools: "npm:^1.2.1"
     react-native-pager-view: "npm:6.9.1"
-    react-native-pdf: "npm:6.7.7"
+    react-native-pdf: "npm:^7.0.3"
     react-native-popup-menu: "npm:^0.18.0"
     react-native-print: "npm:^0.11.0"
     react-native-ratings: "npm:^8.1.0"
@@ -19034,9 +19034,9 @@ expo-launch-arguments@jacargentina/expo-launch-arguments:
   languageName: node
   linkType: hard
 
-"react-native-pdf@npm:6.7.7":
-  version: 6.7.7
-  resolution: "react-native-pdf@npm:6.7.7"
+"react-native-pdf@npm:^7.0.3":
+  version: 7.0.3
+  resolution: "react-native-pdf@npm:7.0.3"
   dependencies:
     crypto-js: "npm:4.2.0"
     deprecated-react-native-prop-types: "npm:^2.3.0"
@@ -19044,7 +19044,7 @@ expo-launch-arguments@jacargentina/expo-launch-arguments:
     react: "*"
     react-native: "*"
     react-native-blob-util: ">=0.13.7"
-  checksum: 10c0/b8e62293e58b67dbc415b0ee65ebe1cfbfbb235259466b3fa535d65640bab62395c8bcba305717e801ae91b98d1220ef11d6c47177014ea1e68eb5e1efcaded5
+  checksum: 10c0/f326c82cbdcb2cd124f46a737f52393070b450b26029f83bce44a7452e20f2951995d1d1e83ba519d9eecf89ea604e38e883754dd706829ce2fcf50584ac2e3c
   languageName: node
   linkType: hard
 

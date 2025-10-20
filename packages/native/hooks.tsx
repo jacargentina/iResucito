@@ -206,27 +206,25 @@ export const useSongDownloader = create(
     title: null,
     getFileUri: async (song: Song) => {
       const audio = esAudiosData[song.key];
-      const fileuri = `${Paths.document}${audio!.name}`;
-      const info = new File(fileuri);
-      if (info.exists) {
-        return fileuri;
+      const fileuri = new File(Paths.document, audio!.name);
+      if (fileuri.exists) {
+        return fileuri.uri;
       }
       return undefined;
     },
     removeFile: async (song: Song) => {
       const audio = esAudiosData[song.key];
-      const fileuri = `${Paths.document}${audio!.name}`;
-      const info = new File(fileuri);
-      if (info.exists) {
-        console.log('eliminando: ' + fileuri);
-        await info.delete();
+      const fileuri = new File(Paths.document, audio!.name);
+      if (fileuri.exists) {
+        console.log('eliminando: ' + fileuri.uri);
+        await fileuri.delete();
         return true;
       }
       return false;
     },
     download: async (song: Song) => {
       const audio = esAudiosData[song.key];
-      const fileuri = `${Paths.document}${audio!.name}`;
+      const fileuri = new File(Paths.document, audio!.name);
       const { isInternetReachable } = await Network.getNetworkStateAsync();
       if (!isInternetReachable) {
         Alert.alert('Error', i18n.t('ui.network_unavailable'));
@@ -235,7 +233,7 @@ export const useSongDownloader = create(
       try {
         var downItem = await File.downloadFileAsync(
           `https://drive.google.com/uc?export=download&id=${audio!.id}`,
-          new File(fileuri)
+          fileuri
         );
         set((state) => {
           state.title = song.titulo;
@@ -247,7 +245,7 @@ export const useSongDownloader = create(
         Alert.alert('Error', error.message);
         return;
       }
-      return fileuri;
+      return fileuri.uri;
     },
   }))
 );
@@ -573,12 +571,12 @@ export const useListsStore = create<ListsStore>()(
           switch (format) {
             case 'native':
               const fileName = listName.replace(' ', '-');
-              const listPath = `${Paths.document}${fileName}.ireslist`;
+              const listPath = new File(Paths.document, `${fileName}.ireslist`);
               const nativeList = get().lists[listName];
               await new File(listPath).write(
                 JSON.stringify(nativeList, null, ' ')
               );
-              return listPath;
+              return listPath.uri;
             case 'text':
               var list = get().lists_ui.find(
                 (l) => l.name == listName
@@ -619,9 +617,12 @@ export const useListsStore = create<ListsStore>()(
                 }
               });
               const fileNameTxt = listName.replace(' ', '-');
-              const listPathTxt = `${Paths.document}${fileNameTxt}.txt`;
-              await new File(listPathTxt).write(message);
-              return listPathTxt;
+              const listPathTxt = new File(
+                Paths.document,
+                `${fileNameTxt}.txt`
+              );
+              await listPathTxt.write(message);
+              return listPathTxt.uri;
             case 'pdf':
               var list = get().lists_ui.find(
                 (l) => l.name == listName
