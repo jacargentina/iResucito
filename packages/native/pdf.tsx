@@ -1,4 +1,5 @@
 import { File, Paths } from 'expo-file-system';
+import * as FileSystem from 'expo-file-system/legacy';
 import { Asset } from 'expo-asset';
 import {
   ListToPdf,
@@ -29,7 +30,7 @@ export async function generateSongPDF(
   addIndex: boolean
 ): Promise<GeneratePDFResult> {
   const safeFileName = filename.replace('/', '-');
-  const pdfPath = `${Paths.cache}${safeFileName}.pdf`;
+  const pdfPath = new File(Paths.cache, `${safeFileName}.pdf`);
   const [{ localUri: mediumUri }] = await Asset.loadAsync(
     require('./fonts/FranklinGothicMedium.ttf')
   );
@@ -46,8 +47,8 @@ export async function generateSongPDF(
     opts
   );
   const base64 = await SongPDFGenerator(songsToPdf, opts, writer, addIndex);
-  new File(pdfPath).write(base64);
-  return { uri: pdfPath, base64 };
+  FileSystem.writeAsStringAsync(pdfPath.uri, base64, { encoding: 'base64' });
+  return { uri: pdfPath.uri, base64 };
 }
 
 export async function generateListPDF(
@@ -55,7 +56,7 @@ export async function generateListPDF(
   opts: SongStyles<PdfStyle>
 ): Promise<GeneratePDFResult> {
   const safeFileName = list.name.replace('/', '-');
-  const pdfPath = `${Paths.cache}/${safeFileName}.pdf`;
+  const pdfPath = new File(Paths.cache, `${safeFileName}.pdf`);
   const [{ localUri: mediumUri }] = await Asset.loadAsync(
     require('./fonts/FranklinGothicMedium.ttf')
   );
@@ -72,6 +73,6 @@ export async function generateListPDF(
     opts
   );
   const base64 = await ListPDFGenerator(list, opts, writer);
-  new File(pdfPath).write(base64);
-  return { uri: pdfPath, base64 };
+  FileSystem.writeAsStringAsync(pdfPath.uri, base64, { encoding: 'base64' });
+  return { uri: pdfPath.uri, base64 };
 }
