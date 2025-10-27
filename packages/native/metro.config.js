@@ -1,30 +1,38 @@
 const { getSentryExpoConfig } = require('@sentry/react-native/metro');
 const path = require('path');
+const exclusionList = require('metro-config/src/defaults/exclusionList');
 
-// Find the project and workspace directories
 const projectRoot = __dirname;
-// This can be replaced with `find-yarn-workspace-root`
 const workspaceRoot = path.resolve(projectRoot, '../..');
 
 const config = getSentryExpoConfig(projectRoot);
 
 // 1. Watch all files within the monorepo
 config.watchFolders = [workspaceRoot];
-// 2. Let Metro know where to resolve packages and in what order
+
+// 2. Resolver settings
 config.resolver.unstable_enablePackageExports = true;
 config.resolver.unstable_conditionNames = ['require'];
 config.resolver.nodeModulesPaths = [
   path.resolve(projectRoot, 'node_modules'),
   path.resolve(workspaceRoot, 'node_modules'),
 ];
-// 3. Force Metro to resolve (sub)dependencies only from the `nodeModulesPaths`
+
+// 3. Restrict resolution to defined node_modules
 config.resolver.disableHierarchicalLookup = true;
+
+// 4. Source and asset extensions
 config.resolver.assetExts.push('json');
 config.resolver.sourceExts.push('mjs');
 config.resolver.sourceExts = config.resolver.sourceExts.filter(
-  (e) => e != 'json'
+  (e) => e !== 'json'
 );
 
-config.resolver.blockList = [config.resolver.blockList, /(\/\.vercel\/.*)$/];
+// 5. Unified block list
+config.resolver.blockList = exclusionList([
+  /\.expo[\\/]types/,
+  /\/__tests__\/.*/,
+  /\/\.vercel\/.*/,
+]);
 
 module.exports = config;
