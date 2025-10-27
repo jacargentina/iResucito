@@ -6,29 +6,19 @@
     "orientation": "default",
     "icon": "./img/cristo.png",
     "userInterfaceStyle": "automatic",
-    "platforms": [
-      "ios",
-      "android"
-    ],
+    "platforms": ["ios", "android"],
     "splash": {
       "image": "./img/bootsplash_logo.png",
       "resizeMode": "cover",
       "backgroundColor": "#881337"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "bundleIdentifier": "com.javiercastro.iresucito",
       "infoPlist": {
         "CFBundleAllowMixedLocalizations": true,
-        "UIRequiredDeviceCapabilities": [
-          "armv7",
-          "gamekit"
-        ],
-        "UIBackgroundModes": [
-          "audio"
-        ]
+        "UIRequiredDeviceCapabilities": ["armv7", "gamekit"],
+        "UIBackgroundModes": ["audio"]
       },
       "buildNumber": "76",
       "requireFullScreen": true,
@@ -69,6 +59,7 @@
           "contactsPermission": "The application allows you to select which of your contacts are brothers of the community, to use their names in creating the Lists. Data is stored locally, not uploaded to any server."
         }
       ],
+      ["./plugins/remove-ios-strings"],
       [
         "@sentry/react-native/expo",
         {
