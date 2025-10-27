@@ -15,7 +15,6 @@
   },
   "packageManager": "yarn@4.9.4",
   "resolutions": {
-    "@expo/config-plugins": "^10.0.0",
     "metro-resolver": "^0.82.0",
     "metro": "^0.82.0",
     "metro-config": "^0.82.0"
