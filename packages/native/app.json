@@ -2,7 +2,7 @@
   "expo": {
     "name": "iResucitó",
     "slug": "iresucito",
-    "version": "11.0.1",
+    "version": "11.0.2",
     "orientation": "default",
     "icon": "./img/cristo.png",
     "userInterfaceStyle": "automatic",
@@ -30,7 +30,7 @@
           "audio"
         ]
       },
-      "buildNumber": "76",
+      "buildNumber": "77",
       "requireFullScreen": true,
       "supportsTablet": true,
       "config": {
@@ -56,7 +56,7 @@
         "android.permission.READ_CONTACTS",
         "android.permission.WRITE_CONTACTS"
       ],
-      "versionCode": 178
+      "versionCode": 179
     },
     "androidStatusBar": {
       "hidden": true
