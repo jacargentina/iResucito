@@ -1222,6 +1222,13 @@
       "author": "juan.hurtado.lopez@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1758879401041,
+      "locale": "pl",
+      "author": "jakub87.kunicki@gmail.com",
+      "created": true,
+      "updated": false
     }
   ],
   "20": [
@@ -2714,6 +2721,13 @@
       "rename": {
         "new": "J'aime le seigneur car il écoute - Ps 114-115 (116)"
       },
+      "created": true,
+      "updated": false
+    },
+    {
+      "date": 1761860764594,
+      "locale": "en",
+      "author": "javier.alejandro.castro@gmail.com",
       "created": true,
       "updated": false
     }
@@ -4306,6 +4320,13 @@
       "author": "albertiniqmc@gmail.com",
       "created": false,
       "updated": true
+    },
+    {
+      "date": 1761860836073,
+      "locale": "en",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": true,
+      "updated": false
     }
   ],
   "54": [
@@ -9352,6 +9373,13 @@
       },
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1761860947527,
+      "locale": "en",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": true,
+      "updated": false
     }
   ],
   "138": [
@@ -11000,6 +11028,13 @@
         "original": "election",
         "new": "precatechumenate"
       }
+    },
+    {
+      "date": 1761860964908,
+      "locale": "en",
+      "author": "javier.alejandro.castro@gmail.com",
+      "created": true,
+      "updated": false
     }
   ],
   "162": [
@@ -15864,6 +15899,17 @@
       "author": "juan.hurtado.lopez@gmail.com",
       "created": true,
       "updated": false
+    },
+    {
+      "date": 1760928122106,
+      "locale": "en",
+      "author": "Thomaspelaez11@gmail.com",
+      "created": true,
+      "updated": false,
+      "staged": {
+        "original": "precatechumenate",
+        "new": "election"
+      }
     }
   ],
   "269": [

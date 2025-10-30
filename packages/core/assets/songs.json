@@ -317,7 +317,8 @@
       "pt-PT": "225",
       "lt-LT": "130",
       "en": "102",
-      "ru": "0"
+      "ru": "0",
+      "pl": "33"
     },
     "stages": {
       "pt-BR": "precatechumenate"
@@ -563,7 +564,8 @@
       "pt-BR": "22",
       "pt-PT": "24",
       "lt-LT": "125",
-      "fr": "16"
+      "fr": "16",
+      "en": "118"
     },
     "stages": {
       "pt-BR": "precatechumenate"
@@ -888,7 +890,8 @@
       "de": "26",
       "pt-BR": "61",
       "pt-PT": "61",
-      "lt-LT": "28"
+      "lt-LT": "28",
+      "en": "119"
     },
     "stages": {
       "de-AT": "election",
@@ -2187,7 +2190,8 @@
       "de": "201",
       "pt-BR": "196",
       "pt-PT": "200",
-      "it": "179"
+      "it": "179",
+      "en": "120"
     }
   },
   "138": {
@@ -2569,7 +2573,8 @@
       "de": "223",
       "pt-BR": "48",
       "pt-PT": "47",
-      "lt-LT": "154"
+      "lt-LT": "154",
+      "en": "121"
     },
     "stages": {
       "es": "precatechumenate"
@@ -3839,5 +3844,14 @@
     },
     "stage": "precatechumenate",
     "stages": {}
+  },
+  "268": {
+    "files": {
+      "en": "122"
+    },
+    "stage": "precatechumenate",
+    "stages": {
+      "en": "election"
+    }
   }
 }
