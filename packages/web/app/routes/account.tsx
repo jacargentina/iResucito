@@ -6,20 +6,21 @@ import {
   useNavigation,
 } from '@remix-run/react';
 import { ActionFunction, LoaderFunction, redirect } from '@remix-run/node';
-import { json } from '@vercel/remix';
 import { authenticator } from '~/auth.server';
 import { useState } from 'react';
 import {
-  Header,
-  Segment,
+  Container,
+  Box,
+  Typography,
   Button,
   Divider,
-  Input,
-  Image,
-  Form,
+  TextField,
+  Avatar,
   Grid,
-  Message,
-} from 'semantic-ui-react';
+  Alert,
+  Paper,
+  CircularProgress,
+} from '@mui/material';
 import Layout from '~/components/Layout';
 import ErrorDetail from '~/components/ErrorDetail';
 import ApiMessage from '~/components/ApiMessage';
@@ -32,8 +33,10 @@ export let action: ActionFunction = async ({ request }) => {
     const user = await authenticator.authenticate('lowdb', request);
     let session = await getSession(request.headers.get('cookie'));
     session.set('user', user);
-    session.unset('auth:error');
-    let headers = new Headers({ 'Set-Cookie': await commitSession(session) });
+    session.unset('auth: error');
+    let headers = new Headers({
+      'Set-Cookie': await commitSession(session),
+    });
     return new Response(null, { headers });
   } catch (err: any) {
     console.log(err);
@@ -77,84 +80,128 @@ const Account = () => {
 
   return (
     <Layout>
-      <div style={{ padding: 30, width: 500, margin: 'auto' }}>
-        <Image centered circular src="cristo.png" />
-        <Header textAlign="center">iResucito</Header>
-        <Grid textAlign="center" verticalAlign="middle">
-          <Grid.Column>
-            {data.error && <ErrorDetail error={data.error} simple />}
-            <ApiMessage />
-            {searchParams.get('v') !== null && (
-              <Message positive>{i18n.t('ui.account verified')}</Message>
-            )}
-            {searchParams.get('r') !== null && (
-              <Message positive>{i18n.t('ui.password changed')}</Message>
-            )}
-            {!app.user && (
-              <Form size="large">
-                <Segment vertical>
-                  <Form.Field>
-                    <Input
-                      fluid
-                      icon="user"
-                      iconPosition="left"
-                      readOnly={navigation.state !== 'idle'}
+      <Container maxWidth="sm">
+        <Box sx={{ py: 4, textAlign: 'center' }}>
+          <Avatar
+            src="/cristo.png"
+            sx={{
+              width: 100,
+              height: 100,
+              margin: '0 auto',
+              mb: 2,
+            }}
+          />
+          <Typography variant="h4" gutterBottom>
+            iResucito
+          </Typography>
+
+          <Grid container spacing={2} sx={{ mt: 2 }}>
+            <Grid item xs={12}>
+              {data.error && <ErrorDetail error={data.error} simple />}
+              <ApiMessage />
+              {searchParams.get('v') !== null && (
+                <Alert severity="success" sx={{ mb: 2 }}>
+                  {i18n.t('ui.account verified')}
+                </Alert>
+              )}
+              {searchParams.get('r') !== null && (
+                <Alert severity="success" sx={{ mb: 2 }}>
+                  {i18n.t('ui. password changed')}
+                </Alert>
+              )}
+
+              {!app.user && (
+                <Paper sx={{ p: 3, mt: 2 }}>
+                  <Box
+                    component="form"
+                    sx={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: 2,
+                    }}>
+                    <TextField
+                      fullWidth
+                      label={i18n.t('ui.email')}
+                      type="email"
                       placeholder={i18n.t('ui.email')}
                       value={email}
-                      onChange={(e, { value }) => {
-                        setEmail(value);
-                      }}
+                      disabled={navigation.state !== 'idle'}
+                      onChange={(e) => setEmail(e.target.value)}
                       autoComplete="username"
+                      variant="outlined"
                     />
-                  </Form.Field>
-                  <Form.Input
-                    fluid
-                    icon="lock"
-                    iconPosition="left"
-                    readOnly={navigation.state !== 'idle'}
-                    placeholder={i18n.t('ui.password')}
-                    type="password"
-                    value={password}
-                    onChange={(e, { value }) => {
-                      setPassword(value);
-                    }}
-                    autoComplete="current-password"
-                  />
-                  <Divider hidden />
-                  <Button
-                    primary
-                    size="large"
-                    onClick={authenticate}
-                    loading={navigation.state !== 'idle'}>
-                    {i18n.t('ui.login')}
-                  </Button>
-                  <Button
-                    basic
-                    size="large"
-                    onClick={() => {
-                      signUp();
-                    }}
-                    disabled={navigation.state !== 'idle'}>
-                    {i18n.t('ui.signup')}
-                  </Button>
-                  <Divider hidden />
-                  <Link to="/resetpassword">{i18n.t('ui.reset password')}</Link>
-                </Segment>
-              </Form>
-            )}
-            {app.user && (
-              <>
-                <div style={{ fontSize: '1.2em' }}>
-                  <strong>Usuario:&nbsp;</strong>
-                  <span>{app.user}</span>
-                </div>
-                <Divider hidden />
-                <Link to="/changepassword">{i18n.t('ui.change password')}</Link>
-              </>
-            )}
-          </Grid.Column>
-        </Grid>
-      </div>
+
+                    <TextField
+                      fullWidth
+                      label={i18n.t('ui.password')}
+                      type="password"
+                      value={password}
+                      disabled={navigation.state !== 'idle'}
+                      onChange={(e) => setPassword(e.target.value)}
+                      autoComplete="current-password"
+                      variant="outlined"
+                    />
+
+                    <Divider sx={{ my: 1 }} />
+
+                    <Button
+                      fullWidth
+                      variant="contained"
+                      color="primary"
+                      size="large"
+                      disabled={navigation.state !== 'idle'}
+                      onClick={authenticate}
+                      sx={{ position: 'relative' }}>
+                      {navigation.state === 'submitting' && (
+                        <CircularProgress
+                          size={24}
+                          sx={{
+                            position: 'absolute',
+                            left: '50%',
+                            marginLeft: '-12px',
+                          }}
+                        />
+                      )}
+                      {i18n.t('ui.login')}
+                    </Button>
+
+                    <Divider sx={{ my: 1 }}>OR</Divider>
+
+                    <Button
+                      fullWidth
+                      variant="outlined"
+                      color="primary"
+                      size="large"
+                      disabled={navigation.state !== 'idle'}
+                      onClick={signUp}>
+                      {i18n.t('ui.signup')}
+                    </Button>
+
+                    <Link
+                      to="/resetpassword"
+                      style={{
+                        textAlign: 'center',
+                        marginTop: '16px',
+                        textDecoration: 'none',
+                      }}>
+                      <Typography
+                        variant="body2"
+                        color="primary"
+                        sx={{
+                          '&:hover': {
+                            textDecoration: 'underline',
+                          },
+                        }}>
+                        {i18n.t('ui.forgot password')}
+                      </Typography>
+                    </Link>
+                  </Box>
+                </Paper>
+              )}
+            </Grid>
+          </Grid>
+        </Box>
+      </Container>
     </Layout>
   );
 };

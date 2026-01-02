@@ -1,5 +1,13 @@
 import { useContext } from 'react';
-import { Button, Modal } from 'semantic-ui-react';
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Button,
+  Box,
+  Typography,
+} from '@mui/material';
 import { EditContext } from './EditContext';
 import i18n from '@iresucito/translations';
 import { useApp } from '~/app.context';
@@ -8,6 +16,7 @@ const DiffViewDialog = () => {
   const app = useApp();
   const { activeDialog, setActiveDialog } = app;
   const edit = useContext(EditContext);
+
   if (!edit) {
     return null;
   }
@@ -15,44 +24,47 @@ const DiffViewDialog = () => {
   const { editSong, diffView } = edit;
 
   return (
-    <Modal
+    <Dialog
       open={activeDialog === 'diffView'}
-      size="large"
-      dimmer="blurring"
-      centered={false}
+      maxWidth="lg"
+      fullWidth
       onClose={() => setActiveDialog()}>
-      <Modal.Header>{i18n.t('ui.diff view')}</Modal.Header>
-      <Modal.Content scrolling>
-        {editSong && <h5>{editSong.titulo.toUpperCase()}</h5>}
-        <div style={{ flex: 1 }}>
+      <DialogTitle>{i18n.t('ui.diff view')}</DialogTitle>
+      <DialogContent sx={{ maxHeight: '500px', overflowY: 'auto' }}>
+        {editSong && (
+          <Typography variant="h6" sx={{ mb: 2 }}>
+            {editSong.titulo.toUpperCase()}
+          </Typography>
+        )}
+        <Box sx={{ flex: 1 }}>
           {diffView?.map((item, i) => {
-            const colorName = item.added
-              ? 'green'
-              : item.removed
-              ? 'red'
-              : 'grey';
+            const color = item.added ? 'green' : item.removed ? 'red' : '#666';
             const val = item.value.replace(/\n/g, '<br/>');
             return (
-              <span
+              <Typography
                 key={i}
-                style={{
+                component="span"
+                sx={{
                   fontFamily: 'monospace',
-                  whiteSpace: 'pre',
-                  color: colorName,
+                  whiteSpace: 'pre-wrap',
+                  color: color,
+                  display: 'block',
                 }}
                 dangerouslySetInnerHTML={{ __html: val }}
               />
             );
           })}
-          {diffView == null && <div>No diff</div>}
-        </div>
-      </Modal.Content>
-      <Modal.Actions>
-        <Button negative onClick={() => setActiveDialog()}>
+          {diffView == null && (
+            <Typography color="textSecondary">No diff</Typography>
+          )}
+        </Box>
+      </DialogContent>
+      <DialogActions>
+        <Button color="error" onClick={() => setActiveDialog()}>
           {i18n.t('ui.close')}
         </Button>
-      </Modal.Actions>
-    </Modal>
+      </DialogActions>
+    </Dialog>
   );
 };
 

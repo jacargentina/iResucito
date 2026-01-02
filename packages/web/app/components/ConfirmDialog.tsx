@@ -1,4 +1,10 @@
-import { Modal, Button } from 'semantic-ui-react';
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Button,
+} from '@mui/material';
 import { useApp } from '~/app.context';
 import i18n from '@iresucito/translations';
 
@@ -8,29 +14,35 @@ const ConfirmDialog = () => {
 
   const handleClose = (runYesHandler: boolean) => {
     if (runYesHandler === true) {
-      confirmData.yes();
+      confirmData?. yes();
     }
     setConfirmData();
   };
 
   return (
-    <Modal
+    <Dialog
       open={confirmData !== undefined}
-      size="small"
-      centered={false}
-      onClose={() => handleClose(false)}>
-      <Modal.Content>
-        <h3>{confirmData ? confirmData.message : ''}</h3>
-      </Modal.Content>
-      <Modal.Actions>
-        <Button primary onClick={() => handleClose(true)}>
+      maxWidth="sm"
+      fullWidth>
+      <DialogTitle>Confirmación</DialogTitle>
+      <DialogContent>
+        <h3>{confirmData ?  confirmData.message : ''}</h3>
+      </DialogContent>
+      <DialogActions>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => handleClose(true)}>
           {i18n.t('ui.yes')}
         </Button>
-        <Button negative onClick={() => handleClose(false)}>
+        <Button
+          variant="outlined"
+          color="error"
+          onClick={() => handleClose(false)}>
           {i18n.t('ui.no')}
         </Button>
-      </Modal.Actions>
-    </Modal>
+      </DialogActions>
+    </Dialog>
   );
 };
 

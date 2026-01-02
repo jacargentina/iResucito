@@ -7,7 +7,7 @@ import { json } from '@vercel/remix';
 import { useLoaderData } from '@remix-run/react';
 import { getSession } from '~/session.server';
 import { useApp } from '~/app.context';
-import { Loader } from 'semantic-ui-react';
+import { Box, CircularProgress, Typography } from '@mui/material';
 import i18n from '@iresucito/translations';
 import { folderExtras, folderSongs } from '~/utils.server';
 import PdfContextWrapper from '~/components/PdfContext';
@@ -38,24 +38,22 @@ export let loader: LoaderFunction = async ({ request }) => {
 const List = () => {
   const { isChangingLanguage } = useApp();
   const { songs } = useLoaderData<typeof loader>();
+
   return (
     <PdfContextWrapper>
       <Layout title="Buscador">
         {isChangingLanguage ? (
-          <div
-            style={{
-              height: '100%',
+          <Box
+            sx={{
+              height: '100vh',
               display: 'flex',
+              flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-            <Loader
-              active
-              inline="centered"
-              size="large"
-              content={i18n.t('ui.loading')}
-            />
-          </div>
+            <CircularProgress sx={{ mb: 2 }} />
+            <Typography variant="h6">{i18n.t('ui.loading')}</Typography>
+          </Box>
         ) : (
           <SongList songs={songs} />
         )}

@@ -1,6 +1,6 @@
 import { useRef, useEffect } from 'react';
 import * as pdfjsLib from 'pdfjs-dist';
-import { Loader } from 'semantic-ui-react';
+import { Box, CircularProgress } from '@mui/material';
 import { usePdf } from './PdfContext';
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.mjs';
@@ -32,24 +32,35 @@ const SongViewPdf = (props: any) => {
   return (
     <>
       {loading && (
-        <Loader active inline="centered" size="large" inverted={false} />
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent:  'center',
+            py: 4,
+          }}>
+          <CircularProgress />
+        </Box>
       )}
       {!loading && currPage > 0 && (
-        <div
-          style={{
+        <Box
+          sx={{
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
+            py: 2,
           }}>
           <canvas
             id="pdfViewer"
             style={{
               boxShadow: '2px 2px 12px gray',
-              margin: 'auto',
+              margin:  'auto',
+              maxWidth: '100%',
+              height: 'auto',
             }}
             ref={myRef}
           />
-        </div>
+        </Box>
       )}
     </>
   );

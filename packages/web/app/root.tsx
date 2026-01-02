@@ -19,10 +19,11 @@ import { AppProvider } from './app.context';
 import { getSession } from './session.server';
 import { getPatchStats } from '@iresucito/core';
 import i18n from '@iresucito/translations';
-import semanticUrl from 'semantic-ui-css/semantic.min.css?url';
 import globalStylesUrl from './styles/global.css?url';
 import AppRaw from '@iresucito/native/app.json';
 import { folderExtras } from './utils.server';
+import { ThemeProvider } from '@mui/material/styles';
+import theme from '~/theme';
 
 export let loader: LoaderFunction = async ({ request }) => {
   const patch = await folderExtras.readPatch();
@@ -47,10 +48,7 @@ export let loader: LoaderFunction = async ({ request }) => {
 };
 
 export let links = () => {
-  return [
-    { rel: 'stylesheet', href: globalStylesUrl },
-    { rel: 'stylesheet', href: semanticUrl },
-  ];
+  return [{ rel: 'stylesheet', href: globalStylesUrl }];
 };
 
 export default function App() {
@@ -82,15 +80,17 @@ export default function App() {
   }, [fetcher.data]);
 
   return (
-    <AppProvider
-      user={data.authData?.user}
-      expo_version={data.EXPO_VERSION}
-      patchStats={data.patchStats}
-      locale={data.locale}>
-      <Document>
-        <Outlet />
-      </Document>
-    </AppProvider>
+    <ThemeProvider theme={theme}>
+      <AppProvider
+        user={data.authData?.user}
+        expo_version={data.EXPO_VERSION}
+        patchStats={data.patchStats}
+        locale={data.locale}>
+        <Document>
+          <Outlet />
+        </Document>
+      </AppProvider>
+    </ThemeProvider>
   );
 }
 

@@ -1,16 +1,26 @@
 import { useContext, useState, useEffect, useRef } from 'react';
 import {
-  TextArea,
-  Icon,
-  Popup,
-  Segment,
-  Message,
-  Button,
-  Menu,
-} from 'semantic-ui-react';
+  TextField,
+  IconButton,
+  Tooltip,
+  Paper,
+  Box,
+  Tabs,
+  Tab,
+  Typography,
+  Chip,
+} from '@mui/material';
+import {
+  Edit as EditIcon,
+  Save as SaveIcon,
+  Close as CloseIcon,
+  ChevronLeft as PrevIcon,
+  ChevronRight as NextIcon,
+  PictureAsPdf as PdfIcon,
+  Download as DownloadIcon,
+  Info as InfoIcon,
+} from '@mui/icons-material';
 import { useDebouncedCallback } from 'use-debounce';
-// TODO No funciona bien en VITE (al refrescar)
-//import useHotkeys from 'use-hotkeys';
 import { EditContext } from './EditContext';
 import { usePdf } from './PdfContext';
 import ApiMessage from './ApiMessage';
@@ -63,8 +73,6 @@ const SongEditor = () => {
     setLinepos(1);
     setColpos(1);
     if (txtRef && txtRef.current) {
-      txtRef.current.ref.current.selectionStart = 0;
-      txtRef.current.ref.current.selectionEnd = 0;
       txtRef.current.focus();
     }
   }, [editSong]);
@@ -91,7 +99,7 @@ const SongEditor = () => {
 
   const txtPositionEvent = () => {
     if (txtRef && txtRef.current) {
-      const textarea = txtRef.current.ref.current;
+      const textarea = txtRef.current;
       const line = textarea.value
         .substr(0, textarea.selectionStart)
         .split('\n').length;
@@ -109,308 +117,162 @@ const SongEditor = () => {
     }
   }, [viewType, debouncedText]);
 
-  // useHotkeys(
-  //   (key) => {
-  //     switch (key) {
-  //       case 'ctrl+s':
-  //         save();
-  //         break;
-  //       case 'ctrl+[':
-  //         previous();
-  //         break;
-  //       case 'ctrl+]':
-  //         next();
-  //         break;
-  //       case 'ctrl+e':
-  //         editMetadata();
-  //         break;
-  //       default:
-  //         break;
-  //     }
-  //   },
-  //   ['ctrl+s', 'ctrl+[', 'ctrl+]', 'ctrl+e'],
-  //   []
-  // );
-
-  const savedSettings =
-    typeof localStorage !== 'undefined'
-      ? localStorage.getItem('pdfExportOptions')
-      : undefined;
-
   return (
-    <>
-      <Menu size="mini" inverted attached color="blue">
-        <Menu.Item>
-          <Button.Group size="mini">
-            {app.user && (
-              <Popup
-                content={<strong>Shortcut: Ctrl + E</strong>}
-                size="mini"
-                position="bottom left"
-                trigger={
-                  <Button onClick={editMetadata}>
-                    <Icon name="edit" />
-                    {i18n.t('ui.edit')}
-                  </Button>
-                }
-              />
-            )}
-            <Button onClick={() => setActiveDialog('patchLog')}>
-              <Icon name="history" />
-              {i18n.t('ui.patch log')}
-            </Button>
-            {app.user && (
-              <Popup
-                content={<strong>Shortcut: Ctrl + S</strong>}
-                size="mini"
-                position="bottom left"
-                trigger={
-                  <Button
-                    positive={hasChanges}
-                    disabled={!hasChanges}
-                    onClick={save}>
-                    <Icon name="save" />
-                    {i18n.t('ui.apply')}
-                  </Button>
-                }
-              />
-            )}
-          </Button.Group>
-        </Menu.Item>
-        <>
-          {index !== null && (
-            <Menu.Item>
-              <strong style={{ marginLeft: 10, marginRight: 10 }}>
-                {index} / {totalSongs}
-              </strong>
-            </Menu.Item>
-          )}
-          {(previousKey || nextKey) && (
-            <Menu.Item>
-              <Button.Group size="mini">
-                <Popup
-                  content={<strong>Shortcut: Ctrl + [</strong>}
-                  size="mini"
-                  position="bottom left"
-                  trigger={
-                    <Button
-                      icon
-                      disabled={previousKey === null || hasChanges}
-                      onClick={previous}>
-                      <Icon name="step backward" />
-                    </Button>
-                  }
-                />
-                <Popup
-                  content={<strong>Shortcut: Ctrl + ]</strong>}
-                  size="mini"
-                  position="bottom left"
-                  trigger={
-                    <Button
-                      icon
-                      disabled={nextKey === null || hasChanges}
-                      onClick={next}>
-                      <Icon name="step forward" />
-                    </Button>
-                  }
-                />
-              </Button.Group>
-            </Menu.Item>
-          )}
-        </>
-        {app.user && (
-          <Menu.Item>
-            <Popup
-              header="Tips"
+    <Box sx={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
+      {/* Toolbar */}
+      <Paper sx={{ p: 1, display: 'flex', gap: 1, alignItems: 'center' }}>
+        <Tooltip title={i18n.t('ui.edit metadata')}>
+          <IconButton size="small" onClick={editMetadata}>
+            <EditIcon />
+          </IconButton>
+        </Tooltip>
+
+        <Tooltip title={`${i18n.t('ui.save')} (Ctrl+S)`}>
+          <span>
+            <IconButton
               size="small"
-              content={
-                <Message
-                  list={[
-                    'Move the pointer to the buttons to learn the shortcuts; edit and navigate faster using only your keyboard!',
-                    'If present, title/source must be deleted from the heading to not be painted twice',
-                    'Put "clamp: x" at the start of any empty line to signal clamp position',
-                    'Put "repeat" at the start of the last line in a paragraph to signal a repeated part',
-                    'PDF: Put "column" at the start of a line to signal start of second column',
-                  ]}
-                />
-              }
-              position="bottom left"
-              trigger={
-                <Button icon>
-                  <Icon name="help" />
-                </Button>
-              }
-            />
-          </Menu.Item>
-        )}
-        {app.user && (editSong.patched || editSong.added) && (
-          <>
-            <Menu.Item>
-              <Button negative onClick={confirmRemovePatch}>
-                <Icon name="trash" />
-                {i18n.t('ui.remove patch')}
-              </Button>
-            </Menu.Item>
-            <Menu.Item>
-              <Button onClick={() => setActiveDialog('diffView')}>
-                <Icon name="history" />
-                {i18n.t('ui.diff view')}
-              </Button>
-            </Menu.Item>
-          </>
-        )}
-        <Menu.Item position="right">
-          <Button.Group size="mini">
-            <Button
-              toggle
-              active={viewType == 'html'}
-              onClick={() => setViewType('html')}>
-              HTML
-            </Button>
-            <Button
-              toggle
-              active={viewType == 'pdf'}
-              onClick={() => setViewType('pdf')}>
-              PDF
-            </Button>
-          </Button.Group>
-        </Menu.Item>
-        {viewType == 'pdf' && (
-          <>
-            <Menu.Item>
-              <Button
-                size="mini"
-                floated="right"
-                onClick={() => {
-                  setActiveDialog('pdfSettings');
-                  setDialogCallback(() => {
-                    return () => previewPdf(editSong.key, debouncedText);
-                  });
-                }}>
-                <Icon name="setting" />
-                {i18n.t('screen_title.settings')}
-              </Button>
-            </Menu.Item>
-            <Menu.Item>
-              <Button onClick={downloadPdf}>
-                <Icon name="file pdf" />
-                {i18n.t('ui.download')}
-              </Button>
-            </Menu.Item>
-          </>
-        )}
-        <Menu.Item position="right">
-          <Button onClick={confirmClose}>
-            <Icon name="close" />
-            {i18n.t('ui.close')}
-          </Button>
-        </Menu.Item>
-      </Menu>
-      <Split
-        sizes={[40, 60]}
-        className="split"
-        cursor="col-resize"
-        dragInterval={1}
-        snapOffset={30}
-        expandToMin={false}
-        minSize={300}>
-        <div>
-          <ApiMessage />
-          {app.user ? (
-            <>
-              <TextArea
-                ref={txtRef}
-                onMouseUp={txtPositionEvent}
-                style={{
-                  fontFamily: 'monospace',
-                  backgroundColor: '#fcfcfc',
-                  width: '100%',
-                  height: '100%',
-                  outline: 'none',
-                  resize: 'none',
-                  border: 0,
-                  padding: '10px 20px',
-                  overflow: 'scroll',
-                  whiteSpace: 'pre',
-                }}
-                onKeyUp={txtPositionEvent}
-                onKeyDown={(e: KeyboardEvent) => {
-                  if (e.ctrlKey) {
-                    if (e.key === '[') {
-                      e.preventDefault();
-                      previous();
-                    } else if (e.key === ']') {
-                      e.preventDefault();
-                      next();
-                    } else if (e.key === 'e') {
-                      e.preventDefault();
-                      editMetadata();
-                    } else if (e.key === 's') {
-                      e.preventDefault();
-                      save();
-                    }
-                  }
-                }}
-                value={text}
-                onChange={(e, data) => {
-                  setHasChanges(true);
-                  const newText = (data.value as string).replace(
-                    /\u00A0/g,
-                    ' '
-                  );
-                  setText(newText);
-                  debounced(newText);
-                }}
-              />
-              <Segment
-                basic
-                inverted
-                color="blue"
-                style={{
-                  flex: 0,
-                  margin: 0,
-                  padding: '3px 10px',
-                }}>
-                Line: {linepos}, Column: {colpos}
-              </Segment>
-            </>
-          ) : (
-            <TextArea
-              readOnly
-              style={{
-                fontFamily: 'monospace',
-                backgroundColor: '#fcfcfc',
-                width: '100%',
-                height: '100%',
-                outline: 'none',
-                resize: 'none',
-                border: 0,
-                padding: '10px 20px',
-                overflow: 'scroll',
-                whiteSpace: 'pre',
-              }}
+              onClick={save}
+              disabled={!hasChanges}
+              color={hasChanges ? 'primary' : 'default'}>
+              <SaveIcon />
+            </IconButton>
+          </span>
+        </Tooltip>
+
+        <Tooltip title={i18n.t('ui.close')}>
+          <IconButton size="small" onClick={confirmClose}>
+            <CloseIcon />
+          </IconButton>
+        </Tooltip>
+
+        <Box sx={{ flex: 1 }} />
+
+        <Tooltip title={`${i18n.t('ui.previous')} (Ctrl+[)`}>
+          <span>
+            <IconButton size="small" onClick={previous} disabled={!previousKey}>
+              <PrevIcon />
+            </IconButton>
+          </span>
+        </Tooltip>
+
+        <Typography variant="body2" sx={{ mx: 1 }}>
+          {index + 1} / {totalSongs}
+        </Typography>
+
+        <Tooltip title={`${i18n.t('ui.next')} (Ctrl+])`}>
+          <span>
+            <IconButton size="small" onClick={next} disabled={!nextKey}>
+              <NextIcon />
+            </IconButton>
+          </span>
+        </Tooltip>
+
+        <Tooltip title={i18n.t('ui.preview pdf')}>
+          <IconButton
+            size="small"
+            onClick={() => previewPdf(editSong.key, debouncedText)}>
+            <PdfIcon />
+          </IconButton>
+        </Tooltip>
+
+        <Tooltip title={i18n.t('ui.download pdf')}>
+          <IconButton
+            size="small"
+            onClick={() => downloadPdf(editSong.key, debouncedText)}>
+            <DownloadIcon />
+          </IconButton>
+        </Tooltip>
+      </Paper>
+
+      {/* Content Area */}
+      <Box sx={{ flex: 1, display: 'flex', overflow: 'hidden' }}>
+        <Split
+          style={{
+            display: 'flex',
+            width: '100%',
+          }}
+          sizes={[50, 50]}>
+          {/* Editor */}
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              overflow: 'hidden',
+            }}>
+            <TextField
+              inputRef={txtRef}
+              multiline
+              fullWidth
+              maxRows={999}
               value={text}
+              onChange={(e) => {
+                setText(e.target.value);
+                setHasChanges(true);
+                debounced(e.target.value);
+              }}
+              onSelect={txtPositionEvent}
+              sx={{ flex: 1, fontFamily: 'monospace' }}
             />
-          )}
-        </div>
-        <div style={{ overflow: 'scroll', width: '100%', padding: '8px' }}>
-          {apiResult && apiResult.path == `/pdf/${editSong.key}` && (
-            <Message negative>
-              <Message.Header>Error</Message.Header>
-              <p>{apiResult.error}</p>
-            </Message>
-          )}
-          {viewType == 'html' && (
-            <SongViewFrame
-              title={songFile && songFile.titulo}
-              source={songFile && songFile.fuente}
-              text={debouncedText}
-            />
-          )}
-          {viewType == 'pdf' && <SongViewPdf />}
-        </div>
-      </Split>
-    </>
+            <Box
+              sx={{
+                p: 1,
+                backgroundColor: '#f5f5f5',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+              }}>
+              <Typography variant="caption">
+                Line: {linepos} | Col: {colpos}
+              </Typography>
+              {hasChanges && (
+                <Chip
+                  label={i18n.t('ui.unsaved changes')}
+                  size="small"
+                  color="warning"
+                />
+              )}
+            </Box>
+          </Box>
+
+          {/* Preview */}
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              overflow: 'hidden',
+              borderLeft: '1px solid #ddd',
+            }}>
+            <Box sx={{ borderBottom: '1px solid #ddd' }}>
+              <Tabs
+                value={viewType}
+                onChange={(_, newValue) => setViewType(newValue)}
+                size="small">
+                <Tab label="HTML" value="html" />
+                <Tab label="PDF" value="pdf" />
+              </Tabs>
+            </Box>
+
+            <Box sx={{ flex: 1, overflow: 'auto', p: 2 }}>
+              {viewType === 'html' && (
+                <SongViewFrame
+                  title={songFile?.titulo}
+                  source={songFile?.fuente}
+                  text={debouncedText}
+                />
+              )}
+              {viewType === 'pdf' && <SongViewPdf />}
+            </Box>
+          </Box>
+        </Split>
+      </Box>
+
+      {/* Messages */}
+      {apiResult && (
+        <Box sx={{ p: 1 }}>
+          <ApiMessage />
+        </Box>
+      )}
+    </Box>
   );
 };
 

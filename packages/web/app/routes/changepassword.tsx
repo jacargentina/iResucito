@@ -1,16 +1,18 @@
-import { useLoaderData, useSubmit } from '@remix-run/react';
+import { useLoaderData, useSubmit, useNavigation } from '@remix-run/react';
 import { redirect, ActionFunction, LoaderFunction } from '@remix-run/node';
 import { json } from '@vercel/remix';
 import {
-  Header,
-  Segment,
+  Container,
+  Box,
+  Typography,
   Button,
   Divider,
-  Input,
-  Image,
-  Form,
+  TextField,
+  Avatar,
   Grid,
-} from 'semantic-ui-react';
+  Paper,
+  CircularProgress,
+} from '@mui/material';
 import { useEffect, useState } from 'react';
 import * as bcrypt from 'bcryptjs';
 import Layout from '~/components/Layout';
@@ -38,8 +40,8 @@ export let action: ActionFunction = async ({ request, context, params }) => {
     userIndex = db.data.users.findIndex((u) => u.email == body.get('email'));
   } else {
     let session = await getSession(request.headers.get('cookie'));
-    const user = session.get('user') as AuthData;
-    if (user == null) {
+    const authData = session.get('user') as AuthData;
+    if (authData == null) {
       throw new Error('No autenticado.');
     }
     // @ts-ignore
@@ -60,7 +62,7 @@ export let action: ActionFunction = async ({ request, context, params }) => {
   }
   let session = await getSession(request.headers.get('Cookie'));
   session.set('user', null);
-  return redirect('/account?r=1', {
+  return redirect('/account? r=1', {
     headers: {
       'Set-Cookie': await commitSession(session),
     },
@@ -79,7 +81,9 @@ export let loader: LoaderFunction = async ({ request }) => {
     if (tokenIndex !== -1) {
       return json({ token, email });
     }
-    return json({ error: 'Token and/or email are invalid.' });
+    return json({
+      error: 'Token and/or email are invalid.',
+    });
   }
   return {};
 };
@@ -91,65 +95,124 @@ export function meta() {
 const ChangePassword = () => {
   const data = useLoaderData<typeof loader>();
   const submit = useSubmit();
+  const navigation = useNavigation();
   const [changePassEnabled, setChangePassEnabled] = useState(false);
   const [newPassword, setNewPassword] = useState('');
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
 
   useEffect(() => {
     setChangePassEnabled(
-      newPassword !== '' &&
-        confirmNewPassword !== '' &&
-        newPassword === confirmNewPassword
+      newPassword.length >= 6 && newPassword === confirmNewPassword
     );
   }, [newPassword, confirmNewPassword]);
 
+  const handleChangePassword = () => {
+    if (changePassEnabled) {
+      submit(
+        {
+          newPassword,
+          token: data.token,
+          email: data.email,
+        },
+        { method: 'post' }
+      );
+    }
+  };
+
   return (
     <Layout>
-      <div style={{ padding: 30, width: 500, margin: 'auto' }}>
-        <Image centered circular src="cristo.png" />
-        <Header textAlign="center">
-          iResucito
-          <Header.Subheader>{i18n.t('ui.change password')}</Header.Subheader>
-        </Header>
-        <Grid textAlign="center" verticalAlign="middle">
-          <Grid.Column>
-            {data.error && <ErrorDetail error={data.error} simple />}
-            <ApiMessage />
-            <Form size="large">
-              <Segment vertical>
-                <h5>{i18n.t('ui.new password')}</h5>
-                <Input
-                  fluid
-                  autoFocus
-                  value={newPassword}
-                  onChange={(e, { value }) => {
-                    setNewPassword(value);
-                  }}
-                  type="password"
-                />
-                <h5>{i18n.t('ui.confirm new password')}</h5>
-                <Input
-                  fluid
-                  value={confirmNewPassword}
-                  onChange={(e, { value }) => {
-                    setConfirmNewPassword(value);
-                  }}
-                  type="password"
-                />
-                <Divider hidden />
-                <Button
-                  primary
-                  disabled={!changePassEnabled}
-                  onClick={() => {
-                    submit({ newPassword, ...data }, { method: 'post' });
+      <Container maxWidth="sm">
+        <Box sx={{ py: 4, textAlign: 'center' }}>
+          <Avatar
+            src="/cristo.png"
+            sx={{
+              width: 100,
+              height: 100,
+              margin: '0 auto',
+              mb: 2,
+            }}
+          />
+          <Typography variant="h4" gutterBottom>
+            iResucito
+          </Typography>
+
+          <Grid container spacing={2} sx={{ mt: 2 }}>
+            <Grid item xs={12}>
+              {data.error && (
+                <ErrorDetail error={{ message: data.error }} simple />
+              )}
+              <ApiMessage />
+
+              <Paper sx={{ p: 3, mt: 2 }}>
+                <Box
+                  component="form"
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: 2,
                   }}>
-                  {i18n.t('ui.apply')}
-                </Button>
-              </Segment>
-            </Form>
-          </Grid.Column>
-        </Grid>
-      </div>
+                  <TextField
+                    fullWidth
+                    label={i18n.t('ui. new password')}
+                    type="password"
+                    value={newPassword}
+                    onChange={(e) => setNewPassword(e.target.value)}
+                    helperText={
+                      newPassword.length > 0 && newPassword.length < 6
+                        ? i18n.t('ui.password must be at least 6 characters')
+                        : ''
+                    }
+                    error={newPassword.length > 0 && newPassword.length < 6}
+                  />
+
+                  <TextField
+                    fullWidth
+                    label={i18n.t('ui.confirm new password')}
+                    type="password"
+                    value={confirmNewPassword}
+                    onChange={(e) => setConfirmNewPassword(e.target.value)}
+                    helperText={
+                      confirmNewPassword.length > 0 &&
+                      newPassword! == confirmNewPassword
+                        ? i18n.t('ui.passwords do not match')
+                        : ''
+                    }
+                    error={
+                      confirmNewPassword.length > 0 &&
+                      newPassword! == confirmNewPassword
+                    }
+                  />
+
+                  <Divider sx={{ my: 1 }} />
+
+                  <Button
+                    fullWidth
+                    variant="contained"
+                    color="primary"
+                    size="large"
+                    disabled={!changePassEnabled || navigation.state !== 'idle'}
+                    onClick={handleChangePassword}
+                    sx={{
+                      position: 'relative',
+                    }}>
+                    {navigation.state === 'submitting' && (
+                      <CircularProgress
+                        size={24}
+                        sx={{
+                          position: 'absolute',
+                          left: '50%',
+                          marginLeft: '-12px',
+                        }}
+                      />
+                    )}
+                    {i18n.t('ui. change password')}
+                  </Button>
+                </Box>
+              </Paper>
+            </Grid>
+          </Grid>
+        </Box>
+      </Container>
     </Layout>
   );
 };

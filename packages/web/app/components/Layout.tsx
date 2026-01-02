@@ -1,4 +1,11 @@
-import { Header, Image, Menu } from 'semantic-ui-react';
+import {
+  AppBar,
+  Toolbar,
+  Box,
+  Avatar,
+  Typography,
+  Container,
+} from '@mui/material';
 import LocalePicker from './LocalePicker';
 import EditSongTitle from './EditSongTitle';
 import AppActions from './AppActions';
@@ -9,28 +16,37 @@ const Layout = (props: any) => {
 
   return (
     <>
-      <Menu size="mini" inverted attached>
-        <Link to="/list">
-          <Menu.Item header>
-            <Image
-              circular
+      <AppBar position="static" sx={{ mb: 1 }}>
+        <Toolbar>
+          <Link
+            to="/list"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              textDecoration: 'none',
+              color: 'inherit',
+            }}>
+            <Avatar
               src="/cristo.png"
-              size="mini"
-              height="35"
-              width="35"
+              sx={{
+                width: 35,
+                height: 35,
+                mr: 1,
+              }}
             />
-            <Header.Content
-              style={{ verticalAlign: 'middle', paddingLeft: 10 }}>
+            <Typography variant="h6" sx={{ fontWeight: 600 }}>
               iResucito Web
-            </Header.Content>
-          </Menu.Item>
-        </Link>
-        <LocalePicker />
-        <EditSongTitle />
-        <Menu.Menu position="right">
-          <AppActions />
-        </Menu.Menu>
-      </Menu>
+            </Typography>
+          </Link>
+
+          <LocalePicker />
+          <EditSongTitle />
+
+          <Box sx={{ ml: 'auto' }}>
+            <AppActions />
+          </Box>
+        </Toolbar>
+      </AppBar>
       {children}
     </>
   );

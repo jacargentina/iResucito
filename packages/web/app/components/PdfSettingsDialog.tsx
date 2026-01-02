@@ -1,82 +1,110 @@
-import { useState, useEffect, useCallback } from 'react';
-import JSONInput from 'react-json-editor-ajrm';
-import locale from 'react-json-editor-ajrm/locale/en';
-import { Button, Modal } from 'semantic-ui-react';
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Button,
+  FormControlLabel,
+  Checkbox,
+  TextField,
+  Box,
+  Typography,
+} from '@mui/material';
+import { useContext, useState } from 'react';
+import { EditContext } from './EditContext';
 import i18n from '@iresucito/translations';
-import { PdfStyles } from '@iresucito/core';
 import { useApp } from '~/app.context';
 
 const PdfSettingsDialog = () => {
-  const data = useApp();
-  const { activeDialog, setActiveDialog, dialogCallback } = data;
+  const app = useApp();
+  const { activeDialog, setActiveDialog } = app;
+  const edit = useContext(EditContext);
 
-  const [initialOptions, setinitialOptions] = useState({});
-  const [editing, setEditing] = useState({});
+  if (!edit) {
+    return null;
+  }
 
-  useEffect(() => {
-    if (activeDialog === 'pdfSettings') {
-      const savedSettings = localStorage.getItem('pdfStyles');
-      if (savedSettings) {
-        setinitialOptions(JSON.parse(savedSettings));
-      } else {
-        setinitialOptions(PdfStyles);
-      }
+  const { pdfSettings, setPdfSettings } = edit;
+  const [settings, setSettings] = useState(pdfSettings);
+
+  const handleClose = (save: boolean) => {
+    if (save) {
+      setPdfSettings(settings);
     }
-  }, [activeDialog]);
-
-  const saveOptions = useCallback(() => {
-    localStorage.setItem('pdfExportOptions', JSON.stringify(editing));
     setActiveDialog();
-    if (dialogCallback) {
-      dialogCallback();
-    }
-  }, [dialogCallback]);
-
-  const deleteOptions = useCallback(() => {
-    localStorage.removeItem('pdfStyles');
-    setinitialOptions(PdfStyles);
-    setActiveDialog();
-    if (dialogCallback) {
-      dialogCallback();
-    }
-  }, [dialogCallback]);
+  };
 
   return (
-    <Modal
+    <Dialog
       open={activeDialog === 'pdfSettings'}
-      dimmer="blurring"
-      centered={false}
-      onClose={() => setActiveDialog()}>
-      <Modal.Header>{i18n.t('screen_title.settings')}</Modal.Header>
-      <Modal.Content>
-        {activeDialog === 'pdfSettings' && (
-          <JSONInput
-            id="settingsEditor"
-            placeholder={initialOptions}
-            onChange={(e: any) => {
-              if (!e.error) setEditing(e.jsObject);
-            }}
-            locale={locale}
-            theme="light_mitsuketa_tribute"
-            width="100%"
-            style={{
-              body: { fontSize: '18px' },
-              outerBox: { height: '500px' },
-              container: { height: '500px' },
-            }}
+      maxWidth="sm"
+      fullWidth
+      onClose={() => handleClose(false)}>
+      <DialogTitle>{i18n.t('ui.pdf settings')}</DialogTitle>
+      <DialogContent>
+        <Box sx={{ pt: 2, display: 'flex', flexDirection: 'column', gap: 2 }}>
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={settings.landscape || false}
+                onChange={(e) =>
+                  setSettings({ ...settings, landscape: e.target.checked })
+                }
+              />
+            }
+            label={i18n.t('ui.landscape')}
           />
-        )}
-      </Modal.Content>
-      <Modal.Actions>
-        <Button primary onClick={saveOptions}>
-          {i18n.t('ui.apply')}
+
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={settings.twoColumns || false}
+                onChange={(e) =>
+                  setSettings({ ...settings, twoColumns: e.target.checked })
+                }
+              />
+            }
+            label={i18n.t('ui.two columns')}
+          />
+
+          <TextField
+            label={i18n.t('ui.font size')}
+            type="number"
+            size="small"
+            value={settings.fontSize || 12}
+            onChange={(e) =>
+              setSettings({ ...settings, fontSize: parseInt(e.target.value) })
+            }
+            inputProps={{ min: 8, max: 20 }}
+          />
+
+          <TextField
+            label={i18n.t('ui.line height')}
+            type="number"
+            size="small"
+            value={settings.lineHeight || 1.5}
+            onChange={(e) =>
+              setSettings({
+                ...settings,
+                lineHeight: parseFloat(e.target.value),
+              })
+            }
+            inputProps={{ min: 1, max: 3, step: 0.1 }}
+          />
+        </Box>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={() => handleClose(false)}>
+          {i18n.t('ui.cancel')}
         </Button>
-        <Button negative onClick={deleteOptions}>
-          {i18n.t('ui.delete')}
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => handleClose(true)}>
+          {i18n.t('ui.save')}
         </Button>
-        <Button onClick={() => setActiveDialog()}>{i18n.t('ui.close')}</Button>
-      </Modal.Actions>
-    </Modal>
+      </DialogActions>
+    </Dialog>
   );
 };
 

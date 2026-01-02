@@ -1,16 +1,18 @@
-import { Loader } from 'semantic-ui-react';
+import { Box, CircularProgress, Typography } from '@mui/material';
 
 const Index = () => {
   return (
-    <div
-      style={{
-        height: '100%',
+    <Box
+      sx={{
+        height: '100vh',
         display: 'flex',
+        flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
       }}>
-      <Loader active inline="centered" size="large" content="Loading..." />
-    </div>
+      <CircularProgress sx={{ mb: 2 }} />
+      <Typography variant="h6">Loading...</Typography>
+    </Box>
   );
 };
 

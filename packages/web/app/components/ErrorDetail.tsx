@@ -1,14 +1,15 @@
-import { Message } from 'semantic-ui-react';
+import { Alert, AlertTitle, Box } from '@mui/material';
 
 const ErrorDetail = (props: any) => {
   const message = props.error.message;
   const detail = <pre>{JSON.stringify(props.error, null, 2)}</pre>;
+
   return (
-    <Message negative>
-      <Message.Header>Error</Message.Header>
+    <Alert severity="error">
+      <AlertTitle>Error</AlertTitle>
       <p>{message}</p>
-      {!props.simple && <div>{detail}</div>}
-    </Message>
+      {!props.simple && <Box>{detail}</Box>}
+    </Alert>
   );
 };
 

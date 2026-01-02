@@ -1,5 +1,5 @@
 import { useActionData } from '@remix-run/react';
-import { Message } from 'semantic-ui-react';
+import { Alert, AlertTitle } from '@mui/material';
 import i18n from '@iresucito/translations';
 
 const ApiMessage = () => {
@@ -10,15 +10,15 @@ const ApiMessage = () => {
   }
 
   return (
-    <Message negative={!!data?.error} positive={data?.ok}>
-      <Message.Header>
+    <Alert severity={data?.error ? 'error' : 'success'} sx={{ mt: 2 }}>
+      <AlertTitle>
         {data?.error && i18n.t('ui.error ocurred')}
         {data?.ok && i18n.t('ui.info message')}
-      </Message.Header>
+      </AlertTitle>
       <p>
         {data?.error} {data?.ok}
       </p>
-    </Message>
+    </Alert>
   );
 };
 

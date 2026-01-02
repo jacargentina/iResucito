@@ -1,10 +1,30 @@
-import { useNavigate, useSubmit } from '@remix-run/react';
 import { useContext, useState } from 'react';
-import { Button, Menu, Icon, Modal, Label } from 'semantic-ui-react';
+import {
+  Button,
+  Box,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Chip,
+  Typography,
+  Grid,
+  List,
+  ListItem,
+  ListItemText,
+} from '@mui/material';
+import {
+  Apple as AppleIcon,
+  Android as AndroidIcon,
+  Logout as LogoutIcon,
+  AccountCircle as AccountIcon,
+  Info as InfoIcon,
+} from '@mui/icons-material';
 import { useApp } from '~/app.context';
 import { EditContext } from './EditContext';
 import i18n from '@iresucito/translations';
-import { CollaboratorsIndex} from '@iresucito/core';
+import { CollaboratorsIndex } from '@iresucito/core';
+import { useNavigate, useSubmit } from '@remix-run/react';
 
 const AppActions = () => {
   const app = useApp();
@@ -36,99 +56,124 @@ const AppActions = () => {
 
   return (
     <>
-      {aboutVisible && (
-        <Modal
-          centered={false}
-          closeIcon
-          open={aboutVisible}
-          onClose={() => setAboutVisible(false)}
-          size="large">
-          <Modal.Header>iResucito Web</Modal.Header>
-          <Modal.Content>
-            <div style={{ display: 'flex' }}>
-              <img src="/cristo.jpg" width="200" height="300" alt="Cristo" />
-              <div style={{ flex: 1, marginLeft: 20 }}>
-                <div>
-                  <Icon name="apple" size="large" />
-                  <Icon name="android" size="large" color="green" />
-                  {app.expo_version}
-                </div>
-                &nbsp;
-                <div>
-                  <h3>{i18n.t('ui.collaborators')}</h3>
-                  <ul>
-                    {Object.keys(CollaboratorsIndex).map((lang, idx) => {
-                      return (
-                        <li key={idx}>{`${CollaboratorsIndex[lang].join(
-                          ', '
-                        )} (${lang})`}</li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              </div>
-              <div style={{ flex: 1, marginLeft: 20 }}>
-                {app.patchStats && app.patchStats.length > 0 && (
-                  <>
-                    <h3>{i18n.t('ui.statistics')}</h3>
-                    <p>{i18n.t('ui.changes pending of publish')}</p>
-                  </>
-                )}
-                {app.patchStats &&
-                  app.patchStats.map((localeStats) => {
-                    return (
-                      <>
-                        <h4>
-                          <Label color="green">
-                            {localeStats.locale} ({localeStats.count} changes)
-                          </Label>
-                        </h4>
-                        <ul>
-                          {localeStats.items.map((stat) => {
-                            return (
-                              <li>
-                                {i18n.t('ui.changed songs by author', {
-                                  ...stat,
-                                })}
-                              </li>
-                            );
-                          })}
-                        </ul>
-                      </>
-                    );
-                  })}
-              </div>
-            </div>
-          </Modal.Content>
-        </Modal>
-      )}
-      {app.user ? (
-        <>
-          <Menu.Item>
-            <Button negative onClick={confirmLogout}>
+      <Dialog
+        open={aboutVisible}
+        maxWidth="md"
+        fullWidth
+        onClose={() => setAboutVisible(false)}>
+        <DialogTitle>iResucito Web</DialogTitle>
+        <DialogContent>
+          <Grid container spacing={2} sx={{ mt: 1 }}>
+            <Grid item xs={12} sm={4}>
+              <Box
+                component="img"
+                src="/cristo.jpg"
+                sx={{ width: '100%', maxWidth: 200 }}
+                alt="Cristo"
+              />
+              <Box sx={{ display: 'flex', gap: 1, mt: 2 }}>
+                <AppleIcon fontSize="large" />
+                <AndroidIcon fontSize="large" sx={{ color: 'green' }} />
+              </Box>
+              <Typography variant="body2">{app.expo_version}</Typography>
+            </Grid>
+
+            <Grid item xs={12} sm={4}>
+              <Typography variant="h6" gutterBottom>
+                {i18n.t('ui.collaborators')}
+              </Typography>
+              <List dense>
+                {Object.keys(CollaboratorsIndex).map((lang) => (
+                  <ListItem key={lang} disableGutters>
+                    <ListItemText
+                      primary={`${CollaboratorsIndex[
+                        lang as keyof typeof CollaboratorsIndex
+                      ].join(', ')} (${lang})`}
+                    />
+                  </ListItem>
+                ))}
+              </List>
+            </Grid>
+
+            <Grid item xs={12} sm={4}>
+              {app.patchStats && app.patchStats.length > 0 && (
+                <>
+                  <Typography variant="h6" gutterBottom>
+                    {i18n.t('ui.statistics')}
+                  </Typography>
+                  <Typography variant="body2" paragraph>
+                    {i18n.t('ui.changes pending of publish')}
+                  </Typography>
+
+                  {app.patchStats.map((localeStats) => (
+                    <Box key={localeStats.locale} sx={{ mb: 2 }}>
+                      <Chip
+                        label={`${localeStats.locale} (${localeStats.count} changes)`}
+                        color="success"
+                        sx={{ mb: 1 }}
+                      />
+                      <List dense>
+                        {localeStats.items.map((stat, idx) => (
+                          <ListItem key={idx} disableGutters>
+                            <ListItemText
+                              primary={i18n.t('ui.changed songs by author', {
+                                ...stat,
+                              })}
+                            />
+                          </ListItem>
+                        ))}
+                      </List>
+                    </Box>
+                  ))}
+                </>
+              )}
+            </Grid>
+          </Grid>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setAboutVisible(false)}>
+            {i18n.t('ui.close')}
+          </Button>
+        </DialogActions>
+      </Dialog>
+
+      <Box sx={{ display: 'flex', gap: 1 }}>
+        {app.user ? (
+          <>
+            <Button
+              variant="contained"
+              color="error"
+              startIcon={<LogoutIcon />}
+              onClick={confirmLogout}
+              size="small">
               {i18n.t('ui.logout')}
             </Button>
-          </Menu.Item>
-          <Menu.Item>
-            <Button onClick={() => navigate('/account')}>
+            <Button
+              variant="outlined"
+              startIcon={<AccountIcon />}
+              onClick={() => navigate('/account')}
+              size="small">
               {i18n.t('ui.account')}
             </Button>
-          </Menu.Item>
-        </>
-      ) : null}
-      {!app.user && (
-        <Menu.Item>
-          <Button primary onClick={() => navigate('/account')}>
+          </>
+        ) : null}
+        {!app.user && (
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => navigate('/login')}
+            size="small">
             {i18n.t('ui.login')}
           </Button>
-        </Menu.Item>
-      )}
-      <Menu.Item>
-        <Button onClick={() => setAboutVisible(true)}>
-          <Icon name="help" />
+        )}
+        <Button
+          variant="outlined"
+          startIcon={<InfoIcon />}
+          onClick={() => setAboutVisible(true)}
+          size="small">
           {i18n.t('settings_title.about')}
         </Button>
-      </Menu.Item>
+      </Box>
     </>
   );
 };

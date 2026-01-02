@@ -2,19 +2,37 @@ import { useMemo, useEffect, useState } from 'react';
 import {
   Button,
   List,
-  Input,
-  Label,
-  Message,
-  Menu,
-  Popup,
-  Icon,
-  Loader,
-} from 'semantic-ui-react';
-// TODO No funciona bien en VITE (al refrescar)
-// import useHotkeys from 'use-hotkeys';
+  ListItem,
+  ListItemText,
+  ListItemIcon,
+  TextField,
+  FormControlLabel,
+  Checkbox,
+  Paper,
+  Alert,
+  Box,
+  Typography,
+  Chip,
+  CircularProgress,
+  Tooltip,
+  IconButton,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+} from '@mui/material';
+import {
+  GetApp as DownloadIcon,
+  PictureAsPdf as PdfIcon,
+  Edit as EditIcon,
+  Delete as DeleteIcon,
+  Add as AddIcon,
+  Info as InfoIcon,
+} from '@mui/icons-material';
 import SongViewPdf from '~/components/SongViewPdf';
 import ApiMessage from '~/components/ApiMessage';
 import SongListResume from '~/components/SongListResume';
+import SongListItem from '~/components/SongListItem';
 import { useDebounce } from 'use-debounce';
 import { Song, colors, getPropertyLocale } from '@iresucito/core';
 import i18n from '@iresucito/translations';
@@ -107,298 +125,239 @@ const SongList = (props: { songs: Array<Song> }) => {
   const addSong = () => {
     setApiResult();
     fetch(`/song/newSong`)
-      .then((result) => {
-        return result.json();
-      })
+      .then((result) => result.json())
       .then((data) => {
         edit(data.song);
       })
       .catch((err) => {
-        handleApiError(`/song/newSong`, err);
+        handleApiError(err);
       });
   };
 
-  useEffect(() => {
-    // filtrar
-    if (songs && !filtering) {
-      setFiltering(true);
-      const filterByText = debouncedTerm
-        ? songs.filter(
-            (song) =>
-              song.titulo.toLowerCase().includes(debouncedTerm.toLowerCase()) ||
-              song.fuente.toLowerCase().includes(debouncedTerm.toLowerCase())
-          )
-        : songs;
-      const result = filterByText.filter((song) => {
-        const flags = Object.keys(filters).map((name) => {
-          // @ts-ignore
-          return filters[name] === false || song[name] === filters[name];
+  const removePatch = (song: Song) => {
+    setDialogCallback(() => {
+      fetch(`/song/${song.key}`, { method: 'DELETE' })
+        .then((result) => result.json())
+        .then(() => {
+          setApiResult({ ok: i18n.t('ui.patch removed') });
+        })
+        .catch((err) => {
+          handleApiError(err);
         });
-        if (onlyTranslated) {
-          flags.push(getPropertyLocale(song.files, i18n.locale) !== '');
-        }
-        return flags.every((f) => f === true);
-      });
-      setFiltered(result);
-      setFiltering(false);
-    }
-  }, [debouncedTerm, songs, filtering, filters, onlyTranslated]);
+    });
+    setActiveDialog('confirm');
+  };
 
-  // useHotkeys(
-  //   (key) => {
-  //     switch (key) {
-  //       case 'ctrl+n':
-  //         addSong();
-  //         break;
-  //       default:
-  //         break;
-  //     }
-  //   },
-  //   ['ctrl+n', 'r'],
-  //   []
-  // );
+  useEffect(() => {
+    setFiltering(true);
+    const filtered = songs.filter((song: Song) => {
+      if (
+        filters.patched &&
+        filters.added &&
+        filters.notTranslated &&
+        onlyTranslated
+      ) {
+        return (
+          (song.titulo.toLowerCase().includes(debouncedTerm) ||
+            song.fuente.toLowerCase().includes(debouncedTerm)) &&
+          (song.patched || song.added) &&
+          !song.notTranslated &&
+          getPropertyLocale(song.files, i18n.locale)
+        );
+      }
+
+      if (filters.patched || filters.added || filters.notTranslated) {
+        return (
+          (song.titulo.toLowerCase().includes(debouncedTerm) ||
+            song.fuente.toLowerCase().includes(debouncedTerm)) &&
+          ((filters.patched && song.patched) ||
+            (filters.added && song.added) ||
+            (filters.notTranslated && song.notTranslated))
+        );
+      }
+
+      if (onlyTranslated) {
+        return (
+          (song.titulo.toLowerCase().includes(debouncedTerm) ||
+            song.fuente.toLowerCase().includes(debouncedTerm)) &&
+          getPropertyLocale(song.files, i18n.locale)
+        );
+      }
+
+      return (
+        song.titulo.toLowerCase().includes(debouncedTerm) ||
+        song.fuente.toLowerCase().includes(debouncedTerm)
+      );
+    });
+    setFiltered(filtered);
+    setFiltering(false);
+  }, [debouncedTerm, filters, onlyTranslated]);
 
   return (
-    <>
-      <Menu size="mini" inverted attached color="blue">
-        {pdf && numPages && (
-          <Menu.Item>
-            <Button
-              icon
-              size="mini"
-              disabled={currPage === 1}
-              onClick={() => setCurrPage((p) => p - 1)}>
-              <Icon name="step backward" />
-            </Button>
-            <Input
-              className="pageNumberInput"
-              value={currPage}
-              onChange={(e, { value }) => setCurrPage(Number(value))}
-            />
-            <Button
-              size="mini"
-              icon
-              disabled={currPage === numPages}
-              onClick={() => setCurrPage((p) => p + 1)}>
-              <Icon name="step forward" />
-            </Button>
-            <Label>
-              Total:
-              <Label.Detail>{numPages}</Label.Detail>
-            </Label>
-          </Menu.Item>
-        )}
-        {pdf && (
-          <>
-            <Menu.Item>
-              <Button.Group size="mini">
-                <Button
-                  size="mini"
-                  floated="right"
-                  onClick={() => {
-                    setActiveDialog('pdfSettings');
-                    setDialogCallback(() => {
-                      return () => previewPdf('full', '');
-                    });
-                  }}>
-                  <Icon name="setting" />
-                  {i18n.t('screen_title.settings')}
-                </Button>
-              </Button.Group>
-            </Menu.Item>
-            <Menu.Item>
-              <Button.Group size="mini">
-                <Button onClick={downloadPdf}>
-                  <Icon name="file pdf" />
-                  {i18n.t('ui.download')}
-                </Button>
-              </Button.Group>
-            </Menu.Item>
-            <Menu.Item position="right">
-              <Button.Group size="mini">
-                <Button onClick={closePdf}>
-                  <Icon name="close" />
-                  {i18n.t('ui.close')}
-                </Button>
-              </Button.Group>
-            </Menu.Item>
-          </>
-        )}
-        {!pdf && (
-          <>
-            <Menu.Item>
-              <Button.Group size="mini">
-                {user && (
-                  <Popup
-                    content={<strong>Shortcut: Ctrl + N</strong>}
-                    size="mini"
-                    position="bottom left"
-                    trigger={
-                      <Button onClick={addSong}>
-                        <Icon name="add" />
-                        {i18n.t('ui.create')}
-                      </Button>
-                    }
-                  />
-                )}
-                <Button
-                  onClick={() => previewPdf('full', '')}
-                  disabled={pdfLoading}>
-                  <Icon name="file pdf" />
-                  {i18n.t('share_action.view pdf')}
-                </Button>
-              </Button.Group>
-            </Menu.Item>
-            <Menu.Item>
-              <Button.Group size="mini">
-                <Button
-                  toggle
-                  active={filters.patched}
-                  onClick={() => toggleFilter('patched')}>
-                  {i18n.t('ui.filters.patched')}
-                  {patchedCount > 0 ? ` - ${patchedCount}` : null}
-                </Button>
-                <Button
-                  toggle
-                  active={filters.added}
-                  onClick={() => toggleFilter('added')}>
-                  {i18n.t('ui.filters.added')}
-                  {addedCount > 0 ? ` - ${addedCount}` : null}
-                </Button>
-                <Button
-                  toggle
-                  active={filters.notTranslated}
-                  onClick={() => toggleFilter('notTranslated')}>
-                  {i18n.t('ui.filters.untranslated')}
-                  {notTranslatedCount > 0 ? ` - ${notTranslatedCount}` : null}
-                </Button>
-                <Button
-                  toggle
-                  active={onlyTranslated}
-                  onClick={() => setOnlyTranslated((state) => !state)}>
-                  {i18n.t('ui.filters.translated')}
-                </Button>
-              </Button.Group>
-            </Menu.Item>
-            {filtered && (
-              <Menu.Item>
-                <strong style={{ marginLeft: 10 }}>
-                  {i18n.t('ui.list total songs', { total: filtered.length })}
-                </strong>
-              </Menu.Item>
-            )}
-            <SongListResume songs={songs} />
-          </>
-        )}
-      </Menu>
-      {!pdf && !isProcessing && (
-        <>
-          <div style={{ padding: 10 }}>
-            <Input
-              fluid
-              icon="search"
-              placeholder={i18n.t('ui.search placeholder')}
-              onChange={(_, data) => {
-                setSearchTerm(data.value);
-                localStorage.setItem('searchTerm', JSON.stringify(data.value));
-              }}
-              defaultValue={searchTermDefaultValue}
-              loading={filtering}
-            />
-            {filtered && filtered.length === 0 && (
-              <Message>{i18n.t('ui.no songs found')}</Message>
-            )}
-          </div>
-          <ApiMessage />
-          <List
-            size="big"
-            divided
-            style={{
-              height: '100%',
-              margin: 0,
-              paddingLeft: 10,
-              paddingRight: 10,
-              overflowY: 'scroll',
-            }}>
-            {filtered &&
-              filtered.map((song, idx) => {
-                return (
-                  <List.Item
-                    key={idx}
-                    onClick={() => edit(song)}
-                    className="hoverable">
-                    <List.Content>
-                      <List.Header>{song.titulo}</List.Header>
-                      <List.Description>{song.fuente}</List.Description>
-                      <div style={{ marginTop: 8 }}>
-                        {song.stage && (
-                          <Popup
-                            content={i18n.t(`search_title.${song.stage}`)}
-                            trigger={
-                              <Label
-                                style={{
-                                  backgroundColor: colors[song.stage],
-                                }}
-                                size="small">
-                                {song.stage[0].toUpperCase()}
-                              </Label>
-                            }
-                          />
-                        )}
-                        {song.patched && (
-                          <Label color="violet" size="small">
-                            patched
-                          </Label>
-                        )}
-                        {song.added && (
-                          <Label color="violet" size="small">
-                            added
-                          </Label>
-                        )}
-                        {song.version > 0 && (
-                          <Popup
-                            content={i18n.t('ui.song version number', {
-                              version: song.version,
-                            })}
-                            trigger={
-                              <Label color="blue" size="small">
-                                {song.version}
-                              </Label>
-                            }
-                          />
-                        )}
-                        {song.notTranslated && (
-                          <Label color="red" size="small">
-                            {i18n.t('ui.locale warning title')}
-                          </Label>
-                        )}
-                      </div>
-                    </List.Content>
-                  </List.Item>
-                );
-              })}
-          </List>
-        </>
-      )}
-      {isProcessing && (
-        <div
-          style={{
-            height: '100%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <Loader
-            active
-            inline="centered"
-            size="large"
-            content={i18n.t('ui.loading')}
-            inverted={false}
+    <Box sx={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
+      {/* Toolbar */}
+      <Paper sx={{ p: 1, mb: 1 }}>
+        <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap', mb: 1 }}>
+          <TextField
+            placeholder={i18n.t('ui.search placeholder')}
+            variant="outlined"
+            size="small"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value.toLowerCase())}
+            sx={{ flex: 1, minWidth: 200 }}
           />
-        </div>
-      )}
-      {pdf && <SongViewPdf />}
-    </>
+          <Button
+            variant="contained"
+            startIcon={<AddIcon />}
+            onClick={addSong}
+            disabled={!user || isProcessing}>
+            {i18n.t('ui.create')}
+          </Button>
+          <Button
+            variant="outlined"
+            startIcon={<PdfIcon />}
+            onClick={() => previewPdf('', '')}
+            disabled={isProcessing}>
+            {i18n.t('share_action.view pdf')}
+          </Button>
+        </Box>
+
+        {/* Filters */}
+        <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={filters.patched}
+                onChange={() => toggleFilter('patched')}
+              />
+            }
+            label={`${i18n.t('ui.filters.patched')} (${patchedCount})`}
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={filters.added}
+                onChange={() => toggleFilter('added')}
+              />
+            }
+            label={`${i18n.t('ui.filters.added')} (${addedCount})`}
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={filters.notTranslated}
+                onChange={() => toggleFilter('notTranslated')}
+              />
+            }
+            label={`${i18n.t(
+              'ui.filters.untranslated'
+            )} (${notTranslatedCount})`}
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={onlyTranslated}
+                onChange={(e) => setOnlyTranslated(e.target.checked)}
+              />
+            }
+            label={i18n.t('ui.filters.translated')}
+          />
+          <Box sx={{ ml: 'auto' }}>
+            <SongListResume songs={filtered} />
+          </Box>
+        </Box>
+      </Paper>
+
+      {/* Message Areas */}
+      <Box sx={{ px: 1, mb: 1 }}>
+        <ApiMessage />
+      </Box>
+
+      {/* Songs List */}
+      <Box sx={{ flex: 1, overflow: 'auto', px: 1 }}>
+        {filtering && (
+          <Box sx={{ display: 'flex', justifyContent: 'center', py: 4 }}>
+            <CircularProgress />
+          </Box>
+        )}
+
+        {!filtering && filtered && filtered.length === 0 && (
+          <Alert severity="info">{i18n.t('ui.empty songs list')}</Alert>
+        )}
+
+        {!filtering && filtered && (
+          <List>
+            {filtered.map((song) => (
+              <Paper key={song.key} sx={{ mb: 1 }}>
+                <ListItem
+                  secondaryAction={
+                    <Box sx={{ display: 'flex', gap: 0.5 }}>
+                      {song.patched && (
+                        <Tooltip title={i18n.t('ui.remove patch')}>
+                          <IconButton
+                            edge="end"
+                            size="small"
+                            onClick={() => removePatch(song)}
+                            disabled={!user}>
+                            <DeleteIcon />
+                          </IconButton>
+                        </Tooltip>
+                      )}
+                      <Tooltip title={i18n.t('ui.preview pdf')}>
+                        <IconButton
+                          edge="end"
+                          size="small"
+                          onClick={() => previewPdf(song.key, '')}>
+                          <PdfIcon />
+                        </IconButton>
+                      </Tooltip>
+                      <Tooltip title={i18n.t('ui.edit')}>
+                        <IconButton
+                          edge="end"
+                          size="small"
+                          onClick={() => edit(song)}
+                          disabled={!user || isProcessing}>
+                          <EditIcon />
+                        </IconButton>
+                      </Tooltip>
+                    </Box>
+                  }>
+                  <ListItemIcon>
+                    <Box sx={{ display: 'flex', gap: 1 }}>
+                      {song.patched && (
+                        <Chip
+                          label="Patched"
+                          size="small"
+                          color="primary"
+                          variant="outlined"
+                        />
+                      )}
+                      {song.added && (
+                        <Chip
+                          label="Added"
+                          size="small"
+                          color="success"
+                          variant="outlined"
+                        />
+                      )}
+                      {song.notTranslated && (
+                        <Chip
+                          label="No Translated"
+                          size="small"
+                          color="warning"
+                          variant="outlined"
+                        />
+                      )}
+                    </Box>
+                  </ListItemIcon>
+                  <ListItemText primary={song.titulo} secondary={song.fuente} />
+                </ListItem>
+              </Paper>
+            ))}
+          </List>
+        )}
+      </Box>
+    </Box>
   );
 };
 

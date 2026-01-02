@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Menu, Progress } from 'semantic-ui-react';
+import { Box, Typography, LinearProgress } from '@mui/material';
 import i18n from '@iresucito/translations';
 import { getPropertyLocale, Song } from '@iresucito/core';
 
@@ -15,7 +15,7 @@ const SongListResume = (props: any) => {
   useEffect(() => {
     if (songs) {
       const withLocale = songs.filter((song: Song) => {
-        return song.patched || !!getPropertyLocale(song.files, i18n.locale);
+        return song.patched || !!getPropertyLocale(song. files, i18n.locale);
       });
       const result = { translated: withLocale.length, total: songs.length };
       setResume({
@@ -27,25 +27,38 @@ const SongListResume = (props: any) => {
     }
   }, [songs]);
 
+  const percentage =
+    resume.values.total > 0
+      ? Math.round((resume.values.translated / resume.values.total) * 100)
+      : 0;
+
   return (
-    <Menu.Item position="right">
-      {resume.text}
-      <Progress
-        total={resume.values.total}
-        value={resume.values.translated}
-        progress="percent"
-        inverted
-        precision={2}
-        success
-        style={{
-          marginLeft: '40px',
-          marginTop: 'auto',
-          marginBottom: 'auto',
-          width: '250px',
-          backgroundColor: 'gray',
-        }}
-      />
-    </Menu.Item>
+    <Box
+      sx={{
+        ml: 'auto',
+        display: 'flex',
+        alignItems: 'center',
+        gap: 2,
+      }}>
+      <Typography variant="body2">{resume.text}</Typography>
+      <Box sx={{ width: 250 }}>
+        <LinearProgress
+          variant="determinate"
+          value={percentage}
+          sx={{
+            height: 8,
+            borderRadius: 4,
+            backgroundColor: '#e0e0e0',
+            '& .MuiLinearProgress-bar': {
+              backgroundColor: '#4caf50',
+            },
+          }}
+        />
+        <Typography variant="caption" sx={{ display: 'block', mt: 0.5 }}>
+          {percentage}%
+        </Typography>
+      </Box>
+    </Box>
   );
 };
 
