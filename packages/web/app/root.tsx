@@ -28,7 +28,14 @@ export let loader: LoaderFunction = async ({ request }) => {
   const patch = await folderExtras.readPatch();
   const stats = patch ? getPatchStats(patch) : [];
 
-  const authData = await authenticator.isAuthenticated(request);
+  let authData = null;
+
+  try {
+    authData = await authenticator.authenticate('lowdb', request);
+  } catch (error) {
+    authData = null;
+  }
+
   const session = await getSession(request.headers.get('Cookie'));
 
   return {

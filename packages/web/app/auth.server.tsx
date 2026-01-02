@@ -1,10 +1,9 @@
 import { Authenticator } from 'remix-auth';
 import { FormStrategy } from 'remix-auth-form';
-import { sessionStorage } from './session.server';
 import { db } from './utils.server';
 import bcrypt from 'bcryptjs';
 
-export let authenticator = new Authenticator<AuthData>(sessionStorage);
+export let authenticator = new Authenticator<AuthData>();
 
 authenticator.use(
   new FormStrategy(async ({ form }) => {

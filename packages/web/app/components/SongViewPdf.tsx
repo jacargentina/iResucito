@@ -6,7 +6,7 @@ import { usePdf } from './PdfContext';
 pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.mjs';
 
 const SongViewPdf = (props: any) => {
-  const myRef = useRef<any>();
+  const myRef = useRef<any>(null);
   const { loading, pdf, currPage } = usePdf();
 
   useEffect(() => {

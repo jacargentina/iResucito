@@ -16,7 +16,6 @@ import * as bcrypt from 'bcryptjs';
 import Layout from '~/components/Layout';
 import ApiMessage from '~/components/ApiMessage';
 import { db } from '~/utils.server';
-import { authenticator } from '~/auth.server';
 import i18n from '@iresucito/translations';
 import ErrorDetail from '~/components/ErrorDetail';
 import { commitSession, getSession } from '~/session.server';
@@ -38,8 +37,9 @@ export let action: ActionFunction = async ({ request, context, params }) => {
     // @ts-ignore
     userIndex = db.data.users.findIndex((u) => u.email == body.get('email'));
   } else {
-    let authData = await authenticator.isAuthenticated(request);
-    if (!authData) {
+    let session = await getSession(request.headers.get('cookie'));
+    const user = session.get('user') as AuthData;
+    if (user == null) {
       throw new Error('No autenticado.');
     }
     // @ts-ignore
@@ -59,7 +59,7 @@ export let action: ActionFunction = async ({ request, context, params }) => {
     return redirect(`/account?u=${body.get('email')}&r=1`);
   }
   let session = await getSession(request.headers.get('Cookie'));
-  session.set(authenticator.sessionKey, null);
+  session.set('user', null);
   return redirect('/account?r=1', {
     headers: {
       'Set-Cookie': await commitSession(session),

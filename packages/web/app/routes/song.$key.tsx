@@ -1,4 +1,3 @@
-import { authenticator } from '~/auth.server';
 import { ActionFunction, LoaderFunction } from '@remix-run/node';
 import { json } from '@vercel/remix';
 import { getSession } from '~/session.server';
@@ -54,8 +53,8 @@ export let loader: LoaderFunction = async ({ request, params }) => {
   if (!key) {
     throw new Error('key not provided');
   }
-  const authData = await authenticator.isAuthenticated(request);
-  if (!authData) {
+  const authData = session.get('user') as AuthData;
+  if (authData == null) {
     throw new Error("Can't continue. Login required for that action");
   }
   if (key === 'newSong') {
@@ -135,8 +134,8 @@ export let action: ActionFunction = async ({ request, params }) => {
     throw new Error('Locale not provided');
   }
   try {
-    const authData = await authenticator.isAuthenticated(request);
-    if (!authData) {
+    const authData = session.get('user') as AuthData;
+    if (authData == null) {
       throw new Error("Can't continue. Login required for that action");
     }
     const { key } = params;

@@ -5,7 +5,7 @@ import {
   useSubmit,
   useNavigation,
 } from '@remix-run/react';
-import { ActionFunction, LoaderFunction } from '@remix-run/node';
+import { ActionFunction, LoaderFunction, redirect } from '@remix-run/node';
 import { json } from '@vercel/remix';
 import { authenticator } from '~/auth.server';
 import { useState } from 'react';
@@ -28,24 +28,30 @@ import { commitSession, getSession } from '~/session.server';
 import i18n from '@iresucito/translations';
 
 export let action: ActionFunction = async ({ request }) => {
-  return await authenticator.authenticate('lowdb', request, {
-    successRedirect: '/list',
-    failureRedirect: '/account',
-  });
+  try {
+    const user = await authenticator.authenticate('lowdb', request);
+    let session = await getSession(request.headers.get('cookie'));
+    session.set('user', user);
+    session.unset('auth:error');
+    let headers = new Headers({ 'Set-Cookie': await commitSession(session) });
+    return new Response(null, { headers });
+  } catch (err: any) {
+    console.log(err);
+    return new Response(JSON.stringify({ error: err.message }), {
+      status: 401,
+    });
+  }
 };
 
 export let loader: LoaderFunction = async ({ request }) => {
-  const session = await getSession(request.headers.get('Cookie'));
-  return json(
-    {
-      error: session.get('auth:error'),
-    },
-    {
-      headers: {
-        'Set-Cookie': await commitSession(session),
-      },
-    }
-  );
+  let session = await getSession(request.headers.get('cookie'));
+  const user = session.get('user') as AuthData;
+  if (user) {
+    return redirect('/list');
+  }
+  return {
+    error: session.get('auth:error'),
+  };
 };
 
 export function meta() {

@@ -1,13 +1,11 @@
 import { ActionFunction, redirect } from '@remix-run/node';
-import { authenticator } from '~/auth.server';
-import { commitSession, getSession } from '~/session.server';
+import { getSession, destroySession } from '~/session.server';
 
 export let action: ActionFunction = async ({ request }) => {
   let session = await getSession(request.headers.get('Cookie'));
-  session.set(authenticator.sessionKey, null);
   return redirect('/list', {
     headers: {
-      'Set-Cookie': await commitSession(session),
+      'Set-Cookie': await destroySession(session),
     },
   });
 };
