@@ -12,6 +12,7 @@ import fr from './langs/fr.json';
 import de from './langs/de.json';
 import pl from './langs/pl.json';
 import ru from './langs/ru.json';
+import hr from './langs/hr.json';
 
 // Lenguajes disponibles
 const i18n = new I18n({
@@ -27,7 +28,8 @@ const i18n = new I18n({
   fr: fr,
   de: de,
   pl: pl,
-  ru: ru
+  ru: ru,
+  hr: hr
 });
 
 i18n.enableFallback = true;
