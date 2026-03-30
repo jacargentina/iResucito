@@ -29,20 +29,21 @@ import { commitSession, getSession } from '~/session.server';
 import i18n from '@iresucito/translations';
 
 export let action: ActionFunction = async ({ request }) => {
+  let session = await getSession(request.headers.get('cookie'));
   try {
     const user = await authenticator.authenticate('lowdb', request);
-    let session = await getSession(request.headers.get('cookie'));
     session.set('user', user);
-    session.unset('auth: error');
+    session.unset('auth:error');
     let headers = new Headers({
       'Set-Cookie': await commitSession(session),
     });
     return new Response(null, { headers });
   } catch (err: any) {
-    console.log(err);
-    return new Response(JSON.stringify({ error: err.message }), {
-      status: 401,
+    session.set('auth:error', err.message);
+    let headers = new Headers({
+      'Set-Cookie': await commitSession(session),
     });
+    return new Response(null, { headers });
   }
 };
 

@@ -4,7 +4,6 @@ import {
   Box,
   Avatar,
   Typography,
-  Container,
 } from '@mui/material';
 import LocalePicker from './LocalePicker';
 import EditSongTitle from './EditSongTitle';

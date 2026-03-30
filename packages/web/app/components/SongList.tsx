@@ -11,30 +11,21 @@ import {
   Paper,
   Alert,
   Box,
-  Typography,
   Chip,
   CircularProgress,
   Tooltip,
   IconButton,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
 } from '@mui/material';
 import {
-  GetApp as DownloadIcon,
   PictureAsPdf as PdfIcon,
   Edit as EditIcon,
   Delete as DeleteIcon,
   Add as AddIcon,
-  Info as InfoIcon,
 } from '@mui/icons-material';
-import SongViewPdf from '~/components/SongViewPdf';
 import ApiMessage from '~/components/ApiMessage';
 import SongListResume from '~/components/SongListResume';
-import SongListItem from '~/components/SongListItem';
 import { useDebounce } from 'use-debounce';
-import { Song, colors, getPropertyLocale } from '@iresucito/core';
+import { Song, getPropertyLocale } from '@iresucito/core';
 import i18n from '@iresucito/translations';
 import { useApp } from '~/app.context';
 import { useNavigate } from '@remix-run/react';
@@ -130,7 +121,7 @@ const SongList = (props: { songs: Array<Song> }) => {
         edit(data.song);
       })
       .catch((err) => {
-        handleApiError(err);
+        handleApiError(`/song/newSong`, err);
       });
   };
 
@@ -142,7 +133,7 @@ const SongList = (props: { songs: Array<Song> }) => {
           setApiResult({ ok: i18n.t('ui.patch removed') });
         })
         .catch((err) => {
-          handleApiError(err);
+          handleApiError(`/song/${song.key}`, err);
         });
     });
     setActiveDialog('confirm');
@@ -303,7 +294,7 @@ const SongList = (props: { songs: Array<Song> }) => {
                           </IconButton>
                         </Tooltip>
                       )}
-                      <Tooltip title={i18n.t('ui.preview pdf')}>
+                      <Tooltip title={i18n.t('ui.pdf')}>
                         <IconButton
                           edge="end"
                           size="small"
@@ -323,7 +314,7 @@ const SongList = (props: { songs: Array<Song> }) => {
                     </Box>
                   }>
                   <ListItemIcon>
-                    <Box sx={{ display: 'flex', gap: 1 }}>
+                    <Box sx={{ display: 'flex', gap: 1, mr: 1 }}>
                       {song.patched && (
                         <Chip
                           label="Patched"
@@ -350,7 +341,11 @@ const SongList = (props: { songs: Array<Song> }) => {
                       )}
                     </Box>
                   </ListItemIcon>
-                  <ListItemText primary={song.titulo} secondary={song.fuente} />
+                  <ListItemText
+                    primary={song.titulo}
+                    primaryTypographyProps={{ fontWeight: 'bold' }}
+                    secondary={song.fuente}
+                  />
                 </ListItem>
               </Paper>
             ))}

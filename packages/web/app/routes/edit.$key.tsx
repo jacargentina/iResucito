@@ -6,7 +6,6 @@ import SongChangeMetadataDialog from '~/components/SongChangeMetadataDialog';
 import ConfirmDialog from '~/components/ConfirmDialog';
 import PatchLogDialog from '~/components/PatchLogDialog';
 import DiffViewDialog from '~/components/DiffViewDialog';
-import PdfSettingsDialog from '~/components/PdfSettingsDialog';
 import { LoaderFunction } from '@remix-run/node';
 import { json } from '@vercel/remix';
 import { useLoaderData } from '@remix-run/react';
@@ -95,7 +94,6 @@ const SongEdit = () => {
           <ConfirmDialog />
           <SongChangeMetadataDialog />
           <PatchLogDialog />
-          <PdfSettingsDialog />
           <DiffViewDialog />
         </Layout>
       </PdfContextWrapper>

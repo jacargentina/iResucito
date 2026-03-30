@@ -25,7 +25,7 @@ const SongChangeMetadataDialog = () => {
     return null;
   }
 
-  const { editSong, setSongMetadata } = edit;
+  const { editSong, setStage, setName } = edit;
   const [metadata, setMetadata] = useState({
     titulo: editSong.titulo,
     fuente: editSong.fuente,
@@ -34,7 +34,12 @@ const SongChangeMetadataDialog = () => {
 
   const handleClose = (save: boolean) => {
     if (save) {
-      setSongMetadata(metadata);
+      setStage(metadata.stage);
+      if (metadata.fuente) {
+        setName(metadata.titulo + ' - ' + metadata.fuente);
+      } else {
+        setName(metadata.titulo);
+      }
     }
     setActiveDialog();
   };

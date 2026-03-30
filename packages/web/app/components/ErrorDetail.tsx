@@ -1,7 +1,7 @@
 import { Alert, AlertTitle, Box } from '@mui/material';
 
 const ErrorDetail = (props: any) => {
-  const message = props.error.message;
+  const message = props.error;
   const detail = <pre>{JSON.stringify(props.error, null, 2)}</pre>;
 
   return (

@@ -1,7 +1,6 @@
 import etag from 'etag';
 import Layout from '~/components/Layout';
 import SongList from '~/components/SongList';
-import PdfSettingsDialog from '~/components/PdfSettingsDialog';
 import { LoaderFunction } from '@remix-run/node';
 import { json } from '@vercel/remix';
 import { useLoaderData } from '@remix-run/react';
@@ -57,7 +56,6 @@ const List = () => {
         ) : (
           <SongList songs={songs} />
         )}
-        <PdfSettingsDialog />
       </Layout>
     </PdfContextWrapper>
   );

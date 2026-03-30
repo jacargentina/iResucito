@@ -18,7 +18,6 @@ import {
   ChevronRight as NextIcon,
   PictureAsPdf as PdfIcon,
   Download as DownloadIcon,
-  Info as InfoIcon,
 } from '@mui/icons-material';
 import { useDebouncedCallback } from 'use-debounce';
 import { EditContext } from './EditContext';
@@ -167,7 +166,7 @@ const SongEditor = () => {
           </span>
         </Tooltip>
 
-        <Tooltip title={i18n.t('ui.preview pdf')}>
+        <Tooltip title={i18n.t('ui.pdf')}>
           <IconButton
             size="small"
             onClick={() => previewPdf(editSong.key, debouncedText)}>
@@ -176,9 +175,7 @@ const SongEditor = () => {
         </Tooltip>
 
         <Tooltip title={i18n.t('ui.download pdf')}>
-          <IconButton
-            size="small"
-            onClick={() => downloadPdf(editSong.key, debouncedText)}>
+          <IconButton size="small" onClick={() => downloadPdf()}>
             <DownloadIcon />
           </IconButton>
         </Tooltip>
@@ -245,8 +242,7 @@ const SongEditor = () => {
             <Box sx={{ borderBottom: '1px solid #ddd' }}>
               <Tabs
                 value={viewType}
-                onChange={(_, newValue) => setViewType(newValue)}
-                size="small">
+                onChange={(_, newValue) => setViewType(newValue)}>
                 <Tab label="HTML" value="html" />
                 <Tab label="PDF" value="pdf" />
               </Tabs>
