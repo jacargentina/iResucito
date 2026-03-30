@@ -161,7 +161,7 @@ const ResetPassword = () => {
                         }}
                       />
                     )}
-                    {i18n.t('ui. reset password')}
+                    {i18n.t('ui.reset password')}
                   </Button>
                 </Box>
               </Paper>

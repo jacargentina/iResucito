@@ -161,7 +161,7 @@ const AppActions = () => {
           <Button
             variant="contained"
             color="primary"
-            onClick={() => navigate('/login')}
+            onClick={() => navigate('/account')}
             size="small">
             {i18n.t('ui.login')}
           </Button>

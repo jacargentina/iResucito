@@ -192,7 +192,7 @@ const Account = () => {
                             textDecoration: 'underline',
                           },
                         }}>
-                        {i18n.t('ui.forgot password')}
+                        {i18n.t('ui.reset password')}
                       </Typography>
                     </Link>
                   </Box>
