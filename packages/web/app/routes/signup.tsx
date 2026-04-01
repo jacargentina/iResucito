@@ -22,27 +22,23 @@ import i18n from '@iresucito/translations';
 import { useNavigation } from '@remix-run/react';
 import { useState } from 'react';
 
-export let action: ActionFunction = async ({
-  request,
-}) => {
-  const session = await getSession(
-    request.headers.get('Cookie')
-  );
+export let action: ActionFunction = async ({ request }) => {
+  const session = await getSession(request.headers.get('Cookie'));
   const body = await request.formData();
   let email = body.get('email') as string;
   const password = body.get('password') as string;
-  if (! email || !password) {
+  if (!email || !password) {
     return json(
       {
         error: 'Provide an email and password to register',
       },
-      { status:  500 }
+      { status: 500 }
     );
   }
   if (email.indexOf('@') === -1) {
     return json(
       {
-        error: 
+        error:
           'E-mail address has an invalid format. Please correct its value.',
       },
       { status: 500 }
@@ -55,20 +51,17 @@ export let action: ActionFunction = async ({
   if (exists && exists.isVerified) {
     return json(
       {
-        error:  `Email ${email} already registered! `,
+        error: `Email ${email} already registered! `,
       },
       { status: 500 }
     );
   }
   try {
-    const hash = bcrypt.hashSync(
-      password,
-      bcrypt. genSaltSync(10)
-    );
-    if (! exists) {
+    const hash = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
+    if (!exists) {
       // Crear usuario
       // @ts-ignore
-      db. data.users.push({
+      db.data.users.push({
         email,
         password: hash,
         isVerified: false,
@@ -78,9 +71,7 @@ export let action: ActionFunction = async ({
     // Crear (o actualizar) token para verificacion
     const token = crypto({ length: 20, type: 'url-safe' });
     // @ts-ignore
-    let tokenIndex = db.data.tokens. findIndex(
-      (t) => t.email == email
-    );
+    let tokenIndex = db.data.tokens.findIndex((t) => t.email == email);
     if (tokenIndex === -1) {
       // @ts-ignore
       db.data.tokens.push({
@@ -89,18 +80,18 @@ export let action: ActionFunction = async ({
       });
     } else {
       // @ts-ignore
-      db. data.tokens[tokenIndex].token = token;
+      db.data.tokens[tokenIndex].token = token;
     }
     // Escribir
-    db. write();
+    db.write();
     const base =
       process.env.NODE_ENV == 'production'
-        ?  'http://iresucito.vercel.app'
+        ? 'http://iresucito.vercel.app'
         : 'http://localhost:3000';
 
     try {
       await mailSender({
-        to:  email,
+        to: email,
         text: `Navigate this link ${base}/verify? token=${token}&email=${email} to activate your account.`,
       });
       return json(
@@ -117,9 +108,7 @@ with the email we've just sent to you!`,
       );
     } catch (err) {
       return json({
-        error: `There was an error sending an email: ${
-          (err as Error).message
-        }`,
+        error: `There was an error sending an email: ${(err as Error).message}`,
       });
     }
   } catch (err) {
@@ -128,7 +117,7 @@ with the email we've just sent to you!`,
       {
         error: err,
       },
-      { status:  500 }
+      { status: 500 }
     );
   }
 };
@@ -137,8 +126,7 @@ const Signup = () => {
   const navigation = useNavigation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] =
-    useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const isFormValid =
     email &&
@@ -173,11 +161,7 @@ const Signup = () => {
             iResucito
           </Typography>
 
-          <Grid
-            container
-            spacing={2}
-            sx={{ mt: 2 }}
-          >
+          <Grid container spacing={2} sx={{ mt: 2 }}>
             <Grid item xs={12}>
               <ApiMessage />
 
@@ -193,14 +177,10 @@ const Signup = () => {
                     fullWidth
                     label={i18n.t('ui.email')}
                     type="email"
-                    placeholder={i18n. t('ui.email')}
+                    placeholder={i18n.t('ui.email')}
                     value={email}
-                    disabled={
-                      navigation.state !== 'idle'
-                    }
-                    onChange={(e) =>
-                      setEmail(e.target.value)
-                    }
+                    disabled={navigation.state !== 'idle'}
+                    onChange={(e) => setEmail(e.target.value)}
                     autoComplete="email"
                     variant="outlined"
                   />
@@ -210,53 +190,31 @@ const Signup = () => {
                     label={i18n.t('ui.password')}
                     type="password"
                     value={password}
-                    disabled={
-                      navigation.state !== 'idle'
-                    }
-                    onChange={(e) =>
-                      setPassword(e. target.value)
-                    }
+                    disabled={navigation.state !== 'idle'}
+                    onChange={(e) => setPassword(e.target.value)}
                     helperText={
-                      password. length > 0 &&
-                      password.length < 6
-                        ? i18n.t(
-                            'ui.password must be at least 6 characters'
-                          )
-                        :  ''
+                      password.length > 0 && password.length < 6
+                        ? i18n.t('ui.password must be at least 6 characters')
+                        : ''
                     }
-                    error={
-                      password.length > 0 &&
-                      password.length < 6
-                    }
+                    error={password.length > 0 && password.length < 6}
                     autoComplete="new-password"
                   />
 
                   <TextField
                     fullWidth
-                    label={i18n.t(
-                      'ui.confirm password'
-                    )}
+                    label={i18n.t('ui.confirm password')}
                     type="password"
                     value={confirmPassword}
-                    disabled={
-                      navigation.state !== 'idle'
-                    }
-                    onChange={(e) =>
-                      setConfirmPassword(e.target.value)
-                    }
+                    disabled={navigation.state !== 'idle'}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
                     helperText={
-                      confirmPassword.length > 0 &&
-                      password ! ==
-                        confirmPassword
-                        ? i18n.t(
-                            'ui.passwords do not match'
-                          )
+                      confirmPassword.length > 0 && password! == confirmPassword
+                        ? i18n.t('ui.passwords do not match')
                         : ''
                     }
                     error={
-                      confirmPassword.length > 0 &&
-                      password ! ==
-                        confirmPassword
+                      confirmPassword.length > 0 && password! == confirmPassword
                     }
                     autoComplete="new-password"
                   />
@@ -268,16 +226,12 @@ const Signup = () => {
                     variant="contained"
                     color="primary"
                     size="large"
-                    disabled={
-                      !isFormValid ||
-                      navigation. state !== 'idle'
-                    }
+                    disabled={!isFormValid || navigation.state !== 'idle'}
                     onClick={handleSignup}
                     sx={{
                       position: 'relative',
                     }}>
-                    {navigation. state ===
-                      'submitting' && (
+                    {navigation.state === 'submitting' && (
                       <CircularProgress
                         size={24}
                         sx={{

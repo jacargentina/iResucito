@@ -8,6 +8,7 @@ import {
 } from '@iresucito/core';
 import { Low, Adapter } from 'lowdb';
 import send from 'gmail-send';
+import bcrypt from 'bcryptjs';
 export { readFileSync } from 'fs';
 
 type DbType = {
@@ -30,20 +31,25 @@ type DbType = {
 
 class DropboxJsonFile<T> implements Adapter<T> {
   file: string;
-  dropbox: Dropbox;
+  dropbox: Dropbox | null = null;
+  private hasError: boolean = false;
 
   constructor(file: string) {
-    if (!process.env.DROPBOX_PASSWORD)
-      throw new Error(
-        'DROPBOX_PASSWORD no definida. No se puede conectar con Dropbox'
-      );
+    this.file = file;
+    if (!process.env.DROPBOX_PASSWORD) {
+      this.hasError = true;
+      return;
+    }
     this.dropbox = new Dropbox({
       accessToken: process.env.DROPBOX_PASSWORD,
     });
-    this.file = file;
   }
 
   async read(): Promise<T | null> {
+    if (this.hasError || !this.dropbox) {
+      console.log('Dropbox no disponible: DROPBOX_PASSWORD no definida');
+      return null;
+    }
     try {
       console.log('Descargando', this.file);
       const download = await this.dropbox.filesDownload({
@@ -63,6 +69,10 @@ class DropboxJsonFile<T> implements Adapter<T> {
   }
 
   async write(data: T): Promise<void> {
+    if (this.hasError || !this.dropbox) {
+      console.log('Dropbox no disponible: DROPBOX_PASSWORD no definida');
+      return;
+    }
     console.log('Subiendo', this.file);
     const response = await this.dropbox.filesUpload({
       path: `/${this.file}`,
@@ -144,15 +154,25 @@ export const mailSender = singleton('mailsender', () =>
   })
 );
 
+const defaultUser = {
+  email: 'default@host',
+  password: bcrypt.hashSync('1234', bcrypt.genSaltSync(10)),
+  isVerified: true,
+  createdAt: Date.now(),
+};
+
 export const db = singleton('db', () => {
-  var db = new Low<DbType>(new DropboxJsonFile('db.json'), {
-    users: [],
+  var db = new Low<DbType>(new DropboxJsonFile<DbType>('db.json'), {
+    users: [defaultUser],
     tokens: [],
   });
   db.read();
   if (db.data == null) {
     // @ts-ignore
-    db.data ||= { users: [], tokens: [] };
+    db.data ||= {
+      users: [defaultUser],
+      tokens: [],
+    };
     db.write();
   }
   return db;
