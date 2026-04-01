@@ -19,7 +19,7 @@ export async function generatePDF(
   filename: string,
   addIndex: boolean
 ): Promise<string | undefined> {
-  var r, m: ArrayBuffer;
+  var r, m: PDFKit.Mixins.PDFFontSource;
 
   if (process.env.VERCEL_URL) {
     const regularFetch = await fetch(
