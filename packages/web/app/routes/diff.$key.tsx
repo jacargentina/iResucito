@@ -49,7 +49,7 @@ export let loader: LoaderFunction = async ({ request, params }) => {
   };
 
   if (request.headers.get('If-None-Match') === headers.ETag) {
-    return new Response('', { status: 304, headers });
+    return new Response(null, { status: 304, headers });
   }
 
   return json(result, { headers });

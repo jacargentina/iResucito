@@ -103,7 +103,7 @@ const SongChangeMetadataDialog = () => {
           variant="contained"
           color="primary"
           onClick={() => handleClose(true)}>
-          {i18n.t('ui. save')}
+          {i18n.t('ui.save')}
         </Button>
       </DialogActions>
     </Dialog>

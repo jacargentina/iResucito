@@ -149,7 +149,7 @@ const AppActions = () => {
               {i18n.t('ui.logout')}
             </Button>
             <Button
-              variant="outlined"
+              variant="contained"
               startIcon={<AccountIcon />}
               onClick={() => navigate('/account')}
               size="small">
@@ -167,7 +167,7 @@ const AppActions = () => {
           </Button>
         )}
         <Button
-          variant="outlined"
+          variant="contained"
           startIcon={<InfoIcon />}
           onClick={() => setAboutVisible(true)}
           size="small">

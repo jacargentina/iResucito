@@ -120,7 +120,7 @@ const SongEditor = () => {
     <Box sx={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
       {/* Toolbar */}
       <Paper sx={{ p: 1, display: 'flex', gap: 1, alignItems: 'center' }}>
-        <Tooltip title={i18n.t('ui.edit metadata')}>
+        <Tooltip title={i18n.t('ui.edit')}>
           <IconButton size="small" onClick={editMetadata}>
             <EditIcon />
           </IconButton>
@@ -166,7 +166,7 @@ const SongEditor = () => {
           </span>
         </Tooltip>
 
-        <Tooltip title={i18n.t('ui.pdf')}>
+        <Tooltip title={i18n.t('share_action.view pdf')}>
           <IconButton
             size="small"
             onClick={() => previewPdf(editSong.key, debouncedText)}>
@@ -174,7 +174,7 @@ const SongEditor = () => {
           </IconButton>
         </Tooltip>
 
-        <Tooltip title={i18n.t('ui.download pdf')}>
+        <Tooltip title={i18n.t('share_action.share pdf')}>
           <IconButton size="small" onClick={() => downloadPdf()}>
             <DownloadIcon />
           </IconButton>

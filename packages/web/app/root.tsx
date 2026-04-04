@@ -14,7 +14,6 @@ import {
   isRouteErrorResponse,
 } from '@remix-run/react';
 import { LoaderFunction } from '@remix-run/node';
-import { authenticator } from './auth.server';
 import { AppProvider } from './app.context';
 import { getSession } from './session.server';
 import { getPatchStats } from '@iresucito/core';
@@ -26,22 +25,13 @@ import { ThemeProvider } from '@mui/material/styles';
 import theme from '~/theme';
 
 export let loader: LoaderFunction = async ({ request }) => {
+  let session = await getSession(request.headers.get('cookie'));
   const patch = await folderExtras.readPatch();
   const stats = patch ? getPatchStats(patch) : [];
 
-  let authData = null;
-
-  try {
-    authData = await authenticator.authenticate('lowdb', request);
-  } catch (error) {
-    authData = null;
-  }
-
-  const session = await getSession(request.headers.get('Cookie'));
-
   return {
     EXPO_VERSION: AppRaw.expo.version,
-    authData: authData,
+    authData: session.get('user'),
     patchStats: stats,
     locale: session.get('locale'),
   };

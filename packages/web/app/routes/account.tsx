@@ -49,10 +49,11 @@ export let action: ActionFunction = async ({ request }) => {
 
 export let loader: LoaderFunction = async ({ request }) => {
   let session = await getSession(request.headers.get('cookie'));
-  const user = session.get('user') as AuthData;
-  if (user) {
-    return redirect('/list');
-  }
+  // const user = session.get('user') as AuthData;
+  // if (user) {
+  //   console.log('redirecting list!');
+  //   return redirect('/list');
+  // }
   return {
     error: session.get('auth:error'),
   };
@@ -111,7 +112,7 @@ const Account = () => {
                 </Alert>
               )}
 
-              {!app.user && (
+              {!app.user ? (
                 <Paper sx={{ p: 3, mt: 2 }}>
                   <Box
                     component="form"
@@ -177,28 +178,31 @@ const Account = () => {
                       onClick={signUp}>
                       {i18n.t('ui.signup')}
                     </Button>
-
-                    <Link
-                      to="/resetpassword"
-                      style={{
-                        textAlign: 'center',
-                        marginTop: '16px',
-                        textDecoration: 'none',
-                      }}>
-                      <Typography
-                        variant="body2"
-                        color="primary"
-                        sx={{
-                          '&:hover': {
-                            textDecoration: 'underline',
-                          },
-                        }}>
-                        {i18n.t('ui.reset password')}
-                      </Typography>
-                    </Link>
                   </Box>
                 </Paper>
+              ) : (
+                <Typography variant="h6" gutterBottom>
+                  {app.user}
+                </Typography>
               )}
+              <Link
+                to="/resetpassword"
+                style={{
+                  textAlign: 'center',
+                  marginTop: '16px',
+                  textDecoration: 'none',
+                }}>
+                <Typography
+                  variant="body2"
+                  color="primary"
+                  sx={{
+                    '&:hover': {
+                      textDecoration: 'underline',
+                    },
+                  }}>
+                  {i18n.t('ui.reset password')}
+                </Typography>
+              </Link>
             </Grid>
           </Grid>
         </Box>
