@@ -1,9 +1,8 @@
-import { Dropbox } from 'dropbox';
 import {
   SongIndexPatch,
   SongSettingsFile,
-  SongsExtras,
   SongsProcessor,
+  SongsExtras,
   loadAllLocales,
 } from '@iresucito/core';
 import { Low, Adapter } from 'lowdb';
@@ -29,67 +28,147 @@ type DbType = {
 //   var mailSender: (...args: any[]) => Promise<void>;
 // }
 
-class DropboxJsonFile<T> implements Adapter<T> {
+class FetchAdapter<T> implements Adapter<T> {
   file: string;
-  dropbox: Dropbox | null = null;
+  private accessToken: string | null = null;
   private hasError: boolean = false;
+  private readonly TIMEOUT_MS = 60000; // 60 segundos timeout
 
-  constructor(file: string) {
+  constructor(file: string, accessToken: string | null = null) {
     this.file = file;
-    if (!process.env.DROPBOX_PASSWORD) {
+    this.accessToken = accessToken || null;
+    if (!this.accessToken) {
       this.hasError = true;
-      return;
+      console.log('⚠️ FetchAdapter: DROPBOX_PASSWORD no definida');
     }
-    this.dropbox = new Dropbox({
-      accessToken: process.env.DROPBOX_PASSWORD,
-    });
+  }
+
+  private async fetchWithTimeout(
+    url: string,
+    options: RequestInit
+  ): Promise<Response> {
+    try {
+      const response = await fetch(url, options);
+      return response;
+    } catch (err: any) {
+      console.error(`❌ Fetch falló: ${err.message}`);
+      throw err;
+    }
   }
 
   async read(): Promise<T | null> {
-    if (this.hasError || !this.dropbox) {
-      console.log('Dropbox no disponible: DROPBOX_PASSWORD no definida');
-      return null;
-    }
-    try {
-      console.log('Descargando', this.file);
-      const download = await this.dropbox.filesDownload({
-        path: `/${this.file.toLowerCase()}`,
-      });
-      const meta = download.result;
-      const data = (meta as any).fileBinary.toString();
-      if (data == null) {
-        return null;
-      } else {
-        return JSON.parse(data) as T;
+    const maxRetries = 3;
+
+    for (let attempt = 1; attempt <= maxRetries; attempt++) {
+      try {
+        if (attempt > 1) console.log(`🔄 Reintento ${attempt}/3 para ${this.file}`);
+        const result = await this._readOnce();
+        if (result !== null) {
+          return result;
+        }
+      } catch (err: any) {
+        if (attempt < maxRetries) {
+          await new Promise((resolve) => setTimeout(resolve, 1000));
+        }
       }
-    } catch (err: any) {
-      console.log('Error', err);
     }
+
+    console.error(`❌ Fallaron todos los reintentos para ${this.file}`);
     return null;
   }
 
+  private async _readOnce(): Promise<T | null> {
+    if (this.hasError || !this.accessToken) {
+      console.log('⚠️ FetchAdapter no disponible');
+      return null;
+    }
+
+    try {
+      const headers = {
+        'Content-Type': 'text/plain',
+        'Dropbox-API-Arg': JSON.stringify({
+          path: `/${this.file.toLowerCase()}`,
+        }),
+        Authorization: `Bearer ${this.accessToken}`,
+      };
+
+      const response = await this.fetchWithTimeout(
+        'https://content.dropboxapi.com/2/files/download',
+        {
+          method: 'POST',
+          headers,
+        }
+      );
+
+      if (!response.ok) {
+        console.error(`❌ Error HTTP ${response.status} para ${this.file}`);
+        return null;
+      }
+
+      const content = await response.text();
+
+      if (!content || content.trim().length === 0) {
+        console.log(`⚠️ Contenido vacío: ${this.file}`);
+        return null;
+      }
+
+      try {
+        const parsed = JSON.parse(content) as T;
+        return parsed;
+      } catch (parseErr: any) {
+        console.error(`❌ Error parseando JSON: ${this.file}`);
+        return null;
+      }
+    } catch (err: any) {
+      console.error(`❌ Error leyendo ${this.file}: ${err.message}`);
+      throw err;
+    }
+  }
+
   async write(data: T): Promise<void> {
-    if (this.hasError || !this.dropbox) {
-      console.log('Dropbox no disponible: DROPBOX_PASSWORD no definida');
+    if (this.hasError || !this.accessToken) {
+      console.log('⚠️ FetchAdapter no disponible');
       return;
     }
-    console.log('Subiendo', this.file);
-    const response = await this.dropbox.filesUpload({
-      path: `/${this.file}`,
-      mode: { '.tag': 'overwrite' },
-      contents: JSON.stringify(data, null, 2),
-    });
-    const meta = response.result;
-    console.log(`Subido contenido ${meta.name}`);
+
+    try {
+      const headers = {
+        'Content-Type': 'application/octet-stream',
+        'Dropbox-API-Arg': JSON.stringify({
+          path: `/${this.file}`,
+          mode: { '.tag': 'overwrite' },
+          autorename: false,
+        }),
+        Authorization: `Bearer ${this.accessToken}`,
+      };
+
+      const response = await this.fetchWithTimeout(
+        'https://content.dropboxapi.com/2/files/upload',
+        {
+          method: 'POST',
+          headers,
+          body: JSON.stringify(data),
+        }
+      );
+
+      if (!response.ok) {
+        console.error(`❌ Error subiendo ${this.file}: ${response.status}`);
+        return;
+      }
+
+      console.log(`✅ Subido: ${this.file}`);
+    } catch (err: any) {
+      console.error(`❌ Error subiendo ${this.file}: ${err.message}`);
+    }
   }
 }
 
 class WebSongsExtras implements SongsExtras {
   patch: Low<SongIndexPatch>;
 
-  constructor() {
+  constructor(accessToken: string | null = null) {
     this.patch = new Low<SongIndexPatch>(
-      new DropboxJsonFile('SongsIndexPatch.json'),
+      new FetchAdapter('SongsIndexPatch.json', accessToken),
       {}
     );
   }
@@ -143,7 +222,7 @@ export const folderSongs = singleton(
 
 export const folderExtras = singleton(
   'websongsextras',
-  () => new WebSongsExtras()
+  () => new WebSongsExtras(process.env.DROPBOX_PASSWORD)
 );
 
 export const mailSender = singleton('mailsender', () =>
@@ -162,18 +241,13 @@ const defaultUser = {
 };
 
 export const db = singleton('db', () => {
-  var db = new Low<DbType>(new DropboxJsonFile<DbType>('db.json'), {
-    users: [defaultUser],
-    tokens: [],
-  });
-  db.read();
-  if (db.data == null) {
-    // @ts-ignore
-    db.data ||= {
+  var db = new Low<DbType>(
+    new FetchAdapter<DbType>('db.json', process.env.DROPBOX_PASSWORD),
+    {
       users: [defaultUser],
       tokens: [],
-    };
-    db.write();
-  }
+    }
+  );
+  db.read();
   return db;
 });
