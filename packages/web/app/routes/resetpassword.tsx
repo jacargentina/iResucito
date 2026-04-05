@@ -124,9 +124,9 @@ const ResetPassword = () => {
                   }}>
                   <TextField
                     fullWidth
-                    label={i18n.t('ui. email')}
+                    label={i18n.t('ui.email')}
                     type="email"
-                    placeholder={i18n.t('ui. email')}
+                    placeholder={i18n.t('ui.email')}
                     value={email}
                     onChange={(e) =>
                       setEmail(e. target.value)

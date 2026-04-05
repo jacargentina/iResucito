@@ -153,7 +153,7 @@ const ChangePassword = () => {
                   }}>
                   <TextField
                     fullWidth
-                    label={i18n.t('ui. new password')}
+                    label={i18n.t('ui.new password')}
                     type="password"
                     value={newPassword}
                     onChange={(e) => setNewPassword(e.target.value)}
@@ -205,7 +205,7 @@ const ChangePassword = () => {
                         }}
                       />
                     )}
-                    {i18n.t('ui. change password')}
+                    {i18n.t('ui.change password')}
                   </Button>
                 </Box>
               </Paper>

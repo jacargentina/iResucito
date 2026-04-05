@@ -108,7 +108,7 @@ const Account = () => {
               )}
               {searchParams.get('r') !== null && (
                 <Alert severity="success" sx={{ mb: 2 }}>
-                  {i18n.t('ui. password changed')}
+                  {i18n.t('ui.password changed')}
                 </Alert>
               )}
 

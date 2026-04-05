@@ -52,7 +52,7 @@ const SongChangeMetadataDialog = () => {
       maxWidth="sm"
       fullWidth
       onClose={() => handleClose(false)}>
-      <DialogTitle>{i18n.t('ui. edit metadata')}</DialogTitle>
+      <DialogTitle>{i18n.t('ui.edit metadata')}</DialogTitle>
       <DialogContent>
         <Box sx={{ pt: 2, display: 'flex', flexDirection: 'column', gap: 2 }}>
           <TextField
@@ -76,7 +76,7 @@ const SongChangeMetadataDialog = () => {
           />
 
           <FormControl fullWidth>
-            <InputLabel>{i18n.t('ui. stage')}</InputLabel>
+            <InputLabel>{i18n.t('ui.stage')}</InputLabel>
             <Select
               value={metadata.stage || ''}
               onChange={(e) =>
@@ -84,7 +84,7 @@ const SongChangeMetadataDialog = () => {
               }
               label={i18n.t('ui.stage')}>
               <MenuItem value="">
-                <em>{i18n.t('ui. none')}</em>
+                <em>{i18n.t('ui.none')}</em>
               </MenuItem>
               {stages.map((stage) => (
                 <MenuItem key={stage} value={stage}>
