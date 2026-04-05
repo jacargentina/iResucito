@@ -10,18 +10,14 @@ const SongViewFrame = (props: any) => {
   const [fRender, setFRender] = useState<SongRendering<WebStyle> | undefined>();
 
   useEffect(() => {
-    const result = WebParser. getForRender(text, i18n.locale);
+    const result = WebParser.getForRender(text, i18n.locale);
     setFRender(result);
   }, [text]);
 
   return (
     <>
-      <Box sx={WebStyles.title}>
-        <Typography variant="h4">{title}</Typography>
-        <Typography variant="subtitle2" sx={WebStyles.source}>
-          {source}
-        </Typography>
-      </Box>
+      <div style={WebStyles.title}>{title}</div>
+      <div style={WebStyles.source}>{source}</div>
       {fRender && (
         <SongViewLines lines={fRender.items} indicators={fRender.indicators} />
       )}
