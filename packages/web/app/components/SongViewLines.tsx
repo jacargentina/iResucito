@@ -99,10 +99,10 @@ const SongViewLines = (props: {
           display: 'inline-block',
           color: 'rgba(0,0,0,0.1)',
           textAlign: 'right',
-          paddingRight: '3%',
+          paddingRight: '15px',
           fontWeight: 'normal',
           fontSize: WebStyles.normalLine.fontSize,
-          width: '5%',
+          width: '20px',
         }}>
         {i + 1}
       </div>

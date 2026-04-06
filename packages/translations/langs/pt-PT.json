@@ -13,6 +13,9 @@
     "scale": "Do Do#|Reb Re Re#|Mib Mi Fa Fa#|Solb Sol Sol#|Lab La La#|Sib Si"
   },
   "ui": {
+    "title": "Título",
+    "source": "Fonte",
+    "stage": "Estágio",
     "account": "Minha conta",
     "change password": "Mudar senha",
     "new password": "Nova senha",

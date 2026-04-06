@@ -1,5 +1,5 @@
 import '@ungap/with-resolvers';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import {
   Links,
   Meta,
@@ -46,6 +46,12 @@ export default function App() {
   const fetcher = useFetcher<{ newLocale: string }>();
   const navigate = useNavigate();
   const location = useLocation();
+  const localeInitialized = useRef<boolean>(false);
+
+  if (localeInitialized.current === false) {
+    i18n.locale = data.locale;
+    localeInitialized.current = true;
+  }
 
   useEffect(() => {
     if (data.locale) {

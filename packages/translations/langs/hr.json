@@ -13,6 +13,9 @@
     "scale": "C C#|Db D D#|Eb E F F#|Gb G G#|Ab A A#|Bb B"
   },
   "ui": {
+    "title": "Titolo",
+    "source": "Izvor",
+    "stage": "Razina",
     "account": "Moj račun",
     "change password": "Promijeni lozinku",
     "new password": "Nova lozinka",

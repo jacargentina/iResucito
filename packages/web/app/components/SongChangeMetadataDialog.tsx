@@ -44,7 +44,7 @@ const SongChangeMetadataDialog = () => {
     setActiveDialog();
   };
 
-  const stages = ['pentecostes', 'epifania', 'pascua', 'navidad', 'adviento'];
+  const stages = ['catechumenate', 'election'];
 
   return (
     <Dialog
@@ -52,7 +52,7 @@ const SongChangeMetadataDialog = () => {
       maxWidth="sm"
       fullWidth
       onClose={() => handleClose(false)}>
-      <DialogTitle>{i18n.t('ui.edit metadata')}</DialogTitle>
+      <DialogTitle>{i18n.t('ui.edit')}</DialogTitle>
       <DialogContent>
         <Box sx={{ pt: 2, display: 'flex', flexDirection: 'column', gap: 2 }}>
           <TextField
@@ -103,7 +103,7 @@ const SongChangeMetadataDialog = () => {
           variant="contained"
           color="primary"
           onClick={() => handleClose(true)}>
-          {i18n.t('ui.save')}
+          {i18n.t('ui.apply')}
         </Button>
       </DialogActions>
     </Dialog>

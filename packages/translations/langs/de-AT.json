@@ -13,6 +13,9 @@
     "scale": "C Cis|Des D Dis|Es E F Fis|Ges G Gis|As A Ais|B H"
   },
   "ui": {
+    "title": "Titel",
+    "source": "Quelle",
+    "stage": "Stufe",
     "account": "Mein Konto",
     "change password": "Passwort ändern",
     "new password": "Neues Passwort",

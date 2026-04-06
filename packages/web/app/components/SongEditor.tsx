@@ -117,7 +117,7 @@ const SongEditor = () => {
   }, [viewType, debouncedText]);
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', height: 'calc(100vh - 64px)' }}>
       {/* Toolbar */}
       <Paper sx={{ p: 1, display: 'flex', gap: 1, alignItems: 'center' }}>
         <Tooltip title={i18n.t('ui.edit')}>
@@ -126,7 +126,7 @@ const SongEditor = () => {
           </IconButton>
         </Tooltip>
 
-        <Tooltip title={`${i18n.t('ui.save')} (Ctrl+S)`}>
+        <Tooltip title={`${i18n.t('ui.apply')} (Ctrl+S)`}>
           <span>
             <IconButton
               size="small"
@@ -194,7 +194,7 @@ const SongEditor = () => {
             sx={{
               display: 'flex',
               flexDirection: 'column',
-              overflow: 'hidden',
+              overflow: 'scroll',
             }}>
             <TextField
               inputRef={txtRef}

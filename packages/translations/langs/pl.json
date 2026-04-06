@@ -13,6 +13,9 @@
     "scale": "C C#|Db D D#|Eb E F F#|Gb G G#|Ab A A#|B H"
   },
   "ui": {
+    "title": "Tytuł",
+    "source": "Źródło",
+    "stage": "Etap",
     "account": "Moje konto",
     "change password": "Zmień hasło",
     "new password": "Nowe hasło",

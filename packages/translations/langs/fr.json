@@ -1,6 +1,6 @@
 {
-  "songs": {
-    "psalmist": "C.",
+  "ui": {
+    "account": "Mon compte",
     "assembly": "A.",
     "priest": "P.",
     "men": "M.",
