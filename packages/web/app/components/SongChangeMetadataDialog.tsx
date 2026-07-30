@@ -15,6 +15,7 @@ import { useContext, useState } from 'react';
 import { EditContext } from './EditContext';
 import i18n from '@iresucito/translations';
 import { useApp } from '~/app.context';
+import SongListItem from './SongListItem';
 
 const SongChangeMetadataDialog = () => {
   const app = useApp();
@@ -44,7 +45,7 @@ const SongChangeMetadataDialog = () => {
     setActiveDialog();
   };
 
-  const stages = ['catechumenate', 'election'];
+  const stages = ['precatechumenate', 'liturgy', 'catechumenate', 'election'];
 
   return (
     <Dialog
@@ -83,9 +84,6 @@ const SongChangeMetadataDialog = () => {
                 setMetadata({ ...metadata, stage: e.target.value })
               }
               label={i18n.t('ui.stage')}>
-              <MenuItem value="">
-                <em>{i18n.t('ui.none')}</em>
-              </MenuItem>
               {stages.map((stage) => (
                 <MenuItem key={stage} value={stage}>
                   {i18n.t(`search_title.${stage}`)}
@@ -94,16 +92,44 @@ const SongChangeMetadataDialog = () => {
             </Select>
           </FormControl>
         </Box>
+        <Box sx={{ pt: 2, pb: 1, fontWeight: 'bold' }}>
+          {i18n.t('screen_title.preview')}
+        </Box>
+        <div style={{ display: 'flex', flex: 1, flexDirection: 'row' }}>
+          <div style={{ flex: 1, padding: 2 }}>
+            <h5>{i18n.t('ui.original song')}</h5>
+            {editSong && (
+              <SongListItem
+                titulo={editSong.titulo}
+                fuente={editSong.fuente}
+                stage={editSong.stage}
+              />
+            )}
+          </div>
+          <div style={{ flex: 1, padding: 2 }}>
+            <h5>{i18n.t('ui.patched song')}</h5>
+            {metadata && (
+              <SongListItem
+                titulo={metadata.titulo}
+                fuente={metadata.fuente}
+                stage={metadata.stage}
+              />
+            )}
+          </div>
+        </div>
       </DialogContent>
       <DialogActions>
-        <Button onClick={() => handleClose(false)}>
-          {i18n.t('ui.cancel')}
-        </Button>
         <Button
           variant="contained"
           color="primary"
           onClick={() => handleClose(true)}>
           {i18n.t('ui.apply')}
+        </Button>
+        <Button
+          variant="contained"
+          color="secondary"
+          onClick={() => handleClose(false)}>
+          {i18n.t('ui.cancel')}
         </Button>
       </DialogActions>
     </Dialog>

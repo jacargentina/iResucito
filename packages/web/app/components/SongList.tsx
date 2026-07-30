@@ -4,7 +4,6 @@ import {
   List,
   ListItem,
   ListItemText,
-  ListItemIcon,
   TextField,
   FormControlLabel,
   Checkbox,
@@ -58,16 +57,7 @@ const SongList = (props: { songs: Array<Song> }) => {
     return songs.filter((s) => s.notTranslated === true).length;
   }, [songs]);
 
-  const {
-    previewPdf,
-    pdf,
-    loading: pdfLoading,
-    numPages,
-    currPage,
-    setCurrPage,
-    downloadPdf,
-    closePdf,
-  } = usePdf();
+  const { previewPdf, loading: pdfLoading } = usePdf();
 
   const isProcessing = loading || pdfLoading;
 
@@ -260,9 +250,7 @@ const SongList = (props: { songs: Array<Song> }) => {
       </Paper>
 
       {/* Message Areas */}
-      <Box sx={{ px: 1, mb: 1 }}>
-        <ApiMessage />
-      </Box>
+      <ApiMessage />
 
       {/* Songs List */}
       <Box sx={{ flex: 1, overflow: 'auto', px: 1 }}>
@@ -279,75 +267,71 @@ const SongList = (props: { songs: Array<Song> }) => {
         {!filtering && filtered && (
           <List>
             {filtered.map((song) => (
-              <Paper key={song.key} sx={{ mb: 1 }}>
-                <ListItem
-                  secondaryAction={
-                    <Box sx={{ display: 'flex', gap: 0.5 }}>
-                      {song.patched && (
-                        <Tooltip title={i18n.t('ui.remove patch')}>
-                          <IconButton
-                            edge="end"
-                            size="small"
-                            onClick={() => removePatch(song)}
-                            disabled={!user}>
-                            <DeleteIcon />
-                          </IconButton>
-                        </Tooltip>
-                      )}
-                      <Tooltip title={i18n.t('ui.pdf')}>
+              <ListItem
+                key={song.key}
+                sx={{ mb: 1, borderBottom: '1px solid #ddd' }}
+                secondaryAction={
+                  <Box sx={{ display: 'flex', gap: 0.5, alignItems: 'center' }}>
+                    {song.patched && (
+                      <Chip
+                        label="Patched"
+                        size="small"
+                        color="primary"
+                        variant="outlined"
+                      />
+                    )}
+                    {song.added && (
+                      <Chip
+                        label="Added"
+                        size="small"
+                        color="success"
+                        variant="outlined"
+                      />
+                    )}
+                    {song.notTranslated && (
+                      <Chip
+                        label="No Translated"
+                        size="small"
+                        color="warning"
+                        variant="outlined"
+                      />
+                    )}
+                    {song.patched && (
+                      <Tooltip title={i18n.t('ui.remove patch')}>
                         <IconButton
                           edge="end"
                           size="small"
-                          onClick={() => previewPdf(song.key, '')}>
-                          <PdfIcon />
+                          onClick={() => removePatch(song)}
+                          disabled={!user}>
+                          <DeleteIcon />
                         </IconButton>
                       </Tooltip>
-                      <Tooltip title={i18n.t('ui.edit')}>
-                        <IconButton
-                          edge="end"
-                          size="small"
-                          onClick={() => edit(song)}
-                          disabled={!user || isProcessing}>
-                          <EditIcon />
-                        </IconButton>
-                      </Tooltip>
-                    </Box>
-                  }>
-                  <ListItemIcon>
-                    <Box sx={{ display: 'flex', gap: 1, mr: 1 }}>
-                      {song.patched && (
-                        <Chip
-                          label="Patched"
-                          size="small"
-                          color="primary"
-                          variant="outlined"
-                        />
-                      )}
-                      {song.added && (
-                        <Chip
-                          label="Added"
-                          size="small"
-                          color="success"
-                          variant="outlined"
-                        />
-                      )}
-                      {song.notTranslated && (
-                        <Chip
-                          label="No Translated"
-                          size="small"
-                          color="warning"
-                          variant="outlined"
-                        />
-                      )}
-                    </Box>
-                  </ListItemIcon>
-                  <ListItemText
-                    primary={song.titulo}
-                    primaryTypographyProps={{ fontWeight: 'bold' }}
-                    secondary={song.fuente}
-                  />
-                </ListItem>
-              </Paper>
+                    )}
+                    <Tooltip title={i18n.t('ui.pdf')}>
+                      <IconButton
+                        edge="end"
+                        size="small"
+                        onClick={() => previewPdf(song.key, '')}>
+                        <PdfIcon />
+                      </IconButton>
+                    </Tooltip>
+                    <Tooltip title={i18n.t('ui.edit')}>
+                      <IconButton
+                        edge="end"
+                        size="small"
+                        onClick={() => edit(song)}
+                        disabled={!user || isProcessing}>
+                        <EditIcon />
+                      </IconButton>
+                    </Tooltip>
+                  </Box>
+                }>
+                <ListItemText
+                  primary={song.titulo}
+                  primaryTypographyProps={{ fontWeight: 'bold' }}
+                  secondary={song.fuente}
+                />
+              </ListItem>
             ))}
           </List>
         )}

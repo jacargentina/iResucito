@@ -32,7 +32,7 @@ import Split from 'react-split';
 const SongEditor = () => {
   const txtRef = useRef<any>(null);
   const app = useApp();
-  const { setActiveDialog, apiResult, setDialogCallback } = app;
+  const { setActiveDialog, apiResult } = app;
 
   const edit = useContext(EditContext);
 
@@ -50,7 +50,6 @@ const SongEditor = () => {
     setText,
     setHasChanges,
     songFile,
-    confirmRemovePatch,
     hasChanges,
     applyChanges,
     goPrevious,
@@ -117,53 +116,41 @@ const SongEditor = () => {
   }, [viewType, debouncedText]);
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', height: 'calc(100vh - 64px)' }}>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        height: 'calc(100vh - 64px)',
+      }}>
       {/* Toolbar */}
-      <Paper sx={{ p: 1, display: 'flex', gap: 1, alignItems: 'center' }}>
-        <Tooltip title={i18n.t('ui.edit')}>
-          <IconButton size="small" onClick={editMetadata}>
-            <EditIcon />
-          </IconButton>
-        </Tooltip>
-
-        <Tooltip title={`${i18n.t('ui.apply')} (Ctrl+S)`}>
-          <span>
-            <IconButton
-              size="small"
-              onClick={save}
-              disabled={!hasChanges}
-              color={hasChanges ? 'primary' : 'default'}>
-              <SaveIcon />
-            </IconButton>
-          </span>
-        </Tooltip>
-
+      <Paper
+        sx={{
+          p: 1,
+          display: 'flex',
+          gap: 1,
+          alignItems: 'center',
+          flexDirection: 'row-reverse',
+        }}>
         <Tooltip title={i18n.t('ui.close')}>
           <IconButton size="small" onClick={confirmClose}>
             <CloseIcon />
           </IconButton>
         </Tooltip>
 
-        <Box sx={{ flex: 1 }} />
-
-        <Tooltip title={`${i18n.t('ui.previous')} (Ctrl+[)`}>
-          <span>
-            <IconButton size="small" onClick={previous} disabled={!previousKey}>
-              <PrevIcon />
-            </IconButton>
-          </span>
+        <Tooltip title={`${i18n.t('ui.apply')} (Ctrl+S)`}>
+          <IconButton
+            size="small"
+            onClick={save}
+            disabled={!hasChanges}
+            color={hasChanges ? 'primary' : 'default'}>
+            <SaveIcon />
+          </IconButton>
         </Tooltip>
 
-        <Typography variant="body2" sx={{ mx: 1 }}>
-          {index + 1} / {totalSongs}
-        </Typography>
-
-        <Tooltip title={`${i18n.t('ui.next')} (Ctrl+])`}>
-          <span>
-            <IconButton size="small" onClick={next} disabled={!nextKey}>
-              <NextIcon />
-            </IconButton>
-          </span>
+        <Tooltip title={i18n.t('ui.edit')}>
+          <IconButton size="small" onClick={editMetadata}>
+            <EditIcon />
+          </IconButton>
         </Tooltip>
 
         <Tooltip title={i18n.t('share_action.view pdf')}>
@@ -177,6 +164,20 @@ const SongEditor = () => {
         <Tooltip title={i18n.t('share_action.share pdf')}>
           <IconButton size="small" onClick={() => downloadPdf()}>
             <DownloadIcon />
+          </IconButton>
+        </Tooltip>
+
+        <Tooltip title={`${i18n.t('ui.next')} (Ctrl+])`}>
+          <IconButton size="small" onClick={next} disabled={!nextKey}>
+            <NextIcon />
+          </IconButton>
+        </Tooltip>
+        <Typography variant="body2" sx={{ mx: 1 }}>
+          {index + 1} / {totalSongs}
+        </Typography>
+        <Tooltip title={`${i18n.t('ui.previous')} (Ctrl+[)`}>
+          <IconButton size="small" onClick={previous} disabled={!previousKey}>
+            <PrevIcon />
           </IconButton>
         </Tooltip>
       </Paper>
