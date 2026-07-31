@@ -1,6 +1,6 @@
 const { getSentryExpoConfig } = require('@sentry/react-native/metro');
 const path = require('path');
-const exclusionList = require('metro-config/src/defaults/exclusionList');
+const exclusionList = require('metro-config/private/defaults/exclusionList').default;
 
 const projectRoot = __dirname;
 const workspaceRoot = path.resolve(projectRoot, '../..');

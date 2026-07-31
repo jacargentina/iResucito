@@ -1,5 +1,5 @@
 import type { RouteProp } from '@react-navigation/native';
-import Contacts from 'expo-contacts';
+import type * as Contacts from 'expo-contacts/legacy';
 import { useState, useMemo } from 'react';
 import { Text, Icon } from '@gluestack-ui/themed';
 import { FlashList } from '@shopify/flash-list';

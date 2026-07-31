@@ -15,7 +15,7 @@ import {
   useScrollToTop,
 } from '@react-navigation/native';
 import ReanimatedSwipeable, {
-  SwipeableMethods,
+  type SwipeableMethods,
 } from 'react-native-gesture-handler/ReanimatedSwipeable';
 import {
   SwipeableRightAction,
@@ -23,15 +23,15 @@ import {
   CallToAction,
   SearchBarView,
 } from '../components';
-import { BrotherContact, useBrothersStore, useSettingsStore } from '../hooks';
+import { type BrotherContact, useBrothersStore, useSettingsStore } from '../hooks';
 import i18n from '@iresucito/translations';
 import { contactFilterByText, ordenAlfabetico, getContactSanitizedName } from '../util';
 import { ContactListItem } from './ContactListItem';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { ExistingContact } from 'expo-contacts';
+import type { StackNavigationProp } from '@react-navigation/stack';
+import type { ExistingContact } from 'expo-contacts/legacy';
 import { config } from '../config/gluestack-ui.config';
 import { UsersIcon } from 'lucide-react-native';
-import { RootStackParamList } from '../navigation/RootNavigator';
+import type { RootStackParamList } from '../navigation/RootNavigator';
 import { HeaderButton } from '../navigation/util';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
@@ -43,7 +43,7 @@ const SwipeableRow = (props: { item: BrotherContact }) => {
   const contactToggleAttibute = useCallback(
     (contact: BrotherContact, attribute: string) => {
       const newValue = !(contact[attribute] === true);
-      let updatedContact = Object.assign({}, contact, {
+      const updatedContact = Object.assign({}, contact, {
         [attribute]: newValue,
       });
       update(contact.id!, updatedContact);

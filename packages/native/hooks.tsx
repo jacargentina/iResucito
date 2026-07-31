@@ -2,30 +2,30 @@
 import { Alert } from 'react-native';
 import { launchArguments } from 'expo-launch-arguments';
 import * as Sharing from 'expo-sharing';
-import * as Contacts from 'expo-contacts';
+import * as Contacts from 'expo-contacts/legacy';
 import { File, Paths } from 'expo-file-system';
 import * as Network from 'expo-network';
 import pathParse from 'path-parse';
 import {
   getLocalizedListType,
-  SongSettingsFile,
-  Song,
-  SearchItem,
-  ListType,
-  ShareListType,
-  ListToPdf,
-  Lists,
-  ListForUI,
-  LibreListForUI,
-  PalabraListForUI,
-  EucaristiaListForUI,
-  LibreList,
-  EucaristiaList,
-  PalabraList,
+  type SongSettingsFile,
+  type Song,
+  type SearchItem,
+  type ListType,
+  type ShareListType,
+  type ListToPdf,
+  type Lists,
+  type ListForUI,
+  type LibreListForUI,
+  type PalabraListForUI,
+  type EucaristiaListForUI,
+  type LibreList,
+  type EucaristiaList,
+  type PalabraList,
   getListTitleValue,
-  ListTitleValue,
+  type ListTitleValue,
   SongsProcessor,
-  SongsSourceData,
+  type SongsSourceData,
   PdfStyles,
   esAudiosData,
 } from '@iresucito/core';
@@ -37,7 +37,7 @@ import {
   LiturgyBadge,
   PrecatechumenateBadge,
 } from './badges';
-import { GeneratePDFResult, generateListPDF } from './pdf';
+import { type GeneratePDFResult, generateListPDF } from './pdf';
 import { create } from 'zustand';
 import { immer } from 'zustand/middleware/immer';
 import {
@@ -48,7 +48,7 @@ import {
 import { shallow } from 'zustand/shallow';
 import { getDefaultLocale, ordenClasificacion, NativeExtras } from './util';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { AudioPlayer, createAudioPlayer, setAudioModeAsync } from 'expo-audio';
+import { type AudioPlayer, createAudioPlayer, setAudioModeAsync } from 'expo-audio';
 import { useCallback } from 'react';
 
 setAudioModeAsync({
@@ -303,7 +303,7 @@ export const useSongPlayer = create(
       set((state) => {
         state.title = title;
         state.fileuri = fileuri;
-        // @ts-ignore
+        // @ts-expect-error
         state.refreshIntervalId = setInterval(refreshSongPosition, 1000);
       });
     },
@@ -325,7 +325,7 @@ export const useSongPlayer = create(
         player.play();
         refreshSongPosition();
         set((state) => {
-          // @ts-ignore
+          // @ts-expect-error
           state.refreshIntervalId = setInterval(refreshSongPosition, 1000);
         });
       }
@@ -370,7 +370,7 @@ type ListsStore = {
   load_ui: () => void;
 };
 
-let initialLists = {};
+const initialLists = {};
 
 if (launchArguments.FASTLANE_SNAPSHOT) {
   initialLists['El Buen Pastor'] = {
@@ -551,7 +551,7 @@ export const useListsStore = create<ListsStore>()(
             // Generar nombre único para la lista
             var counter = 1;
             const lists = get().lists;
-            while (lists.hasOwnProperty(listName)) {
+            while (Object.hasOwn(lists, listName)) {
               listName = `${listName} (${counter++})`;
             }
             const changedLists = Object.assign({}, lists, {
@@ -569,7 +569,7 @@ export const useListsStore = create<ListsStore>()(
         },
         shareList: async (listName: string, format: ShareListType) => {
           switch (format) {
-            case 'native':
+            case 'native': {
               const fileName = listName.replace(' ', '-');
               const listPath = new File(Paths.document, `${fileName}.ireslist`);
               const nativeList = get().lists[listName];
@@ -577,7 +577,8 @@ export const useListsStore = create<ListsStore>()(
                 JSON.stringify(nativeList, null, ' ')
               );
               return listPath.uri;
-            case 'text':
+            }
+            case 'text': {
               var list = get().lists_ui.find(
                 (l) => l.name == listName
               ) as ListForUI;
@@ -623,7 +624,8 @@ export const useListsStore = create<ListsStore>()(
               );
               await listPathTxt.write(message);
               return listPathTxt.uri;
-            case 'pdf':
+            }
+            case 'pdf': {
               var list = get().lists_ui.find(
                 (l) => l.name == listName
               ) as ListForUI;
@@ -632,6 +634,7 @@ export const useListsStore = create<ListsStore>()(
                 localeType: getLocalizedListType(list.type, i18n.locale),
               };
               return await generateListPDF(listToPdf, PdfStyles);
+            }
           }
         },
         load_ui: () => {
@@ -640,7 +643,7 @@ export const useListsStore = create<ListsStore>()(
             state.lists_ui = Object.keys(state.lists).map((listName) => {
               var datalist = state.lists[listName];
               switch (datalist.type) {
-                case 'libre':
+                case 'libre': {
                   var l = datalist as LibreList;
                   var libre: LibreListForUI = {
                     name: listName,
@@ -655,7 +658,8 @@ export const useListsStore = create<ListsStore>()(
                     }),
                   };
                   return libre;
-                case 'palabra':
+                }
+                case 'palabra': {
                   var p = datalist as PalabraList;
                   var palabra: PalabraListForUI = {
                     name: listName,
@@ -697,7 +701,8 @@ export const useListsStore = create<ListsStore>()(
                     nota: datalist.nota,
                   };
                   return palabra;
-                case 'eucaristia':
+                }
+                case 'eucaristia': {
                   var e = datalist as EucaristiaList;
                   var eucaristia: EucaristiaListForUI = {
                     name: listName,
@@ -744,6 +749,7 @@ export const useListsStore = create<ListsStore>()(
                     nota: datalist.nota,
                   };
                   return eucaristia;
+                }
               }
             });
           });

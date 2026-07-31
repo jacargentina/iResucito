@@ -46,7 +46,7 @@ const App = () => {
   }, []);
 
   const scheme = useColorScheme();
-  const colorMode = scheme == null ? undefined : scheme;
+  const colorMode = scheme === 'light' || scheme === 'dark' ? scheme : undefined;
   return (
     <GluestackUIProvider colorMode={colorMode} config={config}>
       <MenuProvider backHandler={true}>

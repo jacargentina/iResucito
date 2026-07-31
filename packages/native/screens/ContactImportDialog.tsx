@@ -10,16 +10,16 @@ import {
 import { Keyboard, StyleSheet } from 'react-native';
 import { FlashList } from '@shopify/flash-list';
 import { ContactPhoto, ModalView, SearchBarView } from '../components';
-import { BrotherContact, useBrothersStore, useSettingsStore } from '../hooks';
+import { type BrotherContact, useBrothersStore, useSettingsStore } from '../hooks';
 import i18n from '@iresucito/translations';
 import {
   getContactsForImport,
   contactFilterByText,
   ordenAlfabetico,
-  ContactForImport,
+  type ContactForImport,
   getContactSanitizedName,
 } from '../util';
-import { ExistingContact } from 'expo-contacts';
+import type { ExistingContact } from 'expo-contacts/legacy';
 
 const BrotherItem = memo(
   (props: {

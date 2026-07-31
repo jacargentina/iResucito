@@ -1,18 +1,18 @@
 // Utilerias atadas a react-native
-import { TextStyle, ViewStyle } from 'react-native';
+import type { TextStyle, ViewStyle } from 'react-native';
 import { getLocales } from 'expo-localization';
 import { File, Paths } from 'expo-file-system';
 import * as Device from 'expo-device';
-import * as Contacts from 'expo-contacts';
+import type * as Contacts from 'expo-contacts/legacy';
 import {
   SongsParser,
-  SongsExtras,
-  SongStyles,
-  Song,
-  SongIndexPatch,
-  SongSettingsFile,
+  type SongsExtras,
+  type SongStyles,
+  type Song,
+  type SongIndexPatch,
+  type SongSettingsFile,
 } from '@iresucito/core';
-import { BrotherContact } from './hooks';
+import type { BrotherContact } from './hooks';
 
 export function ordenAlfabetico(
   a: Contacts.Contact,

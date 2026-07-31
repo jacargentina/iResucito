@@ -82,7 +82,11 @@
       "expo-build-properties",
       "expo-font",
       "expo-asset",
-      "expo-audio"
+      "expo-audio",
+      "@sentry/react-native",
+      "expo-sharing",
+      "expo-splash-screen",
+      "expo-status-bar"
     ],
     "extra": {
       "eas": {
