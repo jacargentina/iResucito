@@ -83,3 +83,5 @@ packages/native/ios
 packages/native/credentials/*
 packages/native/credentials.json
 .yarn/cache/
+# Local Pi runtime state
+.atl/

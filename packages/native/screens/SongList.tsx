@@ -10,7 +10,7 @@ import {
   useRoute,
   useIsFocused,
   useFocusEffect,
-  RouteProp,
+  type RouteProp,
 } from '@react-navigation/native';
 import { Keyboard, View } from 'react-native';
 import { Text, Spinner, HStack } from '@gluestack-ui/themed';
@@ -28,15 +28,16 @@ import {
   useSongsStore,
 } from '../hooks';
 import { SongListItem } from './SongListItem';
-import { SongsStackParamList } from '../navigation/SongsNavigator';
+import type { SongsStackParamList } from '../navigation/SongsNavigator';
 import {
-  Song,
-  SongToPdf,
+  type Song,
+  type SongToPdf,
   PdfStyles,
-  PdfStyle,
+  type PdfStyle,
   SongsParser,
+  normalizeForSearch,
 } from '@iresucito/core';
-import { StackNavigationProp } from '@react-navigation/stack';
+import type { StackNavigationProp } from '@react-navigation/stack';
 import { generateSongPDF } from '../pdf';
 import { useBackHandler } from '../useBackHandler';
 import { HeaderButton } from '../navigation/util';
@@ -99,10 +100,11 @@ export const SongList = (props: {
         }
       }
       if (textFilter) {
+        const normalizedFilter = normalizeForSearch(textFilter);
         result = result.filter((s) => {
           return (
-            s.nombre.toLowerCase().includes(textFilter.toLowerCase()) ||
-            s.fullText.toLowerCase().includes(textFilter.toLowerCase())
+            normalizeForSearch(s.nombre).includes(normalizedFilter) ||
+            normalizeForSearch(s.fullText).includes(normalizedFilter)
           );
         });
       }
@@ -111,7 +113,7 @@ export const SongList = (props: {
         result = result.sort(navSort);
       }
       setShowSalmosBadge(
-        navFilter == null || !navFilter.hasOwnProperty('stage')
+        navFilter == null || !Object.hasOwn(navFilter, 'stage')
       );
       setSearch(result);
       if (result.length > 0) {

@@ -24,7 +24,7 @@ import {
 import ApiMessage from '~/components/ApiMessage';
 import SongListResume from '~/components/SongListResume';
 import { useDebounce } from 'use-debounce';
-import { Song, getPropertyLocale } from '@iresucito/core';
+import { type Song, getPropertyLocale, normalizeForSearch } from '@iresucito/core';
 import i18n from '@iresucito/translations';
 import { useApp } from '~/app.context';
 import { useNavigate } from '@remix-run/react';
@@ -132,6 +132,10 @@ const SongList = (props: { songs: Array<Song> }) => {
   useEffect(() => {
     setFiltering(true);
     const filtered = songs.filter((song: Song) => {
+      const matchesText =
+        normalizeForSearch(song.titulo).includes(debouncedTerm) ||
+        normalizeForSearch(song.fuente).includes(debouncedTerm);
+
       if (
         filters.patched &&
         filters.added &&
@@ -139,8 +143,7 @@ const SongList = (props: { songs: Array<Song> }) => {
         onlyTranslated
       ) {
         return (
-          (song.titulo.toLowerCase().includes(debouncedTerm) ||
-            song.fuente.toLowerCase().includes(debouncedTerm)) &&
+          matchesText &&
           (song.patched || song.added) &&
           !song.notTranslated &&
           getPropertyLocale(song.files, i18n.locale)
@@ -149,8 +152,7 @@ const SongList = (props: { songs: Array<Song> }) => {
 
       if (filters.patched || filters.added || filters.notTranslated) {
         return (
-          (song.titulo.toLowerCase().includes(debouncedTerm) ||
-            song.fuente.toLowerCase().includes(debouncedTerm)) &&
+          matchesText &&
           ((filters.patched && song.patched) ||
             (filters.added && song.added) ||
             (filters.notTranslated && song.notTranslated))
@@ -158,17 +160,10 @@ const SongList = (props: { songs: Array<Song> }) => {
       }
 
       if (onlyTranslated) {
-        return (
-          (song.titulo.toLowerCase().includes(debouncedTerm) ||
-            song.fuente.toLowerCase().includes(debouncedTerm)) &&
-          getPropertyLocale(song.files, i18n.locale)
-        );
+        return matchesText && getPropertyLocale(song.files, i18n.locale);
       }
 
-      return (
-        song.titulo.toLowerCase().includes(debouncedTerm) ||
-        song.fuente.toLowerCase().includes(debouncedTerm)
-      );
+      return matchesText;
     });
     setFiltered(filtered);
     setFiltering(false);
@@ -184,7 +179,7 @@ const SongList = (props: { songs: Array<Song> }) => {
             variant="outlined"
             size="small"
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value.toLowerCase())}
+            onChange={(e) => setSearchTerm(normalizeForSearch(e.target.value))}
             sx={{ flex: 1, minWidth: 200 }}
           />
           <Button

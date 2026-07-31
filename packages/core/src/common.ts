@@ -414,7 +414,14 @@ export type ListTitleValue = {
 };
 
 export const cleanChordsRegex: any =
-  /\[|\]|\(|\)|\*|5|6|7|9|\+|\-|\/|aum|dim|sus|m/g;
+  /\[|\]|\(|\)|\*|5|6|7|9|\+|-|\/|aum|dim|sus|m/g;
+
+export const normalizeForSearch = (value: string): string => {
+  return value
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '');
+};
 
 export const cleanMultichord = (value: string) => {
   value = value.replace(/\^|\$/g, '');
@@ -430,11 +437,11 @@ export const getChordsScale = (locale: string): Array<RegExp> => {
 };
 
 export const getPropertyLocale = (obj: any, rawLoc: string): string => {
-  if (obj.hasOwnProperty(rawLoc)) {
+  if (Object.hasOwn(obj, rawLoc)) {
     return rawLoc;
   } else {
     const locale = rawLoc.split('-')[0];
-    if (obj.hasOwnProperty(locale)) {
+    if (Object.hasOwn(obj, locale)) {
       return locale;
     }
     return '';
@@ -1549,7 +1556,7 @@ export const getListTitleValue = (
     | keyof EucaristiaListForUI,
   removeIfEmpty: boolean = false
 ): ListTitleValue | null => {
-  if (list.hasOwnProperty(key)) {
+  if (Object.hasOwn(list, key)) {
     var valor = (list as any)[key];
     if (valor && getEsSalmo(key)) {
       valor = [valor.titulo];
