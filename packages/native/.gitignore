@@ -3,3 +3,5 @@
 .expo
 dist/
 web-build/
+# Local Pi runtime state
+.atl/
