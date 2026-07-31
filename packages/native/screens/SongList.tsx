@@ -183,8 +183,12 @@ export const SongList = (props: {
     });
   }, [navigation, setShowActionsheet, enabled, selection]);
 
+  const prevTextFilter = useRef(textFilter);
+
   useEffect(() => {
-    if (search.length > 0 && isFocused && textFilter && listRef.current) {
+    const filterChanged = prevTextFilter.current !== textFilter;
+    prevTextFilter.current = textFilter;
+    if (filterChanged && search.length > 0 && textFilter && listRef.current) {
       listRef.current.scrollToIndex({
         index: 0,
         animated: true,
@@ -192,7 +196,7 @@ export const SongList = (props: {
         viewPosition: 1,
       });
     }
-  }, [search, isFocused, textFilter]);
+  }, [search, textFilter]);
 
   const onPress = (song: Song) => {
     if (props.onPress) {
