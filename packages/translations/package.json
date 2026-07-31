@@ -11,7 +11,7 @@
   "private": true,
   "dependencies": {
     "@types/i18n-js": "^4.0.1",
-    "i18n-js": "^4.5.1",
+    "i18n-js": "^4.5.3",
     "typescript": "^5.9.3"
   }
 }

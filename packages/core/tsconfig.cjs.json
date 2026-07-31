@@ -1,10 +1,9 @@
 {
+  "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "dist/cjs",
-    "composite": true,
-    "jsx": "react-jsx",
-    "resolveJsonModule": true,
-    "esModuleInterop": true
+    "module": "CommonJS",
+    "moduleResolution": "node"
   },
   "exclude": ["src/generatepdf.ts", "src/songToPdf.ts", "src/applyPatch.ts"],
   "include": ["src/*.ts", "assets/**/*.json"]
