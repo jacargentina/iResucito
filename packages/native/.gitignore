@@ -5,3 +5,6 @@ dist/
 web-build/
 # Local Pi runtime state
 .atl/
+
+# EAS Metadata: per-release notes input
+release-notes.json

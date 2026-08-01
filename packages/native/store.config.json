@@ -1,0 +1,347 @@
+{
+  "configVersion": 0,
+  "apple": {
+    "version": "11.0.6",
+    "copyright": "Javier Castro",
+    "release": {
+      "automaticRelease": true
+    },
+    "info": {
+      "de-DE": {
+        "description": "• Suchen und Anzeigen von Titeln auf dem Bildschirm\n• Kategorisierung der Songs:\n   - Nach alphabetischer Reihenfolge\n   - Nach Etappen des Camino\n   - Nach liturgischen Zeiten des Jahres\n   - Gemäß Momenten der Liturgie\n• Erstellung von Listen:\n   - Zur Feier des Wortes\n   - Zur Feier der Eucharistie\n   - Für freies Format\n• Freigabelisten\n• Integration von Telefonkontakten zur Verknüpfung von Monitio- nen mit den Brüdern der Gemeinde\n• Visualisierung von Songs in PDF\n• PDF freigeben\n• Export des kompletten Songbuchs als PDF",
+        "keywords": [
+          "Neokatechumenal",
+          "Psalmen",
+          "Liederbuch",
+          "Straße",
+          "Kiko",
+          "Argüello",
+          "Carmen",
+          "Hernandez",
+          "Mario",
+          "Pezzi"
+        ],
+        "releaseNotes": "Verbesserte Suchfunktionen",
+        "supportUrl": "https://twitter.com/javi_ale_castro",
+        "title": "iResucitó",
+        "subtitle": "Neokatechumenale Lieder",
+        "privacyPolicyUrl": "https://jacargentina.github.io/iResucito/privacy_policy.html"
+      },
+      "es-ES": {
+        "description": "• Búsqueda y visualización de los cantos en pantalla\n• Categorización de los cantos:\n  - Según orden alfabético\n  - Según etapas del Camino\n  - Según tiempos litúrgicos del año\n  - Según momentos de la liturgia\n• Confección de Listas:\n  - Para celebración de la Palabra\n  - Para celebración de la Eucaristía\n  - Para formato libre\n• Compartir listas\n• Integración de contactos del teléfono para enlazar moniciones con los hermanos de la comunidad\n• Visualización de cantos en PDF\n• Compatir PDF\n• Exportación del libro de cantos completo en PDF",
+        "keywords": [
+          "neocatecumenal",
+          "salmos",
+          "cancionero",
+          "camino",
+          "Kiko",
+          "Argüello",
+          "Carmen",
+          "Hernandez",
+          "Mario",
+          "Pezzi"
+        ],
+        "releaseNotes": "Mejoras en busquedas",
+        "supportUrl": "https://twitter.com/javi_ale_castro",
+        "title": "iResucitó",
+        "subtitle": "Cantos Camino Neocatecumenal",
+        "privacyPolicyUrl": "https://jacargentina.github.io/iResucito/privacy_policy.html",
+        "screenshots": {
+          "APP_IPHONE_65": [
+            "store/apple/screenshot/es-ES/APP_IPHONE_65/iPhone 11 Pro Max-BuscarCantos.png",
+            "store/apple/screenshot/es-ES/APP_IPHONE_65/iPhone 11 Pro Max-BuscarCantos.png",
+            "store/apple/screenshot/es-ES/APP_IPHONE_65/iPhone 11 Pro Max-Canto-PDF.png",
+            "store/apple/screenshot/es-ES/APP_IPHONE_65/iPhone 11 Pro Max-Canto-Pantalla.png",
+            "store/apple/screenshot/es-ES/APP_IPHONE_65/iPhone 11 Pro Max-Comunidad.png",
+            "store/apple/screenshot/es-ES/APP_IPHONE_65/iPhone 11 Pro Max-Configuracion-Idiomas.png",
+            "store/apple/screenshot/es-ES/APP_IPHONE_65/iPhone 11 Pro Max-Configuracion.png",
+            "store/apple/screenshot/es-ES/APP_IPHONE_65/iPhone 11 Pro Max-Lista-PDF.png",
+            "store/apple/screenshot/es-ES/APP_IPHONE_65/iPhone 11 Pro Max-Lista-Pantalla.png",
+            "store/apple/screenshot/es-ES/APP_IPHONE_65/iPhone 11 Pro Max-Listas.png"
+          ],
+          "APP_IPHONE_47": [
+            "store/apple/screenshot/es-ES/APP_IPHONE_47/iPhone SE (3rd generation)-BuscarCantos.png",
+            "store/apple/screenshot/es-ES/APP_IPHONE_47/iPhone SE (3rd generation)-Canto-PDF.png",
+            "store/apple/screenshot/es-ES/APP_IPHONE_47/iPhone SE (3rd generation)-Canto-Pantalla.png",
+            "store/apple/screenshot/es-ES/APP_IPHONE_47/iPhone SE (3rd generation)-Comunidad.png",
+            "store/apple/screenshot/es-ES/APP_IPHONE_47/iPhone SE (3rd generation)-Configuracion-Idiomas.png",
+            "store/apple/screenshot/es-ES/APP_IPHONE_47/iPhone SE (3rd generation)-Configuracion.png",
+            "store/apple/screenshot/es-ES/APP_IPHONE_47/iPhone SE (3rd generation)-Lista-PDF.png",
+            "store/apple/screenshot/es-ES/APP_IPHONE_47/iPhone SE (3rd generation)-Lista-Pantalla.png",
+            "store/apple/screenshot/es-ES/APP_IPHONE_47/iPhone SE (3rd generation)-Listas.png"
+          ],
+          "APP_IPHONE_58": [
+            "store/apple/screenshot/es-ES/APP_IPHONE_58/Simulator Screen Shot - iPhone 11 Pro - 2021-09-28 at 20.48.38.png",
+            "store/apple/screenshot/es-ES/APP_IPHONE_58/Simulator Screen Shot - iPhone 11 Pro - 2021-09-28 at 20.49.22.png",
+            "store/apple/screenshot/es-ES/APP_IPHONE_58/Simulator Screen Shot - iPhone 11 Pro - 2021-09-28 at 20.49.42.png",
+            "store/apple/screenshot/es-ES/APP_IPHONE_58/Simulator Screen Shot - iPhone 11 Pro - 2021-09-28 at 20.49.54.png",
+            "store/apple/screenshot/es-ES/APP_IPHONE_58/Simulator Screen Shot - iPhone 11 Pro - 2021-09-28 at 20.50.26.png",
+            "store/apple/screenshot/es-ES/APP_IPHONE_58/Simulator Screen Shot - iPhone 11 Pro - 2021-09-28 at 20.51.44.png",
+            "store/apple/screenshot/es-ES/APP_IPHONE_58/Simulator Screen Shot - iPhone 11 Pro - 2021-09-28 at 20.52.06.png",
+            "store/apple/screenshot/es-ES/APP_IPHONE_58/Simulator Screen Shot - iPhone 11 Pro - 2021-09-28 at 20.52.25.png"
+          ],
+          "APP_IPHONE_55": [
+            "store/apple/screenshot/es-ES/APP_IPHONE_55/iPhone 8 Plus-BuscarCantos.png",
+            "store/apple/screenshot/es-ES/APP_IPHONE_55/iPhone 8 Plus-BuscarCantos.png",
+            "store/apple/screenshot/es-ES/APP_IPHONE_55/iPhone 8 Plus-Canto-PDF.png",
+            "store/apple/screenshot/es-ES/APP_IPHONE_55/iPhone 8 Plus-Canto-Pantalla.png",
+            "store/apple/screenshot/es-ES/APP_IPHONE_55/iPhone 8 Plus-Comunidad.png",
+            "store/apple/screenshot/es-ES/APP_IPHONE_55/iPhone 8 Plus-Configuracion-Idiomas.png",
+            "store/apple/screenshot/es-ES/APP_IPHONE_55/iPhone 8 Plus-Configuracion.png",
+            "store/apple/screenshot/es-ES/APP_IPHONE_55/iPhone 8 Plus-Lista-PDF.png",
+            "store/apple/screenshot/es-ES/APP_IPHONE_55/iPhone 8 Plus-Lista-Pantalla.png",
+            "store/apple/screenshot/es-ES/APP_IPHONE_55/iPhone 8 Plus-Listas.png"
+          ],
+          "APP_IPAD_PRO_3GEN_129": [
+            "store/apple/screenshot/es-ES/APP_IPAD_PRO_3GEN_129/iPad Pro (12.9-inch) (6th generation)-BuscarCantos.png",
+            "store/apple/screenshot/es-ES/APP_IPAD_PRO_3GEN_129/iPad Pro (12.9-inch) (6th generation)-BuscarCantos.png",
+            "store/apple/screenshot/es-ES/APP_IPAD_PRO_3GEN_129/iPad Pro (12.9-inch) (6th generation)-Canto-PDF.png",
+            "store/apple/screenshot/es-ES/APP_IPAD_PRO_3GEN_129/iPad Pro (12.9-inch) (6th generation)-Canto-Pantalla.png",
+            "store/apple/screenshot/es-ES/APP_IPAD_PRO_3GEN_129/iPad Pro (12.9-inch) (6th generation)-Comunidad.png",
+            "store/apple/screenshot/es-ES/APP_IPAD_PRO_3GEN_129/iPad Pro (12.9-inch) (6th generation)-Configuracion-Idiomas.png",
+            "store/apple/screenshot/es-ES/APP_IPAD_PRO_3GEN_129/iPad Pro (12.9-inch) (6th generation)-Configuracion.png",
+            "store/apple/screenshot/es-ES/APP_IPAD_PRO_3GEN_129/iPad Pro (12.9-inch) (6th generation)-Lista-PDF.png",
+            "store/apple/screenshot/es-ES/APP_IPAD_PRO_3GEN_129/iPad Pro (12.9-inch) (6th generation)-Lista-Pantalla.png",
+            "store/apple/screenshot/es-ES/APP_IPAD_PRO_3GEN_129/iPad Pro (12.9-inch) (6th generation)-Listas.png"
+          ],
+          "APP_IPAD_PRO_129": [
+            "store/apple/screenshot/es-ES/APP_IPAD_PRO_129/iPad Pro (12.9-inch) (2nd generation)-BuscarCantos.png",
+            "store/apple/screenshot/es-ES/APP_IPAD_PRO_129/iPad Pro (12.9-inch) (2nd generation)-BuscarCantos.png",
+            "store/apple/screenshot/es-ES/APP_IPAD_PRO_129/iPad Pro (12.9-inch) (2nd generation)-Canto-PDF.png",
+            "store/apple/screenshot/es-ES/APP_IPAD_PRO_129/iPad Pro (12.9-inch) (2nd generation)-Canto-Pantalla.png",
+            "store/apple/screenshot/es-ES/APP_IPAD_PRO_129/iPad Pro (12.9-inch) (2nd generation)-Comunidad.png",
+            "store/apple/screenshot/es-ES/APP_IPAD_PRO_129/iPad Pro (12.9-inch) (2nd generation)-Configuracion-Idiomas.png",
+            "store/apple/screenshot/es-ES/APP_IPAD_PRO_129/iPad Pro (12.9-inch) (2nd generation)-Configuracion.png",
+            "store/apple/screenshot/es-ES/APP_IPAD_PRO_129/iPad Pro (12.9-inch) (2nd generation)-Lista-PDF.png",
+            "store/apple/screenshot/es-ES/APP_IPAD_PRO_129/iPad Pro (12.9-inch) (2nd generation)-Lista-Pantalla.png",
+            "store/apple/screenshot/es-ES/APP_IPAD_PRO_129/iPad Pro (12.9-inch) (2nd generation)-Listas.png"
+          ]
+        }
+      },
+      "pt-BR": {
+        "description": "• Busca e exibição de músicas na tela\n• Categorização das músicas:\n   - De acordo com a ordem alfabética\n   - De acordo com as etapas do Caminho\n   - De acordo com os tempos litúrgicos do ano\n   - De acordo com momentos da liturgia\n• Elaboração de Listas:\n   - Para a celebração da Palavra\n   - Para a celebração da Eucaristia\n   - Para formato livre\n• listas de compartilhamento\n• Integração de contatos telefônicos para vincular as monções aos irmãos da comunidade.\n• Visualização de músicas em PDF\n• Compartilhar PDF\n• Exportação do livro de músicas completo em PDF",
+        "keywords": [
+          "neocatecumenal",
+          "salmos",
+          "cancionero",
+          "camino",
+          "Kiko",
+          "Argüello",
+          "Carmen",
+          "Hernandez",
+          "Mario",
+          "Pezzi"
+        ],
+        "releaseNotes": "Busca melhorada",
+        "supportUrl": "https://twitter.com/javi_ale_castro",
+        "title": "iResucitó",
+        "subtitle": "Cantos Caminho Neocatecumenal",
+        "privacyPolicyUrl": "https://jacargentina.github.io/iResucito/privacy_policy.html"
+      },
+      "pt-PT": {
+        "description": "• Busca e exibição de músicas na tela\n• Categorização das músicas:\n   - De acordo com a ordem alfabética\n   - De acordo com as etapas do Caminho\n   - De acordo com os tempos litúrgicos do ano\n   - De acordo com momentos da liturgia\n• Elaboração de Listas:\n   - Para a celebração da Palavra\n   - Para a celebração da Eucaristia\n   - Para formato livre\n• listas de compartilhamento\n• Integração de contatos telefônicos para vincular as monções aos irmãos da comunidade.\n• Visualização de músicas em PDF\n• Compartilhar PDF\n• Exportação do livro de músicas completo em PDF",
+        "keywords": [
+          "neocatecumenal",
+          "salmos",
+          "cancionero",
+          "camino",
+          "Kiko",
+          "Argüello",
+          "Carmen",
+          "Hernandez",
+          "Mario",
+          "Pezzi"
+        ],
+        "releaseNotes": "Busca melhorada",
+        "supportUrl": "https://twitter.com/javi_ale_castro",
+        "title": "iResucitó",
+        "subtitle": "Cantos Caminho Neocatecumenal",
+        "privacyPolicyUrl": "https://jacargentina.github.io/iResucito/privacy_policy.html"
+      },
+      "it": {
+        "description": "• Ricerca e visualizzazione di brani sullo schermo\n• Classificazione delle canzoni:\n   - Secondo l'ordine alfabetico\n   - Secondo le tappe del Camino\n   - Secondo i periodi liturgici dell'anno\n   - Secondo i momenti della liturgia\n• Preparazione delle liste:\n   - Per la celebrazione della Parola\n   - Per la celebrazione dell'Eucaristia\n   - Per formato libero\n• Condividi elenchi\n• Integrazione dei contatti telefonici per collegare le monizioni ai fratelli della comunità\n• Visualizzazione di brani in PDF\n• Condividi PDF\n• Esportazione del libro delle canzoni completo in PDF",
+        "keywords": [
+          "Neocatecumenale",
+          "canzoni",
+          "canzoniere",
+          "modo",
+          "Kiko",
+          "Argüello",
+          "Carmen",
+          "Hernandez",
+          "Pezzi"
+        ],
+        "releaseNotes": "Ricerca migliore",
+        "marketingUrl": "https://jacargentina.github.io/iResucito/",
+        "supportUrl": "https://twitter.com/javi_ale_castro",
+        "title": "iResucitó",
+        "subtitle": "Canti Cammino Neocatecumenale",
+        "privacyPolicyUrl": "https://jacargentina.github.io/iResucito/privacy_policy.html",
+        "screenshots": {
+          "APP_IPHONE_55": [
+            "store/apple/screenshot/it/APP_IPHONE_55/ftl_0aa115566740f1ed6199652c767274f3_2_iphone6Plus_2.ftl_e5ee5bbaae3f47ca83b9851e22322004_0x0ss-3.jpg",
+            "store/apple/screenshot/it/APP_IPHONE_55/ftl_257cb62be9566fc9f6021582d047d5f4_3.jpg",
+            "store/apple/screenshot/it/APP_IPHONE_55/ftl_279de97b632395280ba56b41ae78de76_1_iphone6Plus_1.ftl_d7e69e4c36574e716c5161db9c365666_0x0ss-2.jpg",
+            "store/apple/screenshot/it/APP_IPHONE_55/ftl_47f02239b23517d99d9ba146485d0320_4_iphone6Plus_4.ftl_734a4ca16d7c4676dcfe870f42d5f9c8_0x0ss-5.jpg",
+            "store/apple/screenshot/it/APP_IPHONE_55/ftl_734a4ca16d7c4676dcfe870f42d5f9c8_4.jpg",
+            "store/apple/screenshot/it/APP_IPHONE_55/ftl_d7e69e4c36574e716c5161db9c365666_1.jpg",
+            "store/apple/screenshot/it/APP_IPHONE_55/ftl_e5ee5bbaae3f47ca83b9851e22322004_2.jpg",
+            "store/apple/screenshot/it/APP_IPHONE_55/ftl_e85e8453a1c593200564dffbf427e373_3_iphone6Plus_3.ftl_257cb62be9566fc9f6021582d047d5f4_0x0ss-4.jpg"
+          ]
+        }
+      },
+      "en-US": {
+        "description": "• Search and display of songs on screen\n• Categorization of the songs:\n   - According to alphabetical order\n   - According to stages of the Camino\n   - According to liturgical times of the year\n   - According to moments of the liturgy\n• Preparation of Lists:\n   - For the celebration of the Word\n   - For the celebration of the Eucharist\n   - For free format\n• Share lists\n• Integration of telephone contacts to link monitions with the brothers of the community\n• Visualization of songs in PDF\n• Share PDF\n• Export of the complete song book in PDF",
+        "keywords": [
+          "Neocatechumenal",
+          "psalms",
+          "songbook",
+          "way",
+          "Kiko",
+          "Argüello",
+          "Carmen",
+          "Hernandez",
+          "Pezzi"
+        ],
+        "releaseNotes": "Better search",
+        "marketingUrl": "https://jacargentina.github.io/iResucito/",
+        "supportUrl": "https://twitter.com/javi_ale_castro",
+        "title": "iResucitó",
+        "subtitle": "Songs Neocatechumenal Way",
+        "privacyPolicyUrl": "https://jacargentina.github.io/iResucito/privacy_policy.html",
+        "screenshots": {
+          "APP_IPHONE_55": [
+            "store/apple/screenshot/en-US/APP_IPHONE_55/ftl_2fb586203505fd839d7a9a11127ec9ac_4_iphone6Plus_4.ftl_e324593d787dcfe7bfce8afad09b3dbf_0x0ss-5.jpg",
+            "store/apple/screenshot/en-US/APP_IPHONE_55/ftl_81135889b63e3cbb589e871856699023_2.jpg",
+            "store/apple/screenshot/en-US/APP_IPHONE_55/ftl_98e933a1b51620b935d04d70862ebda5_3.jpg",
+            "store/apple/screenshot/en-US/APP_IPHONE_55/ftl_9acbaa2fbf57f559ca3644e95bfc7313_1_iphone6Plus_1.ftl_9cca3233874daa0ad5ed639118a2aa10_0x0ss-2.jpg",
+            "store/apple/screenshot/en-US/APP_IPHONE_55/ftl_9cca3233874daa0ad5ed639118a2aa10_1.jpg",
+            "store/apple/screenshot/en-US/APP_IPHONE_55/ftl_b11c5694e7a0e98e237f9e57443d65a7_3_iphone6Plus_3.ftl_98e933a1b51620b935d04d70862ebda5_0x0ss-4.jpg",
+            "store/apple/screenshot/en-US/APP_IPHONE_55/ftl_e324593d787dcfe7bfce8afad09b3dbf_4.jpg",
+            "store/apple/screenshot/en-US/APP_IPHONE_55/ftl_e8061b3a43aa341f26da158f8841b3df_2_iphone6Plus_2.ftl_81135889b63e3cbb589e871856699023_0x0ss-3.jpg"
+          ]
+        }
+      },
+      "fr-FR": {
+        "title": "iResucitó",
+        "supportUrl": "https://twitter.com/javi_ale_castro",
+        "privacyPolicyUrl": "https://jacargentina.github.io/iResucito/privacy_policy.html",
+        "subtitle": "Chants Chemin Néocatéchuménal",
+        "description": "• Recherche et affichage des chants à l'écran\n• Catégorisation des chants :\n  - Par ordre alphabétique\n  - Par étapes du Chemin\n  - Par temps liturgiques de l'année\n  - Par moments de la liturgie\n• Création de listes :\n  - Pour la célébration de la Parole\n  - Pour la célébration de l'Eucharistie\n  - Au format libre\n• Partage de listes\n• Intégration des contacts du téléphone pour associer les intentions aux frères de la communauté\n• Affichage des chants en PDF\n• Partage de PDF\n• Export du chansonnier complet en PDF",
+        "keywords": [
+          "néocatéchuménal",
+          "psaumes",
+          "chansonnier",
+          "chemin",
+          "Kiko",
+          "Argüello",
+          "Carmen",
+          "Hernandez",
+          "Mario",
+          "Pezzi"
+        ],
+        "releaseNotes": "Recherche améliorée"
+      },
+      "pl": {
+        "title": "iResucitó",
+        "supportUrl": "https://twitter.com/javi_ale_castro",
+        "privacyPolicyUrl": "https://jacargentina.github.io/iResucito/privacy_policy.html",
+        "subtitle": "Neokatechumenalne pieśni",
+        "description": "• Wyszukiwanie i wyświetlanie pieśni na ekranie\n• Kategoryzacja pieśni:\n  - Według porządku alfabetycznego\n  - Według etapów Drogi\n  - Według okresów liturgicznych roku\n  - Według momentów liturgii\n• Tworzenie list:\n  - Do celebracji Słowa\n  - Do celebracji Eucharystii\n  - W dowolnym formacie\n• Udostępnianie list\n• Integracja z kontaktami telefonu, aby powiązać monicje z braćmi wspólnoty\n• Wyświetlanie pieśni w PDF\n• Udostępnianie PDF\n• Eksport pełnego śpiewnika w PDF",
+        "keywords": [
+          "neokatechumenalna",
+          "psalmy",
+          "śpiewnik",
+          "droga",
+          "Kiko",
+          "Argüello",
+          "Carmen",
+          "Hernandez",
+          "Mario",
+          "Pezzi"
+        ],
+        "releaseNotes": "Ulepszone wyszukiwanie"
+      },
+      "ru": {
+        "title": "iResucitó",
+        "supportUrl": "https://twitter.com/javi_ale_castro",
+        "privacyPolicyUrl": "https://jacargentina.github.io/iResucito/privacy_policy.html",
+        "subtitle": "Песни Неокатехуменального Пути",
+        "description": "• Поиск и отображение песнопений на экране\n• Категоризация песнопений:\n  - По алфавитному порядку\n  - По этапам Пути\n  - По литургическим временам года\n  - По моментам литургии\n• Составление списков:\n  - Для совершения Слова\n  - Для совершения Евхаристии\n  - В свободном формате\n• Обмен списками\n• Интеграция контактов телефона для связи молений с братьями общины\n• Просмотр песнопений в PDF\n• Обмен PDF\n• Экспорт полного песенника в PDF",
+        "keywords": [
+          "неокатехуменальный",
+          "псалмы",
+          "песенник",
+          "путь",
+          "Kiko",
+          "Argüello",
+          "Carmen",
+          "Hernandez",
+          "Mario",
+          "Pezzi"
+        ],
+        "releaseNotes": "Улучшенный поиск"
+      },
+      "hr": {
+        "title": "iResucitó",
+        "supportUrl": "https://twitter.com/javi_ale_castro",
+        "privacyPolicyUrl": "https://jacargentina.github.io/iResucito/privacy_policy.html",
+        "subtitle": "Pjesme Neokatekumenskog puta",
+        "description": "• Pretraživanje i prikaz pjesama na zaslonu\n• Kategorizacija pjesama:\n  - Prema abecednom redu\n  - Prema etapama Puta\n  - Prema liturgijskim vremenima godine\n  - Prema trenucima liturgije\n• Izrada popisa:\n  - Za slavlje Riječi\n  - Za slavlje Euharistije\n  - U slobodnom formatu\n• Dijeljenje popisa\n• Integracija kontakata telefona za povezivanje monicija s braćom zajednice\n• Prikaz pjesama u PDF-u\n• Dijeljenje PDF-a\n• Izvoz cjelokupne pjesmarice u PDF",
+        "keywords": [
+          "neokatekumenski",
+          "psalmi",
+          "pjesmarica",
+          "put",
+          "Kiko",
+          "Argüello",
+          "Carmen",
+          "Hernandez",
+          "Mario",
+          "Pezzi"
+        ],
+        "releaseNotes": "Poboljšano pretraživanje"
+      }
+    },
+    "categories": [
+      "UTILITIES",
+      "LIFESTYLE"
+    ],
+    "advisory": {
+      "ageRatingOverride": "NONE",
+      "alcoholTobaccoOrDrugUseOrReferences": "NONE",
+      "contests": "NONE",
+      "gambling": false,
+      "gamblingSimulated": "NONE",
+      "horrorOrFearThemes": "NONE",
+      "kidsAgeBand": null,
+      "koreaAgeRatingOverride": "NONE",
+      "lootBox": false,
+      "matureOrSuggestiveThemes": "NONE",
+      "medicalOrTreatmentInformation": "NONE",
+      "profanityOrCrudeHumor": "NONE",
+      "sexualContentGraphicAndNudity": "NONE",
+      "sexualContentOrNudity": "NONE",
+      "unrestrictedWebAccess": false,
+      "violenceCartoonOrFantasy": "NONE",
+      "violenceRealistic": "NONE",
+      "violenceRealisticProlongedGraphicOrSadistic": "NONE",
+      "advertising": false,
+      "ageAssurance": false,
+      "ageRatingOverrideV2": "NONE",
+      "developerAgeRatingInfoUrl": null,
+      "gunsOrOtherWeapons": "NONE",
+      "healthOrWellnessTopics": false,
+      "messagingAndChat": false,
+      "parentalControls": false,
+      "userGeneratedContent": false
+    },
+    "review": {
+      "firstName": "Javier",
+      "lastName": "Castro",
+      "email": "javier.alejandro.castro@gmail.com",
+      "phone": "+54 0298 4205126",
+      "demoRequired": false
+    }
+  }
+}
