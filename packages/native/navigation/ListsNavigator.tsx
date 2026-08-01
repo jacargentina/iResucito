@@ -13,11 +13,11 @@ import {
   useMedia,
 } from '@gluestack-ui/themed';
 import {
-  StackNavigationProp,
+  type StackNavigationProp,
   createStackNavigator,
 } from '@react-navigation/stack';
-import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
-import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
+import { type RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+import type { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import i18n from '@iresucito/translations';
 import {
   PDFViewer,
@@ -26,7 +26,7 @@ import {
   SongDetail,
   ListNameDialog,
 } from '../screens';
-import { ListAction, ListType, Song } from '@iresucito/core';
+import type { ListAction, ListType, Song } from '@iresucito/core';
 import { useListsStore, useSettingsStore } from '../hooks';
 import {
   useStackNavOptions,
@@ -34,9 +34,9 @@ import {
   getPdfViewerOptions,
   HeaderButton,
 } from './util';
-import { GeneratePDFResult } from '../pdf';
-import { RootStackParamList } from './RootNavigator';
-import { SongsStackParamList } from './SongsNavigator';
+import type { GeneratePDFResult } from '../pdf';
+import type { RootStackParamList } from './RootNavigator';
+import type { SongsStackParamList } from './SongsNavigator';
 
 export type ListsStackParamList = {
   ListsSearch: undefined;
@@ -71,6 +71,7 @@ const AddSongButton = () => {
 
   return (
     <HeaderButton
+      testID="add-song-button"
       iconName="PlusIcon"
       onPress={() =>
         navigation.navigate('SongChooser', {

@@ -1,0 +1,157 @@
+appId: com.javiercastro.iresucito
+---
+- launchApp:
+    clearState: true
+- extendedWaitUntil:
+    visible:
+      id: settings-tab
+    timeout: 30000
+- tapOn:
+    id: settings-tab
+- extendedWaitUntil:
+    visible:
+      id: locale-input
+    timeout: 30000
+- tapOn:
+    id: locale-input
+- scrollUntilVisible:
+    element:
+      text: ${LOCALE_LABEL}
+    direction: DOWN
+    timeout: 20000
+- tapOn:
+    text: ${LOCALE_LABEL}
+- extendedWaitUntil:
+    visible:
+      id: locale-input
+    timeout: 30000
+- takeScreenshot: Configuracion
+- tapOn:
+    id: locale-input
+- scrollUntilVisible:
+    element:
+      text: ${LOCALE_LABEL}
+    direction: DOWN
+    timeout: 20000
+- takeScreenshot: Configuracion-Idiomas
+- tapOn:
+    text: ${LOCALE_LABEL}
+- tapOn:
+    id: songs-tab
+- extendedWaitUntil:
+    visible:
+      id: search_title.alpha
+    timeout: 30000
+- takeScreenshot: BuscarCantos
+- tapOn:
+    id: search_title.alpha
+- scrollUntilVisible:
+    element:
+      id: "song-${SONG_ONE}"
+    direction: DOWN
+    timeout: 30000
+    visibilityPercentage: 50
+- tapOn:
+    id: "song-${SONG_ONE}"
+- extendedWaitUntil:
+    visible:
+      id: view-pdf-button
+    timeout: 30000
+- takeScreenshot: Canto-Pantalla
+- tapOn:
+    id: view-pdf-button
+- extendedWaitUntil:
+    visible:
+      text: PDF - .*
+    timeout: 30000
+- takeScreenshot: Canto-PDF
+- tapOn:
+    id: back-button
+- tapOn:
+    id: back-button
+- tapOn:
+    id: back-button
+- tapOn:
+    id: lists-tab
+- extendedWaitUntil:
+    visible:
+      id: add-list
+    timeout: 30000
+- tapOn:
+    id: add-list
+- tapOn:
+    id: list_type.other
+- tapOn:
+    id: list-name-input
+- inputText: Comunidad Demo
+- tapOn:
+    id: list-name-button
+- extendedWaitUntil:
+    visible:
+      id: add-song-button
+    timeout: 30000
+- tapOn:
+    id: add-song-button
+- scrollUntilVisible:
+    element:
+      id: "song-${SONG_ONE}"
+    direction: DOWN
+    timeout: 30000
+    visibilityPercentage: 50
+- tapOn:
+    id: "song-${SONG_ONE}"
+- extendedWaitUntil:
+    visible:
+      id: add-song-button
+    timeout: 30000
+- tapOn:
+    id: add-song-button
+- scrollUntilVisible:
+    element:
+      id: "song-${SONG_TWO}"
+    direction: DOWN
+    timeout: 30000
+    visibilityPercentage: 50
+- tapOn:
+    id: "song-${SONG_TWO}"
+- extendedWaitUntil:
+    visible:
+      id: add-song-button
+    timeout: 30000
+- tapOn:
+    id: add-song-button
+- scrollUntilVisible:
+    element:
+      id: "song-${SONG_THREE}"
+    direction: DOWN
+    timeout: 30000
+    visibilityPercentage: 50
+- tapOn:
+    id: "song-${SONG_THREE}"
+- takeScreenshot: Lista-Pantalla
+- tapOn:
+    id: share-list-button
+- tapOn:
+    id: share-list-pdf
+- extendedWaitUntil:
+    visible:
+      text: PDF - Comunidad Demo
+    timeout: 30000
+- takeScreenshot: Lista-PDF
+- tapOn:
+    id: back-button
+- tapOn:
+    id: back-button
+- extendedWaitUntil:
+    visible:
+      id: list-Comunidad Demo
+    timeout: 30000
+- takeScreenshot: Listas
+- tapOn:
+    id: community-tab
+- extendedWaitUntil:
+    visible:
+      id: community-tab
+    timeout: 30000
+- waitForAnimationToEnd
+- takeScreenshot: Comunidad

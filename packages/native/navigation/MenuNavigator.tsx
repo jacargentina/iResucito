@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { Platform, Linking } from 'react-native';
 import {
-  BottomTabNavigationOptions,
+  type BottomTabNavigationOptions,
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs';
 import {
   getFocusedRouteNameFromRoute,
-  NavigatorScreenParams,
+  type NavigatorScreenParams,
 } from '@react-navigation/native';
 import { Icon, useMedia } from '@gluestack-ui/themed';
 import { useListsStore } from '../hooks';
@@ -18,13 +18,13 @@ import {
   UsersIcon,
 } from 'lucide-react-native';
 import { useColorScheme } from 'react-native';
-import { SongsNavigator, SongsStackParamList } from './SongsNavigator';
-import { ListsNavigator, ListsStackParamList } from './ListsNavigator';
+import { SongsNavigator, type SongsStackParamList } from './SongsNavigator';
+import { ListsNavigator, type ListsStackParamList } from './ListsNavigator';
 import {
   CommunityNavigator,
-  CommunityStackParamList,
+  type CommunityStackParamList,
 } from './CommunityNavigator';
-import { SettingsNavigator, SettingsStackParamList } from './SettingsNavigator';
+import { SettingsNavigator, type SettingsStackParamList } from './SettingsNavigator';
 
 export type MenuParamList = {
   Songs: NavigatorScreenParams<SongsStackParamList>;
@@ -56,12 +56,13 @@ const getTabOptions = (
         }
       : undefined,
     tabBarAccessibilityLabel: testID,
+    tabBarButtonTestID: testID,
     tabBarIcon: ({ color }) => {
       return (
         <Icon
           as={IconComponent}
           color={color}
-          // @ts-ignore
+          // @ts-expect-error
           size={media.md ? '45' : undefined}
           style={{ marginTop: 16 }}
         />
