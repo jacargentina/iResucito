@@ -45,14 +45,25 @@ appId: com.javiercastro.iresucito
 - takeScreenshot: BuscarCantos
 - tapOn:
     id: search_title.alpha
-- scrollUntilVisible:
-    element:
+- tapOn:
+    text: Input Field
+- inputText: "${SONG_ONE}"
+- extendedWaitUntil:
+    visible:
       id: "song-${SONG_ONE}"
-    direction: DOWN
     timeout: 30000
-    visibilityPercentage: 50
 - tapOn:
     id: "song-${SONG_ONE}"
+    point: "50%,20%"
+    retryTapIfNoChange: true
+- runFlow:
+    when:
+      visible:
+        id: "song-${SONG_ONE}"
+    commands:
+      - tapOn:
+          id: "song-${SONG_ONE}"
+          point: "50%,20%"
 - extendedWaitUntil:
     visible:
       id: view-pdf-button
@@ -92,45 +103,82 @@ appId: com.javiercastro.iresucito
     timeout: 30000
 - tapOn:
     id: add-song-button
-- scrollUntilVisible:
-    element:
+- tapOn:
+    text: Input Field
+- inputText: "${SONG_ONE}"
+- extendedWaitUntil:
+    visible:
       id: "song-${SONG_ONE}"
-    direction: DOWN
     timeout: 30000
-    visibilityPercentage: 50
 - tapOn:
     id: "song-${SONG_ONE}"
+    point: "50%,20%"
+    retryTapIfNoChange: true
+- runFlow:
+    when:
+      visible:
+        id: "song-${SONG_ONE}"
+    commands:
+      - tapOn:
+          id: "song-${SONG_ONE}"
+          point: "50%,20%"
 - extendedWaitUntil:
     visible:
       id: add-song-button
     timeout: 30000
 - tapOn:
     id: add-song-button
-- scrollUntilVisible:
-    element:
+- tapOn:
+    text: Input Field
+- inputText: "${SONG_TWO}"
+- extendedWaitUntil:
+    visible:
       id: "song-${SONG_TWO}"
-    direction: DOWN
     timeout: 30000
-    visibilityPercentage: 50
 - tapOn:
     id: "song-${SONG_TWO}"
+    point: "50%,20%"
+    retryTapIfNoChange: true
+- runFlow:
+    when:
+      visible:
+        id: "song-${SONG_TWO}"
+    commands:
+      - tapOn:
+          id: "song-${SONG_TWO}"
+          point: "50%,20%"
 - extendedWaitUntil:
     visible:
       id: add-song-button
     timeout: 30000
 - tapOn:
     id: add-song-button
-- scrollUntilVisible:
-    element:
+- tapOn:
+    text: Input Field
+- inputText: "${SONG_THREE}"
+- extendedWaitUntil:
+    visible:
       id: "song-${SONG_THREE}"
-    direction: DOWN
     timeout: 30000
-    visibilityPercentage: 50
 - tapOn:
     id: "song-${SONG_THREE}"
+    point: "50%,20%"
+    retryTapIfNoChange: true
+- runFlow:
+    when:
+      visible:
+        id: "song-${SONG_THREE}"
+    commands:
+      - tapOn:
+          id: "song-${SONG_THREE}"
+          point: "50%,20%"
 - takeScreenshot: Lista-Pantalla
 - tapOn:
     id: share-list-button
+- extendedWaitUntil:
+    visible:
+      id: share-list-pdf
+    timeout: 10000
 - tapOn:
     id: share-list-pdf
 - extendedWaitUntil:

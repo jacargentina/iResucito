@@ -62,7 +62,6 @@ const getTabOptions = (
         <Icon
           as={IconComponent}
           color={color}
-          // @ts-expect-error
           size={media.md ? '45' : undefined}
           style={{ marginTop: 16 }}
         />

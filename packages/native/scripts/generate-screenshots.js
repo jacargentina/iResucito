@@ -169,17 +169,22 @@ function verifyScreenshots(outputDirectory, device) {
 }
 
 function translatedSongTitles(appLocale) {
-  const songsDirectory = path.join(nativeRoot, '..', 'core', 'assets', 'songs');
-  const localeFile = path.join(songsDirectory, `${appLocale}.json`);
-  // Locales without their own songs file fall back to the Spanish catalog, like the app does.
-  const sourceFile = fs.existsSync(localeFile) ? localeFile : path.join(songsDirectory, 'es.json');
-  const entries = parseJson(fs.readFileSync(sourceFile, 'utf8'), sourceFile);
-  const titles = Object.values(entries)
-    .map((entry) => entry.name.split(' - ')[0].trim())
-    .filter(Boolean)
+  const coreAssets = path.join(nativeRoot, '..', 'core', 'assets');
+  const songsIndexPath = path.join(coreAssets, 'songs.json');
+  const songsIndex = parseJson(fs.readFileSync(songsIndexPath, 'utf8'), songsIndexPath);
+  const mappedLocale = Object.values(songsIndex).some((song) => song.files?.[appLocale])
+    ? appLocale
+    : 'es';
+  const localeFile = path.join(coreAssets, 'songs', `${mappedLocale}.json`);
+  const entries = parseJson(fs.readFileSync(localeFile, 'utf8'), localeFile);
+  const titles = Object.values(songsIndex)
+    .map((song) => song.files?.[mappedLocale])
+    .filter((fileIndex) => fileIndex != null)
+    .map((fileIndex) => entries[fileIndex]?.name.split(' - ')[0].trim())
+    .filter((title) => title && !/[.*+?^${}()|[\]\\]/.test(title))
     .sort((a, b) => a.localeCompare(b));
   if (titles.length < 3) {
-    throw new Error(`${sourceFile} does not have enough songs to build the flow`);
+    throw new Error(`${localeFile} does not have enough mapped songs to build the flow`);
   }
   return titles.slice(0, 3);
 }
@@ -216,12 +221,19 @@ function main() {
 
   for (const locale of locales) {
     const localeDirectory = path.join(screenshotRoot, locale.store);
-    fs.rmSync(localeDirectory, { recursive: true, force: true });
     for (const deviceConfig of devices) {
+      const outputDirectory = path.join(localeDirectory, deviceConfig.deviceClass);
+      const isComplete = screenNames.every((screenName) =>
+        fs.existsSync(path.join(outputDirectory, `${screenName}.png`))
+      );
+      if (isComplete) {
+        console.log(`Skipping completed ${locale.store} ${deviceConfig.deviceClass}.`);
+        continue;
+      }
       const device = findDevice(deviceConfig.name);
       ensureBooted(device);
       ensureInstalled(device.udid);
-      const outputDirectory = path.join(localeDirectory, deviceConfig.deviceClass);
+      fs.rmSync(outputDirectory, { recursive: true, force: true });
       fs.mkdirSync(outputDirectory, { recursive: true });
       const [songOne, songTwo, songThree] = translatedSongTitles(locale.app);
       const maestroOutput = fs.mkdtempSync(path.join(os.tmpdir(), 'iresucito-screenshots-'));
