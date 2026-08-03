@@ -7,6 +7,9 @@ import { vercelPreset } from '@vercel/remix/vite';
 installGlobals({ nativeFetch: true });
 
 export default defineConfig({
+  ssr: {
+    noExternal: [/^@mui\//],
+  },
   server: {
     port: 3000,
     fs: {

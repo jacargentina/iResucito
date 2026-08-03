@@ -13,7 +13,7 @@ import {
   useRouteError,
   isRouteErrorResponse,
 } from '@remix-run/react';
-import { LoaderFunction } from '@remix-run/node';
+import type { LoaderFunction } from '@remix-run/node';
 import { AppProvider } from './app.context';
 import { getSession } from './session.server';
 import { getPatchStats } from '@iresucito/core';
@@ -24,8 +24,8 @@ import { folderExtras } from './utils.server';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from '~/theme';
 
-export let loader: LoaderFunction = async ({ request }) => {
-  let session = await getSession(request.headers.get('cookie'));
+export const loader: LoaderFunction = async ({ request }) => {
+  const session = await getSession(request.headers.get('cookie'));
   const patch = await folderExtras.readPatch();
   const stats = patch ? getPatchStats(patch) : [];
 
@@ -37,7 +37,7 @@ export let loader: LoaderFunction = async ({ request }) => {
   };
 };
 
-export let links = () => {
+export const links = () => {
   return [{ rel: 'stylesheet', href: globalStylesUrl }];
 };
 
@@ -49,7 +49,7 @@ export default function App() {
   const localeInitialized = useRef<boolean>(false);
 
   if (localeInitialized.current === false) {
-    i18n.locale = data.locale;
+    i18n.locale = data.locale ?? i18n.defaultLocale;
     localeInitialized.current = true;
   }
 
@@ -123,7 +123,7 @@ export function ErrorBoundary() {
     );
   }
 
-  let errorMessage = error.message;
+  const errorMessage = error.message;
 
   return (
     <ErrorDocument title="Error!">

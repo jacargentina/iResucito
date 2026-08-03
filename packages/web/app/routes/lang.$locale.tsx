@@ -1,9 +1,9 @@
 import { getLocalesForPicker } from '@iresucito/core';
-import { ActionFunction } from '@remix-run/node';
+import type { ActionFunction } from '@remix-run/node';
 import { json } from '@vercel/remix';
 import { commitSession, getSession } from '~/session.server';
 
-export let action: ActionFunction = async ({ request, params }) => {
+export const action: ActionFunction = async ({ request, params }) => {
   const { locale } = params;
   const session = await getSession(request.headers.get('Cookie'));
 
@@ -27,7 +27,7 @@ export let action: ActionFunction = async ({ request, params }) => {
   session.set('locale', search.value);
 
   return json(
-    { newLocale: locale },
+    { newLocale: search.value },
     {
       headers: {
         'Set-Cookie': await commitSession(session),
