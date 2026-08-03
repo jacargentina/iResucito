@@ -36,13 +36,13 @@ const locales = [
 const devices = [
   {
     name: 'iPhone 17 Pro Max',
-    deviceClass: 'APP_IPHONE_69',
+    deviceClass: 'APP_IPHONE_67',
     width: 1320,
     height: 2868,
   },
   {
     name: 'iPad Pro 13-inch (M4)',
-    deviceClass: 'APP_IPAD_PRO_3GEN_13',
+    deviceClass: 'APP_IPAD_PRO_3GEN_129',
     width: 2064,
     height: 2752,
   },

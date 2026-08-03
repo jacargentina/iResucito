@@ -1,7 +1,7 @@
 {
   "configVersion": 0,
   "apple": {
-    "version": "11.0.6",
+    "version": "11.0.7",
     "copyright": "Javier Castro",
     "release": {
       "automaticRelease": true
@@ -27,27 +27,27 @@
         "subtitle": "Neokatechumenale Lieder",
         "privacyPolicyUrl": "https://jacargentina.github.io/iResucito/privacy_policy.html",
         "screenshots": {
-          "APP_IPHONE_69": [
-            "store/apple/screenshot/de-DE/APP_IPHONE_69/BuscarCantos.png",
-            "store/apple/screenshot/de-DE/APP_IPHONE_69/Canto-Pantalla.png",
-            "store/apple/screenshot/de-DE/APP_IPHONE_69/Canto-PDF.png",
-            "store/apple/screenshot/de-DE/APP_IPHONE_69/Listas.png",
-            "store/apple/screenshot/de-DE/APP_IPHONE_69/Lista-Pantalla.png",
-            "store/apple/screenshot/de-DE/APP_IPHONE_69/Lista-PDF.png",
-            "store/apple/screenshot/de-DE/APP_IPHONE_69/Comunidad.png",
-            "store/apple/screenshot/de-DE/APP_IPHONE_69/Configuracion.png",
-            "store/apple/screenshot/de-DE/APP_IPHONE_69/Configuracion-Idiomas.png"
+          "APP_IPHONE_67": [
+            "store/apple/screenshot/de-DE/APP_IPHONE_67/BuscarCantos.png",
+            "store/apple/screenshot/de-DE/APP_IPHONE_67/Canto-Pantalla.png",
+            "store/apple/screenshot/de-DE/APP_IPHONE_67/Canto-PDF.png",
+            "store/apple/screenshot/de-DE/APP_IPHONE_67/Listas.png",
+            "store/apple/screenshot/de-DE/APP_IPHONE_67/Lista-Pantalla.png",
+            "store/apple/screenshot/de-DE/APP_IPHONE_67/Lista-PDF.png",
+            "store/apple/screenshot/de-DE/APP_IPHONE_67/Comunidad.png",
+            "store/apple/screenshot/de-DE/APP_IPHONE_67/Configuracion.png",
+            "store/apple/screenshot/de-DE/APP_IPHONE_67/Configuracion-Idiomas.png"
           ],
-          "APP_IPAD_PRO_3GEN_13": [
-            "store/apple/screenshot/de-DE/APP_IPAD_PRO_3GEN_13/BuscarCantos.png",
-            "store/apple/screenshot/de-DE/APP_IPAD_PRO_3GEN_13/Canto-Pantalla.png",
-            "store/apple/screenshot/de-DE/APP_IPAD_PRO_3GEN_13/Canto-PDF.png",
-            "store/apple/screenshot/de-DE/APP_IPAD_PRO_3GEN_13/Listas.png",
-            "store/apple/screenshot/de-DE/APP_IPAD_PRO_3GEN_13/Lista-Pantalla.png",
-            "store/apple/screenshot/de-DE/APP_IPAD_PRO_3GEN_13/Lista-PDF.png",
-            "store/apple/screenshot/de-DE/APP_IPAD_PRO_3GEN_13/Comunidad.png",
-            "store/apple/screenshot/de-DE/APP_IPAD_PRO_3GEN_13/Configuracion.png",
-            "store/apple/screenshot/de-DE/APP_IPAD_PRO_3GEN_13/Configuracion-Idiomas.png"
+          "APP_IPAD_PRO_3GEN_129": [
+            "store/apple/screenshot/de-DE/APP_IPAD_PRO_3GEN_129/BuscarCantos.png",
+            "store/apple/screenshot/de-DE/APP_IPAD_PRO_3GEN_129/Canto-Pantalla.png",
+            "store/apple/screenshot/de-DE/APP_IPAD_PRO_3GEN_129/Canto-PDF.png",
+            "store/apple/screenshot/de-DE/APP_IPAD_PRO_3GEN_129/Listas.png",
+            "store/apple/screenshot/de-DE/APP_IPAD_PRO_3GEN_129/Lista-Pantalla.png",
+            "store/apple/screenshot/de-DE/APP_IPAD_PRO_3GEN_129/Lista-PDF.png",
+            "store/apple/screenshot/de-DE/APP_IPAD_PRO_3GEN_129/Comunidad.png",
+            "store/apple/screenshot/de-DE/APP_IPAD_PRO_3GEN_129/Configuracion.png",
+            "store/apple/screenshot/de-DE/APP_IPAD_PRO_3GEN_129/Configuracion-Idiomas.png"
           ]
         }
       },
@@ -71,27 +71,27 @@
         "subtitle": "Cantos Camino Neocatecumenal",
         "privacyPolicyUrl": "https://jacargentina.github.io/iResucito/privacy_policy.html",
         "screenshots": {
-          "APP_IPHONE_69": [
-            "store/apple/screenshot/es-ES/APP_IPHONE_69/BuscarCantos.png",
-            "store/apple/screenshot/es-ES/APP_IPHONE_69/Canto-Pantalla.png",
-            "store/apple/screenshot/es-ES/APP_IPHONE_69/Canto-PDF.png",
-            "store/apple/screenshot/es-ES/APP_IPHONE_69/Listas.png",
-            "store/apple/screenshot/es-ES/APP_IPHONE_69/Lista-Pantalla.png",
-            "store/apple/screenshot/es-ES/APP_IPHONE_69/Lista-PDF.png",
-            "store/apple/screenshot/es-ES/APP_IPHONE_69/Comunidad.png",
-            "store/apple/screenshot/es-ES/APP_IPHONE_69/Configuracion.png",
-            "store/apple/screenshot/es-ES/APP_IPHONE_69/Configuracion-Idiomas.png"
+          "APP_IPHONE_67": [
+            "store/apple/screenshot/es-ES/APP_IPHONE_67/BuscarCantos.png",
+            "store/apple/screenshot/es-ES/APP_IPHONE_67/Canto-Pantalla.png",
+            "store/apple/screenshot/es-ES/APP_IPHONE_67/Canto-PDF.png",
+            "store/apple/screenshot/es-ES/APP_IPHONE_67/Listas.png",
+            "store/apple/screenshot/es-ES/APP_IPHONE_67/Lista-Pantalla.png",
+            "store/apple/screenshot/es-ES/APP_IPHONE_67/Lista-PDF.png",
+            "store/apple/screenshot/es-ES/APP_IPHONE_67/Comunidad.png",
+            "store/apple/screenshot/es-ES/APP_IPHONE_67/Configuracion.png",
+            "store/apple/screenshot/es-ES/APP_IPHONE_67/Configuracion-Idiomas.png"
           ],
-          "APP_IPAD_PRO_3GEN_13": [
-            "store/apple/screenshot/es-ES/APP_IPAD_PRO_3GEN_13/BuscarCantos.png",
-            "store/apple/screenshot/es-ES/APP_IPAD_PRO_3GEN_13/Canto-Pantalla.png",
-            "store/apple/screenshot/es-ES/APP_IPAD_PRO_3GEN_13/Canto-PDF.png",
-            "store/apple/screenshot/es-ES/APP_IPAD_PRO_3GEN_13/Listas.png",
-            "store/apple/screenshot/es-ES/APP_IPAD_PRO_3GEN_13/Lista-Pantalla.png",
-            "store/apple/screenshot/es-ES/APP_IPAD_PRO_3GEN_13/Lista-PDF.png",
-            "store/apple/screenshot/es-ES/APP_IPAD_PRO_3GEN_13/Comunidad.png",
-            "store/apple/screenshot/es-ES/APP_IPAD_PRO_3GEN_13/Configuracion.png",
-            "store/apple/screenshot/es-ES/APP_IPAD_PRO_3GEN_13/Configuracion-Idiomas.png"
+          "APP_IPAD_PRO_3GEN_129": [
+            "store/apple/screenshot/es-ES/APP_IPAD_PRO_3GEN_129/BuscarCantos.png",
+            "store/apple/screenshot/es-ES/APP_IPAD_PRO_3GEN_129/Canto-Pantalla.png",
+            "store/apple/screenshot/es-ES/APP_IPAD_PRO_3GEN_129/Canto-PDF.png",
+            "store/apple/screenshot/es-ES/APP_IPAD_PRO_3GEN_129/Listas.png",
+            "store/apple/screenshot/es-ES/APP_IPAD_PRO_3GEN_129/Lista-Pantalla.png",
+            "store/apple/screenshot/es-ES/APP_IPAD_PRO_3GEN_129/Lista-PDF.png",
+            "store/apple/screenshot/es-ES/APP_IPAD_PRO_3GEN_129/Comunidad.png",
+            "store/apple/screenshot/es-ES/APP_IPAD_PRO_3GEN_129/Configuracion.png",
+            "store/apple/screenshot/es-ES/APP_IPAD_PRO_3GEN_129/Configuracion-Idiomas.png"
           ]
         }
       },
@@ -115,27 +115,27 @@
         "subtitle": "Cantos Caminho Neocatecumenal",
         "privacyPolicyUrl": "https://jacargentina.github.io/iResucito/privacy_policy.html",
         "screenshots": {
-          "APP_IPHONE_69": [
-            "store/apple/screenshot/pt-BR/APP_IPHONE_69/BuscarCantos.png",
-            "store/apple/screenshot/pt-BR/APP_IPHONE_69/Canto-Pantalla.png",
-            "store/apple/screenshot/pt-BR/APP_IPHONE_69/Canto-PDF.png",
-            "store/apple/screenshot/pt-BR/APP_IPHONE_69/Listas.png",
-            "store/apple/screenshot/pt-BR/APP_IPHONE_69/Lista-Pantalla.png",
-            "store/apple/screenshot/pt-BR/APP_IPHONE_69/Lista-PDF.png",
-            "store/apple/screenshot/pt-BR/APP_IPHONE_69/Comunidad.png",
-            "store/apple/screenshot/pt-BR/APP_IPHONE_69/Configuracion.png",
-            "store/apple/screenshot/pt-BR/APP_IPHONE_69/Configuracion-Idiomas.png"
+          "APP_IPHONE_67": [
+            "store/apple/screenshot/pt-BR/APP_IPHONE_67/BuscarCantos.png",
+            "store/apple/screenshot/pt-BR/APP_IPHONE_67/Canto-Pantalla.png",
+            "store/apple/screenshot/pt-BR/APP_IPHONE_67/Canto-PDF.png",
+            "store/apple/screenshot/pt-BR/APP_IPHONE_67/Listas.png",
+            "store/apple/screenshot/pt-BR/APP_IPHONE_67/Lista-Pantalla.png",
+            "store/apple/screenshot/pt-BR/APP_IPHONE_67/Lista-PDF.png",
+            "store/apple/screenshot/pt-BR/APP_IPHONE_67/Comunidad.png",
+            "store/apple/screenshot/pt-BR/APP_IPHONE_67/Configuracion.png",
+            "store/apple/screenshot/pt-BR/APP_IPHONE_67/Configuracion-Idiomas.png"
           ],
-          "APP_IPAD_PRO_3GEN_13": [
-            "store/apple/screenshot/pt-BR/APP_IPAD_PRO_3GEN_13/BuscarCantos.png",
-            "store/apple/screenshot/pt-BR/APP_IPAD_PRO_3GEN_13/Canto-Pantalla.png",
-            "store/apple/screenshot/pt-BR/APP_IPAD_PRO_3GEN_13/Canto-PDF.png",
-            "store/apple/screenshot/pt-BR/APP_IPAD_PRO_3GEN_13/Listas.png",
-            "store/apple/screenshot/pt-BR/APP_IPAD_PRO_3GEN_13/Lista-Pantalla.png",
-            "store/apple/screenshot/pt-BR/APP_IPAD_PRO_3GEN_13/Lista-PDF.png",
-            "store/apple/screenshot/pt-BR/APP_IPAD_PRO_3GEN_13/Comunidad.png",
-            "store/apple/screenshot/pt-BR/APP_IPAD_PRO_3GEN_13/Configuracion.png",
-            "store/apple/screenshot/pt-BR/APP_IPAD_PRO_3GEN_13/Configuracion-Idiomas.png"
+          "APP_IPAD_PRO_3GEN_129": [
+            "store/apple/screenshot/pt-BR/APP_IPAD_PRO_3GEN_129/BuscarCantos.png",
+            "store/apple/screenshot/pt-BR/APP_IPAD_PRO_3GEN_129/Canto-Pantalla.png",
+            "store/apple/screenshot/pt-BR/APP_IPAD_PRO_3GEN_129/Canto-PDF.png",
+            "store/apple/screenshot/pt-BR/APP_IPAD_PRO_3GEN_129/Listas.png",
+            "store/apple/screenshot/pt-BR/APP_IPAD_PRO_3GEN_129/Lista-Pantalla.png",
+            "store/apple/screenshot/pt-BR/APP_IPAD_PRO_3GEN_129/Lista-PDF.png",
+            "store/apple/screenshot/pt-BR/APP_IPAD_PRO_3GEN_129/Comunidad.png",
+            "store/apple/screenshot/pt-BR/APP_IPAD_PRO_3GEN_129/Configuracion.png",
+            "store/apple/screenshot/pt-BR/APP_IPAD_PRO_3GEN_129/Configuracion-Idiomas.png"
           ]
         }
       },
@@ -159,27 +159,27 @@
         "subtitle": "Cantos Caminho Neocatecumenal",
         "privacyPolicyUrl": "https://jacargentina.github.io/iResucito/privacy_policy.html",
         "screenshots": {
-          "APP_IPHONE_69": [
-            "store/apple/screenshot/pt-PT/APP_IPHONE_69/BuscarCantos.png",
-            "store/apple/screenshot/pt-PT/APP_IPHONE_69/Canto-Pantalla.png",
-            "store/apple/screenshot/pt-PT/APP_IPHONE_69/Canto-PDF.png",
-            "store/apple/screenshot/pt-PT/APP_IPHONE_69/Listas.png",
-            "store/apple/screenshot/pt-PT/APP_IPHONE_69/Lista-Pantalla.png",
-            "store/apple/screenshot/pt-PT/APP_IPHONE_69/Lista-PDF.png",
-            "store/apple/screenshot/pt-PT/APP_IPHONE_69/Comunidad.png",
-            "store/apple/screenshot/pt-PT/APP_IPHONE_69/Configuracion.png",
-            "store/apple/screenshot/pt-PT/APP_IPHONE_69/Configuracion-Idiomas.png"
+          "APP_IPHONE_67": [
+            "store/apple/screenshot/pt-PT/APP_IPHONE_67/BuscarCantos.png",
+            "store/apple/screenshot/pt-PT/APP_IPHONE_67/Canto-Pantalla.png",
+            "store/apple/screenshot/pt-PT/APP_IPHONE_67/Canto-PDF.png",
+            "store/apple/screenshot/pt-PT/APP_IPHONE_67/Listas.png",
+            "store/apple/screenshot/pt-PT/APP_IPHONE_67/Lista-Pantalla.png",
+            "store/apple/screenshot/pt-PT/APP_IPHONE_67/Lista-PDF.png",
+            "store/apple/screenshot/pt-PT/APP_IPHONE_67/Comunidad.png",
+            "store/apple/screenshot/pt-PT/APP_IPHONE_67/Configuracion.png",
+            "store/apple/screenshot/pt-PT/APP_IPHONE_67/Configuracion-Idiomas.png"
           ],
-          "APP_IPAD_PRO_3GEN_13": [
-            "store/apple/screenshot/pt-PT/APP_IPAD_PRO_3GEN_13/BuscarCantos.png",
-            "store/apple/screenshot/pt-PT/APP_IPAD_PRO_3GEN_13/Canto-Pantalla.png",
-            "store/apple/screenshot/pt-PT/APP_IPAD_PRO_3GEN_13/Canto-PDF.png",
-            "store/apple/screenshot/pt-PT/APP_IPAD_PRO_3GEN_13/Listas.png",
-            "store/apple/screenshot/pt-PT/APP_IPAD_PRO_3GEN_13/Lista-Pantalla.png",
-            "store/apple/screenshot/pt-PT/APP_IPAD_PRO_3GEN_13/Lista-PDF.png",
-            "store/apple/screenshot/pt-PT/APP_IPAD_PRO_3GEN_13/Comunidad.png",
-            "store/apple/screenshot/pt-PT/APP_IPAD_PRO_3GEN_13/Configuracion.png",
-            "store/apple/screenshot/pt-PT/APP_IPAD_PRO_3GEN_13/Configuracion-Idiomas.png"
+          "APP_IPAD_PRO_3GEN_129": [
+            "store/apple/screenshot/pt-PT/APP_IPAD_PRO_3GEN_129/BuscarCantos.png",
+            "store/apple/screenshot/pt-PT/APP_IPAD_PRO_3GEN_129/Canto-Pantalla.png",
+            "store/apple/screenshot/pt-PT/APP_IPAD_PRO_3GEN_129/Canto-PDF.png",
+            "store/apple/screenshot/pt-PT/APP_IPAD_PRO_3GEN_129/Listas.png",
+            "store/apple/screenshot/pt-PT/APP_IPAD_PRO_3GEN_129/Lista-Pantalla.png",
+            "store/apple/screenshot/pt-PT/APP_IPAD_PRO_3GEN_129/Lista-PDF.png",
+            "store/apple/screenshot/pt-PT/APP_IPAD_PRO_3GEN_129/Comunidad.png",
+            "store/apple/screenshot/pt-PT/APP_IPAD_PRO_3GEN_129/Configuracion.png",
+            "store/apple/screenshot/pt-PT/APP_IPAD_PRO_3GEN_129/Configuracion-Idiomas.png"
           ]
         }
       },
@@ -203,27 +203,27 @@
         "subtitle": "Canti Cammino Neocatecumenale",
         "privacyPolicyUrl": "https://jacargentina.github.io/iResucito/privacy_policy.html",
         "screenshots": {
-          "APP_IPHONE_69": [
-            "store/apple/screenshot/it/APP_IPHONE_69/BuscarCantos.png",
-            "store/apple/screenshot/it/APP_IPHONE_69/Canto-Pantalla.png",
-            "store/apple/screenshot/it/APP_IPHONE_69/Canto-PDF.png",
-            "store/apple/screenshot/it/APP_IPHONE_69/Listas.png",
-            "store/apple/screenshot/it/APP_IPHONE_69/Lista-Pantalla.png",
-            "store/apple/screenshot/it/APP_IPHONE_69/Lista-PDF.png",
-            "store/apple/screenshot/it/APP_IPHONE_69/Comunidad.png",
-            "store/apple/screenshot/it/APP_IPHONE_69/Configuracion.png",
-            "store/apple/screenshot/it/APP_IPHONE_69/Configuracion-Idiomas.png"
+          "APP_IPHONE_67": [
+            "store/apple/screenshot/it/APP_IPHONE_67/BuscarCantos.png",
+            "store/apple/screenshot/it/APP_IPHONE_67/Canto-Pantalla.png",
+            "store/apple/screenshot/it/APP_IPHONE_67/Canto-PDF.png",
+            "store/apple/screenshot/it/APP_IPHONE_67/Listas.png",
+            "store/apple/screenshot/it/APP_IPHONE_67/Lista-Pantalla.png",
+            "store/apple/screenshot/it/APP_IPHONE_67/Lista-PDF.png",
+            "store/apple/screenshot/it/APP_IPHONE_67/Comunidad.png",
+            "store/apple/screenshot/it/APP_IPHONE_67/Configuracion.png",
+            "store/apple/screenshot/it/APP_IPHONE_67/Configuracion-Idiomas.png"
           ],
-          "APP_IPAD_PRO_3GEN_13": [
-            "store/apple/screenshot/it/APP_IPAD_PRO_3GEN_13/BuscarCantos.png",
-            "store/apple/screenshot/it/APP_IPAD_PRO_3GEN_13/Canto-Pantalla.png",
-            "store/apple/screenshot/it/APP_IPAD_PRO_3GEN_13/Canto-PDF.png",
-            "store/apple/screenshot/it/APP_IPAD_PRO_3GEN_13/Listas.png",
-            "store/apple/screenshot/it/APP_IPAD_PRO_3GEN_13/Lista-Pantalla.png",
-            "store/apple/screenshot/it/APP_IPAD_PRO_3GEN_13/Lista-PDF.png",
-            "store/apple/screenshot/it/APP_IPAD_PRO_3GEN_13/Comunidad.png",
-            "store/apple/screenshot/it/APP_IPAD_PRO_3GEN_13/Configuracion.png",
-            "store/apple/screenshot/it/APP_IPAD_PRO_3GEN_13/Configuracion-Idiomas.png"
+          "APP_IPAD_PRO_3GEN_129": [
+            "store/apple/screenshot/it/APP_IPAD_PRO_3GEN_129/BuscarCantos.png",
+            "store/apple/screenshot/it/APP_IPAD_PRO_3GEN_129/Canto-Pantalla.png",
+            "store/apple/screenshot/it/APP_IPAD_PRO_3GEN_129/Canto-PDF.png",
+            "store/apple/screenshot/it/APP_IPAD_PRO_3GEN_129/Listas.png",
+            "store/apple/screenshot/it/APP_IPAD_PRO_3GEN_129/Lista-Pantalla.png",
+            "store/apple/screenshot/it/APP_IPAD_PRO_3GEN_129/Lista-PDF.png",
+            "store/apple/screenshot/it/APP_IPAD_PRO_3GEN_129/Comunidad.png",
+            "store/apple/screenshot/it/APP_IPAD_PRO_3GEN_129/Configuracion.png",
+            "store/apple/screenshot/it/APP_IPAD_PRO_3GEN_129/Configuracion-Idiomas.png"
           ]
         }
       },
@@ -247,27 +247,27 @@
         "subtitle": "Songs Neocatechumenal Way",
         "privacyPolicyUrl": "https://jacargentina.github.io/iResucito/privacy_policy.html",
         "screenshots": {
-          "APP_IPHONE_69": [
-            "store/apple/screenshot/en-US/APP_IPHONE_69/BuscarCantos.png",
-            "store/apple/screenshot/en-US/APP_IPHONE_69/Canto-Pantalla.png",
-            "store/apple/screenshot/en-US/APP_IPHONE_69/Canto-PDF.png",
-            "store/apple/screenshot/en-US/APP_IPHONE_69/Listas.png",
-            "store/apple/screenshot/en-US/APP_IPHONE_69/Lista-Pantalla.png",
-            "store/apple/screenshot/en-US/APP_IPHONE_69/Lista-PDF.png",
-            "store/apple/screenshot/en-US/APP_IPHONE_69/Comunidad.png",
-            "store/apple/screenshot/en-US/APP_IPHONE_69/Configuracion.png",
-            "store/apple/screenshot/en-US/APP_IPHONE_69/Configuracion-Idiomas.png"
+          "APP_IPHONE_67": [
+            "store/apple/screenshot/en-US/APP_IPHONE_67/BuscarCantos.png",
+            "store/apple/screenshot/en-US/APP_IPHONE_67/Canto-Pantalla.png",
+            "store/apple/screenshot/en-US/APP_IPHONE_67/Canto-PDF.png",
+            "store/apple/screenshot/en-US/APP_IPHONE_67/Listas.png",
+            "store/apple/screenshot/en-US/APP_IPHONE_67/Lista-Pantalla.png",
+            "store/apple/screenshot/en-US/APP_IPHONE_67/Lista-PDF.png",
+            "store/apple/screenshot/en-US/APP_IPHONE_67/Comunidad.png",
+            "store/apple/screenshot/en-US/APP_IPHONE_67/Configuracion.png",
+            "store/apple/screenshot/en-US/APP_IPHONE_67/Configuracion-Idiomas.png"
           ],
-          "APP_IPAD_PRO_3GEN_13": [
-            "store/apple/screenshot/en-US/APP_IPAD_PRO_3GEN_13/BuscarCantos.png",
-            "store/apple/screenshot/en-US/APP_IPAD_PRO_3GEN_13/Canto-Pantalla.png",
-            "store/apple/screenshot/en-US/APP_IPAD_PRO_3GEN_13/Canto-PDF.png",
-            "store/apple/screenshot/en-US/APP_IPAD_PRO_3GEN_13/Listas.png",
-            "store/apple/screenshot/en-US/APP_IPAD_PRO_3GEN_13/Lista-Pantalla.png",
-            "store/apple/screenshot/en-US/APP_IPAD_PRO_3GEN_13/Lista-PDF.png",
-            "store/apple/screenshot/en-US/APP_IPAD_PRO_3GEN_13/Comunidad.png",
-            "store/apple/screenshot/en-US/APP_IPAD_PRO_3GEN_13/Configuracion.png",
-            "store/apple/screenshot/en-US/APP_IPAD_PRO_3GEN_13/Configuracion-Idiomas.png"
+          "APP_IPAD_PRO_3GEN_129": [
+            "store/apple/screenshot/en-US/APP_IPAD_PRO_3GEN_129/BuscarCantos.png",
+            "store/apple/screenshot/en-US/APP_IPAD_PRO_3GEN_129/Canto-Pantalla.png",
+            "store/apple/screenshot/en-US/APP_IPAD_PRO_3GEN_129/Canto-PDF.png",
+            "store/apple/screenshot/en-US/APP_IPAD_PRO_3GEN_129/Listas.png",
+            "store/apple/screenshot/en-US/APP_IPAD_PRO_3GEN_129/Lista-Pantalla.png",
+            "store/apple/screenshot/en-US/APP_IPAD_PRO_3GEN_129/Lista-PDF.png",
+            "store/apple/screenshot/en-US/APP_IPAD_PRO_3GEN_129/Comunidad.png",
+            "store/apple/screenshot/en-US/APP_IPAD_PRO_3GEN_129/Configuracion.png",
+            "store/apple/screenshot/en-US/APP_IPAD_PRO_3GEN_129/Configuracion-Idiomas.png"
           ]
         }
       },
@@ -291,27 +291,27 @@
         ],
         "releaseNotes": "Recherche améliorée",
         "screenshots": {
-          "APP_IPHONE_69": [
-            "store/apple/screenshot/fr-FR/APP_IPHONE_69/BuscarCantos.png",
-            "store/apple/screenshot/fr-FR/APP_IPHONE_69/Canto-Pantalla.png",
-            "store/apple/screenshot/fr-FR/APP_IPHONE_69/Canto-PDF.png",
-            "store/apple/screenshot/fr-FR/APP_IPHONE_69/Listas.png",
-            "store/apple/screenshot/fr-FR/APP_IPHONE_69/Lista-Pantalla.png",
-            "store/apple/screenshot/fr-FR/APP_IPHONE_69/Lista-PDF.png",
-            "store/apple/screenshot/fr-FR/APP_IPHONE_69/Comunidad.png",
-            "store/apple/screenshot/fr-FR/APP_IPHONE_69/Configuracion.png",
-            "store/apple/screenshot/fr-FR/APP_IPHONE_69/Configuracion-Idiomas.png"
+          "APP_IPHONE_67": [
+            "store/apple/screenshot/fr-FR/APP_IPHONE_67/BuscarCantos.png",
+            "store/apple/screenshot/fr-FR/APP_IPHONE_67/Canto-Pantalla.png",
+            "store/apple/screenshot/fr-FR/APP_IPHONE_67/Canto-PDF.png",
+            "store/apple/screenshot/fr-FR/APP_IPHONE_67/Listas.png",
+            "store/apple/screenshot/fr-FR/APP_IPHONE_67/Lista-Pantalla.png",
+            "store/apple/screenshot/fr-FR/APP_IPHONE_67/Lista-PDF.png",
+            "store/apple/screenshot/fr-FR/APP_IPHONE_67/Comunidad.png",
+            "store/apple/screenshot/fr-FR/APP_IPHONE_67/Configuracion.png",
+            "store/apple/screenshot/fr-FR/APP_IPHONE_67/Configuracion-Idiomas.png"
           ],
-          "APP_IPAD_PRO_3GEN_13": [
-            "store/apple/screenshot/fr-FR/APP_IPAD_PRO_3GEN_13/BuscarCantos.png",
-            "store/apple/screenshot/fr-FR/APP_IPAD_PRO_3GEN_13/Canto-Pantalla.png",
-            "store/apple/screenshot/fr-FR/APP_IPAD_PRO_3GEN_13/Canto-PDF.png",
-            "store/apple/screenshot/fr-FR/APP_IPAD_PRO_3GEN_13/Listas.png",
-            "store/apple/screenshot/fr-FR/APP_IPAD_PRO_3GEN_13/Lista-Pantalla.png",
-            "store/apple/screenshot/fr-FR/APP_IPAD_PRO_3GEN_13/Lista-PDF.png",
-            "store/apple/screenshot/fr-FR/APP_IPAD_PRO_3GEN_13/Comunidad.png",
-            "store/apple/screenshot/fr-FR/APP_IPAD_PRO_3GEN_13/Configuracion.png",
-            "store/apple/screenshot/fr-FR/APP_IPAD_PRO_3GEN_13/Configuracion-Idiomas.png"
+          "APP_IPAD_PRO_3GEN_129": [
+            "store/apple/screenshot/fr-FR/APP_IPAD_PRO_3GEN_129/BuscarCantos.png",
+            "store/apple/screenshot/fr-FR/APP_IPAD_PRO_3GEN_129/Canto-Pantalla.png",
+            "store/apple/screenshot/fr-FR/APP_IPAD_PRO_3GEN_129/Canto-PDF.png",
+            "store/apple/screenshot/fr-FR/APP_IPAD_PRO_3GEN_129/Listas.png",
+            "store/apple/screenshot/fr-FR/APP_IPAD_PRO_3GEN_129/Lista-Pantalla.png",
+            "store/apple/screenshot/fr-FR/APP_IPAD_PRO_3GEN_129/Lista-PDF.png",
+            "store/apple/screenshot/fr-FR/APP_IPAD_PRO_3GEN_129/Comunidad.png",
+            "store/apple/screenshot/fr-FR/APP_IPAD_PRO_3GEN_129/Configuracion.png",
+            "store/apple/screenshot/fr-FR/APP_IPAD_PRO_3GEN_129/Configuracion-Idiomas.png"
           ]
         }
       },
@@ -335,27 +335,27 @@
         ],
         "releaseNotes": "Ulepszone wyszukiwanie",
         "screenshots": {
-          "APP_IPHONE_69": [
-            "store/apple/screenshot/pl/APP_IPHONE_69/BuscarCantos.png",
-            "store/apple/screenshot/pl/APP_IPHONE_69/Canto-Pantalla.png",
-            "store/apple/screenshot/pl/APP_IPHONE_69/Canto-PDF.png",
-            "store/apple/screenshot/pl/APP_IPHONE_69/Listas.png",
-            "store/apple/screenshot/pl/APP_IPHONE_69/Lista-Pantalla.png",
-            "store/apple/screenshot/pl/APP_IPHONE_69/Lista-PDF.png",
-            "store/apple/screenshot/pl/APP_IPHONE_69/Comunidad.png",
-            "store/apple/screenshot/pl/APP_IPHONE_69/Configuracion.png",
-            "store/apple/screenshot/pl/APP_IPHONE_69/Configuracion-Idiomas.png"
+          "APP_IPHONE_67": [
+            "store/apple/screenshot/pl/APP_IPHONE_67/BuscarCantos.png",
+            "store/apple/screenshot/pl/APP_IPHONE_67/Canto-Pantalla.png",
+            "store/apple/screenshot/pl/APP_IPHONE_67/Canto-PDF.png",
+            "store/apple/screenshot/pl/APP_IPHONE_67/Listas.png",
+            "store/apple/screenshot/pl/APP_IPHONE_67/Lista-Pantalla.png",
+            "store/apple/screenshot/pl/APP_IPHONE_67/Lista-PDF.png",
+            "store/apple/screenshot/pl/APP_IPHONE_67/Comunidad.png",
+            "store/apple/screenshot/pl/APP_IPHONE_67/Configuracion.png",
+            "store/apple/screenshot/pl/APP_IPHONE_67/Configuracion-Idiomas.png"
           ],
-          "APP_IPAD_PRO_3GEN_13": [
-            "store/apple/screenshot/pl/APP_IPAD_PRO_3GEN_13/BuscarCantos.png",
-            "store/apple/screenshot/pl/APP_IPAD_PRO_3GEN_13/Canto-Pantalla.png",
-            "store/apple/screenshot/pl/APP_IPAD_PRO_3GEN_13/Canto-PDF.png",
-            "store/apple/screenshot/pl/APP_IPAD_PRO_3GEN_13/Listas.png",
-            "store/apple/screenshot/pl/APP_IPAD_PRO_3GEN_13/Lista-Pantalla.png",
-            "store/apple/screenshot/pl/APP_IPAD_PRO_3GEN_13/Lista-PDF.png",
-            "store/apple/screenshot/pl/APP_IPAD_PRO_3GEN_13/Comunidad.png",
-            "store/apple/screenshot/pl/APP_IPAD_PRO_3GEN_13/Configuracion.png",
-            "store/apple/screenshot/pl/APP_IPAD_PRO_3GEN_13/Configuracion-Idiomas.png"
+          "APP_IPAD_PRO_3GEN_129": [
+            "store/apple/screenshot/pl/APP_IPAD_PRO_3GEN_129/BuscarCantos.png",
+            "store/apple/screenshot/pl/APP_IPAD_PRO_3GEN_129/Canto-Pantalla.png",
+            "store/apple/screenshot/pl/APP_IPAD_PRO_3GEN_129/Canto-PDF.png",
+            "store/apple/screenshot/pl/APP_IPAD_PRO_3GEN_129/Listas.png",
+            "store/apple/screenshot/pl/APP_IPAD_PRO_3GEN_129/Lista-Pantalla.png",
+            "store/apple/screenshot/pl/APP_IPAD_PRO_3GEN_129/Lista-PDF.png",
+            "store/apple/screenshot/pl/APP_IPAD_PRO_3GEN_129/Comunidad.png",
+            "store/apple/screenshot/pl/APP_IPAD_PRO_3GEN_129/Configuracion.png",
+            "store/apple/screenshot/pl/APP_IPAD_PRO_3GEN_129/Configuracion-Idiomas.png"
           ]
         }
       },
@@ -379,27 +379,27 @@
         ],
         "releaseNotes": "Улучшенный поиск",
         "screenshots": {
-          "APP_IPHONE_69": [
-            "store/apple/screenshot/ru/APP_IPHONE_69/BuscarCantos.png",
-            "store/apple/screenshot/ru/APP_IPHONE_69/Canto-Pantalla.png",
-            "store/apple/screenshot/ru/APP_IPHONE_69/Canto-PDF.png",
-            "store/apple/screenshot/ru/APP_IPHONE_69/Listas.png",
-            "store/apple/screenshot/ru/APP_IPHONE_69/Lista-Pantalla.png",
-            "store/apple/screenshot/ru/APP_IPHONE_69/Lista-PDF.png",
-            "store/apple/screenshot/ru/APP_IPHONE_69/Comunidad.png",
-            "store/apple/screenshot/ru/APP_IPHONE_69/Configuracion.png",
-            "store/apple/screenshot/ru/APP_IPHONE_69/Configuracion-Idiomas.png"
+          "APP_IPHONE_67": [
+            "store/apple/screenshot/ru/APP_IPHONE_67/BuscarCantos.png",
+            "store/apple/screenshot/ru/APP_IPHONE_67/Canto-Pantalla.png",
+            "store/apple/screenshot/ru/APP_IPHONE_67/Canto-PDF.png",
+            "store/apple/screenshot/ru/APP_IPHONE_67/Listas.png",
+            "store/apple/screenshot/ru/APP_IPHONE_67/Lista-Pantalla.png",
+            "store/apple/screenshot/ru/APP_IPHONE_67/Lista-PDF.png",
+            "store/apple/screenshot/ru/APP_IPHONE_67/Comunidad.png",
+            "store/apple/screenshot/ru/APP_IPHONE_67/Configuracion.png",
+            "store/apple/screenshot/ru/APP_IPHONE_67/Configuracion-Idiomas.png"
           ],
-          "APP_IPAD_PRO_3GEN_13": [
-            "store/apple/screenshot/ru/APP_IPAD_PRO_3GEN_13/BuscarCantos.png",
-            "store/apple/screenshot/ru/APP_IPAD_PRO_3GEN_13/Canto-Pantalla.png",
-            "store/apple/screenshot/ru/APP_IPAD_PRO_3GEN_13/Canto-PDF.png",
-            "store/apple/screenshot/ru/APP_IPAD_PRO_3GEN_13/Listas.png",
-            "store/apple/screenshot/ru/APP_IPAD_PRO_3GEN_13/Lista-Pantalla.png",
-            "store/apple/screenshot/ru/APP_IPAD_PRO_3GEN_13/Lista-PDF.png",
-            "store/apple/screenshot/ru/APP_IPAD_PRO_3GEN_13/Comunidad.png",
-            "store/apple/screenshot/ru/APP_IPAD_PRO_3GEN_13/Configuracion.png",
-            "store/apple/screenshot/ru/APP_IPAD_PRO_3GEN_13/Configuracion-Idiomas.png"
+          "APP_IPAD_PRO_3GEN_129": [
+            "store/apple/screenshot/ru/APP_IPAD_PRO_3GEN_129/BuscarCantos.png",
+            "store/apple/screenshot/ru/APP_IPAD_PRO_3GEN_129/Canto-Pantalla.png",
+            "store/apple/screenshot/ru/APP_IPAD_PRO_3GEN_129/Canto-PDF.png",
+            "store/apple/screenshot/ru/APP_IPAD_PRO_3GEN_129/Listas.png",
+            "store/apple/screenshot/ru/APP_IPAD_PRO_3GEN_129/Lista-Pantalla.png",
+            "store/apple/screenshot/ru/APP_IPAD_PRO_3GEN_129/Lista-PDF.png",
+            "store/apple/screenshot/ru/APP_IPAD_PRO_3GEN_129/Comunidad.png",
+            "store/apple/screenshot/ru/APP_IPAD_PRO_3GEN_129/Configuracion.png",
+            "store/apple/screenshot/ru/APP_IPAD_PRO_3GEN_129/Configuracion-Idiomas.png"
           ]
         }
       },
@@ -423,27 +423,27 @@
         ],
         "releaseNotes": "Poboljšano pretraživanje",
         "screenshots": {
-          "APP_IPHONE_69": [
-            "store/apple/screenshot/hr/APP_IPHONE_69/BuscarCantos.png",
-            "store/apple/screenshot/hr/APP_IPHONE_69/Canto-Pantalla.png",
-            "store/apple/screenshot/hr/APP_IPHONE_69/Canto-PDF.png",
-            "store/apple/screenshot/hr/APP_IPHONE_69/Listas.png",
-            "store/apple/screenshot/hr/APP_IPHONE_69/Lista-Pantalla.png",
-            "store/apple/screenshot/hr/APP_IPHONE_69/Lista-PDF.png",
-            "store/apple/screenshot/hr/APP_IPHONE_69/Comunidad.png",
-            "store/apple/screenshot/hr/APP_IPHONE_69/Configuracion.png",
-            "store/apple/screenshot/hr/APP_IPHONE_69/Configuracion-Idiomas.png"
+          "APP_IPHONE_67": [
+            "store/apple/screenshot/hr/APP_IPHONE_67/BuscarCantos.png",
+            "store/apple/screenshot/hr/APP_IPHONE_67/Canto-Pantalla.png",
+            "store/apple/screenshot/hr/APP_IPHONE_67/Canto-PDF.png",
+            "store/apple/screenshot/hr/APP_IPHONE_67/Listas.png",
+            "store/apple/screenshot/hr/APP_IPHONE_67/Lista-Pantalla.png",
+            "store/apple/screenshot/hr/APP_IPHONE_67/Lista-PDF.png",
+            "store/apple/screenshot/hr/APP_IPHONE_67/Comunidad.png",
+            "store/apple/screenshot/hr/APP_IPHONE_67/Configuracion.png",
+            "store/apple/screenshot/hr/APP_IPHONE_67/Configuracion-Idiomas.png"
           ],
-          "APP_IPAD_PRO_3GEN_13": [
-            "store/apple/screenshot/hr/APP_IPAD_PRO_3GEN_13/BuscarCantos.png",
-            "store/apple/screenshot/hr/APP_IPAD_PRO_3GEN_13/Canto-Pantalla.png",
-            "store/apple/screenshot/hr/APP_IPAD_PRO_3GEN_13/Canto-PDF.png",
-            "store/apple/screenshot/hr/APP_IPAD_PRO_3GEN_13/Listas.png",
-            "store/apple/screenshot/hr/APP_IPAD_PRO_3GEN_13/Lista-Pantalla.png",
-            "store/apple/screenshot/hr/APP_IPAD_PRO_3GEN_13/Lista-PDF.png",
-            "store/apple/screenshot/hr/APP_IPAD_PRO_3GEN_13/Comunidad.png",
-            "store/apple/screenshot/hr/APP_IPAD_PRO_3GEN_13/Configuracion.png",
-            "store/apple/screenshot/hr/APP_IPAD_PRO_3GEN_13/Configuracion-Idiomas.png"
+          "APP_IPAD_PRO_3GEN_129": [
+            "store/apple/screenshot/hr/APP_IPAD_PRO_3GEN_129/BuscarCantos.png",
+            "store/apple/screenshot/hr/APP_IPAD_PRO_3GEN_129/Canto-Pantalla.png",
+            "store/apple/screenshot/hr/APP_IPAD_PRO_3GEN_129/Canto-PDF.png",
+            "store/apple/screenshot/hr/APP_IPAD_PRO_3GEN_129/Listas.png",
+            "store/apple/screenshot/hr/APP_IPAD_PRO_3GEN_129/Lista-Pantalla.png",
+            "store/apple/screenshot/hr/APP_IPAD_PRO_3GEN_129/Lista-PDF.png",
+            "store/apple/screenshot/hr/APP_IPAD_PRO_3GEN_129/Comunidad.png",
+            "store/apple/screenshot/hr/APP_IPAD_PRO_3GEN_129/Configuracion.png",
+            "store/apple/screenshot/hr/APP_IPAD_PRO_3GEN_129/Configuracion-Idiomas.png"
           ]
         }
       }
