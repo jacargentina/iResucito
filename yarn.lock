@@ -4461,7 +4461,7 @@ __metadata:
     expo-file-system: "npm:~57.0.1"
     expo-font: "npm:~57.0.1"
     expo-keep-awake: "npm:~57.0.1"
-    expo-launch-arguments: jacargentina/expo-launch-arguments
+    expo-launch-arguments: "jacargentina/expo-launch-arguments#81ccb4f66798ce198b434c195bea84387ae75ac1"
     expo-localization: "npm:~57.0.1"
     expo-network: "npm:~57.0.1"
     expo-print: "npm:~57.0.1"
@@ -14281,14 +14281,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-expo-launch-arguments@jacargentina/expo-launch-arguments:
-  version: 0.3.0
-  resolution: "expo-launch-arguments@https://github.com/jacargentina/expo-launch-arguments.git#commit=45b329417fe0971b4feecf7b875939602e13d715"
+"expo-launch-arguments@jacargentina/expo-launch-arguments#81ccb4f66798ce198b434c195bea84387ae75ac1":
+  version: 0.4.0
+  resolution: "expo-launch-arguments@https://github.com/jacargentina/expo-launch-arguments.git#commit=81ccb4f66798ce198b434c195bea84387ae75ac1"
   peerDependencies:
     expo: "*"
     react: "*"
     react-native: "*"
-  checksum: 10c0/b4c6e3bbbc2b4b5d86b766f5ab59f8c7c70f67c486cf133cd8ff073e8207f9aa778b6c5e9851de1472a5a4767cd6292fcc2e7bd5eeaffbf7065db76db2e4055f
+  checksum: 10c0/0337343d770abf9b7e155d8ba10625b265f5b66d381fc6ad505dd9b4c0ef170ebf3879cfdf4da0a51b9876c459d54e3fe9231a1012e5b0f93e7c9c3960559f93
   languageName: node
   linkType: hard
 
