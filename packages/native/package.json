@@ -1,6 +1,6 @@
 {
   "name": "@iresucito/native",
-  "version": "11.0.7",
+  "version": "11.0.8",
   "private": true,
   "installConfig": {
     "hoistingLimits": "workspaces"
