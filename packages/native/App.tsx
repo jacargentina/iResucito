@@ -13,7 +13,6 @@ import { useSongPlayer } from './hooks';
 
 Sentry.init({
   dsn: 'https://645393af749a4f3da9d8074330a25da3@o469156.ingest.sentry.io/5498083',
-  enabled: __DEV__,
 });
 
 SplashScreen.preventAutoHideAsync();
