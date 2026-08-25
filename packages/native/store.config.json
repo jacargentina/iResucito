@@ -1,7 +1,7 @@
 {
   "configVersion": 0,
   "apple": {
-    "version": "11.0.7",
+    "version": "11.0.8",
     "copyright": "Javier Castro",
     "release": {
       "automaticRelease": true
@@ -21,7 +21,7 @@
           "Mario",
           "Pezzi"
         ],
-        "releaseNotes": "Verbesserte Suchfunktionen",
+        "releaseNotes": "- Stabilitätsverbesserungen und Fehlerbehebungen.",
         "supportUrl": "https://twitter.com/javi_ale_castro",
         "title": "iResucitó",
         "subtitle": "Neokatechumenale Lieder",
@@ -65,7 +65,7 @@
           "Mario",
           "Pezzi"
         ],
-        "releaseNotes": "Mejoras en busquedas",
+        "releaseNotes": "- Mejoras de estabilidad y correcciones de errores.",
         "supportUrl": "https://twitter.com/javi_ale_castro",
         "title": "iResucitó",
         "subtitle": "Cantos Camino Neocatecumenal",
@@ -109,7 +109,7 @@
           "Mario",
           "Pezzi"
         ],
-        "releaseNotes": "Busca melhorada",
+        "releaseNotes": "- Melhorias de estabilidade e correções de erros.",
         "supportUrl": "https://twitter.com/javi_ale_castro",
         "title": "iResucitó",
         "subtitle": "Cantos Caminho Neocatecumenal",
@@ -153,7 +153,7 @@
           "Mario",
           "Pezzi"
         ],
-        "releaseNotes": "Busca melhorada",
+        "releaseNotes": "- Melhorias de estabilidade e correção de erros.",
         "supportUrl": "https://twitter.com/javi_ale_castro",
         "title": "iResucitó",
         "subtitle": "Cantos Caminho Neocatecumenal",
@@ -196,7 +196,7 @@
           "Hernandez",
           "Pezzi"
         ],
-        "releaseNotes": "Ricerca migliore",
+        "releaseNotes": "- Miglioramenti della stabilità e correzioni di bug.",
         "marketingUrl": "https://jacargentina.github.io/iResucito/",
         "supportUrl": "https://twitter.com/javi_ale_castro",
         "title": "iResucitó",
@@ -240,7 +240,7 @@
           "Hernandez",
           "Pezzi"
         ],
-        "releaseNotes": "Better search",
+        "releaseNotes": "- Stability improvements and bug fixes.",
         "marketingUrl": "https://jacargentina.github.io/iResucito/",
         "supportUrl": "https://twitter.com/javi_ale_castro",
         "title": "iResucitó",
@@ -289,7 +289,7 @@
           "Mario",
           "Pezzi"
         ],
-        "releaseNotes": "Recherche améliorée",
+        "releaseNotes": "- Améliorations de la stabilité et corrections de bugs.",
         "screenshots": {
           "APP_IPHONE_67": [
             "store/apple/screenshot/fr-FR/APP_IPHONE_67/BuscarCantos.png",
@@ -333,7 +333,7 @@
           "Mario",
           "Pezzi"
         ],
-        "releaseNotes": "Ulepszone wyszukiwanie",
+        "releaseNotes": "- Poprawki stabilności i naprawa błędów.",
         "screenshots": {
           "APP_IPHONE_67": [
             "store/apple/screenshot/pl/APP_IPHONE_67/BuscarCantos.png",
@@ -377,7 +377,7 @@
           "Mario",
           "Pezzi"
         ],
-        "releaseNotes": "Улучшенный поиск",
+        "releaseNotes": "- Улучшения стабильности и исправления ошибок.",
         "screenshots": {
           "APP_IPHONE_67": [
             "store/apple/screenshot/ru/APP_IPHONE_67/BuscarCantos.png",
@@ -421,7 +421,7 @@
           "Mario",
           "Pezzi"
         ],
-        "releaseNotes": "Poboljšano pretraživanje",
+        "releaseNotes": "- Poboljšanja stabilnosti i ispravci pogrešaka.",
         "screenshots": {
           "APP_IPHONE_67": [
             "store/apple/screenshot/hr/APP_IPHONE_67/BuscarCantos.png",

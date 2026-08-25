@@ -3,10 +3,13 @@ const path = require('path');
 
 const configPath = path.join(__dirname, '..', 'store.config.json');
 const notesPath = path.join(__dirname, '..', 'release-notes.json');
+const appPath = path.join(__dirname, '..', 'app.json');
+
+const checkOnly = process.argv.includes('--check');
 
 if (!fs.existsSync(notesPath)) {
   console.error(
-    `No se encontro ${notesPath}. Generar el changelog y traducciones antes de publicar.`
+    `No se encontro ${notesPath}. Corre "yarn release-notes" antes de publicar.`
   );
   process.exit(1);
 }
@@ -22,6 +25,7 @@ function readJson(filePath) {
 
 const config = readJson(configPath);
 const notes = readJson(notesPath);
+const appVersion = readJson(appPath).expo.version;
 
 const locales = Object.keys(config.apple.info);
 const missing = locales.filter((locale) => !notes[locale]);
@@ -30,9 +34,18 @@ if (missing.length > 0) {
   process.exit(1);
 }
 
+if (checkOnly) {
+  console.log(`Release notes validadas para ${locales.length} locales.`);
+  process.exit(0);
+}
+
+config.apple.version = appVersion;
+
 for (const locale of locales) {
   config.apple.info[locale].releaseNotes = notes[locale];
 }
 
 fs.writeFileSync(configPath, JSON.stringify(config, null, 2) + '\n', 'utf8');
-console.log(`Release notes aplicadas en ${locales.length} locales.`);
+console.log(
+  `Release notes aplicadas en ${locales.length} locales para la version ${appVersion}.`
+);
