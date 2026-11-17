@@ -177,10 +177,9 @@ class NativeSongsExtras implements SongsExtras {
     return JSON.parse(json) as SongIndexPatch;
   }
 
-  savePatch(patch: SongIndexPatch): Promise<void> {
+  async savePatch(patch: SongIndexPatch): Promise<void> {
     const json = JSON.stringify(patch);
-    this.getPatchFile().write(json);
-    return Promise.resolve();
+    await this.getPatchFile().write(json);
   }
 
   deletePatch(): Promise<void> {
@@ -196,10 +195,9 @@ class NativeSongsExtras implements SongsExtras {
     return this.getSettingsFile().text();
   }
 
-  saveSettings(ratings: SongSettingsFile): Promise<void> {
+  async saveSettings(ratings: SongSettingsFile): Promise<void> {
     var json = JSON.stringify(ratings);
-    this.getSettingsFile().write(json);
-    return Promise.resolve();
+    await this.getSettingsFile().write(json);
   }
 
   deleteSettings(): Promise<void> {

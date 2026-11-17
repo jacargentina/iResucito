@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
-import { Alert, ScrollView, View } from 'react-native';
+import { Alert, View } from 'react-native';
+import type { ScrollViewInstance } from 'react-native';
 import { VStack, Text } from '@gluestack-ui/themed';
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { KeyboardAwareScrollView } from '@codler/react-native-keyboard-aware-scroll-view';
@@ -79,8 +80,11 @@ type ListDetailRouteProp = RouteProp<ListsStackParamList, 'ListDetail'>;
 
 export const ListDetail = () => {
   const lists_ui = useListsStore((state) => state.lists_ui);
-  const [scroll, setScroll] = useState<ScrollView>();
+  const [scroll, setScroll] = useState<ScrollViewInstance>();
   const [noteFocused, setNoteFocused] = useState(false);
+  // The library types innerRef as JSX.Element, but it receives the RN ScrollView host instance.
+  // SAFETY: KeyboardAwareScrollView forwards the native ScrollView instance to innerRef.
+  const onInnerRef = (ref: unknown) => setScroll(ref as ScrollViewInstance);
   const route = useRoute<ListDetailRouteProp>();
   const { listName } = route.params;
 
@@ -117,7 +121,7 @@ export const ListDetail = () => {
   return (
     <KeyboardAwareScrollView
       contentContainerStyle={{ flexGrow: 1 }}
-      innerRef={(ref) => setScroll(ref as unknown as ScrollView)}>
+      innerRef={onInnerRef}>
       <VStack p="$2">
         <ListDetailItem
           listName={listName}

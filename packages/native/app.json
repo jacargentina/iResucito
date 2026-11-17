@@ -10,11 +10,6 @@
       "ios",
       "android"
     ],
-    "splash": {
-      "image": "./img/bootsplash_logo.png",
-      "resizeMode": "cover",
-      "backgroundColor": "#881337"
-    },
     "assetBundlePatterns": [
       "**/*"
     ],
@@ -46,7 +41,6 @@
       "fr": "./languages/french.json"
     },
     "android": {
-      "edgeToEdgeEnabled": true,
       "adaptiveIcon": {
         "foregroundImage": "./img/cristo.png",
         "backgroundColor": "#FFFFFF"
@@ -93,7 +87,14 @@
       "expo-audio",
       "@sentry/react-native",
       "expo-sharing",
-      "expo-splash-screen",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./img/bootsplash_logo.png",
+          "resizeMode": "cover",
+          "backgroundColor": "#881337"
+        }
+      ],
       "expo-status-bar"
     ],
     "extra": {

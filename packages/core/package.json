@@ -38,8 +38,6 @@
     "copyfiles": "^2.4.1",
     "country-list": "^2.4.1",
     "dropbox": "^10.38.0",
-    "expo-asset": "~12.0.13",
-    "expo-file-system": "~19.0.23",
     "langs": "^2.0.0",
     "lodash": "^4.18.1",
     "normalize-strings": "^1.1.1",
