@@ -10,8 +10,8 @@
     "build-types": "npx tsc -b tsconfig.types.json",
     "build": "yarn run build-cjs; yarn run build-esm; yarn run build-types",
     "patch": "esno src/applyPatch.ts",
-    "test": "esno src/test.ts",
-    "test-no-funciona": "// ver comentarios en jest.config.js"
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "main": "./dist/cjs/src/index.js",
   "types": "./dist/types/src/index.d.ts",
@@ -45,10 +45,8 @@
     "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "@types/jest": "^30.0.0",
     "esno": "^4.8.0",
-    "jest": "^30.4.2",
-    "jest-environment-jsdom": "^30.4.1",
-    "ts-jest": "^29.4.12"
+    "vite": "^7.3.6",
+    "vitest": "^5.1.1"
   }
 }

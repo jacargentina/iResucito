@@ -13,5 +13,9 @@
     "@types/i18n-js": "^4.0.1",
     "i18n-js": "^4.5.3",
     "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "vite": "^7.3.6",
+    "vitest": "^5.1.1"
   }
 }
