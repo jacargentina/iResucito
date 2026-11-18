@@ -52,6 +52,8 @@ export const SwipeableRightAction = ({
   const animatedStyle = useAnimatedStyle(() => {
     return {
       transform: [{ translateX: interpolate(progress.value, [0, 1], [x, 0]) }],
+      // RNGH v3 renders actions behind the row without hiding them when closed.
+      opacity: progress.value === 0 ? 0 : 1,
     };
   });
   const pressHandler = () => {
