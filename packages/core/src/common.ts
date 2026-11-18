@@ -1149,7 +1149,8 @@ export const SongPDFGenerator = async (
       const { song, render } = data;
       const { items, indicators } = render;
 
-      const next = writer.doc.page ? writer.doc.page.pageNumber + 1 : 0;
+      // Without an index this is the first page: number songs from 1.
+      const next = writer.doc.page ? writer.doc.page.pageNumber + 1 : 1;
       writer.doc.addPage();
       writer.doc.page.pageNumber = next;
 
