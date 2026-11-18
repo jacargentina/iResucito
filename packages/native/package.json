@@ -7,7 +7,7 @@
   },
   "scripts": {
     "start": "expo start --ios",
-    "test": "node node_modules/jest/bin/jest.js --watch",
+    "test": "jest",
     "rebuild": "npx expo prebuild --clean; rm -f ios/.xcode.env.local",
     "release-notes": "node ./scripts/generate-release-notes.js",
     "release-notes-check": "node ./scripts/apply-release-notes.js --check",
@@ -20,7 +20,8 @@
     "generate-screenshots": "node ./scripts/generate-screenshots.js",
     "android": "expo run:android",
     "ios": "expo run:ios",
-    "postinstall": "cd ../.. && yarn build"
+    "postinstall": "cd ../.. && yarn build",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "@codler/react-native-keyboard-aware-scroll-view": "^2.0.1",
@@ -103,8 +104,10 @@
   },
   "devDependencies": {
     "@babel/core": "^7.29.7",
+    "@babel/runtime": "^7.29.2",
     "@expo/cli": "^58.1.21",
     "@mccraveiro/standard-version-expo": "^2.0.5",
+    "@react-native/jest-preset": "0.88.1",
     "@react-native/metro-config": "0.88.1",
     "@simbathesailor/use-what-changed": "^2.0.0",
     "@types/color": "^4.2.1",
@@ -114,14 +117,25 @@
     "@types/react-dom": "~19.3.0",
     "@types/react-native-keep-awake": "^2.0.8",
     "@types/react-test-renderer": "^19.1.0",
+    "babel-preset-expo": "~58.0.26",
     "colors": "^1.4.0",
     "diff": "^8.0.4",
     "jest": "~30.5.2",
+    "jest-expo": "~58.0.15",
     "jetifier": "^2.0.0",
     "metro-react-native-babel-preset": "^0.77.0",
     "react-native-monorepo-tools": "^1.2.1",
     "source-map": "^0.7.6",
     "standard-version": "^9.5.0",
     "ts-jest": "^29.4.12"
+  },
+  "jest": {
+    "preset": "jest-expo",
+    "testMatch": [
+      "<rootDir>/tests/**/*.test.{ts,tsx}"
+    ],
+    "modulePaths": [
+      "<rootDir>/node_modules"
+    ]
   }
 }
