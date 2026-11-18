@@ -300,6 +300,7 @@ export type PalabraList = {
   '3-salmo': string | null;
   'evangelio-monicion': string | null;
   evangelio: string | null;
+  paz: string | null;
   salida: string | null;
   nota: string | null;
 };
@@ -355,6 +356,7 @@ export type PalabraListForUI = {
   '3-salmo': Song | null;
   'evangelio-monicion': string | null;
   evangelio: string | null;
+  paz: Song | null;
   salida: Song | null;
   nota: string | null;
 };
@@ -1519,7 +1521,13 @@ export const PdfStyles: SongStyles<PdfStyle> = {
   disablePageNumbers: false,
 };
 
-export const getLocalizedListItem = (listKey: string): string => {
+export const getLocalizedListItem = (
+  listKey: string,
+  listType?: string
+): string => {
+  if (listType === 'palabra' && listKey === 'paz') {
+    return i18n.t('list_item.paz-palabra');
+  }
   return i18n.t(`list_item.${listKey}`);
 };
 
@@ -1571,7 +1579,7 @@ export const getListTitleValue = (
       return null;
     }
     return {
-      title: getLocalizedListItem(key),
+      title: getLocalizedListItem(key, list.type),
       value: valor,
     };
   }

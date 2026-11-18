@@ -130,6 +130,7 @@ const ListDetailItem = (props: {
 }) => {
   const navigation = useNavigation<ListDetailItemNavigationProp>();
   const { listName, listKey, listText, inputProps } = props;
+  const listType = useListsStore((state) => state.lists[listName]?.type);
 
   var item: any = null;
   if (
@@ -241,7 +242,7 @@ const ListDetailItem = (props: {
 
   // Solo las claves de tipo string, llevan los titulos (eucaristia, palabra)
   if (typeof listKey === 'string') {
-    var friendlyText = getLocalizedListItem(listKey).toUpperCase();
+    var friendlyText = getLocalizedListItem(listKey, listType).toUpperCase();
     separator = (
       <Text
         fontWeight="bold"

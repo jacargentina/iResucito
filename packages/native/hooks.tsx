@@ -410,6 +410,7 @@ if (launchArguments.FASTLANE_SNAPSHOT) {
     '3-salmo': null,
     'evangelio-monicion': null,
     evangelio: null,
+    paz: null,
     salida: null,
     nota: null,
   };
@@ -446,6 +447,7 @@ export const useListsStore = create<ListsStore>()(
                   '3-salmo': null,
                   'evangelio-monicion': null,
                   evangelio: null,
+                  paz: null,
                   salida: null,
                   nota: null,
                 };
@@ -694,6 +696,10 @@ export const useListsStore = create<ListsStore>()(
                         : null,
                     'evangelio-monicion': datalist['evangelio-monicion'],
                     evangelio: datalist.evangelio,
+                    paz:
+                      datalist.paz != null
+                        ? (songs?.find((s) => s.key === p.paz) as Song)
+                        : null,
                     salida:
                       datalist.salida != null
                         ? (songs?.find((s) => s.key === p.salida) as Song)
