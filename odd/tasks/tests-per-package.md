@@ -12,11 +12,11 @@ Runner decision: Vitest for core/translations/web, jest-expo for native.
 
 ## Tasks
 
-- T1 [S1,S2,S3] core: replace jest with vitest, migrate transport test, add parser tests, drop broken config/scratch — inline — commit: pending
-- T2 [S1,S3] translations: vitest + locale key parity test — inline — commit: pending
-- T3 [S1,S3] web: vitest + tests for pure helpers — inline — commit: pending
-- T4 [S1,S3] native: jest-expo + smoke test, non-watch `test` script — inline — commit: pending
-- T5 [S4] root `yarn test` + AGENTS.md/README docs — inline — commit: pending
+- T1 [S1,S2,S3] core: replace jest with vitest, migrate transport test, add parser tests, drop broken config/scratch — inline — commit: df5ef2ea
+- T2 [S1,S3] translations: vitest + locale key parity test — inline — commit: 807c176f
+- T3 [S1,S3] web: vitest + tests for pure helpers — inline — commit: 31b872b1
+- T4 [S1,S3] native: jest-expo + smoke test, non-watch `test` script — inline — commit: 2a1ce148
+- T5 [S4] root `yarn test` + AGENTS.md/README docs — inline — commit: this commit
 
 ## Log
 
@@ -24,3 +24,6 @@ Runner decision: Vitest for core/translations/web, jest-expo for native.
 - L2: User chose runner "Vitest + jest-expo"; scope core, translations, native, web; root "Solo `yarn test` raíz".
 - L3: Evidence: ts-jest js-with-ts preset + .cjs config made transport.test.ts pass 2/2 in a scratch config; root cause is the ESM translations dist, not i18n-js.
 - L4: Finding: fr, lt-LT, pt-BR lack the whole `songs.*` section (11 keys, fallback to en). Parity test pins the current gaps as a known list so new gaps fail; data fix out of scope.
+- L5: Finding: getSongItem translates `songs.clamp` with the global i18n.locale, ignoring its locale argument; test pins current behavior.
+- L6: Finding: native babel.config.js found babel-preset-expo only via hoisting (nested under expo); declared explicitly with @babel/runtime. jest-expo 58 needs @react-native/jest-preset peer.
+- L7: Verified: root `yarn test` exit 0 — core 12, translations 29, native 2, web 3 (46 tests). Babel transform of App.tsx with the real config ok; expo-doctor failures (metro disableHierarchicalLookup, react-native-web peer, RN Directory) pre-exist.

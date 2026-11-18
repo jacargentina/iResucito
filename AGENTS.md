@@ -24,6 +24,7 @@ Root:
 
 ```
 yarn build          # yarn workspaces foreach -A run build
+yarn test           # yarn workspaces foreach -A -t run test (run `yarn build` first)
 ```
 
 Per package:
@@ -31,20 +32,32 @@ Per package:
 ```
 # core
 cd packages/core && yarn build        # builds cjs + esm + types
-cd packages/core && yarn test         # esno src/test.ts (NOT jest — see note below)
+cd packages/core && yarn test         # vitest run (tests/)
 
 # native (Expo)
 cd packages/native && yarn start      # expo start --ios
 cd packages/native && yarn ios        # expo run:ios
 cd packages/native && yarn android    # expo run:android
-cd packages/native && yarn test       # jest --watch
+cd packages/native && yarn test       # jest (jest-expo, tests/); yarn test:watch for watch mode
 
 # web (Remix)
 cd packages/web && yarn dev           # remix vite:dev
 cd packages/web && yarn build         # remix vite:build
+cd packages/web && yarn test          # vitest run (tests/, uses vitest.config.ts)
+
+# translations
+cd packages/translations && yarn test # vitest run (locale key parity)
 ```
 
-**Note on `core` tests**: `jest.config.js` in `packages/core` is currently broken/unused (see the `test-no-funciona` script and comments inside `jest.config.js`). The actual test entry point is `src/test.ts`, run via `yarn test` (esno). Don't assume jest works there without checking `jest.config.js` first.
+## Tests
+
+Each package keeps its tests in `tests/` (outside the build `include`).
+
+- `core`, `translations`, `web`: **Vitest**. It runs ESM natively, which is why the old ts-jest setup in `core` was dropped: `@iresucito/translations` ships an ESM `dist` that resolves outside `node_modules`, so ts-jest never transformed it.
+- `web` uses a dedicated `vitest.config.ts` so tests don't load the Remix/Vercel plugins from `vite.config.ts`.
+- `native`: **jest-expo** (config in `package.json`). `modulePaths` mirrors Metro's `nodeModulesPaths`, so workspace dists transformed by Babel resolve `@babel/runtime` from `native/node_modules`.
+- `web` and `native` import `@iresucito/core` through its `dist`: run `yarn build` before their tests after changing `core`.
+- `translations` pins known untranslated keys (fr, lt-LT, pt-BR) in its parity test; remove them from the list once translated.
 
 `packages/native` has a `postinstall` script that runs `yarn build` at the repo root — installing native's deps rebuilds `core`/`translations`. Keep this in mind if a build seems to run unexpectedly during `yarn install`.
 
